@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cinemas",
+  "info": {
+    "name": "Cinema"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "town": {
+      "model": "town"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    }
+  }
+}

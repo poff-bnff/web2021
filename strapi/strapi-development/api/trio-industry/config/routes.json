@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-industry",
+      "handler": "trio-industry.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-industry",
+      "handler": "trio-industry.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-industry",
+      "handler": "trio-industry.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

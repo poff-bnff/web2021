@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tag_keywords",
+  "info": {
+    "name": "TagKeyword"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "et": {
+      "type": "string"
+    },
+    "en": {
+      "type": "string"
+    },
+    "ru": {
+      "type": "string"
+    }
+  }
+}

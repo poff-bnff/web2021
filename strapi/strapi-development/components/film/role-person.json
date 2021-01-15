@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_film_role_people",
+  "info": {
+    "name": "rolePerson",
+    "icon": "user-nurse"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "role_at_film": {
+      "model": "role-at-film"
+    },
+    "person": {
+      "model": "person"
+    }
+  }
+}

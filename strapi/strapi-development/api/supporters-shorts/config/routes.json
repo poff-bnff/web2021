@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/supporters-shorts",
+      "handler": "supporters-shorts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/supporters-shorts/count",
+      "handler": "supporters-shorts.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/supporters-shorts/:id",
+      "handler": "supporters-shorts.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/supporters-shorts",
+      "handler": "supporters-shorts.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/supporters-shorts/:id",
+      "handler": "supporters-shorts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/supporters-shorts/:id",
+      "handler": "supporters-shorts.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

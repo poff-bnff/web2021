@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_permissions",
+  "info": {
+    "name": "webPermission"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "controller": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "string"
+    }
+  }
+}

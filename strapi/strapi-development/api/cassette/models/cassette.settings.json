@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cassettes",
+  "info": {
+    "name": "cassette"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "synopsis": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "media.film-media"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.tags"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "presenters": {
+      "collection": "organisation"
+    },
+    "remoteId": {
+      "type": "uid"
+    },
+    "orderedFilms": {
+      "type": "component",
+      "repeatable": true,
+      "component": "film.ordered-films"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "name": "Location"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "country": {
+      "model": "country"
+    },
+    "town": {
+      "model": "town"
+    },
+    "cinema": {
+      "model": "cinema"
+    },
+    "hall": {
+      "model": "hall"
+    },
+    "name": {
+      "type": "string",
+      "private": false
+    },
+    "remoteId": {
+      "type": "uid"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-p-oe-ff",
+      "handler": "trio-p-oe-ff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-p-oe-ff",
+      "handler": "trio-p-oe-ff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-p-oe-ff",
+      "handler": "trio-p-oe-ff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

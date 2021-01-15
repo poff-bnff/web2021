@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_film_ordered_films",
+  "info": {
+    "name": "orderedFilms",
+    "icon": "database"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "film": {
+      "model": "film"
+    }
+  }
+}

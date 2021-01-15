@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "towns",
+  "info": {
+    "name": "Town"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "country": {
+      "model": "country"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

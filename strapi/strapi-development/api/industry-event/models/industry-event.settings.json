@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_events",
+  "info": {
+    "name": "Industry_Event",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titlePrivate": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "datetime"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "location": {
+      "model": "location"
+    },
+    "lead": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "industry_categories": {
+      "collection": "industry-category"
+    },
+    "project_type": {
+      "model": "project-type"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "channel": {
+      "model": "channel"
+    },
+    "durationTime": {
+      "type": "time"
+    },
+    "industry_people": {
+      "collection": "industry-person"
+    },
+    "industry_projects": {
+      "collection": "industry-project"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "isLiveEvent": {
+      "type": "boolean"
+    },
+    "isPublicEvent": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_menu_items",
+  "info": {
+    "name": "poffiSubMenuItem",
+    "icon": "calendar-week"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "poffi_article": {
+      "model": "pof-fi-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

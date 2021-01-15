@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hof_fi_footers",
+  "info": {
+    "name": "HOFFi_Footer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "socialGroup": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social.social-group"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.footer-item-nav"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-hoff"
+    }
+  }
+}

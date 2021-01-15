@@ -1,0 +1,120 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "name": "Vana_Article_Ei_Kasuta"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "titlePrivate": {
+      "type": "string",
+      "private": false
+    },
+    "imageDefault": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "contents_et": {
+      "type": "richtext"
+    },
+    "contents_en": {
+      "type": "richtext"
+    },
+    "contents_ru": {
+      "type": "richtext"
+    },
+    "lead_et": {
+      "type": "richtext",
+      "maxLength": 255
+    },
+    "lead_en": {
+      "type": "richtext",
+      "maxLength": 255
+    },
+    "lead_ru": {
+      "type": "richtext",
+      "maxLength": 255
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.tags"
+    },
+    "domains": {
+      "collection": "domain"
+    },
+    "image_et": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "image_en": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "image_ru": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "clipUrl_et": {
+      "type": "string"
+    },
+    "clipUrl_en": {
+      "type": "string"
+    },
+    "clipUrl_ru": {
+      "type": "string"
+    },
+    "clipUrlDefault": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    }
+  }
+}

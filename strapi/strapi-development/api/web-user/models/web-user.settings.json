@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_users",
+  "info": {
+    "name": "webUser"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "unique": true
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    },
+    "resetPasswordToken": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "confirmed": {
+      "type": "boolean"
+    },
+    "blocked": {
+      "type": "boolean"
+    },
+    "web_role": {
+      "model": "web-role"
+    }
+  }
+}

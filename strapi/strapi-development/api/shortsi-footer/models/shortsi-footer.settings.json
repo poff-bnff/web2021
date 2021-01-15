@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shortsi_footers",
+  "info": {
+    "name": "Shortsi_Footer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "socialGroup": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social.social-group"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.footer-item-nav"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-shorts"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/screening-types",
+      "handler": "screening-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/screening-types/count",
+      "handler": "screening-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/screening-types/:id",
+      "handler": "screening-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/screening-types",
+      "handler": "screening-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/screening-types/:id",
+      "handler": "screening-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/screening-types/:id",
+      "handler": "screening-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

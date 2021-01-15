@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-just-film",
+      "handler": "hero-article-just-film.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-just-film",
+      "handler": "hero-article-just-film.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-just-film",
+      "handler": "hero-article-just-film.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

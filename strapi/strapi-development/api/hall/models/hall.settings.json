@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "halls",
+  "info": {
+    "name": "Hall"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "numberOfSeats": {
+      "type": "integer"
+    },
+    "cinema": {
+      "model": "cinema"
+    },
+    "floor": {
+      "type": "enumeration",
+      "enum": [
+        "First",
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth"
+      ]
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "hallId": {
+      "type": "uid"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

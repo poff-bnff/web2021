@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-just-film",
+      "handler": "trio-just-film.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-just-film",
+      "handler": "trio-just-film.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-just-film",
+      "handler": "trio-just-film.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

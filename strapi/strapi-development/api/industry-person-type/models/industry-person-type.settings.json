@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_person_types",
+  "info": {
+    "name": "Industry_PersonType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

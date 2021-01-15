@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_supporters",
+  "info": {
+    "name": "Industry_Supporter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-industry"
+    }
+  }
+}

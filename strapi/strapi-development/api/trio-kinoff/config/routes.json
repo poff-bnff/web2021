@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-kinoff",
+      "handler": "trio-kinoff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-kinoff",
+      "handler": "trio-kinoff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-kinoff",
+      "handler": "trio-kinoff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

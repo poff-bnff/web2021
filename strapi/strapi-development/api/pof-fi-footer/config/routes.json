@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pof-fi-footers",
+      "handler": "pof-fi-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pof-fi-footers/count",
+      "handler": "pof-fi-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pof-fi-footers/:id",
+      "handler": "pof-fi-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/pof-fi-footers",
+      "handler": "pof-fi-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pof-fi-footers/:id",
+      "handler": "pof-fi-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pof-fi-footers/:id",
+      "handler": "pof-fi-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

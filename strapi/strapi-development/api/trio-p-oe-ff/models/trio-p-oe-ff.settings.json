@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_p_oe_ffs",
+  "info": {
+    "name": "TrioPOFF",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "trioPoff_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-poff-et"
+    },
+    "trioPoff_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-poff-et"
+    },
+    "trioPoff_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-poff-et"
+    }
+  }
+}

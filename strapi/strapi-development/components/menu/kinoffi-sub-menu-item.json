@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_kinoffi_sub_menu_items",
+  "info": {
+    "name": "KinoffiSubMenuItem",
+    "icon": "window-maximize"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "kinoffi_article": {
+      "model": "kinoffi-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

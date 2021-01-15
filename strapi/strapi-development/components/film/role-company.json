@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_film_role_companies",
+  "info": {
+    "name": "roleCompany",
+    "icon": "cash-register"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "roles_at_film": {
+      "model": "role-at-film"
+    },
+    "organisation": {
+      "model": "organisation"
+    }
+  }
+}

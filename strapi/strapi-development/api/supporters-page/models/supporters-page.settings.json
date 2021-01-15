@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supporters_pages",
+  "info": {
+    "name": "POFF_Supporter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "namePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-poff"
+    }
+  }
+}

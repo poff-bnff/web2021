@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/web-roles",
+      "handler": "web-role.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/web-roles/count",
+      "handler": "web-role.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/web-roles/:id",
+      "handler": "web-role.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/web-roles",
+      "handler": "web-role.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/web-roles/:id",
+      "handler": "web-role.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/web-roles/:id",
+      "handler": "web-role.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

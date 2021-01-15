@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_just_films",
+  "info": {
+    "name": "HeroArticleJustFilm"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_et": {
+      "model": "just-filmi-article"
+    },
+    "article_en": {
+      "model": "just-filmi-article"
+    },
+    "article_ru": {
+      "model": "just-filmi-article"
+    }
+  }
+}

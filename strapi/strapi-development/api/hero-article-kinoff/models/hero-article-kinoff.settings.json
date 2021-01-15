@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_kinoffs",
+  "info": {
+    "name": "HeroArticleKinoff"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_et": {
+      "model": "kinoffi-article"
+    },
+    "article_en": {
+      "model": "kinoffi-article"
+    },
+    "article_ru": {
+      "model": "kinoffi-article"
+    }
+  }
+}

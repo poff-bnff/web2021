@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_menus",
+  "info": {
+    "name": "Industry_Menu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "industry_article": {
+      "model": "industry-article"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "subMenuItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.industry-sub-menu-item"
+    }
+  }
+}

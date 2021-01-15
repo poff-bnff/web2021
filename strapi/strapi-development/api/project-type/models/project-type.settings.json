@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_types",
+  "info": {
+    "name": "Project_Type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

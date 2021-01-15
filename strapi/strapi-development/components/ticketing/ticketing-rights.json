@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ticketing_ticketing_rights",
+  "info": {
+    "name": "ticketingRight",
+    "icon": "chess-board"
+  },
+  "options": {},
+  "attributes": {
+    "ticketType": {
+      "type": "string"
+    },
+    "rightLimit": {
+      "type": "integer"
+    },
+    "rightUsed": {
+      "type": "integer"
+    }
+  }
+}

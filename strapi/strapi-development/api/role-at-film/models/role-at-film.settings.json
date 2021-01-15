@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "role_at_films",
+  "info": {
+    "name": "roleAtFilm"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "roleNamePrivate": {
+      "type": "string"
+    },
+    "roleName": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "remoteId": {
+      "type": "uid"
+    }
+  }
+}

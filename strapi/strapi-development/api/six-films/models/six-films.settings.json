@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "six_films",
+  "info": {
+    "name": "sixFilms"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "lead": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "films_et": {
+      "collection": "film"
+    },
+    "films_en": {
+      "collection": "film"
+    },
+    "films_ru": {
+      "collection": "film"
+    },
+    "cassettes_et": {
+      "collection": "cassette"
+    },
+    "cassettes_en": {
+      "collection": "cassette"
+    },
+    "cassettes_ru": {
+      "collection": "cassette"
+    }
+  }
+}

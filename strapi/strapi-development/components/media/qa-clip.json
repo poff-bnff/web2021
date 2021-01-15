@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_media_qa_clips",
+  "info": {
+    "name": "QaClip",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Intro",
+        "Conversation",
+        "QandA"
+      ]
+    }
+  }
+}

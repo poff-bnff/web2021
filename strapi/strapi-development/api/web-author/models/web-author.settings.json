@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_authors",
+  "info": {
+    "name": "WebAuthor"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    }
+  }
+}

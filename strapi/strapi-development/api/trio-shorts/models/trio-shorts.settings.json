@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_shorts",
+  "info": {
+    "name": "TrioShorts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "trioShorts_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-shorts"
+    },
+    "trioShorts_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-shorts"
+    },
+    "trioShorts_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-shorts"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "name": "Team"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "subTeam": {
+      "type": "component",
+      "repeatable": true,
+      "component": "teams.test-team"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "groupType": {
+      "type": "enumeration",
+      "enum": [
+        "festivalTeam",
+        "jury"
+      ]
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "name_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "name_ru"
+    }
+  }
+}

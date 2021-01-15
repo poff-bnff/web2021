@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Domeen",
+  "info": {
+    "name": "Domain"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "ipAdress": {
+      "type": "string"
+    },
+    "server": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

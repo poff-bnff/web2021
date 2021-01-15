@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "channels",
+  "info": {
+    "name": "channel"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "embedCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pof-fi-menus",
+      "handler": "pof-fi-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pof-fi-menus/count",
+      "handler": "pof-fi-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pof-fi-menus/:id",
+      "handler": "pof-fi-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/pof-fi-menus",
+      "handler": "pof-fi-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pof-fi-menus/:id",
+      "handler": "pof-fi-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pof-fi-menus/:id",
+      "handler": "pof-fi-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

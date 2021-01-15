@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programmes",
+  "info": {
+    "name": "Programme"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "domains": {
+      "collection": "domain"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "presentedBy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.presented-by"
+    },
+    "remoteId": {
+      "type": "uid"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "name_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "name_ru"
+    }
+  }
+}

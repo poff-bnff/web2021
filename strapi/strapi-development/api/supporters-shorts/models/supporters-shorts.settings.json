@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supporters_shorts",
+  "info": {
+    "name": "Shorts_Supporter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-shorts"
+    }
+  }
+}

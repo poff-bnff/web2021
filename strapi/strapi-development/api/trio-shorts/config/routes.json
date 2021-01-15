@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-shorts",
+      "handler": "trio-shorts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-shorts",
+      "handler": "trio-shorts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-shorts",
+      "handler": "trio-shorts.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

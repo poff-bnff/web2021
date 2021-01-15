@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_film_ordered_countries",
+  "info": {
+    "name": "orderedCountries",
+    "icon": "chess-queen"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "country": {
+      "model": "country"
+    }
+  }
+}

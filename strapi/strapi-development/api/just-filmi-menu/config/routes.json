@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/just-filmi-menus",
+      "handler": "just-filmi-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/just-filmi-menus/count",
+      "handler": "just-filmi-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/just-filmi-menus/:id",
+      "handler": "just-filmi-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/just-filmi-menus",
+      "handler": "just-filmi-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/just-filmi-menus/:id",
+      "handler": "just-filmi-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/just-filmi-menus/:id",
+      "handler": "just-filmi-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+-
+    hash: b2593cb62d9752952d643ad0ddb0082e
+    id: 10138
+    name: 'Coca-Cola Plaza, iSense Saal'
+    name_full: ''
+    abbreviation: 1
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: |-
+        &lt;est&gt;Coca Cola Plaza, iSense Saal;&#13;
+        &lt;rus&gt;Coca Cola Plaza, iSense ZAL;&#13;
+        &lt;eng&gt;Coca Cola Plaza, iSense HALL;
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 458
+    floor: iSense
+    colour: '#ffffff'
+    note: |-
+        &lt;est&gt;Coca Cola Plaza, iSense Saal;&#13;
+        &lt;rus&gt;Coca Cola Plaza, iSense ZAL;&#13;
+        &lt;eng&gt;Coca Cola Plaza, iSense HALL;
+    note_local: ''
+-
+    hash: 1e06a0e1d7ba8ff7d2bc7fd68a1c1b28
+    id: 10145
+    name: 'Coca-Cola Plaza, Saal 2'
+    name_full: ''
+    abbreviation: 2
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: ''
+    floor: Saal 2
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: c7df6667f3671bc68e362b4316f9cc0a
+    id: 10129
+    name: 'Coca-Cola Plaza, Saal 4'
+    name_full: ''
+    abbreviation: 3
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 287
+    floor: Saal 4
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: bb4bf974cf23fa7af799e9fc1fcec61b
+    id: 10130
+    name: 'Coca-Cola Plaza, Saal 6'
+    name_full: ''
+    abbreviation: 4
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 61
+    floor: Saal 6
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: fcfee10dc435502aaede0171e4a046d8
+    id: 10142
+    name: 'Coca-Cola Plaza, Saal 7'
+    name_full: ''
+    abbreviation: 5
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 144
+    floor: Saal 7
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 3304b483e00e2ca59f38bc183310c500
+    id: 10131
+    name: 'Coca-Cola Plaza, Saal 8'
+    name_full: ''
+    abbreviation: 6
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 158
+    floor: Saal 8
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: e052a08567b9942161036bb7076f0f43
+    id: 10132
+    name: 'Coca-Cola Plaza, Saal 9'
+    name_full: ''
+    abbreviation: 7
+    company_id: 44313
+    company: Coca-Cola Plaza
+    company_contact:
+        hash: ad7d6276dbf501e5d20cc2822ab4bf8a
+        name: Coca-Cola Plaza
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 112
+    floor: Saal 9
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 7852ac13eda62e5a2fc388e8b6f80376
+    id: 10133
+    name: 'Apollo Kino Solaris, Saal 2 Tallink'
+    name_full: ''
+    abbreviation: 11
+    company_id: 137196
+    company: Apollo Kino Solaris
+    company_contact:
+        hash: 8991e131c9ef8e2895c932207d41a968
+        name: Apollo Kino Solaris
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: Saal 2 Tallink
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 477
+    floor: Tallink
+    colour: '#ffffff'
+    note: Saal 2 Tallink
+    note_local: ''
+-
+    hash: 2eb0967753cd3bc85afb13f58cdc83ae
+    id: 10134
+    name: 'Apollo Kino Solaris, Saal 3'
+    name_full: ''
+    abbreviation: 12
+    company_id: 137196
+    company: Apollo Kino Solaris
+    company_contact:
+        hash: 8991e131c9ef8e2895c932207d41a968
+        name: Apollo Kino Solaris
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 224
+    floor: Saal 3
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 7f42949d80a63bea27f1b8f28a9e705c
+    id: 10135
+    name: 'Apollo Kino Solaris, Saal 4'
+    name_full: ''
+    abbreviation: 13
+    company_id: 137196
+    company: Apollo Kino Solaris
+    company_contact:
+        hash: 8991e131c9ef8e2895c932207d41a968
+        name: Apollo Kino Solaris
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 167
+    floor: Saal 4
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 9b780365d377e9136ff9569fee933d0d
+    id: 10139
+    name: 'Kino Artis, Saal 1'
+    name_full: ''
+    abbreviation: 15
+    company_id: 44314
+    company: Kino Artis
+    company_contact:
+        hash: 473cd66f2c832abfa96d91443549e84c
+        name: Artis
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 181
+    floor: Saal 1
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 0c69cbc3bd14c03603a5f2e15e3727bb
+    id: 10140
+    name: 'Kino Artis, Saal 2'
+    name_full: ''
+    abbreviation: 16
+    company_id: 44314
+    company: Kino Artis
+    company_contact:
+        hash: 473cd66f2c832abfa96d91443549e84c
+        name: Artis
+        note: ''
+        address:
+            street: ''
+            city: Tallinn
+            postcode: ''
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 72
+    floor: Saal 2
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: bc04c0a76261cd5d32118f4163b4d48d
+    id: 10144
+    name: Athena Keskus
+    name_full: ''
+    abbreviation: 21
+    company_id: 59219
+    company: Athena keskus
+    company_contact:
+        hash: 9d7107d561801890b018584a20919b31
+        name: Athena keskus
+        note: ''
+        address:
+            street: ''
+            city: Tartu
+            postcode: ''
+            state: ''
+            country:
+                code: ''
+                human_readable: ''
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 90
+    floor: ''
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 892923481360ad5a56c4dff3e03e3ea3
+    id: 10141
+    name: Elektriteater
+    name_full: ''
+    abbreviation: 22
+    company_id: 64027
+    company: Elektriteater
+    company_contact:
+        hash: a351fb55503181db72091197031ec266
+        name: Elektriteater
+        note: ''
+        address:
+            street: Lai 37
+            city: Tartu
+            postcode: 51005
+            state: Tartumaa
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: 100
+    floor: ''
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: a5ca40460cc1ae99f939a88511f1660f
+    id: 10151
+    name: Kohtla-Järve Kultuurikeskus
+    name_full: ''
+    abbreviation: 31
+    company_id: 496962
+    company: Kohtla-Järve Kultuurikeskus
+    company_contact:
+        hash: 27725277cc33218f339b6754f3be6fc2
+        name: ''
+        note: ''
+        address:
+            street: Keskallee 36
+            city: Kohtla-Järve
+            postcode: 30321
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: ''
+    floor: ''
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 137fc6959379bbe5be6f1cad003ed866
+    id: 10149
+    name: 'Apollo Kino Astri, Saal 2 Tallink'
+    name_full: ''
+    abbreviation: 32
+    company_id: 496958
+    company: Apollo Kino Astri
+    company_contact:
+        hash: 777d5b01e2ae08e9ef3ee83cc372954f
+        name: ''
+        note: ''
+        address:
+            street: Tallinna mnt. 41
+            city: Narva
+            postcode: 20605
+            state: ''
+            country:
+                code: EE
+                human_readable: Estonia
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: ''
+    floor: ''
+    colour: '#ffffff'
+    note: ''
+    note_local: ''
+-
+    hash: 55b1336b2f2b32d863d28fde9d49ac38
+    id: 10170
+    name: Online saal
+    name_full: ''
+    abbreviation: 50
+    company_id: ''
+    company: ''
+    company_contact: ''
+    location_note: ''
+    location_note_local: ''
+    geographic_coordinates: ''
+    capacity: ''
+    floor: ''
+    colour: '#ffffff'
+    note: ''
+    note_local: ''

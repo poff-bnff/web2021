@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cinemas",
+      "handler": "cinema.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cinemas/count",
+      "handler": "cinema.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cinemas/:id",
+      "handler": "cinema.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cinemas",
+      "handler": "cinema.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cinemas/:id",
+      "handler": "cinema.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cinemas/:id",
+      "handler": "cinema.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

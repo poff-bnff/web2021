@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "article_heroes",
+  "info": {
+    "name": "HeroArticlePöff"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_en": {
+      "model": "pof-fi-article"
+    },
+    "article_ru": {
+      "model": "pof-fi-article"
+    },
+    "article_et": {
+      "model": "pof-fi-article"
+    }
+  }
+}

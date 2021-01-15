@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/festival-editions",
+      "handler": "festival-edition.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/festival-editions/count",
+      "handler": "festival-edition.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/festival-editions/:id",
+      "handler": "festival-edition.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/festival-editions",
+      "handler": "festival-edition.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/festival-editions/:id",
+      "handler": "festival-edition.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/festival-editions/:id",
+      "handler": "festival-edition.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

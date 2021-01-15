@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hof-fi-footers",
+      "handler": "hof-fi-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hof-fi-footers/count",
+      "handler": "hof-fi-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hof-fi-footers/:id",
+      "handler": "hof-fi-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hof-fi-footers",
+      "handler": "hof-fi-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hof-fi-footers/:id",
+      "handler": "hof-fi-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hof-fi-footers/:id",
+      "handler": "hof-fi-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

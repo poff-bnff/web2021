@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_just_films",
+  "info": {
+    "name": "TrioJustFilm"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "trioJustFilm_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-just-film"
+    },
+    "trioJustFilm_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-just-film"
+    },
+    "trioJustFilm_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-just-film"
+    }
+  }
+}

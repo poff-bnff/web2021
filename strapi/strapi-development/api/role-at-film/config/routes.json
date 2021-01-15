@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/role-at-films",
+      "handler": "role-at-film.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/role-at-films/count",
+      "handler": "role-at-film.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/role-at-films/:id",
+      "handler": "role-at-film.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/role-at-films",
+      "handler": "role-at-film.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/role-at-films/:id",
+      "handler": "role-at-film.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/role-at-films/:id",
+      "handler": "role-at-film.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_hoffs",
+  "info": {
+    "name": "HeroArticleHoff",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "article_et": {
+      "model": "hof-fi-article"
+    },
+    "article_en": {
+      "model": "hof-fi-article"
+    },
+    "article_ru": {
+      "model": "hof-fi-article"
+    }
+  }
+}

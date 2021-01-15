@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "FestivalCollectionName",
+  "info": {
+    "name": "Festival"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "clipUrl": {
+      "type": "string"
+    }
+  }
+}

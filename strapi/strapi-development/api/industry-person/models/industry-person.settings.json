@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_people",
+  "info": {
+    "name": "Industry_Person"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "person": {
+      "model": "person"
+    },
+    "profilePicAtInd": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "emailAtInd": {
+      "type": "email"
+    },
+    "phoneAtInd": {
+      "type": "string"
+    },
+    "aboutText": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "clipUrl": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "filmography": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.filmography"
+    },
+    "industry_person_types": {
+      "collection": "industry-person-type"
+    },
+    "lookingFor": {
+      "type": "string"
+    },
+    "contactAtEvent": {
+      "type": "string"
+    },
+    "fullNamePrivate": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "fullNamePrivate",
+      "required": true
+    }
+  }
+}

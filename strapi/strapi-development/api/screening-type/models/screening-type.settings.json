@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "screening_types",
+  "info": {
+    "name": "ScreeningType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "validFrom": {
+      "type": "datetime"
+    },
+    "validTo": {
+      "type": "datetime"
+    }
+  }
+}

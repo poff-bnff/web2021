@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/kinoffi-footers",
+      "handler": "kinoffi-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-footers/count",
+      "handler": "kinoffi-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-footers/:id",
+      "handler": "kinoffi-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/kinoffi-footers",
+      "handler": "kinoffi-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/kinoffi-footers/:id",
+      "handler": "kinoffi-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/kinoffi-footers/:id",
+      "handler": "kinoffi-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

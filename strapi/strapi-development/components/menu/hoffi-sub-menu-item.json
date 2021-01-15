@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_menu_hoffi_sub_menu_items",
+  "info": {
+    "name": "hoffiSubMenuItem",
+    "icon": "braille",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "hoffi_article": {
+      "model": "hof-fi-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": true,
+      "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

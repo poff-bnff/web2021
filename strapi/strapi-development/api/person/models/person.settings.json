@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "people",
+  "info": {
+    "name": "Person"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "gender": {
+      "model": "gender"
+    },
+    "phoneNr": {
+      "type": "string"
+    },
+    "eMail": {
+      "type": "email"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "countries": {
+      "collection": "country"
+    },
+    "organisations": {
+      "collection": "organisation"
+    },
+    "profession": {
+      "type": "string"
+    },
+    "firstNameLastName": {
+      "type": "string"
+    },
+    "biography": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "filmography": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "remoteId": {
+      "type": "uid"
+    },
+    "pageUrl": {
+      "type": "string"
+    }
+  }
+}

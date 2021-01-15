@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organisations",
+  "info": {
+    "name": "Organisation"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Production",
+        "Festival",
+        "Distributor",
+        "Unicversity",
+        "Sponsor",
+        "Partner",
+        "Presenter"
+      ]
+    },
+    "logoWhite": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logoBlack": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logoColour": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "homepageUrl": {
+      "type": "string"
+    }
+  }
+}

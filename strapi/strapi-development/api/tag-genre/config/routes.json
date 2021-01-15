@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tag-genres",
+      "handler": "tag-genre.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-genres/count",
+      "handler": "tag-genre.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-genres/:id",
+      "handler": "tag-genre.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tag-genres",
+      "handler": "tag-genre.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tag-genres/:id",
+      "handler": "tag-genre.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tag-genres/:id",
+      "handler": "tag-genre.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

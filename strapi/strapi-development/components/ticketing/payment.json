@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_ticketing_payments",
+  "info": {
+    "name": "Payment",
+    "icon": "balance-scale"
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "string"
+    },
+    "cardNumber": {
+      "type": "integer"
+    },
+    "cardOwner": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "Cash",
+        "Card"
+      ]
+    }
+  }
+}

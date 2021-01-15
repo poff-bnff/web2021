@@ -1,0 +1,172 @@
+mixin chat(ROOM_NAME, IS_MODERATED_ROOM=false)
+    -
+        function slugify(text)
+        {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           // Replace spaces with -
+                .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                .replace(/^-+/, '')             // Trim - from start of text
+                .replace(/-+$/, '');            // Trim - from end of text
+        }
+        var room_suffix = IS_MODERATED_ROOM ? 'moderated' : 'plain'
+        var room_name = slugify(ROOM_NAME)
+        var chat_name = room_name + '-' + room_suffix
+
+    div(id='chat-container-' + chat_name class='chat-container chat-' + room_suffix)
+        div(id='chat-main-' + chat_name class='chat-main')
+            div(id='chat-messages-'+ chat_name class='chat-messages' class='dark_1')
+        //- if IS_MODERATED_ROOM
+        //-     div(id='chat-form-container-'+ chat_name class='chat-form-container')
+        //-     form(id='chat-form-' + room_name + room_suffix)
+
+    style.
+        .chat-container.moderated-false {
+            //- padding: 0px;
+            //- background: #ffffff;
+            //- border: blue solid 5px;
+        }
+        .chat-container.moderated-true {
+            padding: 0px;
+            background: #ffffff;
+            //- border: red solid 5px;
+        }
+        .poff-chat-message-meta {
+            padding: 0 1em;
+        }
+        .poff-chat-button {
+            border-radius: 3%;
+        }
+
+    script.
+        document.addEventListener('userProfileLoaded', function (e) {
+            const IS_MODERATED_ROOM = #{IS_MODERATED_ROOM}
+            const ROOM_NAME = '#{room_name}'
+            const CHAT_NAME = '#{chat_name}'
+            const ROOM_TYPE = '#{room_suffix}'
+            const IS_PLAIN_ROOM = !IS_MODERATED_ROOM
+
+            const CHAT_FORM_ID = ['chat-form', CHAT_NAME].join('-')
+            const DOM_CHAT_MESSAGES = document.getElementById(['chat-messages', CHAT_NAME].join('-'))
+            const DOM_CHAT_CONTAINER = document.getElementById(['chat-container', CHAT_NAME].join('-'))
+
+            //- console.log({RN: '#{ROOM_NAME}', ROOM_TYPE})
+
+            poff_o_matic.initSocket(userProfile.sub, ROOM_NAME)
+
+            const message_input_id = ['chat-message-input', CHAT_NAME].join('-')
+            const chatMessageInputElement = document.createElement('input')
+            chatMessageInputElement.id = message_input_id
+            chatMessageInputElement.classList.add('chat-message-input')
+            chatMessageInputElement.setAttribute('type', 'text')
+            chatMessageInputElement.setAttribute('placeholder', 'Enter message')
+            chatMessageInputElement.setAttribute('required', '')
+            chatMessageInputElement.setAttribute('autocomplete', 'off')
+
+            // Thou shall only speak out through thy plain room
+            //- console.log({I: 'Thou shall only speak out through thy plain room', CHAT_NAME, IS_MODERATED_ROOM, IS_PLAIN_ROOM})
+            if (IS_PLAIN_ROOM) {
+                //- console.log({I: 'Thou shall speak with passion and love', CHAT_NAME})
+
+                const chatFormElement = document.createElement('form')
+                chatFormElement.id = CHAT_FORM_ID
+                chatFormElement.appendChild(chatMessageInputElement)
+
+                DOM_CHAT_CONTAINER.appendChild(chatFormElement)
+            }
+
+            poff_o_matic.send('joinRoom', { is_moderated: IS_MODERATED_ROOM })
+            let I_AM_MODERATOR = false
+            poff_o_matic.subscribe('ARE U MODERATOR', (message) => { I_AM_MODERATOR = message })
+
+            poff_o_matic.subscribe('messageToClient', (message) => {
+                if (IS_MODERATED_ROOM && !message.is_moderated) {
+                    //- console.log({I: 'This chant is not for thee'})
+                    return
+                }
+                //- console.log({I: 'praise the message', message})
+                const newMessageElement = DOMoutputMessage(message)
+                newMessageElement.is_moderated = message.is_moderated
+                newMessageElement.style.is_moderated = message.is_moderated
+                DOM_CHAT_MESSAGES.scrollTop = DOM_CHAT_MESSAGES.scrollHeight
+            })
+
+            if (IS_PLAIN_ROOM) {
+                // Message submit
+                const chatFormElement = document.getElementById(CHAT_FORM_ID)
+                chatFormElement.addEventListener('submit', e => {
+                    e.preventDefault()
+
+                    // Get message text
+                    let latestMessage = chatMessageInputElement.value.trim()
+                    if (!latestMessage) {
+                        return false
+                    }
+                    // Emit message to server
+                    //- console.log('Send message', latestMessage)
+                    poff_o_matic.send('messageToServer', { message: latestMessage })
+
+                    // Clear input
+                    chatMessageInputElement.value = ''
+                    chatMessageInputElement.focus()
+                })
+            }
+
+
+            // Output message to DOM
+            function DOMoutputMessage(message) {
+                const MESSAGE_ID = [ROOM_TYPE, message.id].join('-')
+                if(document.getElementById(MESSAGE_ID)) {
+                    //- console.log({I: 'Message allready in place', message, ROOM_NAME})
+                    return document.getElementById(MESSAGE_ID)
+                }
+
+                const newMessageElement = document.createElement('div')
+                newMessageElement.classList.add('poff-chat-message')
+                newMessageElement.id = MESSAGE_ID
+
+                const messageTimeElement = document.createElement('span')
+                messageTimeElement.innerText = message.time
+                messageTimeElement.classList.add('poff-chat-message-meta', 'poff-chat-message-time');
+
+                const messageAuthorElement = document.createElement('span')
+                messageAuthorElement.innerText = message.user_name
+                messageAuthorElement.classList.add('poff-chat-message-meta', 'poff-chat-message-author');
+
+                const messageTextElement = document.createElement('span')
+                messageTextElement.innerText = message.text
+                messageTextElement.classList.add('poff-chat-message-meta', 'poff-chat-message-text');
+
+                const messageMetaElement = document.createElement('div')
+                messageMetaElement.appendChild(messageTimeElement)
+                messageMetaElement.appendChild(messageAuthorElement)
+                messageMetaElement.appendChild(messageTextElement)
+
+                newMessageElement.appendChild(messageMetaElement)
+
+                DOM_CHAT_MESSAGES.appendChild(newMessageElement)
+
+                if(IS_PLAIN_ROOM && !message.is_moderated && I_AM_MODERATOR) {
+                    const moderateButtonElement = document.createElement('button')
+                    moderateButtonElement.classList.add('poff-chat-button1', 'btn', 'btn_moderate')
+                    moderateButtonElement.innerText = 'M'
+                    moderateButtonElement.onclick = function() {
+                        poff_o_matic.send('moderate message', { message_id: message.id })
+                        this.remove()
+                    }
+                    messageMetaElement.appendChild(moderateButtonElement)
+                }
+                return newMessageElement
+            }
+
+            //REJOIN
+            poff_o_matic.subscribe('Rejoin, please', () => {
+                poff_o_matic.send('joinRoom', { is_moderated: IS_MODERATED_ROOM })
+
+                socket.emit('messageToServer', {
+                    user_id: userProfile.sub,
+                    ROOM_NAME: ROOM_NAME,
+                    message: latestMessage
+                })
+            })
+        })

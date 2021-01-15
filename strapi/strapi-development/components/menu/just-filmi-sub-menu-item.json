@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_just_filmi_sub_menu_items",
+  "info": {
+    "name": "JustFilmiSubMenuItem",
+    "icon": "calendar-minus"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "just_filmi_article": {
+      "model": "just-filmi-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "languages",
+  "info": {
+    "name": "Language"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "maxLength": 3,
+      "minLength": 2
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_media_film_medias",
+  "info": {
+    "name": "Film Media",
+    "icon": "camera"
+  },
+  "options": {},
+  "attributes": {
+    "stills": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "trailer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.trailers"
+    },
+    "QaClip": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.qa-clip"
+    }
+  }
+}

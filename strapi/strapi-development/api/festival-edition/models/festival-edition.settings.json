@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Edition",
+  "info": {
+    "name": "FestivalEdition"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "festival": {
+      "model": "festival"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "name_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "name_ru"
+    },
+    "remoteId": {
+      "type": "uid"
+    }
+  }
+}

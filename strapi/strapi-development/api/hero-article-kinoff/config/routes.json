@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-kinoff",
+      "handler": "hero-article-kinoff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-kinoff",
+      "handler": "hero-article-kinoff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-kinoff",
+      "handler": "hero-article-kinoff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

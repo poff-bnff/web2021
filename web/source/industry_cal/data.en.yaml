@@ -1,0 +1,6 @@
+path: calendar
+data:
+    events: /_fetchdir/industryeventscalendar.en.yaml
+    articles: /_fetchdir/articles.en.yaml
+    # search: /_fetchdir/search_screenings.en.yaml
+    # filters: /_fetchdir/filters_screenings.en.yaml

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-hoff",
+      "handler": "hero-article-hoff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-hoff",
+      "handler": "hero-article-hoff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-hoff",
+      "handler": "hero-article-hoff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

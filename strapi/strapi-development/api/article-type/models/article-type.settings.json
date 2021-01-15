@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_types",
+  "info": {
+    "name": "ArticleType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "private": false
+    },
+    "label_et": {
+      "type": "string"
+    },
+    "label_en": {
+      "type": "string"
+    },
+    "label_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "label_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "label_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "label_ru"
+    }
+  }
+}

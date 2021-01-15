@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_shorts",
+  "info": {
+    "name": "HeroArticleShorts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_et": {
+      "model": "shortsi-article"
+    },
+    "article_en": {
+      "model": "shortsi-article"
+    },
+    "article_ru": {
+      "model": "shortsi-article"
+    }
+  }
+}

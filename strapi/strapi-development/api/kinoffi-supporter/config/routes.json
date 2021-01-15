@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/kinoffi-supporters",
+      "handler": "kinoffi-supporter.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-supporters/count",
+      "handler": "kinoffi-supporter.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-supporters/:id",
+      "handler": "kinoffi-supporter.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/kinoffi-supporters",
+      "handler": "kinoffi-supporter.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/kinoffi-supporters/:id",
+      "handler": "kinoffi-supporter.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/kinoffi-supporters/:id",
+      "handler": "kinoffi-supporter.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

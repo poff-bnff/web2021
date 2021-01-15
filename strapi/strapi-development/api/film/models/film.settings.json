@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "films",
+  "info": {
+    "name": "Film"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "titleOriginal": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "runtime": {
+      "type": "integer"
+    },
+    "synopsis": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "media.film-media"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.tags"
+    },
+    "slug_et": {
+      "type": "uid",
+      "private": false,
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "private": false,
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "private": false,
+      "targetField": "title_ru"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "otherFestivals": {
+      "type": "string"
+    },
+    "credentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "presentedBy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.presented-by"
+    },
+    "world_sales": {
+      "collection": "organisation"
+    },
+    "subtitles": {
+      "collection": "language"
+    },
+    "remoteId": {
+      "type": "uid"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "orderedCountries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "film.ordered-countries"
+    },
+    "additInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "foreignUrl": {
+      "type": "string"
+    }
+  }
+}

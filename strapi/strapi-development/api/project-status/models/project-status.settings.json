@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_statuses",
+  "info": {
+    "name": "Project_Status"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "status": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+#text.container-fluid.pt-3(style={ 'background-image': `url(${self.pictures[0]})` })
+    #text-pagetitle.row.my-0
+        h2.col-12
+            if self.siteTitle !== self.title
+                a(href=self.root)= self.siteTitle
+            else
+                br
+    #text-title.row.mt-4
+        h1.col-12.col-lg-8
+            a(href=self.path)= self.title
+    #text-content.row.mt-5.pb-1
+        block content
+            .col-12.col-md-8.col-lg-9.col-xl-6
+                .row
+                    #text-text.col.py-3
+                        each c, idx in self.content
+                            if c.id
+                                a.text-link.py-2.d-block(href=`#${c.id}`)= c.title
+                                .text-block.d-none(id=c.id class={ 'mb-3': idx!==self.content.length-1 'mb-0': idx===self.content.length-1 })
+                                    +markdown(c.text)
+                            else
+                                .m-0(class={ 'mb-3': self.content.length > 1 })
+                                    +markdown(c.text)

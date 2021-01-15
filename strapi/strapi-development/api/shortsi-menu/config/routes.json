@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/shortsi-menus",
+      "handler": "shortsi-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shortsi-menus/count",
+      "handler": "shortsi-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shortsi-menus/:id",
+      "handler": "shortsi-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/shortsi-menus",
+      "handler": "shortsi-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/shortsi-menus/:id",
+      "handler": "shortsi-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/shortsi-menus/:id",
+      "handler": "shortsi-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/shortsi-footers",
+      "handler": "shortsi-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shortsi-footers/count",
+      "handler": "shortsi-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shortsi-footers/:id",
+      "handler": "shortsi-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/shortsi-footers",
+      "handler": "shortsi-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/shortsi-footers/:id",
+      "handler": "shortsi-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/shortsi-footers/:id",
+      "handler": "shortsi-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

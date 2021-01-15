@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cassettes",
+      "handler": "cassette.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cassettes/count",
+      "handler": "cassette.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cassettes/:id",
+      "handler": "cassette.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cassettes",
+      "handler": "cassette.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cassettes/:id",
+      "handler": "cassette.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cassettes/:id",
+      "handler": "cassette.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

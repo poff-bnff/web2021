@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "just_filmi_menus",
+  "info": {
+    "name": "JustFilmi_Menu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "just_filmi_article": {
+      "model": "just-filmi-article"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "subMenuItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.just-filmi-sub-menu-item"
+    }
+  }
+}

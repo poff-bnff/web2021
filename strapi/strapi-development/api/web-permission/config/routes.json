@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/web-permissions",
+      "handler": "web-permission.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/web-permissions/count",
+      "handler": "web-permission.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/web-permissions/:id",
+      "handler": "web-permission.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/web-permissions",
+      "handler": "web-permission.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/web-permissions/:id",
+      "handler": "web-permission.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/web-permissions/:id",
+      "handler": "web-permission.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

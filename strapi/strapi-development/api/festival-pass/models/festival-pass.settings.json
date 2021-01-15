@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "festival_passes",
+  "info": {
+    "name": "Product_Pass"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "product_type": {
+      "model": "product"
+    },
+    "product_category": {
+      "model": "product-category"
+    },
+    "owner": {
+      "model": "person"
+    },
+    "code": {
+      "type": "string",
+      "unique": true
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "transaction": {
+      "model": "transaction"
+    },
+    "ticketingRight": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.ticketing-rights"
+    }
+  }
+}

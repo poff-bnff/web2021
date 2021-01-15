@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_article_trio_hoffs",
+  "info": {
+    "name": "TrioHoff",
+    "icon": "ethernet"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-hoff"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": true,
+      "component": "article.trio-item-hoff"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-hoff"
+    }
+  }
+}

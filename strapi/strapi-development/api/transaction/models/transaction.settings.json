@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "name": "transaction"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "dateTime": {
+      "type": "datetime"
+    },
+    "person": {
+      "model": "person"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Purchase",
+        "Refund"
+      ],
+      "default": "Purchase"
+    },
+    "payment": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.payment"
+    }
+  }
+}

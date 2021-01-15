@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/kinoffi-menus",
+      "handler": "kinoffi-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-menus/count",
+      "handler": "kinoffi-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kinoffi-menus/:id",
+      "handler": "kinoffi-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/kinoffi-menus",
+      "handler": "kinoffi-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/kinoffi-menus/:id",
+      "handler": "kinoffi-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/kinoffi-menus/:id",
+      "handler": "kinoffi-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_tags_tags",
+  "info": {
+    "name": "Tags",
+    "icon": "audio-description"
+  },
+  "options": {},
+  "attributes": {
+    "premiere_types": {
+      "collection": "tag-premiere-type"
+    },
+    "genres": {
+      "collection": "tag-genre"
+    },
+    "keywords": {
+      "collection": "tag-keyword"
+    },
+    "programmes": {
+      "collection": "programme"
+    }
+  }
+}

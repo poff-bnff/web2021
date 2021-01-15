@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_projects",
+  "info": {
+    "name": "Industry_Project"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title_en": {
+      "type": "string"
+    },
+    "titleOriginal": {
+      "type": "string"
+    },
+    "countries": {
+      "collection": "country"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "project_types": {
+      "collection": "project-type"
+    },
+    "logline": {
+      "type": "text"
+    },
+    "project_statuses": {
+      "collection": "project-status"
+    },
+    "completionDate": {
+      "type": "datetime"
+    },
+    "numOfSeasons": {
+      "type": "integer"
+    },
+    "numOfEpisodes": {
+      "type": "integer"
+    },
+    "episodeDuration": {
+      "type": "integer"
+    },
+    "broadcasters": {
+      "collection": "organisation"
+    },
+    "plannedPremiere": {
+      "type": "date"
+    },
+    "country_focus": {
+      "model": "country"
+    },
+    "teamCredentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "budget": {
+      "type": "decimal"
+    },
+    "financed": {
+      "type": "decimal"
+    },
+    "attached_partners": {
+      "collection": "organisation"
+    },
+    "lookingFor": {
+      "type": "text"
+    },
+    "synopsis": {
+      "type": "richtext"
+    },
+    "directorsNote": {
+      "type": "richtext"
+    },
+    "contactName": {
+      "type": "string"
+    },
+    "contactCompany": {
+      "model": "organisation"
+    },
+    "contactAddress": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "contactWeb": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "clipUrl": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "tag_genres": {
+      "collection": "tag-genre"
+    }
+  }
+}

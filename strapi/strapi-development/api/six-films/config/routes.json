@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/six-films",
+      "handler": "six-films.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/six-films/count",
+      "handler": "six-films.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/six-films/:id",
+      "handler": "six-films.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/six-films",
+      "handler": "six-films.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/six-films/:id",
+      "handler": "six-films.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/six-films/:id",
+      "handler": "six-films.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

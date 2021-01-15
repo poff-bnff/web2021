@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tag_premiere_types",
+  "info": {
+    "name": "TagPremiereType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "et": {
+      "type": "string"
+    },
+    "en": {
+      "type": "string"
+    },
+    "ru": {
+      "type": "string"
+    }
+  }
+}

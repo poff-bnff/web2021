@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_kinoffs",
+  "info": {
+    "name": "TrioKinoff"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "trioKinoff_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triokinoff"
+    },
+    "trioKinoff_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triokinoff"
+    },
+    "trioKinoff_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triokinoff"
+    }
+  }
+}

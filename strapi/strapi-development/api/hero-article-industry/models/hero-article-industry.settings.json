@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_industries",
+  "info": {
+    "name": "HeroArticleIndustry"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_et": {
+      "model": "industry-article"
+    },
+    "article_en": {
+      "model": "industry-article"
+    },
+    "article_ru": {
+      "model": "industry-article"
+    }
+  }
+}

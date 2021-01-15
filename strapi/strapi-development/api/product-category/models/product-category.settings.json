@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_categories",
+  "info": {
+    "name": "Product_Category"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "product_type": {
+      "model": "product"
+    },
+    "festival_edition": {
+      "model": "festival-edition"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "validityPeriod": {
+      "type": "component",
+      "repeatable": true,
+      "component": "time.period"
+    },
+    "salesPeriod": {
+      "type": "component",
+      "repeatable": true,
+      "component": "time.period"
+    },
+    "ticketingRight": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.ticketing-rights"
+    },
+    "priceAtPeriod": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.price-with-time"
+    },
+    "codePrefix": {
+      "type": "string",
+      "maxLength": 3,
+      "minLength": 2
+    },
+    "slug_et": {
+      "type": "uid"
+    },
+    "slug_en": {
+      "type": "uid"
+    },
+    "slug_ru": {
+      "type": "uid"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": false,
+      "component": "media.imgs"
+    }
+  }
+}

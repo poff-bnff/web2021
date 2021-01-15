@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hof-fi-articles",
+      "handler": "hof-fi-article.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hof-fi-articles/count",
+      "handler": "hof-fi-article.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hof-fi-articles/:id",
+      "handler": "hof-fi-article.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hof-fi-articles",
+      "handler": "hof-fi-article.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hof-fi-articles/:id",
+      "handler": "hof-fi-article.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hof-fi-articles/:id",
+      "handler": "hof-fi-article.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
