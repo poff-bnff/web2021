@@ -172,7 +172,6 @@ strapi/strapi-development/config/database.js
 strapi/strapi-development/config/server.js
 
 # extensions
-strapi/strapi-development/admin
 strapi/strapi-development/.vscode
 strapi/strapi-development/a.tmp
 strapi/strapi-development/jwt.js
