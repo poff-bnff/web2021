@@ -29,7 +29,7 @@ for (const ix in languages) {
             var templateDomainName = 'kinoff';
         } else if (DOMAIN === 'industry.poff.ee') {
             var templateDomainName = 'industry';
-        } else if (DOMAIN === 'hoff.poff.ee') {
+        } else if (DOMAIN === 'hoff.ee') {
             var templateDomainName = 'hoff';
         } else {
             var templateDomainName = 'poff';
