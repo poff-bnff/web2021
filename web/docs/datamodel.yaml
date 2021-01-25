@@ -1519,3 +1519,26 @@ TrioKinoff: &TrioKinoff
     trioKinoff_et: *Triokinoff #(Component)
     trioKinoff_en: *Triokinoff #(Component)
     trioKinoff_ru: *Triokinoff #(Component)
+
+TrioItemHoff: &TrioItemHoff
+    hoffi_article: *HOFFiArticle #(Component)
+    title: (text)
+    lead: (text)
+    customUrl: (text)
+    image: *StrapiMedia #(Component)
+
+TrioHoff: &TrioHoff
+    name: (text)
+    lead: (text)
+    trioItem_1: *TrioItemHoff #(Component)
+    trioItem_2: *TrioItemHoff #(Component)
+    trioItem_3: *TrioItemHoff #(Component)
+
+TrioHOFF: &TrioHOFF
+    _path: /trio-hoff
+    trioHoff_et: *TrioHoff #(Component)
+    trioHoff_en: *TrioHoff #(Component)
+    trioHoff_ru: *TrioHoff #(Component)
+
+
+
