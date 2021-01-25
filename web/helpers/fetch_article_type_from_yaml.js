@@ -15,7 +15,7 @@ const STRAPIDATA_PERSONS = STRAPIDATA['Person'];
 
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 const STRAPIDIR = '/uploads/'
-const STRAPIHOSTWITHDIR = `http://${process.env['StrapiHost']}${STRAPIDIR}`;
+const STRAPIHOSTWITHDIR = `http://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 const DEFAULTTEMPLATENAME = 'news'
 
 // console.log(DOMAIN_SPECIFICS)
