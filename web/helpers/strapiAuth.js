@@ -10,7 +10,7 @@ async function strapiAuth() {
         }
 
         const options = {
-            hostname: process.env['StrapiHost'],
+            hostname: process.env['StrapiHostPoff2021'],
             path: '/auth/local',
             method: 'POST',
             headers: {
