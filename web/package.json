@@ -40,7 +40,7 @@
     "update_kinoff_styles": "DOMAIN='kinoff.poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_industry_styles": "DOMAIN='industry.poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_shorts_styles": "DOMAIN='shorts.poff.ee' node helpers/copy_styles_acc_to_domain.js",
-    "update_hoff_styles": "DOMAIN='hoff.poff.ee' node helpers/copy_styles_acc_to_domain.js",
+    "update_hoff_styles": "DOMAIN='hoff.ee' node helpers/copy_styles_acc_to_domain.js",
     "Custom-Build": "bash ./build_custom.sh",
     "Custom-Build-With-Limiter": "bash ./build_custom_w_limiter.sh",
     "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh"

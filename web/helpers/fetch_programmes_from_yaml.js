@@ -18,7 +18,7 @@ const mapping = {
     'kinoff.poff.ee': 'kinoff',
     'industry.poff.ee': 'industry',
     'shorts.poff.ee': 'shorts',
-    'hoff.poff.ee': 'hoff'
+    'hoff.ee': 'hoff'
 }
 
 for (const ix in languages) {
