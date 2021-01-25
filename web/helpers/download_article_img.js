@@ -5,7 +5,7 @@ const {parallelLimit} = require('async')
 const fetch = require('node-fetch')
 
 
-const strapiPath = 'http://' + process.env['StrapiHost']
+const strapiPath = 'http://' + process.env['StrapiHostPoff2021']
 const strapiDir = '/uploads/'
 const savePath = path.join(__dirname, '..', 'assets', 'img', 'dynamic', 'img_articles')
 
