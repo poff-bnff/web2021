@@ -3,18 +3,24 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='KINOFF' data-src='/assets/img/static/kinoff_logo_dark4.svg' src='/assets/img/static/kinoff_logo_dark4.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff24_logo_dark4_o_elisa.svg' src='/assets/img/static/poff24_logo_dark4_o_elisa.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
-    - var articleMenuItemDomain = 'kinoffi_article'
+    - var articleMenuItemDomain = 'poffi_article'
 
     nav.main_menu
         ul.ul_yx
+
+            li
+                nav.lang_menu
+                    each p, locale in self.otherLocalePaths
+                        a(href=(p !== '/' ? p + '/' : '/'))= locale
+
             li
                 nav.org_menu
                     span.org_item
-                        a(href='https://poff.ee')
-                            | PÖFF
+                        a(href='https://industry.poff.ee')
+                            | !{`Industry@Tallinn & Baltic Event`}
                     span.org_item
                         a(href='https://justfilm.ee')
                             | Just Film
@@ -22,8 +28,11 @@ header
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
                     span.org_item
-                        a(href='https://industry.poff.ee')
-                            | !{`Industry@Tallinn & Baltic Event`}
+                        a(href='https://poff.ee/artikkel/poff-tartu/')
+                            | PÖFF Tartu
+                    span.org_item
+                        a(href='https://kinoff.ee')
+                            | Kinoff
                     span.org_item
                         a(href='https://kino.poff.ee')
                             | PÖFFi veebikino
@@ -100,13 +109,43 @@ header
                             else
                                 a(href= `/${lang_path}${mainMenuItem.customUrl}/`)= `${mainMenuItem.name}`
 
-            li
-                nav.lang_menu
-                    each p, locale in self.otherLocalePaths
-                        a(href=(p !== '/' ? p + '/' : '/'))= locale
+            li.user_menu.dropdown
+                a.user_menu= self.label.menu.mainUserMenu
+                    ul.ul_kaks
+                        li#logIn(style={cursor: 'pointer', display: 'none'})
+                            a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+                        li#signUp(style={cursor: 'pointer', display: 'none'})
+                            a(onclick = 'saveUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
+                        li#logInName.dark_1(style={display: 'none'})
+                            a#tervitus= self.label.menu.mainGreeting
+                        li#userProfile(style={cursor: 'pointer', display: 'none'})
+                            a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+                        li#myFavouriteFilms(style={cursor: 'pointer'})
+                            a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
+                        li#myScreenings(style={cursor: 'pointer'} )
+                            if lang_path === ''
+                                a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
+                            if lang_path === 'en/'
+                                a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
+                            if lang_path === 'ru/'
+                                a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
+                        li#myPasses(style={cursor: 'pointer'} )
+                            if lang_path === ''
+                                a(href=`/${lang_path}minupoff`)= self.label.menu.mainPass
+                            if lang_path === 'en/'
+                                a(href=`/${lang_path}mypoff`)= self.label.menu.mainPass
+                            if lang_path === 'ru/'
+                                a(href=`/${lang_path}moipoff`)= self.label.menu.mainPass
+                        li#logOut(style={cursor: 'pointer', display: 'none'} )
+                            a(onclick='logOut()')= self.label.menu.mainLogout
+
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
+    script.
+        var langpath = "!{(lang_path)}"
+
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
+
