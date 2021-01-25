@@ -6,7 +6,7 @@ const fetch = require('node-fetch')
 
 const {parallelLimit} = require('async')
 
-var strapiPath = 'http://' + process.env['StrapiHost']
+var strapiPath = 'http://' + process.env['StrapiHostPoff2021']
 var savePath = 'assets/img/dynamic/img_supporters/'
 
 loadYaml(readYaml);
