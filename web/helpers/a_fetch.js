@@ -87,7 +87,7 @@ function TakeOutTrash (data, model, dataPath) {
         const nextModel = model[key]
 
         if (isArray(nextData) ^ isArray(nextModel)) { // bitwise OR - XOR: true ^ false === false ^ true === true
-            console.log('next', nextData, key)
+            console.log('\nnext', nextData, key)
             throw new Error('Data vs model mismatch. Both should be array or none of them.')
         }
         if (isArray(nextData) && isArray(nextModel)) {

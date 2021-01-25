@@ -289,7 +289,7 @@ POFFiArticle: &POFFiArticle
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
-        -*Organisation
+        - *Organisation
 
 JustFilmiArticle: &JustFilmiArticle
     _path: /just-filmi-articles
