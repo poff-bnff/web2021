@@ -4,7 +4,7 @@ const {parallelLimit} = require('async')
 const fetch = require('node-fetch')
 
 
-const strapiPath = 'http://' + process.env['StrapiHost']
+const strapiPath = 'http://' + process.env['StrapiHostPoff2021']
 const savePath = 'assets/img/dynamic/img_trioblock/'
 
 loadYaml('et', readYaml);
