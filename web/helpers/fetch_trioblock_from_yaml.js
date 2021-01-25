@@ -10,18 +10,20 @@ const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
-    'poff.ee': 'TrioPÖFF',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
-    'shorts.poff.ee': 'TrioShorts'
+    'shorts.poff.ee': 'TrioShorts',
+    'hoff.ee': 'TrioHOFF'
 }
 const articleMapping = {
     'poff.ee': 'poffi',
     'justfilm.ee': 'just_filmi',
     'kinoff.poff.ee': 'kinoffi',
     'industry.poff.ee': 'industry',
-    'shorts.poff.ee': 'shortsi'
+    'shorts.poff.ee': 'shortsi',
+    'hoff.ee': 'hoffi'
 }
 const STRAPIDATA_TRIO = STRAPIDATA[mapping[DOMAIN]]
 

@@ -49,6 +49,15 @@ html(lang= self.locale)
             block content
             include ../_templates/footer.pug
 
+    //- HOFF
+    else if process.env['DOMAIN'] === 'hoff.ee'
+        include ../_templates/head_hoff.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_hoff.pug
+            block content
+            include ../_templates/footer.pug
+
     //- no domain specified
     else
         body
