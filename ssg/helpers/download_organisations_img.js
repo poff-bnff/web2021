@@ -6,7 +6,7 @@ const STRAPIDATA = yaml.safeLoad(fs.readFileSync(`source/_fetchdir/strapiData.ya
 
 const {parallelLimit} = require('async')
 
-var strapiPath = 'http://' + process.env['StrapiHost']
+var strapiPath = 'http://' + process.env['StrapiHostPoff2021']
 var savePath = 'assets/img/dynamic/img_org/'
 
 loadYaml(readYaml);
