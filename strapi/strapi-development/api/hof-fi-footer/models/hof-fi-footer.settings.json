@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "hof_fi_footers",
   "info": {
-    "name": "HOFFi_Footer"
+    "name": "HOFFi_Footer",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {

@@ -1,6 +1,0 @@
-path: whos-here
-data:
-    articles: /_fetchdir/articles.en.yaml
-    eventivalpersons: /_fetchdir/eventival_persons.yaml
-    # filters: /_fetchdir/filters_industry_persons.en.yaml
-    # search: /_fetchdir/search_industry_persons.en.yaml
