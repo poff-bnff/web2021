@@ -3,45 +3,45 @@
 
 
 ############################
-# web
+# ssg
 ############################
 
-web/node_modules
-web/.DS_Store
+ssg/node_modules
+ssg/.DS_Store
 
 
 # sanity
-web/*.pickle
-web/credentials.json
-web/token.json
-web/.env
-web/report.*
+ssg/*.pickle
+ssg/credentials.json
+ssg/token.json
+ssg/.env
+ssg/report.*
 
 
 # dev tools
-web/.vscode/*
+ssg/.vscode/*
 
 
 # dynamic stuff
-web/build
-web/source/_fetchdir/*
-web/source/_styles/*
+ssg/build
+ssg/source/_fetchdir/*
+ssg/source/_styles/*
 
-web/assets/img/dynamic/*
-web/assets/xml/*
+ssg/assets/img/dynamic/*
+ssg/assets/xml/*
 
-web/source/global.et.yaml
-web/source/global.en.yaml
-web/source/global.ru.yaml
+ssg/source/global.et.yaml
+ssg/source/global.en.yaml
+ssg/source/global.ru.yaml
 
-web/eventival/dynamic/*
-web/entu-ssg.yaml
-web/vialog/vialog.json
+ssg/eventival/dynamic/*
+ssg/entu-ssg.yaml
+ssg/vialog/vialog.json
 
-web/strapidata/*
-web/*.icloud
-web/eventival/static/.films.yaml.icloud
-web/eventival/static/.films.yaml.icloud
+ssg/strapidata/*
+ssg/*.icloud
+ssg/eventival/static/.films.yaml.icloud
+ssg/eventival/static/.films.yaml.icloud
 
 
 
