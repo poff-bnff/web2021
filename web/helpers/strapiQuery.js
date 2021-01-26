@@ -1,7 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
-const http = require('http')
+const http = require('https')
 const { strapiAuth } = require('./strapiAuth.js')
 const { spin } = require("./spinner")
 
