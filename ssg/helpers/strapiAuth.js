@@ -1,4 +1,4 @@
-const http = require('http')
+const https = require('https')
 
 
 async function strapiAuth() {
@@ -19,7 +19,7 @@ async function strapiAuth() {
             }
         }
 
-        const request = http.request(options, (response) => {
+        const request = https.request(options, (response) => {
             response.setEncoding('utf8')
             let tokenStr = ''
             response.on('data', function (chunk) {
