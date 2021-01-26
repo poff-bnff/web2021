@@ -35,7 +35,6 @@
   "scripts": {
     "serve_local": "serve build",
     "build": ". ./build.sh",
-    "buildHOFF": ". ./build_hoff.sh",
     "update_poff_styles": "DOMAIN='poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_justfilm_styles": "DOMAIN='justfilm.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_kinoff_styles": "DOMAIN='kinoff.poff.ee' node helpers/copy_styles_acc_to_domain.js",
