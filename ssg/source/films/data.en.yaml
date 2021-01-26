@@ -1,0 +1,4 @@
+path: films
+data:
+    cassettes: /_fetchdir/cassettes.en.yaml
+    articles: /_fetchdir/articles.en.yaml

@@ -1,0 +1,258 @@
+[
+  {
+    "id": 5,
+    "name": "about",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-09-01T12:17:53.527Z",
+    "updated_at": "2020-09-21T10:54:13.651Z",
+    "article": null,
+    "et": "Artikkel",
+    "en": "About",
+    "ru": "Артикл",
+    "slug_et": "artikkel",
+    "slug_en": "about",
+    "slug_ru": "artikl",
+    "name_et": "Artikkel",
+    "name_en": "About",
+    "name_ru": "Артикл",
+    "label_et": "Artikkel",
+    "label_en": "About",
+    "label_ru": "Артикл",
+    "Description": null
+  },
+  {
+    "id": 6,
+    "name": "industry_project",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-09-02T07:48:49.095Z",
+    "updated_at": "2020-09-21T10:57:05.289Z",
+    "article": null,
+    "et": "Projekt",
+    "en": "Project",
+    "ru": "Проэкт",
+    "slug_et": "projekt",
+    "slug_en": "project",
+    "slug_ru": "proekt",
+    "name_et": "Projekt",
+    "name_en": "Project",
+    "name_ru": "Проект",
+    "label_et": "Projekt",
+    "label_en": "Project",
+    "label_ru": "Проект",
+    "Description": null
+  },
+  {
+    "id": 3,
+    "name": "interview",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-08-18T13:50:35.561Z",
+    "updated_at": "2020-09-21T10:57:28.396Z",
+    "article": null,
+    "et": "Intervjuu",
+    "en": "Interview",
+    "ru": "Интервю",
+    "slug_et": "intervjuu",
+    "slug_en": "interview",
+    "slug_ru": "article-type",
+    "name_et": "Intervjuu",
+    "name_en": "Interview",
+    "name_ru": "Интервю",
+    "label_et": "Intervjuu",
+    "label_en": "Interview",
+    "label_ru": "Интервю",
+    "Description": null
+  },
+  {
+    "id": 2,
+    "name": "news",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-08-18T13:49:51.616Z",
+    "updated_at": "2020-09-21T10:57:52.599Z",
+    "article": null,
+    "et": "Uudised",
+    "en": "News",
+    "ru": "Новости",
+    "slug_et": "uudis",
+    "slug_en": "news",
+    "slug_ru": "novost",
+    "name_et": "Uudis",
+    "name_en": "News",
+    "name_ru": "Новость",
+    "label_et": "Uudis",
+    "label_en": "News",
+    "label_ru": "Новость",
+    "Description": null
+  },
+  {
+    "id": 7,
+    "name": "press_release",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-09-17T14:37:55.799Z",
+    "updated_at": "2020-09-21T10:58:41.813Z",
+    "article": null,
+    "et": "Pressiteade",
+    "en": "Press Release",
+    "ru": "Пресс-релиз",
+    "slug_et": "pressiteade",
+    "slug_en": "press-release",
+    "slug_ru": "press-reliz",
+    "name_et": "Pressiteade",
+    "name_en": "Press release",
+    "name_ru": "Пресс-релиз",
+    "label_et": "Pressiteade",
+    "label_en": "Press Release",
+    "label_ru": "Пресс-релиз",
+    "Description": null
+  },
+  {
+    "id": 4,
+    "name": "sponsor_story",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 1,
+      "firstname": "Mihkel",
+      "lastname": "Putrinš",
+      "username": null
+    },
+    "created_at": "2020-08-18T13:51:35.072Z",
+    "updated_at": "2020-09-21T10:59:29.104Z",
+    "article": null,
+    "et": "Toetaja lugu",
+    "en": "Supporter Story",
+    "ru": "История поддержки",
+    "slug_et": "toetajalugu",
+    "slug_en": "supporter-story",
+    "slug_ru": "istoriya-podderzhki",
+    "name_et": "Toetajalugu",
+    "name_en": "Supporter story",
+    "name_ru": "История поддержки",
+    "label_et": "Toetajalugu",
+    "label_en": "Supporter Story",
+    "label_ru": "История поддержки",
+    "Description": null
+  },
+  {
+    "id": 8,
+    "name": "a_list",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "created_at": "2020-11-07T15:28:51.223Z",
+    "updated_at": "2020-11-07T15:29:05.812Z",
+    "article": null,
+    "et": null,
+    "en": null,
+    "ru": null,
+    "slug_et": "p-oe-ff-i-a-list",
+    "slug_en": "p-oe-ff-a-list",
+    "slug_ru": "a-list-p-oe-ff",
+    "name_et": null,
+    "name_en": null,
+    "name_ru": null,
+    "label_et": "PÖFF i A-list",
+    "label_en": "PÖFF A-list",
+    "label_ru": "A-list PÖFF",
+    "Description": null
+  },
+  {
+    "id": 9,
+    "name": "virtual_booth",
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "created_at": "2020-11-20T07:43:55.533Z",
+    "updated_at": "2020-11-20T07:43:55.540Z",
+    "article": null,
+    "et": null,
+    "en": null,
+    "ru": null,
+    "slug_et": "virtual-booth-et",
+    "slug_en": "virtual-booth-en",
+    "slug_ru": "virtual-booth-ru",
+    "name_et": null,
+    "name_en": null,
+    "name_ru": null,
+    "label_et": "Virtual Booth",
+    "label_en": "Virtual Booth",
+    "label_ru": "Virtual Booth",
+    "Description": null
+  }
+]

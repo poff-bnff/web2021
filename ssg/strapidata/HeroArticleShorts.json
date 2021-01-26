@@ -1,0 +1,385 @@
+[
+  {
+    "id": 1,
+    "Article_et": 49,
+    "Article_en": 24,
+    "Article_ru": 51,
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 21,
+      "firstname": "Greetel",
+      "lastname": "Kala",
+      "username": null
+    },
+    "created_at": "2020-09-25T12:30:37.053Z",
+    "updated_at": "2020-11-22T12:25:30.786Z",
+    "article_et": {
+      "id": 97,
+      "titlePrivate": "PÖFF Shorts kuulutas välja võitjad",
+      "title_et": "PÖFF Shorts kuulutas välja võitjad",
+      "slug_et": "p-oe-ff-shorts-kuulutas-vaelja-voitjad",
+      "title_en": "PÖFF Shorts announces 2020 winners",
+      "slug_en": "p-oe-ff-shorts-announces-2020-winners",
+      "title_ru": null,
+      "slug_ru": "shortsi-article-62",
+      "lead_et": "Rahvusvaheline lühifilmide ja animatsiooni festival PÖFF Shorts kuulutas välja kuue võistlusprogrammi võidufilmid. \n",
+      "lead_en": "International short film and animation festival PÖFF Shorts has announced the winners for its 2020 edition.",
+      "lead_ru": null,
+      "contents_et": "Ameerika filmiakadeemia nominatsiooniõiguse said **Paul Masi** animafilm **\"Kullakallis\"** (Prantsusmaa, 2020) ja **Mariana Saffoni** mängufilm **\"Sinu ja Milagrose vahel\"** (Colombia, 2020). Rahvusliku võistlusprogrammi võitis TLÜ Balti filmi, meedia, kunstide ja kommunikatsiooni instituudi tudengite **Esko Rometi** film **\"Välguga löödud\"** (Eesti, 2020). Tudengifilme saavad esitada koolid tudengifilmide Oscaritele.\n\nValikut auhinnatud filmidest saab näha eriseanssidel Tallinnas ja Tartus, võistlusprogrammid on nähtavad PÖFFi veebikinos piiratud aja.\n\n**PÖFF SHORTS RAHVUSLIK VÕISTLUSPROGRAMM**\n**Esitleja: [High Voltage](https://highvoltage.ee/)**\n**Žürii: Inga Diev, Fabian Driehorst, Sveta Grigorjeva**\n\n__PARIM LÜHIFILM__\n\"Välguga löödud\" (Eesti, 2020)\nRežissöör: Romet Esko\n\n![F_1_Struck_by_Lightning.jpg](http://139.59.130.149/uploads/F_1_Struck_by_Lightning_159dd1b12b.jpg)\n\nŽürii kommentaar: \"Kaunilt meisterdatud austusavaldus, mis ühendab isikliku arhiivi ja mängleva lähenemise meediumile, luues kummitava ja meeldejääva filmi, mida tahaks korduvalt uuesti vaadata. Film räägib sügavalt isikliku, delikaatse ent dünaamilise loo sõprusest, andes edasi ühtaegu autentse ja universaalse sõnumi. \"Välguga löödud\" on elu ja loomingulisuse tähistamine läbi kinokunsti, mis mõjub väga ajakohase ja vajalikuna.\"\n\n__ŽÜRII POOLT MAINITUD__\n\"Merevaatega tuba\" (Eesti, 2020)\nRežissöör: Leonid Shmelkov\n\n![F_1_Room_with_a_Sea_View.jpg](http://139.59.130.149/uploads/F_1_Room_with_a_Sea_View_7fe7acbe73.jpg)\n\nŽürii kommentaar: \"Kaasahaarav loo jutustamine selle parimal kujul, \"Merevaatega tuba\" on mitmekihiline film armastusest selle puhtaimas vormis: toores ja segane, kuid samas humoorikas, aus ja siiras. Lummav maiuspala, mis pakatab originaalsusest ja loomingulisusest, avaldades žüriile muljet sügavuse ja filmi võimega lähemal vaatlemisel avada ootamatuid üllatusi.\"\n\n**ANIMA VÕISTLUSPROGRAMM**\n**Žürii: Jury: Agnés Bizzaro, Oskar Lehemaa, David Sproxton**\n\n__PARIM LÜHIFILM__\nEsitleja: PÖFF\n\"Kullakallis\" (Prantsusmaa, 2020)\nRežissöör: Paul Mas\n\nŽürii kommentaar: \"See film kasutab animatsiooni kunstlikkust, et pääseda valusalt lähedale elulistele teemadele. Žürii hindab filmi lihtsat stiili ning täpsekäelist loo jutustamist, mille kaudu tuuakse vaatajateni keerulised teemad, mis jäävad nendega veel peale viimseid lõputiitreid.\"\n\n__ŽÜRII POOLT MAINITUD__\n\"Suveniir\" (Prantsusmaa, 2020)\nRežissöör: Bastien Dubois\n\n![F_1_Souvenir_Souvenir.jpg](http://139.59.130.149/uploads/F_1_Souvenir_Souvenir_2b8f352562.jpg)\n\nŽürii kommentaar: \"Eraldi toome välja filmi, kus kasutades suurepärast kombinatsiooni animatsioonistiilidest, tuuakse vaataja silmade ette lugu sõjatraumadest, perekonfliktidest ning lõppude lõpuks ka loomeprotsessist. Žürii leiab, et see film suudab 15 minuti jooksul öelda rohkemat, kui suurem osa filme 90 minutiga.\"\n\n__PARIM LASTEANIMATSIOON__\n\"Matilda ja varupea\" (Leedu, 2020)\nRežissöör: Ignas Meilūnas\n\n![F_1_matilda_and_the_spare_head.jpg](http://139.59.130.149/uploads/F_1_matilda_and_the_spare_head_7e315b2572.jpg)\n\nŽürii kommentaar: \"Imetabane erksates toonides animeeritud rännak suure pinge all elava lapse ellu, kes on üllatusi täis teekonnal leidmaks oma iseseisvust ning kinnitamaks oma iseloomu. Tegemist on iroonilise ja värske looga tugevast tüdrukust, kes leiab viisi, kuidas hoida oma vaim nii vabana kui võimalik.\"\n\n__ŽÜRII POOLT MAINITUD LASTEANIMATSIOON__\n\"Pink\" (Suurbritannia, 2020)\nRežissöör: Rich Webber\n\nŽürii kommentaar: \"Film, millel on niivõrd täiuslik ajastus, kus animatsioon väljendub oma parimal kujul; nii täis huumorit ja emotsiooni, ja see kõik on mahutatud lühikesse vormi.\"\n\n__NEW TALENTS ŽÜRII AUHIND PARIMALE TUDENGIANIMATSIOONILE__\nEsitleja: [Eesti Kunstiakadeemia](https://www.artun.ee/)\n\"Olen siin\" (Poola, 2020)\nRežissöör: Julia Orlik\n\n![F_1_Im_Here.jpg](http://139.59.130.149/uploads/F_1_Im_Here_ba1721c06d.jpg)\n\nŽürii kommentaar: \"Minimalistliku lähenemisega heidab film võimsa pilgu perekonnadünaamikale ühe naise viimastel elupäevadel. Žürii tunnetas julgust lähenemises, kus subjekt on otseses mõttes esiplaanil ja keskpunktis, seistes silmitsi armastuse, kaotuse ja üksilduse teemadega liigutaval, tundlikul ja emotsionaalselt laetud viisil.\" \n\n__NEW TALENTS ŽÜRII POOLT MAINITUD TUDENGIANIMATSIOON__\n\"Must lammas\" (Prantsusmaa, 2019)\nRežissöör: James Molle\n\n![F_1_Black_Sheep_Boy.jpg](http://139.59.130.149/uploads/F_1_Black_Sheep_Boy_c7b60b4807.jpg)\n\nŽürii kommentaar: \"Värske ja energilise tunnetusega, ehkki retrostiilis film tegeleb eksistentsiaalsete küsimustega, mis tabavad meid kõiki, kui leiame end univesumis kadununa. See ajas meid ka naerma!\"\n\n**LÜHIFILMI VÕISTLUSPROGRAMM**\n**Žürii: Jason Anderson, Jessie Mangum, Tambet Tuisk**\n\n__PARIM LÜHIFILM__\nEsitleja: [Nafta Films](https://www.nafta.ee/)\n\"Sinu ja Milagrose vahel” (Colombia, 2020)\nRežissöör: Mariana Saffon\n\n![F_1_Between_You_and_the_Milagros.jpg](http://139.59.130.149/uploads/F_1_Between_You_and_the_Milagros_e4024a40a1.jpg)\n\nŽürii kommentaar: “Žüriile avaldas muljet filmi peen sisevaade ema ja tütre vahelisele keerulisele suhtele, peategelase vapustav näitlejatöö ning imeilus filmikeel. Režissöör näitab tähelepanuväärset oskust, hoolivust ja enesekindlust, tuues järk-järgult vaatajateni kõik suhtekihid, mis tegelaskujude vahel eksisteerivad.\n\n__ŽÜRII POOLT MAINITUD__\n\"David\" (Ameerika Ühendriigid, 2020)\nRežissöör: Zachary Woods\n\n![F_1_David.jpg](http://139.59.130.149/uploads/F_1_David_22f71fde25.jpg)\n\nŽürii kommentaar: \"Lisaks säravate ja üllatavate näitlejatööde kolmikule tõestab see komöödia, et on korraga sama palju selgepilguline kui humoorikas.\"\n\n__NEW TALENTS ŽÜRII AUHIND PARIMALE TUDENGIFILMILE__\nEsitleja: [Tallinna Ülikooli Balti filmi, meedia, kunstide ja kommunikatsiooni instituut](https://www.tlu.ee/bfm)\n\"Anita” (Ameerika Ühendriigid, 2020)\nRežissöör: Sushma Khadepaun\n\nŽürii kommentaar: “Žüriid tabas filmitegija julgus, intelligentsus ja vaprus kujutamaks lõhet naise oodatud autonoomia ja tegevusvõimekuse ning karmide piirangute vahel, mida ei suru talle peale ainult ühiskond, vaid ka inimesed tema kõige lähedasemates suhetes. Filmitegija saavutab oma ambitsioonid läbi filmi täpsete kompositsioonide, tundlike näitlejatööde ja tõusvate pingete.\"\n\n__ŽÜRII POOLT MAINITUD__\n“Katkised juured” (Hispaania, 2019)\nRežissöör: Alberto Gross\n\n![F_1_Broken_Roots.jpg](http://139.59.130.149/uploads/F_1_Broken_Roots_9ed6db9a54.jpg)\n\nŽürii kommentaar: \"Žüriil on hea meel tunnustada filmi noorte näitlejate tähelepanuväärsete etteastete ja empaatia eest, mida film väljendab tegelaskujude vastu, kes on sattunud tugevalt ja laialt resoneeruvasse ning keerulisse olukorda.\"\n\nVõidufilme saab näha [**pühapäeval, 22. novembril kell 21.00 Coca-Cola Plazas**](https://www.piletilevi.ee/est/piletid/festival/film/100404-shorts-voidufilmid-324228/) ning [**pühapäeval, 29. novembril kell 13.15 Tartus Athena keskuses**](https://www.piletilevi.ee/est/piletid/festival/film/172101-shorts-voidufilmid-324206/) ja [**kell 16.00 Tallinnas kinos Artis**](https://www.piletilevi.ee/est/piletid/festival/film/171601-shorts-voidufilmid-324225/),\n\n*Lühifilmide ja animatsiooni festival PÖFF Shorts kestab veel kuni kolmapäevani, 25. novembrini ning leiab aset Tallinnas ja Tartus.*\n\n*24. Pimedate Ööde filmifestival jätkub kuni 29. novembrini.*\n\n*Artikkel muudetud 25. novembril.*",
+      "contents_en": "A selection of the awarded films will be screened in Tallinn and Tartu. \nFor a limited time all of the competition programmes are available to watch at [PÖFF's web cinema](https://kino.poff.ee) (in Estonia only).\n\n**PÖFF SHORTS NATIONAL COMPETITION**\n**Presented by: [High Voltage](https://highvoltage.ee/)**\n**Jury: Inga Diev, Fabian Driehorst, Sveta Grigorjeva**\n\n__BEST SHORT FILM__\n\"Struck by Lightning\" (Estonia, 2020)\nDirector: Romet Esko\n\n![F_1_Struck_by_Lightning.jpg](http://139.59.130.149/uploads/F_1_Struck_by_Lightning_159dd1b12b.jpg)\n\nJury Commentary: \"A beautifully crafted homage that mixes personal archive with a playful approach to its medium, making for a haunting and memorable film you will want to rewatch over and over again. This film tells a deeply personal, delicate yet dynamic story about friendship, conveying a message that is equally authentic as it is universal. “Struck by Lightning” is a cinematic celebration of life and creativity that feels ever so timely and needed.\"\n\n__JURY MENTION__\n\"Room With A Sea View\" (Estonia, 2020)\nDirector: Leonid Shmelkov\n\n![F_1_Room_with_a_Sea_View.jpg](http://139.59.130.149/uploads/F_1_Room_with_a_Sea_View_7fe7acbe73.jpg)\n\nJury Commentary: \"Immersive storytelling at its best, \"Room With a Seaview\" is a multi-layered film about love in its purest form: raw and messy yet also humorous, honest and candid. A captivating treat that bursts with originality and creativity, the jury was impressed by the film's depth and capacity to reveal unexpected surprises upon further viewing.\"\n\n**ANIMATION COMPETITION**\n**Jury: Agnés Bizzaro, Oskar Lehemaa, David Sproxton**\n\n__BEST SHORT ANIMATION__\nPresented by: PÖFF\n\"Precious\" (France, 2020)\nDirector: Paul Mas\n\nJury Commentary: \"This film uses the artifice of animation in order to get painfully close to very real topics. The jury loved the simple style and precise storytelling which tackles complicated subjects that stay with the audience even after the credits roll.\"\n\n__JURY MENTION__\n\"Souvenir\" (France, 2020)\nDirector: Bastien Dubois\n\n![F_1_Souvenir_Souvenir.jpg](http://139.59.130.149/uploads/F_1_Souvenir_Souvenir_2b8f352562.jpg)\n\nJury Commentary: \"The special mention goes to a film that uses an excellent combination of animation styles to lay out a story of war trauma, family conflict, and ultimately, the creative process. The jury felt that this animation tells more in 15 minutes than most films manage in 90.\"\n\n__BEST CHILDREN'S ANIMATION__\n\"Matilda and the Sparehead\" (Lithuania, 2020)\nDirector: Ignas Meilūnas\n\n![F_1_matilda_and_the_spare_head.jpg](http://139.59.130.149/uploads/F_1_matilda_and_the_spare_head_7e315b2572.jpg)\n\nJury Commentary: \"A wonderful, in bright colours animated journey into the life of a child under pressure, on a path full of surprises to find her independency, and affirm her personality. An ironic and fresh tale about a strong girl, who finds the way to keep her head as free as it can be.\"\n\n__CHILDREN'S ANIMATION JURY MENTION__\n\"Bench\" (United Kingdom, 2020)\nDirector: Rich Webber\n\nJury Commentary: \"A special mention goes to a film which has such a perfect timing, where the animation is at its best, so full of humor and emotion, and all this packed in a short form.\"\n\n__BEST STUDENT SHORT ANIMATION - NEW TALENTS: ANIMATION__\nPresenter: [Estonian Academy of Arts](https://www.artun.ee/)\n\"I Am Here\" (Poland, 2020)\nDirector: Julia Orlik\n\n![F_1_Im_Here.jpg](http://139.59.130.149/uploads/F_1_Im_Here_ba1721c06d.jpg)\n\nJury Commentary: \"With its minimalist approach this film delivers a powerful insight into the dynamics of a family during the last days of a woman’s life. The jury felt the boldness of the approach, with the subject literally front and centre, confronted the issues of love, loss and loneliness in a touching, sensitive and emotionally charged manner.\" \n\n__NEW TALENTS: ANIMATION JURY MENTION__\n\"Black Sheep Boy\" (France, 2019)\nDirector: James Molle\n\n![F_1_Black_Sheep_Boy.jpg](http://139.59.130.149/uploads/F_1_Black_Sheep_Boy_c7b60b4807.jpg)\nJury Commentary: \"A film which the jury felt had a fresh, energetic feel, albeit in a retro style, that dealt with the existential questions that beset us all as we find ourselves lost in the universe. It also made us laugh!\"\n\n**LIVE ACTION COMPETITION**\n**Jury: Jason Anderson, Jessie Mangum, Tambet Tuisk**\n\n__BEST LIVE ACTION SHORT__\nEsitleja: [Nafta Films](https://www.nafta.ee/)\n\"Between You and Milagros” (Colombia, 2020)\nDirector: Mariana Saffon\n\n![F_1_Between_You_and_the_Milagros.jpg](http://139.59.130.149/uploads/F_1_Between_You_and_the_Milagros_e4024a40a1.jpg)\n\nJury Commentary: “The jury was impressed by the film’s subtle exploration of the complex dynamic between daughter and mother, its stunning central performance and its gorgeous cinematography. The director also displays a remarkable level of craft, care and confidence as she gradually reveals the many layers that exist in all of the characters’ relationships.\"\n\n__JURY MENTION__\n\"David\" (United States, 2020)\nDirector: Zachary Woods\n\n![F_1_David.jpg](http://139.59.130.149/uploads/F_1_David_22f71fde25.jpg)\n\nJury Commentary: \"In addition to boasting a trio of stellar and surprising performances, this comedy proves to be as insightful as it is funny.\"\n\n__BEST STUDENT FILM__\nPresented by [TLÜ Baltic film, media, arts and communications institute](https://www.tlu.ee/bfm)\n\"Anita” (United States, 2020)\nDirector: Sushma Khadepaun\n\nJury Commentary: “The jury was struck by the filmmaker’s boldness, intelligence and courage in portraying the gulf between a woman’s expectations of autonomy and agency, and the harsh restrictions that may still be imposed not just by her society but by the people in her most intimate relationships. The filmmaker achieves her ambitions through the film’s precise compositions, sensitive performances and escalating tensions.” \n\n__NEW TALENTS: LIVE-ACTION JURY MENTION__\n“Broken Roots” (Spain, 2019)\nDirector: Alberto Gross\n\n![F_1_Broken_Roots.jpg](http://139.59.130.149/uploads/F_1_Broken_Roots_9ed6db9a54.jpg)\n\nJury Commentary: “The jury is happy to acknowledge the film for the remarkable performances by its young actors and the empathy it expresses toward characters caught in a difficult moment that resonates strongly and widely.\"\n\nThe winning films can be seen on [**Sunday, November 22 at 21.00 in Coca-Cola Plaza (Tallinn)**](https://www.piletilevi.ee/est/piletid/festival/film/100404-shorts-voidufilmid-324228/) and [**Sunday, November 29 at 13.15 in Athena Centre (Tartu)**](https://www.piletilevi.ee/est/piletid/festival/film/172101-shorts-voidufilmid-324206/) and at [**16.00 in Artis cinema (Tallinn)**](https://www.piletilevi.ee/est/piletid/festival/film/171601-shorts-voidufilmid-324225/).\n\n*PÖFF Shorts will run until the 25th of November in Tallinn and Tartu and [online](https://kino.poff.ee).",
+      "contents_ru": null,
+      "created_by": {
+        "id": 21,
+        "firstname": "Greetel",
+        "lastname": "Kala",
+        "username": null
+      },
+      "updated_by": {
+        "id": 12,
+        "firstname": "Heinrich",
+        "lastname": "Sepp",
+        "username": "heinrich"
+      },
+      "created_at": "2020-11-22T11:57:18.454Z",
+      "updated_at": "2020-11-25T12:44:44.623Z",
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": null,
+      "media": {
+        "id": 347,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3630,
+            "name": "7c9390ca-51d5-4a12-972d-17bad2c5f25e.png",
+            "alternativeText": "",
+            "caption": "",
+            "width": 1493,
+            "height": 840,
+            "formats": {
+              "thumbnail": {
+                "ext": ".png",
+                "url": "/uploads/thumbnail_7c9390ca_51d5_4a12_972d_17bad2c5f25e_73458b0f13.png",
+                "hash": "thumbnail_7c9390ca_51d5_4a12_972d_17bad2c5f25e_73458b0f13",
+                "mime": "image/png",
+                "name": "thumbnail_7c9390ca-51d5-4a12-972d-17bad2c5f25e.png",
+                "path": null,
+                "size": 35.21,
+                "width": 245,
+                "height": 138
+              }
+            },
+            "hash": "7c9390ca_51d5_4a12_972d_17bad2c5f25e_73458b0f13",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 933.68,
+            "url": "/uploads/7c9390ca_51d5_4a12_972d_17bad2c5f25e_73458b0f13.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 21,
+            "updated_by": 21,
+            "created_at": "2020-11-22T11:25:22.386Z",
+            "updated_at": "2020-11-22T11:25:22.500Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [
+        {
+          "id": 4,
+          "namePrivate": "Shorts",
+          "created_by": 12,
+          "updated_by": 12,
+          "created_at": "2020-09-16T15:21:49.122Z",
+          "updated_at": "2020-09-16T15:21:49.140Z",
+          "name": null
+        }
+      ],
+      "organisations": []
+    },
+    "article_en": {
+      "id": 81,
+      "titlePrivate": "PÖFFi veebiseansid kodukinos",
+      "title_et": "PÖFFi veebiseansid kodukinos",
+      "slug_et": "p-oe-f-fi-veebiseansid-kodukinos",
+      "title_en": "How do I watch the best of PÖFF at home?",
+      "slug_en": "how-do-i-watch-the-best-of-p-oe-ff-at-home",
+      "title_ru": null,
+      "slug_ru": "shortsi-article-46",
+      "lead_et": "**Sel aastal saab PÖFFi filmielamusi nautida lisaks kinole ka kodus just sulle sobival ajal!**",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": "**Kuidas piletit PÖFFi veebiseansile osta?**\n\n- Veendu, et sul on olemas õige brauser. Turvakaalutlustel töötavad veebiseansid ainult [Safari](https://support.apple.com/downloads/safari) ja [Microsoft Edge](https://www.microsoft.com/en-us/edge) brauseritega.\n- Loo endale kasutaja PÖFFi  [veebikinos](https://kino.poff.ee).\n- Vali soovitud filmi välja PÖFFi [veebikinost](https://kino.poff.ee) või [kodulehelt](https://www.poff.ee/filmid/).\n- PÖFFi kodulehelt veebiseansi pileti ostmiseks vali filmi tutuvustuse all asuvast piletimüügi paneelist “veebiseanss”.\n\n**Kuidas veebiseansil PÖFFi filmi vaadata?**\n\n- Logi sisse PÖFFi [veebikinosse](https://kino.poff.ee).\n- Kõik ostetud veebiseansid leiad kaustast “minu filmid”.\n- Vaatamiseks vajuta nuppu “mängi”.\n- Filmi subtiitreid saab valida paremal all asuvale “CC” ikoonile klikkides\n\n\n**Millistel tingimustel saab filmi PÖFFi veebiseansina vaadata?**\n\n- Veebiseanss avaneb vaatamiseks 3 tundi pärast filmi esmast linastust PÖFFi kinoseansil.\n- Juba ostatud pileti kehtivusaeg on 48 tundi - pärast pileti ostmist veebiseansile on sul selle vaatamise alustamiseks aega 48 tundi.\n- Juba alustatud vaatamise aeg on 30 tundi - kui oled juba filmi vaatamist alustanud, on sul selle lõpetamiseks aega 30 tundi..\n- Mitmetel ingliskeelsetel filmidel ei ole subtiitreid.\n\n\n\n**Hea teada**\n\n- PÖFFi filmiprogramm ei ole täies mahus veebikinos.\n- Piletid veebiseanssidele on piiratud.\n- Pärast piletiostu saadetakse sulle meil juhiste ja lingitud nupuga “Vaata filmi”.\n- Veebiseanssidel saab kasutajatuge aadressilt **abi@poff.ee**.\n\n\n\n\n**Põnevaid uusi elamusi PÖFFi veebikinos!**\n",
+      "contents_en": "For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. Find out how. \n\nBlack Nights is now double: in the cinemas and at home! For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. \n\n**How to buy virtual PÖFF tickets?**\n\n1.Make sure you have the supported browser. The supported browsers are [Safari](https://support.apple.com/downloads/safari) and [Microsoft Edge](https://www.microsoft.com/en-us/edge).\n2.The information of virtual screenings can be found on [film profile pages](https://poff.ee/en/search_film/) on the PÖFF web site or directly on the film watching platform [kino.poff.ee](kino.poff.ee) where you can see all the films that are available for virtual viewing. There you can also purchase the viewing rights. \n3.All virtual tickets can only be purchased at [kino.poff.ee](kino.poff.ee) after creating an account there. The ticket will also be sent to your email from our address abi@poff.ee.\n\n###NB!\n\n- Not all PÖFF films can be watched virtually.\n- Films will become available for viewing in the online environment only 3 hours after their physical premiere at PÖFF.\n- Bought ticket to virtual screeningns are valid for 48 hours - after you have bought the ticket to viertual screening, you have 48 to start watching it. \n- After you have started watching the film, you have 30 hours to finish watching the film.  \n- Sadly, due to technical restraints, the environment is only in Estonian this year. But navigation is really easy there, so hopefully, English-speakers can manage. All film synopses and details can be found on the festival’s homepage [poff.ee/en](poff.ee/en).\n- As with regular screenings, the number of people who can watch the virtual screenings is limited for every film. These limits vary by film.\n\n**How to watch virtual films?**\n\n1.Log in to the environement [kino.poff.ee](kino.poff.ee).\n2.All films you have purchased virtual access to can be found in the subpage „Minu filmid“. If you have purchased a ticket during presale, you will have to wait until 3 hours have passed from the moment the film has begun its first cinema screening at Black Nights to see it. \n3.To watch a film, press the button „Mängi“. To select subtitles, press the CC icon on the right-hand side of the player. Please note that many films that are in English don’t have subtitles.\n4.After purchasing the ticket, you can also go to the virtual screening via the ticket confirmation email you get from our account abi@poff.ee. Just open the email and click the button „Vaata filmi“.\n\nIf you run into trouble, please write to abi@poff.ee\nEnjoy the films!\n",
+      "contents_ru": null,
+      "created_by": {
+        "id": 21,
+        "firstname": "Greetel",
+        "lastname": "Kala",
+        "username": null
+      },
+      "updated_by": {
+        "id": 12,
+        "firstname": "Heinrich",
+        "lastname": "Sepp",
+        "username": "heinrich"
+      },
+      "created_at": "2020-11-08T14:24:34.891Z",
+      "updated_at": "2020-11-12T18:14:34.207Z",
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": null,
+      "media": {
+        "id": 209,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 148,
+            "name": "2019 PÖFF Shorts Night screening.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 2047,
+            "height": 1365,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_2019_P_Oe_FF_Shorts_Night_screening_ad2441b557.jpg",
+                "hash": "thumbnail_2019_P_Oe_FF_Shorts_Night_screening_ad2441b557",
+                "mime": "image/jpeg",
+                "name": "thumbnail_2019 PÖFF Shorts Night screening.jpg",
+                "path": null,
+                "size": 11.12,
+                "width": 234,
+                "height": 156
+              }
+            },
+            "hash": "2019_P_Oe_FF_Shorts_Night_screening_ad2441b557",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 1029.61,
+            "url": "/uploads/2019_P_Oe_FF_Shorts_Night_screening_ad2441b557.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 11,
+            "updated_by": 11,
+            "created_at": "2020-09-13T19:39:49.407Z",
+            "updated_at": "2020-09-13T19:39:49.511Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 5,
+          "name": "about",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-09-01T12:17:53.527Z",
+          "updated_at": "2020-09-21T10:54:13.651Z",
+          "article": null,
+          "et": "Artikkel",
+          "en": "About",
+          "ru": "Артикл",
+          "slug_et": "artikkel",
+          "slug_en": "about",
+          "slug_ru": "artikl",
+          "name_et": "Artikkel",
+          "name_en": "About",
+          "name_ru": "Артикл",
+          "label_et": "Artikkel",
+          "label_en": "About",
+          "label_ru": "Артикл",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [
+        {
+          "id": 4,
+          "namePrivate": "Shorts",
+          "created_by": 12,
+          "updated_by": 12,
+          "created_at": "2020-09-16T15:21:49.122Z",
+          "updated_at": "2020-09-16T15:21:49.140Z",
+          "name": null
+        }
+      ],
+      "organisations": []
+    },
+    "article_ru": {
+      "id": 77,
+      "titlePrivate": "Rahvusvahelised võistlusprogrammid 2020",
+      "title_et": " PÖFF Shorts avalikustas rahvusvahelise võistlusprogrammi",
+      "slug_et": "p-oe-ff-shorts-avalikustas-rahvusvahelise-voistlusprogrammi",
+      "title_en": "Announcing International Competition titles for 2020 ",
+      "slug_en": "shortsi-article-24",
+      "title_ru": null,
+      "slug_ru": "shortsi-article-42",
+      "lead_et": "Ameerika filmiakadeemia poolt tunnustatud lühifilmide ja animatsiooni festivalile PÖFF Shorts saadeti tänavu üle 4000 filmi, millest võistlevad kokku kahes rahvusvahelises võistlusprogrammis 115 lühi- ja animafilmi.",
+      "lead_en": "Tallinn Black Nights Film Festival sub-festival announces 115 titles across five different competition as PÖFF Shorts (17th-25h November 2020) celebrates its first year of being an Academy Award qualifying festival.",
+      "lead_ru": null,
+      "contents_et": "Eesti filmidest jõudis rahvusvahelisse võistlusprogrammi Helen Takkini psühholoogiline draama “**Kuidas me ärkame**” (“How We Wake Up”), milles peategelane Maria (Henessi Schmidt) hakkab uue suhte valguses kahtlema oma terves mõistuses. Vaimset tervist ja lähisuhtevägivalda käsitlev film teeb PÖFF Shortsil maailmaesilinastuse. \n\nNew Talents võistlusprogrammis, mis keskendub noorte filmitegijate loomingule, linastub German Golubi lühifilm “**Minu kallid laibad**” (My Dear Corpses), mis võitis möödunud septembris tudengifilmide Oscari. Tallinna Ülikooli BFMi tudengi tragikoomiline linateos jutustab loo maalt pärit poisist, kes järsku koduta jääb ning raha teenimiseks asub tööle laibavedajana. \n\n“Selleaastase võistlusprogrammi filmid on täiuslikud näited kunsti ja kultuuri väest keerulistel aegadel,” võttis rahvusvahelise lühifilmivõistluse kokku programmi juht Laurence Boyce. “Kuigi enamus neist ei tegele käesoleva pandeemiaga, käsitlevad filmid päevakajalisi probleeme, mis on seotud seksuaalsuse, sooidentiteedi, rassismi ja migratsiooniga.”\n\n![how we wake up.jpg](http://139.59.130.149/uploads/how_we_wake_up_368be8e8c9.jpg)\n*Kaader filmist \"Kuidas me ärkame\" (rež. Helen Takkin, 2020).*\n\nRahvusvahelises animatsiooni võistlusprogrammis võistlevad esmakordselt 10 teost eraldi lasteanima kategoorias, nende hulgas Eesti Kunstiakadeemia animatsiooniosakonna tudengi Maria Saveleva lõpufilm “**Sa ei ole kiivi**” (“You Are Not a Kiwi”). Kokku jõudis anima võistlusprogrammi tänavu 57 lühifilmi, mille seas on tugevalt esindatud animadokumentaalid ja sotsiaalpoliitilised teemad. \n\n“Palju on teekonnafilme: pandeemia ajal tunduvad need peegeldavat vajadust animeeritud filmikunstis kogeda midagi äärmuslikumat ja põhjalikumat, kui oma ukselävel võimalik,” kirjeldas filmisaaki animaprogrammi juht Vassilis Kroustallis.\n\n![F_5.jpg](http://139.59.130.149/uploads/F_5_1015520cd9.jpg)\n*Kaader filmist \"Sa ei ole kiivi\" (rež. Maria Saveleva, 2020).*\n\nLühifilmide ja animatsiooni festival PÖFF Shorts koosneb kolmest võistlusprogrammist: rahvusvahelised võistlused lühifilmidele ja animatsioonidele ning üks rahvuslik võistlusprogramm. \n\nAlates 2020. aastast kvalifitseeruvad PÖFF Shortsi parim lühi-, parim lühianima- ja parim Eesti film Ameerika filmiakadeemia auhinnale. PÖFF Shortsil on õigus esitada kandidaat ka Euroopa filmiakadeemia parima lühifilmi auhinnale, samuti kuulub PÖFF Shorts Briti filmiakadeemia kvalifitseeritud festivalide sekka, mille võistlusprogrammis näidatud Briti filmid võivad kandideerida sealse akadeemia auhinnale. \n \nPÖFF Shorts rahvusliku võistlusprogrammi filmid kuulutatakse välja tuleval nädalal.\n\nKogu festivali programm avalikustatakse 6. novembril.  \n \nRahvusvaheline lühifilmide ja animatsiooni festival PÖFF Shorts leiab aset 17.-25. novembrini. Filme saab tänavu vaadata nii kinosaalis kui virtuaalselt. \n\n**PÖFF Shorts lühifilmi võistlusprogramm**\n\n“Kummirõngas” (Rež: Tommi Seitajoki, Soome) \n“Sinu ja Milagrose vahel” (Rež: Mariana Saffon, Colombia) \n“Munakoored” (Rež: Slava Doytcheva, Bulgaaria) \n“Yamb” (Rež: Winnele Veyret, Prantsusmaa) \n“Bear Hill Path” (Rež: Tatjana Moutchnik, Saksamaa, Island) \n“David” (Rež: Zachary Woods, Ameerika Ühendriigid) \n“Viis tiigrit” (Rež: Nomawonga Khumalo, Lõuna-Aafrika) \n“Hästi, ja sinul?” (Rež: Molly Manning Walker, Suurbritannia) \n“Kuidas me üles ärkame” (Rež: Helen Takkin, Eesti) \n“Keeled” (Rež: Marja Bål Nango, Norra) \n“Põud” (Rež: Remi Itani, Liibanon, Suurbritannia) \n“Daniel” (Rež: Claire van Beek, Uus-Meremaa) \n“Metsik” (Rež: Bojana Babić, Serbia) \n“3 minutit vaikust” (Rež: Ben Price, Suurbritannia) \n“Palverändurid” (Rež: Farnoosh Samadi, Ali Asgari, Türgi) \n“Lõikuse mees” (Rež: Orion Eshel, Luther Clayton, Ameerika Ühendriigid) \n“Magus raha” (Rež: Issac Knights-Washbourn, Uus-Meremaa) \n“Viimane pilt isast” (Rež: Stefan Djordjevic, Serbia) \n“Teismelised hobused” (Rež: Valérie Leroy, Prantsusmaa) \n“Tsivilisatsiooni ajalugu” (Rež: Zhannat Alshanova, Kasahstan) \n“Üks mango, palun” (Rež: Nadezhda Mikhalkova, Venemaa) \n“Valge silm” (Rež: Tomer Shushan, Iisrael) \n“Punased sipelgad hammustavad” (Rež: Elene Naveriani, Šveits, Georgia) \n“Mina, Tony” (Rež: Argyro Nicolaou, Margaux Fitoussi, Küpros) \n“Carrie'l läheb väga hästi” (Rež: Alex Salkicevic, Bryce Kraehenbuehl, Austraalia) \n“Mägikass” (Rež: Lkhagvadulam Purev-Ochir, Mongoolia) \n“Tühiasi” (Rež: Anna Maguire, Suurbritannia) \n“Jumala tall” (Rež: David Pinheiro Vicente, Portugal) \n“Kõrvalised hääled” (Rež: David Heinemann, Elvina Nevardauskaite, Leedu) \n“Kui ma tantsin, siis maa väriseb” (Rež: Otto Lazić-Reuschel, Saksamaa) \n\n**PÖFF Shorts anima võistlusprogramm**\n \n“Krabi” (Rež: Shiva Sadegh Asadi, Iraan) \n“Tavaline mees” (Rež: Shoko Hara, Saksamaa) \n“4 North A” Rež: Jordan Canning, Howie Shia, Kanada \n“See ei olnud õige mägi, Muhamed” (Rež: Mili Pecherer, Prantsusmaa) \n“Järjestikused paralleelid” (Rež: Max Hattler, Hongkong) \n“Kuus” (Rež: Chen Xi / An Xu, Hiina) \n“Fantasmia” (Rež: Luise Fiedler, Saksamaa) \n“Korstna-kammsaba\" (Rež: Frédéric Schuld, Saksamaa) \n“Kerge hullumeelsus, kestev nõdrameelsus” (Rež: Marine Laclotte, Prantsusmaa) \n“Ettevaatlik” (Rež: Alice Saey, Prantsusmaa) \n“Kassi-hiire mäng Annaga\" (Rež: Varya Yakovleva, Venemaa) \n“Kõik on soola süü” (Rež: María Cristina Pérez, Colombia) \n“Vaskmäe valitsejanna” (Rež: Dmitry Geller, Venemaa) \n“Ihu” (Rež: Camila Kater, Brasiilia) \n“Ksüleem” (Rež: Michael Hughes, Suurbritannia) \n“Vestlused vaalaga” (Rež: Anna Samo, Saksamaa) \n“Mees ja pea” (Rež: Nilas Røpke Driessen, Taani) \n“Arka” (Rež: Natko Stipanicev, Horvaatia) \n“Sinu olemus” (Rež: Josephine Lohoar Self, Suurbritannia) \n“Sõbra sõber” (Rež: Zachary Zezima, Prantsusmaa) \n“KKUM” (Rež: KIM Kang-min, Korea Vabariik) \n“Suveniir” (Rež: Bastien Dubois, Prantsusmaa) \n“Coldshot” (Rež: Evin Collis, Kanada) \n“SIDE” (Rež: Alexandra Ramires (Xá), Portugal) \n“Kapaemahu” (Rež: Hinaleimoana Wong-Kalu, Dean Hamer, Joe WIlson, Ameerika Ühendriigid) \n“Karussell” (Rež: Jasmine Elsen, Belgia) \n“Minu galaktiline kaksik Galaction” (Rež: Sasha Svirsky, Venemaa) \n“Väike rebane Gon\" (Rež: Takeshi Yashiro, Jaapan) \n“Vajuta seda nuppu paanikasse sattudes” (Rež: Gabriel Böhmer, Suurbritannia) \n“Pesumasin” (Rež: Alexandra Májová, Tšehhi) \n“Horacio” (Rež: Caroline Cherrier, Prantsusmaa) \n“Kullakallis” (Rež: Paul Mas, Prantsusmaa) \n\n**PÖFF Shorts New Talents: lühifilm**\n\n“Kolmas isik” (Rež: Pouya Aminpouri, Iraan) \n“Pöördes” (Rež: Jorge G. Camarena, Ameerika Ühendriigid) \n“Rikkumine” (Rež: Marion Decoste, Mickael Nezreg, Manon Ryckelynck, Maiwen Koskas, Jeremie Hannoah, Florian Morelli, Raphael Halle & Aurelie Vanden Borren, Prantsusmaa) \n“Olemise simulatsioon” (Rež: Stefan M. Bürkner, Saksamaa) \n“Madalseis” (Rež: Syver Flem, Norra) \n“Täiuslik ihu” (Rež: Jessica Pupo, Prantsusmaa) \n“Prooviesinemine” (Rež: Guy Lichtenstein, Austria) \n“Kerge lainetus” (Rež: Egor Voronin, Venemaa) \n“Katkised juured” (Rež: Alberto Gross, Hispaania) \n“Häbemekarvad” (Rež: Carolin Glomp, Saksamaa, Island) \n“Nad ei jää kokku” (Rež: Portlynn Tagavi, Ameerika Ühendriigid) \n“Enne meie aega” (Rež: Chloé Terren, Prantsusmaa) \n“Paberist lubadused” (Rež: Uzair Amjad, Soome) \n“Tagurpidi” (Rež: Marco Augelli, Suurbritannia) \n“Kalaparv” (Rež: Tammes Bernstein, Suurbritannia) \n“22.47 liin 34” (Rež: Michael Karrer, Šveits) \n“Päikesekoer” (Rež: Dorian Jespers, Belgia) \n“Kes seal kõnnib?” (Rež: Astrid Thorvaldsen, Suurbritannia) \n“Vlada läheb Londonisse” (Rež: Arti Savchenko, Iisrael) \n“Kitty” (Rež: Maria Pawlikowska, Suurbritannia) \n“Anita” (Rež: Sushma Khadepaun, Ameerika Ühendriigid) \n“Arveteklaarimine” (Rež: Zuzanna Grajcewicz, Poola) \n“Mu kallid laibad” (Rež: German Golub, Eesti) \n“Pulmavalss” (Rež: Severi Koivusalo, Soome) \n“Vastuvoolu” (Rež: Kio Shijiki, Jaapan) \n“Riis ja leib” (Rež: Greta Griniūtė, Suurbritannia) \n“Carrie” (Rež: Emma Lindahl, Poola) \n“Koolibuss” (Rež: Ramazan Kılıç, Türgi) \n\n**PÖFF Shorts New Talents: anima**\n\n\"Lõunasöök murul\" (Rež: Jocelyn Charles, Jules Bourges, Nathan Harbonn-Viaud, Pierre Rougemont, Prantsusmaa) \n\"Ühe naise portree\" (Rež: Natalia Durszewicz, Poola) \n\"Heidik\" (Rež: van Loon Liesbet, Belgia) \n\"Relvastatud hällilaul\" (Rež:  Yana Ugrekhelidze, Saksamaa) \n\"Igavesti\" (Rež: Mitch McGlocklin, Ameerika Ühendriigid) \n\"Must lammas\" (Rež: James Molle, Prantsusmaa) \n\"Vaatluspunkt\" (Rež: Aleksander Jozefczyk, Poola) \n\"Öövahetus\" (Rež: Linda Stūre, Läti) \n\"Nipsukivid\" (Rež: Natalia Spychala, Poola) \n\"Kurat taskus\" (Rež: Antoine Bonnet & Mathilde Loubes, Prantusmaa) \n\"Alasti\" (Rež: Kirill Khachaturov, Venemaa) \n\"Pärlipüüdja\". (Rež: Margrethe Danielsen, Norra) \n\"Olen siin\". (Rež: Julia Orlik, Poola) \n\"Minu sees\" (Rež: Maria Trigo Teixeira, Saksamaa) \n\"Löö ja jookse\" (Rež: Hannah Brewerton, Suurbritannia) \n\n**Shorts lasteanima võistlusprogramm**\n\n\"Sa ei ole kiivi\" (Rež: Maria Saveleva, Eesti) \n\"Sõbrad\" (Rež: Florian Grolig, Saksamaa) \n\"Kaksikpuud\" (Rež: Emmanuel Ollivier, Prantsusmaa) \n\"Söödud\" (Rež: Mohsen Rezapour, Iraan) \n\"Tormine öö\" (Rež: Gil Alkabetz, Saksamaa) \n\"Hopus\" (Rež: Lucie Kokoliová, Tšehhi) \n\"On ja ei ole ka\" (Rež: Pedro Brito, Portugal) \n\"Cornstalk\" (Rež: Anastasiia Zhakulina, Venemaa) \n\"Pink\" (Rež: Rich Webber, Suurbritannia) \n\"Matilda ja varupea\" (Rež: Ignas Meilūnas, Leedu) \n",
+      "contents_en": "The 2020 edition of PÖFF Shorts, an official sub-festival of the A-List Tallinn Black Nights Film Festival, has revealed the films which will be part of its six competitions. More than 110 short films and animations will be screened between 17th and 25th November both online and in cinemas.\n\nAlongside giving all the films the chance to win the Grand Prix in their respective programmes, PÖFF Shorts is also a qualifying festival for BAFTA, the European Film Awards and – for the first time, beginning this year in – the Academy Awards.  \n\nGrete Nellis, the Head of PÖFF Shorts: \n\n“The world´s struggles emanate from the authors´ stories as they always do, allowing us to look at the world in a different way. This year we perhaps see it more than ever. But whether it is despite of or due to the global circumstances, we are in it together. With this year being the first year of PÖFF Shorts being an Academy Award qualifying festival, we are proud to be a part of this diverse community.\"\n\nIn the PÖFF Shorts Live Action section, 58 films will give audience the chance to see brand new work alongside films that have already won plaudits on the circuit across two competitions. \nIn the PÖFF Shorts Animation Competition, 57 films showcasing an eclectic range of styles and techniques will be screened. For the first time, 10 animation films will vie for the Jury Prize for Best Children’s Film.\n\nInformation on the awards and the PÖFF Shorts juries will be announced in the coming days, as well the candidates for the National Competition and the rest of the films screening in the PÖFF Shorts side programmes.  \n\nPÖFF Shorts will run from 17th-25th November and takes place both live and online. \n\n\n**PÖFF SHORTS LIVE ACTION COMPETITION**\n\n3 MINUTES OF SILENCE (Dir. Ben Price, United Kingdom, 2020, Fiction, BP) \n\nBEAR HILL PATH (Dir. Tatjana Moutchnik, Germany, Iceland, 2020, Fiction, IP) \n\nBETWEEN YOU AND MILAGROS (Dir. Mariana Saffon, Colombia, 2020, Fiction, BP) \n\nCARRIE'S DOING GREAT (Dir. Alex Salkicevic, Bryce Kraehenbuehl, Australia, 2020, Fiction, BP) \n\nDANIEL (Dir. Claire van Beek, New Zealand, 2019, Fiction, BP) \n\nDAVID (Dir. Zachary Woods, United States, 2020, Fiction, BP) \n\nDROUGHT (Dir. Remi Itani, Lebanon, UK, 2020 Fiction, BP) \n\nEGGSHELLS (Dir. Slava Doytcheva, Bulgaria, 2020, Fiction, BP) \n\nTHE EXPLOSION OF A SWIMMING RING (Dir. Tommi Seitajoki, Finland, 2020, Fiction, BP) \n\nFERAL (Dir. Bojana Babić, Serbia, 2020, Fiction, BP) \n\nFIVE TIGER (Dir. Nomawonga Khumalo, South Africa, 2020, Fiction, WP) \n\nGOOD THANKS, YOU? (Dir. Molly Manning Walker, United Kingdom, 2020, Fiction, BP) \n\nHISTORY OF CIVILIZATION (Dir. Zhannat Alshanova, Kazakhstan, 2020, Fiction, BP) \n\nHOW WE WAKE UP (Dir. Helen Takkin, Estonia, 2019, Fiction, WP) \n\nI, TONY (Dir. Argyro Nicolaou, Margaux Fitoussi, Cyprus, 2019, Documentary, EP) \n\nIT'S NOTHING (Dir. Anna Maguire, United Kingdom, 2019, Fiction, BP) \n\nTHE LAMB OF GOD (Dir. David Pinheiro Vicente, Portugal, 2020, Fiction, BP) \n\nTHE LAST IMAGE OF FATHER (Dir. Stefan Djordjevic, Serbia, 2019, Fiction) \n\nMAN OF THE HARVEST (Dir. Orion Eshel, Luther Clayton, United States, 2020, Fiction, WP) \n\nMONEY HONEY (Dir. Issac Knights-Washbourn, New Zealand, 2020, Fiction, BP) \n\nMOUNTAIN CAT (Dir. Lkhagvadulam Purev-Ochir, Mongolia, 2020, Fiction, BP) \n\nONE MANGO PLEASE (Dir. Nadezhda Mikhalkova, Russian Federation, 2020, Fiction, WP) \n\nPILGRIMS (Dir. Farnoosh Samadi, Ali Asgari, Turkey, 2020, Fiction, BP) \n\nRED ANTS BITE (Dir. Elene Naveriani, Switzerland, Georgia, 2019, Fiction, BP) \n\nTEEN HORSES (Dir. Valérie Leroy, France, 2019, Fiction, BP) \n\nTHE TONGUES (Dir. Marja Bål Nango, Norway, 2019, Fiction, BP) \n\nVOICES APART (Dir. David Heinemann, Elvina Nevardauskaite, Lithuania, 2020, Documentary, WP) \n\nWHEN I DANCE, THE EARTH TREMBLES (Dir. Otto Lazić-Reuschel, Germany, 2020, Fiction, IP) \n\nWHITE EYE (Dir. Tomer Shushan, Israel, 2019, Fiction, BP) \n\nYAMB (Dir. Winnele Veyret, France, 2020, Fiction, WP) \n\n \n**PÖFF SHORTS ANIMATION COMPETITION**\n\n4 NORTH A (Dir. Jordan Canning, Howie Shia, Canada, 2020, BP) \n\nANNA, CAT-AND-MOUSE (Dir. Varya Yakovleva, Russian Federation, 2020, BP) \n\nARKA (Dir. Natko Stipanicev, Croatia, 2020, BP) \n\nCAREFUL (Dir. Alice Saey, France, 2020, BP) \n\nCARROUSEL (Dir. Jasmine Elsen, Belgium, 2020, BP) \n\nTHE CHIMNEY SWIFT (Dir. Frédéric Schuld, Germany, 2020, BP) \n\nCOLDSHOT (Dir. Evin Collis, Canada, 2020, EP) \n\nCONVERSATIONS WITH A WHALE (Dir. Anna Samo, Germany, 2020, WP) \n\nCRAB (Dir. Shiva Sadegh Asadi, Iran, 2020, BP) \n\nTHE FABRIC OF YOU (Dir. Josephine Lohoar Self, United Kingdom, 2019) \n\nFANTASMIA (Dir. Luise Fiedler, Germany, 2019, BP) \n\nFLESH (Dir. Camila Kater, Brazil, 2019, BP) \n\nFRIEND OF A FRIEND (Dir. Zachary Zezima, France, 2019, BP) \n\nGON, THE LITTLE FOX (Dir. Takeshi Yashiro, Japan, 2019, BP) \n\nHORACIO (Dir. Caroline Cherrier, France, 2020, WP) \n\nIT WASN'T THE RIGHT MOUNTAIN, MOHAMMED (Dir. Mili Pecherer, France, 2019, BP) \n\nIT´S ALL THE SALT´S FAULT (Dir. María Cristina Pérez, Colombia, 2020, BP) \n\nJUST A GUY (Dir. Shoko Hara, Germany, 2020, BP) \n\nKAPAEMAHU (Dir. Hinaleimoana Wong-Kalu, Dean Hamer, Joe WIlson ,United States, 2019, BP) \n\nKKUM (Dir. KIM Kang-min, Republic of Korea, 2020, BP) \n\nTHE MAN AND THE HEAD (Dir. Nilas Røpke Driessen, Denmark, 2020, BP) \n\nMILD MADNESS, LASTING LUNACY (Dir. Marine Laclotte, France, 2020, BP) \n\nTHE MISTRESS OF THE COPPER MOUNTAIN (Dir. Dmitry Geller, Russia Federation, 2020) \n\nMY GALACTIC TWIN GALACTION (Dir. Sasha Svirsky, Russian Federation, 2020, BP) \n\nPRECIOUS (Dir. Paul Mas, France, 2020) \n\nPUSH THIS BUTTON IF YOU BEGIN TO PANIC (Dir. Gabriel Böhmer, United Kingdom, 2020, BP) \n\nSERIAL PARALLELS (Dir. Max Hattler, Hong Kong, 2019, BP) \n\nTHE SIX (Dir. Chen Xi / An Xu, China, 2019, BP) \n\nSOUVENIR SOUVENIR (Dir. Bastien Dubois, France, 2020, BP) \n\nTIE (Dir. Alexandra Ramires ( Xá ), Portugal, 2020, BP) \n\nWASHING MACHINE (Dir. Alexandra Májová, Czech Republic, 2020, BP) \n\nXYLEM (Dir. Michael Hughes, United Kingdom, 2019, BP) \n\n \n\n**NEW TALENTS COMPETITION: SHORT FILM**\n\n22:47 LINIE 34 (Dir. Michael Karrer, Switzerland, 2019, Fiction, BP) \n\nANITA (Dir. Sushma Khadepaun, United States, 2020, Fiction, BP) \n\nTHE AUDITION (Dir. Guy Lichtenstein, Austria, 2019, Fiction, BP) \n\nBACKWARDS (Dir. Marco Augelli United Kingdom 2019 Fiction BP \n\nBEFORE OUR TIME COMES (Dir. Chloé Terren, France, 2019, Fiction, EP) \n\nBROKEN ROOTS (Dir. Alberto Gross, Spain, 2019, Fiction, BP) \n\nCARRIE (Dir. Emma Lindahl, Poland, 2020, Fiction, BP) \n\nINFRACTION (Dir. Marion Decoste, Mickael Nezreg, Manon Ryckelynck, Maiwen Koskas, Jeremie Hannoah, Florian Morelli, Raphael Halle & Aurelie Vanden Borren, France, 2019, Fiction, BP) \n\nKITTY (Dir. Maria Pawlikowska, United Kingdom, 2019, Fiction, BP) \n\nLIGHT FLUCTUATIONS (Dir. Egor Voronin, Russian Federation, 2020, Fiction, WP) \n\nMY DEAR CORPSES (Dir. German Golub, Estonia, 2020, Fiction, BP) \n\nPAPER PROMISES (Dir. Uzair Amjad, Finland, 2020, Fiction, IP) \n\nPATISOTAM (Dir. Kio Shijiki (志自岐希生), Japan, 2020, Fiction, IP) \n\nPERFECT BODY (Dir. Jessica Pupo, France, 2019, Fiction, BP) \n\nTHE PUBIC HAIR (Dir. Carolin Glomp, Germany, 2020, Fiction, BP) \n\nRICE & BREAD (Dir. Greta Griniūtė, United Kingdom, 2019, Fiction, BP) \n\nROCK BOTTOM (Dir. Syver Flem, Norway, 2019, Fiction, IP) \n\nSETTLING THE SCORE (Dir. Zuzanna Grajcewicz Poland 2019 Fiction BP \n\nTHE SCHOOL BUS (Dir. Ramazan Kılıç, Turkey, 2019, Fiction, BP) \n\nSHOAL (Dir. Tammes Bernstein, United Kingdom, 2020, Fiction, BP) \n\nTHE SIMULATION OF BEING (Dir. Stefan M. Bürkner, Germany, 2020, Fiction, WP) \n\nSPIN (Dir. Jorge G. Camarena, United States, 2020, Fiction, WP) \n\nSUN DOG (Dir. Dorian Jespers, Belgium, 2020, Fiction) \n\nTHE THIRD PERSON (Dir. Pouya Aminpouri, Iran, 2019, Fiction, BP) \n\nTHEY WON'T LAST (Dir. Portlynn Tagavi, United States, 2019, Fiction, BP) \n\nVLADA GOES TO LONDON (Dir. Arti Savchenko, Israel, 2020, Fiction, WP) \n\nWEDDING WALTZ (Dir. Severi Koivusalo, Finland, 2019, Fiction, IP) \n\nWHO GOES THERE? (Dir. Astrid Thorvaldsen, United Kingdom, 2020, Fiction, BP) \n \n\n**NEW TALENTS COMPETITION: ANIMATION**\n\nARMED LULLABY (Dir. Yana Ugrekhelidze, Germany, 2019, BP) \n\nBLACK SHEEP BOY (Dir. James Molle, France, 2019, BP) \n\nDÉJEUNER SUR L'HERBE (Dir. Jocelyn Charles, Jules Bourgès, Nathan Harbonn-Viaud, Pierre Rougemont, France, 2019, BP) \n\nFOREVER (Dir. Mitch McGlocklin, United States, 2020, BP) \n\nHIT AND RUN (Dir. Hannah Brewerton, United Kingdom, 2020, BP) \n\nI'M HERE (Dir. Julia Orlik, Poland, 2020) \n\nINSIDE ME (Dir. Maria Trigo Teixeira, Germany, 2019, BP) \n\nMARBLES (Dir. Natalia Spychala, Poland, 2019, BP) \n\nMONACHOPSIS (Dir. van Loon Liesbet, Belgium, 2020, BP) \n\nNAKED (Dir. Kirill Khachaturov, Russian Federation, 2019)  \n\nNIGHT SHIFT (Dir. Linda Stūre, Latvia, 2019) \n\nOBSERVATION POINT (Dir. Aleksander Jozefczyk,  Poland, 2019, BP) \n\nPEARL DIVER (Dir. Margrethe Danielsen, Norway, 2020, BP) \n\nPORTRAIT OF A WOMAN (Dir. Natalia Durszewicz, Poland, 2020, BP) \n\nUN DIABLE DANS LA POCHE (Dir. Antoine Bonnet & Mathilde Loubes, France, 2019, BP) \n \n\n**KIDS ANIMATION COMPETITION**\n\nBENCH (Dir. Rich Webber, United Kingdom, 2020, BP) \n\nCORNSTALK (Dir. Anastasiia Zhakulina, Russian Federation, 2020) \n\nEATEN (Dir. Mohsen Rezapour, Iran, 2019, BP) \n\nFRIENDS (Dir. Florian Grolig, Germany, 2019, BP) \n\nHOPUS (Dir. Lucie Kokoliová, Czech Republic, 2019, BP) \n\nMATILDA AND THE SPARE HEAD (Dir. Ignas Meilūnas, Lithuania, 2020) \n\nONE STORMY NIGHT (Dir. Gil Alkabetz, Germany, 2019, BP) \n\nSO BUT NOT SO (Dir. Pedro Brito, Portugal, 2019, IP) \n\nTWIN TREES (Dir. Emmanuel Ollivier, France, 2020, IP) \n\nYOU ARE NOT A KIWI (Dir. Maria Saveleva, Estonia, 2020) \n\nWP – World Premiere\nIP – International Premiere\nBP – Baltic Premiere\nEP – Estonian Premiere",
+      "contents_ru": null,
+      "created_by": {
+        "id": 12,
+        "firstname": "Heinrich",
+        "lastname": "Sepp",
+        "username": "heinrich"
+      },
+      "updated_by": {
+        "id": 12,
+        "firstname": "Heinrich",
+        "lastname": "Sepp",
+        "username": "heinrich"
+      },
+      "created_at": "2020-10-16T06:16:29.014Z",
+      "updated_at": "2020-10-16T11:20:02.804Z",
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": null,
+      "media": {
+        "id": 94,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 1142,
+            "name": "twoplustwo.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 1920,
+            "height": 1080,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_twoplustwo_3c251f9285.jpg",
+                "hash": "thumbnail_twoplustwo_3c251f9285",
+                "mime": "image/jpeg",
+                "name": "thumbnail_twoplustwo.jpg",
+                "path": null,
+                "size": 7.51,
+                "width": 245,
+                "height": 138
+              }
+            },
+            "hash": "twoplustwo_3c251f9285",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 734.98,
+            "url": "/uploads/twoplustwo_3c251f9285.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 12,
+            "updated_by": 12,
+            "created_at": "2020-10-16T11:19:53.144Z",
+            "updated_at": "2020-10-16T11:19:53.173Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [
+        {
+          "id": 4,
+          "namePrivate": "Shorts",
+          "created_by": 12,
+          "updated_by": 12,
+          "created_at": "2020-09-16T15:21:49.122Z",
+          "updated_at": "2020-09-16T15:21:49.140Z",
+          "name": null
+        }
+      ],
+      "organisations": []
+    }
+  }
+]

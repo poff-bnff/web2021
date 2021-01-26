@@ -1,0 +1,4 @@
+path: favourite
+data:
+    cassettes: /_fetchdir/cassettes.en.yaml
+    articles: /_fetchdir/articles.en.yaml

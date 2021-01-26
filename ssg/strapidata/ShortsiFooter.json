@@ -1,0 +1,401 @@
+<<<<<<< HEAD
+[]
+=======
+[
+  {
+    "id": 1,
+    "namePrivate": "Shortsi footer",
+    "domain": {
+      "id": 3,
+      "Url": null,
+      "IpAdress": null,
+      "Server": null,
+      "created_by": {
+        "id": 6,
+        "firstname": "Jaan",
+        "lastname": "Leppik",
+        "username": null
+      },
+      "updated_by": {
+        "id": 3,
+        "firstname": "Liis",
+        "lastname": "Käsper",
+        "username": null
+      },
+      "created_at": "2020-08-31T08:50:27.138Z",
+      "updated_at": "2020-08-31T13:52:40.035Z",
+      "url": "shorts.poff.ee",
+      "ipAdress": null,
+      "server": null,
+      "festival_edition": null,
+      "name": "Shorts"
+    },
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 21,
+      "firstname": "Greetel",
+      "lastname": "Kala",
+      "username": null
+    },
+    "created_at": "2020-09-30T13:20:53.937Z",
+    "updated_at": "2020-10-22T14:30:41.255Z",
+    "socialGroup": {
+      "id": 10,
+      "namePrivate": "Shorts Social",
+      "name": {
+        "id": 3948,
+        "et": "Jälgi meid",
+        "en": "Follow us",
+        "ru": "Следите на новостями"
+      },
+      "items": [
+        {
+          "id": 38,
+          "name": "Facebook",
+          "url": null,
+          "svgCode": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\">\n<path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"></path></svg>",
+          "url_et": "https://www.facebook.com/poffshorts",
+          "url_en": "https://www.facebook.com/poffshorts",
+          "url_ru": "https://www.facebook.com/poffshorts",
+          "svgMedia": null
+        },
+        {
+          "id": 39,
+          "name": "Instagram",
+          "url": null,
+          "svgCode": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5\" ry=\"5\"></rect><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"></path><line x1=\"17.5\" y1=\"6.5\" x2=\"17.51\" y2=\"6.5\"></line></svg>",
+          "url_et": "https://www.instagram.com/poffshorts",
+          "url_en": "https://www.instagram.com/poffshorts",
+          "url_ru": "https://www.instagram.com/poffshorts",
+          "svgMedia": null
+        },
+        {
+          "id": 40,
+          "name": "YouTube",
+          "url": null,
+          "svgCode": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\"><path d=\"M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z\"></path><polygon points=\"9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02\"></polygon></svg>",
+          "url_et": "https://www.youtube.com/user/Poffihunt",
+          "url_en": "https://www.youtube.com/user/Poffihunt",
+          "url_ru": "https://www.youtube.com/user/Poffihunt",
+          "svgMedia": null
+        },
+        {
+          "id": 41,
+          "name": "Twitter",
+          "url": null,
+          "svgCode": "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\"><path d=\"M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z\"></path></svg>",
+          "url_et": "https://twitter.com/TallinnBNFF",
+          "url_en": "https://twitter.com/TallinnBNFF",
+          "url_ru": "https://twitter.com/TallinnBNFF",
+          "svgMedia": null
+        }
+      ]
+    },
+    "item": [
+      {
+        "id": 18,
+        "namePrivate": "Team",
+        "name": {
+          "id": 3949,
+          "et": "Meeskond",
+          "en": "Team",
+          "ru": "Команда"
+        },
+        "button": [],
+        "text": null,
+        "svgItem": [
+          {
+            "id": 42,
+            "name": "Team",
+            "url": null,
+            "svgCode": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg>",
+            "url_et": "shortsi-meeskond",
+            "url_en": "shorts-team",
+            "url_ru": "komanda-shorts",
+            "svgMedia": null
+          }
+        ],
+        "image": null
+      },
+      {
+        "id": 19,
+        "namePrivate": "Subscribe to newsletter",
+        "name": {
+          "id": 3950,
+          "et": "Liitu uudiskirjaga",
+          "en": "Subscribe to newsletter",
+          "ru": "Подписаться на новостную рассылку"
+        },
+        "button": [],
+        "text": null,
+        "svgItem": [
+          {
+            "id": 43,
+            "name": "E-mail",
+            "url": null,
+            "svgCode": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"svg_icon_footer\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>",
+            "url_et": "https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232",
+            "url_en": "https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232",
+            "url_ru": "https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232",
+            "svgMedia": null
+          }
+        ],
+        "image": null
+      },
+      {
+        "id": 20,
+        "namePrivate": "Contacts",
+        "name": {
+          "id": 3951,
+          "et": "Kontakt",
+          "en": "Contact",
+          "ru": "Контакты"
+        },
+        "button": [],
+        "text": {
+          "id": 378,
+          "et": "Telliskivi 60A, 10412 Tallinn\n+372 5620 8308 / shorts@poff.ee\nRegister Code: 80044767\nKMKR: EE100520914\nIBAN: EE791700017002751609",
+          "en": "Telliskivi 60A, 10412 Tallinn\n+372 5620 8308 / shorts@poff.ee\nRegister Code: 80044767\nKMKR: EE100520914\nIBAN: EE791700017002751609",
+          "ru": "Telliskivi 60A, 10412 Tallinn\n+372 5620 8308 / shorts@poff.ee\nРег. номер: 80044767\nKMKR: EE100520914\nIBAN: EE791700017002751609"
+        },
+        "svgItem": [],
+        "image": null
+      }
+    ],
+    "supporters": [
+      {
+        "id": 2,
+        "order": 1,
+        "name": {
+          "id": 3952,
+          "et": "Esitlejad",
+          "en": "Presenters",
+          "ru": "Спонсоры"
+        },
+        "supporter": [
+          {
+            "id": 9,
+            "name": "Elisa",
+            "customUrl": "https://www.elisa.ee/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 371,
+              "name": "elisa_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 850,
+              "height": 332,
+              "formats": null,
+              "hash": "elisa_logo_white_18f23a119a",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 8.11,
+              "url": "/uploads/elisa_logo_white_18f23a119a.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-04T06:12:51.177Z",
+              "updated_at": "2020-10-04T06:12:51.258Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          },
+          {
+            "id": 23,
+            "name": "Metropol",
+            "customUrl": "https://www.metropol.ee/et/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 407,
+              "name": "metropol_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 850,
+              "height": 85,
+              "formats": null,
+              "hash": "metropol_logo_white_3bf1d047fe",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 9.33,
+              "url": "/uploads/metropol_logo_white_3bf1d047fe.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-07T08:54:56.915Z",
+              "updated_at": "2020-10-07T08:54:57.065Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "order": 2,
+        "name": {
+          "id": 11172,
+          "et": "Täname ",
+          "en": "Thanks ",
+          "ru": null
+        },
+        "supporter": [
+          {
+            "id": 29,
+            "name": "High Voltage ",
+            "customUrl": "https://highvoltage.ee/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 489,
+              "name": "highvoltage_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 850,
+              "height": 227,
+              "formats": null,
+              "hash": "highvoltage_logo_white_a40048e052",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 14.41,
+              "url": "/uploads/highvoltage_logo_white_a40048e052.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-10T18:54:05.912Z",
+              "updated_at": "2020-10-10T18:54:06.029Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          },
+          {
+            "id": 30,
+            "name": "Nafta",
+            "customUrl": "https://www.nafta.ee/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 352,
+              "name": "nafta_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 425,
+              "height": 111,
+              "formats": null,
+              "hash": "nafta_logo_white_cd04e9cbfb",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 2.81,
+              "url": "/uploads/nafta_logo_white_cd04e9cbfb.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-03T13:02:44.663Z",
+              "updated_at": "2020-10-03T13:02:44.829Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          },
+          {
+            "id": 31,
+            "name": "Toyota",
+            "customUrl": "https://www.toyota.ee/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 252,
+              "name": "toyota_ellips_2020_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 1370,
+              "height": 890,
+              "formats": null,
+              "hash": "toyota_ellips_2020_white_97f3a0c6ec",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 1.38,
+              "url": "/uploads/toyota_ellips_2020_white_97f3a0c6ec.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 6,
+              "updated_by": 6,
+              "created_at": "2020-09-27T21:32:00.423Z",
+              "updated_at": "2020-09-27T21:32:00.516Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          },
+          {
+            "id": 28,
+            "name": "BFM",
+            "customUrl": "https://www.tlu.ee/bfm",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 355,
+              "name": "bfm_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 300,
+              "height": 53,
+              "formats": null,
+              "hash": "bfm_logo_white_1e3cefeae5",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 35.55,
+              "url": "/uploads/bfm_logo_white_1e3cefeae5.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-03T13:13:23.721Z",
+              "updated_at": "2020-10-03T13:13:23.942Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          },
+          {
+            "id": 32,
+            "name": "EKA",
+            "customUrl": "https://www.artun.ee/",
+            "shortsi_article": null,
+            "logoWhite": {
+              "id": 1461,
+              "name": "Shorts institutsioonid EKA_logo_white.svg",
+              "alternativeText": "",
+              "caption": "",
+              "width": 114,
+              "height": 40,
+              "formats": null,
+              "hash": "Shorts_institutsioonid_EKA_logo_white_2fe1a848f8",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 0.92,
+              "url": "/uploads/Shorts_institutsioonid_EKA_logo_white_2fe1a848f8.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "created_by": 21,
+              "updated_by": 21,
+              "created_at": "2020-10-22T14:30:03.196Z",
+              "updated_at": "2020-10-22T14:30:03.238Z"
+            },
+            "logoColour": null,
+            "logoBlack": null
+          }
+        ]
+      }
+    ]
+  }
+]
+>>>>>>> parent of b1922739... delete starpidata .json files

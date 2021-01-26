@@ -1,0 +1,55 @@
+include /_templates/chat_mixin.pug
+
+doctype html
+html(lang= self.locale)
+
+
+    //- POFF
+    if process.env['DOMAIN'] === 'poff.ee'
+        include ../_templates/head_poff.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_poff.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- JUSTFILM
+    else if process.env['DOMAIN'] === 'justfilm.ee'
+        include ../_templates/head_justfilm.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_justfilm.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- SHORTS
+    else if process.env['DOMAIN'] === 'shorts.poff.ee'
+        include ../_templates/head_shorts.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_shorts.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- KINOFF
+    else if process.env['DOMAIN'] === 'kinoff.poff.ee'
+        include ../_templates/head_kinoff.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_kinoff.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- INDUSTRY
+    else if process.env['DOMAIN'] === 'industry.poff.ee'
+        include ../_templates/head_industry.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_industry.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- no domain specified
+    else
+        body
+            h1 Temporarily in confused state - domain? what domain?

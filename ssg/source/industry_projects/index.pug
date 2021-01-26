@@ -1,0 +1,28 @@
+
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    section#content.schedule
+
+        if self.data.industryprojects
+            main.grid_films
+                each project in self.data.industryprojects.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
+                    a.card_film(id= project.id href= `/${lang_path}${project.path}`)
+                        .container_frame_16_9
+                            if project.images && project.images[0]
+                                img.container_contents_16_9(src= `https://assets.poff.ee/img/${project.images[0].hash}${project.images[0].ext}` alt= project.title)
+                            else
+                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= project.title)
+
+                        .card_film_title
+                            h3.film_title_locale.dark_1= project.title
+                                p(id= project.id+'nupp' style={color: 'red', display:'none'})
+                        .card_project_info
+                            .str_info_grid_3
+                                - var projectTypes = (project.project_types || []).map(project_type => project_type.type)
+                                if projectTypes.length
+                                    .str_project_info_label.dark_semi= self.label.industry.projectType
+                                    .str_project_info_value.dark_1.thin_300= projectTypes.join(', ')
+
+

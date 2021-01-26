@@ -1,0 +1,4 @@
+path: programmid
+data:
+    articles: /_fetchdir/articles.et.yaml
+    programmes: /_fetchdir/programmes.et.yaml

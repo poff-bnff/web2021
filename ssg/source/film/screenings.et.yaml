@@ -1,0 +1,551 @@
+-   screeningEventivalId: '2001'
+    filmEventivalId: '1001'
+    filmTitle: Nähtamatu elu
+    filmPath: invisible-life-of-eurdice-gusmo
+    screeningSubtitles: eesti, inglise, vene
+    screeningDate: '2020-08-10'
+    screeningTime: '22:45:00'
+    screeningDatetime: 2020-08-10T22:45:00+0300
+    calendarDateTime: 2020-08-10T18:45:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Karim Ainouz
+    screeningQaDuration: '20'
+    screeningTotalDuration: '159'
+-   screeningEventivalId: '2002'
+    filmEventivalId: '1002'
+    filmTitle: Täiuslik
+    filmPath: flawless
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-11'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-11T22:00:00+0300
+    calendarDateTime: 2020-08-11T18:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Tal Granit, Sharon Maymon
+    screeningQaDuration: '20'
+    screeningTotalDuration: '117'
+-   screeningEventivalId: '2019'
+    filmEventivalId: '1002'
+    filmTitle: Täiuslik
+    filmPath: flawless
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-11'
+    screeningTime: '23:59:00'
+    screeningDatetime: 2020-08-11T23:59:00+0300
+    calendarDateTime: 2020-08-11T19:59:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Tal Granit, Sharon Maymon
+    screeningQaDuration: '20'
+    screeningTotalDuration: '117'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/fqwmeUfVAY0
+-   screeningEventivalId: '2003'
+    filmEventivalId: '1003'
+    filmTitle: Hüvasti!
+    filmPath: house-of-hummingbird
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-12'
+    screeningTime: 00:10:00
+    screeningDatetime: 2020-08-12T00:10:00+0300
+    calendarDateTime: 2020-08-11T20:10:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '138'
+-   screeningEventivalId: '2018'
+    filmEventivalId: '1001'
+    filmTitle: Nähtamatu elu
+    filmPath: invisible-life-of-eurdice-gusmo
+    screeningSubtitles: eesti, inglise, vene
+    screeningDate: '2020-08-11'
+    screeningTime: 00:45:00
+    screeningDatetime: 2020-08-11T00:45:00+0300
+    calendarDateTime: 2020-08-10T20:45:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Karim Ainouz
+    screeningQaDuration: '20'
+    screeningTotalDuration: '159'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/gOAm4onOZHX
+-   screeningEventivalId: '2012'
+    filmEventivalId: '1012'
+    filmTitle: 'Tagaotsitav: Banksy!'
+    filmPath: banksy-most-wanted
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '16:00:00'
+    screeningDatetime: 2020-08-12T16:00:00+0300
+    calendarDateTime: 2020-08-12T12:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: '1'
+    screeningIntroPresenter: Filmi juhatab sisse tänavakunstifestivali Stencibility korraldaja Kadri Lind.
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Kadri Lind
+    screeningQaGuests: Aurelia Rouvier
+    screeningQaDuration: '20'
+    screeningTotalDuration: '110'
+-   screeningEventivalId: '2025'
+    filmEventivalId: '1012'
+    filmTitle: 'Tagaotsitav: Banksy!'
+    filmPath: banksy-most-wanted
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '18:00:00'
+    screeningDatetime: 2020-08-12T18:00:00+0300
+    calendarDateTime: 2020-08-12T14:00:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Kadri Lind
+    screeningQaGuests: Aurelia Rouvier
+    screeningQaDuration: '20'
+    screeningTotalDuration: '110'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/tWA94wCNQHB
+-   screeningEventivalId: '2013'
+    filmEventivalId: '1013'
+    filmTitle: Acasă, mu kodu
+    filmPath: acas-my-home
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '20:00:00'
+    screeningDatetime: 2020-08-12T20:00:00+0300
+    calendarDateTime: 2020-08-12T16:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: '1'
+    screeningIntroPresenter: Filmi juhatab sisse sotsiaalteadlane ja lõimumisvaldkonna ekspert Kristina Kallas.
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '86'
+-   screeningEventivalId: '2004'
+    filmEventivalId: '1004'
+    filmTitle: Õnnejumalanna
+    filmPath: the-goddess-of-fortune
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-12T22:00:00+0300
+    calendarDateTime: 2020-08-12T18:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '114'
+-   screeningEventivalId: '2026'
+    filmEventivalId: '1013'
+    filmTitle: Acasă, mu kodu
+    filmPath: acas-my-home
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-12T22:00:00+0300
+    calendarDateTime: 2020-08-12T18:00:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '86'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/Q-UvwJr_1Fy
+-   screeningEventivalId: '2020'
+    filmEventivalId: '1004'
+    filmTitle: Õnnejumalanna
+    filmPath: the-goddess-of-fortune
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-12'
+    screeningTime: '23:59:00'
+    screeningDatetime: 2020-08-12T23:59:00+0300
+    calendarDateTime: 2020-08-12T19:59:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '114'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/p_RoahriYln
+-   screeningEventivalId: '2005'
+    filmEventivalId: '1005'
+    filmTitle: Skeemitajad
+    filmPath: schemers
+    screeningSubtitles: eesti
+    screeningDate: '2020-08-13'
+    screeningTime: 00:15:00
+    screeningDatetime: 2020-08-13T00:15:00+0300
+    calendarDateTime: 2020-08-12T20:15:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Dave Mclean
+    screeningQaDuration: '20'
+    screeningTotalDuration: '111'
+-   screeningEventivalId: '2021'
+    filmEventivalId: '1005'
+    filmTitle: Skeemitajad
+    filmPath: schemers
+    screeningSubtitles: eesti
+    screeningDate: '2020-08-13'
+    screeningTime: 02:15:00
+    screeningDatetime: 2020-08-13T02:15:00+0300
+    calendarDateTime: 2020-08-12T22:15:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Dave Mclean
+    screeningQaDuration: '20'
+    screeningTotalDuration: '111'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/3M85InEnwNo
+-   screeningEventivalId: '2015'
+    filmEventivalId: '1015'
+    filmTitle: Lammas all paremas nurgas
+    filmPath: the-secret-lamb
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-13'
+    screeningTime: '16:00:00'
+    screeningDatetime: 2020-08-13T16:00:00+0300
+    calendarDateTime: 2020-08-13T12:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: '1'
+    screeningIntroPresenter: Publikuga kohtub näitleja Margus Alver.
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Dagmar Raudam
+    screeningQaGuests: Margus Alver
+    screeningQaDuration: '20'
+    screeningTotalDuration: '20'
+-   screeningEventivalId: '2017'
+    filmEventivalId: '1017'
+    filmTitle: Autoportree
+    filmPath: self-portrait
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-13'
+    screeningTime: '19:00:00'
+    screeningDatetime: 2020-08-13T19:00:00+0300
+    calendarDateTime: 2020-08-13T15:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '80'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/vhyNEvpWVEu
+-   screeningEventivalId: '2027'
+    filmEventivalId: '1017'
+    filmTitle: Autoportree
+    filmPath: self-portrait
+    screeningSubtitles: inglise
+    screeningDate: '2020-08-13'
+    screeningTime: '21:00:00'
+    screeningDatetime: 2020-08-13T21:00:00+0300
+    calendarDateTime: 2020-08-13T17:00:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '80'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/vhyNEvpWVEu
+-   screeningEventivalId: '2006'
+    filmEventivalId: '1006'
+    filmTitle: Tšempionid
+    filmPath: champions
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-13'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-13T22:00:00+0300
+    calendarDateTime: 2020-08-13T18:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '124'
+-   screeningEventivalId: '2022'
+    filmEventivalId: '1006'
+    filmTitle: Tšempionid
+    filmPath: champions
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-13'
+    screeningTime: '23:59:00'
+    screeningDatetime: 2020-08-13T23:59:00+0300
+    calendarDateTime: 2020-08-13T19:59:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '124'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/CTlJW8MpJoO
+-   screeningEventivalId: '2007'
+    filmEventivalId: '1007'
+    filmTitle: Yalda, andestuse öö
+    filmPath: yalda-a-night-for-forgiveness
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-14'
+    screeningTime: 00:10:00
+    screeningDatetime: 2020-08-14T00:10:00+0300
+    calendarDateTime: 2020-08-13T20:10:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Massoud Bakhshi
+    screeningQaDuration: '20'
+    screeningTotalDuration: '109'
+-   screeningEventivalId: '2014'
+    filmEventivalId: '1014'
+    filmTitle: Tormipoiss
+    filmPath: storm-boy
+    screeningSubtitles: eesti dublaaž
+    screeningDate: '2020-08-14'
+    screeningTime: '16:00:00'
+    screeningDatetime: 2020-08-14T16:00:00+0300
+    calendarDateTime: 2020-08-14T12:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: '1'
+    screeningIntroPresenter: Filmi juhatab sisse PÖFFi laste- ja noortefilmide festivali Just Film juht Mikk Granström.
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '99'
+-   screeningEventivalId: '2016'
+    filmEventivalId: '1016'
+    filmTitle: Marcel Duchamp ja võimalikkuse kunst
+    filmPath: marcel-duchamp-art-of-the-possible
+    screeningSubtitles: ''
+    screeningDate: '2020-08-14'
+    screeningTime: '19:00:00'
+    screeningDatetime: 2020-08-14T19:00:00+0300
+    calendarDateTime: 2020-08-14T15:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Athena Keskus
+    screeningHall: Kinosaal
+    screeningIntro: '1'
+    screeningIntroPresenter: Filmi juhatab sisse interdistsiplinaarne kunstnik ja Marcel Duchampi ekspert Kiwa.
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '86'
+-   screeningEventivalId: '2008'
+    filmEventivalId: '1008'
+    filmTitle: Harjumuse jõud
+    filmPath: force-of-habit
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-14'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-14T22:00:00+0300
+    calendarDateTime: 2020-08-14T18:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Suvi Blick
+    screeningQaDuration: '20'
+    screeningTotalDuration: '95'
+-   screeningEventivalId: '2009'
+    filmEventivalId: '1009'
+    filmTitle: Hape
+    filmPath: acid
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-14'
+    screeningTime: '23:59:00'
+    screeningDatetime: 2020-08-14T23:59:00+0300
+    calendarDateTime: 2020-08-14T19:59:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '97'
+-   screeningEventivalId: '2023'
+    filmEventivalId: '1008'
+    filmTitle: Harjumuse jõud
+    filmPath: force-of-habit
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-14'
+    screeningTime: '23:59:00'
+    screeningDatetime: 2020-08-14T23:59:00+0300
+    calendarDateTime: 2020-08-14T19:59:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '1'
+    screeningQaPresenter: Liisi Rohumäe
+    screeningQaGuests: Suvi Blick
+    screeningQaDuration: '20'
+    screeningTotalDuration: '95'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/6YlyCoW4ukl
+-   screeningEventivalId: '2024'
+    filmEventivalId: '1009'
+    filmTitle: Hape
+    filmPath: acid
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-15'
+    screeningTime: 01:59:00
+    screeningDatetime: 2020-08-15T01:59:00+0300
+    calendarDateTime: 2020-08-14T21:59:00+0300
+    screeningTown: ''
+    screeningCinema: Elisa Stage
+    screeningHall: Online
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: ''
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: '20'
+    screeningTotalDuration: '117'
+    screeningOnlineUrl: https://tartuff.elisastage.ee/landing/bc/1itBCSEM-O/uM-V8MMllbR
+-   screeningEventivalId: '2010'
+    filmEventivalId: '1010'
+    filmTitle: Viimane portree
+    filmPath: final-portrait
+    screeningSubtitles: eesti, inglise
+    screeningDate: '2020-08-15'
+    screeningTime: '22:00:00'
+    screeningDatetime: 2020-08-15T22:00:00+0300
+    calendarDateTime: 2020-08-15T18:00:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: ''
+    screeningIntroPresenter: ''
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '90'
+-   screeningEventivalId: '2011'
+    filmEventivalId: '1011'
+    filmTitle: Maudie
+    filmPath: maudie
+    screeningSubtitles: eesti
+    screeningDate: '2020-08-15'
+    screeningTime: '23:45:00'
+    screeningDatetime: 2020-08-15T23:45:00+0300
+    calendarDateTime: 2020-08-15T19:45:00+0300
+    screeningTown: Tartu
+    screeningCinema: Raekoja plats
+    screeningHall: ''
+    screeningIntro: '1'
+    screeningIntroPresenter: Filmi juhatab sisse Kanada saatkonna Tallinna esinduse juht Kairi-Liis Ustav
+    screeningIntroGuests: ''
+    screeningQa: '0'
+    screeningQaPresenter: ''
+    screeningQaGuests: ''
+    screeningQaDuration: ''
+    screeningTotalDuration: '115'
