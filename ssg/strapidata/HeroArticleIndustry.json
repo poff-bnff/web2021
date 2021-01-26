@@ -1,0 +1,141 @@
+[
+  {
+    "id": 1,
+    "article_et": null,
+    "article_en": {
+      "id": 108,
+      "title_et": null,
+      "title_en": "The winners of the Awards at Industry@Tallinn & Baltic Event are announced! ",
+      "title_ru": null,
+      "created_by": {
+        "id": 30,
+        "firstname": "Egle",
+        "lastname": "Loor",
+        "username": null
+      },
+      "updated_by": {
+        "id": 30,
+        "firstname": "Egle",
+        "lastname": "Loor",
+        "username": null
+      },
+      "created_at": "2020-11-26T18:03:46.208Z",
+<<<<<<< HEAD
+      "updated_at": "2020-11-27T09:32:03.592Z",
+=======
+      "updated_at": "2020-12-28T06:01:50.804Z",
+>>>>>>> parent of b1922739... delete starpidata .json files
+      "slug_et": null,
+      "slug_en": "the-winners-of-the-awards-at-industry-tallinn-and-baltic",
+      "slug_ru": null,
+      "lead_et": "",
+      "lead_en": "On November 26, Industry@Tallinn & Baltic Event rewarded the best projects after an exciting week full of online presentations, networking, panel discussions and meetings attracting more than 850 guests from all around the globe. \n\n10 Awards were given out in categories to projects in different stages of scriptwriting, development or post-production, 2 Awards went to promising producers. ",
+      "lead_ru": null,
+      "contents_et": null,
+<<<<<<< HEAD
+      "contents_en": "**MIDPOINT TV Launch HBO Europe Award** (5 000 USD) \n\nWinner: [*Afterparty*](https://industry.poff.ee/project/afterparty/) (Croatia) \nWriter: Dora Sustic \nProducer: Maja Pek-Bruenjes \n\nIn the words of Steve Matthews, who handed over the award on behalf of HBO Europe: \n“The difficulties of running the MIDPOINT programme online this year have certainly not resulted in any loss of quality: the participants all rose to the challenge with professionalism and innovation. As always this was a very difficult decision: several of the projects displayed extremely high levels of craft and attainment from teams who were collaborative and determined always to keep pushing themselves. But one stood out for having achieved those craft objectives, but which also displayed an additional spark of personal passion and the courage to explore difficult and controversial modern topics with great honesty. A writer’s job is to explore an issue, not to preach about it – and for that reason the winner of this years’ HBO Europe prize is AFTERPARTY.“ \n\n**SCRIPT POOL TALLINN 2020**\n\nScript Pool Film and TV Award for is given to an outstanding script in Film and TV series category (a 5 000 EUR). \n\n**Script Pool Film Award** \n\nWinner: [*20,000 Species of Bees*](https://industry.poff.ee/project/20-000-species-of-bees/)\nScreenwriter Estibaliz Urresola Solaguren \nProduction company: Gariza Films and Sirimiri Films. Spain \nComment from the jury: \nWe were enchanted by the world writer/director Estibaliz Urresola Solaguren created in this poignant and personal journey of young Lucia making the biggest decision of her life during a hot summer holiday in rural Spain. We were especially impressed by Solaguren’s characters and her strong vision of the story, it’s allegories and it’s setting. We hope that winning the Black Nights Film Festival Script Pool 2020 prize helps this project to advance from development to production and we look forward to seeing it in competition at major film festivals in 2022! \n\n**Script Pool TV Award** \n\nWinner: [*When You Fall*](https://industry.poff.ee/project/when-you-fall/)\nScriptwriter: Biljana Crvenkovska \nProduction company: OXO Production. North Macedonia \nComment from the jury: \nThe creators of the winning project have meticulously researched the world in which their story is based, immersing themselves deeply into this world that they want to create, and bringing a unique local viewpoint, while also weaving in themes that will resonate beyond their own borders.  \nThey have put a lot of thought not just into the story that they want to tell on the page, but into how they might better reach their intended audience online and make them fall in love with the characters, whilst also making an impact on their lives for the better. \nCrucially, we were also delighted to see some diversity in the characters, which was woven into the plot in a very natural way. \nFinally, we felt that the writer and producers’ passion for their subject matter leapt off the page, creating a show that hooks you from the beginning with intriguing believable characters and a layered mystery that is slowly unpeeled across the series. \n\nScript Pool Film Jury included Patrick Fisher, managing director of Creative Capital, Patrik Andersson, Producer of Midsommar (2019), Euphoria (2017), Agathe Maurac (Head of International Sales at Pyramide International. \n\nThe Script Pool TV/drama jury included Julie Hodge, Fremantle, Editorial Director at Global Drama, Anna Katharina Brehm, Production and Content Director at Seriencamp Conference, Toomas Ili (Head Of Content Acquisitions, Elisa). \n\n**WORKS IN PROGRESS AWARDS**  \n\nThe 6th edition of International Works in Progress 18 projects in 3 categories presented. Based on the decision of the jury, the Post Production Award was shared between two projects as well as the Baltic Event Works in Progress Award. \n\n**The Post Production Award** \n\nBoth of the projects will receive post-production services in the amount of up to 5 000 Euros at Post Control, the leading Finnish post production house. The award is given to the project which successfully combines creative and commercial potential. \n\nWinner: [*Kalev*](https://industry.poff.ee/project/kalev/), directed by Ove Musting \nProducers: Pille Rünk, Maria Avdjushko \nProduction company: Allfilm, Ugri Film, Estonia. \nJury comment:  Kalev is a promising first feature film based on true events narrated through the lens of sport and its competitive spirit, who follows the paths of a generation which had to face the collapse of USSR and the challenges of a new independence for their own nation. \n\nWinner: [*Nuuccha*](https://industry.poff.ee/project/nuuccha/), directed by Vladimir Munkuev \nProducers: Aleksandr Plotnikov, Boris Khlebnikov, Valeriy Fedorovich, Evgeniy Nikishov, Albert Ryabyshev, Andrei Ushatskiy \nProduction company: Look Film, The Place of Power, R-Media, Russia \nJury comment: Nuuccha is a compelling debut from Russia by Vladimir Munkuev, spearheaded by Boris Khlebnikov, which triggered our interested to see the completed film, shoot in the challenging beauty of Yakut on the big screen as soon as possible. \n\n**The Baltic Event Works in Progress Award**\n\nThe Baltic Event Works in Progress Award, (1500 Euros) is given to projects that stand out with the strongest and boldest artistic vision. The award will help the film gain visibility during its promotion and distribution in the Baltic States by covering related costs in the region.  \n\nWinner: [*I Am Fine, Thanks*](https://industry.poff.ee/project/i-am-fine-thanks/), directed by Ernestas Jankauskas \nProducers: Gabija Siurbytė, Greta Akcijonaitė \nProduction company: Dansu films, Lithuania \nJury comment: I Am Fine, Thanks by talented Lithuanian helmer Ernestas Jankauska, who creates with his dedicated team a thoughtful artistic daring vision of an important, but in our society often neglected and seldom discussed topic: panic attack driven protagonist Maria is portrayed with a convincing visual concept — starting from the poster, ending with the intense DoP work. \n\nWinner: [*Neon Spring*](https://industry.poff.ee/project/neon-spring/), directed by Matīss Kaža \nProducers: Dace Siatkovska, Matīss Kaža \nProduction company: Deep Sea Studios. Latvia \nJury comment: Neon Spring is a young and contemporary story full of honesty and struggles that portrays the dichotomy between the promising and exciting youth of a teenager discovering her own future and the harsh reality of a broken relationship with her parents and the nude cruelty of an imperfect world far from Instagram pictures. \n\n**Just Film Works in Progress Award**\nYouth and Children’s Film Festival Just Film is the biggest sub-festival of Tallinn Black Nights Film Festivals. \nThe award-winner receives 1000 EUR monetary prize to help the film gain visibility by covering promotion and publicity costs. \n\nWinner: [*The Sleeping Beast*](https://industry.poff.ee/project/the-sleeping-beast/) by Jaak Kilmi \nProducers: Evelin Penttilä \nCo-producer: Roberts Vinovskis \nProduction companies: Stellar Film, Studio Locomotive. Estonia, Latvia. \n\nJury of Works in Progress in 2020 included Isabel Ivars-Sancho,Films Boutique, festivals & sales, \nIlaria Gomarasca, Head of First Cut+, Nikolaj Nikitin, Artistic Director Febiofest & Head of Studies and CEO of SOFA - School of Film Advancement \n\nJury of Just Film Works in Progress in 2020 consisted of Per Eriksson, Head of the Swedish Federation of Film Societies, Olaf Wehowsky, Festival Manager of LUCAS – International Festival for Young Film Lovers, Guy Davies - Film Director (Philophobia) \n \n**BALTIC EVENT CO-PRODUCTION MARKET AWARDS**\n\n20 projects were presented in the official selection of the 19th edition of Co-Production Market at Industry@Tallinn & Baltic Event \n\n**Eurimages Co-Production Development Award**\nThe award of 20 000 Euros was given to the best project based on its artistic quality and potential for theatrical release. \n\nWinner: [*Electric Sleep*](https://industry.poff.ee/project/electric-sleep/), written and directed by Zeynep Dadak \nProducer: Titus Kreyenberg \nProduction company: unafilm, Germany \nJury statement: \n“The jury was seduced by the originality of the topic and strongly believes that this talented young female director will manage to integrate a complex multi-layered content into a straightforward genre film.” \n\n**Screen International Best Pitch Award** (offering coverage of the winning film) \n\nWinner: [*Tasty*](https://industry.poff.ee/project/tasty/), written and directed by Egle Vertelyte \nProduced by Lukas Trimonis \nProduction Company: Inscript, Lithuania \n\n**Marché du Film Producers’ Network Award 2021** (for Promising Young Producer with free accreditations to next year’s edition) \n\nWinners: Laura McNicholas, 925 Productions, Ireland and Marina Naumova, Garpastum Pictures, Russia \n\nThe Eurimages Jury included Elena Kotova, Eurimages representative, Czech Republic, Renata Santoro, Head of Programming, Giornate Degli Autori, Italy, Kaarle Aho, producer, Making Movies Oy, Finland \n \n[Check the photo gallery of the online Awards Ceremony](https://www.flickr.com/photos/poffihunt/albums/72157717058946681)\n\nCongratulations to all the winners at Industry@Tallinn & Baltic Event 2020! \n\n  \n\n \n\n ",
+=======
+      "contents_en": "**MIDPOINT TV Launch HBO Europe Award** (5 000 USD) \n\nWinner: [*Afterparty*](https://industry.poff.ee/project/afterparty/) (Croatia) \nWriter: Dora Sustic \nProducer: Maja Pek-Bruenjes \n\nIn the words of Steve Matthews, who handed over the award on behalf of HBO Europe: \n“The difficulties of running the MIDPOINT programme online this year have certainly not resulted in any loss of quality: the participants all rose to the challenge with professionalism and innovation. As always this was a very difficult decision: several of the projects displayed extremely high levels of craft and attainment from teams who were collaborative and determined always to keep pushing themselves. But one stood out for having achieved those craft objectives, but which also displayed an additional spark of personal passion and the courage to explore difficult and controversial modern topics with great honesty. A writer’s job is to explore an issue, not to preach about it – and for that reason the winner of this years’ HBO Europe prize is AFTERPARTY.“ \n\n**SCRIPT POOL TALLINN 2020**\n\nScript Pool Film and TV Award for is given to an outstanding script in Film and TV series category (a 5 000 EUR). \n\n**Script Pool Film Award** \n\nWinner: [*20,000 Species of Bees*](https://industry.poff.ee/project/20-000-species-of-bees/)\nScreenwriter Estibaliz Urresola Solaguren \nProduction company: Gariza Films and Sirimiri Films. Spain \nComment from the jury: \nWe were enchanted by the world writer/director Estibaliz Urresola Solaguren created in this poignant and personal journey of young Lucia making the biggest decision of her life during a hot summer holiday in rural Spain. We were especially impressed by Solaguren’s characters and her strong vision of the story, it’s allegories and it’s setting. We hope that winning the Black Nights Film Festival Script Pool 2020 prize helps this project to advance from development to production and we look forward to seeing it in competition at major film festivals in 2022! \n\n**Script Pool TV Award** \n\nWinner: [*When You Fall*](https://industry.poff.ee/project/when-you-fall/)\nScriptwriter: Biljana Crvenkovska \nProduction company: OXO Production. North Macedonia \nComment from the jury: \nThe creators of the winning project have meticulously researched the world in which their story is based, immersing themselves deeply into this world that they want to create, and bringing a unique local viewpoint, while also weaving in themes that will resonate beyond their own borders.  \nThey have put a lot of thought not just into the story that they want to tell on the page, but into how they might better reach their intended audience online and make them fall in love with the characters, whilst also making an impact on their lives for the better. \nCrucially, we were also delighted to see some diversity in the characters, which was woven into the plot in a very natural way. \nFinally, we felt that the writer and producers’ passion for their subject matter leapt off the page, creating a show that hooks you from the beginning with intriguing believable characters and a layered mystery that is slowly unpeeled across the series. \n\nScript Pool Film Jury included Patrick Fisher, managing director of Creative Capital, Patrik Andersson, Producer of Midsommar (2019), Euphoria (2017), Agathe Maurac (Head of International Sales at Pyramide International. \n\nThe Script Pool TV/drama jury included Julie Hodge, Fremantle, Editorial Director at Global Drama, Anna Katharina Brehm, Production and Content Director at Seriencamp Conference, Toomas Ili (Head Of Content Acquisitions, Elisa). \n\n**WORKS IN PROGRESS AWARDS**  \n\nThe 6th edition of International Works in Progress 18 projects in 3 categories presented. Based on the decision of the jury, the Post Production Award was shared between two projects as well as the Baltic Event Works in Progress Award. \n\n**The Post Production Award** \n\nBoth of the projects will receive post-production services in the amount of up to 5 000 Euros at Post Control, the leading Finnish post production house, but not more than 2/3 of the expenses incurred at Post Control. The award is given to the project which successfully combines creative and commercial potential.\n\nWinner: [*Kalev*](https://industry.poff.ee/project/kalev/), directed by Ove Musting \nProducers: Pille Rünk, Maria Avdjushko \nProduction company: Allfilm, Ugri Film, Estonia. \nJury comment:  Kalev is a promising first feature film based on true events narrated through the lens of sport and its competitive spirit, who follows the paths of a generation which had to face the collapse of USSR and the challenges of a new independence for their own nation. \n\nWinner: [*Nuuccha*](https://industry.poff.ee/project/nuuccha/), directed by Vladimir Munkuev \nProducers: Aleksandr Plotnikov, Boris Khlebnikov, Valeriy Fedorovich, Evgeniy Nikishov, Albert Ryabyshev, Andrei Ushatskiy \nProduction company: Look Film, The Place of Power, R-Media, Russia \nJury comment: Nuuccha is a compelling debut from Russia by Vladimir Munkuev, spearheaded by Boris Khlebnikov, which triggered our interested to see the completed film, shoot in the challenging beauty of Yakut on the big screen as soon as possible. \n\n**The Baltic Event Works in Progress Award**\n\nThe Baltic Event Works in Progress Award, (1500 Euros) is given to projects that stand out with the strongest and boldest artistic vision. The award will help the film gain visibility during its promotion and distribution in the Baltic States by covering related costs in the region.  \n\nWinner: [*I Am Fine, Thanks*](https://industry.poff.ee/project/i-am-fine-thanks/), directed by Ernestas Jankauskas \nProducers: Gabija Siurbytė, Greta Akcijonaitė \nProduction company: Dansu films, Lithuania \nJury comment: I Am Fine, Thanks by talented Lithuanian helmer Ernestas Jankauska, who creates with his dedicated team a thoughtful artistic daring vision of an important, but in our society often neglected and seldom discussed topic: panic attack driven protagonist Maria is portrayed with a convincing visual concept — starting from the poster, ending with the intense DoP work. \n\nWinner: [*Neon Spring*](https://industry.poff.ee/project/neon-spring/), directed by Matīss Kaža \nProducers: Dace Siatkovska, Matīss Kaža \nProduction company: Deep Sea Studios. Latvia \nJury comment: Neon Spring is a young and contemporary story full of honesty and struggles that portrays the dichotomy between the promising and exciting youth of a teenager discovering her own future and the harsh reality of a broken relationship with her parents and the nude cruelty of an imperfect world far from Instagram pictures. \n\n**Just Film Works in Progress Award**\nYouth and Children’s Film Festival Just Film is the biggest sub-festival of Tallinn Black Nights Film Festivals. \nThe award-winner receives 1000 EUR monetary prize to help the film gain visibility by covering promotion and publicity costs. \nJury comment: This one particular pitch convinced us, because of a very intriguing scene that shows a wonderful cast of child actors. A quite intense situation that’s somewhat casually narrated. Aiming at the age group of children between 10-12, this film seems to be a promising way to create awareness for ethical problems, to discuss what is right and what is wrong. \n\nWinner: [*The Sleeping Beast*](https://industry.poff.ee/project/the-sleeping-beast/) by Jaak Kilmi \nProducers: Evelin Penttilä \nCo-producer: Roberts Vinovskis \nProduction companies: Stellar Film, Studio Locomotive. Estonia, Latvia. \n\nJury of Works in Progress in 2020 included Isabel Ivars-Sancho,Films Boutique, festivals & sales, \nIlaria Gomarasca, Head of First Cut+, Nikolaj Nikitin, Artistic Director Febiofest & Head of Studies and CEO of SOFA - School of Film Advancement \n\nJury of Just Film Works in Progress in 2020 consisted of Per Eriksson, Head of the Swedish Federation of Film Societies, Olaf Wehowsky, Festival Manager of LUCAS – International Festival for Young Film Lovers, Guy Davies - Film Director (Philophobia) \n \n**BALTIC EVENT CO-PRODUCTION MARKET AWARDS**\n\n20 projects were presented in the official selection of the 19th edition of Co-Production Market at Industry@Tallinn & Baltic Event \n\n**Eurimages Co-Production Development Award**\nThe award of 20 000 Euros was given to the best project based on its artistic quality and potential for theatrical release. \n\nWinner: [*Electric Sleep*](https://industry.poff.ee/project/electric-sleep/), written and directed by Zeynep Dadak \nProducer: Titus Kreyenberg \nProduction company: unafilm, Germany \nJury statement: \n“The jury was seduced by the originality of the topic and strongly believes that this talented young female director will manage to integrate a complex multi-layered content into a straightforward genre film.” \n\n**Screen International Best Pitch Award** (offering coverage of the winning film) \n\nWinner: [*Tasty*](https://industry.poff.ee/project/tasty/), written and directed by Egle Vertelyte \nProduced by Lukas Trimonis \nProduction Company: Inscript, Lithuania \n\n**Marché du Film Producers’ Network Award 2021** (for Promising Young Producer with free accreditations to next year’s edition) \n\nWinners: Laura McNicholas, 925 Productions, Ireland and Marina Naumova, Garpastum Pictures, Russia \n\nThe Eurimages Jury included Elena Kotova, Eurimages representative, Czech Republic, Renata Santoro, Head of Programming, Giornate Degli Autori, Italy, Kaarle Aho, producer, Making Movies Oy, Finland \n \n[Check the photo gallery of the online Awards Ceremony](https://www.flickr.com/photos/poffihunt/albums/72157717058946681)\n\nCongratulations to all the winners at Industry@Tallinn & Baltic Event 2020! \n\n  \n\n \n\n ",
+>>>>>>> parent of b1922739... delete starpidata .json files
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": null,
+      "publish_en": true,
+      "publish_ru": null,
+      "media": {
+        "id": 379,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3792,
+            "name": "ind.winners.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 800,
+            "height": 528,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_50651309358_ea4e064ce3_c_2b15b29b01.jpg",
+                "hash": "thumbnail_50651309358_ea4e064ce3_c_2b15b29b01",
+                "mime": "image/jpeg",
+                "name": "thumbnail_50651309358_ea4e064ce3_c.jpg",
+                "path": null,
+                "size": 7.5,
+                "width": 236,
+                "height": 156
+              }
+            },
+            "hash": "50651309358_ea4e064ce3_c_2b15b29b01",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 111.85,
+            "url": "/uploads/50651309358_ea4e064ce3_c_2b15b29b01.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 30,
+            "updated_by": 30,
+            "created_at": "2020-11-27T09:29:13.090Z",
+            "updated_at": "2020-11-27T09:29:23.570Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": [],
+      "industry_people": [],
+      "people": []
+    },
+    "article_ru": null,
+    "created_by": {
+      "id": 2,
+      "firstname": "Mariann",
+      "lastname": "Tapfer",
+      "username": null
+    },
+    "updated_by": {
+      "id": 30,
+      "firstname": "Egle",
+      "lastname": "Loor",
+      "username": null
+    },
+    "created_at": "2020-10-26T09:35:33.861Z",
+    "updated_at": "2020-11-30T07:47:06.653Z"
+  }
+]

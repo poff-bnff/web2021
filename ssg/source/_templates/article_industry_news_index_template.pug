@@ -1,0 +1,139 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+
+
+block content
+    - var assetsDir = 'https://assets.poff.ee/img/'
+    if self.publish
+        - var currentTime = new Date()
+            if typeof(self.publishFrom) === 'undefined'
+                - var publishFrom= new Date(self.created_at)
+            else
+                - var publishFrom= new Date(self.publishFrom)
+
+            if self.publishUntil
+                - var publishUntil = new Date(self.publishUntil)
+
+            if (currentTime > publishFrom)
+                if (!publishUntil || (publishUntil && (publishUntil > currentTime)))
+
+                    - var splitSelfPath = self.path.split("/")[self.path.split("/").length-1]
+
+                    if self.title
+                        +tabname(self.title)
+
+                    section.grid_article
+                        section.article_hero_head
+                            if self.media && self.media.image && self.media.image[0]
+                                img(src=`${assetsDir}${self.media.image[0].hash}${self.media.image[0].ext}`).article_hero_image
+                            else if self.media && self.media.imageDefault && self.media.imageDefault[0]
+                                img(src=`${assetsDir}${self.media.imageDefault[0].hash}${self.media.imageDefault[0].ext}`).article_hero_image
+                            else
+                                img(src='/assets/img/static/placeholder_hd_1.jpg').article_hero_image
+                        if self.title
+                            .article_hero_headline_box
+                                .article_title_detailed= self.title
+
+                    section.grid_article
+                        section.article_meta
+                            .str_info_meta_gi
+                                    if self.articleType
+                                        .str_info_meta_item
+                                            .str_info_meta_value.dark_1= self.articleType
+
+                                    if self.web_authors
+                                        .str_info_meta_item
+                                            - var authors = []
+                                            each author in self.web_authors
+                                                - authors.push(author.name)
+                                            .str_info_meta_value.dark_1= authors.join(', ')
+                                    else
+                                        .str_info_meta_item
+                                            .str_info_meta_value.dark_1= `${self.created_by.firstname} ${self.created_by.lastname}`
+
+                                    if self.publishFrom
+                                        .str_info_meta_item
+                                            .str_info_meta_value.dark_1
+                                                +localdatetime(self.publishFrom)
+                                    else
+                                        .str_info_meta_item
+                                            .str_info_meta_value.dark_1
+                                                +localdatetime(self.created_at)
+
+                                    .str_info_meta_item
+                                        - var tagsList = []
+                                        if self.tag_premiere_types
+                                            - self.tag_premiere_types.forEach(element => tagsList.push(element));
+                                        if self.tag_programmes
+                                            - self.tag_programmes.forEach(element => tagsList.push(element));
+                                        if self.tag_genres
+                                            - self.tag_genres.forEach(element => tagsList.push(element));
+                                        if self.tag_keywords
+                                            - self.tag_keywords.forEach(element => tagsList.push(element));
+
+                                        if tagsList.length > 0
+                                            .str_info_meta_keywords.ghost_blue= tagsList.join(', ')
+
+
+                        section.article_contents.dark_1
+                            if typeof(self.lead) !== 'object'
+                                +format(self.lead).font_weight_600.dark_1
+                            //- if self.lead
+                            //-     p.font_weight_600.dark_1= self.lead
+                            //- p= self.articleContents_et
+                            if typeof(self.contents) !== 'object'
+                                +format(self.contents).dark_1
+
+
+                        section.article_extra
+
+
+        //- section.team
+        //-     if self.industry_people
+        //-         h1.sub_section_headline= 'Industry people'
+        //-         .sub_team
+        //-             each indPerson in self.industry_people
+        //-                 if indPerson.slug
+        //-                     .person
+        //-                         .person_head
+        //-                             a(href=`/${indPerson.slug}`)
+        //-                                 if indPerson.profilePicAtInd
+        //-                                     - var indPersonPic = assetsDir + indPerson.profilePicAtInd.hash + indPerson.profilePicAtInd.ext
+        //-                                 else if indPerson.person.picture
+        //-                                     - var indPersonPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+        //-                                 else
+        //-                                     - var indPersonPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+        //-                                 img.person_img(src=indPersonPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+
+        //-                                 .person_body.text_center
+        //-                                     h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+        //-                                     p
+        //-                                         if indPerson.role_at_films
+        //-                                             span= indPerson.role_at_films.map(role => role.roleName).join(', ')
+        //-                                             br
+        //-                                         if indPerson.industry_person_types
+        //-                                             span= indPerson.industry_person_types.map(type => type.type).join(', ')
+
+
+
+        //-     if self.people
+        //-         h1.sub_section_headline= 'People'
+        //-         .sub_team
+        //-             each person in self.people
+        //-                 .person
+        //-                     .person_head
+        //-                         if person.picture
+        //-                             - var personPic = assetsDir + person.picture.hash + person.picture.ext
+        //-                         else
+        //-                             - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+        //-                         img.person_img(src=personPic alt=`${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`)
+
+        //-                         .person_body.text_center
+        //-                             h4.text_center= `${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`
+        //-                             p
+        //-                                 if person.role_at_films
+        //-                                     span= person.role_at_films.map(role => role.roleName).join(', ')
+        //-                                     br
+        //-                                 if person.industry_person_types
+        //-                                     span= person.industry_person_types.map(type => type.type).join(', ')

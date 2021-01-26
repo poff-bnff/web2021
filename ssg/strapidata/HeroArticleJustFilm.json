@@ -1,0 +1,460 @@
+[
+  {
+    "id": 1,
+    "article_et": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+<<<<<<< HEAD
+        "id": 5,
+        "firstname": "Martin",
+        "lastname": "Pennaste",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2020-10-27T18:43:23.754Z",
+=======
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+>>>>>>> parent of b1922739... delete starpidata .json files
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+<<<<<<< HEAD
+            "id": 1030,
+            "name": "JF_web_1920x600_2_x12_10.jpg",
+=======
+            "id": 3830,
+            "name": "JF_web_1920x600_2021.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+<<<<<<< HEAD
+                "url": "/uploads/thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2_x12_10.jpg",
+                "path": null,
+                "size": 6.95,
+=======
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021.jpg",
+                "path": null,
+                "size": 6.93,
+>>>>>>> parent of b1922739... delete starpidata .json files
+                "width": 245,
+                "height": 77
+              }
+            },
+<<<<<<< HEAD
+            "hash": "JF_web_1920x600_2_x12_10_af0a3431a8",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 879.59,
+            "url": "/uploads/JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+=======
+            "hash": "JF_web_1920x600_2021_b65c4ae35a",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 14,
+            "updated_by": 14,
+<<<<<<< HEAD
+            "created_at": "2020-10-12T07:40:42.934Z",
+            "updated_at": "2020-10-12T07:40:43.027Z"
+=======
+            "created_at": "2021-01-12T11:27:56.644Z",
+            "updated_at": "2021-01-12T11:27:57.156Z"
+>>>>>>> parent of b1922739... delete starpidata .json files
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "article_en": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+<<<<<<< HEAD
+        "id": 5,
+        "firstname": "Martin",
+        "lastname": "Pennaste",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2020-10-27T18:43:23.754Z",
+=======
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+>>>>>>> parent of b1922739... delete starpidata .json files
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+<<<<<<< HEAD
+            "id": 1030,
+            "name": "JF_web_1920x600_2_x12_10.jpg",
+=======
+            "id": 3830,
+            "name": "JF_web_1920x600_2021.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+<<<<<<< HEAD
+                "url": "/uploads/thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2_x12_10.jpg",
+                "path": null,
+                "size": 6.95,
+=======
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021.jpg",
+                "path": null,
+                "size": 6.93,
+>>>>>>> parent of b1922739... delete starpidata .json files
+                "width": 245,
+                "height": 77
+              }
+            },
+<<<<<<< HEAD
+            "hash": "JF_web_1920x600_2_x12_10_af0a3431a8",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 879.59,
+            "url": "/uploads/JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+=======
+            "hash": "JF_web_1920x600_2021_b65c4ae35a",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 14,
+            "updated_by": 14,
+<<<<<<< HEAD
+            "created_at": "2020-10-12T07:40:42.934Z",
+            "updated_at": "2020-10-12T07:40:43.027Z"
+=======
+            "created_at": "2021-01-12T11:27:56.644Z",
+            "updated_at": "2021-01-12T11:27:57.156Z"
+>>>>>>> parent of b1922739... delete starpidata .json files
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "article_ru": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+<<<<<<< HEAD
+        "id": 5,
+        "firstname": "Martin",
+        "lastname": "Pennaste",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2020-10-27T18:43:23.754Z",
+=======
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+>>>>>>> parent of b1922739... delete starpidata .json files
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+<<<<<<< HEAD
+            "id": 1030,
+            "name": "JF_web_1920x600_2_x12_10.jpg",
+=======
+            "id": 3830,
+            "name": "JF_web_1920x600_2021.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+<<<<<<< HEAD
+                "url": "/uploads/thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2_x12_10_af0a3431a8",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2_x12_10.jpg",
+                "path": null,
+                "size": 6.95,
+=======
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021.jpg",
+                "path": null,
+                "size": 6.93,
+>>>>>>> parent of b1922739... delete starpidata .json files
+                "width": 245,
+                "height": 77
+              }
+            },
+<<<<<<< HEAD
+            "hash": "JF_web_1920x600_2_x12_10_af0a3431a8",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 879.59,
+            "url": "/uploads/JF_web_1920x600_2_x12_10_af0a3431a8.jpg",
+=======
+            "hash": "JF_web_1920x600_2021_b65c4ae35a",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a.jpg",
+>>>>>>> parent of b1922739... delete starpidata .json files
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_by": 14,
+            "updated_by": 14,
+<<<<<<< HEAD
+            "created_at": "2020-10-12T07:40:42.934Z",
+            "updated_at": "2020-10-12T07:40:43.027Z"
+=======
+            "created_at": "2021-01-12T11:27:56.644Z",
+            "updated_at": "2021-01-12T11:27:57.156Z"
+>>>>>>> parent of b1922739... delete starpidata .json files
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_by": 6,
+          "updated_by": 1,
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "created_by": {
+      "id": 14,
+      "firstname": "Heleen",
+      "lastname": "Sutt",
+      "username": null
+    },
+    "updated_by": {
+      "id": 14,
+      "firstname": "Heleen",
+      "lastname": "Sutt",
+      "username": null
+    },
+    "created_at": "2020-09-21T11:50:01.877Z",
+    "updated_at": "2020-09-21T11:50:01.891Z"
+  }
+]

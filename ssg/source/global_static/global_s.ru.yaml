@@ -1,0 +1,20 @@
+siteTitle: PÖFF
+root: /ru/
+language:
+    et: eesti
+    en: english
+    ru: русский
+navigation:
+    -
+        url: /riigid/
+        title: Riigid
+    -
+        url: /keeled/
+        title: Keeled
+search:
+    url: /ru/poisk/
+    text: |
+        ### Поиск
+    placeholder: введите →
+    button: Искать
+

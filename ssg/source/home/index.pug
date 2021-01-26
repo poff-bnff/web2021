@@ -1,0 +1,91 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if process.env['DOMAIN'] === 'justfilm.ee'
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_just.pug
+
+        //- section.kuuekas
+        include /_templates/home_templates/sixfilms_just.pug
+
+        include /_templates/home_templates/sponsor_banner.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_just.pug
+
+        //- section.viiekas
+        //-     include /_templates/home_templates/viiekas_just.pug
+
+
+
+    else if process.env['DOMAIN'] === 'shorts.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_shorts.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_shorts.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_shorts.pug
+
+    else if process.env['DOMAIN'] === 'kinoff.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_kinoff.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_kinoff.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_kinoff.pug
+
+    else if process.env['DOMAIN'] === 'industry.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_industry.pug
+
+        include /_templates/industry_channels_calendar.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_industry.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_industry.pug
+
+        include /_templates/home_templates/industry_banner.pug
+
+    else
+        //- POFF
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_poff.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_poff.pug
+
+        include /_templates/home_templates/poff_banner_toetajad.pug
+
+        //- include /_templates/home_templates/sponsorriba_1.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_poff.pug
+
+        include /_templates/home_templates/poff_banner_partnerid.pug
+
+        include /_templates/home_templates/poff_banner.pug

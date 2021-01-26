@@ -1,0 +1,148 @@
+-   calendarDate: '2020-08-10'
+    cinemas:
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: invisible-life-of-eurdice-gusmo
+            filmTitle: Invisible Life of Eurídice Gusmão
+            screeningDatetime: 2020-08-10T22:45:00+0300
+            screeningTime: '22:45:00'
+    -   cinema: Elisa Stage
+        screenings:
+        -   filmPath: invisible-life-of-eurdice-gusmo
+            filmTitle: Invisible Life of Eurídice Gusmão
+            screeningDatetime: 2020-08-11T00:45:00+0300
+            screeningTime: 00:45:00
+-   calendarDate: '2020-08-11'
+    cinemas:
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: flawless
+            filmTitle: Flawless
+            screeningDatetime: 2020-08-11T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: house-of-hummingbird
+            filmTitle: House of Hummingbird
+            screeningDatetime: 2020-08-12T00:10:00+0300
+            screeningTime: 00:10:00
+    -   cinema: Elisa Stage
+        screenings:
+        -   filmPath: flawless
+            filmTitle: Flawless
+            screeningDatetime: 2020-08-11T23:59:00+0300
+            screeningTime: '23:59:00'
+-   calendarDate: '2020-08-12'
+    cinemas:
+    -   cinema: Athena Center
+        screenings:
+        -   filmPath: banksy-most-wanted
+            filmTitle: Banksy Most Wanted
+            screeningDatetime: 2020-08-12T16:00:00+0300
+            screeningTime: '16:00:00'
+        -   filmPath: acas-my-home
+            filmTitle: Acasă, My Home
+            screeningDatetime: 2020-08-12T20:00:00+0300
+            screeningTime: '20:00:00'
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: the-goddess-of-fortune
+            filmTitle: The Goddess of Fortune
+            screeningDatetime: 2020-08-12T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: schemers
+            filmTitle: Schemers
+            screeningDatetime: 2020-08-13T00:15:00+0300
+            screeningTime: 00:15:00
+    -   cinema: Elisa Stage
+        screenings:
+        -   filmPath: banksy-most-wanted
+            filmTitle: Banksy Most Wanted
+            screeningDatetime: 2020-08-12T18:00:00+0300
+            screeningTime: '18:00:00'
+        -   filmPath: acas-my-home
+            filmTitle: Acasă, My Home
+            screeningDatetime: 2020-08-12T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: the-goddess-of-fortune
+            filmTitle: The Goddess of Fortune
+            screeningDatetime: 2020-08-12T23:59:00+0300
+            screeningTime: '23:59:00'
+        -   filmPath: schemers
+            filmTitle: Schemers
+            screeningDatetime: 2020-08-13T02:15:00+0300
+            screeningTime: 02:15:00
+-   calendarDate: '2020-08-13'
+    cinemas:
+    -   cinema: Athena Center
+        screenings:
+        -   filmPath: the-secret-lamb
+            filmTitle: The Secret Lamb
+            screeningDatetime: 2020-08-13T16:00:00+0300
+            screeningTime: '16:00:00'
+        -   filmPath: self-portrait
+            filmTitle: Self Portrait
+            screeningDatetime: 2020-08-13T19:00:00+0300
+            screeningTime: '19:00:00'
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: champions
+            filmTitle: Champions
+            screeningDatetime: 2020-08-13T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: yalda-a-night-for-forgiveness
+            filmTitle: Yalda, a Night for Forgiveness
+            screeningDatetime: 2020-08-14T00:10:00+0300
+            screeningTime: 00:10:00
+    -   cinema: Elisa Stage
+        screenings:
+        -   filmPath: self-portrait
+            filmTitle: Self Portrait
+            screeningDatetime: 2020-08-13T21:00:00+0300
+            screeningTime: '21:00:00'
+        -   filmPath: champions
+            filmTitle: Champions
+            screeningDatetime: 2020-08-13T23:59:00+0300
+            screeningTime: '23:59:00'
+-   calendarDate: '2020-08-14'
+    cinemas:
+    -   cinema: Athena Center
+        screenings:
+        -   filmPath: storm-boy
+            filmTitle: Storm Boy
+            screeningDatetime: 2020-08-14T16:00:00+0300
+            screeningTime: '16:00:00'
+        -   filmPath: marcel-duchamp-art-of-the-possible
+            filmTitle: 'Marcel Duchamp: Art of the Possible'
+            screeningDatetime: 2020-08-14T19:00:00+0300
+            screeningTime: '19:00:00'
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: force-of-habit
+            filmTitle: Force of Habit
+            screeningDatetime: 2020-08-14T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: acid
+            filmTitle: Acid
+            screeningDatetime: 2020-08-14T23:59:00+0300
+            screeningTime: '23:59:00'
+    -   cinema: Elisa Stage
+        screenings:
+        -   filmPath: force-of-habit
+            filmTitle: Force of Habit
+            screeningDatetime: 2020-08-14T23:59:00+0300
+            screeningTime: '23:59:00'
+        -   filmPath: acid
+            filmTitle: Acid
+            screeningDatetime: 2020-08-15T01:59:00+0300
+            screeningTime: 01:59:00
+-   calendarDate: '2020-08-15'
+    cinemas:
+    -   cinema: Town Hall Square
+        screenings:
+        -   filmPath: final-portrait
+            filmTitle: Final Portrait
+            screeningDatetime: 2020-08-15T22:00:00+0300
+            screeningTime: '22:00:00'
+        -   filmPath: maudie
+            filmTitle: Maudie
+            screeningDatetime: 2020-08-15T23:45:00+0300
+            screeningTime: '23:45:00'

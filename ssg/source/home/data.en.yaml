@@ -1,0 +1,17 @@
+path: ''
+data:
+    # screeningsCalendar: /film/screeningsCalendar.en.yaml
+    heroArticle: /_fetchdir/heroarticle.en.yaml
+    articleTrioBlock: /_fetchdir/articletrioblock.en.yaml
+    sixFilms: /_fetchdir/sixfilms.en.yaml
+    articles: /_fetchdir/articles.en.yaml
+    industryevents: /_fetchdir/industryevents.en.yaml
+    channels: /_fetchdir/channels.en.yaml
+
+frontpageText: '10 films of Tartuff 2020 can be seen on Elisa Stage also on Sunday, until midnight.'
+frontPageButton: See films on Elisa Stage
+festivalDates: 'August 10th - 15th'
+festivalLocations:
+    outdoors: 'Town Hall Square'
+    indoors: 'Athena Center'
+    virtual: 'Elisa Stage'

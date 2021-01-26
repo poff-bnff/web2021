@@ -1,0 +1,299 @@
+
+//- Eemaldab screeningu 'broneeri' ja  'osta pilet' nupud kui screeningu dateTime on minevikus
+mixin rmOldScreeningButtons()
+    script.
+        (function() {
+            var currentDate = new Date()
+            var buttons = document.querySelectorAll('[btn-type="screening"]')
+            if (buttons.length) {
+                for (button of buttons) {
+                    if (button.getAttribute('scrn-loc') !== '16') {
+                        var screeningDate = new Date(button.getAttribute('scrn-datetime'))
+                        if (currentDate > screeningDate) {
+                            button.style.display = 'none'
+                        }
+                    }
+                }
+            }
+        })();
+
+//- lisab õige video treileriks, kasutab film.layout.pug
+mixin video(videoId='')
+    if videoId.length === 9
+        iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}`
+            frameborder='0' allow='accelerometer' autoplay='' encrypted-media=''
+            gyroscope='' picture-in-picture”='' allowfullscreen='')
+    else if videoId.length === 11
+        iframe(width='560' height='315' src=`https://www.youtube.com/embed/${videoId}`
+            frameborder='0' allow='accelerometer' autoplay='' encrypted-media=''
+            gyroscope='' picture-in-picture='' rel='0' allowfullscreen)
+
+
+//- autoplay video
+mixin videoAp(clipUrlDefault='')
+    - var videoId = clipUrlDefault.split('=')[1] || ''
+    if videoId.length === 9
+        iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
+            frameborder='0' allow='accelerometer' encrypted-media=''
+            gyroscope='' picture-in-picture='' allowfullscreen='')
+    else if videoId.length === 11
+        iframe(width='100%' height='100%' src=`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=https://poff.ee"&mute=1&controls=0&showinfo=0&modestbranding=0&loop=1&rel=0&autohide=1&playlist=${videoId}`
+            frameborder='0' allowfullscreen)
+
+mixin videoVl(videoUrl='')
+    - var videoId = videoUrl.split('/bc/')[1] || ''
+        iframe#videoframe(width='100%' height='100%' target_src=`https://videolevels.com/embed/${videoId}`
+            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
+
+mixin videolQaClip(videoUrl='')
+    - var videoId = videoUrl.split('/bc/')[1] || ''
+        iframe#videoframe(width='100%' height='100%' src=`https://videolevels.com/embed/${videoId}`
+            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
+
+
+
+//- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET kellaaeg (nt 12:00 PM)
+//- Industry events tarbeks peamiselt
+mixin screeningTimeEET(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+
+            //- moment.updateLocale('en', {
+            //-     longDateFormat : {
+            //-         LT: "hh:mm A",
+            //-         L: "MM/DD/YYYY",
+            //-         l: "M/D/YYYY",
+            //-         LL: "MMMM Do YYYY",
+            //-         ll: "MMM D YYYY",
+            //-         LLL: "MMMM Do YYYY LT",
+            //-         lll: "MMM D YYYY LT",
+            //-         LLLL: "dddd, MMMM Do YYYY LT",
+            //-         llll: "ddd, MMM D YYYY LT"
+            //-     }
+            //- });
+
+            moment.updateLocale('et', {
+                longDateFormat: {
+                    LT: 'HH:mm',
+                    LTS: 'H:mm:ss',
+                    L: 'DD.MM.YYYY',
+                    LL: 'D. MMMM YYYY',
+                    LLL: 'D. MMMM YYYY H:mm',
+                    LLLL: 'dddd, D. MMMM YYYY H:mm'
+                }
+            });
+
+            //- moment.locale('#{self.locale}');
+            moment.locale('et');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+            var time_EET = moment.parseZone('#{dateStringUTC}').tz('Europe/Tallinn').format('LT');
+            eDisplayMoment1.innerHTML = time_EET;
+
+        })();
+
+//- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET kuupäev kuu nime ja päeva nimega, (nt 10th Nov, Tuesday)
+//- Industry events tarbeks peamiselt
+mixin screeningDateEET(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var weekDay_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('Do MMM');
+            var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('dddd');
+
+            eDisplayMoment1.innerHTML = weekDay_EET + ', ' +  date_EET;
+
+        })();
+
+//- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET aasta, (2020)
+//- Industry events tarbeks peamiselt
+mixin completionDateEET(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var year_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('YYYY');
+
+            eDisplayMoment1.innerHTML = year_EET
+
+        })();
+
+
+//- tekitab formaadis (nt E 21.08.2020 12:00) kohaliku kuupäeva. kasutuses article.index.pug
+//- sisend kujul (2020-08-10T22:45:00+0300)
+mixin localdatetime(dateString)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}');
+            var NowMoment1 = moment('#{dateString}').format('L HH:mm');
+            var weekDay= moment('#{dateString}').format('ddd');
+            eDisplayMoment1.innerHTML = weekDay + ' ' +  NowMoment1;
+
+        })();
+
+mixin localdate(dateString)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}');
+            var NowMoment1 = moment('#{dateString}').format('L');
+            var weekDay= moment('#{dateString}').format('ddd');
+            eDisplayMoment1.innerHTML = weekDay + ' ' +  NowMoment1;
+
+        })();
+
+//- tekitab formaadis (nt 15. nov) kohaliku kuupäeva, kasutuses film.layout.pug (section.f_screenings_box)
+//- sisend kujul ('2020-08-10')
+mixin screeningDate(dateString)
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+            var NowMoment1 = moment(new Date('#{dateString}')).format('Do MMM');
+            var weekDay= moment(new Date('#{dateString}')).format('dddd');
+            eDisplayMoment1.innerHTML = NowMoment1 + ', ' + weekDay;
+
+        })();
+
+//- tekitab formaadis (nt 12:00) kohaliku kellaaja, kasutuses film.layout.pug (section.f_screenings_box)
+//- sisend kujul (2020-08-10T22:45:00+0300)
+mixin screeningTime(dateString)
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            //- todo: #506 Deprecation warning: moment.lang is deprecated. Use moment.locale instead.
+            //- moment.updateLocale('en', {
+            //-     longDateFormat : {
+            //-         LT: "hh:mm A",
+            //-         L: "MM/DD/YYYY",
+            //-         l: "M/D/YYYY",
+            //-         LL: "MMMM Do YYYY",
+            //-         ll: "MMM D YYYY",
+            //-         LLL: "MMMM Do YYYY LT",
+            //-         lll: "MMM D YYYY LT",
+            //-         LLLL: "dddd, MMMM Do YYYY LT",
+            //-         llll: "ddd, MMM D YYYY LT"
+            //-     }
+            //- });
+
+            moment.updateLocale('et', {
+                longDateFormat: {
+                    LT: 'HH:mm',
+                    LTS: 'H:mm:ss',
+                    L: 'DD.MM.YYYY',
+                    LL: 'D. MMMM YYYY',
+                    LLL: 'D. MMMM YYYY H:mm',
+                    LLLL: 'dddd, D. MMMM YYYY H:mm'
+                }
+            });
+
+
+            //- moment.locale('#{self.locale}');
+            moment.locale('et');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+            var NowMoment1 = moment('#{dateString}').format('LT');
+            eDisplayMoment1.innerHTML = NowMoment1;
+
+        })();
+
+//- tekitab formaadis (nt esmaspaev, 10 august) kohaliku kuupäeva, kasutuses home.layout.pug (section.calendar)
+//- sisend kujul ('2020-08-10')
+mixin calendarDate(dateString)
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+            var NowMoment1 = moment('#{dateString}').format('dddd, D MMMM');
+            eDisplayMoment1.innerHTML = NowMoment1;
+
+        })();
+
+//- tekitab formaadis (nt 2h 19m) kohaliku kestvuse, kasutuses festival.index.pug (section.team)
+//- sisend kujul ('139') minutid
+mixin dur(mins)
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            var mins = '#{mins}'
+            var minutes = mins % 60;
+            var hours = (mins - minutes) / 60;
+            var t = hours + 'h&nbsp;' + minutes + 'm'
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+            eDisplayMoment1.innerHTML = t;
+        })();
+
+mixin indEvDur(strapiTime='')
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            var strapiTime = '#{strapiTime}'
+            var time = strapiTime.length === 8 ? strapiTime.split(':') : null
+            if (time !== null) {
+                var hour = time[0] !== '00' ? parseInt(time[0]) : '0'
+                var min = time[1] !== '00' ? time[1] : 0
+                //- console.log(strapiTime, ' - ', hour, 'h', min, 'min')
+                var timeToShow = `${hour !== '0' ? hour + 'h' : ''}${hour !== '0' ? ' ' + min + 'm' : min + 'm'}`
+                //- return timeToShow
+                var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+                eDisplayMoment1.innerHTML = timeToShow;
+            }
+        })();
+
+//- otsib dokumendist pealkirja, õige filmi kuvamiseks
+mixin tabname(currenttitle)
+    script.
+        document.title= '#{currenttitle}';
+        //document.title= 'Tartuff 2020: ' + ('#{currenttitle}');
+
+//- kuvab teksti õiges formaadis, reavahed
+mixin format(text)
+    | !{ self.md(text) }
+
+mixin euro(number)
+    | #{number.toFixed(2)} €
+
+mixin bigMoney(number)
+    | #{number.toFixed(0)} €
+
+
+

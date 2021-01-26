@@ -1,0 +1,133 @@
+include /_templates/mixins.pug
+
+footer
+    .grid_footer_row
+        .footer_row_item
+            if self.footer.socialGroup
+                //- each socialGroup in self.footer.socialGroup
+                if self.footer.socialGroup.name
+                    p.footer_h= self.footer.socialGroup.name
+                if self.footer.socialGroup.items
+                    each item in self.footer.socialGroup.items
+                        if item.svgCode
+                            a(href=item.url target='_blank') !{item.svgCode}
+                        else if item.svgMedia
+                            img.footer_logo_item(alt=item.name data-src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}` src=`/https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}`)
+
+
+        if self.footer.item
+            each item in self.footer.item
+                .footer_row_item
+                    if item.name && (typeof(item.name) !== 'object')
+                        p.footer_h= item.name
+                    if item.svgItem
+                        each svgItem in item.svgItem
+                            if svgItem.svgCode
+                                if svgItem.url && (svgItem.url.substr(0, 4).toLowerCase() === 'http')
+                                    - var urlToDisplay = svgItem.url
+                                else
+                                    - var urlToDisplay = `/${lang_path}${svgItem.url}`
+                                a(href=urlToDisplay target='_blank') !{svgItem.svgCode}
+                            else if svgItem.svgMedia
+                                img.footer_logo_item(alt=svgItem.name data-src=`https://assets.poff.ee/img/${svgItem.svgMedia.hash}${svgItem.svgMedia.ext}` src=`https://assets.poff.ee/img/${svgItem.svgMedia.hash}${svgItem.svgMedia.ext}`)
+                    if item.image
+                        img.footer_logo_item_1(alt=item.name data-src=`https://assets.poff.ee/img/${item.image.hash}${item.image.ext}`  src=`https://assets.poff.ee/img/${item.image.hash}${item.image.ext}`)
+                    if item.text
+                        .footer_row_item_text
+                            if typeof(item.text) !== 'object'
+                                +format(item.text).footer_h
+                            else
+                                p.footer_h
+                                    | !{item.text}
+
+
+
+    if self.footer.supporters
+        - var sortedSupportersCat = self.footer.supporters.sort(function(a, b){ return a.order-b.order })
+        section.supporters_footer
+            each supporters in sortedSupportersCat
+                row
+                    if supporters.name && (typeof(supporters.name) !== 'object')
+                        h1.section_headline_footer= supporters.name
+                    if supporters.supporter
+                        .footer_logos
+                            each supporter in supporters.supporter
+                                if supporter.customUrl
+                                    a(href= supporter.customUrl).footer_logo_item_container
+                                        if supporter.logoWhite
+                                            img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoWhite.hash}${supporter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${supporter.logoWhite.hash}${supporter.logoWhite.ext}`)
+                                        else if supporter.logoBlack
+                                            img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoBlack.hash}${supporter.logoBlack.ext}`  src=`https://assets.poff.ee/img/${supporter.logoBlack.hash}${supporter.logoBlack.ext}`)
+                                        else if supporter.logoColour
+                                            img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoColour.hash}${supporter.logoColour.ext}`  src=`https://assets.poff.ee/img/${supporter.logoColour.hash}${supporter.logoColour.ext}`)
+                                else
+                                    if supporter.logoWhite
+                                        img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoWhite.hash}${supporter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${supporter.logoWhite.hash}${supporter.logoWhite.ext}`)
+                                    else if supporter.logoBlack
+                                        img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoBlack.hash}${supporter.logoBlack.ext}`  src=`https://assets.poff.ee/img/${supporter.logoBlack.hash}${supporter.logoBlack.ext}`)
+                                    else if supporter.logoColour
+                                        img.footer_logo_item(alt=supporter.url data-src=`https://assets.poff.ee/img/${supporter.logoColour.hash}${supporter.logoColour.ext}`  src=`https://assets.poff.ee/img/${supporter.logoColour.hash}${supporter.logoColour.ext}`)
+
+
+
+
+    //-     img.footer_logo_item_1(alt='Tartu' data-src='/assets/img/static/tartuff_f_tartu.svg' src='/assets/img/static/tartuff_f_tartu.svg')
+
+    //- h1.supporter_headline_footer= self.label.all.sponsors
+    //- .footer_logos_1
+    //-     img.footer_logo_item_1(alt='Toyota' data-src='/assets/img/static/tartuff_f_toyota.svg' src='/assets/img/static/tartuff_f_toyota.svg')
+
+    //- h1.supporter_headline_footer= self.label.all.supporters
+    //- .footer_logos_2
+    //-     img.footer_logo_item_2(alt='Kultuurkapital' data-src='/assets/img/static/tartuff_f_kulka.svg' src='/assets/img/static/tartuff_f_kulka.svg')
+    //-     img.footer_logo_item_2(alt='ERM' data-src='/assets/img/static/tartuff_f_erm.svg' src='/assets/img/static/tartuff_f_erm.svg')
+    //-     img.footer_logo_item_2(alt='Kultuuriministeerium' data-src='/assets/img/static/tartuff_f_kultmin.svg' src='/assets/img/static/tartuff_f_kultmin.svg')
+    //-     img.footer_logo_item_2(alt='Tartu Filmifond' data-src='/assets/img/static/tartuff_f_tartu_filmifond.svg' src='/assets/img/static/tartuff_f_tartu_filmifond.svg')
+    //-     img.footer_logo_item_2(alt='Tartu Loomemajanduskeskus' data-src='/assets/img/static/tartuff_f_lmk.svg' src='/assets/img/static/tartuff_f_lmk.svg')
+    //-     img.footer_logo_item_2(alt='Kvartal' data-src='/assets/img/static/tartuff_f_kvartal.svg' src='/assets/img/static/tartuff_f_kvartal.svg')
+    //-     img.footer_logo_item_2(alt='Tartu 2024' data-src='/assets/img/static/tartuff_f_tartu_2024.svg' src='/assets/img/static/tartuff_f_tartu_2024.svg')
+    //-     img.footer_logo_item_2(alt='Kanada' data-src='/assets/img/static/tartuff_f_canada.svg' src='/assets/img/static/tartuff_f_canada.svg')
+
+    //- h1.supporter_headline_footer= self.label.all.officialPartners
+    //- .footer_logos_2
+    //-     img.footer_logo_item_2(alt='Lydia' data-src='/assets/img/static/tartuff_f_lydia.svg' src='/assets/img/static/tartuff_f_lydia.svg')
+    //-     img.footer_logo_item_2(alt='Dorpat' data-src='/assets/img/static/tartuff_f_dorpat.svg' src='/assets/img/static/tartuff_f_dorpat.svg')
+    //-     img.footer_logo_item_2(alt='Pepes' data-src='/assets/img/static/tartuff_f_pepes.svg' src='/assets/img/static/tartuff_f_pepes.svg')
+    //-     img.footer_logo_item_2(alt='Medifum' data-src='/assets/img/static/tartuff_f_medifum.svg' src='/assets/img/static/tartuff_f_medifum.svg')
+
+    //- h1.supporter_headline_footer= self.label.all.partners
+    //- .footer_logos_3
+    //-     img.footer_logo_item_3(alt='3 tilli' data-src='/assets/img/static/tartuff_f_kolm_tilli.svg' src='/assets/img/static/tartuff_f_kolm_tilli.svg')
+    //-     img.footer_logo_item_3(alt='Ahhaa' data-src='/assets/img/static/tartuff_f_ahhaa.svg' src='/assets/img/static/tartuff_f_ahhaa.svg')
+    //-     img.footer_logo_item_3(alt='Ajaloomuuseum' data-src='/assets/img/static/tartuff_f_ajaloomuuseum.svg' src='/assets/img/static/tartuff_f_ajaloomuuseum.svg')
+    //-     img.footer_logo_item_3(alt='Athena' data-src='/assets/img/static/tartuff_f_athena.svg' src='/assets/img/static/tartuff_f_athena.svg')
+    //-     img.footer_logo_item_3(alt='Draama 2020' data-src='/assets/img/static/tartuff_f_draama_fest.svg' src='/assets/img/static/tartuff_f_draama_fest.svg')
+    //-     img.footer_logo_item_3(alt='Drive In Cinema' data-src='/assets/img/static/tartuff_f_drive_in_cinema.svg' src='/assets/img/static/tartuff_f_drive_in_cinema.svg')
+    //-     img.footer_logo_item_3(alt='Eesti aiad' data-src='/assets/img/static/tartuff_f_eesti_aiad.svg' src='/assets/img/static/tartuff_f_eesti_aiad.svg')
+    //-     img.footer_logo_item_3(alt='Elektriteater' data-src='/assets/img/static/tartuff_f_elektriteater.svg' src='/assets/img/static/tartuff_f_elektriteater.svg')
+    //-     img.footer_logo_item_3(alt='Ellington' data-src='/assets/img/static/tartuff_f_ellington.svg' src='/assets/img/static/tartuff_f_ellington.svg')
+    //-     img.footer_logo_item_3(alt='Gardest' data-src='/assets/img/static/tartuff_f_gardest.svg' src='/assets/img/static/tartuff_f_gardest.svg')
+    //-     img.footer_logo_item_3(alt='Haridus ekraanil' data-src='/assets/img/static/tartuff_f_haridus_ekraanil.svg' src='/assets/img/static/tartuff_f_haridus_ekraanil.svg')
+    //-     img.footer_logo_item_3(alt='Hektor' data-src='/assets/img/static/tartuff_f_hektor.svg' src='/assets/img/static/tartuff_f_hektor.svg')
+    //-     img.footer_logo_item_3(alt='Pallas' data-src='/assets/img/static/tartuff_f_pallas.svg' src='/assets/img/static/tartuff_f_pallas.svg')
+    //-     img.footer_logo_item_3(alt='Pierre' data-src='/assets/img/static/tartuff_f_pierre.svg' src='/assets/img/static/tartuff_f_pierre.svg')
+    //-     img.footer_logo_item_3(alt='Pühaste' data-src='/assets/img/static/tartuff_f_pyhaste.pmg' src='/assets/img/static/tartuff_f_pyhaste.png')
+    //-     img.footer_logo_item_3(alt='Tartmus' data-src='/assets/img/static/tartuff_f_tartmus.svg' src='/assets/img/static/tartuff_f_tartmus.svg')
+    //-     img.footer_logo_item_3(alt='Tartu Uus Teater' data-src='/assets/img/static/tartuff_f_tartu_uus_teater.svg' src='/assets/img/static/tartuff_f_tartu_uus_teater.svg')
+    //-     img.footer_logo_item_3(alt='USS' data-src='/assets/img/static/tartuff_f_uss.svg' src='/assets/img/static/tartuff_f_uss.svg')
+    //-     img.footer_logo_item_3(alt='Vanemuine' data-src='/assets/img/static/tartuff_f_vanemuine.svg' src='/assets/img/static/tartuff_f_vanemuine.svg')
+    //-     img.footer_logo_item_3(alt='Voronja' data-src='/assets/img/static/tartuff_f_voronja.svg' src='/assets/img/static/tartuff_f_voronja.svg')
+
+        //- img.footer_logo_item3(alt='' data-src='/assets/img/static/tartuff_f_.svg' src='/assets/img/static/tartuff_f_.svg')
+        //- img.footer_logo_item3(alt='' data-src='/assets/img/static/tartuff_f_.svg' src='/assets/img/static/tartuff_f_.svg')
+
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+//script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+script(src='//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(src='//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
+link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+//- script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
+script(src='/script.js')

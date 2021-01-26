@@ -1,0 +1,118 @@
+[
+  {
+    "id": 4,
+    "PremiereType_et": null,
+    "PremiereType_en": null,
+    "PremiereType_ru": null,
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 3,
+      "firstname": "Liis",
+      "lastname": "Käsper",
+      "username": null
+    },
+    "created_at": "2020-08-19T10:50:40.749Z",
+    "updated_at": "2020-08-27T10:10:15.255Z",
+    "Value_et": null,
+    "Value_en": null,
+    "Value_ru": null,
+    "value_et": "Maailma esilinastus",
+    "value_en": "World Premiere",
+    "value_ru": "Мировая премьера",
+    "et": "Maailma esilinastus",
+    "en": "World Premiere",
+    "ru": "Мировая премьера"
+  },
+  {
+    "id": 5,
+    "PremiereType_et": null,
+    "PremiereType_en": null,
+    "PremiereType_ru": null,
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 3,
+      "firstname": "Liis",
+      "lastname": "Käsper",
+      "username": null
+    },
+    "created_at": "2020-08-19T10:51:06.721Z",
+    "updated_at": "2020-08-27T10:11:00.348Z",
+    "Value_et": null,
+    "Value_en": null,
+    "Value_ru": null,
+    "value_et": "Rahvusvaheline esilinastus",
+    "value_en": "INternational Premiere",
+    "value_ru": "Международная премьера",
+    "et": "Rahvusvaheline esilinastus",
+    "en": "International Premiere",
+    "ru": "Международная премьера"
+  },
+  {
+    "id": 7,
+    "PremiereType_et": null,
+    "PremiereType_en": null,
+    "PremiereType_ru": null,
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 3,
+      "firstname": "Liis",
+      "lastname": "Käsper",
+      "username": null
+    },
+    "created_at": "2020-08-19T10:52:11.727Z",
+    "updated_at": "2020-08-27T10:11:57.106Z",
+    "Value_et": null,
+    "Value_en": null,
+    "Value_ru": null,
+    "value_et": "Balti esilinastus",
+    "value_en": "Baltic Premiere",
+    "value_ru": "Балтийская премьера",
+    "et": "Balti esilinastus",
+    "en": "Baltic Premiere",
+    "ru": "Балтийская премьера"
+  },
+  {
+    "id": 6,
+    "PremiereType_et": null,
+    "PremiereType_en": null,
+    "PremiereType_ru": null,
+    "created_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "updated_by": {
+      "id": 6,
+      "firstname": "Jaan",
+      "lastname": "Leppik",
+      "username": null
+    },
+    "created_at": "2020-08-19T10:51:47.582Z",
+    "updated_at": "2020-10-26T10:27:32.330Z",
+    "Value_et": null,
+    "Value_en": null,
+    "Value_ru": null,
+    "value_et": "Euroopa esilinastus",
+    "value_en": "European premiere",
+    "value_ru": "Европейская премьера",
+    "et": "Euroopa esilinastus",
+    "en": "European Premiere",
+    "ru": "Европейская премьера"
+  }
+]

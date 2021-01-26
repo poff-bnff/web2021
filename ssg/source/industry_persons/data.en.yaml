@@ -1,0 +1,4 @@
+path: industry-persons
+data:
+    articles: /_fetchdir/articles.en.yaml
+    industrypersons: /_fetchdir/industrypersons.en.yaml
