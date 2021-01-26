@@ -17,7 +17,7 @@ const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const STRAPIDIR = '/uploads/'
-const STRAPIHOSTWITHDIR = `http://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
+const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
