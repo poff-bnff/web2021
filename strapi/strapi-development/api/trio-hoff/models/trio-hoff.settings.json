@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_hoffs",
+  "info": {
+    "name": "TrioHOFF",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "trioHoff_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-hoff"
+    },
+    "trioHoff_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-hoff"
+    },
+    "trioHoff_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-hoff"
+    }
+  }
+}

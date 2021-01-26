@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-hoff",
+      "handler": "trio-hoff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-hoff",
+      "handler": "trio-hoff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-hoff",
+      "handler": "trio-hoff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
