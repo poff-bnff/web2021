@@ -1,6 +1,0 @@
-path: otsi_filmi
-data:
-    cassettes: /_fetchdir/cassettes.et.yaml
-    articles: /_fetchdir/articles.et.yaml
-    search: /_fetchdir/search_films.et.yaml
-    filters: /_fetchdir/filters_films.et.yaml

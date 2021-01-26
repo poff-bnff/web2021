@@ -1,5 +1,0 @@
-path: mypoff
-data:
-    articles: /_fetchdir/articles.en.yaml
-    shops: /_fetchdir/shops.en.yaml
-    cassettes: /_fetchdir/cassettes.en.yaml

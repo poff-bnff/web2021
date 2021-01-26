@@ -1,5 +1,0 @@
-path: industry-events
-data:
-    articles: /_fetchdir/articles.en.yaml
-    industryevents: /_fetchdir/industryevents.en.yaml
-    channels: /_fetchdir/channels.en.yaml
