@@ -5,21 +5,21 @@ domain:
   kinoff.poff.ee: kinoff
   industry.poff.ee: industry
   shorts.poff.ee: shorts
-  hoff.poff.ee: hoff
+  hoff.ee: hoff
 article:
   poff.ee: POFFiArticle
   justfilm.ee: JustFilmiArticle
   kinoff.poff.ee: KinoffiArticle
   industry.poff.ee: IndustryArticle
   shorts.poff.ee: ShortsiArticle
-  hoff.poff.ee: HOFFiArticle
+  hoff.ee: HOFFiArticle
 footer:
   poff.ee: POFFiFooter
   justfilm.ee: JustFilmFooter
   kinoff.poff.ee: KinoffiFooter
   industry.poff.ee: IndustryFooter
   shorts.poff.ee: ShortsiFooter
-  hoff.poff.ee: HOFFiFooter
+  hoff.ee: HOFFiFooter
 locales:
   poff.ee:
   - et
@@ -38,7 +38,7 @@ locales:
   shorts.poff.ee:
   - et
   - en
-  hoff.poff.ee:
+  hoff.ee:
   - et
   - en
   - ru
@@ -48,7 +48,7 @@ defaultLocale:
   kinoff.poff.ee: et
   industry.poff.ee: en
   shorts.poff.ee: et
-  hoff.poff.ee: et
+  hoff.ee: et
 
 vialogUrls:
     et:
@@ -76,7 +76,7 @@ pageURLs:
     kinoff.poff.ee: "https://kinoff.poff.ee/"
     industry.poff.ee: "https://industry.poff.ee/"
     shorts.poff.ee: "http://shorts.poff.ee/"
-    hoff.poff.ee: "https://hoff.poff.ee/"
+    hoff.ee: "https://hoff.ee/"
 
 stagingURLs:
     poff.ee: "https://staging.poff.inscaping.eu/"
@@ -84,4 +84,4 @@ stagingURLs:
     kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
     industry.poff.ee: "https://staging.industry.inscaping.eu/"
     shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
-    hoff.poff.ee: "https://staging.hoff.inscaping.eu/"
+    hoff.ee: "https://staging.hoff.inscaping.eu/"
