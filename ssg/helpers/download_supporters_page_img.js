@@ -1,4 +1,4 @@
-const http = require('http')
+const https = require('https')
 const fs = require('fs')
 const yaml = require('js-yaml')
 const fetch = require('node-fetch')
@@ -6,7 +6,7 @@ const fetch = require('node-fetch')
 
 const {parallelLimit} = require('async')
 
-var strapiPath = 'http://' + process.env['StrapiHostPoff2021']
+var strapiPath = 'https://' + process.env['StrapiHostPoff2021']
 var savePath = 'assets/img/dynamic/img_supporters/'
 
 loadYaml(readYaml);

@@ -7,7 +7,7 @@ const {parallelLimit} = require('async')
 // const parallelLimit = require('async').parallelLimit
 
 
-var strapiPath = 'http://' + process.env['StrapiHostPoff2021']
+var strapiPath = 'https://' + process.env['StrapiHostPoff2021']
 var savePath = 'assets/img/dynamic/img_industry_persons/'
 
 loadYaml(readYaml)
