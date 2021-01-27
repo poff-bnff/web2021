@@ -1,8 +1,6 @@
 locales:
-    - et
     - en
-    - ru
-defaultLocale: et
+defaultLocale: en
 source: ./source
 js: ./source/_scripts
 styl: ./source/_styles

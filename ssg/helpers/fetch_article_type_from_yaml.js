@@ -28,8 +28,11 @@ const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} articles ${lang} data`)
-    const industryPersonsPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
-    const industryPersonsYaml = yaml.safeLoad(fs.readFileSync(industryPersonsPath, 'utf8'));
+
+    if (DOMAIN === 'industry.poff.ee') {
+        var industryPersonsPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
+        var industryPersonsYaml = yaml.safeLoad(fs.readFileSync(industryPersonsPath, 'utf8'));
+    }
     // allData = [];
     const dirPath = path.join(sourceDir, "_fetchdir" )
     const dataFrom = {
