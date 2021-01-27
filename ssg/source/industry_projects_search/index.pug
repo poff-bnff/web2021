@@ -3,88 +3,88 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    if self.data.filters && self.data.filters.length && process.env['DOMAIN'] === 'industry.poff.ee'
+        h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-    h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
+        .grid_search#filters(style='display: none;')
 
-    .grid_search#filters(style='display: none;')
+            input#search(type='text', placeholder= self.label.filters.search)
 
-        input#search(type='text', placeholder= self.label.filters.search)
+            select#types_select(name='Types')
+                option(value='')= self.label.filters.projectTypes
+                each index, key in self.data.filters.types
+                    option(value=key)= index
 
-        select#types_select(name='Types')
-            option(value='')= self.label.filters.projectTypes
-            each index, key in self.data.filters.types
-                option(value=key)= index
+            select#languages_select(name='Languages')
+                option(value='')= self.label.filters.languages
+                each index, key in self.data.filters.languages
+                    option(value=key)= index
 
-        select#languages_select(name='Languages')
-            option(value='')= self.label.filters.languages
-            each index, key in self.data.filters.languages
-                option(value=key)= index
+            select#countries_select(name='Countries')
+                option(value='')= self.label.filters.countries
+                each index, key in self.data.filters.countries
+                    option(value=key)= index
 
-        select#countries_select(name='Countries')
-            option(value='')= self.label.filters.countries
-            each index, key in self.data.filters.countries
-                option(value=key)= index
+            select#statuses_select(name='Statuses')
+                option(value='')= self.label.filters.statuses
+                each index, key in self.data.filters.statuses
+                    option(value=key)= index
 
-        select#statuses_select(name='Statuses')
-            option(value='')= self.label.filters.statuses
-            each index, key in self.data.filters.statuses
-                option(value=key)= index
+            select#genres_select(name='Genres')
+                option(value='')= self.label.filters.genres
+                each index, key in self.data.filters.genres
+                    option(value=key)= index
 
-        select#genres_select(name='Genres')
-            option(value='')= self.label.filters.genres
-            each index, key in self.data.filters.genres
-                option(value=key)= index
+            button.clear(onclick='unselect_all()')= self.label.filters.empty
 
-        button.clear(onclick='unselect_all()')= self.label.filters.empty
-
-        h3#nonetoshow.sub_section_headline(style='display: none;')
-
-
-
-    if self.data.industryprojects
-
-        main.grid_films
-            each project in self.data.industryprojects
-
-                if project.title && project.title.length > 1 && project.slug
-                    a.card_project(id=project.id href=`/project/${lang_path}${project.slug}`)
-                        .container_frame_16_9
-                            if project.images && project.images.length
-                                img.container_contents_16_9(src=`https://assets.poff.ee/img/${project.images[0].hash}${project.images[0].ext}`)
-                            else
-                                img.container_contents_16_9(src='/assets/img/static/industry_placeholder_blob.png')
+            h3#nonetoshow.sub_section_headline(style='display: none;')
 
 
-                        .card_film_title
-                            h3.film_title_locale.dark_1= project.title
-                        if project.logline
-                            .card_film_info
-                                p.dark_1.thin_300= project.logline
 
-                            //- if project.lookingFor
-                            //-     .str_info_value.dark_1.thin_300= project.lookingFor
+        if self.data.industryprojects
 
-                            //- if project.synopsis && typeof project.synopsis === 'string'
-                            //-     .str_info_value.dark_1.thin_300
-                            //-         +format(project.synopsis)
+            main.grid_films
+                each project in self.data.industryprojects
 
-                            //- if project.directorsNote && typeof project.directorsNote === 'string'
-                            //-     .str_info_value.dark_1.thin_300
-                            //-         +format(project.directorsNote)
-
-                            //- if project.contactCompany
-                            //-     if project.contactCompany.homepageUrl
-
-                            //-     if project.contactCompany.type
-                            //-         .str_info_value.dark_1.thin_300= project.type
-                            //-     if project.contactCompany.name
-                            //-         .str_info_value.dark_1.thin_300= project.contactName
+                    if project.title && project.title.length > 1 && project.slug
+                        a.card_project(id=project.id href=`/project/${lang_path}${project.slug}`)
+                            .container_frame_16_9
+                                if project.images && project.images.length
+                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${project.images[0].hash}${project.images[0].ext}`)
+                                else
+                                    img.container_contents_16_9(src='/assets/img/static/industry_placeholder_blob.png')
 
 
-                            //- if project.clipUrlCode
-                            //-     .str_info_value.dark_1.thin_300
-                            //-         +video(project.clipUrlCode)
-            script.
-                var searcharray = !{JSON.stringify(self.data.search)}
+                            .card_film_title
+                                h3.film_title_locale.dark_1= project.title
+                            if project.logline
+                                .card_film_info
+                                    p.dark_1.thin_300= project.logline
 
-                var filters = !{JSON.stringify(self.data.filters)}
+                                //- if project.lookingFor
+                                //-     .str_info_value.dark_1.thin_300= project.lookingFor
+
+                                //- if project.synopsis && typeof project.synopsis === 'string'
+                                //-     .str_info_value.dark_1.thin_300
+                                //-         +format(project.synopsis)
+
+                                //- if project.directorsNote && typeof project.directorsNote === 'string'
+                                //-     .str_info_value.dark_1.thin_300
+                                //-         +format(project.directorsNote)
+
+                                //- if project.contactCompany
+                                //-     if project.contactCompany.homepageUrl
+
+                                //-     if project.contactCompany.type
+                                //-         .str_info_value.dark_1.thin_300= project.type
+                                //-     if project.contactCompany.name
+                                //-         .str_info_value.dark_1.thin_300= project.contactName
+
+
+                                //- if project.clipUrlCode
+                                //-     .str_info_value.dark_1.thin_300
+                                //-         +video(project.clipUrlCode)
+                script.
+                    var searcharray = !{JSON.stringify(self.data.search)}
+
+                    var filters = !{JSON.stringify(self.data.filters)}

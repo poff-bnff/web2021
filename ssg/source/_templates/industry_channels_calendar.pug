@@ -1,5 +1,5 @@
 block content
-    if self.data.industryevents.allDates
+    if self.data.industryevents.allDates && process.env['DOMAIN'] === 'industry.poff.ee'
 
         .calendar_headline= 'Events Schedule'
 
