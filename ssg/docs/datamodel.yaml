@@ -330,7 +330,7 @@ JustFilmiArticle: &JustFilmiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations: 
+    organisations:
         - *Organisation
 
 ShortsiArticle: &ShortsiArticle
@@ -456,7 +456,7 @@ HOFFiArticle: &HOFFiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations: 
+    organisations:
         - *Organisation
 
 Language: &Language
@@ -589,7 +589,7 @@ HOFFiMenu: &HOFFiMenu
     _path: /hof-fi-menus
     #namePrivate: (text, private field)
     name: *Translated #(Component)
-    HOFFi_article: *HOFFiArticle
+    hoffi_article: *HOFFiArticle
     customUrl: *Translated #(Component)
     order: (Number)
     subMenuItem: #(Component (repeatable))
