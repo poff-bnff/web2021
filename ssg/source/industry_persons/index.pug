@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
 
-    if self.data.industrypersons
+    if self.data.industrypersons && process.env['DOMAIN'] === 'industry.poff.ee'
 
         section.team
             //- h1.section_headline INDUSTRY PERSONS

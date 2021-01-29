@@ -17,7 +17,7 @@
     },
     "name": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "translated.translated-short"
     },
     "hoffi_article": {
