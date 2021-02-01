@@ -9,6 +9,9 @@ async function strapiAuth() {
             password: process.env['StrapiPassword']
         }
 
+        // console.log(postData)
+        // console.log(process.env['StrapiHostPoff2021'])
+
         const options = {
             hostname: process.env['StrapiHostPoff2021'],
             path: '/auth/local',
