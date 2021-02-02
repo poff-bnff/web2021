@@ -2,8 +2,6 @@
   {
     "id": 1712,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.024Z",
     "updated_at": "2020-08-24T12:28:27.024Z",
     "Value_et": null,
@@ -20,8 +18,6 @@
   {
     "id": 1704,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.438Z",
     "updated_at": "2020-08-24T12:28:26.438Z",
     "Value_et": null,
@@ -38,8 +34,6 @@
   {
     "id": 1745,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.842Z",
     "updated_at": "2020-08-24T12:28:28.842Z",
     "Value_et": null,
@@ -56,8 +50,6 @@
   {
     "id": 1741,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.680Z",
     "updated_at": "2020-08-24T12:28:28.680Z",
     "Value_et": null,
@@ -74,8 +66,6 @@
   {
     "id": 1702,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.280Z",
     "updated_at": "2020-08-24T12:28:26.280Z",
     "Value_et": null,
@@ -92,8 +82,6 @@
   {
     "id": 1735,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.401Z",
     "updated_at": "2020-08-24T12:28:28.401Z",
     "Value_et": null,
@@ -110,8 +98,6 @@
   {
     "id": 1713,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.068Z",
     "updated_at": "2020-08-24T12:28:27.068Z",
     "Value_et": null,
@@ -128,8 +114,6 @@
   {
     "id": 1732,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.253Z",
     "updated_at": "2020-08-24T12:28:28.253Z",
     "Value_et": null,
@@ -146,8 +130,6 @@
   {
     "id": 1740,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.608Z",
     "updated_at": "2020-08-24T12:28:28.608Z",
     "Value_et": null,
@@ -164,8 +146,6 @@
   {
     "id": 1699,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.078Z",
     "updated_at": "2020-08-24T12:28:26.078Z",
     "Value_et": null,
@@ -182,8 +162,6 @@
   {
     "id": 1715,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.212Z",
     "updated_at": "2020-08-24T12:28:27.212Z",
     "Value_et": null,
@@ -200,18 +178,6 @@
   {
     "id": 1855,
     "Code": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-10-09T09:11:00.594Z",
     "updated_at": "2020-10-09T09:11:00.621Z",
     "Value_et": null,
@@ -228,8 +194,6 @@
   {
     "id": 1733,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.319Z",
     "updated_at": "2020-08-24T12:28:28.319Z",
     "Value_et": null,
@@ -246,8 +210,6 @@
   {
     "id": 1682,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.581Z",
     "updated_at": "2020-08-24T12:28:23.581Z",
     "Value_et": null,
@@ -264,8 +226,6 @@
   {
     "id": 1698,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.868Z",
     "updated_at": "2020-08-24T12:28:25.868Z",
     "Value_et": null,
@@ -282,8 +242,6 @@
   {
     "id": 1689,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.579Z",
     "updated_at": "2020-08-24T12:28:24.579Z",
     "Value_et": null,
@@ -300,8 +258,6 @@
   {
     "id": 1738,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.526Z",
     "updated_at": "2020-08-24T12:28:28.526Z",
     "Value_et": null,
@@ -318,8 +274,6 @@
   {
     "id": 1669,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.173Z",
     "updated_at": "2020-08-24T12:28:22.173Z",
     "Value_et": null,
@@ -336,8 +290,6 @@
   {
     "id": 1696,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.515Z",
     "updated_at": "2020-08-24T12:28:25.515Z",
     "Value_et": null,
@@ -354,18 +306,6 @@
   {
     "id": 1856,
     "Code": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-11-25T13:07:09.369Z",
     "updated_at": "2020-11-25T13:07:09.382Z",
     "Value_et": null,
@@ -382,8 +322,6 @@
   {
     "id": 1703,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.423Z",
     "updated_at": "2020-08-24T12:28:26.423Z",
     "Value_et": null,
@@ -400,8 +338,6 @@
   {
     "id": 1709,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.804Z",
     "updated_at": "2020-08-24T12:28:26.804Z",
     "Value_et": null,
@@ -418,8 +354,6 @@
   {
     "id": 1693,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.023Z",
     "updated_at": "2020-08-24T12:28:25.023Z",
     "Value_et": null,
@@ -436,8 +370,6 @@
   {
     "id": 1739,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.602Z",
     "updated_at": "2020-08-24T12:28:28.602Z",
     "Value_et": null,
@@ -454,8 +386,6 @@
   {
     "id": 1710,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.828Z",
     "updated_at": "2020-08-24T12:28:26.828Z",
     "Value_et": null,
@@ -472,8 +402,6 @@
   {
     "id": 1677,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.000Z",
     "updated_at": "2020-08-24T12:28:23.000Z",
     "Value_et": null,
@@ -490,8 +418,6 @@
   {
     "id": 1688,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.375Z",
     "updated_at": "2020-08-24T12:28:24.375Z",
     "Value_et": null,
@@ -508,8 +434,6 @@
   {
     "id": 1706,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.576Z",
     "updated_at": "2020-08-24T12:28:26.576Z",
     "Value_et": null,
@@ -526,8 +450,6 @@
   {
     "id": 1719,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.405Z",
     "updated_at": "2020-08-24T12:28:27.405Z",
     "Value_et": null,
@@ -544,8 +466,6 @@
   {
     "id": 1716,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.268Z",
     "updated_at": "2020-08-24T12:28:27.268Z",
     "Value_et": null,
@@ -562,8 +482,6 @@
   {
     "id": 1697,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.532Z",
     "updated_at": "2020-08-24T12:28:25.532Z",
     "Value_et": null,
@@ -580,8 +498,6 @@
   {
     "id": 1736,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.464Z",
     "updated_at": "2020-08-24T12:28:28.464Z",
     "Value_et": null,
@@ -598,8 +514,6 @@
   {
     "id": 1680,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.296Z",
     "updated_at": "2020-08-24T12:28:23.296Z",
     "Value_et": null,
@@ -616,8 +530,6 @@
   {
     "id": 1746,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.870Z",
     "updated_at": "2020-08-24T12:28:28.870Z",
     "Value_et": null,
@@ -634,8 +546,6 @@
   {
     "id": 1690,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.698Z",
     "updated_at": "2020-08-24T12:28:24.698Z",
     "Value_et": null,
@@ -652,8 +562,6 @@
   {
     "id": 1687,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.248Z",
     "updated_at": "2020-08-24T12:28:24.248Z",
     "Value_et": null,
@@ -670,8 +578,6 @@
   {
     "id": 1686,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.026Z",
     "updated_at": "2020-08-24T12:28:24.026Z",
     "Value_et": null,
@@ -688,8 +594,6 @@
   {
     "id": 1685,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.952Z",
     "updated_at": "2020-08-24T12:28:23.952Z",
     "Value_et": null,
@@ -706,8 +610,6 @@
   {
     "id": 1718,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.355Z",
     "updated_at": "2020-08-24T12:28:27.355Z",
     "Value_et": null,
@@ -724,8 +626,6 @@
   {
     "id": 1679,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.188Z",
     "updated_at": "2020-08-24T12:28:23.188Z",
     "Value_et": null,
@@ -742,8 +642,6 @@
   {
     "id": 1711,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.996Z",
     "updated_at": "2020-08-24T12:28:26.996Z",
     "Value_et": null,
@@ -760,8 +658,6 @@
   {
     "id": 1742,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.680Z",
     "updated_at": "2020-08-24T12:28:28.680Z",
     "Value_et": null,
@@ -778,8 +674,6 @@
   {
     "id": 1674,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.505Z",
     "updated_at": "2020-08-24T12:28:22.505Z",
     "Value_et": null,
@@ -796,8 +690,6 @@
   {
     "id": 1724,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.712Z",
     "updated_at": "2020-08-24T12:28:27.712Z",
     "Value_et": null,
@@ -814,8 +706,6 @@
   {
     "id": 1727,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.872Z",
     "updated_at": "2020-08-24T12:28:27.872Z",
     "Value_et": null,
@@ -832,8 +722,6 @@
   {
     "id": 1726,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.806Z",
     "updated_at": "2020-08-24T12:28:27.806Z",
     "Value_et": null,
@@ -850,8 +738,6 @@
   {
     "id": 1676,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.813Z",
     "updated_at": "2020-08-24T12:28:22.813Z",
     "Value_et": null,
@@ -868,8 +754,6 @@
   {
     "id": 1737,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.510Z",
     "updated_at": "2020-08-24T12:28:28.510Z",
     "Value_et": null,
@@ -886,8 +770,6 @@
   {
     "id": 1708,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.763Z",
     "updated_at": "2020-08-24T12:28:26.763Z",
     "Value_et": null,
@@ -904,8 +786,6 @@
   {
     "id": 1672,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.337Z",
     "updated_at": "2020-08-24T12:28:22.337Z",
     "Value_et": null,
@@ -922,8 +802,6 @@
   {
     "id": 1744,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.778Z",
     "updated_at": "2020-08-24T12:28:28.778Z",
     "Value_et": null,
@@ -940,8 +818,6 @@
   {
     "id": 1692,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.995Z",
     "updated_at": "2020-08-24T12:28:24.995Z",
     "Value_et": null,
@@ -958,8 +834,6 @@
   {
     "id": 1728,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.006Z",
     "updated_at": "2020-08-24T12:28:28.006Z",
     "Value_et": null,
@@ -976,8 +850,6 @@
   {
     "id": 1691,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:24.831Z",
     "updated_at": "2020-08-24T12:28:24.831Z",
     "Value_et": null,
@@ -994,8 +866,6 @@
   {
     "id": 1678,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.075Z",
     "updated_at": "2020-08-24T12:28:23.075Z",
     "Value_et": null,
@@ -1012,8 +882,6 @@
   {
     "id": 1670,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.215Z",
     "updated_at": "2020-08-24T12:28:22.215Z",
     "Value_et": null,
@@ -1030,8 +898,6 @@
   {
     "id": 1725,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.763Z",
     "updated_at": "2020-08-24T12:28:27.763Z",
     "Value_et": null,
@@ -1048,8 +914,6 @@
   {
     "id": 1707,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.672Z",
     "updated_at": "2020-08-24T12:28:26.672Z",
     "Value_et": null,
@@ -1066,8 +930,6 @@
   {
     "id": 1729,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.064Z",
     "updated_at": "2020-08-24T12:28:28.064Z",
     "Value_et": null,
@@ -1084,8 +946,6 @@
   {
     "id": 1714,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.156Z",
     "updated_at": "2020-08-24T12:28:27.156Z",
     "Value_et": null,
@@ -1102,8 +962,6 @@
   {
     "id": 1721,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.591Z",
     "updated_at": "2020-08-24T12:28:27.591Z",
     "Value_et": null,
@@ -1120,8 +978,6 @@
   {
     "id": 1743,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.723Z",
     "updated_at": "2020-08-24T12:28:28.723Z",
     "Value_et": null,
@@ -1138,8 +994,6 @@
   {
     "id": 1734,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.385Z",
     "updated_at": "2020-08-24T12:28:28.385Z",
     "Value_et": null,
@@ -1156,8 +1010,6 @@
   {
     "id": 1723,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.704Z",
     "updated_at": "2020-08-24T12:28:27.704Z",
     "Value_et": null,
@@ -1174,8 +1026,6 @@
   {
     "id": 1681,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.492Z",
     "updated_at": "2020-08-24T12:28:23.492Z",
     "Value_et": null,
@@ -1192,8 +1042,6 @@
   {
     "id": 1730,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.092Z",
     "updated_at": "2020-08-24T12:28:28.092Z",
     "Value_et": null,
@@ -1210,8 +1058,6 @@
   {
     "id": 1700,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.090Z",
     "updated_at": "2020-08-24T12:28:26.090Z",
     "Value_et": null,
@@ -1228,8 +1074,6 @@
   {
     "id": 1684,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.851Z",
     "updated_at": "2020-08-24T12:28:23.851Z",
     "Value_et": null,
@@ -1246,8 +1090,6 @@
   {
     "id": 1694,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.161Z",
     "updated_at": "2020-08-24T12:28:25.161Z",
     "Value_et": null,
@@ -1264,8 +1106,6 @@
   {
     "id": 1747,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.889Z",
     "updated_at": "2020-08-24T12:28:28.889Z",
     "Value_et": null,
@@ -1282,8 +1122,6 @@
   {
     "id": 1845,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.466Z",
     "updated_at": "2020-08-24T12:28:31.466Z",
     "Value_et": null,
@@ -1300,8 +1138,6 @@
   {
     "id": 1701,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.190Z",
     "updated_at": "2020-08-24T12:28:26.190Z",
     "Value_et": null,
@@ -1318,8 +1154,6 @@
   {
     "id": 1766,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.648Z",
     "updated_at": "2020-08-24T12:28:29.648Z",
     "Value_et": null,
@@ -1336,8 +1170,6 @@
   {
     "id": 1825,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.130Z",
     "updated_at": "2020-08-24T13:15:52.105Z",
     "Value_et": null,
@@ -1354,8 +1186,6 @@
   {
     "id": 1785,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.259Z",
     "updated_at": "2020-08-24T12:28:30.259Z",
     "Value_et": null,
@@ -1372,8 +1202,6 @@
   {
     "id": 1776,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.943Z",
     "updated_at": "2020-08-24T12:28:29.943Z",
     "Value_et": null,
@@ -1390,8 +1218,6 @@
   {
     "id": 1835,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.315Z",
     "updated_at": "2020-08-24T12:28:31.315Z",
     "Value_et": null,
@@ -1408,8 +1234,6 @@
   {
     "id": 1752,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.107Z",
     "updated_at": "2020-08-24T12:28:29.107Z",
     "Value_et": null,
@@ -1426,8 +1250,6 @@
   {
     "id": 1815,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.956Z",
     "updated_at": "2020-08-24T12:28:30.956Z",
     "Value_et": null,
@@ -1444,8 +1266,6 @@
   {
     "id": 1805,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.796Z",
     "updated_at": "2020-08-24T12:28:30.796Z",
     "Value_et": null,
@@ -1462,8 +1282,6 @@
   {
     "id": 1759,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.390Z",
     "updated_at": "2020-08-24T12:28:29.390Z",
     "Value_et": null,
@@ -1480,8 +1298,6 @@
   {
     "id": 1675,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.605Z",
     "updated_at": "2020-08-24T12:28:22.605Z",
     "Value_et": null,
@@ -1498,13 +1314,6 @@
   {
     "id": 1793,
     "Code": null,
-    "created_by": null,
-    "updated_by": {
-      "id": 1,
-      "firstname": "Mihkel",
-      "lastname": "Putrinš",
-      "username": null
-    },
     "created_at": "2020-08-24T12:28:30.486Z",
     "updated_at": "2020-10-11T22:32:16.552Z",
     "Value_et": null,
@@ -1521,18 +1330,6 @@
   {
     "id": 1857,
     "Code": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-11-26T08:20:21.695Z",
     "updated_at": "2020-11-26T08:21:57.366Z",
     "Value_et": null,
@@ -1549,8 +1346,6 @@
   {
     "id": 1731,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.141Z",
     "updated_at": "2020-08-24T12:28:28.141Z",
     "Value_et": null,
@@ -1567,8 +1362,6 @@
   {
     "id": 1844,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.407Z",
     "updated_at": "2020-08-24T12:28:31.407Z",
     "Value_et": null,
@@ -1585,8 +1378,6 @@
   {
     "id": 1758,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.375Z",
     "updated_at": "2020-08-24T12:28:29.375Z",
     "Value_et": null,
@@ -1603,8 +1394,6 @@
   {
     "id": 1765,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.572Z",
     "updated_at": "2020-08-24T12:28:29.572Z",
     "Value_et": null,
@@ -1621,8 +1410,6 @@
   {
     "id": 1854,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.592Z",
     "updated_at": "2020-08-24T12:28:31.592Z",
     "Value_et": null,
@@ -1639,8 +1426,6 @@
   {
     "id": 1834,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.280Z",
     "updated_at": "2020-08-24T12:28:31.280Z",
     "Value_et": null,
@@ -1657,8 +1442,6 @@
   {
     "id": 1814,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.925Z",
     "updated_at": "2020-08-24T12:28:30.925Z",
     "Value_et": null,
@@ -1675,8 +1458,6 @@
   {
     "id": 1824,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.098Z",
     "updated_at": "2020-08-24T12:28:31.098Z",
     "Value_et": null,
@@ -1693,8 +1474,6 @@
   {
     "id": 1783,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.183Z",
     "updated_at": "2020-08-24T12:28:30.183Z",
     "Value_et": null,
@@ -1711,8 +1490,6 @@
   {
     "id": 1804,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.773Z",
     "updated_at": "2020-08-24T12:28:30.773Z",
     "Value_et": null,
@@ -1729,18 +1506,6 @@
   {
     "id": 1858,
     "Code": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-11-26T08:24:51.094Z",
     "updated_at": "2020-11-26T08:24:51.104Z",
     "Value_et": null,
@@ -1757,8 +1522,6 @@
   {
     "id": 1748,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:28.991Z",
     "updated_at": "2020-08-24T12:28:28.991Z",
     "Value_et": null,
@@ -1775,8 +1538,6 @@
   {
     "id": 1791,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.458Z",
     "updated_at": "2020-08-24T12:28:30.458Z",
     "Value_et": null,
@@ -1793,8 +1554,6 @@
   {
     "id": 1848,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.541Z",
     "updated_at": "2020-08-24T12:28:31.541Z",
     "Value_et": null,
@@ -1811,8 +1570,6 @@
   {
     "id": 1798,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.654Z",
     "updated_at": "2020-08-24T12:28:30.654Z",
     "Value_et": null,
@@ -1829,8 +1586,6 @@
   {
     "id": 1775,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.920Z",
     "updated_at": "2020-08-24T12:28:29.920Z",
     "Value_et": null,
@@ -1847,8 +1602,6 @@
   {
     "id": 1808,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.849Z",
     "updated_at": "2020-08-24T12:28:30.849Z",
     "Value_et": null,
@@ -1865,8 +1618,6 @@
   {
     "id": 1818,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.012Z",
     "updated_at": "2020-08-24T12:28:31.012Z",
     "Value_et": null,
@@ -1883,8 +1634,6 @@
   {
     "id": 1768,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.678Z",
     "updated_at": "2020-08-24T12:28:29.678Z",
     "Value_et": null,
@@ -1901,8 +1650,6 @@
   {
     "id": 1838,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.358Z",
     "updated_at": "2020-08-24T12:28:31.358Z",
     "Value_et": null,
@@ -1919,8 +1666,6 @@
   {
     "id": 1828,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.203Z",
     "updated_at": "2020-08-24T12:28:31.203Z",
     "Value_et": null,
@@ -1937,8 +1682,6 @@
   {
     "id": 1782,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.124Z",
     "updated_at": "2020-08-24T12:28:30.124Z",
     "Value_et": null,
@@ -1955,8 +1698,6 @@
   {
     "id": 1749,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.070Z",
     "updated_at": "2020-08-24T12:28:29.070Z",
     "Value_et": null,
@@ -1973,18 +1714,6 @@
   {
     "id": 1859,
     "Code": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-11-26T08:37:03.698Z",
     "updated_at": "2020-11-26T08:37:03.709Z",
     "Value_et": null,
@@ -2001,18 +1730,6 @@
   {
     "id": 1860,
     "Code": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-11-26T08:38:43.177Z",
     "updated_at": "2020-11-26T08:38:43.186Z",
     "Value_et": null,
@@ -2029,8 +1746,6 @@
   {
     "id": 1842,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.406Z",
     "updated_at": "2020-08-24T12:28:31.406Z",
     "Value_et": null,
@@ -2047,8 +1762,6 @@
   {
     "id": 1832,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.271Z",
     "updated_at": "2020-08-24T12:28:31.271Z",
     "Value_et": null,
@@ -2065,8 +1778,6 @@
   {
     "id": 1763,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.526Z",
     "updated_at": "2020-08-24T12:28:29.526Z",
     "Value_et": null,
@@ -2083,8 +1794,6 @@
   {
     "id": 1786,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.277Z",
     "updated_at": "2020-08-24T12:28:30.277Z",
     "Value_et": null,
@@ -2101,8 +1810,6 @@
   {
     "id": 1812,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.915Z",
     "updated_at": "2020-08-24T12:28:30.915Z",
     "Value_et": null,
@@ -2119,8 +1826,6 @@
   {
     "id": 1773,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.832Z",
     "updated_at": "2020-08-24T12:28:29.832Z",
     "Value_et": null,
@@ -2137,8 +1842,6 @@
   {
     "id": 1780,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.056Z",
     "updated_at": "2020-08-24T12:28:30.056Z",
     "Value_et": null,
@@ -2155,8 +1858,6 @@
   {
     "id": 1802,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.760Z",
     "updated_at": "2020-08-24T12:28:30.760Z",
     "Value_et": null,
@@ -2173,8 +1874,6 @@
   {
     "id": 1750,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.070Z",
     "updated_at": "2020-08-24T12:28:29.070Z",
     "Value_et": null,
@@ -2191,8 +1890,6 @@
   {
     "id": 1756,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.268Z",
     "updated_at": "2020-08-24T12:28:29.268Z",
     "Value_et": null,
@@ -2209,8 +1906,6 @@
   {
     "id": 1822,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.087Z",
     "updated_at": "2020-08-24T12:28:31.087Z",
     "Value_et": null,
@@ -2227,8 +1922,6 @@
   {
     "id": 1852,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.592Z",
     "updated_at": "2020-08-24T12:28:31.592Z",
     "Value_et": null,
@@ -2245,8 +1938,6 @@
   {
     "id": 1826,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.143Z",
     "updated_at": "2020-08-24T12:28:31.143Z",
     "Value_et": null,
@@ -2263,8 +1954,6 @@
   {
     "id": 1789,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.404Z",
     "updated_at": "2020-08-24T12:28:30.404Z",
     "Value_et": null,
@@ -2281,8 +1970,6 @@
   {
     "id": 1771,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.785Z",
     "updated_at": "2020-08-24T12:28:29.785Z",
     "Value_et": null,
@@ -2299,8 +1986,6 @@
   {
     "id": 1764,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.558Z",
     "updated_at": "2020-08-24T12:28:29.558Z",
     "Value_et": null,
@@ -2317,8 +2002,6 @@
   {
     "id": 1777,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.994Z",
     "updated_at": "2020-08-24T12:28:29.994Z",
     "Value_et": null,
@@ -2335,8 +2018,6 @@
   {
     "id": 1751,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.071Z",
     "updated_at": "2020-08-24T12:28:29.071Z",
     "Value_et": null,
@@ -2353,8 +2034,6 @@
   {
     "id": 1846,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.467Z",
     "updated_at": "2020-08-24T12:28:31.467Z",
     "Value_et": null,
@@ -2371,8 +2050,6 @@
   {
     "id": 1836,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.315Z",
     "updated_at": "2020-08-24T12:28:31.315Z",
     "Value_et": null,
@@ -2389,8 +2066,6 @@
   {
     "id": 1816,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.966Z",
     "updated_at": "2020-08-24T12:28:30.966Z",
     "Value_et": null,
@@ -2407,8 +2082,6 @@
   {
     "id": 1797,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.605Z",
     "updated_at": "2020-08-24T12:28:30.605Z",
     "Value_et": null,
@@ -2425,8 +2098,6 @@
   {
     "id": 1807,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.796Z",
     "updated_at": "2020-08-24T12:28:30.796Z",
     "Value_et": null,
@@ -2443,8 +2114,6 @@
   {
     "id": 1849,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.541Z",
     "updated_at": "2020-08-24T12:28:31.541Z",
     "Value_et": null,
@@ -2461,8 +2130,6 @@
   {
     "id": 1778,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.016Z",
     "updated_at": "2020-08-24T12:28:30.016Z",
     "Value_et": null,
@@ -2479,8 +2146,6 @@
   {
     "id": 1760,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.462Z",
     "updated_at": "2020-08-24T12:28:29.462Z",
     "Value_et": null,
@@ -2497,8 +2162,6 @@
   {
     "id": 1790,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.420Z",
     "updated_at": "2020-08-24T12:28:30.420Z",
     "Value_et": null,
@@ -2515,8 +2178,6 @@
   {
     "id": 1799,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.677Z",
     "updated_at": "2020-08-24T12:28:30.677Z",
     "Value_et": null,
@@ -2533,8 +2194,6 @@
   {
     "id": 1829,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.204Z",
     "updated_at": "2020-08-24T12:28:31.204Z",
     "Value_et": null,
@@ -2551,8 +2210,6 @@
   {
     "id": 1839,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.364Z",
     "updated_at": "2020-08-24T12:28:31.364Z",
     "Value_et": null,
@@ -2569,8 +2226,6 @@
   {
     "id": 1753,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.214Z",
     "updated_at": "2020-08-24T12:28:29.214Z",
     "Value_et": null,
@@ -2587,8 +2242,6 @@
   {
     "id": 1819,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.012Z",
     "updated_at": "2020-08-24T12:28:31.012Z",
     "Value_et": null,
@@ -2605,8 +2258,6 @@
   {
     "id": 1809,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.850Z",
     "updated_at": "2020-08-24T12:28:30.850Z",
     "Value_et": null,
@@ -2623,8 +2274,6 @@
   {
     "id": 1767,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.665Z",
     "updated_at": "2020-08-24T12:28:29.665Z",
     "Value_et": null,
@@ -2641,8 +2290,6 @@
   {
     "id": 1762,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.526Z",
     "updated_at": "2020-08-24T12:28:29.526Z",
     "Value_et": null,
@@ -2659,8 +2306,6 @@
   {
     "id": 1770,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.776Z",
     "updated_at": "2020-08-24T12:28:29.776Z",
     "Value_et": null,
@@ -2677,8 +2322,6 @@
   {
     "id": 1754,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.221Z",
     "updated_at": "2020-08-24T12:28:29.221Z",
     "Value_et": null,
@@ -2695,8 +2338,6 @@
   {
     "id": 1827,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.143Z",
     "updated_at": "2020-08-24T12:28:31.143Z",
     "Value_et": null,
@@ -2713,8 +2354,6 @@
   {
     "id": 1847,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.468Z",
     "updated_at": "2020-08-24T12:28:31.468Z",
     "Value_et": null,
@@ -2731,8 +2370,6 @@
   {
     "id": 1806,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.796Z",
     "updated_at": "2020-08-24T12:28:30.796Z",
     "Value_et": null,
@@ -2749,8 +2386,6 @@
   {
     "id": 1796,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.605Z",
     "updated_at": "2020-08-24T12:28:30.605Z",
     "Value_et": null,
@@ -2767,8 +2402,6 @@
   {
     "id": 1784,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.259Z",
     "updated_at": "2020-08-24T12:28:30.259Z",
     "Value_et": null,
@@ -2785,8 +2418,6 @@
   {
     "id": 1837,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.315Z",
     "updated_at": "2020-08-24T12:28:31.315Z",
     "Value_et": null,
@@ -2803,8 +2434,6 @@
   {
     "id": 1817,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.966Z",
     "updated_at": "2020-08-24T12:28:30.966Z",
     "Value_et": null,
@@ -2821,8 +2450,6 @@
   {
     "id": 1761,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.519Z",
     "updated_at": "2020-08-24T12:28:29.519Z",
     "Value_et": null,
@@ -2839,8 +2466,6 @@
   {
     "id": 1841,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.406Z",
     "updated_at": "2020-08-24T12:28:31.406Z",
     "Value_et": null,
@@ -2857,8 +2482,6 @@
   {
     "id": 1788,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.341Z",
     "updated_at": "2020-08-24T12:28:30.341Z",
     "Value_et": null,
@@ -2875,8 +2498,6 @@
   {
     "id": 1851,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.591Z",
     "updated_at": "2020-08-24T12:28:31.591Z",
     "Value_et": null,
@@ -2893,8 +2514,6 @@
   {
     "id": 1823,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.088Z",
     "updated_at": "2020-08-24T12:28:31.088Z",
     "Value_et": null,
@@ -2911,8 +2530,6 @@
   {
     "id": 1781,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.101Z",
     "updated_at": "2020-08-24T12:28:30.101Z",
     "Value_et": null,
@@ -2929,8 +2546,6 @@
   {
     "id": 1833,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.271Z",
     "updated_at": "2020-08-24T12:28:31.271Z",
     "Value_et": null,
@@ -2947,8 +2562,6 @@
   {
     "id": 1803,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.760Z",
     "updated_at": "2020-08-24T12:28:30.760Z",
     "Value_et": null,
@@ -2965,8 +2578,6 @@
   {
     "id": 1772,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.816Z",
     "updated_at": "2020-08-24T12:28:29.816Z",
     "Value_et": null,
@@ -2983,8 +2594,6 @@
   {
     "id": 1755,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.242Z",
     "updated_at": "2020-08-24T12:28:29.242Z",
     "Value_et": null,
@@ -3001,8 +2610,6 @@
   {
     "id": 1813,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.916Z",
     "updated_at": "2020-08-24T12:28:30.916Z",
     "Value_et": null,
@@ -3019,8 +2626,6 @@
   {
     "id": 1795,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.557Z",
     "updated_at": "2020-08-24T12:28:30.557Z",
     "Value_et": null,
@@ -3037,8 +2642,6 @@
   {
     "id": 1757,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.312Z",
     "updated_at": "2020-08-24T12:28:29.312Z",
     "Value_et": null,
@@ -3055,8 +2658,6 @@
   {
     "id": 1811,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.906Z",
     "updated_at": "2020-08-24T12:28:30.906Z",
     "Value_et": null,
@@ -3073,8 +2674,6 @@
   {
     "id": 1787,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.326Z",
     "updated_at": "2020-08-24T12:28:30.326Z",
     "Value_et": null,
@@ -3091,8 +2690,6 @@
   {
     "id": 1831,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.270Z",
     "updated_at": "2020-08-24T12:28:31.270Z",
     "Value_et": null,
@@ -3109,8 +2706,6 @@
   {
     "id": 1794,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.548Z",
     "updated_at": "2020-08-24T12:28:30.548Z",
     "Value_et": null,
@@ -3127,8 +2722,6 @@
   {
     "id": 1774,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.897Z",
     "updated_at": "2020-08-24T12:28:29.897Z",
     "Value_et": null,
@@ -3145,8 +2738,6 @@
   {
     "id": 1801,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.753Z",
     "updated_at": "2020-08-24T12:28:30.753Z",
     "Value_et": null,
@@ -3163,8 +2754,6 @@
   {
     "id": 1821,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.087Z",
     "updated_at": "2020-08-24T12:28:31.087Z",
     "Value_et": null,
@@ -3181,8 +2770,6 @@
   {
     "id": 1843,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.407Z",
     "updated_at": "2020-08-24T12:28:31.407Z",
     "Value_et": null,
@@ -3199,8 +2786,6 @@
   {
     "id": 1853,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.592Z",
     "updated_at": "2020-08-24T12:28:31.592Z",
     "Value_et": null,
@@ -3217,8 +2802,6 @@
   {
     "id": 1683,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:23.726Z",
     "updated_at": "2020-08-24T12:28:23.726Z",
     "Value_et": null,
@@ -3235,8 +2818,6 @@
   {
     "id": 1673,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.364Z",
     "updated_at": "2020-08-24T12:28:22.364Z",
     "Value_et": null,
@@ -3253,8 +2834,6 @@
   {
     "id": 1695,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:25.376Z",
     "updated_at": "2020-08-24T12:28:25.376Z",
     "Value_et": null,
@@ -3271,8 +2850,6 @@
   {
     "id": 1717,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.346Z",
     "updated_at": "2020-08-24T12:28:27.346Z",
     "Value_et": null,
@@ -3289,8 +2866,6 @@
   {
     "id": 1671,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:22.318Z",
     "updated_at": "2020-08-24T12:28:22.318Z",
     "Value_et": null,
@@ -3307,8 +2882,6 @@
   {
     "id": 1840,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.397Z",
     "updated_at": "2020-08-24T12:28:31.397Z",
     "Value_et": null,
@@ -3325,8 +2898,6 @@
   {
     "id": 1722,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.591Z",
     "updated_at": "2020-08-24T12:28:27.591Z",
     "Value_et": null,
@@ -3343,8 +2914,6 @@
   {
     "id": 1850,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.587Z",
     "updated_at": "2020-08-24T12:28:31.587Z",
     "Value_et": null,
@@ -3361,8 +2930,6 @@
   {
     "id": 1769,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:29.765Z",
     "updated_at": "2020-08-24T12:28:29.765Z",
     "Value_et": null,
@@ -3379,8 +2946,6 @@
   {
     "id": 1800,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.741Z",
     "updated_at": "2020-08-24T12:28:30.741Z",
     "Value_et": null,
@@ -3397,8 +2962,6 @@
   {
     "id": 1810,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.905Z",
     "updated_at": "2020-08-24T12:28:30.905Z",
     "Value_et": null,
@@ -3415,8 +2978,6 @@
   {
     "id": 1820,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.058Z",
     "updated_at": "2020-08-24T12:28:31.058Z",
     "Value_et": null,
@@ -3433,8 +2994,6 @@
   {
     "id": 1779,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.040Z",
     "updated_at": "2020-08-24T12:28:30.040Z",
     "Value_et": null,
@@ -3451,8 +3010,6 @@
   {
     "id": 1830,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:31.270Z",
     "updated_at": "2020-08-24T12:28:31.270Z",
     "Value_et": null,
@@ -3469,8 +3026,6 @@
   {
     "id": 1792,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:30.478Z",
     "updated_at": "2020-08-24T12:28:30.478Z",
     "Value_et": null,
@@ -3487,8 +3042,6 @@
   {
     "id": 1705,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:26.528Z",
     "updated_at": "2020-08-24T12:28:26.528Z",
     "Value_et": null,
@@ -3505,8 +3058,6 @@
   {
     "id": 1720,
     "Code": null,
-    "created_by": null,
-    "updated_by": null,
     "created_at": "2020-08-24T12:28:27.486Z",
     "updated_at": "2020-08-24T12:28:27.486Z",
     "Value_et": null,

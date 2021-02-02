@@ -2,18 +2,6 @@
   {
     "id": 5,
     "name": "menu",
-    "created_by": {
-      "id": 4,
-      "firstname": "Siim",
-      "lastname": "Sutt",
-      "username": null
-    },
-    "updated_by": {
-      "id": 5,
-      "firstname": "Martin",
-      "lastname": "Pennaste",
-      "username": null
-    },
     "created_at": "2020-09-08T09:07:05.424Z",
     "updated_at": "2020-11-20T12:39:01.686Z",
     "label": [
@@ -192,18 +180,6 @@
   {
     "id": 6,
     "name": "userprofile",
-    "created_by": {
-      "id": 4,
-      "firstname": "Siim",
-      "lastname": "Sutt",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-07T13:51:09.120Z",
     "updated_at": "2020-11-11T10:29:13.275Z",
     "label": [
@@ -872,18 +848,6 @@
   {
     "id": 1,
     "name": "button",
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-08-28T13:04:40.356Z",
     "updated_at": "2020-11-11T21:13:27.563Z",
     "label": [
@@ -962,18 +926,6 @@
   {
     "id": 3,
     "name": "all",
-    "created_by": {
-      "id": 4,
-      "firstname": "Siim",
-      "lastname": "Sutt",
-      "username": null
-    },
-    "updated_by": {
-      "id": 4,
-      "firstname": "Siim",
-      "lastname": "Sutt",
-      "username": null
-    },
     "created_at": "2020-09-08T08:59:45.993Z",
     "updated_at": "2020-09-08T09:08:36.435Z",
     "label": [
@@ -1102,18 +1054,6 @@
   {
     "id": 2,
     "name": "film",
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 18,
-      "firstname": "Jaana",
-      "lastname": "Kalinistova",
-      "username": null
-    },
     "created_at": "2020-08-28T13:20:35.527Z",
     "updated_at": "2020-11-23T09:20:28.586Z",
     "label": [
@@ -1482,18 +1422,6 @@
   {
     "id": 7,
     "name": "filters",
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-11-05T20:45:47.073Z",
     "updated_at": "2020-11-25T05:50:37.719Z",
     "label": [
@@ -1742,18 +1670,6 @@
   {
     "id": 8,
     "name": "industry",
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-11-15T11:10:21.601Z",
     "updated_at": "2020-11-26T10:21:36.373Z",
     "label": [
@@ -2082,18 +1998,6 @@
   {
     "id": 4,
     "name": "screening",
-    "created_by": {
-      "id": 4,
-      "firstname": "Siim",
-      "lastname": "Sutt",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-09-08T09:03:15.281Z",
     "updated_at": "2020-10-23T10:40:08.025Z",
     "label": [

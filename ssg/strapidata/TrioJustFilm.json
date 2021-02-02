@@ -3,24 +3,8 @@
     "id": 1,
     "name": null,
     "lead": null,
-    "created_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
-    "updated_by": {
-      "id": 14,
-      "firstname": "Heleen",
-      "lastname": "Sutt",
-      "username": null
-    },
     "created_at": "2020-09-30T12:39:57.425Z",
-<<<<<<< HEAD
-    "updated_at": "2020-11-30T09:55:57.104Z",
-=======
     "updated_at": "2020-12-07T09:00:28.443Z",
->>>>>>> parent of b1922739... delete starpidata .json files
     "trioJustFilm_et": {
       "id": 4,
       "name": "Hundufeed",
@@ -32,26 +16,6 @@
           "created_by": 14,
           "updated_by": 14,
           "created_at": "2020-11-30T09:53:11.341Z",
-<<<<<<< HEAD
-          "updated_at": "2020-11-30T11:34:02.160Z",
-          "title_et": "20. Just Filmi võidufilmid ja eripreemiad",
-          "slug_et": "20-just-filmi-voidufilmid-ja-eripreemiad",
-          "title_en": null,
-          "slug_en": "just-filmi-article-12",
-          "title_ru": null,
-          "slug_ru": "just-filmi-article-13",
-          "lead_et": "**Põhja-Euroopa suurima noorte- ja lastefilmide festivali Just Film juubeliaasta grand prix läks Prantsusmaale**",
-          "lead_en": null,
-          "lead_ru": null,
-          "contents_et": "Rahvusvaheline filmifestival Just Film, mis toimus 13. novembrist 29. novembrini tähistas tänavu oma 20. sünnipäeva! Eriline aasta tõi kinolinale, ja esmakordselt ka koju huvitavad ja põnevad filmid üle kogu maailma. Just Filmi missioon on läbi kvaliteetse filmikunsti käsitleda tänapäeva maailmas aktuaalseid, olulisi ja tõsiseid teemasid eesmärgiga luua arutelu laste, noorte ja täiskasvanute vahel.\n\nVaatamata keerulisele aastale toimus Just Filmi raames tänavu üks Euroopa, kaks rahvusvahelist ja kolm maailma esilinastust! Üks maailma esilinastustest oli Eesti oma Rasmus Merivoo [\"Kratt\"](https://justfilm.ee/film/kratt/), mis sai publikult palava vastuvõtu.\nJust Filmil tuli näitamisele kokku 42 täispikka- ning 3 lühifilmi, mis jagunesid juba tuttavate programmide vahel - lastefilmide, noortefilmide, teadusdokumentaalide ning lapse õiguste programm.\n\nJust Filmi laste- ja noortežüriid andsid eripreemiad just Eesti filmidele. Lastežürii tõstis esile režissööride Meelis Arulepp ning Karsten Kiilerich animafilmi [\"Sipsik\"](https://justfilm.ee/film/sipsik/) (Eesti, 2020) filmimuusika ning noortežürii kiitis režissööri Rasmus Merivoo [\"Kratt\"](https://justfilm.ee/film/kratt/) (Eesti, 2020) visuaalset seadet.\n\nEsmakordselt aitasid Just Filmi lapse õiguste programmi koostada noored ise - [Märka Last](https://markalast.ee) platvormi toimetajad. Tänavuse lapse õiguste programmi juhtlause \"Mitte ainult lastele, vaid koos lastega\" suunab tähelepanu sellele, kuivõrd palju võib noorte kaasamine neid puudutavatesse teemadesse arutelu rikastada ning edasi viia.\n\nFestivali tegevjuht Mikk Granström sõnas: \"Oleme väga õnnelikud, et vaatamata keerulistele aegadele õnnestus meil füüsilisel kujul festivali korraldada. Sealjuures oli meil võimalik viia läbi ka Just Filmi rahvusvahelised võistlusprogrammid ning säilitada filmiprogrammi kõrget kunstilist taset. Soovin tänada kogu PÖFFi ning Just Filmi meeskonda! Ning eriline tänu läheb loomulikult meie publikule, nii kinos kui veebis. Kohtume 2021. aasta novembris!\"\n\n##### **2020. aasta Just Filmi võidufilmid:**\n\n\n##### **Lastežürii parima lastefilmi auhind**\n[“Margot’ ja Marguerite imeline seiklus”](https://justfilm.ee/film/margot-and-marguerite-i-imeline-seiklus/)\nThe Fantastic Journey of Margot & Marguerite\nR: Pierre Coré\nPrantsusmaa 2020\n\n“Põnevaid filme oli palju ning igaüks neist oli omamoodi huvitav ja õpetlik. Aga lõpuks me ikka tegime otsuse ning võitjafilm meeldis meile oma huvitava loo ja tugeva näitlemisega. 1 tüdruk tegi kahte rolli ja seda meie meelest suurepäraselt! See on film, mis rääkis uues olukorras hakkama saamisega ja kõike seda väga mänguliselt. Meie valisime võitjafilmiks „Margot ja Marguerite’i imeline seiklus“, mis on pöörane lugu sellest, kuidas noored tüdrukud ootamatult ajas rändavad ning uues ajastus hakkama saavad.”\n\n**Lastežürii eriauhind:**\n\"Eriauhinna soovime anda armastatud Eesti kangelasele Sipsikule. Meie meelest oli \"Sipsik\" filmi muusika nii haarav ja tore, et just filmimuusika eest seda filmi tunnustada soovimegi.\"\n\nLastežürii: Kaarel Uueni, Kerstin Kalda, Kuno Wilhelm Rohusaar, Mari Krashevski, Sarah Liis Luha\n\n\n##### **Noortežürii parima noortefilmi auhind**\n[“50 või kaks vaala kohtuvad rannal”](https://justfilm.ee/film/50-voi-kaks-vaala-kohtuvad-rannal/)\n50 or Two Whales Meet on the Beach\nR: Jorge Cuchi\nMehhiko 2020\n\n“Selleaastase Just Filmi noortežürii auhinna anname pärast pikki ja tuliseid vaidlusi filmile, mis sütitas intriige juba päevi enne selle vaatamist. Tegu on filmiga, milles julge teemakäsitlus kohtub värske pildikeele, oskuslikult kirjutatud tegelaste, professionaalse näitlejatöö ja omapärase montaažiga; filmiga, mida vaadates kohtusid meie kõrged ootused nende väärilise linateosega, ja loodetavasti filmiga, mis kohtub veel paljude kinolinade ja vaatajatega. Noortežürii auhind läheb filmile “50 või kaks vaala kohtuvad rannal”.”\n\n**Noortežürii eriauhind:**\n\"Eriauhinna saab \"Kratt\" (Eesti, 2020) visuaalselt kõige omapärasema filmi eest.\"\n\n\nNoortežürii: Anna Linda Elvre, Gerli Rehkalt, Hans Robert Kannukene, Helena Maarja Tarro\n\n\n##### **ECFA auhind parimale Euroopa lastefilmile**\n[“Klaaspoiss”](https://justfilm.ee/film/klaaspoiss/)\nGlassboy\nR: Samuele Rossi\nItaalia 2020\n\n“Me reisisime läbi filmide mööda Euroopat ja aega. Viibisime nii momendis kui minevikus. Fantastilised rännakud ajas, ekskursioonid pimedatesse ja müstilistesse muinasjuttudesse, igapäeva kooliellu, esimene armastus, päevikud ja piraadiseiklused - lai valik lugusid, mis on meid mitmel moel mõjutanud. Need filmid inspireerisid meid kaasa mõtlema ja reflekteerima, täitsid meid elevusega ning üle kõige andsid need filmid võimaluse läbi imeliste peategelaste kogeda laste ja noorte elu.\n\nTänavune Euroopa lastefilmide programm viis meid küll mitmetele erinevatele teekondadele, kuid üks neist tõusis eriliselt esile. Lugu, mis läbi suurepärase näitlejameisterlikkuse näitab isoleerituse ületamist ning ühe indiviidi võimalust tunda end sõprusgruppi kuuluvana. Peategelane leiab jõudu, et oma elutee üle kontroll haarata ning oma headust täis, kuid liialt kaitsva perekonna samuti uue olukorraga kohanema panna. Just filmi rikkalike karakterite, imeilusalt loodud maailma, kaasahaarava ning hästi kirjutatud loo tõttu anname ECFA auhinna filmile “Klaaspoiss”.”\n\nECFA Žürii: Mike Tait (Suurbritannia), Mariella Harpelunde Jensen (Taani), Julia Fleißig (Saksamaa)\n\n\n##### **Just Film grand prix selle aasta parimale noortefilmile**\n[“Slaalom\"](https://justfilm.ee/film/slaalom/)\nSlalom\nR: Charlène Favier\nPrantsusmaa 2020\n\n“Rahvusvaheline žürii nautis noortefilmide võistlusprogrammi filme ning hindab kõrgelt filmides tõststatud teemasid. Nägime mitmeid lugusid, kus täiskasvanud käitusid vastutustundetult ning lapsed pidid end vanema rolli asetama. Filmides tõusis läbivalt küsimusi: “Kes siin loos on laps ja kes täiskasvanu? Mis juhtub, kui täiskasvanu mõtlematu tegutsemine laotab raskuse just selle noore õlule, kes täiskasvanut kõige rohkem usaldab?”. Üks film tõusis esile oma imeliselt autentse portreeringuga keerulisest situatsioonist. Räägituna teismelise perspektiivist, kuid ilma teisi karaktereid demoniseerimata, oli tegemist looga, mis julges puudutada väärkohtlemise ja hoolimatuse teemasid väga realistlikul viisil. Võimas film, äärmiselt ausate esitlustega. Just Filmi grand prix 2020 “Slaalom”.”\n\n**Eraldi tõi rahvusvaheline žürii esile:**\nSüdantlõhestav lugu, mis kirjeldab jõuliselt ühe lapse lõputut ja tingimusteta armastust oma ema vastu. Selle näitlejanna esitlus on selle filmi hing. Tema aus ja haavatav, kuid kahe jalaga maa peal olek tõstab loo järgmisele tasemele. Žürii soovib tõsta esile Luna Mwezi tema lummava esituse eest filmis \"Süstlapargi laps (Šveits, 2020)\". \n\nRahvusvaheline žürii: Guy Davies (Suurbritannia), Elen Lotman (Eesti), Satu Tuuli Karhu (Soome)\n\nKuigi Just Filmi festival on tänaseks lõppenud saab PÖFFi parimaid palasid vaadata veel **6. detsembrini PÖFFi veebikinos** [kino.poff.ee](https://kino.poff.ee)!\n\n\nJust Film on Pimedate Ööde filmifestivali (PÖFF) noorte- ja lastefilmide alafestival, mis toimub igal aastal novembrikuus paralleelselt PÖFFi põhiprogrammiga. Näitamisele tulevad filmid, mis lisaks meelelahutuslikule aspektile kannavad endas ka hariduslikku eesmärki. Festivalil linastub igal aastal ligikaudu 50 filmi ning publikuarvu poolest on Just Filmist saanud tänaseks Eesti üks suuremaid noorteüritusi.\n\nFilmifestivali korraldamine on keeruline ettevõtmine ja ilma heade sõprade, toetajate ja sponsoriteta poleks see võimalik. Festival tänab kõiki, kes on kaasa aidanud selle toimumisele! \n\n",
-          "contents_en": null,
-          "contents_ru": null,
-          "publishFrom": null,
-          "publishUntil": null,
-          "publish_et": true,
-          "publish_en": null,
-          "publish_ru": null
-=======
           "updated_at": "2020-12-07T08:24:13.817Z",
           "title_et": "20. Just Filmi võidufilmid ja eripreemiad",
           "slug_et": "20-just-filmi-voidufilmid-ja-eripreemiad",
@@ -70,7 +34,6 @@
           "publish_et": true,
           "publish_en": true,
           "publish_ru": true
->>>>>>> parent of b1922739... delete starpidata .json files
         },
         "title": "20. Just Filmi võidufilmid ja eripreemiad",
         "lead": null,
@@ -103,8 +66,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 14,
-          "updated_by": 14,
           "created_at": "2020-11-30T09:55:41.213Z",
           "updated_at": "2020-11-30T09:55:41.858Z"
         }
@@ -166,8 +127,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 15,
-          "updated_by": 15,
           "created_at": "2020-11-14T14:09:17.783Z",
           "updated_at": "2020-11-14T14:09:18.044Z"
         }
@@ -229,8 +188,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 14,
-          "updated_by": 14,
           "created_at": "2020-11-18T15:59:13.876Z",
           "updated_at": "2020-11-18T15:59:14.479Z"
         }
@@ -243,59 +200,6 @@
       "trioItem_1": {
         "id": 13,
         "just_filmi_article": {
-<<<<<<< HEAD
-          "id": 15,
-          "created_by": 14,
-          "updated_by": 14,
-          "created_at": "2020-10-13T12:39:30.988Z",
-          "updated_at": "2020-11-19T11:53:45.871Z",
-          "title_et": "Rahvusvaheline noortefilmide võistlusprogramm",
-          "slug_et": "rahvusvaheline-noortefilmide-voistlusprogramm",
-          "title_en": "Just Film International Youth Competition Films",
-          "slug_en": "just-film-international-youth-competition",
-          "title_ru": null,
-          "slug_ru": "just-filmi-article-6",
-          "lead_et": "Just Film tähistab sel aastal oma 20. sünnipäeva ning rahvusvahelisse noortefilmide võistlusprogrammi on leitud tervest maailmast just need kõige olulisemad teemad noorte seas, mida kinoekraanil näitama peaks. ",
-          "lead_en": "Just Film, the sub-festival of Black Nights Film Festival dedicated to youth and children's films, has announced 12 films competing in its International Youth Competition.",
-          "lead_ru": null,
-          "contents_et": "Just Filmi festivali tegevjuht Mikk Granström iseloomustab filmiprogrammi nii: “Vaatamata koroonakriisile oleme saanud kokku tänavuse võistlusprogrammi kaheteistkümnest väga huvitavast filmist. Linastuvad filmid näitavad ühelt poolt, milline oli noorte elu enne maailma raputanud suurt kriisi ja teiselt poolt puudutab igavesi probleeme, nagu esimene armastus, eneseleidmine, suhted vanemate ja sõpradega. Programmis on väga värsked ja uued filmid, millest paljude jaoks on Just Filmi näol tegemist sel aastal esimese festivaliga. Oleme programmi üle äärmiselt õnnelikud ja uhked ning usume, et siin on avastamist kõigile. “ \n\nRahvusvahelist noortefilmide võistlusprogrammi hindab peale noortežürii ka kolmeliikmeline rahvusvaheline žürii, kes kuulutab välja Just Film grand prix auhinda vääriva filmi. \n\nPimedate Ööde Filmifestivali noorte- ja lastefilmide alafestival Just Film toimub tänavu **13. novembrist 29. novembrini** ning piletimüük algab juba homsest, **15. oktoobrist**. \n\n\n\nRahvusvaheline noortefilmide võistlusprogramm: \n\n##### [\"Süstlapargi laps\"](https://www.justfilm.ee/film/suestlapargi-laps/)\n\nNeedle Park Baby \n\nŠveits 2020, 100 min \n\nR: Pierre Monnard \n\n11-aastase Mia vanemad on narkomaanid. Kui kohalik süstlapark, kus Mia vanemad tavaliselt igapäevast doosi saamas käivad, kinni pannakse, ja vanemad lahutavad, on tüdruk sunnitud koos emaga kaugesse väikelinna kolima. Pikka aega on Mia ainuke sõber tema ukulelet tinistav väljamõeldud sõber, kuid ajapikku leiab ta koolist uusi tuttavaid, kelle kodused elud pole samuti kõige roosilisemad. “Süstlapargi laps” on väga maitsekalt üles võetud linateos, kus oivaliselt on balansseeritud narkomaailma tumedus koos üles kasvava lapse perspektiiviga, kust leiab ka palju fantaasiat, helgust ja positiivseid hetki. \n\nFilm on soovituslik alates 14. eluaastast. \n\nFilm linastub ka Just Filmi lapse õiguste programmis ning filmil on nii eesti- kui venekeelsed subtiitrid. \n\n[Vaata treilerit](https://www.youtube.com/watch?v=IVpiUJ35Dg0)\n\n\n\n##### [“Ütle talle”](https://www.justfilm.ee/film/uetle-talle/)\n\nTell Her \n\nVenemaa 2020, 95 min \n\nR: Aleksandr Molochnikov \n\nRahvusvaheline esilinastus \n\nSaša vanemad tülitsevad pidevalt ning kui nad lõpuks otsustavad lahku minna ja ema soovib Saša ning uue elukaaslasega Ameerikasse kolida, kukub poisi maailm kokku. Järsku leiab Saša end olukorrast, kus peab valima ema ja isa vahel. Valikut tegema sunnivad nii vanemad kui ka vanavanemad. Ometi ei too poisi otsus emaga Ameerikasse minna loodetud õnne ning lapse igatsus isa järele aina kasvab. Poiss teeb meeleheitlikke pingutusi, et säilitada head suhted mõlema vanemaga ning võita nende tähelepanu. See pole sugugi lihtne, sest vanemate omavaheline vägikaikavedu jätkub ka lahus elades ning Sašal on üha keerulisem end kuuldavaks teha. \n\nFilm linastub ka Just Filmi lapse õiguste programmis. \n\n\n\n##### [“Noored südamed”](https://www.justfilm.ee/film/noored-suedamed/)\n\nYoung Hearts \n\nUSA 2020, 95 min \n\nR: Sarah Sherman, Zachary Ray Sherman \n\nNoore inimese maailm on niigi keeruline, kogu aeg avastad midagi uut ja mõtled, kuidas kõigest aru saada. Kui lisandub veel esimene armastus, siis seda keerulisem. 14-aastane noormees kogeb esimest korda, mis tähendab olla armunud, kogu maailm oleks justkui muutunud ja tundub, et kõik on tema armastuse vastu. Südamlik film, kus tegelased ei soovi midagi muud kui õnne. Imeliste osatäjatega film jätab vaatajatesse positiivse emotsiooni ja näitab esimese armastuse võlu ja valu. \n\nFilm linastub ka Just Filmi lapse õiguste programmis. \n\n\n\n##### [“50 või kaks vaala kohtuvad rannal”](https://www.justfilm.ee/film/50-voi-kaks-vaala-kohtuvad-rannal/)\n\n50 or Two Whales Meet on the Beach \n\nMehhiko 2020, 122 min \n\nR: Jorge Cuchi \n\nMaailm on justkui pea peal. Mitte millestki pole võimalik aru saada. Segadus ei ole edasiviiv jõud. Kogu selle kaose eest, mis maailmas leidub, on vaja pugeda peitu ning tihti otsitakse lohutust sealt, kust seda tegelikult leida pole võimalik. “50 või kaks vaala kohtuvad rannal” on aus ja karm sissevaade sellisesse internetimängu nagu Sinine Vaal, kus noored peavad täitma 50 ülesannet ja viimane ülesanne on end ära tappa. Siin loos on noored, kes on üksi, justkui kõrvale tõugatud ning kes otsivad “väljapääsu” sellest lootusetust mängust. \n\nSee film ei ole lihtne vaatamine ja pole soovitatav kõigile. Miks seda filmi näitame? Peamine eesmärk on näidata, mis juhtub, kui noored jätta tähelepanuta, ilma inimliku kontaktita. Maailmast on vanematelgi keeruline aru saada, rääkimata siis noortest. Režissööri Jorge Cuchi debüütfilm kujutab seda maailma ilma ilustamata. Ning ka filmi lõpp on vaatajale teada. Seda filmi peaksid eelkõige vaatama lapsevanemad, õpetajad ja kõik, kes noortega  oma töös igapäevaselt kokku puutavad. \n\nFilm on alla 18-aastastele keelatud. \n\n[Vaata treilerit](https://www.youtube.com/watch?v=Y7co0g3Z2ss&feature=emb_title)\n\n\n##### [\"Slaalom\"](https://www.justfilm.ee/film/slaalom/)\n\nSlalom \n\nPrantsusmaa 2020, 92 min \n\nR: Charlène Favier \n\nLyz Lopez on 15-aastane lootustandev suusataja, kes võetakse vastu väga rangesse treeningakadeemiasse Prantsuse Alpides. Akadeemias, kus treenitakse tulevasi olümpialootusi, juhatab vägesid endine suusaäss Fred, kelle peamine treeningmeetod on psühholoogiline vägivald. Kord juba akadeemiasse vastu võetud poisid ja tüdrukud peavad tegema kasvõi võimatut, aga Fred peab tulemusi nägema. Kui Fred aga palub Lyz’il end tema kabinetis rasvaprotsendi mõõtmiseks lahti riietada, hakkab tüdrukule tunduma, et lisaks tulemustele peab Fred veel muudki näha saama. \n\nFilmil on nii eesti- kui venekeelsed subtiitrid. \n\n[Vaata treilerit](https://www.youtube.com/watch?v=V2JavMmHoXM)\n\n\n##### [“Hundikari”](https://www.justfilm.ee/film/hundikari/) \n\nThe Pack \n\nTšehhi 2020, 94 min \n\nR: Tomas Polensky \n\nSelle aasta ühe oodatuma noortefilmi peategelane on 16-aastane David, kelle suurim unistus on saada professionaalseks hokimängijaks. Kõik läheb aga kergelt öeldes allamäge, kui Davidil avastatakse raskekujuline diabeet, mille ravimiseks tuleb talle lausa toru kõhtu paigaldada. Poisi pere otsustab kolida uude linna ning ta peab minema võõrasse kooli, kus liitub kohaliku hokitiimiga nimega “Hundikari”. Uued tiimikaaslased ei võta uustulnukat just kuigi soojalt vastu – Davidit kiusatakse halastamatult ning hokitiimi kapten Jerry tundub võtvat lausa oma isiklikuks eesmärgiks teha Davidi elu täielikult põrguks, samal ajal kui treener vaatab vägivaldsest käitumisest mööda, sest “poisid jäävad poisteks!”. Kõik see viib muidu rahuliku Davidi murdumispunktini ja küsimuseni – kas austuse võitmiseks ja oma koha kinnitamiseks hundikarjas on tõesti vajalik laskuda teistega samale tasemele? “Hundikari” on film, mis räägib kiusamiskultuurist, valides platvormiks äärmiselt konkureeriva spordimaailma. See on lugu, mida oled tegelikult juba varem kuulnud ja näinud, kuid mida on lausa kohustuslik aeg-ajalt endale meelde tuletada – kõik selleks, et osata märgata kiusamise märke ja kiusatud inimesi meie ümber, et proovida ennetada olukorda, kus kiusatavast saab omakorda kiusaja. \n\n[Vaata treilerit](https://www.youtube.com/watch?v=SMoesK8CmFw)\n\n\n\n##### [“Pisa lubadus”](https://www.justfilm.ee/film/pisa-lubadus/) \n\nPromise of Pisa \n\nHolland 2020, 110 min \n\nR: Norbert ter Hall \n\nSam on Maroko päritolu poiss, kes emigreerus perega Hollandisse ning peab nüüd uues keskkonnas kohanema. Assimileerumine ei käi aga sugugi lihtsalt, sest Sam’i vanemad ei räägi hollandi keelt ning peavad islamireeglitest rangelt kinni. Ühtlasi elavad nad piirkonnas, kus elab palju marokolasi ning seetõttu on kuritegelikud grupid kerged tekkima. Ka Sam’i vend on seotud ühe grupeeringuga ja kes samal päeval, kui Sam võetakse vastu elitaarsesse muusikakooli, arreteeritakse. \n\nFilm linastub ka Just Filmi lapse õiguste programmis \n\n[Vaata treilerit](https://www.youtube.com/watch?v=DRxO9jutJFw)\n\n\n\n##### [“Masha”](https://www.justfilm.ee/film/masha/)\n\nMasha \n\nVenemaa 2020, 95 Min \n\nR: Anastasiya Palchikova \n\nAnastasiya Palchikova debüüt viib meid karmi 90ndate Vene gangsterite maailma. 13-aastasele Mashale on juba mõnda aega tundunud, et ta lapsepõlv on kuidagi teistsugune kui teistel eakaaslastel. Tüdrukul on raske uskuda, et tema väga tore ja sõbralik perekond on tegelikult röövlid ja mõrvarid, keda kõik teised linnaelanikud kardavad ja tema arust tehakse nii talle kui ka perele ülekohut. Oma mõttemullis elades jääb märkamata katastroof, mille suunas ta perekond liikumas on. Kui juba on hilja ja Masha üritab elus uue lehekülje pöörata, saab minevik ta kätte ja paneb proovile, kui tugevad on peresidemed tegelikult. \n\n\n\n\n##### [“Wendy”](https://www.justfilm.ee/film/wendy/)\n\nWendy \n\nUSA 2020, 111 min \n\nR: Benh Zeitlin \n\nLapsepõlv on ilus aeg ning suurekasvamist tuleks välitida. Wendy on inspireeritud klassikalisest Peeter Paani loost. Tööliste peres kasvav Wendy ja tema vennad unistavad suurtest seikustest, kui korraga ilmub nende juurde poiss nimega Peeter, kes nad enda saarele viib.  \n\nSaarel hakkab juhtuma palju põnevat. Lapsed tunnevad end vabana ning avastavad maailma ilu kogu selle täiuses. Meeldejääva pildikeelega koguperefilm on huvitav vaatamine nii suurtele kui ka väiksematele filmihuvilistele. \n\nFilmil on nii eesti- kui venekeelsed subtiitrid \n\nFilm linastub ka Just Filmi lapse õiguste programmis \n\n[Vaata treilerit](https://www.youtube.com/watch?v=KKktQFFcXL0)\n\n\n\n##### [“Kutsu mind mustaks linnuks”](https://www.justfilm.ee/film/kutsu-mind-mustaks-linnuks/)\n\nCall Me Blackbird \n\nVenemaa 2020, 93 min \n\nR: Pavel Mirzoev \n\nMaailma esilinastus \n\nKellelegi ei meeldi olla üksi. Eriti siis, kui oled energiat täis noor inimene. Esimesed tunded ja armastus on Kostja pea segamini ajanud, olla on kuidagi raske, samas ka väga meeldiv. Aga elu on vaja elada ja kõik vead tuleb ikka ise ära teha, kellegi teise nõuanded siin ei aita. Kui ise ei tee, siis teised ka mitte. Kostjat ootab kõik see ees. Heade osatäitjatega film näitab, kuidas selles tunnete virvarris hakkama saada. \n\n\n##### [“Kratt”](https://www.justfilm.ee/film/kratt/)\n\nKratt \n\nEesti 2020, 107 Min \n\nR: Rasmus Merivoo\n\nMaailma esilinastus \n\nVanemad viivad nutisõltlastest lapsed maale vanaema juurde päriseluga tutvuma. Lapsed ei viitsi tööd teha ja meisterdavad krati. Elu alevis võtab uued tuurid. \n\n\n\n[“Minu elu koomikuna”](https://www.justfilm.ee/film/minu-elu-koomikuna/)\n\nMy life as a Comedian \n\nRootsi 2019, 92 min \n\nR: Rojda Sekersöz \n\nFilm toob vaatajas esile kooliaja õudused, kas ta oli kiusajate, kiusatute või lihtsalt osavõtmatute poolel. Viimaste hulka kuulub peategelane Juha, keda puberteediaja tondid ka täiskasvanuna rahule ei jäta. Lapsest peale pole ta tahtnud ega osanud muud, kui nalja teha. Paralleelselt tänapäevaga seitsmekümnendate Rootsis kulgev lugu meenutab, et inimeste probleemide allikas on ikka vana hea ebakindlus, mille juured on tihti lapsepõlves. \n\nFilm linastub ka Just Filmi lapse õiguste programmis \n\n[Vaata treilerit](https://www.youtube.com/watch?v=HcVTEzTEdPM)\n\n\n\n",
-          "contents_en": "The programme includes two world premieres.\n\n##### „Kratt“\nThe second feature by Estonian director Rasmus Merivoo, who is one of the most unique Estonian filmmakers, „Kratt“ is a film which brings to life a known evil character from an Estonian book - Who probably no one knows? by Andrus Kivirähk. Merivoo’s film school short “Alien — saving Valdis in 11 chapters” became an instant cult classic because of its bold and original storytelling. After shooting his debut feature “Buratino” in Russia, he moved into TV to direct a season of the popular horror series “Süvahavva”. \n\n\n##### „Call Me Blackbird“\nA film by Russian director Pavel Mirzoev who is best known for directing the 2014 documentary „Zemlyaki“ and 2018 feature film „How I Came to Be..“. Graduated from VGIK (Russian State University of Cinematography) in 2008. Worked as a documentary filmmaker for 8 years and then switched to feature film. „Call Me Blackbird“ is his second full-length feature.\n\nMikk Granström, Just Film festival director said: \"We are happy to say that despite the Coronavirus crisis and the difficulties it has created to the film industry we have been able to create a programme that lives up to our standards in every way. The films screened will, on one hand, show what the lives of young people were like before the crisis that shook the world, and on the other, reflect timeless problems such as first love, self-discovery, and relationships with parents and friends. The programme includes fresh and new films, to many of which Just Film is their first festival of the year. We are proud of the programme and believe that everyone, regardless of their age or background, will find a film to go and see.\"\n\nIn addition to the Youth Jury, the International Youth Competition programme will also be judged by a three-member International Jury who will announce the film that is worthy of the Just Film grand prix.\n\nMembers of the Youth Jury are Kaur Kasemaa, Anna Linda Elvre, Hans Robert Kannukene, Helena Maarja Tarro and Gerli Rehkalt.\n\nMembers of the International Jury are:\nGuy Davies is a multi award winning, versatile writer & director from the UK with a keen eye for visual storytelling\nElen Lotman is an Estonian cinematographer and the first Just Film festival director\nSatu Tuuli Karhu is a 25-year-old actor from Finland. Karhu was awarded with a Jussi Award for her role in Tiina Lymis' box office hit Happier Times, Grump\n\nBlack Nights Film Festival's youth and children's film sub-festival Just Film will take place from the 13th of November until the 29th of November.\n\nPrevious winners of the Just Film grand prix include 2019 film „Boyz in the Wood“ (now known as „Get Duked!“) directed by British director Ninian Doff, 2018 film „I Hope You’ll Die Next Time :-)“  directed by Hungarian director Mihály Schwechtje and 2017 film „Little Harbour“ directed by Iveta Grofova from Slovakia.\n\n\n\n**International Youth Competition programme**\n\n\n\n##### [\"Needle Park Baby\"](https://justfilm.ee/en/film/needle-park-baby/)\n\nSwitzerland 2020, 100 min \n\nD: Pierre Monnard \n\nSpring 1995 - after the closure of the Needle Park and the public drug scene in Zurich, eleven-year-old Mia and her heroin addicted mother Sandrine are relocated to the countryside. While caring for her mother, Mia spends time with her imaginary friend and a gang of local teenage misfits. These friendships finally give her the strength to rebel and break free from her abusive mother. \n\nThe film is not recommended for children under 14\n\nThis film is also part of the Just Film children's rights program and has both Estonian and Russian subtitles\n\n[Trailer](https://www.youtube.com/watch?v=IVpiUJ35Dg0)\n\n\n\n##### [“Tell Her”](https://justfilm.ee/en/film/tell-her/)\n\nRussia 2020, 95 min \n\nD: Aleksandr Molochnikov \n\nInternational Premiere\n\nHow to be a son, whose parents ask every day whom he loves more? Mother or father? How to be a mother if she madly loves her son, but circumstances compel her to take away the child from his father? How to be a father if his son is taken away to America forever, and he can’t imagine a life without him? \n\nThis is a story about choice. Parents who decide for their children more than often act as best suits them. The child agrees, afraid to cause pain, but time will pass and the child will mature and at some point decide for himself. Only for the parents this is a lot more painful. \n\nThis film is also part of the Just Film children's rights program \n\n\n\n##### [“Young Hearts”](https://justfilm.ee/en/film/young-hearts/)\n\nUSA 2020, 95 min \n\nD: Sarah Sherman, Zachary Ray Sherman \n\nA brainy fourteen year old embarks on an awkwardly heartfelt first love with her brother’s best friend while exploring her budding feminism and a gender double standard at their high school. Love is hard enough as a teenager - the excitement, euphoria, and even overwhelming pain. What happens when friends, parents, and maybe even the whole world doesn’t want them together? Can their love survive? \n\nThis film is also part of the Just Film children's rights program \n\n\n\n##### [“50 or Two Whales Meet on the Beach”](https://justfilm.ee/en/film/50-or-two-whales-meet-on-the-beach/)\n\nMexico 2020, 122 min \n\nD: Jorge Cuchi \n\nFélix, a 17-year-old boy, receives an invitation on WhatsApp: do you want to play the Blue Whale Game? The one with the 50 challenges? The one where you have to kill yourself at the end? Félix accepts. That is how he meets Elisa. They start completing the challenges together. 50 is a story of love between two suicidal teens who decide to play together till death do them part. Which is six days away. \n\nThe film is prohibited for children under 18.\n\n[Trailer](https://www.youtube.com/watch?v=Y7co0g3Z2ss&feature=emb_title)\n\n\n##### [\"Slalom\"](https://justfilm.ee/en/film/slalom/)\n\nFrance 2020, 92 min \n\nD: Charlène Favier \n\n15 year-old Lyz, a high school student in the French Alps, has been accepted to a highly selective ski club whose aim is to train future professional athletes. Taking a chance on his new recruit, Fred, ex-champion turned coach, decides to make Lyz his shining star regardless of her lack of experience. Under his influence, Lyz will have to endure more than the physical and emotional pressure of the training. Will Lyz’s determination help her escape his grip? \n\nFilm has both Estonian and Russian subtitles\n\n[Trailer](https://www.youtube.com/watch?v=V2JavMmHoXM)\n\n\n##### [“The Pack”](https://justfilm.ee/en/film/the-pack/) \n\nCzechia 2020, 94 min \n\nD: Tomas Polensky \n\nIce skates cut the ice. Silhouettes of hockey players swirl in the spray of the frost, and sharp scratches remain on the ice behind them. Talented goalkeeper David (16) is joining a new team. He will do everything in his power to make a name for himself in the Wolves hockey team. But the position of the current goalkeeper Miky (16) seems unshakable. In addition, Miky is the son of a coach. David really doesn’t fit in with the Wolves. Maybe it’s the small plastic box that pumps insulin into his body. But David will not be defeated by diabetes. He is an outsider in the team and faces an avalanche of bullying. Those who do not attack also do no not help. David tries to fight, but the result is even worse. Pushes, injuries and humiliations pile on each other like the spiral scars of tracks engraved by ice skates. What will David do? \n\n[Trailer](https://www.youtube.com/watch?v=SMoesK8CmFw)\n\n\n\n##### [“Promise of Pisa”](https://justfilm.ee/en/film/promise-of-pisa/) \n\nNetherlands 2020, 110 min \n\nD: Norbert ter Hall \n\nMoroccan Sam is admitted to the prestigious Amsterdam Music Academy on the day that his older brother Mo is arrested by the police. At the posh school he is on his own, feeling utterly out of place. But his instructor pushes him to achieve greatness and he falls in love with the beautiful Annelies, all the time trying to get his brother out of prison. To find his own voice, however, Sam must first learn to listen to himself… \n\nThis film is also part of the Just Film children's rights program \n\n[Trailer](https://www.youtube.com/watch?v=DRxO9jutJFw)\n\n\n\n##### [“Masha”](https://justfilm.ee/en/film/masha/)\n\nRussia 2020, 95 Min \n\nD: Anastasiya Palchikova \n\n13-year-old Masha grows in the 90s in Russia between the boxing ring and the street. Her friends occasionally kill and rob people. The whole town hates and fears them, but for Masha they are the best people in the world who love and protect her. She sings jazz and dreams of becoming a singer. One day, Masha finds out who her friends really are and what they have done to her life and family. Having matured, she leaves her small hometown for Moscow, trying to break away from the past. But it overtakes her and brings her back to the place where her childhood passed away. \n\n\n\n\n##### [“Wendy”](https://justfilm.ee/en/film/wendy/)\n\nUSA 2020, 111 min \n\nD: Benh Zeitlin \n\nWendy and her brothers come from a warm working family. Raised amongst dinner plates and diner patrons, the children have an itch for the adventurous and slightly mischievous. After long nights watching trains rattle by their bedroom window, the kids are whisked away by a mysterious boy named Peter. A long journey taken on faith lands them on Peter’s island. There they discover a wild new world, one without grown-ups and suspended in time. Reveling in their youthfulness and sprawling freedom satisfies the kids at first, but nostalgia for their lives left behind seeps in. When threats to their eternal childhood develop, Wendy is tasked with saving herself, her brothers, and the other island children with the most powerful tool she has: love for her family. \n\nFilm has both Estonian and Russian subtitles\n\nThis film is also part of the Just Film children's rights program \n\n[Trailer](https://www.youtube.com/watch?v=KKktQFFcXL0)\n\n\n\n##### [“Call Me Blackbird”](https://justfilm.ee/en/film/call-me-blackbird/)\n\nRussia 2020, 93 min \n\nD: Pavel Mirzoev \n\nWorld Premiere\n\nFrom the first look Kostya “Cat” Sukhoveev is an ordinary 15-years old boy. He doesn’t do very well at school, his parents are in the middle of a divorce, and he doesn’t have many friends, until one day he finds one online… \n\n\n##### [“Kratt”](https://justfilm.ee/en/film/kratt/)\n\n\nEstonia 2020, 107 Min \n\nD: Rasmus Merivoo\n\nWorld Premiere\n\nChildren are left to grandma’s without smartphones. Real life seems boring until they find  instructions for kratt - magical creature who will do whatever its master says. All they have to do now, is to buy a soul from the devil.. \n\n\n\n##### [“My Life As A Comedian”](https://justfilm.ee/en/film/my-life-as-a-comedian/)\n\nSweden 2019, 92 min \n\nD: Rojda Sekersöz \n\nJuha, 12, class clown in the suburb of Sävbyholm, Sweden. To be funny is the only thing he is good at and all he wants is to fit in the social peckingorder at school. As an adult, Juha has found success, performing the show – My Life As A Comedian - to sold out theatres where he tells the horrid and funny stories from his childhood to a delighted audience. When he gets an unexpected visit from an old friend from school, Juha is forced to return to Sävbyholm to deal with his past. \n\nThis film is also part of the Just Film children's rights program\n\n[Trailer](https://www.youtube.com/watch?v=HcVTEzTEdPM)\n\n\n\n\n\n",
-          "contents_ru": null,
-          "publishFrom": "2020-10-13T13:00:00.000Z",
-          "publishUntil": null,
-          "publish_et": true,
-          "publish_en": true,
-          "publish_ru": null
-        },
-        "title": "Just Film international youth competition films",
-        "lead": null,
-        "customUrl": "youthcompetition",
-        "image": {
-          "id": 1089,
-          "name": "1920x1080_JF_Voistlusfilmidepressikas-3.jpg",
-          "alternativeText": "",
-          "caption": "",
-          "width": 1920,
-          "height": 1080,
-          "formats": {
-            "thumbnail": {
-              "ext": ".jpg",
-              "url": "/uploads/thumbnail_1920x1080_JF_Voistlusfilmidepressikas_3_d4f99685f7.jpg",
-              "hash": "thumbnail_1920x1080_JF_Voistlusfilmidepressikas_3_d4f99685f7",
-              "mime": "image/jpeg",
-              "name": "thumbnail_1920x1080_JF_Voistlusfilmidepressikas-3.jpg",
-              "path": null,
-              "size": 6.69,
-              "width": 245,
-              "height": 138
-            }
-          },
-          "hash": "1920x1080_JF_Voistlusfilmidepressikas_3_d4f99685f7",
-          "ext": ".jpg",
-          "mime": "image/jpeg",
-          "size": 182.26,
-          "url": "/uploads/1920x1080_JF_Voistlusfilmidepressikas_3_d4f99685f7.jpg",
-=======
           "id": 25,
           "created_by": 14,
           "updated_by": 14,
@@ -347,50 +251,16 @@
           "mime": "image/jpeg",
           "size": 857.22,
           "url": "/uploads/50654740641_ab18ca5aa5_o_0e32aeb36f.JPG",
->>>>>>> parent of b1922739... delete starpidata .json files
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 14,
-          "updated_by": 14,
-<<<<<<< HEAD
-          "created_at": "2020-10-14T07:22:50.734Z",
-          "updated_at": "2020-10-14T07:22:50.881Z"
-=======
           "created_at": "2020-11-30T09:55:41.213Z",
           "updated_at": "2020-11-30T09:55:41.858Z"
->>>>>>> parent of b1922739... delete starpidata .json files
         }
       },
       "trioItem_2": {
         "id": 14,
         "just_filmi_article": {
-<<<<<<< HEAD
-          "id": 7,
-          "created_by": 14,
-          "updated_by": 14,
-          "created_at": "2020-09-21T11:06:10.145Z",
-          "updated_at": "2020-10-01T07:04:44.319Z",
-          "title_et": "Just Filmi lapse õiguste programm: „Mitte ainult lastele, vaid ka koos lastega“",
-          "slug_et": "just-filmi-lapse-oiguste-programm-mitte-ainult-lastele-vaid-ka-koos-lastega",
-          "title_en": null,
-          "slug_en": "just-filmi-article-2",
-          "title_ru": null,
-          "slug_ru": "just-filmi-article-4",
-          "lead_et": "Sel aastal juba 20. korda toimuva Just Filmi missioon on pakkuda kvaliteetset meelelahutust nii lastele, noortele kui ka täiskasvanutele tuues kinokülastajateni maailma kõige uuemad ja paremad filmid.\n",
-          "lead_en": null,
-          "lead_ru": null,
-          "contents_et": "Sel aastal juba 20. korda toimuva Just Filmi missioon on pakkuda kvaliteetset meelelahutust nii lastele, noortele kui ka täiskasvanutele tuues kinokülastajateni maailma kõige uuemad ja paremad filmid.\n\nMeelelahutuse kõrval ehk isegi olulisemaks eesmärgiks on läbi filmikunsti lapsi ja noori harida ning avardada nende maailmavaadet.\nJust Film koosneb erinevatest filmiprogrammidest, millest üks pikaajalisemaid ja populaarsemaid on kindlasti lapse õiguste programm. Lapse õiguste programm soovib juhtida tähelepanu teemadele, mis lastele ja noortele korda lähevad ning meid kõiki puudutavad. Nende filmidele peategelased on lapsed ja noored, kes ennast veel avastavad. Vahel vanemad toetavad lapsi, kuid sageli tuleb lastel olulisi otsuseid vastu võtta üksinda.\nProgrammis on ka filme, mis käsitlevad mitte ainult lapsi ja noori vaid kogu ühiskonda puudutavaid probleeme nagu narkomaania, seksuaalne väärkohtlemine ning erinevad vägivalla- ja kuriteoliigid.\n\nOn oluline, et tänaseks juba kümnendat korda linastuv filmiprogramm oleks pidevas arengus. Nii oleme pikaaegse koostööpartneri Lastekaitse Liidu värskelt valminud Märka Last platvormi kaudu kaasamas ka lapsi. Nimelt aitavad sel aastal programmi koostada esmakordselt ka noored ise.\n\nKüsisime nendelt neljalt aktiivselt, teotahteliselt ja inspireerivalt noorelt, miks on filmimaailm ja selles projektis osalemine nende jaoks oluline ning nende vastused on teie ees.\n",
-          "contents_en": null,
-          "contents_ru": null,
-          "publishFrom": null,
-          "publishUntil": null,
-          "publish_et": true,
-          "publish_en": null,
-          "publish_ru": null
-        },
-        "title": "Mitte ainult lastele, vaid lastega koos!",
-=======
           "id": 14,
           "created_by": 14,
           "updated_by": 14,
@@ -415,67 +285,10 @@
           "publish_ru": true
         },
         "title": "Festival Regulations",
->>>>>>> parent of b1922739... delete starpidata .json files
         "lead": null,
         "customUrl": null,
         "image": null
       },
-<<<<<<< HEAD
-      "trioItem_3": {
-        "id": 15,
-        "just_filmi_article": {
-          "id": 17,
-          "created_by": 14,
-          "updated_by": 14,
-          "created_at": "2020-10-22T07:36:52.553Z",
-          "updated_at": "2020-10-23T06:45:49.633Z",
-          "title_et": "Lastefilmide võistlusprogramm",
-          "slug_et": "lastefilmide-voistlusprogramm",
-          "title_en": null,
-          "slug_en": "just-filmi-article-6",
-          "title_ru": null,
-          "slug_ru": "just-filmi-article-7",
-          "lead_et": "PÖFFi noorte- ja lastefilmide festivali Just Film lastefilmide võistlusprogrammis võistleb ka Eesti oma \"Sipsik\"\n",
-          "lead_en": null,
-          "lead_ru": null,
-          "contents_et": "Just Film tähistab sel aastal oma 20. sünnipäeva ning lastefilmide võistlusprogrammi kuulub filme, mis ühelt poolt räägivad juba tuttavate tegelaste seiklustest ning teisalt toovad kinokülastajateni uued ja vahvad karakterid. \n\n\"Lastefilmide võistlusprogramm toob sel aastal ekraanile nii mõnegi vana tuttava, näiteks kultusraamatust \"Berti päevik\" tuntud Berti, esmakordselt täispika filmi vormis indiaanipoiss Yakari seiklused ning Eesti oma \"Sipsiku.\" Lisaks Itaalia filmi \"Klaaspoiss\" maailma esilinastus ning Venemaa filmi \"Ajavalvurid\" rahvusvaheline esilinastus,\" ütleb Just Filmi festivali tegevjuht Mikk Granström. Ta lisab: \"Tegemist on tõeliselt lõbusa, kogu perele mõeldud ja naerma ajava programmiga.\"\n\nLastefilmide võistlusprogrammi hindab ja võidufilmi valib Just Filmi viieliikmeline lastežürii. Kõik võistlusprogrammi filmid on eestikeelsete subtiitritega.\n\nLastefilmide võistlusprogrammi filmid:\n\n\n##### [“Sipsik”](https://justfilm.ee/film/sipsik/)\nRaggie\nEesti/Taani 2020, 74 min \nR: Meelis Arulepp, Karsten Kiilerich\n\nEesti lastekirjanduse üks armastatum kangelane, kaltsunukk Sipsik, on saanud oma filmi täis muusikat, seiklusi ja tõelisi tundeid. Anu saab 6-aastaseks ja tunneb elust rõõmu – tal on suur vend Mart, kes on tüdruku parim sõber ning kellega koos on imetore mängida. Armastusest väikese õe vastu on Mart õmmelnud Anule sünnipäevaks kaltsunuku. Paraku saab idüll läbi, kui saabub 1. september ja Mart läheb jälle kooli. Anu peab nüüd päevi ilma vennata veetma. Samuti on Mardile tekkinud uued sõbrad ja õe jaoks jääb aina vähem aega. Ühel hetkel, kui Anu tunneb end eriti üksiku ja õnnetuna, ärkab kaltsunukk Sipsik nagu võluväel ellu. Vähemalt Anule tundub nii.\n\nNüüd on Anul silmi ainult Sipsiku jaoks. Ühised tegemised nukuga haaravad tüdruku kogu tähelepanu ning kõrvale jäävad nii Mart kui ka ema ja isa. Aga suured seikulused ja väljakutsed ootavad eest nii Anu kui ka Sipsikut.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/PYjjABpCz1s\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Ajavalvurid\"](https://justfilm.ee/film/ajavalvurid/)\nThe Time Guardians\nVenemaa 2020, 94 min \nR: Alexey Telnov\n\nRahvusvaheline esilinastus\n\nVäike tüdruk Ksyusha lapsendatakse tondilossilikust lastekodust toredasse perekonda – ta saab endale uue kunstnikust ema ja kirjanikust isa. Kõik kolm on äärmiselt õnnelikud ning õhtud veedetakse tihti pere keskel kodus, mil isa loeb tütrele lugusid oma mitmetest fantaasiaraamatutest. Idüllilisse ellu saabub aga järsk lõpp kui Ksyusha isa vanad tuttavad proovivad perekonda lõhki kiskuda ning kõigele tipuks satub tüdruk emaga autoõnnetusse. Ärgates leiab tüdruk end aga isa raamatutest tuttavast Pimeduse Linnast, mis küll sarnaneb kodulinnale Peterburile, kuid on kõvasti pimedam ja külmem. Pimeduse Linnas elavad äärmiselt veidrad tegelased, keda valitseb hirmuäratav Nõid, kes soovib kõigest väest ka Ksyushat vangistada. Tüdruku ainukeseks liitlaseks uues kõhedas maailmas saab lustakas maagiliste võimetega assistent nimega Paramon, kellega koos võetakse ette ohtlik rännak, et leida üles Ajavõti, millega saab aega tagasi keerata ja nõnda ära hoida hirmus autoõnnetus ja päästa Ksyusha perekond igavesest pimedusest... Kui otsid tempokat ja lõbusat fantaasiafilmi, on “Ajavalvurid” just Sulle mõeldud.\n\n<iframe src=\"https://drive.google.com/file/d/1oHiQ52I32LZMeyglJ692TN9brBsF-EcR/preview\" width=\"640\" height=\"480\"></iframe\n\n\n##### [“Berti päevik”](https://justfilm.ee/film/berti-paeevik/)\nBert's Diary\nRootsi 2020, 95 min \nR: Michael Lindgren\n\nTreb Walker alias Bert Ljung teeb midagi, mis on poistele absoluutselt keelatud. Ta kirjutab päevikut. Mõelda vaid, kui klassi kõige tugevam poiss Klimp sellest teada saab! Siis teab varsti kogu maailm, kuidas Bert end tunneb, kui ta oma uued prillid koolis ette peab panema, kui teda jälitab hauabatsill, kui ta teeb koos Akega teaduslikke eksperimente, suitsetab salaja ja kirjutab päevikusse punase pliiatsiga, kui on armunud. \"Berti päevik” on film, mis põhineb samanimelisel maailmakuulsal lasteraamatul. See on film poistele, kuid mida on huvitav vaadata ka tüdrukutel, kes tahavad teada, mida poisid tegelikult mõtlevad.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/WH2pX1QPrb4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Indiaanipoiss Yakari suur seiklus”](https://justfilm.ee/film/indiaanipoiss-yakari-suur-seiklus/)\nYakari, a Spectacular Journey\nPrantsusmaa 2020, 72 min \nR: Xavier Giacometti, Toby Genkel\n\nVäikese indiaanipoisi Yakari seiklused algavad päeval, mil ta otsustab iseseisvalt järgneda metsiku mustangi, indiaaninimega Tilluke Kõu, jälgedele. Teekonnal külastab Yakarit esimest korda elus tema õnneloom Suur Kotkas, kes kingib poisile ühe imelise sule ning maagilise võime loomadega rääkida. Kodust kaugel ning sügaval ohtliku jahihõimu territooriumil võtavad Yakari ja Tilluke Kõu vastu kõige ohtlikuma seikluse, mis juhatab nad õnnelikult tagasi koju. Imeline teekond koju pitseerib igavese sõpruse vapra indiaanipoisi ja tuulena kappava poni vahel.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OpCCoL5qmS0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Jackie ja Oopjen”](https://justfilm.ee/film/jackie-ja-oopjen/)\nJackie and Oopjen\nHolland 2020, 90 min \nR: Annemarie van de Mond\n\n12-aastase tagasihoidliku loomuga Jackie ema töötab Hollandi riiklikus kunstimuuseumis, kus on tallel mõningad maailma tähtsamad kunstiteosed, mida imetledes tüdruk ka palju aega veedab. Kui ootamatult läheb kuulsalt Rembrandti maalilt kaduma selle subjekt, 17. sajandi naisterahvas nimega Oopjen, kahtlustavad muuseumi töötajad, et on toimunud sajandi kunstirööv, mis avalikkuse ette jõudes oleks ülemaailmne skandaal! Ainult Jackie teab, et tegelikult on Oopjen lihtsalt maali pealt ellu ärganud ning muuseumist jalga lasknud. Kõik selleks, et leida üles armastatud noorem õde Piek, kelle portree enam ammu tema enda maali kõrval ei ripu. Kuna vanast ajast pärit Oopjenil on raskusi 21. sajandil navigeerimisega, siis otsustab Jackie naist salaja aidata.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/CU_A_O4ft-g\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Klaaspoiss”](https://justfilm.ee/film/klaaspoiss/)\nGlassboy\nItaalia 2020, 100 min \nR: Samuele Rossi\n\nMaailma esilinastus\n\nPino on poiss, kellel on haruldane verehaigus, mille tõttu pole ta tavalise lapse elu elada saanud. Teda on alati tagasi hoitud ning piiratud, justkui oleks ta klaasist. Pino on aga elav poiss, kes tahab ülekõige kogeda suuri seiklusi, põnevaid mänge, tagajaamist ja teha ulakusi. Pino otsustab teha kannapöörde ning läheb otsima suuri seiklusi, mille ta muidugi õige pea ka leiab. Soe ja südamlik koguperefilm, mis näitab, et hoolimata raskustest ja katsumustest, on võimalik olla õnnelik, leida häid sõpru ja uusi seiklusi.\n\n\n##### [“Kodutänava piraadid”](https://justfilm.ee/film/kodutaenava-piraadid/)\nPirates Down the Street\nHolland 2020, 95 min \nR: Pim van Hoeven\n\nElu ontlikus rannalinnas pööratakse pea peale, kui sinna saabub elama perekond Blunderbuss – täiesti pesuehtne piraatide kamp, koos kõige selle juurde kuuluvaga, nagu mõõgavõitlused, silmaklapid, koduks olev piraadilaev, lemmikloomast kaheksajalg ja papagoi ning lõputu rummi rüüpamine. Linnakese lugupeetud elanikud on uutest naabritest ja nende elukommetest päris kohkunud, kuid Michael saab piraatide perepoeg Billy’ga peagi heaks sõbraks. Uutel sõpradel seisavad ees põnevad aardejahid ning ohtlikud seiklused, mis viivad nad vastamisi maailma kõige hirmuäratavama mereröövli Cornelius Konkskäega, kuid muretsemiseks pole põhjust – tõeline piraat ei tunne hirmu millegi ees, garr!\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TvLQqwWDk2s\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Madison - sõprus kiirkäigul!”](https://justfilm.ee/film/madison-soprus-kiirkaeigul/)\nMadison - A Fast Friendship\nSaksamaa/Austria 2020, 90 min \nR: Kim Strobl\n\nLoo peategelane on 13-aastane Madison, kelle jaoks rattasõit on maailma kõige olulisem asi! Ta teeks kõik, et käia oma profiratturist isa jälgedes. Kui aga andekas ja ambitsioonikas noor rattaentusiast peab maanteeratta maastikuratta vastu vahetama, lähevad asjad lörri. Kuid uute sõprade abiga hakkab ta üsna pea avastama uusi eesmärke oma elus. Kas Madison suudab leida tee, mis lookleb jalgrattasõidust eemal? Kas rattasõit oli tõesti tema saatus? See on suure ja põneva seikluse algus…\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/PgHNSgFbtGM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Margot' & Marguerite'i imeline seiklus”](https://justfilm.ee/film/margot-and-marguerite-i-imeline-seiklus/)\nThe Fantastic Journey of Margot & Marguerite\nPrantsusmaa 2020, 89 min \nR: Pierre Coré\n\nMarguerite ja Margot on 12-aastased tüdrukud, kel on perekonnad, sõbrad, probleemid… ad era! Üks tüdruk elab aastal 1942 ja teine 2020, muidugi kui mitte arvesse võtta salapärast maagilist laegast, mis neid mõlemaid teineteise aega transpordib. Margot’l ja Marguerite’l on midagi veel, mis neid ühendab – kummalgi tüdrukul pole isa. Üks kadus II maailmasõja ajal ning teine ei ela kodus. Tüdrukuid lahutab küll 70 aastat, aga tänu laekale alustavad nad seiklust, et leida oma olevik, avastada minevik ning oma perekondade mälestused.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/po1cM7egniA\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Must veski”](https://justfilm.ee/film/must-veski/)\nThe Black Mill \nPoola 2020, 100 min \nR: Mariusz Palej\n\n12-aastane Iwo elab külakeses, kus vaesus, lootusetus ja igavus iseloomustavad peaaegu iga päeva. Kunagine rikas kant sattus raskustesse, kui kohalik veskitehas maha põles ja enamik piirkonna elanikest jäi sissetulekuta. Iwo kaotas sel saatuslikul ööl oma isa, kes läks põlevasse veskisse ohvreid otsima ning sealt enam ei naasnud. Nüüd peavad Iwo ja tema ema hoolitsema Iwo väikese autistliku õe eest, keda Iwo sugugi ei salli ja keda teised lapsed nõiaks peavad. Nende arvamus aga muutub, kui Must Veski ellu ärkab ja tüdrukust kogu küla päästja saab.\n\n\n##### [“Suve mässajad”](https://justfilm.ee/film/suve-maessajad/)\nSummer Rebels\nSaksamaa/Slovakkia 2020, 93 min \nR: Martina Sakova\n\n11-aastane Jonas igatseb suve veeta ägeda vanaisa Bernardiga, koos paadiga kärestikke mööda sõites ja Slovakkia looduses seigeldes. Poisi meeleheitel ema on aga plaaninud suve veeta mere ääres. Jonas põgeneb kodust, et sõita salaja rongiga vanaisa juurde, aga kohale jõudes avastab, et eriti ägedast vanaisast on saanud vana toriseja ning poiss mõistab, miks ema tahtis suve pigem mujal veeta.\n\nJonas on üksi, samal ajal, kui vanaisa toriseb. Õnneks tutvub ta ägeda ja seiklusjanulise naabritüdruk, Alexiga, kellega koos pannakse kokku veidi kahtlase maiguga plaan, kuidas saada kokku raha, et omale parv osta. Noorte plaan vallandab aga sündmuste laviini, mille tõttu satub Jonase vanaisa lausa vangi ja muidugi ajab Alexi ja Jonase omavahel tülli. Kuidas seiklus lõppeb ja kas Jonas leiab viisi, kuidas kogu segadus ära klaarida?\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qKJONaZibTE\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\n##### [“Üks kõigi eest”](https://justfilm.ee/film/ueks-koigi-eest/)\nOne For All\nHispaania 2020, 95 min \nR: David Ilundain\n\nMis oleks, kui saaksid näha kõrvalt ühe kiusamisloo kulgemist ja seda täiesti uudses rollis – õpetajana? Vastuseid sellele küsimusele võime leida lõpmatult, kuid film „One For All“ peegeldab ehedat lugu haiget saamisest, tegemisest ja ka kõige olulisemast ehk  andestamisest. Kui tavaline koolilaps on rõõmsameelne, tegus ja tubli, siis kiusamine suudab luua midagi, mis ei meenuta hiljem seda poissi isegi mitte näo järgi. Selle kõige kulgemine on pikk protsess, põimides endaga kaasa pealtvaatajate, kiusajate ja teiste lood, tuues selgelt esile teadmise, et igal asjal on lugu. Sündmuste kulgemist iseloomustab teadmine, et filmis pole mitte peategelane, vaid iga roll on oluliselt välja toodud näitena tegelikust kiusamise ahelast.\n\nFilm linastub ka lapse õiguste programmis.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BtkHmBLefZw\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n\nJust Filmi lastefilmide võistlusprogrammi võidufilmideks on muuhulgas olnud filmid, mis on nüüdseks tuttavad ka telelinalt, 2018a Norra film \"Los Bando\" (\"Bändipoisid\", režissöör Christian Lo), 2015a Hollandi film \"Kood M\" (režissöör Dennis Bots).\n\n\n**Festival on tagasi kinos ja piletimüük juba käib!**",
-          "contents_en": null,
-          "contents_ru": null,
-          "publishFrom": "2020-10-23T06:00:00.000Z",
-          "publishUntil": null,
-          "publish_et": true,
-          "publish_en": null,
-          "publish_ru": null
-        },
-        "title": "Children's Competition Programme",
-        "lead": null,
-        "customUrl": null,
-        "image": {
-          "id": 1421,
-          "name": "JF_lastefilmide Voistluse pressikas_kodukale.jpg",
-          "alternativeText": "",
-          "caption": "",
-          "width": 1920,
-          "height": 1080,
-          "formats": {
-            "thumbnail": {
-              "ext": ".jpg",
-              "url": "/uploads/thumbnail_JF_lastefilmide_Voistluse_pressikas_kodukale_8e71e48211.jpg",
-              "hash": "thumbnail_JF_lastefilmide_Voistluse_pressikas_kodukale_8e71e48211",
-              "mime": "image/jpeg",
-              "name": "thumbnail_JF_lastefilmide Voistluse pressikas_kodukale.jpg",
-              "path": null,
-              "size": 7.34,
-              "width": 245,
-              "height": 138
-            }
-          },
-          "hash": "JF_lastefilmide_Voistluse_pressikas_kodukale_8e71e48211",
-          "ext": ".jpg",
-          "mime": "image/jpeg",
-          "size": 236.65,
-          "url": "/uploads/JF_lastefilmide_Voistluse_pressikas_kodukale_8e71e48211.jpg",
-=======
       "trioItem_3": null
     },
     "trioJustFilm_ru": {
@@ -536,32 +349,15 @@
           "mime": "image/jpeg",
           "size": 857.22,
           "url": "/uploads/50654740641_ab18ca5aa5_o_0e32aeb36f.JPG",
->>>>>>> parent of b1922739... delete starpidata .json files
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 14,
-          "updated_by": 14,
-<<<<<<< HEAD
-          "created_at": "2020-10-22T07:36:42.922Z",
-          "updated_at": "2020-10-22T07:36:42.968Z"
-        }
-      }
-    },
-    "trioJustFilm_ru": {
-      "id": 6,
-      "name": "Hundufeed",
-      "lead": null,
-      "trioItem_1": {
-        "id": 19,
-=======
           "created_at": "2020-11-30T09:55:41.213Z",
           "updated_at": "2020-11-30T09:55:41.858Z"
         }
       },
       "trioItem_2": {
         "id": 20,
->>>>>>> parent of b1922739... delete starpidata .json files
         "just_filmi_article": {
           "id": 13,
           "created_by": 14,
@@ -617,46 +413,10 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 9,
-          "updated_by": 14,
           "created_at": "2020-10-26T12:42:04.150Z",
           "updated_at": "2020-11-14T12:30:48.027Z"
         }
       },
-<<<<<<< HEAD
-      "trioItem_2": {
-        "id": 20,
-        "just_filmi_article": {
-          "id": 16,
-          "created_by": 14,
-          "updated_by": 14,
-          "created_at": "2020-10-14T16:57:03.662Z",
-          "updated_at": "2020-11-18T15:59:27.343Z",
-          "title_et": "Turvajuhised ja nõuanded",
-          "slug_et": "turvajuhised-ja-nouanded",
-          "title_en": "Safety instructions and tips",
-          "slug_en": "safety-instructions-and-tips",
-          "title_ru": "Инструкции и советы по безопасности",
-          "slug_ru": "instrukczii-i-sovety-po-bezopasnosti",
-          "lead_et": "**Turvajuhised ja nõuanded PÖFFi külastajatele**\n\nPÖFF 24 tuleb koroonaviiruse tõttu teistsugune kui varasemad – esimest korda saab filme vaadata nii kinodes kui ka veebis. Teeme koostööd meditsiiniettevõtetega SYNLAB ja Medicum ning perearstikeskusega Sinu Arst, samuti konsulteerime Terviseametiga, et tagada kinokülastajatele turvaline keskkond ning vältida koroonaviiruse levikut festivaliga seotud üritustel.\n\nHoolime oma külastajatest väga ja soovime, et festivalielamus oleks kõigile võimalikult meeldiv, mugav ja turvaline. PÖFF kestab kaks ja pool nädalat ning selleks, et jõuaksime koos teiega eduka lõpuni, oleme koostanud allolevad juhised ja reeglid:\n\n- Tungivalt soovitame osta piletid PÖFFi või Piletilevi kodulehelt. Kodust pileti ostmine on lihtne, mugav ja turvaline.\n- Kogu festivaliinfo on leitav PÖFFi kodulehelt. Kui jääd hätta, siis kirjuta info@poff.ee. Aitame Sind hea meelega.\n- PÖFFi infopunkti palume festivali ajal külastada äärmisel vajadusel. Meie kõigi huvides on see, et piletikassadesse ei tekiks järjekordi. Järgime 2+2 reeglit. \n- Festivali üritustel ja -alal on maskide kandmine rangelt soovituslik. Seansile võib tulla oma maskiga. Kui Sul maski ei ole, saad selle festivalialale sisenedes meie vabatahtlikult tasuta. \n- Kui Sa ostad pileti siiski PÖFFi kassast, ole valmis selleks, et pilet isikustatakse. Selleks küsitakse Sinu andmeid. Oma istekohti saalis muuta ei tohi. \n- Enne saali sisenemist võidakse valikuliselt mõõta külastajate kehatemperatuuri. Juhul, kui tunned ennast halvasti, palume Sul koju jääda ja vaadata meie filme veebis.\n- Festivalikinodes on desinfitseerimisvahendid, mida palume kõigil kasutada.\n- Seansside vaheajal puhastame ja desinfitseerime kõiki kinosaale.\n- Pärast seansi lõppu palume külastajaid saalist lahkuda ridade kaupa, et uste juurde ei tekiks troppe.\n\n\nMis saab Sinu piletist, kui seanss või festival peaks COVID-19 viiruse tõttu ära jääma?\n- Loodame, et oled nõus vahetama ärajäänud seansi pileti sama filmi järgmise seansi pileti vastu. Kui soovitud filmi enam kinos ei ole, pakume võimalust vahetada pilet mõne muu filmi pileti vastu või vaadata sama filmi veebi vahendusel, kus näeb enamikku festivali filmidest.\n- Soovijatel on võimalik ka ärajäänud seansi pileti eest makstud raha PÖFFi toetuseks annetada. Piletitulu on meile üks olulisemaid sissetulekuallikaid – eriti tänavu, kui koroonaviirus on teinud filmitööstuse ja kultuuriürituste elu väga keeruliseks. Annetamise puhul palume teavitada festivali aadressil kassa@poff.ee. \n- Kui ükski nendest lahendustest ei sobi, ostame Sinu pileti tagasi. \n\n\nAnname üheskoos endast parima, et 24. PÖFF oleks sama äge ja turvaline elamus, nagu on olnud varasematel aastatel!",
-          "lead_en": null,
-          "lead_ru": null,
-          "contents_et": null,
-          "contents_en": null,
-          "contents_ru": "В связи с пандемией коронавируса 24-й кинофестиваль PÖFF будет заметно отличаться от предыдущих. Впервые первый показ фильма можно будет посмотреть не только в кинотеатре, но и в веб-сети. Организаторы кинофестиваля тесно сотрудничают с медицинскими центрами SYNLAB и Medicum, с центром семейных врачей Sinu Arst (твой врач), а также консультируются с департаментом здоровья, чтобы гарантировать кинозрителям безопасную среду и избежать заражения коронавирусом на мероприятиях кинофестиваля.\n\nОрганизаторы кинофестиваля заботяться о своих гостях и желают, чтобы всем было приятно, удобно и надежно.\n\nКинофестиваль PÖFF продлится две с половиной недели, и чтобы он был успешно завершен, его организаторы составили нижеследующие руководства и правила:\n\nНастоятельная просьба покупать билеты на сайтах PÖFF или Piletilevi, это просто, удобно и безопасно.\nВся информация, касающаяся кинофестиваля, выложена на сайте PÖFF. При возникновении вопросов, обращайтесь по адресу электронной почты kassa@poff.ee. Вам всегда будут рады помочь.\nИнфопункт PÖFF советуем посещать только в случае крайней необходимости. В наших общих интересах не создавать очередей. Следуем правилу 2+2.\nНастоятельная просьба носить маски на мероприятиях и на территории кинофестиваля. На киносеанс можно придти в своей маске. Маску можно также получить бесплатно, обратившись к волонтеру.\nЕсли вы все же купите билет в кассе PÖFF, будьте готовы, что ваш билет персонализируют, спросив ваши данные, в кинозале вы займете указанное на билете место.\nПеред входом в кинозал у гостей выборочно измеряют температуру. В случае недомогания лучше остаться дома и посмотеть фильм в веб-сети.\nНа сеанс не допускают больных, близконтактных, обязанных самоизолироваться на 14 дней.\nНа входе в кинозалы имеются дезинфицирующие средства, просим пользоваться ими.\nВ перерыве между киносеансами производится уборка и дезинфицирование кинозалов (каждые 2–4 часа).\nДо и после киносеанса персонал кинотеатра или волонтеры напомнят кинозрителям о необходимости соблюдать меры предосторожности, чтобы не заразиться коронавирусом и следовать правилу 2+2.\nПосле окончания сеанса кинозрители должны выходить из кинозала порядно, чтобы избежать толкучки на выходе.\n",
-          "publishFrom": null,
-          "publishUntil": null,
-          "publish_et": true,
-          "publish_en": null,
-          "publish_ru": true
-        },
-        "title": "Инструкции и советы по безопасности",
-        "lead": null,
-        "customUrl": null,
-        "image": null
-      },
-=======
->>>>>>> parent of b1922739... delete starpidata .json files
       "trioItem_3": null
     }
   }
