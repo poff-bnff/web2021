@@ -4,18 +4,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -26,118 +14,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-24T13:51:22.204Z",
       "updated_at": "2020-11-11T19:49:45.782Z",
@@ -208,8 +87,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -229,8 +106,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -250,8 +125,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:51:06.126Z"
         },
@@ -262,18 +135,6 @@
     "buyer": null,
     "code": "h08841993",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:21:20.438Z",
     "updated_at": "2020-10-18T11:21:20.473Z",
     "transaction": null,
@@ -291,18 +152,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -313,118 +162,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-24T13:51:22.204Z",
       "updated_at": "2020-11-11T19:49:45.782Z",
@@ -495,8 +235,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -516,8 +254,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -537,8 +273,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:51:06.126Z"
         },
@@ -549,18 +283,6 @@
     "buyer": null,
     "code": "h08684929",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:21:37.077Z",
     "updated_at": "2020-10-18T11:21:37.087Z",
     "transaction": null,
@@ -571,18 +293,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -593,118 +303,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-24T13:51:22.204Z",
       "updated_at": "2020-11-11T19:49:45.782Z",
@@ -775,8 +376,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -796,8 +395,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.122Z",
           "updated_at": "2020-10-29T22:50:52.018Z"
         },
@@ -817,8 +414,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:51:06.126Z"
         },
@@ -829,18 +424,6 @@
     "buyer": null,
     "code": "h08343931",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:22:05.807Z",
     "updated_at": "2020-10-18T11:22:05.815Z",
     "transaction": null,
@@ -851,18 +434,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -873,118 +444,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:09:39.005Z",
       "updated_at": "2020-11-30T12:04:14.393Z",
@@ -1055,8 +517,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1076,8 +536,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1097,8 +555,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T22:51:52.296Z"
         },
@@ -1109,18 +565,6 @@
     "buyer": null,
     "code": "h16544667",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:22:21.777Z",
     "updated_at": "2020-10-18T11:22:21.788Z",
     "transaction": null,
@@ -1131,18 +575,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -1153,118 +585,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:09:39.005Z",
       "updated_at": "2020-11-30T12:04:14.393Z",
@@ -1335,8 +658,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1356,8 +677,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1377,8 +696,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T22:51:52.296Z"
         },
@@ -1389,18 +706,6 @@
     "buyer": null,
     "code": "h16187120",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:22:32.893Z",
     "updated_at": "2020-10-18T11:22:32.934Z",
     "transaction": null,
@@ -1411,18 +716,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -1433,118 +726,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:09:39.005Z",
       "updated_at": "2020-11-30T12:04:14.393Z",
@@ -1615,8 +799,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1636,8 +818,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.121Z",
           "updated_at": "2020-10-29T22:51:22.343Z"
         },
@@ -1657,8 +837,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T22:51:52.296Z"
         },
@@ -1669,18 +847,6 @@
     "buyer": null,
     "code": "h16620337",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:22:45.627Z",
     "updated_at": "2020-10-18T11:22:45.644Z",
     "transaction": null,
@@ -1691,18 +857,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -1713,118 +867,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:13:32.150Z",
       "updated_at": "2020-11-12T17:15:20.971Z",
@@ -1895,8 +940,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -1916,8 +959,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -1937,8 +978,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:52:25.955Z"
         },
@@ -1949,18 +988,6 @@
     "buyer": null,
     "code": "h36924633",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:23:21.215Z",
     "updated_at": "2020-10-18T11:23:21.227Z",
     "transaction": null,
@@ -1971,18 +998,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -1993,118 +1008,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:13:32.150Z",
       "updated_at": "2020-11-12T17:15:20.971Z",
@@ -2175,8 +1081,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -2196,8 +1100,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -2217,8 +1119,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:52:25.955Z"
         },
@@ -2229,18 +1129,6 @@
     "buyer": null,
     "code": "h36355718",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:23:34.933Z",
     "updated_at": "2020-10-18T11:23:34.945Z",
     "transaction": null,
@@ -2251,18 +1139,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -2273,118 +1149,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-09-25T07:13:32.150Z",
       "updated_at": "2020-11-12T17:15:20.971Z",
@@ -2455,8 +1222,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -2476,8 +1241,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.095Z",
           "updated_at": "2020-10-29T22:52:05.793Z"
         },
@@ -2497,8 +1260,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T22:52:25.955Z"
         },
@@ -2509,18 +1270,6 @@
     "buyer": null,
     "code": "h36217165",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:23:49.833Z",
     "updated_at": "2020-10-18T11:23:49.841Z",
     "transaction": null,
@@ -2531,18 +1280,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -2553,118 +1290,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:11:44.195Z",
       "updated_at": "2020-11-12T17:16:11.656Z",
@@ -2735,8 +1363,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -2756,8 +1382,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -2777,8 +1401,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.573Z",
           "updated_at": "2020-10-29T22:53:00.642Z"
         },
@@ -2789,18 +1411,6 @@
     "buyer": null,
     "code": "h00606949",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:24:02.976Z",
     "updated_at": "2020-10-18T11:24:02.986Z",
     "transaction": null,
@@ -2811,18 +1421,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -2833,118 +1431,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:11:44.195Z",
       "updated_at": "2020-11-12T17:16:11.656Z",
@@ -3015,8 +1504,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -3036,8 +1523,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -3057,8 +1542,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.573Z",
           "updated_at": "2020-10-29T22:53:00.642Z"
         },
@@ -3069,18 +1552,6 @@
     "buyer": null,
     "code": "h00996270",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:24:16.946Z",
     "updated_at": "2020-10-18T11:24:16.982Z",
     "transaction": null,
@@ -3091,18 +1562,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -3113,118 +1572,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 1,
-        "festival": {
-          "id": 2,
-          "name_et": "Pimedate Ööde filmifestival",
-          "name_en": "Black Nights Film Festival",
-          "name_ru": "Кинофестиваль «Тёмные ночи»",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 18,
-            "firstname": "Jaana",
-            "lastname": "Kalinistova",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:29:42.090Z",
-          "updated_at": "2020-10-16T16:45:03.137Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-27T08:18:42.523Z",
-        "updated_at": "2020-10-08T10:58:57.738Z",
-        "domain": {
-          "id": 1,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:32.378Z",
-          "updated_at": "2020-08-31T13:52:31.385Z",
-          "url": "poff.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "PÖFF"
-        },
-        "number": 24,
-        "year": 2020,
-        "name_et": "24. Pimedate Ööde filmifestival",
-        "name_en": "24th Black Nights Film Festival",
-        "name_ru": "24th Black Nights Film Festival",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "10"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:11:44.195Z",
       "updated_at": "2020-11-12T17:16:11.656Z",
@@ -3295,8 +1645,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -3316,8 +1664,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:16.094Z",
           "updated_at": "2020-10-29T22:52:47.373Z"
         },
@@ -3337,8 +1683,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.573Z",
           "updated_at": "2020-10-29T22:53:00.642Z"
         },
@@ -3349,18 +1693,6 @@
     "buyer": null,
     "code": "h00651345",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:24:38.677Z",
     "updated_at": "2020-10-18T11:24:38.687Z",
     "transaction": null,
@@ -3371,18 +1703,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -3393,118 +1713,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 3,
-        "festival": {
-          "id": 3,
-          "name_et": "Just Film",
-          "name_en": "Just Film",
-          "name_ru": "Just Film",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:30:18.746Z",
-          "updated_at": "2020-09-24T13:30:18.779Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-31T14:06:00.297Z",
-        "updated_at": "2020-10-12T08:13:37.082Z",
-        "domain": {
-          "id": 2,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:52.272Z",
-          "updated_at": "2020-08-31T13:52:48.952Z",
-          "url": "justfilm.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "Just Film"
-        },
-        "number": 20,
-        "year": 2020,
-        "name_et": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "name_en": "20th Youth and Children's Film Festival",
-        "name_ru": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "9"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:20:04.107Z",
       "updated_at": "2020-11-12T17:17:05.600Z",
@@ -3568,8 +1779,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -3589,8 +1798,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -3610,8 +1817,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T21:55:59.170Z"
         },
@@ -3622,18 +1827,6 @@
     "buyer": null,
     "code": "jp1925110",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:24:52.417Z",
     "updated_at": "2020-10-18T11:24:52.426Z",
     "transaction": null,
@@ -3644,18 +1837,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -3666,118 +1847,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 3,
-        "festival": {
-          "id": 3,
-          "name_et": "Just Film",
-          "name_en": "Just Film",
-          "name_ru": "Just Film",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:30:18.746Z",
-          "updated_at": "2020-09-24T13:30:18.779Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-31T14:06:00.297Z",
-        "updated_at": "2020-10-12T08:13:37.082Z",
-        "domain": {
-          "id": 2,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:52.272Z",
-          "updated_at": "2020-08-31T13:52:48.952Z",
-          "url": "justfilm.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "Just Film"
-        },
-        "number": 20,
-        "year": 2020,
-        "name_et": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "name_en": "20th Youth and Children's Film Festival",
-        "name_ru": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "9"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:20:04.107Z",
       "updated_at": "2020-11-12T17:17:05.600Z",
@@ -3841,8 +1913,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -3862,8 +1932,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -3883,8 +1951,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T21:55:59.170Z"
         },
@@ -3895,18 +1961,6 @@
     "buyer": null,
     "code": "jp1210302",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:25:07.639Z",
     "updated_at": "2020-10-18T11:25:07.650Z",
     "transaction": null,
@@ -3917,18 +1971,6 @@
     "product_type": {
       "id": 4,
       "name": "Pass",
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-09-24T12:11:22.000Z",
       "updated_at": "2020-09-24T12:11:22.023Z",
       "namePrivate": null
@@ -3939,118 +1981,9 @@
       "product_type": {
         "id": 4,
         "name": "Pass",
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
         "created_at": "2020-09-24T12:11:22.000Z",
         "updated_at": "2020-09-24T12:11:22.023Z",
         "namePrivate": null
-      },
-<<<<<<< HEAD
-=======
-      "festival_edition": {
-        "id": 3,
-        "festival": {
-          "id": 3,
-          "name_et": "Just Film",
-          "name_en": "Just Film",
-          "name_ru": "Just Film",
-          "description_et": null,
-          "description_en": null,
-          "description_ru": null,
-          "clipUrl": null,
-          "created_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "updated_by": {
-            "id": 8,
-            "firstname": "Jaan",
-            "lastname": "Editor",
-            "username": null
-          },
-          "created_at": "2020-09-24T13:30:18.746Z",
-          "updated_at": "2020-09-24T13:30:18.779Z",
-          "logo": null,
-          "images": []
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "created_at": "2020-08-31T14:06:00.297Z",
-        "updated_at": "2020-10-12T08:13:37.082Z",
-        "domain": {
-          "id": 2,
-          "Url": null,
-          "IpAdress": null,
-          "Server": null,
-          "created_by": {
-            "id": 6,
-            "firstname": "Jaan",
-            "lastname": "Leppik",
-            "username": null
-          },
-          "updated_by": {
-            "id": 3,
-            "firstname": "Liis",
-            "lastname": "Käsper",
-            "username": null
-          },
-          "created_at": "2020-08-19T10:43:52.272Z",
-          "updated_at": "2020-08-31T13:52:48.952Z",
-          "url": "justfilm.ee",
-          "ipAdress": null,
-          "server": null,
-          "festival_edition": null,
-          "name": "Just Film"
-        },
-        "number": 20,
-        "year": 2020,
-        "name_et": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "name_en": "20th Youth and Children's Film Festival",
-        "name_ru": "20. PÖFFi noorte- ja lastefilmide festival Just Film",
-        "description_et": null,
-        "description_en": null,
-        "description_ru": null,
-        "startDate": "2020-11-13T10:00:00.000Z",
-        "endDate": "2020-11-29T10:00:00.000Z",
-        "slug_et": null,
-        "slug_en": null,
-        "slug_ru": null,
-        "remoteId": "9"
-      },
->>>>>>> parent of b1922739... delete starpidata .json files
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
       },
       "created_at": "2020-10-18T11:20:04.107Z",
       "updated_at": "2020-11-12T17:17:05.600Z",
@@ -4114,8 +2047,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -4135,8 +2066,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.539Z",
           "updated_at": "2020-10-29T21:55:39.637Z"
         },
@@ -4156,8 +2085,6 @@
           "previewUrl": null,
           "provider": "local",
           "provider_metadata": null,
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-10-25T13:48:15.567Z",
           "updated_at": "2020-10-29T21:55:59.170Z"
         },
@@ -4168,18 +2095,6 @@
     "buyer": null,
     "code": "jp1708101",
     "active": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-10-18T11:25:19.179Z",
     "updated_at": "2020-10-18T11:25:19.187Z",
     "transaction": null,

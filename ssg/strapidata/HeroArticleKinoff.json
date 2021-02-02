@@ -2,33 +2,6 @@
   {
     "id": 1,
     "article_et": {
-<<<<<<< HEAD
-      "id": 4,
-      "title_et": "KinoFF Jõhvis",
-      "title_en": "KinoFF in Jõhvi",
-      "title_ru": "KinoFF в Йыхви",
-      "slug_et": "johvi-kontserdimaja",
-      "slug_en": "kino-ff-in-johvi",
-      "slug_ru": "kino-ff-v-jyhvi",
-      "lead_et": "Filmifestivali KinoFF kolmas osa toimub Jõhvi Kontserdimajas asuvas kinos Amadeus. Filmi programm algab kolmapäeval, 25. novembril ja kestab terve nädalavahetuse.\n",
-      "lead_en": null,
-      "lead_ru": "Третья часть кинофестиваля KinoFF пройдет в кинотеатре Amadeus Йыхвиского концертного дома. Программа фильма стартует в среду, 25 ноября, и продлится все выходные.",
-      "contents_et": "**Toimumiskoht**\n\nKino Amadeus asub Jõhvi Kontserimajas ning on filmihuvilisi võõrustanud juba viimased 15. aastat. Hubane saal ja kaasaegne tehnika teevad filmielamuse eriliselt heaks.\n\n**KINO AMADEUS, JÕHVI**\n\nKolmapäev, 25.11.2020\n18:00\t**Hüvasti, NSVL**, Soome, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Reede, 27.11.2020**\n12:00\t**Ankeet**, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Elsa maa**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n\n**Laupäev, 28.11.2020**\n12:00\t**Konverents**, Venemaa, Eesti, Itaalia, Suurbritannia, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Ütle talle**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Sekkumine**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Pühapäev, 29.11.2020**\t\n12:00\t**Põhjajaht**, Venemaa, Kazahstan, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nEnne filmi linastub lühifilm **Ohver**, Eesti, 2020.\n15:30\t**Vene surm**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Nina või teistsuguste vandenõu**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Infopunkt ja piletimüük**\n\nPiletite müük kohapeal on avatud 23. – 29.11.2020\nE–R 12–17; L–P piletimüük algab tund enne filmi\n\n**Ohutusnõuded**\n\nFestival rakendab kõiki koos Terviseametiga välja töötatud ohutusreegleid, et tagada kinokülastajatele turvaline keskkond. Maskid on rangelt soovituslikud, festival varustab nendega kõiki külastajaid tasuta. Seansside vaheajal kinosaale puhastatakse ja desinfitseeritakse.\n\nFestivali toovad teieni PÖFF, OBJEKT ja RUS.DELFI",
-      "contents_en": null,
-      "contents_ru": "**Место проведения**\n\nKino Amadeus находится в концертном зале Йыхви. Уютный зал и современные технологии делают просмотр фильма особенно приятным.\n\n**КИНОТЕАТР AMADEUS, ЙЫХВИ**\n\n**Cреда, 25.11.2020**\n18:00      **Прощай, СССР**, Финляндия, Эстония, 2020. [Купить билет](https://www.piletilevi.ee/rus/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Пятница, 27.11.2020**\n12:00\t**Анкета**, Эстония, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Земля Эльзы**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n \n**Cуббота, 28.11.2020**\n12:00\t**Конференция**, Россия, Эстония, Италия, Великобритания, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Скажи ей**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Вмешательство**, Россия 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Воскресенье, 29.11.2020**\n12:00\t**Северная охота**, Россия, Казахстан, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nПеред фильмом будет показан короткометражный фильм **Жертва**, Эстония, 2020.\n15:30\t**Русская смерть**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Нос, или Заговор \"не таких\"**, Россия, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Продажа билетов**\n\nПродажа билетов на месте открыта с 23 по 29 ноября 2020 года.\nПн-пт 12–17, сб-вс продажа билетов начинается за час до начала фильма.\n\n**Требования безопасности**\n\nНа фестивале соблюдаются все правила безопасности, разработанные совместно с Департаментом здоровья, чтобы обеспечить безопасную среду для посетителей кинотеатра. Маски строго рекомендуются, фестиваль бесплатно предоставляет их всем посетителям. Залы проветриваются и дезинфицируются между сеансами.\n\nФестиваль представляет PÖFF, OBJEKT и RUS.DELFI.",
-      "publishFrom": "2020-10-11T09:00:00.000Z",
-      "publishUntil": null,
-      "publish_et": true,
-      "publish_en": null,
-      "publish_ru": true,
-      "created_by": {
-        "id": 26,
-        "firstname": "Andres",
-        "lastname": "Lestal",
-        "username": null
-      },
-      "updated_by": {
-=======
       "id": 1,
       "title_et": "KinoFF 2020 - kino on püha!",
       "title_en": "KinoFF 2020",
@@ -48,18 +21,11 @@
       "publish_en": true,
       "publish_ru": true,
       "created_by": {
->>>>>>> parent of b1922739... delete starpidata .json files
         "id": 25,
         "firstname": "Maria",
         "lastname": "Kullamägi",
         "username": null
       },
-<<<<<<< HEAD
-      "created_at": "2020-10-23T07:14:07.666Z",
-      "updated_at": "2020-11-23T21:08:07.057Z",
-      "media": {
-        "id": 139,
-=======
       "updated_by": {
         "id": 6,
         "firstname": "Jaan",
@@ -70,49 +36,12 @@
       "updated_at": "2020-11-11T11:07:39.218Z",
       "media": {
         "id": 120,
->>>>>>> parent of b1922739... delete starpidata .json files
         "clipUrlDefault": null,
         "clipUrl_et": null,
         "clipUrl_en": null,
         "clipUrl_ru": null,
         "imageDefault": [
           {
-<<<<<<< HEAD
-            "id": 2244,
-            "name": "F_4_hunting_in_the_north.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 1920,
-            "height": 1080,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_F_4_hunting_in_the_north_02dbb9e609.jpg",
-                "hash": "thumbnail_F_4_hunting_in_the_north_02dbb9e609",
-                "mime": "image/jpeg",
-                "name": "thumbnail_F_4_hunting_in_the_north.jpg",
-                "path": null,
-                "size": 5.65,
-                "width": 245,
-                "height": 138
-              }
-            },
-            "hash": "F_4_hunting_in_the_north_02dbb9e609",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 228.9,
-            "url": "/uploads/F_4_hunting_in_the_north_02dbb9e609.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 6,
-            "updated_by": 6,
-            "created_at": "2020-11-05T11:22:02.490Z",
-            "updated_at": "2020-11-05T11:22:03.803Z"
-          }
-        ],
-        "image_et": [],
-=======
             "id": 1563,
             "name": "kohtla_jarve_2019.jpg",
             "alternativeText": "",
@@ -140,8 +69,6 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 25,
-            "updated_by": 25,
             "created_at": "2020-10-26T15:15:25.865Z",
             "updated_at": "2020-10-26T15:15:25.914Z"
           }
@@ -175,13 +102,10 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 25,
-            "updated_by": 25,
             "created_at": "2020-10-26T15:15:25.865Z",
             "updated_at": "2020-10-26T15:15:25.914Z"
           }
         ],
->>>>>>> parent of b1922739... delete starpidata .json files
         "image_en": [],
         "image_ru": []
       },
@@ -190,8 +114,6 @@
         {
           "id": 2,
           "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-08-18T13:49:51.616Z",
           "updated_at": "2020-09-21T10:57:52.599Z",
           "article": null,
@@ -208,14 +130,10 @@
           "label_en": "News",
           "label_ru": "Новость",
           "Description": null
-<<<<<<< HEAD
-=======
         },
         {
           "id": 5,
           "name": "about",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-09-01T12:17:53.527Z",
           "updated_at": "2020-09-21T10:54:13.651Z",
           "article": null,
@@ -232,7 +150,6 @@
           "label_en": "About",
           "label_ru": "Артикл",
           "Description": null
->>>>>>> parent of b1922739... delete starpidata .json files
         }
       ],
       "tag_premiere_types": [],
@@ -243,8 +160,6 @@
         {
           "id": 2,
           "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-09-02T11:28:23.386Z",
           "updated_at": "2020-09-02T11:28:23.428Z",
           "name": {
@@ -258,33 +173,6 @@
       "organisations": []
     },
     "article_en": {
-<<<<<<< HEAD
-      "id": 4,
-      "title_et": "KinoFF Jõhvis",
-      "title_en": "KinoFF in Jõhvi",
-      "title_ru": "KinoFF в Йыхви",
-      "slug_et": "johvi-kontserdimaja",
-      "slug_en": "kino-ff-in-johvi",
-      "slug_ru": "kino-ff-v-jyhvi",
-      "lead_et": "Filmifestivali KinoFF kolmas osa toimub Jõhvi Kontserdimajas asuvas kinos Amadeus. Filmi programm algab kolmapäeval, 25. novembril ja kestab terve nädalavahetuse.\n",
-      "lead_en": null,
-      "lead_ru": "Третья часть кинофестиваля KinoFF пройдет в кинотеатре Amadeus Йыхвиского концертного дома. Программа фильма стартует в среду, 25 ноября, и продлится все выходные.",
-      "contents_et": "**Toimumiskoht**\n\nKino Amadeus asub Jõhvi Kontserimajas ning on filmihuvilisi võõrustanud juba viimased 15. aastat. Hubane saal ja kaasaegne tehnika teevad filmielamuse eriliselt heaks.\n\n**KINO AMADEUS, JÕHVI**\n\nKolmapäev, 25.11.2020\n18:00\t**Hüvasti, NSVL**, Soome, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Reede, 27.11.2020**\n12:00\t**Ankeet**, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Elsa maa**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n\n**Laupäev, 28.11.2020**\n12:00\t**Konverents**, Venemaa, Eesti, Itaalia, Suurbritannia, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Ütle talle**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Sekkumine**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Pühapäev, 29.11.2020**\t\n12:00\t**Põhjajaht**, Venemaa, Kazahstan, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nEnne filmi linastub lühifilm **Ohver**, Eesti, 2020.\n15:30\t**Vene surm**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Nina või teistsuguste vandenõu**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Infopunkt ja piletimüük**\n\nPiletite müük kohapeal on avatud 23. – 29.11.2020\nE–R 12–17; L–P piletimüük algab tund enne filmi\n\n**Ohutusnõuded**\n\nFestival rakendab kõiki koos Terviseametiga välja töötatud ohutusreegleid, et tagada kinokülastajatele turvaline keskkond. Maskid on rangelt soovituslikud, festival varustab nendega kõiki külastajaid tasuta. Seansside vaheajal kinosaale puhastatakse ja desinfitseeritakse.\n\nFestivali toovad teieni PÖFF, OBJEKT ja RUS.DELFI",
-      "contents_en": null,
-      "contents_ru": "**Место проведения**\n\nKino Amadeus находится в концертном зале Йыхви. Уютный зал и современные технологии делают просмотр фильма особенно приятным.\n\n**КИНОТЕАТР AMADEUS, ЙЫХВИ**\n\n**Cреда, 25.11.2020**\n18:00      **Прощай, СССР**, Финляндия, Эстония, 2020. [Купить билет](https://www.piletilevi.ee/rus/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Пятница, 27.11.2020**\n12:00\t**Анкета**, Эстония, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Земля Эльзы**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n \n**Cуббота, 28.11.2020**\n12:00\t**Конференция**, Россия, Эстония, Италия, Великобритания, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Скажи ей**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Вмешательство**, Россия 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Воскресенье, 29.11.2020**\n12:00\t**Северная охота**, Россия, Казахстан, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nПеред фильмом будет показан короткометражный фильм **Жертва**, Эстония, 2020.\n15:30\t**Русская смерть**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Нос, или Заговор \"не таких\"**, Россия, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Продажа билетов**\n\nПродажа билетов на месте открыта с 23 по 29 ноября 2020 года.\nПн-пт 12–17, сб-вс продажа билетов начинается за час до начала фильма.\n\n**Требования безопасности**\n\nНа фестивале соблюдаются все правила безопасности, разработанные совместно с Департаментом здоровья, чтобы обеспечить безопасную среду для посетителей кинотеатра. Маски строго рекомендуются, фестиваль бесплатно предоставляет их всем посетителям. Залы проветриваются и дезинфицируются между сеансами.\n\nФестиваль представляет PÖFF, OBJEKT и RUS.DELFI.",
-      "publishFrom": "2020-10-11T09:00:00.000Z",
-      "publishUntil": null,
-      "publish_et": true,
-      "publish_en": null,
-      "publish_ru": true,
-      "created_by": {
-        "id": 26,
-        "firstname": "Andres",
-        "lastname": "Lestal",
-        "username": null
-      },
-      "updated_by": {
-=======
       "id": 1,
       "title_et": "KinoFF 2020 - kino on püha!",
       "title_en": "KinoFF 2020",
@@ -304,18 +192,11 @@
       "publish_en": true,
       "publish_ru": true,
       "created_by": {
->>>>>>> parent of b1922739... delete starpidata .json files
         "id": 25,
         "firstname": "Maria",
         "lastname": "Kullamägi",
         "username": null
       },
-<<<<<<< HEAD
-      "created_at": "2020-10-23T07:14:07.666Z",
-      "updated_at": "2020-11-23T21:08:07.057Z",
-      "media": {
-        "id": 139,
-=======
       "updated_by": {
         "id": 6,
         "firstname": "Jaan",
@@ -326,49 +207,12 @@
       "updated_at": "2020-11-11T11:07:39.218Z",
       "media": {
         "id": 120,
->>>>>>> parent of b1922739... delete starpidata .json files
         "clipUrlDefault": null,
         "clipUrl_et": null,
         "clipUrl_en": null,
         "clipUrl_ru": null,
         "imageDefault": [
           {
-<<<<<<< HEAD
-            "id": 2244,
-            "name": "F_4_hunting_in_the_north.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 1920,
-            "height": 1080,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_F_4_hunting_in_the_north_02dbb9e609.jpg",
-                "hash": "thumbnail_F_4_hunting_in_the_north_02dbb9e609",
-                "mime": "image/jpeg",
-                "name": "thumbnail_F_4_hunting_in_the_north.jpg",
-                "path": null,
-                "size": 5.65,
-                "width": 245,
-                "height": 138
-              }
-            },
-            "hash": "F_4_hunting_in_the_north_02dbb9e609",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 228.9,
-            "url": "/uploads/F_4_hunting_in_the_north_02dbb9e609.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 6,
-            "updated_by": 6,
-            "created_at": "2020-11-05T11:22:02.490Z",
-            "updated_at": "2020-11-05T11:22:03.803Z"
-          }
-        ],
-        "image_et": [],
-=======
             "id": 1563,
             "name": "kohtla_jarve_2019.jpg",
             "alternativeText": "",
@@ -396,8 +240,6 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 25,
-            "updated_by": 25,
             "created_at": "2020-10-26T15:15:25.865Z",
             "updated_at": "2020-10-26T15:15:25.914Z"
           }
@@ -431,13 +273,10 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 25,
-            "updated_by": 25,
             "created_at": "2020-10-26T15:15:25.865Z",
             "updated_at": "2020-10-26T15:15:25.914Z"
           }
         ],
->>>>>>> parent of b1922739... delete starpidata .json files
         "image_en": [],
         "image_ru": []
       },
@@ -446,8 +285,6 @@
         {
           "id": 2,
           "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-08-18T13:49:51.616Z",
           "updated_at": "2020-09-21T10:57:52.599Z",
           "article": null,
@@ -464,14 +301,10 @@
           "label_en": "News",
           "label_ru": "Новость",
           "Description": null
-<<<<<<< HEAD
-=======
         },
         {
           "id": 5,
           "name": "about",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-09-01T12:17:53.527Z",
           "updated_at": "2020-09-21T10:54:13.651Z",
           "article": null,
@@ -488,7 +321,6 @@
           "label_en": "About",
           "label_ru": "Артикл",
           "Description": null
->>>>>>> parent of b1922739... delete starpidata .json files
         }
       ],
       "tag_premiere_types": [],
@@ -499,8 +331,6 @@
         {
           "id": 2,
           "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-09-02T11:28:23.386Z",
           "updated_at": "2020-09-02T11:28:23.428Z",
           "name": {
@@ -514,30 +344,6 @@
       "organisations": []
     },
     "article_ru": {
-<<<<<<< HEAD
-      "id": 4,
-      "title_et": "KinoFF Jõhvis",
-      "title_en": "KinoFF in Jõhvi",
-      "title_ru": "KinoFF в Йыхви",
-      "slug_et": "johvi-kontserdimaja",
-      "slug_en": "kino-ff-in-johvi",
-      "slug_ru": "kino-ff-v-jyhvi",
-      "lead_et": "Filmifestivali KinoFF kolmas osa toimub Jõhvi Kontserdimajas asuvas kinos Amadeus. Filmi programm algab kolmapäeval, 25. novembril ja kestab terve nädalavahetuse.\n",
-      "lead_en": null,
-      "lead_ru": "Третья часть кинофестиваля KinoFF пройдет в кинотеатре Amadeus Йыхвиского концертного дома. Программа фильма стартует в среду, 25 ноября, и продлится все выходные.",
-      "contents_et": "**Toimumiskoht**\n\nKino Amadeus asub Jõhvi Kontserimajas ning on filmihuvilisi võõrustanud juba viimased 15. aastat. Hubane saal ja kaasaegne tehnika teevad filmielamuse eriliselt heaks.\n\n**KINO AMADEUS, JÕHVI**\n\nKolmapäev, 25.11.2020\n18:00\t**Hüvasti, NSVL**, Soome, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Reede, 27.11.2020**\n12:00\t**Ankeet**, Eesti, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Elsa maa**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n\n**Laupäev, 28.11.2020**\n12:00\t**Konverents**, Venemaa, Eesti, Itaalia, Suurbritannia, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Ütle talle**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Sekkumine**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Pühapäev, 29.11.2020**\t\n12:00\t**Põhjajaht**, Venemaa, Kazahstan, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nEnne filmi linastub lühifilm **Ohver**, Eesti, 2020.\n15:30\t**Vene surm**, Venemaa 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Nina või teistsuguste vandenõu**, Venemaa, 2020. [Osta pilet filmile]( https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Infopunkt ja piletimüük**\n\nPiletite müük kohapeal on avatud 23. – 29.11.2020\nE–R 12–17; L–P piletimüük algab tund enne filmi\n\n**Ohutusnõuded**\n\nFestival rakendab kõiki koos Terviseametiga välja töötatud ohutusreegleid, et tagada kinokülastajatele turvaline keskkond. Maskid on rangelt soovituslikud, festival varustab nendega kõiki külastajaid tasuta. Seansside vaheajal kinosaale puhastatakse ja desinfitseeritakse.\n\nFestivali toovad teieni PÖFF, OBJEKT ja RUS.DELFI",
-      "contents_en": null,
-      "contents_ru": "**Место проведения**\n\nKino Amadeus находится в концертном зале Йыхви. Уютный зал и современные технологии делают просмотр фильма особенно приятным.\n\n**КИНОТЕАТР AMADEUS, ЙЫХВИ**\n\n**Cреда, 25.11.2020**\n18:00      **Прощай, СССР**, Финляндия, Эстония, 2020. [Купить билет](https://www.piletilevi.ee/rus/piletid/festival/film/133301-huvasti-nsvl-324770/)\n\n**Пятница, 27.11.2020**\n12:00\t**Анкета**, Эстония, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153301-ankeet-324771/)\n19:00\t**Земля Эльзы**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/153302-elsa-maa-324772/)\n \n**Cуббота, 28.11.2020**\n12:00\t**Конференция**, Россия, Эстония, Италия, Великобритания, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/163301-konverents-324773/)\n15:00\t**Скажи ей**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163302-utle-talle-324774/)\n18:00\t**Вмешательство**, Россия 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/163303-sekkumine-324775/)\n\n**Воскресенье, 29.11.2020**\n12:00\t**Северная охота**, Россия, Казахстан, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173302-pohjajaht-324776/)\nПеред фильмом будет показан короткометражный фильм **Жертва**, Эстония, 2020.\n15:30\t**Русская смерть**, Россия, 2020. [Купить билет]( https://www.piletilevi.ee/est/piletid/festival/film/173303-vene-surm-324777/)\n18:00\t**Нос, или Заговор \"не таких\"**, Россия, 2020. [Купить билет](https://www.piletilevi.ee/est/piletid/festival/film/173304-nina-voi-teistsuguste-vandenou-324778/)\n\n**Продажа билетов**\n\nПродажа билетов на месте открыта с 23 по 29 ноября 2020 года.\nПн-пт 12–17, сб-вс продажа билетов начинается за час до начала фильма.\n\n**Требования безопасности**\n\nНа фестивале соблюдаются все правила безопасности, разработанные совместно с Департаментом здоровья, чтобы обеспечить безопасную среду для посетителей кинотеатра. Маски строго рекомендуются, фестиваль бесплатно предоставляет их всем посетителям. Залы проветриваются и дезинфицируются между сеансами.\n\nФестиваль представляет PÖFF, OBJEKT и RUS.DELFI.",
-      "publishFrom": "2020-10-11T09:00:00.000Z",
-      "publishUntil": null,
-      "publish_et": true,
-      "publish_en": null,
-      "publish_ru": true,
-      "created_by": {
-        "id": 26,
-        "firstname": "Andres",
-        "lastname": "Lestal",
-=======
       "id": 15,
       "title_et": "KinoFFi parimaks filmiks sai “Kallid seltsimehed”, publikupreemia sai \"Elsa maa”",
       "title_en": "The best film of KinoFF was “Dear Comrades”, the Audience Award went to the “Elsa's Land\"",
@@ -560,7 +366,6 @@
         "id": 25,
         "firstname": "Maria",
         "lastname": "Kullamägi",
->>>>>>> parent of b1922739... delete starpidata .json files
         "username": null
       },
       "updated_by": {
@@ -569,30 +374,18 @@
         "lastname": "Kullamägi",
         "username": null
       },
-<<<<<<< HEAD
-      "created_at": "2020-10-23T07:14:07.666Z",
-      "updated_at": "2020-11-23T21:08:07.057Z",
-      "media": {
-        "id": 139,
-=======
       "created_at": "2020-12-15T10:37:07.579Z",
       "updated_at": "2020-12-15T10:38:45.243Z",
       "media": {
         "id": 397,
->>>>>>> parent of b1922739... delete starpidata .json files
         "clipUrlDefault": null,
         "clipUrl_et": null,
         "clipUrl_en": null,
         "clipUrl_ru": null,
         "imageDefault": [
           {
-<<<<<<< HEAD
-            "id": 2244,
-            "name": "F_4_hunting_in_the_north.jpg",
-=======
             "id": 2220,
             "name": "F_2_elsa's_land.jpg",
->>>>>>> parent of b1922739... delete starpidata .json files
             "alternativeText": "",
             "caption": "",
             "width": 1920,
@@ -600,50 +393,26 @@
             "formats": {
               "thumbnail": {
                 "ext": ".jpg",
-<<<<<<< HEAD
-                "url": "/uploads/thumbnail_F_4_hunting_in_the_north_02dbb9e609.jpg",
-                "hash": "thumbnail_F_4_hunting_in_the_north_02dbb9e609",
-                "mime": "image/jpeg",
-                "name": "thumbnail_F_4_hunting_in_the_north.jpg",
-                "path": null,
-                "size": 5.65,
-=======
                 "url": "/uploads/thumbnail_F_2_elsa_s_land_88fd24ae53.jpg",
                 "hash": "thumbnail_F_2_elsa_s_land_88fd24ae53",
                 "mime": "image/jpeg",
                 "name": "thumbnail_F_2_elsa's_land.jpg",
                 "path": null,
                 "size": 8.35,
->>>>>>> parent of b1922739... delete starpidata .json files
                 "width": 245,
                 "height": 138
               }
             },
-<<<<<<< HEAD
-            "hash": "F_4_hunting_in_the_north_02dbb9e609",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 228.9,
-            "url": "/uploads/F_4_hunting_in_the_north_02dbb9e609.jpg",
-=======
             "hash": "F_2_elsa_s_land_88fd24ae53",
             "ext": ".jpg",
             "mime": "image/jpeg",
             "size": 206.61,
             "url": "/uploads/F_2_elsa_s_land_88fd24ae53.jpg",
->>>>>>> parent of b1922739... delete starpidata .json files
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 6,
-            "updated_by": 6,
-<<<<<<< HEAD
-            "created_at": "2020-11-05T11:22:02.490Z",
-            "updated_at": "2020-11-05T11:22:03.803Z"
-=======
             "created_at": "2020-11-05T11:21:44.221Z",
             "updated_at": "2020-11-05T11:21:44.768Z"
->>>>>>> parent of b1922739... delete starpidata .json files
           }
         ],
         "image_et": [],
@@ -655,8 +424,6 @@
         {
           "id": 2,
           "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-08-18T13:49:51.616Z",
           "updated_at": "2020-09-21T10:57:52.599Z",
           "article": null,
@@ -683,8 +450,6 @@
         {
           "id": 2,
           "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
           "created_at": "2020-09-02T11:28:23.386Z",
           "updated_at": "2020-09-02T11:28:23.428Z",
           "name": {
@@ -697,23 +462,7 @@
       ],
       "organisations": []
     },
-    "created_by": {
-      "id": 26,
-      "firstname": "Andres",
-      "lastname": "Lestal",
-      "username": null
-    },
-    "updated_by": {
-      "id": 25,
-      "firstname": "Maria",
-      "lastname": "Kullamägi",
-      "username": null
-    },
     "created_at": "2020-10-23T07:26:26.764Z",
-<<<<<<< HEAD
-    "updated_at": "2020-11-23T20:47:03.993Z"
-=======
     "updated_at": "2020-12-16T09:10:34.549Z"
->>>>>>> parent of b1922739... delete starpidata .json files
   }
 ]

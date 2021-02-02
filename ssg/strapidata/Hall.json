@@ -13,8 +13,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -27,18 +25,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:35.381Z",
         "updated_at": "2020-09-10T08:14:00.678Z",
@@ -53,18 +39,6 @@
         "name_ru": "Tartu"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T11:00:13.305Z",
       "updated_at": "2020-10-07T11:00:13.332Z",
       "Name_et": null,
@@ -75,18 +49,6 @@
       "name_ru": "Elektriteater",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:16:14.283Z",
     "updated_at": "2020-10-07T13:25:08.996Z",
@@ -118,8 +80,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -132,18 +92,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
         },
         "created_at": "2020-10-07T10:49:34.705Z",
         "updated_at": "2020-10-07T10:49:34.722Z",
@@ -158,18 +106,6 @@
         "name_ru": "Нарва"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T11:01:05.873Z",
       "updated_at": "2020-10-07T11:01:05.894Z",
       "Name_et": null,
@@ -180,18 +116,6 @@
       "name_ru": "Apollo Kino Astri",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:16:58.022Z",
     "updated_at": "2020-10-07T13:25:35.823Z",
@@ -223,8 +147,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -237,18 +159,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
         },
         "created_at": "2020-10-07T10:51:07.187Z",
         "updated_at": "2020-10-07T10:51:07.212Z",
@@ -263,18 +173,6 @@
         "name_ru": "Кохтла-Ярве"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T11:01:17.756Z",
       "updated_at": "2020-10-07T11:01:17.773Z",
       "Name_et": null,
@@ -285,18 +183,6 @@
       "name_ru": "Kohtla-Järve Kultuurikeskus",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:17:41.175Z",
     "updated_at": "2020-10-07T13:25:57.777Z",
@@ -328,8 +214,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -342,18 +226,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -368,18 +240,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -390,18 +250,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:10:02.220Z",
     "updated_at": "2020-10-07T13:21:33.644Z",
@@ -433,8 +281,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -447,18 +293,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -473,18 +307,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -495,18 +317,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:10:50.343Z",
     "updated_at": "2020-10-07T13:21:41.698Z",
@@ -538,8 +348,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -552,18 +360,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
         },
         "created_at": "2020-10-07T10:54:47.798Z",
         "updated_at": "2020-10-07T10:54:47.820Z",
@@ -578,18 +374,6 @@
         "name_ru": "Иыхви"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T11:01:31.714Z",
       "updated_at": "2020-10-07T11:01:31.730Z",
       "Name_et": null,
@@ -600,18 +384,6 @@
       "name_ru": "Jõhvi Kontserdimaja",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:17:58.870Z",
     "updated_at": "2020-10-07T13:26:12.035Z",
@@ -643,8 +415,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -657,18 +427,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -683,18 +441,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -705,18 +451,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:11:28.761Z",
     "updated_at": "2020-10-07T13:21:52.066Z",
@@ -748,8 +482,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -762,18 +494,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -788,18 +508,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -810,18 +518,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:12:18.868Z",
     "updated_at": "2020-10-07T13:22:12.313Z",
@@ -853,8 +549,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -867,18 +561,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 1,
-          "firstname": "Mihkel",
-          "lastname": "Putrinš",
-          "username": null
-        },
-        "updated_by": {
-          "id": 6,
-          "firstname": "Jaan",
-          "lastname": "Leppik",
-          "username": null
         },
         "created_at": "2020-11-04T18:18:10.816Z",
         "updated_at": "2020-11-05T10:46:26.450Z",
@@ -893,18 +575,6 @@
         "name_ru": "Эстония"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 1,
-        "firstname": "Mihkel",
-        "lastname": "Putrinš",
-        "username": null
-      },
       "created_at": "2020-10-07T11:01:55.537Z",
       "updated_at": "2020-11-04T18:19:22.182Z",
       "Name_et": null,
@@ -915,18 +585,6 @@
       "name_ru": "Online",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:21:05.728Z",
     "updated_at": "2020-10-07T13:26:26.906Z",
@@ -958,8 +616,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -972,18 +628,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -998,18 +642,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-11-16T19:20:33.923Z",
       "updated_at": "2020-11-16T19:20:33.937Z",
       "Name_et": null,
@@ -1020,18 +652,6 @@
       "name_ru": "Fotografiska",
       "address": "Telliskivi 60",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-11-16T19:21:21.828Z",
     "updated_at": "2020-11-16T19:21:21.859Z",
@@ -1063,8 +683,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1077,18 +695,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1103,18 +709,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -1125,18 +719,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:12:36.355Z",
     "updated_at": "2020-10-07T13:22:18.986Z",
@@ -1168,8 +750,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1182,18 +762,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1208,18 +776,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -1230,18 +786,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:13:01.018Z",
     "updated_at": "2020-10-07T13:22:26.048Z",
@@ -1273,8 +817,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1287,18 +829,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1313,18 +843,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:26.079Z",
       "updated_at": "2020-10-07T10:47:26.104Z",
       "Name_et": null,
@@ -1335,18 +853,6 @@
       "name_ru": "Coca-Cola Plaza",
       "address": "",
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:13:15.693Z",
     "updated_at": "2020-10-07T13:23:17.665Z",
@@ -1378,8 +884,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1392,18 +896,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1418,18 +910,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:46.487Z",
       "updated_at": "2020-10-07T10:47:46.956Z",
       "Name_et": null,
@@ -1440,18 +920,6 @@
       "name_ru": "Apollo Kino Solaris",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:13:46.548Z",
     "updated_at": "2020-10-07T13:23:50.761Z",
@@ -1483,8 +951,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1497,18 +963,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1523,18 +977,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:46.487Z",
       "updated_at": "2020-10-07T10:47:46.956Z",
       "Name_et": null,
@@ -1545,18 +987,6 @@
       "name_ru": "Apollo Kino Solaris",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:14:20.002Z",
     "updated_at": "2020-10-07T13:24:01.585Z",
@@ -1588,8 +1018,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1602,18 +1030,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1628,18 +1044,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:46.487Z",
       "updated_at": "2020-10-07T10:47:46.956Z",
       "Name_et": null,
@@ -1650,18 +1054,6 @@
       "name_ru": "Apollo Kino Solaris",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:14:33.987Z",
     "updated_at": "2020-10-07T13:24:08.254Z",
@@ -1693,8 +1085,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1707,18 +1097,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1733,18 +1111,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:58.915Z",
       "updated_at": "2020-10-07T10:47:58.967Z",
       "Name_et": null,
@@ -1755,18 +1121,6 @@
       "name_ru": "Kino Artis",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:14:57.771Z",
     "updated_at": "2020-10-07T13:24:22.437Z",
@@ -1798,8 +1152,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1812,18 +1164,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:19.665Z",
         "updated_at": "2020-09-10T08:13:52.605Z",
@@ -1838,18 +1178,6 @@
         "name_ru": "Tallinn"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:47:58.915Z",
       "updated_at": "2020-10-07T10:47:58.967Z",
       "Name_et": null,
@@ -1860,18 +1188,6 @@
       "name_ru": "Kino Artis",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:15:23.156Z",
     "updated_at": "2020-10-07T13:24:28.682Z",
@@ -1903,8 +1219,6 @@
         "country": {
           "id": 899,
           "Code": null,
-          "created_by": null,
-          "updated_by": null,
           "created_at": "2020-08-17T14:20:47.018Z",
           "updated_at": "2020-08-17T14:20:47.018Z",
           "Value_et": null,
@@ -1917,18 +1231,6 @@
           "name_et": "Eesti",
           "name_en": "Estonia",
           "name_ru": "Эстония"
-        },
-        "created_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
-        },
-        "updated_by": {
-          "id": 3,
-          "firstname": "Liis",
-          "lastname": "Käsper",
-          "username": null
         },
         "created_at": "2020-09-10T08:06:35.381Z",
         "updated_at": "2020-09-10T08:14:00.678Z",
@@ -1943,18 +1245,6 @@
         "name_ru": "Tartu"
       },
       "Address": null,
-      "created_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
-      "updated_by": {
-        "id": 6,
-        "firstname": "Jaan",
-        "lastname": "Leppik",
-        "username": null
-      },
       "created_at": "2020-10-07T10:48:17.843Z",
       "updated_at": "2020-10-07T10:48:17.856Z",
       "Name_et": null,
@@ -1965,18 +1255,6 @@
       "name_ru": "Athena Center",
       "address": null,
       "aadress": null
-    },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
     },
     "created_at": "2020-10-07T11:16:00.046Z",
     "updated_at": "2020-10-07T13:24:58.190Z",
