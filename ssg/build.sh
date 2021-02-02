@@ -1,3 +1,7 @@
+SECONDS=0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
+echo $PWD
 
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
