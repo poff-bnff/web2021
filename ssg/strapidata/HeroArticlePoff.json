@@ -2,118 +2,48 @@
   {
     "id": 1,
     "article_et": {
-<<<<<<< HEAD
-      "id": 252,
+      "id": 258,
       "created_by": {
-        "id": 9,
-        "firstname": "Elise",
-        "lastname": "Eimre",
+        "id": 15,
+        "firstname": "Epp",
+        "lastname": "Kõuhkna",
         "username": null
       },
       "updated_by": {
-        "id": 9,
-        "firstname": "Elise",
-        "lastname": "Eimre",
+        "id": 15,
+        "firstname": "Epp",
+        "lastname": "Kõuhkna",
         "username": null
       },
-      "created_at": "2020-11-30T13:06:35.674Z",
-      "updated_at": "2020-11-30T14:59:26.400Z",
-      "title_et": "PÖFFi veebikino on avatud veel nädal aega",
-      "slug_et": "p-oe-f-fi-veebikino-on-avatud-veel-naedal-aega",
-      "title_en": null,
-      "slug_en": "pof-fi-article-102",
+      "created_at": "2021-01-27T09:22:16.530Z",
+      "updated_at": "2021-01-27T11:19:04.382Z",
+      "title_et": "PÖFF on Postimehe kultuurivedur",
+      "slug_et": "p-oe-ff-on-postimehe-kultuurivedur",
+      "title_en": "PÖFF received the Engine of Culture award",
+      "slug_en": "pof-fi-article-106",
       "title_ru": null,
-      "slug_ru": "pof-fi-article-177",
-      "lead_et": "Pimedate Ööde filmifestival on küll läbi, kuid veebikinos saab filme vaadata veel 6. detsembrini.",
+      "slug_ru": "pof-fi-article-181",
+      "lead_et": "**Postimehe kultuuritoimetus kuulutas 2020. aasta kultuuriveduriks Pimedate Ööde filmifestivali eesotsas Tiina Lokiga.**",
       "lead_ru": null,
-      "lead_en": null,
-      "contents_et": "**PÖFFi filme saad veebikinos vaadata [siin](https://kino.poff.ee).**\n\nValikus on veidi üle kaheksakümne mängu- ja dokumentaalfilmi kokku 12 programmist, sealhulgas enamik auhinnafilme, ka grand prix’ võitnud Bulgaaria draamakomöödia „Hirm” ja parim režissööritöö, Türgi draama „Veel üks hingetõmme”. Samuti on kättesaadavad lühifilmide ja animatsioonifestivali PÖFF Shorts võidufilmid ja 13 telesarja avaosad, sealhulgas Elisa uhiuue põnevussarja „Tulejoonel” esimene jagu.\n\nNäha saab näiteks:\n\n- Läti taasiseseisvusaja populaarseimat filmi, suurejoonelist sõjadraamat „Hingede torm”, mis võitis äsja kuus Läti filmiauhinda Suur Kristaps ja on esitatud ka Oscarile;\n\n- Eestile Oscari nominatsiooni toonud, mullu meie seast lahkunud gruusia režissööri Zaza Urušadze retrospektiivi, sealhulgas tema viimaseks jäänud filmi „Anton”;\n\n- Tšehhi kõigi aegade populaarseimat dokumentaalfilmi „Võrku püütud”, mis näitab šokeerival viisil, kui ulatuslikult on veebis levinud alaealiste seksuaalne ärakasutamine;\n\n- Euroopa filmiakadeemia aasta parima filmi ja stsenaariumi auhinnale kandideerivat Saksa linateost „Berliin, Alexanderplatz”;\n\n- uut eesti dokumentaalfilmi „Ankeet”, milles Aljona Suržikova lehitseb 25 aastat hiljem oma kooliaegset sõbrapäevikut ja otsustab kunagised klassikaaslased üles otsida, et uurida, kas nende unistused on täitunud;\n\n- Euroopa filmiakadeemia aasta parima animafilmi auhinnale kandideerivat Prantsuse linateost „Josep”;\n\n- poleemikat tekitavat keskkonnateemalist dokumentaalfilmi „Hundid tulevad!”, mis näitab ilmekalt, kuidas huntide naasmine kunagisele asualale võib ühiskonna lõhki ajada.\n\nEsindatud on ka eksootilised, väga tugevad filmiriigid, mille linateosed näeb Eestis harva, näiteks Süüria, Filipiinid, Kõrgõzstan, Lõuna-Korea ja Kasahstan. Valikust leiab midagi ka spetsiifilisema huviga vaataja, on spordi-, keskkonna- ja õudusfilme. Eraldi programm on pühendatud PÖFFi tänavuse külalisriigi Saksamaa uuele filmikunstile.\n\nLisamaterjalina on paljude filmide juures autorite intervjuud, mis on salvestatud spetsiaalselt PÖFFi tarbeks. Põhi- ja debüütfilmide võistlusprogrammi filmid on varustatud ka eestikeelsete subtiitritega.\n\nPÖFFi veebikino saab külastada igas Eestimaa nurgas, kuhu ulatub internet. Virtuaalne PÖFF jõuab publikuni veebiplatvormide Shift72 ja Elisa Stage vahendusel.",
-      "contents_en": null,
+      "lead_en": "**The culture desk of the news service Postimees has given the annual Engine of Culture award of 2020 to Tallinn Black Nights Film Festival lead by Tiina Lokk.**",
+      "contents_et": "„Sõidutagu see vedur veel PÖFFi kaugele,” ütles toimetus Boris Puusepa valmistatud puidust vedurit festivali juhile Tiina Lokile kätte kandes. \n\nPostimees tõi esile, et PÖFF toimus kultuurile raskel aastal edukamalt kui kunagi varem, laiendades paindlikult oma tegevust veebi ja andes sellega esimest korda kõigile Eesti elanikele elukohast sõltumata võimaluse festivali filme vaadata. \n\n„Sellega näitas PÖFF teed kõigile teistele maailma A-klassi festivalidele – ja see A-klass on eksklusiivne klubi, mille väikseim liige on meie oma armas PÖFF,” ütles Postimehe filmitoimetaja Hendrik Alla. \n\nÜhtlasi rõhutasid preemia väljaandjad PÖFFi kauaaegset rolli Eesti filmi- ja kinokultuuri arendamisel. \n\nKultuuritoimetuse juhataja Heili Sibritsa sõnul sündis festival 1997. aastal protestist kinode sulgemise, nende ühekülgse repertuaari ja eesti filmi katastroofilise olukorra vastu. „PÖFF sündis selleks, et näidata inimestele, mis võiks olla. Et inimesed küsiksid: kus on meie kinod, kus on kvaliteetsed ja kunstipärased Euroopa ja muu maailma autorifilmid? Kus on hea eesti film? Ja nüüd, 25 aastat hiljem, on see kõik meil olemas ja läheb loodetavasti veelgi paremaks,” ütles ta. \n\nTiina Lokk oli pärast auhinna kättesaamist väga õnnelik. „Ma olen Kultuuriveduri laureaatide vastu ikka väikest kadedust, aga alati ka suurt heameelt tundnud. Möödunud aasta oli PÖFFile erakordselt raske ja proovikive täis – seda enam oleme tänulikud, et meie tegevust märgati ja esile tõsteti,” sõnas ta. \n\nPostimees annab Kultuuriveduri auhinda välja alates 2006. aastast. \n\nKultuuriveduri varasemad laureaadid: \n\n2005 – Ando Kiviberg pärimuskultuuri edendamise eest\n2006 – Ülar Mark avaliku arhitektuuridiskussiooni algatamise eest\n2007 – Mart Taniel kaameratöö eest filmides «Sügisball», «Nuga» ja «Jan Uuspõld läheb Tartusse»\n2008 – Anne Rande laste juhatamise eest raamatute ja kaunite kunstide juurde\n2009 – Märt Väljataga ajakirja Vikerkaar toimetamise ja sarja «Avatud Eesti raamat» kureerimise eest; \n2010 – Indrek Kasela Sõpruse kino elluäratamise eest\n2011 – Juhan Ulfsak panuse eest eesti teatrisse\n2012 – telesaate «Tujurikkuja» meeskonnale kõneka ja professionaalse tegevuse eest ühiskonnaelu kõverpeegeldamisel ja kultuuripildis laiemalt\n2013 – Hooandja meeskond ühisrahastusplatvormi idee algatamise ja elluviimise eest\n2014 – Muusik, DJ ja Raadio 2 saatejuht ning õhtuse vööndi juhataja Raul Saaremets eestlaste muusikalise maitse pikaajalise kujundamise eest\n2015 – Olga Temnikova, galerist ja Eesti kunsti väsimatu saadik\n2016 – Loomingu Raamatukogu väärtkirjanduse avaldamise eest\n2017 – kunstikollektsionäär Enn Kunila Eesti kunsti tutvustamise eest\n2018 – festival Augustibluus bluusižanri populariseerimise ja pildis hoidmise eest eesti kultuuris\n2019 – kirjastus Ilmamaa kauaaegse tegevuse eest nii kohaliku kui ka välismaise kirjanduse, memuaristika ja mõttevara vahendamisel\n\nVaata Postimehe Kultuuriveduri auhinna galeriid **[siit](https://www.flickr.com/photos/poffihunt/albums/72157718053706966/with/50880791752/).**\n",
+      "contents_en": "“Let this locomotive drive PÖFF even further,” said the culture desk of Postimees when handing the wooden locomotive made by modeler Boris Puusepp to the festival director Tiina Lokk. \n \nPostimees pointed out that regardless of this difficult year for culture PÖFF was more successful than ever – creatively expanding its activities online and thus, for the first time, giving all Estonian residents the opportunity to take part in the festival. \n \nThe publishers of the award also emphasized the long-standing role of PÖFF in the development of Estonian film and cinema culture.  \n \nTiina Lokk was very thankful for receiving the award. “I have always been happy but also a little envious of the previous winners of Engine of Culture award. Last year was extremely difficult and challenging for PÖFF – this makes us even more grateful that our activities were noticed and highlighted,” she said. \n \nPostimees has been awarding the Engine of Culture award since 2006. \n\nFor more pictures look **[here](https://www.flickr.com/photos/poffihunt/albums/72157718053706966/with/50880791752/).**\n",
       "contents_ru": null,
       "publishFrom": null,
       "publishUntil": null,
       "publish_et": true,
-      "publish_en": null,
+      "publish_en": true,
       "publish_ru": null,
       "media": {
-        "id": 390,
-=======
-      "id": 257,
-      "created_by": {
-        "id": 11,
-        "firstname": "Hannes",
-        "lastname": "Aava",
-        "username": "Hannes Aava"
-      },
-      "updated_by": {
-        "id": 18,
-        "firstname": "Jaana",
-        "lastname": "Kalinistova",
-        "username": null
-      },
-      "created_at": "2020-12-15T16:35:56.751Z",
-      "updated_at": "2020-12-16T08:52:53.892Z",
-      "title_et": "PÖFF kogus esimest korda üle 100 000 külastuse",
-      "slug_et": "p-oe-ff-kogus-esimest-korda-uele-100-000-kuelastuse",
-      "title_en": "Tallinn Black Nights Film Festival sets new attendance record with a boost from online industry events",
-      "slug_en": "tallinn-black-nights-film-festival-sets-new-attendance-record-with-a-boost-from-online-industry-events",
-      "title_ru": "Впервые PÖFF посетило более 100 000 человек",
-      "slug_ru": "pof-fi-article-180",
-      "lead_et": "**Tänavune Pimedate Ööde filmifestival ületas esimest korda ajaloos 100 000 külastuse piiri.**",
-      "lead_ru": "**В этом году посещаемость кинофестиваля «Тёмные ночи» превысила отметку в 100 000 человек.**",
-      "lead_en": "**The festival estimates that 101 833 physical and virtual attendances took place setting a record for the industry events which saw over 35 000 virtual attendances, resulting from a record of 1600 accredited professionals.**",
-      "contents_et": "Koroonaviiruse tõttu osaliselt veebis toimunud festival kogus 101 883 külastust.\n\nKinokülastusi oli sellest 34 862 ja esimest korda avatud PÖFFi veebikino külastusi 9543. Arvestades, et ühe piletiga vaatab filmi keskmiselt kaks inimest, sai virtuaalsest filmiprogrammist osa üle 19 000 vaataja.\n\nPÖFFi filmitööstusürituse Industry@Tallinn & Baltic Event üritused, mis leidsid tänavu aset ainult veebis, kogusid üle 22 000 külastuse üle terve maailma. Professionaalidele mõeldud veebikinos proscreen.poff.ee vaadati filme lisaks 9800 korral.\n\nPopulaarne oli ka Elisa Stage´i vahendusel vaatajani jõudnud PÖFF TV, kus sai (ja saab siiani) näha festivali ava- ja lõputseremooniat, aga ka filmide autorite intervjuusid ja muid usutlusi – seda külastati rohkem kui 12 000 korda.\n\nFestivalist ilmus üle 6000 artikli 71 riigi väljaannetes, mille potentsiaalne auditoorium oli samuti rekordiline – 9,1 miljardit inimest. Industry@Tallinn & Baltic Eventi meediakajastuse potentsiaalne auditoorium ulatus ligemale 500 miljoni inimeseni.\n\nPÖFFi juhi **Tiina Loki ** sõnul võeti hübriidfestival üle ootuste hästi vastu ja see õigustas ennast ka sisuliselt. „Kaotasime küll rahas, aga võitsime turunduses nii Eestis kui ka väljaspool Eestit. Saime juurde uut publikut ja jõudsime sinna, kuhu varem polnud jõudnud. Usun, et veeb on tulnud, et jääda. Samas ei kao kuhugi ka kinoseansid ja filmitööstuse kohtumisedki toimuvad Tallinnas edasi,” ütles ta.\n\nÜhtlasi tõstis ta esile, et tänu rangetele ohutusmeetmetele ja publiku vastutustundele ei tekkinud kahe ja poole nädala jooksul festivaliga seoses ühtki koroonakollet.\n\n**Veel arve 24. PÖFFi kohta:**\n\n- 172 pikka filmi, 28 lühifilmi ja 13 telesarja põhiprogrammis, 44 pikka filmi Just Filmi programmis ja 303 lühifilmi (neist 132 animatsiooni) PÖFF Shortsi programmis;\n- 33 maailma-, 29 rahvusvahelist ja 9 Euroopa esilinastust;\n- 63 riiki;\n- 645 kinoseanssi;\n- 1600 akrediteeritud külalist;\n- 85 Tallinnas käinud väliskülalist;\n- meediakajastus 71 riigi rohkem kui 6000 artiklis;\n\nFestivali populaarseimad filmid olid „Isa”, „Kolmekesi” ja „Nomaadimaa”, veebikinos „Hüvasti, NSVL”, „Hirm” ja „Võrku püütud”. Publikuauhinda jagasid „Hüvasti, NSVL” ja lühifilm „Välguga löödud”. Festivali grand prix´ pälvis „Hirm”.\n\nPÖFFi esitlesid tänavu Elisa ja Nordic Hotel Forum. Ametlikud partnerid olid Toyota, Reval Cafe, Postimees, Cramo, SYNLAB, Medicum ja Sinu Arst Terviseteenused, sponsorid Solaris, Freixenet, National Geographic, Metropol SPA Hotel, LuxCharter, Europark, Levira, Filmzone ja 3 Step It.\n\nPÖFF tänab kultuuriministeeriumit, Euroopa Regionaalarengu Fondi, Visit Estoniat, EASi, Visit Tallinnat, Tallinna linna, Eesti Kultuurkapitali, Euroopa Komisjoni, Media Europe Loves Cinemat, Eesti Filmi Instituuti, Foto In Motionit ja Keskkonnaagentuuri. Samuti meediapartnereid ERRi, Levirat, Meediust, Cineuropat, Enmedia Public Relationsit, Screen Internationali, Dirty Moviest ja kõiki teisi toetajaid ja sponsoreid.\n\n2019. aastal kogus PÖFF koos filmitööstusüritusega veidi üle 90 000 külastuse.",
-      "contents_en": "As anticipated by the festival’s team, the ticket sales saw a notable drop this year with over 34 000 physical attendances and an estimated 19 000 virtual film viewings*, compared to last year’s 70 000 physical cinema attendances. The festival’s professionals’ film-watching platform had 9779 viewings. \n\nA major shift took place with the virtual event attendances as Industry@Tallinn & Baltic Event had over 800 virtual accreditations – a new record – and made several events available online without accreditation as well, including it’s a most popular event – the European Film Forum. \nThis resulted in over 3000 virtual attendances on the Elisa Stage platform, while the overall virtual attendance, including the virtual opening and closing ceremony transmission and nearly a hundred Q&A’s and interviews made for the PÖFF TV, rose to 35 478.\n\nWith mentions in over 6000 articles in 71 languages detected by the Meltwater media monitoring service, the global potential media audience of the festival of 2020 stands at around 9.1 billion. The festival accredited 161 journalists (68 foreign) and over 26 bloggers, while only 15 foreign journalists were able to attend the events physically this year due to travel restrictions and quarantine requirements.\n \nBlack Nights director **Tiina Lokk** commented: „It was a most difficult year and edition that will be remembered for a long time! What we suffered in loss of revenue, we made up in terms of global visibility – reaching completely new people this year thanks to going virtual. I believe that online is here to stay, though it will not beat the experience of physical attendance which will still very much remain our focus in the future!“\n\nIndustry@Tallinn & Baltic Event director **Marge Liiske** commented: “Having organised a record attendance numbers' virtual industry event over five consecutive days in three parallel broadcasting channels, project presentations and meetings, showed us the potential of online in the future. We also feel really grateful for the industry professionals having such a strong sense of community and a powerful will of collaboration. I hope to meet and thank you all in person in 2021!”\n\n**Facts**\n•\t101 833 attendances\n•\tOver 34 000 physical attendances\n•\tOver 35 000 virtual industry attendances\n•\t646 physical screenings\n•\tNumber of films at Tallinn Black Nights Film Festival: 172 feature-length, 15 short films, 13 series.\n•\tNumber of films at Youth and children’s film festival Just Film: 42 feature-length films\n•\tNumber of films at PÖFF Shorts: 171 short films and 132 animations\n•\tPremieres at Tallinn Black Nights: 35 world, 30 international, 9 European\n•\tPremieres at Just Film: 3 world, 2 international, 1 European\n•\t1600 accredited professionals, guests, press\n•\tOver 160 accredited journalists, out of which 66 were foreign, 15 foreign journalists attended physically.\n•\tPhysically attending guests: foreign 85, Estonian 125\n•\tBudget 1.7 million euros\n\n",
-      "contents_ru": "Фестиваль, который из-за коронавируса частично прошел в онлайн-среде, собрал 101 883 посещения, в том числе 34 862 человека посетили сеансы в кинотеатрах, и в 9543 случаях были приобретены билеты на онлайн-показы. С учетом того, что по одному билету, приобретенный на виртуальный сеанс, фильм смотрят в среднем два человека, общее количество посетителей онлайн-кинотеатра составило порядка 19 000 человек.\n\nМероприятия Industry@Tallinn & Baltic Event для профессионалов киноиндустрии, которые в этом году проходили только онлайн, собрали более 22 000 посетителей со всего мира. Кинопоказы, проводимые в виртуальной среде для профессионалов киноиндустрии proscreen.poff.ee, посмотрели еще 9800 раз. \n\nПопулярностью пользовалось и PÖFF TV на платформе Elisa Stage, где по-прежнему можно посмотреть церемонии открытия и закрытия фестиваля, а также интервью с создателями фильмов и другие беседы. Этот канал посетили более 12 000 раз.\n\nО фестивале было опубликовано более 6000 статей в изданиях 71 страны, потенциальная аудитория которых составила 9,1 млрд человек. Для фестиваля это тоже рекордный показатель. Потенциальная аудитория публикаций об Industry @ Tallinn & Baltic Event достигла почти 500 млн человек.\n\nПо словам директора PÖFF Тийны Локк, фестиваль в гибридном формате был хорошо принят и по сути себя оправдал. «Мы потеряли финансово, но выиграли как в маркетинге по Эстонии, так и за рубежом. Мы привлекли новую публику и достигли тех регионов, куда обычно попасть не могли. Я верю, что онлайн-среда появилась у нас, чтобы остаться. Никуда не денутся и физические киносеансы, и реальные встречи для профессионалов киноиндустрии», – сказала она.\n\nОна также отметила, что благодаря строгим мерам безопасности и ответственности посетителей за две с половиной недели фестиваля не возникло ни одного очага распространения коронавируса.\n\n**И еще немного статистики 24-го PÖFF:**\n\n- 172 полнометражные картины, 28 короткометражек и 13 телесериалов в основной программе, 44 полнометражных фильма в программе Just Film и 303 короткометражных (из них 132 анимационных) в программе PÖFF Short;\n- 33 мировые, 29 международных и 9 европейских премьер;\n- 63 страны;\n- 645 киносеансов;\n- 1600 аккредитованных гостей;\n- в Таллинн прибыли 85 иностранных гостей;\n- 125 гостей из Эстонии;\n- более 6000 статей в СМИ 71 страны.\n\nСамыми популярными фильмами фестиваля стали «Отец», «Трое» и «Земля кочевников», а в онлайн-кинотеатре чаще всего смотрели «Прощай, СССР», «Страх» и «В сетях». Приз зрительских симпатий поделили «Прощай, СССР» и короткометражный фильм «Удар молнии». Гран-при фестиваля была удостоена кинокартина «Страх».\n\nГлавными спонсорами PÖFF в этом году стали Elisa и Nordic Hotel Forum. Официальными партнерами выступили Toyota, Reval Cafe, Postimees, Cramo, SYNLAB, Medicum и Sinu Arst Terviseteenused, и спонсорами стали Solaris, Freixenet, National Geographic, Metropol SPA Hotel, LuxCharter, Europark, Levira, Filmzone и 3 Step It.\n\nPÖFF благодарит Министерство культуры, Европейский фонд регионального развития, Visit Estonia, Enterprise Estonia, Visit Tallinn, город Таллинн, фонд «Капитал культуры Эстонии», Европейскую комиссию, Media Europe Loves Cinema, Эстонский институт кино, Foto In Motion и Агентство окружающей среды. Фестиваль также благодарит медиа-партнеров ERR, Levira, Media, Cineuropa, Enmedia Public Relations, Screen International, Dirty Movies и всех других спонсоров и партнеров.\n\nВ 2019 году PÖFF вместе с кинофорумом посетили более 90 000 раз.\n\n25-й кинофестиваль «Тёмные ночи» пройдет с 12 по 28 ноября 2021 года.",
-      "publishFrom": null,
-      "publishUntil": null,
-      "publish_et": true,
-      "publish_en": true,
-      "publish_ru": true,
-      "media": {
-        "id": 398,
->>>>>>> parent of b1922739... delete starpidata .json files
+        "id": 406,
         "clipUrlDefault": null,
         "clipUrl_et": null,
         "clipUrl_en": null,
         "clipUrl_ru": null,
         "imageDefault": [
           {
-<<<<<<< HEAD
-            "id": 3819,
-            "name": "F_1_caged_birds_ee28a1e9ad.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 1920,
-            "height": 1080,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_F_1_caged_birds_ee28a1e9ad_8817cddd70.jpg",
-                "hash": "thumbnail_F_1_caged_birds_ee28a1e9ad_8817cddd70",
-                "mime": "image/jpeg",
-                "name": "thumbnail_F_1_caged_birds_ee28a1e9ad.jpg",
-                "path": null,
-                "size": 5.31,
-                "width": 245,
-                "height": 138
-              }
-            },
-            "hash": "F_1_caged_birds_ee28a1e9ad_8817cddd70",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 159.2,
-            "url": "/uploads/F_1_caged_birds_ee28a1e9ad_8817cddd70.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 9,
-            "updated_by": 9,
-            "created_at": "2020-11-30T13:05:17.287Z",
-            "updated_at": "2020-11-30T13:05:17.539Z"
-=======
-            "id": 3824,
-            "name": "pöff 2020 closing.jpg",
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
             "alternativeText": "",
             "caption": "",
             "width": 2047,
@@ -121,68 +51,32 @@
             "formats": {
               "thumbnail": {
                 "ext": ".jpg",
-                "url": "/uploads/thumbnail_poeff_2020_closing_67c6f50678.jpg",
-                "hash": "thumbnail_poeff_2020_closing_67c6f50678",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
                 "mime": "image/jpeg",
-                "name": "thumbnail_pöff 2020 closing.jpg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
                 "path": null,
-                "size": 9.08,
+                "size": 12.24,
                 "width": 234,
                 "height": 156
               }
             },
-            "hash": "poeff_2020_closing_67c6f50678",
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
             "ext": ".jpg",
             "mime": "image/jpeg",
-            "size": 745.86,
-            "url": "/uploads/poeff_2020_closing_67c6f50678.jpg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
-            "created_at": "2020-12-15T16:35:25.159Z",
-            "updated_at": "2020-12-15T16:35:25.779Z"
->>>>>>> parent of b1922739... delete starpidata .json files
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
           }
         ],
         "image_et": [
           {
-<<<<<<< HEAD
-            "id": 3819,
-            "name": "F_1_caged_birds_ee28a1e9ad.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 1920,
-            "height": 1080,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_F_1_caged_birds_ee28a1e9ad_8817cddd70.jpg",
-                "hash": "thumbnail_F_1_caged_birds_ee28a1e9ad_8817cddd70",
-                "mime": "image/jpeg",
-                "name": "thumbnail_F_1_caged_birds_ee28a1e9ad.jpg",
-                "path": null,
-                "size": 5.31,
-                "width": 245,
-                "height": 138
-              }
-            },
-            "hash": "F_1_caged_birds_ee28a1e9ad_8817cddd70",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 159.2,
-            "url": "/uploads/F_1_caged_birds_ee28a1e9ad_8817cddd70.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 9,
-            "updated_by": 9,
-            "created_at": "2020-11-30T13:05:17.287Z",
-            "updated_at": "2020-11-30T13:05:17.539Z"
-=======
-            "id": 3824,
-            "name": "pöff 2020 closing.jpg",
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
             "alternativeText": "",
             "caption": "",
             "width": 2047,
@@ -190,218 +84,32 @@
             "formats": {
               "thumbnail": {
                 "ext": ".jpg",
-                "url": "/uploads/thumbnail_poeff_2020_closing_67c6f50678.jpg",
-                "hash": "thumbnail_poeff_2020_closing_67c6f50678",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
                 "mime": "image/jpeg",
-                "name": "thumbnail_pöff 2020 closing.jpg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
                 "path": null,
-                "size": 9.08,
+                "size": 12.24,
                 "width": 234,
                 "height": 156
               }
             },
-            "hash": "poeff_2020_closing_67c6f50678",
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
             "ext": ".jpg",
             "mime": "image/jpeg",
-            "size": 745.86,
-            "url": "/uploads/poeff_2020_closing_67c6f50678.jpg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
-            "created_at": "2020-12-15T16:35:25.159Z",
-            "updated_at": "2020-12-15T16:35:25.779Z"
->>>>>>> parent of b1922739... delete starpidata .json files
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
           }
         ],
-        "image_en": [],
-        "image_ru": []
-      },
-      "button": [],
-      "article_types": [
-        {
-          "id": 2,
-          "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
-          "created_at": "2020-08-18T13:49:51.616Z",
-          "updated_at": "2020-09-21T10:57:52.599Z",
-          "article": null,
-          "et": "Uudised",
-          "en": "News",
-          "ru": "Новости",
-          "slug_et": "uudis",
-          "slug_en": "news",
-          "slug_ru": "novost",
-          "name_et": "Uudis",
-          "name_en": "News",
-          "name_ru": "Новость",
-          "label_et": "Uudis",
-          "label_en": "News",
-          "label_ru": "Новость",
-          "Description": null
-        }
-      ],
-      "tag_premiere_types": [],
-      "programmes": [],
-      "tag_genres": [],
-      "tag_keywords": [],
-<<<<<<< HEAD
-      "web_authors": [
-        {
-          "id": 2,
-          "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
-          "created_at": "2020-09-02T11:28:23.386Z",
-          "updated_at": "2020-09-02T11:28:23.428Z",
-          "name": {
-            "id": 3852,
-            "et": "Päevatoimetaja",
-            "en": "Editor",
-            "ru": "Editor"
-          }
-        }
-      ],
-      "organisations": []
-    },
-    "article_en": {
-      "id": 246,
-      "created_by": {
-        "id": 23,
-        "firstname": "Anna",
-        "lastname": "Lillioja",
-        "username": null
-      },
-      "updated_by": {
-        "id": 23,
-        "firstname": "Anna",
-        "lastname": "Lillioja",
-        "username": null
-      },
-      "created_at": "2020-11-27T14:22:27.450Z",
-      "updated_at": "2020-11-28T09:02:50.777Z",
-      "title_et": null,
-      "slug_et": "pof-fi-article-45",
-      "title_en": "These are the winners of the 24th edition of Tallinn Black Nights Film Festival! ",
-      "slug_en": "these-are-the-winners-of-the-24th-edition-of-tallinn-black-nights-film-festival",
-      "title_ru": null,
-      "slug_ru": "pof-fi-article-171",
-      "lead_et": null,
-      "lead_ru": null,
-      "lead_en": "This year, a record amount of films were shown in and out of competition at the festival. Tonight we celebrated the (almost) end of a successful hybrid festival at Vene Theatre in anticipation of the jury verdict. Now, we are very happy to announce this year’s winners!\n",
-      "contents_et": null,
-      "contents_en": "A special, unprecedented hybrid edition of Tallinn Black Nights Film Festival has come to a festive end at tonight’s Award Ceremony at the glorious Vene Theatre. Although we are sad that not all of this year’s filmmakers could travel to Tallinn, the joy and honour to have shown their films to live and online audiences are ever so big.  \n\nThis year, a record amount of films were shown in and out of competition at the festival. In the [Official Selection - Competition](https://poff.ee/en/official-selection/) 26 films competed for the award, 18 filmmakers honoured us with the screening of their first feature in the [First Feature Competition](https://poff.ee/en/first-feature-competition/), 14 films were showcased as the best of the Baltics in the [Baltic Competition](https://poff.ee/en/baltic-film-competition/) and 15 [Rebels with a Cause](https://poff.ee/en/rebels-with-a-cause/) shook up our world views and prejudices. [PÖFF Shorts](https://shorts.poff.ee/en/) and [Just Film](https://justfilm.ee/en) showed this year's best shorts and youth- and children's films.  \n\nThe films were viewed by [seven juries](https://poff.ee/en/poff_jurys/), who had the task to watch up to 26 films in just a few weeks, discuss, persuade, let their opinions be changed, open their minds, think of opportunities and futures for filmmakers -  all from their own homes, instead of the usual communal cinema visits, dinners and get-togethers in Tallinn. \n\nTonight, the fruits of these efforts were made official. And, we are very happy to announce this year’s winners!\n\nSee the full list of this year’s winners and comments from the juries:\n\n## Official Selection - Competition\n\n### Grand Prix for the Best Film\nGrant of 10,000 Euros, shared by the Director and Producer\n\n#### Winner: ‘Fear’ by director Ivaylo Hristov, producer Assen Vladimirov\n![F_1_fear.jpg](http://139.59.130.149/uploads/F_1_fear_c4db9507ba.jpg)\n\n*Svetla is a recently unemployed teacher in a village near the border. When hunting hares in the forest, she encounters an African. As a law-abiding citizen, she sends the illegal immigrant to the border guard station, but is told that she should manage on her own and she takes the man in.*\n \nJury comment: “A beautifully-made film that astutely balances dry humor with important contemporary drama, this clever, impressively scripted and wonderfully performed feature manages the rare feat of being compassionate and provocative while also delivering striking moments of absurdist humor. At a period when the subject of immigration is very much in the headlines this feature is very much a film for our times.”\n\n### Best Director\nGrant of 5000 Euros\n \n#### Nisan Dağ for ‘When I’m Done Dying’\n![F_1_when_i_m_done_dying_1b77ccc68c.jpg](http://139.59.130.149/uploads/F_1_when_i_m_done_dying_1b77ccc68c_ce7760586b.jpg)\n\n*Set in a rough neighbourhood of Istanbul, the story follows Fehmi (Oktay Çubuk), a talented 19-year-old rapper who is addicted to bonzai, a cheap synthetic and deadly drug, jeopardizing any success for his music career.* \n\n\nJury comment: “The vision, passion and personality of the filmmaker shines through in this absorbing, passionate and striking new film that draws out terrific performances from its roster of non-professional actors, and cleverly weaves drama, music and even animation as it delves into the darker underbelly of a social environment rarely seen on the screen.”\n \n\n### Best Cinematography\nGrant of 1000 Euros\n \n#### Noé Bach for ‘Beasts’\n![F_1_beasts_d3cb4b3af2.jpg](http://139.59.130.149/uploads/F_1_beasts_d3cb4b3af2_0b740403be.jpg)\n\n*\"Beasts\" focuses on victims caught in the bureaucratic cogwheels of this agricultural sector, where life is lived to the beat of the activity support handed out by political powers. Where there’s power, there’s fire...*\n \nJury Comment: This striking film presents a clever take on sexual politics set against the backdrop of working class farmers, with its powerful story given a visceral edge as it follows is lead female character thanks to wonderfully framed cinematography that is honest and non-sensationalistic, and also help the story immerse itself into a traditionally masculine pastoral world.\n \n \n### Best Script\n\n#### Leonardo António for 'Submission'\n![F_3_submission.jpg](http://139.59.130.149/uploads/F_3_submission_196131b254.jpg)\n\n*A captivating drama of what happens when a woman files a court case against here own husband for rape. The already difficult situation is further complicated by the fact that the husband is the only son of the deputy to the chief prosecutor.*\n\n\nJury comment: This masterful script has been precisely developed and structured in such a way to never exploit its disturbing storyline and is driven by wonderful balanced performances, real intelligence and dialogue to impressers and captivates. The main story may be around the accusation of a rape in a domestic environment, but it astutely takes different perspectives as it tells a difficult and at times harrowing story.\n \n \n### Best Actor\n \n#### Ulrich Thomsen for ‘Erna At War’\n![F_3_erna_at_war.jpg](http://139.59.130.149/uploads/F_3_erna_at_war_5c88ad8627.jpg)\n\n*Jutland during World War I. Kalle is a childminded boy whose simplicity is so obvious that he would hardly be expected to be invited to enlist in the army. But things go differently. His mother Erna cannot accept it: and decides to follow her son to protect him.*\n \nJury comment: “We wanted to pay tribute to an acting performance that is aware that it’s there to play a balanced yet profoundly dramatic supporting role to an equally fine lead actress, and gives a wonderfully controlled and rich performance that adds massively to a powerful and memorable film.”\n \n\n### Best Actress\n \n#### Marie Leuenberger for ‘Caged Birds’\n![F_1_caged_birds_ee28a1e9ad.jpg](http://139.59.130.149/uploads/F_1_caged_birds_ee28a1e9ad_a8fa9ab446.jpg)\n\n*The story of Walter Stürm, the king of prison-breaks, managing no less than 8 times to flee Swiss prison between 1974 and 1995, while - strangely enough - maintaining a sense of anarchic humor throughout.*\n \nJury comment: “Before presenting the award, the jury wanted to formerly recognise the many beautiful and brilliant female performances in the competition selection this year. If we could have had our way we would have awarded seven or eight best actress awards. But we wanted to shine the spotlight on one truly impressive from a mesmerising actress. Her natural, unshowy performance is driven by emotional energy and a fierce intelligence that is truly impressive.”\n \n \n### Best Music\n \n#### Juanio Javierre for ‘Armugan’\n![F_1_armugan_151ed6c13a.jpg](http://139.59.130.149/uploads/F_1_armugan_151ed6c13a_a56eaeaa1c.jpg)\n\n*Armugan is a Finisher. A man in the mountains, accompanied by the vast sky, the sheep and a personal aide. People are afraid of him, as they sense that he knows something they do not. A Finisher has the skills and knowledge to help the ones who are dying.*\n\nJury comment: This beautiful black-and-white film benefits from a hypnotic score that wonderfully complements the mood and tone of the film, managing to help weave together the poetic and poignant moments of an often mesmerizing feature.\n\n***\n\n## First Feature Competition\nGrant of 5000 Euros, shared by the Director and Producer\n\n#### Winner: ‘Great Happiness’ by director Wang Yiao.\n![F_4_great_happiness_f9ae863453.jpg](http://139.59.130.149/uploads/F_4_great_happiness_f9ae863453_08ddef886b.jpg)\n\n*An insightful, ironic look at the challenges and contradictions that young generations are facing in China. Set in Xining, the capital of Qinghai province on the border with Tibet, this ensemble film follows the ups and downs in the lives of three friends from the generation born at the time of China’s one-child policy.*\n\nJury Report: “For his strong social commentary of modern-day China, where our three couples are caught between old traditions and the new ways. The movie is told in an original, refreshing, cinematic language, where drama and humor are elegantly balanced by the director. And this simple yet complex everyday story ends up being both relevant, honest and very heartbreaking.”\n\n### Special Jury Prize #1\n\n#### Director Jan Holoubek for ‘25 years of innocence. The Case of Tomek Komenda.’\n![F_1_25_years_of_innocence-2.jpg](http://139.59.130.149/uploads/F_1_25_years_of_innocence_2_270e00c4dc.jpg)\n\n*The life of Tomek Komenda was destroyed forever on a tragic night when he was arrested accused of a brutal murder, convicted in court, and thrown into prison for decades. Jan Holoubek’s debut film is a moving thriller drama that is based on this absurdly horrifying true-life story.*\n\nJury comment:  “For an incredible directorial debut film, about the horrors of injustice. With a hunting performance by Piotr Trojan.”\n \n \n### Special Jury Prize #2\n\n#### Scriptwriters Nora Martirosyan, Emmanuelle Pagano, Olivier Torres, Guillaume André for ‘Should The Wind Drop’\n![F_1_should_the_wind_drop.jpg](http://139.59.130.149/uploads/F_1_should_the_wind_drop_79a3119162.jpg)\n\n*Alain, a French auditor, arrives to appraise the airport of Nagorno-Karabakh - a self-proclaimed republic of the Caucasus - and greenlight its eventual reopening. This airport, with no planes or passengers, opens its doors every morning and welcomes the staff mimicking real activity. The airport crystallizes itself, the hope of an entire territory, fighting for international recognition.*\n\nJury comment: “For its wonderful screenplay, that brings out the sadly still relevant story on how fragile world peace really is. We can’t wait to see what comes next from these artists, and everybody else in this category.”   \n\n***\n\n## Baltic Competition\n\n#### Winner: ‘The Last Ones’ by director Veiko Õunpuu, Estonia\n![F_1_the_last_ones.jpg](http://139.59.130.149/uploads/F_1_the_last_ones_0bebc13ad4.jpg)\n\n*‘The Last Ones’ explores how in reality the human nature and fate are a mess of reactions, however heroic the stories we weave out of it. In the Lapland tundra, miners pass their days in the expectation of tomorrow. Always looking for something, without understanding what exactly the soul is yearning for.*\n\nJury Report: “We unanimously agreed on this film for the award. It stood out in all senses: The actors’ ensemble performance was consistent. It was a real team creation, an all-around impressive film, where the team truly lifted it to another level: technically, storytelling-wise, and with its artistic elements. \n\nThe carefully well-thought-through selection of music was cleverly mixed. Conflicts within and between the characters we found to be universal. The beauty of the tundra is captured with masterful cinematography. The struggles within that vast, desolate territory between tradition and progress challenge the meaning of “belonging” and depict the general loneliness all our characters are living in. A modern-day Northern Western.”\n\n***\n\n## Rebels with a Cause Competition\n\n### Rebels with a Cause award\n \n#### ‘Dinner in America’ by director Adam Carter Rehmeier.\n![F_2_dinner_in_america.jpg](http://139.59.130.149/uploads/F_2_dinner_in_america_569ee3d827.jpg)\n\n*Simon is hiding from the police. A modest but dogged girl offers him a hiding place. But when Patty finds out that the stranger is the singer of her favourite punk band, the random meeting takes on new undertones. After all, she has sent the boy photos you don’t show your parents.*\n\nJury comment: “The first of two Awards for the Rebels with a Cause Competition goes to a wild ride into small-town America, following a couple of misfits whose punk misadventures win the heart and ears of the audience.”\n \n \n***Ex aequo / Shared with***\n\n#### ‘La Veronica’ by director Leonardo Medel.\n![F_1_la_veronica_11361f4038.jpg](http://139.59.130.149/uploads/F_1_la_veronica_11361f4038_7a2485d9d8.jpg)\n\n*When a tragic accident from the near past is uncovered and the tensions keep piling up inside Verónica, she is forced to admit that real life does not conform to social media filters. Or does it?*\n\nJury comment: “The second equal Award in the Rebels with a Cause Competition goes to a thought-provoking portrayal of a complex and dark character that finds a pertinent and daring formal device to plunge the audience in the whirlpool of social media stardom.”\n \n \n### Rebels with Their Shorts Award\n \n#### ‘Stories Keep Me Awake At Night’ by director Jérémy Van Der Haegen\n![F_1_Stories Keep Me Awake At Night.jpg](http://139.59.130.149/uploads/F_1_Stories_Keep_Me_Awake_At_Night_a8c112e825.jpg)\n\n*\"Are you a girl or a boy?\" the psychologist asks the child. The film is the portrait of day-to-day childhood. A village, a family, a little boy who likes to wear dresses, the return of the wolf and everyday life, ordinary, banal. These elements are used to tell of hidden desires.* \n\nJury comment: “The Award for the Rebels with their Shorts Competition goes to a troubling, yet sweet fairytale that shows how sometimes you need to follow the wolf, in order to find the path to accept your true self.”\n \n***\n \n## FIPRESCI Prize\n\n#### ‘Sententia’ by director Dmitry Rudakov.\n![F_1_sententia.jpg](http://139.59.130.149/uploads/F_1_sententia_b74601f1e3.jpg)\n\n*The last days of the life of a writer in a desolate home for the elderly. At every allowed opportunity, he is visited by a literary scholar, a dedicated fan of the poet’s talent, who considers Varlam a genius and wishes to record his very last verse.*\n\nJury Report: “For the formalistic, and yet poetical showing of how art can shine a light, even if not in colour, on the world of resistance and hope.” FIPRESCI Prize\n \n***\n \n## NETPAC (NETWORK FOR THE PROMOTION OF ASIA CINEMA) AWARD\n\n#### Winner: ‘Ulbolsyn’ by director Adilkhan Yerzhanov, Kazachstan.\n![F_1_Ulbolsyn_f02a0403d7.jpg](http://139.59.130.149/uploads/F_1_Ulbolsyn_f02a0403d7_30b9fc1bf0.jpg)\n\n*Life in Karataş village runs along an untroubled path until its patriarchal way of life is challenged by Ulbolsyn, a woman whose coldblooded heart and blazing temperament are not afraid of setting everything on fire.*\n\nJury Report: \"The Netpac Jury at the 24th Tallinn Black Nights Film Festival presents the Best Asian Film award to the film Ulbolsyn by Adilkhan Yerzhanov, for being a vibrant, stylized, playfully innovative—genre-based but also genre-bending drama; a subtle ‘women’s’ film with a fresh but sincere take on traditional life in a Kazakh village full of humane humans.\"\n\n \n***\n \n## ECUMENICAL AWARD\n \n#### ‘Armugan’ by Jo Sol.\n![F_1_armugan_151ed6c13a.jpg](http://139.59.130.149/uploads/F_1_armugan_151ed6c13a_37cd4e9848.jpg)\n\n*Armugan is a Finisher. A man in the mountains, accompanied by the vast sky, the sheep and a personal aide. People are afraid of him, as they sense that he knows something they do not. A Finisher has the skills and knowledge to help the ones who are dying.*\n \nJury comment: \"The crisp figurative language of Jo Sol’s “Armugan” pierces the flesh like a stake, creating, through the means of cinema, a suggestive sensory equivalent to the unity of the soul, spirit and body. The film confirms that the body is not weak when the spirit is strong and that the spirit can be strengthened through the body. The film reminds us that the talk about death should not be ideological but demands the remembering of death even in our everyday activities and also the importance of not being alone when dying. The message of the value and sanctity of life rings strong.\"\n \n \n***\n \n## LIFETIME ACHIEVEMENT AWARD #1\n \n#### Margarethe von Trotta (Germany)\n![margereta von trotta.jpg](http://139.59.130.149/uploads/margereta_von_trotta_0c5622e8d5.jpg) \n\n\n##  LIFETIME ACHIEVEMENT AWARD #2\n \n#### Alar Kivilo (Canada-Estonia)\n![Alari Kivilo - credit Rick Thomas.jpg](http://139.59.130.149/uploads/Alari_Kivilo_credit_Rick_Thomas_1ed693281a.jpg)\n \n***\n \n## DDA SPOTLIGHT AWARD\n \n#### Francis Annan (UK)\n\n \n## DDA SPOTLIGHT AWARD\n\n#### Armando Iannucci (UK)\n \n \n***\n \n## INTERNATIONAL SHORT FILM AND ANIMATION FESTIVAL PÖFF SHORTS\n \n### BEST SHORT ANIMATION / Academy of Motion Picture Arts and Sciences nomination candidate\n\n**‘Precious’**\nDirector: Paul Mas\nFrance.\n \nJury comment: \"This film uses the artifice of animation in order to get painfully close to very real topics. The jury loved the simple style and precise storytelling which tackles complicated subjects that stay with the audience even after the credits roll.”\n \n \n### PÖFF SHORTS NATIONAL COMPETITION: BEST SHORT FILM\n\n**‘Struck by Lightning’**\nDirector: Romet Esko\nEstonia.\n \nJury comment: \"A beautifully crafted homage that mixes personal archive with a playful approach to its medium, making for a haunting and memorable film you will want to rewatch over and over again. This film tells a deeply personal, delicate yet dynamic story about friendship, conveying a message that is equally authentic as it is universal. “Struck by Lightning” is a cinematic celebration of life and creativity that feels ever so timely and needed.\"\n\n\n### BEST LIVE ACTION SHORT / Academy of Motion Picture Arts and Sciences nomination candidate\n\n**'Between You and Milagros'**\nDirector: Mariana Saffon,\nColombia. \n\n\nJury comment: “The jury was impressed by the film’s subtle exploration of the complex dynamic between daughter and mother, its stunning central performance and its gorgeous cinematography. The director also displays a remarkable level of craft, care and confidence as she gradually reveals the many layers that exist in all of the characters’ relationships.\"\n \nFind full list of PÖFF Shorts winners [here](http://shorts.poff.ee/en/about/p-oe-ff-shorts/)\n \n***\n \n## YOUTH AND CHILDREN’S FILM FESTIVAL JUST FILM\n \n \n## Just Film grand prix\n \n**‘Slalom’**\nDirector: Charlène Favier\nFrance.\n \nJury comment: “The Jury enjoyed watching all the films and appreciated that the films tackled important and topical issues. We saw many stories about grownups behaving irresponsibly and children having to act responsibly. In many of the films the question arises - who here actually is a child and who is a grownup? And what happens when a grownup with irresponsible behaviour puts a burden on the shoulders of the one person that trusts it the most? There was one film in particular that stood out for us for its incredibly authentic portrayal of a complicated situation. Told from a teenage perspective without alienating or demonising other characters in the film, it was brave enough to tackle issues of abuse and neglect in a very realistic way. A powerful film with very honest performances. We’re very pleased to present Just Film 2020 grand prix for Best Youth Film to SLALOM.”\n\n \n \n## ECFA Award for the best European children’s film\n \n**‘Glassboy’**\nDirector: Samuele Rossi\nItaly. \n \nJury comment: “Of all the wonderful journeys we were taken on, one stood out for its exceptionally well-acted story of overcoming isolation, and translating one individual’s feeling of ‘otherness’ to become accepted into a group of close friends. Despite a well-meaning but overprotective family, our central character is empowered to take control of their own path through life, and gradually his family learn to adapt together with him. For its rich characterisations in a beautifully designed world, and an engaging and well-written storyline featuring friendship, courage and freedom – the ECFA Award goes to GLASSBOY.”\n  \n \n## Just Film Children’s Jury Best Film Award\n \n**‘The Fantastic Journey of Margot & Marguerite’**\nDirector: Pierre Coré\nFrance.\n \nJury comment: “There were a lot of exciting films and each one of them was interesting and educative. Finally we came to a decision and the winning film was selected because of its fascinating story and strong acting. One girl performed two parts and she did them wonderfully! The film was about managing new situations and doing it playfully. Just Film Children’s Jury Best Film Award goes to “The Fantastic Journey of Margot & Marguerite” - a crazy story of how two girls unexpectedly travel in time and cope in the new era.”\n\n\n \n## Just Film Youth Jury Best Film Award\n \n**‘50 or Two Whales Meet on the Beach’**\nDirector: Jorge Cuchi\nMexico.\n \nJury comment: “This years Just Film Youth Jury Best Film Award is presented, after long and heated discussions, to a film that sparked intrigue days before its screening. It is a film where bold theme of topic meets with fresh cinematography, well-written characters, professional acting and unique montage. The film met our high expectations and we hope it will be screened in many more cinemas. Just Film Youth Jury Best Film Award goes to  \"50 or Two Whales Meet on the Beach”.\"\n\n \n\n***\n\n\n\n\n\n\n\n\n",
-      "contents_ru": null,
-      "publishFrom": null,
-      "publishUntil": null,
-      "publish_et": null,
-      "publish_en": true,
-      "publish_ru": null,
-      "media": {
-        "id": 381,
-=======
-      "web_authors": [],
-      "organisations": []
-    },
-    "article_en": {
-      "id": 257,
-      "created_by": {
-        "id": 11,
-        "firstname": "Hannes",
-        "lastname": "Aava",
-        "username": "Hannes Aava"
-      },
-      "updated_by": {
-        "id": 18,
-        "firstname": "Jaana",
-        "lastname": "Kalinistova",
-        "username": null
-      },
-      "created_at": "2020-12-15T16:35:56.751Z",
-      "updated_at": "2020-12-16T08:52:53.892Z",
-      "title_et": "PÖFF kogus esimest korda üle 100 000 külastuse",
-      "slug_et": "p-oe-ff-kogus-esimest-korda-uele-100-000-kuelastuse",
-      "title_en": "Tallinn Black Nights Film Festival sets new attendance record with a boost from online industry events",
-      "slug_en": "tallinn-black-nights-film-festival-sets-new-attendance-record-with-a-boost-from-online-industry-events",
-      "title_ru": "Впервые PÖFF посетило более 100 000 человек",
-      "slug_ru": "pof-fi-article-180",
-      "lead_et": "**Tänavune Pimedate Ööde filmifestival ületas esimest korda ajaloos 100 000 külastuse piiri.**",
-      "lead_ru": "**В этом году посещаемость кинофестиваля «Тёмные ночи» превысила отметку в 100 000 человек.**",
-      "lead_en": "**The festival estimates that 101 833 physical and virtual attendances took place setting a record for the industry events which saw over 35 000 virtual attendances, resulting from a record of 1600 accredited professionals.**",
-      "contents_et": "Koroonaviiruse tõttu osaliselt veebis toimunud festival kogus 101 883 külastust.\n\nKinokülastusi oli sellest 34 862 ja esimest korda avatud PÖFFi veebikino külastusi 9543. Arvestades, et ühe piletiga vaatab filmi keskmiselt kaks inimest, sai virtuaalsest filmiprogrammist osa üle 19 000 vaataja.\n\nPÖFFi filmitööstusürituse Industry@Tallinn & Baltic Event üritused, mis leidsid tänavu aset ainult veebis, kogusid üle 22 000 külastuse üle terve maailma. Professionaalidele mõeldud veebikinos proscreen.poff.ee vaadati filme lisaks 9800 korral.\n\nPopulaarne oli ka Elisa Stage´i vahendusel vaatajani jõudnud PÖFF TV, kus sai (ja saab siiani) näha festivali ava- ja lõputseremooniat, aga ka filmide autorite intervjuusid ja muid usutlusi – seda külastati rohkem kui 12 000 korda.\n\nFestivalist ilmus üle 6000 artikli 71 riigi väljaannetes, mille potentsiaalne auditoorium oli samuti rekordiline – 9,1 miljardit inimest. Industry@Tallinn & Baltic Eventi meediakajastuse potentsiaalne auditoorium ulatus ligemale 500 miljoni inimeseni.\n\nPÖFFi juhi **Tiina Loki ** sõnul võeti hübriidfestival üle ootuste hästi vastu ja see õigustas ennast ka sisuliselt. „Kaotasime küll rahas, aga võitsime turunduses nii Eestis kui ka väljaspool Eestit. Saime juurde uut publikut ja jõudsime sinna, kuhu varem polnud jõudnud. Usun, et veeb on tulnud, et jääda. Samas ei kao kuhugi ka kinoseansid ja filmitööstuse kohtumisedki toimuvad Tallinnas edasi,” ütles ta.\n\nÜhtlasi tõstis ta esile, et tänu rangetele ohutusmeetmetele ja publiku vastutustundele ei tekkinud kahe ja poole nädala jooksul festivaliga seoses ühtki koroonakollet.\n\n**Veel arve 24. PÖFFi kohta:**\n\n- 172 pikka filmi, 28 lühifilmi ja 13 telesarja põhiprogrammis, 44 pikka filmi Just Filmi programmis ja 303 lühifilmi (neist 132 animatsiooni) PÖFF Shortsi programmis;\n- 33 maailma-, 29 rahvusvahelist ja 9 Euroopa esilinastust;\n- 63 riiki;\n- 645 kinoseanssi;\n- 1600 akrediteeritud külalist;\n- 85 Tallinnas käinud väliskülalist;\n- meediakajastus 71 riigi rohkem kui 6000 artiklis;\n\nFestivali populaarseimad filmid olid „Isa”, „Kolmekesi” ja „Nomaadimaa”, veebikinos „Hüvasti, NSVL”, „Hirm” ja „Võrku püütud”. Publikuauhinda jagasid „Hüvasti, NSVL” ja lühifilm „Välguga löödud”. Festivali grand prix´ pälvis „Hirm”.\n\nPÖFFi esitlesid tänavu Elisa ja Nordic Hotel Forum. Ametlikud partnerid olid Toyota, Reval Cafe, Postimees, Cramo, SYNLAB, Medicum ja Sinu Arst Terviseteenused, sponsorid Solaris, Freixenet, National Geographic, Metropol SPA Hotel, LuxCharter, Europark, Levira, Filmzone ja 3 Step It.\n\nPÖFF tänab kultuuriministeeriumit, Euroopa Regionaalarengu Fondi, Visit Estoniat, EASi, Visit Tallinnat, Tallinna linna, Eesti Kultuurkapitali, Euroopa Komisjoni, Media Europe Loves Cinemat, Eesti Filmi Instituuti, Foto In Motionit ja Keskkonnaagentuuri. Samuti meediapartnereid ERRi, Levirat, Meediust, Cineuropat, Enmedia Public Relationsit, Screen Internationali, Dirty Moviest ja kõiki teisi toetajaid ja sponsoreid.\n\n2019. aastal kogus PÖFF koos filmitööstusüritusega veidi üle 90 000 külastuse.",
-      "contents_en": "As anticipated by the festival’s team, the ticket sales saw a notable drop this year with over 34 000 physical attendances and an estimated 19 000 virtual film viewings*, compared to last year’s 70 000 physical cinema attendances. The festival’s professionals’ film-watching platform had 9779 viewings. \n\nA major shift took place with the virtual event attendances as Industry@Tallinn & Baltic Event had over 800 virtual accreditations – a new record – and made several events available online without accreditation as well, including it’s a most popular event – the European Film Forum. \nThis resulted in over 3000 virtual attendances on the Elisa Stage platform, while the overall virtual attendance, including the virtual opening and closing ceremony transmission and nearly a hundred Q&A’s and interviews made for the PÖFF TV, rose to 35 478.\n\nWith mentions in over 6000 articles in 71 languages detected by the Meltwater media monitoring service, the global potential media audience of the festival of 2020 stands at around 9.1 billion. The festival accredited 161 journalists (68 foreign) and over 26 bloggers, while only 15 foreign journalists were able to attend the events physically this year due to travel restrictions and quarantine requirements.\n \nBlack Nights director **Tiina Lokk** commented: „It was a most difficult year and edition that will be remembered for a long time! What we suffered in loss of revenue, we made up in terms of global visibility – reaching completely new people this year thanks to going virtual. I believe that online is here to stay, though it will not beat the experience of physical attendance which will still very much remain our focus in the future!“\n\nIndustry@Tallinn & Baltic Event director **Marge Liiske** commented: “Having organised a record attendance numbers' virtual industry event over five consecutive days in three parallel broadcasting channels, project presentations and meetings, showed us the potential of online in the future. We also feel really grateful for the industry professionals having such a strong sense of community and a powerful will of collaboration. I hope to meet and thank you all in person in 2021!”\n\n**Facts**\n•\t101 833 attendances\n•\tOver 34 000 physical attendances\n•\tOver 35 000 virtual industry attendances\n•\t646 physical screenings\n•\tNumber of films at Tallinn Black Nights Film Festival: 172 feature-length, 15 short films, 13 series.\n•\tNumber of films at Youth and children’s film festival Just Film: 42 feature-length films\n•\tNumber of films at PÖFF Shorts: 171 short films and 132 animations\n•\tPremieres at Tallinn Black Nights: 35 world, 30 international, 9 European\n•\tPremieres at Just Film: 3 world, 2 international, 1 European\n•\t1600 accredited professionals, guests, press\n•\tOver 160 accredited journalists, out of which 66 were foreign, 15 foreign journalists attended physically.\n•\tPhysically attending guests: foreign 85, Estonian 125\n•\tBudget 1.7 million euros\n\n",
-      "contents_ru": "Фестиваль, который из-за коронавируса частично прошел в онлайн-среде, собрал 101 883 посещения, в том числе 34 862 человека посетили сеансы в кинотеатрах, и в 9543 случаях были приобретены билеты на онлайн-показы. С учетом того, что по одному билету, приобретенный на виртуальный сеанс, фильм смотрят в среднем два человека, общее количество посетителей онлайн-кинотеатра составило порядка 19 000 человек.\n\nМероприятия Industry@Tallinn & Baltic Event для профессионалов киноиндустрии, которые в этом году проходили только онлайн, собрали более 22 000 посетителей со всего мира. Кинопоказы, проводимые в виртуальной среде для профессионалов киноиндустрии proscreen.poff.ee, посмотрели еще 9800 раз. \n\nПопулярностью пользовалось и PÖFF TV на платформе Elisa Stage, где по-прежнему можно посмотреть церемонии открытия и закрытия фестиваля, а также интервью с создателями фильмов и другие беседы. Этот канал посетили более 12 000 раз.\n\nО фестивале было опубликовано более 6000 статей в изданиях 71 страны, потенциальная аудитория которых составила 9,1 млрд человек. Для фестиваля это тоже рекордный показатель. Потенциальная аудитория публикаций об Industry @ Tallinn & Baltic Event достигла почти 500 млн человек.\n\nПо словам директора PÖFF Тийны Локк, фестиваль в гибридном формате был хорошо принят и по сути себя оправдал. «Мы потеряли финансово, но выиграли как в маркетинге по Эстонии, так и за рубежом. Мы привлекли новую публику и достигли тех регионов, куда обычно попасть не могли. Я верю, что онлайн-среда появилась у нас, чтобы остаться. Никуда не денутся и физические киносеансы, и реальные встречи для профессионалов киноиндустрии», – сказала она.\n\nОна также отметила, что благодаря строгим мерам безопасности и ответственности посетителей за две с половиной недели фестиваля не возникло ни одного очага распространения коронавируса.\n\n**И еще немного статистики 24-го PÖFF:**\n\n- 172 полнометражные картины, 28 короткометражек и 13 телесериалов в основной программе, 44 полнометражных фильма в программе Just Film и 303 короткометражных (из них 132 анимационных) в программе PÖFF Short;\n- 33 мировые, 29 международных и 9 европейских премьер;\n- 63 страны;\n- 645 киносеансов;\n- 1600 аккредитованных гостей;\n- в Таллинн прибыли 85 иностранных гостей;\n- 125 гостей из Эстонии;\n- более 6000 статей в СМИ 71 страны.\n\nСамыми популярными фильмами фестиваля стали «Отец», «Трое» и «Земля кочевников», а в онлайн-кинотеатре чаще всего смотрели «Прощай, СССР», «Страх» и «В сетях». Приз зрительских симпатий поделили «Прощай, СССР» и короткометражный фильм «Удар молнии». Гран-при фестиваля была удостоена кинокартина «Страх».\n\nГлавными спонсорами PÖFF в этом году стали Elisa и Nordic Hotel Forum. Официальными партнерами выступили Toyota, Reval Cafe, Postimees, Cramo, SYNLAB, Medicum и Sinu Arst Terviseteenused, и спонсорами стали Solaris, Freixenet, National Geographic, Metropol SPA Hotel, LuxCharter, Europark, Levira, Filmzone и 3 Step It.\n\nPÖFF благодарит Министерство культуры, Европейский фонд регионального развития, Visit Estonia, Enterprise Estonia, Visit Tallinn, город Таллинн, фонд «Капитал культуры Эстонии», Европейскую комиссию, Media Europe Loves Cinema, Эстонский институт кино, Foto In Motion и Агентство окружающей среды. Фестиваль также благодарит медиа-партнеров ERR, Levira, Media, Cineuropa, Enmedia Public Relations, Screen International, Dirty Movies и всех других спонсоров и партнеров.\n\nВ 2019 году PÖFF вместе с кинофорумом посетили более 90 000 раз.\n\n25-й кинофестиваль «Тёмные ночи» пройдет с 12 по 28 ноября 2021 года.",
-      "publishFrom": null,
-      "publishUntil": null,
-      "publish_et": true,
-      "publish_en": true,
-      "publish_ru": true,
-      "media": {
-        "id": 398,
->>>>>>> parent of b1922739... delete starpidata .json files
-        "clipUrlDefault": null,
-        "clipUrl_et": null,
-        "clipUrl_en": null,
-        "clipUrl_ru": null,
-        "imageDefault": [
-          {
-<<<<<<< HEAD
-            "id": 3793,
-            "name": "Awards.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 1920,
-            "height": 1080,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_Awards_54f311eef3.jpg",
-                "hash": "thumbnail_Awards_54f311eef3",
-                "mime": "image/jpeg",
-                "name": "thumbnail_Awards.jpg",
-                "path": null,
-                "size": 8.05,
-                "width": 245,
-                "height": 138
-              }
-            },
-            "hash": "Awards_54f311eef3",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 325.69,
-            "url": "/uploads/Awards_54f311eef3.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 23,
-            "updated_by": 23,
-            "created_at": "2020-11-27T14:51:26.696Z",
-            "updated_at": "2020-11-27T14:51:26.930Z"
-          }
-        ],
-        "image_et": [],
         "image_en": [
           {
-            "id": 3807,
-            "name": "50654740641_f15ffe8ab3_k.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 2048,
-            "height": 1366,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_50654740641_f15ffe8ab3_k_4f9134647f.jpg",
-                "hash": "thumbnail_50654740641_f15ffe8ab3_k_4f9134647f",
-                "mime": "image/jpeg",
-                "name": "thumbnail_50654740641_f15ffe8ab3_k.jpg",
-                "path": null,
-                "size": 10.89,
-=======
-            "id": 3824,
-            "name": "pöff 2020 closing.jpg",
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
             "alternativeText": "",
             "caption": "",
             "width": 2047,
@@ -409,84 +117,28 @@
             "formats": {
               "thumbnail": {
                 "ext": ".jpg",
-                "url": "/uploads/thumbnail_poeff_2020_closing_67c6f50678.jpg",
-                "hash": "thumbnail_poeff_2020_closing_67c6f50678",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
                 "mime": "image/jpeg",
-                "name": "thumbnail_pöff 2020 closing.jpg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
                 "path": null,
-                "size": 9.08,
+                "size": 12.24,
                 "width": 234,
                 "height": 156
               }
             },
-            "hash": "poeff_2020_closing_67c6f50678",
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
             "ext": ".jpg",
             "mime": "image/jpeg",
-            "size": 745.86,
-            "url": "/uploads/poeff_2020_closing_67c6f50678.jpg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
-            "created_at": "2020-12-15T16:35:25.159Z",
-            "updated_at": "2020-12-15T16:35:25.779Z"
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
           }
         ],
-        "image_et": [
-          {
-            "id": 3824,
-            "name": "pöff 2020 closing.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 2047,
-            "height": 1365,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_poeff_2020_closing_67c6f50678.jpg",
-                "hash": "thumbnail_poeff_2020_closing_67c6f50678",
-                "mime": "image/jpeg",
-                "name": "thumbnail_pöff 2020 closing.jpg",
-                "path": null,
-                "size": 9.08,
->>>>>>> parent of b1922739... delete starpidata .json files
-                "width": 234,
-                "height": 156
-              }
-            },
-<<<<<<< HEAD
-            "hash": "50654740641_f15ffe8ab3_k_4f9134647f",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 517.25,
-            "url": "/uploads/50654740641_f15ffe8ab3_k_4f9134647f.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 23,
-            "updated_by": 23,
-            "created_at": "2020-11-28T09:02:31.126Z",
-            "updated_at": "2020-11-28T09:02:31.349Z"
-          }
-        ],
-=======
-            "hash": "poeff_2020_closing_67c6f50678",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 745.86,
-            "url": "/uploads/poeff_2020_closing_67c6f50678.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
-            "created_at": "2020-12-15T16:35:25.159Z",
-            "updated_at": "2020-12-15T16:35:25.779Z"
-          }
-        ],
-        "image_en": [],
->>>>>>> parent of b1922739... delete starpidata .json files
         "image_ru": []
       },
       "button": [],
@@ -494,8 +146,6 @@
         {
           "id": 2,
           "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-08-18T13:49:51.616Z",
           "updated_at": "2020-09-21T10:57:52.599Z",
           "article": null,
@@ -518,62 +168,203 @@
       "programmes": [],
       "tag_genres": [],
       "tag_keywords": [],
-<<<<<<< HEAD
       "web_authors": [
         {
-          "id": 2,
-          "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
-          "created_at": "2020-09-02T11:28:23.386Z",
-          "updated_at": "2020-09-02T11:28:23.428Z",
+          "id": 1,
+          "namePrivate": "Pöffihunt",
+          "created_at": "2020-09-02T11:27:48.489Z",
+          "updated_at": "2020-09-02T11:27:48.544Z",
           "name": {
-            "id": 3852,
-            "et": "Päevatoimetaja",
-            "en": "Editor",
-            "ru": "Editor"
+            "id": 3851,
+            "et": "Pöffihunt",
+            "en": "Wolf",
+            "ru": "Волк"
           }
         }
       ],
       "organisations": []
     },
-    "article_ru": {
-      "id": 247,
+    "article_en": {
+      "id": 258,
       "created_by": {
-        "id": 9,
-        "firstname": "Elise",
-        "lastname": "Eimre",
+        "id": 15,
+        "firstname": "Epp",
+        "lastname": "Kõuhkna",
         "username": null
       },
       "updated_by": {
-        "id": 9,
-        "firstname": "Elise",
-        "lastname": "Eimre",
+        "id": 15,
+        "firstname": "Epp",
+        "lastname": "Kõuhkna",
         "username": null
       },
-      "created_at": "2020-11-27T16:00:03.045Z",
-      "updated_at": "2020-11-28T07:04:30.873Z",
-      "title_et": "24. PÖFFi võidufilmid on välja kuulutatud!",
-      "slug_et": "24-p-oe-f-fi-voidufilmid-on-vaelja-kuulutatud",
-      "title_en": null,
-      "slug_en": "pof-fi-article-98",
-      "title_ru": "Объявлены победители PÖFF – 2020",
-      "slug_ru": "pof-fi-article-172",
-      "lead_et": "24. PÖFFi filmid on vallutanud publiku südamed. Nüüd on käes aeg vaadata, millised neist valis parimatena välja ka PÖFFi rahvusvaheline žürii.",
-      "lead_ru": "27 ноября на церемонии награждения, прошедшей в Русском театре Эстонии, XXIV Таллиннский кинофестиваль «Темные ночи» вручил премии лауреатам в четырех конкурсных программах, а также победителям в конкурсных программах фестиваля молодежных и детских фильмов Just Film и фестиваля короткометражных и анимационных фильмов PÖFF Shorts.",
-      "lead_en": null,
-      "contents_et": "Pimedate Ööde filmifestivali peaauhinna sai Bulgaaria režissööri Ivaylo Hristovi film „Hirm”, mis kujutab humoorikalt kohalikku küla haaravat hirmu, kui sinna ilmub mustanahaline pagulane.\n\nBulgaaria-Türgi piiri ääres elav naine satub metsas illegaalselt piiri ületanud Aafrika migrandi peale. Ta pakub mustanahalisele mehele peavarju. Paraku tekitab võõra tulek teistes elanikes hirmu, keerates külakese elu pea peale.\n\n„Tõeliselt kaunis film, mis käsitleb tõsist ja olulist teemat nutikalt kuiva huumorit kasutades. Tark, muljetavaldavalt kirjutatud ja suurepäraste osatäitmistega linateos suudab haruldasel moel olla ühtaegu empaatiline ja samas provotseeriv, pakkudes samas ka rabavat absurdihuumorit. Ajal, mil rändeteemad kõikjal kirgi kütavad, mõjub see film eriti asjakohaselt,” resümeeris žürii, mille tööd juhtis Briti filmikriitik Mark Adams.\n\nPeaauhinnaga kaasneb 10 000 eurot, mille pani välja Tallinna linn.\n\nRežissööri Ivaylo Hristovi mustvalgele filmile on see juba teine tunnustus lühikese aja jooksul, sest oktoobris võitis „Hirm” peaauhinna ka Varnas toimunud Bulgaaria filmide festivalil Kuldne Roos. Tallinnas sai filmi näha esimest korda väljaspool Bulgaariat.\n\nVõidufilm linastub suurel ekraanil veel pühapäeval kell 19.15 kinos Coca-Cola Plaza. PÖFFi veebikinos saab seda vaadata kuni 6. detsembrini.\n\nParima režissööri auhind läks türklanna Nisan Dağile filmi „Veel üks hingetõmme” eest. Selles armub Istanbuli äärelinnas elav 19-aastane narkomaanist räppar Fehmi 25-aastasesse Devinisse, kes pärineb hoopis teisest keskkonnast. Kaks kadunud hinge inspireerivad teineteist, ent peagi kerkivad selle ebavõrdse suhte kohale varjupilved.\n\nParima meesnäitleja auhinna sai taanlane Ulrich Thomsen, kes mängib Henrik Ruben Genzi filmis „Erna on sõjas” veltveebel Meierit, kes aitab Ernat, kui too maskeerub meheks, et järgneda oma pojale esimese maailmasõja keerisesse. Film on osaliselt üles võetud Eestis. Parimaks naisnäitlejaks nimetas žürii sakslanna Marie Leuenbergeri, kes kehastab šveitslase Oliver Rihsi filmis „Puurilinnud” idealistlikku advokaati Barbara Hugi, kes tahab kasutada ära legendaarse kurjategija, vanglast põgenemise meistri Walter Stürmi populaarsust, et reformida Šveitsi ajast ja arust karistusseadustikku.\n\nKokku osales põhivõistlusprogrammis 26 filmi.\n\nParima debüütfilmi auhinna võitis 30-aastase hiinlase Wang Yiao „Ülim õnn”. Selles seisavad Hiina ühe lapse poliitika ajal sündinud kolm sõpra silmitsi proovikividega, mille veeretab nende teele moodne materialistlik ühiskond. „See lihtne, kuid samas keeruline igapäevalugu on ühtaegu aktuaalne, aus ja südantlõhestav,” resümeeris žürii.\n\nParima Balti filmi auhind jäi Eestisse, võitjaks kuulutas žürii Veiko Õunpuu „Viimased”. „Olime selle auhinna saaja osas täielikult üksmeelel,” ütles žüriiliige, Luksemburgi produtsent Paul Thiltges.\n\nPimedate Ööde filmifestivali lõputseremoonia leidis aset Vene Teatris. Kuigi võitjad on selgunud, jätkub festival veel laupäeval ja pühapäeval. PÖFFi veebikino, kus saab vaadata enamikku auhinnafilmidest, jätkab tegevust kuni 6. detsembini.\n\nAvasta sel nädalavahetusel kinodes linastuvaid võidufilme [siit](https://poff.ee/uudis/veel-jouad-p-oe-f-fi-voidufilmide-kinoseansid-sel-naedalavahetusel/).\n \n\n**PÕHIVÕISTLUSPROGRAMM**\n\nŽürii: Mark Adams (Suurbritannia), Mostofa Sarwar Farooki (Bangladesh), Izabela Kiszka-Hoflik (Poola), Ester Kuntu (Eesti), Dante Spinotti (Itaalia-USA)\n\n**Parima filmi grand prix**\n\n[„Hirm”](https://poff.ee/film/hirm/)\n\nBulgaaria-Prantsusmaa, režissöör Ivaylo Hristov \n\nŽürii põhjendus: „Tõeliselt kaunis film, kus kombineeritakse kuiva huumorit tänapäeva draamaga. Muljetavaldav stsenaarium ja suurepärased näitlejatööd; linateos, mis suudab haruldasel moel olla ühtaegu empaatiline ja samas provotseeriv, tuues sisse ka absurdihuumori elemente. Ajal, mil rändeteemad kõikjal kirgi kütavad, mõjub see film eriti asjakohaselt.”\n\n**Parim režissöör**\n\nNisan Dağ\n\n[„Veel üks hingetõmme”](https://poff.ee/film/veel-ueks-hingetomme/), Türgi-USA\n\nŽürii põhjendus: „Režissööri visioon, pühendumus ja isikupära kumavad läbi sellest kaasahaaravast, kirglikust ja vapustavast uuest filmist, mille üheks tugevaks küljeks on kindlasti amatöörnäitlejate kasutamine ning kus põimitakse nutikalt draamat muusika ja isegi animatsiooniga, süüvides sotsiaalse keskkonna tumedamatesse telgitagustesse.”\n\n**Parim operaatoritöö**\n\nNoé Bach\n\n[„Elajad”](https://poff.ee/film/elajad/), Prantsusmaa\n\nŽürii põhjendus: „See omapärane film vaatleb põneva nurga alt seksuaalpoliitikat töölisklassi talunike taustal. Võimas lugu saab naispeaosatäitjat jälgides sügava mõõtme, imeliselt kaunis operaatoritöö on aus ja sensatsioonivaba ning aitab sulandada lugu traditsiooniliselt maskuliinsesse külakeskkonda. \n\n**Parim stsenaarium**\n\nLeonardo António\n\n[„Sõna sõna vastu”](https://poff.ee/film/sona-sona-vastu/), Portugal\n\nŽürii põhjendus: „See meisterlik stsenaarium on ülima põhjalikkusega välja arendatud ja struktureeritud, hoidudes liigselt ekspluateerimast probleemset süžeeliini. Stsenaariumit täiustavad hästi tasakaalustatud näitlejatööd ja intelligentne dialoog, mis avaldab muljet ja haarab kaasa. Ehkki loo keskmes on koduses keskkonnas tekkinud vägistamissüüdistus, vaadeldakse selle raske ja kohati põrgulikult piinarikka teema käsitlemisel ka mitmeid teisi perspektiive.”\n\n**Parim meesnäitleja**\n\nUlrich Thomsen\n\n[„Erna on sõjas”](https://poff.ee/film/erna-on-sojas/), Taani-Eesti-Belgia\n\nŽürii põhjendus: „Soovime teha sügava kummarduse näitlejatööle, mille puhul teadvustatakse, kui raske on esitada ülimalt tugeva naispeaosatäitja kõrval tasakaalustatud, kuid ülimalt dramaatilist kõrvalrolli. Imeliselt viimistletud ja meisterlik osatäitmine, mis annab võimsale ja meeldejäävale filmile tohutu lisaväärtuse.”\n\n**Parim naisnäitleja**\n\nMarie Leuenberger\n\n[„Puurilinnud”](https://poff.ee/film/puurilinnud/), Šveits-Saksamaa\n\nŽürii põhjendus: „Enne auhinna kätteandmist tahab žürii tunnustada mitmeid suurepäraseid ja geniaalseid naisosatäitmisi tänavuses võistlusprogrammis. Kui võimalik, oleksime tahtnud auhinna anda seitsmele-kaheksale parimale naisnäitlejale. Kuid laseme rambivalguses särada ühel tõeliselt lummaval näitlejannal, kelle loomulik ja tagasihoidlik osatäitmine on laetud emotsionaalsest energiast ja muljetavaldavalt pöörasest intelligentsist.”\n\n**Parim muusika**\n\nJuanjo Javierre\n\n[„Armugán”](https://poff.ee/film/armugan/), Hispaania\n\nŽürii põhjendus: „See imekaunis mustvalge linateos võidab palju tänu hüpnootilisele helitaustale, mis annab ideaalselt edasi filmi meeleolu ja tonaalsust, suutes sel moel põimida kokku lummava taiese poeetilised ja teravad momendid.”\n\n**DEBÜÜTFILMIDE VÕISTLUSPROGRAMM**\n\nŽürii: Elfar Adalsteins (Island), Juris Kursietis (Läti), Diana Mikita (Eesti), Rene van Pannevis (Holland-Suurbritannia), Ulrich Thomsen (Taani)\n\n**Parim film**\n\n[„Ülim õnn”](https://poff.ee/film/uelim-onn/)\n\nHiina, režissöör Wang Yiao \n\nŽürii põhjendus: „Tugeva sotsiaalse pilguheidu eest tänapäeva Hiinale, kus kolm paari on takerdunud vanade traditsioonide ja uute tavade vahele. Lugu jutustatakse originaalses ja värskendavas filmikeeles, kus režissöör suudab draamat ja huumorit elegantselt tasakaalus hoida. See lihtne, kuid keeruline igapäevalugu on ühteaegu aktuaalne, aus ja südantlõhestav.”\n\n**Žürii eriauhind**\n\n[„25 aastat süütuna”](https://poff.ee/film/25-aastat-sueuetuna/)\n\nPoola, režissöör Jan Holoubek \n\nŽürii põhjendus: „Fantastilise režissööridebüüdi eest, mis räägib ülekohtuga kaasnevatest õudustest. Suurepärase rolli teeb Piotr Trojan.”\n\n**Žürii eriauhind**\n\n[„Kui tuul peaks vaibuma”](https://poff.ee/film/kui-tuul-peaks-vaibuma/)\n\nPrantsusmaa-Armeenia-Belgia, režissöör Nora Martirosyan \n\nŽürii põhjendus: „Imelise stsenaariumi eest, mis räägib nukra, kuid kahjuks asjakohase loo sellest, kui habras on tänapäeval maailmarahu. Ootame põnevusega, mis on selle autorite või teiste samas kategoorias võistlevate režissööride järgmine töö.”\n\n**BALTI FILMIDE VÕISTLUSPROGRAMM**\n\nŽürii: Marjorie Bendeck (Saksamaa), Tine Klint (Taani), Paul Thiltges (Luksemburg)\n\n**Parim film**\n\n[„Viimased”](https://poff.ee/film/viimased/)\n\nEesti-Soome-Holland, režissöör Veiko Õunpuu \n\nŽürii põhjendus: „Olime selle auhinna osas täielikus üksmeeles. Film paistis silma igas mõttes, näitlejate ansambli töö oli terviklik. Tegu on tõelise meeskonnaloominguga ja igas mõttes muljetavaldava filmiga, mis suudeti tõsta täiesti uuele tasandile nii tehniliselt, jutuvestmise viisilt kui ka kunstiliste elementide kasutamiselt. Ülimalt hästi läbi mõeldud muusikavalik on oskuslikult kokku miksitud. Konfliktid tegelaste sees ja nende vahel on meie arvates universaalsed. Tundra ilu on jäädvustatud meisterliku operaatoritööga. Inimese heitlused sellel otsatul ja inimtühjal alal, traditsioonide ja progressi vahel, tõstatavad küsimuse kuhugi kuulumisest ning kujutavad kõigi seal elavate tegelaste üldist üksildust. Tänapäevane põhjamaa vestern.” \n\n\n**VÕISTLUSPROGRAMM PÕHJUSEGA MÄSSAJAD**\n\nŽürii: Paolo Bertolin (Itaalia), Alina Șerban (Saksamaa), Matthew James Wilkinson (Suurbritannia)\n\n**Parim film ex aequo**\n\n[„Õhtusöök Ameerikas”](https://poff.ee/film/ohtusoeoek-ameerikas/)\n\nUSA, režissöör Adam Carter Rehmeier\n\nŽürii põhjendus: „Metsik sõit ühes Ameerika väikelinnas, jälgides paari hädavarest, kelle jaburad äpardused võidavad nii publiku südame kui ka kõrvad.” \n\n[„Verónica”](https://poff.ee/film/veronica/)\n\nTšiili, režissöör Leonardo Medel \n\nŽürii põhjendus: „Mõtlemapanev portree keerulisest ja tumedast tegelaskujust, kes leiab asjakohase ja kartmatu vahendi, et vallutada publik sotsiaalmeedia staariseisundi keeristormiga.” \n\n**Parim lühifilm**\n\n„Lood, mis mind öösiti üleval hoiavad” \n\nBelgia, režissöör Jérémy Van Der Haegen \n\nŽürii põhjendus: „Häiriv, kuid võluv muinasjutt, mis näitab, et vahel tuleb hundile järgneda, leidmaks teed iseenda tõelise olemusega leppimiseks.”\n\n\n**AASIA FILMIKUNSTI EDENDAMISE VÕRGUSTIKU NETPAC AUHIND**\n\nŽürii: Andreas Ungerboeck (Austria), Kan Lume (Singapur), Zakir Hossain Raju (Bangladesh)\n\n[„Ulbolsõn – üksi kõigi vastu”](https://poff.ee/film/ulbolson-ueksi-koigi-vastu/)\n\nKasahstan-Prantsusmaa, režissöör Ädilhan Jeržanov \n\nŽürii põhjendus: „Elav, stiilne, mänguliselt innovatiivne – žanripõhine, kuid samas piire painutav draama. Õrn „naistefilm“, mis heidab värske, kuid siira pilgu kasahhi traditsioonilisele külaelule täis inimlikke inimesi.”\n\n**RAHVUSVAHELISE FILMIAJAKIRJANIKE ÜHINGU FIPRESCI AUHIND**\n\nŽürii: Annika Koppel (Eesti), Denise Bucher (Šveits), Márcio Augusto Sallem (Brasiilia)\n\n[„Sentents”](https://poff.ee/film/sentents/)\n\nVenemaa, režissöör Dmitri Rudakov\n\nŽürii põhjendus: „Vormi rõhutava, kuid poeetilise käsitluse eest, kuidas kunst võib vastupanu ja lootuse maailmale valgust heita, isegi kui see valgus pole värviline.”\n\n**OIKUMEENILINE AUHIND**\n\nŽürii: Andres Põder, Rainer Sarnet, Madis Kolk, Marge-Marie Paas, Tõnis Kark\n\n[„Armugán”](https://poff.ee/film/armugan/)\n\nHispaania, režissöör Jo Sol \n\n„Jo Soli „Armugani” karge kujundikeel tungib vaiana ihusse, luues kino vahenditega sugestiivse tajuvaste vaimu, hinge ja ihu ühtsusele. Film kinnitab, et ihu pole väeti, kui vaim on tugev ning vaim võib karastuda ihu kaudu. Film tuletab meelde, et surmast kõnelemine ei peaks olema ideoloogiline, vaid nõuab surma meelespidamist ka igapäevatoimingutes ning seda, kui tähtis on, et me poleks surres üksi. Kõlama jääb sõnum elu väärtusest ja pühadusest.”\n\n**ELUTÖÖAUHIND**\n\nMargarethe von Trotta ja Alar Kivilo\n\n**DDA SPOTLIGHTI AUHIND**\n\nArmando Iannucci ja Francis Annan\n\n**BRUNO O’YA STIPENDIUM**\n\nReimo Sagor\n\n**NOORTE- JA LASTEFILMIDE FESTIVAL JUST FILM**\n\n**Grand prix**\n\nŽürii: Guy Davies (Suurbritannia), Elen Lotman (Eesti), Satu Tuuli Karhu (Soome) \n\n[„Slaalom”](https://poff.ee/film/slaalom/)\n\nPrantsusmaa, režissöör Charlène Favier \n\n„Rahvusvaheline žürii nautis noortefilmide võistlusprogrammi filme ning hindab kõrgelt filmides tõstatatud teemasid. Nägime mitmeid lugusid, kus täiskasvanud käitusid vastutustundetult ning lapsed pidid end vanema rolli asetama. Filmides tõusis läbivalt küsimusi: “Kes siin loos on laps ja kes täiskasvanu? Mis juhtub, kui täiskasvanu mõtlematu tegutsemine laotab raskuse just selle noore õlule, kes täiskasvanut kõige rohkem usaldab?”. „Slaalom” tõusis esile oma imeliselt autentse portreeringuga keerulisest situatsioonist. Räägituna teismelise perspektiivist, kuid ilma teisi karaktereid demoniseerimata oli tegemist looga, mis julges puudutada väärkohtlemise ja hoolimatuse teemasid väga realistlikul viisil. Võimas film, äärmiselt ausate esitlustega.”\n\n**Lastežürii parim lastefilm**\n\nŽürii: Kaarel Uueni, Kerstin Kalda, Kuno Wilhelm Rohusaar, Mari Krashevski, Sarah Liis Luha\n\n[„Margot ja Marguerite´i imeline seiklus”](https://poff.ee/film/margot-and-marguerite-i-imeline-seiklus/)\n\nPrantsusmaa, režissöör Pierre Coré \n\nŽürii põhjendus: „Pöörane lugu sellest, kuidas noored tüdrukud ootamatult ajas rändavad ning uues ajastus hakkama saavad. Huvitav lugu ja tugevad näitlejatööd. Väga mänguline.”\n\n**Noortežürii parim noortefilm**\n\nŽürii: Anna Linda Elvre, Gerli Rehkalt, Hans Robert Kannukene, Helena Maarja Tarro\n\n[„50 või kaks vaala kohtuvad rannal”](https://poff.ee/film/50-voi-kaks-vaala-kohtuvad-rannal/)\n\nMehhiko, režissöör Jorge Cuchi\n\nŽürii põhjendus: „Tegu on filmiga, milles julge teemakäsitlus kohtub värske pildikeele, oskuslikult kirjutatud tegelaste, professionaalse näitlejatöö ja omapärase montaažiga; filmiga, mida vaadates kohtusid meie kõrged ootused nendeväärilise linateosega, ja loodetavasti filmiga, mis kohtub veel paljude kinolinade ja vaatajatega.”\n\n**Euroopa lastefilmide assotsiatsiooni ECFA auhind**\n\nŽürii: Mike Tait (Suurbritannia), Mariella Harpelunde Jensen (Taani), Julia Fleißig (Saksamaa)\n\n[„Klaaspoiss”](https://poff.ee/film/klaaspoiss/)\n\nItaalia, režissöör Samuele Rossi \n\nŽürii põhjendus: „Tänavune Euroopa lastefilmide programm viis meid mitmetele erinevatele teekondadele, kuid üks neist tõusis eriliselt esile. Lugu, mis läbi suurepärase näitlejameisterlikkuse näitab isoleerituse ületamist ning ühe indiviidi võimalust tunda end sõprusgruppi kuuluvana. Peategelane leiab jõudu, et oma elutee üle kontroll haarata ning oma headust täis, kuid liialt kaitsva perekonna samuti uue olukorraga kohanema panna. Just filmi rikkalike karakterite, imeilusalt loodud maailma, kaasahaarava ning hästi kirjutatud loo tõttu anname auhinna filmile „Klaaspoiss”.”\n\n**LÜHIFILMIDE JA ANIMATSIOONI FESTIVAL PÖFF SHORTS** \n\n**Rahvusliku võistlusprogrammi parim film**\n\n„Välguga löödud”\n\nEesti, režissöör Romet Esko\n\nŽürii põhjendus: „Kaunilt meisterdatud austusavaldus, mis ühendab isikliku arhiivi ja mängleva lähenemise meediumile, luues kummitava ja meeldejääva filmi, mida tahaks korduvalt uuesti vaadata. Film räägib sügavalt isikliku ja delikaatse, ent dünaamilise loo sõprusest, andes edasi ühtaegu autentse ja universaalse sõnumi. „Välguga löödud” on elu ja loomingulisuse tähistamine filmikunsti kaudu, mis mõjub väga ajakohase ja vajalikuna.”\n\n**Animatsiooni võistlusprogrammi parim film**\n\n„Kullakallis” \n\nPrantsusmaa, režissöör Paul Mas\n\nŽürii põhjendus: „See film kasutab animatsiooni kunstlikkust, et pääseda valusalt lähedale elulistele teemadele. Žürii hindab filmi lihtsat stiili ning täpsekäelist loo jutustamist, mille kaudu tuuakse vaatajateni keerulised teemad, mis jäävad nendega veel pärast viimseid lõputiitreid.”\n\n**Lühifilmide võistlusprogrammi parim film**\n\n„Sinu ja Milagrose vahel” \n\nKolumbia, režissöör Mariana Saffon\n\nŽürii põhjendus: „Žüriile avaldas muljet filmi peen sisevaade ema ja tütre vahelisele keerulisele suhtele, peategelase vapustav näitlejatöö ning imeilus filmikeel. Režissöör näitab tähelepanuväärset oskust, hoolivust ja enesekindlust, tuues järk-järgult vaatajateni kõik suhtekihid, mis tegelaskujude vahel eksisteerivad.”\n",
-      "contents_en": null,
-      "contents_ru": "Жюри главной конкурсной программы во главе с Марком Адамсом присудило Гран-при PÖFF драме Ивайло Христова «Страх». События этой драмы разворачиваются на болгарской границе, которая новым маршрутом для мигрантов из Африки, прибывающих через Турцию в надежде достичь Германии.\n\nПриз за лучшую режиссуру отправляется турецкой женщине-режиссеру Нисан Даг за работу над фильмом «Еще один вдох». Это яркий портрет молодого и перспективного рэпера, борющегося с наркозависимостью. Жюри отметило сильное визионерство, страсть и индивидуальность в работе режиссера.\n\nПриз за лучшую женскую роль получила актриса из Швейцарии Мари Лойенбергер за игру в фильме «Птицы в клетке», где она исполнила роль молодого адвоката, выступающего против устаревшей тюремной системы в Швейцарии 1980-х.\n\nУльрих Томсен был отмечен премией за лучшую мужскую роль в военной драме датско-эстоно-бельгийского производства «Эрна на войне», в которой он перевоплотился в офицера, служащего в германской армии во время Второй мировой войны.\n\nИспанский фильм «Армуган» увезет домой целых две премии – за лучшую музыку и приз экуменического жюри. Это философское повествование о мужчине-инвалиде с редкой профессией – он проводит эвтаназии в сельской местности.\n\nРежиссер и сценарист Леонардо Антонио был удостоен премии за лучший сценарий для фильма «Слово против слова», повествующего о борьбе женщины с португальской системой правосудия за справедливость после того, как ее изнасиловал муж.\n \nНой Бах выиграл премию за лучшую операторскую работу в фильме «Территория мужчин», в котором распутывается произошедший в сельской местности секс-скандал.\n \n**Конкурсная программа дебютов**\n\nЖюри конкурсной программы дебютов во главе с Ульрихом Томсеном трудилось дистанционно и определило лауреатов трех премий. Приз за лучший фильм в этой категории получила китайская драма Вана Яо «Большое счастье». \n \nТакже присудили еще два специальных приза жюри. Первым лауреатом такой премии стал польский режиссер Ян Холубек за «25 лет невиновности», в которой представлена история, некогда активно освещаемая СМИ, о несправедливо приговоренном к тюремному заключению мужчине.\n \nВторая специальная премия была вручена Норе Мартиросян, Эммануэлю Пагано, Оливеру Торресу и Гийому Андре – сценаристам франко-армяно-бельгийской картины «Когда ветер стихнет». Творческий коллектив создал историю о планируемом открытии международного аэропорта в Нагорном Карабахе, куда для экспертизы его готовности к запуску отправляется французский специалист.\n \n**Конкурсная программа фильмов из стран Балтии и «Бунтари не без причины»**\n\nПосле недавнего выдвижения от Эстонии на «Оскар» команда создателей нордического вестерна «Последние» получила еще один повод для радости, поскольку эта картина Вейко Уйбопуу была признана лучшей в программе фильмов из стран Балтии. Сюжет разворачивается в небольшой шахтерской коммуне в Северной Финляндии.\n\nЖюри конкурса «Бунтари не без причины» поделили приз между двумя оригинальными фильмами. Первый из них, «Ужин в Америке», снял американский режиссер Адам Картер Ремайер. Жюри отметили, что это дикая поездка по маленькому американскому городку, наблюдение за парочкой смутьянов, чьи глупые неудачи покоряют сердца и уши публики.\n\nВторая кинолента «Вероника», созданная чилийским автором Леонардо Меделем, представляет вниманию зрителей темную сторону звездной болезни, возникающей у его героев, ведущих каналы в социальных сетях.\n\nВ программе короткометражных фильмов «Бунтари не без причины» победила работа Джереми Ван Дер Хёгена «Истории, которые не дают спать по ночам».\n \n**Премии FIPRESCI и NETPAC**\n \nМеждународная федерация кинокритиков (FIPRESCI) посмотрела фильмы из программы дебютов и выбрала черно-белую картину Дмитрия Рудакова «Сентенция», снятую на 16-мм кинопленку. Жюри отметило, что дебют Дмитрия Рудакова – это красивая и медитативная драматизация конца жизни русского поэта Варлама Шаламова, пережившего ГУЛАГ.\n\nЖюри Сети продвижения азиатского кино (NETPAC) выбирало из азиатских фильмов в главной конкурсной программе и дебютах и отдало предпочтение казахско-французскому фильму Адильхана Ержанова «Улболсын». События происходят в сельской местности Казахстана, где городская девушка сталкивается с патриархальными традициями местного общества.\n \n <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/C8P2eGQlbrA\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n**НАГРАДЫ XXIV ТАЛЛИННСКОГО КИНОФЕСТИВАЛЯ «ТЕМНЫЕ НОЧИ»**\n \n**ГЛАВНАЯ КОНКУРСНАЯ ПРОГРАММА**\nЖюри: Марк Адамс (Великобритания), Мостофа Сарвар Фаруки (Бангладеш), Изабела Кишка-Хофлик (Польша), Эстер Кунту (Эстония), Данте Спинотти (Италия-США)\n \n**Гран-при за лучший фильм**\nПриз в размере 10 000 евро, который делится пополам между режиссером и продюсером.\n \n«Страх» (Болгария-Франция)\nСтрах / Fear\nРежиссер: Ивайло Христов\n\nКомментарий жюри: «Поистине красивый фильм, сочетающий в себе сухой юмор и современную драматургию. Впечатляющий сценарий и отличная актерская игра; фильм, которому необычным образом удается быть одновременно чутким и в то же время провокационным, с элементами абсурдного юмора. Этот фильм особенно актуален во времена, когда повсеместно накалены проблемы миграции».\n\n\n**Лучший режиссер**\nПриз в размере 5000 евро\n \nНисан Даг\n«Еще один вдох» (Турция-США)\nBir nefes daha / When I'm Done Dying\n \nКомментарий жюри: «Этот увлекательный, страстный и потрясающий новый фильм излучает видение, преданность и индивидуальность режиссера. Одной из сильных сторон фильма, безусловно, является привлечение актеров-любителей, и он умело сочетает драму с музыкой и даже анимацией, погружая в самые темные тайны социальной среды».\n \n\n**Лучшая операторская работа**\nПремия в размере 1000 евро\n \nНой Бах\n«Территория мужчин» (Франция)\nLa terre des hommes / Beasts\nРежиссер: Ноэль Марандин\n \nКомментарий жюри: «Этот оригинальный фильм рассматривает с интересной стороны сексуальную политику на фоне фермеров из рабочего класса. Сильная история приобретает глубокое измерение при наблюдении за главной женской ролью; удивительно красивая операторская работа, честная и лишенная сенсаций, помогает растворить историю в традиционно мужской деревенской среде.\n\n\n**Лучший сценарий**\n \nЛеонардо Антонио\n«Слово против слова» (Португалия)\nSubmissão / Submission\nРежиссер: Леонардо Антонио\n \nКомментарий жюри: «Этот талантливый сценарий был разработан и структурирован с максимальной тщательностью и без злоупотребления проблемной сюжетной линией. Сценарий дополняют гармоничная игра и интеллектуальные диалоги, что производит впечатление и увлекает за собой. Хотя история фокусируется на обвинении в изнасиловании дома, при рассмотрении этой сложной, а иногда и адски болезненной темы также учитываются многие другие точки зрения».\n \n \n**Лучшая мужская роль**\n \nУльрих Томсен\n«Эрна на войне» (Дания-Эстония-Бельгия)\nErna I Krig / Erna at War\nРежиссер: Хенрик Рубен Генц\n \nКомментарий жюри: «Мы хотим отдать дань уважения актерской работе, в случае которой осознается, насколько сложно представить сбалансированную, но чрезвычайно драматичную второстепенную роль наряду с чрезвычайно сильной женской главной ролью. Удивительно отточенное и талантливое исполнение, которое придает огромную ценность мощному и запоминающемуся фильму».\n\n \n**Лучшая женская роль**\n \nМари Лойенбергер\n«Птицы в клетке» (Швейцария-Германия)\nBis Wir Tot Sind Oder Frei / Caged Birds\nРежиссер: Оливер Рихс\n \nКомментарий жюри: «Прежде, чем вручить премию, жюри хочет отметить многие превосходные и гениальные женские роли в конкурсной программе этого года. Если бы было возможно, то мы хотели бы вручить приз семи или восьми лучшим актрисам. Но позволим сиять в центре внимания одной поистине очаровательной актрисе, чья естественная и скромная игра заряжена эмоциональной энергией и впечатляющей интеллигентностью».\n \n\n**Лучшая музыка**\n \nХуанхо Хавьерре\n«Армуган» (Испания)\nРежиссер: Джо Соль\n \nКомментарий жюри: «Этот красивый черно-белый фильм очень выигрывает благодаря своему гипнотическому музыкальному фону, который идеально передает настроение и тональность фильма, позволяя сочетать поэтические и острые моменты чарующего произведения искусства».\n \n***\n \n**КОНКУРСНАЯ ПРОГРАММА ДЕБЮТНЫХ ФИЛЬМОВ**\nЖюри: Эльфар Адальстейнс (Исландия), Юрис Курсиетис (Латвия), Диана Микита (Эстония), Рене ван Панневис (Нидерланды-Великобритания), Ульрих Томсен (Дания)\n \n**Лучший фильм**\nПриз в размере 5000 евро, который делится между режиссером и продюсером.\n \n«Большое счастье» (Китай)\nJi Le Dian / Great Happiness\nРежиссер: Ван Яо (Китай)\n \nКомментарий жюри: «За сильный социальный экскурс в сегодняшний Китай, где три пары застряли между старыми традициями и новыми обычаями. История повествуется оригинальным и свежим кинематографическим языком, где режиссеру удается сохранять элегантный баланс драмы и юмора. Эта простая и в то же время сложная повседневная история одновременно актуальная, честная и душераздирающая».\n \n**Специальный приз жюри**\n \n«25 лет невиновности» (Польша)\n25 lat niewinnosci. Sprawa Tomka Komendy / 25 Years of Innocence\nРежиссер: Ян Холубек\n \nКомментарий жюри: «За фантастический режиссерский дебют об ужасах, связанных с несправедливостью. Превосходная роль Петра Трояна».\n \n**Специальный приз жюри**\n \n«Когда ветер стихнет» (Франция-Армения-Бельгия)\nSi le vent tombe / Should the Wind Drop\nРежиссер: Нора Мартиросян\n \nКомментарий жюри: «За удивительный сценарий, рассказывающий печальную, но, к сожалению, актуальную историю о том, насколько хрупок сегодня мир на планете. Мы с нетерпением ждем следующей работы авторов этой работы или других режиссеров, соревнующихся в той же категории».\n \n***\n \n**КОНКУРСНАЯ ПРОГРАММА ФИЛЬМОВ ИЗ СТРАН БАЛТИИ**\nЖюри: Марджори Бендек (Германия), Тине Клинт (Дания), Пол Тилтгес (Люксембург)\n \n**Лучший фильм**\n \n«Последние» (Эстония-Финляндия-Нидерланды)\nViimased / The Last Ones\nРежиссер: Вейко Ыунпуу\n \nКомментарий жюри: «Мы были полностью единогласны в отношении этой награды. Фильм выделялся во всех отношениях, работа актерского ансамбля была целостной. Это по-настоящему командное творчество и впечатляющий во всех смыслах фильм, который удалось вывести на совершенно новый уровень с точки зрения технологий, повествования и использования художественных элементов. Крайне хорошо продуманная музыкальная подборка искусно сведена воедино. Конфликты внутри персонажей и между ними, на наш взгляд, универсальны. Красота тундры запечатлена благодаря мастерской операторской работе. Борьба людей в этой бесконечной и пустой области между традициями и прогрессом поднимает вопрос о принадлежности к чему-то и представляет собой общее одиночество всех героев, живущих там. Современный северный вестерн».\n \n***\n \n**КОНКУРСНАЯ ПРОГРАММА «БУНТАРИ НЕ БЕЗ ПРИЧИНЫ»**\nЖюри: Паоло Бертолин (Италия), Алина Сербан (Германия), Мэтью Джеймс Уилкинсон (Великобритания)\n \n**Лучший фильм ex aequo**\n \n«Ужин в Америке» (США)\nDinner in America\nРежиссер: Адам Картер Ремайер\n \nКомментарий жюри: «Дикая поездка по маленькому американскому городку, наблюдение за парочкой смутьянов, чьи глупые неудачи покоряют сердца и уши публики».\n \n«Вероника» (Чили)\nLa Verónica\nРежиссер: Леонардо Медель\n \nКомментарий жюри: «Заставляющий задуматься портрет сложного и темного героя, который находит подходящий и бесстрашный способ покорить аудиторию вихрем славы в социальных сетях».\n\n \n**Лучший короткометражный фильм**\n \nИстории, которые не дают спать по ночам (Бельгия)\nNuits sans sommeil / Stories Keep Me Awake at Night\nРежиссер: Джереми ван дер Хэген\n \nКомментарий жюри: «Тревожная, но очаровательная сказка, которая показывает, что иногда нужно следовать за волком, чтобы найти способ примириться со своей истинной сущностью».\n\n***\n \n**ПРЕМИЯ МЕЖДУНАРОДНОЙ ФЕДЕРАЦИИ КИНОПРЕССЫ FIPRESCI**\nЖюри: Анника Коппель (Эстония), Денизе Бухер (Швейцария), Марсио Аугусто Саллем (Бразилия)\n \n«Сентенция» (Россия)\nСентенция / Sententia\nРежиссер: Дмитрий Рудаков\n \nКомментарий жюри: «За подчеркивающий форму, но поэтический взгляд на то, как искусство может пролить свет на мир сопротивления и надежды, даже если этот свет не имеет цвета».\n \n***\n \n**ПРЕМИЯ СЕТИ ПО ПРОДВИЖЕНИЮ АЗИАТСКОГО КИНОИСКУССТВА NETPAC**\nЖюри: Андреас Унгербек (Австрия), Кан Люме (Сингапур), Закир Хоссейн Раджу (Бангладеш)\n \n«Улбольсын» (Казахстан-Франция)\nҰлболсын / Ulbolsyn\nРежиссер: Адильхан Ержанов\n \nКомментарий жюри: «Живая, стильная, игриво-новаторская драма, которая придерживается жанра, но в то же время сдвигает границы. Деликатный «женский фильм», который бросает свежий, но искренний взгляд на традиционную казахскую деревенскую жизнь, полную гуманных людей».\n \n***\n \n**ПРИЗ ЭКУМЕНИЧЕСКОГО ЖЮРИ**\nЖюри: Андрес Пыдер, Райнер Сарнет, Мадис Кольк, Марге-Марие Паас, Тынис Карк\n \n«Армуган» (Испания)\nArmugan\nРежиссер: Джо Соль\n \nЧеткий образный язык «Армугана» Джо Соля пронизывает все тело, создавая суггестивное единство разума, души и тела кинематографическими средствами. Фильм подтверждает, что тело не слабо, когда дух силен, и дух может закалиться через тело. Фильм напоминает нам, что разговор о смерти не должен быть идеологическим, но также требует помнить о смерти в нашей повседневной деятельности и о том, как важно, чтобы мы не были одни, когда умираем. Остается звучать послание о ценности и святости жизни».\n\n***\n \n**ПРЕМИЯ «ЗА ДЕЛО ВСЕЙ ЖИЗНИ» № 1**\nМаргарете фон Тротта (Германия)\n \n \n**ПРЕМИЯ «ЗА ДЕЛО ВСЕЙ ЖИЗНИ» № 2**\nАлар Кивило (Канада-Эстония)\n \n***\n \n**ПРЕМИЯ DDA SPOTLIGHTS**\n\nАрмандо Ианнуччи (Великобритания)\n \n**ПРЕМИЯ DDA SPOTLIGHTS**\n\nФрэнсис Аннан (Великобритания)\n \n***\n \n**СТИПЕНДИЯ ИМЕНИ БРУНО ОЯ**\n\nРеймо Сагор\n \n***\n \n**КИНОФЕСТИВАЛЬ КОРОТКОМЕТРАЖНЫХ И АНИМАЦИОННЫХ ФИЛЬМОВ PÖFF SHORTS**\n \n**Лучший короткометражный анимационный фильм / кандидат на номинацию Академии кинематографических искусств и наук**\n \n«Золотце» (Франция)\nPrecious\nРежиссер: Пауль Мас\n \nКомментарий жюри: «Этот фильм использует искусственность анимации, чтобы приблизиться до боли близко к жизненно важным темам. Жюри высоко оценивает простой стиль фильма и точное повествование, которое доносит до зрителей сложные темы, которые остаются с ними даже после финальных титров».\n \n\n**Лучший короткометражный фильм национальной конкурсной программы**\n \n«Удар молнии»     \nStruck by Lightning\nРежиссер: Ромет Эско\n \nКомментарий жюри: \"Красиво созданный трибьют, который сочетает в себе личный архив и игривый подход к среде и создает захватывающий и запоминающийся фильм, который хочется смотреть снова и снова. Фильм рассказывает глубоко личную и деликатную, но в то же время динамичную историю о дружбе, передавая одновременно аутентичный и универсальный смысл. «Удар молнии» – это праздник жизни и творчества через кинематограф, что кажется очень своевременным и необходимым».\n \n\n**Лучший фильм в программе конкурса короткометражных фильмов**\n \n«Между тобой и Милагрос» (Колумбия)\nBetween You and Milagros\nРежиссер: Мариана Саффон\n \nКомментарий жюри: «На жюри произвел впечатление тонкий внутренний взгляд фильма на сложные отношения матери и дочери, потрясающая актерская игра главного героя и очень красивый кинематографический язык. Режиссер демонстрирует выдающееся мастерство, заботу и уверенность в себе, постепенно доводя до зрителей все слои взаимоотношений, существующих между персонажами».\n\n \nВесь список лауреатов PÖFF Shorts: http://shorts.poff.ee/en/about/p-oe-ff-shorts/\n \n***\n \n**ФЕСТИВАЛЬ МОЛОДЕЖНЫХ И ДЕТСКИХ ФИЛЬМОВ JUST FILM**\n \n**Гран-при**\nЖюри: Гай Дейвис (Великобритания), Элен Лотман (Эстония), Сату Туули Карху (Финляндия)\n \n«Слалом» (Франция)\nSlalom\nРежиссер: Шарлин Фавье\n \n«Международное жюри получило удовольствие от просмотра фильмов конкурсной программы молодежных фильмов и высоко оценило затронутые в фильмах темы. Мы увидели многие истории, в которых взрослые вели себя безответственно, а детям приходилось ставить себя на роль родителей. Красной нитью в фильмах поднимались вопросы: «Кто в этой истории ребенок, а кто взрослый? Что происходит, когда безрассудное поведение взрослого перекладывает бремя на плечи молодого человека, который больше всего доверяет взрослому?». «Слалом» отличился удивительно достоверным портретом сложной ситуации. Рассказанная с точки зрения подростка, но без демонизации других героев, это история, в которой осмелились очень реалистично затронуть вопросы ненадлежащего обращения и безответственности. Сильный фильм с очень честной подачей материала».\n \n\n**Премия Европейской ассоциации детского кино ECFA**\nЖюри: Майк Тейт (Великобритания), Мариэлла Харпелунде Йенсен (Дания), Юлия Флейсиг (Германия)\n \n«Стеклянный мальчик» (Италия)\nGlassboy\nРежиссер: Самуэле Росси\n \nКомментарий жюри: «Программа европейских детских фильмов в этом году повела нас разными путями, но один из них выделялся особенно. История, в которой благодаря отличной актерской игре и возможность одного человека почувствовать себя частью группы друзей. Главный герой находит в себе силы взять под контроль свой жизненный путь и заставить адаптироваться к новой ситуации свою любящую, но при этом гиперопекающую семью. Именно благодаря богатым персонажам фильма, невероятно красиво созданному миру, увлекательному и хорошо написанному сюжету мы награждаем фильм «Стеклянный мальчик».\n \n\n**Лучший детский фильм по версии детского жюри**\nЖюри: Каарель Ууэни, Керстин Кальда, Куно Вильгельм Рохусаар, Мари Крашевски, Сара Лийз Луха\n \nЧудесное приключение Марго и Маргариты (Франция)\nL'aventure des Marguerite\nРежиссер: Пьер Корэ\n \nКомментарий жюри: «Безумная история о том, как молодые девушки внезапно перемещаются во времени и адаптируются в новой эпохе. Интересный сюжет и сильная актерская игра. Очень зрелищно».\n \n\n**Лучший молодежный фильм по версии молодежного жюри**\nЖюри: Анна Линда Эльвре, Герли Рехкальт, Ханс Роберт Каннукене, Хелена Маарья Тарро\n \n«50 или два кита встречаются на пляже» (Мексика)\n50 o Dos Ballenas se Encuentran en la Playa\nРежиссер: Хорхе Кучи\n \nКомментарий жюри: «Это фильм, в котором смелый подход к теме сочетается со свежим изобразительным языком, искусно написанными персонажами, профессиональной актерской игрой и уникальным монтажом; фильм, который оправдал наши большие ожидания, и, хочется надеяться, фильм, который покажут еще на многих экранах кинотеатров для многих зрителей».",
+      "created_at": "2021-01-27T09:22:16.530Z",
+      "updated_at": "2021-01-27T11:19:04.382Z",
+      "title_et": "PÖFF on Postimehe kultuurivedur",
+      "slug_et": "p-oe-ff-on-postimehe-kultuurivedur",
+      "title_en": "PÖFF received the Engine of Culture award",
+      "slug_en": "pof-fi-article-106",
+      "title_ru": null,
+      "slug_ru": "pof-fi-article-181",
+      "lead_et": "**Postimehe kultuuritoimetus kuulutas 2020. aasta kultuuriveduriks Pimedate Ööde filmifestivali eesotsas Tiina Lokiga.**",
+      "lead_ru": null,
+      "lead_en": "**The culture desk of the news service Postimees has given the annual Engine of Culture award of 2020 to Tallinn Black Nights Film Festival lead by Tiina Lokk.**",
+      "contents_et": "„Sõidutagu see vedur veel PÖFFi kaugele,” ütles toimetus Boris Puusepa valmistatud puidust vedurit festivali juhile Tiina Lokile kätte kandes. \n\nPostimees tõi esile, et PÖFF toimus kultuurile raskel aastal edukamalt kui kunagi varem, laiendades paindlikult oma tegevust veebi ja andes sellega esimest korda kõigile Eesti elanikele elukohast sõltumata võimaluse festivali filme vaadata. \n\n„Sellega näitas PÖFF teed kõigile teistele maailma A-klassi festivalidele – ja see A-klass on eksklusiivne klubi, mille väikseim liige on meie oma armas PÖFF,” ütles Postimehe filmitoimetaja Hendrik Alla. \n\nÜhtlasi rõhutasid preemia väljaandjad PÖFFi kauaaegset rolli Eesti filmi- ja kinokultuuri arendamisel. \n\nKultuuritoimetuse juhataja Heili Sibritsa sõnul sündis festival 1997. aastal protestist kinode sulgemise, nende ühekülgse repertuaari ja eesti filmi katastroofilise olukorra vastu. „PÖFF sündis selleks, et näidata inimestele, mis võiks olla. Et inimesed küsiksid: kus on meie kinod, kus on kvaliteetsed ja kunstipärased Euroopa ja muu maailma autorifilmid? Kus on hea eesti film? Ja nüüd, 25 aastat hiljem, on see kõik meil olemas ja läheb loodetavasti veelgi paremaks,” ütles ta. \n\nTiina Lokk oli pärast auhinna kättesaamist väga õnnelik. „Ma olen Kultuuriveduri laureaatide vastu ikka väikest kadedust, aga alati ka suurt heameelt tundnud. Möödunud aasta oli PÖFFile erakordselt raske ja proovikive täis – seda enam oleme tänulikud, et meie tegevust märgati ja esile tõsteti,” sõnas ta. \n\nPostimees annab Kultuuriveduri auhinda välja alates 2006. aastast. \n\nKultuuriveduri varasemad laureaadid: \n\n2005 – Ando Kiviberg pärimuskultuuri edendamise eest\n2006 – Ülar Mark avaliku arhitektuuridiskussiooni algatamise eest\n2007 – Mart Taniel kaameratöö eest filmides «Sügisball», «Nuga» ja «Jan Uuspõld läheb Tartusse»\n2008 – Anne Rande laste juhatamise eest raamatute ja kaunite kunstide juurde\n2009 – Märt Väljataga ajakirja Vikerkaar toimetamise ja sarja «Avatud Eesti raamat» kureerimise eest; \n2010 – Indrek Kasela Sõpruse kino elluäratamise eest\n2011 – Juhan Ulfsak panuse eest eesti teatrisse\n2012 – telesaate «Tujurikkuja» meeskonnale kõneka ja professionaalse tegevuse eest ühiskonnaelu kõverpeegeldamisel ja kultuuripildis laiemalt\n2013 – Hooandja meeskond ühisrahastusplatvormi idee algatamise ja elluviimise eest\n2014 – Muusik, DJ ja Raadio 2 saatejuht ning õhtuse vööndi juhataja Raul Saaremets eestlaste muusikalise maitse pikaajalise kujundamise eest\n2015 – Olga Temnikova, galerist ja Eesti kunsti väsimatu saadik\n2016 – Loomingu Raamatukogu väärtkirjanduse avaldamise eest\n2017 – kunstikollektsionäär Enn Kunila Eesti kunsti tutvustamise eest\n2018 – festival Augustibluus bluusižanri populariseerimise ja pildis hoidmise eest eesti kultuuris\n2019 – kirjastus Ilmamaa kauaaegse tegevuse eest nii kohaliku kui ka välismaise kirjanduse, memuaristika ja mõttevara vahendamisel\n\nVaata Postimehe Kultuuriveduri auhinna galeriid **[siit](https://www.flickr.com/photos/poffihunt/albums/72157718053706966/with/50880791752/).**\n",
+      "contents_en": "“Let this locomotive drive PÖFF even further,” said the culture desk of Postimees when handing the wooden locomotive made by modeler Boris Puusepp to the festival director Tiina Lokk. \n \nPostimees pointed out that regardless of this difficult year for culture PÖFF was more successful than ever – creatively expanding its activities online and thus, for the first time, giving all Estonian residents the opportunity to take part in the festival. \n \nThe publishers of the award also emphasized the long-standing role of PÖFF in the development of Estonian film and cinema culture.  \n \nTiina Lokk was very thankful for receiving the award. “I have always been happy but also a little envious of the previous winners of Engine of Culture award. Last year was extremely difficult and challenging for PÖFF – this makes us even more grateful that our activities were noticed and highlighted,” she said. \n \nPostimees has been awarding the Engine of Culture award since 2006. \n\nFor more pictures look **[here](https://www.flickr.com/photos/poffihunt/albums/72157718053706966/with/50880791752/).**\n",
+      "contents_ru": null,
       "publishFrom": null,
       "publishUntil": null,
       "publish_et": true,
-      "publish_en": null,
-      "publish_ru": true,
+      "publish_en": true,
+      "publish_ru": null,
       "media": {
-        "id": 382,
-=======
-      "web_authors": [],
+        "id": 406,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 2047,
+            "height": 1365,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
+                "mime": "image/jpeg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
+                "path": null,
+                "size": 12.24,
+                "width": 234,
+                "height": 156
+              }
+            },
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
+          }
+        ],
+        "image_et": [
+          {
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 2047,
+            "height": 1365,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
+                "mime": "image/jpeg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
+                "path": null,
+                "size": 12.24,
+                "width": 234,
+                "height": 156
+              }
+            },
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
+          }
+        ],
+        "image_en": [
+          {
+            "id": 3834,
+            "name": "50880791752_bd0f52e6d3_k.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 2047,
+            "height": 1365,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+                "hash": "thumbnail_50880791752_bd0f52e6d3_k_69d1105fe6",
+                "mime": "image/jpeg",
+                "name": "thumbnail_50880791752_bd0f52e6d3_k.jpg",
+                "path": null,
+                "size": 12.24,
+                "width": 234,
+                "height": 156
+              }
+            },
+            "hash": "50880791752_bd0f52e6d3_k_69d1105fe6",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 891.09,
+            "url": "/uploads/50880791752_bd0f52e6d3_k_69d1105fe6.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-01-27T10:36:10.763Z",
+            "updated_at": "2021-01-27T10:36:11.867Z"
+          }
+        ],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [
+        {
+          "id": 1,
+          "namePrivate": "Pöffihunt",
+          "created_at": "2020-09-02T11:27:48.489Z",
+          "updated_at": "2020-09-02T11:27:48.544Z",
+          "name": {
+            "id": 3851,
+            "et": "Pöffihunt",
+            "en": "Wolf",
+            "ru": "Волк"
+          }
+        }
+      ],
       "organisations": []
     },
     "article_ru": {
@@ -611,30 +402,12 @@
       "publish_ru": true,
       "media": {
         "id": 398,
->>>>>>> parent of b1922739... delete starpidata .json files
         "clipUrlDefault": null,
         "clipUrl_et": null,
         "clipUrl_en": null,
         "clipUrl_ru": null,
         "imageDefault": [
           {
-<<<<<<< HEAD
-            "id": 3804,
-            "name": "50654740756_e1a8353fee_k-3.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 2048,
-            "height": 1366,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_50654740756_e1a8353fee_k_3_7683a078d6.jpg",
-                "hash": "thumbnail_50654740756_e1a8353fee_k_3_7683a078d6",
-                "mime": "image/jpeg",
-                "name": "thumbnail_50654740756_e1a8353fee_k-3.jpg",
-                "path": null,
-                "size": 9.39,
-=======
             "id": 3824,
             "name": "pöff 2020 closing.jpg",
             "alternativeText": "",
@@ -650,25 +423,10 @@
                 "name": "thumbnail_pöff 2020 closing.jpg",
                 "path": null,
                 "size": 9.08,
->>>>>>> parent of b1922739... delete starpidata .json files
                 "width": 234,
                 "height": 156
               }
             },
-<<<<<<< HEAD
-            "hash": "50654740756_e1a8353fee_k_3_7683a078d6",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 445.75,
-            "url": "/uploads/50654740756_e1a8353fee_k_3_7683a078d6.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 9,
-            "updated_by": 9,
-            "created_at": "2020-11-28T07:04:12.119Z",
-            "updated_at": "2020-11-28T07:04:12.162Z"
-=======
             "hash": "poeff_2020_closing_67c6f50678",
             "ext": ".jpg",
             "mime": "image/jpeg",
@@ -677,32 +435,12 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
             "created_at": "2020-12-15T16:35:25.159Z",
             "updated_at": "2020-12-15T16:35:25.779Z"
->>>>>>> parent of b1922739... delete starpidata .json files
           }
         ],
         "image_et": [
           {
-<<<<<<< HEAD
-            "id": 3804,
-            "name": "50654740756_e1a8353fee_k-3.jpg",
-            "alternativeText": "",
-            "caption": "",
-            "width": 2048,
-            "height": 1366,
-            "formats": {
-              "thumbnail": {
-                "ext": ".jpg",
-                "url": "/uploads/thumbnail_50654740756_e1a8353fee_k_3_7683a078d6.jpg",
-                "hash": "thumbnail_50654740756_e1a8353fee_k_3_7683a078d6",
-                "mime": "image/jpeg",
-                "name": "thumbnail_50654740756_e1a8353fee_k-3.jpg",
-                "path": null,
-                "size": 9.39,
-=======
             "id": 3824,
             "name": "pöff 2020 closing.jpg",
             "alternativeText": "",
@@ -718,25 +456,10 @@
                 "name": "thumbnail_pöff 2020 closing.jpg",
                 "path": null,
                 "size": 9.08,
->>>>>>> parent of b1922739... delete starpidata .json files
                 "width": 234,
                 "height": 156
               }
             },
-<<<<<<< HEAD
-            "hash": "50654740756_e1a8353fee_k_3_7683a078d6",
-            "ext": ".jpg",
-            "mime": "image/jpeg",
-            "size": 445.75,
-            "url": "/uploads/50654740756_e1a8353fee_k_3_7683a078d6.jpg",
-            "previewUrl": null,
-            "provider": "local",
-            "provider_metadata": null,
-            "created_by": 9,
-            "updated_by": 9,
-            "created_at": "2020-11-28T07:04:12.119Z",
-            "updated_at": "2020-11-28T07:04:12.162Z"
-=======
             "hash": "poeff_2020_closing_67c6f50678",
             "ext": ".jpg",
             "mime": "image/jpeg",
@@ -745,11 +468,8 @@
             "previewUrl": null,
             "provider": "local",
             "provider_metadata": null,
-            "created_by": 11,
-            "updated_by": 11,
             "created_at": "2020-12-15T16:35:25.159Z",
             "updated_at": "2020-12-15T16:35:25.779Z"
->>>>>>> parent of b1922739... delete starpidata .json files
           }
         ],
         "image_en": [],
@@ -760,8 +480,6 @@
         {
           "id": 2,
           "name": "news",
-          "created_by": 6,
-          "updated_by": 1,
           "created_at": "2020-08-18T13:49:51.616Z",
           "updated_at": "2020-09-21T10:57:52.599Z",
           "article": null,
@@ -784,51 +502,10 @@
       "programmes": [],
       "tag_genres": [],
       "tag_keywords": [],
-<<<<<<< HEAD
-      "web_authors": [
-        {
-          "id": 2,
-          "namePrivate": "Toimetaja",
-          "created_by": 6,
-          "updated_by": 6,
-          "created_at": "2020-09-02T11:28:23.386Z",
-          "updated_at": "2020-09-02T11:28:23.428Z",
-          "name": {
-            "id": 3852,
-            "et": "Päevatoimetaja",
-            "en": "Editor",
-            "ru": "Editor"
-          }
-        }
-      ],
-=======
       "web_authors": [],
->>>>>>> parent of b1922739... delete starpidata .json files
       "organisations": []
     },
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-<<<<<<< HEAD
-      "id": 9,
-      "firstname": "Elise",
-      "lastname": "Eimre",
-      "username": null
-    },
     "created_at": "2020-08-19T11:25:46.587Z",
-    "updated_at": "2020-11-30T13:07:11.691Z"
-=======
-      "id": 18,
-      "firstname": "Jaana",
-      "lastname": "Kalinistova",
-      "username": null
-    },
-    "created_at": "2020-08-19T11:25:46.587Z",
-    "updated_at": "2020-12-16T08:53:38.560Z"
->>>>>>> parent of b1922739... delete starpidata .json files
+    "updated_at": "2021-01-27T10:32:24.956Z"
   }
 ]
