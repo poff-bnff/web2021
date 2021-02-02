@@ -55,7 +55,7 @@ module.exports = () => {
     })
 
 // Initialize watcher.
-const watcher = chokidar.watch('./public/uploads', {
+const watcher = chokidar.watch('public/uploads', {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
     persistent: true
   });

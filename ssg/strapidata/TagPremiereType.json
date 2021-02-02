@@ -4,18 +4,6 @@
     "PremiereType_et": null,
     "PremiereType_en": null,
     "PremiereType_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:50:40.749Z",
     "updated_at": "2020-08-27T10:10:15.255Z",
     "Value_et": null,
@@ -33,18 +21,6 @@
     "PremiereType_et": null,
     "PremiereType_en": null,
     "PremiereType_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:51:06.721Z",
     "updated_at": "2020-08-27T10:11:00.348Z",
     "Value_et": null,
@@ -62,18 +38,6 @@
     "PremiereType_et": null,
     "PremiereType_en": null,
     "PremiereType_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:52:11.727Z",
     "updated_at": "2020-08-27T10:11:57.106Z",
     "Value_et": null,
@@ -91,18 +55,6 @@
     "PremiereType_et": null,
     "PremiereType_en": null,
     "PremiereType_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
     "created_at": "2020-08-19T10:51:47.582Z",
     "updated_at": "2020-10-26T10:27:32.330Z",
     "Value_et": null,

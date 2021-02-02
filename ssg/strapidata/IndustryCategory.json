@@ -3,171 +3,72 @@
     "id": 1,
     "name": "Music Meets Film",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T18:30:28.513Z",
-    "updated_at": "2020-11-08T18:30:28.524Z"
+    "updated_at": "2020-11-08T18:30:28.524Z",
+    "published_at": "2020-11-08T18:30:28.513Z"
   },
   {
     "id": 2,
     "name": "Black Nights Stars",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T18:30:56.169Z",
-    "updated_at": "2020-11-08T18:30:56.177Z"
+    "updated_at": "2020-11-08T18:30:56.177Z",
+    "published_at": "2020-11-08T18:30:56.169Z"
   },
   {
     "id": 3,
     "name": "PÖFF Black Room",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T18:31:26.808Z",
-    "updated_at": "2020-11-08T18:31:26.816Z"
+    "updated_at": "2020-11-08T18:31:26.816Z",
+    "published_at": "2020-11-08T18:31:26.808Z"
   },
   {
     "id": 4,
     "name": "TV Beats Forum",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T18:31:39.808Z",
-    "updated_at": "2020-11-08T18:31:39.819Z"
+    "updated_at": "2020-11-08T18:31:39.819Z",
+    "published_at": "2020-11-08T18:31:39.808Z"
   },
   {
     "id": 5,
     "name": "European Film Forum Tallinn",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T18:31:59.108Z",
-    "updated_at": "2020-11-08T18:31:59.117Z"
+    "updated_at": "2020-11-08T18:31:59.117Z",
+    "published_at": "2020-11-08T18:31:59.108Z"
   },
   {
     "id": 6,
     "name": "MIDPOINT TV Launch",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T19:14:20.443Z",
-    "updated_at": "2020-11-08T19:14:20.451Z"
+    "updated_at": "2020-11-08T19:14:20.451Z",
+    "published_at": "2020-11-08T19:14:20.443Z"
   },
   {
     "id": 7,
     "name": "Script Pool ",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-08T19:15:11.150Z",
-    "updated_at": "2020-11-08T19:16:27.036Z"
+    "updated_at": "2020-11-08T19:16:27.036Z",
+    "published_at": "2020-11-08T19:15:11.150Z"
   },
   {
     "id": 8,
     "name": "MIDPOINT Institute",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-13T17:38:21.303Z",
-    "updated_at": "2020-11-13T17:38:21.310Z"
+    "updated_at": "2020-11-13T17:38:21.310Z",
+    "published_at": "2020-11-13T17:38:21.303Z"
   },
   {
     "id": 9,
     "name": "Russia in Focus",
     "description": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-13T19:13:51.248Z",
-    "updated_at": "2020-11-13T19:13:51.254Z"
+    "updated_at": "2020-11-13T19:13:51.254Z",
+    "published_at": "2020-11-13T19:13:51.248Z"
   }
 ]
