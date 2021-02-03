@@ -884,6 +884,128 @@
     "people": []
   },
   {
+    "id": 120,
+    "title_et": null,
+    "title_en": "Did you miss an event Industry@Tallinn & Baltic Event?",
+    "title_ru": null,
+    "created_by": {
+      "id": 30,
+      "firstname": "Egle",
+      "lastname": "Loor",
+      "username": null
+    },
+    "updated_by": {
+      "id": 4,
+      "firstname": "Siim",
+      "lastname": "Sutt",
+      "username": null
+    },
+    "created_at": "2021-02-02T10:19:17.625Z",
+    "updated_at": "2021-02-02T11:36:23.522Z",
+    "slug_et": null,
+    "slug_en": "did-you-miss-an-event-industry-tallinn-and-baltic-event",
+    "slug_ru": null,
+    "lead_et": null,
+    "lead_en": "We are so happy that the first online Industry@Tallinn & Baltic Event saw over 35 000 virtual attendances – we had close to 900 virtual accreditations from 60 countries – both numbers have set a record for the summit. \n\n\n",
+    "lead_ru": null,
+    "contents_et": null,
+    "contents_en": "The programme of Industry@Tallinn & Baltic Event 2020, online by design, included 62 events and we know it was the challenge to watch them all. But, do not worry, you still have time! If you had accreditation to Industry@Tallinn & Baltic Event or to Black Nights Film Festival, you are welcome to check out the workshops, panels discussions and masterclasses at the [website](https://staging.industry.inscaping.eu/industry-events-search/). Just check the schedule, find the event you want to see as catchup and dig in.  \n\nIf you did not have the accreditation, it is good to know, that some of the events are accessible also without the accreditation, including the most popular European Film Forum Tallinn. Check the events out at [PÖFF@Elisa Stage](https://poff.elisastage.ee/poff?lang=et).\n\n",
+    "contents_ru": null,
+    "publishFrom": "2021-01-19T10:00:00.000Z",
+    "publishUntil": null,
+    "publish_et": null,
+    "publish_en": true,
+    "publish_ru": null,
+    "published_at": "2021-02-02T10:19:17.571Z",
+    "media": {
+      "id": 410,
+      "clipUrlDefault": null,
+      "clipUrl_et": null,
+      "clipUrl_en": null,
+      "clipUrl_ru": null,
+      "imageDefault": [
+        {
+          "id": 3833,
+          "name": "50640171928_b394f124b1_k_79bae557d5.jpg",
+          "alternativeText": "",
+          "caption": "",
+          "width": 2047,
+          "height": 1365,
+          "formats": {
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "/uploads/thumbnail_50640171928_b394f124b1_k_79bae557d5.jpg",
+              "hash": "thumbnail_50640171928_b394f124b1_k_79bae557d5",
+              "mime": "image/jpeg",
+              "name": "thumbnail_50640171928_b394f124b1_k.jpg",
+              "path": null,
+              "size": 7.29,
+              "width": 234,
+              "height": 156
+            }
+          },
+          "hash": "50640171928_b394f124b1_k_79bae557d5",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 467.18,
+          "url": "/uploads/50640171928_b394f124b1_k_79bae557d5.jpg",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "created_at": "2021-01-27T07:38:49.778Z",
+          "updated_at": "2021-02-02T10:33:00.447Z"
+        }
+      ],
+      "image_et": [],
+      "image_en": [],
+      "image_ru": []
+    },
+    "button": [],
+    "article_types": [
+      {
+        "id": 2,
+        "name": "news",
+        "created_at": "2020-08-18T13:49:51.616Z",
+        "updated_at": "2020-09-21T10:57:52.599Z",
+        "article": null,
+        "et": "Uudised",
+        "en": "News",
+        "ru": "Новости",
+        "slug_et": "uudis",
+        "slug_en": "news",
+        "slug_ru": "novost",
+        "name_et": "Uudis",
+        "name_en": "News",
+        "name_ru": "Новость",
+        "label_et": "Uudis",
+        "label_en": "News",
+        "label_ru": "Новость",
+        "Description": null
+      }
+    ],
+    "tag_premiere_types": [],
+    "programmes": [],
+    "tag_genres": [],
+    "tag_keywords": [],
+    "web_authors": [
+      {
+        "id": 6,
+        "namePrivate": "Industry toimetaja",
+        "created_at": "2020-11-04T07:58:15.229Z",
+        "updated_at": "2020-11-04T07:58:15.250Z",
+        "name": {
+          "id": 26383,
+          "et": null,
+          "en": "Editor",
+          "ru": null
+        }
+      }
+    ],
+    "organisations": [],
+    "industry_people": [],
+    "people": []
+  },
+  {
     "id": 64,
     "title_et": null,
     "title_en": "Script Pool Tallinn and POWR Baltic Stories Exchange Projects Revealed",
@@ -15663,13 +15785,13 @@
       "username": null
     },
     "updated_by": {
-      "id": 30,
-      "firstname": "Egle",
-      "lastname": "Loor",
+      "id": 27,
+      "firstname": "Marge",
+      "lastname": "Liiske",
       "username": null
     },
     "created_at": "2021-01-06T11:19:57.217Z",
-    "updated_at": "2021-01-06T11:29:18.477Z",
+    "updated_at": "2021-01-18T15:16:02.228Z",
     "slug_et": null,
     "slug_en": "online-events-of-industry-tallinn-and-baltic-event-boosted-the-new-attendance-record-",
     "slug_ru": null,
