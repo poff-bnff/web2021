@@ -13,6 +13,7 @@ const mappings = yaml.safeLoad(fs.readFileSync(mappingsPath, 'utf8'))
 
 template.locales = mappings.locales[DOMAIN]
 template.defaultLocale = mappings.defaultLocale[DOMAIN]
+template.build = './build/' + DOMAIN
 
 let ssg_conf = yaml.safeDump(template, { 'noRefs': true, 'indent': '4' })
 fs.writeFileSync(ssgConfPath, ssg_conf, 'utf8')

@@ -51,7 +51,7 @@ module.exports = () => {
 
     jsonfile.readFile(file, function(err, obj) {
       fileData.files = obj.files
-      console.log(fileData.files)
+     // console.log(fileData.files)
     })
 
 // Initialize watcher.
@@ -67,7 +67,7 @@ watcher
   .on('add', path => {
 
         let fileName = path.split('/')[2]
-        log(`file -> ${fileName} with path ${path} has been added`)
+       // log(`file -> ${fileName} with path ${path} has been added`)
 
             if (!fileData.files.includes(path)){
 
