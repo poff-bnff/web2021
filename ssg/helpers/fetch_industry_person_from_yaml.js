@@ -219,13 +219,14 @@ if (DOMAIN === 'industry.poff.ee') {
     }
 } else {
 
-    let searchYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), searchYAML, 'utf8')
+    let emptyYAML = yaml.safeDump([], {
+        'noRefs': true,
+        'indent': '4'
+    })
+    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
 
-    let filtersYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), filtersYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
 
-    const yamlPath = path.join(fetchDir, `industrypersons.en.yaml`)
-    fs.writeFileSync(yamlPath, [], 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8');
 
 }
