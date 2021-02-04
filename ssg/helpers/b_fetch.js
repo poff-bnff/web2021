@@ -6,28 +6,28 @@ const modelFile = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
 const DATAMODEL = yaml.safeLoad(fs.readFileSync(modelFile, 'utf8'))
 
 
-const root_model_name = 'POFFiMenu'
-const testmodel = {
-	'poffi_article': {
-		model_name: 'POFFiArticle'
-	},
-	'subMenuItem': {
-		model_name: 'PoffiSubMenuItem',
-		expand: {
-			'poffi_article': {
-				model_name: 'POFFiArticle',
-				expand: {
-					'article_types': {
-						model_name: 'ArticleType'
-					},
-					'programmes': {
-						model_name: 'Programme'
-					}
-				}
-			}
-		}
-	}
-}
+// const root_model_name = 'POFFiMenu'
+// const testmodel = {
+// 	'poffi_article': {
+// 		model_name: 'POFFiArticle'
+// 	},
+// 	'subMenuItem': {
+// 		model_name: 'PoffiSubMenuItem',
+// 		expand: {
+// 			'poffi_article': {
+// 				model_name: 'POFFiArticle',
+// 				expand: {
+// 					'article_types': {
+// 						model_name: 'ArticleType'
+// 					},
+// 					'programmes': {
+// 						model_name: 'Programme'
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 let MODELS = {}
 
@@ -81,7 +81,7 @@ function find_single_obj(minimodel, entries){
 	return entries
 }
 
-function fetch_model(modelData, minimodel) {
+function fetchModel(modelData, minimodel) {
 	make_MODELS(minimodel)
 	for(let single_obj of modelData ){
 
@@ -98,8 +98,8 @@ function fetch_model(modelData, minimodel) {
 // const modelDataDir = path.join(__dirname, '..', 'source', 'strapidata', `${model_name}.yaml`)
 // const modelData = yaml.safeLoad(fs.readFileSync(modelDataDir, 'utf8'))
 
-// let test2 = fetch_model(modelData, testmodel)
+// let test2 = fetchModel(modelData, testmodel)
 // console.log(JSON.stringify(test2[2], 0, 2))
 
-exports.fetch_model = fetchModel
+exports.fetchModel = fetchModel
 

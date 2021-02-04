@@ -2,11 +2,12 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
@@ -17,10 +18,31 @@ const mapping = {
     'shorts.poff.ee': 'HeroArticleShorts',
     'hoff.ee': "HeroArticleHoff"
 }
+const mapping2 = {
+    'poff.ee': 'POFFiArticle',
+    'justfilm.ee': 'JustFilmiArticle',
+    'kinoff.poff.ee': 'KinoffiArticle',
+    'industry.poff.ee': 'IndustryArticle',
+    'shorts.poff.ee': 'ShortsiArticle',
+    'hoff.ee': "HOFFiArticle"
+}
+const minimodel = {
+    'article_et': {
+        model_name: mapping2[DOMAIN]
+    },
+    'article_en': {
+        model_name: mapping2[DOMAIN]
+    },
+    'article_ru': {
+        model_name: mapping2[DOMAIN]
+    }
+}
 
-const STRAPIDATA_HERO = STRAPIDATA[mapping[DOMAIN]][0]
+const strapiDataHeroPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
+const STRAPIDATA_HERO = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
+fetchModel(STRAPIDATA_HERO, minimodel)
+
 const languages = ['en', 'et', 'ru']
-
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} heroarticle ${lang} data`);
     var buffer = {}
@@ -35,5 +57,3 @@ for (const lang of languages) {
     let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `heroarticle.${lang}.yaml`), allDataYAML, 'utf8');
 }
-
-

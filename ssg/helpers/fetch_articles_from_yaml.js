@@ -2,6 +2,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -12,16 +13,69 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const STRAPIDIR = '/uploads/'
 const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 
+
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
-const STRAPIDATA_ARTICLE = STRAPIDATA[modelName]
+const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
+const STRAPIDATA_ARTICLE = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+
+const minimodel = {
+        'article_types': {
+            model_name: 'ArticleType'
+        },
+        'tag_premiere_types': {
+            model_name: 'TagPremiereType'
+        },
+        'programmes': {
+            model_name: 'Programme',
+            expand: {
+                'festival_editions': {
+                    model_name: 'FestivalEdition',
+                    expand: {
+                        'festival': {
+                            model_name: 'Festival'
+                        }
+                    },
+                },
+                'presenters': {
+                    model_name: 'Organisation'
+                },
+                'domains': {
+                    model_name: 'Domain'
+                },
+                'presentedBy': {
+                    model_name: 'PresentedBy',
+                    expand: {
+                        'organisations': {
+                            model_name: 'Organisation'
+                        }
+                    }
+                }
+            },
+            'tag_genres': {
+                model_name: 'TagGenre'
+            },
+            'tag_keywords': {
+                model_name: 'TagKeyword'
+            },
+            'web_authors': {
+                model_name: 'WebAuthor'
+            },
+            'organisations': {
+                model_name: 'Organisation'
+            }
+        }
+    }
+
+
+fetchModel(STRAPIDATA_ARTICLE, minimodel)
+
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
