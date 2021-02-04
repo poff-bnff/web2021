@@ -9,6 +9,9 @@ async function strapiAuth() {
             password: process.env['StrapiPassword']
         }
 
+        // console.log(postData)
+        // console.log(process.env['StrapiHostPoff2021'])
+
         const options = {
             hostname: process.env['StrapiHostPoff2021'],
             path: '/auth/local',
@@ -17,7 +20,7 @@ async function strapiAuth() {
                 'Content-Type': 'application/json'
             }
         }
-
+        // console.log({options, postData})
         const request = https.request(options, (response) => {
             response.setEncoding('utf8')
             let tokenStr = ''

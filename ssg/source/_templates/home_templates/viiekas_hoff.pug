@@ -56,6 +56,7 @@ each news in self.data.articles.sort(sortFunction)
                                     img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg').trio_image
                             .viieka_body
                                 h3.viieka_headline= news.title
-                                .article_lead= news.lead
+                                .article_lead
+				    +format(news.lead)
                                 //- p.dark= news.publishFrom
 

@@ -6,7 +6,7 @@ defaultLocale: et
 source: ./source
 js: ./source/_scripts
 styl: ./source/_styles
-build: ./build
+build: ./build/hoff.ee
 assets: ./assets
 protectedFromCleanup:
     - .git

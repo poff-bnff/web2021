@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "child_process": "^1.0.2",
     "knex": "<0.20.0",
     "pg": "latest",
     "strapi": "3.4.4",
