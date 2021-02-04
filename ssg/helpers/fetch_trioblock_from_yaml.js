@@ -2,20 +2,20 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
-    'poff.ee': 'TrioPOFF',
+    'poff.ee': 'TrioPoff',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHOFF'
+    'hoff.ee': 'TrioHoff'
 }
 const articleMapping = {
     'poff.ee': 'poffi',
@@ -25,7 +25,27 @@ const articleMapping = {
     'shorts.poff.ee': 'shortsi',
     'hoff.ee': 'hoffi'
 }
-const STRAPIDATA_TRIO = STRAPIDATA[mapping[DOMAIN]]
+//used for minimodel
+const mappingMini = {
+    'poff.ee': 'trioPoff',
+    'justfilm.ee': 'trioJustFilm',
+    'kinoff.poff.ee': 'trioKinoff',
+    'industry.poff.ee': 'trioIndustry',
+    'shorts.poff.ee': 'trioShorts',
+    'hoff.ee': 'trioHoff'
+}
+
+const strapiDataTrioPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml` )
+const STRAPIDATA_TRIO = yaml.safeLoad(fs.readFileSync(strapiDataTrioPath, 'utf8'))
+
+const minimodel_trio = {
+    mappingMini[domain] + '_et': {
+        model_name: 
+    },
+
+}
+fetchModel(STRAPIDATA_ARTICLE, minimodel)
+
 
 if (STRAPIDATA_TRIO.length < 1) {
     console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock`)
