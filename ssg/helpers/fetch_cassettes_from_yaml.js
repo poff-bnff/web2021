@@ -3,6 +3,7 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { deleteFolderRecursive, JSONcopy } = require("./helpers.js")
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -14,14 +15,65 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
 const fetchDir = path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const STRAPIDATA_PERSONS = STRAPIDATA['Person']
-const STRAPIDATA_PROGRAMMES = STRAPIDATA['Programme']
-const STRAPIDATA_FE = STRAPIDATA['FestivalEdition']
-const STRAPIDATA_SCREENINGS = STRAPIDATA['Screening']
-const STRAPIDATA_FESTIVALS = STRAPIDATA['Festival']
-const STRAPIDATA_FILMS = STRAPIDATA['Film']
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
+const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
+const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
+const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
+const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
+const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
+const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
+const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
+const STRAPIDATA_FILMS = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+
+
+const minimodel_cassette = {
+    'presenters': {
+        model_name: 'Organisation'
+    },
+    'orderedFilms': {
+        model_name: 'OrderedFilm',
+        expand: {
+            'film': {
+                model_name: 'Film',
+                expand: {
+                    'media': {
+                        model_name: 'FilmMedia'
+                    },
+                    'festival_editions': {
+                        model_name: 'FestivalEdition'
+                    },                    
+                    'credentials': {
+                        model_name: 'Credentials'
+                    },                    
+                    'world_sales': {
+                        model_name: 'Organisation'
+                    },                    
+                    'presentedBy': {
+                        model_name: 'PresentedBy',
+                        expand: {
+                            'organisations': {
+                                model_name: 'Organisation'
+                            }
+                        }
+                    },
+                    'orderedCountries': {
+                        model_name: 'OrderedCountries'
+                    }
+                }
+            }
+        }
+    },
+    'festival_editions': {
+        model_name: 'FestivalEdition'
+    },
+}
+fetchModel(STRAPIDATA_CASSETTE, minimodel_cassette)
+
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
