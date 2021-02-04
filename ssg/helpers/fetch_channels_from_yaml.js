@@ -9,11 +9,12 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
-const STRAPIDATA_CHANNELS = STRAPIDATA['Channel']
+const strapiDataChannelPath = path.join(strapiDataDirPath, 'Channel.yaml')
+const STRAPIDATA_CHANNELS = yaml.safeLoad(fs.readFileSync(strapiDataChannelPath, 'utf8'))
+
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of languages) {
     processData(lang, CreateYAML);

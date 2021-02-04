@@ -7,9 +7,12 @@ const util = require("util")
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'teamsandjuries');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Team'];
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Person'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
+const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataTeamPath, 'utf8'))
+const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
+const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'kinoff.poff.ee';
 
 const languages = ['en', 'et', 'ru']
