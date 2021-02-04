@@ -1,6 +1,14 @@
+#! /bin/bash
+
+SECONDS=0
+cd "/srv/ssg"
+echo $PWD
+
+
 export DOMAIN='poff.ee'
 echo DOMAIN
 echo $DOMAIN
+
 . ./build.sh
 printf '\n\n----------      Finished building, press ENTER to exit      ----------\n\n'
 
