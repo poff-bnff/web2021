@@ -1,43 +1,105 @@
-let testmodel = [
-	'article_types',
-	'web_authors'
-]
-
-
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 
-function find_single_obj(name, ids){
-	const objDataDir = path.join(__dirname, '..', 'source', 'strapidata', `${name}.yaml`)
-	const objData = yaml.safeLoad(fs.readFileSync(objDataDir, 'utf8'))
-	for (let e of ids){
-		let find_ids = objData.filter( ob => {
-			// console.log('ob', ob, ob.id, e.id )
-			return ob.id === e.id
-		})
-	}
-}
+const modelFile = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
+const DATAMODEL = yaml.safeLoad(fs.readFileSync(modelFile, 'utf8'))
 
-function fetch_model(obj_name, minimodel) {
-	const objDataDir = path.join(__dirname, '..', 'source', 'strapidata', `${obj_name}.yaml`)
-	const objData = yaml.safeLoad(fs.readFileSync(objDataDir, 'utf8'))
-	let filled_objects = []
 
-	for(let single_obj of objData ){
-
-		for(let row of testmodel){
-			if(single_obj.hasOwnProperty(row)){
-				let ids = single_obj[row]
-				single_obj[row] = find_single_obj(row, ids)
-
+const root_model_name = 'POFFiMenu'
+const testmodel = {
+	'poffi_article': {
+		model_name: 'POFFiArticle'
+	},
+	'subMenuItem': {
+		model_name: 'PoffiSubMenuItem',
+		expand: {
+			'poffi_article': {
+				model_name: 'POFFiArticle',
+				expand: {
+					'article_types': {
+						model_name: 'ArticleType'
+					},
+					'programmes': {
+						model_name: 'Programme'
+					}
+				}
 			}
 		}
-		filled_objects.push(single_obj)
 	}
-	return filled_objects
 }
 
-let test2 = fetch_model('hof-fi-article', testmodel)
-console.log(test2[0])
-// console.log('test',testmodel)
+let MODELS = {}
+
+function make_MODELS(minimodel) {
+	for (const property_name in minimodel){
+		const submodel = minimodel[property_name]
+		const model_n = submodel.model_name
+		if (MODELS.hasOwnProperty(model_n)) {
+			continue
+		}
+		if (DATAMODEL[model_n].hasOwnProperty('_path')){
+			MODELS[model_n] = yaml.safeLoad(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
+		} else {
+			MODELS[model_n] = null
+		}
+		if(submodel.hasOwnProperty('expand')){
+			make_MODELS(submodel.expand)
+		}
+	}
+}
+
+
+const objDataDir = path.join(__dirname, '..', 'source', 'strapidata')
+
+
+function find_single_obj(minimodel, entries){
+
+  	if (!Array.isArray(entries)){
+        entries = [entries]
+    }
+
+	const objData = MODELS[minimodel.model_name]
+	for (const ix in entries){
+		if (objData) {
+			const e = entries[ix]
+			entries[ix] = objData.filter( ob => {
+				return ob.id === e.id
+			})[0]
+		}
+
+		if (minimodel.expand) {
+			for(let property_name in minimodel.expand){
+				if(entries[ix].hasOwnProperty(property_name)){
+					let ids = entries[ix][property_name]
+					// console.log('rec', property_name, minimodel.expand[property_name])
+					entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
+				}
+			}
+		}
+	}
+	return entries
+}
+
+function fetch_model(modelData, minimodel) {
+	make_MODELS(minimodel)
+	for(let single_obj of modelData ){
+
+		for(let property_name in minimodel){
+			if(single_obj.hasOwnProperty(property_name)){
+				let ids = single_obj[property_name]
+				single_obj[property_name] = find_single_obj(minimodel[property_name], ids)
+			}
+		}
+	}
+	return modelData
+}
+
+// const modelDataDir = path.join(__dirname, '..', 'source', 'strapidata', `${model_name}.yaml`)
+// const modelData = yaml.safeLoad(fs.readFileSync(modelDataDir, 'utf8'))
+
+// let test2 = fetch_model(modelData, testmodel)
+// console.log(JSON.stringify(test2[2], 0, 2))
+
+exports.fetch_model = fetchModel
+
