@@ -1,0 +1,15 @@
+-
+    id: 5
+    festival:
+        id: 6
+    domain:
+        id: 6
+    year: 2021
+    name_et: HÕFF 2021
+    name_en: HÕFF 2021
+    name_ru: HÕFF 2021
+    startDate: '2021-04-29T09:00:00.000Z'
+    endDate: '2021-07-01T20:30:00.000Z'
+    slug_et: hoff-2021
+    slug_en: hoff-2021-en
+    slug_ru: hoff-2021-ru
