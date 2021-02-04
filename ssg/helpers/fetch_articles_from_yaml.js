@@ -25,8 +25,6 @@ const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
 const STRAPIDATA_ARTICLE = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
-console.log('1', STRAPIDATA_ARTICLE[0])
-
 const minimodel = {
         'article_types': {
             model_name: 'ArticleType'
@@ -75,9 +73,7 @@ const minimodel = {
         }
     }
 
-
 fetchModel(STRAPIDATA_ARTICLE, minimodel)
-console.log('2', STRAPIDATA_ARTICLE[0])
 
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
