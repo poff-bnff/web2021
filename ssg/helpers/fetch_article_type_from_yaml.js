@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
