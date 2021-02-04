@@ -1,0 +1,1908 @@
+-
+    id: 15
+    name:
+        id: 11981
+        et: Nordic Hotel Forum
+        en: Nordic Hotel Forum
+    type: Sponsor
+    namePrivate: Nordic Hotel Forum
+    homepageUrl: 'https://www.nordichotels.eu'
+    logoWhite:
+        id: 250
+        name: Nordic_Hotel_Forum_white.svg
+        width: 580
+        height: 68
+        hash: Nordic_Hotel_Forum_white_aebc3eaffe
+        ext: .svg
+        url: /uploads/Nordic_Hotel_Forum_white_aebc3eaffe.svg
+    logoColour:
+        id: 265
+        name: Nordic_Hotel_Forum_color.svg
+        width: 580
+        height: 68
+        hash: Nordic_Hotel_Forum_color_9d6e43f4bd
+        ext: .svg
+        url: /uploads/Nordic_Hotel_Forum_color_9d6e43f4bd.svg
+-
+    id: 11
+    name:
+        id: 11985
+        et: EuroPark
+        en: EuroPark
+    type: Sponsor
+    namePrivate: EuroPark
+    homepageUrl: 'https://europark.ee'
+    logoColour:
+        id: 287
+        name: EuroPark_logo_color.svg
+        width: 960
+        height: 283
+        hash: Euro_Park_logo_color_f7a07637a7
+        ext: .svg
+        url: /uploads/Euro_Park_logo_color_f7a07637a7.svg
+-
+    id: 35
+    name:
+        id: 30390
+        et: Cormac Fox/Vico Films
+        en: Cormac Fox/Vico Films
+    type: ProductionCompany
+    namePrivate: Cormac Fox/Vico Films
+-
+    id: 10
+    name:
+        id: 11986
+        et: Cramo
+        en: Cramo
+    type: Sponsor
+    namePrivate: Cramo
+    homepageUrl: 'https://www.cramo.ee/et'
+    logoWhite:
+        id: 261
+        name: cramo_white.svg
+        width: 160
+        height: 28
+        hash: cramo_white_9329c71c98
+        ext: .svg
+        url: /uploads/cramo_white_9329c71c98.svg
+    logoBlack:
+        id: 263
+        name: cramo_black.svg
+        width: 160
+        height: 28
+        hash: cramo_black_222966a294
+        ext: .svg
+        url: /uploads/cramo_black_222966a294.svg
+    logoColour:
+        id: 262
+        name: cramo_color.svg
+        width: 160
+        height: 28
+        hash: cramo_color_d4548db25b
+        ext: .svg
+        url: /uploads/cramo_color_d4548db25b.svg
+-
+    id: 16
+    name:
+        id: 11990
+        et: Solaris keskus
+        en: Solaris Center
+    namePrivate: Solaris keskus
+    homepageUrl: 'https://www.solaris.ee'
+    logoBlack:
+        id: 286
+        name: Solaris_logo_black.svg
+        width: 401
+        height: 264
+        hash: Solaris_logo_black_0bf7f82ebd
+        ext: .svg
+        url: /uploads/Solaris_logo_black_0bf7f82ebd.svg
+    logoColour:
+        id: 1546
+        name: solaris.png
+        width: 500
+        height: 500
+        formats:
+            thumbnail:
+                url: /uploads/thumbnail_solaris_10ae94cb05.png
+                name: thumbnail_solaris.png
+        hash: solaris_10ae94cb05
+        ext: .png
+        url: /uploads/solaris_10ae94cb05.png
+-
+    id: 17
+    name:
+        id: 12599
+        et: Eesti Teadusagentuur
+        en: Estonian Research Council
+        ru: Estonian Research Council
+    type: Presenter
+    namePrivate: Eesti Teadusagentuur
+    logoColour:
+        id: 321
+        name: Eesti Teadusagentuur_CMYK coated_logo.svg
+        width: 171
+        height: 56
+        hash: Eesti_Teadusagentuur_CMYK_coated_logo_8c09529d56
+        ext: .svg
+        url: /uploads/Eesti_Teadusagentuur_CMYK_coated_logo_8c09529d56.svg
+-
+    id: 53
+    name:
+        id: 30553
+        et: Anniko Films
+        en: Anniko Films
+    type: ProductionCompany
+    namePrivate: Anniko Films
+-
+    id: 3
+    name:
+        id: 3993
+        et: Elisa Eesti
+        en: Elisa Estonia
+        ru: Elisa Estonia
+    type: Presenter
+    namePrivate: Elisa
+    homepageUrl: 'https://elisa.ee'
+    description:
+        id: 381
+        et: Elisa tutvustav text
+        en: 'Elisa description  '
+        ru: Elisa description rus
+    logoWhite:
+        id: 371
+        name: elisa_logo_white.svg
+        width: 850
+        height: 332
+        hash: elisa_logo_white_18f23a119a
+        ext: .svg
+        url: /uploads/elisa_logo_white_18f23a119a.svg
+    logoColour:
+        id: 264
+        name: elisa_logo_blue.svg
+        width: 120
+        height: 47
+        hash: elisa_logo_blue_4312eb5bf2
+        ext: .svg
+        url: /uploads/elisa_logo_blue_4312eb5bf2.svg
+-
+    id: 36
+    name:
+        id: 30391
+        et: Cara Loftus
+        en: Cara Loftus
+    type: ProductionCompany
+    namePrivate: Cara Loftus
+-
+    id: 20
+    type: Presenter
+    namePrivate: Tartu Saksa Kultuuri Instituut
+    logoColour:
+        id: 1045
+        name: DKI Tartu_logo_must.png
+        width: 339
+        height: 480
+        formats:
+            thumbnail:
+                url: /uploads/thumbnail_DKI_Tartu_logo_must_fa15f18f90.png
+                name: thumbnail_DKI Tartu_logo_must.png
+        hash: DKI_Tartu_logo_must_fa15f18f90
+        ext: .png
+        url: /uploads/DKI_Tartu_logo_must_fa15f18f90.png
+-
+    id: 5
+    name:
+        id: 4010
+        et: Nafta Films
+        en: Nafta Films
+        ru: Nafta Films
+    type: Presenter
+    namePrivate: Nafta
+    homepageUrl: 'https://www.nafta.ee/'
+    logoWhite:
+        id: 352
+        name: nafta_logo_white.svg
+        width: 425
+        height: 111
+        hash: nafta_logo_white_cd04e9cbfb
+        ext: .svg
+        url: /uploads/nafta_logo_white_cd04e9cbfb.svg
+    logoBlack:
+        id: 351
+        name: nafta_logo_black.svg
+        width: 425
+        height: 111
+        hash: nafta_logo_black_22306aae1d
+        ext: .svg
+        url: /uploads/nafta_logo_black_22306aae1d.svg
+-
+    id: 37
+    name:
+        id: 30392
+        et: Arizona Productions
+        en: Arizona Productions
+    type: ProductionCompany
+    namePrivate: Arizona Productions
+-
+    id: 6
+    name:
+        id: 4011
+        et: Fritz-kola
+        en: Fritz-kola
+        ru: Fritz-kola
+    type: Presenter
+    namePrivate: Fritz
+    homepageUrl: 'https://www.fritz-kola.de/en/about-us/'
+    logoColour:
+        id: 369
+        name: fritz_logo_black.svg
+        width: 850
+        height: 448
+        hash: fritz_logo_black_d469d7899b
+        ext: .svg
+        url: /uploads/fritz_logo_black_d469d7899b.svg
+-
+    id: 7
+    name:
+        id: 4012
+        et: Club-mate
+        en: Club-mate
+        ru: Club-mate
+    type: Presenter
+    namePrivate: Clubmate
+    homepageUrl: 'http://www.club-mate.ee/'
+    logoColour:
+        id: 372
+        name: clubmate_logo_colour.svg
+        width: 850
+        height: 604
+        hash: clubmate_logo_colour_6a4990e15c
+        ext: .svg
+        url: /uploads/clubmate_logo_colour_6a4990e15c.svg
+-
+    id: 19
+    name:
+        id: 14447
+        et: Goethe Instituut
+    type: Presenter
+    namePrivate: Goethe Instituut
+    logoColour:
+        id: 1031
+        name: Goethe Instituut_logo-01.svg
+        width: 607
+        height: 286
+        hash: Goethe_Instituut_logo_01_497ca097a4
+        ext: .svg
+        url: /uploads/Goethe_Instituut_logo_01_497ca097a4.svg
+-
+    id: 21
+    namePrivate: Justiitsministeerium
+    logoColour:
+        id: 1044
+        name: Justiitsministeerium_logo_3lovi.svg
+        width: 171
+        height: 68
+        hash: Justiitsministeerium_logo_3lovi_4034a888fe
+        ext: .svg
+        url: /uploads/Justiitsministeerium_logo_3lovi_4034a888fe.svg
+-
+    id: 22
+    namePrivate: Sotsiaalministeerium
+    logoColour:
+        id: 330
+        name: Sotsiaalministeerium_logo_pantone.svg
+        width: 186
+        height: 91
+        hash: Sotsiaalministeerium_logo_pantone_484f9957ea
+        ext: .svg
+        url: /uploads/Sotsiaalministeerium_logo_pantone_484f9957ea.svg
+-
+    id: 9
+    name:
+        id: 4050
+        et: High Voltage
+        en: High Voltage
+    type: Presenter
+    namePrivate: 'High Voltage '
+    homepageUrl: 'https://highvoltage.ee/'
+    logoWhite:
+        id: 489
+        name: highvoltage_logo_white.svg
+        width: 850
+        height: 227
+        hash: highvoltage_logo_white_a40048e052
+        ext: .svg
+        url: /uploads/highvoltage_logo_white_a40048e052.svg
+    logoBlack:
+        id: 490
+        name: highvoltage_logo_black.svg
+        width: 850
+        height: 227
+        hash: highvoltage_logo_black_8234f845cb
+        ext: .svg
+        url: /uploads/highvoltage_logo_black_8234f845cb.svg
+-
+    id: 4
+    name:
+        id: 4009
+        et: Eesti Kunstiakadeemia
+        en: Estonian Academy of Arts
+        ru: Эстонская академия художеств
+    type: Presenter
+    namePrivate: EKA
+    homepageUrl: 'https://www.artun.ee/'
+    logoBlack:
+        id: 362
+        name: eka_logo_black_orig.svg
+        width: 114
+        height: 40
+        hash: eka_logo_black_orig_d178f52395
+        ext: .svg
+        url: /uploads/eka_logo_black_orig_d178f52395.svg
+-
+    id: 23
+    namePrivate: SKA
+    logoColour:
+        id: 376
+        name: Sotsiaalkindlustusamet_logo_3lovi.svg
+        width: 189
+        height: 68
+        hash: Sotsiaalkindlustusamet_logo_3lovi_c707599d5a
+        ext: .svg
+        url: /uploads/Sotsiaalkindlustusamet_logo_3lovi_c707599d5a.svg
+-
+    id: 8
+    name:
+        id: 4049
+        et: 'Balti filmi, meedia, kunstide ja kommunikatsiooni instituut '
+        en: 'Baltic Film, Media, Arts and Communication School'
+        ru: 'Балтийский институт кино, медиа, искусства и коммуникации '
+    type: Presenter
+    namePrivate: BFM
+    homepageUrl: 'https://www.tlu.ee/bfm'
+    logoWhite:
+        id: 355
+        name: bfm_logo_white.svg
+        width: 300
+        height: 53
+        hash: bfm_logo_white_1e3cefeae5
+        ext: .svg
+        url: /uploads/bfm_logo_white_1e3cefeae5.svg
+    logoBlack:
+        id: 353
+        name: bfm_logo_black.svg
+        width: 300
+        height: 53
+        hash: bfm_logo_black_79ce4fec7d
+        ext: .svg
+        url: /uploads/bfm_logo_black_79ce4fec7d.svg
+    logoColour:
+        id: 354
+        name: bfm_logo_colour.svg
+        width: 300
+        height: 53
+        hash: bfm_logo_colour_326f9328ba
+        ext: .svg
+        url: /uploads/bfm_logo_colour_326f9328ba.svg
+-
+    id: 38
+    name:
+        id: 30393
+        et: Momento Film
+        en: Momento Film
+    type: ProductionCompany
+    namePrivate: Momento Film
+    description:
+        id: 8553
+        en: >
+            Momento Film is a production company based in Stockholm, Sweden,
+            founded in 2011. Momento strives to be a harbour for both
+            established and new talent who wants to challenge the borders of
+            filmmaking.
+
+
+            Among their previous films can be mentioned TRANSNISTRA by Anna
+            Eborn (Big Screen Award IFFR), HAMADA by Eloy Domínguez Serén (IDFA
+            2018) and MADRE by Simón Mesa Soto (Short Film Competition Cannes
+            2016).
+
+            Momento is working on a slate of projects including the drama MADAME
+            LUNA written by Maurizio Braucci (GOMORRA) and directed by Daniel
+            Espinosa (SAFE HOUSE), the thriller KAUTOKEINO by Isabella Eklöf as
+            well as the documentary LEAVING JESUS by Ellen Fiske.
+
+
+            The producers are part of the producers’ networks EAVE, ACE and
+            Eurodoc. In 2018, David Herdies was Producer on the Move in Cannes.
+-
+    id: 25
+    namePrivate: Õiguskantsler
+    logoColour:
+        id: 1047
+        name: LasteOmbudsman-01-01.svg
+        width: 249
+        height: 83
+        hash: Laste_Ombudsman_01_01_52e6a238ef
+        ext: .svg
+        url: /uploads/Laste_Ombudsman_01_01_52e6a238ef.svg
+-
+    id: 40
+    name:
+        id: 30395
+        et: zentropa sweden
+        en: zentropa sweden
+    type: ProductionCompany
+    namePrivate: zentropa sweden
+    description:
+        id: 8559
+        en: >
+            Zentropa Sweden AB is a production company that produces and
+            co-produces Swedish and European films. The company is based on the
+            west coast of Sweden, in Gothenburg and Trollhättan. The company has
+            two producers, Ronny Fritsche & Lizette Jonjic.
+
+
+            The company has been involved in projects by director Lars von Trier
+            (from Antichrist to the upcoming The House That Jack Built), Susanne
+            Bier (In a Better World), Thomas Vinterberg (The Hunt).
+-
+    id: 26
+    namePrivate: Swedbank
+    logoColour:
+        id: 409
+        name: Swedbank_Vector_Logotype_Pos_RGB.svg
+        width: 2073
+        height: 446
+        hash: Swedbank_Vector_Logotype_Pos_RGB_b8f7d31461
+        ext: .svg
+        url: /uploads/Swedbank_Vector_Logotype_Pos_RGB_b8f7d31461.svg
+-
+    id: 27
+    namePrivate: Mamma
+    logoColour:
+        id: 410
+        name: Mamma_logo_sloganiga_veeb.png
+        width: 842
+        height: 595
+        formats:
+            thumbnail:
+                url: /uploads/thumbnail_Mamma_logo_sloganiga_veeb_56660cd77f.png
+                name: thumbnail_Mamma_logo_sloganiga_veeb.png
+        hash: Mamma_logo_sloganiga_veeb_56660cd77f
+        ext: .png
+        url: /uploads/Mamma_logo_sloganiga_veeb_56660cd77f.png
+-
+    id: 13
+    name:
+        id: 11983
+        et: Keskkonnaagentuur
+        en: The Estonian Environment Agency
+    type: Sponsor
+    namePrivate: Keskkonnaagentuur
+    homepageUrl: 'https://www.keskkonnaagentuur.ee'
+    logoColour:
+        id: 402
+        name: Keskkonnaagentuur_3lovi_pms_logo-01.svg
+        width: 178
+        height: 68
+        hash: Keskkonnaagentuur_3lovi_pms_logo_01_96738f8742
+        ext: .svg
+        url: /uploads/Keskkonnaagentuur_3lovi_pms_logo_01_96738f8742.svg
+-
+    id: 12
+    name:
+        id: 11984
+        et: Freixenet
+        en: Freixenet
+    type: Sponsor
+    namePrivate: Freixenet
+    homepageUrl: 'https://www.freixenet.com'
+    logoColour:
+        id: 377
+        name: Freixenet_logo-gold-01.svg
+        width: 542
+        height: 188
+        hash: Freixenet_logo_gold_01_47677b5f09
+        ext: .svg
+        url: /uploads/Freixenet_logo_gold_01_47677b5f09.svg
+-
+    id: 24
+    namePrivate: Lastekaitse Liit
+    logoColour:
+        id: 1757
+        name: LKL_logo_left (1)-labipaistev taust.png
+        width: 1946
+        height: 463
+        formats:
+            thumbnail:
+                url: >-
+                    /uploads/thumbnail_LKL_logo_left_1_labipaistev_taust_b0ec567b3f.png
+                name: thumbnail_LKL_logo_left (1)-labipaistev taust.png
+        hash: LKL_logo_left_1_labipaistev_taust_b0ec567b3f
+        ext: .png
+        url: /uploads/LKL_logo_left_1_labipaistev_taust_b0ec567b3f.png
+-
+    id: 14
+    name:
+        id: 11982
+        et: Metropol Spa Hotel
+        en: Metropol Spa Hotel
+    type: Sponsor
+    namePrivate: Metropol Spa Hotel
+    homepageUrl: 'https://www.metropol.ee/et/'
+    logoWhite:
+        id: 407
+        name: metropol_logo_white.svg
+        width: 850
+        height: 85
+        hash: metropol_logo_white_3bf1d047fe
+        ext: .svg
+        url: /uploads/metropol_logo_white_3bf1d047fe.svg
+    logoColour:
+        id: 408
+        name: metropol_logo_colour.svg
+        width: 850
+        height: 85
+        hash: metropol_logo_colour_47aaa0c231
+        ext: .svg
+        url: /uploads/metropol_logo_colour_47aaa0c231.svg
+-
+    id: 41
+    name:
+        id: 30541
+        et: Mistrus Media
+        en: Mistrus Media
+    type: ProductionCompany
+    namePrivate: Mistrus Media
+    description:
+        id: 8562
+        en: >
+            MISTRUS MEDIA is one of the most experienced Latvian film production
+            companies, working on international co-productions, TV projects,
+            film production services for foreign productions. Films produced by
+            MISTRUS MEDIA have received several national and international
+            festival awards and have been broadcast worldwide. 
+
+
+            A minority co-production of MISTRUS MEDIA by Sharunas Bartas was the
+            Official Selection of Cannes Film Festival, 2020. In 2020-2021, we
+            plan to release documentary Land (dir. I. Seleckis), feature debut
+            The Shift (dir. R. Kalviņš) and two minority co-productions Natural
+            Light (dir. D. Nagy, Hungary, France, Latvia, Germany) and Tsoi
+            (dir. A. Uchitel, Russia, Latvia). The Mover (dir. D. Sīmanis 2018)
+            was Latvia’s official candidate for the best foreign-language film
+            for the 2020 Oscars.
+-
+    id: 42
+    name:
+        id: 30542
+        et: deFilm
+        en: deFilm
+    namePrivate: deFilm
+    description:
+        id: 8566
+        en: >-
+            deFilm is a Bucharest-based production company founded in 2009.
+            While we started by producing independent shorts that were met with
+            international success, the company has in time developed steadily to
+            embrace a diverse portfolio and a growing network of partners as
+            well as financing resources. We engage in all types of cinematic
+            productions, welcoming diverse approaches and styles that take on
+            the creative stakes that match our values and interests. We enjoy
+            growing together with filmmakers that we can build long-lasting
+            relationships with. Accolades for our work so far include selections
+            or prizes in major international film festivals, such as Cannes,
+            Locarno or Karlovy Vary.
+-
+    id: 29
+    name:
+        id: 27489
+        et: Saksa film
+        en: German Films
+    type: Presenter
+    namePrivate: German Films
+    homepageUrl: 'https://www.german-films.de/'
+    logoWhite:
+        id: 1093
+        name: German Films_logo-01.svg
+        width: 1077
+        height: 306
+        hash: German_Films_logo_01_aa872e5dc8
+        ext: .svg
+        url: /uploads/German_Films_logo_01_aa872e5dc8.svg
+-
+    id: 30
+    namePrivate: Ülemiste Ärimaja
+    homepageUrl: 'http://www.ulemistearimaja.ee'
+    logoColour:
+        id: 3206
+        name: Ulemiste_logo.svg
+        width: 100
+        height: 30
+        hash: Ulemiste_logo_0b9557fb64
+        ext: .svg
+        url: /uploads/Ulemiste_logo_0b9557fb64.svg
+-
+    id: 32
+    name:
+        id: 30387
+        et: AR Content
+        en: AR Content
+    type: ProductionCompany
+    namePrivate: AR Content
+    description:
+        id: 8538
+-
+    id: 43
+    name:
+        id: 30543
+        et: vy/ac Productions
+        en: vy/ac Productions
+    namePrivate: vy/ac Productions
+    description:
+        id: 8569
+        en: >
+            vy/ac Productions aims to produce films that are sensitive to the
+            ethical handling of third world issues while giving a voice to
+            cultural minorities. It has tackled various advocacies such as
+            violence against women, LGBTQ rights, mental health and social
+            justice. These productions won local and international awards such
+            as the Golden Award at the Cairo International Film Festival, Best
+            in Diversity at the James Burkes Global Marketing Awards and NHK
+            Tokyo Prize. The company participated at Cinemart, HAF, APM, Cannes
+            Cinefondation Atelier, Locarno Open Doors and Tribeca Film Institute
+            Network. Its current production, Hello, Stranger, shot completely
+            during quarantine, has amassed a total of 9 million collective
+            views, and is now streaming on YouTube.
+-
+    id: 33
+    name:
+        id: 30388
+        et: Transfax Film Productions ltd.
+        en: Transfax Film Productions ltd.
+    type: ProductionCompany
+    namePrivate: Transfax Film Productions ltd.
+    description:
+        id: 8539
+        en: >-
+            Transfax Film Productions, established in 1989 by Mr. Marek
+            Rozenbaum, specialise in production services in Israel,
+            co-production and production of feature films.
+-
+    id: 44
+    name:
+        id: 30544
+        et: Lucy Loves Drama
+        en: Lucy Loves Drama
+    namePrivate: Lucy Loves Drama
+    description:
+        id: 8572
+        en: >
+            Lucy Loves Drama is a new production company established in the
+            autumn of 2015 by three experienced producers. Lucy Loves Drama
+            believes in stories worth telling.
+-
+    id: 31
+    name:
+        id: 30384
+        et: Allfilm
+        en: Allfilm
+    type: ProductionCompany
+    namePrivate: Allfilm
+    description:
+        id: 8532
+        en: >-
+            Allfilm is an Academy Award and Golden Globe nominated production
+            house operating since 1995. The company’s scope of activity varies
+            from developing and producing quality features, documentaries and TV
+            series to developing transmedia concepts and producing highly
+            finished commercials. The company also provides production services
+            for international films and commercials. Over the years, Allfilm has
+            produced more than 80 films, including international co-productions,
+            and more than 400 commercial films. We have had the honour of
+            working with directors such as Klaus Harö, Zaza Urushadze, Marius
+            Holst, Yoon-Ki Lee, Martti Helde, Tanel Toom, and more. Today, with
+            a permanent staff of twelve, Allfilm is the largest production
+            company in Estonia with partners from all over the world.
+-
+    id: 34
+    name:
+        id: 30389
+        et: Les films du Worso
+        en: Les films du Worso
+    type: ProductionCompany
+    namePrivate: Les films du Worso
+    description:
+        id: 8543
+        en: >
+            In fifteen years of existence, Les films du Worso has already
+            produced more than 40
+
+            feature films, fiction and documentaries for television, and 30
+            short films.
+
+            The catalogue scores fourteen selections at the Cannes Film
+            Festival, twenty eight
+
+            nominations at the César Awards, a nomination to the Oscars for
+            Best International
+
+            Feature Film with TIMBUKTU in 2015 and a Silver Bear at the
+            Berlinale in 2020 with
+
+            DELETE HISTORY.
+-
+    id: 45
+    name:
+        id: 30545
+        et: INSCRIPT
+        en: INSCRIPT
+    namePrivate: INSCRIPT
+    description:
+        id: 8575
+        en: >-
+            INSCRIPT was launched in 2013 by producer Lukas Trimonis and
+            writer-director Egle Vertelyte, both graduates of the National Film
+            and Television School in the UK. 
+
+            Located in Vilnius, Lithuania, INSCRIPT is an award-winning film and
+            TV production company. We create and produce our IP, engage in
+            international co-productions and offer professional production
+            services. The work of the company is successful on an international
+            level as proven with the previous work.
+-
+    id: 54
+    name:
+        id: 30554
+        et: Telesto Film
+        en: Telesto Film
+    type: ProductionCompany
+    namePrivate: Telesto Film
+    description:
+        id: 8604
+        en: >-
+            The TELESTO production company was founded in 2004. From the very
+            beginning, TELESTO has been dedicated to the production of
+            high-quality, positive, spectator-oriented, modern films.
+
+            The production company started with a small number of TV films, but
+            each year has realised more and more ambitious projects, and
+            actively mastered new formats. Apart from producing commercial
+            films, TELESTO has successfully turned its hand to independent art
+            films: The Letter was awarded prizes at many IFF, and was selected
+            to the 60th annual Cannes Festival; The Pitch has been
+            nominated/awarded at many IFF, including Tallinn, Bucharest, Zlin,
+            Chicago, Milan; Spitak won the Best Director at Moscow IFF and was
+            representing Armenia in a Best Foreign Language Film section of the
+            2019 Academy Awards.
+-
+    id: 47
+    name:
+        id: 30547
+        et: ZENTROPA ENTERTAINMENTS
+        en: ZENTROPA ENTERTAINMENTS
+    type: ProductionCompany
+    namePrivate: ZENTROPA ENTERTAINMENTS
+    description:
+        id: 8579
+        en: >
+            ZENTROPA ENTERTAINMENTS, is a Danish film company started in 1992 by
+            director Lars von Trier and producer Peter Aalbæk Jensen. Zentropa
+            is named after the train company Zentropa in the film Europa (1991),
+            which started the collaboration between von Trier and Jensen.
+
+
+            It has produced over 70 feature films and has become the largest
+            film production company in Scandinavia. It owns a number of
+            subsidiary companies in Europe. Zentropa is also responsible for
+            creating a large studio complex called Filmbyen (Film City), where
+            both Zentropa and many other film-related companies are located.
+
+            Zentropa may be best known for creating the Dogme 95 movement,
+            leading to such acclaimed films as Idioterne (1998), Festen (1998)
+            and Mifunes sidste sang (1999).
+-
+    id: 46
+    name:
+        id: 30546
+        et: Paradox House
+        en: Paradox House
+    type: ProductionCompany
+    namePrivate: Paradox House
+    description:
+        id: 8578
+        en: >
+            PARADOX HOUSE brings together three banners that: develop and
+            produce films in-house; provide sales; and market both in-house and
+            for external films and corporations. Find more about us at:
+            www.paradoxhouse.co.uk
+-
+    id: 48
+    name:
+        id: 30548
+        et: DGTL RLGN LLC
+        en: DGTL RLGN LLC
+    type: ProductionCompany
+    namePrivate: DGTL RLGN LLC
+    description:
+        id: 8584
+        en: >
+            DIGITAL RELIGION (DGTL RLGN) LLC is a film production company
+            working with digital projects, music and corporate videos. The
+            company also produces documentaries and debut fiction films.
+-
+    id: 49
+    name:
+        id: 30549
+        et: Sardaana Films
+        en: Sardaana Films
+    type: ProductionCompany
+    namePrivate: Sardaana Films
+-
+    id: 55
+    name:
+        id: 30555
+        et: CAVIAR
+        en: CAVIAR
+    type: ProductionCompany
+    namePrivate: CAVIAR
+    description:
+        id: 8606
+        en: >-
+            Caviar is an award-winning entertainment company with offices in
+            Brussels, Los Angeles, London, Paris & Madrid. In the past 10 years
+            the company produced over thirty motion pictures, eight prestigious
+            fiction series, several documentaries and by doing so – Caviar
+            became one of the leading Belgian production companies. Both on
+            national and international territory, Caviar strives to produce high
+            quality entertainment that intrigues and inspires. Therefore, the
+            company frequently combines upcoming acting talent with experienced
+            actors and writers.
+-
+    id: 51
+    name:
+        id: 30551
+        et: Vega Film
+        en: Vega Film
+    type: ProductionCompany
+    namePrivate: Vega Film
+    description:
+        id: 8595
+        en: >-
+            Vega Film, founded by the producer Katerina Mikhaylova in 2014 in
+            Moscow, is a film production company with its main focus on first
+            features, documentaries and films engaging urgent social topics.
+            Among the emerging talents that Vega Film introduced in Russian
+            cinema are such names as Kseniya Zueva, Evgeniya Yatskina, Alyona
+            Rubinstein, Maria Ignatenko, Veta Geraskina. Their directorial
+            debuts were very well received at both Russian and international
+            film festivals, including Moscow, Pacific Meridian, Tallinn Black
+            Nights, Zlin and Stalker IFF, as well as “Kinotavr”.
+-
+    id: 52
+    name:
+        id: 30552
+        et: KINOKULT
+        en: KINOKULT
+    type: ProductionCompany
+    namePrivate: KINOKULT
+    description:
+        id: 8600
+        en: >-
+            Moscow-based independent film company KINOKULT was founded in 2015
+            by producers Tamara BOGDANOVA and Mikhail KARASEV, with a mission to
+            search for new cinematic language and forms. The company’s focus is
+            on domestic production and international co-production of
+            documentary and feature films, as well as video art, with potential
+            for international distribution. The company’s filmography includes
+            titles that have received awards at both Russian and international
+            film festivals (in Europe, Asia, U.S.). KINOKULT has presented
+            projects in various stages of development at co-production markets
+            such as Karlovy Vary IFF WIP, Les Arcs Industry Village, Producers
+            Network (Marche du Film), Roskino Key Buyers Event etc.
+            Domestically, KINOKULT actively supports young independent
+            filmmakers.
+-
+    id: 62
+    name:
+        id: 30562
+        et: Just a moment
+        en: Just a moment
+    type: ProductionCompany
+    namePrivate: Just a moment
+-
+    id: 56
+    name:
+        id: 30556
+        et: Loaded Films Ltd.
+        en: Loaded Films Ltd.
+    type: ProductionCompany
+    namePrivate: Loaded Films Ltd.
+    description:
+        id: 8608
+        en: >-
+            Established in 2011 by producer Eiko Mizuno-Gray, Loaded Films is
+            based in Tokyo and focused on international co- productions. Feature
+            film projects include Japan-Uzbekistan-Qatar co-production To the
+            Ends of the Earth (Locarno 2019, Piazza Grande Closing Film),
+            written and directed by Kiyoshi Kurosawa, Ten Years Japan (executive
+            producer Hirokazu Kore-eda), and Japan-Latvia co-production Magic
+            Kimono (2017).
+-
+    id: 57
+    name:
+        id: 30557
+        et: Povilanskas Films
+        en: Povilanskas Films
+    type: ProductionCompany
+    namePrivate: Povilanskas Films
+-
+    id: 58
+    name:
+        id: 30558
+        et: 'The LAB – a media production company (Prague, Czech Republic)'
+        en: 'The LAB – a media production company (Prague, Czech Republic)'
+    type: ProductionCompany
+    namePrivate: 'The LAB – a media production company (Prague, Czech Republic)'
+-
+    id: 59
+    name:
+        id: 30559
+        et: Ascending Entertainment
+        en: Ascending Entertainment
+    type: ProductionCompany
+    namePrivate: Ascending Entertainment
+-
+    id: 60
+    name:
+        id: 30560
+        et: Ascending Film
+        en: Ascending Film
+    type: ProductionCompany
+    namePrivate: Ascending Film
+-
+    id: 61
+    name:
+        id: 30561
+        et: Albolina Film
+        en: Albolina Film
+    type: ProductionCompany
+    namePrivate: Albolina Film
+-
+    id: 63
+    name:
+        id: 30563
+        et: Blade Production
+        en: Blade Production
+    type: ProductionCompany
+    namePrivate: Blade Production
+    description:
+        id: 8619
+        en: >
+            Blade films have been awarded internationally at many prestigious
+            festivals such as Berlinale, Oberhausen, Sarajevo, Chicago, Aspen,
+            and many others. The Short film Into the blue (2017) was an Oscar
+            nominee in the category of a Live-Action short film. It was a
+            Student Academy Awards Finalist.
+-
+    id: 64
+    name:
+        id: 30641
+        et: TICO Film Company S.r.l.
+        en: TICO Film Company S.r.l.
+    type: ProductionCompany
+    namePrivate: TICO Film Company S.r.l.
+    description:
+        id: 8623
+        en: >-
+            TICO Film is an independent production company founded by a father
+            and daughter in 2005, both with experience in international asset
+            management in Italy and the UK. To date, TICO has produced 10 films,
+            through access to Italian and international funds. Our films were
+            shown at A-level festivals and have been distributed and broadcast
+            internationally.
+-
+    id: 65
+    name:
+        id: 30642
+        et: Sayonara Film
+        en: Sayonara Film
+    type: ProductionCompany
+    namePrivate: Sayonara Film
+    description:
+        id: 8625
+        en: >
+            Sayonara Film is a production and short film distribution company
+            founded in 2016 by Adam Selo and Olga Torrico, with the aim of
+            producing meaningful, modern and complex films, and a particular
+            focus on powerful and fascinating creative documentaries. In 2017,
+            Sayonara Film co-produced 13.11 - an anthology series of six shorts
+            set in six European countries. The series was acquired by France
+            Television. Among Sayonara Film’s last works, we find the short doc
+            Les Aigles de Carthage by Adriano Valerio, a co-production with
+            France and Tunisia, premiered at 35. International Critics' Week in
+            Venice International Film Festival, and the short Gas Station, that
+            also premiered at 35. SIC and that was awarded with Best Technical
+            Contribution.
+-
+    id: 66
+    name:
+        id: 30643
+        et: Exitfilm
+        en: Exitfilm
+    type: ProductionCompany
+    namePrivate: Exitfilm
+-
+    id: 67
+    name:
+        id: 30644
+        et: Kublai Film
+        en: Kublai Film
+    type: ProductionCompany
+    namePrivate: Kublai Film
+    description:
+        id: 8627
+        en: >-
+            Kublai Film is active in producing art documentaries, with important
+            festival recognitions, as well as from the public and from
+            broadcasters. Now, we are mature enough to start producing feature
+            films, on a wise path to larger projects. 
+-
+    id: 68
+    name:
+        id: 30645
+        et: TeleAut Produzioni
+        en: TeleAut Produzioni
+    type: ProductionCompany
+    namePrivate: TeleAut Produzioni
+    description:
+        id: 8630
+        en: >-
+            TeleAut Produzioni is an independent film production company that
+            combines quality stories with limited budgets. We are always looking
+            for honest, creative and conscious projects and people. Our main
+            goal is the creation of films that move people and raise awareness.
+-
+    id: 69
+    name:
+        id: 30646
+        et: PURPLE NEON LIGHTS
+        en: PURPLE NEON LIGHTS
+    type: ProductionCompany
+    namePrivate: PURPLE NEON LIGHTS
+-
+    id: 71
+    name:
+        id: 30648
+        et: Ombre Rosse Film Production
+        en: Ombre Rosse Film Production
+    type: ProductionCompany
+    namePrivate: Ombre Rosse Film Production
+-
+    id: 70
+    name:
+        id: 30647
+        et: Blackbird productions
+        en: Blackbird productions
+    type: ProductionCompany
+    namePrivate: Blackbird productions
+-
+    id: 72
+    name:
+        id: 30649
+        et: Adastra Films
+        en: Adastra Films
+    type: ProductionCompany
+    namePrivate: Adastra Films
+    description:
+        id: 8633
+        en: >-
+            Adastra Films (since 2008, CEO Sébastien Aubert) is based in Cannes.
+            The company produced the French-Georgian feature Brides (awarded at
+            the Berlinale, 2014), the US feature The Strange Ones (awarded at
+            SXSW, 2017).
+-
+    id: 73
+    name:
+        id: 30650
+        et: Made
+        en: Made
+    type: ProductionCompany
+    namePrivate: Made
+    description:
+        id: 8634
+        en: >-
+            Helsinki-based Made (since 2011, CEO Ilona Tolmunen) produced for
+            example The Hole In The Ground (Sundance, 2019) and Don Juan (IDFA
+            Award, 2015).
+-
+    id: 74
+    name:
+        id: 30651
+        et: Oma Inge Film
+        en: Oma Inge Film
+    type: ProductionCompany
+    namePrivate: Oma Inge Film
+    description:
+        id: 8635
+        en: >-
+            Oma Inge Film (since 2015, by Frauke Kolbmüller) is based in
+            Hamburg. The latest film System Crasher won the Silver Bear
+            Alfred-Bauer-Prize at the 69th Berlinale.
+-
+    id: 76
+    name:
+        id: 30653
+        et: Dansu films
+        en: Dansu films
+    type: ProductionCompany
+    namePrivate: Dansu films
+    description:
+        id: 8638
+        en: >
+            Dansu is a professional film, TV and commercial production company
+            based in Lithuania. They produce, co-produce as well as provide
+            service for foreign productions. Producer Gabija Siurbyte has worked
+            on projects including feature film The Crown Jewels, starring Alicia
+            Vikander and Mikael Marcimain’s Gentlemen. She is a co-producer of
+            TV series Moscow Noir by Academy nominated director Mikael Hafstrom.
+            Her recent feature film Sasha Was Here competed at POFF.
+-
+    id: 75
+    name:
+        id: 30652
+        et: Studio Uljana Kim
+        en: Studio Uljana Kim
+    type: ProductionCompany
+    namePrivate: Studio Uljana Kim
+    description:
+        id: 8637
+        en: >-
+            Studio Uljana Kim is a leading company in Lithuania for producing
+            full length features. Since its foundation in 1997, 16 feature films
+            and 8 documentaries have been produced by the company. Most of them
+            premiered at the most important international film festivals and
+            others were successful at the domestic box office. The company’s
+            goal is to produce and co-produce high quality arthouse films
+            intended for a worldwide audience.
+-
+    id: 77
+    name:
+        id: 30654
+        et: Ugri Film
+        en: Ugri Film
+    type: ProductionCompany
+    namePrivate: Ugri Film
+-
+    id: 78
+    name:
+        id: 30655
+        et: Tasse Film
+        en: Tasse Film
+    type: ProductionCompany
+    namePrivate: Tasse Film
+    description:
+        id: 8642
+        en: >-
+            Founded in 2011, Tasse Film is mainly focused on producing high
+            quality fiction films, working with both established directors as
+            well as discovering new talents and bringing them to international
+            market. Company’s latest titles include films like Oleg by Latvian
+            director Juris Kursietis (Latvia, Lithuania, Belgium, France) and
+            Finnish coproduction Dogs Don’t Wear Pants both of which premiered
+            in the Director’s Fortnight programme in Cannes 2019. 
+-
+    id: 50
+    name:
+        id: 30550
+        et: Garpastum
+        en: Garpastum
+    namePrivate: 'Garpastum '
+    description:
+        id: 8592
+        en: >-
+            Garpastum Pictures is a Moscow-based film company established in
+            2005 by producer Alexander Vaynshteyn. In 2020, he united forces
+            with producer Archil Gelovani and launched Garpastum as an
+            idea-driven film company, focused on international projects from the
+            Russian cultural context. 
+-
+    id: 80
+    name:
+        id: 30657
+        et: Taska Film
+        en: Taska Film
+    type: ProductionCompany
+    namePrivate: Taska Film
+-
+    id: 81
+    name:
+        id: 30658
+        et: Nafta Films
+        en: Nafta Films
+    type: ProductionCompany
+    namePrivate: Nafta Films
+-
+    id: 82
+    name:
+        id: 30659
+        et: Apollo Film Productions
+        en: Apollo Film Productions
+    type: ProductionCompany
+    namePrivate: Apollo Film Productions
+-
+    id: 83
+    name:
+        id: 30660
+        et: Hansafilm
+        en: Hansafilm
+    type: ProductionCompany
+    namePrivate: Hansafilm
+-
+    id: 84
+    name:
+        id: 30661
+        et: Film Angels Productions
+        en: Film Angels Productions
+    type: ProductionCompany
+    namePrivate: Film Angels Productions
+-
+    id: 85
+    name:
+        id: 30662
+        et: Maze Pictures
+        en: Maze Pictures
+    type: ProductionCompany
+    namePrivate: Maze Pictures
+-
+    id: 86
+    name:
+        id: 30663
+        et: Deep Sea Studios
+        en: Deep Sea Studios
+    type: ProductionCompany
+    namePrivate: Deep Sea Studios
+    description:
+        id: 8650
+        en: >
+            Deep Sea Studios is an arts collective and film production company
+            based in Riga, Latvia. Founded by young artists and producers, we
+            operate as a platform where new talents work alongside experienced
+            professionals to create new and enriching artistic experiences.
+-
+    id: 87
+    name:
+        id: 30746
+        et: Antitalent
+        en: Antitalent
+    type: ProductionCompany
+    namePrivate: Antitalent
+-
+    id: 88
+    name:
+        id: 30747
+        et: Rooftop Party Pictures
+        en: Rooftop Party Pictures
+    type: ProductionCompany
+    namePrivate: Rooftop Party Pictures
+-
+    id: 89
+    name:
+        id: 30748
+        et: '435 FILMS, Ukraine'
+        en: '435 FILMS, Ukraine'
+    type: ProductionCompany
+    namePrivate: '435 FILMS, Ukraine'
+-
+    id: 90
+    name:
+        id: 30750
+        et: Filmfabriq Cinemart Ltd.
+        en: Filmfabriq Cinemart Ltd.
+    type: ProductionCompany
+    namePrivate: Filmfabriq Cinemart Ltd.
+-
+    id: 91
+    name:
+        id: 30751
+        et: NOW Productions
+        en: NOW Productions
+    type: ProductionCompany
+    namePrivate: NOW Productions
+-
+    id: 92
+    name:
+        id: 30754
+        et: Faliro House Productions S.A.
+        en: Faliro House Productions S.A.
+    type: ProductionCompany
+    namePrivate: Faliro House Productions S.A.
+-
+    id: 93
+    name:
+        id: 30755
+        et: moloko film
+        en: moloko film
+    type: ProductionCompany
+    namePrivate: moloko film
+-
+    id: 94
+    name:
+        id: 30756
+        et: Scoop Production
+        en: Scoop Production
+    type: ProductionCompany
+    namePrivate: Scoop Production
+    description:
+        id: 8673
+        en: >
+            Scoop Production based in Moscow and Berlin. The company puts its
+            priority on international projects. For the past 16 years Scoop
+            produced more than hundred films, series and organized dozens of
+            events. There are feature films, two series and animated projects in
+            the company’s production.
+-
+    id: 95
+    name:
+        id: 30757
+        et: Ne a Beirut Films
+        en: Ne a Beirut Films
+    type: ProductionCompany
+    namePrivate: Ne a Beirut Films
+-
+    id: 96
+    name:
+        id: 30758
+        et: The Post Republic
+        en: The Post Republic
+    type: ProductionCompany
+    namePrivate: The Post Republic
+-
+    id: 97
+    name:
+        id: 30759
+        et: AMA VISION
+        en: AMA VISION
+    type: ProductionCompany
+    namePrivate: AMA VISION
+    description:
+        id: 8675
+        en: >
+            Ukrainian production company AMA VISION launched in 2018 is
+            producing its first feature film Carol of the Bells with the support
+            of the Ukraine’s Ministry of Culture and Information Policy. Two
+            more feature projects are in development.
+
+
+            Artem Koliubaiev, the company’s CEO and co-founder, has produced
+            three narrative features and three feature documentaries within the
+            last four years. Four of these are created in partnership with
+            STEWOPOL MS.
+-
+    id: 98
+    name:
+        id: 30760
+        et: STEWOPOL MS
+        en: STEWOPOL MS
+    type: ProductionCompany
+    namePrivate: STEWOPOL MS
+-
+    id: 99
+    name:
+        id: 30761
+        et: Rogovin Brothers
+        en: Rogovin Brothers
+    type: ProductionCompany
+    namePrivate: Rogovin Brothers
+    description:
+        id: 8677
+        en: >-
+            “Rogovin Brothers Ltd.” is an independent production company and
+            content house. The company’s goal stems from the aspiration to
+            penetrate the hearts of the audience, to inspire, stimulate and
+            promote a human environment co-existing in peace with nature. The
+            local/Israeli space is the company's main focus, though global
+            issues are also part of its agenda. The company and its people
+            believe in the great power of the film medium, the combination of
+            intelligent technology and a good story.
+             
+            Doubtful - (88 min) With the support of the Israel Film Fund, YES
+            Satellite Broadcaster and 'Gesher' Multicultural Film Fund. 9
+            Nominations Israeli Academy Awards 2017, 100K+ Viewers at Theatrical
+            Release. Dir. and Screenplay Eliran Elya.
+-
+    id: 100
+    name:
+        id: 30762
+        et: Faula Films
+        en: Faula Films
+    type: ProductionCompany
+    namePrivate: Faula Films
+    description:
+        id: 8680
+        en: >
+            FAULA FILMS was founded in Dominican Republic by Natalia Cabral and
+            Oriol Estrada, in order to provide a creative platform for the
+            production of independent filmmaking. Their films include the
+            documentaries You and Me (2014) and Site of Sites (2016). Their
+            first fiction film, Miriam Lies (2018) was co-produced by Mallerich
+            Films Paco Poch (Spain) and is represented by Latido Films (Spain).
+-
+    id: 101
+    name:
+        id: 30763
+        et: Chapulla Bay
+        en: Chapulla Bay
+    type: ProductionCompany
+    namePrivate: Chapulla Bay
+-
+    id: 102
+    name:
+        id: 30764
+        et: LOOK FILM
+        en: LOOK FILM
+    type: ProductionCompany
+    namePrivate: LOOK FILM
+    description:
+        id: 8685
+        en: >
+            LOOK FILM is Moscow-based production company with over decade’s
+            experience producing high-flying art-house feature and short films
+            as well as premium drama series.
+-
+    id: 103
+    name:
+        id: 30765
+        et: The Place of Power
+        en: The Place of Power
+    type: ProductionCompany
+    namePrivate: The Place of Power
+-
+    id: 104
+    name:
+        id: 30766
+        et: R-Media
+        en: R-Media
+    type: ProductionCompany
+    namePrivate: R-Media
+-
+    id: 105
+    name:
+        id: 30767
+        et: Rock Films Studio
+        en: Rock Films Studio
+    type: ProductionCompany
+    namePrivate: Rock Films Studio
+-
+    id: 106
+    name:
+        id: 30768
+        et: Fralita Films
+        en: Fralita Films
+    type: ProductionCompany
+    namePrivate: Fralita Films
+-
+    id: 107
+    name:
+        id: 30769
+        et: Republik
+        en: Republik
+    type: ProductionCompany
+    namePrivate: Republik
+-
+    id: 108
+    name:
+        id: 30770
+        et: Kolomna Film Company
+        en: Kolomna Film Company
+    type: ProductionCompany
+    namePrivate: Kolomna Film Company
+    description:
+        id: 8692
+        en: >
+            Kolomna Film Studio was established in 2010 and named after an
+            ancient district in St.Petersburg, where the film director Alexandra
+            Strelyanaya was born and lives now. In the last few years, here we
+            created documentary and live action films with Strelyanaya as the
+            director. The studio revolves around visual anthropology in live
+            action and documentary and now moves to wider young audience with
+            anthropology of the urban culture of the young generation.
+-
+    id: 79
+    name:
+        id: 30656
+        et: Stellar Film
+        en: Stellar Film
+    type: ProductionCompany
+    namePrivate: Stellar Film
+    description:
+        id: 8694
+        en: >
+            Stellar Film production company based in Tallinn, Estonia
+            established in 2015 by producer Evelin Penttilä. Stellar is
+            producing original content as well as collaborating in international
+            productions – we are experienced co-producers and users of
+            FilmEstonia cash rebate measure. Our short horror film Bad Hair was
+            selected to Sundance 2020 and Finnish-Estonian co-production Maria’s
+            Paradise premiered at the prestigious Toronto Film Festival in
+            September 2019. Among other films that are in development or have
+            finished production, Stellar Film is working on Latvian-Estonian
+            family adventure Christmas in the Jungle (dir. Jaak Kilmi) that will
+            be in cinemas Dec 2020. Stellar Film is part of Estonian Film
+            Cluster and one of the founders of Tallinn Film Wonderland. 
+-
+    id: 109
+    name:
+        id: 30771
+        et: Studio Locomotive
+        en: Studio Locomotive
+    type: ProductionCompany
+    namePrivate: Studio Locomotive
+-
+    id: 110
+    name:
+        id: 30772
+        et: Cassette for timescapes
+        en: Cassette for timescapes
+    type: ProductionCompany
+    namePrivate: Cassette for timescapes
+    description:
+        id: 8697
+        en: >
+            Cassette for timescapes produces films and crossmedia projects that
+            combine innovative vision  and social or political engagement and
+            aims at distributing its films worldwide through a tailor made
+            impact strategy for each project.  
+-
+    id: 111
+    name:
+        id: 30773
+        et: Een van de jongens
+        en: Een van de jongens
+    type: ProductionCompany
+    namePrivate: Een van de jongens
+-
+    id: 112
+    name:
+        id: 30774
+        et: Little Big Story
+        en: Little Big Story
+    type: ProductionCompany
+    namePrivate: Little Big Story
+-
+    id: 113
+    name:
+        id: 30775
+        et: Gariza Films
+        en: Gariza Films
+    type: ProductionCompany
+    namePrivate: Gariza Films
+    description:
+        id: 8699
+        en: >
+            Established in 2010, Gariza Films is a young, independent production
+            company created by filmmaker Lara Izagirre, created with the
+            intention of producing basque films that travel through- out Europe,
+            aiming to reach a wider and more varied audience. Indeed, four of
+            the eight projects produced by the company are European
+            co-productions. The commitment to new talent is another brand
+            identity for the company, which supports new creators with
+            interesting projects for their cultural, social, and artistic value.
+            It also works for equality promoting the role of women, supporting
+            works artistically led by women through the Art Residency “A room of
+            one´s own”. Its feature films have been selected in festivals such
+            as San Sebastian International Film Festival, Sitges Horror Film
+            Festival, New York Horror Film Festival, Nantes Spanish Film
+            Festival, Seattle SIFF 2018 USA…
+-
+    id: 114
+    name:
+        id: 30776
+        et: Sirimiri Films
+        en: Sirimiri Films
+    type: ProductionCompany
+    namePrivate: Sirimiri Films
+-
+    id: 115
+    name:
+        id: 30777
+        et: Achtung Panda! Media GmbH
+        en: Achtung Panda! Media GmbH
+    type: ProductionCompany
+    namePrivate: Achtung Panda! Media GmbH
+-
+    id: 116
+    name:
+        id: 30778
+        et: Aamu Film Company
+        en: Aamu Film Company
+    type: ProductionCompany
+    namePrivate: Aamu Film Company
+-
+    id: 117
+    name:
+        id: 30779
+        et: Totem Films
+        en: Totem Films
+    type: ProductionCompany
+    namePrivate: Totem Films
+-
+    id: 118
+    name:
+        id: 30780
+        et: Poppoli Pictures
+        en: Poppoli Pictures
+    type: ProductionCompany
+    namePrivate: Poppoli Pictures
+    description:
+        id: 8705
+        en: >
+            Poppoli Pictures was founded in 2003 by director/producer Olaf de
+            Fleur. The company is based in Iceland and has produced feature
+            films and documentaries for Icelandic and international audiences.
+-
+    id: 121
+    name:
+        id: 30783
+        et: Purple Pigeon Productions OÜ
+        en: Purple Pigeon Productions OÜ
+    type: Production
+    namePrivate: Purple Pigeon Productions OÜ
+    description:
+        id: 8723
+        et: >
+            Purple Pigeon Productions was founded by Turkish producer Ekin
+            Calisir in 2018 in Tallinn, Estonia, to bring together their
+            experience in the European market with their skills and network in
+            the Global South. Purple Pigeon produces films by female and LGBTQ+
+            directors from the Middle East and Eastern Europe.
+        en: >
+            Purple Pigeon Productions was founded by Turkish producer Ekin
+            Calisir in 2018 in Tallinn, Estonia, to bring together their
+            experience in the European market with their skills and network in
+            the Global South. Purple Pigeon produces films by female and LGBTQ+
+            directors from the Middle East and Eastern Europe.
+-
+    id: 120
+    name:
+        id: 30782
+        et: Varios Lobos
+        en: Varios Lobos
+    type: ProductionCompany
+    namePrivate: Varios Lobos
+-
+    id: 122
+    name:
+        id: 30784
+        et: Bahama Films
+        en: Bahama Films
+    type: ProductionCompany
+    namePrivate: Bahama Films
+    description:
+        id: 8712
+        en: >-
+            Bahama Films is an independent production company. In 2020 we
+            cooperated with 40 writers to deliver over 200 produced TV scripts.
+            In the last 2 years we presented various TV series at international
+            festivals and industry events (Rome, Munich, Odessa).
+-
+    id: 123
+    name:
+        id: 30785
+        et: Tritone Studio
+        en: Tritone Studio
+    type: ProductionCompany
+    namePrivate: Tritone Studio
+    description:
+        id: 8715
+        en: >-
+            Tritone Studio (since 2009) is an artsy film production and
+            film-service studio based in Riga. Started out as an animation and
+            post-production studio, but soon creative minds started to develop
+            and produce their own content and visions.
+-
+    id: 124
+    name:
+        id: 30786
+        et: OXO Production
+        en: OXO Production
+    type: ProductionCompany
+    namePrivate: OXO Production
+    description:
+        id: 8717
+        en: >-
+            OXO Production is recognized as trailblazers of the new TV series
+            production in N. Macedonia,working on development and production of
+            quality TV programs for 15 years.
+
+            Ilija Tiricovski, as part of OXO team, has been working on various
+            projects in different phases of production, including 2 most
+            successful fiction programs broadcasted nationally for the last 10
+            years: Prespav TV sitcom (5 seasons, with regional distribution) and
+            5 Plus TV series for kids (6 seasons, 2 languages separately). Also,
+            he has significant production experience on short and feature films,
+            documentaries and animation. 
+-
+    id: 125
+    name:
+        id: 30787
+        et: Cuba Films
+        en: Cuba Films
+    type: ProductionCompany
+    namePrivate: Cuba Films
+    description:
+        id: 8719
+        en: >
+            Cuba Films was established in 2011 by Ingrid Eloranta and Tanel Pau,
+            who are running the company to this date. As a true market leader in
+            Estonia for international commercial production with more than 10
+            years of experience in the bag, our portfolio includes 500
+            successful projects and 360 clients, and counting. We pride
+            ourselves on being transparent in everything we do, and thus we
+            create longstanding and sustainable partnerships. There are 3
+            sub-brands that operate under the Cuba Films’ family: Estonian
+            Production Service, Estonian Casting and Estonian Locations. 
+-
+    id: 126
+    name:
+        id: 30792
+        et: HAA! Films
+        en: HAA! Films
+    type: Production
+    namePrivate: HAA! Films
+-
+    id: 127
+    name:
+        id: 30793
+        et: Revolver Amsterdam
+        en: Revolver Amsterdam
+    type: Production
+    namePrivate: Revolver Amsterdam
+-
+    id: 128
+    name:
+        id: 31035
+        et: Elle Driver
+        en: Elle Driver
+    namePrivate: Elle Driver
+    description:
+        id: 8720
+        et: >
+            Elle Driver is an international production, sales and acquisitions
+            company based in Paris committed to represent and grow with the
+            world’s most creative rising talents, from well-established to
+            first-film and arthouse directors. Across a broad spectrum of
+            budgets and content, our slate emphasises a diversity of films each
+            with a unique universe and sensibility. Our ambition is to promote
+            worldwide an activist, different – sometimes risky – cinema, through
+            an original, demanding and alternative lineup.
+        en: >-
+            Elle Driver is an international production, sales and acquisitions
+            company based in Paris committed to represent and grow with the
+            world’s most creative rising talents, from well-established to
+            first-film and arthouse directors. Across a broad spectrum of
+            budgets and content, our slate emphasises a diversity of films each
+            with a unique universe and sensibility. Our ambition is to promote
+            worldwide an activist, different – sometimes risky – cinema, through
+            an original, demanding and alternative lineup.
+-
+    id: 129
+    name:
+        id: 31036
+        et: Sardaana Films
+        en: Sardaana Films
+    namePrivate: Sardaana Films
+    description:
+        id: 8721
+        et: >-
+            Sardana Savvina is a producer, promoter of Sakha films, researcher,
+            founder and head of Sakha Cineclub – the association of independent
+            filmmakers of the Sakha Republic. Now working as a producer at State
+            National Film Company “Sakhafilm”. A CEO of own company “Sardaana
+            Films” since 2015, she is a promo producer of many Sakha films.
+            Organiser of festivals of Sakha films in Tatarstan and Tyva
+            Republics (2016); programmer and co-organiser of Sakha films
+            participation at CineVacances 2016 Program at Seoul Art Cinema
+            Cinematheque (Korea); advisor of Native Program at the 67th
+            Berlinale FF (2017), Producer of Special Program in Focus “Sakha
+            Cinema: The World of Mysterious Nature and Myths” at Busan IFF
+            (2017). A Member of Asia Pacific Screen Academy (APSA) since 2016.
+        en: >-
+            Sardana Savvina is a producer, promoter of Sakha films, researcher,
+            founder and head of Sakha Cineclub – the association of independent
+            filmmakers of the Sakha Republic. Now working as a producer at State
+            National Film Company “Sakhafilm”. A CEO of own company “Sardaana
+            Films” since 2015, she is a promo producer of many Sakha films.
+            Organiser of festivals of Sakha films in Tatarstan and Tyva
+            Republics (2016); programmer and co-organiser of Sakha films
+            participation at CineVacances 2016 Program at Seoul Art Cinema
+            Cinematheque (Korea); advisor of Native Program at the 67th
+            Berlinale FF (2017), Producer of Special Program in Focus “Sakha
+            Cinema: The World of Mysterious Nature and Myths” at Busan IFF
+            (2017). A Member of Asia Pacific Screen Academy (APSA) since 2016.
+-
+    id: 131
+    name:
+        id: 31038
+        et: Arizona Productions
+        en: Arizona Productions
+    namePrivate: ' Arizona Productions'
+-
+    id: 130
+    name:
+        id: 31037
+        et: 925 Productions
+        en: 925 Productions
+    namePrivate: 925 Productions
+    description:
+        id: 8722
+        et: |4
+             925 creates character driven drama with strong through lines and has the feature film CLASS A and the TV dramas’ THE CROSSING PLACE and THE LIBERTIES in development with the support of Screen Ireland. Past work includes multiple award winning short films which screened at festivals including Palm Springs, Fantasia, LA Shorts Fest, Galway Film Fleadh, Helsinki IFF and Dublin IFF. Along with this, Laura previously worked as the production executive at Samson Films and shot digital content for Element Pictures.
+        en: >-
+            925 creates character driven drama with strong through lines and has
+            the feature film CLASS A and the TV dramas’ THE CROSSING PLACE and
+            THE LIBERTIES in development with the support of Screen Ireland.
+            Past work includes multiple award winning short films which screened
+            at festivals including Palm Springs, Fantasia, LA Shorts Fest,
+            Galway Film Fleadh, Helsinki IFF and Dublin IFF. Along with this,
+            Laura previously worked as the production executive at Samson Films
+            and shot digital content for Element Pictures.
+-
+    id: 39
+    name:
+        id: 30394
+        et: unafilm
+        en: unafilm
+    namePrivate: unafilm
+    description:
+        id: 8556
+        en: >-
+            unafilm is an active member of ACE, EAVE, EFA, AG DOK, VDF and
+            Filmbüro NW Titus Kreyenberg teaches at EAVE, Torino Film Lab and
+            the Biennale Cinema College.
+-
+    id: 132
+    name:
+        id: 32232
+        et: Baku Media Center
+        en: Baku Media Center
+    namePrivate: Baku Media Center
+-
+    id: 133
+    name:
+        id: 32233
+        et: Mille Bjørke
+        en: Mille Bjørke
+    namePrivate: Mille Bjørke
+-
+    id: 134
+    name:
+        id: 32234
+        et: Ariunaa Tserenpil (Guru Media)
+        en: Ariunaa Tserenpil (Guru Media)
+    namePrivate: Ariunaa Tserenpil (Guru Media)
+-
+    id: 119
+    name:
+        id: 30781
+        et: Quijote Films
+        en: Quijote Films
+    type: Production
+    namePrivate: Quijote Films
+    description:
+        id: 8707
+        et: >
+            Quijote Films is a production company founded in 2009 by Constanza
+            Erenchun and Yassin Velásquez with the aim to support young and
+            challenging voices in contemporary Chilean filmmaking. Giancarlo
+            Nasi born 1986 works as leading producer in Quijote Films,
+            collaborating both in many ! lms that have been internationally
+            acclaimed. Between his latest projects are The Man of the Future by
+            Felipe Ríos, premiered in Karlovy Vary FF 2019, O' cial Selection;
+            Lina from Lima by María Paz González, premiered at TIFF 2019,
+            Discovery Section; and White on White by Theo Court, Best Director
+            Award at Venice FF 2019, Orizzonti Competition. 
+        en: >-
+            Quijote Films is a production company founded in 2009 by Constanza
+            Erenchun and Yassin Velásquez with the aim to support young and
+            challenging voices in contemporary Chilean filmmaking.

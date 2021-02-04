@@ -1,0 +1,212 @@
+-
+    id: 1
+    domain:
+        id: 4
+    title:
+        id: 11974
+        et: KinoFFi toetajad
+        en: Supporters of KinoFF
+        ru: KinoFF поддерживают
+    intro:
+        id: 11975
+        et: 'KinoFF saab toimuma vaid tänu toetajate abile. '
+        en: KinoFF is happening only because of our wonderful supporters
+        ru: 'KinoFF возможен только благодаря тем, кто оказывает поддержку.'
+    supporters:
+        -
+            id: 4
+            order: 1
+            name:
+                id: 11976
+                et: Esitlejad
+                en: Presenters
+                ru: Главный спонсор
+            supporter:
+                -
+                    id: 7
+                    name: PÖFF
+                    customUrl: 'https://poff.ee'
+                    logoColour:
+                        id: 23
+                        name: poff24_logo_orange.svg
+                        width: 494
+                        height: 140
+                        hash: poff24_logo_orange_29e5ebe3d2
+                        ext: .svg
+                        url: /uploads/poff24_logo_orange_29e5ebe3d2.svg
+                -
+                    id: 30
+                    name: Delfi
+                    customUrl: 'https://rus.delfi.ee'
+                    logoColour:
+                        id: 1692
+                        name: Delfi_color.svg
+                        width: 595
+                        height: 147
+                        hash: Delfi_color_b56ad7189b
+                        ext: .svg
+                        url: /uploads/Delfi_color_b56ad7189b.svg
+                -
+                    id: 8
+                    name: Objekt
+                    customUrl: 'https://objekt.is'
+                    logoColour:
+                        id: 1515
+                        name: objekt_logo.svg
+                        width: 200
+                        height: 32
+                        hash: objekt_logo_cb1b56413d
+                        ext: .svg
+                        url: /uploads/objekt_logo_cb1b56413d.svg
+        -
+            id: 5
+            name:
+                id: 11977
+                et: Sponsorid
+                en: Sponsors
+                ru: Спонсоры
+            supporter:
+                -
+                    id: 9
+                    name: INSA
+                    customUrl: 'https://www.integratsioon.ee'
+                    logoColour:
+                        id: 1467
+                        name: integratsioon_logo_colour.svg
+                        width: 567
+                        height: 408
+                        hash: integratsioon_logo_colour_4dc1334111
+                        ext: .svg
+                        url: /uploads/integratsioon_logo_colour_4dc1334111.svg
+                -
+                    id: 10
+                    name: Narva
+                    customUrl: www.narva.ee
+                    logoColour:
+                        id: 1511
+                        name: narva_sp_logo.svg
+                        width: 150
+                        height: 50
+                        hash: narva_sp_logo_9c9872e051
+                        ext: .svg
+                        url: /uploads/narva_sp_logo_9c9872e051.svg
+                -
+                    id: 11
+                    name: Kohtla-Järve
+                    customUrl: 'https://www.kohtla-jarve.ee'
+                    logoColour:
+                        id: 1506
+                        name: narva_vapp.svg
+                        width: 200
+                        height: 250
+                        hash: narva_vapp_d146fe0bf6
+                        ext: .svg
+                        url: /uploads/narva_vapp_d146fe0bf6.svg
+                -
+                    id: 28
+                    name: Jõhvi
+                    customUrl: 'https://www.johvi.ee'
+                    logoColour:
+                        id: 1695
+                        name: johvi.svg
+                        width: 595
+                        height: 842
+                        hash: johvi_27fc95b3f4
+                        ext: .svg
+                        url: /uploads/johvi_27fc95b3f4.svg
+        -
+            id: 6
+            name:
+                id: 11978
+                et: Partnerid
+                en: Partners
+                ru: Партнеры
+            supporter:
+                -
+                    id: 12
+                    name: Viru filmifond
+                    logoColour:
+                        id: 1516
+                        name: viru_film_fund_logo.svg
+                        width: 500
+                        height: 209
+                        hash: viru_film_fund_logo_f37ba9f9a0
+                        ext: .svg
+                        url: /uploads/viru_film_fund_logo_f37ba9f9a0.svg
+                -
+                    id: 13
+                    name: Apollo
+                    customUrl: www.apollo.ee
+                    logoColour:
+                        id: 1055
+                        name: Apollo_Kino_logo-01.svg
+                        width: 673
+                        height: 163
+                        hash: Apollo_Kino_logo_01_252d8e5109
+                        ext: .svg
+                        url: /uploads/Apollo_Kino_logo_01_252d8e5109.svg
+                -
+                    id: 14
+                    name: Prantsuse Instituut
+                    logoColour:
+                        id: 1495
+                        name: Prantsuse Instituut Eestis_Logo_IFE_fond_bleu-01.svg
+                        width: 1194
+                        height: 689
+                        hash: >-
+                            Prantsuse_Instituut_Eestis_Logo_IFE_fond_bleu_01_160576beb5
+                        ext: .svg
+                        url: >-
+                            /uploads/Prantsuse_Instituut_Eestis_Logo_IFE_fond_bleu_01_160576beb5.svg
+                -
+                    id: 15
+                    name: Astri Keskus
+                    customUrl: www.astri.ee/astri-keskus
+                    logoColour:
+                        id: 1544
+                        name: Astri_Keskus_logo_color.svg
+                        width: 715
+                        height: 209
+                        hash: Astri_Keskus_logo_color_7893495a8b
+                        ext: .svg
+                        url: /uploads/Astri_Keskus_logo_color_7893495a8b.svg
+                -
+                    id: 22
+                    name: Amadeus
+                    customUrl: 'http://concert.ee/kontserdi-toimumiskoht/kino-amadeus/'
+                    logoColour:
+                        id: 1588
+                        name: amadeus_logo.svg
+                        width: 1123
+                        height: 794
+                        hash: amadeus_logo_d36b31d247
+                        ext: .svg
+                        url: /uploads/amadeus_logo_d36b31d247.svg
+                -
+                    id: 29
+                    name: KKJK
+                    customUrl: 'https://www.kjkk.ee'
+                    logoColour:
+                        id: 1696
+                        name: kjkk.tif
+                        width: 338
+                        height: 438
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_kjkk_be2333a2a2.tif
+                                name: thumbnail_kjkk.tif
+                        hash: kjkk_be2333a2a2
+                        ext: .tif
+                        url: /uploads/kjkk_be2333a2a2.tif
+                -
+                    id: 31
+                    name: Grenadi
+                    customUrl: 'https://grenardi.ee'
+                    logoColour:
+                        id: 3037
+                        name: Wordmark.svg
+                        width: 2433
+                        height: 985
+                        hash: Wordmark_1516000ac6
+                        ext: .svg
+                        url: /uploads/Wordmark_1516000ac6.svg
