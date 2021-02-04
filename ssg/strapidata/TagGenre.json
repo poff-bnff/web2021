@@ -4,18 +4,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:53:33.492Z",
     "updated_at": "2020-11-19T17:29:33.494Z",
     "value_et": null,
@@ -30,18 +18,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:52:34.312Z",
     "updated_at": "2020-11-19T17:29:39.111Z",
     "value_et": null,
@@ -56,18 +32,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:54:00.880Z",
     "updated_at": "2020-11-19T17:29:43.772Z",
     "value_et": null,
@@ -82,18 +46,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:13.750Z",
     "updated_at": "2020-11-19T17:30:13.761Z",
     "value_et": null,
@@ -108,18 +60,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:22.112Z",
     "updated_at": "2020-11-19T17:30:22.118Z",
     "value_et": null,
@@ -134,18 +74,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:29.591Z",
     "updated_at": "2020-11-19T17:30:29.597Z",
     "value_et": null,
@@ -160,18 +88,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:37.832Z",
     "updated_at": "2020-11-19T17:30:37.837Z",
     "value_et": null,
@@ -186,18 +102,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:45:04.005Z",
     "updated_at": "2020-08-27T10:04:07.537Z",
     "value_et": "Draama",
@@ -212,18 +116,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:46.572Z",
     "updated_at": "2020-11-19T17:30:46.579Z",
     "value_et": null,
@@ -238,18 +130,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:30:53.353Z",
     "updated_at": "2020-11-19T17:30:53.358Z",
     "value_et": null,
@@ -264,18 +144,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:48:21.708Z",
     "updated_at": "2020-08-27T10:05:22.300Z",
     "value_et": "Joonisfilm",
@@ -290,18 +158,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 6,
-      "firstname": "Jaan",
-      "lastname": "Leppik",
-      "username": null
-    },
-    "updated_by": {
-      "id": 3,
-      "firstname": "Liis",
-      "lastname": "Käsper",
-      "username": null
-    },
     "created_at": "2020-08-19T10:45:43.087Z",
     "updated_at": "2020-08-27T10:06:25.358Z",
     "value_et": "Komöödia",
@@ -316,18 +172,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 1,
-      "firstname": "Mihkel",
-      "lastname": "Putrinš",
-      "username": null
-    },
-    "updated_by": {
-      "id": 1,
-      "firstname": "Mihkel",
-      "lastname": "Putrinš",
-      "username": null
-    },
     "created_at": "2020-10-10T19:32:28.194Z",
     "updated_at": "2020-10-10T19:32:28.242Z",
     "value_et": null,
@@ -342,18 +186,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:51:07.863Z",
     "updated_at": "2020-11-19T16:51:07.876Z",
     "value_et": null,
@@ -368,18 +200,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:31:01.590Z",
     "updated_at": "2020-11-19T17:31:01.598Z",
     "value_et": null,
@@ -394,18 +214,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:31:10.862Z",
     "updated_at": "2020-11-19T17:31:10.867Z",
     "value_et": null,
@@ -420,18 +228,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:44:10.111Z",
     "updated_at": "2020-11-19T17:44:10.116Z",
     "value_et": null,
@@ -446,18 +242,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T17:44:19.606Z",
     "updated_at": "2020-11-19T17:44:19.610Z",
     "value_et": null,
@@ -472,18 +256,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-26T10:02:56.448Z",
     "updated_at": "2020-11-26T10:02:56.460Z",
     "value_et": null,
@@ -498,18 +270,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:52:50.802Z",
     "updated_at": "2020-11-19T16:55:42.473Z",
     "value_et": null,
@@ -524,18 +284,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:52:12.341Z",
     "updated_at": "2020-11-19T16:55:47.575Z",
     "value_et": null,
@@ -550,18 +298,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:52:38.989Z",
     "updated_at": "2020-11-19T16:55:53.387Z",
     "value_et": null,
@@ -576,18 +312,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:53:16.851Z",
     "updated_at": "2020-11-19T16:55:58.470Z",
     "value_et": null,
@@ -602,18 +326,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:53:43.642Z",
     "updated_at": "2020-11-19T16:56:03.734Z",
     "value_et": null,
@@ -628,18 +340,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:56:14.322Z",
     "updated_at": "2020-11-19T16:56:14.328Z",
     "value_et": null,
@@ -654,18 +354,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:56:25.269Z",
     "updated_at": "2020-11-19T16:56:25.274Z",
     "value_et": null,
@@ -680,18 +368,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:56:38.154Z",
     "updated_at": "2020-11-19T16:56:38.160Z",
     "value_et": null,
@@ -706,18 +382,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:56:45.234Z",
     "updated_at": "2020-11-19T16:56:53.919Z",
     "value_et": null,
@@ -732,18 +396,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:57:10.461Z",
     "updated_at": "2020-11-19T16:57:10.474Z",
     "value_et": null,
@@ -758,18 +410,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:53:11.067Z",
     "updated_at": "2020-11-19T17:29:08.990Z",
     "value_et": null,
@@ -784,18 +424,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:51:32.061Z",
     "updated_at": "2020-11-19T17:29:22.923Z",
     "value_et": null,
@@ -810,18 +438,6 @@
     "Value_et": null,
     "Value_en": null,
     "Value_ru": null,
-    "created_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
-    "updated_by": {
-      "id": 28,
-      "firstname": "Saara",
-      "lastname": "Huimerind",
-      "username": null
-    },
     "created_at": "2020-11-19T16:54:07.371Z",
     "updated_at": "2020-11-19T17:29:28.521Z",
     "value_et": null,

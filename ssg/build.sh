@@ -1,16 +1,21 @@
+SECONDS=0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
+echo $PWD
 
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
 # node ./helpers/compile_article_pictures.js
 
 echo 'STARTING BUILD'
-[ -d "build" ] && rm -r build/*
-[ ! -d "build" ] && mkdir -p build
-[ ! -d "build/assets" ] && mkdir -p build/assets
-[ -d "source/_fetchdir" ] && rm -r source/_fetchdir/*
-[ ! -d "source/_fetchdir" ] && mkdir -p source/_fetchdir
-[ -d "assets/img/dynamic" ] && rm -r assets/img/dynamic/*
-[ -d "assets/xml" ] && rm -r assets/xml/*
+[ ! -d 'build' ] && mkdir -p 'build'
+[ -d 'build/'$DOMAIN ] && rm -r 'build/'$DOMAIN'/*'
+[ ! -d 'build/'$DOMAIN ] && mkdir -p 'build/'$DOMAIN
+[ ! -d 'build/'$DOMAIN'/assets/' ] && mkdir -p 'build/'$DOMAIN'/assets/'
+[ -d 'source/_fetchdir' ] && rm -r source/_fetchdir/*
+[ ! -d 'source/_fetchdir' ] && mkdir -p source/_fetchdir
+[ -d 'assets/img/dynamic' ] && rm -r assets/img/dynamic/*
+[ -d 'assets/xml' ] && rm -r assets/xml/*
 
 echo initialise entu_ssg.yaml
 node ./initialise_entu_ssg.js
@@ -108,6 +113,6 @@ printf '\n----------                  Processing styles                ---------
 node ./helpers/copy_styles_acc_to_domain.js
 printf '\n----------             Finished processing styles            ----------\n'
 
-cp -R assets/* build/assets/
+cp -R assets/* 'build/'$DOMAIN'/assets'
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
