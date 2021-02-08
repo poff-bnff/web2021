@@ -9,8 +9,9 @@ const rootDir =  path.join(__dirname, '..')
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryevents');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_INDUSTRY_EVENT = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryEvent'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
+const STRAPIDATA_INDUSTRY_EVENT = yaml.safeLoad(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
