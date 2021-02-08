@@ -49,12 +49,10 @@ function make_MODELS(minimodel) {
 	}
 }
 
-
 const objDataDir = path.join(__dirname, '..', 'source', 'strapidata')
 
 
 function find_single_obj(minimodel, entries){
-
   	if (!Array.isArray(entries)){
         entries = [entries]
     }
@@ -63,11 +61,14 @@ function find_single_obj(minimodel, entries){
 	for (const ix in entries){
 		if (objData) {
             const e = entries[ix]
+
             const filtering = objData.filter( ob => {
 				return ob.id === e.id
             })[0]
 
-            entries[ix] = filtering
+            if( filtering !== undefined){
+	            entries[ix] = filtering
+            }
 		}
 
 		if (minimodel.expand) {

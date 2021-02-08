@@ -80,7 +80,7 @@ const minimodel_cassette = {
 }
 const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
-console.log(STRAPIDATA_CASSETTES);
+console.log(JSON.stringify(STRAPIDATA_CASSETTES[1], 0, 2));
 
 const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
