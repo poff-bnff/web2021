@@ -6,16 +6,18 @@ const rueten = require('./rueten.js');
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_IND_PROJECT = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryProject'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
+const STRAPIDATA_IND_PROJECT = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const STRAPIDATA_PERSONS = STRAPIDATA['Person']
-const STRAPIDATA_COMPANIES = STRAPIDATA['Organisation']
+const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
+const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
+const STRAPIDATA_COMPANIES = yaml.safeLoad(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {

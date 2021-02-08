@@ -6,9 +6,11 @@ const rueten = require('./rueten.js');
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'programmes');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_PROGRAMME = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Programme'];
-const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Organisation'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
+const STRAPIDATA_PROGRAMME = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
+const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.yaml')
+const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const languages = ['en', 'et', 'ru']

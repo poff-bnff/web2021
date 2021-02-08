@@ -5,8 +5,10 @@ const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['SixFilms']
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
+const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
@@ -17,8 +19,6 @@ const mapping = {
     'shorts.poff.ee': 'shorts.poff.ee',
     'hoff.ee': 'hoff.ee'
 }
-
-const STRAPIDATA_SIXFILMS = STRAPIDATA
 
 const languages = ['en', 'et', 'ru']
 

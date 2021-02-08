@@ -9,11 +9,16 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Screening']
-const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Film']
-const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Festival']
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['FestivalEdition']
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
+const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
+const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
+const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
+const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
+const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 

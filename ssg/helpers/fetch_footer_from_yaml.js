@@ -12,12 +12,12 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = DOMAIN_SPECIFICS.footer
-const STRAPIDATA_FOOTER = STRAPIDATA[mapping[DOMAIN]]
+const strapiDataFooterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
+const STRAPIDATA_FOOTER = yaml.safeLoad(fs.readFileSync(strapiDataFooterPath, 'utf8'))
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of allLanguages) {
