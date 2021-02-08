@@ -62,10 +62,12 @@ function find_single_obj(minimodel, entries){
 	const objData = MODELS[minimodel.model_name]
 	for (const ix in entries){
 		if (objData) {
-			const e = entries[ix]
-			entries[ix] = objData.filter( ob => {
+            const e = entries[ix]
+            const filtering = objData.filter( ob => {
 				return ob.id === e.id
-			})[0]
+            })[0]
+
+            entries[ix] = filtering
 		}
 
 		if (minimodel.expand) {
@@ -78,11 +80,11 @@ function find_single_obj(minimodel, entries){
 			}
 		}
 	}
-	return entries
+	return entries.filter(a => a !== undefined)
 }
 
 function fetchModel(modelData, minimodel) {
-	make_MODELS(minimodel)
+    make_MODELS(minimodel)
 	for(let single_obj of modelData ){
 
 		for(let property_name in minimodel){

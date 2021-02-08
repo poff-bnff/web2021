@@ -15,7 +15,7 @@ const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const STRAPIDIR = '/uploads/'
 const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 
@@ -23,7 +23,7 @@ const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPID
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLE = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+let STRAPIDATA_ARTICLE = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const minimodel = {
         'article_types': {
@@ -73,8 +73,7 @@ const minimodel = {
         }
     }
 
-
-fetchModel(STRAPIDATA_ARTICLE, minimodel)
+STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLE, minimodel)
 
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
