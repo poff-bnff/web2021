@@ -55,33 +55,60 @@ const objDataDir = path.join(__dirname, '..', 'source', 'strapidata')
 function find_single_obj(minimodel, entries){
   	if (!Array.isArray(entries)){
         entries = [entries]
-    }
 
-	const objData = MODELS[minimodel.model_name]
-	for (const ix in entries){
-		if (objData) {
-            const e = entries[ix]
+		const objData = MODELS[minimodel.model_name]
+		for (const ix in entries){
+			if (objData) {
+	            const e = entries[ix]
 
-            const filtering = objData.filter( ob => {
-				return ob.id === e.id
-            })[0]
+	            const filtering = objData.filter( ob => {
+					return ob.id === e.id
+	            })[0]
 
-            if( filtering !== undefined){
-	            entries[ix] = filtering
-            }
-		}
+	            if( filtering !== undefined){
+		            entries[ix] = filtering
+	            }
+			}
 
-		if (minimodel.expand) {
-			for(let property_name in minimodel.expand){
-				if(entries[ix].hasOwnProperty(property_name)){
-					let ids = entries[ix][property_name]
-					// console.log('rec', property_name, minimodel.expand[property_name])
-					entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
+			if (minimodel.expand) {
+				for(let property_name in minimodel.expand){
+					if(entries[ix].hasOwnProperty(property_name)){
+						let ids = entries[ix][property_name]
+						// console.log('rec', property_name, minimodel.expand[property_name])
+						entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
+					}
 				}
 			}
 		}
+		return entries.filter(a => a !== undefined)[0]
+
+	} else {
+		const objData = MODELS[minimodel.model_name]
+		for (const ix in entries){
+			if (objData) {
+	            const e = entries[ix]
+
+	            const filtering = objData.filter( ob => {
+					return ob.id === e.id
+	            })[0]
+
+	            if( filtering !== undefined){
+		            entries[ix] = filtering
+	            }
+			}
+
+			if (minimodel.expand) {
+				for(let property_name in minimodel.expand){
+					if(entries[ix].hasOwnProperty(property_name)){
+						let ids = entries[ix][property_name]
+						// console.log('rec', property_name, minimodel.expand[property_name])
+						entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
+					}
+				}
+			}
+		}
+		return entries.filter(a => a !== undefined)
 	}
-	return entries.filter(a => a !== undefined)
 }
 
 function fetchModel(modelData, minimodel) {
