@@ -45,9 +45,9 @@ const minimodel_cassette = {
                     'media': {
                         model_name: 'FilmMedia'
                     },
-                    'festival_editions': {
-                        model_name: 'FestivalEdition'
-                    },
+                    // 'festival_editions': {
+                    //     model_name: 'FestivalEdition'
+                    // },
                     'credentials': {
                         model_name: 'Credentials'
                     },
