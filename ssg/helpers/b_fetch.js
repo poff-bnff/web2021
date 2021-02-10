@@ -35,9 +35,9 @@ function make_MODELS(minimodel) {
 	for (const property_name in minimodel){
 		const submodel = minimodel[property_name]
 		const model_n = submodel.model_name
-		if (MODELS.hasOwnProperty(model_n)) {
-			continue
-		}
+		// if (MODELS.hasOwnProperty(model_n)) {
+		// 	continue
+		// }
 		if (DATAMODEL[model_n].hasOwnProperty('_path')){
 			MODELS[model_n] = yaml.safeLoad(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
 		} else {
@@ -49,6 +49,7 @@ function make_MODELS(minimodel) {
 	}
 }
 
+
 const objDataDir = path.join(__dirname, '..', 'source', 'strapidata')
 
 
@@ -57,6 +58,8 @@ function find_single_obj(minimodel, entries){
         entries = [entries]
 
 		const objData = MODELS[minimodel.model_name]
+			// console.log('objData', objData)
+		
 		for (const ix in entries){
 			if (objData) {
 	            const e = entries[ix]
@@ -122,6 +125,7 @@ function fetchModel(modelData, minimodel) {
 			}
 		}
 	}
+
 	return modelData
 }
 
