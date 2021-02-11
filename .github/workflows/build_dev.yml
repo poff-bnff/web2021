@@ -36,7 +36,7 @@ jobs:
 
         - name: Build Project
         #   run: node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
-          run: . ../ssg/build.sh
+          run: . ./ssg/build.sh
           env:
             StrapiHostPoff2021: ${{ secrets.STRAPIHOSTPOFF2021 }}
             StrapiUserName: ${{ secrets.FETCH_USER }}
@@ -59,7 +59,7 @@ jobs:
 #             remote_user: virt84398
 #             remote_key: ${{ secrets.DEPLOY_KEY }}
 
-        -   name: feedback to slack
-            id: feedback
-            uses: poff-bnff/post-to-slack@main
-            if: always()
+#         -   name: feedback to slack
+#             id: feedback
+#             uses: poff-bnff/post-to-slack@main
+#             if: always()
