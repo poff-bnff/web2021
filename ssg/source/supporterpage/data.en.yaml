@@ -1,4 +1,0 @@
-path: supporters
-data:
-    articles: /_fetchdir/articles.en.yaml
-    supporters: /_fetchdir/supporterspage.en.yaml

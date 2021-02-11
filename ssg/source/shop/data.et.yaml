@@ -1,4 +1,0 @@
-path: shop
-data:
-    articles: /_fetchdir/articles.et.yaml
-    shops: /_fetchdir/shops.et.yaml
