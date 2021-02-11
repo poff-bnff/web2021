@@ -43,6 +43,12 @@ const path = require('path');
                     });
                 }
             }
+        },
+        afterDelete(result, params){
+          // console.log('\nR', result, '\nparams', params)
+          let model_id = result.id
+          console.log(model_id)
+          // delete_model(model_id)
         }
     }
 };
