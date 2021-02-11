@@ -1,4 +1,0 @@
-path: 'schedule'
-data:
-    screeningsCalendar: /film/screeningsCalendar.et.yaml
-    articles: /_fetchdir/articles.et.yaml
