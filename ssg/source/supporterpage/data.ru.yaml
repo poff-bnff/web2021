@@ -1,0 +1,4 @@
+path: supportersru
+data:
+    articles: /_fetchdir/articles.ru.yaml
+    supporters: /_fetchdir/supporterspage.ru.yaml

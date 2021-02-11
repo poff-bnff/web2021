@@ -1,0 +1,15 @@
+#navigation.container-fluid.fixed-bottom
+    .row
+        #text-locale.col-12.py-2.text-sm-right
+            - var i = 0
+            each url, locale in self.otherLocalePaths
+                if i > 0
+                    span.px-3 /
+                a.py-3(href=url)= self.language[locale]
+                - i++
+    .row
+        each n in self.navigation
+            a.col-12.col-sm-6.col-md-3.col-xl.py-3(href=n.url class={ 'active': `${self.path}/` === n.url })
+                h3.nav-title.my-0= n.title
+                img.mt-2.w-100.d-none(src=n.picture alt=n.title)
+                p.mt-2.mb-0.d-none= n.text

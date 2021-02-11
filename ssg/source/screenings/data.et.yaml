@@ -1,0 +1,4 @@
+path: screenings
+data:
+    screenings: /_fetchdir/screenings.et.yaml
+    articles: /_fetchdir/articles.et.yaml

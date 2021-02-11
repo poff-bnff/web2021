@@ -1,0 +1,76 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    if self.data.shops
+        each shop in self.data.shops
+
+            section.shop
+
+                //- Poe title
+                if shop.title
+                    h1.section_headline= shop.title
+
+                //- Poe intro
+                if shop.intro
+                    .shop_intro_box
+                        p.shop_intro= shop.intro
+
+                if shop.prodCatList && shop.prodCatList
+                    each prodCatList in shop.prodCatList
+
+                        //- ProdCatList title
+                        //- if prodCatList.title
+                        //-     h3.sub_section_headline= prodCatList.title
+
+                        section.shop_items_list
+
+                            if prodCatList.orderedProductCategories
+                                each orderedProductCategory in prodCatList.orderedProductCategories.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                                    if orderedProductCategory.product_category
+                                        - var product = orderedProductCategory.product_category
+
+                                        a(href= `/${lang_path}${product.path}`).shop_item
+                                            .shop_item_head
+                                                if product.images
+                                                    if product.images.image
+                                                        img.shop_item_img(alt= product.name ? product.name : '' data-src=`https://assets.poff.ee/img/${product.images.image.hash}${product.images.image.ext}`  src=`https://assets.poff.ee/img/${product.images.image.hash}${product.images.image.ext}`)
+                                                    else if product.images.imageDefault
+                                                        img.shop_item_img(alt= product.name ? product.name : '' data-src=`https://assets.poff.ee/img/${product.images.imageDefault.hash}${product.images.imageDefault.ext}`  src=`https://assets.poff.ee/img/${product.images.imageDefault.hash}${product.images.imageDefault.ext}`)
+                                                    else
+                                                        img.shop_item_img(src='/assets/img/static/placeholder_hd_1.jpg')
+
+                                            .shop_item_body
+                                                if product.name && typeof product.name !== 'object'
+                                                    h4= product.name
+
+                                                //- if product.festival_edition && product.festival_edition && product.festival_edition.name
+                                                //-     .card_article_title
+                                                //-         h3.article_title_locale= product.festival_edition.name
+
+                                                //- if product.product_type && product.product_type && product.product_type.name
+                                                //-     .card_article_title
+                                                //-         h3.article_title_locale= product.product_type.name
+
+                                                //- if product.description && typeof product.description !== 'object'
+                                                //-     p= product.description
+
+                                            .shop_item_footer
+                                                //- h4= product.priceAtPeriod[0].price
+
+                                                if product.priceAtPeriod && product.priceAtPeriod[0] && product.priceAtPeriod[0].price
+                                                h4
+                                                    +euro(product.priceAtPeriod[0].price)
+
+
+
+                if shop.shopRules
+                        if typeof shop.shopRules === 'string'
+                            p
+                                +format(shop.shopRules)
+
+
+
+    //- e pood, pealkiri, intro text, toodete leotelu osa, millel samuti pealkiri ja siis listitud tooted, - seos Product_Category’dega
+    //- ja alla veel shopRules text osa, igaks juhuks

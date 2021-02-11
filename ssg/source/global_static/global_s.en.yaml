@@ -1,0 +1,20 @@
+siteTitle: BBNF
+root: /en/
+language:
+    et: eesti
+    en: english
+    ru: русский
+navigation:
+    -
+        url: /countries/
+        title: Countries
+    -
+        url: /languages/
+        title: Languages
+search:
+    url: /en/search/
+    text: |
+        ### Search
+    placeholder: enter →
+    button: Search
+
