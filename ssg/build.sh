@@ -17,8 +17,6 @@ echo 'STARTING BUILD'
 [ -d 'assets/img/dynamic' ] && rm -r assets/img/dynamic/*
 [ -d 'assets/xml' ] && rm -r assets/xml/*
 
-echo initialise entu_ssg.yaml
-node ./initialise_entu_ssg.js
 
 echo 'Fetch strapiData.yaml from Strapi'
 node ./helpers/a_fetch.js
@@ -112,6 +110,9 @@ printf '\n\n----------     Finished downloading all img from Strapi    ---------
 printf '\n----------                  Processing styles                ----------\n\n'
 node ./helpers/copy_styles_acc_to_domain.js
 printf '\n----------             Finished processing styles            ----------\n'
+
+echo initialise entu_ssg.yaml
+node ./initialise_entu_ssg.js
 
 cp -R assets/* 'build/'$DOMAIN'/assets'
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full

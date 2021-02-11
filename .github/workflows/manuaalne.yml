@@ -1,0 +1,37 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+    # push:
+    #     branches: [ add-new-slack-notification ]
+    workflow_dispatch:
+        inputs:
+            slackUserId:
+                required: false
+                description: 'Person who pushed the button'
+            privateChannel:
+                required: false
+                description: 'slackBot and users private channel'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  testjob:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    -   name: feedback to slack
+        id: feedback
+        uses: poff-bnff/post-to-slack@main
+    #   with:
+    #     slackUserId: ${{ github.event.inputs.slackUserId }}
+    #     privateChannel: ${{ github.event.inputs.privateChannel  }}
+        if: always()
+
+    # Use the output from the `feedback` step
+    # - name: Get the output
+    #   run: echo "${{ steps.Tagasiside.outputs }}"
