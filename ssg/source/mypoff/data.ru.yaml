@@ -1,0 +1,5 @@
+path: moipoff
+data:
+    articles: /_fetchdir/articles.ru.yaml
+    shops: /_fetchdir/shops.ru.yaml
+    cassettes: /_fetchdir/cassettes.ru.yaml

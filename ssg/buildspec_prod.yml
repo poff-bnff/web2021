@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+    build:
+        commands:
+            - aws --output text s3 sync --delete --sse AES256 --acl public-read --only-show-errors s3://$S3_SOURCE_BUCKET s3://$S3_BUCKET
+            - aws --output text cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths /\*
+    post_build:
+        commands:
+            - |
+                curl -s -X POST http://slackapp.poff.ee/awshook -H "Content-Type:application/json" -d "{\"id\":\"$CODEBUILD_BUILD_ID\",\"buildNumber\":$CODEBUILD_BUILD_NUMBER,\"startTime\":$CODEBUILD_START_TIME,\"initiator\":\"$CODEBUILD_INITIATOR\",\"commit\":\"$CODEBUILD_RESOLVED_SOURCE_VERSION\",\"domain\":\"$DOMAIN\",\"user\":\"$SLACK_USER\",\"success\":$CODEBUILD_BUILD_SUCCEEDING}"

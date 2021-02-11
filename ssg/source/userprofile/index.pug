@@ -1,0 +1,75 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    section.userprofile
+            if self.label.userprofile
+
+                .sub_section_headline.text_left.p_l_0#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
+                .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
+
+                div.form#thisUserProfile
+                    img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                    div.form-group
+
+                        if process.env['DOMAIN'] !== 'industry.poff.ee'
+                            label.login_label(for='profileImg')= self.label.userprofile.pictureTitle
+                        else
+                            label.login_label(for='profileImg') Profile picture
+
+                        div#imgError
+                        input.input_file#profileImg(type='file' name='filename' onchange ='validateaAndPreview(this.files[0])')
+                    div.form-group
+                        label.login_label(for='email')= self.label.userprofile.email
+                        div#email.dark(name='email')
+                        div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
+                    div.form-group
+                        label.login_label(for='firstName')= self.label.userprofile.firstName
+                        input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                        div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+                    div.form-group
+                        label.login_label(for='lastName')= self.label.userprofile.lastName
+                        input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput='validateLastName(this.id)')
+                        div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
+                    div.form-group
+                        label.login_label(for='gender')= self.label.userprofile.gender
+                        select.login_input#gender(name='gender' oninput='validateGender(this.id)')
+                            option.login_input(value='male')= self.label.userprofile.genderM
+                            option.login_input(value='female')= self.label.userprofile.genderF
+                            option.login_input(value='other')= self.label.userprofile.genderO
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                        div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+                    div.form-group
+                        label.login_label(for='dob')= self.label.userprofile.birthday
+                        input.login_input#dob.form-control(type='date' name='dob', placeholder ="yyyy-mm-dd" max="2007-01-01", min="1905-01-01", oninput="validateDate(this.id), validateBDay(this.id)")
+                        div#dobHelp(class='valid')= self.label.userprofile.ageHelp
+                        div#dateHelp(class='valid')= self.label.userprofile.dateHelp
+                    div.form-group
+                        label.login_label(for='phoneNr')= self.label.userprofile.phone
+                        input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phoneNr' oninput='validatePhoneNr(this.id)' autocomplete="off")
+                        div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
+                    div.form-group
+                        label.login_label= self.label.userprofile.address
+                        br
+                        label.control-label.login_label(for='country')= self.label.userprofile.country
+                        select.login_input#countrySelection.form-control.gds-cr(class='c_valid' country-data-region-id='citySelection' country-data-default-value='EE' data-language=self.locale required='' oninput= 'validateCountry("countrySelection")')
+                    div.form-group
+                        label.control-label.login_label(for='citySelection')= self.label.userprofile.city
+                        select.login_input#citySelection.form-control(required='' oninput= 'validateCity("citySelection")')
+                    button.btn.btn_primary(onclick='validateForm()')= self.label.userprofile.saveButton
+                    p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
+
+
+    style.
+        .invalid {background-color: #f5e4e9; display: block; color: black}
+        .valid {background-color: #e6f7e6; display: none}
+        .c_invalid {background-color: #f5e4e9}
+        .c_valid {background-color: #e6f7e6}
+        h4 {color: #464646}
+        h1 {color: black}
+        #profileSent {color: black}
+        label {color: black}
+        #imgError {color: red}
+
+
+

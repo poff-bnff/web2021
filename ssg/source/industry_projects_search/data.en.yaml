@@ -1,0 +1,6 @@
+path: search-projects
+data:
+    articles: /_fetchdir/articles.en.yaml
+    industryprojects: /_fetchdir/industryprojects.en.yaml
+    search: /_fetchdir/search_projects.en.yaml
+    filters: /_fetchdir/filters_projects.en.yaml

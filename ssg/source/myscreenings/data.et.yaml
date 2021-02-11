@@ -1,0 +1,6 @@
+path: minu_seansid
+data:
+    screenings: /_fetchdir/screenings.et.yaml
+    articles: /_fetchdir/articles.et.yaml
+    search: /_fetchdir/search_screenings.et.yaml
+    filters: /_fetchdir/filters_screenings.et.yaml
