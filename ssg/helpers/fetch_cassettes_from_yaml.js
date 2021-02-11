@@ -24,7 +24,7 @@ const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammeP
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
 const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
-const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
 const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
@@ -36,6 +36,19 @@ const minimodel_cassette = {
     'presenters': {
         model_name: 'Organisation'
     },
+    'tags': {
+        model_name: 'Tags',
+        expand: {
+            'programmes': {
+                model_name: 'Programme',
+                expand: {
+                    'festival_editions': {
+                        model_name: 'FestivalEdition',
+                    }
+                }
+            }
+        }
+    },
     'orderedFilms': {
         model_name: 'OrderedFilm',
         expand: {
@@ -45,9 +58,9 @@ const minimodel_cassette = {
                     'media': {
                         model_name: 'FilmMedia'
                     },
-                    // 'festival_editions': {
-                    //     model_name: 'FestivalEdition'
-                    // },
+                    'festival_editions': {
+                        model_name: 'FestivalEdition'
+                    },
                     'credentials': {
                         model_name: 'Credentials'
                     },
@@ -64,7 +77,10 @@ const minimodel_cassette = {
                     },
                     'orderedCountries': {
                         model_name: 'OrderedCountries'
-                    }
+                    },
+                    'languages': {
+                        model_name: 'Language'
+                    },
                 }
             }
         }
@@ -82,6 +98,50 @@ const minimodel_cassette = {
     },
 }
 const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+
+// console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].domain);
+// console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].festival);
+
+const minimodel_screenings = {
+    'introQaConversation': {
+        model_name: 'IntroConversationQandA'
+    },
+    'location': {
+        model_name: 'Location',
+        expand: {
+            'hall': {
+                model_name: 'Hall',
+                expand: {
+                    'cinema': {
+                        model_name: 'Cinema',
+                        expand: {
+                            'town': {
+                                model_name: 'Town'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    'extraInfo': {
+        model_name: 'Translated'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'screening_mode': {
+        model_name: 'ScreeningMode'
+    },
+    'subtitles': {
+        model_name: 'Language'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    }
+}
+const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
+
 
 console.log(JSON.stringify(STRAPIDATA_CASSETTES[0], 0, 2));
 
@@ -126,7 +186,6 @@ if(CHECKPROGRAMMES) {
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         let festival_editions = STRAPIDATA_FE.map(edition => edition.id)
         if (cassette.festival_editions && cassette.festival_editions.length) {
-            console.log(cassette.festival_editions);
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
             return cassette_festival_editions_ids.filter(cfe_id => festival_editions.includes(cfe_id))[0] !== undefined
         } else {
@@ -168,17 +227,17 @@ for (const lang of allLanguages) {
 
         const s_cassette_copy = JSONcopy(s_cassette)
 
-        if (s_cassette_copy.festival_editions && s_cassette_copy.festival_editions.length) {
-            for (const festEdIx in s_cassette_copy.festival_editions) {
-                var festEd = s_cassette_copy.festival_editions[festEdIx]
-                console.log(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0]);
-                var festival = JSONcopy(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0])
-                if (festival) {
-                    s_cassette_copy.festivals = []
-                    s_cassette_copy.festivals.push(festival)
-                }
-            }
-        }
+        // if (s_cassette_copy.festival_editions && s_cassette_copy.festival_editions.length) {
+        //     for (const festEdIx in s_cassette_copy.festival_editions) {
+        //         var festEd = s_cassette_copy.festival_editions[festEdIx]
+        //         console.log(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0]);
+        //         var festival = JSONcopy(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0])
+        //         if (festival) {
+        //             s_cassette_copy.festivals = []
+        //             s_cassette_copy.festivals.push(festival)
+        //         }
+        //     }
+        // }
 
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
@@ -683,6 +742,7 @@ function generateAllDataYAML(allData, lang){
         cinemas: mSort(filters.cinemas),
     }
 
+    console.log(cassette_search);
     let searchYAML = yaml.safeDump(cassette_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_films.${lang}.yaml`), searchYAML, 'utf8')
 
