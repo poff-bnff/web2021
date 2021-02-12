@@ -91,17 +91,20 @@ build()
     if [ $site_name ]
     then
 
+        BUILDDIR=$(node ./helpers/name_build_directory.js)
+        echo "Build directory: $BUILDDIR"
+
         printf '\n----------                  Processing styles                ----------\n\n'
         node ./helpers/copy_styles_acc_to_domain.js
         printf '\n----------             Finished processing styles            ----------\n'
 
         printf "\nBuilding...\n"
 
-        [ -d "build" ] && rm -r build/*
-        [ ! -d "build" ] && mkdir -p build
-        [ ! -d "build/assets" ] && mkdir -p build/assets
+        [ -d "build/$BUILDDIR" ] && rm -r "build/$BUILDDIR/*"
+        [ ! -d "build/$BUILDDIR" ] && mkdir -p "build/$BUILDDIR"
+        [ ! -d "build/$BUILDDIR/assets" ] && mkdir -p "build/$BUILDDIR/assets"
 
-        cp -R assets/* build/assets/
+        cp -R assets/* "build/$BUILDDIR/assets"
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi
