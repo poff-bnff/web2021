@@ -2,10 +2,10 @@
 
 SECONDS=0
 
-cd "/srv/ssg"
+# cd "/srv/ssg"
 
-# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-# cd $DIR
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
 echo $PWD
 
 export DOMAIN='hoff.ee'
