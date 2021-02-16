@@ -335,112 +335,6 @@
             ext: .svg
             url: /uploads/jf10_en_fc2ff413d6.svg
 -
-    id: 2
-    namePrivate: Hundipass 16
-    product_type:
-        id: 4
-    festival_edition:
-        id: 1
-    codePrefix: h16
-    slug_et: product-category
-    slug_en: product-category
-    slug_ru: product-category
-    name:
-        id: 3924
-        et: Hundipass 16
-        en: Wolf Pass 16
-        ru: Wolf Pass 16
-    description:
-        id: 7932
-        et: >
-            Hundipass 16 sisaldab 16 Hundipassi piletit.
-
-
-            Lubab seansile võtta kuni 2 piletit.
-
-
-            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
-            Kinoffil.
-
-
-            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
-            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
-            olema passi omanik.
-
-
-            PÖFFi passid ei kehti PÖFFi veebikinos.
-
-
-            [Kuidas Hundipassi
-            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
-        en: >-
-            Wolf Pass 16 includes 16 Wolf Pass tickets (Hundipassi pilet)
-
-
-            Allows to take up to 2 tickets per screening.
-
-
-            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
-
-
-            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
-            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
-            ticket holders entering the screening must be the Pass owner.
-
-
-            PÖFF Passes are not valid for PÖFF Virtual Cinema
-
-
-            [How to use Wolf
-            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
-    validityPeriod:
-        -
-            id: 3
-            startDateTime: '2020-10-13T09:00:00.000Z'
-            endDateTime: '2020-11-29T10:00:00.000Z'
-    salesPeriod:
-        -
-            id: 4
-            startDateTime: '2020-10-13T09:00:00.000Z'
-            endDateTime: '2020-11-29T10:00:00.000Z'
-    ticketingRight:
-        -
-            id: 2
-            ticketType: Hundipassi pilet
-            rightLimit: 16
-    priceAtPeriod:
-        -
-            id: 2
-            startDateTime: '2020-10-13T09:00:00.000Z'
-            endDateTime: '2020-11-29T10:00:00.000Z'
-            price: 70
-    images:
-        id: 2
-        imageDefault:
-            id: 1528
-            name: hp16_et.svg
-            width: 555
-            height: 800
-            hash: hp16_et_40a44eab40
-            ext: .svg
-            url: /uploads/hp16_et_40a44eab40.svg
-        image_et:
-            id: 1528
-            name: hp16_et.svg
-            width: 555
-            height: 800
-            hash: hp16_et_40a44eab40
-            ext: .svg
-            url: /uploads/hp16_et_40a44eab40.svg
-        image_en:
-            id: 1524
-            name: hp16_en.svg
-            width: 555
-            height: 800
-            hash: hp16_en_ad1fdfcf60
-            ext: .svg
-            url: /uploads/hp16_en_ad1fdfcf60.svg
--
     id: 1
     namePrivate: Hundipass 8
     product_type:
@@ -546,3 +440,304 @@
             hash: hp08_en_9070908c5b
             ext: .svg
             url: /uploads/hp08_en_9070908c5b.svg
+-
+    id: 2
+    namePrivate: 2020 / Hundipass 16
+    product_type:
+        id: 4
+    festival_edition:
+        id: 1
+    codePrefix: h16
+    slug_et: product-category
+    slug_en: product-category
+    slug_ru: product-category
+    name:
+        id: 3924
+        et: Hundipass 16
+        en: Wolf Pass 16
+        ru: Wolf Pass 16
+    description:
+        id: 7932
+        et: >
+            Hundipass 16 sisaldab 16 Hundipassi piletit.
+
+
+            Lubab seansile võtta kuni 2 piletit.
+
+
+            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
+            Kinoffil.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Hundipassi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
+        en: >-
+            Wolf Pass 16 includes 16 Wolf Pass tickets (Hundipassi pilet)
+
+
+            Allows to take up to 2 tickets per screening.
+
+
+            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema
+
+
+            [How to use Wolf
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 3
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    salesPeriod:
+        -
+            id: 4
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    ticketingRight:
+        -
+            id: 2
+            ticketType: Hundipassi pilet
+            rightLimit: 16
+    priceAtPeriod:
+        -
+            id: 2
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 70
+    images:
+        id: 2
+        imageDefault:
+            id: 1528
+            name: hp16_et.svg
+            width: 555
+            height: 800
+            hash: hp16_et_40a44eab40
+            ext: .svg
+            url: /uploads/hp16_et_40a44eab40.svg
+        image_et:
+            id: 1528
+            name: hp16_et.svg
+            width: 555
+            height: 800
+            hash: hp16_et_40a44eab40
+            ext: .svg
+            url: /uploads/hp16_et_40a44eab40.svg
+        image_en:
+            id: 1524
+            name: hp16_en.svg
+            width: 555
+            height: 800
+            hash: hp16_en_ad1fdfcf60
+            ext: .svg
+            url: /uploads/hp16_en_ad1fdfcf60.svg
+-
+    id: 7
+    namePrivate: TEST Pass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 5
+    codePrefix: tp
+    slug_et: testtoode
+    slug_en: testpass
+    slug_ru: passtest
+    name:
+        id: 32679
+        et: Testtoode pass
+        en: Test Pass
+        ru: Pass Test
+    description:
+        id: 8726
+        et: Test pass kirjeldus
+        en: Test pass description
+        ru: 'Pass test '
+    validityPeriod:
+        -
+            id: 13
+            startDateTime: '2021-04-29T09:00:00.000Z'
+            endDateTime: '2021-05-02T20:00:00.000Z'
+    salesPeriod:
+        -
+            id: 14
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-05-02T09:00:00.000Z'
+    priceAtPeriod:
+        -
+            id: 7
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-05-02T09:00:00.000Z'
+            price: 0.01
+    images:
+        id: 7
+        imageDefault:
+            id: 3854
+            name: testtoode_et.svg
+            width: 555
+            height: 800
+            hash: testtoode_et_4c19ec6074
+            ext: .svg
+            url: /uploads/testtoode_et_4c19ec6074.svg
+        image_et:
+            id: 3854
+            name: testtoode_et.svg
+            width: 555
+            height: 800
+            hash: testtoode_et_4c19ec6074
+            ext: .svg
+            url: /uploads/testtoode_et_4c19ec6074.svg
+        image_en:
+            id: 3855
+            name: testtoode_en.svg
+            width: 555
+            height: 800
+            hash: testtoode_en_664d953e9d
+            ext: .svg
+            url: /uploads/testtoode_en_664d953e9d.svg
+        image_ru:
+            id: 3855
+            name: testtoode_en.svg
+            width: 555
+            height: 800
+            hash: testtoode_en_664d953e9d
+            ext: .svg
+            url: /uploads/testtoode_en_664d953e9d.svg
+-
+    id: 6
+    namePrivate: 2021 / HÕFFi pass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 5
+    codePrefix: hp1
+    slug_et: hoffi_pass
+    slug_en: hpff_pass
+    slug_ru: pass_hoff
+    name:
+        id: 32678
+        et: HÕFFi pass
+        en: HÕFF Pass
+        ru: HÕFF Pass
+    description:
+        id: 8725
+        et: >-
+            Soovitame osta HÕFFi pass soodushinnaga ja varakult, kuna
+            kinosaalidesse lubatakse publikut vaid 50% ulatuses ja kohad
+            täituvad kiiresti.
+
+
+            **Mida HÕFFi pass võimaldab?**
+
+            Osaleda kõigil Haapsalu kultuurikeskuses toimuvatel HÕFFi
+            seanssidel.
+
+            Vaadata kodukinos tasuta varasemate festivalide publikulemmikuid.
+            HÕFFi varasalvest pärit filme saab vaadata alates märtsi teisest
+            nädalast kuni festivali alguseni. Soojendusseansside filmivalikusse
+            kuulub umbes 10 linateost. Täpsem info peagi tulekul.
+
+
+            **Kuidas HÕFFi sooduspassi kätte saab?**
+
+            HÕFFi passi ostjale väljastatakse kaelakaart. Kaelakaardi saab kätte
+            Haapsalu kultuurikeskuses asuvast festivali infolauast alates 30.
+            aprilli keskpäevast.
+
+            HÕFFi pass on personaalne ja kehtib vaid isikule, kelle nimi ja
+            näopilt on trükitud passi kaelakaardile.
+
+
+            **Mis saab siis, kui festival ära jääb?**
+
+            Passi saab ümber vormistada HÕFFi veebikinos kasutamiseks või meile
+            tagasi müüa. Küsimuste korral kirjutage
+            [info@poff.ee](mailto:info@poff.ee).
+        en: >-
+            Soovitame osta HÕFFi pass soodushinnaga ja varakult, kuna
+            kinosaalidesse lubatakse publikut vaid 50% ulatuses ja kohad
+            täituvad kiiresti.
+
+
+            **Mida HÕFFi pass võimaldab?**
+
+            Osaleda kõigil Haapsalu kultuurikeskuses toimuvatel HÕFFi
+            seanssidel.
+
+            Vaadata kodukinos tasuta varasemate festivalide publikulemmikuid.
+            HÕFFi varasalvest pärit filme saab vaadata alates märtsi teisest
+            nädalast kuni festivali alguseni. Soojendusseansside filmivalikusse
+            kuulub umbes 10 linateost. Täpsem info peagi tulekul.
+
+
+            **Kuidas HÕFFi sooduspassi kätte saab?**
+
+            HÕFFi passi ostjale väljastatakse kaelakaart. Kaelakaardi saab kätte
+            Haapsalu kultuurikeskuses asuvast festivali infolauast alates 30.
+            aprilli keskpäevast.
+
+            HÕFFi pass on personaalne ja kehtib vaid isikule, kelle nimi ja
+            näopilt on trükitud passi kaelakaardile.
+
+
+            **Mis saab siis, kui festival ära jääb?**
+
+            Passi saab ümber vormistada HÕFFi veebikinos kasutamiseks või meile
+            tagasi müüa. Küsimuste korral kirjutage
+            [info@poff.ee](mailto:info@poff.ee).
+    validityPeriod:
+        -
+            id: 11
+            startDateTime: '2021-04-30T09:00:00.000Z'
+            endDateTime: '2021-05-02T20:00:00.000Z'
+    salesPeriod:
+        -
+            id: 12
+            startDateTime: '2021-02-09T08:00:00.000Z'
+            endDateTime: '2021-05-01T09:00:00.000Z'
+    priceAtPeriod:
+        -
+            id: 6
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-03-31T21:00:00.000Z'
+            price: 39
+    images:
+        id: 6
+        imageDefault:
+            id: 3857
+            name: hoff_pass_2021_39_et.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_et_e2104419eb
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_et_e2104419eb.svg
+        image_et:
+            id: 3857
+            name: hoff_pass_2021_39_et.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_et_e2104419eb
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_et_e2104419eb.svg
+        image_en:
+            id: 3858
+            name: hoff_pass_2021_39_en.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_en_3830812074
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_en_3830812074.svg

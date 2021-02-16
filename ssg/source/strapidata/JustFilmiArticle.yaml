@@ -867,688 +867,6 @@
         -
             id: 3
 -
-    id: 25
-    created_by:
-        id: 14
-        firstname: Heleen
-        lastname: Sutt
-    created_at: '2020-11-30T09:53:11.341Z'
-    title_et: 20. Just Filmi võidufilmid ja eripreemiad
-    slug_et: 20-just-filmi-voidufilmid-ja-eripreemiad
-    title_en: 20. Just Film grand prix winner
-    slug_en: 20-just-film-grand-prix-winner
-    title_ru: Гран-при фестиваля молодежных и детских фильмов Just Film
-    slug_ru: gran-pri-festivalya-molodezhnyh-i-detskih-filmov-just-film
-    lead_et: >-
-        **Põhja-Euroopa suurima noorte- ja lastefilmide festivali Just Film
-        juubeliaasta grand prix läks Prantsusmaale**
-    lead_en: >
-        **The grand prix of Northern Europe’s biggest youth and children’s film
-        festival Just Film went to France**
-    lead_ru: >-
-        **Гран-при фестиваля молодежных и детских фильмов Just Film получила
-        французская картина**
-    contents_et: >+
-        Rahvusvaheline filmifestival Just Film, mis toimus 13. novembrist 29.
-        novembrini tähistas tänavu oma 20. sünnipäeva! Eriline aasta tõi
-        kinolinale, ja esmakordselt ka koju huvitavad ja põnevad filmid üle kogu
-        maailma. Just Filmi missioon on läbi kvaliteetse filmikunsti käsitleda
-        tänapäeva maailmas aktuaalseid, olulisi ja tõsiseid teemasid eesmärgiga
-        luua arutelu laste, noorte ja täiskasvanute vahel.
-
-
-        Vaatamata keerulisele aastale toimus Just Filmi raames tänavu üks
-        Euroopa, kaks rahvusvahelist ja kolm maailma esilinastust! Üks maailma
-        esilinastustest oli Eesti oma Rasmus Merivoo
-        ["Kratt"](https://justfilm.ee/film/kratt/), mis sai publikult palava
-        vastuvõtu.
-
-        Just Filmil tuli näitamisele kokku 42 täispikka- ning 3 lühifilmi, mis
-        jagunesid juba tuttavate programmide vahel - lastefilmide,
-        noortefilmide, teadusdokumentaalide ning lapse õiguste programm.
-
-
-        Just Filmi laste- ja noortežüriid andsid eripreemiad just Eesti
-        filmidele. Lastežürii tõstis esile režissööride Meelis Arulepp ning
-        Karsten Kiilerich animafilmi
-        ["Sipsik"](https://justfilm.ee/film/sipsik/) (Eesti, 2020) filmimuusika
-        ning noortežürii kiitis režissööri Rasmus Merivoo
-        ["Kratt"](https://justfilm.ee/film/kratt/) (Eesti, 2020) visuaalset
-        seadet.
-
-
-        Esmakordselt aitasid Just Filmi lapse õiguste programmi koostada noored
-        ise - [Märka Last](https://markalast.ee) platvormi toimetajad. Tänavuse
-        lapse õiguste programmi juhtlause "Mitte ainult lastele, vaid koos
-        lastega" suunab tähelepanu sellele, kuivõrd palju võib noorte kaasamine
-        neid puudutavatesse teemadesse arutelu rikastada ning edasi viia.
-
-
-        Festivali tegevjuht Mikk Granström sõnas: "Oleme väga õnnelikud, et
-        vaatamata keerulistele aegadele õnnestus meil füüsilisel kujul festivali
-        korraldada. Sealjuures oli meil võimalik viia läbi ka Just Filmi
-        rahvusvahelised võistlusprogrammid ning säilitada filmiprogrammi kõrget
-        kunstilist taset. Soovin tänada kogu PÖFFi ning Just Filmi meeskonda!
-        Ning eriline tänu läheb loomulikult meie publikule, nii kinos kui
-        veebis. Kohtume 2021. aasta novembris!"
-
-
-        ##### **2020. aasta Just Filmi võidufilmid:**
-
-
-
-        ##### **Lastežürii parima lastefilmi auhind**
-
-        [“Margot’ ja Marguerite imeline
-        seiklus”](https://justfilm.ee/film/margot-and-marguerite-i-imeline-seiklus/)
-
-        The Fantastic Journey of Margot & Marguerite
-
-        R: Pierre Coré
-
-        Prantsusmaa 2020
-
-
-        “Põnevaid filme oli palju ning igaüks neist oli omamoodi huvitav ja
-        õpetlik. Aga lõpuks me ikka tegime otsuse ning võitjafilm meeldis meile
-        oma huvitava loo ja tugeva näitlemisega. 1 tüdruk tegi kahte rolli ja
-        seda meie meelest suurepäraselt! See on film, mis rääkis uues olukorras
-        hakkama saamisega ja kõike seda väga mänguliselt. Meie valisime
-        võitjafilmiks „Margot ja Marguerite’i imeline seiklus“, mis on pöörane
-        lugu sellest, kuidas noored tüdrukud ootamatult ajas rändavad ning uues
-        ajastus hakkama saavad.”
-
-
-        **Lastežürii eriauhind:**
-
-        "Eriauhinna soovime anda armastatud Eesti kangelasele Sipsikule. Meie
-        meelest oli "Sipsik" filmi muusika nii haarav ja tore, et just
-        filmimuusika eest seda filmi tunnustada soovimegi."
-
-
-        Lastežürii: Kaarel Uueni, Kerstin Kalda, Kuno Wilhelm Rohusaar, Mari
-        Krashevski, Sarah Liis Luha
-
-
-
-        ##### **Noortežürii parima noortefilmi auhind**
-
-        [“50 või kaks vaala kohtuvad
-        rannal”](https://justfilm.ee/film/50-voi-kaks-vaala-kohtuvad-rannal/)
-
-        50 or Two Whales Meet on the Beach
-
-        R: Jorge Cuchi
-
-        Mehhiko 2020
-
-
-        “Selleaastase Just Filmi noortežürii auhinna anname pärast pikki ja
-        tuliseid vaidlusi filmile, mis sütitas intriige juba päevi enne selle
-        vaatamist. Tegu on filmiga, milles julge teemakäsitlus kohtub värske
-        pildikeele, oskuslikult kirjutatud tegelaste, professionaalse
-        näitlejatöö ja omapärase montaažiga; filmiga, mida vaadates kohtusid
-        meie kõrged ootused nende väärilise linateosega, ja loodetavasti
-        filmiga, mis kohtub veel paljude kinolinade ja vaatajatega. Noortežürii
-        auhind läheb filmile “50 või kaks vaala kohtuvad rannal”.”
-
-
-        **Noortežürii eriauhind:**
-
-        "Eriauhinna saab "Kratt" (Eesti, 2020) visuaalselt kõige omapärasema
-        filmi eest."
-
-
-
-        Noortežürii: Anna Linda Elvre, Gerli Rehkalt, Hans Robert Kannukene,
-        Helena Maarja Tarro
-
-
-
-        ##### **ECFA auhind parimale Euroopa lastefilmile**
-
-        [“Klaaspoiss”](https://justfilm.ee/film/klaaspoiss/)
-
-        Glassboy
-
-        R: Samuele Rossi
-
-        Itaalia 2020
-
-
-        “Me reisisime läbi filmide mööda Euroopat ja aega. Viibisime nii
-        momendis kui minevikus. Fantastilised rännakud ajas, ekskursioonid
-        pimedatesse ja müstilistesse muinasjuttudesse, igapäeva kooliellu,
-        esimene armastus, päevikud ja piraadiseiklused - lai valik lugusid, mis
-        on meid mitmel moel mõjutanud. Need filmid inspireerisid meid kaasa
-        mõtlema ja reflekteerima, täitsid meid elevusega ning üle kõige andsid
-        need filmid võimaluse läbi imeliste peategelaste kogeda laste ja noorte
-        elu.
-
-
-        Tänavune Euroopa lastefilmide programm viis meid küll mitmetele
-        erinevatele teekondadele, kuid üks neist tõusis eriliselt esile. Lugu,
-        mis läbi suurepärase näitlejameisterlikkuse näitab isoleerituse
-        ületamist ning ühe indiviidi võimalust tunda end sõprusgruppi kuuluvana.
-        Peategelane leiab jõudu, et oma elutee üle kontroll haarata ning oma
-        headust täis, kuid liialt kaitsva perekonna samuti uue olukorraga
-        kohanema panna. Just filmi rikkalike karakterite, imeilusalt loodud
-        maailma, kaasahaarava ning hästi kirjutatud loo tõttu anname ECFA
-        auhinna filmile “Klaaspoiss”.”
-
-
-        ECFA Žürii: Mike Tait (Suurbritannia), Mariella Harpelunde Jensen
-        (Taani), Julia Fleißig (Saksamaa)
-
-
-
-        ##### **Just Film grand prix selle aasta parimale noortefilmile**
-
-        [“Slaalom"](https://justfilm.ee/film/slaalom/)
-
-        Slalom
-
-        R: Charlène Favier
-
-        Prantsusmaa 2020
-
-
-        “Rahvusvaheline žürii nautis noortefilmide võistlusprogrammi filme ning
-        hindab kõrgelt filmides tõststatud teemasid. Nägime mitmeid lugusid, kus
-        täiskasvanud käitusid vastutustundetult ning lapsed pidid end vanema
-        rolli asetama. Filmides tõusis läbivalt küsimusi: “Kes siin loos on laps
-        ja kes täiskasvanu? Mis juhtub, kui täiskasvanu mõtlematu tegutsemine
-        laotab raskuse just selle noore õlule, kes täiskasvanut kõige rohkem
-        usaldab?”. Üks film tõusis esile oma imeliselt autentse portreeringuga
-        keerulisest situatsioonist. Räägituna teismelise perspektiivist, kuid
-        ilma teisi karaktereid demoniseerimata, oli tegemist looga, mis julges
-        puudutada väärkohtlemise ja hoolimatuse teemasid väga realistlikul
-        viisil. Võimas film, äärmiselt ausate esitlustega. Just Filmi grand prix
-        2020 “Slaalom”.”
-
-
-        **Eraldi tõi rahvusvaheline žürii esile:**
-
-        Südantlõhestav lugu, mis kirjeldab jõuliselt ühe lapse lõputut ja
-        tingimusteta armastust oma ema vastu. Selle näitlejanna esitlus on selle
-        filmi hing. Tema aus ja haavatav, kuid kahe jalaga maa peal olek tõstab
-        loo järgmisele tasemele. Žürii soovib tõsta esile Luna Mwezi tema
-        lummava esituse eest filmis "Süstlapargi laps (Šveits, 2020)". 
-
-
-        Rahvusvaheline žürii: Guy Davies (Suurbritannia), Elen Lotman (Eesti),
-        Satu Tuuli Karhu (Soome)
-
-
-        Kuigi Just Filmi festival on tänaseks lõppenud saab PÖFFi parimaid
-        palasid vaadata veel **6. detsembrini PÖFFi veebikinos**
-        [kino.poff.ee](https://kino.poff.ee)!
-
-
-
-        Just Film on Pimedate Ööde filmifestivali (PÖFF) noorte- ja lastefilmide
-        alafestival, mis toimub igal aastal novembrikuus paralleelselt PÖFFi
-        põhiprogrammiga. Näitamisele tulevad filmid, mis lisaks
-        meelelahutuslikule aspektile kannavad endas ka hariduslikku eesmärki.
-        Festivalil linastub igal aastal ligikaudu 50 filmi ning publikuarvu
-        poolest on Just Filmist saanud tänaseks Eesti üks suuremaid
-        noorteüritusi.
-
-
-        Filmifestivali korraldamine on keeruline ettevõtmine ja ilma heade
-        sõprade, toetajate ja sponsoriteta poleks see võimalik. Festival tänab
-        kõiki, kes on kaasa aidanud selle toimumisele! 
-
-    contents_en: >-
-        Tallinn Black Nights Film Festival’s youth and children’s film
-        sub-festival Just Film celebrated its 20th birthday. Held from the 13th
-        until the 29th of November, Just Film brought exciting and important
-        films to the cinemas and, for the first time, via the PÖFF virtual,
-        available on the Estonian territory. The mission of Just Film is to use
-        the art of cinema as a channel for bringing attention to topics that are
-        timely, important, and serious with the aim to spark discussion between
-        children and adults, thus creating more understanding and empathy.
-         
-        The Just Film festival consisted of 42 full-features and three short
-        films which were divided between children’s films, youth films, science
-        documentaries, and the children’s rights programmes.
-         
-        Just Film main prize, the grand prix, given out by the International
-        Jury went to “Slalom” (France, 2020), director Charlène Favier. The
-        International Jury special mention was given to “Platzspitzbaby”
-        (director Pierre Monnard, Switzerland 2020) lead Luna Mwezi. ECFA Award
-        for the best European children’s film went to “Glassboy” (Italy, 2020)
-        by director Samuele Rossi. Just Film Youth Jury Best Film Award was
-        given to “50 or Two Whales Meet on the Beach” (Mexico, 2020) by director
-        Jorge Cuchi. And Just Film Children’s Jury Best Film Award to "The
-        Fantastic Journey of Margot & Marguerite" (France, 2020) by director
-        Pierre Coré.
-         
-        Just Film Children’s and Youth Juries presented special mentions to two
-        Estonian films. The Children’s Jury’s special mention went to animation
-        “Sipsik” (Estonia 2020, directed by Meelis Arulepp and Karsten
-        Kiilerich) for its score and the Youth Jury’s special mention was given
-        to “Kratt” (Estonia 2020, directed by Rasmus Merivoo) for its unique
-        cinematography.
-         
-        Mikk Granström, the director of the Just Film Festival said: „We are
-        extremely happy that regardless of the complicated situation all over
-        the world, we have managed to organise the festival in cinemas. Just
-        Film carried out its International competition programmes and maintained
-        the high artistic standard of the film programme. I wish to thank the
-        BNFF and Just Film teams! And a special thank you to our unbelievable
-        audience in cinemas as well as homes. We will meet again in November
-        2021.“
-
-
-
-        ##### The winners of Just Film 2020:
-         
-        ##### **Just Film Children’s Jury Best Film Award**
-
-        "The Fantastic Journey of Margot & Marguerite"
-
-        Director: Pierre Coré
-
-        France 2020
-         
-        “There were a lot of exciting films, and each one of them was
-        interesting and educative. Finally, we came to a decision and the
-        winning film was selected because of its fascinating story and strong
-        acting. One girl performed two parts, and she did them wonderfully! The
-        film was about managing new situations and doing it playfully. Just Film
-        Children’s Jury Best Film Award goes to “The Fantastic Journey of Margot
-        & Marguerite” - a crazy story of how two girls unexpectedly travel in
-        time and cope in the new era."
-         
-        **Children’s Jury special mention:**
-
-        „Our special mention goes to the loved Estonian character „Sipsik“. In
-        our opinion, the music in „Sipsik“ was very gripping and fun, and it is
-        the main reason for this special mention.“
-         
-        Just Film Children’s Jury members: Kaarel Uueni, Kerstin Kalda, Kuno
-        Wilhelm Rohusaar, Mari Krashevski, and Sarah Liis Luha
-         
-         
-        ##### **Just Film Youth Jury Best Film Award**
-
-        "50 or Two Whales Meet on the Beach"
-
-        Director: Jorge Cuchi
-
-        Mexico 2020
-         
-        “This year's Just Film Youth Jury Best Film Award is presented, after
-        long and heated discussions, to a film that sparked intrigue days before
-        its screening. It is a film where a bold theme meets with fresh
-        cinematography, well-written characters, professional acting and a
-        unique montage. The film met our high expectations, and we hope it will
-        be screened in many more cinemas. Just Film Youth Jury Best Film Award
-        goes to  "50 or Two Whales Meet on the Beach”."
-         
-        **Youth Jury special mention:**
-
-        „Our special mention goes to „Kratt“ for the most unconventional
-        visuals.“
-         
-        Just Film Youth Jury members: Anna Linda Elvre, Gerli Rehkalt, Hans
-        Robert Kannukene, and Helena Maarja Tarro
-         
-         
-        ##### **ECFA Award for the best European children’s film**
-
-        "Glassboy"
-
-        Director: Samuele Rossi
-
-        Italy 2020
-         
-        “We travelled across Europe with films, we were out and about in the
-        present and have made trips into the past. Fantastic time travels,
-        excursions into dark and mysterious fairytale worlds, everyday school
-        life, first love, diaries, and pirate adventures – a wide range of
-        stories have affected us in many different ways. They inspired us to
-        sympathise and to reflect, they thrilled us with excitement, and above
-        all, they let us experience the stories of various young protagonists. 
-         
-        Of all the wonderful journeys we were taken on, one stood out for its
-        exceptionally well-acted story of overcoming isolation, and translating
-        one individual’s feeling of ‘otherness’ to become accepted into a group
-        of close friends. Despite a well-meaning but overprotective family, our
-        central character is empowered to take control of their own path through
-        life, and gradually his family learn to adapt together with him. For its
-        rich characterisations in a beautifully designed world, and an engaging
-        and well-written storyline featuring friendship, courage and freedom –
-        the ECFA Award goes to GLASSBOY. ”
-         
-        ECFA Jury members: Mike Tait (UK), Mariella Harpelunde Jensen (Denmark),
-        Julia Fleißig (Germany)
-
-         
-        ##### **Just Film grand prix**
-
-        "Slalom"
-
-        Director: Charlène Favier
-
-        France 2020
-         
-        “The Jury enjoyed watching all the films and appreciated that the films
-        tackled important and topical issues. We saw many stories about grownups
-        behaving irresponsibly and children having to act responsibly. In many
-        of the films, the question arises - who here actually is a child and who
-        is a grownup? And what happens when a grownup with irresponsible
-        behaviour puts a burden on the shoulders of the one person that trusts
-        them the most? There was one film, in particular, that stood out for us
-        for its incredibly authentic portrayal of a complicated situation. Told
-        from a teenage perspective without alienating or demonising other
-        characters in the film, it was brave enough to tackle issues of abuse
-        and neglect in a very realistic way. A powerful film with very honest
-        performances. We’re very pleased to present the Just Film 2020 grand
-        prix for Best Youth Film to SLALOM.”
-         
-        **Specal mention to an actress:**
-
-        „A heartbreaking story that describes powerfully a child's endless and
-        unconditional love for her mother. This actress's performance is the
-        soul of this film. Her honest, vulnerable, yet grounded presence lifts
-        the story to a new level and makes the film stand out. The jury wishes
-        to give an honourable mention to Luna Mwezi for her captivating
-        performance in Needle Park Baby.“
-         
-         
-        International Jury members: Guy Davies (UK), Elen Lotman (Estonia), Satu
-        Tuuli Karhu (Finland)
-
-         
-        ##### **Films that premiered at Just Film this year**
-
-        Regardless of the complicated year, Just Film presented one European,
-        two international, and three world premieres. 
-         
-        **European premiere**
-
-        “The Time Guardians”
-
-        Russia 2020
-
-        Director: Alexey Telnov
-         
-        **International premieres**
-
-        “Max and the Wild Bunch”
-
-        Germany 2020
-
-        Director: Winfried Oelsner
-         
-        “Tell Her”
-
-        Russia 2020
-
-        Director: Aleksandr Molochnikov
-         
-        **World premieres**
-
-        “Call Me Blackbird”
-
-        Russia 2020
-
-        Director: Pavel Mirzoev
-         
-        “Glassboy”
-
-        Italy 2020
-
-        Director: Samuele Rossi
-         
-        “Kratt”
-
-        Estonia 2020
-
-        Director: Rasmus Merivoo
-
-
-
-        The festival would like to thank all of its supporters, friends,
-        sponsors and volunteers for their contribution and help!
-    contents_ru: >-
-        Проходивший с 13 по 29 ноября международный кинофестиваль Just Film
-        отметил в этом году 20-летие. В особенный год увлекательные фильмы со
-        всего мира показывали как на экранах кинотеатров, так и дома на
-        специальной онлайн-платформе. Миссия Just Film – через просмотр
-        качественных фильмов разбирать важные и актуальные в современном мире
-        темы, способствовать возникновению дискуссии между детьми, молодежью и
-        взрослыми.
-
-
-        Несмотря на тяжелый год, в этом году в рамках Just Film состоялись три
-        мировые, две международные и одна европейская премьера. Среди мировых
-        премьер была и впервые показанная картина из Эстонии «Кратт» (реж.
-        Размус Меривоо), которую публика встретила очень тепло.
-
-
-        Всего на Just Film было показано 42 полнометражных и три
-        короткометражных фильма, которые вошли в уже знакомые программы:
-        детские, молодежные, научно-документальные фильмы и программа по правам
-        ребенка.
-
-
-        Детское и юношеское жюри наградили специальными призами именно эстонские
-        фильмы. Детское жюри отметило музыку к мультфильму Меэлиса Арулеппа и
-        Карстена Кийлериха «Сипсик» (Эстония, 2020), а молодежное жюри –
-        визуальную обработку в фильме Размуса Меривоо «Кратт» (Эстония, 2020).
-
-
-        Впервые в составлении подборки для программы Just Film по правам ребенка
-        приняла участие сама молодежь, редакторы платформы Märka Last (рус. –
-        «Заметь ребенка»). Нынешний девиз программы по правам ребенка «Не только
-        для детей, но и с детьми» обращает внимание на то, в какой степени
-        вовлечение молодых людей в решение волнующих их вопросов может обогатить
-        и продвинуть дискуссию.
-
-
-        Директор фестиваля Микк Гранстрём сказал: «Мы очень рады, что, несмотря
-        на тяжелые времена, нам удалось организовать фестиваль и в традиционном
-        формате. При этом нам удалось провести международные конкурсные
-        программы Just Film и сохранить высокий художественный уровень
-        кинопрограммы. Хочу поблагодарить всю команду PÖFF и Just Film! И,
-        конечно же, отдельная благодарность нашей публике, которая посетила нас
-        как в кинотеатрах, так и онлайн. До встречи в ноябре 2021 года!
-
-
-
-        ##### **Фильмы-победители Just Film в 2020 году:**
-
-
-
-        ##### **Приз детского жюри за лучший детский фильм**
-
-        «Замечательное приключение Марго и Маргариты»
-
-        The Fantastic Journey of Margot & Marguerite
-
-        Режиссер: Пьер Корэ (Pierre Coré)
-
-        Франция, 2020
-
-
-        «Было много захватывающих фильмов, и каждый был по-своему интересным и
-        познавательным. Но в итоге мы все же приняли решение, и фильм-победитель
-        понравился нам его интересным сюжетом и сильной актерской игрой. Одна
-        девушка сыграла две роли и сделала это, на наш взгляд, превосходно! В
-        этом фильме рассказывается о том, как справиться с новой ситуацией и
-        сделать это играючи. В качестве победителя мы выбрали фильм
-        «Замечательные приключения Марго и Маргариты», который представляет
-        собой безумную историю о том, как молодые девушки внезапно путешествуют
-        во времени и справляются с жизнью в новой для себя эпохе».
-
-
-        Специальный приз детского жюри:
-
-        «Мы хотим вручить специальный приз любимому эстонскому герою Сипсику. На
-        наш взгляд, музыка к мультфильму «Сипсик» была настолько захватывающей и
-        красивой, что мы хотим отдельно отметить ее именно за музыку к фильму».
-
-
-        Детское жюри: Каарель Ууэни, Керстин Кальда, Куно Вильгельм Рохусаар,
-        Мари Крашевски, Сара Лийз Луха
-
-
-
-        ##### **Приз молодежного жюри за лучший молодежный фильм**
-
-        «50 или два кита встречаются на пляже»
-
-        50 or Two Whales Meet on the Beach
-
-        Режиссер: Хорхе Кучи (Jorge Cuchi)
-
-        Мексика, 2020
-
-
-        «После долгих и жарких дебатов премия молодежного жюри Just Film
-        вручается фильму, который смог заинтриговать уже за несколько дней до
-        его просмотра. Это фильм, в котором смелый подход к теме сочетается со
-        свежим изобразительным языком, искусно написанными персонажами,
-        профессиональной актерской игрой и уникальным монтажом; фильм, который
-        оправдал наши большие ожидания, и, хочется надеяться, фильм, который
-        покажут еще на многих экранах кинотеатров для многих зрителей. Приз
-        молодежного жюри достается фильму „50 или два кита встречаются на
-        пляже“».
-
-
-        Специальный приз молодежного жюри:
-
-        «Специальную награду получает «Кратт» (Эстония 2020) за самое уникальное
-        визуальное решение».
-
-
-        Молодежное жюри: Анна Линда Эльвре, Герли Рехкальт, Ханс Роберт
-        Каннукене, Хелена Маарья Тарро
-
-
-
-        ##### **Премия ECFA за лучший молодежный фильм Европы**
-
-        «Стеклянный мальчик»
-
-        Glassboy
-
-        Режиссер: Самуэле Росси (Samuele Rossi)
-
-        Италия, 2020
-
-
-        «Благодаря фильмам мы смогли путешествовать по Европе и во времени. Мы
-        побывали и в настоящем, и в прошлом. Фантастические путешествия во
-        времени, экскурсии в мрачные и мистические сказки, повседневная школьная
-        жизнь, первая любовь, дневники и приключения пиратов – всё это широкий
-        спектр историй, которые во многом на нас повлияли. Эти фильмы вдохновили
-        нас на размышления и рефлексию, наполнили волнением и, прежде всего,
-        дали нам возможность познакомиться с жизнью детей и молодежи через
-        замечательных главных героев.
-
-
-        Программа европейских детских фильмов в этом году повела нас разными
-        путями, но один из них выделялся особенно. История, в которой благодаря
-        отличной актерской игре и возможности одного человека почувствовать себя
-        частью группы друзей. Главный герой находит в себе силы взять под
-        контроль свою жизнь и заставить адаптироваться к новой ситуации свою
-        любящую, но при этом гиперопекающую семью. Именно благодаря богатым
-        персонажам фильма, невероятно красиво созданному миру, увлекательному и
-        хорошо написанному сюжету мы награждаем фильм ”Стеклянный мальчик”».
-
-
-        Жюри ECFA: Майк Тейт (Великобритания), Мариэлла Харпелунде Йенсен
-        (Дания), Юлия Флейсиг (Германия)
-
-
-
-        ##### **Гран-при Just Film за лучший молодежный фильм года**
-
-        «Слалом»
-
-        Slalom
-
-        Режиссер: Шарлин Фавье (Charlène Favier)
-
-        Франция, 2020
-
-
-        «Международное жюри получило удовольствие от просмотра фильмов
-        конкурсной программы молодежных фильмов и высоко оценило затронутые в
-        фильмах темы. Мы увидели многие истории, в которых взрослые вели себя
-        безответственно, а детям приходилось ставить себя на роль родителей.
-        Красной нитью в фильмах поднимались вопросы: «Кто в этой истории
-        ребенок, а кто взрослый? Что происходит, когда безрассудное поведение
-        взрослого перекладывает бремя на плечи молодого человека, который больше
-        всего доверяет взрослому?» Один фильм отличился удивительно достоверным
-        портретом сложной ситуации. Рассказанная с точки зрения подростка, но
-        без демонизации других героев, это история, в которой осмелились очень
-        реалистично затронуть вопросы ненадлежащего обращения и
-        безответственности. Сильный фильм с очень честной подачей материала.
-        Лауреат Гран-при Just Film 2020 – ”Слалом”».
-
-
-        Отдельно международное жюри выделило:
-
-        «Душераздирающая история, которая ярко описывает бесконечную и
-        безоговорочную любовь отдельно взятого ребенка к своей матери. Игра
-        актрисы в этой роли – это душа фильма. Она находится в честном и
-        уязвимом состоянии, но при этом твердо стоит двумя ногами на земле, и
-        это поднимает историю на новый уровень. Жюри хочет выделить Луну Мвез за
-        ее чарующую игру в фильме "Малышка из парка Плацшпиц" (Швейцария,
-        2020)». 
-
-
-        Международное жюри: Гай Дейвис (Великобритания), Элен Лотман (Эстония),
-        Сату Туули Карху (Финляндия)
-
-
-        Несмотря на то, что на сегодняшний день фестиваль Just Film завершился,
-        лучшие произведения PÖFF можно будет посмотреть до 6 декабря в
-        онлайн-кинотеатре kino.poff.ee!
-
-
-        Just Film - это субфестиваль молодежных и детских фильмов кинофестиваля
-        «Темные ночи» (PÖFF) , который проходит каждый ноябрь параллельно с
-        основной программой PÖFF. На экранах показывают фильмы, которые, помимо
-        развлекательного аспекта, имеют также образовательную цель. Ежегодно на
-        фестивале демонстрируется около 50 фильмов, и по количеству зрителей
-        Just Film стал одним из крупнейших молодежных мероприятий в Эстонии.
-
-
-        Организация кинофестиваля – дело непростое, и это было бы невозможно без
-        хороших друзей и спонсоров. Фестиваль благодарит всех, кто помог его
-        реализации!
-    publish_et: true
-    publish_en: true
-    publish_ru: true
-    media:
-        id: 389
-        imageDefault:
-            -
-                id: 3817
-                name: Slalom_grandprix_mailchimp_1920x1080.png
-                width: 1440
-                height: 810
-                formats:
-                    thumbnail:
-                        url: >-
-                            /uploads/thumbnail_Slalom_grandprix_mailchimp_1920x1080_41b86adca2.png
-                        name: thumbnail_Slalom_grandprix_mailchimp_1920x1080.png
-                hash: Slalom_grandprix_mailchimp_1920x1080_41b86adca2
-                ext: .png
-                url: /uploads/Slalom_grandprix_mailchimp_1920x1080_41b86adca2.png
-    article_types:
-        -
-            id: 2
-    web_authors:
-        -
-            id: 3
--
     id: 24
     created_by:
         id: 15
@@ -3475,6 +2793,1129 @@
                 hash: Zueriid_2019_e511b3120f
                 ext: .jpg
                 url: /uploads/Zueriid_2019_e511b3120f.jpg
+    article_types:
+        -
+            id: 5
+    web_authors:
+        -
+            id: 3
+-
+    id: 25
+    created_by:
+        id: 14
+        firstname: Heleen
+        lastname: Sutt
+    created_at: '2020-11-30T09:53:11.341Z'
+    title_et: 20. Just Filmi võidufilmid ja eripreemiad
+    slug_et: 20-just-filmi-voidufilmid-ja-eripreemiad
+    title_en: 20. Just Film grand prix winner
+    slug_en: 20-just-film-grand-prix-winner
+    title_ru: Гран-при фестиваля молодежных и детских фильмов Just Film
+    slug_ru: gran-pri-festivalya-molodezhnyh-i-detskih-filmov-just-film
+    lead_et: >-
+        **Põhja-Euroopa suurima noorte- ja lastefilmide festivali Just Film
+        juubeliaasta grand prix läks Prantsusmaale**
+    lead_en: >
+        **The grand prix of Northern Europe’s biggest youth and children’s film
+        festival Just Film went to France**
+    lead_ru: >-
+        **Гран-при фестиваля молодежных и детских фильмов Just Film получила
+        французская картина**
+    contents_et: >+
+        Rahvusvaheline filmifestival Just Film, mis toimus 13. novembrist 29.
+        novembrini tähistas tänavu oma 20. sünnipäeva! Eriline aasta tõi
+        kinolinale, ja esmakordselt ka koju huvitavad ja põnevad filmid üle kogu
+        maailma. Just Filmi missioon on läbi kvaliteetse filmikunsti käsitleda
+        tänapäeva maailmas aktuaalseid, olulisi ja tõsiseid teemasid eesmärgiga
+        luua arutelu laste, noorte ja täiskasvanute vahel.
+
+
+        Vaatamata keerulisele aastale toimus Just Filmi raames tänavu üks
+        Euroopa, kaks rahvusvahelist ja kolm maailma esilinastust! Üks maailma
+        esilinastustest oli Eesti oma Rasmus Merivoo
+        ["Kratt"](https://justfilm.ee/film/kratt/), mis sai publikult palava
+        vastuvõtu.
+
+        Just Filmil tuli näitamisele kokku 42 täispikka- ning 3 lühifilmi, mis
+        jagunesid juba tuttavate programmide vahel - lastefilmide,
+        noortefilmide, teadusdokumentaalide ning lapse õiguste programm.
+
+
+        Just Filmi laste- ja noortežüriid andsid eripreemiad just Eesti
+        filmidele. Lastežürii tõstis esile režissööride Meelis Arulepp ning
+        Karsten Kiilerich animafilmi
+        ["Sipsik"](https://justfilm.ee/film/sipsik/) (Eesti, 2020) filmimuusika
+        ning noortežürii kiitis režissööri Rasmus Merivoo
+        ["Kratt"](https://justfilm.ee/film/kratt/) (Eesti, 2020) visuaalset
+        seadet.
+
+
+        Esmakordselt aitasid Just Filmi lapse õiguste programmi koostada noored
+        ise - [Märka Last](https://markalast.ee) platvormi toimetajad. Tänavuse
+        lapse õiguste programmi juhtlause "Mitte ainult lastele, vaid koos
+        lastega" suunab tähelepanu sellele, kuivõrd palju võib noorte kaasamine
+        neid puudutavatesse teemadesse arutelu rikastada ning edasi viia.
+
+
+        Festivali tegevjuht Mikk Granström sõnas: "Oleme väga õnnelikud, et
+        vaatamata keerulistele aegadele õnnestus meil füüsilisel kujul festivali
+        korraldada. Sealjuures oli meil võimalik viia läbi ka Just Filmi
+        rahvusvahelised võistlusprogrammid ning säilitada filmiprogrammi kõrget
+        kunstilist taset. Soovin tänada kogu PÖFFi ning Just Filmi meeskonda!
+        Ning eriline tänu läheb loomulikult meie publikule, nii kinos kui
+        veebis. Kohtume 2021. aasta novembris!"
+
+
+        ##### **2020. aasta Just Filmi võidufilmid:**
+
+
+
+        ##### **Lastežürii parima lastefilmi auhind**
+
+        [“Margot’ ja Marguerite imeline
+        seiklus”](https://justfilm.ee/film/margot-and-marguerite-i-imeline-seiklus/)
+
+        The Fantastic Journey of Margot & Marguerite
+
+        R: Pierre Coré
+
+        Prantsusmaa 2020
+
+
+        “Põnevaid filme oli palju ning igaüks neist oli omamoodi huvitav ja
+        õpetlik. Aga lõpuks me ikka tegime otsuse ning võitjafilm meeldis meile
+        oma huvitava loo ja tugeva näitlemisega. 1 tüdruk tegi kahte rolli ja
+        seda meie meelest suurepäraselt! See on film, mis rääkis uues olukorras
+        hakkama saamisega ja kõike seda väga mänguliselt. Meie valisime
+        võitjafilmiks „Margot ja Marguerite’i imeline seiklus“, mis on pöörane
+        lugu sellest, kuidas noored tüdrukud ootamatult ajas rändavad ning uues
+        ajastus hakkama saavad.”
+
+
+        **Lastežürii eriauhind:**
+
+        "Eriauhinna soovime anda armastatud Eesti kangelasele Sipsikule. Meie
+        meelest oli "Sipsik" filmi muusika nii haarav ja tore, et just
+        filmimuusika eest seda filmi tunnustada soovimegi."
+
+
+        Lastežürii: Kaarel Uueni, Kerstin Kalda, Kuno Wilhelm Rohusaar, Mari
+        Krashevski, Sarah Liis Luha
+
+
+
+        ##### **Noortežürii parima noortefilmi auhind**
+
+        [“50 või kaks vaala kohtuvad
+        rannal”](https://justfilm.ee/film/50-voi-kaks-vaala-kohtuvad-rannal/)
+
+        50 or Two Whales Meet on the Beach
+
+        R: Jorge Cuchi
+
+        Mehhiko 2020
+
+
+        “Selleaastase Just Filmi noortežürii auhinna anname pärast pikki ja
+        tuliseid vaidlusi filmile, mis sütitas intriige juba päevi enne selle
+        vaatamist. Tegu on filmiga, milles julge teemakäsitlus kohtub värske
+        pildikeele, oskuslikult kirjutatud tegelaste, professionaalse
+        näitlejatöö ja omapärase montaažiga; filmiga, mida vaadates kohtusid
+        meie kõrged ootused nende väärilise linateosega, ja loodetavasti
+        filmiga, mis kohtub veel paljude kinolinade ja vaatajatega. Noortežürii
+        auhind läheb filmile “50 või kaks vaala kohtuvad rannal”.”
+
+
+        **Noortežürii eriauhind:**
+
+        "Eriauhinna saab "Kratt" (Eesti, 2020) visuaalselt kõige omapärasema
+        filmi eest."
+
+
+
+        Noortežürii: Anna Linda Elvre, Gerli Rehkalt, Hans Robert Kannukene,
+        Helena Maarja Tarro
+
+
+
+        ##### **ECFA auhind parimale Euroopa lastefilmile**
+
+        [“Klaaspoiss”](https://justfilm.ee/film/klaaspoiss/)
+
+        Glassboy
+
+        R: Samuele Rossi
+
+        Itaalia 2020
+
+
+        “Me reisisime läbi filmide mööda Euroopat ja aega. Viibisime nii
+        momendis kui minevikus. Fantastilised rännakud ajas, ekskursioonid
+        pimedatesse ja müstilistesse muinasjuttudesse, igapäeva kooliellu,
+        esimene armastus, päevikud ja piraadiseiklused - lai valik lugusid, mis
+        on meid mitmel moel mõjutanud. Need filmid inspireerisid meid kaasa
+        mõtlema ja reflekteerima, täitsid meid elevusega ning üle kõige andsid
+        need filmid võimaluse läbi imeliste peategelaste kogeda laste ja noorte
+        elu.
+
+
+        Tänavune Euroopa lastefilmide programm viis meid küll mitmetele
+        erinevatele teekondadele, kuid üks neist tõusis eriliselt esile. Lugu,
+        mis läbi suurepärase näitlejameisterlikkuse näitab isoleerituse
+        ületamist ning ühe indiviidi võimalust tunda end sõprusgruppi kuuluvana.
+        Peategelane leiab jõudu, et oma elutee üle kontroll haarata ning oma
+        headust täis, kuid liialt kaitsva perekonna samuti uue olukorraga
+        kohanema panna. Just filmi rikkalike karakterite, imeilusalt loodud
+        maailma, kaasahaarava ning hästi kirjutatud loo tõttu anname ECFA
+        auhinna filmile “Klaaspoiss”.”
+
+
+        ECFA Žürii: Mike Tait (Suurbritannia), Mariella Harpelunde Jensen
+        (Taani), Julia Fleißig (Saksamaa)
+
+
+
+        ##### **Just Film grand prix selle aasta parimale noortefilmile**
+
+        [“Slaalom"](https://justfilm.ee/film/slaalom/)
+
+        Slalom
+
+        R: Charlène Favier
+
+        Prantsusmaa 2020
+
+
+        “Rahvusvaheline žürii nautis noortefilmide võistlusprogrammi filme ning
+        hindab kõrgelt filmides tõststatud teemasid. Nägime mitmeid lugusid, kus
+        täiskasvanud käitusid vastutustundetult ning lapsed pidid end vanema
+        rolli asetama. Filmides tõusis läbivalt küsimusi: “Kes siin loos on laps
+        ja kes täiskasvanu? Mis juhtub, kui täiskasvanu mõtlematu tegutsemine
+        laotab raskuse just selle noore õlule, kes täiskasvanut kõige rohkem
+        usaldab?”. Üks film tõusis esile oma imeliselt autentse portreeringuga
+        keerulisest situatsioonist. Räägituna teismelise perspektiivist, kuid
+        ilma teisi karaktereid demoniseerimata, oli tegemist looga, mis julges
+        puudutada väärkohtlemise ja hoolimatuse teemasid väga realistlikul
+        viisil. Võimas film, äärmiselt ausate esitlustega. Just Filmi grand prix
+        2020 “Slaalom”.”
+
+
+        **Eraldi tõi rahvusvaheline žürii esile:**
+
+        Südantlõhestav lugu, mis kirjeldab jõuliselt ühe lapse lõputut ja
+        tingimusteta armastust oma ema vastu. Selle näitlejanna esitlus on selle
+        filmi hing. Tema aus ja haavatav, kuid kahe jalaga maa peal olek tõstab
+        loo järgmisele tasemele. Žürii soovib tõsta esile Luna Mwezi tema
+        lummava esituse eest filmis "Süstlapargi laps (Šveits, 2020)". 
+
+
+        Rahvusvaheline žürii: Guy Davies (Suurbritannia), Elen Lotman (Eesti),
+        Satu Tuuli Karhu (Soome)
+
+
+        Kuigi Just Filmi festival on tänaseks lõppenud saab PÖFFi parimaid
+        palasid vaadata veel **6. detsembrini PÖFFi veebikinos**
+        [kino.poff.ee](https://kino.poff.ee)!
+
+
+
+        Just Film on Pimedate Ööde filmifestivali (PÖFF) noorte- ja lastefilmide
+        alafestival, mis toimub igal aastal novembrikuus paralleelselt PÖFFi
+        põhiprogrammiga. Näitamisele tulevad filmid, mis lisaks
+        meelelahutuslikule aspektile kannavad endas ka hariduslikku eesmärki.
+        Festivalil linastub igal aastal ligikaudu 50 filmi ning publikuarvu
+        poolest on Just Filmist saanud tänaseks Eesti üks suuremaid
+        noorteüritusi.
+
+
+        Filmifestivali korraldamine on keeruline ettevõtmine ja ilma heade
+        sõprade, toetajate ja sponsoriteta poleks see võimalik. Festival tänab
+        kõiki, kes on kaasa aidanud selle toimumisele! 
+
+    contents_en: >-
+        Tallinn Black Nights Film Festival’s youth and children’s film
+        sub-festival Just Film celebrated its 20th birthday. Held from the 13th
+        until the 29th of November, Just Film brought exciting and important
+        films to the cinemas and, for the first time, via the PÖFF virtual,
+        available on the Estonian territory. The mission of Just Film is to use
+        the art of cinema as a channel for bringing attention to topics that are
+        timely, important, and serious with the aim to spark discussion between
+        children and adults, thus creating more understanding and empathy.
+         
+        The Just Film festival consisted of 42 full-features and three short
+        films which were divided between children’s films, youth films, science
+        documentaries, and the children’s rights programmes.
+         
+        Just Film main prize, the grand prix, given out by the International
+        Jury went to “Slalom” (France, 2020), director Charlène Favier. The
+        International Jury special mention was given to “Platzspitzbaby”
+        (director Pierre Monnard, Switzerland 2020) lead Luna Mwezi. ECFA Award
+        for the best European children’s film went to “Glassboy” (Italy, 2020)
+        by director Samuele Rossi. Just Film Youth Jury Best Film Award was
+        given to “50 or Two Whales Meet on the Beach” (Mexico, 2020) by director
+        Jorge Cuchi. And Just Film Children’s Jury Best Film Award to "The
+        Fantastic Journey of Margot & Marguerite" (France, 2020) by director
+        Pierre Coré.
+         
+        Just Film Children’s and Youth Juries presented special mentions to two
+        Estonian films. The Children’s Jury’s special mention went to animation
+        “Sipsik” (Estonia 2020, directed by Meelis Arulepp and Karsten
+        Kiilerich) for its score and the Youth Jury’s special mention was given
+        to “Kratt” (Estonia 2020, directed by Rasmus Merivoo) for its unique
+        cinematography.
+         
+        Mikk Granström, the director of the Just Film Festival said: „We are
+        extremely happy that regardless of the complicated situation all over
+        the world, we have managed to organise the festival in cinemas. Just
+        Film carried out its International competition programmes and maintained
+        the high artistic standard of the film programme. I wish to thank the
+        BNFF and Just Film teams! And a special thank you to our unbelievable
+        audience in cinemas as well as homes. We will meet again in November
+        2021.“
+
+
+
+        ##### The winners of Just Film 2020:
+         
+        ##### **Just Film Children’s Jury Best Film Award**
+
+        "The Fantastic Journey of Margot & Marguerite"
+
+        Director: Pierre Coré
+
+        France 2020
+         
+        “There were a lot of exciting films, and each one of them was
+        interesting and educative. Finally, we came to a decision and the
+        winning film was selected because of its fascinating story and strong
+        acting. One girl performed two parts, and she did them wonderfully! The
+        film was about managing new situations and doing it playfully. Just Film
+        Children’s Jury Best Film Award goes to “The Fantastic Journey of Margot
+        & Marguerite” - a crazy story of how two girls unexpectedly travel in
+        time and cope in the new era."
+         
+        **Children’s Jury special mention:**
+
+        „Our special mention goes to the loved Estonian character „Sipsik“. In
+        our opinion, the music in „Sipsik“ was very gripping and fun, and it is
+        the main reason for this special mention.“
+         
+        Just Film Children’s Jury members: Kaarel Uueni, Kerstin Kalda, Kuno
+        Wilhelm Rohusaar, Mari Krashevski, and Sarah Liis Luha
+         
+         
+        ##### **Just Film Youth Jury Best Film Award**
+
+        "50 or Two Whales Meet on the Beach"
+
+        Director: Jorge Cuchi
+
+        Mexico 2020
+         
+        “This year's Just Film Youth Jury Best Film Award is presented, after
+        long and heated discussions, to a film that sparked intrigue days before
+        its screening. It is a film where a bold theme meets with fresh
+        cinematography, well-written characters, professional acting and a
+        unique montage. The film met our high expectations, and we hope it will
+        be screened in many more cinemas. Just Film Youth Jury Best Film Award
+        goes to  "50 or Two Whales Meet on the Beach”."
+         
+        **Youth Jury special mention:**
+
+        „Our special mention goes to „Kratt“ for the most unconventional
+        visuals.“
+         
+        Just Film Youth Jury members: Anna Linda Elvre, Gerli Rehkalt, Hans
+        Robert Kannukene, and Helena Maarja Tarro
+         
+         
+        ##### **ECFA Award for the best European children’s film**
+
+        "Glassboy"
+
+        Director: Samuele Rossi
+
+        Italy 2020
+         
+        “We travelled across Europe with films, we were out and about in the
+        present and have made trips into the past. Fantastic time travels,
+        excursions into dark and mysterious fairytale worlds, everyday school
+        life, first love, diaries, and pirate adventures – a wide range of
+        stories have affected us in many different ways. They inspired us to
+        sympathise and to reflect, they thrilled us with excitement, and above
+        all, they let us experience the stories of various young protagonists. 
+         
+        Of all the wonderful journeys we were taken on, one stood out for its
+        exceptionally well-acted story of overcoming isolation, and translating
+        one individual’s feeling of ‘otherness’ to become accepted into a group
+        of close friends. Despite a well-meaning but overprotective family, our
+        central character is empowered to take control of their own path through
+        life, and gradually his family learn to adapt together with him. For its
+        rich characterisations in a beautifully designed world, and an engaging
+        and well-written storyline featuring friendship, courage and freedom –
+        the ECFA Award goes to GLASSBOY. ”
+         
+        ECFA Jury members: Mike Tait (UK), Mariella Harpelunde Jensen (Denmark),
+        Julia Fleißig (Germany)
+
+         
+        ##### **Just Film grand prix**
+
+        "Slalom"
+
+        Director: Charlène Favier
+
+        France 2020
+         
+        “The Jury enjoyed watching all the films and appreciated that the films
+        tackled important and topical issues. We saw many stories about grownups
+        behaving irresponsibly and children having to act responsibly. In many
+        of the films, the question arises - who here actually is a child and who
+        is a grownup? And what happens when a grownup with irresponsible
+        behaviour puts a burden on the shoulders of the one person that trusts
+        them the most? There was one film, in particular, that stood out for us
+        for its incredibly authentic portrayal of a complicated situation. Told
+        from a teenage perspective without alienating or demonising other
+        characters in the film, it was brave enough to tackle issues of abuse
+        and neglect in a very realistic way. A powerful film with very honest
+        performances. We’re very pleased to present the Just Film 2020 grand
+        prix for Best Youth Film to SLALOM.”
+         
+        **Specal mention to an actress:**
+
+        „A heartbreaking story that describes powerfully a child's endless and
+        unconditional love for her mother. This actress's performance is the
+        soul of this film. Her honest, vulnerable, yet grounded presence lifts
+        the story to a new level and makes the film stand out. The jury wishes
+        to give an honourable mention to Luna Mwezi for her captivating
+        performance in Needle Park Baby.“
+         
+         
+        International Jury members: Guy Davies (UK), Elen Lotman (Estonia), Satu
+        Tuuli Karhu (Finland)
+
+         
+        ##### **Films that premiered at Just Film this year**
+
+        Regardless of the complicated year, Just Film presented one European,
+        two international, and three world premieres. 
+         
+        **European premiere**
+
+        “The Time Guardians”
+
+        Russia 2020
+
+        Director: Alexey Telnov
+         
+        **International premieres**
+
+        “Max and the Wild Bunch”
+
+        Germany 2020
+
+        Director: Winfried Oelsner
+         
+        “Tell Her”
+
+        Russia 2020
+
+        Director: Aleksandr Molochnikov
+         
+        **World premieres**
+
+        “Call Me Blackbird”
+
+        Russia 2020
+
+        Director: Pavel Mirzoev
+         
+        “Glassboy”
+
+        Italy 2020
+
+        Director: Samuele Rossi
+         
+        “Kratt”
+
+        Estonia 2020
+
+        Director: Rasmus Merivoo
+
+
+
+        The festival would like to thank all of its supporters, friends,
+        sponsors and volunteers for their contribution and help!
+    contents_ru: >-
+        Проходивший с 13 по 29 ноября международный кинофестиваль Just Film
+        отметил в этом году 20-летие. В особенный год увлекательные фильмы со
+        всего мира показывали как на экранах кинотеатров, так и дома на
+        специальной онлайн-платформе. Миссия Just Film – через просмотр
+        качественных фильмов разбирать важные и актуальные в современном мире
+        темы, способствовать возникновению дискуссии между детьми, молодежью и
+        взрослыми.
+
+
+        Несмотря на тяжелый год, в этом году в рамках Just Film состоялись три
+        мировые, две международные и одна европейская премьера. Среди мировых
+        премьер была и впервые показанная картина из Эстонии «Кратт» (реж.
+        Размус Меривоо), которую публика встретила очень тепло.
+
+
+        Всего на Just Film было показано 42 полнометражных и три
+        короткометражных фильма, которые вошли в уже знакомые программы:
+        детские, молодежные, научно-документальные фильмы и программа по правам
+        ребенка.
+
+
+        Детское и юношеское жюри наградили специальными призами именно эстонские
+        фильмы. Детское жюри отметило музыку к мультфильму Меэлиса Арулеппа и
+        Карстена Кийлериха «Сипсик» (Эстония, 2020), а молодежное жюри –
+        визуальную обработку в фильме Размуса Меривоо «Кратт» (Эстония, 2020).
+
+
+        Впервые в составлении подборки для программы Just Film по правам ребенка
+        приняла участие сама молодежь, редакторы платформы Märka Last (рус. –
+        «Заметь ребенка»). Нынешний девиз программы по правам ребенка «Не только
+        для детей, но и с детьми» обращает внимание на то, в какой степени
+        вовлечение молодых людей в решение волнующих их вопросов может обогатить
+        и продвинуть дискуссию.
+
+
+        Директор фестиваля Микк Гранстрём сказал: «Мы очень рады, что, несмотря
+        на тяжелые времена, нам удалось организовать фестиваль и в традиционном
+        формате. При этом нам удалось провести международные конкурсные
+        программы Just Film и сохранить высокий художественный уровень
+        кинопрограммы. Хочу поблагодарить всю команду PÖFF и Just Film! И,
+        конечно же, отдельная благодарность нашей публике, которая посетила нас
+        как в кинотеатрах, так и онлайн. До встречи в ноябре 2021 года!
+
+
+
+        ##### **Фильмы-победители Just Film в 2020 году:**
+
+
+
+        ##### **Приз детского жюри за лучший детский фильм**
+
+        «Замечательное приключение Марго и Маргариты»
+
+        The Fantastic Journey of Margot & Marguerite
+
+        Режиссер: Пьер Корэ (Pierre Coré)
+
+        Франция, 2020
+
+
+        «Было много захватывающих фильмов, и каждый был по-своему интересным и
+        познавательным. Но в итоге мы все же приняли решение, и фильм-победитель
+        понравился нам его интересным сюжетом и сильной актерской игрой. Одна
+        девушка сыграла две роли и сделала это, на наш взгляд, превосходно! В
+        этом фильме рассказывается о том, как справиться с новой ситуацией и
+        сделать это играючи. В качестве победителя мы выбрали фильм
+        «Замечательные приключения Марго и Маргариты», который представляет
+        собой безумную историю о том, как молодые девушки внезапно путешествуют
+        во времени и справляются с жизнью в новой для себя эпохе».
+
+
+        Специальный приз детского жюри:
+
+        «Мы хотим вручить специальный приз любимому эстонскому герою Сипсику. На
+        наш взгляд, музыка к мультфильму «Сипсик» была настолько захватывающей и
+        красивой, что мы хотим отдельно отметить ее именно за музыку к фильму».
+
+
+        Детское жюри: Каарель Ууэни, Керстин Кальда, Куно Вильгельм Рохусаар,
+        Мари Крашевски, Сара Лийз Луха
+
+
+
+        ##### **Приз молодежного жюри за лучший молодежный фильм**
+
+        «50 или два кита встречаются на пляже»
+
+        50 or Two Whales Meet on the Beach
+
+        Режиссер: Хорхе Кучи (Jorge Cuchi)
+
+        Мексика, 2020
+
+
+        «После долгих и жарких дебатов премия молодежного жюри Just Film
+        вручается фильму, который смог заинтриговать уже за несколько дней до
+        его просмотра. Это фильм, в котором смелый подход к теме сочетается со
+        свежим изобразительным языком, искусно написанными персонажами,
+        профессиональной актерской игрой и уникальным монтажом; фильм, который
+        оправдал наши большие ожидания, и, хочется надеяться, фильм, который
+        покажут еще на многих экранах кинотеатров для многих зрителей. Приз
+        молодежного жюри достается фильму „50 или два кита встречаются на
+        пляже“».
+
+
+        Специальный приз молодежного жюри:
+
+        «Специальную награду получает «Кратт» (Эстония 2020) за самое уникальное
+        визуальное решение».
+
+
+        Молодежное жюри: Анна Линда Эльвре, Герли Рехкальт, Ханс Роберт
+        Каннукене, Хелена Маарья Тарро
+
+
+
+        ##### **Премия ECFA за лучший молодежный фильм Европы**
+
+        «Стеклянный мальчик»
+
+        Glassboy
+
+        Режиссер: Самуэле Росси (Samuele Rossi)
+
+        Италия, 2020
+
+
+        «Благодаря фильмам мы смогли путешествовать по Европе и во времени. Мы
+        побывали и в настоящем, и в прошлом. Фантастические путешествия во
+        времени, экскурсии в мрачные и мистические сказки, повседневная школьная
+        жизнь, первая любовь, дневники и приключения пиратов – всё это широкий
+        спектр историй, которые во многом на нас повлияли. Эти фильмы вдохновили
+        нас на размышления и рефлексию, наполнили волнением и, прежде всего,
+        дали нам возможность познакомиться с жизнью детей и молодежи через
+        замечательных главных героев.
+
+
+        Программа европейских детских фильмов в этом году повела нас разными
+        путями, но один из них выделялся особенно. История, в которой благодаря
+        отличной актерской игре и возможности одного человека почувствовать себя
+        частью группы друзей. Главный герой находит в себе силы взять под
+        контроль свою жизнь и заставить адаптироваться к новой ситуации свою
+        любящую, но при этом гиперопекающую семью. Именно благодаря богатым
+        персонажам фильма, невероятно красиво созданному миру, увлекательному и
+        хорошо написанному сюжету мы награждаем фильм ”Стеклянный мальчик”».
+
+
+        Жюри ECFA: Майк Тейт (Великобритания), Мариэлла Харпелунде Йенсен
+        (Дания), Юлия Флейсиг (Германия)
+
+
+
+        ##### **Гран-при Just Film за лучший молодежный фильм года**
+
+        «Слалом»
+
+        Slalom
+
+        Режиссер: Шарлин Фавье (Charlène Favier)
+
+        Франция, 2020
+
+
+        «Международное жюри получило удовольствие от просмотра фильмов
+        конкурсной программы молодежных фильмов и высоко оценило затронутые в
+        фильмах темы. Мы увидели многие истории, в которых взрослые вели себя
+        безответственно, а детям приходилось ставить себя на роль родителей.
+        Красной нитью в фильмах поднимались вопросы: «Кто в этой истории
+        ребенок, а кто взрослый? Что происходит, когда безрассудное поведение
+        взрослого перекладывает бремя на плечи молодого человека, который больше
+        всего доверяет взрослому?» Один фильм отличился удивительно достоверным
+        портретом сложной ситуации. Рассказанная с точки зрения подростка, но
+        без демонизации других героев, это история, в которой осмелились очень
+        реалистично затронуть вопросы ненадлежащего обращения и
+        безответственности. Сильный фильм с очень честной подачей материала.
+        Лауреат Гран-при Just Film 2020 – ”Слалом”».
+
+
+        Отдельно международное жюри выделило:
+
+        «Душераздирающая история, которая ярко описывает бесконечную и
+        безоговорочную любовь отдельно взятого ребенка к своей матери. Игра
+        актрисы в этой роли – это душа фильма. Она находится в честном и
+        уязвимом состоянии, но при этом твердо стоит двумя ногами на земле, и
+        это поднимает историю на новый уровень. Жюри хочет выделить Луну Мвез за
+        ее чарующую игру в фильме "Малышка из парка Плацшпиц" (Швейцария,
+        2020)». 
+
+
+        Международное жюри: Гай Дейвис (Великобритания), Элен Лотман (Эстония),
+        Сату Туули Карху (Финляндия)
+
+
+        Несмотря на то, что на сегодняшний день фестиваль Just Film завершился,
+        лучшие произведения PÖFF можно будет посмотреть до 6 декабря в
+        онлайн-кинотеатре kino.poff.ee!
+
+
+        Just Film - это субфестиваль молодежных и детских фильмов кинофестиваля
+        «Темные ночи» (PÖFF) , который проходит каждый ноябрь параллельно с
+        основной программой PÖFF. На экранах показывают фильмы, которые, помимо
+        развлекательного аспекта, имеют также образовательную цель. Ежегодно на
+        фестивале демонстрируется около 50 фильмов, и по количеству зрителей
+        Just Film стал одним из крупнейших молодежных мероприятий в Эстонии.
+
+
+        Организация кинофестиваля – дело непростое, и это было бы невозможно без
+        хороших друзей и спонсоров. Фестиваль благодарит всех, кто помог его
+        реализации!
+    publish_et: true
+    publish_en: true
+    publish_ru: true
+    media:
+        id: 389
+        imageDefault:
+            -
+                id: 3817
+                name: Slalom_grandprix_mailchimp_1920x1080.png
+                width: 1440
+                height: 810
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Slalom_grandprix_mailchimp_1920x1080_41b86adca2.png
+                        name: thumbnail_Slalom_grandprix_mailchimp_1920x1080.png
+                hash: Slalom_grandprix_mailchimp_1920x1080_41b86adca2
+                ext: .png
+                url: /uploads/Slalom_grandprix_mailchimp_1920x1080_41b86adca2.png
+    article_types:
+        -
+            id: 2
+    web_authors:
+        -
+            id: 3
+-
+    id: 26
+    created_by:
+        id: 14
+        firstname: Heleen
+        lastname: Sutt
+    created_at: '2021-02-12T12:31:01.504Z'
+    title_et: Noore filmitegija stipendiumikonkurss
+    slug_et: noore-filmitegija-stipendium
+    slug_en: noore-filmitegija-stipendium
+    title_ru: PÖFF и Just Film поддержат юных кинематографистов
+    slug_ru: p-oe-ff-i-just-film-podderzhat-yunyh-kinematografistov
+    lead_et: >-
+        PÖFFi noorte- ja lastefilmide festival Just Film hakkab välja andma
+        noore filmitegija stipendiumi
+    lead_ru: >-
+        PÖFF и Just Film объявили конкурс на получение стипендий для молодых
+        кинематографистов
+    contents_et: >+
+        Pimedate Ööde filmifestival ning noorte- ja lastefilmide festival Just
+        Film algatavad sel kevadel stipendiumikonkursi, mille eesmärk on
+        innustada koolinoori katsetama filmi tegemist. Sellist võimalust seni
+        Eesti lastele ja noortele ei pakuta, kuid PÖFF hindab kõrgelt selle
+        vajalikkust ning kasu noorte arengule. Stipendiumi antakse sel aastal
+        välja kolm korda (edaspidi neli korda aastas) ning oma ideega on oodatud
+        osalema kõik õpilased 1. kuni 12. klassini. Kandideerimiseks tuleb
+        esitada taotlus läbi Just Filmi kodulehel oleva vormi koos oma filmi
+        stsenaariumi/ideekavandiga. Ühe stipendiumi suurus on 500 €.
+
+
+        „Stipendiumi eesmärk on soodustada laste ja noorte seas ise filmi
+        tegemist ning pakkuda neile igakülgset tuge juba varajases nooruses. See
+        on hea võimalus leida üles tulevased eesti filmi talendid,“ ütleb PÖFFi
+        tegevjuht ja konkursi idee algataja Mikk Granström, kes on muuhulgas ise
+        keskkoolis filmiõpetaja ning näeb igapäevaselt, milliste takistustega
+        noored filmihuvilised kokku puutuma peavad.
+
+
+        Stipendiumi taotlemiseks tuleb esitada oma filmiidee kavand või
+        stsenaarium. Filmi žanrile ei ole piiranguid, sh on oodatud ka õpilaste
+        animatsiooniideed. Filmi pikkus peab olema minimaalselt 1 minut, ülemist
+        piiri ei ole. Filmi tegemisse võib kaasata ka oma sõpru, klassikaaslasi
+        või vanemaid. Saadud stipendiumi võib filmitegijate grupp kasutada oma
+        äranägemise järgi, näiteks tehnika rentimiseks, rekvisiitide
+        hankimiseks, transpordikulude katmiseks jne. Stsenaariumi või idee
+        tingimus on, et laps või noor suudab selle ise ellu viia. 
+
+        Filmiidee/stsenaarium ei tohi minna vastuollu Eesti Vabariigi
+        põhiseaduse ja riigis kehtivate heade tavadega. 
+
+
+        Stipendiumi saaja(d) valib välja kolmeliikmeline filmiekspertide grupp,
+        mille kaks liiget on Pimedate Ööde filmfestivali meeskonnast ning igas
+        voorus kaasatakse üks filmiekspert väljastpoolt PÖFFi. Ühes voorus
+        antakse stipendium kuni kolmele projektile. Stipendiumi saajale pakuvad
+        PÖFF ja Just Film vajadusel ka sisulist tuge näiteks stsenaariumi
+        viimistlemiseks, vajaliku tehnika leidmiseks või muu vajaliku projekti
+        ellu viimiseks.
+
+
+        Valminud filmid tulevad näitamisele novembrikuus Just Filmi programmi
+        raames. „Tegu on ainukordse võimalusega noorele filmitegijale pääseda
+        oma filmiga A-kategooria filmifestivalile,“ ütleb stipendiumikonkursi
+        koordinaator Heleen Sutt. Lisaks on igal stipendiumi saajal võimalus
+        võtta osa Pimedate Ööde filmifestivali (filmitööstuse sektsioonis
+        Industry@Tallinn & Baltic Event) raames toimuvatest filmitegijatele
+        suunatud loengutest ja töötubadest, mis annab võimaluse luua kontakte
+        rahvusvaheliste filmitegijatega. 
+
+
+
+        Taotluse esitamiseks tutvu tingimustega
+        **[siin](https://justfilm.ee/artikkel/konkurss/).**
+
+
+        Juhised ja materjalid stsenaariumi/ideekavandi kirjutamiseks leiad
+        **[siit](https://assets.poff.ee/Stsenaariumi_kirjutamise_juhend.pdf).**
+
+
+        Taotlusvormi leiad **[siit](https://forms.gle/jeQCHb3zm3gvURa59).**
+
+
+
+        ##### Kontaktandmed:
+
+        Mikk Granström
+
+        PÖFFi  tegevjuht
+
+        [mikk.granstrom@poff.ee](mikk.granstrom@poff.ee)
+
+        +372 53 002 617
+
+
+
+        ##### Lisainfo kandideerimise kohta:
+
+        Noorte- ja lastefilmide festival Just Film, turundusjuht
+
+        Stipendiumikonkursi koordinaator
+
+        [heleen.sutt@poff.ee](heleen.sutt@poff.ee)
+
+        +372 52 055 92
+
+    contents_ru: >-
+        Этой весной кинофестиваль «Темные ночи» (PÖFF) и фестиваль детского и
+        молодежного кино Just Film впервые проведут конкурс и вручат стипендии
+        школьникам, чтобы поддержать их в создании собственных фильмов. К
+        участию в конкурсе приглашаются ученики в возрасте 7-19 лет, работы
+        можно подавать и на русском языке. 
+
+
+        До сих пор такой возможности молодым людям не предлагалось, но PÖFF
+        высоко оценивает ее необходимость и дальнейшую пользу для развития
+        молодежи. В этом году стипендию вручат трижды, а в дальнейшем будет
+        проводиться по четыре конкурсных тура в год. На конкурс могут присылать
+        свои идеи ученики общеобразовательных и профессионально-технических школ
+        в возрасте 7-19 лет. Подать заявку на участие можно на сайте Just Film
+        www.justfilm.ee , приложив свой сценарий или описание идеи фильма.
+        Размер одной стипендии составляет 500 евро.
+
+
+        «Цель стипендии – поддержать стремление детей и молодежи к созданию кино
+        и помочь им на этом поприще уже в раннем возрасте. Это также хорошая
+        возможность открыть будущие таланты эстонского кинематографа», – сказал
+        исполнительный руководитель PÖFF и инициатор конкурса Микк Гранстрём,
+        который также преподает в школе киноискусство и ежедневно видит, с
+        какими сложностями сталкиваются ученики, интересующиеся кино.
+
+
+        Чтобы претендовать на стипендию, нужно предоставить описание идеи фильма
+        или сценарий на эстонском или русском языке. Жанровых ограничений нет, в
+        том числе приветствуются и идеи анимационных работ. Минимальная
+        продолжительность фильма – одна минута, а верхней планки нет. К созданию
+        фильма можно привлекать своих друзей, одноклассников или родителей.
+        Полученную стипендию команда может использовать по своему усмотрению,
+        например, на аренду техники, покупку реквизита, покрытие расходов на
+        транспорт и т.д. Одним из условий: ребенку или молодому человеку должно
+        быть по силам воплотить идею фильма или готовый сценарий в жизнь. А
+        также идея или сценарий не могут нарушать конституцию Эстонской
+        Республики и общепринятые в стране нормы.
+
+
+        Лауреатов стипендии будет выбирать группа из троих киноэкспертов: двое
+        из команды фестиваля «Темные ночи» и один эксперт вне фестиваля. В одном
+        туре стипендии могут получить до трех проектов. PÖFF и Just Film окажут
+        победителям и содержательную помощь, например, в доработке сценария,
+        поиске необходимой техники и прочих вопросах.
+
+
+        Готовые фильмы будут показаны в ноябре в рамках программы Just Film.
+        «Это уникальная возможность для молодых кинолюбителей представить свои
+        фильмы на фестивале категории „А“», – сказала координатор конкурса
+        Хелеэн Сутт. Кроме того, победители смогут принять участие в лекциях и
+        рабочих комнатах на мероприятии для профессионалов киноиндустрии
+        Industry@Tallinn & Baltic Event. Это, в свою очередь, поможет им
+        наладить контакты с кинематографистами на международном уровне.
+
+
+        Дополнительная информация и форма заявки –
+        [https://justfilm.ee/artikkel/konkurss/](https://justfilm.ee/artikkel/konkurss/).
+
+
+
+        ##### Дополнительная информация об участии в конкурсе:
+
+        [konkurss@poff.ee](konkurss@poff.ee)
+         
+    publish_et: true
+    publish_ru: true
+    media:
+        id: 414
+        imageDefault:
+            -
+                id: 3863
+                name: Noore filmitegija stipendium.jpg
+                width: 1920
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Noore_filmitegija_stipendium_878e7c4853.jpg
+                        name: thumbnail_Noore filmitegija stipendium.jpg
+                hash: Noore_filmitegija_stipendium_878e7c4853
+                ext: .jpg
+                url: /uploads/Noore_filmitegija_stipendium_878e7c4853.jpg
+    article_types:
+        -
+            id: 2
+    web_authors:
+        -
+            id: 3
+-
+    id: 27
+    created_by:
+        id: 14
+        firstname: Heleen
+        lastname: Sutt
+    created_at: '2021-02-13T17:08:22.154Z'
+    title_et: Stipendiumikonkurss
+    slug_et: konkurss
+    slug_en: konkurss
+    slug_ru: konkurss
+    contents_et: >+
+        ### Stipendiumikonkurss noorele filmitegijale
+
+
+
+        Konkursi eesmärk on innustada koolinoori filme tegema. Alates 2021.
+        aastast hakkavad Pimedate Ööde filmifestival ning noorte- ja
+        lastefilmide festival Just Film välja andma stipendiume noortele
+        filmitegijatele. Stipendiume antakse välja neli korda aastas ning oma
+        ideega on oodatud osalema kõik õpilased esimesest kuni kaheteistkümnenda
+        klassini. Stipendiumi saajad saavad võimaluse näidata oma filmi PÖFFi
+        noorte- ja lastefilmide festivalil Just Film. Tegu on ainukordse
+        võimalusega noortele filmitegijatele pääseda oma filmiga A-kategooria
+        filmifestivalile. Lisaks sellele on stipendiumi saajal võimalus võtta
+        osa Pimedate Ööde filmifestivali (filmitööstuse sektsioonis
+        Industry@Tallinn & Baltic Event) raames toimuvatest filmitegijatele
+        suunatud töötubadest ning loengutest.
+
+
+
+        ##### Stipendiumi jagamise üldpõhimõtted:
+
+
+        - Stipendiumi eesmärk on innustada noori ise filme tegema. Saadud
+        stipendiumi võib filmitegijate grupp kasutada oma äranägemise järgi.
+        Näiteks tehnika rentimiseks, rekvisiitide hankimiseks, transpordiks jne.
+
+        - Stipendiumi saamiseks tuleb noorel filmitegijal saata konkursi
+        tähtajaks oma filmi stsenaarium või ideekavand. 
+
+        - Stipendiumi saajatele antakse tulemustest teada 30 päeva jooksul
+        pärast stipendiumi taotluse tähtaega.
+
+        - Stipendiumit voorude tähtajad 2021. aastal:
+
+        10ndal aprillil 2021
+
+        30ndal septembril 2021
+
+        30ndal novembri 2021
+
+        - Stipendiumi voorude tähtajad 2022. aastal:
+
+        30ndal jaanuaril 2022
+
+        30ndal aprillil 2022
+
+        30ndal septembril 2022
+
+        30ndal novembril 2022
+
+        - Stipendiumi suurus on **500 €** projekti kohta
+
+
+
+
+        ##### Stipendiumi taotlemise tingimused:
+
+        1. Stipendiumi taotlemiseks tuleb esitada oma filmiidee kavand või
+        stsenaarium (juhendid kavandi või stsenaariumi vormistamiseks on lisatud
+        allpool). Filmi žanrile ei ole piiranguid, sh on oodatud ka õpilaste
+        animatsiooniideed. Filmi pikkus peab olema minimaalselt 1 minut, ülemist
+        piiri ei ole.
+
+        2. Enamasti pole võimalik teha filmi üksinda. Filmi tegemisse võib
+        kaasata ka oma sõpru, klassikaaslasi, vanemaid jne. Filmitegijate grupi
+        suurusele piiranguid ei seata.
+
+        3. Stsenaariumi või idee tingimus on, et õpilased suudaksid selle ise
+        ellu viia. Lubatud on juhendaja/õpetaja/lapsevanema abi filmi tegemisel.
+
+        4. Stipendium kantakse stipendiumi saaja pangaarvele. Kui filmitegija on
+        noorem kui 16-aastane, peab stipendiumi taotleja olema kas õpetaja või
+        lapsevanem, kelle pangaarvele stipendium kantakse. Filmiidee/stsenaarium
+        peab olema õpilase enda kirjutatud.
+
+        5. Filmiidee/stsenaarium ei tohi minna vastuollu Eesti Vabariigi
+        põhiseaduse, muude kehtivate seaduste ja hea tavaga. 
+
+        6. Kui filmitegijatel on koolis õpetaja/juhendaja, kes filmi tegemisel
+        õpetab, siis palume ka õpetajal/juhendajal kirjutada lühike
+        iseloomustus, miks just see idee on hea ja stipendiumi vääriline.
+
+        7. Stipendiumit võivad taotleda kõik 7-19aastased Eesti üldharidus- või
+        kutsekoolide õpilased.
+
+        8. Ideekavandi võib esitada nii eesti kui ka vene keeles.
+
+
+
+
+        ##### Tulemuste avalikustamine:
+
+        - Stipendiumi saaja(d) valib välja kolmeliikmeline filmiekspertide
+        grupp, mille kaks liiget on Pimedate Ööde filmifestivali meeskonnast
+        ning iga stipendiumivooru juurde kutsutakse lisaks ka üks filmiekspert
+        väljastpoolt PÖFFi. 
+
+        - Stipendiumi kandidaate teavitatakse konkursi tulemustest e-kirjaga.
+        Teavitatakse kirjalikult (ja põhjendatakse otsust) ka neid osalejaid,
+        kes stipendiumi antud voorust ei saanud. 
+
+        - Samuti avalikustatakse stipendiumi saajad Just Filmi kodulehel ja
+        sotsiaalmeedia kanalites, kus lisatakse juurde ka filmi lühitutvustus
+        (1-2 lauset).
+
+
+
+
+        ##### Stipendiumi väljamaksmine:
+
+        - Stipendium makstakse välja ühe nädala jooksul pärast tulemuste
+        avalikustamist.
+
+
+
+        ##### Stipendiumi saaja õigused:
+
+        - 500 euro suurune stipendium oma filmiidee elluviimiseks.
+
+        - Eeldusel, et aprilli ja septembri voorudest saadud stipendiumi saajate
+        filmid saavad valmis 1. novembriks, linastuvad need noorte- ja
+        lastefilmide festivali Just Film programmis. Pidulikule esilinastusele
+        kutsutakse filmide autorid. Filmide autoritel on võimalus linastusele
+        kutsuda ka oma sõbrad/tuttavad/vanemad/õpetajad. Detailid täpsustatakse
+        stipendiumi saajatega enne festivali algust. 
+
+        - Igal stipendiumi saajal on õigus osaleda tasuta Pimedate Ööde
+        filmifestivali filmitegijatele suunatud loengutes (Industry@Tallinn &
+        Baltic Event raames). See annab noorele filmitegijale suurepärase
+        võimaluse saada osa ja õppida rahvusvahelistelt oma ala
+        tipp-professionaalidelt. Loengutel osalemise eelduseks on inglise keele
+        oskus.
+
+
+
+
+
+        ##### Stipendiumi taotlemine:
+
+        Stipendiumi taotlemiseks täida taotlusvorm
+        **[SIIN](https://forms.gle/jeQCHb3zm3gvURa59)**
+
+
+
+
+        ##### Taotluses on vaja märkida:
+
+        - Stipendiumi taotleja nimi;
+
+        - Filmitegijate grupi suurus;
+
+        - Filmitegijate nimed (nii palju, kui on teada);
+
+        - Juhendaja/õpetaja nimi (kui on);
+
+        - Juhendaja/õpetaja soovitus: (miks just need õpilased võiksid saada
+        stipendiumi; lisaks, miks antud filmi idee on neil hea);
+
+        - Lapsevanema nõusolek kandideerimiseks (vajalik, kui kandideerija on
+        noorem kui 16-aastane);
+
+        - Pangakonto omaniku nimi, kuhu stipendium kantakse;
+
+        - Pangakonto number;
+
+        - Filmi sisu lühike kirjeldus (1-2 lauset);
+
+        - Lae üles oma filmistsenaarium/ideekavand;
+
+        - Palun kirjelda lühidalt, kuidas plaanid filmi valmis teha.
+
+
+        Juhendmaterjali filmiidee kavandi/stsenaariumi kirjutamiseks leiad
+        **[SIIT](https://assets.poff.ee/Stsenaariumi_kirjutamise_juhend.pdf)**
+
+
+        Filmi sisu lühike kirjeldus (1-2 lauset) – pane lühidalt kirja (1-2
+        lausega), mis sinu tulevases filmis juhtuma hakkab.
+
+
+        Näiteks: *Mari sõidab suveks maale ja kohtab seal salapärast poissi,
+        kellega koos avastatakse vanemaema õunapuu alt aare ning seejärel
+        satuvad Mari ja tema uus sõber suurde seiklusesse.*
+
+
+        Kuidas kavatsed oma filmi valmis saada – palun kirjelda:
+
+        - keda kaasad oma filmi tegemisse;
+
+        - kust saad vajadusel küsida tehnilist abi;
+
+        - kas sul on olemas vajalik tehnika, millega filmida;
+
+        - millal kavatsed filmimisega alustada;
+
+        - mis ajaks loodad filmi valmis saada.
+
+
+
+
+        ##### Lisainfo ja küsimused stipendiumi taotlemise kohta:
+
+
+        Heleen Sutt
+
+        PÖFFi noorte- ja lastefilmide festival Just Film, turundusjuht
+
+        Noore filmitegija stipendiumikonkursi koordinaator
+
+        [konkurss@poff.ee](konkurss@poff.ee)
+
+        +372 52 055 92
+
+    publish_et: true
+    media:
+        id: 415
+        imageDefault:
+            -
+                id: 3863
+                name: Noore filmitegija stipendium.jpg
+                width: 1920
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Noore_filmitegija_stipendium_878e7c4853.jpg
+                        name: thumbnail_Noore filmitegija stipendium.jpg
+                hash: Noore_filmitegija_stipendium_878e7c4853
+                ext: .jpg
+                url: /uploads/Noore_filmitegija_stipendium_878e7c4853.jpg
     article_types:
         -
             id: 5

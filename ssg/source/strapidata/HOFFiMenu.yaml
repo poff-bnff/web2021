@@ -11,3 +11,668 @@
         et: uudised
         en: news
         ru: novosti
+-
+    id: 4
+    hoffi_article:
+        id: 8
+    order: 5
+    name:
+        id: 32683
+        et: Filmide esitamine
+        en: Submission
+-
+    id: 3
+    order: 3
+    name:
+        id: 32680
+        et: Info
+        en: Info
+        ru: Info
+    subMenuItem:
+        -
+            id: 1
+            hoffi_article:
+                id: 7
+                title_et: Piletid ja passid
+                slug_et: piletid
+                title_en: Tickets and Passes
+                slug_en: tickets
+                contents_et: >
+                    XVI Haapsalu õudus- ja fantaasiafilmide festival (HÕFF)
+                    toimub 30. aprillist kuni 2. maini 2021 [Haapsalu
+                    kultuurikeskuses](www.kultuurimaja.ee) (Posti 3, Haapsalu)
+                    ning virtuaalselt PÖFFi veebikino vahendusel. Festivali
+                    üksikpiletid tulevad müügile **9. aprillil**.
+
+
+                    [HÕFFi pass soodushinnaga 39
+                    eurot](https://poff.ee/hoffi_pass/)
+
+
+                    Soovitame osta HÕFFi pass varakult, kuna kinosaalidesse
+                    lubatakse publikut vaid 50% ulatuses ja kohad täituvad
+                    kiiresti.
+
+
+                    **Mida HÕFFi sooduspass võimaldab?**
+
+                    Osaleda kõigil Haapsalu kultuurikeskuses toimuvatel HÕFFi
+                    seanssidel.
+
+                    Vaadata kodukinos tasuta varasemate festivalide
+                    publikulemmikuid. HÕFFi varasalvest pärit filme saab vaadata
+                    alates märtsi teisest nädalast kuni festivali alguseni.
+                    Soojendusseansside filmivalikusse kuulub umbes 10 linateost.
+                    Täpsem info peagi tulekul.
+
+
+                    **Kuidas HÕFFi sooduspassi kätte saab?**
+
+                    HÕFFi passi ostjale väljastatakse kaelakaart. Kaelakaardi
+                    saab kätte Haapsalu kultuurikeskuses asuvast festivali
+                    infolauast alates 30. aprilli keskpäevast.
+
+                    HÕFFi pass on personaalne ja kehtib vaid isikule, kelle nimi
+                    ja näopilt on trükitud passi kaelakaardile.
+
+
+                    **Mis saab siis, kui festival ära jääb?**
+
+                    Passi saab ümber vormistada HÕFFi veebikinos kasutamiseks
+                    või meile tagasi müüa. Küsimuste korral kirjutage
+                    info@poff.ee.
+
+
+                    [Osta HÕFFi pass siit.](https://poff.ee/hoffi_pass/)
+
+
+                    Haapsalu kultuurikeskusesse pääseb ka ratastooliga,
+                    liikumispuuetega inimestele on kultuurikeskuses toimuvatele
+                    festivaliseanssidele sissepääs tasuta.
+
+
+                    Festivali filmid on mittesoovitatavad alla 13-aastastele.
+                    Erandid on festivali kodulehel ja brošüüris varustatud
+                    vastava märkega. Õhtuseid seansse ei soovitata alla
+                    16-aastastele.
+
+
+                    Korraldajatel on õigus teha ajakavas ja programmis
+                    muudatusi.
+
+
+                    <iframe allowfullscreen="" frameborder="0" height="300"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2058.185997595686!2d23.538031422007055!3d58.94507225803907!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf32d1e7519d39db9!2sHaapsalu+Kultuurikeskus+%2C+Kino+%26+Linnagalerii!5e0!3m2!1sen!2see!4v1490702012834"
+                    style="border:0" width="800"></iframe>
+                contents_en: >
+                    The 16th Haapsalu Horror and Fantasy Film Festival (HÕFF)
+                    will take place from April 30 to May 2, 2021 in [Haapsalu
+                    Kultuurikeskus](www.kultuurimaja.ee) (Posti 3, Haapsalu) and
+                    in the Black Nights Film Festival’s virtual cinema (in
+                    Estonia only).
+
+
+                    Single tickets will be on sale **April 9, 2021**. Free
+                    entrance for the disabled in Haapsalu Kultuurikeskus. The
+                    venue has wheelchair accessibility.
+                     
+                    The festival films are not recommended for children under
+                    the age of 13, unless otherwise specified. Late night
+                    screenings are not recommended for children under the age of
+                    16.
+
+
+                    The festival reserves the right to change the schedule and
+                    programme if necessary.
+
+
+                    <iframe allowfullscreen="" frameborder="0" height="300"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2058.185997595686!2d23.538031422007055!3d58.94507225803907!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf32d1e7519d39db9!2sHaapsalu+Kultuurikeskus+%2C+Kino+%26+Linnagalerii!5e0!3m2!1sen!2see!4v1490702012834"
+                    style="border:0" width="800"></iframe>
+                created_by: 12
+                created_at: '2021-02-05T11:02:58.294Z'
+                publish_et: true
+                publish_en: true
+            order: 1
+            namePrivate: Piletid
+            name:
+                id: 32681
+                et: Piletid ja passid
+                en: Tickets and passes
+        -
+            id: 2
+            hoffi_article:
+                id: 9
+                title_et: Majutus
+                slug_et: majutus
+                title_en: Accommodation
+                slug_en: accommodation
+                contents_et: >+
+                    Majutuskohti jagub kõigile - ära heida meelt, kui esimesed
+                    üks, kaks või kolm majutusasutust on hõivatud. 
+
+                    Jätka julgelt otsinguid!
+
+
+                    **Fra Mare Thalasso SPA**
+
+                    Ranna tee 2
+
+                    Tel: +372 4724612
+
+                    spa@framare.ee
+
+
+                    **Haapsalu Spordikeskuse Hostel**
+
+                    Lihula mnt 10, Haapsalu
+
+                    Broneerimine +372 472 5060
+
+                    e-mail: bronn@spordibaasid.ee
+                     
+                    **Hostel Sport**
+
+                    Wiedemanni 15a, Haapsalu
+
+                    Broneerimine +372 473 5140
+
+                    e-mail: wiedemanni@spordibaasid.ee
+                     
+                    **Noortehostel**
+
+                    Kuuse 1, Haapsalu
+
+                    Broneerimine: +372 472 5060
+
+                    e-mail: bronn@spordibaasid.ee
+
+
+                    **Hotell Kongo**
+
+                    Kalda 19
+
+                    e-mail: info@kongohotel.ee 
+                     
+                    **Soffa Villa & Restoran**
+
+                    Posti 1
+
+                    Info ja broneerimine tel: +372 473 4000
+                     
+
+                contents_en: >-
+                    Where to stay in Haapsalu? The answer is here!
+
+                    For more options, go to [Visit
+                    Haapsalu](https://www.visithaapsalu.com/).
+
+
+                    **Fra Mare Thalasso SPA**
+
+                    Address: Ranna tee 2
+
+                    Phone: +372 4724612
+
+                    e-mail: spa@framare.ee
+
+
+                    **Haapsalu Sports Center Hostel**
+
+                    Address: Lihula mnt 10, Haapsalu
+
+                    Booking: +372 472 5060
+
+                    e-mail: bronn@spordibaasid.ee
+
+
+                    **Hostel Sport**
+
+                    Address: Wiedemanni 15a, Haapsalu
+
+                    Booking: +372 473 5140
+
+                    e-mail: wiedemanni@spordibaasid.ee
+
+
+                    **Youth Hostel**
+
+                    Address: Kuuse 1, Haapsalu
+
+                    Booking +372 5887 7760
+
+                    e-mail: noortehostel@spordibaasid.ee
+
+
+                    **Kongo Hotel**
+
+                    Address: Kalda 19
+
+                    Breakfast, sauna and wifi included
+
+                    e-mail: info@kongohotel.ee
+
+
+                    **Soffa Villa & Restaurant**
+
+                    Address: Posti 1
+
+                    Phone: +372 473 4000
+                created_by: 12
+                created_at: '2021-02-05T11:14:12.899Z'
+                publish_et: true
+                publish_en: true
+            order: 3
+            namePrivate: Majutus
+            name:
+                id: 32682
+                et: Majutus
+                en: Accommodation
+-
+    id: 5
+    order: 7
+    name:
+        id: 32684
+        et: Festival
+        en: Festival
+    subMenuItem:
+        -
+            id: 3
+            hoffi_article:
+                id: 4
+                title_et: Festivali tutvustus
+                slug_et: festivali-tutvustus
+                title_en: About the festival
+                slug_en: about-the-festival
+                contents_et: >
+                    **Haapsalu õudus- ja fantaasiafilmide festival** (HÕFF) on
+                    Eesti mudapealinna Haapsalu vallutav žanrifilmide maraton.
+                    Rahvusvaheliste filmikülaliste ja kogu Haapsalu haarava
+                    meluga on aprilli lõpus toimuv HÕFF kujunenud teravaid
+                    kinoelamusi otsivate filmifännide kevadhooaja
+                    tippsündmuseks.
+
+
+                    Festivali eesmärgiks on tutvustada Eesti ja lähiriikide
+                    kinopublikule valikut värsketest õõva- ja
+                    fantaasiafilmidest, kultusklassikuid ning maailmafilmi
+                    varamut. HÕFFi programmi koostamise põhimõtteks on vältida
+                    Hollywoodi peavoolu õudus- ja fantaasiafilme ning keskenduda
+                    sõltumatule ja art-house žanrifilmidele, mida Eesti kino- ja
+                    videolevist on suure tõenäosusega raske leida.
+
+
+                    HÕFF on Baltikumi ainus žanrifilmide festival, mis kuulub
+                    Mélièsi nime kandvasse rahvusvahelisse fantaasiafilmide
+                    festivalide föderatsiooni ([MIFF](https://melies.org/)).
+                    Selle liikmeteks on rohkem kui 20 festivali. Föderatsioon
+                    teeb tihedat koostööd ka Põhja-Ameerika ja Aasia
+                    festivalidega, luues võrgustiku kogu maailma žanrifilmide
+                    fännide vahel.
+
+
+                    HÕFFil on aset leidnud arvukad esilinastused ning festivali
+                    on väisanud mitmed tunnustatud külalised ja legendid, nagu
+                    Brian Yuzna, Magnus Paulsson, Marek Piestrak, Todd Brown,
+                    Babak Anvari ja paljud teised. Filmifännidel ja -tegijatel
+                    on haruldane võimalus kohtuda nii kinosaalides kui Haapsalu
+                    legendaarsetes lokaalides toimuvatel eriüritustel. Kes teab,
+                    ehk avastate ennast seetõttu suviselt Neuchateli festivalilt
+                    või hoopiski mõne uue Prantsuse õudushiti võtteplatsilt!
+
+
+                    Aastatega on HÕFFist kujunenud omanäoline ja
+                    rahvusvaheliselt tunnustatud festival, mida kiidetakse tänu
+                    lahedale atmosfäärile ja tugevale programmile. Korraldajad
+                    tegutsevad selle nimel, et festival oleks nii
+                    filmikülalistele kui ka fännidele vastupandamatu
+                    kevadekuulutaja. Soojad tervitused telgitagustest ja loodame
+                    teid kõiki festivalil näha!
+
+
+                    2005. aastast toimuva HÕFFi asutajateks ja korraldajateks on
+                    [Haapsalu linn](www.haapsalu.ee), [Haapsalu
+                    Kultuurikeskus](www.kultuurimaja.ee) ja [Pimedate Ööde
+                    Filmifestival](www.poff.ee) (PÖFF).
+                contents_en: >
+                    **The Haapsalu Horror & Fantasy Film Festival** (HÕFF) is an
+                    independent festival focusing of screening best films from
+                    the darker side of cinema from fantasy to horror, forgotten
+                    classics, filmmaker and country retrospectives, extreme
+                    films and celebrated guests in the unique setting of
+                    Estonia, a small country in northern Europe between Sweden,
+                    Finland and Russia. The festival takes place in late April,
+                    usually coinciding with the full moon.
+
+
+                    The festival's mission is to present to the audiences of
+                    Estonia and the neighboring countries horror, fantasy,
+                    sci-fi and cult films from the world’s cinematic heritage
+                    with a geographically diverse and contemporary programme.
+
+
+                    HÕFF has developed into a small, but internationally highly
+                    appreciated festival in the the Nordic area. The festival is
+                    organized by the [Black Nights Film Festival](www.poff.ee)
+                    in Tallinn, one of the largest art house festivals in the
+                    region together with [Haapsalu Culture
+                    Center](www.kultuurimaja.ee) and the [City of
+                    Haapsalu](www.haapsalu.ee). Part of the festival’s unique
+                    atmosphere is derived from its location – an ex-Soviet
+                    culture center with three cinema halls renovated in 2010 to
+                    its full crystal glory.
+
+
+                    The festival programme is divided into three sections. The
+                    main programme features new fantasy and horror films, not
+                    older than two years with a focus on a theme or a genre. The
+                    second part of HÕFF is targeted for audiences with strongest
+                    wits and guts – introducing the most extreme and obscure
+                    films ever made, such as *Guinea Pig* and* Serbian Film* or
+                    cult classics like *Salo: 120 days of Sodom* and *Cannibal
+                    Holocaust*.  Finally, the festival's retro film section
+                    includes films from the 1980s, screening both hits such as
+                    *Mad Max*, *Escape from New York* and *Terminator*, as well
+                    as the crazier and lesser known cult films from all over the
+                    world.
+
+
+                    Additionally HÕFF is increasingly featuring premieres, such
+                    as the international premiere of British gothic horror
+                    *Splintered*, later on European premieres for hits like
+                    *Beyond the Black Rainbow*, *Aggression Scale*, *Henge* or
+                    *VHS* and world premiere of Spanish horror *Omnivores*. In
+                    2016 the festival had the European premieres of Babak
+                    Anvari's BAFTA-winning *Under the Shadow* and Simon Rumley's
+                    thriller *Johnny Frank Garrett's Last Word*.
+
+
+                    During the years HÕFF has attracted several recognized
+                    filmmakers and guests including Brian Yuzna (*Reanimator*),
+                    Magnus Paulsson (*Frostbite*), producer Gregory Rossi (*Il
+                    Busco Fuori*), Polish cult director Marek Piestrak
+                    (*Navigator Pirx*), film directors Mike Mendez (*Mega
+                    Spider*), Babak Anvari (*Under the Shadow*), Simon Rumley
+                    (*Johnny Garrett’s Last Word*), Can Evrenol (*Baskin*),
+                    festival programmers Tuomas Riskala, Mikko Aromaa,
+                    Shelagh-Rowan Legg, Todd Brown and many others.
+
+
+                    In 2012, HÕFF became a part of the [Mélies International
+                    Festivals Federation](https://melies.org) (MIFF) and is
+                    proud to be the only member in the Baltics. With some 20
+                    festivals represented, on the European continent as well as
+                    in Asia and North-America, and a joint audience of
+                    approximately 600 000 spectators, the MIFF has become one of
+                    the most powerful tools to promote the originality and
+                    creativity of the European fantasy film industry.
+                created_by: 12
+                created_at: '2021-02-05T10:03:34.975Z'
+                publish_et: true
+                publish_en: true
+            order: 1
+            namePrivate: Festivalist
+            name:
+                id: 32685
+                et: Festivalist
+                en: About the Festival
+        -
+            id: 4
+            hoffi_article:
+                id: 6
+                title_et: Auhinnad
+                slug_et: auhinnad
+                title_en: Awards
+                slug_en: awards
+                contents_et: >
+                    HÕFF annab välja rahvusvahelise võistlusprogrammi parima
+                    lühifilmi, parima Eesti žanrifilmi, elutöö- ja publiku
+                    lemmikfilmi auhinda. 
+
+
+                    Rahvusvahelise võistlusprogrammi võitja pälvib Hõbedase
+                    Mélièsi nimelise auhinna, millega kaasneb pääs legendaarse
+                    prantsuse filmiillusionisti Georges Mélièsi järgi nime
+                    saanud Euroopa parima lühikese fantaasiafilmi konkursi
+                    finaali. Võistlust korraldab [Mélièsi rahvusvaheline
+                    festivalide föderatsioon](https://melies.org) (MIFF).
+                    Võistluse tulemusena selgub Euroopa parim fantaasiafilm, mis
+                    pärjatakse maailmas väga hinnatud Kuldse Mélièsi ehk *Méliès
+                    d’Or*´i auhinnaga. 
+
+
+                    Publiku lemmikfilmi ja elutööauhinna võitja saavad auhinnaks
+                    3D-prinditud pimedas helendava hundi, mille autoriks on Siim
+                    Tuksam (PART). Lähtuvalt valmistamistehnikast oli kuju
+                    loomise inspiratsiooniks digitaalne defekt ehk glitch, mida
+                    kasutatakse õudusfilmides tihtipeale üleloomulike jõudude
+                    kohaloleku demonstreerimiseks. Anatoomiliselt korrektne hunt
+                    on samas rõhutatult polügonaalne, viitamaks tema
+                    pinocchiolikule eksistentsiaalsele ängile.
+
+
+                    **Parim lühifilm:**
+
+
+                    2013: „Lõks”, rež Alberto Lopez (Belgia)
+
+                    2014: „Koerad” rež. Marc Riba ja Anna Solanas (Hispaania)
+
+                    2015: „Selle maa sool”, rež: Jonathan Desoindre
+                    (Prantsusmaa)
+
+                    2016: „Must karu”, rež: Mèryl Fortunat-Rossi ja Xavier Seron
+                    (Prantsusmaa, Belgia) 
+
+                    2017: „Pagana jänesed”, rež: Teemu Niukkanen (Soome)
+
+                    2018: „Pime tuba”, rež: Morgane Segaert (Prantsusmaa)
+
+                    2019: „Karv”, rež. Oskar Lehemaa (Eesti)
+
+                    2020: „Downid ja surnud”, rež. Even Husby Grødahl (Norra)
+
+
+                    **Parim Eesti žanrifilm:**
+
+
+                    2020: „Kõhedad muinaslood”, rež. Mart Sander
+
+
+                    **Publiku lemmiku auhind:**
+
+
+                    2012: „Iron Sky”, rež: Timo Vuorensola (Soome/Saksamaa)
+
+                    2013: „Kõigesööjad”, rež: Oscar Rojo (Hispaania)
+
+                    2014: „Kadumise järjekorras”, rež: Hans Peter Molland
+                    (Norra/Taani)
+
+                    2015: „Külaline”, rež: Adam Wingar (USA)
+
+                    2016: „Ülima seksi otsinguil”, rež: Nicolas Charlet, Bruno
+                    Lavaine (Prantsusmaa)
+
+                    2017: „Bad Black”, rež: Nabwana I.G.G. (Uganda)
+
+                    2018: „Lumehelbeke”, rež:  Adolfo Kolmerer ja William James
+                    (Saksamaa)
+
+                    2019: „Las kaamera käib – zombid!", rež. Shinichirô Ueda
+                    (Jaapan)
+
+                    2020: „Surnukuuri lood”, rež. Ryan Spindell (USA)
+
+
+                    **Elutööauhind:**
+
+
+                    2013: Hideo Nakata (Jaapan)
+
+                    2014: Tobe Hooper (USA)
+
+                    2015: Sven Grünberg (Eesti)
+
+                    2016: Karel Zeman, postuumselt (Tšehhoslovakkia)
+
+                    2018: ETV filmisaade „Jupiter” (Eesti)
+
+                    2019: Vladimir Tarassov (Venemaa) ja Priit Vaher (Eesti)
+
+
+                    **Tänuauhind:**
+
+
+                    2020: Mari Lill osatäitmise eest legendaarses
+                    lastelavastuses „Väike nõid” 
+                contents_en: >-
+                    As a member of the [Mélies International Festivals
+                    Federation](https://melies.org/) (MIFF), HÕFF is proud to
+                    host the international short film competition program and
+                    give out the Méliès d'Argent for the best short film. The
+                    receiver of the award will then be nominated for the best
+                    genre short film of the year that is awarded with the Méliès
+                    d'Or award.
+
+
+                    Since 2015, HÕFF gives out a lifetime achievement award and
+                    an audience award. Among the recipients of the lifetime
+                    achievement awards are Tobe Hooper, Bill Rebane and Ben
+                    Wheatley, Harry Kümel and others. The award is a
+                    glow-in-the-dark 3D-printed howling wolf designed by Siim
+                    Tuksam.
+
+
+                    **Short Film Méliès d'Argent**
+
+
+                    2013: *The Trap*, dir Alberto Lopez (Belgium)
+
+                    2014: *Canis*, dir Marc Riba and Anna Solanas (Spain)
+
+                    2015: *The Salt of the Earth*, dir Jonathan Desoindre
+                    (France)
+
+                    2016: *The Black Bear*, dir Mèryl Fortunat-Rossi and Xavier
+                    Seron (France, Belgium) 
+
+                    2017: *Fucking Bunnies*, dir Teemu Niukkanen (Finland)
+
+                    2018: *The Dark Room*, dir Morgane Segaert (France)
+
+                    2019: *Bad Hair*, dir Oskar Lehemaa (Estonia)
+
+                    2020: *Downs of the Dead*, dir. Even Husby Grødahl (Norway)
+
+
+                    **Best Estonian Genre Film**
+
+
+                    2020: *Eerie Fairy Tales*, Mart Sander
+
+
+                    **HÕFF Audience Award**
+
+
+                    2012: *Iron Sky*, dir Timo Vuorensola (Finland/Germany)
+
+                    2013: *Omnivores*, dir Oscar Rojo (Spain)
+
+                    2014: *In Order of Disappearance*, dir Hans Peter Molland
+                    (Norway/Denmark)
+
+                    2015: *The Guest*, dir Adam Wingar (USA)
+
+                    2016: *In Search of the Ultra Sex*, dir Nicolas Charlet,
+                    Bruno Lavaine (France)
+
+                    2017: *Bad Black*, dir Nabwana I.G.G. (Uganda)
+
+                    2018: *Snowflake*, dir Adolfo Kolmerer and William James
+                    (Germany)
+
+                    2019: *One Cut of the Dead*, dir. Shinichirô Ueda (Japan)
+
+
+                    **HÕFF Lifetime Achievement Award**
+
+
+                    2013: Hideo Nakata (Japan)
+
+                    2014: Tobe Hooper (USA)
+
+                    2015: Sven Grünberg (Estonia)
+
+                    2016: Karel Zeman, posthumous (Czechoslovakia)
+
+                    2018: TV show *Jupiter* (Estonia)
+
+                    2019: Priit Vaher (Estonia), Vladimir Tarassov (Russia)
+                created_by: 12
+                created_at: '2021-02-05T10:56:18.130Z'
+                publish_et: true
+                publish_en: true
+            order: 3
+            namePrivate: Auhinnad
+            name:
+                id: 32686
+                et: Auhinnad
+                en: Awards
+        -
+            id: 5
+            hoffi_article:
+                id: 11
+                title_et: Sõnaus
+                slug_et: sonaus
+                contents_et: >-
+                    Haapsalu õudus- ja fantaasiafilmide festival, [Eesti
+                    Ulmeühing](http://ulme.ee/veeb/?lang=et) ja [Eesti Keele
+                    Instituut](https://portaal.eki.ee/) korraldasid 2018. aastal
+                    sõnavõistluse, mille eesmärk oli leida omakeelsed vasted
+                    õudusfilmide ja ulmekirjandusega seotud ingliskeelsetele
+                    terminitele.
+
+
+                    Sobivat eestikeelset vastet otsisime sõnadele „*fantasy*”,
+                    „*slasher*”, „*splatter*”, „*gore*”, „*grindhouse*” ja
+                    „*slipstream*”. Aga sõnu koos vastetega võisid esitada ka
+                    osalejad ise.
+
+
+                    Esimese preemia saanud sõna „uitulme” on vasteks sõnale
+                    „*slipstream*”, mis tähistab kirjanduses piiripealset ulmet,
+                    kus kasutatakse küll ulmelisi elemente, aga liiga vähe või
+                    ebateadlikult, et seda klassikaliseks ulmeks pidada, samas
+                    pole see ka realism. Vaste pakkus välja Krista Jutt.
+
+
+                    Teise preemia saanud „rapper” märgib vastet sõnale
+                    „*slasher*”, mis on õudusfilmide kõige populaarsemaid
+                    alaliike, otsetõlkes „lõikehaav”, „lõikamine”, „(noaga)
+                    raiumine”. Selle sõna pakkusid välja Kaur Garšnek ja Taavi
+                    Tamula.
+
+
+                    Loova keelemängu eripreemia sai„rümbarebu” eest Laura
+                    Loolaid, kelle pakutu tähistab vastet sõnale „*gore*”.
+
+
+                    Žürii märkis ära kolm sõna: „võluvik” ehk „*fantasy*” (autor
+                    Rauno Pärnits), „närupära” ehk „*grindhouse*” (autor Kersti
+                    Taurus) ja „rupskiooper” ehk „*splatter*” (autor Laura
+                    Loolaid).
+
+
+                    Kokku osales võistlusel 207 sõna, mille pakkusid välja 72
+                    inimest.
+
+
+                    Žüriisse kuulusid Eesti ulmeühingu president Veiko Belials,
+                    eesti keele instituudi keelekorraldaja Tiina Paet ja HÕFFi
+                    korraldaja Helmut Jänes.
+                created_by: 12
+                created_at: '2021-02-16T11:22:43.366Z'
+                publish_et: true
+            order: 4
+            namePrivate: Sõnavõistlus
