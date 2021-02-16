@@ -2,13 +2,14 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
 const strapiDataDirPath = path.join(sourceDir, 'strapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
-const STRAPIDATA_IND_PROJECT = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
+const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
 
 const rootDir =  path.join(__dirname, '..')
@@ -21,6 +22,46 @@ const STRAPIDATA_COMPANIES = yaml.safeLoad(fs.readFileSync(strapiDataCompanyPath
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
+
+    const minimodel = {
+        'countries': {
+            model_name: 'Country'
+        },
+        'languages': {
+            model_name: 'Language'
+        },
+        'project_types': {
+            model_name: 'ProjectType'
+        },
+        'project_statuses': {
+            model_name: 'ProjectStatus'
+        },
+        'broadcasters': {
+            model_name: 'Organisation'
+        },
+        'country_focus': {
+            model_name: 'Country'
+        },
+        'teamCredentials': {
+            model_name: 'TeamCredentials'
+        },
+        'attached_partners': {
+            model_name: 'Organisation'
+        },
+        'contactCompany': {
+            model_name: 'Organisation'
+        },
+        'images': {
+            model_name: 'StrapiMedia'
+        },
+        'tag_genres': {
+            model_name: 'TagGenre'
+        },
+    }
+
+    STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
+
+
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
