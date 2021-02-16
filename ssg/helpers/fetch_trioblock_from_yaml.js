@@ -10,12 +10,12 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
-    'poff.ee': 'TrioPoff',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHoff'
+    'hoff.ee': 'TrioHOFF'
 }
 const articleMapping = {
     'poff.ee': 'poffi',
@@ -38,15 +38,6 @@ const mappingMini = {
 const strapiDataTrioPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml` )
 const STRAPIDATA_TRIO = yaml.safeLoad(fs.readFileSync(strapiDataTrioPath, 'utf8'))
 
-const minimodel_trio = {
-    mappingMini[domain] + '_et': {
-        model_name: 
-    },
-
-}
-fetchModel(STRAPIDATA_ARTICLE, minimodel)
-
-
 if (STRAPIDATA_TRIO.length < 1) {
     console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock`)
 }
@@ -55,6 +46,14 @@ const languages = ['en', 'et', 'ru']
 
 
 for (const lang of languages) {
+
+    // const minimodel_trio = {
+    //     [`${mappingMini[DOMAIN]}_${lang}`]: {
+    //         model_name: 'ArticleType'
+    //     },
+    // }
+    // STRAPIDATA_TRIO = fetchModel(STRAPIDATA_TRIOS, minimodel_trio)
+
     console.log(`Fetching ${DOMAIN} trioblock ${lang} data`)
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_TRIO[0]))

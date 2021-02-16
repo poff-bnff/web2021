@@ -1,175 +1,4 @@
 -
-    id: 7
-    order: 10
-    name:
-        id: 4083
-        et: Ohutus
-        en: Safety instructions and tips
-        ru: Безопасность
-    subMenuItem:
-        -
-            id: 8
-            just_filmi_article:
-                id: 16
-                created_by: 14
-                created_at: '2020-10-14T16:57:03.662Z'
-                title_et: Turvajuhised ja nõuanded
-                slug_et: turvajuhised-ja-nouanded
-                title_en: Safety instructions and tips
-                slug_en: safety-instructions-and-tips
-                title_ru: Инструкции и советы по безопасности
-                slug_ru: instrukczii-i-sovety-po-bezopasnosti
-                lead_et: >-
-                    **Turvajuhised ja nõuanded PÖFFi külastajatele**
-
-
-                    PÖFF 24 tuleb koroonaviiruse tõttu teistsugune kui varasemad
-                    – esimest korda saab filme vaadata nii kinodes kui ka
-                    veebis. Teeme koostööd meditsiiniettevõtetega SYNLAB ja
-                    Medicum ning perearstikeskusega Sinu Arst, samuti
-                    konsulteerime Terviseametiga, et tagada kinokülastajatele
-                    turvaline keskkond ning vältida koroonaviiruse levikut
-                    festivaliga seotud üritustel.
-
-
-                    Hoolime oma külastajatest väga ja soovime, et
-                    festivalielamus oleks kõigile võimalikult meeldiv, mugav ja
-                    turvaline. PÖFF kestab kaks ja pool nädalat ning selleks, et
-                    jõuaksime koos teiega eduka lõpuni, oleme koostanud
-                    allolevad juhised ja reeglid:
-
-
-                    - Tungivalt soovitame osta piletid PÖFFi või Piletilevi
-                    kodulehelt. Kodust pileti ostmine on lihtne, mugav ja
-                    turvaline.
-
-                    - Kogu festivaliinfo on leitav PÖFFi kodulehelt. Kui jääd
-                    hätta, siis kirjuta info@poff.ee. Aitame Sind hea meelega.
-
-                    - PÖFFi infopunkti palume festivali ajal külastada äärmisel
-                    vajadusel. Meie kõigi huvides on see, et piletikassadesse ei
-                    tekiks järjekordi. Järgime 2+2 reeglit. 
-
-                    - Festivali üritustel ja -alal on maskide kandmine rangelt
-                    soovituslik. Seansile võib tulla oma maskiga. Kui Sul maski
-                    ei ole, saad selle festivalialale sisenedes meie
-                    vabatahtlikult tasuta. 
-
-                    - Kui Sa ostad pileti siiski PÖFFi kassast, ole valmis
-                    selleks, et pilet isikustatakse. Selleks küsitakse Sinu
-                    andmeid. Oma istekohti saalis muuta ei tohi. 
-
-                    - Enne saali sisenemist võidakse valikuliselt mõõta
-                    külastajate kehatemperatuuri. Juhul, kui tunned ennast
-                    halvasti, palume Sul koju jääda ja vaadata meie filme
-                    veebis.
-
-                    - Festivalikinodes on desinfitseerimisvahendid, mida palume
-                    kõigil kasutada.
-
-                    - Seansside vaheajal puhastame ja desinfitseerime kõiki
-                    kinosaale.
-
-                    - Pärast seansi lõppu palume külastajaid saalist lahkuda
-                    ridade kaupa, et uste juurde ei tekiks troppe.
-
-
-
-                    Mis saab Sinu piletist, kui seanss või festival peaks
-                    COVID-19 viiruse tõttu ära jääma?
-
-                    - Loodame, et oled nõus vahetama ärajäänud seansi pileti
-                    sama filmi järgmise seansi pileti vastu. Kui soovitud filmi
-                    enam kinos ei ole, pakume võimalust vahetada pilet mõne muu
-                    filmi pileti vastu või vaadata sama filmi veebi vahendusel,
-                    kus näeb enamikku festivali filmidest.
-
-                    - Soovijatel on võimalik ka ärajäänud seansi pileti eest
-                    makstud raha PÖFFi toetuseks annetada. Piletitulu on meile
-                    üks olulisemaid sissetulekuallikaid – eriti tänavu, kui
-                    koroonaviirus on teinud filmitööstuse ja kultuuriürituste
-                    elu väga keeruliseks. Annetamise puhul palume teavitada
-                    festivali aadressil kassa@poff.ee. 
-
-                    - Kui ükski nendest lahendustest ei sobi, ostame Sinu pileti
-                    tagasi. 
-
-
-
-                    Anname üheskoos endast parima, et 24. PÖFF oleks sama äge ja
-                    turvaline elamus, nagu on olnud varasematel aastatel!
-                contents_ru: >
-                    В связи с пандемией коронавируса 24-й кинофестиваль PÖFF
-                    будет заметно отличаться от предыдущих. Впервые первый показ
-                    фильма можно будет посмотреть не только в кинотеатре, но и в
-                    веб-сети. Организаторы кинофестиваля тесно сотрудничают с
-                    медицинскими центрами SYNLAB и Medicum, с центром семейных
-                    врачей Sinu Arst (твой врач), а также консультируются с
-                    департаментом здоровья, чтобы гарантировать кинозрителям
-                    безопасную среду и избежать заражения коронавирусом на
-                    мероприятиях кинофестиваля.
-
-
-                    Организаторы кинофестиваля заботяться о своих гостях и
-                    желают, чтобы всем было приятно, удобно и надежно.
-
-
-                    Кинофестиваль PÖFF продлится две с половиной недели, и чтобы
-                    он был успешно завершен, его организаторы составили
-                    нижеследующие руководства и правила:
-
-
-                    Настоятельная просьба покупать билеты на сайтах PÖFF или
-                    Piletilevi, это просто, удобно и безопасно.
-
-                    Вся информация, касающаяся кинофестиваля, выложена на сайте
-                    PÖFF. При возникновении вопросов, обращайтесь по адресу
-                    электронной почты kassa@poff.ee. Вам всегда будут рады
-                    помочь.
-
-                    Инфопункт PÖFF советуем посещать только в случае крайней
-                    необходимости. В наших общих интересах не создавать
-                    очередей. Следуем правилу 2+2.
-
-                    Настоятельная просьба носить маски на мероприятиях и на
-                    территории кинофестиваля. На киносеанс можно придти в своей
-                    маске. Маску можно также получить бесплатно, обратившись к
-                    волонтеру.
-
-                    Если вы все же купите билет в кассе PÖFF, будьте готовы, что
-                    ваш билет персонализируют, спросив ваши данные, в кинозале
-                    вы займете указанное на билете место.
-
-                    Перед входом в кинозал у гостей выборочно измеряют
-                    температуру. В случае недомогания лучше остаться дома и
-                    посмотеть фильм в веб-сети.
-
-                    На сеанс не допускают больных, близконтактных, обязанных
-                    самоизолироваться на 14 дней.
-
-                    На входе в кинозалы имеются дезинфицирующие средства, просим
-                    пользоваться ими.
-
-                    В перерыве между киносеансами производится уборка и
-                    дезинфицирование кинозалов (каждые 2–4 часа).
-
-                    До и после киносеанса персонал кинотеатра или волонтеры
-                    напомнят кинозрителям о необходимости соблюдать меры
-                    предосторожности, чтобы не заразиться коронавирусом и
-                    следовать правилу 2+2.
-
-                    После окончания сеанса кинозрители должны выходить из
-                    кинозала порядно, чтобы избежать толкучки на выходе.
-                publish_et: true
-                publish_ru: true
-            order: 1
-            namePrivate: turvajuhised
-            name:
-                id: 4085
-                et: Turvajuhised ja nõuanded
-                en: Safety Instructions
-                ru: Инструкции и советы по безопасности
--
     id: 3
     order: 5
     name:
@@ -454,6 +283,112 @@
         en: news
         ru: novosti
 -
+    id: 6
+    order: 2
+    name:
+        id: 4071
+        et: Filmid
+        en: Films
+        ru: Фильмы
+    subMenuItem:
+        -
+            id: 9
+            order: 1
+            namePrivate: Kõik filmid
+            name:
+                id: 7678
+                et: Filmid A - Z
+                en: Films A - Z
+                ru: Фильмы A–Я
+            customUrl:
+                id: 7679
+                et: otsi_filmi
+                en: search_film
+                ru: iskat_film
+        -
+            id: 10
+            order: 3
+            namePrivate: Programmid
+            name:
+                id: 7680
+                et: Programmid
+                en: Programmes
+                ru: Программы
+            customUrl:
+                id: 7681
+                et: programmid
+                en: programmes
+                ru: programmy
+        -
+            id: 12
+            order: 4
+            namePrivate: Filmisoovitused
+            name:
+                id: 26389
+                et: Saadikute soovitused
+                en: FIlm recommendation
+                ru: Рекомендации
+            customUrl:
+                id: 26390
+                et: saadikute-filmisoovitused
+                en: film-recommendations
+                ru: film-recommendatsii
+        -
+            id: 14
+            just_filmi_article:
+                id: 19
+                created_by: 14
+                created_at: '2020-11-04T20:36:16.500Z'
+                title_et: JF kataloog PDFina
+                slug_et: jf-kataloog
+                title_en: JF catalogue as PDF
+                slug_en: jf-catalogue-as-pdf
+                title_ru: JF catalogue as PDF
+                slug_ru: jf-catalogue-as-pdf-ru
+                contents_et: >-
+                    [Kataloog
+                    PDFina](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))
+                contents_en: >-
+                    [Catalogue
+                    PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))
+                contents_ru: >-
+                    [Catalogue
+                    PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf)
+                publish_et: true
+                publish_en: true
+                publish_ru: true
+            order: 7
+            namePrivate: Kataloog
+            name:
+                id: 27805
+                et: 20. Just Filmi kataloog
+                en: Just Film catalogue
+                ru: Каталог Just Film
+        -
+            id: 15
+            order: 2
+            namePrivate: Ajakava
+            name:
+                id: 28957
+                et: Ajakava
+                en: Ajakava
+                ru: Афиша
+            customUrl:
+                id: 29134
+                et: otsi_seanssi
+                en: search_screening
+                ru: iskat_seanss
+-
+    id: 7
+    just_filmi_article:
+        id: 27
+    order: 10
+    name:
+        id: 4083
+        et: Stipendiumikonkurss
+        en: Stipendiumikonkurss
+        ru: Stipendiumikonkurss
+-
     id: 2
     order: 9
     name:
@@ -716,99 +651,3 @@
                 et: zhyriid
                 en: juries
                 ru: juriesru
--
-    id: 6
-    order: 2
-    name:
-        id: 4071
-        et: Filmid
-        en: Films
-        ru: Фильмы
-    subMenuItem:
-        -
-            id: 9
-            order: 1
-            namePrivate: Kõik filmid
-            name:
-                id: 7678
-                et: Filmid A - Z
-                en: Films A - Z
-                ru: Фильмы A–Я
-            customUrl:
-                id: 7679
-                et: otsi_filmi
-                en: search_film
-                ru: iskat_film
-        -
-            id: 10
-            order: 3
-            namePrivate: Programmid
-            name:
-                id: 7680
-                et: Programmid
-                en: Programmes
-                ru: Программы
-            customUrl:
-                id: 7681
-                et: programmid
-                en: programmes
-                ru: programmy
-        -
-            id: 12
-            order: 4
-            namePrivate: Filmisoovitused
-            name:
-                id: 26389
-                et: Saadikute soovitused
-                en: FIlm recommendation
-                ru: Рекомендации
-            customUrl:
-                id: 26390
-                et: saadikute-filmisoovitused
-                en: film-recommendations
-                ru: film-recommendatsii
-        -
-            id: 14
-            just_filmi_article:
-                id: 19
-                created_by: 14
-                created_at: '2020-11-04T20:36:16.500Z'
-                title_et: JF kataloog PDFina
-                slug_et: jf-kataloog
-                title_en: JF catalogue as PDF
-                slug_en: jf-catalogue-as-pdf
-                title_ru: JF catalogue as PDF
-                slug_ru: jf-catalogue-as-pdf-ru
-                contents_et: >-
-                    [Kataloog
-                    PDFina](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))
-                contents_en: >-
-                    [Catalogue
-                    PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))
-                contents_ru: >-
-                    [Catalogue
-                    PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf)
-                publish_et: true
-                publish_en: true
-                publish_ru: true
-            order: 7
-            namePrivate: Kataloog
-            name:
-                id: 27805
-                et: 20. Just Filmi kataloog
-                en: Just Film catalogue
-                ru: Каталог Just Film
-        -
-            id: 15
-            order: 2
-            namePrivate: Ajakava
-            name:
-                id: 28957
-                et: Ajakava
-                en: Ajakava
-                ru: Афиша
-            customUrl:
-                id: 29134
-                et: otsi_seanssi
-                en: search_screening
-                ru: iskat_seanss

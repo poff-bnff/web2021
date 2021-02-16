@@ -3058,435 +3058,6 @@
                 id: 32235
                 et: PÖFFi kaheksa ja pool
 -
-    id: 5
-    order: 3
-    name:
-        id: 4088
-        et: Piletid
-        en: Tickets
-        ru: Билеты
-    subMenuItem:
-        -
-            id: 15
-            namePrivate: Piletiinfo
-            poffi_article:
-                id: 55
-                created_by: 10
-                created_at: '2020-10-13T22:50:41.597Z'
-                title_et: Piletid
-                slug_et: piletiinfo
-                title_en: Tickets & passes
-                slug_en: tickets-and-passes-info
-                title_ru: Билеты и абонементы
-                slug_ru: bilety-i-abonementy
-                lead_en: >+
-                    ### **Buying tickets**
-                     
-                    - Tickets for cinema screenings and online screenings of
-                    PÖFF films can be bought through the [film
-                    pages](https://poff.ee/en/search_film/) on our homepage. You
-                    will find the ticket links underneath the film description.
-                    [Piletilevi](https://www.piletilevi.ee/est/piletid/poff/)
-                    also sells cinema tickets. 
-                     
-                    - From November 6th onwards, PÖFF info- and ticket desks
-                    will be opened in Tallinn’s Coca-Cola Plaza Cinema, and
-                    Solaris shopping centre and in Tartu’s Kvartal shopping
-                    centre. During the festival, tickets will also be sold at
-                    Metropol Spa Hotel and at all screening locations. 
-
-
-                    - We strongly recommend you to personalize your tickets for
-                    physical screenings at the ticket service center Piletilevi.
-                    You can do so
-                    [here](https://www.piletilevi.ee/eng/generalinfo/howtobuy/personalization/)
-                    or on at their homepage’s main menu by clicking on the
-                    “Personalization” button.
-
-                      This is necessary to help Estonia’s Agency in the case of a person infected with COVID-19 attending the   screening. With personalized tickets, it is easier to reach the people who were in close contact with this person   and to ensure that not everybody who attended the screening has to go into quarantine.
-
-                      https://www.piletilevi.ee/eng/generalinfo/howtobuy/personalization/
-
-                    - PÖFF films can also be viewed in our online [home
-                    cinema](https://kino.poff.ee). Tickets for virtual
-                    screenings are available through the [film
-                    pages](https://poff.ee/en/search_film/) on our homepage or
-                    directly via [https://kino.poff.ee](https://kino.poff.ee).
-                    Read more about the virtual screenings
-                    [here](https://staging.poff.inscaping.eu/en/news/how-do-i-watch-the-best-of-p-oe-ff-at-home/). 
-                     
-                    - To quickly find screenings, use the special code each film
-                    has and which can be found in the PÖFF catalogue or through
-                    the time schedule on our homepage. Catalogues can be bought
-                    at PÖFF info- and ticket desks in Tallinn’s Coca-Cola Plaza
-                    Cinema, Metropolis Spa Hotel and Solaris shopping centre and
-                    in Tartu’s Kvartal shopping centre. During the festival,
-                    tickets will also be sold at all screening locations. 
-                     
-                    - Organizers have the right to make changes in the schedule.
-                    Tickets can only be exchanged or refunded when your visit is
-                    made impossible due to corona or by fault of the festival.
-                    Please consider whether you are really able to attend the
-                    screening. 
-                     
-                     
-                    ### **PÖFF’s main programme**
-                     
-                    - Regular ticket 8 €
-                     
-                    - Virtual screening 8 €
-                     
-                    - Discount ticket 6.50 €
-                     
-                    - Paired seats 9 €*
-                     
-                    - Paired seats discount ticket 7.50 €*
-                     
-                    **In select cinemas*
-                     
-                    *Discount applies for pre-school aged children, school
-                    children, students, retirees, teachers and people in
-                    national service, upon showing required documents.*
-                     
-                     
-                    ### **PÖFF passes**
-                     
-                    - Wolf Pass for 8 screenings  39 €
-                     
-                    - Wolf Pass for 16 screenings 70 €
-                     
-                    - Wolf Pass for 36 screenings 136 €
-                     
-                    - Supporter Wolf Pass for unlimited screenings 200 €
-                     
-                    **Paired seats cannot be reserved with the passes*
-                     
-                     
-                     
-                    #### Festival safety rules
-                     
-                    - Masks are obligated at all festival events, venues and
-                    screenings. You may bring Your own mask to the festival or
-                    get one for free from our volunteers during entry.
-
-                    - When buying Your ticket from the PÖFF ticket center, be
-                    prepared to have your ticket personified, meaning we will as
-                    for your personal data. Also, you are not allowed to change
-                    your seat in the cinema.
-
-                    - Before entering the screening hall you might be asked to
-                    have your temperature checked. If You don’t feel well, we
-                    ask you to remain at home and see the films online (and
-                    consult a doctor, if necessary).
-
-                    - The cinemas of the festival will be equipped with
-                    sanitizers that we ask everyone to use.
-
-                    - The cinema halls will be disinfected between screenings.
-
-                    - The audience will be asked to exit the screenings row by
-                    row to avoid the formation of clusters at doors.
-                     
-                    [www.poff.ee/en](www.poff.ee/en)
-
-                     
-                     
-
-                contents_et: >4
-
-                     
-
-                    ### **Piletite ostmine**
-
-
-                    - Pileteid PÖFFi kinoseanssidele ja veebiseanssidele saad
-                    osta festivali **[kodulehelt](https://poff.ee/filmid/)**
-                    filmi kirjelduse all asuvas piletimüügi paneelist või
-                    **[Piletilevist](https://www.piletilevi.ee/est/piletid/poff/)**.
-                    Alates 6. novembrist avatakse PÖFFi info- ja piletikeskused
-                    Tallinnas kinos Coca-Cola Plaza ja Solarise keskuses ning
-                    Tartus Kvartali keskuses. Festivali ajal müüakse pileteid
-                    lisaks Metropol Spa Hotelis ning kõikides linastuskohtades. 
-                     
-                    - PÖFF soovitab tungivalt kasutada kõigil kinopiletite
-                    ostjatel Piletilevis pakutavat võimalust isikustada oma
-                    pilet. Seda saab teha Piletilevi kodulehe peamenüül asuval
-                    vasakpoolsel nupul “Pileti isikustamine” või vajutades
-                    **[siia
-                    lingile](https://www.piletilevi.ee/est/uldinfo/kuidasosta/isikustamine/)**.
-
-
-                    **Pileti isikustamine on oluline selleks puhuks, kui kinno
-                    peaks sattuma koroonaviirusega vaataja. Tänu isikustatud
-                    piletitele saab festivali edastada Terviseametile nende
-                    inimeste kontaktid, kes seansi ajal nakatunuga kõige
-                    lähemalt kokku puutusid, välistades selle, et kõik seansil
-                    peaksid karantiini minema. Seega on isikustamine oluline nii
-                    viiruse leviku takistamiseks kui ka vaatajate endi heaolu
-                    huvides.*
-                     
-                    - NB! PÖFFi kinopileteid ei vahetata ümber ega osteta
-                    tagasi. Erandiks on juhtumid, kui festivali korraldamise
-                    tõttu ei ole võimalik filmi vaadata. Loodame mõistvale
-                    suhtumisele ja palume, et mõtleksite enne piletiostmist
-                    hoolikalt, kas ikka saate sellel seansil osaelda.
-                     
-                    - **Hundipasse saad osta [SIIT](https://poff.ee/shop/)**.
-
-
-                    - PÖFFi filme saab vaadata ka
-                    **[veebikino](https://kino.poff.ee)** vahendusel.
-                    Veebiseansile saad pileti osta PÖFFi kodulehelt filmi
-                    tutvustuse all olevast piletimüügi paneelist või otse
-                    veebikinost. Loe täpsemalt
-                    **[siit](https://poff.ee/artikkel/p-oe-f-fi-veebiseansid-kodukinos/)**.
-
-
-                    - Seansside kiiremaks leidmiseks on iga filmiseanss
-                    varustatud koodiga. Koodid leiad PÖFFi ajakirjast ja
-                    kodulehekülje ajakavast. Kataloogid on müügil PÖFFi info- ja
-                    piletikeskustes Tallinnas Solaris keskuses, Coca-Cola Plaza
-                    kinos, Metropol hotellis ning Tartus Kvartali keskuses.
-                    Festivali ajal müüakse katalooge kõigis linastuskohtades. 
-
-
-                    - Korraldajatel on õigus teha vältimatu vajaduse tõttu kavas
-                    muudatusi. 
-
-
-                    - PÖFFi kinopileteid ei vahetata ümber ega osteta tagasi.
-                    Erandiks on juhtumid, kui festivali korraldamise tõttu ei
-                    ole võimalik filmi vaadata.
-
-
-
-                    ### **PÖFF põhiprogramm**
-
-
-                    - Täispilet 8 €
-
-
-                    - Veebikino seanss 8 €
-
-
-                    - Sooduspilet 6.50 €
-
-
-                    - Paaristool 9 €*
-
-
-                    - Paaristooli sooduspilet 7.50 €*
-
-
-                    **Teatud saalides*
-
-
-                    *Sooduspiletid kehtivad eelkooliealistele lastele,
-                    õpilastele, tudengitele, pensionäridele, õpetajatele ja
-                    ajateenijatele vastava dokumendi esitamisel saali
-                    sisenemisel.*
-
-
-
-                    ### **PÖFFi passid**
-
-
-                    - Hundipass 8 piletiga  39 €
-
-
-                    - Hundipass 16 piletiga 70 €
-
-
-                    - Hundipass 36 piletiga 136 €
-
-
-                    - Toetaja Hundipass piiramatu arvu piletitega 200 €
-
-
-                    **Hundipassiga ei ole paaristoolid saadaval*
-
-                    *PÖFFi pass kehtib vaid kinodes toimuvatele seanssidele!
-
-
-
-
-                    ### **Festivali ohutusreeglite meelespea**
-
-
-                    - Festivali üritustel ja -alal on maskide kandmine
-                    kohustuslik. Seansile võib tulla oma maskiga. Kui Sul maski
-                    ei ole, saad selle festivalialale sisenedes meie
-                    vabatahtlikult tasuta. 
-
-
-                    - Kui Sa ostad pileti PÖFFi piletikeskusest, ole valmis
-                    selleks, et pilet isikustatakse. Selleks küsitakse Sinu
-                    andmeid. Oma istekohta saalis muuta ei tohi. 
-
-
-                    - Enne saali sisenemist võidakse valikuliselt mõõta
-                    külastajate kehatemperatuuri. Juhul, kui tunned ennast
-                    halvasti, palume Sul koju jääda ja vaadata meie filme
-                    veebis.
-
-
-                    - Festivalikinodes on desinfitseerimisvahendid, mida palume
-                    kõigil kasutada.
-
-
-                    - Seansside vaheajal puhastame ja desinfitseerime kõiki
-                    kinosaale.
-
-
-                    - Pärast seansi lõppu palume külastajaid saalist lahkuda
-                    ridade kaupa, et uste juurde ei tekiks troppe.
-                contents_ru: >
-                    Билеты на сеансы PÖFF можно приобрести на домашней странице
-                    фестиваля poff.ee и в Piletilevi piletilevi.ee/poff. С 6
-                    ноября узнать подробнее о фильмах и купить билеты можно и в
-                    пунктах продажи билетов PÖFF. 
-
-
-                    #### Даты поступления билетов в продажу:
-
-
-                    <p>16. октября – начало продажи билетов на первые сеансы
-                    конкурсной программы дебютных фильмов</p>
-
-                    <p>23 октября – начало продажи билетов на первые сеансы
-                    главной конкурсной программы</p>
-
-                    <p>30 октября – начало продажи билетов на фокусную программу
-                    (в этом году кино из Германии)</p>
-
-                    <p>6 ноября – начало продажи билетов на все сеансы и
-                    программы PÖFF, стартует предварительная продажа в
-                    Тарту.</p>
-
-                    <p>8 ноября – последний день, когда можно было приобрести
-                    все билеты по выгодной цене 5 евро.</p>
-
-
-                    #### Предварительная продажа в Тарту
-
-
-                    Билеты на сеансы PÖFF в Тарту поступили в продажу 6 ноября. 
-
-                    Билеты можно купить на домашней странице фестиваля poff.ee,
-                    в Piletilevi и в инфопункте торгового центра Kvartal.
-
-                    Кинопоказы фестиваля "Тёмные ночи" пройдут в Электротеатре и
-                    в кинозале Athena Keskus.
-
-
-
-                    **Пожалуйста, имейте в виду!**
-
-
-                    - Кресла для двоих находятся в кинотеатре Apollo в ТЦ
-                    Solaris. Билеты на парные места нельзя приобрести с
-                    абонементом.
-
-                    - Льготные цены на билеты действительны для детей
-                    дошкольного возраста, школьников, студентов, пенсионеров,
-                    учителей и военнослужащих срочной службы при предоставлении
-                    документа, подтверждающего право на скидку, при вхождении в
-                    кинозал.
-
-                    - Действительный билет должен быть у каждого посетителя, в
-                    т.ч. ребенка, который сидит на коленях у родителя. 
-
-                    - Организаторы имеют право вносить изменения в программу.
-
-
-                    **Онлайн-кинотеатр**
-
-                    В этом году впервые работает онлайн-кинотеатр PÖFF. О том,
-                    как посмотреть фильмы в виртуальной среде, не выходя из
-                    дома, можно [здесь](https://kino.poff.ee). Обратите
-                    внимание, что онлайн-сеансы доступны для просмотра только на
-                    территории Эстонии.
-
-
-                    **Памятка о правилах безопасности на фестивале** 
-
-
-                    - На мероприятиях PÖFF настоятельно рекомендуется носить
-                    защитные маски. На сеансы можно приходить со своей маской.
-                    Если у Вас нет маски, то ее можно будет бесплатно получить у
-                    волонтеров при вхождении на территорию фестиваля. 
-
-
-                    - При покупке билетов в пункте продажи билетов PÖFF будьте
-                    готовы к тому, что билеты будут персонализированы. Для этого
-                    спросят Ваши данные. Свое место в зале менять нельзя. 
-
-
-                    - PÖFF настоятельно рекомендует покупателям билетов
-                    использовать возможность персонализировать приобретаемые
-                    билеты. Это можно сделать, выбрав в главном меню Piletilevi
-                    раздел «Персонализация» или пройдя по ссылке
-                    https://www.piletilevi.ee/rus/obshaja-informacija/howtobuy/personalizatsija/. 
-                     
-                    *Персонализация билетов важна на случай, если в кино
-                    окажется человек, заболевший коронавирусом. Благодаря
-                    персонализированному билету, фестиваль может передать
-                    Департаменту здоровья контакты тех людей, которые находились
-                    к зараженному человек ближе всего, и избежать ситуации, что
-                    в карантине должны будут находиться все зрители,
-                    находившиеся в зале. Поэтому персонализация билетов важна
-                    как для борьбы с распространением вируса, так и в личных
-                    интересах зрителя.* 
-
-
-                    - Перед вхождением в зал у посетителей могут выборочно
-                    померить температуру тела. Если Вы плохо себя чувствуете, то
-                    просим Вас оставаться дома и смотреть наши фильмы онлайн. 
-
-
-                    - В кинотеатрах проведения фестиваля размещены антисептики,
-                    которыми мы просим всех пользоваться. 
-
-
-                    - Между сеансами мы очищаем залы и дезинфицируем
-                    поверхности. 
-                publish_et: true
-                publish_en: true
-                publish_ru: true
-            order: 1
-            name:
-                id: 4089
-                et: Piletiinfo
-                en: Ticket information
-                ru: Информация о билетах
-        -
-            id: 30
-            namePrivate: Veebikino
-            poffi_article:
-                id: 103
-                created_by: 9
-                created_at: '2020-11-05T20:57:58.923Z'
-                title_et: Veebikino
-                slug_et: veebikino-1
-                title_en: How do I watch the best of PÖFF at home?
-                slug_en: how-do-i-watch-the-best-of-p-oe-ff-at-home-1
-                title_ru: Онлайн-кинотеатр
-                slug_ru: pof-fi-article-57
-                lead_et: "**Sel aastal saab PÖFFi filmielamusi nautida lisaks kinole ka kodus just sulle sobival ajal!\L**\n"
-                lead_ru: Как посмотреть лучшие фильмы PÖFF в онлайн-кинотеатре?
-                contents_et: "**Kuidas kodukinos PÖFFi filmi vaadata?**\n\n- Veebikinos saab filme vaadata vaid Eesti territooriumil paiknedes.\n\n\n- Logi sisse PÖFFi [veebikinosse](https://kino.poff.ee).\n- Kõik laenutatud veebiseansid leiad kaustast “minu filmid”.\n- Vaatamiseks vajuta nuppu “mängi”.\n- Filmi subtiitreid saab valida paremal all asuvale “CC” ikoonile klikkides.\L\n\n**Kuidas piletit PÖFFi kodukinos osta?**\n\n- Loo endale kasutaja PÖFFi  [veebikinos](https://kino.poff.ee).\n- Vali soovitud filmi välja PÖFFi [veebikinost](https://kino.poff.ee) või [kodulehelt](https://www.poff.ee/filmid/).\n- PÖFFi kodulehelt veebiseansi pileti ostmiseks vali filmi tutuvustuse all asuvast piletimüügi paneelist “virtuaalsaal”.\L\L\n\n\n**Millistel tingimustel saab filmi PÖFFi kodukinos vaadata?**\n\n- Veebiseanss avaneb vaatamiseks 3 tundi pärast filmi esmast linastust PÖFFi kinoseansil.\L\n- Juba ostatud pileti kehtivusaeg on 48 tundi - pärast pileti ostmist veebiseansile on sul selle vaatamise alustamiseks aega 48 tundi.\L\n- Juba alustatud vaatamise aeg on 30 tundi - kui oled juba filmi vaatamist alustanud, on sul selle lõpetamiseks aega 30 tundi..\n- Mitmetel ingliskeelsetel filmidel ei ole subtiitreid.\L\L\L\n\n\n\n**Hea teada**\n\n- PÖFFi filmiprogramm ei ole täies mahus veebikinos.\n- Piletid veebiseanssidele on piiratud.\L\n- Pärast piletiostu saadetakse sulle meil juhiste ja lingitud nupuga “Vaata filmi”.\n- Veebiseanssidel saab kasutajatuge aadressilt **abi@poff.ee**.\n\n\n\n\n**Põnevaid uusi elamusi PÖFFi veebikinos!**\n\n\L"
-                contents_en: "For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. Find out how. \n\nBlack Nights is now double: in the cinemas and at home! For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. \n\n\nNB:\n- This feature only works for people based in Estonia. If you are film professional, please apply for accreditation and go to [this page](proscreen.poff.com) to watch the films.\n\n**How to buy virtual PÖFF tickets?**\n\n1.\tThe information of virtual screenings can be found on [film profile pages](https://poff.ee/en/search_film/) on the PÖFF web site or directly on the film watching platform [kino.poff.ee](https://kino.poff.ee) where you can see all the films that are available for virtual viewing. There you can also purchase the viewing rights. \n2.\tAll virtual tickets can only be purchased at [kino.poff.ee](https://kino.poff.ee) after creating an account there. The ticket will also be sent to your email from our address abi@poff.ee.\n\n**NB!** \n- Not all PÖFF films can be watched virtually.\n- Films will become available for viewing in the online environment only 3 hours after their physical premiere at PÖFF.\n- Bought ticket to virtual screeningns are valid for 48 hours - after you have bought the ticket to viertual screening, you have 48 to start watching it. \n- After you have started watching the film, you have 30 hours to finish watching the film.  \n- Sadly, due to technical restraints, the environment is only in Estonian this year. But navigation is really easy there, so hopefully, English-speakers can manage. All film synopses and details can be found on the festival’s homepage [poff.ee/en](poff.ee/en).\n- As with regular screenings, the number of tickets sold to the virtual screenings is limited for every film. These limits vary by film.\n\n**How to watch virtual films?**\n\n1.\tLog in to the environement [kino.poff.ee](kino.poff.ee).\n2.\tAll films you have purchased virtual access to can be found in the subpage „Minu filmid“. If you have purchased a ticket during presale, you will have to wait until 3 hours have passed from the moment the film has begun its first cinema screening at Black Nights to see it. \n3.\tTo watch a film, press the button „Mängi“. To select subtitles, press the CC icon on the right-hand side of the player. Please note that many films that are in English don’t have subtitles.\n4.\tAfter purchasing the ticket, you can also go to the virtual screening via the ticket confirmation email you get from our account abi@poff.ee. Just open the email and click the button „Vaata filmi“.\n\nIf you run into trouble, please write to abi@poff.ee\nEnjoy the fil"
-                contents_ru: "**В этом году PÖFF покажут в кино и дома! **\n\nВ этом году на сайте PÖFF фильмы можно смотреть и виртуально, не выходя из дома и в удобное для вас время. \n\n**Как посмотреть фильм онлайн?**\n\n1.\tФильмы можно смотреть только на территории Эстонии. \n2.\tАвторизуйтесь на [kino.poff.ee](https://kino.poff.ee).\n3.\tВсе фильмы с купленными билетами можно найти в папке «Мои фильмы». Если вы купили билет во время предварительной продажи, вам придется подождать три часа после первого киносеанса этого фильма на PÖFF в кинотеатре. \n4.\tДля просмотра фильма следует нажать кнопку mängi и выбрать подходящие субтитры, нажав на иконку СС, расположенную справа снизу.\n\n**Как купить билеты на онлайн-сеансы PÖFF?**\n \n1. Вы можете найти информацию об онлайн-показах возле ознакомительных текстах [о фильмах](https://www.poff.ee/filmid/) на сайте PÖFF, выбрав в перечне сеансов veebiseanss. Другой вариант – перейти непосредственно на kino.poff.ee, где уже есть подборка фильмов, доступных только для виртуального просмотра. Там же можно купить билеты на онлайн-сеансы.\n \n2. Все билеты на онлайн-сеансы можно приобрести только онлайн. Для покупки билета необходимо создать пользовательский аккаунт на странице kino.poff.ee. С каждой покупкой на указанный адрес электронной почты также отправляются более подробные инструкции с адреса abi@poff.ee .\n \n**NB!**\n \n•\tНе все фильмы PÖFF можно смотреть в виртуальной среде.\n•\tКаждый фильм, который можно посмотреть виртуально, становится доступен для просмотра в виртуальной среде через 3 часа после первого сеанса в кинотеатре.  \n•\tПосле того, как вы приобрели билет и фильм будет готов к просмотру онлайн, вы сможете начать просмотр в течение 48 часов после того, как вы начали его смотреть.\n•\tНа просмотр уже начатого фильма отводится 30 часов, то есть если вы уже начали смотреть, то вы можете досмотреть его в любой момент в течение 30 часов.\n•\tНекоторые англоязычные фильмы не снабжены субтитрами.\n\n**Полезно знать**\n•\tНа все фильмы доступно ограниченное количество билетов. \n•\tВиртуально доступна только часть программы PÖFF.\n•\tПосле покупки билета вам на электронную почту придет ссылка с кнопкой Vaata film (Смотреть фильм).\n•\tПри возникновении вопросов свяжитесь с нами по адресу **abi@poff.ee.**\n \n\n**Приятных впечатлений от просмотра фильмов!**\n\n\n"
-                publish_et: true
-                publish_en: true
-                publish_ru: true
-            order: 2
-            name:
-                id: 26855
-                et: Veebikino
-                en: PÖFF Home Cinema
-                ru: PÖFF онлайн-кинотеатр
--
     id: 2
     order: 15
     name:
@@ -10746,3 +10317,51 @@
                 et: Žürii
                 en: Jury
                 ru: Жюри
+        -
+            id: 47
+            poffi_article:
+                id: 261
+                created_by: 10
+                created_at: '2021-02-09T15:20:43.637Z'
+                title_et: Dokumendid
+                slug_et: dokumendid
+                slug_en: dokumendid
+                slug_ru: dokumendid
+                lead_et: >+
+                    Palun tutvu dokumentidega siin:
+
+
+                    [PÖFFi
+                    põhikiri](https://drive.google.com/file/d/1Mwgfpf8gutx7vpSIK4BZhu24DXBBNuhv/view?usp=sharing)
+
+
+                    Majandusaasta aruanded
+                    [2019](https://drive.google.com/file/d/1oExYvwZC6Uh-A_WOf_7FSWmDQvS6SZPf/view?usp=sharing)
+                    ja
+                    [2018](https://drive.google.com/file/d/1bseRT0__CBM7ykVGWu-6ntibKuAqUiFJ/view?usp=sharing)
+
+
+                    [PÖFFi
+                    registrikaart](https://drive.google.com/file/d/16KbIiHkZtRcEcEp0jy8otqIQaESHFHOi/view?usp=sharing)
+
+
+                    [Viide senisele
+                    tegevusele](https://poff.ee/artikkel/p-imedate-oeoede-filmifestival/)
+
+                publish_et: true
+            name:
+                id: 32688
+                et: Dokumendid
+-
+    id: 5
+    order: 3
+    name:
+        id: 4088
+        et: Piletid ja passid
+        en: Tickets and Passes
+        ru: Билеты
+    customUrl:
+        id: 32687
+        et: shop
+        en: shop
+        ru: shop

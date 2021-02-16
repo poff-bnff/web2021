@@ -3,16 +3,93 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { create } = require('xmlbuilder2');
 const images = require('./images.js');
+const {fetchModel} = require('./b_fetch.js')
+
 const sourceDir = path.join(__dirname, '..', 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
+const strapiDataPath = path.join(sourceDir, 'strapidata')
+const strapiDataScreeningPath = path.join(strapiDataPath, 'Screening.yaml')
 const assetsDirXML = path.join(sourceDir, '..', 'assets', 'xml')
 const XMLpath = path.join(assetsDirXML, 'xml.xml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const STRAPIDATA_DOMAIN = STRAPIDATA['Domain']
-const STRAPIDATA_FILM = STRAPIDATA['Film']
-const SCREENINGS = STRAPIDATA['Screening']
+const SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_DOMAIN = []
+// const STRAPIDATA_DOMAIN = STRAPIDATA['Domain']
+const STRAPIDATA_FILM = []
+// const STRAPIDATA_FILM = STRAPIDATA['Film']
 
+const minimodel_screenings = {
+    'introQaConversation': {
+        model_name: 'IntroConversationQandA'
+    },
+    'location': {
+        model_name: 'Location',
+        expand: {
+            'hall': {
+                model_name: 'Hall',
+                expand: {
+                    'cinema': {
+                        model_name: 'Cinema',
+                        expand: {
+                            'town': {
+                                model_name: 'Town'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    'extraInfo': {
+        model_name: 'Translated'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'screening_mode': {
+        model_name: 'ScreeningMode'
+    },
+    'subtitles': {
+        model_name: 'Language'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette',
+        expand: {
+            'tags': {
+                model_name: 'Tags',
+                expand: {
+                    'programmes': {
+                        model_name: 'Programme',
+                    }
+                }
+            },
+            'orderedFilms': {
+                model_name: 'OrderedFilm',
+                expand: {
+                    'film': {
+                        model_name: 'Film',
+                        expand: {
+                            'festival_editions': {
+                                model_name: 'FestivalEdition',
+                                expand: {
+                                    'domain': {
+                                        model_name: 'Domain'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+        }
+    }
+}
+
+SCREENINGS = fetchModel(SCREENING, minimodel_screenings)
+
+// console.log(SCREENINGS[0].cassette.orderedFilms[0].film.festival_editions[0]);
 
 const domainMapping = {
     'poff.ee': 'https://poff.ee/',
@@ -31,12 +108,7 @@ for (const screeningIx in SCREENINGS) {
     const screening = SCREENINGS[screeningIx]
 
     if (screening.cassette && screening.cassette.orderedFilms) {
-        for (filmIx in screening.cassette.orderedFilms) {
-            let oneFilm = screening.cassette.orderedFilms[filmIx].film
-            screening.cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
-        }
         images(screening)
-
     }
 
 
@@ -71,9 +143,8 @@ for (const screeningIx in SCREENINGS) {
                 if (screening.cassette.orderedFilms && screening.cassette.orderedFilms.length) {
                     for (const filmIx in screening.cassette.orderedFilms) {
                         let film = screening.cassette.orderedFilms[filmIx].film
-
-                        if (film.festival_editions && film.festival_editions[0]) {
-                            var festivalEdDomain = STRAPIDATA_DOMAIN.filter( (a) => { return film.festival_editions[0].domain === a.id })[0].url
+                        if (film && film.festival_editions && film.festival_editions[0].domain) {
+                            var festivalEdDomain = film.festival_editions[0].domain.url
                             if (festivalEdDomain) {
 
                                 concert[`urls${langs[lang]}`] = `${domainMapping[festivalEdDomain]}${lang === 'et' ? '' : `${lang}/`}film/${slug}`

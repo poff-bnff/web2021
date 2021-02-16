@@ -3,6 +3,8 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
 const images = require('./images.js');
+const {fetchModel} = require('./b_fetch.js')
+
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
@@ -14,7 +16,7 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
 const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
-const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
 const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
@@ -23,6 +25,60 @@ const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+
+const minimodel_screenings = {
+    'introQaConversation': {
+        model_name: 'IntroConversationQandA'
+    },
+    'location': {
+        model_name: 'Location',
+        expand: {
+            'hall': {
+                model_name: 'Hall',
+                expand: {
+                    'cinema': {
+                        model_name: 'Cinema',
+                        expand: {
+                            'town': {
+                                model_name: 'Town'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    'extraInfo': {
+        model_name: 'Translated'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'screening_mode': {
+        model_name: 'ScreeningMode'
+    },
+    'subtitles': {
+        model_name: 'Language'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette',
+        expand: {
+            'tags': {
+                model_name: 'Tags',
+                expand: {
+                    'programmes': {
+                        model_name: 'Programme',
+                    }
+                }
+            }
+        }
+    }
+}
+
+STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENING, minimodel_screenings)
 
 for (const lang of allLanguages) {
     LangSelect(lang)

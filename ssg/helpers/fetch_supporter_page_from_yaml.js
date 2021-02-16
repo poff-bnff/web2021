@@ -25,7 +25,7 @@ LangSelect('ru');
 
 function LangSelect(lang) {
     processData(lang, CreateYAML);
-    console.log(`Fetching ${process.env['DOMAIN']} supporter page ${lang} data`);
+    console.log(`Fetching ${DOMAIN} supporter page ${lang} data`);
 }
 
 
