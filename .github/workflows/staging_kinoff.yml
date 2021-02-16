@@ -55,7 +55,7 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: ./ssg/build/kinoff
+            path: ./ssg/build/kinoff/*
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/kinoff_staging
             remote_host: inscaping.eu
             remote_user: virt84398
@@ -65,7 +65,7 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: ./ssg/build/kinoff
+            path: ./ssg/build/kinoff/*
             remote_path: ../ssg/build/kinoff
             remote_host: ${{ secrets.STRAPIHOSTPOFF2021 }}
             remote_user: strapi
