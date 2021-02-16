@@ -44,6 +44,11 @@ const minimodel_cassette = {
                 expand: {
                     'festival_editions': {
                         model_name: 'FestivalEdition',
+                        expand: {
+                            'festival': {
+                                model_name: 'Festival'
+                            }
+                        }
                     }
                 }
             }
@@ -96,6 +101,9 @@ const minimodel_cassette = {
             }
         }
     },
+    'languages': {
+        model_name: 'Language'
+    },
 }
 const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
@@ -143,7 +151,8 @@ const minimodel_screenings = {
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
 
 
-console.log(JSON.stringify(STRAPIDATA_CASSETTES[0], 0, 2));
+
+// console.log(JSON.stringify(STRAPIDATA_CASSETTES[1], 0, 2));
 
 const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
@@ -263,16 +272,16 @@ for (const lang of allLanguages) {
             let cassettePostersCassette = []
             let cassettePostersFilms = []
 
-            // Kasseti programmid
-            if (s_cassette_copy.tags && s_cassette_copy.tags.programmes && s_cassette_copy.tags.programmes[0]) {
-                for (const programmeIx in s_cassette_copy.tags.programmes) {
-                    let programme = s_cassette_copy.tags.programmes[programmeIx]
-                    let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
-                    if (typeof programmeFromYAML !== 'undefined' && programmeFromYAML[0]) {
-                        s_cassette_copy.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
-                    }
-                }
-            }
+            // // Kasseti programmid
+            // if (s_cassette_copy.tags && s_cassette_copy.tags.programmes && s_cassette_copy.tags.programmes[0]) {
+            //     for (const programmeIx in s_cassette_copy.tags.programmes) {
+            //         let programme = s_cassette_copy.tags.programmes[programmeIx]
+            //         let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
+            //         if (typeof programmeFromYAML !== 'undefined' && programmeFromYAML[0]) {
+            //             s_cassette_copy.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
+            //         }
+            //     }
+            // }
 
             // Kasseti treiler
             if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
@@ -301,24 +310,24 @@ for (const lang of allLanguages) {
 
             // #379 put ordered films to cassette.film
             let ordered_films = s_cassette_copy.orderedFilms
-                .filter( (isFilm) => { if (isFilm.film) { return 1 } else { console.log(`ERROR! Empty film under cassette with ID ${s_cassette_copy.id}`) } })
-                .map(s_c_film => {
+                // .filter( (isFilm) => { if (isFilm.film) { return 1 } else { console.log(`ERROR! Empty film under cassette with ID ${s_cassette_copy.id}`) } })
+                // .map(s_c_film => {
 
-                if (!s_c_film.film) {
-                    // console.log('ERROR: Cassette with no ordered film', s_cassette_copy.id);
-                    cassettesWithOutFilms.push(s_cassette_copy.id)
-                    // throw new Error('Cassette with no ordered film')
-                } else {
-                    let s_films = STRAPIDATA_FILMS.filter( (s_film) => { return s_c_film.film.id === s_film.id } )
+                //     if (!s_c_film.film) {
+                //         // console.log('ERROR: Cassette with no ordered film', s_cassette_copy.id);
+                //         cassettesWithOutFilms.push(s_cassette_copy.id)
+                //         // throw new Error('Cassette with no ordered film')
+                //     } else {
+                //         let s_films = STRAPIDATA_FILMS.filter( (s_film) => { return s_c_film.film.id === s_film.id } )
 
-                    if (s_films && s_films[0]) {
-                        s_films[0].ordinal = s_c_film.order
-                        return s_films[0]
-                    } else {
-                        return null
-                    }
-                }
-            })
+                //         if (s_films && s_films[0]) {
+                //             s_films[0].ordinal = s_c_film.order
+                //             return s_films[0]
+                //         } else {
+                //             return null
+                //         }
+                //     }
+                // })
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
             }
@@ -617,7 +626,7 @@ function generateAllDataYAML(allData, lang){
                 // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
-                        const key = fested.festival + '_' + programme.id
+                        const key = fested.festival.id + '_' + programme.id
                         const festival = STRAPIDATA_FESTIVALS.filter((a) => { return a.id === fested.festival })
                         if (festival[0]) {
                             var festival_name = festival[0][`name_${lang}`]
@@ -634,6 +643,7 @@ function generateAllDataYAML(allData, lang){
         for (const film of cassette.films) {
             for (const language of film.languages || []) {
                 const langKey = language.code
+                // console.log('KOOOOD', language);
                 const language_name = language.name
                 languages.push(langKey)
                 filters.languages[langKey] = language_name
@@ -742,7 +752,7 @@ function generateAllDataYAML(allData, lang){
         cinemas: mSort(filters.cinemas),
     }
 
-    console.log(cassette_search);
+    // console.log(cassette_search);
     let searchYAML = yaml.safeDump(cassette_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_films.${lang}.yaml`), searchYAML, 'utf8')
 
