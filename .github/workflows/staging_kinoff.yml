@@ -71,8 +71,8 @@ jobs:
             remote_user: strapi
             remote_key: ${{ secrets.DEPLOY_KEY_IBC }}
 
-#         - name: feedback to slack
-#           id: feedback
-#           uses: poff-bnff/post-to-slack@master
-#           if: always()
+        - name: feedback to slack
+          id: feedback
+          uses: poff-bnff/post-to-slack@master
+          if: always()
 
