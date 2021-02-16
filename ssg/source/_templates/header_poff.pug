@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff24_logo_dark4_o_elisa.svg' src='/assets/img/static/poff24_logo_dark4_o_elisa.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff24_logo_dark4_o_sp.svg' src='/assets/img/static/poff24_logo_dark4_o_sp.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     - var articleMenuItemDomain = 'poffi_article'
@@ -36,9 +36,6 @@ header
                     span.org_item
                         a(href='https://kino.poff.ee')
                             | PÖFFi veebikino
-                    span.org_item
-                        a(href='https://poff.elisastage.ee')
-                            | PÖFF @ ELISA STAGE
 
             each mainMenuItem in self.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
 
