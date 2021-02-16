@@ -226,8 +226,8 @@ ArticleType: &ArticleType
     slug_en: (UID)
     slug_ru: (UID)
 
-# Articles (POFF, Just, Shorts, Industry, Kinoff, HOFF)
-ArticleMedia: &ArticleMedia
+# Articles (POFF, Just, Shorts, Industry, Kinoff)
+Media: &Media
     imageDefault: #(Component (repeatable))
         - *StrapiMedia
     image_et: #(Component (repeatable))
@@ -268,7 +268,7 @@ POFFiArticle: &POFFiArticle
     contents_et: (Rich text)
     contents_en: (Rich text)
     contents_ru: (Rich text)
-    media: *ArticleMedia
+    media: *Media
     publishFrom: (Datetime)
     publishUntil: (Datetime)
     publish_et: (boolean)
@@ -288,8 +288,6 @@ POFFiArticle: &POFFiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations:
-        - *Organisation
 
 JustFilmiArticle: &JustFilmiArticle
     _path: /just-filmi-articles
@@ -310,7 +308,7 @@ JustFilmiArticle: &JustFilmiArticle
     contents_et: (Rich text)
     contents_en: (Rich text)
     contents_ru: (Rich text)
-    media: *ArticleMedia #(Component)
+    media: *Media #(Component)
     publishFrom: (Datetime)
     publishUntil: (Datetime)
     publish_et: (boolean)
@@ -330,8 +328,6 @@ JustFilmiArticle: &JustFilmiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations:
-        - *Organisation
 
 ShortsiArticle: &ShortsiArticle
     _path: /shortsi-articles
@@ -352,7 +348,7 @@ ShortsiArticle: &ShortsiArticle
     contents_et: (Rich text)
     contents_en: (Rich text)
     contents_ru: (Rich text)
-    media: *ArticleMedia #(Component)
+    media: *Media #(Component)
     publishFrom: (Datetime)
     publishUntil: (Datetime)
     publish_et: (boolean)
@@ -372,8 +368,6 @@ ShortsiArticle: &ShortsiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations:
-        - *Organisation
 
 KinoffiArticle: &KinoffiArticle
     _path: /kinoffi-articles
@@ -394,7 +388,7 @@ KinoffiArticle: &KinoffiArticle
     contents_et: (Rich text)
     contents_en: (Rich text)
     contents_ru: (Rich text)
-    media: *ArticleMedia #(Component)
+    media: *Media #(Component)
     publishFrom: (Datetime)
     publishUntil: (Datetime)
     publish_et: (boolean)
@@ -414,50 +408,6 @@ KinoffiArticle: &KinoffiArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
-    organisations:
-        - *Organisation
-
-HOFFiArticle: &HOFFiArticle
-    _path: /hof-fi-articles
-    created_by:
-        firstname: (text)
-        lastname: (text)
-    created_at: (datetime)
-    #titlePrivate: (text, private field)
-    title_et: (text)
-    title_en: (text)
-    title_ru: (text)
-    slug_et: (text)
-    slug_en: (text)
-    slug_ru: (text)
-    lead_et: (Rich text)
-    lead_en: (Rich text)
-    lead_ru: (Rich text)
-    contents_et: (Rich text)
-    contents_en: (Rich text)
-    contents_ru: (Rich text)
-    media: *ArticleMedia #(Component)
-    publishFrom: (Datetime)
-    publishUntil: (Datetime)
-    publish_et: (boolean)
-    publish_en: (boolean)
-    publish_ru: (boolean)
-    button: #(Component (repeatable))
-        - *Button
-    article_types: #(Component (repeatable))
-        - *ArticleType
-    tag_premiere_types: #(Component (repeatable))
-        - *TagPremiereType
-    programmes: #(Component (repeatable))
-        - *Programme
-    tag_genres: #(Component (repeatable))
-        - *TagGenre
-    tag_keywords: #(Component (repeatable))
-        - *TagKeyword
-    web_authors: #(Component (repeatable))
-        - *WebAuthor
-    organisations:
-        - *Organisation
 
 Language: &Language
     _path: /languages
@@ -578,23 +528,6 @@ KinoffiMenu: &KinoffiMenu
     subMenuItem: #(Component (repeatable))
         - *KinoffiSubMenuItem
 
-HoffiSubMenuItem: &HoffiSubMenuItem
-    name: *Translated #(Component)
-    hoffi_article: *HOFFiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-
-HOFFiMenu: &HOFFiMenu
-    _path: /hof-fi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    hoffi_article: *HOFFiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *HoffiSubMenuItem
-
 # Person & Team
 Person: &Person
     _path: /people
@@ -666,6 +599,7 @@ Team: &Team
     slug_et: (UID)
     slug_en: (UID)
     slug_ru: (UID)
+
 
 # Screening & Film
 ScreeningMode: &ScreeningMode
@@ -908,7 +842,7 @@ IndustryArticle: &IndustryArticle
     contents_et: (Rich text)
     contents_en: (Rich text)
     contents_ru: (Rich text)
-    media: *ArticleMedia #(Component)
+    media: *Media #(Component)
     publishFrom: (Datetime)
     publishUntil: (Datetime)
     publish_et: (boolean)
@@ -932,8 +866,6 @@ IndustryArticle: &IndustryArticle
         - *IndustryPerson
     people:
         - *Person
-    organisations:
-        - *Organisation
 
 IndustryGroup: &IndustryGroup
     _path: /industry-groups
@@ -1172,29 +1104,6 @@ KinoffiSupporter: &KinoffiSupporter
     supporters: #(Component (repeatable))
         - *SupSecKinoff
 
-SupHoff: &SupHoff
-    name: (text)
-    customUrl: (text)
-    logoWhite: *StrapiMedia
-    logoColour: *StrapiMedia
-    logoBlack: *StrapiMedia
-    hoffi_article: *HOFFiArticle
-
-SupSecHoff: &SupSecHoff
-    name: *Translated
-    order: (Number)
-    supporter: #(Component (repeatable))
-        - *SupHoff
-
-HoffiSupporter: &HoffiSupporter
-    _path: /hof-fi-supporters
-    # namePrivate: (text, private)
-    domain: *Domain
-    title: *Translated
-    intro: *Translated
-    supporters: #(Component (repeatable))
-        - *SupSecHoff
-
 # Footer
 SocialItem: &SocialItem
     name: (text)
@@ -1274,17 +1183,6 @@ KinoffiFooter: &KinoffiFooter
         - *FooterItemNav
     supporters: #(Component (repeatable))
         - *SupSecKinoff
-
-HOFFiFooter: &HOFFiFooter
-    _path: /hof-fi-footers
-    namePrivate: (text)
-    domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
-    item: #(Component (repeatable))
-        - *FooterItemNav
-    supporters: #(Component (repeatable))
-        - *SupSecHoff
 
 # Product & Payment
 Payment: &Payment
@@ -1413,12 +1311,6 @@ HeroArticleKinoff:
     article_en: *KinoffiArticle #(Component)
     article_ru: *KinoffiArticle #(Component)
 
-HeroArticleHoff:
-    _path: /hero-article-hoff
-    article_et: *HOFFiArticle #(Component)
-    article_en: *HOFFiArticle #(Component)
-    article_ru: *HOFFiArticle #(Component)
-
 # Trio
 TrioItemPoff: &TrioItemPoff
     poffi_article: *POFFiArticle #(Component)
@@ -1427,18 +1319,18 @@ TrioItemPoff: &TrioItemPoff
     customUrl: (text)
     image: *StrapiMedia #(Component)
 
-Triopoff: &Triopoff
+TrioPOFF: &TrioPOFF
     trioItem_1: *TrioItemPoff #(Component)
     trioItem_2: *TrioItemPoff #(Component)
     trioItem_3: *TrioItemPoff #(Component)
     name: (text)
     lead: (text)
 
-TrioPOFF:
+TrioPÖFF: &TrioPÖFF
     _path: /trio-p-oe-ff
-    trioPoff_et: *Triopoff #(Component)
-    trioPoff_en: *Triopoff #(Component)
-    trioPoff_ru: *Triopoff #(Component)
+    trioPoff_et: *TrioPOFF #(Component)
+    trioPoff_en: *TrioPOFF #(Component)
+    trioPoff_ru: *TrioPOFF #(Component)
 
 TrioItemJustFilm: &TrioItemJustFilm
     just_filmi_article: *JustFilmiArticle #(Component)
@@ -1519,24 +1411,3 @@ TrioKinoff: &TrioKinoff
     trioKinoff_et: *Triokinoff #(Component)
     trioKinoff_en: *Triokinoff #(Component)
     trioKinoff_ru: *Triokinoff #(Component)
-
-TrioItemHoff: &TrioItemHoff
-    hoffi_article: *HOFFiArticle #(Component)
-    title: (text)
-    lead: (text)
-    customUrl: (text)
-    image: *StrapiMedia #(Component)
-
-TrioHoff: &TrioHoff
-    name: (text)
-    lead: (text)
-    trioItem_1: *TrioItemHoff #(Component)
-    trioItem_2: *TrioItemHoff #(Component)
-    trioItem_3: *TrioItemHoff #(Component)
-
-TrioHOFF: &TrioHOFF
-    _path: /trio-hoff
-    trioHoff_et: *TrioHoff #(Component)
-    trioHoff_en: *TrioHoff #(Component)
-    trioHoff_ru: *TrioHoff #(Component)
-

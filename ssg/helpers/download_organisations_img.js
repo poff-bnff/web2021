@@ -1,4 +1,4 @@
-const https = require('https')
+const http = require('http')
 const fs = require('fs')
 const yaml = require('js-yaml')
 const fetch = require('node-fetch')
@@ -6,7 +6,7 @@ const STRAPIDATA = yaml.safeLoad(fs.readFileSync(`source/_fetchdir/strapiData.ya
 
 const {parallelLimit} = require('async')
 
-var strapiPath = 'https://' + process.env['StrapiHostPoff2021']
+var strapiPath = 'http://' + process.env['StrapiHost']
 var savePath = 'assets/img/dynamic/img_org/'
 
 loadYaml(readYaml);

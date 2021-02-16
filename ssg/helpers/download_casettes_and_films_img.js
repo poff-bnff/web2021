@@ -6,7 +6,7 @@ const fetch = require('node-fetch')
 const { values } = require('lodash')
 
 
-const strapiPath = 'https://' + process.env['StrapiHostPoff2021']
+const strapiPath = 'http://' + process.env['StrapiHost']
 const cassetteSavePath = path.join(__dirname, '..', 'assets', 'img', 'dynamic', 'img_films')
 const filmSavePath = path.join(__dirname, '..', 'assets', 'img', 'dynamic', 'img_films')
 

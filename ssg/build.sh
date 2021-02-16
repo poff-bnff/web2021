@@ -1,26 +1,19 @@
-SECONDS=0
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-cd $DIR
-echo $PWD
 
-# 1
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
 # node ./helpers/compile_article_pictures.js
 
-BUILDDIR=$(node ./helpers/name_build_directory.js)
-echo "Build directory: $BUILDDIR"
-
 echo 'STARTING BUILD'
-[ ! -d 'build' ] && mkdir -p 'build'
-[ -d 'build/'$BUILDDIR ] && rm -r 'build/'$BUILDDIR'/*'
-[ ! -d 'build/'$BUILDDIR ] && mkdir -p 'build/'$BUILDDIR
-[ ! -d 'build/'$BUILDDIR'/assets/' ] && mkdir -p 'build/'$BUILDDIR'/assets/'
-[ -d 'source/_fetchdir' ] && rm -r source/_fetchdir/*
-[ ! -d 'source/_fetchdir' ] && mkdir -p source/_fetchdir
-[ -d 'assets/img/dynamic' ] && rm -r assets/img/dynamic/*
-[ -d 'assets/xml' ] && rm -r assets/xml/*
+[ -d "build" ] && rm -r build/*
+[ ! -d "build" ] && mkdir -p build
+[ ! -d "build/assets" ] && mkdir -p build/assets
+[ -d "source/_fetchdir" ] && rm -r source/_fetchdir/*
+[ ! -d "source/_fetchdir" ] && mkdir -p source/_fetchdir
+[ -d "assets/img/dynamic" ] && rm -r assets/img/dynamic/*
+[ -d "assets/xml" ] && rm -r assets/xml/*
 
+echo initialise entu_ssg.yaml
+node ./initialise_entu_ssg.js
 
 echo 'Fetch strapiData.yaml from Strapi'
 node ./helpers/a_fetch.js
@@ -115,9 +108,6 @@ printf '\n----------                  Processing styles                ---------
 node ./helpers/copy_styles_acc_to_domain.js
 printf '\n----------             Finished processing styles            ----------\n'
 
-echo initialise entu_ssg.yaml
-node ./initialise_entu_ssg.js
-
-cp -R assets/* 'build/'$BUILDDIR'/assets'
+cp -R assets/* build/assets/
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
