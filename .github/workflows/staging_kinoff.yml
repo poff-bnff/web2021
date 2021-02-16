@@ -50,16 +50,6 @@ jobs:
 
         # - name: List output files
         #   run: ls
-            
-        - name: rsync deployment to ibc
-          uses: burnett01/rsync-deployments@4.1
-          with:
-            switches: -avzr
-            path: /data01/virt84398/domeenid/www.inscaping.eu/web/kinoff_staging
-            remote_path: ./ssg/build/kinoff
-            remote_host: ${{ secrets.STRAPIHOSTPOFF2021 }}
-            remote_user: strapi
-            remote_key: ${{ secrets.DEPLOY_KEY_IBC }}
 
         - name: rsync deployment to zone
           uses: burnett01/rsync-deployments@4.1
@@ -70,6 +60,16 @@ jobs:
             remote_host: inscaping.eu
             remote_user: virt84398
             remote_key: ${{ secrets.DEPLOY_KEY }}
+            
+        - name: rsync deployment to ibc
+          uses: burnett01/rsync-deployments@4.1
+          with:
+            switches: -avzr
+            path: /data01/virt84398/domeenid/www.inscaping.eu/web/kinoff_staging
+            remote_path: ./ssg/build/kinoff
+            remote_host: ${{ secrets.STRAPIHOSTPOFF2021 }}
+            remote_user: strapi
+            remote_key: ${{ secrets.DEPLOY_KEY_IBC }}
 
 #         - name: feedback to slack
 #           id: feedback
