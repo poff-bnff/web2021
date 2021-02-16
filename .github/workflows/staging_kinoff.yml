@@ -45,8 +45,8 @@ jobs:
             StrapiPassword: ${{ secrets.FETCH_KEY }}
             DOMAIN: kinoff.poff.ee
 
-        - name: Copy Assets
-          run: cp -R ../../ssg/assets ../../ssg/build/kinoff/assets
+        # - name: Copy Assets
+        #   run: cp -R ../../ssg/assets ../../ssg/build/kinoff/assets
 
         # - name: List output files
         #   run: ls
@@ -55,7 +55,7 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: ../../ssg/build/
+            path: ../../ssg/build/kinoff
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/kinoff_staging
             remote_host: inscaping.eu
             remote_user: virt84398

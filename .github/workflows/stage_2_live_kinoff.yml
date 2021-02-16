@@ -29,5 +29,5 @@ jobs:
 
         -   name: feedback to slack
             id: feedback
-            uses: poff-bnff/post-to-slack@main
+            uses: poff-bnff/post-to-slack@master
             if: always()
