@@ -46,7 +46,7 @@ jobs:
             DOMAIN: kinoff.poff.ee
 
         - name: Copy Assets
-          run: cp -R ../../ssg/assets ../../ssg/build/assets/kinoff
+          run: cp -R ../../ssg/assets ../../ssg/build/kinoff/assets
 
         # - name: List output files
         #   run: ls
