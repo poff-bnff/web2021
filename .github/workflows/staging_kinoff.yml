@@ -58,7 +58,7 @@ jobs:
             path: ./ssg/build/kinoff
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/kinoff_staging
             remote_host: inscaping.eu
-            remote_user: virt84398
+            remote_user: virt1199
             remote_key: ${{ secrets.DEPLOY_KEY }}
 
         - name: rsync deployment to ibc
