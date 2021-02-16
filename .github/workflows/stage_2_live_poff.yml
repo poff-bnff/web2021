@@ -19,7 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   name: ls -a via ssh
-            uses: fifsky/ssh-action@main
+            uses: fifsky/ssh-action@master
             with:
             # /* kopeeritava ja / target folderi lõppu tagab, et failid kirjutatakse üle
                 command: scp -r domeenid/www.inscaping.eu/web/poff_staging/* poff:domeenid/www.poff.ee/web2020/poff_live/

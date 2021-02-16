@@ -19,7 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   name: ls -a via ssh
-            uses: fifsky/ssh-action@main
+            uses: fifsky/ssh-action@master
             with:
                 command: scp -r domeenid/www.inscaping.eu/web/kinoff_staging/* poff:domeenid/www.poff.ee/web2020/kinoff_live/
                 host: inscaping.eu
