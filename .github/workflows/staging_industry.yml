@@ -47,8 +47,8 @@ jobs:
             DOMAIN: industry.poff.ee
 
 
-        - name: Copy Assets
-          run: cp -R ../../ssg/assets ../../ssg/build/industry/assets
+        # - name: Copy Assets
+        #   run: cp -R ../../ssg/assets ../../ssg/build/industry/assets
 
         # - name: List output files
         #   run: ls
@@ -65,5 +65,5 @@ jobs:
 
         - name: feedback to slack
           id: feedback
-          uses: poff-bnff/post-to-slack@main
+          uses: poff-bnff/post-to-slack@master
           if: always()

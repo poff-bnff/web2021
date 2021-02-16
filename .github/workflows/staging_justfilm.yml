@@ -45,8 +45,8 @@ jobs:
             StrapiPassword: ${{ secrets.FETCH_KEY }}
             DOMAIN: justfilm.ee
 
-        - name: Copy Assets
-          run: cp -R assets build/assets
+        # - name: Copy Assets
+        #   run: cp -R ../../ssg/assets ../../ssg/build/justfilm/assets
 
         # - name: List output files
         #   run: ls
@@ -55,7 +55,7 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: build/
+            path: ../../ssg/build/justfilm
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/just_staging
             remote_host: inscaping.eu
             remote_user: virt84398
@@ -63,6 +63,6 @@ jobs:
 
         - name: feedback to slack
           id: feedback
-          uses: poff-bnff/post-to-slack@main
+          uses: poff-bnff/post-to-slack@master
           if: always()
 
