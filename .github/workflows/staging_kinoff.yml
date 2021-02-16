@@ -1,8 +1,8 @@
 
 name: staging.kinoff.inscaping.eu/
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+Controls when the action will run. Triggers the workflow on push or pull request
+events but only for the master branch
 on:
     push:
         branches: [ staging_kinoff ]
@@ -46,7 +46,7 @@ jobs:
             DOMAIN: kinoff.poff.ee
 
         - name: Copy Assets
-          run: cp -R ../../ssg/assets ../../ssg/build/assets
+          run: cp -R ../../ssg/assets ../../ssg/build/kinoff/assets
 
         # - name: List output files
         #   run: ls
@@ -65,5 +65,4 @@ jobs:
           id: feedback
           uses: poff-bnff/post-to-slack@master
           if: always()
-
 

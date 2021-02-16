@@ -1,68 +1,68 @@
 
 name: staging.shorts.inscaping.eu/
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-# on:
-#     push:
-#         branches: [ staging_shorts ]
-#     workflow_dispatch:
-#         inputs:
-#             slackUserId:
-#                 required: false
-#                 description: 'Person who pushed the button'
-#             privateChannel:
-#                 required: false
-#                 description: 'slackBot and users private channel'
+Controls when the action will run. Triggers the workflow on push or pull request
+events but only for the master branch
+on:
+    push:
+        branches: [ staging_shorts ]
+    workflow_dispatch:
+        inputs:
+            slackUserId:
+                required: false
+                description: 'Person who pushed the button'
+            privateChannel:
+                required: false
+                description: 'slackBot and users private channel'
 
-# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# jobs:
-#     # This workflow contains a single job called "build"
-#     build:
-#         # The type of runner that the job will run on
-#         runs-on: ubuntu-latest
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+    # This workflow contains a single job called "build"
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-#         # Steps represent a sequence of tasks that will be executed as part of the job
-#         steps:
-#         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#         - uses: actions/checkout@v2
-#           with:
-#             fetch-depth: 2
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 2
 
-#         - name: Use Node.js 12.x
-#           uses: actions/setup-node@v1
-#           with:
-#             node-version: '12.x'
+        - name: Use Node.js 12.x
+          uses: actions/setup-node@v1
+          with:
+            node-version: '12.x'
 
-#         - name: Install node dependencies
-#           run: npm install
+        - name: Install node dependencies
+          run: npm install
 
-#         - name: Build Project
-#           run: . ./build.sh
-#           env:
-#             StrapiHostPoff2021: ${{ secrets.STRAPIHOSTPOFF2021 }}
-#             StrapiUserName: ${{ secrets.FETCH_USER }}
-#             StrapiPassword: ${{ secrets.FETCH_KEY }}
-#             DOMAIN: shorts.poff.ee
+        - name: Build Project
+          run: . ./ssg/build.sh
+          env:
+            StrapiHostPoff2021: ${{ secrets.STRAPIHOSTPOFF2021 }}
+            StrapiUserName: ${{ secrets.FETCH_USER }}
+            StrapiPassword: ${{ secrets.FETCH_KEY }}
+            DOMAIN: shorts.poff.ee
 
-#         - name: Copy Assets
-#           run: cp -R assets build/assets
+        - name: Copy Assets
+          run: cp -R assets build/assets
 
-#         # - name: List output files
-#         #   run: ls
+        # - name: List output files
+        #   run: ls
 
-#         - name: rsync deployments
-#           uses: burnett01/rsync-deployments@4.1
-#           with:
-#             switches: -avzr
-#             path: build/
-#             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/shorts_staging
-#             remote_host: inscaping.eu
-#             remote_user: virt84398
-#             remote_key: ${{ secrets.DEPLOY_KEY }}
+        - name: rsync deployments
+          uses: burnett01/rsync-deployments@4.1
+          with:
+            switches: -avzr
+            path: build/
+            remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/shorts_staging
+            remote_host: inscaping.eu
+            remote_user: virt84398
+            remote_key: ${{ secrets.DEPLOY_KEY }}
 
-#         - name: feedback to slack
-#           id: feedback
-#           uses: poff-bnff/post-to-slack@master
-#           if: always()
+        - name: feedback to slack
+          id: feedback
+          uses: poff-bnff/post-to-slack@main
+          if: always()
 
