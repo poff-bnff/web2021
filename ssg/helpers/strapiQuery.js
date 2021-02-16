@@ -12,7 +12,7 @@ const DATAMODEL = yaml.safeLoad(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
 var TOKEN = ''
 
 async function strapiQuery(options, dataObject = false) {
-    spin.start()
+    // spin.start()
     if (TOKEN === '') {
         TOKEN = await strapiAuth() // TODO: setting global variable is no a good idea
         // console.log('Bearer', TOKEN)
@@ -31,7 +31,7 @@ async function strapiQuery(options, dataObject = false) {
                 // process.stdout.write(spin())
             })
             response.on('end', async function () {
-                spin.stop()
+                // spin.stop()
                 if (!options.full_model_fetch) {
                     process.stdout.write({GET:'?', PUT:'+', POST:'o', DELETE:'X'}[options.method])
                 }
@@ -47,13 +47,13 @@ async function strapiQuery(options, dataObject = false) {
                 }
             })
             response.on('error', function (thisError) {
-                spin.stop()
+                // spin.stop()
                 console.log('\nE:1', thisError)
                 reject(thisError)
             })
         })
         request.on('error', async function (thisError) {
-            spin.stop()
+            // spin.stop()
             if (thisError.code === 'ETIMEDOUT') {
                 process.stdout.write('r')
                 let resolved = await strapiQuery(options, dataObject)

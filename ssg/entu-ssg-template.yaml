@@ -1,8 +1,8 @@
 locales:
-    - et
+    # - et
     - en
     # - ru
-defaultLocale: et
+defaultLocale: en
 
 source: ./source
 js: ./source/_scripts

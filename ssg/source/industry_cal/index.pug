@@ -67,7 +67,7 @@ block content
 
     section#content.schedule
 
-        if self.data.events
+        if self.data.events && process.env['DOMAIN'] === 'industry.poff.ee'
             -
                 var dates = self.data.events.filter(a => a.startTime)
                     .map(ev => {
@@ -108,7 +108,7 @@ block content
                                 return itemNames
                             }
 
-                        a.card_film(id= event.id href= `/${lang_path}events/${event.slug}`)
+                        a.card_event(id= event.id href= `/${lang_path}events/${event.slug}`)
 
                             .card_film_title
 

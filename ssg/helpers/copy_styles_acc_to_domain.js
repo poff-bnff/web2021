@@ -13,7 +13,9 @@ if (process.env['DOMAIN'] === 'justfilm.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_kinoff/');
 } else if (process.env['DOMAIN'] === 'industry.poff.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_industry/');
-} else {
+} else if (process.env['DOMAIN'] === 'hoff.ee') {
+    var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_hoff/');
+}else {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_poff/');
 }
 
