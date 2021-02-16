@@ -1,8 +1,8 @@
 
 name: staging.shorts.inscaping.eu/
 
-Controls when the action will run. Triggers the workflow on push or pull request
-events but only for the master branch
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
     push:
         branches: [ staging_shorts ]
@@ -46,7 +46,7 @@ jobs:
             DOMAIN: shorts.poff.ee
 
         # - name: Copy Assets
-        #   run: cp -R ../../ssg/assets ../../ssg/build/shorts/assets
+        #   run: cp -R ./ssg/assets ./ssg/build/shorts/assets
 
         # - name: List output files
         #   run: ls
@@ -55,7 +55,7 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: ../../ssg/build/shorts
+            path: ./ssg/build/shorts
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/shorts_staging
             remote_host: inscaping.eu
             remote_user: virt84398
