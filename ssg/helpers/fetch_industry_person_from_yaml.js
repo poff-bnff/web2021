@@ -3,16 +3,42 @@ const yaml = require('js-yaml');
 const path = require('path');
 const slugify = require('slugify');
 const rueten = require('./rueten.js');
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industrypersons');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
+const strapiDataPath = path.join(sourceDir, 'strapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
+    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'));
 
-    const STRAPIDATA_INDUSTRY_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryPerson'];
+    const minimodel = {
+        'person': {
+            model_name: 'Person'
+        },
+        'profilePicAtInd': {
+            model_name: 'StrapiMedia'
+        },
+        'role_at_films': {
+            model_name: 'RoleAtFilm'
+        },
+        'images': {
+            model_name: 'StrapiMedia'
+        },
+        'filmography': {
+            model_name: 'Filmography'
+        },
+        'industry_person_types': {
+            model_name: 'IndustryPersonType'
+        }
+    }
+
+    STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
+
+
+
     // const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Person'];
     const STRAPIDIR = '/uploads/'
 
