@@ -3,15 +3,19 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 echo $PWD
 
+# 1
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
 # node ./helpers/compile_article_pictures.js
 
+BUILDDIR=$(node ./helpers/name_build_directory.js)
+echo "Build directory: $BUILDDIR"
+
 echo 'STARTING BUILD'
 [ ! -d 'build' ] && mkdir -p 'build'
-[ -d 'build/'$DOMAIN ] && rm -r 'build/'$DOMAIN'/*'
-[ ! -d 'build/'$DOMAIN ] && mkdir -p 'build/'$DOMAIN
-[ ! -d 'build/'$DOMAIN'/assets/' ] && mkdir -p 'build/'$DOMAIN'/assets/'
+[ -d 'build/'$BUILDDIR ] && rm -r 'build/'$BUILDDIR'/*'
+[ ! -d 'build/'$BUILDDIR ] && mkdir -p 'build/'$BUILDDIR
+[ ! -d 'build/'$BUILDDIR'/assets/' ] && mkdir -p 'build/'$BUILDDIR'/assets/'
 [ -d 'source/_fetchdir' ] && rm -r source/_fetchdir/*
 [ ! -d 'source/_fetchdir' ] && mkdir -p source/_fetchdir
 [ -d 'assets/img/dynamic' ] && rm -r assets/img/dynamic/*
@@ -114,6 +118,6 @@ printf '\n----------             Finished processing styles            ---------
 echo initialise entu_ssg.yaml
 node ./initialise_entu_ssg.js
 
-cp -R assets/* 'build/'$DOMAIN'/assets'
+cp -R assets/* 'build/'$BUILDDIR'/assets'
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
