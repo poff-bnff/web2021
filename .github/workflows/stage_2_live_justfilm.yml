@@ -1,0 +1,32 @@
+name: justfilm.ee
+
+on:
+    release:
+        types: [ published ]
+        branches: [ staging_justfilm ]
+    workflow_dispatch:
+        inputs:
+            slackUserId:
+                required: false
+                description: 'Person who pushed the button'
+            privateChannel:
+                required: false
+                description: 'slackBot and users private channel'
+
+jobs:
+    deploy:
+        name: SCP files to server
+        runs-on: ubuntu-latest
+        steps:
+        -   name: ls -a via ssh
+            uses: fifsky/ssh-action@main
+            with:
+                command: scp -r domeenid/www.inscaping.eu/web/just_staging/* justfilm:domeenid/www.justfilm.ee/web2020/just_live/
+                host: inscaping.eu
+                user: virt84398
+                key: ${{ secrets.DEPLOY_KEY }}
+
+        -   name: feedback to slack
+            id: feedback
+            uses: poff-bnff/post-to-slack@master
+            if: always()
