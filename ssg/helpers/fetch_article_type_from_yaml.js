@@ -8,24 +8,76 @@ const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const sourceDir =  path.join(rootDir, 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const STRAPIDATA_PERSONS = STRAPIDATA['Person'];
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const sourceDir =  path.join(rootDir, 'source')
+const strapiDataPath =  path.join(sourceDir, 'strapidata')
+const mapping = DOMAIN_SPECIFICS.article
+const modelName = mapping[DOMAIN]
+const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
+const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+// const STRAPIDATA_PERSONS = STRAPIDATA['Person'];
+const STRAPIDATA_PERSONS = [];
+
 const STRAPIDIR = '/uploads/'
 const STRAPIHOSTWITHDIR = `http://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 const DEFAULTTEMPLATENAME = 'news'
 
 // console.log(DOMAIN_SPECIFICS)
-const mapping = DOMAIN_SPECIFICS.article
-const modelName = mapping[DOMAIN]
-const STRAPIDATA_ARTICLE = STRAPIDATA[modelName]
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
+
+
+const minimodel = {
+    'article_types': {
+        model_name: 'ArticleType'
+    },
+    'tag_premiere_types': {
+        model_name: 'TagPremiereType'
+    },
+    'programmes': {
+        model_name: 'Programme',
+        expand: {
+            'festival_editions': {
+                model_name: 'FestivalEdition',
+                expand: {
+                    'festival': {
+                        model_name: 'Festival'
+                    }
+                },
+            },
+            'presenters': {
+                model_name: 'Organisation'
+            },
+            'domains': {
+                model_name: 'Domain'
+            },
+            'presentedBy': {
+                model_name: 'PresentedBy',
+                expand: {
+                    'organisations': {
+                        model_name: 'Organisation'
+                    }
+                }
+            }
+        },
+        'tag_genres': {
+            model_name: 'TagGenre'
+        },
+        'tag_keywords': {
+            model_name: 'TagKeyword'
+        },
+        'web_authors': {
+            model_name: 'WebAuthor'
+        },
+        'organisations': {
+            model_name: 'Organisation'
+        }
+    }
+}
+
+STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
 
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} articles ${lang} data`)
