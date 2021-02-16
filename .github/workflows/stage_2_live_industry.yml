@@ -24,7 +24,7 @@ jobs:
                 command: scp -r domeenid/www.inscaping.eu/web/industry_staging/* poff:domeenid/www.poff.ee/web2020/industry_live/
                 host: inscaping.eu
                 user: virt84398
-                key: ${{ secrets.DEPLOY_KEY }}
+                key: ${{ secrets.DEPLOY_KEY_2021 }}
 
         -   name: feedback to slack
             id: feedback
