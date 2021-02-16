@@ -67,7 +67,7 @@ block content
 
     section#content.schedule
 
-        if self.data.events && process.env['DOMAIN'] === 'industry.poff.ee'
+        if self.data.events
             -
                 var dates = self.data.events.filter(a => a.startTime)
                     .map(ev => {

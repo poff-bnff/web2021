@@ -8,7 +8,7 @@ block content
     //- AINULT VÄIKETÄHTEDES!!!
     - var whichTypesToDisplay = ['industryproject'];
 
-    if self.data.articles && process.env['DOMAIN'] === 'industry.poff.ee'
+    if self.data.articles
         main.grid_articles
             - var sortFunction = function(a, b) {
             -   if(a.publishFrom) {

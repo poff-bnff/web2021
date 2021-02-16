@@ -14,8 +14,7 @@ const mapping = {
     'justfilm.ee': 'justfilm.ee',
     'kinoff.poff.ee': 'kinoff.poff.ee',
     'industry.poff.ee': 'industry.poff.ee',
-    'shorts.poff.ee': 'shorts.poff.ee',
-    'hoff.ee': 'hoff.ee'
+    'shorts.poff.ee': 'shorts.poff.ee'
 }
 
 const STRAPIDATA_SIXFILMS = STRAPIDATA

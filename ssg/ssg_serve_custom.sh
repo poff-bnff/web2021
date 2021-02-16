@@ -3,7 +3,6 @@ BUILDOPTION[1]="justfilm.ee"
 BUILDOPTION[2]="kinoff.poff.ee"
 BUILDOPTION[3]="industry.poff.ee"
 BUILDOPTION[4]="shorts.poff.ee"
-BUILDOPTION[5]="hoff.ee"
 
 ask_what_to_serve()
 {
@@ -19,7 +18,7 @@ ask_what_to_serve()
     if [ $new_number -eq 0 ]
     then
         runexit
-    elif [ $new_number -lt 7 ] && [ $new_number -gt 0 ]
+    elif [ $new_number -lt 6 ] && [ $new_number -gt 0 ]
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}

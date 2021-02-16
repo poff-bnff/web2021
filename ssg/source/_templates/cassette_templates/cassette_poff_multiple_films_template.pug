@@ -346,7 +346,7 @@ main.grid_cassette
                         .embed-responsive.embed-responsive-16by9.m-0.p-0
                             if trailer.videoCode
                                 +video(trailer.videoCode)
-                                //- - console.log(self.title)
+                                - console.log(self.title)
                 if (med && med.QaClip && med.QaClip[0].url)
                     - var filterQa = med.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
                     if filterQa.length

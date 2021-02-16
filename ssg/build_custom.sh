@@ -3,7 +3,6 @@ BUILDOPTION[1]="justfilm.ee"
 BUILDOPTION[2]="kinoff.poff.ee"
 BUILDOPTION[3]="industry.poff.ee"
 BUILDOPTION[4]="shorts.poff.ee"
-BUILDOPTION[5]="hoff.ee"
 
 ask_what_to_build()
 {
@@ -19,7 +18,7 @@ ask_what_to_build()
     if [ $new_number -eq 0 ]
     then
         runexit
-    elif [ $new_number -lt 7 ] && [ $new_number -gt 0 ]
+    elif [ $new_number -lt 6 ] && [ $new_number -gt 0 ]
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
@@ -91,20 +90,17 @@ build()
     if [ $site_name ]
     then
 
-        BUILDDIR=$(node ./helpers/name_build_directory.js)
-        echo "Build directory: $BUILDDIR"
-
         printf '\n----------                  Processing styles                ----------\n\n'
         node ./helpers/copy_styles_acc_to_domain.js
         printf '\n----------             Finished processing styles            ----------\n'
 
         printf "\nBuilding...\n"
 
-        [ -d "build/$BUILDDIR" ] && rm -r "build/$BUILDDIR/*"
-        [ ! -d "build/$BUILDDIR" ] && mkdir -p "build/$BUILDDIR"
-        [ ! -d "build/$BUILDDIR/assets" ] && mkdir -p "build/$BUILDDIR/assets"
+        [ -d "build" ] && rm -r build/*
+        [ ! -d "build" ] && mkdir -p build
+        [ ! -d "build/assets" ] && mkdir -p build/assets
 
-        cp -R assets/* "build/$BUILDDIR/assets"
+        cp -R assets/* build/assets/
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi
