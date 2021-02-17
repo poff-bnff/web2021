@@ -871,8 +871,8 @@
             -
                 id: 3868
                 name: A72A1049 (1).jpg
-                width: 1620
-                height: 1080
+                width: 2048
+                height: 1367
                 formats:
                     thumbnail:
                         url: /uploads/thumbnail_A72_A1049_1_bc95eaae18.jpg
@@ -1183,3 +1183,6 @@
                 hash: resize_1_6cb0a1b494
                 ext: .webp
                 url: /uploads/resize_1_6cb0a1b494.webp
+    article_types:
+        -
+            id: 5

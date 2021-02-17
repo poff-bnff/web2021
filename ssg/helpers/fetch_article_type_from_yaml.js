@@ -61,19 +61,19 @@ const minimodel = {
                     }
                 }
             }
-        },
-        'tag_genres': {
-            model_name: 'TagGenre'
-        },
-        'tag_keywords': {
-            model_name: 'TagKeyword'
-        },
-        'web_authors': {
-            model_name: 'WebAuthor'
-        },
-        'organisations': {
-            model_name: 'Organisation'
         }
+    },
+    'tag_genres': {
+        model_name: 'TagGenre'
+    },
+    'tag_keywords': {
+        model_name: 'TagKeyword'
+    },
+    'web_authors': {
+        model_name: 'WebAuthor'
+    },
+    'organisations': {
+        model_name: 'Organisation'
     }
 }
 

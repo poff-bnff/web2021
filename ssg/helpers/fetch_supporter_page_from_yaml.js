@@ -2,11 +2,12 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 
 const mapping = {
     'poff.ee': 'POFFSupporter',
@@ -17,7 +18,28 @@ const mapping = {
     'hoff.ee': 'HoffiSupporter'
 }
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_SUPPORTER_PAGE = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
+const STRAPIDATA_SUPPORTER_PAGES = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
+
+const minimodel = {
+    'domain': {
+        model_name: 'Domain'
+    },
+    'supporters': {
+        model_name: 'SupSecPoff',
+        expand: {
+            'supporter': {
+                model_name: 'SupPoff',
+                // expand: {
+                //     'poffi_article': {
+                //         model_name: 'POFFiArticle'
+                //     }
+                // }
+            }
+        }
+    }
+}
+
+STRAPIDATA_SUPPORTER_PAGE = fetchModel(STRAPIDATA_SUPPORTER_PAGES, minimodel)
 
 LangSelect('et');
 LangSelect('en');

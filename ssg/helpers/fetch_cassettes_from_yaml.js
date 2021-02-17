@@ -81,10 +81,33 @@ const minimodel_cassette = {
                         }
                     },
                     'orderedCountries': {
-                        model_name: 'OrderedCountries'
+                        model_name: 'OrderedCountries',
+                        expand: {
+                            'country': {
+                                model_name: 'Country'
+                            }
+                        }
                     },
                     'languages': {
                         model_name: 'Language'
+                    },
+                    'tags': {
+                        model_name: 'Tags',
+                        expand: {
+                            'programmes': {
+                                model_name: 'Programme',
+                                expand: {
+                                    'festival_editions': {
+                                        model_name: 'FestivalEdition',
+                                        expand: {
+                                            'festival': {
+                                                model_name: 'Festival'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                 }
             }
@@ -103,6 +126,23 @@ const minimodel_cassette = {
     },
     'languages': {
         model_name: 'Language'
+    },
+    'media': {
+        model_name: 'FilmMedia',
+        // expand: {
+        //     'stills': {
+        //         model_name: 'StrapiMedia'
+        //     },
+        //     'posters': {
+        //         model_name: 'StrapiMedia'
+        //     },
+        //     'trailer': {
+        //         model_name: 'Trailer'
+        //     },
+        //     'QaClip': {
+        //         model_name: 'QaClip'
+        //     }
+        // }
     },
 }
 const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
@@ -330,6 +370,11 @@ for (const lang of allLanguages) {
                 // })
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
+                s_cassette_copy.films = s_cassette_copy.films.map(a => {
+                    let film = a.film
+                    film.order = a.order
+                    return film
+                })
             }
 
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
@@ -340,7 +385,7 @@ for (const lang of allLanguages) {
                         onefilm.orderedCountries = orderedCountries
                         if (orderedCountries.length) {
                             onefilm.orderedCountriesDisplay = orderedCountries
-                                .map(country => country.country[`name_${lang}`])
+                                .map(country => country.country.name)
                                 .join(', ')
                         }
 
@@ -431,6 +476,7 @@ for (const lang of allLanguages) {
 
             if (s_cassette_copy.films && s_cassette_copy.films[0]) {
                 for (scc_film of s_cassette_copy.films) {
+
                     // console.log(scc_film);
                     let filmSlugEn = scc_film.slug_en
 
@@ -494,18 +540,18 @@ for (const lang of allLanguages) {
                         }
                     }
 
-                    // Filmi programmid
-                    if (scc_film.tags && scc_film.tags.programmes && scc_film.tags.programmes[0]) {
-                        for (const programmeIx in scc_film.tags.programmes) {
-                            let programme = scc_film.tags.programmes[programmeIx]
-                            let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
-                            if (typeof programmeFromYAML[0] !== 'undefined') {
-                                scc_film.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
-                            } else {
-                                timer.log(__filename, `Error! Programme with ID ${programme.id}, under film with ID ${scc_film.id} - domain ${DOMAIN} probably not assigned to this programme!`)
-                            }
-                        }
-                    }
+                    // // Filmi programmid
+                    // if (scc_film.tags && scc_film.tags.programmes && scc_film.tags.programmes[0]) {
+                    //     for (const programmeIx in scc_film.tags.programmes) {
+                    //         let programme = scc_film.tags.programmes[programmeIx]
+                    //         let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
+                    //         if (typeof programmeFromYAML[0] !== 'undefined') {
+                    //             scc_film.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
+                    //         } else {
+                    //             timer.log(__filename, `Error! Programme with ID ${programme.id}, under film with ID ${scc_film.id} - domain ${DOMAIN} probably not assigned to this programme!`)
+                    //         }
+                    //     }
+                    // }
 
                     if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
@@ -627,10 +673,9 @@ function generateAllDataYAML(allData, lang){
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
                         const key = fested.festival.id + '_' + programme.id
-                        const festival = STRAPIDATA_FESTIVALS.filter((a) => { return a.id === fested.festival })
-                        if (festival[0]) {
-                            var festival_name = festival[0][`name_${lang}`]
-                        }
+                        const festival = fested.festival
+                        var festival_name = festival.name
+
                         programmes.push(key)
                         filters.programmes[key] = `${festival_name} ${programme.name}`
                     }
