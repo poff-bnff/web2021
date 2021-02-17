@@ -1,6 +1,6 @@
 const STRAPIDIRS = [
     `https://${process.env['StrapiHostPoff2021']}/uploads/`,
-    `http://${process.env['StrapiHost']}/uploads/`
+    `http://139.59.130.149/uploads/`
     ];
 const REPLACEDIR = `https://assets.poff.ee/img/`;
 
