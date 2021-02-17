@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
+const replaceLinks = require('./replace_links.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -85,22 +86,13 @@ for (const lang of languages) {
         //TODO #444
         if (element.contents && element.contents[0]) {
             // Replace Strapi URL with assets URL for images
-            let searchRegExp = new RegExp(STRAPIHOSTWITHDIR, 'g');
-            let replaceWith = `https://assets.poff.ee/img/`;
-            const replaceImgPath = element.contents.replace(searchRegExp, replaceWith);
-            element.contents = replaceImgPath;
-
             // Replace Staging urls with correct webpage urls
-            let searchRegExpStaging = new RegExp(stagingURL, 'g');
-            const replaceLinkURL = element.contents.replace(searchRegExpStaging, pageURL);
-            element.contents = replaceLinkURL;
+            element.contents = replaceLinks(element.contents, stagingURL, pageURL)
         }
 
         if (element.lead && element.lead[0]) {
             // Replace Staging urls with correct webpage urls
-            let searchRegExpStaging = new RegExp(stagingURL, 'g');
-            const replaceLinkURL = element.lead.replace(searchRegExpStaging, pageURL);
-            element.lead = replaceLinkURL;
+            element.lead = replaceLinks(element.lead, stagingURL, pageURL)
         }
 
         // console.log(element)
