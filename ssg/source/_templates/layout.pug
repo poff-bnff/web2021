@@ -57,7 +57,34 @@ html(lang= self.locale)
             include ../_templates/header_hoff.pug
             block content
             include ../_templates/footer.pug
-            
+
+    //- Kumu Dokumentaal
+    else if process.env['DOMAIN'] === 'kumu.poff.ee'
+        include ../_templates/head_kumu.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_kumu.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- Tartuff
+    else if process.env['DOMAIN'] === 'tartuff.ee'
+        include ../_templates/head_tartuff.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_tartuff.pug
+            block content
+            include ../_templates/footer.pug
+
+    //- //- Bruno Oja
+    //- else if process.env['DOMAIN'] === 'oja.ee'
+    //-     include ../_templates/head_oja.pug
+    //-     // (onload='reloadImageOnError()')
+    //-     body
+    //-         include ../_templates/header_oja.pug
+    //-         block content
+    //-         include ../_templates/footer.pug
+
     //- no domain specified
     else
         body

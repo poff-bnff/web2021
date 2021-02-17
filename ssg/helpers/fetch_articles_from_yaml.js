@@ -2,6 +2,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
+const replaceLinks = require('./replace_links.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -65,55 +66,14 @@ for (const lang of allLanguages) {
             }
 
             if (element.contents && element.contents[0]) {
-                var splitContent = element.contents.split(STRAPIHOSTWITHDIR);
-                var i = 0;
-                var contentImgs = [];
-                while (splitContent[i+1]){
-                    if(splitContent[i+1]) {
-                        // timer.log(__filename, 'IMG: ', splitContent[i+1].split(')')[0]);
-                        contentImgs.push(splitContent[i+1].split(')')[0]);
-                        i++;
-                    }
-                }
-                let searchRegExp = new RegExp(STRAPIHOSTWITHDIR, 'g');
-                let replaceWith = `https://assets.poff.ee/img/`;
-                const replaceImgPath = element.contents.replace(searchRegExp, replaceWith);
-                element.contents = replaceImgPath;
-
-
-                // Replace Staging urls with correct webpage urls
-                let searchRegExpStaging = new RegExp(stagingURL, 'g');
-                const replaceLinkURL = element.contents.replace(searchRegExpStaging, pageURL);
-                element.contents = replaceLinkURL;
-
-                // timer.log(__filename, contentImgs);
-                element.contentsImg = contentImgs;
+                // Replace Img/Staging urls with correct webpage urls
+                element.contents = replaceLinks(element.contents, stagingURL, pageURL);
             }
 
             if (element.lead && element.lead[0]) {
-                var splitContent = element.lead.split('[');
-                var i = 0;
-                var contentImgs = [];
-                while (splitContent[i+1]){
-                    if(splitContent[i+1]) {
-                        // timer.log(__filename, 'IMG: ', splitContent[i+1].split(')')[0]);
-                        // contentImgs.push(splitContent[i+1].split(')')[0]);
-                        var theLink = splitContent[i+1].split(')')[0];
-                        var wholeLink = `[${splitContent[i+1].split(')')[0]})`;
-                        var wholeLinkEscaped = wholeLink.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
-                        var linkText = theLink.split(']')[0];
-                        let searchRegExp = new RegExp(wholeLinkEscaped, 'g');
-                        const replaceLinkWithLinkText = element.lead.replace(searchRegExp, linkText);
-                        element.lead = replaceLinkWithLinkText;
-                        // timer.log(__filename, element.lead);
-                        i++;
-                    }
-                }
 
-                // Replace Staging urls with correct webpage urls
-                let searchRegExpStaging = new RegExp(stagingURL, 'g');
-                const replaceLinkURL = element.lead.replace(searchRegExpStaging, pageURL);
-                element.lead = replaceLinkURL;
+                // Replace Img/Staging urls with correct webpage urls
+                element.lead = replaceLinks(element.lead, stagingURL, pageURL);
 
             }
 
