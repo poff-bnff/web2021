@@ -1,33 +1,33 @@
 name: kinoff.poff.ee
 
-# on:
-#     release:
-#         types: [ published ]
-#         branches: [ staging_kinoff ]
-#     workflow_dispatch:
-#         inputs:
-#             slackUserId:
-#                 required: false
-#                 description: 'Person who pushed the button'
-#             privateChannel:
-#                 required: false
-#                 description: 'slackBot and users private channel'
+on:
+    release:
+        types: [ published ]
+        branches: [ staging_kinoff ]
+    workflow_dispatch:
+        inputs:
+            slackUserId:
+                required: false
+                description: 'Person who pushed the button'
+            privateChannel:
+                required: false
+                description: 'slackBot and users private channel'
 
-# jobs:
-#     deploy:
-#         name: SCP files to server
-#         runs-on: ubuntu-latest
-#         steps:
-#         -   name: ls -a via ssh
-#             uses: fifsky/ssh-action@master
-#             with:
-#                 command: scp -r domeenid/www.inscaping.eu/web/kinoff_staging/* poff:domeenid/www.poff.ee/web2020/kinoff_live/
-#                 host: inscaping.eu
-#                 user: virt84398
-#                 key: ${{ secrets.DEPLOY_KEY }}
+jobs:
+    deploy:
+        name: SCP files to server
+        runs-on: ubuntu-latest
+        steps:
+        -   name: ls -a via ssh
+            uses: fifsky/ssh-action@master
+            with:
+                command: scp -r domeenid/www.inscaping.eu/web/kinoff_staging/* poff:domeenid/www.poff.ee/web2020/kinoff_live/
+                host: inscaping.eu
+                user: virt84398
+                key: ${{ secrets.DEPLOY_KEY_2021 }}
 
 
-#         -   name: feedback to slack
-#             id: feedback
-#             uses: poff-bnff/post-to-slack@master
-#             if: always()
+        -   name: feedback to slack
+            id: feedback
+            uses: poff-bnff/post-to-slack@master
+            if: always()

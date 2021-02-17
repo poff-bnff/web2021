@@ -11,7 +11,7 @@ www/*
 # ssg
 ############################
 
-# ssg/node_modules
+ssg/node_modules
 ssg/.DS_Store
 
 
