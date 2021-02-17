@@ -8,7 +8,7 @@ const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 
 const mapping = {
     'poff.ee': 'HeroArticlePoff',
@@ -39,10 +39,10 @@ const minimodel = {
 }
 
 const strapiDataHeroPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_HERO = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
-fetchModel(STRAPIDATA_HERO, minimodel)
-
+const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
+const STRAPIDATA_HERO = fetchModel(STRAPIDATA_HEROS, minimodel)[0]
 const languages = ['en', 'et', 'ru']
+
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} heroarticle ${lang} data`);
     var buffer = {}

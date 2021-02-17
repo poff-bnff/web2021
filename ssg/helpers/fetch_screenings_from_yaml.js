@@ -71,6 +71,16 @@ const minimodel_screenings = {
                 expand: {
                     'programmes': {
                         model_name: 'Programme',
+                        expand: {
+                            'festival_editions': {
+                                model_name: 'FestivalEdition',
+                                expand: {
+                                    'festival': {
+                                        model_name: 'Festival'
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -246,11 +256,9 @@ function CreateYAML(screenings, lang) {
                 // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
-                        const key = fested.festival + '_' + programme.id
-                        const festival = STRAPIDATA_FESTIVALS.filter((a) => { return a.id === fested.festival })
-                        if (festival[0]) {
-                            var festival_name = festival[0][`name_${lang}`]
-                        }
+                        const key = fested.festival.id + '_' + programme.id
+                        const festival = fested.festival
+                        var festival_name = festival.name
 
                         programmes.push(key)
                         filters.programmes[key] = `${festival_name} ${programme.name}`

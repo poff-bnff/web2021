@@ -676,3 +676,6 @@
                 publish_et: true
             order: 4
             namePrivate: Sõnavõistlus
+            name:
+                id: 32692
+                et: Sõnaus
