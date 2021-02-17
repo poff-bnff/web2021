@@ -27,9 +27,6 @@ header
                     span.org_item
                         a(href='https://kino.poff.ee')
                             | PÖFFi veebikino
-                    span.org_item
-                        a(href='https://poff.elisastage.ee')
-                            | PÖFF @ ELISA STAGE
 
 
             each mainMenuItem in self.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
