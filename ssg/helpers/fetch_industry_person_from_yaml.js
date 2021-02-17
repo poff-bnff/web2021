@@ -3,6 +3,7 @@ const yaml = require('js-yaml');
 const path = require('path');
 const slugify = require('slugify');
 const rueten = require('./rueten.js');
+const replaceLinks = require('./replace_links.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
@@ -49,9 +50,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 const images = film.images || []
                 images.forEach(image => {
                     image.url = image.url || ''
-                    let searchRegExp = new RegExp(STRAPIDIR, 'g')
-                    let replaceWith = `https://assets.poff.ee/img/`
-                    image.url = image.url.replace(searchRegExp, replaceWith)
+                    image.url = replaceLinks(image.url)
                 })
             })
 
