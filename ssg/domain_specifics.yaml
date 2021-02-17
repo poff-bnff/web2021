@@ -6,6 +6,10 @@ domain:
   industry.poff.ee: industry
   shorts.poff.ee: shorts
   hoff.ee: hoff
+  kumu.poff.ee: kumu
+  tartuff.ee: tartuff
+  # oja.ee: oja
+
 article:
   poff.ee: POFFiArticle
   justfilm.ee: JustFilmiArticle
@@ -13,6 +17,10 @@ article:
   industry.poff.ee: IndustryArticle
   shorts.poff.ee: ShortsiArticle
   hoff.ee: HOFFiArticle
+  kumu.poff.ee: KumuArticle
+  tartuff.ee: TartuffiArticle
+  # oja.ee: OjaArticle
+
 footer:
   poff.ee: POFFiFooter
   justfilm.ee: JustFilmFooter
@@ -20,6 +28,10 @@ footer:
   industry.poff.ee: IndustryFooter
   shorts.poff.ee: ShortsiFooter
   hoff.ee: HOFFiFooter
+  kumu.poff.ee: KumuFooter
+  tartuff.ee: TartuffiFooter
+  # oja.ee: OjaFooter
+
 locales:
   poff.ee:
   - et
@@ -42,6 +54,19 @@ locales:
   - et
   - en
   - ru
+  kumu.poff.ee:
+  - et
+  - en
+  - ru
+  tartuff.ee:
+  - et
+  - en
+  - ru
+  # oja.ee:
+  # - et
+  # - en
+  # - ru
+
 defaultLocale:
   poff.ee: et
   justfilm.ee: et
@@ -49,6 +74,9 @@ defaultLocale:
   industry.poff.ee: en
   shorts.poff.ee: et
   hoff.ee: et
+  kumu.poff.ee: et
+  tartuff.ee: et
+  # oja.ee: et
 
 vialogUrls:
     et:
@@ -71,17 +99,23 @@ vialogUrls:
         - "https://hoff.ee/ru/film/"
 
 pageURLs:
-    poff.ee: "https://poff.ee/"
-    justfilm.ee: "https://justfilm.ee/"
-    kinoff.poff.ee: "https://kinoff.poff.ee/"
-    industry.poff.ee: "https://industry.poff.ee/"
-    shorts.poff.ee: "http://shorts.poff.ee/"
-    hoff.ee: "https://hoff.ee/"
+  poff.ee: "https://poff.ee/"
+  justfilm.ee: "https://justfilm.ee/"
+  kinoff.poff.ee: "https://kinoff.poff.ee/"
+  industry.poff.ee: "https://industry.poff.ee/"
+  shorts.poff.ee: "http://shorts.poff.ee/"
+  hoff.ee: "https://hoff.ee/"
+  kumu.poff.ee: https://kumu.poff.ee/
+  tartuff.ee: https://tartuff.ee/
+  # oja.ee: https://oja.ee/
 
 stagingURLs:
-    poff.ee: "https://staging.poff.inscaping.eu/"
-    justfilm.ee: "https://staging.justfilm.inscaping.eu/"
-    kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
-    industry.poff.ee: "https://staging.industry.inscaping.eu/"
-    shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
-    hoff.ee: "https://staging.hoff.inscaping.eu/"
+  poff.ee: "https://staging.poff.inscaping.eu/"
+  justfilm.ee: "https://staging.justfilm.inscaping.eu/"
+  kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
+  industry.poff.ee: "https://staging.industry.inscaping.eu/"
+  shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
+  # hoff.ee: "https://staging.hoff.inscaping.eu/"
+  # kumu.poff.ee: https://kumu.poff.ee/
+  # tartuff.ee: https://tartuff.ee/
+  # # oja.ee: https://oja.ee/
