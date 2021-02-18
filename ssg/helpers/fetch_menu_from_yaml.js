@@ -15,7 +15,9 @@ const mapping = {
     'kinoff.poff.ee': 'KinoffiMenu',
     'industry.poff.ee': 'IndustryMenu',
     'shorts.poff.ee': 'ShortsiMenu',
-    'hoff.ee': 'HOFFiMenu'
+    'hoff.ee': 'HOFFiMenu',
+    'kumu.poff.ee': 'KumuMenu',
+    'tartuff.ee': 'TartuffiMenu'
 }
 const STRAPIDATA_MENU = STRAPIDATA[mapping[DOMAIN]]
 
