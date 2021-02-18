@@ -5,7 +5,7 @@ include /_templates/mixins.pug
 block content
     section#content.schedule
 
-        if self.data.industryprojects && self.data.industryprojects.length && process.env['DOMAIN'] === 'industry.poff.ee'
+        if self.data.industryprojects && process.env['DOMAIN'] === 'industry.poff.ee'
             main.grid_films
                 each project in self.data.industryprojects.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
                     a.card_film(id= project.id href= `/${lang_path}${project.path}`)
