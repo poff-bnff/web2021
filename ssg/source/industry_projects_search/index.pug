@@ -3,7 +3,7 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    if self.data.filters && self.data.filters.length && process.env['DOMAIN'] === 'industry.poff.ee'
+    if self.data.industryprojects && process.env['DOMAIN'] === 'industry.poff.ee'
         h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
         .grid_search#filters(style='display: none;')
