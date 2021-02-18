@@ -15,7 +15,9 @@ const mapping = {
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHOFF'
+    'hoff.ee': 'TrioHOFF',
+    'kumu.poff.ee': 'TrioKumu',
+    'tartuff.ee': 'TrioTartuff'
 }
 const articleMapping = {
     'poff.ee': 'poffi',
@@ -23,7 +25,9 @@ const articleMapping = {
     'kinoff.poff.ee': 'kinoffi',
     'industry.poff.ee': 'industry',
     'shorts.poff.ee': 'shortsi',
-    'hoff.ee': 'hoffi'
+    'hoff.ee': 'hoffi',
+    'kumu.poff.ee': 'kumu',
+    'tartuff.ee': 'tartuffi'
 }
 const STRAPIDATA_TRIO = STRAPIDATA[mapping[DOMAIN]]
 
