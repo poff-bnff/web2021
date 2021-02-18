@@ -30893,9 +30893,9 @@
                 remoteId: '621854'
     festival_editions:
         -
-            id: 1
-        -
             id: 4
+        -
+            id: 1
 -
     id: 1696
     title_et: Jumbo
@@ -34752,9 +34752,9 @@
                 remoteId: '621866'
     festival_editions:
         -
-            id: 4
-        -
             id: 1
+        -
+            id: 4
 -
     id: 1711
     title_et: Algus
@@ -47129,9 +47129,9 @@
                 remoteId: '625052'
     festival_editions:
         -
-            id: 4
-        -
             id: 1
+        -
+            id: 4
 -
     id: 1730
     title_et: Moskiitoriik
@@ -52032,9 +52032,9 @@
                 remoteId: '621676'
     festival_editions:
         -
-            id: 1
-        -
             id: 3
+        -
+            id: 1
 -
     id: 1714
     title_et: Õed Macalusod
@@ -65061,9 +65061,9 @@
                 remoteId: '621639'
     festival_editions:
         -
-            id: 4
-        -
             id: 3
+        -
+            id: 4
 -
     id: 367
     title_et: Shorts lasteanima võistlusprogramm 2
@@ -65603,9 +65603,9 @@
                 remoteId: '628334'
     festival_editions:
         -
-            id: 1
-        -
             id: 2
+        -
+            id: 1
 -
     id: 51
     title_et: Mooniväli
@@ -72193,9 +72193,9 @@
                 remoteId: '621642'
     festival_editions:
         -
-            id: 1
-        -
             id: 3
+        -
+            id: 1
 -
     id: 1597
     title_et: Undine
@@ -85001,9 +85001,9 @@
                 remoteId: '621669'
     festival_editions:
         -
-            id: 1
-        -
             id: 3
+        -
+            id: 1
 -
     id: 68
     title_et: Süda tuksub tuks-tuks-tuks
@@ -85937,9 +85937,9 @@
                 remoteId: '621868'
     festival_editions:
         -
-            id: 4
-        -
             id: 1
+        -
+            id: 4
 -
     id: 45
     title_et: Mudilaste kinoseanss 2
@@ -89890,9 +89890,9 @@
                 remoteId: '621659'
     festival_editions:
         -
-            id: 4
-        -
             id: 3
+        -
+            id: 4
 -
     id: 1675
     title_et: Viimased

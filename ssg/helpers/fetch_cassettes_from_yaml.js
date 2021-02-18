@@ -194,7 +194,7 @@ const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_s
 
 // console.log(JSON.stringify(STRAPIDATA_CASSETTES[1], 0, 2));
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 // true = check if programme is for this domain / false = check if festival edition is for this domain
 const CHECKPROGRAMMES = false
@@ -672,6 +672,8 @@ function generateAllDataYAML(allData, lang){
                 // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
+                        // console.log('PROGRAMMES: ', cassette.tags.programmes);
+                        // console.log('FEST_ED: ', fested);
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name

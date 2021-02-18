@@ -153,7 +153,8 @@ FestivalEdition: &FestivalEdition
     description_ru: (Rich text)
     startDate: (Datetime)
     endDate: (Datetime)
-    domain: *Domain #(Component)
+    domains: #(Component (repeatable))
+        - *Domain
     festival: *Festival #(Component)
     slug_et: (UID)
     slug_en: (UID)
@@ -546,7 +547,7 @@ JustFilmiMenu: &JustFilmiMenu
 
 ShortsiSubMenuItem: &ShortsiSubMenuItem
     name: *Translated #(Component)
-    shortsi_article: *JustFilmiArticle
+    shortsi_article: *ShortsiArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)

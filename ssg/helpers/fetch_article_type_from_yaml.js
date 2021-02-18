@@ -8,7 +8,7 @@ const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const strapiDataPath =  path.join(sourceDir, 'strapidata')

@@ -27,7 +27,7 @@ let checkDomain = function(element) {
         return true
     }
     // kui on domain, siis element['domains'] = [domain]
-    if (element['domain']){
+    if (element['domain'] && !element['domains']){
         element['domains'] = [element['domain']]
     }
 

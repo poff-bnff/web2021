@@ -15,7 +15,7 @@ const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const STRAPIDIR = '/uploads/'
 const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 
