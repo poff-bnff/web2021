@@ -543,47 +543,47 @@ KumuArticle: &KumuArticle
     organisations:
         - *Organisation
 
-# BrunoArticle: &BrunoArticle
-#     _path: /bruno-articles
-#     created_by:
-#         firstname: (text)
-#         lastname: (text)
-#     created_at: (datetime)
-#     #titlePrivate: (text, private field)
-#     title_et: (text)
-#     title_en: (text)
-#     title_ru: (text)
-#     slug_et: (text)
-#     slug_en: (text)
-#     slug_ru: (text)
-#     lead_et: (Rich text)
-#     lead_en: (Rich text)
-#     lead_ru: (Rich text)
-#     contents_et: (Rich text)
-#     contents_en: (Rich text)
-#     contents_ru: (Rich text)
-#     media: *ArticleMedia #(Component)
-#     publishFrom: (Datetime)
-#     publishUntil: (Datetime)
-#     publish_et: (boolean)
-#     publish_en: (boolean)
-#     publish_ru: (boolean)
-#     button: #(Component (repeatable))
-#         - *Button
-#     article_types: #(Component (repeatable))
-#         - *ArticleType
-#     tag_premiere_types: #(Component (repeatable))
-#         - *TagPremiereType
-#     programmes: #(Component (repeatable))
-#         - *Programme
-#     tag_genres: #(Component (repeatable))
-#         - *TagGenre
-#     tag_keywords: #(Component (repeatable))
-#         - *TagKeyword
-#     web_authors: #(Component (repeatable))
-#         - *WebAuthor
-#     organisations:
-#         - *Organisation
+BrunoArticle: &BrunoArticle
+    _path: /bruno-articles
+    created_by:
+        firstname: (text)
+        lastname: (text)
+    created_at: (datetime)
+    #titlePrivate: (text, private field)
+    title_et: (text)
+    title_en: (text)
+    title_ru: (text)
+    slug_et: (text)
+    slug_en: (text)
+    slug_ru: (text)
+    lead_et: (Rich text)
+    lead_en: (Rich text)
+    lead_ru: (Rich text)
+    contents_et: (Rich text)
+    contents_en: (Rich text)
+    contents_ru: (Rich text)
+    media: *ArticleMedia #(Component)
+    publishFrom: (Datetime)
+    publishUntil: (Datetime)
+    publish_et: (boolean)
+    publish_en: (boolean)
+    publish_ru: (boolean)
+    button: #(Component (repeatable))
+        - *Button
+    article_types: #(Component (repeatable))
+        - *ArticleType
+    tag_premiere_types: #(Component (repeatable))
+        - *TagPremiereType
+    programmes: #(Component (repeatable))
+        - *Programme
+    tag_genres: #(Component (repeatable))
+        - *TagGenre
+    tag_keywords: #(Component (repeatable))
+        - *TagKeyword
+    web_authors: #(Component (repeatable))
+        - *WebAuthor
+    organisations:
+        - *Organisation
 
 Language: &Language
     _path: /languages
@@ -755,22 +755,22 @@ KumuMenu: &KumuMenu
     subMenuItem: #(Component (repeatable))
         - *KumuSubMenuItem
 
-# BrunoSubMenuItem: &BrunoSubMenuItem
-#     name: *Translated #(Component)
-#     hoffi_article: *BrunoArticle
-#     order: (Number)
-#     customUrl: *Translated #(Component)
-#     namePrivate: (text)
+BrunoSubMenuItem: &BrunoSubMenuItem
+    name: *Translated #(Component)
+    hoffi_article: *BrunoArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
 
-# BrunoMenu: &BrunoMenu
-#     _path: /bruno-menus
-#     #namePrivate: (text, private field)
-#     name: *Translated #(Component)
-#     hoffi_article: *BrunoArticle
-#     customUrl: *Translated #(Component)
-#     order: (Number)
-#     subMenuItem: #(Component (repeatable))
-#         - *TartuffiSubMenuItem
+BrunoMenu: &BrunoMenu
+    _path: /bruno-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    hoffi_article: *BrunoArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *TartuffiSubMenuItem
 
 # Person & Team
 Person: &Person
@@ -1418,28 +1418,28 @@ KumuSupporter: &KumuSupporter
     supporters: #(Component (repeatable))
         - *SupSecKumu
 
-# SupBruno: &SupBruno
-#     name: (text)
-#     customUrl: (text)
-#     logoWhite: *StrapiMedia
-#     logoColour: *StrapiMedia
-#     logoBlack: *StrapiMedia
-#     bruno_article: *BrunoArticle
+SupBruno: &SupBruno
+    name: (text)
+    customUrl: (text)
+    logoWhite: *StrapiMedia
+    logoColour: *StrapiMedia
+    logoBlack: *StrapiMedia
+    bruno_article: *BrunoArticle
 
-# SupSecBruno: &SupSecBruno
-#     name: *Translated
-#     order: (Number)
-#     supporter: #(Component (repeatable))
-#         - *SupBruno
+SupSecBruno: &SupSecBruno
+    name: *Translated
+    order: (Number)
+    supporter: #(Component (repeatable))
+        - *SupBruno
 
-# BrunoSupporter: &BrunoSupporter
-#     _path: /hof-fi-supporters
-#     # namePrivate: (text, private)
-#     domain: *Domain
-#     title: *Translated
-#     intro: *Translated
-#     supporters: #(Component (repeatable))
-#         - *SupSecBruno
+BrunoSupporter: &BrunoSupporter
+    _path: /hof-fi-supporters
+    # namePrivate: (text, private)
+    domain: *Domain
+    title: *Translated
+    intro: *Translated
+    supporters: #(Component (repeatable))
+        - *SupSecBruno
 
 
 # Footer
@@ -1555,16 +1555,16 @@ KumuFooter: &KumuFooter
     supporters: #(Component (repeatable))
         - *SupSecKumu
 
-# BrunoFooter: &BrunoFooter
-#     _path: /bruno-footers
-#     namePrivate: (text)
-#     domain: *Domain #(Component)
-#     socialGroup: #(Component )
-#         *SocialGroup
-#     item: #(Component (repeatable))
-#         - *FooterItemNav
-#     supporters: #(Component (repeatable))
-#         # - *SupSecBruno
+BrunoFooter: &BrunoFooter
+    _path: /bruno-footers
+    namePrivate: (text)
+    domain: *Domain #(Component)
+    socialGroup: #(Component )
+        *SocialGroup
+    item: #(Component (repeatable))
+        - *FooterItemNav
+    supporters: #(Component (repeatable))
+        - *SupSecBruno
 
 # Product & Payment
 Payment: &Payment
@@ -1711,11 +1711,11 @@ HeroArticleKumu:
     article_en: *KumuArticle #(Component)
     article_ru: *KumuArticle #(Component)
 
-# HeroArticleBruno:
-#     _path: /hero-article-bruno
-#     article_et: *BrunoArticle #(Component)
-#     article_en: *BrunoArticle #(Component)
-#     article_ru: *BrunoArticle #(Component)
+HeroArticleBruno:
+    _path: /hero-article-bruno
+    article_et: *BrunoArticle #(Component)
+    article_en: *BrunoArticle #(Component)
+    article_ru: *BrunoArticle #(Component)
 
 # Trio
 TrioItemPoff: &TrioItemPoff
@@ -1854,9 +1854,9 @@ Triotartuff: &Triotartuff
 
 TrioTartuff: &TrioTartuff
     _path: /trio-tartuff
-    trioTartuff_et: *TrioTartuff #(Component)
-    trioTartuff_en: *TrioTartuff #(Component)
-    trioTartuff_ru: *TrioTartuff #(Component)
+    trioTartuff_et: *Triotartuff #(Component)
+    trioTartuff_en: *Triotartuff #(Component)
+    trioTartuff_ru: *Triotartuff #(Component)
 
 TrioItemKumu: &TrioItemKumu
     kumu_article: *KumuArticle #(Component)
@@ -1865,7 +1865,7 @@ TrioItemKumu: &TrioItemKumu
     customUrl: (text)
     image: *StrapiMedia #(Component)
 
-Triokumu: &TrioKumu
+Triokumu: &Triokumu
     name: (text)
     lead: (text)
     trioItem_1: *TrioItemKumu #(Component)
@@ -1874,26 +1874,26 @@ Triokumu: &TrioKumu
 
 TrioKumu: &TrioKumu
     _path: /trio-kumu
-    trioKumu_et: *TrioKumu #(Component)
-    trioKumu_en: *TrioKumu #(Component)
-    trioKumu_ru: *TrioKumu #(Component)
+    trioKumu_et: *Triokumu #(Component)
+    trioKumu_en: *Triokumu #(Component)
+    trioKumu_ru: *Triokumu #(Component)
 
-# TrioItemBruno: &TrioItemBruno
-#     bruno_article: *BrunoArticle #(Component)
-#     title: (text)
-#     lead: (text)
-#     customUrl: (text)
-#     image: *StrapiMedia #(Component)
+TrioItemBruno: &TrioItemBruno
+    bruno_article: *BrunoArticle #(Component)
+    title: (text)
+    lead: (text)
+    customUrl: (text)
+    image: *StrapiMedia #(Component)
 
-# Triobruno: &TrioBruno
-#     name: (text)
-#     lead: (text)
-#     trioItem_1: *TrioItemBruno #(Component)
-#     trioItem_2: *TrioItemBruno #(Component)
-#     trioItem_3: *TrioItemBruno #(Component)
+Triobruno: &Triobruno
+    name: (text)
+    lead: (text)
+    trioItem_1: *TrioItemBruno #(Component)
+    trioItem_2: *TrioItemBruno #(Component)
+    trioItem_3: *TrioItemBruno #(Component)
 
-# TrioBruno: &TrioBruno
-#     _path: /trio-bruno
-#     trioBruno_et: *TrioBruno #(Component)
-#     trioBruno_en: *TrioBruno #(Component)
-#     trioBruno_ru: *TrioBruno #(Component)
+TrioBruno: &TrioBruno
+    _path: /trio-bruno
+    trioBruno_et: *Triobruno #(Component)
+    trioBruno_en: *Triobruno #(Component)
+    trioBruno_ru: *Triobruno #(Component)
