@@ -8,7 +8,7 @@ domain:
   hoff.ee: hoff
   kumu.poff.ee: kumu
   tartuff.ee: tartuff
-  # oja.ee: oja
+  # brunooja.poff.ee: bruno
 
 article:
   poff.ee: POFFiArticle
@@ -19,7 +19,7 @@ article:
   hoff.ee: HOFFiArticle
   kumu.poff.ee: KumuArticle
   tartuff.ee: TartuffiArticle
-  # oja.ee: OjaArticle
+  # brunooja.poff.ee: BrunoArticle
 
 footer:
   poff.ee: POFFiFooter
@@ -30,7 +30,7 @@ footer:
   hoff.ee: HOFFiFooter
   kumu.poff.ee: KumuFooter
   tartuff.ee: TartuffiFooter
-  # oja.ee: OjaFooter
+  # brunooja.poff.ee: BrunoFooter
 
 locales:
   poff.ee:
@@ -62,7 +62,7 @@ locales:
   - et
   - en
   - ru
-  # oja.ee:
+  # brunooja.poff.ee:
   # - et
   # - en
   # - ru
@@ -76,7 +76,7 @@ defaultLocale:
   hoff.ee: et
   kumu.poff.ee: et
   tartuff.ee: et
-  # oja.ee: et
+  # brunooja.poff.ee: et
 
 vialogUrls:
     et:
@@ -107,7 +107,7 @@ pageURLs:
   hoff.ee: "https://hoff.ee/"
   kumu.poff.ee: https://kumu.poff.ee/
   tartuff.ee: https://tartuff.ee/
-  # oja.ee: https://oja.ee/
+  # oja.ee: https://brunooja.poff.ee/
 
 stagingURLs:
   poff.ee: "https://staging.poff.inscaping.eu/"
@@ -118,4 +118,4 @@ stagingURLs:
   # hoff.ee: "https://staging.hoff.inscaping.eu/"
   # kumu.poff.ee: https://kumu.poff.ee/
   # tartuff.ee: https://tartuff.ee/
-  # # oja.ee: https://oja.ee/
+  # # oja.ee: https://brunooja.poff.ee/
