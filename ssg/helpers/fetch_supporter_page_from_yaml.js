@@ -7,7 +7,7 @@ const {fetchModel} = require('./b_fetch.js')
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
     'poff.ee': 'POFFSupporter',

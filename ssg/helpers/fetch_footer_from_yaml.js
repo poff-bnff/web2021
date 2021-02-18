@@ -14,7 +14,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = DOMAIN_SPECIFICS.footer
 const strapiDataFooterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)

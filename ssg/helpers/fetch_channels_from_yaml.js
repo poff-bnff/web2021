@@ -10,7 +10,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const strapiDataChannelPath = path.join(strapiDataDirPath, 'Channel.yaml')
 const STRAPIDATA_CHANNELS = yaml.safeLoad(fs.readFileSync(strapiDataChannelPath, 'utf8'))
