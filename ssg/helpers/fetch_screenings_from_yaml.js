@@ -17,8 +17,6 @@ const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
 const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
-const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
-const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
 const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
