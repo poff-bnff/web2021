@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_bruno",
+  "info": {
+    "name": "HeroArticleBruno"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_en": {
+      "model": "bruno-article"
+    },
+    "article_ru": {
+      "model": "bruno-article"
+    },
+    "article_et": {
+      "model": "bruno-article"
+    }
+  }
+}
