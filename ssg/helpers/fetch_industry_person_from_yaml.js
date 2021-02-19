@@ -11,8 +11,16 @@ const fetchDataDir =  path.join(fetchDir, 'industrypersons');
 const strapiDataPath = path.join(sourceDir, 'strapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
-if (DOMAIN === 'industry.poff.ee') {
-    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'));
+if (DOMAIN !== 'industry.poff.ee') {
+    let emptyYAML = yaml.safeDump([], {
+        'noRefs': true,
+        'indent': '4'
+    })
+    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8')
+} else {
+    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
 
     const minimodel = {
         'person': {
@@ -241,16 +249,4 @@ if (DOMAIN === 'industry.poff.ee') {
             return objSorted
         }
     }
-} else {
-
-    let emptyYAML = yaml.safeDump([], {
-        'noRefs': true,
-        'indent': '4'
-    })
-    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
-
-    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
-
-    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8');
-
 }
