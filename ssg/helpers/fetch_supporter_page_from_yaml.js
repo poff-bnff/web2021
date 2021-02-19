@@ -15,7 +15,9 @@ const mapping = {
     'kinoff.poff.ee': 'KinoffiSupporter',
     'industry.poff.ee': 'IndustrySupporter',
     'shorts.poff.ee': 'ShortsSupporter',
-    'hoff.ee': 'HoffiSupporter'
+    'hoff.ee': 'HoffiSupporter',
+    'kumu.poff.ee': 'KumuSupporter',
+    'tartuff.ee': 'TartuffiSupporter'
 }
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
 const STRAPIDATA_SUPPORTER_PAGES = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))

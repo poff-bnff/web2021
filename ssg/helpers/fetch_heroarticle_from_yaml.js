@@ -16,7 +16,9 @@ const mapping = {
     'kinoff.poff.ee': 'HeroArticleKinoff',
     'industry.poff.ee': 'HeroArticleIndustry',
     'shorts.poff.ee': 'HeroArticleShorts',
-    'hoff.ee': "HeroArticleHoff"
+    'hoff.ee': "HeroArticleHoff",
+    'kumu.poff.ee': "HeroArticleKumu",
+    'tartuff.ee': "HeroArticleTartuff"
 }
 const mapping2 = {
     'poff.ee': 'POFFiArticle',

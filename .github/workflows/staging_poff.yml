@@ -52,18 +52,18 @@ jobs:
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: ./ssg/build/poff
+            path: ./ssg/build/poff/*
             remote_path: /data01/virt84398/domeenid/www.inscaping.eu/web/poff_staging
             remote_host: inscaping.eu
             remote_user: virt84398
-            remote_key: ${{ secrets.DEPLOY_KEY }}
+            remote_key: ${{ secrets.DEPLOY_KEY_2021 }}
 
         - name: rsync deployment to ibc
           uses: burnett01/rsync-deployments@4.1
           with:
             switches: -avzr
-            path: /data01/virt84398/domeenid/www.inscaping.eu/web/poff_staging
-            remote_path: ./ssg/build/poff
+            path: ./ssg/build/poff/*
+            remote_path: ../ssg/build/poff
             remote_host: ${{ secrets.STRAPIHOSTPOFF2021 }}
             remote_user: strapi
             remote_key: ${{ secrets.DEPLOY_KEY_IBC }}
