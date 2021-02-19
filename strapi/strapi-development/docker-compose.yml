@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres
+    container_name: poff_postgres
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
