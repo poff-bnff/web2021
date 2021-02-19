@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_tartuffs",
+  "info": {
+    "name": "HeroArticleTartuff",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "article_en": {
+      "model": "tartuffi-article"
+    },
+    "article_ru": {
+      "model": "tartuffi-article"
+    },
+    "article_et": {
+      "model": "tartuffi-article"
+    }
+  }
+}

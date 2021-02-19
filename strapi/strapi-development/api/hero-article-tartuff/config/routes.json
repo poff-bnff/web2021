@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-tartuff",
+      "handler": "hero-article-tartuff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-tartuff",
+      "handler": "hero-article-tartuff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-tartuff",
+      "handler": "hero-article-tartuff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

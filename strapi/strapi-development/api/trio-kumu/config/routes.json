@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-kumu",
+      "handler": "trio-kumu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-kumu",
+      "handler": "trio-kumu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-kumu",
+      "handler": "trio-kumu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
