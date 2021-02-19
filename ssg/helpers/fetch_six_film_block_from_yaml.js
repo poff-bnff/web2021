@@ -11,17 +11,6 @@ const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-const mapping = {
-    'poff.ee': 'poff.ee',
-    'justfilm.ee': 'justfilm.ee',
-    'kinoff.poff.ee': 'kinoff.poff.ee',
-    'industry.poff.ee': 'industry.poff.ee',
-    'shorts.poff.ee': 'shorts.poff.ee',
-    'hoff.ee': 'hoff.ee',
-    'kumu.poff.ee': 'kumu.poff.ee',
-    'tartuff.ee': 'tartuff.ee'
-}
-
 const languages = ['en', 'et', 'ru']
 
 var failing = false
