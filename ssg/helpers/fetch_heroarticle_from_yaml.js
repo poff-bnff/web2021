@@ -10,7 +10,7 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-const mapping = {
+const hero_mapping = {
     'poff.ee': 'HeroArticlePoff',
     'justfilm.ee': 'HeroArticleJustFilm',
     'kinoff.poff.ee': 'HeroArticleKinoff',
@@ -20,7 +20,10 @@ const mapping = {
     'kumu.poff.ee': "HeroArticleKumu",
     'tartuff.ee': "HeroArticleTartuff"
 }
-const mapping2 = {
+const strapiDataHeroPath = path.join(strapiDataDirPath, `${hero_mapping[DOMAIN]}.yaml`)
+const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
+
+const article_mapping = {
     'poff.ee': 'POFFiArticle',
     'justfilm.ee': 'JustFilmiArticle',
     'kinoff.poff.ee': 'KinoffiArticle',
@@ -30,18 +33,15 @@ const mapping2 = {
 }
 const minimodel = {
     'article_et': {
-        model_name: mapping2[DOMAIN]
+        model_name: article_mapping[DOMAIN]
     },
     'article_en': {
-        model_name: mapping2[DOMAIN]
+        model_name: article_mapping[DOMAIN]
     },
     'article_ru': {
-        model_name: mapping2[DOMAIN]
+        model_name: article_mapping[DOMAIN]
     }
 }
-
-const strapiDataHeroPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
 const STRAPIDATA_HERO = fetchModel(STRAPIDATA_HEROS, minimodel)[0]
 const languages = ['en', 'et', 'ru']
 
