@@ -7,17 +7,9 @@ import React, { memo, useState } from 'react';
 // import PropTypes from 'prop-types';
 import pluginId from '../../pluginId';
 import './index.css';
-
 import { UserContext, hasPermissions, request } from 'strapi-helper-plugin'
 
 
-
-
-// const sendToLive = (site) =>{
-// 	console.log("saaden lehe stagingust live-i  "+site)
-// 	//päring minu cutom enpoint-i pihta???
-
-// }
 
 const HomePage = () => {
 	const [publishResult, setPublishResult] = useState("Ootan käsklusi")
@@ -58,7 +50,7 @@ const HomePage = () => {
       <p>Saada leht stagingust live-i</p>
       <h2 className={ errorStatus ? 'error' : 'result-box'}>{publishResult}</h2>
       <div className="btn-container">
-        <button className="live-btn" onClick={() => DoPublish("hoff.ee")}>Hõff LIVE muudetud</button>
+        <button className="live-btn" onClick={() => DoPublish("hoff.ee")}>Hõff staging to LIVE</button>
       </div>
     </div>
   );
