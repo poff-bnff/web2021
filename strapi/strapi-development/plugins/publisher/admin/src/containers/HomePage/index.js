@@ -58,7 +58,7 @@ const HomePage = () => {
       <p>Saada leht stagingust live-i</p>
       <h2 className={ errorStatus ? 'error' : 'result-box'}>{publishResult}</h2>
       <div className="btn-container">
-        <button className="live-btn" onClick={() => DoPublish("hoff.ee")}>Hõff LIVE</button>
+        <button className="live-btn" onClick={() => DoPublish("hoff.ee")}>Hõff LIVE muudetud</button>
       </div>
     </div>
   );

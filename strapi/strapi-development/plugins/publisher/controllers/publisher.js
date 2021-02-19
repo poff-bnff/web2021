@@ -4,6 +4,7 @@ const fs = require("fs");
 const { StringDecoder } = require("string_decoder");
 const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
+const { generateTimestampCode } = require('strapi-utils')
 
 const domains = [
   "poff.ee",
@@ -50,10 +51,10 @@ const doBuild = async(site, userInfo) => {
     child.on("close", async(code)  => {
       console.log(`child process exited with code ${code}`);
       // siin tahaksin saata alles ctx.send
-      const end = moment().tz("Europe/Tallinn").format();
-      const logData = {"id": id, "endTime": end}
-      const result = await strapi.entityService.update({logData},{ model: "plugins::publisher.build_logs" })
-      console.log(result)
+      // const end = moment().tz("Europe/Tallinn").format();
+      // const logData = {"id": id, "endTime": end}
+      // const result = await strapi.entityService.update({logData},{ model: "plugins::publisher.build_logs" })
+      // console.log(result)
     });
   }
 };
@@ -107,6 +108,7 @@ module.exports = {
     } else {
       if (domains.includes(data.site)) {
         console.log("leht on nimekirjas");
+        doLog(site, userInfo)
         // const id = await doLog(site, userInfo)
         // console.log("id", id)
         await doBuild(site, userInfo)
