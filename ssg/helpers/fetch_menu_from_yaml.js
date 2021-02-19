@@ -19,6 +19,8 @@ const mapping = {
     'kumu.poff.ee': 'KumuMenu',
     'tartuff.ee': 'TartuffiMenu'
 }
+const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
+const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))
 
 const artMapping = {
     'poff.ee': 'poffi_article',
@@ -28,7 +30,6 @@ const artMapping = {
     'shorts.poff.ee': 'shortsi_article',
     'hoff.ee': 'hoffi_article'
 }
-
 const artMapping2 = {
     'poff.ee': 'POFFiArticle',
     'justfilm.ee': 'JustFilmiArticle',
@@ -37,10 +38,6 @@ const artMapping2 = {
     'shorts.poff.ee': 'ShortsiArticle',
     'hoff.ee': 'HOFFiArticle'
 }
-
-const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))
-
 const minimodel = {
     [`${artMapping[DOMAIN]}`]: {
         model_name: artMapping2[DOMAIN]
