@@ -9,9 +9,10 @@ const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
+const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataPath =  path.join(sourceDir, 'strapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
@@ -20,8 +21,6 @@ const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath
 // const STRAPIDATA_PERSONS = STRAPIDATA['Person'];
 const STRAPIDATA_PERSONS = [];
 
-const STRAPIDIR = '/uploads/'
-const STRAPIHOSTWITHDIR = `http://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
 const DEFAULTTEMPLATENAME = 'news'
 
 // console.log(DOMAIN_SPECIFICS)
@@ -75,7 +74,14 @@ const minimodel = {
     },
     'organisations': {
         model_name: 'Organisation'
-    }
+    },
+    'industry_people': {
+        model_name: 'IndustryPerson'
+    },
+    'people': {
+        model_name: 'Person'
+    },
+
 }
 
 STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
@@ -181,27 +187,27 @@ for (const lang of languages) {
                 }
 
                 if (DOMAIN === 'industry.poff.ee' && artTypeName.length > 1 ) {
-                    if (element.industry_people && element.industry_people.length) {
-                        let indPeopleFromYaml = element.industry_people.filter(a => a.person).map(per => {
-                            return industryPersonsYaml.filter(indp => indp.person.id === per.person)[0]
-                        })
-                        if (typeof indPeopleFromYaml !== 'undefined') {
-                            element.industry_people = indPeopleFromYaml
-                        } else {
-                            element.industry_people = []
-                        }
-                    }
+                    // if (element.industry_people && element.industry_people.length) {
+                    //     let indPeopleFromYaml = element.industry_people.filter(a => a.person).map(per => {
+                    //         return industryPersonsYaml.filter(indp => indp.person.id === per.person)[0]
+                    //     })
+                    //     if (typeof indPeopleFromYaml !== 'undefined') {
+                    //         element.industry_people = indPeopleFromYaml
+                    //     } else {
+                    //         element.industry_people = []
+                    //     }
+                    // }
 
-                    if (element.people && element.people.length) {
-                        let peopleFromYaml = element.people.map(per => {
-                            return STRAPIDATA_PERSONS.filter(pers => pers.id === per.id)[0]
-                        })
-                        if (typeof peopleFromYaml !== 'undefined') {
-                            element.people = peopleFromYaml
-                        } else {
-                            element.people = []
-                        }
-                    }
+                    // if (element.people && element.people.length) {
+                    //     let peopleFromYaml = element.people.map(per => {
+                    //         return STRAPIDATA_PERSONS.filter(pers => pers.id === per.id)[0]
+                    //     })
+                    //     if (typeof peopleFromYaml !== 'undefined') {
+                    //         element.people = peopleFromYaml
+                    //     } else {
+                    //         element.people = []
+                    //     }
+                    // }
 
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
                 }

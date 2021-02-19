@@ -1,0 +1,48 @@
+-
+    id: 4
+    namePrivate: Industry TEST channel
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28403
+        et: Industry TEST kanal
+        en: Industry TEST channel
+    description:
+        id: 8510
+        et: test
+        en: test
+-
+    id: 3
+    namePrivate: Talent Channel
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28402
+        et: Talent Channel
+        en: Talent Channel
+    description:
+        id: 8509
+        et: kolmas kanal
+        en: third channel
+-
+    id: 1
+    namePrivate: Pro Channel 1
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28400
+        et: Pro Channel 1
+        en: Pro Channel 1
+    description:
+        id: 8507
+        et: esimene kanal
+        en: First channel
+-
+    id: 2
+    namePrivate: Pro Channel 2
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28401
+        et: Pro Channel 2
+        en: Pro Channel 2
+    description:
+        id: 8508
+        et: 'teine kanal  '
+        en: second channel
