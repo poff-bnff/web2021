@@ -102,12 +102,11 @@ build()
         printf '\n----------             Finished processing styles            ----------\n'
 
         printf "\nBuilding...\n"
+        [ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR/assets" ] && mkdir -p "./build/$BUILDDIR/assets"
 
-        [ -d "build/$BUILDDIR" ] && rm -r "build/$BUILDDIR/*"
-        [ ! -d "build/$BUILDDIR" ] && mkdir -p "build/$BUILDDIR"
-        [ ! -d "build/$BUILDDIR/assets" ] && mkdir -p "build/$BUILDDIR/assets"
-
-        cp -R assets/* "build/$BUILDDIR/assets"
+        cp -R assets/* "./build/$BUILDDIR/assets"
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi

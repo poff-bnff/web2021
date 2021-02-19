@@ -1,0 +1,68 @@
+-
+    id: 1
+    title_et: Test article
+    slug_et: 'null'
+    slug_en: nul
+    slug_ru: nu
+    contents_et: ' Proin id nibh et magna ullamcorper vehicula eu id purus. Phasellus odio nulla, pharetra quis purus vel, sodales cursus nisl. Maecenas vel lobortis purus. Donec convallis aliquam odio tincidunt sodales. Maecenas pellentesque ligula ante, quis facilisis neque luctus eu. Nulla id diam felis. Vivamus efficitur mi nulla, vel vestibulum arcu pellentesque vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed et egestas nibh. Aenean dui elit, auctor ut vestibulum quis, rutrum vitae erat. Curabitur egestas lacus vitae risus faucibus, sit amet convallis justo egestas. Ut egestas euismod elit vel iaculis. Morbi sagittis nisi non fringilla lacinia. Donec posuere imperdiet enim sit amet mollis.'
+    publish_et: true
+    publish_en: true
+    created_at: '2021-02-18T08:06:21.251Z'
+    media:
+        id: 424
+        imageDefault:
+            -
+                id: 3866
+                name: 33854864938_e46a09b225_k_1.jpg
+                width: 1620
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_33854864938_e46a09b225_k_1_5b18db47ad.jpg
+                        name: thumbnail_33854864938_e46a09b225_k_1.jpg
+                hash: 33854864938_e46a09b225_k_1_5b18db47ad
+                ext: .jpg
+                url: /uploads/33854864938_e46a09b225_k_1_5b18db47ad.jpg
+    article_types:
+        -
+            id: 5
+-
+    id: 2
+    title_et: Test article 4
+    slug_et: test-article-4
+    title_en: Test article 4
+    slug_en: test-article-4
+    title_ru: Test article 4
+    slug_ru: test-article-4
+    created_by:
+        id: 3
+        firstname: Liis
+        lastname: Käsper
+    created_at: '2021-02-18T08:32:45.473Z'
+-
+    id: 3
+    title_et: Test article 3
+    slug_et: test-article-3
+    title_en: Test article 3
+    slug_en: test-article-3
+    title_ru: Test article 3
+    slug_ru: test-article-3
+    created_by:
+        id: 3
+        firstname: Liis
+        lastname: Käsper
+    created_at: '2021-02-18T08:33:00.727Z'
+-
+    id: 4
+    title_et: Test article 2
+    slug_et: test-article-2
+    title_en: Test article 2
+    slug_en: test-article-2
+    title_ru: Test article 2
+    slug_ru: test-article-2
+    created_by:
+        id: 3
+        firstname: Liis
+        lastname: Käsper
+    created_at: '2021-02-18T08:33:15.637Z'

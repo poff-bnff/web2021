@@ -1,0 +1,666 @@
+-
+    id: 1
+    domain:
+        id: 5
+    title:
+        id: 11170
+        et: Industry partners
+        en: PARTNERS
+    intro:
+        id: 11373
+        et: Industry partners
+        en: PARTNERS
+    supporters:
+        -
+            id: 4
+            order: 1
+            name:
+                id: 11171
+                et: Industry@Tallinn & baltic Event 2020 supporters
+                en: Industry@Tallinn & Baltic Event 2020 Supporters
+            supporter:
+                -
+                    id: 36
+                    name: Creative Europe Media
+                    customUrl: 'https://ec.europa.eu/programmes/creative-europe/'
+                    logoColour:
+                        id: 1436
+                        name: IND_PARTNER_creative_europe_media.jpg
+                        width: 500
+                        height: 129
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_creative_europe_media_c6c1ff997f.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_creative_europe_media.jpg
+                        hash: IND_PARTNER_creative_europe_media_c6c1ff997f
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_creative_europe_media_c6c1ff997f.jpg
+        -
+            id: 5
+            supporter:
+                -
+                    id: 7
+                    name: Elisa
+                    customUrl: 'http://elisa.ee/'
+                    logoColour:
+                        id: 264
+                        name: elisa_logo_blue.svg
+                        width: 120
+                        height: 47
+                        hash: elisa_logo_blue_4312eb5bf2
+                        ext: .svg
+                        url: /uploads/elisa_logo_blue_4312eb5bf2.svg
+                -
+                    id: 8
+                    name: Tallinna Ettevõtlusamet
+                    logoColour:
+                        id: 1459
+                        name: IND_PARTNER_Tallinna_Ettevotlusamet.jpg
+                        width: 500
+                        height: 126
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Tallinna_Ettevotlusamet_f2af87fe57.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_Tallinna_Ettevotlusamet.jpg
+                        hash: IND_PARTNER_Tallinna_Ettevotlusamet_f2af87fe57
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_Tallinna_Ettevotlusamet_f2af87fe57.jpg
+                -
+                    id: 9
+                    name: Russia In Focus 2020 Roskino
+                    customUrl: 'http://roskino.org/'
+                    logoColour:
+                        id: 1460
+                        name: IND_PARTNER_russia_roskino_combo.jpg
+                        width: 350
+                        height: 274
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_russia_roskino_combo_c02cd515cc.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_russia_roskino_combo.jpg
+                        hash: IND_PARTNER_russia_roskino_combo_c02cd515cc
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_russia_roskino_combo_c02cd515cc.jpg
+                -
+                    id: 37
+                    name: Post Control
+                    customUrl: 'http://postcontrol.fi/'
+                    logoColour:
+                        id: 3387
+                        name: post-control-logo-black.svg
+                        width: 143
+                        height: 35
+                        hash: post_control_logo_black_4aedd43cce
+                        ext: .svg
+                        url: /uploads/post_control_logo_black_4aedd43cce.svg
+        -
+            id: 6
+            supporter:
+                -
+                    id: 10
+                    name: European Regional Development Fund
+                    logoColour:
+                        id: 1440
+                        name: IND_PARTNER_eu_regional_development_fund.jpg
+                        width: 500
+                        height: 289
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_eu_regional_development_fund_7dd0333e63.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_eu_regional_development_fund.jpg
+                        hash: IND_PARTNER_eu_regional_development_fund_7dd0333e63
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_eu_regional_development_fund_7dd0333e63.jpg
+                -
+                    id: 11
+                    name: German Films
+                    customUrl: 'https://www.german-films.de/'
+                    logoColour:
+                        id: 1451
+                        name: IND_PARTNER_LogoGermanFilms2012.jpg
+                        width: 500
+                        height: 154
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Logo_German_Films2012_b4c34dab77.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_LogoGermanFilms2012.jpg
+                        hash: IND_PARTNER_Logo_German_Films2012_b4c34dab77
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_Logo_German_Films2012_b4c34dab77.jpg
+                -
+                    id: 12
+                    name: Eesti Kultuurkapital
+                    logoColour:
+                        id: 1448
+                        name: IND_PARTNER_Kultuurikapital.jpg
+                        width: 500
+                        height: 219
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Kultuurikapital_b96f64e748.jpg
+                                name: thumbnail_IND_PARTNER_Kultuurikapital.jpg
+                        hash: IND_PARTNER_Kultuurikapital_b96f64e748
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_Kultuurikapital_b96f64e748.jpg
+                -
+                    id: 13
+                    name: PÖFF24
+                    customUrl: 'https://poff.ee'
+                    logoColour:
+                        id: 26
+                        name: poff24_logo_black.svg
+                        width: 494
+                        height: 140
+                        hash: poff24_logo_black_46b86d03a1
+                        ext: .svg
+                        url: /uploads/poff24_logo_black_46b86d03a1.svg
+                -
+                    id: 14
+                    name: Estonian Film Institute
+                    customUrl: 'https://www.filmi.ee/'
+                    logoColour:
+                        id: 1438
+                        name: IND_PARTNER_Estonianfilminstitute.jpg
+                        width: 500
+                        height: 169
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Estonianfilminstitute_4cc6b0abed.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_Estonianfilminstitute.jpg
+                        hash: IND_PARTNER_Estonianfilminstitute_4cc6b0abed
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_Estonianfilminstitute_4cc6b0abed.jpg
+                -
+                    id: 15
+                    name: eurimages
+                    customUrl: 'https://www.coe.int/en/web/eurimages'
+                    logoColour:
+                        id: 1094
+                        name: Eurimages_Council of Europe_logo-01.svg
+                        width: 513
+                        height: 133
+                        hash: Eurimages_Council_of_Europe_logo_01_347ab8e935
+                        ext: .svg
+                        url: >-
+                            /uploads/Eurimages_Council_of_Europe_logo_01_347ab8e935.svg
+                -
+                    id: 16
+                    name: European Commission
+                    logoColour:
+                        id: 1439
+                        name: IND_PARTNER_eucommission.jpg
+                        width: 500
+                        height: 346
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_eucommission_f4eed6d0f3.jpg
+                                name: thumbnail_IND_PARTNER_eucommission.jpg
+                        hash: IND_PARTNER_eucommission_f4eed6d0f3
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_eucommission_f4eed6d0f3.jpg
+                -
+                    id: 17
+                    name: Lithuanian Film Centre
+                    customUrl: 'http://www.lkc.lt/en/'
+                    logoColour:
+                        id: 1095
+                        name: Lithuanian-film-centre-vector-logo-01.svg
+                        width: 506
+                        height: 499
+                        hash: Lithuanian_film_centre_vector_logo_01_e05ea60488
+                        ext: .svg
+                        url: >-
+                            /uploads/Lithuanian_film_centre_vector_logo_01_e05ea60488.svg
+                -
+                    id: 18
+                    name: Kultuuriministeerium
+                    logoColour:
+                        id: 325
+                        name: Kultuuriministeerium_logo.svg
+                        width: 175
+                        height: 91
+                        hash: Kultuuriministeerium_logo_96c0c22b0a
+                        ext: .svg
+                        url: /uploads/Kultuuriministeerium_logo_96c0c22b0a.svg
+                -
+                    id: 19
+                    name: International ARRI Media
+                    customUrl: 'https://www.arrimedia.de/'
+                    logoColour:
+                        id: 1435
+                        name: IND_PARTNER_ARRi-media.jpg
+                        width: 500
+                        height: 39
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_AR_Ri_media_e4539686fa.jpg
+                                name: thumbnail_IND_PARTNER_ARRi-media.jpg
+                        hash: IND_PARTNER_AR_Ri_media_e4539686fa
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_AR_Ri_media_e4539686fa.jpg
+                -
+                    id: 20
+                    name: The Finnish Film Foundation
+                    customUrl: 'https://ses.fi/en/'
+                    logoColour:
+                        id: 1097
+                        name: >-
+                            Finnish Film
+                            Institution_ses_logo_blue_wide_eng-01.svg
+                        width: 251
+                        height: 42
+                        hash: >-
+                            Finnish_Film_Institution_ses_logo_blue_wide_eng_01_ba1f385b9e
+                        ext: .svg
+                        url: >-
+                            /uploads/Finnish_Film_Institution_ses_logo_blue_wide_eng_01_ba1f385b9e.svg
+                -
+                    id: 21
+                    name: National Film Centre of Latvia
+                    customUrl: 'http://nkc.gov.lv/en/'
+                    logoColour:
+                        id: 1098
+                        name: National Film Centre of Latvia_rgb_h_EN-01.svg
+                        width: 231
+                        height: 122
+                        hash: >-
+                            National_Film_Centre_of_Latvia_rgb_h_EN_01_4d4457ae89
+                        ext: .svg
+                        url: >-
+                            /uploads/National_Film_Centre_of_Latvia_rgb_h_EN_01_4d4457ae89.svg
+                -
+                    id: 42
+                    name: Levira
+                    customUrl: 'http://levira.com/'
+                    logoColour:
+                        id: 3370
+                        name: levira black.png
+                        width: 860
+                        height: 246
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_levira_black_4c6e0bffc6.png
+                                name: thumbnail_levira black.png
+                        hash: levira_black_4c6e0bffc6
+                        ext: .png
+                        url: /uploads/levira_black_4c6e0bffc6.png
+                -
+                    id: 39
+                    name: ' Põhjala tehas'
+                    customUrl: 'https://www.pohjalatehas.ee/'
+                    logoWhite:
+                        id: 3363
+                        name: pohjalat.jpg
+                        width: 480
+                        height: 480
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_pohjalat_22d8b0e50d.jpg
+                                name: thumbnail_pohjalat.jpg
+                        hash: pohjalat_22d8b0e50d
+                        ext: .jpg
+                        url: /uploads/pohjalat_22d8b0e50d.jpg
+                    logoColour:
+                        id: 3363
+                        name: pohjalat.jpg
+                        width: 480
+                        height: 480
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_pohjalat_22d8b0e50d.jpg
+                                name: thumbnail_pohjalat.jpg
+                        hash: pohjalat_22d8b0e50d
+                        ext: .jpg
+                        url: /uploads/pohjalat_22d8b0e50d.jpg
+                -
+                    id: 40
+                    name: ProTone
+                    customUrl: 'https://www.protone.ee/'
+                    logoColour:
+                        id: 3366
+                        name: protone inverted.jpg
+                        width: 1002
+                        height: 222
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_protone_inverted_8bf54d0c52.jpg
+                                name: thumbnail_protone inverted.jpg
+                        hash: protone_inverted_8bf54d0c52
+                        ext: .jpg
+                        url: /uploads/protone_inverted_8bf54d0c52.jpg
+                -
+                    id: 23
+                    name: Midpoint
+                    customUrl: 'https://www.midpoint-institute.eu/'
+                    logoColour:
+                        id: 1452
+                        name: IND_PARTNER_Midpoint.jpg
+                        width: 2363
+                        height: 1016
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Midpoint_c1827ecc49.jpg
+                                name: thumbnail_IND_PARTNER_Midpoint.jpg
+                        hash: IND_PARTNER_Midpoint_c1827ecc49
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_Midpoint_c1827ecc49.jpg
+                -
+                    id: 22
+                    name: National Geographic
+                    logoColour:
+                        id: 1454
+                        name: IND_PARTNER_NationalGeographic.jpg
+                        width: 500
+                        height: 247
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_National_Geographic_bcb6093d8d.jpg
+                                name: thumbnail_IND_PARTNER_NationalGeographic.jpg
+                        hash: IND_PARTNER_National_Geographic_bcb6093d8d
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_National_Geographic_bcb6093d8d.jpg
+                -
+                    id: 24
+                    name: Nordic Hotel Forum
+                    customUrl: 'https://www.nordichotels.eu/'
+                    logoColour:
+                        id: 281
+                        name: Nordic Hotel Forum_logo_color.svg
+                        width: 580
+                        height: 68
+                        hash: Nordic_Hotel_Forum_logo_color_2f708f26aa
+                        ext: .svg
+                        url: >-
+                            /uploads/Nordic_Hotel_Forum_logo_color_2f708f26aa.svg
+                -
+                    id: 25
+                    name: Tallink Hotels
+                    customUrl: 'https://www.tallinkhotels.com/'
+                    logoColour:
+                        id: 1458
+                        name: IND_PARTNER_TallinkHotels.jpg
+                        width: 500
+                        height: 95
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Tallink_Hotels_dde59fce93.jpg
+                                name: thumbnail_IND_PARTNER_TallinkHotels.jpg
+                        hash: IND_PARTNER_Tallink_Hotels_dde59fce93
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_Tallink_Hotels_dde59fce93.jpg
+                -
+                    id: 27
+                    name: Screen International
+                    customUrl: 'https://www.screendaily.com/'
+                    logoColour:
+                        id: 1080
+                        name: Screen International_logo-01.svg
+                        width: 446
+                        height: 131
+                        hash: Screen_International_logo_01_d3d9b01fad
+                        ext: .svg
+                        url: /uploads/Screen_International_logo_01_d3d9b01fad.svg
+                -
+                    id: 28
+                    name: Festival Scope
+                    customUrl: 'https://www.festivalscope.com/'
+                    logoColour:
+                        id: 1443
+                        name: IND_PARTNER_festivalscope.jpg
+                        width: 500
+                        height: 96
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_festivalscope_db20ac52a6.jpg
+                                name: thumbnail_IND_PARTNER_festivalscope.jpg
+                        hash: IND_PARTNER_festivalscope_db20ac52a6
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_festivalscope_db20ac52a6.jpg
+                -
+                    id: 44
+                    name: Cineuropa
+                    customUrl: 'https://cineuropa.org/'
+                    logoColour:
+                        id: 3371
+                        name: cineuropa.png
+                        width: 433
+                        height: 116
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_cineuropa_e944ae1388.png
+                                name: thumbnail_cineuropa.png
+                        hash: cineuropa_e944ae1388
+                        ext: .png
+                        url: /uploads/cineuropa_e944ae1388.png
+                -
+                    id: 29
+                    name: Goethe Institut
+                    customUrl: 'https://www.goethe.de/'
+                    logoColour:
+                        id: 1031
+                        name: Goethe Instituut_logo-01.svg
+                        width: 607
+                        height: 286
+                        hash: Goethe_Instituut_logo_01_497ca097a4
+                        ext: .svg
+                        url: /uploads/Goethe_Instituut_logo_01_497ca097a4.svg
+                -
+                    id: 30
+                    name: European Film Academy
+                    customUrl: 'https://www.europeanfilmacademy.org/'
+                    logoColour:
+                        id: 1442
+                        name: IND_PARTNER_EuropeanFilmAcademy.jpg
+                        width: 500
+                        height: 219
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_European_Film_Academy_e0aa7b9eb7.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_EuropeanFilmAcademy.jpg
+                        hash: IND_PARTNER_European_Film_Academy_e0aa7b9eb7
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_European_Film_Academy_e0aa7b9eb7.jpg
+                -
+                    id: 43
+                    name: Finora Capital
+                    customUrl: 'https://loomelaen.ee/'
+                    logoColour:
+                        id: 3369
+                        name: FINORA logo-03_ENG.svg
+                        width: 1000
+                        height: 500
+                        hash: FINORA_logo_03_ENG_1075a4388a
+                        ext: .svg
+                        url: /uploads/FINORA_logo_03_ENG_1075a4388a.svg
+                -
+                    id: 33
+                    name: BFM Tallinn University
+                    customUrl: 'https://www.tlu.ee/bfm'
+                    logoColour:
+                        id: 354
+                        name: bfm_logo_colour.svg
+                        width: 300
+                        height: 53
+                        hash: bfm_logo_colour_326f9328ba
+                        ext: .svg
+                        url: /uploads/bfm_logo_colour_326f9328ba.svg
+                -
+                    id: 32
+                    name: EKA
+                    customUrl: 'https://www.artun.ee/'
+                    logoColour:
+                        id: 362
+                        name: eka_logo_black_orig.svg
+                        width: 114
+                        height: 40
+                        hash: eka_logo_black_orig_d178f52395
+                        ext: .svg
+                        url: /uploads/eka_logo_black_orig_d178f52395.svg
+                -
+                    id: 34
+                    name: eave Producers Workshop
+                    customUrl: 'http://eave.org/'
+                    logoColour:
+                        id: 1437
+                        name: IND_PARTNER_eave.jpg
+                        width: 500
+                        height: 167
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_eave_6eb114e58b.jpg
+                                name: thumbnail_IND_PARTNER_eave.jpg
+                        hash: IND_PARTNER_eave_6eb114e58b
+                        ext: .jpg
+                        url: /uploads/IND_PARTNER_eave_6eb114e58b.jpg
+                -
+                    id: 35
+                    name: Marche du Film producers network
+                    customUrl: >-
+                        https://www.marchedufilm.com/programs/producers-network/producers/
+                    logoColour:
+                        id: 1455
+                        name: IND_PARTNER_Producers-Network-Cannes.jpg
+                        width: 500
+                        height: 201
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_PARTNER_Producers_Network_Cannes_fc552e53e4.jpg
+                                name: >-
+                                    thumbnail_IND_PARTNER_Producers-Network-Cannes.jpg
+                        hash: IND_PARTNER_Producers_Network_Cannes_fc552e53e4
+                        ext: .jpg
+                        url: >-
+                            /uploads/IND_PARTNER_Producers_Network_Cannes_fc552e53e4.jpg
+                -
+                    id: 38
+                    name: AGICI
+                    customUrl: 'https://www.agici.eu/'
+                    logoWhite:
+                        id: 3362
+                        name: agpci.png
+                        width: 400
+                        height: 400
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_agpci_78df7d5b9e.png
+                                name: thumbnail_agpci.png
+                        hash: agpci_78df7d5b9e
+                        ext: .png
+                        url: /uploads/agpci_78df7d5b9e.png
+                    logoColour:
+                        id: 3362
+                        name: agpci.png
+                        width: 400
+                        height: 400
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_agpci_78df7d5b9e.png
+                                name: thumbnail_agpci.png
+                        hash: agpci_78df7d5b9e
+                        ext: .png
+                        url: /uploads/agpci_78df7d5b9e.png
+                -
+                    id: 41
+                    name: 'BFI '
+                    customUrl: 'https://www.bfi.org.uk'
+                    logoColour:
+                        id: 3367
+                        name: 440px-British_Film_Institute_logo.svg.png
+                        width: 440
+                        height: 418
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_440px_British_Film_Institute_logo_svg_96cff88bc1.png
+                                name: >-
+                                    thumbnail_440px-British_Film_Institute_logo.svg.png
+                        hash: 440px_British_Film_Institute_logo_svg_96cff88bc1
+                        ext: .png
+                        url: >-
+                            /uploads/440px_British_Film_Institute_logo_svg_96cff88bc1.png
+                -
+                    id: 46
+                    name: Tartu Film Fund
+                    customUrl: 'https://www.tartufilmfund.ee/'
+                    logoColour:
+                        id: 3374
+                        name: Tartu_Film_Fund_01_transparent.png
+                        width: 1000
+                        height: 325
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Tartu_Film_Fund_01_transparent_ee8a7e52f2.png
+                                name: thumbnail_Tartu_Film_Fund_01_transparent.png
+                        hash: Tartu_Film_Fund_01_transparent_ee8a7e52f2
+                        ext: .png
+                        url: >-
+                            /uploads/Tartu_Film_Fund_01_transparent_ee8a7e52f2.png
+                -
+                    id: 47
+                    name: Tartu Centre For Creative Industries
+                    customUrl: 'https://loovtartu.ee/'
+                    logoColour:
+                        id: 3373
+                        name: LMK_logo_eng (2).png
+                        width: 1920
+                        height: 1221
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_LMK_logo_eng_2_ad5a833a7b.png
+                                name: thumbnail_LMK_logo_eng (2).png
+                        hash: LMK_logo_eng_2_ad5a833a7b
+                        ext: .png
+                        url: /uploads/LMK_logo_eng_2_ad5a833a7b.png
+                -
+                    id: 45
+                    name: Foto In Motion
+                    customUrl: 'https://fotoinmotion.eu/'
+                    logoColour:
+                        id: 3372
+                        name: cropped-foto-in-motion-logo-11.png
+                        width: 300
+                        height: 282
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_cropped_foto_in_motion_logo_11_6aa2b8b94f.png
+                                name: thumbnail_cropped-foto-in-motion-logo-11.png
+                        hash: cropped_foto_in_motion_logo_11_6aa2b8b94f
+                        ext: .png
+                        url: >-
+                            /uploads/cropped_foto_in_motion_logo_11_6aa2b8b94f.png
