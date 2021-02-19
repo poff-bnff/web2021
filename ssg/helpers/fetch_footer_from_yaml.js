@@ -12,7 +12,6 @@ const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
