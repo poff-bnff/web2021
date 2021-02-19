@@ -115,7 +115,7 @@ build()
     duration=$SECONDS
     minutes=$((duration/60))
     seconds=$((duration%60))
-    printf "\n\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
+    printf "\n\n$site_name\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
 
     ask_what_to_build
 
