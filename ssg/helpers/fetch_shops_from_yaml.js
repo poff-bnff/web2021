@@ -16,8 +16,6 @@ const strapiDataShopPath = path.join(strapiDataDirPath, 'Shop.yaml');
 const STRAPIDATA_SHOPS = yaml.safeLoad(fs.readFileSync(strapiDataShopPath, 'utf8'))
 const strapiDataProdCategoryPath = path.join(strapiDataDirPath, 'ProductCategory.yaml');
 const STRAPIDATA_PROD_CATEGORIES = yaml.safeLoad(fs.readFileSync(strapiDataProdCategoryPath, 'utf8'))
-const strapiDataProdPassesPath = path.join(strapiDataDirPath, 'ProductPass.yaml');
-const STRAPIDATA_PROD_PASSES = yaml.safeLoad(fs.readFileSync(strapiDataProdPassesPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const mapping = DOMAIN_SPECIFICS.domain
