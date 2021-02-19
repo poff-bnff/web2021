@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-bruno",
+      "handler": "trio-bruno.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-bruno",
+      "handler": "trio-bruno.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-bruno",
+      "handler": "trio-bruno.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
