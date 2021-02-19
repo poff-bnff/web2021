@@ -2,14 +2,13 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
-const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-const mapping = {
+const trio_mapping = {
     'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
@@ -29,17 +28,8 @@ const articleMapping = {
     'kumu.poff.ee': 'kumu',
     'tartuff.ee': 'tartuffi'
 }
-//used for minimodel
-const mappingMini = {
-    'poff.ee': 'trioPoff',
-    'justfilm.ee': 'trioJustFilm',
-    'kinoff.poff.ee': 'trioKinoff',
-    'industry.poff.ee': 'trioIndustry',
-    'shorts.poff.ee': 'trioShorts',
-    'hoff.ee': 'trioHoff'
-}
 
-const strapiDataTrioPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml` )
+const strapiDataTrioPath = path.join(strapiDataDirPath, `${trio_mapping[DOMAIN]}.yaml` )
 const STRAPIDATA_TRIO = yaml.safeLoad(fs.readFileSync(strapiDataTrioPath, 'utf8'))
 
 if (STRAPIDATA_TRIO.length < 1) {
@@ -50,13 +40,6 @@ const languages = ['en', 'et', 'ru']
 
 
 for (const lang of languages) {
-
-    // const minimodel_trio = {
-    //     [`${mappingMini[DOMAIN]}_${lang}`]: {
-    //         model_name: 'ArticleType'
-    //     },
-    // }
-    // STRAPIDATA_TRIO = fetchModel(STRAPIDATA_TRIOS, minimodel_trio)
 
     console.log(`Fetching ${DOMAIN} trioblock ${lang} data`)
 
@@ -86,7 +69,6 @@ for (const lang of languages) {
             delete copyData[key][key2]
         }
     }
-    // console.log(buffer);
     const outFile = path.join(fetchDir, `articletrioblock.${lang}.yaml`)
 
     if(buffer.length > 0) {
