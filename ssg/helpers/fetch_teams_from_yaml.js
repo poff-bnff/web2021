@@ -32,6 +32,10 @@ for (const ix in languages) {
             var templateDomainName = 'kinoff';
         } else if (DOMAIN === 'industry.poff.ee') {
             var templateDomainName = 'industry';
+        } else if (DOMAIN === 'kumu.poff.ee') {
+            var templateDomainName = 'kumu';
+        } else if (DOMAIN === 'tartuff.ee') {
+            var templateDomainName = 'tartuff';
         } else {
             var templateDomainName = 'poff';
         }
