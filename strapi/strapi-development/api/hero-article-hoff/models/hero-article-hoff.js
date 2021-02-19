@@ -22,27 +22,26 @@ const path = require('path');
         beforeUpdate(params, data) {
         },
         afterUpdate(result, params, data) {
-            if (result.published_at) {
-                if (fs.existsSync('/srv/ssg/build_hoff.sh')) {
-                    const args = []
+            console.log(result)
+            if (fs.existsSync('/srv/ssg/build_hoff.sh')) {
+                const args = []
+                console.log('build_hoff.sh olemas')
+                const child = spawn('/srv/ssg/build_hoff.sh', args)
 
-                    const child = spawn('/srv/ssg/build_hoff.sh', args)
-
-                    child.stdout.on('data', (chunk) => {
-                        console.log(decoder.write(chunk))
-                      // data from the standard output is here as buffers
-                    });
-                    // since these are streams, you can pipe them elsewhere
-                    child.stderr.on('data', (chunk) => {
-                        console.log('err:', decoder.write(chunk))
-                      // data from the standard error is here as buffers
-                    });
-                    // child.stderr.pipe(child.stdout);
-                    child.on('close', (code) => {
-                        console.log(`child process exited with code ${code}`);
-                    });
-                }
-            }
+                child.stdout.on('data', (chunk) => {
+                    console.log(decoder.write(chunk))
+                  // data from the standard output is here as buffers
+                });
+                // since these are streams, you can pipe them elsewhere
+                child.stderr.on('data', (chunk) => {
+                    console.log('err:', decoder.write(chunk))
+                  // data from the standard error is here as buffers
+                });
+                // child.stderr.pipe(child.stdout);
+                child.on('close', (code) => {
+                    console.log(`child process exited with code ${code}`);
+                });
+            }  
         }
     }
 };
