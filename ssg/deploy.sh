@@ -7,12 +7,13 @@ echo $PWD
 
 export DOMAIN=$1
 
-BUILDDIR=$(node ./helpers/name_build_directory.js)
-echo "Deploy directory: $BUILDDIR"
+# BUILDDIR=$(node ./../../ssg/helpers/name_build_directory.js) #local 
+BUILDDIR=$(node /srv/ssg/helpers/name_build_directory.js)
+printf "Deploy directory: $BUILDDIR"
 
-echo '\n Making backup \n'
+printf '\n Making backup of $DOMAIN site\n'
 cp -a "/srv/www/$DOMAIN/. /srv/www-backup/$DOMAIN/"`date +"%Y-%m-%d_%H-%M-%S"`'/'
 
-echo '\nReplace live site'
+printf '\nReplace live site $DOMAIN'
 rsync -avh "/srv/ssg/build/$BUILDDIR/. /srv/www/$DOMAIN/"  --delete-after
 
