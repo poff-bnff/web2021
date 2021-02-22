@@ -40,9 +40,6 @@ for (const lang of languages) {
                         failing = true
                         continue
                     }
-                    // if (thisCassetteFromYAMLCopy !== undefined && thisCassetteFromYAMLCopy.data) {
-                    //     delete thisCassetteFromYAMLCopy.data
-                    // }
                     copyData[key][cassetteIx] = thisCassetteFromYAMLCopy
                 }
             // Teistes keeltes kassett kustutatakse

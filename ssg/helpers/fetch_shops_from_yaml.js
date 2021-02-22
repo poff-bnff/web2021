@@ -82,5 +82,4 @@ for (const lang of allLanguages) {
     const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `shops.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-    // console.log(allData);
 }

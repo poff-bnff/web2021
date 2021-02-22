@@ -4,8 +4,6 @@ const STRAPIDIRS = [
     ];
 const REPLACEDIR = `https://assets.poff.ee/img/`;
 
-// console.log(STRAPIDIRS);
-
 function replaceLinks(pathAliases = '', stagingURL = null, pageURL = null) {
     // Replace Strapi URLs with assets URL for images
     for (const DIR of STRAPIDIRS) {

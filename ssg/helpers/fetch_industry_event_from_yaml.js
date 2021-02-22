@@ -35,7 +35,13 @@ if (DOMAIN === 'industry.poff.ee') {
             expand: {
                 'person': {
                     model_name: 'Person'
-                }
+                },
+                'industry_person_types': {
+                    model_name: 'IndustryPersonType'
+                },
+                'role_at_films': {
+                    model_name: 'RoleAtFilm'
+                },
             }
         },
         'industry_projects': {
@@ -44,10 +50,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
     }
 
-    STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
-
-
-
+    const STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
 
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
@@ -70,9 +73,6 @@ if (DOMAIN === 'industry.poff.ee') {
     }
 
     const currentTimeUTC = convert_to_UTC()
-
-    const industryProjectsPath = path.join(fetchDir, `industryprojects.en.yaml`)
-    const industryProjectsYaml = yaml.safeLoad(fs.readFileSync(industryProjectsPath, 'utf8'));
 
     console.log(`Fetching ${DOMAIN} Industry Event en data`);
 
@@ -116,7 +116,6 @@ if (DOMAIN === 'industry.poff.ee') {
                 if (element.durationTime.split(':')[0] !== '00') {
                     eventend.setUTCHours(eventend.getUTCHours()+parseInt(element.durationTime.split(':')[0]))
                 }
-                // console.log(eventend, eventend.getUTCMinutes(), parseInt(element.durationTime.substring(3, 5)));
             }
             element.calendar_data = escape(ical({
                 domain: 'industry.poff.ee',
@@ -137,8 +136,6 @@ if (DOMAIN === 'industry.poff.ee') {
                 ]
             }).toString())
 
-            // console.log(eventstart, ' - ', eventend, ' durtime:', element.durationTime, element.durationTime ? element.durationTime.substring(3, 5) : 'none');
-            // console.log(element);
             const oneYaml = yaml.safeDump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
 
@@ -168,7 +165,6 @@ if (DOMAIN === 'industry.poff.ee') {
             return date;
         }
 
-        // console.error(dataToYAML.map(o => o.startTime))
         let allDates = dataToYAML.map(event => {
             let dateTimeUTC = convert_to_UTC(event.startTime)
             let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
@@ -179,11 +175,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`].push(event)
             }
             return date
-            // let dateNow = parseInt(`${dateTimeUTCtoEET.getFullYear()}${("0" + (dateTimeUTCtoEET.getMonth() + 1)).slice(-2)}${("0" + dateTimeUTCtoEET.getDate()).slice(-2)}`)
-            // console.log(event.startTime, ' - ', dateTimeUTC, ' - ', dateTimeUTCtoEET, ' - ', date);
         });
-        let uniqueDates =  [...new Set(allDates)]
-        // console.log(newDataToYAML);
 
         for (const date in newDataToYAML.eventsByDate) {
             newDataToYAML.allDates.push(date)
@@ -193,12 +185,10 @@ if (DOMAIN === 'industry.poff.ee') {
     const allDataYAML = yaml.safeDump(dataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `industryeventscalendar.en.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-    // console.log(allData);
 
     const allNewDataYAML = yaml.safeDump(newDataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlNewPath = path.join(fetchDir, `industryevents.en.yaml`);
     fs.writeFileSync(yamlNewPath, allNewDataYAML, 'utf8');
-        // console.log(allData);
 
     search_and_filters(dataToYAML)
 
@@ -326,7 +316,6 @@ if (DOMAIN === 'industry.poff.ee') {
             starttimes: mSort(filters.starttimes),
         }
 
-        // console.log(events_search);
         let searchYAML = yaml.safeDump(events_search, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `search_industryeventscalendar.yaml`), searchYAML, 'utf8')
 

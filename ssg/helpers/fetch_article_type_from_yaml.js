@@ -18,16 +18,12 @@ const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
 const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
-// const STRAPIDATA_PERSONS = STRAPIDATA['Person'];
-const STRAPIDATA_PERSONS = [];
 
 const DEFAULTTEMPLATENAME = 'news'
 
-// console.log(DOMAIN_SPECIFICS)
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
-
 
 const minimodel = {
     'article_types': {
@@ -72,29 +68,33 @@ const minimodel = {
     'web_authors': {
         model_name: 'WebAuthor'
     },
-    'organisations': {
-        model_name: 'Organisation'
-    },
     'industry_people': {
-        model_name: 'IndustryPerson'
+        model_name: 'IndustryPerson',
+        expand: {
+            'person': {
+                model_name: 'Person'
+            },
+            'industry_person_types': {
+                model_name: 'IndustryPersonType'
+            },
+            'role_at_films': {
+                model_name: 'RoleAtFilm'
+            },
+        }
     },
     'people': {
         model_name: 'Person'
     },
-
+    'organisations': {
+        model_name: 'Organisation'
+    },
 }
 
-STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
+const STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
 
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} articles ${lang} data`)
 
-    if (DOMAIN === 'industry.poff.ee') {
-        var industryPersonsPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
-        var industryPersonsYaml = yaml.safeLoad(fs.readFileSync(industryPersonsPath, 'utf8'));
-    }
-    // allData = [];
-    const dirPath = path.join(sourceDir, "_fetchdir" )
     const dataFrom = {
         screenings: `/film/screenings.${lang}.yaml`,
         articles: `/_fetchdir/articles.${lang}.yaml`,
@@ -104,7 +104,6 @@ for (const lang of languages) {
         let element = JSON.parse(JSON.stringify(strapiElement))
         let slugEn = element.slug_en || element.slug_et
         if (!slugEn) {
-            // console.log(element)
             throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
         }
 
@@ -142,7 +141,6 @@ for (const lang of languages) {
         // for the purpose of saving slug_en before it will be removed by rueten func.
         rueten(element, lang);
 
-        //TODO #444
         if (element.contents && element.contents[0]) {
             // Replace Strapi URL with assets URL for images
             // Replace Staging urls with correct webpage urls
@@ -154,15 +152,12 @@ for (const lang of languages) {
             element.lead = replaceLinks(element.lead, stagingURL, pageURL)
         }
 
-        // console.log(element)
         if (element.article_types) {
             for (artType of element.article_types) {
 
-                // console.log(dirPath, artType, slugEn)
-                element.directory = path.join(dirPath, artType.name, slugEn)
+                element.directory = path.join(fetchDir, artType.name, slugEn)
 
                 fs.mkdirSync(element.directory, { recursive: true });
-                //let languageKeys = ['en', 'et', 'ru'];
                 for (key in element) {
 
                     if (key === "slug") {
@@ -175,7 +170,6 @@ for (const lang of languages) {
                         }
                     }
                 }
-                // allData.push(element);
                 element.data = dataFrom;
 
                 let article_template = `/_templates/article_${artType.name}_index_template.pug`
@@ -187,28 +181,6 @@ for (const lang of languages) {
                 }
 
                 if (DOMAIN === 'industry.poff.ee' && artTypeName.length > 1 ) {
-                    // if (element.industry_people && element.industry_people.length) {
-                    //     let indPeopleFromYaml = element.industry_people.filter(a => a.person).map(per => {
-                    //         return industryPersonsYaml.filter(indp => indp.person.id === per.person)[0]
-                    //     })
-                    //     if (typeof indPeopleFromYaml !== 'undefined') {
-                    //         element.industry_people = indPeopleFromYaml
-                    //     } else {
-                    //         element.industry_people = []
-                    //     }
-                    // }
-
-                    // if (element.people && element.people.length) {
-                    //     let peopleFromYaml = element.people.map(per => {
-                    //         return STRAPIDATA_PERSONS.filter(pers => pers.id === per.id)[0]
-                    //     })
-                    //     if (typeof peopleFromYaml !== 'undefined') {
-                    //         element.people = peopleFromYaml
-                    //     } else {
-                    //         element.people = []
-                    //     }
-                    // }
-
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
                 }
 

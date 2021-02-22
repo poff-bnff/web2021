@@ -11,7 +11,6 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
 const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
-
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
@@ -59,9 +58,7 @@ if (DOMAIN === 'industry.poff.ee') {
         },
     }
 
-    STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
-
-
+    const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
@@ -113,7 +110,6 @@ if (DOMAIN === 'industry.poff.ee') {
                     }
                 }
             }
-
 
             const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
@@ -198,8 +194,6 @@ if (DOMAIN === 'industry.poff.ee') {
             // andmepuhastus
 
             delete industry_project.teamCredentials
-
-
         }
 
         const yamlPath = path.join(fetchDir, `industryprojects.${lang}.yaml`);
@@ -207,9 +201,6 @@ if (DOMAIN === 'industry.poff.ee') {
             allData = allData.sort((a, b) => a.title.localeCompare(b.title, lang))
             const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
             fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-
-
-
 
             let filters = {
                 types: {},

@@ -86,7 +86,7 @@ const minimodel_screenings = {
     }
 }
 
-STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENING, minimodel_screenings)
+const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENING, minimodel_screenings)
 
 for (const lang of allLanguages) {
     LangSelect(lang)
@@ -185,20 +185,14 @@ function processData(data, lang, CreateYAML) {
 
 function CreateYAML(screenings, lang) {
 
-    // console.log(screenings);
-
     const SCREENINGS_YAML_PATH = path.join(fetchDir, `screenings.${lang}.yaml`)
 
     let screeningsCopy = rueten(JSON.parse(JSON.stringify(screenings)), lang)
 
-    // // console.log(process.cwd());
     let allDataYAML = yaml.safeDump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(SCREENINGS_YAML_PATH, allDataYAML, 'utf8');
     console.log(`Fetched ${screeningsCopy.length} screenings`);
 
-
-    // FOR SEARCH BELOW
-    // FOR SEARCH BELOW
     // FOR SEARCH BELOW
 
     let filters = {
@@ -220,7 +214,6 @@ function CreateYAML(screenings, lang) {
 
 
         let dateTimeUTC = new Date(screenings.dateTime)
-        // let dateTime = dateTimeUTC.toLocaleString("et-EE"); // , {timeZone: "EET"}
 
         Date.prototype.addHours = function(hours) {
             var date = new Date(this.valueOf());
@@ -228,14 +221,6 @@ function CreateYAML(screenings, lang) {
             return date;
         }
         let dateTime = dateTimeUTC.addHours(2); // , {timeZone: "EET"}
-
-
-        // let date1 = dateTimeUTC.addHours(2)
-        // let date = date1.toLocaleString("et-EE", { timeZone: "UTC", year: "numeric", month: "2-digit", day: "2-digit" });
-        // let dateKey = `_${date}`
-        // let time = dateTimeUTC.addHours(2).toLocaleString("et-EE", { timeZone: "UTC", hour: "2-digit", minute: "2-digit" });
-        // let timeKey = `_${time}`
-
 
         let date = dateTime.getFullYear() + '-' + ('0' + (dateTime.getMonth()+1)).slice(-2) + '-' + ('0' + dateTime.getDate()).slice(-2)
         let dateKey = `_${date}`
@@ -251,7 +236,6 @@ function CreateYAML(screenings, lang) {
         let cassette = screenings.cassette
         if (typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
-                // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
                         const key = fested.festival.id + '_' + programme.id
@@ -300,7 +284,7 @@ function CreateYAML(screenings, lang) {
         let subtitles = []
         let towns = []
         let cinemas = []
-        // for (const screenings of cassette.screenings) {
+
         for (const subtitle of screenings.subtitles || []) {
             const subtKey = subtitle.code
             const subtitle_name = subtitle.name
@@ -317,7 +301,7 @@ function CreateYAML(screenings, lang) {
         const cinema_name = screenings.location.hall.cinema.name
         cinemas.push(cinemaKey)
         filters.cinemas[cinemaKey] = cinema_name
-        // }
+
         let premieretypes = []
         for (const types of cassette.tags.premiere_types || []) {
                 const type_name = types
@@ -408,7 +392,5 @@ function CreateYAML(screenings, lang) {
 
     let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_screenings.${lang}.yaml`), filtersYAML, 'utf8')
-
-
 
 }

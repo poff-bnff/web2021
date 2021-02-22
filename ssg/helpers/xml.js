@@ -74,7 +74,7 @@ const minimodel_screenings = {
                             'festival_editions': {
                                 model_name: 'FestivalEdition',
                                 expand: {
-                                    'domain': {
+                                    'domains': {
                                         model_name: 'Domain'
                                     }
                                 }
@@ -82,12 +82,12 @@ const minimodel_screenings = {
                         }
                     }
                 }
-            },
+            }
         }
     }
 }
 
-SCREENINGS = fetchModel(SCREENING, minimodel_screenings)
+const SCREENINGS = fetchModel(SCREENING, minimodel_screenings)
 
 // console.log(SCREENINGS[0].cassette.orderedFilms[0].film.festival_editions[0]);
 
@@ -143,12 +143,17 @@ for (const screeningIx in SCREENINGS) {
                 if (screening.cassette.orderedFilms && screening.cassette.orderedFilms.length) {
                     for (const filmIx in screening.cassette.orderedFilms) {
                         let film = screening.cassette.orderedFilms[filmIx].film
-                        if (film && film.festival_editions && film.festival_editions[0].domain) {
-                            var festivalEdDomain = film.festival_editions[0].domain.url
-                            if (festivalEdDomain) {
 
-                                concert[`urls${langs[lang]}`] = `${domainMapping[festivalEdDomain]}${lang === 'et' ? '' : `${lang}/`}film/${slug}`
+                        if (film && film.festival_editions && film.festival_editions[0].domains) {
+
+                            let removePoffDomain = film.festival_editions[0].domains.map(d => d.url).filter(d => d !== 'poff.ee')
+                            let festivalEdDomain = 'poff.ee'
+
+                            if (removePoffDomain.length) {
+                                festivalEdDomain = removePoffDomain[0]
                             }
+
+                            concert[`urls${langs[lang]}`] = `${domainMapping[festivalEdDomain]}${lang === 'et' ? '' : `${lang}/`}film/${slug}`
                         }
                         // let domainUrl = STRAPIDATA_DOMAIN.filter( (a) => { return oneFilm.id === a.id })
                     }

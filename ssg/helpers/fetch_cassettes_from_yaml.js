@@ -25,12 +25,21 @@ const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
 const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
-const strapiDataFestivalPath = path.join(strapiDataDirPath, 'Festival.yaml')
-const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataFestivalPath, 'utf8'))
-const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
-const STRAPIDATA_FILMS = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+
+// Kassettide limiit mida buildida
+const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
+
+// true = check if programme is for this domain / false = check if festival edition is for this domain
+const CHECKPROGRAMMES = false
+
+// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES
+const whichScreeningTypesToFetch = ['first screening', 'regular', 'online kino']
+
+const mapping = DOMAIN_SPECIFICS.domain
 
 const minimodel_cassette = {
     'presenters': {
@@ -190,27 +199,6 @@ const minimodel_screenings = {
 }
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
 
-
-
-// console.log(JSON.stringify(STRAPIDATA_CASSETTES[1], 0, 2));
-
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
-const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
-// true = check if programme is for this domain / false = check if festival edition is for this domain
-const CHECKPROGRAMMES = false
-
-// timer.log(__filename, `LIMIT: ${CASSETTELIMIT}`)
-
-// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES
-const whichScreeningTypesToFetch = ['first screening', 'regular', 'online kino']
-
-const mapping = DOMAIN_SPECIFICS.domain
-
-// STRAPIDATA_PROGRAMMES.map(programme => programme.id)
-
-
-
-////////////////////////////////////////////////////////////////////////////////
 if(CHECKPROGRAMMES) {
 
     let cassettesWithOutProgrammes = []
@@ -262,8 +250,6 @@ for (const lang of allLanguages) {
     fs.mkdirSync(cassettesPath, { recursive: true })
     timer.log(__filename, `Fetching ${DOMAIN} cassettes ${lang} data`)
     let allData = []
-    // data = rueten(data, lang)
-    // timer.log(__filename, data)
     let slugMissingErrorNumber = 0
     var templateMissingMessageDisplayed = false
     let slugMissingErrorIDs = []
@@ -275,18 +261,6 @@ for (const lang of allLanguages) {
         counting++
 
         const s_cassette_copy = JSONcopy(s_cassette)
-
-        // if (s_cassette_copy.festival_editions && s_cassette_copy.festival_editions.length) {
-        //     for (const festEdIx in s_cassette_copy.festival_editions) {
-        //         var festEd = s_cassette_copy.festival_editions[festEdIx]
-        //         console.log(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0]);
-        //         var festival = JSONcopy(STRAPIDATA_FESTIVALS.filter( (a) => { console.log(festEd); return festEd.festival === a.id })[0])
-        //         if (festival) {
-        //             s_cassette_copy.festivals = []
-        //             s_cassette_copy.festivals.push(festival)
-        //         }
-        //     }
-        // }
 
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
@@ -311,17 +285,6 @@ for (const lang of allLanguages) {
             let cassetteCarouselPicsFilms = []
             let cassettePostersCassette = []
             let cassettePostersFilms = []
-
-            // // Kasseti programmid
-            // if (s_cassette_copy.tags && s_cassette_copy.tags.programmes && s_cassette_copy.tags.programmes[0]) {
-            //     for (const programmeIx in s_cassette_copy.tags.programmes) {
-            //         let programme = s_cassette_copy.tags.programmes[programmeIx]
-            //         let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
-            //         if (typeof programmeFromYAML !== 'undefined' && programmeFromYAML[0]) {
-            //             s_cassette_copy.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
-            //         }
-            //     }
-            // }
 
             // Kasseti treiler
             if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
@@ -350,24 +313,7 @@ for (const lang of allLanguages) {
 
             // #379 put ordered films to cassette.film
             let ordered_films = s_cassette_copy.orderedFilms
-                // .filter( (isFilm) => { if (isFilm.film) { return 1 } else { console.log(`ERROR! Empty film under cassette with ID ${s_cassette_copy.id}`) } })
-                // .map(s_c_film => {
 
-                //     if (!s_c_film.film) {
-                //         // console.log('ERROR: Cassette with no ordered film', s_cassette_copy.id);
-                //         cassettesWithOutFilms.push(s_cassette_copy.id)
-                //         // throw new Error('Cassette with no ordered film')
-                //     } else {
-                //         let s_films = STRAPIDATA_FILMS.filter( (s_film) => { return s_c_film.film.id === s_film.id } )
-
-                //         if (s_films && s_films[0]) {
-                //             s_films[0].ordinal = s_c_film.order
-                //             return s_films[0]
-                //         } else {
-                //             return null
-                //         }
-                //     }
-                // })
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
                 s_cassette_copy.films = s_cassette_copy.films.map(a => {
@@ -421,17 +367,10 @@ for (const lang of allLanguages) {
                 s_cassette_copy.screenings = screenings.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime))
             }
 
-            // let s_cassette_copy = JSONcopy(s_cassette_copy))
-            // let aliases = []
-            let languageKeys = ['en', 'et', 'ru']
             for (key in s_cassette_copy) {
                 if (key == 'slug') {
                     s_cassette_copy.path = `film/${s_cassette_copy[key]}`
                     s_cassette_copy.slug = `${s_cassette_copy[key]}`
-                }
-
-                if (typeof(s_cassette_copy[key]) === 'object' && s_cassette_copy[key] != null) {
-                    // makeCSV(s_cassette_copy[key], s_cassette_copy, lang)
                 }
             }
 
@@ -540,19 +479,6 @@ for (const lang of allLanguages) {
                         }
                     }
 
-                    // // Filmi programmid
-                    // if (scc_film.tags && scc_film.tags.programmes && scc_film.tags.programmes[0]) {
-                    //     for (const programmeIx in scc_film.tags.programmes) {
-                    //         let programme = scc_film.tags.programmes[programmeIx]
-                    //         let programmeFromYAML = STRAPIDATA_PROGRAMMES.filter( (a) => { return programme.id === a.id })
-                    //         if (typeof programmeFromYAML[0] !== 'undefined') {
-                    //             scc_film.tags.programmes[programmeIx] = JSONcopy(programmeFromYAML[0])
-                    //         } else {
-                    //             timer.log(__filename, `Error! Programme with ID ${programme.id}, under film with ID ${scc_film.id} - domain ${DOMAIN} probably not assigned to this programme!`)
-                    //         }
-                    //     }
-                    // }
-
                     if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
                         scc_film.credentials.rolePerson.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
@@ -578,9 +504,7 @@ for (const lang of allLanguages) {
                             } else {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
                             }
-                            //- - timer.log(__filename, 'SEEEE ', rolePersonTypes[`${rolePerson.role_at_film.roleNamePrivate.toLowerCase()}`], ' - ', rolePerson.role_at_film.roleNamePrivate.toLowerCase(), ' - ', rolePersonTypes)
                         }
-                        // console.log('foo2', scc_film.id, rolePersonTypes);
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
                     }
                 }
@@ -669,11 +593,8 @@ function generateAllDataYAML(allData, lang){
         let programmes = []
         if (typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
-                // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
-                        // console.log('PROGRAMMES: ', cassette.tags.programmes);
-                        // console.log('FEST_ED: ', fested);
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name
@@ -690,7 +611,6 @@ function generateAllDataYAML(allData, lang){
         for (const film of cassette.films) {
             for (const language of film.languages || []) {
                 const langKey = language.code
-                // console.log('KOOOOD', language);
                 const language_name = language.name
                 languages.push(langKey)
                 filters.languages[langKey] = language_name
@@ -758,13 +678,6 @@ function generateAllDataYAML(allData, lang){
         }
     })
 
-    // sorted1 = [].slice.call(filters.programmes).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.languages).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.countries).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.subtitles).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.premieretypes).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.towns).sort((a, b) => a.localeCompare(b, lang))
-    // [].slice.call(filters.cinemas).sort((a, b) => a.localeCompare(b, lang))
     function mSort(to_sort) {
         let sortable = []
         for (var item in to_sort) {
@@ -799,7 +712,6 @@ function generateAllDataYAML(allData, lang){
         cinemas: mSort(filters.cinemas),
     }
 
-    // console.log(cassette_search);
     let searchYAML = yaml.safeDump(cassette_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_films.${lang}.yaml`), searchYAML, 'utf8')
 

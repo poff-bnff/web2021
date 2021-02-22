@@ -43,12 +43,7 @@ if (DOMAIN !== 'industry.poff.ee') {
         }
     }
 
-    STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
-
-
-
-    // const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Person'];
-    const STRAPIDIR = '/uploads/'
+    const STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
 
     const rootDir =  path.join(__dirname, '..')
     const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -57,8 +52,6 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
     for (lang of languages) {
-
-        // if (DOMAIN !== 'industry.poff.ee') { continue }
 
         console.log(`Fetching ${DOMAIN} industry persons ${lang} data`);
 
@@ -70,11 +63,7 @@ if (DOMAIN !== 'industry.poff.ee') {
 
             // rueten func. is run for each industry_person separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
-
-
             industry_person = rueten(industry_person, lang);
-            // industry_person.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
-            // industry_person.path = industry_person.slug;
 
             const filmography = industry_person.filmography || {}
             const films = filmography.film || []
@@ -87,11 +76,7 @@ if (DOMAIN !== 'industry.poff.ee') {
                 })
             })
 
-            if (industry_person.person) {
-                let personFirstName = industry_person.person.firstName || ''
-                let personLastName = industry_person.person.lastName || ''
-                var personNameWithID = `${personFirstName} ${personLastName} ${industry_person.person.id}`
-            } else {
+            if (!industry_person.person) {
                 console.log(`ERROR! Industry person ID ${industry_person.id} not linked to any person, skipped.`)
                 continue
             }
@@ -210,7 +195,6 @@ if (DOMAIN !== 'industry.poff.ee') {
             }
         });
 
-
         let sorted_filters = {
             types: mSort(filters.types),
             roleatfilms: mSort(filters.roleatfilms),
@@ -223,8 +207,7 @@ if (DOMAIN !== 'industry.poff.ee') {
         let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), filtersYAML, 'utf8')
 
-
-        // TODO: mida see funktsioon teeb?
+        // Töötav sorteerimisfunktsioon filtritele
         function mSort(to_sort) {
             let sortable = []
             for (var item in to_sort) {
