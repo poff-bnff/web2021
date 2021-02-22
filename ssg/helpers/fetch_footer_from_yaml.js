@@ -31,7 +31,6 @@ for (const lang of allLanguages) {
     timer.log(__filename, `Fetching ${DOMAIN} footer ${lang} data`);
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_FOOTER));
-    // timer.log(__filename, util.inspect(copyData));
     let buffer = [];
     for (index in copyData) {
         if(copyData[index].domain.url === DOMAIN) {
@@ -40,9 +39,7 @@ for (const lang of allLanguages) {
     }
 
     const globalDataPath = path.join(sourceDir, `global.${lang}.yaml`)
-    // timer.log(__filename, buffer);
     let globalData= yaml.safeLoad(fs.readFileSync(globalDataPath, 'utf8'))
-    // timer.log(__filename, globalData);
     globalData.footer = buffer
 
     let allDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })

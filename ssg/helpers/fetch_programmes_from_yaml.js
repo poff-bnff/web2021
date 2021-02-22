@@ -43,8 +43,6 @@ for (const ix in languages) {
 
 
         for (eIx in element.festival_editions) {
-            var festivalEdition = element.festival_editions[eIx];
-
             if(element.presentedBy && element.presentedBy[0]) {
                 for (orgIx in element.presentedBy.organisations) {
                     let organisationFromYAML = STRAPIDATA_ORGANISATIONS.filter( (a) => { return element.presentedBy.organisations[orgIx].id === a.id })
@@ -71,7 +69,6 @@ for (const ix in languages) {
         }
 
         element.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml', 'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
-        // console.log(element);
 
         if (dirSlug != null && typeof element.path !== 'undefined') {
             const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
@@ -102,5 +99,4 @@ for (const ix in languages) {
     const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `programmes.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-    // console.log(allData);
 }

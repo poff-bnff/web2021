@@ -19,6 +19,29 @@ const mapping = {
     'kumu.poff.ee': 'KumuSupporter',
     'tartuff.ee': 'TartuffiSupporter'
 }
+
+const mapping2 = {
+    'poff.ee': 'SupSecPoff',
+    'justfilm.ee': 'SupSecJust',
+    'kinoff.poff.ee': 'SupSecKinoff',
+    'industry.poff.ee': 'SupSecIndustry',
+    'shorts.poff.ee': 'SupSecShorts',
+    'hoff.ee': 'SupSecHoff',
+    'kumu.poff.ee': 'SupSecKumu',
+    'tartuff.ee': 'SupSecTartuff'
+}
+
+const mapping3 = {
+    'poff.ee': 'SupPoff',
+    'justfilm.ee': 'SupJust',
+    'kinoff.poff.ee': 'SupKinoff',
+    'industry.poff.ee': 'SupIndustry',
+    'shorts.poff.ee': 'SupShorts',
+    'hoff.ee': 'SupHoff',
+    'kumu.poff.ee': 'SupKumu',
+    'tartuff.ee': 'SupTartuff'
+}
+
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
 const STRAPIDATA_SUPPORTER_PAGES = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
 
@@ -27,10 +50,10 @@ const minimodel = {
         model_name: 'Domain'
     },
     'supporters': {
-        model_name: 'SupSecPoff',
+        model_name: mapping2[DOMAIN],
         expand: {
             'supporter': {
-                model_name: 'SupPoff',
+                model_name: mapping3[DOMAIN]
                 // expand: {
                 //     'poffi_article': {
                 //         model_name: 'POFFiArticle'
@@ -54,23 +77,16 @@ function LangSelect(lang) {
 
 
 function processData(lang, CreateYAML) {
-    // console.log(util.inspect(data));
-
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_SUPPORTER_PAGE));
-    // console.log(util.inspect(copyData));
     let buffer = [];
+
     for (index in copyData) {
-        // console.log('index', index);
-        // console.log('domain', domain);
-        // console.log('copydatadomeen', copyData[index].domain);
         if(copyData[index].domain.url === DOMAIN) {
             buffer = rueten(copyData[index], lang)
         }
     }
     CreateYAML(buffer, lang);
-    // console.log('COPYDATA', copyData.keys());
-    // console.log('BUFFER', buffer);
 }
 
 function CreateYAML(buffer, lang) {

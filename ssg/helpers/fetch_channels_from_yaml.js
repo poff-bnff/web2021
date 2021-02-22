@@ -21,26 +21,17 @@ for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} channels ${lang} data`);
 }
 
-
 function processData(lang, CreateYAML) {
-    // console.log(util.inspect(data));
-
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_CHANNELS));
-    // console.log(util.inspect(copyData));
     let buffer = [];
     for (index in copyData) {
-        // console.log(index, copyData[index]);
-        // console.log('domain', domain);
-        // console.log('copydatadomeen', copyData[index].domain);
         if (copyData[index].namePrivate && copyData[index].namePrivate === 'Industry TEST channel') {
             continue
         }
         buffer.push(rueten(copyData[index], lang))
     }
     CreateYAML(buffer, lang);
-    // console.log('COPYDATA', copyData.keys());
-    // console.log('BUFFER', buffer);
 }
 
 function CreateYAML(buffer, lang) {

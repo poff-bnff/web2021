@@ -65,7 +65,6 @@ for (const ix in languages) {
             continue
         }
 
-        //console.log(util.inspect(element, false, 10))
         const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
 
         if (dirSlug != null) {
@@ -79,7 +78,6 @@ for (const ix in languages) {
         allData.push(element);
     }
 
-    //console.log(util.inspect(allData, false, 10))
     const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `teams.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');

@@ -52,7 +52,6 @@ for (const lang of languages) {
 
         if(key === `article_${lang}`) {
             buffer = rueten(STRAPIDATA_HERO[`article_${lang}`], lang);
-            // console.log(buffer);
         }
     }
 

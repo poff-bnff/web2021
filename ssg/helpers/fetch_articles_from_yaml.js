@@ -17,14 +17,11 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
-const STRAPIDIR = '/uploads/'
-const STRAPIHOSTWITHDIR = `https://${process.env['StrapiHostPoff2021']}${STRAPIDIR}`;
-
 
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
-let STRAPIDATA_ARTICLE = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const minimodel = {
         'article_types': {
@@ -74,14 +71,11 @@ const minimodel = {
         }
     }
 
-STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLE, minimodel)
-
+STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
-
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
-
 
 for (const lang of allLanguages) {
     const dataFrom = {
@@ -91,13 +85,9 @@ for (const lang of allLanguages) {
     }
     var dirPath = `${sourceDir}_fetchdir/articles/`
 
-    // fs.mkdirSync(dirPath, { recursive: true })
-
     timer.log(__filename, `Fetching ${DOMAIN} articles ${lang} data`)
 
     let allData = []
-    // data = rueten(data, lang)
-    // timer.log(__filename, data)
     for (const originalElement of STRAPIDATA_ARTICLE) {
         const element = JSON.parse(JSON.stringify(originalElement))
         let slugEn = element.slug_en

@@ -4,7 +4,6 @@ const path = require('path')
 const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const strapiDataLabelGroupPath = path.join(strapiDataDirPath, 'LabelGroup.yaml')
 const STRAPIDATA_LABELGROUP = yaml.safeLoad(fs.readFileSync(strapiDataLabelGroupPath, 'utf8'))
@@ -32,11 +31,8 @@ for (const lang of languages) {
     }
 
     const globalStatic = path.join(sourceFolder, 'global_static', `global_s.${lang}.yaml`)
-    // console.log(globalStatic)
     let globalData= yaml.safeLoad(fs.readFileSync(globalStatic, 'utf8'))
-    // // console.log(globalData)
     globalData.label = labels
-    // // console.log(process.cwd())
     let allDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(`${sourceFolder}global.${lang}.yaml`, allDataYAML, 'utf8')
 }

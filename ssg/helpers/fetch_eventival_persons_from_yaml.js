@@ -12,7 +12,6 @@ const EVENTIVAL_PERSONS = yaml.safeLoad(fs.readFileSync(eventivalPersonsPath, 'u
 const E_PERSONS_FILE = path.join(fetchDir, 'eventival_persons.yaml')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-
 if (DOMAIN === 'industry.poff.ee') {
 
     console.log(`Fetching ${DOMAIN} eventival persons data`)
@@ -28,14 +27,10 @@ if (DOMAIN === 'industry.poff.ee') {
 
         console.log(data.persons.length, 'Eventival persons fetched.')
 
-
-        // console.log(util.inspect(data, null, 10))
-
         fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump(data, { 'noRefs': true, 'indent': '4' }))
     }
 
     function add_filters_and_search_to_data(data) {
-
 
         let filters = {
             types: {},
