@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_bruno_sub_menu_items",
+  "info": {
+    "name": "BrunoSubMenuItem",
+    "icon": "calendar-week"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "bruno_article": {
+      "model": "bruno-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

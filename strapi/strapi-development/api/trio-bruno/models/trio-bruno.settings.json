@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_bruno",
+  "info": {
+    "name": "TrioBruno",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "trioBruno_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-bruno"
+    },
+    "trioBruno_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-bruno"
+    },
+    "trioBruno_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-bruno"
+    }
+  }
+}

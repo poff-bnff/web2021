@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bruno-supporters",
+      "handler": "bruno-supporter.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-supporters/count",
+      "handler": "bruno-supporter.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-supporters/:id",
+      "handler": "bruno-supporter.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bruno-supporters",
+      "handler": "bruno-supporter.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bruno-supporters/:id",
+      "handler": "bruno-supporter.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bruno-supporters/:id",
+      "handler": "bruno-supporter.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

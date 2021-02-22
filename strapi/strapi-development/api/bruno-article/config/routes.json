@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bruno-articles",
+      "handler": "bruno-article.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-articles/count",
+      "handler": "bruno-article.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-articles/:id",
+      "handler": "bruno-article.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bruno-articles",
+      "handler": "bruno-article.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bruno-articles/:id",
+      "handler": "bruno-article.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bruno-articles/:id",
+      "handler": "bruno-article.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

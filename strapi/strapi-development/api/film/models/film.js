@@ -27,8 +27,8 @@ const path = require('path');
 //       },
 // }
 
-// mapping is used for keeping track of strapi_id for for festival_edition
-const mapping = {
+// mappingFestivalEdition is used for keeping track of strapi_id for for festival_edition
+const mappingFestivalEdition = {
   '1': 'poff',
   '2': 'shorts',
   '3': 'just',
@@ -39,7 +39,7 @@ const mapping = {
 function get_domain_name(result) {
   let domain_to_build = []
   for (let edition of result.festival_editions){
-    domain_to_build.push(mapping[edition.id])
+    domain_to_build.push(mappingFestivalEdition[edition.id])
   }
   return domain_to_build
 }

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-kumu",
+      "handler": "hero-article-kumu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-kumu",
+      "handler": "hero-article-kumu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-kumu",
+      "handler": "hero-article-kumu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-bruno",
+      "handler": "hero-article-bruno.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-bruno",
+      "handler": "hero-article-bruno.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-bruno",
+      "handler": "hero-article-bruno.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
