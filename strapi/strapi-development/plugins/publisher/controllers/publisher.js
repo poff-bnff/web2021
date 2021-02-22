@@ -62,14 +62,14 @@ const doBuild = async(site, userInfo) => {
 const doLog = async (site, userInfo) => {
   // strapi.generateTimestampCode
   // console.log("strapi timestamp",generateTimestampCode())
-  const data = {
+  const logData = {
     site: site,
     user: `${userInfo.firstname} ${userInfo.lastname}`,
     email: userInfo.email,
     startTime: moment().tz("Europe/Tallinn").format()
   };
   //using strapi method for creating and entry from the data that was sent
-  const result = await strapi.entityService.create({data},{ model: "plugins::publisher.build_logs" })
+  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
   console.log(result)
   return result.id
 }
