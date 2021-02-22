@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "Edition",
   "info": {
-    "name": "FestivalEdition"
+    "name": "FestivalEdition",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "number": {
@@ -39,8 +41,8 @@
     "endDate": {
       "type": "datetime"
     },
-    "domain": {
-      "model": "domain"
+    "domains": {
+      "collection": "domain"
     },
     "festival": {
       "model": "festival"

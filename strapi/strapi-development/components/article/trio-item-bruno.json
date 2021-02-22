@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_article_trio_item_bruno",
+  "info": {
+    "name": "TrioItemBruno",
+    "icon": "crutch"
+  },
+  "options": {},
+  "attributes": {
+    "bruno_article": {
+      "model": "bruno-article"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

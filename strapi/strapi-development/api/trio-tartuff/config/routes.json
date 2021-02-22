@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-tartuff",
+      "handler": "trio-tartuff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-tartuff",
+      "handler": "trio-tartuff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-tartuff",
+      "handler": "trio-tartuff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
