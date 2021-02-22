@@ -2,11 +2,13 @@
   "kind": "singleType",
   "collectionName": "article_heroes",
   "info": {
-    "name": "HeroArticlePöff"
+    "name": "HeroArticlePoff",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "article_en": {
