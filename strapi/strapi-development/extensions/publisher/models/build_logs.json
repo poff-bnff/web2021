@@ -30,6 +30,9 @@
     "endTime": {
       "type": "datetime",
       "required": false
+    },
+    "build_errors": {
+      "type": "richtext"
     }
   }
 }
