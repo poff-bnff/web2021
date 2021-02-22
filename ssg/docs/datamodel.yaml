@@ -1019,6 +1019,60 @@ LabelGroup:
     label: #(Component (repeatable))
         - *Label
 
+Course: &Course
+    _path: /courses
+    id: 1 (number)
+    remoteId: (UID)
+    order: (number)
+    title_et: (short text)
+    title_en: (short text)
+    title_ru: (short text)
+    titleOriginal: (short text)
+    year: (number)
+    runtime: (number)
+    synopsis: *Translated #(Component, rich)
+    media: *FilmMedia #(Component, not from eventival)
+    tags: *Tags #(Component)
+    slug_et: (UID, title_et)
+    slug_en: (UID, title_en)
+    slug_ru: (UID, title_ru)
+    festival_editions:
+        - *FestivalEdition 
+    languages: #(Component (repeatable))
+        - *Language 
+    subtitles: #(Component (repeatable))
+        - *Language 
+    otherFestivals: (text)
+    credentials: *Credentials 
+    presentedBy: *PresentedBy 
+    world_sales: #(Component (repeatable))
+        - *Organisation
+    orderedCountries: #(Component (repeatable))
+        - *OrderedCountries
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+
+Event: &Event
+    _path: /events
+    code: (Number)
+    codeAndTitle: (text)
+    ticketingId: (Number)
+    ticketingUrl: (text)
+    dateTime: (Datetime)
+    introQaConversation: #(Component (repeatable))
+      - *IntroConversationQandA
+    durationTotal: (Number)
+    location: *Location
+    extraInfo: *Translated
+    screening_types: #(Component (repeatable))
+      - *ScreeningType
+    screening_mode: *ScreeningMode #(Component)
+    subtitles: #(Component (repeatable))
+      - *Language
+    cassette: *Cassette
+    bookingUrl: (text)
+    remoteId: (UID)
+
 #Industry
 FilmInFilmography: &FilmInFilmography
     order: (Number)
