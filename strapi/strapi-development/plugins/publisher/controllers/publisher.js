@@ -6,7 +6,6 @@ const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
 const { generateTimestampCode } = require('strapi-utils')
 
-// let timestamp = strapi.generateTimestampCode
 const domains = [
   "poff.ee",
   "justfilm.ee",
@@ -16,6 +15,11 @@ const domains = [
   "hoff.ee",
 ];
 
+let timestamp = strapi.generateTimestampCode
+
+
+const now = moment().tz("Europe/Tallinn").format();
+
 /**
  * publisher.js controller
 
@@ -24,17 +28,14 @@ const domains = [
  */
 
 const doBuild = async(site, userInfo) => {
-  console.log("doBuild")
-  let id
-  // kontrollib kas fail on olemas?
+  // console.log("doBuild started ")
   if (fs.existsSync("../build.sh")) {
-    console.log("file exists")
-    //annan .sh faili kaasa argumendid
+    // console.log("building" + site)
     const args = [site];
 
-    const child = spawn("../build.sh", args);
+    const child = spawn("../../ssg/deploytest.sh", args);
 
-    id = await doLog(site, userInfo)
+    const id = await doLog(site, userInfo)
     console.log("id", id)
 
     child.stdout.on("data", async(chunk)  => {
@@ -50,8 +51,8 @@ const doBuild = async(site, userInfo) => {
     child.on("close", async(code)  => {
       console.log(`child process exited with code ${code}`);
       // siin tahaksin saata alles ctx.send
-      const logData = {"endTime": moment().tz("Europe/Tallinn").format()}
-      strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+      // const end = moment().tz("Europe/Tallinn").format();
+      // const logData = {"id": id, "endTime": end}
       // const result = await strapi.entityService.update({logData},{ model: "plugins::publisher.build_logs" })
       // console.log(result)
     });
@@ -60,16 +61,15 @@ const doBuild = async(site, userInfo) => {
 
 
 const doLog = async (site, userInfo) => {
-  // strapi.generateTimestampCode
-  // console.log("strapi timestamp",generateTimestampCode())
-  const logData = {
+  console.log(timestamp)
+  const data = {
     site: site,
     user: `${userInfo.firstname} ${userInfo.lastname}`,
     email: userInfo.email,
-    startTime: moment().tz("Europe/Tallinn").format()
+    startTime: now
   };
+  const result = await strapi.entityService.create({data},{ model: "plugins::publisher.build_logs" })
   //using strapi method for creating and entry from the data that was sent
-  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
   console.log(result)
   return result.id
 }
@@ -101,18 +101,17 @@ module.exports = {
     // console.log(data)
     const userInfo = JSON.parse(data.userInfo);
     const site = data.site;
-    //kontrollin kas päringule lisati site
+    // console.log(user)
+    // console.log(ctx.request)
     if (!data.site) {
       return ctx.badRequest("no site");
     } else {
-      // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-        // console.log("leht on nimekirjas");
-        //first log entry return the id of the log created
+        console.log("leht on nimekirjas");
+        doLog(site, userInfo)
         // const id = await doLog(site, userInfo)
-        // // log entry is should be used to update the entry with end time.
         // console.log("id", id)
-        doBuild(site, userInfo)
+        await doBuild(site, userInfo)
         ctx.send({ message: `ok ${data.site}` });
 
       } else {
