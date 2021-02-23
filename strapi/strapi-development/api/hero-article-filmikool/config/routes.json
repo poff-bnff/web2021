@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-filmikool",
+      "handler": "hero-article-filmikool.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-filmikool",
+      "handler": "hero-article-filmikool.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-filmikool",
+      "handler": "hero-article-filmikool.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
