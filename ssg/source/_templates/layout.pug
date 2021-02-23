@@ -76,14 +76,25 @@ html(lang= self.locale)
             block content
             include ../_templates/footer.pug
 
-    //- //- Bruno Oja
-    //- else if process.env['DOMAIN'] === 'oja.ee'
-    //-     include ../_templates/head_oja.pug
-    //-     // (onload='reloadImageOnError()')
-    //-     body
-    //-         include ../_templates/header_oja.pug
-    //-         block content
-    //-         include ../_templates/footer.pug
+    //- Bruno Oja
+    else if process.env['DOMAIN'] === 'oyafond.ee'
+        include ../_templates/head_bruno.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_bruno.pug
+            block content
+            include ../_templates/footer.pug    
+
+
+    //- Filmikool
+    else if process.env['DOMAIN'] === 'filmikool.poff.ee'
+        include ../_templates/head_filmikool.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_filmikool.pug
+            block content
+            include ../_templates/footer.pug
+
 
     //- no domain specified
     else
