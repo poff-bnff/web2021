@@ -17,7 +17,9 @@ const mapping = {
     'shorts.poff.ee': 'ShortsSupporter',
     'hoff.ee': 'HoffiSupporter',
     'kumu.poff.ee': 'KumuSupporter',
-    'tartuff.ee': 'TartuffiSupporter'
+    'tartuff.ee': 'TartuffiSupporter',
+    'filmikool.poff.ee': 'FilmikooliSupporter',
+    'oyafond.ee': 'BrunoSupporter'
 }
 
 const mapping2 = {

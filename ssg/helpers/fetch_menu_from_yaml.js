@@ -16,7 +16,9 @@ const mapping = {
     'shorts.poff.ee': 'ShortsiMenu',
     'hoff.ee': 'HOFFiMenu',
     'kumu.poff.ee': 'KumuMenu',
-    'tartuff.ee': 'TartuffiMenu'
+    'tartuff.ee': 'TartuffiMenu',
+    'filmikool.poff.ee': 'FilmikooliMenu',
+    'oyafond.ee': 'BrunoMenu'
 }
 const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
 const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))

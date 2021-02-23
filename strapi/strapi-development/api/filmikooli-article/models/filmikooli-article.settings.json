@@ -64,6 +64,9 @@
     "publishUntil": {
       "type": "boolean"
     },
+    "publish_et": {
+      "type": "boolean"
+    },
     "publish_en": {
       "type": "boolean"
     },

@@ -18,7 +18,9 @@ const hero_mapping = {
     'shorts.poff.ee': 'HeroArticleShorts',
     'hoff.ee': "HeroArticleHoff",
     'kumu.poff.ee': "HeroArticleKumu",
-    'tartuff.ee': "HeroArticleTartuff"
+    'tartuff.ee': "HeroArticleTartuff",
+    'filmikool.poff.ee': "HeroArticleFilmikool",
+    'oyafond.ee': "HeroArticleBruno"
 }
 const strapiDataHeroPath = path.join(strapiDataDirPath, `${hero_mapping[DOMAIN]}.yaml`)
 const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))

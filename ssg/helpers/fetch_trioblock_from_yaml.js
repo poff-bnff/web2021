@@ -16,7 +16,9 @@ const trio_mapping = {
     'shorts.poff.ee': 'TrioShorts',
     'hoff.ee': 'TrioHOFF',
     'kumu.poff.ee': 'TrioKumu',
-    'tartuff.ee': 'TrioTartuff'
+    'tartuff.ee': 'TrioTartuff',
+    'filmikool.poff.ee': 'TrioFilmikool',
+    'oyafond.ee': 'TrioBruno'
 }
 const articleMapping = {
     'poff.ee': 'poffi',
@@ -26,7 +28,9 @@ const articleMapping = {
     'shorts.poff.ee': 'shortsi',
     'hoff.ee': 'hoffi',
     'kumu.poff.ee': 'kumu',
-    'tartuff.ee': 'tartuffi'
+    'tartuff.ee': 'tartuffi',
+    'filmikool.poff.ee': 'filmikooli',
+    'oyafond.ee': 'bruno'
 }
 
 const strapiDataTrioPath = path.join(strapiDataDirPath, `${trio_mapping[DOMAIN]}.yaml` )
