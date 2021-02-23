@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "name": "Course"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titleOriginal": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "durationTotal": {
+      "type": "integer"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.course-tags"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "credentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "presentedBy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.presented-by"
+    },
+    "additInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "foreignUrl": {
+      "type": "text"
+    },
+    "events": {
+      "via": "course",
+      "collection": "event"
+    }
+  }
+}
