@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/filmikool-supporters",
+      "handler": "filmikool-supporter.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikool-supporters/count",
+      "handler": "filmikool-supporter.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikool-supporters/:id",
+      "handler": "filmikool-supporter.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/filmikool-supporters",
+      "handler": "filmikool-supporter.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/filmikool-supporters/:id",
+      "handler": "filmikool-supporter.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/filmikool-supporters/:id",
+      "handler": "filmikool-supporter.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

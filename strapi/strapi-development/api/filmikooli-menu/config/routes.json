@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/filmikooli-menus",
+      "handler": "filmikooli-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikooli-menus/count",
+      "handler": "filmikooli-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikooli-menus/:id",
+      "handler": "filmikooli-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/filmikooli-menus",
+      "handler": "filmikooli-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/filmikooli-menus/:id",
+      "handler": "filmikooli-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/filmikooli-menus/:id",
+      "handler": "filmikooli-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
