@@ -1077,9 +1077,21 @@ LabelGroup:
     label: #(Component (repeatable))
         - *Label
 
+#Filikool
 CourseTags: &CourseTags
     keywords: #(Component (repeatable))
       - *TagKeyword
+
+Event: &Event
+    _path: /events
+    code: (Number)
+    ticketingUrl: (text) # suunamine kursusele
+    dateTime: (Datetime)
+    durationTotal: (number)
+    location: *Location
+    extraInfo: *Translated
+    bookingUrl: (text)
+    course: (backreference) #*Course
 
 Course: &Course
     _path: /courses
@@ -1119,17 +1131,6 @@ FrontPageCourses: &FrontPageCourses
         - *Course
     courses_ru: #(Component (repeatable))
         - *Course
-
-Event: &Event
-    _path: /events
-    code: (Number)
-    ticketingUrl: (text) # suunamine kursusele
-    dateTime: (Datetime)
-    durationTotal: (number)
-    location: *Location
-    extraInfo: *Translated
-    bookingUrl: (text)
-    course: (backreference) #*Course
 
 #Industry
 FilmInFilmography: &FilmInFilmography
@@ -1567,8 +1568,8 @@ SupSecFilmikool: &SupSecFilmikool
     supporter: #(Component (repeatable))
         - *SupFilmikool
 
-FilmikoolSupporter: &FilmikoolSupporter
-    _path: /filmikooli-supporters
+FilmikooliSupporter: &FilmikoolSupporter
+    _path: /filmikool-supporters
     # namePrivate: (text, private)
     domain: *Domain
     title: *Translated
@@ -1605,8 +1606,7 @@ POFFiFooter: &POFFiFooter
     _path: /pof-fi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1616,8 +1616,7 @@ JustFilmFooter: &JustFilmFooter
     _path: /just-film-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1627,8 +1626,7 @@ ShortsiFooter: &ShortsiFooter
     _path: /shortsi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1638,8 +1636,7 @@ IndustryFooter: &IndustryFooter
     _path: /industry-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1649,8 +1646,7 @@ KinoffiFooter: &KinoffiFooter
     _path: /kinoffi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1660,8 +1656,7 @@ HOFFiFooter: &HOFFiFooter
     _path: /hof-fi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1671,8 +1666,7 @@ TartuffiFooter: &TartuffiFooter
     _path: /tartuffi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1682,8 +1676,7 @@ KumuFooter: &KumuFooter
     _path: /kumu-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1693,8 +1686,7 @@ BrunoFooter: &BrunoFooter
     _path: /bruno-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1704,8 +1696,7 @@ FilmikooliFooter: &FilmikooliFooter
     _path: /filmikooli-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))

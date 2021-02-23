@@ -17,7 +17,8 @@ const mapping = {
     'shorts.poff.ee': 'shorts.poff.ee',
     'hoff.ee': 'hoff.ee',
     'kumu.poff.ee': 'kumu.poff.ee',
-    'tartuff.ee': 'tartuff.ee'
+    'tartuff.ee': 'tartuff.ee',
+    'oyafond.ee': 'oyafond.ee'
 }
 
 const STRAPIDATA_SIXFILMS = STRAPIDATA
