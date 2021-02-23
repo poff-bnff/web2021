@@ -20,7 +20,9 @@ const mapping = {
     'shorts.poff.ee': 'shorts',
     'hoff.ee': 'hoff',
     'kumu.poff.ee': 'kumu',
-    'tartuff.ee': 'tartuff'
+    'tartuff.ee': 'tartuff',
+    'filmikool.poff.ee': 'filmikool',
+    'oyafond.ee': 'bruno'
 }
 
 for (const ix in languages) {
