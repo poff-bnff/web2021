@@ -19,7 +19,7 @@
     },
     "socialGroup": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "social.social-group"
     },
     "item": {
