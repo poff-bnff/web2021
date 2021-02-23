@@ -33,6 +33,10 @@ for (const ix in languages) {
             var templateDomainName = 'kumu';
         } else if (DOMAIN === 'tartuff.ee') {
             var templateDomainName = 'tartuff';
+        } else if (DOMAIN === 'filmikool.poff.ee') {
+            var templateDomainName = 'filmikool';
+        } else if (DOMAIN === 'oyafond.ee') {
+            var templateDomainName = 'bruno';
         } else {
             var templateDomainName = 'poff';
         }
