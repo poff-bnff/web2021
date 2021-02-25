@@ -153,7 +153,8 @@ FestivalEdition: &FestivalEdition
     description_ru: (Rich text)
     startDate: (Datetime)
     endDate: (Datetime)
-    domain: *Domain #(Component)
+    domains: #(Component (repeatable))
+        - *Domain
     festival: *Festival #(Component)
     slug_et: (UID)
     slug_en: (UID)
@@ -713,7 +714,7 @@ JustFilmiMenu: &JustFilmiMenu
 
 ShortsiSubMenuItem: &ShortsiSubMenuItem
     name: *Translated #(Component)
-    shortsi_article: *JustFilmiArticle
+    shortsi_article: *ShortsiArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
@@ -1874,7 +1875,7 @@ Triopoff: &Triopoff
     name: (text)
     lead: (text)
 
-TrioPOFF:
+TrioPoff:
     _path: /trio-p-oe-ff
     trioPoff_et: *Triopoff #(Component)
     trioPoff_en: *Triopoff #(Component)
@@ -1967,18 +1968,18 @@ TrioItemHoff: &TrioItemHoff
     customUrl: (text)
     image: *StrapiMedia #(Component)
 
-TrioHoff: &TrioHoff
+Triohoff: &Triohoff
     name: (text)
     lead: (text)
     trioItem_1: *TrioItemHoff #(Component)
     trioItem_2: *TrioItemHoff #(Component)
     trioItem_3: *TrioItemHoff #(Component)
 
-TrioHOFF: &TrioHOFF
+TrioHoff:
     _path: /trio-hoff
-    trioHoff_et: *TrioHoff #(Component)
-    trioHoff_en: *TrioHoff #(Component)
-    trioHoff_ru: *TrioHoff #(Component)
+    trioHoff_et: *Triohoff #(Component)
+    trioHoff_en: *Triohoff #(Component)
+    trioHoff_ru: *Triohoff #(Component)
 
 TrioItemTartuff: &TrioItemTartuff
     tartuffi_article: *TartuffiArticle #(Component)

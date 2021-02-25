@@ -49,12 +49,10 @@ ssg/eventival/dynamic/*
 ssg/entu-ssg.yaml
 ssg/vialog/vialog.json
 
-ssg/strapidata/*
+ssg/source/strapidata/*
 ssg/*.icloud
 ssg/eventival/static/.films.yaml.icloud
 ssg/eventival/static/.films.yaml.icloud
-
-
 
 
 ############################

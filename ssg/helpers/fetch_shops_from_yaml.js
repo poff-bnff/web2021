@@ -10,10 +10,12 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'products');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_SHOPS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Shop'];
-const STRAPIDATA_PROD_CATEGORIES = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['ProductCategory'];
-const STRAPIDATA_PROD_PASSES = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['ProductPass'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+
+const strapiDataShopPath = path.join(strapiDataDirPath, 'Shop.yaml');
+const STRAPIDATA_SHOPS = yaml.safeLoad(fs.readFileSync(strapiDataShopPath, 'utf8'))
+const strapiDataProdCategoryPath = path.join(strapiDataDirPath, 'ProductCategory.yaml');
+const STRAPIDATA_PROD_CATEGORIES = yaml.safeLoad(fs.readFileSync(strapiDataProdCategoryPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const mapping = DOMAIN_SPECIFICS.domain
@@ -80,5 +82,4 @@ for (const lang of allLanguages) {
     const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `shops.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-    // console.log(allData);
 }

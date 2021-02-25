@@ -2,23 +2,63 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_IND_PROJECT = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryProject'];
-
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
+const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const STRAPIDATA_PERSONS = STRAPIDATA['Person']
-const STRAPIDATA_COMPANIES = STRAPIDATA['Organisation']
+const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
+const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
+const STRAPIDATA_COMPANIES = yaml.safeLoad(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
+
+    const minimodel = {
+        'countries': {
+            model_name: 'Country'
+        },
+        'languages': {
+            model_name: 'Language'
+        },
+        'project_types': {
+            model_name: 'ProjectType'
+        },
+        'project_statuses': {
+            model_name: 'ProjectStatus'
+        },
+        'broadcasters': {
+            model_name: 'Organisation'
+        },
+        'country_focus': {
+            model_name: 'Country'
+        },
+        'teamCredentials': {
+            model_name: 'TeamCredentials'
+        },
+        'attached_partners': {
+            model_name: 'Organisation'
+        },
+        'contactCompany': {
+            model_name: 'Organisation'
+        },
+        'images': {
+            model_name: 'StrapiMedia'
+        },
+        'tag_genres': {
+            model_name: 'TagGenre'
+        },
+    }
+
+    const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
@@ -70,7 +110,6 @@ if (DOMAIN === 'industry.poff.ee') {
                     }
                 }
             }
-
 
             const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
@@ -155,8 +194,6 @@ if (DOMAIN === 'industry.poff.ee') {
             // andmepuhastus
 
             delete industry_project.teamCredentials
-
-
         }
 
         const yamlPath = path.join(fetchDir, `industryprojects.${lang}.yaml`);
@@ -164,9 +201,6 @@ if (DOMAIN === 'industry.poff.ee') {
             allData = allData.sort((a, b) => a.title.localeCompare(b.title, lang))
             const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
             fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-
-
-
 
             let filters = {
                 types: {},
