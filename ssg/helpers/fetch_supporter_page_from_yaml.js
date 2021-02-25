@@ -30,7 +30,9 @@ const mapping2 = {
     'shorts.poff.ee': 'SupSecShorts',
     'hoff.ee': 'SupSecHoff',
     'kumu.poff.ee': 'SupSecKumu',
-    'tartuff.ee': 'SupSecTartuff'
+    'tartuff.ee': 'SupSecTartuff',
+    'filmikool.poff.ee': 'SupSecFilmikool',
+    'oyafond.ee': 'SupSecBruno'
 }
 
 const mapping3 = {
@@ -41,7 +43,9 @@ const mapping3 = {
     'shorts.poff.ee': 'SupShorts',
     'hoff.ee': 'SupHoff',
     'kumu.poff.ee': 'SupKumu',
-    'tartuff.ee': 'SupTartuff'
+    'tartuff.ee': 'SupTartuff',
+    'filmikool.poff.ee': 'SupFilmikool',
+    'oyafond.ee': 'SupBruno'
 }
 
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)

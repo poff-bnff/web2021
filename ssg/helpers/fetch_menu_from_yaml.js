@@ -29,7 +29,11 @@ const artMapping = {
     'kinoff.poff.ee': 'kinoffi_article',
     'industry.poff.ee': 'industry_article',
     'shorts.poff.ee': 'shortsi_article',
-    'hoff.ee': 'hoffi_article'
+    'hoff.ee': 'hoffi_article',
+    'kumu.poff.ee': 'kumu_article',
+    'tartuff.ee': 'tartuffi_article',
+    'filmikool.poff.ee': 'filmikooli_article',
+    'oyafond.ee': 'bruno_article'
 }
 const artMapping2 = {
     'poff.ee': 'POFFiArticle',
@@ -37,7 +41,11 @@ const artMapping2 = {
     'kinoff.poff.ee': 'KinoffiArticle',
     'industry.poff.ee': 'IndustryArticle',
     'shorts.poff.ee': 'ShortsiArticle',
-    'hoff.ee': 'HOFFiArticle'
+    'hoff.ee': 'HOFFiArticle',
+    'kumu.poff.ee': 'KumuArticle',
+    'tartuff.ee': 'TartuffiArticle',
+    'filmikool.poff.ee': 'FilmikooliArticle',
+    'oyafond.ee': 'BrunoArticle'
 }
 const minimodel = {
     [`${artMapping[DOMAIN]}`]: {

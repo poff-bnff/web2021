@@ -5,36 +5,23 @@ const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['FrontPageCourses']
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
+const STRAPIDATA_FRONTPAGECOURSE = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
-
-const mapping = {
-    'poff.ee': 'poff.ee',
-    'justfilm.ee': 'justfilm.ee',
-    'kinoff.poff.ee': 'kinoff.poff.ee',
-    'industry.poff.ee': 'industry.poff.ee',
-    'shorts.poff.ee': 'shorts.poff.ee',
-    'hoff.ee': 'hoff.ee',
-    'kumu.poff.ee': 'kumu.poff.ee',
-    'tartuff.ee': 'tartuff.ee',
-    'oyafond.ee': 'oyafond.ee',
-    'filmikool.poff.ee': 'filmikool.poff.ee'
-}
-
-const STRAPIDATA_FRONTPAGECOURSE = STRAPIDATA
 
 const languages = ['en', 'et', 'ru']
 
 var failing = false
 for (const lang of languages) {
     if (STRAPIDATA_FRONTPAGECOURSE.length < 1) {
-        console.log(`ERROR! No data to fetch for ${DOMAIN} front page courses`)
-        const outFile = path.join(fetchDir, `frontpagecourse.${lang}.yaml`)
+        console.log(`ERROR! No data to fetch for ${DOMAIN} frontpagecourse`)
+        const outFile = path.join(fetchDir, `frontpagecourses.${lang}.yaml`)
         fs.writeFileSync(outFile, '[]', 'utf8')
         continue
     }
-    console.log(`Fetching ${DOMAIN} front page course ${lang} data`)
+    console.log(`Fetching ${DOMAIN} frontpagecourse ${lang} data`)
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_FRONTPAGECOURSE[0]))
     if (typeof copyData !== 'undefined') {
@@ -43,23 +30,20 @@ for (const lang of languages) {
             if (key === `courses_${lang}`) {
                 for (courseIx in copyData[key]) {
                     let thisCourse = copyData[key][courseIx]
-                    let coursesYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
-                    let COURSESYAML = yaml.safeLoad(fs.readFileSync(coursesYAMLPath, 'utf8'))
+                    let courseYAMLPath = path.join(fetchDir, `course.${lang}.yaml`)
+                    let COURSESYAML = yaml.safeLoad(fs.readFileSync(courseYAMLPath, 'utf8'))
                     let thisCourseFromYAML = COURSESYAML.filter( (a) => { return thisCourse.id === a.id })[0];
                     if(thisCourseFromYAML !== undefined) {
                         var thisCourseFromYAMLCopy = JSON.parse(JSON.stringify(thisCourseFromYAML));
                     } else {
-                        console.log('ERROR! Cassette ID ', thisCourse.id, ' not associated with domain ', DOMAIN, ', frontpagecourse not built!')
+                        console.log('ERROR! Course ID ', thisCourse.id, ' not associated with domain ', DOMAIN, ', frontpagecourses not built!')
                         failing = true
                         continue
                     }
-                    // if (thisCourseFromYAMLCopy !== undefined && thisCourseFromYAMLCopy.data) {
-                    //     delete thisCourseFromYAMLCopy.data
-                    // }
                     copyData[key][courseIx] = thisCourseFromYAMLCopy
                 }
             // Teistes keeltes kassett kustutatakse
-            } else if (key !== `courses_${lang}` && key.substring(0, 10) === `courses_`) {
+            } else if (key !== `courses_${lang}` && key.substring(0, 8) === `courses_`) {
                 delete copyData[key]
             }
 
@@ -71,6 +55,6 @@ for (const lang of languages) {
     } else {
         var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
     }
-    const outFile = path.join(fetchDir, `frontpagecourse.${lang}.yaml`)
+    const outFile = path.join(fetchDir, `frontpagecourses.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }
