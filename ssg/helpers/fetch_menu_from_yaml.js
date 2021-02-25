@@ -2,11 +2,10 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
@@ -21,7 +20,31 @@ const mapping = {
     'filmikool.poff.ee': 'FilmikooliMenu',
     'oyafond.ee': 'BrunoMenu'
 }
-const STRAPIDATA_MENU = STRAPIDATA[mapping[DOMAIN]]
+const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
+const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))
+
+const artMapping = {
+    'poff.ee': 'poffi_article',
+    'justfilm.ee': 'just_filmi_article',
+    'kinoff.poff.ee': 'kinoffi_article',
+    'industry.poff.ee': 'industry_article',
+    'shorts.poff.ee': 'shortsi_article',
+    'hoff.ee': 'hoffi_article'
+}
+const artMapping2 = {
+    'poff.ee': 'POFFiArticle',
+    'justfilm.ee': 'JustFilmiArticle',
+    'kinoff.poff.ee': 'KinoffiArticle',
+    'industry.poff.ee': 'IndustryArticle',
+    'shorts.poff.ee': 'ShortsiArticle',
+    'hoff.ee': 'HOFFiArticle'
+}
+const minimodel = {
+    [`${artMapping[DOMAIN]}`]: {
+        model_name: artMapping2[DOMAIN]
+    },
+}
+STRAPIDATA_MENU = fetchModel(STRAPIDATA_MENUS, minimodel)
 
 const languages = ['en', 'et', 'ru']
 for (const lang of languages) {

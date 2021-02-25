@@ -103,12 +103,11 @@ build()
         printf '\n----------             Finished processing styles            ----------\n'
 
         printf "\nBuilding...\n"
+        [ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR/assets" ] && mkdir -p "./build/$BUILDDIR/assets"
 
-        [ -d "build/$BUILDDIR" ] && rm -r "build/$BUILDDIR/*"
-        [ ! -d "build/$BUILDDIR" ] && mkdir -p "build/$BUILDDIR"
-        [ ! -d "build/$BUILDDIR/assets" ] && mkdir -p "build/$BUILDDIR/assets"
-
-        cp -R assets/* "build/$BUILDDIR/assets"
+        cp -R assets/* "./build/$BUILDDIR/assets"
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi
@@ -116,7 +115,7 @@ build()
     duration=$SECONDS
     minutes=$((duration/60))
     seconds=$((duration%60))
-    printf "\n\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
+    printf "\n\n$site_name\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
 
     ask_what_to_build
 
