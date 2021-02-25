@@ -14,7 +14,7 @@ const trio_mapping = {
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHOFF',
+    'hoff.ee': 'TrioHoff',
     'kumu.poff.ee': 'TrioKumu',
     'tartuff.ee': 'TrioTartuff',
     'filmikool.poff.ee': 'TrioFilmikool',
