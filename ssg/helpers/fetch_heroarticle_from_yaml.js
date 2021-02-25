@@ -31,7 +31,11 @@ const article_mapping = {
     'kinoff.poff.ee': 'KinoffiArticle',
     'industry.poff.ee': 'IndustryArticle',
     'shorts.poff.ee': 'ShortsiArticle',
-    'hoff.ee': "HOFFiArticle"
+    'hoff.ee': "HOFFiArticle",
+    'kumu.poff.ee': "KumuArticle",
+    'tartuff.ee': "TartuffiArticle",
+    'filmikool.poff.ee': "FilmikooliArticle",
+    'oyafond.ee': "BrunoArticle"
 }
 const minimodel = {
     'article_et': {
