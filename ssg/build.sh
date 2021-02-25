@@ -92,6 +92,16 @@ node ./helpers/fetch_industry_event_from_yaml.js
 echo 'fetch_eventival_persons_from_yaml.js'
 node ./helpers/fetch_eventival_persons_from_yaml.js
 
+if [ $DOMAIN = 'filmikool.poff.ee' ]
+then 
+	echo 'fetch_course_from_yaml.js'
+	node ./helpers/fetch_course_from_yaml.js
+
+	echo 'fetch_frontpagecourse_block_from_yaml.js'
+	node ./helpers/fetch_frontpagecourse_block_from_yaml.js
+fi
+
+
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
 printf '\n----------         Downloading all img from Strapi         ----------\n\n'
