@@ -27,8 +27,8 @@ const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
-
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const whichScreeningTypesToFetch = []
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 
 // Kassettide limiit mida buildida
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
@@ -36,8 +36,12 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 // true = check if programme is for this domain / false = check if festival edition is for this domain
 const CHECKPROGRAMMES = false
 
-// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES
-const whichScreeningTypesToFetch = ['first screening', 'regular', 'online kino']
+// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES, HOFF.ee erand
+if (DOMAIN !== 'hoff.ee')  {
+    whichScreeningTypesToFetch.push('first screening')
+    whichScreeningTypesToFetch.push('regular')
+    whichScreeningTypesToFetch.push('online kino')
+}
 
 const mapping = DOMAIN_SPECIFICS.domain
 
@@ -256,7 +260,8 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-        var hasOneCorrectScreening = false
+        var hasOneCorrectScreening = DOMAIN === 'hoff.ee' ? true : false
+
         if (limit !== 0 && counting === limit) break
         counting++
 
@@ -591,7 +596,7 @@ function generateAllDataYAML(allData, lang){
     }
     const cassette_search = allData.map(cassette => {
         let programmes = []
-        if (typeof cassette.tags.programmes !== 'undefined') {
+        if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
@@ -637,29 +642,33 @@ function generateAllDataYAML(allData, lang){
         let subtitles = []
         let towns = []
         let cinemas = []
-        for (const screenings of cassette.screenings) {
-            for (const subtitle of screenings.subtitles || []) {
-                const subtKey = subtitle.code
-                const subtitle_name = subtitle.name
-                subtitles.push(subtKey)
-                filters.subtitles[subtKey] = subtitle_name
+        if (cassette.screenings) {
+            for (const screenings of cassette.screenings) {
+                for (const subtitle of screenings.subtitles || []) {
+                    const subtKey = subtitle.code
+                    const subtitle_name = subtitle.name
+                    subtitles.push(subtKey)
+                    filters.subtitles[subtKey] = subtitle_name
+                }
+
+                const townKey = `_${screenings.location.hall.cinema.town.id}`
+                const town_name = screenings.location.hall.cinema.town.name
+                towns.push(townKey)
+                filters.towns[townKey] = town_name
+
+                const cinemaKey = `_${screenings.location.hall.cinema.id}`
+                const cinema_name = screenings.location.hall.cinema.name
+                cinemas.push(cinemaKey)
+                filters.cinemas[cinemaKey] = cinema_name
             }
-
-            const townKey = `_${screenings.location.hall.cinema.town.id}`
-            const town_name = screenings.location.hall.cinema.town.name
-            towns.push(townKey)
-            filters.towns[townKey] = town_name
-
-            const cinemaKey = `_${screenings.location.hall.cinema.id}`
-            const cinema_name = screenings.location.hall.cinema.name
-            cinemas.push(cinemaKey)
-            filters.cinemas[cinemaKey] = cinema_name
         }
         let premieretypes = []
-        for (const types of cassette.tags.premiere_types || []) {
-                const type_name = types
-                premieretypes.push(type_name)
-                filters.premieretypes[type_name] = type_name
+        if (cassette.tags) {
+            for (const types of cassette.tags.premiere_types || []) {
+                    const type_name = types
+                    premieretypes.push(type_name)
+                    filters.premieretypes[type_name] = type_name
+            }
         }
         return {
             id: cassette.id,
