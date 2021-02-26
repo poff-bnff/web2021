@@ -17,8 +17,17 @@ const {
 const fs = require('fs');
 const yaml = require('yaml');
 const path = require('path');
+
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('hof-fi-article').update({id: result.id}, result)
+}
+
  module.exports = {
      lifecycles: {
+        async afterCreate(result, data) {
+          await call_update(result)
+        },
         beforeUpdate(params, data) {
         },
         afterUpdate(result, params, data) {

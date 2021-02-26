@@ -44,9 +44,16 @@ function get_domain_name(result) {
   return domain_to_build
 }
 
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('film').update({id: result.id}, result)
+}
 
 module.exports = {
   lifecycles: {
+    async afterCreate(result, data) {
+      await call_update(result)
+    },
     beforeUpdate(params, data) {
       const prefixes= {
         2213: '0_'
