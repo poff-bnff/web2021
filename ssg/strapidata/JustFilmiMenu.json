@@ -1,0 +1,469 @@
+[
+  {
+    "id": 7,
+    "just_filmi_article": null,
+    "order": 10,
+    "created_at": "2020-10-14T16:58:10.761Z",
+    "updated_at": "2020-10-20T07:18:16.661Z",
+    "name": {
+      "id": 4083,
+      "et": "Ohutus",
+      "en": "Safety instructions and tips",
+      "ru": "Безопасность"
+    },
+    "customUrl": null,
+    "subMenuItem": [
+      {
+        "id": 8,
+        "just_filmi_article": {
+          "id": 16,
+          "created_by": 14,
+          "updated_by": 14,
+          "created_at": "2020-10-14T16:57:03.662Z",
+          "updated_at": "2020-11-18T15:59:27.343Z",
+          "title_et": "Turvajuhised ja nõuanded",
+          "slug_et": "turvajuhised-ja-nouanded",
+          "title_en": "Safety instructions and tips",
+          "slug_en": "safety-instructions-and-tips",
+          "title_ru": "Инструкции и советы по безопасности",
+          "slug_ru": "instrukczii-i-sovety-po-bezopasnosti",
+          "lead_et": "**Turvajuhised ja nõuanded PÖFFi külastajatele**\n\nPÖFF 24 tuleb koroonaviiruse tõttu teistsugune kui varasemad – esimest korda saab filme vaadata nii kinodes kui ka veebis. Teeme koostööd meditsiiniettevõtetega SYNLAB ja Medicum ning perearstikeskusega Sinu Arst, samuti konsulteerime Terviseametiga, et tagada kinokülastajatele turvaline keskkond ning vältida koroonaviiruse levikut festivaliga seotud üritustel.\n\nHoolime oma külastajatest väga ja soovime, et festivalielamus oleks kõigile võimalikult meeldiv, mugav ja turvaline. PÖFF kestab kaks ja pool nädalat ning selleks, et jõuaksime koos teiega eduka lõpuni, oleme koostanud allolevad juhised ja reeglid:\n\n- Tungivalt soovitame osta piletid PÖFFi või Piletilevi kodulehelt. Kodust pileti ostmine on lihtne, mugav ja turvaline.\n- Kogu festivaliinfo on leitav PÖFFi kodulehelt. Kui jääd hätta, siis kirjuta info@poff.ee. Aitame Sind hea meelega.\n- PÖFFi infopunkti palume festivali ajal külastada äärmisel vajadusel. Meie kõigi huvides on see, et piletikassadesse ei tekiks järjekordi. Järgime 2+2 reeglit. \n- Festivali üritustel ja -alal on maskide kandmine rangelt soovituslik. Seansile võib tulla oma maskiga. Kui Sul maski ei ole, saad selle festivalialale sisenedes meie vabatahtlikult tasuta. \n- Kui Sa ostad pileti siiski PÖFFi kassast, ole valmis selleks, et pilet isikustatakse. Selleks küsitakse Sinu andmeid. Oma istekohti saalis muuta ei tohi. \n- Enne saali sisenemist võidakse valikuliselt mõõta külastajate kehatemperatuuri. Juhul, kui tunned ennast halvasti, palume Sul koju jääda ja vaadata meie filme veebis.\n- Festivalikinodes on desinfitseerimisvahendid, mida palume kõigil kasutada.\n- Seansside vaheajal puhastame ja desinfitseerime kõiki kinosaale.\n- Pärast seansi lõppu palume külastajaid saalist lahkuda ridade kaupa, et uste juurde ei tekiks troppe.\n\n\nMis saab Sinu piletist, kui seanss või festival peaks COVID-19 viiruse tõttu ära jääma?\n- Loodame, et oled nõus vahetama ärajäänud seansi pileti sama filmi järgmise seansi pileti vastu. Kui soovitud filmi enam kinos ei ole, pakume võimalust vahetada pilet mõne muu filmi pileti vastu või vaadata sama filmi veebi vahendusel, kus näeb enamikku festivali filmidest.\n- Soovijatel on võimalik ka ärajäänud seansi pileti eest makstud raha PÖFFi toetuseks annetada. Piletitulu on meile üks olulisemaid sissetulekuallikaid – eriti tänavu, kui koroonaviirus on teinud filmitööstuse ja kultuuriürituste elu väga keeruliseks. Annetamise puhul palume teavitada festivali aadressil kassa@poff.ee. \n- Kui ükski nendest lahendustest ei sobi, ostame Sinu pileti tagasi. \n\n\nAnname üheskoos endast parima, et 24. PÖFF oleks sama äge ja turvaline elamus, nagu on olnud varasematel aastatel!",
+          "lead_en": null,
+          "lead_ru": null,
+          "contents_et": null,
+          "contents_en": null,
+          "contents_ru": "В связи с пандемией коронавируса 24-й кинофестиваль PÖFF будет заметно отличаться от предыдущих. Впервые первый показ фильма можно будет посмотреть не только в кинотеатре, но и в веб-сети. Организаторы кинофестиваля тесно сотрудничают с медицинскими центрами SYNLAB и Medicum, с центром семейных врачей Sinu Arst (твой врач), а также консультируются с департаментом здоровья, чтобы гарантировать кинозрителям безопасную среду и избежать заражения коронавирусом на мероприятиях кинофестиваля.\n\nОрганизаторы кинофестиваля заботяться о своих гостях и желают, чтобы всем было приятно, удобно и надежно.\n\nКинофестиваль PÖFF продлится две с половиной недели, и чтобы он был успешно завершен, его организаторы составили нижеследующие руководства и правила:\n\nНастоятельная просьба покупать билеты на сайтах PÖFF или Piletilevi, это просто, удобно и безопасно.\nВся информация, касающаяся кинофестиваля, выложена на сайте PÖFF. При возникновении вопросов, обращайтесь по адресу электронной почты kassa@poff.ee. Вам всегда будут рады помочь.\nИнфопункт PÖFF советуем посещать только в случае крайней необходимости. В наших общих интересах не создавать очередей. Следуем правилу 2+2.\nНастоятельная просьба носить маски на мероприятиях и на территории кинофестиваля. На киносеанс можно придти в своей маске. Маску можно также получить бесплатно, обратившись к волонтеру.\nЕсли вы все же купите билет в кассе PÖFF, будьте готовы, что ваш билет персонализируют, спросив ваши данные, в кинозале вы займете указанное на билете место.\nПеред входом в кинозал у гостей выборочно измеряют температуру. В случае недомогания лучше остаться дома и посмотеть фильм в веб-сети.\nНа сеанс не допускают больных, близконтактных, обязанных самоизолироваться на 14 дней.\nНа входе в кинозалы имеются дезинфицирующие средства, просим пользоваться ими.\nВ перерыве между киносеансами производится уборка и дезинфицирование кинозалов (каждые 2–4 часа).\nДо и после киносеанса персонал кинотеатра или волонтеры напомнят кинозрителям о необходимости соблюдать меры предосторожности, чтобы не заразиться коронавирусом и следовать правилу 2+2.\nПосле окончания сеанса кинозрители должны выходить из кинозала порядно, чтобы избежать толкучки на выходе.\n",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": null,
+          "publish_ru": true
+        },
+        "order": 1,
+        "namePrivate": "turvajuhised",
+        "name": {
+          "id": 4085,
+          "et": "Turvajuhised ja nõuanded",
+          "en": "Safety Instructions",
+          "ru": "Инструкции и советы по безопасности"
+        },
+        "customUrl": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "just_filmi_article": null,
+    "order": 5,
+    "created_at": "2020-09-22T08:50:14.279Z",
+    "updated_at": "2020-11-03T11:18:38.190Z",
+    "name": {
+      "id": 3916,
+      "et": "Piletid",
+      "en": "Tickets",
+      "ru": "Билеты"
+    },
+    "customUrl": null,
+    "subMenuItem": [
+      {
+        "id": 3,
+        "just_filmi_article": {
+          "id": 4,
+          "created_by": 14,
+          "updated_by": 14,
+          "created_at": "2020-09-21T11:04:37.863Z",
+          "updated_at": "2020-10-15T06:04:38.729Z",
+          "title_et": "Just Filmi piletiinfo",
+          "slug_et": "just-filmi-piletiinfo",
+          "title_en": "Ticket information",
+          "slug_en": "ticket-information",
+          "title_ru": "Информация о билетах",
+          "slug_ru": "just-filmi-article-3",
+          "lead_et": "",
+          "lead_en": "Just Film 2020 ticket information",
+          "lead_ru": null,
+          "contents_et": "#### Piletiinfo\nPÖFFi info- ja müügipunktid leiad nii Tallinnast kui Tartust. Pöffihundid leti taga on lahked ja abivalmid Sind piletiostul aitama, kui filmivalik esimese hooga silme eest kirjuks võtab. Küsi julgelt!\n\nJust Filmi festivali pileteid on võimalik soetada alates **15. oktoobrist**!\n\n**6. novembrist** on piletid müügil ka PÖFFi info- ja müügipunktides Tallinnas Solaris Keskuses ja Coca-Cola Plazas. Müügipunktide lahtiolekuajad leiad [**siit**](https://poff.ee/artikkel/info-ja-muugipunktid/)!\n\nPilet 6 €\n\nOnline linastuse pilet 6 €\n\nSooduspilet 4.50 € (*)\n\nJust Filmi pass 40 € (**)\n\n(*) *Sooduspiletid kehtivad eelkooliealistele lastele, õpilastele ja tudengitele.*\n\n (**) *Pass sisaldab 10 piletit Just Filmi seanssidele. Piletite arv ühele seansile ei ole piiratud.*\n\n\n**Just Filmi Passi** ostmiseks võta meiega ühendust [justfilm@poff.ee](mailto:justfilm@poff.ee).\n",
+          "contents_en": "From the **15th of October** tickets can be purchased on Just Film website, all Piletilevi ticket counters across Estonia and from www.piletilevi.ee.\n\nFrom the **6th of November **PÖFF tickets are sold at PÖFF Info and Ticket Centres at Solaris Centre and Coca-Cola Plaza. Opening times of the Info and Sales Centers can be found [**here**](https://poff.ee/en/about/info-and-sales-centers/).\n\nTicket price 6 € / Online screening entry 6 €\n\nDiscount ticket 4,5 € *\n\nJust Film badge 40 € **\n\n\n\n (*) Discount Tickets are valid for pre-school children, pupils and students when a respective identity document is presented upon entry to the venue.\n\n (**) Just Film badge consist of 10 tickets. Tickets per screening is not limited. Entering the cinema with badge is necessary.\n\nJust Film badge can be bought by contacting us via [e-mail](justfilm@poff.ee).",
+          "contents_ru": "Инфо и центры продаж\n\n[**Информационные центры и пункты**](https://poff.ee/ru/artikl/info-i-czentry-prodazh/) продажи билетов находятся в Таллинне и Тарту. Там киноволки добрые и готовы помочь с выбором билетов, если сходу самим не определиться с предпочтениями. Смело обращайтесь! Кроме того, в центрах можно приобрести каталоги PÖFF, которые станут хорошей альтернативой для прокручивания интернет-страниц. \n\nБилеты на фестиваль можно приобрести на веб-сайте Just Film, во всех точках Piletilevi по всей Эстонии и в Интернете по адресу www.piletilevi.ee. С 6 ноября билеты будут продаваться в информационных и билетных центрах PÖFF в Солярис Центре и Coca-Cola Plaza.\n\n\n\nБилет 6 €\n\nСкидочный билет 4,50 € *\n\n\n (*) Дисконтные билеты распространяются на детей дошкольного возраста и студентов.",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": true,
+          "publish_ru": true
+        },
+        "order": 1,
+        "namePrivate": "Piletiinfo",
+        "name": {
+          "id": 3917,
+          "et": "Piletiinfo",
+          "en": "Ticketing information",
+          "ru": "Инфо по билетам"
+        },
+        "customUrl": null
+      },
+      {
+        "id": 4,
+        "just_filmi_article": {
+          "id": 11,
+          "created_by": 14,
+          "updated_by": 18,
+          "created_at": "2020-09-23T07:40:14.058Z",
+          "updated_at": "2020-11-16T08:54:54.006Z",
+          "title_et": "Ekskursioonid Just Filmile",
+          "slug_et": "ekskursioonid-just-filmile",
+          "title_en": null,
+          "slug_en": "just-filmi-article-4",
+          "title_ru": "Экскурсии",
+          "slug_ru": "ekskursii",
+          "lead_et": null,
+          "lead_en": null,
+          "lead_ru": null,
+          "contents_et": "Just Filmile saavad tulla kõik, olenemata sellest, kus Eestimaa osas nad ka ei asu.\nJust Filmi meeskond pakub koolidele võimalust tulla festivalile ekskursiooni raames. Just Filmi meeskond võtab enda peale nii transpordi broneerimise kui ka filmisoovituste jagamise.\n\nSiin on 4 imelihtsat sammu, kuidas organiseerida omale bussiekskursioon Just Filmile:\n\nSAMM 1\nVõta ühendust meie meeskonnaga. Sind aitab Heleen Sutt (heleen.sutt@poff.ee, 5205592). Esimesena paneme paika, mis päeval ja mis kell võiksite tulla Just Filmi raames kinno ning teeme teile hinnapakkumise.\n\nSAMM 2\nKui aeg ja film on välja valitud, siis broneerime teile bussi ja kohad kinosaalis. Õpetajatele on ekskursioonil osalemine tasuta.\n\nSAMM 3\nKes soovib Tallinnas ekskursioonil viibida kauem, siis ka selline võimalus on olemas. Selleks tuleb ekskursiooni tellijal tasuda bussi lisaootetundide eest.\n\nSAMM 4\nEksursioonipäeva hommikul on buss kokkulepitud ajal kooli ees, sõidutab teid mugavalt kinno ja soovi korral ka muuseumisse. Pärast filmi lõppu viib buss kõik õpilased ja õpetajad kooli juurde tagasi.\n\n\n##### Filmimuuseumi pakkumine Just Filmi ekskursioonilistele\n\nProgramm \"Filmi sisse minek\" Just Filmi erihinnaga **4.50 õpilane**.\n\nFilmimuuseum pakub lastele võimalust kiigata filmitöö telgitagustesse. Kes on režissöör? Kuidas tehakse grimmi? Mis tunne on olla kaamera ees? Ja palju muud põnevat... Illusioonide ruumis saab ise oma käega proovida, kuidas saadi pildid liikuma kaamerate-eelsel ajastul. Programm kestab ca 1,5 tundi ja sobib kõikidele kooliastmetele.\n\nBroneerimine [tellimus@ajaloomuuseum.ee](tellimus@ajaloomuuseum.ee)\nLisainfo ja tellimuste haldur Tatjana Runge 5255976.\n\n![haridusprogrammid.jpg](http://139.59.130.149/uploads/haridusprogrammid_31d6169479.jpg)\n\n\n\nLisainfo ekskursioonide kohta:\n\nHeleen Sutt\nheleen.sutt@poff.ee\n520 5592",
+          "contents_en": null,
+          "contents_ru": "Каждый может посетить фестиваль Just Film, независимо от того, в какой части Эстонии он живет. Команда Just Film предлагает школам возможность приехать на фестиваль в рамках экскурсий. Команда берет на себя бронирование транспорта, а также поможет с выбором фильмов.\n\nВот 4 простых шага для организации автобусной экскурсии на Just Film:\n\nШАГ 1\nСвяжитесь с нашей командой. Вам будет помогать Heleen Sutt (heleen.sutt@poff.ee, 5205592). Для начала мы с вами определим подходящий день и время для приезда на кинофестиваль и составим для вас ценовое предложение.\n\nШАГ 2\nКак только время и фильм будут выбраны, мы закажем автобус и забронируем места в кинозале. Участие в экскурсии для учителей бесплатное.\n\nШАГ 3\nЕсли вы хотите остаться в Таллинне подольше, то такая возможность есть. В таком случае заказчику экскурсии будет необходимо оплатить дополнительные часы ожидания автобуса.\n\nШАГ 4\nУтром, в день экскурсии автобус прибудет к школе в оговоренное время, и вас удобно доставят в кинотеатр и, если хотите, в музей. После фильма автобус доставить всех учеников и учителей обратно в школу.\n\n##### Предложение Музея кино для участинков экскурсий Just Film\n\nПрограмма \"Побывай в кино\" (\"Filmi sisse minek\") по специальной цене для Just Film **4.50 евро/ученик**.\n\nМузей кино предлагает детям возможность заглянуть за кадр фильма. Кто такой режиссер? Как накладывается гримм? Каково оказаться перед объективом камеры? И много другого захватывающего... В комнате иллюзий можно самостоятельно попробовать и создать движущиеся картинки так, как это делали до появления видеокамер. Продолжительность программы 1,5 часа, и она подходит для всех школьных ступеней.\n\nБронирование [tellimus@ajaloomuuseum.ee](tellimus@ajaloomuuseum.ee)\nДополнительная информация и администратор заказов Татьяна Рунге 525 5976.\n\n![haridusprogrammid.jpg](http://139.59.130.149/uploads/haridusprogrammid_31d6169479.jpg)\n\n\nДополнительная информация:\nHeleen Sutt\nheleen.sutt@poff.ee\n520 5592",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": null,
+          "publish_ru": true
+        },
+        "order": 1,
+        "namePrivate": "Ekskursioonid",
+        "name": {
+          "id": 3970,
+          "et": "Ekskursioonid",
+          "en": "",
+          "ru": "Экскурсии"
+        },
+        "customUrl": null
+      },
+      {
+        "id": 5,
+        "just_filmi_article": {
+          "id": 12,
+          "created_by": 14,
+          "updated_by": 18,
+          "created_at": "2020-10-02T07:56:58.543Z",
+          "updated_at": "2020-10-16T17:00:07.858Z",
+          "title_et": "Piletite broneerimine",
+          "slug_et": "piletite-broneerimine",
+          "title_en": "Book Tickets",
+          "slug_en": "book-tickets",
+          "title_ru": "Бронирование билетов",
+          "slug_ru": "zabronirujte-bilet",
+          "lead_et": null,
+          "lead_en": null,
+          "lead_ru": null,
+          "contents_et": "Kooligruppidel on võimalik pileteid ette broneerida. Selleks leiate lingi soovitud filmi linastusaja juurest.\nBroneerimiseks on minimaalne väljaostetavate piletite arv 5. Väiksema arvu piletite soetamiseks saab kasutada Piletilevi keskkonda või pöörduda PÖFFi piletimüügikassadesse, mis asuvad Solarise Keskuses ning Coca-Cola Plazas.\n\nVeebikeskkonnas tehtud broneeringu kohta tuleb teie meiliaadressile ka koopiakiri ning 1 tööpäeva jooksul lõplik kinnitus broneeringu õnnestumisest Just Filmi meeskonna poolt.\n\nLisainfo: [justfilm@poff.ee](mailto:justfilm@poff.ee)\n\n",
+          "contents_en": "Through the booking system that can be found on film pages you can book tickets for your schoolgroup to Just Film screenings.\nMinimum amount of tickets that can be booked is 5. To book less than 5 tickets, please use Piletilevi webpage or visit PÖFF ticket sales offices at Solaris Centre, Coca-Cola Plaza and Tartu Kaubamaja.\n\nUsing the web based booking system you will receive a copy to your e-mail as well as a final confirmation of a successful booking from the Just Film team within 1 working day.\n\nMore info: (justfilm@poff.ee)\n\n",
+          "contents_ru": "У школьных групп есть возможность бронировать билеты на киносеансы. Это можно сделать по ссылке, которая находится рядом с указанным временем показа. \n\nМинимальный размер группы составляет 5 человек. Меньшее количество билетов можно приобрести в Piletilevi или пунктах продажи билетов PÖFF в торговом центре Solaris, в Coca-Cola Plaza и торговом центре Kvartal в Тарту.\n\nПо итогам бронирования билетов для школьных групп на ваш адрес электронной почты придет копия письма и в течение одного рабочего дня – окончательное подтверждение со стороны команды Just Film. \n\nДополнительная информация: (justfilm@poff.ee)\n\n",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": true,
+          "publish_ru": true
+        },
+        "order": 3,
+        "namePrivate": "Broneerimine",
+        "name": {
+          "id": 3971,
+          "et": "Piletite broneerimine",
+          "en": "Book Tickets",
+          "ru": "Бронирование билетов"
+        },
+        "customUrl": null
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "just_filmi_article": null,
+    "order": 1,
+    "created_at": "2020-09-22T08:26:39.670Z",
+    "updated_at": "2020-10-14T17:05:36.052Z",
+    "name": {
+      "id": 3910,
+      "et": "Hundufeed",
+      "en": "News",
+      "ru": "Новости"
+    },
+    "customUrl": {
+      "id": 3911,
+      "et": "uudised",
+      "en": "news",
+      "ru": "novosti"
+    },
+    "subMenuItem": []
+  },
+  {
+    "id": 2,
+    "just_filmi_article": null,
+    "order": 9,
+    "created_at": "2020-09-22T08:27:31.851Z",
+    "updated_at": "2020-11-16T08:41:55.281Z",
+    "name": {
+      "id": 3912,
+      "et": "Festivalist",
+      "en": "Festival",
+      "ru": "Фестиваль"
+    },
+    "customUrl": null,
+    "subMenuItem": [
+      {
+        "id": 1,
+        "just_filmi_article": {
+          "id": 8,
+          "created_by": 14,
+          "updated_by": 18,
+          "created_at": "2020-09-21T11:20:30.220Z",
+          "updated_at": "2020-10-17T09:25:27.777Z",
+          "title_et": "Festival",
+          "slug_et": "festivalist",
+          "title_en": "Festival overview",
+          "slug_en": "festival-overview",
+          "title_ru": null,
+          "slug_ru": "just-filmi-article-5",
+          "lead_et": "Ajalugu ja põnevad faktid",
+          "lead_en": "",
+          "lead_ru": null,
+          "contents_et": "Just Film on Pimedate Ööde Filmifestivali (PÖFF) laste- ja noortefilmide alafestival, mis koosneb lastefilmide ja noortefilmide võistlusprogrammist ning eriprogrammidest. Just Film toimub igal aastal novembrikuus sarnaselt PÖFFi põhiprogrammiga. Näitamisele tulevad filmid, mida ka kõige suurem filmisõber igapäevaselt naljalt näha ei saa. Mõni neist ajab nutma, mõni naerma, mõni muudab elu. Midagi suupärast leiab igas vanuses kinokülaline. Festivalil linastub igal aastal umbes 50 filmi ning oma publikuarvu juures on Just Filmist tänaseks saanud Eesti üks suuremaid laste- ja noorteüritusi, mida igal aastal külastab kokku ligi 18 000 filmihuvilist.\n\nJust Film loodi, et anda lastele ja noortele võimalus läbi filmikunsti näha, mis toimub nende ümber ja mujal maailmas, rääkida teemadest, mis on ühiskonna valupunktideks ning arendada oskust olla mõistvam ja empaatiavõimelisem. Eesmärk on seeläbi kasvatada uue põlvkonna publikut, kes hindab kõrgelt kvaliteetfilme ning näeb võimalust filmikunsti abil ühiskonda ja inimesi muuta.\nJust Film annab ka oma panuse haridusse pakkudes õpetajatele võimalust kaasata väärtfilme õppetöösse.\nMe hindame kõrgelt väärtusi nagu mitmekesisus, teineteisega arvestamine ja võrdsus. Just Filmi meeskond töötab selle nimel, et näidata lastele ja noortele, mida kõike võib üks indiviid saavutada – seda, et igaüks on oluline ja võimeline suurteks tegudeks hoolimata sellest, milline on tema taust või staatus.\nKõigil soovijatel on võimalik koostada ka oma personaalne kava linastuvatest filmidest. Selleks, et teha oma kava, tuleb registreerida end Just Filmi kodulehel kasutajaks.\n\nAjalugu\n\n-  1996. aastal loodud Pimedate Ööde Filmifestivalist on tänaseks saanud Eesti ja Baltikumi üks olulisemaid kultuurisündmusi. Samamoodi on kasvanud Baltikumi suurimaks laste– ja noortefilmide festivaliks PÖFFi pesamuna Just Film.\n-  2001. aastal loodud Just Film on tänaseks kasvanud võrdväärseks festivaliks teiste omasarnaste seas. Tol aastal kutsus Tallinna Pimedate Ööde filmifestival kokku neli entusiastlikku ja tubli noort, kes hakkasid üheskoos tegema Just Filmi.\n\nTollane noor festivalijuht Elen Lotman vedas festivali järgmised kaheksa aastat. Iga aastaga kasvas Just Filmi programm ning publikut tuli juurde ja mitte ainult Tallinnast.\n\nKinod\n\nJust Filmi sünnikodu oli Nukuteater, kus näidati nii laste- kui ka noortefilme. Kino Sõprus oli tänavakultuuri eriprogrammi päralt. Seitse aastat hiljem olid aga pisikesed ja armsad kinod jäänud Just Filmi jaoks liiga väikeseks ning festival oli sunnitud kolima kinno Kosmos, kuhu Just Film jäi saatuse tahtel vaid üheks aastaks, sest peagi avati Tallinnas Solaris Keskus ja Cinamoni kino (tänaseks nimega Solaris Kino). Pärast edukat esimest aastat Solaris Kinos, laienes Just Film ka Tallinna teise suurkinno Coca-Cola Plaza. Need kaks on jäänud tänaseni Just Filmi kodukinodeks ning saanud festivali külastajatele armsaks.\n\nFilmid\n\nTänaseks päevaks on Just Film toonud Eestisse kokku 436 täispikka filmi väga paljudelt kuulsatelt filmitegijatelt, nagu näiteks Gus van Sant, Vanessa Jopp, Tony Key. Lisaks kuulsatele režissööridele on festivali avamisele ja lõpetamisele jõudnud maailma suurimad ja populaarseimad laste- ja noortefilmid. Nii on seigeldud koos Harry Potteriga ning kaasa elatud libahuntide ja vampiiride sõdadele Videviku saagades. Suured ja väikesed filmihuvilised on saanud näha uus-versioone ka filmidest “Kalapoeg Nemo” ja “Lõvikuningas”.\n\nProgrammid\n\nJust Filmil on alati olnud kaks põhilist programmi: lastefilmide programm ja noortefilmide programm. Lisaks neile kahele on festivalil linastunud ka palju eriprogramme, neist vanim on tänavakultuuri eriprogramm. Lisandunud on ka Vitamiiniprogramm ja 2011. aastal ilmavalgust näinud laste ja noorte õiguste eriprogramm.\n\nArhiiv\n\nJust Filmi varasemad filmid leiad [siit](https://arhiiv.justfilm.ee)\n\nJust film festivali võidufilmid läbi aegade\n\n \n2019 - Festivali Grand Prix: \"METSA BOYZ\" (Suurbritannia, 2019)\nECFA žürii peaauhind: \"BINTI\" (Belgia, 2019)\nParim noortefilm: \"KRISTUSE IHU\" (Poola, 2019)\nParim lastefilme: \"AJARÄNDAJA CLEO\" (Saksamaa, 2019)\nRahvusvahelise žürii eripreemia: \"ANTIGONE\" (Kanada, 2019)\nECFA žürii eripreemia: \"MINU VEND JAHIB DINOSAURUSEID\" (Itaalia, 2019)\nNoortežürii eripreemia: \"ANTIGONE\" (Kanada, 2019)\nLastežürii eripreemia: \"LAEVAKE\" (Mehhiko, 2019)\n\n\n2018 – Festivali Grand Prix:  LOODAN, ET JÄRGMISEL KORRAL SURED 🙂 (Ungari, 2018)\nECFA žürii peaauhind: LOS BANDO (Norra, 2018)\nParim noortefilm: VÄIKESED HIIGLASED (Kanada, 2018)\nParim lastefilm: LOS BANDO (Norra, 2018)\nRahvusvahelise žürii eripreemia: VANGIS MICHAEL (Suurbritannia, 2017)\nECFA žürii eripreemia: EIA JÕULUD TONDIKAKUL (Eesti, 2018)\nNoortežürii eripreemia: KOOLIGA ON KÕIK (Prantsusmaa, 2018)\n\n2017 – Festivali Grand Prix: VÄIKE SADAM (Slovakkia, Tšehhi 2017)\nECFA žürii peaauhind: TAEVALAOTUSES (Rootsi 2016)\nParim noortefilm: VÄIKE SADAM (Slovakkia, Tšehhi 2017)\nParim lastefilm: PUNANE KOER: TÕELINE SÕBER (Austraalia 2017)\nRahvusvahelise žürii eripreemia: NÄGUS SAATAN (Iirimaa 2016)\nNoortežürii eripreemia: FREAK SHOW (USA 2017)\n\n2016 – Festivali Grand Prix: ESIMENE KATSUMUS (Belgia 2016)\nParim noortefilm: LIHTSAMEELNE (Suurbritannia 2016)\nParim lastefilm: KOOD M (Holland 2016)\nNoortežürii eripreemia: UINUV KAUNITAR (Austraalia 2015)\n\n2015 – Festivali Grand Prix: 14+ (Venemaa 2015)\nParim noortefilm: KURJUSE KANGELASED (Hispaania 2015)\nParim lastefilm: SA OLED KA KOLE (Iirimaa 2015)\nLapse õiguste programmi parim film: MASK, MILLE TAHA SA PEITUD (USA 2015)\nNoortežürii eripreemia: KÄI PÕRGU, JUMAL! (USA 2014)\nLastežürii eripreemia: OPERATSIOON ARKTIKA (Norra 2014)\n\n2014 – Parim noortefilm: X+Y (Inglismaa 2014) R: Morgan Matthewaa\nParim lastefilm: RABARBER (Holland 2014) R: Mark de Cloe\n\n2013 – Parim noortefilm: LÜHIAJALINE 12 (USA, 2013) R: Destin Daniel Cretton\nParim lastefilm: MIKE JÄTAB HÜVASTI (Holland, 2012) R: Maria Peters\n\n2012 – Parim noortefilm: NÄKSIBAAR (Saksamaa, 2012) R: Meral Uslu\nParim lastefilm: VÄIKE LIBAHUNT ALFIE (Holland, 2011) R: Joram Lürsen\n\n2011 – Parim noortefilm: BONO TAPMINE (Suurbritannia, 2010) R: Nick Hamm\nParim lastefilm: PUNANE KOER (Austraalia, 2011) R: Kriv Stenders\n\n2010 – Parim noortefilm: HOIA MINUST KINNI (Taani, 2010) R: Gustavo Ron\nParim lastefilm: KUIDAS ELADA IGAVESTI (Suurbritannia, 2010) R: Kaspar Munk\n\n2009 – Parim noortefilm : VEGAS (Norra, 2009) R: Gunnar Vikene\nParim lastefilm: VIKERKAARE VARJUD (Iirimaa, Kanda, 2009) R: Vic Sarin\n\n2008 – Parim noortefilm: MEES, KES ARMASTAS YNGVET (Norra, 2008) R: Stian Krisiansen\nParim lastefilm: MAX MINSKY JA MINA (Saksamaa, 2007) R: Anna Justice\n\n2007 – Parim noortefilm: SEE ON INGLISMAA (Suurbritannia, 2006) R: Shane Meadows\nParim lastefilm: ARKTIKALUGU (USA, 2007) R: Adam Ravetch, Sarah Robertson\n\n2006 – Parim noortefilm: PILV (Saksamaa, 2006) R: Gregor Schnitzler\nParim lastefilm: ME SAAME SELLEST ÜLE (Taani 2006) R: Niels Arden Oplev\n\n2005 – Parim noortefilm: POPMUUSIKA A LA VITTULA (Rootsi, Soome, 2004) R: Reza Bagher\nParim lastefilm: PIIMA VÄRV (Norra, 2004) R:Torun Liani\n\n2004 – Parim noortefilm: ELEVANT (USA, 2003) R: Gus van Sant\nParim lastefilm: ORANŽIS (Holland, 2004) R: Joram Lürsen\n\n2003 – Parim noortefilm: KURJUS (Rootsi, 2003), R: Mikael Håfström\nParim lastefilm: LENDAV KLASSIRUUM (Saksamaa, 2003) R: Tomy Wigand\n\n2002 – Parim noortefilm: ÜHEOTSAPILET MOMBASASSE (Soome, 2002) R: Hannu Tuomainen\nParim lastefilm: MINU ÕE LAPSED (Taani, 2002) R: Tomas Villum Jensen\n\n2001 – parim laste- ja noortefilm: ENGEL JA JOE (Saksamaa, 2001) R: Vanessa Jopp",
+          "contents_en": "Youth and Children’s Film Festival Just Film is the biggest sub-festival of Tallinn Black Nights Film Festivals. It is held during the main programme – from the 13th until the 29th of November 2020. This year Just Film is celebrating its 20th jubilee.\n\nJust Film was founded to give children and youth the possibility to see through film what happens around them and around the world. The aim is to show kids the critical points of society and to make them more understanding and empathic.\n\nJust Film wants to be part of creating a society where people appreciate quality movies and see that together we really can change the world. Just Film contributes to education by offering teachers the opportunity to use quality films in their school programmes. We value diversity, respect and equality highly.\n\nJust Film's team works to show children and young people what an individual can achieve - everyone is important and capable of doing great, regardless of their background or social status.\n\nThe programme consists of ~55 feature-length films that fall into different programmes – youth film programme, children’s film programme, lifestyle and sport documentaries (Doc@Just), science documentaries (Science360) and the children’s rights programme. The latter celebrating its 10 year anniversary in 2020. In 2020 Just Film is also presenting a short-film category – shorts for youth and shorts for kids.\n\nOur main focus group is 13-25 year olds and we work very closely with schools and teachers in Estonia.\n\nJust Film presents films in the following programmes:\n\nInternational Competition programme for youth feature films\n\nInternational Competition programme for children’s feature films\n\nNon-competitive and / or informative programmes, retrospectives and special presentations\n\nFilms eligible for the programmes are feature-length (50 minutes and over) either fiction or documentary and, for the first time in Just Film history, we are looking for films in the short or half-length films (up to 45 minutes). All films must be produced after the 1st of January 2019 with a minimum requirement being their Estonian premiere.\n\nContact:\n\nFestival Director – Mikk Granström\n\nmikk@poff.ee\n\nProgramme Coordinator – Maarit Männama\n\nmaarit.mannama@poff.ee\n\n\n",
+          "contents_ru": "Фестиваль десткого и юношеского кино Just Film — это субфестиваль «Тёмных ночей» (PÖFF), который проводится ежегодно в ноябре. Just Film включает в себя конкурсную программу и специальные программы для детей и молодежи. На фестивале показывают фильмы, которые даже самый заядлый киноман так просто не посмотрит. Некоторые из них заставляют плакать, другие смеяться, некоторые меняют жизнь. Для гостей всех возрастов найдется что-то по душе. Каждый год демонстрируется около 50 фильмов, и Just Film стал одним из крупнейших детских и молодежных мероприятий в Эстонии, аудитория которого составляет почти 18 000 человек в год.\n\nИстория\n\nКинофестиваль «Тёмные ночи», основанный в 1996 году, стал одним из важнейших культурных событий в Эстонии и странах Балтии. Точно так же Just Film, проводимый под эгидой PÖFF, стал крупнейшим фестивалем детских и юношеских фильмов в странах Балтии. \n\nОснованный в 2001 году Just Film на сегодняшний день уже достиг масштабов других аналогичных фестивалей. В тот год Таллиннский кинофестиваль «Тёмные ночи» собрал четырех увлеченных и полных энтузиазма молодых людей, которые взялись за организацию фестиваля. Молодой директор фестиваля Элен Лотман проводила это событие в течение следующих восьми лет. С каждым годом программа Just Film росла, и аудитория росла и зрители стали приезжать не только из Таллинна.\n\nКинотеатры\n\nМестом рождения Just Film стал театр кукол, где демонстрировались детские и юношеские фильмы. Кинотеатр Sõprus был частью специальной программы по уличной культуре. Однако спустя семь лет маленькие ламповые кинотеатры стали тесными для Just Film, и фестиваль был вынужден переехать в кинотеатр, где Just Film остановился всего на один год по судьбе в качестве Центра Solaris и Cinnamon Cinema (теперь Solaris Cinema). После успешного первого года в кинотеатре «Солярис» Just Film стал вторым крупным фильмом Таллинна — «Кока-Кола Плаза». Эти двое остались до сих пор домашние кинотеатры стали дорогими посетителям фестиваля.\n\nФильмы\n\nНа сегодняшний день Just Film привез в Эстонию 436 полнометражных фильмов от ряда известных режиссеров, таких как Гус ван Сант, Ванесса Джопп, Тони Ки. Помимо известных режиссеров, на открытии и закрытии фестиваля были представлены самые большие и популярные в мире детские и молодежные фильмы. Вот как Гарри Поттер участвовал и вел войны с оборотнями и вампирами в Сумеречной Саге. Большие и маленькие любители кино также видели новые версии фильмов «Рыба Немо» и «Король Лев».\n\nПрограммы\n\nВ Just Film всегда было две основные программы: детская программа и молодежная. В дополнение к этим двум, на фестивале показывают много специальных программ, самая старая из которых — специальная программа уличной культуры. Витаминная программа и специальная программа по правам ребенка и молодежи, которые были в центре внимания в 2011 году, также добавлены.\n\nАрхив\n\nВесь список фильмов, которые ранее показывали на Just Film можно посмотреть [здесь](https://arhiiv.justfilm.ee)",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": true,
+          "publish_ru": true
+        },
+        "order": 1,
+        "namePrivate": "JF tutvustus",
+        "name": {
+          "id": 3913,
+          "et": "Festivali tutvustus",
+          "en": "About the Festival",
+          "ru": "О фестивале"
+        },
+        "customUrl": null
+      },
+      {
+        "id": 2,
+        "just_filmi_article": null,
+        "order": 3,
+        "namePrivate": "Meeskond",
+        "name": {
+          "id": 3914,
+          "et": "Meeskond",
+          "en": "Team",
+          "ru": "Команда"
+        },
+        "customUrl": {
+          "id": 3915,
+          "et": "just-filmi-meeskond",
+          "en": "just-film-team",
+          "ru": "komanda-just-film"
+        }
+      },
+      {
+        "id": 6,
+        "just_filmi_article": null,
+        "order": 2,
+        "namePrivate": "Toetajad",
+        "name": {
+          "id": 3972,
+          "et": "Toetajad",
+          "en": "Supporters",
+          "ru": "Спонсоры"
+        },
+        "customUrl": {
+          "id": 3973,
+          "et": "toetajad",
+          "en": "supporters",
+          "ru": "supportersru"
+        }
+      },
+      {
+        "id": 7,
+        "just_filmi_article": {
+          "id": 14,
+          "created_by": 14,
+          "updated_by": 14,
+          "created_at": "2020-10-12T13:56:43.379Z",
+          "updated_at": "2020-10-12T13:56:43.504Z",
+          "title_et": "JF Regulatsioonid",
+          "slug_et": "jf-regulatsioonid",
+          "title_en": null,
+          "slug_en": "just-filmi-article-5",
+          "title_ru": null,
+          "slug_ru": "just-filmi-article-1",
+          "lead_et": null,
+          "lead_en": null,
+          "lead_ru": null,
+          "contents_et": "PÖFF – BLACK NIGHTS FILM FESTIVAL SUBFESTIVAL \nJust Film \nYouth and Children’s Film Festival \n13.11.–29.11.2020\n \n**Just Film presents films in the following programmes:**\nInternational Competition programme of youth feature films \nInternational Competition programme of children’s feature films \nNon-competitive and / or informative programmes, retrospectives and special presentations\nFilms eligible for the programmes are feature-length (50 minutes and over) either fiction or documentary and short or half-length films (up to 45 minutes), produced after the 1st of January 2019 with a minimum requirement being their Estonian premiere. The festival reserves the right to evaluate eligible films for competition on a case by case basis. \nThe applicable screening copies are in DCP format in English or include English subtitles. Films in the competitions may be presented in the PÖFF main programme non-competitive section and touring screenings after Just Film.\n\n**Awards & Prizes**\n•\tJust Film Grand Prix, International Youth Competition\n•\tJust Film Youth Jury Best Film Award\n•\tJust Film Youth Jury Best Youth Short Award\n•\tJust Film Children’s Jury Best Film Award\n•\tJust Film Children’s Jury Best Animated Short Award\n•\tECFA Award\n•\tUp to two Special Mentions per Competitive Programme\n\n**Juries**\nThe Festival Director will appoint the Domestic Children’s Jury and Youth Jury, both consisting of five members. Also an international jury consisting of three film specialists and ECFA (European Children’s Film Association) jury consisting of three ECFA members will be invited. No jury member can be involved in the production or promotion of any of the films in the competitive programs.\nFilm submission entry procedures\nApplicants for Competitive and Non-Competitive Programmes are requested to submit as a subcategory of Black Nights Film Festival through FilmFreeway or any other submitting platform indicated by the festival team.\nhttps://filmfreeway.com/just\nEntry applications submitted by post, e-mail or any other form except the online submission form are not considered eligible for selection. \nThe regular submission deadline for competitive and non-competitive feature film programmes is 1st of July 2020. The festival asks a submission fee of €49 Euros or $55 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €9 Euros per film during regular deadline.\nDiscount code: use our Summer Sale code \"SUMMER25\" to recieve 25% of the entry fee. Discount is valid until the 1st of July.\nThe extended submission deadline for competitive and non-competitive feature film programmes is 17th of August 2020. The festival asks a submission fee of €65 Euros or $75 USD per film during extended deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €12 Euros per film during extended deadline.\nThe final submission deadline for competitive and non-competitive feature film programmes is 24th of August 2020. The festival asks a submission fee of €75 Euros or $85 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €20 Euros per film during final submission deadline.\nThe Festival reserves the right to select films received at any time and through any means, or process and to refuse late submissions.\nBy submitting a film to the festival the applicant agrees by the submissions deadline to:\n•\tFill and submit the entry form via the festival’s online submission form.\n•\tProvide a screening link and password via the online submission form or e-mail\n•\tAcknowledge that “selected” status on the online submission or an any kind of automated letter from the submission platform form does not guarantee confirmation of the submitted film to the festival as the festival needs to consider multiple criteria, such as the screening fee, print/copy fees, availability issues in Estonian territory and other factors.\n•\tDeliver additional materials (biography and filmography of Director, stills of the film, synopsis of the film, trailer and poster art-work (if already available) by the means specified by the festival.\nConfirmation of films and reimbursement\nUpon selection of the film, the Festival will inform the applicant no later than 1st of October 2020.\nThe applicant agrees that confirmed titles may not be withdrawn from the festival programme after its participation has been officially confirmed and the producer or producer’s authorised representative has verified the confirmation of the film to the programme.\nIf, for exceptional reasons, the film has to be withdrawn three weeks or less before the opening of the festival, the applicant agrees to reimburse all costs to the festival related to the confirmation and programming of the film including screening fee (when applicable), print delivery and handling costs as well as associated travel costs for the film delegation.\nThe invoices for the film rights or print loans should be issued and delivered for payments no later than two months after the end of the festival. The festival does not accept or reimburse invoices issued after that date.\nUpon confirmation of the film to the Just Film festival’s competitive or non-competitive sections the applicant agrees to:\n•\tProvide a trailer of the film either on DVD or online via a non-expiring link.\n•\tDeliver materials for localisation (subtitle files with time-codes and/or dialogue lists in the original film language and in English, spotting list and a screener of the finalised version of the).\n•\tGrant permission to include the screener in the festivals video library, reserved for jury and accredited industry members only (restricted access). The film representative will be requested to upload the screener into the secure video library environment.\nMaterials have to be delivered digitally to maarit.mannama[a]poff.ee. The festival does not accept deliveries on hard disk drives, memory sticks or any other physical format, as well as via file sharing programs or services such as Dropbox, Google Drive, Box etc.\nTechnical requirements and guidelines for film formats\nThe accepted screening format for all films in competition and non-competition sections is DCP. Provided DCPs must be DCI compliant (www.dcimovies.com) and adhere to all applicable conditions below.\nDCPs must be provided and shipped on industry standard and protected hard drives or delivered digitally with previous confirmation from the festival technical department. Consumer grade hard drives and memory sticks are not permitted.\nAll films selected for the festival must be provided with English subtitles, unless they are already in English. A selection will be translated into Estonian. If the transfer of translated subtitles onto the DCP is not agreed with the representative of the film, the translations will be shown electronically.\nAll screening copies for all sections, if provided with any subtitles, must have the subtitles on the active picture area and not in the letterbox area. Dubbed language copies are also refused.\nThe festival reserves the right to demand new DCP packages free of charge in case of non-compatible DCPs, files are on broken hard drives or other quality standards are not met. These include wrongly placed or missing subtitles, or wrong soundtracks.\nUnencrypted DCPs are strongly preferred. In case of encrypted DCPs, the festival requires one test KDM per film free of charge for quality assurance and technical testing for our test-screen or DKDM for laboratory testing. The quality assurance purpose KDM or DKDM is requested to be valid from the date the DCP arrives at the festival till 2 days after the festival.\nThe producer or film representative is requested to provide appropriate screening KDMs valid from 3 days before the start of the festival and 2 days after the festival, but in minimum at least 72 hours prior to screenings, and 48 hours after the screening. The cost of generating all KDMs will also be the responsibility of the producers or representatives of the film.\nIf the festival is provided with broken or wrongly assigned KDMs, appropriate new KDMs must be provided free of charge by the film submitter or representative. Quality assurance purpose DKDM does not exempt from providing screening KDMs if not agreed upon otherwise.\nThe festival supports 2K and 4K content. However, not all screens have a 4K projecting capability. The festival therefore cannot guarantee that all 4K films will be screened in a 4K resolution.\nThe festival reserves the right to refuse and withdraw the screening of the film from the competition or any other section if all requirements are not followed.\nDetailed technical guidelines will be available linked for download along with the festival regulations on the festival website from 1st of June 2020 and also provided along with confirmation entry form.\nOur festival’s technical team, dcinema@poff.ee, will happily help with any queries for all confirmed films.\nDelivery of materials\nAll costs related to the shipping of the screener copy (DVD) and publicity materials are paid by the submitter or film representative. Submitted preview copies may be returned to the submitter or forwarded only at the submitters expense.\nAll packages must be clearly marked with the title of the film, the sender’s / submitters name, return address and telephone number as well as the festival address:\n\nBlack Nights Film Festival\nAttn: Just Film\nTelliskivi 60a/2, 3rd floor\n10412\nTallinn, Estonia\nPhone: +372 56 208 308\n\nCosts related to the shipping of the screening copies to the festival are paid by the festival, unless otherwise agreed upon. Return shipping costs are the responsibility of the submitter or film representative, or party appointed by them.\nThe festival will return or forward the screening copies within 14 days from the end of the festival unless instructed otherwise by the submitter or film representative. Returns before the Festival closing date must be agreed at least three weeks before the festival, and cannot be guaranteed after that.\nThe festival covers all expenses connected to the storage and insurance of the screening copies during the duration of the festival.\nIn the event of damage to a copy during the event, the Festival limits its responsibility to the cost of having a new standard copy made at current laboratory rates.\nFilm Delegations\nFor competitive programmes the Festival will invite one representative per film. The festival will cover the round trip airfare for one delegate, with a preference given to the Director and/or a Main Cast member, as well as accommodation for up to 1 guest in the Delegation at the Official Partner Hotel.\nFor non-competitive films, the Festival reserves the right to invite guests upon the decision of the Programming committee. Detailed terms and conditions for film delegates are provided on a non-disclosed one to one and guest agreement basis.\nFor non-competitive films, the Festival guest accreditation list will be closed one (1) day before the opening of the festival. After the deadline a fee of €25 will be requested for festival accreditation from the non-competitive film delegates. \n\nContact\nFestival director – Mikk Granström, (mikk@poff.ee)\nProgramme coordinator – Maarit Männama, (maarit.mannama@poff.ee)\nSubmit your film to the Youth and Children's film festival Just Film!\n \n \n \n\n",
+          "contents_en": "PÖFF – BLACK NIGHTS FILM FESTIVAL SUBFESTIVAL \nJust Film \nYouth and Children’s Film Festival \n13.11.–29.11.2020\n \n**Just Film presents films in the following programmes:**\nInternational Competition programme of youth feature films \nInternational Competition programme of children’s feature films \nNon-competitive and / or informative programmes, retrospectives and special presentations\nFilms eligible for the programmes are feature-length (50 minutes and over) either fiction or documentary and short or half-length films (up to 45 minutes), produced after the 1st of January 2019 with a minimum requirement being their Estonian premiere. The festival reserves the right to evaluate eligible films for competition on a case by case basis. \nThe applicable screening copies are in DCP format in English or include English subtitles. Films in the competitions may be presented in the PÖFF main programme non-competitive section and touring screenings after Just Film.\n\n**Awards & Prizes**\n•\tJust Film Grand Prix, International Youth Competition\n•\tJust Film Youth Jury Best Film Award\n•\tJust Film Youth Jury Best Youth Short Award\n•\tJust Film Children’s Jury Best Film Award\n•\tJust Film Children’s Jury Best Animated Short Award\n•\tECFA Award\n•\tUp to two Special Mentions per Competitive Programme\n\n**Juries**\nThe Festival Director will appoint the Domestic Children’s Jury and Youth Jury, both consisting of five members. Also an international jury consisting of three film specialists and ECFA (European Children’s Film Association) jury consisting of three ECFA members will be invited. No jury member can be involved in the production or promotion of any of the films in the competitive programs.\nFilm submission entry procedures\nApplicants for Competitive and Non-Competitive Programmes are requested to submit as a subcategory of Black Nights Film Festival through FilmFreeway or any other submitting platform indicated by the festival team.\nhttps://filmfreeway.com/just\nEntry applications submitted by post, e-mail or any other form except the online submission form are not considered eligible for selection. \nThe regular submission deadline for competitive and non-competitive feature film programmes is 1st of July 2020. The festival asks a submission fee of €49 Euros or $55 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €9 Euros per film during regular deadline.\nDiscount code: use our Summer Sale code \"SUMMER25\" to recieve 25% of the entry fee. Discount is valid until the 1st of July.\nThe extended submission deadline for competitive and non-competitive feature film programmes is 17th of August 2020. The festival asks a submission fee of €65 Euros or $75 USD per film during extended deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €12 Euros per film during extended deadline.\nThe final submission deadline for competitive and non-competitive feature film programmes is 24th of August 2020. The festival asks a submission fee of €75 Euros or $85 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €20 Euros per film during final submission deadline.\nThe Festival reserves the right to select films received at any time and through any means, or process and to refuse late submissions.\nBy submitting a film to the festival the applicant agrees by the submissions deadline to:\n•\tFill and submit the entry form via the festival’s online submission form.\n•\tProvide a screening link and password via the online submission form or e-mail\n•\tAcknowledge that “selected” status on the online submission or an any kind of automated letter from the submission platform form does not guarantee confirmation of the submitted film to the festival as the festival needs to consider multiple criteria, such as the screening fee, print/copy fees, availability issues in Estonian territory and other factors.\n•\tDeliver additional materials (biography and filmography of Director, stills of the film, synopsis of the film, trailer and poster art-work (if already available) by the means specified by the festival.\nConfirmation of films and reimbursement\nUpon selection of the film, the Festival will inform the applicant no later than 1st of October 2020.\nThe applicant agrees that confirmed titles may not be withdrawn from the festival programme after its participation has been officially confirmed and the producer or producer’s authorised representative has verified the confirmation of the film to the programme.\nIf, for exceptional reasons, the film has to be withdrawn three weeks or less before the opening of the festival, the applicant agrees to reimburse all costs to the festival related to the confirmation and programming of the film including screening fee (when applicable), print delivery and handling costs as well as associated travel costs for the film delegation.\nThe invoices for the film rights or print loans should be issued and delivered for payments no later than two months after the end of the festival. The festival does not accept or reimburse invoices issued after that date.\nUpon confirmation of the film to the Just Film festival’s competitive or non-competitive sections the applicant agrees to:\n•\tProvide a trailer of the film either on DVD or online via a non-expiring link.\n•\tDeliver materials for localisation (subtitle files with time-codes and/or dialogue lists in the original film language and in English, spotting list and a screener of the finalised version of the).\n•\tGrant permission to include the screener in the festivals video library, reserved for jury and accredited industry members only (restricted access). The film representative will be requested to upload the screener into the secure video library environment.\nMaterials have to be delivered digitally to maarit.mannama[a]poff.ee. The festival does not accept deliveries on hard disk drives, memory sticks or any other physical format, as well as via file sharing programs or services such as Dropbox, Google Drive, Box etc.\nTechnical requirements and guidelines for film formats\nThe accepted screening format for all films in competition and non-competition sections is DCP. Provided DCPs must be DCI compliant (www.dcimovies.com) and adhere to all applicable conditions below.\nDCPs must be provided and shipped on industry standard and protected hard drives or delivered digitally with previous confirmation from the festival technical department. Consumer grade hard drives and memory sticks are not permitted.\nAll films selected for the festival must be provided with English subtitles, unless they are already in English. A selection will be translated into Estonian. If the transfer of translated subtitles onto the DCP is not agreed with the representative of the film, the translations will be shown electronically.\nAll screening copies for all sections, if provided with any subtitles, must have the subtitles on the active picture area and not in the letterbox area. Dubbed language copies are also refused.\nThe festival reserves the right to demand new DCP packages free of charge in case of non-compatible DCPs, files are on broken hard drives or other quality standards are not met. These include wrongly placed or missing subtitles, or wrong soundtracks.\nUnencrypted DCPs are strongly preferred. In case of encrypted DCPs, the festival requires one test KDM per film free of charge for quality assurance and technical testing for our test-screen or DKDM for laboratory testing. The quality assurance purpose KDM or DKDM is requested to be valid from the date the DCP arrives at the festival till 2 days after the festival.\nThe producer or film representative is requested to provide appropriate screening KDMs valid from 3 days before the start of the festival and 2 days after the festival, but in minimum at least 72 hours prior to screenings, and 48 hours after the screening. The cost of generating all KDMs will also be the responsibility of the producers or representatives of the film.\nIf the festival is provided with broken or wrongly assigned KDMs, appropriate new KDMs must be provided free of charge by the film submitter or representative. Quality assurance purpose DKDM does not exempt from providing screening KDMs if not agreed upon otherwise.\nThe festival supports 2K and 4K content. However, not all screens have a 4K projecting capability. The festival therefore cannot guarantee that all 4K films will be screened in a 4K resolution.\nThe festival reserves the right to refuse and withdraw the screening of the film from the competition or any other section if all requirements are not followed.\nDetailed technical guidelines will be available linked for download along with the festival regulations on the festival website from 1st of June 2020 and also provided along with confirmation entry form.\nOur festival’s technical team, dcinema@poff.ee, will happily help with any queries for all confirmed films.\nDelivery of materials\nAll costs related to the shipping of the screener copy (DVD) and publicity materials are paid by the submitter or film representative. Submitted preview copies may be returned to the submitter or forwarded only at the submitters expense.\nAll packages must be clearly marked with the title of the film, the sender’s / submitters name, return address and telephone number as well as the festival address:\n\nBlack Nights Film Festival\nAttn: Just Film\nTelliskivi 60a/2, 3rd floor\n10412\nTallinn, Estonia\nPhone: +372 56 208 308\n\nCosts related to the shipping of the screening copies to the festival are paid by the festival, unless otherwise agreed upon. Return shipping costs are the responsibility of the submitter or film representative, or party appointed by them.\nThe festival will return or forward the screening copies within 14 days from the end of the festival unless instructed otherwise by the submitter or film representative. Returns before the Festival closing date must be agreed at least three weeks before the festival, and cannot be guaranteed after that.\nThe festival covers all expenses connected to the storage and insurance of the screening copies during the duration of the festival.\nIn the event of damage to a copy during the event, the Festival limits its responsibility to the cost of having a new standard copy made at current laboratory rates.\nFilm Delegations\nFor competitive programmes the Festival will invite one representative per film. The festival will cover the round trip airfare for one delegate, with a preference given to the Director and/or a Main Cast member, as well as accommodation for up to 1 guest in the Delegation at the Official Partner Hotel.\nFor non-competitive films, the Festival reserves the right to invite guests upon the decision of the Programming committee. Detailed terms and conditions for film delegates are provided on a non-disclosed one to one and guest agreement basis.\nFor non-competitive films, the Festival guest accreditation list will be closed one (1) day before the opening of the festival. After the deadline a fee of €25 will be requested for festival accreditation from the non-competitive film delegates. \n\nContact\nFestival director – Mikk Granström, (mikk@poff.ee)\nProgramme coordinator – Maarit Männama, (maarit.mannama@poff.ee)\nSubmit your film to the Youth and Children's film festival Just Film!\n \n \n \n\n",
+          "contents_ru": "PÖFF – BLACK NIGHTS FILM FESTIVAL SUBFESTIVAL \nJust Film \nYouth and Children’s Film Festival \n13.11.–29.11.2020\n \n**Just Film presents films in the following programmes:**\nInternational Competition programme of youth feature films \nInternational Competition programme of children’s feature films \nNon-competitive and / or informative programmes, retrospectives and special presentations\nFilms eligible for the programmes are feature-length (50 minutes and over) either fiction or documentary and short or half-length films (up to 45 minutes), produced after the 1st of January 2019 with a minimum requirement being their Estonian premiere. The festival reserves the right to evaluate eligible films for competition on a case by case basis. \nThe applicable screening copies are in DCP format in English or include English subtitles. Films in the competitions may be presented in the PÖFF main programme non-competitive section and touring screenings after Just Film.\n\n**Awards & Prizes**\n•\tJust Film Grand Prix, International Youth Competition\n•\tJust Film Youth Jury Best Film Award\n•\tJust Film Youth Jury Best Youth Short Award\n•\tJust Film Children’s Jury Best Film Award\n•\tJust Film Children’s Jury Best Animated Short Award\n•\tECFA Award\n•\tUp to two Special Mentions per Competitive Programme\n\n**Juries**\nThe Festival Director will appoint the Domestic Children’s Jury and Youth Jury, both consisting of five members. Also an international jury consisting of three film specialists and ECFA (European Children’s Film Association) jury consisting of three ECFA members will be invited. No jury member can be involved in the production or promotion of any of the films in the competitive programs.\nFilm submission entry procedures\nApplicants for Competitive and Non-Competitive Programmes are requested to submit as a subcategory of Black Nights Film Festival through FilmFreeway or any other submitting platform indicated by the festival team.\nhttps://filmfreeway.com/just\nEntry applications submitted by post, e-mail or any other form except the online submission form are not considered eligible for selection. \nThe regular submission deadline for competitive and non-competitive feature film programmes is 1st of July 2020. The festival asks a submission fee of €49 Euros or $55 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €9 Euros per film during regular deadline.\nDiscount code: use our Summer Sale code \"SUMMER25\" to recieve 25% of the entry fee. Discount is valid until the 1st of July.\nThe extended submission deadline for competitive and non-competitive feature film programmes is 17th of August 2020. The festival asks a submission fee of €65 Euros or $75 USD per film during extended deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €12 Euros per film during extended deadline.\nThe final submission deadline for competitive and non-competitive feature film programmes is 24th of August 2020. The festival asks a submission fee of €75 Euros or $85 USD per film during the regular deadline. For short or half-length films (up to 45 minutes) the festival asks a submission fee of €20 Euros per film during final submission deadline.\nThe Festival reserves the right to select films received at any time and through any means, or process and to refuse late submissions.\nBy submitting a film to the festival the applicant agrees by the submissions deadline to:\n•\tFill and submit the entry form via the festival’s online submission form.\n•\tProvide a screening link and password via the online submission form or e-mail\n•\tAcknowledge that “selected” status on the online submission or an any kind of automated letter from the submission platform form does not guarantee confirmation of the submitted film to the festival as the festival needs to consider multiple criteria, such as the screening fee, print/copy fees, availability issues in Estonian territory and other factors.\n•\tDeliver additional materials (biography and filmography of Director, stills of the film, synopsis of the film, trailer and poster art-work (if already available) by the means specified by the festival.\nConfirmation of films and reimbursement\nUpon selection of the film, the Festival will inform the applicant no later than 1st of October 2020.\nThe applicant agrees that confirmed titles may not be withdrawn from the festival programme after its participation has been officially confirmed and the producer or producer’s authorised representative has verified the confirmation of the film to the programme.\nIf, for exceptional reasons, the film has to be withdrawn three weeks or less before the opening of the festival, the applicant agrees to reimburse all costs to the festival related to the confirmation and programming of the film including screening fee (when applicable), print delivery and handling costs as well as associated travel costs for the film delegation.\nThe invoices for the film rights or print loans should be issued and delivered for payments no later than two months after the end of the festival. The festival does not accept or reimburse invoices issued after that date.\nUpon confirmation of the film to the Just Film festival’s competitive or non-competitive sections the applicant agrees to:\n•\tProvide a trailer of the film either on DVD or online via a non-expiring link.\n•\tDeliver materials for localisation (subtitle files with time-codes and/or dialogue lists in the original film language and in English, spotting list and a screener of the finalised version of the).\n•\tGrant permission to include the screener in the festivals video library, reserved for jury and accredited industry members only (restricted access). The film representative will be requested to upload the screener into the secure video library environment.\nMaterials have to be delivered digitally to maarit.mannama[a]poff.ee. The festival does not accept deliveries on hard disk drives, memory sticks or any other physical format, as well as via file sharing programs or services such as Dropbox, Google Drive, Box etc.\nTechnical requirements and guidelines for film formats\nThe accepted screening format for all films in competition and non-competition sections is DCP. Provided DCPs must be DCI compliant (www.dcimovies.com) and adhere to all applicable conditions below.\nDCPs must be provided and shipped on industry standard and protected hard drives or delivered digitally with previous confirmation from the festival technical department. Consumer grade hard drives and memory sticks are not permitted.\nAll films selected for the festival must be provided with English subtitles, unless they are already in English. A selection will be translated into Estonian. If the transfer of translated subtitles onto the DCP is not agreed with the representative of the film, the translations will be shown electronically.\nAll screening copies for all sections, if provided with any subtitles, must have the subtitles on the active picture area and not in the letterbox area. Dubbed language copies are also refused.\nThe festival reserves the right to demand new DCP packages free of charge in case of non-compatible DCPs, files are on broken hard drives or other quality standards are not met. These include wrongly placed or missing subtitles, or wrong soundtracks.\nUnencrypted DCPs are strongly preferred. In case of encrypted DCPs, the festival requires one test KDM per film free of charge for quality assurance and technical testing for our test-screen or DKDM for laboratory testing. The quality assurance purpose KDM or DKDM is requested to be valid from the date the DCP arrives at the festival till 2 days after the festival.\nThe producer or film representative is requested to provide appropriate screening KDMs valid from 3 days before the start of the festival and 2 days after the festival, but in minimum at least 72 hours prior to screenings, and 48 hours after the screening. The cost of generating all KDMs will also be the responsibility of the producers or representatives of the film.\nIf the festival is provided with broken or wrongly assigned KDMs, appropriate new KDMs must be provided free of charge by the film submitter or representative. Quality assurance purpose DKDM does not exempt from providing screening KDMs if not agreed upon otherwise.\nThe festival supports 2K and 4K content. However, not all screens have a 4K projecting capability. The festival therefore cannot guarantee that all 4K films will be screened in a 4K resolution.\nThe festival reserves the right to refuse and withdraw the screening of the film from the competition or any other section if all requirements are not followed.\nDetailed technical guidelines will be available linked for download along with the festival regulations on the festival website from 1st of June 2020 and also provided along with confirmation entry form.\nOur festival’s technical team, dcinema@poff.ee, will happily help with any queries for all confirmed films.\nDelivery of materials\nAll costs related to the shipping of the screener copy (DVD) and publicity materials are paid by the submitter or film representative. Submitted preview copies may be returned to the submitter or forwarded only at the submitters expense.\nAll packages must be clearly marked with the title of the film, the sender’s / submitters name, return address and telephone number as well as the festival address:\n\nBlack Nights Film Festival\nAttn: Just Film\nTelliskivi 60a/2, 3rd floor\n10412\nTallinn, Estonia\nPhone: +372 56 208 308\n\nCosts related to the shipping of the screening copies to the festival are paid by the festival, unless otherwise agreed upon. Return shipping costs are the responsibility of the submitter or film representative, or party appointed by them.\nThe festival will return or forward the screening copies within 14 days from the end of the festival unless instructed otherwise by the submitter or film representative. Returns before the Festival closing date must be agreed at least three weeks before the festival, and cannot be guaranteed after that.\nThe festival covers all expenses connected to the storage and insurance of the screening copies during the duration of the festival.\nIn the event of damage to a copy during the event, the Festival limits its responsibility to the cost of having a new standard copy made at current laboratory rates.\nFilm Delegations\nFor competitive programmes the Festival will invite one representative per film. The festival will cover the round trip airfare for one delegate, with a preference given to the Director and/or a Main Cast member, as well as accommodation for up to 1 guest in the Delegation at the Official Partner Hotel.\nFor non-competitive films, the Festival reserves the right to invite guests upon the decision of the Programming committee. Detailed terms and conditions for film delegates are provided on a non-disclosed one to one and guest agreement basis.\nFor non-competitive films, the Festival guest accreditation list will be closed one (1) day before the opening of the festival. After the deadline a fee of €25 will be requested for festival accreditation from the non-competitive film delegates. \n\nContact\nFestival director – Mikk Granström, (mikk@poff.ee)\nProgramme coordinator – Maarit Männama, (maarit.mannama@poff.ee)\nSubmit your film to the Youth and Children's film festival Just Film!\n \n \n \n\n",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": true,
+          "publish_ru": true
+        },
+        "order": 5,
+        "namePrivate": "JF Regulatsioonid",
+        "name": {
+          "id": 6214,
+          "et": "Regulatsioonid",
+          "en": "Regulations",
+          "ru": "Положение"
+        },
+        "customUrl": {
+          "id": 6215,
+          "et": "regulatsioonid",
+          "en": "regulations",
+          "ru": "regulations"
+        }
+      },
+      {
+        "id": 11,
+        "just_filmi_article": null,
+        "order": 4,
+        "namePrivate": "Žyriid",
+        "name": {
+          "id": 26387,
+          "et": "Žüriid",
+          "en": "Juries",
+          "ru": "Жюри"
+        },
+        "customUrl": {
+          "id": 26388,
+          "et": "zhyriid",
+          "en": "juries",
+          "ru": "juriesru"
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "just_filmi_article": null,
+    "order": 2,
+    "created_at": "2020-10-13T23:08:08.320Z",
+    "updated_at": "2020-11-16T08:45:27.183Z",
+    "name": {
+      "id": 4071,
+      "et": "Filmid",
+      "en": "Films",
+      "ru": "Фильмы"
+    },
+    "customUrl": null,
+    "subMenuItem": [
+      {
+        "id": 9,
+        "just_filmi_article": null,
+        "order": 1,
+        "namePrivate": "Kõik filmid",
+        "name": {
+          "id": 7678,
+          "et": "Filmid A - Z",
+          "en": "Films A - Z",
+          "ru": "Фильмы A–Я"
+        },
+        "customUrl": {
+          "id": 7679,
+          "et": "otsi_filmi",
+          "en": "search_film",
+          "ru": "iskat_film"
+        }
+      },
+      {
+        "id": 10,
+        "just_filmi_article": null,
+        "order": 3,
+        "namePrivate": "Programmid",
+        "name": {
+          "id": 7680,
+          "et": "Programmid",
+          "en": "Programmes",
+          "ru": "Программы"
+        },
+        "customUrl": {
+          "id": 7681,
+          "et": "programmid",
+          "en": "programmes",
+          "ru": "programmy"
+        }
+      },
+      {
+        "id": 12,
+        "just_filmi_article": null,
+        "order": 4,
+        "namePrivate": "Filmisoovitused",
+        "name": {
+          "id": 26389,
+          "et": "Saadikute soovitused",
+          "en": "FIlm recommendation",
+          "ru": "Рекомендации"
+        },
+        "customUrl": {
+          "id": 26390,
+          "et": "saadikute-filmisoovitused",
+          "en": "film-recommendations",
+          "ru": "film-recommendatsii"
+        }
+      },
+      {
+        "id": 14,
+        "just_filmi_article": {
+          "id": 19,
+          "created_by": 14,
+          "updated_by": 6,
+          "created_at": "2020-11-04T20:36:16.500Z",
+          "updated_at": "2020-12-21T15:28:11.303Z",
+          "title_et": "JF kataloog PDFina",
+          "slug_et": "jf-kataloog",
+          "title_en": "JF catalogue as PDF",
+          "slug_en": "jf-catalogue-as-pdf",
+          "title_ru": "JF catalogue as PDF",
+          "slug_ru": "jf-catalogue-as-pdf-ru",
+          "lead_et": null,
+          "lead_en": null,
+          "lead_ru": null,
+          "contents_et": "[Kataloog PDFina](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))",
+          "contents_en": "[Catalogue PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf))",
+          "contents_ru": "[Catalogue PDF](https://assets.poff.ee/img/justfilm2020-kataloog-veeb-dets.pdf)",
+          "publishFrom": null,
+          "publishUntil": null,
+          "publish_et": true,
+          "publish_en": true,
+          "publish_ru": true
+        },
+        "order": 7,
+        "namePrivate": "Kataloog",
+        "name": {
+          "id": 27805,
+          "et": "20. Just Filmi kataloog",
+          "en": "Just Film catalogue",
+          "ru": "Каталог Just Film"
+        },
+        "customUrl": null
+      },
+      {
+        "id": 15,
+        "just_filmi_article": null,
+        "order": 2,
+        "namePrivate": "Ajakava",
+        "name": {
+          "id": 28957,
+          "et": "Ajakava",
+          "en": "Ajakava",
+          "ru": "Афиша"
+        },
+        "customUrl": {
+          "id": 29134,
+          "et": "otsi_seanssi",
+          "en": "search_screening",
+          "ru": "iskat_seanss"
+        }
+      }
+    ]
+  }
+]

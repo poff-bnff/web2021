@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "type": "Black Nights Star",
+    "description": null,
+    "created_at": "2020-11-04T09:11:17.255Z",
+    "updated_at": "2020-11-04T09:11:17.266Z"
+  },
+  {
+    "id": 2,
+    "type": "Mentor",
+    "description": null,
+    "created_at": "2020-11-04T09:11:29.943Z",
+    "updated_at": "2020-11-04T09:11:29.947Z"
+  },
+  {
+    "id": 3,
+    "type": "Jury Member",
+    "description": null,
+    "created_at": "2020-11-04T09:11:39.784Z",
+    "updated_at": "2020-11-04T09:11:39.792Z"
+  },
+  {
+    "id": 4,
+    "type": "Moderator",
+    "description": null,
+    "created_at": "2020-11-04T09:12:53.512Z",
+    "updated_at": "2020-11-04T09:12:53.556Z"
+  },
+  {
+    "id": 5,
+    "type": "Italian Mini Co-Production Market Participant",
+    "description": null,
+    "created_at": "2020-11-04T09:13:42.102Z",
+    "updated_at": "2020-11-04T09:13:42.109Z"
+  },
+  {
+    "id": 6,
+    "type": "BFI Producer Delegation",
+    "description": null,
+    "created_at": "2020-11-04T09:13:58.648Z",
+    "updated_at": "2020-11-04T09:13:58.656Z"
+  },
+  {
+    "id": 7,
+    "type": "Russia in Focus 2020",
+    "description": null,
+    "created_at": "2020-11-04T09:37:07.621Z",
+    "updated_at": "2020-11-04T09:37:07.627Z"
+  },
+  {
+    "id": 9,
+    "type": "German Screenwriter",
+    "description": null,
+    "created_at": "2020-11-08T17:03:44.045Z",
+    "updated_at": "2020-11-08T17:03:53.408Z"
+  },
+  {
+    "id": 10,
+    "type": "Music Meets Film",
+    "description": null,
+    "created_at": "2020-11-13T09:37:55.735Z",
+    "updated_at": "2020-11-13T09:37:55.746Z"
+  },
+  {
+    "id": 11,
+    "type": "Speaker",
+    "description": null,
+    "created_at": "2020-11-14T14:07:08.663Z",
+    "updated_at": "2020-11-14T14:07:08.671Z"
+  },
+  {
+    "id": 12,
+    "type": "MIDPOINT Institute",
+    "description": null,
+    "created_at": "2020-11-14T16:13:42.742Z",
+    "updated_at": "2020-11-14T16:13:42.751Z"
+  },
+  {
+    "id": 13,
+    "type": "Producers on the Move",
+    "description": null,
+    "created_at": "2020-11-21T17:29:24.217Z",
+    "updated_at": "2020-11-21T17:29:24.228Z"
+  },
+  {
+    "id": 8,
+    "type": "POWR Baltic Stories Exchange ",
+    "description": null,
+    "created_at": "2020-11-04T09:37:27.430Z",
+    "updated_at": "2020-11-23T08:34:27.100Z"
+  }
+]
