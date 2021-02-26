@@ -56,7 +56,6 @@ locales:
   hoff.ee:
   - et
   - en
-  - ru
   kumu.poff.ee:
   - et
   - en
@@ -68,7 +67,7 @@ locales:
   oyafond.ee:
   - et
   - en
-  - ru  
+  - ru
   filmikool.poff.ee:
   - et
   - en
