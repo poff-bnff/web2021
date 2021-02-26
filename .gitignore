@@ -173,6 +173,7 @@ strapi/strapi-development/coverage
 strapi-development/############################
 
 strapi/strapi-development/.env
+strapi/strapi-development/*.env
 strapi/strapi-development/license.txt
 strapi/strapi-development/exports
 strapi/strapi-development/.cache
