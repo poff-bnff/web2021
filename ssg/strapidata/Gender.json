@@ -1,0 +1,44 @@
+[
+  {
+    "id": 2,
+    "created_at": "2020-08-18T13:06:53.315Z",
+    "updated_at": "2020-09-14T06:43:50.539Z",
+    "Name_et": "Mees",
+    "Name_en": "Male",
+    "Name_ru": "Мужчина",
+    "name_et": null,
+    "name_en": null,
+    "name_ru": null,
+    "et": "Mees",
+    "en": "Male",
+    "ru": "M"
+  },
+  {
+    "id": 4,
+    "created_at": "2020-08-18T13:09:20.306Z",
+    "updated_at": "2020-09-14T06:44:15.561Z",
+    "Name_et": "Muu",
+    "Name_en": "Other",
+    "Name_ru": "Другой",
+    "name_et": null,
+    "name_en": null,
+    "name_ru": null,
+    "et": "Muu",
+    "en": "Other",
+    "ru": "O"
+  },
+  {
+    "id": 3,
+    "created_at": "2020-08-18T13:07:32.440Z",
+    "updated_at": "2020-09-14T06:44:23.811Z",
+    "Name_et": "Naine",
+    "Name_en": "Female",
+    "Name_ru": "Женщина",
+    "name_et": null,
+    "name_en": null,
+    "name_ru": null,
+    "et": "Naine",
+    "en": "Female",
+    "ru": "N"
+  }
+]
