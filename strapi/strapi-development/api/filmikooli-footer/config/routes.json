@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/filmikooli-footers",
+      "handler": "filmikooli-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikooli-footers/count",
+      "handler": "filmikooli-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmikooli-footers/:id",
+      "handler": "filmikooli-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/filmikooli-footers",
+      "handler": "filmikooli-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/filmikooli-footers/:id",
+      "handler": "filmikooli-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/filmikooli-footers/:id",
+      "handler": "filmikooli-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

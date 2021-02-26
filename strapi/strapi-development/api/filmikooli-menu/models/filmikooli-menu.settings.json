@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "filmikooli_menus",
+  "info": {
+    "name": "Filmikooli_Menu",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "filmikooli_article": {
+      "model": "filmikooli-article"
+    },
+    "customUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "subMenuItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.filmikooli-sub-menu-item"
+    }
+  }
+}

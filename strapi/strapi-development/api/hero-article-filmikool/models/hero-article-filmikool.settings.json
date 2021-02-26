@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_filmikools",
+  "info": {
+    "name": "HeroArticleFilmikool"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "article_et": {
+      "model": "filmikooli-article"
+    },
+    "article_en": {
+      "model": "filmikooli-article"
+    },
+    "article_ru": {
+      "model": "filmikooli-article"
+    }
+  }
+}

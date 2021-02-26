@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tartuffi-footers",
+      "handler": "tartuffi-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tartuffi-footers/count",
+      "handler": "tartuffi-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tartuffi-footers/:id",
+      "handler": "tartuffi-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tartuffi-footers",
+      "handler": "tartuffi-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tartuffi-footers/:id",
+      "handler": "tartuffi-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tartuffi-footers/:id",
+      "handler": "tartuffi-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

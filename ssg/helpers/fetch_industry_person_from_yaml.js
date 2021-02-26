@@ -1,21 +1,49 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
-const slugify = require('slugify');
 const rueten = require('./rueten.js');
+const {fetchModel} = require('./b_fetch.js')
 const replaceLinks = require('./replace_links.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industrypersons');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
+const strapiDataPath = path.join(sourceDir, 'strapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
-if (DOMAIN === 'industry.poff.ee') {
+if (DOMAIN !== 'industry.poff.ee') {
+    let emptyYAML = yaml.safeDump([], {
+        'noRefs': true,
+        'indent': '4'
+    })
+    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8')
+} else {
+    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
 
-    const STRAPIDATA_INDUSTRY_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryPerson'];
-    // const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Person'];
-    const STRAPIDIR = '/uploads/'
+    const minimodel = {
+        'person': {
+            model_name: 'Person'
+        },
+        'profilePicAtInd': {
+            model_name: 'StrapiMedia'
+        },
+        'role_at_films': {
+            model_name: 'RoleAtFilm'
+        },
+        'images': {
+            model_name: 'StrapiMedia'
+        },
+        'filmography': {
+            model_name: 'Filmography'
+        },
+        'industry_person_types': {
+            model_name: 'IndustryPersonType'
+        }
+    }
+
+    const STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
 
     const rootDir =  path.join(__dirname, '..')
     const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -24,8 +52,6 @@ if (DOMAIN === 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
     for (lang of languages) {
-
-        // if (DOMAIN !== 'industry.poff.ee') { continue }
 
         console.log(`Fetching ${DOMAIN} industry persons ${lang} data`);
 
@@ -37,11 +63,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
             // rueten func. is run for each industry_person separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
-
-
             industry_person = rueten(industry_person, lang);
-            // industry_person.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
-            // industry_person.path = industry_person.slug;
 
             const filmography = industry_person.filmography || {}
             const films = filmography.film || []
@@ -54,11 +76,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 })
             })
 
-            if (industry_person.person) {
-                let personFirstName = industry_person.person.firstName || ''
-                let personLastName = industry_person.person.lastName || ''
-                var personNameWithID = `${personFirstName} ${personLastName} ${industry_person.person.id}`
-            } else {
+            if (!industry_person.person) {
                 console.log(`ERROR! Industry person ID ${industry_person.id} not linked to any person, skipped.`)
                 continue
             }
@@ -177,7 +195,6 @@ if (DOMAIN === 'industry.poff.ee') {
             }
         });
 
-
         let sorted_filters = {
             types: mSort(filters.types),
             roleatfilms: mSort(filters.roleatfilms),
@@ -190,8 +207,7 @@ if (DOMAIN === 'industry.poff.ee') {
         let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), filtersYAML, 'utf8')
 
-
-        // TODO: mida see funktsioon teeb?
+        // Töötav sorteerimisfunktsioon filtritele
         function mSort(to_sort) {
             let sortable = []
             for (var item in to_sort) {
@@ -216,16 +232,4 @@ if (DOMAIN === 'industry.poff.ee') {
             return objSorted
         }
     }
-} else {
-
-    let emptyYAML = yaml.safeDump([], {
-        'noRefs': true,
-        'indent': '4'
-    })
-    fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
-
-    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
-
-    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8');
-
 }
