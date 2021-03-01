@@ -47,11 +47,11 @@ function deleteFromZone(file_name){
 module.exports = () => {
 
     let fileData = {"files": []}
-    let file = './.cache/pictures/imgList.json'
+    let file = '/srv/strapi/imgList.json'
 
     jsonfile.readFile(file, function(err, obj) {
       fileData.files = obj.files
-     // console.log(fileData.files)
+     console.log(fileData.files)
     })
 
 // Initialize watcher.
@@ -76,7 +76,7 @@ watcher
                     if (err) console.log(err)
                 })
                 console.log(`adding ${fileName} to zone`)
-                writeToZone(fileName)
+               writeToZone(fileName)
             }
       
     })
@@ -93,7 +93,7 @@ watcher
             })
 
             console.log(`delete ${fileName} from zone `);
-            deleteFromZone(fileName)
+           // deleteFromZone(fileName)
 
         }
 

@@ -11,8 +11,8 @@ BUILDDIR=$(node ./helpers/name_build_directory.js)
 echo "Deploy directory: $BUILDDIR"
 
 echo '\n Making backup \n'
-cp -a "/srv/www/$DOMAIN/. /srv/www-backup/$DOMAIN/"`date +"%Y-%m-%d_%H-%M-%S"`'/'
+cp -a "/srv/www/"$DOMAIN/. "/srv/backup/"$DOMAIN"/"`date +'%Y-%m-%d_%H-%M-%S'`"/"
 
 echo '\nReplace live site'
-rsync -avh "/srv/ssg/build/$BUILDDIR/. /srv/www/$DOMAIN/"  --delete-after
+rsync -avh /srv/ssg/build/$BUILDDIR/* /srv/www/$DOMAIN/  --delete-after
 

@@ -1,0 +1,81 @@
+:root {
+  --white: #FFFFFF;
+  --lightgray:#F7F7F7;
+  --mediumgray: #e5e5e5;
+  --gray: #747678;
+  --darkgray: #26292c;
+  --green: #08A742;
+  --poff_orange: #F39133;
+  --poff_orange_2: #F36C3F;
+  --poff_orange_3: #fa8538;
+  --hoff_red: #ED1C24;
+}
+
+.container-main{
+	margin: 2rem 2rem 2rem 2rem;
+  padding: 5rem 0 0 0;
+}
+
+.live-btn{
+  border: 1px solid var(--mediumgray);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  font-size: 16px;
+  font-weight: 600;
+  background: var(--white);
+  margin: 0.5rem 0 0.5rem 0;
+  cursor: pointer;
+  width: 250px;
+}
+
+.not-active{
+  border: 1px solid var(--mediumgray);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0.5rem 0 0.5rem 0;
+  width: 250px;
+  /*background: var(--mediumgray);*/
+  background: var(--hoff_red);
+  cursor: not-allowed;
+}
+
+.btn-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.live-btn:hover{
+  background: var(--mediumgray);
+}
+
+.error{
+  color: var(--hoff_red);
+}
+
+.result-box{
+  color: var(--green);
+}
+
+.log-table .label,
+.log-table .value{
+  padding: 1rem;
+}
+
+/*.live-btn:hover,
+#hoff:hover,
+#poff:hover{
+  background: var(--mediumgray);
+}
+
+#hoff{
+  background: var(--hoff_red);
+  border: 1px solid var(--hoff_red);
+}
+
+#poff{
+  background: var(--poff_orange);
+  border: 1px solid var(--poff_orange);
+}
+*/

@@ -43,6 +43,44 @@ module.exports = {
 					console.log(`child process exited with code ${code}`);
 				});
 			}
+			else if (fs.existsSync('/srv/ssg/build_kumu.sh') && result.domain.id === 8) {
+				const args = []
+
+				const child = spawn('/srv/ssg/build_kumu.sh', args)
+
+				child.stdout.on('data', (chunk) => {
+					console.log(decoder.write(chunk))
+					// data from the standard output is here as buffers
+				});
+				// since these are streams, you can pipe them elsewhere
+				child.stderr.on('data', (chunk) => {
+					console.log('err:', decoder.write(chunk))
+					// data from the standard error is here as buffers
+				});
+				// child.stderr.pipe(child.stdout);
+				child.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+				});
+			}
+			else if (fs.existsSync('/srv/ssg/build_filmikool.sh') && result.domain.id === 9) {
+				const args = []
+
+				const child = spawn('/srv/ssg/build_filmikool.sh', args)
+
+				child.stdout.on('data', (chunk) => {
+					console.log(decoder.write(chunk))
+					// data from the standard output is here as buffers
+				});
+				// since these are streams, you can pipe them elsewhere
+				child.stderr.on('data', (chunk) => {
+					console.log('err:', decoder.write(chunk))
+					// data from the standard error is here as buffers
+				});
+				// child.stderr.pipe(child.stdout);
+				child.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+				});
+			}
 		}
 	},
 };
