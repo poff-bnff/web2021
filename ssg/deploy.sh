@@ -6,7 +6,7 @@ cd $DIR
 echo $PWD
 
 DOMAIN=$1
-echo 'Domain' $DOMAIN
+echo 'Domain' "$DOMAIN"
 
 BUILDDIR=$(node ./helpers/name_build_directory.js $DOMAIN)
 echo "Deploy directory: $BUILDDIR"
