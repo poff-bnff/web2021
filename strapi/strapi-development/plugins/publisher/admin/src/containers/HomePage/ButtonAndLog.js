@@ -16,7 +16,7 @@ const DoPublish = async (site, userInfo) => {
     //link:{url:"/logs", label: "vaata logi"},
 
     let myResult = await response.json();
-    console.log(myResult)
+    // console.log(myResult)
     if(response.status === 200){
 		strapi.notification.toggle({type: "success", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
     }else if( response.status === 429){
@@ -47,7 +47,7 @@ const ButtonAndLog = ({site, buttonText}) => {
 	return (
      	 <div className="btn-container">
           	<button className='live-btn' onClick={() => DoPublish(site, userInfo)}>{buttonText}</button>
-          	{/* <LogList site={site}/> */}
+          	<LogList site={site}/>
       	</div>
 	);
 };

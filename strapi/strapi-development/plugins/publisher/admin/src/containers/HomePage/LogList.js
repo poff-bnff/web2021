@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/style.css';
+import moment from 'moment';
 
 const LogList = ({site}) => {
 
 	const [logs, setLogs] = useState({data: []});
 
-	console.log(site);
+	// console.log(site);
 
 	useEffect ( () => {
 		GetLogs();
@@ -14,9 +15,9 @@ const LogList = ({site}) => {
 	const GetLogs = async () => {
 		const response = await fetch(`${strapi.backendURL}/publisher/logs/${site}`, { method: 'GET'});
 		const logsFromApi = await response.json();
-		console.log(logsFromApi);
+		// console.log(logsFromApi);
 		const sortedLogs = logsFromApi.sort((a, b) => b.id - a.id);
-		console.log(sortedLogs);
+		// console.log(sortedLogs);
 		setLogs({data: sortedLogs});
 
 	};
