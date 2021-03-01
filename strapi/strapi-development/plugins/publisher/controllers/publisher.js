@@ -65,6 +65,15 @@ const doBuild = async(site, userInfo) => {
         case 23:
           logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "NO_FILE_OR_DIR"}
           break;
+        case 80:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "BUILDDIR_ERR"}
+          break;
+        case 81:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "BACKUP_ERR"}
+          break;
+        case 82:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "LIVE_REPLACE_ERR"}
+          break;
         default:
           logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": `ERR_CODE_${code}`}
       }
