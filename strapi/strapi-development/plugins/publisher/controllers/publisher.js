@@ -51,14 +51,22 @@ const doBuild = async(site, userInfo) => {
     child.on("close", async(code)=> {
       console.log(`child process exited with code ${code}`);
       let logData = {}
-      if(code === 1){
-        logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "CD_ERROR"}
 
-      }else if(code === 2){
-        logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "NODE_ERROR"}
-
-      }else{
-        logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "NONE"}
+      switch(code) {
+        case 0:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "-"}
+          break;
+        case 1:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "CD_ERROR"}
+          break;
+        case 2:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "NODE_ERROR"}
+          break;
+        case 23:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": "NO_FILE_OR_DIR"}
+          break;
+        default:
+          logData = {"endTime": moment().tz("Europe/Tallinn").format(), "errorCode": `ERR_CODE_${code}`}
       }
       const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
       // console.log("close result:", result)
@@ -115,19 +123,28 @@ module.exports = {
   // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
   // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
   // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
+//https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
+    console.log("ctx params:", ctx.params)
 
-  // console.log("logs ctx:", ctx)
+  //   find(params, populate) {
+  //   return strapi.query('restaurant').find(params, populate);},
+  // params (object): this represent filters for your find request.
 
-    // const result = await strapi.query( "build_logs", "publisher").find()
+  //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
+  // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
+    // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
 
-    // // const result = await strapi.query("build_logs", "publisher").model.query(qb => {qb.where('site', "hoff.ee");}).fetch();
+// tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
+    const params = {"_limit": 5, "site": ctx.params.site }
 
-    // return result
+    const result = await strapi.query( "build_logs", "publisher").find(params);
+
+    return result
 
 
-    ctx.send({
-      message: "ok on logs",
-    });
+    // ctx.send({
+    //   message: "ok on logs",
+    // });
 
   }
 };

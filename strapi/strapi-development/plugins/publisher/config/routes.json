@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/logs",
+      "path": "/logs/:site",
       "handler": "publisher.logs",
       "config": {
         "policies": []
