@@ -37,7 +37,7 @@ const doBuild = async(site, userInfo) => {
     const child = spawn("../../ssg/deploy.sh", [site]);
 
     child.stdout.on("data", data => {
-        console.log(`stdout: ${data}`);
+        console.log(`stdout ..............: ${data}`);
     });
 
     child.stderr.on("data", async(data) => {

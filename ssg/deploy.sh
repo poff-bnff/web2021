@@ -5,14 +5,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 echo $PWD
 
-export DOMAIN=$1
+DOMAIN=$1
+echo 'Domain' $DOMAIN
 
-BUILDDIR=$(node ./helpers/name_build_directory.js)
+BUILDDIR=$(node ./helpers/name_build_directory.js $DOMAIN)
 echo "Deploy directory: $BUILDDIR"
 
 echo '\n Making backup \n'
-cp -a "/srv/www/"$DOMAIN/. "/srv/backup/"$DOMAIN"/"`date +'%Y-%m-%d_%H-%M-%S'`"/"
+cp -a "/srv/www/"$DOMAIN"/." "/srv/backup/"$DOMAIN"/temp/"
 
 echo '\nReplace live site'
-rsync -avh /srv/ssg/build/$BUILDDIR/* /srv/www/$DOMAIN/  --delete-after
+rsync -ah /srv/ssg/build/$BUILDDIR/* /srv/www/$DOMAIN/  --delete-after
 
+bash /srv/ssg/create_bak.sh $DOMAIN
