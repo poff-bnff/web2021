@@ -124,7 +124,8 @@ module.exports = {
   // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
   // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
 //https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
-    console.log("ctx params:", ctx.params)
+
+    // console.log("ctx params:", ctx.params)
 
   //   find(params, populate) {
   //   return strapi.query('restaurant').find(params, populate);},
@@ -135,16 +136,12 @@ module.exports = {
     // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
 
 // tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
-    const params = {"_limit": 5, "site": ctx.params.site }
+//https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
+    const params = {_limit: 5, site: ctx.params.site, _sort: 'id:desc' }
 
     const result = await strapi.query( "build_logs", "publisher").find(params);
 
     return result
-
-
-    // ctx.send({
-    //   message: "ok on logs",
-    // });
 
   }
 };
