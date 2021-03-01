@@ -6,6 +6,7 @@ echo $PWD
 DOMAIN=$1
 echo 'Domain' $DOMAIN
 BUILDDIR=$(node /srv/ssg/helpers/name_build_directory.js $DOMAIN)
+
 echo "Deploy directory: $BUILDDIR"
 if [ $? != 0 ] #BUILDDIR error
 then
