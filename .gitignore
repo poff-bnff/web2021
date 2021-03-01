@@ -8,6 +8,12 @@
 www/*
 
 ############################
+# Live site backup 
+############################
+www-backup/*
+
+
+############################
 # ssg
 ############################
 
@@ -43,12 +49,10 @@ ssg/eventival/dynamic/*
 ssg/entu-ssg.yaml
 ssg/vialog/vialog.json
 
-ssg/strapidata/*
+ssg/source/strapidata/*
 ssg/*.icloud
 ssg/eventival/static/.films.yaml.icloud
 ssg/eventival/static/.films.yaml.icloud
-
-
 
 
 ############################
@@ -169,6 +173,7 @@ strapi/strapi-development/coverage
 strapi-development/############################
 
 strapi/strapi-development/.env
+strapi/strapi-development/*.env
 strapi/strapi-development/license.txt
 strapi/strapi-development/exports
 strapi/strapi-development/.cache

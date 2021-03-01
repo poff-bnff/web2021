@@ -6,7 +6,8 @@ BUILDOPTION[4]="shorts.poff.ee"
 BUILDOPTION[5]="hoff.ee"
 BUILDOPTION[6]="kumu.poff.ee"
 BUILDOPTION[7]="tartuff.ee"
-# BUILDOPTION[8]="oja.ee"
+BUILDOPTION[8]="oyafond.ee"
+BUILDOPTION[9]="filmikool.poff.ee"
 
 ask_what_to_build()
 {
@@ -22,7 +23,7 @@ ask_what_to_build()
     if [ $new_number -eq 0 ]
     then
         runexit
-    elif [ $new_number -lt 9 ] && [ $new_number -gt 0 ]
+    elif [ $new_number -lt 11 ] && [ $new_number -gt 0 ]
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
@@ -102,12 +103,11 @@ build()
         printf '\n----------             Finished processing styles            ----------\n'
 
         printf "\nBuilding...\n"
+        [ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
+        [ ! -d "./build/$BUILDDIR/assets" ] && mkdir -p "./build/$BUILDDIR/assets"
 
-        [ -d "build/$BUILDDIR" ] && rm -r "build/$BUILDDIR/*"
-        [ ! -d "build/$BUILDDIR" ] && mkdir -p "build/$BUILDDIR"
-        [ ! -d "build/$BUILDDIR/assets" ] && mkdir -p "build/$BUILDDIR/assets"
-
-        cp -R assets/* "build/$BUILDDIR/assets"
+        cp -R assets/* "./build/$BUILDDIR/assets"
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi
@@ -115,7 +115,7 @@ build()
     duration=$SECONDS
     minutes=$((duration/60))
     seconds=$((duration%60))
-    printf "\n\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
+    printf "\n\n$site_name\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
 
     ask_what_to_build
 

@@ -9,37 +9,29 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-const STRAPIDATA_CHANNELS = STRAPIDATA['Channel']
+const strapiDataChannelPath = path.join(strapiDataDirPath, 'Channel.yaml')
+const STRAPIDATA_CHANNELS = yaml.safeLoad(fs.readFileSync(strapiDataChannelPath, 'utf8'))
+
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of languages) {
     processData(lang, CreateYAML);
     console.log(`Fetching ${DOMAIN} channels ${lang} data`);
 }
 
-
 function processData(lang, CreateYAML) {
-    // console.log(util.inspect(data));
-
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_CHANNELS));
-    // console.log(util.inspect(copyData));
     let buffer = [];
     for (index in copyData) {
-        // console.log(index, copyData[index]);
-        // console.log('domain', domain);
-        // console.log('copydatadomeen', copyData[index].domain);
         if (copyData[index].namePrivate && copyData[index].namePrivate === 'Industry TEST channel') {
             continue
         }
         buffer.push(rueten(copyData[index], lang))
     }
     CreateYAML(buffer, lang);
-    // console.log('COPYDATA', copyData.keys());
-    // console.log('BUFFER', buffer);
 }
 
 function CreateYAML(buffer, lang) {

@@ -8,7 +8,8 @@ domain:
   hoff.ee: hoff
   kumu.poff.ee: kumu
   tartuff.ee: tartuff
-  # brunooja.poff.ee: bruno
+  oyafond.ee: bruno
+  filmikool.poff.ee: filmikool
 
 article:
   poff.ee: POFFiArticle
@@ -19,7 +20,8 @@ article:
   hoff.ee: HOFFiArticle
   kumu.poff.ee: KumuArticle
   tartuff.ee: TartuffiArticle
-  # brunooja.poff.ee: BrunoArticle
+  oyafond.ee: BrunoArticle
+  filmikool.poff.ee: FilmikooliArticle
 
 footer:
   poff.ee: POFFiFooter
@@ -30,7 +32,8 @@ footer:
   hoff.ee: HOFFiFooter
   kumu.poff.ee: KumuFooter
   tartuff.ee: TartuffiFooter
-  # brunooja.poff.ee: BrunoFooter
+  oyafond.ee: BrunoFooter
+  filmikool.poff.ee: FilmikooliFooter
 
 locales:
   poff.ee:
@@ -53,7 +56,6 @@ locales:
   hoff.ee:
   - et
   - en
-  - ru
   kumu.poff.ee:
   - et
   - en
@@ -62,10 +64,15 @@ locales:
   - et
   - en
   - ru
-  # brunooja.poff.ee:
-  # - et
-  # - en
-  # - ru
+  oyafond.ee:
+  - et
+  - en
+  - ru
+  filmikool.poff.ee:
+  - et
+  - en
+  - ru
+
 
 defaultLocale:
   poff.ee: et
@@ -76,7 +83,8 @@ defaultLocale:
   hoff.ee: et
   kumu.poff.ee: et
   tartuff.ee: et
-  # brunooja.poff.ee: et
+  oyafond.ee: et
+  filmikool.poff.ee: et
 
 vialogUrls:
     et:
@@ -105,9 +113,10 @@ pageURLs:
   industry.poff.ee: "https://industry.poff.ee/"
   shorts.poff.ee: "http://shorts.poff.ee/"
   hoff.ee: "https://hoff.ee/"
-  kumu.poff.ee: https://kumu.poff.ee/
-  tartuff.ee: https://tartuff.ee/
-  # oja.ee: https://brunooja.poff.ee/
+  kumu.poff.ee: "https://kumu.poff.ee/"
+  tartuff.ee: "https://tartuff.ee/"
+  oyafond.ee: "https://oyafond.ee/"
+  filmikool.poff.ee: "https://filmikool.poff.ee/"
 
 stagingURLs:
   poff.ee: "https://staging.poff.inscaping.eu/"
@@ -118,4 +127,5 @@ stagingURLs:
   # hoff.ee: "https://staging.hoff.inscaping.eu/"
   # kumu.poff.ee: https://kumu.poff.ee/
   # tartuff.ee: https://tartuff.ee/
-  # # oja.ee: https://brunooja.poff.ee/
+  # oyafond.ee: https://oyafond.ee/
+  # filmikool.poff.ee: https://filmikool.poff.ee/

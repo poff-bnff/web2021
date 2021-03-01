@@ -1,0 +1,36 @@
+//- KUI MITU KSSETTI NÄIDATA MÄÄRA SIIN:
+- var maxAmountToShow = 6
+
+- var counter = 0
+
+if self.data.FrontPageCourses && self.data.FrontPageCourses.courses && self.data.FrontPageCourses.courses.length > 0
+    if self.data.FrontPageCourses.title
+        .section_headline.dark_semi.thin_300= self.data.FrontPageCourses.title
+    section.kuuekas
+        //- if self.data.FrontPageCourses.title
+        //-     h1.dark_1= self.data.FrontPageCourses.title
+
+        each course in self.data.FrontPageCourses.courses
+            if counter >= maxAmountToShow
+                - break
+            - counter++
+
+            .kuueka_item
+                a(href= `/${lang_path}film/${course.slug}`)
+                    .container_frame_poster
+                        - var img = ''
+
+                        if course.media && course.media[0] && course.media.length > 1
+                            - img = course.media[0]
+                        else if course.media && course.media[0] && course.clearImmediate(immediateObject).length === 1
+                            - img = course.media[0]
+                        else
+                            - img = '/assets/img/static/placeholder_hd_1.jpg'
+
+                        img.container_contents_poster(src= img).trio_image
+                    .kuueka_body
+                        if course.title
+                            h3.article_title_locale= course.title
+                        //- if course.lead
+                        //-     .article_lead= course.lead
+

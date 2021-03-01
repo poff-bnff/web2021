@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bruno-footers",
+      "handler": "bruno-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-footers/count",
+      "handler": "bruno-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bruno-footers/:id",
+      "handler": "bruno-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bruno-footers",
+      "handler": "bruno-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bruno-footers/:id",
+      "handler": "bruno-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bruno-footers/:id",
+      "handler": "bruno-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

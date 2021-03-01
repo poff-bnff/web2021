@@ -3,21 +3,90 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
 const images = require('./images.js');
+const {fetchModel} = require('./b_fetch.js')
+
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml')
-const STRAPIDATA_SCREENINGS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Screening']
-const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Film']
-const STRAPIDATA_FESTIVALS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Festival']
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['FestivalEdition']
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
+const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
+const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
+const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+
+const minimodel_screenings = {
+    'introQaConversation': {
+        model_name: 'IntroConversationQandA'
+    },
+    'location': {
+        model_name: 'Location',
+        expand: {
+            'hall': {
+                model_name: 'Hall',
+                expand: {
+                    'cinema': {
+                        model_name: 'Cinema',
+                        expand: {
+                            'town': {
+                                model_name: 'Town'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    'extraInfo': {
+        model_name: 'Translated'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'screening_mode': {
+        model_name: 'ScreeningMode'
+    },
+    'subtitles': {
+        model_name: 'Language'
+    },
+    'screening_types': {
+        model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette',
+        expand: {
+            'tags': {
+                model_name: 'Tags',
+                expand: {
+                    'programmes': {
+                        model_name: 'Programme',
+                        expand: {
+                            'festival_editions': {
+                                model_name: 'FestivalEdition',
+                                expand: {
+                                    'festival': {
+                                        model_name: 'Festival'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENING, minimodel_screenings)
 
 for (const lang of allLanguages) {
     LangSelect(lang)
@@ -116,20 +185,14 @@ function processData(data, lang, CreateYAML) {
 
 function CreateYAML(screenings, lang) {
 
-    // console.log(screenings);
-
     const SCREENINGS_YAML_PATH = path.join(fetchDir, `screenings.${lang}.yaml`)
 
     let screeningsCopy = rueten(JSON.parse(JSON.stringify(screenings)), lang)
 
-    // // console.log(process.cwd());
     let allDataYAML = yaml.safeDump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(SCREENINGS_YAML_PATH, allDataYAML, 'utf8');
     console.log(`Fetched ${screeningsCopy.length} screenings`);
 
-
-    // FOR SEARCH BELOW
-    // FOR SEARCH BELOW
     // FOR SEARCH BELOW
 
     let filters = {
@@ -151,7 +214,6 @@ function CreateYAML(screenings, lang) {
 
 
         let dateTimeUTC = new Date(screenings.dateTime)
-        // let dateTime = dateTimeUTC.toLocaleString("et-EE"); // , {timeZone: "EET"}
 
         Date.prototype.addHours = function(hours) {
             var date = new Date(this.valueOf());
@@ -159,14 +221,6 @@ function CreateYAML(screenings, lang) {
             return date;
         }
         let dateTime = dateTimeUTC.addHours(2); // , {timeZone: "EET"}
-
-
-        // let date1 = dateTimeUTC.addHours(2)
-        // let date = date1.toLocaleString("et-EE", { timeZone: "UTC", year: "numeric", month: "2-digit", day: "2-digit" });
-        // let dateKey = `_${date}`
-        // let time = dateTimeUTC.addHours(2).toLocaleString("et-EE", { timeZone: "UTC", hour: "2-digit", minute: "2-digit" });
-        // let timeKey = `_${time}`
-
 
         let date = dateTime.getFullYear() + '-' + ('0' + (dateTime.getMonth()+1)).slice(-2) + '-' + ('0' + dateTime.getDate()).slice(-2)
         let dateKey = `_${date}`
@@ -182,14 +236,11 @@ function CreateYAML(screenings, lang) {
         let cassette = screenings.cassette
         if (typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
-                // console.log(programme.festival_editions, 'CASSETTE ', cassette.id);
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions) {
-                        const key = fested.festival + '_' + programme.id
-                        const festival = STRAPIDATA_FESTIVALS.filter((a) => { return a.id === fested.festival })
-                        if (festival[0]) {
-                            var festival_name = festival[0][`name_${lang}`]
-                        }
+                        const key = fested.festival.id + '_' + programme.id
+                        const festival = fested.festival
+                        var festival_name = festival.name
 
                         programmes.push(key)
                         filters.programmes[key] = `${festival_name} ${programme.name}`
@@ -233,7 +284,7 @@ function CreateYAML(screenings, lang) {
         let subtitles = []
         let towns = []
         let cinemas = []
-        // for (const screenings of cassette.screenings) {
+
         for (const subtitle of screenings.subtitles || []) {
             const subtKey = subtitle.code
             const subtitle_name = subtitle.name
@@ -250,7 +301,7 @@ function CreateYAML(screenings, lang) {
         const cinema_name = screenings.location.hall.cinema.name
         cinemas.push(cinemaKey)
         filters.cinemas[cinemaKey] = cinema_name
-        // }
+
         let premieretypes = []
         for (const types of cassette.tags.premiere_types || []) {
                 const type_name = types
@@ -341,7 +392,5 @@ function CreateYAML(screenings, lang) {
 
     let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_screenings.${lang}.yaml`), filtersYAML, 'utf8')
-
-
 
 }

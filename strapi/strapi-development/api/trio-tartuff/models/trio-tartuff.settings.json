@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_tartuffs",
+  "info": {
+    "name": "TrioTartuff",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "trioTartuff_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-tartuff"
+    },
+    "trioTartuff_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-tartuff"
+    },
+    "trioTartuff_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-tartuff"
+    }
+  }
+}
