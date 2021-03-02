@@ -38,9 +38,6 @@ async function log_data(result) {
 				id: editor
 			},
 			site: 'poff.ee'
-			// build_errors: '',
-			// error_code: '',
-			// end_time: ''
 		}
 
 		plugin_log = await strapi.entityService.create({data: loggerData}, {model: "plugins::publisher.build_logs"})
@@ -62,7 +59,7 @@ module.exports = {
 		async beforeUpdate(params, data) {},
 		async afterUpdate(result, params, data) {
 			await log_data(result)
-			console.log(__dirname)
+			
 			let build_dir = path.join(__dirname,'/../../../../../ssg/buildtest.sh')
 			if (fs.existsSync(build_dir)) {
 				console.log('AEAEE')

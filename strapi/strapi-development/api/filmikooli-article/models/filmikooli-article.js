@@ -22,9 +22,7 @@ const moment = require("moment-timezone")
 
 async function call_update(result) {
 	delete result.published_at
-	await strapi.query('filmikooli-article').update({
-		id: result.id
-	}, result)
+	await strapi.query('filmikooli-article').update({id: result.id}, result)
 }
 
 let plugin_log
