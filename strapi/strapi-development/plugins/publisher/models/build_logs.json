@@ -3,7 +3,7 @@
   "collectionName": "build_logs",
   "info": {
     "name": "Deploy log",
-    "description": ""
+    "description": "Logs from pushing the buttons in publisher plugin"
   },
   "options": {
     "increments": true,
