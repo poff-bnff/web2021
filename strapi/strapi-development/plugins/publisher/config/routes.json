@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/publish",
+      "handler": "publisher.publish",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/logs/:site",
+      "handler": "publisher.logs",
+      "config": {
+        "policies": []
+      }
+    }
+
+  ]
+}

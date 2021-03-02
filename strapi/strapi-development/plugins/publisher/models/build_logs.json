@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "build_logs",
+  "info": {
+    "name": "Deploy log",
+    "description": "Logs from pushing the buttons in publisher plugin"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "site": {
+      "type": "string",
+      "required": true
+    },
+    "errorCode": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": false
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": false
+    },
+    "buildErrors": {
+      "type": "richtext"
+    }
+  }
+}
+
+
+

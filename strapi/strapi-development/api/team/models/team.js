@@ -17,8 +17,16 @@ const fs = require('fs');
 const yaml = require('yaml');
 const path = require('path');
 
-module.exports = {
-	lifecycles: {
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('team').update({id: result.id}, result)
+}
+
+ module.exports = {
+     lifecycles: {
+        async afterCreate(result, data) {
+          await call_update(result)
+        },
 		beforeUpdate(params, data) {
 
 		},
@@ -28,6 +36,44 @@ module.exports = {
 				const args = []
 
 				const child = spawn('/srv/ssg/build_hoff.sh', args)
+
+				child.stdout.on('data', (chunk) => {
+					console.log(decoder.write(chunk))
+					// data from the standard output is here as buffers
+				});
+				// since these are streams, you can pipe them elsewhere
+				child.stderr.on('data', (chunk) => {
+					console.log('err:', decoder.write(chunk))
+					// data from the standard error is here as buffers
+				});
+				// child.stderr.pipe(child.stdout);
+				child.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+				});
+			}
+			else if (fs.existsSync('/srv/ssg/build_kumu.sh') && result.domain.id === 8) {
+				const args = []
+
+				const child = spawn('/srv/ssg/build_kumu.sh', args)
+
+				child.stdout.on('data', (chunk) => {
+					console.log(decoder.write(chunk))
+					// data from the standard output is here as buffers
+				});
+				// since these are streams, you can pipe them elsewhere
+				child.stderr.on('data', (chunk) => {
+					console.log('err:', decoder.write(chunk))
+					// data from the standard error is here as buffers
+				});
+				// child.stderr.pipe(child.stdout);
+				child.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+				});
+			}
+			else if (fs.existsSync('/srv/ssg/build_filmikool.sh') && result.domain.id === 9) {
+				const args = []
+
+				const child = spawn('/srv/ssg/build_filmikool.sh', args)
 
 				child.stdout.on('data', (chunk) => {
 					console.log(decoder.write(chunk))

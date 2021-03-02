@@ -14,7 +14,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = 'filmikool.poff.ee'
 
 const strapiDataCoursePath = path.join(strapiDataDirPath, `Course.yaml`)
 const STRAPIDATA_COURSES = yaml.safeLoad(fs.readFileSync(strapiDataCoursePath, 'utf8'))
