@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/style.css';
 import LogList from "./LogList";
+import Button from "../../../../../../admin/src/components/FullWidthButton/index.js"
+
 
 
 const DoPublish = async (site, userInfo) => {
@@ -46,7 +48,7 @@ const ButtonAndLog = ({site, buttonText}) => {
 
 	return (
      	 <div className="btn-container">
-          	<button className='live-btn' onClick={() => DoPublish(site, userInfo)}>{buttonText}</button>
+          	<Button className='live-btn' onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
           	<LogList site={site}/>
       	</div>
 	);

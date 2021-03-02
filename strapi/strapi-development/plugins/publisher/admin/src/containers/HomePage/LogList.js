@@ -22,14 +22,6 @@ const LogList = ({site}) => {
 
 	};
 
-	const formatDate = (date) => {
-		const d= new Date(date);
-		const weekdays = [ 'E', 'T', 'K', 'N', 'R', 'L', 'P' ]
-		const formatedDate = `${weekdays[d.getDay()]}: ${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`
-		// console.log(formatedDate);
-		return formatedDate;
-	}
-
 
 	return (
 
@@ -37,17 +29,15 @@ const LogList = ({site}) => {
 			<tbody>
 				<tr className="log-labels">
 					<th className="label">kasutaja</th>
-					<th className="label">domeen</th>
 					<th className="label">algas</th>
 					<th className="label">lõppes</th>
 				</tr>
 				{logs.data.map((log) =>{
-					const end = formatDate(log.endTime)
-					const start = formatDate(log.startTime)
+					const end = moment(log.endTime).format('HH:mm DD.MM.YY')
+					const start = moment(log.startTime).format('HH:mm DD.MM.YY')
 
 					return(<tr className="log-data" key ={log.id}>
 						<td className="value">{log.user}</td>
-						<td className="value">{log.site}</td>
 						<td className="value">{start}</td>
 						<td className="value">{end}</td>
 					</tr>)
