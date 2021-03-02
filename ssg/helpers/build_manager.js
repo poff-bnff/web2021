@@ -4,29 +4,52 @@ const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
 
-const rootDir =  path.join(__dirname, '..')
-const helpersDir =  path.join(rootDir, 'helpers')
+const rootDir = path.join(__dirname, '..')
+const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
 function startBuildManager(options) {
-    if (!fs.existsSync(queuePath)) {
-        fs.writeFileSync(queuePath, '[]', { flag: 'wx' }, function (err) {
-            if (err) throw err;
-        });
-        addToQueue(options)
-        startBuild()
+    // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
+    if ((process.argv[2] === 'force' || options.file === 'force') && !options.domain && !options.type && !options.parameters) {
+        // Quit if no queuefile
+        if (!fs.existsSync(queuePath)) {
+            console.log('No pending queue')
+        } else {
+            // If queue exists, check if last known PID is still running if it is, quit, else start building
+            const isRunning = checkIfProcessAlreadyRunning()
+            if(isRunning) {
+                console.log(`Last process with PID ${isRunning} is still running. Exiting`);
+            } else {
+                console.log('Continuing with existing queue');
+                startBuild()
+            }
+        }
+    } else if (options.domain && options.file && options.type) {
+        // If required options received, create queue and start build
+        if (!fs.existsSync(queuePath)) {
+            fs.writeFileSync(queuePath, '[]');
+
+            addToQueue(options)
+            startBuild()
+        // If queue already exists, add to queue
+        } else {
+            addToQueue(options)
+        }
     } else {
-        addToQueue(options)
+        console.log('Invalid options');
     }
 }
 
 function startBuild() {
+    // Eliminate duplicates from queue every time new build starts
     eliminateDuplicates()
+
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
     const firstInQueue = queueFile[0]
     const buildDomain = firstInQueue.domain
     const buildFileName = firstInQueue.file
+    const buildFilePath = path.join(rootDir, buildFileName)
     const buildType = firstInQueue.type
     const buildParameters = firstInQueue.parameters
     const startTime = getCurrentTime()
@@ -34,10 +57,12 @@ function startBuild() {
     console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
     writeToLogFile(`Build start`, firstInQueue)
 
-    exec(`bash ${buildFileName} ${buildDomain} ${buildType} ${buildParameters}`, (error, stdout, stderr) => {
+    // Run shell cript
+    exec(`bash ${buildFilePath} ${buildDomain} ${buildType} ${buildParameters}`, (error, stdout, stderr) => {
         let errors = false
         if (error) {
-            console.log(`error: ${error.message}`);
+            errors = true
+            console.log(`error: ${stderr}`);
         }
         if (stderr) {
             errors = true
@@ -59,7 +84,10 @@ function startBuild() {
         }
 
         console.log('\n', 'Removing build: ', buildFileName, buildDomain, buildType, buildParameters);
+        // After build end, remove from queue
         removeFirstInQueue()
+
+        // If queue empty, rm queue file, else start building first one in queue
         if (!deleteQueueIfEmpty()) { startBuild() }
 
     });
@@ -69,8 +97,8 @@ function addToQueue(options) {
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
 
     options.time = getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)')
-
     queueFile.push(options)
+
     const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
     console.log('Added to queue');
@@ -95,22 +123,19 @@ function removeFirstInQueue() {
 }
 
 function writeToLogFile(logType, command, duration = null, error = null) {
-    if(!fs.existsSync(logsPath)) {
-        fs.writeFileSync(logsPath, '[]', { flag: 'wx' }, function (err) {
-            if (err) throw err;
-            console.log('No logfile, creating one...');
-        });
+    if (!fs.existsSync(logsPath)) {
+        fs.writeFileSync(logsPath, '[]');
     }
     const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
 
     const createLogObject = {
         'time': getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)'),
-        'type': logType,
-        'duration': duration,
-        'command': command,
-        'error': error
+        'type': logType || null,
+        'duration': duration || null,
+        'command': command || null,
+        'PID': process.pid,
+        'error': error && typeof error === 'object' ? JSON.stringify(error) : error
     }
-
     logFile.push(createLogObject)
     const logDump = yaml.safeDump(logFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(logsPath, logDump, 'utf8');
@@ -121,7 +146,7 @@ function getCurrentTime() {
 }
 
 function calculateAverageDuration(options) {
-    if(!fs.existsSync(logsPath)) {
+    if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting estimates');
         return;
     }
@@ -135,9 +160,9 @@ function calculateAverageDuration(options) {
         }
     })
     const lastFive = logData.slice(Math.max(logData.length - 5, 0))
-    const avgDurInMs = lastFive.map(a => a.duration).reduce((partial_sum, a) => partial_sum + a,0) / lastFive.length
+    const avgDurInMs = lastFive.map(a => a.duration).reduce((partial_sum, a) => partial_sum + a, 0) / lastFive.length
     var duration = moment.duration(avgDurInMs);
-    if(duration._isValid) {
+    if (duration._isValid) {
         console.log(`Based on last 5 builds, average duration for this type of build is: ${duration.minutes()}m ${duration.seconds()}s`);
     } else {
         console.log('No log data for getting estimates');
@@ -167,6 +192,27 @@ function eliminateDuplicates() {
         fs.writeFileSync(queuePath, queueDump, 'utf8');
         console.log(`Removed ${difference} duplicates from queue for ${queueFile[0].domain} ${queueFile[0].file} ${queueFile[0].type} ${queueFile[0].parameters}`);
         writeToLogFile(`Remove ${difference} duplicates`, queueFile[0])
+    }
+}
+
+function checkIfProcessAlreadyRunning() {
+    if (fs.existsSync(logsPath)) {
+        const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+            .filter(a => a.PID && a.type === 'Build start')
+
+        const lastPID = logFile.slice(-1)[0].PID
+
+        try {
+            // Signal 0 given for checking (and not killing) existence of process
+            process.kill(lastPID, 0)
+            return lastPID
+        } catch (e) {
+            return false
+        }
+
+    } else {
+        console.log('No logs to check last "Build start" PID from');
+        return false
     }
 }
 

@@ -8,5 +8,6 @@ let options = {
     'type': params[2],
     'parameters': process.argv.slice(5).join(' '),
 }
+
 calculateAverageDuration(options)
 startBuildManager(options)

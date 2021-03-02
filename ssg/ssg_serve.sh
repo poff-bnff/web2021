@@ -7,7 +7,7 @@ printf '\n----------                Starting serve                    ----------
 
 node ./node_modules/entu-ssg/src/serve.js ./entu-ssg.yaml
 
-printf '\n\n----------      Finished serving, press ENTER to exit      ----------\n\n'
+printf '\n\n----------      Finished serving      ----------\n\n'
 
-read varname
-echo $varname
+
+

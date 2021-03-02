@@ -11,15 +11,15 @@ echo $PWD
 BUILDDIR=$(node ./helpers/name_build_directory.js)
 echo "Build directory: $BUILDDIR"
 
-echo 'STARTING BUILD'
-[ ! -d './build' ] && mkdir -p './build'
-[ -d './build/'$BUILDDIR ] && rm -r './build/'$BUILDDIR'/*'
-[ ! -d './build/'$BUILDDIR ] && mkdir -p './build/'$BUILDDIR
-[ ! -d './build/'$BUILDDIR'/assets/' ] && mkdir -p './build/'$BUILDDIR'/assets/'
-[ -d './source/_fetchdir' ] && rm -r ./source/_fetchdir/*
-[ ! -d './source/_fetchdir' ] && mkdir -p ./source/_fetchdir
-[ -d './assets/img/dynamic' ] && rm -r ./assets/img/dynamic/*
-[ -d './assets/xml' ] && rm -r ./assets/xml/*
+echo "STARTING BUILD"
+[ ! -d "./build" ] && mkdir -p "./build"
+[ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR/"*
+[ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
+[ ! -d "./build/$BUILDDIR/assets/" ] && mkdir -p "./build/$BUILDDIR/assets/"
+[ -d "./source/_fetchdir" ] && rm -r "./source/_fetchdir/"*
+[ ! -d "./source/_fetchdir" ] && mkdir -p "./source/_fetchdir"
+[ -d "./assets/img/dynamic" ] && rm -r "./assets/img/dynamic/"*
+[ -d "./assets/xml" ] && rm -r "./assets/xml/"*
 
 
 echo 'Fetch strapiData.yaml from Strapi'
@@ -93,7 +93,7 @@ echo 'fetch_eventival_persons_from_yaml.js'
 node ./helpers/fetch_eventival_persons_from_yaml.js
 
 if [ $DOMAIN = 'filmikool.poff.ee' ]
-then 
+then
 	echo 'fetch_course_from_yaml.js'
 	node ./helpers/fetch_course_from_yaml.js
 
