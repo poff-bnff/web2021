@@ -102,7 +102,15 @@ function LangSelect(lang) {
     let dateTimeUTC = new Date().addHours(2)
     let dateNow = parseInt(`${dateTimeUTC.getFullYear()}${("0" + (dateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + dateTimeUTC.getDate()).slice(-2)}`)
 
-    let festival_editions = STRAPIDATA_FE.map(edition => edition.id)
+    let festival_editions = []
+    // For PÖFF, fetch only online 2021 FE ID 7
+    // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
+    if (DOMAIN !== 'poff.ee') {
+        festival_editions = STRAPIDATA_FE.map(edition => edition.id)
+    } else {
+        festival_editions = [7]
+    }
+
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {
             let scrnDateTimeUTC = new Date(scrn.dateTime).addHours(2)
@@ -111,9 +119,10 @@ function LangSelect(lang) {
             // Online screeningud eemaldatakse screeningu lõppemisel Eventivali kaudu
             return scrn.location && scrn.location.id !== 16 ? dateNow <= scrnDate : true
         })
-        // Näita lehe screeninguid, PÖFFi puhul kõikide lehtede screeninguid.
+        // Näita lehe screeninguid, PÖFFi puhul kõikide lehtede screeninguid. [väljakommenteeritud hetkel]
+        // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
         .filter(scrning => {
-            if (DOMAIN !== 'poff.ee') {
+            // if (DOMAIN !== 'poff.ee') {
                 if (scrning.cassette && scrning.cassette.festival_editions) {
 
                     cassette_fested_ids = scrning.cassette.festival_editions.map(ed => ed.id)
@@ -122,9 +131,9 @@ function LangSelect(lang) {
                 } else {
                     return false
                 }
-            } else {
-                return true
-            }
+            // } else {
+            //     return true
+            // }
         })
 
     processData(data, lang, CreateYAML);

@@ -224,13 +224,13 @@ if(CHECKPROGRAMMES) {
 
     let cassettesWithOutFestivalEditions = []
     let festival_editions = []
+    // For PÖFF, fetch only online 2021 FE ID 7
+    if (DOMAIN !== 'poff.ee') {
+        festival_editions = STRAPIDATA_FE.map(edition => edition.id)
+    } else {
+        festival_editions = [7]
+    }
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
-        // For PÖFF, fetch only online 2021 FE ID 7
-        if (DOMAIN !== 'poff.ee') {
-            festival_editions = STRAPIDATA_FE.map(edition => edition.id)
-        } else {
-            festival_editions = [7]
-        }
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
             return cassette_festival_editions_ids.filter(cfe_id => festival_editions.includes(cfe_id))[0] !== undefined
