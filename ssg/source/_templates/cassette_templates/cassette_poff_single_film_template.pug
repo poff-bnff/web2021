@@ -217,10 +217,17 @@ main.grid_film(id=self.id)
                                 .str_info_value= film.credentials.rolePersonsByRole.editor.join(', ')
 
                         //- Below datamodel needs to be updated and then code amended to be correct
-                        if film.credentials.rolePersonsByRole.productionCompany && film.credentials.rolePersonsByRole.productionCompany[0]
+                        if film.credentials.rolePersonsByRole.productioncompany && film.credentials.rolePersonsByRole.productioncompany[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.production
-                                .str_info_value= film.credentials.rolePersonsByRole.productionCompany.join(', ')
+                                .str_info_value= film.credentials.rolePersonsByRole.productioncompany.join(', ')
+
+                    if film && film.credentials && film.credentials.roleCompaniesByRole
+                        if film.credentials.roleCompaniesByRole.productioncompany && film.credentials.roleCompaniesByRole.productioncompany[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.production
+                                .str_info_value= film.credentials.roleCompaniesByRole.productioncompany.join(', ')
+
 
             section.f_runtime_box
 

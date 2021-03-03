@@ -19,6 +19,8 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.yaml')
+const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
 const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
@@ -80,7 +82,31 @@ const minimodel_cassette = {
                         model_name: 'FestivalEdition'
                     },
                     'credentials': {
-                        model_name: 'Credentials'
+                        model_name: 'Credentials',
+                        expand: {
+                            'rolePerson': {
+                                model_name: 'RolePerson',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'person': {
+                                        model_name: 'Person'
+                                    },
+                                }
+                            },
+                            'roleCompany': {
+                                model_name: 'RoleCompany',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'organisation': {
+                                        model_name: 'Organisation'
+                                    },
+                                }
+                            },
+                        }
                     },
                     'world_sales': {
                         model_name: 'Organisation'
@@ -489,6 +515,7 @@ for (const lang of allLanguages) {
                         }
                     }
 
+                    // Rolepersons by role
                     if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
                         scc_film.credentials.rolePerson.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
@@ -515,7 +542,30 @@ for (const lang of allLanguages) {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
                             }
                         }
+                        console.log(rolePersonTypes);
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
+                    }
+
+                    // Rolecompanies by role
+                    if(scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
+                        let roleCompanyTypes = {}
+                        scc_film.credentials.roleCompany.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                        for (roleIx in scc_film.credentials.roleCompany) {
+                            let roleCompany = scc_film.credentials.roleCompany[roleIx]
+                            if (roleCompany === undefined) { continue }
+                            if (roleCompany.organisation) {
+                                let searchRegExp = new RegExp(' ', 'g')
+                                const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
+
+                                if (roleCompany.organisation.name) {
+                                    roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                }
+                            } else {
+                                // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
+                            }
+                        }
+                        scc_film.credentials.roleCompaniesByRole = roleCompanyTypes
                     }
                 }
                 rueten(s_cassette_copy.films, lang)
