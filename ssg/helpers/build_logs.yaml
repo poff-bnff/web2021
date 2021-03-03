@@ -1,459 +1,506 @@
 -
-    time: '2021.03.01 18:37:26 (+02:00)'
+    time: '2021.03.03 00:04:43 (+02:00)'
     type: Add to queue
     duration: null
     command:
-        domain: brunooyafond.ee
+        domain: full
         file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:37:26 (+02:00)'
-    PID: 15028
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.01 18:37:27 (+02:00)'
+    time: '2021.03.03 00:04:44 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: brunooyafond.ee
+        domain: full
         file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:37:26 (+02:00)'
-    PID: 15028
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.01 18:37:27 (+02:00)'
+    time: '2021.03.03 00:05:16 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 8252
+    error: null
+-
+    time: '2021.03.03 00:05:23 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 17524
+    error: null
+-
+    time: '2021.03.03 00:05:30 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 13892
+    error: null
+-
+    time: '2021.03.03 00:05:38 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 7636
+    error: null
+-
+    time: '2021.03.03 00:05:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18068
+    error: null
+-
+    time: '2021.03.03 00:05:51 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 5056
+    error: null
+-
+    time: '2021.03.03 00:06:11 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 3112
+    error: null
+-
+    time: '2021.03.03 00:06:21 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 11128
+    error: null
+-
+    time: '2021.03.03 00:06:24 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 16592
+    error: null
+-
+    time: '2021.03.03 00:06:27 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 14520
+    error: null
+-
+    time: '2021.03.03 00:06:29 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 10244
+    error: null
+-
+    time: '2021.03.03 00:07:14 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 2652
+    error: null
+-
+    time: '2021.03.03 00:07:19 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 2444
+    error: null
+-
+    time: '2021.03.03 00:09:03 (+02:00)'
     type: Build fail stderr
-    duration: 246
+    duration: 259980
     command:
-        domain: brunooyafond.ee
+        domain: full
         file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:37:26 (+02:00)'
-    PID: 15028
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 5: cd: /srv/ssg: No such file
-        or directory
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
+    error: |
+        rm: cannot remove './source/_fetchdir/*': No such file or directory
+        rm: cannot remove './assets/xml/*': No such file or directory
 -
-    time: '2021.03.01 18:38:27 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:38:27 (+02:00)'
-    PID: 18632
-    error: null
--
-    time: '2021.03.01 18:38:27 (+02:00)'
+    time: '2021.03.03 00:09:04 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:38:27 (+02:00)'
-    PID: 18632
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.01 18:38:28 (+02:00)'
-    type: Build fail stderr
-    duration: 118
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:38:27 (+02:00)'
-    PID: 18632
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 5: cd: /srv/ssg: No such file
-        or directory
--
-    time: '2021.03.01 18:39:17 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:17 (+02:00)'
-    PID: 21452
-    error: null
--
-    time: '2021.03.01 18:39:17 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:17 (+02:00)'
-    PID: 21452
-    error: null
--
-    time: '2021.03.01 18:39:18 (+02:00)'
-    type: Build fail stderr
-    duration: 89
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:17 (+02:00)'
-    PID: 21452
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 5: cd: /srv/ssg: No such file
-        or directory
--
-    time: '2021.03.01 18:39:26 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:26 (+02:00)'
-    PID: 14500
-    error: null
--
-    time: '2021.03.01 18:39:26 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:26 (+02:00)'
-    PID: 14500
-    error: null
--
-    time: '2021.03.01 18:39:26 (+02:00)'
-    type: Build fail stderr
-    duration: 149
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:26 (+02:00)'
-    PID: 14500
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 5: cd: /srv/ssg: No such file
-        or directory
--
-    time: '2021.03.01 18:39:31 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:31 (+02:00)'
-    PID: 23144
-    error: null
--
-    time: '2021.03.01 18:39:31 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:31 (+02:00)'
-    PID: 23144
-    error: null
--
-    time: '2021.03.01 18:39:32 (+02:00)'
-    type: Build fail stderr
-    duration: 135
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:39:31 (+02:00)'
-    PID: 23144
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 5: cd: /srv/ssg: No such file
-        or directory
--
-    time: '2021.03.01 18:41:19 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:41:19 (+02:00)'
-    PID: 9184
-    error: null
--
-    time: '2021.03.01 18:41:19 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:41:19 (+02:00)'
-    PID: 9184
-    error: null
--
-    time: '2021.03.01 18:41:19 (+02:00)'
+    time: '2021.03.03 00:12:07 (+02:00)'
     type: Build finish
-    duration: 128
+    duration: 183508
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:41:19 (+02:00)'
-    PID: 9184
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.01 18:42:07 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:42:07 (+02:00)'
-    PID: 18596
-    error: null
--
-    time: '2021.03.01 18:42:07 (+02:00)'
+    time: '2021.03.03 00:12:07 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:42:07 (+02:00)'
-    PID: 18596
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.01 18:42:56 (+02:00)'
-    type: Build fail stderr
-    duration: 49139
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:42:07 (+02:00)'
-    PID: 18596
-    error: "rm: cannot remove './assets/xml/*': No such file or directory\nundefined:1\r\nundefined\r\n^\r\n\r\nSyntaxError: Unexpected token u in JSON at position 0\r\n    at JSON.parse (<anonymous>)\r\n    at Object.<anonymous> (C:\\dev2\\web2021\\ssg\\helpers\\fetch_trioblock_from_yaml.js:49:25)\r\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\r\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\r\n    at Module.load (internal/modules/cjs/loader.js:928:32)\r\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\r\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\r\n    at internal/main/run_main_module.js:17:47\r\n"
--
-    time: '2021.03.01 18:44:55 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:44:55 (+02:00)'
-    PID: 22868
-    error: null
--
-    time: '2021.03.01 18:44:55 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:44:55 (+02:00)'
-    PID: 22868
-    error: null
--
-    time: '2021.03.01 18:45:04 (+02:00)'
-    type: Build fail stderr
-    duration: 9338
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:44:55 (+02:00)'
-    PID: 22868
-    error: "undefined:1\r\n<html>\r\n^\r\n\r\nSyntaxError: Unexpected token < in JSON at position 0\r\n    at JSON.parse (<anonymous>)\r\n    at IncomingMessage.<anonymous> (C:\\dev2\\web2021\\ssg\\helpers\\strapiAuth.js:32:33)\r\n    at IncomingMessage.emit (events.js:327:22)\r\n    at endReadableNT (internal/streams/readable.js:1327:12)\r\n    at processTicksAndRejections (internal/process/task_queues.js:80:21)\r\nundefined:1\r\nundefined\r\n^\r\n\r\nSyntaxError: Unexpected token u in JSON at position 0\r\n    at JSON.parse (<anonymous>)\r\n    at Object.<anonymous> (C:\\dev2\\web2021\\ssg\\helpers\\fetch_trioblock_from_yaml.js:49:25)\r\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\r\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\r\n    at Module.load (internal/modules/cjs/loader.js:928:32)\r\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\r\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\r\n    at internal/main/run_main_module.js:17:47\r\n"
--
-    time: '2021.03.01 18:47:27 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:47:27 (+02:00)'
-    PID: 8764
-    error: null
--
-    time: '2021.03.01 18:47:27 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:47:27 (+02:00)'
-    PID: 8764
-    error: null
--
-    time: '2021.03.01 18:49:30 (+02:00)'
+    time: '2021.03.03 00:15:18 (+02:00)'
     type: Build finish
-    duration: 123015
+    duration: 190715
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: ''
-        time: '2021.03.01 18:47:27 (+02:00)'
-    PID: 8764
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.02 08:54:03 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:03 (+02:00)'
-    PID: 8956
-    error: null
--
-    time: '2021.03.02 08:54:03 (+02:00)'
+    time: '2021.03.03 00:15:18 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:03 (+02:00)'
-    PID: 8956
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.02 08:54:03 (+02:00)'
-    type: Build fail stderr
-    duration: 95
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:03 (+02:00)'
-    PID: 8956
-    error: >
-        C:\dev2\web2021\ssg\build_bruno.sh: line 8: cd: /srv/ssg: No such file
-        or directory
-
-        C:\dev2\web2021\ssg\build_bruno.sh: line 23: ./build.sh: No such file or
-        directory
--
-    time: '2021.03.02 08:54:43 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:43 (+02:00)'
-    PID: 2692
-    error: null
--
-    time: '2021.03.02 08:54:43 (+02:00)'
-    type: Build start
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:43 (+02:00)'
-    PID: 2692
-    error: null
--
-    time: '2021.03.02 08:55:07 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:55:07 (+02:00)'
-    PID: 8424
-    error: null
--
-    time: '2021.03.02 08:55:42 (+02:00)'
-    type: Add to queue
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:55:42 (+02:00)'
-    PID: 6080
-    error: null
--
-    time: '2021.03.02 08:57:58 (+02:00)'
+    time: '2021.03.03 00:18:30 (+02:00)'
     type: Build finish
-    duration: 194805
+    duration: 191864
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:54:43 (+02:00)'
-    PID: 2692
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 18780
     error: null
 -
-    time: '2021.03.02 08:57:58 (+02:00)'
-    type: Remove 1 duplicates
-    duration: null
-    command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:55:07 (+02:00)'
-    PID: 2692
-    error: null
--
-    time: '2021.03.02 08:57:58 (+02:00)'
+    time: '2021.03.03 00:18:30 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: brunooyafond.ee
-        file: build_bruno.sh
-        type: full
-        parameters: mingiargument
-        time: '2021.03.02 08:55:07 (+02:00)'
-    PID: 2692
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:30:24 (+02:00)'
+    type: Build finish
+    duration: 713862
+    command:
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:30:24 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:33:28 (+02:00)'
+    type: Build finish
+    duration: 184252
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:33:28 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:36:26 (+02:00)'
+    type: Build finish
+    duration: 177960
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:36:26 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:45:02 (+02:00)'
+    type: Build finish
+    duration: 516292
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:45:02 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:57:39 (+02:00)'
+    type: Build finish
+    duration: 757118
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:57:39 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:16:53 (+02:00)'
+    type: Build finish
+    duration: 1153359
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:16:53 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:21:21 (+02:00)'
+    type: Build finish
+    duration: 267976
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:21:21 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:26:15 (+02:00)'
+    type: Build finish
+    duration: 294254
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:26:15 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:42:09 (+02:00)'
+    type: Build finish
+    duration: 954439
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:42:09 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:58:06 (+02:00)'
+    type: Build finish
+    duration: 956999
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 18780
     error: null
