@@ -16,6 +16,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const coursesDir =  path.join(fetchDir, 'courses')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
+const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
 if (DOMAIN === 'filmikool.poff.ee') {
 
@@ -87,7 +88,6 @@ if (DOMAIN === 'filmikool.poff.ee') {
     }
 
     const STRAPIDATA_COURSE = fetchModel(STRAPIDATA_COURSES, minimodel)
-    const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
     for (const lang of allLanguages) {
         const courseCopy = JSON.parse(JSON.stringify(STRAPIDATA_COURSE))
@@ -163,4 +163,9 @@ if (DOMAIN === 'filmikool.poff.ee') {
         let allDataYAML = yaml.safeDump(filteredCourse, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), allDataYAML, 'utf8');
     }
+} else {
+    allLanguages.map(lang => {
+        let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' });
+        fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), emptyYAML, 'utf8');
+    })
 }
