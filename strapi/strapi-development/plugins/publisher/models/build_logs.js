@@ -8,11 +8,11 @@
 module.exports = {
   lifecycles: {
     beforeUpdate(params, data) {
-      console.log('...... beforeUpdate params:', params, '......... beforeUpdate data:', data);
+      // console.log('...... beforeUpdate params:', params, '......... beforeUpdate data:', data);
 
     },
     afterUpdate (result, params, data){
-    	console.log('...... afterUpdate result:', result,'...... afterUpdate params:', params, '......... afterUpdate data:', data);
+    	// console.log('...... afterUpdate result:', result,'...... afterUpdate params:', params, '......... afterUpdate data:', data);
 
     },
     beforeCreate(data) {

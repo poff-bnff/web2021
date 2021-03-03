@@ -33,7 +33,7 @@ async function log_data(result) {
 	if (result.updated_by) {
 
 		let loggerData = {
-			start_time: moment().format(), // moment()).tz('Europe/Tallinn'
+			start_time: moment().format(), // moment().tz('Europe/Tallinn').format()
 			admin_user: {
 				id: editor
 			},
@@ -87,19 +87,18 @@ module.exports = {
 							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
 							plugin_log.error_code = "-"
 							break;
-						case 84:
+						case 83:
 							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
 							plugin_log.error_code = "TestERROR"
 							break;
 						default:
-							plugin_data.end_time = moment().tz("Europe/Tallinn").format()
-							plugin_data.error_code = `ERR_CODE_${code}`
+							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
+							plugin_log.error_code = `ERR_CODE_${code}`
 					}
 					console.log(plugin_log)
 					update_logs(plugin_log)
 				});
 			}
-
 		},
 		afterDelete(result, params) {
 			// console.log('\nR', result, '\nparams', params)

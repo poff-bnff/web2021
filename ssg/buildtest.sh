@@ -1,10 +1,6 @@
-SECONDS=0
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-cd $DIR
-echo $PWD
 
 
-exit 84
+
 # 1
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
@@ -25,7 +21,13 @@ exit 84
 
 
 # echo 'Fetch strapiData.yaml from Strapi'
-# node ./helpers/a_fetch.js
+# # node ./helpers/a_fetch.js
+# node /home/liis/Documents/web2021/ssg/helpers/a_fetch.js
+
+# SECONDS=0
+# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# cd $DIR
+# echo $PWD
 
 # printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 # echo 'fetch_articles_from_yaml'
