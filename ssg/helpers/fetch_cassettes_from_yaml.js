@@ -542,6 +542,7 @@ for (const lang of allLanguages) {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
                             }
                         }
+                        console.log(rolePersonTypes);
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
                     }
 
