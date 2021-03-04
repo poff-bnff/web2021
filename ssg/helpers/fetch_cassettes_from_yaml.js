@@ -19,8 +19,6 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
-const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.yaml')
-const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
 const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
@@ -38,8 +36,11 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 // true = check if programme is for this domain / false = check if festival edition is for this domain
 const CHECKPROGRAMMES = false
 
-// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES, HOFF.ee erand
-if (DOMAIN !== 'hoff.ee')  {
+// Domeenid mille puhul näidatakse ka filme millel ei ole screeningut
+const skipScreeningsCheckDomains = ['poff.ee', 'hoff.ee']
+
+// Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
+if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
@@ -291,7 +292,7 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-        var hasOneCorrectScreening = DOMAIN === 'hoff.ee' ? true : false
+        var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
         counting++
@@ -542,7 +543,6 @@ for (const lang of allLanguages) {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
                             }
                         }
-                        console.log(rolePersonTypes);
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
                     }
 
