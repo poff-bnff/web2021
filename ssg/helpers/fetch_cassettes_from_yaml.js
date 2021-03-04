@@ -255,7 +255,7 @@ if(CHECKPROGRAMMES) {
     if (DOMAIN !== 'poff.ee') {
         festival_editions = STRAPIDATA_FE.map(edition => edition.id)
     } else {
-        festival_editions = [7]
+        festival_editions = [1, 2, 3, 4]
     }
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         if (cassette.festival_editions && cassette.festival_editions.length) {
@@ -406,13 +406,13 @@ for (const lang of allLanguages) {
 
             for (key in s_cassette_copy) {
                 if (key == 'slug') {
-                    s_cassette_copy.path = `film/${s_cassette_copy[key]}`
+                    s_cassette_copy.path = `2020/film/${s_cassette_copy[key]}`
                     s_cassette_copy.slug = `${s_cassette_copy[key]}`
                 }
             }
 
             if (s_cassette_copy.path === undefined) {
-                s_cassette_copy.path = `film/${slugEn}`
+                s_cassette_copy.path = `2020/film/${slugEn}`
                 s_cassette_copy.slug = slugEn
             }
 

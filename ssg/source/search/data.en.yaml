@@ -1,4 +1,4 @@
-path: search_film
+path: 2020/search_film
 data:
     cassettes: /_fetchdir/cassettes.en.yaml
     articles: /_fetchdir/articles.en.yaml

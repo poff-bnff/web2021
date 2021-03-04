@@ -1,4 +1,4 @@
-path: programmes
+path: 2020/programmes
 data:
     articles: /_fetchdir/articles.en.yaml
     programmes: /_fetchdir/programmes.en.yaml

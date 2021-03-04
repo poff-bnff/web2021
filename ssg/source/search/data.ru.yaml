@@ -1,4 +1,4 @@
-path: iskat_film
+path: 2020/iskat_film
 data:
     cassettes: /_fetchdir/cassettes.ru.yaml
     articles: /_fetchdir/articles.ru.yaml

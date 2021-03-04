@@ -1,4 +1,4 @@
-path: otsi_filmi
+path: 2020/otsi_filmi
 data:
     cassettes: /_fetchdir/cassettes.et.yaml
     articles: /_fetchdir/articles.et.yaml

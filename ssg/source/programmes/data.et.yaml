@@ -1,4 +1,4 @@
-path: programmid
+path: 2020/programmid
 data:
     articles: /_fetchdir/articles.et.yaml
     programmes: /_fetchdir/programmes.et.yaml
