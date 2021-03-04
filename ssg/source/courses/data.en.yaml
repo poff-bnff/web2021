@@ -1,0 +1,4 @@
+path: courses
+data:
+    courses: /_fetchdir/courses.en.yaml
+    articles: /_fetchdir/articles.en.yaml

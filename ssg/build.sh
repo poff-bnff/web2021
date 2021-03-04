@@ -21,7 +21,6 @@ echo 'STARTING BUILD'
 [ -d './assets/img/dynamic' ] && rm -r ./assets/img/dynamic/*
 [ -d './assets/xml' ] && rm -r ./assets/xml/*
 
-
 echo 'Fetch strapiData.yaml from Strapi'
 node ./helpers/a_fetch.js
 
@@ -92,15 +91,11 @@ node ./helpers/fetch_industry_event_from_yaml.js
 echo 'fetch_eventival_persons_from_yaml.js'
 node ./helpers/fetch_eventival_persons_from_yaml.js
 
-if [ $DOMAIN = 'filmikool.poff.ee' ]
-then 
-	echo 'fetch_course_from_yaml.js'
-	node ./helpers/fetch_course_from_yaml.js
+echo 'fetch_courses_from_yaml.js'
+node ./helpers/fetch_courses_from_yaml.js
 
-	echo 'fetch_frontpagecourse_block_from_yaml.js'
-	node ./helpers/fetch_frontpagecourse_block_from_yaml.js
-fi
-
+echo 'fetch_frontpagecourse_block_from_yaml.js'
+node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
