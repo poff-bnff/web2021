@@ -1,5 +1,11 @@
 
+sleep 20
 
+RANDOM=$$
+for i in 'seq 100'
+do
+	exit $RANDOM
+done
 
 # 1
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt

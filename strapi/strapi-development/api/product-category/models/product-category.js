@@ -31,7 +31,7 @@ async function build_start_to_strapi_logs(result, domain) {
 	if (result.updated_by) {
 
 		let loggerData = {
-			start_time: moment().format(), // moment()).tz('Europe/Tallinn'
+			start_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
 			admin_user: {
 				id: editor
 			},
@@ -126,15 +126,34 @@ async function get_domain(result) {
 		}
 	}
 	else if (result.programmes) {
-		let query_answer = await do_query('programme', result.programmes)
-		console.log(query_answer)
-		for (let q_answer of query_answer) {
-			for (let dom of q_answer[0].domains) {
+		let query_answers = await do_query('programme', result.programmes)
+		console.log(query_answers)
+		for (let query_answer of query_answers) {
+			for (let dom of query_answer[0].domains) {
 				domain.push(dom.url)
 			}
 		}
 	}
 	return domain
+}
+const mapping_domain = {
+	'filmikool.poff.ee': 'filmikool',
+	'hoff.ee': 'hoff',
+	'industry.poff.ee': 'industry',
+	'justfilm.ee': 'just',
+	'kinoff.poff.ee': 'kinoff',
+	'kumu.poff.ee': 'kumu',
+	'oyafond.ee': 'bruno',
+	'poff.ee': 'poff',
+	'shorts.poff.ee': 'shorts',
+	'tartuff.ee': 'tartuff'
+}
+
+function get_build_script(domain) {
+	let short_domain = mapping_domain[domain]
+	let dir_to_build = path.join(__dirname,`/../../../../../ssg/buildtest.sh`)
+	// let dir_to_build = `/srv/ssg/build_${short_domain}.sh`
+	return dir_to_build
 }
 
 const model_name = (__dirname.split('/').slice(-2)[0])
@@ -147,8 +166,24 @@ module.exports = {
 		async beforeUpdate(params, data) {},
 		async afterUpdate(result, params, data) {
 
-			let domain = await get_domain(result)
-			console.log(domain )
+			let domains = await get_domain(result)
+			console.log(domains )
+			if (domains.length > 1 ) {
+				for ( let domain of domains ) {
+					let plugin_log = await build_start_to_strapi_logs(result, domain)
+					let build_dir = get_build_script(domain)
+					if (fs.existsSync(build_dir)) {
+						const args = [domain]
+						await call_build(build_dir, plugin_log, args)
+					} else {
+						plugin_log.end_time = moment().tz("Europe/Tallinn").format()
+						plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
+						update_strapi_logs(plugin_log)
+					}
+				}
+			} else {
+				console.log('NO DOMAIN ----------------')
+			}
 
 
 			// let domain = 'filmikool.poff.ee'
