@@ -36,8 +36,11 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 // true = check if programme is for this domain / false = check if festival edition is for this domain
 const CHECKPROGRAMMES = false
 
-// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES, HOFF.ee erand
-if (DOMAIN !== 'hoff.ee')  {
+// Domeenid mille puhul näidatakse ka filme millel ei ole screeningut
+const skipScreeningsCheckDomains = ['poff.ee', 'hoff.ee']
+
+// Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
+if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
@@ -80,7 +83,31 @@ const minimodel_cassette = {
                         model_name: 'FestivalEdition'
                     },
                     'credentials': {
-                        model_name: 'Credentials'
+                        model_name: 'Credentials',
+                        expand: {
+                            'rolePerson': {
+                                model_name: 'RolePerson',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'person': {
+                                        model_name: 'Person'
+                                    },
+                                }
+                            },
+                            'roleCompany': {
+                                model_name: 'RoleCompany',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'organisation': {
+                                        model_name: 'Organisation'
+                                    },
+                                }
+                            },
+                        }
                     },
                     'world_sales': {
                         model_name: 'Organisation'
@@ -265,7 +292,7 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-        var hasOneCorrectScreening = DOMAIN === 'hoff.ee' ? true : false
+        var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
         counting++
@@ -489,6 +516,7 @@ for (const lang of allLanguages) {
                         }
                     }
 
+                    // Rolepersons by role
                     if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
                         scc_film.credentials.rolePerson.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
@@ -516,6 +544,28 @@ for (const lang of allLanguages) {
                             }
                         }
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
+                    }
+
+                    // Rolecompanies by role
+                    if(scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
+                        let roleCompanyTypes = {}
+                        scc_film.credentials.roleCompany.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                        for (roleIx in scc_film.credentials.roleCompany) {
+                            let roleCompany = scc_film.credentials.roleCompany[roleIx]
+                            if (roleCompany === undefined) { continue }
+                            if (roleCompany.organisation) {
+                                let searchRegExp = new RegExp(' ', 'g')
+                                const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
+
+                                if (roleCompany.organisation.name) {
+                                    roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                }
+                            } else {
+                                // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
+                            }
+                        }
+                        scc_film.credentials.roleCompaniesByRole = roleCompanyTypes
                     }
                 }
                 rueten(s_cassette_copy.films, lang)
