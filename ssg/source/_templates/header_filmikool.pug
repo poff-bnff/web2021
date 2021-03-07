@@ -3,10 +3,10 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/just_film_logo_text.svg' src='/assets/img/static/just_film_logo_text.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/filmikool_logo_01.svg' src='/assets/img/static/filmikool_logo_01.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
-    - var articleMenuItemDomain = 'just_filmi_article'
+    - var articleMenuItemDomain = 'filmikooli_article'
 
     nav.main_menu
         ul.ul_yx
@@ -18,6 +18,9 @@ header
                     span.org_item
                         a(href='https://industry.poff.ee')
                             | !{`Industry@Tallinn & Baltic Event`}
+                    span.org_item
+                        a(href='https://justfilm.ee')
+                            | Just Film
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
