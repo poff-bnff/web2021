@@ -48,9 +48,6 @@ module.exports = {
             await modify_stapi_data(result, model_name)
           }
       let has_error = await call_build(result, domains, model_name)
-      if(has_error) {
-      	await strapi.notification.warning(has_error);
-      }
 
     },
     async afterDelete(result, params) {

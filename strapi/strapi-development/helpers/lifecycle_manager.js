@@ -164,8 +164,8 @@ async function get_domain(result) {
 function get_build_script(domain) {
     let short_domain = mapping_domain[domain]
     if(short_domain) {
-        let dir_to_build = path.join(__dirname,`/../../../ssg/buildtest.sh`)
-        // let dir_to_build = path.join(__dirname,`/../../../ssg/build_${short_domain}.sh`)
+        // let dir_to_build = path.join(__dirname,`/../../../ssg/buildtest.sh`)
+        let dir_to_build = path.join(__dirname,`/../../../ssg/build_${short_domain}.sh`)
         return dir_to_build
     } else {
         console.log('No build script provided for', domain.toUpperCase(),  'or this domain is built through Slack.')
@@ -214,7 +214,7 @@ async function call_build(result, domains, model_name) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
                 let plugin_log = await build_start_to_strapi_logs(result, domain)
-                const args = [domain, model_name]
+                const args = [domain, model_name, 'target', result.id]
                 await call_process(build_dir, plugin_log, args)
             } 
             // else {
@@ -244,3 +244,4 @@ exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 
 
+// build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
