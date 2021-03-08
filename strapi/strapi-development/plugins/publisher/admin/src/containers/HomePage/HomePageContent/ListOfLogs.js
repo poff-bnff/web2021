@@ -8,6 +8,7 @@ import moment from 'moment';
 const ListOfLogs = ({site}) => {
 
 
+
     const [logs, setLogs] = useState({data: []});
     useEffect ( () => {GetLogs()}, []);
 
@@ -20,8 +21,7 @@ const ListOfLogs = ({site}) => {
         const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`
         const start = moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY')
         const end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
-        return {id: oneLogEntry.id,
-          user: user,
+        return {user: user,
                 start_time: start,
                 end_time: end,}
       })
@@ -47,11 +47,10 @@ const headers = [
 ];
 
   return (
-    <Table headers={headers} rows={logs.data} className="logs"
-    onClickRow={(e, data) => {
-        console.log(data.user);
-        alert('You have just clicked ' + data.user);
-      }}/>
+    <Table
+      headers={headers}
+      rows={logs.data}
+    />
   );
 };
 

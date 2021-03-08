@@ -47,10 +47,10 @@ const ButtonAndLog = ({site, buttonText}) => {
 	}
 
 	return (
-		<div className="btn-and-log">
+		<Flex justifyContent='jusify-content' alignItems="normal">
 		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
           	<ListOfLogs site={site}/>
-    	</div>
+    	</Flex>
 	);
 };
 
