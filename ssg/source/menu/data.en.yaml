@@ -1,0 +1,3 @@
+path: menu
+data:
+    articles: /_fetchdir/articles.en.yaml
