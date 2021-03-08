@@ -16,6 +16,18 @@
   padding: 5rem 0 0 0;
 }
 
+.btn-and-log {
+  display:flex;
+  /*flex-direction: column;*/
+}
+
+.logs{
+  /*border: solid 2px red;*/
+  width: 500px !important;
+  margin: 0 1rem 1rem 1rem;
+}
+
+
 /*.live-btn{
   border: 1px solid var(--mediumgray);
   border-radius: 3px;
