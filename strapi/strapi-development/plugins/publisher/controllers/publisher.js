@@ -126,11 +126,6 @@ module.exports = {
       }
     }
   },
-  fullBuild: async (ctx) => {
-    console.log("starting full build")
-    ctx.send({ message: "full build started" });
-
-  },
   logs: async (ctx) => {
 
   // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))

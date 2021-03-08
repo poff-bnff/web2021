@@ -15,14 +15,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "POST",
-      "path": "/fullbuild",
-      "handler": "publisher.fullBuild",
-      "config": {
-        "policies": ["plugins::users-permissions.ratelimit"]
-      }
     }
 
   ]
