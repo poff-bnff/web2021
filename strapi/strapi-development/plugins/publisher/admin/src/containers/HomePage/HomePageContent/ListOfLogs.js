@@ -46,11 +46,16 @@ const headers = [
   },
 ];
 
+
+// {    <Table headers={headers} rows={logs.data} className="logs"
+//     onClickRow={(e, data) => {
+//         console.log(data.user);
+//         alert('You have just clicked ' + data.user);
+//       }}/>}
+
   return (
-    <Table
-      headers={headers}
-      rows={logs.data}
-    />
+    <Table headers={headers} rows={logs.data} className="logs"/>
+
   );
 };
 

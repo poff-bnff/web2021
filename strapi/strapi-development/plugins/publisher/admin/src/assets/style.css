@@ -19,6 +19,16 @@
   margin: 2rem;
 }
 
+.btn-and-log {
+  display:flex;
+  /*flex-direction: column;*/
+}
+
+.logs{
+  /*border: solid 2px red;*/
+  width: 500px !important;
+  margin: 0 1rem 1rem 1rem;
+}
 
 
 /*.live-btn{

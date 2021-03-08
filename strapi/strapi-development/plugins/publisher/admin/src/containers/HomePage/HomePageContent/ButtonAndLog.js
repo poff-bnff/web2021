@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ListOfLogs from "./ListOfLogs";
+import LogTab from './LogTab';
 import Button from '../../../components/Button';
 import { Flex, Text } from '@buffetjs/core';
 
@@ -47,10 +48,10 @@ const ButtonAndLog = ({site, buttonText}) => {
 	}
 
 	return (
-		<Flex justifyContent='jusify-content' alignItems="normal" className="buttons">
+		<div className="btn-and-log">
 		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
-          	{/**<ListOfLogs site={site}/>**/}
-    	</Flex>
+          	<ListOfLogs site={site}/>
+    	</div>
 	);
 };
 
