@@ -123,6 +123,14 @@ printf '\n----------             Finished processing styles            ---------
 echo initialise entu_ssg.yaml
 node ./initialise_entu_ssg.js
 
-cp -R assets/* 'build/'$BUILDDIR'/assets'
+cp -R "assets/"* "build/$BUILDDIR/assets"
+
+if [ "$DOMAIN" == "poff.ee" ]
+then
+    printf '\n----------             Copy POFF 2020 to build dir           ----------\n\n'
+    cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
+    printf '\n----------               Finished Copy POFF 2020              ----------\n'
+fi
+
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
