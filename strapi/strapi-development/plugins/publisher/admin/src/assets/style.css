@@ -15,6 +15,11 @@
 	margin: 2rem 2rem 2rem 2rem;
   padding: 5rem 0 0 0;
 }
+.buttons button {
+  margin: 2rem;
+}
+
+
 
 /*.live-btn{
   border: 1px solid var(--mediumgray);
