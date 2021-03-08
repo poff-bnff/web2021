@@ -15,27 +15,23 @@
       "type": "string",
       "required": true
     },
-    "errorCode": {
+    "error_code": {
       "type": "string"
     },
-    "user": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "email",
-      "required": true
-    },
-    "startTime": {
+    "start_time": {
       "type": "datetime",
       "required": false
     },
-    "endTime": {
+    "end_time": {
       "type": "datetime",
       "required": false
     },
-    "buildErrors": {
+    "build_errors": {
       "type": "richtext"
+    },
+    "admin_user": {
+      "plugin": "admin",
+      "model": "user"
     }
   }
 }
