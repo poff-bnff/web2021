@@ -27,8 +27,9 @@ header
                             | PÖFFi veebikino
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
-            div(include-html-menu=`${menu_path_lang}menu/index.html`)
+            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
 
+        user_menu_hidden(id='user_menu_hidden' style='display: none')
             li
                 nav.lang_menu
                     each p, locale in self.otherLocalePaths
