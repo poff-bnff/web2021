@@ -4,107 +4,63 @@
  * to customize this model
  */
 
-const {
-	StringDecoder
-} = require('string_decoder')
-const decoder = new StringDecoder('utf8')
-
-const {
-	execFile,
-	exec,
-	spawn
-} = require('child_process')
-
-const fs = require('fs')
-const yaml = require('yaml')
 const path = require('path')
-const moment = require("moment-timezone")
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
-async function call_update(result) {
-	delete result.published_at
-	await strapi.query('bruno-article').update({
-		id: result.id
-	}, result)
-}
+const {
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+} = require(helper_path)
 
-let plugin_log
-async function log_data(result) {
-	let editor = result.updated_by.id
-	if (result.updated_by) {
+/**
+const domains = 
+For adding domain you have multiple choice. First for objects that has property 'domain' 
+or has property, that has 'domain' (at the moment festival_edition and programmes) use 
+function get_domain(result). If you know that that object has doimain, but no property 
+to indicate that. Just write the list of domains (as list), example tartuffi_menu. 
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
 
-		let loggerData = {
-			start_time: moment().format(), // moment().tz('Europe/Tallinn').format()
-			admin_user: {
-				id: editor
-			},
-			site: 'poff.ee'
-		}
-
-		plugin_log = await strapi.entityService.create({data: loggerData}, {model: "plugins::publisher.build_logs"})
-		// console.log('Sinu palutud v4ljaprint', plugin_log)
-	}
-}
-
-async function update_logs(plugin_log) {
-	let id = plugin_log.id
-	delete plugin_log.id
-	await strapi.entityService.update({params: {id: id,}, data: plugin_log}, {model: "plugins::publisher.build_logs" })
-}
+const model_name = (__dirname.split('/').slice(-2)[0])
+// const domains = ['hoff.ee'] // hard coded if needed AS LIST!!!
+// const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
-	lifecycles: {
-		async afterCreate(result, data) {
-			await call_update(result)
-		},
-		async beforeUpdate(params, data) {},
-		async afterUpdate(result, params, data) {
-			await log_data(result)
-			
-			let build_dir = path.join(__dirname,'/../../../../../ssg/buildtest.sh')
-			if (fs.existsSync(build_dir)) {
-				console.log('AEAEE')
-				const args = []
+  lifecycles: {
+    async afterCreate(result, data) {
+      await call_update(result, model_name)
+    },
+    async beforeUpdate(params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
-				const child = spawn(build_dir, args)
+      if(data.published_at === null ) {  // if strapi publish system goes live
+        console.log('Draft! Delete: ')
+        await modify_stapi_data(params, model_name, true)
+        await call_build(params, domains, model_name)
+      }
+    },
+    async afterUpdate(result, params, data) {
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      console.log('Create or update: ')
+      if (domains.length > 0 ) {
+            await modify_stapi_data(result, model_name)
+          }
+      await call_build(result, domains, model_name)
 
-				child.stdout.on('data', (chunk) => {
-					console.log(decoder.write(chunk))
-					// data from the standard output is here as buffers
-				});
-				// since these are streams, you can pipe them elsewhere
-				child.stderr.on('data', (chunk) => {
-					console.log('err:', decoder.write(chunk))
-					plugin_log.build_errors = decoder.write(chunk)
-					plugin_log.end_time = moment().format()
-					update_logs(plugin_log)
-					// data from the standard error is here as buffers
-				});
-				// child.stderr.pipe(child.stdout);
-				child.on('close', (code) => {
-					console.log(`child process exited with code ${code}`)
-					switch (code) {
-						case 0:
-							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-							plugin_log.error_code = "-"
-							break;
-						case 83:
-							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-							plugin_log.error_code = "TestERROR"
-							break;
-						default:
-							plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-							plugin_log.error_code = `ERR_CODE_${code}`
-					}
-					console.log(plugin_log)
-					update_logs(plugin_log)
-				});
-			}
-		},
-		afterDelete(result, params) {
-			// console.log('\nR', result, '\nparams', params)
-			let model_id = result.id
-			console.log(model_id)
-			// delete_model(model_id)
-		}
-	}
+
+    },
+    async afterDelete(result, params) {
+      // console.log('\nR', result, '\nparams', params)
+      const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
+
+      console.log('Delete: ')
+      await modify_stapi_data(result[0], model_name, true)
+      await call_build(result[0], domains, model_name)
+
+    }
+  }
 };
+

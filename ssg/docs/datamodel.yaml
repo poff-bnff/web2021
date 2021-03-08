@@ -1362,7 +1362,7 @@ SupSecPoff: &SupSecPoff
     supporter: #(Component (repeatable))
         - *SupPoff
 
-POFFSupporter: &POFFSupporter
+POFFiSupporter: &POFFSupporter
     _path: /supporters-pages
     title: *Translated
     intro: *Translated
@@ -1477,7 +1477,7 @@ SupSecHoff: &SupSecHoff
     supporter: #(Component (repeatable))
         - *SupHoff
 
-HoffiSupporter: &HoffiSupporter
+HOFFiSupporter: &HoffiSupporter
     _path: /hof-fi-supporters
     # namePrivate: (text, private)
     domain: *Domain
@@ -1875,7 +1875,7 @@ Triopoff: &Triopoff
     name: (text)
     lead: (text)
 
-TrioPoff:
+TrioPOFF:
     _path: /trio-p-oe-ff
     trioPoff_et: *Triopoff #(Component)
     trioPoff_en: *Triopoff #(Component)
@@ -1975,7 +1975,7 @@ Triohoff: &Triohoff
     trioItem_2: *TrioItemHoff #(Component)
     trioItem_3: *TrioItemHoff #(Component)
 
-TrioHoff:
+TrioHOFF:
     _path: /trio-hoff
     trioHoff_et: *Triohoff #(Component)
     trioHoff_en: *Triohoff #(Component)

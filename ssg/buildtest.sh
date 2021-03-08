@@ -2,7 +2,7 @@
 sleep 20
 
 RANDOM=$$
-for i in 'seq 100'
+for i in 'seq 10'
 do
 	exit $RANDOM
 done

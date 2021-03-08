@@ -4,84 +4,63 @@
  * to customize this model
  */
 
-const {
-	StringDecoder
-} = require('string_decoder')
-const decoder = new StringDecoder('utf8')
-
-const {
-	execFile,
-	exec,
-	spawn
-} = require('child_process')
-
-const fs = require('fs')
-const yaml = require('yaml')
 const path = require('path')
-const moment = require("moment-timezone")
-
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
 const {
-	call_update,
-	build_start_to_strapi_logs,
-	call_build,
-	get_domain,
-	get_build_script,
-	update_strapi_logs
-// // } = require('/srv/strapi/strapi-development/helpers/lifecycle_manager.js')
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
 } = require(helper_path)
+
+/**
+const domains = 
+For adding domain you have multiple choice. First for objects that has property 'domain' 
+or has property, that has 'domain' (at the moment festival_edition and programmes) use 
+function get_domain(result). If you know that that object has doimain, but no property 
+to indicate that. Just write the list of domains (as list), example tartuffi_menu. 
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
 
 const model_name = (__dirname.split('/').slice(-2)[0])
 
 module.exports = {
-	lifecycles: {
-		async afterCreate(result, data) {
-			await call_update(result, model_name)
-		},
-		async beforeUpdate(params, data) {},
-		async afterUpdate(result, params, data) {
+  lifecycles: {
+    async afterCreate(result, data) {
+      await call_update(result, model_name)
+    },
+    async beforeUpdate(params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
-			let domains = await get_domain(result)
-			console.log(domains )
-			if (domains.length > 1 ) {
-				for ( let domain of domains ) {
-					let plugin_log = await build_start_to_strapi_logs(result, domain)
-					let build_dir = get_build_script(domain)
-					if (fs.existsSync(build_dir)) {
-						
-						const args = [domain, model_name]
-						await call_build(build_dir, plugin_log, args)
-					} else {
-						plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-						plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
-						update_strapi_logs(plugin_log)
-					}
-				}
-			} else {
-				let error = 'NO DOMAIN'
-				console.log('-------------', error, '-------------')
-				let plugin_log = await build_start_to_strapi_logs(result, '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯', error)
-
-			}
+      if(data.published_at === null ) {  // if strapi publish system goes live
+        console.log('Draft! Delete: ')
+        await modify_stapi_data(params, model_name, true)
+        await call_build(params, domains, model_name)
+      }
+    },
+    async afterUpdate(result, params, data) {
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      console.log('Create or update: ')
+      if (domains.length > 0 ) {
+            await modify_stapi_data(result, model_name)
+          }
+      await call_build(result, domains, model_name)
 
 
-			// let domain = 'filmikool.poff.ee'
-			// let plugin_log = await build_start_to_strapi_logs(result, domain)
-			// let build_dir = path.join(__dirname,'/../../../../../ssg/buildtest.sh')
-			// if (fs.existsSync(build_dir)) {
-			// 	const args = [domain]
-			// 	await call_build(build_dir, plugin_log, args)
-			// } else {
-			// 	plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-			// 	plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
-			// 	update_strapi_logs(plugin_log)
-			// }
-		},
-		afterDelete(result, params) {
-			// console.log('\nR', result, '\nparams', params)
-			let model_id = result.id
-			console.log(model_id)
-			// delete_model(model_id)
-		}
-	}
+    },
+    async afterDelete(result, params) {
+      // console.log('\nR', result, '\nparams', params)
+      const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
+
+      console.log('Delete: ')
+      await modify_stapi_data(result[0], model_name, true)
+      await call_build(result[0], domains, model_name)
+
+    }
+  }
 };
+
+
+

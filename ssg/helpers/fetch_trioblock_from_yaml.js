@@ -9,12 +9,12 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const trio_mapping = {
-    'poff.ee': 'TrioPoff',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHoff',
+    'hoff.ee': 'TrioHOFF',
     'kumu.poff.ee': 'TrioKumu',
     'tartuff.ee': 'TrioTartuff',
     'filmikool.poff.ee': 'TrioFilmikool',

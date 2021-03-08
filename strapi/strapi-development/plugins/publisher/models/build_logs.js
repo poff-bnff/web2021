@@ -16,12 +16,12 @@ module.exports = {
 
     },
     beforeCreate(data) {
-    	console.log(".....beforeCreate data:", data)
-    	if(data.endTime && data.errorCode === "-"){
-    		              console.log("kõik õnnestus")
-    		  	strapi.notification.toggle({type: "warning", message: "kõik õnnestus", title: "HÕFF", timeout: 5000, blockTransition: false})
+    	// console.log(".....beforeCreate data:", data)
+    	// if(data.endTime && data.errorCode === "-"){
+    	// 	              console.log("kõik õnnestus")
+    	// 	  	strapi.notification.toggle({type: "warning", message: "kõik õnnestus", title: "HÕFF", timeout: 5000, blockTransition: false})
 
-    	}
+    	// }
     }
   },
 };
