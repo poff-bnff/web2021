@@ -38,7 +38,7 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 const CHECKPROGRAMMES = false
 
 // Domeenid mille puhul näidatakse ka filme millel ei ole screeningut
-const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_screenings
+const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_screenings || []
 
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
 if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
