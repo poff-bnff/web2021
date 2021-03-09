@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListOfLogs from "./ListOfLogs";
 import Button from '../../../components/Button';
+import LogsAccordion from "./LogsAccordion";
 import { Flex, Text } from '@buffetjs/core';
 
 
@@ -46,11 +47,14 @@ const ButtonAndLog = ({site, buttonText}) => {
 		console.log("pole userinfot")
 	}
 
+	//title kohale viimane logi ja content kohale tabel logidest
+
 	return (
-		<Flex justifyContent='jusify-content' alignItems="normal" className="buttons">
+		<div className="btn-and-log">
 		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
+		    <LogsAccordion site={site}/>
           	{/**<ListOfLogs site={site}/>**/}
-    	</Flex>
+    	</div>
 	);
 };
 

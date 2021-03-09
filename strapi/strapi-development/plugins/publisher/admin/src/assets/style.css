@@ -19,6 +19,11 @@
   margin: 2rem;
 }
 
+.btn-and-log {
+  display:flex;
+  /*flex-direction: column;*/
+}
+
 
 
 /*.live-btn{

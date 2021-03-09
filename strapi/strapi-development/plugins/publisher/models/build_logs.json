@@ -15,6 +15,9 @@
       "type": "string",
       "required": true
     },
+    "type": {
+      "type": "string"
+    },
     "error_code": {
       "type": "string"
     },
