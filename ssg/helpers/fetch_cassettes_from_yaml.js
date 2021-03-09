@@ -647,7 +647,7 @@ function generateAllDataYAML(allData, lang){
         if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name
