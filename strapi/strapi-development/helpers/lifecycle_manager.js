@@ -71,7 +71,7 @@ async function update_strapi_logs(plugin_log) {
 }
 
 async function call_process(build_dir, plugin_log, args) {
-
+    console.log(args)
     const child = spawn(build_dir, args)
 
     child.stdout.on('data', (chunk) => {
@@ -214,7 +214,7 @@ async function call_build(result, domains, model_name) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
                 let plugin_log = await build_start_to_strapi_logs(result, domain)
-                const args = [domain, model_name, 'target', result.id]
+                const args = [domain, model_name, "target", result.id]
                 await call_process(build_dir, plugin_log, args)
             } 
             // else {

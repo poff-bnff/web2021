@@ -1,19 +1,25 @@
 
-sleep 20
+SECONDS=0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
+echo $PWD
 
-RANDOM=$$
-for i in 'seq 10'
-do
-	exit $RANDOM
-done
+# DOMAIN=$1
+# echo $DOMAIN
+# MODEL=$2
+# echo $MODEL
+# TYPE=$3
+# echo $TYPE
+# MODEL_ID=$4
+# echo $MODEL_ID
 
 # 1
 # ls -lRm assets/img/dynamic/img_films/* > uusfail.txt
 # node ./helpers/compile_film_pictures.js
 # node ./helpers/compile_article_pictures.js
 
-# BUILDDIR=$(node ./helpers/name_build_directory.js)
-# echo "Build directory: $BUILDDIR"
+BUILDDIR=$(node ./helpers/name_build_directory.js $1)
+echo "Build directory: $BUILDDIR"
 
 # echo 'STARTING BUILD'
 # [ ! -d './build' ] && mkdir -p './build'
@@ -25,15 +31,11 @@ done
 # [ -d './assets/img/dynamic' ] && rm -r ./assets/img/dynamic/*
 # [ -d './assets/xml' ] && rm -r ./assets/xml/*
 
-
 # echo 'Fetch strapiData.yaml from Strapi'
-# # node ./helpers/a_fetch.js
-# node /home/liis/Documents/web2021/ssg/helpers/a_fetch.js
+# node ./helpers/a_fetch.js
 
-# SECONDS=0
-# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-# cd $DIR
-# echo $PWD
+BUILDMODEL=$(node ./helpers/get_build_model.js $2)
+echo "Build model: $BUILDMODEL"
 
 # printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 # echo 'fetch_articles_from_yaml'
@@ -102,15 +104,11 @@ done
 # echo 'fetch_eventival_persons_from_yaml.js'
 # node ./helpers/fetch_eventival_persons_from_yaml.js
 
-# if [ $DOMAIN = 'filmikool.poff.ee' ]
-# then 
-# 	echo 'fetch_course_from_yaml.js'
-# 	node ./helpers/fetch_course_from_yaml.js
+# echo 'fetch_courses_from_yaml.js'
+# node ./helpers/fetch_courses_from_yaml.js
 
-# 	echo 'fetch_frontpagecourse_block_from_yaml.js'
-# 	node ./helpers/fetch_frontpagecourse_block_from_yaml.js
-# fi
-
+# echo 'fetch_frontpagecourse_block_from_yaml.js'
+# node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
 # printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
@@ -138,6 +136,14 @@ done
 # echo initialise entu_ssg.yaml
 # node ./initialise_entu_ssg.js
 
-# cp -R assets/* 'build/'$BUILDDIR'/assets'
+# cp -R "assets/"* "build/$BUILDDIR/assets"
+
+# if [ "$DOMAIN" == "poff.ee" ]
+# then
+#     printf '\n----------             Copy POFF 2020 to build dir           ----------\n\n'
+#     cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
+#     printf '\n----------               Finished Copy POFF 2020              ----------\n'
+# fi
+
 # node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
