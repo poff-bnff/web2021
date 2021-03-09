@@ -7,13 +7,16 @@ DOMAIN=$1
 echo 'Domain' $DOMAIN
 BUILDDIR=$(node /srv/ssg/helpers/name_build_directory.js $DOMAIN)
 
+TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
+BACKUP_TEMP_DIR=temp_"${TIMESTAMP}"/
+
 echo "Deploy directory: $BUILDDIR"
 if [ $? != 0 ] #BUILDDIR error
 then
 	exit 80
 fi
 echo '\n Making backup \n'
-cp -a "/srv/www/"$DOMAIN"/." "/srv/backup/"$DOMAIN"/temp/"
+cp -a "/srv/www/"$DOMAIN"/." "/srv/backup/"$DOMAIN"/"$BACKUP_TEMP_DIR
 if [ $? != 0 ] #Backup error
 then
 	exit 81
@@ -24,4 +27,4 @@ if [ $? != 0 ] #Live replace error
 then
 	exit 82
 fi
-bash /srv/ssg/create_bak.sh $DOMAIN
+bash /srv/ssg/create_bak.sh $DOMAIN $TIMESTAMP
