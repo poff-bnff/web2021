@@ -62,7 +62,6 @@ for (const ix in languages) {
         // for the purpose of saving slug_en before it will be removed by rueten func.
         let dirSlug = element.slug_en || element.slug_et ? element.slug_en || element.slug_et : null ;
         element = rueten(element, lang);
-        element.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
         if ('slug' in element) {
             element.path = element.slug;
         } else {

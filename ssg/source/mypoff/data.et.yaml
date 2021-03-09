@@ -1,5 +1,4 @@
 path: minupoff
 data:
-    articles: /_fetchdir/articles.et.yaml
     shops: /_fetchdir/shops.et.yaml
     cassettes: /_fetchdir/cassettes.et.yaml

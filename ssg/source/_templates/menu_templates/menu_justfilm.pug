@@ -1,13 +1,13 @@
 - var articleMenuItemDomain = 'just_filmi_article'
 - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
 
-each mainMenuItem in self.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
 
     //- Kui on peamenüü itemil artikkel:
     if mainMenuItem[articleMenuItemDomain] && mainMenuItem.name && typeof mainMenuItem.name !== 'object'
-        if self.data.articles
-            - let mainMenuArticleFromYAML = self.data.articles.filter( (a) => { return mainMenuItem[articleMenuItemDomain].id === a.id })
-            - let mainArticle = mainMenuArticleFromYAML[0]
+        if mainMenuItem[articleMenuItemDomain]
+            - let mainArticle = mainMenuItem[articleMenuItemDomain]
+
             if mainArticle.article_types && mainArticle.article_types[0] && mainArticle.publish === true && mainArticle.title
                 - var mainArticleTypePath = ''
                 li
@@ -32,26 +32,24 @@ each mainMenuItem in self.menu.sort(function(a, b){ return (a.order > b.order) ?
             ul.ul_kaks
                 each subMenuItem in mainMenuItem.subMenuItem.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                     if subMenuItem[articleMenuItemDomain]
-                        if self.data.articles
-                            - let mainMenuArticleFromYAML = self.data.articles.filter( (a) => { return subMenuItem[articleMenuItemDomain].id === a.id })
-                            - let article = mainMenuArticleFromYAML[0]
+                        - let article = subMenuItem[articleMenuItemDomain]
 
-                            if article.article_types && article.article_types[0] && article.publish === true && article.title
-                                - var articleTypePath = ''
-                                li
-                                    each artType in article.article_types
-                                        if artType.name.toLowerCase() === 'about'
-                                            - articleTypePath = artType.slug
-                                        else if artType.name.toLowerCase() === 'interview'
-                                            - articleTypePath = artType.slug
-                                        else if artType.name.toLowerCase() === 'sponsor_story'
-                                            - articleTypePath = artType.slug
-                                        else if artType.name.toLowerCase() === 'news'
-                                            - articleTypePath = artType.slug
-                                        else
-                                            - articleTypePath = article.article_types[0].slug
+                        if article.article_types && article.article_types[0] && article.publish === true && article.title
+                            - var articleTypePath = ''
+                            li
+                                each artType in article.article_types
+                                    if artType.name.toLowerCase() === 'about'
+                                        - articleTypePath = artType.slug
+                                    else if artType.name.toLowerCase() === 'interview'
+                                        - articleTypePath = artType.slug
+                                    else if artType.name.toLowerCase() === 'sponsor_story'
+                                        - articleTypePath = artType.slug
+                                    else if artType.name.toLowerCase() === 'news'
+                                        - articleTypePath = artType.slug
+                                    else
+                                        - articleTypePath = article.article_types[0].slug
 
-                                    a(href= `/${lang_path}${articleTypePath}/${subMenuItem[articleMenuItemDomain].slug}`)= subMenuItem.name
+                                a(href= `/${lang_path}${articleTypePath}/${subMenuItem[articleMenuItemDomain].slug}`)= subMenuItem.name
 
                     else
                         if subMenuItem.customUrl && subMenuItem.customUrl.length && subMenuItem.name && typeof subMenuItem.name !== 'object'
