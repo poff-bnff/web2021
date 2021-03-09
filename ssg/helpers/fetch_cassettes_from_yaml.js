@@ -280,7 +280,6 @@ for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
     let cassettesWithOutSpecifiedScreeningType = []
 
-    const dataFrom = { 'articles': `/_fetchdir/articles.${lang}.yaml` }
     fs.mkdirSync(cassettesPath, { recursive: true })
     timer.log(__filename, `Fetching ${DOMAIN} cassettes ${lang} data`)
     let allData = []
@@ -571,7 +570,6 @@ for (const lang of allLanguages) {
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                s_cassette_copy.data = dataFrom
                 // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
                 generateYaml(s_cassette_copy, lang)
             } else {
@@ -652,7 +650,7 @@ function generateAllDataYAML(allData, lang){
         if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name

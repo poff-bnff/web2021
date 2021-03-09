@@ -90,7 +90,6 @@ if (DOMAIN === 'industry.poff.ee') {
                 continue
             }
 
-            industry_project.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
             industry_project.path = `project/${dirSlug}`
 
             if (industry_project.clipUrl) {
