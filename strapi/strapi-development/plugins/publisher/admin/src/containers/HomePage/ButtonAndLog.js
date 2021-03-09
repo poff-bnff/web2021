@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../../assets/style.css';
-import LogList from "./LogList";
-import Button from "../../../../../../admin/src/components/FullWidthButton/index.js"
+import ListOfLogs from "./ListOfLogs";
+import LogTab from './LogTab';
+import Button from '../../../components/Button';
+import { Flex, Text } from '@buffetjs/core';
 
 
 
@@ -47,10 +48,10 @@ const ButtonAndLog = ({site, buttonText}) => {
 	}
 
 	return (
-     	 <div className="btn-container">
-          	<Button className='live-btn' onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
-          	<LogList site={site}/>
-      	</div>
+		<div className="btn-and-log">
+		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
+          	<ListOfLogs site={site}/>
+    	</div>
 	);
 };
 
