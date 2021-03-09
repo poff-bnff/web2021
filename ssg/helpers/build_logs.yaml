@@ -1,0 +1,506 @@
+-
+    time: '2021.03.03 00:04:43 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_bruno.sh
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:04:44 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_bruno.sh
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:05:16 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 8252
+    error: null
+-
+    time: '2021.03.03 00:05:23 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 17524
+    error: null
+-
+    time: '2021.03.03 00:05:30 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 13892
+    error: null
+-
+    time: '2021.03.03 00:05:38 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 7636
+    error: null
+-
+    time: '2021.03.03 00:05:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18068
+    error: null
+-
+    time: '2021.03.03 00:05:51 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 5056
+    error: null
+-
+    time: '2021.03.03 00:06:11 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 3112
+    error: null
+-
+    time: '2021.03.03 00:06:21 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 11128
+    error: null
+-
+    time: '2021.03.03 00:06:24 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 16592
+    error: null
+-
+    time: '2021.03.03 00:06:27 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 14520
+    error: null
+-
+    time: '2021.03.03 00:06:29 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 10244
+    error: null
+-
+    time: '2021.03.03 00:07:14 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 2652
+    error: null
+-
+    time: '2021.03.03 00:07:19 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 2444
+    error: null
+-
+    time: '2021.03.03 00:09:03 (+02:00)'
+    type: Build fail stderr
+    duration: 259980
+    command:
+        domain: full
+        file: build_bruno.sh
+        type: bruno
+        parameters: davai
+        time: '2021.03.03 00:04:43 (+02:00)'
+    PID: 18780
+    error: |
+        rm: cannot remove './source/_fetchdir/*': No such file or directory
+        rm: cannot remove './assets/xml/*': No such file or directory
+-
+    time: '2021.03.03 00:09:04 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:12:07 (+02:00)'
+    type: Build finish
+    duration: 183508
+    command:
+        domain: full
+        file: build_filmikool.sh
+        type: filmik
+        parameters: davai1
+        time: '2021.03.03 00:05:16 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:12:07 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:15:18 (+02:00)'
+    type: Build finish
+    duration: 190715
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: filmik
+        parameters: davai2
+        time: '2021.03.03 00:05:23 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:15:18 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:18:30 (+02:00)'
+    type: Build finish
+    duration: 191864
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai2
+        time: '2021.03.03 00:05:30 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:18:30 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:30:24 (+02:00)'
+    type: Build finish
+    duration: 713862
+    command:
+        domain: full
+        file: build_industry.sh
+        type: industry
+        parameters: davai2
+        time: '2021.03.03 00:05:37 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:30:24 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:33:28 (+02:00)'
+    type: Build finish
+    duration: 184252
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai2
+        time: '2021.03.03 00:05:45 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:33:28 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:36:26 (+02:00)'
+    type: Build finish
+    duration: 177960
+    command:
+        domain: full
+        file: build_kumu.sh
+        type: kumu
+        parameters: davai2
+        time: '2021.03.03 00:05:51 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:36:26 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:45:02 (+02:00)'
+    type: Build finish
+    duration: 516292
+    command:
+        domain: full
+        file: build_shorts.sh
+        type: shorts
+        parameters: davai
+        time: '2021.03.03 00:06:11 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:45:02 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:57:39 (+02:00)'
+    type: Build finish
+    duration: 757118
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai
+        time: '2021.03.03 00:06:21 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 00:57:39 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:16:53 (+02:00)'
+    type: Build finish
+    duration: 1153359
+    command:
+        domain: full
+        file: build_poff.sh
+        type: poff
+        parameters: davai2
+        time: '2021.03.03 00:06:24 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:16:53 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:21:21 (+02:00)'
+    type: Build finish
+    duration: 267976
+    command:
+        domain: full
+        file: build_tartuff.sh
+        type: tartu
+        parameters: davai22
+        time: '2021.03.03 00:06:27 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:21:21 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:26:15 (+02:00)'
+    type: Build finish
+    duration: 294254
+    command:
+        domain: full
+        file: build_hoff.sh
+        type: hoff
+        parameters: davai22
+        time: '2021.03.03 00:06:29 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:26:15 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:42:09 (+02:00)'
+    type: Build finish
+    duration: 954439
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai
+        parameters: ''
+        time: '2021.03.03 00:07:14 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:42:09 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 18780
+    error: null
+-
+    time: '2021.03.03 01:58:06 (+02:00)'
+    type: Build finish
+    duration: 956999
+    command:
+        domain: full
+        file: build_just.sh
+        type: davai2
+        parameters: ''
+        time: '2021.03.03 00:07:19 (+02:00)'
+    PID: 18780
+    error: null
