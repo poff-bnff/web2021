@@ -21,14 +21,15 @@ const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
 const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
-const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+// const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
+// const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 const whichScreeningTypesToFetch = []
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
@@ -37,7 +38,7 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 const CHECKPROGRAMMES = false
 
 // Domeenid mille puhul näidatakse ka filme millel ei ole screeningut
-const skipScreeningsCheckDomains = ['poff.ee', 'hoff.ee']
+const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_screenings || []
 
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
 if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
@@ -226,6 +227,9 @@ const minimodel_screenings = {
     },
     'screening_types': {
         model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette'
     }
 }
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
@@ -250,13 +254,7 @@ if(CHECKPROGRAMMES) {
 } else if (!CHECKPROGRAMMES) { //  && DOMAIN !== 'poff.ee' commented out, unsure why set in first place
 
     let cassettesWithOutFestivalEditions = []
-    let festival_editions = []
-    // For PÖFF, fetch only online 2021 FE ID 7
-    if (DOMAIN !== 'poff.ee') {
-        festival_editions = STRAPIDATA_FE.map(edition => edition.id)
-    } else {
-        festival_editions = [7]
-    }
+
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
@@ -282,7 +280,6 @@ for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
     let cassettesWithOutSpecifiedScreeningType = []
 
-    const dataFrom = { 'articles': `/_fetchdir/articles.${lang}.yaml` }
     fs.mkdirSync(cassettesPath, { recursive: true })
     timer.log(__filename, `Fetching ${DOMAIN} cassettes ${lang} data`)
     let allData = []
@@ -382,15 +379,15 @@ for (const lang of allLanguages) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
-
                     let screeningNames = function(item) {
                         let itemNames = item.name
                         return itemNames
                     }
                     // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
-                    if(!screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
+                    if(!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
                         continue
                     }
+
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
                     hasOneCorrectScreening = true
@@ -573,7 +570,6 @@ for (const lang of allLanguages) {
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                s_cassette_copy.data = dataFrom
                 // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
                 generateYaml(s_cassette_copy, lang)
             } else {
@@ -654,7 +650,7 @@ function generateAllDataYAML(allData, lang){
         if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name
