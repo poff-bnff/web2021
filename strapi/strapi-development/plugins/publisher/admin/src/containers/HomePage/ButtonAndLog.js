@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListOfLogs from "./ListOfLogs";
-import LogTab from './LogTab';
 import Button from '../../../components/Button';
+import LogsAccordion from "./LogsAccordion";
 import { Flex, Text } from '@buffetjs/core';
 
 
@@ -47,10 +47,13 @@ const ButtonAndLog = ({site, buttonText}) => {
 		console.log("pole userinfot")
 	}
 
+	//title kohale viimane logi ja content kohale tabel logidest
+
 	return (
 		<div className="btn-and-log">
 		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
-          	<ListOfLogs site={site}/>
+		    <LogsAccordion site={site}/>
+          	{/**<ListOfLogs site={site}/>**/}
     	</div>
 	);
 };

@@ -7,8 +7,6 @@ import moment from 'moment';
 
 const ListOfLogs = ({site}) => {
 
-
-
     const [logs, setLogs] = useState({data: []});
     useEffect ( () => {GetLogs()}, []);
 
