@@ -85,7 +85,7 @@
       "collection": "event",
       "via": "course"
     },
-    "durationTotal": {
+    "volume": {
       "type": "string"
     }
   }
