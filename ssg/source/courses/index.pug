@@ -34,8 +34,7 @@ block content
 
                             if course.durationTotal
                                 .str_info_label.dark_semi Kestus
-                                .str_info_value.dark_1.thin_300
-                                    +dur(course.durationTotal)
+                                .str_info_value.dark_1.thin_300= course.durationTotal
 
                             if course.languages && course.languages.length
                                 .str_info_label.dark_semi= self.label.film.languages
