@@ -101,7 +101,6 @@ if (DOMAIN === 'industry.poff.ee') {
         if (element['slug_en']) {
             let dirSlug = element['slug_en']
             element.path = `events/${dirSlug}`
-            element.data = {'articles': '/_fetchdir/articles.en.yaml'};
 
             element = rueten(element, 'en');
 

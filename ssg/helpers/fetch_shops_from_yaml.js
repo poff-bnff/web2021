@@ -48,7 +48,6 @@ for (const lang of allLanguages) {
 
                                 prodCatList.orderedProductCategories[catIx].product_category = categoryFromYAMLcopy
 
-                                categoryFromYAMLcopy.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
                                 if (categoryFromYAMLcopy[`slug_${lang}`]) {
                                     categoryFromYAMLcopy.path = `${categoryFromYAMLcopy[`slug_${lang}`]}`;
                                 }

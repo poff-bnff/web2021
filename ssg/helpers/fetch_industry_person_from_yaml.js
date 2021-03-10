@@ -81,7 +81,6 @@ if (DOMAIN !== 'industry.poff.ee') {
                 continue
             }
             industry_person.path = industry_person.slug;
-            industry_person.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
 
             if (industry_person.clipUrl) {
                 if(industry_person.clipUrl && industry_person.clipUrl.length > 10) {

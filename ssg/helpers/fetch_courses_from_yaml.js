@@ -145,8 +145,6 @@ if (DOMAIN === 'filmikool.poff.ee') {
                 course.credentials.roleCompaniesByRole = roleCompanyTypes
             }
 
-
-            course.data = {'articles': `/_fetchdir/articles.${lang}.yaml`};
             course.path = `courses/${dirSlug}`
 
             const oneYaml = yaml.safeDump(course, { 'noRefs': true, 'indent': '4' });

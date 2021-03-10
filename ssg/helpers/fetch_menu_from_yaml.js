@@ -6,6 +6,7 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const fetchDirDirPath = path.join(sourceDir, '_fetchdir')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
@@ -35,7 +36,7 @@ const artMapping = {
     'filmikool.poff.ee': 'filmikooli_article',
     'oyafond.ee': 'bruno_article'
 }
-const artMapping2 = {
+const artModelMapping = {
     'poff.ee': 'POFFiArticle',
     'justfilm.ee': 'JustFilmiArticle',
     'kinoff.poff.ee': 'KinoffiArticle',
@@ -47,26 +48,52 @@ const artMapping2 = {
     'filmikool.poff.ee': 'FilmikooliArticle',
     'oyafond.ee': 'BrunoArticle'
 }
+const artMappingSubMenuItem = {
+    'poff.ee': 'PoffiSubMenuItem',
+    'justfilm.ee': 'JustFilmiSubMenuItem',
+    'kinoff.poff.ee': 'KinoffiSubMenuItem',
+    'industry.poff.ee': 'IndustrySubMenuItem',
+    'shorts.poff.ee': 'ShortsiSubMenuItem',
+    'hoff.ee': 'HoffiSubMenuItem',
+    'kumu.poff.ee': 'KumuSubMenuItem',
+    'tartuff.ee': 'TartuffiSubMenuItem',
+    'filmikool.poff.ee': 'FilmikooliSubMenuItem',
+    'oyafond.ee': 'BrunoSubMenuItem'
+}
 const minimodel = {
     [`${artMapping[DOMAIN]}`]: {
-        model_name: artMapping2[DOMAIN]
+        model_name: artModelMapping[DOMAIN],
+        expand: {
+            'article_types': {
+                model_name: 'ArticleType'
+            }
+        }
     },
+    'subMenuItem': {
+        model_name: artMappingSubMenuItem[DOMAIN],
+        expand: {
+            [artMapping[DOMAIN]]: {
+                model_name: artModelMapping[DOMAIN],
+                expand: {
+                    'article_types': {
+                        model_name: 'ArticleType'
+                    }
+                }
+            }
+        }
+    }
 }
 STRAPIDATA_MENU = fetchModel(STRAPIDATA_MENUS, minimodel)
 
 const languages = ['en', 'et', 'ru']
 for (const lang of languages) {
 
-    const globalDataFile =  path.join(sourceDir, `global.${lang}.yaml`)
-    let globalData = yaml.safeLoad(fs.readFileSync(globalDataFile, 'utf8'))
-    globalData.menu = []
+    const menuDataFile =  path.join(fetchDirDirPath, `menu.${lang}.yaml`)
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_MENU))
-    for (values in copyData) {
-        globalData.menu.push(rueten(copyData[values], lang))
-    }
+    menuData = rueten(copyData, lang)
 
-    let globalDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(globalDataFile, globalDataYAML, 'utf8')
+    let menuDataYAML = yaml.safeDump(menuData, { 'noRefs': true, 'indent': '4' })
+    fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8')
     console.log(`Fetched ${DOMAIN} menu ${lang} data`)
 }

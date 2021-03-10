@@ -86,7 +86,7 @@ for (const ix in languages) {
             element.slug = dirSlug;
         }
 
-        element.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml', 'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
+        element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
 
         if (dirSlug != null && typeof element.path !== 'undefined') {
             const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
