@@ -9,6 +9,7 @@ const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
+
 function startBuildManager(options) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
     if ((process.argv[2] === 'force' || options.file === 'force') && !options.domain && !options.type && !options.parameters) {
@@ -218,3 +219,28 @@ function checkIfProcessAlreadyRunning() {
 
 exports.startBuildManager = startBuildManager
 exports.calculateAverageDuration = calculateAverageDuration
+
+const { model }= require('./get_build_model.js')
+
+const params = process.argv.slice(2) || ''
+const args = params[0].split(',')
+
+console.log('params', params, args)
+
+let file = `build_${model(args[1])}.sh`
+
+if(params[0] === 'force') {
+    file = 'force'
+}
+
+let options = {
+    'domain': args[0],
+    'file': file,
+    'type': args[2],
+    'parameters': args[3]
+}
+
+console.log('options', options)
+
+calculateAverageDuration(options)
+startBuildManager(options)

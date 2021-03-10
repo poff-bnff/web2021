@@ -28,6 +28,17 @@ const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScree
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 const whichScreeningTypesToFetch = []
+
+const params = process.argv.slice(2)
+const build_type = params[1]
+const model_id = params[2]
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+// if(build_type === 'target') {
+//     addConfigPathAliases(['/cassettes'])
+// }
+
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 

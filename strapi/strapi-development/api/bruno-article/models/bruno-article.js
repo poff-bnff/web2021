@@ -50,7 +50,6 @@ module.exports = {
           }
       await call_build(result, domains, model_name)
 
-
     },
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)

@@ -9,6 +9,11 @@ const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+const params = process.argv.slice(2)
+console.log(params)
+const build_type = params[0]
+const param_article_id = params[1]
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
@@ -156,7 +161,10 @@ for (const lang of languages) {
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
-
+                if(build_type === 'target' && !element.id === param_article_id) {
+                    continue
+                }
+                
                 fs.mkdirSync(element.directory, { recursive: true });
                 for (key in element) {
 
@@ -190,6 +198,9 @@ for (const lang of languages) {
 
                 if (fs.existsSync(`${sourceDir}${article_template}`)) {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include ${article_template}`)
+                    if(build_type === 'target') {
+                        addConfigPathAliases([element.directory])
+                    }
                 } else {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include /_templates/article_${DEFAULTTEMPLATENAME}_index_template.pug`)
                 }

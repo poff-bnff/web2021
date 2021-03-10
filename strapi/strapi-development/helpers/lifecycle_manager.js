@@ -72,7 +72,7 @@ async function update_strapi_logs(plugin_log) {
 
 async function call_process(build_dir, plugin_log, args) {
     console.log(args)
-    const child = spawn(build_dir, args)
+    const child = spawn('node', [build_dir, args])
 
     child.stdout.on('data', (chunk) => {
         console.log('stdout', decoder.write(chunk))
@@ -165,7 +165,8 @@ function get_build_script(domain) {
     let short_domain = mapping_domain[domain]
     if(short_domain) {
         // let dir_to_build = path.join(__dirname,`/../../../ssg/buildtest.sh`)
-        let dir_to_build = path.join(__dirname,`/../../../ssg/build_${short_domain}.sh`)
+        // let dir_to_build = path.join(__dirname,`/../../../ssg/build_${short_domain}.sh`)
+        let dir_to_build = path.join(__dirname,`/../../../ssg/helpers/build_manager.js`)
         return dir_to_build
     } else {
         console.log('No build script provided for', domain.toUpperCase(),  'or this domain is built through Slack.')
