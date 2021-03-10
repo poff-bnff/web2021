@@ -238,6 +238,9 @@ const minimodel_screenings = {
     },
     'screening_types': {
         model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette'
     }
 }
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
@@ -387,15 +390,15 @@ for (const lang of allLanguages) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
-
                     let screeningNames = function(item) {
                         let itemNames = item.name
                         return itemNames
                     }
                     // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
-                    if(!screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
+                    if(!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
                         continue
                     }
+
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
                     hasOneCorrectScreening = true
@@ -658,7 +661,7 @@ function generateAllDataYAML(allData, lang){
         if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name

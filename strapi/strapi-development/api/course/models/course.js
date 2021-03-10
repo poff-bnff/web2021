@@ -35,12 +35,6 @@ module.exports = {
     },
     async beforeUpdate(params, data) {
 
-      if(data.startDate && data.endDate){
-        let start = moment(data.startDate).tz('Europe/Tallinn')
-        let end = moment(data.endDate).tz('Europe/Tallinn')
-        data.durationTotal = moment.duration(end.diff(start)).as('minutes')
-      }
-
       if(data.published_at === null ) {  // if strapi publish system goes live
         console.log('Draft! Delete: ')
         await modify_stapi_data(params, model_name, true)
