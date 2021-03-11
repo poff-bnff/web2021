@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "supporters_pages",
   "info": {
-    "name": "POFF_Supporter"
+    "name": "POFFi_Supporter",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
