@@ -8,7 +8,8 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": false
+    "draftAndPublish": false,
+    "populateCreatorFields": true
   },
   "attributes": {
     "titlePrivate": {
