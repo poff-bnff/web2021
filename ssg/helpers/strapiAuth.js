@@ -19,8 +19,6 @@ async function strapiAuth() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            rejectUnauthorized: false
-
         }
         // console.log({options, postData})
         const request = https.request(options, (response) => {
