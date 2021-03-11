@@ -19,6 +19,7 @@ async function strapiQuery(options, dataObject = false) {
     }
     options.headers['Authorization'] = `Bearer ${TOKEN}`
     options['host'] = process.env['StrapiHostPoff2021']
+    options['rejectUnauthorized'] = false
     // options.timeout = 30000
 
     // console.log(options, JSON.stringify((dataObject) || ''))
