@@ -30,14 +30,14 @@ const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCasset
 const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
-const build_type = params[1]
-const model_id = params[2]
+const build_type = params[0]
+const param_changed_object_id = params[1]
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
-// if(build_type === 'target') {
-//     addConfigPathAliases(['/cassettes'])
-// }
+if(build_type === 'target') {
+    addConfigPathAliases(['/cassettes'])
+}
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
@@ -608,6 +608,10 @@ for (const lang of allLanguages) {
 
 function generateYaml(element, lang){
     let yamlStr = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' })
+
+    if (build_type === 'target') {
+        addConfigPathAliases([element.directory])
+    }
 
     fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8')
 

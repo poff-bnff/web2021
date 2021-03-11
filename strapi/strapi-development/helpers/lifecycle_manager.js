@@ -53,6 +53,7 @@ async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) 
             admin_user: {
                 id: editor
             },
+            type: 'build',
             site: domain,
             error_code: err,
             build_errors: b_err
