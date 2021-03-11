@@ -27,14 +27,14 @@ do
          bash /srv/ssg/build_hoff.sh
          ;;
       3)
-         /bin/echo "Not yet available" 
+         bash /srv/ssg/build_filmikool.sh
          ;;
       4)
          bash /srv/ssg/deploy.sh hoff.ee
          ;;
-      5) 
-         /bin/echo "Not yet available"
-         ;;       
+      5)
+         bash /srv/ssg/deploy.sh filmikool.poff.ee
+         ;;
       q)
          /bin/echo "Goodbye"
          exit 0

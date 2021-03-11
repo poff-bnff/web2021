@@ -62,9 +62,6 @@
     "publishFrom": {
       "type": "datetime"
     },
-    "publishUntil": {
-      "type": "boolean"
-    },
     "publish_et": {
       "type": "boolean"
     },
@@ -96,6 +93,9 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "publishUntil": {
+      "type": "datetime"
     }
   }
 }
