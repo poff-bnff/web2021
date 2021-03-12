@@ -22,13 +22,13 @@ const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'
 
 const params = process.argv.slice(2)
 const build_type = params[0]
-const model_id = params[1]
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
+
 if(build_type === 'target') {
-    addConfigPathAliases(['/screenings'])
+    addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
+
 const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]

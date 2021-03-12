@@ -11,9 +11,8 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 const params = process.argv.slice(2)
-console.log(params)
 const build_type = params[0]
-const param_article_id = params[1]
+const param_article_id = params[1].split(',')[0]
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')

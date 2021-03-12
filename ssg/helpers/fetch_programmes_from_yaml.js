@@ -14,6 +14,19 @@ const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.ya
 const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+
+//kui on muudetud objekti ennast
+const param_changed_programme_id = params[1].split(',')[0]
+// kui on muudetud teist objekti ja programm on lisa parameeter mida otsitakse
+// neid voib olla mitu
+let param_cassette_programme_id = params[1].split(',').slice(1)
+console.log(param_cassette_programme_id)
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
 const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 
 const languages = ['en', 'et', 'ru']
@@ -49,6 +62,9 @@ for (const ix in languages) {
 
     var allData = []
     for (const ix in STRAPIDATA_PROGRAMMES) {
+        if (param_build_type === 'target' && !param_cassette_programme_id.includes(STRAPIDATA_PROGRAMMES[ix].id)) {
+            continue
+        }
 
         if (mapping[DOMAIN]) {
             var templateDomainName = mapping[DOMAIN];
@@ -86,12 +102,17 @@ for (const ix in languages) {
             element.slug = dirSlug;
         }
 
+
         element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
 
         if (dirSlug != null && typeof element.path !== 'undefined') {
             const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
-
+           
+            if (param_build_type === 'target') {
+                const configPath = path.join(fetchDataDir, dirSlug)
+                addConfigPathAliases([configPath])
+            }
             allData.push(element)
 
             let saveDir = path.join(fetchDataDir, dirSlug);

@@ -225,7 +225,7 @@ const { model }= require('./get_build_model.js')
 const params = process.argv.slice(2) || ''
 const args = params[0].split(',')
 
-console.log('params', params, args)
+console.log('args', args)
 
 let file = `build_${model(args[1])}.sh`
 
@@ -237,7 +237,7 @@ let options = {
     'domain': args[0],
     'file': file,
     'type': args[2],
-    'parameters': args[3]
+    'parameters': args.slice(3)
 }
 
 console.log('options', options)

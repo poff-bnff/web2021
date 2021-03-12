@@ -4138,3 +4138,2173 @@
           code: 'MODULE_NOT_FOUND',
           requireStack: []
         }
+-
+    time: '2021.03.11 12:41:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:41:45 (+02:00)'
+    PID: 88480
+    error: null
+-
+    time: '2021.03.11 12:41:45 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:41:45 (+02:00)'
+    PID: 88480
+    error: null
+-
+    time: '2021.03.11 12:41:48 (+02:00)'
+    type: Build fail stderr
+    duration: 2483
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:41:45 (+02:00)'
+    PID: 88480
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 12:46:23 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:46:23 (+02:00)'
+    PID: 88653
+    error: null
+-
+    time: '2021.03.11 12:46:23 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:46:23 (+02:00)'
+    PID: 88653
+    error: null
+-
+    time: '2021.03.11 12:46:25 (+02:00)'
+    type: Build fail stderr
+    duration: 2503
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 12:46:23 (+02:00)'
+    PID: 88653
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 13:36:23 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 13:36:23 (+02:00)'
+    PID: 90151
+    error: null
+-
+    time: '2021.03.11 13:36:23 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 13:36:23 (+02:00)'
+    PID: 90151
+    error: null
+-
+    time: '2021.03.11 13:36:23 (+02:00)'
+    type: Build fail error
+    duration: 74
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 13:36:23 (+02:00)'
+    PID: 90151
+    error: >-
+        {"killed":false,"code":127,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_.sh hoff.ee target 3"}
+-
+    time: '2021.03.11 13:36:23 (+02:00)'
+    type: Build fail stderr
+    duration: 74
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 13:36:23 (+02:00)'
+    PID: 90151
+    error: >
+        bash: /home/liis/Documents/web2021/ssg/build_.sh: No such file or
+        directory
+-
+    time: '2021.03.11 14:36:57 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:36:57 (+02:00)'
+    PID: 92657
+    error: null
+-
+    time: '2021.03.11 14:36:57 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:36:57 (+02:00)'
+    PID: 92657
+    error: null
+-
+    time: '2021.03.11 14:36:58 (+02:00)'
+    type: Build fail stderr
+    duration: 1197
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:36:57 (+02:00)'
+    PID: 92657
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 14:38:35 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:38:35 (+02:00)'
+    PID: 92780
+    error: null
+-
+    time: '2021.03.11 14:38:35 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:38:35 (+02:00)'
+    PID: 92780
+    error: null
+-
+    time: '2021.03.11 14:38:36 (+02:00)'
+    type: Build fail stderr
+    duration: 612
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:38:35 (+02:00)'
+    PID: 92780
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 14:41:44 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:41:44 (+02:00)'
+    PID: 92914
+    error: null
+-
+    time: '2021.03.11 14:41:44 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:41:44 (+02:00)'
+    PID: 92914
+    error: null
+-
+    time: '2021.03.11 14:41:44 (+02:00)'
+    type: Build fail stderr
+    duration: 560
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.11 14:41:44 (+02:00)'
+    PID: 92914
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 14:51:04 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:51:03 (+02:00)'
+    PID: 93925
+    error: null
+-
+    time: '2021.03.11 14:51:04 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:51:03 (+02:00)'
+    PID: 93925
+    error: null
+-
+    time: '2021.03.11 14:51:23 (+02:00)'
+    type: Build fail stderr
+    duration: 19338
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:51:03 (+02:00)'
+    PID: 93925
+    error: "/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:32\nconst DOMAIN = process.env['DOMAIN'] || 'hoff.ee';\n      ^\n\nSyntaxError: Identifier 'DOMAIN' has already been declared\n    at wrapSafe (internal/modules/cjs/loader.js:979:16)\n    at Module._compile (internal/modules/cjs/loader.js:1027:27)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 14:52:24 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:52:24 (+02:00)'
+    PID: 94031
+    error: null
+-
+    time: '2021.03.11 14:52:24 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:52:24 (+02:00)'
+    PID: 94031
+    error: null
+-
+    time: '2021.03.11 14:52:42 (+02:00)'
+    type: Build fail stderr
+    duration: 17605
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters: '3'
+        time: '2021.03.11 14:52:24 (+02:00)'
+    PID: 94031
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 16:20:26 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:20:26 (+02:00)'
+    PID: 97104
+    error: null
+-
+    time: '2021.03.11 16:20:26 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:20:26 (+02:00)'
+    PID: 97104
+    error: null
+-
+    time: '2021.03.11 16:20:26 (+02:00)'
+    type: Build fail error
+    duration: 156
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:20:26 (+02:00)'
+    PID: 97104
+    error: >-
+        {"killed":false,"code":127,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_.sh hoff.ee target 2"}
+-
+    time: '2021.03.11 16:20:27 (+02:00)'
+    type: Build fail stderr
+    duration: 156
+    command:
+        domain: hoff.ee
+        file: build_.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:20:26 (+02:00)'
+    PID: 97104
+    error: >
+        bash: /home/liis/Documents/web2021/ssg/build_.sh: No such file or
+        directory
+-
+    time: '2021.03.11 16:21:30 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:21:30 (+02:00)'
+    PID: 97148
+    error: null
+-
+    time: '2021.03.11 16:21:30 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:21:30 (+02:00)'
+    PID: 97148
+    error: null
+-
+    time: '2021.03.11 16:21:48 (+02:00)'
+    type: Build fail stderr
+    duration: 18543
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:21:30 (+02:00)'
+    PID: 97148
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 16:23:42 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:23:42 (+02:00)'
+    PID: 97327
+    error: null
+-
+    time: '2021.03.11 16:23:42 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:23:42 (+02:00)'
+    PID: 97327
+    error: null
+-
+    time: '2021.03.11 16:24:00 (+02:00)'
+    type: Build fail stderr
+    duration: 18335
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters: '2'
+        time: '2021.03.11 16:23:42 (+02:00)'
+    PID: 97327
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 16:32:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 16:32:45 (+02:00)'
+    PID: 97933
+    error: null
+-
+    time: '2021.03.11 16:32:45 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 16:32:45 (+02:00)'
+    PID: 97933
+    error: null
+-
+    time: '2021.03.11 16:33:02 (+02:00)'
+    type: Build fail stderr
+    duration: 17201
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 16:32:45 (+02:00)'
+    PID: 97933
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:00:46 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:00:46 (+02:00)'
+    PID: 98866
+    error: null
+-
+    time: '2021.03.11 17:00:47 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:00:46 (+02:00)'
+    PID: 98866
+    error: null
+-
+    time: '2021.03.11 17:01:15 (+02:00)'
+    type: Build fail stderr
+    duration: 28391
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:00:46 (+02:00)'
+    PID: 98866
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:01:52 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:01:52 (+02:00)'
+    PID: 98990
+    error: null
+-
+    time: '2021.03.11 17:01:52 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:01:52 (+02:00)'
+    PID: 98990
+    error: null
+-
+    time: '2021.03.11 17:02:11 (+02:00)'
+    type: Build fail stderr
+    duration: 18853
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:01:52 (+02:00)'
+    PID: 98990
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:07:29 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:07:29 (+02:00)'
+    PID: 99753
+    error: null
+-
+    time: '2021.03.11 17:07:29 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:07:29 (+02:00)'
+    PID: 99753
+    error: null
+-
+    time: '2021.03.11 17:07:48 (+02:00)'
+    type: Build fail stderr
+    duration: 18880
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:07:29 (+02:00)'
+    PID: 99753
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:20:44 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:20:43 (+02:00)'
+    PID: 100515
+    error: null
+-
+    time: '2021.03.11 17:20:44 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:20:43 (+02:00)'
+    PID: 100515
+    error: null
+-
+    time: '2021.03.11 17:21:02 (+02:00)'
+    type: Build fail stderr
+    duration: 18283
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 17:20:43 (+02:00)'
+    PID: 100515
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:23:47 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:23:47 (+02:00)'
+    PID: 100678
+    error: null
+-
+    time: '2021.03.11 17:23:47 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:23:47 (+02:00)'
+    PID: 100678
+    error: null
+-
+    time: '2021.03.11 17:24:06 (+02:00)'
+    type: Build fail stderr
+    duration: 18192
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:23:47 (+02:00)'
+    PID: 100678
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:196:30)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:81:36)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:24:23 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:24:23 (+02:00)'
+    PID: 100781
+    error: null
+-
+    time: '2021.03.11 17:24:24 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:24:23 (+02:00)'
+    PID: 100781
+    error: null
+-
+    time: '2021.03.11 17:24:25 (+02:00)'
+    type: Build fail stderr
+    duration: 1890
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:24:23 (+02:00)'
+    PID: 100781
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 17:26:33 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:26:33 (+02:00)'
+    PID: 100929
+    error: null
+-
+    time: '2021.03.11 17:26:33 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:26:33 (+02:00)'
+    PID: 100929
+    error: null
+-
+    time: '2021.03.11 17:26:35 (+02:00)'
+    type: Build fail stderr
+    duration: 1820
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:26:33 (+02:00)'
+    PID: 100929
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 17:27:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:27:45 (+02:00)'
+    PID: 101054
+    error: null
+-
+    time: '2021.03.11 17:27:45 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:27:45 (+02:00)'
+    PID: 101054
+    error: null
+-
+    time: '2021.03.11 17:27:47 (+02:00)'
+    type: Build fail stderr
+    duration: 1845
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+        time: '2021.03.11 17:27:45 (+02:00)'
+    PID: 101054
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:196:30)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:28:51 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:28:51 (+02:00)'
+    PID: 101115
+    error: null
+-
+    time: '2021.03.11 17:28:52 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:28:51 (+02:00)'
+    PID: 101115
+    error: null
+-
+    time: '2021.03.11 17:28:54 (+02:00)'
+    type: Build fail stderr
+    duration: 2529
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '4'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:28:51 (+02:00)'
+    PID: 101115
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:32:57 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:32:57 (+02:00)'
+    PID: 101273
+    error: null
+-
+    time: '2021.03.11 17:32:58 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:32:57 (+02:00)'
+    PID: 101273
+    error: null
+-
+    time: '2021.03.11 17:33:17 (+02:00)'
+    type: Build fail stderr
+    duration: 19117
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:32:57 (+02:00)'
+    PID: 101273
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:34:57 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:34:57 (+02:00)'
+    PID: 101379
+    error: null
+-
+    time: '2021.03.11 17:34:57 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:34:57 (+02:00)'
+    PID: 101379
+    error: null
+-
+    time: '2021.03.11 17:35:16 (+02:00)'
+    type: Build fail stderr
+    duration: 19162
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:34:57 (+02:00)'
+    PID: 101379
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:97:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:35:58 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:35:58 (+02:00)'
+    PID: 101476
+    error: null
+-
+    time: '2021.03.11 17:35:59 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:35:58 (+02:00)'
+    PID: 101476
+    error: null
+-
+    time: '2021.03.11 17:36:15 (+02:00)'
+    type: Build fail stderr
+    duration: 16353
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:35:58 (+02:00)'
+    PID: 101476
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:37:32 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:37:32 (+02:00)'
+    PID: 101581
+    error: null
+-
+    time: '2021.03.11 17:37:32 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:37:32 (+02:00)'
+    PID: 101581
+    error: null
+-
+    time: '2021.03.11 17:37:48 (+02:00)'
+    type: Build fail stderr
+    duration: 16123
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '4'
+            - '4'
+        time: '2021.03.11 17:37:32 (+02:00)'
+    PID: 101581
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:242:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:43:22 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:43:22 (+02:00)'
+    PID: 101954
+    error: null
+-
+    time: '2021.03.11 17:43:22 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:43:22 (+02:00)'
+    PID: 101954
+    error: null
+-
+    time: '2021.03.11 17:43:23 (+02:00)'
+    type: Build fail stderr
+    duration: 1183
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '2'
+        time: '2021.03.11 17:43:22 (+02:00)'
+    PID: 101954
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_menu_from_yaml.js:94:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.11 17:54:54 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+        time: '2021.03.11 17:54:54 (+02:00)'
+    PID: 102232
+    error: null
+-
+    time: '2021.03.11 17:54:54 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+        time: '2021.03.11 17:54:54 (+02:00)'
+    PID: 102232
+    error: null
+-
+    time: '2021.03.11 17:54:55 (+02:00)'
+    type: Build fail stderr
+    duration: 534
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+        time: '2021.03.11 17:54:54 (+02:00)'
+    PID: 102232
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 17:55:10 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:55:10 (+02:00)'
+    PID: 102290
+    error: null
+-
+    time: '2021.03.11 17:55:10 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:55:10 (+02:00)'
+    PID: 102290
+    error: null
+-
+    time: '2021.03.11 17:55:11 (+02:00)'
+    type: Build fail stderr
+    duration: 418
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '3'
+            - '1'
+            - '2'
+        time: '2021.03.11 17:55:10 (+02:00)'
+    PID: 102290
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 21:50:56 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:50:56 (+02:00)'
+    PID: 108400
+    error: null
+-
+    time: '2021.03.11 21:50:57 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:50:56 (+02:00)'
+    PID: 108400
+    error: null
+-
+    time: '2021.03.11 21:50:57 (+02:00)'
+    type: Build fail stderr
+    duration: 606
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:50:56 (+02:00)'
+    PID: 108400
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 21:52:34 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:52:34 (+02:00)'
+    PID: 108496
+    error: null
+-
+    time: '2021.03.11 21:52:35 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:52:34 (+02:00)'
+    PID: 108496
+    error: null
+-
+    time: '2021.03.11 21:52:36 (+02:00)'
+    type: Build fail stderr
+    duration: 1419
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.11 21:52:34 (+02:00)'
+    PID: 108496
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.11 21:54:39 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.11 21:54:39 (+02:00)'
+    PID: 108615
+    error: null
+-
+    time: '2021.03.11 21:54:40 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.11 21:54:39 (+02:00)'
+    PID: 108615
+    error: null
+-
+    time: '2021.03.11 21:54:41 (+02:00)'
+    type: Build fail stderr
+    duration: 1233
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.11 21:54:39 (+02:00)'
+    PID: 108615
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.12 10:46:54 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:46:54 (+02:00)'
+    PID: 122982
+    error: null
+-
+    time: '2021.03.12 10:46:54 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:46:54 (+02:00)'
+    PID: 122982
+    error: null
+-
+    time: '2021.03.12 10:47:12 (+02:00)'
+    type: Build fail stderr
+    duration: 17569
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:46:54 (+02:00)'
+    PID: 122982
+    error: "/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:43\nif(build_type === 'target') {\n^\n\nReferenceError: build_type is not defined\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:43:1)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:98:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 10:47:41 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:47:40 (+02:00)'
+    PID: 123115
+    error: null
+-
+    time: '2021.03.12 10:47:41 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:47:40 (+02:00)'
+    PID: 123115
+    error: null
+-
+    time: '2021.03.12 10:47:55 (+02:00)'
+    type: Build fail stderr
+    duration: 14521
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:47:40 (+02:00)'
+    PID: 123115
+    error: "/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:43\nif(build_type === 'target') {\n^\n\nReferenceError: build_type is not defined\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:43:1)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:98:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 10:50:29 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:50:29 (+02:00)'
+    PID: 123245
+    error: null
+-
+    time: '2021.03.12 10:50:29 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:50:29 (+02:00)'
+    PID: 123245
+    error: null
+-
+    time: '2021.03.12 10:50:47 (+02:00)'
+    type: Build fail stderr
+    duration: 18219
+    command:
+        domain: hoff.ee
+        file: build_cassette.sh
+        type: target
+        parameters:
+            - '2'
+            - '1'
+        time: '2021.03.12 10:50:29 (+02:00)'
+    PID: 123245
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:252:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:98:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 10:52:31 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:52:31 (+02:00)'
+    PID: 123361
+    error: null
+-
+    time: '2021.03.12 10:52:31 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:52:31 (+02:00)'
+    PID: 123361
+    error: null
+-
+    time: '2021.03.12 10:52:32 (+02:00)'
+    type: Build fail stderr
+    duration: 548
+    command:
+        domain: oyafond.ee
+        file: build_menu.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:52:31 (+02:00)'
+    PID: 123361
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_menu_from_yaml.js:93:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 10:53:39 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:53:39 (+02:00)'
+    PID: 123469
+    error: null
+-
+    time: '2021.03.12 10:53:39 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:53:39 (+02:00)'
+    PID: 123469
+    error: null
+-
+    time: '2021.03.12 10:53:41 (+02:00)'
+    type: Build fail stderr
+    duration: 1631
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 10:53:39 (+02:00)'
+    PID: 123469
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_menu_from_yaml.js:93:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 11:03:35 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.12 11:03:35 (+02:00)'
+    PID: 123776
+    error: null
+-
+    time: '2021.03.12 11:03:36 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.12 11:03:35 (+02:00)'
+    PID: 123776
+    error: null
+-
+    time: '2021.03.12 11:03:54 (+02:00)'
+    type: Build fail stderr
+    duration: 18049
+    command:
+        domain: hoff.ee
+        file: build_screening.sh
+        type: target
+        parameters:
+            - '7'
+            - '4'
+        time: '2021.03.12 11:03:35 (+02:00)'
+    PID: 123776
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:98:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:67:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_cassettes_from_yaml.js:252:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\ninternal/modules/cjs/loader.js:883\n  throw err;\n  ^\n\nError: Cannot find module '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:725:27)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n"
+-
+    time: '2021.03.12 11:19:27 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:19:27 (+02:00)'
+    PID: 124314
+    error: null
+-
+    time: '2021.03.12 11:19:27 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:19:27 (+02:00)'
+    PID: 124314
+    error: null
+-
+    time: '2021.03.12 11:19:28 (+02:00)'
+    type: Build fail error
+    duration: 401
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:19:27 (+02:00)'
+    PID: 124314
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_article.sh hoff.ee target 1"}
+-
+    time: '2021.03.12 11:19:28 (+02:00)'
+    type: Build fail stderr
+    duration: 401
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:19:27 (+02:00)'
+    PID: 124314
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/fetch_articles_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/fetch_article_type_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/fetch_heroarticle_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/fetch_menu_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/fetch_trioblock_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/pwd/helpers/reset_config_path_aliases.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.12 11:21:25 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:21:25 (+02:00)'
+    PID: 124442
+    error: null
+-
+    time: '2021.03.12 11:21:25 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:21:25 (+02:00)'
+    PID: 124442
+    error: null
+-
+    time: '2021.03.12 11:21:26 (+02:00)'
+    type: Build fail error
+    duration: 795
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:21:25 (+02:00)'
+    PID: 124442
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_article.sh hoff.ee target 1"}
+-
+    time: '2021.03.12 11:21:26 (+02:00)'
+    type: Build fail stderr
+    duration: 795
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:21:25 (+02:00)'
+    PID: 124442
+    error: >
+        /home/liis/Documents/web2021/ssg/build_article.sh: line 8: cd: /srv/ssg:
+        No such file or directory
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_article_type_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_heroarticle_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_menu_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_trioblock_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/reset_config_path_aliases.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.12 11:22:52 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:22:52 (+02:00)'
+    PID: 124576
+    error: null
+-
+    time: '2021.03.12 11:22:52 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:22:52 (+02:00)'
+    PID: 124576
+    error: null
+-
+    time: '2021.03.12 11:22:53 (+02:00)'
+    type: Build fail error
+    duration: 726
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:22:52 (+02:00)'
+    PID: 124576
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_article.sh hoff.ee target 1"}
+-
+    time: '2021.03.12 11:22:53 (+02:00)'
+    type: Build fail stderr
+    duration: 726
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:22:52 (+02:00)'
+    PID: 124576
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_article_type_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_heroarticle_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_menu_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/fetch_trioblock_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/reset_config_path_aliases.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+-
+    time: '2021.03.12 11:24:08 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:24:08 (+02:00)'
+    PID: 124679
+    error: null
+-
+    time: '2021.03.12 11:24:09 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:24:08 (+02:00)'
+    PID: 124679
+    error: null
+-
+    time: '2021.03.12 11:24:09 (+02:00)'
+    type: Build fail error
+    duration: 171
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:24:08 (+02:00)'
+    PID: 124679
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_article.sh hoff.ee target 1"}
+-
+    time: '2021.03.12 11:24:09 (+02:00)'
+    type: Build fail stderr
+    duration: 171
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters:
+            - '1'
+        time: '2021.03.12 11:24:08 (+02:00)'
+    PID: 124679
+    error: >
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/helpers/fetch_articles_from_yaml.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module
+        '/home/liis/Documents/web2021/strapi/strapi-development/node_modules/entu-ssg/src/build.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }
+
+        internal/modules/cjs/loader.js:883
+          throw err;
+          ^
+
+        Error: Cannot find module '/helpers/reset_config_path_aliases.js'
+            at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+            at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47 {
+          code: 'MODULE_NOT_FOUND',
+          requireStack: []
+        }

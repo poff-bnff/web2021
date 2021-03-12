@@ -72,7 +72,6 @@ async function update_strapi_logs(plugin_log) {
 }
 
 async function call_process(build_dir, plugin_log, args) {
-    console.log(args)
     const child = spawn('node', [build_dir, args])
 
     child.stdout.on('data', (chunk) => {
@@ -161,6 +160,14 @@ async function get_domain(result) {
     return domain
 }
 
+function get_programme_out_of_cassette(result) {
+    let tags = result.tags.programmes
+    let programme_id = []
+    for (let prog of tags) {
+        programme_id.push(prog.id)
+    }
+    return programme_id
+}
 
 function get_build_script(domain) {
     let short_domain = mapping_domain[domain]
@@ -216,7 +223,17 @@ async function call_build(result, domains, model_name) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
                 let plugin_log = await build_start_to_strapi_logs(result, domain)
-                const args = [domain, model_name, "target", result.id]
+                let args = [domain, model_name, "target", [result.id]]
+
+                // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
+                if (result.cassette) {
+                    args = [domain, model_name, "target", result.id, [result.cassette.id]]
+                }
+                // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
+                if (result.tags) {
+                    let prog_args = get_programme_out_of_cassette(result)
+                    args = [domain, model_name, "target", result.id, prog_args]
+                }
                 await call_process(build_dir, plugin_log, args)
             } 
             // else {

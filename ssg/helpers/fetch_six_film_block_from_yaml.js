@@ -10,14 +10,17 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 
+const languages = ['en', 'et', 'ru']
+
 const params = process.argv.slice(2)
 const build_type = params[0]
-const param_model_id = params[1]
+const param_model_id = params[1].split(',')[0]
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
-
-const languages = ['en', 'et', 'ru']
+if (build_type === 'target') {
+    addConfigPathAliases(['/films'])
+}
 
 var failing = false
 for (const lang of languages) {

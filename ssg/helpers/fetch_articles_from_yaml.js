@@ -19,7 +19,6 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const params = process.argv.slice(2)
 const build_type = params[0]
-const article_id = params[1]
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require(path.join(__dirname, 'add_config_path_aliases.js'))
