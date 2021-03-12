@@ -7,8 +7,6 @@ const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
 const BUILD_CONFIG = yaml.safeLoad(fs.readFileSync(buildConfigPath, 'utf8'))
 const BUILD_PATHS = BUILD_CONFIG.dev.paths || []
 
-console.log(buildConfigPath, BUILD_PATHS)
-
 function addConfigPathAliases(pathAliases = []) {
     pathAliases.map(pa => BUILD_PATHS.push(pa))
 
