@@ -37,11 +37,15 @@ export default strapi => {
           },
           name,
           permissions: [
-            // Uncomment to set the permissions of the plugin here
-            // {
-            //   action: '', // the action name should be plugins::plugin-name.actionType
-            //   subject: null,
-            // },
+            { action: 'plugins::publisher.read', subject: null },
+            {
+              action: 'plugins::publisher.assets.create',
+              subject: null,
+            },
+            {
+              action: 'plugins::publisher.assets.update',
+              subject: null,
+            },
           ],
         },
       ],
