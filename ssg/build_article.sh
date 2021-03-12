@@ -5,15 +5,18 @@ export DOMAIN="$1"
 
 TARGET=$2
 TARGET_ID=$3
+echo "Build $DOMAIN article, TYPE: $TARGET, ID: $TARGET_ID"
 
 BASEDIR=$(dirname "$BASH_SOURCE")
 cd "$BASEDIR"
 
 FETCH_PATH=`pwd`/helpers
 BUILD_PATH=`pwd`
-echo "$FETCH_PATH" FETCH_PATH
 
-node $FETCH_PATH/fetch_articles_from_yaml.js $TARGET $TARGET_ID
+echo "Initialized entu_ssg.yaml"
+node "$BUILD_PATH"/initialise_entu_ssg.js
+
+node "$FETCH_PATH"/fetch_articles_from_yaml.js $TARGET $TARGET_ID
 node "$FETCH_PATH"/fetch_article_type_from_yaml.js  $TARGET $TARGET_ID
 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js $TARGET $TARGET_ID
 node "$FETCH_PATH"/fetch_menu_from_yaml.js $TARGET $TARGET_ID
