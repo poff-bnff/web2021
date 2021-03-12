@@ -111,6 +111,10 @@ for (const lang of languages) {
             throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
         }
 
+        if(build_type === 'target' && element.id.toString() !== param_article_id) {
+            continue
+        }
+
         let publishFrom = undefined
         let publishUntil = undefined
 
@@ -160,10 +164,9 @@ for (const lang of languages) {
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
-                if(build_type === 'target' && !element.id === param_article_id) {
-                    continue
-                }
-                
+
+                let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
+
                 fs.mkdirSync(element.directory, { recursive: true });
                 for (key in element) {
 
@@ -198,7 +201,7 @@ for (const lang of languages) {
                 if (fs.existsSync(`${sourceDir}${article_template}`)) {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include ${article_template}`)
                     if(build_type === 'target') {
-                        addConfigPathAliases([element.directory])
+                        addConfigPathAliases([buildPath])
                     }
                 } else {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include /_templates/article_${DEFAULTTEMPLATENAME}_index_template.pug`)
