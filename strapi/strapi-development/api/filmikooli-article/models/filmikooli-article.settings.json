@@ -8,7 +8,8 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": false
+    "draftAndPublish": false,
+    "populateCreatorFields": true
   },
   "attributes": {
     "titlePrivate": {
@@ -61,9 +62,6 @@
     "publishFrom": {
       "type": "datetime"
     },
-    "publishUntil": {
-      "type": "boolean"
-    },
     "publish_et": {
       "type": "boolean"
     },
@@ -95,6 +93,9 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "publishUntil": {
+      "type": "datetime"
     }
   }
 }

@@ -3,9 +3,6 @@ include /_templates/mixins.pug
 
 block content
 
-    //- Selle rea võib kustutada kui korralikult kuvama saab
-    h3#loading.sub_section_headline(style='display: grid; padding-top: 110px;')= self.label.filters.loading
-
     if self.data.courses
         main.grid_films
             each course in self.data.courses.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
@@ -34,8 +31,7 @@ block content
 
                             if course.durationTotal
                                 .str_info_label.dark_semi Kestus
-                                .str_info_value.dark_1.thin_300
-                                    +dur(course.durationTotal)
+                                .str_info_value.dark_1.thin_300= course.durationTotal
 
                             if course.languages && course.languages.length
                                 .str_info_label.dark_semi= self.label.film.languages

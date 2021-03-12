@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "channels",
   "info": {
-    "name": "channel"
+    "name": "Channel",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {

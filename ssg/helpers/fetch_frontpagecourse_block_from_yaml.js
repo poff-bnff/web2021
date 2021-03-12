@@ -30,8 +30,9 @@ for (const lang of languages) {
             if (key === `courses_${lang}`) {
                 for (courseIx in copyData[key]) {
                     let thisCourse = copyData[key][courseIx]
-                    let courseYAMLPath = path.join(fetchDir, `course.${lang}.yaml`)
+                    let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
                     let COURSESYAML = yaml.safeLoad(fs.readFileSync(courseYAMLPath, 'utf8'))
+
                     let thisCourseFromYAML = COURSESYAML.filter( (a) => { return thisCourse.id === a.id })[0];
                     if(thisCourseFromYAML !== undefined) {
                         var thisCourseFromYAMLCopy = JSON.parse(JSON.stringify(thisCourseFromYAML));
@@ -42,7 +43,7 @@ for (const lang of languages) {
                     }
                     copyData[key][courseIx] = thisCourseFromYAMLCopy
                 }
-            // Teistes keeltes kassett kustutatakse
+            // Teistes keeltes kursus kustutatakse
             } else if (key !== `courses_${lang}` && key.substring(0, 8) === `courses_`) {
                 delete copyData[key]
             }

@@ -20,7 +20,7 @@ const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPa
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
 const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
@@ -246,7 +246,7 @@ function CreateYAML(screenings, lang) {
         if (typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name
