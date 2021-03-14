@@ -33,14 +33,14 @@ header
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
 
-            li
-                nav.lang_menu
-                    each p, locale in self.otherLocalePaths
+            //- li
+            //-     nav.lang_menu
+            //-         each p, locale in self.otherLocalePaths
 
-                        if !('publish' in self) || ((self[`publish_${locale}`] !== false) && (`publish_${locale}` in self))
-                            a(href=(p !== '/' ? p + '/' : '/'))= locale
-                        else
-                            a= locale
+            //-             if !('publish' in self) || ((self[`publish_${locale}`] !== false) && (`publish_${locale}` in self))
+            //-                 a(href=(p !== '/' ? p + '/' : '/'))= locale
+            //-             else
+            //-                 a= locale
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
