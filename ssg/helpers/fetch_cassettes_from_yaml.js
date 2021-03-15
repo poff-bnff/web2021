@@ -31,12 +31,7 @@ const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
-
-//kui on muudetud kassetti ennast
-const param_changed_cassette_id = params[1].split(',')[0]
-// kui on muudetud teist objekti ja kassett on lisa parameeter mida otsitakse
-const param_screening_cassette_id = params[1].split(',')[1]
-console.log('SIIIIIIIIIIIIIIIIN', param_screening_cassette_id)
+const target_id = params.slice(1)
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
@@ -306,10 +301,10 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-
-        // if(param_build_type === 'target' && !s_cassette.id === param_changed_cassette_id && param_screening_cassette_id.lenght < 1) {
-        //     continue
-        // }
+        console.log('taget cassette in screening', s_cassette.id, target_id)
+        if(param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+            continue
+        }
 
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
@@ -317,8 +312,6 @@ for (const lang of allLanguages) {
         counting++
 
         const s_cassette_copy = JSONcopy(s_cassette)
-
-
 
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
@@ -334,15 +327,17 @@ for (const lang of allLanguages) {
             }
         }
 
+
+
         if(typeof slugEn !== 'undefined') {
+
+            if(param_build_type === 'target') {
+                addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
+            }
+
             s_cassette_copy.dirSlug = slugEn
             s_cassette_copy.directory = path.join(cassettesPath, slugEn)
             fs.mkdirSync(s_cassette_copy.directory, { recursive: true })
-
-            // kui uuendatud linastust, siis linastuse kasset teise param argumendina 
-            if(param_build_type === 'target' && s_cassette_copy.id === param_screening_cassette_id) {
-                addConfigPathAliases([s_cassette_copy.directory])
-            }
 
             let cassetteCarouselPicsCassette = []
             let cassetteCarouselPicsFilms = []
@@ -369,6 +364,8 @@ for (const lang of allLanguages) {
                     }
                 }
             }
+
+
 
             // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
@@ -626,11 +623,6 @@ for (const lang of allLanguages) {
 
 function generateYaml(element, lang){
     let yamlStr = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' })
-
-    // ku on muudetud kassetti
-    if (param_build_type === 'target' && element.id === param_changed_cassette_id) {
-        addConfigPathAliases([element.directory])
-    }
 
 
     fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8')

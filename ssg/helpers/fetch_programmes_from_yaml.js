@@ -17,13 +17,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
-
-//kui on muudetud objekti ennast
-const param_changed_programme_id = params[1].split(',')[0]
-// kui on muudetud teist objekti ja programm on lisa parameeter mida otsitakse
-// neid voib olla mitu
-let param_cassette_programme_id = params[1].split(',').slice(1)
-console.log(param_cassette_programme_id)
+const target_id = params.slice(1)
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
@@ -62,7 +56,8 @@ for (const ix in languages) {
 
     var allData = []
     for (const ix in STRAPIDATA_PROGRAMMES) {
-        if (param_build_type === 'target' && !param_cassette_programme_id.includes(STRAPIDATA_PROGRAMMES[ix].id)) {
+
+        if (param_build_type === 'target' && !target_id.includes((STRAPIDATA_PROGRAMMES[ix].id).toString())) {
             continue
         }
 
@@ -102,6 +97,9 @@ for (const ix in languages) {
             element.slug = dirSlug;
         }
 
+        if (param_build_type === 'target') {
+            addConfigPathAliases([`/_fetchdir/programmes/${dirSlug}`])
+        }
 
         element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
 
@@ -109,10 +107,6 @@ for (const ix in languages) {
             const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
            
-            if (param_build_type === 'target') {
-                const configPath = path.join(fetchDataDir, dirSlug)
-                addConfigPathAliases([configPath])
-            }
             allData.push(element)
 
             let saveDir = path.join(fetchDataDir, dirSlug);

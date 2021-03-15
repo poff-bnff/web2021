@@ -13,12 +13,13 @@ const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath,
 const languages = ['en', 'et', 'ru']
 
 const params = process.argv.slice(2)
-const build_type = params[0]
-const param_model_id = params[1].split(',')[0]
+const param_build_type = params[0]
+const target_id = params.slice(1)
+
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
-if (build_type === 'target') {
+if (param_build_type === 'target') {
     addConfigPathAliases(['/films'])
 }
 

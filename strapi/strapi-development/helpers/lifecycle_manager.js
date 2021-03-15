@@ -23,7 +23,7 @@ const mapping_domain = {
     // 'kinoff.poff.ee': 'kinoff',
     'kumu.poff.ee': 'kumu',
     'oyafond.ee': 'bruno',
-    // 'poff.ee': 'poff',
+    'poff.ee': 'poff',
     // 'shorts.poff.ee': 'shorts',
     'tartuff.ee': 'tartuff'
 }
@@ -182,11 +182,17 @@ function get_build_script(domain) {
     }
 }
 
+let TakeOutTrash_path = path.join(__dirname, '..', '..', '..', '/ssg/helpers/a_fetch.js')
+
+const {
+    TakeOutTrash
+} = require(TakeOutTrash_path)
+
 async function modify_stapi_data(result, model_name, vanish=false) {
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
     console.log(modelname, 'id:', result.id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
-    const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
+    const strapidata_dir = path.join(__dirname, '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
     let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
 
     let list_of_models = []
@@ -223,16 +229,16 @@ async function call_build(result, domains, model_name) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
                 let plugin_log = await build_start_to_strapi_logs(result, domain)
-                let args = [domain, model_name, "target", [result.id]]
+                let args = [domain, model_name, "target", result.id]
 
                 // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
                 if (result.cassette) {
-                    args = [domain, model_name, "target", result.id, [result.cassette.id]]
+                    args = [domain, model_name, "target", result.id, result.cassette.id]
                 }
                 // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
                 if (result.tags) {
                     let prog_args = get_programme_out_of_cassette(result)
-                    args = [domain, model_name, "target", result.id, prog_args]
+                    args = [domain, model_name, "target", result.id, prog_args.join(' ')]
                 }
                 await call_process(build_dir, plugin_log, args)
             } 

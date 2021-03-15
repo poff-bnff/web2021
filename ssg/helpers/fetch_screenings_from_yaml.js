@@ -21,11 +21,11 @@ const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
 const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
 const params = process.argv.slice(2)
-const build_type = params[0]
+const param_build_type = params[0]
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
-if(build_type === 'target') {
+if(param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
 
