@@ -33,8 +33,8 @@ block content
 
         //- include /_templates/home_templates/sponsor_banner.pug
 
-        section.trio_block
-            include /_templates/home_templates/trio_block_filmikool.pug
+        //- section.trio_block
+        //-     include /_templates/home_templates/trio_block_filmikool.pug
 
         section.viiekas
             include /_templates/home_templates/viiekas_filmikool.pug
@@ -86,7 +86,7 @@ block content
             include /_templates/home_templates/viiekas_industry.pug
 
         //- include /_templates/home_templates/industry_banner.pug
-        
+
     else if process.env['DOMAIN'] === 'filmikool.poff.ee'
         - var whichTypesToDisplay = ['news']
         - var heroPlusTrioNews = []
