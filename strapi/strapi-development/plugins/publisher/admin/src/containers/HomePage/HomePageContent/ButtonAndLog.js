@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../../assets/style.css';
-import LogList from "./LogList";
+import ListOfLogs from "./ListOfLogs";
+import Button from '../../../components/Button';
+import LogsAccordion from "./LogsAccordion";
+import { Flex, Text } from '@buffetjs/core';
+
 
 
 const DoPublish = async (site, userInfo) => {
@@ -16,7 +19,7 @@ const DoPublish = async (site, userInfo) => {
     //link:{url:"/logs", label: "vaata logi"},
 
     let myResult = await response.json();
-    console.log(myResult)
+    // console.log(myResult)
     if(response.status === 200){
 		strapi.notification.toggle({type: "success", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
     }else if( response.status === 429){
@@ -44,11 +47,14 @@ const ButtonAndLog = ({site, buttonText}) => {
 		console.log("pole userinfot")
 	}
 
+	//title kohale viimane logi ja content kohale tabel logidest
+
 	return (
-     	 <div className="btn-container">
-          	<button className='live-btn' onClick={() => DoPublish(site, userInfo)}>{buttonText}</button>
-          	{/* <LogList site={site}/> */}
-      	</div>
+		<div className="btn-and-log">
+		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
+		    <LogsAccordion site={site}/>
+          	{/**<ListOfLogs site={site}/>**/}
+    	</div>
 	);
 };
 

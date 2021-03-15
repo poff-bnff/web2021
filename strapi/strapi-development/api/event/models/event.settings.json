@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "events",
   "info": {
-    "name": "Event"
+    "name": "Event",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,7 +17,7 @@
     "ticketingUrl": {
       "type": "string"
     },
-    "dateTime": {
+    "startDate": {
       "type": "datetime"
     },
     "durationTotal": {
@@ -34,8 +35,16 @@
       "type": "text"
     },
     "course": {
-      "model": "course",
-      "via": "events"
+      "via": "events",
+      "model": "course"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
     }
   }
 }

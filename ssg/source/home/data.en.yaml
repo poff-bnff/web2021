@@ -7,6 +7,8 @@ data:
     articles: /_fetchdir/articles.en.yaml
     industryevents: /_fetchdir/industryevents.en.yaml
     channels: /_fetchdir/channels.en.yaml
+    frontPageCourses: /_fetchdir/frontpagecourses.en.yaml
+
 
 frontpageText: '10 films of Tartuff 2020 can be seen on Elisa Stage also on Sunday, until midnight.'
 frontPageButton: See films on Elisa Stage

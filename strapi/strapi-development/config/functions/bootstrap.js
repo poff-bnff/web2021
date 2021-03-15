@@ -23,7 +23,7 @@ function writeToZone(file_name){
     if (err) {
       console.log('vsjo problema');
       return
-    } 
+    }
     // the *entire* stdout and stderr (buffered)
     // console.log(`stdout: ${stdout}`)
     // console.log(`stderr: ${stderr}`)
@@ -51,7 +51,7 @@ module.exports = () => {
 
     jsonfile.readFile(file, function(err, obj) {
       fileData.files = obj.files
-     console.log(fileData.files)
+     // console.log(fileData.files)
     })
 
 // Initialize watcher.
@@ -76,16 +76,16 @@ watcher
                     if (err) console.log(err)
                 })
                 console.log(`adding ${fileName} to zone`)
-               writeToZone(fileName)
+                writeToZone(fileName)
             }
-      
+
     })
 
     .on('unlink', path => {
 
       if(!path.startsWith('public/uploads/thumbnail')){
         let fileName = path.split('/')[2]
-        log(`File ${path} has been removed`)  
+        log(`File ${path} has been removed`)
 
             fileData.files.splice(fileData.files.indexOf(path), 1)
             jsonfile.writeFile(file, fileData, function(err){
@@ -93,7 +93,7 @@ watcher
             })
 
             console.log(`delete ${fileName} from zone `);
-           // deleteFromZone(fileName)
+            deleteFromZone(fileName)
 
         }
 

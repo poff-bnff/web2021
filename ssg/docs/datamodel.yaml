@@ -1087,8 +1087,10 @@ Event: &Event
     _path: /events
     code: (Number)
     ticketingUrl: (text) # suunamine kursusele
-    dateTime: (Datetime)
+    startDate: (Datetime)
+    endDate: (Datetime)
     durationTotal: (number)
+    name: *Translated
     location: *Location
     extraInfo: *Translated
     bookingUrl: (text)
@@ -1107,17 +1109,16 @@ Course: &Course
     year: (number)
     startDate: (Datetime)
     endDate: (Datetime)
-    durationTotal: (t'itub ise)
-    media: 
-        - *StrapiMedia #(Component, not from eventival)
+    volume: (short text)
+    media: *FilmMedia #(Component, not from eventival)
     tags: *CourseTags #(Component)
     languages: #(Component (repeatable))
-        - *Language 
-    credentials: *Credentials 
-    presentedBy: *PresentedBy 
+        - *Language
+    credentials: *Credentials
+    presentedBy: *PresentedBy
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
-    events: 
+    events:
         - *Event #(backreference)
 
 FrontPageCourses: &FrontPageCourses

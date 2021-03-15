@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "six_films",
   "info": {
-    "name": "sixFilms"
+    "name": "SixFilms",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {

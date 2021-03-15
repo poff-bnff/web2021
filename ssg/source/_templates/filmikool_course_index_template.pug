@@ -7,19 +7,18 @@ block content
 
         section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
             ol.carousel-indicators
-                if self.media
-                    if self.media
-                        each val, index in self.media
-                            li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                if self.carouselStills
+                    each val, index in self.carouselStills
+                        li(data-target='#carouselExampleIndicators' data-slide-to = index)
             .carousel-inner.container_frame_16_9
-                if self.media
-                    each val, index in self.media
+                if self.carouselStills
+                    each val, index in self.carouselStills
                         if index == 0
                             .carousel-item.active.container_contents_16_9
-                                img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
                         else
                             .carousel-item.container_contents_16_9
-                                img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
                 else
                     .carousel-item.active.container_contents_16_9
                         img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
@@ -74,7 +73,7 @@ block content
                     if self.tags
 
                         if self.tags.keywords && self.tags.keywords[0]
-                            .str_info_meta_label.dark_semi= self.label.film.keywords
+                            .str_info_meta_label.dark_semi= self.label.filmikool.level
                             .str_info_meta_festival= self.tags.keywords.join(', ')
 
             //- FILM ADDITIONAL INFO (ADDITINFO)
@@ -91,6 +90,11 @@ block content
                 //-     Näiteks: Director Of Photography self.credentials.rolePersonsByRole.directorofphotography
 
                 if self.credentials && self.credentials.rolePersonsByRole
+                    if self.credentials.rolePersonsByRole.koostaja && self.credentials.rolePersonsByRole.koostaja[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.filmikool.koostaja
+                            .str_info_value= self.credentials.rolePersonsByRole.koostaja.join(', ')
+
                     if self.credentials.rolePersonsByRole.director && self.credentials.rolePersonsByRole.director[0]
                         .str_info_grid_3
                             .str_info_label= self.label.film.director
@@ -135,11 +139,10 @@ block content
 
         section.f_runtime_box
 
-            if self.durationTotal
+            if self.volume
                 .str_info_grid_3
-                    .str_info_label= self.label.film.runtime
-                    .str_info_value
-                        +dur(self.durationTotal)
+                    .str_info_label= self.label.filmikool.courseVolume
+                    .str_info_value= self.volume
 
             if self.languages
                 .str_info_grid_3
@@ -286,7 +289,7 @@ block content
 
         section.f_screenings_box
             div
-                h1.section_headline= self.label.film.screenings
+                h1.section_headline= self.label.filmikool.courseTimes
 
             .card-deck.m-o.p-0
                 if self.events && self.events[0]
@@ -301,29 +304,35 @@ block content
                                             line(x1='8' y1='2' x2='8' y2='6')
                                             line(x1='3' y1='10' x2='21' y2='10')
                                         span.screening_date
-                                            if event.dateTime
-                                                +screeningDate(event.dateTime)
+                                            if event.startDate && event.endDate
+                                                +dateFromTo(event.startDate, event.endDate)
+                                            else if event.startDate
+                                                +dateFull(event.startDate, event.endDate)
 
                                     .text-right
-                                        svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            circle(cx='12' cy='12' r='10')
-                                            polyline(points='12 6 12 12 16 14')
-                                        span.screening_time
-                                            +screeningTime(event.dateTime)
+                                        //- svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                        //-     circle(cx='12' cy='12' r='10')
+                                        //-     polyline(points='12 6 12 12 16 14')
+                                        //- span.screening_time
+                                        //-     +screeningTime(event.startDate)
 
                                 .container_screening_location
-                                    svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                        path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
-                                        circle(cx='12' cy='10' r='3')
+                                    //- svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                    //-     path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
+                                    //-     circle(cx='12' cy='10' r='3')
 
-                                    if event.location && event.location.hall && event.location.hall.name
-                                        if event.location.hall && event.location.hall.name
-                                            span.screening_hall= event.location.hall.name
-                                            if event.location.hall.cinema && event.location.hall.cinema.name
-                                                span.screening_venue= ` ${event.location.hall.cinema.name}`
-                                                if event.location.hall.cinema.town && event.location.hall.cinema.town.name && event.location.hall.cinema.town.country && event.location.hall.cinema.town.country.name
-                                                    span.city= ` ${event.location.hall.cinema.town.name}`
-                                                    //- span.city= ` ${event.location.hall.cinema.town.name}, ${event.location.hall.cinema.town.country.name}`
+                                    //- if event.location && event.location.hall && event.location.hall.name
+                                    //-     if event.location.hall && event.location.hall.name
+                                    //-         span.screening_hall= event.location.hall.name
+                                    //-         if event.location.hall.cinema && event.location.hall.cinema.name
+                                    //-             span.screening_venue= ` ${event.location.hall.cinema.name}`
+                                    //-             if event.location.hall.cinema.town && event.location.hall.cinema.town.name && event.location.hall.cinema.town.country && event.location.hall.cinema.town.country.name
+                                    //-                 span.city= ` ${event.location.hall.cinema.town.name}`
+                                    //-                 //- span.city= ` ${event.location.hall.cinema.town.name}, ${event.location.hall.cinema.town.country.name}`
+                                //- .container_screening_location
+                                //-     if event.name
+                                //-         span.screening_hall= event.name
+
 
                                         //- See on privateName tegelikult: Coca-Cola Plaza, iSense saal
                                         //- if event.location.name
@@ -332,10 +341,10 @@ block content
 
                             .card-body.bg_dark_3
                                 .screening_info_blokk
-                                    if event.codeAndTitle
+                                    if event.name
                                         .str_info_grid_3
-                                            span.screening_info_label= self.label.screening.name
-                                            span.screening_info_value= event.codeAndTitle
+                                            span.screening_info_label= self.label.filmikool.course
+                                            span.screening_info_value= event.name
                                     //- if screening.screeningSubtitles
 
                                     -
@@ -412,7 +421,7 @@ block content
                                 //- a.btn.btn_secondary.active.notsavedscreening(id=event.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${event.id}, "${event.codeAndTitle}", "${event.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
                                 //- a.btn.btn_secondary.active.issavedscreening(id=event.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${event.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                                 if event.ticketingUrl
-                                    a.btn.btn_primary.active(scrn-datetime=event.dateTime scrn-loc=event.location.id  btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                    a.btn.btn_primary.active(scrn-datetime=event.dateTime scrn-loc=event.location.id  btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.participate
 
                                     //- a.btn.btn_primary.active(scrn-datetime=event.dateTime btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 

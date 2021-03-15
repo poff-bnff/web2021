@@ -103,6 +103,11 @@ if (DOMAIN === 'filmikool.poff.ee') {
                 course.languages = course.languages.map(l => l.name)
             }
 
+            if (course.media) {
+                course.carouselStills = course.media?.stills.map(a => `${a.hash}${a.ext}`)
+                course.posters = course.media?.posters.map(a => `${a.hash}${a.ext}`)
+            }
+
             // Rolepersons by role
             if(course.credentials && course.credentials.rolePerson && course.credentials.rolePerson[0]) {
                 let rolePersonTypes = {}

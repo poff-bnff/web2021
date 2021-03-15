@@ -18,7 +18,7 @@ async function strapiAuth() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
         }
         // console.log({options, postData})
         const request = https.request(options, (response) => {
