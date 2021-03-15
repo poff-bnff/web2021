@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_kumu",
+  "info": {
+    "name": "HeroArticleKumu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "article_en": {
+      "model": "kumu-article"
+    },
+    "article_ru": {
+      "model": "kumu-article"
+    },
+    "article_et": {
+      "model": "kumu-article"
+    }
+  }
+}

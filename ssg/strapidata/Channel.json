@@ -1,0 +1,78 @@
+[
+  {
+    "id": 4,
+    "namePrivate": "Industry TEST channel",
+    "embedCode": "https://www.youtube.com/watch?v=6vHNDbq2XsI",
+    "created_at": "2020-11-11T18:44:16.311Z",
+    "updated_at": "2020-11-12T14:23:27.839Z",
+    "name": {
+      "id": 28403,
+      "et": "Industry TEST kanal",
+      "en": "Industry TEST channel",
+      "ru": null
+    },
+    "description": {
+      "id": 8510,
+      "et": "test",
+      "en": "test",
+      "ru": null
+    }
+  },
+  {
+    "id": 3,
+    "namePrivate": "Talent Channel",
+    "embedCode": "https://www.youtube.com/watch?v=6vHNDbq2XsI",
+    "created_at": "2020-11-11T18:43:27.904Z",
+    "updated_at": "2020-11-20T08:00:10.484Z",
+    "name": {
+      "id": 28402,
+      "et": "Talent Channel",
+      "en": "Talent Channel",
+      "ru": null
+    },
+    "description": {
+      "id": 8509,
+      "et": "kolmas kanal",
+      "en": "third channel",
+      "ru": null
+    }
+  },
+  {
+    "id": 1,
+    "namePrivate": "Pro Channel 1",
+    "embedCode": "https://www.youtube.com/watch?v=6vHNDbq2XsI",
+    "created_at": "2020-11-11T18:41:19.374Z",
+    "updated_at": "2020-11-20T10:13:52.246Z",
+    "name": {
+      "id": 28400,
+      "et": "Pro Channel 1",
+      "en": "Pro Channel 1",
+      "ru": null
+    },
+    "description": {
+      "id": 8507,
+      "et": "esimene kanal",
+      "en": "First channel",
+      "ru": null
+    }
+  },
+  {
+    "id": 2,
+    "namePrivate": "Pro Channel 2",
+    "embedCode": "https://www.youtube.com/watch?v=6vHNDbq2XsI",
+    "created_at": "2020-11-11T18:42:45.633Z",
+    "updated_at": "2020-11-20T10:14:26.881Z",
+    "name": {
+      "id": 28401,
+      "et": "Pro Channel 2",
+      "en": "Pro Channel 2",
+      "ru": null
+    },
+    "description": {
+      "id": 8508,
+      "et": "teine kanal  ",
+      "en": "second channel",
+      "ru": null
+    }
+  }
+]

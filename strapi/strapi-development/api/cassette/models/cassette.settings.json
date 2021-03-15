@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "cassettes",
   "info": {
-    "name": "cassette"
+    "name": "Cassette",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title_et": {

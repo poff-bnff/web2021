@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_article_trio_tartuffs",
+  "info": {
+    "name": "Triotartuff",
+    "icon": "door-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-tartuff"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-tartuff"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-tartuff"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    }
+  }
+}

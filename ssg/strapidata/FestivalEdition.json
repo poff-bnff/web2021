@@ -1,0 +1,63 @@
+[
+  {
+    "id": 5,
+    "festival": {
+      "id": 6,
+      "name_et": "HÕFF",
+      "name_en": "HÕFF",
+      "name_ru": "HÕFF",
+      "description_et": null,
+      "description_en": null,
+      "description_ru": null,
+      "clipUrl": null,
+      "created_at": "2021-01-12T21:32:40.537Z",
+      "updated_at": "2021-01-12T21:32:40.553Z",
+      "logo": null,
+      "images": []
+    },
+    "created_at": "2021-01-12T21:32:02.444Z",
+    "updated_at": "2021-01-12T21:33:01.371Z",
+    "domain": {
+      "id": 6,
+      "Url": null,
+      "IpAdress": null,
+      "Server": null,
+      "created_at": "2021-01-12T21:25:24.001Z",
+      "updated_at": "2021-01-12T21:25:24.015Z",
+      "url": "hoff.ee",
+      "ipAdress": null,
+      "server": null,
+      "festival_edition": null,
+      "name": "HÕFF"
+    },
+    "number": null,
+    "year": 2021,
+    "name_et": "HÕFF 2021",
+    "name_en": "HÕFF 2021",
+    "name_ru": "HÕFF 2021",
+    "description_et": null,
+    "description_en": null,
+    "description_ru": null,
+    "startDate": "2021-04-29T09:00:00.000Z",
+    "endDate": "2021-07-01T20:30:00.000Z",
+    "slug_et": "hoff-2021",
+    "slug_en": "hoff-2021-en",
+    "slug_ru": "hoff-2021-ru",
+    "remoteId": null,
+    "domains": [
+      {
+        "id": 6,
+        "Url": null,
+        "IpAdress": null,
+        "Server": null,
+        "created_at": "2021-01-12T21:25:24.001Z",
+        "updated_at": "2021-01-12T21:25:24.015Z",
+        "url": "hoff.ee",
+        "ipAdress": null,
+        "server": null,
+        "festival_edition": null,
+        "name": "HÕFF"
+      }
+    ]
+  }
+]

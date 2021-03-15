@@ -1,0 +1,324 @@
+[
+  {
+    "id": 7,
+    "roleNamePrivate": "Producer",
+    "created_at": "2020-10-06T10:26:54.231Z",
+    "updated_at": "2020-10-06T10:38:46.540Z",
+    "order": 7,
+    "remoteId": null,
+    "roleName": {
+      "id": 4003,
+      "et": "Produtsent",
+      "en": "Producer",
+      "ru": "Продюсер"
+    }
+  },
+  {
+    "id": 2,
+    "roleNamePrivate": "Screenwriter",
+    "created_at": "2020-10-06T10:21:43.814Z",
+    "updated_at": "2020-10-11T08:12:04.387Z",
+    "order": 2,
+    "remoteId": "4",
+    "roleName": {
+      "id": 3998,
+      "et": "Stsenarist",
+      "en": "Screenwriter",
+      "ru": "Сценарист"
+    }
+  },
+  {
+    "id": 3,
+    "roleNamePrivate": "Director of Photography",
+    "created_at": "2020-10-06T10:22:52.650Z",
+    "updated_at": "2020-10-11T08:13:17.542Z",
+    "order": 3,
+    "remoteId": "5",
+    "roleName": {
+      "id": 3999,
+      "et": "Operaator",
+      "en": "DoP",
+      "ru": "Оператор"
+    }
+  },
+  {
+    "id": 6,
+    "roleNamePrivate": "Editor",
+    "created_at": "2020-10-06T10:25:06.307Z",
+    "updated_at": "2020-10-11T08:14:47.038Z",
+    "order": 6,
+    "remoteId": "7",
+    "roleName": {
+      "id": 4002,
+      "et": "Monteerija",
+      "en": "Editor",
+      "ru": "Монтажер"
+    }
+  },
+  {
+    "id": 9,
+    "roleNamePrivate": "Music",
+    "created_at": "2020-10-11T08:14:33.997Z",
+    "updated_at": "2020-10-11T08:14:59.594Z",
+    "order": null,
+    "remoteId": "6",
+    "roleName": {
+      "id": 4051,
+      "et": "Muusika",
+      "en": "Music",
+      "ru": "Music"
+    }
+  },
+  {
+    "id": 8,
+    "roleNamePrivate": "Production Company",
+    "created_at": "2020-10-06T10:49:57.068Z",
+    "updated_at": "2020-10-11T08:15:32.732Z",
+    "order": 101,
+    "remoteId": "9",
+    "roleName": {
+      "id": 4004,
+      "et": "Produktsioon",
+      "en": "Production",
+      "ru": "Производство"
+    }
+  },
+  {
+    "id": 10,
+    "roleNamePrivate": "Distributor",
+    "created_at": "2020-10-11T08:20:35.601Z",
+    "updated_at": "2020-10-11T08:20:35.654Z",
+    "order": null,
+    "remoteId": "11",
+    "roleName": {
+      "id": 4052,
+      "et": "Levitaja",
+      "en": "Distributor",
+      "ru": "Distributor"
+    }
+  },
+  {
+    "id": 11,
+    "roleNamePrivate": "Animation",
+    "created_at": "2020-10-11T08:22:07.620Z",
+    "updated_at": "2020-10-11T08:22:07.671Z",
+    "order": null,
+    "remoteId": "14",
+    "roleName": {
+      "id": 4053,
+      "et": "Animatsioon",
+      "en": "Animation",
+      "ru": "Animation"
+    }
+  },
+  {
+    "id": 4,
+    "roleNamePrivate": "Cast",
+    "created_at": "2020-10-06T10:23:37.652Z",
+    "updated_at": "2020-10-11T08:22:18.657Z",
+    "order": 4,
+    "remoteId": "15",
+    "roleName": {
+      "id": 4000,
+      "et": "Osades",
+      "en": "Cast",
+      "ru": " В ролях"
+    }
+  },
+  {
+    "id": 12,
+    "roleNamePrivate": "Cinematographer",
+    "created_at": "2020-10-11T08:26:41.192Z",
+    "updated_at": "2020-10-11T08:26:41.244Z",
+    "order": null,
+    "remoteId": "2120",
+    "roleName": {
+      "id": 4054,
+      "et": "Cinematographer",
+      "en": "Cinematographer",
+      "ru": "Cinematographer"
+    }
+  },
+  {
+    "id": 13,
+    "roleNamePrivate": "Editor...",
+    "created_at": "2020-10-11T08:27:09.648Z",
+    "updated_at": "2020-10-11T08:27:34.333Z",
+    "order": null,
+    "remoteId": "2121",
+    "roleName": {
+      "id": 4055,
+      "et": "Editor",
+      "en": "Editor",
+      "ru": "Editor"
+    }
+  },
+  {
+    "id": 14,
+    "roleNamePrivate": "Art Director",
+    "created_at": "2020-10-11T08:28:44.062Z",
+    "updated_at": "2020-10-11T08:28:44.115Z",
+    "order": null,
+    "remoteId": "2122",
+    "roleName": {
+      "id": 4056,
+      "et": "Art Director",
+      "en": "Art Director",
+      "ru": "Art Director"
+    }
+  },
+  {
+    "id": 16,
+    "roleNamePrivate": "Co-producer",
+    "created_at": "2020-10-11T08:29:50.048Z",
+    "updated_at": "2020-10-11T08:29:50.100Z",
+    "order": null,
+    "remoteId": "2139",
+    "roleName": {
+      "id": 4058,
+      "et": "Co-producer",
+      "en": "Co-producer",
+      "ru": "Co-producer"
+    }
+  },
+  {
+    "id": 17,
+    "roleNamePrivate": "Sound",
+    "created_at": "2020-10-11T08:30:19.921Z",
+    "updated_at": "2020-10-11T08:30:19.973Z",
+    "order": null,
+    "remoteId": "2743",
+    "roleName": {
+      "id": 4059,
+      "et": "Sound",
+      "en": "Sound",
+      "ru": "Sound"
+    }
+  },
+  {
+    "id": 18,
+    "roleNamePrivate": "Public funds",
+    "created_at": "2020-10-11T08:30:43.487Z",
+    "updated_at": "2020-10-11T08:30:43.521Z",
+    "order": null,
+    "remoteId": "2893",
+    "roleName": {
+      "id": 4060,
+      "et": "Public funds",
+      "en": "Public funds",
+      "ru": "Public funds"
+    }
+  },
+  {
+    "id": 19,
+    "roleNamePrivate": "Private funds",
+    "created_at": "2020-10-11T08:31:11.526Z",
+    "updated_at": "2020-10-11T08:31:11.583Z",
+    "order": null,
+    "remoteId": "2894",
+    "roleName": {
+      "id": 4061,
+      "et": "Private funds",
+      "en": "Private funds",
+      "ru": "Private funds"
+    }
+  },
+  {
+    "id": 20,
+    "roleNamePrivate": "Screenwriter...",
+    "created_at": "2020-10-11T08:32:09.113Z",
+    "updated_at": "2020-10-11T08:32:09.155Z",
+    "order": null,
+    "remoteId": "2895",
+    "roleName": {
+      "id": 4062,
+      "et": "Screenwriter",
+      "en": "Screenwriter",
+      "ru": "Screenwriter"
+    }
+  },
+  {
+    "id": 5,
+    "roleNamePrivate": "Composer",
+    "created_at": "2020-10-06T10:24:09.170Z",
+    "updated_at": "2020-10-11T09:10:20.643Z",
+    "order": 5,
+    "remoteId": "2123",
+    "roleName": {
+      "id": 4001,
+      "et": "Helilooja",
+      "en": "Composer",
+      "ru": "Композитор"
+    }
+  },
+  {
+    "id": 66,
+    "roleNamePrivate": "World Sales",
+    "created_at": "2020-10-15T10:04:36.534Z",
+    "updated_at": "2020-10-15T10:25:58.154Z",
+    "order": null,
+    "remoteId": "10",
+    "roleName": {
+      "id": 4109,
+      "et": "Maailma müük",
+      "en": "World Sales",
+      "ru": "World Sales"
+    }
+  },
+  {
+    "id": 1,
+    "roleNamePrivate": "Director",
+    "created_at": "2020-10-06T10:20:41.725Z",
+    "updated_at": "2020-11-05T10:11:00.972Z",
+    "order": 1,
+    "remoteId": "1",
+    "roleName": {
+      "id": 3997,
+      "et": "Režissöör",
+      "en": "Director",
+      "ru": "Режиссер"
+    }
+  },
+  {
+    "id": 67,
+    "roleNamePrivate": "Production Designer",
+    "created_at": "2020-11-15T11:13:47.625Z",
+    "updated_at": "2020-11-15T11:13:47.646Z",
+    "order": 10,
+    "remoteId": null,
+    "roleName": {
+      "id": 29317,
+      "et": "Filmikunstnik",
+      "en": "Production Designer",
+      "ru": "Художник-постановщик"
+    }
+  },
+  {
+    "id": 68,
+    "roleNamePrivate": "Writer",
+    "created_at": "2020-11-19T17:56:01.974Z",
+    "updated_at": "2020-11-19T17:56:01.997Z",
+    "order": 5,
+    "remoteId": null,
+    "roleName": {
+      "id": 30385,
+      "et": "Writer",
+      "en": "Writer",
+      "ru": "Writer"
+    }
+  },
+  {
+    "id": 69,
+    "roleNamePrivate": "Co-writer",
+    "created_at": "2020-11-19T17:56:35.851Z",
+    "updated_at": "2020-11-19T17:56:35.869Z",
+    "order": 6,
+    "remoteId": null,
+    "roleName": {
+      "id": 30386,
+      "et": "Co-writer",
+      "en": "Co-writer",
+      "ru": "Co-writer"
+    }
+  }
+]

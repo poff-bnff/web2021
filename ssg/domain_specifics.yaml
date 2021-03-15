@@ -1,82 +1,137 @@
 ---
 domain:
-  poff.ee: poff
-  justfilm.ee: justfilm
-  kinoff.poff.ee: kinoff
-  industry.poff.ee: industry
-  shorts.poff.ee: shorts
-  hoff.ee: hoff
-  kumu.poff.ee: kumu
-  tartuff.ee: tartuff
-  # brunooja.poff.ee: bruno
+    poff.ee: poff
+    justfilm.ee: justfilm
+    kinoff.poff.ee: kinoff
+    industry.poff.ee: industry
+    shorts.poff.ee: shorts
+    hoff.ee: hoff
+    kumu.poff.ee: kumu
+    tartuff.ee: tartuff
+    oyafond.ee: bruno
+    filmikool.poff.ee: filmikool
+
+domains_show_cassetes_wo_screenings:
+    - poff.ee
+    - hoff.ee
+
+cassettes_festival_editions:
+    poff.ee:
+        - 7
+    justfilm.ee:
+        - 3
+    kinoff.poff.ee:
+        - 4
+    industry.poff.ee:
+        - 0
+    shorts.poff.ee:
+        - 2
+    hoff.ee:
+        - 5
+    kumu.poff.ee:
+        - 0
+    tartuff.ee:
+        - 0
+    oyafond.ee:
+        - 0
+    filmikool.poff.ee:
+        - 0
+
+programmes_festival_editions:
+    poff.ee:
+        - 7
+    justfilm.ee:
+        - 3
+    kinoff.poff.ee:
+        - 4
+    industry.poff.ee:
+        - 0
+    shorts.poff.ee:
+        - 2
+    hoff.ee:
+        - 5
+    kumu.poff.ee:
+        - 0
+    tartuff.ee:
+        - 0
+    oyafond.ee:
+        - 0
+    filmikool.poff.ee:
+        - 0
 
 article:
-  poff.ee: POFFiArticle
-  justfilm.ee: JustFilmiArticle
-  kinoff.poff.ee: KinoffiArticle
-  industry.poff.ee: IndustryArticle
-  shorts.poff.ee: ShortsiArticle
-  hoff.ee: HOFFiArticle
-  kumu.poff.ee: KumuArticle
-  tartuff.ee: TartuffiArticle
-  # brunooja.poff.ee: BrunoArticle
+    poff.ee: POFFiArticle
+    justfilm.ee: JustFilmiArticle
+    kinoff.poff.ee: KinoffiArticle
+    industry.poff.ee: IndustryArticle
+    shorts.poff.ee: ShortsiArticle
+    hoff.ee: HOFFiArticle
+    kumu.poff.ee: KumuArticle
+    tartuff.ee: TartuffiArticle
+    oyafond.ee: BrunoArticle
+    filmikool.poff.ee: FilmikooliArticle
 
 footer:
-  poff.ee: POFFiFooter
-  justfilm.ee: JustFilmFooter
-  kinoff.poff.ee: KinoffiFooter
-  industry.poff.ee: IndustryFooter
-  shorts.poff.ee: ShortsiFooter
-  hoff.ee: HOFFiFooter
-  kumu.poff.ee: KumuFooter
-  tartuff.ee: TartuffiFooter
-  # brunooja.poff.ee: BrunoFooter
+    poff.ee: POFFiFooter
+    justfilm.ee: JustFilmFooter
+    kinoff.poff.ee: KinoffiFooter
+    industry.poff.ee: IndustryFooter
+    shorts.poff.ee: ShortsiFooter
+    hoff.ee: HOFFiFooter
+    kumu.poff.ee: KumuFooter
+    tartuff.ee: TartuffiFooter
+    oyafond.ee: BrunoFooter
+    filmikool.poff.ee: FilmikooliFooter
 
 locales:
-  poff.ee:
-  - et
-  - en
-  - ru
-  justfilm.ee:
-  - et
-  - en
-  - ru
-  kinoff.poff.ee:
-  - et
-  - en
-  - ru
-  industry.poff.ee:
-  - en
-  shorts.poff.ee:
-  - et
-  - en
-  hoff.ee:
-  - et
-  - en
-  - ru
-  kumu.poff.ee:
-  - et
-  - en
-  - ru
-  tartuff.ee:
-  - et
-  - en
-  - ru
-  # brunooja.poff.ee:
-  # - et
-  # - en
-  # - ru
+    poff.ee:
+        - et
+        - en
+        - ru
+    justfilm.ee:
+        - et
+        - en
+        - ru
+    kinoff.poff.ee:
+        - et
+        - en
+        - ru
+    industry.poff.ee:
+        - en
+    shorts.poff.ee:
+        - et
+        - en
+    hoff.ee:
+        - et
+        - en
+    kumu.poff.ee:
+        - et
+        - en
+        - ru
+    tartuff.ee:
+        - et
+        - en
+        - ru
+    oyafond.ee:
+        - et
+        - en
+        - ru
+    filmikool.poff.ee:
+        - et
+        - en
+        - ru
 
 defaultLocale:
-  poff.ee: et
-  justfilm.ee: et
-  kinoff.poff.ee: et
-  industry.poff.ee: en
-  shorts.poff.ee: et
-  hoff.ee: et
-  kumu.poff.ee: et
-  tartuff.ee: et
-  # brunooja.poff.ee: et
+    poff.ee: et
+    justfilm.ee: et
+    kinoff.poff.ee: et
+    industry.poff.ee: en
+    shorts.poff.ee: et
+    hoff.ee: et
+    kumu.poff.ee: et
+    tartuff.ee: et
+    oyafond.ee: et
+    filmikool.poff.ee: et
 
 vialogUrls:
     et:
@@ -99,23 +154,25 @@ vialogUrls:
         - "https://hoff.ee/ru/film/"
 
 pageURLs:
-  poff.ee: "https://poff.ee/"
-  justfilm.ee: "https://justfilm.ee/"
-  kinoff.poff.ee: "https://kinoff.poff.ee/"
-  industry.poff.ee: "https://industry.poff.ee/"
-  shorts.poff.ee: "http://shorts.poff.ee/"
-  hoff.ee: "https://hoff.ee/"
-  kumu.poff.ee: https://kumu.poff.ee/
-  tartuff.ee: https://tartuff.ee/
-  # oja.ee: https://brunooja.poff.ee/
+    poff.ee: "https://poff.ee/"
+    justfilm.ee: "https://justfilm.ee/"
+    kinoff.poff.ee: "https://kinoff.poff.ee/"
+    industry.poff.ee: "https://industry.poff.ee/"
+    shorts.poff.ee: "http://shorts.poff.ee/"
+    hoff.ee: "https://hoff.ee/"
+    kumu.poff.ee: "https://kumu.poff.ee/"
+    tartuff.ee: "https://tartuff.ee/"
+    oyafond.ee: "https://oyafond.ee/"
+    filmikool.poff.ee: "https://filmikool.poff.ee/"
 
 stagingURLs:
-  poff.ee: "https://staging.poff.inscaping.eu/"
-  justfilm.ee: "https://staging.justfilm.inscaping.eu/"
-  kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
-  industry.poff.ee: "https://staging.industry.inscaping.eu/"
-  shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
-  # hoff.ee: "https://staging.hoff.inscaping.eu/"
-  # kumu.poff.ee: https://kumu.poff.ee/
-  # tartuff.ee: https://tartuff.ee/
-  # # oja.ee: https://brunooja.poff.ee/
+    poff.ee: "https://staging.poff.inscaping.eu/"
+    justfilm.ee: "https://staging.justfilm.inscaping.eu/"
+    kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
+    industry.poff.ee: "https://staging.industry.inscaping.eu/"
+    shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
+    # hoff.ee: "https://staging.hoff.inscaping.eu/"
+    # kumu.poff.ee: https://kumu.poff.ee/
+    # tartuff.ee: https://tartuff.ee/
+    # oyafond.ee: https://oyafond.ee/
+    # filmikool.poff.ee: https://filmikool.poff.ee/
