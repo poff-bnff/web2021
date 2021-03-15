@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_article_trio_kumu",
+  "info": {
+    "name": "Triokumu",
+    "icon": "door-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kumu"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kumu"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kumu"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    }
+  }
+}

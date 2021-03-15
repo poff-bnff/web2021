@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "role_at_films",
   "info": {
-    "name": "roleAtFilm"
+    "name": "RoleAtFilm",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "roleNamePrivate": {

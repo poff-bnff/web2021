@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tartuffi-menus",
+      "handler": "tartuffi-menu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tartuffi-menus/count",
+      "handler": "tartuffi-menu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tartuffi-menus/:id",
+      "handler": "tartuffi-menu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tartuffi-menus",
+      "handler": "tartuffi-menu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tartuffi-menus/:id",
+      "handler": "tartuffi-menu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tartuffi-menus/:id",
+      "handler": "tartuffi-menu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

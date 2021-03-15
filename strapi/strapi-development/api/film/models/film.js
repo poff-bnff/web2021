@@ -27,26 +27,34 @@ const path = require('path');
 //       },
 // }
 
-// mapping is used for keeping track of strapi_id for for festival_edition
-const mapping = {
+// mappingFestivalEdition is used for keeping track of strapi_id for for festival_edition
+const mappingFestivalEdition = {
   '1': 'poff',
   '2': 'shorts',
   '3': 'just',
   '4': 'kinoff',
-  '5': 'hoff'
+  '5': 'hoff',
+  '6': 'kumu'
 }
 
 function get_domain_name(result) {
   let domain_to_build = []
   for (let edition of result.festival_editions){
-    domain_to_build.push(mapping[edition.id])
+    domain_to_build.push(mappingFestivalEdition[edition.id])
   }
   return domain_to_build
 }
 
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('film').update({id: result.id}, result)
+}
 
 module.exports = {
   lifecycles: {
+    async afterCreate(result, data) {
+      await call_update(result)
+    },
     beforeUpdate(params, data) {
       const prefixes= {
         2213: '0_'
@@ -64,23 +72,42 @@ module.exports = {
       let domains = get_domain_name(result)
       for (let domain of domains){
         if (fs.existsSync('/srv/ssg/build_hoff.sh') && domain === 'hoff') {
-            const args = []
+          const args = []
 
-            const child = spawn('/srv/ssg/build_hoff.sh', args)
+          const child = spawn('/srv/ssg/build_hoff.sh', args)
 
-            child.stdout.on('data', (chunk) => {
-                console.log(decoder.write(chunk))
-              // data from the standard output is here as buffers
-            });
-            // since these are streams, you can pipe them elsewhere
-            child.stderr.on('data', (chunk) => {
-                console.log('err:', decoder.write(chunk))
-              // data from the standard error is here as buffers
-            });
-            // child.stderr.pipe(child.stdout);
-            child.on('close', (code) => {
-                console.log(`child process exited with code ${code}`);
-            });
+          child.stdout.on('data', (chunk) => {
+              console.log(decoder.write(chunk))
+            // data from the standard output is here as buffers
+          });
+          // since these are streams, you can pipe them elsewhere
+          child.stderr.on('data', (chunk) => {
+              console.log('err:', decoder.write(chunk))
+            // data from the standard error is here as buffers
+          });
+          // child.stderr.pipe(child.stdout);
+          child.on('close', (code) => {
+              console.log(`child process exited with code ${code}`);
+          });
+        }
+        else if (fs.existsSync('/srv/ssg/build_kumu.sh') && domain === 'kumu') {
+          const args = []
+
+          const child = spawn('/srv/ssg/build_kumu.sh', args)
+
+          child.stdout.on('data', (chunk) => {
+              console.log(decoder.write(chunk))
+            // data from the standard output is here as buffers
+          });
+          // since these are streams, you can pipe them elsewhere
+          child.stderr.on('data', (chunk) => {
+              console.log('err:', decoder.write(chunk))
+            // data from the standard error is here as buffers
+          });
+          // child.stderr.pipe(child.stdout);
+          child.on('close', (code) => {
+              console.log(`child process exited with code ${code}`);
+          });
         }
       }
     }

@@ -1,18 +1,30 @@
 #! /bin/sh
-
 SECONDS=0
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 echo $PWD
+DOMAIN=$1
+echo 'Domain' $DOMAIN
+BUILDDIR=$(node /srv/ssg/helpers/name_build_directory.js $DOMAIN)
 
-export DOMAIN=$1
+TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
+BACKUP_TEMP_DIR=temp_"${TIMESTAMP}"/
 
-BUILDDIR=$(node ./helpers/name_build_directory.js)
 echo "Deploy directory: $BUILDDIR"
-
+if [ $? != 0 ] #BUILDDIR error
+then
+	exit 80
+fi
 echo '\n Making backup \n'
-cp -a "/srv/www/$DOMAIN/. /srv/www-backup/$DOMAIN/"`date +"%Y-%m-%d_%H-%M-%S"`'/'
-
+cp -a "/srv/www/"$DOMAIN"/." "/srv/backup/"$DOMAIN"/"$BACKUP_TEMP_DIR
+if [ $? != 0 ] #Backup error
+then
+	exit 81
+fi
 echo '\nReplace live site'
-rsync -avh "/srv/ssg/build/$BUILDDIR/. /srv/www/$DOMAIN/"  --delete-after
-
+rsync -ah /srv/ssg/build/$BUILDDIR/* /srv/www/$DOMAIN/  --delete-after
+if [ $? != 0 ] #Live replace error
+then
+	exit 82
+fi
+bash /srv/ssg/create_bak.sh $DOMAIN $TIMESTAMP

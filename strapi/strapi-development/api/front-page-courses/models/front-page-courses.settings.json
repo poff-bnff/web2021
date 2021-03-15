@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "front_page_courses",
+  "info": {
+    "name": "Front_Page_Courses",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "lead": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "courses_et": {
+      "collection": "course"
+    },
+    "courses_en": {
+      "collection": "course"
+    },
+    "courses_ru": {
+      "collection": "course"
+    }
+  }
+}

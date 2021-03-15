@@ -2,15 +2,17 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
-const util = require("util")
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'teamsandjuries');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Team'];
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['Person'];
-const DOMAIN = process.env['DOMAIN'] || 'kinoff.poff.ee';
+const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+
+const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
+const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataTeamPath, 'utf8'))
+const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
+const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const languages = ['en', 'et', 'ru']
 for (const ix in languages) {
@@ -33,6 +35,10 @@ for (const ix in languages) {
             var templateDomainName = 'kumu';
         } else if (DOMAIN === 'tartuff.ee') {
             var templateDomainName = 'tartuff';
+        } else if (DOMAIN === 'filmikool.poff.ee') {
+            var templateDomainName = 'filmikool';
+        } else if (DOMAIN === 'oyafond.ee') {
+            var templateDomainName = 'bruno';
         } else {
             var templateDomainName = 'poff';
         }
@@ -56,14 +62,12 @@ for (const ix in languages) {
         // for the purpose of saving slug_en before it will be removed by rueten func.
         let dirSlug = element.slug_en || element.slug_et ? element.slug_en || element.slug_et : null ;
         element = rueten(element, lang);
-        element.data = {'articles': '/_fetchdir/articles.' + lang + '.yaml'};
         if ('slug' in element) {
             element.path = element.slug;
         } else {
             continue
         }
 
-        //console.log(util.inspect(element, false, 10))
         const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
 
         if (dirSlug != null) {
@@ -77,7 +81,6 @@ for (const ix in languages) {
         allData.push(element);
     }
 
-    //console.log(util.inspect(allData, false, 10))
     const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `teams.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');

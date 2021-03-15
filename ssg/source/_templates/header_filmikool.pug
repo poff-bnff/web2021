@@ -1,0 +1,49 @@
+header
+    .logo
+        //- Defining locale path for multilingual support
+        - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
+        a(href=`/${lang_path}`)
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/filmikool_logo_01.svg' src='/assets/img/static/filmikool_logo_01.svg')
+    input#main_menu_toggle.main_menu_toggle(type='checkbox')
+
+
+    nav.main_menu
+        ul.ul_yx
+            li
+                nav.org_menu
+                    span.org_item
+                        a(href='https://poff.ee')
+                            | PÖFF
+                    span.org_item
+                        a(href='https://industry.poff.ee')
+                            | !{`Industry@Tallinn & Baltic Event`}
+                    span.org_item
+                        a(href='https://justfilm.ee')
+                            | Just Film
+                    span.org_item
+                        a(href='https://shorts.poff.ee')
+                            | PÖFF Shorts
+                    span.org_item
+                        a(href='https://kinoff.ee')
+                            | Kinoff
+                    span.org_item
+                        a(href='https://kino.poff.ee')
+                            | PÖFFi veebikino
+
+            - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
+            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
+
+            //- li
+            //-     nav.lang_menu
+            //-         each p, locale in self.otherLocalePaths
+
+            //-             if !('publish' in self) || ((self[`publish_${locale}`] !== false) && (`publish_${locale}` in self))
+            //-                 a(href=(p !== '/' ? p + '/' : '/'))= locale
+            //-             else
+            //-                 a= locale
+
+    label.main_menu_toggle_label(for='main_menu_toggle')
+        span
+
+//- include ../_templates/tracker_mixin.pug
+//- +trackMe()

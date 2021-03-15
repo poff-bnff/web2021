@@ -1,0 +1,325 @@
+[
+  {
+    "id": 1,
+    "article_et": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3849,
+            "name": "JF_web_1920x600_2021_b65c4ae35a.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "path": null,
+                "size": 6.94,
+                "width": 245,
+                "height": 77
+              }
+            },
+            "hash": "JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-02-02T12:54:04.180Z",
+            "updated_at": "2021-02-02T12:54:04.737Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "article_en": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3849,
+            "name": "JF_web_1920x600_2021_b65c4ae35a.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "path": null,
+                "size": 6.94,
+                "width": 245,
+                "height": 77
+              }
+            },
+            "hash": "JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-02-02T12:54:04.180Z",
+            "updated_at": "2021-02-02T12:54:04.737Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "article_ru": {
+      "id": 9,
+      "created_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "updated_by": {
+        "id": 14,
+        "firstname": "Heleen",
+        "lastname": "Sutt",
+        "username": null
+      },
+      "created_at": "2020-09-21T11:49:43.510Z",
+      "updated_at": "2021-01-12T11:28:50.807Z",
+      "title_et": " ",
+      "slug_et": "justfilm",
+      "title_en": " ",
+      "slug_en": "justfilm_en",
+      "title_ru": " ",
+      "slug_ru": "justfilm_ru",
+      "lead_et": "",
+      "lead_en": null,
+      "lead_ru": null,
+      "contents_et": null,
+      "contents_en": null,
+      "contents_ru": null,
+      "publishFrom": null,
+      "publishUntil": null,
+      "publish_et": true,
+      "publish_en": true,
+      "publish_ru": true,
+      "media": {
+        "id": 60,
+        "clipUrlDefault": null,
+        "clipUrl_et": null,
+        "clipUrl_en": null,
+        "clipUrl_ru": null,
+        "imageDefault": [
+          {
+            "id": 3849,
+            "name": "JF_web_1920x600_2021_b65c4ae35a.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "width": 3840,
+            "height": 1200,
+            "formats": {
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "/uploads/thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+                "hash": "thumbnail_JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+                "mime": "image/jpeg",
+                "name": "thumbnail_JF_web_1920x600_2021_b65c4ae35a.jpg",
+                "path": null,
+                "size": 6.94,
+                "width": 245,
+                "height": 77
+              }
+            },
+            "hash": "JF_web_1920x600_2021_b65c4ae35a_9265429b68",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 909.47,
+            "url": "/uploads/JF_web_1920x600_2021_b65c4ae35a_9265429b68.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "created_at": "2021-02-02T12:54:04.180Z",
+            "updated_at": "2021-02-02T12:54:04.737Z"
+          }
+        ],
+        "image_et": [],
+        "image_en": [],
+        "image_ru": []
+      },
+      "button": [],
+      "article_types": [
+        {
+          "id": 2,
+          "name": "news",
+          "created_at": "2020-08-18T13:49:51.616Z",
+          "updated_at": "2020-09-21T10:57:52.599Z",
+          "article": null,
+          "et": "Uudised",
+          "en": "News",
+          "ru": "Новости",
+          "slug_et": "uudis",
+          "slug_en": "news",
+          "slug_ru": "novost",
+          "name_et": "Uudis",
+          "name_en": "News",
+          "name_ru": "Новость",
+          "label_et": "Uudis",
+          "label_en": "News",
+          "label_ru": "Новость",
+          "Description": null
+        }
+      ],
+      "tag_premiere_types": [],
+      "programmes": [],
+      "tag_genres": [],
+      "tag_keywords": [],
+      "web_authors": [],
+      "organisations": []
+    },
+    "created_at": "2020-09-21T11:50:01.877Z",
+    "updated_at": "2020-09-21T11:50:01.891Z"
+  }
+]

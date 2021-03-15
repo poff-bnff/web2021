@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-filmikool",
+      "handler": "trio-filmikool.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-filmikool",
+      "handler": "trio-filmikool.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-filmikool",
+      "handler": "trio-filmikool.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

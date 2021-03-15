@@ -8,7 +8,7 @@ cd "/srv/ssg"
 
 echo $PWD
 
-export DOMAIN=''
+export DOMAIN='oyafond.ee'
 echo DOMAIN
 echo $DOMAIN
 

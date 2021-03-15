@@ -132,6 +132,90 @@ mixin completionDateEET(dateStringUTC)
 
         })();
 
+//- 16.12.2020 - 05.01.2020
+mixin dateFromTo(dateStringUTCFrom, dateStringUTCTo)
+    - var dom_id = Math.random()
+    span(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+
+            moment.updateLocale('en', {
+                longDateFormat : {
+                    LT: "hh:mm A",
+                    L: "MM/DD/YYYY",
+                    l: "M/D/YYYY",
+                    LL: "MMMM Do YYYY",
+                    ll: "MMM D YYYY",
+                    LLL: "MMMM Do YYYY LT",
+                    lll: "MMM D YYYY LT",
+                    LLLL: "dddd, MMMM Do YYYY LT",
+                    llll: "ddd, MMM D YYYY LT"
+                }
+            });
+
+            moment.updateLocale('et', {
+                longDateFormat: {
+                    LT: 'HH:mm',
+                    LTS: 'H:mm:ss',
+                    L: 'DD.MM.YYYY',
+                    LL: 'D. MMMM YYYY',
+                    LLL: 'D. MMMM YYYY H:mm',
+                    LLLL: 'dddd, D. MMMM YYYY H:mm'
+                }
+            });
+
+            moment.locale('#{self.locale}');
+            //- moment.locale('et');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}');
+            var from_time_EET = moment.parseZone('#{dateStringUTCFrom}').tz('Europe/Tallinn').format('L');
+            var to_time_EET = moment.parseZone('#{dateStringUTCTo}').tz('Europe/Tallinn').format('L');
+            eDisplayMoment1.parentElement.innerHTML = `${from_time_EET} - ${to_time_EET}`;
+
+        })();
+
+//- 16.12.2020
+mixin dateFull(dateStringUTC)
+    - var dom_id = Math.random()
+    p(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+
+            moment.updateLocale('en', {
+                longDateFormat : {
+                    LT: "hh:mm A",
+                    L: "MM/DD/YYYY",
+                    l: "M/D/YYYY",
+                    LL: "MMMM Do YYYY",
+                    ll: "MMM D YYYY",
+                    LLL: "MMMM Do YYYY LT",
+                    lll: "MMM D YYYY LT",
+                    LLLL: "dddd, MMMM Do YYYY LT",
+                    llll: "ddd, MMM D YYYY LT"
+                }
+            });
+
+            moment.updateLocale('et', {
+                longDateFormat: {
+                    LT: 'HH:mm',
+                    LTS: 'H:mm:ss',
+                    L: 'DD.MM.YYYY',
+                    LL: 'D. MMMM YYYY',
+                    LLL: 'D. MMMM YYYY H:mm',
+                    LLLL: 'dddd, D. MMMM YYYY H:mm'
+                }
+            });
+
+            moment.locale('#{self.locale}');
+            //- moment.locale('et');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}');
+            var time_EET = moment.parseZone('#{dateStringUTC}').tz('Europe/Tallinn').format('L');
+            eDisplayMoment1.innerHTML = time_EET;
+
+        })();
 
 //- tekitab formaadis (nt E 21.08.2020 12:00) kohaliku kuupäeva. kasutuses article.index.pug
 //- sisend kujul (2020-08-10T22:45:00+0300)

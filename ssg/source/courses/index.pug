@@ -1,0 +1,57 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    if self.data.courses
+        main.grid_films
+            each course in self.data.courses.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
+                a.card_film(id= course.id href= `/${lang_path}${course.path}`)
+                    .container_frame_16_9
+                        if course.posters && course.posters[0]
+                            img.container_contents_16_9(src=`https://assets.poff.ee/img/${course.posters[0]}` alt = course.title)
+                        else
+                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = course.title)
+
+                    .card_film_title
+                        h3.film_title_locale.dark_1= course.title
+
+                    //- .card_film_info
+                    //-     .str_info_grid_3
+
+                    //-         if course.startDate
+                    //-             .str_info_label.dark_semi Algus
+                    //-             .str_info_value.dark_1.thin_300
+                    //-                 +localdatetime(course.startDate)
+
+                    //-         if course.endDate
+                    //-             .str_info_label.dark_semi Lõpp
+                    //-             .str_info_value.dark_1.thin_300
+                    //-                 +localdatetime(course.endDate)
+
+                    //-         if course.durationTotal
+                    //-             .str_info_label.dark_semi Kestus
+                    //-             .str_info_value.dark_1.thin_300= course.durationTotal
+
+                    //-         if course.languages && course.languages.length
+                    //-             .str_info_label.dark_semi= self.label.film.languages
+                    //-             .str_info_value.dark_1.thin_300= course.languages.join(', ')
+
+                    //-         if course.credentials && course.credentials.rolePersonsByRole
+                    //-             - var rolePersonsByRole = course.credentials.rolePersonsByRole
+                    //-             if rolePersonsByRole.director
+                    //-                 .str_info_label.dark_semi= self.label.film.director
+                    //-                 .str_info_value.dark_1.thin_300= rolePersonsByRole.director.join(', ')
+
+                    //-         if course.credentials && course.credentials.roleCompaniesByRole
+                    //-             - var roleCompaniesByRole = course.credentials.roleCompaniesByRole
+                    //-             if roleCompaniesByRole.producer
+                    //-                 .str_info_label.dark_semi= self.label.film.producer
+                    //-                 .str_info_value.dark_1.thin_300= roleCompaniesByRole.producer.join(', ')
+
+                    //-         if course.presentedBy
+                    //-             if course.presentedBy.presentedByText
+                    //-                 .str_info_label.dark_semi= course.presentedBy.presentedByText
+                    //-             if course.presentedBy.organisations
+                    //-                 .str_info_value.dark_1.thin_300= course.presentedBy.organisations.map(o => o.name).join(', ')
+

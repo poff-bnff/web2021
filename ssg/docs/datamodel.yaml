@@ -153,7 +153,8 @@ FestivalEdition: &FestivalEdition
     description_ru: (Rich text)
     startDate: (Datetime)
     endDate: (Datetime)
-    domain: *Domain #(Component)
+    domains: #(Component (repeatable))
+        - *Domain
     festival: *Festival #(Component)
     slug_et: (UID)
     slug_en: (UID)
@@ -199,7 +200,6 @@ Programme: &Programme
     slug_et: (text)
     slug_en: (text)
     slug_ru: (text)
-
 
 Tags: &Tags
     genres: #(Component (repeatable))
@@ -585,6 +585,48 @@ BrunoArticle: &BrunoArticle
     organisations:
         - *Organisation
 
+FilmikooliArticle: &FilmikooliArticle
+    _path: /filmikooli-articles
+    created_by:
+        firstname: (text)
+        lastname: (text)
+    created_at: (datetime)
+    #titlePrivate: (text, private field)
+    title_et: (text)
+    title_en: (text)
+    title_ru: (text)
+    slug_et: (text)
+    slug_en: (text)
+    slug_ru: (text)
+    lead_et: (Rich text)
+    lead_en: (Rich text)
+    lead_ru: (Rich text)
+    contents_et: (Rich text)
+    contents_en: (Rich text)
+    contents_ru: (Rich text)
+    media: *ArticleMedia #(Component)
+    publishFrom: (Datetime)
+    publishUntil: (Datetime)
+    publish_et: (boolean)
+    publish_en: (boolean)
+    publish_ru: (boolean)
+    button: #(Component (repeatable))
+        - *Button
+    article_types: #(Component (repeatable))
+        - *ArticleType
+    tag_premiere_types: #(Component (repeatable))
+        - *TagPremiereType
+    programmes: #(Component (repeatable))
+        - *Programme
+    tag_genres: #(Component (repeatable))
+        - *TagGenre
+    tag_keywords: #(Component (repeatable))
+        - *TagKeyword
+    web_authors: #(Component (repeatable))
+        - *WebAuthor
+    organisations:
+        - *Organisation
+
 Language: &Language
     _path: /languages
     id: 8 (number)
@@ -672,7 +714,7 @@ JustFilmiMenu: &JustFilmiMenu
 
 ShortsiSubMenuItem: &ShortsiSubMenuItem
     name: *Translated #(Component)
-    shortsi_article: *JustFilmiArticle
+    shortsi_article: *ShortsiArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
@@ -771,6 +813,23 @@ BrunoMenu: &BrunoMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *TartuffiSubMenuItem
+
+FilmikooliSubMenuItem: &FilmikooliSubMenuItem
+    name: *Translated #(Component)
+    filmikooli_article: *FilmikooliArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+
+FilmikooliMenu: &FilmikooliMenu
+    _path: /filmikooli-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    filmikooli_article: *FilmikooliArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *FilmikooliSubMenuItem
 
 # Person & Team
 Person: &Person
@@ -1018,6 +1077,62 @@ LabelGroup:
     name: (text)
     label: #(Component (repeatable))
         - *Label
+
+#Filikool
+CourseTags: &CourseTags
+    keywords: #(Component (repeatable))
+      - *TagKeyword
+
+Event: &Event
+    _path: /events
+    code: (Number)
+    ticketingUrl: (text) # suunamine kursusele
+    startDate: (Datetime)
+    endDate: (Datetime)
+    durationTotal: (number)
+    name: *Translated
+    location: *Location
+    extraInfo: *Translated
+    bookingUrl: (text)
+    course: (backreference) #*Course
+
+Course: &Course
+    _path: /courses
+    order: (number)
+    titleOriginal: (short text)
+    title_et: (short text)
+    title_en: (short text)
+    title_ru: (short text)
+    slug_et: (UID, title_et)
+    slug_en: (UID, title_en)
+    slug_ru: (UID, title_ru)
+    year: (number)
+    startDate: (Datetime)
+    endDate: (Datetime)
+    volume: (short text)
+    media: *FilmMedia #(Component, not from eventival)
+    tags: *CourseTags #(Component)
+    languages: #(Component (repeatable))
+        - *Language
+    credentials: *Credentials
+    presentedBy: *PresentedBy
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+    events:
+        - *Event #(backreference)
+
+FrontPageCourses: &FrontPageCourses
+    _path: /front-page-courses
+    title: *Translated
+    lead: *Translated #(Rich)
+    domain: *Domain #filmikool.poff.ee
+    namePrivate: (text)
+    courses_et: #(Component (repeatable))
+        - *Course
+    courses_en: #(Component (repeatable))
+        - *Course
+    courses_ru: #(Component (repeatable))
+        - *Course
 
 #Industry
 FilmInFilmography: &FilmInFilmography
@@ -1410,7 +1525,7 @@ SupSecKumu: &SupSecKumu
         - *SupKumu
 
 KumuSupporter: &KumuSupporter
-    _path: /hof-fi-supporters
+    _path: /kumu-supporters
     # namePrivate: (text, private)
     domain: *Domain
     title: *Translated
@@ -1433,7 +1548,7 @@ SupSecBruno: &SupSecBruno
         - *SupBruno
 
 BrunoSupporter: &BrunoSupporter
-    _path: /hof-fi-supporters
+    _path: /bruno-supporters
     # namePrivate: (text, private)
     domain: *Domain
     title: *Translated
@@ -1441,6 +1556,28 @@ BrunoSupporter: &BrunoSupporter
     supporters: #(Component (repeatable))
         - *SupSecBruno
 
+SupFilmikool: &SupFilmikool
+    name: (text)
+    customUrl: (text)
+    logoWhite: *StrapiMedia
+    logoColour: *StrapiMedia
+    logoBlack: *StrapiMedia
+    filmikooli_article: *FilmikooliArticle
+
+SupSecFilmikool: &SupSecFilmikool
+    name: *Translated
+    order: (Number)
+    supporter: #(Component (repeatable))
+        - *SupFilmikool
+
+FilmikooliSupporter: &FilmikoolSupporter
+    _path: /filmikool-supporters
+    # namePrivate: (text, private)
+    domain: *Domain
+    title: *Translated
+    intro: *Translated
+    supporters: #(Component (repeatable))
+        - *SupSecFilmikool
 
 # Footer
 SocialItem: &SocialItem
@@ -1471,8 +1608,7 @@ POFFiFooter: &POFFiFooter
     _path: /pof-fi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1482,8 +1618,7 @@ JustFilmFooter: &JustFilmFooter
     _path: /just-film-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1493,8 +1628,7 @@ ShortsiFooter: &ShortsiFooter
     _path: /shortsi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1504,8 +1638,7 @@ IndustryFooter: &IndustryFooter
     _path: /industry-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1515,8 +1648,7 @@ KinoffiFooter: &KinoffiFooter
     _path: /kinoffi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1526,8 +1658,7 @@ HOFFiFooter: &HOFFiFooter
     _path: /hof-fi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1537,8 +1668,7 @@ TartuffiFooter: &TartuffiFooter
     _path: /tartuffi-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1548,8 +1678,7 @@ KumuFooter: &KumuFooter
     _path: /kumu-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
@@ -1559,12 +1688,21 @@ BrunoFooter: &BrunoFooter
     _path: /bruno-footers
     namePrivate: (text)
     domain: *Domain #(Component)
-    socialGroup: #(Component )
-        *SocialGroup
+    socialGroup: *SocialGroup #(Component )
     item: #(Component (repeatable))
         - *FooterItemNav
     supporters: #(Component (repeatable))
         - *SupSecBruno
+
+FilmikooliFooter: &FilmikooliFooter
+    _path: /filmikooli-footers
+    namePrivate: (text)
+    domain: *Domain #(Component)
+    socialGroup: *SocialGroup #(Component )
+    item: #(Component (repeatable))
+        - *FooterItemNav
+    supporters: #(Component (repeatable))
+        - *SupSecFilmikool
 
 # Product & Payment
 Payment: &Payment
@@ -1717,6 +1855,12 @@ HeroArticleBruno:
     article_en: *BrunoArticle #(Component)
     article_ru: *BrunoArticle #(Component)
 
+HeroArticleFilmikool:
+    _path: /hero-article-filmikool
+    article_et: *FilmikooliArticle #(Component)
+    article_en: *FilmikooliArticle #(Component)
+    article_ru: *FilmikooliArticle #(Component)
+
 # Trio
 TrioItemPoff: &TrioItemPoff
     poffi_article: *POFFiArticle #(Component)
@@ -1732,7 +1876,7 @@ Triopoff: &Triopoff
     name: (text)
     lead: (text)
 
-TrioPOFF:
+TrioPoff:
     _path: /trio-p-oe-ff
     trioPoff_et: *Triopoff #(Component)
     trioPoff_en: *Triopoff #(Component)
@@ -1825,18 +1969,18 @@ TrioItemHoff: &TrioItemHoff
     customUrl: (text)
     image: *StrapiMedia #(Component)
 
-TrioHoff: &TrioHoff
+Triohoff: &Triohoff
     name: (text)
     lead: (text)
     trioItem_1: *TrioItemHoff #(Component)
     trioItem_2: *TrioItemHoff #(Component)
     trioItem_3: *TrioItemHoff #(Component)
 
-TrioHOFF: &TrioHOFF
+TrioHoff:
     _path: /trio-hoff
-    trioHoff_et: *TrioHoff #(Component)
-    trioHoff_en: *TrioHoff #(Component)
-    trioHoff_ru: *TrioHoff #(Component)
+    trioHoff_et: *Triohoff #(Component)
+    trioHoff_en: *Triohoff #(Component)
+    trioHoff_ru: *Triohoff #(Component)
 
 TrioItemTartuff: &TrioItemTartuff
     tartuffi_article: *TartuffiArticle #(Component)
@@ -1897,3 +2041,23 @@ TrioBruno: &TrioBruno
     trioBruno_et: *Triobruno #(Component)
     trioBruno_en: *Triobruno #(Component)
     trioBruno_ru: *Triobruno #(Component)
+
+TrioItemFilmikool: &TrioItemFilmikool
+    filmikooli_article: *FilmikooliArticle #(Component)
+    title: (text)
+    lead: (text)
+    customUrl: (text)
+    image: *StrapiMedia #(Component)
+
+Triofilmikool: &Triofilmikool
+    name: (text)
+    lead: (text)
+    trioItem_1: *TrioItemFilmikool #(Component)
+    trioItem_2: *TrioItemFilmikool #(Component)
+    trioItem_3: *TrioItemFilmikool #(Component)
+
+TrioFilmikool: &TrioFilmikool
+    _path: /trio-filmikool
+    trioFilmikool_et: *Triofilmikool #(Component)
+    trioFilmikool_en: *Triofilmikool #(Component)
+    trioFilmikool_ru: *Triofilmikool #(Component)
