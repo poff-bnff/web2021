@@ -1110,8 +1110,7 @@ Course: &Course
     startDate: (Datetime)
     endDate: (Datetime)
     volume: (short text)
-    media:
-        - *StrapiMedia #(Component, not from eventival)
+    media: *FilmMedia #(Component, not from eventival)
     tags: *CourseTags #(Component)
     languages: #(Component (repeatable))
         - *Language
