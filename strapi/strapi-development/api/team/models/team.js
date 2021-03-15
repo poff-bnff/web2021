@@ -17,8 +17,16 @@ const fs = require('fs');
 const yaml = require('yaml');
 const path = require('path');
 
-module.exports = {
-	lifecycles: {
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('team').update({id: result.id}, result)
+}
+
+ module.exports = {
+     lifecycles: {
+        async afterCreate(result, data) {
+          await call_update(result)
+        },
 		beforeUpdate(params, data) {
 
 		},

@@ -58,7 +58,12 @@ block content
 
         main.grid_films
             - var cassettesArray = []
-            each cassette in self.data.cassettes.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
+            //- PÖFFi puhul ajutiselt filme ei kuva, hiljem tuleb kuvada vaid edition veebikino 2021 kassetid
+            //- if  process.env['DOMAIN'] !== 'poff.ee'
+            - var sortedCassettes = self.data.cassettes.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
+            //- else
+            //-     - var sortedCassettes = []
+            each cassette in sortedCassettes
                 - var oneCassette = []
                 if cassette.festival_editions
                     each edition in cassette.festival_editions
@@ -75,18 +80,18 @@ block content
 
                         if cassette.films && cassette.films.length > 1
                             if cassette.cassetteCarouselPicsCassetteThumbs && cassette.cassetteCarouselPicsCassetteThumbs[0]
-                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title)
+                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title || cassette.title_et)
                             else if cassette.cassetteCarouselPicsFilmsThumbs && cassette.cassetteCarouselPicsFilmsThumbs[0]
-                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title)
+                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
                             else
-                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title)
+                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
                         else if cassette.films && cassette.films.length === 1 && cassette.cassetteCarouselPicsFilmsThumbs
-                            img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title)
+                            img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
                         else
-                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title)
+                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
                     .card_film_title
-                        h3#title.film_title_locale.dark_1= cassette.title
-                        - oneCassette.push(cassette.title)
+                        h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+                        - oneCassette.push(cassette.title || cassette.title_et)
                         - cassettesArray.push(oneCassette)
 
                     .card_film_info

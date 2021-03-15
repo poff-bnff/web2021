@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "shops",
   "info": {
-    "name": "shop"
+    "name": "Shop",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {

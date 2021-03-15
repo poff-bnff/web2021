@@ -3,27 +3,25 @@
 
 - var counter = 0
 
-if self.data.FrontPageCourses && self.data.FrontPageCourses.courses && self.data.FrontPageCourses.courses.length > 0
-    if self.data.FrontPageCourses.title
-        .section_headline.dark_semi.thin_300= self.data.FrontPageCourses.title
+if self.data.frontPageCourses && self.data.frontPageCourses.courses && self.data.frontPageCourses.courses.length > 0
+    if self.data.frontPageCourses.title
+        .section_headline.dark_semi.thin_300= self.data.frontPageCourses.title
     section.kuuekas
-        //- if self.data.FrontPageCourses.title
-        //-     h1.dark_1= self.data.FrontPageCourses.title
+        //- if self.data.frontPageCourses.title
+        //-     h1.dark_1= self.data.frontPageCourses.title
 
-        each course in self.data.FrontPageCourses.courses
+        each course in self.data.frontPageCourses.courses
             if counter >= maxAmountToShow
                 - break
             - counter++
 
             .kuueka_item
-                a(href= `/${lang_path}film/${course.slug}`)
+                a(href= `/${lang_path}courses/${course.slug}`)
                     .container_frame_poster
                         - var img = ''
 
-                        if course.media && course.media[0] && course.media.length > 1
-                            - img = course.media[0]
-                        else if course.media && course.media[0] && course.clearImmediate(immediateObject).length === 1
-                            - img = course.media[0]
+                        if course.posters && course.posters[0] && course.posters.length
+                            - img = `https://assets.poff.ee/img/${course.posters[0]}`
                         else
                             - img = '/assets/img/static/placeholder_hd_1.jpg'
 

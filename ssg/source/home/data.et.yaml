@@ -5,6 +5,8 @@ data:
     articleTrioBlock: /_fetchdir/articletrioblock.et.yaml
     sixFilms: /_fetchdir/sixfilms.et.yaml
     articles: /_fetchdir/articles.et.yaml
+    frontPageCourses: /_fetchdir/frontpagecourses.et.yaml
+
 
 frontpageText: '10 Tartuffi 2020. aasta filmi on Elisa Stage paltvormil vaadatavad veel kogu pühapäeva, kuni südaööni.'
 frontPageButton: Vaata filme Elisa Stage'l

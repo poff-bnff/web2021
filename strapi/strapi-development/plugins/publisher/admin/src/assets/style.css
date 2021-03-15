@@ -15,8 +15,18 @@
 	margin: 2rem 2rem 2rem 2rem;
   padding: 5rem 0 0 0;
 }
+.buttons button {
+  margin: 2rem;
+}
 
-.live-btn{
+.btn-and-log {
+  display:flex;
+  /*flex-direction: column;*/
+}
+
+
+
+/*.live-btn{
   border: 1px solid var(--mediumgray);
   border-radius: 3px;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -36,7 +46,6 @@
   font-weight: 600;
   margin: 0.5rem 0 0.5rem 0;
   width: 250px;
-  /*background: var(--mediumgray);*/
   background: var(--hoff_red);
   cursor: not-allowed;
 }
@@ -60,8 +69,8 @@
 
 .log-table .label,
 .log-table .value{
-  padding: 1rem;
-}
+  padding: 0.5rem;
+}*/
 
 /*.live-btn:hover,
 #hoff:hover,

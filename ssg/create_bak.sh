@@ -1,13 +1,18 @@
 #!/bin/bash
-TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
+
 DOMAIN=$1
+FULL_TIMESTAMP=$2
+TIMESTAMP=${FULL_TIMESTAMP%.*}
+
 BACKUP_DIR="/srv/backup/"$DOMAIN"/"
 PREV_BACKUP_DIR="$BACKUP_DIR""$(cd /srv/backup/$DOMAIN && ls -1t | grep "^b.*[0-9]$" | head -1)/"
 NEW_BACKUP_DIR=""$BACKUP_DIR"backup_""$TIMESTAMP/"
-START_DIR="$BACKUP_DIR"temp/
+START_DIR=/srv/backup/temp_"$FULL_TIMESTAMP"/
+
 NEW_FILES_COPIED=0
 HARDLINKS_COPIED=0
 CHANGED_FILES_COPIED=0
+
 echo
 echo Create_bak.sh:
 echo Comparing last live site to previous backup: "$PREV_BACKUP_DIR"

@@ -17,14 +17,23 @@ const {
 const fs = require('fs');
 const yaml = require('yaml');
 const path = require('path');
+
+async function call_update(result) {
+  delete result.published_at
+  await strapi.query('trio-hoff').update({id: result.id}, result)
+}
+
  module.exports = {
      lifecycles: {
+        async afterCreate(result, data) {
+          await call_update(result)
+        },
         beforeUpdate(params, data) {
         },
         afterUpdate(result, params, data) {
+            console.log(result)
             if (fs.existsSync('/srv/ssg/build_hoff.sh')) {
                 const args = []
-
                 const child = spawn('/srv/ssg/build_hoff.sh', args)
 
                 child.stdout.on('data', (chunk) => {
@@ -40,7 +49,7 @@ const path = require('path');
                 child.on('close', (code) => {
                     console.log(`child process exited with code ${code}`);
                 });
-            }
+            }  
         }
     }
 };

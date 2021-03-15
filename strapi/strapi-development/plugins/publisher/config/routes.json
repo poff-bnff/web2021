@@ -10,10 +10,18 @@
     },
     {
       "method": "GET",
-      "path": "/logs",
+      "path": "/logs/:site",
       "handler": "publisher.logs",
       "config": {
         "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fullbuild",
+      "handler": "publisher.fullBuild",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
       }
     }
 

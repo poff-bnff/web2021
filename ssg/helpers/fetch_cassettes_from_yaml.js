@@ -21,14 +21,15 @@ const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
 const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
-const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+// const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
+// const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 const whichScreeningTypesToFetch = []
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
 const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
@@ -36,8 +37,11 @@ const CASSETTELIMIT = parseInt(process.env['CASSETTELIMIT']) || 0
 // true = check if programme is for this domain / false = check if festival edition is for this domain
 const CHECKPROGRAMMES = false
 
-// Kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES, HOFF.ee erand
-if (DOMAIN !== 'hoff.ee')  {
+// Domeenid mille puhul näidatakse ka filme millel ei ole screeningut
+const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_screenings || []
+
+// Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
+if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
@@ -80,7 +84,31 @@ const minimodel_cassette = {
                         model_name: 'FestivalEdition'
                     },
                     'credentials': {
-                        model_name: 'Credentials'
+                        model_name: 'Credentials',
+                        expand: {
+                            'rolePerson': {
+                                model_name: 'RolePerson',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'person': {
+                                        model_name: 'Person'
+                                    },
+                                }
+                            },
+                            'roleCompany': {
+                                model_name: 'RoleCompany',
+                                expand: {
+                                    'role_at_film': {
+                                        model_name: 'RoleAtFilm'
+                                    },
+                                    'organisation': {
+                                        model_name: 'Organisation'
+                                    },
+                                }
+                            },
+                        }
                     },
                     'world_sales': {
                         model_name: 'Organisation'
@@ -199,6 +227,9 @@ const minimodel_screenings = {
     },
     'screening_types': {
         model_name: 'ScreeningType'
+    },
+    'cassette': {
+        model_name: 'Cassette'
     }
 }
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
@@ -220,12 +251,11 @@ if(CHECKPROGRAMMES) {
         timer.log(__filename, `Cassettes with IDs ${cassettesWithOutProgrammes.join(', ')} have no programmes`)
     }
 
-} else if (!CHECKPROGRAMMES && DOMAIN !== 'poff.ee') {
+} else if (!CHECKPROGRAMMES) { //  && DOMAIN !== 'poff.ee' commented out, unsure why set in first place
 
     let cassettesWithOutFestivalEditions = []
 
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
-        let festival_editions = STRAPIDATA_FE.map(edition => edition.id)
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
             return cassette_festival_editions_ids.filter(cfe_id => festival_editions.includes(cfe_id))[0] !== undefined
@@ -250,7 +280,6 @@ for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
     let cassettesWithOutSpecifiedScreeningType = []
 
-    const dataFrom = { 'articles': `/_fetchdir/articles.${lang}.yaml` }
     fs.mkdirSync(cassettesPath, { recursive: true })
     timer.log(__filename, `Fetching ${DOMAIN} cassettes ${lang} data`)
     let allData = []
@@ -260,7 +289,7 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-        var hasOneCorrectScreening = DOMAIN === 'hoff.ee' ? true : false
+        var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
         counting++
@@ -350,15 +379,15 @@ for (const lang of allLanguages) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
-
                     let screeningNames = function(item) {
                         let itemNames = item.name
                         return itemNames
                     }
                     // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
-                    if(!screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
+                    if(!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
                         continue
                     }
+
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
                     hasOneCorrectScreening = true
@@ -484,6 +513,7 @@ for (const lang of allLanguages) {
                         }
                     }
 
+                    // Rolepersons by role
                     if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
                         scc_film.credentials.rolePerson.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
@@ -512,13 +542,34 @@ for (const lang of allLanguages) {
                         }
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
                     }
+
+                    // Rolecompanies by role
+                    if(scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
+                        let roleCompanyTypes = {}
+                        scc_film.credentials.roleCompany.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                        for (roleIx in scc_film.credentials.roleCompany) {
+                            let roleCompany = scc_film.credentials.roleCompany[roleIx]
+                            if (roleCompany === undefined) { continue }
+                            if (roleCompany.organisation) {
+                                let searchRegExp = new RegExp(' ', 'g')
+                                const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
+
+                                if (roleCompany.organisation.name) {
+                                    roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                }
+                            } else {
+                                // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
+                            }
+                        }
+                        scc_film.credentials.roleCompaniesByRole = roleCompanyTypes
+                    }
                 }
                 rueten(s_cassette_copy.films, lang)
             }
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                s_cassette_copy.data = dataFrom
                 // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
                 generateYaml(s_cassette_copy, lang)
             } else {
@@ -599,7 +650,7 @@ function generateAllDataYAML(allData, lang){
         if (cassette.tags && typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
-                    for (const fested of programme.festival_editions) {
+                    for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
                         const key = fested.festival.id + '_' + programme.id
                         const festival = fested.festival
                         var festival_name = festival.name
