@@ -25,7 +25,7 @@ const LogsAccordion = ({site}) => {
   useEffect ( () => {GetLogs()}, []);
 
   const GetLogs = async () => {
-    let token = await JSON.parse(sessionStorage.getItem("jwtToken")) || await JSON.parse(localStorage.getItem("jwtToken"));
+    const token = await JSON.parse(sessionStorage.getItem("jwtToken")) || await JSON.parse(localStorage.getItem("jwtToken"));
 
     const MakeRequest = async (token) => {
     // console.log("MakeRequest'is token: " + token)
