@@ -9696,3 +9696,39 @@
         time: '2021.03.15 16:17:30 (+02:00)'
     PID: 30637
     error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:71\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /home/liis/Documents/web2021/ssg/helpers/b_fetch.js:71:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:70:40)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:127:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_screenings_from_yaml.js:98:31)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n"
+-
+    time: '2021.03.15 17:32:44 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: poff.ee
+        file: build_screening.sh
+        type: target
+        parameters: 1154 844
+        time: '2021.03.15 17:32:44 (+02:00)'
+    PID: 33333
+    error: null
+-
+    time: '2021.03.15 17:32:44 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: poff.ee
+        file: build_screening.sh
+        type: target
+        parameters: 1154 844
+        time: '2021.03.15 17:32:44 (+02:00)'
+    PID: 33333
+    error: null
+-
+    time: '2021.03.15 17:32:46 (+02:00)'
+    type: Build finish
+    duration: 2007
+    command:
+        domain: poff.ee
+        file: build_screening.sh
+        type: target
+        parameters: 1154 844
+        time: '2021.03.15 17:32:44 (+02:00)'
+    PID: 33333
+    error: null

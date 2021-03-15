@@ -182,17 +182,20 @@ function get_build_script(domain) {
     }
 }
 
-let TakeOutTrash_path = path.join(__dirname, '..', '..', '..', '/ssg/helpers/a_fetch.js')
-
+let TakeOutTrash_path = path.join(__dirname, '..', '..', '..', '/ssg/helpers/take_out_trash.js')
 const {
     TakeOutTrash
 } = require(TakeOutTrash_path)
+const modelFile = path.join(__dirname, '..', '..', '..', '/ssg/docs', 'datamodel.yaml')
+const DATAMODEL = yaml.parse(fs.readFileSync(modelFile, 'utf8'), {maxAliasCount: -1})
 
 async function modify_stapi_data(result, model_name, vanish=false) {
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
     console.log(modelname, 'id:', result.id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
-    const strapidata_dir = path.join(__dirname, '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
+
+    result = TakeOutTrash(result, DATAMODEL[modelname], modelname)
+    const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
     let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
 
     let list_of_models = []
