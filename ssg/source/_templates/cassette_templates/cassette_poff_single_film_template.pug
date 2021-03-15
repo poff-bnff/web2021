@@ -6,8 +6,8 @@ main.grid_film(id=self.id)
     //-     })
     //- Kasseti title ja synopsis
     //- div
-    //-     if self.title
-    //-         h1.dark_1= 'ÜHEFILMIKASSETT!!!!!!!!!!!!!!!!!! ' + self.title
+    //-     if film.title
+    //-         h1.dark_1= 'ÜHEFILMIKASSETT!!!!!!!!!!!!!!!!!! ' + film.title
     //-     if self.synopsis
     //-         h1.dark_1= self.synopsis
 
@@ -27,16 +27,16 @@ main.grid_film(id=self.id)
                             each val, index in self.films[0].media.stills
                                 if index == 0
                                     .carousel-item.active.container_contents_16_9
-                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = film.title || film.title_et)
                                 else
                                     .carousel-item.container_contents_16_9
-                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = film.title || film.title_et)
                         else
                             .carousel-item.active.container_contents_16_9
-                                img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                                img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = film.title || film.title_et)
                     else
                         .carousel-item.active.container_contents_16_9
-                            img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                            img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = film.title || film.title_et)
 
                 a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
                     // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -65,7 +65,7 @@ main.grid_film(id=self.id)
                         //- Kui on mitu, eraldatakse komadega, kui vaid esimest ühte vaja, siis film.tags.premiere_types[0]
                         p.premiere_type= film.tags.premiere_types.join(', ')
 
-                h1.film_title_detailed= film.title
+                h1.film_title_detailed= film.title || film.title_et
                 .str_info_blokk_1
 
                     each p, locale in self.otherLocalePaths
@@ -217,10 +217,17 @@ main.grid_film(id=self.id)
                                 .str_info_value= film.credentials.rolePersonsByRole.editor.join(', ')
 
                         //- Below datamodel needs to be updated and then code amended to be correct
-                        if film.credentials.rolePersonsByRole.productionCompany && film.credentials.rolePersonsByRole.productionCompany[0]
+                        if film.credentials.rolePersonsByRole.productioncompany && film.credentials.rolePersonsByRole.productioncompany[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.production
-                                .str_info_value= film.credentials.rolePersonsByRole.productionCompany.join(', ')
+                                .str_info_value= film.credentials.rolePersonsByRole.productioncompany.join(', ')
+
+                    if film && film.credentials && film.credentials.roleCompaniesByRole
+                        if film.credentials.roleCompaniesByRole.productioncompany && film.credentials.roleCompaniesByRole.productioncompany[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.production
+                                .str_info_value= film.credentials.roleCompaniesByRole.productioncompany.join(', ')
+
 
             section.f_runtime_box
 
@@ -554,4 +561,4 @@ main.grid_film(id=self.id)
 
             //- section.f_imgs_box
 
-            +tabname(self.title)
+            +tabname(film.title || film.title_et)

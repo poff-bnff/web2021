@@ -1,6 +1,5 @@
 path: moi_seanss
 data:
     screenings: /_fetchdir/screenings.ru.yaml
-    articles: /_fetchdir/articles.ru.yaml
     search: /_fetchdir/search_screenings.ru.yaml
     filters: /_fetchdir/filters_screenings.ru.yaml

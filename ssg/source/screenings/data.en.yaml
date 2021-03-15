@@ -1,4 +1,3 @@
 path: screenings
 data:
     screenings: /_fetchdir/screenings.en.yaml
-    articles: /_fetchdir/articles.en.yaml

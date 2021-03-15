@@ -3,17 +3,55 @@ const yaml = require('js-yaml');
 const path = require('path');
 const ical = require('ical-generator');
 const rueten = require('./rueten.js');
+const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
 
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryevents');
-const strapiDataPath = path.join(fetchDir, 'strapiData.yaml');
-const STRAPIDATA_INDUSTRY_EVENT = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))['IndustryEvent'];
+const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
+const STRAPIDATA_INDUSTRY_EVENTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
+
+    const minimodel = {
+        'images': {
+            model_name: 'StrapiMedia'
+        },
+        'industry_categories': {
+            model_name: 'IndustryCategory'
+        },
+        'project_type': {
+            model_name: 'ProjectType'
+        },
+        'channel': {
+            model_name: 'Channel'
+        },
+        'industry_people': {
+            model_name: 'IndustryPerson',
+            expand: {
+                'person': {
+                    model_name: 'Person'
+                },
+                'industry_person_types': {
+                    model_name: 'IndustryPersonType'
+                },
+                'role_at_films': {
+                    model_name: 'RoleAtFilm'
+                },
+            }
+        },
+        'industry_projects': {
+            model_name: 'IndustryProject'
+        }
+
+    }
+
+    const STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
+
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
         try {
@@ -35,12 +73,6 @@ if (DOMAIN === 'industry.poff.ee') {
     }
 
     const currentTimeUTC = convert_to_UTC()
-
-
-    const industryPersonsPath = path.join(fetchDir, `industrypersons.en.yaml`)
-    const industryPersonsYaml = yaml.safeLoad(fs.readFileSync(industryPersonsPath, 'utf8'));
-    const industryProjectsPath = path.join(fetchDir, `industryprojects.en.yaml`)
-    const industryProjectsYaml = yaml.safeLoad(fs.readFileSync(industryProjectsPath, 'utf8'));
 
     console.log(`Fetching ${DOMAIN} Industry Event en data`);
 
@@ -69,23 +101,6 @@ if (DOMAIN === 'industry.poff.ee') {
         if (element['slug_en']) {
             let dirSlug = element['slug_en']
             element.path = `events/${dirSlug}`
-            element.data = {'articles': '/_fetchdir/articles.en.yaml'};
-
-            if (element.industry_people) {
-                let indPeopleFromYaml = element.industry_people.filter(per => per.person).map(people => {
-                    return industryPersonsYaml.filter(a => a.id === people.id)[0]
-                })
-                if (typeof indPeopleFromYaml !== 'undefined') {
-                    element.industry_people = indPeopleFromYaml
-                } else {
-                    element.industry_people = []
-                }
-            }
-            if (element.industry_projects) {
-                element.industry_projects = element.industry_projects.map(projects => {
-                    return industryProjectsYaml.filter(a => a.id === projects.id)[0] || projects
-                })
-            }
 
             element = rueten(element, 'en');
 
@@ -100,7 +115,6 @@ if (DOMAIN === 'industry.poff.ee') {
                 if (element.durationTime.split(':')[0] !== '00') {
                     eventend.setUTCHours(eventend.getUTCHours()+parseInt(element.durationTime.split(':')[0]))
                 }
-                // console.log(eventend, eventend.getUTCMinutes(), parseInt(element.durationTime.substring(3, 5)));
             }
             element.calendar_data = escape(ical({
                 domain: 'industry.poff.ee',
@@ -120,8 +134,6 @@ if (DOMAIN === 'industry.poff.ee') {
                     }
                 ]
             }).toString())
-
-            // console.log(eventstart, ' - ', eventend, ' durtime:', element.durationTime, element.durationTime ? element.durationTime.substring(3, 5) : 'none');
 
             const oneYaml = yaml.safeDump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
@@ -152,7 +164,6 @@ if (DOMAIN === 'industry.poff.ee') {
             return date;
         }
 
-        // console.error(dataToYAML.map(o => o.startTime))
         let allDates = dataToYAML.map(event => {
             let dateTimeUTC = convert_to_UTC(event.startTime)
             let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
@@ -163,11 +174,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`].push(event)
             }
             return date
-            // let dateNow = parseInt(`${dateTimeUTCtoEET.getFullYear()}${("0" + (dateTimeUTCtoEET.getMonth() + 1)).slice(-2)}${("0" + dateTimeUTCtoEET.getDate()).slice(-2)}`)
-            // console.log(event.startTime, ' - ', dateTimeUTC, ' - ', dateTimeUTCtoEET, ' - ', date);
         });
-        let uniqueDates =  [...new Set(allDates)]
-        // console.log(newDataToYAML);
 
         for (const date in newDataToYAML.eventsByDate) {
             newDataToYAML.allDates.push(date)
@@ -177,12 +184,10 @@ if (DOMAIN === 'industry.poff.ee') {
     const allDataYAML = yaml.safeDump(dataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `industryeventscalendar.en.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-    // console.log(allData);
 
     const allNewDataYAML = yaml.safeDump(newDataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlNewPath = path.join(fetchDir, `industryevents.en.yaml`);
     fs.writeFileSync(yamlNewPath, allNewDataYAML, 'utf8');
-        // console.log(allData);
 
     search_and_filters(dataToYAML)
 

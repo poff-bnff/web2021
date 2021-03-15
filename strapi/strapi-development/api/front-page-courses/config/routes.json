@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/front-page-courses",
+      "handler": "front-page-courses.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/front-page-courses/count",
+      "handler": "front-page-courses.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/front-page-courses/:id",
+      "handler": "front-page-courses.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/front-page-courses",
+      "handler": "front-page-courses.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/front-page-courses/:id",
+      "handler": "front-page-courses.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/front-page-courses/:id",
+      "handler": "front-page-courses.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

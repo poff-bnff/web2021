@@ -1,0 +1,106 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tartuffi_articles",
+  "info": {
+    "name": "Tartuffi_Article"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "populateCreatorFields": true
+  },
+  "attributes": {
+    "titlePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et",
+      "required": true
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en",
+      "required": true
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru",
+      "required": true
+    },
+    "lead_et": {
+      "type": "richtext"
+    },
+    "lead_ru": {
+      "type": "richtext"
+    },
+    "lead_en": {
+      "type": "richtext"
+    },
+    "contents_et": {
+      "type": "richtext"
+    },
+    "contents_en": {
+      "type": "richtext"
+    },
+    "contents_ru": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article-media"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "publish_et": {
+      "type": "boolean"
+    },
+    "publish_en": {
+      "type": "boolean"
+    },
+    "publish_ru": {
+      "type": "boolean"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    },
+    "article_types": {
+      "collection": "article-type"
+    },
+    "tag_premiere_types": {
+      "collection": "tag-premiere-type"
+    },
+    "programmes": {
+      "collection": "programme"
+    },
+    "tag_genres": {
+      "collection": "tag-genre"
+    },
+    "tag_keywords": {
+      "collection": "tag-keyword"
+    },
+    "web_authors": {
+      "collection": "web-author"
+    },
+    "organisations": {
+      "collection": "organisation"
+    }
+  }
+}

@@ -20,7 +20,7 @@
     },
     "customUrl": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "translated.translated-short"
     },
     "namePrivate": {
