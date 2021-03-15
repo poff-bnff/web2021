@@ -20,10 +20,8 @@ if self.data.frontPageCourses && self.data.frontPageCourses.courses && self.data
                     .container_frame_poster
                         - var img = ''
 
-                        if course.media && course.media[0] && course.media.length > 1
-                            - img = `https://assets.poff.ee/img/${course.media[0].hash}${course.media[0].ext}`
-                        else if course.media && course.media[0] && course.media.length === 1
-                            - img = `https://assets.poff.ee/img/${course.media[0].hash}${course.media[0].ext}`
+                        if course.posters && course.posters[0] && course.posters.length
+                            - img = `https://assets.poff.ee/img/${course.posters[0]}`
                         else
                             - img = '/assets/img/static/placeholder_hd_1.jpg'
 
