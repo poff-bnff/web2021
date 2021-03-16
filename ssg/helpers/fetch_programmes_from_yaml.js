@@ -98,7 +98,9 @@ for (const ix in languages) {
         }
 
         if (param_build_type === 'target') {
-            addConfigPathAliases([`/_fetchdir/programmes/${dirSlug}`])
+            addConfigPathAliases([
+                `/_fetchdir/programmes/${dirSlug}`
+            ])
         }
 
         element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
@@ -106,7 +108,7 @@ for (const ix in languages) {
         if (dirSlug != null && typeof element.path !== 'undefined') {
             const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
-           
+
             allData.push(element)
 
             let saveDir = path.join(fetchDataDir, dirSlug);

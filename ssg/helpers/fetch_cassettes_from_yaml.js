@@ -301,11 +301,12 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-        
-        console.log('taget cassette in screening', s_cassette.id, target_id)
+
 
         if(param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
             continue
+        } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
+            console.log('Targeting cassette in screening', s_cassette.id, target_id)
         }
 
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false

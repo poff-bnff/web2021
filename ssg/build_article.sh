@@ -21,11 +21,11 @@ BUILD_PATH=`pwd`
 echo "Initialized entu_ssg.yaml"
 node "$BUILD_PATH"/initialise_entu_ssg.js
 
-node "$FETCH_PATH"/fetch_articles_from_yaml.js $TARGET
-node "$FETCH_PATH"/fetch_article_type_from_yaml.js  $TARGET $TARGET_ID
-node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js $TARGET 
-node "$FETCH_PATH"/fetch_menu_from_yaml.js $TARGET 
-node "$FETCH_PATH"/fetch_trioblock_from_yaml.js $TARGET 
+node "$FETCH_PATH"/fetch_articles_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_article_type_from_yaml.js  "$TARGET" "$TARGET_ID"
+node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
 
 # Below line console.logs all final path aliases:
 node "$FETCH_PATH"/add_config_path_aliases.js display

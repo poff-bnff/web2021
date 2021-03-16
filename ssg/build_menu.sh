@@ -22,10 +22,10 @@ FETCH_PATH=`pwd`/helpers
 BUILD_PATH=`pwd`
 
 
-node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET $TARGET_ID"
+node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 printf '\n\n----------      Finished building      ----------\n\n'
 
-node "$FETCH_PATH"/reset_config_path_aliases.js 
+node "$FETCH_PATH"/reset_config_path_aliases.js
 
