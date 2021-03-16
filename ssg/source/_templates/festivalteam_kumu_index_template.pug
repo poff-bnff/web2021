@@ -27,7 +27,7 @@ block content
                         h1.sub_section_headline= `${subTeam.name}`
                     .sub_team
                         if subTeam.teamMember
-                            each teamMember in subTeam.teamMember
+                            each teamMember in subTeam.teamMember.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                                 if teamMember.person
                                     .person
                                         .person_head
