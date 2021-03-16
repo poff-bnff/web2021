@@ -21,7 +21,7 @@ block content
         //-     include /_templates/home_templates/viiekas_just.pug
 
 
-    if process.env['DOMAIN'] === 'filmikool.poff.ee'
+    else if process.env['DOMAIN'] === 'filmikool.poff.ee'
         - var whichTypesToDisplay = ['news']
         - var heroPlusTrioNews = []
 
