@@ -7,35 +7,41 @@ import { Flex, Text } from '@buffetjs/core';
 
 
 const DoPublish = async (site, userInfo) => {
+	const token = await JSON.parse(sessionStorage.getItem("jwtToken")) || await JSON.parse(localStorage.getItem("jwtToken"));
 
-    const response = await fetch(`${strapi.backendURL}/publisher/publish`, {
-      method: 'POST',
-      headers: {
-      	'Content-Type': 'application/json'
-       },
-      body: JSON.stringify({site: site, userInfo: userInfo})
-    })
+	const MakeRequest = async () => {
+	    const response = await fetch(`${strapi.backendURL}/publisher/publish`, {
+	      method: 'POST',
+	      headers: {
+	      	'Authorization': `Bearer ${token}`,
+	      	'Content-Type': 'application/json'
+	       },
+	      body: JSON.stringify({site: site, userInfo: userInfo})
+	    });
 
-    //link:{url:"/logs", label: "vaata logi"},
 
-    let myResult = await response.json();
-    // console.log(myResult)
-    if(response.status === 200){
-		strapi.notification.toggle({type: "success", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
-    }else if( response.status === 429){
-    	// setErrorStatus(true)
-	    if(Array.isArray(myResult.message)){
-	    	myResult=myResult.message[0].messages[0]
-	    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
-	    	// setPublishResult(myResult.message)
-	    }
+	    let myResult = await response.json();
+
+	    if(response.status === 200){
+			strapi.notification.toggle({type: "success", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+	    }else if( response.status === 429){
+		    if(Array.isArray(myResult.message)){
+		    	myResult=myResult.message[0].messages[0]
+		    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+		    };
+	    }else{
+		    if(response.statusText && response.status){
+		    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+		    };
+	    };
+	};
+
+	if(token){
+      MakeRequest(token);
     }else{
-	    if(response.statusText && response.status){
-	    	// setPublishResult(`${response.status}: ${response.statusText}`)
-	    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
-	    }
-    }
-}
+      console.log("ei saa tokenit kätte :(");
+    };
+};
 
 const ButtonAndLog = ({site, buttonText}) => {
 	let userInfo
