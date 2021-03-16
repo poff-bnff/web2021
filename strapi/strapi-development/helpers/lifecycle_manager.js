@@ -182,19 +182,61 @@ function get_build_script(domain) {
     }
 }
 
-let TakeOutTrash_path = path.join(__dirname, '..', '..', '..', '/ssg/helpers/take_out_trash.js')
-const {
-    TakeOutTrash
-} = require(TakeOutTrash_path)
-const modelFile = path.join(__dirname, '..', '..', '..', '/ssg/docs', 'datamodel.yaml')
-const DATAMODEL = yaml.parse(fs.readFileSync(modelFile, 'utf8'), {maxAliasCount: -1})
+function clean_result(result) {
+    if (result.created_by) {
+        delete result.created_by.username
+        delete result.created_by.password
+        delete result.created_by.resetPasswordToken
+        delete result.created_by.registrationToken
+        delete result.created_by.isActive
+        delete result.created_by.blocked
+    }
+    if (result.updated_by) {
+        delete result.updated_by.username
+        delete result.updated_by.password
+        delete result.updated_by.resetPasswordToken
+        delete result.updated_by.registrationToken
+        delete result.updated_by.isActive
+        delete result.updated_by.blocked
+    }
+
+    for (let element in result) {
+        if (element === "updated_by" || element === "created_by") {
+            continue
+        }
+
+        if (result[element] === null) {
+            delete result[element]
+        }
+
+        if (typeof result[element] === 'object') {
+            let date = (result[element] instanceof Date)
+            if (Array.isArray(result[element]) && !date ) {
+                let list_elem = []
+                for (let elem of result[element]) {
+                    list_elem.push({"id": elem.id})
+                }
+                result[element] = list_elem
+                if (result[element].length < 1) {
+                    delete result[element]
+                }
+            } 
+            else if (!date) {
+                result[element] = {"id": result[element].id}
+            }
+
+
+        }
+    }
+    return result
+}
 
 async function modify_stapi_data(result, model_name, vanish=false) {
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
     console.log(modelname, 'id:', result.id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
+    result = clean_result(result) 
 
-    result = TakeOutTrash(result, DATAMODEL[modelname], modelname)
     const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
     let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
 
