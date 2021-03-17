@@ -2,16 +2,31 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
+const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
-const STRAPIDATA_FRONTPAGECOURSE = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
+const STRAPIDATA_FRONTPAGECOURSES = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 
 const languages = ['en', 'et', 'ru']
+
+const minimodel = {
+    'courses_et': {
+        model_name: 'Course'
+    },
+    'courses_en': {
+        model_name: 'Course'
+    },
+    'courses_ru': {
+        model_name: 'Course'
+    },
+}
+
+const STRAPIDATA_FRONTPAGECOURSE = fetchModel(STRAPIDATA_FRONTPAGECOURSES, minimodel)
 
 var failing = false
 for (const lang of languages) {
@@ -32,26 +47,29 @@ for (const lang of languages) {
                 for (courseIx in copyData[key]) {
                     let thisCourse = copyData[key][courseIx]
                     let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
-                    let COURSESYAML = yaml.safeLoad(fs.readFileSync(courseYAMLPath, 'utf8'))
+                    // let COURSESYAML = yaml.safeLoad(fs.readFileSync(courseYAMLPath, 'utf8'))
 
-                    let thisCourseFromYAML = COURSESYAML.filter( (a) => { return thisCourse.id === a.id })[0];
+                    // let thisCourseFromYAML = COURSESYAML.filter( (a) => { return thisCourse.id === a.id })[0];
 
-                    if (thisCourseFromYAML.media) {
-                        thisCourseFromYAML.carouselStills = thisCourseFromYAML.media?.stills.map(a => `${a.hash}${a.ext}`)
-                        thisCourseFromYAML.posters = thisCourseFromYAML.media?.posters.map(a => `${a.hash}${a.ext}`)
+                    if (thisCourse.media) {
+                        thisCourse.carouselStills = thisCourse.media?.stills.map(a => `${a.hash}${a.ext}`)
+                        thisCourse.posters = thisCourse.media?.posters.map(a => `${a.hash}${a.ext}`)
                     }
 
-                    if(thisCourseFromYAML !== undefined) {
-                        var thisCourseFromYAMLCopy = JSON.parse(JSON.stringify(thisCourseFromYAML));
+                    if(thisCourse !== undefined) {
+                        var thisCourseCopy = JSON.parse(JSON.stringify(thisCourse));
                     } else {
                         console.log('ERROR! Course ID ', thisCourse.id, ' not associated with domain ', DOMAIN, ', frontpagecourses not built!')
                         failing = true
                         continue
                     }
-                    copyData[key][courseIx] = thisCourseFromYAMLCopy
+                    copyData[key][courseIx] = thisCourseCopy
                 }
 
             copyData[key] = copyData[key].sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
+
+            console.log(`Total of ${copyData[key].length} ${DOMAIN} frontpagecourse ${lang} fetched`)
+
             // Teistes keeltes kursus kustutatakse
             } else if (key !== `courses_${lang}` && key.substring(0, 8) === `courses_`) {
                 delete copyData[key]
