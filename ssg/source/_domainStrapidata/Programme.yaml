@@ -1,0 +1,805 @@
+-
+    id: 53
+    namePrivate: HÕFF Fookuses
+    order: 7
+    slug_et: hoff-fookuses
+    slug_en: hoff-in-focus
+    slug_ru: hoff-focus
+    name:
+        id: 32779
+        et: Fookuses
+        en: In Focus
+        ru: In Focus
+    description:
+        id: 8743
+        et: >-
+            Ühele regioonile, teemale või isikule pühendatud minifookus või
+            fookused. Tänavu on neid lausa kaks.
+        en: 'Section dedicated to a specific region, theme or people.'
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 48
+    namePrivate: HÕFF Friikidele
+    order: 2
+    slug_et: hoff-friikidele
+    slug_en: hoff-for-freaks
+    slug_ru: for-freaks-hoff
+    name:
+        id: 32774
+        et: Friikidele
+        en: For Freaks
+        ru: For Freaks
+    description:
+        id: 8738
+        et: >-
+            Programm, mis ei ole mõeldud igale maitsele. Olematu eelarvega
+            filmid, mis naerutavad ja hirmutavad ka kõige kogenumaid vaatajaid.
+            Pärlid, mida programmimeeskond on pidanud tarvilikuks esile tõsta.
+            Filmid, mis muidu kinolinale ei jõua. Programmis kuni viis filmi.
+        en: >-
+            Not for the faint-hearted. The freak film programme finds the
+            funniest and scariest no-budget masterpieces, highlights overlooked
+            gems and films that are rarely seen at cinemas. Up to 5 films.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 20
+    namePrivate: Shorts rahvuslik võistlusprogramm
+    order: 45
+    remoteId: '13596'
+    slug_et: shorts-rahvuslik-voistlusprogramm
+    slug_en: shorts-national-competition
+    slug_ru: programme-2
+    name:
+        id: 4035
+        et: 'SHORTS RAHVUSLIK VÕISTLUSPROGRAMM '
+        en: 'SHORTS NATIONAL COMPETITION '
+    description:
+        id: 747
+        et: >-
+            Nagu kõik suurepärased riiklikud kinod, säilitavad ka Eesti filmid
+            kultuurilises mõttes midagi erilist, suutes samal ajal resoneerida
+            ka rahvusvahelisele publikule.
+
+            Filmidega, mille on kas eestlased teinud välismaal või välismaalased
+            Eestis, näitab Rahvuslik võistlusprogramm kaasaegse Eesti kino
+            mitmekesisust ja elujõulisust.
+        en: >-
+            Like all great national cinemas, films from Estonia retain something
+            that is culturally specific whilst also managing to resonate with
+            international audiences. With a selection of films made in Estonia
+            or by Estonian filmmakers abroad, the National Competition
+            highlights the vitality and diversity of contemporary Estonian
+            cinema.
+    presentedBy:
+        id: 10
+        presentedByText:
+            id: 8463
+            et: Esitleb
+            en: Presented by
+        organisations:
+            -
+                id: 9
+                type: Presenter
+                namePrivate: 'High Voltage '
+                homepageUrl: 'https://highvoltage.ee/'
+                logoWhite:
+                    id: 489
+                    name: highvoltage_logo_white.svg
+                    width: 850
+                    height: 227
+                    hash: highvoltage_logo_white_a40048e052
+                    ext: .svg
+                    url: /uploads/highvoltage_logo_white_a40048e052.svg
+                logoBlack:
+                    id: 490
+                    name: highvoltage_logo_black.svg
+                    width: 850
+                    height: 227
+                    hash: highvoltage_logo_black_8234f845cb
+                    ext: .svg
+                    url: /uploads/highvoltage_logo_black_8234f845cb.svg
+    images:
+        -
+            id: 599
+            name: Pr_Shorts_National_Competition_Room_with_a_Sea_View.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_Pr_Shorts_National_Competition_Room_with_a_Sea_View_e00cb599cf.jpg
+                    name: >-
+                        thumbnail_Pr_Shorts_National_Competition_Room_with_a_Sea_View.jpg
+            hash: Pr_Shorts_National_Competition_Room_with_a_Sea_View_e00cb599cf
+            ext: .jpg
+            url: >-
+                /uploads/Pr_Shorts_National_Competition_Room_with_a_Sea_View_e00cb599cf.jpg
+    festival_editions:
+        -
+            id: 2
+-
+    id: 49
+    namePrivate: HÕFF Retro
+    order: 3
+    slug_et: hoff-retroprogramm
+    slug_en: hoff-retroprogramme
+    slug_ru: hoff-retro-programma
+    name:
+        id: 32775
+        et: HÕFF Retro
+        en: HÕFF Retro
+        ru: HÕFF Retro
+    description:
+        id: 8739
+        et: >-
+            Filmid, mis garanteerivad hea tuju. Eesti retroklassika, Nõukogude
+            Liidu veidrad filmid, unustuse hõlma vajunud B-klassika kogu
+            maailmast. Programmis kuni kaheksa filmi.
+        en: >-
+            A feel-good guarantee of up to 8 films including Estonian classics,
+            Soviet oddities and forgotten B-films from all over the world.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 1
+        -
+            id: 6
+-
+    id: 17
+    namePrivate: Shorts lühifilmi võistlusprogramm
+    order: 42
+    remoteId: '13598'
+    slug_et: shorts-luehifilmi-voistlusprogramm
+    slug_en: shorts-live-action-competition
+    name:
+        id: 4032
+        et: 'SHORTS LÜHIFILMI VÕISTLUSPROGRAMM '
+        en: SHORTS LIVE-ACTION COMPETITION
+    description:
+        id: 744
+        et: >-
+            Võistlusprogramm toob kokku maailmatasemel lühifilmid üle terve
+            maailma, pakkudes publikule rõõmu, kurbust, armastust ja naeru.
+            Vaata ja veendu, et maailm ei ole üksildane paik.
+        en: >-
+            Uniting films from all across the world, the short film competition
+            is abound with joy, sadness, love and laughter. Come join in and
+            find that the world is far from lonely. 
+    presentedBy:
+        id: 5
+        presentedByText:
+            id: 4047
+            et: Esitleb
+            en: Presented by
+        organisations:
+            -
+                id: 5
+                type: Presenter
+                namePrivate: Nafta
+                homepageUrl: 'https://www.nafta.ee/'
+                logoWhite:
+                    id: 352
+                    name: nafta_logo_white.svg
+                    width: 425
+                    height: 111
+                    hash: nafta_logo_white_cd04e9cbfb
+                    ext: .svg
+                    url: /uploads/nafta_logo_white_cd04e9cbfb.svg
+                logoBlack:
+                    id: 351
+                    name: nafta_logo_black.svg
+                    width: 425
+                    height: 111
+                    hash: nafta_logo_black_22306aae1d
+                    ext: .svg
+                    url: /uploads/nafta_logo_black_22306aae1d.svg
+    images:
+        -
+            id: 420
+            name: F_1_3 Minutes of Silence.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_3_Minutes_of_Silence_0412953162.jpg
+                    name: thumbnail_F_1_3 Minutes of Silence.jpg
+            hash: F_1_3_Minutes_of_Silence_0412953162
+            ext: .jpg
+            url: /uploads/F_1_3_Minutes_of_Silence_0412953162.jpg
+        -
+            id: 419
+            name: F_1_Between You and the Milagros.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_Between_You_and_the_Milagros_e3ba69aba0.jpg
+                    name: thumbnail_F_1_Between You and the Milagros.jpg
+            hash: F_1_Between_You_and_the_Milagros_e3ba69aba0
+            ext: .jpg
+            url: /uploads/F_1_Between_You_and_the_Milagros_e3ba69aba0.jpg
+        -
+            id: 418
+            name: F_1_Bear Hill Path.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Bear_Hill_Path_13e5043faa.jpg
+                    name: thumbnail_F_1_Bear Hill Path.jpg
+            hash: F_1_Bear_Hill_Path_13e5043faa
+            ext: .jpg
+            url: /uploads/F_1_Bear_Hill_Path_13e5043faa.jpg
+        -
+            id: 421
+            name: F_1_Daniel.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Daniel_5f725c3fa2.jpg
+                    name: thumbnail_F_1_Daniel.jpg
+            hash: F_1_Daniel_5f725c3fa2
+            ext: .jpg
+            url: /uploads/F_1_Daniel_5f725c3fa2.jpg
+        -
+            id: 423
+            name: F_1_Carrie's Doing Great.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_Carrie_s_Doing_Great_81df5fee2b.jpg
+                    name: thumbnail_F_1_Carrie's Doing Great.jpg
+            hash: F_1_Carrie_s_Doing_Great_81df5fee2b
+            ext: .jpg
+            url: /uploads/F_1_Carrie_s_Doing_Great_81df5fee2b.jpg
+        -
+            id: 422
+            name: F_1_David.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_David_8168dcd0ae.jpg
+                    name: thumbnail_F_1_David.jpg
+            hash: F_1_David_8168dcd0ae
+            ext: .jpg
+            url: /uploads/F_1_David_8168dcd0ae.jpg
+        -
+            id: 424
+            name: F_1_Drought.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Drought_d680b3d9e9.jpg
+                    name: thumbnail_F_1_Drought.jpg
+            hash: F_1_Drought_d680b3d9e9
+            ext: .jpg
+            url: /uploads/F_1_Drought_d680b3d9e9.jpg
+        -
+            id: 425
+            name: F_1_Eggshells.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Eggshells_f99a4f436a.jpg
+                    name: thumbnail_F_1_Eggshells.jpg
+            hash: F_1_Eggshells_f99a4f436a
+            ext: .jpg
+            url: /uploads/F_1_Eggshells_f99a4f436a.jpg
+        -
+            id: 426
+            name: F_1_Feral.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Feral_ac779461ae.jpg
+                    name: thumbnail_F_1_Feral.jpg
+            hash: F_1_Feral_ac779461ae
+            ext: .jpg
+            url: /uploads/F_1_Feral_ac779461ae.jpg
+        -
+            id: 427
+            name: F_1_Five Tiger.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Five_Tiger_ecd9ee24ff.jpg
+                    name: thumbnail_F_1_Five Tiger.jpg
+            hash: F_1_Five_Tiger_ecd9ee24ff
+            ext: .jpg
+            url: /uploads/F_1_Five_Tiger_ecd9ee24ff.jpg
+        -
+            id: 428
+            name: 'F_1_Good Thanks, You.jpg'
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Good_Thanks_You_616fa55c8e.jpg
+                    name: 'thumbnail_F_1_Good Thanks, You.jpg'
+            hash: F_1_Good_Thanks_You_616fa55c8e
+            ext: .jpg
+            url: /uploads/F_1_Good_Thanks_You_616fa55c8e.jpg
+        -
+            id: 429
+            name: F_1_History of Civilazation.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_History_of_Civilazation_c29a8ea591.jpg
+                    name: thumbnail_F_1_History of Civilazation.jpg
+            hash: F_1_History_of_Civilazation_c29a8ea591
+            ext: .jpg
+            url: /uploads/F_1_History_of_Civilazation_c29a8ea591.jpg
+        -
+            id: 430
+            name: F_1_How We Wake Up.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_How_We_Wake_Up_c121e43ad3.jpg
+                    name: thumbnail_F_1_How We Wake Up.jpg
+            hash: F_1_How_We_Wake_Up_c121e43ad3
+            ext: .jpg
+            url: /uploads/F_1_How_We_Wake_Up_c121e43ad3.jpg
+        -
+            id: 431
+            name: 'F_1_I, Tony.jpg'
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_I_Tony_6b40259344.jpg
+                    name: 'thumbnail_F_1_I, Tony.jpg'
+            hash: F_1_I_Tony_6b40259344
+            ext: .jpg
+            url: /uploads/F_1_I_Tony_6b40259344.jpg
+        -
+            id: 432
+            name: F_1_It's Nothing.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_It_s_Nothing_ab7ce30f2e.jpg
+                    name: thumbnail_F_1_It's Nothing.jpg
+            hash: F_1_It_s_Nothing_ab7ce30f2e
+            ext: .jpg
+            url: /uploads/F_1_It_s_Nothing_ab7ce30f2e.jpg
+        -
+            id: 433
+            name: F_1_Mountain Cat.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Mountain_Cat_feb1664f95.jpg
+                    name: thumbnail_F_1_Mountain Cat.jpg
+            hash: F_1_Mountain_Cat_feb1664f95
+            ext: .jpg
+            url: /uploads/F_1_Mountain_Cat_feb1664f95.jpg
+        -
+            id: 434
+            name: F_1_Money Honey.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Money_Honey_4beca47911.jpg
+                    name: thumbnail_F_1_Money Honey.jpg
+            hash: F_1_Money_Honey_4beca47911
+            ext: .jpg
+            url: /uploads/F_1_Money_Honey_4beca47911.jpg
+        -
+            id: 435
+            name: F_1_Man of The Harvest.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Man_of_The_Harvest_9be5ca9573.jpg
+                    name: thumbnail_F_1_Man of The Harvest.jpg
+            hash: F_1_Man_of_The_Harvest_9be5ca9573
+            ext: .jpg
+            url: /uploads/F_1_Man_of_The_Harvest_9be5ca9573.jpg
+        -
+            id: 436
+            name: F_1_Pilgrims.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Pilgrims_39a6064f25.jpg
+                    name: thumbnail_F_1_Pilgrims.jpg
+            hash: F_1_Pilgrims_39a6064f25
+            ext: .jpg
+            url: /uploads/F_1_Pilgrims_39a6064f25.jpg
+        -
+            id: 437
+            name: F_1_One Mango Please.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_One_Mango_Please_e335c49668.jpg
+                    name: thumbnail_F_1_One Mango Please.jpg
+            hash: F_1_One_Mango_Please_e335c49668
+            ext: .jpg
+            url: /uploads/F_1_One_Mango_Please_e335c49668.jpg
+        -
+            id: 438
+            name: F_1_Red Ants Bite.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Red_Ants_Bite_38cfc02372.jpg
+                    name: thumbnail_F_1_Red Ants Bite.jpg
+            hash: F_1_Red_Ants_Bite_38cfc02372
+            ext: .jpg
+            url: /uploads/F_1_Red_Ants_Bite_38cfc02372.jpg
+        -
+            id: 439
+            name: F_1_Teen Horses.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Teen_Horses_4160f80602.jpg
+                    name: thumbnail_F_1_Teen Horses.jpg
+            hash: F_1_Teen_Horses_4160f80602
+            ext: .jpg
+            url: /uploads/F_1_Teen_Horses_4160f80602.jpg
+        -
+            id: 440
+            name: F_1_The Explosion of a Swimming Ring.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_The_Explosion_of_a_Swimming_Ring_0f33db22ac.jpg
+                    name: thumbnail_F_1_The Explosion of a Swimming Ring.jpg
+            hash: F_1_The_Explosion_of_a_Swimming_Ring_0f33db22ac
+            ext: .jpg
+            url: /uploads/F_1_The_Explosion_of_a_Swimming_Ring_0f33db22ac.jpg
+        -
+            id: 441
+            name: F_1_The Lamb of God.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_The_Lamb_of_God_08c09509ff.jpg
+                    name: thumbnail_F_1_The Lamb of God.jpg
+            hash: F_1_The_Lamb_of_God_08c09509ff
+            ext: .jpg
+            url: /uploads/F_1_The_Lamb_of_God_08c09509ff.jpg
+        -
+            id: 442
+            name: F_1_The Tongues.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_The_Tongues_3ff03026d2.jpg
+                    name: thumbnail_F_1_The Tongues.jpg
+            hash: F_1_The_Tongues_3ff03026d2
+            ext: .jpg
+            url: /uploads/F_1_The_Tongues_3ff03026d2.jpg
+        -
+            id: 443
+            name: F_1_The Last Image of Father.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_The_Last_Image_of_Father_c21f068db6.jpg
+                    name: thumbnail_F_1_The Last Image of Father.jpg
+            hash: F_1_The_Last_Image_of_Father_c21f068db6
+            ext: .jpg
+            url: /uploads/F_1_The_Last_Image_of_Father_c21f068db6.jpg
+        -
+            id: 444
+            name: F_1_Voices Apart.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Voices_Apart_00dc78d74e.jpg
+                    name: thumbnail_F_1_Voices Apart.jpg
+            hash: F_1_Voices_Apart_00dc78d74e
+            ext: .jpg
+            url: /uploads/F_1_Voices_Apart_00dc78d74e.jpg
+        -
+            id: 445
+            name: 'F_1_When I Dance, The Earth Trembles.jpg'
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: >-
+                        /uploads/thumbnail_F_1_When_I_Dance_The_Earth_Trembles_769bb08496.jpg
+                    name: 'thumbnail_F_1_When I Dance, The Earth Trembles.jpg'
+            hash: F_1_When_I_Dance_The_Earth_Trembles_769bb08496
+            ext: .jpg
+            url: /uploads/F_1_When_I_Dance_The_Earth_Trembles_769bb08496.jpg
+        -
+            id: 446
+            name: F_1_Yamb.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Yamb_9b4722b145.jpg
+                    name: thumbnail_F_1_Yamb.jpg
+            hash: F_1_Yamb_9b4722b145
+            ext: .jpg
+            url: /uploads/F_1_Yamb_9b4722b145.jpg
+        -
+            id: 447
+            name: F_1_White Eyes.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_White_Eyes_68b682da48.jpg
+                    name: thumbnail_F_1_White Eyes.jpg
+            hash: F_1_White_Eyes_68b682da48
+            ext: .jpg
+            url: /uploads/F_1_White_Eyes_68b682da48.jpg
+    festival_editions:
+        -
+            id: 2
+-
+    id: 47
+    namePrivate: HÕFF Põhiprogramm
+    order: 1
+    slug_et: hof-fi-pohiprogramm
+    slug_en: hoff-main-programme
+    slug_ru: osnovnaya-programma-hoff
+    name:
+        id: 32773
+        et: Põhiprogramm
+        en: Main Programme
+        ru: Main Programme
+    description:
+        id: 8737
+        et: >-
+            Festivali olulisim programm. Nii maailma kõige tuntumatel
+            festivalidel (Sundance, Cannes, Berliin, Veneetsia, Toronto, London,
+            Rotterdam jt) kui ka žanrifilmidele spetsialiseerunud festivalidel
+            (SXSW, Neuchâtel, Sitges, Austin Fantastic Fest jt) esilinastunud
+            linateosed, aasta parimad palad ja löökfilmid ning filmid
+            eksootilistest regioonidest. Aga ka päris värsked, alles
+            esilinastuvad tööd. Programmis kuni kümme filmi.
+        en: >-
+            The heart of the festival, hosting up to 10 films including Baltic
+            and international premieres, as well as the finest selection from
+            well-known festivals (Sundance, Cannes, Berlin, Venice etc) and
+            important genre hubs (SXSW, Neuchâtel, Sitges, Austin Fantastic Fest
+            etc) across the globe.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 50
+    namePrivate: HÕFF Méliès D'Argent lühifilmide võistlusprogramm
+    order: 4
+    slug_et: hoff-melies-d-argent-luehifilmide-voistlusprogramm
+    slug_en: hoff-melies-d-argent-short-film-competition
+    slug_ru: hoff-melies-d-argent
+    name:
+        id: 32776
+        et: Méliès D'Argent lühifilmide võistlusprogramm
+        en: Méliès D'Argent Short Film Competition
+        ru: Méliès D'Argent Short Film Competition
+    description:
+        id: 8740
+        et: >-
+            Legendaarse prantsuse filmiillusionisti Georges Mélièsi järgi nime
+            saanud Euroopa lühikeste fantaasiafilmide konkurss, mille võitja
+            pääseb Euroopa parima lühifantaasiafilmi võistluse finaali.
+            Konkurssi korraldab Mélièsi-nimeline rahvusvaheline fantaasiafilmide
+            festivalide föderatsioon (MIFF), kuhu HÕFF juba aastaid kuulub.
+        en: >
+            Named after the legendary film illusionist Georges Méliès, the
+            winner of this European short genre film competition will be awarded
+            by the Méliès d’Argent. The winner goes on to compete for the
+            coveted Méliès d’Or by the Méliès International Festivals Federation
+            (MIFF).
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 1
+        -
+            id: 6
+-
+    id: 51
+    namePrivate: HÕFF Väikesed luupainajad. Parimad rahvusvahelised lühifilmid
+    order: 5
+    slug_et: hoff-vaeikesed-luupainajad-parimad-rahvusvahelised-luehifilmid
+    slug_en: hoff-little-nightmares-best-international-short-films
+    slug_ru: hoff-little-nightmares
+    name:
+        id: 32777
+        et: Väikesed luupainajad. Parimad rahvusvahelised lühifilmid
+        en: Little Nightmares. Best International Short Films
+        ru: Little Nightmares. Best International Short Films
+    description:
+        id: 8741
+        et: >-
+            Aasta huvitavamate lühikeste õudus- ja fantaasiafilmide valik.
+            Peadpööritava fantaasia, kosmilise ulme ja verdtarretava õuduse
+            pillerkaar. Midagi igale maitsele.
+        en: >-
+            The out-of-competition showcase of the most interesting short form
+            horror and fantasy films. A whirlpool of fantasy, cosmic sci-fi and
+            chilling horror, the programme offers something for all tastes.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 52
+    namePrivate: HÕFF Erilinastused
+    order: 6
+    slug_et: hoff-erilinastused
+    slug_en: hoff-special-screenings
+    slug_ru: hoff-special
+    name:
+        id: 32778
+        et: Erilinastused
+        en: Special Screenings
+        ru: Special Screenings
+    description:
+        id: 8742
+        et: >-
+            Väga erilised filmid erinevatel põhjustel, mis väärivad eraldi
+            esiletõstmist
+        en: >-
+            Rare or otherwise noteworthy films that we believe deserve their
+            moment in the spotlight.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 46
+    namePrivate: Shorts lasteanima
+    slug_et: shorts-lasteanima-voistlusprogramm
+    slug_en: shorts-kids-animation-competition
+    slug_ru: shorts-kids-animation-competition-ru
+    name:
+        id: 28000
+        et: SHORTS LASTEANIMA VÕISTLUSPROGRAMM
+        en: SHORTS KIDS ANIMATION COMPETITION
+    description:
+        id: 8497
+        et: >-
+            Esmakordselt PÖFF Shortsil võistlevad lastele ja peredele mõeldud
+            animafilmid üle terve maailma.
+        en: Short family-friendly animations from all across the world.
+    images:
+        -
+            id: 1749
+            name: F_1_Twin Trees.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_Twin_Trees_fe95c304c1.jpg
+                    name: thumbnail_F_1_Twin Trees.jpg
+            hash: F_1_Twin_Trees_fe95c304c1
+            ext: .jpg
+            url: /uploads/F_1_Twin_Trees_fe95c304c1.jpg
+    festival_editions:
+        -
+            id: 2
+-
+    id: 56
+    namePrivate: HÕFFi hitisadu
+    order: 605
+    slug_et: hof-fi-hitisadu
+    slug_en: hoff-hits
+    slug_ru: hity-hoff
+    name:
+        id: 32788
+        et: HÕFFi hitisadu
+        en: HÕFF hits
+        ru: Хиты HÕFF
+    description:
+        id: 8749
+        et: >-
+            Haapsalu õudus- ja fantaasiafilmide festivali löökfilmid. Ootamatud
+            kohtumised vanade tuttavatega. Iga nädal uus linateos – 30.
+            aprillini välja, kui algab 16. HÕFF. Autorid tervitavad ja
+            eestikeelseid subtiitreid leiab ka. HÕFFi passiomanikele tasuta!
+        en: >-
+            Best of the Haapsalu Horror and Fantasy Film Festival. Unexpected
+            encounters with familiar faces. One new film every week up to April
+            30, when the 16th HÕFF begins. Screenings greeted by filmmakers.
+            Free for HÕFF pass holders!
+        ru: >-
+            Яркие киноработы с Хаапсалуского фестиваля фильмов в жанре ужасов и
+            фантастики. Неожиданные встречи со старыми знакомыми. Каждую неделю
+            по одному фильму – вплоть до начала 16-го HÕFF 30 апреля.
+            Приветствия от самих авторов и эстонские субтитры обеспечены. Для
+            владельцев абонементов HÕFF просмотр бесплатный!
+    images:
+        -
+            id: 3882
+            name: F_1_red_letter_day.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_red_letter_day_55f8f2eaa1.jpg
+                    name: thumbnail_F_1_red_letter_day.jpg
+            hash: F_1_red_letter_day_55f8f2eaa1
+            ext: .jpg
+            url: /uploads/F_1_red_letter_day_55f8f2eaa1.jpg
+        -
+            id: 3883
+            name: F_4_red_letter_day.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_4_red_letter_day_8a8f798552.jpg
+                    name: thumbnail_F_4_red_letter_day.jpg
+            hash: F_4_red_letter_day_8a8f798552
+            ext: .jpg
+            url: /uploads/F_4_red_letter_day_8a8f798552.jpg
+    festival_editions:
+        -
+            id: 7
+    domains:
+        -
+            id: 1
+        -
+            id: 6
