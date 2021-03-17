@@ -34,7 +34,7 @@ const doBuild = async(site, userInfo) => {
     //kirjutab esimese logi kande
     id = await doLog(site, userInfo)
 
-    const child = spawn("../../ssg/deploy.sh", [site]);
+    const child = spawn("bash", ["../../ssg/deploy.sh", site]);
 
     child.stdout.on("data", data => {
         console.log(`stdout ..............: ${data}`);
