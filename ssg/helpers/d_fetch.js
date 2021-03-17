@@ -1,13 +1,14 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
+const { deleteFolderRecursive } = require("./helpers.js")
 
 const rootDir = path.join(__dirname, '..')
 const sourceDir = path.join(rootDir, 'source')
 const strapiDataPath = path.join(sourceDir, '_allStrapidata')
 const domainStrapiDataPath = path.join(sourceDir, '_domainStrapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 
 const domainsStrapiDataPath = path.join(strapiDataPath, 'Domain.yaml')
 const DOMAINSMAPPING = {}
@@ -51,6 +52,10 @@ function writeYAML(file, data) {
     const YAMLPath = path.join(domainStrapiDataPath, file)
     fs.writeFileSync(YAMLPath, YAMLData, 'utf8')
 }
+
+
+deleteFolderRecursive(domainStrapiDataPath)
+fs.mkdirSync(domainStrapiDataPath, { recursive: true })
 
 fs.readdir(strapiDataPath, (err, files) => {
     files.forEach(file => {

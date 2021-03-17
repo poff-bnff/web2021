@@ -49,7 +49,8 @@ ssg/eventival/dynamic/*
 ssg/entu-ssg.yaml
 ssg/vialog/vialog.json
 
-ssg/source/strapidata/*
+ssg/source/_allStrapidata/*
+ssg/source/_domainStrapidata/*
 ssg/*.icloud
 ssg/eventival/static/.films.yaml.icloud
 ssg/eventival/static/.films.yaml.icloud
