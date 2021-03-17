@@ -209,24 +209,22 @@ function clean_result(result) {
             delete result[element]
         }
 
-        if (typeof result[element] === 'object') {
-            let date = (result[element] instanceof Date)
-            if (Array.isArray(result[element]) && !date ) {
-                let list_elem = []
-                for (let elem of result[element]) {
-                    list_elem.push({"id": elem.id})
-                }
-                result[element] = list_elem
-                if (result[element].length < 1) {
-                    delete result[element]
-                }
-            } 
-            else if (!date) {
-                result[element] = {"id": result[element].id}
-            }
-
-
-        }
+        // if (typeof result[element] === 'object') {
+        //     let date = (result[element] instanceof Date)
+        //     if (Array.isArray(result[element]) && !date ) {
+        //         let list_elem = []
+        //         for (let elem of result[element]) {
+        //             list_elem.push({"id": elem.id})
+        //         }
+        //         result[element] = list_elem
+        //         if (result[element].length < 1) {
+        //             delete result[element]
+        //         }
+        //     } 
+        //     else if (!date) {
+        //         result[element] = {"id": result[element].id}
+        //     }
+        // }
     }
     return result
 }
@@ -298,7 +296,6 @@ async function call_build(result, domains, model_name) {
         console.log('-------------', error, '-------------')
         build_error = 'All domain or domain related fields must be filled, if you want this object to show on build.(domain).ee.'
         await build_start_to_strapi_logs(result, '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯', error, build_error)
-
     }
     return build_error
 }

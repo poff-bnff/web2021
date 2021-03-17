@@ -220,3 +220,39 @@
         ssg/helpers/fetch_programmes_from_yaml.js.
 
         The file will have its original line endings in your working directory
+-
+    time: '2021.03.17 11:30:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '14'
+        time: '2021.03.17 11:30:45 (+02:00)'
+    PID: 110826
+    error: null
+-
+    time: '2021.03.17 11:30:45 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '14'
+        time: '2021.03.17 11:30:45 (+02:00)'
+    PID: 110826
+    error: null
+-
+    time: '2021.03.17 11:31:04 (+02:00)'
+    type: Build fail stderr
+    duration: 19682
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '14'
+        time: '2021.03.17 11:30:45 (+02:00)'
+    PID: 110826
+    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_articles_from_yaml.js:82:22)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_article_type_from_yaml.js:98:28)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n"

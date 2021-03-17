@@ -25,7 +25,7 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split('/').slice(-2)[0])
-// const domains = ['hoff.ee'] // hard coded if needed AS LIST!!!
+const domains = ['oyafond.ee'] // hard coded if needed AS LIST!!!
 // const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+      // const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
       if(data.published_at === null ) {  // if strapi publish system goes live
         console.log('Draft! Delete: ')
@@ -43,7 +43,7 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       console.log('Create or update: ')
       if (domains.length > 0 ) {
             await modify_stapi_data(result, model_name)
@@ -53,7 +53,7 @@ module.exports = {
     },
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
+      // const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
 
       console.log('Delete: ')
       await modify_stapi_data(result[0], model_name, true)

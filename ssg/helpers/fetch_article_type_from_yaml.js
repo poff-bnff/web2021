@@ -201,7 +201,7 @@ for (const lang of languages) {
 
                 if (fs.existsSync(`${sourceDir}${article_template}`)) {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include ${article_template}`)
-                    if(build_type === 'target') {
+                    if(param_build_type === 'target') {
                         addConfigPathAliases([buildPath])
                     }
                 } else {
