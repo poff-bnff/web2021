@@ -964,3 +964,964 @@
     PID: 4771
     error: |
         bash: /srv/ssg/build_undefined.sh: No such file or directory
+-
+    time: '2021.03.17 14:49:46 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:49:46 (+02:00)'
+    PID: 7157
+    error: null
+-
+    time: '2021.03.17 14:49:46 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:49:46 (+02:00)'
+    PID: 7157
+    error: null
+-
+    time: '2021.03.17 14:50:18 (+02:00)'
+    type: Build finish
+    duration: 31669
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:49:46 (+02:00)'
+    PID: 7157
+    error: null
+-
+    time: '2021.03.17 14:58:46 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:58:46 (+02:00)'
+    PID: 7452
+    error: null
+-
+    time: '2021.03.17 14:58:46 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:58:46 (+02:00)'
+    PID: 7452
+    error: null
+-
+    time: '2021.03.17 14:59:15 (+02:00)'
+    type: Build finish
+    duration: 28872
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:58:46 (+02:00)'
+    PID: 7452
+    error: null
+-
+    time: '2021.03.17 14:59:36 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:59:36 (+02:00)'
+    PID: 7569
+    error: null
+-
+    time: '2021.03.17 14:59:36 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:59:36 (+02:00)'
+    PID: 7569
+    error: null
+-
+    time: '2021.03.17 15:00:08 (+02:00)'
+    type: Build finish
+    duration: 31902
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 14:59:36 (+02:00)'
+    PID: 7569
+    error: null
+-
+    time: '2021.03.17 15:12:37 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '16'
+        time: '2021.03.17 15:12:37 (+02:00)'
+    PID: 7931
+    error: null
+-
+    time: '2021.03.17 15:12:37 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '16'
+        time: '2021.03.17 15:12:37 (+02:00)'
+    PID: 7931
+    error: null
+-
+    time: '2021.03.17 15:13:09 (+02:00)'
+    type: Build finish
+    duration: 31974
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '16'
+        time: '2021.03.17 15:12:37 (+02:00)'
+    PID: 7931
+    error: null
+-
+    time: '2021.03.17 15:13:35 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:13:35 (+02:00)'
+    PID: 8049
+    error: null
+-
+    time: '2021.03.17 15:13:35 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:13:35 (+02:00)'
+    PID: 8049
+    error: null
+-
+    time: '2021.03.17 15:14:04 (+02:00)'
+    type: Build finish
+    duration: 28497
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:13:35 (+02:00)'
+    PID: 8049
+    error: null
+-
+    time: '2021.03.17 15:15:40 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '11'
+        time: '2021.03.17 15:15:40 (+02:00)'
+    PID: 8177
+    error: null
+-
+    time: '2021.03.17 15:15:40 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '11'
+        time: '2021.03.17 15:15:40 (+02:00)'
+    PID: 8177
+    error: null
+-
+    time: '2021.03.17 15:16:14 (+02:00)'
+    type: Build finish
+    duration: 33507
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '11'
+        time: '2021.03.17 15:15:40 (+02:00)'
+    PID: 8177
+    error: null
+-
+    time: '2021.03.17 15:16:31 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:16:31 (+02:00)'
+    PID: 8287
+    error: null
+-
+    time: '2021.03.17 15:16:31 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:16:31 (+02:00)'
+    PID: 8287
+    error: null
+-
+    time: '2021.03.17 15:17:02 (+02:00)'
+    type: Build finish
+    duration: 30743
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:16:31 (+02:00)'
+    PID: 8287
+    error: null
+-
+    time: '2021.03.17 15:24:48 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 15:24:48 (+02:00)'
+    PID: 8451
+    error: null
+-
+    time: '2021.03.17 15:24:48 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 15:24:48 (+02:00)'
+    PID: 8451
+    error: null
+-
+    time: '2021.03.17 15:28:33 (+02:00)'
+    type: Build finish
+    duration: 224555
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '10'
+        time: '2021.03.17 15:24:48 (+02:00)'
+    PID: 8451
+    error: null
+-
+    time: '2021.03.17 15:34:40 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:34:39 (+02:00)'
+    PID: 9129
+    error: null
+-
+    time: '2021.03.17 15:34:40 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:34:39 (+02:00)'
+    PID: 9129
+    error: null
+-
+    time: '2021.03.17 15:35:43 (+02:00)'
+    type: Build finish
+    duration: 63294
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:34:39 (+02:00)'
+    PID: 9129
+    error: null
+-
+    time: '2021.03.17 15:37:38 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '12'
+        time: '2021.03.17 15:37:38 (+02:00)'
+    PID: 9269
+    error: null
+-
+    time: '2021.03.17 15:37:38 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '12'
+        time: '2021.03.17 15:37:38 (+02:00)'
+    PID: 9269
+    error: null
+-
+    time: '2021.03.17 15:38:11 (+02:00)'
+    type: Build finish
+    duration: 33113
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '12'
+        time: '2021.03.17 15:37:38 (+02:00)'
+    PID: 9269
+    error: null
+-
+    time: '2021.03.17 15:38:46 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '13'
+        time: '2021.03.17 15:38:46 (+02:00)'
+    PID: 9391
+    error: null
+-
+    time: '2021.03.17 15:38:46 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '13'
+        time: '2021.03.17 15:38:46 (+02:00)'
+    PID: 9391
+    error: null
+-
+    time: '2021.03.17 15:39:19 (+02:00)'
+    type: Build finish
+    duration: 32452
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '13'
+        time: '2021.03.17 15:38:46 (+02:00)'
+    PID: 9391
+    error: null
+-
+    time: '2021.03.17 15:49:12 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:49:12 (+02:00)'
+    PID: 9602
+    error: null
+-
+    time: '2021.03.17 15:49:12 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:49:12 (+02:00)'
+    PID: 9602
+    error: null
+-
+    time: '2021.03.17 15:49:41 (+02:00)'
+    type: Build finish
+    duration: 29560
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '17'
+        time: '2021.03.17 15:49:12 (+02:00)'
+    PID: 9602
+    error: null
+-
+    time: '2021.03.17 15:50:04 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:50:04 (+02:00)'
+    PID: 9720
+    error: null
+-
+    time: '2021.03.17 15:50:04 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:50:04 (+02:00)'
+    PID: 9720
+    error: null
+-
+    time: '2021.03.17 15:50:34 (+02:00)'
+    type: Build finish
+    duration: 29500
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:50:04 (+02:00)'
+    PID: 9720
+    error: null
+-
+    time: '2021.03.17 15:53:01 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 15:53:01 (+02:00)'
+    PID: 9856
+    error: null
+-
+    time: '2021.03.17 15:53:01 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 15:53:01 (+02:00)'
+    PID: 9856
+    error: null
+-
+    time: '2021.03.17 15:53:33 (+02:00)'
+    type: Build finish
+    duration: 32174
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 15:53:01 (+02:00)'
+    PID: 9856
+    error: null
+-
+    time: '2021.03.17 15:56:12 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '19'
+        time: '2021.03.17 15:56:12 (+02:00)'
+    PID: 10003
+    error: null
+-
+    time: '2021.03.17 15:56:12 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '19'
+        time: '2021.03.17 15:56:12 (+02:00)'
+    PID: 10003
+    error: null
+-
+    time: '2021.03.17 15:56:45 (+02:00)'
+    type: Build finish
+    duration: 32179
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '19'
+        time: '2021.03.17 15:56:12 (+02:00)'
+    PID: 10003
+    error: null
+-
+    time: '2021.03.17 15:57:08 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:57:08 (+02:00)'
+    PID: 10120
+    error: null
+-
+    time: '2021.03.17 15:57:08 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:57:08 (+02:00)'
+    PID: 10120
+    error: null
+-
+    time: '2021.03.17 15:57:39 (+02:00)'
+    type: Build finish
+    duration: 30520
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 15:57:08 (+02:00)'
+    PID: 10120
+    error: null
+-
+    time: '2021.03.17 16:00:02 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '20'
+        time: '2021.03.17 16:00:02 (+02:00)'
+    PID: 10248
+    error: null
+-
+    time: '2021.03.17 16:00:02 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '20'
+        time: '2021.03.17 16:00:02 (+02:00)'
+    PID: 10248
+    error: null
+-
+    time: '2021.03.17 16:00:39 (+02:00)'
+    type: Build finish
+    duration: 36868
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '20'
+        time: '2021.03.17 16:00:02 (+02:00)'
+    PID: 10248
+    error: null
+-
+    time: '2021.03.17 16:01:55 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '21'
+        time: '2021.03.17 16:01:55 (+02:00)'
+    PID: 10485
+    error: null
+-
+    time: '2021.03.17 16:01:55 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '21'
+        time: '2021.03.17 16:01:55 (+02:00)'
+    PID: 10485
+    error: null
+-
+    time: '2021.03.17 16:02:35 (+02:00)'
+    type: Build finish
+    duration: 39969
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '21'
+        time: '2021.03.17 16:01:55 (+02:00)'
+    PID: 10485
+    error: null
+-
+    time: '2021.03.17 16:03:04 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '22'
+        time: '2021.03.17 16:03:04 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:03:04 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '22'
+        time: '2021.03.17 16:03:04 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:03:31 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '23'
+        time: '2021.03.17 16:03:31 (+02:00)'
+    PID: 10705
+    error: null
+-
+    time: '2021.03.17 16:03:56 (+02:00)'
+    type: Build finish
+    duration: 51947
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '22'
+        time: '2021.03.17 16:03:04 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:03:56 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '23'
+        time: '2021.03.17 16:03:31 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:04:36 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:04:36 (+02:00)'
+    PID: 10816
+    error: null
+-
+    time: '2021.03.17 16:04:46 (+02:00)'
+    type: Build finish
+    duration: 49366
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '23'
+        time: '2021.03.17 16:03:31 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:04:46 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:04:36 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:05:16 (+02:00)'
+    type: Build finish
+    duration: 30583
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:04:36 (+02:00)'
+    PID: 10606
+    error: null
+-
+    time: '2021.03.17 16:12:36 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:12:36 (+02:00)'
+    PID: 11313
+    error: null
+-
+    time: '2021.03.17 16:12:36 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:12:36 (+02:00)'
+    PID: 11313
+    error: null
+-
+    time: '2021.03.17 16:12:58 (+02:00)'
+    type: Build fail stderr
+    duration: 21773
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:12:36 (+02:00)'
+    PID: 11313
+    error: |+
+
+        ERROR:
+        /srv/ssg/source/a_lists/index.pug
+        Cannot read property 'socialGroup' of undefined
+
+-
+    time: '2021.03.17 16:14:07 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:14:07 (+02:00)'
+    PID: 11441
+    error: null
+-
+    time: '2021.03.17 16:14:07 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:14:07 (+02:00)'
+    PID: 11441
+    error: null
+-
+    time: '2021.03.17 16:14:17 (+02:00)'
+    type: Build fail stderr
+    duration: 9822
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '24'
+        time: '2021.03.17 16:14:07 (+02:00)'
+    PID: 11441
+    error: |+
+
+        ERROR:
+        /srv/ssg/source/a_lists/index.pug
+        Cannot read property 'socialGroup' of undefined
+
+-
+    time: '2021.03.17 16:16:08 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '25'
+        time: '2021.03.17 16:16:08 (+02:00)'
+    PID: 11584
+    error: null
+-
+    time: '2021.03.17 16:16:08 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '25'
+        time: '2021.03.17 16:16:08 (+02:00)'
+    PID: 11584
+    error: null
+-
+    time: '2021.03.17 16:16:20 (+02:00)'
+    type: Build fail stderr
+    duration: 11983
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '25'
+        time: '2021.03.17 16:16:08 (+02:00)'
+    PID: 11584
+    error: |+
+
+        ERROR:
+        /srv/ssg/source/a_lists/index.pug
+        Cannot read property 'socialGroup' of undefined
+
+-
+    time: '2021.03.17 16:21:34 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '26'
+        time: '2021.03.17 16:21:34 (+02:00)'
+    PID: 11731
+    error: null
+-
+    time: '2021.03.17 16:21:34 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '26'
+        time: '2021.03.17 16:21:34 (+02:00)'
+    PID: 11731
+    error: null
+-
+    time: '2021.03.17 16:21:44 (+02:00)'
+    type: Build fail stderr
+    duration: 10339
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: '26'
+        time: '2021.03.17 16:21:34 (+02:00)'
+    PID: 11731
+    error: |+
+
+        ERROR:
+        /srv/ssg/source/a_lists/index.pug
+        Cannot read property 'socialGroup' of undefined
+
+-
+    time: '2021.03.17 16:21:48 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:21:48 (+02:00)'
+    PID: 11837
+    error: null
+-
+    time: '2021.03.17 16:21:48 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:21:48 (+02:00)'
+    PID: 11837
+    error: null
+-
+    time: '2021.03.17 16:21:57 (+02:00)'
+    type: Build fail stderr
+    duration: 8677
+    command:
+        domain: oyafond.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 16:21:48 (+02:00)'
+    PID: 11837
+    error: |+
+
+        ERROR:
+        /srv/ssg/source/a_lists/index.pug
+        Cannot read property 'socialGroup' of undefined
+
