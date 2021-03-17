@@ -1,258 +1,966 @@
 -
-    time: '2021.03.16 19:23:08 (+02:00)'
+    time: '2021.03.17 12:02:28 (+02:00)'
     type: Add to queue
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:23:08 (+02:00)'
-    PID: 15160
+        parameters: '3'
+        time: '2021.03.17 12:02:28 (+02:00)'
+    PID: 635
     error: null
 -
-    time: '2021.03.16 19:23:08 (+02:00)'
+    time: '2021.03.17 12:02:28 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:23:08 (+02:00)'
-    PID: 15160
+        parameters: '3'
+        time: '2021.03.17 12:02:28 (+02:00)'
+    PID: 635
     error: null
 -
-    time: '2021.03.16 19:23:46 (+02:00)'
-    type: Build fail stderr
-    duration: 38021
+    time: '2021.03.17 12:02:31 (+02:00)'
+    type: Build finish
+    duration: 3666
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:23:08 (+02:00)'
-    PID: 15160
-    error: >
-        warning: LF will be replaced by CRLF in ssg/build_article.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_cassette.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_menu.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_screening.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_logs.yaml.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_manager.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/build_manager_test.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_cassettes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_programmes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
+        parameters: '3'
+        time: '2021.03.17 12:02:28 (+02:00)'
+    PID: 635
+    error: null
 -
-    time: '2021.03.16 19:25:13 (+02:00)'
+    time: '2021.03.17 12:03:22 (+02:00)'
     type: Add to queue
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:25:13 (+02:00)'
-    PID: 4252
+        parameters: '3'
+        time: '2021.03.17 12:03:22 (+02:00)'
+    PID: 709
     error: null
 -
-    time: '2021.03.16 19:25:13 (+02:00)'
+    time: '2021.03.17 12:03:22 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:25:13 (+02:00)'
-    PID: 4252
+        parameters: '3'
+        time: '2021.03.17 12:03:22 (+02:00)'
+    PID: 709
     error: null
 -
-    time: '2021.03.16 19:25:51 (+02:00)'
-    type: Build fail stderr
-    duration: 37757
+    time: '2021.03.17 12:03:26 (+02:00)'
+    type: Build finish
+    duration: 3658
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: hoff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:25:13 (+02:00)'
-    PID: 4252
-    error: >
-        warning: LF will be replaced by CRLF in ssg/build_article.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_cassette.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_menu.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_screening.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_logs.yaml.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_manager.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/build_manager_test.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_cassettes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_programmes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
+        parameters: '3'
+        time: '2021.03.17 12:03:22 (+02:00)'
+    PID: 709
+    error: null
 -
-    time: '2021.03.16 19:26:28 (+02:00)'
+    time: '2021.03.17 12:03:58 (+02:00)'
     type: Add to queue
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: filmikool.poff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:26:28 (+02:00)'
-    PID: 9772
+        parameters: '4'
+        time: '2021.03.17 12:03:58 (+02:00)'
+    PID: 783
     error: null
 -
-    time: '2021.03.16 19:26:28 (+02:00)'
+    time: '2021.03.17 12:03:58 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: filmikool.poff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:26:28 (+02:00)'
-    PID: 9772
+        parameters: '4'
+        time: '2021.03.17 12:03:58 (+02:00)'
+    PID: 783
     error: null
 -
-    time: '2021.03.16 19:27:04 (+02:00)'
-    type: Build fail stderr
-    duration: 35911
+    time: '2021.03.17 12:04:01 (+02:00)'
+    type: Build finish
+    duration: 3208
     command:
-        domain: poff.ee
-        file: build_screening.sh
+        domain: filmikool.poff.ee
+        file: build_menu.sh
         type: target
-        parameters: 1440 1801
-        time: '2021.03.16 19:26:28 (+02:00)'
-    PID: 9772
-    error: >
-        warning: LF will be replaced by CRLF in ssg/build_article.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_cassette.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_menu.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/build_screening.sh.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_logs.yaml.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in ssg/helpers/build_manager.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/build_manager_test.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_cassettes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
-
-        warning: LF will be replaced by CRLF in
-        ssg/helpers/fetch_programmes_from_yaml.js.
-
-        The file will have its original line endings in your working directory
+        parameters: '4'
+        time: '2021.03.17 12:03:58 (+02:00)'
+    PID: 783
+    error: null
 -
-    time: '2021.03.17 11:30:45 (+02:00)'
+    time: '2021.03.17 12:04:48 (+02:00)'
     type: Add to queue
     duration: null
     command:
-        domain: oyafond.ee
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:04:47 (+02:00)'
+    PID: 882
+    error: null
+-
+    time: '2021.03.17 12:04:48 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:04:47 (+02:00)'
+    PID: 882
+    error: null
+-
+    time: '2021.03.17 12:04:51 (+02:00)'
+    type: Build finish
+    duration: 3833
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:04:47 (+02:00)'
+    PID: 882
+    error: null
+-
+    time: '2021.03.17 12:11:04 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:11:04 (+02:00)'
+    PID: 1038
+    error: null
+-
+    time: '2021.03.17 12:11:04 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:11:04 (+02:00)'
+    PID: 1038
+    error: null
+-
+    time: '2021.03.17 12:11:08 (+02:00)'
+    type: Build finish
+    duration: 3792
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:11:04 (+02:00)'
+    PID: 1038
+    error: null
+-
+    time: '2021.03.17 12:13:32 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:13:32 (+02:00)'
+    PID: 1127
+    error: null
+-
+    time: '2021.03.17 12:13:32 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:13:32 (+02:00)'
+    PID: 1127
+    error: null
+-
+    time: '2021.03.17 12:13:37 (+02:00)'
+    type: Build finish
+    duration: 5241
+    command:
+        domain: filmikool.poff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '4'
+        time: '2021.03.17 12:13:32 (+02:00)'
+    PID: 1127
+    error: null
+-
+    time: '2021.03.17 12:20:33 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:20:33 (+02:00)'
+    PID: 1274
+    error: null
+-
+    time: '2021.03.17 12:20:33 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:20:33 (+02:00)'
+    PID: 1274
+    error: null
+-
+    time: '2021.03.17 12:20:36 (+02:00)'
+    type: Build finish
+    duration: 3628
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:20:33 (+02:00)'
+    PID: 1274
+    error: null
+-
+    time: '2021.03.17 12:24:07 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:24:07 (+02:00)'
+    PID: 1541
+    error: null
+-
+    time: '2021.03.17 12:24:07 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:24:07 (+02:00)'
+    PID: 1541
+    error: null
+-
+    time: '2021.03.17 12:24:11 (+02:00)'
+    type: Build finish
+    duration: 3837
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '5'
+        time: '2021.03.17 12:24:07 (+02:00)'
+    PID: 1541
+    error: null
+-
+    time: '2021.03.17 12:26:30 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:29 (+02:00)'
+    PID: 1629
+    error: null
+-
+    time: '2021.03.17 12:26:30 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:29 (+02:00)'
+    PID: 1629
+    error: null
+-
+    time: '2021.03.17 12:26:33 (+02:00)'
+    type: Build fail stderr
+    duration: 3556
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:29 (+02:00)'
+    PID: 1629
+    error: "/srv/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /srv/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:67:40)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/srv/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/srv/ssg/helpers/fetch_menu_from_yaml.js:93:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n"
+-
+    time: '2021.03.17 12:26:51 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:51 (+02:00)'
+    PID: 1698
+    error: null
+-
+    time: '2021.03.17 12:26:51 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:51 (+02:00)'
+    PID: 1698
+    error: null
+-
+    time: '2021.03.17 12:26:54 (+02:00)'
+    type: Build fail stderr
+    duration: 3384
+    command:
+        domain: hoff.ee
+        file: build_menu.sh
+        type: target
+        parameters: '7'
+        time: '2021.03.17 12:26:51 (+02:00)'
+    PID: 1698
+    error: "/srv/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /srv/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:67:40)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/srv/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/srv/ssg/helpers/fetch_menu_from_yaml.js:93:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n"
+-
+    time: '2021.03.17 12:31:32 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
         file: build_article.sh
         type: target
-        parameters: '14'
-        time: '2021.03.17 11:30:45 (+02:00)'
-    PID: 110826
+        parameters: '1'
+        time: '2021.03.17 12:31:32 (+02:00)'
+    PID: 1818
     error: null
 -
-    time: '2021.03.17 11:30:45 (+02:00)'
+    time: '2021.03.17 12:31:32 (+02:00)'
     type: Build start
     duration: null
     command:
-        domain: oyafond.ee
+        domain: filmikool.poff.ee
         file: build_article.sh
         type: target
-        parameters: '14'
-        time: '2021.03.17 11:30:45 (+02:00)'
-    PID: 110826
+        parameters: '1'
+        time: '2021.03.17 12:31:32 (+02:00)'
+    PID: 1818
     error: null
 -
-    time: '2021.03.17 11:31:04 (+02:00)'
+    time: '2021.03.17 12:32:03 (+02:00)'
     type: Build fail stderr
-    duration: 19682
+    duration: 31266
     command:
-        domain: oyafond.ee
+        domain: filmikool.poff.ee
         file: build_article.sh
         type: target
-        parameters: '14'
-        time: '2021.03.17 11:30:45 (+02:00)'
-    PID: 110826
-    error: "/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_articles_from_yaml.js:82:22)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78\n\t\t\t\t\tif(entries[ix].hasOwnProperty(property_name)){\n\t\t\t\t\t               ^\n\nTypeError: Cannot read property 'hasOwnProperty' of null\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:78:21)\n    at find_single_obj (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/home/liis/Documents/web2021/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/home/liis/Documents/web2021/ssg/helpers/fetch_article_type_from_yaml.js:98:28)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n"
+        parameters: '1'
+        time: '2021.03.17 12:31:32 (+02:00)'
+    PID: 1818
+    error: |
+        /srv/ssg/helpers/fetch_article_type_from_yaml.js:115
+                if(param_build_type === 'target' && element.id.toString() !== param_article_id) {
+                                                                              ^
+
+        ReferenceError: param_article_id is not defined
+            at Object.<anonymous> (/srv/ssg/helpers/fetch_article_type_from_yaml.js:115:71)
+            at Module._compile (internal/modules/cjs/loader.js:1063:30)
+            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+            at Module.load (internal/modules/cjs/loader.js:928:32)
+            at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47
+-
+    time: '2021.03.17 12:51:22 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 12:51:22 (+02:00)'
+    PID: 2281
+    error: null
+-
+    time: '2021.03.17 12:51:22 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 12:51:22 (+02:00)'
+    PID: 2281
+    error: null
+-
+    time: '2021.03.17 12:51:52 (+02:00)'
+    type: Build finish
+    duration: 30002
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 12:51:22 (+02:00)'
+    PID: 2281
+    error: null
+-
+    time: '2021.03.17 12:54:06 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:54:06 (+02:00)'
+    PID: 2409
+    error: null
+-
+    time: '2021.03.17 12:54:06 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:54:06 (+02:00)'
+    PID: 2409
+    error: null
+-
+    time: '2021.03.17 12:54:31 (+02:00)'
+    type: Build fail stderr
+    duration: 24659
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:54:06 (+02:00)'
+    PID: 2409
+    error: "/srv/ssg/helpers/fetch_article_type_from_yaml.js:112\n            throw new Error (\"Artiklil on puudu nii eesti kui inglise keelne slug!\", Error.ERR_MISSING_ARGS)\n            ^\n\nError: Artiklil on puudu nii eesti kui inglise keelne slug!\n    at Object.<anonymous> (/srv/ssg/helpers/fetch_article_type_from_yaml.js:112:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47\n/srv/ssg/helpers/b_fetch.js:68\n\t\t\t\t\treturn ob.id === e.id\n\t\t\t\t\t                   ^\n\nTypeError: Cannot read property 'id' of null\n    at /srv/ssg/helpers/b_fetch.js:68:25\n    at Array.filter (<anonymous>)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:67:40)\n    at find_single_obj (/srv/ssg/helpers/b_fetch.js:108:36)\n    at fetchModel (/srv/ssg/helpers/b_fetch.js:124:33)\n    at Object.<anonymous> (/srv/ssg/helpers/fetch_menu_from_yaml.js:93:19)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\ninternal/fs/utils.js:307\n    throw err;\n    ^\n\nError: ENOENT: no such file or directory, open '/srv/ssg/source/strapidata/TrioHOFF.yaml'\n    at Object.openSync (fs.js:476:3)\n    at Object.readFileSync (fs.js:377:35)\n    at Object.<anonymous> (/srv/ssg/helpers/fetch_trioblock_from_yaml.js:45:42)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n    at internal/main/run_main_module.js:17:47 {\n  errno: -2,\n  syscall: 'open',\n  code: 'ENOENT',\n  path: '/srv/ssg/source/strapidata/TrioHOFF.yaml'\n}\n"
+-
+    time: '2021.03.17 12:59:25 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:59:25 (+02:00)'
+    PID: 2586
+    error: null
+-
+    time: '2021.03.17 12:59:25 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:59:25 (+02:00)'
+    PID: 2586
+    error: null
+-
+    time: '2021.03.17 12:59:48 (+02:00)'
+    type: Build fail stderr
+    duration: 22706
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 12:59:25 (+02:00)'
+    PID: 2586
+    error: |
+        /srv/ssg/helpers/fetch_article_type_from_yaml.js:112
+                    throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
+                    ^
+
+        Error: Artiklil on puudu nii eesti kui inglise keelne slug!
+            at Object.<anonymous> (/srv/ssg/helpers/fetch_article_type_from_yaml.js:112:19)
+            at Module._compile (internal/modules/cjs/loader.js:1063:30)
+            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+            at Module.load (internal/modules/cjs/loader.js:928:32)
+            at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47
+-
+    time: '2021.03.17 13:00:03 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:03 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:00:03 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:03 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:00:29 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:29 (+02:00)'
+    PID: 2804
+    error: null
+-
+    time: '2021.03.17 13:00:31 (+02:00)'
+    type: Build fail stderr
+    duration: 27760
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:03 (+02:00)'
+    PID: 2705
+    error: |
+        /srv/ssg/helpers/fetch_article_type_from_yaml.js:112
+                    throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
+                    ^
+
+        Error: Artiklil on puudu nii eesti kui inglise keelne slug!
+            at Object.<anonymous> (/srv/ssg/helpers/fetch_article_type_from_yaml.js:112:19)
+            at Module._compile (internal/modules/cjs/loader.js:1063:30)
+            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+            at Module.load (internal/modules/cjs/loader.js:928:32)
+            at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47
+-
+    time: '2021.03.17 13:00:31 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:29 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:00:48 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:48 (+02:00)'
+    PID: 2912
+    error: null
+-
+    time: '2021.03.17 13:00:57 (+02:00)'
+    type: Build finish
+    duration: 25909
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:29 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:00:57 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:48 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:01:21 (+02:00)'
+    type: Build finish
+    duration: 24355
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:00:48 (+02:00)'
+    PID: 2705
+    error: null
+-
+    time: '2021.03.17 13:02:11 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:02:11 (+02:00)'
+    PID: 3046
+    error: null
+-
+    time: '2021.03.17 13:02:12 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:02:11 (+02:00)'
+    PID: 3046
+    error: null
+-
+    time: '2021.03.17 13:02:36 (+02:00)'
+    type: Build finish
+    duration: 24642
+    command:
+        domain: hoff.ee
+        file: build_article.sh
+        type: target
+        parameters: '18'
+        time: '2021.03.17 13:02:11 (+02:00)'
+    PID: 3046
+    error: null
+-
+    time: '2021.03.17 13:05:34 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:05:34 (+02:00)'
+    PID: 3408
+    error: null
+-
+    time: '2021.03.17 13:05:34 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:05:34 (+02:00)'
+    PID: 3408
+    error: null
+-
+    time: '2021.03.17 13:06:04 (+02:00)'
+    type: Build finish
+    duration: 30521
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:05:34 (+02:00)'
+    PID: 3408
+    error: null
+-
+    time: '2021.03.17 13:06:50 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:06:50 (+02:00)'
+    PID: 3531
+    error: null
+-
+    time: '2021.03.17 13:06:50 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:06:50 (+02:00)'
+    PID: 3531
+    error: null
+-
+    time: '2021.03.17 13:07:21 (+02:00)'
+    type: Build finish
+    duration: 31008
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:06:50 (+02:00)'
+    PID: 3531
+    error: null
+-
+    time: '2021.03.17 13:12:10 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '8'
+        time: '2021.03.17 13:12:10 (+02:00)'
+    PID: 3682
+    error: null
+-
+    time: '2021.03.17 13:12:10 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '8'
+        time: '2021.03.17 13:12:10 (+02:00)'
+    PID: 3682
+    error: null
+-
+    time: '2021.03.17 13:12:43 (+02:00)'
+    type: Build finish
+    duration: 32606
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '8'
+        time: '2021.03.17 13:12:10 (+02:00)'
+    PID: 3682
+    error: null
+-
+    time: '2021.03.17 13:14:51 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:14:51 (+02:00)'
+    PID: 3821
+    error: null
+-
+    time: '2021.03.17 13:14:51 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:14:51 (+02:00)'
+    PID: 3821
+    error: null
+-
+    time: '2021.03.17 13:15:23 (+02:00)'
+    type: Build finish
+    duration: 32263
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:14:51 (+02:00)'
+    PID: 3821
+    error: null
+-
+    time: '2021.03.17 13:39:45 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 13:39:45 (+02:00)'
+    PID: 4275
+    error: null
+-
+    time: '2021.03.17 13:39:45 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 13:39:45 (+02:00)'
+    PID: 4275
+    error: null
+-
+    time: '2021.03.17 13:40:16 (+02:00)'
+    type: Build finish
+    duration: 31203
+    command:
+        domain: filmikool.poff.ee
+        file: build_article.sh
+        type: target
+        parameters: ''
+        time: '2021.03.17 13:39:45 (+02:00)'
+    PID: 4275
+    error: null
+-
+    time: '2021.03.17 13:59:43 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:59:43 (+02:00)'
+    PID: 4598
+    error: null
+-
+    time: '2021.03.17 13:59:43 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:59:43 (+02:00)'
+    PID: 4598
+    error: null
+-
+    time: '2021.03.17 13:59:43 (+02:00)'
+    type: Build fail error
+    duration: 94
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:59:43 (+02:00)'
+    PID: 4598
+    error: >-
+        {"killed":false,"code":127,"signal":null,"cmd":"bash
+        /srv/ssg/build_undefined.sh filmikool.poff.ee target 1"}
+-
+    time: '2021.03.17 13:59:43 (+02:00)'
+    type: Build fail stderr
+    duration: 94
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 13:59:43 (+02:00)'
+    PID: 4598
+    error: |
+        bash: /srv/ssg/build_undefined.sh: No such file or directory
+-
+    time: '2021.03.17 14:05:31 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 14:05:31 (+02:00)'
+    PID: 4771
+    error: null
+-
+    time: '2021.03.17 14:05:31 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 14:05:31 (+02:00)'
+    PID: 4771
+    error: null
+-
+    time: '2021.03.17 14:05:31 (+02:00)'
+    type: Build fail error
+    duration: 85
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 14:05:31 (+02:00)'
+    PID: 4771
+    error: >-
+        {"killed":false,"code":127,"signal":null,"cmd":"bash
+        /srv/ssg/build_undefined.sh filmikool.poff.ee target 1"}
+-
+    time: '2021.03.17 14:05:32 (+02:00)'
+    type: Build fail stderr
+    duration: 85
+    command:
+        domain: filmikool.poff.ee
+        file: build_undefined.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.17 14:05:31 (+02:00)'
+    PID: 4771
+    error: |
+        bash: /srv/ssg/build_undefined.sh: No such file or directory
