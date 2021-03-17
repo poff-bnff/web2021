@@ -230,9 +230,10 @@ function clean_result(result) {
 }
 
 async function modify_stapi_data(result, model_name, vanish=false) {
+
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
-    let result_id = result.id || null
+    let result_id = result.id? result.id : null
     console.log(modelname, 'id:', result_id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
     result = clean_result(result) 
 
