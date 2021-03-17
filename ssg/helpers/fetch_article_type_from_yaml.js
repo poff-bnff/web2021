@@ -112,7 +112,7 @@ for (const lang of languages) {
             throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
         }
 
-        if(param_build_type === 'target' && element.id.toString() !== param_article_id) {
+        if(param_build_type === 'target' && element.id.toString() !== target_id) {
             continue
         }
 
