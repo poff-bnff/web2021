@@ -12,7 +12,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 const params = process.argv.slice(2)
 const param_build_type = params[0]
-const target_id = params.slice(1)
+const target_id = params[1]
 
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
@@ -112,8 +112,10 @@ for (const lang of languages) {
             throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
         }
 
-        if(param_build_type === 'target' && element.id.toString() !== target_id) {
+        if (param_build_type === 'target' && element.id.toString() !== target_id) {
             continue
+        } else if (param_build_type === 'target' && element.id.toString() === target_id) {
+            console.log('Target build article ID', element.id);
         }
 
         let publishFrom = undefined
