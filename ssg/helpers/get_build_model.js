@@ -70,6 +70,7 @@ function model(arg) {
 		'festival-edition': 'full',
 		'festival-pass': 'full',
 		'film': 'full',
+		'front-page-courses': 'full',
 		'gender': 'full',
 		'hall': 'full',
 		'label-group': 'full',
