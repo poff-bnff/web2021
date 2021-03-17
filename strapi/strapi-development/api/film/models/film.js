@@ -1,61 +1,41 @@
 'use strict';
-
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
  * to customize this model
  */
 
-const slugify = require('@sindresorhus/slugify');
-const { StringDecoder } = require('string_decoder');
-const decoder = new StringDecoder('utf8');
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
 const {
-    execFile,
-    exec,
-    spawn
-} = require('child_process');
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+} = require(helper_path)
 
-const fs = require('fs');
-const yaml = require('yaml');
-const path = require('path');
+/**
+const domains = 
+For adding domain you have multiple choice. First for objects that has property 'domain' 
+or has property, that has 'domain' (at the moment festival_edition and programmes) use 
+function get_domain(result). If you know that that object has doimain, but no property 
+to indicate that. Just write the list of domains (as list), example tartuffi_menu. 
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
 
-// module.exports = {
-// 	beforeSave: async (model, attrs, options) => {
-// 		console.log('FOO', model, attrs, options)
-        // data.slug_et = slugify(data.title_et) + '_42';
-        // data.slug_en = slugify(data.title_en);
-        // data.slug_ru = slugify(data.title_ru);
-//       },
-// }
-
-// mappingFestivalEdition is used for keeping track of strapi_id for for festival_edition
-const mappingFestivalEdition = {
-  '1': 'poff',
-  '2': 'shorts',
-  '3': 'just',
-  '4': 'kinoff',
-  '5': 'hoff',
-  '6': 'kumu'
-}
-
-function get_domain_name(result) {
-  let domain_to_build = []
-  for (let edition of result.festival_editions){
-    domain_to_build.push(mappingFestivalEdition[edition.id])
-  }
-  return domain_to_build
-}
-
-async function call_update(result) {
-  delete result.published_at
-  await strapi.query('film').update({id: result.id}, result)
-}
+const model_name = (__dirname.split('/').slice(-2)[0])
+// const domains = ['hoff.ee'] // hard coded if needed AS LIST!!!
+// const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
-      await call_update(result)
+      await call_update(result, model_name)
     },
-    beforeUpdate(params, data) {
+    async beforeUpdate(params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+
       const prefixes= {
         2213: '0_'
       }
@@ -63,56 +43,38 @@ module.exports = {
       if (data.id in prefixes) {
         prefix = prefixes[data.id]
       }
+
       // console.log('params', params, 'data', data);
       data.slug_et = data.title_et ? slugify(prefix + data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(prefix + data.title_ru) : null
       data.slug_en = data.title_en ? slugify(prefix + data.title_en) : null
-    },
-    afterUpdate(result, params, data) {
-      let domains = get_domain_name(result)
-      for (let domain of domains){
-        if (fs.existsSync('/srv/ssg/build_hoff.sh') && domain === 'hoff') {
-          const args = []
 
-          const child = spawn('/srv/ssg/build_hoff.sh', args)
-
-          child.stdout.on('data', (chunk) => {
-              console.log(decoder.write(chunk))
-            // data from the standard output is here as buffers
-          });
-          // since these are streams, you can pipe them elsewhere
-          child.stderr.on('data', (chunk) => {
-              console.log('err:', decoder.write(chunk))
-            // data from the standard error is here as buffers
-          });
-          // child.stderr.pipe(child.stdout);
-          child.on('close', (code) => {
-              console.log(`child process exited with code ${code}`);
-          });
-        }
-        else if (fs.existsSync('/srv/ssg/build_kumu.sh') && domain === 'kumu') {
-          const args = []
-
-          const child = spawn('/srv/ssg/build_kumu.sh', args)
-
-          child.stdout.on('data', (chunk) => {
-              console.log(decoder.write(chunk))
-            // data from the standard output is here as buffers
-          });
-          // since these are streams, you can pipe them elsewhere
-          child.stderr.on('data', (chunk) => {
-              console.log('err:', decoder.write(chunk))
-            // data from the standard error is here as buffers
-          });
-          // child.stderr.pipe(child.stdout);
-          child.on('close', (code) => {
-              console.log(`child process exited with code ${code}`);
-          });
-        }
+      if(data.published_at === null ) {  // if strapi publish system goes live
+        console.log('Draft! Delete: ')
+        await modify_stapi_data(params, model_name, true)
+        await call_build(params, domains, model_name)
       }
+    },
+    async afterUpdate(result, params, data) {
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      console.log('Create or update: ')
+      if (domains.length > 0 ) {
+            await modify_stapi_data(result, model_name)
+          }
+      await call_build(result, domains, model_name)
+
+
+    },
+    async afterDelete(result, params) {
+      // console.log('\nR', result, '\nparams', params)
+      const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
+
+      console.log('Delete: ')
+      await modify_stapi_data(result[0], model_name, true)
+      await call_build(result[0], domains, model_name, true)
+
+
     }
-  },
+  }
 };
-
-
 

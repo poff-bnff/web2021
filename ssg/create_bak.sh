@@ -7,7 +7,7 @@ TIMESTAMP=${FULL_TIMESTAMP%.*}
 BACKUP_DIR="/srv/backup/"$DOMAIN"/"
 PREV_BACKUP_DIR="$BACKUP_DIR""$(cd /srv/backup/$DOMAIN && ls -1t | grep "^b.*[0-9]$" | head -1)/"
 NEW_BACKUP_DIR=""$BACKUP_DIR"backup_""$TIMESTAMP/"
-START_DIR=/srv/backup/temp_"$FULL_TIMESTAMP"/
+START_DIR="/srv/backup/"$DOMAIN"/temp_"$FULL_TIMESTAMP"/"
 
 NEW_FILES_COPIED=0
 HARDLINKS_COPIED=0
@@ -88,6 +88,6 @@ echo
 echo $(find $START_DIR -type f | wc -l) - total files in $START_DIR
 echo $(($HARDLINKS_COPIED+$CHANGED_FILES_COPIED+$NEW_FILES_COPIED)) - total backup entries created
 
-rm -r "$BACKUP_DIR"/temp
+rm -r "$START_DIR"
 
 exit

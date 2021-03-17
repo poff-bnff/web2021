@@ -10,6 +10,14 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
+const params = process.argv.slice(2)
+const build_type = params[0]
+const model_id = params[1]
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+if(build_type === 'target') {
+    addConfigPathAliases(['/home'])
+}
+
 const hero_mapping = {
     'poff.ee': 'HeroArticlePoff',
     'justfilm.ee': 'HeroArticleJustFilm',

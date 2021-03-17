@@ -2,7 +2,9 @@
 SECONDS=0
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
-echo $PWD
+readlink /proc/$$/exe
+echo ${BASH_SOURCE} "bashsource"
+echo ${DASH_SOURCE} "dashsource"
 DOMAIN=$1
 echo 'Domain' $DOMAIN
 BUILDDIR=$(node /srv/ssg/helpers/name_build_directory.js $DOMAIN)

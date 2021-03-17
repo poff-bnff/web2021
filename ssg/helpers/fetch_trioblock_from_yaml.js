@@ -8,13 +8,21 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
+const params = process.argv.slice(2)
+const build_type = params[0]
+const model_id = params[1]
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+if(build_type === 'target') {
+    addConfigPathAliases(['/home'])
+}
+
 const trio_mapping = {
-    'poff.ee': 'TrioPoff',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHoff',
+    'hoff.ee': 'TrioHOFF',
     'kumu.poff.ee': 'TrioKumu',
     'tartuff.ee': 'TrioTartuff',
     'filmikool.poff.ee': 'TrioFilmikool',
