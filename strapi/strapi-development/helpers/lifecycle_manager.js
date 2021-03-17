@@ -23,7 +23,7 @@ const mapping_domain = {
     // 'kinoff.poff.ee': 'kinoff',
     'kumu.poff.ee': 'kumu',
     'oyafond.ee': 'bruno',
-    'poff.ee': 'poff',
+    // 'poff.ee': 'poff',
     // 'shorts.poff.ee': 'shorts',
     'tartuff.ee': 'tartuff'
 }
@@ -232,7 +232,8 @@ function clean_result(result) {
 async function modify_stapi_data(result, model_name, vanish=false) {
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
-    console.log(modelname, 'id:', result.id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
+    let result_id = result.id || null
+    console.log(modelname, 'id:', result_id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
     result = clean_result(result) 
 
     const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
