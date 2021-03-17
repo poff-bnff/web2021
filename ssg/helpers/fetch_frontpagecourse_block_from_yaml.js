@@ -28,6 +28,7 @@ for (const lang of languages) {
 
         for (key in copyData) {
             if (key === `courses_${lang}`) {
+
                 for (courseIx in copyData[key]) {
                     let thisCourse = copyData[key][courseIx]
                     let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
@@ -49,6 +50,8 @@ for (const lang of languages) {
                     }
                     copyData[key][courseIx] = thisCourseFromYAMLCopy
                 }
+
+            copyData[key] = copyData[key].sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
             // Teistes keeltes kursus kustutatakse
             } else if (key !== `courses_${lang}` && key.substring(0, 8) === `courses_`) {
                 delete copyData[key]
