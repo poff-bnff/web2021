@@ -113,6 +113,42 @@ const mapping = {
   "tartuff.ee": 'tartuff'
 }
 
+async function do_build(site) {
+    // const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
+    const child = spawn('node', [`../../ssg/helpers/build_manager.js`, site])
+
+    child.stdout.on("data", data => {
+        console.log(`stdout ..............: ${data}`);
+    });
+
+    child.stderr.on("data", async(data) => {
+        // console.log(`stderr: ${data}`);
+        let error = decoder.write(data)
+        const logData = {"build_errors": error}
+        const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+        // console.log("stderr result:", result)
+    });
+
+    child.on("close", async(code)=> {
+      console.log(`child process exited with code ${code}`);
+      let logData = {}
+
+      switch(code) {
+        case 0:
+          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
+          break;
+        // case 1:
+        //   logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR"}
+        //   break;
+        default:
+          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
+      }
+      const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+      // console.log("close result:", result)
+
+    });
+}
+
 async function doFullBuild(userInfo) {
   for (let i = 0; i < domains.length; i++){
       // console.log("doBuild")
@@ -121,42 +157,13 @@ async function doFullBuild(userInfo) {
     let site = domains[i]
 
     // kontrollib kas fail on olemas?
-    if (fs.existsSync(`../../ssg/build_${domain}.sh`)) {
+    // if (fs.existsSync(`../../ssg/build_${domain}.sh`)) {
+    if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
       //kirjutab esimese logi kande
       id = await doLog(site, userInfo)
-
-      const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
-
-      child.stdout.on("data", data => {
-          console.log(`stdout ..............: ${data}`);
-      });
-
-      child.stderr.on("data", async(data) => {
-          // console.log(`stderr: ${data}`);
-          let error = decoder.write(data)
-          const logData = {"build_errors": error}
-          const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-          // console.log("stderr result:", result)
-      });
-
-      child.on("close", async(code)=> {
-        console.log(`child process exited with code ${code}`);
-        let logData = {}
-
-        switch(code) {
-          case 0:
-            logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
-            break;
-          // case 1:
-          //   logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR"}
-          //   break;
-          default:
-            logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
-        }
-        const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-        // console.log("close result:", result)
-
-      });
+      for (let site in mapping) {
+        await do_build(site)
+      }
     }
   }
 }
