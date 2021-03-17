@@ -73,7 +73,7 @@ block content
                     if self.tags
 
                         if self.tags.keywords && self.tags.keywords[0]
-                            .str_info_meta_label.dark_semi= self.label.filmikool.level
+                            .str_info_meta_label.dark_semi= self.label.filmikool.targetGroup
                             .str_info_meta_festival= self.tags.keywords.join(', ')
 
             //- FILM ADDITIONAL INFO (ADDITINFO)
@@ -90,10 +90,10 @@ block content
                 //-     Näiteks: Director Of Photography self.credentials.rolePersonsByRole.directorofphotography
 
                 if self.credentials && self.credentials.rolePersonsByRole
-                    if self.credentials.rolePersonsByRole.koostaja && self.credentials.rolePersonsByRole.koostaja[0]
+                    if self.credentials.rolePersonsByRole.instructor && self.credentials.rolePersonsByRole.instructor[0]
                         .str_info_grid_3
-                            .str_info_label= self.label.filmikool.koostaja
-                            .str_info_value= self.credentials.rolePersonsByRole.koostaja.join(', ')
+                            .str_info_label= self.label.filmikool.instructor
+                            .str_info_value= self.credentials.rolePersonsByRole.instructor.join(', ')
 
                     if self.credentials.rolePersonsByRole.director && self.credentials.rolePersonsByRole.director[0]
                         .str_info_grid_3
