@@ -38,7 +38,7 @@ function startBuildManager(options) {
             addToQueue(options)
         }
     } else {
-        console.log('Invalid options');
+        console.log('Invalid options', options);
     }
 }
 
@@ -160,11 +160,12 @@ function calculateAverageDuration(options) {
             return false
         }
     })
+
     const lastFive = logData.slice(Math.max(logData.length - 5, 0))
     const avgDurInMs = lastFive.map(a => a.duration).reduce((partial_sum, a) => partial_sum + a, 0) / lastFive.length
     var duration = moment.duration(avgDurInMs);
     if (duration._isValid) {
-        console.log(`Based on last 5 builds, average duration for this type of build is: ${duration.minutes()}m ${duration.seconds()}s`);
+        console.log(`Based on last ${lastFive.length} builds, average duration for this type of build is: ${duration.minutes()}m ${duration.seconds()}s`);
     } else {
         console.log('No log data for getting estimates');
     }
@@ -220,7 +221,7 @@ function checkIfProcessAlreadyRunning() {
 exports.startBuildManager = startBuildManager
 exports.calculateAverageDuration = calculateAverageDuration
 
-const { model }= require('./get_build_model.js')
+const { model } = require('./get_build_model.js')
 
 const params = process.argv.slice(2) || ''
 const args = params[0].split(',')
