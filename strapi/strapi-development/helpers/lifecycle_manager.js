@@ -258,7 +258,7 @@ async function modify_stapi_data(result, model_name, vanish=false) {
     fs.writeFileSync(strapidata_dir, yaml.stringify(strapidata.filter( e => e !== null), { indent: 4 }), 'utf8')
 }
 
-async function call_build(result, domains, model_name) {
+async function call_build(result, domains, model_name, del=false ) {
     let build_error
     if (domains[0] === 'FULL_BUILD') {
         let error = 'FULL BUILD'
@@ -282,6 +282,10 @@ async function call_build(result, domains, model_name) {
                 if (result.tags) {
                     let prog_args = get_programme_out_of_cassette(result)
                     args = [domain, model_name, "target", result.id, prog_args.join(' ')]
+                }
+
+                if (del) {
+                    args = [domain, model_name, "target"]
                 }
                 await call_process(build_dir, plugin_log, args)
             } 

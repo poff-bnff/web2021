@@ -53,7 +53,8 @@ module.exports = {
 
       console.log('Delete: ')
       await modify_stapi_data(result[0], model_name, true)
-      await call_build(result[0], domains, model_name)
+      await call_build(result[0], domains, model_name, true)
+
 
     }
   }
