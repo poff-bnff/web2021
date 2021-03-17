@@ -9,9 +9,19 @@ const strapiDataDirPath = path.join(sourceDir, 'strapidata')
 
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const languages = ['en', 'et', 'ru']
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params.slice(1)
+
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+if (param_build_type === 'target') {
+    addConfigPathAliases(['/films'])
+}
 
 var failing = false
 for (const lang of languages) {
@@ -27,6 +37,10 @@ for (const lang of languages) {
     if (typeof copyData !== 'undefined') {
 
         for (key in copyData) {
+            if(build_type === 'target' && !key.id === param_model_id) {
+                continue
+            }
+
             if (key === `cassettes_${lang}`) {
                 for (cassetteIx in copyData[key]) {
                     let thisCassette = copyData[key][cassetteIx]
@@ -50,11 +64,17 @@ for (const lang of languages) {
         }
     }
     rueten(copyData, lang)
+
+
+
     if (failing || copyData === undefined) {
         var allDataYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
     } else {
         var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
     }
     const outFile = path.join(fetchDir, `sixfilms.${lang}.yaml`)
+    if (build_type === 'target') {
+        addConfigPathAliases([outFile])
+    }
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }

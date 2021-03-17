@@ -6,16 +6,27 @@ import '../../assets/style.css';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 
-const DoBuildFull = () => {
+const DoBuildFull = async() => {
 	console.log("full build")
-	//post päring plugina back-i
-	   //  const response = await fetch(`${strapi.backendURL}/publisher/publish`, {
-    //   method: 'POST',
-    //   headers: {
-    //   	'Content-Type': 'application/json'
-    //    },
-    //   body: JSON.stringify({site: site, userInfo: userInfo})
-    // })
+
+	// post päring plugina back-i
+ 
+    let userInfo
+    if(sessionStorage.getItem("userInfo")){
+        userInfo = sessionStorage.getItem("userInfo")
+    }else if(localStorage.getItem("userInfo")){
+        userInfo = localStorage.getItem("userInfo")
+    }else{
+        console.log("pole userinfot")
+    }
+
+    const response =  await fetch(`${strapi.backendURL}/publisher/fullbuild`, {
+      method: 'POST',
+      headers: {
+      	'Content-Type': 'application/json'
+       },
+      body: JSON.stringify({userInfo: userInfo})
+    })
 }
 
 

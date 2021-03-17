@@ -15,7 +15,9 @@ const domains = [
   "kinoff.poff.ee",
   "hoff.ee",
   "kumu.poff.ee",
-  "filmikool.poff.ee"
+  "filmikool.poff.ee",
+  "oyafond.ee",
+  "tartuff.ee"
 ];
 
 /**
@@ -98,7 +100,73 @@ const doLog = async (site, userInfo) => {
   return result.id
 }
 
+const mapping = {
+  "poff.ee": 'poff',
+  "justfilm.ee": 'just',
+  "shorts.poff.ee": 'shorts',
+  "industry.poff.ee": 'industry',
+  "kinoff.poff.ee": 'kinoff',
+  "hoff.ee": 'hoff',
+  "kumu.poff.ee": 'kumu',
+  "filmikool.poff.ee": 'filmikool',
+  "oyafond.ee": 'bruno',
+  "tartuff.ee": 'tartuff'
+}
 
+async function do_build(site) {
+    // const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
+    const child = spawn('node', [`../../ssg/helpers/build_manager.js`, site])
+
+    child.stdout.on("data", data => {
+        console.log(`stdout ..............: ${data}`);
+    });
+
+    child.stderr.on("data", async(data) => {
+        // console.log(`stderr: ${data}`);
+        let error = decoder.write(data)
+        const logData = {"build_errors": error}
+        const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+        // console.log("stderr result:", result)
+    });
+
+    child.on("close", async(code)=> {
+      console.log(`child process exited with code ${code}`);
+      let logData = {}
+
+      switch(code) {
+        case 0:
+          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
+          break;
+        // case 1:
+        //   logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR"}
+        //   break;
+        default:
+          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
+      }
+      const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+      // console.log("close result:", result)
+
+    });
+}
+
+async function doFullBuild(userInfo) {
+  for (let i = 0; i < domains.length; i++){
+      // console.log("doBuild")
+    let id
+    let domain = mapping[domains[i]]
+    let site = domains[i]
+
+    // kontrollib kas fail on olemas?
+    // if (fs.existsSync(`../../ssg/build_${domain}.sh`)) {
+    if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
+      //kirjutab esimese logi kande
+      id = await doLog(site, userInfo)
+      for (let site in mapping) {
+        await do_build(site)
+      }
+    }
+  }
+}
 
 module.exports = {
   /**
@@ -127,8 +195,14 @@ module.exports = {
     }
   },
   fullBuild: async (ctx) => {
+    console.log('ctx', ctx)
     console.log("starting full build")
-    ctx.send({ message: "full build started" });
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+    
+    ctx.send({ message: "full build started" })
+    await doFullBuild(userInfo)
 
   },
   logs: async (ctx) => {

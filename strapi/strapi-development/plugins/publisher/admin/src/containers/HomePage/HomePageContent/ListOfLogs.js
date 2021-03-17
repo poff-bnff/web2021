@@ -18,7 +18,13 @@ const ListOfLogs = ({site}) => {
       const restrucLogs = sortedLogs.map((oneLogEntry) => {
         const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`
         const start = moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY')
-        const end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
+        let end 
+        if (oneLogEntry.end_time) {
+          end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
+        }
+        else {
+          end = '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯'
+        }
         return {user: user,
                 start_time: start,
                 end_time: end,}
