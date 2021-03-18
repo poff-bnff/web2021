@@ -8,7 +8,7 @@ const sourceDir = path.join(rootDir, 'source')
 const strapiDataPath = path.join(sourceDir, '_allStrapidata')
 const domainStrapiDataPath = path.join(sourceDir, '_domainStrapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 
 const domainsStrapiDataPath = path.join(strapiDataPath, 'Domain.yaml')
 const DOMAINSMAPPING = {}

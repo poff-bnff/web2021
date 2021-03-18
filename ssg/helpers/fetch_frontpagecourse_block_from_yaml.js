@@ -6,7 +6,7 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
 const STRAPIDATA_FRONTPAGECOURSES = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
@@ -31,7 +31,7 @@ const STRAPIDATA_FRONTPAGECOURSE = fetchModel(STRAPIDATA_FRONTPAGECOURSES, minim
 var failing = false
 for (const lang of languages) {
     if (STRAPIDATA_FRONTPAGECOURSE.length < 1) {
-        console.log(`ERROR! No data to fetch for ${DOMAIN} frontpagecourse`)
+        console.log(`No data to fetch for ${DOMAIN} frontpagecourse`)
         const outFile = path.join(fetchDir, `frontpagecourses.${lang}.yaml`)
         fs.writeFileSync(outFile, '[]', 'utf8')
         continue
@@ -45,11 +45,8 @@ for (const lang of languages) {
             if (key === `courses_${lang}`) {
 
                 for (courseIx in copyData[key]) {
-                    let thisCourse = copyData[key][courseIx]
+                    let thisCourse = rueten(copyData[key][courseIx], lang)
                     let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
-                    // let COURSESYAML = yaml.safeLoad(fs.readFileSync(courseYAMLPath, 'utf8'))
-
-                    // let thisCourseFromYAML = COURSESYAML.filter( (a) => { return thisCourse.id === a.id })[0];
 
                     if (thisCourse.media) {
                         thisCourse.carouselStills = thisCourse.media?.stills.map(a => `${a.hash}${a.ext}`)
@@ -77,6 +74,7 @@ for (const lang of languages) {
 
         }
     }
+
     rueten(copyData, lang)
 
     if (failing || copyData === undefined) {

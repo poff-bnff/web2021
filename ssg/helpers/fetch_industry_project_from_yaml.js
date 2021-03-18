@@ -7,7 +7,7 @@ const {fetchModel} = require('./b_fetch.js')
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
 const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 

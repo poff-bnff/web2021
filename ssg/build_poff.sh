@@ -15,6 +15,9 @@ export DOMAIN='poff.ee'
 echo DOMAIN
 echo $DOMAIN
 
+echo 'Processing all Strapidata by Domain'
+node ./helpers/d_fetch.js
+
 . ./build.sh
 printf '\n\n----------      Finished building      ----------\n\n'
 

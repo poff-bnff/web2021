@@ -26,6 +26,9 @@ echo "STARTING BUILD"
 echo 'Fetch strapiData.yaml from Strapi'
 node ./helpers/a_fetch.js
 
+echo 'Processing all Strapidata by Domain'
+node ./helpers/d_fetch.js
+
 printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 echo 'fetch_articles_from_yaml'
 node ./helpers/fetch_articles_from_yaml.js
