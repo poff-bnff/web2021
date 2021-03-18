@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
@@ -38,17 +37,16 @@ module.exports = {
       console.log(data);
       data.name = 'Some fixed name';
 
-      if(data.published_at === null ) {  // if strapi publish system goes live
+      if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
-        await modify_stapi_data(params, model_name, true)
-        await call_build(params, domains, model_name)
+        await call_delete(params, domains, model_name)
       }
     },
     async afterUpdate(result, params, data) {
       console.log('Create or update: ')
-      if (domains.length > 0 ) {
-            await modify_stapi_data(result, model_name)
-          }
+      if (domains.length > 0) {
+        await modify_stapi_data(result, model_name)
+      }
       await call_build(result, domains, model_name)
 
 
@@ -57,10 +55,7 @@ module.exports = {
       // console.log('\nR', result, '\nparams', params)
 
       console.log('Delete: ')
-      await modify_stapi_data(result[0], model_name, true)
-      await call_build(result[0], domains, model_name, true)
-
+      await call_delete(result, domains, model_name)
     }
   }
 };
-

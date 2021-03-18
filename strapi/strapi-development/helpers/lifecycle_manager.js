@@ -44,7 +44,7 @@ async function call_update(result, model) {
 }
 
 async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) {
-    let editor = result.updated_by.id
+    let editor = result.updated_by?.id
     let plugin_log
     if (result.updated_by) {
 
@@ -172,8 +172,6 @@ function get_programme_out_of_cassette(result) {
 function get_build_script(domain) {
     let short_domain = mapping_domain[domain]
     if(short_domain) {
-        // let dir_to_build = path.join(__dirname,`/../../../ssg/buildtest.sh`)
-        // let dir_to_build = path.join(__dirname,`/../../../ssg/build_${short_domain}.sh`)
         let dir_to_build = path.join(__dirname,`/../../../ssg/helpers/build_manager.js`)
         return dir_to_build
     } else {
@@ -229,15 +227,16 @@ function clean_result(result) {
     return result
 }
 
+
 async function modify_stapi_data(result, model_name, vanish=false) {
 
     let modelname = await strapi.query(model_name).model.info.name 
     modelname = modelname.split('_').join('')
-    let result_id = result.id? result.id : null
-    console.log(modelname, 'id:', result_id, ' by:', result.updated_by.firstname, result.updated_by.lastname)
+    let result_id = result.id? result.id : null     
+    console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
     result = clean_result(result) 
 
-    const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', 'strapidata', `${modelname}.yaml`)
+    const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${modelname}.yaml`)
     let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
 
     let list_of_models = []
@@ -306,6 +305,15 @@ async function call_build(result, domains, model_name, del=false ) {
     return build_error
 }
 
+async function call_delete(result, domains, model_name) {
+    console.log('result', result)
+    if (!Array.isArray(result)) {
+        result = [result]
+    }
+    await modify_stapi_data(result[0], model_name, true)
+    await call_build(result[0], domains, model_name, true)
+}
+
 exports.call_update = call_update
 exports.build_start_to_strapi_logs = build_start_to_strapi_logs
 exports.call_process = call_process
@@ -315,6 +323,7 @@ exports.get_build_script = get_build_script
 exports.update_strapi_logs = update_strapi_logs
 exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
+exports.call_delete = call_delete
 
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab

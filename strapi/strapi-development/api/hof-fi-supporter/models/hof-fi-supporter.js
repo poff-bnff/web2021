@@ -37,8 +37,7 @@ module.exports = {
 
       if(data.published_at === null ) {  // if strapi publish system goes live
         console.log('Draft! Delete: ')
-        await modify_stapi_data(params, model_name, true)
-        await call_build(params, domains, model_name)
+        await call_delete(params, domains, model_name)
       }
     },
     async afterUpdate(result, params, data) {
@@ -53,12 +52,10 @@ module.exports = {
     },
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result[0]) // hard coded if needed AS LIST!!!
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
       console.log('Delete: ')
-      await modify_stapi_data(result[0], model_name, true)
-      await call_build(result[0], domains, model_name, true)
-
+      await call_delete(result, domains, model_name)
     }
   }
 };

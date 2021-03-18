@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "bruno_articles",
   "info": {
-    "name": "Bruno_Article"
+    "name": "Bruno_Article",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "titlePrivate": {
