@@ -8,16 +8,16 @@ const { generateTimestampCode } = require('strapi-utils')
 
 // let timestamp = strapi.generateTimestampCode
 const domains = [
-  "poff.ee",
-  "justfilm.ee",
-  "shorts.poff.ee",
-  "industry.poff.ee",
-  "kinoff.poff.ee",
+  // "poff.ee",
+  // "justfilm.ee",
+  // "shorts.poff.ee",
+  // "industry.poff.ee",
+  // "kinoff.poff.ee",
   "hoff.ee",
-  "kumu.poff.ee",
-  "filmikool.poff.ee",
-  "oyafond.ee",
-  "tartuff.ee"
+  // "kumu.poff.ee",
+  // "filmikool.poff.ee",
+  // "oyafond.ee",
+  // "tartuff.ee"
 ];
 
 /**
@@ -34,7 +34,9 @@ const doBuild = async(site, userInfo) => {
     // console.log("fail olemas")
 
     //kirjutab esimese logi kande
-    id = await doLog(site, userInfo)
+
+    let type = 'deploy'
+    id = await doLog(site, userInfo, type)
 
     const child = spawn("bash", ["../../ssg/deploy.sh", site]);
 
@@ -87,12 +89,13 @@ const doBuild = async(site, userInfo) => {
 };
 
 
-const doLog = async (site, userInfo) => {
+const doLog = async (site, userInfo, type) => {
   // console.log("......userinfo: ", userInfo)
   const logData = {
     site: site,
     admin_user: {id: userInfo.id},
-    start_time: moment().tz("Europe/Tallinn").format()
+    start_time: moment().tz("Europe/Tallinn").format(),
+    type: type
   };
   //using strapi method for creating and entry from the data that was sent
   const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
@@ -100,69 +103,68 @@ const doLog = async (site, userInfo) => {
   return result.id
 }
 
-const mapping = {
-  "poff.ee": 'poff',
-  // "justfilm.ee": 'just',
-  // "shorts.poff.ee": 'shorts',
-  // "industry.poff.ee": 'industry',
-  // "kinoff.poff.ee": 'kinoff',
-  // "hoff.ee": 'hoff',
-  // "kumu.poff.ee": 'kumu',
-  // "filmikool.poff.ee": 'filmikool',
-  // "oyafond.ee": 'bruno',
-  // "tartuff.ee": 'tartuff'
-}
+// const mapping = {
+//   "poff.ee": 'poff',
+//   "justfilm.ee": 'just',
+//   "shorts.poff.ee": 'shorts',
+//   "industry.poff.ee": 'industry',
+//   "kinoff.poff.ee": 'kinoff',
+//   "hoff.ee": 'hoff',
+//   "kumu.poff.ee": 'kumu',
+//   "filmikool.poff.ee": 'filmikool',
+//   "oyafond.ee": 'bruno',
+//   "tartuff.ee": 'tartuff'
+// }
 
-async function do_build(id, site) {
-    // const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
-    let args = [site, 'full', 'full']
-    let build_dir = `../../ssg/helpers/build_manager.js`
-    const child = spawn('node', [build_dir, args])
+// async function do_build(id, site) {
 
-    child.stdout.on("data", data => {
-        console.log(`stdout ..............: ${data}`);
-    });
-
-    child.stderr.on("data", async(data) => {
-        // console.log(`stderr: ${data}`);
-        let error = decoder.write(data)
-        const logData = {"build_errors": error}
-        const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-        console.log("stderr result:", result)
-    });
-
-    child.on("close", async(code)=> {
-      console.log(`child process exited with code ${code}`);
-      let logData = {}
-
-      switch(code) {
-        case 0:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
-          break;
-        case 1:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "ERROR"}
-          break;
-        default:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
-      }
-      const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-      console.log("close result:", result)
-
-    });
-}
+// }
 
 async function doFullBuild(userInfo) {
   for (let i = 0; i < domains.length; i++){
-      // console.log("doBuild")
-    let id
+  //     // console.log("doBuild")
     let site = domains[i]
+    let type = 'full build'
+    let id = await doLog(site, userInfo, type)
 
     if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
-      //kirjutab esimese logi kande
-      id = await doLog(site, userInfo)
-      for (let site in mapping) {
-        await do_build(id, site)
-      }
+      // for (let site in domains) {
+        // const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
+        let args = [site, 'full', 'full']
+        let build_dir = `../../ssg/helpers/build_manager.js`
+        const child = spawn('node', [build_dir, args])
+
+        child.stdout.on("data", data => {
+            console.log(`stdout ..............: ${data}`);
+        });
+
+        child.stderr.on("data", async(data) => {
+            // console.log(`stderr: ${data}`);
+            let error = decoder.write(data)
+            const logData = {"build_errors": error}
+            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // console.log("stderr result:", result)
+        });
+
+        child.on("close", async(code)=> {
+          console.log(`child process exited with code ${code}`);
+          let logData = {}
+
+          switch(code) {
+            case 0:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
+              break;
+            case 1:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "ERROR"}
+              break;
+            default:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
+          }
+          const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // console.log("close result:", result)
+
+        });
+      // }
     }
   }
 }
@@ -194,7 +196,7 @@ module.exports = {
     }
   },
   fullBuild: async (ctx) => {
-    console.log('ctx', ctx)
+    // console.log('ctx', ctx)
     console.log("starting full build")
 
     const data = ctx.request.body;

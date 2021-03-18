@@ -1,0 +1,427 @@
+-
+    time: '2021.03.18 17:49:52 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:52 (+02:00)'
+    PID: 185237
+    error: null
+-
+    time: '2021.03.18 17:49:52 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:52 (+02:00)'
+    PID: 185237
+    error: null
+-
+    time: '2021.03.18 17:50:26 (+02:00)'
+    type: Build fail error
+    duration: 199156
+    command:
+        domain: poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:47:07 (+02:00)'
+    PID: 185079
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_full.sh poff.ee full "}
+-
+    time: '2021.03.18 17:50:26 (+02:00)'
+    type: Build fail stderr
+    duration: 199156
+    command:
+        domain: poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:47:07 (+02:00)'
+    PID: 185079
+    error: >+
+
+        ERROR:
+
+        /home/liis/Documents/web2021/ssg/source/_fetchdir/a_list/flamm-flammkuchen-bar/data.et.yaml
+
+        no such file or directory, open
+        '/home/liis/Documents/web2021/ssg/source/_fetchdir/articles.et.yaml'
+
+-
+    time: '2021.03.18 17:56:36 (+02:00)'
+    type: Build fail stderr
+    duration: 403863
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:52 (+02:00)'
+    PID: 185237
+    error: |
+        rm: cannot remove './assets/xml/*': No such file or directory
+-
+    time: '2021.03.18 18:03:10 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:03:10 (+02:00)'
+    PID: 186000
+    error: null
+-
+    time: '2021.03.18 18:03:10 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:03:10 (+02:00)'
+    PID: 186000
+    error: null
+-
+    time: '2021.03.18 18:05:59 (+02:00)'
+    type: Build finish
+    duration: 169536
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:03:10 (+02:00)'
+    PID: 186000
+    error: null
+-
+    time: '2021.03.18 18:07:49 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:07:49 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:07:49 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186530
+    error: null
+-
+    time: '2021.03.18 18:07:49 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186537
+    error: null
+-
+    time: '2021.03.18 18:07:50 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186546
+    error: null
+-
+    time: '2021.03.18 18:07:50 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186562
+    error: null
+-
+    time: '2021.03.18 18:11:06 (+02:00)'
+    type: Build finish
+    duration: 196627
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:11:06 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:13:54 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:13:54 (+02:00)'
+    PID: 187460
+    error: null
+-
+    time: '2021.03.18 18:14:18 (+02:00)'
+    type: Build finish
+    duration: 192287
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:14:18 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:17:21 (+02:00)'
+    type: Build finish
+    duration: 182653
+    command:
+        domain: filmikool.poff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:49 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:17:21 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:19:38 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:19:38 (+02:00)'
+    PID: 188259
+    error: null
+-
+    time: '2021.03.18 18:20:21 (+02:00)'
+    type: Build finish
+    duration: 179967
+    command:
+        domain: oyafond.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:20:21 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186523
+    error: null
+-
+    time: '2021.03.18 18:22:14 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:22:14 (+02:00)'
+    PID: 188587
+    error: null
+-
+    time: '2021.03.18 18:22:14 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:22:14 (+02:00)'
+    PID: 188587
+    error: null
+-
+    time: '2021.03.18 18:22:18 (+02:00)'
+    type: Build fail error
+    duration: 117291
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186523
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_full.sh tartuff.ee full "}
+-
+    time: '2021.03.18 18:22:18 (+02:00)'
+    type: Build fail stderr
+    duration: 117291
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:07:50 (+02:00)'
+    PID: 186523
+    error: >+
+
+        ERROR:
+
+        /home/liis/Documents/web2021/ssg/source/eventival_persons_search/data.en.yaml
+
+        no such file or directory, open
+        '/home/liis/Documents/web2021/ssg/source/_fetchdir/eventival_persons.yaml'
+
+-
+    time: '2021.03.18 18:24:43 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.18 18:24:43 (+02:00)'
+    PID: 189014
+    error: null
+-
+    time: '2021.03.18 18:24:44 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.18 18:24:43 (+02:00)'
+    PID: 189014
+    error: null
+-
+    time: '2021.03.18 18:24:45 (+02:00)'
+    type: Build fail error
+    duration: 150869
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:22:14 (+02:00)'
+    PID: 188587
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /home/liis/Documents/web2021/ssg/build_full.sh hoff.ee full "}
+-
+    time: '2021.03.18 18:24:45 (+02:00)'
+    type: Build fail stderr
+    duration: 150869
+    command:
+        domain: hoff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:22:14 (+02:00)'
+    PID: 188587
+    error: >+
+
+        ERROR:
+
+        /home/liis/Documents/web2021/ssg/source/a_lists/data.et.yaml
+
+        no such file or directory, open
+        '/home/liis/Documents/web2021/ssg/source/_fetchdir/articles.et.yaml'
+
+-
+    time: '2021.03.18 18:27:40 (+02:00)'
+    type: Build finish
+    duration: 176524
+    command:
+        domain: kumu.poff.ee
+        file: build_full.sh
+        type: target
+        parameters: '1'
+        time: '2021.03.18 18:24:43 (+02:00)'
+    PID: 189014
+    error: null
