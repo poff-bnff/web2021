@@ -10,9 +10,9 @@ const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
 
-function startBuildManager(options) {
+function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
-    if ((process.argv[2] === 'force' || options.file === 'force') && !options.domain && !options.type && !options.parameters) {
+    if (process.argv[2] === 'force' && !options) {
         // Quit if no queuefile
         if (!fs.existsSync(queuePath)) {
             console.log('No pending queue')
@@ -84,7 +84,7 @@ function startBuild() {
             }
         }
 
-        console.log('\n', 'Removing build: ', buildFileName, buildDomain, buildType, buildParameters);
+        console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
         removeFirstInQueue()
 
@@ -146,15 +146,15 @@ function getCurrentTime() {
     return moment(new Date()).tz('Europe/Tallinn')
 }
 
-function calculateAverageDuration(options) {
+function calcBuildAvgDur(options, queueEst = false) {
     if (!fs.existsSync(logsPath)) {
-        console.log('No log file for getting estimates');
+        console.log('No log file for getting build estimates');
         return;
     }
     const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
-        const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type} ${a.command.parameters}`
-        if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type} ${options.parameters}`) {
+        const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type}`
+        if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type}`) {
             return true
         } else {
             return false
@@ -164,10 +164,54 @@ function calculateAverageDuration(options) {
     const lastFive = logData.slice(Math.max(logData.length - 5, 0))
     const avgDurInMs = lastFive.map(a => a.duration).reduce((partial_sum, a) => partial_sum + a, 0) / lastFive.length
     var duration = moment.duration(avgDurInMs);
-    if (duration._isValid) {
-        console.log(`Based on last ${lastFive.length} builds, average duration for this type of build is: ${duration.minutes()}m ${duration.seconds()}s`);
+    if (!queueEst) {
+        if (duration._isValid) {
+            console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
+        } else {
+            console.log('No log data for getting build estimates');
+        }
     } else {
-        console.log('No log data for getting estimates');
+        return avgDurInMs ? avgDurInMs : 0
+    }
+}
+
+function calcQueueEstDur() {
+    if (!fs.existsSync(logsPath)) {
+        console.log('No log file for getting queue estimates');
+        return;
+    }
+    if (!fs.existsSync(queuePath)) {
+        console.log('No queue file for getting queue estimates');
+        return;
+    }
+    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+
+    const queue = queueFile.map(q => {
+        options = {
+            domain: q.domain,
+            file: q.file,
+            type: q.type
+        }
+        return JSON.stringify(options)
+    })
+
+    let estimateInMs = 0
+    let noEstimate = 0
+    const uniqueQueue = [...new Set(queue)].map(q => {
+        const options = JSON.parse(q)
+        const milliSecs = calcBuildAvgDur(options, true)
+        estimateInMs += milliSecs
+        if (noEstimate === 0) {
+            noEstimate++
+        }
+    })
+
+    const duration = moment.duration(estimateInMs)
+    if (duration._isValid) {
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~` ,duration.minutes(), `m`, duration.seconds(), `s`);
+    }
+    if (noEstimate > 0) {
+        console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
     }
 }
 
@@ -218,30 +262,31 @@ function checkIfProcessAlreadyRunning() {
     }
 }
 
+if (process.argv[2] === 'force') {
+    startBuildManager()
+} else {
+    const { model } = require('./get_build_model.js')
+
+    const params = process.argv.slice(2) || ''
+    const args = params[0].split(',')
+
+    console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
+
+    let file = `build_${model(args[1])}.sh`
+
+    let options = {
+        'domain': args[0],
+        'file': file,
+        'type': args[2],
+        'parameters': args.slice(3).join(' ')
+    }
+
+    console.log('options', options)
+
+    calcBuildAvgDur(options)
+    calcQueueEstDur()
+    startBuildManager(options)
+}
+
 exports.startBuildManager = startBuildManager
-exports.calculateAverageDuration = calculateAverageDuration
-
-const { model } = require('./get_build_model.js')
-
-const params = process.argv.slice(2) || ''
-const args = params[0].split(',')
-
-console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
-
-let file = `build_${model(args[1])}.sh`
-
-if(params[0] === 'force') {
-    file = 'force'
-}
-
-let options = {
-    'domain': args[0],
-    'file': file,
-    'type': args[2],
-    'parameters': args.slice(3).join(' ')
-}
-
-console.log('options', options)
-
-calculateAverageDuration(options)
-startBuildManager(options)
+exports.calcBuildAvgDur = calcBuildAvgDur

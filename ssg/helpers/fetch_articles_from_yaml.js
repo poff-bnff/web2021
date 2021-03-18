@@ -19,11 +19,17 @@ const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const params = process.argv.slice(2)
 const build_type = params[0]
+const only_build_home = params[1] === 'HOME' ? true : false
+
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require(path.join(__dirname, 'add_config_path_aliases.js'))
 if(build_type === 'target') {
-    addConfigPathAliases(['/articles', '/a_lists', '/about', '/interview', '/news', '/sponsorstories', '/home', '/menu'])
+    if (only_build_home) {
+        addConfigPathAliases(['/home'])
+    } else {
+        addConfigPathAliases(['/articles', '/a_lists', '/about', '/interview', '/news', '/sponsorstories', '/home', '/menu'])
+    }
 }
 
 const mapping = DOMAIN_SPECIFICS.article
