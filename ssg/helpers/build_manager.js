@@ -20,7 +20,7 @@ function startBuildManager(options = null) {
             // If queue exists, check if last known PID is still running if it is, quit, else start building
             const isRunning = checkIfProcessAlreadyRunning()
             if(isRunning) {
-                console.log(`Last process with PID ${isRunning} is still running. Exiting`);
+                console.log(`Last process with PID ${isRunning} is still running.`);
             } else {
                 console.log('Continuing with existing queue');
                 startBuild()
@@ -201,13 +201,13 @@ function calcQueueEstDur() {
         const options = JSON.parse(q)
         const milliSecs = calcBuildAvgDur(options, true)
         estimateInMs += milliSecs
-        if (noEstimate === 0) {
+        if (milliSecs === 0) {
             noEstimate++
         }
     })
 
     const duration = moment.duration(estimateInMs)
-    if (duration._isValid) {
+    if (duration._isValid && estimateInMs > 0) {
         console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~` ,duration.minutes(), `m`, duration.seconds(), `s`);
     }
     if (noEstimate > 0) {
@@ -264,6 +264,8 @@ function checkIfProcessAlreadyRunning() {
 
 if (process.argv[2] === 'force') {
     startBuildManager()
+} else if (process.argv[2] === 'queue') {
+    calcQueueEstDur()
 } else {
     const { model } = require('./get_build_model.js')
 

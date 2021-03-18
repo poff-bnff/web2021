@@ -1,0 +1,240 @@
+-
+    time: '2021.03.18 17:49:43 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:43 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:49:43 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:43 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:50:02 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:50:02 (+02:00)'
+    PID: 19280
+    error: null
+-
+    time: '2021.03.18 17:50:30 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:50:30 (+02:00)'
+    PID: 12716
+    error: null
+-
+    time: '2021.03.18 17:52:33 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:52:33 (+02:00)'
+    PID: 20848
+    error: null
+-
+    time: '2021.03.18 17:52:52 (+02:00)'
+    type: Build finish
+    duration: 188506
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:49:43 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:52:52 (+02:00)'
+    type: Remove 2 duplicates
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:50:02 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:52:52 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:50:02 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:55:43 (+02:00)'
+    type: Build finish
+    duration: 170860
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:50:02 (+02:00)'
+    PID: 16556
+    error: null
+-
+    time: '2021.03.18 17:56:09 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:56:09 (+02:00)'
+    PID: 20252
+    error: null
+-
+    time: '2021.03.18 17:56:09 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:56:09 (+02:00)'
+    PID: 20252
+    error: null
+-
+    time: '2021.03.18 17:59:15 (+02:00)'
+    type: Build finish
+    duration: 185959
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 17:56:09 (+02:00)'
+    PID: 20252
+    error: null
+-
+    time: '2021.03.18 18:40:18 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:18 (+02:00)'
+    PID: 8020
+    error: null
+-
+    time: '2021.03.18 18:40:18 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:18 (+02:00)'
+    PID: 8020
+    error: null
+-
+    time: '2021.03.18 18:40:26 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:26 (+02:00)'
+    PID: 16176
+    error: null
+-
+    time: '2021.03.18 18:40:28 (+02:00)'
+    type: Add to queue
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:28 (+02:00)'
+    PID: 20116
+    error: null
+-
+    time: '2021.03.18 18:42:56 (+02:00)'
+    type: Build finish
+    duration: 158073
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:18 (+02:00)'
+    PID: 8020
+    error: null
+-
+    time: '2021.03.18 18:42:56 (+02:00)'
+    type: Remove 1 duplicates
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:26 (+02:00)'
+    PID: 8020
+    error: null
+-
+    time: '2021.03.18 18:42:56 (+02:00)'
+    type: Build start
+    duration: null
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:26 (+02:00)'
+    PID: 8020
+    error: null
+-
+    time: '2021.03.18 18:45:42 (+02:00)'
+    type: Build finish
+    duration: 165914
+    command:
+        domain: tartuff.ee
+        file: build_full.sh
+        type: full
+        parameters: ''
+        time: '2021.03.18 18:40:26 (+02:00)'
+    PID: 8020
+    error: null
