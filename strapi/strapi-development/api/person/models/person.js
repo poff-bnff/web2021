@@ -120,6 +120,7 @@ const {
     call_build,
     get_domain,
     modify_stapi_data,
+    call_delete
 } = require(helper_path)
 
 /**

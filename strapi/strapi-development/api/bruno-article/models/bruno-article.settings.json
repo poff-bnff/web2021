@@ -9,7 +9,7 @@
     "increments": true,
     "timestamps": true,
     "populateCreatorFields": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "titlePrivate": {

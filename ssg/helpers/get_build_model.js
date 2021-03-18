@@ -14,16 +14,16 @@ function model(arg) {
 		'hero-article-shorts': 'full',
 		'hero-article-tartuff': 'full',
 
-		'bruno-article': 'full',
-		'filmikooli-article': 'full',
-		'hof-fi-article': 'full',
-		'industry-article': 'full',
-		'just-filmi-article': 'full',
-		'kinoffi-article': 'full',
-		'kumu-article': 'full',
-		'shortsi-article': 'full',
-		'tartuffi-article': 'full',
-		'pof-fi-article': 'full',
+		'bruno-article': 'article',
+		'filmikooli-article': 'article',
+		'hof-fi-article': 'article',
+		'industry-article': 'article',
+		'just-filmi-article': 'article',
+		'kinoffi-article': 'article',
+		'kumu-article': 'article',
+		'shortsi-article': 'article',
+		'tartuffi-article': 'article',
+		'pof-fi-article': 'article',
 
 		'bruno-footer': 'full',
 		'filmikooli-footer': 'full',
@@ -36,16 +36,16 @@ function model(arg) {
 		'tartuffi-footer': 'full',
 		'pof-fi-footer': 'full',
 
-		'bruno-menu': 'full',
-		'filmikooli-menu': 'full',
-		'hof-fi-menu': 'full',
-		'industry-menu': 'full',
-		'just-filmi-menu': 'full',
-		'kinoffi-menu': 'full',
-		'kumu-menu': 'full',
-		'shortsi-menu': 'full',
-		'tartuffi-menu': 'full',
-		'pof-fi-menu': 'full',
+		'bruno-menu': 'menu',
+		'filmikooli-menu': 'menu',
+		'hof-fi-menu': 'menu',
+		'industry-menu': 'menu',
+		'just-filmi-menu': 'menu',
+		'kinoffi-menu': 'menu',
+		'kumu-menu': 'menu',
+		'shortsi-menu': 'menu',
+		'tartuffi-menu': 'menu',
+		'pof-fi-menu': 'menu',
 
 		'bruno-supporter': 'full',
 		'filmikooli-supporter': 'full',
@@ -113,7 +113,8 @@ function model(arg) {
 		'industry-group': 'full',
 		'industry-person': 'full',
 		'industry-person-type': 'full',
-		'industry-project': 'full'
+		'industry-project': 'full',
+		'full': 'full'
 	}
 
 	return mapping_models[arg]

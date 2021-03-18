@@ -306,7 +306,6 @@ async function call_build(result, domains, model_name, del=false ) {
 }
 
 async function call_delete(result, domains, model_name) {
-    console.log('result', result)
     if (!Array.isArray(result)) {
         result = [result]
     }
