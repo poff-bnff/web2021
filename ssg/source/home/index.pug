@@ -40,6 +40,25 @@ block content
         //-     include /_templates/home_templates/viiekas_filmikool.pug
 
 
+    else if process.env['DOMAIN'] === 'hoff.ee'
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_hoff.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_hoff.pug
+
+        //- include /_templates/home_templates/poff_banner_toetajad.pug
+
+        //- include /_templates/home_templates/sponsorriba_1.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_hoff.pug
+
+        //- include /_templates/home_templates/poff_banner_partnerid.pug
+
 
     else if process.env['DOMAIN'] === 'shorts.poff.ee'
 
