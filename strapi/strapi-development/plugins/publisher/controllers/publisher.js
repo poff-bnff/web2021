@@ -8,16 +8,16 @@ const { generateTimestampCode } = require('strapi-utils')
 
 // let timestamp = strapi.generateTimestampCode
 const domains = [
-  // "poff.ee",
-  // "justfilm.ee",
-  // "shorts.poff.ee",
-  // "industry.poff.ee",
-  // "kinoff.poff.ee",
+  "poff.ee",
+  "justfilm.ee",
+  "shorts.poff.ee",
+  "industry.poff.ee",
+  "kinoff.poff.ee",
   "hoff.ee",
-  // "kumu.poff.ee",
-  // "filmikool.poff.ee",
-  // "oyafond.ee",
-  // "tartuff.ee"
+  "kumu.poff.ee",
+  "filmikool.poff.ee",
+  "oyafond.ee",
+  "tartuff.ee"
 ];
 
 /**
@@ -103,23 +103,6 @@ const doLog = async (site, userInfo, type) => {
   return result.id
 }
 
-// const mapping = {
-//   "poff.ee": 'poff',
-//   "justfilm.ee": 'just',
-//   "shorts.poff.ee": 'shorts',
-//   "industry.poff.ee": 'industry',
-//   "kinoff.poff.ee": 'kinoff',
-//   "hoff.ee": 'hoff',
-//   "kumu.poff.ee": 'kumu',
-//   "filmikool.poff.ee": 'filmikool',
-//   "oyafond.ee": 'bruno',
-//   "tartuff.ee": 'tartuff'
-// }
-
-// async function do_build(id, site) {
-
-// }
-
 async function doFullBuild(userInfo) {
   for (let i = 0; i < domains.length; i++){
   //     // console.log("doBuild")
@@ -128,8 +111,6 @@ async function doFullBuild(userInfo) {
     let id = await doLog(site, userInfo, type)
 
     if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
-      // for (let site in domains) {
-        // const child = spawn(`../../ssg/build_${domain}.sh`, [site, 'full']);
         let args = [site, 'full', 'full']
         let build_dir = `../../ssg/helpers/build_manager.js`
         const child = spawn('node', [build_dir, args])
@@ -208,23 +189,23 @@ module.exports = {
   },
   logs: async (ctx) => {
 
-  // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
-  // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
-  // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
-//https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
+          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
+          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
+          // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
+        //https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
 
-    // console.log("ctx params:", ctx.params)
+            // console.log("ctx params:", ctx.params)
 
-  //   find(params, populate) {
-  //   return strapi.query('restaurant').find(params, populate);},
-  // params (object): this represent filters for your find request.
+          //   find(params, populate) {
+          //   return strapi.query('restaurant').find(params, populate);},
+          // params (object): this represent filters for your find request.
 
-  //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
-  // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
-    // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
+          //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
+          // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
+            // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
 
-// tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
-//https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
+        // tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
+        //https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
     const params = {_limit: 5, site: ctx.params.site, _sort: 'id:desc' }
 
     const result = await strapi.query( "build_logs", "publisher").find(params);

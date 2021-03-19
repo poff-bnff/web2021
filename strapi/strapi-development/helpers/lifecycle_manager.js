@@ -76,12 +76,15 @@ async function call_process(build_dir, plugin_log, args) {
 
     child.stdout.on('data', (chunk) => {
         console.log('stdout', decoder.write(chunk))
+        plugin_log.build_errors = 'info:' + decoder.write(chunk)
+        plugin_log.end_time = moment().format()
+        update_strapi_logs(plugin_log)
         // data from the standard output is here as buffers
     });
     // since these are streams, you can pipe them elsewhere
     child.stderr.on('data', (chunk) => {
         console.log('err:', decoder.write(chunk))
-        plugin_log.build_errors = decoder.write(chunk)
+        plugin_log.build_errors = 'err:' + decoder.write(chunk)
         plugin_log.end_time = moment().format()
         update_strapi_logs(plugin_log)
         // data from the standard error is here as buffers
@@ -118,6 +121,9 @@ async function do_query(model, params) {
 
 async function get_domain(result) {
     let domain = []
+    if (Array.isArray(result)) {
+        result = result[0]
+    }
     if (result.domain) {
         domain.push(result.domain.url)
     }
@@ -306,11 +312,11 @@ async function call_build(result, domains, model_name, del=false ) {
 }
 
 async function call_delete(result, domains, model_name) {
-    if (!Array.isArray(result)) {
-        result = [result]
+    if (Array.isArray(result)) {
+        result = result[0]
     }
-    await modify_stapi_data(result[0], model_name, true)
-    await call_build(result[0], domains, model_name, true)
+    await modify_stapi_data(result, model_name, true)
+    await call_build(result, domains, model_name, true)
 }
 
 exports.call_update = call_update
