@@ -272,7 +272,7 @@ if (process.argv[2] === 'force') {
     const params = process.argv.slice(2) || ''
     const args = params[0].split(',')
 
-    console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
+    // console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
 
     let file = `build_${model(args[1])}.sh`
 
@@ -283,7 +283,7 @@ if (process.argv[2] === 'force') {
         'parameters': args.slice(3).join(' ')
     }
 
-    console.log('options', options)
+    // console.log('options', options)
 
     calcBuildAvgDur(options)
     calcQueueEstDur()

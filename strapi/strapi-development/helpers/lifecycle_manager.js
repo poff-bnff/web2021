@@ -65,28 +65,32 @@ async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) 
     return plugin_log
 }
 
-async function update_strapi_logs(plugin_log) {
-    let id = plugin_log.id
-    delete plugin_log.id
+async function update_strapi_logs(plugin_log, id) {
     await strapi.entityService.update({params: {id: id,}, data: plugin_log}, {model: "plugins::publisher.build_logs" })
 }
 
 async function call_process(build_dir, plugin_log, args) {
     const child = spawn('node', [build_dir, args])
+    const id = plugin_log.id
 
-    child.stdout.on('data', (chunk) => {
-        console.log('stdout', decoder.write(chunk))
-        plugin_log.build_errors = 'info:' + decoder.write(chunk)
-        plugin_log.end_time = moment().format()
-        update_strapi_logs(plugin_log)
-        // data from the standard output is here as buffers
-    });
+    let data = "";
+    for await (const chunk of child.stdout) {
+        console.log('stdout chunk: '+chunk);
+        data += chunk;
+    }
+
+    plugin_log.build_errors = 'info: ' + data
+    plugin_log.end_time = moment().format()
+    delete plugin_log.id
+    update_strapi_logs(plugin_log, id)
+    
     // since these are streams, you can pipe them elsewhere
     child.stderr.on('data', (chunk) => {
         console.log('err:', decoder.write(chunk))
-        plugin_log.build_errors = 'err:' + decoder.write(chunk)
+        plugin_log.build_errors = 'error: ' + decoder.write(chunk)
         plugin_log.end_time = moment().format()
-        update_strapi_logs(plugin_log)
+        delete plugin_log.id
+        update_strapi_logs(plugin_log, id)
         // data from the standard error is here as buffers
     });
     // child.stderr.pipe(child.stdout);
@@ -105,8 +109,8 @@ async function call_process(build_dir, plugin_log, args) {
                 plugin_log.end_time = moment().tz("Europe/Tallinn").format()
                 plugin_log.error_code = `ERR_CODE_${code}`
         }
-        // console.log(plugin_log)
-        update_strapi_logs(plugin_log)
+        delete plugin_log.id
+        update_strapi_logs(plugin_log, id)
     });
 }
 

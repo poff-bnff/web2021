@@ -119,7 +119,7 @@ async function doFullBuild(userInfo) {
             console.log(`stdout ..............: ${data}`);
         });
 
-        child.stderr.on("data", async(data) => {
+        child.stderr.on("data", async (data) => {
             // console.log(`stderr: ${data}`);
             let error = decoder.write(data)
             const logData = {"build_errors": error}
@@ -127,7 +127,7 @@ async function doFullBuild(userInfo) {
             // console.log("stderr result:", result)
         });
 
-        child.on("close", async(code)=> {
+        child.on("close", async (code)=> {
           console.log(`child process exited with code ${code}`);
           let logData = {}
 
