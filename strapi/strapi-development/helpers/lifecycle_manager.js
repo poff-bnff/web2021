@@ -73,22 +73,22 @@ async function call_process(build_dir, plugin_log, args) {
     const child = spawn('node', [build_dir, args])
     const id = plugin_log.id
 
-    let data = "";
-    for await (const chunk of child.stdout) {
-        console.log('stdout chunk: '+chunk);
-        data += chunk;
-    }
-
-    plugin_log.build_errors = 'info: ' + data
-    plugin_log.end_time = moment().format()
-    delete plugin_log.id
-    update_strapi_logs(plugin_log, id)
     
+    let data = "";
+    child.stdout.on('data', (chunk) => {
+        console.log('stdout', decoder.write(chunk))
+        data += 'info: ' + decoder.write(chunk)
+        plugin_log.build_errors = data
+        plugin_log.end_time = moment().tz("Europe/Tallinn").format()
+        delete plugin_log.id
+        update_strapi_logs(plugin_log, id)
+        // data from the standard output is here as buffers
+    });
     // since these are streams, you can pipe them elsewhere
     child.stderr.on('data', (chunk) => {
         console.log('err:', decoder.write(chunk))
         plugin_log.build_errors = 'error: ' + decoder.write(chunk)
-        plugin_log.end_time = moment().format()
+        plugin_log.end_time = moment().tz("Europe/Tallinn").format()
         delete plugin_log.id
         update_strapi_logs(plugin_log, id)
         // data from the standard error is here as buffers

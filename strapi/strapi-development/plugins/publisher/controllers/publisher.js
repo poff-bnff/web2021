@@ -105,24 +105,30 @@ const doLog = async (site, userInfo, type) => {
 
 async function doFullBuild(userInfo) {
   for (let i = 0; i < domains.length; i++){
-  //     // console.log("doBuild")
+
     let site = domains[i]
     let type = 'full build'
     let id = await doLog(site, userInfo, type)
+    console.log(site, userInfo.id, type, id)
 
     if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
         let args = [site, 'full', 'full']
         let build_dir = `../../ssg/helpers/build_manager.js`
         const child = spawn('node', [build_dir, args])
 
-        child.stdout.on("data", data => {
-            console.log(`stdout ..............: ${data}`);
+        let info = ''
+        child.stdout.on("data", async (data) => {
+            console.log(`info: ${info}`)
+            info += 'info: ' + decoder.write(data)
+            const logData = {"build_errors": info, "end_time": moment().tz("Europe/Tallinn").format()}
+            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // console.log(result)
         });
 
         child.stderr.on("data", async (data) => {
-            // console.log(`stderr: ${data}`);
-            let error = decoder.write(data)
-            const logData = {"build_errors": error}
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            const logData = {"build_errors": error, "end_time": moment().tz("Europe/Tallinn").format()}
             const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
             // console.log("stderr result:", result)
         });
