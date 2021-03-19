@@ -37,6 +37,8 @@ ssg/.vscode/*
 ssg/build
 ssg/source/_fetchdir/*
 ssg/source/_styles/*
+ssg/source/helpers/build_logs.yaml
+ssg/source/helpers/build_queue.yaml
 
 ssg/assets/img/dynamic/*
 ssg/assets/xml/*
