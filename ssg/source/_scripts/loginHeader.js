@@ -91,7 +91,7 @@ if (!validToken) {
     } catch (error) {
         null
     }
-    loadEmptyUserProfile()
+    // loadEmptyUserProfile()
 }
 
 function loadUserProfileH() {
