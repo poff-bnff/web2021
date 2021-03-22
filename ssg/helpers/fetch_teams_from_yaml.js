@@ -6,7 +6,7 @@ const rueten = require('./rueten.js');
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'teamsandjuries');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
 const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataTeamPath, 'utf8'))

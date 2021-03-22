@@ -8,7 +8,7 @@ const replaceLinks = require('./replace_links.js')
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industrypersons');
-const strapiDataPath = path.join(sourceDir, 'strapidata', 'IndustryPerson.yaml');
+const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN !== 'industry.poff.ee') {

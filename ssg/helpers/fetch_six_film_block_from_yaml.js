@@ -5,7 +5,7 @@ const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))

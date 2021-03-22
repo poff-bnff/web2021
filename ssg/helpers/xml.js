@@ -7,7 +7,7 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir = path.join(__dirname, '..', 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
-const strapiDataPath = path.join(sourceDir, 'strapidata')
+const strapiDataPath = path.join(sourceDir, '_domainStrapidata')
 const strapiDataScreeningPath = path.join(strapiDataPath, 'Screening.yaml')
 const assetsDirXML = path.join(sourceDir, '..', 'assets', 'xml')
 const XMLpath = path.join(assetsDirXML, 'xml.xml')
