@@ -35,7 +35,7 @@ const doBuild = async(site, userInfo) => {
 
     //kirjutab esimese logi kande
 
-    let type = 'deploy'
+    let type = 'live'
     id = await doLog(site, userInfo, type)
 
     const child = spawn("bash", ["../../ssg/deploy.sh", site]);
@@ -107,7 +107,7 @@ async function doFullBuild(userInfo) {
   for (let i = 0; i < domains.length; i++){
 
     let site = domains[i]
-    let type = 'full build'
+    let type = 'build all'
     let id = await doLog(site, userInfo, type)
     console.log(site, userInfo.id, type, id)
 
