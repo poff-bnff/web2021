@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/onelog/:id",
+      "handler": "publisher.onelog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/fullbuild",
       "handler": "publisher.fullBuild",

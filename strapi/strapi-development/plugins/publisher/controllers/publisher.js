@@ -218,6 +218,15 @@ module.exports = {
 
     return result
 
+  },
+  onelog: async (ctx) => {
+
+  const params = {id: ctx.params.id}
+
+  const result = await strapi.query("build_logs", "publisher").findOne(params);
+
+  return result
+
   }
 };
 
