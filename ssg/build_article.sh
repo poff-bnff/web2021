@@ -18,6 +18,9 @@ cd "$BASEDIR"
 FETCH_PATH=`pwd`/helpers
 BUILD_PATH=`pwd`
 
+echo 'Processing all Strapidata by Domain'
+node "$FETCH_PATH"/d_fetch.js
+
 echo "Initialized entu_ssg.yaml"
 node "$BUILD_PATH"/initialise_entu_ssg.js
 
@@ -26,8 +29,11 @@ node "$FETCH_PATH"/fetch_article_type_from_yaml.js  "$TARGET" "$TARGET_ID"
 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_frontpagecourse_block_from_yaml.js "$TARGET"
 
-# Below line console.logs all final path aliases:
+
+# Logi konsooli kõik ehitatavad pathid:
 node "$FETCH_PATH"/add_config_path_aliases.js display
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full

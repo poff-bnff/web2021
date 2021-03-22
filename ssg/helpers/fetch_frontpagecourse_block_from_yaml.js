@@ -6,7 +6,7 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
 const STRAPIDATA_FRONTPAGECOURSES = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))

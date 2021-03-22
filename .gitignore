@@ -37,6 +37,8 @@ ssg/.vscode/*
 ssg/build
 ssg/source/_fetchdir/*
 ssg/source/_styles/*
+ssg/source/helpers/build_logs.yaml
+ssg/source/helpers/build_queue.yaml
 
 ssg/assets/img/dynamic/*
 ssg/assets/xml/*
@@ -49,7 +51,8 @@ ssg/eventival/dynamic/*
 ssg/entu-ssg.yaml
 ssg/vialog/vialog.json
 
-ssg/source/strapidata/*
+ssg/source/_allStrapidata/*
+ssg/source/_domainStrapidata/*
 ssg/*.icloud
 ssg/eventival/static/.films.yaml.icloud
 ssg/eventival/static/.films.yaml.icloud

@@ -21,6 +21,8 @@ echo "Build $DOMAIN, TYPE: $TARGET, ID: $TARGET_ID, ADDITIONAL_IDS: $ADDITIONAL_
 FETCH_PATH=`pwd`/helpers
 BUILD_PATH=`pwd`
 
+echo 'Processing all Strapidata by Domain'
+node "$FETCH_PATH"/d_fetch.js
 
 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 

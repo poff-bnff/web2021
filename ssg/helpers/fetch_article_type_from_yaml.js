@@ -18,7 +18,7 @@ const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath =  path.join(sourceDir, 'strapidata')
+const strapiDataPath =  path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)

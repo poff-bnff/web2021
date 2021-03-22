@@ -17,12 +17,10 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
             subject: "",
             from_email: "",
             from_name: "",
-            to: [
-                {
-                    email: email,
-                    type: "to",
-                },
-            ],
+            to: [{
+                email: email,
+                type: "to",
+            }, ],
             headers: {},
             important: false,
             track_opens: false,
@@ -39,18 +37,27 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
             return_path_domain: "",
             merge: false,
             merge_language: "mailchimp",
-            global_merge_vars: [
-                { name: "email", content: email },
-                { name: "nimi", content: nimi },
-                { name: "var3", content: var3 },
-                { name: "var4", content: var4 },
-            ],
+            global_merge_vars: [{
+                name: "email",
+                content: email
+            }, {
+                name: "nimi",
+                content: nimi
+            }, {
+                name: "var3",
+                content: var3
+            }, {
+                name: "var4",
+                content: var4
+            }, ],
             merge_vars: [],
             tags: [],
             subaccount: "test",
             google_analytics_domains: [],
             google_analytics_campaign: "",
-            metadata: { website: "" },
+            metadata: {
+                website: ""
+            },
             recipient_metadata: [],
             attachments: [],
             images: [],
@@ -93,26 +100,27 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
 }
 
 // module.exports = {
-    // lifecycles: {
-    //     afterCreate: async (params, data) => {
+// lifecycles: {
+//     afterCreate: async (params, data) => {
 
-    //         if (data.eMail) {
-    //             SendTemplateEmailFromMailChimp("tapferm@gmail.com", data.firstName, data.lastName, data.eMail)
-    //         }
+//         if (data.eMail) {
+//             SendTemplateEmailFromMailChimp("tapferm@gmail.com", data.firstName, data.lastName, data.eMail)
+//         }
 
-    //     },
-    // },
+//     },
+// },
 // };
 
 const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
-  slugify,
-  call_update,
-  call_build,
-  get_domain,
-  modify_stapi_data,
+    slugify,
+    call_update,
+    call_build,
+    get_domain,
+    modify_stapi_data,
+    call_delete
 } = require(helper_path)
 
 /**
@@ -128,35 +136,31 @@ const model_name = (__dirname.split('/').slice(-2)[0])
 const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
-  lifecycles: {
-    async afterCreate(result, data) {
-      await call_update(result, model_name)
-    },
-    async beforeUpdate(params, data) {
+    lifecycles: {
+        async afterCreate(result, data) {
+            await call_update(result, model_name)
+        },
+        async beforeUpdate(params, data) {
 
-      if(data.published_at === null ) {  // if strapi publish system goes live
-        console.log('Draft! Delete: ')
-        await modify_stapi_data(params, model_name, true)
-        await call_build(params, domains, model_name)
-      }
-    },
-    async afterUpdate(result, params, data) {
-      console.log('Create or update: ')
-      if (domains.length > 0 ) {
-            await modify_stapi_data(result, model_name)
-          }
-      await call_build(result, domains, model_name)
+            if (data.published_at === null) { // if strapi publish system goes live
+                console.log('Draft! Delete: ')
+                await call_delete(params, domains, model_name)
+            }
+        },
+        async afterUpdate(result, params, data) {
+            console.log('Create or update: ')
+            if (domains.length > 0) {
+                await modify_stapi_data(result, model_name)
+            }
+            await call_build(result, domains, model_name)
 
 
-    },
-    async afterDelete(result, params) {
-      // console.log('\nR', result, '\nparams', params)
+        },
+        async afterDelete(result, params) {
+            // console.log('\nR', result, '\nparams', params)
 
-      console.log('Delete: ')
-      await modify_stapi_data(result[0], model_name, true)
-      await call_build(result[0], domains, model_name, true)
-
+            console.log('Delete: ')
+            await call_delete(result, domains, model_name)
+        }
     }
-  }
 };
-
