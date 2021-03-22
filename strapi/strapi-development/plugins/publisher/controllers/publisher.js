@@ -224,7 +224,12 @@ module.exports = {
   const params = {id: ctx.params.id}
 
   const result = await strapi.query("build_logs", "publisher").findOne(params);
-
+  if (result.admin_user) {
+    result.admin_user = {
+      firstname: result.admin_user.firstname || null,
+      lastname: result.admin_user.lastname || null
+    }
+  }
   return result
 
   }
