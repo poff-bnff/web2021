@@ -44,7 +44,7 @@ function startBuildManager(options = null) {
 
 function startBuild() {
     // Eliminate duplicates from queue every time new build starts
-    eliminateDuplicates()
+    const duplicatesLogIds = eliminateDuplicates()
 
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
     const firstInQueue = queueFile[0]
@@ -54,6 +54,7 @@ function startBuild() {
     const buildType = firstInQueue.type
     const buildParameters = firstInQueue.parameters
     const startTime = getCurrentTime()
+    firstInQueue.also_builds = duplicatesLogIds
 
     console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
     writeToLogFile(`Build start`, firstInQueue)
@@ -190,7 +191,8 @@ function calcQueueEstDur() {
         options = {
             domain: q.domain,
             file: q.file,
-            type: q.type
+            type: q.type,
+            parameters: q.parameters
         }
         return JSON.stringify(options)
     })
@@ -219,11 +221,20 @@ function eliminateDuplicates() {
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
     const firstEntryCopy = JSON.parse(JSON.stringify(queueFile[0]))
     delete firstEntryCopy.time
+    delete firstEntryCopy.log_id
 
+    const duplicatesLogIds = []
     const eliminated = queueFile.filter(a => {
         const aCopy = JSON.parse(JSON.stringify(a))
         delete aCopy.time
+        delete aCopy.log_id
         if (JSON.stringify(aCopy) === JSON.stringify(firstEntryCopy)) {
+            if (a.log_id !== queueFile[0].log_id) {
+                duplicatesLogIds.push(a.log_id)
+                console.log('pushed: ', a.log_id, queueFile[0].log_id);
+            } else {
+                console.log('NOT pushed: ', a.log_id, queueFile[0].log_id);
+            }
             return false
         } else {
             return true
@@ -231,7 +242,7 @@ function eliminateDuplicates() {
     })
 
     const difference = queueFile.length - (eliminated.length + 1)
-
+    console.log( queueFile.length,' - ', eliminated.length, '+ 1');
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
         const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
@@ -239,6 +250,8 @@ function eliminateDuplicates() {
         console.log(`Removed ${difference} duplicates from queue for ${queueFile[0].domain} ${queueFile[0].file} ${queueFile[0].type} ${queueFile[0].parameters}`);
         writeToLogFile(`Remove ${difference} duplicates`, queueFile[0])
     }
+
+    return duplicatesLogIds.length ? duplicatesLogIds : null
 }
 
 function checkIfProcessAlreadyRunning() {
@@ -274,13 +287,14 @@ if (process.argv[2] === 'force') {
 
     // console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
 
-    let file = `build_${model(args[1])}.sh`
+    let file = `build_${model(args[2])}.sh`
 
     let options = {
         'domain': args[0],
         'file': file,
-        'type': args[2],
-        'parameters': args.slice(3).join(' ')
+        'type': args[3],
+        'log_id': args[1],
+        'parameters': args.slice(4).join(' ')
     }
 
     // console.log('options', options)

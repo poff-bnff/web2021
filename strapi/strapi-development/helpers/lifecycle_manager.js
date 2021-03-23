@@ -73,7 +73,6 @@ async function call_process(build_dir, plugin_log, args) {
     const child = spawn('node', [build_dir, args])
     const id = plugin_log.id
 
-    
     let data = "";
     child.stdout.on('data', (chunk) => {
         console.log('stdout', decoder.write(chunk))
@@ -228,7 +227,7 @@ function clean_result(result) {
         //         if (result[element].length < 1) {
         //             delete result[element]
         //         }
-        //     } 
+        //     }
         //     else if (!date) {
         //         result[element] = {"id": result[element].id}
         //     }
@@ -240,11 +239,11 @@ function clean_result(result) {
 
 async function modify_stapi_data(result, model_name, vanish=false) {
 
-    let modelname = await strapi.query(model_name).model.info.name 
+    let modelname = await strapi.query(model_name).model.info.name
     modelname = modelname.split('_').join('')
-    let result_id = result.id? result.id : null     
+    let result_id = result.id? result.id : null
     console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
-    result = clean_result(result) 
+    result = clean_result(result)
 
     const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${modelname}.yaml`)
     let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
@@ -283,23 +282,24 @@ async function call_build(result, domains, model_name, del=false ) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
                 let plugin_log = await build_start_to_strapi_logs(result, domain)
-                let args = [domain, model_name, "target", result.id]
+                let plugin_log_id = plugin_log.id
+                let args = [domain, plugin_log_id, model_name, "target", result.id]
 
                 // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
                 if (result.cassette) {
-                    args = [domain, model_name, "target", result.id, result.cassette.id]
+                    args = [domain, plugin_log_id, model_name, "target", result.id, result.cassette.id]
                 }
                 // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
                 if (result.tags) {
                     let prog_args = get_programme_out_of_cassette(result)
-                    args = [domain, model_name, "target", result.id, prog_args.join(' ')]
+                    args = [domain, plugin_log_id, model_name, "target", result.id, prog_args.join(' ')]
                 }
 
                 if (del) {
-                    args = [domain, model_name, "target"]
+                    args = [domain, plugin_log_id, model_name, "target"]
                 }
                 await call_process(build_dir, plugin_log, args)
-            } 
+            }
             // else {
             //     plugin_log.end_time = moment().tz("Europe/Tallinn").format()
             //     plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
