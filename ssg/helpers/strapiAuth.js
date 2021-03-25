@@ -1,4 +1,4 @@
-const https = require('https')
+const http = require('http')
 
 
 async function strapiAuth() {
@@ -9,11 +9,11 @@ async function strapiAuth() {
             password: process.env['StrapiPassword']
         }
 
-        // console.log(postData)
         // console.log(process.env['StrapiHostPoff2021'])
 
         const options = {
-            hostname: process.env['StrapiHostPoff2021'],
+            hostname: `localhost`, // process.env['StrapiHostPoff2021']
+            port: 1337,
             path: '/auth/local',
             method: 'POST',
             headers: {
@@ -21,7 +21,7 @@ async function strapiAuth() {
             },
         }
         // console.log({options, postData})
-        const request = https.request(options, (response) => {
+        const request = http.request(options, (response) => {
             response.setEncoding('utf8')
             let tokenStr = ''
             response.on('data', function (chunk) {

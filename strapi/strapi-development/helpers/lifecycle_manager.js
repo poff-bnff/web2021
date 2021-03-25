@@ -49,7 +49,7 @@ async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) 
     if (result.updated_by) {
 
         let loggerData = {
-            start_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
+            queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
             admin_user: {
                 id: editor
             },
@@ -80,7 +80,7 @@ async function call_process(build_dir, plugin_log, args) {
         plugin_log.build_errors = data
         plugin_log.end_time = moment().tz("Europe/Tallinn").format()
         delete plugin_log.id
-        update_strapi_logs(plugin_log, id)
+        // update_strapi_logs(plugin_log, id)
         // data from the standard output is here as buffers
     });
     // since these are streams, you can pipe them elsewhere
@@ -89,7 +89,7 @@ async function call_process(build_dir, plugin_log, args) {
         plugin_log.build_errors = 'error: ' + decoder.write(chunk)
         plugin_log.end_time = moment().tz("Europe/Tallinn").format()
         delete plugin_log.id
-        update_strapi_logs(plugin_log, id)
+        // update_strapi_logs(plugin_log, id)
         // data from the standard error is here as buffers
     });
     // child.stderr.pipe(child.stdout);
@@ -109,7 +109,7 @@ async function call_process(build_dir, plugin_log, args) {
                 plugin_log.error_code = `ERR_CODE_${code}`
         }
         delete plugin_log.id
-        update_strapi_logs(plugin_log, id)
+        // update_strapi_logs(plugin_log, id)
     });
 }
 
@@ -303,7 +303,7 @@ async function call_build(result, domains, model_name, del=false ) {
             // else {
             //     plugin_log.end_time = moment().tz("Europe/Tallinn").format()
             //     plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
-            //     update_strapi_logs(plugin_log)
+            //     // update_strapi_logs(plugin_log)
             // }
         }
     } else {

@@ -35,9 +35,34 @@
     "admin_user": {
       "plugin": "admin",
       "model": "user"
+    },
+    "queued_time": {
+      "type": "datetime"
+    },
+    "also_builds": {
+      "plugin": "publisher",
+      "collection": "build_logs",
+      "via": "built_by"
+    },
+    "built_by": {
+      "plugin": "publisher",
+      "model": "build_logs",
+      "via": "also_builds"
+    },
+    "build_est_duration": {
+      "type": "integer"
+    },
+    "queue_est_duration": {
+      "type": "integer"
+    },
+    "no_estimate_builds_in_queue": {
+      "type": "integer"
+    },
+    "in_queue": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "integer"
     }
   }
 }
-
-
-

@@ -48,7 +48,7 @@ const doBuild = async(site, userInfo) => {
         // console.log(`stderr: ${data}`);
         let error = decoder.write(data)
         const logData = {"build_errors": error}
-        const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+        // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
         // console.log("stderr result:", result)
     });
 
@@ -81,7 +81,7 @@ const doBuild = async(site, userInfo) => {
         default:
           logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
       }
-      const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+      // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
       // console.log("close result:", result)
 
     });
@@ -98,7 +98,7 @@ const doLog = async (site, userInfo, type) => {
     type: type
   };
   //using strapi method for creating and entry from the data that was sent
-  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
+  // const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
   // console.log(result)
   return result.id
 }
@@ -121,7 +121,7 @@ async function doFullBuild(userInfo) {
             console.log(`info: ${info}`)
             info += 'info: ' + decoder.write(data)
             const logData = {"build_errors": info, "end_time": moment().tz("Europe/Tallinn").format()}
-            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
             // console.log(result)
         });
 
@@ -129,7 +129,7 @@ async function doFullBuild(userInfo) {
             console.log(`error: ${data}`)
             let error = 'error' + decoder.write(data)
             const logData = {"build_errors": error, "end_time": moment().tz("Europe/Tallinn").format()}
-            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
             // console.log("stderr result:", result)
         });
 
@@ -147,7 +147,7 @@ async function doFullBuild(userInfo) {
             default:
               logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
           }
-          const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
           // console.log("close result:", result)
 
         });
@@ -221,9 +221,25 @@ module.exports = {
   },
   onelog: async (ctx) => {
 
-  const params = {id: ctx.params.id}
+  const params = { id: ctx.params.id }
 
   const result = await strapi.query("build_logs", "publisher").findOne(params);
+  if (result.admin_user) {
+    result.admin_user = {
+      firstname: result.admin_user.firstname || null,
+      lastname: result.admin_user.lastname || null
+    }
+  }
+  return result
+
+  },
+  updatelog: async (ctx) => {
+
+  const params = { id: ctx.params.id }
+
+  const result = await strapi.query("build_logs", "publisher").update(
+    { id: params.id }, ctx.request.body
+  );
   if (result.admin_user) {
     result.admin_user = {
       firstname: result.admin_user.firstname || null,

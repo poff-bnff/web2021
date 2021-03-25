@@ -3,12 +3,16 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
+const request = require('request');
+const { strapiAuth } = require('./strapiAuth.js')
 
 const rootDir = path.join(__dirname, '..')
 const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
-
+const strapiAddress = 'localhost:1337' //process.env['StrapiHostPoff2021']
+const protocol = 'http'
+let TOKEN = ''
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
@@ -58,6 +62,7 @@ function startBuild() {
 
     console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
     writeToLogFile(`Build start`, firstInQueue)
+    logQuery(firstInQueue.log_id, 'PUT', { start_time: moment().tz('Europe/Tallinn').format() })
 
     // Run shell cript
     exec(`bash ${buildFilePath} ${buildDomain} ${buildType} ${buildParameters}`, (error, stdout, stderr) => {
@@ -85,6 +90,11 @@ function startBuild() {
             }
         }
 
+        logQuery(firstInQueue.log_id, 'PUT', {
+            end_time: moment().tz('Europe/Tallinn').format(),
+            build_errors: stderr || null
+        })
+
         console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
         removeFirstInQueue()
@@ -105,6 +115,17 @@ function addToQueue(options) {
     fs.writeFileSync(queuePath, queueDump, 'utf8');
     console.log('Added to queue');
     writeToLogFile(`Add to queue`, options)
+
+    // Update Strapi deploy_logs
+    const thisBuildAvg = calcBuildAvgDur(options)
+    const queueEst = calcQueueEstDur()
+    const postData = {
+        build_est_duration: thisBuildAvg,
+        queue_est_duration: queueEst.duration || 0,
+        no_estimate_builds_in_queue: queueEst.noest || 0,
+        in_queue: queueEst.inqueue || 0
+    }
+    logQuery(options.log_id, 'PUT', postData)
 }
 
 function deleteQueueIfEmpty() {
@@ -150,7 +171,7 @@ function getCurrentTime() {
 function calcBuildAvgDur(options, queueEst = false) {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting build estimates');
-        return;
+        return 0;
     }
     const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
@@ -168,8 +189,10 @@ function calcBuildAvgDur(options, queueEst = false) {
     if (!queueEst) {
         if (duration._isValid) {
             console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
+            return duration
         } else {
             console.log('No log data for getting build estimates');
+            return 0
         }
     } else {
         return avgDurInMs ? avgDurInMs : 0
@@ -179,12 +202,13 @@ function calcBuildAvgDur(options, queueEst = false) {
 function calcQueueEstDur() {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting queue estimates');
-        return;
+        return null;
     }
     if (!fs.existsSync(queuePath)) {
         console.log('No queue file for getting queue estimates');
-        return;
+        return null;
     }
+
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
 
     const queue = queueFile.map(q => {
@@ -211,9 +235,15 @@ function calcQueueEstDur() {
     const duration = moment.duration(estimateInMs)
     if (duration._isValid && estimateInMs > 0) {
         console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~` ,duration.minutes(), `m`, duration.seconds(), `s`);
+        if (noEstimate > 0) {
+            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
+        }
     }
-    if (noEstimate > 0) {
-        console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
+
+    return {
+        duration: estimateInMs,
+        inqueue: uniqueQueue,
+        noest: noEstimate
     }
 }
 
@@ -231,9 +261,6 @@ function eliminateDuplicates() {
         if (JSON.stringify(aCopy) === JSON.stringify(firstEntryCopy)) {
             if (a.log_id !== queueFile[0].log_id) {
                 duplicatesLogIds.push(a.log_id)
-                console.log('pushed: ', a.log_id, queueFile[0].log_id);
-            } else {
-                console.log('NOT pushed: ', a.log_id, queueFile[0].log_id);
             }
             return false
         } else {
@@ -242,7 +269,7 @@ function eliminateDuplicates() {
     })
 
     const difference = queueFile.length - (eliminated.length + 1)
-    console.log( queueFile.length,' - ', eliminated.length, '+ 1');
+    console.log(queueFile.length,' - ', eliminated.length, '+ 1');
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
         const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
@@ -275,6 +302,45 @@ function checkIfProcessAlreadyRunning() {
     }
 }
 
+async function auth(id) {
+    if (TOKEN === '') {
+        TOKEN = await strapiAuth()
+    }
+}
+
+async function logQuery(id, type = 'GET', data) {
+    if (TOKEN !== '') {
+
+        const mapper = {
+            GET: 'onelog',
+            PUT: 'updatelog'
+        }
+
+        var options = {
+            method: type,
+            url: `${protocol}://${strapiAddress}/publisher/${mapper[type]}/${id}`,
+            headers: {
+                Authorization: `Bearer ${TOKEN}`,
+                "Content-Type": 'application/json'
+            }
+        };
+        console.log(options.url);
+        if (type === 'PUT') {
+            options.body = JSON.stringify(data)
+        }
+
+        request(options, async function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+        });
+
+    } else {
+        console.log('No token');
+        TOKEN = await strapiAuth()
+        await logQuery(id, type, data)
+    }
+}
+
 if (process.argv[2] === 'force') {
     startBuildManager()
 } else if (process.argv[2] === 'queue') {
@@ -290,17 +356,13 @@ if (process.argv[2] === 'force') {
     let file = `build_${model(args[2])}.sh`
 
     let options = {
-        'domain': args[0],
-        'file': file,
-        'type': args[3],
-        'log_id': args[1],
-        'parameters': args.slice(4).join(' ')
+        domain: args[0],
+        file: file,
+        type: args[3],
+        log_id: args[1],
+        parameters: args.slice(4).join(' ')
     }
 
-    // console.log('options', options)
-
-    calcBuildAvgDur(options)
-    calcQueueEstDur()
     startBuildManager(options)
 }
 
