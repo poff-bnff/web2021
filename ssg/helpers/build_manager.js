@@ -231,9 +231,6 @@ function eliminateDuplicates() {
         if (JSON.stringify(aCopy) === JSON.stringify(firstEntryCopy)) {
             if (a.log_id !== queueFile[0].log_id) {
                 duplicatesLogIds.push(a.log_id)
-                console.log('pushed: ', a.log_id, queueFile[0].log_id);
-            } else {
-                console.log('NOT pushed: ', a.log_id, queueFile[0].log_id);
             }
             return false
         } else {
