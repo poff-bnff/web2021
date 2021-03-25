@@ -17,15 +17,15 @@ const {
 } = require(helper_path)
 
 /**
-const domains = 
-For adding domain you have multiple choice. First for objects that has property 'domain' 
-or has property, that has 'domain' (at the moment festival_edition and programmes) use 
-function get_domain(result). If you know that that object has doimain, but no property 
-to indicate that. Just write the list of domains (as list), example tartuffi_menu. 
+const domains =
+For adding domain you have multiple choice. First for objects that has property 'domain'
+or has property, that has 'domain' (at the moment festival_edition and programmes) use
+function get_domain(result). If you know that that object has doimain, but no property
+to indicate that. Just write the list of domains (as list), example tartuffi_menu.
 And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
-const model_name = (__dirname.split('/').slice(-2)[0])
+const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 
 module.exports = {
