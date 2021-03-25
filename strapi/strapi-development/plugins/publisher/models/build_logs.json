@@ -63,6 +63,9 @@
     },
     "duration": {
       "type": "integer"
+    },
+    "build_args": {
+      "type": "string"
     }
   }
 }

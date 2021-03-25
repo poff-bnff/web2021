@@ -19,14 +19,14 @@ function startBuildManager(options = null) {
     if (process.argv[2] === 'force' && !options) {
         // Quit if no queuefile
         if (!fs.existsSync(queuePath)) {
-            console.log('No pending queue')
+            console.log('Build Manager: No pending queue')
         } else {
             // If queue exists, check if last known PID is still running if it is, quit, else start building
             const isRunning = checkIfProcessAlreadyRunning()
-            if(isRunning) {
-                console.log(`Last process with PID ${isRunning} is still running.`);
+            if (isRunning) {
+                console.log(`Build Manager: Last process with PID ${isRunning} is still running.`);
             } else {
-                console.log('Continuing with existing queue');
+                console.log('Build Manager: Continuing with existing queue');
                 startBuild()
             }
         }
@@ -37,12 +37,12 @@ function startBuildManager(options = null) {
 
             addToQueue(options)
             startBuild()
-        // If queue already exists, add to queue
+            // If queue already exists, add to queue
         } else {
             addToQueue(options)
         }
     } else {
-        console.log('Invalid options', options);
+        console.log('Build Manager: Invalid options', options);
     }
 }
 
@@ -92,6 +92,7 @@ function startBuild() {
 
         logQuery(firstInQueue.log_id, 'PUT', {
             end_time: moment().tz('Europe/Tallinn').format(),
+            duration: duration,
             build_errors: stderr || null
         })
 
@@ -189,7 +190,7 @@ function calcBuildAvgDur(options, queueEst = false) {
     if (!queueEst) {
         if (duration._isValid) {
             console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
-            return duration
+            return avgDurInMs
         } else {
             console.log('No log data for getting build estimates');
             return 0
@@ -234,7 +235,7 @@ function calcQueueEstDur() {
 
     const duration = moment.duration(estimateInMs)
     if (duration._isValid && estimateInMs > 0) {
-        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~` ,duration.minutes(), `m`, duration.seconds(), `s`);
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
         if (noEstimate > 0) {
             console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
         }
@@ -242,7 +243,7 @@ function calcQueueEstDur() {
 
     return {
         duration: estimateInMs,
-        inqueue: uniqueQueue,
+        inqueue: uniqueQueue.length,
         noest: noEstimate
     }
 }
@@ -268,8 +269,7 @@ function eliminateDuplicates() {
         }
     })
 
-    const difference = queueFile.length - (eliminated.length + 1)
-    console.log(queueFile.length,' - ', eliminated.length, '+ 1');
+    console.log(queueFile.length, ' - ', eliminated.length, '+ 1');
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
         const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
@@ -337,6 +337,7 @@ async function logQuery(id, type = 'GET', data) {
     } else {
         console.log('No token');
         TOKEN = await strapiAuth()
+        console.log(TOKEN)
         await logQuery(id, type, data)
     }
 }

@@ -43,7 +43,7 @@ async function call_update(result, model) {
     await strapi.query(model).update({id: result.id}, result)
 }
 
-async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) {
+async function build_start_to_strapi_logs(result, domain, err=null, b_err=null, model_and_target=null) {
     let editor = result.updated_by?.id
     let plugin_log
     if (result.updated_by) {
@@ -56,7 +56,8 @@ async function build_start_to_strapi_logs(result, domain, err=null, b_err=null) 
             type: 'build',
             site: domain,
             error_code: err,
-            build_errors: b_err
+            build_errors: b_err,
+            build_args: model_and_target
         }
 
         plugin_log = await strapi.entityService.create({data: loggerData}, {model: "plugins::publisher.build_logs"})
@@ -274,14 +275,14 @@ async function call_build(result, domains, model_name, del=false ) {
         let error = 'FULL BUILD'
         console.log('-------------', error, '-------------')
         build_error = 'Creating/updating this object needs all domain sites to rebuild.'
-        await build_start_to_strapi_logs(result, 'All domains', error, build_error)
+        await build_start_to_strapi_logs(result, 'All domains', error, build_error, `${model_name} ${result.id}`)
     }
     else if (domains.length > 0 ) {
         console.log('Build ', domains)
         for ( let domain of domains ) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
-                let plugin_log = await build_start_to_strapi_logs(result, domain)
+                let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`)
                 let plugin_log_id = plugin_log.id
                 let args = [domain, plugin_log_id, model_name, "target", result.id]
 
