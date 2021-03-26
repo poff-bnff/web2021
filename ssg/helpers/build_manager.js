@@ -61,8 +61,13 @@ function startBuild() {
     firstInQueue.also_builds = duplicatesLogIds
 
     console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
+    const build_start_time = moment().tz('Europe/Tallinn').format()
+
+    if (duplicatesLogIds?.length) {
+        writeToOtherBuildLogs(duplicatesLogIds, { start_time: build_start_time, built_by: firstInQueue.log_id })
+    }
     writeToLogFile(`Build start`, firstInQueue)
-    logQuery(firstInQueue.log_id, 'PUT', { start_time: moment().tz('Europe/Tallinn').format() })
+    logQuery(firstInQueue.log_id, 'PUT', { start_time: build_start_time })
 
     // Run shell cript
     exec(`bash ${buildFilePath} ${buildDomain} ${buildType} ${buildParameters}`, (error, stdout, stderr) => {
@@ -90,11 +95,18 @@ function startBuild() {
             }
         }
 
-        logQuery(firstInQueue.log_id, 'PUT', {
-            end_time: moment().tz('Europe/Tallinn').format(),
+        const build_end_time = moment().tz('Europe/Tallinn').format()
+        const build_end_data = {
+            end_time: build_end_time,
             duration: duration,
-            build_errors: stderr || null
-        })
+            build_errors: stderr || null,
+            build_stdout: stdout || null
+        }
+        logQuery(firstInQueue.log_id, 'PUT', build_end_data)
+
+        if (duplicatesLogIds?.length) {
+            writeToOtherBuildLogs(duplicatesLogIds, build_end_data)
+        }
 
         console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
@@ -104,6 +116,12 @@ function startBuild() {
         if (!deleteQueueIfEmpty()) { startBuild() }
 
     });
+}
+
+function writeToOtherBuildLogs(LogIds, data) {
+    LogIds.map(log => {
+        logQuery(log, 'PUT', data)
+    })
 }
 
 function addToQueue(options) {
@@ -269,7 +287,7 @@ function eliminateDuplicates() {
         }
     })
 
-    console.log(queueFile.length, ' - ', eliminated.length, '+ 1');
+    const difference = queueFile.length - (eliminated.length + 1)
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
         const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
@@ -302,12 +320,6 @@ function checkIfProcessAlreadyRunning() {
     }
 }
 
-async function auth(id) {
-    if (TOKEN === '') {
-        TOKEN = await strapiAuth()
-    }
-}
-
 async function logQuery(id, type = 'GET', data) {
     if (TOKEN !== '') {
 
@@ -324,20 +336,17 @@ async function logQuery(id, type = 'GET', data) {
                 "Content-Type": 'application/json'
             }
         };
-        console.log(options.url);
         if (type === 'PUT') {
             options.body = JSON.stringify(data)
         }
 
         request(options, async function (error, response) {
             if (error) throw new Error(error);
-            console.log(response.body);
+            // console.log(response.body);
         });
 
     } else {
-        console.log('No token');
         TOKEN = await strapiAuth()
-        console.log(TOKEN)
         await logQuery(id, type, data)
     }
 }

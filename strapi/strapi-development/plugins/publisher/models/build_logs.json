@@ -32,6 +32,9 @@
     "build_errors": {
       "type": "richtext"
     },
+    "build_stdout": {
+      "type": "richtext"
+    },
     "admin_user": {
       "plugin": "admin",
       "model": "user"
