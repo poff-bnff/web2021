@@ -1,4 +1,6 @@
 #!/bin/bash
+echo 
+echo "Running script: "$0""
 
 DOMAIN=$1
 FULL_TIMESTAMP=$2
@@ -14,7 +16,6 @@ HARDLINKS_COPIED=0
 CHANGED_FILES_COPIED=0
 
 echo
-echo Create_bak.sh:
 echo Comparing last live site to previous backup: "$PREV_BACKUP_DIR"
 exec &> "$BACKUP_DIR"backup_"$TIMESTAMP".log
 mkdir "$NEW_BACKUP_DIR"
@@ -90,4 +91,6 @@ echo $(($HARDLINKS_COPIED+$CHANGED_FILES_COPIED+$NEW_FILES_COPIED)) - total back
 
 rm -r "$START_DIR"
 
+exec &>/dev/tty
+echo "Backup completed, for details check logfile: "$BACKUP_DIR"backup_"$TIMESTAMP".log"
 exit
