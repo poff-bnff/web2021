@@ -124,6 +124,7 @@ async function do_query(model, params) {
 
 async function get_domain(result) {
     let domain = []
+
     if (Array.isArray(result)) {
         result = result[0]
     }

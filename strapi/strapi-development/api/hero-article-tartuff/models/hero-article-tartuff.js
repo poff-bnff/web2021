@@ -26,7 +26,7 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['poff.ee'] // hard coded if needed AS LIST!!!
+const domains = ['tartuff.ee'] // hard coded if needed AS LIST!!!
 
 module.exports = {
     lifecycles: {
