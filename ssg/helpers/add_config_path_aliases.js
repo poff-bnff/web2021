@@ -9,9 +9,8 @@ if ((__dirname.split(path.sep).slice(-1)[0]) === 'ssg') {
 	rootDir = __dirname
 } else {
 	rootDir =  path.join(__dirname, '..')
-	console.log('rootdir in add_config....', rootDir)
 }
-
+console.log('rootdir in add_config....', rootDir)
 const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
 
 console.log(buildConfigPath)
