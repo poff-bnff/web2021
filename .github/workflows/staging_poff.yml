@@ -38,7 +38,7 @@ jobs:
           run: npm install
 
         - name: Build Project
-          run: . ../ssg/build.sh
+          run: . ./ssg/build.sh
           env:
             StrapiHostPoff2021: ${{ secrets.STRAPIHOSTPOFF2021 }}
             StrapiUserName: ${{ secrets.FETCH_USER }}
