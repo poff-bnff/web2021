@@ -22,7 +22,6 @@ const build_type = params[0]
 const only_build_home = params[1] === 'HOME' ? true : false
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
-console.log('dirname in fetch_articles....', __dirname)
 
 const addConfigPathAliases = require(path.join(__dirname, 'add_config_path_aliases.js'))
 if(build_type === 'target') {
