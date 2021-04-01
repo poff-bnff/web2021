@@ -2,8 +2,18 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 
-const rootDir =  path.join(__dirname, '..')
+let rootDir
+if ((__dirname.split(path.sep).slice(-1)[0]) === 'ssg') {
+	console.log('dirname in add_config.....', __dirname)
+	rootDir = __dirname
+} else {
+	rootDir =  path.join(__dirname, '..')
+	console.log('rootdir in add_config....', rootDir)
+}
+
 const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
+
+console.log(buildConfigPath)
 const BUILD_CONFIG = yaml.safeLoad(fs.readFileSync(buildConfigPath, 'utf8'))
 const BUILD_PATHS = BUILD_CONFIG.dev.paths || []
 
