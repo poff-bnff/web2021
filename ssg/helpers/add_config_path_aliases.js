@@ -3,8 +3,9 @@ const yaml = require('js-yaml')
 const path = require('path')
 
 let rootDir
-if ((__dirname.split(path.sep).slice(-1)[0]) === 'ssg') {
 	console.log('dirname in add_config.....', __dirname)
+
+if ((__dirname.split(path.sep).slice(-1)[0]) === 'ssg') {
 	rootDir = __dirname
 } else {
 	rootDir =  path.join(__dirname, '..')
