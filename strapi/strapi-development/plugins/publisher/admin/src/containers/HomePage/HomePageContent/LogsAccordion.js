@@ -40,6 +40,7 @@ const LogsAccordion = ({site}) => {
     const restrucLogs = sortedLogs.map((oneLogEntry) => {
       const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`;
       const start = moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY');
+      const type = `${oneLogEntry.type}`
       let end;
       if(oneLogEntry.end_time) {
         end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
@@ -48,6 +49,7 @@ const LogsAccordion = ({site}) => {
       };
 
       return {user: user,
+              type: type,
               start_time: start,
               end_time: end,
               error_code: oneLogEntry.error_code
@@ -65,7 +67,7 @@ const LogsAccordion = ({site}) => {
     };
   };
 
-const headers = {data: [{user: "kasutaja", start_time: "algas", end_time: "lõppes", error_code: "error"}]};
+const headers = {data: [{user: "kasutaja", type: "tegevus", start_time: "algas", end_time: "lõppes", error_code: "error"}]};
 
 
   return (

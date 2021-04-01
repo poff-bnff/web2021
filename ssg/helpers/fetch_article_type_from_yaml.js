@@ -9,11 +9,16 @@ const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params[1]
+
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataPath =  path.join(sourceDir, 'strapidata')
+const strapiDataPath =  path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
@@ -107,6 +112,12 @@ for (const lang of languages) {
             throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
         }
 
+        if (param_build_type === 'target' && element.id.toString() !== target_id) {
+            continue
+        } else if (param_build_type === 'target' && element.id.toString() === target_id) {
+            console.log('Target build article ID', element.id);
+        }
+
         let publishFrom = undefined
         let publishUntil = undefined
 
@@ -157,6 +168,8 @@ for (const lang of languages) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
 
+                let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
+
                 fs.mkdirSync(element.directory, { recursive: true });
                 for (key in element) {
 
@@ -190,6 +203,9 @@ for (const lang of languages) {
 
                 if (fs.existsSync(`${sourceDir}${article_template}`)) {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include ${article_template}`)
+                    if(param_build_type === 'target') {
+                        addConfigPathAliases([buildPath])
+                    }
                 } else {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include /_templates/article_${DEFAULTTEMPLATENAME}_index_template.pug`)
                 }

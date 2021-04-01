@@ -1,0 +1,410 @@
+-
+    id: 9
+    title_et: Montaaži I kursus (9.-12. klassile)
+    slug_et: montaazi-kursus-i
+    startDate: '2021-05-01T09:00:00.000Z'
+    endDate: '2021-12-31T10:00:00.000Z'
+    volume: 35 tundi
+    tags:
+        id: 5
+        keywords:
+            -
+                id: 11
+                et: Õpilased
+    credentials:
+        id: 9004
+        rolePerson:
+            -
+                id: 63927
+                order: 1
+                role_at_film:
+                    id: 70
+                    roleNamePrivate: Instructor
+                    order: 1
+                person:
+                    id: 19
+                    firstName: Mikk
+                    lastName: Granström
+                    gender: 2
+                    phoneNr: +372 5300 2617
+                    eMail: mikk.granstrom@poff.ee
+                    firstNameLastName: Mikk Granström
+                    picture:
+                        id: 129
+                        name: Mikk_Granstrom.jpeg
+                        width: 612
+                        height: 612
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Mikk_Granstrom_9493805572.jpeg
+                                name: thumbnail_Mikk_Granstrom.jpeg
+                        hash: Mikk_Granstrom_9493805572
+                        ext: .jpeg
+                        url: /uploads/Mikk_Granstrom_9493805572.jpeg
+    additInfo:
+        id: 8756
+        et: >-
+            Montaaži kursus I on suunatud 9.-12. klassi õpilastele. Koolituse
+            käigus tutvutakse montaažiprogrammi Adobe Premieri (olemas enamikes
+            Eesti koolides) võimalustega, et õpilane oskaks seda iseseisvalt
+            hiljem kasutada. Montaaž on tihti üks filmi tegemise keerulisemaid
+            osi ja vajab harjutamist. Kursuse käigus õpitakse ka olulisemaid
+            montaažireegleid ning tutvutakse ka sellega, kuidas montaaž on
+            seotud filmisisuga. Läbi praktiliste harjutuste omandab õpilane
+            monteerimise põhitõed. Kursus sisaldav eestikeelsed videojuhiseid.
+            Montaaži kursus I järgneb montaaži kursus II ja eriefektide kursus.
+    media:
+        id: 1450
+        stills:
+            -
+                id: 3943
+                name: Video-editing-timeline-779593.jpg
+                width: 1800
+                height: 1013
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Video_editing_timeline_779593_e6cd669230.jpg
+                        name: thumbnail_Video-editing-timeline-779593.jpg
+                hash: Video_editing_timeline_779593_e6cd669230
+                ext: .jpg
+                url: /uploads/Video_editing_timeline_779593_e6cd669230.jpg
+            -
+                id: 3942
+                name: Multimedia-editor-362320.jpg
+                width: 1229
+                height: 691
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Multimedia_editor_362320_5127263750.jpg
+                        name: thumbnail_Multimedia-editor-362320.jpg
+                hash: Multimedia_editor_362320_5127263750
+                ext: .jpg
+                url: /uploads/Multimedia_editor_362320_5127263750.jpg
+        posters:
+            -
+                id: 3948
+                name: Montaaž I - noored - 2.png
+                width: 555
+                height: 800
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_Montaaz_I_noored_2_925173e986.png
+                        name: thumbnail_Montaaž I - noored - 2.png
+                hash: Montaaz_I_noored_2_925173e986
+                ext: .png
+                url: /uploads/Montaaz_I_noored_2_925173e986.png
+    languages:
+        -
+            id: 1686
+    events:
+        -
+            id: 4
+-
+    id: 8
+    title_et: Stsenaariumi kirjutamise meistriklass (9.-12. klassile)
+    slug_et: stsenaariumi-kirjutamise-meistriklass
+    startDate: '2021-06-01T09:00:00.000Z'
+    endDate: '2021-09-30T09:00:00.000Z'
+    volume: 35 tundi
+    tags:
+        id: 4
+        keywords:
+            -
+                id: 11
+                et: Õpilased
+    credentials:
+        id: 9005
+        rolePerson:
+            -
+                id: 63926
+                order: 11
+                role_at_film:
+                    id: 70
+                    roleNamePrivate: Instructor
+                    order: 1
+                person:
+                    id: 19
+                    firstName: Mikk
+                    lastName: Granström
+                    gender: 2
+                    phoneNr: +372 5300 2617
+                    eMail: mikk.granstrom@poff.ee
+                    firstNameLastName: Mikk Granström
+                    picture:
+                        id: 129
+                        name: Mikk_Granstrom.jpeg
+                        width: 612
+                        height: 612
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Mikk_Granstrom_9493805572.jpeg
+                                name: thumbnail_Mikk_Granstrom.jpeg
+                        hash: Mikk_Granstrom_9493805572
+                        ext: .jpeg
+                        url: /uploads/Mikk_Granstrom_9493805572.jpeg
+    additInfo:
+        id: 8755
+        et: >-
+            Koolitusel tutvustatakse stsenaariumi kirjutamise põhialuseid, sh
+            kuidas hakata tööle enda ideega, kuidas sellest töödelda
+            stsenaarium, millistest osadest stsenaarium koosneb, milliste
+            programmidega on kõige lihtsam stsenaariumit kirjutada. Lisaks
+            antakse veel hulganisti praktilisi harjutusi filmi idee/loo
+            leidmiseks.
+
+
+            Koolitus sobib hästi põhikooli lõpuklassidele ja gümnaasiumi
+            õpilastele, kes on huvitatud filmide tegemisest ja stsenaariumi
+            kirjutamise kunsti sügavamaks õppimiseks. Samuti sobib koolitus väga
+            hästi neile õpilastele, kes planeerivad oma gümnaasiumi uurimistöö
+            siduda filmitegemise või filmiga seotud teemadega. Koolituse käigus
+            jagatakse infot sobiliku kirjanduse kohta, mida hiljem on võimalik
+            oma uurimistööde teoreetilises osas kasutada.
+    media:
+        id: 1451
+        stills:
+            -
+                id: 3940
+                name: AdobeStock_214373735.jpeg
+                width: 1273
+                height: 849
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Adobe_Stock_214373735_06dd20989b.jpeg
+                        name: thumbnail_AdobeStock_214373735.jpeg
+                hash: Adobe_Stock_214373735_06dd20989b
+                ext: .jpeg
+                url: /uploads/Adobe_Stock_214373735_06dd20989b.jpeg
+        posters:
+            -
+                id: 3947
+                name: Kursuste postrid-3.png
+                width: 555
+                height: 800
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_Kursuste_postrid_3_64fec4d1d0.png
+                        name: thumbnail_Kursuste postrid-3.png
+                hash: Kursuste_postrid_3_64fec4d1d0
+                ext: .png
+                url: /uploads/Kursuste_postrid_3_64fec4d1d0.png
+    languages:
+        -
+            id: 1686
+    events:
+        -
+            id: 3
+-
+    id: 6
+    title_et: Filmilugu (8.-12. klassile)
+    slug_et: filmilugu
+    startDate: '2021-03-10T10:00:00.000Z'
+    endDate: '2021-06-30T09:00:00.000Z'
+    volume: 35 tundi
+    tags:
+        id: 3
+        keywords:
+            -
+                id: 9
+                et: Õpilased
+    credentials:
+        id: 9006
+        rolePerson:
+            -
+                id: 63928
+                order: 1
+                role_at_film:
+                    id: 70
+                    roleNamePrivate: Instructor
+                    order: 1
+                person:
+                    id: 19
+                    firstName: Mikk
+                    lastName: Granström
+                    gender: 2
+                    phoneNr: +372 5300 2617
+                    eMail: mikk.granstrom@poff.ee
+                    firstNameLastName: Mikk Granström
+                    picture:
+                        id: 129
+                        name: Mikk_Granstrom.jpeg
+                        width: 612
+                        height: 612
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Mikk_Granstrom_9493805572.jpeg
+                                name: thumbnail_Mikk_Granstrom.jpeg
+                        hash: Mikk_Granstrom_9493805572
+                        ext: .jpeg
+                        url: /uploads/Mikk_Granstrom_9493805572.jpeg
+    additInfo:
+        id: 8751
+        et: >-
+            Filmiloo sissejuhatav kursus on mõeldud 8-12. klassi õpilastele.
+            Kursuse eesmärk on tutvustada õppijale filmikunsti põhialuseid ja
+            tekitada huvi filmikunsti vastu. Kogu õppematerjali on võimalik
+            läbida iseseisvalt. Kursuse käigus saab õpilane teada, millised on
+            filmikunsti põhimõisted ning mis on filmilugu. Lisaks õpitakse
+            analüüsima filme ning märkama seda, mida võibolla seni iseseisvalt
+            ei ole märgatud. Lisaks teoreetilistele teadmistele kätkeb kursus
+            endas ka loomingulisi töid ja filmi näited. 
+
+
+            Kursuse maht on 35 akadeemilist tundi, õppematerjal on jagatud 7
+            nädala peale ehk kokku on kursusel 7 moodulit.
+    media:
+        id: 1448
+        stills:
+            -
+                id: 3935
+                name: AdobeStock_198471003.jpeg
+                width: 1843
+                height: 1037
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Adobe_Stock_198471003_fe18e18b91.jpeg
+                        name: thumbnail_AdobeStock_198471003.jpeg
+                hash: Adobe_Stock_198471003_fe18e18b91
+                ext: .jpeg
+                url: /uploads/Adobe_Stock_198471003_fe18e18b91.jpeg
+            -
+                id: 3934
+                name: Chair-for-filmmakers-576934.jpg
+                width: 727
+                height: 1090
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Chair_for_filmmakers_576934_2b8e925633.jpg
+                        name: thumbnail_Chair-for-filmmakers-576934.jpg
+                hash: Chair_for_filmmakers_576934_2b8e925633
+                ext: .jpg
+                url: /uploads/Chair_for_filmmakers_576934_2b8e925633.jpg
+        posters:
+            -
+                id: 3945
+                name: Kursuste postrid.png
+                width: 555
+                height: 800
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_Kursuste_postrid_d5cda54ed5.png
+                        name: thumbnail_Kursuste postrid.png
+                hash: Kursuste_postrid_d5cda54ed5
+                ext: .png
+                url: /uploads/Kursuste_postrid_d5cda54ed5.png
+    languages:
+        -
+            id: 1686
+    events:
+        -
+            id: 1
+-
+    id: 7
+    title_et: Film õppetöös (õpetajatele)
+    slug_et: film-oppetoeoes
+    startDate: '2021-04-03T09:00:00.000Z'
+    endDate: '2021-06-30T09:00:00.000Z'
+    volume: 35 tundi
+    tags:
+        id: 2
+        keywords:
+            -
+                id: 10
+                et: Õpetajad
+    credentials:
+        id: 9007
+        rolePerson:
+            -
+                id: 63929
+                order: 1
+                role_at_film:
+                    id: 70
+                    roleNamePrivate: Instructor
+                    order: 1
+                person:
+                    id: 19
+                    firstName: Mikk
+                    lastName: Granström
+                    gender: 2
+                    phoneNr: +372 5300 2617
+                    eMail: mikk.granstrom@poff.ee
+                    firstNameLastName: Mikk Granström
+                    picture:
+                        id: 129
+                        name: Mikk_Granstrom.jpeg
+                        width: 612
+                        height: 612
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Mikk_Granstrom_9493805572.jpeg
+                                name: thumbnail_Mikk_Granstrom.jpeg
+                        hash: Mikk_Granstrom_9493805572
+                        ext: .jpeg
+                        url: /uploads/Mikk_Granstrom_9493805572.jpeg
+    additInfo:
+        id: 8752
+        et: >
+            Kursuse eesmärk on tutvustada audiovisuaalse õppematerjali
+            eripärasid ning selle paljusid rakendusvõimalusi. Samuti tutvustab
+            kursus võimalusi, kuidas filmi ja filmikunsti väljendusvahendeid
+            edukalt õppetöös kasutada ning filmides käsitletut koos õpilastega
+            koolitunnis analüüsida. Kursusel jagatakse nii teoreetilisi teadmisi
+            kui ka praktilisi harjutusi. Peale kursuse läbimist oskab õpetaja
+            siduda filmikunsti väljendusvahendeid erinevate õppeainetega. 
+    media:
+        id: 1449
+        stills:
+            -
+                id: 3937
+                name: Empty-movie-theatre-779338.jpg
+                width: 1134
+                height: 757
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Empty_movie_theatre_779338_d34b2b3de0.jpg
+                        name: thumbnail_Empty-movie-theatre-779338.jpg
+                hash: Empty_movie_theatre_779338_d34b2b3de0
+                ext: .jpg
+                url: /uploads/Empty_movie_theatre_779338_d34b2b3de0.jpg
+            -
+                id: 3938
+                name: Excellent-mark-375508.jpg
+                width: 1344
+                height: 896
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_Excellent_mark_375508_3130e05697.jpg
+                        name: thumbnail_Excellent-mark-375508.jpg
+                hash: Excellent_mark_375508_3130e05697
+                ext: .jpg
+                url: /uploads/Excellent_mark_375508_3130e05697.jpg
+        posters:
+            -
+                id: 3946
+                name: Kursuste postrid-2.png
+                width: 555
+                height: 800
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_Kursuste_postrid_2_54cf1437c9.png
+                        name: thumbnail_Kursuste postrid-2.png
+                hash: Kursuste_postrid_2_54cf1437c9
+                ext: .png
+                url: /uploads/Kursuste_postrid_2_54cf1437c9.png
+    languages:
+        -
+            id: 1686
+    events:
+        -
+            id: 2

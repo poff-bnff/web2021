@@ -10,13 +10,27 @@ timer.start(__filename)
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
+
+const params = process.argv.slice(2)
+const build_type = params[0]
+const only_build_home = params[1] === 'HOME' ? true : false
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+
+const addConfigPathAliases = require(path.join(__dirname, 'add_config_path_aliases.js'))
+if(build_type === 'target') {
+    if (only_build_home) {
+        addConfigPathAliases(['/home'])
+    } else {
+        addConfigPathAliases(['/articles', '/a_lists', '/about', '/interview', '/news', '/sponsorstories', '/home', '/menu'])
+    }
+}
 
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
@@ -76,6 +90,8 @@ STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
+
+
 
 for (const lang of allLanguages) {
     const dataFrom = {

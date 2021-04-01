@@ -15,7 +15,9 @@ const domains = [
   "kinoff.poff.ee",
   "hoff.ee",
   "kumu.poff.ee",
-  "filmikool.poff.ee"
+  "filmikool.poff.ee",
+  "oyafond.ee",
+  "tartuff.ee"
 ];
 
 /**
@@ -32,9 +34,11 @@ const doBuild = async(site, userInfo) => {
     // console.log("fail olemas")
 
     //kirjutab esimese logi kande
-    id = await doLog(site, userInfo)
 
-    const child = spawn("../../ssg/deploy.sh", [site]);
+    let type = 'live'
+    id = await doLog(site, userInfo, type)
+
+    const child = spawn("bash", ["../../ssg/deploy.sh", site]);
 
     child.stdout.on("data", data => {
         console.log(`stdout ..............: ${data}`);
@@ -85,12 +89,13 @@ const doBuild = async(site, userInfo) => {
 };
 
 
-const doLog = async (site, userInfo) => {
+const doLog = async (site, userInfo, type) => {
   // console.log("......userinfo: ", userInfo)
   const logData = {
     site: site,
     admin_user: {id: userInfo.id},
-    start_time: moment().tz("Europe/Tallinn").format()
+    start_time: moment().tz("Europe/Tallinn").format(),
+    type: type
   };
   //using strapi method for creating and entry from the data that was sent
   const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
@@ -98,7 +103,58 @@ const doLog = async (site, userInfo) => {
   return result.id
 }
 
+async function doFullBuild(userInfo) {
+  for (let i = 0; i < domains.length; i++){
 
+    let site = domains[i]
+    let type = 'build all'
+    let id = await doLog(site, userInfo, type)
+    console.log(site, userInfo.id, type, id)
+
+    if (fs.existsSync(`../../ssg/helpers/build_manager.js`)) {
+        let args = [site, 'full', 'full']
+        let build_dir = `../../ssg/helpers/build_manager.js`
+        const child = spawn('node', [build_dir, args])
+
+        let info = ''
+        child.stdout.on("data", async (data) => {
+            console.log(`info: ${info}`)
+            info += 'info: ' + decoder.write(data)
+            const logData = {"build_errors": info, "end_time": moment().tz("Europe/Tallinn").format()}
+            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // console.log(result)
+        });
+
+        child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            const logData = {"build_errors": error, "end_time": moment().tz("Europe/Tallinn").format()}
+            const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+            // console.log("stderr result:", result)
+        });
+
+        child.on("close", async (code)=> {
+          console.log(`child process exited with code ${code}`);
+          let logData = {}
+
+          switch(code) {
+            case 0:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
+              break;
+            case 1:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "ERROR"}
+              break;
+            default:
+              logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
+          }
+          const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // console.log("close result:", result)
+
+        });
+      // }
+    }
+  }
+}
 
 module.exports = {
   /**
@@ -127,34 +183,54 @@ module.exports = {
     }
   },
   fullBuild: async (ctx) => {
+    // console.log('ctx', ctx)
     console.log("starting full build")
-    ctx.send({ message: "full build started" });
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+    
+    ctx.send({ message: "full build started" })
+    await doFullBuild(userInfo)
 
   },
   logs: async (ctx) => {
 
-  // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
-  // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
-  // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
-//https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
+          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
+          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
+          // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
+        //https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
 
-    // console.log("ctx params:", ctx.params)
+            // console.log("ctx params:", ctx.params)
 
-  //   find(params, populate) {
-  //   return strapi.query('restaurant').find(params, populate);},
-  // params (object): this represent filters for your find request.
+          //   find(params, populate) {
+          //   return strapi.query('restaurant').find(params, populate);},
+          // params (object): this represent filters for your find request.
 
-  //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
-  // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
-    // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
+          //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
+          // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
+            // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
 
-// tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
-//https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
+        // tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
+        //https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
     const params = {_limit: 5, site: ctx.params.site, _sort: 'id:desc' }
 
     const result = await strapi.query( "build_logs", "publisher").find(params);
 
     return result
+
+  },
+  onelog: async (ctx) => {
+
+  const params = {id: ctx.params.id}
+
+  const result = await strapi.query("build_logs", "publisher").findOne(params);
+  if (result.admin_user) {
+    result.admin_user = {
+      firstname: result.admin_user.firstname || null,
+      lastname: result.admin_user.lastname || null
+    }
+  }
+  return result
 
   }
 };

@@ -45,6 +45,10 @@
       "type": "component",
       "repeatable": false,
       "component": "translated.translated-short"
+    },
+    "namePrivate": {
+      "type": "string",
+      "private": true
     }
   }
 }

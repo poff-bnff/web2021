@@ -11,7 +11,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
 const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
@@ -19,6 +19,15 @@ const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
 const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
+if(param_build_type === 'target') {
+    addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
+}
 
 const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 

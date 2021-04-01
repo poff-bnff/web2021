@@ -1,0 +1,1183 @@
+-
+    id: 1
+    trioPoff_et:
+        id: 1
+        name: TRIO
+        lead: BLACK STUUDIO
+        trioItem_1:
+            id: 1
+            title: VEEBIKINO
+            customUrl: 'https://poff.ee/otsi_filmi/'
+            image:
+                id: 3896
+                name: veebikino-2.jpg
+                width: 960
+                height: 540
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_veebikino_2_6e5c2c296e.jpg
+                        name: thumbnail_veebikino-2.jpg
+                hash: veebikino_2_6e5c2c296e
+                ext: .jpg
+                url: /uploads/veebikino_2_6e5c2c296e.jpg
+        trioItem_2:
+            id: 2
+            title: GALERII
+            customUrl: 'https://www.flickr.com/photos/poffihunt/albums'
+            image:
+                id: 3606
+                name: F_4_wishlist_f36e30190c.jpg
+                width: 1920
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_F_4_wishlist_f36e30190c_d75aa275e7.jpg
+                        name: thumbnail_F_4_wishlist_f36e30190c.jpg
+                hash: F_4_wishlist_f36e30190c_d75aa275e7
+                ext: .jpg
+                url: /uploads/F_4_wishlist_f36e30190c_d75aa275e7.jpg
+        trioItem_3:
+            id: 3
+            title: BLACK STUUDIO
+            customUrl: 'https://poff.ee/artikkel/pof-fi-article-50/'
+            image:
+                id: 3872
+                name: 50662302751_11a6438883_k.jpg
+                width: 2048
+                height: 1365
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_50662302751_11a6438883_k_4f963b9c2e.jpg
+                        name: thumbnail_50662302751_11a6438883_k.jpg
+                hash: 50662302751_11a6438883_k_4f963b9c2e
+                ext: .jpg
+                url: /uploads/50662302751_11a6438883_k_4f963b9c2e.jpg
+    trioPoff_en:
+        id: 2
+        name: PÖFF today
+        trioItem_1:
+            id: 4
+            poffi_article:
+                id: 246
+                created_by: 23
+                created_at: '2020-11-27T14:22:27.450Z'
+                slug_et: pof-fi-article-45
+                title_en: >-
+                    These are the winners of the 24th edition of Tallinn Black
+                    Nights Film Festival! 
+                slug_en: >-
+                    these-are-the-winners-of-the-24th-edition-of-tallinn-black-nights-film-festival
+                slug_ru: pof-fi-article-171
+                lead_en: >
+                    This year, a record amount of films were shown in and out of
+                    competition at the festival. Tonight we celebrated the
+                    (almost) end of a successful hybrid festival at Vene Theatre
+                    in anticipation of the jury verdict. Now, we are very happy
+                    to announce this year’s winners!
+                contents_en: >+
+                    A special, unprecedented hybrid edition of Tallinn Black
+                    Nights Film Festival has come to a festive end at tonight’s
+                    Award Ceremony at the glorious Vene Theatre. Although we are
+                    sad that not all of this year’s filmmakers could travel to
+                    Tallinn, the joy and honour to have shown their films to
+                    live and online audiences are ever so big.  
+
+
+                    This year, a record amount of films were shown in and out of
+                    competition at the festival. In the [Official Selection -
+                    Competition](https://poff.ee/en/official-selection/) 26
+                    films competed for the award, 18 filmmakers honoured us with
+                    the screening of their first feature in the [First Feature
+                    Competition](https://poff.ee/en/first-feature-competition/),
+                    14 films were showcased as the best of the Baltics in the
+                    [Baltic
+                    Competition](https://poff.ee/en/baltic-film-competition/)
+                    and 15 [Rebels with a
+                    Cause](https://poff.ee/en/rebels-with-a-cause/) shook up our
+                    world views and prejudices. [PÖFF
+                    Shorts](https://shorts.poff.ee/en/) and [Just
+                    Film](https://justfilm.ee/en) showed this year's best shorts
+                    and youth- and children's films.  
+
+
+                    The films were viewed by [seven
+                    juries](https://poff.ee/en/poff_jurys/), who had the task to
+                    watch up to 26 films in just a few weeks, discuss, persuade,
+                    let their opinions be changed, open their minds, think of
+                    opportunities and futures for filmmakers -  all from their
+                    own homes, instead of the usual communal cinema visits,
+                    dinners and get-togethers in Tallinn. 
+
+
+                    Tonight, the fruits of these efforts were made official.
+                    And, we are very happy to announce this year’s winners!
+
+
+                    See the full list of this year’s winners and comments from
+                    the juries:
+
+
+                    ## Official Selection - Competition
+
+
+                    ### Grand Prix for the Best Film
+
+                    Grant of 10,000 Euros, shared by the Director and Producer
+
+
+                    #### Winner: ‘Fear’ by director Ivaylo Hristov, producer
+                    Assen Vladimirov
+
+                    ![F_1_fear.jpg](http://139.59.130.149/uploads/F_1_fear_c4db9507ba.jpg)
+
+
+                    *Svetla is a recently unemployed teacher in a village near
+                    the border. When hunting hares in the forest, she encounters
+                    an African. As a law-abiding citizen, she sends the illegal
+                    immigrant to the border guard station, but is told that she
+                    should manage on her own and she takes the man in.*
+                     
+                    Jury comment: “A beautifully-made film that astutely
+                    balances dry humor with important contemporary drama, this
+                    clever, impressively scripted and wonderfully performed
+                    feature manages the rare feat of being compassionate and
+                    provocative while also delivering striking moments of
+                    absurdist humor. At a period when the subject of immigration
+                    is very much in the headlines this feature is very much a
+                    film for our times.”
+
+
+                    ### Best Director
+
+                    Grant of 5000 Euros
+                     
+                    #### Nisan Dağ for ‘When I’m Done Dying’
+
+                    ![F_1_when_i_m_done_dying_1b77ccc68c.jpg](http://139.59.130.149/uploads/F_1_when_i_m_done_dying_1b77ccc68c_ce7760586b.jpg)
+
+
+                    *Set in a rough neighbourhood of Istanbul, the story follows
+                    Fehmi (Oktay Çubuk), a talented 19-year-old rapper who is
+                    addicted to bonzai, a cheap synthetic and deadly drug,
+                    jeopardizing any success for his music career.* 
+
+
+
+                    Jury comment: “The vision, passion and personality of the
+                    filmmaker shines through in this absorbing, passionate and
+                    striking new film that draws out terrific performances from
+                    its roster of non-professional actors, and cleverly weaves
+                    drama, music and even animation as it delves into the darker
+                    underbelly of a social environment rarely seen on the
+                    screen.”
+                     
+
+                    ### Best Cinematography
+
+                    Grant of 1000 Euros
+                     
+                    #### Noé Bach for ‘Beasts’
+
+                    ![F_1_beasts_d3cb4b3af2.jpg](http://139.59.130.149/uploads/F_1_beasts_d3cb4b3af2_0b740403be.jpg)
+
+
+                    *"Beasts" focuses on victims caught in the bureaucratic
+                    cogwheels of this agricultural sector, where life is lived
+                    to the beat of the activity support handed out by political
+                    powers. Where there’s power, there’s fire...*
+                     
+                    Jury Comment: This striking film presents a clever take on
+                    sexual politics set against the backdrop of working class
+                    farmers, with its powerful story given a visceral edge as it
+                    follows is lead female character thanks to wonderfully
+                    framed cinematography that is honest and
+                    non-sensationalistic, and also help the story immerse itself
+                    into a traditionally masculine pastoral world.
+                     
+                     
+                    ### Best Script
+
+
+                    #### Leonardo António for 'Submission'
+
+                    ![F_3_submission.jpg](http://139.59.130.149/uploads/F_3_submission_196131b254.jpg)
+
+
+                    *A captivating drama of what happens when a woman files a
+                    court case against here own husband for rape. The already
+                    difficult situation is further complicated by the fact that
+                    the husband is the only son of the deputy to the chief
+                    prosecutor.*
+
+
+
+                    Jury comment: This masterful script has been precisely
+                    developed and structured in such a way to never exploit its
+                    disturbing storyline and is driven by wonderful balanced
+                    performances, real intelligence and dialogue to impressers
+                    and captivates. The main story may be around the accusation
+                    of a rape in a domestic environment, but it astutely takes
+                    different perspectives as it tells a difficult and at times
+                    harrowing story.
+                     
+                     
+                    ### Best Actor
+                     
+                    #### Ulrich Thomsen for ‘Erna At War’
+
+                    ![F_3_erna_at_war.jpg](http://139.59.130.149/uploads/F_3_erna_at_war_5c88ad8627.jpg)
+
+
+                    *Jutland during World War I. Kalle is a childminded boy
+                    whose simplicity is so obvious that he would hardly be
+                    expected to be invited to enlist in the army. But things go
+                    differently. His mother Erna cannot accept it: and decides
+                    to follow her son to protect him.*
+                     
+                    Jury comment: “We wanted to pay tribute to an acting
+                    performance that is aware that it’s there to play a balanced
+                    yet profoundly dramatic supporting role to an equally fine
+                    lead actress, and gives a wonderfully controlled and rich
+                    performance that adds massively to a powerful and memorable
+                    film.”
+                     
+
+                    ### Best Actress
+                     
+                    #### Marie Leuenberger for ‘Caged Birds’
+
+                    ![F_1_caged_birds_ee28a1e9ad.jpg](http://139.59.130.149/uploads/F_1_caged_birds_ee28a1e9ad_a8fa9ab446.jpg)
+
+
+                    *The story of Walter Stürm, the king of prison-breaks,
+                    managing no less than 8 times to flee Swiss prison between
+                    1974 and 1995, while - strangely enough - maintaining a
+                    sense of anarchic humor throughout.*
+                     
+                    Jury comment: “Before presenting the award, the jury wanted
+                    to formerly recognise the many beautiful and brilliant
+                    female performances in the competition selection this year.
+                    If we could have had our way we would have awarded seven or
+                    eight best actress awards. But we wanted to shine the
+                    spotlight on one truly impressive from a mesmerising
+                    actress. Her natural, unshowy performance is driven by
+                    emotional energy and a fierce intelligence that is truly
+                    impressive.”
+                     
+                     
+                    ### Best Music
+                     
+                    #### Juanio Javierre for ‘Armugan’
+
+                    ![F_1_armugan_151ed6c13a.jpg](http://139.59.130.149/uploads/F_1_armugan_151ed6c13a_a56eaeaa1c.jpg)
+
+
+                    *Armugan is a Finisher. A man in the mountains, accompanied
+                    by the vast sky, the sheep and a personal aide. People are
+                    afraid of him, as they sense that he knows something they do
+                    not. A Finisher has the skills and knowledge to help the
+                    ones who are dying.*
+
+
+                    Jury comment: This beautiful black-and-white film benefits
+                    from a hypnotic score that wonderfully complements the mood
+                    and tone of the film, managing to help weave together the
+                    poetic and poignant moments of an often mesmerizing feature.
+
+
+                    ***
+
+
+                    ## First Feature Competition
+
+                    Grant of 5000 Euros, shared by the Director and Producer
+
+
+                    #### Winner: ‘Great Happiness’ by director Wang Yiao.
+
+                    ![F_4_great_happiness_f9ae863453.jpg](http://139.59.130.149/uploads/F_4_great_happiness_f9ae863453_08ddef886b.jpg)
+
+
+                    *An insightful, ironic look at the challenges and
+                    contradictions that young generations are facing in China.
+                    Set in Xining, the capital of Qinghai province on the border
+                    with Tibet, this ensemble film follows the ups and downs in
+                    the lives of three friends from the generation born at the
+                    time of China’s one-child policy.*
+
+
+                    Jury Report: “For his strong social commentary of modern-day
+                    China, where our three couples are caught between old
+                    traditions and the new ways. The movie is told in an
+                    original, refreshing, cinematic language, where drama and
+                    humor are elegantly balanced by the director. And this
+                    simple yet complex everyday story ends up being both
+                    relevant, honest and very heartbreaking.”
+
+
+                    ### Special Jury Prize #1
+
+
+                    #### Director Jan Holoubek for ‘25 years of innocence. The
+                    Case of Tomek Komenda.’
+
+                    ![F_1_25_years_of_innocence-2.jpg](http://139.59.130.149/uploads/F_1_25_years_of_innocence_2_270e00c4dc.jpg)
+
+
+                    *The life of Tomek Komenda was destroyed forever on a tragic
+                    night when he was arrested accused of a brutal murder,
+                    convicted in court, and thrown into prison for decades. Jan
+                    Holoubek’s debut film is a moving thriller drama that is
+                    based on this absurdly horrifying true-life story.*
+
+
+                    Jury comment:  “For an incredible directorial debut film,
+                    about the horrors of injustice. With a hunting performance
+                    by Piotr Trojan.”
+                     
+                     
+                    ### Special Jury Prize #2
+
+
+                    #### Scriptwriters Nora Martirosyan, Emmanuelle Pagano,
+                    Olivier Torres, Guillaume André for ‘Should The Wind Drop’
+
+                    ![F_1_should_the_wind_drop.jpg](http://139.59.130.149/uploads/F_1_should_the_wind_drop_79a3119162.jpg)
+
+
+                    *Alain, a French auditor, arrives to appraise the airport of
+                    Nagorno-Karabakh - a self-proclaimed republic of the
+                    Caucasus - and greenlight its eventual reopening. This
+                    airport, with no planes or passengers, opens its doors every
+                    morning and welcomes the staff mimicking real activity. The
+                    airport crystallizes itself, the hope of an entire
+                    territory, fighting for international recognition.*
+
+
+                    Jury comment: “For its wonderful screenplay, that brings out
+                    the sadly still relevant story on how fragile world peace
+                    really is. We can’t wait to see what comes next from these
+                    artists, and everybody else in this category.”   
+
+
+                    ***
+
+
+                    ## Baltic Competition
+
+
+                    #### Winner: ‘The Last Ones’ by director Veiko Õunpuu,
+                    Estonia
+
+                    ![F_1_the_last_ones.jpg](http://139.59.130.149/uploads/F_1_the_last_ones_0bebc13ad4.jpg)
+
+
+                    *‘The Last Ones’ explores how in reality the human nature
+                    and fate are a mess of reactions, however heroic the stories
+                    we weave out of it. In the Lapland tundra, miners pass their
+                    days in the expectation of tomorrow. Always looking for
+                    something, without understanding what exactly the soul is
+                    yearning for.*
+
+
+                    Jury Report: “We unanimously agreed on this film for the
+                    award. It stood out in all senses: The actors’ ensemble
+                    performance was consistent. It was a real team creation, an
+                    all-around impressive film, where the team truly lifted it
+                    to another level: technically, storytelling-wise, and with
+                    its artistic elements. 
+
+
+                    The carefully well-thought-through selection of music was
+                    cleverly mixed. Conflicts within and between the characters
+                    we found to be universal. The beauty of the tundra is
+                    captured with masterful cinematography. The struggles within
+                    that vast, desolate territory between tradition and progress
+                    challenge the meaning of “belonging” and depict the general
+                    loneliness all our characters are living in. A modern-day
+                    Northern Western.”
+
+
+                    ***
+
+
+                    ## Rebels with a Cause Competition
+
+
+                    ### Rebels with a Cause award
+                     
+                    #### ‘Dinner in America’ by director Adam Carter Rehmeier.
+
+                    ![F_2_dinner_in_america.jpg](http://139.59.130.149/uploads/F_2_dinner_in_america_569ee3d827.jpg)
+
+
+                    *Simon is hiding from the police. A modest but dogged girl
+                    offers him a hiding place. But when Patty finds out that the
+                    stranger is the singer of her favourite punk band, the
+                    random meeting takes on new undertones. After all, she has
+                    sent the boy photos you don’t show your parents.*
+
+
+                    Jury comment: “The first of two Awards for the Rebels with a
+                    Cause Competition goes to a wild ride into small-town
+                    America, following a couple of misfits whose punk
+                    misadventures win the heart and ears of the audience.”
+                     
+                     
+                    ***Ex aequo / Shared with***
+
+
+                    #### ‘La Veronica’ by director Leonardo Medel.
+
+                    ![F_1_la_veronica_11361f4038.jpg](http://139.59.130.149/uploads/F_1_la_veronica_11361f4038_7a2485d9d8.jpg)
+
+
+                    *When a tragic accident from the near past is uncovered and
+                    the tensions keep piling up inside Verónica, she is forced
+                    to admit that real life does not conform to social media
+                    filters. Or does it?*
+
+
+                    Jury comment: “The second equal Award in the Rebels with a
+                    Cause Competition goes to a thought-provoking portrayal of a
+                    complex and dark character that finds a pertinent and daring
+                    formal device to plunge the audience in the whirlpool of
+                    social media stardom.”
+                     
+                     
+                    ### Rebels with Their Shorts Award
+                     
+                    #### ‘Stories Keep Me Awake At Night’ by director Jérémy Van
+                    Der Haegen
+
+                    ![F_1_Stories Keep Me Awake At
+                    Night.jpg](http://139.59.130.149/uploads/F_1_Stories_Keep_Me_Awake_At_Night_a8c112e825.jpg)
+
+
+                    *"Are you a girl or a boy?" the psychologist asks the child.
+                    The film is the portrait of day-to-day childhood. A village,
+                    a family, a little boy who likes to wear dresses, the return
+                    of the wolf and everyday life, ordinary, banal. These
+                    elements are used to tell of hidden desires.* 
+
+
+                    Jury comment: “The Award for the Rebels with their Shorts
+                    Competition goes to a troubling, yet sweet fairytale that
+                    shows how sometimes you need to follow the wolf, in order to
+                    find the path to accept your true self.”
+                     
+                    ***
+                     
+                    ## FIPRESCI Prize
+
+
+                    #### ‘Sententia’ by director Dmitry Rudakov.
+
+                    ![F_1_sententia.jpg](http://139.59.130.149/uploads/F_1_sententia_b74601f1e3.jpg)
+
+
+                    *The last days of the life of a writer in a desolate home
+                    for the elderly. At every allowed opportunity, he is visited
+                    by a literary scholar, a dedicated fan of the poet’s talent,
+                    who considers Varlam a genius and wishes to record his very
+                    last verse.*
+
+
+                    Jury Report: “For the formalistic, and yet poetical showing
+                    of how art can shine a light, even if not in colour, on the
+                    world of resistance and hope.” FIPRESCI Prize
+                     
+                    ***
+                     
+                    ## NETPAC (NETWORK FOR THE PROMOTION OF ASIA CINEMA) AWARD
+
+
+                    #### Winner: ‘Ulbolsyn’ by director Adilkhan Yerzhanov,
+                    Kazachstan.
+
+                    ![F_1_Ulbolsyn_f02a0403d7.jpg](http://139.59.130.149/uploads/F_1_Ulbolsyn_f02a0403d7_30b9fc1bf0.jpg)
+
+
+                    *Life in Karataş village runs along an untroubled path until
+                    its patriarchal way of life is challenged by Ulbolsyn, a
+                    woman whose coldblooded heart and blazing temperament are
+                    not afraid of setting everything on fire.*
+
+
+                    Jury Report: "The Netpac Jury at the 24th Tallinn Black
+                    Nights Film Festival presents the Best Asian Film award to
+                    the film Ulbolsyn by Adilkhan Yerzhanov, for being a
+                    vibrant, stylized, playfully innovative—genre-based but also
+                    genre-bending drama; a subtle ‘women’s’ film with a fresh
+                    but sincere take on traditional life in a Kazakh village
+                    full of humane humans."
+
+                     
+                    ***
+                     
+                    ## ECUMENICAL AWARD
+                     
+                    #### ‘Armugan’ by Jo Sol.
+
+                    ![F_1_armugan_151ed6c13a.jpg](http://139.59.130.149/uploads/F_1_armugan_151ed6c13a_37cd4e9848.jpg)
+
+
+                    *Armugan is a Finisher. A man in the mountains, accompanied
+                    by the vast sky, the sheep and a personal aide. People are
+                    afraid of him, as they sense that he knows something they do
+                    not. A Finisher has the skills and knowledge to help the
+                    ones who are dying.*
+                     
+                    Jury comment: "The crisp figurative language of Jo Sol’s
+                    “Armugan” pierces the flesh like a stake, creating, through
+                    the means of cinema, a suggestive sensory equivalent to the
+                    unity of the soul, spirit and body. The film confirms that
+                    the body is not weak when the spirit is strong and that the
+                    spirit can be strengthened through the body. The film
+                    reminds us that the talk about death should not be
+                    ideological but demands the remembering of death even in our
+                    everyday activities and also the importance of not being
+                    alone when dying. The message of the value and sanctity of
+                    life rings strong."
+                     
+                     
+                    ***
+                     
+                    ## LIFETIME ACHIEVEMENT AWARD #1
+                     
+                    #### Margarethe von Trotta (Germany)
+
+                    ![margereta von
+                    trotta.jpg](http://139.59.130.149/uploads/margereta_von_trotta_0c5622e8d5.jpg) 
+
+
+
+                    ##  LIFETIME ACHIEVEMENT AWARD #2
+                     
+                    #### Alar Kivilo (Canada-Estonia)
+
+                    ![Alari Kivilo - credit Rick
+                    Thomas.jpg](http://139.59.130.149/uploads/Alari_Kivilo_credit_Rick_Thomas_1ed693281a.jpg)
+                     
+                    ***
+                     
+                    ## DDA SPOTLIGHT AWARD
+                     
+                    #### Francis Annan (UK)
+
+                     
+                    ## DDA SPOTLIGHT AWARD
+
+
+                    #### Armando Iannucci (UK)
+                     
+                     
+                    ***
+                     
+                    ## INTERNATIONAL SHORT FILM AND ANIMATION FESTIVAL PÖFF
+                    SHORTS
+                     
+                    ### BEST SHORT ANIMATION / Academy of Motion Picture Arts
+                    and Sciences nomination candidate
+
+
+                    **‘Precious’**
+
+                    Director: Paul Mas
+
+                    France.
+                     
+                    Jury comment: "This film uses the artifice of animation in
+                    order to get painfully close to very real topics. The jury
+                    loved the simple style and precise storytelling which
+                    tackles complicated subjects that stay with the audience
+                    even after the credits roll.”
+                     
+                     
+                    ### PÖFF SHORTS NATIONAL COMPETITION: BEST SHORT FILM
+
+
+                    **‘Struck by Lightning’**
+
+                    Director: Romet Esko
+
+                    Estonia.
+                     
+                    Jury comment: "A beautifully crafted homage that mixes
+                    personal archive with a playful approach to its medium,
+                    making for a haunting and memorable film you will want to
+                    rewatch over and over again. This film tells a deeply
+                    personal, delicate yet dynamic story about friendship,
+                    conveying a message that is equally authentic as it is
+                    universal. “Struck by Lightning” is a cinematic celebration
+                    of life and creativity that feels ever so timely and
+                    needed."
+
+
+
+                    ### BEST LIVE ACTION SHORT / Academy of Motion Picture Arts
+                    and Sciences nomination candidate
+
+
+                    **'Between You and Milagros'**
+
+                    Director: Mariana Saffon,
+
+                    Colombia. 
+
+
+
+                    Jury comment: “The jury was impressed by the film’s subtle
+                    exploration of the complex dynamic between daughter and
+                    mother, its stunning central performance and its gorgeous
+                    cinematography. The director also displays a remarkable
+                    level of craft, care and confidence as she gradually reveals
+                    the many layers that exist in all of the characters’
+                    relationships."
+                     
+                    Find full list of PÖFF Shorts winners
+                    [here](http://shorts.poff.ee/en/about/p-oe-ff-shorts/)
+                     
+                    ***
+                     
+                    ## YOUTH AND CHILDREN’S FILM FESTIVAL JUST FILM
+                     
+                     
+                    ## Just Film grand prix
+                     
+                    **‘Slalom’**
+
+                    Director: Charlène Favier
+
+                    France.
+                     
+                    Jury comment: “The Jury enjoyed watching all the films and
+                    appreciated that the films tackled important and topical
+                    issues. We saw many stories about grownups behaving
+                    irresponsibly and children having to act responsibly. In
+                    many of the films the question arises - who here actually is
+                    a child and who is a grownup? And what happens when a
+                    grownup with irresponsible behaviour puts a burden on the
+                    shoulders of the one person that trusts it the most? There
+                    was one film in particular that stood out for us for its
+                    incredibly authentic portrayal of a complicated situation.
+                    Told from a teenage perspective without alienating or
+                    demonising other characters in the film, it was brave enough
+                    to tackle issues of abuse and neglect in a very realistic
+                    way. A powerful film with very honest performances. We’re
+                    very pleased to present Just Film 2020 grand prix for Best
+                    Youth Film to SLALOM.”
+
+                     
+                     
+                    ## ECFA Award for the best European children’s film
+                     
+                    **‘Glassboy’**
+
+                    Director: Samuele Rossi
+
+                    Italy. 
+                     
+                    Jury comment: “Of all the wonderful journeys we were taken
+                    on, one stood out for its exceptionally well-acted story of
+                    overcoming isolation, and translating one individual’s
+                    feeling of ‘otherness’ to become accepted into a group of
+                    close friends. Despite a well-meaning but overprotective
+                    family, our central character is empowered to take control
+                    of their own path through life, and gradually his family
+                    learn to adapt together with him. For its rich
+                    characterisations in a beautifully designed world, and an
+                    engaging and well-written storyline featuring friendship,
+                    courage and freedom – the ECFA Award goes to GLASSBOY.”
+                      
+                     
+                    ## Just Film Children’s Jury Best Film Award
+                     
+                    **‘The Fantastic Journey of Margot & Marguerite’**
+
+                    Director: Pierre Coré
+
+                    France.
+                     
+                    Jury comment: “There were a lot of exciting films and each
+                    one of them was interesting and educative. Finally we came
+                    to a decision and the winning film was selected because of
+                    its fascinating story and strong acting. One girl performed
+                    two parts and she did them wonderfully! The film was about
+                    managing new situations and doing it playfully. Just Film
+                    Children’s Jury Best Film Award goes to “The Fantastic
+                    Journey of Margot & Marguerite” - a crazy story of how two
+                    girls unexpectedly travel in time and cope in the new era.”
+
+
+                     
+                    ## Just Film Youth Jury Best Film Award
+                     
+                    **‘50 or Two Whales Meet on the Beach’**
+
+                    Director: Jorge Cuchi
+
+                    Mexico.
+                     
+                    Jury comment: “This years Just Film Youth Jury Best Film
+                    Award is presented, after long and heated discussions, to a
+                    film that sparked intrigue days before its screening. It is
+                    a film where bold theme of topic meets with fresh
+                    cinematography, well-written characters, professional acting
+                    and unique montage. The film met our high expectations and
+                    we hope it will be screened in many more cinemas. Just Film
+                    Youth Jury Best Film Award goes to  "50 or Two Whales Meet
+                    on the Beach”."
+
+                     
+
+                    ***
+
+
+
+
+
+
+
+
+                publish_en: true
+            title: '2020 Winners '
+            image:
+                id: 1159
+                name: kolmik_blue.jpg
+                width: 600
+                height: 250
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_kolmik_blue_c0eed2afb9.jpg
+                        name: thumbnail_kolmik_blue.jpg
+                hash: kolmik_blue_c0eed2afb9
+                ext: .jpg
+                url: /uploads/kolmik_blue_c0eed2afb9.jpg
+        trioItem_2:
+            id: 5
+            poffi_article:
+                id: 103
+                created_by: 9
+                created_at: '2020-11-05T20:57:58.923Z'
+                title_et: Veebikino
+                slug_et: veebikino-1
+                title_en: How do I watch the best of PÖFF at home?
+                slug_en: how-do-i-watch-the-best-of-p-oe-ff-at-home-1
+                title_ru: Онлайн-кинотеатр
+                slug_ru: pof-fi-article-57
+                lead_et: "**Sel aastal saab PÖFFi filmielamusi nautida lisaks kinole ka kodus just sulle sobival ajal!\L**\n"
+                lead_ru: Как посмотреть лучшие фильмы PÖFF в онлайн-кинотеатре?
+                contents_et: "**Kuidas kodukinos PÖFFi filmi vaadata?**\n\n- Veebikinos saab filme vaadata vaid Eesti territooriumil paiknedes.\n\n\n- Logi sisse PÖFFi [veebikinosse](https://kino.poff.ee).\n- Kõik laenutatud veebiseansid leiad kaustast “minu filmid”.\n- Vaatamiseks vajuta nuppu “mängi”.\n- Filmi subtiitreid saab valida paremal all asuvale “CC” ikoonile klikkides.\L\n\n**Kuidas piletit PÖFFi kodukinos osta?**\n\n- Loo endale kasutaja PÖFFi  [veebikinos](https://kino.poff.ee).\n- Vali soovitud filmi välja PÖFFi [veebikinost](https://kino.poff.ee) või [kodulehelt](https://www.poff.ee/filmid/).\n- PÖFFi kodulehelt veebiseansi pileti ostmiseks vali filmi tutuvustuse all asuvast piletimüügi paneelist “virtuaalsaal”.\L\L\n\n\n**Millistel tingimustel saab filmi PÖFFi kodukinos vaadata?**\n\n- Veebiseanss avaneb vaatamiseks 3 tundi pärast filmi esmast linastust PÖFFi kinoseansil.\L\n- Juba ostatud pileti kehtivusaeg on 48 tundi - pärast pileti ostmist veebiseansile on sul selle vaatamise alustamiseks aega 48 tundi.\L\n- Juba alustatud vaatamise aeg on 30 tundi - kui oled juba filmi vaatamist alustanud, on sul selle lõpetamiseks aega 30 tundi..\n- Mitmetel ingliskeelsetel filmidel ei ole subtiitreid.\L\L\L\n\n\n\n**Hea teada**\n\n- PÖFFi filmiprogramm ei ole täies mahus veebikinos.\n- Piletid veebiseanssidele on piiratud.\L\n- Pärast piletiostu saadetakse sulle meil juhiste ja lingitud nupuga “Vaata filmi”.\n- Veebiseanssidel saab kasutajatuge aadressilt **abi@poff.ee**.\n\n\n\n\n**Põnevaid uusi elamusi PÖFFi veebikinos!**\n\n\L"
+                contents_en: "For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. Find out how. \n\nBlack Nights is now double: in the cinemas and at home! For the first time in the festival’s history you can now watch films from your home, at the time that suits best for you. \n\n\nNB:\n- This feature only works for people based in Estonia. If you are film professional, please apply for accreditation and go to [this page](proscreen.poff.com) to watch the films.\n\n**How to buy virtual PÖFF tickets?**\n\n1.\tThe information of virtual screenings can be found on [film profile pages](https://poff.ee/en/search_film/) on the PÖFF web site or directly on the film watching platform [kino.poff.ee](https://kino.poff.ee) where you can see all the films that are available for virtual viewing. There you can also purchase the viewing rights. \n2.\tAll virtual tickets can only be purchased at [kino.poff.ee](https://kino.poff.ee) after creating an account there. The ticket will also be sent to your email from our address abi@poff.ee.\n\n**NB!** \n- Not all PÖFF films can be watched virtually.\n- Films will become available for viewing in the online environment only 3 hours after their physical premiere at PÖFF.\n- Bought ticket to virtual screeningns are valid for 48 hours - after you have bought the ticket to viertual screening, you have 48 to start watching it. \n- After you have started watching the film, you have 30 hours to finish watching the film.  \n- Sadly, due to technical restraints, the environment is only in Estonian this year. But navigation is really easy there, so hopefully, English-speakers can manage. All film synopses and details can be found on the festival’s homepage [poff.ee/en](poff.ee/en).\n- As with regular screenings, the number of tickets sold to the virtual screenings is limited for every film. These limits vary by film.\n\n**How to watch virtual films?**\n\n1.\tLog in to the environement [kino.poff.ee](kino.poff.ee).\n2.\tAll films you have purchased virtual access to can be found in the subpage „Minu filmid“. If you have purchased a ticket during presale, you will have to wait until 3 hours have passed from the moment the film has begun its first cinema screening at Black Nights to see it. \n3.\tTo watch a film, press the button „Mängi“. To select subtitles, press the CC icon on the right-hand side of the player. Please note that many films that are in English don’t have subtitles.\n4.\tAfter purchasing the ticket, you can also go to the virtual screening via the ticket confirmation email you get from our account abi@poff.ee. Just open the email and click the button „Vaata filmi“.\n\nIf you run into trouble, please write to abi@poff.ee\nEnjoy the fil"
+                contents_ru: "**В этом году PÖFF покажут в кино и дома! **\n\nВ этом году на сайте PÖFF фильмы можно смотреть и виртуально, не выходя из дома и в удобное для вас время. \n\n**Как посмотреть фильм онлайн?**\n\n1.\tФильмы можно смотреть только на территории Эстонии. \n2.\tАвторизуйтесь на [kino.poff.ee](https://kino.poff.ee).\n3.\tВсе фильмы с купленными билетами можно найти в папке «Мои фильмы». Если вы купили билет во время предварительной продажи, вам придется подождать три часа после первого киносеанса этого фильма на PÖFF в кинотеатре. \n4.\tДля просмотра фильма следует нажать кнопку mängi и выбрать подходящие субтитры, нажав на иконку СС, расположенную справа снизу.\n\n**Как купить билеты на онлайн-сеансы PÖFF?**\n \n1. Вы можете найти информацию об онлайн-показах возле ознакомительных текстах [о фильмах](https://www.poff.ee/filmid/) на сайте PÖFF, выбрав в перечне сеансов veebiseanss. Другой вариант – перейти непосредственно на kino.poff.ee, где уже есть подборка фильмов, доступных только для виртуального просмотра. Там же можно купить билеты на онлайн-сеансы.\n \n2. Все билеты на онлайн-сеансы можно приобрести только онлайн. Для покупки билета необходимо создать пользовательский аккаунт на странице kino.poff.ee. С каждой покупкой на указанный адрес электронной почты также отправляются более подробные инструкции с адреса abi@poff.ee .\n \n**NB!**\n \n•\tНе все фильмы PÖFF можно смотреть в виртуальной среде.\n•\tКаждый фильм, который можно посмотреть виртуально, становится доступен для просмотра в виртуальной среде через 3 часа после первого сеанса в кинотеатре.  \n•\tПосле того, как вы приобрели билет и фильм будет готов к просмотру онлайн, вы сможете начать просмотр в течение 48 часов после того, как вы начали его смотреть.\n•\tНа просмотр уже начатого фильма отводится 30 часов, то есть если вы уже начали смотреть, то вы можете досмотреть его в любой момент в течение 30 часов.\n•\tНекоторые англоязычные фильмы не снабжены субтитрами.\n\n**Полезно знать**\n•\tНа все фильмы доступно ограниченное количество билетов. \n•\tВиртуально доступна только часть программы PÖFF.\n•\tПосле покупки билета вам на электронную почту придет ссылка с кнопкой Vaata film (Смотреть фильм).\n•\tПри возникновении вопросов свяжитесь с нами по адресу **abi@poff.ee.**\n \n\n**Приятных впечатлений от просмотра фильмов!**\n\n\n"
+                publish_et: true
+                publish_en: true
+                publish_ru: true
+            title: ONLINE CINEMA
+            customUrl: 'https://poff.ee/en/search_film/'
+            image:
+                id: 3896
+                name: veebikino-2.jpg
+                width: 960
+                height: 540
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_veebikino_2_6e5c2c296e.jpg
+                        name: thumbnail_veebikino-2.jpg
+                hash: veebikino_2_6e5c2c296e
+                ext: .jpg
+                url: /uploads/veebikino_2_6e5c2c296e.jpg
+        trioItem_3:
+            id: 10
+            title: Gallery
+            customUrl: 'https://www.flickr.com/photos/poffihunt/albums'
+            image:
+                id: 1549
+                name: placeholder_hd_1.jpg
+                width: 1920
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_placeholder_hd_1_b5e26a6509.jpg
+                        name: thumbnail_placeholder_hd_1.jpg
+                hash: placeholder_hd_1_b5e26a6509
+                ext: .jpg
+                url: /uploads/placeholder_hd_1_b5e26a6509.jpg
+    trioPoff_ru:
+        id: 3
+        name: PÖFF today
+        trioItem_1:
+            id: 7
+            title: Фильмы
+            customUrl: 'https://poff.ee/ru/iskat_film/'
+            image:
+                id: 3896
+                name: veebikino-2.jpg
+                width: 960
+                height: 540
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_veebikino_2_6e5c2c296e.jpg
+                        name: thumbnail_veebikino-2.jpg
+                hash: veebikino_2_6e5c2c296e
+                ext: .jpg
+                url: /uploads/veebikino_2_6e5c2c296e.jpg
+        trioItem_2:
+            id: 8
+            poffi_article:
+                id: 15
+                created_by: 9
+                created_at: '2020-09-13T18:20:06.791Z'
+                title_et: PÖFFi filmitööstusüritus toimub tänavu virtuaalselt
+                slug_et: >-
+                    p-oe-f-fi-filmitoeoestusueritus-toimub-taenavu-virtuaalselt-1
+                title_en: >-
+                    Industry@Tallinn & Baltic Event happens fully online this
+                    year
+                slug_en: >-
+                    industry-tallinn-and-baltic-event-happens-fully-online-this-year-1
+                title_ru: >-
+                    Кинорынок Таллиннского кинофестиваля «Тёмные ночи» пройдет
+                    онлайн
+                slug_ru: >-
+                    kinorynok-tallinnskogo-kinofestivalya-tyomnye-nochi-projdet-onlajn
+                lead_et: >-
+                    Pimedate Ööde filmifestivali rahvusvaheline filmivaldkonna
+                    professionaalidele suunatud suursündmus Industry@Tallinn &
+                    Baltic Event kolib selleks sügiseks veebi.
+                lead_ru: >-
+                    В этом году спутник Таллиннского кинофестиваля «Тёмные ночи»
+                    – кинорынок Industry@Tallinn & Baltic Event – пройдет
+                    полностью онлайн. Это обусловлено потенциальными
+                    ограничениями на путешествия из-за COVID-19.
+                lead_en: >-
+                    Industry@Tallinn & Baltic Event, the industry strand of the
+                    Tallinn Black Nights Film Festival has decided to move
+                    online completely due to likely travel restrictions caused
+                    by the resurgence of COVID-19.
+                contents_et: >-
+                    Põhjuseks on tõenäoliselt ka sügisel kehtivad reisimisega
+                    seotud piirangud, mis ei luba suurel osal külalistest
+                    Tallinna tulla või seovad siia saabumise liikumisvabaduse
+                    kärpimisega.
+
+
+                    „Teeme seda raske südamega, aga me ei taha võtta riske,”
+                    ütles ürituse juht Marge Liiske. Vastava otsuseni jõuti
+                    pärast konsulteerimist terviseametnikega, kelle prognoos ei
+                    ennusta sügiseks viiruse vaibumist.
+
+
+                    Veebi kolimine annab Liiske sõnul samas võimaluse üritust
+                    laiendada ja avab ukse neile, kes ei saaks muidu ajapuudusel
+                    või kauguse tõttu Tallinna tulla. Ühtlasi on see hea
+                    võimalus katsetada uuenduslikke digitaalseid lahendusi.
+
+
+                    Endiselt jätkub valmivate või kavandatavate filmiprojektide
+                    vastuvõtt Baltic Evendi kaastootmisturule, filmi- ja
+                    telesarjade stsenaariumite võistlusele Script Pool ning
+                    Põhja- ja Baltimaade stsenaristide projektitutvustuste
+                    foorumile POWR Baltic Stories Exchange. Vastuvõtt lõpeb 21.
+                    septembril.
+
+
+                    Ürituse delegaatidele ja akrediteeritud välispressile
+                    garanteeritakse ligipääs üritustele ja Pimedate Ööde
+                    filmifestivali kavas olevatele filmidele.
+
+
+                    Industry@Tallinn & Baltic Evendi programmi kuuluvad veel
+                    seminarid, õpikojad, meistriklassid ja vestlusringid, mis
+                    käsitlevad filmitööstuse ja teleturu aktuaalseid teemasid.
+                    Samuti leiab esimest korda aset PÖFFi Akadeemia, kus saavad
+                    end täiendada filmindusega seotud erialade esindajad alates
+                    näitlejatest ja lõpetades heliloojatega.
+
+
+                    Programmi esimesed üritused ja esinejad avalikustab
+                    Industry@Tallinn & Baltic Event septembris.
+
+
+                    Pimedate Ööde filmifestival leiab tänavu aset 13.–29.
+                    novembrini. Koroonaviiruse levikust tulenevalt on ette
+                    valmistamisel mitu võimalikku stsenaariumit, sealhulgas
+                    toimumist hübriidfestivalina või halvimal juhul tervenisti
+                    virtuaalsel kujul.
+                contents_en: >-
+                    Industry@Tallinn & Baltic Event, the industry strand of the
+                    Tallinn Black Nights Film Festival has decided to move
+                    online completely due to likely travel restrictions caused
+                    by the resurgence of COVID-19.
+
+
+                    The preparations for the 24th edition of the Tallinn Black
+                    Nights Film Festival include the readiness to provide global
+                    industry and press access for the films and events, while
+                    preparations for holding a physical event are still
+                    underway.
+                     
+                    Following the first signs of the possible resurgence of
+                    COVID-19 in the country, the organisers of the festival and
+                    its affiliated industry event have followed the predictions
+                    of the Health Board of Estonia and made the decision to move
+                    the industry programs online, while continuing to accept
+                    project submissions. The global film industry
+                    representatives will still be able to apply for access to
+                    all events, project pitches and films regardless of their
+                    geographical location.
+
+
+                    Marge Liiske, Head of Industry@Tallinn & Baltic Event
+                    commented: „Following the discussions with Estonia’s health
+                    officials, it seems more than likely that there will be
+                    another outbreak in one form or another and that foreign
+                    travel will either be blocked or with restrictions. This
+                    would not enable for our guests to attend the events
+                    properly and thus, with a heavy heart, we have decided from
+                    early on to not to take any risks and move all our
+                    activities online this year.”
+
+
+                    “Having said that, I believe that moving online also
+                    presents us with some new opportunities and also for the
+                    audience – we hope that even more film industry
+                    professionals than before are able to benefit from our
+                    program, as they do not have to travel to Tallinn to attend
+                    the events and they can access the content from anywhere at
+                    their best convenience. Also, while preparing the programme
+                    we can play around with different engaging digital formats
+                    and involve speakers, who would not be able to visit us in
+                    Tallinn,” Liiske added.
+
+
+                    The team is currently busy working on the programme and the
+                    first speakers will be announced in September. The programme
+                    will include seminars, workshops, masterclasses, panel
+                    discussions, as usual, covering the most burning topics of
+                    film and TV market as well as PÖFF Academy events directed
+                    towards actors, scouting agents, film music composers,
+                    costume designers and set photographers. 
+
+
+                    Currently, submissions are open for Baltic Event
+                    Co-production Market (projects seeking co-producers,
+                    financiers and sales agents), Script Pool Tallinn (film and
+                    series scripts worldwide competition) and POWR Baltic
+                    Stories Exchange (Nordic and Baltic scriptwriters seeking
+                    producers). The deadline for submitting the projects is
+                    September, 21 and the evaluation of the projects is carried
+                    out online. Everyone who has submitted the project has
+                    access to Industry @Tallinn & Baltic event online-program
+                    including workshops, masterclasses, panel discussions,
+                    meetings with industry professionals, etc. 
+                     
+                    The programme will be announced in various stages throughout
+                    September and October.
+
+
+                    Black Nights Film Festival is making preparations for
+                    several scenarios.
+                     
+                    Since the first COVID-19-related lockdown in spring, Black
+                    Nights has been preparing for several possible scenarios,
+                    getting ready to take place physically while also upgrading
+                    the digital infrastructure that would enable to organise a
+                    hybrid or even a completely digital event. It looks likely
+                    that foreign travel to Estonia will be restricted, thus
+                    accredited foreign press and industry delegates will be
+                    granted access to the festival’s programme digitally via the
+                    Shift72 platform, no matter their geographic location.
+                    Travel of foreign filmmakers and the press will be decided
+                    upon according to the situation in October and November,
+                    depending on whether Estonia’s COVID restrictions allow
+                    movement from the country of their current residency or not.
+
+
+                    The physical screenings, however, have not been cancelled,
+                    as the Health Board of Estonia currently remains optimistic
+                    that the complete lockdown of cinemas can be avoided this
+                    time around. As the festival has always hosted several
+                    hundred filmmakers to present their films every year, some
+                    might be forced to do so virtually this year. For this
+                    reason, the festival is preparing virtual video greeting and
+                    Q&A formats that would precede the film screenings. There is
+                    also a high probability that the festival will cut back on
+                    the size of its programme this year.
+
+
+                    Tiina Lokk, the director and head of the programme of Black
+                    Nights commented: “Our off-season side events, the Haapsalu
+                    Horror Film Festival we organised completely online during
+                    the lockdown this spring, and the Tartu Love Film Festival
+                    which is currently taking place as a hybrid event, have
+                    provided us with the valuable experience of organising
+                    virtual screenings and Q&As and combining them with a
+                    physical event. We are doing everything in our power to hold
+                    physical screenings and bring over as many foreign guests as
+                    possible, but the virus and Estonia’s Health Board will have
+                    the final say in these matters.” 
+
+
+                    The festival’s plans for digital development goes further
+                    than this though, including plans to build, over the course
+                    of the next couple of years, a unique online environment
+                    that caters the festival’s needs in terms of organising
+                    public and closed screenings, conferences and an extensive
+                    online industry platform that includes a market place,
+                    virtual meeting and pitching rooms and a year-around project
+                    market to connect projects at all stages of their cycle with
+                    respective parties of interest – financiers, producers,
+                    distributors etc.
+                     
+                    Another important aspect will be the year-around promotion
+                    of Estonia as a location for production and recruiting
+                    talent, including the introduction of locations of interest,
+                    a database of the country’s professionals, exhibiting the
+                    services they provide and the content they have produced.
+                    Estonia’s first two regional film funds – the Viru Film Fund
+                    and the Tartu Film Fund – will be in charge of keeping the
+                    locations and talent pools up to date.
+                     
+                    The third fundamental element of the new platform is
+                    education, that will see the launch of PÖFF Academy aiming
+                    to provide high-quality audiovisual education with partners
+                    at the Estonian Film Institute, the Baltic Film, Media, Art
+                    and Communication School and the Pallas University of
+                    Applied Sciences. This will be based on the structure that
+                    has been laid out by the Creative Gate project, organised by
+                    the Industry@Tallinn & Baltic Event team, that has been
+                    holding events directed towards actors, scouting agents,
+                    film music composers, costume designers and set
+                    photographers over the last three years, and which added the
+                    European Film Academy Masterclasses into the mix last year.
+                     
+                    Festival director Tiina Lokk commented:  „Some of the
+                    changes that are being prepared will actually rewire the
+                    festival’s DNA, making it more digital, networked,
+                    ubiquitous and inclusive than ever before! But first and
+                    foremost, we are hoping to make the physical festival still
+                    happen this year!” she added.
+
+
+                    The 24th Tallinn Black Nights Film Festival will run from
+                    the 13th until the 29th of November.
+
+                    Industry@Tallinn & Baltic Event will run from the 23rd until
+                    the 27th of November.
+                contents_ru: >-
+                    После появления первых признаков возможной второй волны
+                    COVID-19 в стране организаторы учли прогнозы Департамента
+                    здоровья Эстонии и приняли решение перевести программу
+                    кинорынка в онлайн-режим, продолжив принимать проектные
+                    заявки. Представители мировой киноиндустрии по-прежнему
+                    смогут подавать заявки на получение доступа ко всем
+                    мероприятиям, презентациям проектов и фильмам независимо от
+                    их географического положения.
+
+
+                    «По итогам консультаций с представителями здравоохранения
+                    Эстонии представляется более чем вероятным, что в той или
+                    иной форме произойдет еще одна вспышка заболеваемости и что
+                    будет наложен запрет на зарубежные поездки либо введены
+                    ограничения. Это не позволило бы нашим гостям должным
+                    образом посещать мероприятия, и поэтому с тяжелым сердцем мы
+                    заблаговременно решили не рисковать и перенести в этом году
+                    все наши мероприятия в виртуальную среду», -
+                    прокомментировала директор Industry@Tallinn & Baltic Event
+                    Марге Лийске.
+
+
+                    «Я считаю, что переезд в Интернет также создаст для нас и
+                    для аудитории некоторые новые возможности: мы надеемся, что
+                    из нашей программы смогут извлечь пользу даже больше
+                    профессионалов киноиндустрии, чем раньше, поскольку им не
+                    нужно будет ехать в Таллинн и они смогут получить доступ к
+                    контенту из любой удобной для них географической точки.
+                    Кроме того, при подготовке программы мы можем поиграть с
+                    различными привлекательными цифровыми форматами и привлечь
+                    докладчиков, которые не смогли бы посетить нас в Таллинне»,
+                    - добавила Лийске.
+
+
+                    В настоящее время команда работает над программой, и первые
+                    докладчики будут объявлены в сентябре. Программа включит в
+                    себя, как обычно, семинары, мастерские, мастер-классы,
+                    панельные дискуссии, которые покроют все самые
+                    животрепещущие темы, а также пройдут мероприятия Академии
+                    PÖFF, ориентированные на актеров, агентов, кинокомпозиторов,
+                    художников по костюмам и фотографов-декораторов. 
+
+
+                    В настоящее время открыт прием заявок на участие в Baltic
+                    Event Co-production Market (проекты для сопродюсеров,
+                    инвесторов и торговых агентов), Script Pool Tallinn
+                    (всемирный конкурс сценариев фильмов и сериалов) и POWR
+                    Baltic Stories Exchange (для сценаристов из стран Северной
+                    Европы и Балтии, ищущих продюсеров). Срок подачи проектов –
+                    21 сентября, и их оценивание проводится онлайн. Каждый
+                    участник, приславший проект, будет иметь доступ к
+                    онлайн-программе мероприятий Industry@Tallinn & Baltic
+                    Event, включающей семинары, мастер-классы, панельные
+                    дискуссии, встречи с профессионалами киноиндустрии и т. д. 
+
+
+                    В этом году впервые будет организована Академия PÖFF, целью
+                    которой является предоставление высококачественного
+                    аудиовизуального образования.
+
+
+                    Industry@Tallinn & Baltic Event пройдет с 23 по 27 ноября
+                    2020, и его программа будет объявлена поэтапно в течение
+                    сентября и октября.
+
+
+                    Таллиннский кинофестиваль «Тёмные ночи» пройдет в этом году
+                    с 13 по 29 ноября. Из-за распространения коронавируса
+                    организаторы готовятся к нескольким возможным сценариям,
+                    включая традиционную организацию на месте и готовность в
+                    случае необходимости провести мероприятия самого фестиваля
+                    частично или полностью онлайн.
+
+
+                    Аккредитованные иностранные представители прессы и
+                    профессионалы киноиндустрии получат доступ к программе
+                    фестиваля в цифровом виде на платформе Shift72, независимо
+                    от их географического положения.
+                publishFrom: '2020-08-17T09:00:00.000Z'
+                publish_et: true
+                publish_en: true
+                publish_ru: true
+            title: Industry@Tallinn пройдет онлайн
+            image:
+                id: 1161
+                name: kolmik_orange.jpg
+                width: 600
+                height: 250
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_kolmik_orange_8033ea3f72.jpg
+                        name: thumbnail_kolmik_orange.jpg
+                hash: kolmik_orange_8033ea3f72
+                ext: .jpg
+                url: /uploads/kolmik_orange_8033ea3f72.jpg
+        trioItem_3:
+            id: 9
+            title: ФОТОГАЛЕРЕЯ
+            customUrl: >-
+                https://www.flickr.com/photos/poffihunt/albums/with/72157716852994996
+            image:
+                id: 1162
+                name: kolmik_green.jpg
+                width: 600
+                height: 250
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_kolmik_green_438f97c8e5.jpg
+                        name: thumbnail_kolmik_green.jpg
+                hash: kolmik_green_438f97c8e5
+                ext: .jpg
+                url: /uploads/kolmik_green_438f97c8e5.jpg

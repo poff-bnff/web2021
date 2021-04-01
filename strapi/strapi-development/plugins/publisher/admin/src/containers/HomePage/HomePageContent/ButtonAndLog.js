@@ -59,7 +59,6 @@ const ButtonAndLog = ({site, buttonText}) => {
 		<div className="btn-and-log">
 		    <Button color="primary" onClick={() => DoPublish(site, userInfo)}>{buttonText}</Button>
 		    <LogsAccordion site={site}/>
-          	{/**<ListOfLogs site={site}/>**/}
     	</div>
 	);
 };

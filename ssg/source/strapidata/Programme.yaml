@@ -1,0 +1,277 @@
+-
+    id: 53
+    namePrivate: HÕFF Fookuses
+    order: 7
+    slug_et: hoff-fookuses
+    slug_en: hoff-in-focus
+    slug_ru: hoff-focus
+    name:
+        id: 32779
+        et: Fookuses
+        en: In Focus
+        ru: In Focus
+    description:
+        id: 8743
+        et: >-
+            Ühele regioonile, teemale või isikule pühendatud minifookus või
+            fookused. Tänavu on neid lausa kaks.
+        en: 'Section dedicated to a specific region, theme or people.'
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 48
+    namePrivate: HÕFF Friikidele
+    order: 2
+    slug_et: hoff-friikidele
+    slug_en: hoff-for-freaks
+    slug_ru: for-freaks-hoff
+    name:
+        id: 32774
+        et: Friikidele
+        en: For Freaks
+        ru: For Freaks
+    description:
+        id: 8738
+        et: >-
+            Programm, mis ei ole mõeldud igale maitsele. Olematu eelarvega
+            filmid, mis naerutavad ja hirmutavad ka kõige kogenumaid vaatajaid.
+            Pärlid, mida programmimeeskond on pidanud tarvilikuks esile tõsta.
+            Filmid, mis muidu kinolinale ei jõua. Programmis kuni viis filmi.
+        en: >-
+            Not for the faint-hearted. The freak film programme finds the
+            funniest and scariest no-budget masterpieces, highlights overlooked
+            gems and films that are rarely seen at cinemas. Up to 5 films.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 49
+    namePrivate: HÕFF Retro
+    order: 3
+    slug_et: hoff-retroprogramm
+    slug_en: hoff-retroprogramme
+    slug_ru: hoff-retro-programma
+    name:
+        id: 32775
+        et: HÕFF Retro
+        en: HÕFF Retro
+        ru: HÕFF Retro
+    description:
+        id: 8739
+        et: >-
+            Filmid, mis garanteerivad hea tuju. Eesti retroklassika, Nõukogude
+            Liidu veidrad filmid, unustuse hõlma vajunud B-klassika kogu
+            maailmast. Programmis kuni kaheksa filmi.
+        en: >-
+            A feel-good guarantee of up to 8 films including Estonian classics,
+            Soviet oddities and forgotten B-films from all over the world.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 1
+        -
+            id: 6
+-
+    id: 47
+    namePrivate: HÕFF Põhiprogramm
+    order: 1
+    slug_et: hof-fi-pohiprogramm
+    slug_en: hoff-main-programme
+    slug_ru: osnovnaya-programma-hoff
+    name:
+        id: 32773
+        et: Põhiprogramm
+        en: Main Programme
+        ru: Main Programme
+    description:
+        id: 8737
+        et: >-
+            Festivali olulisim programm. Nii maailma kõige tuntumatel
+            festivalidel (Sundance, Cannes, Berliin, Veneetsia, Toronto, London,
+            Rotterdam jt) kui ka žanrifilmidele spetsialiseerunud festivalidel
+            (SXSW, Neuchâtel, Sitges, Austin Fantastic Fest jt) esilinastunud
+            linateosed, aasta parimad palad ja löökfilmid ning filmid
+            eksootilistest regioonidest. Aga ka päris värsked, alles
+            esilinastuvad tööd. Programmis kuni kümme filmi.
+        en: >-
+            The heart of the festival, hosting up to 10 films including Baltic
+            and international premieres, as well as the finest selection from
+            well-known festivals (Sundance, Cannes, Berlin, Venice etc) and
+            important genre hubs (SXSW, Neuchâtel, Sitges, Austin Fantastic Fest
+            etc) across the globe.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 50
+    namePrivate: HÕFF Méliès D'Argent lühifilmide võistlusprogramm
+    order: 4
+    slug_et: hoff-melies-d-argent-luehifilmide-voistlusprogramm
+    slug_en: hoff-melies-d-argent-short-film-competition
+    slug_ru: hoff-melies-d-argent
+    name:
+        id: 32776
+        et: Méliès D'Argent lühifilmide võistlusprogramm
+        en: Méliès D'Argent Short Film Competition
+        ru: Méliès D'Argent Short Film Competition
+    description:
+        id: 8740
+        et: >-
+            Legendaarse prantsuse filmiillusionisti Georges Mélièsi järgi nime
+            saanud Euroopa lühikeste fantaasiafilmide konkurss, mille võitja
+            pääseb Euroopa parima lühifantaasiafilmi võistluse finaali.
+            Konkurssi korraldab Mélièsi-nimeline rahvusvaheline fantaasiafilmide
+            festivalide föderatsioon (MIFF), kuhu HÕFF juba aastaid kuulub.
+        en: >
+            Named after the legendary film illusionist Georges Méliès, the
+            winner of this European short genre film competition will be awarded
+            by the Méliès d’Argent. The winner goes on to compete for the
+            coveted Méliès d’Or by the Méliès International Festivals Federation
+            (MIFF).
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 1
+        -
+            id: 6
+-
+    id: 51
+    namePrivate: HÕFF Väikesed luupainajad. Parimad rahvusvahelised lühifilmid
+    order: 5
+    slug_et: hoff-vaeikesed-luupainajad-parimad-rahvusvahelised-luehifilmid
+    slug_en: hoff-little-nightmares-best-international-short-films
+    slug_ru: hoff-little-nightmares
+    name:
+        id: 32777
+        et: Väikesed luupainajad. Parimad rahvusvahelised lühifilmid
+        en: Little Nightmares. Best International Short Films
+        ru: Little Nightmares. Best International Short Films
+    description:
+        id: 8741
+        et: >-
+            Aasta huvitavamate lühikeste õudus- ja fantaasiafilmide valik.
+            Peadpööritava fantaasia, kosmilise ulme ja verdtarretava õuduse
+            pillerkaar. Midagi igale maitsele.
+        en: >-
+            The out-of-competition showcase of the most interesting short form
+            horror and fantasy films. A whirlpool of fantasy, cosmic sci-fi and
+            chilling horror, the programme offers something for all tastes.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 52
+    namePrivate: HÕFF Erilinastused
+    order: 6
+    slug_et: hoff-erilinastused
+    slug_en: hoff-special-screenings
+    slug_ru: hoff-special
+    name:
+        id: 32778
+        et: Erilinastused
+        en: Special Screenings
+        ru: Special Screenings
+    description:
+        id: 8742
+        et: >-
+            Väga erilised filmid erinevatel põhjustel, mis väärivad eraldi
+            esiletõstmist
+        en: >-
+            Rare or otherwise noteworthy films that we believe deserve their
+            moment in the spotlight.
+    festival_editions:
+        -
+            id: 5
+    domains:
+        -
+            id: 6
+        -
+            id: 1
+-
+    id: 56
+    namePrivate: HÕFFi hitisadu
+    order: 605
+    slug_et: hof-fi-hitisadu
+    slug_en: hoff-hits
+    slug_ru: hity-hoff
+    name:
+        id: 32788
+        et: HÕFFi hitisadu
+        en: HÕFF hits
+        ru: Хиты HÕFF
+    description:
+        id: 8749
+        et: >-
+            Haapsalu õudus- ja fantaasiafilmide festivali löökfilmid. Ootamatud
+            kohtumised vanade tuttavatega. Iga nädal uus linateos – 30.
+            aprillini välja, kui algab 16. HÕFF. Autorid tervitavad ja
+            eestikeelseid subtiitreid leiab ka. HÕFFi passiomanikele tasuta!
+        en: >-
+            Best of the Haapsalu Horror and Fantasy Film Festival. Unexpected
+            encounters with familiar faces. One new film every week up to April
+            30, when the 16th HÕFF begins. Screenings greeted by filmmakers.
+            Free for HÕFF pass holders!
+        ru: >-
+            Яркие киноработы с Хаапсалуского фестиваля фильмов в жанре ужасов и
+            фантастики. Неожиданные встречи со старыми знакомыми. Каждую неделю
+            по одному фильму – вплоть до начала 16-го HÕFF 30 апреля.
+            Приветствия от самих авторов и эстонские субтитры обеспечены. Для
+            владельцев абонементов HÕFF просмотр бесплатный!
+    images:
+        -
+            id: 3882
+            name: F_1_red_letter_day.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_1_red_letter_day_55f8f2eaa1.jpg
+                    name: thumbnail_F_1_red_letter_day.jpg
+            hash: F_1_red_letter_day_55f8f2eaa1
+            ext: .jpg
+            url: /uploads/F_1_red_letter_day_55f8f2eaa1.jpg
+        -
+            id: 3883
+            name: F_4_red_letter_day.jpg
+            width: 1920
+            height: 1080
+            formats:
+                thumbnail:
+                    url: /uploads/thumbnail_F_4_red_letter_day_8a8f798552.jpg
+                    name: thumbnail_F_4_red_letter_day.jpg
+            hash: F_4_red_letter_day_8a8f798552
+            ext: .jpg
+            url: /uploads/F_4_red_letter_day_8a8f798552.jpg
+    festival_editions:
+        -
+            id: 7
+    domains:
+        -
+            id: 1
+        -
+            id: 6

@@ -1,0 +1,1151 @@
+-
+    id: 1712
+    name_et: Inuktitut
+    name_en: Inuktitut
+    name_ru: Еврейский
+    code: iw
+-
+    id: 1704
+    name_et: Taani
+    name_en: Danish
+    name_ru: Датский
+    code: da
+-
+    id: 1745
+    name_et: Soome
+    name_en: Finnish
+    name_ru: Финский
+    code: fi
+-
+    id: 1741
+    name_et: Fulah
+    name_en: Fulah
+    name_ru: Фулах
+    code: ff
+-
+    id: 1702
+    name_et: Ewe
+    name_en: Ewe
+    name_ru: Эве
+    code: ee
+-
+    id: 1735
+    name_et: Hausa
+    name_en: Hausa
+    name_ru: Хауса
+    code: ha
+-
+    id: 1713
+    name_et: Inupiaq
+    name_en: Inupiaq
+    name_ru: Инупиак
+    code: ik
+-
+    id: 1732
+    name_et: Kikuyu; Gikuyu
+    name_en: Kikuyu; Gikuyu
+    name_ru: Кикуйю
+    code: ki
+-
+    id: 1740
+    name_et: Marshallese
+    name_en: Marshallese
+    name_ru: Маршалльский
+    code: mh
+-
+    id: 1699
+    name_et: Georgian
+    name_en: Georgian
+    name_ru: Грузинский
+    code: ka
+-
+    id: 1715
+    name_et: Inuktitut
+    name_en: Inuktitut
+    name_ru: Инуктитут
+    code: iu
+-
+    id: 1855
+    name_et: Swiss German
+    name_en: Swiss German
+    name_ru: Swiss German
+    code: gsw
+-
+    id: 1733
+    name_et: Aragonese
+    name_en: Aragonese
+    name_ru: Арагонский
+    code: an
+-
+    id: 1682
+    name_et: Guarani
+    name_en: Guarani
+    name_ru: Гуарани
+    code: gn
+-
+    id: 1698
+    name_et: Fidži
+    name_en: Fijian
+    name_ru: Фиджи
+    code: fj
+-
+    id: 1689
+    name_et: Sango
+    name_en: Sango
+    name_ru: Сербо-Хорватский
+    code: sh
+-
+    id: 1738
+    name_et: Armenian
+    name_en: Armenian
+    name_ru: Армянский
+    code: hy
+-
+    id: 1669
+    name_et: Divehi; Dhivehi; Maldivian
+    name_en: Divehi; Dhivehi; Maldivian
+    name_ru: Дивехи (мальдивский)
+    code: dv
+-
+    id: 1696
+    name_et: Mongolian
+    name_en: Mongolian
+    name_ru: Молдавский
+    code: mo
+-
+    id: 1856
+    name_et: Filipiini
+    name_en: Filipino
+    name_ru: Filipino
+    code: fil
+-
+    id: 1703
+    name_et: Bashkir
+    name_en: Bashkir
+    name_ru: Башкирский
+    code: ba
+-
+    id: 1709
+    name_et: Itaalia
+    name_en: Italian
+    name_ru: Итальянский
+    code: it
+-
+    id: 1693
+    name_et: Romanian
+    name_en: Romanian
+    name_ru: Румынский
+    code: ro
+-
+    id: 1739
+    name_et: Central Khmer
+    name_en: Central Khmer
+    name_ru: Кхмерский
+    code: km
+-
+    id: 1710
+    name_et: Norra
+    name_en: Norwegian
+    name_ru: Норвежский
+    code: 'no'
+-
+    id: 1677
+    name_et: Belarusian
+    name_en: Belarusian
+    name_ru: Белорусский
+    code: be
+-
+    id: 1688
+    name_et: Kannada
+    name_en: Kannada
+    name_ru: Каннада
+    code: kn
+-
+    id: 1706
+    name_et: Afrikaani
+    name_en: Afrikaans
+    name_ru: Африкаанс
+    code: af
+-
+    id: 1719
+    name_et: Araabia
+    name_en: Arabic
+    name_ru: Арабский
+    code: ar
+-
+    id: 1716
+    name_et: Saksa
+    name_en: German
+    name_ru: Немецкий
+    code: de
+-
+    id: 1697
+    name_et: Inupiaq
+    name_en: Inupiaq
+    name_ru: Индонезийский
+    code: in
+-
+    id: 1736
+    name_et: Assamese
+    name_en: Assamese
+    name_ru: Ассамский
+    code: as
+-
+    id: 1680
+    name_et: Kreeka
+    name_en: Greek
+    name_ru: Греческий
+    code: el
+-
+    id: 1746
+    name_et: Azerbaijani
+    name_en: Azerbaijani
+    name_ru: Азербайджанский
+    code: az
+-
+    id: 1690
+    name_et: Sanskrit
+    name_en: Sanskrit
+    name_ru: Санскритский
+    code: sa
+-
+    id: 1687
+    name_et: Herero
+    name_en: Herero
+    name_ru: Гереро
+    code: hz
+-
+    id: 1686
+    name_et: Eesti
+    name_en: Estonian
+    name_ru: Эстонский
+    code: et
+-
+    id: 1685
+    name_et: Horvaatia
+    name_en: Croatian
+    name_ru: Хорватский
+    code: hr
+-
+    id: 1718
+    name_et: Bislama
+    name_en: Bislama
+    name_ru: Бислама
+    code: bi
+-
+    id: 1679
+    name_et: Chamorro
+    name_en: Chamorro
+    name_ru: Чаморро
+    code: ch
+-
+    id: 1711
+    name_et: Iiri
+    name_en: Irish
+    name_ru: Ирландский
+    code: ga
+-
+    id: 1742
+    name_et: Hispaania
+    name_en: Spanish
+    name_ru: Испанский
+    code: es
+-
+    id: 1674
+    name_et: Avestan
+    name_en: Avestan
+    name_ru: Авестийский
+    code: ae
+-
+    id: 1724
+    name_et: Javanese
+    name_en: Javanese
+    name_ru: Яванский
+    code: jv
+-
+    id: 1726
+    name_et: Western Frisian
+    name_en: Western Frisian
+    name_ru: Фризский
+    code: fy
+-
+    id: 1676
+    name_et: Faroese
+    name_en: Faroese
+    name_ru: Фарерский
+    code: fo
+-
+    id: 1737
+    name_et: Maori
+    name_en: Maori
+    name_ru: Маори
+    code: mi
+-
+    id: 1708
+    name_et: Sichuan Yi; Nuosu
+    name_en: Sichuan Yi; Nuosu
+    name_ru: Сычуань И
+    code: ii
+-
+    id: 1672
+    name_et: Bihari languages
+    name_en: Bihari languages
+    name_ru: Бихарский
+    code: bh
+-
+    id: 1692
+    name_et: Sardinian
+    name_en: Sardinian
+    name_ru: Сардинский
+    code: sc
+-
+    id: 1728
+    name_et: Welsh
+    name_en: Welsh
+    name_ru: Валлийский
+    code: cy
+-
+    id: 1691
+    name_et: Kyrgyz
+    name_en: Kyrgyz
+    name_ru: Киргизский
+    code: ky
+-
+    id: 1678
+    name_et: Manx
+    name_en: Manx
+    name_ru: Гэльский (язык жителей острова Мэн)
+    code: gv
+-
+    id: 1670
+    name_et: Bengali
+    name_en: Bengali
+    name_ru: Бенгальский
+    code: bn
+-
+    id: 1725
+    name_et: Bulgaaria
+    name_en: Bulgarian
+    name_ru: Болгарский
+    code: bg
+-
+    id: 1707
+    name_et: Ganda
+    name_en: Ganda
+    name_ru: Ганда
+    code: lg
+-
+    id: 1729
+    name_et: Jaapani
+    name_en: Japanese
+    name_ru: Японский
+    code: ja
+-
+    id: 1714
+    name_et: Oromo
+    name_en: Oromo
+    name_ru: Оромо
+    code: om
+-
+    id: 1721
+    name_et: Dzongkha
+    name_en: Dzongkha
+    name_ru: Дзонг-кэ
+    code: dz
+-
+    id: 1743
+    name_et: Esperanto
+    name_en: Esperanto
+    name_ru: Эсперанто
+    code: eo
+-
+    id: 1734
+    name_et: Ungari
+    name_en: Hungarian
+    name_ru: Венгерский
+    code: hu
+-
+    id: 1723
+    name_et: Chuvash
+    name_en: Chuvash
+    name_ru: Чувашский
+    code: cv
+-
+    id: 1681
+    name_et: Akan
+    name_en: Akan
+    name_ru: Акан
+    code: ak
+-
+    id: 1730
+    name_et: Pärsia
+    name_en: Persian
+    name_ru: Персидский
+    code: fa
+-
+    id: 1700
+    name_et: Haitian; Haitian Creole
+    name_en: Haitian; Haitian Creole
+    name_ru: Гаитянский Креольский
+    code: ht
+-
+    id: 1684
+    name_et: Japanese
+    name_en: Japanese
+    name_ru: Идиш
+    code: ji
+-
+    id: 1694
+    name_et: Hindi
+    name_en: Hindi
+    name_ru: Хинди
+    code: hi
+-
+    id: 1747
+    name_et: Breton
+    name_en: Breton
+    name_ru: Бретонский
+    code: br
+-
+    id: 1845
+    name_et: Prantsuse
+    name_en: French
+    name_ru: Французский
+    code: fr
+-
+    id: 1701
+    name_et: Tšehhi
+    name_en: Czech
+    name_ru: Чешский
+    code: cs
+-
+    id: 1766
+    name_et: Lao
+    name_en: Lao
+    name_ru: Лаосский
+    code: lo
+-
+    id: 1825
+    name_en: Ndebele
+    name_ru: Ндебеле северный
+    code: nd
+-
+    id: 1785
+    name_et: Maltese
+    name_en: Maltese
+    name_ru: Мальтийский
+    code: mt
+-
+    id: 1776
+    name_et: Tsonga
+    name_en: Tsonga
+    name_ru: Тсонга
+    code: ts
+-
+    id: 1835
+    name_et: Hiina
+    name_en: Chinese
+    name_ru: Китайский
+    code: zh
+-
+    id: 1752
+    name_et: Kinyarwanda
+    name_en: Kinyarwanda
+    name_ru: Руанда
+    code: rw
+-
+    id: 1815
+    name_et: Pali
+    name_en: Pali
+    name_ru: Пали
+    code: pi
+-
+    id: 1805
+    name_et: Portugali
+    name_en: Portuguese
+    name_ru: Португальский
+    code: pt
+-
+    id: 1759
+    name_et: Luxembourgish
+    name_en: Luxembourgish
+    name_ru: Люксембургский
+    code: lb
+-
+    id: 1675
+    name_et: Galician
+    name_en: Galician
+    name_ru: Галисийский
+    code: gl
+-
+    id: 1793
+    name_et: fooswwqe77
+    name_en: Ndebele
+    name_ru: Ндебеле южный
+    code: nr
+-
+    id: 1857
+    name_et: Evengi
+    name_en: Evenki
+    name_ru: Эвенкийский
+    code: evn
+-
+    id: 1731
+    name_et: Indonesian
+    name_en: Indonesian
+    name_ru: Индонезийский
+    code: id
+-
+    id: 1844
+    name_et: Gaelic; Scottish Gaelic
+    name_en: Gaelic; Scottish Gaelic
+    name_ru: Гаэльский
+    code: gd
+-
+    id: 1758
+    name_et: Kanuri
+    name_en: Kanuri
+    name_ru: Канури
+    code: kr
+-
+    id: 1765
+    name_et: Latvian
+    name_en: Latvian
+    name_ru: Мерянский
+    code: me
+-
+    id: 1854
+    name_et: Kazakh
+    name_en: Kazakh
+    name_ru: Казахский
+    code: kk
+-
+    id: 1834
+    name_et: Moldavian
+    name_en: Moldavian
+    name_ru: Румынский
+    code: md
+-
+    id: 1814
+    name_et: Malagasy
+    name_en: Malagasy
+    name_ru: Малагасийский
+    code: mg
+-
+    id: 1824
+    name_et: Tahitian
+    name_en: Tahitian
+    name_ru: Таитянский
+    code: ty
+-
+    id: 1783
+    name_et: Poola
+    name_en: Polish
+    name_ru: Польский
+    code: pl
+-
+    id: 1804
+    name_et: Marathi
+    name_en: Marathi
+    name_ru: Маратхи
+    code: mr
+-
+    id: 1858
+    name_et: Jakuudi
+    name_en: Yakut
+    name_ru: Якутский
+    code: sah
+-
+    id: 1748
+    name_et: Corsican
+    name_en: Corsican
+    name_ru: Корсиканский
+    code: co
+-
+    id: 1791
+    name_et: Lingala
+    name_en: Lingala
+    name_ru: Лингала
+    code: ln
+-
+    id: 1848
+    name_et: Cornish
+    name_en: Cornish
+    name_ru: Корнский
+    code: kw
+-
+    id: 1798
+    name_et: Slovaki
+    name_en: Slovak
+    name_ru: Словацкий
+    code: sk
+-
+    id: 1775
+    name_et: Serbian
+    name_en: Serbian
+    name_ru: Сербский
+    code: sr
+-
+    id: 1808
+    name_et: Ukraina
+    name_en: Ukrainian
+    name_ru: Украинский
+    code: uk
+-
+    id: 1818
+    name_et: Sotho
+    name_en: Sotho
+    name_ru: Сото
+    code: st
+-
+    id: 1768
+    name_et: VolapÃ¼k
+    name_en: VolapÃ¼k
+    name_ru: Волапюк
+    code: vo
+-
+    id: 1838
+    name_et: Tamil
+    name_en: Tamil
+    name_ru: Тамильский
+    code: ta
+-
+    id: 1782
+    name_et: Ido
+    name_en: Ido
+    name_ru: Идо
+    code: io
+-
+    id: 1749
+    name_et: Gujarati
+    name_en: Gujarati
+    name_ru: Гуджарати
+    code: gu
+-
+    id: 1859
+    name_et: Handi
+    name_en: Khant
+    name_ru: Xантыйский
+    code: kca
+-
+    id: 1860
+    name_et: Mansi
+    name_en: Mansi
+    name_ru: 'Mансийский '
+    code: mns
+-
+    id: 1842
+    name_et: Church Slavic
+    name_en: Church Slavic
+    name_ru: Церковнославянский
+    code: cu
+-
+    id: 1832
+    name_et: Türgi
+    name_en: Turkish
+    name_ru: Турецкий
+    code: tr
+-
+    id: 1763
+    name_et: Ossetian
+    name_en: Ossetian
+    name_ru: Осетинский
+    code: os
+-
+    id: 1786
+    name_et: Kalaallisut; Greenlandic
+    name_en: Kalaallisut; Greenlandic
+    name_ru: Гренландский
+    code: kl
+-
+    id: 1812
+    name_et: Chichewa; Chewa; Nyanja
+    name_en: Chichewa; Chewa; Nyanja
+    name_ru: Ньянджа
+    code: ny
+-
+    id: 1773
+    name_et: Walloon
+    name_en: Walloon
+    name_ru: Валлон
+    code: wa
+-
+    id: 1780
+    name_et: Yoruba
+    name_en: Yoruba
+    name_ru: Йоруба
+    code: yo
+-
+    id: 1802
+    name_et: Shona
+    name_en: Shona
+    name_ru: Шона
+    code: sn
+-
+    id: 1750
+    name_et: Norwegian
+    name_en: Norwegian
+    name_ru: Нюнорск (новонорвежский)
+    code: nn
+-
+    id: 1756
+    name_et: Samoan
+    name_en: Samoan
+    name_ru: Самоанский
+    code: sm
+-
+    id: 1822
+    name_et: Tswana
+    name_en: Tswana
+    name_ru: Тсвана
+    code: tn
+-
+    id: 1852
+    name_et: Igbo
+    name_en: Igbo
+    name_ru: Игбо
+    code: ig
+-
+    id: 1826
+    name_et: Malayalam
+    name_en: Malayalam
+    name_ru: Малаялам
+    code: ml
+-
+    id: 1789
+    name_et: Mongolian
+    name_en: Mongolian
+    name_ru: Монгольский
+    code: mn
+-
+    id: 1771
+    name_et: Makedoonia
+    name_en: Macedonian
+    name_ru: Македонский
+    code: mk
+-
+    id: 1764
+    name_et: Nepali
+    name_en: Nepali
+    name_ru: Непальский
+    code: ne
+-
+    id: 1777
+    name_et: Tatar
+    name_en: Tatar
+    name_ru: Татарский
+    code: tt
+-
+    id: 1751
+    name_et: Ojibwa
+    name_en: Ojibwa
+    name_ru: Оджибве
+    code: oj
+-
+    id: 1846
+    name_et: Sango
+    name_en: Sango
+    name_ru: Санго
+    code: sg
+-
+    id: 1836
+    name_et: Twi
+    name_en: Twi
+    name_ru: Тви
+    code: tw
+-
+    id: 1816
+    name_et: Swati
+    name_en: Swati
+    name_ru: Свази
+    code: ss
+-
+    id: 1797
+    name_et: Sinhala
+    name_en: Sinhala
+    name_ru: Сингальский
+    code: si
+-
+    id: 1807
+    name_et: Venda
+    name_en: Venda
+    name_ru: Венда
+    code: ve
+-
+    id: 1849
+    name_et: Läti
+    name_en: Latvian
+    name_ru: Латышский
+    code: lv
+-
+    id: 1778
+    name_et: Suahiili
+    name_en: Swahili
+    name_ru: Суахили
+    code: sw
+-
+    id: 1760
+    name_et: Malay
+    name_en: Malay
+    name_ru: Малайский
+    code: ms
+-
+    id: 1790
+    name_et: Birma
+    name_en: Burmese
+    name_ru: Бирманский
+    code: my
+-
+    id: 1799
+    name_et: Albaania
+    name_en: Albanian
+    name_ru: Албанский
+    code: sq
+-
+    id: 1829
+    name_et: Tigrinya
+    name_en: Tigrinya
+    name_ru: Тигринья
+    code: ti
+-
+    id: 1839
+    name_et: Uzbek
+    name_en: Uzbek
+    name_ru: Узбекский
+    code: uz
+-
+    id: 1753
+    name_et: Navajo
+    name_en: Navajo
+    name_ru: Навахо
+    code: nv
+-
+    id: 1819
+    name_et: Somali
+    name_en: Somali
+    name_ru: Сомали
+    code: so
+-
+    id: 1809
+    name_et: Vietnami
+    name_en: Vietnamese
+    name_ru: Вьетнамский
+    code: vi
+-
+    id: 1767
+    name_et: Limburgan
+    name_en: Limburgan
+    name_ru: Лимбургский (Лимбургер)
+    code: li
+-
+    id: 1762
+    name_et: Hiri Motu
+    name_en: Hiri Motu
+    name_ru: Хиримоту
+    code: ho
+-
+    id: 1770
+    name_et: Occitan
+    name_en: Occitan
+    name_ru: Окситанский
+    code: oc
+-
+    id: 1754
+    name_et: Latin
+    name_en: Latin
+    name_ru: Латинский
+    code: la
+-
+    id: 1827
+    name_et: Sloveeni
+    name_en: Slovenian
+    name_ru: Словенский
+    code: sl
+-
+    id: 1847
+    name_et: Komi
+    name_en: Komi
+    name_ru: Коми
+    code: kv
+-
+    id: 1806
+    name_et: Wolof
+    name_en: Wolof
+    name_ru: Волоф
+    code: wo
+-
+    id: 1796
+    name_et: Vene
+    name_en: Russian
+    name_ru: Русский
+    code: ru
+-
+    id: 1784
+    name_et: Sindhi
+    name_en: Sindhi
+    name_ru: Синдхи
+    code: sd
+-
+    id: 1837
+    name_et: Turkmeeni
+    name_en: Turkmen
+    name_ru: Туркменский
+    code: tk
+-
+    id: 1817
+    name_et: Tagalogi
+    name_en: Tagalog
+    name_ru: Тагальский
+    code: tl
+-
+    id: 1761
+    name_et: Catalan; Valencian
+    name_en: Catalan; Valencian
+    name_ru: Каталанский
+    code: ca
+-
+    id: 1841
+    name_et: Aymara
+    name_en: Aymara
+    name_ru: Аймарский
+    code: ay
+-
+    id: 1788
+    name_et: Korea
+    name_en: Korean
+    name_ru: Корейский
+    code: ko
+-
+    id: 1851
+    name_et: Kongo
+    name_en: Kongo
+    name_ru: Конго
+    code: kg
+-
+    id: 1823
+    name_et: Zulu
+    name_en: Zulu
+    name_ru: Зулу
+    code: zu
+-
+    id: 1781
+    name_et: Hollandi
+    name_en: Dutch
+    name_ru: Нидерландский
+    code: nl
+-
+    id: 1833
+    name_et: Urdu
+    name_en: Urdu
+    name_ru: Урду
+    code: ur
+-
+    id: 1803
+    name_et: Romansh
+    name_en: Romansh
+    name_ru: Ретороманский
+    code: rm
+-
+    id: 1772
+    name_et: Nauru
+    name_en: Nauru
+    name_ru: Науру
+    code: na
+-
+    id: 1755
+    name_et: Panjabi
+    name_en: Panjabi
+    name_ru: Пенджабский
+    code: pa
+-
+    id: 1813
+    name_et: Telugu
+    name_en: Telugu
+    name_ru: Телугу
+    code: te
+-
+    id: 1795
+    name_et: Quechua
+    name_en: Quechua
+    name_ru: Кечуа
+    code: qu
+-
+    id: 1757
+    name_et: Kuanyama
+    name_en: Kuanyama
+    name_ru: Киньяма
+    code: kj
+-
+    id: 1811
+    name_et: Leedu
+    name_en: Lithuanian
+    name_ru: Литовский
+    code: lt
+-
+    id: 1787
+    name_et: Ndonga
+    name_en: Ndonga
+    name_ru: Ндунга
+    code: ng
+-
+    id: 1831
+    name_et: Tonga (Tonga Islands)
+    name_en: Tonga (Tonga Islands)
+    name_ru: Тонга
+    code: to
+-
+    id: 1794
+    name_et: Sundanese
+    name_en: Sundanese
+    name_ru: Сунданский
+    code: su
+-
+    id: 1774
+    name_et: Oriya
+    name_en: Oriya
+    name_ru: Ория
+    code: or
+-
+    id: 1801
+    name_et: Xhosa
+    name_en: Xhosa
+    name_ru: Коса
+    code: xh
+-
+    id: 1821
+    name_et: Tajik
+    name_en: Tajik
+    name_ru: Таджикский
+    code: tg
+-
+    id: 1843
+    name_et: Basque
+    name_en: Basque
+    name_ru: Баскский
+    code: eu
+-
+    id: 1853
+    name_et: Interlingue
+    name_en: Interlingue
+    name_ru: Интерлингва
+    code: ie
+-
+    id: 1683
+    name_et: Amharic
+    name_en: Amharic
+    name_ru: Амхарский
+    code: am
+-
+    id: 1673
+    name_et: Tibetan
+    name_en: Tibetan
+    name_ru: Тибетский
+    code: bo
+-
+    id: 1695
+    name_et: Islandi
+    name_en: Icelandic
+    name_ru: Исландский
+    code: is
+-
+    id: 1717
+    name_et: Avaric
+    name_en: Avaric
+    name_ru: Аварский
+    code: av
+-
+    id: 1671
+    name_et: Tšetšeeni
+    name_en: Chechen
+    name_ru: Чеченский
+    code: ce
+-
+    id: 1840
+    name_et: Uiguuri
+    name_en: Uighur; Uyghur
+    name_ru: Уйгурский
+    code: ug
+-
+    id: 1722
+    name_et: Kurdish
+    name_en: Kurdish
+    name_ru: Курдский
+    code: ku
+-
+    id: 1850
+    name_et: Interlingua
+    name_en: Interlingua
+    name_ru: Интерлингва
+    code: ia
+-
+    id: 1769
+    name_et: Luba-Katanga
+    name_en: Luba-Katanga
+    name_ru: Луба-катанга
+    code: lu
+-
+    id: 1800
+    name_et: Pushto
+    name_en: Pushto
+    name_ru: Пушту
+    code: ps
+-
+    id: 1810
+    name_et: Rundi
+    name_en: Rundi
+    name_ru: Рунди
+    code: rn
+-
+    id: 1820
+    name_et: Thai
+    name_en: Thai
+    name_ru: Тайский
+    code: th
+-
+    id: 1779
+    name_et: Zhuang
+    name_en: Zhuang
+    name_ru: Чжуанский
+    code: za
+-
+    id: 1830
+    name_et: Rootsi
+    name_en: Swedish
+    name_ru: Шведский
+    code: sv
+-
+    id: 1792
+    name_et: Kashmiri
+    name_en: Kashmiri
+    name_ru: Кашмири
+    code: ks
+-
+    id: 1705
+    name_et: Abkhazian
+    name_en: Abkhazian
+    name_ru: Абхазский
+    code: ab
+-
+    id: 1720
+    name_et: Afar
+    name_en: Afar
+    name_ru: Афарский
+    code: aa
+-
+    id: 1828
+    name_et: jidiš
+    name_en: Yiddish
+    name_ru: Идиш
+    code: yi
+-
+    id: 1744
+    name_et: inglise
+    name_en: English
+    name_ru: Английский
+    code: en
+-
+    id: 1727
+    name_et: heebrea
+    name_en: Hebrew
+    name_ru: Иврит
+    code: he

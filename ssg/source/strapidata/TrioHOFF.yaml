@@ -1,0 +1,106 @@
+-
+    id: 1
+    trioHoff_et:
+        id: 1
+        name: Trio HÕFF
+        trioItem_1:
+            id: 1
+            title: Veebikino
+            customUrl: 'https://kino.poff.ee'
+            image:
+                id: 3896
+                name: veebikino-2.jpg
+                width: 960
+                height: 540
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_veebikino_2_6e5c2c296e.jpg
+                        name: thumbnail_veebikino-2.jpg
+                hash: veebikino_2_6e5c2c296e
+                ext: .jpg
+                url: /uploads/veebikino_2_6e5c2c296e.jpg
+        trioItem_2:
+            id: 2
+            title: Galerii
+            customUrl: 'https://www.flickr.com/photos/poffihunt/albums/72157704779242292'
+            image:
+                id: 3967
+                name: 2019_hoff_saal_medium.jpg
+                width: 799
+                height: 533
+                formats:
+                    thumbnail:
+                        url: >-
+                            /uploads/thumbnail_2019_hoff_saal_medium_43d6960563.jpg
+                        name: thumbnail_2019_hoff_saal_medium.jpg
+                hash: 2019_hoff_saal_medium_43d6960563
+                ext: .jpg
+                url: /uploads/2019_hoff_saal_medium_43d6960563.jpg
+        trioItem_3:
+            id: 3
+            hoffi_article:
+                id: 11
+                title_et: Sõnaus
+                slug_et: sonaus
+                contents_et: >-
+                    Haapsalu õudus- ja fantaasiafilmide festival, [Eesti
+                    Ulmeühing](http://ulme.ee/veeb/?lang=et) ja [Eesti Keele
+                    Instituut](https://portaal.eki.ee/) korraldasid 2018. aastal
+                    sõnavõistluse, mille eesmärk oli leida omakeelsed vasted
+                    õudusfilmide ja ulmekirjandusega seotud ingliskeelsetele
+                    terminitele.
+
+
+                    Sobivat eestikeelset vastet otsisime sõnadele „*fantasy*”,
+                    „*slasher*”, „*splatter*”, „*gore*”, „*grindhouse*” ja
+                    „*slipstream*”. Aga sõnu koos vastetega võisid esitada ka
+                    osalejad ise.
+
+
+                    Esimese preemia saanud sõna „uitulme” on vasteks sõnale
+                    „*slipstream*”, mis tähistab kirjanduses piiripealset ulmet,
+                    kus kasutatakse küll ulmelisi elemente, aga liiga vähe või
+                    ebateadlikult, et seda klassikaliseks ulmeks pidada, samas
+                    pole see ka realism. Vaste pakkus välja Krista Jutt.
+
+
+                    Teise preemia saanud „rapper” märgib vastet sõnale
+                    „*slasher*”, mis on õudusfilmide kõige populaarsemaid
+                    alaliike, otsetõlkes „lõikehaav”, „lõikamine”, „(noaga)
+                    raiumine”. Selle sõna pakkusid välja Kaur Garšnek ja Taavi
+                    Tamula.
+
+
+                    Loova keelemängu eripreemia sai„rümbarebu” eest Laura
+                    Loolaid, kelle pakutu tähistab vastet sõnale „*gore*”.
+
+
+                    Žürii märkis ära kolm sõna: „võluvik” ehk „*fantasy*” (autor
+                    Rauno Pärnits), „närupära” ehk „*grindhouse*” (autor Kersti
+                    Taurus) ja „rupskiooper” ehk „*splatter*” (autor Laura
+                    Loolaid).
+
+
+                    Kokku osales võistlusel 207 sõna, mille pakkusid välja 72
+                    inimest.
+
+
+                    Žüriisse kuulusid Eesti ulmeühingu president Veiko Belials,
+                    eesti keele instituudi keelekorraldaja Tiina Paet ja HÕFFi
+                    korraldaja Helmut Jänes.
+                created_by: 12
+                created_at: '2021-02-16T11:22:43.366Z'
+                publish_et: true
+            title: Sõnaus
+            image:
+                id: 3871
+                name: paraad.jpg
+                width: 1623
+                height: 1080
+                formats:
+                    thumbnail:
+                        url: /uploads/thumbnail_paraad_5a76f05be9.jpg
+                        name: thumbnail_paraad.jpg
+                hash: paraad_5a76f05be9
+                ext: .jpg
+                url: /uploads/paraad_5a76f05be9.jpg

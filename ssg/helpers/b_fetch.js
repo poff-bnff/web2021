@@ -50,7 +50,7 @@ function make_MODELS(minimodel) {
 }
 
 
-const objDataDir = path.join(__dirname, '..', 'source', 'strapidata')
+const objDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata')
 
 
 function find_single_obj(minimodel, entries){
@@ -59,7 +59,7 @@ function find_single_obj(minimodel, entries){
 
 		const objData = MODELS[minimodel.model_name]
 			// console.log('objData', objData)
-		
+
 		for (const ix in entries){
 			if (objData) {
 	            const e = entries[ix]
@@ -129,7 +129,7 @@ function fetchModel(modelData, minimodel) {
 	return modelData
 }
 
-// const modelDataDir = path.join(__dirname, '..', 'source', 'strapidata', `${model_name}.yaml`)
+// const modelDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata', `${model_name}.yaml`)
 // const modelData = yaml.safeLoad(fs.readFileSync(modelDataDir, 'utf8'))
 
 // let test2 = fetchModel(modelData, testmodel)
