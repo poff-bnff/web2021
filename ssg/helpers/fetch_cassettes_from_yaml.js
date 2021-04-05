@@ -653,10 +653,14 @@ function generateAllDataYAML(allData, lang){
             return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
         }
 
-        cassette.cassetteCarouselPicsCassetteThumbs = (cassette.cassetteCarouselPicsCassette || []).map(txt => picSplit(txt))
-        cassette.cassetteCarouselPicsFilmsThumbs = (cassette.cassetteCarouselPicsFilms || []).map(txt => picSplit(txt))
-        cassette.cassettePostersCassetteThumbs = (cassette.cassettePostersCassette || []).map(txt => picSplit(txt))
-        cassette.cassettePostersFilmsThumbs = (cassette.cassettePostersFilms || []).map(txt => picSplit(txt))
+        cassette.cassetteCarouselPicsCassetteThumbs = cassette.cassetteCarouselPicsCassette?.length ?
+            cassette.cassetteCarouselPicsCassette.map(txt => picSplit(txt)) : null
+        cassette.cassetteCarouselPicsFilmsThumbs = cassette.cassetteCarouselPicsFilms?.length ?
+            cassette.cassetteCarouselPicsFilms.map(txt => picSplit(txt)) : null
+        cassette.cassettePostersCassetteThumbs = cassette.cassettePostersCassette?.length ?
+            cassette.cassettePostersCassette.map(txt => picSplit(txt)) : null
+        cassette.cassettePostersFilmsThumbs = cassette.cassettePostersFilms?.length ?
+            cassette.cassettePostersFilms.map(txt => picSplit(txt)) : null
 
     }
 

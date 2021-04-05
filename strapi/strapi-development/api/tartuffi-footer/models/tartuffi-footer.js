@@ -52,7 +52,7 @@ module.exports = {
     },
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)

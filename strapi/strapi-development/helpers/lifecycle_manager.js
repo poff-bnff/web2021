@@ -125,6 +125,7 @@ async function do_query(model, params) {
 
 async function get_domain(result) {
     let domain = []
+
     if (Array.isArray(result)) {
         result = result[0]
     }
@@ -287,11 +288,11 @@ async function call_build(result, domains, model_name, del=false ) {
                 let args = [domain, plugin_log_id, model_name, "target", result.id]
 
                 // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
-                if (result.cassette) {
+                if (result.cassette && model_name === 'screening') {
                     args = [domain, plugin_log_id, model_name, "target", result.id, result.cassette.id]
                 }
                 // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
-                if (result.tags) {
+                if (result.tags && model_name === 'cassette') {
                     let prog_args = get_programme_out_of_cassette(result)
                     args = [domain, plugin_log_id, model_name, "target", result.id, prog_args.join(' ')]
                 }
