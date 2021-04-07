@@ -1,14 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 
-import Wrapper from './Wrapper';
+import LeftMenuHeaderO from './LeftMenuHeader';
+import LeftMenuTest from './LeftMenuTest';
 
-const LeftMenuHeader = () => (
-  <Wrapper>
-    <Link to="/" className="leftMenuHeaderLink">
-      <span className="projectName" />
-    </Link>
-  </Wrapper>
-);
+let LeftMenuHeader
+
+(3===3) ? LeftMenuHeader = LeftMenuTest : LeftMenuHeader = LeftMenuHeaderO
+
 
 export default LeftMenuHeader;
