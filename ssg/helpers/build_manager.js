@@ -208,13 +208,13 @@ function calcBuildAvgDur(options, queueEst = false) {
     if (!queueEst) {
         if (duration._isValid) {
             console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
-            return avgDurInMs
+            return round(avgDurInMs)
         } else {
             console.log('No log data for getting build estimates');
             return 0
         }
     } else {
-        return avgDurInMs ? avgDurInMs : 0
+        return avgDurInMs ? round(avgDurInMs) : 0
     }
 }
 
@@ -260,7 +260,7 @@ function calcQueueEstDur() {
     }
 
     return {
-        duration: estimateInMs,
+        duration: round(estimateInMs),
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
