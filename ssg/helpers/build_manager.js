@@ -85,20 +85,20 @@ function startBuild() {
         const duration = moment.duration(getCurrentTime().diff(startTime)).as('milliseconds')
 
         if (!errors) {
-            writeToLogFile(`Build finish`, firstInQueue, duration)
+            writeToLogFile(`Build finish`, firstInQueue, round(duration))
         } else {
             if (error) {
-                writeToLogFile(`Build fail error`, firstInQueue, duration, error)
+                writeToLogFile(`Build fail error`, firstInQueue, round(duration), error)
             }
             if (stderr) {
-                writeToLogFile(`Build fail stderr`, firstInQueue, duration, stderr)
+                writeToLogFile(`Build fail stderr`, firstInQueue, round(duration), stderr)
             }
         }
 
         const build_end_time = moment().tz('Europe/Tallinn').format()
         const build_end_data = {
             end_time: build_end_time,
-            duration: duration,
+            duration: round(duration),
             build_errors: stderr || null,
             build_stdout: stdout || null
         }
@@ -208,13 +208,13 @@ function calcBuildAvgDur(options, queueEst = false) {
     if (!queueEst) {
         if (duration._isValid) {
             console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
-            return avgDurInMs
+            return round(avgDurInMs)
         } else {
             console.log('No log data for getting build estimates');
             return 0
         }
     } else {
-        return avgDurInMs ? avgDurInMs : 0
+        return avgDurInMs ? round(avgDurInMs) : 0
     }
 }
 
@@ -260,7 +260,7 @@ function calcQueueEstDur() {
     }
 
     return {
-        duration: estimateInMs,
+        duration: round(estimateInMs),
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
