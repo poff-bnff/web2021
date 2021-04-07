@@ -1,6 +1,5 @@
 const https = require('https')
 
-
 async function strapiAuth() {
 
     return new Promise((resolve, reject) => {
