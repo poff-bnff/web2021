@@ -300,13 +300,14 @@ main.grid_film(id=self.id)
                         } else {
                             return false
                         }
-                    })
+                    }).filter(a => a)
                     var presentedBy = [...new Map(presenters.map(item => [item['presentedByText'], item])).values()]
             else
                 - var presentedBy = []
 
 
             if presentedBy.length
+                - console.log(presentedBy)
                 section.f_extra_box
 
                     each onePresentedBy in presentedBy
