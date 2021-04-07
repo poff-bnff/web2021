@@ -17,12 +17,10 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
             subject: "",
             from_email: "",
             from_name: "",
-            to: [
-                {
-                    email: email,
-                    type: "to",
-                },
-            ],
+            to: [{
+                email: email,
+                type: "to",
+            }, ],
             headers: {},
             important: false,
             track_opens: false,
@@ -39,18 +37,27 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
             return_path_domain: "",
             merge: false,
             merge_language: "mailchimp",
-            global_merge_vars: [
-                { name: "email", content: email },
-                { name: "nimi", content: nimi },
-                { name: "var3", content: var3 },
-                { name: "var4", content: var4 },
-            ],
+            global_merge_vars: [{
+                name: "email",
+                content: email
+            }, {
+                name: "nimi",
+                content: nimi
+            }, {
+                name: "var3",
+                content: var3
+            }, {
+                name: "var4",
+                content: var4
+            }, ],
             merge_vars: [],
             tags: [],
             subaccount: "test",
             google_analytics_domains: [],
             google_analytics_campaign: "",
-            metadata: { website: "" },
+            metadata: {
+                website: ""
+            },
             recipient_metadata: [],
             attachments: [],
             images: [],
@@ -92,14 +99,68 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
     req.end();
 }
 
+// module.exports = {
+// lifecycles: {
+//     afterCreate: async (params, data) => {
+
+//         if (data.eMail) {
+//             SendTemplateEmailFromMailChimp("tapferm@gmail.com", data.firstName, data.lastName, data.eMail)
+//         }
+
+//     },
+// },
+// };
+
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
+const {
+    slugify,
+    call_update,
+    call_build,
+    get_domain,
+    modify_stapi_data,
+    call_delete
+} = require(helper_path)
+
+/**
+const domains =
+For adding domain you have multiple choice. First for objects that has property 'domain'
+or has property, that has 'domain' (at the moment festival_edition and programmes) use
+function get_domain(result). If you know that that object has doimain, but no property
+to indicate that. Just write the list of domains (as list), example tartuffi_menu.
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
+
+const model_name = (__dirname.split(path.sep).slice(-2)[0])
+const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+
 module.exports = {
-    // lifecycles: {
-    //     afterCreate: async (params, data) => {
+    lifecycles: {
+        async afterCreate(result, data) {
+            await call_update(result, model_name)
+        },
+        async beforeUpdate(params, data) {
 
-    //         if (data.eMail) {
-    //             SendTemplateEmailFromMailChimp("tapferm@gmail.com", data.firstName, data.lastName, data.eMail)
-    //         }
+            if (data.published_at === null) { // if strapi publish system goes live
+                console.log('Draft! Delete: ')
+                await call_delete(params, domains, model_name)
+            }
+        },
+        async afterUpdate(result, params, data) {
+            console.log('Create or update: ')
+            if (domains.length > 0) {
+                await modify_stapi_data(result, model_name)
+            }
+            await call_build(result, domains, model_name)
 
-    //     },
-    // },
+
+        },
+        async afterDelete(result, params) {
+            // console.log('\nR', result, '\nparams', params)
+
+            console.log('Delete: ')
+            await call_delete(result, domains, model_name)
+        }
+    }
 };

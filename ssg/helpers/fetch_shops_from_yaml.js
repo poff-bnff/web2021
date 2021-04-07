@@ -10,7 +10,7 @@ const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'products');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 
 const strapiDataShopPath = path.join(strapiDataDirPath, 'Shop.yaml');
 const STRAPIDATA_SHOPS = yaml.safeLoad(fs.readFileSync(strapiDataShopPath, 'utf8'))

@@ -7,13 +7,20 @@ const rootDir =  path.join(__dirname, '..')
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'programmes');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
 const STRAPIDATA_PROGRAMME = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
 const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.yaml')
 const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params.slice(1)
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
 const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 
 const languages = ['en', 'et', 'ru']
@@ -50,6 +57,10 @@ for (const ix in languages) {
     var allData = []
     for (const ix in STRAPIDATA_PROGRAMMES) {
 
+        if (param_build_type === 'target' && !target_id.includes((STRAPIDATA_PROGRAMMES[ix].id).toString())) {
+            continue
+        }
+
         if (mapping[DOMAIN]) {
             var templateDomainName = mapping[DOMAIN];
         }else{
@@ -84,6 +95,12 @@ for (const ix in languages) {
         if (element.path === undefined) {
             element.path = dirSlug;
             element.slug = dirSlug;
+        }
+
+        if (param_build_type === 'target') {
+            addConfigPathAliases([
+                `/_fetchdir/programmes/${dirSlug}`
+            ])
         }
 
         element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};

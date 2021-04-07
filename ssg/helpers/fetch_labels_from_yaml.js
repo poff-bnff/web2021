@@ -4,7 +4,7 @@ const path = require('path')
 const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const strapiDataLabelGroupPath = path.join(strapiDataDirPath, 'LabelGroup.yaml')
 const STRAPIDATA_LABELGROUP = yaml.safeLoad(fs.readFileSync(strapiDataLabelGroupPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'

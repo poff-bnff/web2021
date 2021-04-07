@@ -44,17 +44,6 @@
     "endDate": {
       "type": "datetime"
     },
-    "media": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "tags": {
       "type": "component",
       "repeatable": false,
@@ -87,6 +76,11 @@
     },
     "volume": {
       "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "media.film-media"
     }
   }
 }
