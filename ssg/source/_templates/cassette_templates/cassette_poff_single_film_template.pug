@@ -387,146 +387,147 @@ main.grid_film(id=self.id)
                                         .presenter_logo_item_container
                                             img.presenter_logo_itemx(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
 
-            section.f_screenings_box
-                div
-                    h1.section_headline= self.label.film.screenings
+            if self.screenings && self.screenings[0]
+                section.f_screenings_box
+                    div
+                        h1.section_headline= self.label.film.screenings
 
-                .card-deck.m-o.p-0
-                    if self.screenings && self.screenings[0]
-                        //- - var sortedScreenings = self.screenings.sort(function(a, b){return new Date(a.dateTime)-new Date(b.dateTime)})
-                        each screening in self.screenings
-                            .card.card_screening.rounded-0.border-0
-                                .card-header.rounded-0.bg_dark_4
-                                    .grid_container_screening_time
-                                        div
+                    .card-deck.m-o.p-0
+                        if self.screenings && self.screenings[0]
+                            //- - var sortedScreenings = self.screenings.sort(function(a, b){return new Date(a.dateTime)-new Date(b.dateTime)})
+                            each screening in self.screenings
+                                .card.card_screening.rounded-0.border-0
+                                    .card-header.rounded-0.bg_dark_4
+                                        .grid_container_screening_time
+                                            div
+                                                svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                                    rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                                                    line(x1='16' y1='2' x2='16' y2='6')
+                                                    line(x1='8' y1='2' x2='8' y2='6')
+                                                    line(x1='3' y1='10' x2='21' y2='10')
+                                                span.screening_date
+                                                    if screening.dateTime
+                                                        +screeningDate(screening.dateTime)
+
+                                            .text-right
+                                                svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                                    circle(cx='12' cy='12' r='10')
+                                                    polyline(points='12 6 12 12 16 14')
+                                                span.screening_time
+                                                    +screeningTime(screening.dateTime)
+
+                                        .container_screening_location
                                             svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                                rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
-                                                line(x1='16' y1='2' x2='16' y2='6')
-                                                line(x1='8' y1='2' x2='8' y2='6')
-                                                line(x1='3' y1='10' x2='21' y2='10')
-                                            span.screening_date
-                                                if screening.dateTime
-                                                    +screeningDate(screening.dateTime)
+                                                path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
+                                                circle(cx='12' cy='10' r='3')
 
-                                        .text-right
-                                            svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                                circle(cx='12' cy='12' r='10')
-                                                polyline(points='12 6 12 12 16 14')
-                                            span.screening_time
-                                                +screeningTime(screening.dateTime)
+                                            if screening.location && screening.location.hall && screening.location.hall.name
+                                                if screening.location.hall && screening.location.hall.name
+                                                    span.screening_hall= screening.location.hall.name
+                                                    if screening.location.hall.cinema && screening.location.hall.cinema.name
+                                                        span.screening_venue= ` ${screening.location.hall.cinema.name}`
+                                                        if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
+                                                            span.city= ` ${screening.location.hall.cinema.town.name}`
+                                                            //- span.city= ` ${screening.location.hall.cinema.town.name}, ${screening.location.hall.cinema.town.country.name}`
 
-                                    .container_screening_location
-                                        svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
-                                            circle(cx='12' cy='10' r='3')
-
-                                        if screening.location && screening.location.hall && screening.location.hall.name
-                                            if screening.location.hall && screening.location.hall.name
-                                                span.screening_hall= screening.location.hall.name
-                                                if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                                    span.screening_venue= ` ${screening.location.hall.cinema.name}`
-                                                    if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
-                                                        span.city= ` ${screening.location.hall.cinema.town.name}`
-                                                        //- span.city= ` ${screening.location.hall.cinema.town.name}, ${screening.location.hall.cinema.town.country.name}`
-
-                                            //- See on privateName tegelikult: Coca-Cola Plaza, iSense saal
-                                            //- if screening.location.name
-                                            //-     h1= screening.location.name
+                                                //- See on privateName tegelikult: Coca-Cola Plaza, iSense saal
+                                                //- if screening.location.name
+                                                //-     h1= screening.location.name
 
 
-                                .card-body.bg_dark_3
-                                    .screening_info_blokk
-                                        if screening.codeAndTitle
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.name
-                                                span.screening_info_value= screening.codeAndTitle
-                                        //- if screening.screeningSubtitles
+                                    .card-body.bg_dark_3
+                                        .screening_info_blokk
+                                            if screening.codeAndTitle
+                                                .str_info_grid_3
+                                                    span.screening_info_label= self.label.screening.name
+                                                    span.screening_info_value= screening.codeAndTitle
+                                            //- if screening.screeningSubtitles
 
-                                        -
-                                            var subtitlesNames = function(item) {
-                                                if(item.name) {
-                                                    var itemNames = item.name
-                                                    return itemNames
+                                            -
+                                                var subtitlesNames = function(item) {
+                                                    if(item.name) {
+                                                        var itemNames = item.name
+                                                        return itemNames
+                                                    }
                                                 }
-                                            }
 
-                                        if screening.subtitles
-                                            - var subtitles = screening.subtitles.map(subtitlesNames)
-                                        else if film.subtitles
-                                            - var subtitles = film.subtitles.map(subtitlesNames)
+                                            if screening.subtitles
+                                                - var subtitles = screening.subtitles.map(subtitlesNames)
+                                            else if film.subtitles
+                                                - var subtitles = film.subtitles.map(subtitlesNames)
 
-                                        if subtitles && subtitles.length
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.subtitles
-                                                span.screening_info_value= subtitles.sort().join(', ')
-
-
-                                        - var iqnac = screening.introQaConversation
-                                        //- Screening Intro
-                                        if iqnac
-                                            - var introGuests = iqnac.filter(i => { return i.type === 'Intro' && i.guest })
-                                            if introGuests.length > 0 && typeof introGuests[0].guest[0] !== 'object'
+                                            if subtitles && subtitles.length
                                                 .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.introGuests
-                                                    span.screening_info_value= introGuests[0].guest.join(', ')
+                                                    span.screening_info_label= self.label.screening.subtitles
+                                                    span.screening_info_value= subtitles.sort().join(', ')
 
-                                            - var introPresenters = iqnac.filter(i => { return i.type === 'Intro' && i.presenter })
-                                            if introPresenters.length > 0 && typeof introPresenters[0].presenter[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.introPresenter
-                                                    span.screening_info_value= introPresenters[0].presenter.join(', ')
 
-                                            //- Screening QandA
-                                            - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
-                                            if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaGuests
-                                                    span.screening_info_value= qaGuests[0].guest.join(', ')
+                                            - var iqnac = screening.introQaConversation
+                                            //- Screening Intro
+                                            if iqnac
+                                                - var introGuests = iqnac.filter(i => { return i.type === 'Intro' && i.guest })
+                                                if introGuests.length > 0 && typeof introGuests[0].guest[0] !== 'object'
+                                                    .str_info_grid_3
+                                                        span.screening_info_label= self.label.screening.introGuests
+                                                        span.screening_info_value= introGuests[0].guest.join(', ')
 
-                                            - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
-                                            if qaPresenter.length > 0 && typeof qaPresenter[0].presenter[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaPresenter
-                                                    span.screening_info_value= qaPresenter[0].presenter.join(', ')
+                                                - var introPresenters = iqnac.filter(i => { return i.type === 'Intro' && i.presenter })
+                                                if introPresenters.length > 0 && typeof introPresenters[0].presenter[0] !== 'object'
+                                                    .str_info_grid_3
+                                                        span.screening_info_label= self.label.screening.introPresenter
+                                                        span.screening_info_value= introPresenters[0].presenter.join(', ')
 
-                                            if iqnac[0].duration
+                                                //- Screening QandA
+                                                - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
+                                                if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
+                                                    .str_info_grid_3
+                                                        span.screening_info_label= self.label.screening.qaGuests
+                                                        span.screening_info_value= qaGuests[0].guest.join(', ')
+
+                                                - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
+                                                if qaPresenter.length > 0 && typeof qaPresenter[0].presenter[0] !== 'object'
+                                                    .str_info_grid_3
+                                                        span.screening_info_label= self.label.screening.qaPresenter
+                                                        span.screening_info_value= qaPresenter[0].presenter.join(', ')
+
+                                                if iqnac[0].duration
+                                                    .str_info_grid_3
+                                                        span.screening_info_label= self.label.screening.qaDuration
+                                                        span.screening_info_value
+                                                            +dur(iqnac[0].duration)
+
+                                            if screening.extraInfo && typeof screening.extraInfo !== 'object'
                                                 .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaDuration
+                                                    span.screening_info_label= self.label.screening.extraInfo
+                                                    span.screening_info_value= screening.extraInfo
+
+                                            if screening.durationTotal
+                                                .str_info_grid_3
+                                                    span.screening_info_label= self.label.screening.totalDuration
                                                     span.screening_info_value
-                                                        +dur(iqnac[0].duration)
+                                                        +dur(screening.durationTotal)
 
-                                        if screening.extraInfo && typeof screening.extraInfo !== 'object'
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.extraInfo
-                                                span.screening_info_value= screening.extraInfo
-
-                                        if screening.durationTotal
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.totalDuration
-                                                span.screening_info_value
-                                                    +dur(screening.durationTotal)
-
-                                .btn-group(role='group' aria-label='')
+                                    .btn-group(role='group' aria-label='')
 
 
-                                    if screening.bookingUrl
-                                        a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
-                                    //- if screening.ticketingUrl
-                                    //-     a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
-                                    a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                                    a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
-                                    if screening.ticketingUrl
-                                        a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id  btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                        if screening.bookingUrl
+                                            a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                                        //- if screening.ticketingUrl
+                                        //-     a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                        a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
+                                        a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                                        if screening.ticketingUrl
+                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id  btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
-                                        //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                            //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
-                                    //- a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'block'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addShortlist
-                                    //- a.btn.btn_primary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
-                                    //- if screening.screeningTown === 'Tartu'
-                                    //-     a.btn.btn_covid.active(href='https://forms.gle/UU4sFENoWyZ3PjSF8' role='button' target='_BLANK')= self.label.button.covidRegister
-                                    //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
+                                        //- a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'block'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addShortlist
+                                        //- a.btn.btn_primary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+                                        //- if screening.screeningTown === 'Tartu'
+                                        //-     a.btn.btn_covid.active(href='https://forms.gle/UU4sFENoWyZ3PjSF8' role='button' target='_BLANK')= self.label.button.covidRegister
+                                        //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
 
-                        +rmOldScreeningButtons
+                            +rmOldScreeningButtons
 
             //- if film.filmQaClip
 
@@ -536,10 +537,10 @@ main.grid_film(id=self.id)
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            .f_vialog_box
-                //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
-                a(name='chat')
-                    iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
+            //- .f_vialog_box
+            //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
+            //-     a(name='chat')
+            //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
             if film.media && film.media
                 - let med = film.media
                 if (med.trailer && med.trailer[0] && med.trailer[0].videoCode) || (med && med.QaClip && med.QaClip[0].url)
