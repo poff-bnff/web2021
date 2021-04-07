@@ -221,10 +221,13 @@ module.exports = {
   },
   allLogs: async (ctx) => {
 
-    const paramsArray = ctx.request.url.split('?')[1]    
-    const params = {}
-    params[paramsArray.split('=')[0]] = paramsArray.split('=')[1]
 
+    const params = {
+      'admin_user.id': ctx.state.admin.id,
+      shownToUser : false
+    }
+
+    console.log(params);
     const result = await strapi.query("build_logs", "publisher").find(params);
 
     return result
