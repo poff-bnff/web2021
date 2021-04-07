@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/alllogs",
+      "handler": "publisher.allLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
       "config": {

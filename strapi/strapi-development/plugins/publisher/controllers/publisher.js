@@ -26,7 +26,7 @@ const domains = [
  * @description: A set of functions called "actions" of the `publisher` plugin.
  */
 
-const doBuild = async(site, userInfo) => {
+const doBuild = async (site, userInfo) => {
   // console.log("doBuild")
   let id
   // kontrollib kas fail on olemas?
@@ -41,7 +41,7 @@ const doBuild = async(site, userInfo) => {
     const child = spawn("bash", ["../../ssg/deploy.sh", site]);
 
     child.stdout.on("data", data => {
-        console.log(`stdout ..............: ${data}`);
+      console.log(`stdout ..............: ${data}`);
     });
 
     child.stderr.on("data", async(data) => {
@@ -52,34 +52,34 @@ const doBuild = async(site, userInfo) => {
         // console.log("stderr result:", result)
     });
 
-    child.on("close", async(code)=> {
+    child.on("close", async (code) => {
       console.log(`child process exited with code ${code}`);
       let logData = {}
 
-      switch(code) {
+      switch (code) {
         case 0:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
           break;
         case 1:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR" }
           break;
         case 2:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR" }
           break;
         case 23:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR" }
           break;
         case 80:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR" }
           break;
         case 81:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR" }
           break;
         case 82:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR"}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR" }
           break;
         default:
-          logData = {"end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}`}
+          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
       }
       // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
       // console.log("close result:", result)
@@ -93,7 +93,7 @@ const doLog = async (site, userInfo, type) => {
   // console.log("......userinfo: ", userInfo)
   const logData = {
     site: site,
-    admin_user: {id: userInfo.id},
+    admin_user: { id: userInfo.id },
     start_time: moment().tz("Europe/Tallinn").format(),
     type: type
   };
@@ -104,7 +104,7 @@ const doLog = async (site, userInfo, type) => {
 }
 
 async function doFullBuild(userInfo) {
-  for (let i = 0; i < domains.length; i++){
+  for (let i = 0; i < domains.length; i++) {
 
     let site = domains[i]
     let type = 'build all'
@@ -188,49 +188,60 @@ module.exports = {
 
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
-    
+
     ctx.send({ message: "full build started" })
     await doFullBuild(userInfo)
 
   },
   logs: async (ctx) => {
 
-          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
-          // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
-          // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
-        //https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
+    // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
+    // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher").model)
+    // console.log ("...........FIND:", await strapi.query( "build_logs", "publisher").find())
+    //https://strapi.io/documentation/developer-docs/latest/concepts/services.html#core-services
 
-            // console.log("ctx params:", ctx.params)
+    // console.log("ctx params:", ctx.params)
 
-          //   find(params, populate) {
-          //   return strapi.query('restaurant').find(params, populate);},
-          // params (object): this represent filters for your find request.
+    //   find(params, populate) {
+    //   return strapi.query('restaurant').find(params, populate);},
+    // params (object): this represent filters for your find request.
 
-          //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
-          // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
-            // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
+    //   {"name": "Tokyo Sushi"} or {"_limit": 20, "name_contains": "sushi"} or { id_nin: [1], _start: 10 }
+    // populate (array): you have to mention data you want populate a relation ["author", "author.name", "comment", "comment.content"]
+    // const populate = ["site", "user", "startTime", "endTime", "errorCode"]
 
-        // tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
-        //https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
-    const params = {_limit: 5, site: ctx.params.site, _sort: 'id:desc' }
+    // tagastab viimased 5 parameetrina kaasa antud lehe logi kannet
+    //https://strapi.io/documentation/developer-docs/latest/concepts/queries.html#api-reference
+    const params = { _limit: 5, site: ctx.params.site, _sort: 'id:desc' }
 
-    const result = await strapi.query( "build_logs", "publisher").find(params);
+    const result = await strapi.query("build_logs", "publisher").find(params);
+
+    return result
+
+  },
+  allLogs: async (ctx) => {
+
+    const paramsArray = ctx.request.url.split('?')[1]    
+    const params = {}
+    params[paramsArray.split('=')[0]] = paramsArray.split('=')[1]
+
+    const result = await strapi.query("build_logs", "publisher").find(params);
 
     return result
 
   },
   onelog: async (ctx) => {
 
-  const params = { id: ctx.params.id }
+    const params = { id: ctx.params.id }
 
-  const result = await strapi.query("build_logs", "publisher").findOne(params);
-  if (result.admin_user) {
-    result.admin_user = {
-      firstname: result.admin_user.firstname || null,
-      lastname: result.admin_user.lastname || null
+    const result = await strapi.query("build_logs", "publisher").findOne(params);
+    if (result.admin_user) {
+      result.admin_user = {
+        firstname: result.admin_user.firstname || null,
+        lastname: result.admin_user.lastname || null
+      }
     }
-  }
-  return result
+    return result
 
   },
   updatelog: async (ctx) => {
