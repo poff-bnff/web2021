@@ -10,8 +10,8 @@ const rootDir = path.join(__dirname, '..')
 const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
-const strapiAddress = 'localhost:1337' //process.env['StrapiHostPoff2021']
-const protocol = 'http'
+const strapiAddress = process.env['StrapiHostPoff2021']
+const protocol = 'https'
 let TOKEN = ''
 
 function startBuildManager(options = null) {
