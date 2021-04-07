@@ -85,20 +85,20 @@ function startBuild() {
         const duration = moment.duration(getCurrentTime().diff(startTime)).as('milliseconds')
 
         if (!errors) {
-            writeToLogFile(`Build finish`, firstInQueue, round(duration))
+            writeToLogFile(`Build finish`, firstInQueue, duration)
         } else {
             if (error) {
-                writeToLogFile(`Build fail error`, firstInQueue, round(duration), error)
+                writeToLogFile(`Build fail error`, firstInQueue, duration, error)
             }
             if (stderr) {
-                writeToLogFile(`Build fail stderr`, firstInQueue, round(duration), stderr)
+                writeToLogFile(`Build fail stderr`, firstInQueue, duration, stderr)
             }
         }
 
         const build_end_time = moment().tz('Europe/Tallinn').format()
         const build_end_data = {
             end_time: build_end_time,
-            duration: round(duration),
+            duration: duration,
             build_errors: stderr || null,
             build_stdout: stdout || null
         }
