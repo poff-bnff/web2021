@@ -98,7 +98,7 @@ const doLog = async (site, userInfo, type) => {
     type: type
   };
   //using strapi method for creating and entry from the data that was sent
-  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
+  // const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
   // console.log(result)
   return result.id
 }
@@ -221,9 +221,11 @@ module.exports = {
   },
   allLogs: async (ctx) => {
 
-    const paramsArray = ctx.request.url.split('?')[1]    
-    const params = {}
-    params[paramsArray.split('=')[0]] = paramsArray.split('=')[1]
+
+    const params = {
+      'admin_user.id': ctx.state.admin.id,
+      shownToUser : false
+    }
 
     const result = await strapi.query("build_logs", "publisher").find(params);
 
