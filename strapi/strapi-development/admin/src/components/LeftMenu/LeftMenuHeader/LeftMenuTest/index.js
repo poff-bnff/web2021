@@ -63,10 +63,8 @@ async function fetchLogs() {
     return false
   }
 
-  if ((new Date(result[0].end_time)).getTime() - (new Date(result[0].start_time)).getTime() > 1000) {
-    // clearInterval(myVar);
+  if (result[0].end_time) {
     setShownToUser(result[0])
-    document.getElementById('x').innerHTML = result[0].end_time
     strapi.notification.toggle({ message: 'Your build of site ' + result[0].site + ' finished!', blockTransition: true, link: { url: `https://${result[0].site}`, label: 'See the result!' } })
   }
 }
