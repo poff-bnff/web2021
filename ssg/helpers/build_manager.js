@@ -340,7 +340,6 @@ async function logQuery(id, type = 'GET', data) {
                 'Content-Type': 'application/json'
             }
         };
-        console.log(options);
 
         if (type === 'PUT') {
             data = JSON.stringify(data)
@@ -350,7 +349,6 @@ async function logQuery(id, type = 'GET', data) {
 
         const req = https.request(options, res => {
             res.setEncoding('utf8')
-            console.log(`statusCode: ${res.statusCode}`)
 
             res.on('data', d => {
                 resData += d
