@@ -414,7 +414,7 @@ if (process.argv[2] === 'force') {
 
     let options = {
         domain: args[0] || null,
-        file: modelName ? `build_${model}.sh` : null,
+        file: modelName ? `build_${modelName}.sh` : null,
         type: args[3] || null,
         log_id: args[1] || null,
         parameters: args.slice(4).join(' ') || null
