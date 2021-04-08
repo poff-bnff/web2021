@@ -98,7 +98,7 @@ const doLog = async (site, userInfo, type) => {
     type: type
   };
   //using strapi method for creating and entry from the data that was sent
-  // const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
+  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
   // console.log(result)
   return result.id
 }
