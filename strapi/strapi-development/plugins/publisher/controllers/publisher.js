@@ -224,7 +224,7 @@ module.exports = {
 
     const params = {
       'admin_user.id': ctx.state.admin.id,
-      shownToUser : false
+      shown_to_user : false
     }
 
     console.log(params);
