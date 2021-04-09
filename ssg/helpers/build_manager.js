@@ -3,26 +3,29 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
+const https = require('https')
+const { strapiAuth } = require('./strapiAuth.js')
 
 const rootDir = path.join(__dirname, '..')
 const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
-
+const strapiAddress = process.env['StrapiHostPoff2021']
+let TOKEN = ''
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
     if (process.argv[2] === 'force' && !options) {
         // Quit if no queuefile
         if (!fs.existsSync(queuePath)) {
-            console.log('No pending queue')
+            console.log('Build Manager: No pending queue')
         } else {
             // If queue exists, check if last known PID is still running if it is, quit, else start building
             const isRunning = checkIfProcessAlreadyRunning()
-            if(isRunning) {
-                console.log(`Last process with PID ${isRunning} is still running.`);
+            if (isRunning) {
+                console.log(`Build Manager: Last process with PID ${isRunning} is still running.`);
             } else {
-                console.log('Continuing with existing queue');
+                console.log('Build Manager: Continuing with existing queue');
                 startBuild()
             }
         }
@@ -33,12 +36,12 @@ function startBuildManager(options = null) {
 
             addToQueue(options)
             startBuild()
-        // If queue already exists, add to queue
+            // If queue already exists, add to queue
         } else {
             addToQueue(options)
         }
     } else {
-        console.log('Invalid options', options);
+        console.log('Build Manager: Invalid options', options);
     }
 }
 
@@ -57,7 +60,13 @@ function startBuild() {
     firstInQueue.also_builds = duplicatesLogIds
 
     console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
+    const build_start_time = moment().tz('Europe/Tallinn').format()
+
+    if (duplicatesLogIds?.length) {
+        writeToOtherBuildLogs(duplicatesLogIds, { start_time: build_start_time, built_by: firstInQueue.log_id })
+    }
     writeToLogFile(`Build start`, firstInQueue)
+    logQuery(firstInQueue.log_id, 'PUT', { start_time: build_start_time })
 
     // Run shell cript
     exec(`bash ${buildFilePath} ${buildDomain} ${buildType} ${buildParameters}`, (error, stdout, stderr) => {
@@ -85,6 +94,19 @@ function startBuild() {
             }
         }
 
+        const build_end_time = moment().tz('Europe/Tallinn').format()
+        const build_end_data = {
+            end_time: build_end_time,
+            duration: duration,
+            build_errors: stderr || null,
+            build_stdout: stdout || null
+        }
+        logQuery(firstInQueue.log_id, 'PUT', build_end_data)
+
+        if (duplicatesLogIds?.length) {
+            writeToOtherBuildLogs(duplicatesLogIds, build_end_data)
+        }
+
         console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
         removeFirstInQueue()
@@ -93,6 +115,12 @@ function startBuild() {
         if (!deleteQueueIfEmpty()) { startBuild() }
 
     });
+}
+
+function writeToOtherBuildLogs(LogIds, data) {
+    LogIds.map(log => {
+        logQuery(log, 'PUT', data)
+    })
 }
 
 function addToQueue(options) {
@@ -105,6 +133,17 @@ function addToQueue(options) {
     fs.writeFileSync(queuePath, queueDump, 'utf8');
     console.log('Added to queue');
     writeToLogFile(`Add to queue`, options)
+
+    // Update Strapi deploy_logs
+    const thisBuildAvg = calcBuildAvgDur(options)
+    const queueEst = calcQueueEstDur()
+    const postData = {
+        build_est_duration: thisBuildAvg,
+        queue_est_duration: queueEst.duration || 0,
+        no_estimate_builds_in_queue: queueEst.noest || 0,
+        in_queue: queueEst.inqueue || 0
+    }
+    logQuery(options.log_id, 'PUT', postData)
 }
 
 function deleteQueueIfEmpty() {
@@ -150,7 +189,7 @@ function getCurrentTime() {
 function calcBuildAvgDur(options, queueEst = false) {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting build estimates');
-        return;
+        return 0;
     }
     const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
@@ -168,23 +207,26 @@ function calcBuildAvgDur(options, queueEst = false) {
     if (!queueEst) {
         if (duration._isValid) {
             console.log(`Average duration for this type of build is:`, duration.minutes(), `m`, duration.seconds(), `s`);
+            return Math.round(avgDurInMs)
         } else {
             console.log('No log data for getting build estimates');
+            return 0
         }
     } else {
-        return avgDurInMs ? avgDurInMs : 0
+        return avgDurInMs ? Math.round(avgDurInMs) : 0
     }
 }
 
 function calcQueueEstDur() {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting queue estimates');
-        return;
+        return null;
     }
     if (!fs.existsSync(queuePath)) {
         console.log('No queue file for getting queue estimates');
-        return;
+        return null;
     }
+
     const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
 
     const queue = queueFile.map(q => {
@@ -210,10 +252,16 @@ function calcQueueEstDur() {
 
     const duration = moment.duration(estimateInMs)
     if (duration._isValid && estimateInMs > 0) {
-        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~` ,duration.minutes(), `m`, duration.seconds(), `s`);
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
+        if (noEstimate > 0) {
+            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
+        }
     }
-    if (noEstimate > 0) {
-        console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
+
+    return {
+        duration: Math.round(estimateInMs),
+        inqueue: uniqueQueue.length,
+        noest: noEstimate
     }
 }
 
@@ -239,7 +287,6 @@ function eliminateDuplicates() {
     })
 
     const difference = queueFile.length - (eliminated.length + 1)
-    console.log( queueFile.length,' - ', eliminated.length, '+ 1');
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
         const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
@@ -272,6 +319,85 @@ function checkIfProcessAlreadyRunning() {
     }
 }
 
+async function logQuery(id, type = 'GET', data) {
+    if (TOKEN === '') {
+        TOKEN = await strapiAuth()
+    }
+
+    return new Promise((resolve, reject) => {
+
+        const mapper = {
+            GET: 'onelog',
+            PUT: 'updatelog'
+        }
+
+        var options = {
+            hostname: strapiAddress,
+            path: `/publisher/${mapper[type]}/${id}`,
+            method: type,
+            headers: {
+                Authorization: `Bearer ${TOKEN}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        if (type === 'PUT') {
+            data = JSON.stringify(data)
+        }
+
+        let resData = ''
+
+        const req = https.request(options, res => {
+            res.setEncoding('utf8')
+
+            res.on('data', d => {
+                resData += d
+            })
+
+            res.on('end', async function () {
+
+                if (res.statusCode === 200) {
+                    resolve(JSON.parse(resData))
+                } else {
+                    console.log('\nStatus', res.statusCode, options)
+                    resolve([])
+                }
+
+            })
+
+            res.on('error', function (err) {
+                // spin.stop()
+                console.log('\nE:1', err)
+                reject(err)
+            })
+        })
+
+
+        req.on('error', async function (error) {
+            if (error.code === 'ETIMEDOUT') {
+                process.stdout.write('r')
+                let resolved = await logQuery(id, type, data)
+                resolve(resolved)
+            } else if (error.code === 'ECONNRESET') {
+                process.stdout.write('r')
+                let resolved = await logQuery(id, type, data)
+                resolve(resolved)
+            } else {
+                console.log('\nE:2', error)
+                reject
+            }
+        })
+
+        if (type === 'PUT') {
+            req.write(data)
+        }
+
+        req.end()
+
+    })
+
+}
+
 if (process.argv[2] === 'force') {
     startBuildManager()
 } else if (process.argv[2] === 'queue') {
@@ -280,24 +406,20 @@ if (process.argv[2] === 'force') {
     const { model } = require('./get_build_model.js')
 
     const params = process.argv.slice(2) || ''
-    const args = params[0].split(',')
+    const args = (params[0] || '').split(',')
 
     // console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
 
-    let file = `build_${model(args[2])}.sh`
+    const modelName = model(args[2])
 
     let options = {
-        'domain': args[0],
-        'file': file,
-        'type': args[3],
-        'log_id': args[1],
-        'parameters': args.slice(4).join(' ')
+        domain: args[0] || null,
+        file: modelName ? `build_${modelName}.sh` : null,
+        type: args[3] || null,
+        log_id: args[1] || null,
+        parameters: args.slice(4).join(' ') || null
     }
 
-    // console.log('options', options)
-
-    calcBuildAvgDur(options)
-    calcQueueEstDur()
     startBuildManager(options)
 }
 
