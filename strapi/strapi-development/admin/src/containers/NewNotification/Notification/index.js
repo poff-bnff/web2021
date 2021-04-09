@@ -9,6 +9,8 @@ import { Remove } from '@buffetjs/icons';
 import { HIDE_NEW_NOTIFICATION } from '../constants';
 import { NotificationWrapper, IconWrapper, LinkArrow, RemoveWrapper } from './styledComponents';
 
+import Links from './links';
+
 const types = {
   success: {
     icon: 'check',
@@ -28,6 +30,8 @@ const Notification = ({ notification }) => {
   const { formatMessage } = useIntl();
   const dispatch = useDispatch();
   const { title, message, link, type, id, onClose, timeout, blockTransition } = notification;
+
+  console.log('links', link);
 
   const formattedMessage = msg => (typeof msg === 'string' ? msg : formatMessage(msg, msg.values));
 
@@ -73,13 +77,31 @@ const Notification = ({ notification }) => {
                 {formattedMessage(title)}
               </Text>
             )}
-            <Flex>
               {message && (
                 <Text title={formattedMessage(message)} ellipsis>
                   {formattedMessage(message)}
                 </Text>
               )}
-              {link && (
+              <Links props={link}/>
+            {/* {link && (
+              <div>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <Padded left size="xs">
+                    <Flex alignItems="center">
+                      <Text
+                        style={{ maxWidth: '320px' }}
+                        ellipsis
+                        fontWeight="bold"
+                        color="blue"
+                        title={formattedMessage(link.label)}
+                      >
+                        {formattedMessage(link.label)}
+                      </Text>
+                      <Padded left size="xs" />
+                      <LinkArrow />
+                    </Flex>
+                  </Padded>
+                </a>
                 <a href={link.url} target="_blank" rel="noopener noreferrer">
                   <Padded left size="xs">
                     <Flex alignItems="center">
@@ -97,8 +119,8 @@ const Notification = ({ notification }) => {
                     </Flex>
                   </Padded>
                 </a>
-              )}
-            </Flex>
+              </div>
+            )} */}
           </Padded>
           <RemoveWrapper>
             <Remove onClick={handleClose} />
@@ -142,7 +164,7 @@ Notification.propTypes = {
         values: PropTypes.object,
       }),
     ]),
-    link: PropTypes.shape({
+    link: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([
         PropTypes.string,
@@ -152,7 +174,7 @@ Notification.propTypes = {
           values: PropTypes.object,
         }),
       ]).isRequired,
-    }),
+    })),
     type: PropTypes.string,
     onClose: PropTypes.func,
     timeout: PropTypes.number,
