@@ -6,17 +6,23 @@ include /_templates/mixins.pug
 block content
 
     script.
-        document.addEventListener('userProfileLoaded', function (e) {
-            //- console.log({userProfile})
-
-            if (userProfile.industryAccessLevel) {
-                document.getElementById('videolevels_video').style.display = 'block'
-                var videoFrameElement = document.getElementById('videoframe')
-                videoFrameElement.src = videoFrameElement.getAttribute('target_src')
-            } else {
-                document.getElementById('videolevels_video').remove()
-            }
+        document.addEventListener('DOMContentLoaded', function (e) {
+            document.getElementById('videolevels_video').style.display = 'block'
+            var videoFrameElement = document.getElementById('videoframe')
+            videoFrameElement.src = videoFrameElement.getAttribute('target_src')
         })
+
+        //- document.addEventListener('userProfileLoaded', function (e) {
+        //-     //- console.log({userProfile})
+
+        //-     if (userProfile.industryAccessLevel) {
+        //-         document.getElementById('videolevels_video').style.display = 'block'
+        //-         var videoFrameElement = document.getElementById('videoframe')
+        //-         videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+        //-     } else {
+        //-         document.getElementById('videolevels_video').remove()
+        //-     }
+        //- })
 
     main.grid_film
         if self.title
