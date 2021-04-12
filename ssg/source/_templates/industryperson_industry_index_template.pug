@@ -2,13 +2,13 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    - var assetsDir = 'https://assets.poff.ee/img/'
 
     if self.person && `${self.person.firstName ? self.person.firstName : ''} ${self.person.lastName ? self.person.lastName : ''}`.length > 5
         section.grid_ind_person
             section.f_dir_box
                 .f_dir_bio_box
                     .dir_img
-                        - var assetsDir = 'https://assets.poff.ee/img/'
                         if self.profilePicAtInd
                             - var personPic = assetsDir + self.profilePicAtInd.hash + self.profilePicAtInd.ext
                         else if self.person.picture
@@ -68,7 +68,7 @@ block content
                                     .container_frame_16_9
                                         if film.images && film.images.length > 0
                                             - var image = film.images[0]
-                                            img.container_contents_16_9(src= image.url)
+                                            img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
                                         else
                                             img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
                                     if film.title
