@@ -7,15 +7,10 @@ block content
 
     script.
         document.addEventListener('DOMContentLoaded', function (e) {
-            console.log('DOM fully loaded and parsed');
             document.getElementById('videolevels_video').style.display = 'block'
             var videoFrameElement = document.getElementById('videoframe')
             videoFrameElement.src = videoFrameElement.getAttribute('target_src')
         })
-
-        //- document.getElementById('videolevels_video').style.display = 'block'
-        //- var videoFrameElement = document.getElementById('videoframe')
-        //- videoFrameElement.src = videoFrameElement.getAttribute('target_src')
 
         //- document.addEventListener('userProfileLoaded', function (e) {
         //-     //- console.log({userProfile})
