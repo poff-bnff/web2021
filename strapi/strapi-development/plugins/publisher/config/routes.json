@@ -18,10 +18,26 @@
     },
     {
       "method": "GET",
+      "path": "/alllogs",
+      "handler": "publisher.allLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
       "config": {
         "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/updatelog/:id",
+      "handler": "publisher.updatelog",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
       }
     },
     {

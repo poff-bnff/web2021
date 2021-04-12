@@ -1,6 +1,5 @@
 const https = require('https')
 
-
 async function strapiAuth() {
 
     return new Promise((resolve, reject) => {
@@ -29,8 +28,15 @@ async function strapiAuth() {
             })
 
             response.on('end', function () {
-                tokenStr = JSON.parse(tokenStr)['jwt']
-                resolve(tokenStr)
+                try {
+                    tokenStr = JSON.parse(tokenStr)['jwt']
+                    resolve(tokenStr)
+                } catch (err) {
+                    for (let i = 0; i < 5; i++) {
+                        console.log('!!!!!!!!!!!!!!!!!!!!!!!! ERROR, STRAPI IS DOWN !!!!!!!!!!!!!!!!!!!!!!!!');
+                    }
+                    reject
+                }
             })
 
         })
