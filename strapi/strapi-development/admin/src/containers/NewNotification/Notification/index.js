@@ -31,8 +31,6 @@ const Notification = ({ notification }) => {
   const dispatch = useDispatch();
   const { title, message, link, type, id, onClose, timeout, blockTransition } = notification;
 
-  console.log('links', link);
-
   const formattedMessage = msg => (typeof msg === 'string' ? msg : formatMessage(msg, msg.values));
 
   const handleClose = useCallback(() => {
@@ -77,50 +75,13 @@ const Notification = ({ notification }) => {
                 {formattedMessage(title)}
               </Text>
             )}
-              {message && (
-                <Text title={formattedMessage(message)} ellipsis>
-                  {formattedMessage(message)}
-                </Text>
-              )}
-              <Links props={link}/>
-            {/* {link && (
-              <div>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  <Padded left size="xs">
-                    <Flex alignItems="center">
-                      <Text
-                        style={{ maxWidth: '320px' }}
-                        ellipsis
-                        fontWeight="bold"
-                        color="blue"
-                        title={formattedMessage(link.label)}
-                      >
-                        {formattedMessage(link.label)}
-                      </Text>
-                      <Padded left size="xs" />
-                      <LinkArrow />
-                    </Flex>
-                  </Padded>
-                </a>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  <Padded left size="xs">
-                    <Flex alignItems="center">
-                      <Text
-                        style={{ maxWidth: '120px' }}
-                        ellipsis
-                        fontWeight="bold"
-                        color="blue"
-                        title={formattedMessage(link.label)}
-                      >
-                        {formattedMessage(link.label)}
-                      </Text>
-                      <Padded left size="xs" />
-                      <LinkArrow />
-                    </Flex>
-                  </Padded>
-                </a>
-              </div>
-            )} */}
+            {message && (
+              <Text title={formattedMessage(message)} ellipsis>
+                {formattedMessage(message)}
+              </Text>
+            )}
+            {link && (<Links props={link} />
+            )}
           </Padded>
           <RemoveWrapper>
             <Remove onClick={handleClose} />
