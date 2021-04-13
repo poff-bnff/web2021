@@ -221,17 +221,15 @@ module.exports = {
     return result
 
   },
-  allLogs: async (ctx) => {
-
-
+  myFinishedBuildLogs: async (ctx) => {
     const params = {
       'admin_user.id': ctx.state.admin.id,
-      shown_to_user: false
+      end_time_null: false,
+      shown_to_user: false,
+      type: 'build'
     }
-
-    const result = await strapi.query("build_logs", "publisher").find(params);
-    result = await addS(result)
-
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    (result.length > 0) ? result = await addS(result) : result = result
     return result
 
   },
