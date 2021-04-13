@@ -29,8 +29,13 @@
     'hero-article-tartuff']
 
 const addS = (result) => {
-
-    return result.map(a => !lambda.includes(a.args.split(' ')[0]) ? a.args = `${a.args}s` : a.args)
+    return result.map(a => {
+        if (a.build_args){
+        const [collection, id] = a.build_args.split(' ') 
+        !lambda.includes(collection) ? a.build_args = `${collection}s ${id}` : a.build_args        
+        }
+        return a
+    })
 }
 
 module.exports = {
