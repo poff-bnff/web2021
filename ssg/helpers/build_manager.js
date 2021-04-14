@@ -3,7 +3,7 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
-const request = require('request');
+const https = require('https')
 const { strapiAuth } = require('./strapiAuth.js')
 
 const rootDir = path.join(__dirname, '..')
@@ -11,7 +11,6 @@ const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 const strapiAddress = process.env['StrapiHostPoff2021']
-const protocol = 'https'
 let TOKEN = ''
 
 function startBuildManager(options = null) {
@@ -321,7 +320,11 @@ function checkIfProcessAlreadyRunning() {
 }
 
 async function logQuery(id, type = 'GET', data) {
-    if (TOKEN !== '') {
+    if (TOKEN === '') {
+        TOKEN = await strapiAuth()
+    }
+
+    return new Promise((resolve, reject) => {
 
         const mapper = {
             GET: 'onelog',
@@ -329,26 +332,70 @@ async function logQuery(id, type = 'GET', data) {
         }
 
         var options = {
+            hostname: strapiAddress,
+            path: `/publisher/${mapper[type]}/${id}`,
             method: type,
-            url: `${protocol}://${strapiAddress}/publisher/${mapper[type]}/${id}`,
             headers: {
                 Authorization: `Bearer ${TOKEN}`,
-                "Content-Type": 'application/json'
+                'Content-Type': 'application/json'
             }
         };
+
         if (type === 'PUT') {
-            options.body = JSON.stringify(data)
+            data = JSON.stringify(data)
         }
 
-        request(options, async function (error, response) {
-            if (error) throw new Error(error);
-            // console.log(response.body);
-        });
+        let resData = ''
 
-    } else {
-        TOKEN = await strapiAuth()
-        await logQuery(id, type, data)
-    }
+        const req = https.request(options, res => {
+            res.setEncoding('utf8')
+
+            res.on('data', d => {
+                resData += d
+            })
+
+            res.on('end', async function () {
+
+                if (res.statusCode === 200) {
+                    resolve(JSON.parse(resData))
+                } else {
+                    console.log('\nStatus', res.statusCode, options)
+                    resolve([])
+                }
+
+            })
+
+            res.on('error', function (err) {
+                // spin.stop()
+                console.log('\nE:1', err)
+                reject(err)
+            })
+        })
+
+
+        req.on('error', async function (error) {
+            if (error.code === 'ETIMEDOUT') {
+                process.stdout.write('r')
+                let resolved = await logQuery(id, type, data)
+                resolve(resolved)
+            } else if (error.code === 'ECONNRESET') {
+                process.stdout.write('r')
+                let resolved = await logQuery(id, type, data)
+                resolve(resolved)
+            } else {
+                console.log('\nE:2', error)
+                reject
+            }
+        })
+
+        if (type === 'PUT') {
+            req.write(data)
+        }
+
+        req.end()
+
+    })
+
 }
 
 if (process.argv[2] === 'force') {
@@ -359,18 +406,18 @@ if (process.argv[2] === 'force') {
     const { model } = require('./get_build_model.js')
 
     const params = process.argv.slice(2) || ''
-    const args = params[0].split(',')
+    const args = (params[0] || '').split(',')
 
     // console.log('args', args)  // [ 'hoff.ee', 'cassette', 'target', '3', '1', '2' ]
 
-    let file = `build_${model(args[2])}.sh`
+    const modelName = model(args[2])
 
     let options = {
-        domain: args[0],
-        file: file,
-        type: args[3],
-        log_id: args[1],
-        parameters: args.slice(4).join(' ')
+        domain: args[0] || null,
+        file: modelName ? `build_${modelName}.sh` : null,
+        type: args[3] || null,
+        log_id: args[1] || null,
+        parameters: args.slice(4).join(' ') || null
     }
 
     startBuildManager(options)
