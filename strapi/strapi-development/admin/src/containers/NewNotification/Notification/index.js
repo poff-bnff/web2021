@@ -9,6 +9,8 @@ import { Remove } from '@buffetjs/icons';
 import { HIDE_NEW_NOTIFICATION } from '../constants';
 import { NotificationWrapper, IconWrapper, LinkArrow, RemoveWrapper } from './styledComponents';
 
+import Links from './links';
+
 const types = {
   success: {
     icon: 'check',
@@ -73,32 +75,13 @@ const Notification = ({ notification }) => {
                 {formattedMessage(title)}
               </Text>
             )}
-            <Flex>
-              {message && (
-                <Text title={formattedMessage(message)} ellipsis>
-                  {formattedMessage(message)}
-                </Text>
-              )}
-              {link && (
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  <Padded left size="xs">
-                    <Flex alignItems="center">
-                      <Text
-                        style={{ maxWidth: '120px' }}
-                        ellipsis
-                        fontWeight="bold"
-                        color="blue"
-                        title={formattedMessage(link.label)}
-                      >
-                        {formattedMessage(link.label)}
-                      </Text>
-                      <Padded left size="xs" />
-                      <LinkArrow />
-                    </Flex>
-                  </Padded>
-                </a>
-              )}
-            </Flex>
+            {message && (
+              <Text title={formattedMessage(message)} ellipsis>
+                {formattedMessage(message)}
+              </Text>
+            )}
+            {link && (<Links props={link} />
+            )}
           </Padded>
           <RemoveWrapper>
             <Remove onClick={handleClose} />
@@ -142,7 +125,7 @@ Notification.propTypes = {
         values: PropTypes.object,
       }),
     ]),
-    link: PropTypes.shape({
+    link: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([
         PropTypes.string,
@@ -152,7 +135,7 @@ Notification.propTypes = {
           values: PropTypes.object,
         }),
       ]).isRequired,
-    }),
+    })),
     type: PropTypes.string,
     onClose: PropTypes.func,
     timeout: PropTypes.number,

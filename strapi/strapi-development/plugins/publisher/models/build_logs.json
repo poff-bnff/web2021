@@ -69,6 +69,10 @@
     },
     "build_args": {
       "type": "string"
+    },
+    "shown_to_user": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
