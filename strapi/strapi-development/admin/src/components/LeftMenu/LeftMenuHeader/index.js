@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const strapiHost = 'https://admin.poff.ee'
+// const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';
 
@@ -39,7 +40,7 @@ export default LeftMenuHeader;
 
 async function fetchLogs() {
 
-  const token = (sessionStorage.getItem('jwtToken')).replace(/"/g, '')
+  const token = await getToken()
 
 
   var myHeaders = new Headers();
@@ -91,9 +92,9 @@ async function fetchLogs() {
 
 
 
-const setShownToUser = (log) => {
+const setShownToUser = async (log) => {
 
-  const token = (sessionStorage.getItem('jwtToken')).replace(/"/g, '')
+  const token = await getToken()
 
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -119,7 +120,7 @@ const setShownToUser = (log) => {
 const fetchChangedSlug = async (args) => {
   const [collectionType, id] = args.split(' ')
 
-  const token = (sessionStorage.getItem('jwtToken')).replace(/"/g, '')
+  const token = await getToken()
 
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -176,6 +177,11 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
     blockTransition: true,
     link: formattedPaths
   })
+}
+
+const getToken = () => {
+  const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
+  return token.replace(/"/g, '')
 }
 
 // import React from 'react';

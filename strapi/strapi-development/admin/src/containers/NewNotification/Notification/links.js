@@ -9,11 +9,13 @@ import { LinkArrow } from './styledComponents';
 
 
 const links = (propLinks) => {
+    if (!Array.isArray(propLinks.props)) {
+        propLinks.props = [propLinks.props]
+    }
     const { formatMessage } = useIntl();
     const formattedMessage = msg => (typeof msg === 'string' ? msg : formatMessage(msg, msg.values));
 
     return propLinks.props.map((a, index) => {
-        console.log(a);
        return (
             <a key={index} href={a.url} target="_blank" rel="noopener noreferrer">
                 <Padded left size="xs">
