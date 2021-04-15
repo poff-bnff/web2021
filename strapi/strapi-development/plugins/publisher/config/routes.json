@@ -18,8 +18,8 @@
     },
     {
       "method": "GET",
-      "path": "/alllogs",
-      "handler": "publisher.allLogs",
+      "path": "/my-finished-build-logs",
+      "handler": "publisher.myFinishedBuildLogs",
       "config": {
         "policies": []
       }
