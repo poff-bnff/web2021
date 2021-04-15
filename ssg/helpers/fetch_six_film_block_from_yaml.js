@@ -20,7 +20,7 @@ const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films'])
+    addConfigPathAliases(['/home'])
 }
 
 var failing = false
@@ -73,8 +73,5 @@ for (const lang of languages) {
         var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
     }
     const outFile = path.join(fetchDir, `sixfilms.${lang}.yaml`)
-    if (build_type === 'target') {
-        addConfigPathAliases([outFile])
-    }
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }
