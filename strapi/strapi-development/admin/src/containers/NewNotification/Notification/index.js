@@ -125,7 +125,8 @@ Notification.propTypes = {
         values: PropTypes.object,
       }),
     ]),
-    link: PropTypes.arrayOf(PropTypes.shape({
+    link: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([
         PropTypes.string,
@@ -136,6 +137,18 @@ Notification.propTypes = {
         }),
       ]).isRequired,
     })),
+    PropTypes.shape({
+      target: PropTypes.string,
+      url: PropTypes.string.isRequired,
+      label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          defaultMessage: PropTypes.string,
+          values: PropTypes.object,
+        }),
+      ]).isRequired,
+    })]),
     type: PropTypes.string,
     onClose: PropTypes.func,
     timeout: PropTypes.number,
