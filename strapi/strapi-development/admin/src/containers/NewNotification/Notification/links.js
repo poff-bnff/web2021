@@ -3,19 +3,19 @@ import { Padded, Text, Flex } from '@buffetjs/core';
 import { useIntl } from 'react-intl';
 import { LinkArrow } from './styledComponents';
 
-
-
-
-
-
 const links = (propLinks) => {
+
+    let propLinksArray = []
+
     if (!Array.isArray(propLinks.props)) {
-        propLinks.props = [propLinks.props]
+        propLinksArray = [propLinks.props] 
+    } else {
+        propLinksArray = propLinks.props
     }
     const { formatMessage } = useIntl();
     const formattedMessage = msg => (typeof msg === 'string' ? msg : formatMessage(msg, msg.values));
 
-    return propLinks.props.map((a, index) => {
+    return propLinksArray.map((a, index) => {
        return (
             <a key={index} href={a.url} target="_blank" rel="noopener noreferrer">
                 <Padded left size="xs">
