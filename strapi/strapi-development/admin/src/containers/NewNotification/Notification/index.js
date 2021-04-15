@@ -80,7 +80,8 @@ const Notification = ({ notification }) => {
                 {formattedMessage(message)}
               </Text>
             )}
-            {link && (<Links props={link} />
+            {link && (
+            <Links links={link} />
             )}
           </Padded>
           <RemoveWrapper>
