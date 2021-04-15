@@ -34,7 +34,16 @@ const addS = (result) => {
         const [collection, id] = a.build_args.split(' ') 
         !lambda.includes(collection) ? a.build_args = `${collection}s ${id}` : a.build_args        
         }
-        return a
+
+        const sanitizedResponse = {
+            id: a.id,
+            build_args: a.build_args,
+            build_errors: a.build_errors,
+            site: a.site
+
+        }
+
+        return sanitizedResponse
     })
 }
 
