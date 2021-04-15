@@ -28,8 +28,8 @@ const LeftMenuHeader = (props) => {
   return (
     <Wrapper>
       <Link to="/" className="leftMenuHeaderLink">
-      <span className="projectName" />
-    </Link>
+        <span className="projectName" />
+      </Link>
     </Wrapper>)
 };
 
@@ -42,51 +42,52 @@ async function fetchLogs() {
 
   const token = await getToken()
 
+  if (token) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`);
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
+    let result = await fetch(`${strapiHost}/publisher/my-finished-build-logs`, requestOptions)
+      .then(response => response.text())
+      .then(result => result)
+      .catch(error => console.log('error', error));
 
-  let result = await fetch(`${strapiHost}/publisher/my-finished-build-logs`, requestOptions)
-    .then(response => response.text())
-    .then(result => result)
-    .catch(error => console.log('error', error));
+    result = JSON.parse(result)
 
-  result = JSON.parse(result)
+    if (result.length < 1) {
+      return false
+    }
 
-  if (result.length < 1) {
-    return false
+    result.map(async finishedLog => {
+      let formattedPaths = [];
+      if (finishedLog.build_args) {
+        const paths = await fetchChangedSlug(finishedLog.build_args)
+
+        formattedPaths = paths.map(a => {
+          return {
+            url: `https://${finishedLog.site}/${a}`,
+            label: a
+          }
+        })
+      }
+
+      if (finishedLog.build_errors) {
+        toggleErrorNotif(finishedLog, formattedPaths)
+      } else {
+        strapi.notification.toggle({
+          message: 'Your build of site ' + finishedLog.site + ' finished, see the result:',
+          blockTransition: true,
+          link: formattedPaths
+        })
+      }
+      setShownToUser(finishedLog)
+    })
   }
-
-  result.map(async finishedLog => {
-    let formattedPaths = [];
-    if (finishedLog.build_args) {
-      const paths = await fetchChangedSlug(finishedLog.build_args)
-
-      formattedPaths = paths.map(a => {
-        return {
-          url: `https://${finishedLog.site}/${a}`,
-          label: a
-        }
-      })
-    }
-
-    if (finishedLog.build_errors) {
-      toggleErrorNotif(finishedLog, formattedPaths)
-    } else {
-      strapi.notification.toggle({
-        message: 'Your build of site ' + finishedLog.site + ' finished, see the result:',
-        blockTransition: true,
-        link: formattedPaths
-      })
-    }
-    setShownToUser(finishedLog)
-  })
 }
 
 
@@ -181,7 +182,11 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
 
 const getToken = () => {
   const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
-  return token.replace(/"/g, '')
+  if (token) {
+    return token.replace(/"/g, '')
+  } else {
+    return null
+  }
 }
 
 // import React from 'react';
