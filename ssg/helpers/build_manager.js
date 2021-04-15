@@ -15,7 +15,7 @@ let TOKEN = ''
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
-    if (process.argv[2] === 'force' && !options) {
+    if ((process.argv[2] === 'force' || process.argv[2] === 'forcewithdelay') && !options) {
         // Quit if no queuefile
         if (!fs.existsSync(queuePath)) {
             console.log('Build Manager: No pending queue')
@@ -400,6 +400,12 @@ async function logQuery(id, type = 'GET', data) {
 
 if (process.argv[2] === 'force') {
     startBuildManager()
+} else if (process.argv[2] === 'forcewithdelay') {
+    const delayInMs = 20000
+    console.log(`Build Manager: Starting in ${delayInMs / 1000} seconds`);
+    setTimeout(() => {
+        startBuildManager()
+    }, delayInMs);
 } else if (process.argv[2] === 'queue') {
     calcQueueEstDur()
 } else {
