@@ -69,7 +69,7 @@ async function fetchLogs() {
         const paths = finishedLog.paths
         formattedPaths = paths.map(a => {
           return {
-            url: `https://${finishedLog.site}/${a}`,
+            url: `${finishedLog.site}${a}`,
             label: a
           }
         })

@@ -171,8 +171,8 @@ stagingURLs:
     kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
     industry.poff.ee: "https://staging.industry.inscaping.eu/"
     shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
-    # hoff.ee: "https://staging.hoff.inscaping.eu/"
-    # kumu.poff.ee: https://kumu.poff.ee/
-    # tartuff.ee: https://tartuff.ee/
-    # oyafond.ee: https://oyafond.ee/
-    # filmikool.poff.ee: https://filmikool.poff.ee/
+    hoff.ee: "https://build.hoff.ee/"
+    kumu.poff.ee: https://build.kumu.poff.ee/
+    tartuff.ee: https://build.tartuff.ee/
+    oyafond.ee: https://build.oyafond.ee/
+    filmikool.poff.ee: https://build.filmikool.poff.ee/
