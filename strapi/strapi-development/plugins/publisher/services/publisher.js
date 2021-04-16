@@ -69,7 +69,7 @@ const fetchChangedSlug = async args => {
         }
         return paths
     }
-    return [slug]
+    return [`${collectionType}/${slug}`]
 }
 
 module.exports = {
