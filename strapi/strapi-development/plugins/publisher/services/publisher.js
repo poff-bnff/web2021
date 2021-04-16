@@ -35,7 +35,7 @@ const addS = async (result) => {
     const path = require('path')
     const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
     const domainSpecificsPath = path.join(ssgDir, 'domain_specifics.yaml')
-    const domainSpecifics = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+    const domainSpecifics = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
     const stagingUrls = domainSpecifics.stagingURLs
 
 
