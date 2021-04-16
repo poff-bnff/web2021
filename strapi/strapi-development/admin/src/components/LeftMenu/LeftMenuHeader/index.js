@@ -66,8 +66,7 @@ async function fetchLogs() {
     result.map(async finishedLog => {
       let formattedPaths = [];
       if (finishedLog.build_args) {
-        const paths = await fetchChangedSlug(finishedLog.build_args)
-
+        const paths = finishedLog.paths
         formattedPaths = paths.map(a => {
           return {
             url: `https://${finishedLog.site}/${a}`,
@@ -80,7 +79,7 @@ async function fetchLogs() {
         toggleErrorNotif(finishedLog, formattedPaths)
       } else {
         strapi.notification.toggle({
-          message: 'Your build of site ' + finishedLog.site + ' finished, see the result:',
+          message: 'Your save of ' + finishedLog.site + ' finished, see the result:',
           blockTransition: true,
           link: formattedPaths
         })
@@ -117,53 +116,6 @@ const setShownToUser = async (log) => {
 
 }
 
-
-const fetchChangedSlug = async (args) => {
-  const [collectionType, id] = args.split(' ')
-
-  const token = await getToken()
-
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`);
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  let result = await fetch(`${strapiHost}/${collectionType}/${id}`, requestOptions)
-    .then(response => response.text())
-    .then(result => { return result })
-    .catch(error => console.log('error', error));
-
-  result = JSON.parse(result)
-
-  const slug = result.slug_et || result.slug_en || result.slug_ru
-
-  const lang = result.slug_et ? 'et' : result.slug_en ? 'en' : result.slug_ru ? 'ru' : null
-  const articleTypeSlugs = []
-  const paths = []
-
-  if (result.article_types) {
-    for (const articleType of result.article_types) {
-      for (const key in articleType) {
-        if (key === `slug_${lang}`) {
-          articleTypeSlugs.push(articleType[key])
-        }
-      }
-    }
-
-
-    for (const articleTypeSlug of articleTypeSlugs) {
-      paths.push(`${articleTypeSlug}/${slug}`)
-    }
-    return paths
-  }
-  return [slug]
-}
-
-
 const toggleErrorNotif = (finishedLog, formattedPaths) => {
 
   formattedPaths.push({
@@ -174,7 +126,7 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
 
   strapi.notification.toggle({
     type: 'warning',
-    message: 'Your build of site ' + finishedLog.site + ' failed, unchanged content:',
+    message: 'Your save of ' + finishedLog.site + ' failed, unchanged content:',
     blockTransition: true,
     link: formattedPaths
   })
