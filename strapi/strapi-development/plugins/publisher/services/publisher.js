@@ -30,12 +30,21 @@ const lambda = [
 
 const addS = async (result) => {
 
+    const fs = require('fs')
+    const yaml = require('js-yaml')
+    const path = require('path')
+    const ssgDir = path.join(__dirname, '..', '..', '..', '..', 'ssg')
+    const domainSpecificsPath = path.join(ssgDir, 'domain_specifics.yaml')
+    const domainSpecifics = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+    const stagingUrls = domainSpecifics.stagingURLs
+
+
     const sanitizedResponse = await Promise.all(result.map(async a => {
         const sanitizedResult = {
             id: a.id,
             build_args: a.build_args,
             build_errors: a.build_errors,
-            site: `build.${a.site}`,
+            site: stagingUrls[a.site],
             paths: await fetchChangedSlug(a.build_args)
         }
 
