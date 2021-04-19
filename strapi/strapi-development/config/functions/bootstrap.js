@@ -52,7 +52,7 @@ module.exports = () => {
   let file = '/srv/strapi/imgList.json'
 
   jsonfile.readFile(file, function (err, obj) {
-    fileData.files = obj.files
+    fileData.files = obj?.files
     // console.log(fileData.files)
   })
 

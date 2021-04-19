@@ -70,7 +70,7 @@ async function fetchLogs() {
         formattedPaths = paths.map(a => {
           return {
             url: `${finishedLog.site}${a}`,
-            label: a
+            label: a.length ? a : finishedLog.stagingDomain
           }
         })
       }
@@ -79,7 +79,7 @@ async function fetchLogs() {
         toggleErrorNotif(finishedLog, formattedPaths)
       } else {
         strapi.notification.toggle({
-          message: 'Your save of ' + finishedLog.site + ' finished, see the result:',
+          message: 'Your save of ' + finishedLog.stagingDomain + ' finished, see the result:',
           blockTransition: true,
           link: formattedPaths
         })
@@ -126,7 +126,7 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
 
   strapi.notification.toggle({
     type: 'warning',
-    message: 'Your save of ' + finishedLog.site + ' failed, unchanged content:',
+    message: 'Your save of ' + finishedLog.stagingDomain + ' failed, unchanged content:',
     blockTransition: true,
     link: formattedPaths
   })
