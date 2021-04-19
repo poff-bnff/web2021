@@ -176,3 +176,15 @@ stagingURLs:
     tartuff.ee: https://build.tartuff.ee/
     oyafond.ee: https://build.oyafond.ee/
     filmikool.poff.ee: https://build.filmikool.poff.ee/
+
+stagingDomains:
+    poff.ee: staging.poff.inscaping.eu
+    justfilm.ee: staging.justfilm.inscaping.eu
+    kinoff.poff.ee: staging.kinoff.inscaping.eu
+    industry.poff.ee: staging.industry.inscaping.eu
+    shorts.poff.ee: staging.shorts.inscaping.eu
+    hoff.ee: build.hoff.ee
+    kumu.poff.ee: build.kumu.poff.ee
+    tartuff.ee: build.tartuff.ee
+    oyafond.ee: build.oyafond.ee
+    filmikool.poff.ee: build.filmikool.poff.ee
