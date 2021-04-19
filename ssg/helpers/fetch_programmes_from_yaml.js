@@ -9,11 +9,11 @@ const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'programmes');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
-const STRAPIDATA_PROGRAMME = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
+const STRAPIDATA_PROGRAMME = yaml.load(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
 const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.yaml')
-const STRAPIDATA_ORGANISATIONS = yaml.safeLoad(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
+const STRAPIDATA_ORGANISATIONS = yaml.load(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]

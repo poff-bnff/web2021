@@ -9,15 +9,15 @@ const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
-const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
+const STRAPIDATA_IND_PROJECTS = yaml.load(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
-const STRAPIDATA_COMPANIES = yaml.safeLoad(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
+const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {

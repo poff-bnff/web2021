@@ -49,7 +49,7 @@ function startBuild() {
     // Eliminate duplicates from queue every time new build starts
     const duplicatesLogIds = eliminateDuplicates()
 
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     const firstInQueue = queueFile[0]
     const buildDomain = firstInQueue.domain
     const buildFileName = firstInQueue.file
@@ -124,7 +124,7 @@ function writeToOtherBuildLogs(LogIds, data) {
 }
 
 function addToQueue(options) {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
 
     options.time = getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)')
     queueFile.push(options)
@@ -147,7 +147,7 @@ function addToQueue(options) {
 }
 
 function deleteQueueIfEmpty() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     if (!queueFile.length) {
         fs.unlinkSync(queuePath)
         return true
@@ -157,7 +157,7 @@ function deleteQueueIfEmpty() {
 }
 
 function removeFirstInQueue() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     queueFile.shift()
     const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
@@ -167,7 +167,7 @@ function writeToLogFile(logType, command, duration = null, error = null) {
     if (!fs.existsSync(logsPath)) {
         fs.writeFileSync(logsPath, '[]');
     }
-    const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+    const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
 
     const createLogObject = {
         'time': getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)'),
@@ -191,7 +191,7 @@ function calcBuildAvgDur(options, queueEst = false) {
         console.log('No log file for getting build estimates');
         return 0;
     }
-    const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+    const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
         const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type}`
         if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type}`) {
@@ -227,7 +227,7 @@ function calcQueueEstDur() {
         return null;
     }
 
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
 
     const queue = queueFile.map(q => {
         options = {
@@ -266,7 +266,7 @@ function calcQueueEstDur() {
 }
 
 function eliminateDuplicates() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     const firstEntryCopy = JSON.parse(JSON.stringify(queueFile[0]))
     delete firstEntryCopy.time
     delete firstEntryCopy.log_id
@@ -300,7 +300,7 @@ function eliminateDuplicates() {
 
 function checkIfProcessAlreadyRunning() {
     if (fs.existsSync(logsPath)) {
-        const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+        const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
             .filter(a => a.PID && a.type === 'Build start')
 
         const lastPID = logFile.slice(-1)[0].PID

@@ -8,7 +8,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const rootDir =  path.join(__dirname, '..')
 
 const eventivalPersonsPath = path.join(rootDir, 'eventival', 'static', 'eventival_persons.yaml')
-const EVENTIVAL_PERSONS = yaml.safeLoad(fs.readFileSync(eventivalPersonsPath, 'utf8'))
+const EVENTIVAL_PERSONS = yaml.load(fs.readFileSync(eventivalPersonsPath, 'utf8'))
 const E_PERSONS_FILE = path.join(fetchDir, 'eventival_persons.yaml')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 

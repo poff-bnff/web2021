@@ -20,7 +20,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8')
 } else {
-    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+    const STRAPIDATA_INDUSTRY_PERSON = yaml.load(fs.readFileSync(strapiDataPath, 'utf8'))
 
     const minimodel = {
         'person': {
@@ -47,7 +47,7 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const rootDir =  path.join(__dirname, '..')
     const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-    const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+    const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]

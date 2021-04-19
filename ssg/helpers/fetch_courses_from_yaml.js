@@ -9,7 +9,7 @@ timer.start(__filename)
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -21,7 +21,7 @@ const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 if (DOMAIN === 'filmikool.poff.ee') {
 
     const strapiDataCoursePath = path.join(strapiDataDirPath, `Course.yaml`)
-    const STRAPIDATA_COURSES = yaml.safeLoad(fs.readFileSync(strapiDataCoursePath, 'utf8')) || []
+    const STRAPIDATA_COURSES = yaml.load(fs.readFileSync(strapiDataCoursePath, 'utf8')) || []
 
     const minimodel = {
         'languages': {
