@@ -9,8 +9,8 @@ const ssgConfPath = path.join(rootDir, 'entu-ssg.yaml')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
-const template = yaml.safeLoad(fs.readFileSync(templatePath, 'utf8'))
-const mappings = yaml.safeLoad(fs.readFileSync(mappingsPath, 'utf8'))
+const template = yaml.load(fs.readFileSync(templatePath, 'utf8'))
+const mappings = yaml.load(fs.readFileSync(mappingsPath, 'utf8'))
 
 template.locales = mappings.locales[DOMAIN]
 template.defaultLocale = mappings.defaultLocale[DOMAIN]

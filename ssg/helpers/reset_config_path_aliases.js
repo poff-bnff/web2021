@@ -5,7 +5,7 @@ const path = require('path')
 const rootDir =  path.join(__dirname, '..')
 
 const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
-const BUILD_CONFIG = yaml.safeLoad(fs.readFileSync(buildConfigPath, 'utf8'))
+const BUILD_CONFIG = yaml.load(fs.readFileSync(buildConfigPath, 'utf8'))
 const BUILD_PATHS = null
 
 BUILD_CONFIG.dev.paths = BUILD_PATHS

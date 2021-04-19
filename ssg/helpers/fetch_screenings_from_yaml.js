@@ -7,18 +7,18 @@ const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
-const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_SCREENING = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
-const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+const STRAPIDATA_FILM = yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
@@ -152,7 +152,7 @@ function LangSelect(lang) {
 function processData(data, lang, CreateYAML) {
 
     const cassettesPath = path.join(fetchDir, `cassettes.${lang}.yaml`)
-    const CASSETTES = yaml.safeLoad(fs.readFileSync(cassettesPath, 'utf8'))
+    const CASSETTES = yaml.load(fs.readFileSync(cassettesPath, 'utf8'))
 
     let allData = []
     if (data.length) {

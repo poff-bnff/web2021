@@ -29,7 +29,7 @@ const mapping = {
     'oyafond.ee': 'BrunoMenu'
 }
 const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))
+const STRAPIDATA_MENUS = yaml.load(fs.readFileSync(strapiDataMenuPath, 'utf8'))
 
 const artMapping = {
     'poff.ee': 'poffi_article',

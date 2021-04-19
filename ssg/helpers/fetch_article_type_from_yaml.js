@@ -7,7 +7,7 @@ const replaceLinks = require('./replace_links.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 const params = process.argv.slice(2)
@@ -22,7 +22,7 @@ const strapiDataPath =  path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const DEFAULTTEMPLATENAME = 'news'
 

@@ -8,7 +8,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
-const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
+const STRAPIDATA_SIXFILMS = yaml.load(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 
 const languages = ['en', 'et', 'ru']
 
@@ -45,7 +45,7 @@ for (const lang of languages) {
                 for (cassetteIx in copyData[key]) {
                     let thisCassette = copyData[key][cassetteIx]
                     let cassetteYAMLPath = path.join(fetchDir, `cassettes.${lang}.yaml`)
-                    let CASSETTESYAML = yaml.safeLoad(fs.readFileSync(cassetteYAMLPath, 'utf8'))
+                    let CASSETTESYAML = yaml.load(fs.readFileSync(cassetteYAMLPath, 'utf8'))
                     let thisCassetteFromYAML = CASSETTESYAML.filter( (a) => { return thisCassette.id === a.id })[0];
                     if(thisCassetteFromYAML !== undefined) {
                         var thisCassetteFromYAMLCopy = JSON.parse(JSON.stringify(thisCassetteFromYAML));
