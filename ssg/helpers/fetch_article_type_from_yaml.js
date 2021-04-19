@@ -14,7 +14,7 @@ const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -109,7 +109,7 @@ for (const lang of languages) {
         let element = JSON.parse(JSON.stringify(strapiElement))
         let slugEn = element.slug_en || element.slug_et
         if (!slugEn) {
-            throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
+            throw new Error (`Artiklil (ID: ${element.id}) on puudu nii eesti kui inglise keelne slug!`, Error.ERR_MISSING_ARGS)
         }
 
         if (param_build_type === 'target' && element.id.toString() !== target_id) {
