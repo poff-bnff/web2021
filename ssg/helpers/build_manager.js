@@ -129,7 +129,7 @@ function addToQueue(options) {
     options.time = getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)')
     queueFile.push(options)
 
-    const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
     console.log('Added to queue');
     writeToLogFile(`Add to queue`, options)
@@ -159,7 +159,7 @@ function deleteQueueIfEmpty() {
 function removeFirstInQueue() {
     const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     queueFile.shift()
-    const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
 }
 
@@ -178,7 +178,7 @@ function writeToLogFile(logType, command, duration = null, error = null) {
         'error': error && typeof error === 'object' ? JSON.stringify(error) : error
     }
     logFile.push(createLogObject)
-    const logDump = yaml.safeDump(logFile, { 'noRefs': true, 'indent': '4' });
+    const logDump = yaml.dump(logFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(logsPath, logDump, 'utf8');
 }
 
@@ -289,7 +289,7 @@ function eliminateDuplicates() {
     const difference = queueFile.length - (eliminated.length + 1)
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
-        const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
+        const queueDump = yaml.dump(eliminated, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(queuePath, queueDump, 'utf8');
         console.log(`Removed ${difference} duplicates from queue for ${queueFile[0].domain} ${queueFile[0].file} ${queueFile[0].type} ${queueFile[0].parameters}`);
         writeToLogFile(`Remove ${difference} duplicates`, queueFile[0])

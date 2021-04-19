@@ -42,7 +42,7 @@ for (const lang of allLanguages) {
     let globalData= yaml.load(fs.readFileSync(globalDataPath, 'utf8'))
     globalData.footer = buffer
 
-    let allDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(globalDataPath, allDataYAML, 'utf8')
 }
 timer.log(__filename, `Fetched ${DOMAIN} footer`);

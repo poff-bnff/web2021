@@ -55,7 +55,7 @@ for (const lang of allLanguages) {
                                 if (dirSlug != null && typeof categoryFromYAMLcopy.path !== 'undefined') {
 
                                     rueten(categoryFromYAMLcopy, lang)
-                                    const oneYaml = yaml.safeDump(categoryFromYAMLcopy, { 'noRefs': true, 'indent': '4' });
+                                    const oneYaml = yaml.dump(categoryFromYAMLcopy, { 'noRefs': true, 'indent': '4' });
                                     const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
 
                                     let saveDir = path.join(fetchDataDir, dirSlug);
@@ -78,7 +78,7 @@ for (const lang of allLanguages) {
         allData.push(element)
     }
 
-    const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+    const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `shops.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 }

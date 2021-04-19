@@ -281,13 +281,13 @@ const foo = async () => {
     spin.stop()
     console.log('.')
 
-    // let yamlStr = yaml.safeDump(JSON.parse(JSON.stringify(strapiData)), { 'noRefs': true, 'indent': '4' })
-    // // let yamlStr = yaml.safeDump(strapiData, { 'noRefs': true, 'indent': '4' })
+    // let yamlStr = yaml.dump(JSON.parse(JSON.stringify(strapiData)), { 'noRefs': true, 'indent': '4' })
+    // // let yamlStr = yaml.dump(strapiData, { 'noRefs': true, 'indent': '4' })
     // fs.writeFileSync(__dirname + '/../source/strapiData.yaml', yamlStr, 'utf8')
 
     for ( let modelName in strapiData ) {
        // console.log(JSON.stringify(strapiData[modelName], 0, 2))
-       let yamlSmallStr = yaml.safeDump(JSON.parse(JSON.stringify(strapiData[modelName])), { 'noRefs': true, 'indent': '4' })
+       let yamlSmallStr = yaml.dump(JSON.parse(JSON.stringify(strapiData[modelName])), { 'noRefs': true, 'indent': '4' })
        fs.writeFileSync(path.join(allStrapidatapath, `${modelName}.yaml`), yamlSmallStr, 'utf8')
     }
 

@@ -68,9 +68,9 @@ for (const lang of languages) {
 
 
     if (failing || copyData === undefined) {
-        var allDataYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     } else {
-        var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump(copyData, { 'noRefs': true, 'indent': '4' })
     }
     const outFile = path.join(fetchDir, `sixfilms.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')

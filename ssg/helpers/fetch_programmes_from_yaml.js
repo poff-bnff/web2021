@@ -106,7 +106,7 @@ for (const ix in languages) {
         element.data = {'cassettes': '/_fetchdir/cassettes.' + lang + '.yaml'};
 
         if (dirSlug != null && typeof element.path !== 'undefined') {
-            const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(element, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
 
             allData.push(element)
@@ -131,7 +131,7 @@ for (const ix in languages) {
                 return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0);
             }
     })
-    const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+    const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `programmes.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 }

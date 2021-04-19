@@ -152,7 +152,7 @@ if (DOMAIN === 'filmikool.poff.ee') {
 
             course.path = `courses/${dirSlug}`
 
-            const oneYaml = yaml.safeDump(course, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(course, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(coursesDir, dirSlug, `data.${lang}.yaml`);
 
             let saveDir = path.join(coursesDir, dirSlug);
@@ -163,12 +163,12 @@ if (DOMAIN === 'filmikool.poff.ee') {
             return course
         }) || []
 
-        let allDataYAML = yaml.safeDump(filteredCourse, { 'noRefs': true, 'indent': '4' });
+        let allDataYAML = yaml.dump(filteredCourse, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), allDataYAML, 'utf8');
     }
 } else {
     allLanguages.map(lang => {
-        let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' });
+        let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), emptyYAML, 'utf8');
     })
 }

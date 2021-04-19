@@ -84,7 +84,7 @@ for (const lang of languages) {
 
     if(buffer.length > 0) {
         rueten(buffer, lang)
-        let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' })
+        let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(outFile, allDataYAML, 'utf8')
     } else {
         fs.writeFileSync(outFile, '[]', 'utf8')

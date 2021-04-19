@@ -96,7 +96,7 @@ function processData(lang, CreateYAML) {
 }
 
 function CreateYAML(buffer, lang) {
-    let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' })
     const outFile = path.join(fetchDir, `supporterspage.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }
