@@ -49,7 +49,7 @@ const mapping3 = {
 }
 
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_SUPPORTER_PAGES = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
+const STRAPIDATA_SUPPORTER_PAGES = yaml.load(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
 
 const minimodel = {
     'domain': {

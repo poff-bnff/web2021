@@ -11,7 +11,7 @@ timer.start(__filename)
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -35,7 +35,7 @@ if(build_type === 'target') {
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const minimodel = {
         'article_types': {

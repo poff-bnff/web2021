@@ -9,7 +9,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
-const STRAPIDATA_FRONTPAGECOURSES = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
+const STRAPIDATA_FRONTPAGECOURSES = yaml.load(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 
 const languages = ['en', 'et', 'ru']

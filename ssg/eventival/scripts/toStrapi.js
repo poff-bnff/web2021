@@ -9,13 +9,13 @@ timer.start(__filename)
 const DYNAMIC_PATH = path.join(__dirname, '..', 'dynamic')
 
 const FILMS_FN = path.join(DYNAMIC_PATH, 'films.yaml')
-const EVENTIVAL_FILMS = yaml.safeLoad(fs.readFileSync(FILMS_FN))
+const EVENTIVAL_FILMS = yaml.load(fs.readFileSync(FILMS_FN))
 
 const SCREENINGS_FN = path.join(DYNAMIC_PATH, 'screenings.yaml')
-const EVENTIVAL_SCREENINGS = yaml.safeLoad(fs.readFileSync(SCREENINGS_FN))
+const EVENTIVAL_SCREENINGS = yaml.load(fs.readFileSync(SCREENINGS_FN))
 
 const VENUES_FN = path.join(DYNAMIC_PATH, 'venues.yaml')
-const EVENTIVAL_VENUES = yaml.safeLoad(fs.readFileSync(VENUES_FN))
+const EVENTIVAL_VENUES = yaml.load(fs.readFileSync(VENUES_FN))
 
 const STRAPI_URL = 'http://139.59.130.149'
 const FILMS_API = `${STRAPI_URL}/films`

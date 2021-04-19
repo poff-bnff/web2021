@@ -12,7 +12,7 @@ const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 
 const domainsStrapiDataPath = path.join(strapiDataPath, 'Domain.yaml')
 const DOMAINSMAPPING = {}
-const DOMAINSYAML = yaml.safeLoad(fs.readFileSync(domainsStrapiDataPath, 'utf8'))
+const DOMAINSYAML = yaml.load(fs.readFileSync(domainsStrapiDataPath, 'utf8'))
     .map(d => DOMAINSMAPPING[d.url] = d.id)
 
 let checkDomain = function(element) {
@@ -42,7 +42,7 @@ let checkDomain = function(element) {
 
 function readYAML(file) {
     const YAMLPath = path.join(strapiDataPath, file)
-    const allDataYAML = yaml.safeLoad(fs.readFileSync(YAMLPath, 'utf8'))
+    const allDataYAML = yaml.load(fs.readFileSync(YAMLPath, 'utf8'))
     return allDataYAML
 }
 

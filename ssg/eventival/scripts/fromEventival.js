@@ -59,7 +59,7 @@ const dataMap = {
     }
 }
 
-// const filmsO = yaml.safeLoad(fs.readFileSync(path.join(dynamicDir, 'films.yaml'))).map( film => {
+// const filmsO = yaml.load(fs.readFileSync(path.join(dynamicDir, 'films.yaml'))).map( film => {
 //     if (film.eventival_categorization && film.eventival_categorization.sections && film.eventival_categorization.sections.section) {
 //         for (const section of film.eventival_categorization.sections.section) {
 //             console.log(section);

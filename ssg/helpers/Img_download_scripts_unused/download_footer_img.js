@@ -14,7 +14,7 @@ loadYaml(readYaml);
 function loadYaml(readYaml) {
     var doc = '';
     try {
-        doc = yaml.safeLoad(fs.readFileSync(`source/global.et.yaml`, 'utf8'))
+        doc = yaml.load(fs.readFileSync(`source/global.et.yaml`, 'utf8'))
 
     } catch (e) {
         console.log(e);
