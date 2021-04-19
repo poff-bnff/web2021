@@ -139,7 +139,7 @@ for (const lang of allLanguages) {
             allData.push(element)
             element.data = dataFrom
 
-            let allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' })
+            let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `articles.${lang}.yaml`), allDataYAML, 'utf8')
 
         } else {

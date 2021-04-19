@@ -48,7 +48,7 @@ function readYAML(file) {
 
 function writeYAML(file, data) {
     // console.log(JSON.stringify(strapiData[modelName], 0, 2))
-    let YAMLData = yaml.safeDump(JSON.parse(JSON.stringify(data)), { 'noRefs': true, 'indent': '4' })
+    let YAMLData = yaml.dump(JSON.parse(JSON.stringify(data)), { 'noRefs': true, 'indent': '4' })
     const YAMLPath = path.join(domainStrapiDataPath, file)
     fs.writeFileSync(YAMLPath, YAMLData, 'utf8')
 }

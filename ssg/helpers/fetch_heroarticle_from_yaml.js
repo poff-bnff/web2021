@@ -69,6 +69,6 @@ for (const lang of languages) {
         }
     }
 
-    let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' });
+    let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `heroarticle.${lang}.yaml`), allDataYAML, 'utf8');
 }

@@ -22,6 +22,7 @@
     "html2plaintext": "^2.1.2",
     "ical-generator": "^1.15.2",
     "install": "^0.13.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
     "retry": "^0.12.0",

@@ -35,7 +35,7 @@ function processData(lang, CreateYAML) {
 }
 
 function CreateYAML(buffer, lang) {
-    let allDataYAML = yaml.safeDump(buffer.sort((a, b) => a.namePrivate.localeCompare(b.namePrivate)), { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(buffer.sort((a, b) => a.namePrivate.localeCompare(b.namePrivate)), { 'noRefs': true, 'indent': '4' })
     const outFile = path.join(fetchDir, `channels.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }

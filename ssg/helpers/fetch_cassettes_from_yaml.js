@@ -625,7 +625,7 @@ for (const lang of allLanguages) {
 }
 
 function generateYaml(element, lang){
-    let yamlStr = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' })
+    let yamlStr = yaml.dump(element, { 'noRefs': true, 'indent': '4' })
 
 
     fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8')
@@ -665,7 +665,7 @@ function generateAllDataYAML(allData, lang){
     }
 
 
-    let allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `cassettes.${lang}.yaml`), allDataYAML, 'utf8')
     timer.log(__filename, `Ready for building are ${allData.length} cassettes`)
 
@@ -806,9 +806,9 @@ function generateAllDataYAML(allData, lang){
         cinemas: mSort(filters.cinemas),
     }
 
-    let searchYAML = yaml.safeDump(cassette_search, { 'noRefs': true, 'indent': '4' })
+    let searchYAML = yaml.dump(cassette_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_films.${lang}.yaml`), searchYAML, 'utf8')
 
-    let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_films.${lang}.yaml`), filtersYAML, 'utf8')
 }

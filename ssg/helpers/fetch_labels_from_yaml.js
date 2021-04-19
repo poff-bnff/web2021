@@ -33,7 +33,7 @@ for (const lang of languages) {
     const globalStatic = path.join(sourceFolder, 'global_static', `global_s.${lang}.yaml`)
     let globalData= yaml.load(fs.readFileSync(globalStatic, 'utf8'))
     globalData.label = labels
-    let allDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(`${sourceFolder}global.${lang}.yaml`, allDataYAML, 'utf8')
 }
 

@@ -27,7 +27,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
         console.log(data.persons.length, 'Eventival persons fetched.')
 
-        fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump(data, { 'noRefs': true, 'indent': '4' }))
+        fs.writeFileSync(E_PERSONS_FILE, yaml.dump(data, { 'noRefs': true, 'indent': '4' }))
     }
 
     function add_filters_and_search_to_data(data) {
@@ -140,5 +140,5 @@ if (DOMAIN === 'industry.poff.ee') {
 
     eventival_persons_yaml()
 } else {
-    fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump([], { 'noRefs': true, 'indent': '4' }))
+    fs.writeFileSync(E_PERSONS_FILE, yaml.dump([], { 'noRefs': true, 'indent': '4' }))
 }

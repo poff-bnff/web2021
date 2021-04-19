@@ -100,7 +100,7 @@ for (const lang of languages) {
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_MENU))
     menuData = rueten(copyData, lang)
 
-    let menuDataYAML = yaml.safeDump(menuData, { 'noRefs': true, 'indent': '4' })
+    let menuDataYAML = yaml.dump(menuData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8')
     console.log(`Fetched ${DOMAIN} menu ${lang} data`)
 }

@@ -6,41 +6,66 @@
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
 
-const thereIsSomeWhereToLinkTo = ['programmes',
-  'pof-fi-articles',
-  'just-filmi-articles',
-  'shortsi-articles',
-  'kinoffi-articles',
-  'hof-fi-articles',
-  'tartuffi-articles',
-  'kumu-articles',
-  'bruno-articles',
-  'filmikooli-articles',
-  'teams',
-  'films',
-  'cassettes',
-  'screenings',
-  'events',
-  'courses',
-  'industry-people',
-  'industry-articles',
-  'industry-categories',
-  'industry-projects',
-  'industry-events',
-  'supporters-pages',
-  'supporters-justs',
-  'supporters-shorts',
-  'industry-supporters',
-  'kinoffi-supporters',
-  'hof-fi-supporters',
-  'tartuffi-supporters',
-  'kumu-supporters',
-  'bruno-supporters',
-  'filmikool-supporters',
-  'products',
-  'product-categories',
-  'festival-passes',
-  'shops']
+const thereIsSomeWhereToLinkTo = [
+  'programme',
+  'pof-fi-article',
+  'just-filmi-article',
+  'shortsi-article',
+  'kinoffi-article',
+  'hof-fi-article',
+  'tartuffi-article',
+  'kumu-article',
+  'bruno-article',
+  'filmikooli-article',
+  'team',
+  'film',
+  'cassette',
+  'screening',
+  'event',
+  'course',
+  'industry-article',
+  'industry-category',
+  'industry-project',
+  'industry-supporter',
+  'industry-event',
+  'industry-person',
+  'supporters-page',
+  'supporters-just',
+  'supporters-short',
+  'kinoffi-supporter',
+  'hof-fi-supporter',
+  'tartuffi-supporter',
+  'kumu-supporter',
+  'bruno-supporter',
+  'filmikool-supporter',
+  'product',
+  'product-category',
+  'festival-pass',
+  'shop'
+]
+
+const pathBeforeSlug = {
+  'programme': '/',
+  'team': '/',
+  'cassette': 'film/',
+  'screening': 'film/',
+  'festival-pass': '/',
+  'industry-person': '/',
+  'industry-event': 'events/',
+  'product': 'shop/',
+  'industry-supporter': 'supporters/',
+  'supporters-page': 'toetajad/',
+  'supporters-just': 'toetajad/',
+  'supporters-short': 'toetajad/',
+  'kinoffi-supporter': 'toetajad/',
+  'hof-fi-supporter': 'toetajad/',
+  'tartuffi-supporter': 'toetajad/',
+  'kumu-supporter': 'toetajad/',
+  'bruno-supporter': 'toetajad/',
+  'filmikool-supporter': 'toetajad/',
+  'course': 'courses/',
+  'event': 'courses/'
+}
 
 const addS = async (result) => {
 
@@ -97,7 +122,7 @@ const fetchChangedSlug = async args => {
       return paths
     }
 
-    return [`${collectionType}/${slug}`]
+    return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug}`]
   } else {
     return [``]
   }

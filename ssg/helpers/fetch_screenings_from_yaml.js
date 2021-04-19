@@ -207,7 +207,7 @@ function CreateYAML(screenings, lang) {
 
     let screeningsCopy = rueten(JSON.parse(JSON.stringify(screenings)), lang)
 
-    let allDataYAML = yaml.safeDump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
+    let allDataYAML = yaml.dump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(SCREENINGS_YAML_PATH, allDataYAML, 'utf8');
     console.log(`Fetched ${screeningsCopy.length} screenings`);
 
@@ -405,10 +405,10 @@ function CreateYAML(screenings, lang) {
         times: dateTimeSort(filters.times)
     }
 
-    let searchYAML = yaml.safeDump(screenings_search, { 'noRefs': true, 'indent': '4' })
+    let searchYAML = yaml.dump(screenings_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_screenings.${lang}.yaml`), searchYAML, 'utf8')
 
-    let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_screenings.${lang}.yaml`), filtersYAML, 'utf8')
 
 }

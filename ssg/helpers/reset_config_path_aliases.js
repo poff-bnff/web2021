@@ -10,7 +10,7 @@ const BUILD_PATHS = null
 
 BUILD_CONFIG.dev.paths = BUILD_PATHS
 
-const BUILD_CONFIG_YAML = yaml.safeDump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' });
+const BUILD_CONFIG_YAML = yaml.dump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' });
 fs.writeFileSync(buildConfigPath, BUILD_CONFIG_YAML, 'utf8');
 
 console.log('Reset config build paths to NULL');

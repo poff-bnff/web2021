@@ -110,7 +110,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 }
             }
 
-            const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
             let saveDir = path.join(fetchDataDir, dirSlug);
             fs.mkdirSync(saveDir, { recursive: true });
@@ -198,7 +198,7 @@ if (DOMAIN === 'industry.poff.ee') {
         const yamlPath = path.join(fetchDir, `industryprojects.${lang}.yaml`);
         if (allData.length) {
             allData = allData.sort((a, b) => a.title.localeCompare(b.title, lang))
-            const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+            const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
             fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
             let filters = {
@@ -302,10 +302,10 @@ if (DOMAIN === 'industry.poff.ee') {
                 genres: mSort(filters.genres),
             }
 
-            let searchYAML = yaml.safeDump(projects_search, { 'noRefs': true, 'indent': '4' })
+            let searchYAML = yaml.dump(projects_search, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `search_projects.${lang}.yaml`), searchYAML, 'utf8')
 
-            let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+            let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `filters_projects.${lang}.yaml`), filtersYAML, 'utf8')
 
         } else {
@@ -323,13 +323,13 @@ if (DOMAIN === 'industry.poff.ee') {
         industry_project.path = `project/${dirSlug}`
 
         const yamlPath = path.join(fetchDataDir, dirSlug, 'data.en.yaml')
-        const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' })
+        const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(yamlPath, oneYaml, 'utf8')
         fs.writeFileSync(path.join(saveDir,'index.pug'), 'include /_templates/industryproject_industry_index_template.pug')
     }
 } else {
 
-    let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+    let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_projects.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `filters_projects.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `industryprojects.en.yaml`), emptyYAML, 'utf8')

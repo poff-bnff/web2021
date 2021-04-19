@@ -197,7 +197,7 @@ for (const lang of languages) {
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
                 }
 
-                let yamlStr = yaml.safeDump(element, { 'indent': '4' });
+                let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                 fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8');
 
