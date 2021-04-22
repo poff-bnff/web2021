@@ -1,5 +1,5 @@
 #! /bin/sh
-echo 
+echo
 echo "Running script: "$0""
 SECONDS=0
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -27,7 +27,7 @@ then
 	exit 81
 fi
 echo "Replacing site: "$DOMAIN""
-rsync -ah /srv/ssg/build/$BUILDDIR/* /srv/www/$DOMAIN/  --delete-after
+rsync -ah /srv/www/build."$DOMAIN"/* /srv/www/"$DOMAIN"/  --delete-after
 if [ $? != 0 ] #Live replace error
 then
 	exit 82
