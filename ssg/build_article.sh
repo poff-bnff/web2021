@@ -41,7 +41,7 @@ node "$FETCH_PATH"/add_config_path_aliases.js display
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-echo "SÜNK $BUILD_PATH/build/$BUILDDIR/   $BUILD_PATH/../www/build.$DOMAIN"
+echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
 rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
 printf '\n\n----------      Finished building      ----------\n\n'
