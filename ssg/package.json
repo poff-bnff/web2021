@@ -43,6 +43,7 @@
     "update_shorts_styles": "DOMAIN='shorts.poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_hoff_styles": "DOMAIN='hoff.ee' node helpers/copy_styles_acc_to_domain.js",
     "update_filmikool_styles": "DOMAIN='filmikool.poff.ee' node helpers/copy_styles_acc_to_domain.js",
+    "update_tartuff_styles": "DOMAIN='tartuff.ee' node helpers/copy_styles_acc_to_domain.js",
     "Custom-Build": "bash ./build_custom.sh",
     "Custom-Build-With-Limiter": "bash ./build_custom_w_limiter.sh",
     "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh"
