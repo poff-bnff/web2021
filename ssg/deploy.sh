@@ -19,7 +19,6 @@ if [ $? != 0 ] #BUILDDIR error
 then
 	exit 80
 fi
-echo
 echo "Copying previous live site for backup."
 cp -a "/srv/www/"$DOMAIN"/." "/srv/backup/"$DOMAIN"/"$BACKUP_TEMP_DIR
 if [ $? != 0 ] #Backup error
