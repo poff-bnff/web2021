@@ -85,7 +85,7 @@ const addS = async (result) => {
     try {
       paths = await fetchChangedSlug(a.build_args)
     } catch (error) {
-      console.log(error);
+      console.log('Error in fetchChangedSlug: ', error);
     }
 
     const sanitizedResult = {
