@@ -98,6 +98,7 @@ const addS = async (result) => {
 }
 
 const fetchChangedSlug = async args => {
+console.log(args)
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
