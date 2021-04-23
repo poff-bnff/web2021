@@ -80,13 +80,21 @@ const addS = async (result) => {
 
 
   const sanitizedResponse = await Promise.all(result.map(async a => {
+
+    let paths = []
+    try {
+      paths = await fetchChangedSlug(a.build_args)
+    } catch (error) {
+      console.log(error);
+    }
+
     const sanitizedResult = {
       id: a.id,
       build_args: a.build_args,
       build_errors: a.build_errors,
       site: stagingUrls[a.site],
       stagingDomain: stagingDomains[a.site],
-      paths: await fetchChangedSlug(a.build_args)
+      paths: paths
     }
 
     return sanitizedResult
