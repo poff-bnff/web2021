@@ -9,6 +9,8 @@ import { Remove } from '@buffetjs/icons';
 import { HIDE_NEW_NOTIFICATION } from '../constants';
 import { NotificationWrapper, IconWrapper, LinkArrow, RemoveWrapper } from './styledComponents';
 
+import Links from './links';
+
 const types = {
   success: {
     icon: 'check',
@@ -83,37 +85,12 @@ const Notification = ({ notification }) => {
                 {formattedMessage(title)}
               </Text>
             )}
-            <Flex justifyContent="space-between">
-              {message && (
-                <Text title={formattedMessage(message)}>{formattedMessage(message)}</Text>
-              )}
-              {link && (
-                <a
-                  href={link.url}
-                  target={link.target || '_blank'}
-                  rel={!link.target || link.target === '_blank' ? 'noopener noreferrer' : ''}
-                >
-                  <Padded right left size="xs">
-                    <Flex alignItems="center">
-                      <Text
-                        style={{ maxWidth: '100px' }}
-                        ellipsis
-                        fontWeight="bold"
-                        color="blue"
-                        title={formattedMessage(link.label)}
-                      >
-                        {formattedMessage(link.label)}
-                      </Text>
-                      {link.target === '_blank' && (
-                        <Padded left size="xs">
-                          <LinkArrow />
-                        </Padded>
-                      )}
-                    </Flex>
-                  </Padded>
-                </a>
-              )}
-            </Flex>
+            {message && (
+              <Text title={formattedMessage(message)}>{formattedMessage(message)}</Text>
+            )}
+            {link && (
+            <Links links={link} />
+            )}
           </Padded>
           <RemoveWrapper>
             <Remove onClick={handleClose} />
@@ -158,7 +135,19 @@ Notification.propTypes = {
         values: PropTypes.object,
       }),
     ]),
-    link: PropTypes.shape({
+    link: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          defaultMessage: PropTypes.string,
+          values: PropTypes.object,
+        }),
+      ]).isRequired,
+    })),
+    PropTypes.shape({
       target: PropTypes.string,
       url: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([
@@ -169,7 +158,7 @@ Notification.propTypes = {
           values: PropTypes.object,
         }),
       ]).isRequired,
-    }),
+    })]),
     type: PropTypes.string,
     onClose: PropTypes.func,
     timeout: PropTypes.number,
