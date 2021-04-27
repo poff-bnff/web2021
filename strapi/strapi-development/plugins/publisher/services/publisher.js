@@ -82,31 +82,29 @@ const addS = async (result) => {
   const sanitizedResponse = await Promise.all(result.map(async a => {
 
     let paths = []
-    try {
-      paths = await fetchChangedSlug(a.build_args)
-    } catch (error) {
-      console.log('Error in fetchChangedSlug: ', error);
+    if (a.action !== 'delete') {
+      try {
+        paths = await fetchChangedSlug(a.build_args)
+      } catch (error) {
+        console.log('Error in fetchChangedSlug: ', error);
+      }
     }
-
     const sanitizedResult = {
       id: a.id,
       build_args: a.build_args,
       build_errors: a.build_errors,
       site: stagingUrls[a.site],
       stagingDomain: stagingDomains[a.site],
-      paths: paths
+      paths: paths,
+      action: a.action
     }
-
     return sanitizedResult
   }))
-
-
-
   return sanitizedResponse
 }
 
 const fetchChangedSlug = async args => {
-console.log(args)
+  console.log(args)
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
