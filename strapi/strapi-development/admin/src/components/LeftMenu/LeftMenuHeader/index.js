@@ -139,7 +139,7 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
 const toggleDeleteNotif = (finishedLog) => {
 
   const link = {
-    url: finishedLog.stagingDomain,
+    url: finishedLog.site,
     label: finishedLog.stagingDomain,
   }
 
