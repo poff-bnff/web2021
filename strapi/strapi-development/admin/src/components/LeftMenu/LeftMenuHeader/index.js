@@ -77,7 +77,11 @@ async function fetchLogs() {
 
       if (finishedLog.build_errors) {
         toggleErrorNotif(finishedLog, formattedPaths)
-      } else {
+      }
+      else if (finishedLog.action === 'delete') {
+        toggleDeleteNotif(finishedLog)
+      }
+      else {
         strapi.notification.toggle({
           message: 'Your save of ' + finishedLog.stagingDomain + ' finished, see the result:',
           blockTransition: true,
@@ -129,6 +133,20 @@ const toggleErrorNotif = (finishedLog, formattedPaths) => {
     message: 'Your save of ' + finishedLog.stagingDomain + ' failed, unchanged content:',
     blockTransition: true,
     link: formattedPaths
+  })
+}
+
+const toggleDeleteNotif = (finishedLog) => {
+
+  const link = {
+    url: finishedLog.stagingDomain,
+    label: finishedLog.stagingDomain,
+  }
+
+    strapi.notification.toggle({
+    message: `Your delete of '${finishedLog.build_args}' finished:`,
+    blockTransition: true,
+    link: link
   })
 }
 
