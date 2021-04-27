@@ -3,15 +3,28 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
-const https = require('https')
 const { strapiAuth } = require('./strapiAuth.js')
 
 const rootDir = path.join(__dirname, '..')
 const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
-const strapiAddress = process.env['StrapiHostPoff2021']
+
 let TOKEN = ''
+
+const production = true 
+let https
+let strapiAddress
+let strapiPort
+
+if (production) {
+    https = require('https')
+    strapiAddress = process.env['StrapiHostPoff2021']
+} else {
+    https = require('http')
+    strapiAddress = 'localhost'
+    strapiPort = '1337'
+}
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
@@ -340,6 +353,10 @@ async function logQuery(id, type = 'GET', data) {
                 'Content-Type': 'application/json'
             }
         };
+
+        if (!production){
+            options.port = strapiPort
+        }
 
         if (type === 'PUT') {
             data = JSON.stringify(data)
