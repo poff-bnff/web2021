@@ -104,12 +104,13 @@ module.exports = {
     return strapi.entityService.update({ params, data: publishData }, { model });
   },
 
-  delete(entity, model) {
-    const params = { id: entity.id };
+  delete(entity, model, user) {
+    const params = { id: entity.id, user };
     return strapi.entityService.delete({ params }, { model });
   },
 
-  findAndDelete(params, model) {
+  findAndDelete(params, model, user) {
+    params.user = user
     return strapi.entityService.delete({ params }, { model });
   },
 

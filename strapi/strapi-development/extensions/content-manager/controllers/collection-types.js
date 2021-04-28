@@ -118,7 +118,7 @@ module.exports = {
   },
 
   async delete(ctx) {
-    const { userAbility } = ctx.state;
+    const { userAbility, user } = ctx.state;
     const { id, model } = ctx.params;
 
     const entityManager = getService('entity-manager');
@@ -138,7 +138,7 @@ module.exports = {
       return ctx.forbidden();
     }
 
-    const result = await entityManager.delete(entity, model);
+    const result = await entityManager.delete(entity, model, user);
 
     ctx.body = permissionChecker.sanitizeOutput(result);
   },
@@ -196,7 +196,7 @@ module.exports = {
   },
 
   async bulkDelete(ctx) {
-    const { userAbility } = ctx.state;
+    const { userAbility, user } = ctx.state;
     const { model } = ctx.params;
     const { query, body } = ctx.request;
     const { ids } = body;
@@ -218,7 +218,7 @@ module.exports = {
       _where: [idsWhereClause].concat(permissionQuery._where || {}),
     };
 
-    const results = await entityManager.findAndDelete(params, model);
+    const results = await entityManager.findAndDelete(params, model, user);
 
     ctx.body = results.map(result => permissionChecker.sanitizeOutput(result));
   },
