@@ -293,6 +293,7 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
           type: 'success',
           message: { id: getTrad('success.record.save') },
         });
+        getMyLastBuildLog()
 
         dispatch(submitSucceeded(cleanReceivedData(response)));
 
@@ -344,6 +345,52 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
     redirectionLink,
   });
 };
+
+const getMyLastBuildLog = async () => {
+  const token = await getToken()
+
+  if (token) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    let result = await fetch(`http://localhost:1337/publisher/my-started-build-logs/`, requestOptions)
+      .then(response => response.text())
+      .then(result => result)
+      .catch(error => console.log('error', error));
+
+    result = JSON.parse(result)
+    console.log('Thisresult', result);
+
+    let s = result.queue_est_duration
+    const ms = s % 1000;
+    s = (s - ms) / 1000;
+    const secs = s % 60;
+    s = (s - secs) / 60;
+    const mins = s % 60;
+    const hrs = (s - mins) / 60;
+
+    strapi.notification.toggle({
+      type: 'success',
+      message: `Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`,
+      blockTransition: true
+    });
+  }
+}
+
+const getToken = () => {
+  const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
+  if (token) {
+    return token.replace(/"/g, '')
+  } else {
+    return null
+  }
+}
 
 CollectionTypeFormWrapper.defaultProps = {
   id: null,
