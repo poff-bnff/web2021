@@ -233,6 +233,31 @@ module.exports = {
     return result
 
   },
+  myStartedBuildLogs: async (ctx) => {
+    const params = {
+      'admin_user.id': ctx.state.admin.id,
+      type: 'build',
+      _sort: 'id:desc'
+    }
+    let result = {}
+    let sanitizedResult
+    let tries = 0
+
+    while (!result.in_queue && tries < 100) {
+      result = await strapi.query("build_logs", "publisher").findOne(params);
+
+      sanitizedResult = {
+        queued_time: result.queued_time,
+        build_est_duration: result.build_est_duration,
+        queue_est_duration: result.queue_est_duration,
+        in_queue: result.in_queue
+      }
+      console.log('Try nr ', tries);
+      tries++
+    }
+    console.log({sanitizedResult});
+    return sanitizedResult
+  },
   onelog: async (ctx) => {
 
     const params = { id: ctx.params.id }

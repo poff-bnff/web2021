@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/my-started-build-logs",
+      "handler": "publisher.myStartedBuildLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
       "config": {
