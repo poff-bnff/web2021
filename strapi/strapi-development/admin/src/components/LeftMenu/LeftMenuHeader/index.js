@@ -64,6 +64,13 @@ async function fetchLogs() {
     }
 
     result.map(async finishedLog => {
+
+      if (finishedLog.paths.articleTypeMissing){
+        toggleSavedNotUpNotif(finishedLog)
+        setShownToUser(finishedLog)
+        return
+      }
+
       let formattedPaths = [];
       if (finishedLog.build_args) {
         const paths = finishedLog.paths
@@ -118,6 +125,25 @@ const setShownToUser = async (log) => {
     .catch(error => console.log('error', error));
 
 
+}
+
+
+const toggleSavedNotUpNotif = finishedLog => {
+
+  const [collectionType, id] = finishedLog.build_args.split(" ")
+
+  const link = {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
+    color: '#0097f7',
+  }
+
+  strapi.notification.toggle({
+    type: 'info',
+    message: `Your save of ${finishedLog.build_args} finished, not built! Error: Article type is required, but not selected.`,
+    blockTransition: true,
+    link: link
+  })
 }
 
 const toggleErrorNotif = (finishedLog, formattedPaths) => {
