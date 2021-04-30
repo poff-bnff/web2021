@@ -12,7 +12,7 @@ const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
 let TOKEN = ''
 
-const production = true 
+const production = true
 let https
 let strapiAddress
 let strapiPort
@@ -230,7 +230,7 @@ function calcBuildAvgDur(options, queueEst = false) {
     }
 }
 
-function calcQueueEstDur() {
+async function calcQueueEstDur() {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting queue estimates');
         return null;
@@ -271,8 +271,15 @@ function calcQueueEstDur() {
         }
     }
 
+    const ongoingBuild = await logQuery(queueFile[0].log_id, 'GET')
+    const ongoingBuildStartTime = ongoingBuild.start_time ? Date.parse(ongoingBuild.start_time) : null
+    let ongoingBuildLastedInMs = 0
+    if (ongoingBuildStartTime) {
+        ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
+    }
+
     return {
-        duration: Math.round(estimateInMs),
+        duration: Math.round(estimateInMs-ongoingBuildLastedInMs),
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
