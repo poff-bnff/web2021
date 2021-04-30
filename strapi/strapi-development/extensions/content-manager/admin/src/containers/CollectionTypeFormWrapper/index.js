@@ -44,8 +44,6 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
   const isMounted = useRef(true);
   const emitEventRef = useRef(emitEvent);
 
-  console.log(allLayoutData, children, slug, id, origin);
-
   const allLayoutDataRef = useRef(allLayoutData);
 
   const isCreatingEntry = id === null;
@@ -201,7 +199,6 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
   const onDelete = useCallback(
     async trackerProperty => {
       try {
-        console.log('DELETING');
         emitEventRef.current('willDeleteEntry', trackerProperty);
 
         const response = await request(getRequestUrl(`${slug}/${id}`), {
@@ -388,11 +385,9 @@ const getBuildEstimateDuration = async (buildArgs) => {
       .catch(error => console.log('error', error));
 
     result = JSON.parse(result)
-    console.log('Thisresult', result);
 
     if (buildArgs !== result.build_args) {
-      console.log(`BUILDARGS`, buildArgs, `===`, result.build_args);
-      console.log('Not server build');
+      // Not server build
       return null
     }
 
@@ -405,10 +400,18 @@ const getBuildEstimateDuration = async (buildArgs) => {
     const hrs = (s - mins) / 60;
 
     if (result.site) {
+      let notifyMessage
+      if (result.queue_est_duration > 0) {
+        notifyMessage = `Queue length: ${result.in_queue}. Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`
+      } else {
+        notifyMessage = `Queue length: ${result.in_queue}. Estimate build finish time unknown`
+      }
+
       strapi.notification.toggle({
         type: 'success',
-        message: `Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`,
-        blockTransition: true
+        message: notifyMessage,
+        // blockTransition: true
+        timeout: 15000
       });
     }
   }

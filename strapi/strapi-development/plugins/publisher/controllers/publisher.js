@@ -255,10 +255,8 @@ module.exports = {
         site: result.site,
         build_args: result.build_args,
       }
-      console.log('Try nr ', tries);
       tries++
     }
-    console.log({sanitizedResult});
     return sanitizedResult
   },
   onelog: async (ctx) => {

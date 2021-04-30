@@ -179,11 +179,14 @@ function ListView({
   const handleConfirmDeleteAllData = useCallback(async () => {
     try {
       setModalLoadingState();
-
       await request(getRequestUrl(`collection-types/${slug}/actions/bulkDelete`), {
         method: 'POST',
         body: { ids: entriesToDelete },
       });
+
+      const buildArgs = `${[`${slug.split('::')[1].split('.')[0]}`]} ${[...entriesToDelete].sort((a, b) => a - b).slice(-1)[0]}`
+
+      getBuildEstimateDuration(buildArgs)
 
       onDeleteSeveralDataSucceeded();
       emitEventRef.current('didBulkDeleteEntries');
@@ -215,6 +218,10 @@ function ListView({
         type: 'success',
         message: { id: `${pluginId}.success.record.delete` },
       });
+
+      const buildArgs = `${slug.split('::')[1].split('.')[0]} ${idToDelete}`
+
+      getBuildEstimateDuration(buildArgs)
 
       // Close the modal and refetch data
       onDeleteDataSucceeded();
@@ -488,6 +495,66 @@ function ListView({
       </ListViewProvider>
     </>
   );
+}
+
+const getBuildEstimateDuration = async (buildArgs) => {
+  const token = await getToken()
+
+  if (token) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    let result = await fetch(`http://localhost:1337/publisher/my-started-build-log/`, requestOptions)
+      .then(response => response.text())
+      .then(result => result)
+      .catch(error => console.log('error', error));
+
+    result = JSON.parse(result)
+
+    if (buildArgs !== result.build_args) {
+      // Not server build
+      return null
+    }
+
+    let s = result.queue_est_duration
+    const ms = s % 1000;
+    s = (s - ms) / 1000;
+    const secs = s % 60;
+    s = (s - secs) / 60;
+    const mins = s % 60;
+    const hrs = (s - mins) / 60;
+
+    if (result.site) {
+      let notifyMessage
+      if (result.queue_est_duration > 0) {
+        notifyMessage = `Queue length: ${result.in_queue}. Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`
+      } else {
+        notifyMessage = `Queue length: ${result.in_queue}. Estimate build finish time unknown`
+      }
+
+      strapi.notification.toggle({
+        type: 'success',
+        message: notifyMessage,
+        // blockTransition: true
+        timeout: 15000
+      });
+    }
+  }
+}
+
+const getToken = () => {
+  const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
+  if (token) {
+    return token.replace(/"/g, '')
+  } else {
+    return null
+  }
 }
 
 ListView.defaultProps = {
