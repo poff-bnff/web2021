@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const strapiHost = 'https://admin.poff.ee'
-//const strapiHost = 'http://localhost:1337'
+// const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';
 
@@ -64,6 +64,13 @@ async function fetchLogs() {
     }
 
     result.map(async finishedLog => {
+
+      if (finishedLog.paths.articleTypeMissing){
+        toggleSavedNotUpNotif(finishedLog)
+        setShownToUser(finishedLog)
+        return
+      }
+
       let formattedPaths = [];
       if (finishedLog.build_args) {
         const paths = finishedLog.paths
@@ -120,11 +127,37 @@ const setShownToUser = async (log) => {
 
 }
 
+
+const toggleSavedNotUpNotif = finishedLog => {
+
+  const [collectionType, id] = finishedLog.build_args.split(" ")
+
+  const link = {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
+    color: '#0097f7',
+  }
+
+  strapi.notification.toggle({
+    type: 'info',
+    message: `Your save of ${finishedLog.build_args} finished, not built! Error: Article type is required, but not selected.`,
+    blockTransition: true,
+    link: link
+  })
+}
+
 const toggleErrorNotif = (finishedLog, formattedPaths) => {
+
+  const [collectionType, id] = finishedLog.build_args.split(" ")
 
   formattedPaths.push({
     url: `${strapiHost}/admin/plugins/content-manager/collectionType/plugins::publisher.build_logs/${finishedLog.id}`,
     label: 'Click here for full error log.',
+    color: '#ff5d00',
+  },
+  {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
     color: '#ff5d00',
   })
 
