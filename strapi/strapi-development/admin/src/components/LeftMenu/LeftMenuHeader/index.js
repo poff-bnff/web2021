@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 const strapiHost = 'https://admin.poff.ee'
-//const strapiHost = 'http://localhost:1337'
+// const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';
 
@@ -148,9 +148,16 @@ const toggleSavedNotUpNotif = finishedLog => {
 
 const toggleErrorNotif = (finishedLog, formattedPaths) => {
 
+  const [collectionType, id] = finishedLog.build_args.split(" ")
+
   formattedPaths.push({
     url: `${strapiHost}/admin/plugins/content-manager/collectionType/plugins::publisher.build_logs/${finishedLog.id}`,
     label: 'Click here for full error log.',
+    color: '#ff5d00',
+  },
+  {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
     color: '#ff5d00',
   })
 
