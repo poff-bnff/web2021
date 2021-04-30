@@ -44,6 +44,8 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
   const isMounted = useRef(true);
   const emitEventRef = useRef(emitEvent);
 
+  console.log(allLayoutData, children, slug, id, origin);
+
   const allLayoutDataRef = useRef(allLayoutData);
 
   const isCreatingEntry = id === null;
@@ -199,6 +201,7 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
   const onDelete = useCallback(
     async trackerProperty => {
       try {
+        console.log('DELETING');
         emitEventRef.current('willDeleteEntry', trackerProperty);
 
         const response = await request(getRequestUrl(`${slug}/${id}`), {
@@ -208,6 +211,10 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
         strapi.notification.success(getTrad('success.record.delete'));
 
         emitEventRef.current('didDeleteEntry', trackerProperty);
+
+        const buildArgs = `${slug.split('::')[1].split('.')[0]} ${id}`
+
+        getBuildEstimateDuration(buildArgs)
 
         return Promise.resolve(response);
       } catch (err) {
@@ -238,6 +245,10 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
           type: 'success',
           message: { id: getTrad('success.record.save') },
         });
+
+        const buildArgs = `${slug.split('::')[1].split('.')[0]} ${response.id}`
+
+        getBuildEstimateDuration(buildArgs)
 
         dispatch(submitSucceeded(cleanReceivedData(response)));
         // Enable navigation and remove loaders
@@ -271,6 +282,11 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
         type: 'success',
         message: { id: getTrad('success.record.publish') },
       });
+
+      const buildArgs = `${slug.split('::')[1].split('.')[0]} ${id}`
+
+      getBuildEstimateDuration(buildArgs)
+
     } catch (err) {
       displayErrors(err);
       dispatch(setStatus('resolved'));
@@ -293,7 +309,10 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
           type: 'success',
           message: { id: getTrad('success.record.save') },
         });
-        getMyLastBuildLog()
+
+        const buildArgs = `${slug.split('::')[1].split('.')[0]} ${id}`
+
+        getBuildEstimateDuration(buildArgs)
 
         dispatch(submitSucceeded(cleanReceivedData(response)));
 
@@ -321,6 +340,10 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
       emitEventRef.current('didUnpublishEntry');
       strapi.notification.success(getTrad('success.record.unpublish'));
 
+      const buildArgs = `${slug.split('::')[1].split('.')[0]} ${id}`
+
+      getBuildEstimateDuration(buildArgs)
+
       dispatch(submitSucceeded(cleanReceivedData(response)));
       dispatch(setStatus('resolved'));
     } catch (err) {
@@ -346,7 +369,7 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }
   });
 };
 
-const getMyLastBuildLog = async () => {
+const getBuildEstimateDuration = async (buildArgs) => {
   const token = await getToken()
 
   if (token) {
@@ -359,13 +382,19 @@ const getMyLastBuildLog = async () => {
       redirect: 'follow'
     };
 
-    let result = await fetch(`http://localhost:1337/publisher/my-started-build-logs/`, requestOptions)
+    let result = await fetch(`http://localhost:1337/publisher/my-started-build-log/`, requestOptions)
       .then(response => response.text())
       .then(result => result)
       .catch(error => console.log('error', error));
 
     result = JSON.parse(result)
     console.log('Thisresult', result);
+
+    if (buildArgs !== result.build_args) {
+      console.log(`BUILDARGS`, buildArgs, `===`, result.build_args);
+      console.log('Not server build');
+      return null
+    }
 
     let s = result.queue_est_duration
     const ms = s % 1000;
@@ -375,11 +404,13 @@ const getMyLastBuildLog = async () => {
     const mins = s % 60;
     const hrs = (s - mins) / 60;
 
-    strapi.notification.toggle({
-      type: 'success',
-      message: `Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`,
-      blockTransition: true
-    });
+    if (result.site) {
+      strapi.notification.toggle({
+        type: 'success',
+        message: `Estimate build finish in: ${hrs > 0 ? `${hrs} h `: ''} ${mins} m ${secs} s`,
+        blockTransition: true
+      });
+    }
   }
 }
 

@@ -26,8 +26,8 @@
     },
     {
       "method": "GET",
-      "path": "/my-started-build-logs",
-      "handler": "publisher.myStartedBuildLogs",
+      "path": "/my-started-build-log",
+      "handler": "publisher.myStartedBuildLog",
       "config": {
         "policies": []
       }

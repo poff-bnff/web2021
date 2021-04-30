@@ -233,12 +233,13 @@ module.exports = {
     return result
 
   },
-  myStartedBuildLogs: async (ctx) => {
+  myStartedBuildLog: async (ctx) => {
     const params = {
       'admin_user.id': ctx.state.admin.id,
       type: 'build',
       _sort: 'id:desc'
     }
+
     let result = {}
     let sanitizedResult
     let tries = 0
@@ -250,7 +251,9 @@ module.exports = {
         queued_time: result.queued_time,
         build_est_duration: result.build_est_duration,
         queue_est_duration: result.queue_est_duration,
-        in_queue: result.in_queue
+        in_queue: result.in_queue,
+        site: result.site,
+        build_args: result.build_args,
       }
       console.log('Try nr ', tries);
       tries++
