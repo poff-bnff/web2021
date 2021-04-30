@@ -104,7 +104,6 @@ const addS = async (result) => {
 }
 
 const fetchChangedSlug = async args => {
-  console.log(args)
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
@@ -115,6 +114,11 @@ const fetchChangedSlug = async args => {
 
   if (thereIsSomeWhereToLinkTo.includes(collectionType)) {
 
+    
+    if (result.article_types && result.article_types.length === 0){
+      return {articleTypeMissing: true}
+    }
+    
     if (result.article_types) {
       for (const articleType of result.article_types) {
         for (const key in articleType) {
