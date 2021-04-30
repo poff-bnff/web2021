@@ -321,7 +321,7 @@ async function call_build(result, domains, model_name, del = false) {
 
 async function call_delete(result, domains, model_name) {
     if (Array.isArray(result)) {
-        result = result[0]
+        result = result.sort((a, b) => b.id - a.id)[0]
     }
     await modify_stapi_data(result, model_name, true)
     await call_build(result, domains, model_name, true)
