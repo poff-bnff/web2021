@@ -136,7 +136,7 @@ function writeToOtherBuildLogs(LogIds, data) {
     })
 }
 
-function addToQueue(options) {
+async function addToQueue(options) {
     const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
 
     options.time = getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)')
@@ -149,7 +149,7 @@ function addToQueue(options) {
 
     // Update Strapi deploy_logs
     const thisBuildAvg = calcBuildAvgDur(options)
-    const queueEst = calcQueueEstDur()
+    const queueEst = await calcQueueEstDur()
     const postData = {
         build_est_duration: thisBuildAvg,
         queue_est_duration: queueEst.duration || 0,
