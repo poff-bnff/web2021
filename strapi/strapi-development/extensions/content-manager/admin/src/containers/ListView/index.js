@@ -49,6 +49,9 @@ import {
 import makeSelectListView from './selectors';
 import { getAllAllowedHeaders, getFirstSortableHeader, buildQueryString } from './utils';
 
+const strapiHost = 'https://admin.poff.ee'
+// const strapiHost = 'http://localhost:1337'
+
 /* eslint-disable react/no-array-index-key */
 function ListView({
   canCreate,
@@ -510,7 +513,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
       redirect: 'follow'
     };
 
-    let result = await fetch(`http://localhost:1337/publisher/my-started-build-log/`, requestOptions)
+    let result = await fetch(`${strapiHost}/publisher/my-started-build-log/`, requestOptions)
       .then(response => response.text())
       .then(result => result)
       .catch(error => console.log('error', error));
