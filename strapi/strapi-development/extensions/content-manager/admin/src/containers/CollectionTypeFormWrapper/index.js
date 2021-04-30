@@ -26,6 +26,9 @@ import {
 import selectCrudReducer from '../../sharedReducers/crudReducer/selectors';
 import { getRequestUrl } from './utils';
 
+const strapiHost = 'https://admin.poff.ee'
+// const strapiHost = 'http://localhost:1337'
+
 // This container is used to handle the CRUD
 const CollectionTypeFormWrapper = ({ allLayoutData, children, slug, id, origin }) => {
   const { emitEvent } = useGlobalContext();
@@ -379,7 +382,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
       redirect: 'follow'
     };
 
-    let result = await fetch(`http://localhost:1337/publisher/my-started-build-log/`, requestOptions)
+    let result = await fetch(`${strapiHost}/publisher/my-started-build-log/`, requestOptions)
       .then(response => response.text())
       .then(result => result)
       .catch(error => console.log('error', error));
