@@ -3,6 +3,8 @@ var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
+var strapiDomain = 'http://localhost:1337'
+
 
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
@@ -105,7 +107,7 @@ function loadUserProfileH() {
         redirect: 'follow'
     }
 
-    fetch('https://api.poff.ee/profile', requestOptions).then(function (response) {
+    fetch('http://localhost:1337/users/me', requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
@@ -159,9 +161,9 @@ function saveUrl(){
 
 
 function useUserData(userProf){
-    if(userProf.name){
+    if(userProf.firstName){
         try{
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.name
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.firstName
         }catch(err){
             null
         }

@@ -2,58 +2,93 @@
 // console.log(langpath)
 
 //info kasutajale kui suunatakse tagasi lemmikutest, profiili vaatest või minu
-if([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)){
+if ([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)) {
     // console.log("tulid profiilist")
     document.getElementById('fromUserProfile').style.display = 'block'
 }
-if([`${location.origin}/minupoff`, `${location.origin}/en/mypoff`, `${location.origin}/ru/moipoff`].includes(document.referrer)){
+if ([`${location.origin}/minupoff`, `${location.origin}/en/mypoff`, `${location.origin}/ru/moipoff`].includes(document.referrer)) {
     // console.log("tulid oma passidest")
     // console.log(self.mypoff.path)
     document.getElementById('fromMyPoff').style.display = 'block'
 }
-if([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${location.origin}/ru/favourite`].includes(document.referrer)){
+if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${location.origin}/ru/favourite`].includes(document.referrer)) {
     // console.log("tulid Lemmikutest")
     document.getElementById('fromFavo').style.display = 'block'
 }
 
 
+// if (window.location.hash) {
+
+//     const [
+//         access_token,
+//         id_token,
+//         token_type,
+//         token_expires,
+//     ] = window.location.hash.substr(1).split('&')
+
+//     if ((window.location.hash).includes('Already+found+an+entry+for+username')) {
+//         let errorMessage = (window.location.hash).split('+')
+//         for (item of errorMessage) {
+//             // console.log(item)
+
+//             if (item.includes('google') || item.includes('facebook') || item.includes('eventival')) {
+//                 item = item.split('_')
+//                 let provider = item[0]
+//                 // console.log(provider)
+//                 providerLogin(provider)
+//             }
+//         }
+//         // console.log(errorMessage)
+//     }
+//     else if ((window.location.hash).includes('User+is+not+confirmed')){
+//         unConfirmed.style.display = 'block'
+//         window.location.hash = ''
+//     }
+
+//     else if (access_token && id_token) {
+//         storeAuthentication(access_token.split('=')[1], id_token.split('=')[1])
+//         window.location.hash = ''
+//     }
+// }
+
 if (window.location.hash) {
-
-    const [
-        access_token,
-        id_token,
-        token_type,
-        token_expires,
-    ] = window.location.hash.substr(1).split('&')
-
-    if ((window.location.hash).includes('Already+found+an+entry+for+username')) {
-        let errorMessage = (window.location.hash).split('+')
-        for (item of errorMessage) {
-            // console.log(item)
-
-            if (item.includes('google') || item.includes('facebook') || item.includes('eventival')) {
-                item = item.split('_')
-                let provider = item[0]
-                // console.log(provider)
-                providerLogin(provider)
-            }
-        }
-        // console.log(errorMessage)
-    }
-    else if ((window.location.hash).includes('User+is+not+confirmed')){
-        unConfirmed.style.display = 'block'
-        window.location.hash = ''
+    const [provider] = window.location.hash.substr(1).split('?')
+    const search = window.location.hash.split('?')[1]
+    const tokenInfo = search.split('&')
+    const token = {}
+    for (const inf of tokenInfo){
+        token[inf.split('=')[0]] = inf
     }
 
-    else if (access_token && id_token) {
-        storeAuthentication(access_token.split('=')[1], id_token.split('=')[1])
-        window.location.hash = ''
-    }
+
+   
+    fetchJWTandProfileFromStrapi(token.access_token, provider)
 }
 
-if (location.search) {
-    getTokensForCode()
+// if (window.location.search) {
+//     console.log(window.location.search);
+//     const access_token = window.location.search.split('&')[0]
+//     console.log(access_token);
+//     // fetchJWTandProfileFromStrapi(access_token, 'github')
 
+// }
+
+async function fetchJWTandProfileFromStrapi(access_token, provider) {
+
+    console.log(access_token);
+    console.log(provider);
+
+    const strapiFetchUrl = `${strapiDomain}/auth/${provider}/callback?${access_token}`
+
+    let response = await fetch(strapiFetchUrl)
+    // let response = await fetch(`http://localhost:1337/auth/eventival/callback${access_token}`)
+    response = await response.json();
+
+    const JWT = response.jwt
+
+    console.log(JWT);
+
+    storeAuthentication(JWT)
 }
 
 // salvesta timestamp
@@ -108,7 +143,7 @@ async function loginViaCognito() {
             return
         }
 
-        if (response2.message === 'Internal Server Error'){
+        if (response2.message === 'Internal Server Error') {
             document.getElementById('wrongPswd').style.display = 'block'
             return
         }
@@ -131,7 +166,7 @@ async function loadUserProfile() {
     // console.log('loadUserProfile');
     let userProfile
 
-    let response = await fetch(`https://api.poff.ee/profile`, {
+    let response = await fetch(`${strapiDomain}/users/me`, {
         method: 'GET',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
@@ -146,15 +181,15 @@ async function loadUserProfile() {
 
 function checkIfUserProfFilled(userProfile) {
     // console.log('checkIfUserProfFilled');
-    // console.log(userProfile.profile_filled);
+    // console.log(userProfile.profileFilled);
 
-    if (userProfile.profile_filled) {
-        // console.log(userProfile.profile_filled)
+    if (userProfile.profileFilled) {
+        // console.log(userProfile.profileFilled)
         // console.log('profile filled')
         redirectToPreLoginUrl()
     }
-    else if (!userProfile.profile_filled) {
-        // console.log(userProfile.profile_filled)
+    else if (!userProfile.profileFilled) {
+        // console.log(userProfile.profileFilled)
         // console.log('profile not filled')
         window.open(`${pageURL}/userprofile`, '_self')
 
@@ -191,20 +226,6 @@ async function providerLogin(provider) {
 
     window.open(response2.providerUrl, '_self')
 }
-
-
-async function getTokensForCode() {
-    var requestOptions = {
-        method: 'POST',
-        redirect: 'follow'
-    }
-
-    let response = await fetch(`https://api.poff.ee/auth`, requestOptions)
-
-    // console.log(await response.json)
-
-}
-
 
 function directToSignup() {
     window.open(`${location.origin}/signup`, '_self')
@@ -303,4 +324,6 @@ function askForNewPassword() {
     document.getElementById('pswdResetEnterNewMessage').style.display = 'block'
     resetPasswordBtn.style.display = 'block'
 }
+
+
 

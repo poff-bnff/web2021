@@ -9,7 +9,7 @@ if (validToken) {
 }
 
 async function loadUserInfo() {
-    let response = await fetch(`https://api.poff.ee/profile`, {
+    let response = await fetch(`http://localhost:1337/users/me`, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
@@ -25,30 +25,23 @@ async function loadUserInfo() {
     }
     // console.log("täidan ankeedi " + userProfile.name + "-i cognitos olevate andmetega.....")
     email.innerHTML = userProfile.email
-    if (userProfile.name) firstName.value = userProfile.name
-    if (userProfile.family_name) lastName.value = userProfile.family_name
+    if (userProfile.firstName) firstName.value = userProfile.firstName
+    if (userProfile.lastName) lastName.value = userProfile.lastName
     if (userProfile.gender) gender.value = userProfile.gender
-    if (userProfile.phone_number) phoneNr.value = userProfile.phone_number
+    if (userProfile.phoneNr) phoneNr.value = userProfile.phoneNr
     if (userProfile.birthdate) dob.value = userProfile.birthdate
 
     if (userProfile.address) {
         let address = userProfile.address.split(", ")
         let riik = address[0]
         let linn = address[1]
-        citySelection.value = linn
         countrySelection.value = riik
+        citySelection.value = linn
     }
 
     if (userProfile.picture) {
         if (userProfile.picture !== "no profile picture saved") {
-            let res = await fetch(`https://api.poff.ee/profile/picture_down`, {
-                method: "GET",
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
-                },
-            });
-            let profilePicture = await res.json();
-            imgPreview.src = profilePicture.url
+            imgPreview.src = `${strapiDomain}${userProfile.picture.url}`
         }
 
     }
@@ -70,29 +63,28 @@ async function sendUserProfile() {
         pictureInfo = 'this users picture is in S3'
     }
 
-    let userToSend = [
-        { Name: "picture", Value: pictureInfo },
-        { Name: "name", Value: firstName.value },
-        { Name: "family_name", Value: lastName.value },
-        { Name: "gender", Value: gender.value },
-        { Name: "birthdate", Value: dob.value },
-        { Name: "phone_number", Value: '+' + phoneNr.value },
-        { Name: "address", Value: `${countrySelection.value}, ${citySelection.value}` },
-    ];
+    let userToSend = {
+        // picture: pictureInfo,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        gender: gender.value,
+        birthdate: dob.value,
+        phoneNr: phoneNr.value,
+        address: `${countrySelection.value}, ${citySelection.value}`
+    }
 
+    userToSend = JSON.stringify(userToSend)
     // console.log("kasutaja profiil mida saadan ", userToSend);
 
-    let response = await (await fetch(`https://api.poff.ee/profile`, {
+    let response = await (await fetch(`${strapiDomain}/users/me`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
         },
-        body: JSON.stringify(userToSend)
-    })).json()
+        body: userToSend
+    }))
 
-
-
-    if (response.status) {
+    if (response.status === 200) {
         document.getElementById('profileSent').style.display = 'block'
         if (localStorage.getItem('url')) {
             window.open(localStorage.getItem('url'), '_self')
@@ -131,13 +123,9 @@ async function uploadPic() {
     // console.log("uploading this file to S3....")
     // console.log(profile_pic_to_send)
     //küsib lingi kuhu pilti postitada
-    let linkResponse = await fetch(`https://api.poff.ee/profile/picture_up`, {
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
-        },
-    });
-    data = await linkResponse.json()
+    
+    data = {}
+    data.link = `${strapiDomain}/upload`
     // console.log("saadud link on: ")
     // console.log(data.link)
 
@@ -149,15 +137,27 @@ async function uploadPic() {
     let contentType = 'image/' + fileExt
     // console.log(contentType)
 
+    let files = profile_pic_to_send
+    console.log(files);
+    var formData = new FormData() 
+    formData.append('files', files)
+    formData.append('ref', 'user')
+    formData.append('refId', userProfile.id)
+    formData.append('field', 'picture')
+    formData.append('source', 'users-permissions')
+    
+    console.log(formData);
+
     let requestOptions = {
-        method: 'PUT',
+        method: 'POST',
         headers: {
-            'Content-Type': contentType,
-            'ACL': 'private'
+            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
         },
-        body: profile_pic_to_send,
+        body: formData,
         redirect: 'follow'
     };
+
+
     await fetch(data.link, requestOptions)
 
 }
