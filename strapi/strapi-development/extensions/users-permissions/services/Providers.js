@@ -492,6 +492,23 @@ const getProfile = async (provider, query, callback) => {
         });
       break;
     }
+    case 'eventival': {
+      // get the id_token
+      const accessToken = query.access_token;
+      // decode the jwt token
+      const tokenPayload = jwt.decode(accessToken);
+      if (!tokenPayload) {
+        callback(new Error('unable to decode jwt token'));
+      } else {
+        callback(null, {
+          username: tokenPayload.name,
+          email: tokenPayload.email,
+          externalProviders: [{ provider: provider, UUID: tokenPayload.sub }]
+
+        });
+      }
+      break;
+    }
     case 'auth0': {
       const purestAuth0Conf = {};
       purestAuth0Conf[`https://${grant.auth0.subdomain}.auth0.com`] = {
