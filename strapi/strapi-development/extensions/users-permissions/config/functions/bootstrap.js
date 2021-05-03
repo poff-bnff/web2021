@@ -130,15 +130,15 @@ module.exports = async () => {
       callback: `${strapi.config.server.url}/auth/eventival/callback`,
       scope: ['openid', 'email', 'profile'],
     },
-    auth0: {
-      enabled: false,
-      icon: '',
-      key: '',
-      secret: '',
-      subdomain: 'my-tenant.eu',
-      callback: `${strapi.config.server.url}/auth/auth0/callback`,
-      scope: ['openid', 'email', 'profile'],
-    },
+    // auth0: {
+    //   enabled: false,
+    //   icon: '',
+    //   key: '',
+    //   secret: '',
+    //   subdomain: 'my-tenant.eu',
+    //   callback: `${strapi.config.server.url}/auth/auth0/callback`,
+    //   scope: ['openid', 'email', 'profile'],
+    // },
   };
   const prevGrantConfig = (await pluginStore.get({ key: 'grant' })) || {};
   // store grant auth config to db
