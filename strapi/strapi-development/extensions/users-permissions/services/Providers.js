@@ -57,7 +57,15 @@ const connect = (provider, query) => {
           })
           .get();
 
-        const user = _.find(users, { provider });
+        let user = _.find(users, { provider });
+
+        if (users.length > 0) {
+          user = users[0]
+          const connectedProviders = user.provider.split(',')
+          if (!connectedProviders.includes(provider)) {
+            mergeProviders(user, provider, profile.externalProviders[0])
+          }
+        }
 
         if (_.isEmpty(user) && !advanced.allow_register) {
           return resolve([
@@ -558,7 +566,20 @@ const getProfile = async (provider, query, callback) => {
 const buildRedirectUri = (provider = '') =>
   `${getAbsoluteServerUrl(strapi.config)}/connect/${provider}/callback`;
 
+const mergeProviders = async (user, provider, externalProvider) => {
+  console.log('mergeProviders');
+  const params = {}
+  params.params = { id: user.id }
+  const externalProviders = user.externalProviders
+  externalProvider.dateConnected = new Date().toISOString()
+  externalProviders.push(externalProvider)
+  params.request = { body: { provider: user.provider + ',' + provider, externalProviders: externalProviders } }
+  const updatedUser = await apiUserController.update(params)
+  return updatedUser
+}
+
 module.exports = {
   connect,
   buildRedirectUri,
+  mergeProviders,
 };
