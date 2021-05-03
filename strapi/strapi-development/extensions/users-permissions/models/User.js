@@ -14,5 +14,8 @@ module.exports = {
                 data.profileFilled = false
             }
         },
+        beforeDelete(params){
+            delete params.user
+        }
     }
 }
