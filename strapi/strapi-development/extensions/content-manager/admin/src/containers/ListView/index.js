@@ -21,7 +21,7 @@ import {
 } from 'strapi-helper-plugin';
 import pluginId from '../../pluginId';
 import pluginPermissions from '../../permissions';
-import { formatFiltersFromQuery, getRequestUrl, getTrad } from '../../utils';
+import { formatFiltersFromQuery, getRequestUrl, getTrad, getBuildEstimateDuration } from '../../utils';
 import Container from '../../components/Container';
 import CustomTable from '../../components/CustomTable';
 import FilterPicker from '../../components/FilterPicker';

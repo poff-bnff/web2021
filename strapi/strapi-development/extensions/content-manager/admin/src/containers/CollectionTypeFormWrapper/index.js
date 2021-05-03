@@ -11,7 +11,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
-import { createDefaultForm, getTrad, removePasswordFieldsFromData } from '../../utils';
+import { createDefaultForm, getTrad, removePasswordFieldsFromData, getBuildEstimateDuration } from '../../utils';
 import pluginId from '../../pluginId';
 import { useFindRedirectionLink } from '../../hooks';
 import {
