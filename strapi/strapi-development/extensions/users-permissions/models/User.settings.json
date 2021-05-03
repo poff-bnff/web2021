@@ -62,6 +62,11 @@
     "people": {
       "via": "user",
       "collection": "person"
+    },
+    "externalProviders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.external-providers"
     }
   }
 }
