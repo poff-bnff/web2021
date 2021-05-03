@@ -61,5 +61,7 @@ const getToken = () => {
   }
 }
 
-module.exports = buildArgs => getBuildEstimateDuration(buildArgs)
+export default getBuildEstimateDuration;
+
+// module.exports = buildArgs => getBuildEstimateDuration(buildArgs)
 
