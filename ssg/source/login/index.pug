@@ -10,6 +10,7 @@ block content
         h4#fromFavo(style={display:'none'})= self.label.userprofile.redirectFromFavouritesMessage
 
     section.grid_login
+        - var strapiDomain = 'http://localhost:1337'
         if process.env['DOMAIN'] !== 'industry.poff.ee'
 
             .login_password
@@ -91,6 +92,8 @@ block content
                 h4.dark_1.login_headline#loginMessage= self.label.userprofile.loginRegister
 
                 button.login_btn_secondary#signUpBtn(onclick='directToSignup()')= self.label.userprofile.register
+
+    
 
     style.
         .invalid {background-color: #f5e4e9; display: block; color: black}
