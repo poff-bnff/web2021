@@ -40,8 +40,6 @@ const connect = (provider, query) => {
         return reject([null, err]);
       }
 
-      console.log({profile});
-
       // We need at least the mail.
       if (!profile.email) {
         return reject([null, { message: 'Email was not available.' }]);
@@ -67,7 +65,7 @@ const connect = (provider, query) => {
           user = users[0]
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
-            mergeProviders(user, provider, profile.externalProviders)
+            mergeProviders(user, provider, profile.externalProviders[0])
           }
         }
 
