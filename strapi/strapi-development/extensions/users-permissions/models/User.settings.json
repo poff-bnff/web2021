@@ -100,6 +100,12 @@
       "type": "component",
       "repeatable": true,
       "component": "user.external-providers"
+    },
+    "last10Logins": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.last10-logins",
+      "max": 10
     }
   }
 }

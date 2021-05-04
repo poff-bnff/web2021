@@ -582,8 +582,17 @@ const mergeProviders = async (user, provider, externalProvider) => {
   return updatedUser
 }
 
+const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
+  const lastLogin = {loginDateTime: authTime, provider: provider}
+  if (last10Logins.length === 10) last10Logins.shift()
+  last10Logins.push(lastLogin)
+  const updateData = {last10Logins: last10Logins}
+  const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+}
+
 module.exports = {
   connect,
   buildRedirectUri,
   mergeProviders,
+  logAuthDateTime
 };

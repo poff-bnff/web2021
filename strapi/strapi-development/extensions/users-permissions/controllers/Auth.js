@@ -171,6 +171,9 @@ module.exports = {
           model: strapi.query('user', 'users-permissions').model,
         }),
       });
+      strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
+        user.id.toString(), user.last10Logins, provider, new Date().toISOString()
+      );
     }
   },
 

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_user_last10_logins",
+  "info": {
+    "name": "loginEvent",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "loginDateTime": {
+      "type": "datetime"
+    },
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "eventival",
+        "facebook",
+        "google"
+      ]
+    }
+  }
+}
