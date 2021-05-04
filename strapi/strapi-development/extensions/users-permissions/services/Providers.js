@@ -40,6 +40,8 @@ const connect = (provider, query) => {
         return reject([null, err]);
       }
 
+      console.log({profile});
+
       // We need at least the mail.
       if (!profile.email) {
         return reject([null, { message: 'Email was not available.' }]);
@@ -65,7 +67,7 @@ const connect = (provider, query) => {
           user = users[0]
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
-            mergeProviders(user, provider, profile.externalProviders[0])
+            mergeProviders(user, provider, profile.externalProviders)
           }
         }
 
@@ -204,6 +206,7 @@ const getProfile = async (provider, query, callback) => {
             callback(null, {
               username: body.name,
               email: body.email,
+              externalProviders: [{ provider: provider, UUID: body.id}]
             });
           }
         });
@@ -223,6 +226,7 @@ const getProfile = async (provider, query, callback) => {
             callback(null, {
               username: body.email.split('@')[0],
               email: body.email,
+              externalProviders: [{ provider: provider, UUID: body.user_id }]
             });
           }
         });
