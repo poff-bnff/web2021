@@ -63,6 +63,39 @@
       "via": "user",
       "collection": "person"
     },
+    "profileFilled": {
+      "type": "boolean"
+    },
+    "firstName": {
+      "type": "string",
+      "required": false
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "phoneNr": {
+      "type": "biginteger"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "address": {
+      "type": "string"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
     "externalProviders": {
       "type": "component",
       "repeatable": true,
