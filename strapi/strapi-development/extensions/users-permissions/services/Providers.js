@@ -14,6 +14,8 @@ const purestConfig = require('@purest/providers');
 const { getAbsoluteServerUrl } = require('strapi-utils');
 const jwt = require('jsonwebtoken');
 
+const apiUserController = require('../controllers/user/api');  //c
+
 /**
  * Connect thanks to a third-party provider.
  *
