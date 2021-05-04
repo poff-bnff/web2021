@@ -38,6 +38,7 @@ const resolveControllerMethod = method => ctx => {
 module.exports = {
   create: resolveControllerMethod('create'),
   update: resolveControllerMethod('update'),
+  updateme: resolveControllerMethod('updateme'),
 
   /**
    * Retrieve user records.

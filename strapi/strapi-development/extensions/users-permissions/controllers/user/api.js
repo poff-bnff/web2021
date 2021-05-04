@@ -170,4 +170,46 @@ module.exports = {
 
     ctx.send(sanitizeUser(data));
   },
+  async updateme(ctx) {
+
+    ctx.request.body = JSON.parse(ctx.request.body)
+  
+    const { id } = ctx.state.user;
+    const { password } = ctx.request.body;
+ 
+    const user = await strapi.plugins['users-permissions'].services.user.fetch({
+      id,
+    });
+
+    if (_.has(ctx.request.body, 'email')) {
+      return ctx.badRequest('email.notNull');
+    }
+
+    if (_.has(ctx.request.body, 'username')) {
+      return ctx.badRequest('username.notNull');
+    }
+
+    if (_.has(ctx.request.body, 'password') && !password && user.provider === 'local') {
+      return ctx.badRequest('password.notNull');
+    }
+
+    if (_.has(ctx.request.body, 'provider')) {
+      return ctx.badRequest('provider.notNull');
+    }
+    if (_.has(ctx.request.body, 'role')) {
+      return ctx.badRequest('role.notNull');
+    }
+
+    let updateData = {
+      ...ctx.request.body,
+    };
+
+    if (_.has(ctx.request.body, 'password') && password === user.password) {
+      delete updateData.password;
+    }
+
+    const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+    // toSheets.newUserToSheets(updatedUser)
+    ctx.send(sanitizeUser(updatedUser));
+  },
 };
