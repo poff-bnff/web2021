@@ -10,9 +10,9 @@ const rootDir =  path.join(__dirname, '..')
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryevents');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata');
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
-const STRAPIDATA_INDUSTRY_EVENTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
+const STRAPIDATA_INDUSTRY_EVENTS = yaml.load(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
@@ -135,7 +135,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 ]
             }).toString())
 
-            const oneYaml = yaml.safeDump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
 
             let saveDir = path.join(fetchDataDir, dirSlug);
@@ -181,11 +181,11 @@ if (DOMAIN === 'industry.poff.ee') {
         }
         console.log(`${dataToYAML.length} Industry Events ready for building`);
     }
-    const allDataYAML = yaml.safeDump(dataToYAML, { 'noRefs': true, 'indent': '4' });
+    const allDataYAML = yaml.dump(dataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `industryeventscalendar.en.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
-    const allNewDataYAML = yaml.safeDump(newDataToYAML, { 'noRefs': true, 'indent': '4' });
+    const allNewDataYAML = yaml.dump(newDataToYAML, { 'noRefs': true, 'indent': '4' });
     const yamlNewPath = path.join(fetchDir, `industryevents.en.yaml`);
     fs.writeFileSync(yamlNewPath, allNewDataYAML, 'utf8');
 
@@ -315,16 +315,16 @@ if (DOMAIN === 'industry.poff.ee') {
             starttimes: mSort(filters.starttimes),
         }
 
-        let searchYAML = yaml.safeDump(events_search, { 'noRefs': true, 'indent': '4' })
+        let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `search_industryeventscalendar.yaml`), searchYAML, 'utf8')
 
-        let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+        let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `filters_industryeventscalendar.yaml`), filtersYAML, 'utf8')
 
     }
 } else {
 
-    let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+    let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_industryeventscalendar.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `filters_industryeventscalendar.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `industryeventscalendar.en.yaml`), emptyYAML, 'utf8');

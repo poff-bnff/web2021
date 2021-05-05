@@ -2,15 +2,13 @@
   "collectionName": "components_article_trio_item_filmikools",
   "info": {
     "name": "TrioItemFilmikool",
-    "icon": "ad"
+    "icon": "ad",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "lead": {
-      "type": "richtext"
     },
     "customUrl": {
       "type": "string"
@@ -25,6 +23,12 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "lead": {
+      "type": "string"
+    },
+    "filmikooli_article": {
+      "model": "filmikooli-article"
     }
   }
 }

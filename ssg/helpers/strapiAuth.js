@@ -1,5 +1,16 @@
-const https = require('https')
+const production = true 
+let https
+let strapiAddress
+let strapiPort
 
+if (production) {
+    https = require('https')
+    strapiAddress = process.env['StrapiHostPoff2021']
+} else {
+    https = require('http')
+    strapiAddress = 'localhost'
+    strapiPort = '1337'
+}
 
 async function strapiAuth() {
 
@@ -9,17 +20,19 @@ async function strapiAuth() {
             password: process.env['StrapiPassword']
         }
 
-        // console.log(postData)
-        // console.log(process.env['StrapiHostPoff2021'])
-
         const options = {
-            hostname: process.env['StrapiHostPoff2021'],
+            hostname: strapiAddress,
             path: '/auth/local',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
         }
+
+        if (!production){
+            options.port = strapiPort
+        }
+
         // console.log({options, postData})
         const request = https.request(options, (response) => {
             response.setEncoding('utf8')
@@ -29,8 +42,15 @@ async function strapiAuth() {
             })
 
             response.on('end', function () {
-                tokenStr = JSON.parse(tokenStr)['jwt']
-                resolve(tokenStr)
+                try {
+                    tokenStr = JSON.parse(tokenStr)['jwt']
+                    resolve(tokenStr)
+                } catch (err) {
+                    for (let i = 0; i < 5; i++) {
+                        console.log('!!!!!!!!!!!!!!!!!!!!!!!! ERROR, STRAPI IS DOWN !!!!!!!!!!!!!!!!!!!!!!!!');
+                    }
+                    reject
+                }
             })
 
         })

@@ -18,7 +18,7 @@ async function main() {
         if (error) throw new Error(error);
 
         if (response.body === undefined) {
-            yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+            yaml.dump([], { 'noRefs': true, 'indent': '4' })
         } else {
             const concerts = JSON.parse(response.body).responseData.concert
             const concertsFile = path.join(fetchDir, `PL_info.yaml`)

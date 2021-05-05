@@ -1,0 +1,743 @@
+-
+    id: 3
+    namePrivate: Hundipass 36
+    product_type:
+        id: 4
+    festival_edition:
+        id: 1
+    codePrefix: h36
+    slug_et: product-category-1
+    slug_en: product-category-1
+    slug_ru: product-category-1
+    name:
+        id: 3925
+        et: Hundipass 36
+        en: Wolf Pass 36
+        ru: Wolf Pass 36
+    description:
+        id: 7933
+        et: >-
+            Hundipass 36 sisaldab 36 Hundipassi piletit.
+
+
+            Lubab seansile võtta kuni 2 piletit.
+
+
+            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
+            Kinoffil.
+
+
+            Hundipass 36 kaelakaardi saab kätte 24 tundi pärast ostu Coca-Cola
+            Plaza piletimüügi punktist.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Hundipassi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
+        en: >-
+            Wolf Pass 36 includes 36 Wolf Pass tickets (Hundipassi pilet)
+
+
+            Allows to take up to 2 tickets per screening.
+
+
+            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
+
+
+            Wolf Pass badge will be ready for you 24 hours after the purchase at
+            Coca-Cola Plaza ticket point. 
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema.
+
+
+            [How to use Wolf
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 5
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    salesPeriod:
+        -
+            id: 6
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    ticketingRight:
+        -
+            id: 3
+            ticketType: Hundipassi pilet
+            rightLimit: 36
+    priceAtPeriod:
+        -
+            id: 3
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 136
+    images:
+        id: 3
+        imageDefault:
+            id: 1527
+            name: hp36_et.svg
+            width: 555
+            height: 800
+            hash: hp36_et_96f3465aa8
+            ext: .svg
+            url: /uploads/hp36_et_96f3465aa8.svg
+        image_et:
+            id: 1527
+            name: hp36_et.svg
+            width: 555
+            height: 800
+            hash: hp36_et_96f3465aa8
+            ext: .svg
+            url: /uploads/hp36_et_96f3465aa8.svg
+        image_en:
+            id: 1521
+            name: hp36_en.svg
+            width: 555
+            height: 800
+            hash: hp36_en_8e8e803234
+            ext: .svg
+            url: /uploads/hp36_en_8e8e803234.svg
+-
+    id: 4
+    namePrivate: Toetaja Hundipass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 1
+    codePrefix: h00
+    slug_et: product-category-4
+    slug_en: product-category-4
+    slug_ru: product-category-4
+    name:
+        id: 7686
+        et: Toetaja Hundipass
+        en: Supporter's Wolf Pass
+        ru: Supporter's Wolf Pass
+    description:
+        id: 8212
+        et: >-
+            Toetaja Hundipass sisaldab piiramatul hulgal Hundipassi pileteid.
+
+
+            Lubab seansile võtta kuni 2 piletit.
+
+
+            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
+            Kinoffil.
+
+
+            Toetaja Hundipassi kaelakaardi saab kätte 24 tundi pärast ostu
+            Coca-Cola Plaza piletimüügi punktist.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Hundipassi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
+        en: >-
+            Supporter's Wolf Pass includes unlimited amount of Wolf Pass tickets
+            (Hundipassi pilet)
+
+
+            Allows to take up to 2 tickets per screening.
+
+
+            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
+
+
+            Supporter's Wolf Pass badge badge will be ready for you 24 hours
+            after the purchase at Coca-Cola Plaza ticket point. 
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema.
+
+
+            [How to use Wolf
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 7
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T21:59:00.000Z'
+    salesPeriod:
+        -
+            id: 8
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    ticketingRight:
+        -
+            id: 4
+    priceAtPeriod:
+        -
+            id: 4
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 200
+    images:
+        id: 4
+        imageDefault:
+            id: 1526
+            name: hpto_et.svg
+            width: 555
+            height: 800
+            hash: hpto_et_a2f73e53c4
+            ext: .svg
+            url: /uploads/hpto_et_a2f73e53c4.svg
+        image_et:
+            id: 1526
+            name: hpto_et.svg
+            width: 555
+            height: 800
+            hash: hpto_et_a2f73e53c4
+            ext: .svg
+            url: /uploads/hpto_et_a2f73e53c4.svg
+        image_en:
+            id: 1525
+            name: hpto_en.svg
+            width: 555
+            height: 800
+            hash: hpto_en_eae1504e24
+            ext: .svg
+            url: /uploads/hpto_en_eae1504e24.svg
+-
+    id: 5
+    namePrivate: Just Filmi Pass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 3
+    codePrefix: jp1
+    slug_et: product-category-3
+    slug_en: product-category-3
+    slug_ru: product-category-3
+    name:
+        id: 7687
+        et: Just Filmi Pass
+        en: Just Film Pass
+        ru: Just Film Pass
+    description:
+        id: 8213
+        et: >-
+            Just Filmi Pass sisaldab 10 Just Filmi Passipiletit.
+
+
+            Lubab seansile võtta kuni 10 piletit.
+
+
+            Kehtib Just Filmil.
+
+
+            Just Filmi kaelakaardi saab kätte 24 tundi pärast ostu Coca-Cola
+            Plaza piletimüügi punktist.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Just Filmi Passi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Just_Filmi_Pass_Est.pdf)
+        en: >-
+            Just Film Pass includes 10 Just Film Pass tickets (Just Filmi
+            Passipilet)
+
+
+            Allows to take up to 10 tickets per screening.
+
+
+            Is valid for Just Film.
+
+
+            Just Film Pass badge will be ready for you 24 hours after the
+            purchase at Coca-Cola Plaza ticket point. 
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema.
+
+
+            [How to use Just Film
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Just_Filmi_Pass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 9
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T21:59:00.000Z'
+    salesPeriod:
+        -
+            id: 10
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    priceAtPeriod:
+        -
+            id: 5
+            startDateTime: '2020-10-18T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 40
+    images:
+        id: 5
+        imageDefault:
+            id: 1520
+            name: jf10_et.svg
+            width: 555
+            height: 800
+            hash: jf10_et_dff4904325
+            ext: .svg
+            url: /uploads/jf10_et_dff4904325.svg
+        image_et:
+            id: 1520
+            name: jf10_et.svg
+            width: 555
+            height: 800
+            hash: jf10_et_dff4904325
+            ext: .svg
+            url: /uploads/jf10_et_dff4904325.svg
+        image_en:
+            id: 1523
+            name: jf10_en.svg
+            width: 555
+            height: 800
+            hash: jf10_en_fc2ff413d6
+            ext: .svg
+            url: /uploads/jf10_en_fc2ff413d6.svg
+-
+    id: 1
+    namePrivate: Hundipass 8
+    product_type:
+        id: 4
+    festival_edition:
+        id: 1
+    codePrefix: h08
+    slug_et: product-category-2
+    slug_en: product-category-2
+    slug_ru: product-category-2
+    name:
+        id: 3923
+        et: Hundipass 8
+        en: Wolf Pass 8
+        ru: Wolf Pass 8
+    description:
+        id: 372
+        et: >-
+            Hundipass 8 sisaldab 8 Hundipassi piletit.
+
+
+            Lubab seansile võtta kuni 2 piletit.
+
+
+            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
+            Kinoffil.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Hundipassi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
+        en: >-
+            Hundipass 8 includes 8 Wolf Pass tickets (Hundipassi pilet)
+
+
+            Allows to take up to 2 tickets per screening.
+
+
+            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema.
+
+
+            [How to use Wolf
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 1
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    salesPeriod:
+        -
+            id: 2
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    ticketingRight:
+        -
+            id: 1
+            ticketType: Hundipassi pilet
+            rightLimit: 8
+    priceAtPeriod:
+        -
+            id: 1
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 39
+    images:
+        id: 1
+        imageDefault:
+            id: 1529
+            name: hp08_et.svg
+            width: 555
+            height: 800
+            hash: hp08_et_f5be5c9070
+            ext: .svg
+            url: /uploads/hp08_et_f5be5c9070.svg
+        image_et:
+            id: 1529
+            name: hp08_et.svg
+            width: 555
+            height: 800
+            hash: hp08_et_f5be5c9070
+            ext: .svg
+            url: /uploads/hp08_et_f5be5c9070.svg
+        image_en:
+            id: 1522
+            name: hp08_en.svg
+            width: 555
+            height: 800
+            hash: hp08_en_9070908c5b
+            ext: .svg
+            url: /uploads/hp08_en_9070908c5b.svg
+-
+    id: 2
+    namePrivate: 2020 / Hundipass 16
+    product_type:
+        id: 4
+    festival_edition:
+        id: 1
+    codePrefix: h16
+    slug_et: product-category
+    slug_en: product-category
+    slug_ru: product-category
+    name:
+        id: 3924
+        et: Hundipass 16
+        en: Wolf Pass 16
+        ru: Wolf Pass 16
+    description:
+        id: 7932
+        et: >
+            Hundipass 16 sisaldab 16 Hundipassi piletit.
+
+
+            Lubab seansile võtta kuni 2 piletit.
+
+
+            Kehtib nii PÖFFi Põhiprogrammil, Just Filmil, PÖFF Shortsil kui ka
+            Kinoffil.
+
+
+            PÖFFi passid on personaalsed, passiga võetud piletid kehtivad passi
+            omanikule ja tema valitud kaaslasele. Üks seansile siseneja peab
+            olema passi omanik.
+
+
+            PÖFFi passid ei kehti PÖFFi veebikinos.
+
+
+            [Kuidas Hundipassi
+            kasutada?](https://assets.poff.ee/img/POFF_manual_2020_Hundipassid_Est.pdf)
+        en: >-
+            Wolf Pass 16 includes 16 Wolf Pass tickets (Hundipassi pilet)
+
+
+            Allows to take up to 2 tickets per screening.
+
+
+            Is valid for PÖFF, Just Film, PÖFF Shorts and Kinoff.
+
+
+            PÖFF Passes are personal. Tickets issued using PÖFF Pass are valid
+            for Pass owner and to Pass owner's comapnion. One of the Wolf Pass
+            ticket holders entering the screening must be the Pass owner.
+
+
+            PÖFF Passes are not valid for PÖFF Virtual Cinema
+
+
+            [How to use Wolf
+            Pass?](https://assets.poff.ee/img/POFF_manual_2020_Hundipass_Eng.pdf)
+    validityPeriod:
+        -
+            id: 3
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    salesPeriod:
+        -
+            id: 4
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+    ticketingRight:
+        -
+            id: 2
+            ticketType: Hundipassi pilet
+            rightLimit: 16
+    priceAtPeriod:
+        -
+            id: 2
+            startDateTime: '2020-10-13T09:00:00.000Z'
+            endDateTime: '2020-11-29T10:00:00.000Z'
+            price: 70
+    images:
+        id: 2
+        imageDefault:
+            id: 1528
+            name: hp16_et.svg
+            width: 555
+            height: 800
+            hash: hp16_et_40a44eab40
+            ext: .svg
+            url: /uploads/hp16_et_40a44eab40.svg
+        image_et:
+            id: 1528
+            name: hp16_et.svg
+            width: 555
+            height: 800
+            hash: hp16_et_40a44eab40
+            ext: .svg
+            url: /uploads/hp16_et_40a44eab40.svg
+        image_en:
+            id: 1524
+            name: hp16_en.svg
+            width: 555
+            height: 800
+            hash: hp16_en_ad1fdfcf60
+            ext: .svg
+            url: /uploads/hp16_en_ad1fdfcf60.svg
+-
+    id: 7
+    namePrivate: TEST Pass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 5
+    codePrefix: tp
+    slug_et: testtoode
+    slug_en: testpass
+    slug_ru: passtest
+    name:
+        id: 32679
+        et: Testtoode pass
+        en: Test Pass
+        ru: Pass Test
+    description:
+        id: 8726
+        et: Test pass kirjeldus
+        en: Test pass description
+        ru: 'Pass test '
+    validityPeriod:
+        -
+            id: 13
+            startDateTime: '2021-04-29T09:00:00.000Z'
+            endDateTime: '2021-05-02T20:00:00.000Z'
+    salesPeriod:
+        -
+            id: 14
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-05-02T09:00:00.000Z'
+    priceAtPeriod:
+        -
+            id: 7
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-05-02T09:00:00.000Z'
+            price: 0.01
+    images:
+        id: 7
+        imageDefault:
+            id: 3854
+            name: testtoode_et.svg
+            width: 555
+            height: 800
+            hash: testtoode_et_4c19ec6074
+            ext: .svg
+            url: /uploads/testtoode_et_4c19ec6074.svg
+        image_et:
+            id: 3854
+            name: testtoode_et.svg
+            width: 555
+            height: 800
+            hash: testtoode_et_4c19ec6074
+            ext: .svg
+            url: /uploads/testtoode_et_4c19ec6074.svg
+        image_en:
+            id: 3855
+            name: testtoode_en.svg
+            width: 555
+            height: 800
+            hash: testtoode_en_664d953e9d
+            ext: .svg
+            url: /uploads/testtoode_en_664d953e9d.svg
+        image_ru:
+            id: 3855
+            name: testtoode_en.svg
+            width: 555
+            height: 800
+            hash: testtoode_en_664d953e9d
+            ext: .svg
+            url: /uploads/testtoode_en_664d953e9d.svg
+-
+    id: 6
+    namePrivate: 2021 / HÕFFi pass
+    product_type:
+        id: 4
+    festival_edition:
+        id: 5
+    codePrefix: hp1
+    slug_et: hoffi_pass
+    slug_en: hpff_pass
+    slug_ru: pass_hoff
+    name:
+        id: 32678
+        et: HÕFFi pass
+        en: HÕFF Pass
+        ru: HÕFF Pass
+    description:
+        id: 8725
+        et: >-
+            Soovitame osta HÕFFi pass soodushinnaga ja varakult, kuna
+            kinosaalidesse lubatakse publikut vaid 50% ulatuses ja kohad
+            täituvad kiiresti.
+
+
+            **Mida HÕFFi pass võimaldab?**
+
+            Osaleda kõigil Haapsalu kultuurikeskuses toimuvatel HÕFFi
+            seanssidel.
+
+            Vaadata kodukinos tasuta varasemate festivalide publikulemmikuid.
+            HÕFFi varasalvest pärit filme saab vaadata alates märtsi teisest
+            nädalast kuni festivali alguseni. Soojendusseansside filmivalikusse
+            kuulub umbes 10 linateost. Täpsem info peagi tulekul.
+
+
+            **Kuidas HÕFFi sooduspassi kätte saab?**
+
+            HÕFFi passi ostjale väljastatakse kaelakaart. Kaelakaardi saab kätte
+            Haapsalu kultuurikeskuses asuvast festivali infolauast alates 30.
+            aprilli keskpäevast.
+
+            HÕFFi pass on personaalne ja kehtib vaid isikule, kelle nimi ja
+            näopilt on trükitud passi kaelakaardile.
+
+
+            **Mis saab siis, kui festival ära jääb?**
+
+            Passi saab ümber vormistada HÕFFi veebikinos kasutamiseks või meile
+            tagasi müüa. Küsimuste korral kirjutage
+            [info@poff.ee](mailto:info@poff.ee).
+        en: >-
+            Soovitame osta HÕFFi pass soodushinnaga ja varakult, kuna
+            kinosaalidesse lubatakse publikut vaid 50% ulatuses ja kohad
+            täituvad kiiresti.
+
+
+            **Mida HÕFFi pass võimaldab?**
+
+            Osaleda kõigil Haapsalu kultuurikeskuses toimuvatel HÕFFi
+            seanssidel.
+
+            Vaadata kodukinos tasuta varasemate festivalide publikulemmikuid.
+            HÕFFi varasalvest pärit filme saab vaadata alates märtsi teisest
+            nädalast kuni festivali alguseni. Soojendusseansside filmivalikusse
+            kuulub umbes 10 linateost. Täpsem info peagi tulekul.
+
+
+            **Kuidas HÕFFi sooduspassi kätte saab?**
+
+            HÕFFi passi ostjale väljastatakse kaelakaart. Kaelakaardi saab kätte
+            Haapsalu kultuurikeskuses asuvast festivali infolauast alates 30.
+            aprilli keskpäevast.
+
+            HÕFFi pass on personaalne ja kehtib vaid isikule, kelle nimi ja
+            näopilt on trükitud passi kaelakaardile.
+
+
+            **Mis saab siis, kui festival ära jääb?**
+
+            Passi saab ümber vormistada HÕFFi veebikinos kasutamiseks või meile
+            tagasi müüa. Küsimuste korral kirjutage
+            [info@poff.ee](mailto:info@poff.ee).
+    validityPeriod:
+        -
+            id: 11
+            startDateTime: '2021-04-30T09:00:00.000Z'
+            endDateTime: '2021-05-02T20:00:00.000Z'
+    salesPeriod:
+        -
+            id: 12
+            startDateTime: '2021-02-09T08:00:00.000Z'
+            endDateTime: '2021-05-01T09:00:00.000Z'
+    priceAtPeriod:
+        -
+            id: 6
+            startDateTime: '2021-02-09T10:00:00.000Z'
+            endDateTime: '2021-03-31T21:00:00.000Z'
+            price: 39
+    images:
+        id: 6
+        imageDefault:
+            id: 3857
+            name: hoff_pass_2021_39_et.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_et_e2104419eb
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_et_e2104419eb.svg
+        image_et:
+            id: 3857
+            name: hoff_pass_2021_39_et.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_et_e2104419eb
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_et_e2104419eb.svg
+        image_en:
+            id: 3858
+            name: hoff_pass_2021_39_en.svg
+            width: 555
+            height: 800
+            hash: hoff_pass_2021_39_en_3830812074
+            ext: .svg
+            url: /uploads/hoff_pass_2021_39_en_3830812074.svg

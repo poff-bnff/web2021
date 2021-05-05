@@ -6,16 +6,16 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = {
-    'poff.ee': 'POFFSupporter',
+    'poff.ee': 'POFFiSupporter',
     'justfilm.ee': 'JustSupporter',
     'kinoff.poff.ee': 'KinoffiSupporter',
     'industry.poff.ee': 'IndustrySupporter',
     'shorts.poff.ee': 'ShortsSupporter',
-    'hoff.ee': 'HoffiSupporter',
+    'hoff.ee': 'HOFFiSupporter',
     'kumu.poff.ee': 'KumuSupporter',
     'tartuff.ee': 'TartuffiSupporter',
     'filmikool.poff.ee': 'FilmikooliSupporter',
@@ -49,7 +49,7 @@ const mapping3 = {
 }
 
 const strapiDataSupporterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_SUPPORTER_PAGES = yaml.safeLoad(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
+const STRAPIDATA_SUPPORTER_PAGES = yaml.load(fs.readFileSync(strapiDataSupporterPath, 'utf8'))
 
 const minimodel = {
     'domain': {
@@ -96,7 +96,7 @@ function processData(lang, CreateYAML) {
 }
 
 function CreateYAML(buffer, lang) {
-    let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' })
     const outFile = path.join(fetchDir, `supporterspage.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }

@@ -2,10 +2,12 @@
 
 SECONDS=0
 
-cd "/srv/ssg"
+THISDIR=${PWD##*/}
 
-# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-# cd $DIR
+if [ "$THISDIR" != "ssg" ]; then
+    cd "/srv/ssg"
+fi
+
 echo $PWD
 
 export DOMAIN='industry.poff.ee'
@@ -13,7 +15,7 @@ echo DOMAIN
 echo $DOMAIN
 
 . ./build.sh
-printf '\n\n----------      Finished building, press ENTER to exit      ----------\n\n'
+printf '\n\n----------      Finished building      ----------\n\n'
 
-read varname
-echo $varname
+
+

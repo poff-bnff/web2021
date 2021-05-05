@@ -9,19 +9,19 @@ timer.start(__filename)
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const coursesDir =  path.join(fetchDir, 'courses')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
 if (DOMAIN === 'filmikool.poff.ee') {
 
     const strapiDataCoursePath = path.join(strapiDataDirPath, `Course.yaml`)
-    const STRAPIDATA_COURSES = yaml.safeLoad(fs.readFileSync(strapiDataCoursePath, 'utf8')) || []
+    const STRAPIDATA_COURSES = yaml.load(fs.readFileSync(strapiDataCoursePath, 'utf8')) || []
 
     const minimodel = {
         'languages': {
@@ -152,7 +152,7 @@ if (DOMAIN === 'filmikool.poff.ee') {
 
             course.path = `courses/${dirSlug}`
 
-            const oneYaml = yaml.safeDump(course, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(course, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(coursesDir, dirSlug, `data.${lang}.yaml`);
 
             let saveDir = path.join(coursesDir, dirSlug);
@@ -163,12 +163,12 @@ if (DOMAIN === 'filmikool.poff.ee') {
             return course
         }) || []
 
-        let allDataYAML = yaml.safeDump(filteredCourse, { 'noRefs': true, 'indent': '4' });
+        let allDataYAML = yaml.dump(filteredCourse, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), allDataYAML, 'utf8');
     }
 } else {
     allLanguages.map(lang => {
-        let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' });
+        let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(path.join(fetchDir, `courses.${lang}.yaml`), emptyYAML, 'utf8');
     })
 }

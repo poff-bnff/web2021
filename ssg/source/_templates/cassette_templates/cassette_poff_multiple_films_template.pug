@@ -249,7 +249,7 @@ main.grid_cassette
                 } else {
                     return false
                 }
-            })
+            }).filter(a => a)
             var presentedBy = [...new Map(presenters.map(item => [item['presentedByText'], item])).values()]
     else
         - var presentedBy = []

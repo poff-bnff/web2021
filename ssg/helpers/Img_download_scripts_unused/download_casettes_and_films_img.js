@@ -57,7 +57,7 @@ let parallelDownloads = []
 var cassetteData = ''
 try {
     const cassetteDataFile = path.join('source', '_fetchdir', `cassettes.en.yaml`)
-    cassetteData = yaml.safeLoad(fs.readFileSync(cassetteDataFile, 'utf8'))
+    cassetteData = yaml.load(fs.readFileSync(cassetteDataFile, 'utf8'))
 } catch (e) {
     console.log(e)
 }

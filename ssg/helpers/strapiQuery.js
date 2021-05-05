@@ -7,7 +7,7 @@ const { spin } = require("./spinner")
 
 const STRAPI_URL = process.env['StrapiHostPoff2021']
 const DATAMODEL_PATH = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
-const DATAMODEL = yaml.safeLoad(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
+const DATAMODEL = yaml.load(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
 
 var TOKEN = ''
 

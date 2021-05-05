@@ -44,17 +44,6 @@
     "endDate": {
       "type": "datetime"
     },
-    "media": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "tags": {
       "type": "component",
       "repeatable": false,
@@ -82,11 +71,16 @@
       "type": "text"
     },
     "events": {
-      "collection": "event",
-      "via": "course"
+      "via": "course",
+      "collection": "event"
     },
     "volume": {
       "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "media.film-media"
     }
   }
 }
