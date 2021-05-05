@@ -43,7 +43,6 @@ module.exports = strapi => {
       }
 
       const isLogLevelEnvVariableSet = _.isString(process.env.STRAPI_LOG_LEVEL);
-      console.log(isLogLevelEnvVariableSet, process.env.STRAPI_LOG_LEVEL);
 
       if (isLogLevelEnvVariableSet && strapi.log.levelVal <= 20) {
         strapi.log.debug(
