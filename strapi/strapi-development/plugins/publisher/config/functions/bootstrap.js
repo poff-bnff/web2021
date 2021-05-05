@@ -1,7 +1,6 @@
 'use strict'
 
-const registerPermissionActions = () => {
-
+module.exports = async () => {
 	const actions = [
 		{
 			section: 'plugins',
@@ -23,14 +22,6 @@ const registerPermissionActions = () => {
 			subCategory: 'assets',
 			pluginName: 'publisher',
 		}
-	];
+	]; await strapi.admin.services.permission.actionProvider.registerMany(actions);
 
-	const { actionProvider } = strapi.admin.services.permission;
-	actionProvider.register(actions);
-
-};
-
-module.exports = () => {
-	registerPermissionActions();
-
-};
+}

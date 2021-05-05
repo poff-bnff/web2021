@@ -7,14 +7,14 @@ const replaceLinks = require('./replace_links.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -22,7 +22,7 @@ const strapiDataPath =  path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const DEFAULTTEMPLATENAME = 'news'
 
@@ -109,7 +109,7 @@ for (const lang of languages) {
         let element = JSON.parse(JSON.stringify(strapiElement))
         let slugEn = element.slug_en || element.slug_et
         if (!slugEn) {
-            throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
+            throw new Error (`Artiklil (ID: ${element.id}) on puudu nii eesti kui inglise keelne slug!`, Error.ERR_MISSING_ARGS)
         }
 
         if (param_build_type === 'target' && element.id.toString() !== target_id) {
@@ -197,7 +197,7 @@ for (const lang of languages) {
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
                 }
 
-                let yamlStr = yaml.safeDump(element, { 'indent': '4' });
+                let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                 fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8');
 

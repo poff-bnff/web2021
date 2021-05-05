@@ -59,7 +59,7 @@ const dataMap = {
     }
 }
 
-// const filmsO = yaml.safeLoad(fs.readFileSync(path.join(dynamicDir, 'films.yaml'))).map( film => {
+// const filmsO = yaml.load(fs.readFileSync(path.join(dynamicDir, 'films.yaml'))).map( film => {
 //     if (film.eventival_categorization && film.eventival_categorization.sections && film.eventival_categorization.sections.section) {
 //         for (const section of film.eventival_categorization.sections.section) {
 //             console.log(section);
@@ -234,7 +234,7 @@ const foo = async () => {
     await fetch_films(e_data.films)
     decodeFilmTexts(e_data.films)
     for (const [model, data] of Object.entries(e_data)) {
-        const yamlStr = yaml.safeDump(data, { 'indent': '4' })
+        const yamlStr = yaml.dump(data, { 'indent': '4' })
         fs.writeFileSync(dataMap[model].outyaml, yamlStr, "utf8")
     }
 }

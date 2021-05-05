@@ -4,7 +4,7 @@ const path = require('path')
 
 const rootDir =  path.join(__dirname, '..')
 const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
-const BUILD_CONFIG = yaml.safeLoad(fs.readFileSync(buildConfigPath, 'utf8'))
+const BUILD_CONFIG = yaml.load(fs.readFileSync(buildConfigPath, 'utf8'))
 const BUILD_PATHS = BUILD_CONFIG.dev.paths || []
 
 function addConfigPathAliases(pathAliases = []) {
@@ -14,7 +14,7 @@ function addConfigPathAliases(pathAliases = []) {
 
     BUILD_CONFIG.dev.paths = unique_paths
 
-    const BUILD_CONFIG_YAML = yaml.safeDump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' });
+    const BUILD_CONFIG_YAML = yaml.dump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(buildConfigPath, BUILD_CONFIG_YAML, 'utf8');
 }
 

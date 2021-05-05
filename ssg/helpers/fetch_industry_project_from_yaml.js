@@ -9,15 +9,15 @@ const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industryprojects');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
-const STRAPIDATA_IND_PROJECTS = yaml.safeLoad(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
+const STRAPIDATA_IND_PROJECTS = yaml.load(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
-const STRAPIDATA_COMPANIES = yaml.safeLoad(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
+const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN === 'industry.poff.ee') {
@@ -110,7 +110,7 @@ if (DOMAIN === 'industry.poff.ee') {
                 }
             }
 
-            const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
             let saveDir = path.join(fetchDataDir, dirSlug);
             fs.mkdirSync(saveDir, { recursive: true });
@@ -198,7 +198,7 @@ if (DOMAIN === 'industry.poff.ee') {
         const yamlPath = path.join(fetchDir, `industryprojects.${lang}.yaml`);
         if (allData.length) {
             allData = allData.sort((a, b) => a.title.localeCompare(b.title, lang))
-            const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+            const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
             fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
             let filters = {
@@ -302,10 +302,10 @@ if (DOMAIN === 'industry.poff.ee') {
                 genres: mSort(filters.genres),
             }
 
-            let searchYAML = yaml.safeDump(projects_search, { 'noRefs': true, 'indent': '4' })
+            let searchYAML = yaml.dump(projects_search, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `search_projects.${lang}.yaml`), searchYAML, 'utf8')
 
-            let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+            let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `filters_projects.${lang}.yaml`), filtersYAML, 'utf8')
 
         } else {
@@ -323,13 +323,13 @@ if (DOMAIN === 'industry.poff.ee') {
         industry_project.path = `project/${dirSlug}`
 
         const yamlPath = path.join(fetchDataDir, dirSlug, 'data.en.yaml')
-        const oneYaml = yaml.safeDump(industry_project, { 'noRefs': true, 'indent': '4' })
+        const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(yamlPath, oneYaml, 'utf8')
         fs.writeFileSync(path.join(saveDir,'index.pug'), 'include /_templates/industryproject_industry_index_template.pug')
     }
 } else {
 
-    let emptyYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+    let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_projects.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `filters_projects.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `industryprojects.en.yaml`), emptyYAML, 'utf8')

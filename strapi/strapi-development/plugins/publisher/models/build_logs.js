@@ -22,6 +22,9 @@ module.exports = {
     		  	strapi.notification.toggle({type: "warning", message: "kõik õnnestus", title: "HÕFF", timeout: 5000, blockTransition: false})
 
     	}
+    },
+    beforeDelete(params){
+    delete params.user
     }
   },
 };

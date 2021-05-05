@@ -10,7 +10,7 @@ timer.start(__filename)
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
@@ -18,15 +18,15 @@ const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataProgrammePath = path.join(strapiDataDirPath, 'Programme.yaml')
-const STRAPIDATA_PROGRAMMES = yaml.safeLoad(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
+const STRAPIDATA_PROGRAMMES = yaml.load(fs.readFileSync(strapiDataProgrammePath, 'utf8'))
 // const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
-// const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+// const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
-const STRAPIDATA_SCREENINGS_YAML = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
-const STRAPIDATA_CASSETTES_YAML = yaml.safeLoad(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
@@ -625,7 +625,7 @@ for (const lang of allLanguages) {
 }
 
 function generateYaml(element, lang){
-    let yamlStr = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' })
+    let yamlStr = yaml.dump(element, { 'noRefs': true, 'indent': '4' })
 
 
     fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8')
@@ -665,7 +665,7 @@ function generateAllDataYAML(allData, lang){
     }
 
 
-    let allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `cassettes.${lang}.yaml`), allDataYAML, 'utf8')
     timer.log(__filename, `Ready for building are ${allData.length} cassettes`)
 
@@ -806,9 +806,9 @@ function generateAllDataYAML(allData, lang){
         cinemas: mSort(filters.cinemas),
     }
 
-    let searchYAML = yaml.safeDump(cassette_search, { 'noRefs': true, 'indent': '4' })
+    let searchYAML = yaml.dump(cassette_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_films.${lang}.yaml`), searchYAML, 'utf8')
 
-    let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_films.${lang}.yaml`), filtersYAML, 'utf8')
 }

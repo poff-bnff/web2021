@@ -42,12 +42,26 @@ module.exports = {
     },
     async afterUpdate(result, params, data) {
       console.log('Create or update: ')
+      if (data.skipbuild) return
       if (domains.length > 0 ) {
             await modify_stapi_data(result, model_name)
           }
       await call_build(result, domains, model_name)
-
-
+    },
+async beforeDelete(params) {
+      const ids = params._where?.[0].id_in || [params.id]
+      const updatedIds = await Promise.all(ids.map(async id => {
+        const result = await strapi.query(model_name).findOne({ id })
+        if (result){
+        const updateDeleteUser = {
+          updated_by: params.user,
+          skipbuild: true
+        }
+        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+        return id
+        }
+      }))
+      delete params.user
     },
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)
