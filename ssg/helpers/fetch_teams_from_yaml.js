@@ -6,12 +6,12 @@ const rueten = require('./rueten.js');
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'teamsandjuries');
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
-const STRAPIDATA_TEAM = yaml.safeLoad(fs.readFileSync(strapiDataTeamPath, 'utf8'))
+const STRAPIDATA_TEAM = yaml.load(fs.readFileSync(strapiDataTeamPath, 'utf8'))
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
-const STRAPIDATA_PERSONS = yaml.safeLoad(fs.readFileSync(strapiDataPersonPath, 'utf8'))
+const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const languages = ['en', 'et', 'ru']
@@ -68,7 +68,7 @@ for (const ix in languages) {
             continue
         }
 
-        const oneYaml = yaml.safeDump(element, { 'noRefs': true, 'indent': '4' });
+        const oneYaml = yaml.dump(element, { 'noRefs': true, 'indent': '4' });
 
         if (dirSlug != null) {
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
@@ -81,7 +81,7 @@ for (const ix in languages) {
         allData.push(element);
     }
 
-    const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+    const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `teams.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 }

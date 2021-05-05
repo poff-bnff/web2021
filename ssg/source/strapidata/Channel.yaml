@@ -1,0 +1,51 @@
+-
+    id: 1
+    namePrivate: Film Market
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28400
+        et: Film Market
+        en: Film Market
+    description:
+        id: 8507
+        et: Film Market
+        en: Film Market
+-
+    id: 2
+    namePrivate: Series Market
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28401
+        et: Series Market
+        en: Series Market
+    description:
+        id: 8508
+        et: Series Market
+        en: Series Market
+        ru: Series Market
+-
+    id: 3
+    namePrivate: Learn
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28402
+        et: Learn
+        en: Learn
+    description:
+        id: 8509
+        et: Learn
+        en: Learn
+        ru: Learn
+-
+    id: 4
+    namePrivate: Conferences
+    embedCode: 'https://www.youtube.com/watch?v=6vHNDbq2XsI'
+    name:
+        id: 28403
+        et: Conferences
+        en: Conferences
+    description:
+        id: 8510
+        et: Conferences
+        en: Conferences
+        ru: Conferences

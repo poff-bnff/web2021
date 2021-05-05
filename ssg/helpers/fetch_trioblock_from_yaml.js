@@ -5,16 +5,24 @@ const rueten = require('./rueten.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
+const params = process.argv.slice(2)
+const build_type = params[0]
+const model_id = params[1]
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+if(build_type === 'target') {
+    addConfigPathAliases(['/home'])
+}
+
 const trio_mapping = {
-    'poff.ee': 'TrioPoff',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
     'shorts.poff.ee': 'TrioShorts',
-    'hoff.ee': 'TrioHoff',
+    'hoff.ee': 'TrioHOFF',
     'kumu.poff.ee': 'TrioKumu',
     'tartuff.ee': 'TrioTartuff',
     'filmikool.poff.ee': 'TrioFilmikool',
@@ -34,7 +42,7 @@ const articleMapping = {
 }
 
 const strapiDataTrioPath = path.join(strapiDataDirPath, `${trio_mapping[DOMAIN]}.yaml` )
-const STRAPIDATA_TRIO = yaml.safeLoad(fs.readFileSync(strapiDataTrioPath, 'utf8'))
+const STRAPIDATA_TRIO = yaml.load(fs.readFileSync(strapiDataTrioPath, 'utf8'))
 
 if (STRAPIDATA_TRIO.length < 1) {
     console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock`)
@@ -76,7 +84,7 @@ for (const lang of languages) {
 
     if(buffer.length > 0) {
         rueten(buffer, lang)
-        let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' })
+        let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(outFile, allDataYAML, 'utf8')
     } else {
         fs.writeFileSync(outFile, '[]', 'utf8')
