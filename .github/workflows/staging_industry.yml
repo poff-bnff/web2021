@@ -35,8 +35,8 @@ jobs:
           with:
             node-version: '14.x'
 
-        - name: Install node dependencies
-          run: npm install
+        - name: cd to ssg & Install ssg node dependencies
+          run: cd ./ssg; npm install
 
         - name: Build Project
           run: . ./ssg/build.sh

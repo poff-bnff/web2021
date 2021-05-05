@@ -34,17 +34,8 @@ jobs:
           with:
             node-version: '14.x'
 
-        - name: Working directory
-          run: pwd
-
-        - name: cd to ssg; Install node dependencies
+        - name: cd to ssg & Install ssg node dependencies
           run: cd ./ssg; npm install
-
-        # - name: Install node dependencies
-        #   run: npm install
-
-        - name: cd back to repo root
-          run: cd ..
 
         - name: Build Project
           run: . ./ssg/build.sh
