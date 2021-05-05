@@ -31,7 +31,7 @@ const hero_mapping = {
     'oyafond.ee': "HeroArticleBruno"
 }
 const strapiDataHeroPath = path.join(strapiDataDirPath, `${hero_mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
+const STRAPIDATA_HEROS = yaml.load(fs.readFileSync(strapiDataHeroPath, 'utf8'))
 
 const article_mapping = {
     'poff.ee': 'POFFiArticle',
@@ -69,6 +69,6 @@ for (const lang of languages) {
         }
     }
 
-    let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' });
+    let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `heroarticle.${lang}.yaml`), allDataYAML, 'utf8');
 }

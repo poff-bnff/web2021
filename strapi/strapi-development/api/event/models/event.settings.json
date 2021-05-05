@@ -35,8 +35,8 @@
       "type": "text"
     },
     "course": {
-      "via": "events",
-      "model": "course"
+      "model": "course",
+      "via": "events"
     },
     "endDate": {
       "type": "datetime"
@@ -49,6 +49,9 @@
     "namePrivate": {
       "type": "string",
       "private": true
+    },
+    "price": {
+      "type": "decimal"
     }
   }
 }

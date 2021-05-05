@@ -1095,6 +1095,7 @@ Event: &Event
     extraInfo: *Translated
     bookingUrl: (text)
     course: (backreference) #*Course
+    price: (Number)
 
 Course: &Course
     _path: /courses

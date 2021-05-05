@@ -29,7 +29,17 @@ const types = {
 const Notification = ({ notification }) => {
   const { formatMessage } = useIntl();
   const dispatch = useDispatch();
-  const { title, message, link, type, id, onClose, timeout, blockTransition } = notification;
+  const {
+    title,
+    message,
+    link,
+    type,
+    id,
+    onClose,
+    timeout,
+    blockTransition,
+    centered,
+  } = notification;
 
   const formattedMessage = msg => (typeof msg === 'string' ? msg : formatMessage(msg, msg.values));
 
@@ -58,7 +68,7 @@ const Notification = ({ notification }) => {
   }, [blockTransition, handleClose, timeout]);
 
   return (
-    <NotificationWrapper color={types[type].color}>
+    <NotificationWrapper centered={centered} color={types[type].color}>
       <Padded top left right bottom size="smd">
         <Flex alignItems="center" justifyContent="space-between">
           <IconWrapper>
@@ -76,11 +86,10 @@ const Notification = ({ notification }) => {
               </Text>
             )}
             {message && (
-              <Text title={formattedMessage(message)} ellipsis>
-                {formattedMessage(message)}
-              </Text>
+              <Text title={formattedMessage(message)}>{formattedMessage(message)}</Text>
             )}
-            {link && (<Links props={link} />
+            {link && (
+            <Links links={link} />
             )}
           </Padded>
           <RemoveWrapper>
@@ -103,6 +112,7 @@ Notification.defaultProps = {
     onClose: () => null,
     timeout: 2500,
     blockTransition: false,
+    centered: false,
   },
 };
 
@@ -125,7 +135,8 @@ Notification.propTypes = {
         values: PropTypes.object,
       }),
     ]),
-    link: PropTypes.arrayOf(PropTypes.shape({
+    link: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([
         PropTypes.string,
@@ -136,10 +147,23 @@ Notification.propTypes = {
         }),
       ]).isRequired,
     })),
+    PropTypes.shape({
+      target: PropTypes.string,
+      url: PropTypes.string.isRequired,
+      label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          defaultMessage: PropTypes.string,
+          values: PropTypes.object,
+        }),
+      ]).isRequired,
+    })]),
     type: PropTypes.string,
     onClose: PropTypes.func,
     timeout: PropTypes.number,
     blockTransition: PropTypes.bool,
+    centered: PropTypes.bool,
   }),
 };
 

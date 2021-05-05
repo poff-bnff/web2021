@@ -8,7 +8,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
-const STRAPIDATA_SIXFILMS = yaml.safeLoad(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
+const STRAPIDATA_SIXFILMS = yaml.load(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 
 const languages = ['en', 'et', 'ru']
 
@@ -20,7 +20,7 @@ const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films'])
+    addConfigPathAliases(['/home'])
 }
 
 var failing = false
@@ -45,7 +45,7 @@ for (const lang of languages) {
                 for (cassetteIx in copyData[key]) {
                     let thisCassette = copyData[key][cassetteIx]
                     let cassetteYAMLPath = path.join(fetchDir, `cassettes.${lang}.yaml`)
-                    let CASSETTESYAML = yaml.safeLoad(fs.readFileSync(cassetteYAMLPath, 'utf8'))
+                    let CASSETTESYAML = yaml.load(fs.readFileSync(cassetteYAMLPath, 'utf8'))
                     let thisCassetteFromYAML = CASSETTESYAML.filter( (a) => { return thisCassette.id === a.id })[0];
                     if(thisCassetteFromYAML !== undefined) {
                         var thisCassetteFromYAMLCopy = JSON.parse(JSON.stringify(thisCassetteFromYAML));
@@ -68,13 +68,10 @@ for (const lang of languages) {
 
 
     if (failing || copyData === undefined) {
-        var allDataYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     } else {
-        var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump(copyData, { 'noRefs': true, 'indent': '4' })
     }
     const outFile = path.join(fetchDir, `sixfilms.${lang}.yaml`)
-    if (build_type === 'target') {
-        addConfigPathAliases([outFile])
-    }
     fs.writeFileSync(outFile, allDataYAML, 'utf8')
 }

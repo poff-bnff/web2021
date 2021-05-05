@@ -139,3 +139,8 @@ fi
 
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
+[ -d "../www/build.$DOMAIN" ] && rm -r "../www/build.$DOMAIN/"*
+[ ! -d "../www/build.$DOMAIN" ] && mkdir -p "../www/build.$DOMAIN"
+
+echo "RSYNC ./build/$BUILDDIR/. ../www/build.$DOMAIN"/
+rsync -ra ./build/"$BUILDDIR"/. ../www/build."$DOMAIN"/
