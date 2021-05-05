@@ -1,61 +1,75 @@
 'use strict';
-
-const { StringDecoder } = require('string_decoder');
-const decoder = new StringDecoder('utf8');
-
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
  * to customize this model
  */
 
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
 const {
-    execFile,
-    exec,
-    spawn
-} = require('child_process');
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+  call_delete
+} = require(helper_path)
 
-const fs = require('fs');
-const yaml = require('yaml');
-const path = require('path');
+/**
+const domains =
+For adding domain you have multiple choice. First for objects that has property 'domain'
+or has property, that has 'domain' (at the moment festival_edition and programmes) use
+function get_domain(result). If you know that that object has doimain, but no property
+to indicate that. Just write the list of domains (as list), example tartuffi_menu.
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
 
-async function call_update(result) {
-  delete result.published_at
-  await strapi.query('front-page-courses').update({id: result.id}, result)
-}
+const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
- module.exports = {
-     lifecycles: {
-        async afterCreate(result, data) {
-          await call_update(result)
-        },
-        beforeUpdate(params, data) {
-        },
-        afterUpdate(result, params, data) {
-          if (fs.existsSync('/srv/ssg/build_filmikool.sh')) {
-              const args = []
+module.exports = {
+  lifecycles: {
+    async afterCreate(result, data) {
+      await call_update(result, model_name)
+    },
+    async beforeUpdate(params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
-              const child = spawn('/srv/ssg/build_filmikool.sh', args)
-
-              child.stdout.on('data', (chunk) => {
-                  console.log(decoder.write(chunk))
-                // data from the standard output is here as buffers
-              });
-              // since these are streams, you can pipe them elsewhere
-              child.stderr.on('data', (chunk) => {
-                  console.log('err:', decoder.write(chunk))
-                // data from the standard error is here as buffers
-              });
-              // child.stderr.pipe(child.stdout);
-              child.on('close', (code) => {
-                  console.log(`child process exited with code ${code}`);
-              });
-          }
-        },
-        afterDelete(result, params){
-          // console.log('\nR', result, '\nparams', params)
-          let model_id = result.id
-          console.log(model_id)
-          // delete_model(model_id)
+      if (data.published_at === null) { // if strapi publish system goes live
+        console.log('Draft! Delete: ')
+        await call_delete(params, domains, model_name)
+      }
+    },
+    async afterUpdate(result, params, data) {
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      console.log('Create or update: ')
+      if (data.skipbuild) return
+      if (domains.length > 0) {
+        await modify_stapi_data(result, model_name)
+      }
+      await call_build(result, domains, model_name)
+    },
+async beforeDelete(params) {
+      const ids = params._where?.[0].id_in || [params.id]
+      const updatedIds = await Promise.all(ids.map(async id => {
+        const result = await strapi.query(model_name).findOne({ id })
+        if (result){
+        const updateDeleteUser = {
+          updated_by: params.user,
+          skipbuild: true
         }
+        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+        return id
+        }
+      }))
+      delete params.user
+    },
+    async afterDelete(result, params) {
+      // console.log('\nR', result, '\nparams', params)
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+
+      console.log('Delete: ')
+      await call_delete(result, domains, model_name)
     }
+  }
 };

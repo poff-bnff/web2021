@@ -7,18 +7,27 @@ const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
-const STRAPIDATA_FE = yaml.safeLoad(fs.readFileSync(strapiDataFEPath, 'utf8'))
+const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
-const STRAPIDATA_SCREENING = yaml.safeLoad(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+const STRAPIDATA_SCREENING = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
-const STRAPIDATA_FILM = yaml.safeLoad(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+const STRAPIDATA_FILM = yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
+if(param_build_type === 'target') {
+    addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
+}
 
 const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
 
@@ -143,7 +152,7 @@ function LangSelect(lang) {
 function processData(data, lang, CreateYAML) {
 
     const cassettesPath = path.join(fetchDir, `cassettes.${lang}.yaml`)
-    const CASSETTES = yaml.safeLoad(fs.readFileSync(cassettesPath, 'utf8'))
+    const CASSETTES = yaml.load(fs.readFileSync(cassettesPath, 'utf8'))
 
     let allData = []
     if (data.length) {
@@ -198,7 +207,7 @@ function CreateYAML(screenings, lang) {
 
     let screeningsCopy = rueten(JSON.parse(JSON.stringify(screenings)), lang)
 
-    let allDataYAML = yaml.safeDump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
+    let allDataYAML = yaml.dump(screeningsCopy, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(SCREENINGS_YAML_PATH, allDataYAML, 'utf8');
     console.log(`Fetched ${screeningsCopy.length} screenings`);
 
@@ -396,10 +405,10 @@ function CreateYAML(screenings, lang) {
         times: dateTimeSort(filters.times)
     }
 
-    let searchYAML = yaml.safeDump(screenings_search, { 'noRefs': true, 'indent': '4' })
+    let searchYAML = yaml.dump(screenings_search, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `search_screenings.${lang}.yaml`), searchYAML, 'utf8')
 
-    let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `filters_screenings.${lang}.yaml`), filtersYAML, 'utf8')
 
 }

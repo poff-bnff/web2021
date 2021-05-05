@@ -6,9 +6,17 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+
+const params = process.argv.slice(2)
+const build_type = params[0]
+const model_id = params[1]
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+if(build_type === 'target') {
+    addConfigPathAliases(['/home'])
+}
 
 const hero_mapping = {
     'poff.ee': 'HeroArticlePoff',
@@ -23,7 +31,7 @@ const hero_mapping = {
     'oyafond.ee': "HeroArticleBruno"
 }
 const strapiDataHeroPath = path.join(strapiDataDirPath, `${hero_mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_HEROS = yaml.safeLoad(fs.readFileSync(strapiDataHeroPath, 'utf8'))
+const STRAPIDATA_HEROS = yaml.load(fs.readFileSync(strapiDataHeroPath, 'utf8'))
 
 const article_mapping = {
     'poff.ee': 'POFFiArticle',
@@ -61,6 +69,6 @@ for (const lang of languages) {
         }
     }
 
-    let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' });
+    let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `heroarticle.${lang}.yaml`), allDataYAML, 'utf8');
 }

@@ -8,11 +8,11 @@ const replaceLinks = require('./replace_links.js')
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industrypersons');
-const strapiDataPath = path.join(sourceDir, 'strapidata', 'IndustryPerson.yaml');
+const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 if (DOMAIN !== 'industry.poff.ee') {
-    let emptyYAML = yaml.safeDump([], {
+    let emptyYAML = yaml.dump([], {
         'noRefs': true,
         'indent': '4'
     })
@@ -20,7 +20,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8')
 } else {
-    const STRAPIDATA_INDUSTRY_PERSON = yaml.safeLoad(fs.readFileSync(strapiDataPath, 'utf8'))
+    const STRAPIDATA_INDUSTRY_PERSON = yaml.load(fs.readFileSync(strapiDataPath, 'utf8'))
 
     const minimodel = {
         'person': {
@@ -47,7 +47,7 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const rootDir =  path.join(__dirname, '..')
     const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-    const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+    const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
@@ -102,7 +102,7 @@ if (DOMAIN !== 'industry.poff.ee') {
 
             let oneYaml = {}
             try {
-                oneYaml = yaml.safeDump(industry_person, { 'noRefs': true, 'indent': '4' })
+                oneYaml = yaml.dump(industry_person, { 'noRefs': true, 'indent': '4' })
             } catch (error) {
                 console.error({error, industry_person})
                 throw error
@@ -126,7 +126,7 @@ if (DOMAIN !== 'industry.poff.ee') {
         }
 
         allData = allData.sort((a, b) => `${a.person.firstName} ${a.person.lastname}`.localeCompare(`${b.person.firstName} ${b.person.lastname}`, lang))
-        const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+        const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
 
@@ -200,10 +200,10 @@ if (DOMAIN !== 'industry.poff.ee') {
             lookingfors: mSort(filters.lookingfors),
         }
 
-        let searchYAML = yaml.safeDump(industry_persons_search, { 'noRefs': true, 'indent': '4' })
+        let searchYAML = yaml.dump(industry_persons_search, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `search_industry_persons.${lang}.yaml`), searchYAML, 'utf8')
 
-        let filtersYAML = yaml.safeDump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+        let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), filtersYAML, 'utf8')
 
         // Töötav sorteerimisfunktsioon filtritele

@@ -9,15 +9,15 @@ timer.start(__filename)
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source')
-const strapiDataDirPath = path.join(sourceDir, 'strapidata')
+const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const mapping = DOMAIN_SPECIFICS.footer
 const strapiDataFooterPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_FOOTERS = yaml.safeLoad(fs.readFileSync(strapiDataFooterPath, 'utf8'))
+const STRAPIDATA_FOOTERS = yaml.load(fs.readFileSync(strapiDataFooterPath, 'utf8'))
 
 const minimodel = {
     'domain': {
@@ -39,10 +39,10 @@ for (const lang of allLanguages) {
     }
 
     const globalDataPath = path.join(sourceDir, `global.${lang}.yaml`)
-    let globalData= yaml.safeLoad(fs.readFileSync(globalDataPath, 'utf8'))
+    let globalData= yaml.load(fs.readFileSync(globalDataPath, 'utf8'))
     globalData.footer = buffer
 
-    let allDataYAML = yaml.safeDump(globalData, { 'noRefs': true, 'indent': '4' })
+    let allDataYAML = yaml.dump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(globalDataPath, allDataYAML, 'utf8')
 }
 timer.log(__filename, `Fetched ${DOMAIN} footer`);

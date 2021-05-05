@@ -8,7 +8,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const rootDir =  path.join(__dirname, '..')
 
 const eventivalPersonsPath = path.join(rootDir, 'eventival', 'static', 'eventival_persons.yaml')
-const EVENTIVAL_PERSONS = yaml.safeLoad(fs.readFileSync(eventivalPersonsPath, 'utf8'))
+const EVENTIVAL_PERSONS = yaml.load(fs.readFileSync(eventivalPersonsPath, 'utf8'))
 const E_PERSONS_FILE = path.join(fetchDir, 'eventival_persons.yaml')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
@@ -27,7 +27,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
         console.log(data.persons.length, 'Eventival persons fetched.')
 
-        fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump(data, { 'noRefs': true, 'indent': '4' }))
+        fs.writeFileSync(E_PERSONS_FILE, yaml.dump(data, { 'noRefs': true, 'indent': '4' }))
     }
 
     function add_filters_and_search_to_data(data) {
@@ -140,5 +140,5 @@ if (DOMAIN === 'industry.poff.ee') {
 
     eventival_persons_yaml()
 } else {
-    fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump([], { 'noRefs': true, 'indent': '4' }))
+    fs.writeFileSync(E_PERSONS_FILE, yaml.dump([], { 'noRefs': true, 'indent': '4' }))
 }

@@ -17,6 +17,38 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/my-finished-build-logs",
+      "handler": "publisher.myFinishedBuildLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/my-started-build-log",
+      "handler": "publisher.myStartedBuildLog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/onelog/:id",
+      "handler": "publisher.onelog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/updatelog/:id",
+      "handler": "publisher.updatelog",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
+      }
+    },
+    {
       "method": "POST",
       "path": "/fullbuild",
       "handler": "publisher.fullBuild",

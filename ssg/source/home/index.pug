@@ -12,7 +12,7 @@ block content
         //- section.kuuekas
         include /_templates/home_templates/sixfilms_just.pug
 
-        include /_templates/home_templates/sponsor_banner.pug
+        //- include /_templates/home_templates/sponsor_banner.pug
 
         section.trio_block
             include /_templates/home_templates/trio_block_just.pug
@@ -21,7 +21,7 @@ block content
         //-     include /_templates/home_templates/viiekas_just.pug
 
 
-    if process.env['DOMAIN'] === 'filmikool.poff.ee'
+    else if process.env['DOMAIN'] === 'filmikool.poff.ee'
         - var whichTypesToDisplay = ['news']
         - var heroPlusTrioNews = []
 
@@ -33,15 +33,48 @@ block content
 
         //- include /_templates/home_templates/sponsor_banner.pug
 
-        //- section.trio_block
-        //-     include /_templates/home_templates/trio_block_filmikool.pug
+        section.trio_block
+            include /_templates/home_templates/trio_block_filmikool.pug
+
+        //- section.viiekas
+        //-     include /_templates/home_templates/viiekas_filmikool.pug
+
+
+    else if process.env['DOMAIN'] === 'hoff.ee'
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_hoff.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_hoff.pug
+
+        //- include /_templates/home_templates/poff_banner_toetajad.pug
+
+        //- include /_templates/home_templates/sponsorriba_1.pug
 
         section.viiekas
-            include /_templates/home_templates/viiekas_filmikool.pug
+            include /_templates/home_templates/viiekas_hoff.pug
 
+        //- include /_templates/home_templates/poff_banner_partnerid.pug
 
 
     else if process.env['DOMAIN'] === 'shorts.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_shorts.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_shorts.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_shorts.pug
+
+    else if process.env['DOMAIN'] === 'tartuff.ee'
 
         - var whichTypesToDisplay = ['news']
         - var heroPlusTrioNews = []
@@ -87,21 +120,21 @@ block content
 
         //- include /_templates/home_templates/industry_banner.pug
 
-    else if process.env['DOMAIN'] === 'filmikool.poff.ee'
-        - var whichTypesToDisplay = ['news']
-        - var heroPlusTrioNews = []
+    //- else if process.env['DOMAIN'] === 'filmikool.poff.ee'
+    //-     - var whichTypesToDisplay = ['news']
+    //-     - var heroPlusTrioNews = []
 
-        section.grid_hero
-            include /_templates/home_templates/hero_filmikool.pug
+    //-     section.grid_hero
+    //-         include /_templates/home_templates/hero_filmikool.pug
 
-        section.kuuekas
-        include /_templates/home_templates/frontpagecourse_filmikool.pug
+    //-     section.kuuekas
+    //-     include /_templates/home_templates/frontpagecourse_filmikool.pug
 
-        section.trio_block
-            include /_templates/home_templates/trio_block_filmikool.pug
+    //-     section.trio_block
+    //-         include /_templates/home_templates/trio_block_filmikool.pug
 
-        section.viiekas
-            include /_templates/home_templates/viiekas_filmikool.pug
+    //-     section.viiekas
+    //-         include /_templates/home_templates/viiekas_filmikool.pug
 
 
     else

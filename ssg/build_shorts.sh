@@ -1,7 +1,12 @@
 #! /bin/bash
 
 SECONDS=0
-cd "/srv/ssg"
+
+THISDIR=${PWD##*/}
+
+if [ "$THISDIR" != "ssg" ]; then
+    cd "/srv/ssg"
+fi
 
 # DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # cd $DIR
@@ -12,8 +17,11 @@ export DOMAIN='shorts.poff.ee'
 echo DOMAIN
 echo $DOMAIN
 
-. ./build.sh
-printf '\n\n----------      Finished building, press ENTER to exit      ----------\n\n'
+echo 'Processing all Strapidata by Domain'
+node ./helpers/d_fetch.js
 
-read varname
-echo $varname
+. ./build.sh
+printf '\n\n----------      Finished building      ----------\n\n'
+
+
+

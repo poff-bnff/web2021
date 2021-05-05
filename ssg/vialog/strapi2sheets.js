@@ -9,7 +9,7 @@ const SHEET_VIALOG = '1kc6Fcx5kd5_DwQr_haATahTHhsjajZpsoea8Zc7oKFM'
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const vialogUrls = DOMAIN_SPECIFICS.vialogUrls.et.map((e, i) => {
     return {
         et: e,
