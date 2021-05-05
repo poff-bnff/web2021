@@ -41,6 +41,7 @@ jobs:
           run: cd ./ssg
 
         - name: Install node dependencies
+          run: pwd
           run: npm install
 
         - name: cd back to repo root
