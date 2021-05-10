@@ -376,11 +376,11 @@ module.exports = {
       type: 'plugin',
       name: 'users-permissions',
     });
-
+    
     const settings = await pluginStore.get({
       key: 'advanced',
     });
-
+    
     if (!settings.allow_register) {
       return ctx.badRequest(
         null,
@@ -388,9 +388,9 @@ module.exports = {
           id: 'Auth.advanced.allow_register',
           message: 'Register action is currently disabled.',
         })
-      );
-    }
-
+        );
+      }
+      
     const params = {
       ..._.omit(ctx.request.body, ['confirmed', 'confirmationToken', 'resetPasswordToken']),
       provider: 'local',
