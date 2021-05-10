@@ -35,68 +35,74 @@ async function loadUserInfo() {
 
 
 async function sendNewUser() {
-    // console.log('sending new user profile.....');
+    console.log('sending new user profile.....');
 
-    let profile_pic_to_send= "no profile picture saved"
+    let profile_pic_to_send = "no profile picture saved"
 
-    if (!imgPreview.src.search("/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")){
-        profile_pic_to_send= "profile picture saved to S3"
+    if (!imgPreview.src.search("/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")) {
+        profile_pic_to_send = "profile picture saved to S3"
     }
 
-    let userToSend = [
-        { Name: "picture", Value: profile_pic_to_send },
-        { Name: "email", Value: email.value },
-        { Name: "name", Value: firstName.value },
-        { Name: "family_name", Value: lastName.value },
-        { Name: "gender", Value: gender.value },
-        { Name: "birthdate", Value: dob.value },
-        { Name: "phone_number", Value: '+' + phoneNr.value },
-        { Name: "address", Value: `${countrySelection.value}, ${citySelection.value}` },
-        { Name: "password", Value: psw.value }
-    ];
+    // let userToSend = [
+    //     { Name: "picture", Value: profile_pic_to_send },
+    //     { Name: "email", Value: email.value },
+    //     { Name: "name", Value: firstName.value },
+    //     { Name: "family_name", Value: lastName.value },
+    //     { Name: "gender", Value: gender.value },
+    //     { Name: "birthdate", Value: dob.value },
+    //     { Name: "phone_number", Value: '+' + phoneNr.value },
+    //     { Name: "address", Value: `${countrySelection.value}, ${citySelection.value}` },
+    //     { Name: "password", Value: psw.value }
+    // ];
 
-    // console.log(userToSend);
+    let userToSend = {
+        // picture: pictureInfo,
+        username: email.value,
+        email: email.value,
+        password: psw.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        gender: gender.value,
+        birthdate: dob.value,
+        phoneNr: phoneNr.value,
+        address: `${countrySelection.value}, ${citySelection.value}`
+    }
 
-    let response = await fetch(`https://api.poff.ee/profile`, {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
         method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
-        },
-        body: JSON.stringify(userToSend)
-    });
+        headers: myHeaders,
+        body: JSON.stringify(userToSend),
+        redirect: 'follow'
+    };
+
+    let response = await fetch(`http://localhost:1337/auth/local/register`, requestOptions);
+
     response = await response.json()
 
-    // console.log(response)
+    console.log(response)
 
-    if(response.Payload){
-        //konto juba olemas
-        // console.log(response.Payload)
-        let providers = JSON.parse(response.Payload)
-        document.getElementById('profileInSystem').style.display = 'block'
-        document.getElementById('signupForm').style.display = 'none'
-        document.getElementById('registerTitle').style.display = 'none'
-        if(!providers.includes("facebook")){
-            document.getElementById('fb').style.display = 'none'
-        }
-        if(!providers.includes("google")){
-            document.getElementById('go').style.display = 'none'
-        }
-        if(!providers.includes("eventival")){
-            document.getElementById('ev').style.display = 'none'
-        }
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    if (!response.UserConfirmed && !response.Payload){
-        //konto loomine õnnestus
+    if (response.user && response.user.email === email.value) {
         document.getElementById('signupForm').style.display = 'none'
         document.getElementById('registerTitle').style.display = 'none'
         document.getElementById('profileSent').style.display = 'block'
-        document.getElementById('profileDetails').innerHTML =  email.value
+        document.getElementById('profileDetails').innerHTML = email.value
         document.getElementById('loginButton').style.display = 'block'
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (response.statusCode !== 200) {
+        if (response.message[0].messages[0].id = 'Auth.form.error.email.taken') {
 
+            document.getElementById('profileInSystem').style.display = 'block'
+            document.getElementById('signupForm').style.display = 'none'
+            document.getElementById('registerTitle').style.display = 'none'
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
+
+
 }
 
 
@@ -124,8 +130,8 @@ function validateForm() {
 
     var errors = []
 
-    if (document.getElementById('profileSent')){
-    document.getElementById('profileSent').style.display = 'none'
+    if (document.getElementById('profileSent')) {
+        document.getElementById('profileSent').style.display = 'none'
     }
 
     if (!validateEmail("email")) {
@@ -178,7 +184,7 @@ function validateForm() {
 }
 
 window.addEventListener("keydown", function (event) {
-    if (event.key === "Enter"){
+    if (event.key === "Enter") {
         // console.log("ENTER")
         validateForm()
     }
