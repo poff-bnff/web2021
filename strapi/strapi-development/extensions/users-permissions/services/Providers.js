@@ -65,7 +65,7 @@ const connect = (provider, query) => {
           user = users[0]
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
-            mergeProviders(user, provider, profile.externalProviders[0])
+            const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
           }
         }
 
@@ -571,14 +571,11 @@ const buildRedirectUri = (provider = '') =>
   `${getAbsoluteServerUrl(strapi.config)}/connect/${provider}/callback`;
 
 const mergeProviders = async (user, provider, externalProvider) => {
-  console.log('mergeProviders');
-  const params = {}
-  params.params = { id: user.id }
   const externalProviders = user.externalProviders
   externalProvider.dateConnected = new Date().toISOString()
   externalProviders.push(externalProvider)
-  params.request = { body: { provider: user.provider + ',' + provider, externalProviders: externalProviders } }
-  const updatedUser = await apiUserController.update(params)
+  const values = {provider: user.provider + ',' + provider, externalProviders: externalProviders}
+  const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({id: user.id}, values);
   return updatedUser
 }
 
