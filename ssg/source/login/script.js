@@ -16,41 +16,6 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = 'block'
 }
 
-
-// if (window.location.hash) {
-
-//     const [
-//         access_token,
-//         id_token,
-//         token_type,
-//         token_expires,
-//     ] = window.location.hash.substr(1).split('&')
-
-//     if ((window.location.hash).includes('Already+found+an+entry+for+username')) {
-//         let errorMessage = (window.location.hash).split('+')
-//         for (item of errorMessage) {
-//             // console.log(item)
-
-//             if (item.includes('google') || item.includes('facebook') || item.includes('eventival')) {
-//                 item = item.split('_')
-//                 let provider = item[0]
-//                 // console.log(provider)
-//                 providerLogin(provider)
-//             }
-//         }
-//         // console.log(errorMessage)
-//     }
-//     else if ((window.location.hash).includes('User+is+not+confirmed')){
-//         unConfirmed.style.display = 'block'
-//         window.location.hash = ''
-//     }
-
-//     else if (access_token && id_token) {
-//         storeAuthentication(access_token.split('=')[1], id_token.split('=')[1])
-//         window.location.hash = ''
-//     }
-// }
-
 if (window.location.hash) {
     const [provider] = window.location.hash.substr(1).split('?')
     const search = window.location.hash.split('?')[1]
@@ -59,19 +24,8 @@ if (window.location.hash) {
     for (const inf of tokenInfo){
         token[inf.split('=')[0]] = inf
     }
-
-
-   
     fetchJWTandProfileFromStrapi(token.access_token, provider)
 }
-
-// if (window.location.search) {
-//     console.log(window.location.search);
-//     const access_token = window.location.search.split('&')[0]
-//     console.log(access_token);
-//     // fetchJWTandProfileFromStrapi(access_token, 'github')
-
-// }
 
 async function fetchJWTandProfileFromStrapi(access_token, provider) {
 
@@ -81,7 +35,6 @@ async function fetchJWTandProfileFromStrapi(access_token, provider) {
     const strapiFetchUrl = `${strapiDomain}/auth/${provider}/callback?${access_token}`
 
     let response = await fetch(strapiFetchUrl)
-    // let response = await fetch(`http://localhost:1337/auth/eventival/callback${access_token}`)
     response = await response.json();
 
     const JWT = response.jwt
