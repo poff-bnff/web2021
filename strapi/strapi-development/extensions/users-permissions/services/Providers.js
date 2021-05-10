@@ -66,6 +66,9 @@ const connect = (provider, query) => {
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
             const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
+            if (updatedUser){
+              notifyAboutMerge(user)
+              }
           }
         }
 
@@ -585,6 +588,28 @@ const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
   last10Logins.push(lastLogin)
   const updateData = {last10Logins: last10Logins}
   const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+}
+
+const notifyAboutMerge = async user => {
+  const emailTemplate = {
+    subject: `Welcome ${user.email}`,
+    text: `Welcome on mywebsite.fr!
+      Your account is now linked with: ${user.email}.`,
+    html: `<h1>Welcome on mywebsite.fr!</h1>
+      <p>Your account is now linked with: <%= user.email %>.<p>`,
+  };
+
+  await strapi.plugins.email.services.email.sendTemplatedEmail(
+    {
+      to: '',
+      from: ''
+      // from: is not specified, so it's the defaultFrom that will be used instead
+    },
+    emailTemplate,
+    {
+      user: _.pick(user, ['username', 'email']),
+    }
+  );
 }
 
 module.exports = {
