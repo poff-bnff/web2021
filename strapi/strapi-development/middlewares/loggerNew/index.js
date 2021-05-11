@@ -57,7 +57,7 @@ module.exports = strapi => {
           await next();
           if (ctx.url === '/publisher/my-finished-build-logs') {return}
           const delta = Math.ceil(Date.now() - start);
-          strapi.log.debug(`${ctx.method} ${ctx.url} (${delta} ${delta} ms) ${codeToColor(ctx.status)}`);
+          strapi.log.debug(`${ctx.method} ${ctx.url} (${delta} ms) ${codeToColor(ctx.status)}`);
         });
       }
     },
