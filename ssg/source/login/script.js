@@ -17,25 +17,23 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
 }
 
 if (window.location.hash) {
-    const [provider] = window.location.hash.substr(1).split('?')
-    const search = window.location.hash.split('?')[1]
-    const tokenInfo = search.split('&')
-    const token = {}
-    for (const inf of tokenInfo) {
-        token[inf.split('=')[0]] = inf
-    }
-    fetchJWTandProfileFromStrapi(token.access_token, provider)
+    const hash = window.location.hash
+    triggerExtProvLoginFlow(hash)
 }
 
-async function fetchJWTandProfileFromStrapi(access_token, provider) {
+async function triggerExtProvLoginFlow(hash) {
+    const authData = await getAccessTokenWithProvider(hash)
+    fetchJWTandProfileFromStrapi(authData.provider, authData.access_token)
+}
 
-    console.log(access_token);
-    console.log(provider);
+async function fetchJWTandProfileFromStrapi(provider, access_token) {
 
-    const strapiFetchUrl = `${strapiDomain}/auth/${provider}/callback?${access_token}`
+    const requestOptions = {
+        route: `/auth/${provider}/callback?${access_token}`,
+        method: 'GET',
+        }
 
-    let response = await fetch(strapiFetchUrl)
-    response = await response.json();
+    let response = await fetchFromStrapi(requestOptions)
 
     if (response.user && response.jwt) {
         const JWT = response.jwt
@@ -66,43 +64,25 @@ async function loginViaStrapi() {
     unConfirmed.style.display = 'none'
     noUserOrWrongPwd.style.display = 'none'
 
-
-
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
 
-        let authenticationData = {
+        const authenticationData = {
             identifier: document.getElementById("loginUsername").value,
             password: document.getElementById("loginPassword").value
         }
 
-        let response = await fetch(`${strapiDomain}/auth/local`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(authenticationData)
-        });
-        response = await response.json()
-
-        if (response.user && response.jwt) {
+        const response = await authFetcher(authenticationData)
+        if (response) {
             const JWT = response.jwt
             storeAuthentication(JWT)
-        } else if (response.statusCode !== 200) {
-            const strapiError = response.message[0].messages[0].message
-            switch (strapiError) {
-                case ('Your account email is not confirmed'):
-                    document.getElementById('unConfirmed').style.display = 'block'
-                    break;
-                case ('Identifier or password invalid.'):
-                    document.getElementById('noUserOrWrongPwd').style.display = 'block'
-
-            }
+        } else {
+            document.getElementById("loginUsername").value = ''
+            document.getElementById("loginPassword").value = ''
         }
     } else {
         unfilledErrorMsg.style.display = 'block'
     }
 }
-
 
 async function loadUserProfile() {
     // console.log('loadUserProfile');
@@ -119,7 +99,6 @@ async function loadUserProfile() {
     checkIfUserProfFilled(userProfile)
 
 }
-
 
 function checkIfUserProfFilled(userProfile) {
     // console.log('checkIfUserProfFilled');
@@ -148,25 +127,6 @@ function redirectToPreLoginUrl() {
     else {
         window.open(pageURL, '_self')
     }
-}
-
-
-async function providerLogin(provider) {
-    // console.log('providerLogin ' + provider);
-
-    window.open(`https://api.poff.ee/auth/${provider}`, '_self')
-
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    }
-
-    let response = await fetch(`https://api.poff.ee/auth/${provider}`, requestOptions)
-
-    let response2 = await response.json()
-    // console.log(response2)
-
-    window.open(response2.providerUrl, '_self')
 }
 
 function directToSignup() {
@@ -271,3 +231,66 @@ function closeMe(elem) {
     elem.parentNode.style.display = 'none'
 }
 
+async function authFetcher(authenticationData) {
+
+
+    const requestOptions = {
+        route: '/auth/local',
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(authenticationData)
+        }
+    const response = await fetchFromStrapi(requestOptions)
+    const handledResponse = await handleResponse(response)
+    return handledResponse
+}
+
+async function fetchFromStrapi(requestOptions){
+    console.log(requestOptions);
+
+    const route = requestOptions.route
+    const method = requestOptions.method
+    const headers = requestOptions.headers
+    const body = requestOptions.body
+
+    let response = await fetch(`${strapiDomain}${route}`, {
+        method: method,
+        headers: headers,
+        body: body
+    });
+
+    response = await response.json()
+    return response
+}
+
+function getAccessTokenWithProvider(hash) {
+    const [provider, search] = hash.substr(1).split('?')
+    const tokenInfo = search.split('&')
+    const token = {}
+    for (const inf of tokenInfo) {
+        token[inf.split('=')[0]] = inf
+    }
+    const access_token = token.access_token
+    return {
+        provider: provider,
+        access_token: access_token
+    }
+}
+
+async function handleResponse(response) {
+
+    if (response.user && response.jwt) {
+        return response
+    } else if (response.statusCode !== 200) {
+        const strapiError = response.message[0].messages[0].message
+        switch (strapiError) {
+            case ('Your account email is not confirmed'):
+                document.getElementById('unConfirmed').style.display = 'block'
+                break;
+            case ('Identifier or password invalid.'):
+                document.getElementById('noUserOrWrongPwd').style.display = 'block'
+        }
+    }
+}
