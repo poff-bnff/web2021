@@ -66,9 +66,9 @@ const connect = (provider, query) => {
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
             const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
-            if (updatedUser) {
-              notifyAboutMerge(user)
-            }
+            // if (updatedUser) {
+            //   // notifyAboutMerge(user)
+            // }
             if (!updatedUser) {
               return reject([null, { message: 'Merge provider to existing providers failed' }]);
             }
