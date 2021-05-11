@@ -66,9 +66,12 @@ const connect = (provider, query) => {
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
             const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
-            if (updatedUser){
+            if (updatedUser) {
               notifyAboutMerge(user)
-              }
+            }
+            if (!updatedUser) {
+              return reject([null, { message: 'Merge provider to existing providers failed' }]);
+            }
           }
         }
 
@@ -207,7 +210,7 @@ const getProfile = async (provider, query, callback) => {
             callback(null, {
               username: body.name,
               email: body.email,
-              externalProviders: [{ provider: provider, UUID: body.id}]
+              externalProviders: [{ provider: provider, UUID: body.id }]
             });
           }
         });
@@ -577,16 +580,16 @@ const mergeProviders = async (user, provider, externalProvider) => {
   const externalProviders = user.externalProviders
   externalProvider.dateConnected = new Date().toISOString()
   externalProviders.push(externalProvider)
-  const values = {provider: user.provider + ',' + provider, externalProviders: externalProviders}
+  const values = { provider: user.provider + ',' + provider, externalProviders: externalProviders }
   const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({id: user.id}, values);
   return updatedUser
 }
 
 const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
-  const lastLogin = {loginDateTime: authTime, provider: provider}
+  const lastLogin = { loginDateTime: authTime, provider: provider }
   if (last10Logins.length === 10) last10Logins.shift()
   last10Logins.push(lastLogin)
-  const updateData = {last10Logins: last10Logins}
+  const updateData = { last10Logins: last10Logins }
   const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 }
 
