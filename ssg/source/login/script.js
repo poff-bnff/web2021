@@ -21,7 +21,7 @@ if (window.location.hash) {
     const search = window.location.hash.split('?')[1]
     const tokenInfo = search.split('&')
     const token = {}
-    for (const inf of tokenInfo){
+    for (const inf of tokenInfo) {
         token[inf.split('=')[0]] = inf
     }
     fetchJWTandProfileFromStrapi(token.access_token, provider)
@@ -37,11 +37,16 @@ async function fetchJWTandProfileFromStrapi(access_token, provider) {
     let response = await fetch(strapiFetchUrl)
     response = await response.json();
 
-    const JWT = response.jwt
+    if (response.user && response.jwt) {
+        const JWT = response.jwt
+        storeAuthentication(JWT)
+        return
+    }
 
-    console.log(JWT);
-
-    storeAuthentication(JWT)
+    if (response.statusCode !== 200) {
+        errorNotificationBar.style.display = ''
+        errorNotificationBar.innerHTML = errorNotificationBar.innerHTML + ` "${response.message.message}"` + `<a onclick='closeMe(this)'> ×</a>`
+    }
 }
 
 // salvesta timestamp
@@ -278,5 +283,7 @@ function askForNewPassword() {
     resetPasswordBtn.style.display = 'block'
 }
 
-
+function closeMe(elem) {
+    elem.parentNode.style.display = 'none'
+}
 
