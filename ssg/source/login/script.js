@@ -60,63 +60,47 @@ async function storeAuthentication(access_token, id_token) {
 }
 
 
-async function loginViaCognito() {
+async function loginViaStrapi() {
+    console.log('emailpswd');
     unfilledErrorMsg.style.display = 'none'
     unConfirmed.style.display = 'none'
-    wrongPswd.style.display = 'none'
+    noUserOrWrongPwd.style.display = 'none'
 
 
 
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
 
         let authenticationData = {
-            loginUsername: document.getElementById("loginUsername").value,
+            identifier: document.getElementById("loginUsername").value,
             password: document.getElementById("loginPassword").value
         }
 
-        // console.log(authenticationData)
-
-        let response = await fetch(`https://api.poff.ee/auth`, {
+        let response = await fetch(`${strapiDomain}/auth/local`, {
             method: 'POST',
             headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(authenticationData)
         });
+        response = await response.json()
 
-        let response2 = await response.json()
-        // console.log(response2)
+        if (response.user && response.jwt) {
+            const JWT = response.jwt
+            storeAuthentication(JWT)
+        } else if (response.statusCode !== 200) {
+            const strapiError = response.message[0].messages[0].message
+            switch (strapiError) {
+                case ('Your account email is not confirmed'):
+                    document.getElementById('unConfirmed').style.display = 'block'
+                    break;
+                case ('Identifier or password invalid.'):
+                    document.getElementById('noUserOrWrongPwd').style.display = 'block'
 
-
-
-        if (response2.email && !response2.confirmed) {
-            // console.log(1)
-            document.getElementById('unConfirmed').style.display = 'block'
-            return
+            }
         }
-
-        if (response2.noUserEmail && !response2.user) {
-            // console.log(2)
-            document.getElementById('noSuchUser').style.display = 'block'
-            return
-        }
-
-        if (response2.message === 'Internal Server Error') {
-            document.getElementById('wrongPswd').style.display = 'block'
-            return
-        }
-
-        // console.log(response2)
-        // console.log('authResponse ', response2.AccessToken)
-        access_token = response2.AccessToken
-        id_token = response2.IdToken
-
-        storeAuthentication(access_token, id_token)
     } else {
         unfilledErrorMsg.style.display = 'block'
-
     }
-
 }
 
 

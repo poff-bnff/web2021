@@ -32,7 +32,7 @@ block content
                     label.login_label( for='loginPasswordRep')= self.label.userprofile.passwordRepeat
                     input.ogin_input#loginPasswordRep(type='password')
 
-                button.login_btn_primary#loginBtn(onclick='loginViaCognito()')= self.label.userprofile.signIn
+                button.login_btn_primary#loginBtn(onclick='loginViaStrapi()')= self.label.userprofile.signIn
 
                 button.login_btn_secondary#forgotPasswordBtn(onclick='doResetPassword()')= self.label.userprofile.resetPassword
 
@@ -53,9 +53,8 @@ block content
                 p#pswdResetEnterNewMessage(style={display:'none'})= self.label.userprofile.resetPswdNewPswdHelp
                 p#pswdResetCompletedMessage(style={display:'none'})= self.label.userprofile.pswdResetCompleteHelp
                 p#currentUsername(style={display:'none'})
-                p#noSuchUser(style={display:'none'})= self.label.userprofile.loginNoUser
+                p#noUserOrWrongPwd(style={display:'none'})= self.label.userprofile.noUserOrWrongPwd
                 p#unConfirmed(style={display:'none'})= self.label.userprofile.unconfirmedEmail
-                p#wrongPswd(style={display:'none'})= self.label.userprofile.pswdFalseHelp
         else
             //- br
             //- br
