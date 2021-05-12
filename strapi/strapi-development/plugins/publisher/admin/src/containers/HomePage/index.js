@@ -66,6 +66,7 @@ const HomePage = () => {
      	 	<ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE"/>
      	 	<ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE"/>
      	 	<ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE"/>
+     	 	<ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE"/>
      	 	{/**<Button color="primary" onClick={() => DoBuildFull()}>Full build</Button>**/}
     </Container>
   );
