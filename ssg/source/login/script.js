@@ -248,12 +248,8 @@ async function authFetcher(authenticationData) {
 }
 
 async function fetchFromStrapi(requestOptions){
-    console.log(requestOptions);
 
-    const route = requestOptions.route
-    const method = requestOptions.method
-    const headers = requestOptions.headers
-    const body = requestOptions.body
+    const {route, method, headers, body} = requestOptions
 
     let response = await fetch(`${strapiDomain}${route}`, {
         method: method,
