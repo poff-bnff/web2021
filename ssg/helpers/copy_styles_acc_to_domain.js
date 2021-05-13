@@ -17,6 +17,12 @@ if (process.env['DOMAIN'] === 'justfilm.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_filmikool/');
 } else if (process.env['DOMAIN'] === 'hoff.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_hoff/');
+} else if (process.env['DOMAIN'] === 'kumu.poff.ee') {
+    var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_kumu/');
+} else if (process.env['DOMAIN'] === 'tartuff.ee') {
+    var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_tartuff/');
+} else if (process.env['DOMAIN'] === 'oyafond.ee') {
+    var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_bruno/');
 }else {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_poff/');
 }
