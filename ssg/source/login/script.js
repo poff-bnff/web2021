@@ -21,29 +21,115 @@ if (window.location.hash) {
     triggerExtProvLoginFlow(hash)
 }
 
-async function triggerExtProvLoginFlow(hash) {
-    const authData = await getAccessTokenWithProvider(hash)
-    fetchJWTandProfileFromStrapi(authData.provider, authData.access_token)
+async function loginViaStrapi() {
+    unfilledErrorMsg.style.display = 'none'
+    unConfirmed.style.display = 'none'
+    noUserOrWrongPwd.style.display = 'none'
+
+    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
+
+        const authRequest = composeLoginAuthRequest()
+        const authResponse = await fetchFromStrapi(authRequest)
+        const authResult = handleAuthResponse(authResponse)
+        storeAuthentication(authResult.jwt)
+
+    } else {
+        unfilledErrorMsg.style.display = 'block'
+    }
 }
 
-async function fetchJWTandProfileFromStrapi(provider, access_token) {
+async function triggerExtProvLoginFlow(hash) {
+    const authData = getAccessTokenWithProvider(hash)
+    const authRequest = composeProvAuthRequest(authData.provider, authData.access_token)
+    const authResponse = await fetchFromStrapi(authRequest)
+    const authResult = handleAuthResponse(authResponse)
+    storeAuthentication(authResult.jwt)
+}
 
-    const requestOptions = {
-        route: `/auth/${provider}/callback?${access_token}`,
-        method: 'GET',
-        }
+function getAccessTokenWithProvider(hash) {
+    const [provider, search] = hash.substr(1).split('?')
+    const tokenInfo = search.split('&')
+    const token = {}
+    for (const inf of tokenInfo) {
+        token[inf.split('=')[0]] = inf
+    }
+    const access_token = token.access_token
+    return {
+        provider: provider,
+        access_token: access_token
+    }
+}
 
-    let response = await fetchFromStrapi(requestOptions)
+const composeLoginAuthRequest = () => {
 
-    if (response.user && response.jwt) {
-        const JWT = response.jwt
-        storeAuthentication(JWT)
-        return
+    const authenticationData = {
+        identifier: document.getElementById("loginUsername").value,
+        password: document.getElementById("loginPassword").value
+    }
+    const request = {
+        route: '/auth/local',
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(authenticationData)
     }
 
-    if (response.statusCode !== 200) {
-        errorNotificationBar.style.display = ''
-        errorNotificationBar.innerHTML = errorNotificationBar.innerHTML + ` "${response.message.message}"` + `<a onclick='closeMe(this)'> ×</a>`
+    return request
+}
+
+function composeProvAuthRequest(provider, access_token) {
+
+    const request = {
+        route: `/auth/${provider}/callback?${access_token}`,
+        method: 'GET',
+    }
+    console.log(request);
+    return request
+
+}
+
+
+async function fetchFromStrapi(requestOptions) {
+    const { route, method, headers, body } = requestOptions
+    
+    let response = await fetch(`${strapiDomain}${route}`, {
+        method: method,
+        headers: headers,
+        body: body
+    });
+    response = await response.json()    
+    return response
+}
+
+function handleAuthResponse(response) {
+
+    if (response.jwt && response.user) {
+        return response
+    } else if (response.statusCode !== 200) {
+        console.log(response.data[0]);
+        const strapiError = response.data[0]?.messages[0].id || response.data.message
+        switch (strapiError) {
+            case ('Auth.form.error.confirmed'):
+                document.getElementById('unConfirmed').style.display = ''
+                break;
+            case ('Auth.form.error.invalid'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Auth.form.error.password.local'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Merge provider to existing providers failed'):
+                document.getElementById('mergeProvidersFailed').style.display = ''
+                break;
+            default:
+                const errorNotifBar = document.getElementById('errorNotificationBar')
+                errorNotifBar.style.display = ''
+                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this)'> ×</a>`
+                break;
+        }
+        cleanInputFields()
+        cleanUrl()
     }
 }
 
@@ -51,37 +137,19 @@ async function fetchJWTandProfileFromStrapi(provider, access_token) {
 //kasutaja nimi
 // autentimis päring api vastu (email ja parool, sinna, tagasi token ja timestamp
 
+const cleanInputFields = () => {
+    document.getElementById("loginUsername").value = ''
+    document.getElementById("loginPassword").value = ''
+}
+
+const cleanUrl = () => {
+    window.location.hash = ''
+
+}
 async function storeAuthentication(access_token, id_token) {
     localStorage.setItem('ACCESS_TOKEN', access_token)
     localStorage.setItem('ID_TOKEN', id_token)
     await loadUserProfile()
-}
-
-
-async function loginViaStrapi() {
-    console.log('emailpswd');
-    unfilledErrorMsg.style.display = 'none'
-    unConfirmed.style.display = 'none'
-    noUserOrWrongPwd.style.display = 'none'
-
-    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
-
-        const authenticationData = {
-            identifier: document.getElementById("loginUsername").value,
-            password: document.getElementById("loginPassword").value
-        }
-
-        const response = await authFetcher(authenticationData)
-        if (response) {
-            const JWT = response.jwt
-            storeAuthentication(JWT)
-        } else {
-            document.getElementById("loginUsername").value = ''
-            document.getElementById("loginPassword").value = ''
-        }
-    } else {
-        unfilledErrorMsg.style.display = 'block'
-    }
 }
 
 async function loadUserProfile() {
@@ -229,64 +297,4 @@ function askForNewPassword() {
 
 function closeMe(elem) {
     elem.parentNode.style.display = 'none'
-}
-
-async function authFetcher(authenticationData) {
-
-
-    const requestOptions = {
-        route: '/auth/local',
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(authenticationData)
-        }
-    const response = await fetchFromStrapi(requestOptions)
-    const handledResponse = await handleResponse(response)
-    return handledResponse
-}
-
-async function fetchFromStrapi(requestOptions){
-
-    const {route, method, headers, body} = requestOptions
-
-    let response = await fetch(`${strapiDomain}${route}`, {
-        method: method,
-        headers: headers,
-        body: body
-    });
-
-    response = await response.json()
-    return response
-}
-
-function getAccessTokenWithProvider(hash) {
-    const [provider, search] = hash.substr(1).split('?')
-    const tokenInfo = search.split('&')
-    const token = {}
-    for (const inf of tokenInfo) {
-        token[inf.split('=')[0]] = inf
-    }
-    const access_token = token.access_token
-    return {
-        provider: provider,
-        access_token: access_token
-    }
-}
-
-async function handleResponse(response) {
-
-    if (response.user && response.jwt) {
-        return response
-    } else if (response.statusCode !== 200) {
-        const strapiError = response.message[0].messages[0].message
-        switch (strapiError) {
-            case ('Your account email is not confirmed'):
-                document.getElementById('unConfirmed').style.display = 'block'
-                break;
-            case ('Identifier or password invalid.'):
-                document.getElementById('noUserOrWrongPwd').style.display = 'block'
-        }
-    }
 }
