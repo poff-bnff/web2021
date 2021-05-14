@@ -33,7 +33,7 @@ const loginViaLocal = () => {
 }
 
 const loginFlow = async provider => {
-    const authRequest = composeAuthRequest(provider)
+    const authRequest = composeRequest(provider)
     const authResponse = await fetchFromStrapi(authRequest)
     if (!authResponse) return
 
@@ -42,7 +42,7 @@ const loginFlow = async provider => {
 
     storeAuthentication(authResult.jwt)
 
-    const usrProfileRequest = composeUsrProfileRequest()
+    const usrProfileRequest = composeRequest('profile')
     const usrProfResponse = await fetchFromStrapi(usrProfileRequest)
     if (!usrProfResponse) return
 
@@ -53,62 +53,36 @@ const loginFlow = async provider => {
     window.open(`${pageURL}/userprofile`, '_self')
 }
 
-const cleanUiMessages = () => {
-    unfilledErrorMsg.style.display = 'none'
-    unConfirmed.style.display = 'none'
-    noUserOrWrongPwd.style.display = 'none'
-    errorNotificationBar.style.display = 'none'
-    failedToFetch.style.display = 'none'
-    mergeProvidersFailed.style.display = 'none'
-    emailUsed.style.display = 'none'
-}
-
-const composeAuthRequest = provider => {
+const composeRequest = requestCase => {
     const request = {}
 
-    if (provider === 'social') {
-        const { provider, access_token } = getAccessTokenWithProvider()
-        request.route = `/auth/${provider}/callback?${access_token}`
-        request.method = 'GET'
-    }
-    if (provider === 'local') {
-        const authenticationData = {
-            identifier: document.getElementById("loginUsername").value,
-            password: document.getElementById("loginPassword").value
-        }
-        request.route = '/auth/local'
-        request.method = 'POST'
-        request.headers = {
-            "Content-Type": "application/json"
-        }
-        request.body = JSON.stringify(authenticationData)
-    }
-    return request
-}
-
-const composeUsrProfileRequest = () => {
-    const request = {
-        route: '/users/me',
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
-        }
+    switch (requestCase) {
+        case ('social'):
+            const { provider, access_token } = getAccessTokenWithProvider()
+            request.route = `/auth/${provider}/callback?${access_token}`
+            request.method = 'GET'
+            break;
+        case ('local'):
+            const authenticationData = {
+                identifier: document.getElementById("loginUsername").value,
+                password: document.getElementById("loginPassword").value
+            }
+            request.route = '/auth/local'
+            request.method = 'POST'
+            request.headers = {
+                "Content-Type": "application/json"
+            }
+            request.body = JSON.stringify(authenticationData)
+            break;
+        case ('profile'):
+            request.route = '/users/me'
+            request.method = 'GET'
+            request.headers = {
+                Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+            }
+            break;
     }
     return request
-}
-
-const getAccessTokenWithProvider = () => {
-    const [provider, search] = window.location.hash.substr(1).split('?')
-    const tokenInfo = search.split('&')
-    const token = {}
-    for (const inf of tokenInfo) {
-        token[inf.split('=')[0]] = inf
-    }
-    const access_token = token.access_token
-    return {
-        provider: provider,
-        access_token: access_token
-    }
 }
 
 const fetchFromStrapi = async requestOptions => {
@@ -125,12 +99,13 @@ const fetchFromStrapi = async requestOptions => {
     }
     catch (err) {
         document.getElementById('failedToFetch').style.display = ''
+        cleanInputFields()
         return
     }
 }
 
 const handleResponse = response => {
-    if (response.jwt && response.user) return response
+    if (response.jwt && response.user || response.id) return response
 
     if (response.statusCode !== 200) {
         if (loginUsername.value) {
@@ -166,18 +141,6 @@ const handleResponse = response => {
     }
 }
 
-const handleProfResponse = response => {
-    return response
-}
-
-const cleanInputFields = () => {
-    document.getElementById("loginUsername").value = ''
-    document.getElementById("loginPassword").value = ''
-}
-
-const cleanUrl = () =>
-    window.location.hash = ''
-
 const storeAuthentication = access_token =>
     localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
 
@@ -188,6 +151,44 @@ const redirectToPreLoginUrl = () => {
     localStorage.removeItem('url')
     window.open(url, '_self')
 }
+
+// Helpers:
+const getAccessTokenWithProvider = () => {
+    const [provider, search] = window.location.hash.substr(1).split('?')
+    const tokenInfo = search.split('&')
+    const token = {}
+    for (const inf of tokenInfo) {
+        token[inf.split('=')[0]] = inf
+    }
+    const access_token = token.access_token
+    return {
+        provider: provider,
+        access_token: access_token
+    }
+}
+
+// Cleaners:
+const cleanUrl = () =>
+    window.location.hash = ''
+
+const cleanInputFields = () => {
+    document.getElementById("loginUsername").value = ''
+    document.getElementById("loginPassword").value = ''
+}
+
+const cleanUiMessages = () => {
+    unfilledErrorMsg.style.display = 'none'
+    unConfirmed.style.display = 'none'
+    noUserOrWrongPwd.style.display = 'none'
+    errorNotificationBar.style.display = 'none'
+    failedToFetch.style.display = 'none'
+    mergeProvidersFailed.style.display = 'none'
+    emailUsed.style.display = 'none'
+}
+
+const closeMe = elem =>
+    elem.parentNode.style.display = 'none'
+
 
 function directToSignup() {
     window.open(`${location.origin}/signup`, '_self')
@@ -279,6 +280,3 @@ function askForNewPassword() {
     document.getElementById('pswdResetEnterNewMessage').style.display = ''
     resetPasswordBtn.style.display = ''
 }
-
-const closeMe = elem =>
-    elem.parentNode.style.display = 'none'
