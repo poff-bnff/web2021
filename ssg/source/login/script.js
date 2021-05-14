@@ -16,13 +16,19 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = ''
 }
 
+
 // External provider 'social' login 
 if (window.location.hash) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
 }
 
-// Email + pswd 'local' login
+// Buttons
+function directToSignup() {
+    window.open(`${location.origin}/signup`, '_self')
+}
+
+// Email + pswd 'local' login (button)
 const loginViaLocal = () => {
     cleanUiMessages()
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
@@ -32,6 +38,7 @@ const loginViaLocal = () => {
     }
 }
 
+// Login main
 const loginFlow = async provider => {
     const authRequest = composeRequest(provider)
     const authResponse = await fetchFromStrapi(authRequest)
@@ -53,6 +60,7 @@ const loginFlow = async provider => {
     window.open(`${pageURL}/userprofile`, '_self')
 }
 
+// Services
 const composeRequest = requestCase => {
     const request = {}
 
@@ -190,9 +198,8 @@ const closeMe = elem =>
     elem.parentNode.style.display = 'none'
 
 
-function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
-}
+
+
 
 function doResetPassword() {
     // console.log('reset');
