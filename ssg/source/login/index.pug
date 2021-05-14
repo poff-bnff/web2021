@@ -7,6 +7,7 @@ block content
         div#serverSideErrors
             div#errorNotificationBar(style={display:'none'})= self.label.userprofile.strapiError
             div#failedToFetch(style={display:'none'})= self.label.userprofile.failedToFetch
+            div#authorizeRequestFailed(style={display:'none'})= self.label.userprofile.authorizeRequestFailed
 
 
         h4#fromUserProfile(style={display:'none'})= self.label.userprofile.redirectFromUserprofileMessage
@@ -35,7 +36,7 @@ block content
                     label.login_label( for='loginPasswordRep')= self.label.userprofile.passwordRepeat
                     input.ogin_input#loginPasswordRep(type='password')
 
-                button.login_btn_primary#loginBtn(onclick='loginViaStrapi()')= self.label.userprofile.signIn
+                button.login_btn_primary#loginBtn(onclick='loginViaLocal()')= self.label.userprofile.signIn
 
                 button.login_btn_secondary#forgotPasswordBtn(onclick='doResetPassword()')= self.label.userprofile.resetPassword
 

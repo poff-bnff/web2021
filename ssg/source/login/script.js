@@ -16,14 +16,14 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = ''
 }
 
-// External provider login 
+// External provider 'social' login 
 if (window.location.hash) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
 }
 
-// Email + pswd login
-const loginViaStrapi = () => {
+// Email + pswd 'local' login
+const loginViaLocal = () => {
     cleanUiMessages()
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
         loginFlow('local')
@@ -35,13 +35,18 @@ const loginViaStrapi = () => {
 const loginFlow = async provider => {
     const authRequest = composeAuthRequest(provider)
     const authResponse = await fetchFromStrapi(authRequest)
-    const authResult = handleAuthResponse(authResponse)
+    if (!authResponse) return
+
+    const authResult = handleResponse(authResponse)
     if (!authResult) return
 
     storeAuthentication(authResult.jwt)
+
     const usrProfileRequest = composeUsrProfileRequest()
     const usrProfResponse = await fetchFromStrapi(usrProfileRequest)
-    const userProfile = handleProfResponse(usrProfResponse)
+    if (!usrProfResponse) return
+
+    const userProfile = handleResponse(usrProfResponse)
     if (!userProfile) return
 
     if (userProfile.profileFilled) redirectToPreLoginUrl()
@@ -119,16 +124,12 @@ const fetchFromStrapi = async requestOptions => {
         return response
     }
     catch (err) {
-        console.log(err);
-        return { fetchErr: err }
-    }
-}
-
-const handleAuthResponse = response => {
-    if (response.fetchErr) {
         document.getElementById('failedToFetch').style.display = ''
         return
     }
+}
+
+const handleResponse = response => {
     if (response.jwt && response.user) return response
 
     if (response.statusCode !== 200) {
@@ -150,6 +151,9 @@ const handleAuthResponse = response => {
                 break;
             case ('Merge provider to existing providers failed'):
                 document.getElementById('mergeProvidersFailed').style.display = ''
+                break;
+            case ('No authorization header was found'):
+                document.getElementById('authorizeRequestFailed').style.display = ''
                 break;
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
