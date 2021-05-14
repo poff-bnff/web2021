@@ -36,9 +36,16 @@ async function loginViaStrapi() {
 async function loginFlow(authRequest) {
     const authResponse = await fetchFromStrapi(authRequest)
     const authResult = handleAuthResponse(authResponse)
+    if (!authResult) return
 
-    if (authResult)
-        storeAuthentication(authResult.jwt)
+    storeAuthentication(authResult.jwt)
+    const usrProfileRequest = composeUsrProfileRequest()
+    const usrProfResponse = await fetchFromStrapi(usrProfileRequest)
+    const userProfile = handleProfResponse(usrProfResponse)
+    if (!userProfile) return
+
+    if (userProfile.profileFilled) redirectToPreLoginUrl()
+    window.open(`${pageURL}/userprofile`, '_self')
 }
 
 const cleanUiMessages = () => {
@@ -78,6 +85,17 @@ function composeProvAuthRequest() {
     return request
 }
 
+const composeUsrProfileRequest = () => {
+    const request = {
+        route: '/users/me',
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+        }
+    }
+    return request
+}
+
 function getAccessTokenWithProvider() {
     const [provider, search] = window.location.hash.substr(1).split('?')
     const tokenInfo = search.split('&')
@@ -91,7 +109,6 @@ function getAccessTokenWithProvider() {
         access_token: access_token
     }
 }
-
 
 async function fetchFromStrapi(requestOptions) {
     const { route, method, headers, body } = requestOptions
@@ -149,74 +166,32 @@ function handleAuthResponse(response) {
     }
 }
 
-// salvesta timestamp
-//kasutaja nimi
-// autentimis päring api vastu (email ja parool, sinna, tagasi token ja timestamp
+const handleProfResponse = response => {
+    return response
+}
 
 const cleanInputFields = () => {
     document.getElementById("loginUsername").value = ''
     document.getElementById("loginPassword").value = ''
 }
 
-const cleanUrl = () => {
+const cleanUrl = () =>
     window.location.hash = ''
 
-}
-async function storeAuthentication(access_token, id_token) {
-    localStorage.setItem('ACCESS_TOKEN', access_token)
-    localStorage.setItem('ID_TOKEN', id_token)
-    await loadUserProfile()
-}
+const storeAuthentication = access_token =>
+    localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
 
-async function loadUserProfile() {
-    // console.log('loadUserProfile');
-    let userProfile
+const redirectToPreLoginUrl = () => {
+    const preLoginUrl = localStorage.getItem('url')
+    if (!preLoginUrl) window.open(pageURL, '_self')
 
-    let response = await fetch(`${strapiDomain}/users/me`, {
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-        },
-    });
-    userProfile = await response.json()
-    // console.log(userProfile);
-    checkIfUserProfFilled(userProfile)
-
-}
-
-function checkIfUserProfFilled(userProfile) {
-    // console.log('checkIfUserProfFilled');
-    // console.log(userProfile.profileFilled);
-
-    if (userProfile.profileFilled) {
-        // console.log(userProfile.profileFilled)
-        // console.log('profile filled')
-        redirectToPreLoginUrl()
-    }
-    else if (!userProfile.profileFilled) {
-        // console.log(userProfile.profileFilled)
-        // console.log('profile not filled')
-        window.open(`${pageURL}/userprofile`, '_self')
-
-    }
-}
-
-
-function redirectToPreLoginUrl() {
-    if (localStorage.getItem('url')) {
-        let url = localStorage.getItem('url')
-        localStorage.removeItem('url')
-        window.open(url, '_self')
-    }
-    else {
-        window.open(pageURL, '_self')
-    }
+    localStorage.removeItem('url')
+    window.open(url, '_self')
 }
 
 function directToSignup() {
     window.open(`${location.origin}/signup`, '_self')
 }
-
 
 function doResetPassword() {
     // console.log('reset');
@@ -233,7 +208,6 @@ function doResetPassword() {
     document.getElementById('pswdResetMessage').style.display = ''
 }
 
-
 function doSaveNewPswd() {
     // console.log('resetting');
     resetPasswordBtn.style.display = 'none'
@@ -243,11 +217,8 @@ function doSaveNewPswd() {
     document.getElementById('pswdResetCompletedMessage').style.display = ''
     document.getElementById('loginBtn').style.display = ''
     document.getElementById('loginPassword').value = ''
-    sendResetCode()
-
+    sendReset
 }
-
-
 
 function doSendResetCode() {
     document.getElementById('userName').style.display = 'none'
@@ -259,7 +230,6 @@ function doSendResetCode() {
     // console.log(loginUsername.value);
     sendResetCode()
 }
-
 
 async function sendResetCode() {
     let authenticationData
@@ -299,7 +269,6 @@ async function sendResetCode() {
     document.getElementById('resetCodeBox').style.display = ''
     document.getElementById('pswdResetMessage').style.display = 'none'
     document.getElementById('pswdResetCodeMessage').style.display = ''
-
 }
 
 function askForNewPassword() {
@@ -311,6 +280,5 @@ function askForNewPassword() {
     resetPasswordBtn.style.display = ''
 }
 
-function closeMe(elem) {
+const closeMe = elem =>
     elem.parentNode.style.display = 'none'
-}
