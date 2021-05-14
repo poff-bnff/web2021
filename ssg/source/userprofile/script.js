@@ -12,7 +12,7 @@ async function loadUserInfo() {
     let response = await fetch(`http://localhost:1337/users/me`, {
         method: "GET",
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
+            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
         },
     });
     let userProfile = await response.json();
@@ -79,7 +79,7 @@ async function sendUserProfile() {
     let response = await (await fetch(`${strapiDomain}/users/me`, {
         method: 'PUT',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
+            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
         },
         body: userToSend
     }))
@@ -151,7 +151,7 @@ async function uploadPic() {
     let requestOptions = {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
         },
         body: formData,
         redirect: 'follow'

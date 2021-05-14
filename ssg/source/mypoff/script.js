@@ -9,7 +9,7 @@ async function fetchMyPasses() {
     let res = await fetch(`https://api.poff.ee/profile/picture_down`, {
         method: "GET",
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
+            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
         },
     });
     let profilePicture = await res.json();

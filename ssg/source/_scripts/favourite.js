@@ -154,7 +154,7 @@ function saveFilmAsFavourite(movieId) {
     if (true) {
 
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+        myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
         var requestOptions = {
             method: 'PUT',
@@ -191,14 +191,14 @@ function saveScreeningAsFavourite(screeningId, screeningTitle, screeningTime) {
 
 
     // var myHeaders = new Headers();
-    // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+    // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
     var requestOptions = {
         method: 'PUT',
         // headers: myHeaders,
         redirect: 'follow',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(screening)
@@ -244,14 +244,14 @@ function addToMyCal(eventId) {
 
 
         // var myHeaders = new Headers();
-        // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+        // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
         var requestOptions = {
             method: 'PUT',
             // headers: myHeaders,
             redirect: 'follow',
             headers: {
-                Authorization : 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+                Authorization : 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
               },
 
         };
@@ -277,7 +277,7 @@ function addToMyCal(eventId) {
 function removeFilm(movieId) {
     var myHeaders = new Headers();
 
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
     var requestOptions = {
         method: 'DELETE',
@@ -318,7 +318,7 @@ function removeScreening(screeningId) {
 
     var myHeaders = new Headers();
 
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
     var requestOptions = {
         method: 'DELETE',
@@ -361,7 +361,7 @@ function removeEvent(eventId) {
 
     var myHeaders = new Headers();
 
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
     var requestOptions = {
         method: 'DELETE',

@@ -41,8 +41,8 @@ function buyerCheck() {
 }
 
 
-if(localStorage.getItem('ACCESS_TOKEN')){
-    var token = localStorage.getItem('ACCESS_TOKEN')
+if(localStorage.getItem('BNFF_U_ACCESS_TOKEN')){
+    var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
     try{
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -99,7 +99,7 @@ if (!validToken) {
 function loadUserProfileH() {
     // console.log('laen cognitost kasutaja profiili....')
     var myHeaders = new Headers()
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'))
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
 
     var requestOptions = {
         method: 'GET',
@@ -193,7 +193,7 @@ function useUserData(userProf){
 }
 
 function logOut() {
-    localStorage.removeItem('ACCESS_TOKEN')
+    localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
     if (localStorage.getItem('REFRESH_TOKEN')){
