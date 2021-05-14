@@ -55,10 +55,10 @@ const cleanUiMessages = () => {
     errorNotificationBar.style.display = 'none'
     failedToFetch.style.display = 'none'
     mergeProvidersFailed.style.display = 'none'
+    emailUsed.style.display = 'none'
 }
 
 const composeLoginAuthRequest = () => {
-
     const authenticationData = {
         identifier: document.getElementById("loginUsername").value,
         password: document.getElementById("loginPassword").value
@@ -128,19 +128,19 @@ async function fetchFromStrapi(requestOptions) {
 }
 
 function handleAuthResponse(response) {
-
     if (response.fetchErr) {
         document.getElementById('failedToFetch').style.display = ''
         return
     }
+    if (response.jwt && response.user) return response
 
-    if (response.jwt && response.user) {
-        return response
-    } else if (response.statusCode !== 200) {
+    if (response.statusCode !== 200) {
+        if (loginUsername.value) {
+            document.getElementById('emailUsed').style.display = ''
+            emailUsed.innerHTML = loginUsername.value
+        }
+        
         const strapiError = response.data[0]?.messages[0].id || response.data.message
-        console.log(strapiError);
-        console.log(typeof (strapiError));
-        console.log(strapiError == 'TypeError: Failed to fetch');
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
@@ -154,7 +154,6 @@ function handleAuthResponse(response) {
             case ('Merge provider to existing providers failed'):
                 document.getElementById('mergeProvidersFailed').style.display = ''
                 break;
-
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
