@@ -4,7 +4,10 @@ include /_templates/mixins.pug
 block content
 
     section.login_head
-        div#errorNotificationBar(style={display:'none'})= self.label.userprofile.strapiError
+        div#serverSideErrors
+            div#errorNotificationBar(style={display:'none'})= self.label.userprofile.strapiError
+            div#failedToFetch(style={display:'none'})= self.label.userprofile.failedToFetch
+
 
         h4#fromUserProfile(style={display:'none'})= self.label.userprofile.redirectFromUserprofileMessage
         h4#fromMyPoff(style={display:'none'})= self.label.userprofile.redirectFromMyPoffMessage
@@ -85,6 +88,8 @@ block content
 
             a#loginE(href=`https://api.poff.ee/auth/eventival`)
                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+            p#mergeProvidersFailed(style={display:'none'})= self.label.userprofile.mergeProvidersFailed
+
 
         if process.env['DOMAIN'] !== 'industry.poff.ee'
             .login_register
@@ -98,7 +103,7 @@ block content
     style.
         .invalid {background-color: #f5e4e9; display: block; color: black}
         .valid {background-color: #e6f7e6; display: none}
-        #errorNotificationBar {color: red; text-align: center}
+        #serverSideErrors {color: red; text-align: center}
 
 
 

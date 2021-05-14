@@ -4,60 +4,50 @@
 //info kasutajale kui suunatakse tagasi lemmikutest, profiili vaatest või minu
 if ([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)) {
     // console.log("tulid profiilist")
-    document.getElementById('fromUserProfile').style.display = 'block'
+    document.getElementById('fromUserProfile').style.display = ''
 }
 if ([`${location.origin}/minupoff`, `${location.origin}/en/mypoff`, `${location.origin}/ru/moipoff`].includes(document.referrer)) {
     // console.log("tulid oma passidest")
     // console.log(self.mypoff.path)
-    document.getElementById('fromMyPoff').style.display = 'block'
+    document.getElementById('fromMyPoff').style.display = ''
 }
 if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${location.origin}/ru/favourite`].includes(document.referrer)) {
     // console.log("tulid Lemmikutest")
-    document.getElementById('fromFavo').style.display = 'block'
+    document.getElementById('fromFavo').style.display = ''
 }
 
+// External provider login 
 if (window.location.hash) {
-    const hash = window.location.hash
-    triggerExtProvLoginFlow(hash)
+    const authRequest = composeProvAuthRequest()
+    loginFlow(authRequest)
 }
 
+// Email + pswd login
 async function loginViaStrapi() {
+    cleanUiMessages()
+    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
+        const authRequest = composeLoginAuthRequest()
+        loginFlow(authRequest)
+    } else {
+        unfilledErrorMsg.style.display = ''
+    }
+}
+
+async function loginFlow(authRequest) {
+    const authResponse = await fetchFromStrapi(authRequest)
+    const authResult = handleAuthResponse(authResponse)
+
+    if (authResult)
+        storeAuthentication(authResult.jwt)
+}
+
+const cleanUiMessages = () => {
     unfilledErrorMsg.style.display = 'none'
     unConfirmed.style.display = 'none'
     noUserOrWrongPwd.style.display = 'none'
-
-    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
-
-        const authRequest = composeLoginAuthRequest()
-        const authResponse = await fetchFromStrapi(authRequest)
-        const authResult = handleAuthResponse(authResponse)
-        storeAuthentication(authResult.jwt)
-
-    } else {
-        unfilledErrorMsg.style.display = 'block'
-    }
-}
-
-async function triggerExtProvLoginFlow(hash) {
-    const authData = getAccessTokenWithProvider(hash)
-    const authRequest = composeProvAuthRequest(authData.provider, authData.access_token)
-    const authResponse = await fetchFromStrapi(authRequest)
-    const authResult = handleAuthResponse(authResponse)
-    storeAuthentication(authResult.jwt)
-}
-
-function getAccessTokenWithProvider(hash) {
-    const [provider, search] = hash.substr(1).split('?')
-    const tokenInfo = search.split('&')
-    const token = {}
-    for (const inf of tokenInfo) {
-        token[inf.split('=')[0]] = inf
-    }
-    const access_token = token.access_token
-    return {
-        provider: provider,
-        access_token: access_token
-    }
+    errorNotificationBar.style.display = 'none'
+    failedToFetch.style.display = 'none'
+    mergeProvidersFailed.style.display = 'none'
 }
 
 const composeLoginAuthRequest = () => {
@@ -78,37 +68,62 @@ const composeLoginAuthRequest = () => {
     return request
 }
 
-function composeProvAuthRequest(provider, access_token) {
+function composeProvAuthRequest() {
+    const { provider, access_token } = getAccessTokenWithProvider()
 
     const request = {
         route: `/auth/${provider}/callback?${access_token}`,
         method: 'GET',
     }
-    console.log(request);
     return request
+}
 
+function getAccessTokenWithProvider() {
+    const [provider, search] = window.location.hash.substr(1).split('?')
+    const tokenInfo = search.split('&')
+    const token = {}
+    for (const inf of tokenInfo) {
+        token[inf.split('=')[0]] = inf
+    }
+    const access_token = token.access_token
+    return {
+        provider: provider,
+        access_token: access_token
+    }
 }
 
 
 async function fetchFromStrapi(requestOptions) {
     const { route, method, headers, body } = requestOptions
-    
-    let response = await fetch(`${strapiDomain}${route}`, {
-        method: method,
-        headers: headers,
-        body: body
-    });
-    response = await response.json()    
-    return response
+
+    try {
+        let response = await fetch(`${strapiDomain}${route}`, {
+            method: method,
+            headers: headers,
+            body: body
+        });
+        response = await response.json()
+        return response
+    }
+    catch (err) {
+        return { fetchErr: err }
+    }
 }
 
 function handleAuthResponse(response) {
 
+    if (response.fetchErr) {
+        document.getElementById('failedToFetch').style.display = ''
+        return
+    }
+
     if (response.jwt && response.user) {
         return response
     } else if (response.statusCode !== 200) {
-        console.log(response.data[0]);
         const strapiError = response.data[0]?.messages[0].id || response.data.message
+        console.log(strapiError);
+        console.log(typeof (strapiError));
+        console.log(strapiError == 'TypeError: Failed to fetch');
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
@@ -122,6 +137,7 @@ function handleAuthResponse(response) {
             case ('Merge provider to existing providers failed'):
                 document.getElementById('mergeProvidersFailed').style.display = ''
                 break;
+
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
@@ -205,7 +221,7 @@ function directToSignup() {
 function doResetPassword() {
     // console.log('reset');
     forgotPasswordBtn.style.display = 'none'
-    sendPswdResetCodeBtn.style.display = 'block'
+    sendPswdResetCodeBtn.style.display = ''
     document.getElementById('loginMessage').style.display = 'none'
     document.getElementById('password').style.display = 'none'
     document.getElementById('loginFB').style.display = 'none'
@@ -214,7 +230,7 @@ function doResetPassword() {
     document.getElementById('loginBtn').style.display = 'none'
     document.getElementById('signUpBtn').style.display = 'none'
 
-    document.getElementById('pswdResetMessage').style.display = 'block'
+    document.getElementById('pswdResetMessage').style.display = ''
 }
 
 
@@ -224,8 +240,8 @@ function doSaveNewPswd() {
     document.getElementById('passwordRep').style.display = 'none'
     document.getElementById('forgotPasswordBtn').style.display = 'none'
     document.getElementById('pswdResetEnterNewMessage').style.display = 'none'
-    document.getElementById('pswdResetCompletedMessage').style.display = 'block'
-    document.getElementById('loginBtn').style.display = 'block'
+    document.getElementById('pswdResetCompletedMessage').style.display = ''
+    document.getElementById('loginBtn').style.display = ''
     document.getElementById('loginPassword').value = ''
     sendResetCode()
 
@@ -235,7 +251,7 @@ function doSaveNewPswd() {
 
 function doSendResetCode() {
     document.getElementById('userName').style.display = 'none'
-    document.getElementById('currentUsername').style.display = 'block'
+    document.getElementById('currentUsername').style.display = ''
     document.getElementById('currentUsername').innerHTML = loginUsername.value
     sendPswdResetCodeBtn.style.display = 'none'
 
@@ -280,19 +296,19 @@ async function sendResetCode() {
     }
 
     document.getElementById('forgotPasswordBtn').style.display = 'none'
-    document.getElementById('resetCodeBox').style.display = 'block'
+    document.getElementById('resetCodeBox').style.display = ''
     document.getElementById('pswdResetMessage').style.display = 'none'
-    document.getElementById('pswdResetCodeMessage').style.display = 'block'
+    document.getElementById('pswdResetCodeMessage').style.display = ''
 
 }
 
 function askForNewPassword() {
-    document.getElementById('password').style.display = 'block'
-    document.getElementById('passwordRep').style.display = 'block'
+    document.getElementById('password').style.display = ''
+    document.getElementById('passwordRep').style.display = ''
     document.getElementById('resetCodeBox').style.display = 'none'
     document.getElementById('pswdResetCodeMessage').style.display = 'none'
-    document.getElementById('pswdResetEnterNewMessage').style.display = 'block'
-    resetPasswordBtn.style.display = 'block'
+    document.getElementById('pswdResetEnterNewMessage').style.display = ''
+    resetPasswordBtn.style.display = ''
 }
 
 function closeMe(elem) {
