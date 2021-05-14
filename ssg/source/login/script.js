@@ -18,22 +18,22 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
 
 // External provider login 
 if (window.location.hash) {
-    const authRequest = composeProvAuthRequest()
-    loginFlow(authRequest)
+    setTimeout(function () { loginFlow('social') }, 0)
+    // loginFlow('social')
 }
 
 // Email + pswd login
-async function loginViaStrapi() {
+const loginViaStrapi = () => {
     cleanUiMessages()
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
-        const authRequest = composeLoginAuthRequest()
-        loginFlow(authRequest)
+        loginFlow('local')
     } else {
         unfilledErrorMsg.style.display = ''
     }
 }
 
-async function loginFlow(authRequest) {
+const loginFlow = async provider => {
+    const authRequest = composeAuthRequest(provider)
     const authResponse = await fetchFromStrapi(authRequest)
     const authResult = handleAuthResponse(authResponse)
     if (!authResult) return
@@ -58,29 +58,25 @@ const cleanUiMessages = () => {
     emailUsed.style.display = 'none'
 }
 
-const composeLoginAuthRequest = () => {
-    const authenticationData = {
-        identifier: document.getElementById("loginUsername").value,
-        password: document.getElementById("loginPassword").value
+const composeAuthRequest = provider => {
+    const request = {}
+
+    if (provider === 'social') {
+        const { provider, access_token } = getAccessTokenWithProvider()
+        request.route = `/auth/${provider}/callback?${access_token}`
+        request.method = 'GET'
     }
-    const request = {
-        route: '/auth/local',
-        method: 'POST',
-        headers: {
+    if (provider === 'local') {
+        const authenticationData = {
+            identifier: document.getElementById("loginUsername").value,
+            password: document.getElementById("loginPassword").value
+        }
+        request.route = '/auth/local'
+        request.method = 'POST'
+        request.headers = {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify(authenticationData)
-    }
-
-    return request
-}
-
-function composeProvAuthRequest() {
-    const { provider, access_token } = getAccessTokenWithProvider()
-
-    const request = {
-        route: `/auth/${provider}/callback?${access_token}`,
-        method: 'GET',
+        }
+        request.body = JSON.stringify(authenticationData)
     }
     return request
 }
@@ -96,7 +92,7 @@ const composeUsrProfileRequest = () => {
     return request
 }
 
-function getAccessTokenWithProvider() {
+const getAccessTokenWithProvider = () => {
     const [provider, search] = window.location.hash.substr(1).split('?')
     const tokenInfo = search.split('&')
     const token = {}
@@ -110,7 +106,7 @@ function getAccessTokenWithProvider() {
     }
 }
 
-async function fetchFromStrapi(requestOptions) {
+const fetchFromStrapi = async requestOptions => {
     const { route, method, headers, body } = requestOptions
 
     try {
@@ -123,11 +119,12 @@ async function fetchFromStrapi(requestOptions) {
         return response
     }
     catch (err) {
+        console.log(err);
         return { fetchErr: err }
     }
 }
 
-function handleAuthResponse(response) {
+const handleAuthResponse = response => {
     if (response.fetchErr) {
         document.getElementById('failedToFetch').style.display = ''
         return
@@ -139,7 +136,7 @@ function handleAuthResponse(response) {
             document.getElementById('emailUsed').style.display = ''
             emailUsed.innerHTML = loginUsername.value
         }
-        
+
         const strapiError = response.data[0]?.messages[0].id || response.data.message
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
