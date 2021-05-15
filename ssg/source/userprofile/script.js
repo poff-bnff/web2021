@@ -86,9 +86,9 @@ async function sendUserProfile() {
 
     if (response.status === 200) {
         document.getElementById('profileSent').style.display = 'block'
-        if (localStorage.getItem('url')) {
-            window.open(localStorage.getItem('url'), '_self')
-            localStorage.removeItem('url')
+        if (localStorage.getItem('preLoginUrl')) {
+            window.open(localStorage.getItem('preLoginUrl'), '_self')
+            localStorage.removeItem('preLoginUrl')
         }
 
     }

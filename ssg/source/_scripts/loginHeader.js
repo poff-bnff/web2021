@@ -154,7 +154,7 @@ function loadEmptyUserProfile() {
 
 
 function saveUrl(){
-    localStorage.setItem('url', window.location.href)
+    localStorage.setItem('preLoginUrl', window.location.href)
 }
 
 
@@ -199,7 +199,7 @@ function logOut() {
     if (localStorage.getItem('REFRESH_TOKEN')){
         localStorage.removeItem('REFRESH_TOKEN')
     }
-    localStorage.removeItem('url')
+    localStorage.removeItem('preLoginUrl')
     localStorage.removeItem('USER_PROFILE')
 
     // console.log('LOGITUD VÄLJA')

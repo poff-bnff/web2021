@@ -156,11 +156,10 @@ const storeAuthentication = access_token =>
     localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
 
 const redirectToPreLoginUrl = () => {
-    const preLoginUrl = localStorage.getItem('url')
-    if (!preLoginUrl) window.open(pageURL, '_self')
-
-    localStorage.removeItem('url')
-    window.open(preLoginUrl, '_self')
+    const preLoginUrl = localStorage.getItem('preLoginUrl')
+    localStorage.removeItem('preLoginUrl')
+    
+    preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
 }
 
 // Helpers:
