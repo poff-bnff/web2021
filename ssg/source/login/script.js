@@ -49,15 +49,18 @@ const loginFlow = async provider => {
 
     storeAuthentication(authResult.jwt)
 
-    const usrProfileRequest = composeRequest('profile')
-    const usrProfResponse = await fetchFromStrapi(usrProfileRequest)
-    if (!usrProfResponse) return
+    const userProfileRequest = composeRequest('profile')
+    const userProfResponse = await fetchFromStrapi(userProfileRequest)
+    if (!userProfResponse) return
 
-    const userProfile = handleResponse(usrProfResponse)
+    const userProfile = handleResponse(userProfResponse)
     if (!userProfile) return
 
-    if (userProfile.profileFilled) redirectToPreLoginUrl()
-    window.open(`${pageURL}/userprofile`, '_self')
+    if (!userProfile.profileFilled) {
+        window.open(`${pageURL}/userprofile`, '_self')
+        return
+    }
+    redirectToPreLoginUrl()
 }
 
 // Services
@@ -157,7 +160,7 @@ const redirectToPreLoginUrl = () => {
     if (!preLoginUrl) window.open(pageURL, '_self')
 
     localStorage.removeItem('url')
-    window.open(url, '_self')
+    window.open(preLoginUrl, '_self')
 }
 
 // Helpers:
