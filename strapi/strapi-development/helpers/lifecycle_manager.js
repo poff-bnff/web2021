@@ -18,13 +18,13 @@ const moment = require("moment-timezone")
 const mapping_domain = {
     'filmikool.poff.ee': 'filmikool',
     'hoff.ee': 'hoff',
-    // 'industry.poff.ee': 'industry',
-    // 'justfilm.ee': 'just',
-    // 'kinoff.poff.ee': 'kinoff',
+    'industry.poff.ee': 'industry',
+    'justfilm.ee': 'just',
+    'kinoff.poff.ee': 'kinoff',
     'kumu.poff.ee': 'kumu',
     'oyafond.ee': 'bruno',
-    // 'poff.ee': 'poff',
-    // 'shorts.poff.ee': 'shorts',
+    'poff.ee': 'poff',
+    'shorts.poff.ee': 'shorts',
     'tartuff.ee': 'tartuff'
 }
 
