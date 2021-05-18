@@ -150,7 +150,6 @@ async function addToQueue(options) {
     // Update Strapi deploy_logs
     const thisBuildAvg = calcBuildAvgDur(options)
     const queueEst = await calcQueueEstDur()
-    console.log('KURAT');
     const postData = {
         build_est_duration: thisBuildAvg,
         queue_est_duration: queueEst.duration,
@@ -286,7 +285,6 @@ async function calcQueueEstDur() {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
         }
     }
-    console.log('LENGTH ', estimateInMs, ongoingBuildLastedInMs, Math.round(estimateInMs-ongoingBuildLastedInMs));
 
     return {
         duration: Math.round(estimateInMs-ongoingBuildLastedInMs),
