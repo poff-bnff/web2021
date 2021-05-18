@@ -24,5 +24,3 @@ function replacer(textStr, replaceStr, replacerStr) {
 }
 
 module.exports = replaceLinks
-// console.log('VANA: ', 'https://admin.poff.ee/uploads/ ja http://139.59.130.149/uploads/ ja https://staging.poff.inscaping.eu/ ')
-// console.log('UUS: ', replaceLinks('https://admin.poff.ee/uploads/ ja http://139.59.130.149/uploads/ ja https://staging.poff.inscaping.eu/ ', 'https://staging.poff.inscaping.eu/', 'https://poff.ee/'))
