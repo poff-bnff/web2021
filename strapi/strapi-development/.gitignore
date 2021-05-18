@@ -116,3 +116,4 @@ build
 jwt.js
 database.js
 server.js
+plugins.js
