@@ -124,7 +124,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        const strapiError = response.data[0]?.messages[0].id || response.data.message
+        const strapiError = response.data[0]?.messages[0].id || response?.data.message || response.message 
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
