@@ -210,7 +210,7 @@ const getProfile = async (provider, query, callback) => {
             callback(null, {
               username: body.name,
               email: body.email,
-              externalProviders: [{ provider: provider, UUID: body.id }]
+              externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: body.id, dateConnected: new Date().toISOString() }]
             });
           }
         });
@@ -230,7 +230,7 @@ const getProfile = async (provider, query, callback) => {
             callback(null, {
               username: body.email.split('@')[0],
               email: body.email,
-              externalProviders: [{ provider: provider, UUID: body.user_id }]
+              externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: body.user_id, dateConnected: new Date().toISOString() }]
             });
           }
         });
@@ -521,7 +521,7 @@ const getProfile = async (provider, query, callback) => {
         callback(null, {
           username: tokenPayload.name,
           email: tokenPayload.email,
-          externalProviders: [{ provider: provider, UUID: tokenPayload.sub }]
+          externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
 
         });
       }
@@ -594,16 +594,22 @@ const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
 }
 
 const notifyAboutMerge = async (user, addedProvider) => {
-  console.log(user);
-  await strapi.plugins['email'].services.email.send({
-    to: user.email,
-    subject: 'New social provider added to poff.ee account ' + user.email,
-    template_name: 'merge-providers-et',
-    template_vars: [
-      { name: 'username', content: user.username },
-      { name: 'addedProvider', content: addedProvider },
-      { name: 'enabledProviders', content: user.provider }]
-  });
+  let enabledProviders = (user.externalProviders.map(provider => {
+    const date = new Intl.DateTimeFormat('et-EE', { dateStyle: 'full', timeStyle: 'long' }).format(new Date(provider.dateConnected))
+    return `(${provider.provider} ${date})<br>`})
+    )
+  enabledProviders = enabledProviders.join(' ')
+  addedProvider = addedProvider.replace(/^./, addedProvider[0].toUpperCase())
+
+  await strapi.plugins['email'].services.email.send(
+    {
+      to: user.email,
+      template_name: 'merge-providers-et',
+      template_vars: [
+        { name: 'email', content: user.email },
+        { name: 'addedProvider', content: addedProvider },
+        { name: 'enabledProviders', content: enabledProviders}]
+    });
 }
 
 const notifyUserAuthDateTime = user => {
