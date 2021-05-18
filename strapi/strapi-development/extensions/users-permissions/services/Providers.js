@@ -66,9 +66,9 @@ const connect = (provider, query) => {
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
             const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
-            // if (updatedUser) {
-            //   // notifyAboutMerge(user)
-            // }
+            if (updatedUser) {
+              notifyAboutMerge(updatedUser, provider)
+            }
             if (!updatedUser) {
               return reject([null, { message: 'Merge provider to existing providers failed' }]);
             }
@@ -581,7 +581,7 @@ const mergeProviders = async (user, provider, externalProvider) => {
   externalProvider.dateConnected = new Date().toISOString()
   externalProviders.push(externalProvider)
   const values = { provider: user.provider + ',' + provider, externalProviders: externalProviders }
-  const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({id: user.id}, values);
+  const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id: user.id }, values);
   return updatedUser
 }
 
@@ -593,31 +593,33 @@ const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
   const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 }
 
-const notifyAboutMerge = async user => {
-  const emailTemplate = {
-    subject: `Welcome ${user.email}`,
-    text: `Welcome on mywebsite.fr!
-      Your account is now linked with: ${user.email}.`,
-    html: `<h1>Welcome on mywebsite.fr!</h1>
-      <p>Your account is now linked with: <%= user.email %>.<p>`,
-  };
+const notifyAboutMerge = async (user, addedProvider) => {
+  console.log(user);
+  await strapi.plugins['email'].services.email.send({
+    to: user.email,
+    subject: 'New social provider added to poff.ee account ' + user.email,
+    template_name: 'merge-providers-et',
+    template_vars: [
+      { name: 'username', content: user.username },
+      { name: 'addedProvider', content: addedProvider },
+      { name: 'enabledProviders', content: user.provider }]
+  });
+}
 
-  await strapi.plugins.email.services.email.sendTemplatedEmail(
-    {
-      to: '',
-      from: ''
-      // from: is not specified, so it's the defaultFrom that will be used instead
-    },
-    emailTemplate,
-    {
-      user: _.pick(user, ['username', 'email']),
-    }
-  );
+const notifyUserAuthDateTime = user => {
+
+  strapi.plugins['email'].services.email.send({
+    to: 'siimsuttw@gmail.com',
+    subject: 'You logged in to POFF',
+    template_name: 'merge-providers-et',
+    template_vars: [{ name: "username", content: user.username }]
+  });
 }
 
 module.exports = {
   connect,
   buildRedirectUri,
   mergeProviders,
-  logAuthDateTime
+  logAuthDateTime,
+  notifyUserAuthDateTime
 };

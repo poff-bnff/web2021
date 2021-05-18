@@ -174,6 +174,7 @@ module.exports = {
       strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
         user.id.toString(), user.last10Logins, provider, new Date().toISOString()
       );
+      strapi.plugins['users-permissions'].services.providers.notifyUserAuthDateTime(user)
     }
   },
 
