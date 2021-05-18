@@ -166,7 +166,7 @@ pageURLs:
     filmikool.poff.ee: "https://filmikool.poff.ee/"
 
 stagingURLs:
-    poff.ee: "https://staging.poff.inscaping.eu/"
+    poff.ee: "https://build.poff.ee/"
     justfilm.ee: "https://staging.justfilm.inscaping.eu/"
     kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
     industry.poff.ee: "https://staging.industry.inscaping.eu/"
@@ -178,7 +178,7 @@ stagingURLs:
     filmikool.poff.ee: https://build.filmikool.poff.ee/
 
 stagingDomains:
-    poff.ee: staging.poff.inscaping.eu
+    poff.ee: build.poff.ee
     justfilm.ee: staging.justfilm.inscaping.eu
     kinoff.poff.ee: staging.kinoff.inscaping.eu
     industry.poff.ee: staging.industry.inscaping.eu

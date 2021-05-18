@@ -256,9 +256,9 @@ async function calcQueueEstDur() {
     let estimateInMs = 0
     let noEstimate = 0
     const uniqueQueueSet = [...new Set(queue)]
-    if (queue.length > 1) {
-        uniqueQueueSet.unshift(queue[0])
-    }
+    // if (queue.length > 1) {
+    //     uniqueQueueSet.unshift(queue[0])
+    // }
 
     const uniqueQueue = uniqueQueueSet.map(q => {
         const options = JSON.parse(q)
