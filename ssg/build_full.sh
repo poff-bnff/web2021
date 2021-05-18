@@ -15,7 +15,7 @@ echo "Build directory: $BUILDDIR"
 
 echo "STARTING BUILD"
 [ ! -d "./build" ] && mkdir -p "./build"
-[ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR/"*
+[ -d "./build/$BUILDDIR" ] && rm -rf "./build/$BUILDDIR/"*
 [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
 [ ! -d "./build/$BUILDDIR/assets/" ] && mkdir -p "./build/$BUILDDIR/assets/"
 [ -d "./source/_fetchdir" ] && rm -r "./source/_fetchdir/"*
