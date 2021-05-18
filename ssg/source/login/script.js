@@ -56,11 +56,7 @@ const loginFlow = async provider => {
     const userProfile = handleResponse(userProfResponse)
     if (!userProfile) return
 
-    if (!userProfile.profileFilled) {
-        window.open(`${pageURL}/userprofile`, '_self')
-        return
-    }
-    redirectToPreLoginUrl()
+    redirectToPreLoginUrl(userProfile)
 }
 
 // Services
@@ -155,10 +151,15 @@ const handleResponse = response => {
 const storeAuthentication = access_token =>
     localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
 
-const redirectToPreLoginUrl = () => {
+const redirectToPreLoginUrl = userProfile => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
+    const currentlang = getCurrentLang(preLoginUrl)
+   
+    if (!userProfile.profileFilled) {
+        window.open(`${pageURL}${currentlang}userprofile`, '_self')
+        return
+    }
     localStorage.removeItem('preLoginUrl')
-    
     preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
 }
 
@@ -174,6 +175,17 @@ const getAccessTokenWithProvider = () => {
     return {
         provider: provider,
         access_token: access_token
+    }
+}
+
+const getCurrentLang = preLoginUrl => {
+    let currentlang = '/' 
+    if (!preLoginUrl) return currentlang
+    const langpaths = ['/en/', '/ru/']
+    for (const langpath of langpaths){
+        if (preLoginUrl.includes(langpath))
+        currentlang = langpath 
+        return currentlang
     }
 }
 
