@@ -55,9 +55,6 @@ const DoBuildFull = async() => {
     };
 }
 
-
-
-
 const HomePage = () => {
 
   return (
@@ -66,7 +63,11 @@ const HomePage = () => {
      	 	<ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE"/>
      	 	<ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE"/>
      	 	<ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE"/>
-     	 	<ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE"/>
+     	 	<ButtonAndLog site="poff.ee" buttonText="PÖFF LIVE"/>
+     	 	<ButtonAndLog site="industry.poff.ee" buttonText="INDUSTRY LIVE"/>
+     	 	<ButtonAndLog site="justfilm.ee" buttonText="JUSTFILM LIVE"/>
+     	 	<ButtonAndLog site="kinoff.ee" buttonText="KINOFF LIVE"/>
+     	 	<ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE"/>
      	 	{/**<Button color="primary" onClick={() => DoBuildFull()}>Full build</Button>**/}
     </Container>
   );
