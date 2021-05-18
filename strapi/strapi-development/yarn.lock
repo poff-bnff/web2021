@@ -6160,6 +6160,11 @@
   dependencies:
     "kind-of" "^6.0.2"
 
+"mandrill-api@^1.0.45":
+  "integrity" "sha1-Fjk5z0hr0YJ3sPO69BLD5l2Epy0="
+  "resolved" "https://registry.npmjs.org/mandrill-api/-/mandrill-api-1.0.45.tgz"
+  "version" "1.0.45"
+
 "map-cache@^0.2.0", "map-cache@^0.2.2":
   "integrity" "sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8="
   "resolved" "https://registry.npmjs.org/map-cache/-/map-cache-0.2.2.tgz"
@@ -9667,6 +9672,14 @@
     "strapi-helper-plugin" "3.6.0"
     "strapi-utils" "3.6.0"
     "uuid" "^3.1.0"
+
+"strapi-provider-email-mcmandrill@^1.1.4":
+  "integrity" "sha512-3/fITxgxlStptgAImMOR2BBblLZfdJQnxDZNzgJtEDIRb2SceYpCxhbHcraGp4MQGyhl86tUZOFzn+VvX/WNUQ=="
+  "resolved" "https://registry.npmjs.org/strapi-provider-email-mcmandrill/-/strapi-provider-email-mcmandrill-1.1.4.tgz"
+  "version" "1.1.4"
+  dependencies:
+    "lodash" "^4.17.15"
+    "mandrill-api" "^1.0.45"
 
 "strapi-provider-email-sendmail@3.6.0":
   "integrity" "sha512-xXzHN6rWzd70dxUbiDxVOIC3KUcUMNZBgL/ckdMMLGNwOCc3wNjODv1w4gy6nxE2Dq0S5OU4f67LxwFDG4Ea4w=="
