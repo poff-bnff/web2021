@@ -64,11 +64,12 @@ function find_single_obj(minimodel, entries){
 			if (objData) {
 	            const e = entries[ix]
 	            const filtering = objData.filter( ob => {
-                    let menuDataYAML = yaml.dump(entries, { 'noRefs': true, 'indent': '4' })
-                    let menuDataFile = '20210519_target_build_error.yaml'
-                    if (e === null) { fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8') }
-					return ob.id === e.id
+					return ob.id === e?.id
 	            })[0]
+
+                let menuDataYAML = yaml.dump(filtering, { 'noRefs': true, 'indent': '4' })
+                let menuDataFile = '20210519_target_build_error.yaml'
+                if (e === null) { fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8') }
 
 	            if( filtering !== undefined){
 		            entries[ix] = filtering
