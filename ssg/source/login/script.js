@@ -24,6 +24,11 @@ if (window.location.hash) {
 }
 
 // Buttons
+const loginViaProvider = provider => {
+    provider = provider.toLowerCase()
+    window.open(`${strapiDomain}/connect/${provider}`, '_self') 
+}
+
 function directToSignup() {
     window.open(`${location.origin}/signup`, '_self')
 }
@@ -120,7 +125,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        const strapiError = response.data[0]?.messages[0].id || response?.data.message || response.message 
+        const strapiError = response.data[0]?.messages[0].id || response?.data.message || response.message
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
@@ -154,7 +159,7 @@ const storeAuthentication = access_token =>
 const redirectToPreLoginUrl = userProfile => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
     const currentlang = getCurrentLang(preLoginUrl)
-   
+
     if (!userProfile.profileFilled) {
         window.open(`${pageURL}${currentlang}userprofile`, '_self')
         return
@@ -179,12 +184,12 @@ const getAccessTokenWithProvider = () => {
 }
 
 const getCurrentLang = preLoginUrl => {
-    let currentlang = '/' 
+    let currentlang = '/'
     if (!preLoginUrl) return currentlang
     const langpaths = ['/en/', '/ru/']
-    for (const langpath of langpaths){
+    for (const langpath of langpaths) {
         if (preLoginUrl.includes(langpath))
-        currentlang = langpath 
+            currentlang = langpath
         return currentlang
     }
 }

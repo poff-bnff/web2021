@@ -75,15 +75,15 @@ block content
                 h4.dark_1.login_headline#loginMessage Login via Eventival
 
             if process.env['DOMAIN'] !== 'industry.poff.ee'
-                a#loginFB(href=`${strapiDomain}/connect/facebook`)
+                a#loginFB(onclick='loginViaProvider(this.textContent)')
                     .button.login_btn_social
                         | Facebook
 
-                a#loginG(href=`${strapiDomain}/connect/google`)
+                a#loginG(onclick='loginViaProvider(this.textContent)')
                     .button.login_btn_social
                         | Google
 
-                a#loginE(href=`${strapiDomain}/connect/eventival`)
+                a#loginE(onclick='loginViaProvider(this.textContent)')
                     .button.login_btn_social
                         | Eventival        
 
