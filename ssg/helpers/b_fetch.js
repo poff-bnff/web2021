@@ -78,7 +78,7 @@ function find_single_obj(minimodel, entries){
 
 			if (minimodel.expand) {
 				for(let property_name in minimodel.expand){
-					if(entries[ix].hasOwnProperty(property_name)){
+					if(entries[ix] && entries[ix].hasOwnProperty(property_name)){
 						let ids = entries[ix][property_name]
 						// console.log('rec', property_name, minimodel.expand[property_name])
 						entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
