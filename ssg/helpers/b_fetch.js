@@ -63,7 +63,7 @@ function find_single_obj(minimodel, entries){
 		for (const ix in entries){
 			if (objData) {
 	            const e = entries[ix]
-
+                console.log(objData);
 	            const filtering = objData.filter( ob => {
 					return ob.id === e.id
 	            })[0]
