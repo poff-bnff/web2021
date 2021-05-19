@@ -90,6 +90,9 @@ const minimodel = {
         }
     }
 }
+
+
+
 STRAPIDATA_MENU = fetchModel(STRAPIDATA_MENUS, minimodel)
 
 const languages = ['en', 'et', 'ru']
