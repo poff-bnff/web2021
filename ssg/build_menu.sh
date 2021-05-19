@@ -31,8 +31,6 @@ node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-rsync -ra --progress "$BUILD_PATH/build/$BUILDDIR/" "$BUILD_PATH/../www/build.$DOMAIN"
-
 echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
 rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 

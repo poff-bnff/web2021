@@ -55,7 +55,7 @@ const objDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata')
 
 function find_single_obj(minimodel, entries){
   	if (!Array.isArray(entries)){
-        entries = [entries]
+        entries = entries ? [entries] : []
 
 		const objData = MODELS[minimodel.model_name]
 			// console.log('objData', objData)
@@ -63,13 +63,10 @@ function find_single_obj(minimodel, entries){
 		for (const ix in entries){
 			if (objData) {
 	            const e = entries[ix]
-	            const filtering = objData.filter( ob => {
-					return ob.id === e?.id
-	            })[0]
 
-                let menuDataYAML = yaml.dump(filtering, { 'noRefs': true, 'indent': '4' })
-                let menuDataFile = '20210519_target_build_error.yaml'
-                if (e === null) { fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8') }
+	            const filtering = objData.filter( ob => {
+					return ob.id === e.id
+	            })[0]
 
 	            if( filtering !== undefined){
 		            entries[ix] = filtering
@@ -78,7 +75,7 @@ function find_single_obj(minimodel, entries){
 
 			if (minimodel.expand) {
 				for(let property_name in minimodel.expand){
-					if(entries[ix] && entries[ix].hasOwnProperty(property_name)){
+					if(entries[ix].hasOwnProperty(property_name)){
 						let ids = entries[ix][property_name]
 						// console.log('rec', property_name, minimodel.expand[property_name])
 						entries[ix][property_name] = find_single_obj(minimodel.expand[property_name], ids)
