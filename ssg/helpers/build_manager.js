@@ -150,7 +150,6 @@ async function addToQueue(options) {
     // Update Strapi deploy_logs
     const thisBuildAvg = calcBuildAvgDur(options)
     const queueEst = await calcQueueEstDur()
-    console.log('KURAT');
     const postData = {
         build_est_duration: thisBuildAvg,
         queue_est_duration: queueEst.duration,
@@ -256,9 +255,9 @@ async function calcQueueEstDur() {
     let estimateInMs = 0
     let noEstimate = 0
     const uniqueQueueSet = [...new Set(queue)]
-    if (queue.length > 1) {
-        uniqueQueueSet.unshift(queue[0])
-    }
+    // if (queue.length > 1) {
+    //     uniqueQueueSet.unshift(queue[0])
+    // }
 
     const uniqueQueue = uniqueQueueSet.map(q => {
         const options = JSON.parse(q)
@@ -286,7 +285,6 @@ async function calcQueueEstDur() {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
         }
     }
-    console.log('LENGTH ', estimateInMs, ongoingBuildLastedInMs, Math.round(estimateInMs-ongoingBuildLastedInMs));
 
     return {
         duration: Math.round(estimateInMs-ongoingBuildLastedInMs),

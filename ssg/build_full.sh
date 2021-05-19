@@ -15,7 +15,7 @@ echo "Build directory: $BUILDDIR"
 
 echo "STARTING BUILD"
 [ ! -d "./build" ] && mkdir -p "./build"
-[ -d "./build/$BUILDDIR" ] && rm -r "./build/$BUILDDIR/"*
+[ -d "./build/$BUILDDIR" ] && rm -rf "./build/$BUILDDIR/"*
 [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
 [ ! -d "./build/$BUILDDIR/assets/" ] && mkdir -p "./build/$BUILDDIR/assets/"
 [ -d "./source/_fetchdir" ] && rm -r "./source/_fetchdir/"*
@@ -139,7 +139,7 @@ fi
 
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
-[ -d "../www/build.$DOMAIN" ] && rm -r "../www/build.$DOMAIN/"*
+[ -d "../www/build.$DOMAIN" ] && rm -rf "../www/build.$DOMAIN/"*
 [ ! -d "../www/build.$DOMAIN" ] && mkdir -p "../www/build.$DOMAIN"
 
 echo "RSYNC ./build/$BUILDDIR/. ../www/build.$DOMAIN"/
