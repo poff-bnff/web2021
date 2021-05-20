@@ -42,7 +42,7 @@ const LogsAccordion = ({ site }) => {
       const restrucLogs = sortedLogs.map((oneLogEntry) => {
         const log_id = oneLogEntry.id
         const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`;
-        const start = moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY');
+        const start = oneLogEntry.start_time ? moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY') : 'järjekorras';
         const type = `${oneLogEntry.type}`
         let end;
         if (oneLogEntry.end_time) {
