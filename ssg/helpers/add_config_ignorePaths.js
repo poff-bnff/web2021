@@ -11,7 +11,6 @@ const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 function addConfigIgnorePaths() {
 
 	if( DOMAIN ==='poff.ee'){
-
 		return [
 			'/_socket_dashboard', //industry
 			// '/a_list', //article
@@ -135,6 +134,8 @@ function addConfigIgnorePaths() {
 			'/userprofile', //poff, industry
 			'/virtual_booth', //industry
 		]
+	} else {
+		return null
 	}
 }
 	BUILD_CONFIG.dev.ignorePaths = addConfigIgnorePaths()
