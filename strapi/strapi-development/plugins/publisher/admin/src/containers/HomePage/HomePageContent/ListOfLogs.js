@@ -13,7 +13,7 @@ const ListOfLogs = ({ site }) => {
     console.log(logsFromApi);
     const sortedLogs = logsFromApi.sort((a, b) => b.id - a.id);
     const restrucLogs = sortedLogs.map((oneLogEntry) => {
-      const log_id = oneLogEntry.admin_user.id
+      const log_id = oneLogEntry.id
       const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`
       const start = moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY')
       const type = `${oneLogEntry.type} `
@@ -25,8 +25,8 @@ const ListOfLogs = ({ site }) => {
         end = '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯'
       }
       return {
-        user: user,
         log_id: log_id,
+        user: user,
         start_time: start,
         end_time: end,
         type: type
