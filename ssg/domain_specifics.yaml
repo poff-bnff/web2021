@@ -156,7 +156,7 @@ vialogUrls:
 pageURLs:
     poff.ee: "https://poff.ee/"
     justfilm.ee: "https://justfilm.ee/"
-    kinoff.poff.ee: "https://kinoff.poff.ee/"
+    kinoff.poff.ee: "https://kinoff.ee/"
     industry.poff.ee: "https://industry.poff.ee/"
     shorts.poff.ee: "http://shorts.poff.ee/"
     hoff.ee: "https://hoff.ee/"
@@ -167,10 +167,10 @@ pageURLs:
 
 stagingURLs:
     poff.ee: "https://build.poff.ee/"
-    justfilm.ee: "https://staging.justfilm.inscaping.eu/"
-    kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
-    industry.poff.ee: "https://staging.industry.inscaping.eu/"
-    shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
+    justfilm.ee: "https://build.justfilm.ee/"
+    kinoff.poff.ee: "https://build.kinoff.ee/"
+    industry.poff.ee: "https://build.industry.poff.ee/"
+    shorts.poff.ee: "https://build.shorts.poff.ee/"
     hoff.ee: "https://build.hoff.ee/"
     kumu.poff.ee: https://build.kumu.poff.ee/
     tartuff.ee: https://build.tartuff.ee/
@@ -179,10 +179,10 @@ stagingURLs:
 
 stagingDomains:
     poff.ee: build.poff.ee
-    justfilm.ee: staging.justfilm.inscaping.eu
-    kinoff.poff.ee: staging.kinoff.inscaping.eu
-    industry.poff.ee: staging.industry.inscaping.eu
-    shorts.poff.ee: staging.shorts.inscaping.eu
+    justfilm.ee: build.justfilm.ee
+    kinoff.poff.ee: build.kinoff.ee
+    industry.poff.ee: build.industry.poff.ee
+    shorts.poff.ee: build.shorts.poff.ee
     hoff.ee: build.hoff.ee
     kumu.poff.ee: build.kumu.poff.ee
     tartuff.ee: build.tartuff.ee
