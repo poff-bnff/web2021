@@ -39,6 +39,27 @@ node ./helpers/fetch_articles_from_yaml.js
 echo 'fetch_industry_person_from_yaml'
 node ./helpers/fetch_industry_person_from_yaml.js
 
+echo 'fetch_industry_person_from_yaml'
+node ./helpers/fetch_industry_person_from_yaml.js
+
+echo 'fetch_industry_project_from_yaml'
+node ./helpers/fetch_industry_project_from_yaml.js
+
+echo 'fetch_industry_channels_from_yaml'
+node ./helpers/fetch_channels_from_yaml.js
+
+echo 'fetch_industry_event_from_yaml'
+node ./helpers/fetch_industry_event_from_yaml.js
+
+echo 'fetch_eventival_persons_from_yaml.js'
+node ./helpers/fetch_eventival_persons_from_yaml.js
+
+echo 'fetch_courses_from_yaml.js'
+node ./helpers/fetch_courses_from_yaml.js
+
+echo 'fetch_frontpagecourse_block_from_yaml.js'
+node ./helpers/fetch_frontpagecourse_block_from_yaml.js
+
 echo 'fetch_article_type_from_yaml'
 node ./helpers/fetch_article_type_from_yaml.js
 
@@ -84,26 +105,6 @@ node ./helpers/fetch_shops_from_yaml.js
 echo 'assets/xml'
 node ./helpers/xml.js
 
-echo 'fetch_industry_person_from_yaml'
-node ./helpers/fetch_industry_person_from_yaml.js
-
-echo 'fetch_industry_project_from_yaml'
-node ./helpers/fetch_industry_project_from_yaml.js
-
-echo 'fetch_industry_channels_from_yaml'
-node ./helpers/fetch_channels_from_yaml.js
-
-echo 'fetch_industry_event_from_yaml'
-node ./helpers/fetch_industry_event_from_yaml.js
-
-echo 'fetch_eventival_persons_from_yaml.js'
-node ./helpers/fetch_eventival_persons_from_yaml.js
-
-echo 'fetch_courses_from_yaml.js'
-node ./helpers/fetch_courses_from_yaml.js
-
-echo 'fetch_frontpagecourse_block_from_yaml.js'
-node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
@@ -136,6 +137,10 @@ then
     cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
     printf '\n----------               Finished Copy POFF 2020              ----------\n'
 fi
+
+printf '\n----------                  Adding ignore paths                ----------\n\n'
+node ./helpers/add_config_ignorePaths.js
+printf '\n----------               Finished adding ignore paths            ----------\n'
 
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 

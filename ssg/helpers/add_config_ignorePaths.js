@@ -1,0 +1,147 @@
+const fs = require('fs')
+const yaml = require('js-yaml')
+const path = require('path')
+
+const rootDir =  path.join(__dirname, '..')
+const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
+const BUILD_CONFIG = yaml.load(fs.readFileSync(buildConfigPath, 'utf8'))
+let BUILD_IGNOREPATHS = []
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
+
+function addConfigIgnorePaths() {
+
+	if( DOMAIN ==='poff.ee'){
+
+		return [
+			'/_socket_dashboard', //industry
+			// '/a_list', //article
+			// '/about', //article
+			// '/articles', //article
+			'/courses', //filmikool
+			'/covid', //tartuff?
+			'/eventival_persons_search', //industry
+			'/events', //filmikool
+			// '/favourite', //poff
+			// '/film', //all
+			// '/films', //all
+			// '/home', //all
+			'/industry_cal', //industry
+			'/industry_events', //industry
+			'/industry_events_search', //industry
+			'/industry_mycal', //industry
+			'/industry_persons', //industry
+			'/industry_persons_search', //industry
+			'/industryproject', //industry
+			'/industry_projects', //industry
+			'/industry_projects_search', //industry
+			'/info', //tartuff
+			// '/interview', //article
+			'/letschat', //chat industry
+			// '/login', //poff, industry
+			// '/menu', //all
+			// '/mypoff', // poff, industry
+			// '/myscreenings', // poff, industry
+			// '/news', //article
+			// '/programmes', //all
+			// '/schedule', //all
+			// '/screenings', //all
+			// '/screenings-search', //all
+			// '/search', //all
+			// '/shop', //all
+			// '/signup', //poff, industry
+			// '/sponsorstories', //article
+			// '/supporterpage', //all
+			// '/userprofile', //poff, industry
+			'/virtual_booth', //industry
+		]
+	}else if(DOMAIN==='filmikool.poff.ee'){
+		return [
+			'/_socket_dashboard', //industry
+			'/covid', //tartuff?
+			'/eventival_persons_search', //industry
+			'/favourite', //poff
+			'/industry_cal', //industry
+			'/industry_events', //industry
+			'/industry_events_search', //industry
+			'/industry_mycal', //industry
+			'/industry_persons', //industry
+			'/industry_persons_search', //industry
+			'/industryproject', //industry
+			'/industry_projects', //industry
+			'/industry_projects_search', //industry
+			'/info', //tartuff
+			'/letschat', //chat industry
+			'/login', //poff, industry
+			'/mypoff', // poff, industry
+			'/myscreenings', // poff, industry
+			'/signup', //poff, industry
+			'/userprofile', //poff, industry
+			'/virtual_booth', //industry
+		]
+	} else if(DOMAIN==='hoff.ee' || DOMAIN==='justfilm.ee' || DOMAIN==='kinoff.poff.ee' || DOMAIN==='kumu.poff.ee' || DOMAIN==='oyafond.ee' || DOMAIN==='shorts.poff.ee'){
+		return [
+			'/_socket_dashboard', //industry
+			'/courses', //filmikool
+			'/covid', //tartuff?
+			'/eventival_persons_search', //industry
+			'/events', //filmikool
+			'/favourite', //poff
+			'/industry_cal', //industry
+			'/industry_events', //industry
+			'/industry_events_search', //industry
+			'/industry_mycal', //industry
+			'/industry_persons', //industry
+			'/industry_persons_search', //industry
+			'/industryproject', //industry
+			'/industry_projects', //industry
+			'/industry_projects_search', //industry
+			'/info', //tartuff
+			'/letschat', //chat industry
+			'/login', //poff, industry
+			'/mypoff', // poff, industry
+			'/myscreenings', // poff, industry
+			'/signup', //poff, industry
+			'/userprofile', //poff, industry
+			'/virtual_booth', //industry
+		]
+	} else if( DOMAIN === 'industry.poff.ee'){
+		return [
+			'/courses', //filmikool
+			'/covid', //tartuff?
+			'/events', //filmikool
+			'/favourite', //poff
+			'/info', //tartuff
+		]
+	} else if( DOMIAN === 'tartuff.ee'){
+		return [
+			'/_socket_dashboard', //industry
+			'/courses', //filmikool
+			'/eventival_persons_search', //industry
+			'/events', //filmikool
+			'/industry_cal', //industry
+			'/industry_events', //industry
+			'/industry_events_search', //industry
+			'/industry_mycal', //industry
+			'/industry_persons', //industry
+			'/industry_persons_search', //industry
+			'/industryproject', //industry
+			'/industry_projects', //industry
+			'/industry_projects_search', //industry
+			'/letschat', //chat industry
+			'/login', //poff, industry
+			'/mypoff', // poff, industry
+			'/myscreenings', // poff, industry
+			'/signup', //poff, industry
+			'/userprofile', //poff, industry
+			'/virtual_booth', //industry
+		]
+	}
+}
+	BUILD_CONFIG.dev.ignorePaths = addConfigIgnorePaths()
+
+	// console.log(DOMAIN, BUILD_IGNOREPATHS, BUILD_CONFIG)
+
+    const BUILD_CONFIG_YAML = yaml.dump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' })
+    fs.writeFileSync(buildConfigPath, BUILD_CONFIG_YAML, 'utf8')
+
+module.exports = addConfigIgnorePaths

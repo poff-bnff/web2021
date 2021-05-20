@@ -21,4 +21,5 @@ server:
 
 dev:
     aliases: true
-    paths:
+    paths: null
+    ignorePaths: null
