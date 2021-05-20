@@ -144,6 +144,10 @@ build()
             printf '\n----------               Finished Copy POFF 2020              ----------\n'
         fi
 
+        printf '\n----------                  Adding ignore paths                ----------\n\n'
+        node ./helpers/add_config_ignorePaths.js
+        printf '\n----------               Finished adding ignore paths            ----------\n'
+
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
     fi
