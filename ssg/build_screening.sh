@@ -42,6 +42,5 @@ rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"
 
 printf '\n\n----------      Finished building      ----------\n\n'
 
-node "$FETCH_PATH"/reset_config_path_aliases.js
 
 
