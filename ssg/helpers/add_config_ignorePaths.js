@@ -111,7 +111,7 @@ function addConfigIgnorePaths() {
 			'/favourite', //poff
 			'/info', //tartuff
 		]
-	} else if( DOMIAN === 'tartuff.ee'){
+	} else if( DOMAIN === 'tartuff.ee'){
 		return [
 			'/_socket_dashboard', //industry
 			'/courses', //filmikool
