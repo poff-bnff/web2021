@@ -21,7 +21,7 @@ function addConfigIgnorePaths() {
 			'/eventival_persons_search', //industry
 			'/events', //filmikool
 			// '/favourite', //poff
-			// '/film', //all
+			'/film', // 2020 tartuffi jäänuk
 			// '/films', //all
 			// '/home', //all
 			'/industry_cal', //industry
@@ -38,16 +38,16 @@ function addConfigIgnorePaths() {
 			'/letschat', //chat industry
 			// '/login', //poff, industry
 			// '/menu', //all
-			// '/mypoff', // poff, industry
-			// '/myscreenings', // poff, industry
-			// '/news', //article
-			// '/programmes', //all
-			// '/schedule', //all
-			// '/screenings', //all
-			// '/screenings-search', //all
-			// '/search', //all
-			// '/shop', //all
-			// '/signup', //poff, industry
+			// '/mypoff', // poff
+			// '/myscreenings', // poff
+			// '/news', // article
+			// '/programmes', // all except industry
+			// '/schedule', // all except industry
+			// '/screenings', // all except industry
+			// '/screenings-search', // all except industry
+			// '/search', // all except industry
+			// '/shop', // poff
+			// '/signup', // poff
 			// '/sponsorstories', //article
 			// '/supporterpage', //all
 			// '/userprofile', //poff, industry
@@ -59,6 +59,7 @@ function addConfigIgnorePaths() {
 			'/covid', //tartuff?
 			'/eventival_persons_search', //industry
 			'/favourite', //poff
+			'/film', // 2020 tartuffi jäänuk
 			'/industry_cal', //industry
 			'/industry_events', //industry
 			'/industry_events_search', //industry
@@ -72,7 +73,8 @@ function addConfigIgnorePaths() {
 			'/letschat', //chat industry
 			'/login', //poff, industry
 			'/mypoff', // poff, industry
-			'/myscreenings', // poff, industry
+			'/myscreenings', // poff
+            '/shop', // poff
 			'/signup', //poff, industry
 			'/userprofile', //poff, industry
 			'/virtual_booth', //industry
@@ -85,6 +87,7 @@ function addConfigIgnorePaths() {
 			'/eventival_persons_search', //industry
 			'/events', //filmikool
 			'/favourite', //poff
+			'/film', // 2020 tartuffi jäänuk
 			'/industry_cal', //industry
 			'/industry_events', //industry
 			'/industry_events_search', //industry
@@ -98,13 +101,25 @@ function addConfigIgnorePaths() {
 			'/letschat', //chat industry
 			'/login', //poff, industry
 			'/mypoff', // poff, industry
-			'/myscreenings', // poff, industry
+			'/myscreenings', // poff
+            '/shop', // poff
 			'/signup', //poff, industry
 			'/userprofile', //poff, industry
 			'/virtual_booth', //industry
 		]
 	} else if( DOMAIN === 'industry.poff.ee'){
 		return [
+			'/film', // 2020 tartuffi jäänuk
+			'/films', // all except industry
+			'/myscreenings', // poff
+            '/screenings', // all except industry
+			'/screenings-search', // all except industry
+            '/schedule', // all except industry
+            '/programmes', // all except industry
+            '/shop', // poff
+			'/search', // all except industry
+            '/mypoff', // poff
+            '/signup', // poff
 			'/courses', //filmikool
 			'/covid', //tartuff?
 			'/events', //filmikool
@@ -113,6 +128,7 @@ function addConfigIgnorePaths() {
 		]
 	} else if( DOMAIN === 'tartuff.ee'){
 		return [
+			'/film', // 2020 tartuffi jäänuk
 			'/_socket_dashboard', //industry
 			'/courses', //filmikool
 			'/eventival_persons_search', //industry
@@ -129,7 +145,8 @@ function addConfigIgnorePaths() {
 			'/letschat', //chat industry
 			'/login', //poff, industry
 			'/mypoff', // poff, industry
-			'/myscreenings', // poff, industry
+			'/myscreenings', // poff
+            '/shop', // poff
 			'/signup', //poff, industry
 			'/userprofile', //poff, industry
 			'/virtual_booth', //industry
