@@ -27,14 +27,14 @@ echo "Build directory: $BUILDDIR"
 echo 'Processing all Strapidata by Domain'
 node "$FETCH_PATH"/d_fetch.js
 
+echo "Initialized entu_ssg.yaml"
+node "$BUILD_PATH"/initialise_entu_ssg.js
+
 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-rsync -ra --progress "$BUILD_PATH/build/$BUILDDIR/" "$BUILD_PATH/../www/build.$DOMAIN"
-
 echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
 rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
-node "$FETCH_PATH"/reset_config_path_aliases.js
 

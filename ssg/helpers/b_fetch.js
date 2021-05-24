@@ -55,7 +55,7 @@ const objDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata')
 
 function find_single_obj(minimodel, entries){
   	if (!Array.isArray(entries)){
-        entries = [entries]
+        entries = entries ? [entries] : []
 
 		const objData = MODELS[minimodel.model_name]
 			// console.log('objData', objData)
