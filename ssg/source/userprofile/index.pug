@@ -5,6 +5,8 @@ block content
     section.userprofile
         if self.label.userprofile
 
+            //- p=userProfile.firstName
+
             .sub_section_headline.text_left.p_l_0#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
             .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
 
@@ -59,12 +61,30 @@ block content
                 button.btn.btn_primary(onclick='validateForm()')= self.label.userprofile.saveButton
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
-    section.providers
-            div.form.form#thisUserProfile
-                label= 'Oled sisse loginud kasutajatega'
 
+        .sub_section_headline.text_left.p_l_0= 'Oled sisse loginud kasutades andmeid:'
+            #authProviders
                 div.form-group
-            button.btn.btn_primary(onclick='removeProvider()')= 'Remove provider'
+                    a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
+                    a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
+                div.form-group
+                    a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
+                    a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
+                div.form-group
+                    a.btn.btn_primary.text-uppercase#Local(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
+                    a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Local')" style= {display:'none'}) Remove provider POFF
+            #removeProviderWarning(style= {display:'none'}) Removing provider
+                a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
+                a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
+
+                //- div#provisers
+        //-     each val in providers
+        //-         div.form.form#thisUserProfile
+        //-             div#email.dark(name=val)
+
+        //-             div.form-group
+        //-                 label= val
+        //-         button.btn.btn_primary(onclick='removeProvider()')= 'Remove provider'
 
 
 
@@ -78,6 +98,12 @@ block content
         #profileSent {color: black}
         label {color: black}
         #imgError {color: red}
+
+        #removeProviderWarning{
+            display: flex;
+            flex-direction: column;
+        }
+
 
 
 
