@@ -791,7 +791,7 @@ KumuMenu: &KumuMenu
     _path: /kumu-menus
     #namePrivate: (text, private field)
     name: *Translated #(Component)
-    hoffi_article: *KumuArticle
+    kumu_article: *KumuArticle
     customUrl: *Translated #(Component)
     order: (Number)
     subMenuItem: #(Component (repeatable))

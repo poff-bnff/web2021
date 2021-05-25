@@ -74,6 +74,21 @@ block content
         section.viiekas
             include /_templates/home_templates/viiekas_shorts.pug
 
+
+    else if process.env['DOMAIN'] === 'kumu.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_kumu.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_kumu.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_kumu.pug
+
     else if process.env['DOMAIN'] === 'tartuff.ee'
 
         - var whichTypesToDisplay = ['news']
