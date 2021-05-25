@@ -36,7 +36,7 @@ block content
                     label.login_label( for='loginPasswordRep')= self.label.userprofile.passwordRepeat
                     input.ogin_input#loginPasswordRep(type='password')
 
-                button.login_btn_primary#loginBtn(onclick='loginViaLocal()')= self.label.userprofile.signIn
+                button.login_btn_primary#loginBtn(onclick='loginViaProvider("local")')= self.label.userprofile.signIn
 
                 button.login_btn_secondary#forgotPasswordBtn(onclick='doResetPassword()')= self.label.userprofile.resetPassword
 

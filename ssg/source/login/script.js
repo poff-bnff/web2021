@@ -16,33 +16,38 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = ''
 }
 
-
 // External provider 'social' login 
 if (window.location.hash) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
 }
 
-// Buttons
-const loginViaProvider = provider => {
-    setLang()
-    provider = provider.toLowerCase()
-    window.open(`${strapiDomain}/connect/${provider}`, '_self') 
-}
-
-function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
-}
-
-// Email + pswd 'local' login (button)
+// Email + pswd 'local' login
 const loginViaLocal = () => {
-    cleanUiMessages()
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
         loginFlow('local')
     } else {
         unfilledErrorMsg.style.display = ''
     }
 }
+
+// Buttons
+const loginViaProvider = provider => {
+    cleanUiMessages()
+    setLang()
+
+    if (provider === "local") {
+        loginViaLocal()
+    } else {
+        provider = provider.toLowerCase()
+        window.open(`${strapiDomain}/connect/${provider}`, '_self')
+    }
+}
+
+function directToSignup() {
+    window.open(`${location.origin}/signup`, '_self')
+}
+
 
 // Login main
 const loginFlow = async provider => {
@@ -174,7 +179,7 @@ const redirectToPreLoginUrl = userProfile => {
 const setLang = () => {
     let lang = window.location.pathname.split('/')[1]
     if (lang === 'login')
-    lang = ''
+        lang = ''
     localStorage.setItem('lang', lang)
 }
 
@@ -193,12 +198,12 @@ const getAccessTokenWithProvider = () => {
 }
 
 const getCurrentLang = () => {
- let lang = localStorage.getItem('lang')
- if (lang) {
-     lang = `${lang}/`
- }
- console.log(lang);
- return lang
+    let lang = localStorage.getItem('lang')
+    if (lang) {
+        lang = `${lang}/`
+    }
+    console.log(lang);
+    return lang
 }
 
 // Cleaners:
