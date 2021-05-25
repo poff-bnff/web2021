@@ -6,15 +6,24 @@
 
 module.exports = {
     lifecycles: {
+        beforeCreate (data){
+            data.profileFilled = profileFilled(data)
+        },
         beforeUpdate(params, data){
-            if (data.firstName && data.lastName && data.gender && data.birthdate && data.phoneNr && data.address){
-                data.profileFilled = true
-            } else {
-                data.profileFilled = false
-            }
+            data.profileFilled = profileFilled(data)
         },
         beforeDelete(params){
             delete params.user
         }
     }
 }
+
+const profileFilled = data => {
+    console.log(4);
+    console.log(data);
+    let profileFilled = false
+    if (data.firstName && data.lastName && data.gender && data.birthdate && data.phoneNr && data.address)
+        profileFilled = true
+
+    return profileFilled
+} 

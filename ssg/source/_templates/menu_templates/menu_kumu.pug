@@ -1,4 +1,4 @@
-- var articleMenuItemDomain = 'poffi_article'
+- var articleMenuItemDomain = 'kumu_article'
 - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
 
 each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
@@ -68,32 +68,32 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
                 else
                     a(href= `/${lang_path}${mainMenuItem.customUrl}/`)= `${mainMenuItem.name}`
 
-li.user_menu.dropdown
-    a.user_menu= self.label.menu.mainUserMenu
-        ul.ul_kaks
-            li#logIn(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-            li#signUp(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
-            li#logInName.dark_1(style={display: 'none'})
-                a#tervitus= self.label.menu.mainGreeting
-            li#userProfile(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-            li#myFavouriteFilms(style={cursor: 'pointer'})
-                a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
-            li#myScreenings(style={cursor: 'pointer'} )
-                if lang_path === ''
-                    a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
-                if lang_path === 'en/'
-                    a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
-                if lang_path === 'ru/'
-                    a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
-            li#myPasses(style={cursor: 'pointer'} )
-                if lang_path === ''
-                    a(href=`/${lang_path}minupoff`)= self.label.menu.mainPass
-                if lang_path === 'en/'
-                    a(href=`/${lang_path}mypoff`)= self.label.menu.mainPass
-                if lang_path === 'ru/'
-                    a(href=`/${lang_path}moipoff`)= self.label.menu.mainPass
-            li#logOut(style={cursor: 'pointer', display: 'none'} )
-                a(onclick='logOut()')= self.label.menu.mainLogout
+//- li.user_menu.dropdown
+//-     a.user_menu= self.label.menu.mainUserMenu
+//-         ul.ul_kaks
+//-             li#logIn(style={cursor: 'pointer', display: 'none'})
+//-                 a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+//-             li#signUp(style={cursor: 'pointer', display: 'none'})
+//-                 a(onclick = 'saveUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
+//-             li#logInName.dark_1(style={display: 'none'})
+//-                 a#tervitus= self.label.menu.mainGreeting
+//-             li#userProfile(style={cursor: 'pointer', display: 'none'})
+//-                 a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+//-             li#myFavouriteFilms(style={cursor: 'pointer'})
+//-                 a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
+//-             li#myScreenings(style={cursor: 'pointer'} )
+//-                 if lang_path === ''
+//-                     a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
+//-                 if lang_path === 'en/'
+//-                     a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
+//-                 if lang_path === 'ru/'
+//-                     a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
+//-             li#myPasses(style={cursor: 'pointer'} )
+//-                 if lang_path === ''
+//-                     a(href=`/${lang_path}minupoff`)= self.label.menu.mainPass
+//-                 if lang_path === 'en/'
+//-                     a(href=`/${lang_path}mypoff`)= self.label.menu.mainPass
+//-                 if lang_path === 'ru/'
+//-                     a(href=`/${lang_path}moipoff`)= self.label.menu.mainPass
+//-             li#logOut(style={cursor: 'pointer', display: 'none'} )
+//-                 a(onclick='logOut()')= self.label.menu.mainLogout

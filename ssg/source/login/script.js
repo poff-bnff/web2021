@@ -16,32 +16,38 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = ''
 }
 
-
 // External provider 'social' login 
 if (window.location.hash) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
 }
 
-// Buttons
-const loginViaProvider = provider => {
-    provider = provider.toLowerCase()
-    window.open(`${strapiDomain}/connect/${provider}`, '_self') 
-}
-
-function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
-}
-
-// Email + pswd 'local' login (button)
+// Email + pswd 'local' login
 const loginViaLocal = () => {
-    cleanUiMessages()
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
         loginFlow('local')
     } else {
         unfilledErrorMsg.style.display = ''
     }
 }
+
+// Buttons
+const loginViaProvider = provider => {
+    cleanUiMessages()
+    setLang()
+
+    if (provider === "local") {
+        loginViaLocal()
+    } else {
+        provider = provider.toLowerCase()
+        window.open(`${strapiDomain}/connect/${provider}`, '_self')
+    }
+}
+
+function directToSignup() {
+    window.open(`${location.origin}/signup`, '_self')
+}
+
 
 // Login main
 const loginFlow = async provider => {
@@ -158,10 +164,10 @@ const storeAuthentication = access_token =>
 
 const redirectToPreLoginUrl = userProfile => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
-    const currentlang = getCurrentLang(preLoginUrl)
+    const currentlang = getCurrentLang()
 
     if (!userProfile.profileFilled) {
-        window.open(`${pageURL}${currentlang}userprofile`, '_self')
+        window.open(`${pageURL}/${currentlang}userprofile`, '_self')
         return
     }
     localStorage.removeItem('preLoginUrl')
@@ -169,6 +175,14 @@ const redirectToPreLoginUrl = userProfile => {
 }
 
 // Helpers:
+
+const setLang = () => {
+    let lang = window.location.pathname.split('/')[1]
+    if (lang === 'login')
+        lang = ''
+    localStorage.setItem('lang', lang)
+}
+
 const getAccessTokenWithProvider = () => {
     const [provider, search] = window.location.hash.substr(1).split('?')
     const tokenInfo = search.split('&')
@@ -183,15 +197,13 @@ const getAccessTokenWithProvider = () => {
     }
 }
 
-const getCurrentLang = preLoginUrl => {
-    let currentlang = '/'
-    if (!preLoginUrl) return currentlang
-    const langpaths = ['/en/', '/ru/']
-    for (const langpath of langpaths) {
-        if (preLoginUrl.includes(langpath))
-            currentlang = langpath
-        return currentlang
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    if (lang) {
+        lang = `${lang}/`
     }
+    console.log(lang);
+    return lang
 }
 
 // Cleaners:
