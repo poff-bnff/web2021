@@ -782,7 +782,7 @@ TartuffiMenu: &TartuffiMenu
 
 KumuSubMenuItem: &KumuSubMenuItem
     name: *Translated #(Component)
-    hoffi_article: *KumuArticle
+    kumu_article: *KumuArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
@@ -799,7 +799,7 @@ KumuMenu: &KumuMenu
 
 BrunoSubMenuItem: &BrunoSubMenuItem
     name: *Translated #(Component)
-    hoffi_article: *BrunoArticle
+    bruno_article: *BrunoArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
@@ -808,7 +808,7 @@ BrunoMenu: &BrunoMenu
     _path: /bruno-menus
     #namePrivate: (text, private field)
     name: *Translated #(Component)
-    hoffi_article: *BrunoArticle
+    bruno_article: *BrunoArticle
     customUrl: *Translated #(Component)
     order: (Number)
     subMenuItem: #(Component (repeatable))
