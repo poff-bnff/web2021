@@ -152,7 +152,7 @@ const handleResponse = response => {
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
-                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this)'> ×</a>`
+                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this.parentNode), clearMe(this.parentNode)'> ×</a>`
                 break;
         }
         cleanInputFields()
@@ -220,21 +220,18 @@ const cleanUiMessages = () => {
     unfilledErrorMsg.style.display = 'none'
     unConfirmed.style.display = 'none'
     noUserOrWrongPwd.style.display = 'none'
-    errorNotificationBar.style.display = 'none'
     failedToFetch.style.display = 'none'
     mergeProvidersFailed.style.display = 'none'
     emailUsed.style.display = 'none'
+    errorNotificationBar.style.display = 'none'
+    clearMe(errorNotificationBar)
 }
 
-const closeMe = elem =>
-    elem.parentNode.style.display = 'none'
+const clearMe = elem => elem.innerText = '' 
 
-
-
-
+const closeMe = elem => elem.style.display = 'none'
 
 function doResetPassword() {
-    // console.log('reset');
     forgotPasswordBtn.style.display = 'none'
     sendPswdResetCodeBtn.style.display = ''
     document.getElementById('loginMessage').style.display = 'none'
