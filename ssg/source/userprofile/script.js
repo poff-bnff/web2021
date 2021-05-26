@@ -268,6 +268,7 @@ openProvider = (provider) => {
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
     if (validToken) {
+
         const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
 
         var myHeaders = new Headers();
@@ -278,10 +279,10 @@ async function deleteAccount() {
             headers: myHeaders,
             redirect: 'follow'
         };
-
-        const response = await fetch(`https://admin.poff.ee/users/me`, requestOptions)
+        const response = await fetch(`http://localhost:1337/users/me`, requestOptions)
 
         console.log(response)
+        
         // if (response.ok) {
         //     localStorage.clear()
         //     window.open(document.location.origin)
