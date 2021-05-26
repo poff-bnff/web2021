@@ -203,7 +203,7 @@
     },
     {
       "method": "POST",
-      "path": "/auth/local",
+      "path": "/auth/local/:lang",
       "handler": "Auth.callback",
       "config": {
         "policies": ["plugins::users-permissions.ratelimit"],

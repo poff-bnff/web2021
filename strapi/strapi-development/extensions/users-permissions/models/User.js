@@ -19,8 +19,6 @@ module.exports = {
 }
 
 const profileFilled = data => {
-    console.log(4);
-    console.log(data);
     let profileFilled = false
     if (data.firstName && data.lastName && data.gender && data.birthdate && data.phoneNr && data.address)
         profileFilled = true
