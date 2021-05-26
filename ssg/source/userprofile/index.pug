@@ -62,20 +62,30 @@ block content
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
 
-        .sub_section_headline.text_left.p_l_0= 'Oled sisse loginud kasutades andmeid:'
+        .sub_section_headline.text_left.p_l_0= 'Oled sisse loginud kasutades teenust:'
             #authProviders
+
                 div.form-group
                     a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
                     a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
+
                 div.form-group
                     a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
                     a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
+
                 div.form-group
                     a.btn.btn_primary.text-uppercase#Local(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
                     a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Local')" style= {display:'none'}) Remove provider POFF
+
+
             #removeProviderWarning(style= {display:'none'}) Removing provider
                 a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
                 a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
+
+            div.form-group
+                label.login_lable(for='delAccount' style = {})= 'Kustuta konto'
+                br
+                button.btn.btn_primary#delAccount(onClick= 'deleteAccount()')= 'Delete'
 
                 //- div#provisers
         //-     each val in providers

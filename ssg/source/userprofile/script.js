@@ -16,7 +16,7 @@ async function getUserProfile() {
         },
     });
     let userProfile = await response.json()
-    console.log(userProfile)
+    // console.log(userProfile)
 
     return userProfile 
 }
@@ -263,4 +263,30 @@ openProvider = (provider) => {
         window.open('https://myaccount.google.com/permissions', '_blank')
     doneAtProvider.innerHTML = doneAtProvider.innerHTML + ` '${provider.toUpperCase()}'`
     doneAtProvider.style.display = ''
+}
+
+async function deleteAccount() {
+    console.log('kustuta user, person jaab alles')
+    if (validToken) {
+        const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        const response = await fetch(`https://admin.poff.ee/users/me`, requestOptions)
+
+        console.log(response)
+        // if (response.ok) {
+        //     localStorage.clear()
+        //     window.open(document.location.origin)
+        // }
+
+    }
+
 }
