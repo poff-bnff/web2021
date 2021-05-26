@@ -30,7 +30,7 @@ module.exports = {
       name: 'users-permissions',
     });
 
-    if (!['ee', 'en', 'ru'].includes(lang)) {
+    if (!['et', 'en', 'ru'].includes(lang)) {
       return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
     }
 
