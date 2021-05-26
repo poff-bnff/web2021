@@ -73,6 +73,7 @@ const loginFlow = async provider => {
 // Services
 const composeRequest = requestCase => {
     const request = {}
+    const lang = localStorage.getItem('lang')
 
     switch (requestCase) {
         case ('social'):
@@ -85,7 +86,7 @@ const composeRequest = requestCase => {
                 identifier: document.getElementById("loginUsername").value,
                 password: document.getElementById("loginPassword").value
             }
-            request.route = '/auth/local'
+            request.route = `/auth/local/${lang}`
             request.method = 'POST'
             request.headers = {
                 "Content-Type": "application/json"
@@ -131,7 +132,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        const strapiError = response.data[0]?.messages[0].id || response?.data.message || response.message
+        const strapiError = response.data[0].messages?.[0].id || response?.data.message || response.message
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
