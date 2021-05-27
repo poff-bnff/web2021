@@ -1,62 +1,74 @@
-if (validToken) {
-    loadUserInfo();
+let profile_pic_to_send;
+
+// Event listeners
+window.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        signUp()
+    }
+})
+
+// Buttons
+const signUp = () => {
+    // const validForm = validateForm()
+    // if (validForm) {
+    registerUser()
+    // }
 }
 
-async function loadUserInfo() {
-    let response = await fetch(`https://api.poff.ee/profile`, {
-        method: "GET",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
-        },
-    });
-    let userProfile = await response.json();
+// Register main
+const registerUser = async () => {
+    // let profile_pic_to_send = "no profile picture saved"
 
-    // console.log('userProfile', userProfile)
-    if (userProfile.address) {
-        let address = userProfile.address.split(", ")
-        let riik = address[0]
-        let linn = address[1]
-        citySelection.value = linn
-        countrySelection.value = riik
+    // if (!imgPreview.src.search("/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")) {
+    //     profile_pic_to_send = "profile picture saved to S3"
+    // }
+
+    const newUser = collectFormData()
+    if (newUser.picture) {
+        const pictureRequest = createRequest('profPicture', newUser.picture)
+        console.log({ pictureRequest });
+        const registerResponse = await requestFromStrapi(pictureRequest)
+        console.log(registerResponse);
+
     }
-
-    firstName.value = userProfile.name;
-    lastName.value = userProfile.family_name;
-    email.value = userProfile.email;
-    gender.value = userProfile.gender;
-    if (userProfile.phone_number) {
-        phoneNr.value = userProfile.phone_number;
-    }
-    dob.value = userProfile.birthdate;
-
-    pswds.style.display = 'none'
+    const registerRequest = createRequest('register', newUser)
+    // const registerResponse = await requestFromStrapi(registerRequest)
+    // const registerResult = handleRegResponse(registerResponse)
+    // directToNext(registerResult)   
 }
 
+// Services
+const directToNext = (registerResult) => {
+    clearRegForm()
+    if (registerResult.user && registerResult.user.email === email.value) {
+        clearSocialAuthBtns()
+        showRegConfirmation()
 
-
-async function sendNewUser() {
-    console.log('sending new user profile.....');
-
-    let profile_pic_to_send = "no profile picture saved"
-
-    if (!imgPreview.src.search("/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")) {
-        profile_pic_to_send = "profile picture saved to S3"
+    } else if (registerResult.statusCode !== 200) {
+        if (registerResult.message[0].messages[0].id = 'Auth.form.error.email.taken') {
+            showAccountExists()
+        }
     }
+    scrollToTop()
+}
 
-    // let userToSend = [
-    //     { Name: "picture", Value: profile_pic_to_send },
-    //     { Name: "email", Value: email.value },
-    //     { Name: "name", Value: firstName.value },
-    //     { Name: "family_name", Value: lastName.value },
-    //     { Name: "gender", Value: gender.value },
-    //     { Name: "birthdate", Value: dob.value },
-    //     { Name: "phone_number", Value: '+' + phoneNr.value },
-    //     { Name: "address", Value: `${countrySelection.value}, ${citySelection.value}` },
-    //     { Name: "password", Value: psw.value }
-    // ];
+const showRegConfirmation = () => {
+    document.getElementById('profileSent').style.display = 'block'
+    document.getElementById('profileDetails').innerHTML = email.value
+    document.getElementById('loginButton').style.display = 'block'
+}
 
-    let userToSend = {
-        // picture: pictureInfo,
+const showAccountExists = () => {
+    document.getElementById('profileInSystem').style.display = 'block'
+    document.getElementById('loginButton').style.display = 'block'
+}
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'auto' });
+
+//Helpers
+const collectFormData = () => {
+    let newUser = {
+        picture: profile_pic_to_send,
         username: email.value,
         email: email.value,
         password: psw.value,
@@ -67,44 +79,17 @@ async function sendNewUser() {
         phoneNr: phoneNr.value,
         address: `${countrySelection.value}, ${citySelection.value}`
     }
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify(userToSend),
-        redirect: 'follow'
-    };
-
-    let response = await fetch(`http://localhost:1337/auth/local/register`, requestOptions);
-
-    response = await response.json()
-
-    console.log(response)
-
-    if (response.user && response.user.email === email.value) {
-        document.getElementById('signupForm').style.display = 'none'
-        document.getElementById('registerTitle').style.display = 'none'
-        document.getElementById('profileSent').style.display = 'block'
-        document.getElementById('profileDetails').innerHTML = email.value
-        document.getElementById('loginButton').style.display = 'block'
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (response.statusCode !== 200) {
-        if (response.message[0].messages[0].id = 'Auth.form.error.email.taken') {
-
-            document.getElementById('profileInSystem').style.display = 'block'
-            document.getElementById('signupForm').style.display = 'none'
-            document.getElementById('registerTitle').style.display = 'none'
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    }
-
-
+    console.log(newUser);
+    return newUser
 }
 
+// Cleaners
+const clearRegForm = () => {
+    document.getElementById('registerTitle').style.display = 'none'
+    document.getElementById('signupForm').style.display = 'none'
+}
+
+const clearSocialAuthBtns = () => document.getElementById('authButtons').style.display = 'none'
 
 function validateaAndPreview(file) {
     let error = document.getElementById("imgError");
@@ -179,13 +164,7 @@ function validateForm() {
 
     // console.log(errors)
     if (errors.length === 0) {
-        sendNewUser()
+        return true
     }
+    return false
 }
-
-window.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        // console.log("ENTER")
-        validateForm()
-    }
-})
