@@ -154,14 +154,15 @@ module.exports = {
     // Send an email to the user.
     await strapi.plugins['email'].services.email.send({
       to: user.email,
-      from:
-        settings.from.email && settings.from.name
-          ? `${settings.from.name} <${settings.from.email}>`
-          : undefined,
-      replyTo: settings.response_email,
-      subject: settings.object,
-      text: settings.message,
-      html: settings.message,
+      template_name: `confirm-register-et`,
+    template_vars: [
+      { name: 'link', content: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation?confirmation=${confirmationToken}` },
+      // { name: 'authTime', content: authTime }
+    ]
+
+  
+      // text: settings.message,
+      // html: settings.message,
     });
   },
 };
