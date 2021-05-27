@@ -9,10 +9,10 @@ window.addEventListener("keydown", function (event) {
 
 // Buttons
 const signUp = () => {
-    // const validForm = validateForm()
-    // if (validForm) {
+    const validForm = validateForm()
+    if (validForm) {
     registerUser()
-    // }
+    }
 }
 
 // Register main
@@ -24,17 +24,17 @@ const registerUser = async () => {
     // }
 
     const newUser = collectFormData()
-    if (newUser.picture) {
-        const pictureRequest = createRequest('profPicture', newUser.picture)
-        console.log({ pictureRequest });
-        const registerResponse = await requestFromStrapi(pictureRequest)
-        console.log(registerResponse);
+    // if (newUser.picture) {
+    //     const pictureRequest = createRequest('profPicture', newUser.picture)
+    //     console.log({ pictureRequest });
+    //     const registerResponse = await requestFromStrapi(pictureRequest)
+    //     console.log(registerResponse);
 
-    }
+    // }
     const registerRequest = createRequest('register', newUser)
-    // const registerResponse = await requestFromStrapi(registerRequest)
-    // const registerResult = handleRegResponse(registerResponse)
-    // directToNext(registerResult)   
+    const registerResponse = await requestFromStrapi(registerRequest)
+    const registerResult = handleRegResponse(registerResponse)
+    directToNext(registerResult)   
 }
 
 // Services
@@ -68,7 +68,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'auto' });
 //Helpers
 const collectFormData = () => {
     let newUser = {
-        picture: profile_pic_to_send,
+        // picture: profile_pic_to_send,
         username: email.value,
         email: email.value,
         password: psw.value,
