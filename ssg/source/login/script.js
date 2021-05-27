@@ -73,7 +73,7 @@ const loginFlow = async provider => {
 // Services
 const composeRequest = requestCase => {
     const request = {}
-    const lang = localStorage.getItem('lang')
+    const lang = localStorage.getItem('lang') || 'et'
 
     switch (requestCase) {
         case ('social'):
@@ -86,7 +86,7 @@ const composeRequest = requestCase => {
                 identifier: document.getElementById("loginUsername").value,
                 password: document.getElementById("loginPassword").value
             }
-            request.route = `/auth/local/${lang}`
+            request.route = `/auth/local/login/${lang}`
             request.method = 'POST'
             request.headers = {
                 "Content-Type": "application/json"
@@ -176,7 +176,6 @@ const redirectToPreLoginUrl = userProfile => {
 }
 
 // Helpers:
-
 const setLang = () => {
     let lang = window.location.pathname.split('/')[1]
     if (lang === 'login')
