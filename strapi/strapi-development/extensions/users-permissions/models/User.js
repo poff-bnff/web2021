@@ -9,9 +9,6 @@ module.exports = {
         beforeCreate (data){
             data.profileFilled = profileFilled(data)
         },
-        beforeUpdate(params, data){
-            data.profileFilled = profileFilled(data)
-        },
         beforeDelete(params){
             delete params.user
         }
