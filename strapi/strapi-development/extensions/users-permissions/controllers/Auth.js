@@ -380,6 +380,8 @@ module.exports = {
   },
 
   async register(ctx) {
+    const lang = ctx.params.lang || 'et'
+
     const pluginStore = await strapi.store({
       environment: '',
       type: 'plugin',
@@ -398,6 +400,10 @@ module.exports = {
           message: 'Register action is currently disabled.',
         })
       );
+    }
+
+    if (!['et', 'en', 'ru'].includes(lang)) {
+      return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
     }
 
     const params = {
@@ -508,7 +514,7 @@ module.exports = {
 
       if (settings.email_confirmation) {
         try {
-          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user);
+          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user, lang);
         } catch (err) {
           return ctx.badRequest(null, err);
         }

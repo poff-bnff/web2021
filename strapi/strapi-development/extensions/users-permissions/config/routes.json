@@ -217,7 +217,7 @@
     },
     {
       "method": "POST",
-      "path": "/auth/local/register",
+      "path": "/auth/local/register/:lang",
       "handler": "Auth.register",
       "config": {
         "policies": ["plugins::users-permissions.ratelimit"],

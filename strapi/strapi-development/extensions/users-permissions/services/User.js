@@ -123,7 +123,7 @@ module.exports = {
     return bcrypt.compare(password, hash);
   },
 
-  async sendConfirmationEmail(user) {
+  async sendConfirmationEmail(user, lang) {
     const userPermissionService = strapi.plugins['users-permissions'].services.userspermissions;
     const pluginStore = await strapi.store({
       environment: '',
@@ -154,7 +154,7 @@ module.exports = {
     // Send an email to the user.
     await strapi.plugins['email'].services.email.send({
       to: user.email,
-      template_name: `confirm-register-et`,
+      template_name: `confirm-register-${lang}`,
     template_vars: [
       { name: 'link', content: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation?confirmation=${confirmationToken}` },
       // { name: 'authTime', content: authTime }
