@@ -45,7 +45,7 @@ const loginViaProvider = provider => {
 }
 
 function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
+    window.open(`${location.origin}/${langpath}signup`, '_self')
 }
 
 
