@@ -37,7 +37,7 @@ function createRequest (requestCase, requestBody) {
             request.body = formData
             break;
         case ('register'):
-            request.route = '/auth/local/register'
+            request.route = `/auth/local/register/${lang}`
             request.method = 'POST'
             request.headers = {
                 "Content-Type": "application/json"
