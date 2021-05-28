@@ -12,8 +12,8 @@
       "repeatable": false,
       "component": "translated.translated-short"
     },
-    "kumu_article": {
-      "model": "kumu-article"
+    "poffi_article": {
+      "model": "pof-fi-article"
     },
     "order": {
       "type": "integer"
