@@ -176,13 +176,6 @@ const redirectToPreLoginUrl = userProfile => {
 }
 
 // Helpers:
-const setLang = () => {
-    let lang = window.location.pathname.split('/')[1]
-    if (lang === 'login')
-        lang = ''
-    localStorage.setItem('lang', lang)
-}
-
 const getAccessTokenWithProvider = () => {
     const [provider, search] = window.location.hash.substr(1).split('?')
     const tokenInfo = search.split('&')

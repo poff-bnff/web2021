@@ -11,6 +11,7 @@ window.addEventListener("keydown", function (event) {
 const signUp = () => {
     const validForm = validateForm()
     if (validForm) {
+    setLang()
     registerUser()
     }
 }
