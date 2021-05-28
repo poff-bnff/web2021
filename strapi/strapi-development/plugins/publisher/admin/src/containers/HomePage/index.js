@@ -59,7 +59,7 @@ const HomePage = () => {
 
   return (
     <Container>
-    <Header title={{ label: 'Live-i saatmine' }} content="kopeerib staging lehe live-i"/>
+    <Header title={{ label: 'Live-i saatmine' }} content="kopeerib build lehe live-i"/>
      	 	<ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE"/>
      	 	<ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE"/>
      	 	<ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE"/>
