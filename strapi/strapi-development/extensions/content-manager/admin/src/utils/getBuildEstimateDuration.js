@@ -2,6 +2,21 @@ const strapiHost = 'https://admin.poff.ee'
 // const strapiHost = 'http://localhost:1337'
 
 const getBuildEstimateDuration = async (buildArgs) => {
+
+  const noNotificationModels = [
+    'person',
+    'organisation',
+    'hall',
+    'label-group',
+    'tag-genre',
+    'country',
+    'language'
+  ]
+
+  if (noNotificationModels.includes(buildArgs.split(' ')[0])) {
+    return null
+  }
+
   const token = await getToken()
 
   if (token) {
