@@ -45,7 +45,7 @@ const loginViaProvider = provider => {
 }
 
 function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
+    window.open(`${location.origin}/${langpath}signup`, '_self')
 }
 
 
@@ -73,6 +73,7 @@ const loginFlow = async provider => {
 // Services
 const composeRequest = requestCase => {
     const request = {}
+    const lang = localStorage.getItem('lang') || 'et'
 
     switch (requestCase) {
         case ('social'):
@@ -85,7 +86,7 @@ const composeRequest = requestCase => {
                 identifier: document.getElementById("loginUsername").value,
                 password: document.getElementById("loginPassword").value
             }
-            request.route = '/auth/local'
+            request.route = `/auth/local/login/${lang}`
             request.method = 'POST'
             request.headers = {
                 "Content-Type": "application/json"
@@ -131,7 +132,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        const strapiError = response.data[0]?.messages[0].id || response?.data.message || response.message
+        const strapiError = response.data[0].messages?.[0].id || response?.data.message || response.message
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
@@ -151,7 +152,7 @@ const handleResponse = response => {
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
-                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this)'> ×</a>`
+                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this.parentNode), clearMe(this.parentNode)'> ×</a>`
                 break;
         }
         cleanInputFields()
@@ -175,14 +176,6 @@ const redirectToPreLoginUrl = userProfile => {
 }
 
 // Helpers:
-
-const setLang = () => {
-    let lang = window.location.pathname.split('/')[1]
-    if (lang === 'login')
-        lang = ''
-    localStorage.setItem('lang', lang)
-}
-
 const getAccessTokenWithProvider = () => {
     const [provider, search] = window.location.hash.substr(1).split('?')
     const tokenInfo = search.split('&')
@@ -219,21 +212,18 @@ const cleanUiMessages = () => {
     unfilledErrorMsg.style.display = 'none'
     unConfirmed.style.display = 'none'
     noUserOrWrongPwd.style.display = 'none'
-    errorNotificationBar.style.display = 'none'
     failedToFetch.style.display = 'none'
     mergeProvidersFailed.style.display = 'none'
     emailUsed.style.display = 'none'
+    errorNotificationBar.style.display = 'none'
+    clearMe(errorNotificationBar)
 }
 
-const closeMe = elem =>
-    elem.parentNode.style.display = 'none'
+const clearMe = elem => elem.innerText = '' 
 
-
-
-
+const closeMe = elem => elem.style.display = 'none'
 
 function doResetPassword() {
-    // console.log('reset');
     forgotPasswordBtn.style.display = 'none'
     sendPswdResetCodeBtn.style.display = ''
     document.getElementById('loginMessage').style.display = 'none'

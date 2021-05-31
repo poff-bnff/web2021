@@ -22,11 +22,17 @@ module.exports = {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
 
+    const lang = ctx.params.lang || 'et'
+
     const store = await strapi.store({
       environment: '',
       type: 'plugin',
       name: 'users-permissions',
     });
+
+    if (!['et', 'en', 'ru'].includes(lang)) {
+      return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
+    }
 
     if (provider === 'local') {
       if (!_.get(await store.get({ key: 'grant' }), 'email.enabled')) {
@@ -136,6 +142,9 @@ module.exports = {
             model: strapi.query('user', 'users-permissions').model,
           }),
         });
+        strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
+          user.id.toString(), user.last10Logins, provider, lang
+        );
       }
     } else {
       if (!_.get(await store.get({ key: 'grant' }), [provider, 'enabled'])) {
@@ -172,9 +181,8 @@ module.exports = {
         }),
       });
       strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
-        user.id.toString(), user.last10Logins, provider, new Date().toISOString()
+        user.id.toString(), user.last10Logins, provider, lang
       );
-      strapi.plugins['users-permissions'].services.providers.notifyUserAuthDateTime(user)
     }
   },
 
@@ -372,16 +380,18 @@ module.exports = {
   },
 
   async register(ctx) {
+    const lang = ctx.params.lang || 'et'
+
     const pluginStore = await strapi.store({
       environment: '',
       type: 'plugin',
       name: 'users-permissions',
     });
-    
+
     const settings = await pluginStore.get({
       key: 'advanced',
     });
-    
+
     if (!settings.allow_register) {
       return ctx.badRequest(
         null,
@@ -389,9 +399,13 @@ module.exports = {
           id: 'Auth.advanced.allow_register',
           message: 'Register action is currently disabled.',
         })
-        );
-      }
-      
+      );
+    }
+
+    if (!['et', 'en', 'ru'].includes(lang)) {
+      return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
+    }
+
     const params = {
       ..._.omit(ctx.request.body, ['confirmed', 'confirmationToken', 'resetPasswordToken']),
       provider: 'local',
@@ -500,7 +514,7 @@ module.exports = {
 
       if (settings.email_confirmation) {
         try {
-          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user);
+          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user, lang);
         } catch (err) {
           return ctx.badRequest(null, err);
         }
@@ -517,9 +531,9 @@ module.exports = {
     } catch (err) {
       const adminError = _.includes(err.message, 'username')
         ? {
-            id: 'Auth.form.error.username.taken',
-            message: 'Username already taken',
-          }
+          id: 'Auth.form.error.username.taken',
+          message: 'Username already taken',
+        }
         : { id: 'Auth.form.error.email.taken', message: 'Email already taken' };
 
       ctx.badRequest(null, formatError(adminError));

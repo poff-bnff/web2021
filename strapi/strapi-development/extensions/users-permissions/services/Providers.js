@@ -585,19 +585,23 @@ const mergeProviders = async (user, provider, externalProvider) => {
   return updatedUser
 }
 
-const logAuthDateTime = async (id, last10Logins, provider, authTime) => {
+const logAuthDateTime = async (id, last10Logins, provider, lang) => {
+  const authTime = new Date().toISOString()
   const lastLogin = { loginDateTime: authTime, provider: provider }
   if (last10Logins.length === 10) last10Logins.shift()
   last10Logins.push(lastLogin)
   const updateData = { last10Logins: last10Logins }
-  const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+  const user = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+
+  notifyUserAuthDateTime(user, authTime, lang)
 }
 
 const notifyAboutMerge = async (user, addedProvider) => {
   let enabledProviders = (user.externalProviders.map(provider => {
     const date = new Intl.DateTimeFormat('et-EE', { dateStyle: 'full', timeStyle: 'long' }).format(new Date(provider.dateConnected))
-    return `(${provider.provider} ${date})<br>`})
-    )
+    return `(${provider.provider} ${date})<br>`
+  })
+  )
   enabledProviders = enabledProviders.join(' ')
   addedProvider = addedProvider.replace(/^./, addedProvider[0].toUpperCase())
 
@@ -608,17 +612,18 @@ const notifyAboutMerge = async (user, addedProvider) => {
       template_vars: [
         { name: 'email', content: user.email },
         { name: 'addedProvider', content: addedProvider },
-        { name: 'enabledProviders', content: enabledProviders}]
+        { name: 'enabledProviders', content: enabledProviders }]
     });
 }
 
-const notifyUserAuthDateTime = user => {
-
+const notifyUserAuthDateTime = (user, authTime, lang) => {
   strapi.plugins['email'].services.email.send({
-    to: 'siimsuttw@gmail.com',
-    subject: 'You logged in to POFF',
-    template_name: 'merge-providers-et',
-    template_vars: [{ name: "username", content: user.username }]
+    to: user.email,
+    template_name: `new-login-${lang}`,
+    template_vars: [
+      { name: 'email', content: user.email },
+      { name: 'authTime', content: authTime }
+    ]
   });
 }
 
