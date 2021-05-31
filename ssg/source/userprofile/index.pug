@@ -5,7 +5,7 @@ block content
     section.userprofile
         if self.label.userprofile
 
-            //- p=userProfile.firstName
+            //- p=userProfile.firstName 
 
             .sub_section_headline.text_left.p_l_0#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
             .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
@@ -27,7 +27,7 @@ block content
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
                 div.form-group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                    input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
                     div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                 div.form-group
                     label.login_label(for='lastName')= self.label.userprofile.lastName
@@ -61,8 +61,8 @@ block content
                 button.btn.btn_primary(onclick='validateForm()')= self.label.userprofile.saveButton
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
-
-        .sub_section_headline.text_left.p_l_0= 'Oled sisse loginud kasutades teenust:'
+            br
+            h3.dark= 'Oled sisse loginud kasutades teenust:'
             #authProviders
 
                 div.form-group
@@ -74,44 +74,47 @@ block content
                     a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
 
                 div.form-group
-                    a.btn.btn_primary.text-uppercase#Local(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
-                    a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Local')" style= {display:'none'}) Remove provider POFF
+                    a.btn.btn_primary.text-uppercase#password(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
+                    a.btn.btn-primary.text-uppercase#remove_password(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'local')" style= {display:'none'}) Remove provider POFF
 
 
             #removeProviderWarning(style= {display:'none'}) Removing provider
                 a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
                 a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
-
+                br 
             div.form-group
-                label.login_lable(for='delAccount' style = {})= 'Kustuta konto'
                 br
-                button.btn.btn_primary#delAccount(onClick= 'deleteAccount()')= 'Delete'
+                h3.dark= 'Kustuta konto'
+                a.btn.btn_primary#delAccount(onmouseover= 'displayDeleteConfirmText(this); displayRemoveBtn(this)')= 'Delete'
+                a.btn.btn-primary.text-uppercase#remove_delAccount(onmouseout = 'displayProviderBtn(this); displayDeleteConfirmTextOut(this)' onClick = 'deleteAccount()' style= {display:'none'})= 'Delete account'
+                br
+                h4#wrongUserMassage(style= {display:'none'})= 'Teil pole selleks toiminguks luba (kasutaja tunnus ja kasutaja, keda püüate kustutada, tunnus ei klapi). Suuname teid avalehele, toimingu l6petmiseks, palun logige uuesti sisse, enda konto alt!'
 
-                //- div#provisers
-        //-     each val in providers
-        //-         div.form.form#thisUserProfile
-        //-             div#email.dark(name=val)
-
-        //-             div.form-group
-        //-                 label= val
-        //-         button.btn.btn_primary(onclick='removeProvider()')= 'Remove provider'
-
+                h4#deleteConfirmMessage(style= {display:'none'})= 'Konto kustutamise, kustub teie senine salvestatud info (passid, lemmik filmid jne). Vajutage DELETE nuppu ainult juhul, kui olete oma valikus kindel.'
 
 
     style.
-        .invalid {background-color: #f5e4e9; display: block; color: black}
-        .valid {background-color: #e6f7e6; display: none}
-        .c_invalid {background-color: #f5e4e9}
-        .c_valid {background-color: #e6f7e6}
+        .invalid {background-color: transparent; display: block; color: #495057}
+        .valid {background-color: #ccf1e7; display: none}
+        .invalidColor {background-color: #fff3e8}
+        .c_invalid {background-color: #fff3e8}
+        .c_valid {background-color: transparent}
         h4 {color: #464646}
-        h1 {color: black}
-        #profileSent {color: black}
-        label {color: black}
+        h1 {color: #495057}
+        #profileSent {color: #495057}
+        label {color: #495057}
         #imgError {color: red}
 
         #removeProviderWarning{
             display: flex;
             flex-direction: column;
+        }
+        a.btn.btn-primary {
+            background-color: #ccf1e7;
+            color: #495057
+        }
+        form.imput-form.input.login_input.form-control{ 
+            background-color: #ffffff;
         }
 
 
