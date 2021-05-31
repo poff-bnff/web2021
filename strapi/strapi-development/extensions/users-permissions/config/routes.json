@@ -354,7 +354,7 @@
         }
       }
     },
-    {
+    { 
       "method": "GET",
       "path": "/users/:id",
       "handler": "User.findOne",
@@ -398,7 +398,7 @@
       "path": "/users/:id",
       "handler": "User.destroy",
       "config": {
-        "policies": [],
+        "policies": ["global::is-authenticated"],
         "prefix": "",
         "description": "Delete an existing user",
         "tag": {

@@ -2,20 +2,28 @@ let imgPreview = document.getElementById("imgPreview");
 let profile_pic_to_send = "empty"
 
 if (validToken) {
-    loadUserInfo();
+    loadUserInfo()
 } else {
     window.open(`${location.origin}/${langpath}login`, '_self')
     saveUrl()
 }
 
-async function loadUserInfo() {
-    let response = await fetch(`http://localhost:1337/users/me`, {
+async function getUserProfile() {
+        let response = await fetch(`http://localhost:1337/users/me`, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
         },
     });
-    let userProfile = await response.json();
+    let userProfile = await response.json()
+    console.log({userProfile})
+
+    return userProfile 
+}
+
+async function loadUserInfo() {
+
+    let userProfile = await getUserProfile()
 
     if (userProfile.profile_filled) {
         document.getElementById('profileFilledMessage').style.display = 'block'
@@ -31,6 +39,15 @@ async function loadUserInfo() {
     if (userProfile.phoneNr) phoneNr.value = userProfile.phoneNr
     if (userProfile.birthdate) dob.value = userProfile.birthdate
 
+    for (let provider of userProfile.externalProviders) {
+        // console.log(provider)
+        if (provider.provider === ('Google')) google.style.display = ''
+        if (provider.provider === ('Facebook')) facebook.style.display = ''
+    }
+    
+    if (userProfile.provider.includes('local')) password.style.display = ''
+
+
     if (userProfile.address) {
         let address = userProfile.address.split(", ")
         let riik = address[0]
@@ -43,9 +60,7 @@ async function loadUserInfo() {
         if (userProfile.picture !== "no profile picture saved") {
             imgPreview.src = `${strapiDomain}${userProfile.picture.url}`
         }
-
     }
-
 }
 
 async function sendUserProfile() {
@@ -94,7 +109,6 @@ async function sendUserProfile() {
     }
 
 }
-
 
 function validateaAndPreview(file) {
     let error = document.getElementById("imgError");
@@ -162,10 +176,6 @@ async function uploadPic() {
 
 }
 
-
-
-
-
 function validateForm() {
 
     var errors = []
@@ -218,3 +228,95 @@ window.addEventListener("keydown", function (event) {
         validateForm()
     }
 })
+
+displayRemoveBtn = button => {
+    button.style.display = 'none'
+    const removeBtnId = 'remove_' + button.id
+    document.getElementById(removeBtnId).style.display = ''
+}
+
+displayProviderBtn = button => {
+    button.style.display = 'none'
+    const providerBtnId = button.id.split('_')[1]
+    console.log(providerBtnId)
+    document.getElementById(providerBtnId).style.display = ''
+}
+
+redirectToProvider = (button, provider) => {
+    authProviders.style.display = 'none'
+    providerToRemove = ''
+    providerToRemove = provider
+    console.log('redirectToProvider')
+    console.log(button);
+    console.log(provider);
+    confirmDialog.innerHTML = confirmDialog.innerHTML + ` '${provider.toUpperCase()}'`
+    removeProviderWarning.style.display = ''
+    // if(provider === 'facebook') window.open('https://www.facebook.com/index.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%3Ftab%3Dapplications%26ref%3Dsettings')
+    // if(provider === 'facebook') window.open('https://www.facebook.com/settings?tab=applications&ref=settings')
+}
+
+openProvider = (provider) => {
+    console.log('displayFBOptions')
+    // console.log(provider)
+    confirmDialog.style.display = 'none'
+    if (provider === 'Facebook'){
+        window.open('https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%3Ftab%3Dapplications%26ref%3Dsettings', '_blank')
+    }
+    if (provider === 'Google'){
+        window.open('https://myaccount.google.com/permissions', '_blank')
+    }
+    if (provider === 'local') {
+       console.log('local loco')
+    }
+    doneAtProvider.innerHTML = doneAtProvider.innerHTML + ` '${provider.toUpperCase()}'`
+    doneAtProvider.style.display = ''
+}
+
+async function deleteAccount() {
+    console.log('kustuta user, person jaab alles')
+    if (validToken) {
+        const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+        // console.log(token)
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        // console.log('Headers 133', myHeaders)
+
+        var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        // console.log('RO', requestOptions)
+
+        const userProfile = await getUserProfile()
+        let currentUserID = userProfile.id 
+        const response = await fetch(`http://localhost:1337/users/${currentUserID}`, requestOptions)
+
+        console.log(response.status)
+        if (response.ok) {
+            localStorage.clear()
+            location.replace(document.location.origin)
+        }
+        if (response.status === 401) {
+            wrongUserMassage.style.display = ''
+            setTimeout(function() {
+
+                localStorage.clear()
+                location.replace(document.location.origin)
+            }, 5000);
+        }
+
+    }
+
+}
+
+function displayDeleteConfirmText(del_id) {
+    // console.log(del_id.id)
+    deleteConfirmMessage.style.display = ''
+}
+
+function displayDeleteConfirmTextOut(del_id) {
+    // console.log(del_id.id)
+    deleteConfirmMessage.style.display = 'none'
+}
