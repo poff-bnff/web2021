@@ -10,7 +10,6 @@
     var acceptCookies = document.querySelector(".acceptcookies");
 
     if (!cookieAlert) {
-        console.log('no cookie alert');
        return;
     }
 
