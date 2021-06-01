@@ -152,7 +152,7 @@ async function uploadPic() {
     // console.log(contentType)
 
     let files = profile_pic_to_send
-    console.log(files);
+    // console.log(files);
     var formData = new FormData() 
     formData.append('files', files)
     formData.append('ref', 'user')
@@ -238,7 +238,7 @@ displayRemoveBtn = button => {
 displayProviderBtn = button => {
     button.style.display = 'none'
     const providerBtnId = button.id.split('_')[1]
-    console.log(providerBtnId)
+    // console.log(providerBtnId)
     document.getElementById(providerBtnId).style.display = ''
 }
 
@@ -293,7 +293,7 @@ async function deleteAccount() {
         let currentUserID = userProfile.id 
         const response = await fetch(`http://localhost:1337/users/${currentUserID}`, requestOptions)
 
-        console.log(response.status)
+        // console.log(response.status)
         if (response.ok) {
             localStorage.clear()
             location.replace(document.location.origin)
