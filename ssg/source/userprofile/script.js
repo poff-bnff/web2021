@@ -31,6 +31,10 @@ async function loadUserInfo() {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
 
     }
+    if(userProfile.externalProviders.length > 0) {
+        providerText.style.display = ''
+    }
+
     // console.log("täidan ankeedi " + userProfile.name + "-i cognitos olevate andmetega.....")
     email.innerHTML = userProfile.email
     if (userProfile.firstName) firstName.value = userProfile.firstName
@@ -45,7 +49,7 @@ async function loadUserInfo() {
         if (provider.provider === ('Facebook')) facebook.style.display = ''
     }
     
-    if (userProfile.provider.includes('local')) password.style.display = ''
+    // if (userProfile.provider.includes('local')) password.style.display = ''
 
 
     if (userProfile.address) {
@@ -265,38 +269,63 @@ openProvider = (provider) => {
     if (provider === 'Google'){
         window.open('https://myaccount.google.com/permissions', '_blank')
     }
-    if (provider === 'local') {
-       console.log('local loco')
-    }
+    // if (provider === 'local') {
+    //    console.log('local loco')
+    // }
     doneAtProvider.innerHTML = doneAtProvider.innerHTML + ` '${provider.toUpperCase()}'`
     doneAtProvider.style.display = ''
+}
+
+async function anonymizeUserProfile() {
+    let random = 'jndasvobubjdvs'
+        let response = await fetch(`http://localhost:1337/users/me`, {
+        method: "PUT",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+        },
+        body: {
+            username: random,
+            email: `${random}@anonym.ibc`,
+            confirmed: 0
+        }
+    });
+    let userProfile = await response.json()
+    console.log({userProfile})
+
+    return userProfile 
 }
 
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
     if (validToken) {
-        const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
-        // console.log(token)
 
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-        // console.log('Headers 133', myHeaders)
+        // const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+        // // console.log(token)
 
-        var requestOptions = {
-            method: 'DELETE',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-        // console.log('RO', requestOptions)
+        // var myHeaders = new Headers();
+        // myHeaders.append("Authorization", `Bearer ${token}`);
+        // // console.log('Headers 133', myHeaders)
 
-        const userProfile = await getUserProfile()
-        let currentUserID = userProfile.id 
-        const response = await fetch(`http://localhost:1337/users/${currentUserID}`, requestOptions)
+        // var requestOptions = {
+        //     method: 'DELETE',
+        //     headers: myHeaders,
+        //     redirect: 'follow'
+        // };
+        // // console.log('RO', requestOptions)
+
+        // const userProfile = await getUserProfile()
+        // let currentUserID = userProfile.id 
+        // const response = await fetch(`http://localhost:1337/users/${currentUserID}`, requestOptions)
+
+        const response = await anonymizeUserProfile()
 
         // console.log(response.status)
         if (response.ok) {
-            localStorage.clear()
-            location.replace(document.location.origin)
+            deleteRedirectMessage.style.display = ''
+            setTimeout(function() {
+                localStorage.clear()
+                location.replace(document.location.origin)
+            }, 3000);
         }
         if (response.status === 401) {
             wrongUserMassage.style.display = ''
