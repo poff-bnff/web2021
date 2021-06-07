@@ -38,6 +38,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
 
     if (buildArgs !== result.build_args) {
       // Not server build
+      console.log('Not server build ', buildArgs, result.build_args);
       return null
     }
 

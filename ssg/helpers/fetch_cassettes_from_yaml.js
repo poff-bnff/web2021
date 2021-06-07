@@ -3,12 +3,12 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { deleteFolderRecursive, JSONcopy } = require("./helpers.js")
 const rueten = require('./rueten.js')
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
@@ -35,7 +35,7 @@ const target_id = params.slice(1)
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
-if(param_build_type === 'target') {
+if (param_build_type === 'target') {
     addConfigPathAliases(['/films'])
 }
 
@@ -53,7 +53,7 @@ const CHECKPROGRAMMES = false
 const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_screenings || []
 
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
-if (!skipScreeningsCheckDomains.includes(DOMAIN))  {
+if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
@@ -246,7 +246,7 @@ const minimodel_screenings = {
 }
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
 
-if(CHECKPROGRAMMES) {
+if (CHECKPROGRAMMES) {
 
     let cassettesWithOutProgrammes = []
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
@@ -303,7 +303,7 @@ for (const lang of allLanguages) {
     for (const s_cassette of STRAPIDATA_CASSETTE) {
 
 
-        if(param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+        if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
             continue
         } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
             console.log('Targeting cassette in screening', s_cassette.id, target_id)
@@ -323,7 +323,7 @@ for (const lang of allLanguages) {
                 slugEn = s_cassette_copy.films[0].slug_et
             }
         }
-        if(!slugEn) {
+        if (!slugEn) {
             slugEn = s_cassette_copy.slug_en
             if (!slugEn) {
                 slugEn = s_cassette_copy.slug_et
@@ -332,9 +332,9 @@ for (const lang of allLanguages) {
 
 
 
-        if(typeof slugEn !== 'undefined') {
+        if (typeof slugEn !== 'undefined') {
 
-            if(param_build_type === 'target') {
+            if (param_build_type === 'target') {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
 
@@ -350,10 +350,10 @@ for (const lang of allLanguages) {
             // Kasseti treiler
             if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
                 for (trailer of s_cassette_copy.media.trailer) {
-                    if(trailer.url && trailer.url.length > 10) {
+                    if (trailer.url && trailer.url.length > 10) {
                         if (trailer.url.includes('vimeo')) {
                             let splitVimeoLink = trailer.url.split('/')
-                            let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
+                            let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
                             if (videoCode.length === 9) {
                                 trailer.videoCode = videoCode
                             }
@@ -390,7 +390,7 @@ for (const lang of allLanguages) {
                 for (const onefilm of s_cassette_copy.films) {
                     if (onefilm.orderedCountries) {
                         let orderedCountries = onefilm.orderedCountries
-                            .sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                         onefilm.orderedCountries = orderedCountries
                         if (orderedCountries.length) {
                             onefilm.orderedCountriesDisplay = orderedCountries
@@ -408,12 +408,12 @@ for (const lang of allLanguages) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
-                    let screeningNames = function(item) {
+                    let screeningNames = function (item) {
                         let itemNames = item.name
                         return itemNames
                     }
                     // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
-                    if(!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
+                    if (!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
                         continue
                     }
 
@@ -524,10 +524,10 @@ for (const lang of allLanguages) {
                     // Filmi treiler
                     if (scc_film.media && scc_film.media.trailer && scc_film.media.trailer[0]) {
                         for (trailer of scc_film.media.trailer) {
-                            if(trailer.url && trailer.url.length > 10) {
+                            if (trailer.url && trailer.url.length > 10) {
                                 if (trailer.url.includes('vimeo')) {
                                     let splitVimeoLink = trailer.url.split('/')
-                                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
+                                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
                                     if (videoCode.length === 9) {
                                         trailer.videoCode = videoCode
                                     }
@@ -543,27 +543,31 @@ for (const lang of allLanguages) {
                     }
 
                     // Rolepersons by role
-                    if(scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
+                    if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                         let rolePersonTypes = {}
-                        scc_film.credentials.rolePerson.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                        scc_film.credentials.rolePerson.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
                         for (roleIx in scc_film.credentials.rolePerson) {
                             let rolePerson = scc_film.credentials.rolePerson[roleIx]
                             if (rolePerson === undefined) { continue }
                             if (rolePerson.person) {
-                                if (rolePerson.role_at_film.roleNamePrivate === 'Director') {
-                                    scc_film.credentials.rolePerson[roleIx].person = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
-                                }
-                                let searchRegExp = new RegExp(' ', 'g')
-                                const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
-                                rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
-
-                                if (rolePerson.person.firstNameLastName) {
-                                    rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
-                                } else if (rolePerson.person.id) {
-                                    let personFromYAML = STRAPIDATA_PERSONS.filter( (a) => { return rolePerson.person.id === a.id })[0]
-                                    if (personFromYAML.fullName) {
-                                        rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
+                                if (rolePerson?.role_at_film?.roleNamePrivate) {
+                                    if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
+                                        scc_film.credentials.rolePerson[roleIx].person = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
                                     }
+                                    let searchRegExp = new RegExp(' ', 'g')
+                                    const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                    rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
+
+                                    if (rolePerson.person.firstNameLastName) {
+                                        rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
+                                    } else if (rolePerson.person.id) {
+                                        let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return rolePerson.person.id === a.id })[0]
+                                        if (personFromYAML.fullName) {
+                                            rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
+                                        }
+                                    }
+                                } else {
+                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials person ID ${rolePerson.person.id} role_at_film`);
                                 }
                             } else {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
@@ -573,19 +577,23 @@ for (const lang of allLanguages) {
                     }
 
                     // Rolecompanies by role
-                    if(scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
+                    if (scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
                         let roleCompanyTypes = {}
-                        scc_film.credentials.roleCompany.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                        scc_film.credentials.roleCompany.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
                         for (roleIx in scc_film.credentials.roleCompany) {
                             let roleCompany = scc_film.credentials.roleCompany[roleIx]
                             if (roleCompany === undefined) { continue }
                             if (roleCompany.organisation) {
-                                let searchRegExp = new RegExp(' ', 'g')
-                                const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
-                                roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
+                                if (roleCompany?.roles_at_film?.roleNamePrivate) {
+                                    let searchRegExp = new RegExp(' ', 'g')
+                                    const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                    roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
 
-                                if (roleCompany.organisation.name) {
-                                    roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                    if (roleCompany.organisation.name) {
+                                        roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                    }
+                                } else {
+                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials company ID ${scc_film.credentials.roleCompany.id} roles_at_film`);
                                 }
                             } else {
                                 // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
@@ -610,10 +618,10 @@ for (const lang of allLanguages) {
             slugMissingErrorIDs.push(s_cassette_copy.id)
         }
     }
-    if(slugMissingErrorNumber > 0) {
+    if (slugMissingErrorNumber > 0) {
         timer.log(__filename, `Notification! Value of slug_en or slug_et missing for total of ${slugMissingErrorNumber} cassettes with ID's ${slugMissingErrorIDs.join(', ')}`)
     }
-    if(cassettesWithOutFilms.length) {
+    if (cassettesWithOutFilms.length) {
         uniqueIDs = [...new Set(cassettesWithOutFilms)]
         timer.log(__filename, `ERROR! No films under cassettes with ID's ${uniqueIDs.join(', ')}`)
     }
@@ -624,7 +632,7 @@ for (const lang of allLanguages) {
     generateAllDataYAML(allData, lang)
 }
 
-function generateYaml(element, lang){
+function generateYaml(element, lang) {
     let yamlStr = yaml.dump(element, { 'noRefs': true, 'indent': '4' })
 
 
@@ -644,7 +652,7 @@ function generateYaml(element, lang){
     }
 }
 
-function generateAllDataYAML(allData, lang){
+function generateAllDataYAML(allData, lang) {
 
 
     for (cassette of allData) {
@@ -720,7 +728,7 @@ function generateAllDataYAML(allData, lang){
                     }
                 }
             } catch (error) {
-                console.log('bad creds on film', JSON.stringify({film: film, creds:film.credentials}, null, 4));
+                console.log('bad creds on film', JSON.stringify({ film: film, creds: film.credentials }, null, 4));
                 throw new Error(error)
             }
         }
@@ -750,9 +758,9 @@ function generateAllDataYAML(allData, lang){
         let premieretypes = []
         if (cassette.tags) {
             for (const types of cassette.tags.premiere_types || []) {
-                    const type_name = types
-                    premieretypes.push(type_name)
-                    filters.premieretypes[type_name] = type_name
+                const type_name = types
+                premieretypes.push(type_name)
+                filters.premieretypes[type_name] = type_name
             }
         }
         return {
@@ -778,12 +786,12 @@ function generateAllDataYAML(allData, lang){
             sortable.push([item, to_sort[item]]);
         }
 
-        sortable = sortable.sort(function(a, b) {
+        sortable = sortable.sort(function (a, b) {
             try {
                 const locale_sort = a[1].localeCompare(b[1], lang)
                 return locale_sort
             } catch (error) {
-                console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                 throw new Error(error)
             }
         });
@@ -791,7 +799,7 @@ function generateAllDataYAML(allData, lang){
         var objSorted = {}
         for (let index = 0; index < sortable.length; index++) {
             const item = sortable[index];
-            objSorted[item[0]]=item[1]
+            objSorted[item[0]] = item[1]
         }
         return objSorted
     }
