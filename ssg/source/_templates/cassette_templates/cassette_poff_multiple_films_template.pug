@@ -604,7 +604,13 @@ else
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var sortCredentialsByOrder = film.credentials.rolePerson.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
-                - var director = sortCredentialsByOrder.filter( (a) => { return 'Director' === a.role_at_film.roleNamePrivate })[0]
+                - var director = sortCredentialsByOrder.filter( (a) => {
+                        if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    })[0]
 
             //- if typeof director !== 'undefined' && director.person && director.person.firstName && director.person.lastName
             //-     section.f_dir_bio_box

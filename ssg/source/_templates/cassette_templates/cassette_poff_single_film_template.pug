@@ -257,7 +257,13 @@ main.grid_film(id=self.id)
 
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
-                - var filmDirectors = film.credentials.rolePerson.filter( (a) => { return 'Director' === a.role_at_film.roleNamePrivate })
+                - var filmDirectors = film.credentials.rolePerson.filter( (a) => {
+                        if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate ) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
 
                 - var filmDirectorsSorted = filmDirectors.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
 
