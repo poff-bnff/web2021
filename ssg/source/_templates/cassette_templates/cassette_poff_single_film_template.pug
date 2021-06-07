@@ -257,7 +257,7 @@ main.grid_film(id=self.id)
 
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
-                - var filmDirectors = film.credentials.rolePerson.filter( (a) => {
+                - var filmDirectors = film.credentials.rolePerson.filter(a => {
                         if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate ) {
                             return true
                         } else {
