@@ -604,7 +604,7 @@ else
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var sortCredentialsByOrder = film.credentials.rolePerson.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
-                - var director = sortCredentialsByOrder.filter( (a) => {
+                - var director = sortCredentialsByOrder.filter(a => {
                         if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate) {
                             return true
                         } else {
