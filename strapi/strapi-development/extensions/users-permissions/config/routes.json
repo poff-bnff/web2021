@@ -407,6 +407,15 @@
           "actionType": "destroy"
         }
       }
+    },
+    {
+      "method": "POST",
+      "path": "/users/import",
+      "handler": "User.import",
+      "config": {
+        "prefix": "",
+        "description": "Import users"
+      }
     }
   ]
 }
