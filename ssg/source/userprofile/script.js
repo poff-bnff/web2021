@@ -24,6 +24,7 @@ async function getUserProfile() {
 async function loadUserInfo() {
 
     let userProfile = await getUserProfile()
+    const profile = userProfile['person-test'][0]
 
     if (userProfile.profile_filled) {
         document.getElementById('profileFilledMessage').style.display = 'block'
@@ -33,11 +34,11 @@ async function loadUserInfo() {
     }
     // console.log("täidan ankeedi " + userProfile.name + "-i cognitos olevate andmetega.....")
     email.innerHTML = userProfile.email
-    if (userProfile.firstName) firstName.value = userProfile.firstName
-    if (userProfile.lastName) lastName.value = userProfile.lastName
-    if (userProfile.gender) gender.value = userProfile.gender
-    if (userProfile.phoneNr) phoneNr.value = userProfile.phoneNr
-    if (userProfile.birthdate) dob.value = userProfile.birthdate
+    if (profile.firstName) firstName.value = profile.firstName
+    if (profile.lastName) lastName.value = profile.lastName
+    if (profile.gender) gender.value = profile.gender
+    if (profile.phoneNr) phoneNr.value = profile.phoneNr
+    if (profile.birthdate) dob.value = profile.birthdate
 
     for (let provider of userProfile.externalProviders) {
         // console.log(provider)
@@ -48,17 +49,17 @@ async function loadUserInfo() {
     if (userProfile.provider.includes('local')) password.style.display = ''
 
 
-    if (userProfile.address) {
-        let address = userProfile.address.split(", ")
+    if (profile.address) {
+        let address = profile.address.split(", ")
         let riik = address[0]
         let linn = address[1]
         countrySelection.value = riik
         citySelection.value = linn
     }
 
-    if (userProfile.picture) {
-        if (userProfile.picture !== "no profile picture saved") {
-            imgPreview.src = `${strapiDomain}${userProfile.picture.url}`
+    if (profile.picture) {
+        if (profile.picture !== "no profile picture saved") {
+            imgPreview.src = `${strapiDomain}${profile.picture.url}`
         }
     }
 }
