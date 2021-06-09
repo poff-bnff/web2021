@@ -59,7 +59,7 @@ const HomePage = () => {
 
   return (
     <Container>
-    <Header title={{ label: 'Live-i saatmine' }} content="kopeerib staging lehe live-i"/>
+    <Header title={{ label: 'Live-i saatmine' }} content="kopeerib build lehe live-i"/>
      	 	<ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE"/>
      	 	<ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE"/>
      	 	<ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE"/>
@@ -68,6 +68,7 @@ const HomePage = () => {
      	 	<ButtonAndLog site="justfilm.ee" buttonText="JUSTFILM LIVE"/>
      	 	<ButtonAndLog site="kinoff.poff.ee" buttonText="KINOFF LIVE"/>
      	 	<ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE"/>
+     	 	<ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE"/>
      	 	{/**<Button color="primary" onClick={() => DoBuildFull()}>Full build</Button>**/}
     </Container>
   );

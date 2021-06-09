@@ -20,18 +20,23 @@ const DoPublish = async (site, userInfo) => {
 	    });
 
 
-	    let myResult = await response.json();
+	    let { message, buildSite } = await response.json()
+		let title = buildSite.split('.')[0]
+
+		if (title.match(/\b.o..\b/)){
+			title = title[0].concat('ö', title.slice(2))
+		}
 
 	    if(response.status === 200){
-			strapi.notification.toggle({type: "success", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+			strapi.notification.toggle({type: "success", message: `${message}`, title: title, timeout: 5000, blockTransition: false})
 	    }else if( response.status === 429){
-		    if(Array.isArray(myResult.message)){
-		    	myResult=myResult.message[0].messages[0]
-		    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+		    if(Array.isArray(message)){
+		    	message=message[0].messages[0]
+				strapi.notification.toggle({type: "success", message: `${message}`, title: title, timeout: 5000, blockTransition: false})
 		    };
 	    }else{
 		    if(response.statusText && response.status){
-		    	strapi.notification.toggle({type: "warning", message: `${myResult.message}`, title: "HÕFF", timeout: 5000, blockTransition: false})
+				strapi.notification.toggle({type: "success", message: `${message}`, title: title, timeout: 5000, blockTransition: false})
 		    };
 	    };
 	};

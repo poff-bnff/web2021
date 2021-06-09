@@ -35,7 +35,7 @@
     "subMenuItem": {
       "type": "component",
       "repeatable": true,
-      "component": "menu.menu-item"
+      "component": "menu.kumu-sub-menu-item"
     }
   }
 }
