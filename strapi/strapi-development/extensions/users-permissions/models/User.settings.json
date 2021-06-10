@@ -72,6 +72,13 @@
       "repeatable": true,
       "component": "user.last10-logins",
       "max": 10
+    },
+    "person_test_2": {
+      "model": "person-test2",
+      "via": "users_permissions_user"
+    },
+    "account_created": {
+      "type": "datetime"
     }
   }
 }

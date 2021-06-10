@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "person_test2s",
+  "info": {
+    "name": "personTest2"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "users_permissions_user": {
+      "via": "person_test_2",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "firstName": {
+      "type": "string",
+      "required": false
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "phoneNr": {
+      "type": "biginteger"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "address": {
+      "type": "string"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
