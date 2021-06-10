@@ -12,7 +12,8 @@
       "enum": [
         "eventival",
         "facebook",
-        "google"
+        "google",
+        "local"
       ]
     },
     "UUID": {
