@@ -126,11 +126,12 @@ module.exports = {
       return ctx.badRequest(null, [{ messages: [{ id: 'No authorization header was found' }] }]);
     }
 
-    ctx.body = sanitizeUser(user);
+    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({id: user.id});
+
+    ctx.body = sanitizeUser(fetchedUser);
   },
 
   async import(ctx) {
-    // console.log(ctx.request.body)
 
     const advanced = await strapi
       .store({
@@ -141,7 +142,11 @@ module.exports = {
       })
       .get();
 
-    const { email, username, role, provider } = ctx.request.body;
+    const { email, username, role, ...rest } = ctx.request.body;
+    console.log(rest);
+
+    const {blocked, provider, confirmed, ...profile} = rest
+    console.log(profile);
 
     if (!email) return ctx.badRequest('missing.email');
     if (!username) return ctx.badRequest('missing.username');
@@ -181,11 +186,16 @@ module.exports = {
     }
 
     const user = {
-      ...ctx.request.body,
+      username: username,
+      email: email,
+      provider: provider,
+      blocked: blocked,
+      confirmed: confirmed
       // provider: 'local',
     };
 
     user.email = user.email.toLowerCase();
+    user.provider = user.provider.toLowerCase();
 
     if (!role) {
       const defaultRole = await strapi
@@ -197,7 +207,10 @@ module.exports = {
 
     try {
       const data = await strapi.plugins['users-permissions'].services.user.add(user);
-
+      if (data){
+        profile.user = data.id
+        await strapi.query('person-test').create(profile)
+      }
       ctx.created(sanitizeUser(data));
     } catch (error) {
       ctx.badRequest(null, formatError(error));
