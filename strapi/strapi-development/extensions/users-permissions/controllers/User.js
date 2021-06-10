@@ -95,7 +95,6 @@ module.exports = {
    * @return {Object}
    */
   async destroy(ctx) {
-    // console.log('ctx in user', ctx)
     const { id } = ctx.params;
     const data = await strapi.plugins['users-permissions'].services.user.remove({ id });
     ctx.send(sanitizeUser(data));
@@ -142,11 +141,12 @@ module.exports = {
       })
       .get();
 
+    if (ctx.request.body.identities === ''){
+      ctx.request.body.identities = undefined
+    }
+      
     const { email, username, role, ...rest } = ctx.request.body;
-    console.log(rest);
-
-    const {blocked, provider, confirmed, identities, ...profile} = rest
-    console.log(profile);
+    const {blocked, provider, confirmed, identities = [], account_created, ...profile} = rest
 
     if (!email) return ctx.badRequest('missing.email');
     if (!username) return ctx.badRequest('missing.username');
@@ -186,6 +186,14 @@ module.exports = {
     }
 
     const externalProviders = JSON.parse(identities).map(identity => {
+      if (!identity){
+        const externalProvider = {
+          provider: 'local',
+          UUID: identity.userId,
+          dateConnected: identity.dateCreated
+        }
+      }
+
       const externalProvider = {
         provider: identity.providerName.toLowerCase(),
         UUID: identity.userId,
@@ -201,7 +209,8 @@ module.exports = {
       provider: provider,
       blocked: blocked,
       confirmed: confirmed,
-      externalProviders: externalProviders
+      externalProviders: externalProviders,
+      account_created: account_created
     };
 
     user.email = user.email.toLowerCase();
@@ -218,8 +227,8 @@ module.exports = {
     try {
       const data = await strapi.plugins['users-permissions'].services.user.add(user);
       if (data){
-        profile.user = data.id
-        await strapi.query('person-test').create(profile)
+        profile.users_permissions_user = data.id
+        await strapi.query('person-test2').create(profile)
       }
       ctx.created(sanitizeUser(data));
     } catch (error) {
