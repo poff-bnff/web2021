@@ -79,6 +79,9 @@
     },
     "account_created": {
       "type": "datetime"
+    },
+    "awsUUID": {
+      "type": "string"
     }
   }
 }
