@@ -145,7 +145,7 @@ module.exports = {
     const { email, username, role, ...rest } = ctx.request.body;
     console.log(rest);
 
-    const {blocked, provider, confirmed, ...profile} = rest
+    const {blocked, provider, confirmed, identities, ...profile} = rest
     console.log(profile);
 
     if (!email) return ctx.badRequest('missing.email');
@@ -185,13 +185,23 @@ module.exports = {
       }
     }
 
+    const externalProviders = JSON.parse(identities).map(identity => {
+      const externalProvider = {
+        provider: identity.providerName.toLowerCase(),
+        UUID: identity.userId,
+        dateConnected: identity.dateCreated
+      }
+
+      return externalProvider
+    })
+
     const user = {
       username: username,
       email: email,
       provider: provider,
       blocked: blocked,
-      confirmed: confirmed
-      // provider: 'local',
+      confirmed: confirmed,
+      externalProviders: externalProviders
     };
 
     user.email = user.email.toLowerCase();
