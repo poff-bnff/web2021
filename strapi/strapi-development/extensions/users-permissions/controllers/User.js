@@ -146,7 +146,7 @@ module.exports = {
     }
       
     const { email, username, role, ...rest } = ctx.request.body;
-    const {blocked, provider, confirmed, identities = [], account_created, ...profile} = rest
+    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, ...profile} = rest
 
     if (!email) return ctx.badRequest('missing.email');
     if (!username) return ctx.badRequest('missing.username');
@@ -185,23 +185,24 @@ module.exports = {
       }
     }
 
-    const externalProviders = JSON.parse(identities).map(identity => {
+    let externalProviders
+    if (!identities){
+      externalProviders = [{
+        provider: 'local',
+        UUID: awsUUID,
+        dateConnected: account_created
+      }]
+    } else {
+    externalProviders = JSON.parse(identities).map(identity => {
       if (!identity){
-        const externalProvider = {
-          provider: 'local',
-          UUID: identity.userId,
-          dateConnected: identity.dateCreated
-        }
       }
-
       const externalProvider = {
         provider: identity.providerName.toLowerCase(),
         UUID: identity.userId,
         dateConnected: identity.dateCreated
       }
-
       return externalProvider
-    })
+    })}
 
     const user = {
       username: username,
@@ -210,7 +211,8 @@ module.exports = {
       blocked: blocked,
       confirmed: confirmed,
       externalProviders: externalProviders,
-      account_created: account_created
+      account_created: account_created,
+      awsUUID: awsUUID
     };
 
     user.email = user.email.toLowerCase();
