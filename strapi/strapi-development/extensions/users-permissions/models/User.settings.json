@@ -59,42 +59,12 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "people": {
+    "person-test": {
       "via": "user",
-      "collection": "person"
+      "collection": "person-test"
     },
     "profileFilled": {
       "type": "boolean"
-    },
-    "firstName": {
-      "type": "string",
-      "required": false
-    },
-    "lastName": {
-      "type": "string"
-    },
-    "gender": {
-      "type": "string"
-    },
-    "phoneNr": {
-      "type": "biginteger"
-    },
-    "birthdate": {
-      "type": "date"
-    },
-    "address": {
-      "type": "string"
-    },
-    "picture": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
     },
     "externalProviders": {
       "type": "component",
