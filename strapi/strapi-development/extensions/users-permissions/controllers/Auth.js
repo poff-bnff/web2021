@@ -285,9 +285,7 @@ module.exports = {
 
   async forgotPassword(ctx) {
     let { email } = JSON.parse(ctx.request.body);
-    console.log(ctx.request.body);
-    console.log(email);
-
+    const { lang = 'et' } = JSON.parse(ctx.request.body)
 
     // Check if the provided email is valid or not.
     const isEmail = emailRegExp.test(email);
@@ -343,7 +341,12 @@ module.exports = {
 
     console.log(advanced);
 
-    const resetURL = `${advanced.email_reset_password}?code=${resetPasswordToken}`
+    const resetURL = new URL(`${advanced.email_reset_password}?code=${resetPasswordToken}`)
+    let resetLink = resetURL.href
+
+    if (['en', 'ru'].includes(lang)){
+      resetLink = resetURL.origin.concat('/', lang, resetURL.pathname, resetURL.search)
+    }
 
     const userInfo = sanitizeEntity(user, {
       model: strapi.query('user', 'users-permissions').model,
@@ -366,14 +369,13 @@ module.exports = {
     );
 
     try {
-      console.log(resetURL);
       // Send an email to the user.
       await strapi.plugins['email'].services.email.send({
         to: user.email,
-        template_name: 'reset-password-et',
+        template_name: `reset-password-${lang}`,
       template_vars: [
         { name: 'email', content: user.email },
-        { name: 'resetURL', content: resetURL },
+        { name: 'resetURL', content: resetLink },
         // { name: 'enabledProviders', content: enabledProviders }
       ]
         // from:
