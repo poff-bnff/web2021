@@ -18,7 +18,7 @@ block content
                         a#ev(href=`https://api.poff.ee/auth/eventival`)
                             button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/eventival') Eventival
                     a#loginButton(style={display: 'none'} href=`/${lang_path}login`)
-                        button.btn.btn_primary.p_1 Logi sisse
+                        button.btn.btn_primary.p_1= self.label.userprofile.signinBtn 
 
                 div.form#signupForm
                     img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
