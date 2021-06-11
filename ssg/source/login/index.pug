@@ -44,17 +44,14 @@ block content
 
                 button.login_btn_secondary#resetPasswordBtn(style={display: 'none'} onclick='doSaveNewPswd()')= self.label.userprofile.resetPswdButton
 
-                div#resetCodeBox(style={display:'none'})
-                    label.login_label(style={color: 'red'} for='resetCode')= self.label.userprofile.resetCodeLabel
-                    input.login_input#resetCode(type='text')
-                    button.login_btn(onclick = 'askForNewPassword()')= self.label.userprofile.resetCodeButton
+                button.btn.btn_primary.p_1#backToLoginBtn(style={display: 'none'} onclick='refresh()')= self.label.userprofile.signinBtn
 
                 p#signUpPassword2
                 p#emailUsed(style={display:'none'})
                 p#unfilledErrorMsg(style={display:'none'})= self.label.userprofile.unfilledPasswordOfEmailHelp
                 p#pswdResetMessage(style={display:'none'})= self.label.userprofile.pswdResetHelp
-                p#pswdResetCodeMessage(style={display:'none'})= self.label.userprofile.resetCodeHelp
-                p#pswdResetEnterNewMessage(style={display:'none'})= self.label.userprofile.resetPswdNewPswdHelp
+                p#pswdResetCodeSent(style={display:'none'})= self.label.userprofile.pswdResetCodeSent
+
                 p#pswdResetCompletedMessage(style={display:'none'})= self.label.userprofile.pswdResetCompleteHelp
                 p#currentUsername(style={display:'none'})
                 p#noUserOrWrongPwd(style={display:'none'})= self.label.userprofile.noUserOrWrongPwd
@@ -68,7 +65,7 @@ block content
             //- br
             //- br
 
-        .login_some
+        .login_some#login_some
             if process.env['DOMAIN'] !== 'industry.poff.ee'
                 h4.dark_1.login_headline#loginMessage= self.label.userprofile.loginSome
             else
@@ -93,7 +90,7 @@ block content
 
 
         if process.env['DOMAIN'] !== 'industry.poff.ee'
-            .login_register
+            .login_register#login_register
 
                 h4.dark_1.login_headline#loginMessage= self.label.userprofile.loginRegister
 

@@ -225,16 +225,14 @@ const closeMe = elem => elem.style.display = 'none'
 
 function doResetPassword() {
     forgotPasswordBtn.style.display = 'none'
-    sendPswdResetCodeBtn.style.display = ''
     document.getElementById('loginMessage').style.display = 'none'
     document.getElementById('password').style.display = 'none'
-    document.getElementById('loginFB').style.display = 'none'
-    document.getElementById('loginG').style.display = 'none'
-    document.getElementById('loginE').style.display = 'none'
+    document.getElementById('login_some').style.display = 'none'
+    document.getElementById('login_register').style.display = 'none'
     document.getElementById('loginBtn').style.display = 'none'
     document.getElementById('signUpBtn').style.display = 'none'
-
     document.getElementById('pswdResetMessage').style.display = ''
+    sendPswdResetCodeBtn.style.display = ''    
 }
 
 function doSaveNewPswd() {
@@ -255,31 +253,14 @@ function doSendResetCode() {
     document.getElementById('currentUsername').innerHTML = loginUsername.value
     sendPswdResetCodeBtn.style.display = 'none'
 
-    // console.log('sendResetCode');
-    // console.log(loginUsername.value);
     sendResetCode()
 }
 
 async function sendResetCode() {
-    let authenticationData
-
-    // console.log(loginUsername.value);
-    // console.log(resetCode.value);
-
-
-    if (resetCode.value) {
-        authenticationData = {
-            loginUsername: loginUsername.value,
-            code: resetCode.value,
-            newPswd: loginPasswordRep.value
-        }
-    }
-    else if (loginUsername.value) {
-        authenticationData = {
+        const authenticationData = {
             email: document.getElementById("loginUsername").value,
             lang: langpath.substr(0,2) || 'et'
         }
-    }
 
     var requestOptions = {
         method: 'POST',
@@ -287,25 +268,11 @@ async function sendResetCode() {
         body: JSON.stringify(authenticationData)
     }
 
+    document.getElementById('pswdResetMessage').style.display = 'none'
+    document.getElementById('forgotPasswordBtn').style.display = 'none'
+    document.getElementById('pswdResetCodeSent').style.display = ''
+    document.getElementById('backToLoginBtn').style.display = ''
+    
     let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
 
-    // console.log(await response.json())
-
-    if (resetCode.value) {
-        return
-    }
-
-    document.getElementById('forgotPasswordBtn').style.display = 'none'
-    document.getElementById('resetCodeBox').style.display = ''
-    document.getElementById('pswdResetMessage').style.display = 'none'
-    document.getElementById('pswdResetCodeMessage').style.display = ''
-}
-
-function askForNewPassword() {
-    document.getElementById('password').style.display = ''
-    document.getElementById('passwordRep').style.display = ''
-    document.getElementById('resetCodeBox').style.display = 'none'
-    document.getElementById('pswdResetCodeMessage').style.display = 'none'
-    document.getElementById('pswdResetEnterNewMessage').style.display = ''
-    resetPasswordBtn.style.display = ''
 }
