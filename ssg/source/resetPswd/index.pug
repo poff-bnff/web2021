@@ -1,0 +1,19 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    section.resetPswd_head
+        h4 Sinu PÖFF-i konto parooli uuendamine
+
+
+    section.grid_resetPswd
+            div.form-group
+                label.login_label(for='psw')= self.label.userprofile.password
+                input.login_input#psw.form-control(type='password', placeholder=`${self.label.userprofile.password}` name='psw' autocomplete="off" oninput="validatePsw('psw'); validatePswRep('psw', 'psw2')" )
+                div#pswHelp(class='valid')= self.label.userprofile.passwordHelp
+            div.form-group
+                label.login_label(for='psw2')= self.label.userprofile.passwordRepeat
+                input.login_input#psw2.form-control(type='password', placeholder=`${self.label.userprofile.passwordRepeat}`  name='psw2' autocomplete="off" oninput="validatePswRep('psw', 'psw2')")
+                div#psw2Help(class='valid')= self.label.userprofile.password2Help
+            button(onclick='resetPswd()') Reset password

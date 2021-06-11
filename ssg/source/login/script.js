@@ -276,7 +276,7 @@ async function sendResetCode() {
     }
     else if (loginUsername.value) {
         authenticationData = {
-            loginUsername: document.getElementById("loginUsername").value
+            email: document.getElementById("loginUsername").value
         }
     }
 
@@ -286,7 +286,7 @@ async function sendResetCode() {
         body: JSON.stringify(authenticationData)
     }
 
-    let response = await fetch(`https://api.poff.ee/profile/pswd`, requestOptions)
+    let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
 
     // console.log(await response.json())
 
