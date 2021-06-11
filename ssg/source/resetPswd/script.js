@@ -4,18 +4,21 @@ const resetPswd = () => {
     const urlParams = new URLSearchParams(qs)
     const code = urlParams.get('code')
 
+    const headers = {
+        "Content-Type" : 'application/json'
+    }
 
-    const body = {
+    const data = {
         password: psw.value,
         passwordConfirmation: psw2.value,
         code: code
     }
 
-    console.log(body);
-
     var requestOptions = {
+        headers: headers,
         method: 'POST',
-        body: JSON.stringify(body)
+        body: JSON.stringify(data),
+        redirect: 'follow'
     }
 
     console.log(requestOptions);
