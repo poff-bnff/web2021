@@ -189,6 +189,8 @@ module.exports = {
   async resetPassword(ctx) {
     const params = _.assign({}, ctx.request.body, ctx.params);
 
+    console.log(params);
+
     if (
       params.password &&
       params.passwordConfirmation &&
@@ -282,7 +284,10 @@ module.exports = {
   },
 
   async forgotPassword(ctx) {
-    let { email } = ctx.request.body;
+    let { email } = JSON.parse(ctx.request.body);
+    console.log(ctx.request.body);
+    console.log(email);
+
 
     // Check if the provided email is valid or not.
     const isEmail = emailRegExp.test(email);
@@ -336,6 +341,10 @@ module.exports = {
       key: 'advanced',
     });
 
+    console.log(advanced);
+
+    const resetURL = `${advanced.email_reset_password}?code=${resetPasswordToken}`
+
     const userInfo = sanitizeEntity(user, {
       model: strapi.query('user', 'users-permissions').model,
     });
@@ -357,19 +366,27 @@ module.exports = {
     );
 
     try {
+      console.log(resetURL);
       // Send an email to the user.
       await strapi.plugins['email'].services.email.send({
         to: user.email,
-        from:
-          settings.from.email || settings.from.name
-            ? `${settings.from.name} <${settings.from.email}>`
-            : undefined,
-        replyTo: settings.response_email,
-        subject: settings.object,
-        text: settings.message,
-        html: settings.message,
+        template_name: 'reset-password-et',
+      template_vars: [
+        { name: 'email', content: user.email },
+        { name: 'resetURL', content: resetURL },
+        // { name: 'enabledProviders', content: enabledProviders }
+      ]
+        // from:
+        //   settings.from.email || settings.from.name
+        //     ? `${settings.from.name} <${settings.from.email}>`
+        //     : undefined,
+        // replyTo: settings.response_email,
+        // subject: settings.object,
+        // text: settings.message,
+        // html: settings.message,
       });
     } catch (err) {
+      console.log(err);
       return ctx.badRequest(null, err);
     }
 
