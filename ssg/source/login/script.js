@@ -277,7 +277,7 @@ async function sendResetCode() {
     else if (loginUsername.value) {
         authenticationData = {
             email: document.getElementById("loginUsername").value,
-            lang: langpath.substr(0,2)
+            lang: langpath.substr(0,2) || 'et'
         }
     }
 

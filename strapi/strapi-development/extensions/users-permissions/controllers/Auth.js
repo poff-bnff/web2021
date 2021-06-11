@@ -285,7 +285,11 @@ module.exports = {
 
   async forgotPassword(ctx) {
     let { email } = JSON.parse(ctx.request.body);
-    const { lang = 'et' } = JSON.parse(ctx.request.body)
+    const { lang } = JSON.parse(ctx.request.body) 
+
+    if (!['et', 'en', 'ru'].includes(lang)) {
+      return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
+    }
 
     // Check if the provided email is valid or not.
     const isEmail = emailRegExp.test(email);
