@@ -198,7 +198,35 @@ const minimodel_cassette = {
         // }
     },
 }
-const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+
+// koondnimekirja tootmisel tehakse:
+// nimekiri A kõikidest üksikkassettidest
+// nimekiri B kõigist mitmikkassettidest
+// nimekirjast A visatakse välja kõik kassetid, mille film figureerib nimekirjas B, ja millel on boolean === false
+// koondminekiri salvestatakse A + B
+
+const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
+const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length > 1) {
+        c.orderedFilms.map(f => {
+            if (!f.multi_and_single) {
+                FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.id)
+            }
+        })
+        return true
+    }
+})
+
+const STRAPIDATA_CASSETTES_A = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length === 1 && !FILMS_IN_LIST_B_BOOLEAN_FALSE.includes(c.orderedFilms[0].id)) {
+        return true
+    } else {
+        return false
+    }
+})
+
+const STRAPIDATA_CASSETTES = STRAPIDATA_CASSETTES_A.concat(STRAPIDATA_CASSETTES_B)
 
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].domain);
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].festival);
