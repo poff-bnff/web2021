@@ -210,8 +210,8 @@ const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
 const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
     if (c.orderedFilms && c.orderedFilms.length > 1) {
         c.orderedFilms.map(f => {
-            if (!f.multi_and_single) {
-                FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.id)
+            if (!f.film.multi_and_single) {
+                FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.film.id)
             }
         })
         return true
@@ -219,7 +219,7 @@ const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
 })
 
 const STRAPIDATA_CASSETTES_A = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
-    if (c.orderedFilms && c.orderedFilms.length === 1 && !FILMS_IN_LIST_B_BOOLEAN_FALSE.includes(c.orderedFilms[0].id)) {
+    if (c.orderedFilms && c.orderedFilms.length === 1 && !FILMS_IN_LIST_B_BOOLEAN_FALSE.includes(c.orderedFilms[0].film.id)) {
         return true
     } else {
         return false
