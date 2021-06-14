@@ -32,9 +32,31 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
+
+      const createCassetteResult = await strapi.query('cassette').create({
+        created_by: result.created_by,
+        updated_by: result.updated_by,
+        title_et: result.title_et,
+        title_en: result.title_en,
+        title_ru: result.title_ru,
+        synopsis: result.synopsis,
+        media: result.media,
+        festival_editions: result.festival_editions,
+        tags: result.tags,
+        presenters: result.presentedBy ? result.presentedBy.organisations : [],
+        orderedFilms: [{order: 1, film: result.id}],
+        remoteId: result.remoteId,
+      })
+
+      // console.log(result.presentedBy);
+
+      // console.log(createCassetteResult);
+
+      // console.log({data});
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
+
       const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
       const prefixes = {
@@ -57,6 +79,7 @@ module.exports = {
     },
     async afterUpdate(result, params, data) {
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+
       console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
