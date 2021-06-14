@@ -991,6 +991,7 @@ Film: &Film
         - *OrderedCountries
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
+    multi_and_single: (boolean)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
