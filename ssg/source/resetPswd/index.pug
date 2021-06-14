@@ -7,7 +7,7 @@ block content
         h4 Sinu PÖFF-i konto parooli uuendamine
 
 
-    section.grid_resetPswd
+    section.grid_resetPswd#grid_resetPswd
             div.form-group
                 label.login_label(for='psw')= self.label.userprofile.password
                 input.login_input#psw.form-control(type='password', placeholder=`${self.label.userprofile.password}` name='psw' autocomplete="off" oninput="validatePsw('psw'); validatePswRep('psw', 'psw2')" )
@@ -17,3 +17,6 @@ block content
                 input.login_input#psw2.form-control(type='password', placeholder=`${self.label.userprofile.passwordRepeat}`  name='psw2' autocomplete="off" oninput="validatePswRep('psw', 'psw2')")
                 div#psw2Help(class='valid')= self.label.userprofile.password2Help
             button(onclick='resetPswd()') Reset password
+            
+    button.btn.btn_primary.p_1#backToLoginBtn(style={display: 'none'} onclick='redirectTo("login")')= self.label.userprofile.signinBtn
+

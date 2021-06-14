@@ -1,4 +1,4 @@
-const resetPswd = () => {
+const resetPswd = async () => {
 
     const qs = window.location.search;
     const urlParams = new URLSearchParams(qs)
@@ -21,6 +21,11 @@ const resetPswd = () => {
         redirect: 'follow'
     }
 
-    console.log(requestOptions);
-    fetch(`${strapiDomain}/auth/reset-password`, requestOptions)
+    let response = await fetch(`${strapiDomain}/auth/reset-password`, requestOptions)
+    response = await response.json()
+
+    if (response.jwt) {
+        grid_resetPswd.style.display = 'none'
+        backToLoginBtn.style.display = ''
+    }
 }
