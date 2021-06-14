@@ -207,13 +207,3 @@ function logOut() {
 
     // window.open(location.origin, '_self')
 }
-
-
-
-// Helpers
-
-const setLang = () => {
-    let lang = window.location.pathname.split('/')[1]
-    if (['login', 'signUp'].includes(lang)) lang = 'et'
-    localStorage.setItem('lang', lang)
-}
