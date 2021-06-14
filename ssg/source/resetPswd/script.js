@@ -24,7 +24,7 @@ const resetPswd = async () => {
     let response = await fetch(`${strapiDomain}/auth/reset-password`, requestOptions)
     response = await response.json()
 
-    if (response.jwt) {
+    if (response.resetSuccess) {
         grid_resetPswd.style.display = 'none'
         backToLoginBtn.style.display = ''
     }

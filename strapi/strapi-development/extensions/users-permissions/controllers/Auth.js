@@ -221,12 +221,13 @@ module.exports = {
         .update({ id: user.id }, { resetPasswordToken: null, password });
 
       ctx.send({
-        jwt: strapi.plugins['users-permissions'].services.jwt.issue({
-          id: user.id,
-        }),
-        user: sanitizeEntity(user.toJSON ? user.toJSON() : user, {
-          model: strapi.query('user', 'users-permissions').model,
-        }),
+        // jwt: strapi.plugins['users-permissions'].services.jwt.issue({
+        //   id: user.id,
+        // }),
+        // user: sanitizeEntity(user.toJSON ? user.toJSON() : user, {
+        //   model: strapi.query('user', 'users-permissions').model,
+        // }),
+        resetSuccess: true 
       });
     } else if (
       params.password &&
