@@ -146,7 +146,7 @@ module.exports = {
     }
       
     const { email, username, role, ...rest } = ctx.request.body;
-    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, ...profile} = rest
+    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, createdAt, ...profile} = rest
 
     if (!email) return ctx.badRequest('missing.email');
     if (!username) return ctx.badRequest('missing.username');
@@ -204,6 +204,14 @@ module.exports = {
       return externalProvider
     })}
 
+    const importedToStrapi = {
+      importedUser: true,
+      timeStamp: new Date().toISOString(),
+      importedFrom: createdAt,
+      createdAt: createdAt,
+      UUID: awsUUID
+    }
+
     const user = {
       username: username,
       email: email,
@@ -212,7 +220,7 @@ module.exports = {
       confirmed: confirmed,
       externalProviders: externalProviders,
       account_created: account_created,
-      awsUUID: awsUUID
+      importedToStrapi: importedToStrapi
     };
 
     user.email = user.email.toLowerCase();
