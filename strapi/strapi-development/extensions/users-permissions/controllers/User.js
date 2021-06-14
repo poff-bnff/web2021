@@ -146,7 +146,7 @@ module.exports = {
     }
       
     const { email, username, role, ...rest } = ctx.request.body;
-    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, createdAt, ...profile} = rest
+    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, createdAt, ...personAsProfile} = rest
 
     if (!email) return ctx.badRequest('missing.email');
     if (!username) return ctx.badRequest('missing.username');
@@ -220,7 +220,8 @@ module.exports = {
       confirmed: confirmed,
       externalProviders: externalProviders,
       account_created: account_created,
-      importedToStrapi: importedToStrapi
+      importedToStrapi: importedToStrapi,
+      personAsProfile: personAsProfile
     };
 
     user.email = user.email.toLowerCase();
@@ -236,10 +237,6 @@ module.exports = {
 
     try {
       const data = await strapi.plugins['users-permissions'].services.user.add(user);
-      if (data){
-        profile.users_permissions_user = data.id
-        await strapi.query('person-test2').create(profile)
-      }
       ctx.created(sanitizeUser(data));
     } catch (error) {
       ctx.badRequest(null, formatError(error));
