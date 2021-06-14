@@ -85,7 +85,6 @@ const collectFormData = () => {
         password: psw.value,
         personAsProfile: personAsProfile
     }
-    console.log(newUser);
     return newUser
 }
 
