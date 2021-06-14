@@ -68,17 +68,22 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'auto' });
 
 //Helpers
 const collectFormData = () => {
-    let newUser = {
-        // picture: profile_pic_to_send,
-        username: email.value,
-        email: email.value,
-        password: psw.value,
+
+    const personAsProfile = {
         firstName: firstName.value,
         lastName: lastName.value,
         gender: gender.value,
         birthdate: dob.value,
         phoneNr: phoneNr.value,
-        address: `${countrySelection.value}, ${citySelection.value}`
+        address: `${countrySelection.value}, ${citySelection.value}`,
+    }
+
+    const newUser = {
+        // picture: profile_pic_to_send,
+        username: email.value,
+        email: email.value,
+        password: psw.value,
+        personAsProfile: personAsProfile
     }
     console.log(newUser);
     return newUser
