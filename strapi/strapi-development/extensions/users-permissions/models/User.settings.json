@@ -80,8 +80,10 @@
     "account_created": {
       "type": "datetime"
     },
-    "awsUUID": {
-      "type": "string"
+    "importedToStrapi": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.imported-to-strapi"
     }
   }
 }
