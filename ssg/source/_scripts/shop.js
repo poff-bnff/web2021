@@ -4,8 +4,15 @@
 function BuyProduct(categoryId) {
 
     var feedback = document.getElementById("feedback")
-    if (paymentType === "valimata") {
-        feedback.innerHTML = "Palun vali makseviis"
+    if (paymentType === "valimata" || termsCheckbox.checked === false) {
+        feedback.innerHTML = ''
+        if(paymentType === "valimata") {
+            feedback.innerHTML = "<li>Palun vali makseviis</li>"
+        }
+        if(termsCheckbox.checked === false) {
+            const termsText = `<li>Ostu sooritamiseks pead nõustuma ostutingimustega</li>`
+            feedback.innerHTML = feedback.innerHTML + termsText
+        }
     } else {
         // console.log("ostad passi kategoorias " + categoryId)
         saveUrl()
@@ -110,7 +117,8 @@ function GetPaymentLinks() {
             bankInfo += button
         }
         links.innerHTML = bankInfo
-        paybutton.style.display = "block"
+        paybutton.style.display = "inline-block"
+        termsContainer.style.display = "block"
 
     }).catch(function (error) {
         console.warn(error);
