@@ -268,17 +268,6 @@ async function calcQueueEstDur() {
         }
     })
 
-    const duration = moment.duration(estimateInMs)
-
-    console.log('Estimate in ms: ', estimateInMs);
-
-    if (duration._isValid && estimateInMs > 0) {
-        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
-        if (noEstimate > 0) {
-            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
-        }
-    }
-
     let ongoingBuildLastedInMs = 0
     if (queueFile.length > 1) {
         const ongoingBuild = await logQuery(queueFile[0].log_id, 'GET')
@@ -286,15 +275,24 @@ async function calcQueueEstDur() {
 
         if (ongoingBuildStartTime) {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
-            console.log('Current running build has lasted ', ongoingBuildLastedInMs, 'ms');
-
+            console.log('Current running build of ', ongoingBuild.site, ongoingBuild.build_args,' has lasted ', ongoingBuildLastedInMs, 'ms');
         }
     }
 
-    console.log('estimateInMs-ongoingBuildLastedInMs = ', estimateInMs-ongoingBuildLastedInMs);
+
+    const estimateQueueBuildTime = Math.round(estimateInMs-ongoingBuildLastedInMs)
+
+    const duration = moment.duration(estimateQueueBuildTime)
+
+    if (duration._isValid && estimateInMs > 0) {
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.hours(), `h`, duration.minutes(), `m`, duration.seconds(), `s (total: `, estimateQueueBuildTime, `ms)`);
+        if (noEstimate > 0) {
+            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
+        }
+    }
 
     return {
-        duration: Math.round(estimateInMs-ongoingBuildLastedInMs),
+        duration: estimateQueueBuildTime,
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
