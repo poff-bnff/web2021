@@ -269,6 +269,9 @@ async function calcQueueEstDur() {
     })
 
     const duration = moment.duration(estimateInMs)
+
+    console.log('Estimate in ms: ', estimateInMs);
+
     if (duration._isValid && estimateInMs > 0) {
         console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
         if (noEstimate > 0) {
@@ -283,8 +286,12 @@ async function calcQueueEstDur() {
 
         if (ongoingBuildStartTime) {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
+            console.log('Current running build has lasted ', ongoingBuildLastedInMs, 'ms');
+
         }
     }
+
+    console.log('estimateInMs-ongoingBuildLastedInMs = ', estimateInMs-ongoingBuildLastedInMs);
 
     return {
         duration: Math.round(estimateInMs-ongoingBuildLastedInMs),
