@@ -379,5 +379,10 @@ mixin euro(number)
 mixin bigMoney(number)
     | #{number.toFixed(0)} €
 
-
-
+mixin cookieBar()
+    .alert.text-center.cookiealert(role='alert')
+        b Do you like cookies?
+        | &#x1F36A; We use cookies to ensure you get the best experience on our website. &nbsp;
+        a(href='https://cookiesandyou.com/' target='_blank') Learn more
+        button.btn.btn-primary.btn-sm.acceptcookies(type='button')
+            | I agree
