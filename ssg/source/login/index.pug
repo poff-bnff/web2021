@@ -38,7 +38,7 @@ block content
 
                 button.login_btn_primary#loginBtn(onclick='loginViaProvider("local")')= self.label.userprofile.signIn
 
-                button.login_btn_secondary#forgotPasswordBtn(onclick='doResetPassword()')= self.label.userprofile.resetPassword
+                button.login_btn_secondary#forgotPasswordBtn(onclick='doResetPassword("user")')= self.label.userprofile.resetPassword
 
                 button.login_btn_secondary#sendPswdResetCodeBtn(style={display: 'none'} onclick='doSendResetCode()')= self.label.userprofile.sendResetCodeButton
 
@@ -50,6 +50,7 @@ block content
                 p#emailUsed(style={display:'none'})
                 p#unfilledErrorMsg(style={display:'none'})= self.label.userprofile.unfilledPasswordOfEmailHelp
                 p#pswdResetMessage(style={display:'none'})= self.label.userprofile.pswdResetHelp
+                p#adminPswdResetMessage(style={display:'none'})= self.label.userprofile.adminPswdResetMessage
                 p#pswdResetCodeSent(style={display:'none'})= self.label.userprofile.pswdResetCodeSent
 
                 p#pswdResetCompletedMessage(style={display:'none'})= self.label.userprofile.pswdResetCompleteHelp

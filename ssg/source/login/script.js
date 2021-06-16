@@ -132,7 +132,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        const strapiError = response.data[0].messages?.[0].id || response?.data.message || response.message
+        const strapiError = response?.message || response.data[0].messages?.[0].id || response?.data.message
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
@@ -149,6 +149,9 @@ const handleResponse = response => {
             case ('No authorization header was found'):
                 document.getElementById('authorizeRequestFailed').style.display = ''
                 break;
+            case ('pswdResetRequired'):
+                doResetPassword('server')
+                break;    
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
@@ -223,7 +226,7 @@ const clearMe = elem => elem.innerText = ''
 
 const closeMe = elem => elem.style.display = 'none'
 
-function doResetPassword() {
+function doResetPassword(source) {
     forgotPasswordBtn.style.display = 'none'
     document.getElementById('loginMessage').style.display = 'none'
     document.getElementById('password').style.display = 'none'
@@ -231,8 +234,14 @@ function doResetPassword() {
     document.getElementById('login_register').style.display = 'none'
     document.getElementById('loginBtn').style.display = 'none'
     document.getElementById('signUpBtn').style.display = 'none'
+    sendPswdResetCodeBtn.style.display = ''
+    document.getElementById('loginUsername').value = loginUsername.value
+    if (source === 'user'){
     document.getElementById('pswdResetMessage').style.display = ''
-    sendPswdResetCodeBtn.style.display = ''    
+    }
+    else if (source === 'server'){
+    document.getElementById('adminPswdResetMessage').style.display = ''
+    }
 }
 
 function doSaveNewPswd() {
@@ -269,6 +278,7 @@ async function sendResetCode() {
     }
 
     document.getElementById('pswdResetMessage').style.display = 'none'
+    document.getElementById('adminPswdResetMessage').style.display = 'none'
     document.getElementById('forgotPasswordBtn').style.display = 'none'
     document.getElementById('pswdResetCodeSent').style.display = ''
     document.getElementById('backToLoginBtn').style.display = ''
