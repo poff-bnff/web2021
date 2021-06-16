@@ -62,7 +62,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
         type: 'success',
         message: notifyMessage,
         // blockTransition: true
-        timeout: 15000
+        timeout: 60000
       });
     }
   }

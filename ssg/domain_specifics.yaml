@@ -18,8 +18,9 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     poff.ee:
         - 7
+        - 8
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
@@ -41,7 +42,7 @@ programmes_festival_editions:
     poff.ee:
         - 7
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
