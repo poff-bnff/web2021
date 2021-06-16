@@ -69,13 +69,13 @@ module.exports = {
       // Set the identifier to the appropriate query field.
       if (isEmail) {
         query.email = params.identifier.toLowerCase();
+        delete query.provider
       } else {
         query.username = params.identifier;
       }
 
       // Check if the user exists.
       const user = await strapi.query('user', 'users-permissions').findOne(query);
-
       if (!user) {
         return ctx.badRequest(
           null,
@@ -110,7 +110,7 @@ module.exports = {
       }
 
       // The user never authenticated with the `local` provider.
-      if (!user.password) {
+      if (!user.password && !user.provider.includes('local')) {
         return ctx.badRequest(
           null,
           formatError({
@@ -119,6 +119,16 @@ module.exports = {
               'This user never set a local password, please login with the provider used during account creation.',
           })
         );
+      }
+
+      const enabledProviders = user.provider.split(',')
+      // The user has, but never authenticated with the `local` provider at Strapi (user imported, password reset required).
+      if (!user.password && enabledProviders.includes('local') && user.confirmed) {
+        console.log(123);
+        ctx.send({
+          message: 'pswdResetRequired'
+        })
+        return
       }
 
       const validPassword = await strapi.plugins[
@@ -227,7 +237,7 @@ module.exports = {
         // user: sanitizeEntity(user.toJSON ? user.toJSON() : user, {
         //   model: strapi.query('user', 'users-permissions').model,
         // }),
-        resetSuccess: true 
+        resetSuccess: true
       });
     } else if (
       params.password &&
@@ -286,7 +296,7 @@ module.exports = {
 
   async forgotPassword(ctx) {
     let { email } = JSON.parse(ctx.request.body);
-    const { lang } = JSON.parse(ctx.request.body) 
+    const { lang } = JSON.parse(ctx.request.body)
 
     if (!['et', 'en', 'ru'].includes(lang)) {
       return ctx.badRequest(null, `Language '${lang}' does not exist on this site.`);
@@ -349,7 +359,7 @@ module.exports = {
     const resetURL = new URL(`${advanced.email_reset_password}?code=${resetPasswordToken}`)
     let resetLink = resetURL.href
 
-    if (['en', 'ru'].includes(lang)){
+    if (['en', 'ru'].includes(lang)) {
       resetLink = resetURL.origin.concat('/', lang, resetURL.pathname, resetURL.search)
     }
 
@@ -378,11 +388,11 @@ module.exports = {
       await strapi.plugins['email'].services.email.send({
         to: user.email,
         template_name: `reset-password-${lang}`,
-      template_vars: [
-        { name: 'email', content: user.email },
-        { name: 'resetURL', content: resetLink },
-        // { name: 'enabledProviders', content: enabledProviders }
-      ]
+        template_vars: [
+          { name: 'email', content: user.email },
+          { name: 'resetURL', content: resetLink },
+          // { name: 'enabledProviders', content: enabledProviders }
+        ]
         // from:
         //   settings.from.email || settings.from.name
         //     ? `${settings.from.name} <${settings.from.email}>`
