@@ -173,7 +173,6 @@ function processData(data, lang, CreateYAML) {
                 for (filmIx in screening.cassette.orderedFilms) {
                     let oneFilm = screening.cassette.orderedFilms[filmIx].film
                     data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
-                    console.log(data[screeningIx].cassette.orderedFilms[filmIx].film.title_et);
                 }
 
                 images(screening)
