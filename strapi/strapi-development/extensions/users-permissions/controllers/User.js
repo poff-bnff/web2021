@@ -184,7 +184,6 @@ module.exports = {
         );
       }
     }
-
     let externalProviders
     if (!identities){
       externalProviders = [{

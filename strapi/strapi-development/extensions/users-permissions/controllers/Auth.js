@@ -124,7 +124,6 @@ module.exports = {
       const enabledProviders = user.provider.split(',')
       // The user has, but never authenticated with the `local` provider at Strapi (user imported, password reset required).
       if (!user.password && enabledProviders.includes('local') && user.confirmed) {
-        console.log(123);
         ctx.send({
           message: 'pswdResetRequired'
         })
@@ -198,9 +197,6 @@ module.exports = {
 
   async resetPassword(ctx) {
     const params = _.assign({}, ctx.request.body, ctx.params);
-
-    console.log(params);
-
     if (
       params.password &&
       params.passwordConfirmation &&
@@ -354,8 +350,6 @@ module.exports = {
       key: 'advanced',
     });
 
-    console.log(advanced);
-
     const resetURL = new URL(`${advanced.email_reset_password}?code=${resetPasswordToken}`)
     let resetLink = resetURL.href
 
@@ -403,7 +397,6 @@ module.exports = {
         // html: settings.message,
       });
     } catch (err) {
-      console.log(err);
       return ctx.badRequest(null, err);
     }
 
