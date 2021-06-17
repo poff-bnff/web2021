@@ -195,10 +195,7 @@ const getAccessTokenWithProvider = () => {
 
 const getCurrentLang = () => {
     let lang = localStorage.getItem('lang')
-    if (lang) {
-        lang = `${lang}/`
-    }
-    console.log(lang);
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
     return lang
 }
 
