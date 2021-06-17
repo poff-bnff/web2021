@@ -8,10 +8,10 @@ module.exports = {
     lifecycles: {
         beforeCreate(data) {
             data.profileFilled = profileFilled(data)
+            data.account_created ? null : data.account_created = new Date().toISOString()
         },
         afterCreate(result, data) {
-            console.log(data);
-            createPersonAsProfile(result.id, data.personAsProfile)
+            data.profileFilled && createPersonAsProfile(result.id, data.personAsProfile)
         },
         beforeDelete(params) {
             delete params.user
@@ -28,7 +28,6 @@ const profileFilled = data => {
 }
 
 const createPersonAsProfile = (userId, personAsProfile) => {
-    console.log(personAsProfile);
     personAsProfile.users_permissions_user = userId
 
     strapi.query('person-test2').create(personAsProfile)
