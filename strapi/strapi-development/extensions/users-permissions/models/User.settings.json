@@ -74,8 +74,8 @@
       "max": 10
     },
     "person_test_2": {
-      "model": "person-test2",
-      "via": "users_permissions_user"
+      "via": "users_permissions_user",
+      "model": "person-test2"
     },
     "account_created": {
       "type": "datetime"

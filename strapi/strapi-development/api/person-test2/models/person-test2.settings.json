@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "person_test2s",
   "info": {
-    "name": "personTest2"
+    "name": "personTest2",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,9 +12,9 @@
   },
   "attributes": {
     "users_permissions_user": {
-      "via": "person_test_2",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "person_test_2"
     },
     "firstName": {
       "type": "string",
@@ -43,7 +44,12 @@
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
+    },
+    "email": {
+      "type": "email",
+      "required": true
     }
   }
 }

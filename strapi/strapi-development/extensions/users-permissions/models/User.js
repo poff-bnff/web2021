@@ -11,7 +11,7 @@ module.exports = {
             data.account_created ? null : data.account_created = new Date().toISOString()
         },
         afterCreate(result, data) {
-            data.profileFilled && createPersonAsProfile(result.id, data.personAsProfile)
+            data.profileFilled && createPersonAsProfile(result.id, data.personAsProfile, result.email)
         },
         beforeDelete(params) {
             delete params.user
@@ -28,8 +28,9 @@ const profileFilled = data => {
     return profileFilled
 }
 
-const createPersonAsProfile = (userId, personAsProfile) => {
+const createPersonAsProfile = (userId, personAsProfile, email) => {
     personAsProfile.users_permissions_user = userId
+    personAsProfile.email = email
 
     strapi.query('person-test2').create(personAsProfile)
 }
