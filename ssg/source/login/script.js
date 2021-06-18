@@ -132,8 +132,7 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        let strapiError = response?.message || response.data[0].messages?.[0].id || response?.data.message
-
+        let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message 
         typeof strapiError !== 'string' ? strapiError = response.error : null 
 
         switch (strapiError) {
