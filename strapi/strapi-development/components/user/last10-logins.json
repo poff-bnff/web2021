@@ -13,6 +13,7 @@
     "provider": {
       "type": "enumeration",
       "enum": [
+        "local",
         "eventival",
         "facebook",
         "google"
