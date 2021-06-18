@@ -503,6 +503,7 @@ module.exports = {
 
     params.role = role.id;
     params.password = await strapi.plugins['users-permissions'].services.user.hashPassword(params);
+    params.externalProviders = [{provider: 'local', UUID: 'not set yet', dateConnected: new Date().toISOString()}]
 
     const user = await strapi.query('user', 'users-permissions').findOne({
       email: params.email,
