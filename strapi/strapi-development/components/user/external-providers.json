@@ -10,9 +10,9 @@
     "provider": {
       "type": "enumeration",
       "enum": [
-        "eventival",
-        "facebook",
-        "google",
+        "Eventival",
+        "Facebook",
+        "Google",
         "local"
       ]
     },
