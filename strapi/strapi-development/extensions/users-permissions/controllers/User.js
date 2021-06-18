@@ -196,12 +196,22 @@ module.exports = {
       if (!identity){
       }
       const externalProvider = {
-        provider: identity.providerName.toLowerCase(),
+        provider: identity.providerName,
         UUID: identity.userId,
         dateConnected: identity.dateCreated
       }
       return externalProvider
     })}
+
+    const providers = provider.split(',')
+    if (providers.includes('local') && providers.length > 1) {
+      const externalProvider = {
+        provider: 'local',
+        UUID: awsUUID,
+        dateConnected: account_created
+      }
+      externalProviders.unshift(externalProvider)
+    }
 
     const importedToStrapi = {
       importedUser: true,
