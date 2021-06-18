@@ -20,8 +20,9 @@ module.exports = {
 }
 
 const profileFilled = data => {
+    const { personAsProfile } = data
     let profileFilled = false
-    if (data.firstName && data.lastName && data.gender && data.birthdate && data.phoneNr && data.address)
+    if (personAsProfile.firstName && personAsProfile.lastName && personAsProfile.gender && personAsProfile.birthdate && personAsProfile.phoneNr && personAsProfile.address)
         profileFilled = true
 
     return profileFilled
