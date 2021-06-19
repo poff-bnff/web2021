@@ -125,12 +125,13 @@ module.exports = {
       return ctx.badRequest(null, [{ messages: [{ id: 'No authorization header was found' }] }]);
     }
 
-    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({id: user.id});
+    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
 
     ctx.body = sanitizeUser(fetchedUser);
   },
 
   async import(ctx) {
+    const users = JSON.parse(ctx.request.body.users);
 
     const advanced = await strapi
       .store({
@@ -140,117 +141,120 @@ module.exports = {
         key: 'advanced',
       })
       .get();
+let counter = 0
+    for (let importedUser of users) {
+      counter++
+      if (importedUser.identities === '') {
+        importedUser.identities = undefined
+      }
 
-    if (ctx.request.body.identities === ''){
-      ctx.request.body.identities = undefined
-    }
-      
-    const { email, username, role, ...rest } = ctx.request.body;
-    const {awsUUID, blocked, provider, confirmed, identities = false, account_created, createdAt, ...personAsProfile} = rest
+      const { email, username, role, ...rest } = importedUser;
+      const { awsUUID, blocked, provider, confirmed, identities = false, account_created, createdAt, ...personAsProfile } = rest
 
-    if (!email) return ctx.badRequest('missing.email');
-    if (!username) return ctx.badRequest('missing.username');
-  //   if (!password) return ctx.badRequest('missing.password');
+      if (!email) return ctx.badRequest('missing.email');
+      if (!username) return ctx.badRequest('missing.username');
+      //   if (!password) return ctx.badRequest('missing.password');
 
-    const userWithSameUsername = await strapi
-      .query('user', 'users-permissions')
-      .findOne({ username });
-
-    if (userWithSameUsername) {
-      return ctx.badRequest(
-        null,
-        formatError({
-          id: 'Auth.form.error.username.taken',
-          message: 'Username already taken.',
-          field: ['username'],
-        })
-      );
-    }
-
-    if (advanced.unique_email) {
-      const userWithSameEmail = await strapi
+      const userWithSameUsername = await strapi
         .query('user', 'users-permissions')
-        .findOne({ email: email.toLowerCase() });
+        .findOne({ username });
 
-      if (userWithSameEmail) {
+      if (userWithSameUsername) {
         return ctx.badRequest(
           null,
-
           formatError({
-            id: 'Auth.form.error.email.taken',
-            message: 'Email already taken.',
-            field: ['email'],
+            id: 'Auth.form.error.username.taken',
+            message: 'Username already taken.',
+            field: ['username'],
           })
         );
       }
-    }
-    let externalProviders
-    if (!identities){
-      externalProviders = [{
-        provider: 'local',
-        UUID: awsUUID,
-        dateConnected: account_created
-      }]
-    } else {
-    externalProviders = JSON.parse(identities).map(identity => {
-      if (!identity){
+
+      if (advanced.unique_email) {
+        const userWithSameEmail = await strapi
+          .query('user', 'users-permissions')
+          .findOne({ email: email.toLowerCase() });
+
+        if (userWithSameEmail) {
+          return ctx.badRequest(
+            null,
+
+            formatError({
+              id: 'Auth.form.error.email.taken',
+              message: 'Email already taken.',
+              field: ['email'],
+            })
+          );
+        }
       }
-      const externalProvider = {
-        provider: identity.providerName,
-        UUID: identity.userId,
-        dateConnected: identity.dateCreated
+      let externalProviders
+      if (!identities) {
+        externalProviders = [{
+          provider: 'local',
+          UUID: awsUUID,
+          dateConnected: account_created
+        }]
+      } else {
+        externalProviders = JSON.parse(identities).map(identity => {
+          if (!identity) {
+          }
+          const externalProvider = {
+            provider: identity.providerName,
+            UUID: identity.userId,
+            dateConnected: identity.dateCreated
+          }
+          return externalProvider
+        })
       }
-      return externalProvider
-    })}
 
-    const providers = provider.split(',')
-    if (providers.includes('local') && providers.length > 1) {
-      const externalProvider = {
-        provider: 'local',
-        UUID: awsUUID,
-        dateConnected: account_created
+      const providers = provider.split(',')
+      if (providers.includes('local') && providers.length > 1) {
+        const externalProvider = {
+          provider: 'local',
+          UUID: awsUUID,
+          dateConnected: account_created
+        }
+        externalProviders.unshift(externalProvider)
       }
-      externalProviders.unshift(externalProvider)
+
+      const importedToStrapi = {
+        importedUser: true,
+        timeStamp: new Date().toISOString(),
+        importedFrom: createdAt,
+        createdAt: createdAt,
+        UUID: awsUUID
+      }
+
+      const user = {
+        username: username,
+        email: email,
+        provider: provider,
+        blocked: blocked,
+        confirmed: confirmed,
+        externalProviders: externalProviders,
+        account_created: account_created,
+        importedToStrapi: importedToStrapi,
+        personAsProfile: personAsProfile
+      };
+
+      user.email = user.email.toLowerCase();
+      user.provider = user.provider.toLowerCase();
+
+      if (!role) {
+        const defaultRole = await strapi
+          .query('role', 'users-permissions')
+          .findOne({ type: advanced.default_role }, []);
+
+        user.role = defaultRole.id;
+      }
+
+      try {
+        const data = await strapi.plugins['users-permissions'].services.user.add(user);
+      } catch (error) {
+        console.log(error)
+      }
     }
-
-    const importedToStrapi = {
-      importedUser: true,
-      timeStamp: new Date().toISOString(),
-      importedFrom: createdAt,
-      createdAt: createdAt,
-      UUID: awsUUID
-    }
-
-    const user = {
-      username: username,
-      email: email,
-      provider: provider,
-      blocked: blocked,
-      confirmed: confirmed,
-      externalProviders: externalProviders,
-      account_created: account_created,
-      importedToStrapi: importedToStrapi,
-      personAsProfile: personAsProfile
-    };
-
-    user.email = user.email.toLowerCase();
-    user.provider = user.provider.toLowerCase();
-
-    if (!role) {
-      const defaultRole = await strapi
-        .query('role', 'users-permissions')
-        .findOne({ type: advanced.default_role }, []);
-
-      user.role = defaultRole.id;
-    }
-
-    try {
-      const data = await strapi.plugins['users-permissions'].services.user.add(user);
-      ctx.created(sanitizeUser(data));
-    } catch (error) {
-      ctx.badRequest(null, formatError(error));
-    }
+    console.log(counter);
   }
 
-  
 };
