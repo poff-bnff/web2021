@@ -134,6 +134,10 @@ const fetchChangedSlug = async args => {
       return paths
     }
 
+    if (result.cassette) {
+      return [result.cassette.slug_et]
+    }
+
     return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug}`]
   } else {
     return [``]
