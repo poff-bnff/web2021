@@ -330,13 +330,6 @@ for (const lang of allLanguages) {
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
 
-
-        if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
-            continue
-        } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
-            console.log('Targeting cassette in screening', s_cassette.id, target_id)
-        }
-
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
@@ -362,7 +355,7 @@ for (const lang of allLanguages) {
 
         if (typeof slugEn !== 'undefined') {
 
-            if (param_build_type === 'target') {
+            if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
 
@@ -635,7 +628,12 @@ for (const lang of allLanguages) {
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+                    continue
+                } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
+                    console.log('Targeting cassette ', s_cassette.id, target_id)
+                    // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                }
                 generateYaml(s_cassette_copy, lang)
             } else {
                 cassettesWithOutSpecifiedScreeningType.push(s_cassette_copy.id)
