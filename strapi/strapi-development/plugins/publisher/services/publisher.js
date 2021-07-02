@@ -108,7 +108,7 @@ const fetchChangedSlug = async args => {
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
-  const slug = result.slug_et || result.slug_en || result.slug_ru
+  let slug = result.slug_et || result.slug_en || result.slug_ru
   const lang = result.slug_et ? 'et' : result.slug_en ? 'en' : result.slug_ru ? 'ru' : null
   const articleTypeSlugs = []
   const paths = []
@@ -134,8 +134,8 @@ const fetchChangedSlug = async args => {
       return paths
     }
 
-    if (result.cassette) {
-      return [result.cassette.slug_et]
+    if (collectionType === 'screening' && result.cassette) {
+      slug = result.cassette.slug_et || result.cassette.slug_en || result.cassette.slug_ru
     }
 
     return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug}`]
