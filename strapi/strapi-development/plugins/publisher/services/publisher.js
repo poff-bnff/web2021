@@ -49,6 +49,7 @@ const pathBeforeSlug = {
   'team': '/',
   'cassette': 'film/',
   'screening': 'film/',
+  'film': 'film/',
   'festival-pass': '/',
   'industry-person': '/',
   'industry-event': 'events/',
