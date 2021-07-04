@@ -10,7 +10,7 @@ const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
-let TOKEN = ''
+let TOKEN = null
 
 const production = true
 let https
@@ -348,7 +348,7 @@ function checkIfProcessAlreadyRunning() {
 }
 
 async function logQuery(id, type = 'GET', data) {
-    if (TOKEN === '') {
+    if (!TOKEN) {
         TOKEN = await strapiAuth()
     }
 
