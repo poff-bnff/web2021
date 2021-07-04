@@ -49,6 +49,7 @@ const pathBeforeSlug = {
   'team': '/',
   'cassette': 'film/',
   'screening': 'film/',
+  'film': 'film/',
   'festival-pass': '/',
   'industry-person': '/',
   'industry-event': 'events/',
@@ -107,7 +108,7 @@ const fetchChangedSlug = async args => {
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
-  const slug = result.slug_et || result.slug_en || result.slug_ru
+  let slug = result.slug_et || result.slug_en || result.slug_ru
   const lang = result.slug_et ? 'et' : result.slug_en ? 'en' : result.slug_ru ? 'ru' : null
   const articleTypeSlugs = []
   const paths = []
@@ -131,6 +132,10 @@ const fetchChangedSlug = async args => {
         paths.push(`${articleTypeSlug}/${slug}`)
       }
       return paths
+    }
+
+    if (collectionType === 'screening' && result.cassette) {
+      slug = result.cassette.slug_et || result.cassette.slug_en || result.cassette.slug_ru
     }
 
     return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug}`]

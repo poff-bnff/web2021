@@ -244,7 +244,7 @@ module.exports = {
     let sanitizedResult
     let tries = 0
 
-    while (!result.in_queue && tries < 100) {
+    while (!result.in_queue && tries < 500) {
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
       sanitizedResult = {

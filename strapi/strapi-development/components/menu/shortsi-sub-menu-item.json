@@ -2,7 +2,8 @@
   "collectionName": "components_menu_shortsi_sub_menu_items",
   "info": {
     "name": "ShortsiSubMenuItem",
-    "icon": "calendar-check"
+    "icon": "calendar-check",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -24,6 +25,10 @@
     },
     "namePrivate": {
       "type": "string"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
