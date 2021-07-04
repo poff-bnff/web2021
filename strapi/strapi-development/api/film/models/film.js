@@ -16,6 +16,18 @@ const {
   call_delete
 } = require(helper_path)
 
+const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
+  const getAllCassettes = await strapi.query('cassette').find({ _limit: -1 });
+  const allCassettesWithThisFilm = getAllCassettes.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length === 1 && c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return allCassettesWithThisFilm
+}
+
 /**
 const domains =
 For adding domain you have multiple choice. First for objects that has property 'domain'
@@ -33,26 +45,23 @@ module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
 
+      // Automatically create a cassette for a new film
       const createCassetteResult = await strapi.query('cassette').create({
+        skipbuild: true,
         created_by: result.created_by,
         updated_by: result.updated_by,
         title_et: result.title_et,
         title_en: result.title_en,
         title_ru: result.title_ru,
-        synopsis: result.synopsis,
-        media: result.media,
+        // synopsis: result.synopsis,
+        // media: result.media,
         festival_editions: result.festival_editions,
-        tags: result.tags,
-        presenters: result.presentedBy ? result.presentedBy.organisations : [],
-        orderedFilms: [{order: 1, film: result.id}],
-        remoteId: result.remoteId,
+        // tags: result.tags,
+        // presenters: result.presentedBy ? result.presentedBy.organisations : [],
+        orderedFilms: [{ order: 1, film: result.id }],
+        // remoteId: result.remoteId,
       })
 
-      // console.log(result.presentedBy);
-
-      // console.log(createCassetteResult);
-
-      // console.log({data});
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
@@ -80,24 +89,55 @@ module.exports = {
     async afterUpdate(result, params, data) {
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
-      console.log('Create or update: ')
-      if (data.skipbuild) return
+      const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
+
+      allCassettesWithThisFilmOnly.map(async a => {
+        if (data.skipbuild) return
+        console.log('Updating with film data - cassette ID ', a.id, a.title_en);
+
+        const updateCassetteResult = await strapi.query('cassette').update(
+          { id: a.id }, {
+          created_by: result.created_by,
+          updated_by: result.updated_by,
+          title_et: result.title_et,
+          title_en: result.title_en,
+          title_ru: result.title_ru,
+          festival_editions: result.festival_editions,
+        })
+
+        const cassetteDomains = await get_domain(updateCassetteResult) // hard coded if needed AS LIST!!!
+        console.log('... for domains', cassetteDomains.join(', '));
+
+        if (cassetteDomains.length > 0) {
+          await modify_stapi_data(updateCassetteResult, 'cassette')
+        }
+
+        // await call_build(updateCassetteResult, cassetteDomains, 'cassette')
+      })
+
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
-      await call_build(result, domains, model_name)
+
     },
-async beforeDelete(params) {
+    async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
-        }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
+        if (result) {
+          const updateDeleteUser = {
+            updated_by: params.user,
+            skipbuild: true
+          }
+          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+
+          const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(result.id)
+          allCassettesWithThisFilm.map(async c => {
+            console.log('Deleting cassette: ', c.id, c.title_en);
+            await strapi.query('cassette').delete({ id: c.id })
+          })
+
+          return id
         }
       }))
       delete params.user
