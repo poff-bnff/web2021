@@ -171,8 +171,6 @@ module.exports = {
     ctx.send(sanitizeUser(data));
   },
   async updateme(ctx) {
-
-    ctx.request.body = JSON.parse(ctx.request.body)
   
     const { id } = ctx.state.user;
     const { password } = ctx.request.body;
