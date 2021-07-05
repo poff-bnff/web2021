@@ -684,6 +684,7 @@ PoffiSubMenuItem: &PoffiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 POFFiMenu: &POFFiMenu
     _path: /pof-fi-menus
@@ -694,6 +695,7 @@ POFFiMenu: &POFFiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *PoffiSubMenuItem
+    publish: (boolean)
 
 JustFilmiSubMenuItem: &JustFilmiSubMenuItem
     name: *Translated #(Component)
@@ -701,6 +703,7 @@ JustFilmiSubMenuItem: &JustFilmiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 JustFilmiMenu: &JustFilmiMenu
     _path: /just-filmi-menus
@@ -711,6 +714,7 @@ JustFilmiMenu: &JustFilmiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *JustFilmiSubMenuItem
+    publish: (boolean)
 
 ShortsiSubMenuItem: &ShortsiSubMenuItem
     name: *Translated #(Component)
@@ -718,6 +722,7 @@ ShortsiSubMenuItem: &ShortsiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 ShortsiMenu: &ShortsiMenu
     _path: /shortsi-menus
@@ -728,6 +733,7 @@ ShortsiMenu: &ShortsiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *ShortsiSubMenuItem
+    publish: (boolean)
 
 KinoffiSubMenuItem: &KinoffiSubMenuItem
     name: *Translated #(Component)
@@ -735,6 +741,7 @@ KinoffiSubMenuItem: &KinoffiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 KinoffiMenu: &KinoffiMenu
     _path: /kinoffi-menus
@@ -745,6 +752,7 @@ KinoffiMenu: &KinoffiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *KinoffiSubMenuItem
+    publish: (boolean)
 
 HoffiSubMenuItem: &HoffiSubMenuItem
     name: *Translated #(Component)
@@ -752,6 +760,7 @@ HoffiSubMenuItem: &HoffiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 HOFFiMenu: &HOFFiMenu
     _path: /hof-fi-menus
@@ -762,6 +771,7 @@ HOFFiMenu: &HOFFiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *HoffiSubMenuItem
+    publish: (boolean)
 
 TartuffiSubMenuItem: &TartuffiSubMenuItem
     name: *Translated #(Component)
@@ -769,6 +779,7 @@ TartuffiSubMenuItem: &TartuffiSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 TartuffiMenu: &TartuffiMenu
     _path: /tartuffi-menus
@@ -779,6 +790,7 @@ TartuffiMenu: &TartuffiMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *TartuffiSubMenuItem
+    publish: (boolean)
 
 KumuSubMenuItem: &KumuSubMenuItem
     name: *Translated #(Component)
@@ -786,6 +798,7 @@ KumuSubMenuItem: &KumuSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 KumuMenu: &KumuMenu
     _path: /kumu-menus
@@ -796,6 +809,7 @@ KumuMenu: &KumuMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *KumuSubMenuItem
+    publish: (boolean)
 
 BrunoSubMenuItem: &BrunoSubMenuItem
     name: *Translated #(Component)
@@ -803,6 +817,7 @@ BrunoSubMenuItem: &BrunoSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 BrunoMenu: &BrunoMenu
     _path: /bruno-menus
@@ -813,6 +828,7 @@ BrunoMenu: &BrunoMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *BrunoSubMenuItem
+    publish: (boolean)
 
 FilmikooliSubMenuItem: &FilmikooliSubMenuItem
     name: *Translated #(Component)
@@ -820,6 +836,7 @@ FilmikooliSubMenuItem: &FilmikooliSubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 FilmikooliMenu: &FilmikooliMenu
     _path: /filmikooli-menus
@@ -830,6 +847,7 @@ FilmikooliMenu: &FilmikooliMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *FilmikooliSubMenuItem
+    publish: (boolean)
 
 # Person & Team
 Person: &Person
