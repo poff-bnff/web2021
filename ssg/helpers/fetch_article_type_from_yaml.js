@@ -170,7 +170,12 @@ for (const lang of languages) {
 
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
 
+                // If target build, delete old single article data
+                if (param_build_type === 'target') {
+                    fs.rmdir(element.directory, { recursive: true });
+                }
                 fs.mkdirSync(element.directory, { recursive: true });
+
                 for (key in element) {
 
                     if (key === "slug") {
