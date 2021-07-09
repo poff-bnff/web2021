@@ -30,6 +30,8 @@ const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
+console.log('fetch_article_type_from_yaml.js target_id', target_id);
+
 const minimodel = {
     'article_types': {
         model_name: 'ArticleType'
@@ -164,6 +166,8 @@ for (const lang of languages) {
         }
 
         if (element.article_types) {
+
+            console.log('Article lead', element.lead);
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
@@ -172,6 +176,7 @@ for (const lang of languages) {
 
                 // If target build, delete old single article data
                 if (param_build_type === 'target') {
+                    console.log('Deleting old target article data ', param_build_type, element.id);
                     fs.rmdirSync(element.directory, { recursive: true });
                 }
                 fs.mkdirSync(element.directory, { recursive: true });
