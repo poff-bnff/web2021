@@ -174,13 +174,6 @@ for (const lang of languages) {
 
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
 
-                // If target build, delete old single article data
-                if (param_build_type === 'target') {
-                    console.log('Deleting old target article data ', param_build_type, element.id);
-                    fs.rmdirSync(element.directory, { recursive: true });
-                }
-                fs.mkdirSync(element.directory, { recursive: true });
-
                 for (key in element) {
 
                     if (key === "slug") {
@@ -205,6 +198,12 @@ for (const lang of languages) {
 
                 if (DOMAIN === 'industry.poff.ee' && artTypeName.length > 1 ) {
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
+                }
+
+                // If target build, delete old single article data
+                if (param_build_type === 'target') {
+                    console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
+                    fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
                 }
 
                 let yamlStr = yaml.dump(element, { 'indent': '4' });
