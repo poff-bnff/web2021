@@ -201,7 +201,7 @@ for (const lang of languages) {
                 }
 
                 // If target build, delete old single article data
-                if (param_build_type === 'target') {
+                if (param_build_type === 'target' && fs.existsSync(`${element.directory}/data.${lang}.yaml`)) {
                     console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
                     fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
                 }
