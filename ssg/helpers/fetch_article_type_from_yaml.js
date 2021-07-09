@@ -167,7 +167,6 @@ for (const lang of languages) {
 
         if (element.article_types) {
 
-            console.log('Article lead', element.lead);
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
