@@ -20,6 +20,7 @@ cassettes_festival_editions:
         - 7
         - 8
         - 9
+        - 10
     justfilm.ee:
         - 8
     kinoff.poff.ee:
@@ -33,7 +34,7 @@ cassettes_festival_editions:
     kumu.poff.ee:
         - 6
     tartuff.ee:
-        - 0
+        - 10
     oyafond.ee:
         - 0
     filmikool.poff.ee:
