@@ -248,6 +248,8 @@ module.exports = {
       console.log('Started build log try number ', tries);
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
+      console.log('Started build log result', result);
+      console.log('... with params', params);
       sanitizedResult = {
         queued_time: result.queued_time,
         build_est_duration: result.build_est_duration,
