@@ -3,8 +3,6 @@ const strapiHost = 'https://admin.poff.ee'
 
 const getBuildEstimateDuration = async (buildArgs) => {
 
-  console.log('Build args', buildArgs);
-
   const noNotificationModels = [
     'person',
     'organisation',
@@ -37,10 +35,6 @@ const getBuildEstimateDuration = async (buildArgs) => {
       .catch(error => console.log('error', error));
 
     result = JSON.parse(result)
-
-    if (buildArgs.split(' ')[0] === 'film') {
-      buildArgs = `cassette ${buildArgs.split(' ')[1]}`
-    }
 
     if (buildArgs !== result.build_args) {
       // Not server build

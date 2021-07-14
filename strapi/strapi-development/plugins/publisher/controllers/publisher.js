@@ -244,17 +244,9 @@ module.exports = {
     let sanitizedResult
     let tries = 0
 
-    while (!result.in_queue && tries < 1000) {
-      if (tries < 500) {
-        tries++
-        continue
-      }
-      console.log('Started build log try number ', tries);
+    while (!result.in_queue && tries < 500) {
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
-      console.log('Started build log result', result);
-      console.log('... with params', params);
-      console.log('... with ctx', ctx);
       sanitizedResult = {
         queued_time: result.queued_time,
         build_est_duration: result.build_est_duration,
