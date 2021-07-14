@@ -3,6 +3,8 @@ const strapiHost = 'https://admin.poff.ee'
 
 const getBuildEstimateDuration = async (buildArgs) => {
 
+  console.log('Build args', buildArgs);
+
   const noNotificationModels = [
     'person',
     'organisation',
