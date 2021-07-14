@@ -38,7 +38,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
 
     result = JSON.parse(result)
 
-    if (buildArgs.split(' ')[0] !== 'film') {
+    if (buildArgs.split(' ')[0] === 'film') {
       buildArgs = `cassette ${buildArgs.split(' ')[1]}`
     }
 
