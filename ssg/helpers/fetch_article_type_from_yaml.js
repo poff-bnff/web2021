@@ -173,6 +173,8 @@ for (const lang of languages) {
 
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
 
+                fs.mkdirSync(element.directory, { recursive: true });
+
                 for (key in element) {
 
                     if (key === "slug") {
