@@ -245,6 +245,7 @@ module.exports = {
     let tries = 0
 
     while (!result.in_queue && tries < 500) {
+      console.log('Started build log try number ', tries);
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
       sanitizedResult = {
