@@ -246,6 +246,7 @@ module.exports = {
 
     while (!result.in_queue && tries < 500) {
       if (tries < 100) {
+        tries++
         continue
       }
       console.log('Started build log try number ', tries);
