@@ -246,7 +246,7 @@ module.exports = {
 
     while (!result.in_queue && tries < 500) {
       if (tries < 100) {
-        return
+        continue
       }
       console.log('Started build log try number ', tries);
       result = await strapi.query("build_logs", "publisher").findOne(params);
