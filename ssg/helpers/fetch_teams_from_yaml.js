@@ -54,7 +54,7 @@ for (const ix in languages) {
             let subTeam = element.subTeam[subTeamIx];
             for (const juryMemberIx in subTeam.juryMember) {
                 let juryMember = subTeam.juryMember[juryMemberIx];
-                let personFromYAML = STRAPIDATA_PERSONS.filter( (a) => { return juryMember.person.id === a.id });
+                let personFromYAML = STRAPIDATA_PERSONS.filter( (a) => { return juryMember?.person?.id === a.id });
                 juryMember.person = personFromYAML[0];
             }
         }

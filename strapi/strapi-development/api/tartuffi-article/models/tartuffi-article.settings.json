@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "tartuffi_articles",
   "info": {
-    "name": "Tartuffi_Article"
+    "name": "Tartuffi_Article",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "titlePrivate": {
@@ -20,7 +22,7 @@
     "slug_et": {
       "type": "uid",
       "targetField": "title_et",
-      "required": true
+      "required": false
     },
     "title_en": {
       "type": "string"
@@ -28,7 +30,7 @@
     "slug_en": {
       "type": "uid",
       "targetField": "title_en",
-      "required": true
+      "required": false
     },
     "title_ru": {
       "type": "string"
@@ -36,7 +38,7 @@
     "slug_ru": {
       "type": "uid",
       "targetField": "title_ru",
-      "required": true
+      "required": false
     },
     "lead_et": {
       "type": "richtext"

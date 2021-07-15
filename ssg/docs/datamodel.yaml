@@ -765,7 +765,7 @@ HOFFiMenu: &HOFFiMenu
 
 TartuffiSubMenuItem: &TartuffiSubMenuItem
     name: *Translated #(Component)
-    hoffi_article: *TartuffiArticle
+    tartuffi_article: *TartuffiArticle
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
@@ -774,7 +774,7 @@ TartuffiMenu: &TartuffiMenu
     _path: /tartuffi-menus
     #namePrivate: (text, private field)
     name: *Translated #(Component)
-    hoffi_article: *TartuffiArticle
+    tartuffi_article: *TartuffiArticle #(Component)
     customUrl: *Translated #(Component)
     order: (Number)
     subMenuItem: #(Component (repeatable))
