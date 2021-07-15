@@ -46,6 +46,7 @@ module.exports = {
     async afterCreate(result, data) {
 
       // Automatically create a cassette for a new film
+      console.log(result.tags);
       const createCassetteResult = await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
@@ -56,7 +57,12 @@ module.exports = {
         // synopsis: result.synopsis,
         // media: result.media,
         festival_editions: result.festival_editions,
-        // tags: result.tags,
+        tags: result.tags ? {
+          premiere_types: result?.tags?.premiere_types ? result.tags.premiere_types.map(a => a.id) : null,
+          genres: result?.tags?.genres ? result.tags.genres.map(a => a.id) : null,
+          keywords: result?.tags?.keywords ? result.tags.keywords.map(a => a.id) : null,
+          programmes: result?.tags?.programmes ? result.tags.programmes.map(a => a.id) : null
+        } : null,
         // presenters: result.presentedBy ? result.presentedBy.organisations : [],
         orderedFilms: [{ order: 1, film: result.id }],
         // remoteId: result.remoteId,
@@ -102,6 +108,12 @@ module.exports = {
           title_et: result.title_et,
           title_en: result.title_en,
           title_ru: result.title_ru,
+          tags: result.tags ? {
+            premiere_types: result?.tags?.premiere_types ? result.tags.premiere_types.map(a => a.id) : null,
+            genres: result?.tags?.genres ? result.tags.genres.map(a => a.id) : null,
+            keywords: result?.tags?.keywords ? result.tags.keywords.map(a => a.id) : null,
+            programmes: result?.tags?.programmes ? result.tags.programmes.map(a => a.id) : null
+          } : null,
           festival_editions: result.festival_editions,
         })
 
@@ -112,7 +124,6 @@ module.exports = {
           await modify_stapi_data(updateCassetteResult, 'cassette')
         }
 
-        // await call_build(updateCassetteResult, cassetteDomains, 'cassette')
       })
 
       if (domains.length > 0) {
