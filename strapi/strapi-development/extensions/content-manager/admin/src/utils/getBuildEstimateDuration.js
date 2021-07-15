@@ -43,6 +43,8 @@ const getBuildEstimateDuration = async (buildArgs) => {
       return null
     }
 
+    console.log('Estimate shown for log id', result.id);
+
     let s = result.queue_est_duration
     const ms = s % 1000;
     s = (s - ms) / 1000;
