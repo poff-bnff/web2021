@@ -36,7 +36,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
 
     result = JSON.parse(result)
 
-
+    // Skip if not server build, do not skip if saved collection type is film as then cassette build log estimate shall be shown
     if (buildArgs.split(' ')[0] !== 'film' && buildArgs !== result.build_args) {
       // Not server build
       console.log('Not server build ', buildArgs, result.build_args);
