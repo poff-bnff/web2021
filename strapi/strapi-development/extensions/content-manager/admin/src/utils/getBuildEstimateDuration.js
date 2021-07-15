@@ -36,7 +36,8 @@ const getBuildEstimateDuration = async (buildArgs) => {
 
     result = JSON.parse(result)
 
-    if (buildArgs !== result.build_args) {
+
+    if (buildArgs.split(' ')[0] !== 'film' && buildArgs !== result.build_args) {
       // Not server build
       console.log('Not server build ', buildArgs, result.build_args);
       return null
