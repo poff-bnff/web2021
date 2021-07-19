@@ -35,6 +35,7 @@ node "$FETCH_PATH"/fetch_programmes_from_yaml.js "$TARGET" "$ADDITIONAL_TARGET_I
 node "$FETCH_PATH"/fetch_screenings_from_yaml.js "$TARGET"
 
 node "$FETCH_PATH"/fetch_articles_from_yaml.js "$TARGET" "HOME"
+node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"

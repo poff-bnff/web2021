@@ -30,6 +30,8 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
+      // Skip if created along with a new film
+      if (data.skipbuild) { return }
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
