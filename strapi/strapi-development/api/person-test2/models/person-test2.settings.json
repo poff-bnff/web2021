@@ -26,9 +26,6 @@
     "gender": {
       "type": "string"
     },
-    "phoneNr": {
-      "type": "biginteger"
-    },
     "birthdate": {
       "type": "date"
     },
@@ -50,6 +47,9 @@
     "email": {
       "type": "email",
       "required": true
+    },
+    "phoneNr": {
+      "type": "string"
     }
   }
 }
