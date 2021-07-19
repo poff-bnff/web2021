@@ -11,7 +11,7 @@ module.exports = {
             data.account_created ? null : data.account_created = new Date().toISOString()
         },
         afterCreate(result, data) {
-            data.profileFilled && createPersonAsProfile(result.id, data.personAsProfile, result.email)
+            createPersonAsProfile(result.id, data.personAsProfile, result.email)
         },
         beforeDelete(params) {
             delete params.user
@@ -29,6 +29,7 @@ const profileFilled = data => {
 }
 
 const createPersonAsProfile = (userId, personAsProfile, email) => {
+    console.log(personAsProfile)	
     personAsProfile.users_permissions_user = userId
     personAsProfile.email = email
 
