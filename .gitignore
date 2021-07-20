@@ -19,6 +19,7 @@ backup/*
 
 ssg/node_modules
 ssg/.DS_Store
+ssg/helpers/sheets
 
 
 # sanity

@@ -113,6 +113,7 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
 
 const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+let sheetsM_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers', 'sheets', 'test.js')
 
 const {
     slugify,
@@ -122,6 +123,10 @@ const {
     modify_stapi_data,
     call_delete
 } = require(helper_path)
+
+const {
+    update_sheets
+} = require(sheetsM_path)
 
 /**
 const domains =
@@ -154,6 +159,13 @@ module.exports = {
                 await modify_stapi_data(result, model_name)
             }
             await call_build(result, domains, model_name)
+
+            let spreadsheet_id = '1_Rfw-VPmoUGUKmtjPd96m80qhNpsqJFHQNisk8orI2M'
+            let sheet_name =  'From_Strapi'
+
+
+            let test = await update_sheets(result, model_name, spreadsheet_id, sheet_name)
+            console.log(test)
         },
         async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
