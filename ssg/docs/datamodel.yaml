@@ -127,6 +127,12 @@ TagPremiereType: &TagPremiereType
     en: (text)
     ru: (text)
 
+TagFilmType: &TagFilmType
+    _path: /tag-film-types
+    et: (text)
+    en: (text)
+    ru: (text)
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -210,6 +216,8 @@ Tags: &Tags
       - *TagPremiereType
     programmes: #(Component (repeatable))
       - *Programme
+    film_types: #(Component (repeatable))
+      - *TagFilmType
 
 WebAuthor: &WebAuthor
     _path: /web-authors
@@ -286,6 +294,8 @@ POFFiArticle: &POFFiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -328,6 +338,8 @@ JustFilmiArticle: &JustFilmiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -370,6 +382,8 @@ ShortsiArticle: &ShortsiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -412,6 +426,8 @@ KinoffiArticle: &KinoffiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -454,6 +470,8 @@ HOFFiArticle: &HOFFiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -496,6 +514,8 @@ TartuffiArticle: &TartuffiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -538,6 +558,8 @@ KumuArticle: &KumuArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -580,6 +602,8 @@ BrunoArticle: &BrunoArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -622,6 +646,8 @@ FilmikooliArticle: &FilmikooliArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
