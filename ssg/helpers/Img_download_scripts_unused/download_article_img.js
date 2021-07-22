@@ -57,7 +57,7 @@ for (const lang of languages) {
     var articleData = ''
     try {
         const articleDataFile = path.join('source', '_fetchdir', `articles.${lang}.yaml`)
-        articleData = yaml.safeLoad(fs.readFileSync(articleDataFile, 'utf8'))
+        articleData = yaml.load(fs.readFileSync(articleDataFile, 'utf8'))
     } catch (e) {
         console.log(e)
     }

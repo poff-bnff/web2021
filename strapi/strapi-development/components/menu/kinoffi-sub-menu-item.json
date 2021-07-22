@@ -2,7 +2,8 @@
   "collectionName": "components_menu_kinoffi_sub_menu_items",
   "info": {
     "name": "KinoffiSubMenuItem",
-    "icon": "window-maximize"
+    "icon": "window-maximize",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -24,6 +25,10 @@
     },
     "namePrivate": {
       "type": "string"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

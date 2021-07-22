@@ -3,19 +3,32 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { exec } = require("child_process");
 const moment = require('moment-timezone')
-const https = require('https')
 const { strapiAuth } = require('./strapiAuth.js')
 
 const rootDir = path.join(__dirname, '..')
 const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
-const strapiAddress = process.env['StrapiHostPoff2021']
-let TOKEN = ''
+
+let TOKEN = null
+
+const production = true
+let https
+let strapiAddress
+let strapiPort
+
+if (production) {
+    https = require('https')
+    strapiAddress = process.env['StrapiHostPoff2021']
+} else {
+    https = require('http')
+    strapiAddress = 'localhost'
+    strapiPort = '1337'
+}
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
-    if (process.argv[2] === 'force' && !options) {
+    if ((process.argv[2] === 'force' || process.argv[2] === 'forcewithdelay') && !options) {
         // Quit if no queuefile
         if (!fs.existsSync(queuePath)) {
             console.log('Build Manager: No pending queue')
@@ -49,7 +62,7 @@ function startBuild() {
     // Eliminate duplicates from queue every time new build starts
     const duplicatesLogIds = eliminateDuplicates()
 
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     const firstInQueue = queueFile[0]
     const buildDomain = firstInQueue.domain
     const buildFileName = firstInQueue.file
@@ -123,23 +136,23 @@ function writeToOtherBuildLogs(LogIds, data) {
     })
 }
 
-function addToQueue(options) {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+async function addToQueue(options) {
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
 
     options.time = getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)')
     queueFile.push(options)
 
-    const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
     console.log('Added to queue');
     writeToLogFile(`Add to queue`, options)
 
     // Update Strapi deploy_logs
     const thisBuildAvg = calcBuildAvgDur(options)
-    const queueEst = calcQueueEstDur()
+    const queueEst = await calcQueueEstDur()
     const postData = {
         build_est_duration: thisBuildAvg,
-        queue_est_duration: queueEst.duration || 0,
+        queue_est_duration: queueEst.duration,
         no_estimate_builds_in_queue: queueEst.noest || 0,
         in_queue: queueEst.inqueue || 0
     }
@@ -147,7 +160,7 @@ function addToQueue(options) {
 }
 
 function deleteQueueIfEmpty() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     if (!queueFile.length) {
         fs.unlinkSync(queuePath)
         return true
@@ -157,9 +170,9 @@ function deleteQueueIfEmpty() {
 }
 
 function removeFirstInQueue() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     queueFile.shift()
-    const queueDump = yaml.safeDump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
 }
 
@@ -167,7 +180,7 @@ function writeToLogFile(logType, command, duration = null, error = null) {
     if (!fs.existsSync(logsPath)) {
         fs.writeFileSync(logsPath, '[]');
     }
-    const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+    const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
 
     const createLogObject = {
         'time': getCurrentTime().format('YYYY.MM.DD HH:mm:ss (Z)'),
@@ -178,7 +191,7 @@ function writeToLogFile(logType, command, duration = null, error = null) {
         'error': error && typeof error === 'object' ? JSON.stringify(error) : error
     }
     logFile.push(createLogObject)
-    const logDump = yaml.safeDump(logFile, { 'noRefs': true, 'indent': '4' });
+    const logDump = yaml.dump(logFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(logsPath, logDump, 'utf8');
 }
 
@@ -191,7 +204,7 @@ function calcBuildAvgDur(options, queueEst = false) {
         console.log('No log file for getting build estimates');
         return 0;
     }
-    const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+    const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
         const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type}`
         if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type}`) {
@@ -217,7 +230,7 @@ function calcBuildAvgDur(options, queueEst = false) {
     }
 }
 
-function calcQueueEstDur() {
+async function calcQueueEstDur() {
     if (!fs.existsSync(logsPath)) {
         console.log('No log file for getting queue estimates');
         return null;
@@ -227,7 +240,7 @@ function calcQueueEstDur() {
         return null;
     }
 
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
 
     const queue = queueFile.map(q => {
         options = {
@@ -241,7 +254,12 @@ function calcQueueEstDur() {
 
     let estimateInMs = 0
     let noEstimate = 0
-    const uniqueQueue = [...new Set(queue)].map(q => {
+    const uniqueQueueSet = [...new Set(queue)]
+    // if (queue.length > 1) {
+    //     uniqueQueueSet.unshift(queue[0])
+    // }
+
+    const uniqueQueue = uniqueQueueSet.map(q => {
         const options = JSON.parse(q)
         const milliSecs = calcBuildAvgDur(options, true)
         estimateInMs += milliSecs
@@ -250,23 +268,38 @@ function calcQueueEstDur() {
         }
     })
 
-    const duration = moment.duration(estimateInMs)
+    let ongoingBuildLastedInMs = 0
+    if (queueFile.length > 1) {
+        const ongoingBuild = await logQuery(queueFile[0].log_id, 'GET')
+        const ongoingBuildStartTime = ongoingBuild.start_time ? Date.parse(ongoingBuild.start_time) : null
+
+        if (ongoingBuildStartTime) {
+            ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
+            console.log('Current running build of ', ongoingBuild.site, ongoingBuild.build_args,' has lasted ', ongoingBuildLastedInMs, 'ms');
+        }
+    }
+
+
+    const estimateQueueBuildTime = Math.round(estimateInMs-ongoingBuildLastedInMs)
+
+    const duration = moment.duration(estimateQueueBuildTime)
+
     if (duration._isValid && estimateInMs > 0) {
-        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.hours(), `h`, duration.minutes(), `m`, duration.seconds(), `s (total: `, estimateQueueBuildTime, `ms)`);
         if (noEstimate > 0) {
             console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
         }
     }
 
     return {
-        duration: Math.round(estimateInMs),
+        duration: estimateQueueBuildTime,
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
 }
 
 function eliminateDuplicates() {
-    const queueFile = yaml.safeLoad(fs.readFileSync(queuePath, 'utf8'))
+    const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     const firstEntryCopy = JSON.parse(JSON.stringify(queueFile[0]))
     delete firstEntryCopy.time
     delete firstEntryCopy.log_id
@@ -289,7 +322,7 @@ function eliminateDuplicates() {
     const difference = queueFile.length - (eliminated.length + 1)
     if (difference !== 0) {
         eliminated.unshift(queueFile[0])
-        const queueDump = yaml.safeDump(eliminated, { 'noRefs': true, 'indent': '4' });
+        const queueDump = yaml.dump(eliminated, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(queuePath, queueDump, 'utf8');
         console.log(`Removed ${difference} duplicates from queue for ${queueFile[0].domain} ${queueFile[0].file} ${queueFile[0].type} ${queueFile[0].parameters}`);
         writeToLogFile(`Remove ${difference} duplicates`, queueFile[0])
@@ -300,7 +333,7 @@ function eliminateDuplicates() {
 
 function checkIfProcessAlreadyRunning() {
     if (fs.existsSync(logsPath)) {
-        const logFile = yaml.safeLoad(fs.readFileSync(logsPath, 'utf8'))
+        const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
             .filter(a => a.PID && a.type === 'Build start')
 
         const lastPID = logFile.slice(-1)[0].PID
@@ -320,7 +353,7 @@ function checkIfProcessAlreadyRunning() {
 }
 
 async function logQuery(id, type = 'GET', data) {
-    if (TOKEN === '') {
+    if (!TOKEN) {
         TOKEN = await strapiAuth()
     }
 
@@ -340,6 +373,10 @@ async function logQuery(id, type = 'GET', data) {
                 'Content-Type': 'application/json'
             }
         };
+
+        if (!production){
+            options.port = strapiPort
+        }
 
         if (type === 'PUT') {
             data = JSON.stringify(data)
@@ -400,6 +437,12 @@ async function logQuery(id, type = 'GET', data) {
 
 if (process.argv[2] === 'force') {
     startBuildManager()
+} else if (process.argv[2] === 'forcewithdelay') {
+    const delayInMs = 20000
+    console.log(`Build Manager: Starting in ${delayInMs / 1000} seconds`);
+    setTimeout(() => {
+        startBuildManager()
+    }, delayInMs);
 } else if (process.argv[2] === 'queue') {
     calcQueueEstDur()
 } else {

@@ -9,13 +9,13 @@ timer.start(__filename)
 const DYNAMIC_PATH = path.join(__dirname, '..', 'dynamic')
 
 const FILMS_FN = path.join(DYNAMIC_PATH, 'films.yaml')
-const EVENTIVAL_FILMS = yaml.safeLoad(fs.readFileSync(FILMS_FN))
+const EVENTIVAL_FILMS = yaml.load(fs.readFileSync(FILMS_FN))
 
 const SCREENINGS_FN = path.join(DYNAMIC_PATH, 'screenings.yaml')
-const EVENTIVAL_SCREENINGS = yaml.safeLoad(fs.readFileSync(SCREENINGS_FN))
+const EVENTIVAL_SCREENINGS = yaml.load(fs.readFileSync(SCREENINGS_FN))
 
 const VENUES_FN = path.join(DYNAMIC_PATH, 'venues.yaml')
-const EVENTIVAL_VENUES = yaml.safeLoad(fs.readFileSync(VENUES_FN))
+const EVENTIVAL_VENUES = yaml.load(fs.readFileSync(VENUES_FN))
 
 const STRAPI_URL = 'http://139.59.130.149'
 const FILMS_API = `${STRAPI_URL}/films`
@@ -78,7 +78,7 @@ const isUpdateRequired = (old_o, update_o) => {
         if(o === undefined) {
             o = ''
         }
-        return yaml.load(yaml.safeDump(o, {'sortKeys': true}))
+        return yaml.load(yaml.dump(o, {'sortKeys': true}))
     }
 
     const valueInArray = (old_arr, update_value) => {
@@ -537,7 +537,7 @@ const remapEventival = async () => {
         // }
     }
     EVENTIVAL_REMAPPED['E_FILMS'] = to_strapi_films
-    fs.writeFileSync(path.join(DYNAMIC_PATH, 'E_FILMS.yaml'), yaml.safeDump(to_strapi_films, { 'indent': '4' }), "utf8")
+    fs.writeFileSync(path.join(DYNAMIC_PATH, 'E_FILMS.yaml'), yaml.dump(to_strapi_films, { 'indent': '4' }), "utf8")
     // console.log('got films', EVENTIVAL_REMAPPED['E_FILMS'].length)
 
     //
@@ -640,7 +640,7 @@ const remapEventival = async () => {
 
     }
     EVENTIVAL_REMAPPED['E_CASSETTES'] = to_strapi_cassettes
-    fs.writeFileSync(path.join(DYNAMIC_PATH, 'E_CASSETTES.yaml'), yaml.safeDump(to_strapi_cassettes, { 'indent': '4' }), "utf8")
+    fs.writeFileSync(path.join(DYNAMIC_PATH, 'E_CASSETTES.yaml'), yaml.dump(to_strapi_cassettes, { 'indent': '4' }), "utf8")
 
     //
     // Screenings
@@ -791,7 +791,7 @@ const remapEventival = async () => {
 
     EVENTIVAL_REMAPPED['E_SCREENINGS'] = to_strapi_screenings
     const scr_path = path.join(DYNAMIC_PATH, 'E_SCREENINGS.yaml')
-    const scr_yaml = yaml.safeDump(to_strapi_screenings, { 'indent': '4' })
+    const scr_yaml = yaml.dump(to_strapi_screenings, { 'indent': '4' })
 
 
     fs.writeFileSync(scr_path, scr_yaml, "utf8")

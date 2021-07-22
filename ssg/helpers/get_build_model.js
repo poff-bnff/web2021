@@ -29,7 +29,7 @@ function model(arg) {
 		'filmikooli-footer': 'full',
 		'hof-fi-footer': 'full',
 		'industry-footer': 'full',
-		'just-filmi-footer': 'full',
+		'just-film-footer': 'full',
 		'kinoffi-footer': 'full',
 		'kumu-footer': 'full',
 		'shortsi-footer': 'full',

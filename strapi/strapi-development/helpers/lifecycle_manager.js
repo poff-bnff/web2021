@@ -18,18 +18,17 @@ const moment = require("moment-timezone")
 const mapping_domain = {
     'filmikool.poff.ee': 'filmikool',
     'hoff.ee': 'hoff',
-    // 'industry.poff.ee': 'industry',
-    // 'justfilm.ee': 'just',
-    // 'kinoff.poff.ee': 'kinoff',
+    'industry.poff.ee': 'industry',
+    'justfilm.ee': 'just',
+    'kinoff.poff.ee': 'kinoff',
     'kumu.poff.ee': 'kumu',
     'oyafond.ee': 'bruno',
-    // 'poff.ee': 'poff',
-    // 'shorts.poff.ee': 'shorts',
+    'poff.ee': 'poff',
+    'shorts.poff.ee': 'shorts',
     'tartuff.ee': 'tartuff'
 }
 
-function slugify(text)
-{
+function slugify(text) {
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
@@ -39,11 +38,13 @@ function slugify(text)
 }
 
 async function call_update(result, model) {
-    delete result.published_at
-    await strapi.query(model).update({id: result.id}, result)
+    if (result.published_at) {
+        delete result.published_at
+    }
+    await strapi.query(model).update({ id: result.id }, result)
 }
 
-async function build_start_to_strapi_logs(result, domain, err=null, b_err=null, model_and_target=null) {
+async function build_start_to_strapi_logs(result, domain, err = null, b_err = null, model_and_target = null, del) {
     let editor = result.updated_by?.id
     let plugin_log
     if (result.updated_by) {
@@ -57,17 +58,18 @@ async function build_start_to_strapi_logs(result, domain, err=null, b_err=null, 
             site: domain,
             error_code: err,
             build_errors: b_err,
-            build_args: model_and_target
+            build_args: model_and_target,
+            action: del ? 'delete' : 'new or edit'
         }
 
-        plugin_log = await strapi.entityService.create({data: loggerData}, {model: "plugins::publisher.build_logs"})
+        plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
         // console.log('Sinu palutud v4ljaprint', plugin_log)
     }
     return plugin_log
 }
 
 async function update_strapi_logs(plugin_log, id) {
-    await strapi.entityService.update({params: {id: id,}, data: plugin_log}, {model: "plugins::publisher.build_logs" })
+    await strapi.entityService.update({ params: { id: id, }, data: plugin_log }, { model: "plugins::publisher.build_logs" })
 }
 
 async function call_process(build_dir, plugin_log, args) {
@@ -117,7 +119,7 @@ async function call_process(build_dir, plugin_log, args) {
 async function do_query(model, params) {
     let obj_to_return = []
     for (let param of params) {
-        let query_answer = await strapi.query(model).find({ id : param.id })
+        let query_answer = await strapi.query(model).find({ id: param.id })
         obj_to_return.push(query_answer)
     }
     return obj_to_return
@@ -138,7 +140,7 @@ async function get_domain(result) {
         }
     }
     else if (result.festival_edition) {
-        let query_answer = await strapi.query('festival-edition').find({ id : result.festival_edition.id })
+        let query_answer = await strapi.query('festival-edition').find({ id: result.festival_edition.id })
         for (let dom of query_answer[0].domains) {
             domain.push(dom.url)
         }
@@ -160,15 +162,16 @@ async function get_domain(result) {
         }
     }
     else if (result.cassette) {
-        let query_answer = await strapi.query('cassette').find({ id : result.cassette.id })
+        let query_answer = await strapi.query('cassette').find({ id: result.cassette.id })
         for (let festival_e of query_answer[0].festival_editions) {
-            let q_answer = await strapi.query('festival-edition').find({ id : festival_e.id })
+            let q_answer = await strapi.query('festival-edition').find({ id: festival_e.id })
             for (let dom of q_answer[0].domains) {
                 domain.push(dom.url)
             }
         }
     }
-    return domain
+    // New set to eliminate duplicate domains
+    return [...new Set(domain)]
 }
 
 function get_programme_out_of_cassette(result) {
@@ -182,11 +185,11 @@ function get_programme_out_of_cassette(result) {
 
 function get_build_script(domain) {
     let short_domain = mapping_domain[domain]
-    if(short_domain) {
-        let dir_to_build = path.join(__dirname,`/../../../ssg/helpers/build_manager.js`)
+    if (short_domain) {
+        let dir_to_build = path.join(__dirname, `/../../../ssg/helpers/build_manager.js`)
         return dir_to_build
     } else {
-        console.log('No build script provided for', domain.toUpperCase(),  'or this domain is built through Slack.')
+        console.log('No build script provided for', domain.toUpperCase(), 'or this domain is built through Slack.')
         return null
     }
 }
@@ -239,19 +242,19 @@ function clean_result(result) {
 }
 
 
-async function modify_stapi_data(result, model_name, vanish=false) {
+async function modify_stapi_data(result, model_name, vanish = false) {
 
     let modelname = await strapi.query(model_name).model.info.name
     modelname = modelname.split('_').join('')
-    let result_id = result.id? result.id : null
+    let result_id = result.id ? result.id : null
     console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
     result = clean_result(result)
 
     const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${modelname}.yaml`)
-    let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), {maxAliasCount: -1})
+    let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), { maxAliasCount: -1 })
 
     let list_of_models = []
-    for (let singel_model in strapidata ) {
+    for (let singel_model in strapidata) {
         list_of_models.push(strapidata[singel_model].id)
         if (vanish && strapidata[singel_model].id === result.id) {
             delete strapidata[singel_model]
@@ -267,23 +270,23 @@ async function modify_stapi_data(result, model_name, vanish=false) {
         strapidata.push(result)
     }
 
-    fs.writeFileSync(strapidata_dir, yaml.stringify(strapidata.filter( e => e !== null), { indent: 4 }), 'utf8')
+    fs.writeFileSync(strapidata_dir, yaml.stringify(strapidata.filter(e => e !== null), { indent: 4 }), 'utf8')
 }
 
-async function call_build(result, domains, model_name, del=false ) {
+async function call_build(result, domains, model_name, del = false) {
     let build_error
     if (domains[0] === 'FULL_BUILD') {
         let error = 'FULL BUILD'
         console.log('-------------', error, '-------------')
         build_error = 'Creating/updating this object needs all domain sites to rebuild.'
-        await build_start_to_strapi_logs(result, 'All domains', error, build_error, `${model_name} ${result.id}`)
+        await build_start_to_strapi_logs(result, 'All domains', error, build_error, `${model_name} ${result.id}`, del)
     }
-    else if (domains.length > 0 ) {
+    else if (domains.length > 0) {
         console.log('Build ', domains)
-        for ( let domain of domains ) {
+        for (let domain of domains) {
             let build_dir = get_build_script(domain)
             if (fs.existsSync(build_dir)) {
-                let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`)
+                let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`, del)
                 let plugin_log_id = plugin_log.id
                 let args = [domain, plugin_log_id, model_name, "target", result.id]
 
@@ -319,10 +322,14 @@ async function call_build(result, domains, model_name, del=false ) {
 
 async function call_delete(result, domains, model_name) {
     if (Array.isArray(result)) {
-        result = result[0]
+        result = result.sort((a, b) => b.id - a.id)[0]
     }
     await modify_stapi_data(result, model_name, true)
-    await call_build(result, domains, model_name, true)
+
+    // Film build is done by its cassettes if any
+    if (model_name !== 'film') {
+      await call_build(result, domains, model_name, true)
+    }
 }
 
 exports.call_update = call_update

@@ -35,7 +35,11 @@
     "subMenuItem": {
       "type": "component",
       "repeatable": true,
-      "component": "menu.menu-item"
+      "component": "menu.tartuffi-sub-menu-item"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

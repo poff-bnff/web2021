@@ -7,14 +7,14 @@ const replaceLinks = require('./replace_links.js')
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -22,13 +22,15 @@ const strapiDataPath =  path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLES = yaml.safeLoad(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const DEFAULTTEMPLATENAME = 'news'
 
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
+
+console.log('fetch_article_type_from_yaml.js target_id', target_id);
 
 const minimodel = {
     'article_types': {
@@ -109,7 +111,7 @@ for (const lang of languages) {
         let element = JSON.parse(JSON.stringify(strapiElement))
         let slugEn = element.slug_en || element.slug_et
         if (!slugEn) {
-            throw new Error ("Artiklil on puudu nii eesti kui inglise keelne slug!", Error.ERR_MISSING_ARGS)
+            throw new Error (`Artiklil (ID: ${element.id}) on puudu nii eesti kui inglise keelne slug!`, Error.ERR_MISSING_ARGS)
         }
 
         if (param_build_type === 'target' && element.id.toString() !== target_id) {
@@ -164,6 +166,7 @@ for (const lang of languages) {
         }
 
         if (element.article_types) {
+
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
@@ -171,6 +174,7 @@ for (const lang of languages) {
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
 
                 fs.mkdirSync(element.directory, { recursive: true });
+
                 for (key in element) {
 
                     if (key === "slug") {
@@ -197,7 +201,13 @@ for (const lang of languages) {
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
                 }
 
-                let yamlStr = yaml.safeDump(element, { 'indent': '4' });
+                // If target build, delete old single article data
+                if (param_build_type === 'target' && fs.existsSync(`${element.directory}/data.${lang}.yaml`)) {
+                    console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
+                    fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
+                }
+
+                let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                 fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8');
 

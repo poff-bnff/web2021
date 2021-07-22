@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "films",
   "info": {
-    "name": "Film"
+    "name": "Film",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title_et": {
@@ -100,6 +102,10 @@
     },
     "foreignUrl": {
       "type": "string"
+    },
+    "multi_and_single": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

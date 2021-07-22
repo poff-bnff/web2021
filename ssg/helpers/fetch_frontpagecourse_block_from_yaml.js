@@ -9,7 +9,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDatafrontpagecoursePath = path.join(strapiDataDirPath, 'FrontPageCourses.yaml')
-const STRAPIDATA_FRONTPAGECOURSES = yaml.safeLoad(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
+const STRAPIDATA_FRONTPAGECOURSES = yaml.load(fs.readFileSync(strapiDatafrontpagecoursePath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 
 const languages = ['en', 'et', 'ru']
@@ -78,9 +78,9 @@ for (const lang of languages) {
     rueten(copyData, lang)
 
     if (failing || copyData === undefined) {
-        var allDataYAML = yaml.safeDump([], { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     } else {
-        var allDataYAML = yaml.safeDump(copyData, { 'noRefs': true, 'indent': '4' })
+        var allDataYAML = yaml.dump(copyData, { 'noRefs': true, 'indent': '4' })
     }
     const outFile = path.join(fetchDir, `frontpagecourses.${lang}.yaml`)
     fs.writeFileSync(outFile, allDataYAML, 'utf8')

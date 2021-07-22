@@ -1,7 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const fetch = require('node-fetch')
-const STRAPIDATA = yaml.safeLoad(fs.readFileSync(`source/_fetchdir/cassettes.et.yaml`, 'utf8'))
+const STRAPIDATA = yaml.load(fs.readFileSync(`source/_fetchdir/cassettes.et.yaml`, 'utf8'))
 
 
 const {parallelLimit} = require('async')

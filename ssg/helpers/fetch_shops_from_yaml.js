@@ -5,7 +5,7 @@ const rueten = require('./rueten.js');
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.safeLoad(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
@@ -13,9 +13,9 @@ const fetchDataDir =  path.join(fetchDir, 'products');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 
 const strapiDataShopPath = path.join(strapiDataDirPath, 'Shop.yaml');
-const STRAPIDATA_SHOPS = yaml.safeLoad(fs.readFileSync(strapiDataShopPath, 'utf8'))
+const STRAPIDATA_SHOPS = yaml.load(fs.readFileSync(strapiDataShopPath, 'utf8'))
 const strapiDataProdCategoryPath = path.join(strapiDataDirPath, 'ProductCategory.yaml');
-const STRAPIDATA_PROD_CATEGORIES = yaml.safeLoad(fs.readFileSync(strapiDataProdCategoryPath, 'utf8'))
+const STRAPIDATA_PROD_CATEGORIES = yaml.load(fs.readFileSync(strapiDataProdCategoryPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const mapping = DOMAIN_SPECIFICS.domain
@@ -55,7 +55,7 @@ for (const lang of allLanguages) {
                                 if (dirSlug != null && typeof categoryFromYAMLcopy.path !== 'undefined') {
 
                                     rueten(categoryFromYAMLcopy, lang)
-                                    const oneYaml = yaml.safeDump(categoryFromYAMLcopy, { 'noRefs': true, 'indent': '4' });
+                                    const oneYaml = yaml.dump(categoryFromYAMLcopy, { 'noRefs': true, 'indent': '4' });
                                     const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
 
                                     let saveDir = path.join(fetchDataDir, dirSlug);
@@ -78,7 +78,7 @@ for (const lang of allLanguages) {
         allData.push(element)
     }
 
-    const allDataYAML = yaml.safeDump(allData, { 'noRefs': true, 'indent': '4' });
+    const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
     const yamlPath = path.join(fetchDir, `shops.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 }

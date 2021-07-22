@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "bruo_menus",
   "info": {
-    "name": "Bruno_Menu"
+    "name": "Bruno_Menu",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {
@@ -33,7 +35,11 @@
     "subMenuItem": {
       "type": "component",
       "repeatable": true,
-      "component": "menu.menu-item"
+      "component": "menu.bruno-sub-menu-item"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

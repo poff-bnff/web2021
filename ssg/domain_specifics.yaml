@@ -14,12 +14,14 @@ domain:
 domains_show_cassetes_wo_screenings:
     - poff.ee
     - hoff.ee
+    - tartuff.ee
 
 cassettes_festival_editions:
     poff.ee:
         - 7
+        - 8
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
@@ -29,9 +31,9 @@ cassettes_festival_editions:
     hoff.ee:
         - 5
     kumu.poff.ee:
-        - 0
+        - 6
     tartuff.ee:
-        - 0
+        - 10
     oyafond.ee:
         - 0
     filmikool.poff.ee:
@@ -41,7 +43,7 @@ programmes_festival_editions:
     poff.ee:
         - 7
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
@@ -51,9 +53,9 @@ programmes_festival_editions:
     hoff.ee:
         - 5
     kumu.poff.ee:
-        - 0
+        - 6
     tartuff.ee:
-        - 0
+        - 10
     oyafond.ee:
         - 0
     filmikool.poff.ee:
@@ -156,7 +158,7 @@ vialogUrls:
 pageURLs:
     poff.ee: "https://poff.ee/"
     justfilm.ee: "https://justfilm.ee/"
-    kinoff.poff.ee: "https://kinoff.poff.ee/"
+    kinoff.poff.ee: "https://kinoff.ee/"
     industry.poff.ee: "https://industry.poff.ee/"
     shorts.poff.ee: "http://shorts.poff.ee/"
     hoff.ee: "https://hoff.ee/"
@@ -166,13 +168,25 @@ pageURLs:
     filmikool.poff.ee: "https://filmikool.poff.ee/"
 
 stagingURLs:
-    poff.ee: "https://staging.poff.inscaping.eu/"
-    justfilm.ee: "https://staging.justfilm.inscaping.eu/"
-    kinoff.poff.ee: "https://staging.kinoff.inscaping.eu/"
-    industry.poff.ee: "https://staging.industry.inscaping.eu/"
-    shorts.poff.ee: "https://staging.shorts.inscaping.eu/"
-    # hoff.ee: "https://staging.hoff.inscaping.eu/"
-    # kumu.poff.ee: https://kumu.poff.ee/
-    # tartuff.ee: https://tartuff.ee/
-    # oyafond.ee: https://oyafond.ee/
-    # filmikool.poff.ee: https://filmikool.poff.ee/
+    poff.ee: "https://build.poff.ee/"
+    justfilm.ee: "https://build.justfilm.ee/"
+    kinoff.poff.ee: "https://build.kinoff.ee/"
+    industry.poff.ee: "https://build.industry.poff.ee/"
+    shorts.poff.ee: "https://build.shorts.poff.ee/"
+    hoff.ee: "https://build.hoff.ee/"
+    kumu.poff.ee: https://build.kumu.poff.ee/
+    tartuff.ee: https://build.tartuff.ee/
+    oyafond.ee: https://build.oyafond.ee/
+    filmikool.poff.ee: https://build.filmikool.poff.ee/
+
+stagingDomains:
+    poff.ee: build.poff.ee
+    justfilm.ee: build.justfilm.ee
+    kinoff.poff.ee: build.kinoff.ee
+    industry.poff.ee: build.industry.poff.ee
+    shorts.poff.ee: build.shorts.poff.ee
+    hoff.ee: build.hoff.ee
+    kumu.poff.ee: build.kumu.poff.ee
+    tartuff.ee: build.tartuff.ee
+    oyafond.ee: build.oyafond.ee
+    filmikool.poff.ee: build.filmikool.poff.ee

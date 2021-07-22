@@ -52,7 +52,7 @@ module.exports = () => {
   let file = '/srv/strapi/imgList.json'
 
   jsonfile.readFile(file, function (err, obj) {
-    fileData.files = obj.files
+    fileData.files = obj?.files
     // console.log(fileData.files)
   })
 
@@ -104,7 +104,7 @@ module.exports = () => {
   // If build queue exists, restart build manager to continue with the queue
   let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)
   console.log(build_manager_path)
-  const child = spawn('node', [build_manager_path, 'force'])
+  const child = spawn('node', [build_manager_path, 'forcewithdelay'])
 
   child.stdout.on('data', (chunk) => {
     console.log('stdout', decoder.write(chunk))

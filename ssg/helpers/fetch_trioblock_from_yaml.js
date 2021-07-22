@@ -42,7 +42,7 @@ const articleMapping = {
 }
 
 const strapiDataTrioPath = path.join(strapiDataDirPath, `${trio_mapping[DOMAIN]}.yaml` )
-const STRAPIDATA_TRIO = yaml.safeLoad(fs.readFileSync(strapiDataTrioPath, 'utf8'))
+const STRAPIDATA_TRIO = yaml.load(fs.readFileSync(strapiDataTrioPath, 'utf8'))
 
 if (STRAPIDATA_TRIO.length < 1) {
     console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock`)
@@ -84,7 +84,7 @@ for (const lang of languages) {
 
     if(buffer.length > 0) {
         rueten(buffer, lang)
-        let allDataYAML = yaml.safeDump(buffer, { 'noRefs': true, 'indent': '4' })
+        let allDataYAML = yaml.dump(buffer, { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(outFile, allDataYAML, 'utf8')
     } else {
         fs.writeFileSync(outFile, '[]', 'utf8')

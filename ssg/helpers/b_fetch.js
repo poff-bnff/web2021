@@ -3,7 +3,7 @@ const yaml = require('js-yaml')
 const path = require('path')
 
 const modelFile = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
-const DATAMODEL = yaml.safeLoad(fs.readFileSync(modelFile, 'utf8'))
+const DATAMODEL = yaml.load(fs.readFileSync(modelFile, 'utf8'))
 
 
 // const root_model_name = 'POFFiMenu'
@@ -39,7 +39,7 @@ function make_MODELS(minimodel) {
 		// 	continue
 		// }
 		if (DATAMODEL[model_n].hasOwnProperty('_path')){
-			MODELS[model_n] = yaml.safeLoad(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
+			MODELS[model_n] = yaml.load(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
 		} else {
 			MODELS[model_n] = null
 		}
@@ -55,7 +55,7 @@ const objDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata')
 
 function find_single_obj(minimodel, entries){
   	if (!Array.isArray(entries)){
-        entries = [entries]
+        entries = entries ? [entries] : []
 
 		const objData = MODELS[minimodel.model_name]
 			// console.log('objData', objData)
@@ -130,7 +130,7 @@ function fetchModel(modelData, minimodel) {
 }
 
 // const modelDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata', `${model_name}.yaml`)
-// const modelData = yaml.safeLoad(fs.readFileSync(modelDataDir, 'utf8'))
+// const modelData = yaml.load(fs.readFileSync(modelDataDir, 'utf8'))
 
 // let test2 = fetchModel(modelData, testmodel)
 // console.log(JSON.stringify(test2[2], 0, 2))

@@ -28,8 +28,8 @@ const LeftMenuHeader = (props) => {
   return (
     <Wrapper>
       <Link to="/" className="leftMenuHeaderLink">
-      <span className="projectName" />
-    </Link>
+        <span className="projectName" />
+      </Link>
     </Wrapper>)
 };
 
@@ -42,51 +42,62 @@ async function fetchLogs() {
 
   const token = await getToken()
 
+  if (token) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`);
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
+    let result = await fetch(`${strapiHost}/publisher/my-finished-build-logs`, requestOptions)
+      .then(response => response.text())
+      .then(result => result)
+      .catch(error => console.log('error', error));
 
-  let result = await fetch(`${strapiHost}/publisher/my-finished-build-logs`, requestOptions)
-    .then(response => response.text())
-    .then(result => result)
-    .catch(error => console.log('error', error));
+    result = JSON.parse(result)
 
-  result = JSON.parse(result)
+    if (result.length < 1) {
+      return false
+    }
 
-  if (result.length < 1) {
-    return false
+    result.map(async finishedLog => {
+
+      if (finishedLog.paths.articleTypeMissing){
+        toggleSavedNotUpNotif(finishedLog)
+        setShownToUser(finishedLog)
+        return
+      }
+
+      let formattedPaths = [];
+      if (finishedLog.build_args) {
+        const paths = finishedLog.paths
+        formattedPaths = paths.map(a => {
+          return {
+            url: `${finishedLog.site}${a}`,
+            label: a.length ? a : finishedLog.stagingDomain
+          }
+        })
+      }
+
+      if (finishedLog.build_errors) {
+        toggleErrorNotif(finishedLog, formattedPaths)
+      }
+      else if (finishedLog.action === 'delete') {
+        toggleDeleteNotif(finishedLog)
+      }
+      else {
+        strapi.notification.toggle({
+          message: 'Your save of ' + finishedLog.stagingDomain + ' finished, see the result:',
+          blockTransition: true,
+          link: formattedPaths
+        })
+      }
+      setShownToUser(finishedLog)
+    })
   }
-
-  result.map(async finishedLog => {
-    let formattedPaths = [];
-    if (finishedLog.build_args) {
-      const paths = await fetchChangedSlug(finishedLog.build_args)
-
-      formattedPaths = paths.map(a => {
-        return {
-          url: `https://${finishedLog.site}/${a}`,
-          label: a
-        }
-      })
-    }
-
-    if (finishedLog.build_errors) {
-      toggleErrorNotif(finishedLog, formattedPaths)
-    } else {
-      strapi.notification.toggle({
-        message: 'Your build of site ' + finishedLog.site + ' finished, see the result:',
-        blockTransition: true,
-        link: formattedPaths
-      })
-    }
-    setShownToUser(finishedLog)
-  })
 }
 
 
@@ -117,71 +128,68 @@ const setShownToUser = async (log) => {
 }
 
 
-const fetchChangedSlug = async (args) => {
-  const [collectionType, id] = args.split(' ')
+const toggleSavedNotUpNotif = finishedLog => {
 
-  const token = await getToken()
+  const [collectionType, id] = finishedLog.build_args.split(" ")
 
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`);
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  let result = await fetch(`${strapiHost}/${collectionType}/${id}`, requestOptions)
-    .then(response => response.text())
-    .then(result => { return result })
-    .catch(error => console.log('error', error));
-
-  result = JSON.parse(result)
-
-  const slug = result.slug_et || result.slug_en || result.slug_ru
-
-  const lang = result.slug_et ? 'et' : result.slug_en ? 'en' : result.slug_ru ? 'ru' : null
-  const articleTypeSlugs = []
-  const paths = []
-
-  if (result.article_types) {
-    for (const articleType of result.article_types) {
-      for (const key in articleType) {
-        if (key === `slug_${lang}`) {
-          articleTypeSlugs.push(articleType[key])
-        }
-      }
-    }
-
-
-    for (const articleTypeSlug of articleTypeSlugs) {
-      paths.push(`${articleTypeSlug}/${slug}`)
-    }
-    return paths
+  const link = {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
+    color: '#0097f7',
   }
-  return [slug]
+
+  strapi.notification.toggle({
+    type: 'info',
+    message: `Your save of ${finishedLog.build_args} finished, not built! Error: Article type is required, but not selected.`,
+    blockTransition: true,
+    link: link
+  })
 }
 
-
 const toggleErrorNotif = (finishedLog, formattedPaths) => {
+
+  const [collectionType, id] = finishedLog.build_args.split(" ")
 
   formattedPaths.push({
     url: `${strapiHost}/admin/plugins/content-manager/collectionType/plugins::publisher.build_logs/${finishedLog.id}`,
     label: 'Click here for full error log.',
     color: '#ff5d00',
+  },
+  {
+    url: `${strapiHost}/admin/plugins/content-manager/collectionType/application::${collectionType}.${collectionType}/${id}`,
+    label: `Click here to complete the article for new build!`,
+    color: '#ff5d00',
   })
 
   strapi.notification.toggle({
     type: 'warning',
-    message: 'Your build of site ' + finishedLog.site + ' failed, unchanged content:',
+    message: 'Your save of ' + finishedLog.stagingDomain + ' failed, unchanged content:',
     blockTransition: true,
     link: formattedPaths
   })
 }
 
+const toggleDeleteNotif = (finishedLog) => {
+
+  const link = {
+    url: finishedLog.site,
+    label: finishedLog.stagingDomain,
+  }
+
+    strapi.notification.toggle({
+    message: `Your delete of '${finishedLog.build_args}' finished:`,
+    blockTransition: true,
+    link: link
+  })
+}
+
 const getToken = () => {
   const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
-  return token.replace(/"/g, '')
+  if (token) {
+    return token.replace(/"/g, '')
+  } else {
+    return null
+  }
 }
 
 // import React from 'react';

@@ -114,7 +114,7 @@ const foo = async () => {
     })
 
     console.log(persons_array.length, 'Eventival persons fetched.');
-    fs.writeFileSync(E_PERSONS_FILE, yaml.safeDump(persons_array, { 'noRefs': true, 'indent': '4' }))
+    fs.writeFileSync(E_PERSONS_FILE, yaml.dump(persons_array, { 'noRefs': true, 'indent': '4' }))
 }
 
 function my_parser(eventivalXML, root_node) {

@@ -29,7 +29,7 @@ const mapping = {
     'oyafond.ee': 'BrunoMenu'
 }
 const strapiDataMenuPath = path.join(strapiDataDirPath, `${mapping[DOMAIN]}.yaml`)
-const STRAPIDATA_MENUS = yaml.safeLoad(fs.readFileSync(strapiDataMenuPath, 'utf8'))
+const STRAPIDATA_MENUS = yaml.load(fs.readFileSync(strapiDataMenuPath, 'utf8'))
 
 const artMapping = {
     'poff.ee': 'poffi_article',
@@ -90,6 +90,9 @@ const minimodel = {
         }
     }
 }
+
+
+
 STRAPIDATA_MENU = fetchModel(STRAPIDATA_MENUS, minimodel)
 
 const languages = ['en', 'et', 'ru']
@@ -100,7 +103,7 @@ for (const lang of languages) {
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_MENU))
     menuData = rueten(copyData, lang)
 
-    let menuDataYAML = yaml.safeDump(menuData, { 'noRefs': true, 'indent': '4' })
+    let menuDataYAML = yaml.dump(menuData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(menuDataFile, menuDataYAML, 'utf8')
     console.log(`Fetched ${DOMAIN} menu ${lang} data`)
 }

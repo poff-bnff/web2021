@@ -1,13 +1,25 @@
+const production = true
+let https
+let strapiAddress
+let strapiPort
+
+if (production) {
+    https = require('https')
+    strapiAddress = process.env['StrapiHostPoff2021']
+} else {
+    https = require('http')
+    strapiAddress = 'localhost'
+    strapiPort = '1337'
+}
+
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
-const https = require('https')
 const { strapiAuth } = require('./strapiAuth.js')
 const { spin } = require("./spinner")
 
-const STRAPI_URL = process.env['StrapiHostPoff2021']
 const DATAMODEL_PATH = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
-const DATAMODEL = yaml.safeLoad(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
+const DATAMODEL = yaml.load(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
 
 var TOKEN = ''
 
@@ -18,8 +30,12 @@ async function strapiQuery(options, dataObject = false) {
         // console.log('Bearer', TOKEN)
     }
     options.headers['Authorization'] = `Bearer ${TOKEN}`
-    options['host'] = process.env['StrapiHostPoff2021']
+    options['hostname'] = strapiAddress
     // options.timeout = 30000
+
+    if (!production){
+        options.port = strapiPort
+    }
 
     // console.log(options, JSON.stringify((dataObject) || ''))
     return new Promise((resolve, reject) => {
@@ -105,14 +121,20 @@ async function getModel(model, filters={}) {
         filter_str_a.push(key + '=' + encodeURIComponent(value).replace('%20','+'))
     }
 
-    const _path = `https://${STRAPI_URL}${DATAMODEL[model]['_path']}`
+    const _path = `${DATAMODEL[model]['_path']}`
 
     const options = {
         headers: { 'Content-Type': 'application/json' },
+        hostname: strapiAddress,
         path: `${_path}?${filter_str_a.join('&')}`,
         method: 'GET',
         full_model_fetch: full_model_fetch
     }
+
+    if (!production){
+        options.port = strapiPort
+    }
+
     if (filters.length) {
         console.log('=== getModel', filter, options)
     }
@@ -133,14 +155,19 @@ async function putModel(model, data) {
         return false
     }
 
-    const _path = `https://${STRAPI_URL}${DATAMODEL[model]['_path']}`
+    const _path = `${DATAMODEL[model]['_path']}`
     let results = []
     for (const element of data) {
         const options = {
             headers: { 'Content-Type': 'application/json' },
+            hostname: strapiAddress,
             path: _path + '/' + element.id,
             method: 'PUT'
         }
+        if (!production){
+            options.port = strapiPort
+        }
+
         // console.log('=== putModel', options, element)
         results.push(await strapiQuery(options, element))
     }

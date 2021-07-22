@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "people",
   "info": {
-    "name": "Person"
+    "name": "Person",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "firstName": {
@@ -22,7 +24,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "gender": {
       "model": "gender"
@@ -63,6 +66,11 @@
     },
     "pageUrl": {
       "type": "string"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "people"
     }
   }
 }
