@@ -2,7 +2,8 @@
   "collectionName": "components_media_film_medias",
   "info": {
     "name": "Film Media",
-    "icon": "camera"
+    "icon": "camera",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,10 +11,12 @@
       "collection": "file",
       "via": "related",
       "allowedTypes": [
+        "files",
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "posters": {
       "collection": "file",
@@ -22,7 +25,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "trailer": {
       "type": "component",

@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "industry_menus",
   "info": {
-    "name": "Industry_Menu"
+    "name": "Industry_Menu",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {
@@ -33,6 +35,10 @@
       "type": "component",
       "repeatable": true,
       "component": "menu.industry-sub-menu-item"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

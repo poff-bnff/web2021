@@ -21,7 +21,6 @@ ssg/node_modules
 ssg/.DS_Store
 ssg/helpers/sheets
 
-
 # sanity
 ssg/*.pickle
 ssg/credentials.json

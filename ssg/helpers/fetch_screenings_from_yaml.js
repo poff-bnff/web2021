@@ -29,9 +29,10 @@ if(param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
 
 const minimodel_screenings = {
     'introQaConversation': {
@@ -115,10 +116,12 @@ function LangSelect(lang) {
     // For PÖFF, fetch only online 2021 FE ID 7
     // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
     if (DOMAIN !== 'poff.ee') {
-        festival_editions = STRAPIDATA_FE.map(edition => edition.id)
+        festival_editions = shownFestivalEditions
     } else {
         festival_editions = [7]
     }
+
+console.log(festival_editions);
 
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {

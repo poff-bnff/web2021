@@ -100,7 +100,7 @@ const doLog = async (site, userInfo, type) => {
     type: type
   };
   //using strapi method for creating and entry from the data that was sent
-  const result = await strapi.entityService.create({data: logData},{ model: "plugins::publisher.build_logs" })
+  const result = await strapi.entityService.create({ data: logData }, { model: "plugins::publisher.build_logs" })
   // console.log(result)
   return result.id
 }
@@ -177,7 +177,7 @@ module.exports = {
       if (domains.includes(data.site)) {
 
         await doBuild(site, userInfo)
-        ctx.send({ message: `${data.site} LIVE-i kopeeritud` });
+        ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
       } else {
         return ctx.badRequest("site not found");
@@ -244,7 +244,7 @@ module.exports = {
     let sanitizedResult
     let tries = 0
 
-    while (!result.in_queue && tries < 100) {
+    while (!result.in_queue && tries < 500) {
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
       sanitizedResult = {

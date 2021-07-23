@@ -257,7 +257,13 @@ main.grid_film(id=self.id)
 
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
-                - var filmDirectors = film.credentials.rolePerson.filter( (a) => { return 'Director' === a.role_at_film.roleNamePrivate })
+                - var filmDirectors = film.credentials.rolePerson.filter(a => {
+                -        if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate ) {
+                -            return true
+                -        } else {
+                -            return false
+                -        }
+                -    })
 
                 - var filmDirectorsSorted = filmDirectors.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
 
@@ -511,11 +517,11 @@ main.grid_film(id=self.id)
 
 
                                         if screening.bookingUrl
-                                            a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
                                         //- if screening.ticketingUrl
                                         //-     a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
-                                        a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                                        a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                                        a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${screening.id}, "${screening.codeAndTitle}", "${screening.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
+                                        a.btn.btn_primary.active.issavedscreening(id=screening.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${screening.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id  btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 

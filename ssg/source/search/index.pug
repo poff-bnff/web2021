@@ -63,7 +63,7 @@ block content
             - var sortedCassettes = self.data.cassettes.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
             //- else
             //-     - var sortedCassettes = []
-            each cassette in sortedCassettes
+            each cassette in sortedCassettes.filter(c => !(c.festival_editions.map(fe => fe.id).includes(9)))
                 - var oneCassette = []
                 if cassette.festival_editions
                     each edition in cassette.festival_editions

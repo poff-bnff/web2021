@@ -14,12 +14,14 @@ domain:
 domains_show_cassetes_wo_screenings:
     - poff.ee
     - hoff.ee
+    - tartuff.ee
 
 cassettes_festival_editions:
     poff.ee:
         - 7
+        - 8
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
@@ -31,7 +33,7 @@ cassettes_festival_editions:
     kumu.poff.ee:
         - 6
     tartuff.ee:
-        - 0
+        - 10
     oyafond.ee:
         - 0
     filmikool.poff.ee:
@@ -41,7 +43,7 @@ programmes_festival_editions:
     poff.ee:
         - 7
     justfilm.ee:
-        - 3
+        - 8
     kinoff.poff.ee:
         - 4
     industry.poff.ee:
@@ -53,7 +55,7 @@ programmes_festival_editions:
     kumu.poff.ee:
         - 6
     tartuff.ee:
-        - 0
+        - 10
     oyafond.ee:
         - 0
     filmikool.poff.ee:

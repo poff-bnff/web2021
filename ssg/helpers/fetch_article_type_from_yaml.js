@@ -30,6 +30,8 @@ const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
+console.log('fetch_article_type_from_yaml.js target_id', target_id);
+
 const minimodel = {
     'article_types': {
         model_name: 'ArticleType'
@@ -164,6 +166,7 @@ for (const lang of languages) {
         }
 
         if (element.article_types) {
+
             for (artType of element.article_types) {
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
@@ -171,6 +174,7 @@ for (const lang of languages) {
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
 
                 fs.mkdirSync(element.directory, { recursive: true });
+
                 for (key in element) {
 
                     if (key === "slug") {
@@ -195,6 +199,12 @@ for (const lang of languages) {
 
                 if (DOMAIN === 'industry.poff.ee' && artTypeName.length > 1 ) {
                     article_template  = `/_templates/article_industry_${artType.name}_index_template.pug`
+                }
+
+                // If target build, delete old single article data
+                if (param_build_type === 'target' && fs.existsSync(`${element.directory}/data.${lang}.yaml`)) {
+                    console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
+                    fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
                 }
 
                 let yamlStr = yaml.dump(element, { 'indent': '4' });

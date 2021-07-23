@@ -36,11 +36,14 @@ const getBuildEstimateDuration = async (buildArgs) => {
 
     result = JSON.parse(result)
 
-    if (buildArgs !== result.build_args) {
+    // Skip if not server build, do not skip if saved collection type is film as then cassette build log estimate shall be shown
+    if (buildArgs.split(' ')[0] !== 'film' && buildArgs !== result.build_args) {
       // Not server build
       console.log('Not server build ', buildArgs, result.build_args);
       return null
     }
+
+    console.log('Estimate shown for log id', result.id);
 
     let s = result.queue_est_duration
     const ms = s % 1000;
@@ -62,7 +65,7 @@ const getBuildEstimateDuration = async (buildArgs) => {
         type: 'success',
         message: notifyMessage,
         // blockTransition: true
-        timeout: 15000
+        timeout: 60000
       });
     }
   }

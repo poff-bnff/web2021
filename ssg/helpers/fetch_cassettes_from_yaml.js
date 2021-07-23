@@ -36,7 +36,7 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films'])
+    addConfigPathAliases(['/films', '/search'])
 }
 
 
@@ -198,7 +198,35 @@ const minimodel_cassette = {
         // }
     },
 }
-const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+
+// koondnimekirja tootmisel tehakse:
+// nimekiri A kõikidest üksikkassettidest
+// nimekiri B kõigist mitmikkassettidest
+// nimekirjast A visatakse välja kõik kassetid, mille film figureerib nimekirjas B, ja millel on boolean === false
+// koondminekiri salvestatakse A + B
+
+const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
+const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length > 1) {
+        c.orderedFilms.map(f => {
+            if (!f.film.multi_and_single) {
+                FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.film.id)
+            }
+        })
+        return true
+    }
+})
+
+const STRAPIDATA_CASSETTES_A = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length === 1 && !FILMS_IN_LIST_B_BOOLEAN_FALSE.includes(c.orderedFilms[0].film.id)) {
+        return true
+    } else {
+        return false
+    }
+})
+
+const STRAPIDATA_CASSETTES = STRAPIDATA_CASSETTES_A.concat(STRAPIDATA_CASSETTES_B)
 
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].domain);
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].festival);
@@ -302,13 +330,6 @@ for (const lang of allLanguages) {
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
 
-
-        if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
-            continue
-        } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
-            console.log('Targeting cassette in screening', s_cassette.id, target_id)
-        }
-
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
@@ -334,7 +355,7 @@ for (const lang of allLanguages) {
 
         if (typeof slugEn !== 'undefined') {
 
-            if (param_build_type === 'target') {
+            if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
 
@@ -607,7 +628,12 @@ for (const lang of allLanguages) {
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+                    continue
+                } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
+                    console.log('Targeting cassette ', s_cassette.id, target_id)
+                    // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                }
                 generateYaml(s_cassette_copy, lang)
             } else {
                 cassettesWithOutSpecifiedScreeningType.push(s_cassette_copy.id)

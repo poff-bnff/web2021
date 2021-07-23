@@ -170,7 +170,8 @@ async function get_domain(result) {
             }
         }
     }
-    return domain
+    // New set to eliminate duplicate domains
+    return [...new Set(domain)]
 }
 
 function get_programme_out_of_cassette(result) {
@@ -324,7 +325,11 @@ async function call_delete(result, domains, model_name) {
         result = result.sort((a, b) => b.id - a.id)[0]
     }
     await modify_stapi_data(result, model_name, true)
-    await call_build(result, domains, model_name, true)
+
+    // Film build is done by its cassettes if any
+    if (model_name !== 'film') {
+      await call_build(result, domains, model_name, true)
+    }
 }
 
 exports.call_update = call_update
