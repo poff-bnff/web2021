@@ -112,11 +112,13 @@ main.grid_film(id=self.id)
                                         return itemNames
                                     }
                                     var festivalEditions = []
+                                    var festivalEditionsIds = []
                                 each programme in film.tags.programmes
                                     if programme.festival_editions && programme.festival_editions.length
                                         each festivalEdition in programme.festival_editions
                                             if festivalEdition.name
                                                 - festivalEditions.push(festivalEdition.name)
+                                                - festivalEditionsIds.push(festivalEdition.id)
                                 - var uniqueFestivalEditions = [...new Set(festivalEditions)]
                                 if uniqueFestivalEditions != undefined && uniqueFestivalEditions.length > 0
                                     .str_info_meta_label.dark_semi= self.label.film.festival
