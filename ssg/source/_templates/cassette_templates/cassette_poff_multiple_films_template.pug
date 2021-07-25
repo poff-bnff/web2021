@@ -470,6 +470,7 @@ else
                                 each programme in film.tags.programmes
                                     if programme.festival_editions
                                         - var festivalEditions = programme.festival_editions.map(programmeNames).join(', ')
+                                        - var festivalEditionsIds = programme.festival_editions.map(fe => fe.id)
                                         if festivalEditions.length > 0
                                             .str_info_meta_label.dark_1= self.label.film.programme
                                             .str_info_meta_festival= festivalEditions
@@ -596,6 +597,7 @@ else
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
                         .str_info_value= film.languages.map(languagesNames).join(', ')
+
             //- section.f_interactive_box
             //-     .f_interactive_item
             //-         p
