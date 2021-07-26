@@ -642,10 +642,11 @@ else
             //-             if director.person.filmography && typeof director.person.filmography !== 'object'
             //-                 p.dark_1= director.person.filmography
 
-            var festivalEditionsIds = []
-                film?.tags?.programmes?.map(pr => {
-                    pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
-                })
+            -
+                var festivalEditionsIds = []
+                    film?.tags?.programmes?.map(pr => {
+                        pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
+                    })
 
             if festivalEditionsIds.includes(5)
                 section.f_interactive_box
