@@ -240,6 +240,18 @@ main.grid_cassette
         +rmOldScreeningButtons
 
 
+
+    if festivalEditionsIds.includes(5)
+                section.f_interactive_box
+                    //- .f_interactive_item
+                    //-     p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+
+                    //-     a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`saveFilmAsFavourite(${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+                    //-     a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`removeFilm(${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+
+                    .f_interactive_item
+                        a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
+
     if self.tags && self.tags.programmes && self.tags.programmes.map(a => a.presentedBy || false).length
         -
             var presenters = self.tags.programmes.map((a) => {
@@ -629,6 +641,22 @@ else
             //-                 p.dark_1= director.person.biography
             //-             if director.person.filmography && typeof director.person.filmography !== 'object'
             //-                 p.dark_1= director.person.filmography
+
+            var festivalEditionsIds = []
+                film?.tags?.programmes?.map(pr => {
+                    pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
+                })
+
+            if festivalEditionsIds.includes(5)
+                section.f_interactive_box
+                    //- .f_interactive_item
+                    //-     p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+
+                    //-     a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`saveFilmAsFavourite(${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+                    //-     a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`removeFilm(${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+
+                    .f_interactive_item
+                        a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
 
             if film.presentedBy && film.presentedBy.presentedByText && film.presentedBy.organisations && film.presentedBy.organisations[0]
 
