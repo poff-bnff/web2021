@@ -41,7 +41,7 @@ const thereIsSomeWhereToLinkTo = [
   'product',
   'product-category',
   'festival-pass',
-  'shop'
+  'shop',
 ]
 
 const pathBeforeSlug = {
@@ -65,7 +65,9 @@ const pathBeforeSlug = {
   'bruno-supporter': 'toetajad/',
   'filmikool-supporter': 'toetajad/',
   'course': 'courses/',
-  'event': 'courses/'
+  'event': 'courses/',
+  'shop': 'shop/',
+  'product-category': '/',
 }
 
 const addS = async (result) => {
