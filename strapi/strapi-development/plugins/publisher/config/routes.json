@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/last-failed-build-logs",
+      "handler": "publisher.lastFailedBuildLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/my-started-build-log",
       "handler": "publisher.myStartedBuildLog",
       "config": {

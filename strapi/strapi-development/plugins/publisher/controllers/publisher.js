@@ -233,6 +233,17 @@ module.exports = {
     return result
 
   },
+  lastFailedBuildLogs: async (ctx) => {
+    const params = {
+      build_errors_null: false,
+      type: 'build',
+      _sort: 'id:desc'
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    (result.length > 0) ? result = await addS(result) : result = result
+    return result
+
+  },
   myStartedBuildLog: async (ctx) => {
     const params = {
       'admin_user.id': ctx.state.admin.id,
