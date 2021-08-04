@@ -27,5 +27,6 @@ const resetPswd = async () => {
     if (response.resetSuccess) {
         grid_resetPswd.style.display = 'none'
         backToLoginBtn.style.display = ''
+        pswResetSuccessText.style.display = ''
     }
 }
