@@ -593,7 +593,7 @@ const logAuthDateTime = async (id, last10Logins, provider, lang) => {
   const updateData = { last10Logins: last10Logins }
   const user = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 
-  notifyUserAuthDateTime(user, authTime, lang)
+  // notifyUserAuthDateTime(user, authTime, lang)
 }
 
 const notifyAboutMerge = async (user, addedProvider) => {
