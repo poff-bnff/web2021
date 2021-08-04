@@ -9,7 +9,7 @@ if (validToken) {
 }
 
 async function getUserProfile() {
-        let response = await fetch(`http://localhost:1337/users/me`, {
+        let response = await fetch(`${strapiDomain}/users/me`, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
@@ -292,7 +292,7 @@ async function deleteAccount() {
 
         const userProfile = await getUserProfile()
         let currentUserID = userProfile.id 
-        const response = await fetch(`http://localhost:1337/users/${currentUserID}`, requestOptions)
+        const response = await fetch(`${strapiDomain}/users/${currentUserID}`, requestOptions)
 
         console.log(response.status)
         if (response.ok) {
