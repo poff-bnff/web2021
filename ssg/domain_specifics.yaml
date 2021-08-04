@@ -42,6 +42,7 @@ cassettes_festival_editions:
 programmes_festival_editions:
     poff.ee:
         - 7
+        - 10
     justfilm.ee:
         - 8
     kinoff.poff.ee:
