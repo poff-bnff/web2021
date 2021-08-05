@@ -305,6 +305,22 @@ module.exports = {
     return result
 
   },
+  lastLogBySite: async (ctx) => {
+
+    const params = { 
+      site: ctx.params.site
+    }
+
+    const result = await strapi.query("build_logs", "publisher").findOne(params);
+    if (result.admin_user) {
+      result.admin_user = {
+        firstname: result.admin_user.firstname || null,
+        lastname: result.admin_user.lastname || null
+      }
+    }
+    return result
+
+  },
   updatelog: async (ctx) => {
 
     const params = { id: ctx.params.id }

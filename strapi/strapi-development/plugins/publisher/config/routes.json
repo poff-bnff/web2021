@@ -56,6 +56,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/one-log-by-site/:site",
+      "handler": "publisher.lastLogBySite",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/updatelog/:id",
       "handler": "publisher.updatelog",
