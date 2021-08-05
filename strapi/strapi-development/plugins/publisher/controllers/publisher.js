@@ -305,10 +305,11 @@ module.exports = {
     return result
 
   },
-  lastLogBySite: async (ctx) => {
+  lastBuildLogBySite: async (ctx) => {
 
     const params = { 
-      site: ctx.params.site
+      site: ctx.params.site,
+      _sort: 'id:desc'
     }
 
     const result = await strapi.query("build_logs", "publisher").findOne(params);

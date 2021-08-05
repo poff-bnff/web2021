@@ -57,8 +57,8 @@
     },
     {
       "method": "GET",
-      "path": "/one-log-by-site/:site",
-      "handler": "publisher.lastLogBySite",
+      "path": "/last-build-log-by-site/:site",
+      "handler": "publisher.lastBuildLogBySite",
       "config": {
         "policies": []
       }
