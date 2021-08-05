@@ -309,7 +309,8 @@ module.exports = {
 
     const params = { 
       site: ctx.params.site,
-      _sort: 'id:desc'
+      _sort: 'id:desc',
+      type: 'build'
     }
 
     const result = await strapi.query("build_logs", "publisher").findOne(params);
