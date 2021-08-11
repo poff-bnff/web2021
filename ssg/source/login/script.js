@@ -96,9 +96,16 @@ async function loginViaCognito() {
 
 
 
-        if (response2.email && !response2.confirmed) {
+        if (response2.email && response2.confirmed === false) {
             // console.log(1)
             document.getElementById('unConfirmed').style.display = 'block'
+            return
+        }
+
+        if (response2.email && response2.status === "FORCE_CHANGE_PASSWORD") {
+            // console.log(1)
+            document.getElementById('forceResetPswd').style.display = 'block'
+            doResetPassword()
             return
         }
 
