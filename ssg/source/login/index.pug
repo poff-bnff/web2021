@@ -16,6 +16,8 @@ block content
 
                 h4.dark_1.login_headline#loginMessage= self.label.userprofile.loginPw
 
+                p#forceResetPswd(style={display:'none'})= self.label.userprofile.forceResetPswd
+
                 div#userName
                     label.login_label(for='loginUsername')= self.label.userprofile.email
                     input.login_input#loginUsername(type='text', oninput='validateEmail(this.id)')
@@ -80,7 +82,7 @@ block content
 
                 a#loginE(href=`https://api.poff.ee/auth/eventival`)
                     .button.login_btn_social
-                        | Eventival        
+                        | Eventival
 
             a#loginE(href=`https://api.poff.ee/auth/eventival`)
                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
