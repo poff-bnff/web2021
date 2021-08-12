@@ -240,6 +240,8 @@ function doSaveNewPswd() {
     document.getElementById('passwordRep').style.display = 'none'
     document.getElementById('forgotPasswordBtn').style.display = 'none'
     document.getElementById('pswdResetEnterNewMessage').style.display = 'none'
+    document.getElementById('forceResetPswd').style.display = 'none'
+
     document.getElementById('pswdResetCompletedMessage').style.display = 'block'
     document.getElementById('loginBtn').style.display = 'block'
     document.getElementById('loginPassword').value = ''
