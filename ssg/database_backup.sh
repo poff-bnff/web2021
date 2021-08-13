@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATABASE="strapi_29061450"
+DATABASE="strapi"
 BACKUPPREFIX="db_$DATABASE"
 BACKUPDIR="/srv/backup/database/"
 echo "Backing up database $DATABASE"
