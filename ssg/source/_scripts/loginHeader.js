@@ -3,7 +3,7 @@ var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
-var strapiDomain = 'https://strapi.pennaste.eu'
+var strapiDomain = 'https://dev.poff.ee'
 // var strapiDomain = 'http://localhost:1337'
 
 
