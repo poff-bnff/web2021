@@ -31,6 +31,13 @@
       "config": {
         "policies": []
       }
+    },    {
+      "method": "GET",
+      "path": "/last-twenty-build-fails-of-site/:site",
+      "handler": "publisher.lastTwentyBuidFailsOfSite",
+      "config": {
+        "policies": []
+      }
     },
     {
       "method": "GET",
@@ -44,6 +51,14 @@
       "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/last-build-log-by-site/:site",
+      "handler": "publisher.lastBuildLogBySite",
       "config": {
         "policies": []
       }

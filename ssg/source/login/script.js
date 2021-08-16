@@ -16,7 +16,7 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
     document.getElementById('fromFavo').style.display = ''
 }
 
-// External provider 'social' login 
+// External provider 'social' login
 if (window.location.hash) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
@@ -132,9 +132,9 @@ const handleResponse = response => {
             emailUsed.innerHTML = loginUsername.value
         }
 
-        // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message 
-        let strapiError = response.message 
-        typeof strapiError !== 'string' ? strapiError = response.error : null 
+        // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message
+        let strapiError = response.message
+        typeof strapiError !== 'string' ? strapiError = response.error : null
 
         switch (strapiError) {
             case ('Auth.form.error.confirmed'):
@@ -154,7 +154,7 @@ const handleResponse = response => {
                 break;
             case ('pswdResetRequired'):
                 doResetPassword('server')
-                break;    
+                break;
             default:
                 const errorNotifBar = document.getElementById('errorNotificationBar')
                 errorNotifBar.style.display = ''
@@ -222,7 +222,7 @@ const cleanUiMessages = () => {
     clearMe(errorNotificationBar)
 }
 
-const clearMe = elem => elem.innerText = '' 
+const clearMe = elem => elem.innerText = ''
 
 const closeMe = elem => elem.style.display = 'none'
 
@@ -282,7 +282,7 @@ async function sendResetCode() {
     document.getElementById('forgotPasswordBtn').style.display = 'none'
     document.getElementById('pswdResetCodeSent').style.display = ''
     document.getElementById('backToLoginBtn').style.display = ''
-    
+
     let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
 
 }

@@ -15,12 +15,14 @@ block content
         h4#fromFavo(style={display:'none'})= self.label.userprofile.redirectFromFavouritesMessage
 
     section.grid_login
-        - var strapiDomain = 'http://localhost:1337'
+        - var strapiDomain = 'https://dev.poff.ee'
         if process.env['DOMAIN'] !== 'industry.poff.ee'
 
             .login_password
 
                 h4.dark_1.login_headline#loginMessage= self.label.userprofile.loginPw
+
+                p#forceResetPswd(style={display:'none'})= self.label.userprofile.forceResetPswd
 
                 div#userName
                     label.login_label(for='loginUsername')= self.label.userprofile.email
@@ -34,7 +36,7 @@ block content
 
                 div#passwordRep(style={display: 'none'})
                     label.login_label( for='loginPasswordRep')= self.label.userprofile.passwordRepeat
-                    input.ogin_input#loginPasswordRep(type='password')
+                    input.login_input#loginPasswordRep(type='password')
 
                 button.login_btn_primary#loginBtn(onclick='loginViaProvider("local")')= self.label.userprofile.signIn
 
@@ -83,7 +85,7 @@ block content
 
                 a#loginE(onclick='loginViaProvider(this.textContent)')
                     .button.login_btn_social
-                        | Eventival        
+                        | Eventival
 
             a#loginE(href=`https://api.poff.ee/auth/eventival`)
                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
@@ -97,7 +99,7 @@ block content
 
                 button.login_btn_secondary#signUpBtn(onclick='directToSignup()')= self.label.userprofile.register
 
-    
+
 
     style.
         .invalid {background-color: #f5e4e9; display: block; color: black}

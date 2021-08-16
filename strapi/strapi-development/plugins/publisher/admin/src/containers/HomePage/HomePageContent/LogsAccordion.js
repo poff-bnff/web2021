@@ -51,13 +51,15 @@ const LogsAccordion = ({ site }) => {
           end = '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯'
         };
 
+        const has_failed = oneLogEntry?.build_errors?.length && oneLogEntry.build_errors !== "Creating/updating this object needs all domain sites to rebuild." ? "FAILED" : null
+
         return {
           log_id: log_id,
           user: user,
           type: type,
           start_time: start,
           end_time: end,
-          error_code: oneLogEntry.error_code
+          error_code: has_failed
         };
       });
 
