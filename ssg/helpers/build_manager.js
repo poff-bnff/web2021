@@ -20,7 +20,8 @@ let strapiPort
 if (production) {
     https = require('https')
     strapiAddress = process.env['StrapiHostPoff2021']
-    console.log('HOST', process.env['StrapiHostPoff2021'])
+    console.log('StrapiHostPoff2021', process.env['StrapiHostPoff2021'])
+    console.log('StrapiHost', process.env['StrapiHost'])
 } else {
     https = require('http')
     strapiAddress = 'localhost'
