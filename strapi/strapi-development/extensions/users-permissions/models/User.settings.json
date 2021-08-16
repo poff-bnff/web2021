@@ -84,6 +84,14 @@
       "type": "component",
       "repeatable": false,
       "component": "user.imported-to-strapi"
+    },
+    "my_films": {
+      "via": "users_permissions_user",
+      "collection": "my-films"
+    },
+    "my_screenings": {
+      "via": "users_permissions_user",
+      "collection": "my-screenings"
     }
   }
 }

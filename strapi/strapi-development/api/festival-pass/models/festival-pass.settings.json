@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "festival_passes",
   "info": {
-    "name": "Product_Pass"
+    "name": "Product_Pass",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "product_type": {
@@ -32,6 +34,19 @@
       "type": "component",
       "repeatable": true,
       "component": "ticketing.ticketing-rights"
+    },
+    "reservation_time": {
+      "type": "datetime"
+    },
+    "reserved_to": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "reservation_expired": {
+      "type": "datetime"
+    },
+    "reservation_price": {
+      "type": "decimal"
     }
   }
 }

@@ -1,12 +1,13 @@
 {
   "kind": "collectionType",
-  "collectionName": "tag_programmes",
+  "collectionName": "tag_film_types",
   "info": {
-    "name": "TagProgramme"
+    "name": "TagFilmType"
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "et": {
@@ -17,6 +18,10 @@
     },
     "ru": {
       "type": "string"
+    },
+    "pof_fi_article": {
+      "via": "tag_film_types",
+      "model": "pof-fi-article"
     }
   }
 }
