@@ -20,7 +20,7 @@ const resolveController = ctx => {
   const {
     state: { isAuthenticatedAdmin },
   } = ctx;
-
+  console.log('resolveController function')
   return isAuthenticatedAdmin ? adminUserController : apiUserController;
 };
 
