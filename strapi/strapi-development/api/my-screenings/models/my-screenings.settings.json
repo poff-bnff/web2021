@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "my_screenings",
+  "info": {
+    "name": "MyScreenings"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "my_screenings"
+    },
+    "screening": {
+      "model": "screening"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "shortlist",
+        "other"
+      ],
+      "default": "other"
+    }
+  }
+}
