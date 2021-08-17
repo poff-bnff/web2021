@@ -27,7 +27,7 @@ function displayConfigPathAliases() {
 if (process.argv[2]) {
     if (process.argv[2] === 'display') {
         displayConfigPathAliases()
-    } else if (process.argv[2] === 'loginpaths') {
+    } else if (process.argv[2] === 'login') {
         addConfigPathAliases([
             '/login'
         ])

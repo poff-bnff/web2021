@@ -4,7 +4,7 @@ THISDIR=${PWD##*/}
 
 export DOMAIN="poff.ee"
 
-echo "Build $DOMAIN, LOGINPAGES"
+echo "Build $DOMAIN, LOGIN PAGES"
 
 BASEDIR=$(dirname "$BASH_SOURCE")
 cd "$BASEDIR"
