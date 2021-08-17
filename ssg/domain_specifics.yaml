@@ -138,7 +138,7 @@ defaultLocale:
 
 vialogUrls:
     et:
-        - "https://poff.ee/films/"
+        - "https://poff.ee/film/"
         - "https://justfilm.ee/film/"
         - "https://shorts.poff.ee/film/"
         - "https://kinoff.ee/film/"
