@@ -48,58 +48,59 @@ function deleteFromZone(file_name) {
 
 module.exports = () => {
 
-  let fileData = { "files": [] }
-  let file = '/srv/strapi/imgList.json'
+  // let fileData = { "files": [] }
+  // let file = '/srv/strapi/imgList.json'
 
-  jsonfile.readFile(file, function (err, obj) {
-    fileData.files = obj?.files
-    // console.log(fileData.files)
-  })
+  // jsonfile.readFile(file, function (err, obj) {
+  //   fileData.files = obj?.files
+  //   // console.log(fileData.files)
+  // })
 
-  // Initialize watcher.
-  const watcher = chokidar.watch('public/uploads', {
-    ignored: /(^|[\/\\])\../, // ignore dotfiles
-    persistent: true
-  });
+  // // Initialize watcher.
+  // const watcher = chokidar.watch('public/uploads', {
+  //   ignored: /(^|[\/\\])\../, // ignore dotfiles
+  //   persistent: true,
+  //   ignoreInital: true
+  // });
 
-  // Something to use when events are received.
-  const log = console.log.bind(console);
-  // Add event listeners.
-  watcher
-    .on('add', path => {
+  // // Something to use when events are received.
+  // const log = console.log.bind(console);
+  // // Add event listeners.
+  // watcher
+  //   .on('add', path => {
 
-      let fileName = path.split('/')[2]
-      // log(`file -> ${fileName} with path ${path} has been added`)
+  //     let fileName = path.split('/')[2]
+  //     // log(`file -> ${fileName} with path ${path} has been added`)
 
-      if (!fileData.files.includes(path)) {
+  //     if (!fileData.files.includes(path)) {
 
-        fileData.files.push(path)
-        jsonfile.writeFile(file, fileData, function (err) {
-          if (err) console.log(err)
-        })
-        console.log(`adding ${fileName} to zone`)
-        writeToZone(fileName)
-      }
+  //       fileData.files.push(path)
+  //       jsonfile.writeFile(file, fileData, function (err) {
+  //         if (err) console.log(err)
+  //       })
+  //       console.log(`adding ${fileName} to zone`)
+  //       writeToZone(fileName)
+  //     }
 
-    })
+  //   })
 
-    .on('unlink', path => {
+  //   .on('unlink', path => {
 
-      if (!path.startsWith('public/uploads/thumbnail')) {
-        let fileName = path.split('/')[2]
-        log(`File ${path} has been removed`)
+  //     if (!path.startsWith('public/uploads/thumbnail')) {
+  //       let fileName = path.split('/')[2]
+  //       log(`File ${path} has been removed`)
 
-        fileData.files.splice(fileData.files.indexOf(path), 1)
-        jsonfile.writeFile(file, fileData, function (err) {
-          if (err) console.log(err)
-        })
+  //       fileData.files.splice(fileData.files.indexOf(path), 1)
+  //       jsonfile.writeFile(file, fileData, function (err) {
+  //         if (err) console.log(err)
+  //       })
 
-        console.log(`delete ${fileName} from zone `);
-        deleteFromZone(fileName)
+  //       console.log(`delete ${fileName} from zone `);
+  //       deleteFromZone(fileName)
 
-      }
+  //     }
 
-    })
+  //   })
 
   // If build queue exists, restart build manager to continue with the queue
   let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)

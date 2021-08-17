@@ -29,6 +29,9 @@ const apiUserController = require('../controllers/user/api');  //c
 const connect = (provider, query) => {
   const access_token = query.access_token || query.code || query.oauth_token;
 
+  console.log(`services.providers.connect accesstoken,`, access_token)
+
+
   return new Promise((resolve, reject) => {
     if (!access_token) {
       return reject([null, { message: 'No access_token.' }]);
@@ -37,11 +40,13 @@ const connect = (provider, query) => {
     // Get the profile.
     getProfile(provider, query, async (err, profile) => {
       if (err) {
+        console.log('Services providers getProfile error', err);
         return reject([null, err]);
       }
 
       // We need at least the mail.
       if (!profile.email) {
+        console.log('Services providers getProfile no email', err);
         return reject([null, { message: 'Email was not available.' }]);
       }
 
@@ -60,6 +65,7 @@ const connect = (provider, query) => {
           .get();
 
         let user = _.find(users, { provider });
+
 
         if (users.length > 0) {
           user = users[0]
@@ -84,6 +90,7 @@ const connect = (provider, query) => {
         }
 
         if (!_.isEmpty(user)) {
+          console.log('If no user then resolve');
           return resolve([user, null]);
         }
 
@@ -112,6 +119,7 @@ const connect = (provider, query) => {
 
         const createdUser = await strapi.query('user', 'users-permissions').create(params);
 
+        console.log('Services Providers. User created: ', {createdUser});
         return resolve([createdUser, null]);
       } catch (err) {
         reject([null, err]);
@@ -227,6 +235,7 @@ const getProfile = async (provider, query, callback) => {
           if (err) {
             callback(err);
           } else {
+            console.log('Providers Google', body.email, ' now callback');
             callback(null, {
               username: body.email.split('@')[0],
               email: body.email,

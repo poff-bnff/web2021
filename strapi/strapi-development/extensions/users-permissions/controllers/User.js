@@ -6,6 +6,7 @@
  * @description: A set of functions called "actions" for managing `User`.
  */
 
+console.log('controllers userjs')
 const _ = require('lodash');
 const { sanitizeEntity } = require('strapi-utils');
 const adminUserController = require('./user/admin');
@@ -25,6 +26,7 @@ const resolveController = ctx => {
 };
 
 const resolveControllerMethod = method => ctx => {
+  console.log('user-permissions controllers userjs resolveControllerMethod')
   const controller = resolveController(ctx);
   const callbackFn = controller[method];
 
@@ -119,6 +121,7 @@ module.exports = {
    * @return {Object|Array}
    */
   async me(ctx) {
+    console.log('User GET me');
     const user = ctx.state.user;
 
     if (!user) {

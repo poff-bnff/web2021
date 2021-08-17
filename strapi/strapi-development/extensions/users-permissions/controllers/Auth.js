@@ -169,6 +169,7 @@ module.exports = {
       // Connect the user with the third-party provider.
       let user, error;
       try {
+        console.log('Connect the user with the third-party provider');
         [user, error] = await strapi.plugins['users-permissions'].services.providers.connect(
           provider,
           ctx.query
@@ -180,7 +181,8 @@ module.exports = {
       if (!user) {
         return ctx.badRequest(null, error === 'array' ? error[0] : error);
       }
-
+      
+      console.log('Controllers Auth Callback - Issue JWT for the user');
       ctx.send({
         jwt: strapi.plugins['users-permissions'].services.jwt.issue({
           id: user.id,
@@ -535,6 +537,7 @@ module.exports = {
       }
 
       const user = await strapi.query('user', 'users-permissions').create(params);
+      console.log('controllers Auth register');
 
       const sanitizedUser = sanitizeEntity(user, {
         model: strapi.query('user', 'users-permissions').model,

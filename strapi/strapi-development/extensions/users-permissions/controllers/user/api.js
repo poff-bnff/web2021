@@ -18,6 +18,7 @@ module.exports = {
    * @return {Object}
    */
   async create(ctx) {
+    console.log('CREATE USER');
     const advanced = await strapi
       .store({
         environment: '',
@@ -95,6 +96,8 @@ module.exports = {
    */
 
   async update(ctx) {
+    console.log('users-permissions controllers user api update');
+
     const advancedConfigs = await strapi
       .store({
         environment: '',
@@ -171,7 +174,7 @@ module.exports = {
     ctx.send(sanitizeUser(data));
   },
   async updateme(ctx) {
-  
+    console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
     const { password } = ctx.request.body;
  
