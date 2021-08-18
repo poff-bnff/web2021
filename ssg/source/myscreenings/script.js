@@ -58,11 +58,11 @@ function setSearchParams() {
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
         pageLoaded = true
-        pageLoadingAndUserprofileCompleted()
+        pageLoadingAndUserProfileFetched()
     }
 };
 
-function pageLoadingAndUserprofileCompleted() {
+function pageLoadingAndUserProfileFetched() {
     if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
     const loading = document.getElementById('loading');
     // const content = document.getElementById('content');
@@ -84,10 +84,15 @@ function toggleAll(exclude_selector_name) {
     setSearchParams()
     // Kui on kasutaja profiilis lemmikseansid, siis kuvab pärast filtreid järelejäänud seansse nende alusel
     if (userProfile && userProfile.my_screenings && userProfile.my_screenings.length) {
-        var userScreeningIds = userProfile.my_screenings.map(srnid => srnid.screening.toString())
+        var PrepareUserMyScreeningsIds = userProfile.my_screenings
+            .filter(myFavoriteLists => myFavoriteLists.type === "favorite")
+            .map(myScreenings => myScreenings.cassettes)
+            .flat()
+            .map(cassette => cassette.id)
+        var userMyScreeningsIds = [...new Set(PrepareUserMyScreeningsIds)]
         var allIds = execute_filters()
-        ids = allIds.filter(id => userScreeningIds.includes(id))
-        console.log('MyscreeningIDs', {userScreeningIds}, {allIds}, {ids});
+        ids = allIds.filter(id => userMyScreeningsIds.includes(id))
+        console.log('MyscreeningIDs', {userMyScreeningsIds}, {allIds}, {ids});
     } else {
         console.log('Show all screenings because no user');
         ids = execute_filters()
