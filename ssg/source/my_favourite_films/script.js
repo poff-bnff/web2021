@@ -97,6 +97,13 @@ function toggleAll(exclude_selector_name) {
         ids = execute_filters()
     }
 
+    // kuva/peida 'pole vasteid'
+    if (ids.length) {
+        nonetoshow.style.display = "none"
+    } else {
+        nonetoshow.style.display = "grid"
+    }
+
     // kuva/peida kassette
     let cards = document.querySelectorAll('[class="card_film"]')
     cards.forEach(card => {
