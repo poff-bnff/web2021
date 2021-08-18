@@ -1,0 +1,5 @@
+path: favorite
+data:
+    cassettes: /_fetchdir/cassettes.et.yaml
+    search: /_fetchdir/search_films.et.yaml
+    filters: /_fetchdir/filters_films.et.yaml
