@@ -1,4 +1,4 @@
-path: favorite
+path: favourite
 data:
     cassettes: /_fetchdir/cassettes.et.yaml
     search: /_fetchdir/search_films.et.yaml
