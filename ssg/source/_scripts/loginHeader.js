@@ -194,7 +194,7 @@ function useUserData(userProf){
         userProfileHasBeenLoaded = true
         console.log('Trying userprofile 2', userProfileHasBeenLoaded);
 
-        pageLoadingAndUserprofileCompleted()
+        pageLoadingAndUserProfileFetched()
     }catch(err){
         null
     }
