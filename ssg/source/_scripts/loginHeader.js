@@ -3,9 +3,11 @@ var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
+let userProfileHasBeenLoaded = false
 var strapiDomain = 'https://dev.poff.ee'
 // var strapiDomain = 'http://localhost:1337'
 
+console.log('testconsolelog');
 
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
@@ -162,7 +164,9 @@ function saveUrl(){
 
 
 function useUserData(userProf){
-    if(userProf.person_test_2.firstName){
+    console.log('Trying userprofile 1', userProfileHasBeenLoaded);
+
+    if(userProf.person_test_2 && userProf.person_test_2.firstName){
         try{
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.person_test_2.firstName
         }catch(err){
@@ -184,6 +188,14 @@ function useUserData(userProf){
         loadMyFavFilms()
     }catch(err){
         // console.log(err)
+        null
+    }
+    try{
+        userProfileHasBeenLoaded = true
+        console.log('Trying userprofile 2', userProfileHasBeenLoaded);
+
+        pageLoadingAndUserprofileCompleted()
+    }catch(err){
         null
     }
     try{

@@ -2,7 +2,7 @@ const search_input = document.getElementById('search');
 const nonetoshow = document.getElementById('nonetoshow');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-
+var pageLoaded = false
 
 if (!validToken) {
     window.open(`${location.origin}/${langpath}login`, '_self')
@@ -56,41 +56,40 @@ function setSearchParams() {
 }
 
 document.onreadystatechange = () => {
-    const loading = document.getElementById('loading');
-    // const content = document.getElementById('content');
-    const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
-        urlSelect()
-        filters.style.display = "grid"
-        loading.style.display = "none"
-        // content.style.display = ""
-
-        for (img of document.images) {
-            img_src = img.src || ''
-            if (img_src.includes('thumbnail_')) {
-                    img.src = img_src.replace('thumbnail_', '')
-            }
-        }
+        pageLoaded = true
+        pageLoadingAndUserprofileCompleted()
     }
 };
 
-function select_next_or_previous(which, id) {
-    var select = document.getElementById(id);
-    if (which === '+') {
-        select.selectedIndex++;
-    } else {
-        select.selectedIndex--;
+function pageLoadingAndUserprofileCompleted() {
+    if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
+    const loading = document.getElementById('loading');
+    // const content = document.getElementById('content');
+    const filters = document.getElementById('filters');
+    urlSelect()
+    filters.style.display = "grid"
+    loading.style.display = "none"
+    // content.style.display = ""
+
+    for (img of document.images) {
+        img_src = img.src || ''
+        if (img_src.includes('thumbnail_')) {
+                img.src = img_src.replace('thumbnail_', '')
+        }
     }
-    toggleAll(id);
 }
 
 function toggleAll(exclude_selector_name) {
     setSearchParams()
-
     // Kui on kasutaja profiilis lemmikseansid, siis kuvab pärast filtreid järelejäänud seansse nende alusel
-    if (userProfile && userProfile.savedscreenings && userProfile.savedscreenings.length) {
-        ids = execute_filters().filter(id => userProfile.savedscreenings.map(srnid => srnid.screeningId).includes(id))
+    if (userProfile && userProfile.my_screenings && userProfile.my_screenings.length) {
+        var userScreeningIds = userProfile.my_screenings.map(srnid => srnid.screening.toString())
+        var allIds = execute_filters()
+        ids = allIds.filter(id => userScreeningIds.includes(id))
+        console.log('MyscreeningIDs', {userScreeningIds}, {allIds}, {ids});
     } else {
+        console.log('Show all screenings because no user');
         ids = execute_filters()
     }
 

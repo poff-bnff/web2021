@@ -1,6 +1,8 @@
 // console.log("eelmine leht oli", document.referrer)
 // console.log(langpath)
 
+console.log('Uuendatud2')
+
 //info kasutajale kui suunatakse tagasi lemmikutest, profiili vaatest või minu
 if ([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)) {
     // console.log("tulid profiilist")
@@ -77,6 +79,7 @@ const composeRequest = requestCase => {
 
     switch (requestCase) {
         case ('social'):
+		console.log('Social provider')
             const { provider, access_token } = getAccessTokenWithProvider()
             request.route = `/auth/${provider}/callback?${access_token}`
             request.method = 'GET'
