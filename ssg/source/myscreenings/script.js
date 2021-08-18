@@ -85,10 +85,10 @@ function toggleAll(exclude_selector_name) {
     // Kui on kasutaja profiilis lemmikseansid, siis kuvab pärast filtreid järelejäänud seansse nende alusel
     if (userProfile && userProfile.my_screenings && userProfile.my_screenings.length) {
         var PrepareUserMyScreeningsIds = userProfile.my_screenings
-            .filter(myFavoriteLists => myFavoriteLists.type === "favorite")
-            .map(myScreenings => myScreenings.cassettes)
+            .filter(myFavoriteLists => myFavoriteLists.type === "schedule")
+            .map(myScreenings => myScreenings.screenings)
             .flat()
-            .map(cassette => cassette.id.toString())
+            .map(screening => screening.id.toString())
         var userMyScreeningsIds = [...new Set(PrepareUserMyScreeningsIds)]
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyScreeningsIds.includes(id))
