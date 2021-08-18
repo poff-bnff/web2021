@@ -95,7 +95,7 @@ function toggleAll(exclude_selector_name) {
         console.log('MyscreeningIDs', {userMyScreeningsIds}, {allIds}, {ids});
     } else {
         console.log('Show all screenings because no user');
-        ids = execute_filters()
+        ids = []
     }
 
     // kuva/peida 'pole vasteid'

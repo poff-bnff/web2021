@@ -94,7 +94,7 @@ function toggleAll(exclude_selector_name) {
         console.log('MyFilmsIDs', {userMyFilmsIds}, {allIds}, {ids});
     } else {
         console.log('Show all films because no user');
-        ids = execute_filters()
+        ids = []
     }
 
     // kuva/peida 'pole vasteid'
