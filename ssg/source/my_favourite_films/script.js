@@ -91,9 +91,7 @@ function toggleAll(exclude_selector_name) {
         var userMyFilmsIds = [...new Set(PrepareUserMyFilmsIds)]
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyFilmsIds.includes(id))
-        console.log('MyFilmsIDs', {userMyFilmsIds}, {allIds}, {ids});
     } else {
-        console.log('Show all films because no user');
         ids = []
     }
 

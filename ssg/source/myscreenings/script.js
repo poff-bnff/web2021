@@ -92,9 +92,7 @@ function toggleAll(exclude_selector_name) {
         var userMyScreeningsIds = [...new Set(PrepareUserMyScreeningsIds)]
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyScreeningsIds.includes(id))
-        console.log('MyscreeningIDs', {userMyScreeningsIds}, {allIds}, {ids});
     } else {
-        console.log('Show all screenings because no user');
         ids = []
     }
 
