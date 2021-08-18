@@ -88,7 +88,7 @@ function toggleAll(exclude_selector_name) {
             .filter(myFavoriteLists => myFavoriteLists.type === "favorite")
             .map(myScreenings => myScreenings.cassettes)
             .flat()
-            .map(cassette => cassette.id)
+            .map(cassette => cassette.id.toString())
         var userMyScreeningsIds = [...new Set(PrepareUserMyScreeningsIds)]
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyScreeningsIds.includes(id))
