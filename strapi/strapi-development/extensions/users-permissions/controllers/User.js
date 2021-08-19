@@ -44,7 +44,10 @@ const formatError = error => [
 module.exports = {
   create: resolveControllerMethod('create'),
   update: resolveControllerMethod('update'),
-  async updateme(ctx) {resolveControllerMethod('updateme')},
+  async updateme(ctx) {
+    console.log(ctx);
+    resolveControllerMethod('updateme')
+  },
 
   /**
    * Retrieve user records.
