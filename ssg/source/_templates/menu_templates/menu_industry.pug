@@ -31,7 +31,7 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
             a= mainMenuItem.name
             ul.ul_kaks
                 each subMenuItem in mainMenuItem.subMenuItem.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                    if subMenuItem[articleMenuItemDomain]
+                    if subMenuItem[articleMenuItemDomain] && subMenuItem.publish !== false
                         - let article = subMenuItem[articleMenuItemDomain]
 
                         if article.article_types && article.article_types[0] && article.publish === true && article.title
