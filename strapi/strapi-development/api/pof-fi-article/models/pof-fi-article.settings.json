@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "pof_fi_articles",
   "info": {
-    "name": "POFFi_Article"
+    "name": "POFFi_Article",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "titlePrivate": {
@@ -101,6 +103,10 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "tag_film_types": {
+      "collection": "tag-film-type",
+      "via": "pof_fi_article"
     }
   }
 }

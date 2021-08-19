@@ -2,15 +2,18 @@
   "kind": "collectionType",
   "collectionName": "organisations",
   "info": {
-    "name": "Organisation"
+    "name": "Organisation",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "name": {
       "type": "component",
@@ -29,7 +32,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "type": {
       "type": "enumeration",
@@ -50,7 +54,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "logoBlack": {
       "model": "file",
@@ -59,7 +64,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "logoColour": {
       "model": "file",
@@ -68,7 +74,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "homepageUrl": {
       "type": "string"

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tag-film-types",
+      "handler": "tag-film-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-film-types/count",
+      "handler": "tag-film-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-film-types/:id",
+      "handler": "tag-film-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tag-film-types",
+      "handler": "tag-film-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tag-film-types/:id",
+      "handler": "tag-film-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tag-film-types/:id",
+      "handler": "tag-film-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

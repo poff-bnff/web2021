@@ -28,6 +28,7 @@ echo "Initialized entu_ssg.yaml"
 node "$BUILD_PATH"/initialise_entu_ssg.js
 
 node "$FETCH_PATH"/fetch_articles_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_article_type_from_yaml.js  "$TARGET" "$TARGET_ID"
 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"

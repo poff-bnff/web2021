@@ -62,6 +62,14 @@
     "people": {
       "via": "user",
       "collection": "person"
+    },
+    "my_films": {
+      "via": "users_permissions_user",
+      "collection": "my-films"
+    },
+    "my_screenings": {
+      "via": "users_permissions_user",
+      "collection": "my-screenings"
     }
   }
 }
