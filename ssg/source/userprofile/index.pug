@@ -5,7 +5,7 @@ block content
     section.userprofile
         if self.label.userprofile
 
-            //- p=userProfile.firstName 
+            //- p=userProfile.firstName
 
             .sub_section_headline.text_left.p_l_0#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
             .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
@@ -58,7 +58,7 @@ block content
                 div.form-group
                     label.control-label.login_label(for='citySelection')= self.label.userprofile.city
                     select.login_input#citySelection.form-control(required='' oninput= 'validateCity("citySelection")')
-                button.btn.btn_primary(onclick='validateForm()')= self.label.userprofile.saveButton
+                button.btn.btn_primary(id='saveProfileButton' onclick='validateForm()' style='width: 82px; height: 40px;')= self.label.userprofile.saveButton
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
             br
@@ -81,7 +81,7 @@ block content
             #removeProviderWarning(style= {display:'none'}) Removing provider
                 a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
                 a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
-                br 
+                br
             div.form-group
                 br
                 h3.dark= 'Kustuta konto'
@@ -113,7 +113,7 @@ block content
             background-color: #ccf1e7;
             color: #495057
         }
-        form.imput-form.input.login_input.form-control{ 
+        form.imput-form.input.login_input.form-control{
             background-color: #ffffff;
         }
 

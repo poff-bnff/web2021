@@ -147,7 +147,7 @@ block content
                                                     span.city.small_1= ` ${screening.location.hall.cinema.town.name}`
 
 
-                            .card_film_title
+                            .card_film_title(style='padding-bottom: 1.2rem;')
 
                                     //- Eeldame, et screeningul on datetime
                                     //- if screening.dateTime
@@ -155,8 +155,8 @@ block content
                                     //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
 
                                     //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_2= cassette.title
-                                        p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false`)= self.label.film.removeSavedScreening
+                                    h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
+                                    button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
 
                                     //- Kuvame screeningtypes
                                     //- if screening.screening_types

@@ -31,8 +31,10 @@ if (process.argv[2]) {
         addConfigPathAliases([
             // '/login',
             '/myscreenings',
-            '/my_favourite_films',
+            '/screenings-search',
+            // '/my_favourite_films',
             '/_scripts',
+            '/userprofile',
         ])
         displayConfigPathAliases()
     }

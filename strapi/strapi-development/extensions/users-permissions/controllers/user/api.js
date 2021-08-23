@@ -173,11 +173,23 @@ module.exports = {
 
     ctx.send(sanitizeUser(data));
   },
-  async updateme(ctx) {
+  async updateMe(ctx) {
     console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
     const { password } = ctx.request.body;
- 
+
+    const createNewPersonProfile = async (newPersonProfile) => {
+      console.log('Create new Person to person-test2');
+      console.log(newPersonProfile);
+      return await strapi.query('person-test2').create(newPersonProfile)
+    }
+
+    const updatePersonProfile = async (personProfile, id) => {
+      console.log('Update Person in person-test2', id);
+      console.log(personProfile, id);
+      return await strapi.query('person-test2').update({ id }, personProfile)
+    }
+
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
     });
@@ -201,6 +213,37 @@ module.exports = {
       return ctx.badRequest('role.notNull');
     }
 
+    // Check if profile is fully filled
+    let personProfile = { ...JSON.parse(ctx.request.body) }
+    if (!personProfile?.firstName?.length) {
+      return ctx.badRequest('firstName incorrect');
+    }
+    if (!personProfile?.lastName?.length) {
+      return ctx.badRequest('lastName incorrect');
+    }
+    if (!personProfile?.gender?.length) {
+      return ctx.badRequest('gender incorrect');
+    }
+    if (!personProfile?.birthdate?.length) {
+      return ctx.badRequest('birthdate incorrect');
+    }
+    if (!personProfile?.phoneNr?.length) {
+      return ctx.badRequest('phoneNr incorrect');
+    }
+    if (!personProfile?.address?.length) {
+      return ctx.badRequest('address incorrect');
+    }
+
+    // Create new person if it does not exist, else update
+    personProfile.email = user.email
+    if (!user.person_test_2) {
+      personProfile.users_permissions_user = id
+      console.log('Create new person');
+      // await createNewPersonProfile(personProfile)
+    } else {
+      // await updatePersonProfile(personProfile, user.person_test_2.id)
+    }
+
     let updateData = {
       ...ctx.request.body,
     };
@@ -209,8 +252,78 @@ module.exports = {
       delete updateData.password;
     }
 
+    updateData.profileFilled = true
+    updateData.person_test_2 = !user.person_test_2 ? await createNewPersonProfile(personProfile).id : await updatePersonProfile(personProfile, user.person_test_2.id).id
+
+    console.log(updateData.person_test_2);
+
     const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
     // toSheets.newUserToSheets(updatedUser)
     ctx.send(sanitizeUser(updatedUser));
+  },
+  async favorites(ctx) {
+    console.log('users-permissions controllers user api favorites');
+    const { id } = ctx.state.user;
+
+    const manipulateFavorites = async (user, addOrRm, theId, objectName, objectType, objectArrayName) => {
+      var dataIds = user[objectName]
+        .filter(myFavoriteLists => myFavoriteLists.type === objectType)
+        .map(myType => myType[objectArrayName])
+        .flat()
+        .map(screening => screening.id)
+      var uniqueIds = [...new Set(dataIds)]
+
+      // Add or remove favorite to/from array
+
+      let newArray
+      // Remove or add from/to array
+      if (addOrRm === "rm") {
+        newArray = uniqueIds.filter(a => a !== theId)
+      } else if (addOrRm === "add") {
+        uniqueIds.push(theId)
+        newArray = uniqueIds
+      }
+
+      // Create new array of objects
+      let newArrayOfObjects = []
+      // Add objects of other types to array if any
+      let otherTypeObjects = user[objectName]
+        .filter(myFavoriteLists => myFavoriteLists.type !== objectType)
+      if (otherTypeObjects.length) { otherTypeObjects.map(a => newArrayOfObjects.push(a)) }
+
+      let newTypeData = {
+        type: objectType,
+        [objectArrayName]: newArray
+      }
+      console.log(newTypeData);
+
+      if (newArray.length) { newArrayOfObjects.push(newTypeData) }
+
+      let userScreeningsObject = newArrayOfObjects.length ? newArrayOfObjects : null
+      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, { [objectName]: userScreeningsObject });
+      ctx.send(sanitizeUser(updatedUser));
+    }
+
+    const user = await strapi.plugins['users-permissions'].services.user.fetch({
+      id,
+    });
+
+    // Query body
+    let rawData = { ...JSON.parse(ctx.request.body) }
+
+    // User needs to fill profile before
+    if (!user.person_test_2) {
+      rawData.users_permissions_user = id
+      console.log('Please fill profile');
+    }
+
+    if (rawData.type === "rmScreening") {
+      // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
+      return await manipulateFavorites(user, "rm", rawData.id, "my_screenings", "schedule", "screenings")
+    } else if (rawData.type === "addScreening") {
+      // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
+      return await manipulateFavorites(user, "add", rawData.id, "my_screenings", "schedule", "screenings")
+    }
+
   },
 };

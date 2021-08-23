@@ -1,8 +1,54 @@
 'use strict';
 
+// This file was only added to prevent
+// "Your filters contain a field 'user' that doesn't appear on your model definition nor it's relations"
+// error as ctx filter accepts only fields that exist in particular model
+
 /**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
+ * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
  * to customize this model
  */
 
-module.exports = {};
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
+const {
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+  call_delete
+} = require(helper_path)
+
+/**
+const domains =
+For adding domain you have multiple choice. First for objects that has property 'domain'
+or has property, that has 'domain' (at the moment festival_edition and programmes) use
+function get_domain(result). If you know that that object has doimain, but no property
+to indicate that. Just write the list of domains (as list), example tartuffi_menu.
+And last if full build, with no domain is needed. Write FULL_BUILD (as list)
+*/
+
+const model_name = (__dirname.split(path.sep).slice(-2)[0])
+// const domains = ['hoff.ee'] // hard coded if needed AS LIST!!!
+// const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+
+module.exports = {
+  lifecycles: {
+    async afterCreate(result, data) {
+
+    },
+    async beforeUpdate(params, data) {
+
+    },
+    async afterUpdate(result, params, data) {
+
+    },
+    async beforeDelete(params) {
+      delete params.user
+    },
+    async afterDelete(result, params) {
+
+    }
+  }
+};

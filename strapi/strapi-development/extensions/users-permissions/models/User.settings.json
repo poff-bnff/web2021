@@ -85,13 +85,19 @@
       "repeatable": false,
       "component": "user.imported-to-strapi"
     },
+    "product": {
+      "model": "product",
+      "via": "users_permissions_user"
+    },
     "my_films": {
-      "via": "users_permissions_user",
-      "collection": "my-films"
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-films"
     },
     "my_screenings": {
-      "via": "users_permissions_user",
-      "collection": "my-screenings"
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-screenings"
     }
   }
 }

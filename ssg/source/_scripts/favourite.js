@@ -14,8 +14,8 @@ function loadMyFavFilms() {
         toggleMyCalButtons(userProfile.myCal)
     } catch (error) {
         null
-    } try{
-        toggleSavedScreeningsButtons(userProfile.savedscreenings)
+    } try {
+        toggleSavedScreeningsButtons(userProfile.my_screenings)
 
         // Käivitab kaartide kuvamise kontrolli vastavalt filtritele ja lemmikute olemasolul ka vastavalt nendele
         toggleAll()
@@ -67,10 +67,17 @@ function toggleFavButtons(shortlist_array) {
 function toggleSavedScreeningsButtons(savedScreenings) {
     // console.log('toggleSavedScreeningsButtons')
 
-    var savedScreeningIds = []
-    for (j = 0; j < savedScreenings.length; j++) {
-        savedScreeningIds.push(savedScreenings[j].screeningId)
-    }
+    var PrepareUserMyScreeningsIds = savedScreenings
+        .filter(myFavoriteLists => myFavoriteLists.type === "schedule")
+        .map(myScreenings => myScreenings.screenings)
+        .flat()
+        .map(screening => screening.id.toString())
+    var savedScreeningIds = [...new Set(PrepareUserMyScreeningsIds)]
+    console.log(savedScreeningIds);
+    // var savedScreeningIds = []
+    // for (j = 0; j < savedScreenings.length; j++) {
+    //     savedScreeningIds.push(savedScreenings[j].screeningId)
+    // }
 
     // console.log('savedScreeningIds ', savedScreeningIds)
     // console.log('toggleSavedScreeningsButtons')
@@ -114,28 +121,28 @@ function toggleSavedScreeningsButtons(savedScreenings) {
 }
 
 
-function toggleMyCalButtons (myCalEvents){
+function toggleMyCalButtons(myCalEvents) {
     // console.log(myCalEvents)
 
     var isMyEventBtns = document.getElementsByClassName('remove_from_calendar_button')
 
 
-    for (i=0; i<isMyEventBtns.length; i++){
+    for (i = 0; i < isMyEventBtns.length; i++) {
         var eventId = isMyEventBtns[i].id.split('_')[0]
 
-        if (myCalEvents.includes(eventId)){
+        if (myCalEvents.includes(eventId)) {
             // console.log(2)
             document.getElementById(eventId + '_inMyCalendar').style.display = ''
             try {
-            document.getElementById(eventId).style.display = ''
+                document.getElementById(eventId).style.display = ''
             }
-            catch(err){null}
+            catch (err) { null }
         }
         else {
-            try{
-            document.getElementById(eventId + '_notInMyCalendar').style.display = ''
+            try {
+                document.getElementById(eventId + '_notInMyCalendar').style.display = ''
             }
-            catch(err){null}
+            catch (err) { null }
         }
     }
 }
@@ -243,34 +250,34 @@ function addToMyCal(eventId) {
 
 
 
-        // var myHeaders = new Headers();
-        // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    // var myHeaders = new Headers();
+    // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
-        var requestOptions = {
-            method: 'PUT',
-            // headers: myHeaders,
-            redirect: 'follow',
-            headers: {
-                Authorization : 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
-              },
+    var requestOptions = {
+        method: 'PUT',
+        // headers: myHeaders,
+        redirect: 'follow',
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+        },
 
-        };
+    };
 
-        // console.log(requestOptions)
+    // console.log(requestOptions)
 
-        fetch('https://api.poff.ee/favourite/' + 'event_' + eventId, requestOptions).then(function (response) {
-            if (response.ok) {
-                return response.json();
-            }
-            return Promise.reject(response);
-        }).then(function (data) {
-            if (data.ok) {
-                document.getElementById(eventId + '_notInMyCalendar').style.display = 'none'
-                document.getElementById(eventId + '_inMyCalendar').style.display = ''
-            }
-        }).catch(function (error) {
-            console.warn(error);
-        });
+    fetch('https://api.poff.ee/favourite/' + 'event_' + eventId, requestOptions).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        if (data.ok) {
+            document.getElementById(eventId + '_notInMyCalendar').style.display = 'none'
+            document.getElementById(eventId + '_inMyCalendar').style.display = ''
+        }
+    }).catch(function (error) {
+        console.warn(error);
+    });
 }
 
 
@@ -388,14 +395,14 @@ function removeEvent(eventId) {
             catch (err) {
                 null
             }
-            if (!document.getElementById(eventId + '_notInMyCalendar')){
-            try {
-                document.getElementById(eventId.split('_')[0]).style.display = 'none'
+            if (!document.getElementById(eventId + '_notInMyCalendar')) {
+                try {
+                    document.getElementById(eventId.split('_')[0]).style.display = 'none'
+                }
+                catch (err) {
+                    null
+                }
             }
-            catch (err) {
-                null
-            }
-        }
         }
     }).catch(function (error) {
         console.warn(error);
@@ -403,7 +410,7 @@ function removeEvent(eventId) {
 }
 
 
-function changeToRemove(eventId){
+function changeToRemove(eventId) {
     document.getElementById(eventId).innerHTML = 'remove'
     document.getElementById(eventId).style.color = 'red'
     // document.getElementById(eventId).setAttribute("onclick", "javascript: sayHello(this.id);return false")
@@ -411,7 +418,7 @@ function changeToRemove(eventId){
 
 }
 
-function revertRemove(eventId){
+function revertRemove(eventId) {
     document.getElementById(eventId).innerHTML = 'In my calendar'
     document.getElementById(eventId).style.color = 'rgba(255, 255, 255, 0.96)'
 

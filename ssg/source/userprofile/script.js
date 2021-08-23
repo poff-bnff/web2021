@@ -9,16 +9,16 @@ if (validToken) {
 }
 
 async function getUserProfile() {
-        let response = await fetch(`${strapiDomain}/users/me`, {
+    let response = await fetch(`${strapiDomain}/users/me`, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
         },
     });
     let userProfile = await response.json()
-    console.log({userProfile})
+    console.log({ userProfile })
 
-    return userProfile 
+    return userProfile
 }
 
 async function loadUserInfo() {
@@ -34,32 +34,35 @@ async function loadUserInfo() {
     }
     // console.log("täidan ankeedi " + userProfile.name + "-i cognitos olevate andmetega.....")
     email.innerHTML = userProfile.email
-    if (profile.firstName) firstName.value = profile.firstName
-    if (profile.lastName) lastName.value = profile.lastName
-    if (profile.gender) gender.value = profile.gender
-    if (profile.phoneNr) phoneNr.value = profile.phoneNr
-    if (profile.birthdate) dob.value = profile.birthdate
+    if (profile) {
+        if (profile.firstName) { firstName.value = profile.firstName }
+        if (profile.lastName) { lastName.value = profile.lastName }
+        if (profile.gender) { gender.value = profile.gender }
+        if (profile.phoneNr) { phoneNr.value = profile.phoneNr }
+        if (profile.birthdate) { dob.value = profile.birthdate }
+    }
 
     for (let provider of userProfile.externalProviders) {
         // console.log(provider)
         if (provider.provider === ('Google')) google.style.display = ''
         if (provider.provider === ('Facebook')) facebook.style.display = ''
     }
-    
+
     if (userProfile.provider.includes('local')) password.style.display = ''
 
+    if (profile) {
+        if (profile.address) {
+            let address = profile.address.split(", ")
+            let riik = address[0]
+            let linn = address[1]
+            countrySelection.value = riik
+            citySelection.value = linn
+        }
 
-    if (profile.address) {
-        let address = profile.address.split(", ")
-        let riik = address[0]
-        let linn = address[1]
-        countrySelection.value = riik
-        citySelection.value = linn
-    }
-
-    if (profile.picture) {
-        if (profile.picture !== "no profile picture saved") {
-            imgPreview.src = `${strapiDomain}${profile.picture.url}`
+        if (profile.picture) {
+            if (profile.picture !== "no profile picture saved") {
+                imgPreview.src = `${strapiDomain}${profile.picture.url}`
+            }
         }
     }
 }
@@ -69,6 +72,11 @@ async function sendUserProfile() {
 
     //profile_pic_to_send= no profile picture saved
     //Kui pilt saadetakse siis profile_pic_to_send= this users picture is in S3
+
+    let saveProfileButton = document.getElementById(`saveProfileButton`)
+    saveProfileButton.disabled = true
+    let previousInnerHTML = saveProfileButton.innerHTML
+    saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
 
     let pictureInfo = "no profile picture saved"
 
@@ -92,7 +100,7 @@ async function sendUserProfile() {
     userToSend = JSON.stringify(userToSend)
     // console.log("kasutaja profiil mida saadan ", userToSend);
 
-    let response = await (await fetch(`${strapiDomain}/users/me`, {
+    let response = await (await fetch(`${strapiDomain}/users/updateme`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
@@ -106,8 +114,10 @@ async function sendUserProfile() {
             window.open(localStorage.getItem('preLoginUrl'), '_self')
             localStorage.removeItem('preLoginUrl')
         }
-
     }
+
+    saveProfileButton.disabled = false
+    saveProfileButton.innerHTML = previousInnerHTML
 
 }
 
@@ -119,7 +129,7 @@ function validateaAndPreview(file) {
         // console.log("File is not an image.", file.type, file);
         error.innerHTML = "File is not an image.";
     } else if (file.size / 1024 / 1024 > 5) {
-        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size/1024/1024).toFixed(2) + "MB"
+        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
     } else {
         error.innerHTML = "";
         //näitab pildi eelvaadet
@@ -138,7 +148,7 @@ async function uploadPic() {
     // console.log("uploading this file to S3....")
     // console.log(profile_pic_to_send)
     //küsib lingi kuhu pilti postitada
-    
+
     data = {}
     data.link = `${strapiDomain}/upload`
     // console.log("saadud link on: ")
@@ -154,13 +164,13 @@ async function uploadPic() {
 
     let files = profile_pic_to_send
     console.log(files);
-    var formData = new FormData() 
+    var formData = new FormData()
     formData.append('files', files)
     formData.append('ref', 'user')
     formData.append('refId', userProfile.id)
     formData.append('field', 'picture')
     formData.append('source', 'users-permissions')
-    
+
     console.log(formData);
 
     let requestOptions = {
@@ -260,14 +270,14 @@ openProvider = (provider) => {
     console.log('displayFBOptions')
     // console.log(provider)
     confirmDialog.style.display = 'none'
-    if (provider === 'Facebook'){
+    if (provider === 'Facebook') {
         window.open('https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%3Ftab%3Dapplications%26ref%3Dsettings', '_blank')
     }
-    if (provider === 'Google'){
+    if (provider === 'Google') {
         window.open('https://myaccount.google.com/permissions', '_blank')
     }
     if (provider === 'local') {
-       console.log('local loco')
+        console.log('local loco')
     }
     doneAtProvider.innerHTML = doneAtProvider.innerHTML + ` '${provider.toUpperCase()}'`
     doneAtProvider.style.display = ''
@@ -291,7 +301,7 @@ async function deleteAccount() {
         // console.log('RO', requestOptions)
 
         const userProfile = await getUserProfile()
-        let currentUserID = userProfile.id 
+        let currentUserID = userProfile.id
         const response = await fetch(`${strapiDomain}/users/${currentUserID}`, requestOptions)
 
         console.log(response.status)
@@ -301,7 +311,7 @@ async function deleteAccount() {
         }
         if (response.status === 401) {
             wrongUserMassage.style.display = ''
-            setTimeout(function() {
+            setTimeout(function () {
 
                 localStorage.clear()
                 location.replace(document.location.origin)

@@ -306,5 +306,3 @@ function execute_filters() {
     // console.log(filtered.map(element => element.id));
     return filtered
 }
-
-

@@ -2,15 +2,58 @@
   "kind": "collectionType",
   "collectionName": "products",
   "info": {
-    "name": "Product_Type"
+    "name": "Product",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
-    "name": {
-      "type": "string"
+    "product_category": {
+      "model": "product-category"
+    },
+    "owner": {
+      "model": "person"
+    },
+    "code": {
+      "type": "string",
+      "unique": true
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "transaction": {
+      "model": "transaction"
+    },
+    "ticketingRight": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.ticketing-rights"
+    },
+    "reservation_time": {
+      "type": "datetime"
+    },
+    "reserved_to": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "reservation_expired": {
+      "type": "datetime"
+    },
+    "reservation_price": {
+      "type": "decimal"
+    },
+    "sold_to": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "product"
+    },
+    "users_permissions_user": {
+      "via": "product",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

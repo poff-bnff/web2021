@@ -341,20 +341,25 @@
     },
     {
       "method": "PUT",
-      "path": "/users/me",
-      "handler": "User.updateme",
+      "path": "/users/updateme",
+      "handler": "User.updateMe",
       "config": {
-        "policies": [],
+        "policies": ["plugins::users-permissions.short-ratelimit"],
         "prefix": "",
-        "description": "Update the logged in user information",
-        "tag": {
-          "plugin": "users-permissions",
-          "name": "User",
-          "actionType": "findOne"
-        }
+        "description": "Update the logged in user information"
       }
     },
-    { 
+    {
+      "method": "PUT",
+      "path": "/users/favorites",
+      "handler": "User.favorites",
+      "config": {
+        "policies": ["plugins::users-permissions.short-ratelimit"],
+        "prefix": "",
+        "description": "Update the logged in user favorites"
+      }
+    },
+    {
       "method": "GET",
       "path": "/users/:id",
       "handler": "User.findOne",

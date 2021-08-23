@@ -21,12 +21,11 @@ const resolveController = ctx => {
   const {
     state: { isAuthenticatedAdmin },
   } = ctx;
-  console.log('resolveController function')
+
   return isAuthenticatedAdmin ? adminUserController : apiUserController;
 };
 
 const resolveControllerMethod = method => ctx => {
-  console.log('user-permissions controllers userjs resolveControllerMethod')
   const controller = resolveController(ctx);
   const callbackFn = controller[method];
 
@@ -44,15 +43,14 @@ const formatError = error => [
 module.exports = {
   create: resolveControllerMethod('create'),
   update: resolveControllerMethod('update'),
-  async updateme(ctx) {
-    console.log(ctx);
-    resolveControllerMethod('updateme')
-  },
+  updateMe: resolveControllerMethod('updateMe'),
+  favorites: resolveControllerMethod('favorites'),
 
   /**
    * Retrieve user records.
    * @return {Object|Array}
    */
+
   async find(ctx, next, { populate } = {}) {
     let users;
 
@@ -147,7 +145,7 @@ module.exports = {
         key: 'advanced',
       })
       .get();
-let counter = 0
+    let counter = 0
     for (let importedUser of users) {
       counter++
       if (importedUser.identities === '') {
