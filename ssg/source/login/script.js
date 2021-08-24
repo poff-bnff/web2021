@@ -106,7 +106,6 @@ const composeRequest = (requestCase) => {
 }
 
 const fetchFromStrapi = async (request) => {
-
     try {
         let response = await fetch(`${strapiDomain}${request.route}`, request.options);
         response = await response.json()
