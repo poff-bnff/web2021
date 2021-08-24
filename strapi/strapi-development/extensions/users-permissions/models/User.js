@@ -25,6 +25,6 @@ const profileFilled = data => {
   if (personAsProfile && personAsProfile.firstName && personAsProfile.lastName && personAsProfile.gender && personAsProfile.birthdate && personAsProfile.phoneNr && personAsProfile.address) {
     profileFilled = true
   }
-  console.log('Models User profileFilled data', profileFilled);
+  console.log('Models User profileFilled data', {personAsProfile, profileFilled});
   return profileFilled
 }

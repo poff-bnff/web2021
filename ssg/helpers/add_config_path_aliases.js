@@ -29,12 +29,12 @@ if (process.argv[2]) {
         displayConfigPathAliases()
     } else if (process.argv[2] === 'login') {
         addConfigPathAliases([
-            // '/login',
-            '/myscreenings',
-            '/screenings-search',
+            '/login',
+            // '/myscreenings',
+            // '/screenings-search',
             // '/my_favourite_films',
             '/_scripts',
-            '/userprofile',
+            // '/userprofile',
         ])
         displayConfigPathAliases()
     }

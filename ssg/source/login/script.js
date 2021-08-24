@@ -1,7 +1,4 @@
-// console.log("eelmine leht oli", document.referrer)
 // console.log(langpath)
-
-console.log('Uuendatud2')
 
 //info kasutajale kui suunatakse tagasi lemmikutest, profiili vaatest või minu
 if ([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)) {
@@ -19,7 +16,7 @@ if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${locat
 }
 
 // External provider 'social' login
-if (window.location.hash) {
+if (window.location.search) {
     setTimeout(function () { loginFlow('social') }, 0)
     // loginFlow('social')
 }
@@ -34,7 +31,9 @@ const loginViaLocal = () => {
 }
 
 // Buttons
-const loginViaProvider = provider => {
+const loginViaProvider = (provider) => {
+    let providerToLowerCase = provider.toLowerCase()
+    localStorage.setItem('LOGIN_PROVIDER', providerToLowerCase)
     cleanUiMessages()
     setLang()
 
@@ -52,7 +51,7 @@ function directToSignup() {
 
 
 // Login main
-const loginFlow = async provider => {
+const loginFlow = async (provider) => {
     const authRequest = composeRequest(provider)
     const authResponse = await fetchFromStrapi(authRequest)
     if (!authResponse) return
@@ -73,16 +72,15 @@ const loginFlow = async provider => {
 }
 
 // Services
-const composeRequest = requestCase => {
-    const request = {}
+const composeRequest = (requestCase) => {
+    const request = {options: {}}
     const lang = localStorage.getItem('lang') || 'et'
 
     switch (requestCase) {
         case ('social'):
-		console.log('Social provider')
             const { provider, access_token } = getAccessTokenWithProvider()
-            request.route = `/auth/${provider}/callback?${access_token}`
-            request.method = 'GET'
+            request.route = `/auth/${provider}/callback?access_token=${access_token}`
+            request.options.method = 'GET'
             break;
         case ('local'):
             const authenticationData = {
@@ -90,16 +88,16 @@ const composeRequest = requestCase => {
                 password: document.getElementById("loginPassword").value
             }
             request.route = `/auth/local/login/${lang}`
-            request.method = 'POST'
-            request.headers = {
+            request.options.method = 'POST'
+            request.options.headers = {
                 "Content-Type": "application/json"
             }
-            request.body = JSON.stringify(authenticationData)
+            request.options.body = JSON.stringify(authenticationData)
             break;
         case ('profile'):
             request.route = '/users/me'
-            request.method = 'GET'
-            request.headers = {
+            request.options.method = 'GET'
+            request.options.headers = {
                 Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
             }
             break;
@@ -107,15 +105,10 @@ const composeRequest = requestCase => {
     return request
 }
 
-const fetchFromStrapi = async requestOptions => {
-    const { route, method, headers, body } = requestOptions
+const fetchFromStrapi = async (request) => {
 
     try {
-        let response = await fetch(`${strapiDomain}${route}`, {
-            method: method,
-            headers: headers,
-            body: body
-        });
+        let response = await fetch(`${strapiDomain}${request.route}`, request.options);
         response = await response.json()
         return response
     }
@@ -126,7 +119,7 @@ const fetchFromStrapi = async requestOptions => {
     }
 }
 
-const handleResponse = response => {
+const handleResponse = (response) => {
     if (response.jwt && response.user || response.id) return response
 
     if (response.statusCode !== 200) {
@@ -169,10 +162,10 @@ const handleResponse = response => {
     }
 }
 
-const storeAuthentication = access_token =>
+const storeAuthentication = (access_token) =>
     localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
 
-const redirectToPreLoginUrl = userProfile => {
+const redirectToPreLoginUrl = (userProfile) => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
     const currentlang = getCurrentLang()
 
@@ -186,13 +179,11 @@ const redirectToPreLoginUrl = userProfile => {
 
 // Helpers:
 const getAccessTokenWithProvider = () => {
-    const [provider, search] = window.location.hash.substr(1).split('?')
-    const tokenInfo = search.split('&')
-    const token = {}
-    for (const inf of tokenInfo) {
-        token[inf.split('=')[0]] = inf
-    }
-    const access_token = token.access_token
+    let provider = localStorage.getItem('LOGIN_PROVIDER')
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const access_token = urlParams.get('access_token')
+
     return {
         provider: provider,
         access_token: access_token

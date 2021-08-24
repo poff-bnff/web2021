@@ -321,8 +321,11 @@ module.exports = {
       // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
       return await manipulateFavorites(user, "rm", rawData.id, "my_screenings", "schedule", "screenings")
     } else if (rawData.type === "addScreening") {
-      // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
       return await manipulateFavorites(user, "add", rawData.id, "my_screenings", "schedule", "screenings")
+    } else if (rawData.type === "rmMyFilm") {
+      return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
+    } else if (rawData.type === "addMyFilm") {
+      return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
     }
 
   },
