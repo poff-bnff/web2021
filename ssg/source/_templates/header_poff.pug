@@ -54,7 +54,7 @@ header
                         li#userProfile(style={cursor: 'pointer', display: 'none'})
                             a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
                         li#myFavouriteFilms(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
+                            a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
                         li#myScreenings(style={cursor: 'pointer'} )
                             if lang_path === ''
                                 a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings

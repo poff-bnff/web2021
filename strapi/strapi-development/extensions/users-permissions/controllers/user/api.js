@@ -270,10 +270,8 @@ module.exports = {
         .filter(myFavoriteLists => myFavoriteLists.type === objectType)
         .map(myType => myType[objectArrayName])
         .flat()
-        .map(screening => screening.id)
+        .map(obj => obj.id)
       var uniqueIds = [...new Set(dataIds)]
-
-      // Add or remove favorite to/from array
 
       let newArray
       // Remove or add from/to array
@@ -295,12 +293,11 @@ module.exports = {
         type: objectType,
         [objectArrayName]: newArray
       }
-      console.log(newTypeData);
 
       if (newArray.length) { newArrayOfObjects.push(newTypeData) }
 
-      let userScreeningsObject = newArrayOfObjects.length ? newArrayOfObjects : null
-      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, { [objectName]: userScreeningsObject });
+      let arrayToSave = newArrayOfObjects.length ? newArrayOfObjects : []
+      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, { [objectName]: arrayToSave });
       ctx.send(sanitizeUser(updatedUser));
     }
 

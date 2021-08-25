@@ -238,7 +238,7 @@ const getProfile = async (provider, query, callback) => {
           } else {
             console.log('Providers Google', body.email, ' now callback');
             callback(null, {
-              username: body.email.split('@')[0],
+              username: body.email,
               email: body.email,
               externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: body.user_id, dateConnected: new Date().toISOString() }]
             });
@@ -566,7 +566,7 @@ const getProfile = async (provider, query, callback) => {
             callback(err);
           } else {
             const username =
-              body.username || body.nickname || body.name || body.email.split('@')[0];
+              body.username || body.nickname || body.name || body.email;
             const email = body.email || `${username.replace(/\s+/g, '.')}@strapi.io`;
 
             callback(null, {

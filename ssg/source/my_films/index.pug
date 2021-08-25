@@ -91,6 +91,7 @@ block content
                             img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
                     .card_film_title
                         h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+
                         - oneCassette.push(cassette.title || cassette.title_et)
                         - cassettesArray.push(oneCassette)
 
@@ -108,6 +109,9 @@ block content
                                     - var uniqueProgrammes = [...new Set(filmsProgrammes)];
                                     .str_info_label.dark_semi= self.label.film.programme
                                     #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+
+                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeShortlist
+
                         //- if cassette.credentials.director
                         //-     .str_info_grid_3
                         //-         .str_info_label= self.label.cassette.director

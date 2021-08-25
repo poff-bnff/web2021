@@ -354,7 +354,7 @@
       "path": "/users/favorites",
       "handler": "User.favorites",
       "config": {
-        "policies": ["plugins::users-permissions.short-ratelimit"],
+        "policies": [],
         "prefix": "",
         "description": "Update the logged in user favorites"
       }
