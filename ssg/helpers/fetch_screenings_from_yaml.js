@@ -125,7 +125,7 @@ console.log(festival_editions);
 
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {
-            let scrnDateTimeUTC = new Date(scrn.dateTime).addHours(3)
+            let scrnDateTimeUTC = new Date(scrn.dateTime).addHours(2)
             let scrnDate = parseInt(`${scrnDateTimeUTC.getFullYear()}${("0" + (scrnDateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + scrnDateTimeUTC.getDate()).slice(-2)}`)
             // Kui pole online screening e Strapis ID 16, siis tänasest vanemad screeningud välja
             // Online screeningud eemaldatakse screeningu lõppemisel Eventivali kaudu
