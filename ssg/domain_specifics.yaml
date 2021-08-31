@@ -15,7 +15,6 @@ domains_show_cassetes_wo_screenings:
     - poff.ee
     - hoff.ee
     - tartuff.ee
-    - kumu.poff.ee
 
 cassettes_festival_editions:
     poff.ee:
