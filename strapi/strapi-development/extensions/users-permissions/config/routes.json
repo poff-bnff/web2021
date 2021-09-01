@@ -340,6 +340,30 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/users/paymentmethods",
+      "handler": "User.paymentMethods",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/buyproduct",
+      "handler": "User.buyProduct",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/users/buyproductcb",
+      "handler": "User.buyProductCb",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/users/updateme",
       "handler": "User.updateMe",

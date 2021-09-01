@@ -12,9 +12,9 @@
   },
   "attributes": {
     "users_permissions_user": {
+      "via": "person_test_2",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "person_test_2"
+      "model": "user"
     },
     "firstName": {
       "type": "string",
@@ -36,9 +36,7 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
-        "images",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false,

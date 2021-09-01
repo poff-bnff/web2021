@@ -24,12 +24,12 @@ function buyerCheck() {
     }else{
         document.getElementById('directToLoginButton').style.display = 'none'
 
-        if(userProfile.profile_filled && userProfile.picture === "this users picture is in S3"){
+        if(userProfile.profileFilled && userProfile.person_test_2 && userProfile.person_test_2.picture){
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")
         }else {
-            if(!userProfile.profile_filled){
+            if(!userProfile.profileFilled){
                 //profiil täitmata
                 document.getElementById('directToFillProfile').style.display = 'block'
                 // console.log("pooliku profiiliga kasutaja on poes")

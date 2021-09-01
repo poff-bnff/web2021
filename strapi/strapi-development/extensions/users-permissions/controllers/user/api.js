@@ -1,7 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
-const { sanitizeEntity } = require('strapi-utils');
+const https = require('https')
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 const sanitizeUser = user =>
   sanitizeEntity(user, {
@@ -176,45 +177,54 @@ module.exports = {
   async updateMe(ctx) {
     console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
-    const { password } = ctx.request.body;
+    const { password } = ctx.request.body.data;
 
-    const createNewPersonProfile = async (newPersonProfile) => {
+    const createNewPersonProfile = async (personProfile, ctxForPicture) => {
+      const { files } = parseMultipartData(ctxForPicture);
       console.log('Create new Person to person-test2');
-      console.log(newPersonProfile);
-      return await strapi.query('person-test2').create(newPersonProfile)
+      let newUserProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+      console.log('newUserProfile', newUserProfile);
+      return updatedProfile
     }
 
-    const updatePersonProfile = async (personProfile, id) => {
-      console.log('Update Person in person-test2', id);
-      console.log(personProfile, id);
-      return await strapi.query('person-test2').update({ id }, personProfile)
+    const updatePersonProfile = async (personProfile, ctxForPicture, id) => {
+      const { files } = parseMultipartData(ctxForPicture);
+      // console.log('Update Person in person-test2', id);
+      // console.log(personProfile, id);
+      // // return await strapi.query('person-test2').update({ id }, personProfile)
+      // console.log('updatePersonProfile files', files);
+
+      let updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+      console.log('updatedProfile', updatedProfile);
+      return updatedProfile
+
     }
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
     });
 
-    if (_.has(ctx.request.body, 'email')) {
+    if (_.has(ctx.request.body.data, 'email')) {
       return ctx.badRequest('email.notNull');
     }
 
-    if (_.has(ctx.request.body, 'username')) {
+    if (_.has(ctx.request.body.data, 'username')) {
       return ctx.badRequest('username.notNull');
     }
 
-    if (_.has(ctx.request.body, 'password') && !password && user.provider === 'local') {
+    if (_.has(ctx.request.body.data, 'password') && !password && user.provider === 'local') {
       return ctx.badRequest('password.notNull');
     }
 
-    if (_.has(ctx.request.body, 'provider')) {
+    if (_.has(ctx.request.body.data, 'provider')) {
       return ctx.badRequest('provider.notNull');
     }
-    if (_.has(ctx.request.body, 'role')) {
+    if (_.has(ctx.request.body.data, 'role')) {
       return ctx.badRequest('role.notNull');
     }
 
     // Check if profile is fully filled
-    let personProfile = { ...JSON.parse(ctx.request.body) }
+    let personProfile = { ...JSON.parse(ctx.request.body.data) }
     if (!personProfile?.firstName?.length) {
       return ctx.badRequest('firstName incorrect');
     }
@@ -245,17 +255,29 @@ module.exports = {
     }
 
     let updateData = {
-      ...ctx.request.body,
+      ...ctx.request.body.data,
     };
 
-    if (_.has(ctx.request.body, 'password') && password === user.password) {
+    if (_.has(ctx.request.body.data, 'password') && password === user.password) {
       delete updateData.password;
     }
 
     updateData.profileFilled = true
-    updateData.person_test_2 = !user.person_test_2 ? await createNewPersonProfile(personProfile).id : await updatePersonProfile(personProfile, user.person_test_2.id).id
+    console.log('Body', ctx.request.body);
+    console.log('Files', ctx.request.files);
+    let file = ctx.request.files['files.picture']
 
-    console.log(updateData.person_test_2);
+    if (!file.type.includes("image")) {
+      console.log("File is not an image.", file.type, file);
+      return ctx.badRequest('Not an image');
+    } else if (file.size / 1024 / 1024 > 5) {
+      console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
+      return ctx.badRequest('Image too bulky');
+    }
+
+    let thisUsersProfile = !user.person_test_2 ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.person_test_2.id)
+    updateData.person_test_2 = thisUsersProfile.id
+    console.log('updateData.person_test_2', updateData.person_test_2);
 
     const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
     // toSheets.newUserToSheets(updatedUser)
@@ -326,4 +348,400 @@ module.exports = {
     }
 
   },
+  async paymentMethods() {
+    console.log('Yes, methods here')
+
+    const getMkConfig = async () => {
+      const mkId = process.env.MakseKeskusId
+      const mkKey = process.env.MakseKeskusSecret
+      const mkHost = process.env.MakseKeskusHost
+
+      return new Promise((resolve, reject) => {
+        const options = {
+          hostname: mkHost,
+          path: '/v1/shop/configuration',
+          method: 'GET',
+          headers: {
+            Authorization: 'Basic ' + Buffer.from(`${mkId}:${mkKey}`).toString('base64'),
+            'Content-Type': 'application/json'
+          }
+        }
+
+        const request = https.request(options, response => {
+          var body = ''
+
+          response.on('data', function (d) {
+            body += d
+          })
+
+          response.on('end', function () {
+            resolve(JSON.parse(body))
+          })
+        })
+
+        request.on('error', reject)
+        request.end()
+      })
+    }
+
+    // const userId = _h.getUserId(event)
+
+    // if (!userId) {
+    //     return _h.error([401, 'Unauthorized'])
+    // }
+
+    const mkResponse = await getMkConfig()
+
+    return {
+      banklinks: mkResponse.payment_methods.banklinks.map(m => {
+        return {
+          id: [m.country, m.name].join('_').toUpperCase(),
+          name: m.name,
+          country: m.country,
+          logo: m.logo_url
+        }
+      }),
+      cards: mkResponse.payment_methods.cards.map(m => {
+        return {
+          id: [m.country, m.name].join('_').toUpperCase(),
+          name: m.name,
+          country: m.country,
+          logo: m.logo_url
+        }
+      }),
+      other: mkResponse.payment_methods.other.map(m => {
+        return {
+          id: [m.country, m.name].join('_').toUpperCase(),
+          name: m.name,
+          country: m.country,
+          logo: m.logo_url
+        }
+      }),
+      payLater: mkResponse.payment_methods.payLater.map(m => {
+        return {
+          id: [m.country, m.name].join('_').toUpperCase(),
+          name: m.name,
+          country: m.country,
+          logo: m.logo_url
+        }
+      })
+    }
+  },
+  async buyProduct(ctx) {
+    console.log('Yes, buy product here')
+    const { id } = ctx.state.user;
+
+    const user = await strapi.plugins['users-permissions'].services.user.fetch({
+      id,
+    });
+
+    const userEmail = user.email
+    console.log(userEmail)
+    const requestBody = JSON.parse(ctx.request.body)
+
+    const postToMaksekeskus = async (postData) => {
+      const mkId = process.env.MakseKeskusId
+      const mkKey = process.env.MakseKeskusSecret
+      const mkHost = process.env.MakseKeskusHost
+
+      return new Promise((resolve, reject) => {
+        const options = {
+          hostname: mkHost,
+          path: '/v1/transactions',
+          method: 'POST',
+          headers: {
+            Authorization: 'Basic ' + Buffer.from(`${mkId}:${mkKey}`).toString('base64'),
+            'Content-Type': 'application/json'
+          }
+        }
+
+        const request = https.request(options, response => {
+          var body = ''
+
+          response.on('data', function (d) {
+            body += d
+          })
+
+          response.on('end', function () {
+            resolve(JSON.parse(body))
+          })
+        })
+
+        request.on('error', reject)
+        request.write(JSON.stringify(postData))
+        request.end()
+      })
+    }
+
+    // console.log('event ', event)
+    const saleActiveCategories = ['tp']
+    const userId = id
+    const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for']
+
+    const { categoryId, return_url, cancel_url, paymentMethodId } = requestBody;
+    console.log(categoryId)
+    const body = requestBody
+
+    // const return_url = event.queryStringParameters.return_url || event.headers.referer
+    console.log('return_url ', return_url)
+    // const cancel_url = event.queryStringParameters.cancel_url || event.headers.referer
+    console.log('cancel_url ', cancel_url)
+
+    if (!userId) {
+      return [401, 'Unauthorized']
+    }
+
+    if (!categoryId) {
+      return [400, 'No categoryId']
+    }
+
+    if (!saleActiveCategories.includes(categoryId)) {
+      return [400, 'Sale currently closed for this product']
+    }
+
+    if (!paymentMethodId) {
+      return [400, 'No paymentMethodId']
+    }
+
+    ///////////////////////////////////////
+    const params = {
+      code_null: false,
+      reserved_to_null: true,
+      sold_to_null: true,
+      owner_null: true,
+      product_category_null: false,
+      'product_category.codePrefix': categoryId,
+      active: true,
+    }
+
+    let getOneProduct = await strapi.services.product.findOne(params)
+
+    if (!getOneProduct || getOneProduct.length === 0) {
+      return [404, 'No items']
+    }
+
+    let thisProductId = getOneProduct.id
+    let thisProductCode = getOneProduct.code
+    let thisProductPrice = getOneProduct?.product_category?.priceAtPeriod[0]?.price
+    console.log('id', thisProductId, typeof thisProductId)
+    console.log('price', thisProductPrice)
+
+
+    const reserveParams = {
+      reserved_to: userId,
+      reservation_time: (new Date()).toISOString()
+    }
+
+    let reserveProduct = await strapi.services.product.update({ 'id': thisProductId }, reserveParams)
+
+    if (!reserveProduct.reserved_to) {
+      return [500, 'Failed to save reservation']
+    }
+    console.log('Product reserved to ', reserveProduct.reserved_to.id);
+
+    const mkResponse = await postToMaksekeskus({
+      customer: {
+        email: userEmail,
+        ip: userIp,
+        country: 'ee',
+        locale: body.locale || 'et'
+      },
+      transaction: {
+        amount: thisProductPrice,
+        currency: 'EUR',
+        merchant_data: JSON.stringify({
+          userId: userId,
+          categoryId: categoryId,
+          code: thisProductCode
+        }),
+        reference: categoryId,
+        transaction_url: {
+          cancel_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` },
+          notification_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` },
+          return_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` }
+        }
+      }
+    })
+
+    const paymentMethod = [
+      ...mkResponse.payment_methods.banklinks,
+      ...mkResponse.payment_methods.cards,
+      ...mkResponse.payment_methods.other,
+      ...mkResponse.payment_methods.payLater
+    ].find(m => [m.country, m.name].join('_').toUpperCase() === body.paymentMethodId)
+
+    if (!paymentMethod) {
+      return [400, 'No paymentMethod']
+    }
+
+    return { url: paymentMethod.url }
+
+  },
+  async buyProductCb(ctx) {
+    const mkResponse = JSON.parse(ctx.request.body.json)
+    console.log('Yes, MK CB: ', mkResponse);
+    console.log('Response status ', mkResponse.status)
+
+    const product = JSON.parse(mkResponse.merchant_data)
+    console.log('product', product)
+
+    const findProductParams = {
+      code: product.code,
+      'product_category.codePrefix': product.categoryId,
+    }
+
+    let getOneProduct = await strapi.services.product.findOne(findProductParams)
+
+    if (!getOneProduct || getOneProduct.length === 0) {
+      return [404, 'No items']
+    }
+
+    const item = getOneProduct
+
+    if (mkResponse.status === 'CANCELLED' || mkResponse.status === 'EXPIRED') {
+      let cancel_url
+
+      if (item.transaction && item.transaction.dateTime) {
+        console.log({ dbl_transactionTime: item.transaction.dateTime, item: item, product: product })
+        return
+      }
+
+
+      const updateProductOptions = {
+        reservation_time: null,
+        reserved_to: null
+      }
+
+      let updateProduct = await strapi.services.product.update({ 'id': item.id }, updateProductOptions)
+
+      console.log('Updated product to set reservation and reservation time info to null', updateProduct.reservation_time, updateProduct.reserved_to);
+
+      // if (event.queryStringParameters.cancel_url) {
+      //   cancel_url = event.queryStringParameters.cancel_url
+      // } else {
+
+      // Kui cancel URL, siis viskame avalehele
+      console.log('Kui cancel URL,siis peaksime viskama avalehele, hetkel ignoreerime');
+      // return {
+      //   statusCode: 302,
+      //   headers: { Location: 'https://poff.ee' },
+      //   body: null
+      // }
+      // }
+      // return _h.redirect(cancel_url)
+
+      // return _h.error([400, 'Transaction canceled'])
+    }
+
+    if (!product.userId || !product.categoryId || !product.code) {
+      console.error(mkResponse)
+      return [400, 'Invalid merchant_data']
+    }
+
+    const mkId = process.env.MakseKeskusId
+    if (mkResponse.shop !== mkId) {
+      return [400, 'Invalid shop']
+    }
+
+    if (mkResponse.status === 'COMPLETED') {
+      if (item.transaction && item.transaction.dateTime) {
+        console.log({ dblem_transactionTime: item.transaction.dateTime, item: item, product: product })
+        return
+      }
+
+      // Email
+      try {
+        console.log('Here should send e-mail');
+        // const merchantData = JSON.stringify(JSON.parse(mkResponse.merchant_data))
+
+        // var lambdaParams = {
+        //   FunctionName: 'prod3-poff-api-trigger-sendEmail',
+        //   Payload: merchantData
+        // }
+        // console.log('invokeParams ', lambdaParams)
+
+        // const lambdaResponse = await lambda.invoke(lambdaParams).promise()
+        // console.log('response ', lambdaResponse)
+      } catch (error) {
+        console.log(error)
+      }
+
+      //Sheets
+      try {
+        // let merchantData = JSON.parse(mkResponse.merchant_data)
+        // merchantData.amount = mkResponse.amount
+        // merchantData.timestamp = mkResponse.message_time
+        // merchantData.transaction = mkResponse.transaction
+        // merchantData = JSON.stringify(merchantData)
+
+        // var lambdaParams = {
+        //   FunctionName: 'prod3-poff-api-trigger-reportToSheets',
+        //   Payload: merchantData
+        // }
+        // console.log('invokeParams ', lambdaParams)
+
+        // const lambdaResponse = await lambda.invoke(lambdaParams).promise()
+        // console.log('response ', lambdaResponse)
+        console.log('Here should do some Google Sheet stuff');
+      } catch (error) {
+        console.log(error)
+      }
+
+      // add transaction time
+
+      const addTransactionOptions = {
+        dateTime: mkResponse.message_time,
+        type: 'Purchase',
+        payment: [{
+          status: mkResponse.status,
+          amount: mkResponse.amount,
+          currency: mkResponse.currency,
+          cardOwner: mkResponse.customer_name,
+          identifier: mkResponse.transaction,
+          method: 'Card',
+          code: product.code,
+          person: product.userId
+        }]
+      }
+
+      let addTransaction = await strapi.services.transaction.create(addTransactionOptions)
+
+      let transactionId = addTransaction.id
+      console.log('Transaction ID', transactionId);
+      if (!transactionId) {
+        return [500, 'Failed to save transaction']
+      }
+
+
+
+      // Update pass one last time
+
+      const successOptions = {
+        sold_to: product.userId,
+        transaction: transactionId
+      }
+
+      let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+      console.log('Success updating product ID ', updateProductSuccess.id);
+
+      let return_url
+
+      // if (event.queryStringParameters.return_url) {
+      //   return_url = event.queryStringParameters.return_url
+      // } else {
+      console.log('Saadame kasutaja Minu POFFi');
+      return_url = 'https://poff.ee/minupoff'
+      // }
+
+      if (updateProductSuccess) {
+        return {
+          statusCode: 302,
+          headers: { Location: return_url },
+          body: null
+        }
+      }
+
+
+    }
+  }
 };

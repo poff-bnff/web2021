@@ -80,12 +80,9 @@ async function sendUserProfile() {
 
     let pictureInfo = "no profile picture saved"
 
-    if (profile_pic_to_send !== "empty") {
-        pictureInfo = 'this users picture is in S3'
-        await uploadPic()
-    } else if (userProfile.picture === 'this users picture is in S3') {
-        pictureInfo = 'this users picture is in S3'
-    }
+    const request = new XMLHttpRequest();
+
+    const formData = new FormData();
 
     let userToSend = {
         // picture: pictureInfo,
@@ -94,18 +91,38 @@ async function sendUserProfile() {
         gender: gender.value,
         birthdate: dob.value,
         phoneNr: phoneNr.value,
-        address: `${countrySelection.value}, ${citySelection.value}`
+        address: `${countrySelection.value}, ${citySelection.value}`,
     }
 
-    userToSend = JSON.stringify(userToSend)
-    // console.log("kasutaja profiil mida saadan ", userToSend);
+    formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
+    formData.append('data', JSON.stringify(userToSend));
+
+    // Log form data
+    console.log('Formdata:');
+    for (var pair of formData.entries()) {
+		console.log(pair[0]+ ', ' + pair[1]);
+	}
+
+    // if (profile_pic_to_send !== "empty") {
+    //     pictureInfo = 'this users picture is in S3'
+    //     console.log('SENDING PIC!');
+
+    //     // let picUploadResult = await uploadPic()
+    //     // let picId = picUploadResult[0].id
+    //     // userToSend.picture = picId
+    // } else if (userProfile.picture === 'this users picture is in S3') {
+    //     pictureInfo = 'this users picture is in S3'
+    // }
+
+    // userToSend = JSON.stringify(userToSend)
+    // // console.log("kasutaja profiil mida saadan ", userToSend);
 
     let response = await (await fetch(`${strapiDomain}/users/updateme`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
         },
-        body: userToSend
+        body: formData
     }))
 
     if (response.status === 200) {
@@ -165,7 +182,7 @@ async function uploadPic() {
     let files = profile_pic_to_send
     console.log(files);
     var formData = new FormData()
-    formData.append('files', files)
+    formData.append('files', files, `randomfilename.${fileExt}`)
     formData.append('ref', 'user')
     formData.append('refId', userProfile.id)
     formData.append('field', 'picture')
@@ -182,9 +199,8 @@ async function uploadPic() {
         redirect: 'follow'
     };
 
-
-    await fetch(data.link, requestOptions)
-
+    let uploadedPic = await fetch(data.link, requestOptions)
+    return uploadedPic.json()
 }
 
 function validateForm() {

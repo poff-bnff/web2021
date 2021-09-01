@@ -30,13 +30,14 @@ if (process.argv[2]) {
     } else if (process.argv[2] === 'login') {
         addConfigPathAliases([
             '/_scripts',
-            '/login',
-            '/my_screenings',
-            '/screenings-search',
-            '/my_films',
-            '/_fetchdir/cassettes/200-meters',
-            '/search',
+            // '/login',
+            // '/my_screenings',
+            // '/screenings-search',
+            // '/my_films',
+            // '/_fetchdir/cassettes/200-meters',
+            // '/search',
             '/userprofile',
+            '/_fetchdir/products/hoff_pass'
         ])
         displayConfigPathAliases()
     }

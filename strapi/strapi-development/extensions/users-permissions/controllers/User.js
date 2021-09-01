@@ -45,6 +45,9 @@ module.exports = {
   update: resolveControllerMethod('update'),
   updateMe: resolveControllerMethod('updateMe'),
   favorites: resolveControllerMethod('favorites'),
+  paymentMethods: resolveControllerMethod('paymentMethods'),
+  buyProduct: resolveControllerMethod('buyProduct'),
+  buyProductCb: resolveControllerMethod('buyProductCb'),
 
   /**
    * Retrieve user records.
@@ -133,7 +136,6 @@ module.exports = {
 
     ctx.body = sanitizeUser(fetchedUser);
   },
-
   async import(ctx) {
     const users = JSON.parse(ctx.request.body.users);
 

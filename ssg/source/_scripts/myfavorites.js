@@ -126,8 +126,6 @@ function toggleFavButtons(favoriteCollection, type) {
         var film_id = isSavedButtons[i].id.split('_')[0]
         if (savedIds.includes(film_id)) {
             isSavedButtons[i].style.display = 'block'
-            // document.getElementById(film_id + '_cassette_id').style.display = 'block'
-
         }
         else {
             isSavedButtons[i].style.display = 'none'
