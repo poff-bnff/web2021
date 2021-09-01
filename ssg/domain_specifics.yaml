@@ -12,7 +12,7 @@ domain:
     filmikool.poff.ee: filmikool
 
 domains_show_cassetes_wo_screenings:
-    - poff.ee
+    # - poff.ee
     - hoff.ee
     - tartuff.ee
 
