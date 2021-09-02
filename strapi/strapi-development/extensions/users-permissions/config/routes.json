@@ -357,7 +357,7 @@
     },
     {
       "method": "POST",
-      "path": "/users/buyproductcb",
+      "path": "/users/buyproductcb/:returntype",
       "handler": "User.buyProductCb",
       "config": {
         "policies": []

@@ -36,6 +36,7 @@ if (process.argv[2]) {
             // '/my_films',
             // '/_fetchdir/cassettes/200-meters',
             // '/search',
+            '/mypoff',
             '/userprofile',
             '/_fetchdir/products/hoff_pass'
         ])

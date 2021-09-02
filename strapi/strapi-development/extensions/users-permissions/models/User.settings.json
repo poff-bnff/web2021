@@ -74,8 +74,8 @@
       "max": 10
     },
     "person_test_2": {
-      "via": "users_permissions_user",
-      "model": "person-test2"
+      "model": "person-test2",
+      "via": "users_permissions_user"
     },
     "account_created": {
       "type": "datetime"
@@ -84,10 +84,6 @@
       "type": "component",
       "repeatable": false,
       "component": "user.imported-to-strapi"
-    },
-    "product": {
-      "model": "product",
-      "via": "users_permissions_user"
     },
     "my_films": {
       "type": "component",
@@ -98,6 +94,10 @@
       "type": "component",
       "repeatable": true,
       "component": "user.my-screenings"
+    },
+    "my_products": {
+      "via": "sold_to",
+      "collection": "product"
     }
   }
 }

@@ -537,7 +537,7 @@ module.exports = {
     if (!reserveProduct.reserved_to) {
       return [500, 'Failed to save reservation']
     }
-    console.log('Product reserved to ', reserveProduct.reserved_to.id);
+    console.log('Product ', thisProductId, ' reserved to ', reserveProduct.reserved_to.id);
 
     const mkResponse = await postToMaksekeskus({
       customer: {
@@ -552,13 +552,15 @@ module.exports = {
         merchant_data: JSON.stringify({
           userId: userId,
           categoryId: categoryId,
-          code: thisProductCode
+          code: thisProductCode,
+          cancel_url: cancel_url,
+          return_url: return_url
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` },
-          notification_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` },
-          return_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb` }
+          cancel_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/return` }
         }
       }
     })
@@ -578,6 +580,18 @@ module.exports = {
 
   },
   async buyProductCb(ctx) {
+    let cancel_url = 'https://build.dev.poff.ee/'
+
+    async function redirectUser(code = 302, url = 'https://build.dev.poff.ee/', body = null) {
+      ctx.status = code;
+      let searchParams = body ? `?result=${body}` : ``
+      ctx.redirect(`${url}${searchParams}`);
+      ctx.body = body;
+    }
+
+    let redirectType = ctx.params.returntype
+    console.log('ctx.params.returntype', redirectType);
+
     const mkResponse = JSON.parse(ctx.request.body.json)
     console.log('Yes, MK CB: ', mkResponse);
     console.log('Response status ', mkResponse.status)
@@ -593,17 +607,16 @@ module.exports = {
     let getOneProduct = await strapi.services.product.findOne(findProductParams)
 
     if (!getOneProduct || getOneProduct.length === 0) {
-      return [404, 'No items']
+      redirectUser(404, null, 'No items')
     }
 
     const item = getOneProduct
 
     if (mkResponse.status === 'CANCELLED' || mkResponse.status === 'EXPIRED') {
-      let cancel_url
 
       if (item.transaction && item.transaction.dateTime) {
         console.log({ dbl_transactionTime: item.transaction.dateTime, item: item, product: product })
-        return
+        redirectUser(402, cancel_url, 'Payment cancelled')
       }
 
 
@@ -612,41 +625,44 @@ module.exports = {
         reserved_to: null
       }
 
-      let updateProduct = await strapi.services.product.update({ 'id': item.id }, updateProductOptions)
+      let updateProduct
+      try {
+        updateProduct = await strapi.services.product.update({ 'id': item.id, 'reserved_to': product.userId }, updateProductOptions)
+      }catch(err) {
+        null
+      }
 
-      console.log('Updated product to set reservation and reservation time info to null', updateProduct.reservation_time, updateProduct.reserved_to);
+      if (updateProduct) {
+        console.log('Updated product to set reservation and reservation time info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
+      } else {
+        console.log('Product already no allocated to this user, did not set reservation and reservation time info to null.');
+      }
 
-      // if (event.queryStringParameters.cancel_url) {
-      //   cancel_url = event.queryStringParameters.cancel_url
-      // } else {
-
-      // Kui cancel URL, siis viskame avalehele
-      console.log('Kui cancel URL,siis peaksime viskama avalehele, hetkel ignoreerime');
-      // return {
-      //   statusCode: 302,
-      //   headers: { Location: 'https://poff.ee' },
-      //   body: null
-      // }
-      // }
-      // return _h.redirect(cancel_url)
-
-      // return _h.error([400, 'Transaction canceled'])
+      if (redirectType === 'cancel' && product.cancel_url.length) {
+        console.log('Kui cancel URL olemas, siis viskame sellele ', product.cancel_url);
+        cancel_url = product.cancel_url
+      } else {
+        // Kui cancel URL puudu, siis viskame avalehele
+        console.log('Kui cancel URL puudu,siis viskame avalehele');
+      }
+      // return { url: cancel_url }
+      redirectUser(402, cancel_url, 'Payment cancelled')
     }
 
     if (!product.userId || !product.categoryId || !product.code) {
       console.error(mkResponse)
-      return [400, 'Invalid merchant_data']
+      redirectUser(400, cancel_url, 'Invalid merchant_data')
     }
 
     const mkId = process.env.MakseKeskusId
     if (mkResponse.shop !== mkId) {
-      return [400, 'Invalid shop']
+      redirectUser(400, cancel_url, 'Invalid shop')
     }
 
     if (mkResponse.status === 'COMPLETED') {
       if (item.transaction && item.transaction.dateTime) {
         console.log({ dblem_transactionTime: item.transaction.dateTime, item: item, product: product })
-        return
+        redirectUser(409, cancel_url, 'Already allocated')
       }
 
       // Email
@@ -709,7 +725,7 @@ module.exports = {
       let transactionId = addTransaction.id
       console.log('Transaction ID', transactionId);
       if (!transactionId) {
-        return [500, 'Failed to save transaction']
+        redirectUser(500, cancel_url, 'Failed to save transaction')
       }
 
 
@@ -724,21 +740,19 @@ module.exports = {
       let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
       console.log('Success updating product ID ', updateProductSuccess.id);
 
-      let return_url
+      let return_url = 'https://build.dev.poff.ee/minupoff/'
 
-      // if (event.queryStringParameters.return_url) {
-      //   return_url = event.queryStringParameters.return_url
-      // } else {
-      console.log('Saadame kasutaja Minu POFFi');
-      return_url = 'https://poff.ee/minupoff'
-      // }
+      if (redirectType === 'return' && product.return_url.length) {
+        console.log('Kui return URL olemas, saadame kasutaja sinna');
+        return_url = product.return_url
+      } else {
+        console.log('Kui return URL puudu, saadame kasutaja Minu POFFi');
+      }
 
       if (updateProductSuccess) {
-        return {
-          statusCode: 302,
-          headers: { Location: return_url },
-          body: null
-        }
+        console.log('Suunamine kui kõik õnnestus', return_url);
+        redirectUser(302, return_url, 'Successful transaction')
+
       }
 
 

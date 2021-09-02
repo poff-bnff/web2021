@@ -48,12 +48,7 @@
     "sold_to": {
       "plugin": "users-permissions",
       "model": "user",
-      "via": "product"
-    },
-    "users_permissions_user": {
-      "via": "product",
-      "plugin": "users-permissions",
-      "model": "user"
+      "via": "my_products"
     }
   }
 }
