@@ -69,6 +69,7 @@ const HomePage = () => {
      	 	<ButtonAndLog site="kinoff.poff.ee" buttonText="KINOFF LIVE"/>
      	 	<ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE"/>
      	 	<ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE"/>
+     	 	<ButtonAndLog site="oyafond.ee" buttonText="BRUNO OJA FOND LIVE"/>
      	 	{/**<Button color="primary" onClick={() => DoBuildFull()}>Full build</Button>**/}
     </Container>
   );
