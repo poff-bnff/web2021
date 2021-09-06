@@ -55,7 +55,7 @@ function model(arg) {
 		'kinoffi-supporter': 'full',
 		'kumu-supporter': 'full',
 		'supporters-shorts': 'full',
-		'tartuff-supporter': 'full',
+		'tartuffi-supporter': 'full',
 		'supporters-page': 'full',
 
 		'article-type':'full',

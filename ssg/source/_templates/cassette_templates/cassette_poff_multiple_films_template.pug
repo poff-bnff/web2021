@@ -155,70 +155,70 @@ main.grid_cassette
                                     //-     h1= screening.location.name
 
 
-                                .card-body.bg_dark_3
-                                    .screening_info_blokk
-                                        if screening.codeAndTitle
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.name
-                                                span.screening_info_value= screening.codeAndTitle
-                                        //- if screening.screeningSubtitles
+                        .card-body.bg_dark_3
+                            .screening_info_blokk
+                                if screening.codeAndTitle
+                                    .str_info_grid_3
+                                        span.screening_info_label= self.label.screening.name
+                                        span.screening_info_value= screening.codeAndTitle
+                                //- if screening.screeningSubtitles
 
-                                        if screening.subtitles
-                                            - var subtitlesNames = function(item) {
-                                            -   if(item.name) {
-                                            -       var itemNames = item.name
-                                            -       return itemNames
-                                            -   }
-                                            - }
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.subtitles
-                                                span.screening_info_value= screening.subtitles.map(subtitlesNames).sort().join(', ')
+                                if screening.subtitles
+                                    - var subtitlesNames = function(item) {
+                                    -   if(item.name) {
+                                    -       var itemNames = item.name
+                                    -       return itemNames
+                                    -   }
+                                    - }
+                                    .str_info_grid_3
+                                        span.screening_info_label= self.label.screening.subtitles
+                                        span.screening_info_value= screening.subtitles.map(subtitlesNames).sort().join(', ')
 
 
-                                        - var iqnac = screening.introQaConversation
-                                        //- Screening Intro
-                                        if iqnac
-                                            - var introGuests = iqnac.filter(i => { return i.type === 'Intro' && i.guest })
-                                            if introGuests.length > 0 && typeof introGuests[0].guest[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.introGuests
-                                                    span.screening_info_value= introGuests[0].guest.join(', ')
+                                - var iqnac = screening.introQaConversation
+                                //- Screening Intro
+                                if iqnac
+                                    - var introGuests = iqnac.filter(i => { return i.type === 'Intro' && i.guest })
+                                    if introGuests.length > 0 && typeof introGuests[0].guest[0] !== 'object'
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.introGuests
+                                            span.screening_info_value= introGuests[0].guest.join(', ')
 
-                                            - var introPresenters = iqnac.filter(i => { return i.type === 'Intro' && i.presenter })
-                                            if introPresenters.length > 0 && typeof introPresenters[0].presenter[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.introPresenter
-                                                    span.screening_info_value= introPresenters[0].presenter.join(', ')
+                                    - var introPresenters = iqnac.filter(i => { return i.type === 'Intro' && i.presenter })
+                                    if introPresenters.length > 0 && typeof introPresenters[0].presenter[0] !== 'object'
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.introPresenter
+                                            span.screening_info_value= introPresenters[0].presenter.join(', ')
 
-                                            //- Screening QandA
-                                            - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
-                                            if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaGuests
-                                                    span.screening_info_value= qaGuests[0].guest.join(', ')
+                                    //- Screening QandA
+                                    - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
+                                    if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.qaGuests
+                                            span.screening_info_value= qaGuests[0].guest.join(', ')
 
-                                            - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
-                                            if qaPresenter.length > 0 && typeof qaPresenter[0].presenter[0] !== 'object'
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaPresenter
-                                                    span.screening_info_value= qaPresenter[0].presenter.join(', ')
+                                    - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
+                                    if qaPresenter.length > 0 && typeof qaPresenter[0].presenter[0] !== 'object'
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.qaPresenter
+                                            span.screening_info_value= qaPresenter[0].presenter.join(', ')
 
-                                            if iqnac[0].duration
-                                                .str_info_grid_3
-                                                    span.screening_info_label= self.label.screening.qaDuration
-                                                    span.screening_info_value
-                                                        +dur(iqnac[0].duration)
+                                    if iqnac[0].duration
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.qaDuration
+                                            span.screening_info_value
+                                                +dur(iqnac[0].duration)
 
-                                        if screening.extraInfo && typeof screening.extraInfo !== 'object'
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.extraInfo
-                                                span.screening_info_value= screening.extraInfo
+                                if screening.extraInfo && typeof screening.extraInfo !== 'object'
+                                    .str_info_grid_3
+                                        span.screening_info_label= self.label.screening.extraInfo
+                                        span.screening_info_value= screening.extraInfo
 
-                                        if screening.durationTotal
-                                            .str_info_grid_3
-                                                span.screening_info_label= self.label.screening.totalDuration
-                                                span.screening_info_value
-                                                    +dur(screening.durationTotal)
+                                if screening.durationTotal
+                                    .str_info_grid_3
+                                        span.screening_info_label= self.label.screening.totalDuration
+                                        span.screening_info_value
+                                            +dur(screening.durationTotal)
 
                         .btn-group(role='group' aria-label='')
 
@@ -239,6 +239,15 @@ main.grid_cassette
 
         +rmOldScreeningButtons
 
+    //-             section.f_interactive_box
+    //-                 //- .f_interactive_item
+    //-                 //-     p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+
+    //-                 //-     a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`saveFilmAsFavourite(${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+    //-                 //-     a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`removeFilm(${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+
+    //-                 .f_interactive_item
+    //-                     a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
 
     if self.tags && self.tags.programmes && self.tags.programmes.map(a => a.presentedBy || false).length
         -
@@ -596,6 +605,7 @@ else
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
                         .str_info_value= film.languages.map(languagesNames).join(', ')
+
             //- section.f_interactive_box
             //-     .f_interactive_item
             //-         p
@@ -627,6 +637,23 @@ else
             //-                 p.dark_1= director.person.biography
             //-             if director.person.filmography && typeof director.person.filmography !== 'object'
             //-                 p.dark_1= director.person.filmography
+
+            -
+                var festivalEditionsIds = []
+                film?.tags?.programmes?.map(pr => {
+                    pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
+                })
+
+            //- if festivalEditionsIds.includes(5)
+            //-     section.f_interactive_box
+            //-         //- .f_interactive_item
+            //-         //-     p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+
+            //-         //-     a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`saveFilmAsFavourite(${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+            //-         //-     a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`removeFilm(${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+
+            //-         .f_interactive_item
+            //-             a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
 
             if film.presentedBy && film.presentedBy.presentedByText && film.presentedBy.organisations && film.presentedBy.organisations[0]
 
@@ -662,10 +689,10 @@ else
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            .f_vialog_box
-                //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
-                a(name='chat')
-                    iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
+            //- .f_vialog_box
+            //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
+            //-     a(name='chat')
+            //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
 
             if film.media && film.media.trailer && film.media.trailer[0] && film.media.trailer[0].videoCode
                 section.f_trailer_box

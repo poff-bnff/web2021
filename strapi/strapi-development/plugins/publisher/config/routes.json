@@ -26,6 +26,21 @@
     },
     {
       "method": "GET",
+      "path": "/last-failed-build-logs",
+      "handler": "publisher.lastFailedBuildLogs",
+      "config": {
+        "policies": []
+      }
+    },    {
+      "method": "GET",
+      "path": "/last-twenty-build-fails-of-site/:site",
+      "handler": "publisher.lastTwentyBuidFailsOfSite",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/my-started-build-log",
       "handler": "publisher.myStartedBuildLog",
       "config": {
@@ -36,6 +51,14 @@
       "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/last-build-log-by-site/:site",
+      "handler": "publisher.lastBuildLogBySite",
       "config": {
         "policies": []
       }

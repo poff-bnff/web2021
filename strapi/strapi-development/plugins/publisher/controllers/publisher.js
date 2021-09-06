@@ -58,31 +58,31 @@ const doBuild = async (site, userInfo) => {
       console.log(`child process exited with code ${code}`);
       let logData = {}
 
-      switch (code) {
-        case 0:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
-          break;
-        case 1:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR" }
-          break;
-        case 2:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR" }
-          break;
-        case 23:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR" }
-          break;
-        case 80:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR" }
-          break;
-        case 81:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR" }
-          break;
-        case 82:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR" }
-          break;
-        default:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
-      }
+      // switch (code) {
+      //   case 0:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
+      //     break;
+      //   case 1:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR" }
+      //     break;
+      //   case 2:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR" }
+      //     break;
+      //   case 23:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR" }
+      //     break;
+      //   case 80:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR" }
+      //     break;
+      //   case 81:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR" }
+      //     break;
+      //   case 82:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR" }
+      //     break;
+      //   default:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
+      // }
       // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
       // console.log("close result:", result)
 
@@ -175,7 +175,7 @@ module.exports = {
     } else {
       // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-
+        console.log({ data })
         await doBuild(site, userInfo)
         ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
@@ -233,6 +233,38 @@ module.exports = {
     return result
 
   },
+  lastFailedBuildLogs: async (ctx) => {
+    const params = {
+      build_errors_null: false,
+      type: 'build',
+      _sort: 'id:desc'
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    (result.length > 0) ? result = await addS(result) : result = result
+    return result
+
+  },
+  lastTwentyBuidFailsOfSite: async (ctx) => {
+    const params = {
+      build_errors_null: false,
+      type: 'build',
+      site: ctx.params.site,
+      _limit: 20,
+      _sort: 'id:desc',
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    result = result
+      .map(r => {
+        return {
+          site: r.site,
+          id: r.id,
+          end_time: r.end_time,
+          build_errors: r.build_errors
+        }
+      })
+    return result
+
+  },
   myStartedBuildLog: async (ctx) => {
     const params = {
       'admin_user.id': ctx.state.admin.id,
@@ -262,6 +294,24 @@ module.exports = {
   onelog: async (ctx) => {
 
     const params = { id: ctx.params.id }
+
+    const result = await strapi.query("build_logs", "publisher").findOne(params);
+    if (result.admin_user) {
+      result.admin_user = {
+        firstname: result.admin_user.firstname || null,
+        lastname: result.admin_user.lastname || null
+      }
+    }
+    return result
+
+  },
+  lastBuildLogBySite: async (ctx) => {
+
+    const params = { 
+      site: ctx.params.site,
+      _sort: 'id:desc',
+      type: 'build'
+    }
 
     const result = await strapi.query("build_logs", "publisher").findOne(params);
     if (result.admin_user) {

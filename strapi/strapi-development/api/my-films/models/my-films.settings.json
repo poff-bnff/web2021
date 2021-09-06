@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "my_films",
+  "info": {
+    "name": "MyFilms",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "my_films"
+    },
+    "cassette": {
+      "model": "cassette"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "favorite",
+        "other"
+      ],
+      "default": "other"
+    }
+  }
+}

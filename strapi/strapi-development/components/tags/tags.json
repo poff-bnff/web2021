@@ -2,7 +2,8 @@
   "collectionName": "components_tags_tags",
   "info": {
     "name": "Tags",
-    "icon": "audio-description"
+    "icon": "audio-description",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,6 +18,9 @@
     },
     "programmes": {
       "collection": "programme"
+    },
+    "film_types": {
+      "collection": "tag-film-type"
     }
   }
 }

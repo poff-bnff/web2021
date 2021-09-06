@@ -12,7 +12,7 @@ domain:
     filmikool.poff.ee: filmikool
 
 domains_show_cassetes_wo_screenings:
-    - poff.ee
+    # - poff.ee
     - hoff.ee
     - tartuff.ee
 
@@ -42,6 +42,7 @@ cassettes_festival_editions:
 programmes_festival_editions:
     poff.ee:
         - 7
+        - 10
     justfilm.ee:
         - 8
     kinoff.poff.ee:
@@ -116,8 +117,6 @@ locales:
         - ru
     oyafond.ee:
         - et
-        - en
-        - ru
     filmikool.poff.ee:
         - et
         - en
