@@ -25,6 +25,7 @@ WebUser:
     blocked: (Boolean)
     web_role: *WebRole
 
+
 Translated: &Translated
     et: (text)
     en: (text)
@@ -1766,7 +1767,7 @@ PriceAtPeriod: &PriceAtPeriod
     endDateTime: (Datetime)
 
 ProductType: &ProductType
-    _path: /products
+    _path: /product-types
     name: (text)
 
 Imgs: &Imgs
@@ -1796,16 +1797,19 @@ ProductCategory: &ProductCategory
     slug_ru: (UID)
     images: *Imgs
 
-ProductPass: &ProductPass
-    _path: /festival-passes
+Product: &Product
+    _path: /products
     product_type: *ProductType #(Component)
-    product_category: *ProductCategory #(Component)
     owner: *Person #(Component)
     code: (text)
     active: (Boolean)
     transaction: *Transaction #(Component)
     ticketingRight: #(Component (repeatable))
         - *TicketingRight
+    # reservation_time: (datetime)
+    # reserved_to: *USER
+    # resevation_expired: (datetime)
+    # reservation_price: (number)
 
 OrderedProduct: &OrderedProduct
     order: (number)
@@ -1828,6 +1832,21 @@ Shop: &Shop
     domains: #(Component (repeatable))
         - *Domain
 
+# USER: &USER
+
+# MyFilms: &Myfilms
+#     users_permission_user: *USER
+#     cassette: 
+#         - *Cassette
+#     type: enumeration
+
+# MyScreenings: &MyScreenings
+#     users_permission_user: *USER
+#     screenig: 
+#         - *Screening
+#     type: enumeration
+
+#SingleType
 # Hero
 HeroArticlePoff:
     _path: /article-hero
