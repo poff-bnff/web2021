@@ -60,16 +60,36 @@
       "configurable": false
     },
     "people": {
-      "via": "user",
-      "collection": "person"
+      "collection": "person",
+      "via": "user"
     },
     "my_films": {
-      "via": "users_permissions_user",
-      "collection": "my-films"
+      "collection": "my-films",
+      "via": "users_permissions_user"
     },
     "my_screenings": {
-      "via": "users_permissions_user",
-      "collection": "my-screenings"
+      "collection": "my-screenings",
+      "via": "users_permissions_user"
+    },
+    "my_products": {
+      "collection": "product",
+      "via": "sold_to"
+    },
+    "last10Logins": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.login-event"
+    },
+    "account_created": {
+      "type": "datetime"
+    },
+    "transactions": {
+      "collection": "transaction",
+      "via": "user"
+    },
+    "external_providers": {
+      "collection": "users-providers",
+      "via": "user"
     }
   }
 }

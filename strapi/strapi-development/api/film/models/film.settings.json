@@ -106,6 +106,10 @@
     "multi_and_single": {
       "type": "boolean",
       "default": false
+    },
+    "awardings": {
+      "via": "film",
+      "collection": "awarding"
     }
   }
 }

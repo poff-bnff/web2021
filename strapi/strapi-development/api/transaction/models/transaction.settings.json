@@ -27,6 +27,15 @@
       "type": "component",
       "repeatable": true,
       "component": "ticketing.payment"
+    },
+    "products": {
+      "via": "transaction",
+      "collection": "transactions-products"
+    },
+    "user": {
+      "via": "transactions",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

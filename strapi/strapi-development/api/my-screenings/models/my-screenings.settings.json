@@ -11,9 +11,9 @@
   },
   "attributes": {
     "users_permissions_user": {
+      "via": "my_screenings",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "my_screenings"
+      "model": "user"
     },
     "screening": {
       "model": "screening"

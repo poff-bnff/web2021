@@ -12,9 +12,9 @@
   },
   "attributes": {
     "users_permissions_user": {
+      "via": "my_films",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "my_films"
+      "model": "user"
     },
     "cassette": {
       "model": "cassette"

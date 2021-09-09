@@ -79,6 +79,10 @@
     },
     "homepageUrl": {
       "type": "string"
+    },
+    "awardings": {
+      "via": "organisation",
+      "collection": "awarding"
     }
   }
 }
