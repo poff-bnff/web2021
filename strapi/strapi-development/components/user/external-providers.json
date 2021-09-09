@@ -1,8 +1,9 @@
 {
   "collectionName": "components_user_external_providers",
   "info": {
-    "name": "ExternalProviders",
-    "icon": "align-right"
+    "name": "externalProviders",
+    "icon": "bone",
+    "description": ""
   },
   "options": {},
   "attributes": {

@@ -43,12 +43,12 @@
       "type": "decimal"
     },
     "sold_to": {
-      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "my_products"
     },
     "transactions": {
-      "collection": "transactions-products",
+      "collection": "transaction-products",
       "via": "product"
     }
   }

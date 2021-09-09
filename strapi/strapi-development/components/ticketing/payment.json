@@ -2,26 +2,18 @@
   "collectionName": "components_ticketing_payments",
   "info": {
     "name": "Payment",
-    "icon": "balance-scale"
+    "icon": "balance-scale",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "status": {
       "type": "string"
     },
-    "cardNumber": {
-      "type": "integer"
-    },
-    "cardOwner": {
-      "type": "string"
-    },
     "currency": {
       "type": "string"
     },
-    "code": {
-      "type": "string"
-    },
-    "identifier": {
+    "transaction": {
       "type": "string"
     },
     "amount": {
@@ -30,8 +22,7 @@
     "method": {
       "type": "enumeration",
       "enum": [
-        "Cash",
-        "Card"
+        "Maksekeskus"
       ]
     }
   }

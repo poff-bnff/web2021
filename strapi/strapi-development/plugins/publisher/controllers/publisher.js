@@ -175,7 +175,7 @@ module.exports = {
     } else {
       // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-        console.log({ data })
+        
         await doBuild(site, userInfo)
         ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
