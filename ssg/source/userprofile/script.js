@@ -24,7 +24,7 @@ async function getUserProfile() {
 async function loadUserInfo() {
 
     let userProfile = await getUserProfile()
-    const profile = userProfile['person_test_2']
+    const profile = userProfile.users_person
 
     if (userProfile.profile_filled) {
         document.getElementById('profileFilledMessage').style.display = 'block'

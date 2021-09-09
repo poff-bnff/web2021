@@ -181,12 +181,12 @@ module.exports = {
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
-      console.log('Create new Person to person-test2');
+      console.log('Create new Person to users-persons');
       let newUserProfile
       if (files.picture) {
-        newUserProfile = await strapi.services['person-test2'].create(personProfile, { files })
+        newUserProfile = await strapi.services['users-persons'].create(personProfile, { files })
       } else {
-        newUserProfile = await strapi.services['person-test2'].create(personProfile)
+        newUserProfile = await strapi.services['users-persons'].create(personProfile)
       }
       console.log('newUserProfile', newUserProfile);
       return newUserProfile
@@ -196,9 +196,9 @@ module.exports = {
       const { files } = parseMultipartData(ctxForPicture);
       let updatedProfile
       if (files.picture) {
-        updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+        updatedProfile = await strapi.services['users-persons'].update({ id }, { personProfile }, { files })
       } else {
-        updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile })
+        updatedProfile = await strapi.services['users-persons'].update({ id }, { personProfile })
       }
       console.log('updatedProfile', updatedProfile);
       return updatedProfile

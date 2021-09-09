@@ -24,7 +24,7 @@ function buyerCheck() {
     }else{
         document.getElementById('directToLoginButton').style.display = 'none'
 
-        if(userProfile.profileFilled && userProfile.person_test_2 && userProfile.person_test_2.picture){
+        if(userProfile.profileFilled && userProfile.users_person && userProfile.users_person.picture){
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")
@@ -166,9 +166,9 @@ function saveUrl(){
 function useUserData(userProf){
     console.log('Trying userprofile 1', userProfileHasBeenLoaded);
 
-    if(userProf.person_test_2 && userProf.person_test_2.firstName){
+    if(userProf.users_person && userProf.users_person.firstName){
         try{
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.person_test_2.firstName
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.users_person.firstName
         }catch(err){
             null
         }

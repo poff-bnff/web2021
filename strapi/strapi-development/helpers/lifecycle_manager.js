@@ -243,7 +243,7 @@ function clean_result(result) {
 
 
 async function modify_stapi_data(result, model_name, vanish = false) {
-  const modelsToBeSkipped = ['person-test2']
+  const modelsToBeSkipped = ['users-persons']
   if (modelsToBeSkipped.includes(model_name)) { return }
 
   let modelname = await strapi.query(model_name).model.info.name
