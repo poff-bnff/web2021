@@ -38,7 +38,7 @@ if (process.argv[2]) {
             '/search',
             '/mypoff',
             '/userprofile',
-            '/_fetchdir/products/hoff_pass',
+            '/_fetchdir/products/testpass',
             '/resetPswd',
             '/signup'
         ])
