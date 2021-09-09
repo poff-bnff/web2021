@@ -2,7 +2,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const buildConfigPath = path.join(rootDir, 'entu-ssg.yaml')
 const BUILD_CONFIG = yaml.load(fs.readFileSync(buildConfigPath, 'utf8'))
 const BUILD_PATHS = BUILD_CONFIG.dev.paths || []
@@ -24,8 +24,25 @@ function displayConfigPathAliases() {
     unique_paths.map(p => console.log(`\t${p}`));
 }
 
-if(process.argv[2] === 'display') {
-    displayConfigPathAliases()
+if (process.argv[2]) {
+    if (process.argv[2] === 'display') {
+        displayConfigPathAliases()
+    } else if (process.argv[2] === 'login') {
+        addConfigPathAliases([
+            '/_scripts',
+            '/login',
+            '/my_screenings',
+            '/screenings-search',
+            '/my_films',
+            '/_fetchdir/cassettes/200-meters',
+            '/search',
+            '/mypoff',
+            '/userprofile',
+            '/_fetchdir/products/testpass',
+            '/resetPswd',
+            '/signup'
+        ])
+        displayConfigPathAliases()
+    }
 }
-
 module.exports = addConfigPathAliases

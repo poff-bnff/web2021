@@ -12,15 +12,9 @@ function BuyProduct(categoryId) {
 
 
         var myHeaders = new Headers();
-        myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+        myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
-        var requestOptions = {
-            "method": 'PUT',
-            "headers": myHeaders,
-            "redirect": 'follow',
-            "body": JSON.stringify({ "paymentMethodId": paymentType }),
-            "content-type": 'application/json'
-        }
+
         // console.log(requestOptions)
 
         var mypoff
@@ -32,12 +26,26 @@ function BuyProduct(categoryId) {
             mypoff = 'minupoff'
         }
 
+        var requestBody = {}
+
         var fullHost = window.location.href.slice(0, window.location.href.indexOf("/", 8))
 
-        var return_url = fullHost + '/' + langpath + mypoff
-        var cancel_url = window.location.href
+        requestBody.paymentMethodId = paymentType
+        requestBody.categoryId = categoryId
+        requestBody.return_url = fullHost + '/' + langpath + mypoff
+        requestBody.cancel_url = window.location.href
 
-        fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
+        console.log({requestBody});
+        var requestOptions = {
+            "method": 'PUT',
+            "headers": myHeaders,
+            "redirect": 'follow',
+            "body": JSON.stringify(requestBody),
+            "content-type": 'application/json'
+        }
+
+        // fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
+        fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(function (response) {
             if (response.ok) {
                 return response.json();
             }
@@ -73,7 +81,7 @@ function GetPaymentLinks() {
     var paybutton = document.getElementById("paybutton")
 
     var myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'));
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
 
     var requestOptions = {
         method: 'GET',
@@ -81,7 +89,7 @@ function GetPaymentLinks() {
         redirect: 'follow'
     }
 
-    fetch('https://api.poff.ee/buy', requestOptions).then(function (response) {
+    fetch('https://admin.poff.ee/users-permissions/users/paymentmethods', requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

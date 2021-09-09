@@ -66,11 +66,6 @@
     },
     "pageUrl": {
       "type": "string"
-    },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "people"
     }
   }
 }

@@ -1,238 +1,249 @@
-// console.log("eelmine leht oli", document.referrer)
 // console.log(langpath)
 
 //info kasutajale kui suunatakse tagasi lemmikutest, profiili vaatest või minu
-if([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)){
+if ([`${location.origin}/userprofile`, `${location.origin}/en/userprofile`, `${location.origin}/ru/userprofile`].includes(document.referrer)) {
     // console.log("tulid profiilist")
-    document.getElementById('fromUserProfile').style.display = 'block'
+    document.getElementById('fromUserProfile').style.display = ''
 }
-if([`${location.origin}/minupoff`, `${location.origin}/en/mypoff`, `${location.origin}/ru/moipoff`].includes(document.referrer)){
+if ([`${location.origin}/minupoff`, `${location.origin}/en/mypoff`, `${location.origin}/ru/moipoff`].includes(document.referrer)) {
     // console.log("tulid oma passidest")
     // console.log(self.mypoff.path)
-    document.getElementById('fromMyPoff').style.display = 'block'
+    document.getElementById('fromMyPoff').style.display = ''
 }
-if([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${location.origin}/ru/favourite`].includes(document.referrer)){
+if ([`${location.origin}/favourite`, `${location.origin}/en/favourite`, `${location.origin}/ru/favourite`].includes(document.referrer)) {
     // console.log("tulid Lemmikutest")
-    document.getElementById('fromFavo').style.display = 'block'
+    document.getElementById('fromFavo').style.display = ''
 }
 
-
-if (window.location.hash) {
-
-    const [
-        access_token,
-        id_token,
-        token_type,
-        token_expires,
-    ] = window.location.hash.substr(1).split('&')
-
-    if ((window.location.hash).includes('Already+found+an+entry+for+username')) {
-        let errorMessage = (window.location.hash).split('+')
-        for (item of errorMessage) {
-            // console.log(item)
-
-            if (item.includes('google') || item.includes('facebook') || item.includes('eventival')) {
-                item = item.split('_')
-                let provider = item[0]
-                // console.log(provider)
-                providerLogin(provider)
-            }
-        }
-        // console.log(errorMessage)
-    }
-    else if ((window.location.hash).includes('User+is+not+confirmed')){
-        unConfirmed.style.display = 'block'
-        window.location.hash = ''
-    }
-
-    else if (access_token && id_token) {
-        storeAuthentication(access_token.split('=')[1], id_token.split('=')[1])
-        window.location.hash = ''
-    }
+// External provider 'social' login
+if (window.location.search) {
+    setTimeout(function () { loginFlow('social') }, 0)
+    // loginFlow('social')
 }
 
-if (location.search) {
-    getTokensForCode()
-
-}
-
-// salvesta timestamp
-//kasutaja nimi
-// autentimis päring api vastu (email ja parool, sinna, tagasi token ja timestamp
-
-async function storeAuthentication(access_token, id_token) {
-    localStorage.setItem('ACCESS_TOKEN', access_token)
-    localStorage.setItem('ID_TOKEN', id_token)
-    await loadUserProfile()
-}
-
-
-async function loginViaCognito() {
-    unfilledErrorMsg.style.display = 'none'
-    unConfirmed.style.display = 'none'
-    wrongPswd.style.display = 'none'
-
-
-
+// Email + pswd 'local' login
+const loginViaLocal = () => {
     if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
-
-        let authenticationData = {
-            loginUsername: document.getElementById("loginUsername").value,
-            password: document.getElementById("loginPassword").value
-        }
-
-        // console.log(authenticationData)
-
-        let response = await fetch(`https://api.poff.ee/auth`, {
-            method: 'POST',
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-            },
-            body: JSON.stringify(authenticationData)
-        });
-
-        let response2 = await response.json()
-        // console.log(response2)
-
-
-
-        if (response2.email && response2.confirmed === false) {
-            // console.log(1)
-            document.getElementById('unConfirmed').style.display = 'block'
-            return
-        }
-
-        if (response2.email && response2.status === "FORCE_CHANGE_PASSWORD") {
-            // console.log(1)
-            document.getElementById('forceResetPswd').style.display = 'block'
-            doResetPassword()
-            return
-        }
-
-        if (response2.noUserEmail && !response2.user) {
-            // console.log(2)
-            document.getElementById('noSuchUser').style.display = 'block'
-            return
-        }
-
-        if (response2.message === 'Internal Server Error'){
-            document.getElementById('wrongPswd').style.display = 'block'
-            return
-        }
-
-        // console.log(response2)
-        // console.log('authResponse ', response2.AccessToken)
-        access_token = response2.AccessToken
-        id_token = response2.IdToken
-
-        storeAuthentication(access_token, id_token)
+        loginFlow('local')
     } else {
-        unfilledErrorMsg.style.display = 'block'
-
-    }
-
-}
-
-
-async function loadUserProfile() {
-    // console.log('loadUserProfile');
-    let userProfile
-
-    let response = await fetch(`https://api.poff.ee/profile`, {
-        method: 'GET',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-        },
-    });
-    userProfile = await response.json()
-    // console.log(userProfile);
-    checkIfUserProfFilled(userProfile)
-
-}
-
-
-function checkIfUserProfFilled(userProfile) {
-    // console.log('checkIfUserProfFilled');
-    // console.log(userProfile.profile_filled);
-
-    if (userProfile.profile_filled) {
-        // console.log(userProfile.profile_filled)
-        // console.log('profile filled')
-        redirectToPreLoginUrl()
-    }
-    else if (!userProfile.profile_filled) {
-        // console.log(userProfile.profile_filled)
-        // console.log('profile not filled')
-        window.open(`${pageURL}/userprofile`, '_self')
-
+        unfilledErrorMsg.style.display = ''
     }
 }
 
+// Buttons
+const loginViaProvider = (provider) => {
+    let providerToLowerCase = provider.toLowerCase()
+    localStorage.setItem('LOGIN_PROVIDER', providerToLowerCase)
+    cleanUiMessages()
+    setLang()
 
-function redirectToPreLoginUrl() {
-    if (localStorage.getItem('url')) {
-        let url = localStorage.getItem('url')
-        localStorage.removeItem('url')
-        window.open(url, '_self')
-    }
-    else {
-        window.open(pageURL, '_self')
+    if (provider === "local") {
+        loginViaLocal()
+    } else {
+        provider = provider.toLowerCase()
+        window.open(`${strapiDomain}/connect/${provider}`, '_self')
     }
 }
-
-
-async function providerLogin(provider) {
-    // console.log('providerLogin ' + provider);
-
-    window.open(`https://api.poff.ee/auth/${provider}`, '_self')
-
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    }
-
-    let response = await fetch(`https://api.poff.ee/auth/${provider}`, requestOptions)
-
-    let response2 = await response.json()
-    // console.log(response2)
-
-    window.open(response2.providerUrl, '_self')
-}
-
-
-async function getTokensForCode() {
-    var requestOptions = {
-        method: 'POST',
-        redirect: 'follow'
-    }
-
-    let response = await fetch(`https://api.poff.ee/auth`, requestOptions)
-
-    // console.log(await response.json)
-
-}
-
 
 function directToSignup() {
-    window.open(`${location.origin}/signup`, '_self')
+    window.open(`${location.origin}/${langpath}signup`, '_self')
 }
 
 
-function doResetPassword() {
-    // console.log('reset');
+// Login main
+const loginFlow = async (provider) => {
+    const authRequest = composeRequest(provider)
+    const authResponse = await fetchFromStrapi(authRequest)
+    if (!authResponse) return
+
+    const authResult = handleResponse(authResponse)
+    if (!authResult) return
+
+    storeAuthentication(authResult.jwt)
+
+    const userProfileRequest = composeRequest('profile')
+    const userProfResponse = await fetchFromStrapi(userProfileRequest)
+    if (!userProfResponse) return
+
+    const userProfile = handleResponse(userProfResponse)
+    if (!userProfile) return
+
+    redirectToPreLoginUrl(userProfile)
+}
+
+// Services
+const composeRequest = (requestCase) => {
+    const request = { options: {} }
+    const lang = localStorage.getItem('lang') || 'et'
+
+    switch (requestCase) {
+        case ('social'):
+            const { provider, access_token } = getAccessTokenWithProvider()
+            request.route = `/auth/${provider}/callback?access_token=${access_token}`
+            request.options.method = 'GET'
+            break;
+        case ('local'):
+            const authenticationData = {
+                identifier: document.getElementById("loginUsername").value,
+                password: document.getElementById("loginPassword").value
+            }
+            request.route = `/auth/local/login/${lang}`
+            request.options.method = 'POST'
+            request.options.headers = {
+                "Content-Type": "application/json"
+            }
+            request.options.body = JSON.stringify(authenticationData)
+            break;
+        case ('profile'):
+            request.route = '/users/me'
+            request.options.method = 'GET'
+            request.options.headers = {
+                Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+            }
+            break;
+    }
+    return request
+}
+
+const fetchFromStrapi = async (request) => {
+    try {
+        let response = await fetch(`${strapiDomain}${request.route}`, request.options);
+        response = await response.json()
+        return response
+    }
+    catch (err) {
+        document.getElementById('failedToFetch').style.display = ''
+        cleanInputFields()
+        return
+    }
+}
+
+const handleResponse = (response) => {
+    console.log('Login page handleResponse', response);
+    if (response.jwt && response.user || response.id) return response
+
+    if (response.statusCode !== 200) {
+        if (loginUsername.value) {
+            document.getElementById('emailUsed').style.display = ''
+            emailUsed.innerHTML = loginUsername.value
+        }
+
+        // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message
+        let strapiError = null
+        if (response.message[0].messages[0].id) {
+            strapiError = response.message[0].messages[0].id
+        }
+        console.log('Login page handleResponse strapiError', strapiError);
+        typeof strapiError !== 'string' ? strapiError = response.error : null
+
+        switch (strapiError) {
+            case ('Auth.form.error.confirmed'):
+                document.getElementById('unConfirmed').style.display = ''
+                break;
+            case ('Auth.form.error.invalid'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Auth.form.error.password.local'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Auth.form.error.invalid'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Merge provider to existing providers failed'):
+                document.getElementById('mergeProvidersFailed').style.display = ''
+                break;
+            case ('No authorization header was found'):
+                document.getElementById('authorizeRequestFailed').style.display = ''
+                break;
+            case ('pswdResetRequired'):
+                doResetPassword('server')
+                break;
+            default:
+                const errorNotifBar = document.getElementById('errorNotificationBar')
+                errorNotifBar.style.display = ''
+                errorNotifBar.innerHTML = errorNotificationBar.innerHTML + ` "${strapiError}"` + `<a onclick='closeMe(this.parentNode), clearMe(this.parentNode)'> ×</a>`
+                break;
+        }
+        cleanInputFields()
+        cleanUrl()
+    }
+}
+
+const storeAuthentication = (access_token) =>
+    localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
+
+const redirectToPreLoginUrl = (userProfile) => {
+    const preLoginUrl = localStorage.getItem('preLoginUrl')
+    const currentlang = getCurrentLang()
+
+    if (!userProfile.profileFilled) {
+        window.open(`${pageURL}/${currentlang}userprofile`, '_self')
+        return
+    }
+    localStorage.removeItem('preLoginUrl')
+    preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
+}
+
+// Helpers:
+const getAccessTokenWithProvider = () => {
+    let provider = localStorage.getItem('LOGIN_PROVIDER')
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const access_token = urlParams.get('access_token')
+
+    return {
+        provider: provider,
+        access_token: access_token
+    }
+}
+
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+
+// Cleaners:
+const cleanUrl = () =>
+    window.location.hash = ''
+
+const cleanInputFields = () => {
+    document.getElementById("loginUsername").value = ''
+    document.getElementById("loginPassword").value = ''
+}
+
+const cleanUiMessages = () => {
+    unfilledErrorMsg.style.display = 'none'
+    unConfirmed.style.display = 'none'
+    noUserOrWrongPwd.style.display = 'none'
+    failedToFetch.style.display = 'none'
+    mergeProvidersFailed.style.display = 'none'
+    emailUsed.style.display = 'none'
+    errorNotificationBar.style.display = 'none'
+    clearMe(errorNotificationBar)
+}
+
+const clearMe = elem => elem.innerText = ''
+
+const closeMe = elem => elem.style.display = 'none'
+
+function doResetPassword(source) {
     forgotPasswordBtn.style.display = 'none'
-    sendPswdResetCodeBtn.style.display = 'block'
     document.getElementById('loginMessage').style.display = 'none'
     document.getElementById('password').style.display = 'none'
-    document.getElementById('loginFB').style.display = 'none'
-    document.getElementById('loginG').style.display = 'none'
-    document.getElementById('loginE').style.display = 'none'
+    document.getElementById('login_some').style.display = 'none'
+    document.getElementById('login_register').style.display = 'none'
     document.getElementById('loginBtn').style.display = 'none'
     document.getElementById('signUpBtn').style.display = 'none'
-
-    document.getElementById('pswdResetMessage').style.display = 'block'
+    sendPswdResetCodeBtn.style.display = ''
+    document.getElementById('loginUsername').value = loginUsername.value
+    if (source === 'user') {
+        document.getElementById('pswdResetMessage').style.display = ''
+    }
+    else if (source === 'server') {
+        document.getElementById('adminPswdResetMessage').style.display = ''
+    }
 }
-
 
 function doSaveNewPswd() {
     // console.log('resetting');
@@ -240,47 +251,25 @@ function doSaveNewPswd() {
     document.getElementById('passwordRep').style.display = 'none'
     document.getElementById('forgotPasswordBtn').style.display = 'none'
     document.getElementById('pswdResetEnterNewMessage').style.display = 'none'
-    document.getElementById('forceResetPswd').style.display = 'none'
-
-    document.getElementById('pswdResetCompletedMessage').style.display = 'block'
-    document.getElementById('loginBtn').style.display = 'block'
+    document.getElementById('pswdResetCompletedMessage').style.display = ''
+    document.getElementById('loginBtn').style.display = ''
     document.getElementById('loginPassword').value = ''
-    sendResetCode()
-
+    sendReset
 }
-
-
 
 function doSendResetCode() {
     document.getElementById('userName').style.display = 'none'
-    document.getElementById('currentUsername').style.display = 'block'
+    document.getElementById('currentUsername').style.display = ''
     document.getElementById('currentUsername').innerHTML = loginUsername.value
     sendPswdResetCodeBtn.style.display = 'none'
 
-    // console.log('sendResetCode');
-    // console.log(loginUsername.value);
     sendResetCode()
 }
 
-
 async function sendResetCode() {
-    let authenticationData
-
-    // console.log(loginUsername.value);
-    // console.log(resetCode.value);
-
-
-    if (resetCode.value) {
-        authenticationData = {
-            loginUsername: loginUsername.value,
-            code: resetCode.value,
-            newPswd: loginPasswordRep.value
-        }
-    }
-    else if (loginUsername.value) {
-        authenticationData = {
-            loginUsername: document.getElementById("loginUsername").value
-        }
+    const authenticationData = {
+        email: document.getElementById("loginUsername").value,
+        lang: langpath.substr(0, 2) || 'et'
     }
 
     var requestOptions = {
@@ -289,27 +278,25 @@ async function sendResetCode() {
         body: JSON.stringify(authenticationData)
     }
 
-    let response = await fetch(`https://api.poff.ee/profile/pswd`, requestOptions)
+    let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
+    response = await response.json()
+    console.log(response);
 
-    // console.log(await response.json())
-
-    if (resetCode.value) {
-        return
-    }
-
-    document.getElementById('forgotPasswordBtn').style.display = 'none'
-    document.getElementById('resetCodeBox').style.display = 'block'
     document.getElementById('pswdResetMessage').style.display = 'none'
-    document.getElementById('pswdResetCodeMessage').style.display = 'block'
+    document.getElementById('adminPswdResetMessage').style.display = 'none'
+    document.getElementById('forgotPasswordBtn').style.display = 'none'
+
+    if (response.error) {
+        const errorNotifBar = document.getElementById('errorNotificationBar')
+        const insertedUsername = document.getElementById('currentUsername')
+        insertedUsername.style.display = 'none'
+        errorNotifBar.style.display = ''
+        errorNotifBar.innerHTML = errorNotificationBar.innerHTML + `Tekkis viga, palun veendu, et sisestasid õige e-maili aadressi (${insertedUsername.innerHTML})` + `<a onclick='closeMe(this.parentNode), clearMe(this.parentNode)'> ×</a>`
+
+    } else {
+        document.getElementById('pswdResetCodeSent').style.display = ''
+    }
+    document.getElementById('backToLoginBtn').style.display = ''
+
 
 }
-
-function askForNewPassword() {
-    document.getElementById('password').style.display = 'block'
-    document.getElementById('passwordRep').style.display = 'block'
-    document.getElementById('resetCodeBox').style.display = 'none'
-    document.getElementById('pswdResetCodeMessage').style.display = 'none'
-    document.getElementById('pswdResetEnterNewMessage').style.display = 'block'
-    resetPasswordBtn.style.display = 'block'
-}
-

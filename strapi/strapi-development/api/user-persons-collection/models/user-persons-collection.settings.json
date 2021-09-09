@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_persons_collections",
+  "info": {
+    "name": "userPersonsCollection"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    }
+  }
+}
