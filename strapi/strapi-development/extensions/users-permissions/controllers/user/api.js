@@ -196,10 +196,11 @@ module.exports = {
       const { files } = parseMultipartData(ctxForPicture);
       let updatedProfile
       if (files.picture) {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, { personProfile }, { files })
+        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile, { files })
       } else {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, { personProfile })
+        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile)
       }
+      console.log('personProfile', personProfile);
       console.log('updatedProfile', updatedProfile);
       return updatedProfile
 
@@ -251,12 +252,12 @@ module.exports = {
 
     // Create new person if it does not exist, else update
     personProfile.email = user.email
-    if (!user.person_test_2) {
+    if (!user.users_person) {
       personProfile.users_permissions_user = id
       console.log('Create new person', personProfile);
       // await createNewPersonProfile(personProfile)
     } else {
-      // await updatePersonProfile(personProfile, user.person_test_2.id)
+      // await updatePersonProfile(personProfile, user.users_person.id)
     }
 
     let updateData = {
@@ -282,9 +283,9 @@ module.exports = {
       }
     }
 
-    let thisUsersProfile = !user.person_test_2 ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.person_test_2.id)
-    updateData.person_test_2 = thisUsersProfile.id
-    console.log('updateData.person_test_2', updateData.person_test_2);
+    let thisUsersProfile = !user.users_person ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.users_person.id)
+    updateData.users_person = thisUsersProfile.id
+    console.log('updateData.users_person', updateData.users_person);
 
     const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
     // toSheets.newUserToSheets(updatedUser)
@@ -338,7 +339,7 @@ module.exports = {
     let rawData = { ...JSON.parse(ctx.request.body) }
 
     // User needs to fill profile before
-    if (!user.person_test_2) {
+    if (!user.users_person) {
       rawData.users_permissions_user = id
       console.log('Please fill profile');
     }
@@ -748,8 +749,8 @@ module.exports = {
             // let emailInfo = {
             //   userEmail: getUserInfo.email,
             //   templateUsed: 'PassiOst',
-            //   userFirstName: getUserInfo.person_test_2.firstName,
-            //   userLastName: getUserInfo.person_test_2.lastName,
+            //   userFirstName: getUserInfo.users_person.firstName,
+            //   userLastName: getUserInfo.users_person.lastName,
             //   passType: updateProductSuccess.product_category.codePrefix,
             //   passCode: updateProductSuccess.code
             // }
@@ -763,8 +764,8 @@ module.exports = {
               template_name: `passiost`,
               template_vars: [
                 { name: 'email', content: getUserInfo.email },
-                { name: 'eesnimi', content: getUserInfo.person_test_2.firstName },
-                { name: 'perenimi', content: getUserInfo.person_test_2.lastName },
+                { name: 'eesnimi', content: getUserInfo.users_person.firstName },
+                { name: 'perenimi', content: getUserInfo.users_person.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
                 { name: 'passikood', content: updateProductSuccess.code },
                 { name: 'passinimi', content: passNames[updateProductSuccess.product_category.codePrefix] }

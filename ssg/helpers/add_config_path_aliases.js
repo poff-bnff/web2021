@@ -31,16 +31,16 @@ if (process.argv[2]) {
         addConfigPathAliases([
             '/_scripts',
             '/login',
-            // '/my_screenings',
-            // '/screenings-search',
-            // '/my_films',
-            // '/_fetchdir/cassettes/200-meters',
-            // '/search',
-            // '/mypoff',
+            '/my_screenings',
+            '/screenings-search',
+            '/my_films',
+            '/_fetchdir/cassettes/200-meters',
+            '/search',
+            '/mypoff',
             '/userprofile',
-            // '/_fetchdir/products/hoff_pass',
-            // '/resetPswd',
-            // '/signup'
+            '/_fetchdir/products/hoff_pass',
+            '/resetPswd',
+            '/signup'
         ])
         displayConfigPathAliases()
     }

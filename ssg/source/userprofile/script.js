@@ -60,9 +60,7 @@ async function loadUserInfo() {
         }
 
         if (profile.picture) {
-            if (profile.picture !== "no profile picture saved") {
-                imgPreview.src = `${strapiDomain}${profile.picture.url}`
-            }
+            imgPreview.src = `${strapiDomain}${profile.picture.url}`
         }
     }
 }
@@ -160,49 +158,6 @@ function validateaAndPreview(file) {
         profile_pic_to_send = file
 
     }
-}
-
-async function uploadPic() {
-
-    // console.log("uploading this file to S3....")
-    // console.log(profile_pic_to_send)
-    //küsib lingi kuhu pilti postitada
-
-    data = {}
-    data.link = `${strapiDomain}/upload`
-    // console.log("saadud link on: ")
-    // console.log(data.link)
-
-
-    //saadab pildi
-    // console.log('name ', profile_pic_to_send.name)
-
-    const fileExt = profile_pic_to_send.name.split('.').pop()
-    let contentType = 'image/' + fileExt
-    // console.log(contentType)
-
-    let files = profile_pic_to_send
-    console.log(files);
-    var formData = new FormData()
-    formData.append('files', files, `randomfilename.${fileExt}`)
-    formData.append('ref', 'user')
-    formData.append('refId', userProfile.id)
-    formData.append('field', 'picture')
-    formData.append('source', 'users-permissions')
-
-    console.log(formData);
-
-    let requestOptions = {
-        method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
-        },
-        body: formData,
-        redirect: 'follow'
-    };
-
-    let uploadedPic = await fetch(data.link, requestOptions)
-    return uploadedPic.json()
 }
 
 function validateForm() {
