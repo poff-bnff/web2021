@@ -98,6 +98,14 @@
     "my_products": {
       "via": "sold_to",
       "collection": "product"
+    },
+    "transactions": {
+      "via": "user",
+      "collection": "transaction"
+    },
+    "users_person": {
+      "via": "users_permissions_user",
+      "model": "users-persons"
     }
   }
 }

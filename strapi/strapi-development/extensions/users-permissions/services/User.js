@@ -162,7 +162,7 @@ module.exports = {
       // { name: 'authTime', content: authTime }
     ]
 
-  
+
       // text: settings.message,
       // html: settings.message,
     });

@@ -73,7 +73,7 @@ const loginFlow = async (provider) => {
 
 // Services
 const composeRequest = (requestCase) => {
-    const request = {options: {}}
+    const request = { options: {} }
     const lang = localStorage.getItem('lang') || 'et'
 
     switch (requestCase) {
@@ -119,6 +119,7 @@ const fetchFromStrapi = async (request) => {
 }
 
 const handleResponse = (response) => {
+    console.log('Login page handleResponse', response);
     if (response.jwt && response.user || response.id) return response
 
     if (response.statusCode !== 200) {
@@ -128,7 +129,11 @@ const handleResponse = (response) => {
         }
 
         // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message
-        let strapiError = response.message
+        let strapiError = null
+        if (response.message[0].messages[0].id) {
+            strapiError = response.message[0].messages[0].id
+        }
+        console.log('Login page handleResponse strapiError', strapiError);
         typeof strapiError !== 'string' ? strapiError = response.error : null
 
         switch (strapiError) {
@@ -139,6 +144,9 @@ const handleResponse = (response) => {
                 document.getElementById('noUserOrWrongPwd').style.display = ''
                 break;
             case ('Auth.form.error.password.local'):
+                document.getElementById('noUserOrWrongPwd').style.display = ''
+                break;
+            case ('Auth.form.error.invalid'):
                 document.getElementById('noUserOrWrongPwd').style.display = ''
                 break;
             case ('Merge provider to existing providers failed'):
@@ -229,11 +237,11 @@ function doResetPassword(source) {
     document.getElementById('signUpBtn').style.display = 'none'
     sendPswdResetCodeBtn.style.display = ''
     document.getElementById('loginUsername').value = loginUsername.value
-    if (source === 'user'){
-    document.getElementById('pswdResetMessage').style.display = ''
+    if (source === 'user') {
+        document.getElementById('pswdResetMessage').style.display = ''
     }
-    else if (source === 'server'){
-    document.getElementById('adminPswdResetMessage').style.display = ''
+    else if (source === 'server') {
+        document.getElementById('adminPswdResetMessage').style.display = ''
     }
 }
 
@@ -259,10 +267,10 @@ function doSendResetCode() {
 }
 
 async function sendResetCode() {
-        const authenticationData = {
-            email: document.getElementById("loginUsername").value,
-            lang: langpath.substr(0,2) || 'et'
-        }
+    const authenticationData = {
+        email: document.getElementById("loginUsername").value,
+        lang: langpath.substr(0, 2) || 'et'
+    }
 
     var requestOptions = {
         method: 'POST',
@@ -270,12 +278,25 @@ async function sendResetCode() {
         body: JSON.stringify(authenticationData)
     }
 
+    let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
+    response = await response.json()
+    console.log(response);
+
     document.getElementById('pswdResetMessage').style.display = 'none'
     document.getElementById('adminPswdResetMessage').style.display = 'none'
     document.getElementById('forgotPasswordBtn').style.display = 'none'
-    document.getElementById('pswdResetCodeSent').style.display = ''
+
+    if (response.error) {
+        const errorNotifBar = document.getElementById('errorNotificationBar')
+        const insertedUsername = document.getElementById('currentUsername')
+        insertedUsername.style.display = 'none'
+        errorNotifBar.style.display = ''
+        errorNotifBar.innerHTML = errorNotificationBar.innerHTML + `Tekkis viga, palun veendu, et sisestasid õige e-maili aadressi (${insertedUsername.innerHTML})` + `<a onclick='closeMe(this.parentNode), clearMe(this.parentNode)'> ×</a>`
+
+    } else {
+        document.getElementById('pswdResetCodeSent').style.display = ''
+    }
     document.getElementById('backToLoginBtn').style.display = ''
 
-    let response = await fetch(`${strapiDomain}/auth/forgot-password`, requestOptions)
 
 }

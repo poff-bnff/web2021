@@ -94,14 +94,16 @@ async function sendUserProfile() {
         address: `${countrySelection.value}, ${citySelection.value}`,
     }
 
-    formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
+    if (profile_pic_to_send !== "empty") {
+        formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
+    }
     formData.append('data', JSON.stringify(userToSend));
 
     // Log form data
     console.log('Formdata:');
     for (var pair of formData.entries()) {
-		console.log(pair[0]+ ', ' + pair[1]);
-	}
+        console.log(pair[0] + ', ' + pair[1]);
+    }
 
     // if (profile_pic_to_send !== "empty") {
     //     pictureInfo = 'this users picture is in S3'

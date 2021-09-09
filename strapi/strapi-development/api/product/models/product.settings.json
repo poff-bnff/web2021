@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "product_category": {
@@ -23,9 +23,6 @@
     },
     "active": {
       "type": "boolean"
-    },
-    "transaction": {
-      "model": "transaction"
     },
     "ticketingRight": {
       "type": "component",
@@ -49,6 +46,10 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "my_products"
+    },
+    "transactions": {
+      "collection": "transaction-products",
+      "via": "product"
     }
   }
 }

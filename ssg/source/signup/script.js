@@ -35,7 +35,7 @@ const registerUser = async () => {
     const registerRequest = createRequest('register', newUser)
     const registerResponse = await requestFromStrapi(registerRequest)
     const registerResult = handleRegResponse(registerResponse)
-    directToNext(registerResult)   
+    directToNext(registerResult)
 }
 
 // Services
@@ -69,21 +69,21 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'auto' });
 //Helpers
 const collectFormData = () => {
 
-    const personAsProfile = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        gender: gender.value,
-        birthdate: dob.value,
-        phoneNr: phoneNr.value,
-        address: `${countrySelection.value}, ${citySelection.value}`,
-    }
+    // const personAsProfile = {
+    //     firstName: firstName.value,
+    //     lastName: lastName.value,
+    //     gender: gender.value,
+    //     birthdate: dob.value,
+    //     phoneNr: phoneNr.value,
+    //     address: `${countrySelection.value}, ${citySelection.value}`,
+    // }
 
     const newUser = {
         // picture: profile_pic_to_send,
         username: email.value,
         email: email.value,
         password: psw.value,
-        personAsProfile: personAsProfile
+        // personAsProfile: personAsProfile
     }
     return newUser
 }
@@ -96,24 +96,24 @@ const clearRegForm = () => {
 
 const clearSocialAuthBtns = () => document.getElementById('authButtons').style.display = 'none'
 
-function validateaAndPreview(file) {
-    let error = document.getElementById("imgError");
-    // console.log(file)
-    // Check if the file is an image.
-    if (!file.type.includes("image")) {
-        // console.log("File is not an image.", file.type, file);
-        error.innerHTML = "File is not an image.";
-    } else {
-        error.innerHTML = "";
-        //näitab pildi eelvaadet
-        var reader = new FileReader();
-        reader.onload = function () {
-            imgPreview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-        profile_pic_to_send = file
-    }
-}
+// function validateaAndPreview(file) {
+//     let error = document.getElementById("imgError");
+//     // console.log(file)
+//     // Check if the file is an image.
+//     if (!file.type.includes("image")) {
+//         // console.log("File is not an image.", file.type, file);
+//         error.innerHTML = "File is not an image.";
+//     } else {
+//         error.innerHTML = "";
+//         //näitab pildi eelvaadet
+//         var reader = new FileReader();
+//         reader.onload = function () {
+//             imgPreview.src = reader.result;
+//         };
+//         reader.readAsDataURL(file);
+//         profile_pic_to_send = file
+//     }
+// }
 
 
 function validateForm() {
@@ -136,36 +136,36 @@ function validateForm() {
         errors.push('Missing or invalid password repeat')
     }
 
-    if (!validateFirstName("firstName")) {
-        errors.push('Missing firstname')
-    }
+    // if (!validateFirstName("firstName")) {
+    //     errors.push('Missing firstname')
+    // }
 
-    if (!validateLastName("lastName")) {
-        errors.push('Missing lastname')
-    }
+    // if (!validateLastName("lastName")) {
+    //     errors.push('Missing lastname')
+    // }
 
-    if (!validateGender("gender")) {
-        errors.push('Missing gender')
-    }
+    // if (!validateGender("gender")) {
+    //     errors.push('Missing gender')
+    // }
 
-    if (!validateBDay("dob")) {
-        errors.push('Missing or invalid date of birth')
-    }
-    if (!validateDate("dob")) {
-        errors.push('Missing or invalid date of birth wrong format')
-    }
+    // if (!validateBDay("dob")) {
+    //     errors.push('Missing or invalid date of birth')
+    // }
+    // if (!validateDate("dob")) {
+    //     errors.push('Missing or invalid date of birth wrong format')
+    // }
 
-    if (!validatePhoneNr("phoneNr")) {
-        errors.push('Missing phonenumber')
-    }
+    // if (!validatePhoneNr("phoneNr")) {
+    //     errors.push('Missing phonenumber')
+    // }
 
-    if (!validateCountry("countrySelection")) {
-        errors.push('Missing country')
-    }
+    // if (!validateCountry("countrySelection")) {
+    //     errors.push('Missing country')
+    // }
 
-    if (!validateCity("citySelection")) {
-        errors.push('Missing city')
-    }
+    // if (!validateCity("citySelection")) {
+    //     errors.push('Missing city')
+    // }
 
     // console.log(errors)
     if (errors.length === 0) {

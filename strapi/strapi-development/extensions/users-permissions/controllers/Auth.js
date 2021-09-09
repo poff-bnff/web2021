@@ -181,7 +181,7 @@ module.exports = {
       if (!user) {
         return ctx.badRequest(null, error === 'array' ? error[0] : error);
       }
-      
+
       console.log('Controllers Auth Callback - Issue JWT for the user');
       ctx.send({
         jwt: strapi.plugins['users-permissions'].services.jwt.issue({
@@ -399,6 +399,7 @@ module.exports = {
         // html: settings.message,
       });
     } catch (err) {
+      console.log(err);
       return ctx.badRequest(null, err);
     }
 

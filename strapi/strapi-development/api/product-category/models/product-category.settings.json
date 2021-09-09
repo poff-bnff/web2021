@@ -65,14 +65,6 @@
       "type": "component",
       "repeatable": false,
       "component": "media.imgs"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "pass",
-        "wearable"
-      ],
-      "default": "pass"
     }
   }
 }

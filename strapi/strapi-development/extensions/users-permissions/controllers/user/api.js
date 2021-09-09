@@ -182,19 +182,24 @@ module.exports = {
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
       console.log('Create new Person to person-test2');
-      let newUserProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+      let newUserProfile
+      if (files.picture) {
+        newUserProfile = await strapi.services['person-test2'].create(personProfile, { files })
+      } else {
+        newUserProfile = await strapi.services['person-test2'].create(personProfile)
+      }
       console.log('newUserProfile', newUserProfile);
-      return updatedProfile
+      return newUserProfile
     }
 
     const updatePersonProfile = async (personProfile, ctxForPicture, id) => {
       const { files } = parseMultipartData(ctxForPicture);
-      // console.log('Update Person in person-test2', id);
-      // console.log(personProfile, id);
-      // // return await strapi.query('person-test2').update({ id }, personProfile)
-      // console.log('updatePersonProfile files', files);
-
-      let updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+      let updatedProfile
+      if (files.picture) {
+        updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile }, { files })
+      } else {
+        updatedProfile = await strapi.services['person-test2'].update({ id }, { personProfile })
+      }
       console.log('updatedProfile', updatedProfile);
       return updatedProfile
 
@@ -248,7 +253,7 @@ module.exports = {
     personProfile.email = user.email
     if (!user.person_test_2) {
       personProfile.users_permissions_user = id
-      console.log('Create new person');
+      console.log('Create new person', personProfile);
       // await createNewPersonProfile(personProfile)
     } else {
       // await updatePersonProfile(personProfile, user.person_test_2.id)
@@ -267,12 +272,14 @@ module.exports = {
     console.log('Files', ctx.request.files);
     let file = ctx.request.files['files.picture']
 
-    if (!file.type.includes("image")) {
-      console.log("File is not an image.", file.type, file);
-      return ctx.badRequest('Not an image');
-    } else if (file.size / 1024 / 1024 > 5) {
-      console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
-      return ctx.badRequest('Image too bulky');
+    if (file) {
+      if (!file.type.includes("image")) {
+        console.log("File is not an image.", file.type, file);
+        return ctx.badRequest('Not an image');
+      } else if (file.size / 1024 / 1024 > 5) {
+        console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
+        return ctx.badRequest('Image too bulky');
+      }
     }
 
     let thisUsersProfile = !user.person_test_2 ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.person_test_2.id)
@@ -521,7 +528,6 @@ module.exports = {
     }
 
     let thisProductId = getOneProduct.id
-    let thisProductCode = getOneProduct.code
     let thisProductPrice = getOneProduct?.product_category?.priceAtPeriod[0]?.price
     console.log('id', thisProductId, typeof thisProductId)
     console.log('price', thisProductPrice)
@@ -552,7 +558,7 @@ module.exports = {
         merchant_data: JSON.stringify({
           userId: userId,
           categoryId: categoryId,
-          code: thisProductCode,
+          productId: thisProductId,
           cancel_url: cancel_url,
           return_url: return_url
         }),
@@ -585,6 +591,7 @@ module.exports = {
     async function redirectUser(code = 302, url = 'https://build.dev.poff.ee/', body = null) {
       ctx.status = code;
       let searchParams = body ? `?result=${body}` : ``
+      console.log(body);
       ctx.redirect(`${url}${searchParams}`);
       ctx.body = body;
     }
@@ -600,25 +607,26 @@ module.exports = {
     console.log('product', product)
 
     const findProductParams = {
-      code: product.code,
+      id: product.productId,
       'product_category.codePrefix': product.categoryId,
     }
 
     let getOneProduct = await strapi.services.product.findOne(findProductParams)
 
     if (!getOneProduct || getOneProduct.length === 0) {
-      redirectUser(404, null, 'No items')
+      redirectUser(404, null, 'Product not found error')
+      return
     }
 
     const item = getOneProduct
 
     if (mkResponse.status === 'CANCELLED' || mkResponse.status === 'EXPIRED') {
 
-      if (item.transaction && item.transaction.dateTime) {
-        console.log({ dbl_transactionTime: item.transaction.dateTime, item: item, product: product })
-        redirectUser(402, cancel_url, 'Payment cancelled')
+      if (item.transactions && item.transactions.length) {
+        console.log('Payment cancelled due to conflict', item.transactions, { item: item, product: product })
+        redirectUser(402, cancel_url, 'Payment cancelled due to conflict')
+        return
       }
-
 
       const updateProductOptions = {
         reservation_time: null,
@@ -628,7 +636,7 @@ module.exports = {
       let updateProduct
       try {
         updateProduct = await strapi.services.product.update({ 'id': item.id, 'reserved_to': product.userId }, updateProductOptions)
-      }catch(err) {
+      } catch (err) {
         null
       }
 
@@ -647,115 +655,140 @@ module.exports = {
       }
       // return { url: cancel_url }
       redirectUser(402, cancel_url, 'Payment cancelled')
+      return
     }
 
-    if (!product.userId || !product.categoryId || !product.code) {
-      console.error(mkResponse)
+    if (!product.userId || !product.categoryId || !product.productId) {
+      console.error('Invalid merchant_data', mkResponse)
       redirectUser(400, cancel_url, 'Invalid merchant_data')
+      return
     }
 
     const mkId = process.env.MakseKeskusId
     if (mkResponse.shop !== mkId) {
       redirectUser(400, cancel_url, 'Invalid shop')
+      return
     }
 
     if (mkResponse.status === 'COMPLETED') {
-      if (item.transaction && item.transaction.dateTime) {
-        console.log({ dblem_transactionTime: item.transaction.dateTime, item: item, product: product })
-        redirectUser(409, cancel_url, 'Already allocated')
-      }
-
-      // Email
-      try {
-        console.log('Here should send e-mail');
-        // const merchantData = JSON.stringify(JSON.parse(mkResponse.merchant_data))
-
-        // var lambdaParams = {
-        //   FunctionName: 'prod3-poff-api-trigger-sendEmail',
-        //   Payload: merchantData
-        // }
-        // console.log('invokeParams ', lambdaParams)
-
-        // const lambdaResponse = await lambda.invoke(lambdaParams).promise()
-        // console.log('response ', lambdaResponse)
-      } catch (error) {
-        console.log(error)
-      }
-
-      //Sheets
-      try {
-        // let merchantData = JSON.parse(mkResponse.merchant_data)
-        // merchantData.amount = mkResponse.amount
-        // merchantData.timestamp = mkResponse.message_time
-        // merchantData.transaction = mkResponse.transaction
-        // merchantData = JSON.stringify(merchantData)
-
-        // var lambdaParams = {
-        //   FunctionName: 'prod3-poff-api-trigger-reportToSheets',
-        //   Payload: merchantData
-        // }
-        // console.log('invokeParams ', lambdaParams)
-
-        // const lambdaResponse = await lambda.invoke(lambdaParams).promise()
-        // console.log('response ', lambdaResponse)
-        console.log('Here should do some Google Sheet stuff');
-      } catch (error) {
-        console.log(error)
-      }
-
-      // add transaction time
-
-      const addTransactionOptions = {
-        dateTime: mkResponse.message_time,
-        type: 'Purchase',
-        payment: [{
-          status: mkResponse.status,
-          amount: mkResponse.amount,
-          currency: mkResponse.currency,
-          cardOwner: mkResponse.customer_name,
-          identifier: mkResponse.transaction,
-          method: 'Card',
-          code: product.code,
-          person: product.userId
-        }]
-      }
-
-      let addTransaction = await strapi.services.transaction.create(addTransactionOptions)
-
-      let transactionId = addTransaction.id
-      console.log('Transaction ID', transactionId);
-      if (!transactionId) {
-        redirectUser(500, cancel_url, 'Failed to save transaction')
-      }
-
-
-
-      // Update pass one last time
-
-      const successOptions = {
-        sold_to: product.userId,
-        transaction: transactionId
-      }
-
-      let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
-      console.log('Success updating product ID ', updateProductSuccess.id);
-
-      let return_url = 'https://build.dev.poff.ee/minupoff/'
-
-      if (redirectType === 'return' && product.return_url.length) {
-        console.log('Kui return URL olemas, saadame kasutaja sinna');
-        return_url = product.return_url
+      if (item.transactions && item.transactions.length) {
+        console.log('Already transacted', item.transactions, { item: item, product: product })
+        redirectUser(409, cancel_url, 'Already transacted')
+        return
       } else {
-        console.log('Kui return URL puudu, saadame kasutaja Minu POFFi');
+
+        //Sheets
+        try {
+          console.log('Here should do some Google Sheet stuff');
+        } catch (error) {
+          console.log(error)
+        }
+
+        const addTransactionProductsOptions = {
+          product: product.productId,
+          value: mkResponse.amount,
+        }
+
+        let addTransactionProduct = await strapi.services['transaction-products'].create(addTransactionProductsOptions)
+        console.log('Create transactionproduct: ', addTransactionProduct);
+        // add transaction time
+        const addTransactionOptions = {
+          dateTime: mkResponse.message_time,
+          type: 'Purchase',
+          user: product.userId,
+          payment: {
+            currency: mkResponse.currency,
+            amount: mkResponse.amount,
+            transaction: mkResponse.transaction,
+            method: 'Maksekeskus',
+            status: mkResponse.status,
+          },
+          products: [addTransactionProduct],
+        }
+        console.log(addTransactionOptions);
+        let addTransaction = await strapi.services.transaction.create(addTransactionOptions)
+        let transactionId = addTransaction.id
+
+        console.log('Transaction ID', transactionId);
+        if (!transactionId) {
+          redirectUser(500, cancel_url, 'Failed to save transaction')
+          return
+        }
+
+        // Update pass one last time
+        const successOptions = {
+          sold_to: product.userId,
+          transactions: [addTransaction]
+        }
+
+        let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+
+        const getUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': product.userId });
+        if (getUserInfo) {
+          console.log('Success getting user info for email');
+        } else {
+          console.log('Failed getting user info for email');
+        }
+
+        let return_url = 'https://build.dev.poff.ee/minupoff/'
+
+        if (redirectType === 'return' && product.return_url.length) {
+          console.log('Kui return URL olemas, saadame kasutaja sinna');
+          return_url = product.return_url
+        } else {
+          console.log('Kui return URL puudu, saadame kasutaja Minu POFFi');
+        }
+
+        if (updateProductSuccess) {
+          console.log('Success updated product ID ', updateProductSuccess);
+
+          // Email
+          try {
+            console.log('Here send e-mail');
+            // let emailInfo = {
+            //   userEmail: getUserInfo.email,
+            //   templateUsed: 'PassiOst',
+            //   userFirstName: getUserInfo.person_test_2.firstName,
+            //   userLastName: getUserInfo.person_test_2.lastName,
+            //   passType: updateProductSuccess.product_category.codePrefix,
+            //   passCode: updateProductSuccess.code
+            // }
+            // const sendEmail = await mandrillEmail.sendEmail(emailInfo)
+
+
+            const passNames = { h08: 'Hundipass 8', h16: 'Hundipass 16', h36: 'Hundipass 36', h00: 'Toetaja Hundipass', jp1: 'Just Filmi Pass', hp1: 'HÕFFi pass', tp: 'Testpass' }
+
+            const sendEmail = await strapi.plugins['email'].services.email.send({
+              to: getUserInfo.email,
+              template_name: `passiost`,
+              template_vars: [
+                { name: 'email', content: getUserInfo.email },
+                { name: 'eesnimi', content: getUserInfo.person_test_2.firstName },
+                { name: 'perenimi', content: getUserInfo.person_test_2.lastName },
+                { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
+                { name: 'passikood', content: updateProductSuccess.code },
+                { name: 'passinimi', content: passNames[updateProductSuccess.product_category.codePrefix] }
+                // { name: 'enabledProviders', content: enabledProviders }
+              ]
+              // from:
+              //   settings.from.email || settings.from.name
+              //     ? `${settings.from.name} <${settings.from.email}>`
+              //     : undefined,
+              // replyTo: settings.response_email,
+              // subject: settings.object,
+              // text: settings.message,
+              // html: settings.message,
+            });
+            console.log(sendEmail);
+          } catch (err) {
+            console.log(err)
+          }
+
+          console.log('Suunamine kui kõik õnnestus', return_url);
+          redirectUser(302, return_url, 'Successful transaction')
+          return
+        }
       }
-
-      if (updateProductSuccess) {
-        console.log('Suunamine kui kõik õnnestus', return_url);
-        redirectUser(302, return_url, 'Successful transaction')
-
-      }
-
-
     }
   }
 };
