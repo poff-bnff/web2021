@@ -1,10 +1,10 @@
-- var articleMenuItemDomain = 'poffi_article'
+- var articleMenuItemDomain = 'bruno_article'
 - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
 
 each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
 
     //- Kui on peamenüü itemil artikkel:
-    if mainMenuItem[articleMenuItemDomain] && mainMenuItem.name && typeof mainMenuItem.name !== 'object'
+    if mainMenuItem[articleMenuItemDomain] && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
         if mainMenuItem[articleMenuItemDomain]
             - let mainArticle = mainMenuItem[articleMenuItemDomain]
 
@@ -26,13 +26,14 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
                     a(href= `/${lang_path}${mainArticleTypePath}/${mainMenuItem[articleMenuItemDomain].slug}`)= mainMenuItem.name
 
     //- Kui peamenüü itemil pole artiklit ja on vähemalt mõni alammenüü
-    else if mainMenuItem.subMenuItem && mainMenuItem.name && typeof mainMenuItem.name !== 'object'
+    else if mainMenuItem.subMenuItem && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
         li.dropdown
             a= mainMenuItem.name
             ul.ul_kaks
                 each subMenuItem in mainMenuItem.subMenuItem.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                    if subMenuItem[articleMenuItemDomain]
+                    if subMenuItem[articleMenuItemDomain] && subMenuItem.publish !== false
                         - let article = subMenuItem[articleMenuItemDomain]
+
                         if article.article_types && article.article_types[0] && article.publish === true && article.title
                             - var articleTypePath = ''
                             li
@@ -51,7 +52,7 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
                                 a(href= `/${lang_path}${articleTypePath}/${subMenuItem[articleMenuItemDomain].slug}`)= subMenuItem.name
 
                     else
-                        if subMenuItem.customUrl && subMenuItem.customUrl.length && subMenuItem.name && typeof subMenuItem.name !== 'object'
+                        if subMenuItem.customUrl && subMenuItem.customUrl.length && subMenuItem.name && typeof subMenuItem.name !== 'object' && subMenuItem.publish !== false
                             li
                                 if subMenuItem.customUrl.substring(0, 4) === 'http'
                                     a(href= `${subMenuItem.customUrl}`)= `${subMenuItem.name}`
@@ -60,39 +61,10 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
 
     //- Kui peamenüü itemil pole artiklit, pole alammenüüsid ja on customUrl
     else
-        if mainMenuItem.customUrl && mainMenuItem.customUrl.length && mainMenuItem.name && typeof mainMenuItem.name !== 'object'
+        if mainMenuItem.customUrl && mainMenuItem.customUrl.length && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
             li
                 if mainMenuItem.customUrl.substring(0, 4) === 'http'
                     a(href= `${mainMenuItem.customUrl}`)= `${mainMenuItem.name}`
                 else
                     a(href= `/${lang_path}${mainMenuItem.customUrl}/`)= `${mainMenuItem.name}`
 
-li.user_menu.dropdown
-    a.user_menu= self.label.menu.mainUserMenu
-        ul.ul_kaks
-            li#logIn(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-            li#signUp(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
-            li#logInName.dark_1(style={display: 'none'})
-                a#tervitus= self.label.menu.mainGreeting
-            li#userProfile(style={cursor: 'pointer', display: 'none'})
-                a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-            li#myFavouriteFilms(style={cursor: 'pointer'})
-                a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
-            li#myScreenings(style={cursor: 'pointer'} )
-                if lang_path === ''
-                    a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
-                if lang_path === 'en/'
-                    a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
-                if lang_path === 'ru/'
-                    a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
-            li#myPasses(style={cursor: 'pointer'} )
-                if lang_path === ''
-                    a(href=`/${lang_path}minupoff`)= self.label.menu.mainPass
-                if lang_path === 'en/'
-                    a(href=`/${lang_path}mypoff`)= self.label.menu.mainPass
-                if lang_path === 'ru/'
-                    a(href=`/${lang_path}moipoff`)= self.label.menu.mainPass
-            li#logOut(style={cursor: 'pointer', display: 'none'} )
-                a(onclick='logOut()')= self.label.menu.mainLogout
