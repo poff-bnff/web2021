@@ -67,11 +67,6 @@
     "pageUrl": {
       "type": "string"
     },
-    "user": {
-      "via": "people",
-      "plugin": "users-permissions",
-      "model": "user"
-    },
     "awardings": {
       "via": "person",
       "collection": "awarding"

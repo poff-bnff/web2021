@@ -24,11 +24,6 @@
     },
     "dateConnected": {
       "type": "datetime"
-    },
-    "user": {
-      "via": "external_providers",
-      "plugin": "users-permissions",
-      "model": "user"
     }
   }
 }

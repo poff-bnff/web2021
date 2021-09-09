@@ -11,9 +11,9 @@
   },
   "attributes": {
     "users_permissions_user": {
+      "via": "users_person",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "users_person"
+      "model": "user"
     },
     "firstName": {
       "type": "string"

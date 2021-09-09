@@ -217,7 +217,7 @@ const getProfile = async (provider, query, callback) => {
             callback(err);
           } else {
             callback(null, {
-              username: body.name,
+              username: body.email,
               email: body.email,
               externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: body.id, dateConnected: new Date().toISOString() }]
             });

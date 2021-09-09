@@ -28,9 +28,9 @@
       "component": "ticketing.payment"
     },
     "user": {
+      "via": "transactions",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "transactions"
+      "model": "user"
     },
     "products": {
       "via": "transaction",

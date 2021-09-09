@@ -482,7 +482,7 @@ module.exports = {
     }
 
     // console.log('event ', event)
-    const saleActiveCategories = ['tp']
+    const saleActiveCategories = ['tp1']
     const userId = id
     const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for']
 

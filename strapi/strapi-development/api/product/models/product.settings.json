@@ -43,9 +43,9 @@
       "type": "decimal"
     },
     "sold_to": {
+      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "my_products"
+      "model": "user"
     },
     "transactions": {
       "collection": "transaction-products",

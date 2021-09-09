@@ -73,10 +73,6 @@
       "component": "user.last10-logins",
       "max": 10
     },
-    "person_test_2": {
-      "model": "person-test2",
-      "via": "users_permissions_user"
-    },
     "account_created": {
       "type": "datetime"
     },
@@ -96,16 +92,16 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "via": "sold_to",
-      "collection": "product"
+      "collection": "product",
+      "via": "sold_to"
     },
     "transactions": {
-      "via": "user",
-      "collection": "transaction"
+      "collection": "transaction",
+      "via": "user"
     },
     "users_person": {
-      "via": "users_permissions_user",
-      "model": "users-persons"
+      "model": "users-persons",
+      "via": "users_permissions_user"
     }
   }
 }
