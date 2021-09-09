@@ -32,7 +32,7 @@ const registerUser = async () => {
     //     console.log(registerResponse);
 
     // }
-    const registerRequest = createRequest('register', newUser)
+    const registerRequest = await createRequest('register', newUser)
     const registerResponse = await requestFromStrapi(registerRequest)
     const registerResult = handleRegResponse(registerResponse)
     directToNext(registerResult)

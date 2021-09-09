@@ -482,7 +482,7 @@ module.exports = {
     }
 
     // console.log('event ', event)
-    const saleActiveCategories = ['tp1']
+    // const saleActiveCategories = ['tp1']
     const userId = id
     const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for']
 
@@ -503,9 +503,9 @@ module.exports = {
       return [400, 'No categoryId']
     }
 
-    if (!saleActiveCategories.includes(categoryId)) {
-      return [400, 'Sale currently closed for this product']
-    }
+    // if (!saleActiveCategories.includes(categoryId)) {
+    //   return [400, 'Sale currently closed for this product']
+    // }
 
     if (!paymentMethodId) {
       return [400, 'No paymentMethodId']
@@ -746,18 +746,8 @@ module.exports = {
           // Email
           try {
             console.log('Here send e-mail');
-            // let emailInfo = {
-            //   userEmail: getUserInfo.email,
-            //   templateUsed: 'PassiOst',
-            //   userFirstName: getUserInfo.users_person.firstName,
-            //   userLastName: getUserInfo.users_person.lastName,
-            //   passType: updateProductSuccess.product_category.codePrefix,
-            //   passCode: updateProductSuccess.code
-            // }
-            // const sendEmail = await mandrillEmail.sendEmail(emailInfo)
 
-
-            const passNames = { h08: 'Hundipass 8', h16: 'Hundipass 16', h36: 'Hundipass 36', h00: 'Toetaja Hundipass', jp1: 'Just Filmi Pass', hp1: 'HÕFFi pass', tp: 'Testpass' }
+            // const passNames = { h08: 'Hundipass 8', h16: 'Hundipass 16', h36: 'Hundipass 36', h00: 'Toetaja Hundipass', jp1: 'Just Filmi Pass', hp1: 'HÕFFi pass', tp: 'Testpass' }
 
             const sendEmail = await strapi.plugins['email'].services.email.send({
               to: getUserInfo.email,
@@ -768,7 +758,7 @@ module.exports = {
                 { name: 'perenimi', content: getUserInfo.users_person.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
                 { name: 'passikood', content: updateProductSuccess.code },
-                { name: 'passinimi', content: passNames[updateProductSuccess.product_category.codePrefix] }
+                { name: 'passinimi', content: updateProductSuccess.product_category.name.et }
                 // { name: 'enabledProviders', content: enabledProviders }
               ]
               // from:

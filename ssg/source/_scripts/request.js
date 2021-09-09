@@ -1,12 +1,12 @@
-function createRequest (requestCase, requestBody) {
-    const request = {}
+async function createRequest(requestCase, requestBody) {
+    const request = { options: {} }
     const lang = localStorage.getItem('lang')
 
     switch (requestCase) {
         case ('social'):
             const { provider, access_token } = getAccessTokenWithProvider()
             request.route = `/auth/${provider}/callback?${access_token}`
-            request.method = 'GET'
+            request.options.method = 'GET'
             break;
         case ('local'):
             const authenticationData = {
@@ -14,16 +14,16 @@ function createRequest (requestCase, requestBody) {
                 password: document.getElementById("loginPassword").value
             }
             request.route = `/auth/local/${lang}`
-            request.method = 'POST'
-            request.headers = {
+            request.options.method = 'POST'
+            request.options.headers = {
                 "Content-Type": "application/json"
             }
             request.body = JSON.stringify(authenticationData)
             break;
         case ('profile'):
             request.route = '/users/me'
-            request.method = 'GET'
-            request.headers = {
+            request.options.method = 'GET'
+            request.options.headers = {
                 Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
             }
             break;
@@ -33,30 +33,24 @@ function createRequest (requestCase, requestBody) {
             formData.append('files', profile_pic_to_send)
 
             request.route = '/upload/'
-            request.method = 'POST'
-            request.body = formData
+            request.options.method = 'POST'
+            request.options.body = formData
             break;
         case ('register'):
             request.route = `/auth/local/register/${lang}`
-            request.method = 'POST'
-            request.headers = {
+            request.options.method = 'POST'
+            request.options.headers = {
                 "Content-Type": "application/json"
             }
-            request.body = JSON.stringify(requestBody)
+            request.options.body = JSON.stringify(requestBody)
             break;
     }
     return request
 }
 
-const requestFromStrapi = async requestOptions => {
-    const { route, method, headers, body } = requestOptions
-
+async function requestFromStrapi(request) {
     try {
-        let response = await fetch(`${strapiDomain}${route}`, {
-            method: method,
-            headers: headers,
-            body: body
-        });
+        let response = await fetch(`${strapiDomain}${request.route}`, request.options);
         response = await response.json()
         return response
     }
@@ -68,6 +62,6 @@ const requestFromStrapi = async requestOptions => {
 }
 
 
-const handleRegResponse = response => {
-return response
+function handleRegResponse(response) {
+    return response
 }
