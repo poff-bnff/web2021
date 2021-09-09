@@ -565,9 +565,9 @@ module.exports = {
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/cancel` },
-          notification_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/notification` },
-          return_url: { method: 'POST', url: `https://dev.poff.ee/users-permissions/users/buyproductcb/return` }
+          cancel_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/return` }
         }
       }
     })
@@ -587,9 +587,9 @@ module.exports = {
 
   },
   async buyProductCb(ctx) {
-    let cancel_url = 'https://build.dev.poff.ee/'
+    let cancel_url = 'https://poff.ee/'
 
-    async function redirectUser(code = 302, url = 'https://build.dev.poff.ee/', body = null) {
+    async function redirectUser(code = 302, url = 'https://poff.ee/', body = null) {
       ctx.status = code;
       let searchParams = body ? `?result=${body}` : ``
       console.log(body);
@@ -731,7 +731,7 @@ module.exports = {
           console.log('Failed getting user info for email');
         }
 
-        let return_url = 'https://build.dev.poff.ee/minupoff/'
+        let return_url = 'https://poff.ee/minupoff/'
 
         if (redirectType === 'return' && product.return_url.length) {
           console.log('Kui return URL olemas, saadame kasutaja sinna');
