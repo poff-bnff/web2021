@@ -23,7 +23,7 @@ const {
 
 const {
   readSheet,
-} require(sheet_path)
+} = require(sheet_path)
 
 /**
 const domains =

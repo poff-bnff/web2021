@@ -1,5 +1,7 @@
 const { google } = require('googleapis')
-const keys = require(path.join(__dirname, '..', 'sheets' '/c_secret.json'))
+const path = require('path')
+const k_path = path.join(__dirname, 'sheets', '/c_secret.json')
+const keys = require(k_path)
 
 function readSheet(result, model_name, sheet_id, sheet_name, callback) {
 	
