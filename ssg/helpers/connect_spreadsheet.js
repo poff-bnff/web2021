@@ -84,10 +84,18 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 	}
 
 	// console.log(valueList)
-	delete result.created_by
-	delete result.updated_by
-	delete result.created_at
-	delete result.updated_at
+	if(result.created_by){
+		delete result.created_by
+	}
+	if(result.updated_by){
+		delete result.updated_by
+	}
+	if(result.created_at) {
+		delete result.created_at
+	}
+	if(result.updated_at) {
+		delete result.updated_at
+	}
 
 	return valueList
 }
