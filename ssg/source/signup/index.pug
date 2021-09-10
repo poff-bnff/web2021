@@ -15,8 +15,8 @@ block content
                             button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/facebook') Facebook
                         a#go(href=`https://api.poff.ee/auth/google`)
                             button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/google') Google
-                        a#ev(href=`https://api.poff.ee/auth/eventival`)
-                            button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/eventival') Eventival
+                        //- a#ev(href=`https://api.poff.ee/auth/eventival`)
+                        //-     button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/eventival') Eventival
                     a#loginButton(style={display: 'none'} href=`/${lang_path}login`)
                         button.btn.btn_primary.p_1= self.label.userprofile.signinBtn
 
@@ -72,7 +72,7 @@ block content
                     //- div.form-group
                     //-     label.control-label.login_label(for='citySelection')= self.label.userprofile.city
                     //-     select.login_input#citySelection.form-control(required='' oninput= 'validateCity(this.id)' value="")
-                    button.btn.btn_primary(onclick='signUp()')= self.label.userprofile.register
+                    button.btn.btn_primary#signUpButton(onclick='signUp()')= self.label.userprofile.register
 
 
     style.
