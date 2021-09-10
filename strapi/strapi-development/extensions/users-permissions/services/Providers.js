@@ -609,7 +609,7 @@ const logAuthDateTime = async (id, last10Logins, provider, lang) => {
 const notifyAboutMerge = async (user, addedProvider) => {
   let enabledProviders = (user.externalProviders.map(provider => {
     const date = new Intl.DateTimeFormat('et-EE', { dateStyle: 'full', timeStyle: 'long' }).format(new Date(provider.dateConnected))
-    return `(${provider.provider} ${date})<br>`
+    return `(${provider.provider} ${date})<br/>`
   })
   )
   enabledProviders = enabledProviders.join(' ')
