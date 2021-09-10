@@ -19,7 +19,7 @@ function readSheet(result, model_name, sheet_id, sheet_name, callback) {
 			return
 		} else {
 			// console.log(sheet_id)
-			console.log('Result dump to spreadsheet', sheet_name,' by ', result.updated_by.firstname, "", result.updated_by.lastname)
+			console.log('Result dump to spreadsheet "', sheet_name,'" by ', result.updated_by.firstname, "", result.updated_by.lastname)
 
 			let data = await googleSheetsRun(client, result, model_name, sheet_id, sheet_name)
 			callback(data)
@@ -42,7 +42,7 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 
 	let valueList = data.data.values
 	let headers = valueList[0]
-	console.log(valueList[0])
+	// console.log(valueList[0])
 
 	let do_update = false
 	for (let object of valueList) {
@@ -84,10 +84,18 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 	}
 
 	// console.log(valueList)
-	delete result.created_by
-	delete result.updated_by
-	delete result.created_at
-	delete result.updated_at
+	if(result.created_by){
+		delete result.created_by
+	}
+	if(result.updated_by){
+		delete result.updated_by
+	}
+	if(result.created_at) {
+		delete result.created_at
+	}
+	if(result.updated_at) {
+		delete result.updated_at
+	}
 
 	return valueList
 }
