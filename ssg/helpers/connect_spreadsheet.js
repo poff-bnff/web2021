@@ -44,51 +44,50 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 	let headers = valueList[0]
 	console.log(valueList[0])
 
-	// let do_update = false
-	// for (let object of valueList) {
-	// 	if (parseInt(object[0]) === result.id && object[1] === model_name) {
-	// 		object[2] = JSON.stringify(result)
-	// 		do_update = true
-	// 	}
+	let do_update = false
+	for (let object of valueList) {
+		if (parseInt(object[5]) === result.id ) {
+			object[0] = JSON.stringify(result)
+			do_update = true
+		}
+	}
 
-	// }
+	let res
+	if (do_update) {
+		const updateOptions = {
+			spreadsheetId: sheet_id,
+			range: sheet_name,
+			valueInputOption: 'USER_ENTERED',
+			resource: {
+				values: valueList
+			}
+		}
+		res = await googleSheetsAPI.spreadsheets.values.update(updateOptions)
+	} else {
+		let append_values = JSON.stringify(result)
+		// console.log(append_values)
 
-	// let res
-	// if (do_update) {
-	// 	const updateOptions = {
-	// 		spreadsheetId: sheet_id,
-	// 		range: sheet_name,
-	// 		valueInputOption: 'USER_ENTERED',
-	// 		resource: {
-	// 			values: valueList
-	// 		}
-	// 	}
-	// 	res = await googleSheetsAPI.spreadsheets.values.update(updateOptions)
-	// } else {
-	// 	let append_values = JSON.stringify(result)
-	// 	// console.log(append_values)
-
-	// 	const appendOptions = {
-	// 		spreadsheetId: sheet_id,
-	// 		range: sheet_name,
-	// 		valueInputOption: 'USER_ENTERED',
-	// 		resource: {
-	// 			values: [
-	// 				[result.id, model_name, append_values]
-	// 			]
-	// 		}
+		const appendOptions = {
+			spreadsheetId: sheet_id,
+			range: sheet_name,
+			valueInputOption: 'USER_ENTERED',
+			resource: {
+				values: [
+					[append_values]
+				]
+			}
 
 
-	// 	}
-	// 	res = await googleSheetsAPI.spreadsheets.values.append(appendOptions)
+		}
+		res = await googleSheetsAPI.spreadsheets.values.append(appendOptions)
 
-	// }
+	}
 
 	// console.log(valueList)
-	// delete result.created_by
-	// delete result.updated_by
-	// delete result.created_at
-	// delete result.updated_at
+	delete result.created_by
+	delete result.updated_by
+	delete result.created_at
+	delete result.updated_at
 
 	return valueList
 }
@@ -98,9 +97,8 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 
  	await readSheet(result, model_name, sheet_id, sheet_name, async function (sheetInfo) {
  		// console.log('sheetInfo', sheetInfo)
-
  	})
  }
 
 exports.readSheet = readSheet
- exports.update_sheets = update_sheets
+exports.update_sheets = update_sheets
