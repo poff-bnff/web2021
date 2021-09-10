@@ -11,14 +11,20 @@
 
 const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+let sheet_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', '/helpers/connect_spreadsheet.js')
 
 const {
   call_update,
   call_build,
   get_domain,
   modify_stapi_data,
-  call_delete
+  call_delete,
 } = require(helper_path)
+
+const {
+  readSheet,
+  update_sheets
+} = require(sheet_path)
 
 /**
 const domains =
@@ -42,6 +48,10 @@ module.exports = {
 
     },
     async afterUpdate(result, params, data) {
+      let sheet_ID = '1523CDLVZyDmn9-lKr8B1VNS0paM8IeZBxcvWM_VeXyQ'
+      let sheet_name = 'Strapi_Products'
+      let read_spsheet = await update_sheets(result, model_name, sheet_ID, sheet_name)
+        // console.log(read_spsheet)
 
     },
     async beforeDelete(params) {
