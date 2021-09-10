@@ -1,5 +1,6 @@
 let profile_pic_to_send;
-
+let signUpButton = document.getElementById('signUpButton')
+let signUpButtonInnerHTMLBackup = signUpButton.innerHTML
 // Event listeners
 window.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -11,8 +12,10 @@ window.addEventListener("keydown", function (event) {
 const signUp = () => {
     const validForm = validateForm()
     if (validForm) {
-    setLang()
-    registerUser()
+        signUpButton.disable = true
+        signUpButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>'
+        setLang()
+        registerUser()
     }
 }
 
@@ -40,6 +43,8 @@ const registerUser = async () => {
 
 // Services
 const directToNext = (registerResult) => {
+    signUpButton.disable = false
+    signUpButton.innerHTML = signUpButtonInnerHTMLBackup
     clearRegForm()
     if (registerResult.user && registerResult.user.email === email.value) {
         clearSocialAuthBtns()

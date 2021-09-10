@@ -18,7 +18,7 @@ block content
                     label.login_label(for='psw2')= self.label.userprofile.passwordRepeat
                     input.login_input#psw2.form-control(type='password', placeholder=`${self.label.userprofile.passwordRepeat}`  name='psw2' autocomplete="off" oninput="validatePswRep('psw', 'psw2')")
                     div#psw2Help(class='valid')= self.label.userprofile.password2Help
-                button.btn.btn_primary(onclick='resetPswd()') Reset password
+                button.btn.btn_primary#resetPasswordButton(onclick='resetPswd()') Reset password
                 br
             br
             button.btn.btn_primary#backToLoginBtn(style={display: 'none'} onclick='redirectTo("/login")')= self.label.userprofile.signinBtn

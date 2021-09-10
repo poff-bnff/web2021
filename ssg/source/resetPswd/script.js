@@ -1,4 +1,9 @@
 const resetPswd = async () => {
+    let resetPasswordButton = document.getElementById('signUpButton')
+    let resetPasswordButtonInnerHTMLBackup = signUpButton.innerHTML
+    resetPasswordButton.disable = true
+    resetPasswordButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>'
+
 
     const qs = window.location.search;
     const urlParams = new URLSearchParams(qs)
@@ -29,4 +34,6 @@ const resetPswd = async () => {
         backToLoginBtn.style.display = ''
         pswResetSuccessText.style.display = ''
     }
+    resetPasswordButton.disable = false
+    resetPasswordButton.innerHTML = resetPasswordButtonInnerHTMLBackup
 }
