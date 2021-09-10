@@ -19,7 +19,7 @@ function readSheet(result, model_name, sheet_id, sheet_name, callback) {
 			return
 		} else {
 			// console.log(sheet_id)
-			console.log('Result dump to spreadsheet "From_Strapi" by ', result.updated_by.firstname, " ", result.updated_by.lastname)
+			console.log('Result dump to spreadsheet', sheet_name,' by ', result.updated_by.firstname, "", result.updated_by.lastname)
 
 			let data = await googleSheetsRun(client, result, model_name, sheet_id, sheet_name)
 			callback(data)
@@ -94,13 +94,13 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 }
 
 
-// async function update_sheets(result, model_name, sheet_id, sheet_name) {
+ async function update_sheets(result, model_name, sheet_id, sheet_name) {
 
-// 	await readSheet(result, model_name, sheet_id, sheet_name, async function (sheetInfo) {
-// 		// console.log('sheetInfo', sheetInfo)
+ 	await readSheet(result, model_name, sheet_id, sheet_name, async function (sheetInfo) {
+ 		// console.log('sheetInfo', sheetInfo)
 
-// 	})
-// }
+ 	})
+ }
 
 exports.readSheet = readSheet
-// exports.update_sheets = update_sheets
+ exports.update_sheets = update_sheets
