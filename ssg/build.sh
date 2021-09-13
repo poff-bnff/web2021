@@ -103,6 +103,9 @@ node ./helpers/fetch_courses_from_yaml.js
 echo 'fetch_frontpagecourse_block_from_yaml.js'
 node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
+echo 'yamler.js'
+node ./helpers/yamler.js
+
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
 printf '\n----------         Downloading all img from Strapi         ----------\n\n'
