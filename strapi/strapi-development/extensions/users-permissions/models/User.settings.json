@@ -92,8 +92,8 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "collection": "product",
-      "via": "sold_to"
+      "via": "sold_to",
+      "collection": "product"
     },
     "transactions": {
       "collection": "transaction",
