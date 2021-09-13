@@ -127,6 +127,12 @@ TagPremiereType: &TagPremiereType
     en: (text)
     ru: (text)
 
+TagFilmType: &TagFilmType
+    _path: /tag-film-types
+    et: (text)
+    en: (text)
+    ru: (text)
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -210,6 +216,8 @@ Tags: &Tags
       - *TagPremiereType
     programmes: #(Component (repeatable))
       - *Programme
+    film_types: #(Component (repeatable))
+      - *TagFilmType
 
 WebAuthor: &WebAuthor
     _path: /web-authors
@@ -286,6 +294,8 @@ POFFiArticle: &POFFiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -328,6 +338,8 @@ JustFilmiArticle: &JustFilmiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -370,6 +382,8 @@ ShortsiArticle: &ShortsiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -412,6 +426,8 @@ KinoffiArticle: &KinoffiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -454,6 +470,8 @@ HOFFiArticle: &HOFFiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -496,6 +514,8 @@ TartuffiArticle: &TartuffiArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -538,6 +558,8 @@ KumuArticle: &KumuArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -580,6 +602,8 @@ BrunoArticle: &BrunoArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -622,6 +646,8 @@ FilmikooliArticle: &FilmikooliArticle
         - *TagGenre
     tag_keywords: #(Component (repeatable))
         - *TagKeyword
+    tag_film_types: #(Component (repeatable))
+        - *TagFilmType
     web_authors: #(Component (repeatable))
         - *WebAuthor
     organisations:
@@ -1727,21 +1753,30 @@ FilmikooliFooter: &FilmikooliFooter
 # Product & Payment
 Payment: &Payment
     status: (text)
-    cardNumber: (Number)
-    cardOwner: (text)
     currency: (text)
-    code: (text)
-    identifier: (text)
+    transaction: text
     amount: (Number)
     method: (Enumeration)
+
+    # cardNumber: (Number)
+    # cardOwner: (text)
+    # code: (text)
+    # identifier: (text)
+
+TransactionsProducts: &TransactionsProducts
+    _path: /transactions-products
+    product: Product
+    transaction: Transaction
+    value: number
 
 Transaction: &Transaction
     _path: /transactions
     dateTime: (Datetime)
-    person: *Person #(Component)
     type: (Enumeration)
     payment:  #(Component (repeatable))
         - *Payment
+    # user: *USER
+    products: *TransactionsProducts
 
 TicketingRight: &TicketingRight
     ticketType: (text)
@@ -1756,10 +1791,6 @@ PriceAtPeriod: &PriceAtPeriod
     price: (number, decimal)
     startDateTime: (Datetime)
     endDateTime: (Datetime)
-
-ProductType: &ProductType
-    _path: /products
-    name: (text)
 
 Imgs: &Imgs
     imageDefault: *StrapiMedia
@@ -1788,26 +1819,20 @@ ProductCategory: &ProductCategory
     slug_ru: (UID)
     images: *Imgs
 
-ProductPass: &ProductPass
-    _path: /festival-passes
-    product_type: *ProductType #(Component)
-    product_category: *ProductCategory #(Component)
+Product: &Product
+    _path: /products
+    product_category: *ProductCategory
     owner: *Person #(Component)
     code: (text)
     active: (Boolean)
-    transaction: *Transaction #(Component)
     ticketingRight: #(Component (repeatable))
         - *TicketingRight
-
-OrderedProduct: &OrderedProduct
-    order: (number)
-    product_category: *ProductCategory
-
-ProdCatList: &ProdCatList
-    namePrivate: (text)
-    orderedProductCategories:
-        - *OrderedProduct
-    title: *Translated
+    reservation_time: (datetime)
+    # reserved_to: *USER
+    resevation_expired: (datetime)
+    reservation_price: (number)
+    # sold_to: *USER
+    transaction: *TransactionsProducts #(Component)
 
 Shop: &Shop
     _path: /shops
@@ -1820,6 +1845,21 @@ Shop: &Shop
     domains: #(Component (repeatable))
         - *Domain
 
+# USER: &USER
+
+# MyFilms: &Myfilms
+#     users_permission_user: *USER
+#     cassette: 
+#         - *Cassette
+#     type: enumeration
+
+# MyScreenings: &MyScreenings
+#     users_permission_user: *USER
+#     screenig: 
+#         - *Screening
+#     type: enumeration
+
+#SingleType
 # Hero
 HeroArticlePoff:
     _path: /article-hero
