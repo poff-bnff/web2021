@@ -1,14 +1,16 @@
 const { google } = require('googleapis')
 const path = require('path')
 const k_path = path.join(__dirname, 'sheets', '/c_secret.json')
+const CSEmail= process.env['CSecretEmail']
+const CSPKey= process.env['CSecretPrivateKey']
 const keys = require(k_path)
 
 function readSheet(result, model_name, sheet_id, sheet_name, callback) {
 	
 	const client = new google.auth.JWT(
-		keys.client_email, 
+		CSEmail, 
 		null,
-		keys.private_key,
+		CSPKey,
 		['https://www.googleapis.com/auth/spreadsheets']
 	)
 

@@ -1832,7 +1832,19 @@ Product: &Product
     resevation_expired: (datetime)
     reservation_price: (number)
     # sold_to: *USER
-    transaction: *TransactionsProducts #(Component)
+    transaction: 
+        -   *TransactionsProducts #(Component)
+    product_type: enumeration
+
+OrderedProduct: &OrderedProduct
+    order: (number)
+    product_category: *ProductCategory
+
+ProdCatList: &ProdCatList
+    namePrivate: (text)
+    orderedProductCategories:
+        - *OrderedProduct
+    title: *Translated
 
 Shop: &Shop
     _path: /shops
