@@ -122,11 +122,6 @@ locales:
         - en
         - ru
 
-allLocales:
-    - et
-    - en
-    - ru
-
 defaultLocale:
     poff.ee: et
     justfilm.ee: et
