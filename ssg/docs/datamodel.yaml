@@ -1802,7 +1802,6 @@ ProductCategory: &ProductCategory
     _path: /product-categories
     namePrivate: (text)
     name: *Translated #(Component)
-    product_type: *ProductType #(Component)
     festival_edition: *FestivalEdition #(Component)
     description: *Translated #(Component)
     validityPeriod:  #(Component (repeatable))
@@ -1832,7 +1831,7 @@ Product: &Product
     resevation_expired: (datetime)
     reservation_price: (number)
     # sold_to: *USER
-    transaction: 
+    transaction:
         -   *TransactionsProducts #(Component)
     product_type: enumeration
 
@@ -1861,13 +1860,13 @@ Shop: &Shop
 
 # MyFilms: &Myfilms
 #     users_permission_user: *USER
-#     cassette: 
+#     cassette:
 #         - *Cassette
 #     type: enumeration
 
 # MyScreenings: &MyScreenings
 #     users_permission_user: *USER
-#     screenig: 
+#     screenig:
 #         - *Screening
 #     type: enumeration
 
