@@ -25,7 +25,6 @@ WebUser:
     blocked: (Boolean)
     web_role: *WebRole
 
-
 Translated: &Translated
     et: (text)
     en: (text)
@@ -1754,21 +1753,30 @@ FilmikooliFooter: &FilmikooliFooter
 # Product & Payment
 Payment: &Payment
     status: (text)
-    cardNumber: (Number)
-    cardOwner: (text)
     currency: (text)
-    code: (text)
-    identifier: (text)
+    transaction: text
     amount: (Number)
     method: (Enumeration)
+
+    # cardNumber: (Number)
+    # cardOwner: (text)
+    # code: (text)
+    # identifier: (text)
+
+TransactionsProducts: &TransactionsProducts
+    _path: /transactions-products
+    product: Product
+    transaction: Transaction
+    value: number
 
 Transaction: &Transaction
     _path: /transactions
     dateTime: (Datetime)
-    person: *Person #(Component)
     type: (Enumeration)
     payment:  #(Component (repeatable))
         - *Payment
+    # user: *USER
+    products: *TransactionsProducts
 
 TicketingRight: &TicketingRight
     ticketType: (text)
@@ -1783,10 +1791,6 @@ PriceAtPeriod: &PriceAtPeriod
     price: (number, decimal)
     startDateTime: (Datetime)
     endDateTime: (Datetime)
-
-ProductType: &ProductType
-    _path: /product-types
-    name: (text)
 
 Imgs: &Imgs
     imageDefault: *StrapiMedia
@@ -1817,27 +1821,18 @@ ProductCategory: &ProductCategory
 
 Product: &Product
     _path: /products
-    product_type: *ProductType #(Component)
+    product_category: *ProductCategory
     owner: *Person #(Component)
     code: (text)
     active: (Boolean)
-    transaction: *Transaction #(Component)
     ticketingRight: #(Component (repeatable))
         - *TicketingRight
-    # reservation_time: (datetime)
+    reservation_time: (datetime)
     # reserved_to: *USER
-    # resevation_expired: (datetime)
-    # reservation_price: (number)
-
-OrderedProduct: &OrderedProduct
-    order: (number)
-    product_category: *ProductCategory
-
-ProdCatList: &ProdCatList
-    namePrivate: (text)
-    orderedProductCategories:
-        - *OrderedProduct
-    title: *Translated
+    resevation_expired: (datetime)
+    reservation_price: (number)
+    # sold_to: *USER
+    transaction: *TransactionsProducts #(Component)
 
 Shop: &Shop
     _path: /shops
