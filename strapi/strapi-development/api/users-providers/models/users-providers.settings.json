@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users_providers",
+  "info": {
+    "name": "UsersProviders"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "Eventival",
+        "Facebook",
+        "Google",
+        "local"
+      ]
+    },
+    "UUID": {
+      "type": "string"
+    },
+    "dateConnected": {
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_awards",
+  "info": {
+    "name": "Award",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_en": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

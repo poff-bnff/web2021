@@ -59,17 +59,49 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "people": {
-      "via": "user",
-      "collection": "person"
+    "profileFilled": {
+      "type": "boolean"
+    },
+    "externalProviders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.external-providers"
+    },
+    "last10Logins": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.last10-logins",
+      "max": 10
+    },
+    "account_created": {
+      "type": "datetime"
+    },
+    "importedToStrapi": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.imported-to-strapi"
     },
     "my_films": {
-      "via": "users_permissions_user",
-      "collection": "my-films"
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-films"
     },
     "my_screenings": {
-      "via": "users_permissions_user",
-      "collection": "my-screenings"
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-screenings"
+    },
+    "my_products": {
+      "collection": "product",
+      "via": "sold_to"
+    },
+    "transactions": {
+      "collection": "transaction",
+      "via": "user"
+    },
+    "users_person": {
+      "model": "users-persons",
+      "via": "users_permissions_user"
     }
   }
 }

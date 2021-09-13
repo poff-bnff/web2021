@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_user_imported_to_strapis",
+  "info": {
+    "name": "importedToStrapi",
+    "icon": "walking"
+  },
+  "options": {},
+  "attributes": {
+    "importedUser": {
+      "type": "boolean",
+      "default": false
+    },
+    "timeStamp": {
+      "type": "datetime"
+    },
+    "importedFrom": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "UUID": {
+      "type": "string"
+    }
+  }
+}

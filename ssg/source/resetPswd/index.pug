@@ -1,0 +1,25 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    section.userprofile
+
+        //- section.grid_login
+        div.form
+            .sub_section_headline.text_left.p_l_0#pswResetSuccessText(style={display: 'none'}) Parool edukalt uuendatud, sisse logimiseks vajuta nuppu:
+            div#grid_resetPswd
+                .sub_section_headline.text_left.p_l_0#pswResetPageText Sinu PÖFF-i konto parooli uuendamine
+                div.form-group
+                    label.login_label(for='psw')= self.label.userprofile.password
+                    input.login_input#psw.form-control(type='password', placeholder=`${self.label.userprofile.password}` name='psw' autocomplete="off" oninput="validatePsw('psw'); validatePswRep('psw', 'psw2')" )
+                    div#pswHelp(class='valid')= self.label.userprofile.passwordHelp
+                div.form-group
+                    label.login_label(for='psw2')= self.label.userprofile.passwordRepeat
+                    input.login_input#psw2.form-control(type='password', placeholder=`${self.label.userprofile.passwordRepeat}`  name='psw2' autocomplete="off" oninput="validatePswRep('psw', 'psw2')")
+                    div#psw2Help(class='valid')= self.label.userprofile.password2Help
+                button.btn.btn_primary#resetPasswordButton(onclick='resetPswd()') Reset password
+                br
+            br
+            button.btn.btn_primary#backToLoginBtn(style={display: 'none'} onclick='redirectTo("/login")')= self.label.userprofile.signinBtn
+

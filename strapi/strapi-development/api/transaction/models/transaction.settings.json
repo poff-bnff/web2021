@@ -2,18 +2,17 @@
   "kind": "collectionType",
   "collectionName": "transactions",
   "info": {
-    "name": "transaction"
+    "name": "transaction",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "dateTime": {
       "type": "datetime"
-    },
-    "person": {
-      "model": "person"
     },
     "type": {
       "type": "enumeration",
@@ -25,8 +24,17 @@
     },
     "payment": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "ticketing.payment"
+    },
+    "user": {
+      "via": "transactions",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "products": {
+      "via": "transaction",
+      "collection": "transaction-products"
     }
   }
 }

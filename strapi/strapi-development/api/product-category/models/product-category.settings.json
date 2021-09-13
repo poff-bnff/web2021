@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "product_categories",
   "info": {
-    "name": "Product_Category"
+    "name": "Product_Category",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "namePrivate": {
@@ -16,9 +18,6 @@
       "type": "component",
       "repeatable": false,
       "component": "translated.translated-short"
-    },
-    "product_type": {
-      "model": "product"
     },
     "festival_edition": {
       "model": "festival-edition"

@@ -6,11 +6,13 @@ function validateEmail(element_id) {
     if (!emailRe.test(String(email.value).toLowerCase())) {
         emailHelp.classList.remove("valid")
         emailHelp.classList.add("invalid")
+        email.classList.add('invalidColor')
         return false
     }
     else {
         emailHelp.classList.remove("invalid")
         emailHelp.classList.add("valid")
+        email.classList.remove('invalidColor')
         return true
     }
 }
@@ -20,6 +22,7 @@ function validatePsw(element_id) {
     if (psw.value === "") {
         pswHelp.classList.remove("valid")
         pswHelp.classList.add("invalid")
+        psw.classList.add("invalidColor")
         return false
     }
 
@@ -28,12 +31,13 @@ function validatePsw(element_id) {
     if (!pswdRe.test(String(psw.value))) {
         pswHelp.classList.remove("valid")
         pswHelp.classList.add("invalid")
+        psw.classList.add("invalidColor")
         return true
     }
     else {
         pswHelp.classList.remove("invalid")
+        psw.classList.remove("invalidColor")
         pswHelp.classList.add("valid")
-
         return true
     }
 }
@@ -43,16 +47,19 @@ function validatePswRep(psw1_id, psw2_id) {
     var psw2= document.getElementById(psw2_id)
     if (psw2.value === "") {
         psw2Help.classList.remove("valid")
-        psw2Help.classList.add("invalid")
+        psw2Help.classList.add("invalid")   
+        psw2.classList.add("invalidColor")   
         return false
     }
 
     if (psw1.value !== psw2.value) {
         psw2Help.classList.remove("valid")
         psw2Help.classList.add("invalid")
+        psw2.classList.add("invalidColor")
         return false
     } else {
         psw2Help.classList.remove("invalid")
+        psw2.classList.remove("invalidColor")
         psw2Help.classList.add("valid")
         return true
     }
@@ -63,10 +70,12 @@ function validateFirstName(element_id) {
     if (firstName.value == "" || firstName.value.length < 2 || !isNaN(firstName.value)) {
         firstNameHelp.classList.remove("valid")
         firstNameHelp.classList.add("invalid")
+        firstName.classList.add('invalidColor')
         return false
     }
     firstNameHelp.classList.remove("invalid")
     firstNameHelp.classList.add("valid")
+    firstName.classList.remove('invalidColor')
     return true
 }
 
@@ -75,10 +84,12 @@ function validateLastName(element_id) {
     if (lastName.value === "" || lastName.value.length < 2 || !isNaN(lastName.value)) {
         lastNameHelp.classList.remove("valid")
         lastNameHelp.classList.add("invalid")
+        lastName.classList.add('invalidColor')
         return false
     }
     lastNameHelp.classList.remove("invalid")
     lastNameHelp.classList.add("valid")
+    lastName.classList.remove('invalidColor')
     return true
 }
 
@@ -88,11 +99,13 @@ function validateGender(element_id) {
     if (gender.value === "") {
         genderHelp.classList.remove("valid")
         genderHelp.classList.add("invalid")
+        gender.classList.add("invalidColor")
         return false
     }
 
     if (gender.value !== "") {
         genderHelp.classList.remove("invalid")
+        gender.classList.remove("invalidColor")
         genderHelp.classList.add("valid")
         return true
     }
@@ -103,17 +116,20 @@ function validateBDay(element_id) {
     if (dob.value === "") {
         dobHelp.classList.remove("valid")
         dobHelp.classList.add("invalid")
+        dob.classList.add("invalidColor")
         return false
     }
 
     var userAge = getAge(dob.value)
     if (userAge > 12 && userAge < 116) {
         dobHelp.classList.remove("invalid")
+        dob.classList.remove("invalidColor")
         dobHelp.classList.add("valid")
         return true
     } else {
         dobHelp.classList.remove("valid")
         dobHelp.classList.add("invalid")
+        dob.classList.add("invalidColor")
         return false
     }
 }
@@ -132,15 +148,18 @@ function validateDate(element_id) {
     if (date.value === "") {
         dateHelp.classList.remove("valid")
         dateHelp.classList.add("invalid")
+        date.classList.add("invalidColor")
         return false
     }
     if (!dateRe.test(String(date.value) )) {
         dateHelp.classList.remove("valid")
         dateHelp.classList.add("invalid")
+        date.classList.add("invalidColor")
         return true
     }
     else {
         dateHelp.classList.remove("invalid")
+        date.classList.remove("invalidColor")
         dateHelp.classList.add("valid")
         return true
     }
@@ -152,6 +171,7 @@ function validatePhoneNr(element_id) {
 
         phoneNrHelp.classList.remove("valid")
         phoneNrHelp.classList.add("invalid")
+        phoneNr.classList.add("invalidColor")
         return false
     }
 
@@ -161,10 +181,12 @@ function validatePhoneNr(element_id) {
     if (!phoneRe.test(String(phoneNr.value))) {
         phoneNrHelp.classList.remove("valid")
         phoneNrHelp.classList.add("invalid")
+        phoneNr.classList.add("invalidColor")
         return true
     }
     else {
         phoneNrHelp.classList.remove("invalid")
+        phoneNr.classList.remove("invalidColor")
         phoneNrHelp.classList.add("valid")
         return true
     }

@@ -3,6 +3,11 @@ var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
+let userProfileHasBeenLoaded = false
+var strapiDomain = 'https://admin.poff.ee'
+// var strapiDomain = 'http://localhost:1337'
+
+console.log('testconsolelog');
 
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
@@ -19,12 +24,12 @@ function buyerCheck() {
     }else{
         document.getElementById('directToLoginButton').style.display = 'none'
 
-        if(userProfile.profile_filled && userProfile.picture === "this users picture is in S3"){
+        if(userProfile.profileFilled && userProfile.users_person && userProfile.users_person.picture){
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")
         }else {
-            if(!userProfile.profile_filled){
+            if(!userProfile.profileFilled){
                 //profiil täitmata
                 document.getElementById('directToFillProfile').style.display = 'block'
                 // console.log("pooliku profiiliga kasutaja on poes")
@@ -39,8 +44,8 @@ function buyerCheck() {
 }
 
 
-if(localStorage.getItem('ACCESS_TOKEN')){
-    var token = localStorage.getItem('ACCESS_TOKEN')
+if(localStorage.getItem('BNFF_U_ACCESS_TOKEN')){
+    var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
     try{
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -97,7 +102,7 @@ if (!validToken) {
 function loadUserProfileH() {
     // console.log('laen cognitost kasutaja profiili....')
     var myHeaders = new Headers()
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'))
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
 
     var requestOptions = {
         method: 'GET',
@@ -105,7 +110,7 @@ function loadUserProfileH() {
         redirect: 'follow'
     }
 
-    fetch('https://api.poff.ee/profile', requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
@@ -152,16 +157,18 @@ function loadEmptyUserProfile() {
 
 
 function saveUrl(){
-    localStorage.setItem('url', window.location.href)
+    localStorage.setItem('preLoginUrl', window.location.href)
 }
 
 
 
 
 function useUserData(userProf){
-    if(userProf.name){
+    console.log('Trying userprofile 1', userProfileHasBeenLoaded);
+
+    if(userProf.users_person && userProf.users_person.firstName){
         try{
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.name
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.users_person.firstName
         }catch(err){
             null
         }
@@ -184,6 +191,14 @@ function useUserData(userProf){
         null
     }
     try{
+        userProfileHasBeenLoaded = true
+        console.log('Trying userprofile 2', userProfileHasBeenLoaded);
+
+        pageLoadingAndUserProfileFetched()
+    }catch(err){
+        null
+    }
+    try{
         fetchMyPasses()
     }catch(err){
         null
@@ -191,13 +206,13 @@ function useUserData(userProf){
 }
 
 function logOut() {
-    localStorage.removeItem('ACCESS_TOKEN')
+    localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
     if (localStorage.getItem('REFRESH_TOKEN')){
         localStorage.removeItem('REFRESH_TOKEN')
     }
-    localStorage.removeItem('url')
+    localStorage.removeItem('preLoginUrl')
     localStorage.removeItem('USER_PROFILE')
 
     // console.log('LOGITUD VÄLJA')
@@ -205,4 +220,3 @@ function logOut() {
 
     // window.open(location.origin, '_self')
 }
-

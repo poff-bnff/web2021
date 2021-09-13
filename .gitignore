@@ -27,6 +27,7 @@ ssg/credentials.json
 ssg/token.json
 ssg/.env
 ssg/report.*
+ssg/helpers/sheets
 
 
 # dev tools
