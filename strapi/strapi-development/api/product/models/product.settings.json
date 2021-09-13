@@ -48,7 +48,7 @@
       "model": "user"
     },
     "transactions": {
-      "collection": "transaction-products",
+      "collection": "transactions-products",
       "via": "product"
     }
   }

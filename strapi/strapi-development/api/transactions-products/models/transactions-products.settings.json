@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "transactions_products2",
+  "collectionName": "transactions_products",
   "info": {
-    "name": "TransactionsProducts"
+    "name": "TransactionsProducts",
+    "description": ""
   },
   "options": {
     "increments": true,
