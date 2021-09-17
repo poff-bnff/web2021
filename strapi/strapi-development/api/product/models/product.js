@@ -50,6 +50,7 @@ module.exports = {
     async afterUpdate(result, params, data) {
       let sheet_ID = '1523CDLVZyDmn9-lKr8B1VNS0paM8IeZBxcvWM_VeXyQ'
       let sheet_name = 'Strapi_Products'
+//	console.log({result})
       let read_spsheet = await update_sheets(result, model_name, sheet_ID, sheet_name)
         // console.log(read_spsheet)
 
