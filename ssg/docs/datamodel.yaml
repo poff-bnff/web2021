@@ -1751,32 +1751,6 @@ FilmikooliFooter: &FilmikooliFooter
         - *SupSecFilmikool
 
 # Product & Payment
-Payment: &Payment
-    status: (text)
-    currency: (text)
-    transaction: text
-    amount: (Number)
-    method: (Enumeration)
-
-    # cardNumber: (Number)
-    # cardOwner: (text)
-    # code: (text)
-    # identifier: (text)
-
-TransactionsProducts: &TransactionsProducts
-    _path: /transactions-products
-    product: Product
-    transaction: Transaction
-    value: number
-
-Transaction: &Transaction
-    _path: /transactions
-    dateTime: (Datetime)
-    type: (Enumeration)
-    payment:  #(Component (repeatable))
-        - *Payment
-    # user: *USER
-    products: *TransactionsProducts
 
 TicketingRight: &TicketingRight
     ticketType: (text)
@@ -1802,7 +1776,6 @@ ProductCategory: &ProductCategory
     _path: /product-categories
     namePrivate: (text)
     name: *Translated #(Component)
-    product_type: *ProductType #(Component)
     festival_edition: *FestivalEdition #(Component)
     description: *Translated #(Component)
     validityPeriod:  #(Component (repeatable))
@@ -1818,23 +1791,6 @@ ProductCategory: &ProductCategory
     slug_en: (UID)
     slug_ru: (UID)
     images: *Imgs
-
-Product: &Product
-    _path: /products
-    product_category: *ProductCategory
-    owner: *Person #(Component)
-    code: (text)
-    active: (Boolean)
-    ticketingRight: #(Component (repeatable))
-        - *TicketingRight
-    reservation_time: (datetime)
-    # reserved_to: *USER
-    resevation_expired: (datetime)
-    reservation_price: (number)
-    # sold_to: *USER
-    transaction: 
-        -   *TransactionsProducts #(Component)
-    product_type: enumeration
 
 OrderedProduct: &OrderedProduct
     order: (number)
@@ -1856,20 +1812,6 @@ Shop: &Shop
     shopRules: *Translated #(Rich text)
     domains: #(Component (repeatable))
         - *Domain
-
-# USER: &USER
-
-# MyFilms: &Myfilms
-#     users_permission_user: *USER
-#     cassette: 
-#         - *Cassette
-#     type: enumeration
-
-# MyScreenings: &MyScreenings
-#     users_permission_user: *USER
-#     screenig: 
-#         - *Screening
-#     type: enumeration
 
 #SingleType
 # Hero
