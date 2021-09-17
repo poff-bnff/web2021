@@ -48,14 +48,17 @@ function BuyProduct(categoryId) {
         fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(function (response) {
             if (response.ok) {
                 return response.json();
+            } else {
+                console.log('Response of buyproduct', response);
+                return Promise.reject(response);
             }
-            return Promise.reject(response);
         }).then(function (data) {
             // console.log(data);
             window.open(data.url, '_self')
 
 
         }).catch(function (error) {
+            console.log('Response of buyproduct error', response);
             console.warn(error);
         });
 
