@@ -496,19 +496,19 @@ module.exports = {
     console.log('cancel_url ', cancel_url)
 
     if (!userId) {
-      return [401, 'Unauthorized']
+      return { code: 401, message: 'Unauthorized' }
     }
 
     if (!categoryId) {
-      return [400, 'No categoryId']
+      return { code: 400, message: 'No categoryId' }
     }
 
     // if (!saleActiveCategories.includes(categoryId)) {
-    //   return [400, 'Sale currently closed for this product']
+    //   return { code: 400, message: 'Sale currently closed for this product' }
     // }
 
     if (!paymentMethodId) {
-      return [400, 'No paymentMethodId']
+      return { code: 400, message: 'No paymentMethodId' }
     }
 
     ///////////////////////////////////////
@@ -525,7 +525,7 @@ module.exports = {
     let getOneProduct = await strapi.services.product.findOne(params)
 
     if (!getOneProduct || getOneProduct.length === 0) {
-      return [404, 'No items']
+      return { code: 404, message: 'No items' }
     }
 
     let thisProductId = getOneProduct.id
@@ -542,7 +542,7 @@ module.exports = {
     let reserveProduct = await strapi.services.product.update({ 'id': thisProductId }, reserveParams)
 
     if (!reserveProduct.reserved_to) {
-      return [500, 'Failed to save reservation']
+      return { code: 500, message: 'Failed to save reservation' }
     }
     console.log('Product ', thisProductId, ' reserved to ', reserveProduct.reserved_to.id);
 
@@ -580,7 +580,7 @@ module.exports = {
     ].find(m => [m.country, m.name].join('_').toUpperCase() === body.paymentMethodId)
 
     if (!paymentMethod) {
-      return [400, 'No paymentMethod']
+      return { code: 400, message: 'No paymentMethod' }
     }
 
     return { url: paymentMethod.url }
