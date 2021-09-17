@@ -45,7 +45,7 @@ function BuyProduct(categoryId) {
         }
 
         // fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
-        fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(function (response) {
+        fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(async function (response) {
             if (response.ok) {
                 var responseJson = response.json()
                 console.log('Response: ', responseJson);
@@ -53,7 +53,7 @@ function BuyProduct(categoryId) {
             }
             return Promise.reject(response);
         }).then(function (data) {
-            // console.log(data);
+            console.log('data', data);
             window.open(data.url, '_self')
 
 
