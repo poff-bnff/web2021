@@ -43,13 +43,19 @@
       "type": "decimal"
     },
     "sold_to": {
-      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "my_products"
     },
     "transactions": {
-      "collection": "transaction-products",
+      "collection": "transactions-products",
       "via": "product"
+    },
+    "product_type": {
+      "type": "enumeration",
+      "enum": [
+        "pass"
+      ]
     }
   }
 }

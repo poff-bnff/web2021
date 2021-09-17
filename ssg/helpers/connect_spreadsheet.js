@@ -3,7 +3,7 @@ const path = require('path')
 const k_path = path.join(__dirname, 'sheets', '/c_secret.json')
 const CSEmail= process.env['CSecretEmail']
 const CSPKey= process.env['CSecretPrivateKey']
-const keys = require(k_path)
+//const keys = require(k_path)
 
 function readSheet(result, model_name, sheet_id, sheet_name, callback) {
 	
@@ -86,10 +86,10 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 	}
 
 	// console.log(valueList)
-	if(result.created_by){
+	if(result.created_by.id){
 		delete result.created_by
 	}
-	if(result.updated_by){
+	if(result.updated_by.id){
 		delete result.updated_by
 	}
 	if(result.created_at) {

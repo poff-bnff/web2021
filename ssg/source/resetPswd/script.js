@@ -1,6 +1,6 @@
 const resetPswd = async () => {
-    let resetPasswordButton = document.getElementById('signUpButton')
-    let resetPasswordButtonInnerHTMLBackup = signUpButton.innerHTML
+    let resetPasswordButton = document.getElementById('resetPasswordButton')
+    let resetPasswordButtonInnerHTMLBackup = resetPasswordButton.innerHTML
     resetPasswordButton.disable = true
     resetPasswordButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>'
 

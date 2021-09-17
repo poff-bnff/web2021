@@ -690,7 +690,7 @@ module.exports = {
           value: mkResponse.amount,
         }
 
-        let addTransactionProduct = await strapi.services['transaction-products'].create(addTransactionProductsOptions)
+        let addTransactionProduct = await strapi.services['transactions-products'].create(addTransactionProductsOptions)
         console.log('Create transactionproduct: ', addTransactionProduct);
         // add transaction time
         const addTransactionOptions = {
