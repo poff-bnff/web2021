@@ -45,15 +45,22 @@ function BuyProduct(categoryId) {
         }
 
         // fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
-        fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(async function (response) {
+        fetch('https://admin.poff.ee/users-permissions/users/buyproduct', requestOptions).then(function (response) {
             if (response.ok) {
-                var responseJson = response.json()
-                console.log('Response: ', responseJson);
-                return responseJson;
+                return response.json();
             }
             return Promise.reject(response);
         }).then(function (data) {
-            console.log('data', data);
+            var errorMapping = {
+                unauthorized: 'Tekkis viga! Õigused puuduvad',
+                noCategoryId: 'Tekkis viga! Kategooria ID puudub',
+                noPaymentMethodId: 'Tekkis viga! Maksemeetodi ID puudub',
+                noItems: 'Hetkel ei ole võimalik seda tüüpi passi osta',
+                reservationSaveFailed: 'Tekkis viga! Reserveeringu ebaõnnestumine',
+                noPaymentMethod: 'Tekkis viga! Maksemeetod puudub',
+            }
+
+            if (data.code && data.case) { feedback.innerHTML = errorMapping[data.case] }
             window.open(data.url, '_self')
 
 

@@ -570,9 +570,6 @@
               "reservation_price": {
                 "type": "number"
               },
-              "sold_to": {
-                "type": "string"
-              },
               "transactions": {
                 "type": "array",
                 "items": {

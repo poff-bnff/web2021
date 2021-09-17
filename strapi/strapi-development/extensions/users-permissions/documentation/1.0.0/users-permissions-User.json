@@ -1656,67 +1656,6 @@
               }
             }
           },
-          "my_products": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "product_category": {
-                  "type": "string"
-                },
-                "owner": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "active": {
-                  "type": "boolean"
-                },
-                "ticketingRight": {
-                  "type": "component"
-                },
-                "reservation_time": {
-                  "type": "string"
-                },
-                "reserved_to": {
-                  "type": "string"
-                },
-                "reservation_expired": {
-                  "type": "string"
-                },
-                "reservation_price": {
-                  "type": "number"
-                },
-                "sold_to": {
-                  "type": "string"
-                },
-                "transactions": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "product_type": {
-                  "type": "string",
-                  "enum": [
-                    "pass"
-                  ]
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "transactions": {
             "type": "array",
             "items": {
@@ -1799,6 +1738,64 @@
               },
               "updated_by": {
                 "type": "string"
+              }
+            }
+          },
+          "my_products": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product_category": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "ticketingRight": {
+                  "type": "component"
+                },
+                "reservation_time": {
+                  "type": "string"
+                },
+                "reserved_to": {
+                  "type": "string"
+                },
+                "reservation_expired": {
+                  "type": "string"
+                },
+                "reservation_price": {
+                  "type": "number"
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "product_type": {
+                  "type": "string",
+                  "enum": [
+                    "pass"
+                  ]
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -2114,12 +2111,6 @@
               }
             }
           },
-          "my_products": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "transactions": {
             "type": "array",
             "items": {
@@ -2128,6 +2119,12 @@
           },
           "users_person": {
             "type": "string"
+          },
+          "my_products": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

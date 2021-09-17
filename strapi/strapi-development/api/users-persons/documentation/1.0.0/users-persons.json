@@ -594,12 +594,6 @@
               "my_screenings": {
                 "type": "component"
               },
-              "my_products": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "transactions": {
                 "type": "array",
                 "items": {
@@ -608,6 +602,12 @@
               },
               "users_person": {
                 "type": "string"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"

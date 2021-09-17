@@ -577,79 +577,6 @@
               }
             }
           },
-          "owner": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "picture": {
-                "type": "string"
-              },
-              "gender": {
-                "type": "string"
-              },
-              "phoneNr": {
-                "type": "string"
-              },
-              "eMail": {
-                "type": "string"
-              },
-              "dateOfBirth": {
-                "type": "string"
-              },
-              "countries": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "organisations": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "profession": {
-                "type": "string"
-              },
-              "firstNameLastName": {
-                "type": "string"
-              },
-              "biography": {
-                "type": "component"
-              },
-              "filmography": {
-                "type": "component"
-              },
-              "remoteId": {
-                "type": "uid"
-              },
-              "pageUrl": {
-                "type": "string"
-              },
-              "awardings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "code": {
             "type": "string"
           },
@@ -741,12 +668,6 @@
               "my_screenings": {
                 "type": "component"
               },
-              "my_products": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "transactions": {
                 "type": "array",
                 "items": {
@@ -755,6 +676,12 @@
               },
               "users_person": {
                 "type": "string"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -770,87 +697,6 @@
           },
           "reservation_price": {
             "type": "number"
-          },
-          "sold_to": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "profileFilled": {
-                "type": "boolean"
-              },
-              "externalProviders": {
-                "type": "component"
-              },
-              "last10Logins": {
-                "type": "component"
-              },
-              "account_created": {
-                "type": "string"
-              },
-              "importedToStrapi": {
-                "type": "component"
-              },
-              "my_films": {
-                "type": "component"
-              },
-              "my_screenings": {
-                "type": "component"
-              },
-              "my_products": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "transactions": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "users_person": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           },
           "transactions": {
             "type": "array",
@@ -885,15 +731,93 @@
             "enum": [
               "pass"
             ]
+          },
+          "owner": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "profileFilled": {
+                "type": "boolean"
+              },
+              "externalProviders": {
+                "type": "component"
+              },
+              "last10Logins": {
+                "type": "component"
+              },
+              "account_created": {
+                "type": "string"
+              },
+              "importedToStrapi": {
+                "type": "component"
+              },
+              "my_films": {
+                "type": "component"
+              },
+              "my_screenings": {
+                "type": "component"
+              },
+              "transactions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "users_person": {
+                "type": "string"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "NewProduct": {
         "properties": {
           "product_category": {
-            "type": "string"
-          },
-          "owner": {
             "type": "string"
           },
           "code": {
@@ -939,9 +863,6 @@
           "reservation_price": {
             "type": "number"
           },
-          "sold_to": {
-            "type": "string"
-          },
           "transactions": {
             "type": "array",
             "items": {
@@ -953,6 +874,9 @@
             "enum": [
               "pass"
             ]
+          },
+          "owner": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
