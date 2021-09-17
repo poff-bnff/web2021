@@ -515,7 +515,7 @@ module.exports = {
     const params = {
       code_null: false,
       reserved_to_null: true,
-      sold_to_null: true,
+      owner_null: true,
       owner_null: true,
       product_category_null: false,
       'product_category.codePrefix': categoryId,
@@ -718,7 +718,7 @@ module.exports = {
 
         // Update pass one last time
         const successOptions = {
-          sold_to: product.userId,
+          owner: product.userId,
           transactions: [addTransaction]
         }
 
