@@ -58,6 +58,7 @@ function BuyProduct(categoryId) {
 
 
         }).catch(function (error) {
+            console.log('Response of buyproduct error', response);
             console.warn(error);
         });
 
