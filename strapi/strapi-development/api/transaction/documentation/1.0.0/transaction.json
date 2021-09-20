@@ -636,6 +636,9 @@
                   "type": "string"
                 }
               },
+              "user_profile": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -745,6 +748,9 @@
                   "type": "string"
                 }
               },
+              "user_profile": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -825,6 +831,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "user_profile": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

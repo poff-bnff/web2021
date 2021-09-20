@@ -1804,6 +1804,50 @@
                 }
               }
             }
+          },
+          "user_profile": {
+            "required": [
+              "id",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "birthdate": {
+                "type": "string"
+              },
+              "picture": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNr": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -2131,6 +2175,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "user_profile": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

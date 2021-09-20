@@ -102,6 +102,10 @@
     "transactions": {
       "via": "transactor",
       "collection": "transaction"
+    },
+    "user_profile": {
+      "via": "user",
+      "model": "user-profiles"
     }
   }
 }
