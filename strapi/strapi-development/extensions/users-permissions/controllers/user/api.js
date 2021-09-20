@@ -696,7 +696,8 @@ module.exports = {
         const addTransactionOptions = {
           dateTime: mkResponse.message_time,
           type: 'Purchase',
-          user: product.userId,
+          transactor: product.userId,
+          beneficiary: product.userId,
           payment: {
             currency: mkResponse.currency,
             amount: mkResponse.amount,
