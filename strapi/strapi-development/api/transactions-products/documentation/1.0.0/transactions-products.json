@@ -546,9 +546,6 @@
               "product_category": {
                 "type": "string"
               },
-              "owner": {
-                "type": "string"
-              },
               "code": {
                 "type": "string"
               },
@@ -581,6 +578,9 @@
                 "enum": [
                   "pass"
                 ]
+              },
+              "owner": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -619,6 +619,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "beneficiary": {
+                "type": "string"
+              },
+              "transactor": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

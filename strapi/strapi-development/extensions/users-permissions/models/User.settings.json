@@ -91,10 +91,6 @@
       "repeatable": true,
       "component": "user.my-screenings"
     },
-    "transactions": {
-      "collection": "transaction",
-      "via": "user"
-    },
     "users_person": {
       "model": "users-persons",
       "via": "users_permissions_user"
@@ -102,6 +98,10 @@
     "my_products": {
       "collection": "product",
       "via": "owner"
+    },
+    "transactions": {
+      "via": "transactor",
+      "collection": "transaction"
     }
   }
 }

@@ -582,16 +582,16 @@
                 "my_screenings": {
                   "type": "component"
                 },
-                "transactions": {
+                "users_person": {
+                  "type": "string"
+                },
+                "my_products": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "users_person": {
-                  "type": "string"
-                },
-                "my_products": {
+                "transactions": {
                   "type": "array",
                   "items": {
                     "type": "string"

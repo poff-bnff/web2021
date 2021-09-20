@@ -28,13 +28,21 @@
       "component": "ticketing.payment"
     },
     "user": {
-      "via": "transactions",
       "plugin": "users-permissions",
       "model": "user"
     },
     "products": {
-      "via": "transaction",
-      "collection": "transactions-products"
+      "collection": "transactions-products",
+      "via": "transaction"
+    },
+    "beneficiary": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "transactor": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
     }
   }
 }

@@ -1656,47 +1656,6 @@
               }
             }
           },
-          "transactions": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "dateTime": {
-                  "type": "string"
-                },
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "Purchase",
-                    "Refund"
-                  ]
-                },
-                "payment": {
-                  "type": "component"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "products": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "users_person": {
             "required": [
               "id",
@@ -1788,6 +1747,53 @@
                   ]
                 },
                 "owner": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "transactions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "dateTime": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "Purchase",
+                    "Refund"
+                  ]
+                },
+                "payment": {
+                  "type": "component"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "products": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "beneficiary": {
+                  "type": "string"
+                },
+                "transactor": {
                   "type": "string"
                 },
                 "created_by": {
@@ -2111,16 +2117,16 @@
               }
             }
           },
-          "transactions": {
+          "users_person": {
+            "type": "string"
+          },
+          "my_products": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "users_person": {
-            "type": "string"
-          },
-          "my_products": {
+          "transactions": {
             "type": "array",
             "items": {
               "type": "string"
