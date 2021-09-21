@@ -1656,50 +1656,6 @@
               }
             }
           },
-          "users_person": {
-            "required": [
-              "id",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "users_permissions_user": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "gender": {
-                "type": "string"
-              },
-              "address": {
-                "type": "string"
-              },
-              "birthdate": {
-                "type": "string"
-              },
-              "picture": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "phoneNr": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "my_products": {
             "type": "array",
             "items": {
@@ -2160,9 +2116,6 @@
                 }
               }
             }
-          },
-          "users_person": {
-            "type": "string"
           },
           "my_products": {
             "type": "array",

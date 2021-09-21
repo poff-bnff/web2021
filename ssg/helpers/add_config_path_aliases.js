@@ -34,11 +34,10 @@ if (process.argv[2]) {
             '/my_screenings',
             '/screenings-search',
             '/my_films',
-            '/_fetchdir/cassettes/200-meters',
             '/search',
             '/mypoff',
             '/userprofile',
-            '/_fetchdir/products/testpass',
+            '/_fetchdir/products',
             '/resetPswd',
             '/signup'
         ])

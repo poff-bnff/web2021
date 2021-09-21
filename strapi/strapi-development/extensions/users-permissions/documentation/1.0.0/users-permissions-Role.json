@@ -582,9 +582,6 @@
                 "my_screenings": {
                   "type": "component"
                 },
-                "users_person": {
-                  "type": "string"
-                },
                 "my_products": {
                   "type": "array",
                   "items": {
