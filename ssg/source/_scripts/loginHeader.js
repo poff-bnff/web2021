@@ -4,7 +4,7 @@ var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
-var strapiDomain = 'https://admin.poff.ee'
+var strapiDomain = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}`
 // var strapiDomain = 'http://localhost:1337'
 
 console.log('testconsolelog');
