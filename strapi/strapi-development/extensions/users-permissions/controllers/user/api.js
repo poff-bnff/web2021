@@ -181,12 +181,12 @@ module.exports = {
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
-      console.log('Create new Person to users-persons');
+      console.log('Create new Person to user-profiles');
       let newUserProfile
       if (files.picture) {
-        newUserProfile = await strapi.services['users-persons'].create(personProfile, { files })
+        newUserProfile = await strapi.services['user-profiles'].create(personProfile, { files })
       } else {
-        newUserProfile = await strapi.services['users-persons'].create(personProfile)
+        newUserProfile = await strapi.services['user-profiles'].create(personProfile)
       }
       console.log('newUserProfile', newUserProfile);
       return newUserProfile
@@ -196,9 +196,9 @@ module.exports = {
       const { files } = parseMultipartData(ctxForPicture);
       let updatedProfile
       if (files.picture) {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile, { files })
+        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile, { files })
       } else {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile)
+        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
       }
       console.log('personProfile', personProfile);
       console.log('updatedProfile', updatedProfile);
@@ -252,12 +252,12 @@ module.exports = {
 
     // Create new person if it does not exist, else update
     personProfile.email = user.email
-    if (!user.users_person) {
+    if (!user.user_profile) {
       personProfile.users_permissions_user = id
       console.log('Create new person', personProfile);
       // await createNewPersonProfile(personProfile)
     } else {
-      // await updatePersonProfile(personProfile, user.users_person.id)
+      // await updatePersonProfile(personProfile, user.user_profile.id)
     }
 
     let updateData = {
@@ -283,9 +283,9 @@ module.exports = {
       }
     }
 
-    let thisUsersProfile = !user.users_person ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.users_person.id)
-    updateData.users_person = thisUsersProfile.id
-    console.log('updateData.users_person', updateData.users_person);
+    let thisUsersProfile = !user.user_profile ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.user_profile.id)
+    updateData.user_profile = thisUsersProfile.id
+    console.log('updateData.user_profile', updateData.user_profile);
 
     const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
     // toSheets.newUserToSheets(updatedUser)
@@ -339,7 +339,7 @@ module.exports = {
     let rawData = { ...JSON.parse(ctx.request.body) }
 
     // User needs to fill profile before
-    if (!user.users_person) {
+    if (!user.user_profile) {
       rawData.users_permissions_user = id
       console.log('Please fill profile');
     }
@@ -755,8 +755,8 @@ module.exports = {
               template_name: `passiost`,
               template_vars: [
                 { name: 'email', content: getUserInfo.email },
-                { name: 'eesnimi', content: getUserInfo.users_person.firstName },
-                { name: 'perenimi', content: getUserInfo.users_person.lastName },
+                { name: 'eesnimi', content: getUserInfo.user_profile.firstName },
+                { name: 'perenimi', content: getUserInfo.user_profile.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
                 { name: 'passikood', content: updateProductSuccess.code },
                 { name: 'passinimi', content: updateProductSuccess.product_category.name.et }

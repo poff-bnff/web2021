@@ -8,8 +8,8 @@ async function fetchMyPasses() {
 
     let userPerson
     let profilePicture
-    if (userProfile.users_person && userProfile.users_person.picture) {
-        userPerson = userProfile.users_person
+    if (userProfile.user_profile && userProfile.user_profile.picture) {
+        userPerson = userProfile.user_profile
         profilePicture = `https://admin.poff.ee${userPerson.picture.url}`
     } else {
         return
