@@ -565,9 +565,9 @@ module.exports = {
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/cancel` },
-          notification_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/notification` },
-          return_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/return` }
+          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/return` }
         }
       }
     })

@@ -71,7 +71,7 @@ function modifyFavourites(type, favId) {
     };
 
 
-    fetch(`${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users/favorites/`, requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users/favorites/`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

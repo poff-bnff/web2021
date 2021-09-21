@@ -45,7 +45,7 @@ function BuyProduct(categoryId) {
         }
 
         // fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
-        fetch(`${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproduct`, requestOptions).then(function (response) {
+        fetch(`${strapiDomain}/users-permissions/users/buyproduct`, requestOptions).then(function (response) {
             if (response.ok) {
                 return response.json();
             }
@@ -98,7 +98,7 @@ function GetPaymentLinks() {
         redirect: 'follow'
     }
 
-    fetch('/users-permissions/users/paymentmethods', requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users-permissions/users/paymentmethods`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

@@ -10,7 +10,7 @@ async function fetchMyPasses() {
     let profilePicture
     if (userProfile.user_profile && userProfile.user_profile.picture) {
         userPerson = userProfile.user_profile
-        profilePicture = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${userPerson.picture.url}`
+        profilePicture = `${strapiDomain}${userPerson.picture.url}`
     } else {
         return
     }
