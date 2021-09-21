@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-const strapiHost = 'https://dev.poff.ee'
+const strapiHost = 'https://admin.poff.ee'
 // const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';

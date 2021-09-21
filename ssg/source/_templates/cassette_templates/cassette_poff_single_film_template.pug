@@ -265,7 +265,6 @@ main.grid_film(id=self.id)
                     .f_interactive_item
                         a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
 
-
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
                 -        if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate ) {
