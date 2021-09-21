@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_projects",
+  "info": {
+    "name": "DisCampProject",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_en": {
+      "type": "string"
+    },
+    "title_original": {
+      "type": "string"
+    },
+    "countries": {
+      "collection": "country"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "project_types": {
+      "collection": "project-type"
+    },
+    "logline": {
+      "type": "string"
+    },
+    "project_statuses": {
+      "collection": "project-status"
+    },
+    "completion_date": {
+      "type": "datetime"
+    },
+    "num_of_seasons": {
+      "type": "integer"
+    },
+    "num_of_episodes": {
+      "type": "integer"
+    },
+    "episode_duration": {
+      "type": "integer"
+    },
+    "broadcasters": {
+      "collection": "organisation"
+    },
+    "planned_premiere": {
+      "type": "datetime"
+    },
+    "country_focus": {
+      "model": "country"
+    },
+    "team_credentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "budget": {
+      "type": "integer"
+    },
+    "financed": {
+      "type": "integer"
+    },
+    "attached_partners": {
+      "collection": "organisation"
+    },
+    "looking_for": {
+      "type": "richtext"
+    },
+    "synopsis": {
+      "type": "richtext"
+    },
+    "directors_note": {
+      "type": "richtext"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_company": {
+      "model": "organisation"
+    },
+    "contact_address": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "email"
+    },
+    "contact_web": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "clip_url": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "tag_genres": {
+      "collection": "tag-genre"
+    }
+  }
+}

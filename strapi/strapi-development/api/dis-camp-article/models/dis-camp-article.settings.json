@@ -1,0 +1,108 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_articles",
+  "info": {
+    "name": "DisCampArticle"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "titlePrivate": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "lead_et": {
+      "type": "richtext"
+    },
+    "lead_en": {
+      "type": "richtext"
+    },
+    "lead_ru": {
+      "type": "richtext"
+    },
+    "contents_et": {
+      "type": "richtext"
+    },
+    "contents_en": {
+      "type": "richtext"
+    },
+    "contents_ru": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article-media"
+    },
+    "publish_from": {
+      "type": "datetime"
+    },
+    "publish_until": {
+      "type": "datetime"
+    },
+    "publish_et": {
+      "type": "boolean"
+    },
+    "publish_en": {
+      "type": "boolean"
+    },
+    "publish_ru": {
+      "type": "boolean"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    },
+    "article_types": {
+      "collection": "article-type"
+    },
+    "tag_premiere_types": {
+      "collection": "tag-premiere-type"
+    },
+    "programmes": {
+      "collection": "programme"
+    },
+    "tag_genres": {
+      "collection": "tag-genre"
+    },
+    "tag_keywords": {
+      "collection": "tag-keyword"
+    },
+    "web_authors": {
+      "collection": "web-author"
+    },
+    "discamp_people": {
+      "collection": "dis-camp-person"
+    },
+    "people": {
+      "collection": "person"
+    },
+    "organisations": {
+      "collection": "organisation"
+    }
+  }
+}

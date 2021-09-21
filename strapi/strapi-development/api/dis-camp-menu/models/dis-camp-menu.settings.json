@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_menus",
+  "info": {
+    "name": "DisCampMenu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "dis_camp_article": {
+      "model": "dis-camp-article"
+    },
+    "custom_url": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "sub_menu_item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.dis-camp-sub-menu-item"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_article_trio_item_dis_camps",
+  "info": {
+    "name": "TrioItemDisCamp",
+    "icon": "american-sign-language-interpreting"
+  },
+  "options": {},
+  "attributes": {
+    "discamp_article": {
+      "model": "dis-camp-article"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "richtext"
+    },
+    "custom_url": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

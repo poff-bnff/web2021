@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_article_dis_camps",
+  "info": {
+    "name": "HeroArticleDisCamp"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "article_et": {
+      "model": "dis-camp-article"
+    },
+    "article_en": {
+      "model": "dis-camp-article"
+    },
+    "article_ru": {
+      "model": "dis-camp-article"
+    }
+  }
+}

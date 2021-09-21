@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_groups",
+  "info": {
+    "name": "Industry_Group"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "description_en": {
+      "type": "richtext"
+    }
+  }
+}

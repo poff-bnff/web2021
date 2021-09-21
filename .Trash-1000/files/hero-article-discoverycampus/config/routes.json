@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-industry",
+      "handler": "hero-article-industry.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-industry",
+      "handler": "hero-article-industry.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-industry",
+      "handler": "hero-article-industry.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

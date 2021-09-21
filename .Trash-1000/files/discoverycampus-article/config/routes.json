@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/discoverycampus-articles",
+      "handler": "discoverycampus-article.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/discoverycampus-articles/count",
+      "handler": "discoverycampus-article.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/discoverycampus-articles/:id",
+      "handler": "discoverycampus-article.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/discoverycampus-articles",
+      "handler": "discoverycampus-article.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/discoverycampus-articles/:id",
+      "handler": "discoverycampus-article.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/discoverycampus-articles/:id",
+      "handler": "discoverycampus-article.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
