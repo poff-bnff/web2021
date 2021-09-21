@@ -1,4 +1,3 @@
-
 module.exports = ({ env }) => ({
   email: {
     provider: 'mcmandrill',

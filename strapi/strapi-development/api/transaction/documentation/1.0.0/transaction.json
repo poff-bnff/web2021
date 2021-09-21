@@ -609,9 +609,12 @@
               "last10Logins": {
                 "type": "component"
               },
+<<<<<<< HEAD
               "person_test_2": {
                 "type": "string"
               },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
               "account_created": {
                 "type": "string"
               },
@@ -636,7 +639,11 @@
                   "type": "string"
                 }
               },
+<<<<<<< HEAD
               "users_person": {
+=======
+              "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "type": "string"
               },
               "created_by": {
@@ -674,6 +681,171 @@
                 }
               }
             }
+<<<<<<< HEAD
+=======
+          },
+          "beneficiary": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "profileFilled": {
+                "type": "boolean"
+              },
+              "externalProviders": {
+                "type": "component"
+              },
+              "last10Logins": {
+                "type": "component"
+              },
+              "account_created": {
+                "type": "string"
+              },
+              "importedToStrapi": {
+                "type": "component"
+              },
+              "my_films": {
+                "type": "component"
+              },
+              "my_screenings": {
+                "type": "component"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "transactions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user_profile": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "transactor": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "profileFilled": {
+                "type": "boolean"
+              },
+              "externalProviders": {
+                "type": "component"
+              },
+              "last10Logins": {
+                "type": "component"
+              },
+              "account_created": {
+                "type": "string"
+              },
+              "importedToStrapi": {
+                "type": "component"
+              },
+              "my_films": {
+                "type": "component"
+              },
+              "my_screenings": {
+                "type": "component"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "transactions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user_profile": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           }
         }
       },
@@ -729,6 +901,15 @@
               "type": "string"
             }
           },
+<<<<<<< HEAD
+=======
+          "beneficiary": {
+            "type": "string"
+          },
+          "transactor": {
+            "type": "string"
+          },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "created_by": {
             "type": "string"
           },

@@ -735,6 +735,15 @@
                         "pageUrl": {
                           "type": "string"
                         },
+<<<<<<< HEAD
+=======
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                         "created_by": {
                           "type": "string"
                         },
@@ -821,7 +830,12 @@
                             "Unicversity",
                             "Sponsor",
                             "Partner",
+<<<<<<< HEAD
                             "Presenter"
+=======
+                            "Presenter",
+                            "ProductionCompany"
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                           ]
                         },
                         "logoWhite": {
@@ -836,6 +850,15 @@
                         "homepageUrl": {
                           "type": "string"
                         },
+<<<<<<< HEAD
+=======
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                         "created_by": {
                           "type": "string"
                         },
@@ -912,7 +935,12 @@
                         "Unicversity",
                         "Sponsor",
                         "Partner",
+<<<<<<< HEAD
                         "Presenter"
+=======
+                        "Presenter",
+                        "ProductionCompany"
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                       ]
                     },
                     "logoWhite": {
@@ -927,6 +955,15 @@
                     "homepageUrl": {
                       "type": "string"
                     },
+<<<<<<< HEAD
+=======
+                    "awardings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                     "created_by": {
                       "type": "string"
                     },
@@ -1412,6 +1449,15 @@
                         "pageUrl": {
                           "type": "string"
                         },
+<<<<<<< HEAD
+=======
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                         "created_by": {
                           "type": "string"
                         },
@@ -1498,7 +1544,12 @@
                             "Unicversity",
                             "Sponsor",
                             "Partner",
+<<<<<<< HEAD
                             "Presenter"
+=======
+                            "Presenter",
+                            "ProductionCompany"
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                           ]
                         },
                         "logoWhite": {
@@ -1513,6 +1564,15 @@
                         "homepageUrl": {
                           "type": "string"
                         },
+<<<<<<< HEAD
+=======
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                         "created_by": {
                           "type": "string"
                         },
@@ -1589,7 +1649,12 @@
                         "Unicversity",
                         "Sponsor",
                         "Partner",
+<<<<<<< HEAD
                         "Presenter"
+=======
+                        "Presenter",
+                        "ProductionCompany"
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                       ]
                     },
                     "logoWhite": {
@@ -1604,6 +1669,15 @@
                     "homepageUrl": {
                       "type": "string"
                     },
+<<<<<<< HEAD
+=======
+                    "awardings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                     "created_by": {
                       "type": "string"
                     },

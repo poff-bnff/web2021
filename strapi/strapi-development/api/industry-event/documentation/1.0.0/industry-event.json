@@ -945,6 +945,27 @@
                     "type": "string"
                   }
                 },
+<<<<<<< HEAD
+=======
+                "completionYear": {
+                  "type": "integer"
+                },
+                "imbdLink": {
+                  "type": "string"
+                },
+                "editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "created_by": {
                   "type": "string"
                 },

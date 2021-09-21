@@ -44,7 +44,8 @@
         "Unicversity",
         "Sponsor",
         "Partner",
-        "Presenter"
+        "Presenter",
+        "ProductionCompany"
       ]
     },
     "logoWhite": {
@@ -79,6 +80,10 @@
     },
     "homepageUrl": {
       "type": "string"
+    },
+    "awardings": {
+      "collection": "awarding",
+      "via": "organisation"
     }
   }
 }

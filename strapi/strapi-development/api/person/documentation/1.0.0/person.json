@@ -696,7 +696,12 @@
                     "Unicversity",
                     "Sponsor",
                     "Partner",
+<<<<<<< HEAD
                     "Presenter"
+=======
+                    "Presenter",
+                    "ProductionCompany"
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                   ]
                 },
                 "logoWhite": {
@@ -711,6 +716,15 @@
                 "homepageUrl": {
                   "type": "string"
                 },
+<<<<<<< HEAD
+=======
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "created_by": {
                   "type": "string"
                 },
@@ -771,6 +785,76 @@
           },
           "pageUrl": {
             "type": "string"
+<<<<<<< HEAD
+=======
+          },
+          "awardings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "project": {
+                  "type": "string"
+                },
+                "film": {
+                  "type": "string"
+                },
+                "person": {
+                  "type": "string"
+                },
+                "organisation": {
+                  "type": "string"
+                },
+                "festival_edition": {
+                  "type": "string"
+                },
+                "titlePrivate": {
+                  "type": "string"
+                },
+                "title_et": {
+                  "type": "string"
+                },
+                "title_en": {
+                  "type": "string"
+                },
+                "title_ru": {
+                  "type": "string"
+                },
+                "description_et": {
+                  "type": "string"
+                },
+                "description_en": {
+                  "type": "string"
+                },
+                "description_ru": {
+                  "type": "string"
+                },
+                "slug_et": {
+                  "type": "uid"
+                },
+                "slug_en": {
+                  "type": "uid"
+                },
+                "slug_ru": {
+                  "type": "uid"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           }
         }
       },
@@ -859,6 +943,15 @@
           "pageUrl": {
             "type": "string"
           },
+<<<<<<< HEAD
+=======
+          "awardings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "created_by": {
             "type": "string"
           },

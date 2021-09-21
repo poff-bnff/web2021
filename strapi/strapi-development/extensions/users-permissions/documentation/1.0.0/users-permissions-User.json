@@ -1446,6 +1446,7 @@
             },
             "maxItems": 10
           },
+<<<<<<< HEAD
           "person_test_2": {
             "required": [
               "id",
@@ -1493,6 +1494,8 @@
               }
             }
           },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "account_created": {
             "type": "string",
             "format": "date-time"
@@ -1716,9 +1719,12 @@
                 "product_category": {
                   "type": "string"
                 },
+<<<<<<< HEAD
                 "owner": {
                   "type": "string"
                 },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "code": {
                   "type": "string"
                 },
@@ -1740,15 +1746,30 @@
                 "reservation_price": {
                   "type": "number"
                 },
+<<<<<<< HEAD
                 "sold_to": {
                   "type": "string"
                 },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "transactions": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
+<<<<<<< HEAD
+=======
+                "product_type": {
+                  "type": "string",
+                  "enum": [
+                    "pass"
+                  ]
+                },
+                "owner": {
+                  "type": "string"
+                },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "created_by": {
                   "type": "string"
                 },
@@ -1790,6 +1811,15 @@
                     "type": "string"
                   }
                 },
+<<<<<<< HEAD
+=======
+                "beneficiary": {
+                  "type": "string"
+                },
+                "transactor": {
+                  "type": "string"
+                },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "created_by": {
                   "type": "string"
                 },
@@ -1799,7 +1829,11 @@
               }
             }
           },
+<<<<<<< HEAD
           "users_person": {
+=======
+          "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
             "required": [
               "id",
               "email"
@@ -1808,9 +1842,12 @@
               "id": {
                 "type": "string"
               },
+<<<<<<< HEAD
               "users_permissions_user": {
                 "type": "string"
               },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
               "firstName": {
                 "type": "string"
               },
@@ -1835,6 +1872,12 @@
               "phoneNr": {
                 "type": "string"
               },
+<<<<<<< HEAD
+=======
+              "user": {
+                "type": "string"
+              },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
               "created_by": {
                 "type": "string"
               },
@@ -1945,9 +1988,12 @@
             },
             "maxItems": 10
           },
+<<<<<<< HEAD
           "person_test_2": {
             "type": "string"
           },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "account_created": {
             "type": "string",
             "format": "date-time"
@@ -2170,7 +2216,11 @@
               "type": "string"
             }
           },
+<<<<<<< HEAD
           "users_person": {
+=======
+          "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
             "type": "string"
           },
           "created_by": {

@@ -36,6 +36,7 @@ node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_frontpagecourse_block_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_six_film_block_from_yaml.js "$TARGET"
+node "$FETCH_PATH"/fetch_channels_from_yaml.js
 
 # Logi konsooli kõik ehitatavad pathid:
 node "$FETCH_PATH"/add_config_path_aliases.js display

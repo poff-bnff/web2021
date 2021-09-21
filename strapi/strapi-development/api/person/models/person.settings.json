@@ -66,6 +66,10 @@
     },
     "pageUrl": {
       "type": "string"
+    },
+    "awardings": {
+      "via": "person",
+      "collection": "awarding"
     }
   }
 }

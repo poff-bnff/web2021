@@ -96,7 +96,9 @@ main.grid_film(id=self.id)
 
 
             section.f_synopsis_box
-
+                -
+                    var festivalEditions = []
+                    var festivalEditionsIds = []
                 //- Kassetti festivali info
                 .str_info_meta_gi
                     .str_info_meta_item
@@ -111,8 +113,7 @@ main.grid_film(id=self.id)
                                     }
                                         return itemNames
                                     }
-                                    var festivalEditions = []
-                                    var festivalEditionsIds = []
+
                                 each programme in film.tags.programmes
                                     if programme.festival_editions && programme.festival_editions.length
                                         each festivalEdition in programme.festival_editions

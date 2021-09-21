@@ -51,7 +51,16 @@ function BuyProduct(categoryId) {
             }
             return Promise.reject(response);
         }).then(function (data) {
-            // console.log(data);
+            var errorMapping = {
+                unauthorized: 'Tekkis viga! Õigused puuduvad',
+                noCategoryId: 'Tekkis viga! Kategooria ID puudub',
+                noPaymentMethodId: 'Tekkis viga! Maksemeetodi ID puudub',
+                noItems: 'Hetkel ei ole võimalik seda tüüpi passi osta',
+                reservationSaveFailed: 'Tekkis viga! Reserveeringu ebaõnnestumine',
+                noPaymentMethod: 'Tekkis viga! Maksemeetod puudub',
+            }
+
+            if (data.code && data.case) { feedback.innerHTML = errorMapping[data.case] }
             window.open(data.url, '_self')
 
 

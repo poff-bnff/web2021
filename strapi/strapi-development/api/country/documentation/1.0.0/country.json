@@ -534,7 +534,11 @@
           },
           "code": {
             "type": "string",
+<<<<<<< HEAD
             "maxLength": 3,
+=======
+            "maxLength": 4,
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
             "minLength": 2
           }
         }
@@ -555,7 +559,11 @@
           },
           "code": {
             "type": "string",
+<<<<<<< HEAD
             "maxLength": 3,
+=======
+            "maxLength": 4,
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
             "minLength": 2
           },
           "created_by": {

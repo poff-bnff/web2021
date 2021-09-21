@@ -510,6 +510,7 @@
           }
         ]
       }
+<<<<<<< HEAD
     },
     "/products/getAll": {
       "get": {
@@ -567,6 +568,8 @@
         ],
         "parameters": []
       }
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
     }
   },
   "components": {
@@ -634,6 +637,7 @@
               }
             }
           },
+<<<<<<< HEAD
           "owner": {
             "required": [
               "id"
@@ -701,6 +705,8 @@
               }
             }
           },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "code": {
             "type": "string"
           },
@@ -780,9 +786,12 @@
               "last10Logins": {
                 "type": "component"
               },
+<<<<<<< HEAD
               "person_test_2": {
                 "type": "string"
               },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
               "account_created": {
                 "type": "string"
               },
@@ -807,7 +816,11 @@
                   "type": "string"
                 }
               },
+<<<<<<< HEAD
               "users_person": {
+=======
+              "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "type": "string"
               },
               "created_by": {
@@ -825,7 +838,45 @@
           "reservation_price": {
             "type": "number"
           },
+<<<<<<< HEAD
           "sold_to": {
+=======
+          "transactions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product": {
+                  "type": "string"
+                },
+                "transaction": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "product_type": {
+            "type": "string",
+            "enum": [
+              "pass"
+            ]
+          },
+          "owner": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
             "required": [
               "id",
               "username",
@@ -871,9 +922,12 @@
               "last10Logins": {
                 "type": "component"
               },
+<<<<<<< HEAD
               "person_test_2": {
                 "type": "string"
               },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
               "account_created": {
                 "type": "string"
               },
@@ -898,7 +952,11 @@
                   "type": "string"
                 }
               },
+<<<<<<< HEAD
               "users_person": {
+=======
+              "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "type": "string"
               },
               "created_by": {
@@ -908,6 +966,7 @@
                 "type": "string"
               }
             }
+<<<<<<< HEAD
           },
           "transactions": {
             "type": "array",
@@ -936,6 +995,8 @@
                 }
               }
             }
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           }
         }
       },
@@ -944,9 +1005,12 @@
           "product_category": {
             "type": "string"
           },
+<<<<<<< HEAD
           "owner": {
             "type": "string"
           },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "code": {
             "type": "string"
           },
@@ -990,15 +1054,30 @@
           "reservation_price": {
             "type": "number"
           },
+<<<<<<< HEAD
           "sold_to": {
             "type": "string"
           },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "transactions": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
+<<<<<<< HEAD
+=======
+          "product_type": {
+            "type": "string",
+            "enum": [
+              "pass"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
           "created_by": {
             "type": "string"
           },

@@ -217,7 +217,7 @@ const getProfile = async (provider, query, callback) => {
             callback(err);
           } else {
             callback(null, {
-              username: body.name,
+              username: body.email,
               email: body.email,
               externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: body.id, dateConnected: new Date().toISOString() }]
             });
@@ -609,7 +609,7 @@ const logAuthDateTime = async (id, last10Logins, provider, lang) => {
 const notifyAboutMerge = async (user, addedProvider) => {
   let enabledProviders = (user.externalProviders.map(provider => {
     const date = new Intl.DateTimeFormat('et-EE', { dateStyle: 'full', timeStyle: 'long' }).format(new Date(provider.dateConnected))
-    return `(${provider.provider} ${date})<br>`
+    return `(${provider.provider} ${date})<br/>`
   })
   )
   enabledProviders = enabledProviders.join(' ')

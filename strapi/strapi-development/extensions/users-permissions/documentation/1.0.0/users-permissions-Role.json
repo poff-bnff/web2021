@@ -570,9 +570,12 @@
                 "last10Logins": {
                   "type": "component"
                 },
+<<<<<<< HEAD
                 "person_test_2": {
                   "type": "string"
                 },
+=======
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                 "account_created": {
                   "type": "string"
                 },
@@ -597,7 +600,11 @@
                     "type": "string"
                   }
                 },
+<<<<<<< HEAD
                 "users_person": {
+=======
+                "user_profile": {
+>>>>>>> 3f8a486d05f251f09febda4c3a72d37d632e25e3
                   "type": "string"
                 },
                 "created_by": {
