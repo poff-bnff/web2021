@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-const strapiHost = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}`
+const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}`
 // const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';
