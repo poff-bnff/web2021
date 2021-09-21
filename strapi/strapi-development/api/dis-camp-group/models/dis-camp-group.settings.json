@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_groups",
+  "info": {
+    "name": "DisCampGroup"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "description_en": {
+      "type": "richtext"
+    }
+  }
+}

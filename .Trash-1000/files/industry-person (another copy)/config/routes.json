@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/industry-people",
+      "handler": "industry-person.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/industry-people/count",
+      "handler": "industry-person.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/industry-people/:id",
+      "handler": "industry-person.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/industry-people",
+      "handler": "industry-person.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/industry-people/:id",
+      "handler": "industry-person.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/industry-people/:id",
+      "handler": "industry-person.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

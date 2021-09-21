@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/industry-person-types",
+      "handler": "industry-person-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/industry-person-types/count",
+      "handler": "industry-person-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/industry-person-types/:id",
+      "handler": "industry-person-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/industry-person-types",
+      "handler": "industry-person-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/industry-person-types/:id",
+      "handler": "industry-person-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/industry-person-types/:id",
+      "handler": "industry-person-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

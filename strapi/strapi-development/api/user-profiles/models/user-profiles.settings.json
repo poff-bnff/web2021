@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_profiles",
+  "info": {
+    "name": "UserProfiles"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phoneNr": {
+      "type": "string"
+    }
+  }
+}

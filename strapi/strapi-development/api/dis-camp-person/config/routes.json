@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dis-camp-people",
+      "handler": "dis-camp-person.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-people/count",
+      "handler": "dis-camp-person.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-people/:id",
+      "handler": "dis-camp-person.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dis-camp-people",
+      "handler": "dis-camp-person.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dis-camp-people/:id",
+      "handler": "dis-camp-person.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dis-camp-people/:id",
+      "handler": "dis-camp-person.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
