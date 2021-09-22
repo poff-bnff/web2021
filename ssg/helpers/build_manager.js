@@ -12,19 +12,9 @@ const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
 let TOKEN = null
 
-const production = true
-let https
-let strapiAddress
-let strapiPort
-
-if (production) {
-    https = require('https')
-    strapiAddress = process.env['StrapiHostPoff2021']
-} else {
-    https = require('http')
-    strapiAddress = 'localhost'
-    strapiPort = '1337'
-}
+let https = require(process.env['StrapiProtocol'])
+let strapiAddress = process.env['StrapiHost']
+let strapiPort = process.env['StrapiPort']
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
@@ -374,7 +364,7 @@ async function logQuery(id, type = 'GET', data) {
             }
         };
 
-        if (!production){
+        if (process.env['StrapiProtocol'] !== 'https'){
             options.port = strapiPort
         }
 

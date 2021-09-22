@@ -182,8 +182,6 @@ strapi/strapi-development/license.txt
 strapi/strapi-development/exports
 strapi/strapi-development/.cache
 strapi/strapi-development/build
-strapi/strapi-development/config/database.js
-strapi/strapi-development/config/server.js
 
 # extensions
 strapi/strapi-development/.vscode

@@ -10,7 +10,7 @@ async function fetchMyPasses() {
     let profilePicture
     if (userProfile.user_profile && userProfile.user_profile.picture) {
         userPerson = userProfile.user_profile
-        profilePicture = `https://admin.poff.ee${userPerson.picture.url}`
+        profilePicture = `${strapiDomain}${userPerson.picture.url}`
     } else {
         return
     }
