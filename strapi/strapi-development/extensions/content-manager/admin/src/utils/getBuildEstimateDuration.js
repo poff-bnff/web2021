@@ -1,4 +1,4 @@
-const strapiHost = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}`
+const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}`
 
 const getBuildEstimateDuration = async (buildArgs) => {
 
