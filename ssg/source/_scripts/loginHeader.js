@@ -12,34 +12,26 @@ document.addEventListener('userProfileLoaded', function (e) {
     // console.log('User profile is loaded')
 })
 
-try {
-    const productElement = document.querySelector(`[shopSection]`);
-    if (productElement) {
-        console.log('productElement', productElement);
-        availability()
-    }
-} catch (error) { }
-
 
 function buyerCheck() {
 
-    if (!validToken) {
+    if(!validToken) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
-    } else {
+    }else{
         document.getElementById('directToLoginButton').style.display = 'none'
 
-        if (userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture) {
+        if(userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture){
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")
-        } else {
-            if (!userProfile.profileFilled) {
+        }else {
+            if(!userProfile.profileFilled){
                 //profiil täitmata
                 document.getElementById('directToFillProfile').style.display = 'block'
                 // console.log("pooliku profiiliga kasutaja on poes")
-            } else {
+            }else{
                 //profiil täidetud, aga pilt puudu
                 document.getElementById('directToaddPicture').style.display = 'block'
                 // console.log("pildita kasutaja on poes")
@@ -50,12 +42,12 @@ function buyerCheck() {
 }
 
 
-if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
+if(localStorage.getItem('BNFF_U_ACCESS_TOKEN')){
     var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
-    try {
+    try{
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         // var parsedToken = JSON.parse(jsonPayload)
@@ -66,13 +58,13 @@ if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
         // console.log("token aegub: " + expDate)
         // console.log("praegu on: " + now)
 
-        if (now < expDate) {
+        if(now < expDate){
             validToken = true
-        } else {
+        }else{
             validToken = false
         }
     }
-    catch (err) {
+    catch(err){
         //console.log(err)
         validToken = false
     }
@@ -162,51 +154,51 @@ function loadEmptyUserProfile() {
 
 
 
-function saveUrl() {
+function saveUrl(){
     localStorage.setItem('preLoginUrl', window.location.href)
 }
 
 
 
 
-function useUserData(userProf) {
+function useUserData(userProf){
     console.log('Trying userprofile 1', userProfileHasBeenLoaded);
 
-    if (userProf.user_profile && userProf.user_profile.firstName) {
-        try {
+    if(userProf.user_profile && userProf.user_profile.firstName){
+        try{
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
-        } catch (err) {
+        }catch(err){
             null
         }
-    } else {
-        try {
+    }else{
+        try{
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
-        } catch (err) {
+        }catch(err){
             null
         }
     }
-    try {
+    try{
         buyerCheck()
-    } catch (err) {
+    }catch(err){
         null
     }
-    try {
+    try{
         loadMyFavFilms()
-    } catch (err) {
+    }catch(err){
         // console.log(err)
         null
     }
-    try {
+    try{
         userProfileHasBeenLoaded = true
         console.log('Trying userprofile 2', userProfileHasBeenLoaded);
 
         pageLoadingAndUserProfileFetched()
-    } catch (err) {
+    }catch(err){
         null
     }
-    try {
+    try{
         fetchMyPasses()
-    } catch (err) {
+    }catch(err){
         null
     }
 }
@@ -215,7 +207,7 @@ function logOut() {
     localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
-    if (localStorage.getItem('REFRESH_TOKEN')) {
+    if (localStorage.getItem('REFRESH_TOKEN')){
         localStorage.removeItem('REFRESH_TOKEN')
     }
     localStorage.removeItem('preLoginUrl')
