@@ -6,7 +6,7 @@ block content
     if self.data.shops
         each shop in self.data.shops
 
-            section.shop
+            section.shop(shopSection=true)
 
                 //- Poe title
                 if shop.title
@@ -31,7 +31,7 @@ block content
                                     if orderedProductCategory.product_category
                                         - var product = orderedProductCategory.product_category
 
-                                        a(href= `/${lang_path}${product.path}`).shop_item
+                                        a(href= `/${lang_path}${product.path}` productId=product.id style='opacity: 0.5;').shop_item
                                             .shop_item_head
                                                 if product.images
                                                     if product.images.image
@@ -60,8 +60,8 @@ block content
                                                 //- h4= product.priceAtPeriod[0].price
 
                                                 if product.priceAtPeriod && product.priceAtPeriod[0] && product.priceAtPeriod[0].price
-                                                h4
-                                                    +euro(product.priceAtPeriod[0].price)
+                                                    h4(productIdPriceField=product.id) Pole hetkel saadaval
+                                                        //- +euro(product.priceAtPeriod[0].price)
 
 
 
@@ -69,7 +69,6 @@ block content
                         if typeof shop.shopRules === 'string'
                             p
                                 +format(shop.shopRules)
-
 
 
     //- e pood, pealkiri, intro text, toodete leotelu osa, millel samuti pealkiri ja siis listitud tooted, - seos Product_Category’dega
