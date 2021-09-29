@@ -529,13 +529,23 @@ module.exports = {
     }
 
     let thisProductId = getOneProduct.id
-    let thisProductPrice = getOneProduct?.product_category?.priceAtPeriod[0]?.price
+
+    let productPrices = getOneProduct.product_category.priceAtPeriod.filter(p => {
+      if (p.startDateTime && p.endDateTime && new Date(p.startDateTime) < dateTimeNow && new Date(p.endDateTime) > dateTimeNow) {
+        return true
+      } else {
+        return false
+      }
+    })
+    let thisProductCurrentPrice = productPrices[0].price
+
     console.log('id', thisProductId, typeof thisProductId)
-    console.log('price', thisProductPrice)
+    console.log('price', thisProductCurrentPrice, 'valid: ', productPrices[0].startDateTime, ' - ', productPrices[0].endDateTime)
 
 
     const reserveParams = {
       reserved_to: userId,
+      reservation_price: thisProductCurrentPrice,
       reservation_time: (new Date()).toISOString()
     }
 
@@ -554,7 +564,7 @@ module.exports = {
         locale: body.locale || 'et'
       },
       transaction: {
-        amount: thisProductPrice,
+        amount: thisProductCurrentPrice,
         currency: 'EUR',
         merchant_data: JSON.stringify({
           userId: userId,
@@ -631,6 +641,7 @@ module.exports = {
 
       const updateProductOptions = {
         reservation_time: null,
+        reservation_price: null,
         reserved_to: null
       }
 
@@ -642,7 +653,7 @@ module.exports = {
       }
 
       if (updateProduct) {
-        console.log('Updated product to set reservation and reservation time info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
+        console.log('Updated product to set reservation and reservation time/price info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
       } else {
         console.log('Product already no allocated to this user, did not set reservation and reservation time info to null.');
       }
