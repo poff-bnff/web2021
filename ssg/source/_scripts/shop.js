@@ -132,7 +132,7 @@ function GetPaymentLinks() {
     }).catch(function (error) {
         try {
             const productPagePriceBox = document.getElementById('productPagePriceBox')
-            productPagePriceBox.innerHTML = `Ühenduse viga!`
+            productPagePriceBox.innerHTML = `Serveri ühenduse viga!`
             productPagePriceBox.style.display = ``
         } catch (error) { }
     });
@@ -165,6 +165,14 @@ function availability() {
                     const priceElement = document.querySelector(`[productIdPriceField="${p.id}"]`);
                     priceElement.innerHTML = `${p.price.toFixed(2)} €`
                 } catch (error) { }
+                let allPriceFields = document.querySelectorAll(`[productIdPriceField]`);
+                for (let i = 0; i < allPriceFields.length; i++) {
+                    const element = allPriceFields[i];
+                    if(element.innerHTML === '') {
+                        element.innerHTML = 'Pole hetkel saadaval'
+                    }
+                }
+
             })
             try {
                 const productPagePriceBox = document.getElementById('productPagePriceBox')
@@ -193,12 +201,12 @@ function availability() {
         const priceElement = document.querySelectorAll(`[productIdPriceField]`);
         for (let i = 0; i < priceElement.length; i++) {
             const element = priceElement[i];
-            element.innerHTML = `<font color=red>Ühenduse viga!</font>`
+            element.innerHTML = `<font color=red>Serveri ühenduse viga!</font>`
         }
 
         try {
             const productPagePriceBox = document.getElementById('productPagePriceBox')
-            productPagePriceBox.innerHTML = `Ühenduse viga!`
+            productPagePriceBox.innerHTML = `<font color="red">Serveri ühenduse viga!</font>`
             productPagePriceBox.style.display = ``
         } catch (error) { }
 
