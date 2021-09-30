@@ -529,7 +529,7 @@ module.exports = {
     }
 
     let thisProductId = getOneProduct.id
-
+    let dateTimeNow = new Date()
     let productPrices = getOneProduct.product_category.priceAtPeriod.filter(p => {
       if (p.startDateTime && p.endDateTime && new Date(p.startDateTime) < dateTimeNow && new Date(p.endDateTime) > dateTimeNow) {
         return true
