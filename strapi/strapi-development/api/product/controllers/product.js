@@ -27,14 +27,14 @@ module.exports = {
             return false
           }
         })
-        let productPriceNow = productPrices[0].price
+        let productPriceNow = productPrices[0]?.price
         return JSON.stringify({
           id: a.product_category.id,
-          price: productPriceNow
+          price: productPriceNow || null
         })
       })
       let uniqueProductCatIds = [...new Set(productCatIds)]
-      return uniqueProductCatIds.map(p => JSON.parse(p))
+      return uniqueProductCatIds.map(p => JSON.parse(p)).filter(p => p.price !== null)
     } else {
       return []
     }
