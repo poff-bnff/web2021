@@ -10,7 +10,7 @@
  */
 
 const chokidar = require('chokidar');
-const jsonfile = require('jsonfile')
+const fs = require('fs')
 const { exec, execSync, spawn } = require('child_process');
 const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
@@ -51,10 +51,9 @@ module.exports = () => {
   let fileData = { "files": [] }
   let file = '/srv/strapi/imgList.json'
 
-  jsonfile.readFile(file, function (err, obj) {
-    fileData.files = obj?.files
-    // console.log(fileData.files)
-  })
+  let readFile = fs.readFileSync(file)
+  let fileJsonData = JSON.parse(readFile)
+  fileData.files = fileJsonData?.files
 
   // Initialize watcher.
   const watcher = chokidar.watch('public/uploads', {
@@ -75,9 +74,8 @@ module.exports = () => {
       if (!fileData.files.includes(path)) {
 
         fileData.files.push(path)
-        jsonfile.writeFile(file, fileData, function (err) {
-          if (err) console.log(err)
-        })
+        let data = JSON.stringify(fileData)
+        fs.writeFileSync(file, data)
         console.log(`adding ${fileName} to zone`)
         writeToZone(fileName)
       }
@@ -91,9 +89,8 @@ module.exports = () => {
         log(`File ${path} has been removed`)
 
         fileData.files.splice(fileData.files.indexOf(path), 1)
-        jsonfile.writeFile(file, fileData, function (err) {
-          if (err) console.log(err)
-        })
+        let data = JSON.stringify(fileData)
+        fs.writeFileSync(file, data)
 
         console.log(`delete ${fileName} from zone `);
         deleteFromZone(fileName)
