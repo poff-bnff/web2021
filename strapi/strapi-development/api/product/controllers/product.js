@@ -31,8 +31,8 @@ module.exports = {
         return JSON.stringify({
           id: a.product_category.id,
           price: productPriceNow || null
-        }).filter(p => p.price !== null)
-      })
+        })
+      }).filter(p => p.price !== null)
       let uniqueProductCatIds = [...new Set(productCatIds)]
       return uniqueProductCatIds.map(p => JSON.parse(p))
     } else {
