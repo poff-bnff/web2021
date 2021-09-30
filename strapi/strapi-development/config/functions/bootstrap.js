@@ -112,7 +112,7 @@ module.exports = () => {
       });
     }
   } catch (err) {
-    console.error(err)
+    console.log(file, 'does not exist');
   }
 }
 
