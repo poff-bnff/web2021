@@ -26,7 +26,7 @@ then
 	exit 81
 fi
 echo "Replacing site: "$DOMAIN""
-rsync -ah /srv/www/build."$DOMAIN"/* /srv/www/"$DOMAIN"/  --delete-after
+rsync -ah --delete-after /srv/www/build."$DOMAIN"/* /srv/www/"$DOMAIN"/
 if [ $? != 0 ] #Live replace error
 then
 	exit 82
