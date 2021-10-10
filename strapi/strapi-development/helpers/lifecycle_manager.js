@@ -274,6 +274,10 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  // here to skip specific model builds
+  if (model_name === 'film' || model_name === 'cassette') {
+    return
+  }
   let build_error
   if (domains[0] === 'FULL_BUILD') {
     let error = 'FULL BUILD'
