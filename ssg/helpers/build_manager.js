@@ -68,7 +68,7 @@ function startBuild() {
     if (duplicatesLogIds?.length) {
         writeToOtherBuildLogs(duplicatesLogIds, { start_time: build_start_time, built_by: firstInQueue.log_id })
     }
-    writeToLogFile(`Build start`, firstInQueue)
+    writeToLogFile(`Build start log ${firstInQueue.log_id}`, firstInQueue)
     logQuery(firstInQueue.log_id, 'PUT', { start_time: build_start_time })
 
     // Run shell cript
@@ -110,9 +110,9 @@ function startBuild() {
             writeToOtherBuildLogs(duplicatesLogIds, build_end_data)
         }
 
-        console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
+        console.log('\n', `Removing build ${firstInQueue.log_id} from queue: `, buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
-        removeFirstInQueue()
+        removeFinishedBuildFromQueue()
 
         // If queue empty, rm queue file, else start building first one in queue
         if (!deleteQueueIfEmpty()) { startBuild() }
@@ -159,7 +159,7 @@ function deleteQueueIfEmpty() {
     }
 }
 
-function removeFirstInQueue() {
+function removeFinishedBuildFromQueue() {
     const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
     queueFile.shift()
     const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
