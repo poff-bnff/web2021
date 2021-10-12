@@ -527,7 +527,7 @@ main.grid_film(id=self.id)
 
 
                                         if screening.bookingUrl
-                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                                            a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
                                         //- if screening.ticketingUrl
                                         //-     a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
                                         a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
