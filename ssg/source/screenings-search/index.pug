@@ -227,20 +227,41 @@ block content
                                     //-                 .str_info_label.dark_semi= self.label.film.director
                                     //-                 .str_info_value.dark_1.thin_300= film.credentials.rolePersonsByRole.director.join(', ')
 
-                            //- Programmid
-                            //- .card_film_info
-                            //-     .str_info_grid_3
-                            //-         if cassette.films && cassette.films.length
-                            //-             - var filmsProgrammes = []
-                            //-             each film in cassette.films
-                            //-                 if film.tags && film.tags.programmes && film.tags.programmes.length
-                            //-                     each programme in film.tags.programmes
-                            //-                         if programme.name
-                            //-                             - filmsProgrammes.push(programme.name)
-                            //-             if filmsProgrammes.length
-                            //-                 - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                            //-                 .str_info_label.dark_semi= self.label.film.programme
-                            //-                 .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                            Programmid
+                            .card_film_info
+                                .str_info_grid_3
+                                    if cassette.films && cassette.films.length
+                                        - var filmsProgrammes = []
+                                        each film in cassette.films
+                                            if film.tags && film.tags.programmes && film.tags.programmes.length
+                                                each programme in film.tags.programmes
+                                                    if programme.name
+                                                        - filmsProgrammes.push(programme.name)
+                                        if filmsProgrammes.length
+                                            - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                            .str_info_label.dark_semi= self.label.film.programme
+                                            .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+
+                                        - var filmsDirectors = []
+                                        each film in cassette.films
+                                            if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                                each director in film.credentials.rolePersonsByRole.director
+                                                    - filmsDirectors.push(director)
+                                        if filmsDirectors.length
+                                            - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                            .str_info_label.dark_semi= self.label.film.director
+                                            #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                                        - var filmsCountries = []
+                                        each film in cassette.films
+                                            if film.orderedCountries && film.orderedCountries.length
+                                                each country in film.orderedCountries
+                                                    if country.country && country.country.name
+                                                        - filmsCountries.push(country.country.name)
+                                        if filmsCountries.length
+                                            - var uniqueCountries = [...new Set(filmsCountries)];
+                                            .str_info_label.dark_semi= self.label.film.countries
+                                            #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
 
                 script.
