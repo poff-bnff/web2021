@@ -29,7 +29,7 @@ if(param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee';
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
@@ -104,13 +104,10 @@ for (const lang of allLanguages) {
 
 function LangSelect(lang) {
     // Screeningu kuupäeva check
-    Date.prototype.addHours = function(hours) {
-        var date = new Date(this.valueOf());
-        date.setHours(date.getHours() + hours);
-        return date;
-    }
-    let dateTimeUTC = new Date().addHours(2)
-    let dateNow = parseInt(`${dateTimeUTC.getFullYear()}${("0" + (dateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + dateTimeUTC.getDate()).slice(-2)}`)
+    let localeTimeString = new Date().toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
+    let localeDateString = localeTimeString.split(' ')[0]
+
+    let dateNow = parseInt(`${localeDateString.split('.')[2]}${("0" + (localeDateString.split('.')[1])).slice(-2)}${("0" + localeDateString.split('.')[0]).slice(-2)}`)
 
     let festival_editions = []
     // For PÖFF, fetch only online 2021 FE ID 7
@@ -125,8 +122,11 @@ console.log(festival_editions);
 
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {
-            let scrnDateTimeUTC = new Date(scrn.dateTime).addHours(2)
-            let scrnDate = parseInt(`${scrnDateTimeUTC.getFullYear()}${("0" + (scrnDateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + scrnDateTimeUTC.getDate()).slice(-2)}`)
+            let scrnLocaleTimeString = new Date(scrn.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
+            let scrnLocaleDateSting = scrnLocaleTimeString.split(' ')[0]
+
+            let scrnDate = parseInt(`${scrnLocaleDateSting.split('.')[2]}${("0" + (scrnLocaleDateSting.split('.')[1])).slice(-2)}${("0" + scrnLocaleDateSting.split('.')[0]).slice(-2)}`)
+
             // Kui pole online screening e Strapis ID 16, siis tänasest vanemad screeningud välja
             // Online screeningud eemaldatakse screeningu lõppemisel Eventivali kaudu
             return scrn.location && scrn.location.id !== 16 ? dateNow <= scrnDate : true
@@ -234,18 +234,15 @@ function CreateYAML(screenings, lang) {
         let times = []
 
 
-        let dateTimeUTC = new Date(screenings.dateTime)
+        let srcnDateTimeString = new Date(screenings.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
 
-        Date.prototype.addHours = function(hours) {
-            var date = new Date(this.valueOf());
-            date.setHours(date.getHours() + hours);
-            return date;
-        }
-        let dateTime = dateTimeUTC.addHours(2); // , {timeZone: "EET"}
+        let dateString = srcnDateTimeString.split(' ')[0]
+        let timeString = srcnDateTimeString.split(' ')[1]
 
-        let date = dateTime.getFullYear() + '-' + ('0' + (dateTime.getMonth()+1)).slice(-2) + '-' + ('0' + dateTime.getDate()).slice(-2)
+        let date = `${dateString.split('.')[2]}-${("0" + (dateString.split('.')[1])).slice(-2)}-${("0" + dateString.split('.')[0]).slice(-2)}`
         let dateKey = `_${date}`
-        let time = ('0' + (dateTime.getHours())).slice(-2) + ':' + ('0' + dateTime.getMinutes()).slice(-2)
+
+        let time = `${timeString.split(':')[0]}:${timeString.split(':')[1]}`
         let timeKey = `_${time}`
 
         dates.push(dateKey)
