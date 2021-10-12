@@ -55,7 +55,7 @@ const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_scr
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
 if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first screening')
-    whichScreeningTypesToFetch.push('regular')
+    // whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
 }
 
