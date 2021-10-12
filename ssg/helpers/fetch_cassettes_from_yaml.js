@@ -40,7 +40,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'shorts.poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -417,7 +417,14 @@ for (const lang of allLanguages) {
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
                     if (onefilm.orderedCountries) {
-                        let orderedCountries = onefilm.orderedCountries
+                        let orderedCountries = onefilm.orderedCountries.filter(c => {
+                            if(c && c.country) {
+                                return true
+                            } else {
+                                console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
+                                return false
+                            }
+                        })
                             .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                         onefilm.orderedCountries = orderedCountries
                         if (orderedCountries.length) {
