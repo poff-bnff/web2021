@@ -170,7 +170,7 @@ function processData(data, lang, CreateYAML) {
                     data[screeningIx].cassette = JSON.parse(JSON.stringify(cassetteFromYAML[0]))
                 }
 
-                for (filmIx in screening.cassette.orderedFilms) {
+                for (filmIx in screening.cassette.orderedFilms.filter(f => f.film)) {
                     let oneFilm = screening.cassette.orderedFilms[filmIx].film
                     data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
                 }
