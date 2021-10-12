@@ -36,9 +36,16 @@ block content
                 each index, key in self.data.filters.genres
                     option(value=key)= index
 
+            select#editions_select(name='Editions')
+                option(value='')= self.label.filters.editions
+                each index, key in self.data.filters.editions
+                    option(value=key)= index
+
             button.clear(onclick='unselect_all()')= self.label.filters.empty
 
             h3#nonetoshow.sub_section_headline(style='display: none;')
+
+
 
         if self.data.industryprojects && self.data.industryprojects.length
 

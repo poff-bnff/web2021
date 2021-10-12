@@ -63,6 +63,9 @@ programmes_festival_editions:
     filmikool.poff.ee:
         - 0
 
+active_industry_editions:
+    - 12
+
 article:
     poff.ee: POFFiArticle
     justfilm.ee: JustFilmiArticle
