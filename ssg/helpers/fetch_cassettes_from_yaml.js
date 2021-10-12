@@ -209,7 +209,14 @@ const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, mi
 const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
 const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
     if (c.orderedFilms && c.orderedFilms.length > 1) {
-        c.orderedFilms.map(f => {
+        c.orderedFilms.filter(f => {
+            if (f.film) {
+                return true
+            } else {
+                console.log(`ERROR! Cassette ${c.id} has empty orderedFilms record!!!`);
+                return false
+            }
+        }).map(f => {
             if (!f.film.multi_and_single) {
                 FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.film.id)
             }
@@ -396,7 +403,7 @@ for (const lang of allLanguages) {
             rueten(s_cassette_copy, lang)
 
             // #379 put ordered films to cassette.film
-            let ordered_films = s_cassette_copy.orderedFilms
+            let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
 
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
