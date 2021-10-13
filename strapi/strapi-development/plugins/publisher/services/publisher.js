@@ -140,7 +140,7 @@ const fetchChangedSlug = async args => {
       slug = result.cassette.slug_et || result.cassette.slug_en || result.cassette.slug_ru
     }
 
-    return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug}`]
+    return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug ? slug : ''}`]
   } else {
     return [``]
   }
