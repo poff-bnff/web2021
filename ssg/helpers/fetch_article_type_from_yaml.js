@@ -103,7 +103,6 @@ for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} articles ${lang} data`)
 
     const dataFrom = {
-        screenings: `/film/screenings.${lang}.yaml`,
         articles: `/_fetchdir/articles.${lang}.yaml`,
     }
 
