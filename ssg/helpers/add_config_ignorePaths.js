@@ -21,7 +21,6 @@ function addConfigIgnorePaths() {
             '/eventival_persons_search', //industry
             '/events', //filmikool
             // '/favourite', //poff
-            // '/film', // 2020 tartuffi jäänuk
             // '/films', //all
             // '/home', //all
             '/industry_cal', //industry
@@ -42,7 +41,6 @@ function addConfigIgnorePaths() {
             // '/my_screenings', // poff
             // '/news', // article
             // '/programmes', // all except industry
-            // '/schedule', // all except industry
             // '/screenings', // all except industry
             // '/screenings-search', // all except industry
             // '/search', // all except industry
@@ -59,7 +57,6 @@ function addConfigIgnorePaths() {
             '/covid', //tartuff?
             '/eventival_persons_search', //industry
             '/favourite', //poff
-            // '/film/', // 2020 tartuffi jäänuk
             '/industry_cal', //industry
             '/industry_events', //industry
             '/industry_events_search', //industry
@@ -87,7 +84,6 @@ function addConfigIgnorePaths() {
             '/eventival_persons_search', //industry
             '/events', //filmikool
             '/favourite', //poff
-            // '/film', // 2020 tartuffi jäänuk
             '/industry_cal', //industry
             '/industry_events', //industry
             '/industry_events_search', //industry
@@ -109,12 +105,10 @@ function addConfigIgnorePaths() {
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
-            // '/film/', // 2020 tartuffi jäänuk
             '/films', // all except industry
             '/my_screenings', // poff
             '/screenings', // all except industry
             '/screenings-search', // all except industry
-            '/schedule', // all except industry
             '/programmes', // all except industry
             '/shop', // poff
             '/search', // all except industry
@@ -128,7 +122,6 @@ function addConfigIgnorePaths() {
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
-            // '/film/', // 2020 tartuffi jäänuk
             '/_socket_dashboard', //industry
             '/courses', //filmikool
             '/eventival_persons_search', //industry

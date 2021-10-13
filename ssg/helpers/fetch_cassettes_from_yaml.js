@@ -361,7 +361,6 @@ for (const lang of allLanguages) {
 
 
         if (typeof slugEn !== 'undefined') {
-
             if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
@@ -418,7 +417,7 @@ for (const lang of allLanguages) {
                 for (const onefilm of s_cassette_copy.films) {
                     if (onefilm.orderedCountries) {
                         let orderedCountries = onefilm.orderedCountries.filter(c => {
-                            if(c && c.country) {
+                            if (c && c.country) {
                                 return true
                             } else {
                                 console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
@@ -441,6 +440,10 @@ for (const lang of allLanguages) {
             let screenings = []
             for (screeningIx in STRAPIDATA_SCREENINGS) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
+
+                if (screening?.cassette?.id === 2223) {
+                    console.log(s_cassette.festival_editions);
+                }
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
                     let screeningNames = function (item) {
@@ -454,6 +457,7 @@ for (const lang of allLanguages) {
 
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
+
                     hasOneCorrectScreening = true
 
                     delete screening.cassette
