@@ -3,14 +3,14 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
 const images = require('./images.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const sourceDir =  path.join(__dirname, '..', 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
+const sourceDir = path.join(__dirname, '..', 'source')
+const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
@@ -25,11 +25,11 @@ const param_build_type = params[0]
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
-if(param_build_type === 'target') {
+if (param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
@@ -118,7 +118,7 @@ function LangSelect(lang) {
         festival_editions = [7]
     }
 
-console.log(festival_editions);
+    console.log(festival_editions);
 
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {
@@ -135,14 +135,14 @@ console.log(festival_editions);
         // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
         .filter(scrning => {
             // if (DOMAIN !== 'poff.ee') {
-                if (scrning.cassette && scrning.cassette.festival_editions) {
+            if (scrning.cassette && scrning.cassette.festival_editions) {
 
-                    cassette_fested_ids = scrning.cassette.festival_editions.map(ed => ed.id)
-                    return cassette_fested_ids.filter(cfestid => festival_editions.includes(cfestid))[0] !== undefined
+                cassette_fested_ids = scrning.cassette.festival_editions.map(ed => ed.id)
+                return cassette_fested_ids.filter(cfestid => festival_editions.includes(cfestid))[0] !== undefined
 
-                } else {
-                    return false
-                }
+            } else {
+                return false
+            }
             // } else {
             //     return true
             // }
@@ -165,21 +165,24 @@ function processData(data, lang, CreateYAML) {
             let screening = data[screeningIx]
 
             if (screening.cassette) {
-                let cassetteFromYAML = CASSETTES.filter( (a) => { return screening.cassette.id === a.id})
+                let cassetteFromYAML = CASSETTES.filter((a) => { return screening.cassette.id === a.id })
                 if (cassetteFromYAML.length) {
                     data[screeningIx].cassette = JSON.parse(JSON.stringify(cassetteFromYAML[0]))
                 }
 
-                for (filmIx in screening.cassette.orderedFilms.filter(f => f.film)) {
-                    let oneFilm = screening.cassette.orderedFilms[filmIx].film
-                    data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
+                if (screening.cassette.orderedFilms) {
+                    for (filmIx in screening.cassette.orderedFilms.filter(f => f.film)) {
+                        let oneFilm = screening.cassette.orderedFilms[filmIx].film
+                        data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
+                    }
+                } else {
+                    console.log(`ERROR! Screening ${screening.id} cassette ${screening.cassette.id} has missing orderedFilms!!!`);
                 }
 
                 images(screening)
                 delete data[screeningIx].cassette.orderedFilms
 
                 allData.push(data[screeningIx])
-
             } else {
                 screeningsMissingCassetteIDs.push(screening.id)
             }
@@ -294,7 +297,7 @@ function CreateYAML(screenings, lang) {
                         }
                     }
                 } catch (error) {
-                    console.log('bad creds on film', JSON.stringify({film: film, creds:film.credentials}, null, 4));
+                    console.log('bad creds on film', JSON.stringify({ film: film, creds: film.credentials }, null, 4));
                     throw new Error(error)
                 }
             }
@@ -322,9 +325,9 @@ function CreateYAML(screenings, lang) {
 
         let premieretypes = []
         for (const types of cassette.tags.premiere_types || []) {
-                const type_name = types
-                premieretypes.push(type_name)
-                filters.premieretypes[type_name] = type_name
+            const type_name = types
+            premieretypes.push(type_name)
+            filters.premieretypes[type_name] = type_name
         }
         return {
             id: screenings.id,
@@ -351,12 +354,12 @@ function CreateYAML(screenings, lang) {
             sortable.push([item, to_sort[item]]);
         }
 
-        sortable = sortable.sort(function(a, b) {
+        sortable = sortable.sort(function (a, b) {
             try {
                 const locale_sort = a[1].localeCompare(b[1], lang)
                 return locale_sort
             } catch (error) {
-                console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                 throw new Error(error)
             }
         });
@@ -364,7 +367,7 @@ function CreateYAML(screenings, lang) {
         var objSorted = {}
         for (let index = 0; index < sortable.length; index++) {
             const item = sortable[index];
-            objSorted[item[0]]=item[1]
+            objSorted[item[0]] = item[1]
         }
         return objSorted
     }
@@ -375,12 +378,12 @@ function CreateYAML(screenings, lang) {
             sortable.push([item, to_sort[item]]);
         }
 
-        sortable = sortable.sort(function(a, b) {
+        sortable = sortable.sort(function (a, b) {
             try {
                 const sort = (a[1] > b[1]) ? 1 : ((b[1] > a[1]) ? -1 : 0)
                 return sort
             } catch (error) {
-                console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                 throw new Error(error)
             }
         });
@@ -388,7 +391,7 @@ function CreateYAML(screenings, lang) {
         var objSorted = {}
         for (let index = 0; index < sortable.length; index++) {
             const item = sortable[index];
-            objSorted[item[0]]=item[1]
+            objSorted[item[0]] = item[1]
         }
         return objSorted
     }
