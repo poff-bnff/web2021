@@ -441,9 +441,6 @@ for (const lang of allLanguages) {
             for (screeningIx in STRAPIDATA_SCREENINGS) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
 
-                if (screening?.cassette?.id === 2223) {
-                    console.log(s_cassette.festival_editions);
-                }
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
                     let screeningNames = function (item) {
