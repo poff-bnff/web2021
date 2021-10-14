@@ -103,21 +103,19 @@ const HomePage = () => {
 
   return (
     <Container>
-
       <Header title={{ label: 'Live-i saatmine' }} content="Kopeerib build lehe live-i" />
+      <ButtonAndLog site="poff.ee" buttonText="PÖFF LIVE" />
+      <ButtonAndLog site="justfilm.ee" buttonText="JUSTFILM LIVE" />
+      <ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE" />
       <ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE" />
+      <ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE" />
+      <ButtonAndLog site="kinoff.poff.ee" buttonText="KINOFF LIVE" />
       <ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE" />
       <ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE" />
-      <ButtonAndLog site="poff.ee" buttonText="PÖFF LIVE" />
-      <ButtonAndLog site="industry.poff.ee" buttonText="INDUSTRY LIVE" />
-      <ButtonAndLog site="justfilm.ee" buttonText="JUSTFILM LIVE" />
-      <ButtonAndLog site="kinoff.poff.ee" buttonText="KINOFF LIVE" />
-      <ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE" />
-      <ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE" />
       <ButtonAndLog site="oyafond.ee" buttonText="BRUNO OJA FOND LIVE" />
+      <ButtonAndLog site="industry.poff.ee" buttonText="INDUSTRY LIVE" />
       <br />
       {killButton}
-
     </Container>
   );
 };
