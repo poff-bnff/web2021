@@ -1,6 +1,7 @@
 "use strict";
 const { execFile, exec, spawn } = require("child_process");
 const fs = require("fs");
+const yaml = require('js-yaml')
 const { StringDecoder } = require("string_decoder");
 const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
@@ -158,6 +159,72 @@ async function doFullBuild(userInfo) {
   }
 }
 
+async function doKillSwitch(userInfo) {
+  const queuePath = `../../ssg/helpers/build_queue.yaml`
+  const logPath = `../../ssg/helpers/build_logs.yaml`
+  const killerScript = `../../ssg/kill_switch.sh`
+  console.log('DOKILLLLLLL');
+  if (userInfo) {
+    // if (fs.existsSync(queuePath)) {
+    //   if (fs.existsSync(logPath)) {
+        const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
+        const lastBuildPID = logFile[logFile.length - 1].PID
+        const userName = `${userInfo.firstname} ${userInfo.lastname}`
+
+        console.log(lastBuildPID, userName)
+
+        let args = [lastBuildPID, userName]
+        const child = spawn('node', [killerScript, args])
+
+        let info = ''
+        let logData
+
+        child.stdout.on("data", async (data) => {
+          console.log(`info: ${info}`)
+          info += 'info: ' + decoder.write(data)
+          logData = { "build_errors": info, "end_time": moment().tz("Europe/Tallinn").format() }
+          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // console.log(result)
+        });
+
+        child.stderr.on("data", async (data) => {
+          console.log(`error: ${data}`)
+          let error = 'error' + decoder.write(data)
+          logData = { "build_errors": error, "end_time": moment().tz("Europe/Tallinn").format() }
+          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // console.log("stderr result:", result)
+        });
+
+        child.on("close", async (code) => {
+          console.log(`child process exited with code ${code}`);
+
+          switch (code) {
+            case 0:
+              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
+              break;
+            case 1:
+              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "ERROR" }
+              break;
+            default:
+              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
+          }
+          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
+          // console.log("close result:", result)
+        });
+        console.log(logData);
+
+      } else {
+        return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
+      }
+  //   } else {
+  //     return { type: 'warning', message: 'Järjekord on juba tühi' }
+  //   }
+  // } else {
+  //   return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  // }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -175,7 +242,7 @@ module.exports = {
     } else {
       // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-        
+
         await doBuild(site, userInfo)
         ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
@@ -191,8 +258,18 @@ module.exports = {
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    ctx.send({ message: "full build started" })
     await doFullBuild(userInfo)
+
+  },
+  killSwitch: async (ctx) => {
+    // console.log('ctx', ctx)
+    console.log("Killing all!")
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+
+    const killResult = await doKillSwitch(userInfo)
+    ctx.send(killResult)
 
   },
   logs: async (ctx) => {
@@ -307,7 +384,7 @@ module.exports = {
   },
   lastBuildLogBySite: async (ctx) => {
 
-    const params = { 
+    const params = {
       site: ctx.params.site,
       _sort: 'id:desc',
       type: 'build'
