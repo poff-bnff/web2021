@@ -115,8 +115,7 @@ const HomePage = () => {
       <ButtonAndLog site="shorts.poff.ee" buttonText="SHORTS LIVE" />
       <ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE" />
       <ButtonAndLog site="oyafond.ee" buttonText="BRUNO OJA FOND LIVE" />
-      <br />
-      {killButton}
+
 
     </Container>
   );
