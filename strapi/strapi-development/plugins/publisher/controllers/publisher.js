@@ -226,7 +226,7 @@ module.exports = {
    * @return {Object}
    */
   publish: async (ctx) => {
-    data = ctx.request.body;
+    const data = ctx.request.body;
     // console.log(ctx)
     const userInfo = JSON.parse(data.userInfo);
     const site = data.site;
