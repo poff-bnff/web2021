@@ -91,18 +91,19 @@ const killSwitch = async () => {
 }
 
 // If super admin - give access to kill switch to kill ongoing builds
-let button
+let killButton
 const superAdminRoleId = 1
 if (userInfo && JSON.parse(userInfo).roles.map(r => r.id).includes(superAdminRoleId)) {
-  button = <Button color="primary" onClick={() => killSwitch()}>KILL SWITCH!</Button>
+  killButton = <Button color="primary" onClick={() => killSwitch()}>KILL SWITCH!</Button>
 } else {
-  button = ''
+  killButton = ''
 }
 
 const HomePage = () => {
 
   return (
     <Container>
+
       <Header title={{ label: 'Live-i saatmine' }} content="Kopeerib build lehe live-i" />
       <ButtonAndLog site="hoff.ee" buttonText="HÕFF LIVE" />
       <ButtonAndLog site="kumu.poff.ee" buttonText="KUMU LIVE" />
@@ -115,9 +116,7 @@ const HomePage = () => {
       <ButtonAndLog site="tartuff.ee" buttonText="TARTUFF LIVE" />
       <ButtonAndLog site="oyafond.ee" buttonText="BRUNO OJA FOND LIVE" />
       <br />
-      <br />
-      <br />
-      {button}
+      {killButton}
 
     </Container>
   );

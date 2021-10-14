@@ -163,65 +163,59 @@ async function doKillSwitch(userInfo) {
   const queuePath = `../../ssg/helpers/build_queue.yaml`
   const logPath = `../../ssg/helpers/build_logs.yaml`
   const killerScript = `../../ssg/kill_switch.sh`
-  console.log('DOKILLLLLLL');
+  console.log('KILL SWITCH ACTIVATED!');
   if (userInfo) {
-    // if (fs.existsSync(queuePath)) {
-    //   if (fs.existsSync(logPath)) {
+    if (fs.existsSync(queuePath)) {
+      if (fs.existsSync(logPath)) {
         const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
-        const lastBuildPID = logFile[logFile.length - 1].PID
+        const lastBuild = logFile[logFile.length - 1]
+        const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
         const userName = `${userInfo.firstname} ${userInfo.lastname}`
 
-        console.log(lastBuildPID, userName)
+        console.log(`Killer: ${userName}. ${lastBuildPID ? `Running PID to also be killed: ${lastBuildPID}}` : 'No running build to kill.'}`)
 
-        let args = [lastBuildPID, userName]
-        const child = spawn('node', [killerScript, args])
+        const child = spawn('bash', [killerScript, lastBuildPID])
 
         let info = ''
-        let logData
+        return new Promise((resolve, reject) => {
+          child.stdout.on("data", async (data) => {
+            info += decoder.write(data)
+          });
 
-        child.stdout.on("data", async (data) => {
-          console.log(`info: ${info}`)
-          info += 'info: ' + decoder.write(data)
-          logData = { "build_errors": info, "end_time": moment().tz("Europe/Tallinn").format() }
-          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-          // console.log(result)
+          child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            info += 'error: ' + decoder.write(error)
+          });
+
+          child.on("close", async (code) => {
+            console.log(`child process exited with code ${code}`);
+
+            if (code === 0) {
+              console.log(info);
+              resolve({ type: 'success', message: info })
+            } else if (code === 1) {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code 1. ${info}` })
+            } else {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code ${code}. ${info}` })
+            }
+          });
         });
-
-        child.stderr.on("data", async (data) => {
-          console.log(`error: ${data}`)
-          let error = 'error' + decoder.write(data)
-          logData = { "build_errors": error, "end_time": moment().tz("Europe/Tallinn").format() }
-          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-          // console.log("stderr result:", result)
-        });
-
-        child.on("close", async (code) => {
-          console.log(`child process exited with code ${code}`);
-
-          switch (code) {
-            case 0:
-              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
-              break;
-            case 1:
-              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "ERROR" }
-              break;
-            default:
-              logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
-          }
-          // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
-          // console.log("close result:", result)
-        });
-        console.log(logData);
 
       } else {
+        console.log('No log file for PID');
         return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
       }
-  //   } else {
-  //     return { type: 'warning', message: 'Järjekord on juba tühi' }
-  //   }
-  // } else {
-  //   return { type: 'warning', message: 'Kasutaja info on puudulik' }
-  // }
+    } else {
+      console.log('No build queue');
+      return { type: 'warning', message: 'Järjekorda ei eksisteeri' }
+    }
+  } else {
+    console.log('No killer info');
+    return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  }
 
 }
 
@@ -232,7 +226,7 @@ module.exports = {
    * @return {Object}
    */
   publish: async (ctx) => {
-    const data = ctx.request.body;
+    data = ctx.request.body;
     // console.log(ctx)
     const userInfo = JSON.parse(data.userInfo);
     const site = data.site;
