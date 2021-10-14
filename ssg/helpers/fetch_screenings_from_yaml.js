@@ -109,14 +109,14 @@ function LangSelect(lang) {
 
     let dateNow = parseInt(`${localeDateString.split('.')[2]}${("0" + (localeDateString.split('.')[1])).slice(-2)}${("0" + localeDateString.split('.')[0]).slice(-2)}`)
 
-    let festival_editions = []
-    // For PÖFF, fetch only online 2021 FE ID 7
-    // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
-    if (DOMAIN !== 'poff.ee') {
-        festival_editions = shownFestivalEditions
-    } else {
-        festival_editions = [7]
-    }
+    // let festival_editions = []
+    // // For PÖFF, fetch only online 2021 FE ID 7
+    // // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
+    // if (DOMAIN !== 'poff.ee') {
+    festival_editions = shownFestivalEditions
+    // } else {
+    //     festival_editions = [7]
+    // }
 
     console.log(festival_editions);
 
