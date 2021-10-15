@@ -10,6 +10,9 @@ const selectors = {
     countries: document.getElementById('countries_select'),
     subtitles: document.getElementById('subtitles_select'),
     premieretypes: document.getElementById('premieretypes_select'),
+    filmtypes: document.getElementById('filmtypes_select'),
+    genres: document.getElementById('genres_select'),
+    keywords: document.getElementById('keywords_select'),
     towns: document.getElementById('towns_select'),
     cinemas: document.getElementById('cinemas_select'),
     dates: document.getElementById('dates_select'),
@@ -149,6 +152,18 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'premieretypes' ? value : selectors.premieretypes.value;
                     return compare_with === '' ? true : screening.premieretypes.includes(compare_with)
                 })
+                .filter(cassette => {
+                    const compare_with = selector_name === 'filmtypes' ? value : selectors.filmtypes.value;
+                    return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selector_name === 'genres' ? value : selectors.genres.value;
+                    return compare_with === '' ? true : cassette.genres.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selector_name === 'keywords' ? value : selectors.keywords.value;
+                    return compare_with === '' ? true : cassette.keywords.includes( compare_with )
+                })
                 .filter(screening => {
                     const compare_with = selector_name === 'dates' ? value : selectors.dates.value;
                     return compare_with === '' ? true : screening.dates.includes(compare_with)
@@ -192,6 +207,17 @@ selectors.subtitles.addEventListener('change', e => {
 selectors.premieretypes.addEventListener('change', e => {
     toggleAll('premieretypes');
 });
+selectors.filmtypes.addEventListener('change', e => {
+    toggleAll('filmtypes');
+});
+
+selectors.genres.addEventListener('change', e => {
+    toggleAll('genres');
+});
+
+selectors.keywords.addEventListener('change', e => {
+    toggleAll('keywords');
+});
 
 selectors.towns.addEventListener('change', e => {
     toggleAll('towns');
@@ -216,6 +242,9 @@ function unselect_all() {
     selectors.countries.selectedIndex = 0;
     selectors.subtitles.selectedIndex = 0;
     selectors.premieretypes.selectedIndex = 0;
+    selectors.filmtypes.selectedIndex = 0;
+    selectors.genres.selectedIndex = 0;
+    selectors.keywords.selectedIndex = 0;
     selectors.towns.selectedIndex = 0;
     selectors.cinemas.selectedIndex = 0;
     selectors.dates.selectedIndex = 0;
@@ -257,6 +286,27 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.premieretypes.value) {
                 return screening.premieretypes.includes(selectors.premieretypes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.filmtypes.value) {
+                return screening.filmtypes.includes(selectors.filmtypes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.genres.value) {
+                return screening.genres.includes(selectors.genres.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.keywords.value) {
+                return screening.keywords.includes(selectors.keywords.value)
             } else {
                 return true
             }

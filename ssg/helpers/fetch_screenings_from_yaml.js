@@ -29,7 +29,7 @@ if (param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee';
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
@@ -225,6 +225,9 @@ function CreateYAML(screenings, lang) {
         countries: {},
         subtitles: {},
         premieretypes: {},
+        filmtypes: {},
+        genres: {},
+        keywords: {},
         towns: {},
         cinemas: {},
         dates: {},
@@ -324,10 +327,30 @@ function CreateYAML(screenings, lang) {
         filters.cinemas[cinemaKey] = cinema_name
 
         let premieretypes = []
-        for (const types of cassette.tags.premiere_types || []) {
-            const type_name = types
-            premieretypes.push(type_name)
-            filters.premieretypes[type_name] = type_name
+        let filmtypes = []
+        let genres = []
+        let keywords = []
+        if (cassette.tags) {
+            for (const filmpremieretype of cassette.tags.premiere_types || []) {
+                const type_name = filmpremieretype
+                premieretypes.push(type_name)
+                filters.premieretypes[type_name] = type_name
+            }
+            for (const filmtype of cassette.tags.film_types || []) {
+                const type_name = filmtype
+                filmtypes.push(type_name)
+                filters.filmtypes[type_name] = type_name
+            }
+            for (const genre of cassette.tags.genres || []) {
+                const type_name = genre
+                genres.push(type_name)
+                filters.genres[type_name] = type_name
+            }
+            for (const keyword of cassette.tags.keywords || []) {
+                const type_name = keyword
+                keywords.push(type_name)
+                filters.keywords[type_name] = type_name
+            }
         }
         return {
             id: screenings.id,
@@ -341,6 +364,9 @@ function CreateYAML(screenings, lang) {
             countries: countries,
             subtitles: subtitles,
             premieretypes: premieretypes,
+            filmtypes: filmtypes,
+            genres: genres,
+            keywords: keywords,
             towns: towns,
             cinemas: cinemas,
             dates: dates,
@@ -402,6 +428,9 @@ function CreateYAML(screenings, lang) {
         countries: mSort(filters.countries),
         subtitles: mSort(filters.subtitles),
         premieretypes: mSort(filters.premieretypes),
+        filmtypes: filters.filmtypes,
+        genres: filters.genres,
+        keywords: mSort(filters.keywords),
         towns: mSort(filters.towns),
         cinemas: mSort(filters.cinemas),
         dates: dateTimeSort(filters.dates),
