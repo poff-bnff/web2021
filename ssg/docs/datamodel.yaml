@@ -190,7 +190,10 @@ Programme: &Programme
     _path: /programmes
     remoteId: (UID)
     namePrivate: (text)
-    name: *Translated #(Component)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    # name: *Translated #(Component)
     description: *Translated # (Component, rich)
     festival_editions: #(Component (repeatable))
         - *FestivalEdition
