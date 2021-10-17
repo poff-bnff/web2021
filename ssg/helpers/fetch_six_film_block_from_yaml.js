@@ -37,7 +37,7 @@ for (const lang of languages) {
     if (typeof copyData !== 'undefined') {
 
         for (key in copyData) {
-            if(param_build_type === 'target' && !key.id === param_model_id) {
+            if(param_build_type === 'target' && !key.id === target_id) {
                 continue
             }
 
