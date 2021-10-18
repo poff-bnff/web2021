@@ -34,6 +34,21 @@ block content
             each index, key in self.data.filters.premieretypes
                 option(value=key)= index
 
+        select#filmtypes_select(name='Filmtypes')
+            option(value='')= self.label.filters.filmtypes
+            each index, key in self.data.filters.filmtypes
+                option(value=key)= index
+
+        select#genres_select(name='Genres')
+            option(value='')= self.label.filters.genres
+            each index, key in self.data.filters.genres
+                option(value=key)= index
+
+        select#keywords_select(name='Keywords')
+            option(value='')= self.label.filters.keywords
+            each index, key in self.data.filters.keywords
+                option(value=key)= index
+
         select#towns_select(name='Towns')
             option(value='')= self.label.filters.towns
             each index, key in self.data.filters.towns
