@@ -5,8 +5,6 @@ var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
-console.log('testconsolelog');
-
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
     // console.log('User profile is loaded')
@@ -15,7 +13,6 @@ document.addEventListener('userProfileLoaded', function (e) {
 try {
     const productElement = document.querySelector(`[shopSection]`);
     if (productElement) {
-        console.log('productElement', productElement);
         availability()
     }
 } catch (error) { }
@@ -170,7 +167,6 @@ function saveUrl() {
 
 
 function useUserData(userProf) {
-    console.log('Trying userprofile 1', userProfileHasBeenLoaded);
 
     if (userProf.user_profile && userProf.user_profile.firstName) {
         try {
@@ -198,7 +194,6 @@ function useUserData(userProf) {
     }
     try {
         userProfileHasBeenLoaded = true
-        console.log('Trying userprofile 2', userProfileHasBeenLoaded);
 
         pageLoadingAndUserProfileFetched()
     } catch (err) {

@@ -33,6 +33,7 @@ node "$BUILD_PATH"/initialise_entu_ssg.js
 node "$FETCH_PATH"/fetch_cassettes_from_yaml.js "$TARGET" "$ADDITIONAL_TARGET_IDS"
 node "$FETCH_PATH"/fetch_screenings_from_yaml.js "$TARGET"
 node "$FETCH_PATH"/fetch_PL_screenings.js
+node "$FETCH_PATH"/xml.js
 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 
 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
