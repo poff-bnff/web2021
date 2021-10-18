@@ -93,9 +93,11 @@ html(lang= self.locale)
         include ../_templates/head_filmikool.pug
         // (onload='reloadImageOnError()')
         body
+            +cookieBar
             include ../_templates/header_filmikool.pug
             block content
             include ../_templates/footer.pug
+
 
 
     //- no domain specified
