@@ -1345,6 +1345,8 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    editions: #(Component (repeatable))
+        - *FestivalEdition
 
 Channel: &Channel
     _path: /channels
