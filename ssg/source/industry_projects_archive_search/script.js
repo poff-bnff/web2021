@@ -5,18 +5,12 @@ const urlParams = new URLSearchParams(queryString);
 
 
 const selectors = {
-    programmes: document.getElementById('programmes_select'),
+    types: document.getElementById('types_select'),
     languages: document.getElementById('languages_select'),
     countries: document.getElementById('countries_select'),
-    subtitles: document.getElementById('subtitles_select'),
-    premieretypes: document.getElementById('premieretypes_select'),
-    filmtypes: document.getElementById('filmtypes_select'),
+    statuses: document.getElementById('statuses_select'),
     genres: document.getElementById('genres_select'),
-    keywords: document.getElementById('keywords_select'),
-    towns: document.getElementById('towns_select'),
-    cinemas: document.getElementById('cinemas_select'),
-    dates: document.getElementById('dates_select'),
-    times: document.getElementById('times_select')
+    editions: document.getElementById('editions_select'),
 }
 
 function urlSelect() {
@@ -95,7 +89,7 @@ function toggleAll(exclude_selector_name) {
     }
 
     // kuva/peida kassette
-    let cards = document.querySelectorAll('[class="card_film"]')
+    let cards = document.querySelectorAll('[class="card_project"]')
     cards.forEach(card => {
         if (ids.includes(card.id)) {
             card.style.display = "grid"
@@ -125,8 +119,8 @@ function toggleFilters(exclude_selector_name) {
 
             let count = searcharray
                 .filter(screening => {
-                    const compare_with = selector_name === 'programmes' ? value : selectors.programmes.value;
-                    return compare_with === '' ? true : screening.programmes.includes(compare_with)
+                    const compare_with = selector_name === 'types' ? value : selectors.types.value;
+                    return compare_with === '' ? true : screening.types.includes(compare_with)
                 })
                 .filter(screening => {
                     const compare_with = selector_name === 'languages' ? value : selectors.languages.value;
@@ -137,40 +131,16 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.countries.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'subtitles' ? value : selectors.subtitles.value;
-                    return compare_with === '' ? true : screening.subtitles.includes(compare_with)
+                    const compare_with = selector_name === 'statuses' ? value : selectors.statuses.value;
+                    return compare_with === '' ? true : screening.statuses.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'towns' ? value : selectors.towns.value;
-                    return compare_with === '' ? true : screening.towns.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'cinemas' ? value : selectors.cinemas.value;
-                    return compare_with === '' ? true : screening.cinemas.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'premieretypes' ? value : selectors.premieretypes.value;
-                    return compare_with === '' ? true : screening.premieretypes.includes(compare_with)
-                })
-                .filter(cassette => {
-                    const compare_with = selector_name === 'filmtypes' ? value : selectors.filmtypes.value;
-                    return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
-                })
-                .filter(cassette => {
                     const compare_with = selector_name === 'genres' ? value : selectors.genres.value;
-                    return compare_with === '' ? true : cassette.genres.includes( compare_with )
-                })
-                .filter(cassette => {
-                    const compare_with = selector_name === 'keywords' ? value : selectors.keywords.value;
-                    return compare_with === '' ? true : cassette.keywords.includes( compare_with )
+                    return compare_with === '' ? true : screening.genres.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'dates' ? value : selectors.dates.value;
-                    return compare_with === '' ? true : screening.dates.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'times' ? value : selectors.times.value;
-                    return compare_with === '' ? true : screening.times.includes(compare_with)
+                    const compare_with = selector_name === 'editions' ? value : selectors.editions.value;
+                    return compare_with === '' ? true : screening.editions.includes(compare_with)
                 })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
@@ -188,8 +158,8 @@ search_input.addEventListener('keyup', e => {
     toggleAll();
 });
 
-selectors.programmes.addEventListener('change', e => {
-    toggleAll('programmes');
+selectors.types.addEventListener('change', e => {
+    toggleAll('types');
 });
 
 selectors.languages.addEventListener('change', e => {
@@ -200,55 +170,26 @@ selectors.countries.addEventListener('change', e => {
     toggleAll('countries');
 });
 
-selectors.subtitles.addEventListener('change', e => {
-    toggleAll('subtitles');
-});
-
-selectors.premieretypes.addEventListener('change', e => {
-    toggleAll('premieretypes');
-});
-selectors.filmtypes.addEventListener('change', e => {
-    toggleAll('filmtypes');
+selectors.statuses.addEventListener('change', e => {
+    toggleAll('statuses');
 });
 
 selectors.genres.addEventListener('change', e => {
     toggleAll('genres');
 });
 
-selectors.keywords.addEventListener('change', e => {
-    toggleAll('keywords');
-});
-
-selectors.towns.addEventListener('change', e => {
-    toggleAll('towns');
-});
-
-selectors.cinemas.addEventListener('change', e => {
-    toggleAll('cinemas');
-});
-
-selectors.dates.addEventListener('change', e => {
-    toggleAll('dates');
-});
-
-selectors.times.addEventListener('change', e => {
-    toggleAll('times');
+selectors.editions.addEventListener('change', e => {
+    toggleAll('editions');
 });
 
 function unselect_all() {
     search_input.value = '';
-    selectors.programmes.selectedIndex = 0;
+    selectors.types.selectedIndex = 0;
     selectors.languages.selectedIndex = 0;
     selectors.countries.selectedIndex = 0;
-    selectors.subtitles.selectedIndex = 0;
-    selectors.premieretypes.selectedIndex = 0;
-    selectors.filmtypes.selectedIndex = 0;
+    selectors.statuses.selectedIndex = 0;
     selectors.genres.selectedIndex = 0;
-    selectors.keywords.selectedIndex = 0;
-    selectors.towns.selectedIndex = 0;
-    selectors.cinemas.selectedIndex = 0;
-    selectors.dates.selectedIndex = 0;
-    selectors.times.selectedIndex = 0;
+    selectors.editions.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -256,8 +197,8 @@ function unselect_all() {
 function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
-            if (selectors.programmes.value) {
-                return screening.programmes.includes(selectors.programmes.value)
+            if (selectors.types.value) {
+                return screening.types.includes(selectors.types.value)
             } else {
                 return true
             }
@@ -277,22 +218,8 @@ function execute_filters() {
             }
         })
         .filter(screening => {
-            if (selectors.subtitles.value) {
-                return screening.subtitles.includes(selectors.subtitles.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.premieretypes.value) {
-                return screening.premieretypes.includes(selectors.premieretypes.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.filmtypes.value) {
-                return screening.filmtypes.includes(selectors.filmtypes.value)
+            if (selectors.statuses.value) {
+                return screening.statuses.includes(selectors.statuses.value)
             } else {
                 return true
             }
@@ -305,36 +232,8 @@ function execute_filters() {
             }
         })
         .filter(screening => {
-            if (selectors.keywords.value) {
-                return screening.keywords.includes(selectors.keywords.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.towns.value) {
-                return screening.towns.includes(selectors.towns.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.cinemas.value) {
-                return screening.cinemas.includes(selectors.cinemas.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.dates.value) {
-                return screening.dates.includes(selectors.dates.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.times.value) {
-                return screening.times.includes(selectors.times.value)
+            if (selectors.editions.value) {
+                return screening.editions.includes(selectors.editions.value)
             } else {
                 return true
             }
