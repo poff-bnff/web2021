@@ -110,6 +110,27 @@ block content
                                     .str_info_label.dark_semi= self.label.film.programme
                                     #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
+                                - var filmsDirectors = []
+                                each film in cassette.films
+                                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                        each director in film.credentials.rolePersonsByRole.director
+                                            - filmsDirectors.push(director)
+                                if filmsDirectors.length
+                                    - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                    .str_info_label.dark_semi= self.label.film.director
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                                - var filmsCountries = []
+                                each film in cassette.films
+                                    if film.orderedCountries && film.orderedCountries.length
+                                        each country in film.orderedCountries
+                                            if country.country && country.country.name
+                                                - filmsCountries.push(country.country.name)
+                                if filmsCountries.length
+                                    - var uniqueCountries = [...new Set(filmsCountries)];
+                                    .str_info_label.dark_semi= self.label.film.countries
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+
                     button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeShortlist
 
                         //- if cassette.credentials.director
