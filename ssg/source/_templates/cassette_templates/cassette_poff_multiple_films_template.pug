@@ -47,17 +47,33 @@ main.grid_cassette
                 h1.film_title_detailed= self.title || self.title_et
 
     section.f_synopsis_box
+        -
+            var festivalEditions = []
+            var festivalEditionsIds = []
         .str_info_meta_gi
             .str_info_meta_item
 
-            if self.festival_edition && self.festival_edition.festival && self.festival_edition.festival.name
-                //- .str_info_meta_label.dark_1= self.label.film.festival
-                //- .str_info_meta_festival= self.festival_edition.festival.name
+            //- if self.festival_edition && self.festival_edition.festival && self.festival_edition.festival.name
+            //-     //- .str_info_meta_label.dark_1= self.label.film.festival
+            //-     //- .str_info_meta_festival= self.festival_edition.festival.name
 
-            if self.festival_edition && self.festival_edition && self.festival_edition.name
-                //- Kas selleks eraldi labelit vaja vms?
-                .str_info_meta_label.dark_1= self.label.film.festival
-                .str_info_meta_festival= self.festival_edition.name
+            //- if self.festival_edition && self.festival_edition && self.festival_edition.name
+            //-     //- Kas selleks eraldi labelit vaja vms?
+            //-     .str_info_meta_label.dark_1= self.label.film.festival
+            //-     .str_info_meta_festival= self.festival_edition.name
+
+            if self.festival_editions
+                //- Festival editions
+
+                each festivalEdition in self.festival_editions
+                    if festivalEdition.name
+                        - festivalEditions.push(festivalEdition.name)
+                        - festivalEditionsIds.push(festivalEdition.id)
+                - var uniqueFestivalEditions = [...new Set(festivalEditions)]
+                if uniqueFestivalEditions != undefined && uniqueFestivalEditions.length > 0
+                    .str_info_meta_label.dark_1= self.label.film.festival
+                    .str_info_meta_festival= uniqueFestivalEditions.join(', ')
+
 
             if self.tags && self.tags.programmes && self.tags.programmes[0]
                 -
@@ -462,10 +478,24 @@ else
 
 
             section.f_synopsis_box
+                -
+                    var festivalEditions = []
+                    var festivalEditionsIds = []
 
-                //- Kassetti festivali info
                 .str_info_meta_gi
                     .str_info_meta_item
+                        if film.festival_editions
+                            //- Festival editions
+
+                            each festivalEdition in film.festival_editions
+                                if festivalEdition.name
+                                    - festivalEditions.push(festivalEdition.name)
+                                    - festivalEditionsIds.push(festivalEdition.id)
+                            - var uniqueFestivalEditions = [...new Set(festivalEditions)]
+                            if uniqueFestivalEditions != undefined && uniqueFestivalEditions.length > 0
+                                .str_info_meta_label.dark_1= self.label.film.festival
+                                .str_info_meta_festival= uniqueFestivalEditions.join(', ')
+
                         if film.tags
 
                             if film.tags.programmes && film.tags.programmes[0]
@@ -476,12 +506,6 @@ else
                                 -   }
                                 -   return itemNames
                                 - }
-                                each programme in film.tags.programmes
-                                    if programme.festival_editions
-                                        - var festivalEditions = programme.festival_editions.map(programmeNames).join(', ')
-                                        if festivalEditions.length > 0
-                                            .str_info_meta_label.dark_1= self.label.film.programme
-                                            .str_info_meta_festival= festivalEditions
 
                                 //- Programmes
                                 - var programmes = film.tags.programmes.map(programmeNames).join(', ')
@@ -629,7 +653,7 @@ else
             //-             .dir_img
             //-                 img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
             //-                 .str_info_grid_3
-            //-                     .str_info_label.text_left.dark_semi= self.label.film.director
+            //-                     .str_info_label.text_left.dark_1= self.label.film.director
             //-                     .str_info_value.text_right.dark_1= `${director.person.firstName} ${director.person.lastName}`
 
             //-         .dir_bio.dark_1

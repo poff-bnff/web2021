@@ -102,10 +102,23 @@ main.grid_film(id=self.id)
                 //- Kassetti festivali info
                 .str_info_meta_gi
                     .str_info_meta_item
+
+                        if film.festival_editions
+                            //- Festival editions
+
+                            each festivalEdition in film.festival_editions
+                                if festivalEdition.name
+                                    - festivalEditions.push(festivalEdition.name)
+                                    - festivalEditionsIds.push(festivalEdition.id)
+                            - var uniqueFestivalEditions = [...new Set(festivalEditions)]
+                            if uniqueFestivalEditions != undefined && uniqueFestivalEditions.length > 0
+                                .str_info_meta_label.dark_1= self.label.film.festival
+                                .str_info_meta_festival= uniqueFestivalEditions.join(', ')
+
                         if film.tags
 
                             if film.tags.programmes && film.tags.programmes[0]
-                                //- Festival editions
+
                                 -
                                     var programmeNames = function(item) {
                                     if(typeof item.name !== 'object') {
@@ -114,32 +127,21 @@ main.grid_film(id=self.id)
                                         return itemNames
                                     }
 
-                                each programme in film.tags.programmes
-                                    if programme.festival_editions && programme.festival_editions.length
-                                        each festivalEdition in programme.festival_editions
-                                            if festivalEdition.name
-                                                - festivalEditions.push(festivalEdition.name)
-                                                - festivalEditionsIds.push(festivalEdition.id)
-                                - var uniqueFestivalEditions = [...new Set(festivalEditions)]
-                                if uniqueFestivalEditions != undefined && uniqueFestivalEditions.length > 0
-                                    .str_info_meta_label.dark_semi= self.label.film.festival
-                                    .str_info_meta_festival= uniqueFestivalEditions.join(', ')
-
                                 //- Programmes
                                 - var programmes = film.tags.programmes.filter(a => a.name).map(programmeNames).join(', ')
                                 if programmes !== undefined && programmes.length > 0
-                                    .str_info_meta_label.dark_semi= self.label.film.programme
+                                    .str_info_meta_label.dark_1= self.label.film.programme
                                     .str_info_meta_festival= programmes
 
 
 
                             if film.tags.genres && film.tags.genres[0]
-                                .str_info_meta_label.dark_semi= self.label.film.genre
+                                .str_info_meta_label.dark_1= self.label.film.genre
                                 .str_info_meta_festival= film.tags.genres.join(', ')
 
 
                             if film.tags.keywords && film.tags.keywords[0]
-                                .str_info_meta_label.dark_semi= self.label.film.keywords
+                                .str_info_meta_label.dark_1= self.label.film.keywords
                                 .str_info_meta_festival= film.tags.keywords.join(', ')
 
                         //- festival programm zanrid keywordid
@@ -293,7 +295,7 @@ main.grid_film(id=self.id)
                                         //- if director.person.picture
                                         if director.person.firstName || director.person.lastName
                                             .str_info_grid_3
-                                                .str_info_label.text_left.dark_semi= self.label.film.director
+                                                .str_info_label.text_left.dark_1= self.label.film.director
                                                 .str_info_value.text_right.dark_1= `${director.person.firstName ? director.person.firstName : ''} ${director.person.lastName ? director.person.lastName : ''}`
 
                                     .dir_bio.dark_1
