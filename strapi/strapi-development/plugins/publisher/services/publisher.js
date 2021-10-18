@@ -81,14 +81,14 @@ const addS = async (result) => {
   const domainSpecifics = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
   const stagingUrls = domainSpecifics.stagingURLs
   const stagingDomains = domainSpecifics.stagingDomains
-  const domainLanguages = domainSpecifics.stagingDomains
+  const domainLocales = domainSpecifics.locales
 
   const sanitizedResponse = await Promise.all(result.map(async a => {
 
     let paths = []
     if (a.action !== 'delete') {
       try {
-        paths = await fetchChangedSlug(a.build_args, domainLanguages[a.site])
+        paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
       } catch (error) {
         console.log('Error in fetchChangedSlug: ', error);
       }
