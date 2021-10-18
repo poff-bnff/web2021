@@ -6,6 +6,11 @@
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
 
+ const fs = require('fs')
+ const yaml = require('js-yaml')
+ const path = require('path')
+ const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
+
 const thereIsSomeWhereToLinkTo = [
   'programme',
   'pof-fi-article',
@@ -72,22 +77,18 @@ const pathBeforeSlug = {
 
 const addS = async (result) => {
 
-  const fs = require('fs')
-  const yaml = require('js-yaml')
-  const path = require('path')
-  const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
   const domainSpecificsPath = path.join(ssgDir, 'domain_specifics.yaml')
   const domainSpecifics = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
   const stagingUrls = domainSpecifics.stagingURLs
   const stagingDomains = domainSpecifics.stagingDomains
-
+  const domainLocales = domainSpecifics.locales
 
   const sanitizedResponse = await Promise.all(result.map(async a => {
 
     let paths = []
     if (a.action !== 'delete') {
       try {
-        paths = await fetchChangedSlug(a.build_args)
+        paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
       } catch (error) {
         console.log('Error in fetchChangedSlug: ', error);
       }
@@ -106,12 +107,30 @@ const addS = async (result) => {
   return sanitizedResponse
 }
 
-const fetchChangedSlug = async args => {
+const fetchChangedSlug = async (args, domainLanguages) => {
   if (!args) { return null }
   const [collectionType, id] = args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
-  let slug = result.slug_et || result.slug_en || result.slug_ru
-  const lang = result.slug_et ? 'et' : result.slug_en ? 'en' : result.slug_ru ? 'ru' : null
+
+  let slug = null
+  let lang = null
+  let objContainingSlug
+
+  if (collectionType === 'screening' && result.cassette) {
+    objContainingSlug = result.cassette
+  } else {
+    objContainingSlug = result
+  }
+
+  for (let i = 0; i < domainLanguages.length; i++) {
+    const element = domainLanguages[i];
+    if (objContainingSlug[`slug_${element}`]) {
+      slug = objContainingSlug[`slug_${element}`]
+      lang = element
+      break
+    }
+  }
+
   const articleTypeSlugs = []
   const paths = []
 
@@ -134,10 +153,6 @@ const fetchChangedSlug = async args => {
         paths.push(`${articleTypeSlug}/${slug}`)
       }
       return paths
-    }
-
-    if (collectionType === 'screening' && result.cassette) {
-      slug = result.cassette.slug_et || result.cassette.slug_en || result.cassette.slug_ru
     }
 
     return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug ? slug : ''}`]
