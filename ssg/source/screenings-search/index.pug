@@ -169,9 +169,6 @@ block content
 
                                     //- Kuvame kassetipealkirja
                                     h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
-                                    button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
-                                    button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.addSavedScreening
-
                                         //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
 
                                     //- Kuvame screeningtypes
@@ -228,7 +225,7 @@ block content
                                     //-                 .str_info_label.dark_semi= self.label.film.director
                                     //-                 .str_info_value.dark_1.thin_300= film.credentials.rolePersonsByRole.director.join(', ')
 
-                            Programmid
+                            //- Programmid
                             .card_film_info
                                 .str_info_grid_3
                                     if cassette.films && cassette.films.length
@@ -263,6 +260,9 @@ block content
                                             - var uniqueCountries = [...new Set(filmsCountries)];
                                             .str_info_label.dark_semi= self.label.film.countries
                                             #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+
+                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
+                            button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.addSavedScreening
 
 
                 script.
