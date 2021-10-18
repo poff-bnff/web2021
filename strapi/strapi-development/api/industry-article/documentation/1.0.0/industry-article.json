@@ -1010,9 +1010,6 @@
                 "namePrivate": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "component"
-                },
                 "description": {
                   "type": "component"
                 },

@@ -784,7 +784,7 @@
                 "completionYear": {
                   "type": "integer"
                 },
-                "imbdLink": {
+                "imdbLink": {
                   "type": "string"
                 },
                 "editions": {

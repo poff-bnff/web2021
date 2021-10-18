@@ -651,7 +651,7 @@
               "completionYear": {
                 "type": "integer"
               },
-              "imbdLink": {
+              "imdbLink": {
                 "type": "string"
               },
               "editions": {
@@ -770,6 +770,12 @@
                 "type": "boolean"
               },
               "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "other_festivals": {
                 "type": "array",
                 "items": {
                   "type": "string"
