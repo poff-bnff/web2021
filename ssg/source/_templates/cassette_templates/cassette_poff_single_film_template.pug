@@ -221,6 +221,68 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.editor
                                 .str_info_value= film.credentials.rolePersonsByRole.editor.join(', ')
 
+                        if film.credentials.rolePersonsByRole.music && film.credentials.rolePersonsByRole.music[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.music
+                                .str_info_value= film.credentials.rolePersonsByRole.music.join(', ')                                
+
+                        if film.credentials.rolePersonsByRole.animation && film.credentials.rolePersonsByRole.animation[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.animation
+                                .str_info_value= film.credentials.rolePersonsByRole.animation.join(', ')   
+
+                        if film.credentials.rolePersonsByRole.cinematographer && film.credentials.rolePersonsByRole.cinematographer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.cinematographer
+                                .str_info_value= film.credentials.rolePersonsByRole.cinematographer.join(', ')   
+
+                        if film.credentials.rolePersonsByRole.sound && film.credentials.rolePersonsByRole.sound[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.sound
+                                .str_info_value= film.credentials.rolePersonsByRole.sound.join(', ')   
+
+                        if film.credentials.rolePersonsByRole.publicfunds && film.credentials.rolePersonsByRole.publicfunds[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.publicfunds
+                                .str_info_value= film.credentials.rolePersonsByRole.publicfunds.join(', ')   
+
+                        if film.credentials.rolePersonsByRole.privatefunds && film.credentials.rolePersonsByRole.privatefunds[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.privatefunds
+                                .str_info_value= film.credentials.rolePersonsByRole.privatefunds.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.instructor && film.credentials.rolePersonsByRole.instructor[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.instructor
+                                .str_info_value= film.credentials.rolePersonsByRole.instructor.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.writer && film.credentials.rolePersonsByRole.writer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.writer
+                                .str_info_value= film.credentials.rolePersonsByRole.writer.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.cowriter && film.credentials.rolePersonsByRole.cowriter[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.cowriter
+                                .str_info_value= film.credentials.rolePersonsByRole.cowriter.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.creativeproducer && film.credentials.rolePersonsByRole.creativeproducer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.creativeproducer
+                                .str_info_value= film.credentials.rolePersonsByRole.creativeproducer.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.juniorproducer && film.credentials.rolePersonsByRole.juniorproducer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.juniorproducer
+                                .str_info_value= film.credentials.rolePersonsByRole.juniorproducer.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.productiondesigner && film.credentials.rolePersonsByRole.productiondesigner[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.productiondesigner
+                                .str_info_value= film.credentials.rolePersonsByRole.productiondesigner.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.artdirector && film.credentials.rolePersonsByRole.artdirector[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.artdirector
+                                .str_info_value= film.credentials.rolePersonsByRole.artdirector.join(', ')                                                                  
+                        if film.credentials.rolePersonsByRole.choreographer && film.credentials.rolePersonsByRole.choreographer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.choreographer
+                                .str_info_value= film.credentials.rolePersonsByRole.choreographer.join(', ')                                  
+                                
                         //- Below datamodel needs to be updated and then code amended to be correct
                         if film.credentials.rolePersonsByRole.productioncompany && film.credentials.rolePersonsByRole.productioncompany[0]
                             .str_info_grid_3
