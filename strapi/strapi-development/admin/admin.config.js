@@ -8,6 +8,7 @@ module.exports = {
           StrapiProtocol: JSON.stringify(process.env['StrapiProtocol']),
           StrapiHost: JSON.stringify(process.env['StrapiHost']),
           StrapiColour: JSON.stringify(process.env['StrapiColour']),
+          StrapiPort: JSON.stringify(process.env['StrapiPort']),
         },
       })
     );
