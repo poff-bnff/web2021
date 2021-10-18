@@ -40,7 +40,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'shorts.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -142,6 +142,9 @@ const minimodel_cassette = {
                         }
                     },
                     'languages': {
+                        model_name: 'Language'
+                    },
+                    'subtitles': {
                         model_name: 'Language'
                     },
                     'tags': {
