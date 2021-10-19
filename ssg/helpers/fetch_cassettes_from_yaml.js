@@ -144,6 +144,9 @@ const minimodel_cassette = {
                     'languages': {
                         model_name: 'Language'
                     },
+                    'subtitles': {
+                        model_name: 'Language'
+                    },
                     'tags': {
                         model_name: 'Tags',
                         expand: {
