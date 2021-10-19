@@ -39,7 +39,7 @@ block content
                         h3.film_title_locale.dark_1= cassette.title
                             p(id= cassette.id+'nupp' style={color: 'red', display:'none'})
                     .card_film_info
-                        .str_info_grid_3
+
                             if cassette.films && cassette.films.length
                                 - var filmsProgrammes = []
                                 each film in cassette.films
@@ -49,8 +49,9 @@ block content
                                                 - filmsProgrammes.push(programme.name)
                                 if filmsProgrammes.length
                                     - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                                    .str_info_label.dark_semi= self.label.film.programme
-                                    .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.programme
+                                        .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
                         //- if cassette.films && cassette.films.length
                         //-     - var filmsDirectors = []
