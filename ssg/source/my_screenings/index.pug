@@ -159,7 +159,7 @@ block content
 
                             //- Programmid
                             .card_film_info
-                                .str_info_grid_3
+
                                     if cassette.films && cassette.films.length
                                         - var filmsProgrammes = []
                                         each film in cassette.films
@@ -169,8 +169,9 @@ block content
                                                         - filmsProgrammes.push(programme.name)
                                         if filmsProgrammes.length
                                             - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                                            .str_info_label.dark_semi= self.label.film.programme
-                                            .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.programme
+                                                .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
                                         - var filmsDirectors = []
                                         each film in cassette.films
@@ -179,8 +180,9 @@ block content
                                                     - filmsDirectors.push(director)
                                         if filmsDirectors.length
                                             - var uniqueDirectors = [...new Set(filmsDirectors)];
-                                            .str_info_label.dark_semi= self.label.film.director
-                                            #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.director
+                                                #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
 
                                         - var filmsCountries = []
                                         each film in cassette.films
@@ -190,8 +192,9 @@ block content
                                                         - filmsCountries.push(country.country.name)
                                         if filmsCountries.length
                                             - var uniqueCountries = [...new Set(filmsCountries)];
-                                            .str_info_label.dark_semi= self.label.film.countries
-                                            #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.countries
+                                                #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
                             button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
 
 
