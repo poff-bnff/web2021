@@ -362,7 +362,6 @@ for (const lang of allLanguages) {
         }
 
 
-
         if (typeof slugEn !== 'undefined') {
             if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
@@ -376,29 +375,6 @@ for (const lang of allLanguages) {
             let cassetteCarouselPicsFilms = []
             let cassettePostersCassette = []
             let cassettePostersFilms = []
-
-            // Kasseti treiler
-            if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
-                for (trailer of s_cassette_copy.media.trailer) {
-                    if (trailer.url && trailer.url.length > 10) {
-                        if (trailer.url.includes('vimeo')) {
-                            let splitVimeoLink = trailer.url.split('/')
-                            let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                            if (videoCode.length === 9) {
-                                trailer.videoCode = videoCode
-                            }
-                        } else {
-                            let splitYouTubeLink = trailer.url.split('=')[1]
-                            let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                            if (splitForVideoCode.length === 11) {
-                                trailer.videoCode = splitForVideoCode
-                            }
-                        }
-                    }
-                }
-            }
-
-
 
             // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
@@ -414,6 +390,13 @@ for (const lang of allLanguages) {
                     film.order = a.order
                     return film
                 })
+            }
+
+            // Kasseti treiler
+            trailerProcessing(s_cassette_copy)
+            // Kasseti filmi(de) trailerid
+            if (s_cassette_copy.films) {
+                s_cassette_copy.films.map(cf => trailerProcessing(cf))
             }
 
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
@@ -674,6 +657,29 @@ for (const lang of allLanguages) {
         timer.log(__filename, `Skipped cassettes with IDs ${uniqueIDs2.join(', ')}, as none of screening types are ${whichScreeningTypesToFetch.join(', ')}`)
     }
     generateAllDataYAML(allData, lang)
+}
+
+function trailerProcessing(cassetteOrFilm) {
+    if (cassetteOrFilm.media && cassetteOrFilm.media.trailer && cassetteOrFilm.media.trailer[0]) {
+        for (trailer of cassetteOrFilm.media.trailer) {
+            if (trailer.url && trailer.url.length > 10) {
+                if (trailer.url.includes('vimeo')) {
+                    let splitVimeoLink = trailer.url.split('/')
+                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
+                    if (videoCode.length === 9) {
+                        trailer.videoCode = videoCode
+                    }
+                } else {
+                    let splitYouTubeLink = trailer.url.split('=')[1]
+                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                    if (splitForVideoCode.length === 11) {
+                        trailer.videoCode = splitForVideoCode
+                    }
+                }
+            }
+        }
+    }
+    return cassetteOrFilm
 }
 
 function generateYaml(element, lang) {

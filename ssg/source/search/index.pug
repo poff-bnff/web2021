@@ -110,7 +110,7 @@ block content
                         - cassettesArray.push(oneCassette)
 
                     .card_film_info
-                        .str_info_grid_3
+
                             if cassette.films && cassette.films.length
                                 - var filmsProgrammes = []
                                 each film in cassette.films
@@ -121,8 +121,9 @@ block content
                                                 - allProgrammes.push(programme.name)
                                 if filmsProgrammes.length
                                     - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                                    .str_info_label.dark_semi= self.label.film.programme
-                                    #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.programme
+                                        #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
                                 - var filmsDirectors = []
                                 each film in cassette.films
@@ -131,8 +132,9 @@ block content
                                             - filmsDirectors.push(director)
                                 if filmsDirectors.length
                                     - var uniqueDirectors = [...new Set(filmsDirectors)];
-                                    .str_info_label.dark_semi= self.label.film.director
-                                    #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.director
+                                        #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
 
                                 - var filmsCountries = []
                                 each film in cassette.films
@@ -142,17 +144,10 @@ block content
                                                 - filmsCountries.push(country.country.name)
                                 if filmsCountries.length
                                     - var uniqueCountries = [...new Set(filmsCountries)];
-                                    .str_info_label.dark_semi= self.label.film.countries
-                                    #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.countries
+                                        #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
-                        //- if cassette.credentials.director
-                        //-     .str_info_grid_3
-                        //-         .str_info_label= self.label.cassette.director
-                        //-         .str_info_value= cassette.credentials.director.join(', ')
-                        //- if cassette.credentials.cast
-                        //-     .str_info_grid_3
-                        //-         .str_info_label= self.label.cassette.cast
-                        //-         .str_info_value= cassette.credentials.cast.join(', ')
 
                     button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.removeShortlist
                     button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted', onclick=`modifyFavourites('addMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.addShortlist
@@ -171,5 +166,3 @@ block content
     input#festivals(type='hidden', value=`${uniqueFestivals}`)
     input#festivalEditions(type='hidden', value=`${uniqueFestivalEditions}`)
     input#festivalProgrammes(type='hidden', value=`${uniqueProgrammes}`)
-
-
