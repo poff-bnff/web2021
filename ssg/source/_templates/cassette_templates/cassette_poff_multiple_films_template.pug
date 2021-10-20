@@ -735,6 +735,11 @@ else
                         .str_info_label= self.label.film.subtitles
                         .str_info_value= film.subtitles.map(languagesNames).join(', ')
 
+                if film.other_festivals
+
+                        .str_info_label= self.label.film.otherFestivals
+                        .str_info_value= film.other_festivals.map(languagesNames).join(', ')
+
             //- section.f_interactive_box
             //-     .f_interactive_item
             //-         p
