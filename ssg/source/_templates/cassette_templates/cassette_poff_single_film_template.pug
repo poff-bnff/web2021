@@ -360,7 +360,9 @@ main.grid_film(id=self.id)
                         .str_info_value= film.subtitles.map(languagesNames).join(', ')
 
                 if film.other_festivals
-                    
+                    .str_info_grid_3
+                        .str_info_label
+                        .str_info_value
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
