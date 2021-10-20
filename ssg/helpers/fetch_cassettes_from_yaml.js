@@ -147,6 +147,9 @@ const minimodel_cassette = {
                     'subtitles': {
                         model_name: 'Language'
                     },
+                    'other_festivals': {
+                        model_name: 'Festival'
+                    },
                     'tags': {
                         model_name: 'Tags',
                         expand: {
