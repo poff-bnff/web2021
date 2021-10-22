@@ -56,9 +56,6 @@ if (DOMAIN === 'industry.poff.ee') {
         'tag_genres': {
             model_name: 'TagGenre'
         },
-        'tag_looking_fors': {
-            model_name: 'TagLookingFor'
-        },
     }
 
     const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
