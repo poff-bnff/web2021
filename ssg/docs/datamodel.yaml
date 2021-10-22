@@ -133,6 +133,12 @@ TagFilmType: &TagFilmType
     en: (text)
     ru: (text)
 
+TagLookingFor: &TagLookingFor
+    _path: /tag-looking-for
+    et: (text)
+    en: (text)
+    ru: (text)
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -1342,6 +1348,8 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    tag_looking_fors:
+        - *TagLookingFor
 
 Channel: &Channel
     _path: /channels
