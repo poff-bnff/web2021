@@ -134,7 +134,7 @@ TagFilmType: &TagFilmType
     ru: (text)
 
 TagLookingFor: &TagLookingFor
-    _path: /tag-looking-for
+    _path: /tag-looking-fors
     et: (text)
     en: (text)
     ru: (text)
