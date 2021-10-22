@@ -147,6 +147,9 @@ const minimodel_cassette = {
                     'subtitles': {
                         model_name: 'Language'
                     },
+                    'other_festivals': {
+                        model_name: 'Festival'
+                    },
                     'tags': {
                         model_name: 'Tags',
                         expand: {
@@ -394,10 +397,6 @@ for (const lang of allLanguages) {
 
             // Kasseti treiler
             trailerProcessing(s_cassette_copy)
-            // Kasseti filmi(de) trailerid
-            if (s_cassette_copy.films) {
-                s_cassette_copy.films.map(cf => trailerProcessing(cf))
-            }
 
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
@@ -544,25 +543,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Filmi treiler
-                    if (scc_film.media && scc_film.media.trailer && scc_film.media.trailer[0]) {
-                        for (trailer of scc_film.media.trailer) {
-                            if (trailer.url && trailer.url.length > 10) {
-                                if (trailer.url.includes('vimeo')) {
-                                    let splitVimeoLink = trailer.url.split('/')
-                                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                                    if (videoCode.length === 9) {
-                                        trailer.videoCode = videoCode
-                                    }
-                                } else {
-                                    let splitYouTubeLink = trailer.url.split('=')[1]
-                                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                                    if (splitForVideoCode.length === 11) {
-                                        trailer.videoCode = splitForVideoCode
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    trailerProcessing(scc_film)
 
                     // Rolepersons by role
                     if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {

@@ -133,6 +133,12 @@ TagFilmType: &TagFilmType
     en: (text)
     ru: (text)
 
+TagLookingFor: &TagLookingFor
+    _path: /tag-looking-fors
+    et: (text)
+    en: (text)
+    ru: (text)
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -1024,12 +1030,13 @@ Film: &Film
     slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
     slug_ru: departament-zdorovya (UID, No spaces)
     festival_editions:
-        - *FestivalEdition
+        -   *FestivalEdition
     languages: #(Component (repeatable))
-        - *Language
+        -   *Language
     subtitles: #(Component (repeatable))
-        - *Language
-    otherFestivals: (text)
+        -   *Language
+    other_festivals: 
+        -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
     world_sales: #(Component (repeatable))
@@ -1347,6 +1354,8 @@ IndustryProject: &IndustryProject
         - *TagGenre
     editions: #(Component (repeatable))
         - *FestivalEdition
+    tag_looking_fors:
+        - *TagLookingFor
 
 Channel: &Channel
     _path: /channels

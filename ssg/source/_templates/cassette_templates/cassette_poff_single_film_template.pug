@@ -301,7 +301,7 @@ main.grid_film(id=self.id)
 
                         if film.credentials.roleCompaniesByRole.coproductioncompany && film.credentials.roleCompaniesByRole.coproductioncompany[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.production
+                                .str_info_label= self.label.film.coproductioncompany
                                 .str_info_value= film.credentials.roleCompaniesByRole.coproductioncompany.join(', ')
 
                         if film.credentials.roleCompaniesByRole.distributor && film.credentials.roleCompaniesByRole.distributor[0]
@@ -331,7 +331,7 @@ main.grid_film(id=self.id)
 
                         if film.credentials.roleCompaniesByRole.worldsales && film.credentials.roleCompaniesByRole.worldsales[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.production
+                                .str_info_label= self.label.film.worldsales
                                 .str_info_value= film.credentials.roleCompaniesByRole.worldsales.join(', ')
 
 
@@ -350,7 +350,6 @@ main.grid_film(id=self.id)
                             +dur(film.runtime)
 
                 if film.languages
-    
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
                         .str_info_value= film.languages.map(languagesNames).join(', ')
@@ -358,7 +357,15 @@ main.grid_film(id=self.id)
                 if film.subtitles
                     .str_info_grid_3
                         .str_info_label= self.label.film.subtitles
-                        .str_info_value= film.subtitles.map(languagesNames).join(', ')      
+                        .str_info_value= film.subtitles.map(languagesNames).join(', ')
+
+                if film.other_festivals
+                    .str_info_grid_3
+                        .str_info_label
+                        .str_info_value
+                        .str_info_label= self.label.film.otherFestivals
+                        .str_info_value= film.other_festivals.map(languagesNames).join(', ')
+
 
             section.f_interactive_box
                 .f_interactive_item
