@@ -6,26 +6,26 @@ const CSPKey= process.env['CSecretPrivateKey']
 //const keys = require(k_path)
 
 function readSheet(result, model_name, sheet_id, sheet_name, callback) {
-	
+
 	const client = new google.auth.JWT(
-		CSEmail, 
+		CSEmail,
 		null,
 		CSPKey,
 		['https://www.googleapis.com/auth/spreadsheets']
 	)
 
 	client.authorize(async function(err, tokens) {
-		
+
 		if (err) {
 			console.log(err)
 			return
 		} else {
 			// console.log(sheet_id)
-			console.log('Result dump to spreadsheet "', sheet_name,'" by ', result.updated_by.firstname, "", result.updated_by.lastname)
+			console.log('Result dump to spreadsheet "', sheet_name,'" by ', result?.updated_by?.firstname, "", result?.updated_by?.lastname)
 
 			let data = await googleSheetsRun(client, result, model_name, sheet_id, sheet_name)
 			callback(data)
-			
+
 
 		}
 	})
@@ -86,10 +86,10 @@ async function googleSheetsRun(cl, result, model_name, sheet_id, sheet_name) {
 	}
 
 	// console.log(valueList)
-	if(result.created_by.id){
+	if(result.created_by?.id){
 		delete result.created_by
 	}
-	if(result.updated_by.id){
+	if(result.updated_by?.id){
 		delete result.updated_by
 	}
 	if(result.created_at) {

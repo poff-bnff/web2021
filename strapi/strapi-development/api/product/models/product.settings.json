@@ -14,9 +14,6 @@
     "product_category": {
       "model": "product-category"
     },
-    "owner": {
-      "model": "person"
-    },
     "code": {
       "type": "string",
       "unique": true
@@ -42,11 +39,6 @@
     "reservation_price": {
       "type": "decimal"
     },
-    "sold_to": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "my_products"
-    },
     "transactions": {
       "collection": "transactions-products",
       "via": "product"
@@ -56,6 +48,11 @@
       "enum": [
         "pass"
       ]
+    },
+    "owner": {
+      "via": "my_products",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

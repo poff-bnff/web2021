@@ -261,6 +261,7 @@ module.exports = {
   },
 
   async connect(ctx, next) {
+    console.log('Connect auth');
     const grantConfig = await strapi
       .store({
         environment: '',
@@ -284,7 +285,11 @@ module.exports = {
     }
 
     // Ability to pass OAuth callback dynamically
-    grantConfig[provider].callback = _.get(ctx, 'query.callback') || grantConfig[provider].callback;
+    // grantConfig[provider].callback = _.get(ctx, 'query.callback') || grantConfig[provider].callback;
+
+    grantConfig[provider].custom_params = _.get(ctx, 'query');
+    grantConfig[provider].callback = _.get(ctx, 'query.callback') || _.get(ctx, 'state.session.grant.dynamic.callback') || grantConfig[provider].callback;
+
     grantConfig[provider].redirect_uri = strapi.plugins[
       'users-permissions'
     ].services.providers.buildRedirectUri(provider);
@@ -506,7 +511,7 @@ module.exports = {
 
     params.role = role.id;
     params.password = await strapi.plugins['users-permissions'].services.user.hashPassword(params);
-    params.externalProviders = [{provider: 'local', UUID: 'not set yet', dateConnected: new Date().toISOString()}]
+    params.externalProviders = [{ provider: 'local', UUID: 'not set yet', dateConnected: new Date().toISOString() }]
 
     const user = await strapi.query('user', 'users-permissions').findOne({
       email: params.email,

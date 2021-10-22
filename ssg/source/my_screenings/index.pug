@@ -156,76 +156,46 @@ block content
 
                                     //- Kuvame kassetipealkirja
                                     h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
-                                    button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
-
-                                    //- Kuvame screeningtypes
-                                    //- if screening.screening_types
-                                    //-     span= screening.screening_types.map(screeningNames).join(', ')
-                                    //-     br
-                                    //- Aeg
-                                    //- span
-                                    //-     +screeningDate(screening.dateTime)
-                                    //- span
-                                    //-     +screeningTime(screening.dateTime)
-                                    //- br
-
-                                    //- Koht
-                                    //- if screening.location && screening.location.hall && screening.location.hall.name
-                                    //-     if screening.location.hall && screening.location.hall.name
-                                    //-         span.film_title_locale.dark_1= screening.location.hall.name
-                                    //-         if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                    //-             span.film_title_locale.dark_1= ` ${screening.location.hall.cinema.name}`
-                                    //-             if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
-                                    //-                 span.film_title_locale.dark_1= ` ${screening.location.hall.cinema.town.name}`
-
-                                    //- Kui ühefilmikassett
-                                    //- if screening.cassette && screening.cassette.films && screening.cassette.films.length === 1
-                                    //-     - var film = screening.cassette.films[0]
-                                    //-     if screening.cassette.films[0].tags
-                                    //-         - var tags = screening.cassette.films[0].tags
-                                    //-         if tags.keywords && tags.keywords[0]
-                                    //-             //- Kuvame filmi tag keyworde
-                                    //-             .str_info_meta_label.dark_1= self.label.film.genre
-                                    //-             .str_info_meta_festival.dark_1= tags.keywords.join(', ')
-
-                                        //- Riigid algus
-                                    //- if film.orderedCountries
-                                    //-     -
-                                    //-         var countriesNames = function(item) {
-                                    //-             if(item.country && item.country.name) {
-                                    //-                 var itemNames = item.country.name
-                                    //-                 return itemNames
-                                    //-             }
-                                    //-         }
-
-                                    //-         //- Riigid
-                                    //-         .str_info_grid_3
-                                    //-             - var sortCountries = film.orderedCountries.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                                    //-             .str_info_label.dark_semi= self.label.film.countries
-                                    //-             - var mapCountries = sortCountries.map(countriesNames)
-                                    //-             .str_info_value.dark_1.thin_300= mapCountries.join(', ')
-
-                                    //-     //- Directorid
-                                    //-     if film && film.credentials && film.credentials.rolePersonsByRole
-                                    //-         if film.credentials.rolePersonsByRole.director && film.credentials.rolePersonsByRole.director[0]
-                                    //-             .str_info_grid_3
-                                    //-                 .str_info_label.dark_semi= self.label.film.director
-                                    //-                 .str_info_value.dark_1.thin_300= film.credentials.rolePersonsByRole.director.join(', ')
 
                             //- Programmid
-                            //- .card_film_info
-                            //-     .str_info_grid_3
-                            //-         if cassette.films && cassette.films.length
-                            //-             - var filmsProgrammes = []
-                            //-             each film in cassette.films
-                            //-                 if film.tags && film.tags.programmes && film.tags.programmes.length
-                            //-                     each programme in film.tags.programmes
-                            //-                         if programme.name
-                            //-                             - filmsProgrammes.push(programme.name)
-                            //-             if filmsProgrammes.length
-                            //-                 - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                            //-                 .str_info_label.dark_semi= self.label.film.programme
-                            //-                 .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                            .card_film_info
+
+                                    if cassette.films && cassette.films.length
+                                        - var filmsProgrammes = []
+                                        each film in cassette.films
+                                            if film.tags && film.tags.programmes && film.tags.programmes.length
+                                                each programme in film.tags.programmes
+                                                    if programme.name
+                                                        - filmsProgrammes.push(programme.name)
+                                        if filmsProgrammes.length
+                                            - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.programme
+                                                .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+
+                                        - var filmsDirectors = []
+                                        each film in cassette.films
+                                            if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                                each director in film.credentials.rolePersonsByRole.director
+                                                    - filmsDirectors.push(director)
+                                        if filmsDirectors.length
+                                            - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.director
+                                                #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                                        - var filmsCountries = []
+                                        each film in cassette.films
+                                            if film.orderedCountries && film.orderedCountries.length
+                                                each country in film.orderedCountries
+                                                    if country.country && country.country.name
+                                                        - filmsCountries.push(country.country.name)
+                                        if filmsCountries.length
+                                            - var uniqueCountries = [...new Set(filmsCountries)];
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.countries
+                                                #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
 
 
                 script.

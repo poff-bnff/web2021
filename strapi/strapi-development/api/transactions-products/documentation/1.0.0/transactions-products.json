@@ -546,9 +546,6 @@
               "product_category": {
                 "type": "string"
               },
-              "owner": {
-                "type": "string"
-              },
               "code": {
                 "type": "string"
               },
@@ -570,9 +567,6 @@
               "reservation_price": {
                 "type": "number"
               },
-              "sold_to": {
-                "type": "string"
-              },
               "transactions": {
                 "type": "array",
                 "items": {
@@ -584,6 +578,9 @@
                 "enum": [
                   "pass"
                 ]
+              },
+              "owner": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -622,6 +619,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "beneficiary": {
+                "type": "string"
+              },
+              "transactor": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

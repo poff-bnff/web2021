@@ -8,9 +8,9 @@ async function fetchMyPasses() {
 
     let userPerson
     let profilePicture
-    if (userProfile.users_person && userProfile.users_person.picture) {
-        userPerson = userProfile.users_person
-        profilePicture = `https://admin.poff.ee${userPerson.picture.url}`
+    if (userProfile.user_profile && userProfile.user_profile.picture) {
+        userPerson = userProfile.user_profile
+        profilePicture = `${strapiDomain}${userPerson.picture.url}`
     } else {
         return
     }

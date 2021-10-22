@@ -4,11 +4,11 @@
 each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
 
     //- Kui on peamenüü itemil artikkel:
-    if mainMenuItem[articleMenuItemDomain] && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
+    if mainMenuItem[articleMenuItemDomain] && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish
         if mainMenuItem[articleMenuItemDomain]
             - let mainArticle = mainMenuItem[articleMenuItemDomain]
 
-            if mainArticle.article_types && mainArticle.article_types[0] && mainArticle.publish === true && mainArticle.title
+            if mainArticle.article_types && mainArticle.article_types[0] && mainArticle.publish && mainArticle.title
                 - var mainArticleTypePath = ''
                 li
                     each artType in mainArticle.article_types
@@ -26,7 +26,7 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
                     a(href= `/${lang_path}${mainArticleTypePath}/${mainMenuItem[articleMenuItemDomain].slug}`)= mainMenuItem.name
 
     //- Kui peamenüü itemil pole artiklit ja on vähemalt mõni alammenüü
-    else if mainMenuItem.subMenuItem && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
+    else if mainMenuItem.subMenuItem && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish
         li.dropdown
             a= mainMenuItem.name
             ul.ul_kaks
@@ -34,7 +34,7 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
                     if subMenuItem[articleMenuItemDomain] && subMenuItem.publish !== false
                         - let article = subMenuItem[articleMenuItemDomain]
 
-                        if article.article_types && article.article_types[0] && article.publish === true && article.title
+                        if article.article_types && article.article_types[0] && article.publish && article.title
                             - var articleTypePath = ''
                             li
                                 each artType in article.article_types
@@ -61,7 +61,7 @@ each mainMenuItem in self.data.menu.sort(function(a, b){ return (a.order > b.ord
 
     //- Kui peamenüü itemil pole artiklit, pole alammenüüsid ja on customUrl
     else
-        if mainMenuItem.customUrl && mainMenuItem.customUrl.length && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish !== false
+        if mainMenuItem.customUrl && mainMenuItem.customUrl.length && mainMenuItem.name && typeof mainMenuItem.name !== 'object' && mainMenuItem.publish
             li
                 if mainMenuItem.customUrl.substring(0, 4) === 'http'
                     a(href= `${mainMenuItem.customUrl}`)= `${mainMenuItem.name}`

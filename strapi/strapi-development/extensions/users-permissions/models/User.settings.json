@@ -92,16 +92,16 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "via": "sold_to",
-      "collection": "product"
+      "collection": "product",
+      "via": "owner"
     },
     "transactions": {
-      "collection": "transaction",
-      "via": "user"
+      "via": "transactor",
+      "collection": "transaction"
     },
-    "users_person": {
-      "model": "users-persons",
-      "via": "users_permissions_user"
+    "user_profile": {
+      "via": "user",
+      "model": "user-profiles"
     }
   }
 }

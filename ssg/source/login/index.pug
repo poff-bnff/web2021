@@ -15,7 +15,6 @@ block content
         h4#fromFavo(style={display:'none'})= self.label.userprofile.redirectFromFavouritesMessage
 
     section.grid_login
-        - var strapiDomain = 'https://admin.poff.ee'
         if process.env['DOMAIN'] !== 'industry.poff.ee'
 
             .login_password
@@ -83,11 +82,12 @@ block content
                     .button.login_btn_social
                         | Google
 
-                //- a#loginE(onclick='loginViaProvider(this.textContent)')
-                //-     .button.login_btn_social
-                //-         | Eventival
+                a#loginE(onclick='loginViaProvider(this.textContent)')
+                    .button.login_btn_social
+                        | Eventival
 
-            a#loginE(href=`https://api.poff.ee/auth/eventival`)
+            //- a#loginE(href=`https://api.poff.ee/auth/eventival`)
+            a#loginE(href=`http://admin.poff.ee/connect/eventival/?callback=https://industry.poff.ee/login/`)
                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
             p#mergeProvidersFailed(style={display:'none'})= self.label.userprofile.mergeProvidersFailed
 

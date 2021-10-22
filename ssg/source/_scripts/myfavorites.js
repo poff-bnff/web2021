@@ -71,7 +71,7 @@ function modifyFavourites(type, favId) {
     };
 
 
-    fetch('https://admin.poff.ee/users/favorites/', requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users/favorites/`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

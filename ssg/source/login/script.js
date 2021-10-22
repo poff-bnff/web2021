@@ -186,7 +186,7 @@ const redirectToPreLoginUrl = (userProfile) => {
 
 // Helpers:
 const getAccessTokenWithProvider = () => {
-    let provider = localStorage.getItem('LOGIN_PROVIDER')
+    let provider = window.location.hostname === 'industry.poff.ee' ? 'eventival' : localStorage.getItem('LOGIN_PROVIDER')
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const access_token = urlParams.get('access_token')

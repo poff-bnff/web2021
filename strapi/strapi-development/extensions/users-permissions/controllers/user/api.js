@@ -181,12 +181,12 @@ module.exports = {
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
-      console.log('Create new Person to users-persons');
+      console.log('Create new Person to user-profiles');
       let newUserProfile
       if (files.picture) {
-        newUserProfile = await strapi.services['users-persons'].create(personProfile, { files })
+        newUserProfile = await strapi.services['user-profiles'].create(personProfile, { files })
       } else {
-        newUserProfile = await strapi.services['users-persons'].create(personProfile)
+        newUserProfile = await strapi.services['user-profiles'].create(personProfile)
       }
       console.log('newUserProfile', newUserProfile);
       return newUserProfile
@@ -196,9 +196,9 @@ module.exports = {
       const { files } = parseMultipartData(ctxForPicture);
       let updatedProfile
       if (files.picture) {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile, { files })
+        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile, { files })
       } else {
-        updatedProfile = await strapi.services['users-persons'].update({ id }, personProfile)
+        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
       }
       console.log('personProfile', personProfile);
       console.log('updatedProfile', updatedProfile);
@@ -252,12 +252,12 @@ module.exports = {
 
     // Create new person if it does not exist, else update
     personProfile.email = user.email
-    if (!user.users_person) {
+    if (!user.user_profile) {
       personProfile.users_permissions_user = id
       console.log('Create new person', personProfile);
       // await createNewPersonProfile(personProfile)
     } else {
-      // await updatePersonProfile(personProfile, user.users_person.id)
+      // await updatePersonProfile(personProfile, user.user_profile.id)
     }
 
     let updateData = {
@@ -283,9 +283,9 @@ module.exports = {
       }
     }
 
-    let thisUsersProfile = !user.users_person ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.users_person.id)
-    updateData.users_person = thisUsersProfile.id
-    console.log('updateData.users_person', updateData.users_person);
+    let thisUsersProfile = !user.user_profile ? await createNewPersonProfile(personProfile, ctx) : await updatePersonProfile(personProfile, ctx, user.user_profile.id)
+    updateData.user_profile = thisUsersProfile.id
+    console.log('updateData.user_profile', updateData.user_profile);
 
     const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
     // toSheets.newUserToSheets(updatedUser)
@@ -339,7 +339,7 @@ module.exports = {
     let rawData = { ...JSON.parse(ctx.request.body) }
 
     // User needs to fill profile before
-    if (!user.users_person) {
+    if (!user.user_profile) {
       rawData.users_permissions_user = id
       console.log('Please fill profile');
     }
@@ -496,26 +496,26 @@ module.exports = {
     console.log('cancel_url ', cancel_url)
 
     if (!userId) {
-      return [401, 'Unauthorized']
+      return { code: 401, case: 'unauthorized' }
     }
 
     if (!categoryId) {
-      return [400, 'No categoryId']
+      return { code: 400, case: 'noCategoryId' }
     }
 
     // if (!saleActiveCategories.includes(categoryId)) {
-    //   return [400, 'Sale currently closed for this product']
+    //   return { code: 400, case: 'Sale currently closed for this product' }
     // }
 
     if (!paymentMethodId) {
-      return [400, 'No paymentMethodId']
+      return { code: 400, case: 'noPaymentMethodId' }
     }
 
     ///////////////////////////////////////
     const params = {
       code_null: false,
       reserved_to_null: true,
-      sold_to_null: true,
+      owner_null: true,
       owner_null: true,
       product_category_null: false,
       'product_category.codePrefix': categoryId,
@@ -525,24 +525,34 @@ module.exports = {
     let getOneProduct = await strapi.services.product.findOne(params)
 
     if (!getOneProduct || getOneProduct.length === 0) {
-      return [404, 'No items']
+      return { code: 404, case: 'noItems' }
     }
 
     let thisProductId = getOneProduct.id
-    let thisProductPrice = getOneProduct?.product_category?.priceAtPeriod[0]?.price
+    let dateTimeNow = new Date()
+    let productPrices = getOneProduct.product_category.priceAtPeriod.filter(p => {
+      if (p.startDateTime && p.endDateTime && new Date(p.startDateTime) < dateTimeNow && new Date(p.endDateTime) > dateTimeNow) {
+        return true
+      } else {
+        return false
+      }
+    })
+    let thisProductCurrentPrice = productPrices[0].price
+
     console.log('id', thisProductId, typeof thisProductId)
-    console.log('price', thisProductPrice)
+    console.log('price', thisProductCurrentPrice, 'valid: ', productPrices[0].startDateTime, ' - ', productPrices[0].endDateTime)
 
 
     const reserveParams = {
       reserved_to: userId,
+      reservation_price: thisProductCurrentPrice,
       reservation_time: (new Date()).toISOString()
     }
 
     let reserveProduct = await strapi.services.product.update({ 'id': thisProductId }, reserveParams)
 
     if (!reserveProduct.reserved_to) {
-      return [500, 'Failed to save reservation']
+      return { code: 500, case: 'reservationSaveFailed' }
     }
     console.log('Product ', thisProductId, ' reserved to ', reserveProduct.reserved_to.id);
 
@@ -554,7 +564,7 @@ module.exports = {
         locale: body.locale || 'et'
       },
       transaction: {
-        amount: thisProductPrice,
+        amount: thisProductCurrentPrice,
         currency: 'EUR',
         merchant_data: JSON.stringify({
           userId: userId,
@@ -565,9 +575,9 @@ module.exports = {
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/cancel` },
-          notification_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/notification` },
-          return_url: { method: 'POST', url: `https://admin.poff.ee/users-permissions/users/buyproductcb/return` }
+          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/return` }
         }
       }
     })
@@ -580,7 +590,7 @@ module.exports = {
     ].find(m => [m.country, m.name].join('_').toUpperCase() === body.paymentMethodId)
 
     if (!paymentMethod) {
-      return [400, 'No paymentMethod']
+      return { code: 400, case: 'noPaymentMethod' }
     }
 
     return { url: paymentMethod.url }
@@ -631,6 +641,7 @@ module.exports = {
 
       const updateProductOptions = {
         reservation_time: null,
+        reservation_price: null,
         reserved_to: null
       }
 
@@ -642,7 +653,7 @@ module.exports = {
       }
 
       if (updateProduct) {
-        console.log('Updated product to set reservation and reservation time info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
+        console.log('Updated product to set reservation and reservation time/price info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
       } else {
         console.log('Product already no allocated to this user, did not set reservation and reservation time info to null.');
       }
@@ -696,7 +707,8 @@ module.exports = {
         const addTransactionOptions = {
           dateTime: mkResponse.message_time,
           type: 'Purchase',
-          user: product.userId,
+          transactor: product.userId,
+          beneficiary: product.userId,
           payment: {
             currency: mkResponse.currency,
             amount: mkResponse.amount,
@@ -718,7 +730,7 @@ module.exports = {
 
         // Update pass one last time
         const successOptions = {
-          sold_to: product.userId,
+          owner: product.userId,
           transactions: [addTransaction]
         }
 
@@ -754,8 +766,8 @@ module.exports = {
               template_name: `passiost`,
               template_vars: [
                 { name: 'email', content: getUserInfo.email },
-                { name: 'eesnimi', content: getUserInfo.users_person.firstName },
-                { name: 'perenimi', content: getUserInfo.users_person.lastName },
+                { name: 'eesnimi', content: getUserInfo.user_profile.firstName },
+                { name: 'perenimi', content: getUserInfo.user_profile.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
                 { name: 'passikood', content: updateProductSuccess.code },
                 { name: 'passinimi', content: updateProductSuccess.product_category.name.et }

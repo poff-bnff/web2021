@@ -12,19 +12,9 @@ const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
 let TOKEN = null
 
-const production = true
-let https
-let strapiAddress
-let strapiPort
-
-if (production) {
-    https = require('https')
-    strapiAddress = process.env['StrapiHostPoff2021']
-} else {
-    https = require('http')
-    strapiAddress = 'localhost'
-    strapiPort = '1337'
-}
+let https = require(process.env['StrapiProtocol'])
+let strapiAddress = process.env['StrapiHost']
+let strapiPort = process.env['StrapiPort']
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
@@ -72,7 +62,7 @@ function startBuild() {
     const startTime = getCurrentTime()
     firstInQueue.also_builds = duplicatesLogIds
 
-    console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
+    console.log(`Starting build (log ${firstInQueue.log_id}): `, buildFileName, buildDomain, buildType, buildParameters);
     const build_start_time = moment().tz('Europe/Tallinn').format()
 
     if (duplicatesLogIds?.length) {
@@ -120,9 +110,9 @@ function startBuild() {
             writeToOtherBuildLogs(duplicatesLogIds, build_end_data)
         }
 
-        console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
+        console.log('\n', `Removing build ${firstInQueue.log_id} from queue: `, buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
-        removeFirstInQueue()
+        removeFinishedBuildFromQueue(firstInQueue.log_id)
 
         // If queue empty, rm queue file, else start building first one in queue
         if (!deleteQueueIfEmpty()) { startBuild() }
@@ -169,10 +159,10 @@ function deleteQueueIfEmpty() {
     }
 }
 
-function removeFirstInQueue() {
+function removeFinishedBuildFromQueue(logId) {
     const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
-    queueFile.shift()
-    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const updatedQueueFile = queueFile.filter(q => q.log_id !== logId)
+    const queueDump = yaml.dump(updatedQueueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
 }
 
@@ -374,7 +364,7 @@ async function logQuery(id, type = 'GET', data) {
             }
         };
 
-        if (!production){
+        if (process.env['StrapiProtocol'] !== 'https'){
             options.port = strapiPort
         }
 

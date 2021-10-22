@@ -190,7 +190,10 @@ Programme: &Programme
     _path: /programmes
     remoteId: (UID)
     namePrivate: (text)
-    name: *Translated #(Component)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    # name: *Translated #(Component)
     description: *Translated # (Component, rich)
     festival_editions: #(Component (repeatable))
         - *FestivalEdition
@@ -1021,12 +1024,13 @@ Film: &Film
     slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
     slug_ru: departament-zdorovya (UID, No spaces)
     festival_editions:
-        - *FestivalEdition
+        -   *FestivalEdition
     languages: #(Component (repeatable))
-        - *Language
+        -   *Language
     subtitles: #(Component (repeatable))
-        - *Language
-    otherFestivals: (text)
+        -   *Language
+    other_festivals: 
+        -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
     world_sales: #(Component (repeatable))
@@ -1342,6 +1346,8 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    editions: #(Component (repeatable))
+        - *FestivalEdition
 
 Channel: &Channel
     _path: /channels
@@ -1383,6 +1389,7 @@ IndustrySubMenuItem: &IndustrySubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 IndustryMenu: &IndustryMenu
     _path: /industry-menus
@@ -1393,6 +1400,7 @@ IndustryMenu: &IndustryMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
+    publish: (boolean)
 
 # Supporters
 SupPoff: &SupPoff

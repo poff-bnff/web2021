@@ -45,26 +45,24 @@ async function call_update(result, model) {
 }
 
 async function build_start_to_strapi_logs(result, domain, err = null, b_err = null, model_and_target = null, del) {
-  let editor = result.updated_by?.id
+  let editor = result.updated_by?.id || 48
   let plugin_log
-  if (result.updated_by) {
 
-    let loggerData = {
-      queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
-      admin_user: {
-        id: editor
-      },
-      type: 'build',
-      site: domain,
-      error_code: err,
-      build_errors: b_err,
-      build_args: model_and_target,
-      action: del ? 'delete' : 'new or edit'
-    }
-
-    plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
-    // console.log('Sinu palutud v4ljaprint', plugin_log)
+  let loggerData = {
+    queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
+    admin_user: {
+      id: editor
+    },
+    type: 'build',
+    site: domain,
+    error_code: err,
+    build_errors: b_err,
+    build_args: model_and_target,
+    action: del ? 'delete' : 'new or edit'
   }
+
+  plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
+  // console.log('Sinu palutud v4ljaprint', plugin_log)
   return plugin_log
 }
 
@@ -276,6 +274,10 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  // here to skip specific model builds
+  if (model_name === 'film' || model_name === 'cassette' || model_name === 'screening') {
+    return
+  }
   let build_error
   if (domains[0] === 'FULL_BUILD') {
     let error = 'FULL BUILD'

@@ -54,7 +54,7 @@ const connect = (provider, query) => {
         const users = await strapi.query('user', 'users-permissions').find({
           email: profile.email,
         });
-        console.log('Services Providers. Try to find user', users);
+        console.log('Services Providers. Try to find user', users?.[0]?.email);
 
         const advanced = await strapi
           .store({

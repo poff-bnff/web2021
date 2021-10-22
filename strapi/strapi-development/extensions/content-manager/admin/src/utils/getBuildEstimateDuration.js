@@ -1,5 +1,4 @@
-const strapiHost = 'https://admin.poff.ee'
-// const strapiHost = 'http://localhost:1337'
+const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}`
 
 const getBuildEstimateDuration = async (buildArgs) => {
 

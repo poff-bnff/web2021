@@ -16,8 +16,8 @@
       "model": "product"
     },
     "transaction": {
-      "model": "transaction",
-      "via": "products"
+      "via": "products",
+      "model": "transaction"
     },
     "value": {
       "type": "decimal",

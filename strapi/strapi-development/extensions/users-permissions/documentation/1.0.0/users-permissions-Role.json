@@ -594,7 +594,7 @@
                     "type": "string"
                   }
                 },
-                "users_person": {
+                "user_profile": {
                   "type": "string"
                 },
                 "created_by": {

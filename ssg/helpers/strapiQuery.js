@@ -1,16 +1,7 @@
-const production = true
-let https
-let strapiAddress
-let strapiPort
-
-if (production) {
-    https = require('https')
-    strapiAddress = process.env['StrapiHostPoff2021']
-} else {
-    https = require('http')
-    strapiAddress = 'localhost'
-    strapiPort = '1337'
-}
+console.log('StrapiProtocol:', process.env['StrapiProtocol'], typeof process.env['StrapiProtocol']);
+let https = require(process.env['StrapiProtocol'])
+let strapiAddress = process.env['StrapiHost']
+let strapiPort = process.env['StrapiPort']
 
 const fs = require('fs')
 const yaml = require('js-yaml')
@@ -33,7 +24,7 @@ async function strapiQuery(options, dataObject = false) {
     options['hostname'] = strapiAddress
     // options.timeout = 30000
 
-    if (!production){
+    if (process.env['StrapiProtocol'] !== 'https'){
         options.port = strapiPort
     }
 
@@ -131,7 +122,7 @@ async function getModel(model, filters={}) {
         full_model_fetch: full_model_fetch
     }
 
-    if (!production){
+    if (process.env['StrapiProtocol'] !== 'https'){
         options.port = strapiPort
     }
 
@@ -164,7 +155,7 @@ async function putModel(model, data) {
             path: _path + '/' + element.id,
             method: 'PUT'
         }
-        if (!production){
+        if (process.env['StrapiProtocol'] !== 'https'){
             options.port = strapiPort
         }
 

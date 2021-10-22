@@ -95,8 +95,6 @@ const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
 for (const lang of allLanguages) {
     const dataFrom = {
-        'pictures': '/article_pictures.yaml',
-        'screenings': `/film/screenings.${lang}.yaml`,
         'articles': `/_fetchdir/articles.${lang}.yaml`
     }
     var dirPath = `${sourceDir}_fetchdir/articles/`

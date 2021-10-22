@@ -1,6 +1,7 @@
 "use strict";
 const { execFile, exec, spawn } = require("child_process");
 const fs = require("fs");
+const yaml = require('js-yaml')
 const { StringDecoder } = require("string_decoder");
 const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
@@ -158,6 +159,66 @@ async function doFullBuild(userInfo) {
   }
 }
 
+async function doKillSwitch(userInfo) {
+  const queuePath = `../../ssg/helpers/build_queue.yaml`
+  const logPath = `../../ssg/helpers/build_logs.yaml`
+  const killerScript = `../../ssg/kill_switch.sh`
+  console.log('KILL SWITCH ACTIVATED!');
+  if (userInfo) {
+    if (fs.existsSync(queuePath)) {
+      if (fs.existsSync(logPath)) {
+        const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
+        const lastBuild = logFile[logFile.length - 1]
+        const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
+        const userName = `${userInfo.firstname} ${userInfo.lastname}`
+
+        console.log(`Killer: ${userName}. ${lastBuildPID ? `Running PID to also be killed: ${lastBuildPID}}` : 'No running build to kill.'}`)
+
+        const child = spawn('bash', [killerScript, lastBuildPID])
+
+        let info = ''
+        return new Promise((resolve, reject) => {
+          child.stdout.on("data", async (data) => {
+            info += decoder.write(data)
+          });
+
+          child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            info += 'error: ' + decoder.write(error)
+          });
+
+          child.on("close", async (code) => {
+            console.log(`child process exited with code ${code}`);
+
+            if (code === 0) {
+              console.log(info);
+              resolve({ type: 'success', message: info })
+            } else if (code === 1) {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code 1. ${info}` })
+            } else {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code ${code}. ${info}` })
+            }
+          });
+        });
+
+      } else {
+        console.log('No log file for PID');
+        return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
+      }
+    } else {
+      console.log('No build queue');
+      return { type: 'warning', message: 'Järjekorda ei eksisteeri' }
+    }
+  } else {
+    console.log('No killer info');
+    return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -175,7 +236,7 @@ module.exports = {
     } else {
       // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-        
+
         await doBuild(site, userInfo)
         ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
@@ -191,8 +252,18 @@ module.exports = {
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    ctx.send({ message: "full build started" })
     await doFullBuild(userInfo)
+
+  },
+  killSwitch: async (ctx) => {
+    // console.log('ctx', ctx)
+    console.log("Killing all!")
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+
+    const killResult = await doKillSwitch(userInfo)
+    ctx.send(killResult)
 
   },
   logs: async (ctx) => {
@@ -307,7 +378,7 @@ module.exports = {
   },
   lastBuildLogBySite: async (ctx) => {
 
-    const params = { 
+    const params = {
       site: ctx.params.site,
       _sort: 'id:desc',
       type: 'build'

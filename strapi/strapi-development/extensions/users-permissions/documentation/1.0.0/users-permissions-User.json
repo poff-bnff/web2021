@@ -1669,9 +1669,6 @@
                 "product_category": {
                   "type": "string"
                 },
-                "owner": {
-                  "type": "string"
-                },
                 "code": {
                   "type": "string"
                 },
@@ -1693,9 +1690,6 @@
                 "reservation_price": {
                   "type": "number"
                 },
-                "sold_to": {
-                  "type": "string"
-                },
                 "transactions": {
                   "type": "array",
                   "items": {
@@ -1707,6 +1701,9 @@
                   "enum": [
                     "pass"
                   ]
+                },
+                "owner": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -1749,6 +1746,12 @@
                     "type": "string"
                   }
                 },
+                "beneficiary": {
+                  "type": "string"
+                },
+                "transactor": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1758,16 +1761,13 @@
               }
             }
           },
-          "users_person": {
+          "user_profile": {
             "required": [
               "id",
               "email"
             ],
             "properties": {
               "id": {
-                "type": "string"
-              },
-              "users_permissions_user": {
                 "type": "string"
               },
               "firstName": {
@@ -1792,6 +1792,9 @@
                 "type": "string"
               },
               "phoneNr": {
+                "type": "string"
+              },
+              "user": {
                 "type": "string"
               },
               "created_by": {
@@ -2126,7 +2129,7 @@
               "type": "string"
             }
           },
-          "users_person": {
+          "user_profile": {
             "type": "string"
           },
           "created_by": {

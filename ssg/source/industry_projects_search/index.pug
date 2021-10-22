@@ -3,7 +3,8 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    if self.data.industryprojects && process.env['DOMAIN'] === 'industry.poff.ee'
+
+    if self.data.industryprojects && self.data.industryprojects.length && process.env['DOMAIN'] === 'industry.poff.ee'
         h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
         .grid_search#filters(style='display: none;')
@@ -39,9 +40,7 @@ block content
 
             h3#nonetoshow.sub_section_headline(style='display: none;')
 
-
-
-        if self.data.industryprojects
+        if self.data.industryprojects && self.data.industryprojects.length
 
             main.grid_films
                 each project in self.data.industryprojects

@@ -114,5 +114,4 @@ build
 .strapi-updater.json
 
 jwt.js
-database.js
-server.js
+
