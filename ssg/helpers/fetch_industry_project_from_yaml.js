@@ -60,6 +60,9 @@ if (DOMAIN === 'industry.poff.ee') {
         'editions': {
             model_name: 'FestivalEdition'
         },
+        'tag_looking_fors': {
+            model_name: 'TagLookingFor'
+        },
     }
 
     const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
