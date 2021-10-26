@@ -15,12 +15,12 @@ main.grid_film(id=self.id)
         each film in self.films
 
             //- KARUSELL filmi piltidega
-            section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
+            section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
                     if self.films && self.films[0].media
                         if self.films[0].media.stills && self.films[0].media.stills[0]
                             each val, index in self.films[0].media.stills
-                                li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                                li(data-bs-target='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.films && self.films[0] && self.films[0].media
                         if self.films[0].media.stills && self.films[0].media.stills.length
@@ -38,12 +38,12 @@ main.grid_film(id=self.id)
                         .carousel-item.active.container_contents_16_9
                             img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = film.title || film.title_et)
 
-                a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+                a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
                     // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         polyline(points='15 18 9 12 15 6')
                     span.sr-only Previous
-                a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+                a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
                     // <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         polyline(points='9 18 15 12 9 6')
