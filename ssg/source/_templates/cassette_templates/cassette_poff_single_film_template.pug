@@ -524,7 +524,7 @@ main.grid_film(id=self.id)
                     div
                         h1.section_headline= self.label.film.screenings
 
-                    .card-deck.m-o.p-0
+                    .card-group.m-o.p-0
                         if self.screenings && self.screenings[0]
                             //- - var sortedScreenings = self.screenings.sort(function(a, b){return new Date(a.dateTime)-new Date(b.dateTime)})
                             each screening in self.screenings
