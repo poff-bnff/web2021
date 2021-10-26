@@ -125,6 +125,9 @@
     "awardings": {
       "collection": "awarding",
       "via": "project"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }

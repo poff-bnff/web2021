@@ -963,6 +963,12 @@
                     "type": "string"
                   }
                 },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
