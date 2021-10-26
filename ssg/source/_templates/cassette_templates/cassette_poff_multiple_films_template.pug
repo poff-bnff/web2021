@@ -368,7 +368,7 @@ main.grid_cassette
                 if (med.trailer && med.trailer[0] && med.trailer[0].videoCode)
                     .section_headline= self.label.film.trailer
                     each trailer in med.trailer
-                        .embed-responsive.embed-responsive-16x9.m-0.p-0
+                        .ratio.ratio-16x9.m-0.p-0
                             if trailer.videoCode
                                 +video(trailer.videoCode)
                                 //- - console.log(self.title)
@@ -377,7 +377,7 @@ main.grid_cassette
                     if filterQa.length
                         .section_headline= self.label.film.qaClip
                             each qaclip in filterQa
-                                .embed-responsive.embed-responsive-16x9.m-0.p-0
+                                .ratio.ratio-16x9.m-0.p-0
                                     +videolQaClip(qaclip.url)
 
 
@@ -821,7 +821,7 @@ else
 
             //-     section.f_qaclip_box
             //-         .section_headline= self.label.film.qaClip
-            //-         .embed-responsive.embed-responsive-16x9.m-0.p-0
+            //-         .ratio.ratio-16x9.m-0.p-0
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
@@ -834,7 +834,7 @@ else
                 section.f_trailer_box
                     .section_headline= self.label.film.trailer
                     each trailer in film.media.trailer
-                        .embed-responsive.embed-responsive-16x9.m-0.p-0
+                        .ratio.ratio-16x9.m-0.p-0
                             if trailer.videoCode
                                 +video(trailer.videoCode)
 
