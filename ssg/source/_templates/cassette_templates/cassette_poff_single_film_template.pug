@@ -209,11 +209,11 @@ main.grid_film(id=self.id)
                         if film.credentials.rolePersonsByRole.creativeproducer && film.credentials.rolePersonsByRole.creativeproducer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.creativeproducer
-                                .str_info_value= film.credentials.rolePersonsByRole.creativeproducer.join(', ')                                                                  
+                                .str_info_value= film.credentials.rolePersonsByRole.creativeproducer.join(', ')
                         if film.credentials.rolePersonsByRole.juniorproducer && film.credentials.rolePersonsByRole.juniorproducer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.juniorproducer
-                                .str_info_value= film.credentials.rolePersonsByRole.juniorproducer.join(', ')   
+                                .str_info_value= film.credentials.rolePersonsByRole.juniorproducer.join(', ')
 
                         if film.credentials.rolePersonsByRole.directorofphotography && film.credentials.rolePersonsByRole.directorofphotography[0]
                             .str_info_grid_3
@@ -223,16 +223,16 @@ main.grid_film(id=self.id)
                         if film.credentials.rolePersonsByRole.cinematographer && film.credentials.rolePersonsByRole.cinematographer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.cinematographer
-                                .str_info_value= film.credentials.rolePersonsByRole.cinematographer.join(', ')   
+                                .str_info_value= film.credentials.rolePersonsByRole.cinematographer.join(', ')
 
                         if film.credentials.rolePersonsByRole.productiondesigner && film.credentials.rolePersonsByRole.productiondesigner[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.productiondesigner
-                                .str_info_value= film.credentials.rolePersonsByRole.productiondesigner.join(', ')                                                                  
+                                .str_info_value= film.credentials.rolePersonsByRole.productiondesigner.join(', ')
                         if film.credentials.rolePersonsByRole.artdirector && film.credentials.rolePersonsByRole.artdirector[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.artdirector
-                                .str_info_value= film.credentials.rolePersonsByRole.artdirector.join(', ')                                                           
+                                .str_info_value= film.credentials.rolePersonsByRole.artdirector.join(', ')
 
                         if film.credentials.rolePersonsByRole.editor && film.credentials.rolePersonsByRole.editor[0]
                             .str_info_grid_3
@@ -242,11 +242,11 @@ main.grid_film(id=self.id)
                         if film.credentials.rolePersonsByRole.writer && film.credentials.rolePersonsByRole.writer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.writer
-                                .str_info_value= film.credentials.rolePersonsByRole.writer.join(', ')                                                                  
+                                .str_info_value= film.credentials.rolePersonsByRole.writer.join(', ')
                         if film.credentials.rolePersonsByRole.cowriter && film.credentials.rolePersonsByRole.cowriter[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.cowriter
-                                .str_info_value= film.credentials.rolePersonsByRole.cowriter.join(', ')    
+                                .str_info_value= film.credentials.rolePersonsByRole.cowriter.join(', ')
 
                         if film.credentials.rolePersonsByRole.composer && film.credentials.rolePersonsByRole.composer[0]
                             .str_info_grid_3
@@ -256,22 +256,22 @@ main.grid_film(id=self.id)
                         if film.credentials.rolePersonsByRole.music && film.credentials.rolePersonsByRole.music[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.music
-                                .str_info_value= film.credentials.rolePersonsByRole.music.join(', ')  
+                                .str_info_value= film.credentials.rolePersonsByRole.music.join(', ')
 
                         if film.credentials.rolePersonsByRole.sound && film.credentials.rolePersonsByRole.sound[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.sound
-                                .str_info_value= film.credentials.rolePersonsByRole.sound.join(', ')   
+                                .str_info_value= film.credentials.rolePersonsByRole.sound.join(', ')
 
                         if film.credentials.rolePersonsByRole.animation && film.credentials.rolePersonsByRole.animation[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.animation
-                                .str_info_value= film.credentials.rolePersonsByRole.animation.join(', ')   
+                                .str_info_value= film.credentials.rolePersonsByRole.animation.join(', ')
 
                         if film.credentials.rolePersonsByRole.instructor && film.credentials.rolePersonsByRole.instructor[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.instructor
-                                .str_info_value= film.credentials.rolePersonsByRole.instructor.join(', ')                                                                                           
+                                .str_info_value= film.credentials.rolePersonsByRole.instructor.join(', ')
                         if film.credentials.rolePersonsByRole.choreographer && film.credentials.rolePersonsByRole.choreographer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.choreographer
@@ -280,13 +280,13 @@ main.grid_film(id=self.id)
                         if film.credentials.rolePersonsByRole.publicfunds && film.credentials.rolePersonsByRole.publicfunds[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.publicfunds
-                                .str_info_value= film.credentials.rolePersonsByRole.publicfunds.join(', ')   
+                                .str_info_value= film.credentials.rolePersonsByRole.publicfunds.join(', ')
 
                         if film.credentials.rolePersonsByRole.privatefunds && film.credentials.rolePersonsByRole.privatefunds[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.privatefunds
-                                .str_info_value= film.credentials.rolePersonsByRole.privatefunds.join(', ')                                                                  
-                                                          
+                                .str_info_value= film.credentials.rolePersonsByRole.privatefunds.join(', ')
+
                         //- Below datamodel needs to be updated and then code amended to be correct
                         if film.credentials.rolePersonsByRole.productioncompany && film.credentials.rolePersonsByRole.productioncompany[0]
                             .str_info_grid_3
@@ -539,14 +539,14 @@ main.grid_film(id=self.id)
                                                     line(x1='3' y1='10' x2='21' y2='10')
                                                 span.screening_date
                                                     if screening.dateTime
-                                                        +screeningDate(screening.dateTime)
+                                                        +screeningDateEET(screening.dateTime)
 
                                             .text-right
                                                 svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                                     circle(cx='12' cy='12' r='10')
                                                     polyline(points='12 6 12 12 16 14')
                                                 span.screening_time
-                                                    +screeningTime(screening.dateTime)
+                                                    +screeningTimeEET(screening.dateTime)
 
                                         .container_screening_location
                                             svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
