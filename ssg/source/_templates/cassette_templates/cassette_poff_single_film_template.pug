@@ -20,7 +20,7 @@ main.grid_film(id=self.id)
                     if self.films && self.films[0].media
                         if self.films[0].media.stills && self.films[0].media.stills[0]
                             each val, index in self.films[0].media.stills
-                                li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                                li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.films && self.films[0] && self.films[0].media
                         if self.films[0].media.stills && self.films[0].media.stills.length

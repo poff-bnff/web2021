@@ -15,7 +15,7 @@ main.grid_cassette
             if cassetteCarouselPics
                 if cassetteCarouselPics
                     each val, index in cassetteCarouselPics
-                        li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-slide-to=index class=`${index === 0 ? 'active' : ''}`)
         .carousel-inner.container_frame_16_9
             if cassetteCarouselPics
                 each val, index in cassetteCarouselPics
@@ -405,7 +405,7 @@ else
                     if film.media
                         if film.media.stills && film.media.stills[0]
                             each val, index in film.media.stills
-                                li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                                li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if film.media
                         if film.media.stills && film.media.stills.length

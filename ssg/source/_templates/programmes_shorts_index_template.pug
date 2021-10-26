@@ -17,7 +17,7 @@ block content
             ol.carousel-indicators
                 if images.length
                     each val, index in images
-                        li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-slide-to=index class=`${index === 0 ? 'active' : ''}`)
             .carousel-inner.container_frame_16_9
                 if images
                     if images.length
