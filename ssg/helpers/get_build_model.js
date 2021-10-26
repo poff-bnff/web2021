@@ -88,7 +88,7 @@ function model(arg) {
 		'screening-mode': 'full',
 		'screening-type': 'full',
 		'shop': 'full',
-		'six-films': 'full',
+		'six-films': 'trio_and_hero',
 		'tag-genre': 'full',
 		'tag-keyword': 'full',
 		'tag-premiere-type': 'full',
