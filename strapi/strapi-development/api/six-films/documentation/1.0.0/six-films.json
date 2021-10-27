@@ -710,6 +710,12 @@
                     "type": "string"
                   }
                 },
+                "other_festivals": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -822,6 +828,12 @@
                     "type": "string"
                   }
                 },
+                "other_festivals": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -929,6 +941,12 @@
                   "type": "boolean"
                 },
                 "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "other_festivals": {
                   "type": "array",
                   "items": {
                     "type": "string"
