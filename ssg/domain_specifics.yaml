@@ -22,10 +22,11 @@ cassettes_festival_editions:
         - 28
         - 29
         - 30
+        - 32
     justfilm.ee:
         - 29
     kinoff.poff.ee:
-        - 4
+        - 32
     industry.poff.ee:
         - 0
     shorts.poff.ee:
@@ -52,10 +53,11 @@ programmes_festival_editions:
         - 28
         - 29
         - 30
+        - 32
     justfilm.ee:
         - 29
     kinoff.poff.ee:
-        - 4
+        - 32
     industry.poff.ee:
         - 0
     shorts.poff.ee:

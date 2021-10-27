@@ -940,9 +940,6 @@
                     "namePrivate": {
                       "type": "string"
                     },
-                    "name": {
-                      "type": "component"
-                    },
                     "description": {
                       "type": "component"
                     },
@@ -1220,6 +1217,12 @@
                       "type": "boolean"
                     },
                     "awardings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "other_festivals": {
                       "type": "array",
                       "items": {
                         "type": "string"
@@ -1582,9 +1585,6 @@
                     "namePrivate": {
                       "type": "string"
                     },
-                    "name": {
-                      "type": "component"
-                    },
                     "description": {
                       "type": "component"
                     },
@@ -1803,6 +1803,12 @@
                       "type": "boolean"
                     },
                     "awardings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "other_festivals": {
                       "type": "array",
                       "items": {
                         "type": "string"

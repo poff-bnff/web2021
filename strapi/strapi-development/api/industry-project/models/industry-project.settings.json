@@ -114,7 +114,7 @@
     "completionYear": {
       "type": "integer"
     },
-    "imbdLink": {
+    "imdbLink": {
       "type": "string"
     },
     "editions": {
@@ -123,8 +123,11 @@
       "dominant": true
     },
     "awardings": {
-      "via": "project",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "project"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }
