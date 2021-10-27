@@ -1,10 +1,10 @@
-section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-ride='carousel' data-interval='6000')
+section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
 
         ol.carousel-indicators
-            li(data-bs-target='#carouselSponsorIndicators' href='#carouselSponsorIndicators' data-slide-to = 0)
-            li(data-bs-target='#carouselSponsorIndicators' href='#carouselSponsorIndicators' data-slide-to = 1)
-            li(data-bs-target='#carouselSponsorIndicators' href='#carouselSponsorIndicators' data-slide-to = 2)
-            li(data-bs-target='#carouselSponsorIndicators' href='#carouselSponsorIndicators' data-slide-to = 3)
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
 
         .carousel-inner.container_frame_justi_banner
             .carousel-item.container_contents_justi_banner
@@ -16,12 +16,12 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-ride='car
             //- .carousel-item.container_contents_justi_banner
             //-     img.d-block.container_contents_justi_banner(src=``)
 
-        a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-slide='prev')
+        a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
             // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='15 18 9 12 15 6')
             span.sr-only Previous
-        a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-slide='next')
+        a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-bs-slide='next')
             // <span class="carousel-control-next-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='9 18 15 12 9 6')
