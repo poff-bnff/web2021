@@ -254,13 +254,13 @@ main.grid_cassette
                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
         +rmOldScreeningButtons
+                if process.env['DOMAIN'] === 'poff.ee'
+                    section.f_interactive_box
+                        .f_interactive_item
+                            p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
 
-                section.f_interactive_box
-                    .f_interactive_item
-                        p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
-
-                        a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
-                        a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+                            a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+                            a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
 
     //-                 .f_interactive_item
     //-                     a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
@@ -781,12 +781,13 @@ else
                 })
 
             if festivalEditionsIds.includes(5)
-                section.f_interactive_box
-                    .f_interactive_item
-                        p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+                if process.env['DOMAIN'] === 'poff.ee'
+                    section.f_interactive_box
+                        .f_interactive_item
+                            p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
 
-                        a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
-                        a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+                            a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+                            a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
 
             //-         .f_interactive_item
             //-             a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSezWZFZ4HuCL5J5H731LStbmtmy3bPjqtEvojOKJknjpJUmCQ/viewform' role='button' target='_blank')= "Anna filmile oma hääl"
