@@ -34,7 +34,7 @@ function addConfigIgnorePaths() {
             '/industry_projects_search', //industry
             '/info', //tartuff
             // '/interview', //article
-            '/letschat', //chat industry
+            // '/letschat', //chat industry
             // '/login', //poff, industry
             // '/menu', //all
             // '/mypoff', // poff
@@ -67,7 +67,7 @@ function addConfigIgnorePaths() {
             '/industry_projects', //industry
             '/industry_projects_search', //industry
             '/info', //tartuff
-            '/letschat', //chat industry
+            // '/letschat', //chat industry
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
@@ -94,7 +94,7 @@ function addConfigIgnorePaths() {
             '/industry_projects', //industry
             '/industry_projects_search', //industry
             '/info', //tartuff
-            '/letschat', //chat industry
+            // '/letschat', //chat industry
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
@@ -135,7 +135,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
-            '/letschat', //chat industry
+            // '/letschat', //chat industry
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
