@@ -265,7 +265,7 @@ block content
                                             - var uniqueDirectors = [...new Set(filmsDirectors)];
                                             .str_info_grid_3
                                                 .str_info_label.dark_semi= self.label.film.director
-                                                #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+                                                .str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
 
                                         - var filmsCountries = []
                                         each film in cassette.films
@@ -277,7 +277,7 @@ block content
                                             - var uniqueCountries = [...new Set(filmsCountries)];
                                             .str_info_grid_3
                                                 .str_info_label.dark_semi= self.label.film.countries
-                                                #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+                                                .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
                             button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
                             button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.addSavedScreening
