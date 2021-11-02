@@ -189,8 +189,8 @@ for (const lang of languages) {
                             element.aliases = ['covid', 'koroonareeglid']
                         }
                         // 2021 adding Industry article aliases
-                        if (element[key] === 'music-meets-film-1') {
-                            element.aliases = ['about/music-meets-film']
+                        if (element[key] === 'music-meets-film') {
+                            element.aliases = ['about/music-meets-film-1']
                         }
                     }
                 }
