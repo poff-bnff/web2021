@@ -189,7 +189,6 @@ for (const lang of languages) {
                             element.aliases = ['covid', 'koroonareeglid']
                         }
                         // 2021 adding Industry article aliases
-                        console.log(element[key]);
                         if (element[key] === 'music-meets-film-1') {
                             element.aliases = ['about/music-meets-film']
                         }
