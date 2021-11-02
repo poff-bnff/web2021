@@ -14,7 +14,7 @@ const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -189,8 +189,9 @@ for (const lang of languages) {
                             element.aliases = ['covid', 'koroonareeglid']
                         }
                         // 2021 adding Industry article aliases
-                        if (element[key] === 'music-meets-film') {
-                            element.aliases = ['about/music-meets-film-1']
+                        console.log(element[key]);
+                        if (element[key] === 'music-meets-film-1') {
+                            element.aliases = ['about/music-meets-film']
                         }
                     }
                 }
