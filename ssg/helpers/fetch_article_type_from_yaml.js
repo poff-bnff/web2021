@@ -184,6 +184,14 @@ for (const lang of languages) {
                         if (element[key] === 'lemmikfilm') {
                             element.aliases = ['lemmikfilm', 'publikulemmik']
                         }
+                        // 2021 adding covid article aliases
+                        if (element[key] === 'koroonareeglid') {
+                            element.aliases = ['covid', 'koroonareeglid']
+                        }
+                        // 2021 adding Industry article aliases
+                        if (element[key] === 'music-meets-film-1') {
+                            element.aliases = ['about/music-meets-film']
+                        }
                     }
                 }
                 element.data = dataFrom;
