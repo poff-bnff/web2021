@@ -1236,6 +1236,8 @@ IndustryPerson: &IndustryPerson
         - *IndustryPersonType
     lookingFor: (text)
     contactAtEvent: (text)
+    festival_editions: 
+        -   *FestivalEdition
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
