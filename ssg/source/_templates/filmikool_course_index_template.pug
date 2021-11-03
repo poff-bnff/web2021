@@ -5,11 +5,11 @@ block content
 
     main.grid_film(id=self.id)
 
-        section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
+        section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
             ol.carousel-indicators
                 if self.carouselStills
                     each val, index in self.carouselStills
-                        li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
             .carousel-inner.container_frame_16_9
                 if self.carouselStills
                     each val, index in self.carouselStills
@@ -23,12 +23,12 @@ block content
                     .carousel-item.active.container_contents_16_9
                         img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
 
-            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
                 // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                     polyline(points='15 18 9 12 15 6')
                 span.sr-only Previous
-            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
                 // <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                     polyline(points='9 18 15 12 9 6')
@@ -291,7 +291,7 @@ block content
             div
                 h1.section_headline= self.label.filmikool.courseTimes
 
-            .card-deck.m-o.p-0
+            .card-group.m-o.p-0
                 if self.events && self.events[0]
                     each event in self.events
                         .card.card_screening.rounded-0.border-0
@@ -309,7 +309,7 @@ block content
                                             else if event.startDate
                                                 +dateFull(event.startDate, event.endDate)
 
-                                    .text-right
+                                    .text_right
                                         svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                             path(d='M16 10.5L6 10.5')
                                             path(d='M15 13.5H6')

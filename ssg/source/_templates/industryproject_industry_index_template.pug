@@ -22,11 +22,11 @@ block content
         if self.title
 
             //- KARUSELL Industry projekti piltidega
-            section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
+            section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
                     if self.images && self.images.length >1
                         each index in self.images
-                            li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.images && self.images[0]
                         each val, index in self.images
@@ -42,12 +42,12 @@ block content
                             img.d-block.container_contents_16_9(src='/assets/img/static/industry_placeholder_circle.jpg' alt = self.title)
 
                 if self.images && self.images.length >1
-                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
                         // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                             polyline(points='15 18 9 12 15 6')
                         span.sr-only Previous
-                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
                         // <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                             polyline(points='9 18 15 12 9 6')
@@ -312,7 +312,7 @@ block content
             if self.clipUrl
                 section#trailer.f_trailer_box
                     .section_headline.white_96= self.label.industry.pitch
-                    //- .embed-responsive.embed-responsive-16by9.m-0.p-0
+                    //- .ratio.ratio-16x9.m-0.p-0
                     .videolevels_embed_container
                         if self.clipUrl
                             .videolevels_embed_contents#videolevels_video(style="display:none;")
