@@ -125,8 +125,10 @@ if (DOMAIN !== 'industry.poff.ee') {
         const yamlPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
 
         if (!allData.length) {
-            console.log('No data for industry persons, creating empty YAML')
+            console.log('No data for industry persons, creating empty YAMLs')
             fs.writeFileSync(yamlPath, '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `search_industry_persons.${lang}.yaml`), '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), '[]', 'utf8')
             continue
         }
 
