@@ -1278,6 +1278,12 @@
                 "slug": {
                   "type": "uid"
                 },
+                "festival_editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
