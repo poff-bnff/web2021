@@ -1242,6 +1242,8 @@ IndustryPerson: &IndustryPerson
     contactAtEvent: (text)
     festival_editions: 
         -   *FestivalEdition
+    tag_looking_fors:
+        -   *TagLookingFor
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
