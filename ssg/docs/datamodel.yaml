@@ -961,6 +961,10 @@ ScreeningMode: &ScreeningMode
     _path: /screening-modes
     name: (text)
 
+EventMode: &EventMode
+    _path: /event-modes
+    name: (text)
+
 ScreeningType: &ScreeningType
     _path: /screening-types
     name: (text)
@@ -1035,7 +1039,7 @@ Film: &Film
         -   *Language
     subtitles: #(Component (repeatable))
         -   *Language
-    other_festivals:
+    other_festivals: 
         -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
@@ -1095,7 +1099,7 @@ Screening: &Screening
     extraInfo: *Translated
     screening_types: #(Component (repeatable))
       - *ScreeningType
-    screening_mode: *ScreeningMode #(Component)
+    screening_mode: *EventMode #(Component)
     subtitles: #(Component (repeatable))
       - *Language
     cassette: *Cassette
@@ -1236,8 +1240,8 @@ IndustryPerson: &IndustryPerson
         - *IndustryPersonType
     lookingFor: (text)
     contactAtEvent: (text)
-    festival_editions:
-        - *FestivalEdition
+    festival_editions: 
+        -   *FestivalEdition
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
@@ -1390,10 +1394,11 @@ IndustryEvent: &IndustryEvent
         - *IndustryPerson
     industry_projects:
         - *IndustryProject
-    isLiveEvent: (Boolean)
-    isPublicEvent: (Boolean)
+    isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
+    isPublicEvent: (Boolean) 
     festival_editions:
         -   *FestivalEdition
+    event_mode: *EventMode
 
 IndustrySubMenuItem: &IndustrySubMenuItem
     name: *Translated #(Component)
