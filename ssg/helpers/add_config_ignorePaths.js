@@ -34,7 +34,6 @@ function addConfigIgnorePaths() {
             '/industry_projects_search', //industry
             '/info', //tartuff
             // '/interview', //article
-            '/letschat', //chat industry
             // '/login', //poff, industry
             // '/menu', //all
             // '/mypoff', // poff
@@ -67,7 +66,7 @@ function addConfigIgnorePaths() {
             '/industry_projects', //industry
             '/industry_projects_search', //industry
             '/info', //tartuff
-            '/letschat', //chat industry
+            '/letschat', // POFF letschat page
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
@@ -94,7 +93,7 @@ function addConfigIgnorePaths() {
             '/industry_projects', //industry
             '/industry_projects_search', //industry
             '/info', //tartuff
-            '/letschat', //chat industry
+            '/letschat', // POFF letschat page
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
@@ -119,6 +118,7 @@ function addConfigIgnorePaths() {
             '/events', //filmikool
             '/favourite', //poff
             '/info', //tartuff
+            '/letschat', // POFF letschat page
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -135,7 +135,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
-            '/letschat', //chat industry
+            '/letschat', // POFF letschat page
             '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
