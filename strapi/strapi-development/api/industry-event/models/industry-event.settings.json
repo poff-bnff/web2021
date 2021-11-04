@@ -81,6 +81,9 @@
     },
     "festival_editions": {
       "collection": "festival-edition"
+    },
+    "event_mode": {
+      "model": "event-mode"
     }
   }
 }

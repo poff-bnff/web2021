@@ -626,6 +626,36 @@
               "transactor": {
                 "type": "string"
               },
+              "seller_business_profiles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "buyer_business_profiles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "status": {
+                "type": "string"
+              },
+              "currency": {
+                "type": "string"
+              },
+              "transaction": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number"
+              },
+              "method": {
+                "type": "string",
+                "enum": [
+                  "Maksekeskus"
+                ]
+              },
               "created_by": {
                 "type": "string"
               },

@@ -1074,6 +1074,25 @@
                 }
               }
             }
+          },
+          "event_mode": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1153,6 +1172,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "event_mode": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

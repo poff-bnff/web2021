@@ -698,6 +698,15 @@
               "user_profile": {
                 "type": "string"
               },
+              "business_profiles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "my_events": {
+                "type": "component"
+              },
               "created_by": {
                 "type": "string"
               },
