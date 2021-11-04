@@ -353,6 +353,10 @@ module.exports = {
       return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
     } else if (rawData.type === "addMyFilm") {
       return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
+    } else if (rawData.type === "rmMyEvent") {
+      return await manipulateFavorites(user, "rm", rawData.id, "my_events", "schedule", "industry_events")
+    } else if (rawData.type === "addMyEvent") {
+      return await manipulateFavorites(user, "add", rawData.id, "my_events", "schedule", "industry_events")
     }
 
   },

@@ -1,0 +1,6 @@
+path: my_events
+data:
+    industryevents: /_fetchdir/industryeventscalendar.en.yaml
+    filters: /_fetchdir/filters_industryeventscalendar.yaml
+    search: /_fetchdir/search_industryeventscalendar.yaml
+    channels: /_fetchdir/channels.en.yaml

@@ -6,6 +6,9 @@ const rueten = require('./rueten.js');
 const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
 
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
@@ -46,11 +49,11 @@ if (DOMAIN === 'industry.poff.ee') {
         },
         'industry_projects': {
             model_name: 'IndustryProject'
-        }
-
+        },
     }
 
-    const STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
+    const STRAPIDATA_ALL_FE_INDUSTRY_EVENTS = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
+    const STRAPIDATA_INDUSTRY_EVENT = STRAPIDATA_ALL_FE_INDUSTRY_EVENTS.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
 
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
