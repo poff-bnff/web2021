@@ -102,6 +102,7 @@ function startBuild() {
             end_time: build_end_time,
             duration: duration,
             build_errors: stderr || null,
+            build_end_status: errors ? 'Fail' : 'OK',
             build_stdout: stdout || null
         }
         logQuery(firstInQueue.log_id, 'PUT', build_end_data)
