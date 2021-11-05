@@ -48,7 +48,7 @@ const minimodel_screenings = {
     'screening_types': {
         model_name: 'ScreeningType'
     },
-    'event_mode': {
+    'screening_mode': {
         model_name: 'EventMode'
     },
     'subtitles': {

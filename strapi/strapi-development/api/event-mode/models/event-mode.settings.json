@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_modes",
+  "info": {
+    "name": "EventMode"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1752,6 +1752,36 @@
                 "transactor": {
                   "type": "string"
                 },
+                "seller_business_profiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "buyer_business_profiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "status": {
+                  "type": "string"
+                },
+                "currency": {
+                  "type": "string"
+                },
+                "transaction": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "Maksekeskus"
+                  ]
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1802,6 +1832,173 @@
               },
               "updated_by": {
                 "type": "string"
+              }
+            }
+          },
+          "business_profiles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "business_id": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "postal_code": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "street_address": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "my_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "schedule",
+                    "other"
+                  ]
+                },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "titlePrivate": {
+                        "type": "string"
+                      },
+                      "startTime": {
+                        "type": "string"
+                      },
+                      "title_en": {
+                        "type": "string"
+                      },
+                      "slug_en": {
+                        "type": "uid"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "lead": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "industry_categories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "project_type": {
+                        "type": "string"
+                      },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
+                      "publish": {
+                        "type": "boolean"
+                      },
+                      "channel": {
+                        "type": "string"
+                      },
+                      "durationTime": {
+                        "type": "string"
+                      },
+                      "industry_people": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "industry_projects": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "videoUrl": {
+                        "type": "string"
+                      },
+                      "isLiveEvent": {
+                        "type": "boolean"
+                      },
+                      "isPublicEvent": {
+                        "type": "boolean"
+                      },
+                      "festival_editions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "event_mode": {
+                        "type": "string"
+                      },
+                      "created_by": {
+                        "type": "string"
+                      },
+                      "updated_by": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -2131,6 +2328,133 @@
           },
           "user_profile": {
             "type": "string"
+          },
+          "business_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "my_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "schedule",
+                    "other"
+                  ]
+                },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "titlePrivate": {
+                        "type": "string"
+                      },
+                      "startTime": {
+                        "type": "string"
+                      },
+                      "title_en": {
+                        "type": "string"
+                      },
+                      "slug_en": {
+                        "type": "uid"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "lead": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "industry_categories": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "project_type": {
+                        "type": "string"
+                      },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
+                      "publish": {
+                        "type": "boolean"
+                      },
+                      "channel": {
+                        "type": "string"
+                      },
+                      "durationTime": {
+                        "type": "string"
+                      },
+                      "industry_people": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "industry_projects": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "videoUrl": {
+                        "type": "string"
+                      },
+                      "isLiveEvent": {
+                        "type": "boolean"
+                      },
+                      "isPublicEvent": {
+                        "type": "boolean"
+                      },
+                      "festival_editions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "event_mode": {
+                        "type": "string"
+                      },
+                      "created_by": {
+                        "type": "string"
+                      },
+                      "updated_by": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "created_by": {
             "type": "string"
