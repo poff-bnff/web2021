@@ -957,9 +957,6 @@ Team: &Team
     slug_ru: (UID)
 
 # Screening & Film
-ScreeningMode: &ScreeningMode
-    _path: /screening-modes
-    name: (text)
 
 EventMode: &EventMode
     _path: /event-modes
