@@ -61,7 +61,7 @@
       "collection": "industry-person-type"
     },
     "lookingFor": {
-      "type": "string"
+      "type": "text"
     },
     "contactAtEvent": {
       "type": "string"
@@ -76,6 +76,9 @@
     },
     "festival_editions": {
       "collection": "festival-edition"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }

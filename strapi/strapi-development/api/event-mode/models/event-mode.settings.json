@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "event_modes",
   "info": {
-    "name": "EventMode"
+    "name": "EventMode",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -10,7 +11,16 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "name": {
+    "name_private": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
       "type": "string"
     }
   }
