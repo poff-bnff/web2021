@@ -957,9 +957,6 @@ Team: &Team
     slug_ru: (UID)
 
 # Screening & Film
-ScreeningMode: &ScreeningMode
-    _path: /screening-modes
-    name: (text)
 
 EventMode: &EventMode
     _path: /event-modes
@@ -1242,6 +1239,8 @@ IndustryPerson: &IndustryPerson
     contactAtEvent: (text)
     festival_editions:
         -   *FestivalEdition
+    tag_looking_fors:
+        -   *TagLookingFor
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
