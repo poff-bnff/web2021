@@ -40,9 +40,9 @@
       "model": "user"
     },
     "transactor": {
-      "via": "transactions",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "transactions"
     },
     "seller_business_profiles": {
       "collection": "business-profile"
@@ -57,7 +57,8 @@
       "type": "string"
     },
     "transaction": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "amount": {
       "type": "decimal"

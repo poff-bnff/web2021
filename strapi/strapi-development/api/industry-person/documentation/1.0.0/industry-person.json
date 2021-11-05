@@ -1156,6 +1156,34 @@
                 }
               }
             }
+          },
+          "tag_looking_fors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "et": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "ru": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1453,6 +1481,12 @@
             "type": "uid"
           },
           "festival_editions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tag_looking_fors": {
             "type": "array",
             "items": {
               "type": "string"
