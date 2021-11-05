@@ -66,7 +66,7 @@ block content
                                 .card_film_title
 
                                     if event.images && event.images[0]
-                                        img(style='width:200px; height:200px;' src=`http://localhost:1337/uploads/${event.images[0].hash}${event.images[0].ext}`)
+                                        img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
 
                                     h3.film_title_locale.dark_1.padding_bottom_2= event.title
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
