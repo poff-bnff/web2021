@@ -24,6 +24,24 @@ if (DOMAIN === 'industry.poff.ee') {
         'images': {
             model_name: 'StrapiMedia'
         },
+        'location': {
+            model_name: 'Location',
+            expand: {
+                'hall': {
+                    model_name: 'Hall',
+                    expand: {
+                        'cinema': {
+                            model_name: 'Cinema',
+                            expand: {
+                                'town': {
+                                    model_name: 'Town'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         'industry_categories': {
             model_name: 'IndustryCategory'
         },
@@ -49,6 +67,12 @@ if (DOMAIN === 'industry.poff.ee') {
         },
         'industry_projects': {
             model_name: 'IndustryProject'
+        },
+        'festival_editions': {
+            model_name: 'FestivalEdition'
+        },
+        'event_mode': {
+            model_name: 'EventMode'
         },
     }
 
