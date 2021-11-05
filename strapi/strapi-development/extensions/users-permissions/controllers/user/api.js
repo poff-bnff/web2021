@@ -750,7 +750,7 @@ module.exports = {
         }
 
         if (updateProductSuccess) {
-          console.log('Success updated product ID ', updateProductSuccess);
+          console.log(`Successful updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
 
           // Email
           try {
