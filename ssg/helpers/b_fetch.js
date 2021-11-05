@@ -38,6 +38,7 @@ function make_MODELS(minimodel) {
 		// if (MODELS.hasOwnProperty(model_n)) {
 		// 	continue
 		// }
+		// console.log(submodel)
 		if (DATAMODEL[model_n].hasOwnProperty('_path')){
 			MODELS[model_n] = yaml.load(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
 		} else {
