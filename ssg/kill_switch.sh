@@ -19,6 +19,7 @@ if [ -n "$1" ]; then
     fi
 
     BUILPROCESSES=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep | awk '{print $1}' | xargs)
+    BUILPROCESSESFULLINFO=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep)
 
     if [ -z "$BUILPROCESSES" ]
     then
@@ -31,11 +32,12 @@ if [ -n "$1" ]; then
         do
             if [ $(($n+1)) = ${#ARRAY[*]} ]
             then
-                echo -n "${ARRAY[n]}."
+                echo "${ARRAY[n]}."
             else
                 echo -n "${ARRAY[n]}, "
             fi
         done
-        kill $BUILPROCESSES
+        # kill $BUILPROCESSES
+        echo "$BUILPROCESSESFULLINFO"
     fi
 fi
