@@ -194,15 +194,15 @@ async function doKillSwitch(userInfo, killStartTime) {
 
             if (code === 0) {
               console.log(info);
-              let shortuserMessage
-              shortuserMessage = info.replace(/SEPARATOR1START.*SEPARATOR1END/, '')
-              shortuserMessage = info.replace(/SEPARATOR2START.*SEPARATOR2END/, '')
+              let shortuserMessage = info
+              shortuserMessage = shortuserMessage.replace(/SEPARATOR1START.*SEPARATOR1END/, '')
+              shortuserMessage = shortuserMessage.replace(/SEPARATOR2START.*SEPARATOR2END/, '')
               
-              let logMessageLong
-              logMessageLong = info.replace(/SEPARATOR1START/, '')
-              logMessageLong = info.replace(/SEPARATOR1END/, '')
-              logMessageLong = info.replace(/SEPARATOR2START/, '')
-              logMessageLong = info.replace(/SEPARATOR2END/, '')
+              let logMessageLong = info
+              logMessageLong = logMessageLong.replace(/SEPARATOR1START/, '')
+              logMessageLong = logMessageLong.replace(/SEPARATOR1END/, '')
+              logMessageLong = logMessageLong.replace(/SEPARATOR2START/, '')
+              logMessageLong = logMessageLong.replace(/SEPARATOR2END/, '')
 
               const logKillData = {
                 site: '-',
