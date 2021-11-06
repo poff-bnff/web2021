@@ -194,7 +194,7 @@ async function doKillSwitch(userInfo, killStartTime) {
 
             if (code === 0) {
               let shortUserMessage = info
-              shortUserMessage = shortUserMessage.replace(/SEPARATORSTART.*SEPARATOREND/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATORSTART.*?SEPARATOREND/g, '')
               shortUserMessage = shortUserMessage.replace(/SEPARATORSTART/, '')
               shortUserMessage = shortUserMessage.replace(/SEPARATOREND/, '')
               console.log('shortUserMessage', shortUserMessage);
