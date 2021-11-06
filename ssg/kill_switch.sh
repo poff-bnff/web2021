@@ -18,26 +18,49 @@ if [ -n "$1" ]; then
         echo "Viimane build (PID $1) tapetud."
     fi
 
-    BUILPROCESSES=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep | awk '{print $1}' | xargs)
-    BUILPROCESSESFULLINFO=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep)
+    BUILPROCESSESHELPERS=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep | awk '{print $1}' | xargs)
+    BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep)
 
-    if [ -z "$BUILPROCESSES" ]
+    BUILPROCESSESENTUSSG=$(ps ax | grep './node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
+    BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
+
+    if [ -z "$BUILPROCESSESHELPERS" ]
+    then
+        :
+    else
+        echo -n "Tapan helpersite PID'd "
+        ARRAYHELPERS=($BUILPROCESSESHELPERS)
+
+        for (( n=0; n < ${#ARRAYHELPERS[*]}; n++ ))
+        do
+            if [ $(($n+1)) = ${#ARRAYHELPERS[*]} ]
+            then
+                echo "${ARRAYHELPERS[n]}."
+            else
+                echo -n "${ARRAYHELPERS[n]}, "
+            fi
+        done
+        kill $BUILPROCESSESHELPERS
+        echo "$BUILPROCESSESHELPERSFULLINFO"
+    fi
+
+    if [ -z "$BUILPROCESSESENTUSSG" ]
     then
         :
     else
         echo -n "Tapan SSG PID'd "
-        ARRAY=($BUILPROCESSES)
+        ARRAYSSG=($BUILPROCESSESENTUSSG)
 
-        for (( n=0; n < ${#ARRAY[*]}; n++ ))
+        for (( n=0; n < ${#ARRAYSSG[*]}; n++ ))
         do
-            if [ $(($n+1)) = ${#ARRAY[*]} ]
+            if [ $(($n+1)) = ${#ARRAYSSG[*]} ]
             then
-                echo "${ARRAY[n]}."
+                echo "${ARRAYSSG[n]}."
             else
-                echo -n "${ARRAY[n]}, "
+                echo -n "${ARRAYSSG[n]}, "
             fi
         done
-        kill $BUILPROCESSES
-        echo "$BUILPROCESSESFULLINFO"
+        kill $BUILPROCESSESENTUSSG
+        echo "$BUILPROCESSESENTUSSGFULLINFO"
     fi
 fi
