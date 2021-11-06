@@ -24,7 +24,7 @@ fi
 BUILPROCESSESHELPERS=$(ps ax | grep './helpers/' | grep -v grep | awk '{print $1}' | xargs)
 BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep './helpers/' | grep -v grep)
 
-BUILPROCESSESENTUSSG=$(ps ax | grep './node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
+BUILPROCESSESENTUSSG=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
 BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
 
 if [ -z "$BUILPROCESSESHELPERS" ]
@@ -44,7 +44,6 @@ else
         fi
     done
     kill $BUILPROCESSESHELPERS
-    echo "$BUILPROCESSESHELPERSFULLINFO"
 fi
 
 if [ -z "$BUILPROCESSESENTUSSG" ]
@@ -64,7 +63,6 @@ else
         fi
     done
     kill $BUILPROCESSESENTUSSG
-    echo "$BUILPROCESSESENTUSSGFULLINFO"
 fi
 
 echo "SEPARATORSTART"
