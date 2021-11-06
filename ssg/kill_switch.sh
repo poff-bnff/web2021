@@ -8,15 +8,76 @@ if [ -f "$QUEUEFILE" ]; then
     rm "$QUEUEFILE"
     echo "Build_queue kustutatud."
 else
-    echo "Järjekorda ei eksisteeri."
+    echo "Järjekorda ei eksisteeri. "
 fi
 
 if [ -n "$1" ]; then
     if [ -d "/proc/$1" ]
     then
         kill "$1"
-        echo "PID $1 tapetud."
+        echo "Viimane build (PID $1) tapetud."
     else
-        echo "PID $1 ei eksisteeri."
+        echo "Viimane build (PID $1) ei ole aktiivne."
     fi
+fi
+
+BUILPROCESSESHELPERS=$(ps ax | grep './helpers/' | grep -v grep | awk '{print $1}' | xargs)
+BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep './helpers/' | grep -v grep)
+
+BUILPROCESSESENTUSSG=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
+BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
+
+if [ -z "$BUILPROCESSESHELPERS" ]
+then
+    :
+else
+    echo -n "Tapan helpersite PID'd "
+    ARRAYHELPERS=($BUILPROCESSESHELPERS)
+
+    for (( n=0; n < ${#ARRAYHELPERS[*]}; n++ ))
+    do
+        if [ $(($n+1)) = ${#ARRAYHELPERS[*]} ]
+        then
+            echo "${ARRAYHELPERS[n]}."
+        else
+            echo -n "${ARRAYHELPERS[n]}, "
+        fi
+    done
+    kill $BUILPROCESSESHELPERS
+fi
+
+if [ -z "$BUILPROCESSESENTUSSG" ]
+then
+    :
+else
+    echo -n "Tapan SSG PID'd "
+    ARRAYSSG=($BUILPROCESSESENTUSSG)
+
+    for (( n=0; n < ${#ARRAYSSG[*]}; n++ ))
+    do
+        if [ $(($n+1)) = ${#ARRAYSSG[*]} ]
+        then
+            echo "${ARRAYSSG[n]}."
+        else
+            echo -n "${ARRAYSSG[n]}, "
+        fi
+    done
+    kill $BUILPROCESSESENTUSSG
+fi
+
+echo "SEPARATORSTRING"
+if [ -z "$BUILPROCESSESHELPERS" ]
+then
+    :
+else
+    echo "Killed helpers detailed:"
+    echo "$BUILPROCESSESHELPERSFULLINFO"
+fi
+
+if [ -z "$BUILPROCESSESENTUSSG" ]
+then
+    :
+else
+    echo "Killed SSG PID'd detailed"
+    echo "$BUILPROCESSESENTUSSGFULLINFO"
 fi

@@ -159,7 +159,7 @@ async function doFullBuild(userInfo) {
   }
 }
 
-async function doKillSwitch(userInfo) {
+async function doKillSwitch(userInfo, killStartTime) {
   const queuePath = `../../ssg/helpers/build_queue.yaml`
   const logPath = `../../ssg/helpers/build_logs.yaml`
   const killerScript = `../../ssg/kill_switch.sh`
@@ -168,11 +168,12 @@ async function doKillSwitch(userInfo) {
     if (fs.existsSync(queuePath)) {
       if (fs.existsSync(logPath)) {
         const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
-        const lastBuild = logFile[logFile.length - 1]
+        const logFileStartedBuilds = logFile.filter(b => b.type === 'Build start')
+        const lastBuild = logFileStartedBuilds[logFileStartedBuilds.length - 1]
         const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
         const userName = `${userInfo.firstname} ${userInfo.lastname}`
 
-        console.log(`Killer: ${userName}. ${lastBuildPID ? `Running PID to also be killed: ${lastBuildPID}}` : 'No running build to kill.'}`)
+        console.log(`Killer: ${userName}. Killing last startedbuild: ${lastBuildPID}`)
 
         const child = spawn('bash', [killerScript, lastBuildPID])
 
@@ -192,8 +193,25 @@ async function doKillSwitch(userInfo) {
             console.log(`child process exited with code ${code}`);
 
             if (code === 0) {
-              console.log(info);
-              resolve({ type: 'success', message: info })
+
+              let shortUserMessage = info
+              shortUserMessage = `${info.split('SEPARATORSTRING')[0]}`
+              
+              let logMessageLong = info
+              logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
+
+              const logKillData = {
+                site: '-',
+                admin_user: { id: userInfo.id },
+                start_time: killStartTime,
+                end_time: moment().tz("Europe/Tallinn").format(),
+                type: 'KILL',
+                build_stdout: logMessageLong,
+                shown_to_user: true,
+              };
+              const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
+
+              resolve({ type: 'success', message: shortUserMessage })
             } else if (code === 1) {
               console.log(info);
               resolve({ type: 'warning', message: `Error code 1. ${info}` })
@@ -257,12 +275,13 @@ module.exports = {
   },
   killSwitch: async (ctx) => {
     // console.log('ctx', ctx)
+    const killStartTime = moment().tz("Europe/Tallinn").format()
     console.log("Killing all!")
 
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    const killResult = await doKillSwitch(userInfo)
+    const killResult = await doKillSwitch(userInfo, killStartTime)
     ctx.send(killResult)
 
   },
