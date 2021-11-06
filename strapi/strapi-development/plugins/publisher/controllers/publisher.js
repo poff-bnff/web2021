@@ -193,16 +193,20 @@ async function doKillSwitch(userInfo, killStartTime) {
             console.log(`child process exited with code ${code}`);
 
             if (code === 0) {
-              console.log(info);
-              let shortuserMessage = info
-              shortuserMessage = shortuserMessage.replace(/SEPARATOR1START.*SEPARATOR1END/, '')
-              shortuserMessage = shortuserMessage.replace(/SEPARATOR2START.*SEPARATOR2END/, '')
-              
+              let shortUserMessage = info
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR1START.*SEPARATOR1END/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR2START.*SEPARATOR2END/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR1START/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR1END/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR2START/, '')
+              shortUserMessage = shortUserMessage.replace(/SEPARATOR2END/, '')
+
               let logMessageLong = info
               logMessageLong = logMessageLong.replace(/SEPARATOR1START/, '')
               logMessageLong = logMessageLong.replace(/SEPARATOR1END/, '')
               logMessageLong = logMessageLong.replace(/SEPARATOR2START/, '')
               logMessageLong = logMessageLong.replace(/SEPARATOR2END/, '')
+              console.log(logMessageLong);
 
               const logKillData = {
                 site: '-',
@@ -215,7 +219,7 @@ async function doKillSwitch(userInfo, killStartTime) {
               };
               const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
 
-              resolve({ type: 'success', message: shortuserMessage })
+              resolve({ type: 'success', message: shortUserMessage })
             } else if (code === 1) {
               console.log(info);
               resolve({ type: 'warning', message: `Error code 1. ${info}` })
