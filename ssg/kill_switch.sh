@@ -22,7 +22,7 @@ if [ -n "$1" ]; then
 
     if [ -z "$BUILPROCESSES" ]
     then
-        return
+        :
     else
         echo -n "Tapan SSG PID'd "
         ARRAY=($BUILPROCESSES)
