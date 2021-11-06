@@ -204,9 +204,8 @@ async function doKillSwitch(userInfo, killStartTime) {
                 build_stdout: info,
                 shown_to_user: true,
               };
-              console.log(logKillData);
               const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
-              console.log(result);
+              
               resolve({ type: 'success', message: info })
             } else if (code === 1) {
               console.log(info);
