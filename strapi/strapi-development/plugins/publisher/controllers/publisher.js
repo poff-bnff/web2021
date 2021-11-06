@@ -200,6 +200,8 @@ async function doKillSwitch(userInfo, killStartTime) {
               let logMessageLong = info
               logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
 
+              console.log(logMessageLong);
+
               const logKillData = {
                 site: '-',
                 admin_user: { id: userInfo.id },
