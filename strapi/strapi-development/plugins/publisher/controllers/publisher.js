@@ -194,6 +194,15 @@ async function doKillSwitch(userInfo, killStartTime) {
 
             if (code === 0) {
               console.log(info);
+              let shortuserMessage
+              shortuserMessage = info.replace(/SEPARATOR1START.*SEPARATOR1END/, '')
+              shortuserMessage = info.replace(/SEPARATOR2START.*SEPARATOR2END/, '')
+              
+              let logMessageLong
+              logMessageLong = info.replace(/SEPARATOR1START/, '')
+              logMessageLong = info.replace(/SEPARATOR1END/, '')
+              logMessageLong = info.replace(/SEPARATOR2START/, '')
+              logMessageLong = info.replace(/SEPARATOR2END/, '')
 
               const logKillData = {
                 site: '-',
@@ -201,12 +210,12 @@ async function doKillSwitch(userInfo, killStartTime) {
                 start_time: killStartTime,
                 end_time: moment().tz("Europe/Tallinn").format(),
                 type: 'KILL',
-                build_stdout: info,
+                build_stdout: logMessageLong,
                 shown_to_user: true,
               };
               const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
-              
-              resolve({ type: 'success', message: info })
+
+              resolve({ type: 'success', message: shortuserMessage })
             } else if (code === 1) {
               console.log(info);
               resolve({ type: 'warning', message: `Error code 1. ${info}` })

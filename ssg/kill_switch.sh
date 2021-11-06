@@ -41,7 +41,9 @@ if [ -n "$1" ]; then
             fi
         done
         kill $BUILPROCESSESHELPERS
+        echo -n "SEPARATOR1START"
         echo "$BUILPROCESSESHELPERSFULLINFO"
+        echo -n "SEPARATOR1END"
     fi
 
     if [ -z "$BUILPROCESSESENTUSSG" ]
@@ -61,6 +63,8 @@ if [ -n "$1" ]; then
             fi
         done
         kill $BUILPROCESSESENTUSSG
+        echo -n "SEPARATOR2START"
         echo "$BUILPROCESSESENTUSSGFULLINFO"
+        echo -n "SEPARATOR2END"
     fi
 fi
