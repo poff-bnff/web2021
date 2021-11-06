@@ -65,7 +65,7 @@ else
     kill $BUILPROCESSESENTUSSG
 fi
 
-echo "SEPARATORSTART"
+echo "SEPARATORSTRING"
 if [ -z "$BUILPROCESSESHELPERS" ]
 then
     :
@@ -81,4 +81,3 @@ else
     echo "Killed SSG PID'd detailed"
     echo "$BUILPROCESSESENTUSSGFULLINFO"
 fi
-echo "SEPARATOREND"

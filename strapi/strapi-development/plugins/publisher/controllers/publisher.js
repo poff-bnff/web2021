@@ -193,16 +193,12 @@ async function doKillSwitch(userInfo, killStartTime) {
             console.log(`child process exited with code ${code}`);
 
             if (code === 0) {
-              let shortUserMessage = info
-              shortUserMessage = shortUserMessage.replace(/SEPARATORSTART.*?SEPARATOREND/g, '')
-              shortUserMessage = shortUserMessage.replace(/SEPARATORSTART/, '')
-              shortUserMessage = shortUserMessage.replace(/SEPARATOREND/, '')
-              console.log('shortUserMessage', shortUserMessage);
 
+              let shortUserMessage = info
+              shortUserMessage = `${info.split('SEPARATORSTRING')[0]}`
+              
               let logMessageLong = info
-              logMessageLong = logMessageLong.replace(/SEPARATORSTART/, '')
-              logMessageLong = logMessageLong.replace(/SEPARATOREND/, '')
-              console.log('logMessageLong', logMessageLong);
+              logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
 
               const logKillData = {
                 site: '-',
