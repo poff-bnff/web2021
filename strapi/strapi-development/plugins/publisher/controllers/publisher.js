@@ -159,7 +159,7 @@ async function doFullBuild(userInfo) {
   }
 }
 
-async function doKillSwitch(userInfo) {
+async function doKillSwitch(userInfo, killStartTime) {
   const queuePath = `../../ssg/helpers/build_queue.yaml`
   const logPath = `../../ssg/helpers/build_logs.yaml`
   const killerScript = `../../ssg/kill_switch.sh`
@@ -167,14 +167,13 @@ async function doKillSwitch(userInfo) {
   if (userInfo) {
     if (fs.existsSync(queuePath)) {
       if (fs.existsSync(logPath)) {
-        const killStartTime = moment().tz("Europe/Tallinn").format
         const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
         const logFileStartedBuilds = logFile.filter(b => b.type === 'Build start')
         const lastBuild = logFileStartedBuilds[logFileStartedBuilds.length - 1]
         const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
         const userName = `${userInfo.firstname} ${userInfo.lastname}`
 
-        console.log(`Killer: ${userName}. Killing last started build: ${lastBuildPID}`)
+        console.log(`Killer: ${userName}. Killing last startedbuild: ${lastBuildPID}`)
 
         const child = spawn('bash', [killerScript, lastBuildPID])
 
@@ -197,6 +196,7 @@ async function doKillSwitch(userInfo) {
               console.log(info);
 
               const logKillData = {
+                site: '-',
                 admin_user: { id: userInfo.id },
                 start_time: killStartTime,
                 end_time: moment().tz("Europe/Tallinn").format(),
@@ -204,8 +204,9 @@ async function doKillSwitch(userInfo) {
                 build_stdout: info,
                 shown_to_user: true,
               };
+              console.log(logKillData);
               const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
-
+              console.log(result);
               resolve({ type: 'success', message: info })
             } else if (code === 1) {
               console.log(info);
@@ -270,12 +271,13 @@ module.exports = {
   },
   killSwitch: async (ctx) => {
     // console.log('ctx', ctx)
+    const killStartTime = moment().tz("Europe/Tallinn").format()
     console.log("Killing all!")
 
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    const killResult = await doKillSwitch(userInfo)
+    const killResult = await doKillSwitch(userInfo, killStartTime)
     ctx.send(killResult)
 
   },
