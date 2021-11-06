@@ -70,7 +70,7 @@ if [ -z "$BUILPROCESSESHELPERS" ]
 then
     :
 else
-    echo -n "Killed helpers detailed:"
+    echo "Killed helpers detailed:"
     echo "$BUILPROCESSESHELPERSFULLINFO"
 fi
 
@@ -78,7 +78,7 @@ if [ -z "$BUILPROCESSESENTUSSG" ]
 then
     :
 else
-    echo -n "Killed SSG PID'd detailed"
+    echo "Killed SSG PID'd detailed"
     echo "$BUILPROCESSESENTUSSGFULLINFO"
 fi
 echo "SEPARATOREND"
