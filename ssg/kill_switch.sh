@@ -37,7 +37,7 @@ if [ -n "$1" ]; then
                 echo -n "${ARRAY[n]}, "
             fi
         done
-        # kill $BUILPROCESSES
+        kill $BUILPROCESSES
         echo "$BUILPROCESSESFULLINFO"
     fi
 fi
