@@ -18,8 +18,8 @@ if [ -n "$1" ]; then
         echo "Viimane build (PID $1) tapetud."
     fi
 
-    BUILPROCESSESHELPERS=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep | awk '{print $1}' | xargs)
-    BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep '/srv/ssg/helpers/' | grep -v grep)
+    BUILPROCESSESHELPERS=$(ps ax | grep './helpers/' | grep -v grep | awk '{print $1}' | xargs)
+    BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep './helpers/' | grep -v grep)
 
     BUILPROCESSESENTUSSG=$(ps ax | grep './node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
     BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
