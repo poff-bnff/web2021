@@ -16,55 +16,71 @@ if [ -n "$1" ]; then
     then
         kill "$1"
         echo "Viimane build (PID $1) tapetud."
-    fi
-
-    BUILPROCESSESHELPERS=$(ps ax | grep './helpers/' | grep -v grep | awk '{print $1}' | xargs)
-    BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep './helpers/' | grep -v grep)
-
-    BUILPROCESSESENTUSSG=$(ps ax | grep './node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
-    BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
-
-    if [ -z "$BUILPROCESSESHELPERS" ]
-    then
-        :
     else
-        echo -n "Tapan helpersite PID'd "
-        ARRAYHELPERS=($BUILPROCESSESHELPERS)
-
-        for (( n=0; n < ${#ARRAYHELPERS[*]}; n++ ))
-        do
-            if [ $(($n+1)) = ${#ARRAYHELPERS[*]} ]
-            then
-                echo "${ARRAYHELPERS[n]}."
-            else
-                echo -n "${ARRAYHELPERS[n]}, "
-            fi
-        done
-        kill $BUILPROCESSESHELPERS
-        echo -n "SEPARATOR1START"
-        echo "$BUILPROCESSESHELPERSFULLINFO"
-        echo -n "SEPARATOR1END"
-    fi
-
-    if [ -z "$BUILPROCESSESENTUSSG" ]
-    then
-        :
-    else
-        echo -n "Tapan SSG PID'd "
-        ARRAYSSG=($BUILPROCESSESENTUSSG)
-
-        for (( n=0; n < ${#ARRAYSSG[*]}; n++ ))
-        do
-            if [ $(($n+1)) = ${#ARRAYSSG[*]} ]
-            then
-                echo "${ARRAYSSG[n]}."
-            else
-                echo -n "${ARRAYSSG[n]}, "
-            fi
-        done
-        kill $BUILPROCESSESENTUSSG
-        echo -n "SEPARATOR2START"
-        echo "$BUILPROCESSESENTUSSGFULLINFO"
-        echo -n "SEPARATOR2END"
+        echo "Viimane build (PID $1) ei ole aktiivne."
     fi
 fi
+
+BUILPROCESSESHELPERS=$(ps ax | grep './helpers/' | grep -v grep | awk '{print $1}' | xargs)
+BUILPROCESSESHELPERSFULLINFO=$(ps ax | grep './helpers/' | grep -v grep)
+
+BUILPROCESSESENTUSSG=$(ps ax | grep './node_modules/entu-ssg/src/build.js' | grep -v grep | awk '{print $1}' | xargs)
+BUILPROCESSESENTUSSGFULLINFO=$(ps ax | grep '/node_modules/entu-ssg/src/build.js' | grep -v grep)
+
+if [ -z "$BUILPROCESSESHELPERS" ]
+then
+    :
+else
+    echo -n "Tapan helpersite PID'd "
+    ARRAYHELPERS=($BUILPROCESSESHELPERS)
+
+    for (( n=0; n < ${#ARRAYHELPERS[*]}; n++ ))
+    do
+        if [ $(($n+1)) = ${#ARRAYHELPERS[*]} ]
+        then
+            echo "${ARRAYHELPERS[n]}."
+        else
+            echo -n "${ARRAYHELPERS[n]}, "
+        fi
+    done
+    kill $BUILPROCESSESHELPERS
+    echo "$BUILPROCESSESHELPERSFULLINFO"
+fi
+
+if [ -z "$BUILPROCESSESENTUSSG" ]
+then
+    :
+else
+    echo -n "Tapan SSG PID'd "
+    ARRAYSSG=($BUILPROCESSESENTUSSG)
+
+    for (( n=0; n < ${#ARRAYSSG[*]}; n++ ))
+    do
+        if [ $(($n+1)) = ${#ARRAYSSG[*]} ]
+        then
+            echo "${ARRAYSSG[n]}."
+        else
+            echo -n "${ARRAYSSG[n]}, "
+        fi
+    done
+    kill $BUILPROCESSESENTUSSG
+    echo "$BUILPROCESSESENTUSSGFULLINFO"
+fi
+
+echo "SEPARATORSTART"
+if [ -z "$BUILPROCESSESHELPERS" ]
+then
+    :
+else
+    echo -n "Killed helpers detailed:"
+    echo "$BUILPROCESSESHELPERSFULLINFO"
+fi
+
+if [ -z "$BUILPROCESSESENTUSSG" ]
+then
+    :
+else
+    echo -n "Killed SSG PID'd detailed"
+    echo "$BUILPROCESSESENTUSSGFULLINFO"
+fi
+echo "SEPARATOREND"
