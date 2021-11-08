@@ -219,6 +219,8 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
         let allData = []
         for (const ix in STRAPIDATA_IND_PROJECT) {
             let industry_project = JSON.parse(JSON.stringify(STRAPIDATA_IND_PROJECT[ix]));
+            industry_project.roles_in_project = {}
+            industry_project.comp_roles_in_project = {}
 
             var templateDomainName = 'industry';
 
@@ -282,10 +284,23 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                     continue
                 }
                 industry_project.persons[person_id] = industry_project.persons[person_id] || {id: person_id, rolesAtFilm: []}
-                if (role_person.role_at_film){
+                if (role_person.role_at_film) {
                     industry_project.persons[person_id].rolesAtFilm.push(role_person.role_at_film.roleNamePrivate)
+                    if (!(role_person.role_at_film.roleNamePrivate in industry_project.roles_in_project)) {
+                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order, names: []}
+                    }
+                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push(role_person.person.firstNameLastName)
+
+
                 }
+                // industry_project.roles_in_project = industry_project.roles_in_project.sort((a, b) => {
+                //     return a[role_person.role_at_film.roleNamePrivate].ord - b[role_person.role_at_film.roleNamePrivate].ord
+                // })
+
             }
+
+            
+
             for (const ix in industry_project.persons) {
                 const industry_person = industry_project.persons[ix]
                 try {
@@ -319,6 +334,10 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 if (role_company.roles_at_film){
                     industry_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
 
+                    if(!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
+                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order, names: []}
+                    }
+                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
                 }
             }
             for (const ix in industry_project.organisations) {
