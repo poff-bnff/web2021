@@ -196,7 +196,7 @@ async function doKillSwitch(userInfo, killStartTime) {
 
               let shortUserMessage = info
               shortUserMessage = `${info.split('SEPARATORSTRING')[0]}`
-              
+
               let logMessageLong = info
               logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
 
@@ -249,9 +249,15 @@ module.exports = {
     const data = ctx.request.body;
     // console.log(ctx)
     const userInfo = JSON.parse(data.userInfo);
+    const superAdminRoleId = 1
+
     const site = data.site;
+    // Kontrollib kas kasutaja on superadmin
+    if (userInfo.roles && !userInfo.roles.map(r => r.id).includes(superAdminRoleId)) {
+      ctx.send({ messageType: 'warning', buildSite: site, message: 'Hetkel pole live-i panek lubatud' });
+    }
     //kontrollin kas päringule lisati site
-    if (!data.site) {
+    else if (!data.site) {
       return ctx.badRequest("no site");
     } else {
       // kas site on meie site'ide nimekirjas
