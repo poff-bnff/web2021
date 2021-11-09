@@ -61,6 +61,11 @@ const ListOfLogs = ({ site }) => {
       value: 'type',
       isSortEnabled: true,
     },
+    {
+      name: 'end-status',
+      value: 'type',
+      isSortEnabled: true,
+    },
   ];
 
 
