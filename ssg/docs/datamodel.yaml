@@ -960,7 +960,10 @@ Team: &Team
 
 EventMode: &EventMode
     _path: /event-modes
-    name: (text)
+    name_private: (text)
+    name_et: text
+    name_en: text
+    name_ru: text
 
 ScreeningType: &ScreeningType
     _path: /screening-types
