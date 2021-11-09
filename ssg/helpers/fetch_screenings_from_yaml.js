@@ -410,6 +410,7 @@ function CreateYAML(screenings, lang) {
                 return sort
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });
