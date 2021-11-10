@@ -4,6 +4,8 @@ cd $DIR
 
 QUEUEFILE="$PWD"/helpers/build_queue.yaml
 
+LASTBUILDINFO=''
+
 if [ -f "$QUEUEFILE" ]; then
     rm "$QUEUEFILE"
     echo "Build_queue kustutatud."
@@ -14,6 +16,7 @@ fi
 if [ -n "$1" ]; then
     if [ -d "/proc/$1" ]
     then
+        LASTBUILDINFO=$(ps -Flww -p $1)
         kill "$1"
         echo "Viimane build (PID $1) tapetud."
     else
@@ -66,6 +69,14 @@ else
 fi
 
 echo "SEPARATORSTRING"
+
+if [ -z "$LASTBUILDINFO" ]; then
+    echo "Last build (PID $1) details:"
+    echo "$LASTBUILDINFO"
+else
+    :
+fi
+
 if [ -z "$BUILPROCESSESHELPERS" ]
 then
     :
