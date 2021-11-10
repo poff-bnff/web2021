@@ -17,6 +17,7 @@ if [ -n "$1" ]; then
     if [ -d "/proc/$1" ]
     then
         LASTBUILDINFO=$(ps -Flww -p $1)
+        echo "LASTBUILDINFO $LASTBUILDINFO"
         kill "$1"
         echo "Viimane build (PID $1) tapetud."
     else
