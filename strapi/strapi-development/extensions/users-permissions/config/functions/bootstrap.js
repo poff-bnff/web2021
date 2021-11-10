@@ -130,6 +130,15 @@ module.exports = async () => {
       callback: `${strapi.config.server.url}/auth/eventival/callback`,
       scope: ['openid', 'email', 'profile'],
     },
+    eventivalindustry: {
+      enabled: false,
+      icon: 'reddit',
+      key: '',
+      secret: '',
+      state: true,
+      callback: `${strapi.config.server.url}/auth/eventivalindustry/callback`,
+      scope: ['openid', 'email', 'profile'],
+    },
     // auth0: {
     //   enabled: false,
     //   icon: '',
