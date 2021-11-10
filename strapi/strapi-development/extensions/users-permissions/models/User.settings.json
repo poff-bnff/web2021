@@ -96,8 +96,8 @@
       "via": "owner"
     },
     "transactions": {
-      "via": "transactor",
-      "collection": "transaction"
+      "collection": "transaction",
+      "via": "transactor"
     },
     "user_profile": {
       "model": "user-profiles",
