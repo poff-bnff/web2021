@@ -72,10 +72,10 @@ fi
 echo "SEPARATORSTRING"
 
 if [ -z "$LASTBUILDINFO" ]; then
+    :
+else
     echo "Last build (PID $1) details:"
     echo "$LASTBUILDINFO"
-else
-    :
 fi
 
 if [ -z "$BUILPROCESSESHELPERS" ]
