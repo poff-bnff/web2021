@@ -9,19 +9,24 @@ LASTBUILDINFO=''
 if [ -f "$QUEUEFILE" ]; then
     rm "$QUEUEFILE"
     echo "Build_queue kustutatud."
+    echo ""
+
 else
     echo "Järjekorda ei eksisteeri. "
+    echo ""
+
 fi
 
 if [ -n "$1" ]; then
     if [ -d "/proc/$1" ]
     then
         LASTBUILDINFO=$(ps -Flww -p $1)
-        echo "LASTBUILDINFO $LASTBUILDINFO"
         kill "$1"
         echo "Viimane build (PID $1) tapetud."
+        echo ""
     else
         echo "Viimane build (PID $1) ei ole aktiivne."
+        echo ""
     fi
 fi
 
@@ -54,6 +59,7 @@ if [ -z "$BUILPROCESSESENTUSSG" ]
 then
     :
 else
+    echo ""
     echo -n "Tapan SSG PID'd "
     ARRAYSSG=($BUILPROCESSESENTUSSG)
 
@@ -66,6 +72,7 @@ else
             echo -n "${ARRAYSSG[n]}, "
         fi
     done
+    echo ""
     kill $BUILPROCESSESENTUSSG
 fi
 
@@ -76,6 +83,7 @@ if [ -z "$LASTBUILDINFO" ]; then
 else
     echo "Last build (PID $1) details:"
     echo "$LASTBUILDINFO"
+    echo ""
 fi
 
 if [ -z "$BUILPROCESSESHELPERS" ]
@@ -84,6 +92,7 @@ then
 else
     echo "Killed helpers detailed:"
     echo "$BUILPROCESSESHELPERSFULLINFO"
+    echo ""
 fi
 
 if [ -z "$BUILPROCESSESENTUSSG" ]
