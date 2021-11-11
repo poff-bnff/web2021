@@ -670,10 +670,13 @@ main.grid_film(id=self.id)
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            //- .f_vialog_box
+            .f_vialog_box
+                a(name=`vialog-${film.id}`)
+                script(async src='https://ui.vialog.app/vialog-loader.js' data-vialog=film.id)
             //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
             //-     a(name='chat')
             //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
+
             if film.media && film.media
                 - let med = film.media
                 if (med.trailer && med.trailer[0] && med.trailer[0].videoCode) || (med && med.QaClip && med.QaClip[0].url)
