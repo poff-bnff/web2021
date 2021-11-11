@@ -46,7 +46,6 @@ module.exports = {
     async afterCreate(result, data) {
 
       // Automatically create a cassette for a new film
-      console.log(result.tags);
       const createCassetteResult = await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
