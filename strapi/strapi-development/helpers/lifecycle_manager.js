@@ -14,6 +14,7 @@ const fs = require('fs')
 const yaml = require('yaml')
 const path = require('path')
 const moment = require("moment-timezone")
+const os = require('os')
 
 const mapping_domain = {
   'filmikool.poff.ee': 'filmikool',
@@ -72,6 +73,8 @@ async function update_strapi_logs(plugin_log, id) {
 
 async function call_process(build_dir, plugin_log, args) {
   const child = spawn('node', [build_dir, args])
+  console.log(child.pid, 'blablaaaa');
+  os.setPriority(child.pid, 10)
   const id = plugin_log.id
 
   let data = "";
