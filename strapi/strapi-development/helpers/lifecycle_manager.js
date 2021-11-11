@@ -15,12 +15,6 @@ const yaml = require('yaml')
 const path = require('path')
 const moment = require("moment-timezone")
 
-const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
-const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
-
-console.log();
-
 const mapping_domain = {
   'filmikool.poff.ee': 'filmikool',
   'hoff.ee': 'hoff',
@@ -280,6 +274,9 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
+  const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+  const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
   // here to skip specific model builds
   if (MODELS_SKIP_BUILD.includes(model_name)) {
     return
