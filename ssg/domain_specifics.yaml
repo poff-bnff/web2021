@@ -76,6 +76,11 @@ programmes_festival_editions:
 active_industry_editions:
     - 12
 
+skip_build_for_models:
+    - industry-project
+    - industry-event
+    - industry-person
+
 article:
     poff.ee: POFFiArticle
     justfilm.ee: JustFilmiArticle
