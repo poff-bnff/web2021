@@ -1050,6 +1050,7 @@ Film: &Film
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
     multi_and_single: (boolean)
+    vialog_id: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
