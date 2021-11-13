@@ -126,7 +126,7 @@ block content
                         if cassette.festival_editions
                             each edition in cassette.festival_editions
                                 - allFestivalEditions.push(edition.name)
-                        a.card_film(id= screening.id href= `/${lang_path}film/${cassette.slug}` ts=`${new Date(screening.dateTime).getTime()}` style='position: relative;')
+                        a.card_film(id= screening.id href= `/${lang_path}film/${cassette.slug}` ts=`${new Date(screening.dateTime).getTime()}` style='padding-bottom: 20px; position: relative;')
                             .container_frame_16_9
 
                                 //- PILDID
