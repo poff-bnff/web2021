@@ -925,6 +925,9 @@
                             "type": "string"
                           }
                         },
+                        "vialog_id": {
+                          "type": "string"
+                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -1348,6 +1351,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "vialog_id": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"

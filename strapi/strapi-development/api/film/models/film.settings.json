@@ -113,6 +113,9 @@
     },
     "other_festivals": {
       "collection": "festival"
+    },
+    "vialog_id": {
+      "type": "string"
     }
   }
 }
