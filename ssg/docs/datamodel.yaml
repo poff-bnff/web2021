@@ -1039,7 +1039,7 @@ Film: &Film
         -   *Language
     subtitles: #(Component (repeatable))
         -   *Language
-    other_festivals: 
+    other_festivals:
         -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
@@ -1050,6 +1050,7 @@ Film: &Film
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
     multi_and_single: (boolean)
+    vialog_id: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1240,7 +1241,7 @@ IndustryPerson: &IndustryPerson
         - *IndustryPersonType
     lookingFor: (text)
     contactAtEvent: (text)
-    festival_editions: 
+    festival_editions:
         -   *FestivalEdition
     tag_looking_fors:
         -   *TagLookingFor
@@ -1397,7 +1398,7 @@ IndustryEvent: &IndustryEvent
     industry_projects:
         - *IndustryProject
     isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
-    isPublicEvent: (Boolean) 
+    isPublicEvent: (Boolean)
     festival_editions:
         -   *FestivalEdition
     event_mode: *EventMode
