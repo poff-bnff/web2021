@@ -1400,7 +1400,7 @@ IndustryEvent: &IndustryEvent
     isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
     isPublicEvent: (Boolean)
     festival_editions:
-        -   *FestivalEdition
+        - *FestivalEdition
     event_mode: *EventMode
 
 IndustrySubMenuItem: &IndustrySubMenuItem
