@@ -88,7 +88,7 @@ block content
                                             polyline(points='12 6 12 12 16 14')
                                         span.screening_time.small_1
                                             +screeningTime(event.startTime)
-                                        span.screening_time.small_1 &nbsp;User
+                                        span.screening_time.small_1 &nbsp;User time
 
                                     div.text_right
                                         svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
@@ -107,6 +107,9 @@ block content
 
                                     h3.film_title_locale.dark_1.padding_bottom_2= event.title
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
+
+                                    if event.location
+                                        p.screening_date.small_1(event.location.name)
 
                                     if event.industry_people
                                         each industry_person in event.industry_people
