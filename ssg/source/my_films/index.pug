@@ -73,7 +73,7 @@ block content
                     each festival in cassette.festivals
                         - allFestivals.push(festival.name)
                         - festivalsCassette.push(festival.name)
-                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}` style='display: none; position: relative;')
+                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}` style='display: none; padding-bottom: 20px; position: relative;')
                     input#festivalsCassette(type='hidden', value=`${festivalsCassette}`)
 
                     .container_frame_16_9
