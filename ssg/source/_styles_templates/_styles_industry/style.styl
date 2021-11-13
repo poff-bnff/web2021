@@ -1624,10 +1624,10 @@ option
     padding .5rem 1rem .5rem 1rem
     background-color bg_dark_4
 
-.event_card_footer
-    padding .5rem 1rem .5rem 1rem
-    background-color bg_dark_4
-    align-self end
+.event_card_header
+    padding .5rem 3rem .5rem 2rem
+    background-color rgba(79, 196, 191, .5)
+    align-self start
 
 
 .svg_icon_small
@@ -1638,9 +1638,9 @@ option
     // stroke rgba(255, 255, 255, .5)
     height 1.5rem
     width 1.5rem
-    margin-right .5rem
-    margin-top -.6rem
-    stroke rgba(255, 255, 255, .5)
+    margin-right .6rem
+    margin-top -.5rem
+    stroke rgba(0, 0, 0, .5)
 
 .svg_icon_small_primary
     // height calc(1.5rem + 0.1vw)
@@ -1650,8 +1650,8 @@ option
     // stroke rgba(255, 255, 255, .5)
     height 1.5rem
     width 1.5rem
-    margin-right .5rem
-    margin-top -.6rem
+    margin-right .6rem
+    margin-top -.5rem
     stroke clr_primary
 
 .small_1
@@ -2264,6 +2264,12 @@ a.btn_popover
     grid-template-columns 1fr 1fr
     padding-top .7rem
 
+.grid_container_event_time
+    display grid
+    grid-template-columns repeat(auto-fit, minmax(240px, 1fr))
+    padding-top 1rem
+    padding-bottom .9rem
+
 .grid_container_screening_time_2
     display grid
     grid-template-columns 1fr 1fr
@@ -2283,7 +2289,7 @@ a.btn_popover
   text-align left
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color white_96
+  color dark_1
   letter-spacing 0.04em
 
 .screening_weekday
@@ -2297,7 +2303,7 @@ a.btn_popover
   text-align right
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color clr_primary
+  color dark_1
   letter-spacing 0.04em
 
 .screening_hall
@@ -2541,12 +2547,12 @@ a.btn_popover
     text-decoration none
 
 .card_film_title
-    padding-left 1.2rem
-    padding-top 2.4rem
-    padding-right 1.2rem
-    // padding-bottom: .1rem
+    padding-left 3rem
+    padding-top 2rem
+    padding-right 2rem
+    padding-bottom: .5rem
     text-decoration none
-    align-self start
+    align-self end
     vertical-align top
 
 .card_film_info
