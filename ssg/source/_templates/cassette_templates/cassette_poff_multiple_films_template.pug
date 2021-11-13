@@ -827,8 +827,9 @@ else
             //-             +youtube(youtubeVideoCode[1])
 
             .f_vialog_box
-                a(name=`vialog-${film.id}`)
-                script(async src='https://ui.vialog.app/vialog-loader.js' data-vialog=film.id)
+                a(name=film.vialog_id)
+                script(async='' src='https://ui.vialog.app/vialog-loader.js' data-vialog-partner='poff25' data-vialog-topic=`${film.id}` data-lang=self.locale)
+
             //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
             //-     a(name='chat')
             //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
