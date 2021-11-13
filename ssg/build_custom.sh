@@ -206,8 +206,8 @@ fetch_data()
     echo '==== custom build ==== fetch_shops_from_yaml'
     node ./helpers/fetch_shops_from_yaml.js
 
-    echo '==== custom build ==== fetch_industry_person_from_yaml'
-    node ./helpers/fetch_industry_person_from_yaml.js
+    # echo '==== custom build ==== fetch_industry_person_from_yaml'
+    # node ./helpers/fetch_industry_person_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js
