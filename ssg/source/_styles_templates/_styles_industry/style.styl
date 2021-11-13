@@ -521,8 +521,8 @@ footer
 
 .grid_events
     display: grid
-    grid-template-columns: 1fr
-    grid-template-columns: auto
+    grid-template-columns: 1
+    grid-template-columns: 1
     grid-template-rows: auto
     padding-top 1rem
 
@@ -3226,10 +3226,11 @@ a.btn_popover
     .grid_events
         display grid
         // grid-template-columns 1fr 1fr 1fr
-        grid-template-columns repeat(auto-fill, minmax(500px, 1fr))
+        // grid-template-columns repeat(auto-fill, minmax(500px, 1fr))
+        grid-template-columns 1
         grid-template-rows auto
-        grid-gap 1rem
-        padding 2rem
+        grid-gap 3rem
+        padding 5rem
         padding-top 1rem
         justify-content center
 
