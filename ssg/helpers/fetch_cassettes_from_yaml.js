@@ -36,7 +36,7 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films', '/search'])
+    addConfigPathAliases(['/films', '/search', '/my_films'])
 }
 
 
