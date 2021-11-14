@@ -50,7 +50,7 @@ block content
                 section.grid_events
                     -
                         var sortFunction = function(a, b) {
-                            return a.title.localeCompare(b.title, 'en')
+                            return !a.startTime.localeCompare(b.timestamp)
                         }
 
                     each event in self.data.industryevents.sort(sortFunction)
@@ -109,52 +109,52 @@ block content
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
                                     if event.location
-                                        p= `Location: ${event.location.name}`
+                                        p.location= `@ ${event.location.name}`
 
-                                    if event.industry_people
-                                        each industry_person in event.industry_people
-                                            if industry_person.profilePicAtInd
-                                                img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
+                                    //- if event.industry_people
+                                    //-     each industry_person in event.industry_people
+                                    //-         if industry_person.profilePicAtInd
+                                    //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
 
-                                            p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
+                                    //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
 
-                                            if industry_person.industry_person_types
-                                                p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
+                                    //-         if industry_person.industry_person_types
+                                    //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
 
-                                            if industry_person.role_at_films
-                                                p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
+                                    //-         if industry_person.role_at_films
+                                    //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
 
-                                    if event.description
-                                        p
-                                            +format(event.description)
+                                    //- if event.description
+                                    //-     p
+                                    //-         +format(event.description)
 
-                                    if event.industry_categories
-                                        p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+                                    //- if event.industry_categories
+                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
 
-                                    if event.startTime
-                                        p Start time:
-                                        p
-                                            +screeningDate(event.startTime)
-                                        p
-                                            +screeningTime(event.startTime)
+                                    //- if event.startTime
+                                    //-     p Start time:
+                                    //-     p
+                                    //-         +screeningDate(event.startTime)
+                                    //-     p
+                                    //-         +screeningTime(event.startTime)
 
-                                    if event.durationTime
-                                        p Duration:
-                                        p
-                                            +indEvDur(event.durationTime)
+                                    //- if event.durationTime
+                                    //-     p Duration:
+                                    //-     p
+                                    //-         +indEvDur(event.durationTime)
 
-                                    if event.project_type
-                                        p= `Type: ${event.project_type}`
+                                    //- if event.project_type
+                                    //-     p= `Type: ${event.project_type}`
 
-                                    if event.event_mode
-                                        p
-                                        p= `Mode: ${event.event_mode.name}`
+                                    //- if event.event_mode
+                                    //-     p
+                                    //-     p= `Mode: ${event.event_mode.name}`
 
-                                    if event.videoUrl
-                                        p= `Video at: ${event.videoUrl}`
+                                    //- if event.videoUrl
+                                    //-     p= `Video at: ${event.videoUrl}`
 
-                                    p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
-                                    p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+                                    //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
+                                    //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
 
                                 a.btn.btn_secondary.notsavedevent(id=event.id+'_not_savedevent', style= {display: 'none'} onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');` role='button' target='_BLANK')= 'Add to calendar'
                                 a.btn.btn_secondary.issavedevent(id=event.id+'_is_savedevent', style= {display: 'none'} onclick=`modifyFavourites('rmMyEvent', ${event.id})` role='button' target='_BLANK')= 'Remove from calendar'
