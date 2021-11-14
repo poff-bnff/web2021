@@ -94,12 +94,7 @@ block content
                     if (    whichScreeningTypesToDisplay.length === 0 // any screening type will match
                          || displayable_screening_types               // one or more of screening types are in displayable list
 
-                        - var allFestivalEditions = []
-                        if screening.cassette
-                            - var cassette = screening.cassette
-                        if cassette.festival_editions
-                            each edition in cassette.festival_editions
-                                - allFestivalEditions.push(edition.name)
+                        - var cassette = screening.cassette
                         a.card_film(id=screening.id style='display:none; padding-bottom: 20px; position: relative;' href= `/${lang_path}film/${cassette.slug}`)
                             .container_frame_16_9
 
