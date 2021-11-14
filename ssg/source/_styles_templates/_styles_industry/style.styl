@@ -3188,6 +3188,27 @@ a.btn_popover
     margin-top 1.618rem
     border .5px solid clr_grey_light
 
+.grid_event_calendar
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(150px, 1fr))
+    grid-template-rows auto
+    grid-gap 1rem
+    padding-left 6rem
+    padding-right 6rem
+    z-indec 999
+
+.event_day
+    background-color clr-primary
+    color white_96
+    text-align center
+    font-family font_h
+    font-size calc(1.25rem + 0.1vw)
+    font-weight 400
+    // color dark_1
+    letter-spacing 0.04em
+
+
+
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3289,6 +3310,7 @@ a.btn_popover
         padding-top 150px
         margin-bottom 0rem
         z-index 999
+
 
     .grid_article
         display grid
