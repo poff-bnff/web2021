@@ -9,9 +9,29 @@ block content
 
             input#search(type='text', placeholder= self.label.filters.search)
 
-            select#types_select(name='Types')
-                option(value='')= self.label.filters.projectTypes
-                each index, key in self.data.filters.types
+            //- select#types_select(name='Types')
+            //-     option(value='')= self.label.filters.projectTypes
+            //-     each index, key in self.data.filters.types
+            //-         option(value=key)= index
+
+            select#locations_select(name='Locations')
+                option(value='')= self.label.filters.locations
+                each index, key in self.data.filters.locations
+                    option(value=key)= index
+
+            select#modes_select(name='Modes')
+                option(value='')= self.label.filters.mode
+                each index, key in self.data.filters.modes
+                    option(value=key)= index
+
+            select#publics_select(name='Publics')
+                option(value='')= self.label.filters.public
+                each index, key in self.data.filters.publics
+                    option(value=key)= index
+
+            select#lives_select(name='Lives')
+                option(value='')= self.label.filters.live
+                each index, key in self.data.filters.lives
                     option(value=key)= index
 
             select#categories_select(name='Categories')
@@ -34,7 +54,7 @@ block content
                 each index, key in self.data.filters.persons
                     option(value=key)= index
 
-            select#starttimes_select(name='Starttimes')
+            select#starttimes_select(name='Starttimes' style='display: none;')
                 option(value='')= self.label.filters.dates
                 each index, key in self.data.filters.starttimes
                     option(value=key)= index
@@ -42,15 +62,15 @@ block content
             button.clear(onclick='unselect_all()')= self.label.filters.empty
 
             h3#nonetoshow.sub_section_headline(style='display: none;')
-
-        .grid_event_calendar
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-19` role='button' target='_blank')='19 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-20` role='button' target='_blank')='20 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-21` role='button' target='_blank')='21 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-22` role='button' target='_blank')='22 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-23` role='button' target='_blank')='23 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-24` role='button' target='_blank')='24 NOV'
-            a.btn.btn_primary.active.event_day(href= `https://industry.poff.ee/industry-events-search/?starttimes=2021-11-25` role='button' target='_blank')='25 NOV'
+        br
+        .grid_event_calendar(style='align: center;')
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov19' onclick= `calendarButtonSelector(19);` role='button' target='_blank')='19 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov20' onclick= `calendarButtonSelector(20);` role='button' target='_blank')='20 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov21' onclick= `calendarButtonSelector(21);` role='button' target='_blank')='21 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov22' onclick= `calendarButtonSelector(22);` role='button' target='_blank')='22 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov23' onclick= `calendarButtonSelector(23);` role='button' target='_blank')='23 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov24' onclick= `calendarButtonSelector(24);` role='button' target='_blank')='24 NOV'
+            a.btn.btn_primary.active.event_day(id='calendarBtnNov25' onclick= `calendarButtonSelector(25);` role='button' target='_blank')='25 NOV'
 
         section#content.schedule
 

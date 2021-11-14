@@ -3,16 +3,16 @@ const yaml = require('js-yaml');
 const path = require('path');
 const ical = require('ical-generator');
 const rueten = require('./rueten.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
 
-const sourceDir =  path.join(rootDir, 'source');
-const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industryevents');
+const sourceDir = path.join(rootDir, 'source');
+const fetchDir = path.join(sourceDir, '_fetchdir');
+const fetchDataDir = path.join(fetchDir, 'industryevents');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
 const STRAPIDATA_INDUSTRY_EVENTS = yaml.load(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
@@ -135,12 +135,12 @@ if (DOMAIN === 'industry.poff.ee') {
             // https://github.com/sebbo2002/ical-generator#readme
             let eventstart = convert_to_UTC(element.startTime)
             let eventend = new Date(eventstart)
-            if(element.durationTime) {
+            if (element.durationTime) {
                 if (element.durationTime.split(':')[1] !== '00') {
-                    eventend.setUTCMinutes(eventend.getUTCMinutes()+parseInt(element.durationTime.split(':')[1]))
+                    eventend.setUTCMinutes(eventend.getUTCMinutes() + parseInt(element.durationTime.split(':')[1]))
                 }
                 if (element.durationTime.split(':')[0] !== '00') {
-                    eventend.setUTCHours(eventend.getUTCHours()+parseInt(element.durationTime.split(':')[0]))
+                    eventend.setUTCHours(eventend.getUTCHours() + parseInt(element.durationTime.split(':')[0]))
                 }
             }
             element.calendar_data = escape(ical({
@@ -181,11 +181,11 @@ if (DOMAIN === 'industry.poff.ee') {
 
 
     let dataToYAML = []
-    let newDataToYAML = {eventsByDate: {}, allDates:[]}
+    let newDataToYAML = { eventsByDate: {}, allDates: [] }
     if (allData.length) {
         dataToYAML = allData.sort((a, b) => new Date(a.startTime) - new Date(b.startTime))
 
-        Date.prototype.addHours = function(hours) {
+        Date.prototype.addHours = function (hours) {
             var date = new Date(this.valueOf());
             date.setHours(date.getHours() + hours);
             return date;
@@ -194,7 +194,7 @@ if (DOMAIN === 'industry.poff.ee') {
         let allDates = dataToYAML.map(event => {
             let dateTimeUTC = convert_to_UTC(event.startTime)
             let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
-            let date = dateTimeUTCtoEET.getFullYear()+'-'+(dateTimeUTCtoEET.getMonth()+1)+'-'+(dateTimeUTCtoEET.getDate())
+            let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1) + '-' + (dateTimeUTCtoEET.getDate())
             if (event.channel) {
                 newDataToYAML.eventsByDate[date] = newDataToYAML.eventsByDate[date] || {}
                 newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`] = newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`] || []
@@ -221,7 +221,11 @@ if (DOMAIN === 'industry.poff.ee') {
     function search_and_filters(dataToYAML) {
 
         let filters = {
-            types: {},
+            // types: {},
+            locations: {},
+            modes: {},
+            publics: {},
+            lives: {},
             categories: {},
             channels: {},
             projects: {},
@@ -232,11 +236,36 @@ if (DOMAIN === 'industry.poff.ee') {
         const events_search = dataToYAML.map(events => {
 
             let event = events
-            let types = []
-            if (typeof event.project_type !== 'undefined') {
-                types.push(event.project_type.type)
-                filters.types[event.project_type.type] = event.project_type.type
+
+            // let types = []
+            // if (typeof event.project_type !== 'undefined') {
+            //     types.push(event.project_type.type)
+            //     filters.types[event.project_type.type] = event.project_type.type
+            // }
+
+            locations = []
+            if (typeof event.location !== 'undefined') {
+                let industry_location = event.location.name
+                locations.push(industry_location)
+                filters.locations[industry_location] = industry_location
             }
+
+            modes = []
+            if (typeof event.event_mode !== 'undefined') {
+                let event_mode = event.event_mode.name
+                modes.push(event_mode)
+                filters.modes[event_mode] = event_mode
+            }
+
+            publics = []
+            let public_event = event.isPublicEvent ? 'Public event' : 'Closed event'
+            publics.push(public_event)
+            filters.publics[public_event] = public_event
+
+            lives = []
+            let isLiveEvent = event.isLiveEvent ? 'Live stream' : 'No live stream'
+            lives.push(isLiveEvent)
+            filters.lives[isLiveEvent] = isLiveEvent
 
             let categories = []
             if (typeof event.industry_categories !== 'undefined') {
@@ -274,7 +303,7 @@ if (DOMAIN === 'industry.poff.ee') {
             let starttimes = []
             if (typeof event.startTime !== 'undefined') {
 
-                Date.prototype.addHours = function(hours) {
+                Date.prototype.addHours = function (hours) {
                     var date = new Date(this.valueOf());
                     date.setHours(date.getHours() + hours);
                     return date;
@@ -282,7 +311,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
                 let dateTimeUTC = convert_to_UTC(event.startTime)
                 let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
-                let date = dateTimeUTCtoEET.getFullYear()+'-'+(dateTimeUTCtoEET.getMonth()+1)+'-'+(dateTimeUTCtoEET.getDate())
+                let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1) + '-' + (dateTimeUTCtoEET.getDate())
                 let dateKey = `_${date}`
 
                 starttimes.push(dateKey)
@@ -294,13 +323,21 @@ if (DOMAIN === 'industry.poff.ee') {
                 text: [
                     events.title,
                     events.description,
-                    types.join(' '),
+                    // types.join(' '),
+                    locations.join(' '),
+                    modes.join(' '),
+                    publics.join(' '),
+                    lives.join(' '),
                     categories.join(' '),
                     channels.join(' '),
                     projects.join(' '),
                     persons.join(' '),
                 ].join(' ').toLowerCase(),
-                types: types,
+                // types: types,
+                locations: locations,
+                modes: modes,
+                publics: publics,
+                lives: lives,
                 categories: categories,
                 channels: channels,
                 projects: projects,
@@ -315,12 +352,12 @@ if (DOMAIN === 'industry.poff.ee') {
                 sortable.push([item, to_sort[item]]);
             }
 
-            sortable = sortable.sort(function(a, b) {
+            sortable = sortable.sort(function (a, b) {
                 try {
                     const locale_sort = a[1].localeCompare(b[1], 'en')
                     return locale_sort
                 } catch (error) {
-                    console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                    console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                     throw new Error(error)
                 }
             });
@@ -328,13 +365,17 @@ if (DOMAIN === 'industry.poff.ee') {
             var objSorted = {}
             for (let index = 0; index < sortable.length; index++) {
                 const item = sortable[index];
-                objSorted[item[0]]=item[1]
+                objSorted[item[0]] = item[1]
             }
             return objSorted
         }
 
         let sorted_filters = {
-            types: mSort(filters.types),
+            // types: mSort(filters.types),
+            locations: mSort(filters.locations),
+            modes: mSort(filters.modes),
+            publics: mSort(filters.publics),
+            lives: mSort(filters.lives),
             categories: mSort(filters.categories),
             channels: mSort(filters.channels),
             projects: mSort(filters.projects),
