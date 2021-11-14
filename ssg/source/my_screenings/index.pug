@@ -83,15 +83,18 @@ block content
                         }
                         return (aSortSource > bSortSource) ? 1 : ((bSortSource > aSortSource) ? -1 : 0)
                     }
-                    var screening_types = (screening.screening_types || [])
-                    var displayable_screening_types = screening_types
-                      .map(st => st.name)
-                      .some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase()))
 
                 each screening in self.data.screenings.sort(sortFunction)
-                    // if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
-                    // logic replaced
-                    if ( whichScreeningTypesToDisplay.length === 0 || displayable_screening_types )
+                    - var screening_types = (screening.screening_types || [])
+                    - var displayable_screening_types = screening_types
+                    -   .map(st => st.name)
+                    -   .some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase()))
+                    //- if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
+                    //- logic replaced
+                    //- any screening type will match
+                    //- one or more of screening types are in displayable list
+                    if whichScreeningTypesToDisplay.length === 0 || displayable_screening_types
+
                         - var allFestivalEditions = []
                         if screening.cassette
                             - var cassette = screening.cassette
@@ -149,13 +152,13 @@ block content
 
                             .card_film_title(style='padding-bottom: 1.2rem;')
 
-                                    //- Eeldame, et screeningul on datetime
-                                    //- if screening.dateTime
+                                //- Eeldame, et screeningul on datetime
+                                //- if screening.dateTime
 
-                                    //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
+                                //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
 
-                                    //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
+                                //- Kuvame kassetipealkirja
+                                h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
 
                             //- Programmid
                             .card_film_info
