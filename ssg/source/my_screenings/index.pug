@@ -91,9 +91,7 @@ block content
                 each screening in self.data.screenings.sort(sortFunction)
                     // if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
                     // logic replaced
-                    if (    whichScreeningTypesToDisplay.length === 0 // any screening type will match
-                         || displayable_screening_types               // one or more of screening types are in displayable list
-
+                    if ( whichScreeningTypesToDisplay.length === 0 || displayable_screening_types )
                         - var cassette = screening.cassette
                         a.card_film(id=screening.id style='display:none; padding-bottom: 20px; position: relative;' href= `/${lang_path}film/${cassette.slug}`)
                             .container_frame_16_9
