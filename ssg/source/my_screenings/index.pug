@@ -5,14 +5,14 @@ block content
 
     h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-    .grid_search#filters(style='display: none;')
+    //- Milliseid screening type kuvada, kõikide kuvamiseks []
+    //- Ühe, nt first screening kuvamiseks:
+    //- - const whichScreeningTypesToDisplay = ['first screening']
+    //- Mitme kuvamiseks:
+    - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
+    //- - const whichScreeningTypesToDisplay = []
 
-        //- Milliseid screening type kuvada, kõikide kuvamiseks []
-        //- Ühe, nt first screening kuvamiseks:
-        //- - const whichScreeningTypesToDisplay = ['first screening']
-        //- Mitme kuvamiseks:
-        - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
-        //- - const whichScreeningTypesToDisplay = []
+    .grid_search#filters(style='display: none;')
 
         input#search(type='text', placeholder= self.label.filters.search)
 
