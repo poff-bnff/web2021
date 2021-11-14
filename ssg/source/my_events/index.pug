@@ -71,7 +71,7 @@ block content
                                         each industry_person in event.industry_people
                                             if industry_person.profilePicAtInd
                                                 img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
-                                                p= `${industry_person.person.firstName} ${industry_person.person.lastName} (${industry_person.industry_person_types.map(p => p.type).join(', ')})`
+                                                p= `${industry_person.person.firstName} ${industry_person.person.lastName} ${industry_person.industry_person_types ? `(${industry_person.industry_person_types.map(p => p.type).join(', ')})` : ''}`
 
                                 a.btn.btn_secondary.notsavedevent(id=event.id+'_not_savedevent', style= {display: 'none'} onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');` role='button' target='_BLANK')= 'Add to calendar'
                                 a.btn.btn_secondary.issavedevent(id=event.id+'_is_savedevent', style= {display: 'none'} onclick=`modifyFavourites('rmMyEvent', ${event.id})` role='button' target='_BLANK')= 'Remove from calendar'
