@@ -9,10 +9,10 @@ block content
 
             input#search(type='text', placeholder= self.label.filters.search)
 
-            select#types_select(name='Types')
-                option(value='')= self.label.filters.projectTypes
-                each index, key in self.data.filters.types
-                    option(value=key)= index
+            //- select#types_select(name='Types')
+            //-     option(value='')= self.label.filters.projectTypes
+            //-     each index, key in self.data.filters.types
+            //-         option(value=key)= index
 
             select#categories_select(name='Categories')
                 option(value='')= self.label.filters.industryCategories

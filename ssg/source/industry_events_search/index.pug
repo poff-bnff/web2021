@@ -15,7 +15,7 @@ block content
             //-         option(value=key)= index
 
             select#locations_select(name='Locations')
-                option(value='')= self.label.filters.locations
+                option(value='')= self.label.filters.location
                 each index, key in self.data.filters.locations
                     option(value=key)= index
 
