@@ -157,8 +157,8 @@ block content
                                     //-     p
                                     //-         +format(event.description)
 
-                                    //- if event.industry_categories
-                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+                                    if event.industry_categories
+                                        p= `${self.label.industry.eventCategories}: ${event.industry_categories.map(c => c.name).join(', ')}`
 
                                     //- if event.startTime
                                     //-     p Start time:
@@ -167,23 +167,22 @@ block content
                                     //-     p
                                     //-         +screeningTime(event.startTime)
 
-                                    //- if event.durationTime
-                                    //-     p Duration:
-                                    //-     p
-                                    //-         +indEvDur(event.durationTime)
+                                    if event.durationTime
+                                        p= `${self.label.industry.duration}:`
+                                        p
+                                            +indEvDur(event.durationTime)
 
                                     //- if event.project_type
                                     //-     p= `Type: ${event.project_type}`
 
-                                    //- if event.event_mode
-                                    //-     p
-                                    //-     p= `Mode: ${event.event_mode.name}`
+                                    if event.event_mode
+                                        p= `${self.label.industry.eventMode}: ${event.event_mode.name}`
 
                                     //- if event.videoUrl
                                     //-     p= `Video at: ${event.videoUrl}`
 
-                                    //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
-                                    //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+                                    p= `${self.label.industry.eventPublicity}: ${event.isPublicEvent ? self.label.industry.publicEvent : self.label.industry.privateEvent}`
+                                    p= `${self.label.industry.isLiveEvent}: ${event.isLiveEvent ? self.label.industry.liveEvent : self.label.industry.notLiveEvent}`
 
                                 a.btn.btn_secondary.notsavedevent(id=event.id+'_not_savedevent', style= {display: 'none'} onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');` role='button' target='_BLANK')= 'Add to calendar'
                                 a.btn.btn_secondary.issavedevent(id=event.id+'_is_savedevent', style= {display: 'none'} onclick=`modifyFavourites('rmMyEvent', ${event.id})` role='button' target='_BLANK')= 'Remove from calendar'
