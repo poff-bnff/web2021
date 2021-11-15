@@ -1,6 +1,35 @@
 let profile_pic_to_send;
 let signUpButton = document.getElementById('signUpButton')
 let signUpButtonInnerHTMLBackup = signUpButton.innerHTML
+
+// Cleaners
+const clearRegForm = () => {
+    document.getElementById('registerTitle').style.display = 'none'
+    document.getElementById('signupForm').style.display = 'none'
+}
+
+const clearSocialAuthBtns = () => document.getElementById('authButtons').style.display = 'none'
+
+// User email confirmation success message
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+if(urlParams.get('confirmation') === 'success') {
+    const lang = localStorage.getItem('lang') || 'et'
+    let confirmationMessage
+    if (lang === 'et') {
+        confirmationMessage = 'Konto edukalt aktiveeritud, saad nüüd sisse logida.'
+    } else {
+        confirmationMessage = 'Account successfully confirmed, You can now log in.'
+    }
+    document.getElementById('profileSent').innerHTML = confirmationMessage
+    document.getElementById('profileSent').style.display = ''
+    document.getElementById('loginButton').style.display = ''
+} else {
+    document.getElementById('registerTitle').style.display = ''
+    document.getElementById('authButtons').style.display = ''
+    document.getElementById('signupForm').style.display = ''
+}
+
 // Event listeners
 window.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -92,14 +121,6 @@ const collectFormData = () => {
     }
     return newUser
 }
-
-// Cleaners
-const clearRegForm = () => {
-    document.getElementById('registerTitle').style.display = 'none'
-    document.getElementById('signupForm').style.display = 'none'
-}
-
-const clearSocialAuthBtns = () => document.getElementById('authButtons').style.display = 'none'
 
 // function validateaAndPreview(file) {
 //     let error = document.getElementById("imgError");

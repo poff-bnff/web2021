@@ -589,7 +589,7 @@ module.exports = {
     const user = await userService.fetch({ confirmationToken }, []);
 
     if (!user) {
-      return ctx.badRequest('token.invalid');
+      return ctx.badRequest('Link pole õige või on e-mail juba kinnitatud / Link invalid or e-mail already confirmed');
     }
 
     await userService.edit({ id: user.id }, { confirmed: true, confirmationToken: null });

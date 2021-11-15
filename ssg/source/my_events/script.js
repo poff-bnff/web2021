@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(queryString);
 const selectors = {
     types: document.getElementById('types_select'),
     categories: document.getElementById('categories_select'),
-    // channels: document.getElementById('channels_select'),
+    channels: document.getElementById('channels_select'),
     // projects: document.getElementById('projects_select'),
     persons: document.getElementById('persons_select'),
     starttimes: document.getElementById('starttimes_select'),
@@ -78,7 +78,13 @@ function select_next_or_previous(which, id) {
 function toggleAll(exclude_selector_name) {
     setSearchParams()
 
-    ids = execute_filters()
+    if (userProfile && userProfile.my_events && userProfile.my_events.length) {
+        var userMyEventsIds = getUniqueFavoritesArray(userProfile.my_events, 'schedule', 'industry_events')
+        var allIds = execute_filters()
+        ids = allIds.filter(id => userMyEventsIds.includes(id))
+    } else {
+        ids = []
+    }
 
     // kuva/peida 'pole vasteid'
     if (ids.length) {
@@ -98,10 +104,10 @@ function toggleAll(exclude_selector_name) {
     })
 
     // filtreeri filtreid
-    toggleFilters(exclude_selector_name)
+    toggleFilters(exclude_selector_name, ids)
 }
 
-function toggleFilters(exclude_selector_name) {
+function toggleFilters(exclude_selector_name, ids) {
 
     for (selector_name in selectors) {
 
@@ -125,10 +131,10 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'categories' ? value : selectors.categories.value;
                     return compare_with === '' ? true : screening.categories.includes(compare_with)
                 })
-                // .filter(screening => {
-                //     const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
-                //     return compare_with === '' ? true : screening.channels.includes(compare_with)
-                // })
+                .filter(screening => {
+                    const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
+                    return compare_with === '' ? true : screening.channels.includes(compare_with)
+                })
                 // .filter(screening => {
                 //     const compare_with = selector_name === 'projects' ? value : selectors.projects.value;
                 //     return compare_with === '' ? true : screening.projects.includes(compare_with)
@@ -142,6 +148,7 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.starttimes.includes(compare_with)
                 })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
+                .filter((screening) => { return ids && ids.length ? ids.includes(screening.id.toString()) : false })
                 .length
 
 
@@ -165,9 +172,9 @@ selectors.categories.addEventListener('change', e => {
     toggleAll('categories');
 });
 
-// selectors.channels.addEventListener('change', e => {
-//     toggleAll('channels');
-// });
+selectors.channels.addEventListener('change', e => {
+    toggleAll('channels');
+});
 
 // selectors.projects.addEventListener('change', e => {
 //     toggleAll('projects');
@@ -185,7 +192,7 @@ function unselect_all() {
     search_input.value = '';
     selectors.types.selectedIndex = 0;
     selectors.categories.selectedIndex = 0;
-    // selectors.channels.selectedIndex = 0;
+    selectors.channels.selectedIndex = 0;
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
     selectors.starttimes.selectedIndex = 0;
@@ -209,13 +216,13 @@ function execute_filters() {
                 return true
             }
         })
-        // .filter(screening => {
-        //     if (selectors.channels.value) {
-        //         return screening.channels.includes(selectors.channels.value)
-        //     } else {
-        //         return true
-        //     }
-        // })
+        .filter(screening => {
+            if (selectors.channels.value) {
+                return screening.channels.includes(selectors.channels.value)
+            } else {
+                return true
+            }
+        })
         // .filter(screening => {
         //     if (selectors.projects.value) {
         //         return screening.projects.includes(selectors.projects.value)

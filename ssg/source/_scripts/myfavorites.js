@@ -6,6 +6,13 @@ function loadMyFavFilms() {
         null
     }
     try {
+        toggleFavButtons(userProfile.my_events, 'myEvents')
+        toggleAll()
+
+    } catch (error) {
+        null
+    }
+    try {
         toggleFavButtons(userProfile.my_films, 'myFilms')
         toggleAll()
 
@@ -49,6 +56,14 @@ function modifyFavourites(type, favId) {
         dataArrayName = 'my_films'
         pushedButton = document.getElementById(`${favId}_is_shortlisted`)
         oppositeButton = document.getElementById(`${favId}_not_shortlisted`)
+    }else if (type === 'addMyEvent') {
+        dataArrayName = 'my_events'
+        pushedButton = document.getElementById(`${favId}_not_savedevent`)
+        oppositeButton = document.getElementById(`${favId}_is_savedevent`)
+    } else if (type === 'rmMyEvent') {
+        dataArrayName = 'my_events'
+        pushedButton = document.getElementById(`${favId}_is_savedevent`)
+        oppositeButton = document.getElementById(`${favId}_not_savedevent`)
     }
     let pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
@@ -120,6 +135,10 @@ function toggleFavButtons(favoriteCollection, type) {
         var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'screenings')
         var isSavedButtons = document.getElementsByClassName('issavedscreening')
         var notSavedButtons = document.getElementsByClassName('notsavedscreening')
+    } else if (type === 'myEvents') {
+        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'industry_events')
+        var isSavedButtons = document.getElementsByClassName('issavedevent')
+        var notSavedButtons = document.getElementsByClassName('notsavedevent')
     }
 
     for (i = 0; i < isSavedButtons.length; i++) {

@@ -5,14 +5,14 @@ block content
 
     h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-    .grid_search#filters(style='display: none;')
+    //- Milliseid screening type kuvada, kõikide kuvamiseks []
+    //- Ühe, nt first screening kuvamiseks:
+    //- - const whichScreeningTypesToDisplay = ['first screening']
+    //- Mitme kuvamiseks:
+    - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
+    //- - const whichScreeningTypesToDisplay = []
 
-        //- Milliseid screening type kuvada, kõikide kuvamiseks []
-        //- Ühe, nt first screening kuvamiseks:
-        //- - const whichScreeningTypesToDisplay = ['first screening']
-        //- Mitme kuvamiseks:
-        - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
-        //- - const whichScreeningTypesToDisplay = []
+    .grid_search#filters(style='display: none;')
 
         input#search(type='text', placeholder= self.label.filters.search)
 
@@ -85,12 +85,15 @@ block content
                     }
 
                 each screening in self.data.screenings.sort(sortFunction)
-                    -
-                        var screeningNames = function(item) {
-                            let itemNames = item.name
-                            return itemNames
-                        }
-                    if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
+                    - var screening_types = (screening.screening_types || [])
+                    - var displayable_screening_types = screening_types
+                    -   .map(st => st.name)
+                    -   .some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase()))
+                    //- if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
+                    //- logic replaced
+                    //- any screening type will match
+                    //- one or more of screening types are in displayable list
+                    if whichScreeningTypesToDisplay.length === 0 || displayable_screening_types
 
                         - var allFestivalEditions = []
                         if screening.cassette
@@ -98,7 +101,7 @@ block content
                         if cassette.festival_editions
                             each edition in cassette.festival_editions
                                 - allFestivalEditions.push(edition.name)
-                        a.card_film(id=screening.id style= {display:'none'} href= `/${lang_path}film/${cassette.slug}`)
+                        a.card_film(id=screening.id style='display:none; padding-bottom: 20px; position: relative;' href= `/${lang_path}film/${cassette.slug}`)
                             .container_frame_16_9
 
                                 //- PILDID
@@ -149,53 +152,53 @@ block content
 
                             .card_film_title(style='padding-bottom: 1.2rem;')
 
-                                    //- Eeldame, et screeningul on datetime
-                                    //- if screening.dateTime
+                                //- Eeldame, et screeningul on datetime
+                                //- if screening.dateTime
 
-                                    //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
+                                //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
 
-                                    //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
+                                //- Kuvame kassetipealkirja
+                                h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
 
                             //- Programmid
                             .card_film_info
 
-                                    if cassette.films && cassette.films.length
-                                        - var filmsProgrammes = []
-                                        each film in cassette.films
-                                            if film.tags && film.tags.programmes && film.tags.programmes.length
-                                                each programme in film.tags.programmes
-                                                    if programme.name
-                                                        - filmsProgrammes.push(programme.name)
-                                        if filmsProgrammes.length
-                                            - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                                            .str_info_grid_3
-                                                .str_info_label.dark_semi= self.label.film.programme
-                                                .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                                if cassette.films && cassette.films.length
+                                    - var filmsProgrammes = []
+                                    each film in cassette.films
+                                        if film.tags && film.tags.programmes && film.tags.programmes.length
+                                            each programme in film.tags.programmes
+                                                if programme.name
+                                                    - filmsProgrammes.push(programme.name)
+                                    if filmsProgrammes.length
+                                        - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.programme
+                                            .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
-                                        - var filmsDirectors = []
-                                        each film in cassette.films
-                                            if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
-                                                each director in film.credentials.rolePersonsByRole.director
-                                                    - filmsDirectors.push(director)
-                                        if filmsDirectors.length
-                                            - var uniqueDirectors = [...new Set(filmsDirectors)];
-                                            .str_info_grid_3
-                                                .str_info_label.dark_semi= self.label.film.director
-                                                #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+                                    - var filmsDirectors = []
+                                    each film in cassette.films
+                                        if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                            each director in film.credentials.rolePersonsByRole.director
+                                                - filmsDirectors.push(director)
+                                    if filmsDirectors.length
+                                        - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.director
+                                            #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
 
-                                        - var filmsCountries = []
-                                        each film in cassette.films
-                                            if film.orderedCountries && film.orderedCountries.length
-                                                each country in film.orderedCountries
-                                                    if country.country && country.country.name
-                                                        - filmsCountries.push(country.country.name)
-                                        if filmsCountries.length
-                                            - var uniqueCountries = [...new Set(filmsCountries)];
-                                            .str_info_grid_3
-                                                .str_info_label.dark_semi= self.label.film.countries
-                                                #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
-                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
+                                    - var filmsCountries = []
+                                    each film in cassette.films
+                                        if film.orderedCountries && film.orderedCountries.length
+                                            each country in film.orderedCountries
+                                                if country.country && country.country.name
+                                                    - filmsCountries.push(country.country.name)
+                                    if filmsCountries.length
+                                        - var uniqueCountries = [...new Set(filmsCountries)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.countries
+                                            #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeSavedScreening
 
 
                 script.
