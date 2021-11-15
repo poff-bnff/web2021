@@ -11,6 +11,7 @@
       "type": "enumeration",
       "enum": [
         "Eventival",
+        "EventivalIndustry",
         "Facebook",
         "Google",
         "local"

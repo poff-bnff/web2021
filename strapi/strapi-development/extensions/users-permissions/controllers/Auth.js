@@ -169,7 +169,7 @@ module.exports = {
       // Connect the user with the third-party provider.
       let user, error;
       try {
-        console.log('Connect the user with the third-party provider');
+        console.log('Connect the user with the third-party provider', provider);
         [user, error] = await strapi.plugins['users-permissions'].services.providers.connect(
           provider,
           ctx.query
@@ -274,6 +274,7 @@ module.exports = {
     const [requestPath] = ctx.request.url.split('?');
     const provider = requestPath.split('/')[2];
 
+    console.log('Connect provider', provider);
     if (!_.get(grantConfig[provider], 'enabled')) {
       return ctx.badRequest(null, 'This provider is disabled.');
     }
