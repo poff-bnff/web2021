@@ -130,13 +130,16 @@ const handleResponse = (response) => {
 
         // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message
         let strapiError = null
-        if (response.message[0].messages[0].id) {
+        if (response.message[0] && response.message[0].messages[0].id) {
             strapiError = response.message[0].messages[0].id
         }
         console.log('Login page handleResponse strapiError', strapiError);
         typeof strapiError !== 'string' ? strapiError = response.error : null
 
         switch (strapiError) {
+            case ('Connect.error.accreditation'):
+                document.getElementById('noAccreditation').style.display = ''
+                break;
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
                 break;
@@ -176,8 +179,8 @@ const redirectToPreLoginUrl = (userProfile) => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
     const currentlang = getCurrentLang()
 
-    if (!userProfile.profileFilled) {
-        window.open(`${pageURL}/${currentlang}userprofile`, '_self')
+    if (!industryPage && !userProfile.profileFilled) {
+        window.open(`${pageURL}/${currentlang ? currentlang : ''}userprofile`, '_self')
         return
     }
     localStorage.removeItem('preLoginUrl')
@@ -186,7 +189,7 @@ const redirectToPreLoginUrl = (userProfile) => {
 
 // Helpers:
 const getAccessTokenWithProvider = () => {
-    let provider = window.location.hostname === 'industry.poff.ee' ? 'eventival' : localStorage.getItem('LOGIN_PROVIDER')
+    let provider = window.location.hostname === 'industry.poff.ee' ? 'eventivalindustry' : localStorage.getItem('LOGIN_PROVIDER')
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const access_token = urlParams.get('access_token')
