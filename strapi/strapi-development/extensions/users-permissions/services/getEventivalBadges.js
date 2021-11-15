@@ -1,25 +1,20 @@
 const https = require('https')
 const convert = require('xml-js')
 var op = require('object-path')
+const jsyaml = require('js-yaml');
+const path = require('path')
+const fs = require('fs')
 
-
-const EVENTIVALBADGEWHITELIST = [
-  'MANAGEMENT',
-  'JURY',
-  'GUEST',
-  'TEAM',
-  'PRESS',
-  'PRESS ONLINE',
-  'INDUSTRY PRO',
-  'INDUSTRY STUDENT / TALENT',
-  'INDUSTRY ONLINE',
-  'VOLUNTEER',
-]
+const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
+const domainSpecificsPath = path.join(ssgDir, `domain_specifics.yaml`)
 
 const timezonestr = ' 00:00:00 GMT+0200'
 
 function picAndBadges(xml_str, email) {
   const ev_o = op(JSON.parse(convert.xml2json(xml_str, { compact: true })))
+
+  const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+  const EVENTIVALBADGEWHITELIST = DOMAIN_SPECIFICS.industry_eventival_badges_whitelist || []
 
   let badgearr = ev_o.get('person.badges.badge', [])
 
