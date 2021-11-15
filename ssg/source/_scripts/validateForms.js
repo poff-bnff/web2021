@@ -47,8 +47,8 @@ function validatePswRep(psw1_id, psw2_id) {
     var psw2= document.getElementById(psw2_id)
     if (psw2.value === "") {
         psw2Help.classList.remove("valid")
-        psw2Help.classList.add("invalid")   
-        psw2.classList.add("invalidColor")   
+        psw2Help.classList.add("invalid")
+        psw2.classList.add("invalidColor")
         return false
     }
 
