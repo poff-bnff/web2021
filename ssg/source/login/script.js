@@ -141,6 +141,7 @@ const handleResponse = (response) => {
 
         switch (strapiError) {
             case ('Connect.error.accreditation'):
+                clearWindowHistoryState()
                 document.getElementById('noAccreditation').style.display = ''
                 break;
             case ('Auth.form.error.confirmed'):

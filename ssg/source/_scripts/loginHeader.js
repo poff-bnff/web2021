@@ -4,6 +4,7 @@ var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
+let currentlyOnPage = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
 
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
@@ -158,9 +159,21 @@ function loadEmptyUserProfile() {
 }
 
 
+const clearWindowHistoryState = () => {
+    window.history.pushState('', document.title, currentlyOnPage);
+}
 
 function saveUrl() {
-    localStorage.setItem('preLoginUrl', window.location.href)
+    if (currentlyOnPage.slice(-1) === '/') {
+        currentlyOnPage = currentlyOnPage.slice(0, currentlyOnPage.length - 1)
+    }
+    const splittedurl = currentlyOnPage.split('/')
+    const specificPage = splittedurl[splittedurl.length - 1]
+
+    // Skip saving URL for login page
+    if (specificPage !== 'login') {
+        localStorage.setItem('preLoginUrl', currentlyOnPage)
+    }
 }
 
 
