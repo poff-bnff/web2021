@@ -23,7 +23,8 @@ if (window.location.search) {
 
 // Email + pswd 'local' login
 const loginViaLocal = () => {
-    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
+    const usernameInput = document.getElementById("loginUsername")
+    if (usernameInput.value && loginPassword.value && validateEmail("loginUsername")) {
         loginFlow('local')
     } else {
         unfilledErrorMsg.style.display = ''
@@ -123,6 +124,8 @@ const handleResponse = (response) => {
     if (response.jwt && response.user || response.id) return response
 
     if (response.statusCode !== 200) {
+        const loginUsername = document.getElementById("loginUsername")
+
         if (loginUsername.value) {
             document.getElementById('emailUsed').style.display = ''
             emailUsed.innerHTML = loginUsername.value
@@ -263,7 +266,7 @@ function doSaveNewPswd() {
 function doSendResetCode() {
     document.getElementById('userName').style.display = 'none'
     document.getElementById('currentUsername').style.display = ''
-    document.getElementById('currentUsername').innerHTML = loginUsername.value
+    document.getElementById('currentUsername').innerHTML = document.getElementById("loginUsername").value
     sendPswdResetCodeBtn.style.display = 'none'
 
     sendResetCode()
