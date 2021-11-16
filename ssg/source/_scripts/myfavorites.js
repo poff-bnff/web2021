@@ -100,7 +100,7 @@ function modifyFavourites(type, favId) {
                 pushedButton.style.display = 'none'
                 pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
                 if (oppositeButton) {
-                    oppositeButton.style.display = 'grid'
+                    oppositeButton.style.display = ''
                 }
                 try {
                     toggleAll()
@@ -144,7 +144,7 @@ function toggleFavButtons(favoriteCollection, type) {
     for (i = 0; i < isSavedButtons.length; i++) {
         var film_id = isSavedButtons[i].id.split('_')[0]
         if (savedIds.includes(film_id)) {
-            isSavedButtons[i].style.display = 'block'
+            isSavedButtons[i].style.display = ''
         }
         else {
             isSavedButtons[i].style.display = 'none'
@@ -158,7 +158,7 @@ function toggleFavButtons(favoriteCollection, type) {
             notSavedButtons[i].style.display = 'none'
         }
         else {
-            notSavedButtons[i].style.display = 'block'
+            notSavedButtons[i].style.display = ''
         }
     }
 

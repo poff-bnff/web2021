@@ -52,7 +52,7 @@ document.onreadystatechange = () => {
     const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
         urlSelect()
-        filters.style.display = "grid"
+        filters.style.display = ""
         loading.style.display = "none"
         // content.style.display = ""
 
@@ -84,14 +84,14 @@ function toggleAll(exclude_selector_name) {
     if (ids.length) {
         nonetoshow.style.display = "none"
     } else {
-        nonetoshow.style.display = "grid"
+        nonetoshow.style.display = ""
     }
 
     // kuva/peida kassette
     let cards = document.querySelectorAll('[class="card_event"]')
     cards.forEach(card => {
         if (ids.includes(card.id)) {
-            card.style.display = "grid"
+            card.style.display = ""
         } else {
             card.style.display = "none"
         }

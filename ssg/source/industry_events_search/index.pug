@@ -90,13 +90,16 @@ block content
                                             +screeningTime(event.startTime)
                                         span.screening_time_user.small_1 &nbsp;User time
 
-                                    .grid_item_event_time.text_right(onclick=`calendarfile('${event.id}');return false`)
+                                    .grid_item_event_time.text_right
                                         svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                             rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
                                             line(x1='16' y1='2' x2='16' y2='6')
                                             line(x1='8' y1='2' x2='8' y2='6')
                                             line(x1='3' y1='10' x2='21' y2='10')
-                                        span.screening_date.small_1= 'Add to calendar'
+                                        //- span.screening_date.small_1.notsavedevent= 'Add to calendar'
+                                        span.screening_date.small_1.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                                        span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+
 
                             a(href=`/${lang_path}events/${event.slug}`)
 
@@ -156,8 +159,6 @@ block content
                                     //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
                                     //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
 
-                                a.btn.btn_secondary.notsavedevent(id=event.id+'_not_savedevent', style= {display: 'none'} onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');` role='button' target='_BLANK')= 'Add to calendar'
-                                a.btn.btn_secondary.issavedevent(id=event.id+'_is_savedevent', style= {display: 'none'} onclick=`modifyFavourites('rmMyEvent', ${event.id})` role='button' target='_BLANK')= 'Remove from calendar'
 
 
 
