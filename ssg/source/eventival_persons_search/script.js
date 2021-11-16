@@ -5,11 +5,10 @@ const urlParams = new URLSearchParams(queryString);
 
 
 const selectors = {
-    types: document.getElementById('types_select'),
     companies: document.getElementById('companies_select'),
     roles: document.getElementById('roles_select'),
     countries: document.getElementById('countries_select'),
-    projects: document.getElementById('projects_select'),
+    attendances: document.getElementById('attendances_select'),
 }
 
 function urlSelect() {
@@ -118,10 +117,6 @@ function toggleFilters(exclude_selector_name) {
 
             let count = searcharray
                 .filter(screening => {
-                    const compare_with = selector_name === 'types' ? value : selectors.types.value;
-                    return compare_with === '' ? true : screening.types.includes(compare_with)
-                })
-                .filter(screening => {
                     const compare_with = selector_name === 'companies' ? value : selectors.companies.value;
                     return compare_with === '' ? true : screening.companies.includes(compare_with)
                 })
@@ -134,8 +129,8 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.countries.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'projects' ? value : selectors.projects.value;
-                    return compare_with === '' ? true : screening.projects.includes(compare_with)
+                    const compare_with = selector_name === 'attendances' ? value : selectors.attendances.value;
+                    return compare_with === '' ? true : screening.attendances.includes(compare_with)
                 })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
@@ -152,45 +147,31 @@ function toggleFilters(exclude_selector_name) {
 search_input.addEventListener('keyup', e => {
     toggleAll();
 });
-
-selectors.types.addEventListener('change', e => {
-    toggleAll('types');
-});
-
 selectors.companies.addEventListener('change', e => {
     toggleAll('companies');
 });
-
 selectors.roles.addEventListener('change', e => {
     toggleAll('roles');
 });
 selectors.countries.addEventListener('change', e => {
     toggleAll('countries');
 });
-selectors.projects.addEventListener('change', e => {
-    toggleAll('projects');
+selectors.attendances.addEventListener('change', e => {
+    toggleAll('attendances');
 });
 
 function unselect_all() {
     search_input.value = '';
-    selectors.types.selectedIndex = 0;
     selectors.companies.selectedIndex = 0;
     selectors.roles.selectedIndex = 0;
     selectors.countries.selectedIndex = 0;
-    selectors.projects.selectedIndex = 0;
+    selectors.attendances.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
 
 function execute_filters() {
     let filtered = searcharray
-        .filter(screening => {
-            if (selectors.types.value) {
-                return screening.types.includes(selectors.types.value)
-            } else {
-                return true
-            }
-        })
         .filter(screening => {
             if (selectors.companies.value) {
                 return screening.companies.includes(selectors.companies.value)
@@ -213,8 +194,8 @@ function execute_filters() {
             }
         })
         .filter(screening => {
-            if (selectors.projects.value) {
-                return screening.projects.includes(selectors.projects.value)
+            if (selectors.attendances.value) {
+                return screening.attendances.includes(selectors.attendances.value)
             } else {
                 return true
             }
