@@ -15,23 +15,25 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 if(build_type === 'target') {
     addConfigPathAliases(['/home'])
 }
-
+const trio2_mapping = {
+    'poff.ee': 'TrioPOFF2',
+}
 const articleMapping = {
     'poff.ee': 'poffi',
 }
 if (DOMAIN === 'poff.ee'){
-    const strapiDataTrioPath = path.join(strapiDataDirPath, `TrioPOFF2.yaml` )
+    const strapiDataTrioPath = path.join(strapiDataDirPath, `${trio2_mapping[DOMAIN]}.yaml` )
     const STRAPIDATA_TRIO = yaml.load(fs.readFileSync(strapiDataTrioPath, 'utf8'))
 
     if (STRAPIDATA_TRIO.length < 1) {
-        console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock`)
+        console.log(`ERROR! No data to fetch for ${DOMAIN} trioblock2`)
     }
 
     const languages = ['en', 'et', 'ru']
 
     for (const lang of languages) {
 
-        console.log(`Fetching ${DOMAIN} trioblock ${lang} data`)
+        console.log(`Fetching ${DOMAIN} trioblock2 ${lang} data`)
 
         let copyData = JSON.parse(JSON.stringify(STRAPIDATA_TRIO[0]))
         let buffer = []
@@ -74,6 +76,9 @@ if (DOMAIN === 'poff.ee'){
 
     let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `articletrioblock2.et.yaml`), emptyYAML, 'utf8')
+    console.log(`Fetching ${DOMAIN} trioblock2 et data`)
     fs.writeFileSync(path.join(fetchDir, `articletrioblock2.en.yaml`), emptyYAML, 'utf8')
+    console.log(`Fetching ${DOMAIN} trioblock2 en data`)
     fs.writeFileSync(path.join(fetchDir, `articletrioblock2.ru.yaml`), emptyYAML, 'utf8')
+    console.log(`Fetching ${DOMAIN} trioblock2 ru data`)
 }
