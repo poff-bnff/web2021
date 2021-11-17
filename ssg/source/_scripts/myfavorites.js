@@ -1,7 +1,11 @@
 function loadMyFavFilms() {
     // console.log("FAVO: oled sisse loginud")
     try {
-        document.getElementById('loggedOutFavouriteStatus').style.display = 'none'
+        var allLoggedOutStatusMessages = document.querySelectorAll('[id=loggedOutFavouriteStatus]')
+        for (let index = 0; index < allLoggedOutStatusMessages.length; index++) {
+            const element = allLoggedOutStatusMessages[index];
+            element.style.display = 'none'
+        }
     } catch (error) {
         null
     }
@@ -32,7 +36,6 @@ function loadMyFavFilms() {
     } catch (error) {
         null
     }
-
 }
 
 function modifyFavourites(type, favId) {

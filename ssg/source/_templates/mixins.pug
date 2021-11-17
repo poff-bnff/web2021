@@ -1,22 +1,4 @@
 
-//- Eemaldab screeningu 'broneeri' ja  'osta pilet' nupud kui screeningu dateTime on minevikus
-mixin rmOldScreeningButtons()
-    script.
-        (function() {
-            var currentDate = new Date()
-            var buttons = document.querySelectorAll('[btn-type="screening"]')
-            if (buttons.length) {
-                for (button of buttons) {
-                    if (button.getAttribute('scrn-loc') !== '16') {
-                        var screeningDate = new Date(button.getAttribute('scrn-datetime'))
-                        if (currentDate > screeningDate) {
-                            button.style.display = 'none'
-                        }
-                    }
-                }
-            }
-        })();
-
 //- lisab õige video treileriks, kasutab film.layout.pug
 mixin video(videoId='')
     if videoId.length === 9
