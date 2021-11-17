@@ -1,6 +1,7 @@
 
 //- - var heroPlusTrioNews = [] //- SEE ON VIIEKA JAOKS TARVILIK
 //- self.data.articleGalleryBlock sisaldab mida?
+
 for blocks in self.data.articleGalleryBlock.sort(function(a, b){ return (a.block.order > b.block.order) ? 1 : ((b.block.order > a.block.order) ? -1 : 0); })
 
     if blocks.article
@@ -26,8 +27,10 @@ for blocks in self.data.articleGalleryBlock.sort(function(a, b){ return (a.block
                     else
                         - artTrioTypeForPath = article.article_types[0].slug
 
-                - var linkUrl = `/${lang_path}${artTrioTypeForPath}/${blocks.article.slug}`
 
+
+                - var linkUrl = `/${lang_path}${artTrioTypeForPath}/${blocks.article.slug}`
+                
 
         else if blocks.block.customUrl
             - var linkUrl = blocks.block.customUrl
@@ -53,3 +56,4 @@ for blocks in self.data.articleGalleryBlock.sort(function(a, b){ return (a.block
                         //-         span
                         //-             if typeof(blocks.block.title) !== 'object'
                         //-                 | !{blocks.block.title}
+        
