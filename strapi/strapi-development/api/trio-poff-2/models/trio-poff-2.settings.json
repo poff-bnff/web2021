@@ -2,7 +2,7 @@
   "kind": "singleType",
   "collectionName": "trio_poff_2s",
   "info": {
-    "name": "trioPOFF2"
+    "name": "TrioPOFF2"
   },
   "options": {
     "increments": true,
