@@ -69,6 +69,9 @@ nice -10 node ./helpers/fetch_heroarticle_from_yaml.js
 echo 'fetch_trioblock_from_yaml'
 nice -10 node ./helpers/fetch_trioblock_from_yaml.js
 
+echo 'fetch_trioblock2_from_yaml'
+nice -10 node ./helpers/fetch_trioblock2_from_yaml.js
+
 echo 'fetch_teams_from_yaml'
 nice -10 node ./helpers/fetch_teams_from_yaml.js
 

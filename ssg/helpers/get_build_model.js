@@ -107,6 +107,7 @@ function model(arg) {
 		'trio-shorts': 'trio_and_hero',
 		'trio-tartuff': 'trio_and_hero',
 		'trio-p-oe-ff': 'trio_and_hero',
+		'trio-poff-2': 'trio_and_hero',
 
 		'industry-category': 'full',
 		'industry-event': 'full',
