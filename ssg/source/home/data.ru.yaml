@@ -2,6 +2,7 @@ path: ''
 data:
     heroArticle: /_fetchdir/heroarticle.ru.yaml
     articleTrioBlock: /_fetchdir/articletrioblock.ru.yaml
+    articleGalleryBlock: /_fetchdir/articletrioblock2.ru.yaml
     sixFilms: /_fetchdir/sixfilms.ru.yaml
     articles: /_fetchdir/articles.ru.yaml
     frontPageCourses: /_fetchdir/frontpagecourses.ru.yaml

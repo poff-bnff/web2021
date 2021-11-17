@@ -1924,6 +1924,13 @@ TrioPOFF:
     trioPoff_en: *Triopoff #(Component)
     trioPoff_ru: *Triopoff #(Component)
 
+TrioPOFF2:
+    _path: /trio-poff-2
+    trioPoff_et: *Triopoff #(Component)
+    trioPoff_en: *Triopoff #(Component)
+    trioPoff_ru: *Triopoff #(Component)
+
+
 TrioItemJustFilm: &TrioItemJustFilm
     just_filmi_article: *JustFilmiArticle #(Component)
     title: (text)
