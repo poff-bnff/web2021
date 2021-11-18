@@ -8,7 +8,7 @@ block content
         document.addEventListener('userProfileLoaded', function (e) {
             //- console.log({userProfile})
 
-            if (userProfile.industryAccessLevel) {
+            if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
                 document.getElementById('videolevels_video').style.display = 'block'
                 var videoFrameElement = document.getElementById('videoframe')
                 videoFrameElement.src = videoFrameElement.getAttribute('target_src')
