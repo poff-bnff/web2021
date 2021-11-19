@@ -30,7 +30,7 @@ nice -10 node "$FETCH_PATH"/d_fetch.js
 echo "Initialized entu_ssg.yaml"
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js
 
-nice -10 node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET"
+nice -10 node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET" "$TARGET_ID"
 nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
