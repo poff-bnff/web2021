@@ -138,7 +138,7 @@ if (DOMAIN === 'industry.poff.ee') {
         if (element['slug_en']) {
 
             if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
-                addConfigPathAliases([`/_fetchdir/industryevents/${slugEn}`])
+                addConfigPathAliases([`/_fetchdir/industryevents/${element['slug_en']}`])
             }
 
             let dirSlug = element['slug_en']
