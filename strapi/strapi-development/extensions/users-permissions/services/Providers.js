@@ -45,7 +45,7 @@ const connect = (provider, query) => {
     // Get the profile.
     getProfile(provider, query, async (err, profile) => {
 
-      if (provider === 'eventivalindustry') {
+      if (provider.split(',').includes('eventivalindustry')) {
 
         const badges = await getEventivalBadges(profile.email);
         console.log('getEventivalBadges for ', profile.email);

@@ -167,7 +167,7 @@ function saveUrl() {
 
 
 function useUserData(userProf) {
-    if (userProf.provider === 'eventivalindustry' && userProf.industry_profile && userProf.industry_profile.name) {
+    if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
         try {
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
         } catch (err) {

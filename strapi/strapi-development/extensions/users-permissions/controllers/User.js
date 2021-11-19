@@ -136,7 +136,7 @@ module.exports = {
     const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
     const sanitized = sanitizeUser(fetchedUser)
 
-    if(sanitized.provider === 'eventivalindustry') {
+    if(sanitized.provider.split(',').includes('eventivalindustry')) {
       const getEventivalProfile = await getEventivalBadges(sanitized.email)
       sanitized.industry_profile = getEventivalProfile && getEventivalProfile.statusCode === 200 ? getEventivalProfile.body : null
     }
