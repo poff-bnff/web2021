@@ -92,7 +92,6 @@ skip_build_for_models:
     - industry-project
     - industry-event
     - industry-person
-    - team
 
 article:
     poff.ee: POFFiArticle
