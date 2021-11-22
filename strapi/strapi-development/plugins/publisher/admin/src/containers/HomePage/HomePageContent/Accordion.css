@@ -15,7 +15,7 @@
   margin:0;
   cursor: pointer;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   outline: none;
   transition: background-color 0.6s ease;
 }
@@ -54,6 +54,6 @@
 
 
 .logs{
-  width: 700px !important;
+  width: 500px !important;
 }
 

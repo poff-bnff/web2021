@@ -46,6 +46,7 @@ module.exports = {
     async afterCreate(result, data) {
 
       // Automatically create a cassette for a new film
+      console.log(result.tags);
       const createCassetteResult = await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
@@ -99,10 +100,9 @@ module.exports = {
       allCassettesWithThisFilmOnly.map(async a => {
         if (data.skipbuild) return
         console.log('Updating with film data - cassette ID ', a.id, a.title_en);
-        const cassetteId = a.id
 
         const updateCassetteResult = await strapi.query('cassette').update(
-          { id: cassetteId }, {
+          { id: a.id }, {
           created_by: result.created_by,
           updated_by: result.updated_by,
           title_et: result.title_et,

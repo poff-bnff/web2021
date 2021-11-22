@@ -2,13 +2,11 @@
   "kind": "collectionType",
   "collectionName": "screenings",
   "info": {
-    "name": "Screening",
-    "description": ""
+    "name": "Screening"
   },
   "options": {
     "increments": true,
-    "timestamps": true,
-    "draftAndPublish": false
+    "timestamps": true
   },
   "attributes": {
     "codeAndTitle": {
@@ -35,7 +33,7 @@
       "collection": "screening-type"
     },
     "screening_mode": {
-      "model": "event-mode"
+      "model": "screening-mode"
     },
     "subtitles": {
       "collection": "language"

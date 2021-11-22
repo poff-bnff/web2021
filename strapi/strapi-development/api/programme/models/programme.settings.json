@@ -2,17 +2,20 @@
   "kind": "collectionType",
   "collectionName": "programmes",
   "info": {
-    "name": "Programme",
-    "description": ""
+    "name": "Programme"
   },
   "options": {
     "increments": true,
-    "timestamps": true,
-    "draftAndPublish": false
+    "timestamps": true
   },
   "attributes": {
     "namePrivate": {
       "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
     },
     "description": {
       "type": "component",
@@ -29,8 +32,7 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
+      "required": false
     },
     "domains": {
       "collection": "domain"

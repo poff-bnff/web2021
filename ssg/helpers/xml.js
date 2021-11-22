@@ -11,9 +11,6 @@ const strapiDataPath = path.join(sourceDir, '_domainStrapidata')
 const strapiDataScreeningPath = path.join(strapiDataPath, 'Screening.yaml')
 const assetsDirXML = path.join(sourceDir, '..', 'assets', 'xml')
 const XMLpath = path.join(assetsDirXML, 'xml.xml')
-const domainSpecificsPath = path.join(sourceDir, '..', 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const XML_festival_editions = DOMAIN_SPECIFICS.XML_festival_editions
 const SCREENING = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 const STRAPIDATA_DOMAIN = []
 // const STRAPIDATA_DOMAIN = STRAPIDATA['Domain']
@@ -49,7 +46,7 @@ const minimodel_screenings = {
         model_name: 'ScreeningType'
     },
     'screening_mode': {
-        model_name: 'EventMode'
+        model_name: 'ScreeningMode'
     },
     'subtitles': {
         model_name: 'Language'
@@ -65,14 +62,6 @@ const minimodel_screenings = {
                 expand: {
                     'programmes': {
                         model_name: 'Programme',
-                    }
-                },
-                'festival_editions': {
-                    model_name: 'FestivalEdition',
-                    expand: {
-                        'domains': {
-                            model_name: 'Domain'
-                        }
                     }
                 }
             },
@@ -98,16 +87,7 @@ const minimodel_screenings = {
     }
 }
 
-const SCREENINGS_FETCH = fetchModel(SCREENING, minimodel_screenings)
-
-// Filter out cassettes which do not have FE defined in domain_specifics
-const SCREENINGS = SCREENINGS_FETCH.filter(s => {
-    if(s?.cassette?.festival_editions) {
-        return XML_festival_editions.some(r => s.cassette.festival_editions.map(fe => fe.id).includes(r))
-    } else {
-        return false
-    }
-})
+const SCREENINGS = fetchModel(SCREENING, minimodel_screenings)
 
 // console.log(SCREENINGS[0].cassette.orderedFilms[0].film.festival_editions[0]);
 
@@ -130,6 +110,8 @@ for (const screeningIx in SCREENINGS) {
     if (screening.cassette && screening.cassette.orderedFilms) {
         images(screening)
     }
+
+
 
     if (screening.ticketingId) {
         let concert = {}
@@ -163,6 +145,7 @@ for (const screeningIx in SCREENINGS) {
                         let film = screening.cassette.orderedFilms[filmIx].film
 
                         if (film && film.festival_editions && film.festival_editions[0].domains) {
+
                             let removePoffDomain = film.festival_editions[0].domains.map(d => d.url).filter(d => d !== 'poff.ee')
                             let festivalEdDomain = 'poff.ee'
 

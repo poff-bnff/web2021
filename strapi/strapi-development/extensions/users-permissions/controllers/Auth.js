@@ -169,7 +169,7 @@ module.exports = {
       // Connect the user with the third-party provider.
       let user, error;
       try {
-        console.log('Connect the user with the third-party provider', provider);
+        console.log('Connect the user with the third-party provider');
         [user, error] = await strapi.plugins['users-permissions'].services.providers.connect(
           provider,
           ctx.query
@@ -261,7 +261,6 @@ module.exports = {
   },
 
   async connect(ctx, next) {
-    console.log('Connect auth');
     const grantConfig = await strapi
       .store({
         environment: '',
@@ -274,7 +273,6 @@ module.exports = {
     const [requestPath] = ctx.request.url.split('?');
     const provider = requestPath.split('/')[2];
 
-    console.log('Connect provider', provider);
     if (!_.get(grantConfig[provider], 'enabled')) {
       return ctx.badRequest(null, 'This provider is disabled.');
     }
@@ -286,11 +284,7 @@ module.exports = {
     }
 
     // Ability to pass OAuth callback dynamically
-    // grantConfig[provider].callback = _.get(ctx, 'query.callback') || grantConfig[provider].callback;
-
-    grantConfig[provider].custom_params = _.get(ctx, 'query');
-    grantConfig[provider].callback = _.get(ctx, 'query.callback') || _.get(ctx, 'state.session.grant.dynamic.callback') || grantConfig[provider].callback;
-
+    grantConfig[provider].callback = _.get(ctx, 'query.callback') || grantConfig[provider].callback;
     grantConfig[provider].redirect_uri = strapi.plugins[
       'users-permissions'
     ].services.providers.buildRedirectUri(provider);
@@ -512,7 +506,7 @@ module.exports = {
 
     params.role = role.id;
     params.password = await strapi.plugins['users-permissions'].services.user.hashPassword(params);
-    params.externalProviders = [{ provider: 'local', UUID: 'not set yet', dateConnected: new Date().toISOString() }]
+    params.externalProviders = [{provider: 'local', UUID: 'not set yet', dateConnected: new Date().toISOString()}]
 
     const user = await strapi.query('user', 'users-permissions').findOne({
       email: params.email,
@@ -590,7 +584,7 @@ module.exports = {
     const user = await userService.fetch({ confirmationToken }, []);
 
     if (!user) {
-      return ctx.badRequest('Link pole õige või on e-mail juba kinnitatud / Link invalid or e-mail already confirmed');
+      return ctx.badRequest('token.invalid');
     }
 
     await userService.edit({ id: user.id }, { confirmed: true, confirmationToken: null });

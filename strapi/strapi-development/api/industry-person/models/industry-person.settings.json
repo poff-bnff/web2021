@@ -2,13 +2,11 @@
   "kind": "collectionType",
   "collectionName": "industry_people",
   "info": {
-    "name": "Industry_Person",
-    "description": ""
+    "name": "Industry_Person"
   },
   "options": {
     "increments": true,
-    "timestamps": true,
-    "draftAndPublish": false
+    "timestamps": true
   },
   "attributes": {
     "person": {
@@ -21,8 +19,7 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
+      "required": false
     },
     "role_at_films": {
       "collection": "role-at-film"
@@ -43,8 +40,7 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
+      "required": false
     },
     "clipUrl": {
       "type": "string"
@@ -61,7 +57,7 @@
       "collection": "industry-person-type"
     },
     "lookingFor": {
-      "type": "text"
+      "type": "string"
     },
     "contactAtEvent": {
       "type": "string"
@@ -73,12 +69,6 @@
       "type": "uid",
       "targetField": "fullNamePrivate",
       "required": true
-    },
-    "festival_editions": {
-      "collection": "festival-edition"
-    },
-    "tag_looking_fors": {
-      "collection": "tag-looking-for"
     }
   }
 }

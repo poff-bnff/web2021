@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-const strapiPortString = CUSTOM_VARIABLES['StrapiProtocol'] === 'https' ? `` : `:${CUSTOM_VARIABLES['StrapiPort']}`
-const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}${strapiPortString}`
+const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}`
 // const strapiHost = 'http://localhost:1337'
 
 import Wrapper from './Wrapper';

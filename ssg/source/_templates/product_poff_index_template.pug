@@ -2,7 +2,6 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    div(shopSection=true)
 
     main.grid_product
 
@@ -34,10 +33,10 @@ block content
 
         section.f_cred_box
             if self.priceAtPeriod && self.priceAtPeriod[0] && self.priceAtPeriod[0].price
-                h4(id='productPrice')
-                    //- +euro(self.priceAtPeriod[0].price)
-            div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
-                button#buybutton.btn.btn-primary(onclick = 'GetPaymentLinks()' style='display: none;')= self.label.userprofile.pass
+                h4
+                    +euro(self.priceAtPeriod[0].price)
+            div.payment
+                button#buybutton.btn.btn-primary(onclick = 'GetPaymentLinks()')= self.label.userprofile.pass
                 button#directToLoginButton.btn.btn-primary(onclick='directToLogin(), saveUrl()')= self.label.userprofile.passHelp
                 button#directToaddPicture.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profilePicHelp
                 button#directToFillProfile.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profileAddInfoHelp

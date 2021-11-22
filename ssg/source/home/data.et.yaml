@@ -1,5 +1,6 @@
 path: ''
 data:
+    # screeningsCalendar: /film/screeningsCalendar.et.yaml
     heroArticle: /_fetchdir/heroarticle.et.yaml
     articleTrioBlock: /_fetchdir/articletrioblock.et.yaml
     sixFilms: /_fetchdir/sixfilms.et.yaml

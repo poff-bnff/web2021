@@ -1,5 +1,0 @@
-path: search-projects-archive
-data:
-    industryprojects: /_fetchdir/industryprojects_archive.en.yaml
-    search: /_fetchdir/search_projects_archive.en.yaml
-    filters: /_fetchdir/filters_projects_archive.en.yaml

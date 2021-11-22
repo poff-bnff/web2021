@@ -6,9 +6,6 @@ const rueten = require('./rueten.js');
 const {fetchModel} = require('./b_fetch.js')
 
 const rootDir =  path.join(__dirname, '..')
-const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
 
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
@@ -18,39 +15,11 @@ const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.
 const STRAPIDATA_INDUSTRY_EVENTS = yaml.load(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
-const params = process.argv.slice(2)
-const param_build_type = params[0]
-const target_id = params.slice(1)
-
-const addConfigPathAliases = require('./add_config_path_aliases.js')
-
-if (param_build_type === 'target') {
-    addConfigPathAliases(['/industry_events_search', '/industry_mycal'])
-}
-
 if (DOMAIN === 'industry.poff.ee') {
 
     const minimodel = {
         'images': {
             model_name: 'StrapiMedia'
-        },
-        'location': {
-            model_name: 'Location',
-            expand: {
-                'hall': {
-                    model_name: 'Hall',
-                    expand: {
-                        'cinema': {
-                            model_name: 'Cinema',
-                            expand: {
-                                'town': {
-                                    model_name: 'Town'
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         },
         'industry_categories': {
             model_name: 'IndustryCategory'
@@ -77,17 +46,11 @@ if (DOMAIN === 'industry.poff.ee') {
         },
         'industry_projects': {
             model_name: 'IndustryProject'
-        },
-        'festival_editions': {
-            model_name: 'FestivalEdition'
-        },
-        'event_mode': {
-            model_name: 'EventMode'
-        },
+        }
+
     }
 
-    const STRAPIDATA_ALL_FE_INDUSTRY_EVENTS = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
-    const STRAPIDATA_INDUSTRY_EVENT = STRAPIDATA_ALL_FE_INDUSTRY_EVENTS.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+    const STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
 
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
@@ -136,11 +99,6 @@ if (DOMAIN === 'industry.poff.ee') {
         }
 
         if (element['slug_en']) {
-
-            if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
-                addConfigPathAliases([`/_fetchdir/industryevents/${element['slug_en']}`])
-            }
-
             let dirSlug = element['slug_en']
             element.path = `events/${dirSlug}`
 
@@ -177,14 +135,16 @@ if (DOMAIN === 'industry.poff.ee') {
                 ]
             }).toString())
 
-            allData.push(element)
-            if (param_build_type === 'target' && !target_id.includes(element.id.toString())) {
-                continue
-            } else if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
-                console.log('Targeting event ', element.id, target_id)
-            }
-            generateEventYaml(element, dirSlug);
+            const oneYaml = yaml.dump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
+            const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
 
+            let saveDir = path.join(fetchDataDir, dirSlug);
+            fs.mkdirSync(saveDir, { recursive: true });
+
+            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industry_event_index_template.pug`)
+
+            allData.push(element)
         } else {
             if ('en' === 'en' && DOMAIN === 'industry.poff.ee') {
                 console.log(`ERROR! Industry event ID ${element.id} missing slug`);
@@ -371,14 +331,3 @@ if (DOMAIN === 'industry.poff.ee') {
     fs.writeFileSync(path.join(fetchDir, `industryevents.en.yaml`), emptyYAML, 'utf8');
 
 }
-function generateEventYaml(element, dirSlug) {
-    const oneYaml = yaml.dump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
-    const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
-
-    let saveDir = path.join(fetchDataDir, dirSlug);
-    fs.mkdirSync(saveDir, { recursive: true });
-
-    fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industry_event_index_template.pug`);
-}
-

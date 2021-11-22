@@ -44,7 +44,6 @@ const LogsAccordion = ({ site }) => {
         const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`;
         const start = oneLogEntry.start_time ? moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY') : 'järjekorras';
         const type = `${oneLogEntry.type}`
-        const build_end_status = oneLogEntry.build_end_status || 'N/A'
         let end;
         if (oneLogEntry.end_time) {
           end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
@@ -60,8 +59,7 @@ const LogsAccordion = ({ site }) => {
           type: type,
           start_time: start,
           end_time: end,
-          error_code: has_failed,
-          build_end_status: build_end_status
+          error_code: has_failed
         };
       });
 
@@ -83,8 +81,7 @@ const LogsAccordion = ({ site }) => {
       type: "tegevus",
       start_time: "algas",
       end_time: "lõppes",
-      error_code: "error",
-      build_end_status: "build_end_status",
+      error_code: "error"
     }]
   };
 

@@ -38,9 +38,9 @@ header
                     //- span.org_item
                     //-     a(href='https://spatial.chat/s/ITBESocialclub')
                     //-         | SpatialChat
-                    span.org_item
-                        a(href='https://proscreen.poff.ee')
-                            | See films on PROSCREEN
+                    //- span.org_item
+                    //-     a(href='https://proscreen.poff.ee')
+                    //-         | See films on PROSCREEN
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
@@ -62,14 +62,6 @@ header
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
-
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
-
-    script.
-        var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
-        //- Below boolean needed for login
-        var industryPage = true
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

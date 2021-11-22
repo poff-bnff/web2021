@@ -50,10 +50,6 @@ for (const ix in languages) {
             continue;
         }
 
-        if (templateGroupName === 'guest'){
-            continue
-        }
-
         for (const subTeamIx in element.subTeam) {
             let subTeam = element.subTeam[subTeamIx];
             for (const juryMemberIx in subTeam.juryMember) {

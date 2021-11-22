@@ -940,6 +940,9 @@
                     "namePrivate": {
                       "type": "string"
                     },
+                    "name": {
+                      "type": "component"
+                    },
                     "description": {
                       "type": "component"
                     },
@@ -1221,15 +1224,6 @@
                       "items": {
                         "type": "string"
                       }
-                    },
-                    "other_festivals": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "vialog_id": {
-                      "type": "string"
                     },
                     "created_by": {
                       "type": "string"
@@ -1588,6 +1582,9 @@
                     "namePrivate": {
                       "type": "string"
                     },
+                    "name": {
+                      "type": "component"
+                    },
                     "description": {
                       "type": "component"
                     },
@@ -1810,15 +1807,6 @@
                       "items": {
                         "type": "string"
                       }
-                    },
-                    "other_festivals": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "vialog_id": {
-                      "type": "string"
                     },
                     "created_by": {
                       "type": "string"

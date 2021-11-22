@@ -529,8 +529,7 @@
     "schemas": {
       "Industry-project": {
         "required": [
-          "id",
-          "slug"
+          "id"
         ],
         "properties": {
           "id": {
@@ -1268,7 +1267,7 @@
           "completionYear": {
             "type": "integer"
           },
-          "imdbLink": {
+          "imbdLink": {
             "type": "string"
           },
           "editions": {
@@ -1419,41 +1418,10 @@
                 }
               }
             }
-          },
-          "tag_looking_fors": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "et": {
-                  "type": "string"
-                },
-                "en": {
-                  "type": "string"
-                },
-                "ru": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
       "NewIndustry-project": {
-        "required": [
-          "slug"
-        ],
         "properties": {
           "title_en": {
             "type": "string"
@@ -1803,7 +1771,7 @@
           "completionYear": {
             "type": "integer"
           },
-          "imdbLink": {
+          "imbdLink": {
             "type": "string"
           },
           "editions": {
@@ -1813,12 +1781,6 @@
             }
           },
           "awardings": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tag_looking_fors": {
             "type": "array",
             "items": {
               "type": "string"

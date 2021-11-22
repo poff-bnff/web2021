@@ -1,0 +1,788 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+
+    main.schedule
+        //- FILMS / SCREENINGS calendar
+        div
+            h1.section_headline= self.label.all.screeningsCalendar
+                    //- | Seansside kalender
+
+
+            section.calendar
+
+                each screeningDay in self.data.screeningsCalendar
+                    .calendar_day
+                        .calendar_day_head
+                            +calendarDate(screeningDay.calendarDate)
+                        .calendar_day_body
+                            each cinema in screeningDay.cinemas
+                                .clr_white_semi.caps= cinema.cinema
+                                each screening in cinema.screenings
+                                    span.screeningTime
+                                        +screeningTime(screening.screeningDatetime)
+                                    a(href=`/${lang_path}${screening.filmPath}`)
+                                        span.filmTitle= screening.filmTitle
+                                    br
+                                br
+
+        //- section.calendar
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-10')
+        //-         .calendar_day_body
+        //-             .clr_white_semi.caps Raekoja plats
+        //-             | 22:00&nbsp;&nbsp;&nbsp;Festivali avamine
+        //-             br
+        //-             | 22:45&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/invisible-life-of-eurdice-gusmo/')
+        //-                 | Nähtamatu elu
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-11')
+        //-         .calendar_day_body
+        //-             .clr_white_semi.caps
+        //-                 | Raekoja plats
+        //-             | 22:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/flawless/')
+        //-                 | Täiuslik
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             | 23:59&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/house-of-hummingbird/')
+        //-                 | Hüvasti
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-12')
+        //-         .calendar_day_body
+
+        //-             .clr_white_semi.caps
+        //-                 | Athena Keskus
+        //-             | 16:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/banksy-most-wanted')
+        //-                 | Tagaotsitav, Banksy
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             | 20:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/acas-my-home')
+        //-                 | Acasa, mu kodu
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             br
+        //-             .clr_white_semi.caps
+        //-                 | Raekoja plats
+        //-             | 22:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/the-goddess-of-fortune')
+        //-                 | Õnnejumalanna
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             | 00:15&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/schemers')
+        //-                 | Skeemitajad
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-13')
+        //-         .calendar_day_body
+
+        //-             .clr_white_semi.caps
+        //-                 | Athena Keskus
+        //-             | 16:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/the-secret-lamb')
+        //-                 | Lammas all paremas nurgas
+        //-             br
+        //-             | 19:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/self-portrait')
+        //-                 | Autoportree
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             br
+        //-             .clr_white_semi.caps
+        //-                 | Raekoja plats
+        //-             | 22:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/champions')
+        //-                 | Tšempionid
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             | 23:59&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/yalda-a-night-for-forgiveness/')
+        //-                 | Yalda, andestuse öö
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-14')
+        //-         .calendar_day_body
+        //-             .clr_white_semi.caps
+        //-                 | Athena Keskus
+        //-             | 16:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/storm-boy/')
+        //-                 | Tormipoiss
+        //-             br
+        //-             | 19:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/marcel-duchamp-art-of-the-possible/')
+        //-                 | Marcel Duchamp ja võimalikkuse kunst
+        //-             br
+        //-             br
+        //-             .clr_white_semi.caps
+        //-                 | Raekoja plats
+        //-             | 22:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/force-of-habit/')
+        //-                 | Harjumuse jõud
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-             br
+        //-             | 23:45&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/acid/')
+        //-                 | Hape
+        //-             span.clr_elisa_stage
+        //-                 | &nbsp; &nbsp;e
+        //-     .calendar_day
+        //-         .calendar_day_head
+        //-             +calendarDate('2020-08-15')
+        //-         .calendar_day_body
+        //-             .clr_white_semi.caps Raekoja plats
+        //-             | 21:45&nbsp;&nbsp;&nbsp;Festivali lõpetamine
+        //-             br
+        //-             | 22:00&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/final-portrait/')
+        //-                 | Viimane portree
+        //-             br
+        //-             | 23:59&nbsp;&nbsp;&nbsp;
+        //-             a(href='https://tartuff.ee/maudie/')
+        //-                 | Maudie
+
+        section.calendar_e
+            span.font_h.clr_elisa_stage ELISA STAGE
+            span.clr_white_96= self.eFilmInfo
+
+
+        //- EVENTS calendar
+        div
+            h1.section_headline= self.label.all.eventsCalendar
+                    //- | Ürituste kalender
+
+        section.calendar
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-10')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | Raekoja plats
+                    | 22:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Festivali avamine ja Maarja Nuut & Ruum kontsert' data-content='\
+                    <p>Tervitussõnad:\
+                    </p>\
+                    <p>Tartu linnapea Urmas Klaas\
+                    </p>\
+                    <p>Pimedate Ööde Filmifestivali juht Tiina Lokk\
+                    </p>\
+                    <p>Tartu 2024 juht Priit Mikk\
+                    </p>\
+                    <p>tARTuFFi juht ning Tartu Filmifondi ja Tartu Loomemajanduskeskuse juht Kristiina Reidolv\
+                    </p>\
+                    <p>tARTuFFi filmiprogrammi juht ja Pimedate Ööde filmifestivali filmiprogrammi koostaja Dagmar Raudam\
+                    </p>')
+                        | Festivali avamine ja Maarja Nuut & Ruum kontsert
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-11')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | Tartu linnaruum
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Stencibility esitleb: Stina Leeki tänavakunstiaktsioon' data-content='\
+                    <p>tARTuFFi raames toimub 11.-12. augustil tänavakunstifestivali Stencibility poolt kureeritud kunstiaktsioon avalikus ruumis, mille autor on Tartu lowbrow kunstnik Stina Leek. Stina Leek on noor ja vihane vabakutseline kunstnik, kunstirühmituse Ajuokse algataja ning maa-aluse kunstiringi eestvedaja. Tema tööd tunneb ära paksu lookleva joonegraafika ning rohkete silmamunade järgi.\
+                    </p>\
+                    <p>T, 11. august 12:00 - K, 12. august 21:00\
+                    </p>\
+                    <p>Raekoja plats 9, Tartu\
+                    </p>\
+                    <p>Aktsioon algab teisipäeval (11.08) kl 12 ja lõpeb kolmapäeval (12.08) kl 21. Selle aja vältel saab tulla vaatama, kuidas Stina Leek teostab Raekoja Plats 9 kõrval olevas kangialuses oma kõige uuemat tööd ja seda kõike väikse vimkaga\
+                    </p>\
+                    <p>Tutvu Stina loominguga Instagramis: www.instagram.com/stina.leek\
+                    </p>')
+                        | Stencibility esitleb: Stina Leeki tänavakunstiaktsioon
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | ERM
+                    | 12:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Eesti Rahva Muusemi lasteprogramm: muinasjutunäituse “Elas kord…” giidituur ning töötoad peredele ERMis ' data-content='\
+                    <p>On aeg otsida välja seitsmepenikoormasaapad või tellida treppi lendav vaip, sättida pähe kroon ja vöö vahele mõõk ning võtta suund Raadile, kus tARTuFF ja ERM viivad nii suured kui ka väikesed külalised muinasjuturadadele.\
+                    </p>')
+                        | ERMi lasteprogramm
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='ERMi filmiprogramm lastele ERMi Hurda saalis' data-content='\
+                    <p>NÄITUSE PILETIGA (7/10 eurot, perepilet 22 eurot). Filmiprogramm tasuta.\
+                    </p>')
+                        | ERMi filmiprogramm lastele
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi
+                        | Pepe's Bistro & tARTuFF Social Club
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Armastuse mälumäng' data-content='\
+                    <p>Mis nimi olevat muistsete eestlaste jaoks tähendanud “armastatut”?\
+                    </p>\
+                    <p>Tule ja veeda kirjastuse Loovhoog vedamisel 45 minutit armastuseteemalise mälumänguga. Parimatele auhinnad.\
+                    </p>')
+                        | Armastuse mälumäng
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 19:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Miré akustilise muusika live' data-content='\
+                    <p>Kontsert on tasuta.\
+                    </p>')
+                        | Miré akustilise muusika live
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Kaseke
+                    | 16:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Tänavakunsti tuur jalgratastel' data-content='\
+                    <p>Kes on need müstilised ööpimeduses tegutsevad tänavakunstnikud ja mis märke nad endast maha on jätnud? Avastame sel suvel tekkinud uusi teoseid, vanu klassikuid ja pisiobskuursusi. Tuuri viib läbi Stencibility korraldaja Kadri Lind.\
+                    </p>\
+                    <p>Tuur algab Kasekese eest (Lootuse ja Tähe tn nurgal) ning kestab 2h.\
+                    </p>\
+                    <p>Piletid (5€) saadaval Stencibility e-poes: http://stencibility.ee/pood/tuur\
+                    </p>')
+                        | Tänavakunsti tuur jalgratastel
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Kroonuaia 68
+                    | 18:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Tartuff »--♥-> Voronja: Kadri Kosk' data-content='\
+                    <p>Tartu ühes värvilisemas majas avab kunstnik Kadri Kosk tARTuFF külalistele aianäituse ja kodukohviku “Naba”. Klaveril musitseerib Leila Röömel.\
+                    </p>\
+                    <p>Kroonuaia 68, Supilinn, Tartu\
+                    </p>')
+                        | Tartuff »--♥-> Voronja: Kadri Kosk
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-12')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | Tartu linnaruum
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Stencibility esitleb: Stina Leeki tänavakunstiaktsioon' data-content='\
+                    <p>tARTuFFi raames toimub 11.-12. augustil tänavakunstifestivali Stencibility poolt kureeritud kunstiaktsioon avalikus ruumis, mille autor on Tartu lowbrow kunstnik Stina Leek. Stina Leek on noor ja vihane vabakutseline kunstnik, kunstirühmituse Ajuokse algataja ning maa-aluse kunstiringi eestvedaja. Tema tööd tunneb ära paksu lookleva joonegraafika ning rohkete silmamunade järgi.\
+                    </p>\
+                    <p>T, 11. august 12:00 - K, 12. august 21:00\
+                    </p>\
+                    <p>Raekoja plats 9, Tartu\
+                    </p>\
+                    <p>Aktsioon algab teisipäeval (11.08) kl 12 ja lõpeb kolmapäeval (12.08) kl 21. Selle aja vältel saab tulla vaatama, kuidas Stina Leek teostab Raekoja Plats 9 kõrval olevas kangialuses oma kõige uuemat tööd ja seda kõike väikse vimkaga\
+                    </p>\
+                    <p>Tutvu Stina loominguga Instagramis: www.instagram.com/stina.leek\
+                    </p>')
+                        | Stencibility esitleb: Stina Leeki tänavakunstiaktsioon
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | ERM
+                    | 12:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Eesti Rahva Muusemi lasteprogramm: muinasjutunäituse “Elas kord…” giidituur ning töötoad peredele ERMis ' data-content='\
+                    <p>On aeg otsida välja seitsmepenikoormasaapad või tellida treppi lendav vaip, sättida pähe kroon ja vöö vahele mõõk ning võtta suund Raadile, kus tARTuFF ja ERM viivad nii suured kui ka väikesed külalised muinasjuturadadele.\
+                    </p>')
+                        | ERMi lasteprogramm
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='ERMi filmiprogramm lastele ERMi Hurda saalis' data-content='\
+                    <p>NÄITUSE PILETIGA (7/10 eurot, perepilet 22 eurot). Filmiprogramm tasuta.\
+                    </p>')
+                        | ERMi filmiprogramm lastele
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi
+                        | Pepe's Bistro & tARTuFF Social Club
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Armastuse mälumäng' data-content='\
+                    <p>Kuidas avaldavad armastust meie lõunanaabrid lätlased?\
+                    </p>\
+                    <p>Tule ja veeda kirjastuse Loovhoog vedamisel 45 minutit armastuseteemalise mälumänguga. Parimatele auhinnad.\
+                    </p>')
+                        | Armastuse mälumäng
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 15:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Vestlus filmikunstniku Katrin Sipelgaga' data-content='\
+                    <p>Katrin Sipelgas on vabakutseline filmikunstnik, kes on olnud kunstnikuks eesti mängufilmidele “Must Alpinist”, “Sangarid”, “Jan Uuspõld läheb Tartusse”, “Ükssarvik” jpt. Samuti on ta ERMi muinasjututeemalise näituse “Elas kord…” idee autoriks ja kuraatoriks. Näituse sündi on panustanud mitmed loomeinimesed, sh filmilavastaja Jaak Kilmi, kirjanik Andrus Kivirähk, folkloristid Risto Järv ja Ülo Valk, animaator Priit Tender, ajaloolane David Vseviov jpt.\
+                    </p>\
+                    <p>Vesteldakse filmikunstist ja (muinasjutu)näituse kureerimisest. Katrin Sipelgat intervjueerib ERMi avalike ja välissuhete juht Kalmar Kurs.\
+                    </p>')
+                        | Vestlus filmikunstniku Katrin Sipelgaga
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 19:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Forrest Kämp live' data-content='\
+                    <p>Forest Kämp on Tartu indie-folk ansambel, mis tegutseb alates 2013. aastast. Bändi kuuluvad Jaan Sepp (vokaal), Kaarel Tammur (bass, taustahelid), Siim Valtna (trummid, muud löökpillid), Peeter Tammur (akustiline kitarr, taustahelid) ja Mikk Valtna (elektrikitarr). \
+                    </p>\
+                    <p>Kontsert on tasuta.\
+                    </p>')
+                        | Forrest Kämp live
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Kaseke
+                    | 19:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Tänavakunsti tuur jalgratastel' data-content='\
+                    <p>Kes on need müstilised ööpimeduses tegutsevad tänavakunstnikud ja mis märke nad endast maha on jätnud? Avastame sel suvel tekkinud uusi teoseid, vanu klassikuid ja pisiobskuursusi. Tuuri viib läbi Stencibility korraldaja Kadri Lind.\
+                    </p>\
+                    <p>Tuur algab Kasekese eest (Lootuse ja Tähe tn nurgal) ning kestab 2h.\
+                    </p>\
+                    <p>Piletid (5€) saadaval Stencibility e-poes: http://stencibility.ee/pood/tuur\
+                    </p>')
+                        | Tänavakunsti tuur jalgratastel
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-13')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | Sisevete saatkond
+                    | 10:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Hommikupiknik ja lodjasõit koos filmirežissöör Jaan Tootseniga' data-content='\
+                    <p>Sõidame südasuvisel Emajõel linnast välja, et nautida loodust ning mõtiskleda loodus- ja dokumentaalfilmide üle.\
+                    </p>\
+                    <p>Lodjasõidul vestleme filmirežissöör Jaan Tootseniga ennekõike filmist "Fred Jüssi. Olemise ilu", aga ka paljust muust ehk “Maast ja ilmast”.\
+                    </p>\
+                    <p>Jaan Tootsen: "Aina kiirenevas maailmas oli koroona-aeg paljude jaoks esimene hetk kui sai olla iseendaga koos. Iseenda seltskond võib olla meeldiv, samas ka hirmutav. Kui igapäevasäbrusse tekib rahulik ajaauk, siis on võimalus et tekivad nö eksistentsiaalsed küsimused. Miks ma midagi teen ja just sellisel kombel? Parim "ravum" meeletuse vastu on minna loodusese meelevalda. Loodus on mõnus hingeravim. Skaala on küll erinev, aga tasakesi kivi- ja pilvemustreid uurides, tuleb varem või hiljem taipamishetk, et äkki on maailm üks tervik. Puulehtede ja laineloksu muusika on võimalus teistmoodi olemise kogemiseks. Kuidas näha harjumuspärast, värskelt, uue nurga alt. Vaatenurkade paljusus annab võimaluse vaimu virgumisele."\
+                    </p>\
+                    <p>Naudime lodjalael keskhommiku kohvi-teed ja värskeid koduseid pirukaid.\
+                    </p>\
+                    <p>Sõit algab ja lõpeb Sisevete Saatkonnast, kestus 2 h.\
+                    </p>\
+                    <p>Pilet 14 eurot, õpilased ja tudengid 11€, 7a ja nooremad 5 eurot. Kaks maitsvat pirukat (üks soolane, üks magus) ning tee ja kohv on hinna sees. Piletid saab ette osta Piletilevist.\
+                    </p>\
+                    <p>"Fred Jüssi. Olemise ilu" väljatoomist on toetanud Tartu Filmifond.\
+                    </p>')
+                        | Hommikupiknik ja lodjasõit koos filmirežissöör Jaan Tootseniga
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | ERM
+                    | 12:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Eesti Rahva Muusemi lasteprogramm: muinasjutunäituse “Elas kord…” giidituur ning töötoad peredele ERMis ' data-content='\
+<p>On aeg otsida välja seitsmepenikoormasaapad või tellida treppi lendav vaip, sättida pähe kroon ja vöö vahele mõõk ning võtta suund Raadile, kus tARTuFF ja ERM viivad nii suured kui ka väikesed külalised muinasjuturadadele.\
+</p>')
+                        | ERMi lasteprogramm
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='ERMi filmiprogramm lastele ERMi Hurda saalis' data-content='\
+<p>NÄITUSE PILETIGA (7/10 eurot, perepilet 22 eurot). Filmiprogramm tasuta.\
+</p>')
+                        | ERMi filmiprogramm lastele
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi
+                        | Pepe's Bistro & tARTuFF Social Club
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Armastuse mälumäng' data-content='\
+<p>Mis sõna soovitas tuntud keeleuuendaja Johannes Aavik kasutusele võtta sõna “armukadedus” asemel?\
+</p>\
+<p>Tule ja veeda kirjastuse Loovhoog vedamisel 45 minutit armastuseteemalise mälumänguga. Parimatele auhinnad.\
+</p>')
+                        | Armastuse mälumäng
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 17:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Filmiviktoriin' data-content='\
+<p>Traditsiooniks saanud tARTuFFi filmiviktoriinis saavad osaleda kõik, kes tahavad enda teadmisi tARTuFFi ja filmikunsti ajaloo teemadel proovile panna. Osaleda võib nii üksi kui 4-liikmelise meeskonnaga. Viktoriini viib läbi tARTuFFi ja PÖFFi filmiprogrammi koostaja Helmut Jänes. Parimatele auhinnad festivali toetajatelt.\
+</p>')
+                        | Filmiviktoriin
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 19:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='DJ Martin Sõgeli & Mikk Valtna vinüülivalik' data-content='\
+<p>Ülikooli 7\
+</p>')
+                        | DJ Martin Sõgeli & Mikk Valtna vinüülivalik
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Tartu Kunstimuuseum
+                    | 18:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Näituse „Vaikiv“ kuraatorite Jevgeni Zolotko ja Eero Epneri vestlus' data-content='\
+<p>Juuli keskpaigas avanenud näitusele “Vaikiv” on kunstnik Jevgeni Zolotko loonud läbi kahe korruse ulatuva videoinstallatsiooni, mis kõneleb vaikimisest. Sellele liituvad maalid, graafilised lehed ning fotod aastatest 1934 kuni 1940. \
+</p>\
+<p>Vestlusõhtule pääseb Tartu Kunstimuuseumi näitusepiletiga.\
+</p>')
+                        | Näituse „Vaikiv“ kuraatorite Jevgeni Zolotko ja Eero Epneri vestlus
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Voronja Galerii, Varnja, Kesk 27
+                    | 18:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Tartuff »--♥-> Voronja: Robert ja Anti Jürjendal' data-content='\
+<p>Voronja galerii Peipsiveerel kutsub tARTuFFi külalisi “Kättemaksu” näitust vaatama. Kohal on kuraator Vahur Afanasjev. Aias musitseerivad Robert ja Anti Jürjendal.\
+</p>\
+<p>Buss väljub Vanemuise alumisest parklast kell 18 ja jõuab tagasi Tartusse vahetult enne õhtust filmiseanssi.\
+</p>\
+<p>Piletid:\
+</p>\
+<p>15€ Pilet koos transpordiga (Tartu-Varnja-Tartu)\
+</p>\
+<p>10€ Tavapilet\
+</p>\
+<p>Piletimüük: https://fienta.com/et/tartuff-voronja\
+</p>')
+                        | Tartuff »--♥-> Voronja: Robert ja Anti Jürjendal
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    a(href='https://fienta.com/et/tartuff-voronja')
+                        | (Piletid siit)
+
+
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-14')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | Tartu Kunstimuuseum
+                    | 11:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Rahvusvaheline sümpoosion "Fotograafia retušeerimata ajalugu"' data-content='\
+<p>Juuni keskpaigast saati on Tartu Kunstimuuseumis olnud võimalik külastada näitust “Hõbetüdrukud. Fotograafia retušeeritud ajalugu”, mis keskendub kümnele varajasele eesti ja läti naisfotograafile. Ent mitte ainult!\
+</p>\
+<p>Ajaloolise ülevaate andmise asemel on näituse koostajate huvi keskendunud unustatud ja kadunud kultuuripärandi rollile. Sarnaselt on ka näitusega kaasneval sümpoosionil kaks lähtepunkti. Esiteks varajased naisfotograafid Balti riikides, teiseks ikka ja jälle kinnitust leidev kultuurilooline fenomen, mille ainsaks järelduseks saab olla, et kunst on igavene. Teosed kui füüsilised objektid võivad küll hävida: unarusse jäetult laguneda, tulekahjus ära põleda või sihiteadliku lõhkumise ohvriks langeda. Ent lähemal vaatlusel selgub, et hävinud teosed ei ole laiemast kultuuriruumist siiski kuskile kadunud ja avaldavad meile kõigest hoolimata jätkuvalt mõju. Neid reprodutseeritakse raamatutes, neist räägitakse konverentsidel ning nad on endiselt kohal näitustel. Käsikirjad ei põle ning nii jäävad arhiivid nagu meediumid spiritualistlikul seansil tulevikust tagasipöörduma, et leida kadunuke kellega kõnelda.\
+</p>\
+<p>Sümpoosionil osalevad ajaloolased ja kunstnikud Eestist, Lätist, Leedust ning Soomest: Mari Vallikivi, Katrīna Teivāne-Korpa, Ieva Balode, Agnė Narušytė, Sami van Ingen.\
+</p>\
+<p>Sümpoosion lõpeb Sami van Ingeni ja Ieva Balode koostatud eksperimentaalfilmide kavaga Elektriteatris.\
+</p>\
+<p>Sümpoosioni töökeel on inglise keel.\
+</p>\
+<p>Täpsem info ja ajakava tartmus.ee\
+</p>')
+                        | Rahvusvaheline sümpoosion "Fotograafia retušeerimata ajalugu"
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | ERM
+                    | 12:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='ERMi lasteprogramm' data-content='\
+<p>Muinasjutunäituse “Elas kord…” giidituur ning töötoad peredele ERMis.\
+</p>')
+                        | ERMi lasteprogramm
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 14:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='filmiprogramm lastele ERMi Hurda saalis' data-content='\
+<p>NÄITUSE PILETIGA (7/10 eurot, perepilet 22 eurot). Filmiprogramm tasuta.\
+</p>')
+                        | ERMi filmiprogramm lastele
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi
+                        | Pepe's Bistro & tARTuFF Social Club
+                    | 16:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Vestlus Soome näitlejanna Suvi Blickiga' data-content='\
+<p>Soome näitlejanna Suvi Blick on üks osatäitjatest ahistamist käsitlevas filmis “Harjumuse jõud”, mida on võimalus samal õhtul kl 22.00 Raekoja platsil vaadata. Filmi autoriteks on seitse Soome parimat naisrežisööri, kelle sõnul ei ole filmi ajendiks niivõrd seksuaalne ahistamine, kuivõrd see, kuidas ühiskond seda normaalseks peab.\
+</p>\
+<p>Suvi Blicki intervjueerib kultuuriajakirjanik Keiu Virro. Vestlus on inglise keeles.\
+</p>')
+                        | Vestlus Soome näitlejanna Suvi Blickiga
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 17:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Loomingu Raamatukogu esitleb: Milan Kundera "Veidrad armastuslood"' data-content='\
+<p>“Loomingu Raamatukogu kuldsarja” neljanda raamatuna on ilmunud tšehhi kultusautori lühilood, mis vaatlevad armastuse ja põlguse, tõe ja vale, olemise ja näivuse keerukaid vahekordi. Autor on öelnud, et leidis just neid kirjutades oma õige tooni, “iroonilise kõrvalpilgu maailmale ja omaenese elule”, ning temast sai romaanikirjanik.\
+</p>\
+<p>On omamoodi sümboolne, et esimene eesti keeles ilmunud Kundera raamat oli kogumik “Naljakad armastuslood: kolm melanhoolset anekdooti”, mis ilmus Lembit Remmelgase tõlkes LR-i sarjas juba 1965. aastal. Hiljem kirjutas Kundera veel kaks kogumikku armastuslugusid ja kõigi kolme põhjal pani kokku valimiku, mida on tõlgitud mitmekümnesse keelde ja mille eestikeelne esitrükk ilmus Küllike Tohveri tõlkes aastal 2011.\
+</p>\
+<p>“Veidrad armastuslood” on tšehhi keelest tõlkinud Küllike Tohver, saatesõna kirjutanud Jiři Opelík.\
+</p>\
+<p>“Veidrate armastuslugude” esitlusel vestlevad autorist ja tema loomingust režissöör ja kirjanik Kadri Kõusaar ning kirjandushuviline Siim Lill.\
+</p>\
+<p>Üritusel saab osta LR-i kuldsarja raamatuid soodushinnaga.\
+</p>\
+<p>Loe lähemalt: http://www.loominguraamatukogu.ee/lr-kuldsari/\
+</p>\
+<p>Kuldsarja toetab Eesti Novell: www.eestinovell.ee\
+</p>')
+                        | Loomingu Raamatukogu esitleb: Milan Kundera "Veidrad armastuslood"
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 19:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='DJ Ahto Külveti & Psühhoteegi vinüülivalik filmimuusikast' data-content='\
+<p>Plaadipoe Psühhoteek omanik ja vinüülplaadifänn Ahto Külvet mängib sel õhtul ainult vinüülidelt ainult filmi- ja filmilikku muusikat. Lugusid Olav Ehalast Itaalia giallo filmideni, armastusest õuduseni, multifilmidest telesaadeteni pakkudes nii äratundmis- kui avastamiserõõmu.\
+</p>')
+                        | DJ Ahto Külveti & Psühhoteegi vinüülivalik filmimuusikast
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+            .calendar_day
+                .calendar_day_head
+                    +calendarDate('2020-08-15')
+                .calendar_day_body
+                    .clr_white_semi.caps
+                        | ERM
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Eesti Rahva Muuseumi muinasjutuline perepäev' data-content='\
+<p>kell 10.00–16.00 väikesed printsessid, printsid, nõiad ja rüütlid saavad oma osavust proovida ponisõidul ja hobukaarikul ERMi ümbruses – (sularahas 5 eurot)\
+</p>\
+<p>kell 12.00 töötoad\
+</p>\
+<p>kell 13.00 etendus “Kulda väärt” Miku-Manni näitetrupi esituses TASUTA!\
+</p>\
+<p>kell 14.00 giidituur muinasjutunäitusel “Elas kord…”\
+</p>\
+<p>kell 12.00–15.00 näomaalingud TASUTA!\
+</p>\
+<p>TULGE KOSTÜMEERITULT!\
+</p>')
+                        | Muinastujutuline perepäev
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+                    br
+                    | 10:00 - 16:00&nbsp;&nbsp;&nbsp;Ponisõit, sõit hobikaarikul (5€)
+                    br
+                    | 12:00 - 15:00&nbsp;&nbsp;&nbsp;Näomaalingud (tasuta)
+                    br
+                    | 12:00&nbsp;&nbsp;&nbsp;Töötoad
+                    br
+                    | 13:00&nbsp;&nbsp;&nbsp;etendus "Kulda väärt" Miku-Manni näitetrupi esituses
+                    br
+                    | 14:00&nbsp;&nbsp;&nbsp;Giidituur muinasjutunäitusel "Elas kord..."
+                    br
+                    br
+                    .clr_white_semi.caps
+                        | Tartu Loomemajanduskeskus
+                    | 12:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='"Loodus ekraanil" töötuba Jaan Tootseni filmist "Fred Jüssi. Olemise ilu"' data-content='\
+<p>“Loodus ekraanil” töötuba keskendub Jaan Tootseni filmile “Fred Jüssi. Olemise ilu” ja õpikeskkonnale "Loodus ekraanil". Meistriklassi jooksul arutame, kuidas dokumentaalfilmi võib kasutada loodushariduses, uurime filmi kaudu looduse vahendamist kinoekraanil ja proovime ka ise oma looduskogemuse vahendamist pildi, sõna ja heli kaudu.\
+</p>\
+<p>Töötoas on võimalus kohtuda ka “Fred Jüssi. Olemise ilu” režissööri Jaan Tootseniga. Töötuba viivad läbi: Aleksandr Fadeev ja Siiri Tarrikas.\
+</p>\
+<p>Õpikeskkond "Loodus ekraanil" (loodus.haridusekraanil.ee) on loodud Tartu Ülikooli semiootika osakonna transmeedia uurimisrühma poolt. Õppematerjal valmis Eesti Filmi Instituudi toel. \
+</p>\
+<p>Võimalusel palume töötoas osalejatel võtta kaasa oma sülearvuti.\
+</p>')
+                        | "Loodus ekraanil" töötuba Jaan Tootseni filmist "Fred Jüssi. Olemise ilu"
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    | 15:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='Vestlusring kujutavast kunstist eesti kaasaegses dokumentalistikas kahe valmiva filmi näitel' data-content='\
+<p>Külalisteks on rahvusvaheliselt hinnatud dokumentalist Marianna Kaat ja tegevkunstniku ning kuraatoritaustaga Sandra Jõgeva, kes avavad oma peatselt ekraanivalgust nägevate filmide telgitaguseid ning arutlevad kunstiteemalise dokumentalistika valust ja võlust. Vestlust modereerib dokumentaalfilmide autor ja produtsent Karin Reinberg-Shestakov.\
+</p>\
+<p>Dokumentaalfilmid, millest juttu tuleb.\
+</p>\
+<p>"Ülo Sooster. Mees, kes kuivatas rätikut tuule käes"\
+</p>\
+<p>Režissöör Lilija Vjugina, produtsent Marianna Kaat, Eesti-Vene filmi planeeritud esilinastus sügis 2020)\
+</p>\
+<p>Vene reźissöör Liliya Vyugina film Ülo Soosterist on esimene täispikk dokumentaal 1924. aastal Hiiumaal sündinud Eesti legendaarsest kunstnikust, kes asus 1943. aastal Tartu Kõrgemasse Kunstikooli Pallas maalikunsti õppima. Peale kooli lõpetamist aastal 1949 mõisteti Ülo Sooster nõukogudevastase propaganda eest kümneks aastaks Karaganda Dolinka vangilaagrisse. Vabanenud 1956. aastal naasis Sooster esmalt Eestisse, ent kolis peagi abikaasa Lidiaga Moskvasse, kus temast sai vene avangardi teise laine tuntumaid esindajaid. ,Ülo Sooster suri 1970. aastal oma ateljees Moskvas vaid 46-aastasena. Ta elu oli lühike, dramaatiline, intensiivne, täis vastuolusid, kuid mõju eesti ja vene kunstielule, nendevahelise kultuurisilla loomisele, oli märkimisväärne ning tema kunstipärand intrigeeriv.\
+</p>\
+<p>Dokumentaal on omamoodi rännak ajas ja ruumis, mille teeb läbi kunstniku poeg Tenno, kes emigreerus ema Lidiaga 1990. aastate alguses Iisraeli. Filmivõtted toimusid neljas riigis: Venemaal, kus kunstnik töötas, Eestis, kus ta sündis ja kuhu on maetud tema põrm, Kasahstanis, kus ta oli vangilaagris, ja Iisraelis, kus elab praegu tema pere. Näeme haruldasi filmikaadreid ja intervjuusid Soosteri kaasaegsetega ning kommentaare ekspertidelt Kumu kunstimuuseumist, Tartu Kunstimuuseumist ja Tretjakovi galeriist.\
+</p>\
+<p>"Kunst ja külm sõda”\
+</p>\
+<p>Reźissöör Sandra Jõgeva, produtsent Anu Veermäe-Kaldra,  planeeritav esilinastus 2021\
+</p>\
+<p>"Kunst ja külm sõda” on lugu sõltumatu nõukogude kunsti ja Lääne suhetest. Ajast, mil kunst oli suurem ja tähtsam kui elu ise. Ka ajast, millesugust pole eesti kunstis enne olnud ja ilmselt enam ka ei tule.\
+</p>\
+<p>Ühel pool on sõltumatud nõukogude kunstnikud, kellel napib nii väljundit, kui ka materiaalseid võimalusi oma tööde realiseerimiseks. Teisel pool on ahvatlev lääs, mille (sõna otseses mõttes) saadikud tunnevad aktiivset huvi nõukogude underground\'i kunstituru vastu. Oma teoste müük läände on komplitseeritud äri, sest kahe teineteisest huvitatud leeri vahel seisab omakorda kõikvõimas KGB.\
+</p>\
+<p>Ometigi õnnestub peamiselt Eesti ja Moskva päritolu kunstnikel müüa ja lasta piiri taha viia hämmastav kogus kujutavat kunsti. See saab võimalikuks peamiselt tänu lääne diplomaatidele, kelle koordineeritud tegevuse tagant paistavad ei kellegi muu kui CIA kõrvad.\
+</p>')
+                        | Eesti Dokumentalistide Gild esitleb: vestlus kujutavast kunstist eesti kaasaegses dokumentalistikas
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+                    br
+                    br
+                    .clr_white_semi
+                        | Raekoja Plats
+                    | 21:45&nbsp;&nbsp;&nbsp;Festivali lõpetamine
+                    br
+                    br
+                    .clr_white_semi
+                        | GenKlubi
+                    | 23:00&nbsp;&nbsp;&nbsp;
+                    a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='VikerHunt' data-content='\
+<p>Augustis jahime filmielamusi ja tantsupartnereid!\
+</p>\
+<p>Suures saalis Kalev K ja Helgi Saldo!\
+</p>\
+<p>Alumisel korrusel saab seekord nii suvist kui sügavamat discot ja haussi, vürtsiks ka veidi electrot ja italot.\
+</p>\
+<p>Kaspu & Hyyru! Tulenevalt erilisest olukorrast on külastajate arv piiratud. Soovitame osta pileti eelmüügist. Nii pääsed kindlasti peole.\
+</p>\
+<p>vikerruum.ee vikerpoes pilet 8.-, kohapealt ostes pilet 10.-\
+</p>')
+                        | VikerHunt
+                        svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            line(x1='17' y1='10' x2='3' y2='10')
+                            line(x1='21' y1='6' x2='3' y2='6')
+                            line(x1='21' y1='14' x2='3' y2='14')
+                            line(x1='17' y1='18' x2='3' y2='18')
+
+
+//-                     a.btn_popover(tabindex='0' role='button' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='left' data-html='true' title='TITLE' data-content='\
+//- <p>SISU\
+//- </p>\
+//- <p>SISU\
+//- </p>\
+//- <p>SISU\
+//- </p>')
+//-                         | EVENT NAME
+//-                         svg.svg_icon_syn(viewbox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+//-                             line(x1='17' y1='10' x2='3' y2='10')
+//-                             line(x1='21' y1='6' x2='3' y2='6')
+//-                             line(x1='21' y1='14' x2='3' y2='14')
+//-                             line(x1='17' y1='18' x2='3' y2='18')

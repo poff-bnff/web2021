@@ -31,8 +31,7 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
+      "required": false
     },
     "location": {
       "model": "location"
@@ -78,12 +77,6 @@
     },
     "isPublicEvent": {
       "type": "boolean"
-    },
-    "festival_editions": {
-      "collection": "festival-edition"
-    },
-    "event_mode": {
-      "model": "event-mode"
     }
   }
 }

@@ -40,34 +40,9 @@
       "model": "user"
     },
     "transactor": {
-      "via": "transactions",
       "plugin": "users-permissions",
-      "model": "user"
-    },
-    "seller_business_profiles": {
-      "collection": "business-profile"
-    },
-    "buyer_business_profiles": {
-      "collection": "business-profile"
-    },
-    "status": {
-      "type": "string"
-    },
-    "currency": {
-      "type": "string"
-    },
-    "transaction": {
-      "type": "string",
-      "unique": true
-    },
-    "amount": {
-      "type": "decimal"
-    },
-    "method": {
-      "type": "enumeration",
-      "enum": [
-        "Maksekeskus"
-      ]
+      "model": "user",
+      "via": "transactions"
     }
   }
 }

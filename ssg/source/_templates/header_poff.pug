@@ -76,14 +76,10 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
-
     script.
         var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
-        //- Below boolean needed for login
-        var industryPage = false
-
+        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
+        //- var strapiDomain = 'http://localhost:1337'
 
 
 //- include ../_templates/tracker_mixin.pug

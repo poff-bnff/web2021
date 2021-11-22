@@ -525,6 +525,26 @@
           "namePrivate": {
             "type": "string"
           },
+          "name": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "et": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              },
+              "ru": {
+                "type": "string"
+              }
+            }
+          },
           "description": {
             "type": "object",
             "required": [
@@ -855,6 +875,26 @@
         "properties": {
           "namePrivate": {
             "type": "string"
+          },
+          "name": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "et": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              },
+              "ru": {
+                "type": "string"
+              }
+            }
           },
           "description": {
             "type": "object",

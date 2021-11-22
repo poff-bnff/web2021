@@ -106,8 +106,7 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title_en",
-      "required": true
+      "targetField": "title_en"
     },
     "tag_genres": {
       "collection": "tag-genre"
@@ -115,7 +114,7 @@
     "completionYear": {
       "type": "integer"
     },
-    "imdbLink": {
+    "imbdLink": {
       "type": "string"
     },
     "editions": {
@@ -124,11 +123,8 @@
       "dominant": true
     },
     "awardings": {
-      "collection": "awarding",
-      "via": "project"
-    },
-    "tag_looking_fors": {
-      "collection": "tag-looking-for"
+      "via": "project",
+      "collection": "awarding"
     }
   }
 }

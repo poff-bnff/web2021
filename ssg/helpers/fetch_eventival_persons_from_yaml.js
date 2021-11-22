@@ -8,7 +8,7 @@ const fetchDir =  path.join(sourceDir, '_fetchdir')
 const rootDir =  path.join(__dirname, '..')
 
 const eventivalPersonsPath = path.join(rootDir, 'eventival', 'static', 'eventival_persons.yaml')
-let EVENTIVAL_PERSONS = yaml.load(fs.readFileSync(eventivalPersonsPath, 'utf8'))
+const EVENTIVAL_PERSONS = yaml.load(fs.readFileSync(eventivalPersonsPath, 'utf8'))
 const E_PERSONS_FILE = path.join(fetchDir, 'eventival_persons.yaml')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
@@ -17,10 +17,6 @@ if (DOMAIN === 'industry.poff.ee') {
     console.log(`Fetching ${DOMAIN} eventival persons data`)
 
     function eventival_persons_yaml() {
-        EVENTIVAL_PERSONS = EVENTIVAL_PERSONS.filter( person => {
-            return person.FullName !== ''
-        })
-
         let data = {
             persons: EVENTIVAL_PERSONS,
             filters: {},
@@ -37,13 +33,21 @@ if (DOMAIN === 'industry.poff.ee') {
     function add_filters_and_search_to_data(data) {
 
         let filters = {
+            types: {},
             companies: {},
             roles: {},
             countries: {},
-            attendances: {}
+            projects: {},
         }
 
         const eventival_persons_search = data.persons.map(person => {
+
+            let types = []
+            if (person.AttendeeType && person.AttendeeType.length) {
+                const type = person.AttendeeType
+                types.push(type)
+                filters.types[type] = person.AttendeeType
+            }
 
             let companies = []
             if (person.Company && person.Company.length) {
@@ -71,27 +75,28 @@ if (DOMAIN === 'industry.poff.ee') {
                 filters.countries[country] = country
             }
 
-
-            let attendances = []
-            if (person.AttendanceMode && person.AttendanceMode.length) {
-                const attendance = person.AttendanceMode
-                attendances.push(attendance)
-                filters.attendances[attendance] = attendance
+            let projects = []
+            if (person.Project) {
+                const project = person.Project
+                projects.push(project)
+                filters.projects[project] = project
             }
 
             return {
                 id: person.EV_ID,
                 text: [
-                    `${person.FullName}`,
+                    `${person.FirstName} ${person.LastName}`,
+                    person.AttendeeType,
                     person.Company,
                     person.Role,
+                    person.Project,
                     person.Country,
-                    person.AttendanceMode
                 ].join(' ').toLowerCase(),
+                types: types,
                 companies: companies,
                 roles: roles,
                 countries: countries,
-                attendances: attendances,
+                projects: projects,
             }
         })
 
@@ -120,16 +125,16 @@ if (DOMAIN === 'industry.poff.ee') {
         }
 
         let sorted_filters = {
+            types: mSort(filters.types),
             companies: mSort(filters.companies),
             roles: mSort(filters.roles),
             countries: mSort(filters.countries),
-            attendances: mSort(filters.attendances)
+            projects: mSort(filters.projects),
         }
 
         data.search = eventival_persons_search
         data.filters = sorted_filters
 
-        console.log({data})
         return data
     }
 

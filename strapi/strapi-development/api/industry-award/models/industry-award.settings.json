@@ -15,27 +15,7 @@
       "type": "string"
     },
     "description": {
-      "type": "component",
-      "repeatable": true,
-      "component": "translated.translated-long"
-    },
-    "title_et": {
-      "type": "string"
-    },
-    "title_ru": {
-      "type": "string"
-    },
-    "slug_et": {
-      "type": "uid",
-      "targetField": "title_et"
-    },
-    "slug_en": {
-      "type": "uid",
-      "targetField": "title_en"
-    },
-    "slug_ru": {
-      "type": "uid",
-      "targetField": "title_ru"
+      "type": "richtext"
     }
   }
 }

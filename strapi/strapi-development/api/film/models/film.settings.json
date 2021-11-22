@@ -108,14 +108,8 @@
       "default": false
     },
     "awardings": {
-      "collection": "awarding",
-      "via": "film"
-    },
-    "other_festivals": {
-      "collection": "festival"
-    },
-    "vialog_id": {
-      "type": "string"
+      "via": "film",
+      "collection": "awarding"
     }
   }
 }

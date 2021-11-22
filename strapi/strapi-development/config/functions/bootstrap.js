@@ -10,7 +10,7 @@
  */
 
 const chokidar = require('chokidar');
-const fs = require('fs')
+const jsonfile = require('jsonfile')
 const { exec, execSync, spawn } = require('child_process');
 const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
@@ -51,68 +51,65 @@ module.exports = () => {
   let fileData = { "files": [] }
   let file = '/srv/strapi/imgList.json'
 
-  try {
-    if (fs.existsSync(file)) {
+  jsonfile.readFile(file, function (err, obj) {
+    fileData.files = obj?.files
+    // console.log(fileData.files)
+  })
 
-      let readFile = fs.readFileSync(file)
-      let fileJsonData = JSON.parse(readFile)
-      fileData.files = fileJsonData?.files
+  // Initialize watcher.
+  const watcher = chokidar.watch('public/uploads', {
+    ignored: /(^|[\/\\])\../, // ignore dotfiles
+    persistent: true,
+    ignoreInital: true
+  });
 
-      // Initialize watcher.
-      const watcher = chokidar.watch('public/uploads', {
-        ignored: /(^|[\/\\])\../, // ignore dotfiles
-        persistent: true,
-        ignoreInital: true
-      });
+  // Something to use when events are received.
+  const log = console.log.bind(console);
+  // Add event listeners.
+  watcher
+    .on('add', path => {
 
-      // Something to use when events are received.
-      const log = console.log.bind(console);
-      // Add event listeners.
-      watcher
-        .on('add', path => {
+      let fileName = path.split('/')[2]
+      // log(`file -> ${fileName} with path ${path} has been added`)
 
-          let fileName = path.split('/')[2]
-          // log(`file -> ${fileName} with path ${path} has been added`)
+      if (!fileData.files.includes(path)) {
 
-          if (!fileData.files.includes(path)) {
+        fileData.files.push(path)
+        jsonfile.writeFile(file, fileData, function (err) {
+          if (err) console.log(err)
+        })
+        console.log(`adding ${fileName} to zone`)
+        writeToZone(fileName)
+      }
 
-            fileData.files.push(path)
-            let data = JSON.stringify(fileData)
-            fs.writeFileSync(file, data)
-            console.log(`adding ${fileName} to zone`)
-            writeToZone(fileName)
-          }
+    })
 
+    .on('unlink', path => {
+
+      if (!path.startsWith('public/uploads/thumbnail')) {
+        let fileName = path.split('/')[2]
+        log(`File ${path} has been removed`)
+
+        fileData.files.splice(fileData.files.indexOf(path), 1)
+        jsonfile.writeFile(file, fileData, function (err) {
+          if (err) console.log(err)
         })
 
-        .on('unlink', path => {
+        console.log(`delete ${fileName} from zone `);
+        deleteFromZone(fileName)
 
-          if (!path.startsWith('public/uploads/thumbnail')) {
-            let fileName = path.split('/')[2]
-            log(`File ${path} has been removed`)
+      }
 
-            fileData.files.splice(fileData.files.indexOf(path), 1)
-            let data = JSON.stringify(fileData)
-            fs.writeFileSync(file, data)
+    })
 
-            console.log(`delete ${fileName} from zone `);
-            deleteFromZone(fileName)
+  // If build queue exists, restart build manager to continue with the queue
+  let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)
+  console.log(build_manager_path)
+  const child = spawn('node', [build_manager_path, 'forcewithdelay'])
 
-          }
+  child.stdout.on('data', (chunk) => {
+    console.log('stdout', decoder.write(chunk))
+  });
 
-        })
-
-      // If build queue exists, restart build manager to continue with the queue
-      let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)
-      console.log(build_manager_path)
-      const child = spawn('node', [build_manager_path, 'forcewithdelay'])
-
-      child.stdout.on('data', (chunk) => {
-        console.log('stdout', decoder.write(chunk))
-      });
-    }
-  } catch (err) {
-    console.log(file, 'does not exist');
-  }
 }
 

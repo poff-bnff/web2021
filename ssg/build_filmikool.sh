@@ -17,7 +17,7 @@ echo DOMAIN
 echo $DOMAIN
 
 echo 'Processing all Strapidata by Domain'
-nice -10 node ./helpers/d_fetch.js
+node ./helpers/d_fetch.js
 
 . ./build.sh
 

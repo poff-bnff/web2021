@@ -11,7 +11,6 @@ const _ = require('lodash');
 const { sanitizeEntity } = require('strapi-utils');
 const adminUserController = require('./user/admin');
 const apiUserController = require('./user/api');
-const { getEventivalBadges } = require('../services/getEventivalBadges');
 
 const sanitizeUser = user =>
   sanitizeEntity(user, {
@@ -134,14 +133,8 @@ module.exports = {
     }
 
     const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
-    const sanitized = sanitizeUser(fetchedUser)
 
-    if(sanitized.provider.split(',').includes('eventivalindustry')) {
-      const getEventivalProfile = await getEventivalBadges(sanitized.email)
-      sanitized.industry_profile = getEventivalProfile && getEventivalProfile.statusCode === 200 ? getEventivalProfile.body : null
-    }
-
-    ctx.body = sanitized;
+    ctx.body = sanitizeUser(fetchedUser);
   },
   async import(ctx) {
     const users = JSON.parse(ctx.request.body.users);

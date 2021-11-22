@@ -23,8 +23,7 @@ if (window.location.search) {
 
 // Email + pswd 'local' login
 const loginViaLocal = () => {
-    const usernameInput = document.getElementById("loginUsername")
-    if (usernameInput.value && loginPassword.value && validateEmail("loginUsername")) {
+    if (loginUsername.value && loginPassword.value && validateEmail('loginUsername')) {
         loginFlow('local')
     } else {
         unfilledErrorMsg.style.display = ''
@@ -124,8 +123,6 @@ const handleResponse = (response) => {
     if (response.jwt && response.user || response.id) return response
 
     if (response.statusCode !== 200) {
-        const loginUsername = document.getElementById("loginUsername")
-
         if (loginUsername.value) {
             document.getElementById('emailUsed').style.display = ''
             emailUsed.innerHTML = loginUsername.value
@@ -133,16 +130,13 @@ const handleResponse = (response) => {
 
         // let strapiError = response.data[0].messages?.[0].id || response?.data.message || response?.message
         let strapiError = null
-        if (response.message[0] && response.message[0].messages[0].id) {
+        if (response.message[0].messages[0].id) {
             strapiError = response.message[0].messages[0].id
         }
         console.log('Login page handleResponse strapiError', strapiError);
         typeof strapiError !== 'string' ? strapiError = response.error : null
 
         switch (strapiError) {
-            case ('Connect.error.accreditation'):
-                document.getElementById('noAccreditation').style.display = ''
-                break;
             case ('Auth.form.error.confirmed'):
                 document.getElementById('unConfirmed').style.display = ''
                 break;
@@ -182,8 +176,8 @@ const redirectToPreLoginUrl = (userProfile) => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
     const currentlang = getCurrentLang()
 
-    if (!industryPage && !userProfile.profileFilled) {
-        window.open(`${pageURL}/${currentlang ? currentlang : ''}userprofile`, '_self')
+    if (!userProfile.profileFilled) {
+        window.open(`${pageURL}/${currentlang}userprofile`, '_self')
         return
     }
     localStorage.removeItem('preLoginUrl')
@@ -192,7 +186,7 @@ const redirectToPreLoginUrl = (userProfile) => {
 
 // Helpers:
 const getAccessTokenWithProvider = () => {
-    let provider = window.location.hostname === 'industry.poff.ee' ? 'eventivalindustry' : localStorage.getItem('LOGIN_PROVIDER')
+    let provider = localStorage.getItem('LOGIN_PROVIDER')
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const access_token = urlParams.get('access_token')
@@ -266,7 +260,7 @@ function doSaveNewPswd() {
 function doSendResetCode() {
     document.getElementById('userName').style.display = 'none'
     document.getElementById('currentUsername').style.display = ''
-    document.getElementById('currentUsername').innerHTML = document.getElementById("loginUsername").value
+    document.getElementById('currentUsername').innerHTML = loginUsername.value
     sendPswdResetCodeBtn.style.display = 'none'
 
     sendResetCode()

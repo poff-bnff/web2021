@@ -96,21 +96,12 @@
       "via": "owner"
     },
     "transactions": {
-      "collection": "transaction",
-      "via": "transactor"
+      "via": "transactor",
+      "collection": "transaction"
     },
     "user_profile": {
-      "model": "user-profiles",
-      "via": "user"
-    },
-    "business_profiles": {
-      "collection": "business-profile",
-      "via": "user"
-    },
-    "my_events": {
-      "type": "component",
-      "repeatable": true,
-      "component": "user.my-events"
+      "via": "user",
+      "model": "user-profiles"
     }
   }
 }

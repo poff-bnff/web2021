@@ -636,15 +636,6 @@
               "user_profile": {
                 "type": "string"
               },
-              "business_profiles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "my_events": {
-                "type": "component"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -754,15 +745,6 @@
               "user_profile": {
                 "type": "string"
               },
-              "business_profiles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "my_events": {
-                "type": "component"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -844,15 +826,6 @@
               "user_profile": {
                 "type": "string"
               },
-              "business_profiles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "my_events": {
-                "type": "component"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -860,116 +833,6 @@
                 "type": "string"
               }
             }
-          },
-          "seller_business_profiles": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "business_id": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "country": {
-                  "type": "string"
-                },
-                "postal_code": {
-                  "type": "string"
-                },
-                "phone": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "street_address": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "buyer_business_profiles": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "business_id": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "country": {
-                  "type": "string"
-                },
-                "postal_code": {
-                  "type": "string"
-                },
-                "phone": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "street_address": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "status": {
-            "type": "string"
-          },
-          "currency": {
-            "type": "string"
-          },
-          "transaction": {
-            "type": "string"
-          },
-          "amount": {
-            "type": "number"
-          },
-          "method": {
-            "type": "string",
-            "enum": [
-              "Maksekeskus"
-            ]
           }
         }
       },
@@ -1030,36 +893,6 @@
           },
           "transactor": {
             "type": "string"
-          },
-          "seller_business_profiles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "buyer_business_profiles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "status": {
-            "type": "string"
-          },
-          "currency": {
-            "type": "string"
-          },
-          "transaction": {
-            "type": "string"
-          },
-          "amount": {
-            "type": "number"
-          },
-          "method": {
-            "type": "string",
-            "enum": [
-              "Maksekeskus"
-            ]
           },
           "created_by": {
             "type": "string"

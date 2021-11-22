@@ -8,7 +8,7 @@ block content
         document.addEventListener('userProfileLoaded', function (e) {
             //- console.log({userProfile})
 
-            if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
+            if (userProfile.industryAccessLevel) {
                 document.getElementById('videolevels_video').style.display = 'block'
                 var videoFrameElement = document.getElementById('videoframe')
                 videoFrameElement.src = videoFrameElement.getAttribute('target_src')
@@ -23,11 +23,11 @@ block content
     main.grid_ind_event
         if self.title && self.title.length > 1
             //- KARUSELL piltidega
-            //- section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
+            //- section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
             //-     ol.carousel-indicators
             //-         if self.images && self.images[0]
             //-             each val, index in self.images
-            //-                 li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+            //-                 li(data-target='#carouselExampleIndicators' data-slide-to = index)
             //-     .carousel-inner.container_frame_16_9
             //-         if self.images && self.images[0]
             //-             each val, index in self.images
@@ -44,12 +44,12 @@ block content
             //-             .carousel-item.active.container_contents_16_9
             //-                 img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
 
-            //-     a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+            //-     a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
             //-         // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             //-         svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
             //-             polyline(points='15 18 9 12 15 6')
             //-         span.sr-only Previous
-            //-     a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+            //-     a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
             //-         // <span class="carousel-control-next-icon" aria-hidden="true"></span>
             //-         svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
             //-             polyline(points='9 18 15 12 9 6')
@@ -90,7 +90,7 @@ block content
 
             section#trailer.f_trailer_box
                 //- .section_headline= self.label.film.trailer
-                //- .ratio.ratio-16x9.m-0.p-0
+                //- .embed-responsive.embed-responsive-16by9.m-0.p-0
                 .videolevels_embed_container
                     if self.videoUrl
                         .videolevels_embed_contents#videolevels_video(style="display:none;")
@@ -114,16 +114,16 @@ block content
                         p.dark_1
                             +format(self.description)
 
-            //- section.f_cred_box
-            //-     if self.isLiveEvent === true
-            //-         +chat(self.title, false)
-            //-         p.dark_5
-            //-             | Leave your questions and comments here
-            //- section.f_runtime_box
-            //-     if self.isLiveEvent === true
-            //-         +chat(self.title, true)
-            //-         p.dark_5
-            //-             | Moderated questions and comments
+            section.f_cred_box
+                if self.isLiveEvent === true
+                    +chat(self.title, false)
+                    p.dark_5
+                        | Leave your questions and comments here
+            section.f_runtime_box
+                if self.isLiveEvent === true
+                    +chat(self.title, true)
+                    p.dark_5
+                        | Moderated questions and comments
 
 
     section.f_interactive_box
@@ -154,7 +154,7 @@ block content
                                                 span= indPerson.industry_person_types.map(type => type.type).join(', ')
     //- section.event_card_footer
     //-     .grid_container_screening_time_2
-    //-         .text_right
+    //-         .text-right
     //-             p.screening_date.small_1.add_to_calendar_button(id = self.id + '_notInMyCalendar' onclick=`addToMyCal('${self.id}');return false` style='display: none')= 'Add to calendar'
     //-             p.screening_date.small_1.remove_from_calendar_button(id = self.id + '_inMyCalendar' onclick = `removeEvent('${self.id}');return false` onmouseover='changeToRemove(this.id);return false' onmouseout='revertRemove(this.id);return false' style='display: none')= 'In my calendar'
 

@@ -8,7 +8,6 @@ block content
     //- - const whichScreeningTypesToDisplay = ['first screening']
     //- Mitme kuvamiseks:
     - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
-    //- - const whichScreeningTypesToDisplay = ['first screening', 'online kino']
     //- - const whichScreeningTypesToDisplay = []
 
     if self.data.screenings
@@ -71,9 +70,9 @@ block content
                                     br
                                 //- Aeg
                                 span
-                                    +screeningDateEET(screening.dateTime)
+                                    +screeningDate(screening.dateTime)
                                 span
-                                    +screeningTimeEET(screening.dateTime)
+                                    +screeningTime(screening.dateTime)
                                 br
 
                                 //- Koht

@@ -1,11 +1,11 @@
-section#carouselBannerIndicators.poffi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='3000')
+section#carouselExampleIndicators.poffi_banner_box.carousel.slide(data-ride='carousel' data-interval='3000')
 
         //- KARUSELLI PILTIDE OSAD
         ol.carousel-indicators
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=0 class='active')
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=1)
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=2)
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=3)
+            li(data-target='#carouselExampleIndicators' data-slide-to = 0)
+            li(data-target='#carouselExampleIndicators' data-slide-to = 1)
+            li(data-target='#carouselExampleIndicators' data-slide-to = 2)
+            li(data-target='#carouselExampleIndicators' data-slide-to = 3)
 
         if lang_path === 'en/'
             .carousel-inner.container_frame_poffi_banner
@@ -30,14 +30,14 @@ section#carouselBannerIndicators.poffi_banner_box.carousel.slide(data-bs-ride='c
                     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-est.png`)
 
         //- NOOL VASAK
-        a.carousel-control-prev(href='#carouselBannerIndicators' role='button' data-bs-slide='prev')
+        a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
             // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='15 18 9 12 15 6')
             span.sr-only Previous
 
         //- NOOL PAREM
-        a.carousel-control-next(href='#carouselBannerIndicators' role='button' data-bs-slide='next')
+        a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
             // <span class="carousel-control-next-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='9 18 15 12 9 6')
