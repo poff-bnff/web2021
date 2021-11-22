@@ -1403,7 +1403,6 @@
                   "type": "string",
                   "enum": [
                     "Eventival",
-                    "EventivalIndustry",
                     "Facebook",
                     "Google",
                     "local"
@@ -1439,7 +1438,6 @@
                   "enum": [
                     "local",
                     "eventival",
-                    "eventivalindustry",
                     "facebook",
                     "google"
                   ]
@@ -2063,7 +2061,6 @@
                   "type": "string",
                   "enum": [
                     "Eventival",
-                    "EventivalIndustry",
                     "Facebook",
                     "Google",
                     "local"
@@ -2099,7 +2096,6 @@
                   "enum": [
                     "local",
                     "eventival",
-                    "eventivalindustry",
                     "facebook",
                     "google"
                   ]

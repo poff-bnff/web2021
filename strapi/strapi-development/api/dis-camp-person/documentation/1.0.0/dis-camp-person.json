@@ -597,6 +597,12 @@
               "pageUrl": {
                 "type": "string"
               },
+              "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -909,6 +915,21 @@
                         "multi_and_single": {
                           "type": "boolean"
                         },
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "other_festivals": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "vialog_id": {
+                          "type": "string"
+                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -1204,6 +1225,21 @@
                         },
                         "multi_and_single": {
                           "type": "boolean"
+                        },
+                        "awardings": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "other_festivals": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "vialog_id": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"

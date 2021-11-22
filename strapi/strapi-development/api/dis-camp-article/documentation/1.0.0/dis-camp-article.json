@@ -1013,9 +1013,6 @@
                 "namePrivate": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "component"
-                },
                 "description": {
                   "type": "component"
                 },
@@ -1285,6 +1282,12 @@
                 "pageUrl": {
                   "type": "string"
                 },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1328,7 +1331,8 @@
                     "Unicversity",
                     "Sponsor",
                     "Partner",
-                    "Presenter"
+                    "Presenter",
+                    "ProductionCompany"
                   ]
                 },
                 "logoWhite": {
@@ -1342,6 +1346,12 @@
                 },
                 "homepageUrl": {
                   "type": "string"
+                },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
