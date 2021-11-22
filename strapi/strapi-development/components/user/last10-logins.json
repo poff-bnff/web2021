@@ -15,6 +15,7 @@
       "enum": [
         "local",
         "eventival",
+        "eventivalindustry",
         "facebook",
         "google"
       ]

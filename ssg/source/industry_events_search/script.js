@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(queryString);
 const selectors = {
     types: document.getElementById('types_select'),
     categories: document.getElementById('categories_select'),
-    channels: document.getElementById('channels_select'),
+    // channels: document.getElementById('channels_select'),
     // projects: document.getElementById('projects_select'),
     persons: document.getElementById('persons_select'),
     starttimes: document.getElementById('starttimes_select'),
@@ -52,7 +52,7 @@ document.onreadystatechange = () => {
     const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
         urlSelect()
-        filters.style.display = "grid"
+        filters.style.display = ""
         loading.style.display = "none"
         // content.style.display = ""
 
@@ -84,14 +84,14 @@ function toggleAll(exclude_selector_name) {
     if (ids.length) {
         nonetoshow.style.display = "none"
     } else {
-        nonetoshow.style.display = "grid"
+        nonetoshow.style.display = ""
     }
 
     // kuva/peida kassette
     let cards = document.querySelectorAll('[class="card_event"]')
     cards.forEach(card => {
         if (ids.includes(card.id)) {
-            card.style.display = "grid"
+            card.style.display = ""
         } else {
             card.style.display = "none"
         }
@@ -125,10 +125,10 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'categories' ? value : selectors.categories.value;
                     return compare_with === '' ? true : screening.categories.includes(compare_with)
                 })
-                .filter(screening => {
-                    const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
-                    return compare_with === '' ? true : screening.channels.includes(compare_with)
-                })
+                // .filter(screening => {
+                //     const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
+                //     return compare_with === '' ? true : screening.channels.includes(compare_with)
+                // })
                 // .filter(screening => {
                 //     const compare_with = selector_name === 'projects' ? value : selectors.projects.value;
                 //     return compare_with === '' ? true : screening.projects.includes(compare_with)
@@ -165,9 +165,9 @@ selectors.categories.addEventListener('change', e => {
     toggleAll('categories');
 });
 
-selectors.channels.addEventListener('change', e => {
-    toggleAll('channels');
-});
+// selectors.channels.addEventListener('change', e => {
+//     toggleAll('channels');
+// });
 
 // selectors.projects.addEventListener('change', e => {
 //     toggleAll('projects');
@@ -185,7 +185,7 @@ function unselect_all() {
     search_input.value = '';
     selectors.types.selectedIndex = 0;
     selectors.categories.selectedIndex = 0;
-    selectors.channels.selectedIndex = 0;
+    // selectors.channels.selectedIndex = 0;
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
     selectors.starttimes.selectedIndex = 0;
@@ -209,13 +209,13 @@ function execute_filters() {
                 return true
             }
         })
-        .filter(screening => {
-            if (selectors.channels.value) {
-                return screening.channels.includes(selectors.channels.value)
-            } else {
-                return true
-            }
-        })
+        // .filter(screening => {
+        //     if (selectors.channels.value) {
+        //         return screening.channels.includes(selectors.channels.value)
+        //     } else {
+        //         return true
+        //     }
+        // })
         // .filter(screening => {
         //     if (selectors.projects.value) {
         //         return screening.projects.includes(selectors.projects.value)

@@ -117,6 +117,8 @@ body
     // padding-left 0
     // padding-right 0
     // padding-bottom 0
+    a
+        text-decoration none
 
 // main
 //     height 100vh
@@ -186,12 +188,14 @@ header
     list-style none
     // border dashed red
     width 100%
+    color dark_1
 
 .main_menu li
     margin-top .5rem
     margin-bottom .5rem
     // margin-left 1rem
     // border dashed blue
+    color dark_1
 
 .main_menu a
     color clr_header_text
@@ -1565,8 +1569,8 @@ header
     grid-area header
 
 .poffi_banner_box
-    margin-top 2rem
-    margin-bottom 2rem
+    margin-top 3rem
+    margin-bottom 3rem
     padding 0
 
 .f_img_slider_box
@@ -1719,7 +1723,7 @@ header
     li
         height 1px
 
-.card-deck
+.card-group
     justify-content center
 
 .container_frame_16_9
@@ -2519,21 +2523,56 @@ a.btn_popover
         // margin-left -1rem
         // margin-right -1rem
         width 100vw
-    h1
-        padding-top 1.618rem
-        font-weight 500
-    h2
-        padding-top 1.618rem
-        font-weight 500
-    h3
-        padding-top 1.618rem
-        font-weight 500
-    h4
-        padding-top 1.618rem
-        font-weight 500
-    h5
-        padding-top 1.618rem
-        font-weight 500
+    h1, h1 a
+        padding-top 2.4rem
+        padding-bottom 1rem
+        font-weight 400
+        tex-decoration none
+        color dark_1
+        a
+            text-decoration none
+            color orange_strong
+
+    h2, h2 a
+        padding-top 2.4rem
+        padding-bottom 1rem
+        font-weight 400
+        tex-decoration none
+        color dark_1
+        a
+            text-decoration none
+            color orange_strong
+
+    h3, h3 a
+        padding-top 2.4rem
+        padding-bottom 1rem
+        font-weight 400
+        tex-decoration none
+        color dark_1
+        a
+            text-decoration none
+            color orange_strong
+
+    h4, h4 a
+        padding-top 2.4rem
+        padding-bottom 1rem
+        font-weight 400
+        tex-decoration none
+        color dark_1
+        a
+            text-decoration none
+            color orange_strong
+
+    h5, h5 a
+        padding-top 2rem
+        padding-bottom .7rem
+        font-weight 400
+        tex-decoration none
+        color dark_1
+        a
+            text-decoration none
+            color orange_strong
+
     h6
         font-family font_p
         font-size 1rem
@@ -2543,6 +2582,7 @@ a.btn_popover
         text-align left
         aligh left
         margin-top -1.618rem
+        margin-bottom 2rem
     ul
         padding 0
         margin 0
@@ -2901,7 +2941,7 @@ a.btn_popover
         height 100px
 
     .main_menu_toggle_label
-            display none
+        display none
 
     .main_menu
         grid-column 2 / 3
@@ -2914,6 +2954,7 @@ a.btn_popover
         margin 0
         padding 0
         padding-right 1.2rem
+        color dark_1
         // border dashed red
 
     .main_menu ul

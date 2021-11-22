@@ -82,12 +82,16 @@ block content
                     .button.login_btn_social
                         | Google
 
-                //- a#loginE(onclick='loginViaProvider(this.textContent)')
-                //-     .button.login_btn_social
-                //-         | Eventival
+                a#loginE(onclick='loginViaProvider(this.textContent)')
+                    .button.login_btn_social
+                        | Eventival
 
-            a#loginE(href=`https://api.poff.ee/auth/eventival`)
-                img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+            //- a#loginE(href=`https://api.poff.ee/auth/eventival`)
+            p#noAccreditation(style='display: none; color: #990000; text-align:center;')= 'Missing valid accreditation for access'
+            if process.env['DOMAIN'] === 'industry.poff.ee'
+                input.login_input#loginUsername(type='text' style='display: none;')
+            a#loginE(href=`${process.env['StrapiProtocol']}://${process.env['StrapiHost']}:${strapiServerPort}/connect/eventivalindustry/`)
+                img.eventival_logo_img(onclick=`localStorage.setItem('LOGIN_PROVIDER', 'eventivalindustry');` alt='Industry' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
             p#mergeProvidersFailed(style={display:'none'})= self.label.userprofile.mergeProvidersFailed
 
 

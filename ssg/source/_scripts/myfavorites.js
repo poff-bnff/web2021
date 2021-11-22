@@ -1,7 +1,18 @@
 function loadMyFavFilms() {
     // console.log("FAVO: oled sisse loginud")
     try {
-        document.getElementById('loggedOutFavouriteStatus').style.display = 'none'
+        var allLoggedOutStatusMessages = document.querySelectorAll('[id=loggedOutFavouriteStatus]')
+        for (let index = 0; index < allLoggedOutStatusMessages.length; index++) {
+            const element = allLoggedOutStatusMessages[index];
+            element.style.display = 'none'
+        }
+    } catch (error) {
+        null
+    }
+    try {
+        toggleFavButtons(userProfile.my_events, 'myEvents')
+        toggleAll()
+
     } catch (error) {
         null
     }
@@ -25,7 +36,6 @@ function loadMyFavFilms() {
     } catch (error) {
         null
     }
-
 }
 
 function modifyFavourites(type, favId) {
@@ -49,6 +59,14 @@ function modifyFavourites(type, favId) {
         dataArrayName = 'my_films'
         pushedButton = document.getElementById(`${favId}_is_shortlisted`)
         oppositeButton = document.getElementById(`${favId}_not_shortlisted`)
+    }else if (type === 'addMyEvent') {
+        dataArrayName = 'my_events'
+        pushedButton = document.getElementById(`${favId}_not_savedevent`)
+        oppositeButton = document.getElementById(`${favId}_is_savedevent`)
+    } else if (type === 'rmMyEvent') {
+        dataArrayName = 'my_events'
+        pushedButton = document.getElementById(`${favId}_is_savedevent`)
+        oppositeButton = document.getElementById(`${favId}_not_savedevent`)
     }
     let pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
@@ -85,7 +103,7 @@ function modifyFavourites(type, favId) {
                 pushedButton.style.display = 'none'
                 pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
                 if (oppositeButton) {
-                    oppositeButton.style.display = 'grid'
+                    oppositeButton.style.display = ''
                 }
                 try {
                     toggleAll()
@@ -120,12 +138,16 @@ function toggleFavButtons(favoriteCollection, type) {
         var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'screenings')
         var isSavedButtons = document.getElementsByClassName('issavedscreening')
         var notSavedButtons = document.getElementsByClassName('notsavedscreening')
+    } else if (type === 'myEvents') {
+        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'industry_events')
+        var isSavedButtons = document.getElementsByClassName('issavedevent')
+        var notSavedButtons = document.getElementsByClassName('notsavedevent')
     }
 
     for (i = 0; i < isSavedButtons.length; i++) {
         var film_id = isSavedButtons[i].id.split('_')[0]
         if (savedIds.includes(film_id)) {
-            isSavedButtons[i].style.display = 'block'
+            isSavedButtons[i].style.display = ''
         }
         else {
             isSavedButtons[i].style.display = 'none'
@@ -139,7 +161,7 @@ function toggleFavButtons(favoriteCollection, type) {
             notSavedButtons[i].style.display = 'none'
         }
         else {
-            notSavedButtons[i].style.display = 'block'
+            notSavedButtons[i].style.display = ''
         }
     }
 

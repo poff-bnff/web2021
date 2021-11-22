@@ -1010,9 +1010,6 @@
                 "namePrivate": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "component"
-                },
                 "description": {
                   "type": "component"
                 },
@@ -1280,6 +1277,18 @@
                 },
                 "slug": {
                   "type": "uid"
+                },
+                "festival_editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"

@@ -353,6 +353,10 @@ module.exports = {
       return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
     } else if (rawData.type === "addMyFilm") {
       return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
+    } else if (rawData.type === "rmMyEvent") {
+      return await manipulateFavorites(user, "rm", rawData.id, "my_events", "schedule", "industry_events")
+    } else if (rawData.type === "addMyEvent") {
+      return await manipulateFavorites(user, "add", rawData.id, "my_events", "schedule", "industry_events")
     }
 
   },
@@ -484,8 +488,7 @@ module.exports = {
     // console.log('event ', event)
     // const saleActiveCategories = ['tp1']
     const userId = id
-    const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for']
-
+    const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for'] || ctx.request.ip
     const { categoryId, return_url, cancel_url, paymentMethodId } = requestBody;
     console.log(categoryId)
     const body = requestBody
@@ -529,13 +532,23 @@ module.exports = {
     }
 
     let thisProductId = getOneProduct.id
-    let thisProductPrice = getOneProduct?.product_category?.priceAtPeriod[0]?.price
+    let dateTimeNow = new Date()
+    let productPrices = getOneProduct.product_category.priceAtPeriod.filter(p => {
+      if (p.startDateTime && p.endDateTime && new Date(p.startDateTime) < dateTimeNow && new Date(p.endDateTime) > dateTimeNow) {
+        return true
+      } else {
+        return false
+      }
+    })
+    let thisProductCurrentPrice = productPrices[0].price
+
     console.log('id', thisProductId, typeof thisProductId)
-    console.log('price', thisProductPrice)
+    console.log('price', thisProductCurrentPrice, 'valid: ', productPrices[0].startDateTime, ' - ', productPrices[0].endDateTime)
 
 
     const reserveParams = {
       reserved_to: userId,
+      reservation_price: thisProductCurrentPrice,
       reservation_time: (new Date()).toISOString()
     }
 
@@ -554,7 +567,7 @@ module.exports = {
         locale: body.locale || 'et'
       },
       transaction: {
-        amount: thisProductPrice,
+        amount: thisProductCurrentPrice,
         currency: 'EUR',
         merchant_data: JSON.stringify({
           userId: userId,
@@ -565,9 +578,9 @@ module.exports = {
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/cancel` },
-          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/notification` },
-          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/return` }
+          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/return` }
         }
       }
     })
@@ -631,6 +644,7 @@ module.exports = {
 
       const updateProductOptions = {
         reservation_time: null,
+        reservation_price: null,
         reserved_to: null
       }
 
@@ -642,7 +656,7 @@ module.exports = {
       }
 
       if (updateProduct) {
-        console.log('Updated product to set reservation and reservation time info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
+        console.log('Updated product to set reservation and reservation time/price info to null: ', updateProduct.reservation_time, updateProduct.reserved_to);
       } else {
         console.log('Product already no allocated to this user, did not set reservation and reservation time info to null.');
       }
@@ -698,13 +712,11 @@ module.exports = {
           type: 'Purchase',
           transactor: product.userId,
           beneficiary: product.userId,
-          payment: {
-            currency: mkResponse.currency,
-            amount: mkResponse.amount,
-            transaction: mkResponse.transaction,
-            method: 'Maksekeskus',
-            status: mkResponse.status,
-          },
+          currency: mkResponse.currency,
+          amount: mkResponse.amount,
+          transaction: mkResponse.transaction,
+          method: 'Maksekeskus',
+          status: mkResponse.status,
           products: [addTransactionProduct],
         }
         console.log(addTransactionOptions);
@@ -742,7 +754,7 @@ module.exports = {
         }
 
         if (updateProductSuccess) {
-          console.log('Success updated product ID ', updateProductSuccess);
+          console.log(`Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
 
           // Email
           try {

@@ -14,7 +14,7 @@ const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 
 const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
@@ -103,7 +103,6 @@ for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} articles ${lang} data`)
 
     const dataFrom = {
-        screenings: `/film/screenings.${lang}.yaml`,
         articles: `/_fetchdir/articles.${lang}.yaml`,
     }
 
@@ -184,6 +183,14 @@ for (const lang of languages) {
                         // see patch siin on tehtud, kuna reklaamis kasutati poff.ee/lemmikfilm, aga meil on artiklid ju poff.ee/artikkel/lemmikfilm
                         if (element[key] === 'lemmikfilm') {
                             element.aliases = ['lemmikfilm', 'publikulemmik']
+                        }
+                        // 2021 adding covid article aliases
+                        if (element[key] === 'koroonareeglid') {
+                            element.aliases = ['covid', 'koroonareeglid']
+                        }
+                        // 2021 adding Industry article aliases
+                        if (element[key] === 'music-meets-film-1') {
+                            element.aliases = ['about/music-meets-film']
                         }
                     }
                 }

@@ -5,7 +5,11 @@ const rueten = require('./rueten.js');
 const {fetchModel} = require('./b_fetch.js')
 const replaceLinks = require('./replace_links.js')
 
-const sourceDir =  path.join(__dirname, '..', 'source');
+const rootDir =  path.join(__dirname, '..')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
 const fetchDataDir =  path.join(fetchDir, 'industrypersons');
 const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
@@ -43,7 +47,8 @@ if (DOMAIN !== 'industry.poff.ee') {
         }
     }
 
-    const STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
+    const STRAPIDATA_ALL_FE_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
+    const STRAPIDATA_INDUSTRY_PERSONS = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
 
     const rootDir =  path.join(__dirname, '..')
     const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -120,8 +125,10 @@ if (DOMAIN !== 'industry.poff.ee') {
         const yamlPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
 
         if (!allData.length) {
-            console.log('No data for industry persons, creating empty YAML')
+            console.log('No data for industry persons, creating empty YAMLs')
             fs.writeFileSync(yamlPath, '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `search_industry_persons.${lang}.yaml`), '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), '[]', 'utf8')
             continue
         }
 

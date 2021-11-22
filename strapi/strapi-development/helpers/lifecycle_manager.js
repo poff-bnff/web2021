@@ -12,6 +12,7 @@ const {
 
 const fs = require('fs')
 const yaml = require('yaml')
+const jsyaml = require('js-yaml');
 const path = require('path')
 const moment = require("moment-timezone")
 
@@ -45,26 +46,24 @@ async function call_update(result, model) {
 }
 
 async function build_start_to_strapi_logs(result, domain, err = null, b_err = null, model_and_target = null, del) {
-  let editor = result.updated_by?.id
+  let editor = result.updated_by?.id || 48
   let plugin_log
-  if (result.updated_by) {
 
-    let loggerData = {
-      queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
-      admin_user: {
-        id: editor
-      },
-      type: 'build',
-      site: domain,
-      error_code: err,
-      build_errors: b_err,
-      build_args: model_and_target,
-      action: del ? 'delete' : 'new or edit'
-    }
-
-    plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
-    // console.log('Sinu palutud v4ljaprint', plugin_log)
+  let loggerData = {
+    queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
+    admin_user: {
+      id: editor
+    },
+    type: 'build',
+    site: domain,
+    error_code: err,
+    build_errors: b_err,
+    build_args: model_and_target,
+    action: del ? 'delete' : 'new or edit'
   }
+
+  plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
+  // console.log('Sinu palutud v4ljaprint', plugin_log)
   return plugin_log
 }
 
@@ -276,6 +275,14 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
+  const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+  const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
+  // here to skip specific model builds
+  if (MODELS_SKIP_BUILD.includes(model_name)) {
+    console.log(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
+    return
+  }
   let build_error
   if (domains[0] === 'FULL_BUILD') {
     let error = 'FULL BUILD'

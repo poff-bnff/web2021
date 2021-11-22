@@ -36,7 +36,7 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films', '/search'])
+    addConfigPathAliases(['/films', '/search', '/my_films'])
 }
 
 
@@ -144,6 +144,12 @@ const minimodel_cassette = {
                     'languages': {
                         model_name: 'Language'
                     },
+                    'subtitles': {
+                        model_name: 'Language'
+                    },
+                    'other_festivals': {
+                        model_name: 'Festival'
+                    },
                     'tags': {
                         model_name: 'Tags',
                         expand: {
@@ -209,7 +215,14 @@ const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, mi
 const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
 const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
     if (c.orderedFilms && c.orderedFilms.length > 1) {
-        c.orderedFilms.map(f => {
+        c.orderedFilms.filter(f => {
+            if (f.film) {
+                return true
+            } else {
+                console.log(`ERROR! Cassette ${c.id} has empty orderedFilms record!!!`);
+                return false
+            }
+        }).map(f => {
             if (!f.film.multi_and_single) {
                 FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.film.id)
             }
@@ -260,7 +273,7 @@ const minimodel_screenings = {
         model_name: 'ScreeningType'
     },
     'screening_mode': {
-        model_name: 'ScreeningMode'
+        model_name: 'EventMode'
     },
     'subtitles': {
         model_name: 'Language'
@@ -352,9 +365,7 @@ for (const lang of allLanguages) {
         }
 
 
-
         if (typeof slugEn !== 'undefined') {
-
             if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
@@ -368,35 +379,12 @@ for (const lang of allLanguages) {
             let cassettePostersCassette = []
             let cassettePostersFilms = []
 
-            // Kasseti treiler
-            if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
-                for (trailer of s_cassette_copy.media.trailer) {
-                    if (trailer.url && trailer.url.length > 10) {
-                        if (trailer.url.includes('vimeo')) {
-                            let splitVimeoLink = trailer.url.split('/')
-                            let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                            if (videoCode.length === 9) {
-                                trailer.videoCode = videoCode
-                            }
-                        } else {
-                            let splitYouTubeLink = trailer.url.split('=')[1]
-                            let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                            if (splitForVideoCode.length === 11) {
-                                trailer.videoCode = splitForVideoCode
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
             // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
             rueten(s_cassette_copy, lang)
 
             // #379 put ordered films to cassette.film
-            let ordered_films = s_cassette_copy.orderedFilms
+            let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
 
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
@@ -407,10 +395,20 @@ for (const lang of allLanguages) {
                 })
             }
 
+            // Kasseti treiler
+            trailerProcessing(s_cassette_copy)
+
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
                     if (onefilm.orderedCountries) {
-                        let orderedCountries = onefilm.orderedCountries
+                        let orderedCountries = onefilm.orderedCountries.filter(c => {
+                            if (c && c.country) {
+                                return true
+                            } else {
+                                console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
+                                return false
+                            }
+                        })
                             .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                         onefilm.orderedCountries = orderedCountries
                         if (orderedCountries.length) {
@@ -427,6 +425,7 @@ for (const lang of allLanguages) {
             let screenings = []
             for (screeningIx in STRAPIDATA_SCREENINGS) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
+
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
                     let screeningNames = function (item) {
@@ -440,6 +439,7 @@ for (const lang of allLanguages) {
 
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
+
                     hasOneCorrectScreening = true
 
                     delete screening.cassette
@@ -543,25 +543,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Filmi treiler
-                    if (scc_film.media && scc_film.media.trailer && scc_film.media.trailer[0]) {
-                        for (trailer of scc_film.media.trailer) {
-                            if (trailer.url && trailer.url.length > 10) {
-                                if (trailer.url.includes('vimeo')) {
-                                    let splitVimeoLink = trailer.url.split('/')
-                                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                                    if (videoCode.length === 9) {
-                                        trailer.videoCode = videoCode
-                                    }
-                                } else {
-                                    let splitYouTubeLink = trailer.url.split('=')[1]
-                                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                                    if (splitForVideoCode.length === 11) {
-                                        trailer.videoCode = splitForVideoCode
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    trailerProcessing(scc_film)
 
                     // Rolepersons by role
                     if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
@@ -658,6 +640,29 @@ for (const lang of allLanguages) {
     generateAllDataYAML(allData, lang)
 }
 
+function trailerProcessing(cassetteOrFilm) {
+    if (cassetteOrFilm.media && cassetteOrFilm.media.trailer && cassetteOrFilm.media.trailer[0]) {
+        for (trailer of cassetteOrFilm.media.trailer) {
+            if (trailer.url && trailer.url.length > 10) {
+                if (trailer.url.includes('vimeo')) {
+                    let splitVimeoLink = trailer.url.split('/')
+                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
+                    if (videoCode.length === 9) {
+                        trailer.videoCode = videoCode
+                    }
+                } else {
+                    let splitYouTubeLink = trailer.url.split('=')[1]
+                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                    if (splitForVideoCode.length === 11) {
+                        trailer.videoCode = splitForVideoCode
+                    }
+                }
+            }
+        }
+    }
+    return cassetteOrFilm
+}
+
 function generateYaml(element, lang) {
     let yamlStr = yaml.dump(element, { 'noRefs': true, 'indent': '4' })
 
@@ -710,6 +715,9 @@ function generateAllDataYAML(allData, lang) {
         countries: {},
         subtitles: {},
         premieretypes: {},
+        filmtypes: {},
+        genres: {},
+        keywords: {},
         towns: {},
         cinemas: {}
     }
@@ -782,11 +790,29 @@ function generateAllDataYAML(allData, lang) {
             }
         }
         let premieretypes = []
+        let filmtypes = []
+        let genres = []
+        let keywords = []
         if (cassette.tags) {
-            for (const types of cassette.tags.premiere_types || []) {
-                const type_name = types
+            for (const filmpremieretype of cassette.tags.premiere_types || []) {
+                const type_name = filmpremieretype
                 premieretypes.push(type_name)
                 filters.premieretypes[type_name] = type_name
+            }
+            for (const filmtype of cassette.tags.film_types || []) {
+                const type_name = filmtype
+                filmtypes.push(type_name)
+                filters.filmtypes[type_name] = type_name
+            }
+            for (const genre of cassette.tags.genres || []) {
+                const type_name = genre
+                genres.push(type_name)
+                filters.genres[type_name] = type_name
+            }
+            for (const keyword of cassette.tags.keywords || []) {
+                const type_name = keyword
+                keywords.push(type_name)
+                filters.keywords[type_name] = type_name
             }
         }
         return {
@@ -801,6 +827,9 @@ function generateAllDataYAML(allData, lang) {
             countries: countries,
             subtitles: subtitles,
             premieretypes: premieretypes,
+            filmtypes: filmtypes,
+            genres: genres,
+            keywords: keywords,
             towns: towns,
             cinemas: cinemas
         }
@@ -818,6 +847,7 @@ function generateAllDataYAML(allData, lang) {
                 return locale_sort
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });
@@ -836,6 +866,9 @@ function generateAllDataYAML(allData, lang) {
         countries: mSort(filters.countries),
         subtitles: mSort(filters.subtitles),
         premieretypes: mSort(filters.premieretypes),
+        filmtypes: mSort(filters.filmtypes),
+        genres: mSort(filters.genres),
+        keywords: mSort(filters.keywords),
         towns: mSort(filters.towns),
         cinemas: mSort(filters.cinemas),
     }
