@@ -1,3 +1,4 @@
+console.log('StrapiProtocol:', process.env['StrapiProtocol'], typeof process.env['StrapiProtocol']);
 let https = require(process.env['StrapiProtocol'])
 let strapiAddress = process.env['StrapiHost']
 let strapiPort = process.env['StrapiPort']

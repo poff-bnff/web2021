@@ -6,11 +6,11 @@ block content
             if self.label.userprofile
 
                 div.form
-                    .sub_section_headline.text_left.p_l_0#registerTitle= self.label.userprofile.registerTitle
+                    .sub_section_headline.text_left.p_l_0#registerTitle(style={display: 'none'})= self.label.userprofile.registerTitle
                     .sub_section_headline.text_left.p_l_0#profileSent(style= {display: 'none'})= self.label.userprofile.confirmMessage
                         p.dark_1#profileDetails
                     .sub_section_headline.text_left.p_l_0#profileInSystem(style= {display: 'none'})= self.label.userprofile.accountAlreadyCreatedHelp
-                    div#authButtons
+                    div#authButtons(style={display: 'none'})
                         a#fb(href=`https://api.poff.ee/auth/facebook`)
                             button.btn.btn_primary.p_1(onclick='https://api.poff.ee/auth/facebook') Facebook
                         a#go(href=`https://api.poff.ee/auth/google`)
@@ -20,7 +20,7 @@ block content
                     a#loginButton(style={display: 'none'} href=`/${lang_path}login`)
                         button.btn.btn_primary.p_1= self.label.userprofile.signinBtn
 
-                div.form#signupForm
+                div.form#signupForm(style={display: 'none'})
                     //- img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
                     //- div.form-group
                     //-     label.login_label(for='profileImg')= self.label.userprofile.pictureTitle

@@ -12,6 +12,7 @@ block content
         //- - const whichScreeningTypesToDisplay = ['first screening']
         //- Mitme kuvamiseks:
         - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
+        //- - const whichScreeningTypesToDisplay = ['first screening', 'online kino']
         //- - const whichScreeningTypesToDisplay = []
 
         input#search(type='text', placeholder= self.label.filters.search)
@@ -39,6 +40,21 @@ block content
         select#premieretypes_select(name='Premieretypes')
             option(value='')= self.label.filters.premieres
             each index, key in self.data.filters.premieretypes
+                option(value=key)= index
+
+        select#filmtypes_select(name='Filmtypes')
+            option(value='')= self.label.filters.filmtypes
+            each index, key in self.data.filters.filmtypes
+                option(value=key)= index
+
+        select#genres_select(name='Genres')
+            option(value='')= self.label.filters.genres
+            each index, key in self.data.filters.genres
+                option(value=key)= index
+
+        select#keywords_select(name='Keywords')
+            option(value='')= self.label.filters.keywords
+            each index, key in self.data.filters.keywords
                 option(value=key)= index
 
         select#towns_select(name='Towns')
@@ -110,7 +126,7 @@ block content
                         if cassette.festival_editions
                             each edition in cassette.festival_editions
                                 - allFestivalEditions.push(edition.name)
-                        a.card_film(id= screening.id href= `/${lang_path}film/${cassette.slug}`)
+                        a.card_film(id= screening.id href= `/${lang_path}film/${cassette.slug}` ts=`${new Date(screening.dateTime).getTime()}` style='padding-bottom: 20px; position: relative;')
                             .container_frame_16_9
 
                                 //- PILDID
@@ -136,14 +152,14 @@ block content
                                             line(x1='3' y1='10' x2='21' y2='10')
                                         span.screening_date.small_1
                                             if screening.dateTime
-                                                +screeningDate(screening.dateTime)
+                                                +screeningDateEET(screening.dateTime)
 
-                                    .text-right
+                                    .text_right
                                         svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                             circle(cx='12' cy='12' r='10')
                                             polyline(points='12 6 12 12 16 14')
                                         span.screening_time.small_1
-                                            +screeningTime(screening.dateTime)
+                                            +screeningTimeEET(screening.dateTime)
 
                                 .container_screening_location
                                     svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
@@ -159,7 +175,7 @@ block content
                                                     span.city.small_1= ` ${screening.location.hall.cinema.town.name}`
 
 
-                            .card_film_title(style='padding-bottom: 1.2rem;')
+                            .card_film_title
 
                                     //- Eeldame, et screeningul on datetime
                                     //- if screening.dateTime
@@ -168,9 +184,6 @@ block content
 
                                     //- Kuvame kassetipealkirja
                                     h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
-                                    button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.removeSavedScreening
-                                    button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%;')= self.label.film.addSavedScreening
-
                                         //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
 
                                     //- Kuvame screeningtypes
@@ -179,9 +192,9 @@ block content
                                     //-     br
                                     //- Aeg
                                     //- span
-                                    //-     +screeningDate(screening.dateTime)
+                                    //-     +screeningDateEET(screening.dateTime)
                                     //- span
-                                    //-     +screeningTime(screening.dateTime)
+                                    //-     +screeningTimeEET(screening.dateTime)
                                     //- br
 
                                     //- Koht
@@ -228,19 +241,46 @@ block content
                                     //-                 .str_info_value.dark_1.thin_300= film.credentials.rolePersonsByRole.director.join(', ')
 
                             //- Programmid
-                            //- .card_film_info
-                            //-     .str_info_grid_3
-                            //-         if cassette.films && cassette.films.length
-                            //-             - var filmsProgrammes = []
-                            //-             each film in cassette.films
-                            //-                 if film.tags && film.tags.programmes && film.tags.programmes.length
-                            //-                     each programme in film.tags.programmes
-                            //-                         if programme.name
-                            //-                             - filmsProgrammes.push(programme.name)
-                            //-             if filmsProgrammes.length
-                            //-                 - var uniqueProgrammes = [...new Set(filmsProgrammes)];
-                            //-                 .str_info_label.dark_semi= self.label.film.programme
-                            //-                 .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                            .card_film_info
+
+                                if cassette.films && cassette.films.length
+                                    - var filmsProgrammes = []
+                                    each film in cassette.films
+                                        if film.tags && film.tags.programmes && film.tags.programmes.length
+                                            each programme in film.tags.programmes
+                                                if programme.name
+                                                    - filmsProgrammes.push(programme.name)
+                                    if filmsProgrammes.length
+                                        - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.programme
+                                            .str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+
+                                    - var filmsDirectors = []
+                                    each film in cassette.films
+                                        if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                            each director in film.credentials.rolePersonsByRole.director
+                                                - filmsDirectors.push(director)
+                                    if filmsDirectors.length
+                                        - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.director
+                                            .str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                                    - var filmsCountries = []
+                                    each film in cassette.films
+                                        if film.orderedCountries && film.orderedCountries.length
+                                            each country in film.orderedCountries
+                                                if country.country && country.country.name
+                                                    - filmsCountries.push(country.country.name)
+                                    if filmsCountries.length
+                                        - var uniqueCountries = [...new Set(filmsCountries)];
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.film.countries
+                                            .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+
+                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeSavedScreening
+                            button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.addSavedScreening
 
 
                 script.

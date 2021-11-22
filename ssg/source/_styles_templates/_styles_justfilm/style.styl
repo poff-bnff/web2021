@@ -116,7 +116,8 @@ body
     // padding-left 0
     // padding-right 0
     // padding-bottom 0
-
+    a
+        text-decoration none
 // main
 //     height 100vh
 
@@ -200,12 +201,14 @@ header
     list-style none
     // border dashed red
     width 100%
+    color dark_1
 
 .main_menu li
     margin-top .5rem
     margin-bottom .5rem
     // margin-left 1rem
     // border dashed blue
+    color dark_1
 
 .main_menu a
     color clr_header_text
@@ -948,8 +951,8 @@ row:first-child > .supporter_logos
 
 row:nth-child(2) > .supporter_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(10rem, 10rem))
-    grid-template-rows repeat(auto-fit, minmax(3rem, 4rem))
+    grid-template-columns repeat(auto-fit, minmax(12rem, 15rem))
+    grid-template-rows repeat(auto-fit, minmax(5rem, 5rem))
     justify-content center
     justify-items center
     align-items center
@@ -957,8 +960,8 @@ row:nth-child(2) > .supporter_logos
 
 row:nth-child(3) > .supporter_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(10rem, 10rem))
-    grid-template-rows repeat(auto-fit, minmax(3rem, 4rem))
+    grid-template-columns repeat(auto-fit, minmax(12rem, 15rem))
+    grid-template-rows repeat(auto-fit, minmax(5rem, 5rem))
     justify-content center
     justify-items center
     align-items center
@@ -966,8 +969,8 @@ row:nth-child(3) > .supporter_logos
 
 row:nth-child(4) > .supporter_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(7rem, 7rem))
-    grid-template-rows repeat(auto-fit, minmax(3rem, 4rem))
+    grid-template-columns repeat(auto-fit, minmax(12rem, 15rem))
+    grid-template-rows repeat(auto-fit, minmax(5rem, 5rem))
     justify-content center
     justify-items center
     align-items center
@@ -975,8 +978,8 @@ row:nth-child(4) > .supporter_logos
 
 row:nth-child(5) > .supporter_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(7rem, 7rem))
-    grid-template-rows repeat(auto-fit, minmax(3rem, 4rem))
+    grid-template-columns repeat(auto-fit, minmax(12rem, 15rem))
+    grid-template-rows repeat(auto-fit, minmax(6rem, 6rem))
     justify-content center
     justify-items center
     align-items center
@@ -984,8 +987,8 @@ row:nth-child(5) > .supporter_logos
 
 row:nth-child(6) > .supporter_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(7rem, 7rem))
-    grid-template-rows repeat(auto-fit, minmax(3rem, 4rem))
+    grid-template-columns repeat(auto-fit, minmax(10rem, 10rem))
+    grid-template-rows repeat(auto-fit, minmax(4rem, 4rem))
     justify-content center
     justify-items center
     align-items center
@@ -1411,9 +1414,10 @@ option
 
 .f_dir_box
     grid-area f_dir_box
-    display grid
-    grid-template-columns 1
-    grid-template-rows auto
+    display flex
+    flex-direction column
+    // grid-template-columns 1
+    // grid-template-rows auto
 
 .f_vialog_box
     grid-area f_vialog_box
@@ -1471,7 +1475,7 @@ option
     li
         height 1px
 
-.card-deck
+.card-group
     justify-content center
 
 .container_frame_16_9
@@ -2529,6 +2533,7 @@ a.btn_popover
         margin 0
         padding 0
         padding-right 1.2rem
+        color dark_1
         // border dashed red
 
     .main_menu ul
@@ -2991,3 +2996,13 @@ strong
     color clr_primary
 .p_1
     margin 1rem
+
+.sr-only
+    position absolute
+    width 1px
+    height 1px
+    padding 0
+    margin -1px
+    overflow hidden
+    clip rect(0, 0, 0, 0)
+    border 0

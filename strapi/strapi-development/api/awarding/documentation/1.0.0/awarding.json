@@ -528,7 +528,8 @@
           },
           "project": {
             "required": [
-              "id"
+              "id",
+              "slug"
             ],
             "properties": {
               "id": {
@@ -651,7 +652,7 @@
               "completionYear": {
                 "type": "integer"
               },
-              "imbdLink": {
+              "imdbLink": {
                 "type": "string"
               },
               "editions": {
@@ -661,6 +662,12 @@
                 }
               },
               "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tag_looking_fors": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -774,6 +781,15 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "other_festivals": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "vialog_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

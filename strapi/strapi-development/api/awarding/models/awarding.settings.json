@@ -15,12 +15,12 @@
       "type": "date"
     },
     "project": {
-      "model": "industry-project",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "industry-project"
     },
     "film": {
-      "model": "film",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "film"
     },
     "person": {
       "model": "person",

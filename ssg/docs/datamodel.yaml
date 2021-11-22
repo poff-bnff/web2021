@@ -133,6 +133,12 @@ TagFilmType: &TagFilmType
     en: (text)
     ru: (text)
 
+TagLookingFor: &TagLookingFor
+    _path: /tag-looking-fors
+    et: (text)
+    en: (text)
+    ru: (text)
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -190,7 +196,10 @@ Programme: &Programme
     _path: /programmes
     remoteId: (UID)
     namePrivate: (text)
-    name: *Translated #(Component)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    # name: *Translated #(Component)
     description: *Translated # (Component, rich)
     festival_editions: #(Component (repeatable))
         - *FestivalEdition
@@ -948,9 +957,13 @@ Team: &Team
     slug_ru: (UID)
 
 # Screening & Film
-ScreeningMode: &ScreeningMode
-    _path: /screening-modes
-    name: (text)
+
+EventMode: &EventMode
+    _path: /event-modes
+    name_private: (text)
+    name_et: text
+    name_en: text
+    name_ru: text
 
 ScreeningType: &ScreeningType
     _path: /screening-types
@@ -1021,12 +1034,13 @@ Film: &Film
     slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
     slug_ru: departament-zdorovya (UID, No spaces)
     festival_editions:
-        - *FestivalEdition
+        -   *FestivalEdition
     languages: #(Component (repeatable))
-        - *Language
+        -   *Language
     subtitles: #(Component (repeatable))
-        - *Language
-    otherFestivals: (text)
+        -   *Language
+    other_festivals:
+        -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
     world_sales: #(Component (repeatable))
@@ -1036,6 +1050,7 @@ Film: &Film
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
     multi_and_single: (boolean)
+    vialog_id: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1085,7 +1100,7 @@ Screening: &Screening
     extraInfo: *Translated
     screening_types: #(Component (repeatable))
       - *ScreeningType
-    screening_mode: *ScreeningMode #(Component)
+    screening_mode: *EventMode #(Component)
     subtitles: #(Component (repeatable))
       - *Language
     cassette: *Cassette
@@ -1226,6 +1241,10 @@ IndustryPerson: &IndustryPerson
         - *IndustryPersonType
     lookingFor: (text)
     contactAtEvent: (text)
+    festival_editions:
+        -   *FestivalEdition
+    tag_looking_fors:
+        -   *TagLookingFor
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
@@ -1336,6 +1355,10 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    editions: #(Component (repeatable))
+        - *FestivalEdition
+    tag_looking_fors:
+        - *TagLookingFor
 
 Channel: &Channel
     _path: /channels
@@ -1368,8 +1391,11 @@ IndustryEvent: &IndustryEvent
         - *IndustryPerson
     industry_projects:
         - *IndustryProject
-    isLiveEvent: (Boolean)
+    isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
     isPublicEvent: (Boolean)
+    festival_editions:
+        - *FestivalEdition
+    event_mode: *EventMode
 
 IndustrySubMenuItem: &IndustrySubMenuItem
     name: *Translated #(Component)
@@ -1377,6 +1403,7 @@ IndustrySubMenuItem: &IndustrySubMenuItem
     order: (Number)
     customUrl: *Translated #(Component)
     namePrivate: (text)
+    publish: (boolean)
 
 IndustryMenu: &IndustryMenu
     _path: /industry-menus
@@ -1387,6 +1414,7 @@ IndustryMenu: &IndustryMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
+    publish: (boolean)
 
 
 #DiscoveryCampus

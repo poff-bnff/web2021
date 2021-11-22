@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/products-availability/",
+      "handler": "product.availability",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/products",
       "handler": "product.create",

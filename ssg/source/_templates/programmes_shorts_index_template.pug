@@ -13,11 +13,11 @@ block content
                 if image.hash && image.ext
                     - images.push(`${image.hash}${image.ext}`)
 
-        section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-ride='carousel' data-interval='6000')
+        section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
             ol.carousel-indicators
                 if images.length
                     each val, index in images
-                        li(data-target='#carouselExampleIndicators' data-slide-to = index)
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
             .carousel-inner.container_frame_16_9
                 if images
                     if images.length
@@ -35,12 +35,12 @@ block content
                     .carousel-item.active.container_contents_16_9
                         img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.filmTitle)
 
-            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
                 // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                     polyline(points='15 18 9 12 15 6')
                 span.sr-only Previous
-            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
                 // <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                     polyline(points='9 18 15 12 9 6')
@@ -187,3 +187,26 @@ block content
                                             .str_info_grid_3
                                                 .str_info_label.dark_semi= self.label.film[`title_${locale}`]
                                                 .str_info_value.dark_1.thin_300= cassette.films[0][`title_${locale}`]
+
+                                - var filmsDirectors = []
+                                each film in cassette.films
+                                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                        each director in film.credentials.rolePersonsByRole.director
+                                            - filmsDirectors.push(director)
+                                if filmsDirectors.length
+                                    - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.director
+                                        .str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                                - var filmsCountries = []
+                                each film in cassette.films
+                                    if film.orderedCountries && film.orderedCountries.length
+                                        each country in film.orderedCountries
+                                            if country.country && country.country.name
+                                                - filmsCountries.push(country.country.name)
+                                if filmsCountries.length
+                                    - var uniqueCountries = [...new Set(filmsCountries)];
+                                    .str_info_grid_3
+                                        .str_info_label.dark_semi= self.label.film.countries
+                                        .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')

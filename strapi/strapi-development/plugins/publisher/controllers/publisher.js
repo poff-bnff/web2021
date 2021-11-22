@@ -1,6 +1,7 @@
 "use strict";
 const { execFile, exec, spawn } = require("child_process");
 const fs = require("fs");
+const yaml = require('js-yaml')
 const { StringDecoder } = require("string_decoder");
 const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
@@ -158,6 +159,86 @@ async function doFullBuild(userInfo) {
   }
 }
 
+async function doKillSwitch(userInfo, killStartTime) {
+  const queuePath = `../../ssg/helpers/build_queue.yaml`
+  const logPath = `../../ssg/helpers/build_logs.yaml`
+  const killerScript = `../../ssg/kill_switch.sh`
+  console.log('KILL SWITCH ACTIVATED!');
+  if (userInfo) {
+    if (fs.existsSync(queuePath)) {
+      if (fs.existsSync(logPath)) {
+        const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
+        const logFileStartedBuilds = logFile.filter(b => b.type === 'Build start')
+        const lastBuild = logFileStartedBuilds[logFileStartedBuilds.length - 1]
+        const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
+        const userName = `${userInfo.firstname} ${userInfo.lastname}`
+
+        console.log(`Killer: ${userName}. Killing last startedbuild: ${lastBuildPID}`)
+
+        const child = spawn('bash', [killerScript, lastBuildPID])
+
+        let info = ''
+        return new Promise((resolve, reject) => {
+          child.stdout.on("data", async (data) => {
+            info += decoder.write(data)
+          });
+
+          child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            info += 'error: ' + decoder.write(error)
+          });
+
+          child.on("close", async (code) => {
+            console.log(`child process exited with code ${code}`);
+
+            if (code === 0) {
+
+              let shortUserMessage = info
+              shortUserMessage = `${info.split('SEPARATORSTRING')[0]}`
+
+              let logMessageLong = info
+              logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
+
+              console.log(logMessageLong);
+
+              const logKillData = {
+                site: '-',
+                admin_user: { id: userInfo.id },
+                start_time: killStartTime,
+                end_time: moment().tz("Europe/Tallinn").format(),
+                type: 'KILL',
+                build_stdout: logMessageLong,
+                shown_to_user: true,
+              };
+              const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
+
+              resolve({ type: 'success', message: shortUserMessage })
+            } else if (code === 1) {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code 1. ${info}` })
+            } else {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code ${code}. ${info}` })
+            }
+          });
+        });
+
+      } else {
+        console.log('No log file for PID');
+        return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
+      }
+    } else {
+      console.log('No build queue');
+      return { type: 'warning', message: 'Järjekorda ei eksisteeri' }
+    }
+  } else {
+    console.log('No killer info');
+    return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -168,14 +249,20 @@ module.exports = {
     const data = ctx.request.body;
     // console.log(ctx)
     const userInfo = JSON.parse(data.userInfo);
+    const superAdminRoleId = 1
+
     const site = data.site;
+    // Kontrollib kas kasutaja on superadmin
+    if (userInfo.roles && !userInfo.roles.map(r => r.id).includes(superAdminRoleId)) {
+      ctx.send({ messageType: 'warning', buildSite: site, message: 'Hetkel pole live-i panek lubatud' });
+    }
     //kontrollin kas päringule lisati site
-    if (!data.site) {
+    else if (!data.site) {
       return ctx.badRequest("no site");
     } else {
       // kas site on meie site'ide nimekirjas
       if (domains.includes(data.site)) {
-        
+
         await doBuild(site, userInfo)
         ctx.send({ buildSite: site, message: `${data.site} LIVE-i kopeeritud` });
 
@@ -191,8 +278,19 @@ module.exports = {
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    ctx.send({ message: "full build started" })
     await doFullBuild(userInfo)
+
+  },
+  killSwitch: async (ctx) => {
+    // console.log('ctx', ctx)
+    const killStartTime = moment().tz("Europe/Tallinn").format()
+    console.log("Killing all!")
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+
+    const killResult = await doKillSwitch(userInfo, killStartTime)
+    ctx.send(killResult)
 
   },
   logs: async (ctx) => {
@@ -307,7 +405,7 @@ module.exports = {
   },
   lastBuildLogBySite: async (ctx) => {
 
-    const params = { 
+    const params = {
       site: ctx.params.site,
       _sort: 'id:desc',
       type: 'build'

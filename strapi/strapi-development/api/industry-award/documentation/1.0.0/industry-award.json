@@ -539,7 +539,42 @@
             "type": "string"
           },
           "description": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "et": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "ru": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "title_et": {
             "type": "string"
+          },
+          "title_ru": {
+            "type": "string"
+          },
+          "slug_et": {
+            "type": "uid"
+          },
+          "slug_en": {
+            "type": "uid"
+          },
+          "slug_ru": {
+            "type": "uid"
           }
         }
       },
@@ -549,7 +584,42 @@
             "type": "string"
           },
           "description": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "et": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "ru": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "title_et": {
             "type": "string"
+          },
+          "title_ru": {
+            "type": "string"
+          },
+          "slug_et": {
+            "type": "uid"
+          },
+          "slug_en": {
+            "type": "uid"
+          },
+          "slug_ru": {
+            "type": "uid"
           },
           "created_by": {
             "type": "string"

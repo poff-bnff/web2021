@@ -9,6 +9,8 @@ html(lang= self.locale)
         include ../_templates/head_poff.pug
         // (onload='reloadImageOnError()')
         body
+            //- Google Tag Manager iframe
+            iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-W2NM5HS' height='0' width='0' style='display:none;visibility:hidden')
             include ../_templates/header_poff.pug
             block content
             include ../_templates/footer.pug
@@ -83,7 +85,7 @@ html(lang= self.locale)
         body
             include ../_templates/header_bruno.pug
             block content
-            include ../_templates/footer.pug    
+            include ../_templates/footer.pug
 
 
     //- Filmikool

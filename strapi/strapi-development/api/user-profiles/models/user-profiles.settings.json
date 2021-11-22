@@ -46,9 +46,9 @@
       "type": "string"
     },
     "user": {
+      "via": "user_profile",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "user_profile"
+      "model": "user"
     }
   }
 }

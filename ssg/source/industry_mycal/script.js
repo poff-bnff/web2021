@@ -1,26 +1,21 @@
-// const search_input = document.getElementById('search');
-// const nonetoshow = document.getElementById('nonetoshow');
+const search_input = document.getElementById('search');
+const nonetoshow = document.getElementById('nonetoshow');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+var pageLoaded = false
 
-
-function showcalendarbuttons() {
-    let calendarbuttons = document.querySelectorAll('[class~="add_to_calendar_button"]')
-    for (btn of calendarbuttons) {
-        btn.style.display = 'grid'
-    }
+if (!validToken) {
+    window.open(`${location.origin}/${langpath}login`, '_self')
+    saveUrl()
 }
 
 const selectors = {
-    programmes: document.getElementById('programmes_select'),
-    languages: document.getElementById('languages_select'),
-    countries: document.getElementById('countries_select'),
-    subtitles: document.getElementById('subtitles_select'),
-    premieretypes: document.getElementById('premieretypes_select'),
-    towns: document.getElementById('towns_select'),
-    cinemas: document.getElementById('cinemas_select'),
-    dates: document.getElementById('dates_select'),
-    times: document.getElementById('times_select')
+    types: document.getElementById('types_select'),
+    categories: document.getElementById('categories_select'),
+    // channels: document.getElementById('channels_select'),
+    // projects: document.getElementById('projects_select'),
+    persons: document.getElementById('persons_select'),
+    starttimes: document.getElementById('starttimes_select'),
 }
 
 function urlSelect() {
@@ -58,21 +53,30 @@ function setSearchParams() {
 }
 
 document.onreadystatechange = () => {
-    // const loading = document.getElementById('loading');
-    // const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
-        // urlSelect()
-        // filters.style.display = "grid"
-        // loading.style.display = "none"
-
-        for (img of document.images) {
-            img_src = img.src || ''
-            if (img_src.includes('thumbnail_')) {
-                    img.src = img_src.replace('thumbnail_', '')
-            }
-        }
+        pageLoaded = true
+        pageLoadingAndUserProfileFetched()
     }
 };
+
+
+function pageLoadingAndUserProfileFetched() {
+    if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
+    const loading = document.getElementById('loading');
+    // const content = document.getElementById('content');
+    const filters = document.getElementById('filters');
+    urlSelect()
+    filters.style.display = ""
+    loading.style.display = "none"
+    // content.style.display = ""
+
+    for (img of document.images) {
+        img_src = img.src || ''
+        if (img_src.includes('thumbnail_')) {
+                img.src = img_src.replace('thumbnail_', '')
+        }
+    }
+}
 
 function select_next_or_previous(which, id) {
     var select = document.getElementById(id);
@@ -87,30 +91,38 @@ function select_next_or_previous(which, id) {
 function toggleAll(exclude_selector_name) {
     setSearchParams()
 
-    ids = execute_filters()
+    if (userProfile && userProfile.my_events && userProfile.my_events.length) {
+        var userMyCalendarIds = getUniqueFavoritesArray(userProfile.my_events, 'schedule', 'industry_events')
+        var allIds = execute_filters()
+        var ids = allIds.filter(id => userMyCalendarIds.includes(id))
+    } else {
+        var ids = []
+    }
+
+    console.log('ids', ids);
 
     // kuva/peida 'pole vasteid'
     if (ids.length) {
         nonetoshow.style.display = "none"
     } else {
-        nonetoshow.style.display = "grid"
+        nonetoshow.style.display = ""
     }
 
     // kuva/peida kassette
-    let cards = document.querySelectorAll('[class="card_film"]')
+    let cards = document.querySelectorAll('[class="card_event"]')
     cards.forEach(card => {
         if (ids.includes(card.id)) {
-            card.style.display = "grid"
+            card.style.display = ""
         } else {
             card.style.display = "none"
         }
     })
 
     // filtreeri filtreid
-    toggleFilters(exclude_selector_name)
+    toggleFilters(exclude_selector_name, ids)
 }
 
-function toggleFilters(exclude_selector_name) {
+function toggleFilters(exclude_selector_name, ids) {
 
     for (selector_name in selectors) {
 
@@ -127,42 +139,31 @@ function toggleFilters(exclude_selector_name) {
 
             let count = searcharray
                 .filter(screening => {
-                    const compare_with = selector_name === 'programmes' ? value : selectors.programmes.value;
-                    return compare_with === '' ? true : screening.programmes.includes(compare_with)
+                    const compare_with = selector_name === 'types' ? value : selectors.types.value;
+                    return compare_with === '' ? true : screening.types.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'languages' ? value : selectors.languages.value;
-                    return compare_with === '' ? true : screening.languages.includes(compare_with)
+                    const compare_with = selector_name === 'categories' ? value : selectors.categories.value;
+                    return compare_with === '' ? true : screening.categories.includes(compare_with)
+                })
+                // .filter(screening => {
+                //     const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
+                //     return compare_with === '' ? true : screening.channels.includes(compare_with)
+                // })
+                // .filter(screening => {
+                //     const compare_with = selector_name === 'projects' ? value : selectors.projects.value;
+                //     return compare_with === '' ? true : screening.projects.includes(compare_with)
+                // })
+                .filter(screening => {
+                    const compare_with = selector_name === 'persons' ? value : selectors.persons.value;
+                    return compare_with === '' ? true : screening.persons.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'countries' ? value : selectors.countries.value;
-                    return compare_with === '' ? true : screening.countries.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'subtitles' ? value : selectors.subtitles.value;
-                    return compare_with === '' ? true : screening.subtitles.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'towns' ? value : selectors.towns.value;
-                    return compare_with === '' ? true : screening.towns.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'cinemas' ? value : selectors.cinemas.value;
-                    return compare_with === '' ? true : screening.cinemas.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'premieretypes' ? value : selectors.premieretypes.value;
-                    return compare_with === '' ? true : screening.premieretypes.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'dates' ? value : selectors.dates.value;
-                    return compare_with === '' ? true : screening.dates.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'times' ? value : selectors.times.value;
-                    return compare_with === '' ? true : screening.times.includes(compare_with)
+                    const compare_with = selector_name === 'starttimes' ? value : selectors.starttimes.value;
+                    return compare_with === '' ? true : screening.starttimes.includes(compare_with)
                 })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
+                .filter((screening) => { return ids && ids.length ? ids.includes(screening.id.toString()) : false })
                 .length
 
 
@@ -174,57 +175,42 @@ function toggleFilters(exclude_selector_name) {
 
 }
 
-// search_input.addEventListener('keyup', e => {
-//     toggleAll();
+search_input.addEventListener('keyup', e => {
+    toggleAll();
+});
+
+selectors.types.addEventListener('change', e => {
+    toggleAll('types');
+});
+
+selectors.categories.addEventListener('change', e => {
+    toggleAll('categories');
+});
+
+// selectors.channels.addEventListener('change', e => {
+//     toggleAll('channels');
 // });
 
-// selectors.programmes.addEventListener('change', e => {
-//     toggleAll('programmes');
+// selectors.projects.addEventListener('change', e => {
+//     toggleAll('projects');
 // });
 
-// selectors.languages.addEventListener('change', e => {
-//     toggleAll('languages');
-// });
+selectors.persons.addEventListener('change', e => {
+    toggleAll('persons');
+});
 
-// selectors.countries.addEventListener('change', e => {
-//     toggleAll('countries');
-// });
-
-// selectors.subtitles.addEventListener('change', e => {
-//     toggleAll('subtitles');
-// });
-
-// selectors.premieretypes.addEventListener('change', e => {
-//     toggleAll('premieretypes');
-// });
-
-// selectors.towns.addEventListener('change', e => {
-//     toggleAll('towns');
-// });
-
-// selectors.cinemas.addEventListener('change', e => {
-//     toggleAll('cinemas');
-// });
-
-// selectors.dates.addEventListener('change', e => {
-//     toggleAll('dates');
-// });
-
-// selectors.times.addEventListener('change', e => {
-//     toggleAll('times');
-// });
+selectors.starttimes.addEventListener('change', e => {
+    toggleAll('starttimes');
+});
 
 function unselect_all() {
     search_input.value = '';
-    selectors.programmes.selectedIndex = 0;
-    selectors.languages.selectedIndex = 0;
-    selectors.countries.selectedIndex = 0;
-    selectors.subtitles.selectedIndex = 0;
-    selectors.premieretypes.selectedIndex = 0;
-    selectors.towns.selectedIndex = 0;
-    selectors.cinemas.selectedIndex = 0;
-    selectors.dates.selectedIndex = 0;
-    selectors.times.selectedIndex = 0;
+    selectors.types.selectedIndex = 0;
+    selectors.categories.selectedIndex = 0;
+    // selectors.channels.selectedIndex = 0;
+    // selectors.projects.selectedIndex = 0;
+    selectors.persons.selectedIndex = 0;
+    selectors.starttimes.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -232,64 +218,43 @@ function unselect_all() {
 function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
-            if (selectors.programmes.value) {
-                return screening.programmes.includes(selectors.programmes.value)
+            if (selectors.types.value) {
+                return screening.types.includes(selectors.types.value)
             } else {
                 return true
             }
         })
         .filter(screening => {
-            if (selectors.languages.value) {
-                return screening.languages.includes(selectors.languages.value)
+            if (selectors.categories.value) {
+                return screening.categories.includes(selectors.categories.value)
+            } else {
+                return true
+            }
+        })
+        // .filter(screening => {
+        //     if (selectors.channels.value) {
+        //         return screening.channels.includes(selectors.channels.value)
+        //     } else {
+        //         return true
+        //     }
+        // })
+        // .filter(screening => {
+        //     if (selectors.projects.value) {
+        //         return screening.projects.includes(selectors.projects.value)
+        //     } else {
+        //         return true
+        //     }
+        // })
+        .filter(screening => {
+            if (selectors.persons.value) {
+                return screening.persons.includes(selectors.persons.value)
             } else {
                 return true
             }
         })
         .filter(screening => {
-            if (selectors.countries.value) {
-                return screening.countries.includes(selectors.countries.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.subtitles.value) {
-                return screening.subtitles.includes(selectors.subtitles.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.premieretypes.value) {
-                return screening.premieretypes.includes(selectors.premieretypes.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.towns.value) {
-                return screening.towns.includes(selectors.towns.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.cinemas.value) {
-                return screening.cinemas.includes(selectors.cinemas.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.dates.value) {
-                return screening.dates.includes(selectors.dates.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.times.value) {
-                return screening.times.includes(selectors.times.value)
+            if (selectors.starttimes.value) {
+                return screening.starttimes.includes(selectors.starttimes.value)
             } else {
                 return true
             }
@@ -298,6 +263,7 @@ function execute_filters() {
         .map(element => element.id.toString());
     // console.log(filtered);
     // console.log(filtered.map(element => element.id));
+    console.log('Filtered', filtered);
     return filtered
 }
 

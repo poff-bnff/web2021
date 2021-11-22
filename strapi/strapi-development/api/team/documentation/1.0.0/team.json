@@ -1003,7 +1003,8 @@
             "type": "string",
             "enum": [
               "festivalTeam",
-              "jury"
+              "jury",
+              "guest"
             ]
           },
           "name_et": {
@@ -1483,7 +1484,8 @@
             "type": "string",
             "enum": [
               "festivalTeam",
-              "jury"
+              "jury",
+              "guest"
             ]
           },
           "name_et": {
