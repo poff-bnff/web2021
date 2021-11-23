@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_tags_course_tags",
+  "info": {
+    "name": "CourseTags",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "keywords": {
+      "collection": "tag-keyword"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_article_article_components",
+  "info": {
+    "name": "ComponentArticle",
+    "icon": "border-none"
+  },
+  "options": {},
+  "attributes": {
+    "lead": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "contents": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article-media"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.tags"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    }
+  }
+}

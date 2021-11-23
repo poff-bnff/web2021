@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_screening_intro_conversation_qand_as",
+  "info": {
+    "name": "Intro_Conversation_QandA",
+    "icon": "comment-dots"
+  },
+  "options": {},
+  "attributes": {
+    "yesNo": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Intro",
+        "QandA",
+        "Conversation"
+      ]
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": [
+        "OnSite_Live",
+        "OnLine_Live_Stream",
+        "OnLine_Recorded"
+      ]
+    },
+    "presenter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "translated.translated-short"
+    },
+    "guest": {
+      "type": "component",
+      "repeatable": true,
+      "component": "translated.translated-short"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "clipUrl": {
+      "type": "string"
+    }
+  }
+}

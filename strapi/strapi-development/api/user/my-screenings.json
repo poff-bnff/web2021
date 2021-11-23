@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_user_my_screenings",
+  "info": {
+    "name": "MyScreenings",
+    "icon": "torah"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "schedule",
+        "other"
+      ],
+      "default": "schedule"
+    },
+    "screenings": {
+      "collection": "screening"
+    }
+  }
+}
