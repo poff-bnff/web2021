@@ -149,9 +149,8 @@ block content
                                     //- if event.project_type
                                     //-     p= `Type: ${event.project_type}`
 
-                                    //- if event.event_mode
-                                    //-     p
-                                    //-     p= `Mode: ${event.event_mode.name}`
+                                    if event.event_mode
+                                        p.location.small_1= `Event mode: ${event.event_mode.name}`
 
                                     //- if event.videoUrl
                                     //-     p= `Video at: ${event.videoUrl}`
