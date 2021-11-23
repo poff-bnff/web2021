@@ -9,9 +9,18 @@ block content
             //- console.log({userProfile})
 
             if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
-                document.getElementById('videolevels_video').style.display = 'block'
-                var videoFrameElement = document.getElementById('videoframe')
-                videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+                var videoFrameElement
+                try {
+                    document.getElementById('videolevels_video').style.display = 'block'
+                    var videoFrameElement = document.getElementById('videoframe')
+                    videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+                } catch (error) { null }
+
+                if (!videoFrameElement) {
+                    try {
+                        document.getElementById('event_image').style.display = ''
+                    } catch (error) { null }
+                }
             } else {
                 document.getElementById('videolevels_video').remove()
             }
@@ -88,6 +97,11 @@ block content
                             .str_info_value
                                 +indEvDur(self.durationTime)
 
+                        if self.location
+                            .str_info_grid_3
+                                .str_info_label= self.label.filters.location
+                                .str_info_value= self.location.name
+
             section#trailer.f_trailer_box
                 //- .section_headline= self.label.film.trailer
                 //- .ratio.ratio-16x9.m-0.p-0
@@ -95,7 +109,10 @@ block content
                     if self.videoUrl
                         .videolevels_embed_contents#videolevels_video(style="display:none;")
                             +videoVl(self.videoUrl)
-                    .default_16_9_container
+                    else if self.images
+                        .default_16_9_container
+                            img#event_image(alt=self.title style='width: 100%; height: 100%; display: none;' src=`https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`)
+
                     .login_16_9_container.login_ind_ev#login_cond
                         h4.login_headline#loginMessage Login via Eventival
                         a(href=`/login` onclick = 'saveUrl()')
