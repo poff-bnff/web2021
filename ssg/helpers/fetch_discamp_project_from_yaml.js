@@ -6,10 +6,10 @@ const {fetchModel} = require('./b_fetch.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industryprojects');
+const fetchDataDir =  path.join(fetchDir, 'discampprojects');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
-const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
-const STRAPIDATA_IND_PROJECTS = yaml.load(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
+const strapiDataDisCampProjectPath = path.join(strapiDataDirPath, 'DisCampProject.yaml')
+const STRAPIDATA_DC_PROJECTS = yaml.load(fs.readFileSync(strapiDataDisCampProjectPath, 'utf8'))
 
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -18,10 +18,10 @@ const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
 const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
-const active_editions = DOMAIN_SPECIFICS.active_industry_editions
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
+const active_editions = DOMAIN_SPECIFICS.active_discamp_editions
 
-if (DOMAIN === 'industry.poff.ee') {
+if (DOMAIN === 'discoverycampus.poff.ee') {
 
     const minimodel = {
         'countries': {
@@ -65,27 +65,27 @@ if (DOMAIN === 'industry.poff.ee') {
         },
     }
 
-    const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
+    const STRAPIDATA_DC_PROJECT = fetchModel(STRAPIDATA_DC_PROJECTS, minimodel)
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    let activeProjectsYamlNameSuffix = 'projects'
-    let activeProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => active_editions.includes(id)))
+    let activeProjectsYamlNameSuffix = 'dis_camp_projects'
+    let activeProjects = STRAPIDATA_DC_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => active_editions.includes(id)))
     startIndustryProjectProcessing(languages, activeProjects, activeProjectsYamlNameSuffix)
 
-    let archiveProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
-    let archiveProjectsYamlNameSuffix = 'projects_archive'
+    let archiveProjects = STRAPIDATA_DC_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
+    let archiveProjectsYamlNameSuffix = 'dis_camp_projects_archive'
     startIndustryProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix)
 
 } else {
 
     let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `search_projects.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `search_projects_archive.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `filters_projects.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `filters_projects_archive.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `industryprojects.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `industryprojects_archive.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_dis_camp_projects.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_dis_camp_projects_archive.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_dis_camp_projects.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_dis_camp_projects_archive.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `discamp_projects.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `discamp_projects_archive.en.yaml`), emptyYAML, 'utf8')
 
 }
 
@@ -212,70 +212,70 @@ function generateProjectsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
 
 }
 
-function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, projectsYamlNameSuffix) {
+function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, projectsYamlNameSuffix) {
     for (const ix in languages) {
         const lang = languages[ix];
-        console.log(`Fetching ${DOMAIN} industry ${projectsYamlNameSuffix} ${lang} data`);
+        console.log(`Fetching ${DOMAIN} discamp ${projectsYamlNameSuffix} ${lang} data`);
         let allData = []
-        for (const ix in STRAPIDATA_IND_PROJECT) {
-            let industry_project = JSON.parse(JSON.stringify(STRAPIDATA_IND_PROJECT[ix]));
-            industry_project.roles_in_project = {}
-            industry_project.comp_roles_in_project = {}
+        for (const ix in STRAPIDATA_DC_PROJECT) {
+            let discamp_project = JSON.parse(JSON.stringify(STRAPIDATA_DC_PROJECT[ix]));
+            discamp_project.roles_in_project = {}
+            discamp_project.comp_roles_in_project = {}
 
-            var templateDomainName = 'industry';
+            var templateDomainName = 'discamp';
 
-            // rueten func. is run for each industry_project separately instead of whole data, that is
+            // rueten func. is run for each discamp_project separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
-            industry_project = rueten(industry_project, lang);
-            let dirSlug = industry_project.slug ? industry_project.slug : null ;
+            discamp_project = rueten(discamp_project, lang);
+            let dirSlug = discamp_project.slug ? discamp_project.slug : null ;
 
             if (dirSlug === null) {
-                if (lang === 'en' && DOMAIN === 'industry.poff.ee') {
-                    console.log(`ERROR! Industry ${projectsYamlNameSuffix} ID ${industry_project.id} missing slug ${lang}, skipped.`);
+                if (lang === 'en' && DOMAIN === 'discoverycampus.poff.ee') {
+                    console.log(`ERROR! discamp ${projectsYamlNameSuffix} ID ${discamp_project.id} missing slug ${lang}, skipped.`);
                 }
                 continue
             }
-            if (!industry_project.title) {
-                if (lang === 'en' && DOMAIN === 'industry.poff.ee') {
-                    console.log(`ERROR! Industry ${projectsYamlNameSuffix} ID ${industry_project.id} missing title ${lang}, skipped.`);
+            if (!discamp_project.title) {
+                if (lang === 'en' && DOMAIN === 'discoverycampus.poff.ee') {
+                    console.log(`ERROR! discamp ${projectsYamlNameSuffix} ID ${discamp_project.id} missing title ${lang}, skipped.`);
                 }
                 continue
             }
 
-            industry_project.path = `project/${dirSlug}`
+            discamp_project.path = `project/${dirSlug}`
 
-            if (industry_project.clipUrl) {
-                if(industry_project.clipUrl && industry_project.clipUrl.length > 10) {
-                    if (industry_project.clipUrl.includes('vimeo')) {
-                        let splitVimeoLink = industry_project.clipUrl.split('/')
+            if (discamp_project.clipUrl) {
+                if(discamp_project.clipUrl && discamp_project.clipUrl.length > 10) {
+                    if (discamp_project.clipUrl.includes('vimeo')) {
+                        let splitVimeoLink = discamp_project.clipUrl.split('/')
                         let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
                         if (videoCode.length === 9) {
-                            industry_project.clipUrlCode = videoCode
+                            discamp_project.clipUrlCode = videoCode
                         }
                     } else {
-                        let splitYouTubeLink = industry_project.clipUrl.split('=')[1]
+                        let splitYouTubeLink = discamp_project.clipUrl.split('=')[1]
                         let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
                         if (splitForVideoCode.length === 11) {
-                            industry_project.clipUrlCode = splitForVideoCode
+                            discamp_project.clipUrlCode = splitForVideoCode
                         }
                     }
                 }
             }
 
-            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
+            const oneYaml = yaml.dump(discamp_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
             let saveDir = path.join(fetchDataDir, dirSlug);
             fs.mkdirSync(saveDir, { recursive: true });
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industryproject_${templateDomainName}_index_template.pug`)
-            allData.push(industry_project);
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/discampproject_${templateDomainName}_index_template.pug`)
+            allData.push(discamp_project);
 
-            const credentials = industry_project.teamCredentials || {}
+            const credentials = discamp_project.teamCredentials || {}
 
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
-            industry_project.persons = {}
+            discamp_project.persons = {}
             for (const role_person of role_persons) {
                 let person_id
                 try {
@@ -283,17 +283,17 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 } catch (error) {
                     continue
                 }
-                industry_project.persons[person_id] = industry_project.persons[person_id] || {id: person_id, rolesAtFilm: []}
+                discamp_project.persons[person_id] = discamp_project.persons[person_id] || {id: person_id, rolesAtFilm: []}
                 if (role_person.role_at_film) {
-                    industry_project.persons[person_id].rolesAtFilm.push(role_person.role_at_film.roleNamePrivate)
-                    if (!(role_person.role_at_film.roleNamePrivate in industry_project.roles_in_project)) {
-                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order, names: []}
+                    discamp_project.persons[person_id].rolesAtFilm.push(role_person.role_at_film.roleNamePrivate)
+                    if (!(role_person.role_at_film.roleNamePrivate in discamp_project.roles_in_project)) {
+                        discamp_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order, names: []}
                     }
-                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push(role_person.person.firstNameLastName)
+                    discamp_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push(role_person.person.firstNameLastName)
 
 
                 }
-                // industry_project.roles_in_project = industry_project.roles_in_project.sort((a, b) => {
+                // discamp_project.roles_in_project = discamp_project.roles_in_project.sort((a, b) => {
                 //     return a[role_person.role_at_film.roleNamePrivate].ord - b[role_person.role_at_film.roleNamePrivate].ord
                 // })
 
@@ -301,27 +301,27 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
 
             
 
-            for (const ix in industry_project.persons) {
-                const industry_person = industry_project.persons[ix]
+            for (const ix in discamp_project.persons) {
+                const discamp_person = discamp_project.persons[ix]
                 try {
-                    industry_person.person = STRAPIDATA_PERSONS
-                    .filter(strapi_person => (strapi_person.id === industry_person.id))[0]
+                    discamp_person.person = STRAPIDATA_PERSONS
+                    .filter(strapi_person => (strapi_person.id === discamp_person.id))[0]
                 } catch (error) {
-                    console.log('Seda pole ette nähtud juhtuma: strapi_person.id !== industry_person.id', industry_person.id)
+                    console.log('Seda pole ette nähtud juhtuma: strapi_person.id !== discamp_person.id', discamp_person.id)
                 }
                 try {
-                    if(industry_person.person.biography.en){
-                        industry_person.person.biography = industry_person.person.biography.en
+                    if(discamp_person.person.biography.en){
+                        discamp_person.person.biography = discamp_person.person.biography.en
                     }
                 } catch (error) {
                     null
                 }
             }
-            industry_project.persons = Object.values(industry_project.persons)
+            discamp_project.persons = Object.values(discamp_project.persons)
 
             // kompaniide blokk
             const role_companies = credentials.roleCompany || []
-            industry_project.organisations = {}
+            discamp_project.organisations = {}
 
             for (const role_company of role_companies) {
                 let company_id
@@ -330,41 +330,41 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 } catch (error) {
                     continue
                 }
-                industry_project.organisations[company_id] = industry_project.organisations[company_id] || {id: company_id, rolesAtFilm: []}
+                discamp_project.organisations[company_id] = discamp_project.organisations[company_id] || {id: company_id, rolesAtFilm: []}
                 if (role_company.roles_at_film){
-                    industry_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
+                    discamp_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
 
-                    if(!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
-                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order, names: []}
+                    if(!(role_company.roles_at_film.roleNamePrivate in discamp_project.comp_roles_in_project)) {
+                        discamp_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order, names: []}
                     }
-                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
+                    discamp_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
                 }
             }
-            for (const ix in industry_project.organisations) {
-                const industry_company = industry_project.organisations[ix]
+            for (const ix in discamp_project.organisations) {
+                const discamp_company = discamp_project.organisations[ix]
                 try {
-                    industry_company.organisations = STRAPIDATA_COMPANIES
-                    .filter(strapi_company => (strapi_company.id === industry_company.id))[0]
+                    discamp_company.organisations = STRAPIDATA_COMPANIES
+                    .filter(strapi_company => (strapi_company.id === discamp_company.id))[0]
                 } catch (error) {
-                    console.log('Seda pole ette nähtud juhtuma: strapi_company.id !== industry_company.id', industry_company.id)
+                    console.log('Seda pole ette nähtud juhtuma: strapi_company.id !== discamp_company.id', discamp_company.id)
                 }
                 try {
-                    if(industry_company.organisations.description.en){
-                        industry_company.organisations.description = industry_company.organisations.description.en
+                    if(discamp_company.organisations.description.en){
+                        discamp_company.organisations.description = discamp_company.organisations.description.en
                     }
                 } catch (error) {
                     null
                 }
             }
 
-            industry_project.organisations = Object.values(industry_project.organisations)
+            discamp_project.organisations = Object.values(discamp_project.organisations)
 
             // andmepuhastus
 
-            delete industry_project.teamCredentials
+            delete discamp_project.teamCredentials
         }
 
-        const yamlPath = path.join(fetchDir, `industry${projectsYamlNameSuffix}.${lang}.yaml`);
+        const yamlPath = path.join(fetchDir, `discamp${projectsYamlNameSuffix}.${lang}.yaml`);
         const searchYamlPath = path.join(fetchDir, `search_${projectsYamlNameSuffix}.${lang}.yaml`);
         const filtersYamlPath = path.join(fetchDir, `filters_${projectsYamlNameSuffix}.${lang}.yaml`);
         if (allData.length) {
@@ -375,24 +375,24 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             generateProjectsSearchAndFilterYamls(allData, lang, projectsYamlNameSuffix);
 
         } else {
-            console.log(`No data for industry ${projectsYamlNameSuffix}, creating empty YAMLs`);
+            console.log(`No data for discamp ${projectsYamlNameSuffix}, creating empty YAMLs`);
             fs.writeFileSync(yamlPath, '[]', 'utf8');
             fs.writeFileSync(searchYamlPath, '[]', 'utf8');
             fs.writeFileSync(filtersYamlPath, '[]', 'utf8');
         }
 
-        for (const industry_project of allData) {
-            const dirSlug = industry_project.slug || industry_project.id
+        for (const discamp_project of allData) {
+            const dirSlug = discamp_project.slug || discamp_project.id
             const saveDir = path.join(fetchDataDir, dirSlug);
             fs.mkdirSync(saveDir, { recursive: true });
 
-            industry_project.data = {'articles': '/_fetchdir/articles.en.yaml'};
-            industry_project.path = `project/${dirSlug}`
+            discamp_project.data = {'articles': '/_fetchdir/articles.en.yaml'};
+            discamp_project.path = `project/${dirSlug}`
 
             const yamlPath = path.join(fetchDataDir, dirSlug, 'data.en.yaml')
-            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' })
+            const oneYaml = yaml.dump(discamp_project, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(yamlPath, oneYaml, 'utf8')
-            fs.writeFileSync(path.join(saveDir,'index.pug'), 'include /_templates/industryproject_industry_index_template.pug')
+            fs.writeFileSync(path.join(saveDir,'index.pug'), 'include /_templates/discampproject_discamp_index_template.pug')
         }
     }
 }

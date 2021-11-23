@@ -8,15 +8,15 @@ const {fetchModel} = require('./b_fetch.js')
 const rootDir =  path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+const DISCAMP_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
 
 const sourceDir =  path.join(rootDir, 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industryevents');
+const fetchDataDir =  path.join(fetchDir, 'discampevents');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
-const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
-const STRAPIDATA_INDUSTRY_EVENTS = yaml.load(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const strapiDataDCEventPath = path.join(strapiDataDirPath, 'DisCampEvent.yaml')
+const STRAPIDATA_DISCAMP_EVENTS = yaml.load(fs.readFileSync(strapiDataDCEventPath, 'utf8'))
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
@@ -25,10 +25,10 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/industry_events_search', '/industry_mycal'])
+    addConfigPathAliases(['/discamp_events_search', '/discamp_mycal'])
 }
 
-if (DOMAIN === 'industry.poff.ee') {
+if (DOMAIN === 'discoverycampus.poff.ee') {
 
     const minimodel = {
         'images': {
@@ -52,8 +52,8 @@ if (DOMAIN === 'industry.poff.ee') {
                 }
             }
         },
-        'industry_categories': {
-            model_name: 'IndustryCategory'
+        'discamp_categories': {
+            model_name: 'DisCampCategory'
         },
         'project_type': {
             model_name: 'ProjectType'
@@ -61,22 +61,22 @@ if (DOMAIN === 'industry.poff.ee') {
         'channel': {
             model_name: 'Channel'
         },
-        'industry_people': {
-            model_name: 'IndustryPerson',
+        'discamp_people': {
+            model_name: 'DisCampPerson',
             expand: {
                 'person': {
                     model_name: 'Person'
                 },
-                'industry_person_types': {
-                    model_name: 'IndustryPersonType'
+                'discamp_person_types': {
+                    model_name: 'DisCampPersonType'
                 },
                 'role_at_films': {
                     model_name: 'RoleAtFilm'
                 },
             }
         },
-        'industry_projects': {
-            model_name: 'IndustryProject'
+        'discamp_projects': {
+            model_name: 'DisCampProject'
         },
         'festival_editions': {
             model_name: 'FestivalEdition'
@@ -86,8 +86,8 @@ if (DOMAIN === 'industry.poff.ee') {
         },
     }
 
-    const STRAPIDATA_ALL_FE_INDUSTRY_EVENTS = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
-    const STRAPIDATA_INDUSTRY_EVENT = STRAPIDATA_ALL_FE_INDUSTRY_EVENTS.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+    const STRAPIDATA_ALL_FE_DISCAMP_EVENTS = fetchModel(STRAPIDATA_DISCAMP_EVENTS, minimodel)
+    const STRAPIDATA_discamp_EVENT = STRAPIDATA_ALL_FE_DISCAMP_EVENTS.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => DISCAMP_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
 
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
@@ -111,15 +111,15 @@ if (DOMAIN === 'industry.poff.ee') {
 
     const currentTimeUTC = convert_to_UTC()
 
-    console.log(`Fetching ${DOMAIN} Industry Event en data`);
+    console.log(`Fetching ${DOMAIN} discamp Event en data`);
 
     const allData = []
-    for (const ix in STRAPIDATA_INDUSTRY_EVENT) {
+    for (const ix in STRAPIDATA_discamp_EVENT) {
 
-        let element = JSON.parse(JSON.stringify(STRAPIDATA_INDUSTRY_EVENT[ix]));
+        let element = JSON.parse(JSON.stringify(STRAPIDATA_discamp_EVENT[ix]));
 
         if (!element.startTime) {
-            console.log(`ERROR! Industry event ID ${element.id} missing startTime`);
+            console.log(`ERROR! discamp event ID ${element.id} missing startTime`);
             continue
         }
 
@@ -138,7 +138,7 @@ if (DOMAIN === 'industry.poff.ee') {
         if (element['slug_en']) {
 
             if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
-                addConfigPathAliases([`/_fetchdir/industryevents/${element['slug_en']}`])
+                addConfigPathAliases([`/_fetchdir/discampevents/${element['slug_en']}`])
             }
 
             let dirSlug = element['slug_en']
@@ -159,20 +159,20 @@ if (DOMAIN === 'industry.poff.ee') {
                 }
             }
             element.calendar_data = escape(ical({
-                domain: 'industry.poff.ee',
-                prodId: '//industry.poff.ee//Industry@Tallinn//EN',
+                domain: 'discoverycampus.poff.ee',
+                // prodId: '//discoverycampus.poff.ee//discamp@Tallinn//EN',
                 events: [
                     {
                         start: convert_to_UTC(element.startTime),
                         end: eventend,
                         timestamp: convert_to_UTC(element.startTime),
                         description: element.description,
-                        location: element.location && element.location.hall && element.location.hall.cinema ? element.location.hall.cinema.name + `: http://industry.poff.ee/events/${element.slug}` : undefined,
+                        location: element.location && element.location.hall && element.location.hall.cinema ? element.location.hall.cinema.name + `: http://discoverycampus.poff.ee/events/${element.slug}` : undefined,
                         summary: element.title,
-                        organizer: {
-                            name: 'Industry@Tallinn & Baltic Event',
-                            email: 'industry@poff.ee'
-                        }
+                        // organizer: {
+                        //     name: 'discamp@Tallinn & Baltic Event',
+                        //     email: 'discamp@poff.ee'
+                        // }
                     }
                 ]
             }).toString())
@@ -186,8 +186,8 @@ if (DOMAIN === 'industry.poff.ee') {
             generateEventYaml(element, dirSlug);
 
         } else {
-            if ('en' === 'en' && DOMAIN === 'industry.poff.ee') {
-                console.log(`ERROR! Industry event ID ${element.id} missing slug`);
+            if ('en' === 'en' && DOMAIN === 'discoverycampus.poff.ee') {
+                console.log(`ERROR! discamp event ID ${element.id} missing slug`);
             }
         }
     }
@@ -219,14 +219,14 @@ if (DOMAIN === 'industry.poff.ee') {
         for (const date in newDataToYAML.eventsByDate) {
             newDataToYAML.allDates.push(date)
         }
-        console.log(`${dataToYAML.length} Industry Events ready for building`);
+        console.log(`${dataToYAML.length} DisCamp Events ready for building`);
     }
     const allDataYAML = yaml.dump(dataToYAML, { 'noRefs': true, 'indent': '4' });
-    const yamlPath = path.join(fetchDir, `industryeventscalendar.en.yaml`);
+    const yamlPath = path.join(fetchDir, `discampeventscalendar.en.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
     const allNewDataYAML = yaml.dump(newDataToYAML, { 'noRefs': true, 'indent': '4' });
-    const yamlNewPath = path.join(fetchDir, `industryevents.en.yaml`);
+    const yamlNewPath = path.join(fetchDir, `discampevents.en.yaml`);
     fs.writeFileSync(yamlNewPath, allNewDataYAML, 'utf8');
 
     search_and_filters(dataToYAML)
@@ -252,9 +252,9 @@ if (DOMAIN === 'industry.poff.ee') {
             }
 
             let categories = []
-            if (typeof event.industry_categories !== 'undefined') {
-                let industry_categories = event.industry_categories.map(name => name.name)
-                for (const name of industry_categories) {
+            if (typeof event.discamp_categories !== 'undefined') {
+                let discamp_categories = event.discamp_categories.map(name => name.name)
+                for (const name of discamp_categories) {
                     categories.push(name)
                     filters.categories[name] = name
                 }
@@ -267,18 +267,18 @@ if (DOMAIN === 'industry.poff.ee') {
             }
 
             let projects = []
-            if (typeof event.industry_projects !== 'undefined') {
-                let industry_projects = event.industry_projects.map(proj => proj.title)
-                for (const title of industry_projects) {
+            if (typeof event.discamp_projects !== 'undefined') {
+                let discamp_projects = event.discamp_projects.map(proj => proj.title)
+                for (const title of discamp_projects) {
                     projects.push(title)
                     filters.projects[title] = title
                 }
             }
 
             let persons = []
-            if (typeof event.industry_people !== 'undefined') {
-                let industry_people = event.industry_people.filter(p => p.person).map(pers => `${pers.person.firstName} ${pers.person.lastName}`)
-                for (const name of industry_people) {
+            if (typeof event.discamp_people !== 'undefined') {
+                let discamp_people = event.discamp_people.filter(p => p.person).map(pers => `${pers.person.firstName} ${pers.person.lastName}`)
+                for (const name of discamp_people) {
                     persons.push(name)
                     filters.persons[name] = name
                 }
@@ -356,19 +356,19 @@ if (DOMAIN === 'industry.poff.ee') {
         }
 
         let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
-        fs.writeFileSync(path.join(fetchDir, `search_industryeventscalendar.yaml`), searchYAML, 'utf8')
+        fs.writeFileSync(path.join(fetchDir, `search_discampeventscalendar.yaml`), searchYAML, 'utf8')
 
         let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
-        fs.writeFileSync(path.join(fetchDir, `filters_industryeventscalendar.yaml`), filtersYAML, 'utf8')
+        fs.writeFileSync(path.join(fetchDir, `filters_discampeventscalendar.yaml`), filtersYAML, 'utf8')
 
     }
 } else {
 
     let emptyYAML = yaml.dump([], { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `search_industryeventscalendar.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `filters_industryeventscalendar.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `industryeventscalendar.en.yaml`), emptyYAML, 'utf8');
-    fs.writeFileSync(path.join(fetchDir, `industryevents.en.yaml`), emptyYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `search_discampeventscalendar.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_discampeventscalendar.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `discampeventscalendar.en.yaml`), emptyYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `discampevents.en.yaml`), emptyYAML, 'utf8');
 
 }
 function generateEventYaml(element, dirSlug) {
@@ -379,6 +379,6 @@ function generateEventYaml(element, dirSlug) {
     fs.mkdirSync(saveDir, { recursive: true });
 
     fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industry_event_index_template.pug`);
+    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/discamp_event_index_template.pug`);
 }
 
