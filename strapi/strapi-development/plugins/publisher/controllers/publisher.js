@@ -15,6 +15,7 @@ const domains = [
   "justfilm.ee",
   "shorts.poff.ee",
   "industry.poff.ee",
+  "discoverycampus.poff.ee",
   "kinoff.poff.ee",
   "hoff.ee",
   "kumu.poff.ee",
