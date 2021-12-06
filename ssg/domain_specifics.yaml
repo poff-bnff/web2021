@@ -93,7 +93,7 @@ skip_build_for_models:
     # - industry-event
     - industry-person
     - team
-
+    
 article:
     poff.ee: POFFiArticle
     justfilm.ee: JustFilmiArticle
