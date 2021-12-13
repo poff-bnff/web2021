@@ -106,7 +106,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title_en"
+      "targetField": "title_en",
+      "required": true
     },
     "tag_genres": {
       "collection": "tag-genre"

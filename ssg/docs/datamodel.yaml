@@ -960,7 +960,10 @@ Team: &Team
 
 EventMode: &EventMode
     _path: /event-modes
-    name: (text)
+    name_private: (text)
+    name_et: text
+    name_en: text
+    name_ru: text
 
 ScreeningType: &ScreeningType
     _path: /screening-types
@@ -1036,7 +1039,7 @@ Film: &Film
         -   *Language
     subtitles: #(Component (repeatable))
         -   *Language
-    other_festivals: 
+    other_festivals:
         -   *Festival
     credentials: *Credentials
     presentedBy: *PresentedBy
@@ -1047,6 +1050,7 @@ Film: &Film
     additInfo: *Translated #(rich text)
     foreignUrl: (text)
     multi_and_single: (boolean)
+    vialog_id: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1237,7 +1241,7 @@ IndustryPerson: &IndustryPerson
         - *IndustryPersonType
     lookingFor: (text)
     contactAtEvent: (text)
-    festival_editions: 
+    festival_editions:
         -   *FestivalEdition
     tag_looking_fors:
         -   *TagLookingFor
@@ -1394,9 +1398,9 @@ IndustryEvent: &IndustryEvent
     industry_projects:
         - *IndustryProject
     isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
-    isPublicEvent: (Boolean) 
+    isPublicEvent: (Boolean)
     festival_editions:
-        -   *FestivalEdition
+        - *FestivalEdition
     event_mode: *EventMode
 
 IndustrySubMenuItem: &IndustrySubMenuItem

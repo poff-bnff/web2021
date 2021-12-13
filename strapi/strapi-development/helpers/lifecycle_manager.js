@@ -12,6 +12,7 @@ const {
 
 const fs = require('fs')
 const yaml = require('yaml')
+const jsyaml = require('js-yaml');
 const path = require('path')
 const moment = require("moment-timezone")
 
@@ -274,8 +275,12 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
+  const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+  const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
   // here to skip specific model builds
-  if (model_name === 'industry-project' || model_name === 'industry-event' || model_name === 'industry-person') {
+  if (MODELS_SKIP_BUILD.includes(model_name)) {
+    console.log(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
     return
   }
   let build_error

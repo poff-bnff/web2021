@@ -15,6 +15,11 @@ const { getAbsoluteServerUrl } = require('strapi-utils');
 const jwt = require('jsonwebtoken');
 
 const apiUserController = require('../controllers/user/api');  //c
+const { getEventivalBadges } = require('./getEventivalBadges');
+
+const formatError = error => [
+  { messages: [{ id: error.id, message: error.message, field: error.field }] },
+];
 
 /**
  * Connect thanks to a third-party provider.
@@ -39,6 +44,22 @@ const connect = (provider, query) => {
 
     // Get the profile.
     getProfile(provider, query, async (err, profile) => {
+
+      if (provider.split(',').includes('eventivalindustry')) {
+
+        const badges = await getEventivalBadges(profile.email);
+        console.log('getEventivalBadges for ', profile.email);
+        if (!badges?.body?.accreditation) {
+          const personIndustryBadges = badges && badges.statusCode === 200 ? badges.body.badges.map(b => b.type) : null
+          console.log('No accreditation for ', profile.email, 'Badges:', personIndustryBadges);
+          return reject([null, formatError({
+            id: 'Connect.error.accreditation',
+            message: 'No accreditation.',
+          })]);
+        }
+        console.log('Accreditation found for ', profile.email);
+      }
+
       if (err) {
         console.log('Services providers getProfile error', err);
         return reject([null, err]);
@@ -54,7 +75,7 @@ const connect = (provider, query) => {
         const users = await strapi.query('user', 'users-permissions').find({
           email: profile.email,
         });
-        console.log('Services Providers. Try to find user', users?.[0]?.email);
+        console.log(`Services Providers. Try to find user.`, users?.[0]?.email, provider);
 
         const advanced = await strapi
           .store({
@@ -66,6 +87,7 @@ const connect = (provider, query) => {
           .get();
 
         let user = _.find(users, { provider });
+
 
 
         if (users.length > 0) {
@@ -120,7 +142,7 @@ const connect = (provider, query) => {
 
         const createdUser = await strapi.query('user', 'users-permissions').create(params);
 
-        console.log('Services Providers. User created: ', {createdUser});
+        console.log('Services Providers. User created: ', { createdUser });
         return resolve([createdUser, null]);
       } catch (err) {
         reject([null, err]);
@@ -521,6 +543,23 @@ const getProfile = async (provider, query, callback) => {
       break;
     }
     case 'eventival': {
+      // get the id_token
+      const accessToken = query.access_token;
+      // decode the jwt token
+      const tokenPayload = jwt.decode(accessToken);
+      if (!tokenPayload) {
+        callback(new Error('unable to decode jwt token'));
+      } else {
+        callback(null, {
+          username: tokenPayload.name,
+          email: tokenPayload.email,
+          externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
+
+        });
+      }
+      break;
+    }
+    case 'eventivalindustry': {
       // get the id_token
       const accessToken = query.access_token;
       // decode the jwt token

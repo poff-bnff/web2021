@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-poff-2",
+      "handler": "trio-poff-2.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-poff-2",
+      "handler": "trio-poff-2.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-poff-2",
+      "handler": "trio-poff-2.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

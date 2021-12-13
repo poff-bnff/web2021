@@ -36,7 +36,7 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films', '/search'])
+    addConfigPathAliases(['/films', '/search', '/my_films'])
 }
 
 
@@ -847,6 +847,7 @@ function generateAllDataYAML(allData, lang) {
                 return locale_sort
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });

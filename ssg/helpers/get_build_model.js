@@ -109,7 +109,7 @@ function model(arg) {
 		'trio-p-oe-ff': 'trio_and_hero',
 
 		'industry-category': 'full',
-		'industry-event': 'full',
+		'industry-event': 'industry_event',
 		'industry-group': 'full',
 		'industry-person': 'full',
 		'industry-person-type': 'full',

@@ -529,7 +529,8 @@
     "schemas": {
       "Industry-project": {
         "required": [
-          "id"
+          "id",
+          "slug"
         ],
         "properties": {
           "id": {
@@ -1450,6 +1451,9 @@
         }
       },
       "NewIndustry-project": {
+        "required": [
+          "slug"
+        ],
         "properties": {
           "title_en": {
             "type": "string"

@@ -18,7 +18,7 @@ echo DOMAIN
 echo $DOMAIN
 
 echo 'Processing all Strapidata by Domain'
-node ./helpers/d_fetch.js
+nice -10 node ./helpers/d_fetch.js
 
 # se asendus tehakse initialise_entu.js skriptiga
 # sed -i 's/build: \.\/build.*$/build: \.\/build\/'$DOMAIN'/g' entu-ssg.yaml
