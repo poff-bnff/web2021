@@ -223,15 +223,14 @@ block content
                         each role in self.roles_in_project
                             .str_info_grid_3
                                 .str_info_label= role.label
-                                each name in role.names
-                                    .str_info_value= name.name
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
                     // RoleCompany
                     if self.comp_roles_in_project
                         each role in self.comp_roles_in_project
                             .str_info_grid_3
                                 .str_info_label= role.label
-                                .str_info_value= role.names.join(', ')
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
             section.project_runtime_box
 
