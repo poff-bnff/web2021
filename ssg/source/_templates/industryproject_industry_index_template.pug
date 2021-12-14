@@ -223,7 +223,8 @@ block content
                         each role in self.roles_in_project
                             .str_info_grid_3
                                 .str_info_label= role.label
-                                .str_info_value= role.names.join(', ')
+                                each name in role.names
+                                    .str_info_value= name.name
 
                     // RoleCompany
                     if self.comp_roles_in_project
