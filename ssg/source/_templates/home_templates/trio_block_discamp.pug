@@ -1,0 +1,55 @@
+
+//- - var heroPlusTrioNews = [] //- SEE ON VIIEKA JAOKS TARVILIK
+//- self.data.articleTrioBlock sisaldab mida?
+for blocks in self.data.articleTrioBlock.sort(function(a, b){ return (a.block.order > b.block.order) ? 1 : ((b.block.order > a.block.order) ? -1 : 0); })
+
+    if blocks.article
+        - heroPlusTrioNews.push(blocks.article.id)
+
+    if (typeof(blocks.block.title) !== 'object') && (typeof(blocks.block.lead) !== 'object')
+        if blocks.article
+            - let articleTrioFromYAML = self.data.articles.filter( (a) => { return blocks.article.id === a.id })
+            - let articleTrio = articleTrioFromYAML[0]
+            if articleTrio !== undefined && articleTrio.article_types && articleTrio.article_types[0]
+
+                - let artTrioTypes = []
+                - let artTrioTypeForPath = '';
+                each artTrioType in articleTrio.article_types
+                    if artTrioType.name.toLowerCase() === 'about'
+                        - artTrioTypeForPath = artTrioType.slug
+                    else if artTrioType.name.toLowerCase() === 'interview'
+                        - artTrioTypeForPath = artTrioType.slug
+                    else if artTrioType.name.toLowerCase() === 'sponsor_story'
+                        - artTrioTypeForPath = artTrioType.slug
+                    else if artTrioType.name.toLowerCase() === 'news'
+                        - artTrioTypeForPath = artTrioType.slug
+                    else
+                        - artTrioTypeForPath = article.article_types[0].slug
+
+                - var linkUrl = `/${lang_path}${artTrioTypeForPath}/${blocks.article.slug}`
+
+
+        else if blocks.block.customUrl
+            - var linkUrl = blocks.block.customUrl
+
+        if linkUrl !== undefined
+            a(href= linkUrl)
+
+                .trio_block_item.container_frame_12_5
+                    if blocks.block.image
+                        img(src=`https://assets.poff.ee/img/${blocks.block.image.hash}${blocks.block.image.ext}`).trio_image.container_contents_12_5
+                    else if typeof articleTrio !== 'undefined' && articleTrio.media && articleTrio.media.image && articleTrio.media.image[0]
+                        img(src=`https://assets.poff.ee/img/${articleTrio.media.image[0].hash}${articleTrio.media.image[0].ext}`).trio_image.container_contents_12_5
+                    else if typeof articleTrio !== 'undefined' && articleTrio.media && articleTrio.media.imageDefault && articleTrio.media.imageDefault[0]
+                        img(src=`https://assets.poff.ee/img/${articleTrio.media.imageDefault[0].hash}${articleTrio.media.imageDefault[0].ext}`).trio_image.container_contents_12_5
+                    else
+                        img(src='/assets/img/static/placeholder_hd_1.jpg').trio_image.container_contents_12_5
+                    .btn_trio
+                        if typeof(blocks.block.title) !== 'object'
+                            | !{blocks.block.title}
+
+                        //- .trio_title_headline_box
+                        //-     .trio_title_detailed
+                        //-         span
+                        //-             if typeof(blocks.block.title) !== 'object'
+                        //-                 | !{blocks.block.title}
