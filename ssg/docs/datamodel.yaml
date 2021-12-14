@@ -1181,12 +1181,14 @@ Course: &Course
     foreignUrl: (text)
     events:
         - *Event #(backreference)
+    domains: #(Component (repeatable))
+        - *Domain
 
 FrontPageCourses: &FrontPageCourses
     _path: /front-page-courses
     title: *Translated
     lead: *Translated #(Rich)
-    domain: *Domain #filmikool.poff.ee
+    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
     courses_et: #(Component (repeatable))
         - *Course
@@ -1575,18 +1577,20 @@ DisCampSubMenuItem: &DisCampSubMenuItem
     name: *Translated #(Component)
     discamp_article: *DisCampArticle
     order: (Number)
-    custom_url: *Translated #(Component)
-    name_private: (text)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
 
 DisCampMenu: &DisCampMenu
     _path: /dis-camp-menus
-    name_private: (text, private field)
+    #namePrivate: (text, private field)
     name: *Translated #(Component)
     discamp_article: *DisCampArticle
-    custom_url: *Translated #(Component)
+    customUrl: *Translated #(Component)
     order: (Number)
-    sub_menu_item: #(Component (repeatable))
+    subMenuItem: #(Component (repeatable))
         - *DisCampSubMenuItem
+    publish: (boolean)
 
 # Supporters
 SupPoff: &SupPoff
