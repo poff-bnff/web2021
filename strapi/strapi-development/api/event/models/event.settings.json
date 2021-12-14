@@ -35,8 +35,8 @@
       "type": "text"
     },
     "course": {
-      "model": "course",
-      "via": "events"
+      "via": "events",
+      "model": "course"
     },
     "endDate": {
       "type": "datetime"
