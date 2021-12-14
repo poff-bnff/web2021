@@ -535,7 +535,7 @@
           "id": {
             "type": "string"
           },
-          "name_private": {
+          "namePrivate": {
             "type": "string"
           },
           "name": {
@@ -688,7 +688,7 @@
               }
             }
           },
-          "custom_url": {
+          "customUrl": {
             "type": "object",
             "required": [
               "id"
@@ -711,7 +711,7 @@
           "order": {
             "type": "integer"
           },
-          "sub_menu_item": {
+          "subMenuItem": {
             "type": "array",
             "items": {
               "type": "object",
@@ -875,7 +875,7 @@
                 "order": {
                   "type": "integer"
                 },
-                "custom_url": {
+                "customUrl": {
                   "type": "object",
                   "required": [
                     "id"
@@ -895,17 +895,25 @@
                     }
                   }
                 },
-                "name_private": {
+                "namePrivate": {
                   "type": "string"
+                },
+                "publish": {
+                  "type": "boolean",
+                  "default": true
                 }
               }
             }
+          },
+          "publish": {
+            "type": "boolean",
+            "default": true
           }
         }
       },
       "NewDis-camp-menu": {
         "properties": {
-          "name_private": {
+          "namePrivate": {
             "type": "string"
           },
           "name": {
@@ -931,7 +939,7 @@
           "dis_camp_article": {
             "type": "string"
           },
-          "custom_url": {
+          "customUrl": {
             "type": "object",
             "required": [
               "id"
@@ -954,7 +962,7 @@
           "order": {
             "type": "integer"
           },
-          "sub_menu_item": {
+          "subMenuItem": {
             "type": "array",
             "items": {
               "type": "object",
@@ -1118,7 +1126,7 @@
                 "order": {
                   "type": "integer"
                 },
-                "custom_url": {
+                "customUrl": {
                   "type": "object",
                   "required": [
                     "id"
@@ -1138,11 +1146,19 @@
                     }
                   }
                 },
-                "name_private": {
+                "namePrivate": {
                   "type": "string"
+                },
+                "publish": {
+                  "type": "boolean",
+                  "default": true
                 }
               }
             }
+          },
+          "publish": {
+            "type": "boolean",
+            "default": true
           },
           "created_by": {
             "type": "string"
