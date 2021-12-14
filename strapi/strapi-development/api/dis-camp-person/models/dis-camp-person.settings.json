@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_people",
+  "info": {
+    "name": "DisCampPerson"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid"
+    },
+    "person": {
+      "model": "person"
+    },
+    "profile_pic_at_DC": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "email_at_DC": {
+      "type": "email"
+    },
+    "phone_at_DC": {
+      "type": "string"
+    },
+    "about_text": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "clip_url": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "filmography": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.filmography"
+    },
+    "discamp_person_types": {
+      "collection": "dis-camp-person-type"
+    },
+    "looking_for": {
+      "type": "richtext"
+    },
+    "contact_at_event": {
+      "type": "string"
+    }
+  }
+}

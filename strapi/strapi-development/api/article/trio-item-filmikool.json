@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_article_trio_item_filmikools",
+  "info": {
+    "name": "TrioItemFilmikool",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "lead": {
+      "type": "string"
+    },
+    "filmikooli_article": {
+      "model": "filmikooli-article"
+    }
+  }
+}

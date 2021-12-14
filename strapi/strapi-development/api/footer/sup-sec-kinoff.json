@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_footer_sup_sec_kinoff",
+  "info": {
+    "name": "SupSecKinoff",
+    "icon": "yen-sign"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "supporter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-kinoff"
+    }
+  }
+}
