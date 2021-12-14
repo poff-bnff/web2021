@@ -167,6 +167,21 @@ block content
     //-     section.viiekas
     //-         include /_templates/home_templates/viiekas_filmikool.pug
 
+    else if process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_discamp.pug
+
+        include /_templates/home_templates/frontpagecourse_discamp.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_discamp.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_discamp.pug
 
     else
         //- POFF
