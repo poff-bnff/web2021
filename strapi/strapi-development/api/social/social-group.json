@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_social_social_groups",
+  "info": {
+    "name": "SocialGroup",
+    "icon": "drum-steelpan"
+  },
+  "options": {},
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.social-item"
+    }
+  }
+}

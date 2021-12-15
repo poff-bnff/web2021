@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_menu_dis_camp_sub_menu_items",
+  "info": {
+    "name": "DisCampSubMenuItem",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "discamp_article": {
+      "model": "dis-camp-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "custom_url": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "name_private": {
+      "type": "string"
+    }
+  }
+}

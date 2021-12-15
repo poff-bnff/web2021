@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_teams_team_members",
+  "info": {
+    "name": "teamMember",
+    "icon": "chess-pawn"
+  },
+  "options": {},
+  "attributes": {
+    "person": {
+      "model": "person"
+    },
+    "pictureAtTeam": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "roleAtTeam_et": {
+      "type": "string"
+    },
+    "roleAtTeam_en": {
+      "type": "string"
+    },
+    "roleAtTeam_ru": {
+      "type": "string"
+    },
+    "emailAtTeam": {
+      "type": "email"
+    },
+    "phoneAtTeam": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

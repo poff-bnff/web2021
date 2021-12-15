@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_teams_test_teams",
+  "info": {
+    "name": "subTeam",
+    "icon": "chess"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "namePrivate": {
+      "type": "string",
+      "private": true
+    },
+    "teamMember": {
+      "type": "component",
+      "repeatable": true,
+      "component": "teams.team-member"
+    },
+    "juryMember": {
+      "type": "component",
+      "repeatable": true,
+      "component": "teams.jury-member"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+
+        //- if self.data.teams
+        //-     each team in self.data.teams
+        - var teamId = self.id
+        if self.groupType === 'jury'
+            section.team
+                if self.name
+                    h1.section_headline= self.name
+                if self.subTeam
+                    each subTeam in self.subTeam.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                        if subTeam.name && (typeof(subTeam.name) !== 'object')
+                            h1.sub_section_headline= `${subTeam.name}`
+                        .sub_team
+                            if subTeam.juryMember
+                                each juryMember in subTeam.juryMember
+                                    if juryMember.person
+                                        .person
+                                            .person_head
+                                                - var assetsDir = 'https://assets.poff.ee/img/'
+                                                if juryMember.pictureAtTeam && juryMember.pictureAtTeam[0].hash
+                                                    - var personPic = assetsDir + juryMember.pictureAtTeam[0].hash + juryMember.pictureAtTeam[0].ext
+                                                else if juryMember.person.picture
+                                                    - var personPic = assetsDir + juryMember.person.picture.hash + juryMember.person.picture.ext
+                                                else
+                                                    - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                                img.person_img(src=personPic alt=`${juryMember.person.firstName} ${juryMember.person.lastName}`)
+
+
+                                                    //- if val.personName
+                                                .person_body.text_center
+                                                    h4.text_center= `${juryMember.person.firstName} ${juryMember.person.lastName}`
+                                                    //- p.premiere_type.text_center= val.personOrganisation
+                                                    p
+                                                        span= (juryMember.roleAtJury)
+                                                        br
+                                                        span= (juryMember.professions)
+                                                        br
+                                                        if juryMember.emailAtTeam
+                                                            span= (juryMember.emailAtTeam)
+                                                        else
+                                                            span= (juryMember.person.eMail)
+                                                        br
+                                                        if juryMember.phoneAtTeam
+                                                            span= (juryMember.phoneAtTeam)
+                                                        else
+                                                            span= (juryMember.person.phoneNr)
+                                                        br
+                                                        span= (juryMember.about)
+
+                                                    //- p= `${juryMember.roleAtTeam} \<br> ${juryMember.emailAtTeam} \br ${juryMember.phoneAtTeam}`
+                                                    //- +format(juryMember.roleAtTeam)
+                                                    //- +format(juryMember.emailAtTeam)
+                                                    //- +format(juryMember.phoneAtTeam)
+                                                //- else
+                                                //-     .person_body
+                                                //-         h4= val.personOrganisation
+

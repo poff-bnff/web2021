@@ -6,7 +6,7 @@ if self.data.heroArticle
 
     if articleHero && articleHero.article_types && articleHero.article_types[0] && articleHero.publish && articleHero.title && articleHero.slug
 
-        //- p= `${news.title} - ${news.publish} - ${news.publishFrom} - ${news.publishUntil} - ${heroPlusTrioNews} - ${news.id} - ${news.article_types[0].name} - (${publishUntil} > ${currentTime}) - (${(!publishUntil || (publishUntil && (publishUntil > currentTime)))})`
+
         - let artHeroTypes = []
         - let artHeroTypeForPath = '';
         each artHeroType in articleHero.article_types

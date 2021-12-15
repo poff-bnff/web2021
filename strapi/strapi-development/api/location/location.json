@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_location_locations",
+  "info": {
+    "name": "Location",
+    "icon": "landmark"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "town": {
+      "model": "town"
+    },
+    "cinema": {
+      "model": "cinema"
+    },
+    "hall": {
+      "model": "hall"
+    }
+  }
+}

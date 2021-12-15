@@ -1,0 +1,52 @@
+{
+  "collectionName": "components_teams_jury_members",
+  "info": {
+    "name": "juryMember",
+    "icon": "user-astronaut"
+  },
+  "options": {},
+  "attributes": {
+    "person": {
+      "model": "person"
+    },
+    "pictureAtJury": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "roleAtJury_et": {
+      "type": "string"
+    },
+    "roleAtJury_en": {
+      "type": "string"
+    },
+    "roleAtJury_ru": {
+      "type": "string"
+    },
+    "professions_et": {
+      "type": "string"
+    },
+    "professions_en": {
+      "type": "string"
+    },
+    "professions_ru": {
+      "type": "string"
+    },
+    "country": {
+      "model": "country"
+    },
+    "about_et": {
+      "type": "richtext"
+    },
+    "about_en": {
+      "type": "richtext"
+    },
+    "about_ru": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_footers",
+  "info": {
+    "name": "DisCampFooter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "social_group": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social.social-group"
+    },
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.footer-item-nav"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-dis-camp"
+    }
+  }
+}

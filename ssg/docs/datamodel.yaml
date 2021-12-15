@@ -1007,9 +1007,9 @@ RoleCompany: &RoleCompany
     organisation: *Organisation
 
 Credentials: &Credentials
-    rolePerson:
+    rolePerson: #(Component (repeatable))
         - *RolePerson
-    roleCompany:
+    roleCompany: #(Component (repeatable))
         - *RoleCompany
 
 OrderedCountries: &OrderedCountries
@@ -1181,12 +1181,14 @@ Course: &Course
     foreignUrl: (text)
     events:
         - *Event #(backreference)
+    domains: #(Component (repeatable))
+        - *Domain
 
 FrontPageCourses: &FrontPageCourses
     _path: /front-page-courses
     title: *Translated
     lead: *Translated #(Rich)
-    domain: *Domain #filmikool.poff.ee
+    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
     courses_et: #(Component (repeatable))
         - *Course
@@ -1315,12 +1317,6 @@ ProjectStatus: &ProjectStatus
     status: (text)
     description: (Rich text)
 
-TeamCredentials: &TeamCredentials
-    rolePerson: #(Component (repeatable))
-        - *RolePerson
-    roleCompany: #(Component (repeatable))
-        - *RoleCompany
-
 IndustryProject: &IndustryProject
     _path: /industry-projects
     title_en: (text)
@@ -1342,7 +1338,7 @@ IndustryProject: &IndustryProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    teamCredentials: *TeamCredentials
+    teamCredentials: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
@@ -1420,6 +1416,180 @@ IndustryMenu: &IndustryMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
+    publish: (boolean)
+
+
+#DiscoveryCampus
+
+DisCampPersonType: &DisCampPersonType
+    _path: /dis-camp-person-types
+    type: (text)
+    description: (Rich text)
+
+DisCampPerson: &DisCampPerson
+    _path: /dis-camp-people
+    slug: (UID)
+    person: *Person
+    profile_pic_at_DC: *StrapiMedia
+    role_at_films: #(Component (repeatable))
+        - *RoleAtFilm
+    email_at_DC: (Email)
+    phone_at_DC: (text)
+    about_text: (Rich text) #kas peaks olema kolmes keeles
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    clip_url: (text)
+    website: (text)
+    filmography: *Filmography
+    discamp_person_types: #(Component (repeatable))
+        - *DisCampPersonType
+    looking_for: (text)
+    contact_at_event: (text)
+
+DisCampArticle: &DisCampArticle
+    _path: /dis-camp-articles
+    created_by:
+        firstname: (text)
+        lastname: (text)
+    created_at: (datetime)
+    titlePrivate: (text, private field)
+    title_et: (text)
+    title_en: (text)
+    title_ru: (text)
+    slug_et: (UID)
+    slug_en: (UID)
+    slug_ru: (UID)
+    lead_et: (Rich text)
+    lead_en: (Rich text)
+    lead_ru: (Rich text)
+    contents_et: (Rich text)
+    contents_en: (Rich text)
+    contents_ru: (Rich text)
+    media: *ArticleMedia #(Component)
+    publish_from: (Datetime)
+    publish_until: (Datetime)
+    publish_et: (boolean)
+    publish_en: (boolean)
+    publish_ru: (boolean)
+    button: #(Component (repeatable))
+        - *Button
+    article_types: #(Component (repeatable))
+        - *ArticleType
+    tag_premiere_types: #(Component (repeatable))
+        - *TagPremiereType
+    programmes: #(Component (repeatable))
+        - *Programme
+    tag_genres: #(Component (repeatable))
+        - *TagGenre
+    tag_keywords: #(Component (repeatable))
+        - *TagKeyword
+    web_authors: #(Component (repeatable))
+        - *WebAuthor
+    discamp_people:
+        - *DisCampPerson
+    people:
+        - *Person
+    organisations:
+        - *Organisation
+
+DisCampGroup: &DisCampGroup
+    _path: /dis-camp-groups
+    name_private: (text)
+    domain: *Domain
+    name_en: (text)
+    slug_en: (UID)
+    description_en: (Rich text)
+
+DisCampCategory: &DisCampCategory
+    _path: /dis-camp-categories
+    name: (text)
+    description: (Rich text)
+
+DisCampProject: &DisCampProject
+    _path: /dis-camp-projects
+    title_en: (text)
+    title_original: (text)
+    countries: #(Component (repeatable))
+        - *Country
+    languages: #(Component (repeatable))
+        - *Language
+    project_types: #(Component (repeatable))
+        - *ProjectType
+    logline: (text)
+    project_statuses: #(Component (repeatable))
+        - *ProjectStatus
+    completion_date: (Datetime)
+    num_of_seasons: (Number)
+    num_of_episodes: (Number)
+    episode_duration: (Number)
+    broadcasters: #(Component (repeatable))
+        - *Organisation
+    planned_premiere: (Date)
+    country_focus: *Country
+    team_credentials: *Credentials
+    budget: (Number)
+    financed: (Number)
+    attached_partners: #(Component (repeatable))
+        - *Organisation
+    looking_for: (text)
+    synopsis: (Rich text)
+    directors_note: (Rich text)
+    contact_name: (text)
+    contact_company: *Organisation
+    contact_address: (text)
+    contact_email: (Email)
+    contact_web: (text)
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    clip_url: (text)
+    slug: (UID)
+    tag_genres:
+        - *TagGenre
+
+DisCampEvent: &DisCampEvent
+    _path: /dis-camp-events
+    title_private: (text)
+    start_time: (Datetime)
+    title_en: (text)
+    video_url: (text)
+    slug_en: (UID)
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    location: *Location #ei sisalda kirjeldust
+    lead: (Rich text)
+    description: (Rich text)
+    discamp_categories: #(Component (repeatable))
+        - *DisCampCategory
+    project_type: *ProjectType
+    publish_from: (Datetime)
+    publish_until: (Datetime)
+    publish: (Boolean)
+    channel: *Channel
+    duration_time: (Time)
+    discamp_people:
+        - *DisCampPerson
+    discamp_projects:
+        - *DisCampProject
+    is_live_event: (Boolean)
+    is_public_event: (Boolean)
+
+DisCampSubMenuItem: &DisCampSubMenuItem
+    name: *Translated #(Component)
+    discamp_article: *DisCampArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+DisCampMenu: &DisCampMenu
+    _path: /dis-camp-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    discamp_article: *DisCampArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *DisCampSubMenuItem
     publish: (boolean)
 
 # Supporters
@@ -1653,6 +1823,29 @@ FilmikooliSupporter: &FilmikoolSupporter
     supporters: #(Component (repeatable))
         - *SupSecFilmikool
 
+SupDisCamp: &SupDisCamp
+    name: (text)
+    custom_url: (text)
+    logo_white: *StrapiMedia
+    logo_colour: *StrapiMedia
+    logo_black: *StrapiMedia
+    discamp_article: *DisCampArticle
+
+SupSecDisCamp: &SupSecDisCamp
+    name: *Translated
+    order: (Number)
+    supporters: #(Component (repeatable))
+        - *SupDisCamp
+
+DisCampSupporter: &DisCampSupporter
+    _path: /dis-camp-supporters
+    name_private: (text, private)
+    domain: *Domain
+    title: *Translated
+    intro: *Translated
+    supporters: #(Component (repeatable))
+        - *SupSecDisCamp
+
 # Footer
 SocialItem: &SocialItem
     name: (text)
@@ -1778,6 +1971,16 @@ FilmikooliFooter: &FilmikooliFooter
     supporters: #(Component (repeatable))
         - *SupSecFilmikool
 
+DisCampFooter: &DisCampFooter
+    _path: /dis-camp-footers
+    name_private: (text)
+    domain: *Domain #(Component)
+    social_group: *SocialGroup #(Component )
+    item: #(Component (repeatable))
+        - *FooterItemNav
+    supporters: #(Component (repeatable))
+        - *SupSecDisCamp
+
 # Product & Payment
 
 TicketingRight: &TicketingRight
@@ -1902,6 +2105,12 @@ HeroArticleFilmikool:
     article_et: *FilmikooliArticle #(Component)
     article_en: *FilmikooliArticle #(Component)
     article_ru: *FilmikooliArticle #(Component)
+
+HeroArticleDisCamp:
+    _path: /hero-article-dis-camp
+    article_et: *DisCampArticle #(Component)
+    article_en: *DisCampArticle #(Component)
+    article_ru: *DisCampArticle #(Component)
 
 # Trio
 TrioItemPoff: &TrioItemPoff
@@ -2103,3 +2312,23 @@ TrioFilmikool: &TrioFilmikool
     trioFilmikool_et: *Triofilmikool #(Component)
     trioFilmikool_en: *Triofilmikool #(Component)
     trioFilmikool_ru: *Triofilmikool #(Component)
+
+TrioItemDisCamp: &TrioItemDisCamp
+    discamp_article: *DisCampArticle #(Component)
+    title: (text)
+    lead: (text)
+    custom_url: (text)
+    image: *StrapiMedia #(Component)
+
+Triodiscamp: &Triodiscamp
+    name: (text)
+    lead: (text)
+    trioItem_1: *TrioItemDisCamp #(Component)
+    trioItem_2: *TrioItemDisCamp #(Component)
+    trioItem_3: *TrioItemDisCamp #(Component)
+
+TrioDisCamp: &TrioDisCamp
+    _path: /trio-dis-camp
+    trio_discamp_et: *Triodiscamp #(Component)
+    trio_discamp_en: *Triodiscamp #(Component)
+    trio_discamp_ru: *Triodiscamp #(Component)

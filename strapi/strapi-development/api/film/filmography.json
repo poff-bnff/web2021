@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_film_filmographies",
+  "info": {
+    "name": "filmography",
+    "icon": "border-style"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    },
+    "film": {
+      "type": "component",
+      "repeatable": true,
+      "component": "film.film-in-filmography"
+    }
+  }
+}
