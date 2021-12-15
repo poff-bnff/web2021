@@ -1239,6 +1239,38 @@
                 }
               }
             }
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "ipAdress": {
+                  "type": "string"
+                },
+                "server": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1886,6 +1918,12 @@
                   }
                 }
               }
+            }
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "created_by": {
