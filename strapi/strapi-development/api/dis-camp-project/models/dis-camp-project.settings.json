@@ -14,7 +14,7 @@
     "title_en": {
       "type": "string"
     },
-    "title_original": {
+    "titleOriginal": {
       "type": "string"
     },
     "countries": {
@@ -32,28 +32,28 @@
     "project_statuses": {
       "collection": "project-status"
     },
-    "completion_date": {
+    "completionDate": {
       "type": "datetime"
     },
-    "num_of_seasons": {
+    "numOfSeasons": {
       "type": "integer"
     },
-    "num_of_episodes": {
+    "numOfEpisodes": {
       "type": "integer"
     },
-    "episode_duration": {
+    "episodeDuration": {
       "type": "integer"
     },
     "broadcasters": {
       "collection": "organisation"
     },
-    "planned_premiere": {
+    "plannedPremiere": {
       "type": "datetime"
     },
     "country_focus": {
       "model": "country"
     },
-    "team_credentials": {
+    "teamCredentials": {
       "type": "component",
       "repeatable": false,
       "component": "film.credentials-new"
@@ -67,28 +67,28 @@
     "attached_partners": {
       "collection": "organisation"
     },
-    "looking_for": {
+    "lookingFor": {
       "type": "richtext"
     },
     "synopsis": {
       "type": "richtext"
     },
-    "directors_note": {
+    "directorsNote": {
       "type": "richtext"
     },
-    "contact_name": {
+    "contactName": {
       "type": "string"
     },
-    "contact_company": {
+    "contactCompany": {
       "model": "organisation"
     },
-    "contact_address": {
+    "contactAddress": {
       "type": "string"
     },
-    "contact_email": {
+    "contactEmail": {
       "type": "email"
     },
-    "contact_web": {
+    "contactWeb": {
       "type": "string"
     },
     "images": {
@@ -103,7 +103,7 @@
       "required": false,
       "pluginOptions": {}
     },
-    "clip_url": {
+    "clipUrl": {
       "type": "string"
     },
     "slug": {
@@ -111,6 +111,12 @@
     },
     "tag_genres": {
       "collection": "tag-genre"
+    },
+    "editions": {
+      "collection": "festival-edition"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }

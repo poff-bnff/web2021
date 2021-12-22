@@ -535,7 +535,7 @@
           "id": {
             "type": "string"
           },
-          "name_private": {
+          "namePrivate": {
             "type": "string"
           },
           "domain": {
@@ -580,7 +580,7 @@
       },
       "NewDis-camp-group": {
         "properties": {
-          "name_private": {
+          "namePrivate": {
             "type": "string"
           },
           "domain": {

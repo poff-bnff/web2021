@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "dis_camp_people",
   "info": {
-    "name": "DisCampPerson"
+    "name": "DisCampPerson",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,7 +17,7 @@
     "person": {
       "model": "person"
     },
-    "profile_pic_at_DC": {
+    "profilePicAtDC": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -31,10 +32,10 @@
     "role_at_films": {
       "collection": "role-at-film"
     },
-    "email_at_DC": {
+    "emailAtDC": {
       "type": "email"
     },
-    "phone_at_DC": {
+    "phoneAtDC": {
       "type": "string"
     },
     "about_text": {
@@ -52,7 +53,7 @@
       "required": false,
       "pluginOptions": {}
     },
-    "clip_url": {
+    "clipUrl": {
       "type": "string"
     },
     "website": {
@@ -66,11 +67,17 @@
     "discamp_person_types": {
       "collection": "dis-camp-person-type"
     },
-    "looking_for": {
+    "lookingFor": {
       "type": "richtext"
     },
-    "contact_at_event": {
+    "contactAtEvent": {
       "type": "string"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }

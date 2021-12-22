@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "dis_camp_articles",
   "info": {
-    "name": "DisCampArticle"
+    "name": "DisCampArticle",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -57,12 +58,6 @@
       "repeatable": false,
       "component": "article.article-media"
     },
-    "publish_from": {
-      "type": "datetime"
-    },
-    "publish_until": {
-      "type": "datetime"
-    },
     "publish_et": {
       "type": "boolean"
     },
@@ -103,6 +98,12 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
     }
   }
 }

@@ -535,17 +535,17 @@
           "id": {
             "type": "string"
           },
-          "title_private": {
+          "titlePrivate": {
             "type": "string"
           },
-          "start_time": {
+          "startTime": {
             "type": "string",
             "format": "date-time"
           },
           "title_en": {
             "type": "string"
           },
-          "video_url": {
+          "videoUrl": {
             "type": "string"
           },
           "slug_en": {
@@ -708,11 +708,11 @@
               }
             }
           },
-          "publish_from": {
+          "publishFrom": {
             "type": "string",
             "format": "date-time"
           },
-          "publish_until": {
+          "publishUntil": {
             "type": "string",
             "format": "date-time"
           },
@@ -747,7 +747,7 @@
               }
             }
           },
-          "duration_time": {
+          "durationTime": {
             "type": "string"
           },
           "discamp_people": {
@@ -766,7 +766,7 @@
                 "person": {
                   "type": "string"
                 },
-                "profile_pic_at_DC": {
+                "profilePicAtDC": {
                   "type": "string"
                 },
                 "role_at_films": {
@@ -775,10 +775,10 @@
                     "type": "string"
                   }
                 },
-                "email_at_DC": {
+                "emailAtDC": {
                   "type": "string"
                 },
-                "phone_at_DC": {
+                "phoneAtDC": {
                   "type": "string"
                 },
                 "about_text": {
@@ -790,7 +790,7 @@
                     "type": "string"
                   }
                 },
-                "clip_url": {
+                "clipUrl": {
                   "type": "string"
                 },
                 "website": {
@@ -805,11 +805,23 @@
                     "type": "string"
                   }
                 },
-                "looking_for": {
+                "lookingFor": {
                   "type": "string"
                 },
-                "contact_at_event": {
+                "contactAtEvent": {
                   "type": "string"
+                },
+                "festival_editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -833,7 +845,7 @@
                 "title_en": {
                   "type": "string"
                 },
-                "title_original": {
+                "titleOriginal": {
                   "type": "string"
                 },
                 "countries": {
@@ -863,16 +875,16 @@
                     "type": "string"
                   }
                 },
-                "completion_date": {
+                "completionDate": {
                   "type": "string"
                 },
-                "num_of_seasons": {
+                "numOfSeasons": {
                   "type": "integer"
                 },
-                "num_of_episodes": {
+                "numOfEpisodes": {
                   "type": "integer"
                 },
-                "episode_duration": {
+                "episodeDuration": {
                   "type": "integer"
                 },
                 "broadcasters": {
@@ -881,13 +893,13 @@
                     "type": "string"
                   }
                 },
-                "planned_premiere": {
+                "plannedPremiere": {
                   "type": "string"
                 },
                 "country_focus": {
                   "type": "string"
                 },
-                "team_credentials": {
+                "teamCredentials": {
                   "type": "component"
                 },
                 "budget": {
@@ -902,28 +914,28 @@
                     "type": "string"
                   }
                 },
-                "looking_for": {
+                "lookingFor": {
                   "type": "string"
                 },
                 "synopsis": {
                   "type": "string"
                 },
-                "directors_note": {
+                "directorsNote": {
                   "type": "string"
                 },
-                "contact_name": {
+                "contactName": {
                   "type": "string"
                 },
-                "contact_company": {
+                "contactCompany": {
                   "type": "string"
                 },
-                "contact_address": {
+                "contactAddress": {
                   "type": "string"
                 },
-                "contact_email": {
+                "contactEmail": {
                   "type": "string"
                 },
-                "contact_web": {
+                "contactWeb": {
                   "type": "string"
                 },
                 "images": {
@@ -932,13 +944,25 @@
                     "type": "string"
                   }
                 },
-                "clip_url": {
+                "clipUrl": {
                   "type": "string"
                 },
                 "slug": {
                   "type": "uid"
                 },
                 "tag_genres": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tag_looking_fors": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -953,27 +977,27 @@
               }
             }
           },
-          "is_live_event": {
+          "isLiveEvent": {
             "type": "boolean"
           },
-          "is_public_event": {
+          "isPublicEvent": {
             "type": "boolean"
           }
         }
       },
       "NewDis-camp-event": {
         "properties": {
-          "title_private": {
+          "titlePrivate": {
             "type": "string"
           },
-          "start_time": {
+          "startTime": {
             "type": "string",
             "format": "date-time"
           },
           "title_en": {
             "type": "string"
           },
-          "video_url": {
+          "videoUrl": {
             "type": "string"
           },
           "slug_en": {
@@ -997,11 +1021,11 @@
           "project_type": {
             "type": "string"
           },
-          "publish_from": {
+          "publishFrom": {
             "type": "string",
             "format": "date-time"
           },
-          "publish_until": {
+          "publishUntil": {
             "type": "string",
             "format": "date-time"
           },
@@ -1011,7 +1035,7 @@
           "channel": {
             "type": "string"
           },
-          "duration_time": {
+          "durationTime": {
             "type": "string"
           },
           "discamp_people": {
@@ -1026,10 +1050,10 @@
               "type": "string"
             }
           },
-          "is_live_event": {
+          "isLiveEvent": {
             "type": "boolean"
           },
-          "is_public_event": {
+          "isPublicEvent": {
             "type": "boolean"
           },
           "created_by": {

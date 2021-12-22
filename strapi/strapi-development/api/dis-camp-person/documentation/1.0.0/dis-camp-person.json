@@ -611,7 +611,7 @@
               }
             }
           },
-          "profile_pic_at_DC": {
+          "profilePicAtDC": {
             "required": [
               "id",
               "name",
@@ -709,10 +709,10 @@
               }
             }
           },
-          "email_at_DC": {
+          "emailAtDC": {
             "type": "string"
           },
-          "phone_at_DC": {
+          "phoneAtDC": {
             "type": "string"
           },
           "about_text": {
@@ -788,7 +788,7 @@
               }
             }
           },
-          "clip_url": {
+          "clipUrl": {
             "type": "string"
           },
           "website": {
@@ -1068,11 +1068,121 @@
               }
             }
           },
-          "looking_for": {
+          "lookingFor": {
             "type": "string"
           },
-          "contact_at_event": {
+          "contactAtEvent": {
             "type": "string"
+          },
+          "festival_editions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "year": {
+                  "type": "integer"
+                },
+                "name_et": {
+                  "type": "string"
+                },
+                "name_en": {
+                  "type": "string"
+                },
+                "name_ru": {
+                  "type": "string"
+                },
+                "description_et": {
+                  "type": "string"
+                },
+                "description_en": {
+                  "type": "string"
+                },
+                "description_ru": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "endDate": {
+                  "type": "string"
+                },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "festival": {
+                  "type": "string"
+                },
+                "slug_et": {
+                  "type": "uid"
+                },
+                "slug_en": {
+                  "type": "uid"
+                },
+                "slug_ru": {
+                  "type": "uid"
+                },
+                "remoteId": {
+                  "type": "uid"
+                },
+                "projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tag_looking_fors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "et": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "ru": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1090,16 +1200,16 @@
               "type": "string"
             }
           },
-          "email_at_DC": {
+          "emailAtDC": {
             "type": "string"
           },
-          "phone_at_DC": {
+          "phoneAtDC": {
             "type": "string"
           },
           "about_text": {
             "type": "string"
           },
-          "clip_url": {
+          "clipUrl": {
             "type": "string"
           },
           "website": {
@@ -1360,11 +1470,23 @@
               "type": "string"
             }
           },
-          "looking_for": {
+          "lookingFor": {
             "type": "string"
           },
-          "contact_at_event": {
+          "contactAtEvent": {
             "type": "string"
+          },
+          "festival_editions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tag_looking_fors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

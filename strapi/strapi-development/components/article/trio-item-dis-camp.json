@@ -2,7 +2,8 @@
   "collectionName": "components_article_trio_item_dis_camps",
   "info": {
     "name": "TrioItemDisCamp",
-    "icon": "american-sign-language-interpreting"
+    "icon": "american-sign-language-interpreting",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,9 +12,6 @@
     },
     "title": {
       "type": "string"
-    },
-    "lead": {
-      "type": "richtext"
     },
     "custom_url": {
       "type": "string"
@@ -29,6 +27,9 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "lead": {
+      "type": "string"
     }
   }
 }

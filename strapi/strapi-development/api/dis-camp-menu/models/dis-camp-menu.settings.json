@@ -19,9 +19,6 @@
       "repeatable": false,
       "component": "translated.translated-short"
     },
-    "dis_camp_article": {
-      "model": "dis-camp-article"
-    },
     "customUrl": {
       "type": "component",
       "repeatable": false,
@@ -38,6 +35,9 @@
     "publish": {
       "type": "boolean",
       "default": true
+    },
+    "discamp_article": {
+      "model": "dis-camp-article"
     }
   }
 }
