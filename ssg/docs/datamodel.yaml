@@ -1448,7 +1448,7 @@ DisCampPerson: &DisCampPerson
         -   *FestivalEdition
     tag_looking_fors:
         -   *TagLookingFor
-        
+
 DisCampArticle: &DisCampArticle
     _path: /dis-camp-articles
     created_by:
@@ -1841,7 +1841,7 @@ SupDisCamp: &SupDisCamp
 SupSecDisCamp: &SupSecDisCamp
     name: *Translated
     order: (Number)
-    supporters: #(Component (repeatable))
+    supporter: #(Component (repeatable))
         - *SupDisCamp
 
 DisCampSupporter: &DisCampSupporter
