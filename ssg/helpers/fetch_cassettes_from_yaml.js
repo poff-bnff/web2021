@@ -308,6 +308,7 @@ if (CHECKPROGRAMMES) {
 
     let cassettesWithOutFestivalEditions = []
 
+    // Filter cassettes by FE's
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)

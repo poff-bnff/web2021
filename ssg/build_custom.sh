@@ -210,6 +210,9 @@ fetch_data()
     echo '==== custom build ==== fetch_cassettes_from_yaml'
     node ./helpers/fetch_cassettes_from_yaml.js
 
+    echo '==== custom build ==== fetch_cassettes_archive_from_yaml'
+    node ./helpers/fetch_cassettes_archive_from_yaml.js
+
     echo '==== custom build ==== fetch_six_film_block_from_yaml'
     node ./helpers/fetch_six_film_block_from_yaml.js
 
