@@ -15,6 +15,12 @@ header
             li
                 nav.org_menu
                     span.org_item
+                        a(href='https://industry.poff.ee')
+                            | !{`Industry@Tallinn & Baltic Event`}
+                    span.org_item
+                        a(href='https://filmikool.poff.ee')
+                            | Filmikool
+                    span.org_item
                         a(href='https://poff.ee')
                             | PÖFF
                     span.org_item
@@ -27,9 +33,6 @@ header
                     //-     a(href='https://hoff.ee')
                     //-         | HÕFF
                     span.org_item
-                        a(href='https://kinoff.ee')
-                            | Kinoff
-                    span.org_item
                         a(href='https://poff.elisastage.ee')
                             | PÖFF Online Cinema
                     //- span.org_item
@@ -38,9 +41,9 @@ header
                     //- span.org_item
                     //-     a(href='https://spatial.chat/s/ITBESocialclub')
                     //-         | SpatialChat
-                    span.org_item
-                        a(href='https://proscreen.poff.ee')
-                            | See films on PROSCREEN
+                    //- span.org_item
+                    //-     a(href='https://proscreen.poff.ee')
+                    //-         | See films on PROSCREEN
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
