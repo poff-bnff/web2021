@@ -66,6 +66,10 @@
     "slug_ru": {
       "type": "uid",
       "targetField": "title_ru"
+    },
+    "award": {
+      "via": "awardings",
+      "model": "industry-award"
     }
   }
 }

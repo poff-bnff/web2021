@@ -16,24 +16,6 @@ const getDimensions = buffer =>
     .then(({ width = null, height = null }) => ({ width, height }))
     .catch(() => ({})); // ignore errors
 
-// const THUMBNAIL_RESIZE_OPTIONS = {
-//   width: 245,
-//   height: 156,
-//   fit: 'inside',
-// };
-
-// const FILM_HDTV = {
-//   width: 1920,
-//   height: 1080,
-//   fit: 'inside',
-// };
-
-// const FILM_THUMB = {
-//   width: 300,
-//   height: 380,
-//   fit: 'inside',
-// };
-
 const resize_options = [
   {'F_': [{
     sufiks: '_big_16_9',
@@ -92,17 +74,17 @@ const resize_options = [
   {'NO': [{
     sufiks: '_big',
     width: 1920,
-    fit: 'cover'
+    fit: 'inside'
   },
   {
     sufiks: '_med',
     width: 1280,
-    fit: 'cover'
+    fit: 'inside'
   },
   {
     sufiks: '_small',
     width: 640,
-    fit: 'cover'
+    fit: 'inside'
   }]}
 ]
 
@@ -116,154 +98,12 @@ async function findOptions(prefix){
   return options
 }
 
-// const ALL_RESIZE_OPTIONS = [FILM_HDTV, THUMBNAIL_RESIZE_OPTIONS, FILM_THUMB]
 
 const resizeTo = (buffer, options) =>
   sharp(buffer)
     .resize(options)
     .toBuffer()
     .catch(() => null);
-
-// async function resizeToFormat(buffer, options) {
-//   if(!options.height){
-//     const originalDimensions = await getDimensions(buffer);
-//     options.height = originalDimensions.height
-//   }
-//   return sharp(buffer)
-//     .resize(options)
-//     .toFormat("jpg")
-//     .toBuffer()
-//     .catch(() => null);
-// }
-
-// const resizeToFormat = (buffer, options) =>
-//   sharp(buffer)
-//     .resize(options)
-//     .toFormat("jpg")
-//     .toBuffer()
-//     .catch(() => null);
-
-// const generateThumbnail = async file => {
-//   if (!(await canBeProccessed(file.buffer))) {
-//     return null;
-//   }
-
-//   const { width, height } = await getDimensions(file.buffer);
-
-//   if (width > THUMBNAIL_RESIZE_OPTIONS.width || height > THUMBNAIL_RESIZE_OPTIONS.height) {
-//     const newBuff = await resizeTo(file.buffer, THUMBNAIL_RESIZE_OPTIONS);
-
-//     if (newBuff) {
-//       const { width, height, size } = await getMetadatas(newBuff);
-
-//       return {
-//         name: `thumbnail_${file.name}`,
-//         hash: `thumbnail_${file.hash}`,
-//         ext: file.ext,
-//         mime: file.mime,
-//         width,
-//         height,
-//         size: bytesToKbytes(size),
-//         buffer: newBuff,
-//         path: file.path ? file.path : null,
-//       };
-//     }
-//   }
-
-//   return null;
-// };
-
-// async function generateCustomFile(file, resizeOptions) {
-
-//   const { width, height } = await getDimensions(file.buffer)
-//   if (width > resizeOptions.width || height > resizeOptions.height) {
-//     let sufiks = resizeOptions.sufiks
-//     delete resizeOptions.sufiks
-
-//     const newBuff = await resizeTo(file.buffer, resizeOptions);
-
-//     if (newBuff) {
-//       const { width, height, size } = await getMetadatas(newBuff);
-
-//       return {
-//         name: `${file.name}${sufiks}`,
-//         hash: `${file.hash}${sufiks}`,
-//         ext: file.ext,
-//         mime: file.mime,
-//         width,
-//         height,
-//         size: bytesToKbytes(size),
-//         buffer: newBuff,
-//         path: file.path ? file.path : null,
-//       };
-//     }
-//   }
-
-//   return null;
-// }
-
-// const generateFilmHDTV = async file => {
-
-// const generateCustom = async file => {
-
-//   if (!(await canBeProccessed(file.buffer))) {
-//     return null;
-//   }
-
-//   const { width, height } = await getDimensions(file.buffer);
-
-//   let files = []
-//   console.log(ALL_RESIZE_OPTIONS.length)
-//   for (let option of ALL_RESIZE_OPTIONS){
-//     if (width > option.width || height > option.height) {
-//       const newBuff = await resizeTo(file.buffer, option);
-
-//       if (newBuff) {
-//         const { width, height, size } = await getMetadatas(newBuff);
-
-//         let prefix = option.width +'x' + option.height
-
-//         files.push (
-//         {
-//           name: `${prefix}_${file.name}`,
-//           hash: `${prefix}_${file.hash}`,
-//           ext: file.ext,
-//           mime: file.mime,
-//           width,
-//           height,
-//           size: bytesToKbytes(size),
-//           buffer: newBuff,
-//           path: file.path ? file.path : null,
-//         })
-//       }
-//     }
-//     else {
-//       console.log('Image too small to cut')
-//         const { width, height, size } = await getMetadatas(file.buffer);
-
-//         let prefix = 'original'
-
-//         files.push (
-//         {
-//           name: `${prefix}_${file.name}`,
-//           hash: `${prefix}_${file.hash}`,
-//           ext: file.ext,
-//           mime: file.mime,
-//           width,
-//           height,
-//           size: bytesToKbytes(size),
-//           buffer: file.buffer,
-//           path: file.path ? file.path : null,
-//         })
-//     }
-//   }
-
-//   if(files.length > 0) {
-//     return files
-//   } 
-
-//   return null;
-// };
 
 const optimize = async buffer => {
   const {
@@ -294,15 +134,6 @@ const optimize = async buffer => {
     .catch(() => ({ buffer }));
 };
 
-// const DEFAULT_BREAKPOINTS = {
-//   large: 1000,
-//   medium: 750,
-//   small: 500,
-//   test: 200,
-// };
-
-// const getBreakpoints = () => strapi.config.get('plugins.upload.breakpoints', DEFAULT_BREAKPOINTS);
-
 const generateResponsiveFormats = async file => {
   const {
     responsiveDimensions = false,
@@ -322,12 +153,9 @@ const generateResponsiveFormats = async file => {
 
     if(filePrefix === 'F_') {
       let params = await findOptions(filePrefix)
-      // console.log({params})
 
       return Promise.all(
         Object.keys(params).map(key => {
-          // console.log({key})
-          // console.log(params[key])
           const breakpoint = params[key]
 
           if (breakpointSmallerThan(breakpoint, originalDimensions)) {
@@ -375,26 +203,17 @@ const generateResponsiveFormats = async file => {
     }        
   }
 
-  // const breakpoints = getBreakpoints();
-  // return Promise.all(
-  //   Object.keys(breakpoints).map(key => {
-  //     const breakpoint = breakpoints[key];
-
-  //     if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-  //       return generateBreakpoint(key, { file, breakpoint, originalDimensions });
-  //     }
-  //   })
-  // );
 };
 
 const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) => {
 
-  // console.log('generateBreakpoint', {key}, {file}, {breakpoint})
-
   let sufiks = breakpoint.sufiks
-  // delete breakpoint.sufiks
+
   if(!breakpoint.height){
     breakpoint.height = originalDimensions.height
+	if(breakpoint.height > 1920) {
+	  breakpoint.height = 1920
+	}
   }
 
   const newBuff = await resizeTo(file.buffer, {
@@ -405,8 +224,7 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
 
   try {
     const metadata = await sharp(newBuff).metadata();
-    // console.log({metadata});
-    
+
   } catch (error) {
     console.log(`An error occurred during processing: ${error}`);
   }
@@ -434,17 +252,15 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
 };
 
 const breakpointSmallerThan = (breakpoint, { width, height }) => {
-  console.log('breakpointSmallerThan', breakpoint, width, height)
+  console.log('breakpointSmallerThan', breakpoint, 'originalDimensions', width, height)
   return breakpoint.width < width || breakpoint.height < height;
 };
 
-// const formatsToProccess = ['jpeg', 'png', 'webp', 'tiff', 'gif']; 
-const bitmapFormats = ['tiff', 'png', 'webp', 'bmp', 'jpg', 'jpeg']
+const bitmapFormats = ['tiff', 'tif', 'png', 'webp', 'jpg', 'jpeg']
 const otherFormats = ['pdf', 'doc', 'svg']
 
 const canBeProccessed = async buffer => {
   const { format } = await getMetadatas(buffer);
-  // return format && formatsToProccess.includes(format) ;
   return format && (bitmapFormats.includes(format) || otherFormats.includes(format));
 };
 
@@ -457,8 +273,6 @@ module.exports = {
   getDimensions,
   generateResponsiveFormats,
   bitmapFormats,
-  // generateThumbnail,
   bytesToKbytes,
   optimize,
-  // generateCustom,
 };

@@ -56,7 +56,7 @@ const combineFilters = params => {
 
 async function findBuff(buff) {
   let n_buffer = sharp(buff)
-    .toFormat('jpeg')
+    .toFormat('jpeg', { quality: 100 })
     .toBuffer()
     .catch(() => null);
 
@@ -133,8 +133,6 @@ module.exports = {
       metas
     );
 
-    console.log('row 123', {formattedFile}) // siiiiiiiiiiiiiiiiiin
-
     return _.assign(formattedFile, info, {
       buffer,
     });
@@ -159,8 +157,6 @@ module.exports = {
 
   async test(id, modelname) {
     console.log({id}, {modelname})
-
-    // saan siia olemasolevapildi id, aga data selle kyljes pole 6igel kujul, et sellega midagi peale hakata
 
     // let media_query = await strapi.plugins.upload.services.upload.fetch({ id }); // pilt kui objekt on siin
 
@@ -198,10 +194,8 @@ module.exports = {
       size: fileData.size,
       buffer: n_buffer
     }
-    // console.log({fileData})
 
     fileData = data
-    // console.log({fileData})
 
     const config = strapi.plugins.upload.config;
 
@@ -209,26 +203,16 @@ module.exports = {
 
     const {
       getDimensions,
-      // generateThumbnail,
       generateResponsiveFormats,
-      // generateCustom
     } = strapi.plugins.upload.services['image-manipulation'];
 
     await strapi.plugins.upload.provider.upload(fileData);
-
-    // const thumbnailFile = await generateThumbnail(fileData);
-    // if (thumbnailFile) {
-    //   await strapi.plugins.upload.provider.upload(thumbnailFile);
-    //   delete thumbnailFile.buffer;
-    //   _.set(fileData, 'formats.thumbnail', thumbnailFile);
-    // }
 
     const formats = await generateResponsiveFormats(fileData);
     console.log({formats})
 
     if (Array.isArray(formats) && formats.length > 0) {
       for (const format of formats) {
-        console.log('sain tagasi format: ', format)
 
         if (!format || format === undefined) continue;
 
@@ -253,31 +237,7 @@ module.exports = {
 
     return this.add(fileData, { user });
 
-    // console.log('row 183', {formats}) //siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin
-
-    // const customFiles = await generateCustom(fileData)
-    // console.log('189', customFiles)
-
-    // if( customFiles && customFiles.length > 0) {
-    //   for (const file of customFiles) {
-    //     await strapi.plugins.upload.provider.upload(file)
-    //     const { width, height } = await getDimensions(fileData.buffer);
-
-    //     delete fileData.buffer;
-
-    //     _.assign(file, {
-    //       provider: config.provider,
-    //       width,
-    //       height,
-    //     });
-
-    //     console.log('204', {file}) //siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin
-
-    //     return this.add(file, { user });
-    //   }
-    // }
-
-  },
+   },
 
   async updateFileInfo(id, { name, alternativeText, caption }, { user } = {}) {
     const dbFile = await this.fetch({ id });
@@ -345,8 +305,6 @@ module.exports = {
       _.set(fileData, 'formats.thumbnail', thumbnailFile);
     }
 
-    console.log({thumbnailFile}) //siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin
-
     const formats = await generateResponsiveFormats(fileData);
     if (Array.isArray(formats) && formats.length > 0) {
       for (const format of formats) {
@@ -360,8 +318,6 @@ module.exports = {
         _.set(fileData, ['formats', key], file);
       }
     }
-
-    // console.log({formats}) //siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin
 
     const { width, height } = await getDimensions(fileData.buffer);
     delete fileData.buffer;
