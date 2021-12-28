@@ -641,7 +641,7 @@
                 "order": {
                   "type": "integer"
                 },
-                "supporters": {
+                "supporter": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -1082,7 +1082,7 @@
                 "order": {
                   "type": "integer"
                 },
-                "supporters": {
+                "supporter": {
                   "type": "array",
                   "items": {
                     "type": "object",
