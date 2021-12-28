@@ -41,6 +41,14 @@
     },
     {
       "method": "GET",
+      "path": "/all-logs",
+      "handler": "publisher.allLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/my-started-build-log",
       "handler": "publisher.myStartedBuildLog",
       "config": {

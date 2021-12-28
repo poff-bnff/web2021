@@ -2,7 +2,8 @@
   "collectionName": "components_menu_dis_camp_sub_menu_items",
   "info": {
     "name": "DisCampSubMenuItem",
-    "icon": "align-right"
+    "icon": "align-right",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,13 +18,17 @@
     "order": {
       "type": "integer"
     },
-    "custom_url": {
+    "customUrl": {
       "type": "component",
       "repeatable": false,
       "component": "translated.translated-short"
     },
-    "name_private": {
+    "namePrivate": {
       "type": "string"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

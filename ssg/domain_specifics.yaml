@@ -161,10 +161,8 @@ locales:
         - en
         - ru
     discoverycampus.poff.ee:
-        - et
         - en
-        - ru
-        
+
 defaultLocale:
     poff.ee: et
     justfilm.ee: et
@@ -176,7 +174,7 @@ defaultLocale:
     tartuff.ee: et
     oyafond.ee: et
     filmikool.poff.ee: et
-    discoverycampus.poff.ee: et
+    discoverycampus.poff.ee: en
 
 vialogUrls:
     et:

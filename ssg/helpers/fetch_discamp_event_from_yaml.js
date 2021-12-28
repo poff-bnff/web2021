@@ -381,4 +381,3 @@ function generateEventYaml(element, dirSlug) {
     fs.writeFileSync(yamlPath, oneYaml, 'utf8');
     fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/discamp_event_index_template.pug`);
 }
-

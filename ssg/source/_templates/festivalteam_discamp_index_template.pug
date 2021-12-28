@@ -1,0 +1,67 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    //- section.grid_article
+    //-     section.article_hero_head
+    //-         img(src=`/assets/img/static/tartuff_2019_ohust_1.jpg`).article_hero_image
+    //-         .article_hero_headline_box
+    //-             .article_title_detailed
+    //-                 | Tartuffi külastaja meelespea 2020
+
+
+    section.team
+        //- h1.section_headline= self.label.all.festivalTeam
+
+            //- section.sub_team
+        //- if self.data.teams
+        //- each team in self.data.teams
+        - var teamId = self.id
+        - var teamName = self.name
+        if self.groupType === 'festivalTeam'
+            h1.section_headline= teamName
+            if self.subTeam
+                each subTeam in self.subTeam.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                    if subTeam.name && (typeof(subTeam.name) !== 'object')
+                        h1.sub_section_headline= `${subTeam.name}`
+                    .sub_team
+                        if subTeam.teamMember
+                            each teamMember in subTeam.teamMember.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                                if teamMember.person
+                                    .person
+                                        .person_head
+                                            - var assetsDir = 'https://assets.poff.ee/img/'
+                                            if teamMember.pictureAtTeam && teamMember.pictureAtTeam[0].hash
+                                                - var personPic = assetsDir + teamMember.pictureAtTeam[0].hash + teamMember.pictureAtTeam[0].ext
+                                            else if teamMember.person.picture
+                                                - var personPic = assetsDir + teamMember.person.picture.hash + teamMember.person.picture.ext
+                                            else
+                                                - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                            img.person_img(src=personPic alt=`${teamMember.person.firstName} ${teamMember.person.lastName}`)
+
+
+                                                //- if val.personName
+                                            .person_body.text_center
+                                                h4.text_center= `${teamMember.person.firstName} ${teamMember.person.lastName}`
+                                                //- p.premiere_type.text_center= val.personOrganisation
+                                                p
+                                                    span= (teamMember.roleAtTeam)
+                                                    br
+                                                    if teamMember.emailAtTeam
+                                                        span= (teamMember.emailAtTeam)
+                                                    else
+                                                        span= (teamMember.person.eMail)
+                                                    br
+                                                    if teamMember.phoneAtTeam
+                                                        span= (teamMember.phoneAtTeam)
+                                                    else
+                                                        span= (teamMember.person.phoneNr)
+                                                //- p= `${teamMember.roleAtTeam} \<br> ${teamMember.emailAtTeam} \br ${teamMember.phoneAtTeam}`
+                                                //- +format(teamMember.roleAtTeam)
+                                                //- +format(teamMember.emailAtTeam)
+                                                //- +format(teamMember.phoneAtTeam)
+                                            //- else
+                                            //-     .person_body
+                                            //-         h4= val.personOrganisation
+

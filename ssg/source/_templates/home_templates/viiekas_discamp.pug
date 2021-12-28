@@ -1,0 +1,61 @@
+- var counter = 0
+
+- var sortFunction = function(a, b) {
+-   if(a.publishFrom) {
+-       var aSortSource = a.publishFrom
+-   } else {
+-       var aSortSource = a.created_at
+-   }
+-   if (b.publishFrom) {
+-       var bSortSource = b.publishFrom
+-   } else {
+-       var bSortSource = b.created_at
+-   }
+-   return (aSortSource > bSortSource) ? -1 : ((bSortSource > aSortSource) ? 1 : 0);
+- }
+
+each news in self.data.articles.sort(sortFunction)
+    if news.publish && news.title && news.title.length > 1
+        - var currentTime = new Date()
+        if typeof(news.publishFrom) === 'undefined'
+            - var publishFrom= new Date(news.created_at)
+        else
+            - var publishFrom= new Date(news.publishFrom)
+
+        if news.publishUntil
+            - var publishUntil = new Date(news.publishUntil)
+
+        if (currentTime > publishFrom)
+
+            if (!publishUntil || (publishUntil && (publishUntil > currentTime)))
+                if news.article_types && news.article_types[0]
+
+                    - let artTypes = []
+                    - let artTypeForPath = '';
+                    each artType in news.article_types
+                        - artTypes.push(artType.name.toLowerCase())
+                        if artType.name.toLowerCase() === whichTypesToDisplay[0]
+                            - artTypeForPath = artType.slug.toLowerCase()
+                        else if whichTypesToDisplay.includes(artType.name.toLowerCase())
+                            - artTypeForPath = artType.slug.toLowerCase()
+                    if heroPlusTrioNews.includes(news.id) || (!artTypes.some(ai => whichTypesToDisplay.includes(ai)))
+                        - continue
+                    if counter >= 5
+                        - break
+                    - counter++
+
+                    .viieka_item
+                        //- - console.log('arttype: ' + artTypeForPath + ' title: ' + news.title + ' arttypes: ' + artTypes + ' continue or not: ' + artTypes.some(ai => whichTypesToDisplay.includes(ai)))
+                        a(href= `/${lang_path}${artTypeForPath}/${ news.slug}`)
+                            .container_frame_16_9
+                                if news.media && news.media.image && news.media.image[0]
+                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.media.image[0].hash}${news.media.image[0].ext}`).trio_image
+                                else if news.media && news.media.imageDefault && news.media.imageDefault[0]
+                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.media.imageDefault[0].hash}${news.media.imageDefault[0].ext}`).trio_image
+                                else
+                                    img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg').trio_image
+                            .viieka_body
+                                h3.viieka_headline= news.title
+                                .article_lead= news.lead
+                                //- p.dark= news.publishFrom
+

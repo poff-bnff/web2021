@@ -49,7 +49,7 @@ const connect = (provider, query) => {
 
         const badges = await getEventivalBadges(profile.email);
         console.log('getEventivalBadges for ', profile.email);
-        if (!badges.body.accreditation) {
+        if (!badges?.body?.accreditation) {
           const personIndustryBadges = badges && badges.statusCode === 200 ? badges.body.badges.map(b => b.type) : null
           console.log('No accreditation for ', profile.email, 'Badges:', personIndustryBadges);
           return reject([null, formatError({

@@ -43,7 +43,7 @@ if (DOMAIN === 'discoverycampus.poff.ee') {
             model_name: 'Country'
         },
         'teamCredentials': {
-            model_name: 'TeamCredentials'
+            model_name: 'Credentials'
         },
         'attached_partners': {
             model_name: 'Organisation'
@@ -299,7 +299,7 @@ function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, project
 
             }
 
-            
+
 
             for (const ix in discamp_project.persons) {
                 const discamp_person = discamp_project.persons[ix]

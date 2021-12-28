@@ -15,6 +15,7 @@ const domains = [
   "justfilm.ee",
   "shorts.poff.ee",
   "industry.poff.ee",
+  "discoverycampus.poff.ee",
   "kinoff.poff.ee",
   "hoff.ee",
   "kumu.poff.ee",
@@ -253,11 +254,11 @@ module.exports = {
 
     const site = data.site;
     // Kontrollib kas kasutaja on superadmin
-    if (userInfo.roles && !userInfo.roles.map(r => r.id).includes(superAdminRoleId)) {
-      ctx.send({ messageType: 'warning', buildSite: site, message: 'Hetkel pole live-i panek lubatud' });
-    }
+    // if (userInfo.roles && !userInfo.roles.map(r => r.id).includes(superAdminRoleId)) {
+    //   ctx.send({ messageType: 'warning', buildSite: site, message: 'Hetkel pole live-i panek lubatud' });
+    // }
     //kontrollin kas päringule lisati site
-    else if (!data.site) {
+    if (!data.site) {
       return ctx.badRequest("no site");
     } else {
       // kas site on meie site'ide nimekirjas
@@ -360,6 +361,16 @@ module.exports = {
           build_errors: r.build_errors
         }
       })
+    return result
+
+  },
+  allLogs: async (ctx) => {
+    const params = {
+      _limit: -1,
+      _sort: 'id:desc',
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+
     return result
 
   },

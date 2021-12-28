@@ -15,10 +15,10 @@ const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const coursesDir =  path.join(fetchDir, 'courses')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
-const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-if (DOMAIN === 'filmikool.poff.ee') {
+if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
 
     const strapiDataCoursePath = path.join(strapiDataDirPath, `Course.yaml`)
     const STRAPIDATA_COURSES = yaml.load(fs.readFileSync(strapiDataCoursePath, 'utf8')) || []
@@ -159,7 +159,7 @@ if (DOMAIN === 'filmikool.poff.ee') {
             fs.mkdirSync(saveDir, { recursive: true });
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/filmikool_course_index_template.pug`)
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/${DOMAIN === 'industry.poff.ee' ? 'industry' : 'discamp'}_course_index_template.pug`)
             return course
         }) || []
 

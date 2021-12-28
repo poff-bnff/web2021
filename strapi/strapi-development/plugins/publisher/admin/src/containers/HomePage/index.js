@@ -115,6 +115,7 @@ buttonsContainer = <Container>
   <ButtonAndLog site="filmikool.poff.ee" buttonText="FILMIKOOL LIVE" />
   <ButtonAndLog site="oyafond.ee" buttonText="BRUNO OJA FOND LIVE" />
   <ButtonAndLog site="industry.poff.ee" buttonText="INDUSTRY LIVE" />
+  <ButtonAndLog site="discoverycampus.poff.ee" buttonText="DISCAMP LIVE" />
   <br />
   {killButton}
 </Container>
