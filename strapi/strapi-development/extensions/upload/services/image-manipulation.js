@@ -88,6 +88,12 @@ const resize_options = [
   }]}
 ]
 
+const THUMBNAIL_RESIZE_OPTIONS = {
+  width: 245,
+  height: 156,
+  fit: 'inside',
+};
+
 async function findOptions(prefix){
   let options = null 
   resize_options.forEach( e => {
@@ -98,12 +104,41 @@ async function findOptions(prefix){
   return options
 }
 
-
 const resizeTo = (buffer, options) =>
   sharp(buffer)
     .resize(options)
     .toBuffer()
     .catch(() => null);
+
+const generateThumbnail = async file => {
+  if (!(await canBeProccessed(file.buffer))) {
+    return null;
+  }
+
+  const { width, height } = await getDimensions(file.buffer);
+
+  if (width > THUMBNAIL_RESIZE_OPTIONS.width || height > THUMBNAIL_RESIZE_OPTIONS.height) {
+    const newBuff = await resizeTo(file.buffer, THUMBNAIL_RESIZE_OPTIONS);
+
+    if (newBuff) {
+      const { width, height, size } = await getMetadatas(newBuff);
+
+      return {
+        name: `thumbnail_${file.name}`,
+        hash: `thumbnail_${file.hash}`,
+        ext: file.ext,
+        mime: file.mime,
+        width,
+        height,
+        size: bytesToKbytes(size),
+        buffer: newBuff,
+        path: file.path ? file.path : null,
+      };
+    }
+  }
+
+  return null;
+};
 
 const optimize = async buffer => {
   const {
@@ -274,5 +309,6 @@ module.exports = {
   generateResponsiveFormats,
   bitmapFormats,
   bytesToKbytes,
+  generateThumbnail,
   optimize,
 };

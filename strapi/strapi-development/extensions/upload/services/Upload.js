@@ -155,24 +155,8 @@ module.exports = {
     );
   },
 
-  async test(id, modelname) {
-    console.log({id}, {modelname})
-
-    // let media_query = await strapi.plugins.upload.services.upload.fetch({ id }); // pilt kui objekt on siin
-
-    // console.log(JSON.stringify(media_query, 0, 2))
-
-    // const dbFile = await this.fetch({ id });
-
-    // if (!dbFile) {
-    //   throw strapi.errors.notFound('file not found');
-    // }
-
-    return id
-
-  },
-
   async uploadFileAndPersist(fileData, { user } = {}) {
+
     let n_ext = fileData.ext
     let n_mime = fileData.mime
     let n_buffer = fileData.buffer
@@ -204,12 +188,21 @@ module.exports = {
     const {
       getDimensions,
       generateResponsiveFormats,
+      generateThumbnail,
     } = strapi.plugins.upload.services['image-manipulation'];
 
     await strapi.plugins.upload.provider.upload(fileData);
 
+    const thumbnailFile = await generateThumbnail(fileData);
+    if (thumbnailFile) {
+      await strapi.plugins.upload.provider.upload(thumbnailFile);
+      delete thumbnailFile.buffer;
+      _.set(fileData, 'formats.thumbnail', thumbnailFile);
+    }
+
     const formats = await generateResponsiveFormats(fileData);
-    console.log({formats})
+
+    console.log({formats}) // logidesse saadud formaadid
 
     if (Array.isArray(formats) && formats.length > 0) {
       for (const format of formats) {
