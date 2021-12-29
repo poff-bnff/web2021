@@ -51,6 +51,16 @@ html(lang= self.locale)
             block content
             include ../_templates/footer.pug
 
+    //- DISCAMP
+    else if process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+        include ../_templates/head_discamp.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_discamp.pug
+            block content
+            include ../_templates/footer.pug
+
+
     //- HOFF
     else if process.env['DOMAIN'] === 'hoff.ee'
         include ../_templates/head_hoff.pug

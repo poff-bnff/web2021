@@ -15,20 +15,20 @@
       "type": "date"
     },
     "project": {
-      "via": "awardings",
-      "model": "industry-project"
+      "model": "industry-project",
+      "via": "awardings"
     },
     "film": {
-      "via": "awardings",
-      "model": "film"
+      "model": "film",
+      "via": "awardings"
     },
     "person": {
       "model": "person",
       "via": "awardings"
     },
     "organisation": {
-      "via": "awardings",
-      "model": "organisation"
+      "model": "organisation",
+      "via": "awardings"
     },
     "festival_edition": {
       "model": "festival-edition",
@@ -66,6 +66,10 @@
     "slug_ru": {
       "type": "uid",
       "targetField": "title_ru"
+    },
+    "award": {
+      "model": "industry-award",
+      "via": "awardings"
     }
   }
 }

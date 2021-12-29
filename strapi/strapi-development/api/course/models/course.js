@@ -26,8 +26,6 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['filmikool.poff.ee'] // hard coded if needed AS LIST!!!
-// const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
   lifecycles: {
@@ -35,6 +33,7 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
@@ -42,6 +41,8 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
+      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+
       console.log('Update or add: ')
       if (data.skipbuild) return
       if (domains.length > 0) {

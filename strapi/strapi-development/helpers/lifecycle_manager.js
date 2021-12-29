@@ -20,6 +20,7 @@ const mapping_domain = {
   'filmikool.poff.ee': 'filmikool',
   'hoff.ee': 'hoff',
   'industry.poff.ee': 'industry',
+  'discoverycampus.poff.ee': 'discamp',
   'justfilm.ee': 'just',
   'kinoff.poff.ee': 'kinoff',
   'kumu.poff.ee': 'kumu',

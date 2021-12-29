@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/screening-modes",
+      "handler": "screening-mode.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/screening-modes/count",
+      "handler": "screening-mode.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/screening-modes/:id",
+      "handler": "screening-mode.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/screening-modes",
+      "handler": "screening-mode.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/screening-modes/:id",
+      "handler": "screening-mode.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/screening-modes/:id",
+      "handler": "screening-mode.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

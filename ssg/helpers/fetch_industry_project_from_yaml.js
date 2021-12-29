@@ -45,7 +45,7 @@ if (DOMAIN === 'industry.poff.ee') {
             model_name: 'Country'
         },
         'teamCredentials': {
-            model_name: 'TeamCredentials',
+            model_name: 'Credentials'
         },
         'attached_partners': {
             model_name: 'Organisation'
@@ -311,7 +311,6 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 }
             }
-
 
             for (const ix in industry_project.persons) {
                 const industry_person = industry_project.persons[ix]

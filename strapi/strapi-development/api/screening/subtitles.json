@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_screening_subtitles",
+  "info": {
+    "name": "Subtitles",
+    "icon": "equals"
+  },
+  "options": {},
+  "attributes": {
+    "languages": {
+      "collection": "language"
+    }
+  }
+}

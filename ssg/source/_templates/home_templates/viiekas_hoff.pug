@@ -29,7 +29,7 @@ each news in self.data.articles.sort(sortFunction)
 
             if (!publishUntil || (publishUntil && (publishUntil > currentTime)))
                 if news.article_types && news.article_types[0]
-                    //- p= `${news.title} - ${news.publish} - ${news.publishFrom} - ${news.publishUntil} - ${heroPlusTrioNews} - ${news.id} - ${news.article_types[0].name} - (${publishUntil} > ${currentTime}) - (${(!publishUntil || (publishUntil && (publishUntil > currentTime)))})`
+
                     - let artTypes = []
                     - let artTypeForPath = '';
                     each artType in news.article_types

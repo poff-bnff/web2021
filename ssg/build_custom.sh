@@ -8,6 +8,7 @@ BUILDOPTION[6]="kumu.poff.ee"
 BUILDOPTION[7]="tartuff.ee"
 BUILDOPTION[8]="oyafond.ee"
 BUILDOPTION[9]="filmikool.poff.ee"
+BUILDOPTION[10]="discoverycampus.poff.ee"
 
 ask_what_to_build()
 {
@@ -23,7 +24,7 @@ ask_what_to_build()
     if [ $new_number -eq 0 ]
     then
         runexit
-    elif [ $new_number -lt 11 ] && [ $new_number -gt 0 ]
+    elif [ $new_number -lt 12 ] && [ $new_number -gt 0 ]
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
@@ -173,6 +174,9 @@ fetch_data()
     echo '==== custom build ==== fetch_industry_person_from_yaml'
     node ./helpers/fetch_industry_person_from_yaml.js
 
+    echo '==== custom build ==== fetch_discamp_person_from_yaml'
+    node ./helpers/fetch_industry_person_from_yaml.js
+
     echo '==== custom build ==== fetch_article_types_from_yaml'
     node ./helpers/fetch_article_type_from_yaml.js
 
@@ -224,10 +228,16 @@ fetch_data()
     echo '==== custom build ==== fetch_industry_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js
 
+    echo '==== custom build ==== fetch_discamp_project_from_yaml'
+    node ./helpers/fetch_industry_project_from_yaml.js
+
     echo '==== custom build ==== fetch_industry_channels_from_yaml'
     node ./helpers/fetch_channels_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_event_from_yaml'
+    node ./helpers/fetch_industry_event_from_yaml.js
+
+    echo '==== custom build ==== fetch_discamp_event_from_yaml'
     node ./helpers/fetch_industry_event_from_yaml.js
 
     echo '==== custom build ==== fetch_eventival_persons_from_yaml.js'

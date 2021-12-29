@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_film_film_in_filmographies",
+  "info": {
+    "name": "filmInFilmography",
+    "icon": "chalkboard-teacher"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "film": {
+      "model": "film"
+    },
+    "foreignUrl": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "titleOriginal": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "synopsis_et": {
+      "type": "richtext"
+    },
+    "synopsis_en": {
+      "type": "richtext"
+    },
+    "synopsis_ru": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "trailerUrl": {
+      "type": "string"
+    }
+  }
+}

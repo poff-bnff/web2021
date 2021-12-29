@@ -837,6 +837,9 @@
                 "slug_ru": {
                   "type": "uid"
                 },
+                "award": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },

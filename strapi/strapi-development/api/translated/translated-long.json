@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_translated_translated_longs",
+  "info": {
+    "name": "Translated Long",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "et": {
+      "type": "richtext"
+    },
+    "en": {
+      "type": "richtext"
+    },
+    "ru": {
+      "type": "richtext"
+    }
+  }
+}

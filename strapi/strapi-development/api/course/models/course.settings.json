@@ -71,8 +71,8 @@
       "type": "text"
     },
     "events": {
-      "via": "course",
-      "collection": "event"
+      "collection": "event",
+      "via": "course"
     },
     "volume": {
       "type": "string"
@@ -81,6 +81,9 @@
       "type": "component",
       "repeatable": false,
       "component": "media.film-media"
+    },
+    "domains": {
+      "collection": "domain"
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_time_periods",
+  "info": {
+    "name": "period",
+    "icon": "quote-left"
+  },
+  "options": {},
+  "attributes": {
+    "startDateTime": {
+      "type": "datetime"
+    },
+    "endDateTime": {
+      "type": "datetime"
+    }
+  }
+}

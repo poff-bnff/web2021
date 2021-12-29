@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_label_labels",
+  "info": {
+    "name": "label",
+    "icon": "poop"
+  },
+  "options": {},
+  "attributes": {
+    "value_et": {
+      "type": "string"
+    },
+    "value_en": {
+      "type": "string"
+    },
+    "value_ru": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

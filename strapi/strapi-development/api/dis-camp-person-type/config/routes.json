@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dis-camp-person-types",
+      "handler": "dis-camp-person-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-person-types/count",
+      "handler": "dis-camp-person-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-person-types/:id",
+      "handler": "dis-camp-person-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dis-camp-person-types",
+      "handler": "dis-camp-person-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dis-camp-person-types/:id",
+      "handler": "dis-camp-person-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dis-camp-person-types/:id",
+      "handler": "dis-camp-person-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -75,6 +75,150 @@ Thumbnail: &Thumbnail
     # width:  (number)
     # heigth:  (number)
 
+_big_16_9: &_big_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med_16_9: &_med_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_16_9: &_small_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big: &_big
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med: &_med
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small: &_small
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big_sq: &_big_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med_sq: &_med_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_sq: &_small_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_thumb_sq: &_thumb_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big_p: &_big_p
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_p: &_small_p
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+FilePrint: &FilePrint
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+    sufiks: (text)
+
 StrapiMedia: &StrapiMedia
     id: (number)
     name: (text)
@@ -87,6 +231,18 @@ StrapiMedia: &StrapiMedia
         medium: *Medium #(Component)
         small: *Small #(Component)
         thumbnail: *Thumbnail #(Component)
+        _big_16_9: *_big_16_9
+        _med_16_9: *_med_16_9
+        _small_16_9: *_small_16_9
+        _big: *_big
+        _med: *_med
+        _small: *_small
+        _big_sq: *_big_sq
+        _med_sq: *_med_sq
+        _small_sq: *_small_sq
+        _thumb_sq: *_thumb_sq
+        _big_p: *_big_p
+        _small_p: *_small_p
     hash: (text)
     ext: (text)
     # mime: (text)
@@ -1007,9 +1163,9 @@ RoleCompany: &RoleCompany
     organisation: *Organisation
 
 Credentials: &Credentials
-    rolePerson:
+    rolePerson: #(Component (repeatable))
         - *RolePerson
-    roleCompany:
+    roleCompany: #(Component (repeatable))
         - *RoleCompany
 
 OrderedCountries: &OrderedCountries
@@ -1181,12 +1337,14 @@ Course: &Course
     foreignUrl: (text)
     events:
         - *Event #(backreference)
+    domains: #(Component (repeatable))
+        - *Domain
 
 FrontPageCourses: &FrontPageCourses
     _path: /front-page-courses
     title: *Translated
     lead: *Translated #(Rich)
-    domain: *Domain #filmikool.poff.ee
+    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
     courses_et: #(Component (repeatable))
         - *Course
@@ -1315,12 +1473,6 @@ ProjectStatus: &ProjectStatus
     status: (text)
     description: (Rich text)
 
-TeamCredentials: &TeamCredentials
-    rolePerson: #(Component (repeatable))
-        - *RolePerson
-    roleCompany: #(Component (repeatable))
-        - *RoleCompany
-
 IndustryProject: &IndustryProject
     _path: /industry-projects
     title_en: (text)
@@ -1342,7 +1494,7 @@ IndustryProject: &IndustryProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    teamCredentials: *TeamCredentials
+    teamCredentials: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
@@ -1420,6 +1572,187 @@ IndustryMenu: &IndustryMenu
     order: (Number)
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
+    publish: (boolean)
+
+#DiscoveryCampus
+
+DisCampPersonType: &DisCampPersonType
+    _path: /dis-camp-person-types
+    type: (text)
+    description: (Rich text)
+
+DisCampPerson: &DisCampPerson
+    _path: /dis-camp-people
+    slug: (UID)
+    person: *Person
+    profilePicAtDC: *StrapiMedia
+    role_at_films: #(Component (repeatable))
+        - *RoleAtFilm
+    emailAtDC: (Email)
+    phoneAtDC: (text)
+    about_text: (Rich text) #kas peaks olema kolmes keeles
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    clipUrl: (text)
+    website: (text)
+    filmography: *Filmography
+    discamp_person_types: #(Component (repeatable))
+        - *DisCampPersonType
+    lookingFor: (text)
+    contact_at_event: (text)
+    festival_editions:
+        -   *FestivalEdition
+    tag_looking_fors:
+        -   *TagLookingFor
+
+DisCampArticle: &DisCampArticle
+    _path: /dis-camp-articles
+    created_by:
+        firstname: (text)
+        lastname: (text)
+    created_at: (datetime)
+    titlePrivate: (text, private field)
+    title_et: (text)
+    title_en: (text)
+    title_ru: (text)
+    slug_et: (UID)
+    slug_en: (UID)
+    slug_ru: (UID)
+    lead_et: (Rich text)
+    lead_en: (Rich text)
+    lead_ru: (Rich text)
+    contents_et: (Rich text)
+    contents_en: (Rich text)
+    contents_ru: (Rich text)
+    media: *ArticleMedia #(Component)
+    publishFrom: (Datetime)
+    publishUntil: (Datetime)
+    publish_et: (boolean)
+    publish_en: (boolean)
+    publish_ru: (boolean)
+    button: #(Component (repeatable))
+        - *Button
+    article_types: #(Component (repeatable))
+        - *ArticleType
+    tag_premiere_types: #(Component (repeatable))
+        - *TagPremiereType
+    programmes: #(Component (repeatable))
+        - *Programme
+    tag_genres: #(Component (repeatable))
+        - *TagGenre
+    tag_keywords: #(Component (repeatable))
+        - *TagKeyword
+    web_authors: #(Component (repeatable))
+        - *WebAuthor
+    discamp_people:
+        - *DisCampPerson
+    people:
+        - *Person
+    organisations:
+        - *Organisation
+
+DisCampGroup: &DisCampGroup
+    _path: /dis-camp-groups
+    namePrivate: (text)
+    domain: *Domain
+    name_en: (text)
+    slug_en: (UID)
+    description_en: (Rich text)
+
+DisCampCategory: &DisCampCategory
+    _path: /dis-camp-categories
+    name: (text)
+    description: (Rich text)
+
+DisCampProject: &DisCampProject
+    _path: /dis-camp-projects
+    title_en: (text)
+    titleOriginal: (text)
+    countries: #(Component (repeatable))
+        - *Country
+    languages: #(Component (repeatable))
+        - *Language
+    project_types: #(Component (repeatable))
+        - *ProjectType
+    logline: (text)
+    project_statuses: #(Component (repeatable))
+        - *ProjectStatus
+    completionDate: (Datetime)
+    numOfSeasons: (Number)
+    numOfEpisodes: (Number)
+    episodeDuration: (Number)
+    broadcasters: #(Component (repeatable))
+        - *Organisation
+    plannedPremiere: (Date)
+    country_focus: *Country
+    teamCredentials: *Credentials
+    budget: (Number)
+    financed: (Number)
+    attached_partners: #(Component (repeatable))
+        - *Organisation
+    lookingFor: (text)
+    synopsis: (Rich text)
+    directorsNote: (Rich text)
+    contactName: (text)
+    contactCompany: *Organisation
+    contactAddress: (text)
+    contactEmail: (Email)
+    contactWeb: (text)
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    clipUrl: (text)
+    slug: (UID)
+    tag_genres:
+        - *TagGenre
+    editions: #(Component (repeatable))
+        - *FestivalEdition
+    tag_looking_fors:
+        - *TagLookingFor
+
+DisCampEvent: &DisCampEvent
+    _path: /dis-camp-events
+    titlePrivate: (text)
+    startTime: (Datetime)
+    title_en: (text)
+    videoUrl: (text)
+    slug_en: (UID)
+    images: #(Component (repeatable))
+        - *StrapiMedia
+    location: *Location #ei sisalda kirjeldust
+    lead: (Rich text)
+    description: (Rich text)
+    discamp_categories: #(Component (repeatable))
+        - *DisCampCategory
+    project_type: *ProjectType
+    publishFrom: (Datetime)
+    publishUntil: (Datetime)
+    publish: (Boolean)
+    channel: *Channel
+    durationTime: (Time)
+    discamp_people:
+        - *DisCampPerson
+    discamp_projects:
+        - *DisCampProject
+    isLiveEvent: (Boolean)
+    isPublicEvent: (Boolean)
+
+DisCampSubMenuItem: &DisCampSubMenuItem
+    name: *Translated #(Component)
+    discamp_article: *DisCampArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+DisCampMenu: &DisCampMenu
+    _path: /dis-camp-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    discamp_article: *DisCampArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *DisCampSubMenuItem
     publish: (boolean)
 
 # Supporters
@@ -1653,6 +1986,29 @@ FilmikooliSupporter: &FilmikoolSupporter
     supporters: #(Component (repeatable))
         - *SupSecFilmikool
 
+SupDisCamp: &SupDisCamp
+    name: (text)
+    customUrl: (text)
+    logoWhite: *StrapiMedia
+    logoColour: *StrapiMedia
+    logoBlack: *StrapiMedia
+    discamp_article: *DisCampArticle
+
+SupSecDisCamp: &SupSecDisCamp
+    name: *Translated
+    order: (Number)
+    supporter: #(Component (repeatable))
+        - *SupDisCamp
+
+DisCampSupporter: &DisCampSupporter
+    _path: /dis-camp-supporters
+    name_private: (text, private)
+    domain: *Domain
+    title: *Translated
+    intro: *Translated
+    supporters: #(Component (repeatable))
+        - *SupSecDisCamp
+
 # Footer
 SocialItem: &SocialItem
     name: (text)
@@ -1778,6 +2134,16 @@ FilmikooliFooter: &FilmikooliFooter
     supporters: #(Component (repeatable))
         - *SupSecFilmikool
 
+DisCampFooter: &DisCampFooter
+    _path: /dis-camp-footers
+    namePrivate: (text)
+    domain: *Domain #(Component)
+    socialGroup: *SocialGroup #(Component )
+    item: #(Component (repeatable))
+        - *FooterItemNav
+    supporters: #(Component (repeatable))
+        - *SupSecDisCamp
+
 # Product & Payment
 
 TicketingRight: &TicketingRight
@@ -1902,6 +2268,12 @@ HeroArticleFilmikool:
     article_et: *FilmikooliArticle #(Component)
     article_en: *FilmikooliArticle #(Component)
     article_ru: *FilmikooliArticle #(Component)
+
+HeroArticleDisCamp:
+    _path: /hero-article-dis-camp
+    article_et: *DisCampArticle #(Component)
+    article_en: *DisCampArticle #(Component)
+    article_ru: *DisCampArticle #(Component)
 
 # Trio
 TrioItemPoff: &TrioItemPoff
@@ -2103,3 +2475,23 @@ TrioFilmikool: &TrioFilmikool
     trioFilmikool_et: *Triofilmikool #(Component)
     trioFilmikool_en: *Triofilmikool #(Component)
     trioFilmikool_ru: *Triofilmikool #(Component)
+
+TrioItemDisCamp: &TrioItemDisCamp
+    discamp_article: *DisCampArticle #(Component)
+    title: (text)
+    lead: (text)
+    custom_url: (text)
+    image: *StrapiMedia #(Component)
+
+Triodiscamp: &Triodiscamp
+    name: (text)
+    lead: (text)
+    trioItem_1: *TrioItemDisCamp #(Component)
+    trioItem_2: *TrioItemDisCamp #(Component)
+    trioItem_3: *TrioItemDisCamp #(Component)
+
+TrioDisCamp: &TrioDisCamp
+    _path: /trio-dis-camp
+    trioDiscamp_et: *Triodiscamp #(Component)
+    trioDiscamp_en: *Triodiscamp #(Component)
+    trioDiscamp_ru: *Triodiscamp #(Component)

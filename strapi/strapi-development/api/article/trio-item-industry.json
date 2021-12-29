@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_article_trio_item_industry",
+  "info": {
+    "name": "TrioItemIndustry",
+    "icon": "window-close"
+  },
+  "options": {},
+  "attributes": {
+    "industry_article": {
+      "model": "industry-article"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
