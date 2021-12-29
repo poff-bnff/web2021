@@ -194,7 +194,7 @@ const generateResponsiveFormats = async file => {
           const breakpoint = params[key]
 
           if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(key, { file, breakpoint, originalDimensions});
+            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
           }
         }))
 
@@ -207,7 +207,7 @@ const generateResponsiveFormats = async file => {
           const breakpoint = params[key]
 
           if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(key, { file, breakpoint, originalDimensions});
+            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
           }
         }))
 
@@ -220,7 +220,7 @@ const generateResponsiveFormats = async file => {
           const breakpoint = params[key]
 
           if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(key, { file, breakpoint, originalDimensions});
+            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
           }
         }))
     }
@@ -232,7 +232,7 @@ const generateResponsiveFormats = async file => {
           const breakpoint = params[key]
 
           if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(key, { file, breakpoint, originalDimensions});
+            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
           }
         }))
     }        
@@ -270,7 +270,7 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
     let name = file.name.slice(0, - extLength)
 
     return{
-      key: 'custom', 
+      key, 
       file: {
         name: `${name}${sufiks}`,
         hash: `${file.hash}${sufiks}`,
