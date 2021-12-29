@@ -202,7 +202,7 @@ module.exports = {
 
     const formats = await generateResponsiveFormats(fileData);
 
-    console.log({formats}) // logidesse saadud formaadid
+    console.log({formats}) // logidesse
 
     if (Array.isArray(formats) && formats.length > 0) {
       for (const format of formats) {
@@ -210,6 +210,8 @@ module.exports = {
         if (!format || format === undefined) continue;
 
         const { key, file } = format;
+
+        console.log({key}, {file})
 
         await strapi.plugins.upload.provider.upload(file);
         delete file.buffer;
@@ -304,7 +306,7 @@ module.exports = {
         if (!format) continue;
 
         const { key, file } = format;
-
+        
         await strapi.plugins.upload.provider.upload(file);
         delete file.buffer;
 
