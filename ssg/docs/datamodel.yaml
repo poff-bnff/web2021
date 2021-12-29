@@ -75,6 +75,150 @@ Thumbnail: &Thumbnail
     # width:  (number)
     # heigth:  (number)
 
+_big_16_9: &_big_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med_16_9: &_med_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_16_9: &_small_16_9
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big: &_big
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med: &_med
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small: &_small
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big_sq: &_big_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_med_sq: &_med_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_sq: &_small_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_thumb_sq: &_thumb_sq
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_big_p: &_big_p
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+_small_p: &_small_p
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+
+FilePrint: &FilePrint
+    # ext:  (text)
+    url:  (text)
+    # hash:  (text)
+    # mime:  (text)
+    name:  (text)
+    path:  (text)
+    # size:  (number)
+    # width:  (number)
+    # heigth:  (number)
+    sufiks: (text)
+
 StrapiMedia: &StrapiMedia
     id: (number)
     name: (text)
@@ -87,6 +231,18 @@ StrapiMedia: &StrapiMedia
         medium: *Medium #(Component)
         small: *Small #(Component)
         thumbnail: *Thumbnail #(Component)
+        _big_16_9: *_big_16_9
+        _med_16_9: *_med_16_9
+        _small_16_9: *_small_16_9
+        _big: *_big
+        _med: *_med
+        _small: *_small
+        _big_sq: *_big_sq
+        _med_sq: *_med_sq
+        _small_sq: *_small_sq
+        _thumb_sq: *_thumb_sq
+        _big_p: *_big_p
+        _small_p: *_small_p
     hash: (text)
     ext: (text)
     # mime: (text)
