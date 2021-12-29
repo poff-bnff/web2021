@@ -268,9 +268,9 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
     const { width, height, size, format} = await getMetadatas(newBuff);
     let extLength = file.ext.length
     let name = file.name.slice(0, - extLength)
-    console.log(name)
-    return {
-      sufiks,
+
+    return{
+      key: 'custom', 
       file: {
         name: `${name}${sufiks}`,
         hash: `${file.hash}${sufiks}`,
@@ -281,7 +281,7 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
         size: bytesToKbytes(size),
         buffer: newBuff,
         path: file.path ? file.path : null,
-      },
+      }
     };
   }
 };
