@@ -40,7 +40,7 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 // if (param_build_type === 'target') {
 //     addConfigPathAliases(['/films', '/search', '/my_films'])
 // }
-addConfigPathAliases(['/search_archive'])
+// addConfigPathAliases(['/search_archive'])
 
 const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
 const festival_editions_to_exclude = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
@@ -373,7 +373,7 @@ for (const lang of allLanguages) {
             // if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
             //     addConfigPathAliases([`/_fetchdir/cassettes_archive/${slugEn}`])
             // }
-            addConfigPathAliases([`/_fetchdir/cassettes_archive/${slugEn}`])
+            // addConfigPathAliases([`/_fetchdir/cassettes_archive/${slugEn}`])
 
             s_cassette_copy.dirSlug = slugEn
             s_cassette_copy.directory = path.join(cassettesPath, slugEn)
