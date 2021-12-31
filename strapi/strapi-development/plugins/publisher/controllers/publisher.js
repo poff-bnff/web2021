@@ -240,6 +240,74 @@ async function doKillSwitch(userInfo, killStartTime) {
 
 }
 
+async function doBuildArchive(ctx) {
+
+  const data = ctx.request.body;
+  // console.log(ctx)
+  const userInfo = JSON.parse(data.userInfo);
+  const superAdminRoleId = 1
+
+  const site = data.site;
+
+  const queuePath = `../../ssg/helpers/build_queue.yaml`
+  const logPath = `../../ssg/helpers/build_logs.yaml`
+  const archiveScript = `../../ssg/build_cassette_archive.sh`
+  console.log('BUILD ARCHIVE', site);
+  // if (userInfo) {
+  //   if (fs.existsSync(queuePath)) {
+  //     if (fs.existsSync(logPath)) {
+  //       const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
+  //       const logFileStartedBuilds = logFile.filter(b => b.type === 'Build start')
+  //       const lastBuild = logFileStartedBuilds[logFileStartedBuilds.length - 1]
+  //       const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
+  //       const userName = `${userInfo.firstname} ${userInfo.lastname}`
+
+  //       console.log(`Killer: ${userName}. Killing last startedbuild: ${lastBuildPID}`)
+
+        const child = spawn('bash', [archiveScript, site])
+
+        let info = ''
+        return new Promise((resolve, reject) => {
+          child.stdout.on("data", async (data) => {
+            info += decoder.write(data)
+          });
+
+          child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            info += 'error: ' + decoder.write(error)
+          });
+
+          child.on("close", async (code) => {
+            console.log(`child process exited with code ${code}`);
+
+            if (code === 0) {
+              resolve({ type: 'success', message: info })
+            } else if (code === 1) {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code 1. ${info}` })
+            } else {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code ${code}. ${info}` })
+            }
+          });
+        });
+
+  //     } else {
+  //       console.log('No log file for PID');
+  //       return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
+  //     }
+  //   } else {
+  //     console.log('No build queue');
+  //     return { type: 'warning', message: 'Järjekorda ei eksisteeri' }
+  //   }
+  // } else {
+  //   console.log('No killer info');
+  //   return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  // }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -292,6 +360,18 @@ module.exports = {
 
     const killResult = await doKillSwitch(userInfo, killStartTime)
     ctx.send(killResult)
+
+  },
+  buildArchive: async (ctx) => {
+    // console.log('ctx', ctx)
+    const arhiveStartTime = moment().tz("Europe/Tallinn").format()
+
+    const data = ctx.request.body;
+    // const userInfo = JSON.parse(data.userInfo)
+    console.log("Build archive", data.site)
+
+    const buildArchiveResult = await doBuildArchive(ctx)
+    ctx.send(buildArchiveResult)
 
   },
   logs: async (ctx) => {
