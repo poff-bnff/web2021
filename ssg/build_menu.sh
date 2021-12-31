@@ -34,6 +34,6 @@ nice -10 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
 
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
+echo "RSYNC $BUILD_PATH/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
+rsync -ra "$BUILD_PATH"/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
