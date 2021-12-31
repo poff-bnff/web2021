@@ -101,16 +101,15 @@ module.exports = () => {
           }
 
         })
-
-      // If build queue exists, restart build manager to continue with the queue
-      let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)
-      console.log(build_manager_path)
-      const child = spawn('node', [build_manager_path, 'forcewithdelay'])
-
-      child.stdout.on('data', (chunk) => {
-        console.log('stdout', decoder.write(chunk))
-      });
     }
+    // If build queue exists, restart build manager to continue with the queue
+    let build_manager_path = path.join(__dirname, `/../../../../ssg/helpers/build_manager.js`)
+    console.log(build_manager_path)
+    const child = spawn('node', [build_manager_path, 'forcewithdelay'])
+
+    child.stdout.on('data', (chunk) => {
+      console.log('stdout', decoder.write(chunk))
+    });
   } catch (err) {
     console.log(file, 'does not exist');
   }
