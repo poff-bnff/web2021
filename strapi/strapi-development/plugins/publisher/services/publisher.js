@@ -85,7 +85,6 @@ const pathBeforeSlug = {
 }
 
 const addS = async (result) => {
-
   const domainSpecificsPath = path.join(ssgDir, 'domain_specifics.yaml')
   const domainSpecifics = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
   const stagingUrls = domainSpecifics.stagingURLs
@@ -95,7 +94,7 @@ const addS = async (result) => {
   const sanitizedResponse = await Promise.all(result.map(async a => {
 
     let paths = []
-    if (a.action !== 'delete') {
+    if (a.action !== 'delete' || a.action !== 'archive') {
       try {
         paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
       } catch (error) {
