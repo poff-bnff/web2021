@@ -12,11 +12,7 @@ let domainArgs = process.argv.slice(2)
 
 if (domainArgs.length >= 1) {
     function buildDir() {
-        if (domainArgs.length > 1 && domainArgs[1] === 'archive') {
-            return `archive/${DOMAIN_SPECIFICS.domain[domainArgs[0]]}`;
-        } else {
-            return `build/${DOMAIN_SPECIFICS.domain[domainArgs[0]]}`;
-        }
+        return DOMAIN_SPECIFICS.domain[domainArgs];
     }
     console.log(buildDir())
 }
@@ -24,9 +20,7 @@ else {
     const DOMAIN = process.env['DOMAIN']
 
     function buildDir() {
-        return `build/${DOMAIN_SPECIFICS.domain[DOMAIN]}`;
+        return DOMAIN_SPECIFICS.domain[DOMAIN];
     }
     console.log(buildDir())
 }
-
-

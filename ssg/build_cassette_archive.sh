@@ -22,7 +22,7 @@ FETCH_PATH=`pwd`/helpers
 BUILD_PATH=`pwd`
 
 BUILDDIR=$(node $FETCH_PATH/name_build_directory.js)
-echo "Build directory: $BUILDDIR"
+echo "Build directory: archive/$BUILDDIR"
 
 echo 'Processing all Strapidata by Domain'
 nice -10 node "$FETCH_PATH"/d_fetch.js
@@ -37,8 +37,8 @@ nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display
 
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
+echo "RSYNC $BUILD_PATH/archive/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
+rsync -ra "$BUILD_PATH"/archive/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
 printf '\n\n----------      Finished building      ----------\n\n'
 
