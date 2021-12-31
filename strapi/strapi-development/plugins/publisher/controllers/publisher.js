@@ -264,7 +264,7 @@ async function doBuildArchive(ctx) {
   console.log('BUILD ARCHIVE', site);
 
   let result = {
-    id: 'archive',
+    id: '',
     updated_by: {
       id: userInfo.id
     },
