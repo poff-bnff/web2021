@@ -95,7 +95,6 @@ const addS = async (result) => {
 
     let paths = []
     if (a.action !== 'delete' && a.action !== 'archive') {
-      console.log('WHY HERE', a.action);
       try {
         paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
       } catch (error) {
