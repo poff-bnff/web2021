@@ -127,7 +127,9 @@ function model(arg) {
 		'dis-camp-person': 'full',
 		'dis-camp-person-type': 'full',
 		'dis-camp-project': 'full',
-		'full': 'full'
+		'full': 'full',
+
+		'cassettes_archive': 'cassette_archive',
 	}
 
 	return mapping_models[arg]
