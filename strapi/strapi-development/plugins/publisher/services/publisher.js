@@ -94,7 +94,7 @@ const addS = async (result) => {
   const sanitizedResponse = await Promise.all(result.map(async a => {
 
     let paths = []
-    if (a.action !== 'delete' || a.action !== 'archive') {
+    if (a.action !== 'delete' && a.action !== 'archive') {
       console.log('WHY HERE', a.action);
       try {
         paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
