@@ -2,7 +2,8 @@
   "collectionName": "components_footer_sup_sec_dis_camps",
   "info": {
     "name": "SupSecDisCamp",
-    "icon": "ambulance"
+    "icon": "ambulance",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,7 +15,7 @@
     "order": {
       "type": "integer"
     },
-    "supporters": {
+    "supporter": {
       "type": "component",
       "repeatable": true,
       "component": "footer.sup-dis-camp"

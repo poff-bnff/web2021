@@ -2,15 +2,13 @@
   "collectionName": "components_article_triodiscamps",
   "info": {
     "name": "Triodiscamp",
-    "icon": "anchor"
+    "icon": "anchor",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string"
-    },
-    "lead": {
-      "type": "richtext"
     },
     "trioItem_1": {
       "type": "component",
@@ -26,6 +24,9 @@
       "type": "component",
       "repeatable": false,
       "component": "article.trio-item-dis-camp"
+    },
+    "lead": {
+      "type": "string"
     }
   }
 }

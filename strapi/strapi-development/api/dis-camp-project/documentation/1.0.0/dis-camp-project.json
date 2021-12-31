@@ -538,7 +538,7 @@
           "title_en": {
             "type": "string"
           },
-          "title_original": {
+          "titleOriginal": {
             "type": "string"
           },
           "countries": {
@@ -657,17 +657,17 @@
               }
             }
           },
-          "completion_date": {
+          "completionDate": {
             "type": "string",
             "format": "date-time"
           },
-          "num_of_seasons": {
+          "numOfSeasons": {
             "type": "integer"
           },
-          "num_of_episodes": {
+          "numOfEpisodes": {
             "type": "integer"
           },
-          "episode_duration": {
+          "episodeDuration": {
             "type": "integer"
           },
           "broadcasters": {
@@ -735,7 +735,7 @@
               }
             }
           },
-          "planned_premiere": {
+          "plannedPremiere": {
             "type": "string",
             "format": "date-time"
           },
@@ -768,7 +768,7 @@
               }
             }
           },
-          "team_credentials": {
+          "teamCredentials": {
             "type": "object",
             "required": [
               "id"
@@ -1077,19 +1077,19 @@
               }
             }
           },
-          "looking_for": {
+          "lookingFor": {
             "type": "string"
           },
           "synopsis": {
             "type": "string"
           },
-          "directors_note": {
+          "directorsNote": {
             "type": "string"
           },
-          "contact_name": {
+          "contactName": {
             "type": "string"
           },
-          "contact_company": {
+          "contactCompany": {
             "required": [
               "id"
             ],
@@ -1151,13 +1151,13 @@
               }
             }
           },
-          "contact_address": {
+          "contactAddress": {
             "type": "string"
           },
-          "contact_email": {
+          "contactEmail": {
             "type": "string"
           },
-          "contact_web": {
+          "contactWeb": {
             "type": "string"
           },
           "images": {
@@ -1230,13 +1230,123 @@
               }
             }
           },
-          "clip_url": {
+          "clipUrl": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
           "tag_genres": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "et": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "ru": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "editions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "year": {
+                  "type": "integer"
+                },
+                "name_et": {
+                  "type": "string"
+                },
+                "name_en": {
+                  "type": "string"
+                },
+                "name_ru": {
+                  "type": "string"
+                },
+                "description_et": {
+                  "type": "string"
+                },
+                "description_en": {
+                  "type": "string"
+                },
+                "description_ru": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "endDate": {
+                  "type": "string"
+                },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "festival": {
+                  "type": "string"
+                },
+                "slug_et": {
+                  "type": "uid"
+                },
+                "slug_en": {
+                  "type": "uid"
+                },
+                "slug_ru": {
+                  "type": "uid"
+                },
+                "remoteId": {
+                  "type": "uid"
+                },
+                "projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tag_looking_fors": {
             "type": "array",
             "items": {
               "required": [
@@ -1271,7 +1381,7 @@
           "title_en": {
             "type": "string"
           },
-          "title_original": {
+          "titleOriginal": {
             "type": "string"
           },
           "countries": {
@@ -1301,17 +1411,17 @@
               "type": "string"
             }
           },
-          "completion_date": {
+          "completionDate": {
             "type": "string",
             "format": "date-time"
           },
-          "num_of_seasons": {
+          "numOfSeasons": {
             "type": "integer"
           },
-          "num_of_episodes": {
+          "numOfEpisodes": {
             "type": "integer"
           },
-          "episode_duration": {
+          "episodeDuration": {
             "type": "integer"
           },
           "broadcasters": {
@@ -1320,14 +1430,14 @@
               "type": "string"
             }
           },
-          "planned_premiere": {
+          "plannedPremiere": {
             "type": "string",
             "format": "date-time"
           },
           "country_focus": {
             "type": "string"
           },
-          "team_credentials": {
+          "teamCredentials": {
             "type": "object",
             "required": [
               "id"
@@ -1577,37 +1687,49 @@
               "type": "string"
             }
           },
-          "looking_for": {
+          "lookingFor": {
             "type": "string"
           },
           "synopsis": {
             "type": "string"
           },
-          "directors_note": {
+          "directorsNote": {
             "type": "string"
           },
-          "contact_name": {
+          "contactName": {
             "type": "string"
           },
-          "contact_company": {
+          "contactCompany": {
             "type": "string"
           },
-          "contact_address": {
+          "contactAddress": {
             "type": "string"
           },
-          "contact_email": {
+          "contactEmail": {
             "type": "string"
           },
-          "contact_web": {
+          "contactWeb": {
             "type": "string"
           },
-          "clip_url": {
+          "clipUrl": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
           "tag_genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "editions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tag_looking_fors": {
             "type": "array",
             "items": {
               "type": "string"

@@ -323,7 +323,7 @@
           "id": {
             "type": "string"
           },
-          "trio_discamp_et": {
+          "trioDiscamp_et": {
             "type": "object",
             "required": [
               "id"
@@ -333,9 +333,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -396,12 +393,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -469,6 +460,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -478,9 +475,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -552,6 +546,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -614,12 +611,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -686,6 +677,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -695,9 +692,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -769,6 +763,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -831,12 +828,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -903,6 +894,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -912,9 +909,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -986,12 +980,18 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           },
-          "trio_discamp_en": {
+          "trioDiscamp_en": {
             "type": "object",
             "required": [
               "id"
@@ -1001,9 +1001,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -1064,12 +1061,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -1137,6 +1128,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1146,9 +1143,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -1220,6 +1214,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -1282,12 +1279,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -1354,6 +1345,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1363,9 +1360,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -1437,6 +1431,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -1499,12 +1496,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -1571,6 +1562,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1580,9 +1577,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -1654,12 +1648,18 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           },
-          "trio_discamp_ru": {
+          "trioDiscamp_ru": {
             "type": "object",
             "required": [
               "id"
@@ -1669,9 +1669,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -1732,12 +1729,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -1805,6 +1796,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1814,9 +1811,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -1888,6 +1882,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -1950,12 +1947,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -2022,6 +2013,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2031,9 +2028,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -2105,6 +2099,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -2167,12 +2164,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -2239,6 +2230,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2248,9 +2245,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -2322,8 +2316,14 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           }
@@ -2331,7 +2331,7 @@
       },
       "NewTrio-dis-camp": {
         "properties": {
-          "trio_discamp_et": {
+          "trioDiscamp_et": {
             "type": "object",
             "required": [
               "id"
@@ -2341,9 +2341,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -2404,12 +2401,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -2477,6 +2468,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2486,9 +2483,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -2560,6 +2554,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -2622,12 +2619,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -2694,6 +2685,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2703,9 +2700,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -2777,6 +2771,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -2839,12 +2836,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -2911,6 +2902,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2920,9 +2917,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -2994,12 +2988,18 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           },
-          "trio_discamp_en": {
+          "trioDiscamp_en": {
             "type": "object",
             "required": [
               "id"
@@ -3009,9 +3009,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -3072,12 +3069,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -3145,6 +3136,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3154,9 +3151,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -3228,6 +3222,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -3290,12 +3287,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -3362,6 +3353,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3371,9 +3368,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -3445,6 +3439,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -3507,12 +3504,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -3579,6 +3570,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3588,9 +3585,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -3662,12 +3656,18 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           },
-          "trio_discamp_ru": {
+          "trioDiscamp_ru": {
             "type": "object",
             "required": [
               "id"
@@ -3677,9 +3677,6 @@
                 "type": "string"
               },
               "name": {
-                "type": "string"
-              },
-              "lead": {
                 "type": "string"
               },
               "trioItem_1": {
@@ -3740,12 +3737,6 @@
                       },
                       "media": {
                         "type": "component"
-                      },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
                       },
                       "publish_et": {
                         "type": "boolean"
@@ -3813,6 +3804,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3822,9 +3819,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -3896,6 +3890,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -3958,12 +3955,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -4030,6 +4021,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -4039,9 +4036,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -4113,6 +4107,9 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
               },
@@ -4175,12 +4172,6 @@
                       "media": {
                         "type": "component"
                       },
-                      "publish_from": {
-                        "type": "string"
-                      },
-                      "publish_until": {
-                        "type": "string"
-                      },
                       "publish_et": {
                         "type": "boolean"
                       },
@@ -4247,6 +4238,12 @@
                           "type": "string"
                         }
                       },
+                      "publishFrom": {
+                        "type": "string"
+                      },
+                      "publishUntil": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -4256,9 +4253,6 @@
                     }
                   },
                   "title": {
-                    "type": "string"
-                  },
-                  "lead": {
                     "type": "string"
                   },
                   "custom_url": {
@@ -4330,8 +4324,14 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "lead": {
+                    "type": "string"
                   }
                 }
+              },
+              "lead": {
+                "type": "string"
               }
             }
           },

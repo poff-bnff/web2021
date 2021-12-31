@@ -16,6 +16,7 @@ const {
   call_delete
 } = require(helper_path)
 
+
 /**
 const domains =
 For adding domain you have multiple choice. First for objects that has property 'domain'
@@ -35,6 +36,7 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
+
       const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
       data.slug_et = data.title_et ? slugify(data.title_et) : null
@@ -45,8 +47,11 @@ module.exports = {
         console.log('Draft! Delete: ')
         await call_delete(params, domains, model_name)
       }
+
     },
     async afterUpdate(result, params, data) {
+      // console.log('result- ', result , 'params- ', params, 'data- ', JSON.stringify(data, 0, 2))
+
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       console.log('Create or update: ')
       if (data.skipbuild) return

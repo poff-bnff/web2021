@@ -18,6 +18,8 @@ const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
 const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
 const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
+const strapiDataRoleAtFilmPath = path.join(strapiDataDirPath, 'RoleAtFilm.yaml')
+const STRAPIDATA_ROLESATFILM = yaml.load(fs.readFileSync(strapiDataRoleAtFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const active_editions = DOMAIN_SPECIFICS.active_industry_editions
 
@@ -43,7 +45,7 @@ if (DOMAIN === 'industry.poff.ee') {
             model_name: 'Country'
         },
         'teamCredentials': {
-            model_name: 'TeamCredentials'
+            model_name: 'Credentials'
         },
         'attached_partners': {
             model_name: 'Organisation'
@@ -272,11 +274,11 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             allData.push(industry_project);
 
             const credentials = industry_project.teamCredentials || {}
-
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
             industry_project.persons = {}
             for (const role_person of role_persons) {
+
                 let person_id
                 try {
                     person_id = role_person.person.id
@@ -286,20 +288,29 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 industry_project.persons[person_id] = industry_project.persons[person_id] || {id: person_id, rolesAtFilm: []}
                 if (role_person.role_at_film) {
                     industry_project.persons[person_id].rolesAtFilm.push(role_person.role_at_film.roleNamePrivate)
+
                     if (!(role_person.role_at_film.roleNamePrivate in industry_project.roles_in_project)) {
-                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order, names: []}
+
+                        let roleName = STRAPIDATA_ROLESATFILM.filter( e => {
+                            return e.id === role_person.role_at_film.id
+                        })[0].roleName[lang]
+                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order? role_person.role_at_film.order : Number.MAX_VALUE, label: roleName, names: []}
                     }
-                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push(role_person.person.firstNameLastName)
+                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push({order: role_person.order, name: role_person.person.firstNameLastName})
+
+                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names = industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names
+                        .sort((a, b) => {
+                            return a.ord - b.ord
+                        })
 
 
+                    industry_project.roles_in_project = Object.entries(industry_project.roles_in_project)
+                        .sort(([,a], [,b]) => {
+                            return a.ord - b.ord
+                        })
+                        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 }
-                // industry_project.roles_in_project = industry_project.roles_in_project.sort((a, b) => {
-                //     return a[role_person.role_at_film.roleNamePrivate].ord - b[role_person.role_at_film.roleNamePrivate].ord
-                // })
-
             }
-
-            
 
             for (const ix in industry_project.persons) {
                 const industry_person = industry_project.persons[ix]
@@ -335,9 +346,24 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                     industry_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
 
                     if(!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
-                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order, names: []}
+
+                        let roleName = STRAPIDATA_ROLESATFILM.filter( e => {
+                            return e.id === role_company.roles_at_film.id
+                        })[0].roleName[lang]
+
+                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order? role_company.roles_at_film.order : Number.MAX_VALUE, label: roleName, names: []}
                     }
-                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
+                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push({order: role_company.order, name:role_company.organisation.namePrivate})
+                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names = industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names
+                        .sort((a, b) => {
+                            return a.ord - b.ord
+                        })
+
+                    industry_project.comp_roles_in_project = Object.entries(industry_project.comp_roles_in_project)
+                        .sort(([,a],[,b]) => {
+                            return a.ord -b.ord
+                        })
+                        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 }
             }
             for (const ix in industry_project.organisations) {
@@ -396,3 +422,4 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
         }
     }
 }
+

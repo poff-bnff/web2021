@@ -9,7 +9,7 @@ block content
         document.addEventListener('userProfileLoaded', function (e) {
             //- console.log({userProfile})
 
-            if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
+            if (userProfile.industryAccessLevel) {
                 document.getElementById('videolevels_video').style.display = 'block'
                 var videoFrameElement = document.getElementById('videoframe')
                 videoFrameElement.src = videoFrameElement.getAttribute('target_src')
@@ -218,168 +218,19 @@ block content
                                 - broadcaster_name.push(broadcaster.name)
                             .str_info_value= broadcaster_name.join(', ')
 
+                    // RolePerson
                     if self.roles_in_project
-                        if('Director' in self.roles_in_project)
+                        each role in self.roles_in_project
                             .str_info_grid_3
-                                .str_info_label= self.label.film.director
-                                .str_info_value= self.roles_in_project.Director.names.join(', ')
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
-                        if('Screenwriter' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.screenwriter
-                                .str_info_value= self.roles_in_project.Screenwriter.names.join(', ')
-
-                        if('Cast' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.cast
-                                .str_info_value= self.roles_in_project.Cast.names.join(', ')
-
-                        if('Producer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.producer
-                                .str_info_value= self.roles_in_project.Producer.names.join(', ')
-
-                        if('Creative producer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.creativeproducer
-                                .str_info_value= self.roles_in_project['Creative producer'].names.join(', ')
-
-                        if('Juniorproducer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.juniorproducer
-
-                        if('Director of photography' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.directorofphotography
-                                .str_info_value= self.roles_in_project['Director of photography'].names.join(', ')
-
-                        if('Cinematographer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.cinematographer
-                                .str_info_value= self.roles_in_project.Cinematographer.names.join(', ')
-
-                        if('Production designer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.productiondesigner
-                                .str_info_value= self.roles_in_project['Production designer'].names.join(', ')
-
-                        if('Art director' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.artdirector
-                                .str_info_value= self.roles_in_project['Art director'].names.join(', ')
-
-                        if('Editor' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.editor
-                                .str_info_value= self.roles_in_project.Editor.names.join(', ')
-
-                        if('Writer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.writer
-                                .str_info_value= self.roles_in_project.Writer.names.join(', ')
-
-                        if('Co-writer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.cowriter
-                                .str_info_value= self.roles_in_project['Co-writer'].names.join(', ')
-
-                        if('Composer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.composer
-                                .str_info_value= self.roles_in_project.Composer.names.join(', ')
-
-                        if('Music' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.music
-                                .str_info_value= self.roles_in_project.Music.names.join(', ')
-
-                        if('Sound' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.sound
-                                .str_info_value= self.roles_in_project.Sound.names.join(', ')
-
-                        if('Animation' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.animation
-                                .str_info_value= self.roles_in_project.Animation.names.join(', ')
-
-                        if('Instructor' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.instructor
-                                .str_info_value= self.roles_in_project.Instructor.names.join(', ')
-
-                        if('Choreographer' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.choreographer
-                                .str_info_value= self.roles_in_project.Choreographer.names.join(', ')
-
-                        if('Public funds' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.publicfunds
-                                .str_info_value= self.roles_in_project['Public funds'].names.join(', ')
-
-                        if('Private funds' in self.roles_in_project)
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.privatefunds
-                                .str_info_value= self.roles_in_project['Private funds'].names.join(', ')
-
-
-                    //- if self.persons
-                    //-     each person in self.persons
-                    //-         if person.rolesAtFilm && person.person
-                    //-             each role in person.rolesAtFilm
-                    //-                 .str_info_grid_3
-                    //-                     .str_info_label= role
-                    //-                     .str_info_value= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
-
-
+                    // RoleCompany
                     if self.comp_roles_in_project
-                        if('Production company') in self.comp_roles_in_project
+                        each role in self.comp_roles_in_project
                             .str_info_grid_3
-                                .str_info_label= self.label.film.production
-                                .str_info_value= self.comp_roles_in_project['Production company'].names.join(', ')
-
-                        if('Co-production Company') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.coproductioncompany
-                                .str_info_value= self.comp_roles_in_project['Co-production Company'].names.join(', ')
-
-                        if('Distributor') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.distributor
-                                .str_info_value= self.comp_roles_in_project['Distributor'].names.join(', ')
-
-                        if('Music') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.music
-                                .str_info_value= self.comp_roles_in_project['Music'].names.join(', ')
-
-                        if('Sound') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.sound
-                                .str_info_value= self.comp_roles_in_project['Sound'].names.join(', ')
-
-                        if('Editor') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.editor
-                                .str_info_value= self.comp_roles_in_project['Editor'].names.join(', ')
-
-                        if('Animation') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.animation
-                                .str_info_value= self.comp_roles_in_project['Animation'].names.join(', ')
-
-                        if('World sales') in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.worldsales
-                                .str_info_value= self.comp_roles_in_project['World sales'].names.join(', ')
-
-                    //- if self.organisations
-                    //-     each company in self.organisations
-                    //-         if company.rolesAtFilm && company.organisations.namePrivate
-                    //-             .str_info_grid_3
-                    //-                 .str_info_label= company.rolesAtFilm.join(', ')
-                    //-                 .str_info_value= company.organisations.namePrivate
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
             section.project_runtime_box
 

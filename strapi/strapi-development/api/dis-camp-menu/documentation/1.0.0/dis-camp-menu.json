@@ -558,7 +558,228 @@
               }
             }
           },
-          "dis_camp_article": {
+          "customUrl": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "et": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              },
+              "ru": {
+                "type": "string"
+              }
+            }
+          },
+          "order": {
+            "type": "integer"
+          },
+          "subMenuItem": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "et": {
+                      "type": "string"
+                    },
+                    "en": {
+                      "type": "string"
+                    },
+                    "ru": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "discamp_article": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "titlePrivate": {
+                      "type": "string"
+                    },
+                    "title_et": {
+                      "type": "string"
+                    },
+                    "title_en": {
+                      "type": "string"
+                    },
+                    "title_ru": {
+                      "type": "string"
+                    },
+                    "slug_et": {
+                      "type": "uid"
+                    },
+                    "slug_en": {
+                      "type": "uid"
+                    },
+                    "slug_ru": {
+                      "type": "uid"
+                    },
+                    "lead_et": {
+                      "type": "string"
+                    },
+                    "lead_en": {
+                      "type": "string"
+                    },
+                    "lead_ru": {
+                      "type": "string"
+                    },
+                    "contents_et": {
+                      "type": "string"
+                    },
+                    "contents_en": {
+                      "type": "string"
+                    },
+                    "contents_ru": {
+                      "type": "string"
+                    },
+                    "media": {
+                      "type": "component"
+                    },
+                    "publish_et": {
+                      "type": "boolean"
+                    },
+                    "publish_en": {
+                      "type": "boolean"
+                    },
+                    "publish_ru": {
+                      "type": "boolean"
+                    },
+                    "button": {
+                      "type": "component"
+                    },
+                    "article_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tag_premiere_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "programmes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tag_genres": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tag_keywords": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "web_authors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "discamp_people": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "people": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "organisations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "publishFrom": {
+                      "type": "string"
+                    },
+                    "publishUntil": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "order": {
+                  "type": "integer"
+                },
+                "customUrl": {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "et": {
+                      "type": "string"
+                    },
+                    "en": {
+                      "type": "string"
+                    },
+                    "ru": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "namePrivate": {
+                  "type": "string"
+                },
+                "publish": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "publish": {
+            "type": "boolean",
+            "default": true
+          },
+          "discamp_article": {
             "required": [
               "id"
             ],
@@ -607,12 +828,6 @@
               },
               "media": {
                 "type": "component"
-              },
-              "publish_from": {
-                "type": "string"
-              },
-              "publish_until": {
-                "type": "string"
               },
               "publish_et": {
                 "type": "boolean"
@@ -680,6 +895,12 @@
                   "type": "string"
                 }
               },
+              "publishFrom": {
+                "type": "string"
+              },
+              "publishUntil": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -687,227 +908,6 @@
                 "type": "string"
               }
             }
-          },
-          "customUrl": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "et": {
-                "type": "string"
-              },
-              "en": {
-                "type": "string"
-              },
-              "ru": {
-                "type": "string"
-              }
-            }
-          },
-          "order": {
-            "type": "integer"
-          },
-          "subMenuItem": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "object",
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "et": {
-                      "type": "string"
-                    },
-                    "en": {
-                      "type": "string"
-                    },
-                    "ru": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "discamp_article": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "titlePrivate": {
-                      "type": "string"
-                    },
-                    "title_et": {
-                      "type": "string"
-                    },
-                    "title_en": {
-                      "type": "string"
-                    },
-                    "title_ru": {
-                      "type": "string"
-                    },
-                    "slug_et": {
-                      "type": "uid"
-                    },
-                    "slug_en": {
-                      "type": "uid"
-                    },
-                    "slug_ru": {
-                      "type": "uid"
-                    },
-                    "lead_et": {
-                      "type": "string"
-                    },
-                    "lead_en": {
-                      "type": "string"
-                    },
-                    "lead_ru": {
-                      "type": "string"
-                    },
-                    "contents_et": {
-                      "type": "string"
-                    },
-                    "contents_en": {
-                      "type": "string"
-                    },
-                    "contents_ru": {
-                      "type": "string"
-                    },
-                    "media": {
-                      "type": "component"
-                    },
-                    "publish_from": {
-                      "type": "string"
-                    },
-                    "publish_until": {
-                      "type": "string"
-                    },
-                    "publish_et": {
-                      "type": "boolean"
-                    },
-                    "publish_en": {
-                      "type": "boolean"
-                    },
-                    "publish_ru": {
-                      "type": "boolean"
-                    },
-                    "button": {
-                      "type": "component"
-                    },
-                    "article_types": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "tag_premiere_types": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "programmes": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "tag_genres": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "tag_keywords": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "web_authors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "discamp_people": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "people": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "organisations": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "order": {
-                  "type": "integer"
-                },
-                "customUrl": {
-                  "type": "object",
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "et": {
-                      "type": "string"
-                    },
-                    "en": {
-                      "type": "string"
-                    },
-                    "ru": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "namePrivate": {
-                  "type": "string"
-                },
-                "publish": {
-                  "type": "boolean",
-                  "default": true
-                }
-              }
-            }
-          },
-          "publish": {
-            "type": "boolean",
-            "default": true
           }
         }
       },
@@ -936,9 +936,6 @@
               }
             }
           },
-          "dis_camp_article": {
-            "type": "string"
-          },
           "customUrl": {
             "type": "object",
             "required": [
@@ -1043,12 +1040,6 @@
                     "media": {
                       "type": "component"
                     },
-                    "publish_from": {
-                      "type": "string"
-                    },
-                    "publish_until": {
-                      "type": "string"
-                    },
                     "publish_et": {
                       "type": "boolean"
                     },
@@ -1115,6 +1106,12 @@
                         "type": "string"
                       }
                     },
+                    "publishFrom": {
+                      "type": "string"
+                    },
+                    "publishUntil": {
+                      "type": "string"
+                    },
                     "created_by": {
                       "type": "string"
                     },
@@ -1159,6 +1156,9 @@
           "publish": {
             "type": "boolean",
             "default": true
+          },
+          "discamp_article": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

@@ -877,14 +877,6 @@
               }
             }
           },
-          "publish_from": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "publish_until": {
-            "type": "string",
-            "format": "date-time"
-          },
           "publish_et": {
             "type": "boolean"
           },
@@ -1167,7 +1159,7 @@
                 "person": {
                   "type": "string"
                 },
-                "profile_pic_at_DC": {
+                "profilePicAtDC": {
                   "type": "string"
                 },
                 "role_at_films": {
@@ -1176,10 +1168,10 @@
                     "type": "string"
                   }
                 },
-                "email_at_DC": {
+                "emailAtDC": {
                   "type": "string"
                 },
-                "phone_at_DC": {
+                "phoneAtDC": {
                   "type": "string"
                 },
                 "about_text": {
@@ -1191,7 +1183,7 @@
                     "type": "string"
                   }
                 },
-                "clip_url": {
+                "clipUrl": {
                   "type": "string"
                 },
                 "website": {
@@ -1206,11 +1198,23 @@
                     "type": "string"
                   }
                 },
-                "looking_for": {
+                "lookingFor": {
                   "type": "string"
                 },
-                "contact_at_event": {
+                "contactAtEvent": {
                   "type": "string"
+                },
+                "festival_editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -1361,6 +1365,14 @@
                 }
               }
             }
+          },
+          "publishFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishUntil": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -1708,14 +1720,6 @@
               }
             }
           },
-          "publish_from": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "publish_until": {
-            "type": "string",
-            "format": "date-time"
-          },
           "publish_et": {
             "type": "boolean"
           },
@@ -1816,6 +1820,14 @@
             "items": {
               "type": "string"
             }
+          },
+          "publishFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishUntil": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"

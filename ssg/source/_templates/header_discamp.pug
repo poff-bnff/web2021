@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/industry_logo_2021_dates_es.svg' src='/assets/img/static/industry_logo_2021_dates_es.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/bndc_logo_1.svg' src='/assets/img/static/bndc_logo_1.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     nav.main_menu
@@ -14,6 +14,12 @@ header
 
             li
                 nav.org_menu
+                    span.org_item
+                        a(href='https://industry.poff.ee')
+                            | !{`Industry@Tallinn & Baltic Event`}
+                    span.org_item
+                        a(href='https://filmikool.poff.ee')
+                            | Filmikool
                     span.org_item
                         a(href='https://poff.ee')
                             | PÖFF
@@ -27,9 +33,6 @@ header
                     //-     a(href='https://hoff.ee')
                     //-         | HÕFF
                     span.org_item
-                        a(href='https://kinoff.ee')
-                            | Kinoff
-                    span.org_item
                         a(href='https://poff.elisastage.ee')
                             | PÖFF Online Cinema
                     //- span.org_item
@@ -38,16 +41,16 @@ header
                     //- span.org_item
                     //-     a(href='https://spatial.chat/s/ITBESocialclub')
                     //-         | SpatialChat
-                    span.org_item
-                        a(href='https://proscreen.poff.ee')
-                            | See films on PROSCREEN
+                    //- span.org_item
+                    //-     a(href='https://proscreen.poff.ee')
+                    //-         | See films on PROSCREEN
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
 
         user_menu_hidden(id='user_menu_hidden' style='display: none')
             li.user_menu.dropdown
-                a.user_menu My industry
+                a.user_menu My Campus
                     ul.ul_kaks.padding_bottom_5
                         li#logIn(style={cursor: 'pointer', display: 'none'})
                             a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
