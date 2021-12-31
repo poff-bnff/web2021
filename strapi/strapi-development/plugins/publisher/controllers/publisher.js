@@ -272,7 +272,7 @@ async function doBuildArchive(ctx) {
   }
 
   await call_build(result, [site], 'cassettes_archive')
-
+  return { type: 'success', message: `${data.site} arhiivi ehitus käivitatud` }
 
 }
 

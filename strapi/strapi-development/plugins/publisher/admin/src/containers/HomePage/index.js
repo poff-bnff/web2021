@@ -74,46 +74,11 @@ const killSwitch = async () => {
 
     let myResult = await response.json();
 
-    if(response.status === 200){
-      strapi.notification.toggle({type: myResult.type, message: myResult.message, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false})
-    }else{
-      if(response.statusText && response.status){
-        strapi.notification.toggle({type: "warning", message: `Tekkis tundmatu viga`, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false})
-      };
-    };
-  };
-
-  if (token) {
-    MakeRequest(token);
-  } else {
-    console.log("ei saa tokenit kätte :(");
-  };
-}
-
-const buildArchive = async (site, userInfo) => {
-  console.log("Build archive")
-  // post päring plugina back-i
-
-  console.log(userInfo)
-  const token = await JSON.parse(sessionStorage.getItem("jwtToken")) || await JSON.parse(localStorage.getItem("jwtToken"));
-
-  const MakeRequest = async () => {
-    const response = await fetch(`${strapi.backendURL}/publisher/buildarchive`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ site: site, userInfo: userInfo })
-    });
-
-    let myResult = await response.json();
-
-    if(response.status === 200){
-      strapi.notification.toggle({type: myResult.type, message: myResult.message, title: "Build archive", timeout: 5000, blockTransition: false})
-    }else{
-      if(response.statusText && response.status){
-        strapi.notification.toggle({type: "warning", message: `Tekkis tundmatu viga`, title: "Build archive", timeout: 5000, blockTransition: false})
+    if (response.status === 200) {
+      strapi.notification.toggle({ type: myResult.type, message: myResult.message, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false })
+    } else {
+      if (response.statusText && response.status) {
+        strapi.notification.toggle({ type: "warning", message: `Tekkis tundmatu viga`, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false })
       };
     };
   };
@@ -127,15 +92,12 @@ const buildArchive = async (site, userInfo) => {
 
 // If super admin - give access to kill switch to kill ongoing builds
 let killButton
-let archiveButtons
 let buttonsContainer
 const superAdminRoleId = 1
 if (userInfo && JSON.parse(userInfo).roles.map(r => r.id).includes(superAdminRoleId)) {
   killButton = <Button color="primary" onClick={() => killSwitch()}>KILL SWITCH!</Button>
-  archiveButtons = <Button site="kumu.poff.ee" color="primary" onClick={() => buildArchive("kumu.poff.ee", userInfo)}>Build kumu.poff.ee archive</Button>
 } else {
   killButton = ''
-  archiveButtons = ''
   // buttonsContainer = <Container>
   //   <Header title={{ label: 'Live-i saatmine' }} content="Hetkel pole võimaldatud" />
   // </Container>
@@ -156,7 +118,6 @@ buttonsContainer = <Container>
   <ButtonAndLog site="discoverycampus.poff.ee" buttonText="DISCAMP LIVE" />
   <br />
   {killButton}
-  {archiveButtons}
 </Container>
 
 const HomePage = () => {
