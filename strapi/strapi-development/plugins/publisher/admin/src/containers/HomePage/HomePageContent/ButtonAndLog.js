@@ -67,7 +67,7 @@ const BuildArchive = async (site, userInfo) => {
     let myResult = await response.json();
 
     if (response.status === 200) {
-      strapi.notification.toggle({ type: myResult.type, message: `Arhiivi`, title: "Build archive", timeout: 5000, blockTransition: false })
+      strapi.notification.toggle({ type: myResult.type, message: `Arhiivi ehitus lehele ${site} alustatud`, title: "Build archive", timeout: 5000, blockTransition: false })
     } else {
       if (response.statusText && response.status) {
         strapi.notification.toggle({ type: "warning", message: `Tekkis tundmatu viga`, title: "Build archive", timeout: 5000, blockTransition: false })
