@@ -24,6 +24,11 @@ BUILD_PATH=`pwd`
 BUILDDIR=$(node $FETCH_PATH/name_build_directory.js)
 echo "Build directory: archive/$BUILDDIR"
 
+echo "Creating archive directories if not existent"
+[ ! -d "./archive" ] && mkdir -p "./archive"
+[ -d "./archive/$BUILDDIR" ] && rm -rf "./archive/$BUILDDIR/"*
+[ ! -d "./archive/$BUILDDIR" ] && mkdir -p "./archive/$BUILDDIR"
+
 echo 'Processing all Strapidata by Domain'
 nice -10 node "$FETCH_PATH"/d_fetch.js
 
