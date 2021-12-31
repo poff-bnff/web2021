@@ -50,6 +50,15 @@ async function build_start_to_strapi_logs(result, domain, err = null, b_err = nu
   let editor = result.updated_by?.id || 48
   let plugin_log
 
+  let actionType
+  if (del) {
+    actionType = 'delete'
+  } else if (result.action === 'archive') {
+    actionType = 'archive'
+  } else {
+    actionType = 'new or edit'
+  }
+
   let loggerData = {
     queued_time: moment().tz('Europe/Tallinn').format(), // moment().tz('Europe/Tallinn')
     admin_user: {
@@ -60,7 +69,7 @@ async function build_start_to_strapi_logs(result, domain, err = null, b_err = nu
     error_code: err,
     build_errors: b_err,
     build_args: model_and_target,
-    action: del ? 'delete' : 'new or edit'
+    action: actionType
   }
 
   plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
