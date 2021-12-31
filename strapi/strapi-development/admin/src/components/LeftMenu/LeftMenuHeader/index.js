@@ -89,6 +89,9 @@ async function fetchLogs() {
       else if (finishedLog.action === 'delete') {
         toggleDeleteNotif(finishedLog)
       }
+      else if (finishedLog.action === 'archive') {
+        toggleArchiveNotif(finishedLog)
+      }
       else {
         strapi.notification.toggle({
           message: 'Your save of ' + finishedLog.stagingDomain + ' finished, see the result:',
@@ -179,6 +182,20 @@ const toggleDeleteNotif = (finishedLog) => {
 
     strapi.notification.toggle({
     message: `Your delete of '${finishedLog.build_args}' finished:`,
+    blockTransition: true,
+    link: link
+  })
+}
+
+const toggleArchiveNotif = (finishedLog) => {
+
+  const link = {
+    url: finishedLog.site,
+    label: finishedLog.stagingDomain,
+  }
+
+    strapi.notification.toggle({
+    message: `Your archive build of '${finishedLog.build_args}' finished:`,
     blockTransition: true,
     link: link
   })
