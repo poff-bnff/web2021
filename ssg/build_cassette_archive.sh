@@ -36,6 +36,7 @@ echo "$FETCH_PATH" FETCH_PATH
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js archive
 
 nice -10 node "$FETCH_PATH"/fetch_cassettes_archive_from_yaml.js "$DOMAIN"
+nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js
 
 # Logi konsooli kõik ehitatavad pathid:
 nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display
