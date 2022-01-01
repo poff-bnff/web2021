@@ -746,7 +746,11 @@ function generateAllDataYAML(allData, lang) {
         }
 
         let festivals = []
+        let festivaleditions = []
+
         if (cassette.festival_editions) {
+            const filteredFestivalEd = cassette.festival_editions.filter(fe => fe.name)
+
             for (const fested of cassette.festival_editions) {
                 if (fested.festival) {
                     const key = `_${fested.festival.id}`
@@ -757,14 +761,11 @@ function generateAllDataYAML(allData, lang) {
                     filters.festivals[key] = festival_name
                 }
             }
-        }
 
-        let festivaleditions = []
-        if (cassette.festival_editions) {
-            for (const fested of cassette.festival_editions) {
+            for (const fested of filteredFestivalEd) {
                 const key = `_${fested.id}`
-                const festival = fested
-                var festival_name = festival.name
+                var festival_name = fested.name
+
                 festivaleditions.push(key)
                 filters.festivaleditions[key] = festival_name
             }
@@ -883,6 +884,7 @@ function generateAllDataYAML(allData, lang) {
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                 console.log('Details:', JSON.stringify({ to_sort }, null, 4));
+                console.log('Lang:', lang);
                 throw new Error(error)
             }
         });
