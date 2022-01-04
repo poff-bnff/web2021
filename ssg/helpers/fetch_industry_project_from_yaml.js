@@ -3,10 +3,10 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
 const {fetchModel} = require('./b_fetch.js')
+const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 const sourceDir =  path.join(__dirname, '..', 'source');
 const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industryprojects');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
 const STRAPIDATA_IND_PROJECTS = yaml.load(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
@@ -22,6 +22,11 @@ const strapiDataRoleAtFilmPath = path.join(strapiDataDirPath, 'RoleAtFilm.yaml')
 const STRAPIDATA_ROLESATFILM = yaml.load(fs.readFileSync(strapiDataRoleAtFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const active_editions = DOMAIN_SPECIFICS.active_industry_editions
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+
+const fetchDataDir = param_build_type === 'archive' ? path.join(fetchDir, 'industryprojects_archive') : path.join(fetchDir, 'industryprojects')
 
 if (DOMAIN === 'industry.poff.ee') {
 
@@ -71,13 +76,15 @@ if (DOMAIN === 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    let activeProjectsYamlNameSuffix = 'projects'
-    let activeProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => active_editions.includes(id)))
-    startIndustryProjectProcessing(languages, activeProjects, activeProjectsYamlNameSuffix)
-
-    let archiveProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
-    let archiveProjectsYamlNameSuffix = 'projects_archive'
-    startIndustryProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix)
+    if (param_build_type === 'archive') {
+        let archiveProjectsYamlNameSuffix = 'projects_archive'
+        let archiveProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
+        startIndustryProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix, true)
+    } else {
+        let activeProjectsYamlNameSuffix = 'projects'
+        let activeProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => active_editions.includes(id)))
+        startIndustryProjectProcessing(languages, activeProjects, activeProjectsYamlNameSuffix)
+    }
 
 } else {
 
@@ -214,7 +221,7 @@ function generateProjectsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
 
 }
 
-function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, projectsYamlNameSuffix) {
+function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, projectsYamlNameSuffix, archiveBuild = false) {
     for (const ix in languages) {
         const lang = languages[ix];
         console.log(`Fetching ${DOMAIN} industry ${projectsYamlNameSuffix} ${lang} data`);
@@ -224,7 +231,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             industry_project.roles_in_project = {}
             industry_project.comp_roles_in_project = {}
 
-            var templateDomainName = 'industry';
+            var templateDomainName = archiveBuild ? 'industry_archive' : 'industry'
 
             // rueten func. is run for each industry_project separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
@@ -271,6 +278,10 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industryproject_${templateDomainName}_index_template.pug`)
+            if (archiveBuild) {
+                addConfigPathAliases([`/_fetchdir/industryprojects_archive/${dirSlug}`])
+            }
+
             allData.push(industry_project);
 
             const credentials = industry_project.teamCredentials || {}

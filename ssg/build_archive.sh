@@ -35,8 +35,14 @@ nice -10 node "$FETCH_PATH"/d_fetch.js
 echo "$FETCH_PATH" FETCH_PATH
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js archive
 
-echo "fetch_cassettes_archive_from_yaml.js"
-nice -10 node "$FETCH_PATH"/fetch_cassettes_archive_from_yaml.js "$DOMAIN"
+if [ "$DOMAIN" == "industry.poff.ee" ]; then
+    echo "fetch_industry_project_from_yaml.js"
+    nice -10 node "$FETCH_PATH"/fetch_industry_project_from_yaml.js archive
+else
+    echo "fetch_cassettes_archive_from_yaml.js"
+    nice -10 node "$FETCH_PATH"/fetch_cassettes_archive_from_yaml.js "$DOMAIN"
+fi
+
 echo "fetch_footer_from_yaml.js"
 nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js
 

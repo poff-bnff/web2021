@@ -32,6 +32,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
+            '/industry_projects_archive_search', //industry
             '/info', //tartuff
             // '/interview', //article
             // '/login', //poff, industry
@@ -67,6 +68,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
+            '/industry_projects_archive_search', //industry
             '/info', //tartuff
             '/letschat', // POFF letschat page
             '/login', //poff, industry
@@ -96,6 +98,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
+            '/industry_projects_archive_search', //industry
             '/info', //tartuff
             '/letschat', // POFF letschat page
             '/login', //poff, industry
@@ -127,6 +130,7 @@ function addConfigIgnorePaths() {
             '/letschat', // POFF letschat page
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_projects_archive_search', //Built by archive build
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -143,6 +147,7 @@ function addConfigIgnorePaths() {
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
+            '/industry_projects_archive_search', //industry
             '/letschat', // POFF letschat page
             '/login', //poff, industry
             '/mypoff', // poff, industry

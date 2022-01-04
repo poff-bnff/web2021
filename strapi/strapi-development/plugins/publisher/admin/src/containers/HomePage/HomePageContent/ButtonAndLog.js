@@ -95,7 +95,7 @@ const ButtonAndLog = ({ site, buttonText }) => {
   //title kohale viimane logi ja content kohale tabel logidest
   const superAdminRoleId = 1
   if (userInfo && JSON.parse(userInfo).roles.map(r => r.id).includes(superAdminRoleId)) {
-    const sitesWithFilms = [
+    const sitesWithArchive = [
       'poff.ee',
       'justfilm.ee',
       'kinoff.poff.ee',
@@ -103,8 +103,9 @@ const ButtonAndLog = ({ site, buttonText }) => {
       'kumu.poff.ee',
       'tartuff.ee',
       'oyafond.ee',
+      'industry.poff.ee',
     ]
-    const disabled = sitesWithFilms.includes(site) ? false : true
+    const disabled = sitesWithArchive.includes(site) ? false : true
     const buttonArchiveText = disabled ? '' : 'ARCHIVE'
     const buttonArchiveColor = disabled ? '#f8f9fa' : '#F36C3F'
 
