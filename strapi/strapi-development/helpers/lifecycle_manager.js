@@ -247,7 +247,7 @@ async function modify_stapi_data(result, model_name, vanish = false) {
   if (modelsToBeSkipped.includes(model_name)) { return }
 
   let modelname = await strapi.query(model_name).model.info.name
-  modelname = modelname.split('_').join('')
+  modelname = modelname.split('_').join('') // siin on viga, vt yle (modify_stapi_data ei tööta! ka me enam hoiame allStrapidatas? jne
   let result_id = result.id ? result.id : null
   console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
   result = clean_result(result)

@@ -48,20 +48,20 @@ header
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
 
-        user_menu_hidden(id='user_menu_hidden' style='display: none')
-            li.user_menu.dropdown
-                a.user_menu My Campus
-                    ul.ul_kaks.padding_bottom_5
-                        li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-                        li#logInName.dark_1(style={display: 'none'})
-                            a#tervitus= self.label.menu.mainGreeting
-                        li#myCalendar(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}mycalendar`) My calendar
-                        //- li#userProfile(style={cursor: 'pointer', display: 'none'})
-                        //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-                        li#logOut(style={cursor: 'pointer', display: 'none'} )
-                            a(onclick='logOut()')= self.label.menu.mainLogout
+        //- user_menu_hidden(id='user_menu_hidden' style='display: none')
+        //-     li.user_menu.dropdown
+        //-         a.user_menu My Campus
+        //-             ul.ul_kaks.padding_bottom_5
+        //-                 li#logIn(style={cursor: 'pointer', display: 'none'})
+        //-                     a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+        //-                 li#logInName.dark_1(style={display: 'none'})
+        //-                     a#tervitus= self.label.menu.mainGreeting
+        //-                 li#myCalendar(style={cursor: 'pointer'})
+        //-                     a(href=`/${lang_path}mycalendar`) My calendar
+        //-                 //- li#userProfile(style={cursor: 'pointer', display: 'none'})
+        //-                 //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+        //-                 li#logOut(style={cursor: 'pointer', display: 'none'} )
+        //-                     a(onclick='logOut()')= self.label.menu.mainLogout
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
