@@ -35,7 +35,9 @@ nice -10 node "$FETCH_PATH"/d_fetch.js
 echo "$FETCH_PATH" FETCH_PATH
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js archive
 
+echo "fetch_cassettes_archive_from_yaml.js"
 nice -10 node "$FETCH_PATH"/fetch_cassettes_archive_from_yaml.js "$DOMAIN"
+echo "fetch_footer_from_yaml.js"
 nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js
 
 # Logi konsooli kõik ehitatavad pathid:

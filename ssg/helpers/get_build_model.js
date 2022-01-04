@@ -129,7 +129,7 @@ function model(arg) {
 		'dis-camp-project': 'full',
 		'full': 'full',
 
-		'cassettes_archive': 'cassette_archive',
+		'archive': 'archive',
 	}
 
 	return mapping_models[arg]
