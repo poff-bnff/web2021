@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_person_actor_info_sets",
+  "info": {
+    "name": "Actor_Info_Set",
+    "icon": "child",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "native_language": {
+      "model": "language"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "height": {
+      "type": "integer",
+      "min": 50,
+      "max": 240
+    },
+    "weight": {
+      "type": "integer",
+      "max": 500,
+      "min": 20
+    },
+    "eye_colour": {
+      "model": "colours"
+    },
+    "hair_colour": {
+      "model": "colours"
+    },
+    "shoe_size": {
+      "model": "shoe-size"
+    },
+    "circum_chest": {
+      "type": "integer"
+    },
+    "circum_waist": {
+      "type": "integer"
+    },
+    "circum_hip": {
+      "type": "integer"
+    },
+    "particular_signs": {
+      "type": "text"
+    },
+    "sport_activities": {
+      "type": "text"
+    }
+  }
+}
