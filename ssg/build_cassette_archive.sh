@@ -46,6 +46,10 @@ nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/ent
 echo "RSYNC $BUILD_PATH/archive/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
 rsync -ra "$BUILD_PATH"/archive/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
+echo "Compressing ..."
+tar -cvf "$DOMAIN".tar "$BUILD_PATH"/archive/
+echo "Compressed"
+
 printf '\n\n----------      Finished building      ----------\n\n'
 
 
