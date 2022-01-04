@@ -77,6 +77,7 @@ if (DOMAIN === 'industry.poff.ee') {
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
     if (param_build_type === 'archive') {
+        addConfigPathAliases([`/industry_projects_archive_search`])
         let archiveProjectsYamlNameSuffix = 'projects_archive'
         let archiveProjects = STRAPIDATA_IND_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
         startIndustryProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix, true)
