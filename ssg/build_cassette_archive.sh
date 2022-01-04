@@ -48,7 +48,7 @@ rsync -ra "$BUILD_PATH"/archive/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAI
 
 echo "Compressing ..."
 # tar -cvf "$BUILD_PATH"/archive/"$DOMAIN".tar -C "$BUILD_PATH"/archive/"$BUILDDIR"/
-tar -cvf "$BUILD_PATH"/archive/"$DOMAIN".tar -C "$BUILD_PATH"/archive/"$BUILDDIR" .
+tar -cvf "$BUILD_PATH"/archive/"$BUILDDIR".tar -C "$BUILD_PATH"/archive/"$BUILDDIR" .
 # tar -cvf /srv/ssg/archive/kinoff.tar -C /srv/ssg/archive/kinoff .
 echo "Compressed"
 
