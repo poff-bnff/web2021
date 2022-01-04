@@ -223,6 +223,8 @@ function generateProjectsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
 }
 
 function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, projectsYamlNameSuffix, archiveBuild = false) {
+    var templateDomainName = archiveBuild ? 'industry_archive' : 'industry'
+
     for (const ix in languages) {
         const lang = languages[ix];
         console.log(`Fetching ${DOMAIN} industry ${projectsYamlNameSuffix} ${lang} data`);
@@ -231,8 +233,6 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             let industry_project = JSON.parse(JSON.stringify(STRAPIDATA_IND_PROJECT[ix]));
             industry_project.roles_in_project = {}
             industry_project.comp_roles_in_project = {}
-
-            var templateDomainName = archiveBuild ? 'industry_archive' : 'industry'
 
             // rueten func. is run for each industry_project separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
@@ -419,19 +419,19 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             fs.writeFileSync(filtersYamlPath, '[]', 'utf8');
         }
 
-        for (const industry_project of allData) {
-            const dirSlug = industry_project.slug || industry_project.id
-            const saveDir = path.join(fetchDataDir, dirSlug);
-            fs.mkdirSync(saveDir, { recursive: true });
+        // for (const industry_project of allData) {
+        //     const dirSlug = industry_project.slug || industry_project.id
+        //     const saveDir = path.join(fetchDataDir, dirSlug);
+        //     fs.mkdirSync(saveDir, { recursive: true });
 
-            industry_project.data = {'articles': '/_fetchdir/articles.en.yaml'};
-            industry_project.path = `project/${dirSlug}`
+        //     industry_project.data = {'articles': '/_fetchdir/articles.en.yaml'};
+        //     industry_project.path = `project/${dirSlug}`
 
-            const yamlPath = path.join(fetchDataDir, dirSlug, 'data.en.yaml')
-            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' })
-            fs.writeFileSync(yamlPath, oneYaml, 'utf8')
-            fs.writeFileSync(path.join(saveDir,'index.pug'), 'include /_templates/industryproject_industry_index_template.pug')
-        }
+        //     const yamlPath = path.join(fetchDataDir, dirSlug, 'data.en.yaml')
+        //     const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' })
+        //     fs.writeFileSync(yamlPath, oneYaml, 'utf8')
+        //     fs.writeFileSync(path.join(saveDir,'index.pug'), `include /_templates/industryproject_${templateDomainName}_index_template.pug`)
+        // }
     }
 }
 
