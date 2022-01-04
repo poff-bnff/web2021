@@ -139,13 +139,15 @@ cp -R "assets/"* "build/$BUILDDIR/assets"
 
 
 
-FILE=archive/"$BUILDDIR".tar
-if test -f "$FILE"; then
+ARCHIVEFILE=archive/"$BUILDDIR".tar
+if test -f "$ARCHIVEFILE"; then
     printf '\n----------               Extract archive files             ----------\n\n'
     # cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
     # tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
     tar -xvf archive/"$BUILDDIR".tar -C build/"$BUILDDIR"
     printf '\n----------        Finished extracting archive files         ----------\n'
+else
+    printf '\n Archive file for this site does not exist... \n'
 fi
 
 # if [ "$DOMAIN" == "poff.ee" ]
