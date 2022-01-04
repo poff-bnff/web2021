@@ -1175,6 +1175,9 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "actor_role": {
+                      "type": "string"
                     }
                   }
                 }
@@ -2294,6 +2297,9 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "actor_role": {
+                      "type": "string"
                     }
                   }
                 }
