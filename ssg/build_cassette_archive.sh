@@ -47,7 +47,9 @@ echo "RSYNC $BUILD_PATH/archive/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
 rsync -ra "$BUILD_PATH"/archive/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
 
 echo "Compressing ..."
-tar -cvf "$BUILD_PATH"/archive/"$DOMAIN".tar "$BUILD_PATH"/archive/
+# tar -cvf "$BUILD_PATH"/archive/"$DOMAIN".tar -C "$BUILD_PATH"/archive/"$BUILDDIR"/
+tar -cvf "$BUILD_PATH"/archive/"$DOMAIN".tar -C "$BUILD_PATH"/archive/"$BUILDDIR" .
+# tar -cvf /srv/ssg/archive/kinoff.tar -C /srv/ssg/archive/kinoff .
 echo "Compressed"
 
 printf '\n\n----------      Finished building      ----------\n\n'
