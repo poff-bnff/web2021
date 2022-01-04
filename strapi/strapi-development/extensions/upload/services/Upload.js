@@ -210,7 +210,6 @@ module.exports = {
         if (!format || format === undefined) continue;
 
         const { key, file } = format;
-
         await strapi.plugins.upload.provider.upload(file);
         delete file.buffer;
 
