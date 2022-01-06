@@ -41,7 +41,7 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
       console.log('Update or add: ')
       if (data.skipbuild) return

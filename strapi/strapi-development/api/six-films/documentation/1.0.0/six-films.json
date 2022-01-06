@@ -659,9 +659,6 @@
                     "type": "string"
                   }
                 },
-                "otherFestivals": {
-                  "type": "string"
-                },
                 "credentials": {
                   "type": "component"
                 },
@@ -780,9 +777,6 @@
                     "type": "string"
                   }
                 },
-                "otherFestivals": {
-                  "type": "string"
-                },
                 "credentials": {
                   "type": "component"
                 },
@@ -900,9 +894,6 @@
                   "items": {
                     "type": "string"
                   }
-                },
-                "otherFestivals": {
-                  "type": "string"
                 },
                 "credentials": {
                   "type": "component"
