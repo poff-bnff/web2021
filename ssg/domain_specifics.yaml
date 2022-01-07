@@ -235,6 +235,8 @@ stagingDomains:
     filmikool.poff.ee: build.filmikool.poff.ee
     discoverycampus.poff.ee: build.discoverycampus.poff.ee
 
+# Images priority block START
+
 articleListViewImagePriority:
     -
         - _small
@@ -282,3 +284,5 @@ articleViewImagePriority:
 articleViewImagePriorityDefaults:
     - image
     - imageDefault
+
+# Images priority block END
