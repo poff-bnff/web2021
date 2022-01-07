@@ -26,13 +26,11 @@ block content
                     section.padding_top_header
                         section.ss_hero_head
                             .container_frame_square
-                                if self.media
-                                    if self.media.image && self.media.image[0]
-                                        img(src=`https://assets.poff.ee/img/${self.media.image[0].hash}${self.media.image[0].formats && self.media.image[0].formats._big ? '_big' : ''}${self.media.image[0].ext}`).ss_hero_image.container_contents_square
-                                    else if self.media.imageDefault && self.media.imageDefault[0]
-                                        img(src=`https://assets.poff.ee/img/${self.media.imageDefault[0].hash}${self.media.imageDefault[0].formats && self.media.imageDefault[0].formats._big ? '_big' : ''}${self.media.imageDefault[0].ext}`).ss_hero_image.container_contents_square
-                                    else
-                                        img(src='/assets/img/static/placeholder_hd_1.jpg').ss_hero_image.container_contents_square
+                                if self.primaryImage
+                                    img.ss_hero_image.container_contents_square(src=`https://assets.poff.ee/img/${self.primaryImage}`)
+                                else
+                                    img.ss_hero_image.container_contents_square(src='/assets/img/static/placeholder_hd_1.jpg')
+
                             if self.title
                                 .ss_hero_headline_box
                                     .ss_title_detailed

@@ -25,13 +25,11 @@ block content
 
                     section.grid_article
                         section.about_hero_head
-                            if self.media
-                                if self.media.image && self.media.image[0]
-                                    img(src=`https://assets.poff.ee/img/${self.media.image[0].hash}${self.media.image[0].formats && self.media.image[0].formats._big ? '_big' : ''}${self.media.image[0].ext}`).about_hero_image
-                                else if self.media.imageDefault && self.media.imageDefault[0]
-                                    img(src=`https://assets.poff.ee/img/${self.media.imageDefault[0].hash}${self.media.imageDefault[0].formats && self.media.imageDefault[0].formats._big ? '_big' : ''}${self.media.imageDefault[0].ext}`).about_hero_image
-                                else
-                                    img(src='/assets/img/static/placeholder_hd_1.jpg').about_hero_image
+                            if self.primaryImage
+                                img.about_hero_image(src=`https://assets.poff.ee/img/${self.primaryImage}`)
+                            else
+                                img.about_hero_image(src='/assets/img/static/placeholder_hd_1.jpg')
+
                         if self.title
                             .about_hero_headline_box
                                 .about_title_detailed
