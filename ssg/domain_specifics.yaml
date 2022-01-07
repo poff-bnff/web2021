@@ -234,3 +234,51 @@ stagingDomains:
     oyafond.ee: build.oyafond.ee
     filmikool.poff.ee: build.filmikool.poff.ee
     discoverycampus.poff.ee: build.discoverycampus.poff.ee
+
+articleListViewImagePriority:
+    -
+        - _small
+        - image
+    -
+        - _small
+        - imageDefault
+    -
+        - _small_16_9
+        - image
+    -
+        - _small_16_9
+        - imageDefault
+    -
+        - _small_p
+        - image
+    -
+        - _small_p
+        - imageDefault
+
+articleListViewImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleViewImagePriority:
+    -
+        - _big
+        - image
+    -
+        - _big
+        - imageDefault
+    -
+        - _big_16_9
+        - image
+    -
+        - _big_16_9
+        - imageDefault
+    -
+        - _big_p
+        - image
+    -
+        - _big_p
+        - imageDefault
+
+articleViewImagePriorityDefaults:
+    - image
+    - imageDefault
