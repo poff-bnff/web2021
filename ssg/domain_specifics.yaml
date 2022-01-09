@@ -285,4 +285,30 @@ articleViewImagePriorityDefaults:
     - image
     - imageDefault
 
+articleHeroImagePriority:
+    -
+        - _big
+        - image
+    -
+        - _big
+        - imageDefault
+    -
+        - _big_16_9
+        - image
+    -
+        - _big_16_9
+        - imageDefault
+    -
+        - _big_p
+        - image
+    -
+        - _big_p
+        - imageDefault
+
+articleHeroImagePriorityDefaults:
+    - image
+    - imageDefault
+
+
+
 # Images priority block END
