@@ -16,6 +16,8 @@ const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const imageOrder = DOMAIN_SPECIFICS.articleListViewImagePriority
 const imageOrderDefaults = DOMAIN_SPECIFICS.articleListViewImagePriorityDefaults
+const imageOrderViiekas = DOMAIN_SPECIFICS.articleViiekasImagePriority
+const imageOrderViiekasDefaults = DOMAIN_SPECIFICS.articleViiekasImagePriorityDefaults
 
 const sourceDir = path.join(rootDir, 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
@@ -141,6 +143,9 @@ for (const lang of allLanguages) {
             // Article list view get priority picture format
             const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
             if (primaryImage) { element.primaryImage = primaryImage }
+            // Same for viiekas, as it uses different order
+            const viiekasImage = prioritizeImages(element, imageOrderViiekas, imageOrderViiekasDefaults)
+            if (viiekasImage) { element.viiekasImage = viiekasImage }
             // Delete excess media
             delete element.media
 
