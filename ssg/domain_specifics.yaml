@@ -238,99 +238,94 @@ stagingDomains:
 # Images priority block START
 
 articleListViewImagePriority:
-    -
-        - _small
-        - image
-    -
-        - _small
-        - imageDefault
-    -
-        - _small_16_9
-        - image
-    -
-        - _small_16_9
-        - imageDefault
-    -
-        - _small_p
-        - image
-    -
-        - _small_p
-        - imageDefault
+    - - _small
+      - image
+    - - _small
+      - imageDefault
+    - - _small_16_9
+      - image
+    - - _small_16_9
+      - imageDefault
+    - - _small_p
+      - image
+    - - _small_p
+      - imageDefault
 
 articleListViewImagePriorityDefaults:
     - image
     - imageDefault
 
 articleViewImagePriority:
-    -
-        - _big
-        - image
-    -
-        - _big
-        - imageDefault
-    -
-        - _big_16_9
-        - image
-    -
-        - _big_16_9
-        - imageDefault
-    -
-        - _big_p
-        - image
-    -
-        - _big_p
-        - imageDefault
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
 
 articleViewImagePriorityDefaults:
     - image
     - imageDefault
 
 articleHeroImagePriority:
-    -
-        - _big
-        - image
-    -
-        - _big
-        - imageDefault
-    -
-        - _big_16_9
-        - image
-    -
-        - _big_16_9
-        - imageDefault
-    -
-        - _big_p
-        - image
-    -
-        - _big_p
-        - imageDefault
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
 
 articleHeroImagePriorityDefaults:
     - image
     - imageDefault
 
 articleViiekasImagePriority:
-    -
-        - _med
-        - image
-    -
-        - _med
-        - imageDefault
-    -
-        - _med_16_9
-        - image
-    -
-        - _med_16_9
-        - imageDefault
-    -
-        - _big_p
-        - image
-    -
-        - _big_p
-        - imageDefault
+    - - _med
+      - image
+    - - _med
+      - imageDefault
+    - - _med_16_9
+      - image
+    - - _med_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
 
 articleViiekasImagePriorityDefaults:
     - image
     - imageDefault
 
+festivalTeamImagePriority:
+    - - _small_sq
+      - pictureAtTeam
+    - - _small
+      - pictureAtTeam
+
+festivalTeamImagePriorityDefaults:
+    - pictureAtTeam
+    - personPicture
+
+juryAndGuestImagePriority:
+    - - _med_sq
+      - pictureAtJury
+    - - _small
+      - pictureAtJury
+
+juryAndGuestImagePriorityDefaults:
+    - pictureAtJury
+    - personPicture
 # Images priority block END
