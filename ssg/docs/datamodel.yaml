@@ -1029,6 +1029,14 @@ Film: &Film
     runtime: 139 (number)
     synopsis: *Translated #(Component, rich)
     media: *FilmMedia #(Component, not from eventival)
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    posters: #(Component (repeatable))
+        - *StrapiMedia
+    trailer: #(Component (repeatable))
+        - *Trailer
+    QaClip: #(Component (repeatable))
+        - *QaClip
     tags: *Tags #(Component)
     slug_et: naehtamatu-elu (UID, No spaces)
     slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
@@ -1062,6 +1070,14 @@ Cassette: &Cassette
     title_ru: (text)
     synopsis: *Translated #(Rich text)
     media: *FilmMedia #(Component)
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    posters: #(Component (repeatable))
+        - *StrapiMedia
+    trailer: #(Component (repeatable))
+        - *Trailer
+    QaClip: #(Component (repeatable))
+        - *QaClip
     festival_editions: #(Component (repeatable))
         - *FestivalEdition
     tags: *Tags
@@ -1171,6 +1187,14 @@ Course: &Course
     endDate: (Datetime)
     volume: (short text)
     media: *FilmMedia #(Component, not from eventival)
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    posters: #(Component (repeatable))
+        - *StrapiMedia
+    trailer: #(Component (repeatable))
+        - *Trailer
+    QaClip: #(Component (repeatable))
+        - *QaClip
     tags: *CourseTags #(Component)
     languages: #(Component (repeatable))
         - *Language
