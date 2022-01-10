@@ -8,6 +8,7 @@ BUILDOPTION[6]="kumu.poff.ee"
 BUILDOPTION[7]="tartuff.ee"
 BUILDOPTION[8]="oyafond.ee"
 BUILDOPTION[9]="filmikool.poff.ee"
+BUILDOPTION[10]="discoverycampus.poff.ee"
 
 ask_what_to_build()
 {
@@ -23,7 +24,7 @@ ask_what_to_build()
     if [ $new_number -eq 0 ]
     then
         runexit
-    elif [ $new_number -lt 11 ] && [ $new_number -gt 0 ]
+    elif [ $new_number -lt 12 ] && [ $new_number -gt 0 ]
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
@@ -46,31 +47,42 @@ ask_if_fetch()
     elif [ $new_number -lt 3 ] && [ $new_number -gt 0 ]
     then
         let fetch_number=$new_number
-        # ask_if_download_img $site_name $fetch_number
-        build $site_name $fetch_number
+        ask_if_simplify_build $site_name $fetch_number
+        # build $site_name $fetch_number
     else
         echo "Incorrect option, try again!"
         ask_if_fetch $site_name
     fi
 }
 
-# ask_if_download_img()
-# {
-#     printf '\n----------\nSelect: \n1 to download all images\n2 to not download all images\n0 to EXIT\n'
-#     read new_number
+ask_if_simplify_build()
+{
+    ANYDIRECTORIES=$(ls -ld ./source/_fetchdir/*/ 2> /dev/null)
 
-#     if [ $new_number -eq 0 ]
-#     then
-#         runexit
-#     elif [ $new_number -lt 3 ] && [ $new_number -gt 0 ]
-#     then
-#         let download_number=$new_number
-#         build $site_name $fetch_number $download_number
-#     else
-#         echo "Incorrect option, try again!"
-#         ask_if_download_img $site_name $fetch_number
-#     fi
-# }
+    if [ -z "$ANYDIRECTORIES" ] && [ $fetch_number -eq 2 ]; then
+        printf '\n----------\nPrevious build has already been simplified, continuing with simplified build\n'
+        printf 'For non-simplified full build you need to re-fetch data\n'
+        let simplify_build_number=1
+        build $site_name $fetch_number $simplify_build_number
+    else
+        :
+    fi
+
+    printf '\n----------\nSelect: \n1 To simplify build (skip building subpages [separate articles, cassettes, events etc]) \n2 To not simplify build\n0 to EXIT\n'
+    read new_number
+
+    if [ $new_number -eq 0 ]
+    then
+        runexit
+    elif [ $new_number -lt 3 ] && [ $new_number -gt 0 ]
+    then
+        let simplify_build_number=$new_number
+        build $site_name $fetch_number $simplify_build_number
+    else
+        echo "Incorrect option, try again!"
+        ask_if_simplify_build $site_name $fetch_number
+    fi
+}
 
 build()
 {
@@ -85,12 +97,6 @@ build()
         printf "\nStarting to fetch new data:\n"
         fetch_data
     fi
-
-    # if [ $download_number -eq 1 ]
-    # then
-    #     printf "\nStarting to download new images:\n"
-    #     download_img
-    # fi
 
     if [ $site_name ]
     then
@@ -120,6 +126,13 @@ build()
         printf '\n----------                  Adding ignore paths                ----------\n\n'
         node ./helpers/add_config_ignorePaths.js
         printf '\n----------               Finished adding ignore paths            ----------\n'
+
+
+        if [ $simplify_build_number -eq 1 ]
+        then
+            printf "\nSimplifying build:\n"
+            simplify_build
+        fi
 
         node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
@@ -159,6 +172,9 @@ fetch_data()
     node ./helpers/fetch_articles_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_person_from_yaml'
+    node ./helpers/fetch_industry_person_from_yaml.js
+
+    echo '==== custom build ==== fetch_discamp_person_from_yaml'
     node ./helpers/fetch_industry_person_from_yaml.js
 
     echo '==== custom build ==== fetch_article_types_from_yaml'
@@ -206,16 +222,22 @@ fetch_data()
     echo '==== custom build ==== fetch_shops_from_yaml'
     node ./helpers/fetch_shops_from_yaml.js
 
-    echo '==== custom build ==== fetch_industry_person_from_yaml'
-    node ./helpers/fetch_industry_person_from_yaml.js
+    # echo '==== custom build ==== fetch_industry_person_from_yaml'
+    # node ./helpers/fetch_industry_person_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_project_from_yaml'
+    node ./helpers/fetch_industry_project_from_yaml.js
+
+    echo '==== custom build ==== fetch_discamp_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_channels_from_yaml'
     node ./helpers/fetch_channels_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_event_from_yaml'
+    node ./helpers/fetch_industry_event_from_yaml.js
+
+    echo '==== custom build ==== fetch_discamp_event_from_yaml'
     node ./helpers/fetch_industry_event_from_yaml.js
 
     echo '==== custom build ==== fetch_eventival_persons_from_yaml.js'
@@ -231,27 +253,10 @@ fetch_data()
 
 }
 
-# download_img()
-# {
-#     [ -d "build/assets" ] && rm -r build/*
-#     [ ! -d "build/assets" ] && mkdir -p build/assets
-#     [ -d "assets/img/dynamic" ] && rm -r assets/img/dynamic/*
-
-#     printf '\n----------         Downloading all img from Strapi         ----------\n\n'
-#     node ./helpers/download_article_img.js
-#     node ./helpers/download_footer_img.js
-#     node ./helpers/download_teams_img.js
-#     node ./helpers/download_cassette_films_credentials_img.js
-#     node ./helpers/download_organisations_img.js
-#     # node ./helpers/download_persons_img.js
-#     node ./helpers/download_trioblock_img.js
-#     node ./helpers/download_supporters_page_img.js
-#     node ./helpers/download_programmes_img.js
-#     node ./helpers/download_shops_img.js
-#     node ./helpers/download_industry_person_img.js
-#     node ./helpers/download_industry_project_img.js
-#     # node ./helpers/download_casettes_and_films_img.js
-#     printf '\n\n----------     Finished downloading all img from Strapi    ----------\n\n'
-# }
+simplify_build()
+{
+    echo 'Simplified build...'
+    rm -rf ./source/_fetchdir/*/
+}
 
 ask_what_to_build

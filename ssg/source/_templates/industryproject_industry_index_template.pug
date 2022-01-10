@@ -218,20 +218,19 @@ block content
                                 - broadcaster_name.push(broadcaster.name)
                             .str_info_value= broadcaster_name.join(', ')
 
-                    if self.persons
-                        each person in self.persons
-                            if person.rolesAtFilm && person.person
-                                each role in person.rolesAtFilm
-                                    .str_info_grid_3
-                                        .str_info_label= role
-                                        .str_info_value= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
+                    // RolePerson
+                    if self.roles_in_project
+                        each role in self.roles_in_project
+                            .str_info_grid_3
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
-                    if self.organisations
-                        each company in self.organisations
-                            if company.rolesAtFilm && company.organisations.namePrivate
-                                .str_info_grid_3
-                                    .str_info_label= company.rolesAtFilm.join(', ')
-                                    .str_info_value= company.organisations.namePrivate
+                    // RoleCompany
+                    if self.comp_roles_in_project
+                        each role in self.comp_roles_in_project
+                            .str_info_grid_3
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
 
             section.project_runtime_box
 

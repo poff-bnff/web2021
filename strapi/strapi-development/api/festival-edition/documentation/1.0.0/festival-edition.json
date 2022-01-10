@@ -661,7 +661,8 @@
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "slug"
               ],
               "properties": {
                 "id": {
@@ -871,6 +872,9 @@
                 },
                 "slug_ru": {
                   "type": "uid"
+                },
+                "award": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

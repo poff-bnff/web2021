@@ -26,7 +26,7 @@ const param_build_type = params[0]
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
+    addConfigPathAliases(['/screenings', '/my_screenings', '/screenings-search'])
 }
 
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
@@ -410,6 +410,7 @@ function CreateYAML(screenings, lang) {
                 return sort
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });

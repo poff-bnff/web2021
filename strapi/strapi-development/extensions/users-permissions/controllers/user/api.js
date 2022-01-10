@@ -353,6 +353,10 @@ module.exports = {
       return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
     } else if (rawData.type === "addMyFilm") {
       return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
+    } else if (rawData.type === "rmMyEvent") {
+      return await manipulateFavorites(user, "rm", rawData.id, "my_events", "schedule", "industry_events")
+    } else if (rawData.type === "addMyEvent") {
+      return await manipulateFavorites(user, "add", rawData.id, "my_events", "schedule", "industry_events")
     }
 
   },
@@ -484,8 +488,7 @@ module.exports = {
     // console.log('event ', event)
     // const saleActiveCategories = ['tp1']
     const userId = id
-    const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for']
-
+    const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for'] || ctx.request.ip
     const { categoryId, return_url, cancel_url, paymentMethodId } = requestBody;
     console.log(categoryId)
     const body = requestBody
@@ -575,9 +578,9 @@ module.exports = {
         }),
         reference: categoryId,
         transaction_url: {
-          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/cancel` },
-          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/notification` },
-          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}/users-permissions/users/buyproductcb/return` }
+          cancel_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/cancel` },
+          notification_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/notification` },
+          return_url: { method: 'POST', url: `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] === 'https' ? '' : ':' + process.env['StrapiPort']}/users-permissions/users/buyproductcb/return` }
         }
       }
     })
@@ -709,13 +712,11 @@ module.exports = {
           type: 'Purchase',
           transactor: product.userId,
           beneficiary: product.userId,
-          payment: {
-            currency: mkResponse.currency,
-            amount: mkResponse.amount,
-            transaction: mkResponse.transaction,
-            method: 'Maksekeskus',
-            status: mkResponse.status,
-          },
+          currency: mkResponse.currency,
+          amount: mkResponse.amount,
+          transaction: mkResponse.transaction,
+          method: 'Maksekeskus',
+          status: mkResponse.status,
           products: [addTransactionProduct],
         }
         console.log(addTransactionOptions);
@@ -753,7 +754,7 @@ module.exports = {
         }
 
         if (updateProductSuccess) {
-          console.log('Success updated product ID ', updateProductSuccess);
+          console.log(`Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
 
           // Email
           try {

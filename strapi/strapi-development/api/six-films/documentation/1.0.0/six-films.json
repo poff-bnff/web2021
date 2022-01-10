@@ -659,9 +659,6 @@
                     "type": "string"
                   }
                 },
-                "otherFestivals": {
-                  "type": "string"
-                },
                 "credentials": {
                   "type": "component"
                 },
@@ -715,6 +712,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "vialog_id": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -777,9 +777,6 @@
                     "type": "string"
                   }
                 },
-                "otherFestivals": {
-                  "type": "string"
-                },
                 "credentials": {
                   "type": "component"
                 },
@@ -833,6 +830,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "vialog_id": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -895,9 +895,6 @@
                     "type": "string"
                   }
                 },
-                "otherFestivals": {
-                  "type": "string"
-                },
                 "credentials": {
                   "type": "component"
                 },
@@ -951,6 +948,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "vialog_id": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

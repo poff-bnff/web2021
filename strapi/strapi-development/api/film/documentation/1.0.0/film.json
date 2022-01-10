@@ -1048,9 +1048,6 @@
               }
             }
           },
-          "otherFestivals": {
-            "type": "string"
-          },
           "credentials": {
             "type": "object",
             "required": [
@@ -1649,6 +1646,9 @@
                 "slug_ru": {
                   "type": "uid"
                 },
+                "award": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1706,6 +1706,9 @@
                 }
               }
             }
+          },
+          "vialog_id": {
+            "type": "string"
           }
         }
       },
@@ -2161,9 +2164,6 @@
               "type": "string"
             }
           },
-          "otherFestivals": {
-            "type": "string"
-          },
           "credentials": {
             "type": "object",
             "required": [
@@ -2606,6 +2606,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "vialog_id": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

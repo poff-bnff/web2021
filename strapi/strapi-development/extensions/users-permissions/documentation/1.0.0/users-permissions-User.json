@@ -1734,9 +1734,6 @@
                     "Refund"
                   ]
                 },
-                "payment": {
-                  "type": "component"
-                },
                 "user": {
                   "type": "string"
                 },

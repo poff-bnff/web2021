@@ -528,7 +528,8 @@
           },
           "project": {
             "required": [
-              "id"
+              "id",
+              "slug"
             ],
             "properties": {
               "id": {
@@ -730,9 +731,6 @@
                   "type": "string"
                 }
               },
-              "otherFestivals": {
-                "type": "string"
-              },
               "credentials": {
                 "type": "component"
               },
@@ -786,6 +784,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "vialog_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -1038,6 +1039,49 @@
           },
           "slug_ru": {
             "type": "uid"
+          },
+          "award": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title_en": {
+                "type": "string"
+              },
+              "description": {
+                "type": "component"
+              },
+              "title_et": {
+                "type": "string"
+              },
+              "title_ru": {
+                "type": "string"
+              },
+              "slug_et": {
+                "type": "uid"
+              },
+              "slug_en": {
+                "type": "uid"
+              },
+              "slug_ru": {
+                "type": "uid"
+              },
+              "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1091,6 +1135,9 @@
           },
           "slug_ru": {
             "type": "uid"
+          },
+          "award": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_footer_sup_justs",
+  "info": {
+    "name": "supJust",
+    "icon": "assistive-listening-systems"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "logoWhite": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logoColour": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logoBlack": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "just_filmi_article": {
+      "model": "just-filmi-article"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_film_countries_and_languages",
+  "info": {
+    "name": "countriesAndLanguages",
+    "icon": "chess-king"
+  },
+  "options": {},
+  "attributes": {
+    "countries": {
+      "collection": "country"
+    },
+    "languages": {
+      "collection": "language"
+    }
+  }
+}

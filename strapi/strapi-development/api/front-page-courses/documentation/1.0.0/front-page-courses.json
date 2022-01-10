@@ -680,6 +680,12 @@
                 "media": {
                   "type": "component"
                 },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -762,6 +768,12 @@
                 "media": {
                   "type": "component"
                 },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -843,6 +855,12 @@
                 },
                 "media": {
                   "type": "component"
+                },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"

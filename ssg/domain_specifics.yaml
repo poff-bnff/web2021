@@ -10,6 +10,7 @@ domain:
     tartuff.ee: tartuff
     oyafond.ee: bruno
     filmikool.poff.ee: filmikool
+    discoverycampus.poff.ee: discamp
 
 domains_show_cassetes_wo_screenings:
     # - poff.ee
@@ -34,12 +35,14 @@ cassettes_festival_editions:
     hoff.ee:
         - 5
     kumu.poff.ee:
-        - 6
+        - 33
     tartuff.ee:
         - 10
     oyafond.ee:
         - 31
     filmikool.poff.ee:
+        - 0
+    discoverycampus.poff.ee:
         - 0
 
 XML_festival_editions:
@@ -65,16 +68,36 @@ programmes_festival_editions:
     hoff.ee:
         - 5
     kumu.poff.ee:
-        - 6
+        - 33
     tartuff.ee:
         - 10
     oyafond.ee:
         - 31
     filmikool.poff.ee:
         - 0
+    discoverycampus.poff.ee:
+        - 0
 
 active_industry_editions:
     - 12
+
+industry_eventival_badges_whitelist:
+    - MANAGEMENT
+    - JURY
+    - GUEST
+    - TEAM
+    - PRESS
+    - PRESS ONLINE
+    - INDUSTRY PRO
+    - INDUSTRY STUDENT / TALENT
+    - INDUSTRY ONLINE
+    - VOLUNTEER
+
+skip_build_for_models:
+    - industry-project
+    # - industry-event
+    - industry-person
+    - team
 
 article:
     poff.ee: POFFiArticle
@@ -87,6 +110,7 @@ article:
     tartuff.ee: TartuffiArticle
     oyafond.ee: BrunoArticle
     filmikool.poff.ee: FilmikooliArticle
+    discoverycampus.poff.ee: DisCampArticle
 
 footer:
     poff.ee: POFFiFooter
@@ -99,6 +123,7 @@ footer:
     tartuff.ee: TartuffiFooter
     oyafond.ee: BrunoFooter
     filmikool.poff.ee: FilmikooliFooter
+    discoverycampus.poff.ee: DisCampFooter
 
 locales:
     poff.ee:
@@ -135,6 +160,8 @@ locales:
         - et
         - en
         - ru
+    discoverycampus.poff.ee:
+        - en
 
 defaultLocale:
     poff.ee: et
@@ -147,6 +174,7 @@ defaultLocale:
     tartuff.ee: et
     oyafond.ee: et
     filmikool.poff.ee: et
+    discoverycampus.poff.ee: en
 
 vialogUrls:
     et:
@@ -179,6 +207,7 @@ pageURLs:
     tartuff.ee: "https://tartuff.ee/"
     oyafond.ee: "https://oyafond.ee/"
     filmikool.poff.ee: "https://filmikool.poff.ee/"
+    discoverycampus.poff.ee: "https://discoverycampus.poff.ee/"
 
 stagingURLs:
     poff.ee: "https://build.poff.ee/"
@@ -191,6 +220,7 @@ stagingURLs:
     tartuff.ee: https://build.tartuff.ee/
     oyafond.ee: https://build.oyafond.ee/
     filmikool.poff.ee: https://build.filmikool.poff.ee/
+    discoverycampus.poff.ee: https://build.discoverycampus.poff.ee/
 
 stagingDomains:
     poff.ee: build.poff.ee
@@ -203,3 +233,4 @@ stagingDomains:
     tartuff.ee: build.tartuff.ee
     oyafond.ee: build.oyafond.ee
     filmikool.poff.ee: build.filmikool.poff.ee
+    discoverycampus.poff.ee: build.discoverycampus.poff.ee

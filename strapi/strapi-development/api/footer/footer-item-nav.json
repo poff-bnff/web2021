@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_footer_footer_item_navs",
+  "info": {
+    "name": "footerItemNav",
+    "icon": "star-of-life"
+  },
+  "options": {},
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    },
+    "text": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "svgItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.social-item"
+    }
+  }
+}

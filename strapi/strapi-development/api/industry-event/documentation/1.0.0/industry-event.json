@@ -818,6 +818,12 @@
                     "type": "string"
                   }
                 },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -831,7 +837,8 @@
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "slug"
               ],
               "properties": {
                 "id": {
@@ -1083,7 +1090,16 @@
               "id": {
                 "type": "string"
               },
-              "name": {
+              "name_private": {
+                "type": "string"
+              },
+              "name_et": {
+                "type": "string"
+              },
+              "name_en": {
+                "type": "string"
+              },
+              "name_ru": {
                 "type": "string"
               },
               "created_by": {

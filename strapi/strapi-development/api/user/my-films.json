@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_user_my_films",
+  "info": {
+    "name": "MyFilms",
+    "icon": "photo-video",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "favorite",
+        "other"
+      ],
+      "default": "favorite"
+    },
+    "cassettes": {
+      "collection": "cassette"
+    }
+  }
+}

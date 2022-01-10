@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_article_article_medias",
+  "info": {
+    "name": "ArticleMedia",
+    "icon": "drum"
+  },
+  "options": {},
+  "attributes": {
+    "imageDefault": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "image_et": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "image_en": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "image_ru": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "clipUrlDefault": {
+      "type": "string"
+    },
+    "clipUrl_et": {
+      "type": "string"
+    },
+    "clipUrl_en": {
+      "type": "string"
+    },
+    "clipUrl_ru": {
+      "type": "string"
+    }
+  }
+}

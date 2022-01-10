@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_ticketing_prod_cat_lists",
+  "info": {
+    "name": "prodCatList",
+    "icon": "apple-alt"
+  },
+  "options": {},
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "orderedProductCategories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.ordered-products"
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    }
+  }
+}

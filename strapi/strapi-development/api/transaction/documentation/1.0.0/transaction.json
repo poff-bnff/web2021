@@ -534,35 +534,6 @@
               "Refund"
             ]
           },
-          "payment": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "currency": {
-                "type": "string"
-              },
-              "transaction": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "number"
-              },
-              "method": {
-                "type": "string",
-                "enum": [
-                  "Maksekeskus"
-                ]
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -986,35 +957,6 @@
               "Purchase",
               "Refund"
             ]
-          },
-          "payment": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "currency": {
-                "type": "string"
-              },
-              "transaction": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "number"
-              },
-              "method": {
-                "type": "string",
-                "enum": [
-                  "Maksekeskus"
-                ]
-              }
-            }
           },
           "user": {
             "type": "string"

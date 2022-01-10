@@ -167,13 +167,19 @@ function saveUrl() {
 
 
 function useUserData(userProf) {
-
-    if (userProf.user_profile && userProf.user_profile.firstName) {
+    if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
+        try {
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
+        } catch (err) {
+            null
+        }
+    } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
         try {
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
         } catch (err) {
             null
         }
+
     } else {
         try {
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email

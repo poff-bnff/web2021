@@ -29,6 +29,7 @@ const mapping = {
     'justfilm.ee': 'justfilm',
     'kinoff.poff.ee': 'kinoff',
     'industry.poff.ee': 'industry',
+    'discoverycampus.poff.ee': 'discamp',
     'shorts.poff.ee': 'shorts',
     'hoff.ee': 'hoff',
     'kumu.poff.ee': 'kumu',

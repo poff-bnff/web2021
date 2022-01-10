@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_article_trio_item_tartuffs",
+  "info": {
+    "name": "TrioItemTartuff",
+    "icon": "crutch",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tartuffi_article": {
+      "model": "tartuffi-article"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

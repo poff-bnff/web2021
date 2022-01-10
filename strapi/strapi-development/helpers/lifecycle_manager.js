@@ -12,6 +12,7 @@ const {
 
 const fs = require('fs')
 const yaml = require('yaml')
+const jsyaml = require('js-yaml');
 const path = require('path')
 const moment = require("moment-timezone")
 
@@ -19,6 +20,7 @@ const mapping_domain = {
   'filmikool.poff.ee': 'filmikool',
   'hoff.ee': 'hoff',
   'industry.poff.ee': 'industry',
+  'discoverycampus.poff.ee': 'discamp',
   'justfilm.ee': 'just',
   'kinoff.poff.ee': 'kinoff',
   'kumu.poff.ee': 'kumu',
@@ -245,7 +247,7 @@ async function modify_stapi_data(result, model_name, vanish = false) {
   if (modelsToBeSkipped.includes(model_name)) { return }
 
   let modelname = await strapi.query(model_name).model.info.name
-  modelname = modelname.split('_').join('')
+  modelname = modelname.split('_').join('') // siin on viga, vt yle (modify_stapi_data ei tööta! ka me enam hoiame allStrapidatas? jne
   let result_id = result.id ? result.id : null
   console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
   result = clean_result(result)
@@ -274,8 +276,12 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+  const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
+  const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+  const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
   // here to skip specific model builds
-  if (model_name === 'film' || model_name === 'cassette' || model_name === 'screening') {
+  if (MODELS_SKIP_BUILD.includes(model_name)) {
+    console.log(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
     return
   }
   let build_error

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_label_label_groups",
+  "info": {
+    "name": "labelGroup",
+    "icon": "barcode"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "label": {
+      "type": "component",
+      "repeatable": true,
+      "component": "label.label"
+    }
+  }
+}
