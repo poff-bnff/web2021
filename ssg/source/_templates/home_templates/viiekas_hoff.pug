@@ -49,7 +49,7 @@ each news in self.data.articles.sort(sortFunction)
                         a(href= `/${lang_path}${artTypeForPath}/${ news.slug}`)
                             .container_frame_16_9
                                 if news.viiekasImage
-                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${viiekasImage}`).trio_image
+                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.viiekasImage}`).trio_image
                                 else
                                     img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg').trio_image
                             .viieka_body
