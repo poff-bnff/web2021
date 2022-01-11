@@ -717,7 +717,7 @@ function generateAllDataYAML(allData, lang) {
     let filters = {
         programmes: {},
         festivals: {},
-        festivaleditions: {},
+        years: {},
         languages: {},
         countries: {},
         subtitles: {},
@@ -746,7 +746,7 @@ function generateAllDataYAML(allData, lang) {
         }
 
         let festivals = []
-        let festivaleditions = []
+        let years = []
 
         if (cassette.festival_editions) {
             const filteredFestivalEd = cassette.festival_editions.filter(fe => fe.name)
@@ -764,10 +764,10 @@ function generateAllDataYAML(allData, lang) {
 
             for (const fested of filteredFestivalEd) {
                 const key = `_${fested.id}`
-                var festival_name = fested.name
+                var festival_year = fested.year
 
-                festivaleditions.push(key)
-                filters.festivaleditions[key] = festival_name
+                years.push(key)
+                filters.years[key] = festival_year
             }
         }
 
@@ -858,7 +858,7 @@ function generateAllDataYAML(allData, lang) {
             ].join(' ').toLowerCase(),
             programmes: programmes,
             festivals: festivals,
-            festivaleditions: festivaleditions,
+            years: years,
             languages: languages,
             countries: countries,
             subtitles: subtitles,
@@ -900,7 +900,7 @@ function generateAllDataYAML(allData, lang) {
     let sorted_filters = {
         programmes: mSort(filters.programmes),
         festivals: mSort(filters.festivals),
-        festivaleditions: mSort(filters.festivaleditions),
+        years: mSort(filters.years),
         languages: mSort(filters.languages),
         countries: mSort(filters.countries),
         subtitles: mSort(filters.subtitles),

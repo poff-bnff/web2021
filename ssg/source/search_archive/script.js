@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(queryString);
 const selectors = {
     programmes: document.getElementById('programmes_select'),
     festivals: document.getElementById('festivals_select'),
-    festivaleditions: document.getElementById('festivaleditions_select'),
+    years: document.getElementById('years_select'),
     languages: document.getElementById('languages_select'),
     countries: document.getElementById('countries_select'),
     subtitles: document.getElementById('subtitles_select'),
@@ -125,8 +125,8 @@ function toggleFilters(exclude_selector_name) {
                 return compare_with === '' ? true : cassette.festivals.includes( compare_with )
             })
             .filter(cassette => {
-                const compare_with = selector_name === 'festivaleditions' ? value : selectors.festivaleditions.value;
-                return compare_with === '' ? true : cassette.festivaleditions.includes( compare_with )
+                const compare_with = selector_name === 'years' ? value : selectors.years.value;
+                return compare_with === '' ? true : cassette.years.includes( compare_with )
             })
             .filter(cassette => {
                 const compare_with = selector_name === 'languages' ? value : selectors.languages.value;
@@ -195,8 +195,8 @@ selectors.festivals.addEventListener('change', e => {
     toggleAll('festivals');
 });
 
-selectors.festivaleditions.addEventListener('change', e => {
-    toggleAll('festivaleditions');
+selectors.years.addEventListener('change', e => {
+    toggleAll('years');
 });
 
 selectors.languages.addEventListener('change', e => {
@@ -239,7 +239,7 @@ function unselect_all() {
     search_input.value = '';
     selectors.programmes.selectedIndex = 0;
     selectors.festivals.selectedIndex = 0;
-    selectors.festivaleditions.selectedIndex = 0;
+    selectors.years.selectedIndex = 0;
     selectors.languages.selectedIndex = 0;
     selectors.countries.selectedIndex = 0;
     selectors.subtitles.selectedIndex = 0;
@@ -270,8 +270,8 @@ function execute_filters() {
             }
         })
         .filter(cassette => {
-            if (selectors.festivaleditions.value) {
-                return cassette.festivaleditions.includes(selectors.festivaleditions.value)
+            if (selectors.years.value) {
+                return cassette.years.includes(selectors.years.value)
             } else {
                 return true
             }
