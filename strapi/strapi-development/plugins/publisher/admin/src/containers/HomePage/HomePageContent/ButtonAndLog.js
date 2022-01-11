@@ -99,6 +99,7 @@ const ButtonAndLog = ({ site, buttonText }) => {
       'poff.ee',
       'justfilm.ee',
       'kinoff.poff.ee',
+      'hoff.ee',
       'shorts.poff.ee',
       'kumu.poff.ee',
       'tartuff.ee',
