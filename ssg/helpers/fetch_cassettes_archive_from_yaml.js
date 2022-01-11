@@ -767,7 +767,7 @@ function generateAllDataYAML(allData, lang) {
                 var festival_year = fested.year
 
                 years.push(key)
-                filters.years[key] = festival_year
+                filters.years[key] = `${festival_year}`
             }
         }
 
