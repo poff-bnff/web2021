@@ -19,8 +19,8 @@
       "via": "awardings"
     },
     "film": {
-      "model": "film",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "film"
     },
     "person": {
       "model": "person",
