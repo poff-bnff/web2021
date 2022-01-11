@@ -763,7 +763,7 @@ function generateAllDataYAML(allData, lang) {
             }
 
             for (const fested of filteredFestivalEd) {
-                const key = `_${fested.id}`
+                const key = `_${festival_year}`
                 var festival_year = fested.year
 
                 years.push(key)
