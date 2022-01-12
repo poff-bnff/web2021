@@ -328,4 +328,25 @@ juryAndGuestImagePriority:
 juryAndGuestImagePriorityDefaults:
     - pictureAtJury
     - personPicture
+
+trioblockImagePriority:
+    - - _small_16_9
+      - image
+    - - _small
+      - image
+    - - _big_p
+      - image
+
+trioblockImagePriorityDefaults:
+    - image
+
+industryPersonsImagePriority:
+    - - _big
+      - image
+    - - _big_16_9
+      - image
+
+industryPersonsImagePriorityDefaults:
+    - image
+
 # Images priority block END

@@ -36,14 +36,11 @@ for blocks in self.data.articleTrioBlock.sort(function(a, b){ return (a.block.or
             a(href= linkUrl)
 
                 .trio_block_item.container_frame_12_5
-                    if blocks.block.image
-                        img(src=`https://assets.poff.ee/img/${blocks.block.image.hash}${blocks.block.image.ext}`).trio_image.container_contents_12_5
-                    else if typeof articleTrio !== 'undefined' && articleTrio.media && articleTrio.media.image && articleTrio.media.image[0]
-                        img(src=`https://assets.poff.ee/img/${articleTrio.media.image[0].hash}${articleTrio.media.image[0].ext}`).trio_image.container_contents_12_5
-                    else if typeof articleTrio !== 'undefined' && articleTrio.media && articleTrio.media.imageDefault && articleTrio.media.imageDefault[0]
-                        img(src=`https://assets.poff.ee/img/${articleTrio.media.imageDefault[0].hash}${articleTrio.media.imageDefault[0].ext}`).trio_image.container_contents_12_5
+                    if blocks.block.heroImage
+                        img(src=`https://assets.poff.ee/img/${blocks.block.heroImage}`).trio_image.container_contents_12_5
                     else
                         img(src='/assets/img/static/placeholder_hd_1.jpg').trio_image.container_contents_12_5
+
                     .btn_trio
                         if typeof(blocks.block.title) !== 'object'
                             | !{blocks.block.title}
