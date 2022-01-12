@@ -9,11 +9,6 @@ block content
 
         input#search(type='text', placeholder= self.label.filters.search)
 
-        select#programmes_select(name='Programmes')
-            option(value='')= self.label.filters.programmes
-            each index, key in self.data.filters.programmes
-                option(value=key)= index
-
         select#festivals_select(name='Festivals')
             option(value='')= self.label.filters.festivals
             each index, key in self.data.filters.festivals
@@ -24,14 +19,19 @@ block content
             each index, key in self.data.filters.years
                 option(value=key)= index
 
-        select#languages_select(name='Languages')
-            option(value='')= self.label.filters.languages
-            each index, key in self.data.filters.languages
+        select#programmes_select(name='Programmes')
+            option(value='')= self.label.filters.programmes
+            each index, key in self.data.filters.programmes
                 option(value=key)= index
 
         select#countries_select(name='Countries')
             option(value='')= self.label.filters.countries
             each index, key in self.data.filters.countries
+                option(value=key)= index
+
+        select#languages_select(name='Languages')
+            option(value='')= self.label.filters.languages
+            each index, key in self.data.filters.languages
                 option(value=key)= index
 
         select#subtitles_select(name='Subtitles')
