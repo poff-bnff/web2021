@@ -52,7 +52,7 @@ echo 'fetch_industry_channels_from_yaml'
 nice -10 node ./helpers/fetch_channels_from_yaml.js
 
 echo 'fetch_industry_event_from_yaml'
-nice -10 node ./helpers/fetch_industry_event_from_yaml.js 
+nice -10 node ./helpers/fetch_industry_event_from_yaml.js
 
 echo 'fetch_discamp_event_from_yaml'
 nice -10 node ./helpers/fetch_discamp_event_from_yaml.js
@@ -137,13 +137,27 @@ printf '\n----------             Finished processing styles            ---------
 
 cp -R "assets/"* "build/$BUILDDIR/assets"
 
-if [ "$DOMAIN" == "poff.ee" ]
-then
-    printf '\n----------             Extract POFF 2020 to build dir           ----------\n\n'
+
+
+ARCHIVEFILE=archive/"$BUILDDIR".tar
+if test -f "$ARCHIVEFILE"; then
+    printf '\n----------               Extract archive files             ----------\n\n'
     # cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
-    tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
-    printf '\n----------               Finished Extracting POFF 2020              ----------\n'
+    # tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
+    tar -xf archive/"$BUILDDIR".tar -C build/"$BUILDDIR"
+    printf '\n----------        Finished extracting archive files         ----------\n'
+else
+    printf '\n Archive file for this site does not exist... \n'
 fi
+
+# if [ "$DOMAIN" == "poff.ee" ]
+# then
+#     printf '\n----------             Extract POFF 2020 to build dir           ----------\n\n'
+#     # cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
+#     # tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
+#     tar -xvf archive/"$BUILDDIR".tar -C build/"$BUILDDIR"
+#     printf '\n----------               Finished Extracting POFF 2020              ----------\n'
+# fi
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
 nice -10 node ./helpers/add_config_ignorePaths.js

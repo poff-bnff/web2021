@@ -719,6 +719,24 @@
                 "vialog_id": {
                   "type": "string"
                 },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -839,6 +857,24 @@
                 },
                 "vialog_id": {
                   "type": "string"
+                },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
                 },
                 "created_by": {
                   "type": "string"
@@ -961,6 +997,24 @@
                 "vialog_id": {
                   "type": "string"
                 },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1023,6 +1077,24 @@
                   "type": "uid"
                 },
                 "orderedFilms": {
+                  "type": "component"
+                },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
                   "type": "component"
                 },
                 "created_by": {
@@ -1089,6 +1161,24 @@
                 "orderedFilms": {
                   "type": "component"
                 },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1151,6 +1241,24 @@
                   "type": "uid"
                 },
                 "orderedFilms": {
+                  "type": "component"
+                },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
                   "type": "component"
                 },
                 "created_by": {

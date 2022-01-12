@@ -1,0 +1,5 @@
+path: iskat_film_arhiv
+data:
+    cassettes: /_fetchdir/cassettes_archive.ru.yaml
+    search: /_fetchdir/search_films_archive.ru.yaml
+    filters: /_fetchdir/filters_films_archive.ru.yaml

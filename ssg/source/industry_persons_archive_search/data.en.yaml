@@ -1,0 +1,5 @@
+path: featured-persons-archive
+data:
+    industrypersons: /_fetchdir/industry_persons_archive.en.yaml
+    filters: /_fetchdir/filters_industry_persons_archive.en.yaml
+    search: /_fetchdir/search_industry_persons_archive.en.yaml
