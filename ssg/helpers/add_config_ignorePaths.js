@@ -129,8 +129,9 @@ function addConfigIgnorePaths() {
             '/info', //tartuff
             '/letschat', // POFF letschat page
             '/favouriteAWS', //OldAWSFavoritePageBackup
-            '/search_archive', //Search film archive
+            '/search_archive', //Built by archive build
             '/industry_projects_archive_search', //Built by archive build
+            '/industry_persons_archive_search', //Built by archive build
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
