@@ -9,13 +9,12 @@ block content
             section.f_dir_box
                 .f_dir_bio_box
                     .dir_img
-                        if self.profilePicAtInd
-                            - var personPic = assetsDir + self.profilePicAtInd.hash + self.profilePicAtInd.ext
-                        else if self.person.picture
-                            - var personPic = assetsDir + self.person.picture.hash + self.person.picture.ext
+                        if self.picture
+                            - var personPic = assetsDir + self.picture
                         else
                             - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                         img.person_img(src=personPic alt=`${self.person.firstName ? self.person.firstName : ''} ${self.person.lastName ? self.person.lastName : ''}`)
+
                         .ind_person_name= `${self.person.firstName ? self.person.firstName : ''} ${self.person.lastName ? self.person.lastName : ''}`
                     .dir_bio.dark_1
                         if typeof self.aboutText !== 'undefined'

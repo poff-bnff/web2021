@@ -342,11 +342,12 @@ trioblockImagePriorityDefaults:
 
 industryPersonsImagePriority:
     - - _big
-      - image
+      - profilePicAtInd
     - - _big_16_9
-      - image
+      - profilePicAtInd
 
 industryPersonsImagePriorityDefaults:
-    - image
+    - profilePicAtInd
+    - personPicture
 
 # Images priority block END

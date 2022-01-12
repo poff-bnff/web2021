@@ -5,6 +5,7 @@ const rueten = require('./rueten.js');
 const { fetchModel } = require('./b_fetch.js')
 const replaceLinks = require('./replace_links.js')
 const addConfigPathAliases = require('./add_config_path_aliases.js')
+const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -14,6 +15,9 @@ const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+
+const imageOrder = DOMAIN_SPECIFICS.industryPersonsImagePriority
+const imageOrderDefaults = DOMAIN_SPECIFICS.industryPersonsImagePriorityDefaults
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
@@ -146,6 +150,24 @@ function startIndustryPersonProcessing(languages, STRAPIDATA_INDUSTRY_PERSONS, i
                         }
                     }
                 }
+            }
+
+            // Create a temporary media component out of available pictures,
+            // then prioritize and fill picture if any
+            // Delete excess picture objects and arrays afterwards
+            let mediaObj = {
+                media: {}
+            }
+            if (industry_person.profilePicAtInd) {
+                mediaObj.media.profilePicAtInd = [industry_person.profilePicAtInd]
+                delete industry_person.profilePicAtInd
+            }
+            if (industry_person?.person?.picture) {
+                mediaObj.media.personPicture = [industry_person.person.picture]
+                delete industry_person.person.picture
+            }
+            if (mediaObj.media.profilePicAtInd || mediaObj.media.personPicture) {
+                industry_person.picture = prioritizeImages(mediaObj, imageOrder, imageOrderDefaults);
             }
 
             let oneYaml = {}

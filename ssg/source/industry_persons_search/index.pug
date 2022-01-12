@@ -46,12 +46,11 @@ block content
                                     a(href=`/${lang_path}${person.slug}`)
                                         .person_head
                                             - var assetsDir = 'https://assets.poff.ee/img/'
-                                            if person.profilePicAtInd
-                                                - var personPic = assetsDir + person.profilePicAtInd.hash + person.profilePicAtInd.ext
-                                            else if person.person.picture
-                                                - var personPic = assetsDir + person.person.picture.hash + person.person.picture.ext
+                                            if person.picture
+                                                - var personPic = assetsDir + person.picture
                                             else
                                                 - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+
                                             img.person_img(src=personPic alt=`${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`)
 
 
