@@ -497,6 +497,50 @@ for (const lang of allLanguages) {
                 s_cassette_copy.cassettePostersCassette = cassettePostersCassette
             }
 
+            // // Cassette carousel pics 2
+            // if (s_cassette_copy.stills && s_cassette_copy.stills[0]) {
+            //      s_cassette_copy.media.stills = s_cassette_copy.stills
+            //     for (const stillIx in s_cassette_copy.stills) {
+            //         let still = s_cassette_copy.stills[stillIx]
+            //         if (still.hash && still.ext) {
+            //             if (still.hash.substring(0, 4) === 'F_1_') {
+            //                 cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //             }
+            //             cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //         }
+            //     }
+            // }
+
+            // if (cassetteCarouselPicsCassette.length > 0) {
+            //     s_cassette_copy.cassetteCarouselPicsCassette = cassetteCarouselPicsCassette
+            // }
+
+            // // Cassette poster pics
+            // if (s_cassette_copy.posters && s_cassette_copy.posters[0]) {
+            //      s_cassette_copy.media.posters = s_cassette_copy.posters
+            //     for (const posterIx in s_cassette_copy.posters) {
+            //         let poster = s_cassette_copy.posters[posterIx]
+            //         if (poster.hash && poster.ext) {
+            //             if (poster.hash.substring(0, 2) === 'P_') {
+            //                 cassettePostersCassette.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+            //             }
+            //             cassettePostersCassette.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+            //         }
+            //     }
+            // }
+
+            if (cassettePostersCassette.length > 0) {
+                s_cassette_copy.cassettePostersCassette = cassettePostersCassette
+            }
+
+            // Cassette trailer and QaClip
+            if(s_cassette_copy.trailer && s_cassette_copy.trailer[0]) {
+                s_cassette_copy.media.trailer = s_cassette_copy.trailer
+            }
+            if(s_cassette_copy.QaClip && s_cassette_copy.QaClip[0]) {
+                s_cassette_copy.media.QaClip = s_cassette_copy.QaClip
+            }
+
             if (s_cassette_copy.films && s_cassette_copy.films[0]) {
                 for (scc_film of s_cassette_copy.films) {
 
@@ -538,9 +582,47 @@ for (const lang of allLanguages) {
                         }
                     }
 
+                    // // Film carousel pics 2
+                    // if (scc_film.stills && scc_film.stills[0]) {
+                    //      s_cassette_copy.films.media.stills = scc_film.stills
+                    //     for (still of scc_film.stills) {
+                    //         if (still.hash && still.ext) {
+                    //             if (still.hash.substring(0, 4) === 'F_1_') {
+                    //                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //             }
+                    //             cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //         }
+                    //     }
+                    // }
+
+                    // if (cassetteCarouselPicsFilms.length > 0) {
+                    //     s_cassette_copy.cassetteCarouselPicsFilms = cassetteCarouselPicsFilms
+                    // }
+
+                    // // Film posters pics
+                    // if (scc_film.posters && scc_film.posters[0]) {
+                    //      s_cassette_copy.films.media.posters = scc_film.posters
+                    //     for (poster of scc_film.posters) {
+                    //         if (poster.hash && poster.ext) {
+                    //             if (poster.hash.substring(0, 2) === 'P_') {
+                    //                 cassettePostersFilms.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                    //             }
+                    //             cassettePostersFilms.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                    //         }
+                    //     }
+                    // }
+
+
                     if (cassettePostersFilms.length > 0) {
                         s_cassette_copy.cassettePostersFilms = cassettePostersFilms
                     }
+
+                    // if(scc_film.trailer && scc_film.trailer[0]) {
+                    //     s_cassette_copy.films.media.trailer = scc_film.trailer
+                    // }
+                    // if(scc_film.QaClip && scc_film.QaClip[0]) {
+                    //     s_cassette_copy.films.media.QaClip = scc_film.QaClip
+                    // } 
 
                     // Filmi treiler
                     trailerProcessing(scc_film)
@@ -662,6 +744,29 @@ function trailerProcessing(cassetteOrFilm) {
     }
     return cassetteOrFilm
 }
+
+// function trailerProcessing(cassetteOrFilm) {
+//     if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
+//         for (trailer of cassetteOrFilm.trailer) {
+//             if (trailer.url && trailer.url.length > 10) {
+//                 if (trailer.url.includes('vimeo')) {
+//                     let splitVimeoLink = trailer.url.split('/')
+//                     let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
+//                     if (videoCode.length === 9) {
+//                         trailer.videoCode = videoCode
+//                     }
+//                 } else {
+//                     let splitYouTubeLink = trailer.url.split('=')[1]
+//                     let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+//                     if (splitForVideoCode.length === 11) {
+//                         trailer.videoCode = splitForVideoCode
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     return cassetteOrFilm
+// }
 
 function generateYaml(element, lang) {
     let yamlStr = yaml.dump(element, { 'noRefs': true, 'indent': '4' })

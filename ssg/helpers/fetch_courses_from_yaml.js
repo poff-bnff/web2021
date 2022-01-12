@@ -107,6 +107,22 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
                 course.carouselStills = course.media?.stills.map(a => `${a.hash}${a.ext}`)
                 course.posters = course.media?.posters.map(a => `${a.hash}${a.ext}`)
             }
+            // if (course.stills && course.stills[0]) {
+            //     // course.media.stills = course.stills
+            //     course.carouselStills = course.stills.map(a => `${a.hash}${a.ext}`)
+
+            // }
+            // if(course.posters && course.posters[0]) {
+            //     course.posters = course.posters.map(a => `${a.hash}${a.ext}`)
+            //     course.media.posters = course.posters
+            // }
+            // if(course.trailer && course.trailer[0]) {
+            //     course.media.trailer = course.trailer
+            // }
+            // if(course.QaClip && course.QaClip[0]) {
+            //     course.media.QaClip = course.QaClip
+            // }
+
 
             // Rolepersons by role
             if(course.credentials && course.credentials.rolePerson && course.credentials.rolePerson[0]) {

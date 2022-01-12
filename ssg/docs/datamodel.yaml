@@ -1227,14 +1227,14 @@ Cassette: &Cassette
     title_ru: (text)
     synopsis: *Translated #(Rich text)
     media: *FilmMedia #(Component)
-    stills: #(Component (repeatable))
-        - *StrapiMedia
-    posters: #(Component (repeatable))
-        - *StrapiMedia
-    trailer: #(Component (repeatable))
-        - *Trailer
-    QaClip: #(Component (repeatable))
-        - *QaClip
+    # stills: #(Component (repeatable))
+    #     - *StrapiMedia
+    # posters: #(Component (repeatable))
+    #     - *StrapiMedia
+    # trailer: #(Component (repeatable))
+    #     - *Trailer
+    # QaClip: #(Component (repeatable))
+    #     - *QaClip
     festival_editions: #(Component (repeatable))
         - *FestivalEdition
     tags: *Tags
@@ -1344,14 +1344,14 @@ Course: &Course
     endDate: (Datetime)
     volume: (short text)
     media: *FilmMedia #(Component, not from eventival)
-    stills: #(Component (repeatable))
-        - *StrapiMedia
-    posters: #(Component (repeatable))
-        - *StrapiMedia
-    trailer: #(Component (repeatable))
-        - *Trailer
-    QaClip: #(Component (repeatable))
-        - *QaClip
+    # stills: #(Component (repeatable))
+    #     - *StrapiMedia
+    # posters: #(Component (repeatable))
+    #     - *StrapiMedia
+    # trailer: #(Component (repeatable))
+    #     - *Trailer
+    # QaClip: #(Component (repeatable))
+    #     - *QaClip
     tags: *CourseTags #(Component)
     languages: #(Component (repeatable))
         - *Language
