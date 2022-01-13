@@ -731,9 +731,6 @@
                   "type": "string"
                 }
               },
-              "otherFestivals": {
-                "type": "string"
-              },
               "credentials": {
                 "type": "component"
               },

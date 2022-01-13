@@ -62,9 +62,6 @@
     "festival_editions": {
       "collection": "festival-edition"
     },
-    "otherFestivals": {
-      "type": "string"
-    },
     "credentials": {
       "type": "component",
       "repeatable": false,

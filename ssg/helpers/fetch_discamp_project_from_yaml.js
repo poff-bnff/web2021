@@ -71,11 +71,11 @@ if (DOMAIN === 'discoverycampus.poff.ee') {
 
     let activeProjectsYamlNameSuffix = 'dis_camp_projects'
     let activeProjects = STRAPIDATA_DC_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => active_editions.includes(id)))
-    startIndustryProjectProcessing(languages, activeProjects, activeProjectsYamlNameSuffix)
+    startdiscampProjectProcessing(languages, activeProjects, activeProjectsYamlNameSuffix)
 
     let archiveProjects = STRAPIDATA_DC_PROJECT.filter(proj => proj.editions && proj.editions.map(ed => ed.id).some(id => !active_editions.includes(id)))
     let archiveProjectsYamlNameSuffix = 'dis_camp_projects_archive'
-    startIndustryProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix)
+    startdiscampProjectProcessing(languages, archiveProjects, archiveProjectsYamlNameSuffix)
 
 } else {
 

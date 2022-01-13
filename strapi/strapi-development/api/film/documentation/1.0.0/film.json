@@ -1048,9 +1048,6 @@
               }
             }
           },
-          "otherFestivals": {
-            "type": "string"
-          },
           "credentials": {
             "type": "object",
             "required": [
@@ -2359,9 +2356,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "otherFestivals": {
-            "type": "string"
           },
           "credentials": {
             "type": "object",
