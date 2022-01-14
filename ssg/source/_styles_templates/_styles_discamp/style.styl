@@ -1,4 +1,5 @@
 /* VARIABLES */
+/* DISCAMP */
 
  //COLORS
 blue = #007bff
@@ -1724,7 +1725,7 @@ header
 
 .f_cred_box
     grid-area f_cred_box
-    background-color white
+    background-color bg_dark_3
     padding-left calc(2rem + 1vw)
     padding-right calc(2rem + 1vw)
     padding-top calc(1rem + 1vw)
@@ -1744,7 +1745,7 @@ header
 
 .f_runtime_box
     grid-area f_runtime_box
-    background-color white
+    background-color bg_dark_4
     padding-left calc(2rem + 1vw)
     padding-right calc(2rem + 1vw)
     padding-top calc(1rem + 1vw)
@@ -1778,7 +1779,7 @@ header
     align-content center
     justify-items center
     align-items center
-    background-color white
+    background-color bg_dark_2
 
 .f_interactive_item
     align center
@@ -1837,9 +1838,9 @@ header
 .f_trailer_box
     grid-area f_trailer_box
     width 100%
+    background-color bg_dark_2
     padding 0
     margin 0
-    background-color bg_dark_1
     .section_headline
         color white_96
 
@@ -2154,7 +2155,7 @@ p a
 .synopsis_gi
 .dir_bio
   font-family font_p
-  color white_96
+  color dark_1
   font-size 1rem
   text-align left
   line-height 1.618
@@ -2302,7 +2303,7 @@ a.btn_popover
   text-align left
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color dark_1
+  color white_96
   letter-spacing 0.04em
 
 .screening_weekday
@@ -2324,13 +2325,6 @@ a.btn_popover
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
   color #666666
-  letter-spacing 0.04em
-
-.screening_hall
-  text-align left
-  font-size calc(1.25rem + 0.1vw)
-  font-weight 400
-  color white_96
   letter-spacing 0.04em
 
 .screening_hall
@@ -2376,9 +2370,11 @@ a.btn_popover
 
 .btn_secondary
     background-color bg_dark_4
-    color white_semi
+    color white_96
     border-radius 0
     text-transform uppercase
+    &:hover
+      color clr_primary_light
 
 .btn_primary
     background-color clr_primary
@@ -2867,7 +2863,7 @@ a.btn_popover
         margin 0
         margin-top 1.618rem
         margin-bottom 1.618rem
-    padding 1rem
+        // padding 1rem
 
 .article_contents
     padding 1rem
@@ -3459,7 +3455,7 @@ a.btn_popover
         height 100px
 
     .main_menu_toggle_label
-            display none
+        display none
 
     .main_menu
         grid-column 2 / 3
@@ -3662,8 +3658,8 @@ a.btn_popover
         margin 0
 
     .card_screening
-        min-width 400px
-        max-width 450px
+        min-width 500px
+        max-width 550px
         margin-left 1vw
         margin-right 1vw
         margin-bottom 2rem
