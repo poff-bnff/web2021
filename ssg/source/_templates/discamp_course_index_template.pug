@@ -416,15 +416,16 @@ block content
 
                             .btn-group(role='group' aria-label='')
 
+                                - var dateVar = event.endDate ? event.endDate : event.startDate
 
                                 if event.bookingUrl
-                                    a.btn.btn_secondary.active(scrn-datetime=event.dateTime scrn-loc=event.location.id btn-type='screening' href= event.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                                    a.btn.btn_secondary.active(scrn-datetime=dateVar btn-type='screening' href= event.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
                                 //- if event.ticketingUrl
                                 //-     a.btn.btn_primary.active(scrn-datetime=event.dateTime btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
                                 //- a.btn.btn_secondary.active.notsavedscreening(id=event.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${event.id}, "${event.codeAndTitle}", "${event.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
                                 //- a.btn.btn_secondary.active.issavedscreening(id=event.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${event.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                                 if event.ticketingUrl
-                                    a.btn.btn_primary.active(scrn-datetime=event.dateTime scrn-loc=event.location.id  btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.participate
+                                    a.btn.btn_primary.active(scrn-datetime=dateVar btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.participate
 
                                     //- a.btn.btn_primary.active(scrn-datetime=event.dateTime btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
