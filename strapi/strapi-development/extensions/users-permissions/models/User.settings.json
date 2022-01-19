@@ -111,6 +111,10 @@
       "type": "component",
       "repeatable": true,
       "component": "user.my-events"
+    },
+    "my_role": {
+      "via": "users",
+      "model": "user-role"
     }
   }
 }

@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_roles",
+  "info": {
+    "name": "UserRole",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "user_right": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.user-right"
+    },
+    "valid_from": {
+      "type": "datetime"
+    },
+    "valid_to": {
+      "type": "datetime"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "my_role"
+    }
+  }
+}
