@@ -927,6 +927,30 @@
                         "vialog_id": {
                           "type": "string"
                         },
+                        "trailer": {
+                          "type": "component"
+                        },
+                        "stills": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "posters": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "QaClip": {
+                          "type": "component"
+                        },
+                        "g_sheets_updated_at": {
+                          "type": "string"
+                        },
+                        "g_sheets_updated_by": {
+                          "type": "string"
+                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -1343,6 +1367,30 @@
                           }
                         },
                         "vialog_id": {
+                          "type": "string"
+                        },
+                        "trailer": {
+                          "type": "component"
+                        },
+                        "stills": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "posters": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "QaClip": {
+                          "type": "component"
+                        },
+                        "g_sheets_updated_at": {
+                          "type": "string"
+                        },
+                        "g_sheets_updated_by": {
                           "type": "string"
                         },
                         "created_by": {

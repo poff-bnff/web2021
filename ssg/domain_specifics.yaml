@@ -98,6 +98,8 @@ skip_build_for_models:
     # - industry-event
     - industry-person
     - team
+#    - film
+#    - cassette
 
 article:
     poff.ee: POFFiArticle

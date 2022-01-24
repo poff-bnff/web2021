@@ -70,7 +70,6 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
-
       const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
       const prefixes = {

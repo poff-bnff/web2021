@@ -686,6 +686,24 @@
                     "type": "string"
                   }
                 },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -774,6 +792,24 @@
                     "type": "string"
                   }
                 },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -861,6 +897,24 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "stills": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posters": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "trailer": {
+                  "type": "component"
+                },
+                "QaClip": {
+                  "type": "component"
                 },
                 "created_by": {
                   "type": "string"
