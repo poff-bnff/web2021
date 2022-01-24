@@ -16,6 +16,9 @@
     },
     "person": {
       "model": "person"
+    },
+    "actor_role": {
+      "type": "string"
     }
   }
 }

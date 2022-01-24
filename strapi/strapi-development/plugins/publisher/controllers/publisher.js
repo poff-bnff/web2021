@@ -9,6 +9,18 @@ const { generateTimestampCode } = require('strapi-utils')
 
 const { addS } = require('../services/publisher.js')
 
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
+const {
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+  call_delete
+} = require(helper_path)
+
 // let timestamp = strapi.generateTimestampCode
 const domains = [
   "poff.ee",
@@ -240,6 +252,30 @@ async function doKillSwitch(userInfo, killStartTime) {
 
 }
 
+async function doBuildArchive(ctx) {
+
+  const data = ctx.request.body;
+  // console.log(ctx)
+  const userInfo = JSON.parse(data.userInfo);
+  const superAdminRoleId = 1
+
+  const site = data.site;
+
+  console.log('BUILD ARCHIVE', site);
+
+  let result = {
+    id: '',
+    updated_by: {
+      id: userInfo.id
+    },
+    action: 'archive'
+  }
+
+  await call_build(result, [site], 'archive')
+  return { type: 'success', message: `${data.site} arhiivi ehitus käivitatud` }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -294,6 +330,18 @@ module.exports = {
     ctx.send(killResult)
 
   },
+  buildArchive: async (ctx) => {
+    // console.log('ctx', ctx)
+    const arhiveStartTime = moment().tz("Europe/Tallinn").format()
+
+    const data = ctx.request.body;
+    // const userInfo = JSON.parse(data.userInfo)
+    console.log("Build archive", data.site)
+
+    const buildArchiveResult = await doBuildArchive(ctx)
+    ctx.send(buildArchiveResult)
+
+  },
   logs: async (ctx) => {
 
     // console.log ("...........MODEL:", await strapi.query( "build_logs", "publisher"))
@@ -328,6 +376,7 @@ module.exports = {
       type: 'build'
     }
     let result = await strapi.query("build_logs", "publisher").find(params);
+
     (result.length > 0) ? result = await addS(result) : result = result
     return result
 

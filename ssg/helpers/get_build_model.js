@@ -127,7 +127,9 @@ function model(arg) {
 		'dis-camp-person': 'full',
 		'dis-camp-person-type': 'full',
 		'dis-camp-project': 'full',
-		'full': 'full'
+		'full': 'full',
+
+		'archive': 'archive',
 	}
 
 	return mapping_models[arg]

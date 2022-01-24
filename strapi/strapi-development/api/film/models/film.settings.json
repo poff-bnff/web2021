@@ -113,6 +113,36 @@
     },
     "vialog_id": {
       "type": "string"
+    },
+    "stills": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "trailer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.trailers"
+    },
+    "QaClip": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.qa-clip"
     }
   }
 }

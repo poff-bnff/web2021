@@ -36,6 +36,7 @@ ssg/.vscode/*
 
 # dynamic stuff
 ssg/build
+ssg/archive
 ssg/source/_fetchdir/*
 ssg/source/_styles/*
 ssg/helpers/build_logs.yaml

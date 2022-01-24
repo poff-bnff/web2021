@@ -27,7 +27,7 @@ cassettes_festival_editions:
     justfilm.ee:
         - 29
     kinoff.poff.ee:
-        - 32
+        - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
@@ -60,7 +60,7 @@ programmes_festival_editions:
     justfilm.ee:
         - 29
     kinoff.poff.ee:
-        - 32
+        - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
@@ -234,3 +234,128 @@ stagingDomains:
     oyafond.ee: build.oyafond.ee
     filmikool.poff.ee: build.filmikool.poff.ee
     discoverycampus.poff.ee: build.discoverycampus.poff.ee
+
+# Images priority block START
+
+articleListViewImagePriority:
+    - - _small
+      - image
+    - - _small
+      - imageDefault
+    - - _small_16_9
+      - image
+    - - _small_16_9
+      - imageDefault
+    - - _small_p
+      - image
+    - - _small_p
+      - imageDefault
+
+articleListViewImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleViewImagePriority:
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleViewImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleHeroImagePriority:
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleHeroImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleViiekasImagePriority:
+    - - _med
+      - image
+    - - _med
+      - imageDefault
+    - - _med_16_9
+      - image
+    - - _med_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleViiekasImagePriorityDefaults:
+    - image
+    - imageDefault
+
+festivalTeamImagePriority:
+    - - _small_sq
+      - pictureAtTeam
+    - - _small
+      - pictureAtTeam
+
+festivalTeamImagePriorityDefaults:
+    - pictureAtTeam
+    - personPicture
+
+juryAndGuestImagePriority:
+    - - _med_sq
+      - pictureAtJury
+    - - _small
+      - pictureAtJury
+
+juryAndGuestImagePriorityDefaults:
+    - pictureAtJury
+    - personPicture
+
+trioblockImagePriority:
+    - - _small_16_9
+      - image
+    - - _small
+      - image
+    - - _big_p
+      - image
+
+trioblockImagePriorityDefaults:
+    - image
+
+industryPersonsImagePriority:
+    - - _big
+      - profilePicAtInd
+    - - _big_16_9
+      - profilePicAtInd
+
+industryPersonsImagePriorityDefaults:
+    - profilePicAtInd
+    - personPicture
+
+cassettesAndFilmsListViewImagePriority:
+    - _small_16_9
+    - _small
+
+cassettesAndFilmsImageStillsPriority:
+    - _big_16_9
+    - _big
+
+# Images priority block END

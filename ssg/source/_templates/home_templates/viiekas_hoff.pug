@@ -48,10 +48,8 @@ each news in self.data.articles.sort(sortFunction)
                         //- - console.log('arttype: ' + artTypeForPath + ' title: ' + news.title + ' arttypes: ' + artTypes + ' continue or not: ' + artTypes.some(ai => whichTypesToDisplay.includes(ai)))
                         a(href= `/${lang_path}${artTypeForPath}/${ news.slug}`)
                             .container_frame_16_9
-                                if news.media && news.media.image && news.media.image[0]
-                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.media.image[0].hash}${news.media.image[0].ext}`).trio_image
-                                else if news.media && news.media.imageDefault && news.media.imageDefault[0]
-                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.media.imageDefault[0].hash}${news.media.imageDefault[0].ext}`).trio_image
+                                if news.viiekasImage
+                                    img.container_contents_16_9(src=`https://assets.poff.ee/img/${news.viiekasImage}`).trio_image
                                 else
                                     img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg').trio_image
                             .viieka_body

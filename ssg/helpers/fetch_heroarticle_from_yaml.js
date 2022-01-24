@@ -3,12 +3,20 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
 const {fetchModel} = require('./b_fetch.js')
+const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
-const sourceDir =  path.join(__dirname, '..', 'source')
+const rootDir = path.join(__dirname, '..')
+const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
+const imageOrder = DOMAIN_SPECIFICS.articleHeroImagePriority
+const imageOrderDefaults = DOMAIN_SPECIFICS.articleHeroImagePriorityDefaults
 
 const params = process.argv.slice(2)
 const build_type = params[0]
@@ -59,7 +67,6 @@ const minimodel = {
     }
 }
 const STRAPIDATA_HERO = fetchModel(STRAPIDATA_HEROS, minimodel)[0]
-const languages = ['en', 'et', 'ru']
 
 for (const lang of languages) {
     console.log(`Fetching ${DOMAIN} heroarticle ${lang} data`);
@@ -67,7 +74,17 @@ for (const lang of languages) {
     for (key in STRAPIDATA_HERO) {
 
         if(key === `article_${lang}`) {
-            buffer = rueten(STRAPIDATA_HERO[`article_${lang}`], lang);
+            let element = rueten(STRAPIDATA_HERO[`article_${lang}`], lang)
+
+            // Article list view get priority picture format
+            const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
+            if (primaryImage) { element.primaryImage = primaryImage }
+            // If clipUrlDefault, then keep it
+            if (element?.media?.clipUrlDefault) { element.clipUrlDefault = element.media.clipUrlDefault }
+            // Delete excess media
+            delete element.media
+
+            buffer = element
         }
     }
 

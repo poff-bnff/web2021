@@ -4,6 +4,7 @@ const path = require('path')
 const { deleteFolderRecursive, JSONcopy } = require("./helpers.js")
 const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
+const prioritizeImages = require('./image_prioritizer_for_film.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -11,6 +12,8 @@ timer.start(__filename)
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const imageOrderStills = DOMAIN_SPECIFICS.cassettesAndFilmsImageStillsPriority
+const imageOrderStillsListView = DOMAIN_SPECIFICS.cassettesAndFilmsListViewImagePriority
 
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
@@ -40,7 +43,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -308,6 +311,7 @@ if (CHECKPROGRAMMES) {
 
     let cassettesWithOutFestivalEditions = []
 
+    // Filter cassettes by FE's
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
@@ -375,7 +379,9 @@ for (const lang of allLanguages) {
             fs.mkdirSync(s_cassette_copy.directory, { recursive: true })
 
             let cassetteCarouselPicsCassette = []
+            let cassetteCarouselPicsCassetteThumbs = []
             let cassetteCarouselPicsFilms = []
+            let cassetteCarouselPicsFilmsThumbs = []
             let cassettePostersCassette = []
             let cassettePostersFilms = []
 
@@ -463,21 +469,50 @@ for (const lang of allLanguages) {
                 s_cassette_copy.slug = slugEn
             }
 
+            if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
+            if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
+            if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
+            if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
+
+            const cassetteStills = prioritizeImages(s_cassette_copy, imageOrderStills, 'stills')
+            const cassetteStillsThumbs = prioritizeImages(s_cassette_copy, imageOrderStillsListView, 'stills')
+
             // Cassette carousel pics
-            if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
-                for (const stillIx in s_cassette_copy.media.stills) {
-                    let still = s_cassette_copy.media.stills[stillIx]
-                    if (still.hash && still.ext) {
-                        if (still.hash.substring(0, 4) === 'F_1_') {
-                            cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                        }
-                        cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            if (cassetteStills?.length?.images) {
+                for (still of cassetteStills.images) {
+                    if (still.substring(0, 4) === 'F_1_') {
+                        cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still}`)
                     }
+                    cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still}`)
                 }
             }
 
+            // Cassette carousel pics thumbs
+            if (cassetteStillsThumbs?.length?.imagesThumbs) {
+                for (still of cassetteStillsThumbs.imagesThumbs) {
+                    if (still.substring(0, 4) === 'F_1_') {
+                        cassetteCarouselPicsCassetteThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                    }
+                    cassetteCarouselPicsCassetteThumbs.push(`https://assets.poff.ee/img/${still}`)
+                }
+            }
+
+            // // Cassette carousel pics
+            // if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
+            //     for (const stillIx in s_cassette_copy.media.stills) {
+            //         let still = s_cassette_copy.media.stills[stillIx]
+            //         if (still.hash && still.ext) {
+            //             if (still.hash.substring(0, 4) === 'F_1_') {
+            //                 cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //             }
+            //             cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //         }
+            //     }
+            // }
+
             if (cassetteCarouselPicsCassette.length > 0) {
-                s_cassette_copy.cassetteCarouselPicsCassette = cassetteCarouselPicsCassette
+                s_cassette_copy.cassetteCarouselPicsCassette = [...new Set(cassetteCarouselPicsCassette)]
+                s_cassette_copy.cassetteCarouselPicsCassetteThumbs = [[...new Set(cassetteCarouselPicsCassetteThumbs)][0]]
             }
 
             // Cassette poster pics
@@ -510,20 +545,50 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    // Construct film media
+                    if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
+                    if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
+                    if (scc_film?.trailer?.[0]) { scc_film.media.trailer = scc_film.trailer }
+                    if (scc_film?.QaClip?.[0]) { scc_film.media.QaClip = scc_film.QaClip }
+
+                    const filmStills = prioritizeImages(scc_film, imageOrderStills, 'stills')
+                    const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
+
                     // Film carousel pics
-                    if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
-                        for (still of scc_film.media.stills) {
-                            if (still.hash && still.ext) {
-                                if (still.hash.substring(0, 4) === 'F_1_') {
-                                    cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                                }
-                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    if (filmStills?.images?.length) {
+                        for (still of filmStills.images) {
+                            if (still.substring(0, 4) === 'F_1_') {
+                                cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
                             }
+                            cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
                         }
                     }
 
+                    // Film carousel pics thumbs
+                    if (filmStillsThumbs?.imagesThumbs?.length) {
+                        for (still of filmStillsThumbs.imagesThumbs) {
+                            if (still.substring(0, 4) === 'F_1_') {
+                                cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                            }
+                            cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
+                        }
+                    }
+
+                    // // Film carousel pics
+                    // if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
+                    //     for (still of scc_film.media.stills) {
+                    //         if (still.hash && still.ext) {
+                    //             if (still.hash.substring(0, 4) === 'F_1_') {
+                    //                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //             }
+                    //             cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //         }
+                    //     }
+                    // }
+
                     if (cassetteCarouselPicsFilms.length > 0) {
-                        s_cassette_copy.cassetteCarouselPicsFilms = cassetteCarouselPicsFilms
+                        s_cassette_copy.cassetteCarouselPicsFilms = [...new Set(cassetteCarouselPicsFilms)]
+                        s_cassette_copy.cassetteCarouselPicsFilmsThumbs = [[...new Set(cassetteCarouselPicsFilmsThumbs)][0]]
                     }
 
                     // Film posters pics
@@ -692,10 +757,6 @@ function generateAllDataYAML(allData, lang) {
             return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
         }
 
-        cassette.cassetteCarouselPicsCassetteThumbs = cassette.cassetteCarouselPicsCassette?.length ?
-            cassette.cassetteCarouselPicsCassette.map(txt => picSplit(txt)) : null
-        cassette.cassetteCarouselPicsFilmsThumbs = cassette.cassetteCarouselPicsFilms?.length ?
-            cassette.cassetteCarouselPicsFilms.map(txt => picSplit(txt)) : null
         cassette.cassettePostersCassetteThumbs = cassette.cassettePostersCassette?.length ?
             cassette.cassettePostersCassette.map(txt => picSplit(txt)) : null
         cassette.cassettePostersFilmsThumbs = cassette.cassettePostersFilms?.length ?
