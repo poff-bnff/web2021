@@ -1172,6 +1172,9 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "actor_role": {
+                      "type": "string"
                     }
                   }
                 }
@@ -1710,30 +1713,6 @@
           "vialog_id": {
             "type": "string"
           },
-          "trailer": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "source": {
-                  "type": "string",
-                  "enum": [
-                    "YouTube",
-                    "Vimeo"
-                  ]
-                }
-              }
-            }
-          },
           "stills": {
             "type": "array",
             "items": {
@@ -1874,6 +1853,30 @@
               }
             }
           },
+          "trailer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string",
+                  "enum": [
+                    "YouTube",
+                    "Vimeo"
+                  ]
+                }
+              }
+            }
+          },
           "QaClip": {
             "type": "array",
             "items": {
@@ -1899,13 +1902,6 @@
                 }
               }
             }
-          },
-          "g_sheets_updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "g_sheets_updated_by": {
-            "type": "string"
           }
         }
       },
@@ -2485,6 +2481,9 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "actor_role": {
+                      "type": "string"
                     }
                   }
                 }
@@ -2856,13 +2855,6 @@
                 }
               }
             }
-          },
-          "g_sheets_updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "g_sheets_updated_by": {
-            "type": "string"
           },
           "created_by": {
             "type": "string"

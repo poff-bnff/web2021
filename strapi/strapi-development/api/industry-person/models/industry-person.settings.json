@@ -79,6 +79,11 @@
     },
     "tag_looking_fors": {
       "collection": "tag-looking-for"
+    },
+    "actor_info_set": {
+      "type": "component",
+      "repeatable": false,
+      "component": "person.actor-info-set"
     }
   }
 }

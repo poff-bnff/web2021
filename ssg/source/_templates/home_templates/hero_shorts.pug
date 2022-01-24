@@ -13,12 +13,11 @@ if self.data.heroArticle
                 - artHeroTypeForPath = artHeroType.slug.toLowerCase()
         section.hero_head
             a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
-                if self.data.heroArticle && self.data.heroArticle.media && self.data.heroArticle.media.image && self.data.heroArticle.media.image[0]
-                    img(src=`https://assets.poff.ee/img/${self.data.heroArticle.media.image[0].hash}${self.data.heroArticle.media.image[0].ext}`).hero_image
-                else if self.data.heroArticle && self.data.heroArticle.media && self.data.heroArticle.media.imageDefault && self.data.heroArticle.media.imageDefault[0]
-                    img(src=`https://assets.poff.ee/img/${self.data.heroArticle.media.imageDefault[0].hash}${self.data.heroArticle.media.imageDefault[0].ext}`).hero_image
+                if self.data.heroArticle.primaryImage
+                    img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).hero_image
                 else
                     img(src='/assets/img/static/placeholder_hd_1.jpg').hero_image
+
                 .hero_headline_box
                     .hero_headline_box_1
                         .hero_headline

@@ -74,11 +74,11 @@ const killSwitch = async () => {
 
     let myResult = await response.json();
 
-    if(response.status === 200){
-      strapi.notification.toggle({type: myResult.type, message: myResult.message, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false})
-    }else{
-      if(response.statusText && response.status){
-        strapi.notification.toggle({type: "warning", message: `Tekkis tundmatu viga`, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false})
+    if (response.status === 200) {
+      strapi.notification.toggle({ type: myResult.type, message: myResult.message, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false })
+    } else {
+      if (response.statusText && response.status) {
+        strapi.notification.toggle({ type: "warning", message: `Tekkis tundmatu viga`, title: "IT'S A KILLING SPREE!", timeout: 5000, blockTransition: false })
       };
     };
   };

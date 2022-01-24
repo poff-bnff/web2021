@@ -824,6 +824,9 @@
                     "type": "string"
                   }
                 },
+                "actor_info_set": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },

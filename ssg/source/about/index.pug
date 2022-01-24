@@ -54,10 +54,8 @@ block content
                                     - var article_slug = val.slug
                                     a(href= `/${lang_path}${artTypeForPath}/${val.slug}`).card_article
                                         .container_frame_16_9
-                                            if val.media && val.media.image && val.media.image[0]
-                                                img.container_contents_16_9(src=`https://assets.poff.ee/img/${val.media.image[0].hash}${val.media.image[0].ext}`)
-                                            else if val.media && val.media.imageDefault && val.media.imageDefault[0]
-                                                img.container_contents_16_9(src=`https://assets.poff.ee/img/${val.media.imageDefault[0].hash}${val.media.imageDefault[0].ext}`)
+                                            if val.primaryImage
+                                                img.container_contents_16_9(src=`https://assets.poff.ee/img/${val.primaryImage}`)
                                             else
                                                 img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
 
