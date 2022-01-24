@@ -34,6 +34,7 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
+      console.log(data.course);
       if (data.course) { domains = await get_domain(data.course) }
 
       if (data.published_at === null) { // if strapi publish system goes live
