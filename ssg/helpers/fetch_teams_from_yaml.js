@@ -20,7 +20,7 @@ const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
 const STRAPIDATA_TEAM = yaml.load(fs.readFileSync(strapiDataTeamPath, 'utf8'))
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
 const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
 const languages = ['en', 'et', 'ru']
 for (const ix in languages) {
@@ -67,22 +67,26 @@ for (const ix in languages) {
         const imageOrder = templateGroupName === 'festivalteam' ? imageOrderTeam : imageOrderJuryAndGuest
         const imageOrderDefaults = templateGroupName === 'festivalteam' ? imageOrderTeamDefaults : imageOrderJuryAndGuestDefaults
 
-        element.subTeam.map(s => s[teamVariableName].map(t => {
-            let mediaObj = {
-                media: {}
+        element.subTeam.map(s => {
+            if (s[teamVariableName]) {
+                return s[teamVariableName].map(t => {
+                    let mediaObj = {
+                        media: {}
+                    }
+                    if (t[imgVariableName]) {
+                        mediaObj.media[imgVariableName] = t[imgVariableName]
+                        delete t[imgVariableName]
+                    }
+                    if (t?.person?.picture) {
+                        mediaObj.media.personPicture = [t.person.picture]
+                        delete t.person.picture
+                    }
+                    if (mediaObj.media[imgVariableName] || mediaObj.media.personPicture) {
+                        t.picture = prioritizeImages(mediaObj, imageOrder, imageOrderDefaults);
+                    }
+                })
             }
-            if (t[imgVariableName]) {
-                mediaObj.media[imgVariableName] = t[imgVariableName]
-                delete t[imgVariableName]
-            }
-            if (t?.person?.picture) {
-                mediaObj.media.personPicture = [t.person.picture]
-                delete t.person.picture
-            }
-            if (mediaObj.media[imgVariableName] || mediaObj.media.personPicture) {
-                t.picture = prioritizeImages(mediaObj, imageOrder, imageOrderDefaults);
-            }
-        }))
+        })
 
 
         if (templateGroupName === 'guest') {

@@ -350,4 +350,12 @@ industryPersonsImagePriorityDefaults:
     - profilePicAtInd
     - personPicture
 
+cassettesAndFilmsListViewImagePriority:
+    - _small_16_9
+    - _small
+
+cassettesAndFilmsImageStillsPriority:
+    - _big_16_9
+    - _big
+
 # Images priority block END
