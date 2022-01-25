@@ -29,6 +29,7 @@ function addConfigIgnorePaths() {
             '/industry_mycal', //industry
             '/industry_persons', //industry
             '/industry_persons_search', //industry
+            '/discamp_persons_search', //discamp
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
@@ -66,6 +67,7 @@ function addConfigIgnorePaths() {
             '/industry_mycal', //industry
             '/industry_persons', //industry
             '/industry_persons_search', //industry
+            '/discamp_persons_search', //discamp
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
@@ -97,6 +99,7 @@ function addConfigIgnorePaths() {
             '/industry_mycal', //industry
             '/industry_persons', //industry
             '/industry_persons_search', //industry
+            '/discamp_persons_search', //discamp
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
@@ -135,7 +138,8 @@ function addConfigIgnorePaths() {
             '/search_archive', //Built by archive build
             '/industry_projects_archive_search', //Built by archive build
             '/industry_persons_archive_search', //Built by archive build
-            '/discamp_events_search', //Built by archive build
+            '/discamp_events_search', //discamp
+            '/discamp_persons_search', //discamp
         ]
     } else if (DOMAIN === 'discoverycampus.poff.ee') {
         return [
@@ -156,9 +160,10 @@ function addConfigIgnorePaths() {
             '/letschat', // POFF letschat page
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Built by archive build
+            '/industry_persons_search', //industry
             '/industry_projects_archive_search', //Built by archive build
             '/industry_persons_archive_search', //Built by archive build
-            '/industry_events_search', //Built by archive build
+            '/industry_events_search', //industry
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -172,6 +177,7 @@ function addConfigIgnorePaths() {
             '/industry_mycal', //industry
             '/industry_persons', //industry
             '/industry_persons_search', //industry
+            '/discamp_persons_search', //discamp
             '/industryproject', //industry
             '/industry_projects', //industry
             '/industry_projects_search', //industry
