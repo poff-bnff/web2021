@@ -10,11 +10,21 @@ const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-const INDUSTRY_ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+
 const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
+
+let ACTIVE_FESTIVAL_EDITIONS
+let NAMEVARIABLE
+if (DOMAIN === 'discoverycampus.poff.ee') {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
+    NAMEVARIABLE = 'discamp'
+} else {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+    NAMEVARIABLE = 'industry'
+}
 
 const imageOrder = DOMAIN_SPECIFICS.industryPersonsImagePriority
 const imageOrderDefaults = DOMAIN_SPECIFICS.industryPersonsImagePriorityDefaults
@@ -24,7 +34,7 @@ const param_build_type = params[0]
 
 const fetchDataDir = param_build_type === 'archive' ? path.join(fetchDir, 'industry_persons_archive') : path.join(fetchDir, 'industry_persons')
 
-if (DOMAIN !== 'industry.poff.ee') {
+if (DOMAIN !== 'industry.poff.ee' && DOMAIN !== 'discoverycampus.poff.ee') {
     let emptyYAML = yaml.dump([], {
         'noRefs': true,
         'indent': '4'
@@ -66,11 +76,11 @@ if (DOMAIN !== 'industry.poff.ee') {
     if (param_build_type === 'archive') {
         addConfigPathAliases([`/industry_persons_archive_search`])
         let archivePersonsYamlNameSuffix = 'industry_persons_archive'
-        let archiveIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => !INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+        let archiveIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => !ACTIVE_FESTIVAL_EDITIONS.includes(id)))
         startIndustryPersonProcessing(languages, archiveIndPersons, archivePersonsYamlNameSuffix, true)
     } else {
         let activePersonsYamlNameSuffix = 'industry_persons'
-        let activeIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => INDUSTRY_ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+        let activeIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
         startIndustryPersonProcessing(languages, activeIndPersons, activePersonsYamlNameSuffix)
     }
 
@@ -103,7 +113,7 @@ function mSort(to_sort) {
 }
 
 function startIndustryPersonProcessing(languages, STRAPIDATA_INDUSTRY_PERSONS, indPersonsYamlNameSuffix, archiveBuild = false) {
-    var templateDomainName = archiveBuild ? 'industry_archive' : 'industry'
+    var templateDomainName = archiveBuild ? 'industry_archive' : (DOMAIN === 'discoverycampus.poff.ee' ? 'discamp' : 'industry')
 
     for (lang of languages) {
 
