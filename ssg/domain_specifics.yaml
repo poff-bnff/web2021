@@ -81,6 +81,9 @@ programmes_festival_editions:
 active_industry_editions:
     - 12
 
+active_discamp_editions:
+    - 50
+
 industry_eventival_badges_whitelist:
     - MANAGEMENT
     - JURY
