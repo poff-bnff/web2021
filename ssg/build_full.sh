@@ -54,9 +54,6 @@ nice -10 node ./helpers/fetch_channels_from_yaml.js
 echo 'fetch_industry_event_from_yaml'
 nice -10 node ./helpers/fetch_industry_event_from_yaml.js
 
-echo 'fetch_discamp_event_from_yaml'
-nice -10 node ./helpers/fetch_discamp_event_from_yaml.js
-
 echo 'fetch_eventival_persons_from_yaml.js'
 nice -10 node ./helpers/fetch_eventival_persons_from_yaml.js
 
