@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_user_user_rights",
+  "info": {
+    "name": "UserRight",
+    "icon": "angry"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "function": {
+      "model": "function"
+    },
+    "read": {
+      "type": "boolean"
+    },
+    "write": {
+      "type": "boolean"
+    },
+    "execute": {
+      "type": "boolean"
+    },
+    "valid_from": {
+      "type": "datetime"
+    },
+    "valid_to": {
+      "type": "datetime"
+    }
+  }
+}

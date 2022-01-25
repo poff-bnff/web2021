@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/time-units",
+      "handler": "time-units.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/time-units/count",
+      "handler": "time-units.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/time-units/:id",
+      "handler": "time-units.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/time-units",
+      "handler": "time-units.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/time-units/:id",
+      "handler": "time-units.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/time-units/:id",
+      "handler": "time-units.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

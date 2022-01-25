@@ -664,6 +664,12 @@
               "my_events": {
                 "type": "component"
               },
+              "user_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },

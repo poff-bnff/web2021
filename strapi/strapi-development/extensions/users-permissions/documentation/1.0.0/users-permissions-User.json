@@ -1723,6 +1723,12 @@
                 "owner": {
                   "type": "string"
                 },
+                "valid_from": {
+                  "type": "string"
+                },
+                "valid_to": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -2019,6 +2025,49 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          "user_roles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "user_right": {
+                  "type": "component"
+                },
+                "valid_from": {
+                  "type": "string"
+                },
+                "valid_to": {
+                  "type": "string"
+                },
+                "product_categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
                 }
               }
             }
@@ -2499,6 +2548,12 @@
                   }
                 }
               }
+            }
+          },
+          "user_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "created_by": {
