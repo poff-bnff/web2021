@@ -96,8 +96,8 @@
       "via": "owner"
     },
     "transactions": {
-      "via": "transactor",
-      "collection": "transaction"
+      "collection": "transaction",
+      "via": "transactor"
     },
     "user_profile": {
       "model": "user-profiles",
@@ -112,9 +112,9 @@
       "repeatable": true,
       "component": "user.my-events"
     },
-    "my_role": {
-      "via": "users",
-      "model": "user-role"
+    "user_roles": {
+      "collection": "user-role",
+      "via": "users"
     }
   }
 }

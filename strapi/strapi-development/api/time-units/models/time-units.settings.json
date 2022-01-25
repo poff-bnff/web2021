@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "time_units",
+  "info": {
+    "name": "TimeUnits"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

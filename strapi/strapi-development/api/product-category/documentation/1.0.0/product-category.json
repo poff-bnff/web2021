@@ -1041,6 +1041,91 @@
                 }
               }
             }
+          },
+          "user_roles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "user_right": {
+                  "type": "component"
+                },
+                "valid_from": {
+                  "type": "string"
+                },
+                "valid_to": {
+                  "type": "string"
+                },
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "product_categories": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "validity_period_relative": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "number_of_time_units": {
+                "type": "integer"
+              },
+              "time_unit": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name_private": {
+                    "type": "string"
+                  },
+                  "name_et": {
+                    "type": "string"
+                  },
+                  "name_en": {
+                    "type": "string"
+                  },
+                  "name_ru": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1465,6 +1550,54 @@
                     "type": "object"
                   },
                   "related": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "user_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "validity_period_relative": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "number_of_time_units": {
+                "type": "integer"
+              },
+              "time_unit": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name_private": {
+                    "type": "string"
+                  },
+                  "name_et": {
+                    "type": "string"
+                  },
+                  "name_en": {
+                    "type": "string"
+                  },
+                  "name_ru": {
                     "type": "string"
                   },
                   "created_by": {

@@ -25,10 +25,15 @@
     "valid_to": {
       "type": "datetime"
     },
+    "product_categories": {
+      "via": "user_roles",
+      "collection": "product-category"
+    },
     "users": {
+      "via": "user_roles",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "my_role"
+      "dominant": true
     }
   }
 }

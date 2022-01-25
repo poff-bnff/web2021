@@ -53,6 +53,12 @@
       "via": "my_products",
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "valid_from": {
+      "type": "datetime"
+    },
+    "valid_to": {
+      "type": "datetime"
     }
   }
 }

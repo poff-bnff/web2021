@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_time_period_relatives",
+  "info": {
+    "name": "PeriodRelative",
+    "icon": "hammer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "number_of_time_units": {
+      "type": "integer"
+    },
+    "time_unit": {
+      "model": "time-units"
+    }
+  }
+}

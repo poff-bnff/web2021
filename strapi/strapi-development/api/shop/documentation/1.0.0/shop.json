@@ -640,6 +640,15 @@
                           "images": {
                             "type": "component"
                           },
+                          "user_roles": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "validity_period_relative": {
+                            "type": "component"
+                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -846,6 +855,15 @@
                             "type": "uid"
                           },
                           "images": {
+                            "type": "component"
+                          },
+                          "user_roles": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "validity_period_relative": {
                             "type": "component"
                           },
                           "created_by": {

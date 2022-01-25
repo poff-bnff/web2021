@@ -626,6 +626,15 @@
               "images": {
                 "type": "component"
               },
+              "user_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "validity_period_relative": {
+                "type": "component"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -749,8 +758,11 @@
               "my_events": {
                 "type": "component"
               },
-              "my_role": {
-                "type": "string"
+              "user_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -883,8 +895,11 @@
               "my_events": {
                 "type": "component"
               },
-              "my_role": {
-                "type": "string"
+              "user_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -893,6 +908,14 @@
                 "type": "string"
               }
             }
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_to": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -958,6 +981,14 @@
           },
           "owner": {
             "type": "string"
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_to": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"

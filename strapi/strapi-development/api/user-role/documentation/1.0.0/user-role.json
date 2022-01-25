@@ -608,6 +608,73 @@
             "type": "string",
             "format": "date-time"
           },
+          "product_categories": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "namePrivate": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "component"
+                },
+                "festival_edition": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "component"
+                },
+                "validityPeriod": {
+                  "type": "component"
+                },
+                "salesPeriod": {
+                  "type": "component"
+                },
+                "ticketingRight": {
+                  "type": "component"
+                },
+                "priceAtPeriod": {
+                  "type": "component"
+                },
+                "codePrefix": {
+                  "type": "string"
+                },
+                "slug_et": {
+                  "type": "uid"
+                },
+                "slug_en": {
+                  "type": "uid"
+                },
+                "slug_ru": {
+                  "type": "uid"
+                },
+                "images": {
+                  "type": "component"
+                },
+                "user_roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "validity_period_relative": {
+                  "type": "component"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "users": {
             "type": "array",
             "items": {
@@ -692,8 +759,11 @@
                 "my_events": {
                   "type": "component"
                 },
-                "my_role": {
-                  "type": "string"
+                "user_roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -780,6 +850,12 @@
           "valid_to": {
             "type": "string",
             "format": "date-time"
+          },
+          "product_categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "users": {
             "type": "array",
