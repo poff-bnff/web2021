@@ -582,6 +582,12 @@
               "owner": {
                 "type": "string"
               },
+              "valid_from": {
+                "type": "string"
+              },
+              "valid_to": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

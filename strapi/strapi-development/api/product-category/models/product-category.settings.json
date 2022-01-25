@@ -65,6 +65,16 @@
       "type": "component",
       "repeatable": false,
       "component": "media.imgs"
+    },
+    "user_roles": {
+      "collection": "user-role",
+      "via": "product_categories",
+      "dominant": true
+    },
+    "validity_period_relative": {
+      "type": "component",
+      "repeatable": false,
+      "component": "time.period-relative"
     }
   }
 }
