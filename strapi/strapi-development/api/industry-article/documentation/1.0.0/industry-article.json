@@ -1293,6 +1293,12 @@
                 "actor_info_set": {
                   "type": "component"
                 },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },

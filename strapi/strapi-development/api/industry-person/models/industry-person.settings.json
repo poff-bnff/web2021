@@ -84,6 +84,9 @@
       "type": "component",
       "repeatable": false,
       "component": "person.actor-info-set"
+    },
+    "domains": {
+      "collection": "domain"
     }
   }
 }

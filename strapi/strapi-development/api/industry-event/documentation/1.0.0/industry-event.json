@@ -827,6 +827,12 @@
                 "actor_info_set": {
                   "type": "component"
                 },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1112,6 +1118,38 @@
                 "type": "string"
               }
             }
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "ipAdress": {
+                  "type": "string"
+                },
+                "server": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1194,6 +1232,12 @@
           },
           "event_mode": {
             "type": "string"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

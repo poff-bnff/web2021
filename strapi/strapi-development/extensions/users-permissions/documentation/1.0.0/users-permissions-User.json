@@ -2005,6 +2005,12 @@
                       "event_mode": {
                         "type": "string"
                       },
+                      "domains": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2476,6 +2482,12 @@
                       },
                       "event_mode": {
                         "type": "string"
+                      },
+                      "domains": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       },
                       "created_by": {
                         "type": "string"
