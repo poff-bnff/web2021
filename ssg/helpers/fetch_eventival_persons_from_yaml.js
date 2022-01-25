@@ -129,7 +129,6 @@ if (DOMAIN === 'industry.poff.ee') {
         data.search = eventival_persons_search
         data.filters = sorted_filters
 
-        console.log({data})
         return data
     }
 
