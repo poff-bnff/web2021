@@ -2,16 +2,16 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
-const sourceDir =  path.join(__dirname, '..', 'source');
-const fetchDir =  path.join(sourceDir, '_fetchdir');
+const sourceDir = path.join(__dirname, '..', 'source');
+const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryProjectPath = path.join(strapiDataDirPath, 'IndustryProject.yaml')
 const STRAPIDATA_IND_PROJECTS = yaml.load(fs.readFileSync(strapiDataIndustryProjectPath, 'utf8'))
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const strapiDataPersonPath = path.join(strapiDataDirPath, 'Person.yaml')
@@ -107,12 +107,12 @@ function mSort(to_sort, lang) {
         sortable.push([item, to_sort[item]]);
     }
 
-    sortable = sortable.sort(function(a, b) {
+    sortable = sortable.sort(function (a, b) {
         try {
             const locale_sort = a[1].localeCompare(b[1], lang)
             return locale_sort
         } catch (error) {
-            console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+            console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
             throw new Error(error)
         }
     });
@@ -120,7 +120,7 @@ function mSort(to_sort, lang) {
     var objSorted = {}
     for (let index = 0; index < sortable.length; index++) {
         const item = sortable[index];
-        objSorted[item[0]]=item[1]
+        objSorted[item[0]] = item[1]
     }
     return objSorted
 }
@@ -182,8 +182,10 @@ function generateProjectsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
 
         for (const edition of project.editions || []) {
             const theEdition = edition.name;
-            editions.push(theEdition);
-            filters.editions[theEdition] = theEdition;
+            if (theEdition) {
+                editions.push(theEdition);
+                filters.editions[theEdition] = theEdition;
+            }
         }
 
         return {
@@ -237,7 +239,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             // rueten func. is run for each industry_project separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
             industry_project = rueten(industry_project, lang);
-            let dirSlug = industry_project.slug ? industry_project.slug : null ;
+            let dirSlug = industry_project.slug ? industry_project.slug : null;
 
             if (dirSlug === null) {
                 if (lang === 'en' && DOMAIN === 'industry.poff.ee') {
@@ -255,10 +257,10 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             industry_project.path = `project/${dirSlug}`
 
             if (industry_project.clipUrl) {
-                if(industry_project.clipUrl && industry_project.clipUrl.length > 10) {
+                if (industry_project.clipUrl && industry_project.clipUrl.length > 10) {
                     if (industry_project.clipUrl.includes('vimeo')) {
                         let splitVimeoLink = industry_project.clipUrl.split('/')
-                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
                         if (videoCode.length === 9) {
                             industry_project.clipUrlCode = videoCode
                         }
@@ -297,18 +299,18 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 } catch (error) {
                     continue
                 }
-                industry_project.persons[person_id] = industry_project.persons[person_id] || {id: person_id, rolesAtFilm: []}
+                industry_project.persons[person_id] = industry_project.persons[person_id] || { id: person_id, rolesAtFilm: [] }
                 if (role_person.role_at_film) {
                     industry_project.persons[person_id].rolesAtFilm.push(role_person.role_at_film.roleNamePrivate)
 
                     if (!(role_person.role_at_film.roleNamePrivate in industry_project.roles_in_project)) {
 
-                        let roleName = STRAPIDATA_ROLESATFILM.filter( e => {
+                        let roleName = STRAPIDATA_ROLESATFILM.filter(e => {
                             return e.id === role_person.role_at_film.id
                         })[0].roleName[lang]
-                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = {ord: role_person.role_at_film.order? role_person.role_at_film.order : Number.MAX_VALUE, label: roleName, names: []}
+                        industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate] = { ord: role_person.role_at_film.order ? role_person.role_at_film.order : Number.MAX_VALUE, label: roleName, names: [] }
                     }
-                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push({order: role_person.order, name: role_person.person.firstNameLastName})
+                    industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names.push({ order: role_person.order, name: role_person.person.firstNameLastName })
 
                     industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names = industry_project.roles_in_project[role_person.role_at_film.roleNamePrivate].names
                         .sort((a, b) => {
@@ -317,7 +319,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
 
 
                     industry_project.roles_in_project = Object.entries(industry_project.roles_in_project)
-                        .sort(([,a], [,b]) => {
+                        .sort(([, a], [, b]) => {
                             return a.ord - b.ord
                         })
                         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
@@ -328,12 +330,12 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 const industry_person = industry_project.persons[ix]
                 try {
                     industry_person.person = STRAPIDATA_PERSONS
-                    .filter(strapi_person => (strapi_person.id === industry_person.id))[0]
+                        .filter(strapi_person => (strapi_person.id === industry_person.id))[0]
                 } catch (error) {
                     console.log('Seda pole ette nähtud juhtuma: strapi_person.id !== industry_person.id', industry_person.id)
                 }
                 try {
-                    if(industry_person.person.biography.en){
+                    if (industry_person.person.biography.en) {
                         industry_person.person.biography = industry_person.person.biography.en
                     }
                 } catch (error) {
@@ -353,27 +355,27 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 } catch (error) {
                     continue
                 }
-                industry_project.organisations[company_id] = industry_project.organisations[company_id] || {id: company_id, rolesAtFilm: []}
-                if (role_company.roles_at_film){
+                industry_project.organisations[company_id] = industry_project.organisations[company_id] || { id: company_id, rolesAtFilm: [] }
+                if (role_company.roles_at_film) {
                     industry_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
 
-                    if(!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
+                    if (!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
 
-                        let roleName = STRAPIDATA_ROLESATFILM.filter( e => {
+                        let roleName = STRAPIDATA_ROLESATFILM.filter(e => {
                             return e.id === role_company.roles_at_film.id
                         })[0].roleName[lang]
 
-                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order? role_company.roles_at_film.order : Number.MAX_VALUE, label: roleName, names: []}
+                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = { ord: role_company.roles_at_film.order ? role_company.roles_at_film.order : Number.MAX_VALUE, label: roleName, names: [] }
                     }
-                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push({order: role_company.order, name:role_company.organisation.namePrivate})
+                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push({ order: role_company.order, name: role_company.organisation.namePrivate })
                     industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names = industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names
                         .sort((a, b) => {
                             return a.ord - b.ord
                         })
 
                     industry_project.comp_roles_in_project = Object.entries(industry_project.comp_roles_in_project)
-                        .sort(([,a],[,b]) => {
-                            return a.ord -b.ord
+                        .sort(([, a], [, b]) => {
+                            return a.ord - b.ord
                         })
                         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 }
@@ -382,12 +384,12 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 const industry_company = industry_project.organisations[ix]
                 try {
                     industry_company.organisations = STRAPIDATA_COMPANIES
-                    .filter(strapi_company => (strapi_company.id === industry_company.id))[0]
+                        .filter(strapi_company => (strapi_company.id === industry_company.id))[0]
                 } catch (error) {
                     console.log('Seda pole ette nähtud juhtuma: strapi_company.id !== industry_company.id', industry_company.id)
                 }
                 try {
-                    if(industry_company.organisations.description.en){
+                    if (industry_company.organisations.description.en) {
                         industry_company.organisations.description = industry_company.organisations.description.en
                     }
                 } catch (error) {
