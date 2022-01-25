@@ -174,9 +174,6 @@ fetch_data()
     echo '==== custom build ==== fetch_industry_person_from_yaml'
     node ./helpers/fetch_industry_person_from_yaml.js
 
-    echo '==== custom build ==== fetch_discamp_person_from_yaml'
-    node ./helpers/fetch_industry_person_from_yaml.js
-
     echo '==== custom build ==== fetch_article_types_from_yaml'
     node ./helpers/fetch_article_type_from_yaml.js
 

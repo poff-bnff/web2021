@@ -39,9 +39,6 @@ nice -10 node ./helpers/fetch_articles_from_yaml.js
 echo 'fetch_industry_person_from_yaml'
 nice -10 node ./helpers/fetch_industry_person_from_yaml.js
 
-echo 'fetch_discamp_person_from_yaml'
-nice -10 node ./helpers/fetch_discamp_person_from_yaml.js
-
 echo 'fetch_industry_project_from_yaml'
 nice -10 node ./helpers/fetch_industry_project_from_yaml.js
 
