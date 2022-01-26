@@ -119,5 +119,5 @@ jwt.js
 # GraphQL documentation
 ############################
 
-extensions/documentation/documentation/1.0.0/full_documentation.json
-api/**/documentation/*
+# extensions/documentation/documentation/1.0.0/full_documentation.json
+# api/**/documentation/*
