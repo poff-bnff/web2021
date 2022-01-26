@@ -1427,6 +1427,8 @@ IndustryPerson: &IndustryPerson
         -   *FestivalEdition
     tag_looking_fors:
         -   *TagLookingFor
+    domains: #(Component (repeatable))
+        - *Domain
 
 IndustryArticle: &IndustryArticle
     _path: /industry-articles
@@ -1578,6 +1580,8 @@ IndustryEvent: &IndustryEvent
     festival_editions:
         - *FestivalEdition
     event_mode: *EventMode
+    domains: #(Component (repeatable))
+        - *Domain
 
 IndustrySubMenuItem: &IndustrySubMenuItem
     name: *Translated #(Component)

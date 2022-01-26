@@ -1,0 +1,81 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if self.data.industrypersons && process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+        h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
+
+        .grid_search#filters(style='display: none;')
+
+            input#search(type='text', placeholder= self.label.filters.search)
+
+            select#types_select(name='Types')
+                option(value='')= self.label.filters.industryPersonType
+                if self.data.filters.types
+                    each index, key in self.data.filters.types
+                        option(value=key)= index
+
+            select#roleatfilms_select(name='Roleatfilms')
+                option(value='')= self.label.filters.roleAtFilms
+                if self.data.filters.roleatfilms
+                    each index, key in self.data.filters.roleatfilms
+                        option(value=key)= index
+
+            select#lookingfors_select(name='Lookingfors')
+                option(value='')= self.label.filters.lookingFor
+                if self.data.filters.lookingfors
+                    each index, key in self.data.filters.lookingfors
+                        option(value=key)= index
+
+            button.clear(onclick='unselect_all()')= self.label.filters.empty
+
+            h3#nonetoshow.sub_section_headline(style='display: none;')
+
+
+        if self.data.industrypersons && self.data.industrypersons.length
+
+            section.team
+                //- h1.section_headline INDUSTRY PERSONS
+                //- h1.sub_section_headline PERSONS
+                .sub_team
+                    each person in self.data.industrypersons
+                        if person.slug
+
+                            if person.person && `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`.length > 5
+                                .person(id=person.id)
+                                    a(href=`/${lang_path}${person.slug}`)
+                                        .person_head
+                                            - var assetsDir = 'https://assets.poff.ee/img/'
+                                            if person.picture
+                                                - var personPic = assetsDir + person.picture
+                                            else
+                                                - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+
+                                            img.person_img(src=personPic alt=`${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`)
+
+
+                                            .person_body.text_center
+                                                h4.text_center= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
+                                                if person.industry_person_types
+                                                    p= person.industry_person_types.map(type => type.type).join(', ')
+                                                //- p
+                                                    //- span= (person.person.profession)
+                                                //- p= person.industry_person_types.map(industry_person_types => industry_person_types.type).join(', ')
+                                                    //- span= (person.person.profession)
+                                                    //- br
+                                                    //- if person.emailAtTeam
+                                                    //-     span= (person.emailAtTeam)
+                                                    //- else
+                                                    //-     span= (person.person.eMail)
+                                                    //- br
+                                                    //- if person.phoneAtInd
+                                                    //-     span= (person.phoneAtInd)
+                                                    //- else
+                                                    //-     span= (person.person.phoneNr)
+                                                    //- br
+                                                    //- span= (person.website)
+                                                    //- br
+                    script.
+                        var searcharray = !{JSON.stringify(self.data.search)}
+
+                        var filters = !{JSON.stringify(self.data.filters)}
