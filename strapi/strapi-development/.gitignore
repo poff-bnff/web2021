@@ -115,3 +115,9 @@ build
 
 jwt.js
 
+############################
+# GraphQL documentation
+############################
+
+extensions/documentation/
+api/**/documentation/
