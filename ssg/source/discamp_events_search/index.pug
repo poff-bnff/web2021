@@ -62,43 +62,43 @@ block content
 
                         .card_event(id=event.id)
 
-                            .event_card_header
-                                .grid_container_event_time
-                                    .grid_item_event_time
-                                        svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
-                                            line(x1='16' y1='2' x2='16' y2='6')
-                                            line(x1='8' y1='2' x2='8' y2='6')
-                                            line(x1='3' y1='10' x2='21' y2='10')
-                                        span.screening_date.small_1
-                                            if event.startTime
-                                                +screeningDate(event.startTime)
+                            //- .event_card_header
+                            //-     .grid_container_event_time
+                            //-         .grid_item_event_time
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             span.screening_date.small_1
+                            //-                 if event.startTime
+                            //-                     +screeningDate(event.startTime)
 
-                                    .grid_item_event_time.text_right
-                                        svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            circle(cx='12' cy='12' r='10')
-                                            polyline(points='12 6 12 12 16 14')
-                                        span.screening_time.small_1
-                                            +screeningTimeEET(event.startTime)
-                                        span.screening_time.small_1 &nbsp;EET
+                            //-         .grid_item_event_time.text_right
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time.small_1
+                            //-                 +screeningTimeEET(event.startTime)
+                            //-             span.screening_time.small_1 &nbsp;EET
 
-                                    .grid_item_event_time.text_left
-                                        svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            circle(cx='12' cy='12' r='10')
-                                            polyline(points='12 6 12 12 16 14')
-                                        span.screening_time_user.small_1
-                                            +screeningTime(event.startTime)
-                                        span.screening_time_user.small_1 &nbsp;User time
+                            //-         .grid_item_event_time.text_left
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time_user.small_1
+                            //-                 +screeningTime(event.startTime)
+                            //-             span.screening_time_user.small_1 &nbsp;User time
 
-                                    .grid_item_event_time.text_right
-                                        svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                            rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
-                                            line(x1='16' y1='2' x2='16' y2='6')
-                                            line(x1='8' y1='2' x2='8' y2='6')
-                                            line(x1='3' y1='10' x2='21' y2='10')
-                                        //- span.screening_date.small_1.notsavedevent= 'Add to calendar'
-                                        span.screening_date.small_1.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
-                                        span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+                            //-         .grid_item_event_time.text_right
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             //- span.screening_date.small_1.notsavedevent= 'Add to calendar'
+                            //-             span.screening_date.small_1.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                            //-             span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
 
                             a(href=`/${lang_path}events/${event.slug}`)
@@ -111,8 +111,8 @@ block content
                                     h3.event_title.padding_bottom_2= event.title
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
-                                    if event.location
-                                        p.location= `@ ${event.location.name}`
+                                    //- if event.location
+                                    //-     p.location= `@ ${event.location.name}`
 
                                     //- if event.industry_people
                                     //-     each industry_person in event.industry_people
