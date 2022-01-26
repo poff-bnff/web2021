@@ -152,7 +152,6 @@ function addConfigIgnorePaths() {
             '/search', // all except industry
             '/mypoff', // poff
             '/signup', // poff
-            '/courses', //filmikool
             '/covid', //tartuff?
             '/events', //filmikool
             '/favourite', //poff
