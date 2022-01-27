@@ -755,7 +755,7 @@ module.exports = {
 
         if (updateProductSuccess) {
           console.log(`Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
-
+          console.log('Transaction ID', updateProductSuccess.transactions[0].id);
           // Email
           try {
             console.log('Here send e-mail');
@@ -771,7 +771,8 @@ module.exports = {
                 { name: 'perenimi', content: getUserInfo.user_profile.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
                 { name: 'passikood', content: updateProductSuccess.code },
-                { name: 'passinimi', content: updateProductSuccess.product_category.name.et }
+                { name: 'passinimi', content: updateProductSuccess.product_category.name.et },
+                { name: 'transactionid', content: updateProductSuccess.transactions[0].id }
                 // { name: 'enabledProviders', content: enabledProviders }
               ]
               // from:
