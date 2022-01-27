@@ -1135,16 +1135,6 @@ QaClip: &QaClip
     url: https://www.youtube.com/watch?v=rCztl76AmrQ (Text)
     type: Conversation (Enumeration)
 
-FilmMedia: &FilmMedia
-    stills: #(Component (repeatable))
-        - *StrapiMedia
-    posters: #(Component (repeatable))
-        - *StrapiMedia
-    trailer: #(Component (repeatable))
-        - *Trailer
-    QaClip: #(Component (repeatable))
-        - *QaClip
-
 RoleAtFilm: &RoleAtFilm
     _path: /role-at-films
     roleNamePrivate: (text)
@@ -1184,7 +1174,6 @@ Film: &Film
     year: 2019 (number)
     runtime: 139 (number)
     synopsis: *Translated #(Component, rich)
-    media: *FilmMedia #(Component, not from eventival)
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
@@ -1226,7 +1215,6 @@ Cassette: &Cassette
     title_en: (text)
     title_ru: (text)
     synopsis: *Translated #(Rich text)
-    media: *FilmMedia #(Component)
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
@@ -1343,7 +1331,6 @@ Course: &Course
     startDate: (Datetime)
     endDate: (Datetime)
     volume: (short text)
-    media: *FilmMedia #(Component, not from eventival)
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
