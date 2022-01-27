@@ -43,7 +43,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -92,9 +92,9 @@ const minimodel_cassette = {
             'film': {
                 model_name: 'Film',
                 expand: {
-                    'media': {
-                        model_name: 'FilmMedia'
-                    },
+                    // 'media': {
+                    //     model_name: 'FilmMedia'
+                    // },
                     'festival_editions': {
                         model_name: 'FestivalEdition'
                     },
@@ -189,23 +189,23 @@ const minimodel_cassette = {
     'languages': {
         model_name: 'Language'
     },
-    'media': {
-        model_name: 'FilmMedia',
-        // expand: {
-        //     'stills': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'posters': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'trailer': {
-        //         model_name: 'Trailer'
-        //     },
-        //     'QaClip': {
-        //         model_name: 'QaClip'
-        //     }
-        // }
-    },
+    // 'media': {
+    //     model_name: 'FilmMedia',
+    //     // expand: {
+    //     //     'stills': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'posters': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'trailer': {
+    //     //         model_name: 'Trailer'
+    //     //     },
+    //     //     'QaClip': {
+    //     //         model_name: 'QaClip'
+    //     //     }
+    //     // }
+    // },
 }
 const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
@@ -469,10 +469,12 @@ for (const lang of allLanguages) {
                 s_cassette_copy.slug = slugEn
             }
 
+            s_cassette_copy.media = {}
             if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
             if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
             if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
             if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
+            delete s_cassette_copy.media
 
             const cassetteStills = prioritizeImages(s_cassette_copy, imageOrderStills, 'stills')
             const cassetteStillsThumbs = prioritizeImages(s_cassette_copy, imageOrderStillsListView, 'stills')
@@ -545,6 +547,7 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    scc_film.media = {}
                     // Construct film media
                     if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
                     if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
@@ -553,6 +556,7 @@ for (const lang of allLanguages) {
 
                     const filmStills = prioritizeImages(scc_film, imageOrderStills, 'stills')
                     const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
+                    delete scc_film.media
 
                     // Film carousel pics
                     if (filmStills?.images?.length) {
