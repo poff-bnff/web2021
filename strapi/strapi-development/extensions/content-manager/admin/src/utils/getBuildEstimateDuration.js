@@ -1,4 +1,5 @@
-const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}`
+const strapiPortString = CUSTOM_VARIABLES['StrapiProtocol'] === 'https' ? `` : `:${CUSTOM_VARIABLES['StrapiPort']}`
+const strapiHost = `${CUSTOM_VARIABLES['StrapiProtocol']}://${CUSTOM_VARIABLES['StrapiHost']}${strapiPortString}`
 
 const getBuildEstimateDuration = async (buildArgs) => {
 
