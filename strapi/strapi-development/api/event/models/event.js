@@ -26,7 +26,14 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-let domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+let domains = []
+
+async function getAndSetDomains(data) {
+  let courseId = typeof data.course === 'object' ? data.course.id : data.course
+  const courseData = await strapi.query('course').findOne({ id: courseId });
+  const getDomains = await get_domain(courseData)
+  if (getDomains.length) { domains = getDomains}
+}
 
 module.exports = {
   lifecycles: {
@@ -34,8 +41,8 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
-      console.log(data.course, 'bla');
-      if (data.course) { domains = await get_domain(data.course) }
+      // If course, set domains
+      if (data.course) { await getAndSetDomains(data) }
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
@@ -43,7 +50,8 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      if (data.course) { domains = await get_domain(data.course) }
+      // If course, set domains
+      if (result.course) { await getAndSetDomains(result) }
 
       console.log('Create or update: ')
       if (data.skipbuild) return
@@ -72,8 +80,8 @@ module.exports = {
       delete params.user
     },
     async afterDelete(result, params) {
-      // console.log('\nR', result, '\nparams', params)
-      if (data.course) { domains = await get_domain(data.course) }
+      // If course, set domains
+      if (result.course) { await getAndSetDomains(result) }
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)
