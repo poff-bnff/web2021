@@ -472,10 +472,12 @@ for (const lang of allLanguages) {
                 s_cassette_copy.slug = slugEn
             }
 
+            s_cassette_copy.media = {}
             if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
             if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
             if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
             if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
+            delete s_cassette_copy.media
 
             const cassetteStills = prioritizeImages(s_cassette_copy, imageOrderStills, 'stills')
             const cassetteStillsThumbs = prioritizeImages(s_cassette_copy, imageOrderStillsListView, 'stills')
@@ -534,6 +536,7 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    scc_film.media = {}
                     // Construct film media
                     if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
                     if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
@@ -542,6 +545,8 @@ for (const lang of allLanguages) {
 
                     const filmStills = prioritizeImages(scc_film, imageOrderStills, 'stills')
                     const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
+                    delete scc_film.media
+
                     // Film carousel pics
                     if (filmStills?.images?.length) {
                         for (still of filmStills.images) {
