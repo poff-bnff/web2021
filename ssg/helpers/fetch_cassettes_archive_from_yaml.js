@@ -547,25 +547,33 @@ for (const lang of allLanguages) {
                     const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
                     delete scc_film.media
 
+                    let sortedFilmStills = []
+
                     // Film carousel pics
                     if (filmStills?.images?.length) {
                         for (still of filmStills.images) {
                             if (still.substring(0, 4) === 'F_1_') {
                                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.unshift(still)
+                            } else {
+                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.push(still)
                             }
-                            cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
                         }
                     }
+                    scc_film.stills = sortedFilmStills.length ? sortedFilmStills : null
 
                     // Film carousel pics thumbs
                     if (filmStillsThumbs?.imagesThumbs?.length) {
                         for (still of filmStillsThumbs.imagesThumbs) {
                             if (still.substring(0, 4) === 'F_1_') {
                                 cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                            } else {
+                                cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
                             }
-                            cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
                         }
                     }
+
                     if (cassetteCarouselPicsFilms.length > 0) {
                         s_cassette_copy.cassetteCarouselPicsFilms = [...new Set(cassetteCarouselPicsFilms)]
                         s_cassette_copy.cassetteCarouselPicsFilmsThumbs = [[...new Set(cassetteCarouselPicsFilmsThumbs)][0]]

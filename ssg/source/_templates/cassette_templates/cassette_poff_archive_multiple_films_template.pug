@@ -401,23 +401,18 @@ else
             //- KARUSELL filmi piltidega
             section.f_img_slider_box.carousel.slide(id=`carouselFilm${film.id}Indicators` data-bs-ride='carousel' data-interval='6000')
                 ol.carousel-indicators
-                    if film.media
-                        if film.media.stills && film.media.stills[0]
-                            each val, index in film.media.stills
-                                li(data-bs-target=`#carouselFilm${film.id}Indicators` href=`#carouselFilm${film.id}Indicators` data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                    if film.stills
+                        each val, index in film.stills
+                            li(data-bs-target=`#carouselFilm${film.id}Indicators` href=`#carouselFilm${film.id}Indicators` data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
-                    if film.media
-                        if film.media.stills && film.media.stills.length
-                            each val, index in film.media.stills
-                                if index == 0
-                                    .carousel-item.active.container_contents_16_9
-                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                else
-                                    .carousel-item.container_contents_16_9
-                                        img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                        else
-                            .carousel-item.active.container_contents_16_9
-                                img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                    if film.stills
+                        each val, index in film.stills
+                            if index == 0
+                                .carousel-item.active.container_contents_16_9
+                                    img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
+                            else
+                                .carousel-item.container_contents_16_9
+                                    img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
                     else
                         .carousel-item.active.container_contents_16_9
                             img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)

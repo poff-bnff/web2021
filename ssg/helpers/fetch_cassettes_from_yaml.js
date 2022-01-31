@@ -43,7 +43,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -558,23 +558,30 @@ for (const lang of allLanguages) {
                     const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
                     delete scc_film.media
 
+                    let sortedFilmStills = []
+
                     // Film carousel pics
                     if (filmStills?.images?.length) {
                         for (still of filmStills.images) {
                             if (still.substring(0, 4) === 'F_1_') {
                                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.unshift(still)
+                            } else {
+                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.push(still)
                             }
-                            cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
                         }
                     }
+                    scc_film.stills = sortedFilmStills.length ? sortedFilmStills : null
 
                     // Film carousel pics thumbs
                     if (filmStillsThumbs?.imagesThumbs?.length) {
                         for (still of filmStillsThumbs.imagesThumbs) {
                             if (still.substring(0, 4) === 'F_1_') {
                                 cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                            } else {
+                                cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
                             }
-                            cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
                         }
                     }
 
