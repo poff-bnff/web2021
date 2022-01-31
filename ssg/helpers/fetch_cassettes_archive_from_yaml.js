@@ -94,9 +94,9 @@ const minimodel_cassette = {
             'film': {
                 model_name: 'Film',
                 expand: {
-                    'media': {
-                        model_name: 'FilmMedia'
-                    },
+                    // 'media': {
+                    //     model_name: 'FilmMedia'
+                    // },
                     'festival_editions': {
                         model_name: 'FestivalEdition'
                     },
@@ -191,23 +191,23 @@ const minimodel_cassette = {
     'languages': {
         model_name: 'Language'
     },
-    'media': {
-        model_name: 'FilmMedia',
-        // expand: {
-        //     'stills': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'posters': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'trailer': {
-        //         model_name: 'Trailer'
-        //     },
-        //     'QaClip': {
-        //         model_name: 'QaClip'
-        //     }
-        // }
-    },
+    // 'media': {
+    //     model_name: 'FilmMedia',
+    //     // expand: {
+    //     //     'stills': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'posters': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'trailer': {
+    //     //         model_name: 'Trailer'
+    //     //     },
+    //     //     'QaClip': {
+    //     //         model_name: 'QaClip'
+    //     //     }
+    //     // }
+    // },
 }
 const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
