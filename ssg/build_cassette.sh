@@ -51,7 +51,7 @@ nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
-node ./helpers/add_config_ignorePaths.js
+nice -10 node ./helpers/add_config_ignorePaths.js
 printf '\n----------               Finished adding ignore paths            ----------\n'
 
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
