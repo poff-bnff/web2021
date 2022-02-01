@@ -34,11 +34,6 @@
       "repeatable": false,
       "component": "translated.translated-long"
     },
-    "media": {
-      "type": "component",
-      "repeatable": false,
-      "component": "media.film-media"
-    },
     "tags": {
       "type": "component",
       "repeatable": false,

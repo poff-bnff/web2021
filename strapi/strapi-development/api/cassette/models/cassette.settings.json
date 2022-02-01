@@ -25,11 +25,6 @@
       "repeatable": false,
       "component": "translated.translated-long"
     },
-    "media": {
-      "type": "component",
-      "repeatable": false,
-      "component": "media.film-media"
-    },
     "festival_editions": {
       "collection": "festival-edition"
     },
