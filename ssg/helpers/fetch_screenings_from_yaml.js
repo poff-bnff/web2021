@@ -29,7 +29,7 @@ if (param_build_type === 'target') {
     addConfigPathAliases(['/screenings', '/my_screenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
@@ -187,15 +187,17 @@ function processData(data, lang, CreateYAML) {
                 screeningsMissingCassetteIDs.push(screening.id)
             }
 
-            function picSplit(txt) {
-                return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
-            }
+            // function picSplit(txt) {
+            //     return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
+            // }
 
-            screening.cassetteCarouselPicsCassetteThumbs = (screening.cassetteCarouselPicsCassette || []).map(txt => picSplit(txt))
-            screening.cassetteCarouselPicsFilmsThumbs = (screening.cassetteCarouselPicsFilms || []).map(txt => picSplit(txt))
-            screening.cassettePostersCassetteThumbs = (screening.cassettePostersCassette || []).map(txt => picSplit(txt))
-            screening.cassettePostersFilmsThumbs = (screening.cassettePostersFilms || []).map(txt => picSplit(txt))
+            // screening.cassetteCarouselPicsCassetteThumbs = (screening.cassetteCarouselPicsCassette || []).map(txt => picSplit(txt))
+            // screening.cassetteCarouselPicsFilmsThumbs = (screening.cassetteCarouselPicsFilms || []).map(txt => picSplit(txt))
+            // screening.cassettePostersCassetteThumbs = (screening.cassettePostersCassette || []).map(txt => picSplit(txt))
+            // screening.cassettePostersFilmsThumbs = (screening.cassettePostersFilms || []).map(txt => picSplit(txt))
 
+            screening.cassetteCarouselPicsCassetteThumbs = screening.cassette.cassettePostersCassetteThumbs
+            screening.cassetteCarouselPicsFilmsThumbs = screening.cassette.cassetteCarouselPicsFilmsThumbs
         }
 
         if (screeningsMissingCassetteIDs.length) {
