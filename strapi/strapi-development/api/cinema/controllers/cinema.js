@@ -5,36 +5,49 @@
  * to customize this controller
  */
 
-module.exports = {};
+// Require sanitizer
+const { sanitizeEntity } = require('strapi-utils');
 
 
-// const { sanitizeEntity } = require('strapi-utils');
+module.exports = {
+  // New controller for finding all cinemas in one certain town
+  findCinemasInTown: async (ctx) => {
+    // Get provided 'town' parameter
+    const town = ctx.params?.town;
 
-// module.exports = {
-//   async find(ctx) {
-//     let entities;
-//     if (ctx.query._q) {
-//       entities = await strapi.services.cinema.search(ctx.query);
-//     } else {
-//       entities = await strapi.services.cinema.find(ctx.query);
-//     }
+    // Query parameters, limitless responses and town name has to equal provided town
+    const params = {
+      _limit: -1,
+      'town.name_et': town,
+    }
 
-//     return entities.map(entity => {
-//       const cinema = sanitizeEntity(entity, {
-//         model: strapi.models.cinema,
-//       });
-//       if (cinema.created_by.firstname == "Mariann") {
-//         delete cinema.Name;
-//         delete cinema.Address;
-//         delete cinema.Name_et;
-//         delete cinema.Name_en;
-//         delete cinema.Name.ru;
-//         delete cinema.aadress;
-//         cinema.created_by.firstname="MINU MINU MINU"
-//         return cinema;
-//       }
-//     });
-//   },
-// };
+    // Query
+    let result = await strapi.query('cinema').find(params);
+
+    // SANITIZE, because otherwise password hashes and user info etc will be returned
+
+    // Option 1
+    // let sanitizedResult = result.map(c => {
+    //   return {
+    //     cinema: c.name_et,
+    //     town: c?.town?.name_et
+    //   }
+    // })
+
+    // Option 2, use Strapi sanitizer utility
+    let sanitizedResult = sanitizeEntity(result, {
+      model: strapi.query('cinema').model,
+    })
+
+    // Random console log just for log fun
+    console.log(sanitizedResult);
+
+    // Return sanitized result
+    return sanitizedResult
+
+  },
+
+};
+
 
 

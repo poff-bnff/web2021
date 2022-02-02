@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/cinemasintown/:town",
+      "handler": "cinema.findCinemasInTown",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/cinemas/count",
       "handler": "cinema.count",
       "config": {
