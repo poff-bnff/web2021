@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "functions",
   "info": {
-    "name": "Function",
+    "name": "UserFunction",
     "description": ""
   },
   "options": {
@@ -29,8 +29,8 @@
       "component": "user.function-conditions"
     },
     "pattern_collections": {
-      "collection": "pattern-collections",
       "via": "functions",
+      "collection": "pattern-collections",
       "dominant": true
     }
   }

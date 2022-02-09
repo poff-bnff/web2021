@@ -35,14 +35,17 @@ module.exports = {
     async beforeUpdate(params, data) {
       const domains = await get_domain(data) // hard coded if needed AS LIST!!!
 
+      console.log(domains)
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
         await call_delete(params, domains, model_name)
       }
     },
     async afterUpdate(result, params, data) {
+      
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       console.log('Create or update: ')
+      console.log(domains)
       if (data.skipbuild) return
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)

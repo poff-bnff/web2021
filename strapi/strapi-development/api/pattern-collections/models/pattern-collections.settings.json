@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "pattern_collections",
   "info": {
-    "name": "Pattern_Collections"
+    "name": "Pattern_Collections",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,8 +15,11 @@
       "type": "string"
     },
     "functions": {
-      "via": "pattern_collections",
-      "collection": "function"
+      "collection": "function",
+      "via": "pattern_collections"
+    },
+    "pattern": {
+      "type": "text"
     }
   }
 }
