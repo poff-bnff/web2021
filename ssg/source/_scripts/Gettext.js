@@ -359,7 +359,7 @@ Gettext.prototype.parse_locale_data = function(locale_data) {
             typeof(Gettext._locale_data[domain].head.plural_func) == 'undefined') {
             // untaint data
             var plural_forms = Gettext._locale_data[domain].head['plural-forms'];
-            var pf_re = new RegExp(/^(\\s*nplurals\\s*=\\s*[0-9]+\\s*;\\s*plural\\s*=\\s*(?:\\s|[-\\?\\|&=!<>+*/%:;a-zA-Z0-9_()])+)/, 'm');
+            var pf_re = new RegExp('^(\\s*nplurals\\s*=\\s*[0-9]+\\s*;\\s*plural\\s*=\\s*(?:\\s|[-\\?\\|&=!<>+*/%:;a-zA-Z0-9_\(\)])+)', 'm');
             if (pf_re.test(plural_forms)) {
                 //ex english: "Plural-Forms: nplurals=2; plural=(n != 1);\n"
                 //pf = "nplurals=2; plural=(n != 1);";
