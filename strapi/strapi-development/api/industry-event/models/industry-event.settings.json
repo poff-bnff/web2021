@@ -87,6 +87,10 @@
     },
     "domains": {
       "collection": "domain"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

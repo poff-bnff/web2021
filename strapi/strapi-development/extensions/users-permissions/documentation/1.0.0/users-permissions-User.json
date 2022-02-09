@@ -1519,9 +1519,6 @@
                       "synopsis": {
                         "type": "component"
                       },
-                      "media": {
-                        "type": "component"
-                      },
                       "festival_editions": {
                         "type": "array",
                         "items": {
@@ -2017,6 +2014,9 @@
                           "type": "string"
                         }
                       },
+                      "public": {
+                        "type": "boolean"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2245,9 +2245,6 @@
                         "type": "string"
                       },
                       "synopsis": {
-                        "type": "component"
-                      },
-                      "media": {
                         "type": "component"
                       },
                       "festival_editions": {
@@ -2537,6 +2534,9 @@
                         "items": {
                           "type": "string"
                         }
+                      },
+                      "public": {
+                        "type": "boolean"
                       },
                       "created_by": {
                         "type": "string"

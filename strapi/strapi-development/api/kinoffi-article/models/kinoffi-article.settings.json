@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "kinoffi_articles",
   "info": {
-    "name": "Kinoffi_Article"
+    "name": "Kinoffi_Article",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "titlePrivate": {
@@ -98,6 +100,10 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

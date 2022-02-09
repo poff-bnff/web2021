@@ -96,6 +96,10 @@
     },
     "publishUntil": {
       "type": "datetime"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

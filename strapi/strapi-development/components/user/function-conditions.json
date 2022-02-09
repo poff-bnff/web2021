@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_user_function_conditions",
+  "info": {
+    "name": "FunctionConditions",
+    "icon": "indent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "property": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

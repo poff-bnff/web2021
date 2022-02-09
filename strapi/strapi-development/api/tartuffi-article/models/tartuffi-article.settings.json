@@ -103,6 +103,10 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

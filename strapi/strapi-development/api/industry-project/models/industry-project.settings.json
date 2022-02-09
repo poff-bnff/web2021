@@ -124,11 +124,15 @@
       "dominant": true
     },
     "awardings": {
-      "via": "project",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "project"
     },
     "tag_looking_fors": {
       "collection": "tag-looking-for"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
