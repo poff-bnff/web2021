@@ -2,6 +2,14 @@
 
 const _ = require('lodash');
 const https = require('https')
+const mime = require('mime');
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '..', '/helpers/lifecycle_manager.js')
+
+const {
+  slugify
+} = require(helper_path)
+
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 const sanitizeUser = user =>
@@ -175,32 +183,59 @@ module.exports = {
     ctx.send(sanitizeUser(data));
   },
   async updateMe(ctx) {
+
+    async function uploadProfilePicture(files, firstName, lastName) {
+      console.log('Uploading profile picture');
+
+      firstName = slugify(firstName)
+      lastName = slugify(lastName)
+
+      let splitter = files.picture.name.split('.')
+      let fileExt = splitter[splitter.length - 1]
+      let fileName = `U_${firstName}_${lastName}.${fileExt}`
+
+      const uploadedPicture = await strapi.plugins.upload.services.upload.upload({
+        data: {}, //mandatory declare the data(can be empty), otherwise it will give you an undefined error.
+        files: {
+          path: files.picture.path,
+          name: fileName,
+          type: mime.getType(files.picture.name) || files.picture.type, // mime type of the file
+          size: files.picture.size,
+        },
+      });
+      return uploadedPicture[0].id
+    }
+
     console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
     const { password } = ctx.request.body.data;
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
+
       console.log('Create new Person to user-profiles');
-      let newUserProfile
       if (files.picture) {
-        newUserProfile = await strapi.services['user-profiles'].create(personProfile, { files })
-      } else {
-        newUserProfile = await strapi.services['user-profiles'].create(personProfile)
+        const uploadedPicture = await uploadProfilePicture(files, personProfile.firstName, personProfile.lastName)
+        personProfile.picture = uploadedPicture
       }
+
+      let newUserProfile = await strapi.services['user-profiles'].create(personProfile)
+
       console.log('newUserProfile', newUserProfile);
       return newUserProfile
     }
 
     const updatePersonProfile = async (personProfile, ctxForPicture, id) => {
       const { files } = parseMultipartData(ctxForPicture);
-      let updatedProfile
+
+      console.log('Update user profile in user-profiles');
       if (files.picture) {
-        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile, { files })
-      } else {
-        updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
+        const uploadedPicture = await uploadProfilePicture(files, personProfile.firstName, personProfile.lastName)
+        personProfile.picture = uploadedPicture
       }
-      console.log('personProfile', personProfile);
+
+      let updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
+
       console.log('updatedProfile', updatedProfile);
       return updatedProfile
 
