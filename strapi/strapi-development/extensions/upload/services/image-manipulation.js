@@ -85,6 +85,30 @@ const resize_options = [
     sufiks: '_small',
     width: 640,
     fit: 'inside'
+  }]},
+  {'U_': [{
+    sufiks: '_big_sq',
+    width: 900,
+    height: 900,
+    fit: 'cover'
+  },
+  {
+    sufiks: '_med_sq',
+    width: 500,
+    height: 500,
+    fit: 'cover'
+  },
+  {
+    sufiks: '_small_sq',
+    width: 300,
+    height: 300,
+    fit: 'cover'
+  },
+  {
+    sufiks: '_thumb_sq',
+    width: 100,
+    height: 100,
+    fit: 'cover'
   }]}
 ]
 
@@ -213,6 +237,18 @@ const generateResponsiveFormats = async file => {
 
     }
     else if(filePrefix === 'R_') {
+      let params = await findOptions(filePrefix)
+
+      return Promise.all(
+        Object.keys(params).map(key => {
+          const breakpoint = params[key]
+
+          if (breakpointSmallerThan(breakpoint, originalDimensions)) {
+            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
+          }
+        }))
+    }
+    else if(filePrefix === 'U_') {
       let params = await findOptions(filePrefix)
 
       return Promise.all(
