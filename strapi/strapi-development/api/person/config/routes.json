@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/customtest",
+      "handler": "person.customcreate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/people/:id",
       "handler": "person.update",
