@@ -20,24 +20,27 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        - 28
-        - 29
-        - 30
-        - 32
+        - 0
+        # - 28
+        # - 29
+        # - 30
+        # - 32
     justfilm.ee:
-        - 29
+        - 0
+        # - 29
     kinoff.poff.ee:
         - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
-        - 30
+        - 0
+        # - 30
     hoff.ee:
-        - 5
+        - 17
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 10
+        - 0
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -368,7 +371,7 @@ cassettesAndFilmsImageStillsPriority:
 # Image resize options according to prefix START
 
 libraryImageResizeOptions:
-    - F_: 
+    - F_:
         -   sufiks: _big_16_9
             width: 1920
             height: 1080
@@ -381,7 +384,7 @@ libraryImageResizeOptions:
             width: 640
             height: 360
             fit: cover
-    - R_: 
+    - R_:
         -   sufiks: _big_sq
             width: 900
             height: 900
@@ -433,7 +436,7 @@ libraryImageResizeOptions:
         -   sufiks: _thumb_sq
             width: 100
             height: 100
-            fit: cover 
+            fit: cover
 
 libraryImageThumbnailResizeOption:
     width: 245
