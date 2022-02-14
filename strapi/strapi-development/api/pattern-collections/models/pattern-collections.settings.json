@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pattern_collections",
+  "info": {
+    "name": "Pattern_Collections",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "functions": {
+      "collection": "function",
+      "via": "pattern_collections"
+    },
+    "pattern": {
+      "type": "text"
+    }
+  }
+}

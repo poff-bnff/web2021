@@ -79,6 +79,10 @@
     },
     "isPublicEvent": {
       "type": "boolean"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

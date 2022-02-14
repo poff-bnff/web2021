@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pattern-collections",
+      "handler": "pattern-collections.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pattern-collections/count",
+      "handler": "pattern-collections.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pattern-collections/:id",
+      "handler": "pattern-collections.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/pattern-collections",
+      "handler": "pattern-collections.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pattern-collections/:id",
+      "handler": "pattern-collections.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pattern-collections/:id",
+      "handler": "pattern-collections.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

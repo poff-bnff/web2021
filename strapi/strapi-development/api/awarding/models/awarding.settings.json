@@ -15,8 +15,8 @@
       "type": "date"
     },
     "project": {
-      "model": "industry-project",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "industry-project"
     },
     "film": {
       "via": "awardings",

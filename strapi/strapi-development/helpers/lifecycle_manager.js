@@ -133,7 +133,9 @@ async function do_query(model, params) {
   }
   return obj_to_return
 }
-
+async function ask_domain(d_id) {
+  return await strapi.query('domain').findOne({id: d_id})
+}
 async function get_domain(result) {
   let domain = []
 
@@ -141,16 +143,26 @@ async function get_domain(result) {
     result = result[0]
   }
   if (result.domain) {
-    domain.push(result.domain.url)
+    let dom = result.domain
+    if (!isNaN(result.domain)) {
+       dom = await ask_domain(result.domain)
+    }
+    domain.push(dom.url)
   }
   else if (result.domains) {
     for (let dom of result.domains) {
-      domain.push(dom.url)
+	if(!isNaN(dom)) {
+	  dom = await ask_domain(dom)
+	}
+	domain.push(dom.url)
     }
   }
   else if (result.festival_edition) {
     let query_answer = await strapi.query('festival-edition').find({ id: result.festival_edition.id })
     for (let dom of query_answer[0].domains) {
+      if(typeof dom !== 'object') {
+        dom = await ask_domain(dom)
+      }
       domain.push(dom.url)
     }
   }
@@ -158,6 +170,9 @@ async function get_domain(result) {
     let festival_eds = await do_query('festival-edition', result.festival_editions)
     for (let festival_ed of festival_eds) {
       for (let dom of festival_ed[0].domains) {
+        if(typeof dom !== 'object') {
+          dom = await ask_domain(dom)
+        }
         domain.push(dom.url)
       }
     }
@@ -166,6 +181,9 @@ async function get_domain(result) {
     let query_answers = await do_query('programme', result.programmes)
     for (let query_answer of query_answers) {
       for (let dom of query_answer[0].domains) {
+        if(typeof dom !== 'object') {
+          dom = await ask_domain(dom)
+        }
         domain.push(dom.url)
       }
     }
@@ -175,6 +193,9 @@ async function get_domain(result) {
     for (let festival_e of query_answer[0].festival_editions) {
       let q_answer = await strapi.query('festival-edition').find({ id: festival_e.id })
       for (let dom of q_answer[0].domains) {
+        if(typeof dom !== 'object') {
+          dom = await ask_domain(dom)
+        } 
         domain.push(dom.url)
       }
     }

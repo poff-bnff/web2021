@@ -109,7 +109,7 @@ async function getModel(model, filters={}) {
     filters['_limit'] = '-1'
     let filter_str_a = []
     for (const [key, value] of Object.entries(filters)) {
-        filter_str_a.push(key + '=' + encodeURIComponent(value).replace('%20','+'))
+        filter_str_a.push(key + '=' + encodeURIComponent(value).replace(/%20/g,'+'))
     }
 
     const _path = `${DATAMODEL[model]['_path']}`

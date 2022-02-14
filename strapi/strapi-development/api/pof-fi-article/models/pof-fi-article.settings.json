@@ -107,6 +107,10 @@
     "tag_film_types": {
       "collection": "tag-film-type",
       "via": "pof_fi_article"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
