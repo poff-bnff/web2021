@@ -362,13 +362,13 @@ main.grid_film(id=self.id)
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
 
-            section.f_interactive_box
-                if process.env['DOMAIN'] === 'poff.ee'
-                    .f_interactive_item
-                        p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+            //- section.f_interactive_box
+            //-     if process.env['DOMAIN'] === 'poff.ee'
+            //-         .f_interactive_item
+            //-             p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
 
-                        a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
-                        a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+            //-             a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+            //-             a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
 
                 //- .f_interactive_item
                 //-     a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSeKlI3ip7-58dyqJWhUbaFbvhqdn3u2TO9CGXYJKr6ACVxuUw/viewform' style='width:200px;' role='button' target='_blank')= self.locale === 'et' ? 'Anna filmile oma hääl' : 'Vote for this film'
@@ -658,7 +658,7 @@ main.grid_film(id=self.id)
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            include vialog_box.pug
+            //- include vialog_box.pug
 
             if film.media && film.media
                 - let med = film.media
