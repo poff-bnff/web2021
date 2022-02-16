@@ -409,10 +409,10 @@ else
                         each val, index in film.stills
                             if index == 0
                                 .carousel-item.active.container_contents_16_9
-                                    img.d-block.container_contents_16_9(src= val alt = self.title)
+                                    img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
                             else
                                 .carousel-item.container_contents_16_9
-                                    img.d-block.container_contents_16_9(src= val alt = self.title)
+                                    img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
                     else
                         .carousel-item.active.container_contents_16_9
                             img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
