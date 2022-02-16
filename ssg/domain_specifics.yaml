@@ -49,10 +49,10 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
-    - 28
-    - 29
-    - 30
-    - 32
+    - 17
+    # - 29
+    # - 30
+    # - 32
 
 programmes_festival_editions:
     poff.ee:
