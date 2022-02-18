@@ -53,13 +53,16 @@
       "minLength": 2
     },
     "slug_et": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name_et"
     },
     "slug_en": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name_en"
     },
     "slug_ru": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name_ru"
     },
     "images": {
       "type": "component",
@@ -75,6 +78,15 @@
       "type": "component",
       "repeatable": false,
       "component": "time.period-relative"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
     }
   }
 }

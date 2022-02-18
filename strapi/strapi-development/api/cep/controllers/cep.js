@@ -5,4 +5,13 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    async indusrtyEventRelated(ctx) {
+        console.log( ctx.request.body)
+	return {"ok": "ok"}
+    }
+
+//    indusrtyEventRelated: async (ctx, next) => {
+//        console.log(ctx, next)
+//    }
+};

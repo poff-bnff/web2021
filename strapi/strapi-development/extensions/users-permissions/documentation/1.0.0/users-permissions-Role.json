@@ -612,6 +612,9 @@
                     "type": "string"
                   }
                 },
+                "moodle_id": {
+                  "type": "uid"
+                },
                 "created_by": {
                   "type": "string"
                 },

@@ -109,6 +109,9 @@
       "type": "component",
       "repeatable": true,
       "component": "media.qa-clip"
+    },
+    "moodle_id": {
+      "type": "uid"
     }
   }
 }

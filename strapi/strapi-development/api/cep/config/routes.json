@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/ceps/i-event-related",
+      "handler": "cep.indusrtyEventRelated",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
