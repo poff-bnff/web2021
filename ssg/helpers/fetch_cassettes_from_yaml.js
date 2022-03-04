@@ -43,7 +43,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -636,7 +636,7 @@ for (const lang of allLanguages) {
                                     let searchRegExp = new RegExp(' ', 'g')
                                     const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
                                     rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
-
+                                    console.log(scc_film.id);
                                     if (rolePerson.person.firstNameLastName) {
                                         rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
                                     } else if (rolePerson.person.id) {
@@ -717,8 +717,8 @@ for (const lang of allLanguages) {
 }
 
 function trailerProcessing(cassetteOrFilm) {
-    if (cassetteOrFilm.media && cassetteOrFilm.media.trailer && cassetteOrFilm.media.trailer[0]) {
-        for (trailer of cassetteOrFilm.media.trailer) {
+    if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
+        for (trailer of cassetteOrFilm.trailer) {
             if (trailer.url && trailer.url.length > 10) {
                 if (trailer.url.includes('vimeo')) {
                     let splitVimeoLink = trailer.url.split('/')

@@ -660,17 +660,16 @@ main.grid_film(id=self.id)
 
             //- include vialog_box.pug
 
-            if film.media && film.media
-                - let med = film.media
-                if (med.trailer && med.trailer[0] && med.trailer[0].videoCode) || (med && med.QaClip && med.QaClip[0].url)
+            if film.trailer || film.QaClip
+                if film.trailer[0].videoCode || film.QaClip[0].videoCode
                     section#trailer.f_trailer_box
-                        if (med.trailer && med.trailer[0] && med.trailer[0].videoCode)
+                        if (film.trailer && film.trailer[0].videoCode)
                             .section_headline= self.label.film.trailer
-                            each trailer in med.trailer
+                            each trailer in film.trailer
                                 .ratio.ratio-16x9.m-0.p-0
                                     if trailer.videoCode
                                         +video(trailer.videoCode)
-                        if (med && med.QaClip && med.QaClip[0].url)
+                        if (film.QaClip && film.QaClip[0].url)
                             - var filterQa = med.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
                             if filterQa.length
                                 .section_headline= self.label.film.qaClip
