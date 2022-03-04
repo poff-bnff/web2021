@@ -43,7 +43,7 @@ main.grid_film(id=self.id)
                     svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         polyline(points='9 18 15 12 9 6')
                     span.sr-only Next
-                if film.media && film.media.trailer && film.media.trailer[0] && film.media.trailer[0].videoCode
+                if film.trailer && film.trailer[0] && film.trailer[0].videoCode
                     a.play_link(href='#trailer')
                         svg.svg_icon_play(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='2' fill='white' stroke-linecap='round' stroke-linejoin='round')
                             polygon(points='5 3 19 12 5 21 5 3')
