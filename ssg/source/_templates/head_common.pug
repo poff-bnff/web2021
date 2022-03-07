@@ -8,18 +8,25 @@ if self.title
 else if self.name
     meta(property='og:title' content= self.name)
 
-if self.media && self.media.image && self.media.image[0]
-    - var featuredImg = `https://assets.poff.ee/img/${self.media.image[0].hash}${self.media.image[0].ext}`
-else if self.media && self.media.imageDefault && self.media.imageDefault[0]
-    - var featuredImg = `https://assets.poff.ee/img/${self.media.imageDefault[0].hash}${self.media.imageDefault[0].ext}`
-else if self.cassetteCarouselPicsFilms && self.cassetteCarouselPicsFilms.length > 0
+//- Film
+if self.cassetteCarouselPicsFilms
     - var featuredImg = self.cassetteCarouselPicsFilms[0]
-else if self.cassetteCarouselPicsCassette && self.cassetteCarouselPicsCassette.length > 0
+//- Cassette
+if self.cassetteCarouselPicsCassette
     - var featuredImg = self.cassetteCarouselPicsCassette[0]
-else if self.images && self.images[0]
+//- Article
+if self.primaryImage
+    - var featuredImg = `https://assets.poff.ee/img/${self.primaryImage}`
+//- Industry person
+if self.picture
+    - var featuredImg = `https://assets.poff.ee/img/${self.picture}`
+//- Industry project
+if self.images
     - var featuredImg = `https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`
+//- Placeholder
 else
     - var featuredImg = `https://poff.ee/assets/img/static/placeholder_hd_1.jpg`
+
 
 meta(property='og:image' content= featuredImg)
 
