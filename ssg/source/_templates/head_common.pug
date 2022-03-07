@@ -12,16 +12,16 @@ else if self.name
 if self.cassetteCarouselPicsFilms
     - var featuredImg = self.cassetteCarouselPicsFilms[0]
 //- Cassette
-if self.cassetteCarouselPicsCassette
+else if self.cassetteCarouselPicsCassette
     - var featuredImg = self.cassetteCarouselPicsCassette[0]
 //- Article
-if self.primaryImage
+else if self.primaryImage
     - var featuredImg = `https://assets.poff.ee/img/${self.primaryImage}`
 //- Industry person
-if self.picture
+else if self.picture
     - var featuredImg = `https://assets.poff.ee/img/${self.picture}`
 //- Programme, Industry project / event
-if self.images
+else if self.images
     - var featuredImg = `https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`
 //- Placeholder
 else
