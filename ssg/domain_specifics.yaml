@@ -367,6 +367,13 @@ cassettesAndFilmsImageStillsPriority:
     - _big_16_9
     - _big
 
+cassettesAndFilmsDirectorPicturePriority:
+    - - _med_sq
+      - picture
+
+cassettesAndFilmsDirectorPicturePriorityDefaults:
+    - picture
+
 # Images priority block END
 
 # Image resize options according to prefix START

@@ -391,12 +391,12 @@ main.grid_film(id=self.id)
                         //- f_dir_box on nyyd container directorite boxidele
                         //- Iga Directori kohta nyyd täita see f_dir_bio_box.
                         if director.person
-                            if director.person.picture || director.person.biography || director.person.filmography
+                            if director.person.primaryImage || director.person.biography || director.person.filmography
                                 .f_dir_bio_box
 
                                     .dir_img
-                                        if director.person.picture
-                                            img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
+                                        if director.person.primaryImage
+                                            img.img_dir(src=`https://assets.poff.ee/img/${director.person.primaryImage}` alt = film.titles)
                                         //- if director.person.picture
                                         if director.person.firstName || director.person.lastName
                                             .str_info_grid_3

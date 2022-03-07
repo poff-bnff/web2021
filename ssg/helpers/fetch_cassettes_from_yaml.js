@@ -4,7 +4,8 @@ const path = require('path')
 const { deleteFolderRecursive, JSONcopy } = require("./helpers.js")
 const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
-const prioritizeImages = require('./image_prioritizer_for_film.js')
+const prioritizeImagesFilm = require('./image_prioritizer_for_film.js')
+const prioritizeImages = require('./image_prioritizer.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -14,6 +15,8 @@ const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const imageOrderStills = DOMAIN_SPECIFICS.cassettesAndFilmsImageStillsPriority
 const imageOrderStillsListView = DOMAIN_SPECIFICS.cassettesAndFilmsListViewImagePriority
+const imageOrderDirector = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriority
+const imageOrderDirectorDefaults = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriorityDefaults
 
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
@@ -476,8 +479,8 @@ for (const lang of allLanguages) {
             if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
             delete s_cassette_copy.media
 
-            const cassetteStills = prioritizeImages(s_cassette_copy, imageOrderStills, 'stills')
-            const cassetteStillsThumbs = prioritizeImages(s_cassette_copy, imageOrderStillsListView, 'stills')
+            const cassetteStills = prioritizeImagesFilm(s_cassette_copy, imageOrderStills, 'stills')
+            const cassetteStillsThumbs = prioritizeImagesFilm(s_cassette_copy, imageOrderStillsListView, 'stills')
 
             // Cassette carousel pics
             if (cassetteStills?.length?.images) {
@@ -554,8 +557,8 @@ for (const lang of allLanguages) {
                     if (scc_film?.trailer?.[0]) { scc_film.media.trailer = scc_film.trailer }
                     if (scc_film?.QaClip?.[0]) { scc_film.media.QaClip = scc_film.QaClip }
 
-                    const filmStills = prioritizeImages(scc_film, imageOrderStills, 'stills')
-                    const filmStillsThumbs = prioritizeImages(scc_film, imageOrderStillsListView, 'stills')
+                    const filmStills = prioritizeImagesFilm(scc_film, imageOrderStills, 'stills')
+                    const filmStillsThumbs = prioritizeImagesFilm(scc_film, imageOrderStillsListView, 'stills')
                     delete scc_film.media
 
                     let sortedFilmStills = []
@@ -631,12 +634,23 @@ for (const lang of allLanguages) {
                             if (rolePerson.person) {
                                 if (rolePerson?.role_at_film?.roleNamePrivate) {
                                     if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
-                                        scc_film.credentials.rolePerson[roleIx].person = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        let directorPerson = {
+                                            ...STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        }
+                                        directorPerson.media = {
+                                            picture: [directorPerson.picture]
+                                        }
+
+                                        const primaryImage = prioritizeImages(directorPerson, imageOrderDirector, imageOrderDirectorDefaults)
+                                        if (primaryImage) { directorPerson.primaryImage = primaryImage }
+                                        delete directorPerson.media
+
+                                        scc_film.credentials.rolePerson[roleIx].person = directorPerson
                                     }
                                     let searchRegExp = new RegExp(' ', 'g')
                                     const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
                                     rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
-                                    console.log(scc_film.id);
+
                                     if (rolePerson.person.firstNameLastName) {
                                         rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
                                     } else if (rolePerson.person.id) {
