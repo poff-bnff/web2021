@@ -21,12 +21,19 @@ else if self.primaryImage
 else if self.picture
     - var featuredImg = `https://assets.poff.ee/img/${self.picture}`
 //- Programme, Industry project / event
-else if self.images
+else if self.images && self.images[0]
     - var featuredImg = `https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`
+//- Shop
+else if self.images && (self.images.image || self.images.imageDefault)
+    if self.images.image
+        - var imageFile = `${self.images.image.hash}${self.images.image.ext}`
+    else if self.images.imageDefault
+        - var imageFile = `${self.images.imageDefault.hash}${self.images.imageDefault.ext}`
+
+    - var featuredImg = `https://assets.poff.ee/img/${imageFile}`
 //- Placeholder
 else
     - var featuredImg = `https://poff.ee/assets/img/static/placeholder_hd_1.jpg`
-
 
 meta(property='og:image' content= featuredImg)
 
