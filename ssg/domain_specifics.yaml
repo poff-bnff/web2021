@@ -21,6 +21,7 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     poff.ee:
         - 51
+        - 82
         # - 28
         # - 29
         # - 30
@@ -57,6 +58,7 @@ XML_festival_editions:
 programmes_festival_editions:
     poff.ee:
         - 51
+        - 82
         # - 28
         # - 29
         # - 30
