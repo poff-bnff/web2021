@@ -33,3 +33,6 @@ then
 fi
 echo "New version is LIVE: "$DOMAIN""
 bash /srv/ssg/create_bak.sh $DOMAIN $TIMESTAMP
+
+echo "Delete backups older than 14 days"
+find /srv/backup/$DOMAIN/* -mtime +14 -exec rm -rf {} \;
