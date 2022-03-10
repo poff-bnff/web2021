@@ -640,7 +640,10 @@ main.grid_film(id=self.id)
                                         a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
                                         a.btn.btn_primary.active.issavedscreening(id=screening.id+'_is_savedscreening' style='display: none;' onclick=`modifyFavourites('rmScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
-                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                            if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningDonation
+                                            else
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
                                             //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
