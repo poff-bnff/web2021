@@ -8,16 +8,30 @@ if self.title
 else if self.name
     meta(property='og:title' content= self.name)
 
-if self.media && self.media.image && self.media.image[0]
-    - var featuredImg = `https://assets.poff.ee/img/${self.media.image[0].hash}${self.media.image[0].ext}`
-else if self.media && self.media.imageDefault && self.media.imageDefault[0]
-    - var featuredImg = `https://assets.poff.ee/img/${self.media.imageDefault[0].hash}${self.media.imageDefault[0].ext}`
-else if self.cassetteCarouselPicsFilms && self.cassetteCarouselPicsFilms.length > 0
+//- Film
+if self.cassetteCarouselPicsFilms
     - var featuredImg = self.cassetteCarouselPicsFilms[0]
-else if self.cassetteCarouselPicsCassette && self.cassetteCarouselPicsCassette.length > 0
+//- Cassette
+else if self.cassetteCarouselPicsCassette
     - var featuredImg = self.cassetteCarouselPicsCassette[0]
+//- Article
+else if self.primaryImage
+    - var featuredImg = `https://assets.poff.ee/img/${self.primaryImage}`
+//- Industry person
+else if self.picture
+    - var featuredImg = `https://assets.poff.ee/img/${self.picture}`
+//- Programme, Industry project / event
 else if self.images && self.images[0]
     - var featuredImg = `https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`
+//- Shop
+else if self.images && (self.images.image || self.images.imageDefault)
+    if self.images.image
+        - var imageFile = `${self.images.image.hash}${self.images.image.ext}`
+    else if self.images.imageDefault
+        - var imageFile = `${self.images.imageDefault.hash}${self.images.imageDefault.ext}`
+
+    - var featuredImg = `https://assets.poff.ee/img/${imageFile}`
+//- Placeholder
 else
     - var featuredImg = `https://poff.ee/assets/img/static/placeholder_hd_1.jpg`
 

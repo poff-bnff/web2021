@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff_26_logo_dark4_o_sp.svg' src='/assets/img/static/poff_26_logo_dark4_o_sp.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff_26_logo_dark4_o_sp_ukr.svg' src='/assets/img/static/poff_26_logo_dark4_o_sp_ukr.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     nav.main_menu
@@ -32,11 +32,20 @@ header
                         a(href='https://kumu.poff.ee')
                             | KUMU Doc
                     span.org_item
-                        a(href='https://kinoff.ee')
-                            | Kinoff
+                        a(href='https://hoff.ee')
+                            | HÕFF
                     span.org_item
-                        a(href='https://poff.elisastage.ee')
-                            | PÖFFi veebikino
+                        a(href='https://tartuff.ee')
+                            | Tartuff
+                    span.org_item
+                        a(href='https://filmikool.poff.ee')
+                            | Filmikool
+                    //- span.org_item
+                    //-     a(href='https://kinoff.ee')
+                    //-         | Kinoff
+                    //- span.org_item
+                    //-     a(href='https://poff.elisastage.ee')
+                    //-         | PÖFFi veebikino
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)

@@ -13,31 +13,35 @@ domain:
     discoverycampus.poff.ee: discamp
 
 domains_show_cassetes_wo_screenings:
-    # - poff.ee
+    - poff.ee
     - hoff.ee
     - tartuff.ee
     - oyafond.ee
 
 cassettes_festival_editions:
     poff.ee:
-        - 28
-        - 29
-        - 30
-        - 32
+        - 51
+        - 52
+        # - 28
+        # - 29
+        # - 30
+        # - 32
     justfilm.ee:
-        - 29
+        - 0
+        # - 29
     kinoff.poff.ee:
         - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
-        - 30
+        - 0
+        # - 30
     hoff.ee:
-        - 5
+        - 51
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 10
+        - 0
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -46,17 +50,19 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
-    - 28
-    - 29
-    - 30
-    - 32
+    - 51
+    # - 29
+    # - 30
+    # - 32
 
 programmes_festival_editions:
     poff.ee:
-        - 28
-        - 29
-        - 30
-        - 32
+        - 51
+        - 52
+        # - 28
+        # - 29
+        # - 30
+        # - 32
     justfilm.ee:
         - 29
     kinoff.poff.ee:
@@ -66,7 +72,7 @@ programmes_festival_editions:
     shorts.poff.ee:
         - 30
     hoff.ee:
-        - 5
+        - 51
     kumu.poff.ee:
         - 33
     tartuff.ee:
@@ -98,7 +104,7 @@ industry_eventival_badges_whitelist:
 
 skip_build_for_models:
     - industry-project
-    # - industry-event
+    - industry-event
     - industry-person
     - team
 #    - film
@@ -363,12 +369,19 @@ cassettesAndFilmsImageStillsPriority:
     - _big_16_9
     - _big
 
+cassettesAndFilmsDirectorPicturePriority:
+    - - _med_sq
+      - picture
+
+cassettesAndFilmsDirectorPicturePriorityDefaults:
+    - picture
+
 # Images priority block END
 
 # Image resize options according to prefix START
 
 libraryImageResizeOptions:
-    - F_: 
+    - F_:
         -   sufiks: _big_16_9
             width: 1920
             height: 1080
@@ -381,7 +394,7 @@ libraryImageResizeOptions:
             width: 640
             height: 360
             fit: cover
-    - R_: 
+    - R_:
         -   sufiks: _big_sq
             width: 900
             height: 900
@@ -433,7 +446,7 @@ libraryImageResizeOptions:
         -   sufiks: _thumb_sq
             width: 100
             height: 100
-            fit: cover 
+            fit: cover
 
 libraryImageThumbnailResizeOption:
     width: 245

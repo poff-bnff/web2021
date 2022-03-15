@@ -115,6 +115,9 @@
     "user_roles": {
       "collection": "user-role",
       "via": "users"
+    },
+    "moodle_id": {
+      "type": "uid"
     }
   }
 }
