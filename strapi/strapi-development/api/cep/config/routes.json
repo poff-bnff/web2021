@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/ceps",
+      "path": "/ceps/",
       "handler": "cep.create",
       "config": {
         "policies": []
@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
-    }
+    },
+    {
+      "method": "POST",
+      "path": "/ceps/i-event-related",
+      "handler": "cep.indusrtyEventRelated",
+      "config": {
+        "policies": []
+      }
+    },
   ]
 }
