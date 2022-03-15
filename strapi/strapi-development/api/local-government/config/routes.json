@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/local-governments",
+      "handler": "local-government.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/local-governments/count",
+      "handler": "local-government.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/local-governments/:id",
+      "handler": "local-government.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/local-governments",
+      "handler": "local-government.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/local-governments/:id",
+      "handler": "local-government.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/local-governments/:id",
+      "handler": "local-government.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

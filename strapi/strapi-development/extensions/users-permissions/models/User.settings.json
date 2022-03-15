@@ -118,6 +118,9 @@
     },
     "moodle_id": {
       "type": "uid"
+    },
+    "id_number_est": {
+      "type": "uid"
     }
   }
 }
