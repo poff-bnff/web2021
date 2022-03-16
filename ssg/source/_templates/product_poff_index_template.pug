@@ -37,7 +37,7 @@ block content
                 h4(id='productPrice')
                     //- +euro(self.priceAtPeriod[0].price)
             div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
-                button#buybutton.btn.btn-primary(onclick = 'GetPaymentLinks()' style='display: none;')= self.label.userprofile.pass
+                button#buybutton.btn.btn-primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.userprofile.pass
                 button#directToLoginButton.btn.btn-primary(onclick='directToLogin(), saveUrl()')= self.label.userprofile.passHelp
                 button#directToaddPicture.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profilePicHelp
                 button#directToFillProfile.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profileAddInfoHelp
