@@ -395,14 +395,29 @@ module.exports = {
     }
 
   },
-  async paymentMethods() {
-    console.log('Yes, methods here')
+  async paymentMethods(ctx) {
+    const catId = ctx?.params?.id;
 
-    const getMkConfig = async () => {
-      const mkId = process.env.MakseKeskusId
-      const mkKey = process.env.MakseKeskusSecret
-      const mkHost = process.env.MakseKeskusHost
+    const getMkConfig = async (catId) => {
 
+
+      const categoryInfo = await strapi.query('product-category').findOne({ 'id': catId });
+
+      console.log('Yes, methods here for ', categoryInfo?.business_profile?.name, categoryInfo?.business_profile?.reg_code)
+
+      let mkId
+      let mkKey
+      let mkHost
+      // Use only PÖFF currently
+      // if (categoryInfo?.business_profile?.reg_code === '80044767') {
+      mkId = process.env.MakseKeskusId
+      mkKey = process.env.MakseKeskusSecret
+      mkHost = process.env.MakseKeskusHost
+      // MTÜ BE
+      // } else if (categoryInfo?.business_profile?.reg_code === '80213483') {
+      // BMO OÜ
+      // } else if (categoryInfo?.business_profile?.reg_code === '12142069') {
+      // }
       return new Promise((resolve, reject) => {
         const options = {
           hostname: mkHost,
@@ -437,7 +452,7 @@ module.exports = {
     //     return _h.error([401, 'Unauthorized'])
     // }
 
-    const mkResponse = await getMkConfig()
+    const mkResponse = await getMkConfig(catId)
 
     return {
       banklinks: mkResponse.payment_methods.banklinks.map(m => {
@@ -484,12 +499,30 @@ module.exports = {
 
     const userEmail = user.email
     console.log(userEmail)
+
     const requestBody = JSON.parse(ctx.request.body)
 
     const postToMaksekeskus = async (postData) => {
-      const mkId = process.env.MakseKeskusId
-      const mkKey = process.env.MakseKeskusSecret
-      const mkHost = process.env.MakseKeskusHost
+      const productCatBP = JSON.parse(postData.transaction.merchant_data).productCatSeller
+      console.log('postToMaksekeskus product cat business profile id', productCatBP);
+
+      const businessProfile = await strapi.query('business-profile').findOne({ 'id': productCatBP });
+
+      console.log('postToMaksekeskus product cat business profile ', businessProfile?.name, businessProfile?.reg_code)
+
+      let mkId
+      let mkKey
+      let mkHost
+      // Use only PÖFF currently
+      // if (businessProfile?.reg_code === '80044767') {
+      mkId = process.env.MakseKeskusId
+      mkKey = process.env.MakseKeskusSecret
+      mkHost = process.env.MakseKeskusHost
+      // MTÜ BE
+      // } else if (businessProfile?.reg_code === '80213483') {
+      // BMO OÜ
+      // } else if (businessProfile?.reg_code === '12142069') {
+      // }
 
       return new Promise((resolve, reject) => {
         const options = {
@@ -525,7 +558,6 @@ module.exports = {
     const userId = id
     const userIp = ctx.headers['x-real-ip'] || ctx.headers['x-forwarded-for'] || ctx.request.ip
     const { categoryId, return_url, cancel_url, paymentMethodId } = requestBody;
-    console.log(categoryId)
     const body = requestBody
 
     // const return_url = event.queryStringParameters.return_url || event.headers.referer
@@ -556,6 +588,7 @@ module.exports = {
       owner_null: true,
       owner_null: true,
       product_category_null: false,
+      transactions_null: true,
       'product_category.codePrefix': categoryId,
       active: true,
     }
@@ -567,6 +600,7 @@ module.exports = {
     }
 
     let thisProductId = getOneProduct.id
+    let thisProductCatSeller = getOneProduct?.product_category?.business_profile
     let dateTimeNow = new Date()
     let productPrices = getOneProduct.product_category.priceAtPeriod.filter(p => {
       if (p.startDateTime && p.endDateTime && new Date(p.startDateTime) < dateTimeNow && new Date(p.endDateTime) > dateTimeNow) {
@@ -578,6 +612,7 @@ module.exports = {
     let thisProductCurrentPrice = productPrices[0].price
 
     console.log('id', thisProductId, typeof thisProductId)
+    console.log('thisProductCatSeller id', thisProductCatSeller, typeof thisProductCatSeller)
     console.log('price', thisProductCurrentPrice, 'valid: ', productPrices[0].startDateTime, ' - ', productPrices[0].endDateTime)
 
 
@@ -608,6 +643,8 @@ module.exports = {
           userId: userId,
           categoryId: categoryId,
           productId: thisProductId,
+          productCatSeller: thisProductCatSeller,
+          userBusinessProfiles: user?.business_profiles?.map(bp => bp.id),
           cancel_url: cancel_url,
           return_url: return_url
         }),
@@ -747,6 +784,8 @@ module.exports = {
           type: 'Purchase',
           transactor: product.userId,
           beneficiary: product.userId,
+          seller_business_profile: product.productCatSeller,
+          buyer_business_profile: (product.userBusinessProfiles && product.userBusinessProfiles.length) ? product.userBusinessProfiles[0] : null,
           currency: mkResponse.currency,
           amount: mkResponse.amount,
           transaction: mkResponse.transaction,
