@@ -116,13 +116,13 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
                 course.carouselStills = course.stills.map(a => `${a.hash}${a.ext}`)
             }
             if(course?.posters?.[0]) {
-                course.media.posters = course.posters.map(a => `${a.hash}${a.ext}`)
+                course.posters = course.posters.map(a => `${a.hash}${a.ext}`)
             }
             if(course?.trailer?.[0]) {
-                course.media.trailer = course.trailer
+                course.trailer = course.trailer
             }
             if(course?.QaClip?.[0]) {
-                course.media.QaClip = course.QaClip
+                course.QaClip = course.QaClip
             }
 
             // Rolepersons by role

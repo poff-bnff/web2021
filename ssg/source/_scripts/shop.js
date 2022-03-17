@@ -84,7 +84,7 @@ function Buy(productCode) {
     // console.log("ostad toote " + productCode + " ja maksad " + paymentType)
 }
 
-function GetPaymentLinks() {
+function GetPaymentLinks(id) {
     document.getElementById("buybutton").style.display = 'none'
     var links = document.getElementById("paymentLinks")
     var paybutton = document.getElementById("paybutton")
@@ -98,7 +98,7 @@ function GetPaymentLinks() {
         redirect: 'follow'
     }
 
-    fetch(`${strapiDomain}/users-permissions/users/paymentmethods`, requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users-permissions/users/paymentmethods/${id}`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

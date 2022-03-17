@@ -11,34 +11,47 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "business_id": {
-      "type": "string",
-      "unique": true
-    },
-    "city": {
-      "type": "string"
-    },
-    "state": {
-      "type": "string"
-    },
-    "country": {
-      "model": "country"
-    },
-    "postal_code": {
-      "type": "string"
-    },
-    "phone": {
-      "type": "string"
-    },
     "user": {
       "via": "business_profiles",
       "plugin": "users-permissions",
       "model": "user"
     },
-    "street_address": {
+    "organisation": {
+      "model": "organisation"
+    },
+    "name": {
+      "type": "string"
+    },
+    "reg_code": {
+      "type": "string"
+    },
+    "vat_code": {
+      "type": "string"
+    },
+    "iban": {
+      "type": "string"
+    },
+    "maksekeskus_id": {
+      "type": "string"
+    },
+    "maksekeskus_secret": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.address"
+    },
+    "phone_nr": {
+      "type": "string"
+    },
+    "vat_percentage": {
+      "type": "integer"
+    },
+    "bank_name": {
+      "type": "string"
+    },
+    "bank_code": {
       "type": "string"
     }
   }

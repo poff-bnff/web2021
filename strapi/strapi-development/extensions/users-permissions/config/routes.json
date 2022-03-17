@@ -341,7 +341,7 @@
     },
     {
       "method": "GET",
-      "path": "/users/paymentmethods",
+      "path": "/users/paymentmethods/:id",
       "handler": "User.paymentMethods",
       "config": {
         "policies": []

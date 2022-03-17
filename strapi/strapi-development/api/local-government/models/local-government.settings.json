@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "local_governments",
+  "info": {
+    "name": "LocalGovernment"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "county": {
+      "model": "county"
+    }
+  }
+}

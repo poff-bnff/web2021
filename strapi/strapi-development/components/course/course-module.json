@@ -1,0 +1,66 @@
+{
+  "collectionName": "components_course_course_modules",
+  "info": {
+    "name": "CourseModule",
+    "icon": "book-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title_private": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "contents_et": {
+      "type": "richtext"
+    },
+    "contents_en": {
+      "type": "richtext"
+    },
+    "contents_ru": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "from": {
+      "type": "datetime"
+    },
+    "until": {
+      "type": "datetime"
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "publish_et": {
+      "type": "boolean"
+    },
+    "publish_en": {
+      "type": "boolean"
+    },
+    "publish_ru": {
+      "type": "boolean"
+    }
+  }
+}

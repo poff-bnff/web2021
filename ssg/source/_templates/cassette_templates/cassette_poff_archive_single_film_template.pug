@@ -391,12 +391,12 @@ main.grid_film(id=self.id)
                         //- f_dir_box on nyyd container directorite boxidele
                         //- Iga Directori kohta nyyd täita see f_dir_bio_box.
                         if director.person
-                            if director.person.picture || director.person.biography || director.person.filmography
+                            if director.person.primaryImage || director.person.biography || director.person.filmography
                                 .f_dir_bio_box
 
                                     .dir_img
-                                        if director.person.picture
-                                            img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
+                                        if director.person.primaryImage
+                                            img.img_dir(src=`https://assets.poff.ee/img/${director.person.primaryImage}` alt = film.titles)
                                         //- if director.person.picture
                                         if director.person.firstName || director.person.lastName
                                             .str_info_grid_3
@@ -658,17 +658,16 @@ main.grid_film(id=self.id)
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            if film.media && film.media
-                - let med = film.media
-                if (med.trailer && med.trailer[0] && med.trailer[0].videoCode) || (med && med.QaClip && med.QaClip[0].url)
+            if film.trailer || film.QaClip
+                if film.trailer[0].videoCode || film.QaClip[0].videoCode
                     section#trailer.f_trailer_box
-                        if (med.trailer && med.trailer[0] && med.trailer[0].videoCode)
+                        if (film.trailer && film.trailer[0].videoCode)
                             .section_headline= self.label.film.trailer
-                            each trailer in med.trailer
+                            each trailer in film.trailer
                                 .ratio.ratio-16x9.m-0.p-0
                                     if trailer.videoCode
                                         +video(trailer.videoCode)
-                        if (med && med.QaClip && med.QaClip[0].url)
+                        if (film.QaClip && film.QaClip[0].url)
                             - var filterQa = med.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
                             if filterQa.length
                                 .section_headline= self.label.film.qaClip

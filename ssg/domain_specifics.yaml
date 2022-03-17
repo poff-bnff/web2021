@@ -21,6 +21,7 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     poff.ee:
         - 51
+        - 52
         # - 28
         # - 29
         # - 30
@@ -57,6 +58,7 @@ XML_festival_editions:
 programmes_festival_editions:
     poff.ee:
         - 51
+        - 52
         # - 28
         # - 29
         # - 30
@@ -102,7 +104,7 @@ industry_eventival_badges_whitelist:
 
 skip_build_for_models:
     - industry-project
-    # - industry-event
+    - industry-event
     - industry-person
     - team
 #    - film
@@ -366,6 +368,13 @@ cassettesAndFilmsListViewImagePriority:
 cassettesAndFilmsImageStillsPriority:
     - _big_16_9
     - _big
+
+cassettesAndFilmsDirectorPicturePriority:
+    - - _med_sq
+      - picture
+
+cassettesAndFilmsDirectorPicturePriorityDefaults:
+    - picture
 
 # Images priority block END
 
