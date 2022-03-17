@@ -1,5 +1,5 @@
 async function requester(method, func, requestParams) {
-  console.log('MoodleManager - request: ', method, func, requestParams);
+  // console.log('MoodleManager - request: ', method, func, requestParams);
   const token = process.env[`Moodle_${func}_key`]
 
   return new Promise(function (resolve, reject) {
@@ -52,9 +52,9 @@ async function createUser(email, firstName, lastName) {
     'users[0][username]': email,
     'users[0][email]': email,
     // 'users[0][password]': 'testusertester@testS1',
-    'users[0][firstname]': firstName,
-    'users[0][lastname]': lastName,
-    'users[0][createpassword]': 1,
+    'users[0][firstname]': `${firstName}`,
+    'users[0][lastname]': `${lastName}`,
+    'users[0][createpassword]': '1',
   }
   return await requester('POST', 'core_user_create_users', requestParams)
 }
@@ -62,10 +62,10 @@ async function createUser(email, firstName, lastName) {
 async function enrolUser(userId, courseId, roleId, unEnrol = false) {
   console.log('MoodleM: enrolUser user: ', userId, 'to course: ', courseId, 'with role: ', roleId);
   const requestParams = {
-    'enrolments[0][userid]': userId,
-    'enrolments[0][courseid]': courseId,
-    'enrolments[0][roleid]': roleId, // Roleid being users role in course (usually Student)
-    'enrolments[0][suspend]': unEnrol === false ? 0 : 1
+    'enrolments[0][userid]': `${userId}`,
+    'enrolments[0][courseid]': `${courseId}`,
+    'enrolments[0][roleid]': `${roleId}`, // Roleid being users role in course (usually Student (in our Moodle, ID 5))
+    'enrolments[0][suspend]': unEnrol === false ? '0' : '1'
   }
   return await requester('POST', 'enrol_manual_enrol_users', requestParams)
 }
