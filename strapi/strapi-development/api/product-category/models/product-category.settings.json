@@ -95,6 +95,11 @@
       "collection": "product-type",
       "via": "product_categories",
       "dominant": true
+    },
+    "courses": {
+      "collection": "course",
+      "via": "product_categories",
+      "dominant": true
     }
   }
 }

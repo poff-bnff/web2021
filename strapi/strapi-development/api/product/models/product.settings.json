@@ -50,15 +50,20 @@
       ]
     },
     "owner": {
-      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "my_products"
     },
     "valid_from": {
       "type": "datetime"
     },
     "valid_to": {
       "type": "datetime"
+    },
+    "industry_events": {
+      "collection": "industry-event",
+      "via": "products",
+      "dominant": true
     }
   }
 }

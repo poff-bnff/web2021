@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "title_private": {
@@ -92,10 +92,10 @@
     "industry_categories": {
       "collection": "industry-category"
     },
-    "isLiveEvent": {
+    "is_live_event": {
       "type": "boolean"
     },
-    "isPublicEvent": {
+    "is_public_event": {
       "type": "boolean"
     },
     "public": {
@@ -108,8 +108,41 @@
     "moodle_id": {
       "type": "uid"
     },
-    "product_categories": {
-      "collection": "product-category"
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "video_url": {
+      "type": "string"
+    },
+    "publish_et": {
+      "type": "boolean"
+    },
+    "publish_en": {
+      "type": "boolean"
+    },
+    "publish_ru": {
+      "type": "boolean"
     }
   }
 }

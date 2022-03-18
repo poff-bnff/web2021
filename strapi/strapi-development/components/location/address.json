@@ -51,6 +51,12 @@
     },
     "l_est_y": {
       "type": "biginteger"
+    },
+    "add_county": {
+      "type": "string"
+    },
+    "add_local_government": {
+      "type": "string"
     }
   }
 }

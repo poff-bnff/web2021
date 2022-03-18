@@ -112,6 +112,10 @@
     },
     "moodle_id": {
       "type": "uid"
+    },
+    "product_categories": {
+      "via": "courses",
+      "collection": "product-category"
     }
   }
 }
