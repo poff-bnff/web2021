@@ -38,7 +38,7 @@
       "required": false,
       "pluginOptions": {}
     },
-    "videoUrl": {
+    "video_url": {
       "type": "string"
     },
     "order": {
