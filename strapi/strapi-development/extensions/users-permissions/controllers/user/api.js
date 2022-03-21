@@ -806,10 +806,11 @@ module.exports = {
         // Update pass one last time
         const successOptions = {
           owner: product.userId,
-          transactions: [addTransaction]
+          transactions: [addTransaction],
         }
 
-        let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+        // let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+        let updateProductSuccess = await strapi.query('product').update({ 'id': item.id }, successOptions)
 
         const getUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': product.userId });
         if (getUserInfo) {
