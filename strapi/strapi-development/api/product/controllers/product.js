@@ -12,12 +12,13 @@ module.exports = {
       code_null: false,
       reserved_to_null: true,
       owner_null: true,
+      transactions_null: true,
       active: true,
-      _limit: -1
+      _limit: -1,
     }
 
     let availabilityCheck = await strapi.services.product.find(params)
-    
+
     if (availabilityCheck) {
       let dateTimeNow = new Date()
       let productCatIds = availabilityCheck.map(a => {
