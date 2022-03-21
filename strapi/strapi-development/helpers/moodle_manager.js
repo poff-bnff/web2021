@@ -60,7 +60,7 @@ async function createUser(email, firstName, lastName) {
 }
 
 async function enrolUser(userId, courseId, roleId, unEnrol = false) {
-  console.log('MoodleM: enrolUser user: ', userId, 'to course: ', courseId, 'with role: ', roleId);
+  console.log(`MoodleM: ${unEnrol ? 'unE' : 'e'}nrolUser user: `, userId, `${unEnrol ? 'from' : 'to'} course: `, courseId, 'with role: ', roleId);
   const requestParams = {
     'enrolments[0][userid]': `${userId}`,
     'enrolments[0][courseid]': `${courseId}`,
