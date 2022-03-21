@@ -235,8 +235,9 @@ module.exports = {
       }
 
       let updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
+      updatedProfile.user = sanitizeUser(updatedProfile.user)
 
-      console.log('updatedProfile', updatedProfile);
+      console.log('updatedProfile', updatedProfile.user.email);
       return updatedProfile
 
     }
@@ -304,8 +305,6 @@ module.exports = {
     }
 
     updateData.profileFilled = true
-    console.log('Body', ctx.request.body);
-    console.log('Files', ctx.request.files);
     let file = ctx.request.files['files.picture']
 
     if (file) {
