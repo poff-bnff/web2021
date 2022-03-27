@@ -103,11 +103,11 @@ block content
 
                             //- a(href=`/${lang_path}events/${event.slug}`)
 
-                            //- .container_frame_16_9
-                            //-         if event.images && event.images.length
-                            //-             img.container_contents_16_9(src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
-                            //-         else
-                            //-             img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
+                            .container_frame_16_9
+                                    if event.images && event.images.length
+                                        img.container_contents_16_9(src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                                    else
+                                        img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
 
                             a.card_film_title(href=`/${lang_path}events/${event.slug}`)
 
@@ -155,14 +155,28 @@ block content
                                 //- if event.project_type
                                 //-     p= `Type: ${event.project_type}`
 
-                                if event.event_mode
-                                    p.location.small_1= `Event mode: ${event.event_mode.name}`
+                                //- if event.event_mode
+                                //-     p.location.small_1= `Event mode: ${event.event_mode.name}`
 
                                 //- if event.videoUrl
                                 //-     p= `Video at: ${event.videoUrl}`
 
                                 //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
                                 //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+
+                                .card_film_info
+
+                                    if event.durationTime
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.duration
+                                            #programmes.str_info_value.dark_1.thin_300
+                                                +indEvDur(event.durationTime)
+
+                                    if event.event_mode
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventMode
+                                            #programmes.str_info_value.dark_1.thin_300= event.event_mode.name
+
 
 
 
