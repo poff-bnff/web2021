@@ -47,7 +47,7 @@ block content
 
             if self.data.industryevents
 
-                section.grid_events
+                section.grid_films
                     -
                         var sortFunction = function(a, b) {
                             return !a.startTime.localeCompare(b.timestamp)
@@ -101,62 +101,62 @@ block content
                             //-             span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
 
-                            a(href=`/${lang_path}events/${event.slug}`)
+                            //- a(href=`/${lang_path}events/${event.slug}`)
 
-                                .card_film_title
+                            a.card_film_title(href=`/${lang_path}events/${event.slug}`)
 
-                                    //- if event.images && event.images[0]
-                                    //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                                //- if event.images && event.images[0]
+                                //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
 
-                                    h3.event_title.padding_bottom_2= event.title
-                                        p(id= event.id+'nupp' style={color: 'red', display:'none'})
+                                h3.event_title.padding_bottom_2= event.title
+                                    p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
-                                    //- if event.location
-                                    //-     p.location= `@ ${event.location.name}`
+                                //- if event.location
+                                //-     p.location= `@ ${event.location.name}`
 
-                                    //- if event.industry_people
-                                    //-     each industry_person in event.industry_people
-                                    //-         if industry_person.profilePicAtInd
-                                    //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
+                                //- if event.industry_people
+                                //-     each industry_person in event.industry_people
+                                //-         if industry_person.profilePicAtInd
+                                //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
 
-                                    //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
+                                //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
 
-                                    //-         if industry_person.industry_person_types
-                                    //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
+                                //-         if industry_person.industry_person_types
+                                //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
 
-                                    //-         if industry_person.role_at_films
-                                    //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
+                                //-         if industry_person.role_at_films
+                                //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
 
-                                    //- if event.description
-                                    //-     p
-                                    //-         +format(event.description)
+                                //- if event.description
+                                //-     p
+                                //-         +format(event.description)
 
-                                    //- if event.industry_categories
-                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+                                //- if event.industry_categories
+                                //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
 
-                                    //- if event.startTime
-                                    //-     p Start time:
-                                    //-     p
-                                    //-         +screeningDate(event.startTime)
-                                    //-     p
-                                    //-         +screeningTime(event.startTime)
+                                //- if event.startTime
+                                //-     p Start time:
+                                //-     p
+                                //-         +screeningDate(event.startTime)
+                                //-     p
+                                //-         +screeningTime(event.startTime)
 
-                                    //- if event.durationTime
-                                    //-     p Duration:
-                                    //-     p
-                                    //-         +indEvDur(event.durationTime)
+                                //- if event.durationTime
+                                //-     p Duration:
+                                //-     p
+                                //-         +indEvDur(event.durationTime)
 
-                                    //- if event.project_type
-                                    //-     p= `Type: ${event.project_type}`
+                                //- if event.project_type
+                                //-     p= `Type: ${event.project_type}`
 
-                                    if event.event_mode
-                                        p.location.small_1= `Event mode: ${event.event_mode.name}`
+                                if event.event_mode
+                                    p.location.small_1= `Event mode: ${event.event_mode.name}`
 
-                                    //- if event.videoUrl
-                                    //-     p= `Video at: ${event.videoUrl}`
+                                //- if event.videoUrl
+                                //-     p= `Video at: ${event.videoUrl}`
 
-                                    //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
-                                    //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+                                //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
+                                //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
 
 
 
