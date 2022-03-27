@@ -166,6 +166,11 @@ block content
 
                                 .card_film_info
 
+                                    if event.industry_categories
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventCategories
+                                            #programmes.str_info_value.dark_1.thin_300= event.industry_categories.map(c => c.name).join(', ')
+
                                     if event.durationTime
                                         .str_info_grid_3
                                             .str_info_label.dark_semi= self.label.industry.duration
