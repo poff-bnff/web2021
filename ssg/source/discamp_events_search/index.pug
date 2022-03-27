@@ -103,12 +103,18 @@ block content
 
                             //- a(href=`/${lang_path}events/${event.slug}`)
 
+                            //- .container_frame_16_9
+                            //-         if event.images && event.images.length
+                            //-             img.container_contents_16_9(src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                            //-         else
+                            //-             img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
+
                             a.card_film_title(href=`/${lang_path}events/${event.slug}`)
 
                                 //- if event.images && event.images[0]
                                 //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
 
-                                h3.event_title.padding_bottom_2= event.title
+                                h3.film_title_locale.dark_1= event.title
                                     p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
                                 //- if event.location
