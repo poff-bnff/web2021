@@ -2556,7 +2556,7 @@ a.btn_popover
     display grid
     grid-template-columns 1fr
     grid-template-rows auto
-    align-content end
+    align-content start
     // width calc(100px + 60vw)
     min-width 300px
     max-width 1200px
@@ -2595,12 +2595,29 @@ a.btn_popover
     text-decoration none
 
 .card_film_title
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    align-content space-between
     padding-left 2rem
     padding-top 2rem
     padding-right 2rem
     padding-bottom: .5rem
     text-decoration none
-    align-self end
+    // align-self start
+    vertical-align top
+
+.card_event_title
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    align-content space-between
+    padding-left 2rem
+    padding-top 2rem
+    padding-right 2rem
+    padding-bottom: .5rem
+    text-decoration none
+    align-self start
     vertical-align top
 
 .card_film_info
