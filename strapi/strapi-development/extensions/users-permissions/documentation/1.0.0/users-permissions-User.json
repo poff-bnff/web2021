@@ -1726,6 +1726,12 @@
                 "valid_to": {
                   "type": "string"
                 },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1770,17 +1776,11 @@
                 "transactor": {
                   "type": "string"
                 },
-                "seller_business_profiles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "seller_business_profile": {
+                  "type": "string"
                 },
-                "buyer_business_profiles": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                "buyer_business_profile": {
+                  "type": "string"
                 },
                 "status": {
                   "type": "string"
@@ -1863,31 +1863,43 @@
                 "id": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "string"
-                },
-                "business_id": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "country": {
-                  "type": "string"
-                },
-                "postal_code": {
-                  "type": "string"
-                },
-                "phone": {
-                  "type": "string"
-                },
                 "user": {
                   "type": "string"
                 },
-                "street_address": {
+                "organisation": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "reg_code": {
+                  "type": "string"
+                },
+                "vat_code": {
+                  "type": "string"
+                },
+                "iban": {
+                  "type": "string"
+                },
+                "maksekeskus_id": {
+                  "type": "string"
+                },
+                "maksekeskus_secret": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "component"
+                },
+                "phone_nr": {
+                  "type": "string"
+                },
+                "vat_percentage": {
+                  "type": "integer"
+                },
+                "bank_name": {
+                  "type": "string"
+                },
+                "bank_code": {
                   "type": "string"
                 },
                 "created_by": {
@@ -2017,6 +2029,18 @@
                       "public": {
                         "type": "boolean"
                       },
+                      "posters": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "products": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2073,6 +2097,9 @@
             }
           },
           "moodle_id": {
+            "type": "uid"
+          },
+          "id_number_est": {
             "type": "uid"
           }
         }
@@ -2541,6 +2568,18 @@
                       "public": {
                         "type": "boolean"
                       },
+                      "posters": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "products": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2560,6 +2599,9 @@
             }
           },
           "moodle_id": {
+            "type": "uid"
+          },
+          "id_number_est": {
             "type": "uid"
           },
           "created_by": {

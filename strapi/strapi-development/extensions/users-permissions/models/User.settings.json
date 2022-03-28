@@ -92,12 +92,12 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "collection": "product",
-      "via": "owner"
+      "via": "owner",
+      "collection": "product"
     },
     "transactions": {
-      "collection": "transaction",
-      "via": "transactor"
+      "via": "transactor",
+      "collection": "transaction"
     },
     "user_profile": {
       "model": "user-profiles",
@@ -117,6 +117,9 @@
       "via": "users"
     },
     "moodle_id": {
+      "type": "uid"
+    },
+    "id_number_est": {
       "type": "uid"
     }
   }

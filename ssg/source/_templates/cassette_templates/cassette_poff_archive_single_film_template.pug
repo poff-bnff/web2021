@@ -402,6 +402,10 @@ main.grid_film(id=self.id)
                                             .str_info_grid_3
                                                 .str_info_label.text_left.dark_1= self.label.film.director
                                                 .str_info_value.text_right.dark_1= `${director.person.firstName ? director.person.firstName : ''} ${director.person.lastName ? director.person.lastName : ''}`
+                                        else
+                                            .str_info_grid_3
+                                                .str_info_label.text_left.dark_1= self.label.film.director
+                                                .str_info_value.text_right.dark_1= director.person.firstNameLastName
 
                                     .dir_bio.dark_1
                                         if director.person.biography && typeof director.person.biography !== 'object'

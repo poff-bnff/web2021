@@ -2181,6 +2181,12 @@ Imgs: &Imgs
     image_en: *StrapiMedia
     image_ru: *StrapiMedia
 
+ProductType: &ProductType
+    name: (text)
+    description: (text)
+    product_categories:
+        - ProductCategory
+
 ProductCategory: &ProductCategory
     _path: /product-categories
     namePrivate: (text)
@@ -2200,6 +2206,8 @@ ProductCategory: &ProductCategory
     slug_en: (UID)
     slug_ru: (UID)
     images: *Imgs
+    product_types:
+        - *ProductType
 
 OrderedProduct: &OrderedProduct
     order: (number)

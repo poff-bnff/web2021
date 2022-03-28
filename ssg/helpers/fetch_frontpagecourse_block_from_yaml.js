@@ -48,9 +48,12 @@ for (const lang of languages) {
                     let thisCourse = rueten(copyData[key][courseIx], lang)
                     let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
 
-                    if (thisCourse.media) {
-                        thisCourse.carouselStills = thisCourse.media?.stills.map(a => `${a.hash}${a.ext}`)
-                        thisCourse.posters = thisCourse.media?.posters.map(a => `${a.hash}${a.ext}`)
+                    if (thisCourse.carouselStills) {
+                        thisCourse.carouselStills = thisCourse?.stills.map(a => `${a.hash}${a.ext}`)
+                    }
+
+                    if (thisCourse.posters) {
+                        thisCourse.posters = thisCourse?.posters.map(a => `${a.hash}${a.ext}`)
                     }
 
                     if(thisCourse !== undefined) {

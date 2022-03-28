@@ -615,6 +615,9 @@
                 "moodle_id": {
                   "type": "uid"
                 },
+                "id_number_est": {
+                  "type": "uid"
+                },
                 "created_by": {
                   "type": "string"
                 },

@@ -1,0 +1,62 @@
+{
+  "collectionName": "components_location_addresses",
+  "info": {
+    "name": "Address",
+    "icon": "archway",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "country": {
+      "model": "country"
+    },
+    "county": {
+      "model": "county"
+    },
+    "local_government": {
+      "model": "local-government"
+    },
+    "settl_unit": {
+      "type": "string"
+    },
+    "address_unit": {
+      "type": "string"
+    },
+    "street_name": {
+      "type": "string"
+    },
+    "address_number": {
+      "type": "string"
+    },
+    "appartment": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "n_dms": {
+      "type": "string"
+    },
+    "e_dms": {
+      "type": "string"
+    },
+    "n": {
+      "type": "decimal"
+    },
+    "e": {
+      "type": "decimal"
+    },
+    "l_est_x": {
+      "type": "biginteger"
+    },
+    "l_est_y": {
+      "type": "biginteger"
+    },
+    "add_county": {
+      "type": "string"
+    },
+    "add_local_government": {
+      "type": "string"
+    }
+  }
+}
