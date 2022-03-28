@@ -28,6 +28,7 @@ ssg/token.json
 ssg/.env
 ssg/report.*
 ssg/helpers/sheets
+ssg/helpers/graphql
 
 
 # dev tools
