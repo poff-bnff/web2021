@@ -60,7 +60,7 @@ block content
                                 return itemNames
                             }
 
-                        .card_event(id=event.id)
+                        a.card_event(id=event.id href=`/${lang_path}events/${event.slug}`)
 
                             //- .event_card_header
                             //-     .grid_container_event_time
@@ -109,7 +109,7 @@ block content
                                     else
                                         img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
 
-                            a.card_film_title(href=`/${lang_path}events/${event.slug}`)
+                            .card_film_title
 
                                 //- if event.images && event.images[0]
                                 //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
