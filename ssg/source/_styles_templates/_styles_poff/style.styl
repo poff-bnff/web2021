@@ -673,10 +673,28 @@ footer
     font-size 1.2rem
 
 .profilePic
+    position absolute
     width 100%
-    padding 1rem
-    border-radius 57% 43% 57% 43%
+    height 100%
     object-fit cover
+    // padding 1rem
+    border-radius 57% 43% 57% 43%
+
+.square_img_container
+  position relative
+  padding 1rem
+
+.square_img_container::after
+  content ""
+  display block
+  padding-bottom 100%
+
+.square_img
+  position absolute
+  width 100%
+  height 100%
+  object-fit cover
+
 
 .pass_desc
     width 100%
