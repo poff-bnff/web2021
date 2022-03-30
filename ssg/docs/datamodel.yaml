@@ -1589,6 +1589,74 @@ IndustryMenu: &IndustryMenu
         - *IndustrySubMenuItem
     publish: (boolean)
 
+#CourseEvent
+
+CourseModule: &CourseModule
+    title_private: text
+    title_et: text
+    title_en: text
+    title_ru: text
+    contents_et: rich text
+    contents_en: rich text
+    contents_ru: rich text
+    images:
+        - *StrapiMedia
+    video_url: text
+    order: number
+    from: datetime
+    until: datetime
+    public: boolean
+    publish_et: boolean
+    publish_en: boolean
+    publish_ru: boolean
+
+CourseEvent: &CourseEvent
+    _path: /course-events
+    title_private: text
+    title_et: text
+    title_en: text
+    title_ru: text
+    slug_et: UID title_et
+    slug_en: UID title_en
+    slug_ru: UID title_ru
+    short_descr_et: text
+    short_descr_en: text
+    short_descr_ru: text
+    description_et: rich text
+    description_en: rich text
+    description_ru: rich text
+    start_time: datetime
+    duration_time: time
+    end_time: datetime
+    location: *Location
+    course_module:
+        -   *CourseModule
+    credentials:
+        -   *Credentials
+    festival_editions:
+        -   *FestivalEdition
+    domains:
+        -   *Domain
+    event_mode: *EventMode
+    trailer:
+        -   *Trailer
+    industry_categories: 
+        -   *IndustryCategory
+    is_live_event: boolean
+    is_public_event: boolean
+    public: boolean
+    preconditions: 
+        -   CourseEvent
+    moodle_id: UID
+    posters:
+        -   *StrapiMedia
+    images:
+        -   *StrapiMedia
+    video_url: text
+    publish_et: boolean
+    publish_en: boolean
+    publish_ru: boolean
+
 #DiscoveryCampus
 
 DisCampPersonType: &DisCampPersonType
