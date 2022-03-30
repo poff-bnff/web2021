@@ -705,7 +705,14 @@ function trailerProcessing(cassetteOrFilm) {
                     }
                 } else {
                     let splitYouTubeLink = trailer.url.split('=')[1]
-                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                    let splitForVideoCode
+                    if (splitYouTubeLink) {
+                        // Long youtube link
+                        splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                    } else {
+                        // Short youtube link
+                        splitForVideoCode = trailer.url.split('/')[3]
+                    }
                     if (splitForVideoCode.length === 11) {
                         trailer.videoCode = splitForVideoCode
                     }
