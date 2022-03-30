@@ -694,8 +694,8 @@ for (const lang of allLanguages) {
 }
 
 function trailerProcessing(cassetteOrFilm) {
-    if (cassetteOrFilm.media && cassetteOrFilm.media.trailer && cassetteOrFilm.media.trailer[0]) {
-        for (trailer of cassetteOrFilm.media.trailer) {
+    if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
+        for (trailer of cassetteOrFilm.trailer) {
             if (trailer.url && trailer.url.length > 10) {
                 if (trailer.url.includes('vimeo')) {
                     let splitVimeoLink = trailer.url.split('/')
