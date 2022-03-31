@@ -235,7 +235,7 @@ module.exports = {
       }
 
       let updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
-
+      updatedProfile.user = sanitizeUser(updatedProfile.user)
       console.log('updatedProfile', updatedProfile);
       return updatedProfile
 
