@@ -741,15 +741,19 @@ function trailerProcessing(cassetteOrFilm) {
                         trailer.videoCode = videoCode
                     }
                 } else {
-                    let splitYouTubeLink = trailer.url.split('=')[1]
+                    let splitYouTubeLink
                     let splitForVideoCode
-                    if (splitYouTubeLink) {
+
+                    if (trailer.url.includes('youtube.com')) {
                         // Long youtube link
+                        splitYouTubeLink = trailer.url.split('=')[1]
                         splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                    } else {
+                    } else if (trailer.url.includes('youtu.be')) {
                         // Short youtube link
-                        splitForVideoCode = trailer.url.split('/')[3]
+                        splitYouTubeLink = trailer.url.split('?')[0]
+                        splitForVideoCode = splitYouTubeLink.split('/')[3]
                     }
+
                     if (splitForVideoCode.length === 11) {
                         trailer.videoCode = splitForVideoCode
                     }
