@@ -134,17 +134,23 @@ block content
                                     each fe in film.festival_editions
                                         - filmsFestivalEditions.push(fe.name)
 
+                            if filmsFestivalEditions.length
+                                - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.festival
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
+
                             if filmsProgrammes.length
                                 - var uniqueProgrammes = [...new Set(filmsProgrammes)];
                                 .str_info_grid_3
                                     .str_info_label.dark_semi= self.label.film.programme
                                     #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
-                            if filmsFestivalEditions.length
-                                - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
-                                .str_info_grid_3
-                                    .str_info_label.dark_semi= self.label.film.festival
-                                    #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
+                            //- if filmsFestivalEditions.length
+                            //-     - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
+                            //-     .str_info_grid_3
+                            //-         .str_info_label.dark_semi= self.label.film.festival
+                            //-         #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
 
                             - var filmsDirectors = []
                             each film in cassette.films
