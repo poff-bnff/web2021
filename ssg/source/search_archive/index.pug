@@ -123,23 +123,35 @@ block content
 
                         if cassette.films && cassette.films.length
                             - var filmsProgrammes = []
+                            - var filmsFestivalEditions = []
                             each film in cassette.films
                                 if film.tags && film.tags.programmes && film.tags.programmes.length
                                     each programme in film.tags.programmes
                                         if programme.name
                                             - filmsProgrammes.push(programme.name)
                                             - allProgrammes.push(programme.name)
+                                if film.festival_editions && film.festival_editions.length
+                                    each fe in film.festival_editions
+                                        - filmsFestivalEditions.push(fe.name)
+
                             if filmsProgrammes.length
                                 - var uniqueProgrammes = [...new Set(filmsProgrammes)];
                                 .str_info_grid_3
                                     .str_info_label.dark_semi= self.label.film.programme
                                     #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
 
+                            if filmsFestivalEditions.length
+                                - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.festival
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
+
                             - var filmsDirectors = []
                             each film in cassette.films
                                 if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
                                     each director in film.credentials.rolePersonsByRole.director
                                         - filmsDirectors.push(director)
+
                             if filmsDirectors.length
                                 - var uniqueDirectors = [...new Set(filmsDirectors)];
                                 .str_info_grid_3
