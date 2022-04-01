@@ -109,11 +109,12 @@ block content
                             else if cassette.cassetteCarouselPicsFilmsThumbs && cassette.cassetteCarouselPicsFilmsThumbs[0]
                                 img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
                             else
-                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
+                                //- img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
+                                img.container_contents_16_9(src='/assets/img/static/history.svg' alt= cassette.title || cassette.title_et)
                         else if cassette.films && cassette.films.length === 1 && cassette.cassetteCarouselPicsFilmsThumbs
                             img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
                         else
-                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
+                            img.container_contents_16_9(src='/assets/img/static/history.svg' alt= cassette.title || cassette.title_et)
                     .card_film_title
                         h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
                         - oneCassette.push(cassette.title || cassette.title_et)
