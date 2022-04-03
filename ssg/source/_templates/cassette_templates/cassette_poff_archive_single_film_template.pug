@@ -43,7 +43,7 @@ main.grid_film(id=self.id)
                     svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         polyline(points='9 18 15 12 9 6')
                     span.sr-only Next
-                if film.media && film.media.trailer && film.media.trailer[0] && film.media.trailer[0].videoCode
+                if film && film.trailer && film.trailer[0] && film.trailer[0].videoCode
                     a.play_link(href='#trailer')
                         svg.svg_icon_play(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='2' fill='white' stroke-linecap='round' stroke-linejoin='round')
                             polygon(points='5 3 19 12 5 21 5 3')
@@ -663,7 +663,7 @@ main.grid_film(id=self.id)
             //-             +youtube(youtubeVideoCode[1])
 
             if film.trailer || film.QaClip
-                if film.trailer[0].videoCode || film.QaClip[0].videoCode
+                if (film.trailer && film.trailer[0].videoCode) || (film.QaClip && film.QaClip[0].videoCode)
                     section#trailer.f_trailer_box
                         if (film.trailer && film.trailer[0].videoCode)
                             .section_headline= self.label.film.trailer
@@ -672,7 +672,7 @@ main.grid_film(id=self.id)
                                     if trailer.videoCode
                                         +video(trailer.videoCode)
                         if (film.QaClip && film.QaClip[0].url)
-                            - var filterQa = med.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
+                            - var filterQa = film.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
                             if filterQa.length
                                 .section_headline= self.label.film.qaClip
                                     each qaclip in filterQa
