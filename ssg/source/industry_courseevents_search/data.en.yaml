@@ -1,5 +1,5 @@
 path: industry-courseevents-search
 data:
-    industryevents: /_fetchdir/industry_courseevents.en.yaml
-    filters: /_fetchdir/filters_industry_courseevents.en.yaml
-    search: /_fetchdir/search_industry_courseevents.en.yaml
+    industryevents: /_fetchdir/courseevents.en.yaml
+    filters: /_fetchdir/filters_courseevents.en.yaml
+    search: /_fetchdir/search_courseevents.en.yaml
