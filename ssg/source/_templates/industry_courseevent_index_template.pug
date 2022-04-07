@@ -73,24 +73,24 @@ block content
 
                 h1.film_title_detailed= self.title
 
-                if self.startTime && typeof self.startTime === 'string'
+                if self.start_time && typeof self.start_time === 'string'
 
                     .str_info_blokk_1
 
                         .str_info_grid_3
                             .str_info_label= self.label.industry.eventDate
                             .str_info_value
-                                +screeningDate(self.startTime)
+                                +screeningDate(self.start_time)
 
                         .str_info_grid_3
                             .str_info_label= self.label.industry.eventTimeEet
                             .str_info_value
-                                +screeningTimeEET(self.startTime)
+                                +screeningTimeEET(self.start_time)
 
                         .str_info_grid_3
                             .str_info_label= self.label.industry.eventTimeUser
                             .str_info_value
-                                +screeningTime(self.startTime)
+                                +screeningTime(self.start_time)
 
                         .str_info_grid_3
                             .str_info_label= self.label.industry.duration
@@ -123,9 +123,9 @@ block content
             section.f_synopsis_box
                 .str_info_meta_gi
                 .synopsis_gi
-                    if self.lead && typeof self.lead === 'string'
+                    if self.short_descr && typeof self.short_descr === 'string'
                         p.dark_1
-                            +format(self.lead)
+                            +format(self.short_descr)
 
                     if self.description && typeof self.description === 'string'
                         p.dark_1
