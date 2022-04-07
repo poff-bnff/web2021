@@ -1,0 +1,3 @@
+path: kursused-coursevents
+data:
+    courses: /_fetchdir/filmikool_courseevents.et.yaml
