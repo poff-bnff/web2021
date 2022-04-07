@@ -1631,8 +1631,7 @@ CourseEvent: &CourseEvent
     location: *Location
     course_module:
         -   *CourseModule
-    credentials:
-        -   *Credentials
+    credentials: *Credentials
     festival_editions:
         -   *FestivalEdition
     domains:
@@ -1640,12 +1639,12 @@ CourseEvent: &CourseEvent
     event_mode: *EventMode
     trailer:
         -   *Trailer
-    industry_categories: 
+    industry_categories:
         -   *IndustryCategory
     is_live_event: boolean
     is_public_event: boolean
     public: boolean
-    preconditions: 
+    preconditions:
         -   CourseEvent
     moodle_id: UID
     posters:
