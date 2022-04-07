@@ -12,7 +12,7 @@ const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const sourceDir = path.join(rootDir, 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
 let ACTIVE_FESTIVAL_EDITIONS
@@ -265,7 +265,7 @@ function generateAllDataYaml(allData, lang) {
     console.log(`${allData.length} ${DOMAIN} CourseEvents ready for building`);
 
     const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
-    const yamlPath = path.join(fetchDir, `${NAMEVARIABLE}_courseevents.${lang}.yaml`);
+    const yamlPath = path.join(fetchDir, `courseevents.${lang}.yaml`);
     fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 }
 
@@ -351,9 +351,9 @@ function searchAndFilters(dataToYAML, lang) {
     }
 
     let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `search_${NAMEVARIABLE}_courseevents.${lang}.yaml`), searchYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_courseevents.${lang}.yaml`), searchYAML, 'utf8')
     let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(path.join(fetchDir, `filters_${NAMEVARIABLE}_courseevents.${lang}.yaml`), filtersYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_courseevents.${lang}.yaml`), filtersYAML, 'utf8')
 
 }
 
