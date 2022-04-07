@@ -231,11 +231,11 @@ fetch_data()
     echo '==== custom build ==== fetch_discamp_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js
 
-    echo '==== custom build ==== fetch_industry_channels_from_yaml'
-    node ./helpers/fetch_channels_from_yaml.js
+    # echo '==== custom build ==== fetch_industry_channels_from_yaml'
+    # node ./helpers/fetch_channels_from_yaml.js
 
-    echo '==== custom build ==== fetch_industry_event_from_yaml'
-    node ./helpers/fetch_industry_event_from_yaml.js
+    # echo '==== custom build ==== fetch_industry_event_from_yaml'
+    # node ./helpers/fetch_industry_event_from_yaml.js
 
     echo '==== custom build ==== fetch_discamp_event_from_yaml'
     node ./helpers/fetch_industry_event_from_yaml.js
@@ -243,8 +243,11 @@ fetch_data()
     echo '==== custom build ==== fetch_eventival_persons_from_yaml.js'
     node ./helpers/fetch_eventival_persons_from_yaml.js
 
-    echo '==== custom build ==== fetch_courses_from_yaml.js'
-    node ./helpers/fetch_courses_from_yaml.js
+    # echo '==== custom build ==== fetch_courses_from_yaml.js'
+    # node ./helpers/fetch_courses_from_yaml.js
+
+    echo '==== custom build ==== fetch_courseevents_from_yaml'
+    node ./helpers/fetch_courseevents_from_yaml.js
 
     echo '==== custom build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js
