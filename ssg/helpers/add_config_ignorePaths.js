@@ -54,6 +54,8 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
+            '/discamp_events_search', //Discamp events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -84,6 +86,9 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
+            '/discamp_events_search', //Discamp events
+            '/courses', //old
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
@@ -116,6 +121,8 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
+            '/discamp_events_search', //Discamp events
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -140,6 +147,10 @@ function addConfigIgnorePaths() {
             '/industry_persons_archive_search', //Built by archive build
             '/discamp_events_search', //discamp
             '/discamp_persons_search', //discamp
+            '/industry_cal', //old
+            '/industry_events', //old
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
         ]
     } else if (DOMAIN === 'discoverycampus.poff.ee') {
         return [
@@ -163,6 +174,7 @@ function addConfigIgnorePaths() {
             '/industry_projects_archive_search', //Built by archive build
             '/industry_persons_archive_search', //Built by archive build
             '/industry_events_search', //industry
+            '/industry_courseevents_search', //Industry Events
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -192,6 +204,8 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
+            '/discamp_events_search', //Discamp events
         ]
     } else {
         return null
