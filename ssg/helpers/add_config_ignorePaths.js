@@ -55,6 +55,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
@@ -122,6 +123,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
@@ -175,6 +177,7 @@ function addConfigIgnorePaths() {
             '/industry_persons_archive_search', //Built by archive build
             '/industry_events_search', //industry
             '/industry_courseevents_search', //Industry Events
+            '/courses_courseevents', //Filmikool
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -205,6 +208,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
         ]
     } else {
