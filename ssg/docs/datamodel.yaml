@@ -1204,6 +1204,7 @@ Film: &Film
     foreignUrl: (text)
     multi_and_single: (boolean)
     vialog_id: (text)
+    chat_name: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
