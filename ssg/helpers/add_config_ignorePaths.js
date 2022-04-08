@@ -89,7 +89,6 @@ function addConfigIgnorePaths() {
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
             '/discamp_events_search', //Discamp events
-            '/courses', //old
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
