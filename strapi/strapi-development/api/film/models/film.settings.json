@@ -138,6 +138,9 @@
       "type": "component",
       "repeatable": true,
       "component": "media.qa-clip"
+    },
+    "chat_name": {
+      "type": "string"
     }
   }
 }

@@ -44,12 +44,6 @@
     "order": {
       "type": "integer"
     },
-    "from": {
-      "type": "datetime"
-    },
-    "until": {
-      "type": "datetime"
-    },
     "public": {
       "type": "boolean"
     },
@@ -61,6 +55,15 @@
     },
     "publish_ru": {
       "type": "boolean"
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "duration_time": {
+      "type": "time"
+    },
+    "end_time": {
+      "type": "datetime"
     }
   }
 }
