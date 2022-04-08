@@ -1637,6 +1637,8 @@ CourseEvent: &CourseEvent
     domains:
         -   *Domain
     event_mode: *EventMode
+    languages: #(Component (repeatable))
+        -   *Language
     trailer:
         -   *Trailer
     industry_categories:
