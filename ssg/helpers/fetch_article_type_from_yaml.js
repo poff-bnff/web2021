@@ -201,6 +201,10 @@ for (const lang of languages) {
                         if (element[key] === 'music-meets-film-1') {
                             element.aliases = ['about/music-meets-film']
                         }
+                        // 2022 adding votemo for HOFF
+                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo') {
+                            element.aliases = ['votemo']
+                        }
                     }
                 }
                 element.data = dataFrom;
