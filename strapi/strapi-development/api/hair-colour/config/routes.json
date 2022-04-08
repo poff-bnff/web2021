@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hair-colours",
+      "handler": "hair-colour.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hair-colours/count",
+      "handler": "hair-colour.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hair-colours/:id",
+      "handler": "hair-colour.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hair-colours",
+      "handler": "hair-colour.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hair-colours/:id",
+      "handler": "hair-colour.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hair-colours/:id",
+      "handler": "hair-colour.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "product_types",
   "info": {
-    "name": "ProductType"
+    "name": "ProductType",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "name": {
@@ -17,8 +18,8 @@
       "type": "richtext"
     },
     "product_categories": {
-      "via": "product_types",
-      "collection": "product-category"
+      "collection": "product-category",
+      "via": "product_types"
     }
   }
 }

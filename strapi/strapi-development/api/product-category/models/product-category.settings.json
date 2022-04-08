@@ -92,14 +92,18 @@
       "model": "business-profile"
     },
     "product_types": {
-      "collection": "product-type",
       "via": "product_categories",
+      "collection": "product-type",
       "dominant": true
     },
     "courses": {
       "collection": "course",
       "via": "product_categories",
       "dominant": true
+    },
+    "course_events": {
+      "via": "product_categories",
+      "collection": "course-event"
     }
   }
 }
