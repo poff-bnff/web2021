@@ -13,9 +13,6 @@
     "county": {
       "model": "county"
     },
-    "local_government": {
-      "model": "local-government"
-    },
     "settl_unit": {
       "type": "string"
     },
@@ -55,7 +52,10 @@
     "add_county": {
       "type": "string"
     },
-    "add_local_government": {
+    "populated_place": {
+      "model": "populated-place"
+    },
+    "add_p_place": {
       "type": "string"
     }
   }

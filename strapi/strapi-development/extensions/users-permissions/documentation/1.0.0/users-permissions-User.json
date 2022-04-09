@@ -1567,6 +1567,9 @@
                       "QaClip": {
                         "type": "component"
                       },
+                      "chat_w_name": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2324,6 +2327,9 @@
                       },
                       "QaClip": {
                         "type": "component"
+                      },
+                      "chat_w_name": {
+                        "type": "string"
                       },
                       "created_by": {
                         "type": "string"
