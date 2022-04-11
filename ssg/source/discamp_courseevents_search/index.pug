@@ -107,8 +107,8 @@ block content
                                     h3.film_title_locale.dark_1= event.title
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
-                                    if event.location
-                                        p.location= `@ ${event.location.name}`
+                                    //- if event.location
+                                    //-     p.location= `@ ${event.location.name}`
 
                                     //- if event.industry_people
                                     //-     each industry_person in event.industry_people
@@ -155,6 +155,11 @@ block content
                                     //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
 
                                     .card_film_info
+
+                                    if event.location
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.filters.location
+                                            #programmes.str_info_value.dark_1.thin_300= event.location.name
 
                                     if event.industry_categories
                                         .str_info_grid_3
