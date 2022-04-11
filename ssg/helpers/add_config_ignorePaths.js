@@ -57,6 +57,7 @@ function addConfigIgnorePaths() {
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -89,6 +90,7 @@ function addConfigIgnorePaths() {
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
             '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
@@ -124,6 +126,7 @@ function addConfigIgnorePaths() {
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -152,6 +155,7 @@ function addConfigIgnorePaths() {
             '/industry_events', //old
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'discoverycampus.poff.ee') {
         return [
@@ -209,6 +213,7 @@ function addConfigIgnorePaths() {
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else {
         return null
