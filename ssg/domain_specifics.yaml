@@ -110,6 +110,7 @@ skip_build_for_models:
     - film
     - cassette
     - programme
+    - screening
 
 article:
     poff.ee: POFFiArticle
