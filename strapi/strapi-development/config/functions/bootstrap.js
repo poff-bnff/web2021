@@ -16,7 +16,13 @@ const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 const path = require('path')
 
-
+const array = [];
+while (true) {
+  // This makes the array bigger on each iteration
+  array.push(new Array(10000000));
+  const memory = process.memoryUsage();
+  console.log((memory.heapUsed / 1024 / 1024 / 1024).toFixed(4), 'GB');
+}
 
 function writeToZone(file_name) {
 
