@@ -43,9 +43,9 @@ header
                     //- span.org_item
                     //-     a(href='https://kinoff.ee')
                     //-         | Kinoff
-                    //- span.org_item
-                    //-     a(href='https://poff.elisastage.ee')
-                    //-         | PÖFFi veebikino
+                    span.org_item
+                        a(href='https://poff.elisastage.ee')
+                            | PÖFFi veebikino
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
