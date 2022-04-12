@@ -109,6 +109,7 @@ skip_build_for_models:
     - team
     - film
     - cassette
+    - programme
 
 article:
     poff.ee: POFFiArticle
