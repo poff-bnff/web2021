@@ -134,14 +134,10 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
 
     for (const lang of allLanguages) {
         const courseEventCopy = { ...STRAPIDATA_COURSE }
-        processCourseEvent(courseEventCopy, lang, DOMAIN)
+        let allData = processEvents(courseEventCopy, lang)
+        generateAllDataYaml(allData, lang)
+        searchAndFilters(allData, lang)
     }
-}
-
-function processCourseEvent(courseEventCopy, lang, DOMAIN) {
-    let allData = processEvents(courseEventCopy, lang)
-    generateAllDataYaml(allData, lang)
-    searchAndFilters(allData, lang)
 }
 
 function processEvents(courseEventCopy, lang) {
@@ -344,10 +340,10 @@ function searchAndFilters(dataToYAML, lang) {
     });
 
     let sorted_filters = {
-        categories: mSort(filters.categories),
-        projects: mSort(filters.projects),
-        persons: mSort(filters.credentials),
-        starttimes: mSort(filters.starttimes),
+        categories: mSort(filters.categories, lang),
+        projects: mSort(filters.projects, lang),
+        persons: mSort(filters.credentials, lang),
+        starttimes: mSort(filters.starttimes, lang),
     }
 
     let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
@@ -357,7 +353,7 @@ function searchAndFilters(dataToYAML, lang) {
 
 }
 
-function mSort(to_sort) {
+function mSort(to_sort, lang) {
     let sortable = []
     for (var item in to_sort) {
         sortable.push([item, to_sort[item]]);
@@ -365,7 +361,7 @@ function mSort(to_sort) {
 
     sortable = sortable.sort(function (a, b) {
         try {
-            const locale_sort = a[1].localeCompare(b[1], 'en')
+            const locale_sort = a[1].localeCompare(b[1], lang)
             return locale_sort
         } catch (error) {
             console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
