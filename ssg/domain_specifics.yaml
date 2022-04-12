@@ -175,7 +175,9 @@ locales:
         - en
         - ru
     discoverycampus.poff.ee:
+        - et
         - en
+        - ru
 
 defaultLocale:
     poff.ee: et
