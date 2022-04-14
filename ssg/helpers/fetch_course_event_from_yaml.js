@@ -18,23 +18,33 @@ const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 let ACTIVE_FESTIVAL_EDITIONS
 let NAMEVARIABLE
 let FETCHDATADIR
+let FETCHDATADIRNAME
 if (DOMAIN === 'discoverycampus.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
     NAMEVARIABLE = 'discamp'
-    FETCHDATADIR = path.join(fetchDir, 'discampcourses')
+    FETCHDATADIRNAME = 'discampcourses'
+    FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
 } else if (DOMAIN === 'industry.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
     NAMEVARIABLE = 'industry'
-    FETCHDATADIR = path.join(fetchDir, 'industryevents')
+    FETCHDATADIRNAME = 'industryevents'
+    FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = null
     NAMEVARIABLE = 'filmikool'
-    FETCHDATADIR = path.join(fetchDir, 'filmikoolcourses')
+    FETCHDATADIRNAME = 'filmikoolcourses'
+    FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
 }
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params.slice(1)
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
+if (param_build_type === 'target') {
+    addConfigPathAliases([`/${NAMEVARIABLE}_courseevents_search`])
+}
 
 const currentTimeUTC = convert_to_UTC()
 
@@ -145,8 +155,9 @@ function processEvents(courseEventCopy, lang) {
 
     for (const ix in courseEventCopy) {
 
-        let element = courseEventCopy[ix];
-        element = rueten(element, lang);
+        let elementCopy = { ...courseEventCopy[ix] };
+        elementCopy.dirSlug = elementCopy.slug_en ? elementCopy.slug_en : null
+        element = rueten(elementCopy, lang);
 
         if (!element.start_time) {
             console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing start_time`);
@@ -166,17 +177,16 @@ function processEvents(courseEventCopy, lang) {
             continue
         }
 
-        if (element.slug) {
+        if (element.dirSlug) {
 
             if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
-                addConfigPathAliases([`/_fetchdir/${NAMEVARIABLE}courseevents/${element.slug}`])
+                addConfigPathAliases([`/_fetchdir/${FETCHDATADIRNAME}/${element.dirSlug}`])
             }
 
-            let dirSlug = element.slug
             if (DOMAIN === 'filmikool.poff.ee') {
-                element.path = `courses/${dirSlug}`
+                element.path = `courses/${element.dirSlug}`
             } else {
-                element.path = `events/${dirSlug}`
+                element.path = `events/${element.dirSlug}`
             }
 
             rolePersonsByRole(element)
@@ -218,10 +228,10 @@ function processEvents(courseEventCopy, lang) {
             } else if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
                 console.log('Targeting event ', element.id, target_id)
             }
-            generateEventYaml(element, dirSlug, lang);
+            generateEventYaml(element, element.dirSlug, lang);
 
         } else {
-            console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing slug`);
+            console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing slug_en`, element);
         }
     }
     return allData
