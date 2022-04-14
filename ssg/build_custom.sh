@@ -246,8 +246,8 @@ fetch_data()
     # echo '==== custom build ==== fetch_courses_from_yaml.js'
     # node ./helpers/fetch_courses_from_yaml.js
 
-    echo '==== custom build ==== fetch_courseevents_from_yaml'
-    node ./helpers/fetch_courseevents_from_yaml.js
+    echo '==== custom build ==== fetch_course_event_from_yaml'
+    node ./helpers/fetch_course_event_from_yaml.js
 
     echo '==== custom build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js
