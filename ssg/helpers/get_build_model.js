@@ -69,6 +69,7 @@ function model(arg) {
 		'cinema': 'full',
 		'country': 'full',
 		'course': 'full',
+		'course-event': 'course_event',
 		// 'domain': 'full',
 		'event': 'full',
 		'festival': 'full',
