@@ -1,0 +1,40 @@
+//- Kasseti chat kui sel on chat_w_name väärtus
+if self.chat_w_name
+    - console.log('LAMBDAAA')
+    script.
+        var votemoConfig = {
+            url: `https://#{self.chat_w_name}.votemo.eu`,
+            openInDesktop: false
+        }
+
+    script(src='https://cdn.votemo.eu/dist/widget.js')
+
+//- Kasseti chat millel pole chat_w_name väärtust (self.orderedFilms pelgalt selleks, et saaks aru, et tegu kassetiga)
+else if self.orderedFilms
+    script.
+        var votemoConfig = {
+            url: `https://ilmaChatitaFilm.votemo.eu`,
+            openInDesktop: false
+        }
+
+    script(src='https://cdn.votemo.eu/dist/widget.js')
+
+//- Ainult avalehe chat (self.data.heroArticle pelgalt selleks, et saaks aru, et tegu avalehega)
+else if self.data.heroArticle
+    script.
+        var votemoConfig = {
+            url: `https://avaleheChat.votemo.eu`,
+            openInDesktop: false
+        }
+
+    script(src='https://cdn.votemo.eu/dist/widget.js')
+
+//- Kui ülemised ükski pole true, ehk default chat
+else
+    script.
+        var votemoConfig = {
+            url: `https://defaultChat.votemo.eu`,
+            openInDesktop: false
+        }
+
+    script(src='https://cdn.votemo.eu/dist/widget.js')
