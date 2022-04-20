@@ -92,29 +92,29 @@ html(lang= self.locale)
         // (onload='reloadImageOnError()')
         body
 
-            //- Messenger Chat Plugin Code
-            #fb-root
-            //- Your Chat Plugin code
-            #fb-customer-chat.fb-customerchat
-            script.
-                var chatbox = document.getElementById('fb-customer-chat');
-                chatbox.setAttribute("page_id", "330472107456");
-                chatbox.setAttribute("attribution", "biz_inbox");
-                // Your SDK code
-            script.
-                window.fbAsyncInit = function() {
-                FB.init({
-                xfbml            : true,
-                version          : 'v13.0'
-                });
-                };
-                (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js';
-                fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
+            //- //- Messenger Chat Plugin Code
+            //- #fb-root
+            //- //- Your Chat Plugin code
+            //- #fb-customer-chat.fb-customerchat
+            //- script.
+            //-     var chatbox = document.getElementById('fb-customer-chat');
+            //-     chatbox.setAttribute("page_id", "330472107456");
+            //-     chatbox.setAttribute("attribution", "biz_inbox");
+            //-     // Your SDK code
+            //- script.
+            //-     window.fbAsyncInit = function() {
+            //-     FB.init({
+            //-     xfbml            : true,
+            //-     version          : 'v13.0'
+            //-     });
+            //-     };
+            //-     (function(d, s, id) {
+            //-     var js, fjs = d.getElementsByTagName(s)[0];
+            //-     if (d.getElementById(id)) return;
+            //-     js = d.createElement(s); js.id = id;
+            //-     js.src = 'https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js';
+            //-     fjs.parentNode.insertBefore(js, fjs);
+            //-     }(document, 'script', 'facebook-jssdk'));
 
             include ../_templates/header_hoff.pug
             block content
