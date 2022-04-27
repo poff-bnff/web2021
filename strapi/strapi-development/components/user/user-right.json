@@ -2,30 +2,22 @@
   "collectionName": "components_user_user_rights",
   "info": {
     "name": "UserRight",
-    "icon": "angry"
+    "icon": "angry",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string"
     },
-    "function": {
-      "model": "function"
+    "functions": {
+      "collection": "function"
     },
-    "read": {
-      "type": "boolean"
+    "smart_folders": {
+      "collection": "smart-folder"
     },
-    "write": {
-      "type": "boolean"
-    },
-    "execute": {
-      "type": "boolean"
-    },
-    "valid_from": {
-      "type": "datetime"
-    },
-    "valid_to": {
-      "type": "datetime"
+    "dumb_folders": {
+      "collection": "dumb-folder"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "functions",
+  "collectionName": "smart_folders",
   "info": {
-    "name": "UserFunction",
+    "name": "SmartFolder",
     "description": ""
   },
   "options": {
@@ -17,10 +17,13 @@
     "description": {
       "type": "text"
     },
-    "function_parameters": {
+    "pattern_collections": {
+      "collection": "pattern-collections"
+    },
+    "conditions": {
       "type": "component",
       "repeatable": true,
-      "component": "user.function-parameters"
+      "component": "user.function-conditions"
     }
   }
 }

@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_user_function_conditions",
+  "collectionName": "components_user_function_parameters",
   "info": {
-    "name": "Conditions",
-    "icon": "indent",
-    "description": ""
+    "name": "FunctionParameters",
+    "icon": "hotel"
   },
   "options": {},
   "attributes": {
