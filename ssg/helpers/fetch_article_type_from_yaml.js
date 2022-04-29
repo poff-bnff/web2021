@@ -206,6 +206,11 @@ for (const lang of languages) {
                             let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         }
+                        // 2022 adding elakaasa for HOFF
+                        if (DOMAIN === 'hoff.ee' && element[key] === 'elakaasa') {
+                            let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${votemoAliasLangPrefix}votemo`]
+                        }
                     }
                 }
                 element.data = dataFrom;
