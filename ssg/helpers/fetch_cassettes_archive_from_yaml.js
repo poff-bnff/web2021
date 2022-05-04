@@ -44,7 +44,7 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 // }
 addConfigPathAliases(['/search_archive'])
 
-const DOMAIN = process.env['DOMAIN'] || 'shorts.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const festival_editions_to_exclude = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 const festival_editions = STRAPIDATA_FESTIVAL_EDITIONS.map(fe => fe.id).filter(fe => !festival_editions_to_exclude.includes(fe))
 
@@ -537,6 +537,14 @@ for (const lang of allLanguages) {
                     }
                     if (typeof filmSlugEn !== 'undefined') {
                         scc_film.dirSlug = filmSlugEn
+                    }
+
+                    // Film festival_editions - leave only ones associated with domain being built
+
+                    if (scc_film.id === 3163) {
+                        console.log(scc_film.festival_editions);
+                        scc_film.festival_editions = scc_film.festival_editions.filter(f => f[`name_${lang}`])
+                        console.log(scc_film.festival_editions);
                     }
 
                     scc_film.media = {}
