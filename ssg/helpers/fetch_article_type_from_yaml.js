@@ -204,6 +204,7 @@ for (const lang of languages) {
                         // 2022 Ukraina programmi alias
                         if (element[key] === 'auukrainale') {
                             element.aliases = ['auukrainale', 'ukraina','au-ukrainale']
+                        }
                         // 2022 adding votemo for HOFF
                         if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
