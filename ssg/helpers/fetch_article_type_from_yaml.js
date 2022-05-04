@@ -211,6 +211,11 @@ for (const lang of languages) {
                             let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         }
+                        // 2022 mai Ukraina programm
+                        if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
+                            let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${votemoAliasLangPrefix}auukrainale`]
+                        }
                     }
                 }
                 element.data = dataFrom;
