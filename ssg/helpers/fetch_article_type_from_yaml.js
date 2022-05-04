@@ -202,7 +202,7 @@ for (const lang of languages) {
                             element.aliases = ['about/music-meets-film']
                         }
                         // 2022 adding votemo for HOFF
-                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo') {
+                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemoo') {
                             let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         }
