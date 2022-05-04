@@ -540,12 +540,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Film festival_editions - leave only ones associated with domain being built
-
-                    if (scc_film.id === 3163) {
-                        console.log(scc_film.festival_editions);
-                        scc_film.festival_editions = scc_film.festival_editions.filter(f => f[`name_${lang}`])
-                        console.log(scc_film.festival_editions);
-                    }
+                    scc_film.festival_editions = scc_film.festival_editions.filter(f => f[`name_${lang}`])
 
                     scc_film.media = {}
                     // Construct film media
