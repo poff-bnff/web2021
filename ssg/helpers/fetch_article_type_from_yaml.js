@@ -219,12 +219,12 @@ for (const lang of languages) {
                         // 2022 mai Ukraina programm
                         if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
                             let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${auukrainaleAliasLangPrefix}auukrainale`]
+                            element.aliases = [`${auukrainaleAliasLangPrefix}au-ukrainale`]
                         }
                         // 2022 mai Ukraina programm
                         if (DOMAIN === 'poff.ee' && element[key] === 'ukraina') {
                             let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${auukrainaleAliasLangPrefix}ukraina`]
+                            element.aliases = [`${auukrainaleAliasLangPrefix}au-ukrainale`]
                         }
                     }
                 }
