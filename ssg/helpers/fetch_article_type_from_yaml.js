@@ -17,10 +17,11 @@ const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params[1]
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const sourceDir = path.join(rootDir, 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
+const fetchDirRestricted = path.join(sourceDir, '_fetchdirRestricted')
 const strapiDataPath = path.join(sourceDir, '_domainStrapidata')
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
@@ -28,6 +29,7 @@ const strapiDataArticlesPath = path.join(strapiDataPath, `${modelName}.yaml`)
 const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const DEFAULTTEMPLATENAME = 'news'
+const RESTRICTEDTEMPLATENAME = 'news_restricted'
 
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
@@ -170,8 +172,15 @@ for (const lang of languages) {
         if (element.article_types) {
 
             for (artType of element.article_types) {
+                element.articleTypeSlug = artType.slug
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)
+                fs.mkdirSync(element.directory, { recursive: true });
+
+                element.directoryRestricted = path.join(fetchDirRestricted, artType.name, slugEn)
+                if (!element.public) {
+                    fs.mkdirSync(element.directoryRestricted, { recursive: true });
+                }
 
                 // Article view get priority picture format
                 const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
@@ -180,8 +189,6 @@ for (const lang of languages) {
                 delete element.media
 
                 let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
-
-                fs.mkdirSync(element.directory, { recursive: true });
 
                 for (key in element) {
 
@@ -211,6 +218,7 @@ for (const lang of languages) {
                 element.data = dataFrom;
 
                 let article_template = `/_templates/article_${artType.name}_index_template.pug`
+                let article_template_restricted = `/_templates/article_${artType.name}_restricted_index_template.pug`
 
                 let industryArtTypeNames = ['news', 'about', 'virtual_booth']
                 let artTypeName = ''
@@ -220,12 +228,19 @@ for (const lang of languages) {
 
                 if (DOMAIN === 'industry.poff.ee' && artTypeName.length > 1) {
                     article_template = `/_templates/article_industry_${artType.name}_index_template.pug`
+                    article_template_restricted = `/_templates/article_industry_${artType.name}_restricted_index_template.pug`
                 }
 
                 // If target build, delete old single article data
-                if (param_build_type === 'target' && fs.existsSync(`${element.directory}/data.${lang}.yaml`)) {
-                    console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
-                    fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
+                if (param_build_type === 'target') {
+                    if (fs.existsSync(`${element.directory}/data.${lang}.yaml`)) {
+                        console.log('Deleting old target article data ', `${element.directory}/data.${lang}.yaml`);
+                        fs.unlinkSync(`${element.directory}/data.${lang}.yaml`);
+                    }
+                    if (element.directoryRestricted && fs.existsSync(`${element.directoryRestricted}/data.${lang}.yaml`)) {
+                        console.log('Deleting old target article restricted data ', `${element.directoryRestricted}/data.${lang}.yaml`);
+                        fs.unlinkSync(`${element.directoryRestricted}/data.${lang}.yaml`);
+                    }
                 }
 
                 let yamlStr = yaml.dump(element, { 'indent': '4' });
@@ -240,6 +255,23 @@ for (const lang of languages) {
                 } else {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include /_templates/article_${DEFAULTTEMPLATENAME}_index_template.pug`)
                 }
+
+                if (!element.public) {
+                    element.path = path.join('..', 'restrictedcontent', DOMAIN_SPECIFICS.domain[DOMAIN], element.path)
+                    let yamlStr = yaml.dump(element, { 'indent': '4' });
+
+                    fs.writeFileSync(`${element.directoryRestricted}/data.${lang}.yaml`, yamlStr, 'utf8');
+
+                    if (fs.existsSync(`${sourceDir}${article_template_restricted}`)) {
+                        fs.writeFileSync(`${element.directoryRestricted}/index.pug`, `include ${article_template_restricted}`)
+                        if (param_build_type === 'target') {
+                            addConfigPathAliases([buildPath])
+                        }
+                    } else {
+                        fs.writeFileSync(`${element.directoryRestricted}/index.pug`, `include /_templates/article_${RESTRICTEDTEMPLATENAME}_index_template.pug`)
+                    }
+                }
+
             }
         } else {
             console.log(`ERROR! Article ID ${element.id} missing article_type`);
