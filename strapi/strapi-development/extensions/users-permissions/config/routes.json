@@ -445,6 +445,14 @@
         "prefix": "",
         "description": "Import users"
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/rolecheck",
+      "handler": "User.roleController",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
