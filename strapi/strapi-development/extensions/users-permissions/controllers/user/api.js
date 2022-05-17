@@ -8,7 +8,7 @@ const fs = require('fs')
 const yaml = require('js-yaml');
 
 const helper_path = path.join(__dirname, '..', '..', '..', '..', '/helpers/lifecycle_manager.js')
-const restricted_content_path = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ssg', 'build', 'restrictedcontent')
+const build_path = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ssg', 'build')
 const DOMAIN_SPECIFICS_PATH = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ssg', 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(DOMAIN_SPECIFICS_PATH, 'utf8'))
 
@@ -941,7 +941,7 @@ module.exports = {
     // Return content if allowed
     if (allowedContent) {
       console.log(`Content ${cType} ${cId} for user ${id} ALLOWED!`);
-      const contentData = fs.readFileSync(path.join(restricted_content_path, DOMAIN_SPECIFICS.domain[cDomain], cLang, cSubType, cSlug, 'index.html'), 'utf8');
+      const contentData = fs.readFileSync(path.join(build_path, DOMAIN_SPECIFICS.domain[cDomain], cLang, 'restrictedcontent', cSubType, cSlug, 'index.html'), 'utf8');
       return { code: 200, case: 'allowed', data: contentData }
     } else {
       console.log(`Content ${cType} ${cId} for user ${id} DENIED!`);
