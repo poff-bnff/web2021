@@ -4,7 +4,13 @@ const _ = require('lodash');
 const https = require('https')
 const mime = require('mime');
 const path = require('path')
-let helper_path = path.join(__dirname, '..', '..', '..', '..', '/helpers/lifecycle_manager.js')
+const fs = require('fs')
+const yaml = require('js-yaml');
+
+const helper_path = path.join(__dirname, '..', '..', '..', '..', '/helpers/lifecycle_manager.js')
+const restricted_content_path = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ssg', 'build', 'restrictedcontent')
+const DOMAIN_SPECIFICS_PATH = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ssg', 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(DOMAIN_SPECIFICS_PATH, 'utf8'))
 
 const {
   slugify
@@ -868,6 +874,107 @@ module.exports = {
           return
         }
       }
+    }
+  },
+  async roleController(ctx) {
+    const { id } = ctx.state.user;
+    const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
+    console.log(' cType, cId, cLang, cSubType, cDomain ', cType, cId, cLang, cSubType, cDomain );
+    // const { email, username, password } = ctx.request.body;
+    // strapi.query('user', 'users-permissions').update({ 'id': result.id }, { moodle_id: userMoodleId });
+    // const user = await strapi.query('user', 'users-permissions').findOne({ 'id': id }, ['user_roles', 'user_roles.user_right', 'user_roles.user_right.smart_folders']);
+
+    // User details
+    const user = await strapi.plugins['users-permissions'].services.user.fetch({
+      id,
+    });
+
+    // All smart folders as per user_roles being too deep. Plus sanitize.
+    const rawSmartFolders = await strapi.services['smart-folder'].find({ _limit: -1 });
+    const smartFolders = sanitizeEntity(rawSmartFolders, { model: strapi.query('smart-folder').model });
+
+    let timeNow = new Date()
+    let rightConditions
+    if (user?.user_roles) {
+      // Filter out roles which have rights and are still valid and have smart_folders and match pattern, etc.
+      let currentRights = user.user_roles
+        .filter(r => r.user_right && new Date(r.valid_from) <= timeNow && timeNow <= new Date(r.valid_to))
+        .map(r => r.user_right)
+        .flat()
+        .filter(r => r.smart_folders.length)
+        .map(r => r.smart_folders.map(a => a = smartFolders.filter(b => b.id === a.id)[0]))
+        .flat()
+        .map(r => {
+          r.pattern_collections = r.pattern_collections.map(a => a.pattern)
+          return r
+        })
+      // Assign the conditions
+      rightConditions = currentRights.filter(r => r.pattern_collections.includes(cType)).map(r => r = r.conditions)
+
+      // console.log('rightConditions', JSON.stringify(rightConditions, null, 4));
+    }
+
+    // Get content info and sanitize
+    const rawContent = await strapi.services[cType].findOne({ 'id': cId });
+    const content = sanitizeEntity(rawContent, { model: strapi.query(cType).model });
+
+    // Pass conditions and values to function that checks the matching
+    // If at least one role has all conditions matching, allow user to view the content
+    let allowedContent
+    for (let i = 0; i < rightConditions.length; i++) {
+      const element = rightConditions[i];
+      let conditionsResults = []
+      element.map(r => conditionsResults.push(conditionsCheck(content, r.property, r.value)))
+      if (!conditionsResults.includes(false) && conditionsResults.includes(true)) {
+        allowedContent = true
+        break
+      }
+    }
+
+    let cSlug
+    if(cLang === '') {
+      cSlug = content.slug_et
+    } else {
+      cSlug = content[`slug_${cLang.replace('/', '')}`]
+    }
+
+    // Return content if allowed
+    if (allowedContent) {
+      console.log(`Content ${cType} ${cId} for user ${id} ALLOWED!`);
+      const contentData = fs.readFileSync(path.join(restricted_content_path, DOMAIN_SPECIFICS.domain[cDomain], cLang, cSubType, cSlug, 'index.html'), 'utf8');
+      return { code: 200, case: 'allowed', data: contentData }
+    } else {
+      console.log(`Content ${cType} ${cId} for user ${id} DENIED!`);
+      return { code: 200, case: 'denied' }
+    }
+
+    // Checks condition values to match content values to determine right to view the content
+    // Returns true/false
+    function conditionsCheck(content, condition, conditionValue) {
+      let contentCopy = { ...content }
+      // If content condition value is String "true"/"false", convert to boolean value
+      if (conditionValue === 'true' || conditionValue === 'false') {
+        conditionValue = conditionValue === 'true' ? true : false
+      }
+
+      // If condition is deeper (ex article_types.name)
+      if (condition.includes('.')) {
+        condition = condition.split('.')
+        for (let i = 0; i < condition.length; i++) {
+          // If array, check if at least one array condition matches value
+          if (typeof contentCopy[condition[i]] === 'object' && Array.isArray(contentCopy[condition[i]])) {
+            contentCopy = contentCopy[condition[i]].map(r => r[condition[i + 1]]).includes(conditionValue);
+            break
+          } else if (i === (condition.length - 1)) {
+            contentCopy = contentCopy[condition[i]] === conditionValue;
+          } else {
+            contentCopy = contentCopy[condition[i]];
+          }
+        }
+      } else {
+        contentCopy = contentCopy[condition] === conditionValue
+      }
+      return contentCopy
     }
   }
 };
