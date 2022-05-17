@@ -282,7 +282,7 @@ for (const lang of languages) {
                 if (!element.public) {
                     // element.path = path.join('..', 'restrictedcontent', DOMAIN_SPECIFICS.domain[DOMAIN], lang === defaultLocale ? '' : lang, element.path)
 
-                    element.path = path.join('restrictedcontent', artType.slug, element[key])
+                    element.path = path.join('restrictedcontent', element.path)
                     let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                     fs.writeFileSync(`${element.directoryRestricted}/data.${lang}.yaml`, yamlStr, 'utf8');
