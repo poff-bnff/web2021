@@ -32,6 +32,7 @@ const DEFAULTTEMPLATENAME = 'news'
 const RESTRICTEDTEMPLATENAME = 'news_restricted'
 
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
+const defaultLocale = DOMAIN_SPECIFICS.defaultLocale[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
@@ -279,7 +280,7 @@ for (const lang of languages) {
                 }
 
                 if (!element.public) {
-                    element.path = path.join('..', 'restrictedcontent', DOMAIN_SPECIFICS.domain[DOMAIN], element.path)
+                    element.path = path.join('..', 'restrictedcontent', DOMAIN_SPECIFICS.domain[DOMAIN], lang === defaultLocale ? '' : lang, element.path)
                     let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                     fs.writeFileSync(`${element.directoryRestricted}/data.${lang}.yaml`, yamlStr, 'utf8');
