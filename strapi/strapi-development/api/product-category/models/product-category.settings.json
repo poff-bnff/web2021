@@ -91,11 +91,6 @@
     "business_profile": {
       "model": "business-profile"
     },
-    "product_types": {
-      "collection": "product-type",
-      "via": "product_categories",
-      "dominant": true
-    },
     "courses": {
       "collection": "course",
       "via": "product_categories",
