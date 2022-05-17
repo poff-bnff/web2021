@@ -74,15 +74,27 @@ block content
                                         if tagsList.length > 0
                                             .str_info_meta_keywords.ghost_blue= tagsList.join(', ')
 
-
-                        section.article_contents.dark_1
-                            if typeof(self.lead) !== 'object'
-                                +format(self.lead).font_weight_600.dark_1
-                            //- if self.lead
-                            //-     p.font_weight_600.dark_1= self.lead
-                            //- p= self.articleContents_et
-                            if typeof(self.contents) !== 'object'
-                                +format(self.contents).dark_1
+                        //- Stiil "restrictedcontent" märgib ära HTML elemendi mille sisu tahame lubava õiguse korral täita sisuga
+                        section.article_contents.dark_1.restrictedcontent
+                            //- Kui pole avalik, salvestame artikli juurde vajalikud andmed
+                            if !self.public
+                                - var pathEscaped = escape(self.path)
+                                script.
+                                    var cType = "pof-fi-article"
+                                    var cId = #{self.id}
+                                    var cSubType = "#{self.articleTypeSlug}"
+                                    var cLang = langpath
+                                    var cDomain = "#{process.env['DOMAIN']}"
+                                +format('Palun logi sisse').font_weight_600.dark_1
+                            //- Kui on avalik, siis kõik tavapärane ja kuvame leadi ning sisu
+                            else
+                                if typeof(self.lead) !== 'object'
+                                    +format(self.lead).font_weight_600.dark_1
+                                //- if self.lead
+                                //-     p.font_weight_600.dark_1= self.lead
+                                //- p= self.articleContents_et
+                                if typeof(self.contents) !== 'object'
+                                    +format(self.contents).dark_1
 
 
                         section.article_extra
