@@ -188,8 +188,6 @@ for (const lang of languages) {
                 // Delete excess media
                 delete element.media
 
-                let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
-
                 for (key in element) {
 
                     if (key === "slug") {
@@ -270,7 +268,7 @@ for (const lang of languages) {
                 let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                 fs.writeFileSync(`${element.directory}/data.${lang}.yaml`, yamlStr, 'utf8');
-
+                let buildPath = `/_fetchdir/${artType.name}/${slugEn}`
                 if (fs.existsSync(`${sourceDir}${article_template}`)) {
                     fs.writeFileSync(`${element.directory}/index.pug`, `include ${article_template}`)
                     if (param_build_type === 'target') {
@@ -285,7 +283,7 @@ for (const lang of languages) {
                     let yamlStr = yaml.dump(element, { 'indent': '4' });
 
                     fs.writeFileSync(`${element.directoryRestricted}/data.${lang}.yaml`, yamlStr, 'utf8');
-
+                    let buildPath = `/_fetchdirRestricted/${artType.name}/${slugEn}`
                     if (fs.existsSync(`${sourceDir}${article_template_restricted}`)) {
                         fs.writeFileSync(`${element.directoryRestricted}/index.pug`, `include ${article_template_restricted}`)
                         if (param_build_type === 'target') {
