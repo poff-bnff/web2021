@@ -762,7 +762,7 @@ function trailerProcessing(cassetteOrFilm, type) {
                 if (trailer.url && trailer.url.length > 10) {
                     if (trailer.url.includes('vimeo')) {
                         let splitVimeoLink = trailer.url.split('/')
-                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
                         if (videoCode.length === 9) {
                             trailer.videoCode = videoCode
                         }

@@ -208,11 +208,35 @@ for (const lang of languages) {
                         if (element[key] === 'music-meets-film-1') {
                             element.aliases = ['about/music-meets-film']
                         }
+                        // 2022 Ukraina programmi alias
+                        if (element[key] === 'auukrainale') {
+                            element.aliases = ['auukrainale', 'ukraina','au-ukrainale']
+                        }
                         // 2022 adding votemo for HOFF
-                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo') {
+                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
+                            let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${votemooAliasLangPrefix}votemoo`]
+                        }
+                        // 2022 adding elakaasa for HOFF
+                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
                             let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         }
+                        // // 2022 mai Ukraina programm
+                        // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
+                        //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                        //     element.aliases = [`${auukrainaleAliasLangPrefix}au-ukrainale`]
+                        // }
+                        // // 2022 mai Ukraina programm
+                        // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
+                        //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                        //     element.aliases = [`${auukrainaleAliasLangPrefix}au-ukrainale`]
+                        // }
+                        // // 2022 mai Ukraina programm
+                        // if (DOMAIN === 'poff.ee' && element[key] === 'ukraina') {
+                        //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                        //     element.aliases = [`${auukrainaleAliasLangPrefix}au-ukrainale`]
+                        // }
                     }
                 }
                 element.data = dataFrom;
