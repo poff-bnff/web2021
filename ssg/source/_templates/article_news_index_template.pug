@@ -78,7 +78,6 @@ block content
                         section.article_contents.dark_1.restrictedcontent
                             //- Kui pole avalik, salvestame artikli juurde vajalikud andmed
                             if !self.public
-                                - var pathEscaped = escape(self.path)
                                 script.
                                     var cType = "pof-fi-article"
                                     var cId = #{self.id}
