@@ -335,6 +335,8 @@ festivalTeamImagePriorityDefaults:
 juryAndGuestImagePriority:
     - - _med_sq
       - pictureAtJury
+    - - _small_sq
+      - pictureAtJury
     - - _small
       - pictureAtJury
 
