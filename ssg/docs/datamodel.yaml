@@ -1086,6 +1086,7 @@ JuryMember: &JuryMember
     about_et: (Rich text)
     about_en: (Rich text)
     about_ru: (Rich text)
+    order: (Number)
 
 SubTeam: &SubTeam
     name: *Translated
