@@ -100,6 +100,7 @@ for (const ix in languages) {
                 let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return juryMember?.person?.id === a.id });
                 juryMember.person = personFromYAML[0];
             }
+            subTeam?.juryMember?.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
         }
         // rueten func. is run for each element separately instead of whole data, that is
         // for the purpose of saving slug_en before it will be removed by rueten func.
