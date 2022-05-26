@@ -339,6 +339,12 @@ juryAndGuestImagePriority:
       - pictureAtJury
     - - _small
       - pictureAtJury
+    - - _med_sq
+      - personPicture
+    - - _small_sq
+      - personPicture
+    - - _small
+      - personPicture
 
 juryAndGuestImagePriorityDefaults:
     - pictureAtJury
