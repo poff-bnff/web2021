@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_user_function_parameters",
+  "info": {
+    "name": "FunctionParameters",
+    "icon": "hotel"
+  },
+  "options": {},
+  "attributes": {
+    "property": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

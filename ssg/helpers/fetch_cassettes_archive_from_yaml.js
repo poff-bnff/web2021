@@ -44,7 +44,7 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 // }
 addConfigPathAliases(['/search_archive'])
 
-const DOMAIN = process.env['DOMAIN'] || 'shorts.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 const festival_editions_to_exclude = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 const festival_editions = STRAPIDATA_FESTIVAL_EDITIONS.map(fe => fe.id).filter(fe => !festival_editions_to_exclude.includes(fe))
 
@@ -539,6 +539,9 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    // Film festival_editions - leave only ones associated with domain being built
+                    scc_film.festival_editions = scc_film.festival_editions.filter(f => f[`name_${lang}`])
+
                     scc_film.media = {}
                     // Construct film media
                     if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
@@ -725,7 +728,7 @@ function trailerProcessing(cassetteOrFilm, type) {
                 if (trailer.url && trailer.url.length > 10) {
                     if (trailer.url.includes('vimeo')) {
                         let splitVimeoLink = trailer.url.split('/')
-                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
                         if (videoCode.length === 9) {
                             trailer.videoCode = videoCode
                         }

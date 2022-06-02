@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hair_colours",
+  "info": {
+    "name": "HairColour",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

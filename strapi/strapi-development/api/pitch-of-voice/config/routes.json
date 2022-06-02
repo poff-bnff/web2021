@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pitch-of-voices",
+      "handler": "pitch-of-voice.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pitch-of-voices/count",
+      "handler": "pitch-of-voice.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pitch-of-voices/:id",
+      "handler": "pitch-of-voice.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/pitch-of-voices",
+      "handler": "pitch-of-voice.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pitch-of-voices/:id",
+      "handler": "pitch-of-voice.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pitch-of-voices/:id",
+      "handler": "pitch-of-voice.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dumb-folders",
+      "handler": "dumb-folder.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dumb-folders/count",
+      "handler": "dumb-folder.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dumb-folders/:id",
+      "handler": "dumb-folder.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dumb-folders",
+      "handler": "dumb-folder.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dumb-folders/:id",
+      "handler": "dumb-folder.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dumb-folders/:id",
+      "handler": "dumb-folder.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

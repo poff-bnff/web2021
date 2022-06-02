@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/person-pros",
+      "handler": "person-pro.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/person-pros/count",
+      "handler": "person-pro.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/person-pros/:id",
+      "handler": "person-pro.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/person-pros",
+      "handler": "person-pro.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/person-pros/:id",
+      "handler": "person-pro.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/person-pros/:id",
+      "handler": "person-pro.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

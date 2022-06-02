@@ -14,10 +14,6 @@
     "name": {
       "type": "string"
     },
-    "functions": {
-      "collection": "function",
-      "via": "pattern_collections"
-    },
     "pattern": {
       "type": "text"
     }

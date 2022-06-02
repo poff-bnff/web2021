@@ -4,7 +4,7 @@ echo $DOMAIN
 node ./initialise_entu_ssg.js
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
-node ./helpers/add_config_ignorePaths.js
+nice -10 node ./helpers/add_config_ignorePaths.js
 printf '\n----------               Finished adding ignore paths            ----------\n'
 
 printf '\n----------                Starting serve                    ----------\n\n'

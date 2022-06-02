@@ -361,7 +361,7 @@ main.grid_cassette
 
 
     if self.trailer || self.QaClip
-        if (self.trailer && [0].videoCode) || (self.QaClip && self.QaClip[0].videoCode)
+        if (self.trailer && [0].videoCode) || (self.QaClip && self.QaClip[0].url)
             section#trailer.f_trailer_box
                 if (self.trailer && self.trailer[0].videoCode)
                     .section_headline= self.label.film.trailer

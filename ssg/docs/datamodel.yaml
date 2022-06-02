@@ -1086,6 +1086,7 @@ JuryMember: &JuryMember
     about_et: (Rich text)
     about_en: (Rich text)
     about_ru: (Rich text)
+    order: (Number)
 
 SubTeam: &SubTeam
     name: *Translated
@@ -1204,6 +1205,7 @@ Film: &Film
     foreignUrl: (text)
     multi_and_single: (boolean)
     vialog_id: (text)
+    chat_w_name: (text)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1234,6 +1236,7 @@ Cassette: &Cassette
     orderedFilms: #(Component (repeatable))
         - *OrderedFilm
     remoteId: (UID)
+    chat_w_name: (text)
 
 IntroConversationQandA: &IntroConversationQandA
     yesNo: (Boolean)

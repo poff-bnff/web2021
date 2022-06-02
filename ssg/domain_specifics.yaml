@@ -112,6 +112,8 @@ skip_build_for_models:
     - team
     - film
     - cassette
+    - programme
+    - screening
 
 article:
     poff.ee: POFFiArticle
@@ -338,8 +340,16 @@ festivalTeamImagePriorityDefaults:
 juryAndGuestImagePriority:
     - - _med_sq
       - pictureAtJury
+    - - _small_sq
+      - pictureAtJury
     - - _small
       - pictureAtJury
+    - - _med_sq
+      - personPicture
+    - - _small_sq
+      - personPicture
+    - - _small
+      - personPicture
 
 juryAndGuestImagePriorityDefaults:
     - pictureAtJury

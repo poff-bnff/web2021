@@ -360,7 +360,7 @@ main.grid_cassette
                                     img.presenter_logo_itemx(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
 
     if self.trailer || self.QaClip
-        if (self.trailer && self.trailer[0].videoCode) || (self.QaClip && self.QaClip[0].videoCode)
+        if (self.trailer && self.trailer[0].videoCode) || (self.QaClip && self.QaClip[0].url)
             section#trailer.f_trailer_box
                 if (self.trailer && self.trailer[0].videoCode)
                     .section_headline= self.label.film.trailer
@@ -771,7 +771,7 @@ else
             //-     })
 
             //- if festivalEditionsIds.includes(5)
-            section.f_interactive_box
+            //- section.f_interactive_box
                 //- if process.env['DOMAIN'] === 'poff.ee'
                 //-     .f_interactive_item
                 //-         p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
@@ -816,7 +816,7 @@ else
             //-             - youtubeVideoCode = film.filmQaClip.split("=")
             //-             +youtube(youtubeVideoCode[1])
 
-            include vialog_box.pug
+            //- include vialog_box.pug
 
             //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
             //-     a(name='chat')

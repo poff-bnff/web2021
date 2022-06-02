@@ -17,21 +17,10 @@
     "description": {
       "type": "text"
     },
-    "valid_from": {
-      "type": "datetime"
-    },
-    "valid_to": {
-      "type": "datetime"
-    },
-    "function_conditions": {
+    "function_parameters": {
       "type": "component",
       "repeatable": true,
-      "component": "user.function-conditions"
-    },
-    "pattern_collections": {
-      "via": "functions",
-      "collection": "pattern-collections",
-      "dominant": true
+      "component": "user.function-parameters"
     }
   }
 }
