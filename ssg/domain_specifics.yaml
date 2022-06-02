@@ -463,8 +463,8 @@ role_dialog:
         article: poffi_article
         courseEvent: poffi_courseevent
     justfilm.ee:
-        article: justfilmi_article
-        courseEvent: justfilmi_courseevent
+        article: just_filmi_article
+        courseEvent: just_filmi_courseevent
     kinoff.poff.ee:
         article: kinoffi_article
         courseEvent: kinoffi_courseevent
@@ -484,11 +484,11 @@ role_dialog:
         article: tartuffi_article
         courseEvent: tartuffi_courseevent
     oyafond.ee:
-        article: oyafondi_article
-        courseEvent: oyafondi_courseevent
+        article: bruno_article
+        courseEvent: bruno_courseevent
     filmikool.poff.ee:
         article: filmikooli_article
         courseEvent: filmikooli_courseevent
     discoverycampus.poff.ee:
-        article: discampi_article
-        courseEvent: discampi_courseevent
+        article: discamp_article
+        courseEvent: discamp_courseevent
