@@ -215,7 +215,7 @@ block content
                                             line(x1='16' y1='2' x2='16' y2='6')
                                             line(x1='8' y1='2' x2='8' y2='6')
                                             line(x1='3' y1='10' x2='21' y2='10')
-                                        span.screening_date.small_1
+                                        span.screening_date.small_1.dark_1
                                             if event.start_time
                                                 +screeningDate(event.start_time)
 
@@ -234,7 +234,7 @@ block content
                                         svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                             circle(cx='12' cy='12' r='10')
                                             polyline(points='12 6 12 12 16 14')
-                                        span.screening_time.small_1
+                                        span.screening_time.small_1.dark_1
                                             +screeningTimeEET(event.start_time)
                                         span.screening_time.small_1 &nbsp;EET
 
@@ -242,7 +242,7 @@ block content
                                         svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                             circle(cx='12' cy='12' r='10')
                                             polyline(points='12 6 12 12 16 14')
-                                        span.screening_time_user.small_1
+                                        span.screening_time_user.small_1.dark_1
                                             +screeningTime(event.start_time)
                                         span.screening_time_user.small_1 &nbsp;User time
 
@@ -252,7 +252,7 @@ block content
                                         circle(cx='12' cy='10' r='3')
 
                                     if event.location
-                                        span.screening_hall.small_1= event.location.name
+                                        span.screening_hall.small_1.dark_1= event.location.name
 
                                     //- if event.location && event.location.hall && event.location.hall.name
                                     //-     if event.location.hall && event.location.hall.name
