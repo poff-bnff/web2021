@@ -48,8 +48,8 @@ module.exports = {
         const sanitizedFullProductInfos = sanitizeEntity(fullProductInfos, {
           model: strapi.query('product').model,
         });
-        // Filter products with category type course (ID 2)
-        let productsCategories = sanitizedFullProductInfos.filter(p => p?.product_category?.product_types?.map(t => t.id).includes(2));
+        // Filter products with category type course (ID 3)
+        let productsCategories = sanitizedFullProductInfos.filter(p => p?.product_category?.product_types?.map(t => t.id).includes(3));
 
         if (productsCategories.length) {
           if (result?.user_profile?.firstName && result?.user_profile?.lastName) {
