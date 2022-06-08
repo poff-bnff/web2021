@@ -115,13 +115,13 @@ build()
 
         cp -R "assets/"* "build/$BUILDDIR/assets"
 
-        if [ "$DOMAIN" == "poff.ee" ]
-        then
-            printf '\n----------             Extract POFF 2020 to build dir           ----------\n\n'
-            # cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
-            tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
-            printf '\n----------               Finished Extracting POFF 2020              ----------\n'
-        fi
+        # if [ "$DOMAIN" == "poff.ee" ]
+        # then
+        #     printf '\n----------             Extract POFF 2020 to build dir           ----------\n\n'
+        #     # cp -R "source/_archives/2020_poff/"* "build/$BUILDDIR"
+        #     tar -xzf "source/_archives/2020_BNFF.tar.gz" -C "build/$BUILDDIR" --strip-components=1
+        #     printf '\n----------               Finished Extracting POFF 2020              ----------\n'
+        # fi
 
         printf '\n----------                  Adding ignore paths                ----------\n\n'
         node ./helpers/add_config_ignorePaths.js
