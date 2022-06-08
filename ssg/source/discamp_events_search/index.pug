@@ -47,7 +47,7 @@ block content
 
             if self.data.industryevents
 
-                section.grid_events
+                section.grid_films
                     -
                         var sortFunction = function(a, b) {
                             return !a.startTime.localeCompare(b.timestamp)
@@ -60,7 +60,7 @@ block content
                                 return itemNames
                             }
 
-                        .card_event(id=event.id)
+                        a.card_event(id=event.id href=`/${lang_path}events/${event.slug}`)
 
                             //- .event_card_header
                             //-     .grid_container_event_time
@@ -101,62 +101,87 @@ block content
                             //-             span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
 
-                            a(href=`/${lang_path}events/${event.slug}`)
+                            //- a(href=`/${lang_path}events/${event.slug}`)
 
-                                .card_film_title
+                            .container_frame_16_9
+                                    if event.images && event.images.length
+                                        img.container_contents_16_9(src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                                    else
+                                        img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
 
-                                    //- if event.images && event.images[0]
-                                    //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                            .card_film_title
 
-                                    h3.event_title.padding_bottom_2= event.title
-                                        p(id= event.id+'nupp' style={color: 'red', display:'none'})
+                                //- if event.images && event.images[0]
+                                //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
 
-                                    //- if event.location
-                                    //-     p.location= `@ ${event.location.name}`
+                                h3.film_title_locale.dark_1= event.title
+                                    p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
-                                    //- if event.industry_people
-                                    //-     each industry_person in event.industry_people
-                                    //-         if industry_person.profilePicAtInd
-                                    //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
+                                //- if event.location
+                                //-     p.location= `@ ${event.location.name}`
 
-                                    //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
+                                //- if event.industry_people
+                                //-     each industry_person in event.industry_people
+                                //-         if industry_person.profilePicAtInd
+                                //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
 
-                                    //-         if industry_person.industry_person_types
-                                    //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
+                                //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
 
-                                    //-         if industry_person.role_at_films
-                                    //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
+                                //-         if industry_person.industry_person_types
+                                //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
 
-                                    //- if event.description
-                                    //-     p
-                                    //-         +format(event.description)
+                                //-         if industry_person.role_at_films
+                                //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
 
-                                    //- if event.industry_categories
-                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+                                //- if event.description
+                                //-     p
+                                //-         +format(event.description)
 
-                                    //- if event.startTime
-                                    //-     p Start time:
-                                    //-     p
-                                    //-         +screeningDate(event.startTime)
-                                    //-     p
-                                    //-         +screeningTime(event.startTime)
+                                //- if event.industry_categories
+                                //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
 
-                                    //- if event.durationTime
-                                    //-     p Duration:
-                                    //-     p
-                                    //-         +indEvDur(event.durationTime)
+                                //- if event.startTime
+                                //-     p Start time:
+                                //-     p
+                                //-         +screeningDate(event.startTime)
+                                //-     p
+                                //-         +screeningTime(event.startTime)
 
-                                    //- if event.project_type
-                                    //-     p= `Type: ${event.project_type}`
+                                //- if event.durationTime
+                                //-     p Duration:
+                                //-     p
+                                //-         +indEvDur(event.durationTime)
+
+                                //- if event.project_type
+                                //-     p= `Type: ${event.project_type}`
+
+                                //- if event.event_mode
+                                //-     p.location.small_1= `Event mode: ${event.event_mode.name}`
+
+                                //- if event.videoUrl
+                                //-     p= `Video at: ${event.videoUrl}`
+
+                                //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
+                                //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+
+                                .card_film_info
+
+                                    if event.industry_categories
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventCategories
+                                            #programmes.str_info_value.dark_1.thin_300= event.industry_categories.map(c => c.name).join(', ')
+
+                                    if event.durationTime
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.duration
+                                            #programmes.str_info_value.dark_1.thin_300
+                                                +indEvDur(event.durationTime)
 
                                     if event.event_mode
-                                        p.location.small_1= `Event mode: ${event.event_mode.name}`
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventMode
+                                            #programmes.str_info_value.dark_1.thin_300= event.event_mode.name
 
-                                    //- if event.videoUrl
-                                    //-     p= `Video at: ${event.videoUrl}`
-
-                                    //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
-                                    //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
 
 
 

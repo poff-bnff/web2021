@@ -335,6 +335,9 @@ if (CHECKPROGRAMMES) {
 const cassettesPath = path.join(fetchDir, 'cassettes')
 deleteFolderRecursive(cassettesPath)
 
+let cassetteTrailerErrorIDs = []
+let filmTrailerErrorIDs = []
+
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
@@ -405,7 +408,7 @@ for (const lang of allLanguages) {
             }
 
             // Kasseti treiler
-            trailerProcessing(s_cassette_copy)
+            trailerProcessing(s_cassette_copy, 'cassette')
 
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
@@ -622,7 +625,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Filmi treiler
-                    trailerProcessing(scc_film)
+                    trailerProcessing(scc_film, 'film')
 
                     // Rolepersons by role
                     if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
@@ -730,21 +733,56 @@ for (const lang of allLanguages) {
     generateAllDataYAML(allData, lang)
 }
 
-function trailerProcessing(cassetteOrFilm) {
+if (cassetteTrailerErrorIDs.length) {
+    console.log('ATTENTION! Cassette(s) with ID(s)', cassetteTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+if (filmTrailerErrorIDs.length) {
+    console.log('ATTENTION! Film(s) with ID(s)', filmTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+function trailerProcessing(cassetteOrFilm, type) {
     if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
-        for (trailer of cassetteOrFilm.trailer) {
-            if (trailer.url && trailer.url.length > 10) {
-                if (trailer.url.includes('vimeo')) {
-                    let splitVimeoLink = trailer.url.split('/')
-                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                    if (videoCode.length === 9) {
-                        trailer.videoCode = videoCode
-                    }
+        let trailerValidation = cassetteOrFilm.trailer.filter(t => {
+            if (!t.url) {
+                if (type === 'cassette') {
+                    cassetteTrailerErrorIDs.push(cassetteOrFilm.id)
                 } else {
-                    let splitYouTubeLink = trailer.url.split('=')[1]
-                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                    if (splitForVideoCode.length === 11) {
-                        trailer.videoCode = splitForVideoCode
+                    filmTrailerErrorIDs.push(cassetteOrFilm.id)
+                }
+                return false
+            } else {
+                return true
+            }
+        })
+        cassetteOrFilm.trailer = trailerValidation.length ? trailerValidation : null
+
+        if (cassetteOrFilm.trailer) {
+            for (trailer of cassetteOrFilm.trailer) {
+                if (trailer.url && trailer.url.length > 10) {
+                    if (trailer.url.includes('vimeo')) {
+                        let splitVimeoLink = trailer.url.split('/')
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
+                        if (videoCode.length === 9) {
+                            trailer.videoCode = videoCode
+                        }
+                    } else {
+                        let splitYouTubeLink
+                        let splitForVideoCode
+
+                        if (trailer.url.includes('youtube.com')) {
+                            // Long youtube link
+                            splitYouTubeLink = trailer.url.split('=')[1]
+                            splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                        } else if (trailer.url.includes('youtu.be')) {
+                            // Short youtube link
+                            splitYouTubeLink = trailer.url.split('?')[0]
+                            splitForVideoCode = splitYouTubeLink.split('/')[3]
+                        }
+
+                        if (splitForVideoCode.length === 11) {
+                            trailer.videoCode = splitForVideoCode
+                        }
                     }
                 }
             }

@@ -64,6 +64,12 @@
       "collection": "industry-event",
       "via": "products",
       "dominant": true
+    },
+    "transferable": {
+      "type": "boolean"
+    },
+    "override_transfer_locking": {
+      "type": "boolean"
     }
   }
 }

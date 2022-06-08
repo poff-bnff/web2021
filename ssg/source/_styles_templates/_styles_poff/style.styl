@@ -646,7 +646,7 @@ footer
     // margin-top 2rem
     background-color white
     margin-bottom 1.618rem
-    border .5px solid clr_grey_light
+    border .5px solid dark_4
     border-radius 5px
     justify-content center
     justify-items center
@@ -654,13 +654,24 @@ footer
     align-content start
     padding 0
 
+// .card_mypass_head
+//     width 100%
+//     padding 2rem
+//     background-color clr_primary
+//     color white_96
+//     font-family font_h
+//     font-size 2rem
+
 .card_mypass_head
     width 100%
     padding 2rem
-    background-color clr_primary
-    color white_96
+    background-color white
+    color dark_1
     font-family font_h
     font-size 2rem
+    border-bottom .5px solid dark_4
+    // border-radius 5px
+    text-align center
 
 .qrCode
     width 100%
@@ -673,16 +684,46 @@ footer
     font-size 1.2rem
 
 .profilePic
+    // position absolute
     width 100%
+    height 100%
+    object-fit cover
     padding 1rem
     border-radius 57% 43% 57% 43%
+    aspect-ratio 1 / 1
+
+.square_img_container
+    position relative
+    padding 1rem
+
+.square_img_container::after
+    content ""
+    display block
+    padding-bottom 100%
+
+.square_img
+    position absolute
+    width 100%
+    height 100%
+    object-fit cover
+
+
+// .pass_desc
+//     width 100%
+//     padding 2rem
+//     background-color bg_dark_4
+//     color white_96
+//     margin-top 2rem
 
 .pass_desc
     width 100%
     padding 2rem
-    background-color bg_dark_4
-    color white_96
+    background-color white
+    color dark_1
     margin-top 2rem
+    border-top .5px solid dark_4
+    p
+        color dark_1
 
 .grid_ss
     display grid

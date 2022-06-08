@@ -44,7 +44,7 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 // }
 addConfigPathAliases(['/search_archive'])
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 const festival_editions_to_exclude = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 const festival_editions = STRAPIDATA_FESTIVAL_EDITIONS.map(fe => fe.id).filter(fe => !festival_editions_to_exclude.includes(fe))
 
@@ -334,6 +334,9 @@ if (CHECKPROGRAMMES) {
 const cassettesPath = path.join(fetchDir, 'cassettes_archive')
 deleteFolderRecursive(cassettesPath)
 
+let cassetteTrailerErrorIDs = []
+let filmTrailerErrorIDs = []
+
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
@@ -405,7 +408,7 @@ for (const lang of allLanguages) {
             }
 
             // Kasseti treiler
-            trailerProcessing(s_cassette_copy)
+            trailerProcessing(s_cassette_copy, 'cassette')
 
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
@@ -536,6 +539,9 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    // Film festival_editions - leave only ones associated with domain being built
+                    scc_film.festival_editions = scc_film.festival_editions.filter(f => f[`name_${lang}`])
+
                     scc_film.media = {}
                     // Construct film media
                     if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
@@ -596,7 +602,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Filmi treiler
-                    trailerProcessing(scc_film)
+                    trailerProcessing(scc_film, 'film')
 
                     // Rolepersons by role
                     if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
@@ -693,21 +699,56 @@ for (const lang of allLanguages) {
     generateAllDataYAML(allData, lang)
 }
 
-function trailerProcessing(cassetteOrFilm) {
-    if (cassetteOrFilm.media && cassetteOrFilm.media.trailer && cassetteOrFilm.media.trailer[0]) {
-        for (trailer of cassetteOrFilm.media.trailer) {
-            if (trailer.url && trailer.url.length > 10) {
-                if (trailer.url.includes('vimeo')) {
-                    let splitVimeoLink = trailer.url.split('/')
-                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                    if (videoCode.length === 9) {
-                        trailer.videoCode = videoCode
-                    }
+if (cassetteTrailerErrorIDs.length) {
+    console.log('ATTENTION! Cassette(s) with ID(s)', cassetteTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+if (filmTrailerErrorIDs.length) {
+    console.log('ATTENTION! Film(s) with ID(s)', filmTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+function trailerProcessing(cassetteOrFilm, type) {
+    if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
+        // Eliminate empty trailers trailerErrorIDs
+        let trailerValidation = cassetteOrFilm.trailer.filter(t => {
+            if (!t.url) {
+                if (type === 'cassette') {
+                    cassetteTrailerErrorIDs.push(cassetteOrFilm.id)
                 } else {
-                    let splitYouTubeLink = trailer.url.split('=')[1]
-                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                    if (splitForVideoCode.length === 11) {
-                        trailer.videoCode = splitForVideoCode
+                    filmTrailerErrorIDs.push(cassetteOrFilm.id)
+                }
+                return false
+            } else {
+                return true
+            }
+        })
+        cassetteOrFilm.trailer = trailerValidation.length ? trailerValidation : null
+        if (cassetteOrFilm.trailer) {
+            for (trailer of cassetteOrFilm.trailer) {
+                if (trailer.url && trailer.url.length > 10) {
+                    if (trailer.url.includes('vimeo')) {
+                        let splitVimeoLink = trailer.url.split('/')
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
+                        if (videoCode.length === 9) {
+                            trailer.videoCode = videoCode
+                        }
+                    } else {
+                        let splitYouTubeLink
+                        let splitForVideoCode
+
+                        if (trailer.url.includes('youtube.com')) {
+                            // Long youtube link
+                            splitYouTubeLink = trailer.url.split('=')[1]
+                            splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                        } else if (trailer.url.includes('youtu.be')) {
+                            // Short youtube link
+                            splitYouTubeLink = trailer.url.split('?')[0]
+                            splitForVideoCode = splitYouTubeLink.split('/')[3]
+                        }
+
+                        if (splitForVideoCode.length === 11) {
+                            trailer.videoCode = splitForVideoCode
+                        }
                     }
                 }
             }

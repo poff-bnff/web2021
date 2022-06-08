@@ -51,6 +51,12 @@
     },
     "add_county": {
       "type": "string"
+    },
+    "populated_place": {
+      "model": "populated-place"
+    },
+    "add_p_place": {
+      "type": "string"
     }
   }
 }

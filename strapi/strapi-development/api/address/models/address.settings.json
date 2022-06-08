@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addresses",
+  "info": {
+    "name": "address",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "country": {
+      "model": "country"
+    },
+    "county": {
+      "model": "county"
+    },
+    "populated_place": {
+      "model": "populated-place"
+    },
+    "settl_unit": {
+      "type": "string"
+    },
+    "address_unit": {
+      "type": "string"
+    },
+    "street_name": {
+      "type": "string"
+    },
+    "address_number": {
+      "type": "string"
+    },
+    "appartment": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "n_dms": {
+      "type": "string"
+    },
+    "e_dms": {
+      "type": "string"
+    },
+    "n": {
+      "type": "float"
+    },
+    "e": {
+      "type": "float"
+    },
+    "l_est_x": {
+      "type": "float"
+    },
+    "l_est_y": {
+      "type": "float"
+    },
+    "add_county": {
+      "type": "string"
+    },
+    "add_p_place": {
+      "type": "string"
+    }
+  }
+}

@@ -15,20 +15,20 @@
       "type": "date"
     },
     "project": {
-      "via": "awardings",
-      "model": "industry-project"
+      "model": "industry-project",
+      "via": "awardings"
     },
     "film": {
       "via": "awardings",
       "model": "film"
     },
     "person": {
-      "via": "awardings",
-      "model": "person"
+      "model": "person",
+      "via": "awardings"
     },
     "organisation": {
-      "via": "awardings",
-      "model": "organisation"
+      "model": "organisation",
+      "via": "awardings"
     },
     "festival_edition": {
       "model": "festival-edition",
@@ -70,6 +70,12 @@
     "award": {
       "model": "industry-award",
       "via": "awardings"
+    },
+    "actor_role": {
+      "type": "string"
+    },
+    "work_title": {
+      "type": "string"
     }
   }
 }

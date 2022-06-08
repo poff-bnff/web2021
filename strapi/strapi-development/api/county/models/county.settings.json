@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "counties",
   "info": {
-    "name": "County"
+    "name": "County",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "name_et": {

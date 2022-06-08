@@ -95,6 +95,18 @@
       "collection": "course",
       "via": "product_categories",
       "dominant": true
+    },
+    "course_events": {
+      "via": "product_categories",
+      "collection": "course-event"
+    },
+    "transferable": {
+      "type": "boolean",
+      "default": false
+    },
+    "free": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
