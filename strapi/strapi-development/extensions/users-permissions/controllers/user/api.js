@@ -236,7 +236,8 @@ module.exports = {
 
       let updatedProfile = await strapi.services['user-profiles'].update({ id }, personProfile)
       updatedProfile.user = sanitizeUser(updatedProfile.user)
-      console.log('updatedProfile', updatedProfile);
+
+      console.log('updatedProfile', updatedProfile.user.email);
       return updatedProfile
 
     }
@@ -304,8 +305,6 @@ module.exports = {
     }
 
     updateData.profileFilled = true
-    console.log('Body', ctx.request.body);
-    console.log('Files', ctx.request.files);
     let file = ctx.request.files['files.picture']
 
     if (file) {
@@ -806,10 +805,11 @@ module.exports = {
         // Update pass one last time
         const successOptions = {
           owner: product.userId,
-          transactions: [addTransaction]
+          transactions: [addTransaction],
         }
 
-        let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+        // let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
+        let updateProductSuccess = await strapi.query('product').update({ 'id': item.id }, successOptions)
 
         const getUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': product.userId });
         if (getUserInfo) {

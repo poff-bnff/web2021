@@ -16,10 +16,6 @@
     },
     "description": {
       "type": "richtext"
-    },
-    "product_categories": {
-      "via": "product_types",
-      "collection": "product-category"
     }
   }
 }
