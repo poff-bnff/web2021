@@ -145,7 +145,7 @@ async function checkAndCreateMoodleUser(sanitizedNewUserInfo) {
 }
 
 async function unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds) {
-  if (oldUserMoodleId) {
+  if (oldUserMoodleId && uniqueCourseMoodleIds.length) {
     for (let i = 0; i < uniqueCourseMoodleIds.length; i++) {
       const courseId = uniqueCourseMoodleIds[i];
       const enrolMoodleUser = await enrolUser(oldUserMoodleId, courseId, 5, true);
@@ -166,11 +166,13 @@ async function newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds) {
   }
 
   if (newOwnerMoodleId) {
-    for (let i = 0; i < uniqueCourseMoodleIds.length; i++) {
-      const courseId = uniqueCourseMoodleIds[i];
-      const enrolMoodleUser = await enrolUser(newOwnerMoodleId, courseId, 5);
+    if (uniqueCourseMoodleIds.length) {
+      for (let i = 0; i < uniqueCourseMoodleIds.length; i++) {
+        const courseId = uniqueCourseMoodleIds[i];
+        const enrolMoodleUser = await enrolUser(newOwnerMoodleId, courseId, 5);
+      }
+      console.log('Enrolled course(s)', uniqueCourseMoodleIds, 'for Moodle user', newOwnerMoodleId);
     }
-    console.log('Enrolled course(s)', uniqueCourseMoodleIds, 'for Moodle user', newOwnerMoodleId);
   } else {
     console.log('User creation failed');
   }
