@@ -97,8 +97,8 @@
       "dominant": true
     },
     "course_events": {
-      "via": "product_categories",
-      "collection": "course-event"
+      "collection": "course-event",
+      "via": "product_categories"
     },
     "transferable": {
       "type": "boolean",
@@ -107,6 +107,9 @@
     "free": {
       "type": "boolean",
       "default": false
+    },
+    "product_types": {
+      "collection": "product-type"
     }
   }
 }
