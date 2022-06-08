@@ -173,6 +173,12 @@
     },
     "languages": {
       "collection": "language"
+    },
+    "event_types": {
+      "collection": "event-type"
+    },
+    "event_access": {
+      "model": "event-access"
     }
   }
 }

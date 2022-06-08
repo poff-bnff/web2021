@@ -16,6 +16,8 @@ const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 const path = require('path')
 
+
+
 function writeToZone(file_name) {
 
   const put_command = `echo put ${file_name} | ftp assets.poff.ee`;

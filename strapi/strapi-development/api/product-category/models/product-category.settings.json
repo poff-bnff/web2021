@@ -92,8 +92,8 @@
       "model": "business-profile"
     },
     "product_types": {
-      "via": "product_categories",
       "collection": "product-type",
+      "via": "product_categories",
       "dominant": true
     },
     "courses": {
@@ -104,6 +104,14 @@
     "course_events": {
       "via": "product_categories",
       "collection": "course-event"
+    },
+    "transferable": {
+      "type": "boolean",
+      "default": false
+    },
+    "free": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

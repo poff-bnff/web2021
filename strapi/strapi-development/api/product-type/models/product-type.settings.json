@@ -18,8 +18,8 @@
       "type": "richtext"
     },
     "product_categories": {
-      "collection": "product-category",
-      "via": "product_types"
+      "via": "product_types",
+      "collection": "product-category"
     }
   }
 }
