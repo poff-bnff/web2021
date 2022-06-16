@@ -12,11 +12,15 @@
 const path = require('path')
 const { sanitizeEntity } = require('strapi-utils');
 const moodle_manager = path.join(__dirname, '..', '..', '..', '/helpers/moodle_manager.js')
+const role_assigner = path.join(__dirname, '..', '..', '..', '/helpers/role_assigner.js')
+
 const {
   getUser,
   createUser,
   enrolUser,
 } = require(moodle_manager)
+
+const { roleAssigner } = require(role_assigner)
 
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 let sheet_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', '/helpers/connect_spreadsheet.js')
@@ -89,8 +93,9 @@ module.exports = {
             console.log(`Product ID ${sanitizedResult.id} owner has changed (${sanitizedResult.id} -> ${owner_before_update.id})`);
             const oldUserMoodleId = owner_before_update.moodle_id
 
-            // Suspend previous owner from Moodle courses
+            // Suspend previous owner from Moodle courses and remove roles
             await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
 
             // Get new user full info (including profile) and enrol courses
             await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
@@ -101,6 +106,7 @@ module.exports = {
             const oldUserMoodleId = owner_before_update.moodle_id
             // Suspend previous owner from Moodle courses
             await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
           }
         }
         // If no previous owner and there is a new owner
@@ -155,10 +161,12 @@ async function unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds) {
 }
 
 async function newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds) {
-  const newUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': sanitizedResult.owner.id }, ['user_profile']);
+  const newUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': sanitizedResult.owner.id }, ['user_profile', 'user_roles', 'my_products']);
   const sanitizedNewUserInfo = sanitizeEntity(newUserInfo, {
     model: strapi.query('user', 'users-permissions').model,
   });
+  let initial_user_roles = sanitizedNewUserInfo.user_roles ? sanitizedNewUserInfo.user_roles.map(r => r.id) : []
+  await roleAssigner(sanitizedNewUserInfo.id, initial_user_roles, sanitizedNewUserInfo.my_products ? sanitizedNewUserInfo.my_products.map(r => r.id) : [], [])
 
   let newOwnerMoodleId = sanitizedNewUserInfo.moodle_id;
   if (!newOwnerMoodleId) {
