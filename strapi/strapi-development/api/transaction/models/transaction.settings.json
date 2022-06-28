@@ -18,7 +18,8 @@
       "type": "enumeration",
       "enum": [
         "Purchase",
-        "Refund"
+        "Refund",
+        "Transfer"
       ],
       "default": "Purchase"
     },
@@ -61,7 +62,16 @@
     "method": {
       "type": "enumeration",
       "enum": [
-        "Maksekeskus"
+        "Maksekeskus",
+        "Free"
+      ]
+    },
+    "transfer_status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Declined",
+        "Accepted"
       ]
     }
   }

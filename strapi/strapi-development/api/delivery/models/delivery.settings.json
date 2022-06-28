@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deliveries",
+  "info": {
+    "name": "Delivery"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}
