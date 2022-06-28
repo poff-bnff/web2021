@@ -465,6 +465,7 @@ POFFiArticle: &POFFiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 JustFilmiArticle: &JustFilmiArticle
     _path: /just-filmi-articles
@@ -509,6 +510,7 @@ JustFilmiArticle: &JustFilmiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 ShortsiArticle: &ShortsiArticle
     _path: /shortsi-articles
@@ -553,6 +555,7 @@ ShortsiArticle: &ShortsiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 KinoffiArticle: &KinoffiArticle
     _path: /kinoffi-articles
@@ -597,6 +600,7 @@ KinoffiArticle: &KinoffiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 HOFFiArticle: &HOFFiArticle
     _path: /hof-fi-articles
@@ -641,6 +645,7 @@ HOFFiArticle: &HOFFiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 TartuffiArticle: &TartuffiArticle
     _path: /tartuffi-articles
@@ -685,6 +690,7 @@ TartuffiArticle: &TartuffiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 KumuArticle: &KumuArticle
     _path: /kumu-articles
@@ -729,6 +735,7 @@ KumuArticle: &KumuArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 BrunoArticle: &BrunoArticle
     _path: /bruno-articles
@@ -773,6 +780,7 @@ BrunoArticle: &BrunoArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 FilmikooliArticle: &FilmikooliArticle
     _path: /filmikooli-articles
@@ -817,6 +825,7 @@ FilmikooliArticle: &FilmikooliArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 Language: &Language
     _path: /languages

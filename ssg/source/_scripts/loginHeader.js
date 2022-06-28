@@ -8,6 +8,17 @@ let userProfileHasBeenLoaded = false
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
     // console.log('User profile is loaded')
+
+    try {
+        const restrictedElement = document.querySelector(`.restrictedcontent`);
+        if (userProfileHasBeenLoaded) {
+            if (restrictedElement && cType && cId && cSubType && cLang !== undefined && cDomain) {
+                restrictedcontent(restrictedElement)
+            }
+        } else {
+            restrictedElement.innerHTML = "Oled sisse logimata"
+        }
+    } catch (error) { }
 })
 
 try {
@@ -16,7 +27,6 @@ try {
         availability()
     }
 } catch (error) { }
-
 
 function buyerCheck() {
 
