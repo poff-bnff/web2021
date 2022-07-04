@@ -933,7 +933,7 @@ module.exports = {
 
     let cSlug
     if(cLang === '') {
-      cSlug = content.slug_et
+      cSlug = content[`slug_${DOMAIN_SPECIFICS.defaultLocale[cDomain]}`]
     } else {
       cSlug = content[`slug_${cLang.replace('/', '')}`]
     }
