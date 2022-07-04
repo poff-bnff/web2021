@@ -27,6 +27,8 @@ function restrictedcontent(element) {
     }).then(function (data) {
         if (data.data) {
             element.innerHTML = data.data
+            nodeScriptReplace(document.getElementsByClassName(`restrictedcontent`)[0])
+
         } else {
             element.innerHTML = 'Lugemisõigused puuduvad'
         }
@@ -36,3 +38,4 @@ function restrictedcontent(element) {
     });
 
 }
+
