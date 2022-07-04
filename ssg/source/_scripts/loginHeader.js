@@ -12,7 +12,7 @@ document.addEventListener('userProfileLoaded', function (e) {
     try {
         const restrictedElement = document.querySelector(`.restrictedcontent`);
         if (userProfileHasBeenLoaded) {
-            if (restrictedElement && cType && cId && cSubType && cLang !== undefined && cDomain) {
+            if (restrictedElement && cType && cId && cSubType !== undefined && cLang !== undefined && cDomain) {
                 restrictedcontent(restrictedElement)
             }
         } else {
