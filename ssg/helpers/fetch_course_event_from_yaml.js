@@ -11,29 +11,34 @@ const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const sourceDir = path.join(rootDir, 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
+const fetchDirRestricted = path.join(sourceDir, '_fetchdirRestricted')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
-const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
 let ACTIVE_FESTIVAL_EDITIONS
 let NAMEVARIABLE
 let FETCHDATADIR
+let FETCHDATADIRRESTRICTED
 let FETCHDATADIRNAME
 if (DOMAIN === 'discoverycampus.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
     NAMEVARIABLE = 'discamp'
     FETCHDATADIRNAME = 'discampcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
+    FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'industry.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
     NAMEVARIABLE = 'industry'
     FETCHDATADIRNAME = 'industryevents'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
+    FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = null
     NAMEVARIABLE = 'filmikool'
     FETCHDATADIRNAME = 'filmikoolcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
+    FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 }
 
 const params = process.argv.slice(2)
@@ -181,6 +186,9 @@ function processEvents(courseEventCopy, lang) {
 
             if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/${FETCHDATADIRNAME}/${element.dirSlug}`])
+                if(!element.public) {
+                    addConfigPathAliases([`/_fetchdirRestricted/${FETCHDATADIRNAME}/${element.dirSlug}`])
+                }
             }
 
             if (DOMAIN === 'filmikool.poff.ee') {
@@ -229,6 +237,10 @@ function processEvents(courseEventCopy, lang) {
                 console.log('Targeting event ', element.id, target_id)
             }
             generateEventYaml(element, element.dirSlug, lang);
+            // Make a restricted page as well if not public
+            if (!element.public) {
+                generateEventYaml(element, element.dirSlug, lang, true);
+            }
 
         } else {
             console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing slug_en`, element);
@@ -256,15 +268,19 @@ function convert_to_UTC(datetime) {
     }
 }
 
-function generateEventYaml(element, dirSlug, lang) {
+function generateEventYaml(element, dirSlug, lang, restricted = false) {
+    if (restricted) {
+        element.path = path.join('restrictedcontent', element.path)
+    }
     const oneYaml = yaml.dump(rueten(element, lang), { 'noRefs': true, 'indent': '4' });
-    const yamlPath = path.join(FETCHDATADIR, dirSlug, `data.${lang}.yaml`);
+    const fetchDirToUse = restricted ? FETCHDATADIRRESTRICTED : FETCHDATADIR
+    const yamlPath = path.join(fetchDirToUse, dirSlug, `data.${lang}.yaml`);
 
-    let saveDir = path.join(FETCHDATADIR, dirSlug);
+    let saveDir = path.join(fetchDirToUse, dirSlug);
     fs.mkdirSync(saveDir, { recursive: true });
 
     fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/${NAMEVARIABLE}_courseevent_index_template.pug`);
+    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/${NAMEVARIABLE}_courseevent${restricted ? '_restricted' : ''}_index_template.pug`);
 }
 
 function generateAllDataYaml(allData, lang) {
