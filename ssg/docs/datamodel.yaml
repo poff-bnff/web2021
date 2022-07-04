@@ -1474,6 +1474,7 @@ IndustryArticle: &IndustryArticle
         - *Person
     organisations:
         - *Organisation
+    public: (boolean)
 
 IndustryGroup: &IndustryGroup
     _path: /industry-groups
@@ -1746,6 +1747,7 @@ DisCampArticle: &DisCampArticle
         - *Person
     organisations:
         - *Organisation
+    public: (boolean)
 
 DisCampGroup: &DisCampGroup
     _path: /dis-camp-groups
