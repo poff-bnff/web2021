@@ -8,6 +8,7 @@ const selectors = {
     // projects: document.getElementById('projects_select'),
     persons: document.getElementById('persons_select'),
     starttimes: document.getElementById('starttimes_select'),
+    festivaleditions: document.getElementById('festivaleditions_select'),
 }
 
 function urlSelect() {
@@ -131,6 +132,10 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'starttimes' ? value : selectors.starttimes.value;
                     return compare_with === '' ? true : screening.starttimes.includes(compare_with)
                 })
+                .filter(screening => {
+                    const compare_with = selector_name === 'festivaleditions' ? value : selectors.festivaleditions.value;
+                    return compare_with === '' ? true : screening.festivaleditions.includes(compare_with)
+                })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
@@ -163,12 +168,17 @@ selectors.starttimes.addEventListener('change', e => {
     toggleAll('starttimes');
 });
 
+selectors.festivaleditions.addEventListener('change', e => {
+    toggleAll('festivaleditions');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.categories.selectedIndex = 0;
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
     selectors.starttimes.selectedIndex = 0;
+    selectors.festivaleditions.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -199,6 +209,13 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.starttimes.value) {
                 return screening.starttimes.includes(selectors.starttimes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.festivaleditions.value) {
+                return screening.festivaleditions.includes(selectors.festivaleditions.value)
             } else {
                 return true
             }

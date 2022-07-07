@@ -99,9 +99,9 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
                 }
             }
         },
-        // 'festival_editions': {
-        //     model_name: 'FestivalEdition',
-        // },
+        'festival_editions': {
+            model_name: 'FestivalEdition',
+        },
         'industry_categories': {
             model_name: 'IndustryCategory',
         },
@@ -298,6 +298,9 @@ function searchAndFilters(dataToYAML, lang) {
         projects: {},
         credentials: {},
         starttimes: {},
+        festivaleditions: {},
+        eventtypes: {},
+        eventaccesses: {},
     }
 
     const events_search = dataToYAML.map(events => {
@@ -349,6 +352,16 @@ function searchAndFilters(dataToYAML, lang) {
             filters.starttimes[dateKey] = date
         }
 
+        let festivaleditions = []
+        if (typeof event.festival_editions !== 'undefined') {
+            let festival_editions = event.festival_editions.map(name => name.name).filter(name => name)
+
+            for (const name of festival_editions) {
+                festivaleditions.push(name)
+                filters.festivaleditions[name] = name
+            }
+        }
+
         return {
             id: events.id,
             text: [
@@ -362,6 +375,7 @@ function searchAndFilters(dataToYAML, lang) {
             projects: projects,
             persons: credentials,
             starttimes: starttimes,
+            festivaleditions: festivaleditions,
         }
     });
 
@@ -370,6 +384,7 @@ function searchAndFilters(dataToYAML, lang) {
         projects: mSort(filters.projects, lang),
         persons: mSort(filters.credentials, lang),
         starttimes: mSort(filters.starttimes, lang),
+        festivaleditions: mSort(filters.festivaleditions, lang),
     }
 
     let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
