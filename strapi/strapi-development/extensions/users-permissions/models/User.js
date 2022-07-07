@@ -4,11 +4,14 @@ const path = require('path')
 const { sanitizeEntity } = require('strapi-utils');
 
 let moodle_manager = path.join(__dirname, '..', '..', '..', '/helpers/moodle_manager.js')
+let role_assigner = path.join(__dirname, '..', '..', '..', '/helpers/role_assigner.js')
 const {
   getUser,
   createUser,
   enrolUser,
 } = require(moodle_manager)
+
+const { roleAssigner } = require(role_assigner)
 
 /**
  * Lifecycle callbacks for the `User` model.
@@ -21,11 +24,12 @@ module.exports = {
       data.account_created ? null : data.account_created = new Date().toISOString()
     },
     async beforeUpdate(params, data) {
-      const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products']);
+      const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
       const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {
         model: strapi.query('user', 'users-permissions').model,
       });
 
+      // Save beforeUpdate state of the user products
       data.my_products_before_update = sanitizedOldUserInfo?.my_products?.map(p => p.id)
     },
     async afterCreate(result, data) {
@@ -44,12 +48,23 @@ module.exports = {
         if (removedProductsArray.length) { console.log('removedProduct(s)', removedProductsArray); }
         if (allAffectedProducts.length) { console.log('allAffectedProducts', allAffectedProducts); }
 
-        const fullProductInfos = await strapi.query('product').find({ 'id_in': allAffectedProducts }, ['product_category', 'product_category.product_types', 'product_category.courses']);
-        const sanitizedFullProductInfos = sanitizeEntity(fullProductInfos, {
+        const affectedProductInfos = await strapi.query('product').find({ 'id_in': allAffectedProducts }, ['product_category', 'product_category.product_types', 'product_category.user_roles', 'product_category.courses']);
+        const sanitizedAffectedProductInfos = sanitizeEntity(affectedProductInfos, {
           model: strapi.query('product').model,
         });
+
+        // Array of roles to be removed from user
+        let roles_removed = removedProductsArray.map(p => sanitizedAffectedProductInfos.filter(s => s.id === p)[0]?.product_category?.user_roles?.map(r => r.id))
+        let unique_roles_removed = [].concat(...roles_removed)
+
+        // Array of initial roles of user
+        let initial_user_roles = result.user_roles ? result.user_roles.map(r => r.id) : []
+
+        // Remove roles to be removed and add all associated with current products
+        await roleAssigner(result.id, initial_user_roles, my_products, unique_roles_removed)
+
         // Filter products with category type course (ID 3)
-        let productsCategories = sanitizedFullProductInfos.filter(p => p?.product_category?.product_types?.map(t => t.id).includes(3));
+        let productsCategories = sanitizedAffectedProductInfos.filter(p => p?.product_category?.product_types?.map(t => t.id).includes(3));
 
         if (productsCategories.length) {
           if (result?.user_profile?.firstName && result?.user_profile?.lastName) {
