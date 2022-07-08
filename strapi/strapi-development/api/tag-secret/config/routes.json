@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tag-secrets",
+      "handler": "tag-secret.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-secrets/count",
+      "handler": "tag-secret.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tag-secrets/:id",
+      "handler": "tag-secret.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tag-secrets",
+      "handler": "tag-secret.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tag-secrets/:id",
+      "handler": "tag-secret.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tag-secrets/:id",
+      "handler": "tag-secret.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
