@@ -295,6 +295,12 @@ TagLookingFor: &TagLookingFor
     en: (text)
     ru: (text)
 
+TagSecret: &TagSecret
+    _path: /tag-secrets
+    et: text
+    en: text
+    ru: text
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -1122,6 +1128,24 @@ EventMode: &EventMode
     name_en: text
     name_ru: text
 
+EventAccess: &EventAccess
+    _path: /event-accesses
+    et: text
+    en: text
+    ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+
+EventType: &EventType
+    _path: /event-types
+    et: text
+    en: text
+    ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+   
 ScreeningType: &ScreeningType
     _path: /screening-types
     name: (text)
