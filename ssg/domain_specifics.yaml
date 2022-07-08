@@ -20,7 +20,7 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        - 51
+        # - 51
         - 52
         # - 28
         # - 29
@@ -41,7 +41,7 @@ cassettes_festival_editions:
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 0
+        - 53
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -57,14 +57,14 @@ XML_festival_editions:
 
 programmes_festival_editions:
     poff.ee:
-        - 51
+        # - 51
         - 52
         # - 28
         # - 29
         # - 30
         # - 32
     justfilm.ee:
-        - 29
+        # - 29
     kinoff.poff.ee:
         - 0
     industry.poff.ee:
@@ -76,7 +76,7 @@ programmes_festival_editions:
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 10
+        - 53
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -109,6 +109,8 @@ skip_build_for_models:
     - team
     - film
     - cassette
+    - programme
+    - screening
 
 article:
     poff.ee: POFFiArticle
@@ -333,8 +335,16 @@ festivalTeamImagePriorityDefaults:
 juryAndGuestImagePriority:
     - - _med_sq
       - pictureAtJury
+    - - _small_sq
+      - pictureAtJury
     - - _small
       - pictureAtJury
+    - - _med_sq
+      - personPicture
+    - - _small_sq
+      - personPicture
+    - - _small
+      - personPicture
 
 juryAndGuestImagePriorityDefaults:
     - pictureAtJury

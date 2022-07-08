@@ -38,6 +38,7 @@ ssg/.vscode/*
 ssg/build
 ssg/archive
 ssg/source/_fetchdir/*
+ssg/source/_fetchdirRestricted/*
 ssg/source/_styles/*
 ssg/helpers/build_logs.yaml
 ssg/helpers/build_queue.yaml

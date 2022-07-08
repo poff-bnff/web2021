@@ -1567,6 +1567,9 @@
                       "QaClip": {
                         "type": "component"
                       },
+                      "chat_w_name": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1732,6 +1735,12 @@
                     "type": "string"
                   }
                 },
+                "transferable": {
+                  "type": "boolean"
+                },
+                "override_transfer_locking": {
+                  "type": "boolean"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1758,7 +1767,8 @@
                   "type": "string",
                   "enum": [
                     "Purchase",
-                    "Refund"
+                    "Refund",
+                    "Transfer"
                   ]
                 },
                 "user": {
@@ -1797,7 +1807,16 @@
                 "method": {
                   "type": "string",
                   "enum": [
-                    "Maksekeskus"
+                    "Maksekeskus",
+                    "Free"
+                  ]
+                },
+                "transfer_status": {
+                  "type": "string",
+                  "enum": [
+                    "Pending",
+                    "Declined",
+                    "Accepted"
                   ]
                 },
                 "created_by": {
@@ -1869,9 +1888,6 @@
                 "organisation": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "string"
-                },
                 "reg_code": {
                   "type": "string"
                 },
@@ -1890,9 +1906,6 @@
                 "address": {
                   "type": "component"
                 },
-                "phone_nr": {
-                  "type": "string"
-                },
                 "vat_percentage": {
                   "type": "integer"
                 },
@@ -1900,6 +1913,21 @@
                   "type": "string"
                 },
                 "bank_code": {
+                  "type": "string"
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "firstNameLastName": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "birthdate": {
                   "type": "string"
                 },
                 "created_by": {
@@ -2324,6 +2352,9 @@
                       },
                       "QaClip": {
                         "type": "component"
+                      },
+                      "chat_w_name": {
+                        "type": "string"
                       },
                       "created_by": {
                         "type": "string"

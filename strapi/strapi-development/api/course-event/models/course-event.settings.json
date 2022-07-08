@@ -72,7 +72,7 @@
     },
     "credentials": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "film.credentials-new"
     },
     "festival_editions": {
@@ -143,6 +143,42 @@
     },
     "publish_ru": {
       "type": "boolean"
+    },
+    "remote_id": {
+      "type": "uid"
+    },
+    "product_categories": {
+      "collection": "product-category",
+      "via": "course_events",
+      "dominant": true
+    },
+    "industry_projects": {
+      "collection": "industry-project"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.course-tags"
+    },
+    "presentedBy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.presented-by"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "event_types": {
+      "collection": "event-type"
+    },
+    "event_access": {
+      "model": "event-access"
     }
   }
 }

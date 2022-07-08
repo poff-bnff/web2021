@@ -2,7 +2,8 @@
   "collectionName": "components_teams_jury_members",
   "info": {
     "name": "juryMember",
-    "icon": "user-astronaut"
+    "icon": "user-astronaut",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -16,7 +17,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "roleAtJury_et": {
       "type": "string"
@@ -47,6 +49,9 @@
     },
     "about_ru": {
       "type": "richtext"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

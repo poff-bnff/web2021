@@ -12,15 +12,12 @@
   },
   "attributes": {
     "user": {
-      "via": "business_profiles",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "business_profiles"
     },
     "organisation": {
       "model": "organisation"
-    },
-    "name": {
-      "type": "string"
     },
     "reg_code": {
       "type": "string"
@@ -42,9 +39,6 @@
       "repeatable": false,
       "component": "location.address"
     },
-    "phone_nr": {
-      "type": "string"
-    },
     "vat_percentage": {
       "type": "integer"
     },
@@ -53,6 +47,21 @@
     },
     "bank_code": {
       "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "firstNameLastName": {
+      "type": "string"
+    },
+    "gender": {
+      "model": "gender"
+    },
+    "birthdate": {
+      "type": "date"
     }
   }
 }

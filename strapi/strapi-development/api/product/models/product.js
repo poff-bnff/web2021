@@ -10,6 +10,18 @@
  */
 
 const path = require('path')
+const { sanitizeEntity } = require('strapi-utils');
+const moodle_manager = path.join(__dirname, '..', '..', '..', '/helpers/moodle_manager.js')
+const role_assigner = path.join(__dirname, '..', '..', '..', '/helpers/role_assigner.js')
+
+const {
+  getUser,
+  createUser,
+  enrolUser,
+} = require(moodle_manager)
+
+const { roleAssigner } = require(role_assigner)
+
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 let sheet_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', '/helpers/connect_spreadsheet.js')
 
@@ -42,10 +54,17 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
-
     },
     async beforeUpdate(params, data) {
+      // data.product_category (ja muu algeline info) on olemas kui muudetakse Strapis
+      // data.transactions (ja enamik muud datast puudu) on ainult olemas kui on edukas tehing veebipoes
+      // Seetõttu alati pärime tooteinfo endise omaniku kättesaamiseks
+      const product = await strapi.query('product').findOne({ 'id': params.id });
 
+      const sanitizedOldOwnerInfo = sanitizeEntity(product, {
+        model: strapi.query('user', 'users-permissions').model,
+      });
+      data.owner_before_update = sanitizedOldOwnerInfo.owner
     },
     async afterUpdate(result, params, data) {
       // let sheet_ID = '1523CDLVZyDmn9-lKr8B1VNS0paM8IeZBxcvWM_VeXyQ'
@@ -54,6 +73,48 @@ module.exports = {
       // let read_spsheet = await update_sheets(result, model_name, sheet_ID, sheet_name)
       // // console.log(read_spsheet)
 
+      // As per beforeUpdate code, only applies when category includes product type course (ID 2)
+
+      let owner_before_update = data.owner_before_update
+      const sanitizedResult = sanitizeEntity(result, {
+        model: strapi.query('product').model,
+      });
+      if (sanitizedResult.product_category) {
+        const productCat = await strapi.query('product-category').findOne({ 'id': sanitizedResult.product_category.id });
+
+        const courseMoodleIds = productCat?.courses?.map(c => c.moodle_id)
+        const uniqueCourseMoodleIds = [... new Set(courseMoodleIds)]
+
+        let owner = data.owner
+        // If previous owner is not the same as new owner
+        if (owner_before_update && owner_before_update.id !== owner) {
+          // If there was a change of owner
+          if (owner_before_update && owner) {
+            console.log(`Product ID ${sanitizedResult.id} owner has changed (${sanitizedResult.id} -> ${owner_before_update.id})`);
+            const oldUserMoodleId = owner_before_update.moodle_id
+
+            // Suspend previous owner from Moodle courses and remove roles
+            await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
+
+            // Get new user full info (including profile) and enrol courses
+            await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
+          }
+          // Previous owner but no new owner
+          if (owner_before_update && !owner) {
+            console.log(`Product ID ${sanitizedResult.id} owner has been removed (${sanitizedResult.id} -> null)`);
+            const oldUserMoodleId = owner_before_update.moodle_id
+            // Suspend previous owner from Moodle courses
+            await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
+          }
+        }
+        // If no previous owner and there is a new owner
+        if (!owner_before_update && owner) {
+          // Get new user full info (including profile)
+          await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
+        }
+      }
     },
     async beforeDelete(params) {
       delete params.user
@@ -63,3 +124,65 @@ module.exports = {
     }
   }
 };
+
+async function checkAndCreateMoodleUser(sanitizedNewUserInfo) {
+  const userEmail = sanitizedNewUserInfo.email
+  const userFirstName = sanitizedNewUserInfo?.user_profile?.firstName
+  const userLastName = sanitizedNewUserInfo?.user_profile?.lastName
+  let userMoodleId = sanitizedNewUserInfo.moodle_id
+
+  // Check if moodle_id already under Strapi user
+
+  const getMoodleUserInfo = await getUser(userEmail)
+  userMoodleId = getMoodleUserInfo?.users?.[0]?.id
+  // If already, update user
+  if (userMoodleId) {
+    console.log('Moodle user exists with ID:', userMoodleId, 'Updating Strapi user with Moodle ID');
+    const setMoodleID = await strapi.query('user', 'users-permissions').update({ 'id': sanitizedNewUserInfo.id }, { moodle_id: userMoodleId });
+    // Else, create Moodle user and update Strapi user
+  } else {
+    const createMoodleUser = await createUser(userEmail, userFirstName, userLastName)
+    console.log('createMoodleUser result: ', createMoodleUser, typeof createMoodleUser);
+    const setMoodleID = await strapi.query('user', 'users-permissions').update({ 'id': sanitizedNewUserInfo.id }, { moodle_id: createMoodleUser?.[0]?.id });
+    // Update variable with user moodle_id
+    userMoodleId = createMoodleUser?.[0]?.id
+  }
+  return userMoodleId
+}
+
+async function unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds) {
+  if (oldUserMoodleId && uniqueCourseMoodleIds.length) {
+    for (let i = 0; i < uniqueCourseMoodleIds.length; i++) {
+      const courseId = uniqueCourseMoodleIds[i];
+      const enrolMoodleUser = await enrolUser(oldUserMoodleId, courseId, 5, true);
+    }
+    console.log('Suspended course(s)', uniqueCourseMoodleIds, 'for Moodle user', oldUserMoodleId);
+  }
+}
+
+async function newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds) {
+  const newUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': sanitizedResult.owner.id }, ['user_profile', 'user_roles', 'my_products']);
+  const sanitizedNewUserInfo = sanitizeEntity(newUserInfo, {
+    model: strapi.query('user', 'users-permissions').model,
+  });
+  let initial_user_roles = sanitizedNewUserInfo.user_roles ? sanitizedNewUserInfo.user_roles.map(r => r.id) : []
+  await roleAssigner(sanitizedNewUserInfo.id, initial_user_roles, sanitizedNewUserInfo.my_products ? sanitizedNewUserInfo.my_products.map(r => r.id) : [], [])
+
+  let newOwnerMoodleId = sanitizedNewUserInfo.moodle_id;
+  if (!newOwnerMoodleId) {
+    newOwnerMoodleId = await checkAndCreateMoodleUser(sanitizedNewUserInfo);
+  }
+
+  if (newOwnerMoodleId) {
+    if (uniqueCourseMoodleIds.length) {
+      for (let i = 0; i < uniqueCourseMoodleIds.length; i++) {
+        const courseId = uniqueCourseMoodleIds[i];
+        const enrolMoodleUser = await enrolUser(newOwnerMoodleId, courseId, 5);
+      }
+      console.log('Enrolled course(s)', uniqueCourseMoodleIds, 'for Moodle user', newOwnerMoodleId);
+    }
+  } else {
+    console.log('User creation failed');
+  }
+}
+

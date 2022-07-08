@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/delivery-types",
+      "handler": "delivery-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/delivery-types/count",
+      "handler": "delivery-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/delivery-types/:id",
+      "handler": "delivery-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/delivery-types",
+      "handler": "delivery-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/delivery-types/:id",
+      "handler": "delivery-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/delivery-types/:id",
+      "handler": "delivery-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

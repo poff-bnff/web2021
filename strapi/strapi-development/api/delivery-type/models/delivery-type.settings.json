@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_types",
+  "info": {
+    "name": "DeliveryType",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "delivery_prices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ticketing.delivery-price"
+    },
+    "days_before": {
+      "type": "integer"
+    }
+  }
+}
