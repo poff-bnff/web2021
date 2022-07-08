@@ -389,6 +389,8 @@ Tags: &Tags
       - *Programme
     film_types: #(Component (repeatable))
       - *TagFilmType
+    tag_secrets: #(Component (repeatable))
+      - *TagSecret
 
 WebAuthor: &WebAuthor
     _path: /web-authors
