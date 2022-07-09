@@ -21,6 +21,9 @@
     },
     "film_types": {
       "collection": "tag-film-type"
+    },
+    "tag_secrets": {
+      "collection": "tag-secret"
     }
   }
 }
