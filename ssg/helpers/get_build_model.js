@@ -8,6 +8,7 @@ function model(arg) {
 		'hero-article-filmikool': 'trio_and_hero',
 		'hero-article-hoff': 'trio_and_hero',
 		'hero-article-industry': 'trio_and_hero',
+		'hero-article-dis-camp': 'trio_and_hero',
 		'hero-article-just-film': 'trio_and_hero',
 		'hero-article-kinoff': 'trio_and_hero',
 		'hero-article-kumu': 'trio_and_hero',
@@ -18,6 +19,7 @@ function model(arg) {
 		'filmikooli-article': 'article',
 		'hof-fi-article': 'article',
 		'industry-article': 'article',
+		'dis-camp-article': 'article',
 		'just-filmi-article': 'article',
 		'kinoffi-article': 'article',
 		'kumu-article': 'article',
@@ -29,6 +31,7 @@ function model(arg) {
 		'filmikooli-footer': 'full',
 		'hof-fi-footer': 'full',
 		'industry-footer': 'full',
+		'dis-camp-footer': 'full',
 		'just-film-footer': 'full',
 		'kinoffi-footer': 'full',
 		'kumu-footer': 'full',
@@ -40,6 +43,7 @@ function model(arg) {
 		'filmikooli-menu': 'menu',
 		'hof-fi-menu': 'menu',
 		'industry-menu': 'menu',
+		'dis-camp-menu': 'menu',
 		'just-filmi-menu': 'menu',
 		'kinoffi-menu': 'menu',
 		'kumu-menu': 'menu',
@@ -51,11 +55,12 @@ function model(arg) {
 		'filmikooli-supporter': 'full',
 		'hof-fi-supporter': 'full',
 		'industry-supporter': 'full',
+		'dis-camp-supporter': 'full',
 		'supporters-just': 'full',
 		'kinoffi-supporter': 'full',
 		'kumu-supporter': 'full',
 		'supporters-shorts': 'full',
-		'tartuff-supporter': 'full',
+		'tartuffi-supporter': 'full',
 		'supporters-page': 'full',
 
 		'article-type':'full',
@@ -88,7 +93,7 @@ function model(arg) {
 		'screening-mode': 'full',
 		'screening-type': 'full',
 		'shop': 'full',
-		'six-films': 'full',
+		'six-films': 'trio_and_hero',
 		'tag-genre': 'full',
 		'tag-keyword': 'full',
 		'tag-premiere-type': 'full',
@@ -101,6 +106,7 @@ function model(arg) {
 		'trio-filmikool': 'trio_and_hero',
 		'trio-hoff': 'trio_and_hero',
 		'trio-industry': 'trio_and_hero',
+		'trio-dis-camp': 'trio_and_hero',
 		'trio-just-film': 'trio_and_hero',
 		'trio-kinoff': 'trio_and_hero',
 		'trio-kumu': 'trio_and_hero',
@@ -109,12 +115,21 @@ function model(arg) {
 		'trio-p-oe-ff': 'trio_and_hero',
 
 		'industry-category': 'full',
-		'industry-event': 'full',
+		'industry-event': 'industry_event',
 		'industry-group': 'full',
 		'industry-person': 'full',
 		'industry-person-type': 'full',
 		'industry-project': 'full',
-		'full': 'full'
+
+		'dis-camp-category': 'full',
+		'dis-camp-event': 'full', // vb peaks olema industry_event ... sarnane
+		'dis-camp-group': 'full',
+		'dis-camp-person': 'full',
+		'dis-camp-person-type': 'full',
+		'dis-camp-project': 'full',
+		'full': 'full',
+
+		'archive': 'archive',
 	}
 
 	return mapping_models[arg]

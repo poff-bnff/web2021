@@ -1,0 +1,218 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if self.data.filters && process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+        h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
+
+        .grid_search#filters(style='display: none;')
+
+            input#search(type='text', placeholder= self.label.filters.search)
+
+            select#types_select(name='Types')
+                option(value='')= self.label.filters.projectTypes
+                each index, key in self.data.filters.types
+                    option(value=key)= index
+
+            select#categories_select(name='Categories')
+                option(value='')= self.label.filters.industryCategories
+                each index, key in self.data.filters.categories
+                    option(value=key)= index
+
+            //- select#channels_select(name='Channels')
+            //-     option(value='')= self.label.filters.channels
+            //-     each index, key in self.data.filters.channels
+            //-         option(value=key)= index
+
+            //- select#projects_select(name='Projects')
+            //-     option(value='')= self.label.filters.projects
+            //-     each index, key in self.data.filters.projects
+            //-         option(value=key)= index
+
+            select#persons_select(name='Persons')
+                option(value='')= self.label.filters.people
+                each index, key in self.data.filters.persons
+                    option(value=key)= index
+
+            select#starttimes_select(name='Starttimes')
+                option(value='')= self.label.filters.dates
+                each index, key in self.data.filters.starttimes
+                    option(value=key)= index
+
+            button.clear(onclick='unselect_all()')= self.label.filters.empty
+
+            h3#nonetoshow.sub_section_headline(style='display: none;')
+
+        section#content.schedule
+
+            if self.data.industryevents
+
+                section.grid_films
+                    -
+                        var sortFunction = function(a, b) {
+                            return !a.startTime.localeCompare(b.timestamp)
+                        }
+
+                    each event in self.data.industryevents.sort(sortFunction)
+                        -
+                            var screeningNames = function(item) {
+                                let itemNames = item.name
+                                return itemNames
+                            }
+
+                        a.card_event(id=event.id href=`/${lang_path}events/${event.slug}`)
+
+                            //- .event_card_header
+                            //-     .grid_container_event_time
+                            //-         .grid_item_event_time
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             span.screening_date.small_1
+                            //-                 if event.startTime
+                            //-                     +screeningDate(event.startTime)
+
+                            //-         .grid_item_event_time.text_right
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time.small_1
+                            //-                 +screeningTimeEET(event.startTime)
+                            //-             span.screening_time.small_1 &nbsp;EET
+
+                            //-         .grid_item_event_time.text_left
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time_user.small_1
+                            //-                 +screeningTime(event.startTime)
+                            //-             span.screening_time_user.small_1 &nbsp;User time
+
+                            //-         .grid_item_event_time.text_right
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             //- span.screening_date.small_1.notsavedevent= 'Add to calendar'
+                            //-             span.screening_date.small_1.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                            //-             span.screening_date.small_1.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+
+
+                            //- a(href=`/${lang_path}events/${event.slug}`)
+
+                            .container_frame_16_9
+                                    if event.images && event.images.length
+                                        img.container_contents_16_9(src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                                    else
+                                        img.container_contents_16_9(src='/assets/img/static/industry_placeholder_gold.jpg')
+
+                            .card_film_title
+
+                                //- if event.images && event.images[0]
+                                //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+
+                                h3.film_title_locale.dark_1= event.title
+                                    p(id= event.id+'nupp' style={color: 'red', display:'none'})
+
+                                //- if event.location
+                                //-     p.location= `@ ${event.location.name}`
+
+                                //- if event.industry_people
+                                //-     each industry_person in event.industry_people
+                                //-         if industry_person.profilePicAtInd
+                                //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
+
+                                //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
+
+                                //-         if industry_person.industry_person_types
+                                //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
+
+                                //-         if industry_person.role_at_films
+                                //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
+
+                                //- if event.description
+                                //-     p
+                                //-         +format(event.description)
+
+                                //- if event.industry_categories
+                                //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+
+                                //- if event.startTime
+                                //-     p Start time:
+                                //-     p
+                                //-         +screeningDate(event.startTime)
+                                //-     p
+                                //-         +screeningTime(event.startTime)
+
+                                //- if event.durationTime
+                                //-     p Duration:
+                                //-     p
+                                //-         +indEvDur(event.durationTime)
+
+                                //- if event.project_type
+                                //-     p= `Type: ${event.project_type}`
+
+                                //- if event.event_mode
+                                //-     p.location.small_1= `Event mode: ${event.event_mode.name}`
+
+                                //- if event.videoUrl
+                                //-     p= `Video at: ${event.videoUrl}`
+
+                                //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
+                                //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+
+                                .card_film_info
+
+                                    if event.industry_categories
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventCategories
+                                            #programmes.str_info_value.dark_1.thin_300= event.industry_categories.map(c => c.name).join(', ')
+
+                                    if event.durationTime
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.duration
+                                            #programmes.str_info_value.dark_1.thin_300
+                                                +indEvDur(event.durationTime)
+
+                                    if event.event_mode
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.industry.eventMode
+                                            #programmes.str_info_value.dark_1.thin_300= event.event_mode.name
+
+
+
+
+
+
+                            //- .event_card_footer
+                            //-     .grid_container_screening_time_2
+                            //-         div
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time.small_1
+                            //-                 +screeningTime(event.startTime)
+                            //-             span.screening_time.small_1 &nbsp;User
+
+                            //-         .text_left
+                            //-             svg.svg_icon_small_primary(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             span.screening_date.small_1(onclick=`calendarfile('${event.id}');return false`)= 'Add to calendar'
+
+                            //- Selle peidetud inputi sees on data
+                            span(id=`cal_${event.id}` style='display: none') #{event.calendar_data}
+
+
+
+
+
+                    script.
+                        var searcharray = !{JSON.stringify(self.data.search)}
+
+                        var filters = !{JSON.stringify(self.data.filters)}

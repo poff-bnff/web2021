@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/tartuff_logo_red_2021.svg' src='/assets/img/static/tartuff_logo_red_2021.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/tartuff_logo_red_2022.svg' src='/assets/img/static/tartuff_logo_red_2022.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
 
@@ -18,6 +18,9 @@ header
             li
                 nav.org_menu
                     span.org_item
+                        a(href='https://poff.ee')
+                            | PÖFF
+                    span.org_item
                         a(href='https://industry.poff.ee')
                             | !{`Industry@Tallinn & Baltic Event`}
                     span.org_item
@@ -27,11 +30,14 @@ header
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
                     span.org_item
-                        a(href='https://poff.ee/artikkel/poff-tartu/')
-                            | PÖFF Tartu
-                    span.org_item
-                        a(href='https://kinoff.ee')
-                            | Kinoff
+                        a(href='https://kumu.poff.ee')
+                            | KUMU Doc
+                    //- span.org_item
+                    //-     a(href='https://poff.ee/artikkel/poff-tartu/')
+                    //-         | PÖFF Tartu
+                    //- span.org_item
+                    //-     a(href='https://kinoff.ee')
+                    //-         | Kinoff
                     span.org_item
                         a(href='https://poff.elisastage.ee')
                             | PÖFFi veebikino

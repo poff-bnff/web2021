@@ -19,7 +19,7 @@ backup/*
 
 ssg/node_modules
 ssg/.DS_Store
-
+ssg/helpers/sheets
 
 # sanity
 ssg/*.pickle
@@ -27,6 +27,7 @@ ssg/credentials.json
 ssg/token.json
 ssg/.env
 ssg/report.*
+ssg/helpers/sheets
 
 
 # dev tools
@@ -35,7 +36,9 @@ ssg/.vscode/*
 
 # dynamic stuff
 ssg/build
+ssg/archive
 ssg/source/_fetchdir/*
+ssg/source/_fetchdirRestricted/*
 ssg/source/_styles/*
 ssg/helpers/build_logs.yaml
 ssg/helpers/build_queue.yaml
@@ -181,8 +184,6 @@ strapi/strapi-development/license.txt
 strapi/strapi-development/exports
 strapi/strapi-development/.cache
 strapi/strapi-development/build
-strapi/strapi-development/config/database.js
-strapi/strapi-development/config/server.js
 
 # extensions
 strapi/strapi-development/.vscode

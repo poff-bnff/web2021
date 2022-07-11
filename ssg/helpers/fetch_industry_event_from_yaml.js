@@ -3,23 +3,63 @@ const yaml = require('js-yaml');
 const path = require('path');
 const ical = require('ical-generator');
 const rueten = require('./rueten.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const sourceDir =  path.join(rootDir, 'source');
-const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industryevents');
+const sourceDir = path.join(rootDir, 'source');
+const fetchDir = path.join(sourceDir, '_fetchdir');
+const fetchDataDir = path.join(fetchDir, 'industryevents');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 const strapiDataIndustryEventPath = path.join(strapiDataDirPath, 'IndustryEvent.yaml')
 const STRAPIDATA_INDUSTRY_EVENTS = yaml.load(fs.readFileSync(strapiDataIndustryEventPath, 'utf8'))
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
 
-if (DOMAIN === 'industry.poff.ee') {
+let ACTIVE_FESTIVAL_EDITIONS
+let NAMEVARIABLE
+if (DOMAIN === 'discoverycampus.poff.ee') {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
+    NAMEVARIABLE = 'discamp'
+} else {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+    NAMEVARIABLE = 'industry'
+}
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params.slice(1)
+
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+
+if (param_build_type === 'target') {
+    addConfigPathAliases([`/${NAMEVARIABLE}_events_search`, `/${NAMEVARIABLE}_mycal`])
+}
+
+if (DOMAIN === 'industry.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
 
     const minimodel = {
         'images': {
             model_name: 'StrapiMedia'
+        },
+        'location': {
+            model_name: 'Location',
+            expand: {
+                'hall': {
+                    model_name: 'Hall',
+                    expand: {
+                        'cinema': {
+                            model_name: 'Cinema',
+                            expand: {
+                                'town': {
+                                    model_name: 'Town'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         'industry_categories': {
             model_name: 'IndustryCategory'
@@ -46,11 +86,16 @@ if (DOMAIN === 'industry.poff.ee') {
         },
         'industry_projects': {
             model_name: 'IndustryProject'
-        }
-
+        },
+        'festival_editions': {
+            model_name: 'FestivalEdition'
+        },
+        'event_mode': {
+            model_name: 'EventMode'
+        },
     }
-
-    const STRAPIDATA_INDUSTRY_EVENT = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
+    const STRAPIDATA_ALL_FE_INDUSTRY_EVENTS = fetchModel(STRAPIDATA_INDUSTRY_EVENTS, minimodel)
+    const STRAPIDATA_INDUSTRY_EVENT = STRAPIDATA_ALL_FE_INDUSTRY_EVENTS.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
 
     function convert_to_UTC(datetime) {
         datetime = datetime ? new Date(datetime) : new Date()
@@ -99,6 +144,11 @@ if (DOMAIN === 'industry.poff.ee') {
         }
 
         if (element['slug_en']) {
+
+            if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
+                addConfigPathAliases([`/_fetchdir/${NAMEVARIABLE}events/${element['slug_en']}`])
+            }
+
             let dirSlug = element['slug_en']
             element.path = `events/${dirSlug}`
 
@@ -108,24 +158,24 @@ if (DOMAIN === 'industry.poff.ee') {
             // https://github.com/sebbo2002/ical-generator#readme
             let eventstart = convert_to_UTC(element.startTime)
             let eventend = new Date(eventstart)
-            if(element.durationTime) {
+            if (element.durationTime) {
                 if (element.durationTime.split(':')[1] !== '00') {
-                    eventend.setUTCMinutes(eventend.getUTCMinutes()+parseInt(element.durationTime.split(':')[1]))
+                    eventend.setUTCMinutes(eventend.getUTCMinutes() + parseInt(element.durationTime.split(':')[1]))
                 }
                 if (element.durationTime.split(':')[0] !== '00') {
-                    eventend.setUTCHours(eventend.getUTCHours()+parseInt(element.durationTime.split(':')[0]))
+                    eventend.setUTCHours(eventend.getUTCHours() + parseInt(element.durationTime.split(':')[0]))
                 }
             }
             element.calendar_data = escape(ical({
-                domain: 'industry.poff.ee',
-                prodId: '//industry.poff.ee//Industry@Tallinn//EN',
+                domain: DOMAIN,
+                prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
                 events: [
                     {
                         start: convert_to_UTC(element.startTime),
                         end: eventend,
                         timestamp: convert_to_UTC(element.startTime),
                         description: element.description,
-                        location: element.location && element.location.hall && element.location.hall.cinema ? element.location.hall.cinema.name + `: http://industry.poff.ee/events/${element.slug}` : undefined,
+                        location: element.location && element.location.hall && element.location.hall.cinema ? element.location.hall.cinema.name + `: http://${DOMAIN}/events/${element.slug}` : undefined,
                         summary: element.title,
                         organizer: {
                             name: 'Industry@Tallinn & Baltic Event',
@@ -135,30 +185,26 @@ if (DOMAIN === 'industry.poff.ee') {
                 ]
             }).toString())
 
-            const oneYaml = yaml.dump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
-            const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
-
-            let saveDir = path.join(fetchDataDir, dirSlug);
-            fs.mkdirSync(saveDir, { recursive: true });
-
-            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industry_event_index_template.pug`)
-
             allData.push(element)
-        } else {
-            if ('en' === 'en' && DOMAIN === 'industry.poff.ee') {
-                console.log(`ERROR! Industry event ID ${element.id} missing slug`);
+            if (param_build_type === 'target' && !target_id.includes(element.id.toString())) {
+                continue
+            } else if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
+                console.log('Targeting event ', element.id, target_id)
             }
+            generateEventYaml(element, dirSlug);
+
+        } else {
+            console.log(`ERROR! Industry event ID ${element.id} missing slug`);
         }
     }
 
 
     let dataToYAML = []
-    let newDataToYAML = {eventsByDate: {}, allDates:[]}
+    let newDataToYAML = { eventsByDate: {}, allDates: [] }
     if (allData.length) {
         dataToYAML = allData.sort((a, b) => new Date(a.startTime) - new Date(b.startTime))
 
-        Date.prototype.addHours = function(hours) {
+        Date.prototype.addHours = function (hours) {
             var date = new Date(this.valueOf());
             date.setHours(date.getHours() + hours);
             return date;
@@ -167,7 +213,7 @@ if (DOMAIN === 'industry.poff.ee') {
         let allDates = dataToYAML.map(event => {
             let dateTimeUTC = convert_to_UTC(event.startTime)
             let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
-            let date = dateTimeUTCtoEET.getFullYear()+'-'+(dateTimeUTCtoEET.getMonth()+1)+'-'+(dateTimeUTCtoEET.getDate())
+            let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1) + '-' + (dateTimeUTCtoEET.getDate())
             if (event.channel) {
                 newDataToYAML.eventsByDate[date] = newDataToYAML.eventsByDate[date] || {}
                 newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`] = newDataToYAML.eventsByDate[date][`Channel_${event.channel.id}`] || []
@@ -247,7 +293,7 @@ if (DOMAIN === 'industry.poff.ee') {
             let starttimes = []
             if (typeof event.startTime !== 'undefined') {
 
-                Date.prototype.addHours = function(hours) {
+                Date.prototype.addHours = function (hours) {
                     var date = new Date(this.valueOf());
                     date.setHours(date.getHours() + hours);
                     return date;
@@ -255,7 +301,7 @@ if (DOMAIN === 'industry.poff.ee') {
 
                 let dateTimeUTC = convert_to_UTC(event.startTime)
                 let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
-                let date = dateTimeUTCtoEET.getFullYear()+'-'+(dateTimeUTCtoEET.getMonth()+1)+'-'+(dateTimeUTCtoEET.getDate())
+                let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1) + '-' + (dateTimeUTCtoEET.getDate())
                 let dateKey = `_${date}`
 
                 starttimes.push(dateKey)
@@ -288,12 +334,12 @@ if (DOMAIN === 'industry.poff.ee') {
                 sortable.push([item, to_sort[item]]);
             }
 
-            sortable = sortable.sort(function(a, b) {
+            sortable = sortable.sort(function (a, b) {
                 try {
                     const locale_sort = a[1].localeCompare(b[1], 'en')
                     return locale_sort
                 } catch (error) {
-                    console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                    console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                     throw new Error(error)
                 }
             });
@@ -301,7 +347,7 @@ if (DOMAIN === 'industry.poff.ee') {
             var objSorted = {}
             for (let index = 0; index < sortable.length; index++) {
                 const item = sortable[index];
-                objSorted[item[0]]=item[1]
+                objSorted[item[0]] = item[1]
             }
             return objSorted
         }
@@ -331,3 +377,14 @@ if (DOMAIN === 'industry.poff.ee') {
     fs.writeFileSync(path.join(fetchDir, `industryevents.en.yaml`), emptyYAML, 'utf8');
 
 }
+function generateEventYaml(element, dirSlug) {
+    const oneYaml = yaml.dump(rueten(element, 'en'), { 'noRefs': true, 'indent': '4' });
+    const yamlPath = path.join(fetchDataDir, dirSlug, `data.en.yaml`);
+
+    let saveDir = path.join(fetchDataDir, dirSlug);
+    fs.mkdirSync(saveDir, { recursive: true });
+
+    fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/${NAMEVARIABLE}_event_index_template.pug`);
+}
+

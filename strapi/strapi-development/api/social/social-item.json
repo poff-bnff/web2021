@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_social_social_items",
+  "info": {
+    "name": "SocialItem",
+    "icon": "dizzy"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url_et": {
+      "type": "string"
+    },
+    "svgCode": {
+      "type": "text"
+    },
+    "svgMedia": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "url_en": {
+      "type": "string"
+    },
+    "url_ru": {
+      "type": "string"
+    }
+  }
+}

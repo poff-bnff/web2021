@@ -9,6 +9,33 @@ html(lang= self.locale)
         include ../_templates/head_poff.pug
         // (onload='reloadImageOnError()')
         body
+
+            //- Messenger Chat Plugin Code
+            #fb-root
+            //- Your Chat Plugin code
+            #fb-customer-chat.fb-customerchat
+            script.
+                var chatbox = document.getElementById('fb-customer-chat');
+                chatbox.setAttribute("page_id", "178732824664");
+                chatbox.setAttribute("attribution", "biz_inbox");
+                // Your SDK code
+            script.
+                window.fbAsyncInit = function() {
+                FB.init({
+                xfbml            : true,
+                version          : 'v13.0'
+                });
+                };
+                (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+            //- Google Tag Manager iframe
+            iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-W2NM5HS' height='0' width='0' style='display:none;visibility:hidden')
             include ../_templates/header_poff.pug
             block content
             include ../_templates/footer.pug
@@ -49,11 +76,46 @@ html(lang= self.locale)
             block content
             include ../_templates/footer.pug
 
+    //- DISCAMP
+    else if process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+        include ../_templates/head_discamp.pug
+        // (onload='reloadImageOnError()')
+        body
+            include ../_templates/header_discamp.pug
+            block content
+            include ../_templates/footer.pug
+
+
     //- HOFF
     else if process.env['DOMAIN'] === 'hoff.ee'
         include ../_templates/head_hoff.pug
         // (onload='reloadImageOnError()')
         body
+
+            //- //- Messenger Chat Plugin Code
+            //- #fb-root
+            //- //- Your Chat Plugin code
+            //- #fb-customer-chat.fb-customerchat
+            //- script.
+            //-     var chatbox = document.getElementById('fb-customer-chat');
+            //-     chatbox.setAttribute("page_id", "330472107456");
+            //-     chatbox.setAttribute("attribution", "biz_inbox");
+            //-     // Your SDK code
+            //- script.
+            //-     window.fbAsyncInit = function() {
+            //-     FB.init({
+            //-     xfbml            : true,
+            //-     version          : 'v13.0'
+            //-     });
+            //-     };
+            //-     (function(d, s, id) {
+            //-     var js, fjs = d.getElementsByTagName(s)[0];
+            //-     if (d.getElementById(id)) return;
+            //-     js = d.createElement(s); js.id = id;
+            //-     js.src = 'https://connect.facebook.net/en_GB/sdk/xfbml.customerchat.js';
+            //-     fjs.parentNode.insertBefore(js, fjs);
+            //-     }(document, 'script', 'facebook-jssdk'));
+
             include ../_templates/header_hoff.pug
             block content
             include ../_templates/footer.pug
@@ -83,7 +145,7 @@ html(lang= self.locale)
         body
             include ../_templates/header_bruno.pug
             block content
-            include ../_templates/footer.pug    
+            include ../_templates/footer.pug
 
 
     //- Filmikool

@@ -697,7 +697,7 @@ const remapEventival = async () => {
             }
         }).map(screening_type => {return {id: screening_type.id}})
 
-        // e_screening.screening_mode = ''
+        // e_screening.event_mode = ''
 
         let sub_before = strapi_screening.subtitles.length
         strapi_screening.subtitles = []

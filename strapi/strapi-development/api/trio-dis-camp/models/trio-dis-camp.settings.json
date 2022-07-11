@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "trio_dis_camps",
+  "info": {
+    "name": "TrioDisCamp",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "trioDiscamp_et": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triodiscamp"
+    },
+    "trioDiscamp_en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triodiscamp"
+    },
+    "trioDiscamp_ru": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.triodiscamp"
+    }
+  }
+}

@@ -31,7 +31,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "location": {
       "model": "location"
@@ -77,6 +78,35 @@
     },
     "isPublicEvent": {
       "type": "boolean"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "event_mode": {
+      "model": "event-mode"
+    },
+    "domains": {
+      "collection": "domain"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    },
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "products": {
+      "via": "industry_events",
+      "collection": "product"
     }
   }
 }

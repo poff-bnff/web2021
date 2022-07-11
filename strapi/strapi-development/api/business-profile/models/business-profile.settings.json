@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "business_profiles",
+  "info": {
+    "name": "BusinessProfile",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "business_profiles"
+    },
+    "organisation": {
+      "model": "organisation"
+    },
+    "reg_code": {
+      "type": "string"
+    },
+    "vat_code": {
+      "type": "string"
+    },
+    "iban": {
+      "type": "string"
+    },
+    "maksekeskus_id": {
+      "type": "string"
+    },
+    "maksekeskus_secret": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.address"
+    },
+    "vat_percentage": {
+      "type": "integer"
+    },
+    "bank_name": {
+      "type": "string"
+    },
+    "bank_code": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "firstNameLastName": {
+      "type": "string"
+    },
+    "gender": {
+      "model": "gender"
+    },
+    "birthdate": {
+      "type": "date"
+    }
+  }
+}

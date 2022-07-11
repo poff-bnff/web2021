@@ -1,0 +1,5 @@
+path: search_film_archive
+data:
+    cassettes: /_fetchdir/cassettes_archive.en.yaml
+    search: /_fetchdir/search_films_archive.en.yaml
+    filters: /_fetchdir/filters_films_archive.en.yaml

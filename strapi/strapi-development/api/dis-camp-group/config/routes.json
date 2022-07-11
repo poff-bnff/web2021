@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dis-camp-groups",
+      "handler": "dis-camp-group.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-groups/count",
+      "handler": "dis-camp-group.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-groups/:id",
+      "handler": "dis-camp-group.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dis-camp-groups",
+      "handler": "dis-camp-group.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dis-camp-groups/:id",
+      "handler": "dis-camp-group.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dis-camp-groups/:id",
+      "handler": "dis-camp-group.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

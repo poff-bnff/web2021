@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_translated_translated_shorts",
+  "info": {
+    "name": "Translated Short",
+    "icon": "window-minimize"
+  },
+  "options": {},
+  "attributes": {
+    "et": {
+      "type": "string"
+    },
+    "en": {
+      "type": "string"
+    },
+    "ru": {
+      "type": "string"
+    }
+  }
+}

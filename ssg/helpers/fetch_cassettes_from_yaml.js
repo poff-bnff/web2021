@@ -4,6 +4,8 @@ const path = require('path')
 const { deleteFolderRecursive, JSONcopy } = require("./helpers.js")
 const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
+const prioritizeImagesFilm = require('./image_prioritizer_for_film.js')
+const prioritizeImages = require('./image_prioritizer.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -11,6 +13,10 @@ timer.start(__filename)
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const imageOrderStills = DOMAIN_SPECIFICS.cassettesAndFilmsImageStillsPriority
+const imageOrderStillsListView = DOMAIN_SPECIFICS.cassettesAndFilmsListViewImagePriority
+const imageOrderDirector = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriority
+const imageOrderDirectorDefaults = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriorityDefaults
 
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
@@ -36,11 +42,11 @@ const target_id = params.slice(1)
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
 if (param_build_type === 'target') {
-    addConfigPathAliases(['/films'])
+    addConfigPathAliases(['/films', '/search', '/my_films'])
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -89,9 +95,9 @@ const minimodel_cassette = {
             'film': {
                 model_name: 'Film',
                 expand: {
-                    'media': {
-                        model_name: 'FilmMedia'
-                    },
+                    // 'media': {
+                    //     model_name: 'FilmMedia'
+                    // },
                     'festival_editions': {
                         model_name: 'FestivalEdition'
                     },
@@ -144,6 +150,12 @@ const minimodel_cassette = {
                     'languages': {
                         model_name: 'Language'
                     },
+                    'subtitles': {
+                        model_name: 'Language'
+                    },
+                    'other_festivals': {
+                        model_name: 'Festival'
+                    },
                     'tags': {
                         model_name: 'Tags',
                         expand: {
@@ -180,25 +192,60 @@ const minimodel_cassette = {
     'languages': {
         model_name: 'Language'
     },
-    'media': {
-        model_name: 'FilmMedia',
-        // expand: {
-        //     'stills': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'posters': {
-        //         model_name: 'StrapiMedia'
-        //     },
-        //     'trailer': {
-        //         model_name: 'Trailer'
-        //     },
-        //     'QaClip': {
-        //         model_name: 'QaClip'
-        //     }
-        // }
-    },
+    // 'media': {
+    //     model_name: 'FilmMedia',
+    //     // expand: {
+    //     //     'stills': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'posters': {
+    //     //         model_name: 'StrapiMedia'
+    //     //     },
+    //     //     'trailer': {
+    //     //         model_name: 'Trailer'
+    //     //     },
+    //     //     'QaClip': {
+    //     //         model_name: 'QaClip'
+    //     //     }
+    //     // }
+    // },
 }
-const STRAPIDATA_CASSETTES = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+
+// koondnimekirja tootmisel tehakse:
+// nimekiri A kõikidest üksikkassettidest
+// nimekiri B kõigist mitmikkassettidest
+// nimekirjast A visatakse välja kõik kassetid, mille film figureerib nimekirjas B, ja millel on boolean === false
+// koondminekiri salvestatakse A + B
+
+const FILMS_IN_LIST_B_BOOLEAN_FALSE = []
+const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length > 1) {
+        c.orderedFilms.filter(f => {
+            if (f.film) {
+                return true
+            } else {
+                console.log(`ERROR! Cassette ${c.id} has empty orderedFilms record!!!`);
+                return false
+            }
+        }).map(f => {
+            if (!f.film.multi_and_single) {
+                FILMS_IN_LIST_B_BOOLEAN_FALSE.push(f.film.id)
+            }
+        })
+        return true
+    }
+})
+
+const STRAPIDATA_CASSETTES_A = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
+    if (c.orderedFilms && c.orderedFilms.length === 1 && !FILMS_IN_LIST_B_BOOLEAN_FALSE.includes(c.orderedFilms[0].film.id)) {
+        return true
+    } else {
+        return false
+    }
+})
+
+const STRAPIDATA_CASSETTES = STRAPIDATA_CASSETTES_A.concat(STRAPIDATA_CASSETTES_B)
 
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].domain);
 // console.log(STRAPIDATA_CASSETTES[1].festival_editions[0].festival);
@@ -232,7 +279,7 @@ const minimodel_screenings = {
         model_name: 'ScreeningType'
     },
     'screening_mode': {
-        model_name: 'ScreeningMode'
+        model_name: 'EventMode'
     },
     'subtitles': {
         model_name: 'Language'
@@ -267,6 +314,7 @@ if (CHECKPROGRAMMES) {
 
     let cassettesWithOutFestivalEditions = []
 
+    // Filter cassettes by FE's
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         if (cassette.festival_editions && cassette.festival_editions.length) {
             let cassette_festival_editions_ids = cassette.festival_editions.map(edition => edition.id)
@@ -287,6 +335,9 @@ if (CHECKPROGRAMMES) {
 const cassettesPath = path.join(fetchDir, 'cassettes')
 deleteFolderRecursive(cassettesPath)
 
+let cassetteTrailerErrorIDs = []
+let filmTrailerErrorIDs = []
+
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
@@ -301,13 +352,6 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-
-
-        if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
-            continue
-        } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
-            console.log('Targeting cassette in screening', s_cassette.id, target_id)
-        }
 
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
@@ -331,10 +375,8 @@ for (const lang of allLanguages) {
         }
 
 
-
         if (typeof slugEn !== 'undefined') {
-
-            if (param_build_type === 'target') {
+            if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
             }
 
@@ -343,39 +385,18 @@ for (const lang of allLanguages) {
             fs.mkdirSync(s_cassette_copy.directory, { recursive: true })
 
             let cassetteCarouselPicsCassette = []
+            let cassetteCarouselPicsCassetteThumbs = []
             let cassetteCarouselPicsFilms = []
+            let cassetteCarouselPicsFilmsThumbs = []
             let cassettePostersCassette = []
             let cassettePostersFilms = []
-
-            // Kasseti treiler
-            if (s_cassette_copy.media && s_cassette_copy.media.trailer && s_cassette_copy.media.trailer[0]) {
-                for (trailer of s_cassette_copy.media.trailer) {
-                    if (trailer.url && trailer.url.length > 10) {
-                        if (trailer.url.includes('vimeo')) {
-                            let splitVimeoLink = trailer.url.split('/')
-                            let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                            if (videoCode.length === 9) {
-                                trailer.videoCode = videoCode
-                            }
-                        } else {
-                            let splitYouTubeLink = trailer.url.split('=')[1]
-                            let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                            if (splitForVideoCode.length === 11) {
-                                trailer.videoCode = splitForVideoCode
-                            }
-                        }
-                    }
-                }
-            }
-
-
 
             // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
             rueten(s_cassette_copy, lang)
 
             // #379 put ordered films to cassette.film
-            let ordered_films = s_cassette_copy.orderedFilms
+            let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
 
             if (ordered_films !== undefined && ordered_films[0]) {
                 s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
@@ -386,10 +407,20 @@ for (const lang of allLanguages) {
                 })
             }
 
+            // Kasseti treiler
+            trailerProcessing(s_cassette_copy, 'cassette')
+
             if (s_cassette_copy.films && s_cassette_copy.films.length) {
                 for (const onefilm of s_cassette_copy.films) {
                     if (onefilm.orderedCountries) {
-                        let orderedCountries = onefilm.orderedCountries
+                        let orderedCountries = onefilm.orderedCountries.filter(c => {
+                            if (c && c.country) {
+                                return true
+                            } else {
+                                console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
+                                return false
+                            }
+                        })
                             .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                         onefilm.orderedCountries = orderedCountries
                         if (orderedCountries.length) {
@@ -406,6 +437,7 @@ for (const lang of allLanguages) {
             let screenings = []
             for (screeningIx in STRAPIDATA_SCREENINGS) {
                 let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
+
                 if (screening.cassette && screening.cassette.id === s_cassette_copy.id
                     && screening.screening_types && screening.screening_types[0]) {
                     let screeningNames = function (item) {
@@ -419,6 +451,7 @@ for (const lang of allLanguages) {
 
                     // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
                     // - st ehitatakse
+
                     hasOneCorrectScreening = true
 
                     delete screening.cassette
@@ -442,21 +475,52 @@ for (const lang of allLanguages) {
                 s_cassette_copy.slug = slugEn
             }
 
+            s_cassette_copy.media = {}
+            if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
+            if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
+            if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
+            if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
+            delete s_cassette_copy.media
+
+            const cassetteStills = prioritizeImagesFilm(s_cassette_copy, imageOrderStills, 'stills')
+            const cassetteStillsThumbs = prioritizeImagesFilm(s_cassette_copy, imageOrderStillsListView, 'stills')
+
             // Cassette carousel pics
-            if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
-                for (const stillIx in s_cassette_copy.media.stills) {
-                    let still = s_cassette_copy.media.stills[stillIx]
-                    if (still.hash && still.ext) {
-                        if (still.hash.substring(0, 4) === 'F_1_') {
-                            cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                        }
-                        cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            if (cassetteStills?.length?.images) {
+                for (still of cassetteStills.images) {
+                    if (still.substring(0, 4) === 'F_1_') {
+                        cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still}`)
                     }
+                    cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still}`)
                 }
             }
 
+            // Cassette carousel pics thumbs
+            if (cassetteStillsThumbs?.length?.imagesThumbs) {
+                for (still of cassetteStillsThumbs.imagesThumbs) {
+                    if (still.substring(0, 4) === 'F_1_') {
+                        cassetteCarouselPicsCassetteThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                    }
+                    cassetteCarouselPicsCassetteThumbs.push(`https://assets.poff.ee/img/${still}`)
+                }
+            }
+
+            // // Cassette carousel pics
+            // if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
+            //     for (const stillIx in s_cassette_copy.media.stills) {
+            //         let still = s_cassette_copy.media.stills[stillIx]
+            //         if (still.hash && still.ext) {
+            //             if (still.hash.substring(0, 4) === 'F_1_') {
+            //                 cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //             }
+            //             cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+            //         }
+            //     }
+            // }
+
             if (cassetteCarouselPicsCassette.length > 0) {
-                s_cassette_copy.cassetteCarouselPicsCassette = cassetteCarouselPicsCassette
+                s_cassette_copy.cassetteCarouselPicsCassette = [...new Set(cassetteCarouselPicsCassette)]
+                s_cassette_copy.cassetteCarouselPicsCassetteThumbs = [[...new Set(cassetteCarouselPicsCassetteThumbs)][0]]
             }
 
             // Cassette poster pics
@@ -489,20 +553,59 @@ for (const lang of allLanguages) {
                         scc_film.dirSlug = filmSlugEn
                     }
 
+                    scc_film.media = {}
+                    // Construct film media
+                    if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
+                    if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
+                    if (scc_film?.trailer?.[0]) { scc_film.media.trailer = scc_film.trailer }
+                    if (scc_film?.QaClip?.[0]) { scc_film.media.QaClip = scc_film.QaClip }
+
+                    const filmStills = prioritizeImagesFilm(scc_film, imageOrderStills, 'stills')
+                    const filmStillsThumbs = prioritizeImagesFilm(scc_film, imageOrderStillsListView, 'stills')
+                    delete scc_film.media
+
+                    let sortedFilmStills = []
+
                     // Film carousel pics
-                    if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
-                        for (still of scc_film.media.stills) {
-                            if (still.hash && still.ext) {
-                                if (still.hash.substring(0, 4) === 'F_1_') {
-                                    cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                                }
-                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    if (filmStills?.images?.length) {
+                        for (still of filmStills.images) {
+                            if (still.substring(0, 4) === 'F_1_') {
+                                cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.unshift(still)
+                            } else {
+                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
+                                sortedFilmStills.push(still)
+                            }
+                        }
+                    }
+                    scc_film.stills = sortedFilmStills.length ? sortedFilmStills : null
+
+                    // Film carousel pics thumbs
+                    if (filmStillsThumbs?.imagesThumbs?.length) {
+                        for (still of filmStillsThumbs.imagesThumbs) {
+                            if (still.substring(0, 4) === 'F_1_') {
+                                cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                            } else {
+                                cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
                             }
                         }
                     }
 
+                    // // Film carousel pics
+                    // if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
+                    //     for (still of scc_film.media.stills) {
+                    //         if (still.hash && still.ext) {
+                    //             if (still.hash.substring(0, 4) === 'F_1_') {
+                    //                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //             }
+                    //             cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                    //         }
+                    //     }
+                    // }
+
                     if (cassetteCarouselPicsFilms.length > 0) {
-                        s_cassette_copy.cassetteCarouselPicsFilms = cassetteCarouselPicsFilms
+                        s_cassette_copy.cassetteCarouselPicsFilms = [...new Set(cassetteCarouselPicsFilms)]
+                        s_cassette_copy.cassetteCarouselPicsFilmsThumbs = [[...new Set(cassetteCarouselPicsFilmsThumbs)][0]]
                     }
 
                     // Film posters pics
@@ -522,25 +625,7 @@ for (const lang of allLanguages) {
                     }
 
                     // Filmi treiler
-                    if (scc_film.media && scc_film.media.trailer && scc_film.media.trailer[0]) {
-                        for (trailer of scc_film.media.trailer) {
-                            if (trailer.url && trailer.url.length > 10) {
-                                if (trailer.url.includes('vimeo')) {
-                                    let splitVimeoLink = trailer.url.split('/')
-                                    let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                                    if (videoCode.length === 9) {
-                                        trailer.videoCode = videoCode
-                                    }
-                                } else {
-                                    let splitYouTubeLink = trailer.url.split('=')[1]
-                                    let splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                                    if (splitForVideoCode.length === 11) {
-                                        trailer.videoCode = splitForVideoCode
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    trailerProcessing(scc_film, 'film')
 
                     // Rolepersons by role
                     if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
@@ -552,7 +637,18 @@ for (const lang of allLanguages) {
                             if (rolePerson.person) {
                                 if (rolePerson?.role_at_film?.roleNamePrivate) {
                                     if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
-                                        scc_film.credentials.rolePerson[roleIx].person = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        let directorPerson = {
+                                            ...STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        }
+                                        directorPerson.media = {
+                                            picture: [directorPerson.picture]
+                                        }
+
+                                        const primaryImage = prioritizeImages(directorPerson, imageOrderDirector, imageOrderDirectorDefaults)
+                                        if (primaryImage) { directorPerson.primaryImage = primaryImage }
+                                        delete directorPerson.media
+
+                                        scc_film.credentials.rolePerson[roleIx].person = directorPerson
                                     }
                                     let searchRegExp = new RegExp(' ', 'g')
                                     const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
@@ -607,7 +703,12 @@ for (const lang of allLanguages) {
 
             if (hasOneCorrectScreening === true) {
                 allData.push(s_cassette_copy)
-                // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+                    continue
+                } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
+                    console.log('Targeting cassette ', s_cassette.id, target_id)
+                    // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+                }
                 generateYaml(s_cassette_copy, lang)
             } else {
                 cassettesWithOutSpecifiedScreeningType.push(s_cassette_copy.id)
@@ -630,6 +731,64 @@ for (const lang of allLanguages) {
         timer.log(__filename, `Skipped cassettes with IDs ${uniqueIDs2.join(', ')}, as none of screening types are ${whichScreeningTypesToFetch.join(', ')}`)
     }
     generateAllDataYAML(allData, lang)
+}
+
+if (cassetteTrailerErrorIDs.length) {
+    console.log('ATTENTION! Cassette(s) with ID(s)', cassetteTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+if (filmTrailerErrorIDs.length) {
+    console.log('ATTENTION! Film(s) with ID(s)', filmTrailerErrorIDs.join(', '), 'have empty trailer components')
+}
+
+function trailerProcessing(cassetteOrFilm, type) {
+    if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
+        let trailerValidation = cassetteOrFilm.trailer.filter(t => {
+            if (!t.url) {
+                if (type === 'cassette') {
+                    cassetteTrailerErrorIDs.push(cassetteOrFilm.id)
+                } else {
+                    filmTrailerErrorIDs.push(cassetteOrFilm.id)
+                }
+                return false
+            } else {
+                return true
+            }
+        })
+        cassetteOrFilm.trailer = trailerValidation.length ? trailerValidation : null
+
+        if (cassetteOrFilm.trailer) {
+            for (trailer of cassetteOrFilm.trailer) {
+                if (trailer.url && trailer.url.length > 10) {
+                    if (trailer.url.includes('vimeo')) {
+                        let splitVimeoLink = trailer.url.split('/')
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
+                        if (videoCode.length === 9) {
+                            trailer.videoCode = videoCode
+                        }
+                    } else {
+                        let splitYouTubeLink
+                        let splitForVideoCode
+
+                        if (trailer.url.includes('youtube.com')) {
+                            // Long youtube link
+                            splitYouTubeLink = trailer.url.split('=')[1]
+                            splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
+                        } else if (trailer.url.includes('youtu.be')) {
+                            // Short youtube link
+                            splitYouTubeLink = trailer.url.split('?')[0]
+                            splitForVideoCode = splitYouTubeLink.split('/')[3]
+                        }
+
+                        if (splitForVideoCode.length === 11) {
+                            trailer.videoCode = splitForVideoCode
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return cassetteOrFilm
 }
 
 function generateYaml(element, lang) {
@@ -661,10 +820,6 @@ function generateAllDataYAML(allData, lang) {
             return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
         }
 
-        cassette.cassetteCarouselPicsCassetteThumbs = cassette.cassetteCarouselPicsCassette?.length ?
-            cassette.cassetteCarouselPicsCassette.map(txt => picSplit(txt)) : null
-        cassette.cassetteCarouselPicsFilmsThumbs = cassette.cassetteCarouselPicsFilms?.length ?
-            cassette.cassetteCarouselPicsFilms.map(txt => picSplit(txt)) : null
         cassette.cassettePostersCassetteThumbs = cassette.cassettePostersCassette?.length ?
             cassette.cassettePostersCassette.map(txt => picSplit(txt)) : null
         cassette.cassettePostersFilmsThumbs = cassette.cassettePostersFilms?.length ?
@@ -684,6 +839,9 @@ function generateAllDataYAML(allData, lang) {
         countries: {},
         subtitles: {},
         premieretypes: {},
+        filmtypes: {},
+        genres: {},
+        keywords: {},
         towns: {},
         cinemas: {}
     }
@@ -756,11 +914,29 @@ function generateAllDataYAML(allData, lang) {
             }
         }
         let premieretypes = []
+        let filmtypes = []
+        let genres = []
+        let keywords = []
         if (cassette.tags) {
-            for (const types of cassette.tags.premiere_types || []) {
-                const type_name = types
+            for (const filmpremieretype of cassette.tags.premiere_types || []) {
+                const type_name = filmpremieretype
                 premieretypes.push(type_name)
                 filters.premieretypes[type_name] = type_name
+            }
+            for (const filmtype of cassette.tags.film_types || []) {
+                const type_name = filmtype
+                filmtypes.push(type_name)
+                filters.filmtypes[type_name] = type_name
+            }
+            for (const genre of cassette.tags.genres || []) {
+                const type_name = genre
+                genres.push(type_name)
+                filters.genres[type_name] = type_name
+            }
+            for (const keyword of cassette.tags.keywords || []) {
+                const type_name = keyword
+                keywords.push(type_name)
+                filters.keywords[type_name] = type_name
             }
         }
         return {
@@ -775,6 +951,9 @@ function generateAllDataYAML(allData, lang) {
             countries: countries,
             subtitles: subtitles,
             premieretypes: premieretypes,
+            filmtypes: filmtypes,
+            genres: genres,
+            keywords: keywords,
             towns: towns,
             cinemas: cinemas
         }
@@ -792,6 +971,7 @@ function generateAllDataYAML(allData, lang) {
                 return locale_sort
             } catch (error) {
                 console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });
@@ -810,6 +990,9 @@ function generateAllDataYAML(allData, lang) {
         countries: mSort(filters.countries),
         subtitles: mSort(filters.subtitles),
         premieretypes: mSort(filters.premieretypes),
+        filmtypes: mSort(filters.filmtypes),
+        genres: mSort(filters.genres),
+        keywords: mSort(filters.keywords),
         towns: mSort(filters.towns),
         cinemas: mSort(filters.cinemas),
     }

@@ -1,8 +1,8 @@
-section#carouselExampleIndicators.poffi_banner_box.carousel.slide(data-ride='carousel' data-interval='3000')
+section#carouselSecondBannerIndicators.poffi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='3000')
 
         ol.carousel-indicators
-            li(data-target='#carouselExampleIndicators' data-slide-to = 0)
-            li(data-target='#carouselExampleIndicators' data-slide-to = 1)
+            li(data-bs-target='#carouselSecondBannerIndicators' href='#carouselSecondBannerIndicators' data-bs-slide-to=0 class='active')
+            li(data-bs-target='#carouselSecondBannerIndicators' href='#carouselSecondBannerIndicators' data-bs-slide-to=1)
 
         if lang_path === 'en/'
             .carousel-inner.container_frame_poffi_banner
@@ -18,12 +18,12 @@ section#carouselExampleIndicators.poffi_banner_box.carousel.slide(data-ride='car
                 a(href= `/artikkel/turvajuhised-ja-nouanded/`).carousel-item.active.container_contents_poffi_banner
                     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/mask_et.jpg`)
 
-        a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+        a.carousel-control-prev(href='#carouselSecondBannerIndicators' role='button' data-bs-slide='prev')
             // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='15 18 9 12 15 6')
             span.sr-only Previous
-        a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+        a.carousel-control-next(href='#carouselSecondBannerIndicators' role='button' data-bs-slide='next')
             // <span class="carousel-control-next-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='9 18 15 12 9 6')

@@ -1,22 +1,4 @@
 
-//- Eemaldab screeningu 'broneeri' ja  'osta pilet' nupud kui screeningu dateTime on minevikus
-mixin rmOldScreeningButtons()
-    script.
-        (function() {
-            var currentDate = new Date()
-            var buttons = document.querySelectorAll('[btn-type="screening"]')
-            if (buttons.length) {
-                for (button of buttons) {
-                    if (button.getAttribute('scrn-loc') !== '16') {
-                        var screeningDate = new Date(button.getAttribute('scrn-datetime'))
-                        if (currentDate > screeningDate) {
-                            button.style.display = 'none'
-                        }
-                    }
-                }
-            }
-        })();
-
 //- lisab õige video treileriks, kasutab film.layout.pug
 mixin video(videoId='')
     if videoId.length === 9
@@ -50,7 +32,12 @@ mixin videolQaClip(videoUrl='')
         iframe#videoframe(width='100%' height='100%' src=`https://videolevels.com/embed/${videoId}`
             frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
 
-
+mixin heroVideo(clipUrlDefault='')
+    - var videoId = clipUrlDefault.split('/')[1] || ''
+    if videoId.length === 9
+        iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
+            frameborder='0' allow='accelerometer' encrypted-media=''
+            gyroscope='' picture-in-picture='' allowfullscreen='')
 
 //- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET kellaaeg (nt 12:00 PM)
 //- Industry events tarbeks peamiselt

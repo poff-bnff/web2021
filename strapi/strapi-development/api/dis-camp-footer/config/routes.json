@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dis-camp-footers",
+      "handler": "dis-camp-footer.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-footers/count",
+      "handler": "dis-camp-footer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dis-camp-footers/:id",
+      "handler": "dis-camp-footer.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dis-camp-footers",
+      "handler": "dis-camp-footer.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dis-camp-footers/:id",
+      "handler": "dis-camp-footer.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dis-camp-footers/:id",
+      "handler": "dis-camp-footer.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

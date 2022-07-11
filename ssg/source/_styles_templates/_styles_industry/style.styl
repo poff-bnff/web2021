@@ -118,7 +118,8 @@ body
     // padding-left 0
     // padding-right 0
     // padding-bottom 0
-
+    a
+        text-decoration none
 // main
 //     height 100vh
 
@@ -520,8 +521,8 @@ footer
 
 .grid_events
     display: grid
-    grid-template-columns: 1fr
-    grid-template-columns: auto
+    grid-template-columns: 1
+    grid-template-columns: 1
     grid-template-rows: auto
     padding-top 1rem
 
@@ -1623,9 +1624,16 @@ option
     padding .5rem 1rem .5rem 1rem
     background-color bg_dark_4
 
+.event_card_header
+    // padding .5rem 3rem .5rem 2rem
+    // background-color rgba(79, 196, 191, .2)
+    background-color clr_primary
+    align-self start
+
 .event_card_footer
-    padding .5rem 1rem .5rem 1rem
-    background-color bg_dark_4
+    // padding .5rem 3rem .5rem 2rem
+    // background-color rgba(79, 196, 191, .2)
+    background-color none
     align-self end
 
 
@@ -1637,9 +1645,10 @@ option
     // stroke rgba(255, 255, 255, .5)
     height 1.5rem
     width 1.5rem
-    margin-right .5rem
-    margin-top -.6rem
-    stroke rgba(255, 255, 255, .5)
+    margin-right .6rem
+    margin-top -.5rem
+    stroke rgba(0, 0, 0, .8)
+    // stroke white_96
 
 .svg_icon_small_primary
     // height calc(1.5rem + 0.1vw)
@@ -1649,8 +1658,8 @@ option
     // stroke rgba(255, 255, 255, .5)
     height 1.5rem
     width 1.5rem
-    margin-right .5rem
-    margin-top -.6rem
+    margin-right .6rem
+    margin-top -.5rem
     stroke clr_primary
 
 .small_1
@@ -1857,7 +1866,7 @@ header
     li
         height 1px
 
-.card-deck
+.card-group
     justify-content center
 
 .container_frame_16_9
@@ -2263,6 +2272,17 @@ a.btn_popover
     grid-template-columns 1fr 1fr
     padding-top .7rem
 
+.grid_container_event_time
+    display grid
+    grid-template-columns repeat(auto-fit, minmax(240px, 1fr))
+    padding 1rem
+
+.grid_item_event_time
+    padding-left 1rem
+    padding-right 1rem
+    padding-top .6rem
+    padding-bottom .3rem
+
 .grid_container_screening_time_2
     display grid
     grid-template-columns 1fr 1fr
@@ -2282,7 +2302,7 @@ a.btn_popover
   text-align left
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color white_96
+  color dark_1
   letter-spacing 0.04em
 
 .screening_weekday
@@ -2296,7 +2316,14 @@ a.btn_popover
   text-align right
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color clr_primary
+  color dark_1
+  letter-spacing 0.04em
+
+.screening_time_user
+  text-align right
+  font-size calc(1.25rem + 0.1vw)
+  font-weight 400
+  color #666666
   letter-spacing 0.04em
 
 .screening_hall
@@ -2304,6 +2331,21 @@ a.btn_popover
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
   color white_96
+  letter-spacing 0.04em
+
+.screening_hall
+  text-align left
+  font-size calc(1.25rem + 0.1vw)
+  font-weight 400
+  color white_96
+  letter-spacing 0.04em
+
+.location
+  font-family font_h
+  text-align left
+  font-size calc(1.25rem + 0.1vw)
+  font-weight 400
+  color dark_1
   letter-spacing 0.04em
 
 .screening_venue
@@ -2390,6 +2432,19 @@ a.btn_popover
     color #dark_3
 
 
+.watermark
+    width 10%
+    height 10%
+    margin 1em
+    color #fff
+    position absolute
+    top 3%
+    right 2%
+    pointer-events none
+    opacity 34%
+    background url(https://vl-mvs.s3.amazonaws.com/customer/elisa/poff/2021/powered_by_elisa_stage_2.svg)
+    background-repeat no-repeat
+    background-size contain
 
 
 
@@ -2505,6 +2560,9 @@ a.btn_popover
     grid-template-columns 1fr
     grid-template-rows auto
     align-content end
+    // width calc(100px + 60vw)
+    min-width 300px
+    max-width 1200px
     // margin-top 2rem
     background-color white
     margin-bottom 1.618rem
@@ -2540,19 +2598,19 @@ a.btn_popover
     text-decoration none
 
 .card_film_title
-    padding-left 1.2rem
-    padding-top 2.4rem
-    padding-right 1.2rem
-    // padding-bottom: .1rem
+    padding-left 2rem
+    padding-top 2rem
+    padding-right 2rem
+    padding-bottom: .5rem
     text-decoration none
-    align-self start
+    align-self end
     vertical-align top
 
 .card_film_info
     padding-top: .5rem
     // padding-bottom: 1.618rem
-    padding-left: 1rem
-    padding-right: 1rem
+    padding-left: 2rem
+    padding-right: 2rem
 
 .card_project_info
     padding-top: .5rem
@@ -2847,6 +2905,12 @@ a.btn_popover
     font-size 1.4rem
     color dark_4
     letter-spacing 0.04rem
+
+.event_title
+    font-size 2.4rem
+    color dark_4
+    letter-spacing 0.04rem
+    font-weight 300
 
 .str_info_value_program
     color: clr_primary
@@ -3225,9 +3289,10 @@ a.btn_popover
     .grid_events
         display grid
         // grid-template-columns 1fr 1fr 1fr
-        grid-template-columns repeat(auto-fill, minmax(500px, 1fr))
+        // grid-template-columns repeat(auto-fill, minmax(500px, 1fr))
+        grid-template-columns 1
         grid-template-rows auto
-        grid-gap 1rem
+        grid-gap 2rem
         padding 2rem
         padding-top 1rem
         justify-content center
@@ -3407,6 +3472,7 @@ a.btn_popover
         margin 0
         padding 0
         padding-right 1.2rem
+        color dark_1
         // border dashed red
 
     .main_menu ul
@@ -3822,3 +3888,13 @@ strong
 
 .white_96
     color white_96
+
+.sr-only
+    position absolute
+    width 1px
+    height 1px
+    padding 0
+    margin -1px
+    overflow hidden
+    clip rect(0, 0, 0, 0)
+    border 0

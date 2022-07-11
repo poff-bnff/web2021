@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "films",
   "info": {
-    "name": "Film"
+    "name": "Film",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title_et": {
@@ -32,11 +34,6 @@
       "repeatable": false,
       "component": "translated.translated-long"
     },
-    "media": {
-      "type": "component",
-      "repeatable": false,
-      "component": "media.film-media"
-    },
     "tags": {
       "type": "component",
       "repeatable": false,
@@ -59,9 +56,6 @@
     },
     "festival_editions": {
       "collection": "festival-edition"
-    },
-    "otherFestivals": {
-      "type": "string"
     },
     "credentials": {
       "type": "component",
@@ -99,6 +93,53 @@
       "component": "translated.translated-long"
     },
     "foreignUrl": {
+      "type": "string"
+    },
+    "multi_and_single": {
+      "type": "boolean",
+      "default": false
+    },
+    "awardings": {
+      "collection": "awarding",
+      "via": "film"
+    },
+    "other_festivals": {
+      "collection": "festival"
+    },
+    "vialog_id": {
+      "type": "string"
+    },
+    "stills": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "trailer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.trailers"
+    },
+    "QaClip": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.qa-clip"
+    },
+    "chat_w_name": {
       "type": "string"
     }
   }

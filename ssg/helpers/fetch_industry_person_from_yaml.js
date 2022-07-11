@@ -2,23 +2,49 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 const replaceLinks = require('./replace_links.js')
+const addConfigPathAliases = require('./add_config_path_aliases.js')
+const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
-const sourceDir =  path.join(__dirname, '..', 'source');
-const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'industrypersons');
+const rootDir = path.join(__dirname, '..')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+
+const sourceDir = path.join(rootDir, 'source');
+const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_domainStrapidata', 'IndustryPerson.yaml');
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
 
-if (DOMAIN !== 'industry.poff.ee') {
+let ACTIVE_FESTIVAL_EDITIONS
+let NAMEVARIABLE
+if (DOMAIN === 'discoverycampus.poff.ee') {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
+    NAMEVARIABLE = 'discamp'
+} else {
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+    NAMEVARIABLE = 'industry'
+}
+
+const imageOrder = DOMAIN_SPECIFICS.industryPersonsImagePriority
+const imageOrderDefaults = DOMAIN_SPECIFICS.industryPersonsImagePriorityDefaults
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+
+const fetchDataDir = param_build_type === 'archive' ? path.join(fetchDir, 'industry_persons_archive') : path.join(fetchDir, 'industry_persons')
+
+if (DOMAIN !== 'industry.poff.ee' && DOMAIN !== 'discoverycampus.poff.ee') {
     let emptyYAML = yaml.dump([], {
         'noRefs': true,
         'indent': '4'
     })
     fs.writeFileSync(path.join(fetchDir, `search_industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_industry_persons_archive.en.yaml`), emptyYAML, 'utf8')
     fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `industrypersons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_industry_persons_archive.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `industry_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `industry_persons_archive.en.yaml`), emptyYAML, 'utf8')
 } else {
     const STRAPIDATA_INDUSTRY_PERSON = yaml.load(fs.readFileSync(strapiDataPath, 'utf8'))
 
@@ -43,23 +69,59 @@ if (DOMAIN !== 'industry.poff.ee') {
         }
     }
 
-    const STRAPIDATA_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
-
-    const rootDir =  path.join(__dirname, '..')
-    const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
-    const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-
+    const STRAPIDATA_ALL_FE_INDUSTRY_PERSONS = fetchModel(STRAPIDATA_INDUSTRY_PERSON, minimodel)
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
+
+    if (param_build_type === 'archive') {
+        addConfigPathAliases([`/industry_persons_archive_search`])
+        let archivePersonsYamlNameSuffix = 'industry_persons_archive'
+        let archiveIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => !ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+        startIndustryPersonProcessing(languages, archiveIndPersons, archivePersonsYamlNameSuffix, true)
+    } else {
+        let activePersonsYamlNameSuffix = 'industry_persons'
+        let activeIndPersons = STRAPIDATA_ALL_FE_INDUSTRY_PERSONS.filter(p => p.festival_editions && p.festival_editions.map(ed => ed.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+        startIndustryPersonProcessing(languages, activeIndPersons, activePersonsYamlNameSuffix)
+    }
+
+}
+
+function mSort(to_sort) {
+    // Töötav sorteerimisfunktsioon filtritele
+
+    let sortable = []
+    for (var item in to_sort) {
+        sortable.push([item, to_sort[item]]);
+    }
+
+    sortable = sortable.sort(function (a, b) {
+        try {
+            const locale_sort = a[1].localeCompare(b[1], lang)
+            return locale_sort
+        } catch (error) {
+            console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+            throw new Error(error)
+        }
+    });
+
+    var objSorted = {}
+    for (let index = 0; index < sortable.length; index++) {
+        const item = sortable[index];
+        objSorted[item[0]] = item[1]
+    }
+    return objSorted
+}
+
+function startIndustryPersonProcessing(languages, STRAPIDATA_INDUSTRY_PERSONS, indPersonsYamlNameSuffix, archiveBuild = false) {
+    var templateDomainName = archiveBuild ? 'industry_archive' : (DOMAIN === 'discoverycampus.poff.ee' ? 'discamp' : 'industry')
+
     for (lang of languages) {
 
-        console.log(`Fetching ${DOMAIN} industry persons ${lang} data`);
+        console.log(`Fetching ${DOMAIN} industry ${indPersonsYamlNameSuffix} ${lang} data`);
 
         allData = []
         for (const ix in STRAPIDATA_INDUSTRY_PERSONS) {
             let industry_person = JSON.parse(JSON.stringify(STRAPIDATA_INDUSTRY_PERSONS[ix]));
-
-            var templateDomainName = 'industry';
 
             // rueten func. is run for each industry_person separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
@@ -77,16 +139,16 @@ if (DOMAIN !== 'industry.poff.ee') {
             })
 
             if (!industry_person.person) {
-                console.log(`ERROR! Industry person ID ${industry_person.id} not linked to any person, skipped.`)
+                console.log(`ERROR! Industry ${indPersonsYamlNameSuffix} ID ${industry_person.id} not linked to any person, skipped.`)
                 continue
             }
             industry_person.path = industry_person.slug;
 
             if (industry_person.clipUrl) {
-                if(industry_person.clipUrl && industry_person.clipUrl.length > 10) {
+                if (industry_person.clipUrl && industry_person.clipUrl.length > 10) {
                     if (industry_person.clipUrl.includes('vimeo')) {
                         let splitVimeoLink = industry_person.clipUrl.split('/')
-                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
+                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
                         if (videoCode.length === 9) {
                             industry_person.clipUrlCode = videoCode
                         }
@@ -100,11 +162,29 @@ if (DOMAIN !== 'industry.poff.ee') {
                 }
             }
 
+            // Create a temporary media component out of available pictures,
+            // then prioritize and fill picture if any
+            // Delete excess picture objects and arrays afterwards
+            let mediaObj = {
+                media: {}
+            }
+            if (industry_person.profilePicAtInd) {
+                mediaObj.media.profilePicAtInd = [industry_person.profilePicAtInd]
+                delete industry_person.profilePicAtInd
+            }
+            if (industry_person?.person?.picture) {
+                mediaObj.media.personPicture = [industry_person.person.picture]
+                delete industry_person.person.picture
+            }
+            if (mediaObj.media.profilePicAtInd || mediaObj.media.personPicture) {
+                industry_person.picture = prioritizeImages(mediaObj, imageOrder, imageOrderDefaults);
+            }
+
             let oneYaml = {}
             try {
                 oneYaml = yaml.dump(industry_person, { 'noRefs': true, 'indent': '4' })
             } catch (error) {
-                console.error({error, industry_person})
+                console.error({ error, industry_person })
                 throw error
             }
 
@@ -114,14 +194,20 @@ if (DOMAIN !== 'industry.poff.ee') {
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industryperson_${templateDomainName}_index_template.pug`)
+            if (archiveBuild) {
+                addConfigPathAliases([`/_fetchdir/industry_persons_archive/${industry_person.slug}`])
+            }
+
             allData.push(industry_person);
         }
 
-        const yamlPath = path.join(fetchDir, `industrypersons.${lang}.yaml`)
+        const yamlPath = path.join(fetchDir, `${indPersonsYamlNameSuffix}.${lang}.yaml`)
 
         if (!allData.length) {
-            console.log('No data for industry persons, creating empty YAML')
+            console.log(`No data for industry ${indPersonsYamlNameSuffix}, creating empty YAMLs`)
             fs.writeFileSync(yamlPath, '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `search_${indPersonsYamlNameSuffix}.${lang}.yaml`), '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `filters_${indPersonsYamlNameSuffix}.${lang}.yaml`), '[]', 'utf8')
             continue
         }
 
@@ -129,106 +215,86 @@ if (DOMAIN !== 'industry.poff.ee') {
         const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
 
+        generatePersonsSearchAndFilterYamls(allData, lang, indPersonsYamlNameSuffix);
 
-        let filters = {
-            types: {},
-            roleatfilms: {},
-            lookingfors: {},
-        }
-
-        const industry_persons_search = allData.map(industry_person => {
-
-            let types = []
-            let person = industry_person.person
-            if (typeof industry_person.industry_person_types !== 'undefined') {
-                let industry_person_types = industry_person.industry_person_types.map(type => type.type)
-                for (const type of industry_person_types) {
-                    types.push(type)
-                    filters.types[type] = type
-                }
-            }
-
-            let roleatfilms = []
-
-            for (const role of (industry_person.role_at_films || [])
-                .sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
-                    || []) {
-                const roleName = role.roleName
-                roleatfilms.push(roleName)
-                filters.roleatfilms[roleName] = roleName
-            }
-
-            let lookingfors = []
-
-            if (industry_person.lookingFor) {
-                const lookingFor = industry_person.lookingFor
-                lookingfors.push(lookingFor)
-                filters.lookingfors[lookingFor] = lookingFor
-            }
-
-            let filmographies = []
-            const filmography = industry_person.filmography
-            if (filmography && filmography.text) {
-                filmographies.push(filmography.text)
-            }
-            if (filmography && filmography.film) {
-                for (const film of filmography.film) {
-                    filmographies.push(`${film.title} ${film.title} ${film.synopsis}`)
-                }
-            }
-
-            return {
-                id: industry_person.id,
-                text: [
-                    `${person.firstName} ${person.lastName}`,
-                    industry_person.emailAtInd,
-                    industry_person.phoneAtInd,
-                    industry_person.aboutText,
-                    industry_person.lookingFor,
-                    industry_person.website,
-                    filmographies,
-                ].join(' ').toLowerCase(),
-                types: types,
-                roleatfilms: roleatfilms,
-                lookingfors: lookingfors,
-            }
-        });
-
-        let sorted_filters = {
-            types: mSort(filters.types),
-            roleatfilms: mSort(filters.roleatfilms),
-            lookingfors: mSort(filters.lookingfors),
-        }
-
-        let searchYAML = yaml.dump(industry_persons_search, { 'noRefs': true, 'indent': '4' })
-        fs.writeFileSync(path.join(fetchDir, `search_industry_persons.${lang}.yaml`), searchYAML, 'utf8')
-
-        let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
-        fs.writeFileSync(path.join(fetchDir, `filters_industry_persons.${lang}.yaml`), filtersYAML, 'utf8')
-
-        // Töötav sorteerimisfunktsioon filtritele
-        function mSort(to_sort) {
-            let sortable = []
-            for (var item in to_sort) {
-                sortable.push([item, to_sort[item]]);
-            }
-
-            sortable = sortable.sort(function(a, b) {
-                try {
-                    const locale_sort = a[1].localeCompare(b[1], lang)
-                    return locale_sort
-                } catch (error) {
-                    console.log('failed to sort', JSON.stringify({a, b}, null, 4));
-                    throw new Error(error)
-                }
-            });
-
-            var objSorted = {}
-            for (let index = 0; index < sortable.length; index++) {
-                const item = sortable[index];
-                objSorted[item[0]]=item[1]
-            }
-            return objSorted
-        }
     }
 }
+
+function generatePersonsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
+    let filters = {
+        types: {},
+        roleatfilms: {},
+        lookingfors: {},
+    };
+
+    const industry_persons_search = allData.map(industry_person => {
+
+        let types = [];
+        let person = industry_person.person;
+        if (typeof industry_person.industry_person_types !== 'undefined') {
+            let industry_person_types = industry_person.industry_person_types.map(type => type.type);
+            for (const type of industry_person_types) {
+                types.push(type);
+                filters.types[type] = type;
+            }
+        }
+
+        let roleatfilms = [];
+
+        for (const role of (industry_person.role_at_films || [])
+            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+            || []) {
+            const roleName = role.roleName;
+            roleatfilms.push(roleName);
+            filters.roleatfilms[roleName] = roleName;
+        }
+
+        let lookingfors = [];
+
+        if (industry_person.lookingFor) {
+            const lookingFor = industry_person.lookingFor;
+            lookingfors.push(lookingFor);
+            filters.lookingfors[lookingFor] = lookingFor;
+        }
+
+        let filmographies = [];
+        const filmography = industry_person.filmography;
+        if (filmography && filmography.text) {
+            filmographies.push(filmography.text);
+        }
+        if (filmography && filmography.film) {
+            for (const film of filmography.film) {
+                filmographies.push(`${film.title} ${film.title} ${film.synopsis}`);
+            }
+        }
+
+        return {
+            id: industry_person.id,
+            text: [
+                `${person.firstName} ${person.lastName}`,
+                industry_person.emailAtInd,
+                industry_person.phoneAtInd,
+                industry_person.aboutText,
+                industry_person.lookingFor,
+                industry_person.website,
+                filmographies,
+            ].join(' ').toLowerCase(),
+            types: types,
+            roleatfilms: roleatfilms,
+            lookingfors: lookingfors,
+        };
+    });
+
+    let sorted_filters = {
+        types: mSort(filters.types),
+        roleatfilms: mSort(filters.roleatfilms),
+        lookingfors: mSort(filters.lookingfors),
+    };
+
+    let searchYAML = yaml.dump(industry_persons_search, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDir, `search_${yamlNameSuffix}.${lang}.yaml`), searchYAML, 'utf8');
+
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDir, `filters_${yamlNameSuffix}.${lang}.yaml`), filtersYAML, 'utf8');
+}
+

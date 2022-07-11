@@ -3,14 +3,14 @@ const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
 const images = require('./images.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 
-const rootDir =  path.join(__dirname, '..')
+const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
-const sourceDir =  path.join(__dirname, '..', 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
+const sourceDir = path.join(__dirname, '..', 'source')
+const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
 const strapiDataFEPath = path.join(strapiDataDirPath, 'FestivalEdition.yaml')
@@ -25,13 +25,14 @@ const param_build_type = params[0]
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 
-if(param_build_type === 'target') {
-    addConfigPathAliases(['/screenings', '/myscreenings', '/screenings-search'])
+if (param_build_type === 'target') {
+    addConfigPathAliases(['/screenings', '/my_screenings', '/screenings-search'])
 }
 
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee';
+const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee';
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN]
 
 const minimodel_screenings = {
     'introQaConversation': {
@@ -62,7 +63,7 @@ const minimodel_screenings = {
         model_name: 'ScreeningType'
     },
     'screening_mode': {
-        model_name: 'ScreeningMode'
+        model_name: 'EventMode'
     },
     'subtitles': {
         model_name: 'Language'
@@ -103,27 +104,29 @@ for (const lang of allLanguages) {
 
 function LangSelect(lang) {
     // Screeningu kuupäeva check
-    Date.prototype.addHours = function(hours) {
-        var date = new Date(this.valueOf());
-        date.setHours(date.getHours() + hours);
-        return date;
-    }
-    let dateTimeUTC = new Date().addHours(2)
-    let dateNow = parseInt(`${dateTimeUTC.getFullYear()}${("0" + (dateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + dateTimeUTC.getDate()).slice(-2)}`)
+    let localeTimeString = new Date().toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
+    let localeDateString = localeTimeString.split(' ')[0]
 
-    let festival_editions = []
-    // For PÖFF, fetch only online 2021 FE ID 7
-    // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
-    if (DOMAIN !== 'poff.ee') {
-        festival_editions = STRAPIDATA_FE.map(edition => edition.id)
-    } else {
-        festival_editions = [7]
-    }
+    let dateNow = parseInt(`${localeDateString.split('.')[2]}${("0" + (localeDateString.split('.')[1])).slice(-2)}${("0" + localeDateString.split('.')[0]).slice(-2)}`)
+
+    // let festival_editions = []
+    // // For PÖFF, fetch only online 2021 FE ID 7
+    // // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
+    // if (DOMAIN !== 'poff.ee') {
+    festival_editions = shownFestivalEditions
+    // } else {
+    //     festival_editions = [7]
+    // }
+
+    console.log(festival_editions);
 
     let data = STRAPIDATA_SCREENINGS
         .filter(scrn => {
-            let scrnDateTimeUTC = new Date(scrn.dateTime).addHours(2)
-            let scrnDate = parseInt(`${scrnDateTimeUTC.getFullYear()}${("0" + (scrnDateTimeUTC.getMonth() + 1)).slice(-2)}${("0" + scrnDateTimeUTC.getDate()).slice(-2)}`)
+            let scrnLocaleTimeString = new Date(scrn.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
+            let scrnLocaleDateSting = scrnLocaleTimeString.split(' ')[0]
+
+            let scrnDate = parseInt(`${scrnLocaleDateSting.split('.')[2]}${("0" + (scrnLocaleDateSting.split('.')[1])).slice(-2)}${("0" + scrnLocaleDateSting.split('.')[0]).slice(-2)}`)
+
             // Kui pole online screening e Strapis ID 16, siis tänasest vanemad screeningud välja
             // Online screeningud eemaldatakse screeningu lõppemisel Eventivali kaudu
             return scrn.location && scrn.location.id !== 16 ? dateNow <= scrnDate : true
@@ -132,14 +135,14 @@ function LangSelect(lang) {
         // 2021 muudatus, PÖFF lehel hetkel vaid veebikino
         .filter(scrning => {
             // if (DOMAIN !== 'poff.ee') {
-                if (scrning.cassette && scrning.cassette.festival_editions) {
+            if (scrning.cassette && scrning.cassette.festival_editions) {
 
-                    cassette_fested_ids = scrning.cassette.festival_editions.map(ed => ed.id)
-                    return cassette_fested_ids.filter(cfestid => festival_editions.includes(cfestid))[0] !== undefined
+                cassette_fested_ids = scrning.cassette.festival_editions.map(ed => ed.id)
+                return cassette_fested_ids.filter(cfestid => festival_editions.includes(cfestid))[0] !== undefined
 
-                } else {
-                    return false
-                }
+            } else {
+                return false
+            }
             // } else {
             //     return true
             // }
@@ -162,34 +165,39 @@ function processData(data, lang, CreateYAML) {
             let screening = data[screeningIx]
 
             if (screening.cassette) {
-                let cassetteFromYAML = CASSETTES.filter( (a) => { return screening.cassette.id === a.id})
+                let cassetteFromYAML = CASSETTES.filter((a) => { return screening.cassette.id === a.id })
                 if (cassetteFromYAML.length) {
                     data[screeningIx].cassette = JSON.parse(JSON.stringify(cassetteFromYAML[0]))
                 }
 
-                for (filmIx in screening.cassette.orderedFilms) {
-                    let oneFilm = screening.cassette.orderedFilms[filmIx].film
-                    data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
+                if (screening.cassette.orderedFilms) {
+                    for (filmIx in screening.cassette.orderedFilms.filter(f => f.film)) {
+                        let oneFilm = screening.cassette.orderedFilms[filmIx].film
+                        data[screeningIx].cassette.orderedFilms[filmIx].film = STRAPIDATA_FILM.filter((film) => { return oneFilm.id === film.id })[0]
+                    }
+                } else {
+                    console.log(`ERROR! Screening ${screening.id} cassette ${screening.cassette.id} has missing orderedFilms!!!`);
                 }
 
                 images(screening)
                 delete data[screeningIx].cassette.orderedFilms
 
                 allData.push(data[screeningIx])
-
             } else {
                 screeningsMissingCassetteIDs.push(screening.id)
             }
 
-            function picSplit(txt) {
-                return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
-            }
+            // function picSplit(txt) {
+            //     return txt.replace('assets.poff.ee/img/', 'assets.poff.ee/img/thumbnail_')
+            // }
 
-            screening.cassetteCarouselPicsCassetteThumbs = (screening.cassetteCarouselPicsCassette || []).map(txt => picSplit(txt))
-            screening.cassetteCarouselPicsFilmsThumbs = (screening.cassetteCarouselPicsFilms || []).map(txt => picSplit(txt))
-            screening.cassettePostersCassetteThumbs = (screening.cassettePostersCassette || []).map(txt => picSplit(txt))
-            screening.cassettePostersFilmsThumbs = (screening.cassettePostersFilms || []).map(txt => picSplit(txt))
+            // screening.cassetteCarouselPicsCassetteThumbs = (screening.cassetteCarouselPicsCassette || []).map(txt => picSplit(txt))
+            // screening.cassetteCarouselPicsFilmsThumbs = (screening.cassetteCarouselPicsFilms || []).map(txt => picSplit(txt))
+            // screening.cassettePostersCassetteThumbs = (screening.cassettePostersCassette || []).map(txt => picSplit(txt))
+            // screening.cassettePostersFilmsThumbs = (screening.cassettePostersFilms || []).map(txt => picSplit(txt))
 
+            screening.cassetteCarouselPicsCassetteThumbs = screening.cassette.cassettePostersCassetteThumbs
+            screening.cassetteCarouselPicsFilmsThumbs = screening.cassette.cassetteCarouselPicsFilmsThumbs
         }
 
         if (screeningsMissingCassetteIDs.length) {
@@ -219,6 +227,9 @@ function CreateYAML(screenings, lang) {
         countries: {},
         subtitles: {},
         premieretypes: {},
+        filmtypes: {},
+        genres: {},
+        keywords: {},
         towns: {},
         cinemas: {},
         dates: {},
@@ -231,18 +242,15 @@ function CreateYAML(screenings, lang) {
         let times = []
 
 
-        let dateTimeUTC = new Date(screenings.dateTime)
+        let srcnDateTimeString = new Date(screenings.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
 
-        Date.prototype.addHours = function(hours) {
-            var date = new Date(this.valueOf());
-            date.setHours(date.getHours() + hours);
-            return date;
-        }
-        let dateTime = dateTimeUTC.addHours(2); // , {timeZone: "EET"}
+        let dateString = srcnDateTimeString.split(' ')[0]
+        let timeString = srcnDateTimeString.split(' ')[1]
 
-        let date = dateTime.getFullYear() + '-' + ('0' + (dateTime.getMonth()+1)).slice(-2) + '-' + ('0' + dateTime.getDate()).slice(-2)
+        let date = `${dateString.split('.')[2]}-${("0" + (dateString.split('.')[1])).slice(-2)}-${("0" + dateString.split('.')[0]).slice(-2)}`
         let dateKey = `_${date}`
-        let time = ('0' + (dateTime.getHours())).slice(-2) + ':' + ('0' + dateTime.getMinutes()).slice(-2)
+
+        let time = `${timeString.split(':')[0]}:${timeString.split(':')[1]}`
         let timeKey = `_${time}`
 
         dates.push(dateKey)
@@ -294,7 +302,7 @@ function CreateYAML(screenings, lang) {
                         }
                     }
                 } catch (error) {
-                    console.log('bad creds on film', JSON.stringify({film: film, creds:film.credentials}, null, 4));
+                    console.log('bad creds on film', JSON.stringify({ film: film, creds: film.credentials }, null, 4));
                     throw new Error(error)
                 }
             }
@@ -321,10 +329,30 @@ function CreateYAML(screenings, lang) {
         filters.cinemas[cinemaKey] = cinema_name
 
         let premieretypes = []
-        for (const types of cassette.tags.premiere_types || []) {
-                const type_name = types
+        let filmtypes = []
+        let genres = []
+        let keywords = []
+        if (cassette.tags) {
+            for (const filmpremieretype of cassette.tags.premiere_types || []) {
+                const type_name = filmpremieretype
                 premieretypes.push(type_name)
                 filters.premieretypes[type_name] = type_name
+            }
+            for (const filmtype of cassette.tags.film_types || []) {
+                const type_name = filmtype
+                filmtypes.push(type_name)
+                filters.filmtypes[type_name] = type_name
+            }
+            for (const genre of cassette.tags.genres || []) {
+                const type_name = genre
+                genres.push(type_name)
+                filters.genres[type_name] = type_name
+            }
+            for (const keyword of cassette.tags.keywords || []) {
+                const type_name = keyword
+                keywords.push(type_name)
+                filters.keywords[type_name] = type_name
+            }
         }
         return {
             id: screenings.id,
@@ -338,6 +366,9 @@ function CreateYAML(screenings, lang) {
             countries: countries,
             subtitles: subtitles,
             premieretypes: premieretypes,
+            filmtypes: filmtypes,
+            genres: genres,
+            keywords: keywords,
             towns: towns,
             cinemas: cinemas,
             dates: dates,
@@ -351,12 +382,12 @@ function CreateYAML(screenings, lang) {
             sortable.push([item, to_sort[item]]);
         }
 
-        sortable = sortable.sort(function(a, b) {
+        sortable = sortable.sort(function (a, b) {
             try {
                 const locale_sort = a[1].localeCompare(b[1], lang)
                 return locale_sort
             } catch (error) {
-                console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
                 throw new Error(error)
             }
         });
@@ -364,7 +395,7 @@ function CreateYAML(screenings, lang) {
         var objSorted = {}
         for (let index = 0; index < sortable.length; index++) {
             const item = sortable[index];
-            objSorted[item[0]]=item[1]
+            objSorted[item[0]] = item[1]
         }
         return objSorted
     }
@@ -375,12 +406,13 @@ function CreateYAML(screenings, lang) {
             sortable.push([item, to_sort[item]]);
         }
 
-        sortable = sortable.sort(function(a, b) {
+        sortable = sortable.sort(function (a, b) {
             try {
                 const sort = (a[1] > b[1]) ? 1 : ((b[1] > a[1]) ? -1 : 0)
                 return sort
             } catch (error) {
-                console.log('failed to sort', JSON.stringify({a, b}, null, 4));
+                console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+                console.log('Details:', JSON.stringify({ to_sort }, null, 4));
                 throw new Error(error)
             }
         });
@@ -388,7 +420,7 @@ function CreateYAML(screenings, lang) {
         var objSorted = {}
         for (let index = 0; index < sortable.length; index++) {
             const item = sortable[index];
-            objSorted[item[0]]=item[1]
+            objSorted[item[0]] = item[1]
         }
         return objSorted
     }
@@ -399,6 +431,9 @@ function CreateYAML(screenings, lang) {
         countries: mSort(filters.countries),
         subtitles: mSort(filters.subtitles),
         premieretypes: mSort(filters.premieretypes),
+        filmtypes: mSort(filters.filmtypes),
+        genres: mSort(filters.genres),
+        keywords: mSort(filters.keywords),
         towns: mSort(filters.towns),
         cinemas: mSort(filters.cinemas),
         dates: dateTimeSort(filters.dates),

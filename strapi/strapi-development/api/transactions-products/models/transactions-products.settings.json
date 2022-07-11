@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions_products",
+  "info": {
+    "name": "TransactionsProducts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "product": {
+      "via": "transactions",
+      "model": "product"
+    },
+    "transaction": {
+      "via": "products",
+      "model": "transaction"
+    },
+    "value": {
+      "type": "decimal",
+      "default": 0
+    }
+  }
+}

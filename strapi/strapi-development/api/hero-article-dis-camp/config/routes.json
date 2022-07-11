@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hero-article-dis-camp",
+      "handler": "hero-article-dis-camp.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hero-article-dis-camp",
+      "handler": "hero-article-dis-camp.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hero-article-dis-camp",
+      "handler": "hero-article-dis-camp.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

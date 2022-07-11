@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_supporters",
+  "info": {
+    "name": "DisCampSupporter"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-short"
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "translated.translated-long"
+    },
+    "supporters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.sup-sec-dis-camp"
+    }
+  }
+}

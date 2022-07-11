@@ -8,6 +8,7 @@ const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
+  slugify,
   call_update,
   call_build,
   get_domain,
@@ -25,7 +26,14 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['filmikool.poff.ee'] // hard coded if needed AS LIST!!!
+let domains = []
+
+async function getAndSetDomains(data) {
+  let courseId = typeof data.course === 'object' ? data.course.id : data.course
+  const courseData = await strapi.query('course').findOne({ id: courseId });
+  const getDomains = await get_domain(courseData)
+  if (getDomains.length) { domains = getDomains}
+}
 
 module.exports = {
   lifecycles: {
@@ -33,6 +41,8 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
+      // If course, set domains
+      if (data.course) { await getAndSetDomains(data) }
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
@@ -40,30 +50,38 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      console.log('Update or add: ')
+      // If course, set domains
+      if (result.course) { await getAndSetDomains(result) }
+
+      console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
       await call_build(result, domains, model_name)
     },
-async beforeDelete(params) {
+    async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
-        const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
-        }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
+        const result = await strapi.query(model_name).findOne({
+          id
+        })
+        if (result) {
+          const updateDeleteUser = {
+            updated_by: params.user,
+            skipbuild: true
+          }
+          await strapi.query(model_name).update({
+            id: result.id
+          }, updateDeleteUser)
+          return id
         }
       }))
       delete params.user
     },
     async afterDelete(result, params) {
-      // console.log('\nR', result, '\nparams', params)
+      // If course, set domains
+      if (result.course) { await getAndSetDomains(result) }
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)

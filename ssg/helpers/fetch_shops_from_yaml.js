@@ -49,7 +49,10 @@ for (const lang of allLanguages) {
                                 prodCatList.orderedProductCategories[catIx].product_category = categoryFromYAMLcopy
 
                                 if (categoryFromYAMLcopy[`slug_${lang}`]) {
-                                    categoryFromYAMLcopy.path = `${categoryFromYAMLcopy[`slug_${lang}`]}`;
+                                    categoryFromYAMLcopy.path = `${categoryFromYAMLcopy[`slug_${lang}`]}`
+                                }
+                                if (categoryFromYAMLcopy?.id) {
+                                    categoryFromYAMLcopy.category = categoryFromYAMLcopy.id
                                 }
                                 let dirSlug = categoryFromYAMLcopy.slug_en || categoryFromYAMLcopy.slug_et ? categoryFromYAMLcopy.slug_en || categoryFromYAMLcopy.slug_et : null ;
                                 if (dirSlug != null && typeof categoryFromYAMLcopy.path !== 'undefined') {

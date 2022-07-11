@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tag_film_types",
+  "info": {
+    "name": "TagFilmType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "et": {
+      "type": "string"
+    },
+    "en": {
+      "type": "string"
+    },
+    "ru": {
+      "type": "string"
+    },
+    "pof_fi_article": {
+      "via": "tag_film_types",
+      "model": "pof-fi-article"
+    }
+  }
+}

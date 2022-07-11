@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_user_external_providers",
+  "info": {
+    "name": "externalProviders",
+    "icon": "bone",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "Eventival",
+        "Facebook",
+        "Google",
+        "local"
+      ]
+    },
+    "UUID": {
+      "type": "string"
+    },
+    "dateConnected": {
+      "type": "datetime"
+    }
+  }
+}

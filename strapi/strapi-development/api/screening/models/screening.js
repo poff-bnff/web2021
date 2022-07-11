@@ -35,6 +35,7 @@ module.exports = {
     },
     async beforeUpdate(params, data) {
       const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+//	const domains = ['FULL_BUILD']
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
@@ -43,6 +44,8 @@ module.exports = {
     },
     async afterUpdate(result, params, data) {
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+//	const domains = ['FULL_BUILD']
+
       console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
@@ -68,6 +71,7 @@ async beforeDelete(params) {
     async afterDelete(result, params) {
       // console.log('\nR', result, '\nparams', params)
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+//	const domains = ['FULL_BUILD']
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)

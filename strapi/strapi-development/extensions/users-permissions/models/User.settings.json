@@ -59,9 +59,68 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "people": {
+    "profileFilled": {
+      "type": "boolean"
+    },
+    "externalProviders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.external-providers"
+    },
+    "last10Logins": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.last10-logins",
+      "max": 10
+    },
+    "account_created": {
+      "type": "datetime"
+    },
+    "importedToStrapi": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.imported-to-strapi"
+    },
+    "my_films": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-films"
+    },
+    "my_screenings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-screenings"
+    },
+    "my_products": {
+      "via": "owner",
+      "collection": "product"
+    },
+    "transactions": {
+      "via": "transactor",
+      "collection": "transaction"
+    },
+    "user_profile": {
+      "model": "user-profiles",
+      "via": "user"
+    },
+    "business_profiles": {
       "via": "user",
-      "collection": "person"
+      "collection": "business-profile"
+    },
+    "my_events": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.my-events"
+    },
+    "user_roles": {
+      "collection": "user-role",
+      "via": "users"
+    },
+    "moodle_id": {
+      "type": "uid"
+    },
+    "id_number_est": {
+      "type": "uid"
     }
   }
 }

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/smart-folders",
+      "handler": "smart-folder.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smart-folders/count",
+      "handler": "smart-folder.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smart-folders/:id",
+      "handler": "smart-folder.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/smart-folders",
+      "handler": "smart-folder.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/smart-folders/:id",
+      "handler": "smart-folder.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/smart-folders/:id",
+      "handler": "smart-folder.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

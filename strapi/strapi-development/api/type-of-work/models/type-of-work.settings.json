@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "type_of_works",
+  "info": {
+    "name": "TypeOfWork",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

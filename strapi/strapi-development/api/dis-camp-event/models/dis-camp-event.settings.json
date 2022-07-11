@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_events",
+  "info": {
+    "name": "DisCampEvent",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "titlePrivate": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "datetime"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "uid"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "location": {
+      "model": "location"
+    },
+    "lead": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "discamp_categories": {
+      "collection": "dis-camp-category"
+    },
+    "project_type": {
+      "model": "project-type"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "channel": {
+      "model": "channel"
+    },
+    "durationTime": {
+      "type": "time"
+    },
+    "discamp_people": {
+      "collection": "dis-camp-person"
+    },
+    "discamp_projects": {
+      "collection": "dis-camp-project"
+    },
+    "isLiveEvent": {
+      "type": "boolean"
+    },
+    "isPublicEvent": {
+      "type": "boolean"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

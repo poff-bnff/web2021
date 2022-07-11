@@ -61,6 +61,14 @@
     },
     "remoteId": {
       "type": "uid"
+    },
+    "projects": {
+      "via": "editions",
+      "collection": "industry-project"
+    },
+    "awardings": {
+      "via": "festival_edition",
+      "collection": "awarding"
     }
   }
 }

@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/industry_logo_2021_dates_es.svg' src='/assets/img/static/industry_logo_2021_dates_es.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/industry_logo_2022_dates_es_ukr.svg' src='/assets/img/static/industry_logo_2022_dates_es_ukr.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     nav.main_menu
@@ -23,12 +23,18 @@ header
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
+                    //- span.org_item
+                    //-     a(href='https://hoff.ee')
+                    //-         | HÕFF
                     span.org_item
-                        a(href='https://hoff.ee')
-                            | HÕFF
+                        a(href='https://kumu.poff.ee')
+                            | KUMU Doc
+                    //- span.org_item
+                    //-     a(href='https://kinoff.ee')
+                    //-         | Kinoff
                     span.org_item
-                        a(href='https://kinoff.ee')
-                            | Kinoff
+                        a(href='https://poff.elisastage.ee')
+                            | PÖFF Online Cinema
                     //- span.org_item
                     //-     a(href='https://industrymeet.poff.ee')
                     //-         | Industrymeet
@@ -59,6 +65,14 @@ header
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
+
+    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
+
+    script.
+        var langpath = "!{(lang_path)}"
+        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
+        //- Below boolean needed for login
+        var industryPage = true
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

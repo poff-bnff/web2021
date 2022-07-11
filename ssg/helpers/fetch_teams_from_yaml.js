@@ -2,11 +2,19 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
+const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
-const sourceDir =  path.join(__dirname, '..', 'source');
-const fetchDir =  path.join(sourceDir, '_fetchdir');
-const fetchDataDir =  path.join(fetchDir, 'teamsandjuries');
+const rootDir = path.join(__dirname, '..')
+const sourceDir = path.join(rootDir, 'source');
+const fetchDir = path.join(sourceDir, '_fetchdir');
+const fetchDataDir = path.join(fetchDir, 'teamsandjuries');
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const imageOrderTeam = DOMAIN_SPECIFICS.festivalTeamImagePriority
+const imageOrderTeamDefaults = DOMAIN_SPECIFICS.festivalTeamImagePriorityDefaults
+const imageOrderJuryAndGuest = DOMAIN_SPECIFICS.juryAndGuestImagePriority
+const imageOrderJuryAndGuestDefaults = DOMAIN_SPECIFICS.juryAndGuestImagePriorityDefaults
 
 const strapiDataTeamPath = path.join(strapiDataDirPath, 'Team.yaml')
 const STRAPIDATA_TEAM = yaml.load(fs.readFileSync(strapiDataTeamPath, 'utf8'))
@@ -31,6 +39,8 @@ for (const ix in languages) {
             var templateDomainName = 'kinoff';
         } else if (DOMAIN === 'industry.poff.ee') {
             var templateDomainName = 'industry';
+        } else if (DOMAIN === 'discoverycampus.poff.ee') {
+            var templateDomainName = 'discamp';
         } else if (DOMAIN === 'kumu.poff.ee') {
             var templateDomainName = 'kumu';
         } else if (DOMAIN === 'tartuff.ee') {
@@ -50,17 +60,51 @@ for (const ix in languages) {
             continue;
         }
 
+        // Fake a temporary media component out of available pictures, then prioritize and fill picture if any
+        // Delete excess picture objects and arrays afterwards
+        const teamVariableName = templateGroupName !== 'jury' ? 'teamMember' : 'juryMember'
+        const imgVariableName = templateGroupName !== 'jury' ? 'pictureAtTeam' : 'pictureAtJury'
+        const imageOrder = templateGroupName === 'festivalteam' ? imageOrderTeam : imageOrderJuryAndGuest
+        const imageOrderDefaults = templateGroupName === 'festivalteam' ? imageOrderTeamDefaults : imageOrderJuryAndGuestDefaults
+
+        element.subTeam.map(s => {
+            if (s[teamVariableName]) {
+                return s[teamVariableName].map(t => {
+                    let mediaObj = {
+                        media: {}
+                    }
+                    if (t[imgVariableName]) {
+                        mediaObj.media[imgVariableName] = t[imgVariableName]
+                        delete t[imgVariableName]
+                    }
+                    if (t?.person?.picture) {
+                        mediaObj.media.personPicture = [t.person.picture]
+                        delete t.person.picture
+                    }
+                    if (mediaObj.media[imgVariableName] || mediaObj.media.personPicture) {
+                        t.picture = prioritizeImages(mediaObj, imageOrder, imageOrderDefaults);
+                    }
+                })
+            }
+        })
+
+
+        if (templateGroupName === 'guest') {
+            continue
+        }
+
         for (const subTeamIx in element.subTeam) {
             let subTeam = element.subTeam[subTeamIx];
             for (const juryMemberIx in subTeam.juryMember) {
                 let juryMember = subTeam.juryMember[juryMemberIx];
-                let personFromYAML = STRAPIDATA_PERSONS.filter( (a) => { return juryMember.person.id === a.id });
+                let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return juryMember?.person?.id === a.id });
                 juryMember.person = personFromYAML[0];
             }
+            subTeam?.juryMember?.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
         }
         // rueten func. is run for each element separately instead of whole data, that is
         // for the purpose of saving slug_en before it will be removed by rueten func.
-        let dirSlug = element.slug_en || element.slug_et ? element.slug_en || element.slug_et : null ;
+        let dirSlug = element.slug_en || element.slug_et ? element.slug_en || element.slug_et : null;
         element = rueten(element, lang);
         if ('slug' in element) {
             element.path = element.slug;

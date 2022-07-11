@@ -3,7 +3,7 @@ header
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
         a(href=`/${lang_path}`)
-            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff25_logo_dark4_o_sp.svg' src='/assets/img/static/poff25_logo_dark4_o_sp.svg')
+            img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff_26_logo_dark4_o_sp_ukr.svg' src='/assets/img/static/poff_26_logo_dark4_o_sp_ukr.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     nav.main_menu
@@ -25,12 +25,24 @@ header
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
+                    //- span.org_item
+                    //-     a(href='https://hoff.ee')
+                    //-         | HÕFF
+                    span.org_item
+                        a(href='https://kumu.poff.ee')
+                            | KUMU Doc
                     span.org_item
                         a(href='https://hoff.ee')
                             | HÕFF
                     span.org_item
-                        a(href='https://kumu.poff.ee')
-                            | KUMU Doc
+                        a(href='https://tartuff.ee')
+                            | Tartuff
+                    span.org_item
+                        a(href='https://filmikool.poff.ee')
+                            | Filmikool
+                    span.org_item
+                        a(href='https://oyafond.ee')
+                            | Bruno O'Ya Fond
                     //- span.org_item
                     //-     a(href='https://kinoff.ee')
                     //-         | Kinoff
@@ -54,7 +66,7 @@ header
                         li#userProfile(style={cursor: 'pointer', display: 'none'})
                             a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
                         li#myFavouriteFilms(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}favourite` onclick = 'loadFavouriteFilms()')= self.label.menu.mainShortlist
+                            a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
                         li#myScreenings(style={cursor: 'pointer'} )
                             if lang_path === ''
                                 a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
@@ -76,8 +88,15 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
+    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
+
     script.
         var langpath = "!{(lang_path)}"
+        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
+        //- Below boolean needed for login
+        var industryPage = false
+
+
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

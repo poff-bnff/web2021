@@ -22,14 +22,11 @@ block content
                                         .person_jury
                                             .person_head
                                                 - var assetsDir = 'https://assets.poff.ee/img/'
-                                                if juryMember.pictureAtTeam && juryMember.pictureAtTeam[0].hash
-                                                    - var personPic = assetsDir + juryMember.pictureAtTeam[0].hash + juryMember.pictureAtTeam[0].ext
-                                                else if juryMember.person.picture
-                                                    - var personPic = assetsDir + juryMember.person.picture.hash + juryMember.person.picture.ext
+                                                if juryMember.picture
+                                                    - var personPic = assetsDir + juryMember.picture
                                                 else
                                                     - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                                                 img.person_img(src=personPic alt=`${juryMember.person.firstName} ${juryMember.person.lastName}`)
-
 
                                                     //- if val.personName
                                             .person_body

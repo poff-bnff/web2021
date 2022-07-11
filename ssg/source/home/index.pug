@@ -17,8 +17,8 @@ block content
         section.trio_block
             include /_templates/home_templates/trio_block_just.pug
 
-        //- section.viiekas
-        //-     include /_templates/home_templates/viiekas_just.pug
+        section.viiekas
+            include /_templates/home_templates/viiekas_just.pug
 
 
     else if process.env['DOMAIN'] === 'filmikool.poff.ee'
@@ -95,13 +95,13 @@ block content
         - var heroPlusTrioNews = []
 
         section.grid_hero
-            include /_templates/home_templates/hero_shorts.pug
+            include /_templates/home_templates/hero_tartuff.pug
 
         section.trio_block
-            include /_templates/home_templates/trio_block_shorts.pug
+            include /_templates/home_templates/trio_block_tartuff.pug
 
         section.viiekas
-            include /_templates/home_templates/viiekas_shorts.pug
+            include /_templates/home_templates/viiekas_tartuff.pug
 
     else if process.env['DOMAIN'] === 'kinoff.poff.ee'
 
@@ -116,6 +116,22 @@ block content
 
         section.viiekas
             include /_templates/home_templates/viiekas_kinoff.pug
+
+
+    else if process.env['DOMAIN'] === 'oyafond.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_bruno.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_bruno.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_bruno.pug
+
 
     else if process.env['DOMAIN'] === 'industry.poff.ee'
 
@@ -151,6 +167,21 @@ block content
     //-     section.viiekas
     //-         include /_templates/home_templates/viiekas_filmikool.pug
 
+    else if process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+
+        - var whichTypesToDisplay = ['news']
+        - var heroPlusTrioNews = []
+
+        section.grid_hero
+            include /_templates/home_templates/hero_discamp.pug
+
+        include /_templates/home_templates/frontpagecourse_discamp.pug
+
+        section.trio_block
+            include /_templates/home_templates/trio_block_discamp.pug
+
+        section.viiekas
+            include /_templates/home_templates/viiekas_discamp.pug
 
     else
         //- POFF

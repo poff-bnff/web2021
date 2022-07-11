@@ -1,0 +1,5 @@
+path: otsi_filmi_arhiivist
+data:
+    cassettes: /_fetchdir/cassettes_archive.et.yaml
+    search: /_fetchdir/search_films_archive.et.yaml
+    filters: /_fetchdir/filters_films_archive.et.yaml

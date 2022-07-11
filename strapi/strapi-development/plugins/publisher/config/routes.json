@@ -26,6 +26,29 @@
     },
     {
       "method": "GET",
+      "path": "/last-failed-build-logs",
+      "handler": "publisher.lastFailedBuildLogs",
+      "config": {
+        "policies": []
+      }
+    },    {
+      "method": "GET",
+      "path": "/last-twenty-build-fails-of-site/:site",
+      "handler": "publisher.lastTwentyBuidFailsOfSite",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/all-logs",
+      "handler": "publisher.allLogs",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/my-started-build-log",
       "handler": "publisher.myStartedBuildLog",
       "config": {
@@ -36,6 +59,14 @@
       "method": "GET",
       "path": "/onelog/:id",
       "handler": "publisher.onelog",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/last-build-log-by-site/:site",
+      "handler": "publisher.lastBuildLogBySite",
       "config": {
         "policies": []
       }
@@ -52,6 +83,22 @@
       "method": "POST",
       "path": "/fullbuild",
       "handler": "publisher.fullBuild",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/killswitch",
+      "handler": "publisher.killSwitch",
+      "config": {
+        "policies": ["plugins::users-permissions.ratelimit"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/buildarchive",
+      "handler": "publisher.buildArchive",
       "config": {
         "policies": ["plugins::users-permissions.ratelimit"]
       }

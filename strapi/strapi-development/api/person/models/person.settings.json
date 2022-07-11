@@ -24,7 +24,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "gender": {
       "model": "gender"
@@ -66,10 +67,15 @@
     "pageUrl": {
       "type": "string"
     },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "people"
+    "awardings": {
+      "via": "person",
+      "collection": "awarding"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "domains": {
+      "collection": "domain"
     }
   }
 }

@@ -1,0 +1,197 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    h3#loading.sub_section_headline(style='display: grid; padding-top: 110px;')= self.label.filters.loading
+
+    .grid_search#filters(style='display: none;')
+
+        input#search(type='text', placeholder= self.label.filters.search)
+
+        select#festivals_select(name='Festivals')
+            option(value='')= self.label.filters.festivals
+            each index, key in self.data.filters.festivals
+                option(value=key)= index
+
+        select#years_select(name='Years')
+            option(value='')= self.label.filters.year
+            each index, key in self.data.filters.years
+                option(value=key)= index
+
+        select#programmes_select(name='Programmes')
+            option(value='')= self.label.filters.programmes
+            each index, key in self.data.filters.programmes
+                option(value=key)= index
+
+        select#countries_select(name='Countries')
+            option(value='')= self.label.filters.countries
+            each index, key in self.data.filters.countries
+                option(value=key)= index
+
+        select#languages_select(name='Languages')
+            option(value='')= self.label.filters.languages
+            each index, key in self.data.filters.languages
+                option(value=key)= index
+
+        select#subtitles_select(name='Subtitles')
+            option(value='')= self.label.filters.subtitles
+            each index, key in self.data.filters.subtitles
+                option(value=key)= index
+
+        select#premieretypes_select(name='Premieretypes')
+            option(value='')= self.label.filters.premieres
+            each index, key in self.data.filters.premieretypes
+                option(value=key)= index
+
+        select#filmtypes_select(name='Filmtypes')
+            option(value='')= self.label.filters.filmtypes
+            each index, key in self.data.filters.filmtypes
+                option(value=key)= index
+
+        select#genres_select(name='Genres')
+            option(value='')= self.label.filters.genres
+            each index, key in self.data.filters.genres
+                option(value=key)= index
+
+        select#keywords_select(name='Keywords')
+            option(value='')= self.label.filters.keywords
+            each index, key in self.data.filters.keywords
+                option(value=key)= index
+
+        select#towns_select(name='Towns')
+            option(value='')= self.label.filters.towns
+            each index, key in self.data.filters.towns
+                option(value=key)= index
+
+        select#cinemas_select(name='Cinemas')
+            option(value='')= self.label.filters.cinemas
+            each index, key in self.data.filters.cinemas
+                option(value=key)= index
+
+        button.clear(onclick='unselect_all()')= self.label.filters.empty
+
+        h3#nonetoshow.sub_section_headline(style='display: none;')
+
+
+    - var allFestivalEditions = []
+    - var allProgrammes = []
+    - var allFestivals = []
+
+    if self.data.cassettes
+
+
+        main.grid_films
+            - var cassettesArray = []
+            //- PÖFFi puhul ajutiselt filme ei kuva, hiljem tuleb kuvada vaid edition veebikino 2021 kassetid
+            //- if  process.env['DOMAIN'] !== 'poff.ee'
+            - var sortedCassettes = self.data.cassettes.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
+            //- else
+            //-     - var sortedCassettes = []
+            each cassette in sortedCassettes.filter(c => !(c.festival_editions.map(fe => fe.id).includes(9)))
+                - var oneCassette = []
+                if cassette.festival_editions
+                    each edition in cassette.festival_editions
+                        - allFestivalEditions.push(edition.name)
+                if cassette.festivals
+                    - var festivalsCassette = []
+                    each festival in cassette.festivals
+                        - allFestivals.push(festival.name)
+                        - festivalsCassette.push(festival.name)
+                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}` style='padding-bottom: 20px; position: relative;')
+                    input#festivalsCassette(type='hidden', value=`${festivalsCassette}`)
+
+                    .container_frame_16_9
+
+                        if cassette.films && cassette.films.length > 1
+                            if cassette.cassetteCarouselPicsCassetteThumbs && cassette.cassetteCarouselPicsCassetteThumbs[0]
+                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title || cassette.title_et)
+                            else if cassette.cassetteCarouselPicsFilmsThumbs && cassette.cassetteCarouselPicsFilmsThumbs[0]
+                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
+                            else
+                                //- img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
+                                img.container_contents_16_9(src='/assets/img/static/history.svg' alt= cassette.title || cassette.title_et)
+                        else if cassette.films && cassette.films.length === 1 && cassette.cassetteCarouselPicsFilmsThumbs
+                            img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
+                        else
+                            img.container_contents_16_9(src='/assets/img/static/history.svg' alt= cassette.title || cassette.title_et)
+                    .card_film_title
+                        h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+                        - oneCassette.push(cassette.title || cassette.title_et)
+                        - cassettesArray.push(oneCassette)
+
+                    .card_film_info
+
+                        if cassette.films && cassette.films.length
+                            - var filmsProgrammes = []
+                            - var filmsFestivalEditions = []
+                            each film in cassette.films
+                                if film.tags && film.tags.programmes && film.tags.programmes.length
+                                    each programme in film.tags.programmes
+                                        if programme.name
+                                            - filmsProgrammes.push(programme.name)
+                                            - allProgrammes.push(programme.name)
+                                if film.festival_editions && film.festival_editions.length
+                                    each fe in film.festival_editions
+                                        - filmsFestivalEditions.push(fe.name)
+
+                            if filmsFestivalEditions.length
+                                - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.festival
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
+
+                            if filmsProgrammes.length
+                                - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.programme
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+
+                            //- if filmsFestivalEditions.length
+                            //-     - var uniqueFestivalEditions = [...new Set(filmsFestivalEditions)];
+                            //-     .str_info_grid_3
+                            //-         .str_info_label.dark_semi= self.label.film.festival
+                            //-         #programmes.str_info_value.dark_1.thin_300= uniqueFestivalEditions.join(', ')
+
+                            - var filmsDirectors = []
+                            each film in cassette.films
+                                if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                    each director in film.credentials.rolePersonsByRole.director
+                                        - filmsDirectors.push(director)
+
+                            if filmsDirectors.length
+                                - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.director
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                            - var filmsCountries = []
+                            each film in cassette.films
+                                if film.orderedCountries && film.orderedCountries.length
+                                    each country in film.orderedCountries
+                                        if country.country && country.country.name
+                                            - filmsCountries.push(country.country.name)
+                            if filmsCountries.length
+                                - var uniqueCountries = [...new Set(filmsCountries)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.countries
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+
+
+                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeShortlist
+                    button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted', onclick=`modifyFavourites('addMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.addShortlist
+
+            script.
+                var searcharray = !{JSON.stringify(self.data.search)}
+
+                var filters = !{JSON.stringify(self.data.filters)}
+
+
+    - var uniqueFestivalEditions = [...new Set(allFestivalEditions)]
+            //- - console.log(uniqueFestivalEditions)
+    - var uniqueFestivals = [...new Set(allFestivals)]
+    - var uniqueProgrammes = [...new Set(allProgrammes)]
+
+    input#festivals(type='hidden', value=`${uniqueFestivals}`)
+    input#festivalEditions(type='hidden', value=`${uniqueFestivalEditions}`)
+    input#festivalProgrammes(type='hidden', value=`${uniqueProgrammes}`)
