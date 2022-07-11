@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "teams",
   "info": {
-    "name": "Team"
+    "name": "Team",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "subTeam": {
@@ -29,7 +31,8 @@
       "type": "enumeration",
       "enum": [
         "festivalTeam",
-        "jury"
+        "jury",
+        "guest"
       ]
     },
     "name_et": {

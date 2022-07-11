@@ -1,16 +1,6 @@
-const production = true 
-let https
-let strapiAddress
-let strapiPort
-
-if (production) {
-    https = require('https')
-    strapiAddress = process.env['StrapiHostPoff2021']
-} else {
-    https = require('http')
-    strapiAddress = 'localhost'
-    strapiPort = '1337'
-}
+let https = require(process.env['StrapiProtocol'])
+let strapiAddress = process.env['StrapiHost']
+let strapiPort = process.env['StrapiPort']
 
 async function strapiAuth() {
 
@@ -29,7 +19,7 @@ async function strapiAuth() {
             },
         }
 
-        if (!production){
+        if (process.env['StrapiProtocol'] !== 'https'){
             options.port = strapiPort
         }
 

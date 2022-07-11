@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_person_types",
+  "info": {
+    "name": "DisCampPersonType",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

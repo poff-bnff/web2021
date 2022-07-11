@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_user_login_events",
+  "info": {
+    "name": "loginEvent",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "loginDateTime": {
+      "type": "datetime"
+    },
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "eventival",
+        "facebook",
+        "google"
+      ]
+    }
+  }
+}

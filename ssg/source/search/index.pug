@@ -34,6 +34,21 @@ block content
             each index, key in self.data.filters.premieretypes
                 option(value=key)= index
 
+        select#filmtypes_select(name='Filmtypes')
+            option(value='')= self.label.filters.filmtypes
+            each index, key in self.data.filters.filmtypes
+                option(value=key)= index
+
+        select#genres_select(name='Genres')
+            option(value='')= self.label.filters.genres
+            each index, key in self.data.filters.genres
+                option(value=key)= index
+
+        select#keywords_select(name='Keywords')
+            option(value='')= self.label.filters.keywords
+            each index, key in self.data.filters.keywords
+                option(value=key)= index
+
         select#towns_select(name='Towns')
             option(value='')= self.label.filters.towns
             each index, key in self.data.filters.towns
@@ -63,7 +78,7 @@ block content
             - var sortedCassettes = self.data.cassettes.sort(function(a, b){ if(a.title && b.title) { return ('' + a.title).localeCompare(b.title, self.locale); } else { return 0; } })
             //- else
             //-     - var sortedCassettes = []
-            each cassette in sortedCassettes
+            each cassette in sortedCassettes.filter(c => !(c.festival_editions.map(fe => fe.id).includes(9)))
                 - var oneCassette = []
                 if cassette.festival_editions
                     each edition in cassette.festival_editions
@@ -73,7 +88,7 @@ block content
                     each festival in cassette.festivals
                         - allFestivals.push(festival.name)
                         - festivalsCassette.push(festival.name)
-                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}`)
+                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}` style='padding-bottom: 20px; position: relative;')
                     input#festivalsCassette(type='hidden', value=`${festivalsCassette}`)
 
                     .container_frame_16_9
@@ -95,27 +110,48 @@ block content
                         - cassettesArray.push(oneCassette)
 
                     .card_film_info
-                        .str_info_grid_3
-                            if cassette.films && cassette.films.length
-                                - var filmsProgrammes = []
-                                each film in cassette.films
-                                    if film.tags && film.tags.programmes && film.tags.programmes.length
-                                        each programme in film.tags.programmes
-                                            if programme.name
-                                                - filmsProgrammes.push(programme.name)
-                                                - allProgrammes.push(programme.name)
-                                if filmsProgrammes.length
-                                    - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+
+                        if cassette.films && cassette.films.length
+                            - var filmsProgrammes = []
+                            each film in cassette.films
+                                if film.tags && film.tags.programmes && film.tags.programmes.length
+                                    each programme in film.tags.programmes
+                                        if programme.name
+                                            - filmsProgrammes.push(programme.name)
+                                            - allProgrammes.push(programme.name)
+                            if filmsProgrammes.length
+                                - var uniqueProgrammes = [...new Set(filmsProgrammes)];
+                                .str_info_grid_3
                                     .str_info_label.dark_semi= self.label.film.programme
                                     #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
-                        //- if cassette.credentials.director
-                        //-     .str_info_grid_3
-                        //-         .str_info_label= self.label.cassette.director
-                        //-         .str_info_value= cassette.credentials.director.join(', ')
-                        //- if cassette.credentials.cast
-                        //-     .str_info_grid_3
-                        //-         .str_info_label= self.label.cassette.cast
-                        //-         .str_info_value= cassette.credentials.cast.join(', ')
+
+                            - var filmsDirectors = []
+                            each film in cassette.films
+                                if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director  && film.credentials.rolePersonsByRole.director.length
+                                    each director in film.credentials.rolePersonsByRole.director
+                                        - filmsDirectors.push(director)
+                            if filmsDirectors.length
+                                - var uniqueDirectors = [...new Set(filmsDirectors)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.director
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueDirectors.join(', ')
+
+                            - var filmsCountries = []
+                            each film in cassette.films
+                                if film.orderedCountries && film.orderedCountries.length
+                                    each country in film.orderedCountries
+                                        if country.country && country.country.name
+                                            - filmsCountries.push(country.country.name)
+                            if filmsCountries.length
+                                - var uniqueCountries = [...new Set(filmsCountries)];
+                                .str_info_grid_3
+                                    .str_info_label.dark_semi= self.label.film.countries
+                                    #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
+
+
+                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeShortlist
+                    button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted', onclick=`modifyFavourites('addMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.addShortlist
+
             script.
                 var searcharray = !{JSON.stringify(self.data.search)}
 
@@ -130,5 +166,3 @@ block content
     input#festivals(type='hidden', value=`${uniqueFestivals}`)
     input#festivalEditions(type='hidden', value=`${uniqueFestivalEditions}`)
     input#festivalProgrammes(type='hidden', value=`${uniqueProgrammes}`)
-
-

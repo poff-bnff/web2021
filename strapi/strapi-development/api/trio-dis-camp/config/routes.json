@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trio-dis-camp",
+      "handler": "trio-dis-camp.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trio-dis-camp",
+      "handler": "trio-dis-camp.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trio-dis-camp",
+      "handler": "trio-dis-camp.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

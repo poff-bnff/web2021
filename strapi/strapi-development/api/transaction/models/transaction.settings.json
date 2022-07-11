@@ -2,31 +2,77 @@
   "kind": "collectionType",
   "collectionName": "transactions",
   "info": {
-    "name": "transaction"
+    "name": "transaction",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "dateTime": {
       "type": "datetime"
     },
-    "person": {
-      "model": "person"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
         "Purchase",
-        "Refund"
+        "Refund",
+        "Transfer"
       ],
       "default": "Purchase"
     },
-    "payment": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ticketing.payment"
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "products": {
+      "collection": "transactions-products",
+      "via": "transaction"
+    },
+    "beneficiary": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "transactor": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
+    },
+    "seller_business_profile": {
+      "model": "business-profile"
+    },
+    "buyer_business_profile": {
+      "model": "business-profile"
+    },
+    "status": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "transaction": {
+      "type": "string",
+      "unique": true
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "Maksekeskus",
+        "Free"
+      ]
+    },
+    "transfer_status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Declined",
+        "Accepted"
+      ]
     }
   }
 }

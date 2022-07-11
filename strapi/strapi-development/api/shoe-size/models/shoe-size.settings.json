@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shoe_sizes",
+  "info": {
+    "name": "Shoe_Size",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "size_eu": {
+      "type": "integer"
+    },
+    "size_us": {
+      "type": "decimal"
+    },
+    "size_uk": {
+      "type": "decimal"
+    },
+    "foot_length_from": {
+      "type": "decimal"
+    },
+    "foot_length_to": {
+      "type": "decimal"
+    }
+  }
+}

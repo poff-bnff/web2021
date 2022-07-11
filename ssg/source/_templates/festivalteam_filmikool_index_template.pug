@@ -32,14 +32,11 @@ block content
                                     .person
                                         .person_head
                                             - var assetsDir = 'https://assets.poff.ee/img/'
-                                            if teamMember.pictureAtTeam && teamMember.pictureAtTeam[0].hash
-                                                - var personPic = assetsDir + teamMember.pictureAtTeam[0].hash + teamMember.pictureAtTeam[0].ext
-                                            else if teamMember.person.picture
-                                                - var personPic = assetsDir + teamMember.person.picture.hash + teamMember.person.picture.ext
+                                            if teamMember.picture
+                                                - var personPic = assetsDir + teamMember.picture
                                             else
                                                 - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                                             img.person_img(src=personPic alt=`${teamMember.person.firstName} ${teamMember.person.lastName}`)
-
 
                                                 //- if val.personName
                                             .person_body.text_center

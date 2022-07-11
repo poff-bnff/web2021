@@ -23,6 +23,8 @@ if (process.env['DOMAIN'] === 'justfilm.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_tartuff/');
 } else if (process.env['DOMAIN'] === 'oyafond.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_bruno/');
+} else if (process.env['DOMAIN'] === 'discoverycampus.poff.ee') {
+    var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_discamp/');
 }else {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_poff/');
 }

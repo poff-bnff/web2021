@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_people",
+  "info": {
+    "name": "DisCampPerson",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid"
+    },
+    "person": {
+      "model": "person"
+    },
+    "profilePicAtDC": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "emailAtDC": {
+      "type": "email"
+    },
+    "phoneAtDC": {
+      "type": "string"
+    },
+    "about_text": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "clipUrl": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "filmography": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.filmography"
+    },
+    "discamp_person_types": {
+      "collection": "dis-camp-person-type"
+    },
+    "lookingFor": {
+      "type": "richtext"
+    },
+    "contactAtEvent": {
+      "type": "string"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    }
+  }
+}

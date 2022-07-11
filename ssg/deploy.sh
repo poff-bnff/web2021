@@ -26,10 +26,13 @@ then
 	exit 81
 fi
 echo "Replacing site: "$DOMAIN""
-rsync -ah /srv/www/build."$DOMAIN"/* /srv/www/"$DOMAIN"/  --delete-after
+rsync -ah --delete-after /srv/www/build."$DOMAIN"/ /srv/www/"$DOMAIN"/
 if [ $? != 0 ] #Live replace error
 then
 	exit 82
 fi
 echo "New version is LIVE: "$DOMAIN""
 bash /srv/ssg/create_bak.sh $DOMAIN $TIMESTAMP
+
+echo "Delete backups older than 14 days"
+find /srv/backup/$DOMAIN/* -mtime +14 -exec rm -rf {} \;

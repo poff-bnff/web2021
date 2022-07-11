@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/eye-colours",
+      "handler": "eye-colour.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/eye-colours/count",
+      "handler": "eye-colour.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/eye-colours/:id",
+      "handler": "eye-colour.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/eye-colours",
+      "handler": "eye-colour.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/eye-colours/:id",
+      "handler": "eye-colour.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/eye-colours/:id",
+      "handler": "eye-colour.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

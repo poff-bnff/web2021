@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/shoe-sizes",
+      "handler": "shoe-size.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shoe-sizes/count",
+      "handler": "shoe-size.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/shoe-sizes/:id",
+      "handler": "shoe-size.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/shoe-sizes",
+      "handler": "shoe-size.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/shoe-sizes/:id",
+      "handler": "shoe-size.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/shoe-sizes/:id",
+      "handler": "shoe-size.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

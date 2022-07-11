@@ -2,7 +2,8 @@
   "collectionName": "components_film_film_in_filmographies",
   "info": {
     "name": "filmInFilmography",
-    "icon": "chalkboard-teacher"
+    "icon": "chalkboard-teacher",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -46,10 +47,17 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "trailerUrl": {
       "type": "string"
+    },
+    "roles_of_person": {
+      "collection": "role-at-film"
+    },
+    "person_of_role": {
+      "model": "person"
     }
   }
 }

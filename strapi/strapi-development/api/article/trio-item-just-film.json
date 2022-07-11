@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_article_trio_item_just_films",
+  "info": {
+    "name": "TrioItemJustFilm",
+    "icon": "building"
+  },
+  "options": {},
+  "attributes": {
+    "just_filmi_article": {
+      "model": "just-filmi-article"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "customUrl": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

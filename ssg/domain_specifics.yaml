@@ -10,54 +10,107 @@ domain:
     tartuff.ee: tartuff
     oyafond.ee: bruno
     filmikool.poff.ee: filmikool
+    discoverycampus.poff.ee: discamp
 
 domains_show_cassetes_wo_screenings:
     - poff.ee
     - hoff.ee
+    - tartuff.ee
+    - oyafond.ee
 
 cassettes_festival_editions:
     poff.ee:
-        - 7
+        # - 51
+        - 52
+        # - 28
+        # - 29
+        # - 30
+        # - 32
     justfilm.ee:
-        - 3
+        - 0
+        # - 29
     kinoff.poff.ee:
-        - 4
+        - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
-        - 2
+        - 0
+        # - 30
     hoff.ee:
-        - 5
+        - 51
     kumu.poff.ee:
-        - 6
+        - 33
     tartuff.ee:
-        - 0
+        - 53
     oyafond.ee:
-        - 0
+        - 31
     filmikool.poff.ee:
         - 0
+    discoverycampus.poff.ee:
+        - 0
+
+XML_festival_editions:
+    - 51
+    # - 29
+    # - 30
+    # - 32
 
 programmes_festival_editions:
     poff.ee:
-        - 7
+        # - 51
+        - 52
+        # - 28
+        # - 29
+        # - 30
+        # - 32
     justfilm.ee:
-        - 3
+        # - 29
     kinoff.poff.ee:
-        - 4
+        - 0
     industry.poff.ee:
         - 0
     shorts.poff.ee:
-        - 2
+        - 30
     hoff.ee:
-        - 5
+        - 51
     kumu.poff.ee:
-        - 6
+        - 33
     tartuff.ee:
-        - 0
+        - 53
     oyafond.ee:
-        - 0
+        - 31
     filmikool.poff.ee:
         - 0
+    discoverycampus.poff.ee:
+        - 0
+
+active_industry_editions:
+    - 12
+
+active_discamp_editions:
+    - 50
+
+industry_eventival_badges_whitelist:
+    - MANAGEMENT
+    - JURY
+    - GUEST
+    - TEAM
+    - PRESS
+    - PRESS ONLINE
+    - INDUSTRY PRO
+    - INDUSTRY STUDENT / TALENT
+    - INDUSTRY ONLINE
+    - VOLUNTEER
+
+skip_build_for_models:
+    - industry-project
+    - industry-event
+    - industry-person
+    - team
+    - film
+    - cassette
+    - programme
+    - screening
 
 article:
     poff.ee: POFFiArticle
@@ -70,6 +123,7 @@ article:
     tartuff.ee: TartuffiArticle
     oyafond.ee: BrunoArticle
     filmikool.poff.ee: FilmikooliArticle
+    discoverycampus.poff.ee: DisCampArticle
 
 footer:
     poff.ee: POFFiFooter
@@ -82,6 +136,7 @@ footer:
     tartuff.ee: TartuffiFooter
     oyafond.ee: BrunoFooter
     filmikool.poff.ee: FilmikooliFooter
+    discoverycampus.poff.ee: DisCampFooter
 
 locales:
     poff.ee:
@@ -114,12 +169,12 @@ locales:
         - ru
     oyafond.ee:
         - et
-        - en
-        - ru
     filmikool.poff.ee:
         - et
         - en
         - ru
+    discoverycampus.poff.ee:
+        - en
 
 defaultLocale:
     poff.ee: et
@@ -132,6 +187,7 @@ defaultLocale:
     tartuff.ee: et
     oyafond.ee: et
     filmikool.poff.ee: et
+    discoverycampus.poff.ee: en
 
 vialogUrls:
     et:
@@ -164,6 +220,7 @@ pageURLs:
     tartuff.ee: "https://tartuff.ee/"
     oyafond.ee: "https://oyafond.ee/"
     filmikool.poff.ee: "https://filmikool.poff.ee/"
+    discoverycampus.poff.ee: "https://discoverycampus.poff.ee/"
 
 stagingURLs:
     poff.ee: "https://build.poff.ee/"
@@ -176,6 +233,7 @@ stagingURLs:
     tartuff.ee: https://build.tartuff.ee/
     oyafond.ee: https://build.oyafond.ee/
     filmikool.poff.ee: https://build.filmikool.poff.ee/
+    discoverycampus.poff.ee: https://build.discoverycampus.poff.ee/
 
 stagingDomains:
     poff.ee: build.poff.ee
@@ -188,3 +246,221 @@ stagingDomains:
     tartuff.ee: build.tartuff.ee
     oyafond.ee: build.oyafond.ee
     filmikool.poff.ee: build.filmikool.poff.ee
+    discoverycampus.poff.ee: build.discoverycampus.poff.ee
+
+# Images priority block START
+
+articleListViewImagePriority:
+    - - _small
+      - image
+    - - _small
+      - imageDefault
+    - - _small_16_9
+      - image
+    - - _small_16_9
+      - imageDefault
+    - - _small_p
+      - image
+    - - _small_p
+      - imageDefault
+
+articleListViewImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleViewImagePriority:
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleViewImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleHeroImagePriority:
+    - - _big
+      - image
+    - - _big
+      - imageDefault
+    - - _big_16_9
+      - image
+    - - _big_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleHeroImagePriorityDefaults:
+    - image
+    - imageDefault
+
+articleViiekasImagePriority:
+    - - _med
+      - image
+    - - _med
+      - imageDefault
+    - - _med_16_9
+      - image
+    - - _med_16_9
+      - imageDefault
+    - - _big_p
+      - image
+    - - _big_p
+      - imageDefault
+
+articleViiekasImagePriorityDefaults:
+    - image
+    - imageDefault
+
+festivalTeamImagePriority:
+    - - _small_sq
+      - pictureAtTeam
+    - - _small
+      - pictureAtTeam
+
+festivalTeamImagePriorityDefaults:
+    - pictureAtTeam
+    - personPicture
+
+juryAndGuestImagePriority:
+    - - _med_sq
+      - pictureAtJury
+    - - _small_sq
+      - pictureAtJury
+    - - _small
+      - pictureAtJury
+    - - _med_sq
+      - personPicture
+    - - _small_sq
+      - personPicture
+    - - _small
+      - personPicture
+
+juryAndGuestImagePriorityDefaults:
+    - pictureAtJury
+    - personPicture
+
+trioblockImagePriority:
+    - - _small_16_9
+      - image
+    - - _small
+      - image
+    - - _big_p
+      - image
+
+trioblockImagePriorityDefaults:
+    - image
+
+industryPersonsImagePriority:
+    - - _big
+      - profilePicAtInd
+    - - _big_16_9
+      - profilePicAtInd
+
+industryPersonsImagePriorityDefaults:
+    - profilePicAtInd
+    - personPicture
+
+cassettesAndFilmsListViewImagePriority:
+    - _small_16_9
+    - _small
+
+cassettesAndFilmsImageStillsPriority:
+    - _big_16_9
+    - _big
+
+cassettesAndFilmsDirectorPicturePriority:
+    - - _med_sq
+      - picture
+
+cassettesAndFilmsDirectorPicturePriorityDefaults:
+    - picture
+
+# Images priority block END
+
+# Image resize options according to prefix START
+
+libraryImageResizeOptions:
+    - F_:
+        -   sufiks: _big_16_9
+            width: 1920
+            height: 1080
+            fit: cover
+        -   sufiks: _med_16_9
+            width: 1280
+            height: 720
+            fit: cover
+        -   sufiks: _small_16_9
+            width: 640
+            height: 360
+            fit: cover
+    - R_:
+        -   sufiks: _big_sq
+            width: 900
+            height: 900
+            fit: cover
+        -   sufiks: _med_sq
+            width: 500
+            height: 500
+            fit: cover
+        -   sufiks: _small_sq
+            width: 300
+            height: 300
+            fit: cover
+        -   sufiks: _thumb_sq
+            width: 100
+            height: 100
+            fit: cover
+    - P_: # posterid
+        -   sufiks: _big_p
+            width: 555
+            height: 800
+            fit: cover
+        -   sufiks: _small_p
+            width: 300
+            height: 207
+            fit: cover
+    - NO: # ilma prefiksita pildid
+        -   sufiks: _big
+            width: 1920
+            fit: inside
+        -   sufiks: _med
+            width: 1280
+            fit: inside
+        -   sufiks: _small
+            width: 640
+            fit: inside
+    - U_: # kasutajate pildid
+        -   sufiks: _big_sq
+            width: 900
+            height: 900
+            fit: cover
+        -   sufiks: _med_sq
+            width: 500
+            height: 500
+            fit: cover
+        -   sufiks: _small_sq
+            width: 300
+            height: 300
+            fit: cover
+        -   sufiks: _thumb_sq
+            width: 100
+            height: 100
+            fit: cover
+
+libraryImageThumbnailResizeOption:
+    width: 245
+    height: 156
+    fit: inside
+
+# Image resize options according to prefix END

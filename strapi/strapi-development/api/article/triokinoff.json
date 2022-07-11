@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_article_trio_kinoff",
+  "info": {
+    "name": "Triokinoff",
+    "icon": "tv"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    },
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kinoff"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kinoff"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-kinoff"
+    }
+  }
+}

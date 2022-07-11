@@ -3,32 +3,40 @@ var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
+let userProfileHasBeenLoaded = false
 
 document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
     // console.log('User profile is loaded')
 })
 
+try {
+    const productElement = document.querySelector(`[shopSection]`);
+    if (productElement) {
+        availability()
+    }
+} catch (error) { }
+
 
 function buyerCheck() {
 
-    if(!validToken) {
+    if (!validToken) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
-    }else{
+    } else {
         document.getElementById('directToLoginButton').style.display = 'none'
 
-        if(userProfile.profile_filled && userProfile.picture === "this users picture is in S3"){
+        if (userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture) {
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")
-        }else {
-            if(!userProfile.profile_filled){
+        } else {
+            if (!userProfile.profileFilled) {
                 //profiil täitmata
                 document.getElementById('directToFillProfile').style.display = 'block'
                 // console.log("pooliku profiiliga kasutaja on poes")
-            }else{
+            } else {
                 //profiil täidetud, aga pilt puudu
                 document.getElementById('directToaddPicture').style.display = 'block'
                 // console.log("pildita kasutaja on poes")
@@ -39,12 +47,12 @@ function buyerCheck() {
 }
 
 
-if(localStorage.getItem('ACCESS_TOKEN')){
-    var token = localStorage.getItem('ACCESS_TOKEN')
-    try{
+if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
+    var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+    try {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         // var parsedToken = JSON.parse(jsonPayload)
@@ -55,13 +63,13 @@ if(localStorage.getItem('ACCESS_TOKEN')){
         // console.log("token aegub: " + expDate)
         // console.log("praegu on: " + now)
 
-        if(now < expDate){
+        if (now < expDate) {
             validToken = true
-        }else{
+        } else {
             validToken = false
         }
     }
-    catch(err){
+    catch (err) {
         //console.log(err)
         validToken = false
     }
@@ -97,7 +105,7 @@ if (!validToken) {
 function loadUserProfileH() {
     // console.log('laen cognitost kasutaja profiili....')
     var myHeaders = new Headers()
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'))
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
 
     var requestOptions = {
         method: 'GET',
@@ -105,7 +113,7 @@ function loadUserProfileH() {
         redirect: 'follow'
     }
 
-    fetch('https://api.poff.ee/profile', requestOptions).then(function (response) {
+    fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
@@ -151,53 +159,67 @@ function loadEmptyUserProfile() {
 
 
 
-function saveUrl(){
-    localStorage.setItem('url', window.location.href)
+function saveUrl() {
+    localStorage.setItem('preLoginUrl', window.location.href)
 }
 
 
 
 
-function useUserData(userProf){
-    if(userProf.name){
-        try{
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.name
-        }catch(err){
+function useUserData(userProf) {
+    if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
+        try {
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
+        } catch (err) {
             null
         }
-    }else{
-        try{
+    } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
+        try {
+            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
+        } catch (err) {
+            null
+        }
+
+    } else {
+        try {
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
-        }catch(err){
+        } catch (err) {
             null
         }
     }
-    try{
+    try {
         buyerCheck()
-    }catch(err){
+    } catch (err) {
         null
     }
-    try{
+    try {
         loadMyFavFilms()
-    }catch(err){
+    } catch (err) {
         // console.log(err)
         null
     }
-    try{
+    try {
+        userProfileHasBeenLoaded = true
+
+        pageLoadingAndUserProfileFetched()
+    } catch (err) {
+        null
+    }
+    try {
         fetchMyPasses()
-    }catch(err){
+    } catch (err) {
         null
     }
 }
 
 function logOut() {
-    localStorage.removeItem('ACCESS_TOKEN')
+    localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
-    if (localStorage.getItem('REFRESH_TOKEN')){
+    if (localStorage.getItem('REFRESH_TOKEN')) {
         localStorage.removeItem('REFRESH_TOKEN')
     }
-    localStorage.removeItem('url')
+    localStorage.removeItem('preLoginUrl')
     localStorage.removeItem('USER_PROFILE')
 
     // console.log('LOGITUD VÄLJA')
@@ -205,4 +227,3 @@ function logOut() {
 
     // window.open(location.origin, '_self')
 }
-

@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "awardings",
+  "info": {
+    "name": "Awarding",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "project": {
+      "model": "industry-project",
+      "via": "awardings"
+    },
+    "film": {
+      "via": "awardings",
+      "model": "film"
+    },
+    "person": {
+      "model": "person",
+      "via": "awardings"
+    },
+    "organisation": {
+      "model": "organisation",
+      "via": "awardings"
+    },
+    "festival_edition": {
+      "model": "festival-edition",
+      "via": "awardings"
+    },
+    "titlePrivate": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "award": {
+      "model": "industry-award",
+      "via": "awardings"
+    },
+    "actor_role": {
+      "type": "string"
+    },
+    "work_title": {
+      "type": "string"
+    }
+  }
+}

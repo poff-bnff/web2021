@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_article_trio_poff_ets",
+  "info": {
+    "name": "Triopoff",
+    "icon": "door-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-lang-item"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-lang-item"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-lang-item"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "string"
+    }
+  }
+}

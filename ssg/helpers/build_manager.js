@@ -10,21 +10,11 @@ const helpersDir = path.join(rootDir, 'helpers')
 const queuePath = path.join(helpersDir, 'build_queue.yaml')
 const logsPath = path.join(helpersDir, 'build_logs.yaml')
 
-let TOKEN = ''
+let TOKEN = null
 
-const production = true
-let https
-let strapiAddress
-let strapiPort
-
-if (production) {
-    https = require('https')
-    strapiAddress = process.env['StrapiHostPoff2021']
-} else {
-    https = require('http')
-    strapiAddress = 'localhost'
-    strapiPort = '1337'
-}
+let https = require(process.env['StrapiProtocol'])
+let strapiAddress = process.env['StrapiHost']
+let strapiPort = process.env['StrapiPort']
 
 function startBuildManager(options = null) {
     // Enable force run via command line when BM accidentally closed mid-work (due to server restart etc)
@@ -72,7 +62,7 @@ function startBuild() {
     const startTime = getCurrentTime()
     firstInQueue.also_builds = duplicatesLogIds
 
-    console.log('Starting build: ', buildFileName, buildDomain, buildType, buildParameters);
+    console.log(`Starting build (log ${firstInQueue.log_id}): `, buildFileName, buildDomain, buildType, buildParameters);
     const build_start_time = moment().tz('Europe/Tallinn').format()
 
     if (duplicatesLogIds?.length) {
@@ -112,6 +102,7 @@ function startBuild() {
             end_time: build_end_time,
             duration: duration,
             build_errors: stderr || null,
+            build_end_status: errors ? 'Fail' : 'OK',
             build_stdout: stdout || null
         }
         logQuery(firstInQueue.log_id, 'PUT', build_end_data)
@@ -120,9 +111,9 @@ function startBuild() {
             writeToOtherBuildLogs(duplicatesLogIds, build_end_data)
         }
 
-        console.log('\n', 'Removing build from queue: ', buildFileName, buildDomain, buildType, buildParameters);
+        console.log('\n', `Removing build ${firstInQueue.log_id} from queue: `, buildFileName, buildDomain, buildType, buildParameters);
         // After build end, remove from queue
-        removeFirstInQueue()
+        removeFinishedBuildFromQueue(firstInQueue.log_id)
 
         // If queue empty, rm queue file, else start building first one in queue
         if (!deleteQueueIfEmpty()) { startBuild() }
@@ -169,10 +160,10 @@ function deleteQueueIfEmpty() {
     }
 }
 
-function removeFirstInQueue() {
+function removeFinishedBuildFromQueue(logId) {
     const queueFile = yaml.load(fs.readFileSync(queuePath, 'utf8'))
-    queueFile.shift()
-    const queueDump = yaml.dump(queueFile, { 'noRefs': true, 'indent': '4' });
+    const updatedQueueFile = queueFile.filter(q => q.log_id !== logId)
+    const queueDump = yaml.dump(updatedQueueFile, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(queuePath, queueDump, 'utf8');
 }
 
@@ -268,14 +259,6 @@ async function calcQueueEstDur() {
         }
     })
 
-    const duration = moment.duration(estimateInMs)
-    if (duration._isValid && estimateInMs > 0) {
-        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.minutes(), `m`, duration.seconds(), `s`);
-        if (noEstimate > 0) {
-            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
-        }
-    }
-
     let ongoingBuildLastedInMs = 0
     if (queueFile.length > 1) {
         const ongoingBuild = await logQuery(queueFile[0].log_id, 'GET')
@@ -283,11 +266,24 @@ async function calcQueueEstDur() {
 
         if (ongoingBuildStartTime) {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
+            console.log('Current running build of ', ongoingBuild.site, ongoingBuild.build_args,' has lasted ', ongoingBuildLastedInMs, 'ms');
+        }
+    }
+
+
+    const estimateQueueBuildTime = Math.round(estimateInMs-ongoingBuildLastedInMs)
+
+    const duration = moment.duration(estimateQueueBuildTime)
+
+    if (duration._isValid && estimateInMs > 0) {
+        console.log(`Based on current queue (${uniqueQueue.length} builds) your build will finish in ~`, duration.hours(), `h`, duration.minutes(), `m`, duration.seconds(), `s (total: `, estimateQueueBuildTime, `ms)`);
+        if (noEstimate > 0) {
+            console.log(`Please note that no estimates were found for`, noEstimate, `builds, therefore this might not be exact.`);
         }
     }
 
     return {
-        duration: Math.round(estimateInMs-ongoingBuildLastedInMs),
+        duration: estimateQueueBuildTime,
         inqueue: uniqueQueue.length,
         noest: noEstimate
     }
@@ -348,7 +344,7 @@ function checkIfProcessAlreadyRunning() {
 }
 
 async function logQuery(id, type = 'GET', data) {
-    if (TOKEN === '') {
+    if (!TOKEN) {
         TOKEN = await strapiAuth()
     }
 
@@ -369,7 +365,7 @@ async function logQuery(id, type = 'GET', data) {
             }
         };
 
-        if (!production){
+        if (process.env['StrapiProtocol'] !== 'https'){
             options.port = strapiPort
         }
 

@@ -2,12 +2,14 @@
   "kind": "collectionType",
   "collectionName": "kumu_articles",
   "info": {
-    "name": "Kumu_Article"
+    "name": "Kumu_Article",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "populateCreatorFields": true
+    "populateCreatorFields": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "titlePrivate": {
@@ -101,6 +103,10 @@
     },
     "organisations": {
       "collection": "organisation"
+    },
+    "public": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

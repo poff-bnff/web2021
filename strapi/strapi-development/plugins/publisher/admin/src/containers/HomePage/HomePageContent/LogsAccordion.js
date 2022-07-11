@@ -44,6 +44,7 @@ const LogsAccordion = ({ site }) => {
         const user = `${oneLogEntry.admin_user.firstname} ${oneLogEntry.admin_user.lastname}`;
         const start = oneLogEntry.start_time ? moment(oneLogEntry.start_time).format('HH:mm DD.MM.YY') : 'järjekorras';
         const type = `${oneLogEntry.type}`
+        const build_end_status = oneLogEntry.build_end_status || 'N/A'
         let end;
         if (oneLogEntry.end_time) {
           end = moment(oneLogEntry.end_time).format('HH:mm DD.MM.YY')
@@ -51,13 +52,16 @@ const LogsAccordion = ({ site }) => {
           end = '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯'
         };
 
+        const has_failed = oneLogEntry?.build_errors?.length && oneLogEntry.build_errors !== "Creating/updating this object needs all domain sites to rebuild." ? "FAILED" : null
+
         return {
           log_id: log_id,
           user: user,
           type: type,
           start_time: start,
           end_time: end,
-          error_code: oneLogEntry.error_code
+          error_code: has_failed,
+          build_end_status: build_end_status
         };
       });
 
@@ -79,7 +83,8 @@ const LogsAccordion = ({ site }) => {
       type: "tegevus",
       start_time: "algas",
       end_time: "lõppes",
-      error_code: "error"
+      error_code: "error",
+      build_end_status: "build_end_status",
     }]
   };
 

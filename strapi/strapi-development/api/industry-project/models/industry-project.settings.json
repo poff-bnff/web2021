@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "industry_projects",
   "info": {
-    "name": "Industry_Project"
+    "name": "Industry_Project",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title_en": {
@@ -96,17 +98,41 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "clipUrl": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title_en"
+      "targetField": "title_en",
+      "required": true
     },
     "tag_genres": {
       "collection": "tag-genre"
+    },
+    "completionYear": {
+      "type": "integer"
+    },
+    "imdbLink": {
+      "type": "string"
+    },
+    "editions": {
+      "collection": "festival-edition",
+      "via": "projects",
+      "dominant": true
+    },
+    "awardings": {
+      "via": "project",
+      "collection": "awarding"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

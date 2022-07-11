@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_parameters",
+  "info": {
+    "name": "PaymentParameters"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "maksekeskus_id": {
+      "type": "string"
+    },
+    "maksekeskus_secret": {
+      "type": "string"
+    },
+    "account_nr": {
+      "type": "string"
+    }
+  }
+}

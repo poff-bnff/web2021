@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_creativegate_awardings",
+  "info": {
+    "name": "Awarding",
+    "icon": "flushed",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "award": {
+      "model": "industry-award"
+    },
+    "film": {
+      "model": "film"
+    },
+    "festival": {
+      "model": "festival"
+    },
+    "festival_edition": {
+      "model": "festival-edition"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "actor_role": {
+      "type": "string"
+    },
+    "role_at_film": {
+      "model": "role-at-film"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    }
+  }
+}

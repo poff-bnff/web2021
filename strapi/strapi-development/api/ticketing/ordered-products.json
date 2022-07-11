@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_ticketing_ordered_products",
+  "info": {
+    "name": "orderedProduct",
+    "icon": "border-all"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "product_category": {
+      "model": "product-category"
+    }
+  }
+}

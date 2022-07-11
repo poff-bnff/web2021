@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "functions",
+  "info": {
+    "name": "UserFunction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "function_parameters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.function-parameters"
+    }
+  }
+}

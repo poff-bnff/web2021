@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industry_awards",
+  "info": {
+    "name": "Award",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_en": {
+      "type": "string"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "translated.translated-long"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "awardings": {
+      "via": "award",
+      "collection": "awarding"
+    }
+  }
+}

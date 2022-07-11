@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_user_user_rights",
+  "info": {
+    "name": "UserRight",
+    "icon": "angry",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "functions": {
+      "collection": "function"
+    },
+    "smart_folders": {
+      "collection": "smart-folder"
+    },
+    "dumb_folders": {
+      "collection": "dumb-folder"
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_events",
+  "info": {
+    "name": "CourseEvent",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_private": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "title_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "title_ru"
+    },
+    "short_descr_et": {
+      "type": "text"
+    },
+    "short_descr_en": {
+      "type": "text"
+    },
+    "short_descr_ru": {
+      "type": "text"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "duration_time": {
+      "type": "time"
+    },
+    "end_time": {
+      "type": "datetime"
+    },
+    "location": {
+      "model": "location"
+    },
+    "course_module": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.course-module"
+    },
+    "credentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "domains": {
+      "collection": "domain"
+    },
+    "event_mode": {
+      "model": "event-mode"
+    },
+    "trailer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.trailers"
+    },
+    "industry_categories": {
+      "collection": "industry-category"
+    },
+    "is_live_event": {
+      "type": "boolean"
+    },
+    "is_public_event": {
+      "type": "boolean"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    },
+    "preconditions": {
+      "collection": "course-event"
+    },
+    "moodle_id": {
+      "type": "uid"
+    },
+    "posters": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "video_url": {
+      "type": "string"
+    },
+    "publish_et": {
+      "type": "boolean"
+    },
+    "publish_en": {
+      "type": "boolean"
+    },
+    "publish_ru": {
+      "type": "boolean"
+    },
+    "remote_id": {
+      "type": "uid"
+    },
+    "product_categories": {
+      "collection": "product-category",
+      "via": "course_events",
+      "dominant": true
+    },
+    "industry_projects": {
+      "collection": "industry-project"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.course-tags"
+    },
+    "presentedBy": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.presented-by"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "event_types": {
+      "collection": "event-type"
+    },
+    "event_access": {
+      "model": "event-access"
+    }
+  }
+}

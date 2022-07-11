@@ -1,6 +1,7 @@
 "use strict";
 const { execFile, exec, spawn } = require("child_process");
 const fs = require("fs");
+const yaml = require('js-yaml')
 const { StringDecoder } = require("string_decoder");
 const decoder = new StringDecoder("utf8");
 const moment = require("moment-timezone")
@@ -8,12 +9,25 @@ const { generateTimestampCode } = require('strapi-utils')
 
 const { addS } = require('../services/publisher.js')
 
+const path = require('path')
+let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+
+const {
+  slugify,
+  call_update,
+  call_build,
+  get_domain,
+  modify_stapi_data,
+  call_delete
+} = require(helper_path)
+
 // let timestamp = strapi.generateTimestampCode
 const domains = [
   "poff.ee",
   "justfilm.ee",
   "shorts.poff.ee",
   "industry.poff.ee",
+  "discoverycampus.poff.ee",
   "kinoff.poff.ee",
   "hoff.ee",
   "kumu.poff.ee",
@@ -58,31 +72,31 @@ const doBuild = async (site, userInfo) => {
       console.log(`child process exited with code ${code}`);
       let logData = {}
 
-      switch (code) {
-        case 0:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
-          break;
-        case 1:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR" }
-          break;
-        case 2:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR" }
-          break;
-        case 23:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR" }
-          break;
-        case 80:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR" }
-          break;
-        case 81:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR" }
-          break;
-        case 82:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR" }
-          break;
-        default:
-          logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
-      }
+      // switch (code) {
+      //   case 0:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "-" }
+      //     break;
+      //   case 1:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "CD_ERROR" }
+      //     break;
+      //   case 2:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NODE_ERROR" }
+      //     break;
+      //   case 23:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "NO_FILE_OR_DIR" }
+      //     break;
+      //   case 80:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BUILDDIR_ERR" }
+      //     break;
+      //   case 81:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "BACKUP_ERR" }
+      //     break;
+      //   case 82:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": "LIVE_REPLACE_ERR" }
+      //     break;
+      //   default:
+      //     logData = { "end_time": moment().tz("Europe/Tallinn").format(), "error_code": `ERR_CODE_${code}` }
+      // }
       // const result = await strapi.entityService.update({params: {id: id,},data: logData},{ model: "plugins::publisher.build_logs" });
       // console.log("close result:", result)
 
@@ -158,6 +172,110 @@ async function doFullBuild(userInfo) {
   }
 }
 
+async function doKillSwitch(userInfo, killStartTime) {
+  const queuePath = `../../ssg/helpers/build_queue.yaml`
+  const logPath = `../../ssg/helpers/build_logs.yaml`
+  const killerScript = `../../ssg/kill_switch.sh`
+  console.log('KILL SWITCH ACTIVATED!');
+  if (userInfo) {
+    if (fs.existsSync(queuePath)) {
+      if (fs.existsSync(logPath)) {
+        const logFile = yaml.load(fs.readFileSync(logPath, 'utf8'))
+        const logFileStartedBuilds = logFile.filter(b => b.type === 'Build start')
+        const lastBuild = logFileStartedBuilds[logFileStartedBuilds.length - 1]
+        const lastBuildPID = lastBuild.type === 'Build start' ? lastBuild.PID : ''
+        const userName = `${userInfo.firstname} ${userInfo.lastname}`
+
+        console.log(`Killer: ${userName}. Killing last startedbuild: ${lastBuildPID}`)
+
+        const child = spawn('bash', [killerScript, lastBuildPID])
+
+        let info = ''
+        return new Promise((resolve, reject) => {
+          child.stdout.on("data", async (data) => {
+            info += decoder.write(data)
+          });
+
+          child.stderr.on("data", async (data) => {
+            console.log(`error: ${data}`)
+            let error = 'error' + decoder.write(data)
+            info += 'error: ' + decoder.write(error)
+          });
+
+          child.on("close", async (code) => {
+            console.log(`child process exited with code ${code}`);
+
+            if (code === 0) {
+
+              let shortUserMessage = info
+              shortUserMessage = `${info.split('SEPARATORSTRING')[0]}`
+
+              let logMessageLong = info
+              logMessageLong = logMessageLong.replace(/SEPARATORSTRING/, '')
+
+              console.log(logMessageLong);
+
+              const logKillData = {
+                site: '-',
+                admin_user: { id: userInfo.id },
+                start_time: killStartTime,
+                end_time: moment().tz("Europe/Tallinn").format(),
+                type: 'KILL',
+                build_stdout: logMessageLong,
+                shown_to_user: true,
+              };
+              const result = await strapi.entityService.create({ data: logKillData }, { model: "plugins::publisher.build_logs" })
+
+              resolve({ type: 'success', message: shortUserMessage })
+            } else if (code === 1) {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code 1. ${info}` })
+            } else {
+              console.log(info);
+              resolve({ type: 'warning', message: `Error code ${code}. ${info}` })
+            }
+          });
+        });
+
+      } else {
+        console.log('No log file for PID');
+        return { type: 'warning', message: 'Logifaili PID lugemiseks ei leitud' }
+      }
+    } else {
+      console.log('No build queue');
+      return { type: 'warning', message: 'Järjekorda ei eksisteeri' }
+    }
+  } else {
+    console.log('No killer info');
+    return { type: 'warning', message: 'Kasutaja info on puudulik' }
+  }
+
+}
+
+async function doBuildArchive(ctx) {
+
+  const data = ctx.request.body;
+  // console.log(ctx)
+  const userInfo = JSON.parse(data.userInfo);
+  const superAdminRoleId = 1
+
+  const site = data.site;
+
+  console.log('BUILD ARCHIVE', site);
+
+  let result = {
+    id: '',
+    updated_by: {
+      id: userInfo.id
+    },
+    action: 'archive'
+  }
+
+  await call_build(result, [site], 'archive')
+  return { type: 'success', message: `${data.site} arhiivi ehitus käivitatud` }
+
+}
+
 module.exports = {
   /**
    * Default action.
@@ -168,7 +286,13 @@ module.exports = {
     const data = ctx.request.body;
     // console.log(ctx)
     const userInfo = JSON.parse(data.userInfo);
+    const superAdminRoleId = 1
+
     const site = data.site;
+    // Kontrollib kas kasutaja on superadmin
+    // if (userInfo.roles && !userInfo.roles.map(r => r.id).includes(superAdminRoleId)) {
+    //   ctx.send({ messageType: 'warning', buildSite: site, message: 'Hetkel pole live-i panek lubatud' });
+    // }
     //kontrollin kas päringule lisati site
     if (!data.site) {
       return ctx.badRequest("no site");
@@ -191,8 +315,31 @@ module.exports = {
     const data = ctx.request.body;
     const userInfo = JSON.parse(data.userInfo)
 
-    ctx.send({ message: "full build started" })
     await doFullBuild(userInfo)
+
+  },
+  killSwitch: async (ctx) => {
+    // console.log('ctx', ctx)
+    const killStartTime = moment().tz("Europe/Tallinn").format()
+    console.log("Killing all!")
+
+    const data = ctx.request.body;
+    const userInfo = JSON.parse(data.userInfo)
+
+    const killResult = await doKillSwitch(userInfo, killStartTime)
+    ctx.send(killResult)
+
+  },
+  buildArchive: async (ctx) => {
+    // console.log('ctx', ctx)
+    const arhiveStartTime = moment().tz("Europe/Tallinn").format()
+
+    const data = ctx.request.body;
+    // const userInfo = JSON.parse(data.userInfo)
+    console.log("Build archive", data.site)
+
+    const buildArchiveResult = await doBuildArchive(ctx)
+    ctx.send(buildArchiveResult)
 
   },
   logs: async (ctx) => {
@@ -229,7 +376,50 @@ module.exports = {
       type: 'build'
     }
     let result = await strapi.query("build_logs", "publisher").find(params);
+
     (result.length > 0) ? result = await addS(result) : result = result
+    return result
+
+  },
+  lastFailedBuildLogs: async (ctx) => {
+    const params = {
+      build_errors_null: false,
+      type: 'build',
+      _sort: 'id:desc'
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    (result.length > 0) ? result = await addS(result) : result = result
+    return result
+
+  },
+  lastTwentyBuidFailsOfSite: async (ctx) => {
+    const params = {
+      build_errors_null: false,
+      type: 'build',
+      site: ctx.params.site,
+      _limit: 20,
+      _sort: 'id:desc',
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+    result = result
+      .map(r => {
+        return {
+          site: r.site,
+          id: r.id,
+          end_time: r.end_time,
+          build_errors: r.build_errors
+        }
+      })
+    return result
+
+  },
+  allLogs: async (ctx) => {
+    const params = {
+      _limit: -1,
+      _sort: 'id:desc',
+    }
+    let result = await strapi.query("build_logs", "publisher").find(params);
+
     return result
 
   },
@@ -244,7 +434,7 @@ module.exports = {
     let sanitizedResult
     let tries = 0
 
-    while (!result.in_queue && tries < 100) {
+    while (!result.in_queue && tries < 500) {
       result = await strapi.query("build_logs", "publisher").findOne(params);
 
       sanitizedResult = {
@@ -262,6 +452,24 @@ module.exports = {
   onelog: async (ctx) => {
 
     const params = { id: ctx.params.id }
+
+    const result = await strapi.query("build_logs", "publisher").findOne(params);
+    if (result.admin_user) {
+      result.admin_user = {
+        firstname: result.admin_user.firstname || null,
+        lastname: result.admin_user.lastname || null
+      }
+    }
+    return result
+
+  },
+  lastBuildLogBySite: async (ctx) => {
+
+    const params = {
+      site: ctx.params.site,
+      _sort: 'id:desc',
+      type: 'build'
+    }
 
     const result = await strapi.query("build_logs", "publisher").findOne(params);
     if (result.admin_user) {

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_article_triodiscamps",
+  "info": {
+    "name": "Triodiscamp",
+    "icon": "anchor"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "richtext"
+    },
+    "trioItem_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-dis-camp"
+    },
+    "trioItem_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-dis-camp"
+    },
+    "trioItem_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.trio-item-dis-camp"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dis_camp_projects",
+  "info": {
+    "name": "DisCampProject",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_en": {
+      "type": "string"
+    },
+    "titleOriginal": {
+      "type": "string"
+    },
+    "countries": {
+      "collection": "country"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "project_types": {
+      "collection": "project-type"
+    },
+    "logline": {
+      "type": "string"
+    },
+    "project_statuses": {
+      "collection": "project-status"
+    },
+    "completionDate": {
+      "type": "datetime"
+    },
+    "numOfSeasons": {
+      "type": "integer"
+    },
+    "numOfEpisodes": {
+      "type": "integer"
+    },
+    "episodeDuration": {
+      "type": "integer"
+    },
+    "broadcasters": {
+      "collection": "organisation"
+    },
+    "plannedPremiere": {
+      "type": "datetime"
+    },
+    "country_focus": {
+      "model": "country"
+    },
+    "teamCredentials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "film.credentials-new"
+    },
+    "budget": {
+      "type": "integer"
+    },
+    "financed": {
+      "type": "integer"
+    },
+    "attached_partners": {
+      "collection": "organisation"
+    },
+    "lookingFor": {
+      "type": "richtext"
+    },
+    "synopsis": {
+      "type": "richtext"
+    },
+    "directorsNote": {
+      "type": "richtext"
+    },
+    "contactName": {
+      "type": "string"
+    },
+    "contactCompany": {
+      "model": "organisation"
+    },
+    "contactAddress": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "contactWeb": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "clipUrl": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "tag_genres": {
+      "collection": "tag-genre"
+    },
+    "editions": {
+      "collection": "festival-edition"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

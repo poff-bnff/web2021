@@ -4,7 +4,7 @@ if self.data.heroArticle
 
     if articleHero && articleHero.article_types && articleHero.article_types[0] && articleHero.publish && articleHero.title && articleHero.slug
 
-        //- p= `${news.title} - ${news.publish} - ${news.publishFrom} - ${news.publishUntil} - ${heroPlusTrioNews} - ${news.id} - ${news.article_types[0].name} - (${publishUntil} > ${currentTime}) - (${(!publishUntil || (publishUntil && (publishUntil > currentTime)))})`
+
         - let artHeroTypes = []
         - let artHeroTypeForPath = '';
         each artHeroType in articleHero.article_types
@@ -16,15 +16,10 @@ if self.data.heroArticle
         section.hero_head
             a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
                 if self.data.heroArticle
-                    if self.data.heroArticle.media
-                        if self.data.heroArticle.media.clipUrlDefault
-                            +videoAp(self.data.heroArticle.media.clipUrlDefault)
-                        else if self.data.heroArticle.media.image && self.data.heroArticle.media.image[0]
-                            img(src=`https://assets.poff.ee/img/${self.data.heroArticle.media.image[0].hash}${self.data.heroArticle.media.image[0].ext}`).hero_image
-                        else if self.data.heroArticle.media.imageDefault && self.data.heroArticle.media.imageDefault[0]
-                            img(src=`https://assets.poff.ee/img/${self.data.heroArticle.media.imageDefault[0].hash}${self.data.heroArticle.media.imageDefault[0].ext}`).hero_image
-                        else
-                            img(src='/assets/img/static/placeholder_hd_1.jpg').hero_image
+                    if self.data.heroArticle.clipUrlDefault
+                        +videoAp(self.data.heroArticle.clipUrlDefault)
+                    else if self.data.heroArticle.primaryImage
+                        img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).hero_image
                     else
                         img(src='/assets/img/static/placeholder_hd_1.jpg').hero_image
 
