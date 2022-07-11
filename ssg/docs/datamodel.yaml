@@ -1660,8 +1660,7 @@ CourseEvent: &CourseEvent
     location: *Location
     course_module:
         -   *CourseModule
-    credentials:
-        -   *Credentials
+    credentials: *Credentials
     festival_editions:
         -   *FestivalEdition
     domains:
@@ -1685,6 +1684,22 @@ CourseEvent: &CourseEvent
     publish_et: boolean
     publish_en: boolean
     publish_ru: boolean
+    remote_id: UID
+    product_categories: 
+        - ProductCategory
+    industry_projects:
+        -   *IndustryProject
+    publishFrom: datetime
+    publishUntil: datetime
+    tags: *CourseTags
+    presentedBy: 
+        *PresentedBy
+    languages:
+        -   *Language
+    event_types:
+        -   *EventType
+    event_access: *EventAccess
+
 
 #DiscoveryCampus
 
