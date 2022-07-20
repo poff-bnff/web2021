@@ -218,7 +218,7 @@ for (const lang of languages) {
                         // 2022 adding votemo for TARTUFF
                         if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}votemoo`]
+                            element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
                         // 2022 adding elakaasa for TARTUFF
                         if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
