@@ -48,7 +48,7 @@ block content
                 br
                 div#termsContainer
                     input(id='termsCheckbox' type='checkbox' name='terms' value='agree')
-                    label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
+                    label.agree_terms_label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
                 br
                 button#paybutton.btn.btn-primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
                 br
