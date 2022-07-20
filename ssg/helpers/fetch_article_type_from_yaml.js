@@ -220,10 +220,10 @@ for (const lang of languages) {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
-                        // 2022 adding elakaasa (artikli slug elakaasa) for TARTUFF
-                        if (DOMAIN === 'tartuff.ee' && element[key] === 'elakaasa') {
+                        // 2022 adding elakaasa (artikli slug ela-kaasa) for TARTUFF
+                        if (DOMAIN === 'tartuff.ee' && element[key] === 'ela-kaasa') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}votemo`]
+                            element.aliases = [`${votemooAliasLangPrefix}elakaasa`]
                         }
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
