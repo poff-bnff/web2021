@@ -215,15 +215,15 @@ for (const lang of languages) {
                             let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         }
-                        // 2022 adding votemo for TARTUFF
+                        // 2022 adding votemo (artikli slug votemo) for TARTUFF
                         if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
-                        // 2022 adding elakaasa for TARTUFF
-                        if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
+                        // 2022 adding elakaasa (artikli slug elakaasa) for TARTUFF
+                        if (DOMAIN === 'tartuff.ee' && element[key] === 'elakaasa') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}elakaasa`]
+                            element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
