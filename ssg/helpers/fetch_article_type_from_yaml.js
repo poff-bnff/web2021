@@ -206,15 +206,15 @@ for (const lang of languages) {
                             element.aliases = ['auukrainale', 'ukraina','au-ukrainale']
                         }
                         // 2022 adding votemo for HOFF
-                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
-                            let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}votemoo`]
-                        }
+                        // if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
+                        //     let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                        //     element.aliases = [`${votemooAliasLangPrefix}votemoo`]
+                        // }
                         // 2022 adding elakaasa for HOFF
-                        if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
-                            let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemoAliasLangPrefix}votemo`]
-                        }
+                        // if (DOMAIN === 'hoff.ee' && element[key] === 'votemo2') {
+                        //     let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                        //     element.aliases = [`${votemoAliasLangPrefix}votemo`]
+                        // }
                         // 2022 adding votemo (artikli slug votemo) for TARTUFF
                         if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
