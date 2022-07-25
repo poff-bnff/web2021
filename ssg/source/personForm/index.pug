@@ -1,0 +1,57 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    section.userprofile
+        div.form#thisPersonProfile(style= 'display: none')
+            div.form-group
+                label.person_profile_label(for='firstName')= self.label.userprofile.firstName
+                input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+            div.form-group
+                label.person_profile_label(for='lastName')= self.label.userprofile.lastName
+                input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)")
+                div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
+            div.form-group
+                label.person_profile_label(for='gender')= self.label.userprofile.gender
+                select.login_input#gender(name='gender' oninput='validateGender(this.id)')
+                    option.login_input(value='male')= self.label.userprofile.genderM
+                    option.login_input(value='female')= self.label.userprofile.genderF
+                    option.login_input(value='other')= self.label.userprofile.genderO
+                    option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+
+            button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()' style='width: 82px; height: 40px;') LISA UUS
+            //-self.label.userprofile.saveButton
+            p#personProfileSent(style= {display: 'none'}) UUS LISATUD!
+            //- self.label.userprofile.dataSaved
+        p#loadingStatus LAADIMINE...
+        p#logInStatus(style= 'display: none') LOGI SISSE
+
+    style.
+        .invalid {background-color: transparent; display: block; color: #495057}
+        .valid {background-color: #ccf1e7; display: none}
+        .invalidColor {background-color: #fff3e8}
+        .c_invalid {background-color: #fff3e8}
+        .c_valid {background-color: transparent}
+        h4 {color: #464646}
+        h1 {color: #495057}
+        #personProfileSent {color: #495057}
+        label {color: #495057}
+        #imgError {color: red}
+
+        #removeProviderWarning{
+            display: flex;
+            flex-direction: column;
+        }
+        a.btn.btn-primary {
+            background-color: #ccf1e7;
+            color: #495057
+        }
+        form.imput-form.input.login_input.form-control{
+            background-color: #ffffff;
+        }
+
+
+
+
