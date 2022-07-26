@@ -61,24 +61,24 @@ block content
                 button.btn.btn_primary(id='saveProfileButton' onclick='validateForm()' style='width: 82px; height: 40px;')= self.label.userprofile.saveButton
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
-            br
-            h3.dark= 'Oled sisse loginud kasutades teenust:'
-            #authProviders
+            //- br
+            //- h3.dark= 'Oled sisse loginud kasutades teenust:'
+            //- #authProviders
 
-                div.form-group
-                    .btn.btn_primary.text-uppercase#google(style= {display:'none'}) google
-                    //- a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
-                    //- a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
+            //-     div.form-group
+            //-         .btn.btn_primary.text-uppercase#google(style= {display:'none'}) google
+            //-         //- a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
+            //-         //- a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
 
-                div.form-group
-                    .btn.btn_primary.text-uppercase#facebook(style= {display:'none'}) facebook
-                    //- a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
-                    //- a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
+            //-     div.form-group
+            //-         .btn.btn_primary.text-uppercase#facebook(style= {display:'none'}) facebook
+            //-         //- a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
+            //-         //- a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
 
-                div.form-group
-                    .btn.btn_primary.text-uppercase#password(style= {display:'none'}) PÖFF
-                    //- a.btn.btn_primary.text-uppercase#password(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
-                    //- a.btn.btn-primary.text-uppercase#remove_password(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'local')" style= {display:'none'}) Remove provider POFF
+            //-     div.form-group
+            //-         .btn.btn_primary.text-uppercase#password(style= {display:'none'}) PÖFF
+            //-         //- a.btn.btn_primary.text-uppercase#password(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
+            //-         //- a.btn.btn-primary.text-uppercase#remove_password(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'local')" style= {display:'none'}) Remove provider POFF
 
 
             #removeProviderWarning(style= {display:'none'}) Removing provider

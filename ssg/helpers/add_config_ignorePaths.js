@@ -75,12 +75,9 @@ function addConfigIgnorePaths() {
             '/industry_persons_archive_search', //industry
             '/info', //tartuff
             '/letschat', // POFF letschat page
-            '/login', //poff, industry
             '/mypoff', // poff, industry
             '/my_screenings', // poff
             '/shop', // poff
-            '/signup', //poff, industry
-            '/userprofile', //poff, industry
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
