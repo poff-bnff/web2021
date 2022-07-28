@@ -87,18 +87,20 @@ block content
                         | Eventival
 
             if process.env['DOMAIN'] === 'filmikool.poff.ee'
-                a#loginFB(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
+                - var customCallback = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}:${strapiServerPort}/login/`
+                a#loginFB(onclick=`loginViaProvider(this.textContent, '${customCallback}')`)
                     .button.login_btn_social
                         | Facebook
 
-                a#loginG(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
+                a#loginG(onclick=`loginViaProvider(this.textContent, '${customCallback}')`)
                     .button.login_btn_social
                         | Google
 
-                a#loginE(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
+                a#loginE(onclick=`loginViaProvider(this.textContent, '${customCallback}')`)
                     .button.login_btn_social
                         | Eventival
 
+                p= customCallback
             //- a#loginE(href=`https://api.poff.ee/auth/eventival`)
             p#noAccreditation(style='display: none; color: #990000; text-align:center;')= 'Missing valid accreditation for access'
             if process.env['DOMAIN'] === 'industry.poff.ee'
