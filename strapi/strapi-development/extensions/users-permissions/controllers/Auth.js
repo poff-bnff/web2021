@@ -289,7 +289,12 @@ module.exports = {
     // grantConfig[provider].callback = _.get(ctx, 'query.callback') || grantConfig[provider].callback;
 
     grantConfig[provider].custom_params = _.get(ctx, 'query');
-    grantConfig[provider].callback = _.get(ctx, 'query.callback') || _.get(ctx, 'state.session.grant.dynamic.callback') || grantConfig[provider].callback;
+    // grantConfig[provider].callback = _.get(ctx, 'query.callback') || _.get(ctx, 'state.session.grant.dynamic.callback') || grantConfig[provider].callback;
+
+    grantConfig[provider].callback =
+      _.get(ctx, 'query.callback') ||
+      _.get(ctx, 'session.grant.dynamic.callback') ||
+      grantConfig[provider].callback;
 
     grantConfig[provider].redirect_uri = strapi.plugins[
       'users-permissions'
