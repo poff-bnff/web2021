@@ -32,7 +32,7 @@ const loginViaLocal = () => {
 }
 
 // Buttons
-const loginViaProvider = (provider) => {
+const loginViaProvider = (provider, callback = '') => {
     let providerToLowerCase = provider.toLowerCase()
     localStorage.setItem('LOGIN_PROVIDER', providerToLowerCase)
     cleanUiMessages()
@@ -42,7 +42,9 @@ const loginViaProvider = (provider) => {
         loginViaLocal()
     } else {
         provider = provider.toLowerCase()
-        window.open(`${strapiDomain}/connect/${provider}`, '_self')
+        callback = callback ? `?callback=${callback}` : ''
+        console.log(callback);
+        window.open(`${strapiDomain}/connect/${provider}${callback}`, '_self')
     }
 }
 
