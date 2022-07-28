@@ -31,13 +31,13 @@ if (process.argv[2]) {
         addConfigPathAliases([
             '/_scripts',
             '/login',
-            '/my_screenings',
-            '/screenings-search',
-            '/my_films',
+            // '/my_screenings',
+            // '/screenings-search',
+            // '/my_films',
             '/search',
             '/mypoff',
             '/userprofile',
-            '/_fetchdir/products',
+            // '/_fetchdir/products',
             '/resetPswd',
             '/signup'
         ])
