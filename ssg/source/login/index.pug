@@ -87,7 +87,8 @@ block content
                         | Eventival
 
             if process.env['DOMAIN'] === 'filmikool.poff.ee'
-                - var customCallback = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}:${strapiServerPort}/login/`
+                - var strapiServerPortForCallback = strapiServerPort ? `:${strapiServerPort}` : ''
+                - var customCallback = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${strapiServerPortForCallback}/login/`
                 a#loginFB(onclick=`loginViaProvider(this.textContent, '${customCallback}')`)
                     .button.login_btn_social
                         | Facebook
