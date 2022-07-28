@@ -2,7 +2,7 @@
 SECONDS=0
 THISDIR=${PWD##*/}
 
-export DOMAIN="poff.ee"
+export DOMAIN="filmikool.poff.ee"
 
 echo "Build $DOMAIN, LOGIN PAGES"
 

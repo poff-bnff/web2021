@@ -73,7 +73,7 @@ block content
             else
                 h4.dark_1.login_headline#loginMessage Login via Eventival
 
-            if process.env['DOMAIN'] !== 'industry.poff.ee'
+            if process.env['DOMAIN'] === 'poff.ee'
                 a#loginFB(onclick='loginViaProvider(this.textContent)')
                     .button.login_btn_social
                         | Facebook
@@ -83,6 +83,19 @@ block content
                         | Google
 
                 a#loginE(onclick='loginViaProvider(this.textContent)')
+                    .button.login_btn_social
+                        | Eventival
+
+            if process.env['DOMAIN'] === 'filmikool.poff.ee'
+                a#loginFB(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
+                    .button.login_btn_social
+                        | Facebook
+
+                a#loginG(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
+                    .button.login_btn_social
+                        | Google
+
+                a#loginE(onclick='loginViaProvider(this.textContent, "https://filmikool.poff.ee/login/")')
                     .button.login_btn_social
                         | Eventival
 
