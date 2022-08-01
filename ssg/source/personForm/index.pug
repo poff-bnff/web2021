@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        div.form#thisPersonProfile(style= 'display: none')
+        form.form#thisPersonProfile(style= 'display: none')
             div.form-group
                 label.person_profile_label(for='firstName')= self.label.userprofile.firstName
                 input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
