@@ -6,11 +6,11 @@ block content
         form.form#thisPersonProfile(style= 'display: none')
             div.form-group
                 label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-                input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' id="firstName" autocomplete="off" oninput="validateFirstName(this.id)")
                 div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
             div.form-group
                 label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-                input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)")
+                input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' id='lastName' autocomplete="off" oninput="validateLastName(this.id)")
                 div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
             div.form-group
                 label.person_profile_label(for='gender')= self.label.userprofile.gender
@@ -20,6 +20,15 @@ block content
                     option.login_input(value='other')= self.label.userprofile.genderO
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                 div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+            fieldset
+                legend=self.label.userprofile.profileImgSet
+                    label.person_profile_label(for='profile_img')= self.label.userprofile.profileImg
+                    input.login_input#profile_img(type='file' name='profile_img' id='profile_img' accept='image/png, image/jpeg, image/jpg')
+                    label.person_profile_label(for='img_author')= self.label.userprofile.imageAuhtor
+                    input.login_input#firstName.form-control(type='text' name='img_author' id='img_author' autocomplete="off")
+                    label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
+                    input.login_input#firstName.form-control(type='text' name='img_year' id='img_year' autocomplete="off")
+
 
             button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()' style='width: 82px; height: 40px;') LISA UUS
             //-self.label.userprofile.saveButton
