@@ -61,6 +61,9 @@ async function sendPersonProfile() {
         firstName: firstName.value,
         lastName: lastName.value,
         gender: personGender,
+        profile_img: profile_img.value,
+        photographer: photographer.value,
+        img_year: img_year.value
     }
 
     formData.append('data', JSON.stringify(personToSend));

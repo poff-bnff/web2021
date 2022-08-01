@@ -27,7 +27,7 @@ block content
                     label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                     input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
                     label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
-                    input.login_input#img_year.form-control(type='text' name='img_year' autocomplete="off")
+                    input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
 
             button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()' style='width: 82px; height: 40px;') LISA UUS
