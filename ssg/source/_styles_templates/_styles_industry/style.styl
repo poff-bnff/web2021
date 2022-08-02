@@ -1069,7 +1069,7 @@ a .dark:hover
 .footer_logos
     display grid
     grid-template-columns repeat(auto-fit, minmax(6rem, 6rem))
-    grid-template-rows 3rem
+    grid-auto-rows minmax(2rem, 3rem)
     justify-content center
     justify-items center
     align-items center
@@ -1077,8 +1077,8 @@ a .dark:hover
 
 row:first-child > .footer_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(15rem, 20rem))
-    grid-auto-rows minmax(4rem, 5rem)
+    grid-template-columns repeat(auto-fit, minmax(30rem, 36rem))
+    grid-auto-rows minmax(10rem, 15rem)
     // grid-template-rows 3.6rem
     justify-content center
     justify-items center
