@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_menu_bruno_sub_menu_items",
+  "collectionName": "components_menu_bruno_sub2_menu_items",
   "info": {
-    "name": "BrunoSubMenuItem",
-    "icon": "calendar-week",
+    "name": "BrunoSub2MenuItem",
+    "icon": "angle-double-down",
     "description": ""
   },
   "options": {},
@@ -27,13 +27,7 @@
       "type": "string"
     },
     "publish": {
-      "type": "boolean",
-      "default": true
-    },
-    "subLevel2Item": {
-      "type": "component",
-      "repeatable": true,
-      "component": "menu.bruno-sub2-menu-item"
+      "type": "boolean"
     }
   }
 }

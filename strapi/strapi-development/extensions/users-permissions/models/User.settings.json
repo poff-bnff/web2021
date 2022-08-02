@@ -92,20 +92,20 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "via": "owner",
-      "collection": "product"
+      "collection": "product",
+      "via": "owner"
     },
     "transactions": {
-      "via": "transactor",
-      "collection": "transaction"
+      "collection": "transaction",
+      "via": "transactor"
     },
     "user_profile": {
       "model": "user-profiles",
       "via": "user"
     },
     "business_profiles": {
-      "via": "user",
-      "collection": "business-profile"
+      "collection": "business-profile",
+      "via": "user"
     },
     "my_events": {
       "type": "component",
@@ -121,6 +121,9 @@
     },
     "id_number_est": {
       "type": "uid"
+    },
+    "person": {
+      "model": "person"
     }
   }
 }
