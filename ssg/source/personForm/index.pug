@@ -15,11 +15,11 @@ block content
             div.form-group
                 label.person_profile_label(for='gender')= self.label.userprofile.gender
                 select.login_input#gender(name='gender' oninput='validateGender(this.id)')
-                    option.login_input(value='male')= self.label.userprofile.genderM
-                    option.login_input(value='female')= self.label.userprofile.genderF
-                    option.login_input(value='other')= self.label.userprofile.genderO
+                    each gender in self.data.genders.sort((a, b) => a.id - b.id)
+                        option.login_input(value=gender.id)= gender[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                 div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+
 
             button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()' style='width: 82px; height: 40px;') LISA UUS
             //-self.label.userprofile.saveButton

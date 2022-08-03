@@ -47,20 +47,11 @@ async function sendPersonProfile() {
 
     const formData = new FormData();
 
-    let personGender
-    if (gender.value === 'male') {
-        personGender = 2
-    } else if (gender.value === 'female') {
-        personGender = 3
-    } else {
-        personGender = 4
-    }
-
     let personToSend = {
         // picture: pictureInfo,
         firstName: firstName.value,
         lastName: lastName.value,
-        gender: personGender,
+        gender: gender.value,
     }
 
     formData.append('data', JSON.stringify(personToSend));
