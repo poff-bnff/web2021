@@ -2129,6 +2129,157 @@
           },
           "id_number_est": {
             "type": "uid"
+          },
+          "person": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "picture": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "phoneNr": {
+                "type": "string"
+              },
+              "eMail": {
+                "type": "string"
+              },
+              "dateOfBirth": {
+                "type": "string"
+              },
+              "countries": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "organisations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "profession": {
+                "type": "string"
+              },
+              "firstNameLastName": {
+                "type": "string"
+              },
+              "biography": {
+                "type": "component"
+              },
+              "filmography": {
+                "type": "component"
+              },
+              "remoteId": {
+                "type": "uid"
+              },
+              "pageUrl": {
+                "type": "string"
+              },
+              "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "festival_editions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "role_at_films": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "native_language": {
+                "type": "string"
+              },
+              "languages": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "height_cm": {
+                "type": "integer"
+              },
+              "weight_kg": {
+                "type": "integer"
+              },
+              "eye_colour": {
+                "type": "string"
+              },
+              "hair_colour": {
+                "type": "string"
+              },
+              "shoe_size": {
+                "type": "string"
+              },
+              "stature": {
+                "type": "string"
+              },
+              "pitch_of_voice": {
+                "type": "string"
+              },
+              "eventival_id": {
+                "type": "uid"
+              },
+              "ev_account_email": {
+                "type": "string"
+              },
+              "ev_contact_email": {
+                "type": "string"
+              },
+              "ev_country": {
+                "type": "string"
+              },
+              "ev_org_name": {
+                "type": "string"
+              },
+              "ev_job_title": {
+                "type": "string"
+              },
+              "bio_et": {
+                "type": "string"
+              },
+              "bio_en": {
+                "type": "string"
+              },
+              "bio_ru": {
+                "type": "string"
+              },
+              "profile_img": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -2634,6 +2785,9 @@
           },
           "id_number_est": {
             "type": "uid"
+          },
+          "person": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

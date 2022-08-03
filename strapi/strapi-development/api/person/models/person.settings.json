@@ -68,14 +68,81 @@
       "type": "string"
     },
     "awardings": {
-      "via": "person",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "person"
     },
     "festival_editions": {
       "collection": "festival-edition"
     },
     "domains": {
       "collection": "domain"
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "native_language": {
+      "model": "language"
+    },
+    "languages": {
+      "collection": "language"
+    },
+    "height_cm": {
+      "type": "integer"
+    },
+    "weight_kg": {
+      "type": "integer"
+    },
+    "eye_colour": {
+      "model": "eye-colour"
+    },
+    "hair_colour": {
+      "model": "hair-colour"
+    },
+    "shoe_size": {
+      "model": "shoe-size"
+    },
+    "stature": {
+      "model": "stature"
+    },
+    "pitch_of_voice": {
+      "model": "pitch-of-voice"
+    },
+    "eventival_id": {
+      "type": "uid"
+    },
+    "ev_account_email": {
+      "type": "email"
+    },
+    "ev_contact_email": {
+      "type": "email"
+    },
+    "ev_country": {
+      "model": "country"
+    },
+    "ev_org_name": {
+      "type": "string"
+    },
+    "ev_job_title": {
+      "type": "string"
+    },
+    "bio_et": {
+      "type": "richtext"
+    },
+    "bio_en": {
+      "type": "richtext"
+    },
+    "bio_ru": {
+      "type": "richtext"
+    },
+    "profile_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

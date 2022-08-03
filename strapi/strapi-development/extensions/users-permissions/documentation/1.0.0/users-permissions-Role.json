@@ -618,6 +618,9 @@
                 "id_number_est": {
                   "type": "uid"
                 },
+                "person": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },

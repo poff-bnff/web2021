@@ -23,8 +23,8 @@
       "model": "film"
     },
     "person": {
-      "model": "person",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "person"
     },
     "organisation": {
       "model": "organisation",

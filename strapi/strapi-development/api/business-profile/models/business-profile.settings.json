@@ -12,9 +12,9 @@
   },
   "attributes": {
     "user": {
+      "via": "business_profiles",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "business_profiles"
+      "model": "user"
     },
     "organisation": {
       "model": "organisation"

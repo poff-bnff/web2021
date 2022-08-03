@@ -235,7 +235,7 @@ const breakpointSmallerThan = (breakpoint, { width, height }) => {
 };
 
 const bitmapFormats = ['tiff', 'tif', 'png', 'webp', 'jpg', 'jpeg']
-const otherFormats = ['pdf', 'doc', 'svg']
+const otherFormats = ['pdf', 'doc']
 
 const canBeProccessed = async buffer => {
   const { format } = await getMetadatas(buffer);
