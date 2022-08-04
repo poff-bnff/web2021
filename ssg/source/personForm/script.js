@@ -52,7 +52,7 @@ async function sendPersonProfile() {
         firstName: firstName.value,
         lastName: lastName.value,
         gender: gender.value,
-        // phoneNr: phoneNr.value,
+        phoneNr: phoneNr.value,
     }
 
     formData.append('data', JSON.stringify(personToSend));
@@ -70,7 +70,7 @@ async function sendPersonProfile() {
     personToSend = JSON.stringify(personToSend)
     // console.log("kasutaja profiil mida saadan ", personToSend);
 
-    let response = await (await fetch(`${strapiDomain}/people`, {
+    let response = await (await fetch(`${strapiDomain}/users/personForm`, {
         method: 'POST',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
@@ -80,7 +80,10 @@ async function sendPersonProfile() {
 
     console.log(response);
 
+    console.log('Responsestaaatus', response.status);
+
     if (response.status === 200) {
+        console.log('Responsestaaatus väga timm');
         document.getElementById('personProfileSent').style.display = ''
         if (localStorage.getItem('preLoginUrl')) {
             window.open(localStorage.getItem('preLoginUrl'), '_self')
