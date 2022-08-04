@@ -52,6 +52,7 @@ async function sendPersonProfile() {
         firstName: firstName.value,
         lastName: lastName.value,
         gender: gender.value,
+        phoneNr: phoneNr.value,
     }
 
     formData.append('data', JSON.stringify(personToSend));
@@ -86,6 +87,7 @@ async function sendPersonProfile() {
     firstName.value = ''
     lastName.value = ''
     gender.value = ''
+    phoneNr.value = ''
 
 
 }
