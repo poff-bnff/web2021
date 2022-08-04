@@ -2,4 +2,4 @@ data:
     genders: /_domainStrapidata/Gender.yaml
     countries: /_domainStrapidata/Country.yaml
     counties: /_domainStrapidata/County.yaml
-    counties: /_domainStrapidata/RoleAtFilm.yaml
+    roleatfilms: /_domainStrapidata/RoleAtFilm.yaml
