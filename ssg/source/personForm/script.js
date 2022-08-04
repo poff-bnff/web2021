@@ -87,7 +87,7 @@ async function sendPersonProfile() {
     firstName.value = ''
     lastName.value = ''
     gender.value = ''
-    // phoneNr.value = ''
+    phoneNr.value = ''
 
 
 }
