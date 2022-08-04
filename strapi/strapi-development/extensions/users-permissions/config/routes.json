@@ -445,6 +445,16 @@
         "prefix": "",
         "description": "Import users"
       }
+    },
+    {
+      "method": "POST",
+      "path": "/users/personForm",
+      "handler": "User.personForm",
+      "config": {
+        "policies": ["plugins::users-permissions.short-ratelimit"],
+        "prefix": "",
+        "description": "Add new person"
+      }
     }
   ]
 }
