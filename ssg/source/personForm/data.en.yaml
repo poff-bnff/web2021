@@ -1,2 +1,4 @@
 data:
     genders: /_domainStrapidata/Gender.yaml
+    countries: /_domainStrapidata/Country.yaml
+    # counties: /_domainStrapidata/County.yaml

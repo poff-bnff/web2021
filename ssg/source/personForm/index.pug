@@ -20,6 +20,10 @@ block content
                         option.login_input(value=gender.id)= gender[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                 div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+            div.form-group
+                label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
+                input.login_input#phoneNr.form-control( type='text', placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
+
             fieldset
                 legend
                     div.form-group
@@ -34,11 +38,24 @@ block content
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
+            //- fieldset
+            //-     legend
+            //-         h4
+            //-         div.form-group
+            //-             label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
+            //-             input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
+            //-         div.form-group
+            //-             label.person_profile_label(for='photographer')= self.label.userprofile.photographer
+            //-             input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
+            //-         div.form-group
+            //-             label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
+            //-             input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
 
-            button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()' style='width: 82px; height: 40px;') LISA UUS
+
+            button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
-            p#personProfileSent(style= {display: 'none'}) UUS LISATUD!
+            p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
             //- self.label.userprofile.dataSaved
         p#loadingStatus LAADIMINE...
         p#logInStatus(style= 'display: none') LOGI SISSE
