@@ -301,6 +301,41 @@ TagSecret: &TagSecret
     en: text
     ru: text
 
+Award: &Award
+    _path: /industry-awards
+    title_en: text
+    description:
+        - *Translated
+    title_et: text
+    title_ru: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    awardings: 
+        - Awardings
+
+Awarding: &Awarding
+    _path: /awardings
+    date: datetime
+    project: IndustryProject
+    film: Film
+    person: Person
+    organisation: Organisation
+    festival_edition: FestivalEdition
+    titlePrivate: text
+    title_et: text
+    title_en: text
+    title_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    award: *Award
+    actor_role: text
+    work_title: text
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -333,6 +368,11 @@ FestivalEdition: &FestivalEdition
     slug_et: (UID)
     slug_en: (UID)
     slug_ru: (UID)
+    remoteId: UID
+    projects: 
+        - IndustryProject
+    awardings:
+        - *Awarding
 
 # Organisation
 Organisation: &Organisation
@@ -347,6 +387,12 @@ Organisation: &Organisation
     logoBlack: *StrapiMedia
     logoColour: *StrapiMedia
     homepageUrl: (text)
+    awardings: 
+        - *Awarding
+    festival_editions: 
+        - *FestivalEdition
+    domains: 
+        - *Domain
 
 PresentedBy: &PresentedBy
     presentedByText: *Translated
@@ -1048,7 +1094,96 @@ FilmikooliMenu: &FilmikooliMenu
         - *FilmikooliSubMenuItem
     publish: (boolean)
 
+# Address
+
+County: &County
+    _path: /counties
+    name_et: text
+    name_en: text
+    name_ru: text
+    country: *Country
+
+PopulatedPlace: &PopulatedPlace
+    _path: /populated-places
+    name_et: text
+    name_en: text
+    name_ru: text
+    county: *County
+
+Address: &Address
+    _path: /addresses
+    country: *Country
+    county: *County
+    populated_place: *PopulatedPlace
+    settl_unit: text
+    address_unit: text
+    street_name: text
+    address_number: text
+    appartment: text
+    postal_code: text
+    n_dms: text
+    e_dms: text
+    n: number
+    e: number
+    l_est_x: number
+    l_est_y: number
+    add_county: text #milleks?
+    add_p_place: text #milleks?
+
 # Person & Team
+
+ShoeSize: &ShoeSize
+    _path: /shoe-sizes
+    name: text
+    size_eu: number
+    size_us: number
+    size_uk: number
+    foot_length_from: number
+    foot_length_to: number
+
+HairColour: &HairColour
+    _path: /hair-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+HairLength: &HairLength
+    _path: /hair-lengths
+    name_et: text
+    name_en: text
+    name_ru: text
+
+PitchOfVoice: &PitchOfVoice
+    _path: /pitch-of-voices
+    name_et: text
+    name_en: text
+    name_ru: text
+
+Stature: &Stature
+    _path: /statures
+    name_et: text
+    name_en: text
+    name_ru: text
+
+TypeOfWork: &TypeOfWork
+    _path: /type-of-works
+    name_et: text
+    name_en: text
+    name_ru: text    
+
+EyeColour: &EyeColour
+    _path: /eye-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+RoleAtFilm: &RoleAtFilm
+    _path: /role-at-films
+    roleNamePrivate: (text)
+    roleName: *Translated #(Component)
+    order: (Number)
+    remoteId: (UID)
+
 Person: &Person
     _path: /people
     firstName: (text)
@@ -1068,6 +1203,31 @@ Person: &Person
     profession: (text)
     remoteId: (UID)
     pageUrl: (text)
+    awardings: 
+        - *Awarding
+    festival_editions:
+        - *FestivalEdition
+    domains:
+        - *Domain
+    role_at_films:
+        - *RoleAtFilm
+    native_language: *Language
+    languages:
+        - *Language
+    height_cm: number
+    weight_kg: number
+    eye_colour: *EyeColour
+    hair_colour: *HairColour
+    shoe_size: *ShoeSize
+    stature: *Stature
+    pitch_of_voice: *PitchOfVoice
+    eventival_id: UID
+    ev_account_email: email
+    ev_contact_email: email
+    bio_et: text
+    bio_en: text
+    bio_ru: text
+    profile_img: *StrapiMedia
 
 TeamMember: &TeamMember
     person: *Person #(Component)
@@ -1162,13 +1322,6 @@ QaClip: &QaClip
     url: https://www.youtube.com/watch?v=rCztl76AmrQ (Text)
     type: Conversation (Enumeration)
 
-RoleAtFilm: &RoleAtFilm
-    _path: /role-at-films
-    roleNamePrivate: (text)
-    roleName: *Translated #(Component)
-    order: (Number)
-    remoteId: (UID)
-
 RolePerson: &RolePerson
     order: (Number)
     role_at_film: *RoleAtFilm
@@ -1192,8 +1345,6 @@ OrderedCountries: &OrderedCountries
 Film: &Film
     _path: /films
     id: 1 (number)
-    remoteId: (UID)
-    order: (number)
     title_et: Nähtamatu elu (short text)
     title_en: Invisible Life of Eurídice Gusmãos (short text)
     title_ru: Департамент здоровьяs (short text)
@@ -1201,6 +1352,32 @@ Film: &Film
     year: 2019 (number)
     runtime: 139 (number)
     synopsis: *Translated #(Component, rich)
+    tags: *Tags #(Component)
+    slug_et: naehtamatu-elu (UID, No spaces)
+    slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
+    slug_ru: departament-zdorovya (UID, No spaces)
+    festival_editions:
+        -   *FestivalEdition
+    credentials: *Credentials
+    presentedBy: *PresentedBy
+    world_sales: #(Component (repeatable))
+        - *Organisation
+    subtitles: #(Component (repeatable))
+        -   *Language
+    remoteId: (UID)
+    languages: #(Component (repeatable))
+        -   *Language
+    order: (number)
+    orderedCountries: #(Component (repeatable))
+        - *OrderedCountries
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+    multi_and_single: (boolean)
+    awardings:
+        - *Awarding
+    other_festivals:
+        - *Festival
+    vialog_id: (text)        
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
@@ -1209,28 +1386,6 @@ Film: &Film
         - *Trailer
     QaClip: #(Component (repeatable))
         - *QaClip
-    tags: *Tags #(Component)
-    slug_et: naehtamatu-elu (UID, No spaces)
-    slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
-    slug_ru: departament-zdorovya (UID, No spaces)
-    festival_editions:
-        -   *FestivalEdition
-    languages: #(Component (repeatable))
-        -   *Language
-    subtitles: #(Component (repeatable))
-        -   *Language
-    other_festivals:
-        -   *Festival
-    credentials: *Credentials
-    presentedBy: *PresentedBy
-    world_sales: #(Component (repeatable))
-        - *Organisation
-    orderedCountries: #(Component (repeatable))
-        - *OrderedCountries
-    additInfo: *Translated #(rich text)
-    foreignUrl: (text)
-    multi_and_single: (boolean)
-    vialog_id: (text)
     chat_w_name: (text)
 
 OrderedFilm: &OrderedFilm
@@ -1555,10 +1710,15 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    completionYear: number
+    imdbLink: text
     editions: #(Component (repeatable))
         - *FestivalEdition
+    awardings:
+        - *Awarding
     tag_looking_fors:
         - *TagLookingFor
+    public: boolean
 
 Channel: &Channel
     _path: /channels
@@ -2272,6 +2432,34 @@ DisCampFooter: &DisCampFooter
         - *SupSecDisCamp
 
 # Product & Payment
+
+DeliveryType: &DeliveryType
+    _path: /delivery-types
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    active: boolean
+    delivery_prices:
+        name_private: text
+        countries: 
+            - *Country
+        price: number
+        info_et: text
+        info_en: text
+        info_ru: text
+        days_before: number
+    days_before: number
+
+Delivery: &Delivery
+    _path: /deliveries
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
 
 TicketingRight: &TicketingRight
     ticketType: (text)
