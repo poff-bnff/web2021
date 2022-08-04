@@ -21,10 +21,10 @@ block content
                 div#genderHelp(class='valid')= self.label.userprofile.genderHelp
             div.form-group
                 label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
-                input.login_input#phoneNr.form-control( type='text', placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
+                input.login_input#phoneNr.form-control( type='text' placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
             div.form-group
                 label.person_profile_label(for='eMail')= self.label.userprofile.email
-                input.login_input#eMail.form-control( type='email', placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
+                input.login_input#eMail.form-control( type='email' placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
 
             fieldset
                 legend
@@ -40,7 +40,6 @@ block content
 
             //- fieldset
             //-     legend
-            //-         h4
             //-         div.form-group
             //-             label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
             //-             input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
@@ -55,7 +54,7 @@ block content
                 legend
                     div.form-group
                         label.person_profile_label(for='street_name')= self.label.userprofile.streetName
-                        input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}`name='street_name')
+                        input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 
 
 
