@@ -22,7 +22,6 @@ block content
             div.form-group
                 label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
                 input.login_input#phoneNr.form-control( type='text', placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
-                div#firstNameHelp(class='valid')= self.label.userprofile.phoneNumHelp
 
             fieldset
                 legend
