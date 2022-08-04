@@ -4,6 +4,7 @@ include /_templates/mixins.pug
 block content
     section.userprofile
         form.form#thisPersonProfile(style= 'display: none')
+
             div.form-group
                 label.person_profile_label(for='firstName')= self.label.userprofile.firstName
                 input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
@@ -22,8 +23,10 @@ block content
             fieldset
                 legend
                     div.form-group
-                        label.person_profile_label(for='profile_img')= self.label.userprofile.profileImg
-                        input.login_input#profile_img(type='file' name='profile_img' accept='image/png, image/jpeg, image/jpg')
+                        img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                        label.login_label(for='profileImg')= self.label.userprofile.profileImg
+                        div#imgError
+                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0])')
                     div.form-group
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                         input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")

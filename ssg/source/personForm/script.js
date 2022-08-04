@@ -1,4 +1,4 @@
-
+let imageToSend = "empty"
 
 if (validToken) {
     loadUserInfo()
@@ -56,6 +56,10 @@ async function sendPersonProfile() {
 
     formData.append('data', JSON.stringify(personToSend));
 
+    if (imageToSend !== "empty") {
+        formData.append(`files.picture`, imageToSend, imageToSend.name);
+    }
+
     // Log form data
     console.log('Formdata:');
     for (var pair of formData.entries()) {
@@ -72,6 +76,8 @@ async function sendPersonProfile() {
         },
         body: formData
     }))
+
+    console.log(response);
 
     if (response.status === 200) {
         document.getElementById('personProfileSent').style.display = ''
@@ -122,4 +128,25 @@ function validatePersonForm() {
             validatePersonForm()
         }
     })
+}
+
+function validateImageAndPreview(file) {
+    let error = document.getElementById("imgError");
+    // Check if the file is an image.
+    if (!file.type.includes("image")) {
+        // console.log("File is not an image.", file.type, file);
+        error.innerHTML = "File is not an image.";
+    } else if (file.size / 1024 / 1024 > 5) {
+        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
+    } else {
+        error.innerHTML = "";
+        // Preview
+        var reader = new FileReader();
+        reader.onload = function () {
+            imgPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+        imageToSend = file
+
+    }
 }
