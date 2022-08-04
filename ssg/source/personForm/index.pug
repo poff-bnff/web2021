@@ -22,6 +22,9 @@ block content
             div.form-group
                 label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
                 input.login_input#phoneNr.form-control( type='text', placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
+            div.form-group
+                label.person_profile_label(for='eMail')= self.label.userprofile.email
+                input.login_input#eMail.form-control( type='email', placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
 
             fieldset
                 legend
@@ -47,6 +50,13 @@ block content
             //-         div.form-group
             //-             label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
             //-             input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
+
+            fieldset
+                legend
+                    div.form-group
+                        label.person_profile_label(for='street_name')= self.label.userprofile.streetName
+                        input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}`name='street_name')
+
 
 
 
