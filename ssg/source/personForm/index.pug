@@ -28,7 +28,7 @@ block content
                 legend
                     div.form-group
                         label.person_profile_label(for='profile_img')= self.label.userprofile.profileImg
-                        input.login_input#profile_img(type='' name='profile_img' onchange ='validateaAndPreview(this.files[0])' accept='image/png, image/jpeg, image/jpg')
+                        input.login_input#profile_img(type='' name='profile_img' accept='image/png, image/jpeg, image/jpg')
                     div.form-group
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                         input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
