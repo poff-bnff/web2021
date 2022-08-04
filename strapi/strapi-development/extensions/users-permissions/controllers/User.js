@@ -49,6 +49,7 @@ module.exports = {
   paymentMethods: resolveControllerMethod('paymentMethods'),
   buyProduct: resolveControllerMethod('buyProduct'),
   buyProductCb: resolveControllerMethod('buyProductCb'),
+  personForm: resolveControllerMethod('personForm'),
 
   /**
    * Retrieve user records.
