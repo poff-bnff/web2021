@@ -1,4 +1,4 @@
-
+let profile_pic_to_send = "empty"
 
 if (validToken) {
     loadUserInfo()
@@ -53,6 +53,10 @@ async function sendPersonProfile() {
         lastName: lastName.value,
         gender: gender.value,
         phoneNr: phoneNr.value,
+    }
+
+    if (profile_pic_to_send !== "empty") {
+        formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
     }
 
     formData.append('data', JSON.stringify(personToSend));
@@ -117,11 +121,33 @@ function validatePersonForm() {
         console.log('KÕIKOK');
         sendPersonProfile()
     }
+}
 
-    window.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            // console.log("ENTER")
-            validatePersonForm()
-        }
-    })
+window.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        // console.log("ENTER")
+        validatePersonForm()
+    }
+})
+
+function validateaAndPreview(file) {
+    let error = document.getElementById("imgError");
+    // console.log(file)
+    // Check if the file is an image.
+    if (!file.type.includes("image")) {
+        // console.log("File is not an image.", file.type, file);
+        error.innerHTML = "File is not an image.";
+    } else if (file.size / 1024 / 1024 > 5) {
+        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
+    } else {
+        error.innerHTML = "";
+        //näitab pildi eelvaadet
+        var reader = new FileReader();
+        reader.onload = function () {
+            imgPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+        profile_pic_to_send = file
+
+    }
 }
