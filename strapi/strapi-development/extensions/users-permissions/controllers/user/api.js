@@ -924,22 +924,11 @@ module.exports = {
       personFormData.picture = uploadedPicture
     }
 
-    if(personFormData.address) {
-
-      let form_adress = await strapi.query('people').findOne({id: personFormData.id}, ['address'])
-      await strapi.query('address').update(
-        {id: form_adress.id},
-        {
-          street_name: personForm.address.street_name
-        }
-      )
-      delete personFormData.address
-    }
-    else if (!personFormData.address) {
-      let form_adress = await strapi.query('address').create({
+    if (personFormData.address) {
+      let form_address = await strapi.query('address').create({
         street_name: personForm.address.street_name
       })
-      personFormData.address = form_adress.id
+      personFormData.address = form_address.id
     }
     
 
