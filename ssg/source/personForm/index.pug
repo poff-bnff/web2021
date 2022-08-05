@@ -5,28 +5,28 @@ block content
     section.userprofile
         form.form#thisPersonProfile(style= 'display: none')
 
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='firstName')= self.label.userprofile.firstName
                 input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
                 div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='lastName')= self.label.userprofile.lastName
                 input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)")
                 div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='gender')= self.label.userprofile.gender
                 select.login_input#gender(name='gender' oninput='validateGender(this.id)')
                     each gender in self.data.genders.sort((a, b) => a.id - b.id)
                         option.login_input(value=gender.id)= gender[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                 div#genderHelp(class='valid')= self.label.userprofile.genderHelp
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
                 input.login_input#phoneNr.form-control( type='text' placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='eMail')= self.label.userprofile.email
                 input.login_input#eMail.form-control( type='email' placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
-            div.form-group
+            div.form_group
                 label.person_profile_label(for='proRole')= self.label.userprofile.proRole
                 select.login_input#proRole(name='proRole')
                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.id - b.id)
@@ -36,27 +36,27 @@ block content
 
             fieldset
                 legend
-                    div.form-group
+                    div.form_group
                         img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
                         label.login_label(for='profileImg')= self.label.userprofile.profileImg
                         div#imgError
                         input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0])')
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                         input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
             fieldset
                 legend
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
                         input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
                         input.login_input#photographer2.form-control(type='text' name='photographer2' autocomplete="off")
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
                         input.login_input#img_year2.form-control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
 
@@ -64,13 +64,13 @@ block content
 
             fieldset
                 legend
-                    div.form-group
+                    div.form_group
                         label.person_profile_label(for='street_name')= self.label.userprofile.streetName
                         input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 
             //- fieldset
             //-     legend
-            //-         div.form-group
+            //-         div.form_group
             //-             label.person_profile_label(for='street_name')= self.label.userprofile.streetName
             //-             input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 

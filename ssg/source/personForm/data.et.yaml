@@ -3,3 +3,11 @@ data:
     countries: /_domainStrapidata/Country.yaml
     counties: /_domainStrapidata/County.yaml
     roleatfilms: /_domainStrapidata/RoleAtFilm.yaml
+    languages: /_domainStrapidata/Language.yaml
+    organisations: /_domainStrapidata/Organisation.yaml
+    eyecolours: /_domainStrapidata/EyeColour.yaml
+    haircolours: /_domainStrapidata/HairColour.yaml
+    hairlengths: /_domainStrapidata/HairLength.yaml
+    shoesizes: /_domainStrapidata/ShoeSize.yaml
+    statures: /_domainStrapidata/Stature.yaml
+    pitchofvoices: /_domainStrapidata/PitchOfVoice.yaml
