@@ -928,7 +928,8 @@ module.exports = {
       let form_address = await strapi.query('address').create({
         street_name: personForm.address.street_name
       })
-      personFormData.address = form_address.id
+      personFormData.addr_coll = form_address.id
+      delete personFormData.address
     }
     
 
