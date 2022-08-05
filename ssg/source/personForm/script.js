@@ -54,6 +54,7 @@ async function sendPersonProfile() {
         phoneNr: phoneNr.value,
         eMail: eMail.value,
         address: {
+            addrCountry: addrCountry.value
             street_name: street_name.value,
         }
     }
@@ -101,7 +102,8 @@ async function sendPersonProfile() {
     gender.value = ''
     phoneNr.value = ''
     eMail.value = ''
-    street_name = ''
+    addrCountry.value = ''
+    street_name.value = ''
 
 
 }
