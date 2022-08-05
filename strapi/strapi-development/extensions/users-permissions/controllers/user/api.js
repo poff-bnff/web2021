@@ -869,5 +869,64 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  async personForm(ctx) {
+
+    async function uploadPersonPicture(files, firstName, lastName) {
+      console.log('Uploading profile picture');
+
+      const firstNameSlug = slugify(firstName)
+      const lastNameSlug = slugify(lastName)
+
+      let splitter = files.picture.name.split('.')
+      let fileExt = splitter[splitter.length - 1]
+      let fileName = `PF_${firstNameSlug}_${lastNameSlug}.${fileExt}`
+
+      const fileInfo = [
+        {
+          "caption" : files.picture.name,
+          "alternativeText" : `${firstName} ${lastName}`
+        }
+      ];
+
+      const uploadedPicture = await strapi.plugins.upload.services.upload.upload({
+        data: {
+          fileInfo: fileInfo
+        }, //mandatory declare the data(can be empty), otherwise it will give you an undefined error.
+        files: {
+          path: files.picture.path,
+          name: fileName,
+          type: mime.getType(files.picture.name) || files.picture.type, // mime type of the file
+          size: files.picture.size,
+        },
+      });
+      return uploadedPicture[0].id
+    }
+
+    let personFormData = { ...JSON.parse(ctx.request.body.data) }
+
+    // Image check
+    let file = ctx.request.files['files.picture']
+    if (file) {
+      if (!file.type.includes("image")) {
+        console.log("File is not an image.", file.type, file);
+        return ctx.badRequest('Not an image');
+      } else if (file.size / 1024 / 1024 > 5) {
+        console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
+        return ctx.badRequest('Image too bulky');
+      }
+    }
+
+    // Image upload and assign to personFormData
+    const { files } = parseMultipartData(ctx);
+    if (files.picture) {
+      const uploadedPicture = await uploadPersonPicture(files, personFormData.firstName, personFormData.lastName)
+      personFormData.picture = uploadedPicture
+    }
+
+    console.log('personForm.personFormData', personFormData);
+
+    let newPerson = await strapi.services['person'].create(personFormData)
+    ctx.send(sanitizeUser(newPerson));
+  },
 };

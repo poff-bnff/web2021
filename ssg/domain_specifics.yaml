@@ -111,7 +111,7 @@ skip_build_for_models:
     - cassette
     - programme
     - screening
-    - people
+    - person
 
 article:
     poff.ee: POFFiArticle
