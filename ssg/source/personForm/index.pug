@@ -65,6 +65,12 @@ block content
             fieldset
                 legend
                     div.form_group
+                        label.person_profile_label(for='addrCountry')= self.label.userprofile.country
+                        select.login_input#addrCountry(name='addrCountry')
+                            each country in self.data.countries.sort((a, b) => a.id - b.id)
+                                option.login_input(value=country.id)= country.name[self.locale]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    div.form_group
                         label.person_profile_label(for='street_name')= self.label.userprofile.streetName
                         input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 
