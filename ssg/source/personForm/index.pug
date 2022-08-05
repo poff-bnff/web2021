@@ -15,7 +15,7 @@ block content
                 div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
             div.form_group
                 label.person_profile_label(for='gender')= self.label.userprofile.gender
-                select.login_input#gender(name='gender' oninput='validateGender(this.id)')
+                select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)')
                     each gender in self.data.genders.sort((a, b) => a.id - b.id)
                         option.login_input(value=gender.id)= gender[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
@@ -28,7 +28,7 @@ block content
                 input.login_input#eMail.form-control( type='email' placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
             div.form_group
                 label.person_profile_label(for='proRole')= self.label.userprofile.proRole
-                select.login_input#proRole(name='proRole')
+                select.login_input#proRole(name='proRole' form="thisPersonProfile")
                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.id - b.id)
                         option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
@@ -66,19 +66,19 @@ block content
                 legend
                     div.form_group
                         label.person_profile_label(for='addrCountry')= self.label.userprofile.country
-                        select.login_input#addrCountry(name='addrCountry')
+                        select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
                             each country in self.data.countries.sort((a, b) => a.id - b.id)
                                 option.login_input(value=country.id)= country[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
                         label.person_profile_label(for='addrCounty')= self.label.userprofile.county
-                        select.login_input#addrCounty(name='addrCounty')
+                        select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
                             each county in self.data.counties.sort((a, b) => a.id - b.id)
                                 option.login_input(value=county.id)= county[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
                         label.person_profile_label(for='addrPplace')= self.label.userprofile.populatedPlace
-                        select.login_input#addrPplace(name='addrPplace')
+                        select.login_input#addrPplace(name='addrPplace' form="thisPersonProfile")
                             each populatedplace in self.data.populatedplaces.sort((a, b) => a.id - b.id)
                                 option.login_input(value=populatedplace.id)= populatedplace[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
