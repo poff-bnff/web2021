@@ -2,6 +2,7 @@ data:
     genders: /_domainStrapidata/Gender.yaml
     countries: /_domainStrapidata/Country.yaml
     counties: /_domainStrapidata/County.yaml
+    populatedplaces: /_domainStrapidata/PopulatedPlace.yaml
     roleatfilms: /_domainStrapidata/RoleAtFilm.yaml
     languages: /_domainStrapidata/Language.yaml
     organisations: /_domainStrapidata/Organisation.yaml

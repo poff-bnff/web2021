@@ -56,6 +56,7 @@ async function sendPersonProfile() {
         address: {
             addrCountry: addrCountry.value,
             addrCounty: addrCounty.value,
+            addrPplace: addrPplace.value,
             street_name: street_name.value,
         }
     }
@@ -105,6 +106,7 @@ async function sendPersonProfile() {
     eMail.value = ''
     addrCountry.value = ''
     addrCountry.value = ''
+    addrPplace.value = ''
     street_name.value = ''
 
 
