@@ -54,9 +54,9 @@ async function sendPersonProfile() {
         phoneNr: phoneNr.value,
         eMail: eMail.value,
         address: {
-            addrCountry: addrCountry.value,
-            addrCounty: addrCounty.value,
-            addrPplace: addrPplace.value,
+            add_country: add_country.value,
+            add_county: add_county.value,
+            add_p_place: add_p_place.value,
             street_name: street_name.value,
         }
     }
@@ -86,7 +86,7 @@ async function sendPersonProfile() {
 
     console.log(response);
 
-    console.log('Responsestaaatus', response.status);
+    console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
         console.log('Responsestaaatus väga timm');
@@ -104,9 +104,9 @@ async function sendPersonProfile() {
     gender.value = ''
     phoneNr.value = ''
     eMail.value = ''
-    addrCountry.value = ''
-    addrCountry.value = ''
-    addrPplace.value = ''
+    add_country.value = ''
+    add_county.value = ''
+    add_p_place.value = ''
     street_name.value = ''
 
 

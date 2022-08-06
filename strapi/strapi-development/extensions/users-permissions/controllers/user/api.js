@@ -924,14 +924,21 @@ module.exports = {
       personFormData.picture = uploadedPicture
     }
 
+    console.log('personFormData', personFormData);
+    let personFormAddressData = personFormData.address
+    personFormAddressData.country = personFormData.address.add_country
+    personFormAddressData.county = personFormData.address.add_county
+    personFormAddressData.populated_place = personFormData.address.add_p_place
+
+    console.log('personFormAddressData', personFormAddressData);
+
     if (personFormData.address) {
-      let form_address = await strapi.query('address').create({
-        street_name: personForm.address.street_name
-      })
+      let form_address = await strapi.services['address'].create(personFormAddressData)
+      console.log(form_address);
       personFormData.addr_coll = form_address.id
       delete personFormData.address
     }
-    
+
 
     console.log('personForm.personFormData', personFormData);
 
