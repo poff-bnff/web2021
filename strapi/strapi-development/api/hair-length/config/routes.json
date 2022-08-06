@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hair-lengths",
+      "handler": "hair-length.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hair-lengths/count",
+      "handler": "hair-length.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hair-lengths/:id",
+      "handler": "hair-length.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hair-lengths",
+      "handler": "hair-length.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hair-lengths/:id",
+      "handler": "hair-length.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hair-lengths/:id",
+      "handler": "hair-length.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

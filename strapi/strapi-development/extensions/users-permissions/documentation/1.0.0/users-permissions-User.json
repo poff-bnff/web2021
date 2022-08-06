@@ -2213,15 +2213,6 @@
                   "type": "string"
                 }
               },
-              "native_language": {
-                "type": "string"
-              },
-              "languages": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "height_cm": {
                 "type": "integer"
               },
@@ -2272,6 +2263,51 @@
               },
               "profile_img": {
                 "type": "string"
+              },
+              "ev_professions": {
+                "type": "string"
+              },
+              "ev_fow": {
+                "type": "string"
+              },
+              "ev_img_url": {
+                "type": "string"
+              },
+              "addr_coll": {
+                "type": "string"
+              },
+              "addr_comp": {
+                "type": "component"
+              },
+              "hair_length": {
+                "type": "string"
+              },
+              "native_lang": {
+                "type": "string"
+              },
+              "other_lang": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "showreel": {
+                "type": "string"
+              },
+              "audioreel": {
+                "type": "string"
+              },
+              "acting_age_from": {
+                "type": "integer"
+              },
+              "acting_age_to": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"

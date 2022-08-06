@@ -15,7 +15,7 @@
       "type": "string"
     },
     "size_eu": {
-      "type": "integer"
+      "type": "decimal"
     },
     "size_us": {
       "type": "decimal"
