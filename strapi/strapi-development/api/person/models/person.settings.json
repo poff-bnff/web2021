@@ -80,12 +80,6 @@
     "role_at_films": {
       "collection": "role-at-film"
     },
-    "native_language": {
-      "model": "language"
-    },
-    "languages": {
-      "collection": "language"
-    },
     "height_cm": {
       "type": "integer"
     },
@@ -143,6 +137,61 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "ev_professions": {
+      "type": "string"
+    },
+    "ev_fow": {
+      "type": "string"
+    },
+    "ev_img_url": {
+      "type": "string"
+    },
+    "addr_coll": {
+      "model": "address"
+    },
+    "addr_comp": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.address"
+    },
+    "hair_length": {
+      "model": "hair-length"
+    },
+    "native_lang": {
+      "model": "language"
+    },
+    "other_lang": {
+      "collection": "language"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "showreel": {
+      "type": "string"
+    },
+    "audioreel": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "acting_age_from": {
+      "type": "integer"
+    },
+    "acting_age_to": {
+      "type": "integer"
     }
   }
 }
