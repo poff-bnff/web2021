@@ -43,7 +43,7 @@ block content
                         input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0])')
                     div.form_group
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
-                        input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
+                        input.login_input#photographer.form-control(type='text' name='photographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
                     div.form_group
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
@@ -55,7 +55,7 @@ block content
                         input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
                     div.form_group
                         label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
-                        input.login_input#photographer2.form-control(type='text' name='photographer2' autocomplete="off")
+                        input.login_input#photographer2.form-control(type='text' name='photographer2' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
                     div.form_group
                         label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
                         input.login_input#img_year2.form-control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
