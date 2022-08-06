@@ -37,7 +37,7 @@ block content
             fieldset
                 legend
                     div.form_group
-                        img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                        img#imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
                         label.login_label(for='profileImg')= self.label.userprofile.profileImg
                         div#imgError
                         input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0])')
