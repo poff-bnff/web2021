@@ -1103,7 +1103,7 @@ County: &County
     name_ru: text
     country: *Country
 
-PopulatedPlace: &PopulatedPlace
+Municipality: &Municipality
     _path: /populated-places
     name_et: text
     name_en: text
@@ -1114,7 +1114,7 @@ Address: &Address
     _path: /addresses
     country: *Country
     county: *County
-    populated_place: *PopulatedPlace
+    municipality: *Municipality
     settl_unit: text
     address_unit: text
     street_name: text
@@ -1127,8 +1127,10 @@ Address: &Address
     e: number
     l_est_x: number
     l_est_y: number
-    add_county: text #milleks?
-    add_p_place: text #milleks?
+    add_county: text
+    add_municipality: text
+    add_country: text
+    popul_place: text
 
 # Person & Team
 
