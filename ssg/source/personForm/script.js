@@ -54,9 +54,9 @@ async function sendPersonProfile() {
         phoneNr: phoneNr.value,
         eMail: eMail.value,
         address: {
-            add_country: add_country.value,
-            add_county: add_county.value,
-            add_p_place: add_p_place.value,
+            addrCountry: addrCountry.value,
+            addrCounty: addrCounty.value,
+            addrMunicipality: addrMunicipality.value,
             street_name: street_name.value,
         }
     }
@@ -104,9 +104,9 @@ async function sendPersonProfile() {
     gender.value = ''
     phoneNr.value = ''
     eMail.value = ''
-    add_country.value = ''
-    add_county.value = ''
-    add_p_place.value = ''
+    addrCcountry.value = ''
+    addrCounty.value = ''
+    addrMunicipality.value = ''
     street_name.value = ''
 
 

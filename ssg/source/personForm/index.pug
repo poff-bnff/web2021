@@ -66,21 +66,21 @@ block content
                 legend
                     div.form_group
                         label.person_profile_label(for='addrCountry')= self.label.userprofile.country
-                        select.login_input#add_country(name='addrCountry' form="thisPersonProfile")
+                        select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
                             each country in self.data.countries.sort((a, b) => a.id - b.id)
                                 option.login_input(value=country.id)= country[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
                         label.person_profile_label(for='addrCounty')= self.label.userprofile.county
-                        select.login_input#add_county(name='addrCounty' form="thisPersonProfile")
+                        select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
                             each county in self.data.counties.sort((a, b) => a.id - b.id)
                                 option.login_input(value=county.id)= county[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
-                        label.person_profile_label(for='addrPplace')= self.label.userprofile.populatedPlace
-                        select.login_input#add_p_place(name='addrPplace' form="thisPersonProfile")
-                            each populatedplace in self.data.populatedplaces.sort((a, b) => a.id - b.id)
-                                option.login_input(value=populatedplace.id)= populatedplace[`name_${self.locale}`]
+                        label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
+                        select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
+                            each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
+                                option.login_input(value=pmunicipality.id)= municipality[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
                         label.person_profile_label(for='street_name')= self.label.userprofile.streetName
