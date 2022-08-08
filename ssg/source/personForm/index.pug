@@ -3,19 +3,19 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: none')
+        form.form#thisPersonProfile(style= 'display: block')
 
             div.form_group
                 label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-                input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
                 div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
             div.form_group
                 label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-                input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)")
+                input.login_input#lastName.form-control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
                 div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
             div.form_group
                 label.person_profile_label(for='gender')= self.label.userprofile.gender
-                select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)')
+                select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
                     each gender in self.data.genders.sort((a, b) => a.id - b.id)
                         option.login_input(value=gender.id)= gender[self.locale]
                     option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
