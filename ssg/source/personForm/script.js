@@ -126,6 +126,16 @@ async function sendPersonProfile() {
     addrApptNumber = ''
     addrPostalCode = ''
 
+    let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
+    for (let index = 0; index < galleryImageForms.length; index++) {
+        const element = galleryImageForms[index];
+        element.remove()
+    }
+    galleryCounter = 0
+    galleryImageToSend = {}
+    profileImg.value = ''
+    document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+
 }
 
 function validatePersonForm() {
@@ -204,13 +214,13 @@ function addGalleryImage() {
     thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${galleryCounter}", "gallery")`)
     thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${galleryCounter}")`)
 
-    galleryCounter = galleryCounter+1
+    galleryCounter = galleryCounter + 1
 }
 
 function deleteGalleryImage(elementToDelete) {
     const elementToBeDeleted = document.getElementById(elementToDelete);
     elementToBeDeleted.remove()
-    if(galleryImageToSend[elementToDelete]) {
+    if (galleryImageToSend[elementToDelete]) {
         delete galleryImageToSend[elementToDelete]
     }
 }
