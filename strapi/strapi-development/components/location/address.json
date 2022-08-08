@@ -52,10 +52,13 @@
     "add_county": {
       "type": "string"
     },
-    "populated_place": {
+    "municipality": {
       "model": "populated-place"
     },
-    "add_p_place": {
+    "add_municipality": {
+      "type": "string"
+    },
+    "popul_place": {
       "type": "string"
     }
   }

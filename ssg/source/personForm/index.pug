@@ -40,26 +40,25 @@ block content
                         img#imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
                         label.login_label(for='profileImg')= self.label.userprofile.profileImg
                         div#imgError
-                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "imgPreview")')
-                    //- div.form_group
-                    //-     label.person_profile_label(for='photographer')= self.label.userprofile.photographer
-                    //-     input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
-                    //- div.form_group
-                    //-     label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
-                    //-     input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
+                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0])')
+                    div.form_group
+                        label.person_profile_label(for='photographer')= self.label.userprofile.photographer
+                        input.login_input#photographer.form-control(type='text' name='photographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
+                    div.form_group
+                        label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
+                        input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
             fieldset
                 legend
                     div.form_group
-                        img#imgPreviewGallery.square(alt="Gallery image", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
-                        label.person_profile_label(for='gallery_img') GALERIIPILT
-                        input.login_input#galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "imgPreviewGallery")')
-                    //- div.form_group
-                    //-     label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
-                    //-     input.login_input#photographer2.form-control(type='text' name='photographer2' autocomplete="off")
-                    //- div.form_group
-                    //-     label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
-                    //-     input.login_input#img_year2.form-control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
+                        label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
+                        input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
+                    div.form_group
+                        label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
+                        input.login_input#photographer2.form-control(type='text' name='photographer2' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
+                    div.form_group
+                        label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
+                        input.login_input#img_year2.form-control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
 
                     button.btn.btn_primary(id='addNextGalleryImg')= self.label.userprofile.addNextGalleryImg
 
@@ -67,25 +66,37 @@ block content
                 legend
                     div.form_group
                         label.person_profile_label(for='addrCountry')= self.label.userprofile.country
-                        select.login_input#add_country(name='addrCountry' form="thisPersonProfile")
+                        select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
                             each country in self.data.countries.sort((a, b) => a.id - b.id)
                                 option.login_input(value=country.id)= country[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
                         label.person_profile_label(for='addrCounty')= self.label.userprofile.county
-                        select.login_input#add_county(name='addrCounty' form="thisPersonProfile")
+                        select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
                             each county in self.data.counties.sort((a, b) => a.id - b.id)
                                 option.login_input(value=county.id)= county[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
-                        label.person_profile_label(for='addrPplace')= self.label.userprofile.populatedPlace
-                        select.login_input#add_p_place(name='addrPplace' form="thisPersonProfile")
-                            each populatedplace in self.data.populatedplaces.sort((a, b) => a.id - b.id)
-                                option.login_input(value=populatedplace.id)= populatedplace[`name_${self.locale}`]
+                        label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
+                        select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
+                            each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
+                                option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div.form_group
-                        label.person_profile_label(for='street_name')= self.label.userprofile.streetName
-                        input.login_input#street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
+                        label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
+                        input.login_input#addr_popul_place.form-control(type='text' placeholder=`${self.label.userprofile.populPlace}` name='addr_popul_place')
+                    div.form_group
+                        label.person_profile_label(for='addr_street_name')= self.label.userprofile.streetName
+                        input.login_input#addr_street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='addr_street_name')
+                    div.form_group
+                        label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
+                        input.login_input#addrHouseNumber.form-control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
+                    div.form_group
+                        label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
+                        input.login_input#addrApptNumber.form-control(type='text' placeholder=`${self.label.userprofile.addressApptNumber}` name='addrHouseNumber')
+                    div.form_group
+                        label.person_profile_label(for='addrPostalCode')= self.label.userprofile.addressPostalCode
+                        input.login_input#addrPostalCode.form-control(type='text' placeholder=`${self.label.userprofile.addressPostalCode}` name='addrPostalCode')
 
             //- fieldset
             //-     legend
