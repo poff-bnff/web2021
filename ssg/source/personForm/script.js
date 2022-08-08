@@ -109,7 +109,7 @@ async function sendPersonProfile() {
     gender.value = ''
     phoneNr.value = ''
     eMail.value = ''
-    addrCcountry.value = ''
+    addrCountry.value = ''
     addrCounty.value = ''
     addrMunicipality.value = ''
     addr_popul_place.value = ''
