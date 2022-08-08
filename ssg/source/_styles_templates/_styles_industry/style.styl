@@ -580,8 +580,9 @@ footer
     padding-left 2rem
     padding-right 2rem
     padding-bottom 5rem
-    display grid
-    justify-content space-around
+    // display grid
+    // // justify-content space-around
+    // justify-content start
 
 #thisUserProfile
     padding-top 2rem
@@ -854,8 +855,6 @@ a .hero_headline
 a .dark:hover
        text-decoration none
 
-.form
-    background-color #dddddd
 
 
 // .hero_headline_box
@@ -1617,8 +1616,34 @@ input, select
     padding .2rem .5rem .1rem .5rem
     margin 0
 
-input::placeholder
-    color pink
+.form
+    background-color #ffffff
+
+.form label
+    margin-bottom .3rem
+
+
+::placeholder
+    color dark_5
+
+fieldset
+    // display flex
+    // flex-direction row
+    // flex-wrap wrap
+    // justify-content flex-start
+    // align-items flex-start
+
+
+    display grid
+    grid-template-columns repeat(auto-fit, minmax(300px, 300px))
+    // grid-template-rows repeat(auto-fit, minmax(2rem, 10rem))
+    gap 1rem
+    // background green
+
+fieldset > .form_group
+    // background pink
+    width 100%
+    // padding 1rem
 
 
 option
