@@ -872,20 +872,20 @@ module.exports = {
   },
   async personForm(ctx) {
 
-    async function uploadPersonPicture(files, firstName, lastName) {
+    async function uploadPersonPicture(file, firstName, lastName) {
       console.log('Uploading profile picture');
 
       const firstNameSlug = slugify(firstName)
       const lastNameSlug = slugify(lastName)
 
-      let splitter = files.picture.name.split('.')
+      let splitter = file.name.split('.')
       let fileExt = splitter[splitter.length - 1]
       let fileName = `PF_${firstNameSlug}_${lastNameSlug}.${fileExt}`
 
       const fileInfo = [
         {
-          "caption" : files.picture.name,
-          "alternativeText" : `${firstName} ${lastName}`
+          "caption": file.name,
+          "alternativeText": `${firstName} ${lastName}`
         }
       ];
 
@@ -894,10 +894,10 @@ module.exports = {
           fileInfo: fileInfo
         }, //mandatory declare the data(can be empty), otherwise it will give you an undefined error.
         files: {
-          path: files.picture.path,
+          path: file.path,
           name: fileName,
-          type: mime.getType(files.picture.name) || files.picture.type, // mime type of the file
-          size: files.picture.size,
+          type: mime.getType(file.name) || file.type, // mime type of the file
+          size: file.size,
         },
       });
       return uploadedPicture[0].id
@@ -920,27 +920,31 @@ module.exports = {
     // Image upload and assign to personFormData
     const { files } = parseMultipartData(ctx);
     if (files.picture) {
-      const uploadedPicture = await uploadPersonPicture(files, personFormData.firstName, personFormData.lastName)
+      const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName)
       personFormData.picture = uploadedPicture
     }
 
-    console.log('personFormData', personFormData);
+    if (files.images) {
+
+      if (!Array.isArray(files.images)) {
+        files.images = [files.images]
+      }
+
+      if (!personFormData.images) { personFormData.images = [] }
+      for (let index = 0; index < files.images.length; index++) {
+        const image = files.images[index];
+        const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName)
+        personFormData.images.push(uploadedPicture)
+        console.log('uploadedPicture', uploadedPicture);
+      }
+    }
+
     let personFormAddressData = personFormData.address
-    // personFormAddressData.country = personFormData.address.country
-    // personFormAddressData.county = personFormData.address.add_county
-    // personFormAddressData.populated_place = personFormData.address.add_p_place
-
-    console.log('personFormAddressData', personFormAddressData);
-
-    if (personFormData.address) {
+    if (personFormAddressData) {
       let form_address = await strapi.services['address'].create(personFormAddressData)
-      console.log(form_address);
       personFormData.addr_coll = form_address.id
       delete personFormData.address
     }
-
-
-    console.log('personForm.personFormData', personFormData);
 
     let newPerson = await strapi.services['person'].create(personFormData)
     ctx.send(sanitizeUser(newPerson));

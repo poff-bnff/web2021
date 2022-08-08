@@ -1,5 +1,6 @@
 let profileImageToSend = "empty"
-let galleryImageToSend = "empty"
+let galleryImageToSend = {}
+let galleryCounter = 0
 
 if (validToken) {
     loadUserInfo()
@@ -55,14 +56,14 @@ async function sendPersonProfile() {
         phoneNr: phoneNr.value,
         eMail: eMail.value,
         address: {
-            country: addrCountry.value,
-            county: addrCounty.value,
-            municipality: addrMunicipality.value,
-            popul_place: addr_popul_place.value,
-            street_name: addr_street_name.value,
-            address_number: addrHouseNumber.value,
-            appartment: addrApptNumber.value,
-            postal_code: addrPostalCode.value,
+            country: addrCountry.value || null,
+            county: addrCounty.value || null,
+            municipality: addrMunicipality.value || null,
+            popul_place: addr_popul_place.value || null,
+            street_name: addr_street_name.value || null,
+            address_number: addrHouseNumber.value || null,
+            appartment: addrApptNumber.value || null,
+            postal_code: addrPostalCode.value || null,
         }
     }
 
@@ -72,13 +73,19 @@ async function sendPersonProfile() {
         formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
     }
 
+    if (Object.keys(galleryImageToSend).length !== 0) {
+        Object.keys(galleryImageToSend).map(key => {
+            console.log('Gallery img', galleryImageToSend[key]);
+            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name);
+        })
+    }
+
     // Log form data
     console.log('Formdata:');
     for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
     }
 
-    personToSend = JSON.stringify(personToSend)
     // console.log("kasutaja profiil mida saadan ", personToSend);
 
     let response = await (await fetch(`${strapiDomain}/users/personForm`, {
@@ -94,7 +101,6 @@ async function sendPersonProfile() {
     console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
-        console.log('Responsestaaatus väga timm');
         document.getElementById('personProfileSent').style.display = ''
         if (localStorage.getItem('preLoginUrl')) {
             window.open(localStorage.getItem('preLoginUrl'), '_self')
@@ -154,7 +160,9 @@ function validatePersonForm() {
     })
 }
 
-function validateImageAndPreview(file, previewElemenID) {
+function validateImageAndPreview(file, templateElement, type) {
+    console.log('aga');
+
     let error = document.getElementById("imgError");
     // Check if the file is an image.
     if (!file.type.includes("image")) {
@@ -167,12 +175,40 @@ function validateImageAndPreview(file, previewElemenID) {
         // Preview
         var reader = new FileReader();
         reader.onload = function () {
-            let previewElement = document.getElementById(previewElemenID)
+            console.log('agasiia');
+            let previewElement = document.getElementById(templateElement).getElementsByClassName('imgPreview')[0]
+            console.log('previewElement', previewElement);
             previewElement.src = reader.result;
             console.log(previewElement);
         };
         reader.readAsDataURL(file);
-        profileImageToSend = file
+        if (type === 'profile') {
+            profileImageToSend = file
+        } else if (type === 'gallery') {
+            console.log(galleryCounter, galleryImageToSend);
+            galleryImageToSend[templateElement] = file
+        }
+    }
+}
 
+function addGalleryImage() {
+    const galleryTemplate = document.getElementById('galleryTemplate');
+    const clone = galleryTemplate.cloneNode(true);
+    clone.id = `galleryImage${galleryCounter}`
+    clone.style.display = ''
+    document.getElementById('galleryTemplate').parentElement.appendChild(clone)
+    let thisElement = document.getElementById(`galleryImage${galleryCounter}`)
+
+    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${galleryCounter}", "gallery")`)
+    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${galleryCounter}")`)
+
+    galleryCounter = galleryCounter+1
+}
+
+function deleteGalleryImage(elementToDelete) {
+    const elementToBeDeleted = document.getElementById(elementToDelete);
+    elementToBeDeleted.remove()
+    if(galleryImageToSend[elementToDelete]) {
+        delete galleryImageToSend[elementToDelete]
     }
 }

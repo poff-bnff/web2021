@@ -36,11 +36,11 @@ block content
 
             fieldset
                 legend
-                    div.form_group
-                        img#imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                    div.form_group#profileImage
+                        img.imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg" style="width: 10%; height: 10%")
                         label.login_label(for='profileImg')= self.label.userprofile.profileImg
                         div#imgError
-                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "imgPreview")')
+                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
                     div.form_group
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                         input.login_input#photographer.form-control(type='text' name='photographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
@@ -49,19 +49,23 @@ block content
                         input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
 
             fieldset
+                hr(style='color: black')
                 legend
-                    div.form_group
-                        label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
-                        input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
-                    div.form_group
-                        label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
-                        input.login_input#photographer2.form-control(type='text' name='photographer2' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
-                    div.form_group
-                        label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
-                        input.login_input#img_year2.form-control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
-
-                    button.btn.btn_primary(id='addNextGalleryImg')= self.label.userprofile.addNextGalleryImg
-
+                    p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
+                    div#galleryTemplate(style= 'display: none')
+                        div.form_group
+                            img.imgPreview.square(alt="Gallery image", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg" style="width: 10%; height: 10%")
+                            label.person_profile_label(for='gallery_img') GALERIIPILT
+                            input.login_input.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
+                        div.form_group
+                            label.person_profile_label(for='galleryImagePhotographer')= self.label.userprofile.photographer
+                            input.login_input.galleryImagePhotographer.form-control(type='text' name='galleryImagePhotographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
+                        div.form_group
+                            label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
+                            input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='1900' max='3000' autocomplete="off")
+                        div.btn.btn_primary.deleteGalleryImage 🗑
+                div.btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addNextGalleryImg
+                hr(style='color: black')
             fieldset
                 legend
                     div.form_group
