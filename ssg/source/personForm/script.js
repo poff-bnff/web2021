@@ -4,9 +4,9 @@ let galleryImageToSend = "empty"
 if (validToken) {
     loadUserInfo()
 } else {
-    document.getElementById('logInStatus').style.display = ''
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
+    // document.getElementById('logInStatus').style.display = ''
+    // window.open(`${location.origin}/${langpath}login`, '_self')
+    // saveUrl()
 }
 
 async function getUserProfile() {
@@ -48,21 +48,23 @@ async function sendPersonProfile() {
 
     const formData = new FormData();
 
+    // FORMAADIS " strapi muutuja nimi : vormi välja ID "
+
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
-        gender: gender.value,
-        phoneNr: phoneNr.value,
-        eMail: eMail.value,
+        gender: gender.value || null,
+        phoneNr: phoneNr.value || null,
+        eMail: eMail.value || null,
         address: {
-            country: addrCountry.value,
-            county: addrCounty.value,
-            municipality: addrMunicipality.value,
-            popul_place: addr_popul_place.value,
-            street_name: addr_street_name.value,
-            address_number: addrHouseNumber.value,
-            appartment: addrApptNumber.value,
-            postal_code: addrPostalCode.value,
+            country: addrCountry.value || null,
+            county: addrCounty.value || null,
+            municipality: addrMunicipality.value || null,
+            popul_place: addr_popul_place.value || null,
+            street_name: addr_street_name.value || null,
+            address_number: addrHouseNumber.value || null,
+            appartment: addrApptNumber.value || null,
+            postal_code: addrPostalCode.value || null,
         }
     }
 
