@@ -91,6 +91,12 @@ block content
                     div.form_group
                         label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
                         input.login_input#addrHouseNumber.form-control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
+                    div.form_group
+                        label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
+                        input.login_input#addrApptNumber.form-control(type='text' placeholder=`${self.label.userprofile.addressApptNumber}` name='addrHouseNumber')
+                    div.form_group
+                        label.person_profile_label(for='addrPostalCode')= self.label.userprofile.addressPostalCode
+                        input.login_input#addrPostalCode.form-control(type='text' placeholder=`${self.label.userprofile.addressPostalCode}` name='addrPostalCode')
 
             //- fieldset
             //-     legend

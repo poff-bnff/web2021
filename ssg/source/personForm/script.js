@@ -59,7 +59,9 @@ async function sendPersonProfile() {
             addrMunicipality: addrMunicipality.value,
             addr_popul_place: addr_popul_place.value,
             addr_street_name: addr_street_name.value,
-            addrHouseNumber: addrHouseNumber.value
+            addrHouseNumber: addrHouseNumber.value,
+            addrApptNumber: addrApptNumber.value,
+            addrPostalCode: addrPostalCode.value,
         }
     }
 
@@ -112,7 +114,8 @@ async function sendPersonProfile() {
     addr_popul_place.value = ''
     addr_street_name.value = ''
     addrHouseNumber = ''
-
+    addrApptNumber = ''
+    addrPostalCode = ''
 
 }
 
