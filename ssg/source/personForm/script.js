@@ -55,14 +55,14 @@ async function sendPersonProfile() {
         phoneNr: phoneNr.value,
         eMail: eMail.value,
         address: {
-            addrCountry: addrCountry.value,
-            addrCounty: addrCounty.value,
-            addrMunicipality: addrMunicipality.value,
-            addr_popul_place: addr_popul_place.value,
-            addr_street_name: addr_street_name.value,
-            addrHouseNumber: addrHouseNumber.value,
-            addrApptNumber: addrApptNumber.value,
-            addrPostalCode: addrPostalCode.value,
+            country: addrCountry.value,
+            county: addrCounty.value,
+            municipality: addrMunicipality.value,
+            popul_place: addr_popul_place.value,
+            street_name: addr_street_name.value,
+            address_number: addrHouseNumber.value,
+            appartment: addrApptNumber.value,
+            postal_code: addrPostalCode.value,
         }
     }
 
