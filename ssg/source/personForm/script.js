@@ -1,4 +1,5 @@
-let imageToSend = "empty"
+let profileImageToSend = "empty"
+let galleryImageToSend = "empty"
 
 if (validToken) {
     loadUserInfo()
@@ -67,8 +68,8 @@ async function sendPersonProfile() {
 
     formData.append('data', JSON.stringify(personToSend));
 
-    if (imageToSend !== "empty") {
-        formData.append(`files.picture`, imageToSend, imageToSend.name);
+    if (profileImageToSend !== "empty") {
+        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
     }
 
     // Log form data
@@ -108,7 +109,7 @@ async function sendPersonProfile() {
     gender.value = ''
     phoneNr.value = ''
     eMail.value = ''
-    addrCcountry.value = ''
+    addrCountry.value = ''
     addrCounty.value = ''
     addrMunicipality.value = ''
     addr_popul_place.value = ''
@@ -153,7 +154,7 @@ function validatePersonForm() {
     })
 }
 
-function validateImageAndPreview(file) {
+function validateImageAndPreview(file, previewElemenID) {
     let error = document.getElementById("imgError");
     // Check if the file is an image.
     if (!file.type.includes("image")) {
@@ -166,10 +167,12 @@ function validateImageAndPreview(file) {
         // Preview
         var reader = new FileReader();
         reader.onload = function () {
-            imgPreview.src = reader.result;
+            let previewElement = document.getElementById(previewElemenID)
+            previewElement.src = reader.result;
+            console.log(previewElement);
         };
         reader.readAsDataURL(file);
-        imageToSend = file
+        profileImageToSend = file
 
     }
 }
