@@ -1,4 +1,5 @@
-let imageToSend = "empty"
+let profileImageToSend = "empty"
+let galleryImageToSend = "empty"
 
 if (validToken) {
     loadUserInfo()
@@ -63,8 +64,8 @@ async function sendPersonProfile() {
 
     formData.append('data', JSON.stringify(personToSend));
 
-    if (imageToSend !== "empty") {
-        formData.append(`files.picture`, imageToSend, imageToSend.name);
+    if (profileImageToSend !== "empty") {
+        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
     }
 
     // Log form data
@@ -164,7 +165,7 @@ function validateImageAndPreview(file, previewElemenID) {
             console.log(previewElement);
         };
         reader.readAsDataURL(file);
-        imageToSend = file
+        profileImageToSend = file
 
     }
 }
