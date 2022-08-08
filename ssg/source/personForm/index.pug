@@ -80,11 +80,17 @@ block content
                         label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
                         select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
                             each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
-                                option.login_input(value=pmunicipality.id)= municipality[`name_${self.locale}`]
+                                option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    div.form_group
+                        label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
+                        input.login_input#addr_popul_place.form-control(type='text' placeholder=`${self.label.userprofile.populPlace}` name='addr_popul_place')
                     div.form_group
                         label.person_profile_label(for='addr_street_name')= self.label.userprofile.streetName
                         input.login_input#addr_street_name.form-control(type='text' placeholder=`${self.label.userprofile.streetName}` name='addr_street_name')
+                    div.form_group
+                        label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
+                        input.login_input#addrHouseNumber.form-control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
 
             //- fieldset
             //-     legend

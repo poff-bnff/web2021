@@ -57,7 +57,9 @@ async function sendPersonProfile() {
             addrCountry: addrCountry.value,
             addrCounty: addrCounty.value,
             addrMunicipality: addrMunicipality.value,
+            addr_popul_place: addr_popul_place.value,
             addr_street_name: addr_street_name.value,
+            addrHouseNumber: addrHouseNumber.value
         }
     }
 
@@ -107,7 +109,9 @@ async function sendPersonProfile() {
     addrCcountry.value = ''
     addrCounty.value = ''
     addrMunicipality.value = ''
+    addr_popul_place.value = ''
     addr_street_name.value = ''
+    addrHouseNumber = ''
 
 
 }
