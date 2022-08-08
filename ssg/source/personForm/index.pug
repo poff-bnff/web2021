@@ -3,75 +3,81 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: none')
+        form.form#thisPersonProfile(style= 'display: |')
 
             fieldset
-                .form_group
-                    label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form_control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
-                    div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-                .form_group
-                    label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-                    input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
-                    div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-                .form_group
-                    label.person_profile_label(for='proRole')= self.label.userprofile.proRole
-                    select.login_input#proRole(name='proRole' form="thisPersonProfile")
-                        each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-                            option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
-                        //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                    //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+                legend= self.label.userprofile.nameSet
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='firstName')= self.label.userprofile.firstName
+                        input.login_input#firstName.form_control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
+                        div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+                    .form_group
+                        label.person_profile_label(for='lastName')= self.label.userprofile.lastName
+                        input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
+                        div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
+                    .form_group
+                        label.person_profile_label(for='proRole')= self.label.userprofile.proRole
+                        select.login_input#proRole(name='proRole' form="thisPersonProfile")
+                            each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+                                option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                        //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
 
             fieldset
-                legend
-                .form_group
-                    label.person_profile_label(for='gender')= self.label.userprofile.gender
-                    select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                        each gender in self.data.genders.sort((a, b) => a.id - b.id)
-                            option.login_input(value=gender.id)= gender[self.locale]
-                        option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                    div#genderHelp(class='valid')= self.label.userprofile.genderHelp
-                .form_group
-                    label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
-                    input.login_input#phoneNr.form_control( type='text' placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
-                .form_group
-                    label.person_profile_label(for='eMail')= self.label.userprofile.email
-                    input.login_input#eMail.form_control( type='email' placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
+                legend= self.label.userprofile.contactInfoSet
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='gender')= self.label.userprofile.gender
+                        select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
+                            each gender in self.data.genders.sort((a, b) => a.id - b.id)
+                                option.login_input(value=gender.id)= gender[self.locale]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                        div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+                    .form_group
+                        label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
+                        input.login_input#phoneNr.form_control( type='text' placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
+                    .form_group
+                        label.person_profile_label(for='eMail')= self.label.userprofile.email
+                        input.login_input#eMail.form_control( type='email' placeholder=`${self.label.userprofile.email}` name='eMail' autocomplete="off")
 
             fieldset
-                legend
-                div.form_group#profileImage
-                    label.person_profile_label(for='profileImg')= self.label.userprofile.profileImg
-                    br
-                    img.imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
-                    div#imgError
-                    input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
-                div.form_group
-                    label.person_profile_label(for='photographer')= self.label.userprofile.photographer
-                    input.login_input#photographer.form-control(type='text' name='photographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
-                div.form_group
-                    label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
-                    input.login_input#img_year.form-control(type='number' name='img_year' min='1900' max='3000' autocomplete="off")
+                legend= self.label.userprofile.profileImgSet
+                .fieldset_grid
+                    .form_group#profileImage
+                        label.person_profile_label(for='profileImg')= self.label.userprofile.profileImg
+                        br
+                        img.imgPreview.square(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                        div#imgError
+                        input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
+                    .form_group
+                        label.person_profile_label(for='photographer')= self.label.userprofile.photographer
+                        input.login_input#photographer.form-control(type='text' name='photographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
+                    .form_group
+                        label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
+                        input.login_input#img_year.form-control(type='number' name='img_year' min='2000' max='3000' autocomplete="off")
 
 
             fieldset
-                hr(style='color: black')
-                legend
-                    p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
-                    div#galleryTemplate(style= 'display: none')
-                        div.form_group
-                            img.imgPreview.square(alt="Gallery image", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg" style="width: 10%; height: 10%")
-                            label.person_profile_label(for='gallery_img') GALERIIPILT
-                            input.login_input.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
-                        div.form_group
-                            label.person_profile_label(for='galleryImagePhotographer')= self.label.userprofile.photographer
-                            input.login_input.galleryImagePhotographer.form-control(type='text' name='galleryImagePhotographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
-                        div.form_group
-                            label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
-                            input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='1900' max='3000' autocomplete="off")
-                        div.btn.btn_primary.deleteGalleryImage 🗑
-                div.btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addNextGalleryImg
-                hr(style='color: black')
+                //- hr(style='color: black')
+                legend= legend= self.label.userprofile.galleryImgSet
+                        //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
+                        div#galleryTemplate(style= 'display: none')
+                            .fieldset_grid
+                                .form_group
+                                    label.person_profile_label(for='gallery_img')= self.label.userprofile.galleryImg
+                                    br
+                                    img.imgPreview.landscape(alt="Gallery image", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                                    input.login_input.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
+                                .form_group
+                                    label.person_profile_label(for='galleryImagePhotographer')= self.label.userprofile.photographer
+                                    input.login_input.galleryImagePhotographer.form-control(type='text' name='galleryImagePhotographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
+                                .form_group
+                                    label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
+                                    input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='2000' max='3000' autocomplete="off")
+                                .btn.btn_primary.deleteGalleryImage x
+                div.btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
+                //- hr(style='color: black')
 
             //- fieldset
             //-     legend
@@ -83,45 +89,46 @@ block content
             //-         input.login_input#photographer2.form_control(type='text' name='photographer2' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
             //-     .form_group
             //-         label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
-            //-         input.login_input#img_year2.form_control(type='number' name='img_year2' min='1900' max='3000' autocomplete="off")
+            //-         input.login_input#img_year2.form_control(type='number' name='img_year2' 2000' max='3000' autocomplete="off")
 
             //-     button.btn.btn_primary(id='addNextGalleryImg')= self.label.userprofile.addNextGalleryImg
 
             fieldset
-                legend
-                .form_group
-                    label.person_profile_label(for='addrCountry')= self.label.userprofile.country
-                    select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
-                        each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
-                            option.login_input(value=country.id)= country[`name_${self.locale}`]
-                        option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                .form_group
-                    label.person_profile_label(for='addrCounty')= self.label.userprofile.county
-                    select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
-                        each county in self.data.counties.sort((a, b) => a.id - b.id)
-                            option.login_input(value=county.id)= county[`name_${self.locale}`]
-                        option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                .form_group
-                    label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
-                    select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
-                        each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
-                            option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
-                        option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                .form_group
-                    label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
-                    input.login_input#addr_popul_place.form_control(type='text' placeholder=`${self.label.userprofile.populPlace}` name='addr_popul_place')
-                .form_group
-                    label.person_profile_label(for='addr_street_name')= self.label.userprofile.streetName
-                    input.login_input#addr_street_name.form_control(type='text' placeholder=`${self.label.userprofile.streetName}` name='addr_street_name')
-                .form_group
-                    label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
-                    input.login_input#addrHouseNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
-                .form_group
-                    label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
-                    input.login_input#addrApptNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressApptNumber}` name='addrHouseNumber')
-                .form_group
-                    label.person_profile_label(for='addrPostalCode')= self.label.userprofile.addressPostalCode
-                    input.login_input#addrPostalCode.form_control(type='text' placeholder=`${self.label.userprofile.addressPostalCode}` name='addrPostalCode')
+                legend= self.label.userprofile.addressSet
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='addrCountry')= self.label.userprofile.country
+                        select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
+                            each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                                option.login_input(value=country.id)= country[`name_${self.locale}`]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    .form_group
+                        label.person_profile_label(for='addrCounty')= self.label.userprofile.county
+                        select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
+                            each county in self.data.counties.sort((a, b) => a.id - b.id)
+                                option.login_input(value=county.id)= county[`name_${self.locale}`]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    .form_group
+                        label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
+                        select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
+                            each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
+                                option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    .form_group
+                        label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
+                        input.login_input#addr_popul_place.form_control(type='text' placeholder=`${self.label.userprofile.populPlace}` name='addr_popul_place')
+                    .form_group
+                        label.person_profile_label(for='addr_street_name')= self.label.userprofile.streetName
+                        input.login_input#addr_street_name.form_control(type='text' placeholder=`${self.label.userprofile.streetName}` name='addr_street_name')
+                    .form_group
+                        label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
+                        input.login_input#addrHouseNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
+                    .form_group
+                        label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
+                        input.login_input#addrApptNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressApptNumber}` name='addrHouseNumber')
+                    .form_group
+                        label.person_profile_label(for='addrPostalCode')= self.label.userprofile.addressPostalCode
+                        input.login_input#addrPostalCode.form_control(type='text' placeholder=`${self.label.userprofile.addressPostalCode}` name='addrPostalCode')
 
             //- fieldset
             //-     legend
@@ -140,7 +147,7 @@ block content
         p#logInStatus(style= 'display: none') LOGI SISSE
 
     style.
-        .invalid {background-color: transparent; display: block; color: #495057}
+        //- .invalid {background-color: transparent; display: block; color: #495057}
         .valid {background-color: #ccf1e7; display: none}
         .invalidColor {background-color: #fff3e8}
         .c_invalid {background-color: #fff3e8}
