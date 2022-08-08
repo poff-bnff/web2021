@@ -926,9 +926,9 @@ module.exports = {
 
     console.log('personFormData', personFormData);
     let personFormAddressData = personFormData.address
-    personFormAddressData.country = personFormData.address.add_country
-    personFormAddressData.county = personFormData.address.add_county
-    personFormAddressData.populated_place = personFormData.address.add_p_place
+    // personFormAddressData.country = personFormData.address.country
+    // personFormAddressData.county = personFormData.address.add_county
+    // personFormAddressData.populated_place = personFormData.address.add_p_place
 
     console.log('personFormAddressData', personFormAddressData);
 
