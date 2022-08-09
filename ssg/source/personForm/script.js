@@ -51,6 +51,8 @@ async function sendPersonProfile() {
 
     // FORMAADIS " strapi muutuja nimi : vormi välja ID "
 
+    console.log('o_lang', otherlang.value )
+
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
