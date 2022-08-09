@@ -42,9 +42,12 @@ block content
                     .form_group
                         label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
                         select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile" required)
-                            each language in self.data.languages.sort((a, b) => a.id - b.id)
+                            option.login_input.placeholder(class='notinvalid' value="" selected="")
+                                //- = self.label.userprofile.select
+                            //- each language in self.data.languages.sort((a, b) => a.id - b.id)
+                            each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=language.id)= language[`name_${self.locale}`]
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                            //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     //- other languages
                     .form_group
                         label.person_profile_label(for='otherlang')= self.label.userprofile.otherLang
@@ -54,24 +57,66 @@ block content
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
 
 
-            //- fieldset
-            //-     legend= self.label.userprofile.actorSet
-            //-     .fieldset_grid
-            //-         .form_group
-            //-             label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-            //-             input.login_input#firstName.form_control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
-            //-             div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-            //-         .form_group
-            //-             label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-            //-             input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
-            //-             div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-            //-         .form_group
-            //-             label.person_profile_label(for='proRole')= self.label.userprofile.proRole
-            //-             select.login_input#proRole(name='proRole' form="thisPersonProfile")
-            //-                 each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-            //-                     option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
-            //-                 option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-            //-             //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+            fieldset#actorinfoset
+                legend= self.label.userprofile.actorSet
+                .fieldset_grid
+                    //-  acting_age_from
+                    .form_group
+                        label.person_profile_label(for='acting_age_from')= self.label.userprofile.actingAgeFrom
+                        input.login_input#acting_age_from.form_control( type='number', placeholder=`${self.label.userprofile.actingAgeFrom}` name='acting_age_from' autocomplete="off" required)
+                    //-  acting_age_to
+                    .form_group
+                        label.person_profile_label(for='acting_age_to')= self.label.userprofile.actingAgeTo
+                        input.login_input#acting_age_to.form_control( type='number', placeholder=`${self.label.userprofile.actingAgeto}` name='acting_age_to' autocomplete="off" required)
+                    //-  height_cm
+                    .form_group
+                        label.person_profile_label(for='height_cm')= self.label.userprofile.height
+                        input.login_input#height_cm.form_control( type='number', placeholder=`${self.label.userprofile.height}` name='height_cm' autocomplete="off" required)
+                    //-  weight_kg
+                    .form_group
+                        label.person_profile_label(for='weight_kg')= self.label.userprofile.weight
+                        input.login_input#weight_kg.form_control( type='number', placeholder=`${self.label.userprofile.weight}` name='weight_kg' autocomplete="off" required)
+                    //- stature
+                    .form_group
+                        label.person_profile_label(for='stature')= self.label.userprofile.stature
+                        select.login_input#stature(name='stature' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            each stature in self.data.statures.sort((a, b) => a.en - b.en)
+                                option.login_input(value=stature.id)= stature[`name_${self.locale}`]
+                    //- eye_colour
+                    .form_group
+                        label.person_profile_label(for='eye_colour')= self.label.userprofile.eyeColour
+                        select.login_input#eye_colour(name='eye_colour' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            each eyecolour in self.data.eyecolours.sort((a, b) => a.en - b.en)
+                                option.login_input(value=eyecolour.id)= eyecolour[`name_${self.locale}`]
+                    //- hair_colour
+                    .form_group
+                        label.person_profile_label(for='hair_colour')= self.label.userprofile.hairColour
+                        select.login_input#hair_colour(name='hair_colour' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            each haircolour in self.data.haircolours.sort((a, b) => a.en - b.en)
+                                option.login_input(value=haircolour.id)= haircolour[`name_${self.locale}`]
+                    //- hair_length
+                    .form_group
+                        label.person_profile_label(for='hair_length')= self.label.userprofile.hairLength
+                        select.login_input#hair_length(name='hair_length' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            each hairlength in self.data.hairlengths.sort((a, b) => a.en - b.en)
+                                option.login_input(value=hairlength.id)= hairlength[`name_${self.locale}`]
+                    //- pitch_of_voice
+                    .form_group
+                        label.person_profile_label(for='pitch_of_voice')= self.label.userprofile.pitchOfVoice
+                        select.login_input#pitch_of_voice(name='pitch_of_voice' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            each pitchofvoice in self.data.pitchofvoices.sort((a, b) => a.en - b.en)
+                                option.login_input(value=pitchofvoice.id)= pitchofvoice[`name_${self.locale}`]
+
 
 
             fieldset
@@ -129,13 +174,13 @@ block content
             fieldset
                 legend= self.label.userprofile.contactInfoSet
                 .fieldset_grid
-                    .form_group
-                        label.person_profile_label(for='gender')= self.label.userprofile.gender
-                        select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                            each gender in self.data.genders.sort((a, b) => a.id - b.id)
-                                option.login_input(value=gender.id)= gender[self.locale]
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                        div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+                    //- .form_group
+                    //-     label.person_profile_label(for='gender')= self.label.userprofile.gender
+                    //-     select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
+                    //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
+                    //-             option.login_input(value=gender.id)= gender[self.locale]
+                    //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    //-     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                     .form_group
                         label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
                         input.login_input#phoneNr.form_control( type='text' placeholder=`${self.label.userprofile.phone}` name='phoneNr' autocomplete="off")
@@ -149,7 +194,8 @@ block content
                     .form_group
                         label.person_profile_label(for='addrCountry')= self.label.userprofile.country
                         select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
-                            each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                            //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                            each country in self.data.countries.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=country.id)= country[`name_${self.locale}`]
                             option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     .form_group
@@ -197,7 +243,7 @@ block content
         p#logInStatus(style= 'display: none') LOGI SISSE
 
     style.
-        //- .invalid {background-color: transparent; display: block; color: #495057}
+        .invalid {background-color: transparent; display: block; color: red}
         .valid {background-color: #ccf1e7; display: none}
         .invalidColor {background-color: #fff3e8}
         .c_invalid {background-color: #fff3e8}
