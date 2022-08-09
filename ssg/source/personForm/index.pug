@@ -54,24 +54,24 @@ block content
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
 
 
-            fieldset
-                legend= self.label.userprofile.actorSet
-                .fieldset_grid
-                    .form_group
-                        label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-                        input.login_input#firstName.form_control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
-                        div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-                    .form_group
-                        label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-                        input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
-                        div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-                    .form_group
-                        label.person_profile_label(for='proRole')= self.label.userprofile.proRole
-                        select.login_input#proRole(name='proRole' form="thisPersonProfile")
-                            each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-                                option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                        //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+            //- fieldset
+            //-     legend= self.label.userprofile.actorSet
+            //-     .fieldset_grid
+            //-         .form_group
+            //-             label.person_profile_label(for='firstName')= self.label.userprofile.firstName
+            //-             input.login_input#firstName.form_control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
+            //-             div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+            //-         .form_group
+            //-             label.person_profile_label(for='lastName')= self.label.userprofile.lastName
+            //-             input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
+            //-             div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
+            //-         .form_group
+            //-             label.person_profile_label(for='proRole')= self.label.userprofile.proRole
+            //-             select.login_input#proRole(name='proRole' form="thisPersonProfile")
+            //-                 each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+            //-                     option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+            //-                 option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+            //-             //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
 
 
             fieldset
