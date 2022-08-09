@@ -66,6 +66,10 @@ async function sendPersonProfile() {
         dateOfBirth: dateofbirth.value || null,
         native_lang: nativelang.value || null,
         other_lang: otherlang.value || null,
+        acting_age_from: acting_age_from.value || null,
+        acting_age_to: acting_age_to.value || null,
+        height_cm: height_cm.value || null,
+        weight_kg: weight_kg.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,

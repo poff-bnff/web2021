@@ -20,7 +20,7 @@ block content
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                     //- RoleAtFilm / roleatfilm
                     .form_group
-                        label.person_profile_label(for='roleatfilm')= self.label.userprofile.roleAtFilm
+                        label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                         select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
                             option.login_input(class='invalid' value="" selected="")
                             //- = self.label.userprofile.proRole
@@ -151,7 +151,7 @@ block content
                                     label.person_profile_label(for='gallery_img')= self.label.userprofile.galleryImg
                                     br
                                     img.imgPreview.landscape(alt="Gallery image", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
-                                    input.login_input.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
+                                    input.input_file.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
                                 .form_group
                                     label.person_profile_label(for='galleryImagePhotographer')= self.label.userprofile.photographer
                                     input.login_input.galleryImagePhotographer.form-control(type='text' name='galleryImagePhotographer' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
