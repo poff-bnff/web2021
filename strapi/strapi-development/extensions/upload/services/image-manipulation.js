@@ -117,7 +117,9 @@ const generateResponsiveFormats = async file => {
 
   if(await isBitmapFormat(file.buffer)) {
 
-    if(filePrefix === 'F_') {
+    let prefixes = ['F_', 'P_', 'R_', 'U_', 'C_']
+
+    if(prefixes.includes(filePrefix)) {
       let params = await findOptions(filePrefix)
 
       return Promise.all(
@@ -129,43 +131,6 @@ const generateResponsiveFormats = async file => {
           }
         }))
 
-    }
-    else if(filePrefix === 'P_') {
-      let params = await findOptions(filePrefix)
-
-      return Promise.all(
-        Object.keys(params).map(key => {
-          const breakpoint = params[key]
-
-          if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
-          }
-        }))
-
-    }
-    else if(filePrefix === 'R_') {
-      let params = await findOptions(filePrefix)
-
-      return Promise.all(
-        Object.keys(params).map(key => {
-          const breakpoint = params[key]
-
-          if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
-          }
-        }))
-    }
-    else if(filePrefix === 'U_') {
-      let params = await findOptions(filePrefix)
-
-      return Promise.all(
-        Object.keys(params).map(key => {
-          const breakpoint = params[key]
-
-          if (breakpointSmallerThan(breakpoint, originalDimensions)) {
-            return generateBreakpoint(params[key].sufiks, { file, breakpoint, originalDimensions});
-          }
-        }))
     }
     else {
       const prefix = 'NO'

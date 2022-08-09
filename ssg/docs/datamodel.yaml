@@ -335,6 +335,7 @@ Awarding: &Awarding
     award: *Award
     actor_role: text
     work_title: text
+    year: number
 
 # Festival
 Festival: &Festival
@@ -1186,23 +1187,41 @@ RoleAtFilm: &RoleAtFilm
     order: (Number)
     remoteId: (UID)
 
+Filmography: &Filmography
+    _path: /filmographies
+    type_of_work: *TypeOfWork
+    year_from: number
+    year_to: number
+    work_name: text
+    work_url: text
+    tag_film_types: 
+        - *TagFilmType
+    role_at_films:  
+        - *RoleAtFilm
+    actor_role: text
+    org_name: text
+    org_url: text
+    org_department: text
+    degree: text
+
 Person: &Person
     _path: /people
     firstName: (text)
     lastName: (text)
-    firstNameLastName: (text)
     picture: *StrapiMedia #(Component)
     gender: *Gender #(Component)
     phoneNr: (text)
     eMail: (text)
     dateOfBirth: (Date)
-    countries: #(Component (repeatable))
-        - *Country
+    # countries: #(Component (repeatable)) # see on muutunud ainsuseks, st välja nimi teine ja olemasolevat infot ei tagastata
+    #     - *Country
+    country: *Country
     organisations: #(Component (repeatable))
         - *Organisation
+    profession: (text)
+    firstNameLastName: (text)
     biography: *Translated #(Rich text)
     filmography: *Translated #(Rich text)
-    profession: (text)
     remoteId: (UID)
     pageUrl: (text)
     awardings: 
@@ -1213,9 +1232,6 @@ Person: &Person
         - *Domain
     role_at_films:
         - *RoleAtFilm
-    native_language: *Language
-    languages:
-        - *Language
     height_cm: number
     weight_kg: number
     eye_colour: *EyeColour
@@ -1226,10 +1242,30 @@ Person: &Person
     eventival_id: UID
     ev_account_email: email
     ev_contact_email: email
+    ev_country: *Country
+    ev_org_name: text
+    ev_job_title: text
     bio_et: text
     bio_en: text
     bio_ru: text
     profile_img: *StrapiMedia
+    ev_profession: text
+    ev_flow: text
+    ev_img_url: text
+    addr_coll: *Address
+    # addr_comp: vist ei kasuta
+    hair_lenght: *HairLength
+    native_lang: *Language
+    # languages: #kadunud v4li, ka soli info sees?
+    #     - *Language
+    other_lang: 
+        - *Language
+    images:
+        - *StrapiMedia
+    showreel: text
+    audioreel: *StrapiMedia
+    acting_age_from: number
+    acting_age_to: number
 
 TeamMember: &TeamMember
     person: *Person #(Component)
@@ -1567,7 +1603,7 @@ FilmInFilmography: &FilmInFilmography
         - *StrapiMedia
     trailerUrl: (text)
 
-Filmography: &Filmography
+FilmographyComp: &FilmographyComp
     text: (Rich text)
     film: #(Component (repeatable))
         - *FilmInFilmography
@@ -1591,7 +1627,7 @@ IndustryPerson: &IndustryPerson
         - *StrapiMedia
     clipUrl: (text)
     website: (text)
-    filmography: *Filmography
+    filmography: *FilmographyComp
     industry_person_types: #(Component (repeatable))
         - *IndustryPersonType
     lookingFor: (text)
@@ -1884,7 +1920,7 @@ DisCampPerson: &DisCampPerson
         - *StrapiMedia
     clipUrl: (text)
     website: (text)
-    filmography: *Filmography
+    filmography: *FilmographyComp
     discamp_person_types: #(Component (repeatable))
         - *DisCampPersonType
     lookingFor: (text)

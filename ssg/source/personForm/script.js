@@ -51,12 +51,17 @@ async function sendPersonProfile() {
 
     // FORMAADIS " strapi muutuja nimi : vormi välja ID "
 
+    console.log('o_lang', otherlang.value )
+
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
         gender: gender.value || null,
         phoneNr: phoneNr.value || null,
         eMail: eMail.value || null,
+        dateOfBirth: dateofbirth.value || null,
+        native_lang: nativelang.value || null,
+        other_lang: otherlang.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -115,6 +120,7 @@ async function sendPersonProfile() {
     firstName.value = ''
     lastName.value = ''
     gender.value = ''
+    dateofbirth.value = ''
     phoneNr.value = ''
     eMail.value = ''
     addrCountry.value = ''
