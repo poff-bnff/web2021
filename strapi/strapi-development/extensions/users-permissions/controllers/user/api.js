@@ -872,7 +872,7 @@ module.exports = {
   },
   async personForm(ctx) {
 
-    async function uploadPersonPicture(file, firstName, lastName) {
+    async function uploadPersonPicture(file, firstName, lastName, prefix) {
       console.log('Uploading profile picture');
 
       const firstNameSlug = slugify(firstName)
@@ -880,7 +880,7 @@ module.exports = {
 
       let splitter = file.name.split('.')
       let fileExt = splitter[splitter.length - 1]
-      let fileName = `PF_${firstNameSlug}_${lastNameSlug}.${fileExt}`
+      let fileName = `${prefix}_${firstNameSlug}_${lastNameSlug}.${fileExt}`
 
       const fileInfo = [
         {
@@ -920,7 +920,7 @@ module.exports = {
     // Image upload and assign to personFormData
     const { files } = parseMultipartData(ctx);
     if (files.picture) {
-      const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName)
+      const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
       personFormData.picture = uploadedPicture
     }
 
@@ -933,7 +933,7 @@ module.exports = {
       if (!personFormData.images) { personFormData.images = [] }
       for (let index = 0; index < files.images.length; index++) {
         const image = files.images[index];
-        const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName)
+        const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName, `G_${index+1}`)
         personFormData.images.push(uploadedPicture)
         console.log('uploadedPicture', uploadedPicture);
       }
