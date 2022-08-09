@@ -5,9 +5,9 @@ let galleryCounter = 0
 if (validToken) {
     loadUserInfo()
 } else {
-    // document.getElementById('logInStatus').style.display = ''
-    // window.open(`${location.origin}/${langpath}login`, '_self')
-    // saveUrl()
+    document.getElementById('logInStatus').style.display = ''
+    window.open(`${location.origin}/${langpath}login`, '_self')
+    saveUrl()
 }
 
 async function getUserProfile() {
@@ -57,6 +57,9 @@ async function sendPersonProfile() {
         gender: gender.value || null,
         phoneNr: phoneNr.value || null,
         eMail: eMail.value || null,
+        dateOfBirth: dateofbirth.value || null,
+        native_lang: nativelang.value || null,
+        other_lang: otherlang.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -115,6 +118,7 @@ async function sendPersonProfile() {
     firstName.value = ''
     lastName.value = ''
     gender.value = ''
+    dateofbirth.value = ''
     phoneNr.value = ''
     eMail.value = ''
     addrCountry.value = ''
