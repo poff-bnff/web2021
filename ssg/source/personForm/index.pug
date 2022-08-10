@@ -27,7 +27,24 @@ block content
                             each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                 option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
-                        //- div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+            fieldset
+                //- hr(style='color: black')
+                legend= legend= self.label.userprofile.proRole
+                        //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
+                        div#roleAtFilmTemplate(style= 'display: none')
+                            .fieldset_grid
+                                .form_group
+                                    label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
+                                    select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
+                                        option.login_input.default_select(class='invalid' value="" selected="")
+                                        //- = self.label.userprofile.proRole
+                                    each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+                                        option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='addNextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
+                        input.login_input.btn_primary(type='button' name='addNextRoleAtFilm' id='addNextRoleAtFilm' onclick='addRoleAtFilm()' value=self.label.userprofile.addRoleAtFilm)
+
 
             fieldset
                 legend= self.label.userprofile.mainInfoSet
@@ -54,14 +71,17 @@ block content
                             //- each language in self.data.languages.sort((a, b) => a.id - b.id)
                             each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=language.id)= language[`name_${self.locale}`]
+                .fieldset_grid
                     //- other_lang / otherlang
                     .form_group
                         label.person_profile_label(for='otherlang')= self.label.userprofile.otherLang
                         select.login_input#otherlang(name='otherlang' multiple size="6" form="thisPersonProfile")
-                            each language in self.data.languages.sort((a, b) => a.id - b.id)
+                            //- each language in self.data.languages.sort((a, b) => a.id - b.id)
+                            each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=language.id)= language[`name_${self.locale}`]
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                         p= self.label.userprofile.selectMultiple
+                .fieldset_grid
                     //- acc_imdb
                     .form_group
                         label.person_profile_label(for='acc_imdb')= self.label.userprofile.accImdb
@@ -74,6 +94,7 @@ block content
                     .form_group
                         label.person_profile_label(for='acc_castupload')= self.label.userprofile.accCastupload
                         input.login_input#acc_castupload.form_control( type='text', placeholder=`${self.label.userprofile.accCastupload}` name='acc_castupload' autocomplete="off")
+                .fieldset_grid
                     //- acc_instagram
                     .form_group
                         label.person_profile_label(for='acc_instagram')= self.label.userprofile.accInstagram
@@ -99,14 +120,7 @@ block content
                     .form_group
                         label.person_profile_label(for='acting_age_to')= self.label.userprofile.actingAgeTo
                         input.login_input#acting_age_to.form_control( type='number', placeholder=`${self.label.userprofile.actingAgeTo}` name='acting_age_to' autocomplete="off")
-                    //-  height_cm
-                    .form_group
-                        label.person_profile_label(for='height_cm')= self.label.userprofile.height
-                        input.login_input#height_cm.form_control( type='number', placeholder=`${self.label.userprofile.height}` name='height_cm' autocomplete="off")
-                    //-  weight_kg
-                    .form_group
-                        label.person_profile_label(for='weight_kg')= self.label.userprofile.weight
-                        input.login_input#weight_kg.form_control( type='number', placeholder=`${self.label.userprofile.weight}` name='weight_kg' autocomplete="off")
+                .fieldset_grid
                     //- stature
                     .form_group
                         label.person_profile_label(for='stature')= self.label.userprofile.stature
@@ -115,6 +129,15 @@ block content
                             //- = self.label.userprofile.select
                             each stature in self.data.statures.sort((a, b) => a.en - b.en)
                                 option.login_input(value=stature.id)= stature[`name_${self.locale}`]
+                    //-  height_cm
+                    .form_group
+                        label.person_profile_label(for='height_cm')= self.label.userprofile.height
+                        input.login_input#height_cm.form_control( type='number', placeholder=`${self.label.userprofile.height}` name='height_cm' autocomplete="off")
+                    //-  weight_kg
+                    .form_group
+                        label.person_profile_label(for='weight_kg')= self.label.userprofile.weight
+                        input.login_input#weight_kg.form_control( type='number', placeholder=`${self.label.userprofile.weight}` name='weight_kg' autocomplete="off")
+                .fieldset_grid
                     //- eye_colour
                     .form_group
                         label.person_profile_label(for='eye_colour')= self.label.userprofile.eyeColour
@@ -139,6 +162,7 @@ block content
                             //- = self.label.userprofile.select
                             each hairlength in self.data.hairlengths.sort((a, b) => a.en - b.en)
                                 option.login_input(value=hairlength.id)= hairlength[`name_${self.locale}`]
+                .fieldset_grid
                     //- pitch_of_voice
                     .form_group
                         label.person_profile_label(for='pitch_of_voice')= self.label.userprofile.pitchOfVoice
@@ -254,6 +278,7 @@ block content
                             //- each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
                             each municipality in self.data.municipalities.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
+                .fieldset_grid
                     .form_group
                         label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
                         input.login_input#addr_popul_place.form_control(type='text' placeholder=`${self.label.userprofile.populPlace}` name='addr_popul_place')
@@ -263,6 +288,7 @@ block content
                     .form_group
                         label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
                         input.login_input#addrHouseNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressHouseNumber}` name='addrHouseNumber')
+                .fieldset_grid
                     .form_group
                         label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
                         input.login_input#addrApptNumber.form_control(type='text' placeholder=`${self.label.userprofile.addressApptNumber}` name='addrHouseNumber')
@@ -297,6 +323,7 @@ block content
                     .form_group
                         label.person_profile_label(for='year_to')= self.label.userprofile.yearTo
                         input.login_input#year_to.form_control( type='number', placeholder=`${self.label.userprofile.yearTo}` name='year_to' autocomplete="off")
+                .fieldset_grid
                     //- org_name
                     .form_group
                         label.person_profile_label(for='org_name')= self.label.userprofile.eduOrgName
@@ -306,14 +333,15 @@ block content
                     .form_group
                         label.person_profile_label(for='org_department')= self.label.userprofile.eduOrgDep
                         input.login_input#org_department.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgDep}` name='org_department' autocomplete="off")
-                    //- org_url
-                    .form_group
-                        label.person_profile_label(for='org_url')= self.label.userprofile.eduOrgUrl
-                        input.login_input#org_url.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgUrl}` name='org_url' autocomplete="off")
                     //- degree
                     .form_group
                         label.person_profile_label(for='degree')= self.label.userprofile.eduDegree
                         input.login_input#degree.form_control( type='text', placeholder=`${self.label.userprofile.eduDegree}` name='degree' autocomplete="off")
+                .fieldset_grid
+                    //- org_url
+                    .form_group
+                        label.person_profile_label(for='org_url')= self.label.userprofile.eduOrgUrl
+                        input.login_input#org_url.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgUrl}` name='org_url' autocomplete="off")
 
                 .fieldset_grid
                     .form_group
@@ -339,6 +367,7 @@ block content
                                 //- = self.label.userprofile.proRole
                             each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                 option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                .fieldset_grid
                     //-  year_from
                     .form_group
                         label.person_profile_label(for='year_from')= self.label.userprofile.yearFrom
@@ -347,6 +376,7 @@ block content
                     .form_group
                         label.person_profile_label(for='year_to')= self.label.userprofile.yearTo
                         input.login_input#year_to.form_control( type='number', placeholder=`${self.label.userprofile.yearTo}` name='year_to' autocomplete="off")
+                .fieldset_grid
                     //- work_name
                     .form_group
                         label.person_profile_label(for='work_name')= self.label.userprofile.workName
@@ -355,6 +385,7 @@ block content
                     .form_group
                         label.person_profile_label(for='work_url')= self.label.userprofile.workUrl
                         input.login_input#work_url.form_control( type='text', placeholder=`${self.label.userprofile.workUrl}` name='work_url' autocomplete="off")
+                .fieldset_grid
                     //- actor_role
                     .form_group
                         label.person_profile_label(for='actor_role')= self.label.userprofile.actorRole
