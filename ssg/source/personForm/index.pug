@@ -19,13 +19,13 @@ block content
                         input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                     //- RoleAtFilm / roleatfilm
-                    .form_group
-                        label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
-                        select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
-                            option.login_input.default_select(class='invalid' value="" selected="")
-                                //- = self.label.userprofile.proRole
-                            each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-                                option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                    //- .form_group
+                    //-     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
+                    //-     select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
+                    //-         option.login_input.default_select(class='invalid' value="" selected="")
+                    //-             //- = self.label.userprofile.proRole
+                    //-         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+                    //-             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
             fieldset
                 //- hr(style='color: black')
