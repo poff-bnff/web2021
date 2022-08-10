@@ -252,6 +252,96 @@ block content
             //-             label.person_profile_label(for='street_name')= self.label.userprofile.streetName
             //-             input.login_input#street_name.form_control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 
+            fieldset
+                legend= self.label.userprofile.profEducation
+                .fieldset_grid
+                    //- type_of_work
+                    .form_group
+                        label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
+                        select.login_input#type_of_work(name='type_of_work' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                            each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
+                    //-  year_from
+                    .form_group
+                        label.person_profile_label(for='year_from')= self.label.userprofile.yearFrom
+                        input.login_input#year_from.form_control( type='number', placeholder=`${self.label.userprofile.yearFrom}` name='year_from' autocomplete="off")
+                    //-  year_to
+                    .form_group
+                        label.person_profile_label(for='year_to')= self.label.userprofile.yearTo
+                        input.login_input#year_to.form_control( type='number', placeholder=`${self.label.userprofile.yearTo}` name='year_to' autocomplete="off")
+                    //- org_name
+                    .form_group
+                        label.person_profile_label(for='org_name')= self.label.userprofile.eduOrgName
+                        input.login_input#org_name.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgName}` name='org_name' autocomplete="off")
+                        //- div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+                    //- org_department
+                    .form_group
+                        label.person_profile_label(for='org_department')= self.label.userprofile.eduOrgDep
+                        input.login_input#org_department.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgDep}` name='org_department' autocomplete="off")
+                    //- org_url
+                    .form_group
+                        label.person_profile_label(for='org_url')= self.label.userprofile.eduOrgUrl
+                        input.login_input#org_url.form_control( type='text', placeholder=`${self.label.userprofile.eduOrgUrl}` name='org_url' autocomplete="off")
+                    //- degree
+                    .form_group
+                        label.person_profile_label(for='degree')= self.label.userprofile.eduDegree
+                        input.login_input#degree.form_control( type='text', placeholder=`${self.label.userprofile.eduDegree}` name='degree' autocomplete="off")
+
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='addNextEducation')= self.label.userprofile.addEducation
+                        input.login_input.btn_primary(type='button' id='addNextEducation' onclick='addEducation()' value=self.label.userprofile.addEducation)
+
+            fieldset
+                legend= self.label.userprofile.worksFilmography
+                .fieldset_grid
+                    //- type_of_work
+                    .form_group
+                        label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
+                        select.login_input#type_of_work(name='type_of_work' form="thisPersonProfile")
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.select
+                            //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                            each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
+                    .form_group
+                        label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
+                        select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile")
+                            option.login_input.default_select(class='invalid' value="" selected="")
+                                //- = self.label.userprofile.proRole
+                            each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+                                option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                    //-  year_from
+                    .form_group
+                        label.person_profile_label(for='year_from')= self.label.userprofile.yearFrom
+                        input.login_input#year_from.form_control( type='number', placeholder=`${self.label.userprofile.yearFrom}` name='year_from' autocomplete="off")
+                    //-  year_to
+                    .form_group
+                        label.person_profile_label(for='year_to')= self.label.userprofile.yearTo
+                        input.login_input#year_to.form_control( type='number', placeholder=`${self.label.userprofile.yearTo}` name='year_to' autocomplete="off")
+                    //- work_name
+                    .form_group
+                        label.person_profile_label(for='work_name')= self.label.userprofile.workName
+                        input.login_input#work_name.form_control( type='text', placeholder=`${self.label.userprofile.workName}` name='work_name' autocomplete="off")
+                    //- work_url
+                    .form_group
+                        label.person_profile_label(for='work_url')= self.label.userprofile.workUrl
+                        input.login_input#work_url.form_control( type='text', placeholder=`${self.label.userprofile.workUrl}` name='work_url' autocomplete="off")
+                    //- actor_role
+                    .form_group
+                        label.person_profile_label(for='actor_role')= self.label.userprofile.actorRole
+                        input.login_input#actor_role.form_control( type='text', placeholder=`${self.label.userprofile.actorRole}` name='actor_role' autocomplete="off")
+
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='addNextFilmographyWork')= self.label.userprofile.addFilmographyWork
+                        input.login_input.btn_primary(type='button' id='addNextFilmographyWork' onclick='addFilmographyWork()' value=self.label.userprofile.addFilmographyWork)
+
+
+
 
             fieldset
                 legend

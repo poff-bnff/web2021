@@ -12,3 +12,6 @@ data:
     shoesizes: /_domainStrapidata/ShoeSize.yaml
     statures: /_domainStrapidata/Stature.yaml
     pitchofvoices: /_domainStrapidata/PitchOfVoice.yaml
+    typeofworks: /_domainStrapidata/TypeOfWork.yaml
+    filmographies: /_domainStrapidata/Filmography.yaml
+    tagfilmtypes: /_domainStrapidata/TagFilmType.yaml
