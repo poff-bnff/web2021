@@ -22,8 +22,8 @@ block content
                     .form_group
                         label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                         select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
-                            option.login_input(class='invalid' value="" selected="")
-                            //- = self.label.userprofile.proRole
+                            option.login_input.default_select(class='invalid' value="" selected="")
+                                //- = self.label.userprofile.proRole
                             each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                 option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
@@ -36,9 +36,10 @@ block content
                     .form_group
                         label.person_profile_label(for='gender')= self.label.userprofile.gender
                         select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
+                            option.login_input(class='invalid' value="" selected="")
+                                //- = self.label.userprofile.select
                             each gender in self.data.genders.sort((a, b) => a.id - b.id)
                                 option.login_input(value=gender.id)= gender[self.locale]
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                         div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                     //- dateOfBirth / dateofbirth
                     .form_group
@@ -60,6 +61,7 @@ block content
                             each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 option.login_input(value=language.id)= language[`name_${self.locale}`]
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                        p= "Mitme keele valimise juhend"
 
 
             fieldset#actorinfoset
@@ -72,7 +74,7 @@ block content
                     //-  acting_age_to
                     .form_group
                         label.person_profile_label(for='acting_age_to')= self.label.userprofile.actingAgeTo
-                        input.login_input#acting_age_to.form_control( type='number', placeholder=`${self.label.userprofile.actingAgeto}` name='acting_age_to' autocomplete="off")
+                        input.login_input#acting_age_to.form_control( type='number', placeholder=`${self.label.userprofile.actingAgeTo}` name='acting_age_to' autocomplete="off")
                     //-  height_cm
                     .form_group
                         label.person_profile_label(for='height_cm')= self.label.userprofile.height
@@ -158,8 +160,16 @@ block content
                                 .form_group
                                     label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
                                     input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='2000' max='3000' autocomplete="off")
-                                .btn.btn_primary.deleteGalleryImage x
-                div.btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
+                                .form_group
+                                    label.person_profile_label(for='add_new_img')= self.label.userprofile.delete
+                                    input.login_input.btn_secondary.deleteGalleryImage(type='button' value="x")
+                                        //- .btn.btn_primary.deleteGalleryImage x
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='add_new_img')= self.label.userprofile.addGalleryImg
+                        input.login_input.btn_primary(type='button' id='addNextGalleryImg' onclick='addGalleryImage()' value=self.label.userprofile.addGalleryImg)
+
+                        //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
                 //- hr(style='color: black')
 
             //- fieldset
@@ -243,9 +253,14 @@ block content
             //-             input.login_input#street_name.form_control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
 
 
+            fieldset
+                legend
+                .fieldset_grid
+                    .form_group
+                        label.person_profile_label(for='saveProfileButton')= " "
+                        input.login_input.btn_primary.deleteGalleryImage(type='button' id='saveProfileButton' name='saveProfileButton' onclick='validatePersonForm()' value=self.label.userprofile.saveProfile)
 
-
-            button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
+            //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
             p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
             //- self.label.userprofile.dataSaved
