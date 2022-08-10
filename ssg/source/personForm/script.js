@@ -70,6 +70,11 @@ async function sendPersonProfile() {
         acting_age_to: acting_age_to.value || null,
         height_cm: height_cm.value || null,
         weight_kg: weight_kg.value || null,
+        stature: stature.value || null,
+        eye_colour: eye_colour.value || null,
+        hair_colour: hair_colour.value || null,
+        hair_length: hair_length.value|| null,
+        pitch_of_voice: pitch_of_voice.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
