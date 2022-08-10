@@ -75,6 +75,12 @@ async function sendPersonProfile() {
         hair_colour: hair_colour.value || null,
         hair_length: hair_length.value|| null,
         pitch_of_voice: pitch_of_voice.value || null,
+        acc_imdb: acc_imdb || null,
+        acc_efis: acc_efis.value || null,
+        acc_castupload: acc_castupload || null,
+        acc_instagram: acc_instagram || null,
+        acc_fb: acc_fb || null,
+        acc_other: acc_other || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -84,7 +90,7 @@ async function sendPersonProfile() {
             address_number: addrHouseNumber.value || null,
             appartment: addrApptNumber.value || null,
             postal_code: addrPostalCode.value || null,
-        }
+        },
         filmography: {
             type_of_work: type_of_work.value || null,
             year_from: year_from.value || null,

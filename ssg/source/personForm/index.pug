@@ -61,7 +61,31 @@ block content
                             each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 option.login_input(value=language.id)= language[`name_${self.locale}`]
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                        p= "Mitme keele valimise juhend"
+                        p= self.label.userprofile.selectMultiple
+                    //- acc_imdb
+                    .form_group
+                        label.person_profile_label(for='acc_imdb')= self.label.userprofile.accImdb
+                        input.login_input#acc_imdb.form_control( type='text', placeholder=`${self.label.userprofile.accImdb}` name='acc_imdb' autocomplete="off")
+                    //- acc_efis
+                    .form_group
+                        label.person_profile_label(for='acc_efis')= self.label.userprofile.accEfis
+                        input.login_input#acc_efis.form_control( type='text', placeholder=`${self.label.userprofile.accEfis}` name='acc_rfis' autocomplete="off")
+                    //- acc_castupload
+                    .form_group
+                        label.person_profile_label(for='acc_castupload')= self.label.userprofile.accCastupload
+                        input.login_input#acc_castupload.form_control( type='text', placeholder=`${self.label.userprofile.accCastupload}` name='acc_castupload' autocomplete="off")
+                    //- acc_instagram
+                    .form_group
+                        label.person_profile_label(for='acc_instagram')= self.label.userprofile.accInstagram
+                        input.login_input#acc_instagram.form_control( type='text', placeholder=`${self.label.userprofile.accInstagram}` name='acc_instagram' autocomplete="off")
+                    //- acc_fb
+                    .form_group
+                        label.person_profile_label(for='acc_fb')= self.label.userprofile.accFb
+                        input.login_input#acc_fb.form_control( type='text', placeholder=`${self.label.userprofile.accFb}` name='acc_fb' autocomplete="off")
+                    //- acc_other
+                    .form_group
+                        label.person_profile_label(for='acc_other')= self.label.userprofile.accOther
+                        input.login_input#acc_other.form_control( type='text', placeholder=`${self.label.userprofile.accOther}` name='acc_other' autocomplete="off")
 
 
             fieldset#actorinfoset
@@ -256,14 +280,15 @@ block content
                 legend= self.label.userprofile.profEducation
                 .fieldset_grid
                     //- type_of_work
-                    .form_group
-                        label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
-                        select.login_input#type_of_work(name='type_of_work' form="thisPersonProfile")
-                            option.login_input(class='invalid' value="" selected="")
-                            //- = self.label.userprofile.select
-                            //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
-                            each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
-                                option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
+                    input.login_input#type_of_work(type="hidden" name="type_of_work" value="Education")
+                    //- .form_group
+                    //-     label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
+                    //-     select.login_input#type_of_work(name='type_of_work' form="thisPersonProfile")
+                    //-         option.login_input(class='invalid' value="" selected="")
+                    //-         //- = self.label.userprofile.select
+                    //-         //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
+                    //-         each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                    //-             option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
                     //-  year_from
                     .form_group
                         label.person_profile_label(for='year_from')= self.label.userprofile.yearFrom
@@ -354,8 +379,8 @@ block content
             //-self.label.userprofile.saveButton
             p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
             //- self.label.userprofile.dataSaved
-        p#loadingStatus LAADIMINE...
-        p#logInStatus(style= 'display: none') LOGI SISSE
+        p#loadingStatus= self.label.filters.loading
+        p#logInStatus(style= 'display: none')= self.label.userprofile.logIn
 
     style.
         .invalid {background-color: transparent; display: block; color: red}
