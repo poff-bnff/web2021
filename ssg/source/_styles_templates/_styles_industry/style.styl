@@ -577,8 +577,8 @@ footer
 
 .userprofile
     padding-top 120px
-    padding-left 2rem
-    padding-right 2rem
+    padding-left 6vw
+    padding-right 6vw
     padding-bottom 5rem
     // display grid
     // // justify-content space-around
@@ -3267,12 +3267,16 @@ fieldset
 
 .fieldset_grid
     display grid
-    grid-template-columns repeat(auto-fit, minmax(300px, 300px))
+    // grid-template-columns repeat(auto-fit, minmax(300px, 360px))
+    grid-template-columns 1fr
     // grid-template-rows repeat(auto-fit, minmax(2rem, 10rem))
     gap 1rem
     padding-top 2rem
     // background green
     // border-bottom 1px solid dark_5
+    @media screen and (min-width: 800px)
+        grid-template-columns repeat(auto-fit, minmax(300px, 360px))
+
 
 
 fieldset > .form_group
