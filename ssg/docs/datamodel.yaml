@@ -1295,6 +1295,10 @@ Person: &Person
     repr_email: text
     repr_org_name: text
     repr_org_url: text
+    acc_etalenta: text
+    skills_et: text
+    skills_en: text
+    skills_ru: text
 
 TeamMember: &TeamMember
     person: *Person #(Component)
