@@ -101,7 +101,7 @@ async function sendPersonProfile() {
             appartment: addrApptNumber.value || null,
             postal_code: addrPostalCode.value || null,
         },
-        filmography: {
+        filmographies: {
             type_of_work: type_of_work.value || null,
             year_from: year_from.value || null,
             year_to: year_to || null,
