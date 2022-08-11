@@ -56,7 +56,7 @@ async function sendPersonProfile() {
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
-        RoleAtFilm: roleatfilm.value,
+        role_at_films: roleatfilm.value,
         gender: gender.value,
         dateOfBirth: dateofbirth.value,
         native_lang: nativelang.value,
