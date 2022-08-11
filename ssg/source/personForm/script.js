@@ -56,11 +56,11 @@ async function sendPersonProfile() {
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
-        role_at_films: roleatfilm.value,
+        role_at_films: roleatfilm.value || null,
         gender: gender.value,
         dateOfBirth: dateofbirth.value,
         native_lang: nativelang.value,
-        other_lang: otherlang.value,
+        other_lang: otherlang.value || null,
         phoneNr: phoneNr.value || null,
         eMail: eMail.value || null,
         repr_org_name: repr_org_name.value || null,
