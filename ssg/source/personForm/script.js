@@ -87,7 +87,7 @@ async function sendPersonProfile() {
         acc_instagram: acc_instagram || null,
         acc_fb: acc_fb || null,
         acc_other: acc_other || null,
-        videoreel: videoreel || null,
+        showreel: showreel || null,
         audioreel: audioreel || null,
         bio_en: bio_en || null,
         skills_en: skills_en || null,
