@@ -83,6 +83,7 @@ async function sendPersonProfile() {
         acc_imdb: acc_imdb || null,
         acc_efis: acc_efis.value || null,
         acc_castupload: acc_castupload || null,
+        acc_etalenta: acc_etalenta || null,
         acc_instagram: acc_instagram || null,
         acc_fb: acc_fb || null,
         acc_other: acc_other || null,
