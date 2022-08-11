@@ -237,6 +237,26 @@ block content
             //-     button.btn.btn_primary(id='addNextGalleryImg')= self.label.userprofile.addNextGalleryImg
 
             fieldset
+                legend= self.label.userprofile.reelsSet
+                .fieldset_grid
+                    //- .form_group
+                    //-     label.person_profile_label(for='gender')= self.label.userprofile.gender
+                    //-     select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
+                    //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
+                    //-             option.login_input(value=gender.id)= gender[self.locale]
+                    //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    //-     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+
+                    //-  phoneNr
+                    .form_group
+                        label.person_profile_label(for='showreel')= self.label.userprofile.showreel
+                        input.login_input#showreel.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='showreel' autocomplete="off")
+                    //- eMail
+                    .form_group
+                        label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
+                        input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
+
+            fieldset
                 legend= self.label.userprofile.contactInfoSet
                 .fieldset_grid
                     //- .form_group
