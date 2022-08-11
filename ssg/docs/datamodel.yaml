@@ -1095,6 +1095,13 @@ FilmikooliMenu: &FilmikooliMenu
         - *FilmikooliSubMenuItem
     publish: (boolean)
 
+#Industy ...
+
+IndustryPersonType: &IndustryPersonType
+    _path: /industry-person-types
+    type: (text)
+    description: (Rich text)
+
 # Address
 
 County: &County
@@ -1256,7 +1263,7 @@ Person: &Person
     # addr_comp: vist ei kasuta
     hair_lenght: *HairLength
     native_lang: *Language
-    # languages: #kadunud v4li, ka soli info sees?
+    # languages: #kadunud v4li, kas oli info sees?
     #     - *Language
     other_lang: 
         - *Language
@@ -1266,6 +1273,28 @@ Person: &Person
     audioreel: *StrapiMedia
     acting_age_from: number
     acting_age_to: number
+    acc_imdb: text
+    acc_efis: text
+    acc_castupload: text
+    acc_instagram: text
+    acc_fb: text
+    acc_other: text
+    tag_secrets: 
+        - *TagSecret
+    webpage_url: text
+    industry_person_types: 
+        - *IndustryPersonType
+    tag_looking_fors:
+        - *TagLookingFor
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    public: boolean
+    repr_p_name: text
+    repr_phone: text
+    repr_email: text
+    repr_org_name: text
+    repr_org_url: text
 
 TeamMember: &TeamMember
     person: *Person #(Component)
@@ -1520,72 +1549,6 @@ LabelGroup:
     label: #(Component (repeatable))
         - *Label
 
-#Filikool
-CourseTags: &CourseTags
-    keywords: #(Component (repeatable))
-      - *TagKeyword
-
-Event: &Event
-    _path: /events
-    code: (Number)
-    ticketingUrl: (text) # suunamine kursusele
-    startDate: (Datetime)
-    endDate: (Datetime)
-    durationTotal: (number)
-    name: *Translated
-    location: *Location
-    extraInfo: *Translated
-    bookingUrl: (text)
-    course: (backreference) #*Course
-    price: (Number)
-
-Course: &Course
-    _path: /courses
-    order: (number)
-    titleOriginal: (short text)
-    title_et: (short text)
-    title_en: (short text)
-    title_ru: (short text)
-    slug_et: (UID, title_et)
-    slug_en: (UID, title_en)
-    slug_ru: (UID, title_ru)
-    year: (number)
-    startDate: (Datetime)
-    endDate: (Datetime)
-    volume: (short text)
-    stills: #(Component (repeatable))
-        - *StrapiMedia
-    posters: #(Component (repeatable))
-        - *StrapiMedia
-    trailer: #(Component (repeatable))
-        - *Trailer
-    QaClip: #(Component (repeatable))
-        - *QaClip
-    tags: *CourseTags #(Component)
-    languages: #(Component (repeatable))
-        - *Language
-    credentials: *Credentials
-    presentedBy: *PresentedBy
-    additInfo: *Translated #(rich text)
-    foreignUrl: (text)
-    events:
-        - *Event #(backreference)
-    domains: #(Component (repeatable))
-        - *Domain
-
-FrontPageCourses: &FrontPageCourses
-    _path: /front-page-courses
-    title: *Translated
-    lead: *Translated #(Rich)
-    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
-    namePrivate: (text)
-    courses_et: #(Component (repeatable))
-        - *Course
-    courses_en: #(Component (repeatable))
-        - *Course
-    courses_ru: #(Component (repeatable))
-        - *Course
-
 #Industry
 FilmInFilmography: &FilmInFilmography
     order: (Number)
@@ -1607,11 +1570,6 @@ FilmographyComp: &FilmographyComp
     text: (Rich text)
     film: #(Component (repeatable))
         - *FilmInFilmography
-
-IndustryPersonType: &IndustryPersonType
-    _path: /industry-person-types
-    type: (text)
-    description: (Rich text)
 
 IndustryPerson: &IndustryPerson
     _path: /industry-people
@@ -1815,6 +1773,72 @@ IndustryMenu: &IndustryMenu
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
     publish: (boolean)
+
+#Filikool
+CourseTags: &CourseTags
+    keywords: #(Component (repeatable))
+      - *TagKeyword
+
+Event: &Event
+    _path: /events
+    code: (Number)
+    ticketingUrl: (text) # suunamine kursusele
+    startDate: (Datetime)
+    endDate: (Datetime)
+    durationTotal: (number)
+    name: *Translated
+    location: *Location
+    extraInfo: *Translated
+    bookingUrl: (text)
+    course: (backreference) #*Course
+    price: (Number)
+
+Course: &Course
+    _path: /courses
+    order: (number)
+    titleOriginal: (short text)
+    title_et: (short text)
+    title_en: (short text)
+    title_ru: (short text)
+    slug_et: (UID, title_et)
+    slug_en: (UID, title_en)
+    slug_ru: (UID, title_ru)
+    year: (number)
+    startDate: (Datetime)
+    endDate: (Datetime)
+    volume: (short text)
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    posters: #(Component (repeatable))
+        - *StrapiMedia
+    trailer: #(Component (repeatable))
+        - *Trailer
+    QaClip: #(Component (repeatable))
+        - *QaClip
+    tags: *CourseTags #(Component)
+    languages: #(Component (repeatable))
+        - *Language
+    credentials: *Credentials
+    presentedBy: *PresentedBy
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+    events:
+        - *Event #(backreference)
+    domains: #(Component (repeatable))
+        - *Domain
+
+FrontPageCourses: &FrontPageCourses
+    _path: /front-page-courses
+    title: *Translated
+    lead: *Translated #(Rich)
+    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
+    namePrivate: (text)
+    courses_et: #(Component (repeatable))
+        - *Course
+    courses_en: #(Component (repeatable))
+        - *Course
+    courses_ru: #(Component (repeatable))
+        - *Course
 
 #CourseEvent
 
