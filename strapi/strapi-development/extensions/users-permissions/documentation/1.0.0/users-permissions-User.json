@@ -2384,6 +2384,12 @@
               "skills_ru": {
                 "type": "string"
               },
+              "filmographies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
