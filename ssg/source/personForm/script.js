@@ -112,7 +112,7 @@ async function sendPersonProfile() {
             work_name: work_name || null,
             work_url: work_url || null,
             actor_role: actor_role || null,
-            rola_at_films: roleatfilm.value || null,
+            role_at_films: roleatfilm.value || null,
         }
     }
 
