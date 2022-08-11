@@ -264,6 +264,9 @@
     },
     "skills_ru": {
       "type": "richtext"
+    },
+    "filmographies": {
+      "collection": "filmography"
     }
   }
 }
