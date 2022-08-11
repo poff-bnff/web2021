@@ -29,11 +29,6 @@
     "publish": {
       "type": "boolean",
       "default": true
-    },
-    "subLevel2Item": {
-      "type": "component",
-      "repeatable": true,
-      "component": "menu.bruno-sub2-menu-item"
     }
   }
 }
