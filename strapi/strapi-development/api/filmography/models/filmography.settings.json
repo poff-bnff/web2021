@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "filmographies",
+  "info": {
+    "name": "Filmography",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "type_of_work": {
+      "model": "type-of-work"
+    },
+    "year_from": {
+      "type": "integer"
+    },
+    "year_to": {
+      "type": "integer"
+    },
+    "work_name": {
+      "type": "string"
+    },
+    "work_url": {
+      "type": "string"
+    },
+    "tag_film_types": {
+      "collection": "tag-film-type"
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "actor_role": {
+      "type": "string"
+    },
+    "org_name": {
+      "type": "string"
+    },
+    "org_url": {
+      "type": "string"
+    },
+    "org_department": {
+      "type": "string"
+    },
+    "degree": {
+      "type": "string"
+    }
+  }
+}

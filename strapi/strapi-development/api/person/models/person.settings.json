@@ -39,8 +39,8 @@
     "dateOfBirth": {
       "type": "date"
     },
-    "countries": {
-      "collection": "country"
+    "country": {
+      "model": "country"
     },
     "organisations": {
       "collection": "organisation"
@@ -192,6 +192,78 @@
     },
     "acting_age_to": {
       "type": "integer"
+    },
+    "acc_imdb": {
+      "type": "string"
+    },
+    "acc_efis": {
+      "type": "string"
+    },
+    "acc_castupload": {
+      "type": "string"
+    },
+    "acc_instagram": {
+      "type": "string"
+    },
+    "acc_fb": {
+      "type": "string"
+    },
+    "acc_other": {
+      "type": "string"
+    },
+    "tag_secrets": {
+      "collection": "tag-secret"
+    },
+    "webpage_url": {
+      "type": "string"
+    },
+    "industry_person_types": {
+      "collection": "industry-person-type"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "firstNameLastName"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "firstNameLastName"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "firstNameLastName"
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "repr_p_name": {
+      "type": "string"
+    },
+    "repr_phone": {
+      "type": "string"
+    },
+    "repr_email": {
+      "type": "string"
+    },
+    "repr_org_name": {
+      "type": "string"
+    },
+    "repr_org_url": {
+      "type": "string"
+    },
+    "acc_etalenta": {
+      "type": "string"
+    },
+    "skills_et": {
+      "type": "richtext"
+    },
+    "skills_en": {
+      "type": "richtext"
+    },
+    "skills_ru": {
+      "type": "richtext"
     }
   }
 }

@@ -56,7 +56,7 @@ async function sendPersonProfile() {
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
-        RoleAtFilm: roleatfilm.value,
+        role_at_films: roleatfilm.value,
         gender: gender.value,
         dateOfBirth: dateofbirth.value,
         native_lang: nativelang.value,
@@ -87,8 +87,8 @@ async function sendPersonProfile() {
         acc_instagram: acc_instagram || null,
         acc_fb: acc_fb || null,
         acc_other: acc_other || null,
-        // videoreel: videoreel || null,
-        // audioreel: audioreel || null,
+        videoreel: videoreel || null,
+        audioreel: audioreel || null,
         bio_en: bio_en || null,
         skills_en: skills_en || null,
         address: {
@@ -112,7 +112,7 @@ async function sendPersonProfile() {
             work_name: work_name || null,
             work_url: work_url || null,
             actor_role: actor_role || null,
-            RoleAtFilm: roleatfilm.value || null,
+            role_at_films: roleatfilm.value || null,
         }
     }
 

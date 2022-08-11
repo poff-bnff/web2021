@@ -19,16 +19,16 @@
       "via": "awardings"
     },
     "film": {
-      "via": "awardings",
-      "model": "film"
+      "model": "film",
+      "via": "awardings"
     },
     "person": {
       "via": "awardings",
       "model": "person"
     },
     "organisation": {
-      "via": "awardings",
-      "model": "organisation"
+      "model": "organisation",
+      "via": "awardings"
     },
     "festival_edition": {
       "model": "festival-edition",
@@ -76,6 +76,9 @@
     },
     "work_title": {
       "type": "string"
+    },
+    "year": {
+      "type": "integer"
     }
   }
 }
