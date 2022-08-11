@@ -63,11 +63,11 @@ async function sendPersonProfile() {
         other_lang: otherlang.value,
         phoneNr: phoneNr.value || null,
         eMail: eMail.value || null,
-        repr_org_name: repr_org_name || null,
-        repr_org_url: repr_org_url || null,
-        repr_p_name: repr_p_name || null,
-        repr_phone: repr_phone || null,
-        repr_email: repr_email || null,
+        repr_org_name: repr_org_name.value || null,
+        repr_org_url: repr_org_url.value || null,
+        repr_p_name: repr_p_name.value || null,
+        repr_phone: repr_phone.value || null,
+        repr_email: repr_email.value || null,
         dateOfBirth: dateofbirth.value || null,
         native_lang: nativelang.value || null,
         other_lang: otherlang.value || null,
@@ -80,17 +80,17 @@ async function sendPersonProfile() {
         hair_colour: hair_colour.value || null,
         hair_length: hair_length.value|| null,
         pitch_of_voice: pitch_of_voice.value || null,
-        acc_imdb: acc_imdb || null,
+        acc_imdb: acc_imdb.value || null,
         acc_efis: acc_efis.value || null,
-        acc_castupload: acc_castupload || null,
-        acc_etalenta: acc_etalenta || null,
-        acc_instagram: acc_instagram || null,
-        acc_fb: acc_fb || null,
-        acc_other: acc_other || null,
-        showreel: showreel || null,
-        audioreel: audioreel || null,
-        bio_en: bio_en || null,
-        skills_en: skills_en || null,
+        acc_castupload: acc_castupload.value || null,
+        acc_etalenta: acc_etalenta.value || null,
+        acc_instagram: acc_instagram.value || null,
+        acc_fb: acc_fb.value || null,
+        acc_other: acc_other.value || null,
+        // videoreel: videoreel || null,
+        // audioreel: audioreel || null,
+        // bio_en: bio_en || null,
+        skills_en: skills_en.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -104,14 +104,14 @@ async function sendPersonProfile() {
         filmographies: {
             type_of_work: type_of_work.value || null,
             year_from: year_from.value || null,
-            year_to: year_to || null,
-            org_name: org_name || null,
-            org_department: org_department || null,
-            org_url: org_url || null,
-            degree: degree || null,
-            work_name: work_name || null,
-            work_url: work_url || null,
-            actor_role: actor_role || null,
+            year_to: year_to.value || null,
+            org_name: org_name.value || null,
+            org_department: org_department.value || null,
+            org_url: org_url.value || null,
+            degree: degree.value || null,
+            work_name: work_name.value || null,
+            work_url: work_url.value || null,
+            actor_role: actor_role.value || null,
             role_at_films: roleatfilm.value || null,
         }
     }
@@ -159,20 +159,20 @@ async function sendPersonProfile() {
 
     saveProfileButton.disabled = false
     saveProfileButton.innerHTML = previousInnerHTML
-    firstName.value = ''
-    lastName.value = ''
-    gender.value = ''
-    dateofbirth.value = ''
-    phoneNr.value = ''
-    eMail.value = ''
-    addrCountry.value = ''
-    addrCounty.value = ''
-    addrMunicipality.value = ''
-    addr_popul_place.value = ''
-    addr_street_name.value = ''
-    addrHouseNumber = ''
-    addrApptNumber = ''
-    addrPostalCode = ''
+    // firstName.value = ''
+    // lastName.value = ''
+    // gender.value = ''
+    // dateofbirth.value = ''
+    // phoneNr.value = ''
+    // eMail.value = ''
+    // addrCountry.value = ''
+    // addrCounty.value = ''
+    // addrMunicipality.value = ''
+    // addr_popul_place.value = ''
+    // addr_street_name.value = ''
+    // addrHouseNumber = ''
+    // addrApptNumber = ''
+    // addrPostalCode = ''
 
     let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
     for (let index = 0; index < galleryImageForms.length; index++) {

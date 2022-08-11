@@ -946,6 +946,14 @@ module.exports = {
       delete personFormData.address
     }
 
+    let personFormFilmographiesData = personFormData.filmographies
+    console.log('personFormFilmographiesData', personFormFilmographiesData);
+    if (personFormFilmographiesData) {
+      let form_filmographies = await strapi.services['filmography'].create(personFormFilmographiesData)
+      console.log('form_filmographies', form_filmographies);
+      personFormData.filmographies = form_filmographies.id
+    }
+
     let newPerson = await strapi.services['person'].create(personFormData)
     ctx.send(sanitizeUser(newPerson));
   },
