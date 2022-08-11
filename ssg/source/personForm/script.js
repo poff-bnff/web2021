@@ -87,8 +87,8 @@ async function sendPersonProfile() {
         acc_instagram: acc_instagram || null,
         acc_fb: acc_fb || null,
         acc_other: acc_other || null,
-        videoreel: videoreel || null,
-        audioreel: audioreel || null,
+        // videoreel: videoreel || null,
+        // audioreel: audioreel || null,
         bio_en: bio_en || null,
         skills_en: skills_en || null,
         address: {
@@ -159,20 +159,20 @@ async function sendPersonProfile() {
 
     saveProfileButton.disabled = false
     saveProfileButton.innerHTML = previousInnerHTML
-    firstName.value = ''
-    lastName.value = ''
-    gender.value = ''
-    dateofbirth.value = ''
-    phoneNr.value = ''
-    eMail.value = ''
-    addrCountry.value = ''
-    addrCounty.value = ''
-    addrMunicipality.value = ''
-    addr_popul_place.value = ''
-    addr_street_name.value = ''
-    addrHouseNumber = ''
-    addrApptNumber = ''
-    addrPostalCode = ''
+    // firstName.value = ''
+    // lastName.value = ''
+    // gender.value = ''
+    // dateofbirth.value = ''
+    // phoneNr.value = ''
+    // eMail.value = ''
+    // addrCountry.value = ''
+    // addrCounty.value = ''
+    // addrMunicipality.value = ''
+    // addr_popul_place.value = ''
+    // addr_street_name.value = ''
+    // addrHouseNumber = ''
+    // addrApptNumber = ''
+    // addrPostalCode = ''
 
     let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
     for (let index = 0; index < galleryImageForms.length; index++) {
