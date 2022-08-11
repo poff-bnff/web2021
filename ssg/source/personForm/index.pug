@@ -113,6 +113,15 @@ block content
                     .form_group
                         label.person_profile_label(for='webpage_url')= self.label.userprofile.webpageUrl
                         input.login_input#webpage_url.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='webpage_url' autocomplete="off")
+                .fieldset_grid
+                    //- bio_en
+                    .form_group
+                        label.person_profile_label(for='bio_en')= self.label.userprofile.biography
+                        textarea.login_input#bio_en(form="thisPersonProfile" name="bio_en")
+                    //- skills_en
+                    .form_group
+                        label.person_profile_label(for='skills_en')= self.label.userprofile.skills
+                        textarea.login_input#skills_en(form="thisPersonProfile" name="skills_en")
 
 
             fieldset#actorinfoset

@@ -89,6 +89,8 @@ async function sendPersonProfile() {
         acc_other: acc_other || null,
         videoreel: videoreel || null,
         audioreel: audioreel || null,
+        bio_en: bio_en || null,
+        skills_en: skills_en || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
