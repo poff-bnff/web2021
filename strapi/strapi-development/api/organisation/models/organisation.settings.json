@@ -82,8 +82,8 @@
       "type": "string"
     },
     "awardings": {
-      "collection": "awarding",
-      "via": "organisation"
+      "via": "organisation",
+      "collection": "awarding"
     },
     "festival_editions": {
       "collection": "festival-edition"
