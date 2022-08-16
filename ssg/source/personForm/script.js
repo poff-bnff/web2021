@@ -23,6 +23,22 @@ async function getUserProfile() {
     return userProfile
 }
 
+async function getPersonForm() {
+    let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
+        method: "GET",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+        },
+    });
+    let personOnForm = await response.json()
+    console.log({ personOnForm })
+
+    return personOnForm
+
+}
+
+getPersonForm()
+
 async function loadUserInfo() {
 
     let userProfile = await getUserProfile()
