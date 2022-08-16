@@ -17,6 +17,11 @@ const sanitizeUser = user =>
     model: strapi.query('user', 'users-permissions').model,
   });
 
+const sanitizePerson = person =>
+  sanitizeEntity(person, {
+    model: strapi.query('person').model,
+  });
+
 const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
@@ -957,4 +962,16 @@ module.exports = {
     let newPerson = await strapi.services['person'].create(personFormData)
     ctx.send(sanitizeUser(newPerson));
   },
+  async getPersonForm(ctx) {
+
+    const { person } = ctx.request.body.data;
+
+    let people_ids = person.map(e => e.id)
+
+    let persons =  await strapi.services['person'].find({id_in : people_ids})
+
+    console.log({persons})
+    return persons
+
+  }
 };

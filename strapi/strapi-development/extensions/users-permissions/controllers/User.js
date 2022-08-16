@@ -50,6 +50,7 @@ module.exports = {
   buyProduct: resolveControllerMethod('buyProduct'),
   buyProductCb: resolveControllerMethod('buyProductCb'),
   personForm: resolveControllerMethod('personForm'),
+  getPersonForm: resolveControllerMethod('getPersonForm'),
 
   /**
    * Retrieve user records.
