@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: |')
+        form.form#thisPersonProfile(style= 'display: none')
 
             fieldset
                 legend= self.label.userprofile.nameSet
@@ -63,12 +63,11 @@ block content
                     //- native_lang / nativelang
                     .form_group
                         label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
-                        .input_dropdown
-                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile" required)
-                                option.login_input.placeholder(class='notinvalid' value="" selected="")= self.label.userprofile.required
-                                //- each language in self.data.languages.sort((a, b) => a.id - b.id)
-                                each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
-                                    option.login_input(value=language.id)= language[`name_${self.locale}`]
+                        select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile" required)
+                            option.login_input.placeholder(class='notinvalid' value="" selected="")= self.label.userprofile.required
+                            //- each language in self.data.languages.sort((a, b) => a.id - b.id)
+                            each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                option.login_input(value=language.id)= language[`name_${self.locale}`]
                 .fieldset_grid
                     //- other_lang / otherlang
                     .form_group
