@@ -959,14 +959,20 @@ module.exports = {
       personFormData.filmographies = form_filmographies.id
     }
 
+    personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
+
     let newPerson = await strapi.services['person'].create(personFormData)
     ctx.send(sanitizeUser(newPerson));
   },
   async getPersonForm(ctx) {
 
-    const { person } = ctx.request.body.data;
+    const { person } = ctx.request.body.data.person;
 
     let people_ids = person.map(e => e.id)
+
+    if(people_ids.length < 1) {
+      return
+    }
 
     let persons =  await strapi.services['person'].find({id_in : people_ids})
 
@@ -975,3 +981,5 @@ module.exports = {
 
   }
 };
+
+
