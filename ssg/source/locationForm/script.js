@@ -1,16 +1,13 @@
 let profileImageToSend = "empty"
 let galleryImageToSend = {}
 let galleryCounter = 0
-let profEducationCounter = 0
-let roleAtFilmCounter = 0
-let filmographyCounter = 0
 
 if (validToken) {
     loadUserInfo()
 } else {
-    // document.getElementById('logInStatus').style.display = ''
-    // window.open(`${location.origin}/${langpath}login`, '_self')
-    // saveUrl()
+    document.getElementById('logInStatus').style.display = ''
+    window.open(`${location.origin}/${langpath}login`, '_self')
+    saveUrl()
 }
 
 async function getUserProfile() {
@@ -25,22 +22,6 @@ async function getUserProfile() {
 
     return userProfile
 }
-
-async function getPersonForm() {
-    let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
-        method: "GET",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
-        },
-    });
-    let personOnForm = await response.json()
-    console.log({ personOnForm })
-
-    return personOnForm
-
-}
-
-getPersonForm()
 
 async function loadUserInfo() {
 
@@ -70,61 +51,12 @@ async function sendPersonProfile() {
 
     // FORMAADIS " strapi muutuja nimi : vormi välja ID "
 
-    console.log('o_lang', otherlang.value)
-
-    // Prof education data processing
-    let profEducationData = []
-    let profEducationElements = document.querySelectorAll('[id^="education"]')
-    for (let index = 0; index < profEducationElements.length; index++) {
-        const element = profEducationElements[index];
-        profEducationData.push(
-            {
-                type_of_work: element.getElementsByClassName('type_of_work')[0].value,
-                year_from: element.getElementsByClassName('year_from')[0].value,
-                year_to: element.getElementsByClassName('year_to')[0].value,
-                org_name: element.getElementsByClassName('org_name')[0].value,
-                org_department: element.getElementsByClassName('org_department')[0].value,
-                degree: element.getElementsByClassName('degree')[0].value,
-                org_url: element.getElementsByClassName('org_url')[0].value,
-            }
-        )
-        element.remove()
-    }
-
-    // Role at films data processing
-    let roleAtFilmData = []
-    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
-    for (let index = 0; index < roleAtFilmElements.length; index++) {
-        const element = roleAtFilmElements[index];
-        roleAtFilmData.push(
-            element.getElementsByClassName('role_at_film')[0].value,
-        )
-        element.remove()
-    }
-
-    // Filmographies data processing
-    let filmographiesData = []
-    let filmographiesElements = document.querySelectorAll('[id^="filmographies"]')
-    for (let index = 0; index < filmographiesElements.length; index++) {
-        const element = filmographiesElements[index];
-        filmographiesData.push(
-            {
-                type_of_work: element.getElementsByClassName('type_of_work')[0].value,
-                role_at_films: element.getElementsByClassName('role_at_films')[0].value,
-                year_from: element.getElementsByClassName('year_from')[0].value,
-                year_to: element.getElementsByClassName('year_to')[0].value,
-                work_name: element.getElementsByClassName('work_name')[0].value,
-                work_url: element.getElementsByClassName('work_url')[0].value,
-                actor_role: element.getElementsByClassName('actor_role')[0].value,
-            }
-        )
-        element.remove()
-    }
+    console.log('o_lang', otherlang.value )
 
     let personToSend = {
         firstName: firstName.value,
         lastName: lastName.value,
-        // role_at_films: roleatfilm.value || null,
+        role_at_films: roleatfilm.value || null,
         gender: gender.value,
         dateOfBirth: dateofbirth.value,
         native_lang: nativelang.value,
@@ -146,7 +78,7 @@ async function sendPersonProfile() {
         stature: stature.value || null,
         eye_colour: eye_colour.value || null,
         hair_colour: hair_colour.value || null,
-        hair_length: hair_length.value || null,
+        hair_length: hair_length.value|| null,
         pitch_of_voice: pitch_of_voice.value || null,
         acc_imdb: acc_imdb.value || null,
         acc_efis: acc_efis.value || null,
@@ -169,23 +101,19 @@ async function sendPersonProfile() {
             appartment: addrApptNumber.value || null,
             postal_code: addrPostalCode.value || null,
         },
-        // filmographies: {
-        //     // type_of_work: type_of_work.value || null,
-        //     // year_from: year_from.value || null,
-        //     // year_to: year_to.value || null,
-        //     // org_name: org_name.value || null,
-        //     // org_department: org_department.value || null,
-        //     // org_url: org_url.value || null,
-        //     // degree: degree.value || null,
-        //     // work_name: work_name.value || null,
-        //     // work_url: work_url.value || null,
-        //     // actor_role: actor_role.value || null,
-        //     // role_at_films: roleatfilm.value || null,
-        // },
-        // profEducations: profEducationData,
-        role_at_films: roleAtFilmData,
-        filmographies: filmographiesData.concat(profEducationData),
-
+        filmographies: {
+            // type_of_work: type_of_work.value || null,
+            // year_from: year_from.value || null,
+            // year_to: year_to.value || null,
+            // org_name: org_name.value || null,
+            // org_department: org_department.value || null,
+            // org_url: org_url.value || null,
+            // degree: degree.value || null,
+            // work_name: work_name.value || null,
+            // work_url: work_url.value || null,
+            // actor_role: actor_role.value || null,
+            // role_at_films: roleatfilm.value || null,
+        }
     }
 
     formData.append('data', JSON.stringify(personToSend));
@@ -256,13 +184,6 @@ async function sendPersonProfile() {
     profileImg.value = ''
     document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
 
-    profEducationData = []
-    roleAtFilmData = []
-    filmographiesData = []
-
-    profEducationCounter = 0
-    roleAtFilmCounter = 0
-    filmographyCounter = 0
 }
 
 function validatePersonForm() {
@@ -350,46 +271,4 @@ function deleteGalleryImage(elementToDelete) {
     if (galleryImageToSend[elementToDelete]) {
         delete galleryImageToSend[elementToDelete]
     }
-}
-
-function addNextEducation() {
-    const profEducationTemplate = document.getElementById('profEducationTemplate');
-    const clone = profEducationTemplate.cloneNode(true);
-    clone.id = `education${profEducationCounter}`
-    clone.style.display = ''
-    document.getElementById('profEducationTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${profEducationCounter}`)
-
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${profEducationCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${profEducationCounter}")`)
-
-    profEducationCounter = profEducationCounter + 1
-}
-
-function addNextRoleAtFilm() {
-    const roleAtFilmTemplate = document.getElementById('roleAtFilmTemplate');
-    const clone = roleAtFilmTemplate.cloneNode(true);
-    clone.id = `filmRole${roleAtFilmCounter}`
-    clone.style.display = ''
-    document.getElementById('roleAtFilmTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
-
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${roleAtFilmCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
-
-    roleAtFilmCounter = roleAtFilmCounter + 1
-}
-
-function addNextFilmographyWork() {
-    const filmographyTemplate = document.getElementById('filmographyTemplate');
-    const clone = filmographyTemplate.cloneNode(true);
-    clone.id = `filmographies${filmographyCounter}`
-    clone.style.display = ''
-    document.getElementById('filmographyTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${filmographyCounter}`)
-
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${filmographyCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${filmographyCounter}")`)
-
-    filmographyCounter = filmographyCounter + 1
 }
