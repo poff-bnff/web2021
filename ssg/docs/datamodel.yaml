@@ -301,6 +301,24 @@ TagSecret: &TagSecret
     en: text
     ru: text
 
+TagLocation: &TagLocation
+    _path: /tag_locations
+    name_et: text
+    name_en: text
+    name_ru: text
+    order: number
+
+TagCaregory: &TagCategory
+    _path: /tag_categories
+    name_et: text
+    name_en: text
+    name_ru: text
+    order: number
+    boolean: boolean
+    active: boolean
+    tag_locations: 
+        - *TagLocation
+
 Award: &Award
     _path: /industry-awards
     title_en: text
@@ -873,13 +891,7 @@ FilmikooliArticle: &FilmikooliArticle
     organisations:
         - *Organisation
 
-Language: &Language
-    _path: /languages
-    id: 8 (number)
-    code: et (short text, min len 2, max len 3, lowercase)
-    name_et: Eesti (short text)
-    name_en: Estonian (short text)
-    name_ru: Эстонский (short text)
+# Address
 
 Country: &Country
     _path: /countries
@@ -913,6 +925,42 @@ Hall: &Hall
     name_en: (text)
     name_ru: (text)
 
+County: &County
+    _path: /counties
+    name_et: text
+    name_en: text
+    name_ru: text
+    country: *Country
+
+Municipality: &Municipality
+    _path: /populated-places
+    name_et: text
+    name_en: text
+    name_ru: text
+    county: *County
+
+Address: &Address
+    _path: /addresses
+    country: *Country
+    county: *County
+    municipality: *Municipality
+    settl_unit: text
+    address_unit: text
+    street_name: text
+    address_number: text
+    appartment: text
+    postal_code: text
+    n_dms: text
+    e_dms: text
+    n: number
+    e: number
+    l_est_x: number
+    l_est_y: number
+    add_county: text
+    add_municipality: text
+    add_country: text
+    popul_place: text
+
 Location: &Location
     _path: /locations
     country: *Country #(Component)
@@ -921,6 +969,46 @@ Location: &Location
     hall: *Hall #(Component)
     name: (text)
     remoteId: (UID)
+    name_et: text
+    name_en: text
+    name_ru: text
+    addr_coll: *Address
+    description_et: text
+    description_en: text
+    description_ru: text
+    webpage_url: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    visitest_id: UID
+    domains:
+        - *Domain
+    festival_editions: 
+        - *FestivalEdition
+    profile_img: *StrapiMedia
+    images:
+        - *StrapiMedia
+    public: boolean
+    tag_secrets: 
+        - *TagSecret
+    repr_p_name: text
+    repr_phone: text
+    repr_email: text
+    repr_org_name: text
+    repr_org_url: text
+    tag_catgories:
+        - *TagCategory
+    tag_keywords:
+        - *TagKeyword
+    showreel: text
+
+Language: &Language
+    _path: /languages
+    id: 8 (number)
+    code: et (short text, min len 2, max len 3, lowercase)
+    name_et: Eesti (short text)
+    name_en: Estonian (short text)
+    name_ru: Эстонский (short text)
 
 # Menu
 
@@ -1101,44 +1189,6 @@ IndustryPersonType: &IndustryPersonType
     _path: /industry-person-types
     type: (text)
     description: (Rich text)
-
-# Address
-
-County: &County
-    _path: /counties
-    name_et: text
-    name_en: text
-    name_ru: text
-    country: *Country
-
-Municipality: &Municipality
-    _path: /populated-places
-    name_et: text
-    name_en: text
-    name_ru: text
-    county: *County
-
-Address: &Address
-    _path: /addresses
-    country: *Country
-    county: *County
-    municipality: *Municipality
-    settl_unit: text
-    address_unit: text
-    street_name: text
-    address_number: text
-    appartment: text
-    postal_code: text
-    n_dms: text
-    e_dms: text
-    n: number
-    e: number
-    l_est_x: number
-    l_est_y: number
-    add_county: text
-    add_municipality: text
-    add_country: text
-    popul_place: text
 
 # Person & Team
 

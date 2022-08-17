@@ -31,18 +31,18 @@ block content
                 //- hr(style='color: black')
                 legend= legend= self.label.userprofile.proRole
                         //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
-                        div#roleAtFilmTemplate(style= 'display: none')
+                        div#roleAtFilmTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
-                                    select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
+                                    select.login_input.role_at_film(name='roleatfilm' form="thisPersonProfile" required)
                                         option.login_input.default_select(class='invalid' value="" selected="")= self.label.userprofile.required
-                                    each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-                                        option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                                        each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
+                                            option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addNextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
-                        input.login_input.btn_primary(type='button' name='addNextRoleAtFilm' id='addNextRoleAtFilm' value=self.label.userprofile.addRoleAtFilm)
+                        label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
+                        input.login_input.btn_primary(type='button' name='nextRoleAtFilm' id='nextRoleAtFilm' onclick='addNextRoleAtFilm();' value=self.label.userprofile.addRoleAtFilm)
 
 
             fieldset
@@ -366,7 +366,7 @@ block content
 
             fieldset
                 legend= self.label.userprofile.profEducation
-                    div#profEducationTemplate(style= 'display: none')
+                    div#profEducationTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
                         .fieldset_grid
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
@@ -408,12 +408,12 @@ block content
 
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addNextEducation')= self.label.userprofile.addEducation
-                        input.login_input.btn_primary(type='button' id='addNextEducation' value=self.label.userprofile.addEducation)
+                        label.person_profile_label(for='addNextEducationBtn')= self.label.userprofile.addEducation
+                        input.login_input.btn_primary.addNextEducation(type='button' id='addNextEducationBtn' onclick='addNextEducation();' value=self.label.userprofile.addEducation)
 
             fieldset
                 legend= self.label.userprofile.worksFilmography
-                    div#filmographyTemplate(style= 'display: none')
+                    div#filmographyTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
                         .fieldset_grid
                             //- type_of_work
                             .form_group
@@ -426,7 +426,7 @@ block content
                                         option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
                             .form_group
                                 label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
-                                select.login_input.roleatfilm(name='roleatfilm' form="thisPersonProfile")
+                                select.login_input.role_at_films(name='roleatfilm' form="thisPersonProfile")
                                     option.login_input.default_select(class='invalid' value="" selected="")
                                         //- = self.label.userprofile.proRole
                                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
@@ -457,8 +457,8 @@ block content
 
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addNextFilmographyWork')= self.label.userprofile.addFilmographyWork
-                        input.login_input.btn_primary(type='button' id='addNextFilmographyWork' value=self.label.userprofile.addFilmographyWork)
+                        label.person_profile_label(for='addFilmographyWork')= self.label.userprofile.addFilmographyWork
+                        input.login_input.btn_primary(type='button' id='addFilmographyWork' onclick='addNextFilmographyWork();' value=self.label.userprofile.addFilmographyWork)
 
 
 

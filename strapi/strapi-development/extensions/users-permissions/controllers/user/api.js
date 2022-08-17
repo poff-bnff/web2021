@@ -17,6 +17,11 @@ const sanitizeUser = user =>
     model: strapi.query('user', 'users-permissions').model,
   });
 
+const sanitizePerson = person =>
+  sanitizeEntity(person, {
+    model: strapi.query('person').model,
+  });
+
 const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
@@ -938,7 +943,7 @@ module.exports = {
         console.log('uploadedPicture', uploadedPicture);
       }
     }
-
+    // Create new entry in address collection and assign to person
     let personFormAddressData = personFormData.address
     if (personFormAddressData) {
       let form_address = await strapi.services['address'].create(personFormAddressData)
@@ -946,15 +951,40 @@ module.exports = {
       delete personFormData.address
     }
 
+    // Create new entry in filmographies collection and assign to person
     let personFormFilmographiesData = personFormData.filmographies
     console.log('personFormFilmographiesData', personFormFilmographiesData);
-    if (personFormFilmographiesData) {
-      let form_filmographies = await strapi.services['filmography'].create(personFormFilmographiesData)
-      console.log('form_filmographies', form_filmographies);
-      personFormData.filmographies = form_filmographies.id
+    if (personFormFilmographiesData.length) {
+      let filmographiesIds = []
+      for (let i = 0; i < personFormFilmographiesData.length; i++) {
+        const filmography = personFormFilmographiesData[i];
+        let form_filmographies = await strapi.services['filmography'].create(filmography)
+        filmographiesIds.push(form_filmographies.id)
+      }
+      personFormData.filmographies = filmographiesIds
     }
+
+    personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
 
     let newPerson = await strapi.services['person'].create(personFormData)
     ctx.send(sanitizeUser(newPerson));
   },
+  async getPersonForm(ctx) {
+
+    const { person } = ctx.request.body.data.person;
+
+    // let people_ids = person.map(e => e.id)
+
+    // if(people_ids.length < 1) {
+    //   return
+    // }
+
+    // let persons =  await strapi.services['person'].find({id_in : people_ids})
+
+    // console.log({persons})
+    return person
+
+  }
 };
+
+
