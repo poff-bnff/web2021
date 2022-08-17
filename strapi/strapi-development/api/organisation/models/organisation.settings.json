@@ -82,8 +82,8 @@
       "type": "string"
     },
     "awardings": {
-      "via": "organisation",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "organisation"
     },
     "festival_editions": {
       "collection": "festival-edition"
@@ -106,11 +106,6 @@
     },
     "addr_coll": {
       "model": "address"
-    },
-    "addr_comp": {
-      "type": "component",
-      "repeatable": false,
-      "component": "location.address"
     },
     "showreel": {
       "type": "string"

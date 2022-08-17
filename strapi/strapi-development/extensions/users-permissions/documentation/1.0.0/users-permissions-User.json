@@ -2273,9 +2273,6 @@
               "addr_coll": {
                 "type": "string"
               },
-              "addr_comp": {
-                "type": "component"
-              },
               "hair_length": {
                 "type": "string"
               },

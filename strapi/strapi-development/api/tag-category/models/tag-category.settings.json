@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tag_categories",
+  "info": {
+    "name": "TagCategory",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "select_one": {
+      "type": "boolean"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "tag_locations": {
+      "collection": "tag-location"
+    }
+  }
+}

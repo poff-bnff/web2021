@@ -150,11 +150,6 @@
     "addr_coll": {
       "model": "address"
     },
-    "addr_comp": {
-      "type": "component",
-      "repeatable": false,
-      "component": "location.address"
-    },
     "hair_length": {
       "model": "hair-length"
     },
