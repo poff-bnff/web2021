@@ -340,23 +340,9 @@
         "tags": [
           "Unclassified"
         ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
+        "parameters": []
       }
-    },    
+    }
   },
   "tags": []
 }
