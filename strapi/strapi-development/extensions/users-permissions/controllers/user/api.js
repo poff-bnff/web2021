@@ -968,16 +968,16 @@ module.exports = {
 
     const { person } = ctx.request.body.data.person;
 
-    let people_ids = person.map(e => e.id)
+    // let people_ids = person.map(e => e.id)
 
-    if(people_ids.length < 1) {
-      return
-    }
+    // if(people_ids.length < 1) {
+    //   return
+    // }
 
-    let persons =  await strapi.services['person'].find({id_in : people_ids})
+    // let persons =  await strapi.services['person'].find({id_in : people_ids})
 
-    console.log({persons})
-    return persons
+    // console.log({persons})
+    return person
 
   }
 };
