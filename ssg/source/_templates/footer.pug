@@ -12,7 +12,8 @@ footer
                         if item.svgCode
                             a(href=item.url target='_blank') !{item.svgCode}
                         else if item.svgMedia
-                            img.footer_logo_item(alt=item.name data-src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}` src=`/https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}`)
+                            a(href=item.url target='_blank') !{item.svgCode}
+                                img.footer_logo_item.svg_icon_footer(alt=item.name data-src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}` src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}`)
 
 
         if self.footer.item
