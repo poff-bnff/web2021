@@ -18,6 +18,8 @@ echo "STARTING BUILD"
 [ ! -d "./build/$BUILDDIR/assets/" ] && mkdir -p "./build/$BUILDDIR/assets/"
 [ -d "./source/_fetchdir" ] && rm -r "./source/_fetchdir/"*
 [ ! -d "./source/_fetchdir" ] && mkdir -p "./source/_fetchdir"
+[ -d "./source/_fetchdirRestricted" ] && rm -r "./source/_fetchdirRestricted/"*
+[ ! -d "./source/_fetchdirRestricted" ] && mkdir -p "./source/_fetchdirRestricted"
 [ -d "./assets/img/dynamic" ] && rm -r "./assets/img/dynamic/"*
 [ -d "./assets/xml" ] && rm -r "./assets/xml/"*
 
