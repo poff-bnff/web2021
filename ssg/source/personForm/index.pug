@@ -28,10 +28,9 @@ block content
                     //-             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
             fieldset
-                //- hr(style='color: black')
+                //- role_at_films
                 legend= legend= self.label.userprofile.proRole
-                        //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
-                        div#roleAtFilmTemplate(style= 'display: block; border: solid #5B6DCD 1px;')
+                        div#roleAtFilmTemplate(style= 'display: block; ')
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
@@ -261,11 +260,11 @@ block content
                     //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     //-     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
 
-                    //-  phoneNr
+                    //-  showreel
                     .form_group
                         label.person_profile_label(for='showreel')= self.label.userprofile.showreel
                         input.login_input#showreel.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='showreel' autocomplete="off")
-                    //- eMail
+                    //- audioreel
                     .form_group
                         label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
                         input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
@@ -366,7 +365,7 @@ block content
 
             fieldset
                 legend= self.label.userprofile.profEducation
-                    div#profEducationTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
+                    div#profEducationTemplate(style= 'display: none; ')
                         .fieldset_grid
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
@@ -413,7 +412,7 @@ block content
 
             fieldset
                 legend= self.label.userprofile.worksFilmography
-                    div#filmographyTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
+                    div#filmographyTemplate(style= 'display: none; ')
                         .fieldset_grid
                             //- type_of_work
                             .form_group
@@ -472,7 +471,11 @@ block content
 
             //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
-            p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
+            //- p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
+            dialog#personProfileSent(style= {display: 'none'})
+                form(method="dialog")
+                    P= self.label.userprofile.profileSaved
+                    button.btn.btn_primary
             //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn
