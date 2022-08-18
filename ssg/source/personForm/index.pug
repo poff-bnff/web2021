@@ -52,7 +52,7 @@ block content
                     .form_group
                         label.person_profile_label(for='gender')= self.label.userprofile.gender
                         select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.requiredd
+                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.required
                             each gender in self.data.genders.sort((a, b) => a.id - b.id)
                                 option.login_input(value=gender.id)= gender[self.locale]
                         div#genderHelp(class='valid')= self.label.userprofile.genderHelp
