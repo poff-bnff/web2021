@@ -36,7 +36,8 @@ block content
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                                     select.login_input.role_at_film(name='roleatfilm' form="thisPersonProfile" required)
-                                        option.login_input.default_select(class='invalid' value="" selected="")= self.label.userprofile.required
+                                        option.login_input.default_select(class='invalid' value="" selected="")
+                                        //- = self.label.userprofile.required
                                         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                 .fieldset_grid
@@ -52,20 +53,22 @@ block content
                     .form_group
                         label.person_profile_label(for='gender')= self.label.userprofile.gender
                         select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.requiredd
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.required
                             each gender in self.data.genders.sort((a, b) => a.id - b.id)
                                 option.login_input(value=gender.id)= gender[self.locale]
                         div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                     //- dateOfBirth / dateofbirth
                     .form_group
                         label.person_profile_label(for='dateofbirth')= self.label.userprofile.birthday
-                        input.login_input#dateofbirth.form_control( type='date' placeholder=`${self.label.userprofile.required}` name='dateofbirth' autocomplete="off" required)
+                        input.login_input#dateofbirth.form_control( type='date' name='dateofbirth' autocomplete="off" required)
                     //- native_lang / nativelang
                     .form_group
                         label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
                         .input_dropdown
-                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile" required)
-                                option.login_input.placeholder(class='notinvalid' value="" selected="")= self.label.userprofile.required
+                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile")
+                                option.login_input.placeholder(class='notinvalid' value="" selected="")
+                                //- = self.label.userprofile.required
                                 //- each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option.login_input(value=language.id)= language[`name_${self.locale}`]
@@ -131,11 +134,11 @@ block content
                     //-  acting_age_from
                     .form_group
                         label.person_profile_label(for='acting_age_from')= self.label.userprofile.actingAgeFrom
-                        input.login_input#acting_age_from.form_control( type='number' name='acting_age_from' autocomplete="off")
+                        input.login_input#acting_age_from.form_control(type='number' name='acting_age_from' autocomplete="off")
                     //-  acting_age_to
                     .form_group
                         label.person_profile_label(for='acting_age_to')= self.label.userprofile.actingAgeTo
-                        input.login_input#acting_age_to.form_control( type='number' name='acting_age_to' autocomplete="off")
+                        input.login_input#acting_age_to.form_control(type='number' name='acting_age_to' autocomplete="off")
                 .fieldset_grid
                     //- stature
                     .form_group
@@ -474,7 +477,7 @@ block content
                 //- (style= {display: 'none'})
                 form(method="dialog")
                     P= self.label.userprofile.profileSaved
-                    button.btn.btn_primary
+                    button.btn.btn_primary= "OK"
             //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn

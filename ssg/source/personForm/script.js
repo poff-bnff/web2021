@@ -222,7 +222,8 @@ async function sendPersonProfile() {
     console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
-        dialog.showModal()
+        document.getElementById('personProfileSent').open = true;
+        // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
         if (localStorage.getItem('preLoginUrl')) {
             window.open(localStorage.getItem('preLoginUrl'), '_self')
