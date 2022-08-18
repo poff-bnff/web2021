@@ -308,7 +308,7 @@ TagLocation: &TagLocation
     name_ru: text
     order: number
 
-TagCaregory: &TagCategory
+TagCategory: &TagCategory
     _path: /tag_categories
     name_et: text
     name_en: text
