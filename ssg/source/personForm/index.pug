@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: |')
+        form.form#thisPersonProfile(style= 'display: none')
 
             fieldset
                 legend= self.label.userprofile.nameSet
@@ -31,7 +31,7 @@ block content
                 //- hr(style='color: black')
                 legend= legend= self.label.userprofile.proRole
                         //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
-                        div#roleAtFilmTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
+                        div#roleAtFilmTemplate(style= 'display: block; border: solid #5B6DCD 1px;')
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
@@ -101,15 +101,15 @@ block content
                     .form_group
                         label.person_profile_label(for='acc_fb')= self.label.userprofile.accFb
                         input.login_input#acc_fb.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='acc_fb' autocomplete="off")
+                    //- acc_etalenta
+                    .form_group
+                        label.person_profile_label(for='acc_etalenta')= self.label.userprofile.accEtalenta
+                        input.login_input#acc_etalenta.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='acc_etalenta' autocomplete="off")
+                .fieldset_grid
                     //- acc_other
                     .form_group
                         label.person_profile_label(for='acc_other')= self.label.userprofile.accOther
                         input.login_input#acc_other.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='acc_other' autocomplete="off")
-                .fieldset_grid
-                    //- acc_etalenta
-                    .form_group
-                        label.person_profile_label(for='acc_etalenta')= self.label.userprofile.accOther
-                        input.login_input#acc_etalenta.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='acc_etalenta' autocomplete="off")
                     //- webpage_url
                     .form_group
                         label.person_profile_label(for='webpage_url')= self.label.userprofile.webpageUrl
