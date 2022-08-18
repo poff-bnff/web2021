@@ -8,9 +8,9 @@ let filmographyCounter = 0
 if (validToken) {
     loadUserInfo()
 } else {
-    // document.getElementById('logInStatus').style.display = ''
-    // window.open(`${location.origin}/${langpath}login`, '_self')
-    // saveUrl()
+    document.getElementById('logInStatus').style.display = ''
+    window.open(`${location.origin}/${langpath}login`, '_self')
+    saveUrl()
 }
 
 async function getUserProfile() {
