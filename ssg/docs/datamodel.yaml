@@ -302,14 +302,14 @@ TagSecret: &TagSecret
     ru: text
 
 TagLocation: &TagLocation
-    _path: /tag_locations
+    _path: /tag-locations
     name_et: text
     name_en: text
     name_ru: text
     order: number
 
 TagCategory: &TagCategory
-    _path: /tag_categories
+    _path: /tag-categories
     name_et: text
     name_en: text
     name_ru: text
