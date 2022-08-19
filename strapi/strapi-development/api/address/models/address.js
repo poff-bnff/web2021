@@ -47,9 +47,11 @@ module.exports = {
         hrAddress.push(data.postal_code)
       }
       if(data.municipality){
-        console.log(data.municipality)
         let id = data.municipality.id
-        let munic = await strapi.query('municipalities').findOne({id})
+
+        console.log('municipality', data.municipality, {id})
+
+        let munic = await strapi.query('populated-place').findOne({id})
         munic = munic.name_et
         hrAddress.push(munic)
       }
