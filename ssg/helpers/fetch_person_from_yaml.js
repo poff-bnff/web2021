@@ -60,7 +60,6 @@ if (DOMAIN !== 'industry.poff.ee') {
     let activePersonsYamlNameSuffix = 'persons'
     let activePersons = STRAPIDATA_ALL_PERSONS.filter(p => p.role_at_films)
 
-    console.log(activePersons);
     startPersonProcessing(languages, activePersons, activePersonsYamlNameSuffix)
 
 
@@ -106,7 +105,6 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             // rueten func. is run for each person separately instead of whole data, that is
             // for the purpose of saving slug_en before it will be removed by rueten func.
             person = rueten(person, lang);
-            console.log(person);
             // person.path = person.slug;
             let slugifyName = slugify(`${person.firstNameLastName}-${person.id}`)
             person.path = slugifyName;
