@@ -11,12 +11,13 @@ block content
                     //- firstName
                     .form_group
                         label.person_profile_label(for='firstName')= self.label.userprofile.firstName
-                        input.login_input#firstName.form_control( type='text' placeholder=`${self.label.userprofile.required}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
+                        input.login_input#firstName.form_control( type='text' name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
+                        //- placeholder=`${self.label.userprofile.required}`
                         div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                     //- lastName
                     .form_group
                         label.person_profile_label(for='lastName')= self.label.userprofile.lastName
-                        input.login_input#lastName.form_control( type='text', placeholder=`${self.label.userprofile.required}` name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
+                        input.login_input#lastName.form_control( type='text' name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                     //- RoleAtFilm / roleatfilm
                     //- .form_group
@@ -28,15 +29,15 @@ block content
                     //-             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
             fieldset
-                //- hr(style='color: black')
+                //- role_at_films
                 legend= legend= self.label.userprofile.proRole
-                        //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
-                        div#roleAtFilmTemplate(style= 'display: block; border: solid #5B6DCD 1px;')
+                        div#roleAtFilmTemplate(style= 'display: block;')
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                                     select.login_input.role_at_film(name='roleatfilm' form="thisPersonProfile" required)
-                                        option.login_input.default_select(class='invalid' value="" selected="")= self.label.userprofile.required
+                                        option.login_input.default_select(class='invalid' value="" selected="")
+                                        //- = self.label.userprofile.required
                                         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                 .fieldset_grid
@@ -52,20 +53,22 @@ block content
                     .form_group
                         label.person_profile_label(for='gender')= self.label.userprofile.gender
                         select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                            option.login_input(class='invalid' value="" selected="")= self.label.userprofile.required
+                            option.login_input(class='invalid' value="" selected="")
+                            //- = self.label.userprofile.required
                             each gender in self.data.genders.sort((a, b) => a.id - b.id)
                                 option.login_input(value=gender.id)= gender[self.locale]
                         div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                     //- dateOfBirth / dateofbirth
                     .form_group
                         label.person_profile_label(for='dateofbirth')= self.label.userprofile.birthday
-                        input.login_input#dateofbirth.form_control( type='date' placeholder=`${self.label.userprofile.required}` name='dateofbirth' autocomplete="off" required)
+                        input.login_input#dateofbirth.form_control( type='date' name='dateofbirth' autocomplete="off" required)
                     //- native_lang / nativelang
                     .form_group
                         label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
                         .input_dropdown
-                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile" required)
-                                option.login_input.placeholder(class='notinvalid' value="" selected="")= self.label.userprofile.required
+                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile")
+                                option.login_input.placeholder(class='notinvalid' value="" selected="")
+                                //- = self.label.userprofile.required
                                 //- each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option.login_input(value=language.id)= language[`name_${self.locale}`]
@@ -131,11 +134,11 @@ block content
                     //-  acting_age_from
                     .form_group
                         label.person_profile_label(for='acting_age_from')= self.label.userprofile.actingAgeFrom
-                        input.login_input#acting_age_from.form_control( type='number' name='acting_age_from' autocomplete="off")
+                        input.login_input#acting_age_from.form_control(type='number' name='acting_age_from' autocomplete="off")
                     //-  acting_age_to
                     .form_group
                         label.person_profile_label(for='acting_age_to')= self.label.userprofile.actingAgeTo
-                        input.login_input#acting_age_to.form_control( type='number' name='acting_age_to' autocomplete="off")
+                        input.login_input#acting_age_to.form_control(type='number' name='acting_age_to' autocomplete="off")
                 .fieldset_grid
                     //- stature
                     .form_group
@@ -259,13 +262,12 @@ block content
                     //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
                     //-             option.login_input(value=gender.id)= gender[self.locale]
                     //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                    //-     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
 
-                    //-  phoneNr
+                    //-  showreel
                     .form_group
                         label.person_profile_label(for='showreel')= self.label.userprofile.showreel
                         input.login_input#showreel.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='showreel' autocomplete="off")
-                    //- eMail
+                    //- audioreel
                     .form_group
                         label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
                         input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
@@ -279,7 +281,6 @@ block content
                     //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
                     //-             option.login_input(value=gender.id)= gender[self.locale]
                     //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                    //-     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
 
                     //-  phoneNr
                     .form_group
@@ -366,7 +367,7 @@ block content
 
             fieldset
                 legend= self.label.userprofile.profEducation
-                    div#profEducationTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
+                    div#profEducationTemplate(style= 'display: none; ')
                         .fieldset_grid
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
@@ -391,7 +392,6 @@ block content
                             .form_group
                                 label.person_profile_label(for='org_name')= self.label.userprofile.eduOrgName
                                 input.login_input.org_name.form_control( type='text' name='org_name' autocomplete="off")
-                                //- div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                             //- org_department
                             .form_group
                                 label.person_profile_label(for='org_department')= self.label.userprofile.eduOrgDep
@@ -413,7 +413,7 @@ block content
 
             fieldset
                 legend= self.label.userprofile.worksFilmography
-                    div#filmographyTemplate(style= 'display: none; border: solid #5B6DCD 1px;')
+                    div#filmographyTemplate(style= 'display: none; ')
                         .fieldset_grid
                             //- type_of_work
                             .form_group
@@ -472,7 +472,12 @@ block content
 
             //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
-            p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
+            //- p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
+            dialog#personProfileSent
+                //- (style= {display: 'none'})
+                form(method="dialog")
+                    P= self.label.userprofile.profileSaved
+                    button.btn.btn_primary= "OK"
             //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn

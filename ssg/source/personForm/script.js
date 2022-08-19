@@ -155,8 +155,8 @@ async function sendPersonProfile() {
         acc_instagram: acc_instagram.value || null,
         acc_fb: acc_fb.value || null,
         acc_other: acc_other.value || null,
-        // videoreel: videoreel.value || null,
-        // audioreel: audioreel.value || null,
+        showreel: showreel.value || null,
+        audioreel: audioreel.value || null,
         // bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
         address: {
@@ -222,7 +222,9 @@ async function sendPersonProfile() {
     console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
-        document.getElementById('personProfileSent').style.display = ''
+        document.getElementById('personProfileSent').open = true;
+        // dialog.showModal()
+        // document.getElementById('personProfileSent').style.display = ''
         if (localStorage.getItem('preLoginUrl')) {
             window.open(localStorage.getItem('preLoginUrl'), '_self')
             localStorage.removeItem('preLoginUrl')
