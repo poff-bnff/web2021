@@ -104,6 +104,9 @@ nice -10 node ./helpers/fetch_screenings_from_yaml.js
 echo 'fetch_shops_from_yaml'
 nice -10 node ./helpers/fetch_shops_from_yaml.js
 
+echo 'fetch_person_from_yaml'
+nice -10 node ./helpers/fetch_person_from_yaml.js
+
 echo 'assets/xml'
 nice -10 node ./helpers/xml.js
 

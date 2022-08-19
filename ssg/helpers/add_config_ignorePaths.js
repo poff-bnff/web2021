@@ -54,6 +54,7 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/persons_search', //Persons for Industry
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -84,6 +85,7 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/persons_search', //Persons for Industry
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
@@ -116,6 +118,7 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/persons_search', //Persons for Industry
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -162,6 +165,7 @@ function addConfigIgnorePaths() {
             '/industry_persons_search', //industry
             '/industry_projects_archive_search', //Built by archive build
             '/industry_persons_archive_search', //Built by archive build
+            '/persons_search', //Persons for Industry
             '/industry_events_search', //industry
         ]
     } else if (DOMAIN === 'tartuff.ee') {
@@ -192,6 +196,7 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/persons_search', //Persons for Industry
         ]
     } else {
         return null

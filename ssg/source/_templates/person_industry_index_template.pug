@@ -1,0 +1,132 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    - var assetsDir = 'https://assets.poff.ee/img/'
+
+    if self.firstNameLastName
+        section.grid_ind_person
+            section.f_dir_box
+                .f_dir_bio_box
+                    .dir_img
+                        if self.picture
+                            - var personPic = assetsDir + self.picture
+                        else
+                            - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                        img.person_img(src=personPic alt=self.firstNameLastName)
+
+                        .ind_person_name= self.firstNameLastName
+                    .dir_bio.dark_1
+                        if typeof self.aboutText !== 'undefined'
+                            - var about_md = self.aboutText
+                            if typeof about_md === 'string'
+                                p.dark_1
+                                    +format(about_md)
+                        //- p.dark_1= self.aboutText
+            section.f_cred_box.bg_dark_3
+                //- .premiere_type
+                //-     if self.industry_person_types
+                //-         p.premiere_type= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
+                .str_info_blokk_cred
+                    if self.role_at_films
+                        .str_info_grid_3
+                            .str_info_label= self.label.industry.roleAtFilms
+                            .str_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                    if self.emailAtInd
+                        .str_info_grid_3
+                            .str_info_label= self.label.industry.email
+                            .str_info_value= self.emailAtInd
+                    if self.phoneAtInd
+                        .str_info_grid_3
+                            .str_info_label= self.label.industry.phone
+                            .str_info_value= self.phoneAtInd
+                    if self.lookingFor
+                        .str_info_grid_3
+                            .str_info_label= self.label.industry.lookingFor
+                            .str_info_value= self.lookingFor
+                    if self.website
+                        .str_info_grid_3
+                            .str_info_label= self.label.industry.website
+                            //- .str_info_value= self.label.industry.website
+                            a.str_info_value(href= self.website)= self.label.industry.website
+
+
+            if self.filmographies
+                - var filmographies = self.filmographies
+                section.filmographies_box
+                    .dir_bio.dark_1.padding_2
+                        if filmographies.text
+                            p.dark_1
+                                +format(filmographies.text)
+
+
+                    if filmographies.film
+                        .grid_films
+                            each film in filmographies.film
+                                a.card_film(href = film.foreignUrl || '#')
+                                    .container_frame_16_9
+                                        if film.images && film.images.length > 0
+                                            - var image = film.images[0]
+                                            img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
+                                        else
+                                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
+                                    if film.title
+                                        .card_film_title
+                                            h3.film_title_locale.dark_1= film.title
+                                    .card_film_info
+                                        if film.year
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.film.year
+                                                .str_info_value.dark_1= film.year
+                                        //- if film.trailerUrl
+                                        //-     .str_info_grid_3
+                                        //-         .str_info_label.dark_semi= self.label.film.trailer
+                                        //-         a.str_info_value.dark_1(href= film.trailerUrl)= self.label.film.trailer
+                                        if film.synopsis
+                                            p.dark_1
+                                                +format(film.synopsis)
+
+
+
+
+                                    //- if film.
+                                    //- a(href=film.trailerUrl) Trailer
+
+
+        if self.clipUrlCode
+            section#trailer.f_trailer_box
+                .ratio.ratio-16x9.m-0.p-0
+                    +video(self.clipUrlCode)
+
+        if self.images
+            //- KARUSELL Industry projekti piltidega
+            section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
+                ol.carousel-indicators
+                    if self.images && self.images.length >1
+                        each index in self.images
+                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                .carousel-inner.container_frame_16_9
+                    if self.images && self.images[0]
+                        each val, index in self.images
+                            if index == 0
+                                .carousel-item.active.container_contents_16_9_person
+                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                            else
+                                .carousel-item.container_contents_16_9_person
+                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                    else
+                        .carousel-item.active.container_contents_16_9_person
+                            img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+
+                if self.images && self.images.length >1
+                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+                        // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            polyline(points='15 18 9 12 15 6')
+                        span.sr-only Previous
+                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+                        // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            polyline(points='9 18 15 12 9 6')
+                        span.sr-only Next
+                        //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
