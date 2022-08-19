@@ -48,12 +48,13 @@ module.exports = {
         hrAddress.push(data.postal_code)
       }
       if(data.municipality){
-        let munic = await strapi.query('municipalities').findOne({data.municipality.id})
+        let id = data.municipality.id
+        let munic = await strapi.query('municipalities').findOne({id})
         munic = munic.name_et
         hrAddress.push(munic)
       }
       data.hr_address = hrAddress.join('_')
-      
+
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
         await call_delete(params, domains, model_name)
