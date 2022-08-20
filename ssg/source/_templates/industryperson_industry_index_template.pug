@@ -99,12 +99,12 @@ block content
                     +video(self.clipUrlCode)
 
         if self.images
-            //- KARUSELL Industry projekti piltidega
+            //- KARUSELL Industry person piltidega
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
                     if self.images && self.images.length >1
                         each index in self.images
-                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                            li(data-bs-target='#carouselExampleIndicators'  data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.images && self.images[0]
                         each val, index in self.images
@@ -118,15 +118,15 @@ block content
                         .carousel-item.active.container_contents_16_9_person
                             img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
 
-                if self.images && self.images.length >1
-                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
-                        // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                            polyline(points='15 18 9 12 15 6')
-                        span.sr-only Previous
-                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
-                        // <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                            polyline(points='9 18 15 12 9 6')
-                        span.sr-only Next
-                        //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
+                //- if self.images && self.images.length >1
+                a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+                    // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        polyline(points='15 18 9 12 15 6')
+                    span.sr-only Previous
+                a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+                    // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        polyline(points='9 18 15 12 9 6')
+                    span.sr-only Next
+                    //- LÕPP! KARUSELL Industry person piltidega LÕPP
