@@ -101,6 +101,40 @@ mixin screeningDateEET(dateStringUTC)
 
         })();
 
+mixin birthDateEET(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var weekDay_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('Do MMM');
+            var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('LL');
+
+            eDisplayMoment1.innerHTML = date_EET;
+
+        })();
+
+mixin birthDatePP(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var weekDay_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('Do MMM');
+            var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('PP');
+
+            eDisplayMoment1.innerHTML = date_EET;
+
+        })();
+
 //- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET aasta, (2020)
 //- Industry events tarbeks peamiselt
 mixin completionDateEET(dateStringUTC)

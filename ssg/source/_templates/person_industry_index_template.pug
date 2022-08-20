@@ -10,15 +10,18 @@ block content
                 .f_dir_bio_box
                     .dir_img
                         if self.picture
-                            - var personPic = assetsDir + self.picture
+                            //- - var personPic = assetsDir + self.picture
+                            - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                         else
                             - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                        img.person_img(src=personPic alt=self.firstNameLastName)
+                        //- img.person_img(src=personPic alt=self.firstNameLastName)
+                        img.person_img(src= `${assetsDir}${self.picture.hash}${self.picture.ext}` alt=self.firstNameLastName)
+
 
                         .ind_person_name= self.firstNameLastName
                     .dir_bio.dark_1
-                        if typeof self.aboutText !== 'undefined'
-                            - var about_md = self.aboutText
+                        if typeof self.bio !== 'undefined'
+                            - var about_md = self.bio
                             if typeof about_md === 'string'
                                 p.dark_1
                                     +format(about_md)
@@ -30,20 +33,21 @@ block content
                 .str_info_blokk_cred
                     if self.role_at_films
                         .str_info_grid_3
-                            .str_info_label= self.label.industry.roleAtFilms
+                            .str_info_label= self.label.userprofile.proRole
                             .str_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
-                    if self.emailAtInd
+                    if self.gender
                         .str_info_grid_3
-                            .str_info_label= self.label.industry.email
-                            .str_info_value= self.emailAtInd
-                    if self.phoneAtInd
+                            .str_info_label= self.label.userprofile.gender
+                            .str_info_value= self.gender
+                    if self.dateOfBirth
                         .str_info_grid_3
-                            .str_info_label= self.label.industry.phone
-                            .str_info_value= self.phoneAtInd
-                    if self.lookingFor
+                            .str_info_label= self.label.userprofile.birthday
+                            .str_info_value
+                                +birthDateEET(self.dateOfBirth)
+                    if self.native_lang
                         .str_info_grid_3
-                            .str_info_label= self.label.industry.lookingFor
-                            .str_info_value= self.lookingFor
+                            .str_info_label= self.label.userprofile.nativeLang
+                            .str_info_value= self.native_lang.name
                     if self.website
                         .str_info_grid_3
                             .str_info_label= self.label.industry.website
@@ -103,7 +107,7 @@ block content
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
                     if self.images && self.images.length >1
-                        each index in self.images
+                        each val, index in self.images
                             li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.images && self.images[0]
