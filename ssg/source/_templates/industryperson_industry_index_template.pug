@@ -103,8 +103,8 @@ block content
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
                     if self.images && self.images.length >1
-                        each index in self.images
-                            li(data-bs-target='#carouselExampleIndicators'  data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                        each val, index in self.images
+                            li(data-bs-target='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
                 .carousel-inner.container_frame_16_9
                     if self.images && self.images[0]
                         each val, index in self.images
