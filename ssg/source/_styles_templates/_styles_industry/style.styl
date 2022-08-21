@@ -466,6 +466,20 @@ footer
                         "f_trailer_box"\
                         "f_imgs_box"
 
+.grid_person
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    padding-top header_height
+    grid-template-areas "f_dir_box"\
+                        "f_cred_box"\
+                        "f_img_slider_box"\
+                        "f_extra_box"\
+                        "f_qaclip_box"\
+                        "f_vialog_box"\
+                        "f_trailer_box"\
+                        "f_imgs_box"
+
 .grid_ind_event
         display grid
         grid-template-columns 1fr
@@ -1496,6 +1510,10 @@ row:nth-child(15) > .supporter_logos
     width: 100%
     border-radius 57% 43% 57% 43%
 
+.person_img_square
+    width: 100%
+    border-radius 1% 1% 1% 1%
+
 .shop_item_head
     // background-color clr_primary
     // color bg_dark_4
@@ -1539,6 +1557,18 @@ row:nth-child(15) > .supporter_logos
     padding-right 1rem
     text-align center
     color dark_4
+
+.person_name
+    font-family font_h
+    font-size 2rem
+    line-height 2.4rem
+    padding-top 1.618rem
+    padding-left 0
+    padding-right 1rem
+    text-align left
+    color dark_4
+
+
 
 .shop_item_body
     // background-color bg_dark_3
@@ -1652,6 +1682,9 @@ header
     grid-area f_img_slider_box
     background bg_dark_1
     // margin-top 78px
+
+.100vh
+    height 100vh
 
 .f_title_box
     grid-area f_title_box
@@ -1915,9 +1948,10 @@ header
     object-fit cover
 
 .svg_icon_prev_next
-    height calc(1.5rem + 0.1vw)
-    width calc(1.5rem + 0.1vw)
+    height calc(2.5rem + 0.1vw)
+    width calc(2.5rem + 0.1vw)
     margin-right .5rem
+    margin-left .5rem
     margin-top -.7rem
     color rgba(200, 200, 200, 0.5)
 
@@ -3383,6 +3417,22 @@ option
         grid-template-columns 1fr 1fr 1fr
         grid-template-rows auto
         grid-template-areas "f_dir_box         f_dir_box         f_cred_box"\
+                            "filmography_box   filmography_box   filmography_box"\
+                            "f_title_box       f_trailer_box     f_trailer_box"\
+                            "f_synopsis_box    f_synopsis_box    f_extra_box"\
+                            "f_synopsis_box    f_synopsis_box    f_runtime_box"\
+                            "f_interactive_box f_interactive_box f_interactive_box"\
+                            "f_qaclip_box      f_qaclip_box      f_qaclip_box"\
+                            "f_vialog_box      f_vialog_box      f_vialog_box"\
+                            "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
+                            "f_imgs_box        f_imgs_box        f_imgs_box"
+        padding-top header_height
+
+    .grid_ind_person
+        display grid
+        grid-template-columns 1fr 1fr
+        grid-template-rows auto
+        grid-template-areas "f_dir_box         f_cred_box"\
                             "filmography_box   filmography_box   filmography_box"\
                             "f_title_box       f_trailer_box     f_trailer_box"\
                             "f_synopsis_box    f_synopsis_box    f_extra_box"\
