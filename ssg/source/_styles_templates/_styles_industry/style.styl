@@ -3368,6 +3368,26 @@ option
 :required
     border 1px solid clr_primary
 
+details
+    padding 1rem
+    // border 1px solid dark_5
+    // border-radius 4px
+    transition all 1s ease-in-out
+
+details[open]
+    background-color rgba(76,196,191,0.2)
+
+details[open] summary
+    padding-bottom 1rem
+
+details summary
+    cursor pointer
+
+details summary > *
+    display inline
+
+
+
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)

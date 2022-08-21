@@ -26,6 +26,11 @@ block content
                             if typeof about_md === 'string'
                                 p.dark_1
                                     +format(about_md)
+                        if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
+                            details
+                                summary= self.label.userprofile.repr
+                                p= self.repr_org_name
+
                         //- p.dark_1= self.aboutText
             section.f_cred_box.bg_dark_3
                 //- .premiere_type
