@@ -30,7 +30,7 @@ const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
-      await call_update(result, model_name)
+      // await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
       // 
