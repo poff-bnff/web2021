@@ -251,6 +251,9 @@ fetch_data()
     echo '==== custom build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
+    echo '==== custom build ==== fetch_person_from_yaml.js'
+    node ./helpers/fetch_person_from_yaml.js
+
     printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
 }
