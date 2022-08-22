@@ -165,6 +165,35 @@ async function putModel(model, data) {
     return results
 }
 
+async function postModel(model, data) {
+    if (! model in DATAMODEL) {
+        console.log('WARNING: no such model: "', model, '".' )
+        return false
+    }
+    if (! '_path' in DATAMODEL[model]) {
+        console.log('WARNING: no path to model: "', model, '".' )
+        return false
+    }
+
+    const _path = `${DATAMODEL[model]['_path']}`
+    let results = []
+    for (const element of data) {
+        const options = {
+            headers: { 'Content-Type': 'application/json' },
+            hostname: strapiAddress,
+            path: _path,
+            method: 'POST'
+        }
+        if (process.env['StrapiProtocol'] !== 'https'){
+            options.port = strapiPort
+        }
+
+        results.push(await strapiQuery(options, element))
+    }
+    return results
+}
+
 exports.strapiQuery = strapiQuery
 exports.getModel = getModel
 exports.putModel = putModel
+exports.postModel = postModel
