@@ -29,7 +29,16 @@ block content
                         if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
                             details
                                 summary= self.label.userprofile.repr
-                                p= self.repr_org_name
+                                .details_content
+                                    if self.repr_org_name
+                                        a(href=self.repr_org_url target="_BLANK")
+                                            p= self.repr_org_name
+                                    if self.repr_p_name
+                                        p= self.repr_p_name
+                                    if self.repr_email
+                                        p= self.repr_email
+                                    if self.repr_phone
+                                        p= self.repr_phone
 
                         //- p.dark_1= self.aboutText
             section.f_cred_box.bg_dark_3

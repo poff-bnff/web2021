@@ -3370,21 +3370,40 @@ option
 
 details
     padding 1rem
+    border-top 1px solid dark_5
+    border-bottom 1px solid dark_5
     // border 1px solid dark_5
     // border-radius 4px
-    transition all 1s ease-in-out
+    transition background-color 1s ease-in-out
 
 details[open]
     background-color rgba(76,196,191,0.2)
 
-details[open] summary
+details[open] > summary
     padding-bottom 1rem
 
-details summary
+details > summary
     cursor pointer
+    list-style none
+    display flex
+    justify-content space-between
 
-details summary > *
-    display inline
+details > summary::-webkit-details-marker
+    display none
+
+details > summary::after
+    content url(/assets/img/static/arrow_right.svg)
+    display inline-flex
+    transition transform .5s ease
+
+details[open] > summary::after
+    transform rotate(90deg)
+
+// details summary > *
+//     display inline
+
+.details_content
+    padding 1rem 1.5rem
 
 
 
