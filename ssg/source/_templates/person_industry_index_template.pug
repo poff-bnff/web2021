@@ -17,6 +17,8 @@ block content
                         p= self.picture.caption
 
             section.c_title_box
+                        if self.industry_person_types
+                            .person_info_value= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
                         .person_name= self.firstNameLastName
                         if self.role_at_films
                             .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
@@ -33,97 +35,97 @@ block content
                 //- .premiere_type
                 //-     if self.industry_person_types
                 //-         p.premiere_type= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
-                .str_info_blokk_cred
-                    if self.role_at_films
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.proRole
-                            .str_info_value.dark_1= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
-                    if self.gender
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.gender
-                            .str_info_value.dark_1= self.gender
-                    if self.dateOfBirth
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.birthday
-                            .str_info_value.dark_1
-                                +birthDateEET(self.dateOfBirth)
-                    if self.native_lang
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.nativeLang
-                            .str_info_value.dark_1= self.native_lang.name
+                    .str_info_blokk_cred
+                        if self.role_at_films
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.proRole
+                                .str_info_value.dark_1= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                        if self.gender
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.gender
+                                .str_info_value.dark_1= self.gender
+                        if self.dateOfBirth
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.birthday
+                                .str_info_value.dark_1
+                                    +birthDateEET(self.dateOfBirth)
+                        if self.native_lang
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.nativeLang
+                                .str_info_value.dark_1= self.native_lang.name
 
                     //- if self.acc_efis
                     //-     .str_info_grid_3
                     //-         .str_info_label= self.label.userprofile.accEfis
                     //-         //- .str_info_value= self.label.industry.website
                     //-         a.str_info_value(href= self.acc_efis)= self.label.userprofile.accEfis
-                    if self.acc_efis
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accEfis
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_efis)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_imdb
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accImdb
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_imdb)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_castupload
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accCastupload
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_castupload)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_etalenta
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accEtalenta
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_etalenta)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_other
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accOther
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_other)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_instagram
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accInstagram
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_instagram)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.acc_fb
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.accFb
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_fb)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    if self.webpage_url
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.webpageUrl
-                            //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_webpage_url)
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_footer"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_efis
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accEfis
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_efis target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_imdb
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accImdb
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_imdb target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_castupload
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accCastupload
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_castupload target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_etalenta
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accEtalenta
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_etalenta target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_other
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accOther
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_other target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_instagram
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accInstagram
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_instagram target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.acc_fb
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.accFb
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.acc_fb target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                if self.webpage_url
+                        //- .str_info_grid_3
+                        //-     .str_info_label.dark_5= self.label.userprofile.webpageUrl
+                        //- .str_info_value= self.label.industry.website
+                        a.str_info_value.dark_1(href= self.webpage_url target="_BLANK")
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke=#666666 stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_person"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
 
+                //- .f_cred_box
+                //-     if self.acting_age_from
+                //-         .str_info_grid_3
+                //-             .str_info_label.dark_5= self.label.userprofile.actingAge
+                //-             .str_info_value.dark_1= self.acting_age_from + ' - ' + self.acting_age_to + ' ' + self.label.userprofile.years
+                //-     //- if self.acting_age_to
+                //-     //-     .str_info_grid_3
+                //-     //-         .str_info_label= self.label.userprofile.actingAge
+                //-     //-         .str_info_value= self.acting_age_to
 
-                    if self.acting_age_from
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.actingAge
-                            .str_info_value.dark_1= self.acting_age_from + ' - ' + self.acting_age_to + ' ' + self.label.userprofile.years
-                    //- if self.acting_age_to
-                    //-     .str_info_grid_3
-                    //-         .str_info_label= self.label.userprofile.actingAge
-                    //-         .str_info_value= self.acting_age_to
-
-                    if self.height_cm
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.heightCm
-                            .str_info_value.dark_1= self.height_cm + ' ' + self.label.userprofile.cm
-                    if self.weight_kg
-                        .str_info_grid_3
-                            .str_info_label.dark_5= self.label.userprofile.weightKg
-                            .str_info_value.dark_1= self.weight_kg + ' ' + self.label.userprofile.kg
+                //-     if self.height_cm
+                //-         .str_info_grid_3
+                //-             .str_info_label.dark_5= self.label.userprofile.heightCm
+                //-             .str_info_value.dark_1= self.height_cm + ' ' + self.label.userprofile.cm
+                //-     if self.weight_kg
+                //-         .str_info_grid_3
+                //-             .str_info_label.dark_5= self.label.userprofile.weightKg
+                //-             .str_info_value.dark_1= self.weight_kg + ' ' + self.label.userprofile.kg
 
 
             section.c_repr_box

@@ -1994,9 +1994,30 @@ header
         transform scale(.96,.96)
 /* TEXT */
 
+.svg_icon_person
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    margin-right 1rem
+    margin-left 1rem
+    text-decoration none
+    stroke dark_2
+    stroke-width 1
+    &:hover
+        height calc(1.5rem + 0.1vw)
+        width calc(1.5rem + 0.1vw)
+        margin-right 1rem
+        margin-left 1rem
+        stroke dark_2
+        stroke-width 1
+        transform scale(.96,.96)
+
 a .svg_icon_footer
     text-decoration none
     stroke white_96
+
+a .svg_icon_person
+    text-decoration none
+    stroke dark_2
 
 .font_h
   font-family font_h
@@ -3390,7 +3411,7 @@ option
 details
     padding 1rem
     border-top 1px solid dark_5
-    // border-bottom 1px solid dark_5
+    border-bottom 1px solid dark_5
     // border 1px solid dark_5
     // border-radius 4px
     transition background-color 1s ease-in-out
@@ -3398,10 +3419,12 @@ details
     align center
     // margin 3rem
     // margin-right 3rem
+    // margin-bottom 2rem
 
 details[open]
     background-color rgba(76,196,191,0.2)
     border-bottom 1px solid dark_5
+    // z-index 999
 
 details[open] > summary
     padding-bottom 1rem
@@ -3414,6 +3437,7 @@ details > summary
     justify-content space-between
     gap 1rem
     color dark_2
+    font-family font_p
 
 details > summary::-webkit-details-marker
     display none
@@ -3449,10 +3473,20 @@ details[open] > summary::after
     padding-bottom calc(1rem + 1vw)
     display grid
     grid-template-columns 1fr
+    justify-items center
+    align-content space-between
 
 .c_repr_box
     width 100%
     align-self start
+
+.c_accounts_box
+    width 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3518,8 +3552,8 @@ details[open] > summary::after
         display grid
         // width max(70vw, 1600px)
         width 100%
-        padding-left 6vw
-        padding-right 6vw
+        padding-left 10vw
+        padding-right 10vw
         justify-items center
         align-items center
         justify-content center
@@ -3533,7 +3567,8 @@ details[open] > summary::after
                             "c_gallery_box     c_gallery_box"\
                             "c_showreel_box    c_audioreel_box"\
                             "c_filmography_box c_filmography_box"
-        padding-top header_height + 70px
+        padding-top header_height + 10vw
+        row-gap 3rem
         // background-color #dddddd
 
     .grid_cassette
