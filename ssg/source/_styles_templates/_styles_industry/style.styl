@@ -86,7 +86,7 @@ font_p = 'Source Sans Pro', sans-serif
 // font_p = 'Lato', sans-serif
 // font_p = 'Barlow Semi Condensed', sans-serif
 // font_p = 'Source Serif Pro', serif
-// font_p = 'EB Garamond', serif
+font_c = 'EB Garamond', serif
 // font_p = 'Open Sans', serif
 // font_p = 'Scheherazade', serif
 
@@ -420,6 +420,9 @@ footer
     width 100%
     object-fit cover
 
+.creative_img
+    width 100%
+
 .img_dir
     width 100%
     border-radius 57% 43% 57% 43%
@@ -466,19 +469,24 @@ footer
                         "f_trailer_box"\
                         "f_imgs_box"
 
-.grid_person
+.grid_creative
     display grid
     grid-template-columns 1fr
     grid-template-rows auto
+    justify-content center
+    justify-items center
+    align-items start
     padding-top header_height
-    grid-template-areas "f_dir_box"\
-                        "f_cred_box"\
-                        "f_img_slider_box"\
-                        "f_extra_box"\
-                        "f_qaclip_box"\
-                        "f_vialog_box"\
-                        "f_trailer_box"\
-                        "f_imgs_box"
+    grid-template-areas "c_title_box"\
+                        "c_img_box"\
+                        "c_accounts_box"\
+                        "c_repr_box"\
+                        "c_main_info_box"\
+                        "c_actor_info_box"\
+                        "c_filmography_box"\
+                        "c_gallery_box"\
+                        "c_showreel_box"\
+                        "c_audioreel_box"
 
 .grid_ind_event
         display grid
@@ -1512,7 +1520,7 @@ row:nth-child(15) > .supporter_logos
 
 .person_img_square
     width: 100%
-    border-radius 1% 1% 1% 1%
+    // border-radius 1% 1% 1% 1%
 
 .shop_item_head
     // background-color clr_primary
@@ -1559,14 +1567,25 @@ row:nth-child(15) > .supporter_logos
     color dark_4
 
 .person_name
-    font-family font_h
-    font-size 2rem
-    line-height 2.4rem
-    padding-top 1.618rem
+    font-family font_c
+    font-size 4rem
+    line-height 5rem
+    // padding-top 1.618rem
     padding-left 0
-    padding-right 1rem
-    text-align left
-    color dark_4
+    padding-right 0
+    margin-top 2rem
+    margin-bottom 2rem
+    text-align center
+    color dark_2
+
+.person_info_value
+    font-family font_c
+    color dark_2
+    font-size 1.618rem
+    text-align center
+    line-height 2rem
+
+
 
 
 
@@ -3371,13 +3390,18 @@ option
 details
     padding 1rem
     border-top 1px solid dark_5
-    border-bottom 1px solid dark_5
+    // border-bottom 1px solid dark_5
     // border 1px solid dark_5
     // border-radius 4px
     transition background-color 1s ease-in-out
+    width 100%
+    align center
+    // margin 3rem
+    // margin-right 3rem
 
 details[open]
     background-color rgba(76,196,191,0.2)
+    border-bottom 1px solid dark_5
 
 details[open] > summary
     padding-bottom 1rem
@@ -3386,7 +3410,10 @@ details > summary
     cursor pointer
     list-style none
     display flex
+    align-items center
     justify-content space-between
+    gap 1rem
+    color dark_2
 
 details > summary::-webkit-details-marker
     display none
@@ -3394,7 +3421,7 @@ details > summary::-webkit-details-marker
 details > summary::after
     content url(/assets/img/static/arrow_right.svg)
     display inline-flex
-    transition transform .5s ease
+    transition rotate 0.5s ease
 
 details[open] > summary::after
     transform rotate(90deg)
@@ -3403,10 +3430,29 @@ details[open] > summary::after
 //     display inline
 
 .details_content
-    padding 1rem 1.5rem
+    margin 1rem 1.5rem
 
+.c_img_box
+    grid-area c_img_box
+    background-color white
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
 
+.c_title_box
+    grid-area c_title_box
+    width 100%
+    background-color white
+    padding-left calc(2rem + 1vw)
+    padding-right calc(2rem + 1vw)
+    padding-top calc(1rem + 1vw)
+    padding-bottom calc(1rem + 1vw)
+    display grid
+    grid-template-columns 1fr
 
+.c_repr_box
+    width 100%
+    align-self start
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3467,21 +3513,28 @@ details[open] > summary::after
                             "f_imgs_box        f_imgs_box        f_imgs_box"
         padding-top header_height
 
-    .grid_ind_person
+
+    .grid_creative
         display grid
+        // width max(70vw, 1600px)
+        width 100%
+        padding-left 6vw
+        padding-right 6vw
+        justify-items center
+        align-items center
+        justify-content center
+        // place-items center
+        // gap 3rem
         grid-template-columns 1fr 1fr
         grid-template-rows auto
-        grid-template-areas "f_dir_box         f_cred_box"\
-                            "filmography_box   filmography_box   filmography_box"\
-                            "f_title_box       f_trailer_box     f_trailer_box"\
-                            "f_synopsis_box    f_synopsis_box    f_extra_box"\
-                            "f_synopsis_box    f_synopsis_box    f_runtime_box"\
-                            "f_interactive_box f_interactive_box f_interactive_box"\
-                            "f_qaclip_box      f_qaclip_box      f_qaclip_box"\
-                            "f_vialog_box      f_vialog_box      f_vialog_box"\
-                            "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
-                            "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        grid-template-areas "c_img_box         c_title_box"\
+                            "c_accounts_box    c_repr_box"\
+                            "c_main_info_box   c_actor_info_box"\
+                            "c_gallery_box     c_gallery_box"\
+                            "c_showreel_box    c_audioreel_box"\
+                            "c_filmography_box c_filmography_box"
+        padding-top header_height + 70px
+        // background-color #dddddd
 
     .grid_cassette
         display grid
