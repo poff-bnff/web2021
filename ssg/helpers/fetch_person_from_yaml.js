@@ -48,8 +48,43 @@ if (DOMAIN !== 'industry.poff.ee') {
         'role_at_films': {
             model_name: 'RoleAtFilm'
         },
+        'eye_colour': {
+            model_name: 'EyeColour'
+        },
+        'hair_colour': {
+            model_name: 'HairColour'
+        },
+        'shoe_size': {
+            model_name: 'ShoeSize'
+        },
+        'pitch_of_voice': {
+            model_name: 'PitchOfVoice'
+        },
+        'country': {
+            model_name: 'Country'
+        },
+        'other_lang': {
+            model_name: 'Language'
+        },
         'native_lang': {
             model_name: 'Language'
+        },
+        'tag_secrets': {
+            model_name: 'TagSecret'
+        },
+        'industry_person_types': {
+            model_name: 'IndustryPersonType'
+        },
+        'stature': {
+            model_name: 'Stature'
+        },
+        'filmographies': {
+            model_name: 'Filmography',
+            expand: {
+                'role_at_films': {
+                    model_name: 'RoleAtFilm'
+                }
+            }
         },
     }
 
