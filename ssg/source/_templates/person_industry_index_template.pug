@@ -7,29 +7,95 @@ block content
     if self.firstNameLastName
         section.grid_creative
             section.c_img_box
-                        if self.picture
-                            //- - var personPic = assetsDir + self.picture
-                            - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                        else
-                            - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                        //- img.person_img(src=personPic alt=self.firstNameLastName)
-                        img.person_img_square(src= `${assetsDir}${self.picture.hash}${self.picture.ext}` alt=self.firstNameLastName)
-                        p= self.picture.caption
+                if self.picture
+                    //- - var personPic = assetsDir + self.picture
+                    - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
+                else
+                    - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                //- img.person_img(src=personPic alt=self.firstNameLastName)
+                img.person_img_square(src=personPic alt=self.firstNameLastName)
+                p= self.picture.caption
 
             section.c_title_box
-                        if self.industry_person_types
-                            .person_info_value= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
-                        .person_name= self.firstNameLastName
-                        if self.role_at_films
-                            .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                if self.industry_person_types
+                    .person_info_value= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
+                .person_name= self.firstNameLastName
 
-                        //- if typeof self.bio !== 'undefined'
-                        //-     - var about_md = self.bio
-                        //-     if typeof about_md === 'string'
-                        //-         p.dark_1
-                        //-             +format(about_md)
+                if self.eye_colour
+                    .person_info_value= self.eye_colour.name
 
-                        //- p.dark_1= self.aboutText
+                if self.hair_colour
+                    .person_info_value= self.hair_colour.name
+
+                if self.shoe_size
+                    .person_info_value= self.shoe_size.name
+
+                if self.stature
+                    .person_info_value= self.stature.name
+
+                if self.pitch_of_voice
+                    .person_info_value= self.pitch_of_voice.name
+
+                if self.native_lang
+                    .person_info_value= self.native_lang.name
+
+                if self.country
+                    .person_info_value= self.country.name
+
+                if self.role_at_films
+                    .person_info_value= self.role_at_films.map(role_at_films => role_at_films.roleName).join(', ')
+
+                if self.other_lang
+                    .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
+
+                if self.tag_secrets
+                    .person_info_value= self.tag_secrets.join(', ')
+
+                if self.industry_person_types
+                    .person_info_value= self.industry_person_types.map(industry_person_types => industry_person_types.type).join(', ')
+
+                if self.filmographies
+                    - var educationFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 7)
+                    if educationFilmographies.length
+                        each filmography in educationFilmographies
+                            if filmography.year_from
+                                .person_info_value= filmography.year_from
+                            if filmography.year_to
+                                .person_info_value= filmography.year_to
+                            if filmography.org_name
+                                .person_info_value= filmography.org_name
+                            if filmography.org_url
+                                .person_info_value= filmography.org_url
+                            if filmography.org_department
+                                .person_info_value= filmography.org_department
+                            if filmography.degree
+                                .person_info_value= filmography.degree
+
+                    - var radioTheatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
+                    if radioTheatreFilmographies.length
+                        each filmography in radioTheatreFilmographies
+                            if filmography.year_from
+                                .person_info_value= filmography.year_from
+                            if filmography.year_to
+                                .person_info_value= filmography.year_to
+                            if filmography.actor_role
+                                .person_info_value= filmography.actor_role
+                            if filmography.work_name
+                                .person_info_value= filmography.work_name
+                            if filmography.work_url
+                                .person_info_value= filmography.work_url
+                            if filmography.role_at_films
+                                .person_info_value= filmography.role_at_films.map(roleAtFilm => roleAtFilm.roleName).join(', ')
+
+
+
+                //- if typeof self.bio !== 'undefined'
+                //-     - var about_md = self.bio
+                //-     if typeof about_md === 'string'
+                //-         p.dark_1
+                //-             +format(about_md)
+
+                //- p.dark_1= self.aboutText
             section.c_accounts_box
                 //- .f_cred_box.bg_dark_3
                 //- .premiere_type
