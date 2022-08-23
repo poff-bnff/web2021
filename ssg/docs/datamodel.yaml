@@ -359,6 +359,84 @@ Origin: &Origin
     _path: /origins
     name: text
 
+RoleAtFilm: &RoleAtFilm
+    _path: /role-at-films
+    roleNamePrivate: (text)
+    roleName: *Translated #(Component)
+    order: (Number)
+    remoteId: (UID)
+
+# Address
+Country: &Country
+    _path: /countries
+    id: 1 (number)
+    code: EE (short text, min len 2, max len 3, uppercase)
+    name_et: Eesti (short text)
+    name_en: Estonia (short text)
+    name_ru: Эстония (short text)
+
+Town: &Town
+    _path: /towns
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    country: *Country #(Component)
+
+Cinema: &Cinema
+    _path: /cinemas
+    town: *Town #(Component)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+
+Hall: &Hall
+    _path: /halls
+    name_et: (text)
+    number: (Number)
+    numberOfSeats: (Number)
+    cinema: *Cinema
+    floor: (Enumeration)
+    name_en: (text)
+    name_ru: (text)
+
+County: &County
+    _path: /counties
+    name_et: text
+    name_en: text
+    name_ru: text
+    country: *Country
+
+Municipality: &Municipality
+    _path: /populated-places
+    name_et: text
+    name_en: text
+    name_ru: text
+    county: *County
+
+Address: &Address
+    _path: /addresses
+    country: *Country
+    county: *County
+    municipality: *Municipality
+    settl_unit: text
+    address_unit: text
+    street_name: text
+    address_number: text
+    appartment: text
+    postal_code: text
+    n_dms: text
+    e_dms: text
+    n: number
+    e: number
+    l_est_x: number
+    l_est_y: number
+    add_county: text
+    add_municipality: text
+    add_country: text
+    popul_place: text
+    gm_embed: text
+    plus_code: text
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -416,6 +494,21 @@ Organisation: &Organisation
         - *FestivalEdition
     domains: 
         - *Domain
+    profile_img: *StrapiMedia
+    role_at_films:
+        - *RoleAtFilm
+    addr_coll: *Address
+    showreel: text
+    audioreel: *StrapiMedia
+    name_et: text
+    name_en: text
+    name_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    remote_img:
+        - img_url: text
+    origin: *Origin
 
 PresentedBy: &PresentedBy
     presentedByText: *Translated
@@ -895,77 +988,7 @@ FilmikooliArticle: &FilmikooliArticle
     organisations:
         - *Organisation
 
-# Address
-
-Country: &Country
-    _path: /countries
-    id: 1 (number)
-    code: EE (short text, min len 2, max len 3, uppercase)
-    name_et: Eesti (short text)
-    name_en: Estonia (short text)
-    name_ru: Эстония (short text)
-
-Town: &Town
-    _path: /towns
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-    country: *Country #(Component)
-
-Cinema: &Cinema
-    _path: /cinemas
-    town: *Town #(Component)
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-
-Hall: &Hall
-    _path: /halls
-    name_et: (text)
-    number: (Number)
-    numberOfSeats: (Number)
-    cinema: *Cinema
-    floor: (Enumeration)
-    name_en: (text)
-    name_ru: (text)
-
-County: &County
-    _path: /counties
-    name_et: text
-    name_en: text
-    name_ru: text
-    country: *Country
-
-Municipality: &Municipality
-    _path: /populated-places
-    name_et: text
-    name_en: text
-    name_ru: text
-    county: *County
-
-Address: &Address
-    _path: /addresses
-    country: *Country
-    county: *County
-    municipality: *Municipality
-    settl_unit: text
-    address_unit: text
-    street_name: text
-    address_number: text
-    appartment: text
-    postal_code: text
-    n_dms: text
-    e_dms: text
-    n: number
-    e: number
-    l_est_x: number
-    l_est_y: number
-    add_county: text
-    add_municipality: text
-    add_country: text
-    popul_place: text
-    gm_embed: text
-    plus_code: text
+#Location
 
 Location: &Location
     _path: /locations
@@ -1244,13 +1267,6 @@ EyeColour: &EyeColour
     name_en: text
     name_ru: text
 
-RoleAtFilm: &RoleAtFilm
-    _path: /role-at-films
-    roleNamePrivate: (text)
-    roleName: *Translated #(Component)
-    order: (Number)
-    remoteId: (UID)
-
 Filmography: &Filmography
     _path: /filmographies
     type_of_work: *TypeOfWork
@@ -1356,6 +1372,9 @@ Person: &Person
     skills_et: text
     skills_en: text
     skills_ru: text
+    filmographies:
+        - *Filmography
+    origin: *Origin
 
 TeamMember: &TeamMember
     person: *Person #(Component)
