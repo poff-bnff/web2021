@@ -481,7 +481,6 @@ footer
     grid-template-areas "c_img_box"\
                         "c_title_box"\
                         "c_accounts_box"\
-                        "c_repr_box"\
                         "c_main_info_box"\
                         "c_actor_info_box"\
                         "c_filmography_box"\
@@ -3517,10 +3516,11 @@ details[open] > summary::after
     // background-color #eeeeee
     align-self center
 
-.c_repr_box
-    grid-area c_repr_box
+.c_repr
     width 100%
     align-self start
+    text-align left
+    justify-self center
 
 .c_accounts_box
     grid-area c_accounts_box
@@ -3622,6 +3622,20 @@ a .feather
     margin 0
     padding 0
 
+.person_info_label
+  font-family font_p
+  color dark_5
+  font-size 1rem
+  text-align right
+  line-height 1.618
+  font-weight 300
+
+.person_info_value
+  font-family font_p
+  color dark_1
+  font-size 1rem
+  text-align left
+  line-height 1.618
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3697,9 +3711,8 @@ a .feather
         grid-template-columns 1fr 1fr
         grid-template-rows auto
         grid-template-areas "c_img_box         c_title_box"\
-                            "c_accounts_box    c_accounts_box"\
                             "c_main_info_box   c_actor_info_box"\
-                            "c_filmography_box c_actor_info_box"\
+                            "c_main_info_box   c_filmography_box"\
                             "c_gallery_box     c_gallery_box"\
                             "c_showreel_box    c_audioreel_box"
         // padding-top header_height + 25vw
