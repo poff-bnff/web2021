@@ -34,6 +34,7 @@ elisa_blue = #0019af
 tartuff_violet = #ec008c
 dark_1 = #0E1417
 dark_2 = #192024
+dark_3 = #1C272E
 dark_4 = #29333A
 dark_5 = #90999f
 bg_dark_1 = #0E1417
@@ -2494,7 +2495,7 @@ a.btn_popover
     font-size 1rem
     font-weight 300
     line-height 1.2rem
-    color #dark_3
+    color dark_3
 
 
 .watermark
@@ -3504,7 +3505,7 @@ details[open] > summary::after
     justify-self center
     text-align center
     padding 1rem
-    background-color #dddddd
+    // background-color #dddddd
 
 .c_actor_info_box
     grid-area c_actor_info_box
@@ -3514,7 +3515,7 @@ details[open] > summary::after
     justify-self center
     text-align center
     padding 1rem
-    background-color #cecece
+    // background-color #cecece
 
 .c_filmography_box
     grid-area c_filmography_box
@@ -3524,7 +3525,7 @@ details[open] > summary::after
     justify-self center
     text-align center
     padding 1rem
-    background-color #efefef
+    // background-color #efefef
 
 .feather
     color dark_1
@@ -3645,9 +3646,9 @@ a .feather
         grid-template-areas "c_img_box         c_title_box"\
                             "c_accounts_box    c_repr_box"\
                             "c_main_info_box   c_actor_info_box"\
+                            "c_filmography_box c_actor_info_box"\
                             "c_gallery_box     c_gallery_box"\
-                            "c_showreel_box    c_audioreel_box"\
-                            "c_filmography_box c_filmography_box"
+                            "c_showreel_box    c_audioreel_box"
         padding-top header_height + 15vw
         row-gap 3rem
         // background-color #dddddd
