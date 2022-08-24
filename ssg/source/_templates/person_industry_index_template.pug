@@ -19,73 +19,11 @@ block content
             section.c_title_box
                 if self.industry_person_types
                     .person_info_value= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
+
                 .person_name= self.firstNameLastName
-
-                if self.eye_colour
-                    .person_info_value= self.eye_colour.name
-
-                if self.hair_colour
-                    .person_info_value= self.hair_colour.name
-
-                if self.shoe_size
-                    .person_info_value= self.shoe_size.name
-
-                if self.stature
-                    .person_info_value= self.stature.name
-
-                if self.pitch_of_voice
-                    .person_info_value= self.pitch_of_voice.name
-
-                if self.native_lang
-                    .person_info_value= self.native_lang.name
-
-                if self.country
-                    .person_info_value= self.country.name
 
                 if self.role_at_films
                     .person_info_value= self.role_at_films.map(role_at_films => role_at_films.roleName).join(', ')
-
-                if self.other_lang
-                    .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
-
-                if self.tag_secrets
-                    .person_info_value= self.tag_secrets.join(', ')
-
-                if self.industry_person_types
-                    .person_info_value= self.industry_person_types.map(industry_person_types => industry_person_types.type).join(', ')
-
-                if self.filmographies
-                    - var educationFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 7)
-                    if educationFilmographies.length
-                        each filmography in educationFilmographies
-                            if filmography.year_from
-                                .person_info_value= filmography.year_from
-                            if filmography.year_to
-                                .person_info_value= filmography.year_to
-                            if filmography.org_name
-                                .person_info_value= filmography.org_name
-                            if filmography.org_url
-                                .person_info_value= filmography.org_url
-                            if filmography.org_department
-                                .person_info_value= filmography.org_department
-                            if filmography.degree
-                                .person_info_value= filmography.degree
-
-                    - var radioTheatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
-                    if radioTheatreFilmographies.length
-                        each filmography in radioTheatreFilmographies
-                            if filmography.year_from
-                                .person_info_value= filmography.year_from
-                            if filmography.year_to
-                                .person_info_value= filmography.year_to
-                            if filmography.actor_role
-                                .person_info_value= filmography.actor_role
-                            if filmography.work_name
-                                .person_info_value= filmography.work_name
-                            if filmography.work_url
-                                .person_info_value= filmography.work_url
-                            if filmography.role_at_films
-                                .person_info_value= filmography.role_at_films.map(roleAtFilm => roleAtFilm.roleName).join(', ')
 
 
 
@@ -281,6 +219,121 @@ block content
                                 p= self.repr_email
                             if self.repr_phone
                                 p= self.repr_phone
+
+            .c_main_info_box
+                p
+                    | main info box sisu
+                .str_info_blokk_cred
+                        if self.role_at_films
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.proRole
+                                .str_info_value.dark_1= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                        if self.gender
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.gender
+                                .str_info_value.dark_1= self.gender
+                        if self.dateOfBirth
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.birthday
+                                .str_info_value.dark_1
+                                    +birthDateEET(self.dateOfBirth)
+                        if self.native_lang
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.nativeLang
+                                .str_info_value.dark_1= self.native_lang.name
+                        if self.other_lang
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.otherLang
+                                .str_info_value.dark_1= self.other_lang.map(other_lang => other_lang.name).join(', ')
+                                    //- .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
+                        if self.eye_colour
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.eyeColour
+                                .str_info_value.dark_1= self.eye_colour.name
+                        if self.hair_colour
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.hairColour
+                                .str_info_value.dark_1= self.hair_colour.name
+                        //- if self.shoe_size
+                        //-     .str_info_grid_3
+                        //-         .str_info_label.dark_5= self.label.userprofile.shoeSize
+                        //-         .str_info_value.dark_1= self.shoe_size.name
+                        if self.stature
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.stature
+                                .str_info_value.dark_1= self.stature.name
+                        if self.pitch_of_voice
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.pitchOfVoice
+                                .str_info_value.dark_1= self.pitch_of_voice.name
+                        if self.country
+                            .str_info_grid_3
+                                .str_info_label.dark_5= self.label.userprofile.country
+                                .str_info_value.dark_1= self.country.name
+
+                if self.eye_colour
+                    .person_info_value= self.eye_colour.name
+
+                if self.hair_colour
+                    .person_info_value= self.hair_colour.name
+
+                if self.shoe_size
+                    .person_info_value= self.shoe_size.name
+
+                if self.stature
+                    .person_info_value= self.stature.name
+
+                if self.pitch_of_voice
+                    .person_info_value= self.pitch_of_voice.name
+
+                if self.native_lang
+                    .person_info_value= self.native_lang.name
+
+                if self.country
+                    .person_info_value= self.country.name
+
+                if self.other_lang
+                    .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
+
+                if self.tag_secrets
+                    .person_info_value= self.tag_secrets.join(', ')
+
+            .c_actor_info_box
+                p
+                    | actor info box sisu
+
+                if self.filmographies
+                    - var educationFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 7)
+                    if educationFilmographies.length
+                        each filmography in educationFilmographies
+                            if filmography.year_from
+                                .person_info_value= filmography.year_from
+                            if filmography.year_to
+                                .person_info_value= filmography.year_to
+                            if filmography.org_name
+                                .person_info_value= filmography.org_name
+                            if filmography.org_url
+                                .person_info_value= filmography.org_url
+                            if filmography.org_department
+                                .person_info_value= filmography.org_department
+                            if filmography.degree
+                                .person_info_value= filmography.degree
+
+                    - var radioTheatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
+                    if radioTheatreFilmographies.length
+                        each filmography in radioTheatreFilmographies
+                            if filmography.year_from
+                                .person_info_value= filmography.year_from
+                            if filmography.year_to
+                                .person_info_value= filmography.year_to
+                            if filmography.actor_role
+                                .person_info_value= filmography.actor_role
+                            if filmography.work_name
+                                .person_info_value= filmography.work_name
+                            if filmography.work_url
+                                .person_info_value= filmography.work_url
+                            if filmography.role_at_films
+                                .person_info_value= filmography.role_at_films.map(roleAtFilm => roleAtFilm.roleName).join(', ')
 
             //- if self.filmographies
             //-     - var filmographies = self.filmographies
