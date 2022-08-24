@@ -215,12 +215,11 @@ block content
             //-                     p= self.repr_phone
 
             section.c_main_info_box
-
+                .str_info_grid_3
+                    .person_info_label
+                    .person_info_c.text_left
+                        | Personal info
                 .str_info_blokk_cred
-                        if self.role_at_films
-                            .str_info_grid_3
-                                .person_info_label= self.label.userprofile.proRole
-                                .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
                         if self.gender
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.gender
@@ -234,6 +233,14 @@ block content
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.country
                                 .person_info_value= self.country.name
+                        if self.eMail
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.email
+                                .person_info_value= self.eMail
+                        if self.phoneNr
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.phone
+                                .person_info_value= self.phoneNr
 
                         if typeof self.bio !== 'undefined'
                             - var bio = self.bio
@@ -248,6 +255,14 @@ block content
 
 
             section.c_actor_info_box
+                        .str_info_grid_3
+                            .person_info_label
+                            .person_info_c.text_left
+                                | Professional info
+                        if self.role_at_films
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.proRole
+                                .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
                         if self.native_lang
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.nativeLang
@@ -286,20 +301,21 @@ block content
                                     .person_info_value.font_h
                                         +format(skills)
 
-                        .c_repr
-                            if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
+                        if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
+                            .str_info_grid_3
+                                .person_info_label
                                 details
                                     summary= self.label.userprofile.repr
                                     .details_content
                                         if self.repr_org_name
                                             a(href=self.repr_org_url target="_BLANK")
-                                                p= self.repr_org_name
+                                                .person_info_value= self.repr_org_name
                                         if self.repr_p_name
-                                            p= self.repr_p_name
+                                            .person_info_value= self.repr_p_name
                                         if self.repr_email
-                                            p= self.repr_email
+                                            .person_info_value= self.repr_email
                                         if self.repr_phone
-                                            p= self.repr_phone
+                                            .person_info_value= self.repr_phone
 
             section.c_filmography_box
 
@@ -308,7 +324,10 @@ block content
                     //- - var eduFilmographyTypeName = educationFilmographies.filmography.type_of_work[0].name
                     if educationFilmographies.length
                         filmography_sec
-                            .person_info_value= "Education"
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Professional education
                             each filmography in educationFilmographies
                                 //- .filmography_item
                                 .str_info_grid_3
@@ -333,11 +352,176 @@ block content
                                                 if filmography.degree
                                                     .person_info_value= filmography.degree
 
-                    - var radioTheatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
-                    if radioTheatreFilmographies.length
+                    - var filmFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 1)
+                    if filmFilmographies.length
                         filmography_sec
-                            .person_info_value= "Radio"
-                            each filmography in radioTheatreFilmographies
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Film
+                            each filmography in filmFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var televisionFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 2)
+                    if televisionFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Television
+                            each filmography in televisionFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var theatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 3)
+                    if theatreFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Theatre
+                            each filmography in theatreFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var radioPlayFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
+                    if radioPlayFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Radio play
+                            each filmography in radioPlayFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var audioFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 5)
+                    if audioFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Audio
+                            each filmography in audioFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var commercialFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 4)
+                    if commercialFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Commercial
+                            each filmography in commercialFilmographies
+                                .str_info_grid_3
+                                    .person_info_label
+                                        if filmography.year_from
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
+                                        if filmography.year_to
+                                            span.person_info_label= filmography.year_to
+                                    //- if filmography.org_name
+                                    .person_info_value
+                                        if filmography.work_url
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                .person_info_value= filmography.actor_role
+                                        else
+                                            .person_info_value.bold= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= 'as '
+                                                span.person_info_value= filmography.actor_role
+
+                    - var otherFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 6)
+                    if otherFilmographies.length
+                        filmography_sec
+                            .str_info_grid_3
+                                .person_info_label
+                                .person_info_c.text_left
+                                    | Other
+                            each filmography in otherFilmographies
                                 .str_info_grid_3
                                     .person_info_label
                                         if filmography.year_from
@@ -414,7 +598,7 @@ block content
 
         if self.images
             //- KARUSELL Industry projekti piltidega
-            section#carouselExampleIndicators.f_img_slider_box.100vh.bg_white.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
+            section#carouselExampleIndicators.f_img_slider_box.100vh.bg_white.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
                 ol.carousel-indicators
                     if self.images && self.images.length >1
                         each val, index in self.images
