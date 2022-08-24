@@ -28,13 +28,6 @@ block content
 
 
 
-                    //- if typeof self.bio !== 'undefined'
-                    //-     - var about_md = self.bio
-                    //-     if typeof about_md === 'string'
-                    //-         p.dark_1
-                    //-             +format(about_md)
-
-                    //- p.dark_1= self.aboutText
                 section.accounts_box
                     //- .f_cred_box.bg_dark_3
                     //- .premiere_type
@@ -43,21 +36,21 @@ block content
                         .str_info_blokk_cred
                             if self.role_at_films
                                 .str_info_grid_3
-                                    .str_info_label.dark_5= self.label.userprofile.proRole
-                                    .str_info_value.dark_1= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                                    .person_info_label= self.label.userprofile.proRole
+                                    .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
                             if self.gender
                                 .str_info_grid_3
-                                    .str_info_label.dark_5= self.label.userprofile.gender
-                                    .str_info_value.dark_1= self.gender
+                                    .person_info_label= self.label.userprofile.gender
+                                    .person_info_value= self.gender
                             if self.dateOfBirth
                                 .str_info_grid_3
-                                    .str_info_label.dark_5= self.label.userprofile.birthday
-                                    .str_info_value.dark_1
+                                    .person_info_label= self.label.userprofile.birthday
+                                    .person_info_value
                                         +birthDateEET(self.dateOfBirth)
                             if self.native_lang
                                 .str_info_grid_3
-                                    .str_info_label.dark_5= self.label.userprofile.nativeLang
-                                    .str_info_value.dark_1= self.native_lang.name
+                                    .person_info_label= self.label.userprofile.nativeLang
+                                    .person_info_value= self.native_lang.name
 
                         //- if self.acc_efis
                         //-     .str_info_grid_3
@@ -66,7 +59,7 @@ block content
                         //-         a.str_info_value(href= self.acc_efis)= self.label.userprofile.accEfis
                     if self.acc_efis
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accEfis
+                            //-     .person_info_label= self.label.userprofile.accEfis
                             //- .str_info_value= self.label.industry.website
                             a(href= self.acc_efis target="_BLANK")
                                 //- img.feather(data-src='/assets/img/static/efis_logo.svg' src='/assets/img/static/efis_logo.svg')
@@ -90,9 +83,9 @@ block content
 
                     if self.acc_imdb
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accImdb
+                            //-     .person_info_label= self.label.userprofile.accImdb
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_imdb target="_BLANK")
+                            a.person_info_value(href= self.acc_imdb target="_BLANK")
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather">
                                     <g>
                                         <g>
@@ -140,18 +133,18 @@ block content
 
                     if self.acc_castupload
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accCastupload
+                            //-     .person_info_label= self.label.userprofile.accCastupload
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_castupload target="_BLANK")
+                            a.person_info_value(href= self.acc_castupload target="_BLANK")
                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="feather">
                                     <path d="M3.6,18.9c-0.1,0-0.1-0.1-0.2-0.2v-0.5c-0.2,0.1-0.3,0.1-0.5,0.1c-0.4,0.1-0.9,0-1.2-0.1C1.2,18,1,17.6,1,17.2c0-0.2,0-0.5,0.2-0.6c0.4-0.3,0.4-0.7,0.4-1.2c0-0.2-0.1-0.4-0.1-0.6s0-0.4,0.1-0.6c0-0.2,0.2-0.4,0.3-0.7c0-0.1,0.1-0.2,0.1-0.3c-0.3-0.5-0.5-1.1-0.7-1.7c-0.1-0.4-0.2-0.9-0.3-1.2C1,10,1,9.8,1,9.4s0.1-0.9,0.3-1.2c-0.1-0.3,0-0.4,0-0.5C1.2,7.5,1.2,7.4,1.2,7.3c0.3-0.2,0.6-0.4,0.9-0.6C2.4,6.5,2.6,6.3,2.8,6c0.4-0.3,1-0.6,1.4-0.9C4.5,5.1,4.7,5,5,5c0.3-0.1,0.7-0.2,1.1-0.3c0.4-0.1,1-0.2,1.4-0.3c0.2,0,0.5-0.1,0.7-0.1c0.5,0,1,0,1.5,0c0.3,0,0.6,0,1.1,0.1c0.4,0,0.7,0.1,1.1,0.2c0.6,0,1.2,0.2,1.8,0.4c0.4,0.2,0.9,0.3,1.3,0.6c0.5,0.3,1.1,0.6,1.6,1.1c0.1,0,0.1,0.1,0.2,0.1c0-0.1,0-0.2,0-0.3c-0.1-0.2-0.1-0.2,0-0.4c0.3,0,0.6,0.1,1,0.1c0.1,0,0.3,0.1,0.4,0.2c0.4,0.2,0.6,0.6,0.6,1.1c0,0.2,0,0.5-0.1,0.7c0,0.1,0,0.2,0,0.3s0,0.2,0,0.3v2.3c0,0.5,0.1,1,0.4,1.5c0,0,0,0.1,0.1,0.1c0.2,0,0.3-0.2,0.6-0.2c0.2,0.2,0.1,0.4,0.1,0.6c0,0.2,0,0.4,0,0.5c0.3,0.1,0.6,0.1,1-0.1c0.5-0.3,0.9-0.9,1-1.4c0.1-0.4,0.4-0.5,0.9-0.4h0.1C23,12,23,12.2,23,12.4c0,0.4-0.2,0.9-0.4,1.2c-0.3,0.6-0.6,1.2-1,1.7c-0.3,0.4-0.5,0.7-1,1.1c-0.2,0.2-0.4,0.5-0.4,0.9s-0.2,0.5-0.6,0.5c-0.1,0-0.2,0-0.2,0c-0.2,0-0.4,0.1-0.5,0.2c-0.3,0.2-0.6,0.2-1,0.2c-0.2,0-0.4-0.1-0.5-0.2c-0.1-0.2-0.2-0.3-0.3-0.5c-1-0.9-1.9-1.8-2.3-3.1c-0.2,0.2-0.2,0.4-0.2,0.5c-0.1,0.6,0.1,1.3,0.3,1.8c0.1,0.2,0.2,0.5,0.3,0.7s0.3,0.4,0.5,0.5s0.3,0.2,0.4,0.4c0,0.1,0,0.2,0,0.2c0,0.4-0.2,0.5-0.5,0.7c-0.4,0.2-0.9,0.4-1.4,0.4c-0.2,0-0.3,0-0.5,0c-0.3,0-0.5-0.2-0.5-0.4c0,0,0-0.1-0.1-0.2c-0.2,0-0.5-0.1-0.9-0.1s-0.9-0.1-1.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.3c0-0.4,0.1-0.7,0.3-1.1c0-0.1,0.1-0.1,0.1-0.1c0.2-0.2,0.2-0.5,0.2-0.7c0-0.3,0-0.6,0-1c0-0.2-0.1-0.4-0.1-0.6c-0.1-0.2-0.2-0.4-0.5-0.5c-2,0.5-3.8,0.3-5.6-0.9c-0.1,0-0.2,0.1-0.2,0.1c-0.1,0.1-0.1,0.1-0.2,0.2c0.3,1.1,0.6,2.1,1,3.2c0.2,0,0.3,0.2,0.5,0.3c0.3,0.4-0.2,1.1-0.7,1.2c-0.3,0-0.7,0-1.2,0.1C4.1,19.1,3.8,19.1,3.6,18.9L3.6,18.9L3.6,18.9z"/>
                                 </svg>
 
                     if self.acc_etalenta
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accEtalenta
+                            //-     .person_info_label= self.label.userprofile.accEtalenta
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_etalenta target="_BLANK")
+                            a.person_info_value(href= self.acc_etalenta target="_BLANK")
                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="feather">
                                     <g>
                                         <path class="st0" d="M16.2,19.1c0.6-0.7,0.8-1.4,1-2c0.2-0.5,0.3-0.7,0.7-0.4c0.3,0.1,0.5,0.1,0.8,0.1c1.2,0,2.3,0.4,3.6,0.2c-0.2,0.8-0.6,1.3-0.9,1.8c-0.8,1.1-2,2.2-3,2.9c-0.6,0.4-1.2,0.7-1.9,1c-0.6,0.3-1.3,0.5-2,0.6c-1.1,0.2-2.2,0.4-3.4,0.2c-0.7-0.2-1.5-0.3-2.2-0.5c-1-0.3-1.9-0.8-2.8-1.3c-0.5-0.2-0.9-0.6-1.3-1c-1-0.9-2-1.8-2.6-3.1c-0.1-0.3-0.4-0.6-0.6-1c0.1-0.2,0.3-0.1,0.4-0.1c0.5,0,1.1,0.1,1.5-0.1c0.5-0.2,0.9-0.1,1.4-0.1s1,0,1.6,0C7,17.1,7,18.1,7.7,18.8c0-0.9,0-1.7,0-2.5c2.9,0,5.7,0,8.5,0c0.5,0.4,0.3,0.9,0.2,1.4c0,0.1-0.1,0.2-0.1,0.4C16.2,18.4,16.2,18.7,16.2,19.1z"/>
@@ -163,34 +156,34 @@ block content
 
                     if self.acc_other
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accOther
+                            //-     .person_info_label= self.label.userprofile.accOther
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_other target="_BLANK")
+                            a.person_info_value(href= self.acc_other target="_BLANK")
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                     if self.acc_instagram
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accInstagram
+                            //-     .person_info_label= self.label.userprofile.accInstagram
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_instagram target="_BLANK")
+                            a.person_info_value(href= self.acc_instagram target="_BLANK")
                                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1,5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     if self.acc_fb
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.accFb
+                            //-     .person_info_label= self.label.userprofile.accFb
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.acc_fb target="_BLANK")
+                            a.person_info_value(href= self.acc_fb target="_BLANK")
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     if self.webpage_url
                             //- .str_info_grid_3
-                            //-     .str_info_label.dark_5= self.label.userprofile.webpageUrl
+                            //-     .person_info_label= self.label.userprofile.webpageUrl
                             //- .str_info_value= self.label.industry.website
-                            a.str_info_value.dark_1(href= self.webpage_url target="_BLANK")
+                            a.person_info_value(href= self.webpage_url target="_BLANK")
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
 
                 //- .f_cred_box
                 //-     if self.acting_age_from
                 //-         .str_info_grid_3
-                //-             .str_info_label.dark_5= self.label.userprofile.actingAge
-                //-             .str_info_value.dark_1= self.acting_age_from + ' - ' + self.acting_age_to + ' ' + self.label.userprofile.years
+                //-             .person_info_label= self.label.userprofile.actingAge
+                //-             .person_info_value= self.acting_age_from + ' - ' + self.acting_age_to + ' ' + self.label.userprofile.years
                 //-     //- if self.acting_age_to
                 //-     //-     .str_info_grid_3
                 //-     //-         .str_info_label= self.label.userprofile.actingAge
@@ -198,12 +191,12 @@ block content
 
                 //-     if self.height_cm
                 //-         .str_info_grid_3
-                //-             .str_info_label.dark_5= self.label.userprofile.heightCm
-                //-             .str_info_value.dark_1= self.height_cm + ' ' + self.label.userprofile.cm
+                //-             .person_info_label= self.label.userprofile.heightCm
+                //-             .person_info_value= self.height_cm + ' ' + self.label.userprofile.cm
                 //-     if self.weight_kg
                 //-         .str_info_grid_3
-                //-             .str_info_label.dark_5= self.label.userprofile.weightKg
-                //-             .str_info_value.dark_1= self.weight_kg + ' ' + self.label.userprofile.kg
+                //-             .person_info_label= self.label.userprofile.weightKg
+                //-             .person_info_value= self.weight_kg + ' ' + self.label.userprofile.kg
 
 
             //- section.c_repr_box
@@ -226,54 +219,87 @@ block content
                 .str_info_blokk_cred
                         if self.role_at_films
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.proRole
-                                .str_info_value.dark_1= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                                .person_info_label= self.label.userprofile.proRole
+                                .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
                         if self.gender
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.gender
-                                .str_info_value.dark_1= self.gender
+                                .person_info_label= self.label.userprofile.gender
+                                .person_info_value= self.gender
                         if self.dateOfBirth
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.birthday
-                                .str_info_value.dark_1
+                                .person_info_label= self.label.userprofile.birthday
+                                .person_info_value
                                     +birthDateEET(self.dateOfBirth)
                         if self.country
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.country
-                                .str_info_value.dark_1= self.country.name
+                                .person_info_label= self.label.userprofile.country
+                                .person_info_value= self.country.name
+
+                        if typeof self.bio !== 'undefined'
+                            - var bio = self.bio
+                            if typeof bio === 'string'
+                                .str_info_grid_3
+                                    .person_info_label= self.label.userprofile.biography
+                                    .person_info_value.font_h
+                                        +format(bio)
+
+                        //- p.dark_1= self.aboutText
 
 
 
             section.c_actor_info_box
                         if self.native_lang
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.nativeLang
-                                .str_info_value.dark_1= self.native_lang.name
+                                .person_info_label= self.label.userprofile.nativeLang
+                                .person_info_value= self.native_lang.name
                         if self.other_lang
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.otherLang
-                                .str_info_value.dark_1= self.other_lang.map(other_lang => other_lang.name).join(', ')
+                                .person_info_label= self.label.userprofile.otherLang
+                                .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
                                     //- .person_info_value= self.other_lang.map(other_lang => other_lang.name).join(', ')
                         if self.eye_colour
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.eyeColour
-                                .str_info_value.dark_1= self.eye_colour.name
+                                .person_info_label= self.label.userprofile.eyeColour
+                                .person_info_value= self.eye_colour.name
                         if self.hair_colour
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.hairColour
-                                .str_info_value.dark_1= self.hair_colour.name
+                                .person_info_label= self.label.userprofile.hairColour
+                                .person_info_value= self.hair_colour.name
                         //- if self.shoe_size
                         //-     .str_info_grid_3
-                        //-         .str_info_label.dark_5= self.label.userprofile.shoeSize
-                        //-         .str_info_value.dark_1= self.shoe_size.name
+                        //-         .person_info_label= self.label.userprofile.shoeSize
+                        //-         .person_info_value= self.shoe_size.name
                         if self.stature
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.stature
-                                .str_info_value.dark_1= self.stature.name
+                                .person_info_label= self.label.userprofile.stature
+                                .person_info_value= self.stature.name
                         if self.pitch_of_voice
                             .str_info_grid_3
-                                .str_info_label.dark_5= self.label.userprofile.pitchOfVoice
-                                .str_info_value.dark_1= self.pitch_of_voice.name
+                                .person_info_label= self.label.userprofile.pitchOfVoice
+                                .person_info_value= self.pitch_of_voice.name
+
+                        if typeof self.skills !== 'undefined'
+                            - var skills = self.skills
+                            if typeof skills === 'string'
+                                .str_info_grid_3
+                                    .person_info_label= self.label.userprofile.skills
+                                    .person_info_value.font_h
+                                        +format(skills)
+
+                        .c_repr
+                            if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
+                                details
+                                    summary= self.label.userprofile.repr
+                                    .details_content
+                                        if self.repr_org_name
+                                            a(href=self.repr_org_url target="_BLANK")
+                                                p= self.repr_org_name
+                                        if self.repr_p_name
+                                            p= self.repr_p_name
+                                        if self.repr_email
+                                            p= self.repr_email
+                                        if self.repr_phone
+                                            p= self.repr_phone
 
             section.c_filmography_box
 
@@ -282,54 +308,54 @@ block content
                     //- - var eduFilmographyTypeName = educationFilmographies.filmography.type_of_work[0].name
                     if educationFilmographies.length
                         filmography_sec
-                            .str_info_value.dark_1= "Education"
+                            .person_info_value= "Education"
                             each filmography in educationFilmographies
                                 //- .filmography_item
                                 .str_info_grid_3
-                                    .str_info_label.dark_5
+                                    .person_info_label
                                         if filmography.year_from
-                                            span.str_info_label.dark_5= filmography.year_from
-                                            span.str_info_label.dark_5= ' - '
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
                                         if filmography.year_to
-                                            span.str_info_label.dark_5= filmography.year_to
+                                            span.person_info_label= filmography.year_to
                                     //- if filmography.org_name
-                                    .str_info_value.dark_1
+                                    .person_info_value
                                         if filmography.org_url
-                                            a.str_info_value.dark_1.bold(href= filmography.org_url target="_BLANK")= filmography.org_name
+                                            a.person_info_value.bold(href= filmography.org_url target="_BLANK")= filmography.org_name
                                             if filmography.org_department
-                                                span.str_info_value.dark_1= ', ' + filmography.org_department
+                                                span.person_info_value= ', ' + filmography.org_department
                                             if filmography.degree
-                                                .str_info_value.dark_1= filmography.degree
+                                                .person_info_value= filmography.degree
                                         else
-                                            .str_info_value.dark_1.bold= filmography.org_name
+                                            .person_info_value.bold= filmography.org_name
                                                 if filmography.org_department
-                                                    span.str_info_value.dark_1= ', ' + filmography.org_department
+                                                    span.person_info_value= ', ' + filmography.org_department
                                                 if filmography.degree
-                                                    .str_info_value.dark_1= filmography.degree
+                                                    .person_info_value= filmography.degree
 
                     - var radioTheatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
                     if radioTheatreFilmographies.length
                         filmography_sec
-                            .str_info_value.dark_1= "Radio"
+                            .person_info_value= "Radio"
                             each filmography in radioTheatreFilmographies
                                 .str_info_grid_3
-                                    .str_info_label.dark_5
+                                    .person_info_label
                                         if filmography.year_from
-                                            span.str_info_label.dark_5= filmography.year_from
-                                            span.str_info_label.dark_5= ' - '
+                                            span.person_info_label= filmography.year_from
+                                            span.person_info_label= ' - '
                                         if filmography.year_to
-                                            span.str_info_label.dark_5= filmography.year_to
+                                            span.person_info_label= filmography.year_to
                                     //- if filmography.org_name
-                                    .str_info_value.dark_1
+                                    .person_info_value
                                         if filmography.work_url
-                                            a.str_info_value.dark_1.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .str_info_value.dark_1= filmography.actor_role
+                                                .person_info_value= filmography.actor_role
                                         else
-                                            .str_info_value.dark_1.bold= filmography.work_name
+                                            .person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
                                                 span.str_info_value.dark_3.light_300= 'as '
-                                                span.str_info_value.dark_1= filmography.actor_role
+                                                span.person_info_value= filmography.actor_role
 
                             //- if filmography.year_from
                             //-     .person_info_value= filmography.year_from
@@ -370,11 +396,11 @@ block content
                                         if film.year
                                             .str_info_grid_3
                                                 .str_info_label.dark_semi= self.label.film.year
-                                                .str_info_value.dark_1= film.year
+                                                .person_info_value= film.year
                                         //- if film.trailerUrl
                                         //-     .str_info_grid_3
                                         //-         .str_info_label.dark_semi= self.label.film.trailer
-                                        //-         a.str_info_value.dark_1(href= film.trailerUrl)= self.label.film.trailer
+                                        //-         a.person_info_value(href= film.trailerUrl)= self.label.film.trailer
                                         if film.synopsis
                                             p.dark_1
                                                 +format(film.synopsis)
