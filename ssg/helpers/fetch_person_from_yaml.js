@@ -84,6 +84,11 @@ if (DOMAIN !== 'industry.poff.ee') {
                 'role_at_films': {
                     model_name: 'RoleAtFilm'
                 }
+            },
+            expand: {
+                'type_of_work': {
+                    model_name: 'TypeOfWork'
+                }
             }
         },
     }
