@@ -20,12 +20,12 @@ const fetchDataDir = path.join(fetchDir, 'persons')
 
 function slugify(text) {
     return text.toString().toLowerCase()
-      .replace(/\s+/g, '-')           // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-      .replace(/^-+/, '')             // Trim - from start of text
-      .replace(/-+$/, '');            // Trim - from end of text
-  }
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}
 
 if (DOMAIN !== 'industry.poff.ee') {
     let emptyYAML = yaml.dump([], {
@@ -81,16 +81,17 @@ if (DOMAIN !== 'industry.poff.ee') {
         'filmographies': {
             model_name: 'Filmography',
             expand: {
+                'tag_film_types': {
+                    model_name: 'TagFilmType',
+                },
                 'role_at_films': {
-                    model_name: 'RoleAtFilm'
-                }
-            },
-            expand: {
+                    model_name: 'RoleAtFilm',
+                },
                 'type_of_work': {
                     model_name: 'TypeOfWork'
                 }
             }
-        },
+        }
     }
 
     const STRAPIDATA_ALL_PERSONS = fetchModel(STRAPIDATA_PERSON, minimodel)
@@ -198,8 +199,8 @@ function generatePersonsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
 
         let genders = [];
         if (typeof person.gender !== 'undefined') {
-                genders.push(person.gender);
-                filters.genders[person.gender] = person.gender;
+            genders.push(person.gender);
+            filters.genders[person.gender] = person.gender;
         }
 
         let roleatfilms = [];
