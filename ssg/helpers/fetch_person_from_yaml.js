@@ -133,8 +133,6 @@ function mSort(to_sort) {
 }
 
 function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuffix) {
-    var templateDomainName = 'industry'
-
     for (lang of languages) {
 
         console.log(`Fetching ${DOMAIN} ${personsYamlNameSuffix} ${lang} data`);
@@ -164,7 +162,7 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             fs.mkdirSync(saveDir, { recursive: true });
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_${templateDomainName}_index_template.pug`)
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
 
             allData.push(person);
         }
