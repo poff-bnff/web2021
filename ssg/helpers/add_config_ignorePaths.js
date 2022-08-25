@@ -55,6 +55,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/persons_search', //Persons for Industry
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
@@ -88,6 +89,7 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/persons_search', //Persons for Industry
             '/industry_courseevents_search', //Industry Events
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
@@ -124,6 +126,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/persons_search', //Persons for Industry
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
@@ -212,6 +215,7 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/industry_courseevents_search', //Industry Events
+            '/persons_search', //Persons for Industry
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events

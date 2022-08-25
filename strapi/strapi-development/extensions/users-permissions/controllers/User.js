@@ -49,12 +49,10 @@ module.exports = {
   paymentMethods: resolveControllerMethod('paymentMethods'),
   buyProduct: resolveControllerMethod('buyProduct'),
   buyProductCb: resolveControllerMethod('buyProductCb'),
-<<<<<<< HEAD
-  roleController: resolveControllerMethod('roleController'),
-=======
   personForm: resolveControllerMethod('personForm'),
   getPersonForm: resolveControllerMethod('getPersonForm'),
->>>>>>> c679c81b0547877595ed7591200b6aafc58ecea3
+  roleController: resolveControllerMethod('roleController'),
+
 
   /**
    * Retrieve user records.
@@ -142,7 +140,7 @@ module.exports = {
     const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
     const sanitized = sanitizeUser(fetchedUser)
 
-    if(sanitized.provider.split(',').includes('eventivalindustry')) {
+    if (sanitized.provider.split(',').includes('eventivalindustry')) {
       const getEventivalProfile = await getEventivalBadges(sanitized.email)
       sanitized.industry_profile = getEventivalProfile && getEventivalProfile.statusCode === 200 ? getEventivalProfile.body : null
     }
