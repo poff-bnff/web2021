@@ -105,6 +105,9 @@ nice -10 node ./helpers/fetch_courses_from_yaml.js
 echo 'fetch_frontpagecourse_block_from_yaml.js'
 nice -10 node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
+echo 'fetch_locations_from_yaml'
+nice -10 node ./helpers/fetch_locations_from_yaml.js
+
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
 printf '\n----------         Downloading all img from Strapi         ----------\n\n'
