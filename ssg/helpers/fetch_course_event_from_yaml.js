@@ -280,7 +280,7 @@ function generateEventYaml(element, dirSlug, lang, restricted = false) {
     fs.mkdirSync(saveDir, { recursive: true });
 
     fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/${NAMEVARIABLE}_courseevent${restricted ? '_restricted' : ''}_index_template.pug`);
+    fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/courseevent${restricted ? '_restricted' : ''}_index_template.pug`);
 }
 
 function generateAllDataYaml(allData, lang) {
