@@ -34,6 +34,7 @@ elisa_blue = #0019af
 tartuff_violet = #ec008c
 dark_1 = #0E1417
 dark_2 = #192024
+dark_3 = #1C272E
 dark_4 = #29333A
 dark_5 = #90999f
 bg_dark_1 = #0E1417
@@ -477,10 +478,9 @@ footer
     justify-items center
     align-items start
     padding-top header_height
-    grid-template-areas "c_title_box"\
-                        "c_img_box"\
+    grid-template-areas "c_img_box"\
+                        "c_title_box"\
                         "c_accounts_box"\
-                        "c_repr_box"\
                         "c_main_info_box"\
                         "c_actor_info_box"\
                         "c_filmography_box"\
@@ -1568,23 +1568,37 @@ row:nth-child(15) > .supporter_logos
 
 .person_name
     font-family font_c
-    font-size 4rem
+    // font-size 4rem
+    font-size calc(3rem + 1vw)
     line-height 5rem
     // padding-top 1.618rem
     padding-left 0
     padding-right 0
-    margin-top 2rem
-    margin-bottom 2rem
+    // margin-top 1rem
+    // margin-bottom 1rem
     text-align center
     color dark_2
 
-.person_info_value
+.person_info_h
+    font-family font_h
+    font-weight 300
+    color dark_2
+    font-size 1rem
+    text-align center
+    line-height 1.618rem
+    text-transform uppercase
+    padding-top 1rem
+    padding-bottom 1.618rem
+
+.person_info_c
     font-family font_c
     color dark_2
-    font-size 1.618rem
+    font-size 2rem
     text-align center
     line-height 2rem
-
+    text-transform none
+    padding-top 1.618rem
+    padding-bottom 1rem
 
 
 
@@ -1902,6 +1916,13 @@ header
     width 100%
     height 100%
     object-fit cover
+
+.photographer
+    position absolute
+    left 0
+    bottom 0
+    font-family font_p
+    color dark_3
 
 .container_contents_16_9_person
     position absolute
@@ -2487,7 +2508,7 @@ a.btn_popover
     font-size 1rem
     font-weight 300
     line-height 1.2rem
-    color #dark_3
+    color dark_3
 
 
 .watermark
@@ -3300,8 +3321,11 @@ select[multiple]
     // pointer-events none
     // padding-right 1rem
 
+.dropdown
+    color dark_2
 
-
+li > .dropdown > a
+    color dark_2
 
 .input_file
     eight 2rem
@@ -3409,14 +3433,15 @@ option
     border 1px solid clr_primary
 
 details
-    padding 1rem
+    padding .5rem
     border-top 1px solid dark_5
-    border-bottom 1px solid dark_5
+    // border-bottom 1px solid dark_5
     // border 1px solid dark_5
     // border-radius 4px
     transition background-color 1s ease-in-out
     width 100%
-    align center
+    align left
+    text-align left
     // margin 3rem
     // margin-right 3rem
     // margin-bottom 2rem
@@ -3427,7 +3452,7 @@ details[open]
     // z-index 999
 
 details[open] > summary
-    padding-bottom 1rem
+    padding-bottom .1rem
 
 details > summary
     cursor pointer
@@ -3435,7 +3460,7 @@ details > summary
     display flex
     align-items center
     justify-content space-between
-    gap 1rem
+    // gap 1rem
     color dark_2
     font-family font_p
 
@@ -3445,16 +3470,17 @@ details > summary::-webkit-details-marker
 details > summary::after
     content url(/assets/img/static/arrow_right.svg)
     display inline-flex
+    rotate (90deg)
     transition rotate 0.5s ease
 
 details[open] > summary::after
-    transform rotate(90deg)
+    transform rotate(180deg)
 
 // details summary > *
 //     display inline
 
 .details_content
-    margin 1rem 1.5rem
+    margin .5rem 1.5rem
 
 .c_img_box
     grid-area c_img_box
@@ -3462,30 +3488,110 @@ details[open] > summary::after
     width 100%
     aspect-ratio 1 / 1
     object-fit cover
+    position relative
 
 .c_title_box
     grid-area c_title_box
-    width 100%
-    background-color white
-    padding-left calc(2rem + 1vw)
-    padding-right calc(2rem + 1vw)
-    padding-top calc(1rem + 1vw)
-    padding-bottom calc(1rem + 1vw)
     display grid
     grid-template-columns 1fr
+    grid-template-rows 1fr max-content
     justify-items center
-    align-content space-between
+    // align-content center
+    width 100%
+    height 100%
+    background-color white
+    // padding-left calc(2rem + 1vw)
+    // padding-right calc(2rem + 1vw)
+    // padding-top calc(2rem + 1vw)
+    // padding-bottom calc(2rem + 1vw)
+    // background-color #efefef
 
-.c_repr_box
+.name_box
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-items center
+    align-content center
+    width 100%
+    height 100%
+    background-color white
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(2rem + 1vw)
+    padding-bottom calc(2rem + 1vw)
+    // background-color #eeeeee
+    align-self center
+
+.c_repr
     width 100%
     align-self start
+    text-align left
+    justify-self center
 
 .c_accounts_box
+    grid-area c_accounts_box
     width 100%
     align-self start
     justify-self center
     text-align center
     padding 1rem
+
+.accounts_box
+    width 100%
+    align-self end
+    justify-self center
+    text-align center
+    padding 1rem
+    // margin-bottom 1rem
+    // background-color #dddddd
+
+.c_main_info_box
+    grid-area c_main_info_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #dddddd
+
+.c_actor_info_box
+    grid-area c_actor_info_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #cecece
+
+.c_filmography_box
+    grid-area c_filmography_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #efefef
+
+.c_gallery_box
+    grid-area c_gallery_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
+
+.c_showreel_box
+    grid-area c_showreel_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
 
 .feather
     color dark_1
@@ -3511,6 +3617,49 @@ details[open] > summary::after
 a .feather
     text-decoration none
     stroke dark_2
+
+.filmography_sec
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-items start
+    align-items start
+    justify-content start
+
+.filmography_item
+    display grid
+    grid-template-columns 100px 50px 100px 1fr
+    justify-items start
+    align-items start
+    justify-content start
+
+.str_info_value a:hover
+    color dark_5
+
+.caption
+    position absolute
+    left 0
+    bottom -1.5rem
+    font-family font_p
+    font-size 1rem
+    color dark_2
+    margin 0
+    padding 0
+
+.person_info_label
+  font-family font_p
+  color dark_5
+  font-size 1rem
+  text-align right
+  line-height 1.618
+  font-weight 300
+
+.person_info_value
+  font-family font_p
+  color dark_1
+  font-size 1rem
+  text-align left
+  line-height 1.618
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3586,12 +3735,12 @@ a .feather
         grid-template-columns 1fr 1fr
         grid-template-rows auto
         grid-template-areas "c_img_box         c_title_box"\
-                            "c_accounts_box    c_repr_box"\
                             "c_main_info_box   c_actor_info_box"\
+                            "c_main_info_box   c_filmography_box"\
                             "c_gallery_box     c_gallery_box"\
-                            "c_showreel_box    c_audioreel_box"\
-                            "c_filmography_box c_filmography_box"
-        padding-top header_height + 15vw
+                            "c_showreel_box    c_audioreel_box"
+        // padding-top header_height + 25vw
+        padding-top 150px
         row-gap 3rem
         // background-color #dddddd
 
@@ -4101,6 +4250,12 @@ a .feather
 
 .bold
     font-weight 500
+
+.regular_400
+    font-weight 400
+
+.light_300
+    font-weight 300
 
 .lh2
     line-height 4rem

@@ -316,7 +316,7 @@ TagCategory: &TagCategory
     order: number
     boolean: boolean
     active: boolean
-    tag_locations: 
+    tag_locations:
         - *TagLocation
 
 Award: &Award
@@ -329,7 +329,7 @@ Award: &Award
     slug_et: UID
     slug_en: UID
     slug_ru: UID
-    awardings: 
+    awardings:
         - Awardings
 
 Awarding: &Awarding
@@ -470,7 +470,7 @@ FestivalEdition: &FestivalEdition
     slug_en: (UID)
     slug_ru: (UID)
     remoteId: UID
-    projects: 
+    projects:
         - IndustryProject
     awardings:
         - *Awarding
@@ -488,11 +488,11 @@ Organisation: &Organisation
     logoBlack: *StrapiMedia
     logoColour: *StrapiMedia
     homepageUrl: (text)
-    awardings: 
+    awardings:
         - *Awarding
-    festival_editions: 
+    festival_editions:
         - *FestivalEdition
-    domains: 
+    domains:
         - *Domain
     profile_img: *StrapiMedia
     role_at_films:
@@ -1012,13 +1012,13 @@ Location: &Location
     visitest_id: UID
     domains:
         - *Domain
-    festival_editions: 
+    festival_editions:
         - *FestivalEdition
     profile_img: *StrapiMedia
     images:
         - *StrapiMedia
     public: boolean
-    tag_secrets: 
+    tag_secrets:
         - *TagSecret
     repr_p_name: text
     repr_phone: text
@@ -1259,7 +1259,7 @@ TypeOfWork: &TypeOfWork
     _path: /type-of-works
     name_et: text
     name_en: text
-    name_ru: text    
+    name_ru: text
 
 EyeColour: &EyeColour
     _path: /eye-colours
@@ -1274,9 +1274,9 @@ Filmography: &Filmography
     year_to: number
     work_name: text
     work_url: text
-    tag_film_types: 
+    tag_film_types:
         - *TagFilmType
-    role_at_films:  
+    role_at_films:
         - *RoleAtFilm
     actor_role: text
     org_name: text
@@ -1305,7 +1305,7 @@ Person: &Person
     filmography: *Translated #(Rich text)
     remoteId: (UID)
     pageUrl: (text)
-    awardings: 
+    awardings:
         - *Awarding
     festival_editions:
         - *FestivalEdition
@@ -1339,7 +1339,7 @@ Person: &Person
     native_lang: *Language
     # languages: #kadunud v4li, kas oli info sees?
     #     - *Language
-    other_lang: 
+    other_lang:
         - *Language
     images:
         - *StrapiMedia
@@ -1353,10 +1353,10 @@ Person: &Person
     acc_instagram: text
     acc_fb: text
     acc_other: text
-    tag_secrets: 
+    tag_secrets:
         - *TagSecret
     webpage_url: text
-    industry_person_types: 
+    industry_person_types:
         - *IndustryPersonType
     tag_looking_fors:
         - *TagLookingFor
@@ -1455,7 +1455,7 @@ EventType: &EventType
     description_et: text
     description_en: text
     description_ru: text
-   
+
 ScreeningType: &ScreeningType
     _path: /screening-types
     name: (text)
@@ -1525,7 +1525,7 @@ Film: &Film
         - *Awarding
     other_festivals:
         - *Festival
-    vialog_id: (text)        
+    vialog_id: (text)
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
@@ -1972,12 +1972,12 @@ CourseEvent: &CourseEvent
     event_mode: *EventMode
     trailer:
         -   *Trailer
-    industry_categories: 
+    industry_categories:
         -   *IndustryCategory
     is_live_event: boolean
     is_public_event: boolean
     public: boolean
-    preconditions: 
+    preconditions:
         -   CourseEvent
     moodle_id: UID
     posters:
@@ -1989,14 +1989,14 @@ CourseEvent: &CourseEvent
     publish_en: boolean
     publish_ru: boolean
     remote_id: UID
-    product_categories: 
+    product_categories:
         - ProductCategory
     industry_projects:
         -   *IndustryProject
     publishFrom: datetime
     publishUntil: datetime
     tags: *CourseTags
-    presentedBy: 
+    presentedBy:
         *PresentedBy
     languages:
         -   *Language
@@ -2590,7 +2590,7 @@ DeliveryType: &DeliveryType
     active: boolean
     delivery_prices:
         name_private: text
-        countries: 
+        countries:
             - *Country
         price: number
         info_et: text
