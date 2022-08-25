@@ -11,7 +11,18 @@ const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 
 const strapiDataLocationPath = path.join(strapiDataDirPath, `Location.yaml`)
-const STRAPIDATA_LOCATIONS = yaml.load(fs.readFileSync(strapiDataLocationPath, 'utf8'))
+const STRAPIDATA_LOCATIONS_FULL = yaml.load(fs.readFileSync(strapiDataLocationPath, 'utf8'))
+
+const fetchDataDir = path.join(fetchDirDirPath, 'locations')
+
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}
 
 const minimodel = {
     'country': {
@@ -48,15 +59,45 @@ const minimodel = {
 
 
 
-STRAPIDATA_LOCATION = fetchModel(STRAPIDATA_LOCATIONS, minimodel)
+STRAPIDATA_LOCATIONS = fetchModel(STRAPIDATA_LOCATIONS_FULL, minimodel)
+
+STRAPIDATA_LOCATIONS.filter( e => e.name)
 
 const languages = ['en', 'et', 'ru']
 for (const lang of languages) {
 
-    const locationDataFile =  path.join(fetchDirDirPath, `location.${lang}.yaml`)
+    for(const ix in STRAPIDATA_LOCATIONS) {
+        let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
 
-    let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATION))
+        if (location.name.length > 1){
+            location = rueten(location, lang)
+            let slugifyName = slugify(`${location.name}-${location.id}`)
+            location.path = slugifyName
+            location.slug = slugifyName
+
+            let oneYaml = {}
+            try {
+                oneYaml = yaml.dump(location, { 'noRefs': true, 'indent': '4' })
+            } catch (error) {
+                console.error({ error, location })
+                throw error
+            }
+
+            const yamlPath = paht.join(fetchDataDir, slugifyName, `data.${lang}.yaml`)
+            let saveDir = path.join(fetchDataDir, slugifyName);
+            fs.mkdirSync(saveDir, { recursive: true });
+
+            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/location_template.pug`)
+
+    }
+
+    const locationDataFile =  path.join(fetchDirDirPath, `locations.${lang}.yaml`)
+
+    let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS))
     locationData = rueten(copyData, lang)
+
+    console.log({locationData})
 
     let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(locationDataFile, locationDataYAML, 'utf8')
