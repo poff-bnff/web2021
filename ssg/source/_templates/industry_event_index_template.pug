@@ -144,11 +144,11 @@ block content
 
 
     section.f_interactive_box
-        if self.industry_people
+        if self.credentials && self.credentials.rolePerson
             //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
             //- h1.sub_section_headline= 'Või veel midagi'
             .sub_team
-                each indPerson in self.industry_people
+                each indPerson in self.credentials.rolePerson
                     if indPerson.slug
                         .person
                             .person_head

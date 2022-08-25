@@ -635,6 +635,7 @@ POFFiArticle: &POFFiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 JustFilmiArticle: &JustFilmiArticle
     _path: /just-filmi-articles
@@ -679,6 +680,7 @@ JustFilmiArticle: &JustFilmiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 ShortsiArticle: &ShortsiArticle
     _path: /shortsi-articles
@@ -723,6 +725,7 @@ ShortsiArticle: &ShortsiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 KinoffiArticle: &KinoffiArticle
     _path: /kinoffi-articles
@@ -767,6 +770,7 @@ KinoffiArticle: &KinoffiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 HOFFiArticle: &HOFFiArticle
     _path: /hof-fi-articles
@@ -811,6 +815,7 @@ HOFFiArticle: &HOFFiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 TartuffiArticle: &TartuffiArticle
     _path: /tartuffi-articles
@@ -855,6 +860,7 @@ TartuffiArticle: &TartuffiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 KumuArticle: &KumuArticle
     _path: /kumu-articles
@@ -899,6 +905,7 @@ KumuArticle: &KumuArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 BrunoArticle: &BrunoArticle
     _path: /bruno-articles
@@ -943,6 +950,7 @@ BrunoArticle: &BrunoArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 FilmikooliArticle: &FilmikooliArticle
     _path: /filmikooli-articles
@@ -987,6 +995,7 @@ FilmikooliArticle: &FilmikooliArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    public: (boolean)
 
 #Location
 
@@ -1724,6 +1733,7 @@ IndustryArticle: &IndustryArticle
         - *Person
     organisations:
         - *Organisation
+    public: (boolean)
 
 IndustryGroup: &IndustryGroup
     _path: /industry-groups
@@ -1970,6 +1980,8 @@ CourseEvent: &CourseEvent
     domains:
         -   *Domain
     event_mode: *EventMode
+    languages: #(Component (repeatable))
+        -   *Language
     trailer:
         -   *Trailer
     industry_categories:
@@ -1998,8 +2010,6 @@ CourseEvent: &CourseEvent
     tags: *CourseTags
     presentedBy:
         *PresentedBy
-    languages:
-        -   *Language
     event_types:
         -   *EventType
     event_access: *EventAccess
@@ -2082,6 +2092,7 @@ DisCampArticle: &DisCampArticle
         - *Person
     organisations:
         - *Organisation
+    public: (boolean)
 
 DisCampGroup: &DisCampGroup
     _path: /dis-camp-groups

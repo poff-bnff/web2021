@@ -54,7 +54,11 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
             '/persons_search', //Persons for Industry
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -86,6 +90,9 @@ function addConfigIgnorePaths() {
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
             '/persons_search', //Persons for Industry
+            '/industry_courseevents_search', //Industry Events
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
@@ -118,7 +125,11 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
             '/persons_search', //Persons for Industry
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -143,6 +154,11 @@ function addConfigIgnorePaths() {
             '/industry_persons_archive_search', //Built by archive build
             '/discamp_events_search', //discamp
             '/discamp_persons_search', //discamp
+            '/industry_cal', //old
+            '/industry_events', //old
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else if (DOMAIN === 'discoverycampus.poff.ee') {
         return [
@@ -167,6 +183,8 @@ function addConfigIgnorePaths() {
             '/industry_persons_archive_search', //Built by archive build
             '/persons_search', //Persons for Industry
             '/industry_events_search', //industry
+            '/industry_courseevents_search', //Industry Events
+            '/courses_courseevents', //Filmikool
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -196,7 +214,11 @@ function addConfigIgnorePaths() {
             '/virtual_booth', //industry
             '/favouriteAWS', //OldAWSFavoritePageBackup
             '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
             '/persons_search', //Persons for Industry
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
         ]
     } else {
         return null
@@ -208,5 +230,3 @@ BUILD_CONFIG.dev.ignorePaths = addConfigIgnorePaths()
 
 const BUILD_CONFIG_YAML = yaml.dump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' })
 fs.writeFileSync(buildConfigPath, BUILD_CONFIG_YAML, 'utf8')
-
-module.exports = addConfigIgnorePaths

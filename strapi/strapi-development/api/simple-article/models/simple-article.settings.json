@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "simple_articles",
+  "info": {
+    "name": "SimpleArticle"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title_private": {
+      "type": "string"
+    },
+    "title_et": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "contents_et": {
+      "type": "richtext"
+    },
+    "contents_en": {
+      "type": "richtext"
+    },
+    "contents_ru": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article-media"
+    }
+  }
+}

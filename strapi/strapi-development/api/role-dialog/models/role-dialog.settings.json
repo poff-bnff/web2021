@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "role_dialogs",
+  "info": {
+    "name": "RoleDialog",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "poffi_article": {
+      "model": "simple-article"
+    },
+    "any_article": {
+      "model": "simple-article"
+    },
+    "poffi_courseevent": {
+      "model": "simple-article"
+    },
+    "any_courseevent": {
+      "model": "simple-article"
+    },
+    "just_filmi_article": {
+      "model": "simple-article"
+    },
+    "shortsi_article": {
+      "model": "simple-article"
+    },
+    "bruno_article": {
+      "model": "simple-article"
+    },
+    "filmikooli_article": {
+      "model": "simple-article"
+    },
+    "discamp_article": {
+      "model": "simple-article"
+    },
+    "hoffi_article": {
+      "model": "simple-article"
+    },
+    "industry_article": {
+      "model": "simple-article"
+    },
+    "kinoffi_article": {
+      "model": "simple-article"
+    },
+    "kumu_article": {
+      "model": "simple-article"
+    },
+    "tartuffi_article": {
+      "model": "simple-article"
+    },
+    "industry_courseevent": {
+      "model": "simple-article"
+    },
+    "discamp_courseevent": {
+      "model": "simple-article"
+    }
+  }
+}
