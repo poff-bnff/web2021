@@ -32,7 +32,12 @@ mixin videolQaClip(videoUrl='')
         iframe#videoframe(width='100%' height='100%' src=`https://videolevels.com/embed/${videoId}`
             frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
 
-
+mixin heroVideo(clipUrlDefault='')
+    - var videoId = clipUrlDefault.split('/')[1] || ''
+    if videoId.length === 9
+        iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
+            frameborder='0' allow='accelerometer' encrypted-media=''
+            gyroscope='' picture-in-picture='' allowfullscreen='')
 
 //- Sisend UTC (nt '2020-11-10T10:00:00.000Z'), väljund EET kellaaeg (nt 12:00 PM)
 //- Industry events tarbeks peamiselt
@@ -93,6 +98,40 @@ mixin screeningDateEET(dateStringUTC)
             var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('dddd');
 
             eDisplayMoment1.innerHTML = weekDay_EET + ', ' +  date_EET;
+
+        })();
+
+mixin birthDateEET(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var weekDay_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('Do MMM');
+            var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('LL');
+
+            eDisplayMoment1.innerHTML = date_EET;
+
+        })();
+
+mixin birthDatePP(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id = 'dt_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
+
+            var weekDay_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('Do MMM');
+            var date_EET = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('PP');
+
+            eDisplayMoment1.innerHTML = date_EET;
 
         })();
 

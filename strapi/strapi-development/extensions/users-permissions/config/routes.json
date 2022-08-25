@@ -128,7 +128,6 @@
         ]
       }
     },
-
     {
       "method": "PUT",
       "path": "/providers",
@@ -444,6 +443,26 @@
       "config": {
         "prefix": "",
         "description": "Import users"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/users/personForm",
+      "handler": "User.personForm",
+      "config": {
+        "policies": ["plugins::users-permissions.short-ratelimit"],
+        "prefix": "",
+        "description": "Add new person"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users/getPersonForm",
+      "handler": "User.getPersonForm",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Retrieve all user related persons"
       }
     },
     {

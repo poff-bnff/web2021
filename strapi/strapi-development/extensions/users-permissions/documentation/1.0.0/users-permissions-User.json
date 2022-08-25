@@ -2129,6 +2129,274 @@
           },
           "id_number_est": {
             "type": "uid"
+          },
+          "person": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "firstName": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "string"
+              },
+              "picture": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "phoneNr": {
+                "type": "string"
+              },
+              "eMail": {
+                "type": "string"
+              },
+              "dateOfBirth": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "organisations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "profession": {
+                "type": "string"
+              },
+              "firstNameLastName": {
+                "type": "string"
+              },
+              "biography": {
+                "type": "component"
+              },
+              "filmography": {
+                "type": "component"
+              },
+              "remoteId": {
+                "type": "uid"
+              },
+              "pageUrl": {
+                "type": "string"
+              },
+              "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "festival_editions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "role_at_films": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "height_cm": {
+                "type": "integer"
+              },
+              "weight_kg": {
+                "type": "integer"
+              },
+              "eye_colour": {
+                "type": "string"
+              },
+              "hair_colour": {
+                "type": "string"
+              },
+              "shoe_size": {
+                "type": "string"
+              },
+              "stature": {
+                "type": "string"
+              },
+              "pitch_of_voice": {
+                "type": "string"
+              },
+              "eventival_id": {
+                "type": "uid"
+              },
+              "ev_account_email": {
+                "type": "string"
+              },
+              "ev_contact_email": {
+                "type": "string"
+              },
+              "ev_country": {
+                "type": "string"
+              },
+              "ev_org_name": {
+                "type": "string"
+              },
+              "ev_job_title": {
+                "type": "string"
+              },
+              "bio_et": {
+                "type": "string"
+              },
+              "bio_en": {
+                "type": "string"
+              },
+              "bio_ru": {
+                "type": "string"
+              },
+              "profile_img": {
+                "type": "string"
+              },
+              "ev_professions": {
+                "type": "string"
+              },
+              "ev_fow": {
+                "type": "string"
+              },
+              "ev_img_url": {
+                "type": "string"
+              },
+              "addr_coll": {
+                "type": "string"
+              },
+              "addr_comp": {
+                "type": "component"
+              },
+              "hair_length": {
+                "type": "string"
+              },
+              "native_lang": {
+                "type": "string"
+              },
+              "other_lang": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "showreel": {
+                "type": "string"
+              },
+              "audioreel": {
+                "type": "string"
+              },
+              "acting_age_from": {
+                "type": "integer"
+              },
+              "acting_age_to": {
+                "type": "integer"
+              },
+              "acc_imdb": {
+                "type": "string"
+              },
+              "acc_efis": {
+                "type": "string"
+              },
+              "acc_castupload": {
+                "type": "string"
+              },
+              "acc_instagram": {
+                "type": "string"
+              },
+              "acc_fb": {
+                "type": "string"
+              },
+              "acc_other": {
+                "type": "string"
+              },
+              "tag_secrets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "webpage_url": {
+                "type": "string"
+              },
+              "industry_person_types": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tag_looking_fors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "slug_et": {
+                "type": "uid"
+              },
+              "slug_en": {
+                "type": "uid"
+              },
+              "slug_ru": {
+                "type": "uid"
+              },
+              "public": {
+                "type": "boolean"
+              },
+              "repr_p_name": {
+                "type": "string"
+              },
+              "repr_phone": {
+                "type": "string"
+              },
+              "repr_email": {
+                "type": "string"
+              },
+              "repr_org_name": {
+                "type": "string"
+              },
+              "repr_org_url": {
+                "type": "string"
+              },
+              "acc_etalenta": {
+                "type": "string"
+              },
+              "skills_et": {
+                "type": "string"
+              },
+              "skills_en": {
+                "type": "string"
+              },
+              "skills_ru": {
+                "type": "string"
+              },
+              "filmographies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -2634,6 +2902,9 @@
           },
           "id_number_est": {
             "type": "uid"
+          },
+          "person": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

@@ -178,6 +178,7 @@ function addConfigIgnorePaths() {
             '/industry_persons_search', //industry
             '/industry_projects_archive_search', //Built by archive build
             '/industry_persons_archive_search', //Built by archive build
+            '/persons_search', //Persons for Industry
             '/industry_events_search', //industry
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
@@ -225,5 +226,3 @@ BUILD_CONFIG.dev.ignorePaths = addConfigIgnorePaths()
 
 const BUILD_CONFIG_YAML = yaml.dump(BUILD_CONFIG, { 'noRefs': true, 'indent': '4' })
 fs.writeFileSync(buildConfigPath, BUILD_CONFIG_YAML, 'utf8')
-
-module.exports = addConfigIgnorePaths

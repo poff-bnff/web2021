@@ -156,9 +156,11 @@ runexit()
 fetch_data()
 {
 
-    [ -d "source/_fetchdir" ] && rm -r source/_fetchdir/*
+    [ -d "source/_fetchdir" ] && rm -r source/_fetchdir/
+    [ -d "source/_fetchdirRestricted" ] && rm -r source/_fetchdirRestricted/
     [ ! -d "source/_fetchdir" ] && mkdir -p source/_fetchdir
-    [ -d "assets/xml" ] && rm -r assets/xml/*
+    [ ! -d "source/_fetchdirRestricted" ] && mkdir -p source/_fetchdirRestricted
+    [ -d "assets/xml" ] && rm -r assets/xml/
 
 
     echo '==== custom build ==== Fetch strapiData.yaml from Strapi'
@@ -251,6 +253,9 @@ fetch_data()
 
     echo '==== custom build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js
+
+    echo '==== custom build ==== fetch_person_from_yaml.js'
+    node ./helpers/fetch_person_from_yaml.js
 
     printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 

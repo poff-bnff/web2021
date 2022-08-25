@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "populated_places",
   "info": {
-    "name": "PopulatedPlace"
+    "name": "Municipality",
+    "description": ""
   },
   "options": {
     "increments": true,

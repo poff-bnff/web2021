@@ -114,6 +114,7 @@ skip_build_for_models:
     - cassette
     - programme
     - screening
+    - person
 
 article:
     poff.ee: POFFiArticle
@@ -446,6 +447,23 @@ libraryImageResizeOptions:
             width: 640
             fit: inside
     - U_: # kasutajate pildid
+        -   sufiks: _big_sq
+            width: 900
+            height: 900
+            fit: cover
+        -   sufiks: _med_sq
+            width: 500
+            height: 500
+            fit: cover
+        -   sufiks: _small_sq
+            width: 300
+            height: 300
+            fit: cover
+        -   sufiks: _thumb_sq
+            width: 100
+            height: 100
+            fit: cover
+    - C_: # form kasutaja pildid
         -   sufiks: _big_sq
             width: 900
             height: 900

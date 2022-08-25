@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/filmographies",
+      "handler": "filmography.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmographies/count",
+      "handler": "filmography.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/filmographies/:id",
+      "handler": "filmography.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/filmographies",
+      "handler": "filmography.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/filmographies/:id",
+      "handler": "filmography.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/filmographies/:id",
+      "handler": "filmography.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

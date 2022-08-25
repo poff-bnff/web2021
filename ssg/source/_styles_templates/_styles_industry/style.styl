@@ -34,6 +34,7 @@ elisa_blue = #0019af
 tartuff_violet = #ec008c
 dark_1 = #0E1417
 dark_2 = #192024
+dark_3 = #1C272E
 dark_4 = #29333A
 dark_5 = #90999f
 bg_dark_1 = #0E1417
@@ -86,7 +87,7 @@ font_p = 'Source Sans Pro', sans-serif
 // font_p = 'Lato', sans-serif
 // font_p = 'Barlow Semi Condensed', sans-serif
 // font_p = 'Source Serif Pro', serif
-// font_p = 'EB Garamond', serif
+font_c = 'EB Garamond', serif
 // font_p = 'Open Sans', serif
 // font_p = 'Scheherazade', serif
 
@@ -420,6 +421,9 @@ footer
     width 100%
     object-fit cover
 
+.creative_img
+    width 100%
+
 .img_dir
     width 100%
     border-radius 57% 43% 57% 43%
@@ -465,6 +469,24 @@ footer
                         "f_vialog_box"\
                         "f_trailer_box"\
                         "f_imgs_box"
+
+.grid_creative
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-content center
+    justify-items center
+    align-items start
+    padding-top header_height
+    grid-template-areas "c_img_box"\
+                        "c_title_box"\
+                        "c_accounts_box"\
+                        "c_main_info_box"\
+                        "c_actor_info_box"\
+                        "c_filmography_box"\
+                        "c_gallery_box"\
+                        "c_showreel_box"\
+                        "c_audioreel_box"
 
 .grid_ind_event
         display grid
@@ -577,9 +599,12 @@ footer
 
 .userprofile
     padding-top 120px
-    padding-left 2rem
-    padding-right 2rem
+    padding-left 6vw
+    padding-right 6vw
     padding-bottom 5rem
+    // display grid
+    // // justify-content space-around
+    // justify-content start
 
 #thisUserProfile
     padding-top 2rem
@@ -639,7 +664,8 @@ footer
     font-size 1rem
     font-weight 400
     color dark_3
-    width 17rem
+    // width 17rem
+    width 100%
     display block
 
 .login_headline
@@ -851,6 +877,8 @@ a .hero_headline
 
 a .dark:hover
        text-decoration none
+
+
 
 // .hero_headline_box
 //         position absolute
@@ -1065,7 +1093,7 @@ a .dark:hover
 .footer_logos
     display grid
     grid-template-columns repeat(auto-fit, minmax(6rem, 6rem))
-    grid-template-rows 3rem
+    grid-auto-rows minmax(2rem, 3rem)
     justify-content center
     justify-items center
     align-items center
@@ -1073,8 +1101,8 @@ a .dark:hover
 
 row:first-child > .footer_logos
     display grid
-    grid-template-columns repeat(auto-fit, minmax(15rem, 20rem))
-    grid-auto-rows minmax(4rem, 5rem)
+    grid-template-columns repeat(auto-fit, minmax(30rem, 36rem))
+    grid-auto-rows minmax(10rem, 15rem)
     // grid-template-rows 3.6rem
     justify-content center
     justify-items center
@@ -1490,6 +1518,10 @@ row:nth-child(15) > .supporter_logos
     width: 100%
     border-radius 57% 43% 57% 43%
 
+.person_img_square
+    width: 100%
+    // border-radius 1% 1% 1% 1%
+
 .shop_item_head
     // background-color clr_primary
     // color bg_dark_4
@@ -1533,6 +1565,43 @@ row:nth-child(15) > .supporter_logos
     padding-right 1rem
     text-align center
     color dark_4
+
+.person_name
+    font-family font_c
+    // font-size 4rem
+    font-size calc(3rem + 1vw)
+    line-height 5rem
+    // padding-top 1.618rem
+    padding-left 0
+    padding-right 0
+    // margin-top 1rem
+    // margin-bottom 1rem
+    text-align center
+    color dark_2
+
+.person_info_h
+    font-family font_h
+    font-weight 300
+    color dark_2
+    font-size 1rem
+    text-align center
+    line-height 1.618rem
+    text-transform uppercase
+    padding-top 1rem
+    padding-bottom 1.618rem
+
+.person_info_c
+    font-family font_c
+    color dark_2
+    font-size 2rem
+    text-align center
+    line-height 2rem
+    text-transform none
+    padding-top 1.618rem
+    padding-bottom 1rem
+
+
+
 
 .shop_item_body
     // background-color bg_dark_3
@@ -1579,46 +1648,7 @@ row:nth-child(15) > .supporter_logos
 .schedule
     padding-top header_height
 
-input, select
-    height 2rem
-    width 100%
-    background-color white
-    border 1px solid clr_grey_light
-    border-radius 3px
-    -moz-appearance none
-    -webkit-appearance none
-    appearance none
-    font-size 1rem
-    font-family font_h
-    font-weight 300
-    color dark_4
-    padding .2rem .5rem .1rem .5rem
-    margin 0
 
-.input_file
-    eight 2rem
-    width 100%
-    background-color white
-    border none
-    // border-radius 3px
-    -moz-appearance none
-    -webkit-appearance none
-    appearance none
-    font-size 1rem
-    font-family font_h
-    font-weight 300
-    color dark_4
-    padding .2rem .5rem .1rem .5rem
-    margin 0
-
-
-option
-    font-size 1rem
-    font-family font_h
-    font-weight 300
-    color dark_4
-    // color dark_4
-    margin 0
 
 .screening_head
     padding .5rem 1rem .5rem 1rem
@@ -1685,6 +1715,9 @@ header
     grid-area f_img_slider_box
     background bg_dark_1
     // margin-top 78px
+
+.100vh
+    height 100vh
 
 .f_title_box
     grid-area f_title_box
@@ -1884,6 +1917,13 @@ header
     height 100%
     object-fit cover
 
+.photographer
+    position absolute
+    left 0
+    bottom 0
+    font-family font_p
+    color dark_3
+
 .container_contents_16_9_person
     position absolute
     top 0
@@ -1891,6 +1931,16 @@ header
     width 100%
     height 100%
     object-fit contain
+
+.square
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
+
+.landscape
+    width 100%
+    aspect-ratio 16 / 9
+    object-fit cover
 
 .container_frame_square
     position relative
@@ -1938,9 +1988,10 @@ header
     object-fit cover
 
 .svg_icon_prev_next
-    height calc(1.5rem + 0.1vw)
-    width calc(1.5rem + 0.1vw)
+    height calc(2rem + 1vw)
+    width calc(2rem + 1vw)
     margin-right .5rem
+    margin-left .5rem
     margin-top -.7rem
     color rgba(200, 200, 200, 0.5)
 
@@ -1964,9 +2015,30 @@ header
         transform scale(.96,.96)
 /* TEXT */
 
+.svg_icon_person
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    margin-right 1rem
+    margin-left 1rem
+    text-decoration none
+    stroke dark_2
+    stroke-width 1
+    &:hover
+        height calc(1.5rem + 0.1vw)
+        width calc(1.5rem + 0.1vw)
+        margin-right 1rem
+        margin-left 1rem
+        stroke dark_2
+        stroke-width 1
+        transform scale(.96,.96)
+
 a .svg_icon_footer
     text-decoration none
     stroke white_96
+
+a .svg_icon_person
+    text-decoration none
+    stroke dark_2
 
 .font_h
   font-family font_h
@@ -2375,18 +2447,25 @@ a.btn_popover
   color white_96
 
 .btn_secondary
+    font-family font_h
     background-color bg_dark_4
     color white_semi
     border-radius 0
     text-transform uppercase
 
 .btn_primary
+    font-family font_h
     background-color clr_primary
     color white_96
     border-radius 0
     text-transform uppercase
 
+.btn_primary:hover
+    background-color #147a70
+    color color white_96
+
 .btn_moderate
+    font-family font_h
     background-color clr_primary
     color white_96
     border-radius 0
@@ -2429,7 +2508,7 @@ a.btn_popover
     font-size 1rem
     font-weight 300
     line-height 1.2rem
-    color #dark_3
+    color dark_3
 
 
 .watermark
@@ -3207,6 +3286,380 @@ a.btn_popover
     margin-top 1.618rem
     border .5px solid clr_grey_light
 
+input, select
+    height 2rem
+    width 100%
+    background-color white
+    border 1px solid clr_grey_light
+    border-radius 3px
+    -moz-appearance none
+    -webkit-appearance none
+    appearance none
+    font-size 1rem
+    font-family font_h
+    font-weight 300
+    color dark_1
+    padding .2rem .5rem .1rem .5rem
+    margin 0
+
+select[multiple]
+    height 6rem
+
+// select.login_input
+//     background-color #dddddd
+
+// .form_group
+//     // position relative
+//     background-color #eeeeee
+
+.input_dropdown::after
+    content "v"
+    color #000000
+    position absolute
+    top 0px
+    right 0px
+    // pointer-events none
+    // padding-right 1rem
+
+.dropdown
+    color dark_2
+
+li > .dropdown > a
+    color dark_2
+
+.input_file
+    eight 2rem
+    width 100%
+    background-color white
+    border none
+    // border-radius 3px
+    -moz-appearance none
+    -webkit-appearance none
+    appearance none
+    font-size 1rem
+    font-family font_h
+    font-weight 300
+    color dark_4
+    padding .2rem .5rem .1rem .5rem
+    margin 0
+
+.form
+    background-color #ffffff
+
+textarea.login_input
+    font-family font_p
+    padding .2rem .5rem .1rem .5rem
+    border 1px solid clr_grey_light
+    font-size 1rem
+    font-weight 400
+    color dark_3
+    // width 17rem
+    width 100%
+    height 200px
+    display block
+
+.person_profile_label
+    font-family font_h
+    font-size 1.1rem
+    font-weight 300
+    color dark_2
+    line-height 1.618
+
+legend
+    font-family font_h
+    font-size 1.618rem
+    font-weight 300
+    color dark_2
+    line-height 1.618
+
+.form label
+    margin-bottom .3rem
+
+
+::placeholder
+    color dark_5
+
+.default_select
+    color dark_5
+
+.login_input .placeholder
+    color dark_5
+
+option.default_select
+    color dark_5
+
+fieldset
+    // display flex
+    // flex-direction row
+    // flex-wrap wrap
+    // justify-content flex-start
+    // align-items flex-start
+    padding-top 3rem
+    padding-bottom 2rem
+    // border-bottom .5px solid #cccccc
+
+.fieldset_grid
+    display grid
+    // grid-template-columns repeat(auto-fit, minmax(300px, 360px))
+    grid-template-columns 1fr
+    // grid-template-rows repeat(auto-fit, minmax(2rem, 10rem))
+    gap 1rem
+    padding-top 2rem
+    // background green
+    // border-bottom 1px solid dark_5
+    @media screen and (min-width: 800px)
+        grid-template-columns repeat(auto-fit, minmax(300px, 360px))
+
+
+
+fieldset > .form_group
+    // background pink
+    width 100%
+    // padding 1rem
+
+
+.invalid
+    color dark_5
+
+option
+    font-size 1rem
+    font-family font_h
+    font-weight 300
+    color dark_4
+    // color dark_4
+    margin 0
+
+:required
+    border 1px solid clr_primary
+
+details
+    padding .5rem
+    border-top 1px solid dark_5
+    // border-bottom 1px solid dark_5
+    // border 1px solid dark_5
+    // border-radius 4px
+    transition background-color 1s ease-in-out
+    width 100%
+    align left
+    text-align left
+    // margin 3rem
+    // margin-right 3rem
+    // margin-bottom 2rem
+
+details[open]
+    background-color rgba(76,196,191,0.2)
+    border-bottom 1px solid dark_5
+    // z-index 999
+
+details[open] > summary
+    padding-bottom .1rem
+
+details > summary
+    cursor pointer
+    list-style none
+    display flex
+    align-items center
+    justify-content space-between
+    // gap 1rem
+    color dark_2
+    font-family font_p
+
+details > summary::-webkit-details-marker
+    display none
+
+details > summary::after
+    content url(/assets/img/static/arrow_right.svg)
+    display inline-flex
+    rotate (90deg)
+    transition rotate 0.5s ease
+
+details[open] > summary::after
+    transform rotate(180deg)
+
+// details summary > *
+//     display inline
+
+.details_content
+    margin .5rem 1.5rem
+
+.c_img_box
+    grid-area c_img_box
+    background-color white
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
+    position relative
+
+.c_title_box
+    grid-area c_title_box
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows 1fr max-content
+    justify-items center
+    // align-content center
+    width 100%
+    height 100%
+    background-color white
+    // padding-left calc(2rem + 1vw)
+    // padding-right calc(2rem + 1vw)
+    // padding-top calc(2rem + 1vw)
+    // padding-bottom calc(2rem + 1vw)
+    // background-color #efefef
+
+.name_box
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-items center
+    align-content center
+    width 100%
+    height 100%
+    background-color white
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(2rem + 1vw)
+    padding-bottom calc(2rem + 1vw)
+    // background-color #eeeeee
+    align-self center
+
+.c_repr
+    width 100%
+    align-self start
+    text-align left
+    justify-self center
+
+.c_accounts_box
+    grid-area c_accounts_box
+    width 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+
+.accounts_box
+    width 100%
+    align-self end
+    justify-self center
+    text-align center
+    padding 1rem
+    // margin-bottom 1rem
+    // background-color #dddddd
+
+.c_main_info_box
+    grid-area c_main_info_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #dddddd
+
+.c_actor_info_box
+    grid-area c_actor_info_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #cecece
+
+.c_filmography_box
+    grid-area c_filmography_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    padding 1rem
+    // background-color #efefef
+
+.c_gallery_box
+    grid-area c_gallery_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
+
+.c_showreel_box
+    grid-area c_showreel_box
+    width 100%
+    height 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
+
+.feather
+    color dark_1
+    stroke dark_1
+    // fill dark_1
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    margin-right 1rem
+    margin-left 1rem
+    text-decoration none
+    stroke dark_1
+    // stroke-width 1
+    &:hover
+        height calc(1.5rem + 0.1vw)
+        width calc(1.5rem + 0.1vw)
+        margin-right 1rem
+        margin-left 1rem
+        // stroke dark_5
+        // fill dark_5
+        // stroke-width 1
+        transform scale(1.2,1.2)
+
+a .feather
+    text-decoration none
+    stroke dark_2
+
+.filmography_sec
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-items start
+    align-items start
+    justify-content start
+
+.filmography_item
+    display grid
+    grid-template-columns 100px 50px 100px 1fr
+    justify-items start
+    align-items start
+    justify-content start
+
+.str_info_value a:hover
+    color dark_5
+
+.caption
+    position absolute
+    left 0
+    bottom -1.5rem
+    font-family font_p
+    font-size 1rem
+    color dark_2
+    margin 0
+    padding 0
+
+.person_info_label
+  font-family font_p
+  color dark_5
+  font-size 1rem
+  text-align right
+  line-height 1.618
+  font-weight 300
+
+.person_info_value
+  font-family font_p
+  color dark_1
+  font-size 1rem
+  text-align left
+  line-height 1.618
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3266,6 +3719,30 @@ a.btn_popover
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
         padding-top header_height
+
+
+    .grid_creative
+        display grid
+        // width max(70vw, 1600px)
+        width 100%
+        padding-left 10vw
+        padding-right 10vw
+        justify-items center
+        align-items center
+        justify-content center
+        // place-items center
+        // gap 3rem
+        grid-template-columns 1fr 1fr
+        grid-template-rows auto
+        grid-template-areas "c_img_box         c_title_box"\
+                            "c_main_info_box   c_actor_info_box"\
+                            "c_main_info_box   c_filmography_box"\
+                            "c_gallery_box     c_gallery_box"\
+                            "c_showreel_box    c_audioreel_box"
+        // padding-top header_height + 25vw
+        padding-top 150px
+        row-gap 3rem
+        // background-color #dddddd
 
     .grid_cassette
         display grid
@@ -3773,6 +4250,12 @@ a.btn_popover
 
 .bold
     font-weight 500
+
+.regular_400
+    font-weight 400
+
+.light_300
+    font-weight 300
 
 .lh2
     line-height 4rem

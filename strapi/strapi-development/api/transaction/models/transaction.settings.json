@@ -36,9 +36,9 @@
       "model": "user"
     },
     "transactor": {
+      "via": "transactions",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "transactions"
+      "model": "user"
     },
     "seller_business_profile": {
       "model": "business-profile"

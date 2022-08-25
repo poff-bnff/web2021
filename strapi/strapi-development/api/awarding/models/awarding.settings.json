@@ -19,12 +19,12 @@
       "via": "awardings"
     },
     "film": {
-      "via": "awardings",
-      "model": "film"
+      "model": "film",
+      "via": "awardings"
     },
     "person": {
-      "model": "person",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "person"
     },
     "organisation": {
       "model": "organisation",
@@ -76,6 +76,9 @@
     },
     "work_title": {
       "type": "string"
+    },
+    "year": {
+      "type": "integer"
     }
   }
 }

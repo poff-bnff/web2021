@@ -90,6 +90,40 @@
     },
     "domains": {
       "collection": "domain"
+    },
+    "profile_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "addr_coll": {
+      "model": "address"
+    },
+    "addr_comp": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.address"
+    },
+    "showreel": {
+      "type": "string"
+    },
+    "audioreel": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

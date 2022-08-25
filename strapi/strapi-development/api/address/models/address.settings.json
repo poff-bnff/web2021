@@ -17,7 +17,7 @@
     "county": {
       "model": "county"
     },
-    "populated_place": {
+    "municipality": {
       "model": "populated-place"
     },
     "settl_unit": {
@@ -59,7 +59,13 @@
     "add_county": {
       "type": "string"
     },
-    "add_p_place": {
+    "add_municipality": {
+      "type": "string"
+    },
+    "add_country": {
+      "type": "string"
+    },
+    "popul_place": {
       "type": "string"
     }
   }

@@ -110,6 +110,9 @@
     },
     "product_types": {
       "collection": "product-type"
+    },
+    "hidden": {
+      "type": "boolean"
     }
   }
 }

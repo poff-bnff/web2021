@@ -24,13 +24,13 @@ block content
                 h1.product_title_detailed= self.name
 
         section.f_synopsis_box
-                .str_info_meta_gi
-                    .str_info_meta_item
-                if self.description && typeof self.description !== 'undefined'
-                    - var description_md = self.description
-                    .synopsis_gi
-                        if typeof description_md === 'string'
-                            +format(description_md)
+            .str_info_meta_gi
+                .str_info_meta_item
+            if self.description && typeof self.description !== 'undefined'
+                - var description_md = self.description
+                .synopsis_gi
+                    if typeof description_md === 'string'
+                        +format(description_md)
 
         section.f_cred_box
             if self.priceAtPeriod && self.priceAtPeriod[0] && self.priceAtPeriod[0].price
@@ -43,7 +43,12 @@ block content
                 button#directToFillProfile.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profileAddInfoHelp
                 div#paymentLinks
                 br
-                div#feedback
+                div
+                    ul#feedback
+                br
+                div#termsContainer
+                    input(id='termsCheckbox' type='checkbox' name='terms' value='agree')
+                    label.agree_terms_label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
                 br
                 button#paybutton.btn.btn-primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
                 br
@@ -65,6 +70,19 @@ block content
             outline: 4px solid #fd7e14;
         }
 
+        #feedback {
+            color: white;
+            display: inline-block;
+            text-align: left;
+            padding-left: 20px;
+        }
 
+        #termsCheckbox {
+            width: 20px;
+            height: 20px;
+            appearance: checkbox;
+        }
 
-
+        #termsContainer {
+            display: none;
+        }

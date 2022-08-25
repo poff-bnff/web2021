@@ -12,7 +12,7 @@ block content
 
             div.form#thisUserProfile
                 img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
-                div.form-group
+                div.form_group
 
                     if process.env['DOMAIN'] !== 'industry.poff.ee'
                         label.login_label(for='profileImg')= self.label.userprofile.pictureTitle
@@ -21,19 +21,19 @@ block content
 
                     div#imgError
                     input.input_file#profileImg(type='file' name='filename' onchange ='validateaAndPreview(this.files[0])')
-                div.form-group
+                div.form_group
                     label.login_label(for='email')= self.label.userprofile.email
                     div#email.dark(name='email')
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
-                div.form-group
+                div.form_group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
                     input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
                     div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-                div.form-group
+                div.form_group
                     label.login_label(for='lastName')= self.label.userprofile.lastName
                     input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput='validateLastName(this.id)')
                     div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-                div.form-group
+                div.form_group
                     label.login_label(for='gender')= self.label.userprofile.gender
                     select.login_input#gender(name='gender' oninput='validateGender(this.id)')
                         option.login_input(value='male')= self.label.userprofile.genderM
@@ -41,21 +41,21 @@ block content
                         option.login_input(value='other')= self.label.userprofile.genderO
                         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
-                div.form-group
+                div.form_group
                     label.login_label(for='dob')= self.label.userprofile.birthday
                     input.login_input#dob.form-control(type='date' name='dob', placeholder ="yyyy-mm-dd" max="2008-01-01", min="1905-01-01", oninput="validateDate(this.id), validateBDay(this.id)")
                     div#dobHelp(class='valid')= self.label.userprofile.ageHelp
                     div#dateHelp(class='valid')= self.label.userprofile.dateHelp
-                div.form-group
+                div.form_group
                     label.login_label(for='phoneNr')= self.label.userprofile.phone
                     input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phoneNr' oninput='validatePhoneNr(this.id)' autocomplete="off")
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
-                div.form-group
+                div.form_group
                     label.login_label= self.label.userprofile.address
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
                     select.login_input#countrySelection.form-control.gds-cr(class='c_valid' country-data-region-id='citySelection' country-data-default-value='EE' data-language=self.locale required='' oninput= 'validateCountry("countrySelection")')
-                div.form-group
+                div.form_group
                     label.control-label.login_label(for='citySelection')= self.label.userprofile.city
                     select.login_input#citySelection.form-control(required='' oninput= 'validateCity("citySelection")')
                 button.btn.btn_primary(id='saveProfileButton' onclick='validateForm()' style='width: 82px; height: 40px;')= self.label.userprofile.saveButton
@@ -65,17 +65,17 @@ block content
             h3.dark= 'Oled sisse loginud kasutades teenust:'
             #authProviders
 
-                div.form-group
+                div.form_group
                     .btn.btn_primary.text-uppercase#google(style= {display:'none'}) google
                     //- a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
                     //- a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
 
-                div.form-group
+                div.form_group
                     .btn.btn_primary.text-uppercase#facebook(style= {display:'none'}) facebook
                     //- a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
                     //- a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
 
-                div.form-group
+                div.form_group
                     .btn.btn_primary.text-uppercase#password(style= {display:'none'}) PÖFF
                     //- a.btn.btn_primary.text-uppercase#password(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
                     //- a.btn.btn-primary.text-uppercase#remove_password(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'local')" style= {display:'none'}) Remove provider POFF
@@ -85,7 +85,7 @@ block content
                 a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
                 a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
                 br
-            //- div.form-group
+            //- div.form_group
             //-     br
             //-     h3.dark= 'Kustuta konto'
             //-     a.btn.btn_primary#delAccount(onmouseover= 'displayDeleteConfirmText(this); displayRemoveBtn(this)')= 'Delete'

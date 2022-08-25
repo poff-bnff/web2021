@@ -301,6 +301,142 @@ TagSecret: &TagSecret
     en: text
     ru: text
 
+TagLocation: &TagLocation
+    _path: /tag-locations
+    name_et: text
+    name_en: text
+    name_ru: text
+    order: number
+
+TagCategory: &TagCategory
+    _path: /tag-categories
+    name_et: text
+    name_en: text
+    name_ru: text
+    order: number
+    boolean: boolean
+    active: boolean
+    tag_locations:
+        - *TagLocation
+
+Award: &Award
+    _path: /industry-awards
+    title_en: text
+    description:
+        - *Translated
+    title_et: text
+    title_ru: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    awardings:
+        - Awardings
+
+Awarding: &Awarding
+    _path: /awardings
+    date: datetime
+    project: IndustryProject
+    film: Film
+    person: Person
+    organisation: Organisation
+    festival_edition: FestivalEdition
+    titlePrivate: text
+    title_et: text
+    title_en: text
+    title_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    award: *Award
+    actor_role: text
+    work_title: text
+    year: number
+
+Origin: &Origin
+    _path: /origins
+    name: text
+
+RoleAtFilm: &RoleAtFilm
+    _path: /role-at-films
+    roleNamePrivate: (text)
+    roleName: *Translated #(Component)
+    order: (Number)
+    remoteId: (UID)
+
+# Address
+Country: &Country
+    _path: /countries
+    id: 1 (number)
+    code: EE (short text, min len 2, max len 3, uppercase)
+    name_et: Eesti (short text)
+    name_en: Estonia (short text)
+    name_ru: Эстония (short text)
+
+Town: &Town
+    _path: /towns
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    country: *Country #(Component)
+
+Cinema: &Cinema
+    _path: /cinemas
+    town: *Town #(Component)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+
+Hall: &Hall
+    _path: /halls
+    name_et: (text)
+    number: (Number)
+    numberOfSeats: (Number)
+    cinema: *Cinema
+    floor: (Enumeration)
+    name_en: (text)
+    name_ru: (text)
+
+County: &County
+    _path: /counties
+    name_et: text
+    name_en: text
+    name_ru: text
+    country: *Country
+
+Municipality: &Municipality
+    _path: /populated-places
+    name_et: text
+    name_en: text
+    name_ru: text
+    county: *County
+
+Address: &Address
+    _path: /addresses
+    country: *Country
+    county: *County
+    municipality: *Municipality
+    settl_unit: text
+    address_unit: text
+    street_name: text
+    address_number: text
+    appartment: text
+    postal_code: text
+    n_dms: text
+    e_dms: text
+    n: number
+    e: number
+    l_est_x: number
+    l_est_y: number
+    add_county: text
+    add_municipality: text
+    add_country: text
+    popul_place: text
+    gm_embed: text
+    plus_code: text
+
 # Festival
 Festival: &Festival
     _path: /festivals
@@ -333,6 +469,11 @@ FestivalEdition: &FestivalEdition
     slug_et: (UID)
     slug_en: (UID)
     slug_ru: (UID)
+    remoteId: UID
+    projects:
+        - IndustryProject
+    awardings:
+        - *Awarding
 
 # Organisation
 Organisation: &Organisation
@@ -347,6 +488,27 @@ Organisation: &Organisation
     logoBlack: *StrapiMedia
     logoColour: *StrapiMedia
     homepageUrl: (text)
+    awardings:
+        - *Awarding
+    festival_editions:
+        - *FestivalEdition
+    domains:
+        - *Domain
+    profile_img: *StrapiMedia
+    role_at_films:
+        - *RoleAtFilm
+    addr_coll: *Address
+    showreel: text
+    audioreel: *StrapiMedia
+    name_et: text
+    name_en: text
+    name_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    remote_img:
+        - img_url: text
+    origin: *Origin
 
 PresentedBy: &PresentedBy
     presentedByText: *Translated
@@ -835,45 +997,7 @@ FilmikooliArticle: &FilmikooliArticle
         - *Organisation
     public: (boolean)
 
-Language: &Language
-    _path: /languages
-    id: 8 (number)
-    code: et (short text, min len 2, max len 3, lowercase)
-    name_et: Eesti (short text)
-    name_en: Estonian (short text)
-    name_ru: Эстонский (short text)
-
-Country: &Country
-    _path: /countries
-    id: 1 (number)
-    code: EE (short text, min len 2, max len 3, uppercase)
-    name_et: Eesti (short text)
-    name_en: Estonia (short text)
-    name_ru: Эстония (short text)
-
-Town: &Town
-    _path: /towns
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-    country: *Country #(Component)
-
-Cinema: &Cinema
-    _path: /cinemas
-    town: *Town #(Component)
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-
-Hall: &Hall
-    _path: /halls
-    name_et: (text)
-    number: (Number)
-    numberOfSeats: (Number)
-    cinema: *Cinema
-    floor: (Enumeration)
-    name_en: (text)
-    name_ru: (text)
+#Location
 
 Location: &Location
     _path: /locations
@@ -883,6 +1007,47 @@ Location: &Location
     hall: *Hall #(Component)
     name: (text)
     remoteId: (UID)
+    name_et: text
+    name_en: text
+    name_ru: text
+    addr_coll: *Address
+    description_et: text
+    description_en: text
+    description_ru: text
+    webpage_url: text
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    visitest_id: UID
+    domains:
+        - *Domain
+    festival_editions:
+        - *FestivalEdition
+    profile_img: *StrapiMedia
+    images:
+        - *StrapiMedia
+    public: boolean
+    tag_secrets:
+        - *TagSecret
+    repr_p_name: text
+    repr_phone: text
+    repr_email: text
+    repr_org_name: text
+    repr_org_url: text
+    tag_catgories:
+        - *TagCategory
+    tag_keywords:
+        - *TagKeyword
+    showreel: text
+    tag_location: *TagLocation
+
+Language: &Language
+    _path: /languages
+    id: 8 (number)
+    code: et (short text, min len 2, max len 3, lowercase)
+    name_et: Eesti (short text)
+    name_en: Estonian (short text)
+    name_ru: Эстонский (short text)
 
 # Menu
 
@@ -1057,26 +1222,169 @@ FilmikooliMenu: &FilmikooliMenu
         - *FilmikooliSubMenuItem
     publish: (boolean)
 
+#Industy ...
+
+IndustryPersonType: &IndustryPersonType
+    _path: /industry-person-types
+    type: (text)
+    description: (Rich text)
+
 # Person & Team
+
+ShoeSize: &ShoeSize
+    _path: /shoe-sizes
+    name: text
+    size_eu: number
+    size_us: number
+    size_uk: number
+    foot_length_from: number
+    foot_length_to: number
+
+HairColour: &HairColour
+    _path: /hair-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+HairLength: &HairLength
+    _path: /hair-lengths
+    name_et: text
+    name_en: text
+    name_ru: text
+
+PitchOfVoice: &PitchOfVoice
+    _path: /pitch-of-voices
+    name_et: text
+    name_en: text
+    name_ru: text
+
+Stature: &Stature
+    _path: /statures
+    name_et: text
+    name_en: text
+    name_ru: text
+
+TypeOfWork: &TypeOfWork
+    _path: /type-of-works
+    name_et: text
+    name_en: text
+    name_ru: text
+
+EyeColour: &EyeColour
+    _path: /eye-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+Filmography: &Filmography
+    _path: /filmographies
+    type_of_work: *TypeOfWork
+    year_from: number
+    year_to: number
+    work_name: text
+    work_url: text
+    tag_film_types:
+        - *TagFilmType
+    role_at_films:
+        - *RoleAtFilm
+    actor_role: text
+    org_name: text
+    org_url: text
+    org_department: text
+    degree: text
+    work_director: text
+
 Person: &Person
     _path: /people
     firstName: (text)
     lastName: (text)
-    firstNameLastName: (text)
     picture: *StrapiMedia #(Component)
     gender: *Gender #(Component)
     phoneNr: (text)
     eMail: (text)
     dateOfBirth: (Date)
-    countries: #(Component (repeatable))
-        - *Country
+    # countries: #(Component (repeatable)) # see on muutunud ainsuseks, st välja nimi teine ja olemasolevat infot ei tagastata
+    #     - *Country
+    country: *Country
     organisations: #(Component (repeatable))
         - *Organisation
+    profession: (text)
+    firstNameLastName: (text)
     biography: *Translated #(Rich text)
     filmography: *Translated #(Rich text)
-    profession: (text)
     remoteId: (UID)
     pageUrl: (text)
+    awardings:
+        - *Awarding
+    festival_editions:
+        - *FestivalEdition
+    domains:
+        - *Domain
+    role_at_films:
+        - *RoleAtFilm
+    height_cm: number
+    weight_kg: number
+    eye_colour: *EyeColour
+    hair_colour: *HairColour
+    shoe_size: *ShoeSize
+    stature: *Stature
+    pitch_of_voice: *PitchOfVoice
+    eventival_id: UID
+    ev_account_email: email
+    ev_contact_email: email
+    ev_country: *Country
+    ev_org_name: text
+    ev_job_title: text
+    bio_et: text
+    bio_en: text
+    bio_ru: text
+    profile_img: *StrapiMedia
+    ev_profession: text
+    ev_flow: text
+    ev_img_url: text
+    addr_coll: *Address
+    # addr_comp: vist ei kasuta
+    hair_lenght: *HairLength
+    native_lang: *Language
+    # languages: #kadunud v4li, kas oli info sees?
+    #     - *Language
+    other_lang:
+        - *Language
+    images:
+        - *StrapiMedia
+    showreel: text
+    audioreel: *StrapiMedia
+    acting_age_from: number
+    acting_age_to: number
+    acc_imdb: text
+    acc_efis: text
+    acc_castupload: text
+    acc_instagram: text
+    acc_fb: text
+    acc_other: text
+    tag_secrets:
+        - *TagSecret
+    webpage_url: text
+    industry_person_types:
+        - *IndustryPersonType
+    tag_looking_fors:
+        - *TagLookingFor
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    public: boolean
+    repr_p_name: text
+    repr_phone: text
+    repr_email: text
+    repr_org_name: text
+    repr_org_url: text
+    acc_etalenta: text
+    skills_et: text
+    skills_en: text
+    skills_ru: text
+    filmographies:
+        - *Filmography
+    origin: *Origin
 
 TeamMember: &TeamMember
     person: *Person #(Component)
@@ -1156,7 +1464,7 @@ EventType: &EventType
     description_et: text
     description_en: text
     description_ru: text
-   
+
 ScreeningType: &ScreeningType
     _path: /screening-types
     name: (text)
@@ -1170,13 +1478,6 @@ Trailer: &Trailer
 QaClip: &QaClip
     url: https://www.youtube.com/watch?v=rCztl76AmrQ (Text)
     type: Conversation (Enumeration)
-
-RoleAtFilm: &RoleAtFilm
-    _path: /role-at-films
-    roleNamePrivate: (text)
-    roleName: *Translated #(Component)
-    order: (Number)
-    remoteId: (UID)
 
 RolePerson: &RolePerson
     order: (Number)
@@ -1201,8 +1502,6 @@ OrderedCountries: &OrderedCountries
 Film: &Film
     _path: /films
     id: 1 (number)
-    remoteId: (UID)
-    order: (number)
     title_et: Nähtamatu elu (short text)
     title_en: Invisible Life of Eurídice Gusmãos (short text)
     title_ru: Департамент здоровьяs (short text)
@@ -1210,6 +1509,32 @@ Film: &Film
     year: 2019 (number)
     runtime: 139 (number)
     synopsis: *Translated #(Component, rich)
+    tags: *Tags #(Component)
+    slug_et: naehtamatu-elu (UID, No spaces)
+    slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
+    slug_ru: departament-zdorovya (UID, No spaces)
+    festival_editions:
+        -   *FestivalEdition
+    credentials: *Credentials
+    presentedBy: *PresentedBy
+    world_sales: #(Component (repeatable))
+        - *Organisation
+    subtitles: #(Component (repeatable))
+        -   *Language
+    remoteId: (UID)
+    languages: #(Component (repeatable))
+        -   *Language
+    order: (number)
+    orderedCountries: #(Component (repeatable))
+        - *OrderedCountries
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+    multi_and_single: (boolean)
+    awardings:
+        - *Awarding
+    other_festivals:
+        - *Festival
+    vialog_id: (text)
     stills: #(Component (repeatable))
         - *StrapiMedia
     posters: #(Component (repeatable))
@@ -1218,28 +1543,6 @@ Film: &Film
         - *Trailer
     QaClip: #(Component (repeatable))
         - *QaClip
-    tags: *Tags #(Component)
-    slug_et: naehtamatu-elu (UID, No spaces)
-    slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
-    slug_ru: departament-zdorovya (UID, No spaces)
-    festival_editions:
-        -   *FestivalEdition
-    languages: #(Component (repeatable))
-        -   *Language
-    subtitles: #(Component (repeatable))
-        -   *Language
-    other_festivals:
-        -   *Festival
-    credentials: *Credentials
-    presentedBy: *PresentedBy
-    world_sales: #(Component (repeatable))
-        - *Organisation
-    orderedCountries: #(Component (repeatable))
-        - *OrderedCountries
-    additInfo: *Translated #(rich text)
-    foreignUrl: (text)
-    multi_and_single: (boolean)
-    vialog_id: (text)
     chat_w_name: (text)
 
 OrderedFilm: &OrderedFilm
@@ -1336,72 +1639,6 @@ LabelGroup:
     label: #(Component (repeatable))
         - *Label
 
-#Filikool
-CourseTags: &CourseTags
-    keywords: #(Component (repeatable))
-      - *TagKeyword
-
-Event: &Event
-    _path: /events
-    code: (Number)
-    ticketingUrl: (text) # suunamine kursusele
-    startDate: (Datetime)
-    endDate: (Datetime)
-    durationTotal: (number)
-    name: *Translated
-    location: *Location
-    extraInfo: *Translated
-    bookingUrl: (text)
-    course: (backreference) #*Course
-    price: (Number)
-
-Course: &Course
-    _path: /courses
-    order: (number)
-    titleOriginal: (short text)
-    title_et: (short text)
-    title_en: (short text)
-    title_ru: (short text)
-    slug_et: (UID, title_et)
-    slug_en: (UID, title_en)
-    slug_ru: (UID, title_ru)
-    year: (number)
-    startDate: (Datetime)
-    endDate: (Datetime)
-    volume: (short text)
-    stills: #(Component (repeatable))
-        - *StrapiMedia
-    posters: #(Component (repeatable))
-        - *StrapiMedia
-    trailer: #(Component (repeatable))
-        - *Trailer
-    QaClip: #(Component (repeatable))
-        - *QaClip
-    tags: *CourseTags #(Component)
-    languages: #(Component (repeatable))
-        - *Language
-    credentials: *Credentials
-    presentedBy: *PresentedBy
-    additInfo: *Translated #(rich text)
-    foreignUrl: (text)
-    events:
-        - *Event #(backreference)
-    domains: #(Component (repeatable))
-        - *Domain
-
-FrontPageCourses: &FrontPageCourses
-    _path: /front-page-courses
-    title: *Translated
-    lead: *Translated #(Rich)
-    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
-    namePrivate: (text)
-    courses_et: #(Component (repeatable))
-        - *Course
-    courses_en: #(Component (repeatable))
-        - *Course
-    courses_ru: #(Component (repeatable))
-        - *Course
-
 #Industry
 FilmInFilmography: &FilmInFilmography
     order: (Number)
@@ -1419,15 +1656,11 @@ FilmInFilmography: &FilmInFilmography
         - *StrapiMedia
     trailerUrl: (text)
 
-Filmography: &Filmography
+
+FilmographyComp: &FilmographyComp
     text: (Rich text)
     film: #(Component (repeatable))
         - *FilmInFilmography
-
-IndustryPersonType: &IndustryPersonType
-    _path: /industry-person-types
-    type: (text)
-    description: (Rich text)
 
 IndustryPerson: &IndustryPerson
     _path: /industry-people
@@ -1443,7 +1676,7 @@ IndustryPerson: &IndustryPerson
         - *StrapiMedia
     clipUrl: (text)
     website: (text)
-    filmography: *Filmography
+    filmography: *FilmographyComp
     industry_person_types: #(Component (repeatable))
         - *IndustryPersonType
     lookingFor: (text)
@@ -1565,10 +1798,15 @@ IndustryProject: &IndustryProject
     slug: (UID)
     tag_genres:
         - *TagGenre
+    completionYear: number
+    imdbLink: text
     editions: #(Component (repeatable))
         - *FestivalEdition
+    awardings:
+        - *Awarding
     tag_looking_fors:
         - *TagLookingFor
+    public: boolean
 
 Channel: &Channel
     _path: /channels
@@ -1627,6 +1865,72 @@ IndustryMenu: &IndustryMenu
     subMenuItem: #(Component (repeatable))
         - *IndustrySubMenuItem
     publish: (boolean)
+
+#Filikool
+CourseTags: &CourseTags
+    keywords: #(Component (repeatable))
+      - *TagKeyword
+
+Event: &Event
+    _path: /events
+    code: (Number)
+    ticketingUrl: (text) # suunamine kursusele
+    startDate: (Datetime)
+    endDate: (Datetime)
+    durationTotal: (number)
+    name: *Translated
+    location: *Location
+    extraInfo: *Translated
+    bookingUrl: (text)
+    course: (backreference) #*Course
+    price: (Number)
+
+Course: &Course
+    _path: /courses
+    order: (number)
+    titleOriginal: (short text)
+    title_et: (short text)
+    title_en: (short text)
+    title_ru: (short text)
+    slug_et: (UID, title_et)
+    slug_en: (UID, title_en)
+    slug_ru: (UID, title_ru)
+    year: (number)
+    startDate: (Datetime)
+    endDate: (Datetime)
+    volume: (short text)
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    posters: #(Component (repeatable))
+        - *StrapiMedia
+    trailer: #(Component (repeatable))
+        - *Trailer
+    QaClip: #(Component (repeatable))
+        - *QaClip
+    tags: *CourseTags #(Component)
+    languages: #(Component (repeatable))
+        - *Language
+    credentials: *Credentials
+    presentedBy: *PresentedBy
+    additInfo: *Translated #(rich text)
+    foreignUrl: (text)
+    events:
+        - *Event #(backreference)
+    domains: #(Component (repeatable))
+        - *Domain
+
+FrontPageCourses: &FrontPageCourses
+    _path: /front-page-courses
+    title: *Translated
+    lead: *Translated #(Rich)
+    domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
+    namePrivate: (text)
+    courses_et: #(Component (repeatable))
+        - *Course
+    courses_en: #(Component (repeatable))
+        - *Course
+    courses_ru: #(Component (repeatable))
+        - *Course
 
 #CourseEvent
 
@@ -1696,6 +2000,23 @@ CourseEvent: &CourseEvent
     publish_et: boolean
     publish_en: boolean
     publish_ru: boolean
+    remote_id: UID
+    product_categories:
+        - ProductCategory
+    industry_projects:
+        -   *IndustryProject
+    publishFrom: datetime
+    publishUntil: datetime
+    tags: *CourseTags
+    presentedBy:
+        *PresentedBy
+    languages:
+        -   *Language
+    event_types:
+        -   *EventType
+    event_access: *EventAccess
+    chat_w_name: text
+
 
 #DiscoveryCampus
 
@@ -1718,7 +2039,7 @@ DisCampPerson: &DisCampPerson
         - *StrapiMedia
     clipUrl: (text)
     website: (text)
-    filmography: *Filmography
+    filmography: *FilmographyComp
     discamp_person_types: #(Component (repeatable))
         - *DisCampPersonType
     lookingFor: (text)
@@ -2269,6 +2590,34 @@ DisCampFooter: &DisCampFooter
         - *SupSecDisCamp
 
 # Product & Payment
+
+DeliveryType: &DeliveryType
+    _path: /delivery-types
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    active: boolean
+    delivery_prices:
+        name_private: text
+        countries:
+            - *Country
+        price: number
+        info_et: text
+        info_en: text
+        info_ru: text
+        days_before: number
+    days_before: number
+
+Delivery: &Delivery
+    _path: /deliveries
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
 
 TicketingRight: &TicketingRight
     ticketType: (text)

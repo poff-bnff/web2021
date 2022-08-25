@@ -23,6 +23,11 @@ const sanitizeUser = user =>
     model: strapi.query('user', 'users-permissions').model,
   });
 
+const sanitizePerson = person =>
+  sanitizeEntity(person, {
+    model: strapi.query('person').model,
+  });
+
 const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
@@ -876,6 +881,7 @@ module.exports = {
       }
     }
   },
+<<<<<<< HEAD
   async roleController(ctx) {
     const { id } = ctx.state.user;
     const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
@@ -976,5 +982,118 @@ module.exports = {
       }
       return contentCopy
     }
+=======
+  async personForm(ctx) {
+
+    async function uploadPersonPicture(file, firstName, lastName, prefix) {
+      console.log('Uploading profile picture');
+
+      const firstNameSlug = slugify(firstName)
+      const lastNameSlug = slugify(lastName)
+
+      let splitter = file.name.split('.')
+      let fileExt = splitter[splitter.length - 1]
+      let fileName = `${prefix}_${firstNameSlug}_${lastNameSlug}.${fileExt}`
+
+      const fileInfo = [
+        {
+          "caption": file.name,
+          "alternativeText": `${firstName} ${lastName}`
+        }
+      ];
+
+      const uploadedPicture = await strapi.plugins.upload.services.upload.upload({
+        data: {
+          fileInfo: fileInfo
+        }, //mandatory declare the data(can be empty), otherwise it will give you an undefined error.
+        files: {
+          path: file.path,
+          name: fileName,
+          type: mime.getType(file.name) || file.type, // mime type of the file
+          size: file.size,
+        },
+      });
+      return uploadedPicture[0].id
+    }
+
+    let personFormData = { ...JSON.parse(ctx.request.body.data) }
+
+    // Image check
+    let file = ctx.request.files['files.picture']
+    if (file) {
+      if (!file.type.includes("image")) {
+        console.log("File is not an image.", file.type, file);
+        return ctx.badRequest('Not an image');
+      } else if (file.size / 1024 / 1024 > 5) {
+        console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
+        return ctx.badRequest('Image too bulky');
+      }
+    }
+
+    // Image upload and assign to personFormData
+    const { files } = parseMultipartData(ctx);
+    if (files.picture) {
+      const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
+      personFormData.picture = uploadedPicture
+    }
+
+    if (files.images) {
+
+      if (!Array.isArray(files.images)) {
+        files.images = [files.images]
+      }
+
+      if (!personFormData.images) { personFormData.images = [] }
+      for (let index = 0; index < files.images.length; index++) {
+        const image = files.images[index];
+        const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName, `G_${index+1}`)
+        personFormData.images.push(uploadedPicture)
+        console.log('uploadedPicture', uploadedPicture);
+      }
+    }
+    // Create new entry in address collection and assign to person
+    let personFormAddressData = personFormData.address
+    if (personFormAddressData) {
+      let form_address = await strapi.services['address'].create(personFormAddressData)
+      personFormData.addr_coll = form_address.id
+      delete personFormData.address
+    }
+
+    // Create new entry in filmographies collection and assign to person
+    let personFormFilmographiesData = personFormData.filmographies
+    console.log('personFormFilmographiesData', personFormFilmographiesData);
+    if (personFormFilmographiesData.length) {
+      let filmographiesIds = []
+      for (let i = 0; i < personFormFilmographiesData.length; i++) {
+        const filmography = personFormFilmographiesData[i];
+        let form_filmographies = await strapi.services['filmography'].create(filmography)
+        filmographiesIds.push(form_filmographies.id)
+      }
+      personFormData.filmographies = filmographiesIds
+    }
+
+    personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
+
+    let newPerson = await strapi.services['person'].create(personFormData)
+    ctx.send(sanitizeUser(newPerson));
+  },
+  async getPersonForm(ctx) {
+
+    const { person } = ctx.request.body.data.person;
+
+    // let people_ids = person.map(e => e.id)
+
+    // if(people_ids.length < 1) {
+    //   return
+    // }
+
+    // let persons =  await strapi.services['person'].find({id_in : people_ids})
+
+    // console.log({persons})
+    return person
+
+>>>>>>> c679c81b0547877595ed7591200b6aafc58ecea3
   }
 };
+
+
