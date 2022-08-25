@@ -554,51 +554,51 @@ block content
                             //- if filmography.role_at_films
                             //-     .person_info_value= filmography.role_at_films.map(roleAtFilm => roleAtFilm.roleName).join(', ')
 
-            //- if self.filmographies
-            //-     - var filmographies = self.filmographies
-            //-     section.filmographies_box
-            //-         .dir_bio.dark_1.padding_2
-            //-             if filmographies.text
-            //-                 p.dark_1
-            //-                     +format(filmographies.text)
+                //- if self.filmographies
+                //-     - var filmographies = self.filmographies
+                //-     section.filmographies_box
+                //-         .dir_bio.dark_1.padding_2
+                //-             if filmographies.text
+                //-                 p.dark_1
+                //-                     +format(filmographies.text)
 
 
-                    if filmographies.film
-                        .grid_films
-                            each film in filmographies.film
-                                a.card_film(href = film.foreignUrl || '#')
-                                    .container_frame_16_9
-                                        if film.images && film.images.length > 0
-                                            - var image = film.images[0]
-                                            img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
-                                        else
-                                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
-                                    if film.title
-                                        .card_film_title
-                                            h3.film_title_locale.dark_1= film.title
-                                    .card_film_info
-                                        if film.year
-                                            .str_info_grid_3
-                                                .str_info_label.dark_semi= self.label.film.year
-                                                .person_info_value= film.year
-                                        //- if film.trailerUrl
-                                        //-     .str_info_grid_3
-                                        //-         .str_info_label.dark_semi= self.label.film.trailer
-                                        //-         a.person_info_value(href= film.trailerUrl)= self.label.film.trailer
-                                        if film.synopsis
-                                            p.dark_1
-                                                +format(film.synopsis)
+                        if filmographies.film
+                            .grid_films
+                                each film in filmographies.film
+                                    a.card_film(href = film.foreignUrl || '#')
+                                        .container_frame_16_9
+                                            if film.images && film.images.length > 0
+                                                - var image = film.images[0]
+                                                img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
+                                            else
+                                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
+                                        if film.title
+                                            .card_film_title
+                                                h3.film_title_locale.dark_1= film.title
+                                        .card_film_info
+                                            if film.year
+                                                .str_info_grid_3
+                                                    .str_info_label.dark_semi= self.label.film.year
+                                                    .person_info_value= film.year
+                                            //- if film.trailerUrl
+                                            //-     .str_info_grid_3
+                                            //-         .str_info_label.dark_semi= self.label.film.trailer
+                                            //-         a.person_info_value(href= film.trailerUrl)= self.label.film.trailer
+                                            if film.synopsis
+                                                p.dark_1
+                                                    +format(film.synopsis)
 
 
 
 
-                                    //- if film.
-                                    //- a(href=film.trailerUrl) Trailer
+                                        //- if film.
+                                        //- a(href=film.trailerUrl) Trailer
 
 
         if self.images
             //- KARUSELL Industry projekti piltidega
-            section#carouselExampleIndicators.f_img_slider_box.100vh.bg_white.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
+            section#carouselExampleIndicators.f_img_slider_box.bg_white.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
                 ol.carousel-indicators
                     if self.images && self.images.length >1
                         each val, index in self.images
@@ -634,6 +634,7 @@ block content
                         span.sr-only Next
                         //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
 
+            //- section.c_showreel_box
         if self.showreel
             section#trailer.f_trailer_box.bg_white
                 .ratio.ratio-16x9.m-0.p-0
