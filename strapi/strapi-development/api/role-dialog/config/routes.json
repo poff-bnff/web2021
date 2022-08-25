@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/role-dialog",
+      "handler": "role-dialog.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/role-dialog",
+      "handler": "role-dialog.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/role-dialog",
+      "handler": "role-dialog.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

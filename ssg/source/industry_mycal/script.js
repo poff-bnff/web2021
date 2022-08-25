@@ -10,9 +10,7 @@ if (!validToken) {
 }
 
 const selectors = {
-    types: document.getElementById('types_select'),
     categories: document.getElementById('categories_select'),
-    // channels: document.getElementById('channels_select'),
     // projects: document.getElementById('projects_select'),
     persons: document.getElementById('persons_select'),
     starttimes: document.getElementById('starttimes_select'),
@@ -139,17 +137,9 @@ function toggleFilters(exclude_selector_name, ids) {
 
             let count = searcharray
                 .filter(screening => {
-                    const compare_with = selector_name === 'types' ? value : selectors.types.value;
-                    return compare_with === '' ? true : screening.types.includes(compare_with)
-                })
-                .filter(screening => {
                     const compare_with = selector_name === 'categories' ? value : selectors.categories.value;
                     return compare_with === '' ? true : screening.categories.includes(compare_with)
                 })
-                // .filter(screening => {
-                //     const compare_with = selector_name === 'channels' ? value : selectors.channels.value;
-                //     return compare_with === '' ? true : screening.channels.includes(compare_with)
-                // })
                 // .filter(screening => {
                 //     const compare_with = selector_name === 'projects' ? value : selectors.projects.value;
                 //     return compare_with === '' ? true : screening.projects.includes(compare_with)
@@ -179,17 +169,9 @@ search_input.addEventListener('keyup', e => {
     toggleAll();
 });
 
-selectors.types.addEventListener('change', e => {
-    toggleAll('types');
-});
-
 selectors.categories.addEventListener('change', e => {
     toggleAll('categories');
 });
-
-// selectors.channels.addEventListener('change', e => {
-//     toggleAll('channels');
-// });
 
 // selectors.projects.addEventListener('change', e => {
 //     toggleAll('projects');
@@ -205,9 +187,7 @@ selectors.starttimes.addEventListener('change', e => {
 
 function unselect_all() {
     search_input.value = '';
-    selectors.types.selectedIndex = 0;
     selectors.categories.selectedIndex = 0;
-    // selectors.channels.selectedIndex = 0;
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
     selectors.starttimes.selectedIndex = 0;
@@ -218,26 +198,12 @@ function unselect_all() {
 function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
-            if (selectors.types.value) {
-                return screening.types.includes(selectors.types.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
             if (selectors.categories.value) {
                 return screening.categories.includes(selectors.categories.value)
             } else {
                 return true
             }
         })
-        // .filter(screening => {
-        //     if (selectors.channels.value) {
-        //         return screening.channels.includes(selectors.channels.value)
-        //     } else {
-        //         return true
-        //     }
-        // })
         // .filter(screening => {
         //     if (selectors.projects.value) {
         //         return screening.projects.includes(selectors.projects.value)

@@ -51,6 +51,8 @@ module.exports = {
   buyProductCb: resolveControllerMethod('buyProductCb'),
   personForm: resolveControllerMethod('personForm'),
   getPersonForm: resolveControllerMethod('getPersonForm'),
+  roleController: resolveControllerMethod('roleController'),
+
 
   /**
    * Retrieve user records.
@@ -138,7 +140,7 @@ module.exports = {
     const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
     const sanitized = sanitizeUser(fetchedUser)
 
-    if(sanitized.provider.split(',').includes('eventivalindustry')) {
+    if (sanitized.provider.split(',').includes('eventivalindustry')) {
       const getEventivalProfile = await getEventivalBadges(sanitized.email)
       sanitized.industry_profile = getEventivalProfile && getEventivalProfile.statusCode === 200 ? getEventivalProfile.body : null
     }

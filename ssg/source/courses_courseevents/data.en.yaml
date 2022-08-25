@@ -1,0 +1,3 @@
+path: courses
+data:
+    courses: /_fetchdir/courseevents.en.yaml

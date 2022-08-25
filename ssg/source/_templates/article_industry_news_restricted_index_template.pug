@@ -1,0 +1,10 @@
+include /_templates/mixins.pug
+
+//- Siin on tulevane HTML content mis õigete õiguste korral kasutajale kuvatakse
+if typeof(self.lead) !== 'object'
+    +format(self.lead).font_weight_600.dark_1
+//- if self.lead
+//-     p.font_weight_600.dark_1= self.lead
+//- p= self.articleContents_et
+if typeof(self.contents) !== 'object'
+    +format(self.contents).dark_1

@@ -4,8 +4,8 @@ data:
     articleTrioBlock: /_fetchdir/articletrioblock.en.yaml
     sixFilms: /_fetchdir/sixfilms.en.yaml
     articles: /_fetchdir/articles.en.yaml
-    industryevents: /_fetchdir/industryevents.en.yaml
-    channels: /_fetchdir/channels.en.yaml
+    # industryevents: /_fetchdir/industryevents.en.yaml
+    # channels: /_fetchdir/channels.en.yaml
     frontPageCourses: /_fetchdir/frontpagecourses.en.yaml
 
 

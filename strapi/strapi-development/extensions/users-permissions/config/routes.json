@@ -464,6 +464,14 @@
         "prefix": "",
         "description": "Retrieve all user related persons"
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/rolecheck",
+      "handler": "User.roleController",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
