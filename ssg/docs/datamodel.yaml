@@ -1283,6 +1283,7 @@ Filmography: &Filmography
     org_url: text
     org_department: text
     degree: text
+    work_director: text
 
 Person: &Person
     _path: /people
@@ -1645,6 +1646,7 @@ FilmInFilmography: &FilmInFilmography
     images:
         - *StrapiMedia
     trailerUrl: (text)
+
 
 FilmographyComp: &FilmographyComp
     text: (Rich text)
