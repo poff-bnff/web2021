@@ -1,0 +1,4 @@
+path: industry-events
+data:
+    industryevents: /_fetchdir/courseevents.en.yaml
+    # channels: /_fetchdir/channels.en.yaml

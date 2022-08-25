@@ -6,10 +6,10 @@
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
 
- const fs = require('fs')
- const yaml = require('js-yaml')
- const path = require('path')
- const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
+const fs = require('fs')
+const yaml = require('js-yaml')
+const path = require('path')
+const ssgDir = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg')
 
 const thereIsSomeWhereToLinkTo = [
   'programme',
@@ -28,6 +28,7 @@ const thereIsSomeWhereToLinkTo = [
   'screening',
   'event',
   'course',
+  'course-event',
   'industry-article',
   'industry-category',
   'industry-project',
@@ -96,7 +97,7 @@ const addS = async (result) => {
     let paths = []
     if (a.action !== 'delete' && a.action !== 'archive') {
       try {
-        paths = await fetchChangedSlug(a.build_args, domainLocales[a.site])
+        paths = await fetchChangedSlug(a, domainLocales[a.site])
       } catch (error) {
         console.log('Error in fetchChangedSlug: ', error);
       }
@@ -116,8 +117,8 @@ const addS = async (result) => {
 }
 
 const fetchChangedSlug = async (args, domainLanguages) => {
-  if (!args) { return null }
-  const [collectionType, id] = args.split(' ')
+  if (!args.build_args) { return null }
+  const [collectionType, id] = args.build_args.split(' ')
   let result = await strapi.query(collectionType).findOne({ id: id });
 
   let slug = null
@@ -144,11 +145,11 @@ const fetchChangedSlug = async (args, domainLanguages) => {
 
   if (thereIsSomeWhereToLinkTo.includes(collectionType)) {
 
-    
-    if (result.article_types && result.article_types.length === 0){
-      return {articleTypeMissing: true}
+
+    if (result.article_types && result.article_types.length === 0) {
+      return { articleTypeMissing: true }
     }
-    
+
     if (result.article_types) {
       for (const articleType of result.article_types) {
         for (const key in articleType) {
@@ -161,6 +162,16 @@ const fetchChangedSlug = async (args, domainLanguages) => {
         paths.push(`${articleTypeSlug}/${slug}`)
       }
       return paths
+    }
+
+    if (collectionType === 'course-event') {
+      let courseEventPath
+      if (args.site === 'filmikool.poff.ee' || args.site === 'discoverycampus.poff.ee') {
+        courseEventPath = 'courses'
+      }else if (args.site === 'industry.poff.ee') {
+        courseEventPath = 'events'
+      }
+      return [`${courseEventPath}/${slug ? slug : ''}`]
     }
 
     return [`${pathBeforeSlug[collectionType] ? pathBeforeSlug[collectionType] : ''}${slug ? slug : ''}`]
