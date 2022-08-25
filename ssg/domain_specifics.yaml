@@ -87,6 +87,9 @@ programmes_festival_editions:
 active_industry_editions:
     - 12
 
+active_filmikool_editions:
+    - 12
+
 active_discamp_editions:
     - 50
 
@@ -175,7 +178,9 @@ locales:
         - en
         - ru
     discoverycampus.poff.ee:
+        - et
         - en
+        - ru
 
 defaultLocale:
     poff.ee: et
@@ -482,3 +487,39 @@ libraryImageThumbnailResizeOption:
     fit: inside
 
 # Image resize options according to prefix END
+
+# RoleDialog domain and type based mapping for simplearticles that are displayed when user is not allowed to access the content
+role_dialog:
+    poff.ee:
+        article: poffi_article
+        courseEvent: poffi_courseevent
+    justfilm.ee:
+        article: just_filmi_article
+        courseEvent: just_filmi_courseevent
+    kinoff.poff.ee:
+        article: kinoffi_article
+        courseEvent: kinoffi_courseevent
+    industry.poff.ee:
+        article: industry_article
+        courseEvent: industry_courseevent
+    shorts.poff.ee:
+        article: shortsi_article
+        courseEvent: shortsi_courseevent
+    hoff.ee:
+        article: hoffi_article
+        courseEvent: hoffi_courseevent
+    kumu.poff.ee:
+        article: kumu_article
+        courseEvent: kumu_courseevent
+    tartuff.ee:
+        article: tartuffi_article
+        courseEvent: tartuffi_courseevent
+    oyafond.ee:
+        article: bruno_article
+        courseEvent: bruno_courseevent
+    filmikool.poff.ee:
+        article: filmikooli_article
+        courseEvent: filmikooli_courseevent
+    discoverycampus.poff.ee:
+        article: discamp_article
+        courseEvent: discamp_courseevent

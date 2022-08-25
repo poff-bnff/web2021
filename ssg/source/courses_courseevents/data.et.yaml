@@ -1,0 +1,3 @@
+path: kursused
+data:
+    courses: /_fetchdir/courseevents.et.yaml

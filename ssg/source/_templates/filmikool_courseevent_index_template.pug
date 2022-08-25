@@ -1,0 +1,427 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+
+    main.grid_film(id=self.id)
+
+        section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
+            ol.carousel-indicators
+                if self.images
+                    each val, index in self.images
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+            .carousel-inner.container_frame_16_9
+                if self.images
+                    each val, index in self.images
+                        if index == 0
+                            .carousel-item.active.container_contents_16_9
+                                img.d-block.container_contents_16_9(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
+                        else
+                            .carousel-item.container_contents_16_9
+                                img.d-block.container_contents_16_9(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
+                else
+                    .carousel-item.active.container_contents_16_9
+                        img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+
+            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+                // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='15 18 9 12 15 6')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+                // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='9 18 15 12 9 6')
+                span.sr-only Next
+
+
+        section.f_title_box
+
+            .premiere_type
+                if self.tags && self.tags.premiere_types && self.tags.premiere_types[0]
+                    //- Kui on mitu, eraldatakse komadega, kui vaid esimest ühte vaja, siis self.tags.premiere_types[0]
+                    p.premiere_type= self.tags.premiere_types.join(', ')
+
+            h1.film_title_detailed= self.title
+            .str_info_blokk_1
+
+                if self.credentials && self.credentials.rolePersonsByRole && self.credentials.rolePersonsByRole.director && self.credentials.rolePersonsByRole.director[0]
+                    .str_info_grid_3
+                        .str_info_label= self.label.film.director
+                        .str_info_value.clr_primary= self.credentials.rolePersonsByRole.director.join(', ')
+
+        section.f_synopsis_box
+
+            .str_info_meta_gi
+                .str_info_meta_item
+                    if self.tags
+
+                        if self.tags.keywords && self.tags.keywords[0]
+                            .str_info_meta_label.dark_semi= self.label.filmikool.targetGroup
+                            .str_info_meta_festival= self.tags.keywords.join(', ')
+
+            //- FILM ADDITIONAL INFO (ADDITINFO)
+            .synopsis_gi
+                if self.short_descr
+                    - var shortDesc = self.short_descr
+                    if typeof shortDesc === 'string'
+                        +format(shortDesc)
+                if self.description
+                    - var longDesc = self.description
+                    if typeof longDesc === 'string'
+                        +format(longDesc)
+
+        section.f_cred_box
+            .str_info_blokk_cred
+
+                //- NB! Credentials võetakse strapis oleva roleNamePrivate järgi väiketähtedes ja tühikuteta
+                //-     Näiteks: "Composer" all olevad isikud saab kätte self.credentials.rolePersonsByRole.composer.join(', ')
+                //-     Näiteks: Director Of Photography self.credentials.rolePersonsByRole.directorofphotography
+
+                if self.credentials && self.credentials.rolePersonsByRole
+                    if self.credentials.rolePersonsByRole.instructor && self.credentials.rolePersonsByRole.instructor[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.filmikool.instructor
+                            .str_info_value= self.credentials.rolePersonsByRole.instructor.join(', ')
+
+                    if self.credentials.rolePersonsByRole.director && self.credentials.rolePersonsByRole.director[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.director
+                            .str_info_value= self.credentials.rolePersonsByRole.director.join(', ')
+
+                    if self.credentials.rolePersonsByRole.screenwriter && self.credentials.rolePersonsByRole.screenwriter[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.screenwriter
+                            .str_info_value= self.credentials.rolePersonsByRole.screenwriter.join(', ')
+
+                    if self.credentials.rolePersonsByRole.cast && self.credentials.rolePersonsByRole.cast[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.cast
+                            .str_info_value= self.credentials.rolePersonsByRole.cast.join(', ')
+
+                    if self.credentials.rolePersonsByRole.producer && self.credentials.rolePersonsByRole.producer[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.producer
+                            .str_info_value= self.credentials.rolePersonsByRole.producer.join(', ')
+
+                    if self.credentials.rolePersonsByRole.directorofphotography && self.credentials.rolePersonsByRole.directorofphotography[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.doP
+                            .str_info_value= self.credentials.rolePersonsByRole.directorofphotography.join(', ')
+
+                    if self.credentials.rolePersonsByRole.composer && self.credentials.rolePersonsByRole.composer[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.composer
+                            .str_info_value= self.credentials.rolePersonsByRole.composer.join(', ')
+
+                    if self.credentials.rolePersonsByRole.editor && self.credentials.rolePersonsByRole.editor[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.editor
+                            .str_info_value= self.credentials.rolePersonsByRole.editor.join(', ')
+
+                if self.credentials && self.credentials.roleCompaniesByRole
+                    if self.credentials.roleCompaniesByRole.productioncompany && self.credentials.roleCompaniesByRole.productioncompany[0]
+                        .str_info_grid_3
+                            .str_info_label= self.label.self.production
+                            .str_info_value= self.credentials.roleCompaniesByRole.productioncompany.join(', ')
+
+
+        section.f_runtime_box
+
+            if self.duration_time
+                .str_info_grid_3
+                    .str_info_label= self.label.filmikool.courseVolume
+                    .str_info_value= self.duration_time
+
+            if self.languages
+                .str_info_grid_3
+                    .str_info_label= self.label.film.languages
+                    .str_info_value= self.languages.join(', ')
+
+        //- section.f_interactive_box
+        //-     .f_interactive_item
+        //-         p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
+
+        //-         a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style= {display: 'none'} onclick=`saveFilmAsFavourite(${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
+        //-         a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style= {display: 'none'} onclick=`removeFilm(${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+
+        if self.credentials && self.credentials.rolePerson && self.credentials.rolePerson[0]
+            - var filmDirectors = self.credentials.rolePerson.filter( (a) => { return 'Director' === a.role_at_film.roleNamePrivate })
+
+            - var filmDirectorsSorted = filmDirectors.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
+
+        if typeof filmDirectorsSorted !== 'undefined'
+            section.f_dir_box
+
+                each director in filmDirectorsSorted.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
+                    //- f_dir_box on nyyd container directorite boxidele
+                    //- Iga Directori kohta nyyd täita see f_dir_bio_box.
+                    if director.person
+                        if director.person.picture || director.person.biography || director.person.filmography
+                            .f_dir_bio_box
+
+                                .dir_img
+                                    if director.person.picture
+                                        img.img_dir(src=`${assetsDir}${director.person.picture.hash}${director.person.picture.ext}` alt = self.titles)
+                                    //- if director.person.picture
+                                    if director.person.firstName || director.person.lastName
+                                        .str_info_grid_3
+                                            .str_info_label.text_left.dark_semi= self.label.film.director
+                                            .str_info_value.text_right.dark_1= `${director.person.firstName ? director.person.firstName : ''} ${director.person.lastName ? director.person.lastName : ''}`
+
+                                .dir_bio.dark_1
+                                    if director.person.biography && typeof director.person.biography !== 'object'
+                                        p.dark_1= director.person.biography
+                                    if director.person.filmography && typeof director.person.filmography !== 'object'
+                                        p.dark_1= director.person.filmography
+                                    else if director.person.filmography && director.person.filmography.en
+                                        p.dark_1= director.person.filmography.en
+
+
+        if self.presentedBy
+            - var presentedBy = [self.presentedBy]
+        else if self.tags && self.tags.programmes && self.tags.programmes.map(a => a.presentedBy || false).length
+            -
+                var presenters = self.tags.programmes.map((a) => {
+                    if (a.presentedBy) {
+                        delete a.presentedBy.id
+                        return a.presentedBy
+                    } else {
+                        return false
+                    }
+                })
+                var presentedBy = [...new Map(presenters.map(item => [item['presentedByText'], item])).values()]
+        else
+            - var presentedBy = []
+
+
+        if presentedBy.length
+            section.f_extra_box
+
+                each onePresentedBy in presentedBy
+                    if onePresentedBy.organisations && onePresentedBy.organisations.length
+
+                        if onePresentedBy.presentedByText && typeof onePresentedBy.presentedByText !== 'object'
+                            p.dark_1.text_center= onePresentedBy.presentedByText
+
+                        each presenter in onePresentedBy.organisations
+
+
+                            //- Artikli kontroll algus, vajab veel artikli kättesaamist ja täiendamist, et olemasolul suunata artiklile!
+                            if presenter.poffi_article
+                                - var articleFromYAML = self.data.articles.filter( (a) => { return presenter.poffi_article.id === a.id })
+                                - var article = articleFromYAML[0]
+                                if article.article_types && article.article_types[0]
+
+                                    if article.publish && article.title && article.title.length > 1
+                                        - var currentTime = new Date()
+                                        if typeof(article.publishFrom) === 'undefined'
+                                            - var publishFrom= new Date(article.created_at)
+                                        else
+                                            - var publishFrom= new Date(article.publishFrom)
+
+                                        if article.publishUntil
+                                            - var publishUntil = new Date(article.publishUntil)
+
+                                        if (currentTime > publishFrom)
+
+                                            if (!publishUntil || (publishUntil && (publishUntil > currentTime)))
+
+
+                                                - articlePublished = true
+                                                - articleSlug = article.slug
+                                                each artType in article.article_types
+                                                    - artTypes.push(artType.name.toLowerCase())
+                                                    if artType.name.toLowerCase() === defaultTypeIfExists[0]
+                                                        - artTypeForPath = artType.slug.toLowerCase()
+                                                        - break
+                                                    else
+                                                        - artTypeForPath = artType.slug.toLowerCase()
+                            //- Artikli kontroll lõpp
+
+                            //- Programmi esitleja nimi
+
+                            if presenter.name
+                                p.dark_1.text_center= presenter.name
+
+                            //- KUI ARTIKKEL KEELES OLEMAS JA PUBLISHED JA PEALKIRJAGA JNE
+                            if typeof articlePublished !== 'undefined' && articlePublished === true
+                                .presenter_logo_item_container
+                                    a(href= `/${lang_path}${artTypeForPath}/${articleSlug}`).presenter_logo_item
+                                        if presenter.logoColour
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`  src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`)
+                                        else if presenter.logoBlack
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`  src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`)
+                                        else if presenter.logoWhite
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
+                            //- KUI ARTIKLIT POLE VÕI POLE SEE PUBLISHED, AGA ON CUSTOM URL
+                            else if presenter.homepageUrl
+                                .presenter_logo_item_container
+                                    a(href= presenter.homepageUrl).presenter_logo_item
+                                        if presenter.logoColour
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`  src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`)
+                                        else if presenter.logoBlack
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`  src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`)
+                                        else if presenter.logoWhite
+                                            img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
+                            //- LOGO ILMA LINGITA
+                            else
+                                if presenter.logoColour
+                                    .presenter_logo_item_container
+                                        img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`  src=`${assetsDir}${presenter.logoColour.hash}${presenter.logoColour.ext}`)
+                                else if presenter.logoBlack
+                                    .presenter_logo_item_container
+                                        img.presenter_logo_item(alt=presenter.name data-src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`  src=`${assetsDir}${presenter.logoBlack.hash}${presenter.logoBlack.ext}`)
+                                else if presenter.logoWhite
+                                    .presenter_logo_item_container
+                                        img.presenter_logo_itemx(alt=presenter.name data-src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`${assetsDir}${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
+
+        section.f_screenings_box
+            div
+                h1.section_headline= self.label.filmikool.courseTimes
+
+            .card-group.m-o.p-0
+                if self.events && self.events[0]
+                    each event in self.events
+                        .card.card_screening.rounded-0.border-0
+                            .card-header.rounded-0.bg_dark_4
+                                .grid_container_screening_time
+                                    div
+                                        svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                            rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                                            line(x1='16' y1='2' x2='16' y2='6')
+                                            line(x1='8' y1='2' x2='8' y2='6')
+                                            line(x1='3' y1='10' x2='21' y2='10')
+                                        span.screening_date
+                                            if event.startDate && event.endDate
+                                                +dateFromTo(event.startDate, event.endDate)
+                                            else if event.startDate
+                                                +dateFull(event.startDate, event.endDate)
+
+                                    .text_right
+                                        svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                            path(d='M16 10.5L6 10.5')
+                                            path(d='M15 13.5H6')
+                                            path(d='M18 17.545C17.1016 18.2199 16.0067 18.5 14.8824 18.5C11.6471 18.5 8.5 15.5 8.5 12C8.5 8.5 11.6471 5.5 14.8824 5.5C16.0067 5.5 17.1016 5.75058 18 6.42912')
+                                        if event.price
+                                            number.screening_time
+                                                +euro(event.price)
+
+
+                                .container_screening_location
+                                    //- svg.svg_icon(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                    //-     path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
+                                    //-     circle(cx='12' cy='10' r='3')
+
+                                    //- if event.location && event.location.hall && event.location.hall.name
+                                    //-     if event.location.hall && event.location.hall.name
+                                    //-         span.screening_hall= event.location.hall.name
+                                    //-         if event.location.hall.cinema && event.location.hall.cinema.name
+                                    //-             span.screening_venue= ` ${event.location.hall.cinema.name}`
+                                    //-             if event.location.hall.cinema.town && event.location.hall.cinema.town.name && event.location.hall.cinema.town.country && event.location.hall.cinema.town.country.name
+                                    //-                 span.city= ` ${event.location.hall.cinema.town.name}`
+                                    //-                 //- span.city= ` ${event.location.hall.cinema.town.name}, ${event.location.hall.cinema.town.country.name}`
+                                //- .container_screening_location
+                                //-     if event.name
+                                //-         span.screening_hall= event.name
+
+
+                                        //- See on privateName tegelikult: Coca-Cola Plaza, iSense saal
+                                        //- if event.location.name
+                                        //-     h1= event.location.name
+
+
+                            .card-body.bg_dark_3
+                                .screening_info_blokk
+                                    if event.name
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.filmikool.course
+                                            span.screening_info_value= event.name
+                                    //- if screening.screeningSubtitles
+
+                                    -
+                                        var subtitlesNames = function(item) {
+                                            if(item.name) {
+                                                var itemNames = item.name
+                                                return itemNames
+                                            }
+                                        }
+
+                                    if event.subtitles
+                                        - var subtitles = event.subtitles.map(subtitlesNames)
+                                    else if self.subtitles
+                                        - var subtitles = self.subtitles.map(subtitlesNames)
+
+                                    if subtitles && subtitles.length
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.subtitles
+                                            span.screening_info_value= subtitles.sort().join(', ')
+
+
+                                    - var iqnac = event.introQaConversation
+                                    //- Screening Intro
+                                    if iqnac
+                                        - var introGuests = iqnac.filter(i => { return i.type === 'Intro' && i.guest })
+                                        if introGuests.length > 0 && typeof introGuests[0].guest[0] !== 'object'
+                                            .str_info_grid_3
+                                                span.screening_info_label= self.label.screening.introGuests
+                                                span.screening_info_value= introGuests[0].guest.join(', ')
+
+                                        - var introPresenters = iqnac.filter(i => { return i.type === 'Intro' && i.presenter })
+                                        if introPresenters.length > 0 && typeof introPresenters[0].presenter[0] !== 'object'
+                                            .str_info_grid_3
+                                                span.screening_info_label= self.label.screening.introPresenter
+                                                span.screening_info_value= introPresenters[0].presenter.join(', ')
+
+                                        //- Screening QandA
+                                        - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
+                                        if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
+                                            .str_info_grid_3
+                                                span.screening_info_label= self.label.screening.qaGuests
+                                                span.screening_info_value= qaGuests[0].guest.join(', ')
+
+                                        - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
+                                        if qaPresenter.length > 0 && typeof qaPresenter[0].presenter[0] !== 'object'
+                                            .str_info_grid_3
+                                                span.screening_info_label= self.label.screening.qaPresenter
+                                                span.screening_info_value= qaPresenter[0].presenter.join(', ')
+
+                                        if iqnac[0].duration
+                                            .str_info_grid_3
+                                                span.screening_info_label= self.label.screening.qaDuration
+                                                span.screening_info_value
+                                                    +dur(iqnac[0].duration)
+
+                                    if event.extraInfo && typeof event.extraInfo !== 'object'
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.extraInfo
+                                            span.screening_info_value= event.extraInfo
+
+                                    if event.durationTotal
+                                        .str_info_grid_3
+                                            span.screening_info_label= self.label.screening.totalDuration
+                                            span.screening_info_value
+                                                +dur(event.durationTotal)
+
+                            .btn-group(role='group' aria-label='')
+
+                                - var dateVar = event.endDate ? event.endDate : event.startDate
+
+                                if event.bookingUrl
+                                    a.btn.btn_secondary.active(scrn-datetime=dateVar btn-type='screening' href= event.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                                //- if event.ticketingUrl
+                                //-     a.btn.btn_primary.active(scrn-datetime=event.dateTime btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                //- a.btn.btn_secondary.active.notsavedscreening(id=event.id+'_not_savedscreening', style= {display: 'none'} onclick=`saveScreeningAsFavourite(${event.id}, "${event.codeAndTitle}", "${event.dateTime}")` role='button' target='_BLANK')= self.label.film.addSavedScreening
+                                //- a.btn.btn_secondary.active.issavedscreening(id=event.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${event.id})` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                                if event.ticketingUrl
+                                    a.btn.btn_primary.active(scrn-datetime=dateVar btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.participate
+
+                                    //- a.btn.btn_primary.active(scrn-datetime=event.dateTime btn-type='screening' href= `${event.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+
+                                //- a.btn.btn_primary.active.notsavedscreening(id=event.id+'_not_savedscreening', style= {display: 'block'} onclick=`saveScreeningAsFavourite(${event.id}, "${event.codeAndTitle}", "${event.dateTime}")` role='button' target='_BLANK')= self.label.film.addShortlist
+                                //- a.btn.btn_primary.active.issavedscreening(id=event.id+'_is_savedscreening', style= {display: 'none'} onclick=`removeScreening(${event.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
+                                //- if event.screeningTown === 'Tartu'
+                                //-     a.btn.btn_covid.active(href='https://forms.gle/UU4sFENoWyZ3PjSF8' role='button' target='_BLANK')= self.label.button.covidRegister
+                                //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
+
+        +tabname(self.title)
