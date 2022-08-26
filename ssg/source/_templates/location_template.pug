@@ -1,12 +1,21 @@
 extends /_templates/layout.pug
 include /_templates/mixins.pug
 
-block content
-
-
-    if self.data.locations && process.env['DOMAIN'] === 'industry.poff.ee'
-        h1 "location"
-        each location in self.data.locations
-            //- if location 
-            p location.name
+block content 
                 
+    if process.env['DOMAIN'] === 'industry.poff.ee'
+
+        section.grid_article
+            section.article_hero_head
+                if self.addr_coll
+                    p= self.addr_coll.plus_code
+                    img.map(src=`https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&map_ids=302b82db3f957964&callback=$initMap()`)
+                else
+                    img.map(src='/assets/img/static/placeholder_hd_1.jpg')
+
+            if self.name
+                .article_hero_headline_box
+                    .article_title_detailed= self.name
+
+        h1.black= self.name
+
