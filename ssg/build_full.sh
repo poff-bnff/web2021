@@ -13,7 +13,7 @@ export DOMAIN="$1"
 BUILDDIR=$(nice -10 node ./helpers/name_build_directory.js)
 echo "Build directory: $BUILDDIR"
 
-echo "STARTING BUILD"
+echo "STARTING BUILD_FULL.SH"
 [ ! -d "./build" ] && mkdir -p "./build"
 [ -d "./build/$BUILDDIR" ] && rm -rf "./build/$BUILDDIR/"
 [ ! -d "./build/$BUILDDIR" ] && mkdir -p "./build/$BUILDDIR"
@@ -47,17 +47,20 @@ nice -10 node ./helpers/fetch_industry_project_from_yaml.js
 echo 'fetch_discamp_project_from_yaml'
 nice -10 node ./helpers/fetch_discamp_project_from_yaml.js
 
-echo 'fetch_industry_channels_from_yaml'
-nice -10 node ./helpers/fetch_channels_from_yaml.js
+# echo 'fetch_industry_channels_from_yaml'
+# nice -10 node ./helpers/fetch_channels_from_yaml.js
 
-echo 'fetch_industry_event_from_yaml'
-nice -10 node ./helpers/fetch_industry_event_from_yaml.js
+# echo 'fetch_industry_event_from_yaml'
+# nice -10 node ./helpers/fetch_industry_event_from_yaml.js
 
 echo 'fetch_eventival_persons_from_yaml.js'
 nice -10 node ./helpers/fetch_eventival_persons_from_yaml.js
 
-echo 'fetch_courses_from_yaml.js'
-nice -10 node ./helpers/fetch_courses_from_yaml.js
+echo 'fetch_course_event_from_yaml'
+nice -10 node ./helpers/fetch_course_event_from_yaml.js
+
+# echo 'fetch_courses_from_yaml.js'
+# nice -10 node ./helpers/fetch_courses_from_yaml.js
 
 echo 'fetch_frontpagecourse_block_from_yaml.js'
 nice -10 node ./helpers/fetch_frontpagecourse_block_from_yaml.js
