@@ -69,7 +69,6 @@ for (const lang of languages) {
     for(const ix in STRAPIDATA_LOCATIONS) {
         let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
 
-        if (location.name.length > 1){
             location = rueten(location, lang)
             let slugifyName = slugify(`${location.name}-${location.id}`)
             location.path = slugifyName
@@ -83,7 +82,7 @@ for (const lang of languages) {
                 throw error
             }
 
-            const yamlPath = paht.join(fetchDataDir, slugifyName, `data.${lang}.yaml`)
+            const yamlPath = path.join(fetchDataDir, slugifyName, `data.${lang}.yaml`)
             let saveDir = path.join(fetchDataDir, slugifyName);
             fs.mkdirSync(saveDir, { recursive: true });
 
@@ -96,8 +95,6 @@ for (const lang of languages) {
 
     let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS))
     locationData = rueten(copyData, lang)
-
-    console.log({locationData})
 
     let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(locationDataFile, locationDataYAML, 'utf8')
