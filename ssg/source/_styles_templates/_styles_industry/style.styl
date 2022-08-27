@@ -3661,6 +3661,29 @@ a .feather
   text-align left
   line-height 1.618
 
+.icon_container
+    // display grid
+    // grid-template-columns 1
+    // grid-template-rows auto
+    margin 0
+    padding 0
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    // color dark_1
+    // stroke dark_1
+    // // fill dark_1
+    // margin-right 1rem
+    // margin-left 1rem
+    // text-decoration none
+
+.hidden_text
+    visibility hidden
+
+.feather:hover + .hidden_text
+    visibility visible
+    color dark_2
+
+
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
     .grid_film

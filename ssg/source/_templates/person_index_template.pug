@@ -165,6 +165,8 @@ block content
                         //- .str_info_value= self.label.industry.website
                         a.person_info_value(href= self.acc_instagram target="_BLANK")
                             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1,5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            //- span.hidden_text
+                            //-     | Instagram
                     if self.acc_fb
                         //- .str_info_grid_3
                         //-     .person_info_label= self.label.userprofile.accFb
@@ -363,13 +365,13 @@ block content
                                     .person_info_value
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
-                                            if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                if filmography.actor_role
+                                                    .person_info_value= filmography.actor_role
                                         else
                                             .person_info_value.bold= filmography.work_name
-                                            if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                if filmography.actor_role
+                                                    span.str_info_value.dark_3.light_300= 'as '
+                                                    span.person_info_value= filmography.actor_role
 
                     - var televisionFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 2)
                     if televisionFilmographies.length
