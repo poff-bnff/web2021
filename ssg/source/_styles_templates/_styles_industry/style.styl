@@ -480,13 +480,10 @@ footer
     padding-top header_height
     grid-template-areas "c_img_box"\
                         "c_title_box"\
-                        "c_accounts_box"\
                         "c_main_info_box"\
                         "c_actor_info_box"\
                         "c_filmography_box"\
-                        "c_gallery_box"\
-                        "c_showreel_box"\
-                        "c_audioreel_box"
+                        "c_media_box"
 
 .grid_ind_event
         display grid
@@ -1520,8 +1517,13 @@ row:nth-child(15) > .supporter_logos
     border-radius 57% 43% 57% 43%
 
 .person_img_square
-    width: 100%
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
     // border-radius 1% 1% 1% 1%
+
+.person_gallery_img
+    width 100%
 
 .shop_item_head
     // background-color clr_primary
@@ -1871,7 +1873,7 @@ header
 .f_trailer_box
     grid-area f_trailer_box
     width 100%
-    padding 0
+    padding 0x
     margin 0
     background-color bg_dark_1
     .section_headline
@@ -3577,21 +3579,42 @@ details[open] > summary::after
     // background-color #efefef
 
 .c_gallery_box
-    grid-area c_gallery_box
+    // grid-area c_gallery_box
     width 100%
-    height 100%
+    height max-content
     align-self start
     justify-self center
     text-align center
     // padding 1rem
+    // background-color #EEEEEE
 
 .c_showreel_box
-    grid-area c_showreel_box
+    // grid-area c_showreel_box
+    width 100%
+    height max-content
+    align-self start
+    justify-self center
+    text-align center
+    padding 0
+    margin 0
+    // padding 1rem
+
+.c_media_box
+    grid-area c_media_box
     width 100%
     height 100%
     align-self start
     justify-self center
     text-align center
+    // background-color #CCCCCC
+    display grid
+    grid-template-columns 100%
+    grid-template-rows auto
+    // justify-items stretch
+    align-items start
+    // justify-content stretch
+    align-content start
+    row-gap 3rem
     // padding 1rem
 
 .feather
@@ -3638,14 +3661,23 @@ a .feather
     color dark_5
 
 .caption
-    position absolute
-    left 0
-    bottom -1.5rem
     font-family font_p
-    font-size 1rem
+    font-size .9rem
     color dark_2
     margin 0
     padding 0
+    padding-left .3rem
+    padding-bottom 2rem
+    text-align left
+
+.caption_offset
+    position absolute
+    left 0
+    bottom -1.5rem
+    padding-left .3rem
+    padding-top 0
+    padding-bottom 0
+
 
 .person_info_label
   font-family font_p
@@ -3793,9 +3825,8 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-template-areas "c_img_box         c_title_box"\
                             "c_main_info_box   c_actor_info_box"\
-                            "c_main_info_box   c_filmography_box"\
-                            "c_gallery_box     c_gallery_box"\
-                            "c_showreel_box    c_audioreel_box"
+                            "c_media_box       c_filmography_box"
+
         // padding-top header_height + 25vw
         padding-top 150px
         row-gap 3rem
@@ -4444,3 +4475,6 @@ strong
     overflow hidden
     clip rect(0, 0, 0, 0)
     border 0
+
+.italic
+    font-style italic
