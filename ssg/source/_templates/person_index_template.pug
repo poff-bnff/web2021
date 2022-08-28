@@ -334,17 +334,17 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.org_url
-                                            a.person_info_value.bold(href= filmography.org_url target="_BLANK")= filmography.org_name
+                                            a.person_info_value.bold_600(href= filmography.org_url target="_BLANK")= filmography.org_name
                                             if filmography.org_department
-                                                span.person_info_value= ', ' + filmography.org_department
+                                                span.person_info_value.light_300= ', ' + filmography.org_department
                                             if filmography.degree
-                                                .person_info_value= filmography.degree
+                                                span.person_info_value.light_300= ', ' + filmography.degree
                                         else
-                                            .person_info_value.bold= filmography.org_name
-                                                if filmography.org_department
-                                                    span.person_info_value= ', ' + filmography.org_department
-                                                if filmography.degree
-                                                    .person_info_value= filmography.degree
+                                            span.person_info_value.bold= filmography.org_name
+                                            if filmography.org_department
+                                                span.person_info_value.light_300= ', ' + filmography.org_department
+                                            if filmography.degree
+                                                span.person_info_value.light_300= ', ' + filmography.degree
 
                     - var filmFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 1)
                     if filmFilmographies.length
@@ -364,14 +364,21 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
-                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
-                                                if filmography.actor_role
-                                                    .person_info_value= filmography.actor_role
+                                            a.person_info_value.bold_600(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
-                                                if filmography.actor_role
-                                                    span.str_info_value.dark_3.light_300= 'as '
-                                                    span.person_info_value= filmography.actor_role
+                                            span.person_info_value.bold.bold_600= filmography.work_name
+                                            if filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var televisionFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 2)
                     if televisionFilmographies.length
@@ -391,14 +398,21 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
-                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            a.person_info_value.bold_600(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold_600= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var theatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 3)
                     if theatreFilmographies.length
@@ -420,12 +434,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var radioPlayFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
                     if radioPlayFilmographies.length
@@ -447,12 +468,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var audioFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 5)
                     if audioFilmographies.length
@@ -474,12 +502,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var commercialFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 4)
                     if commercialFilmographies.length
@@ -501,12 +536,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var otherFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 6)
                     if otherFilmographies.length
@@ -528,12 +570,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                             //- if filmography.year_from
                             //-     .person_info_value= filmography.year_from
