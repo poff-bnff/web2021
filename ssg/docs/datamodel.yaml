@@ -1294,6 +1294,11 @@ Filmography: &Filmography
     degree: text
     work_director: text
 
+IndustryCategory: &IndustryCategory
+    _path: /industry-categories
+    name: (text)
+    description: (Rich text)
+
 Person: &Person
     _path: /people
     firstName: (text)
@@ -1385,6 +1390,8 @@ Person: &Person
     filmographies:
         - *Filmography
     origin: *Origin
+    industry_categories:
+        - *IndustryCategory
 
 TeamMember: &TeamMember
     person: *Person #(Component)
@@ -1742,11 +1749,6 @@ IndustryGroup: &IndustryGroup
     name_en: (text)
     slug_en: (UID)
     description_en: (Rich text)
-
-IndustryCategory: &IndustryCategory
-    _path: /industry-categories
-    name: (text)
-    description: (Rich text)
 
 ProjectType: &ProjectType
     _path: /project-types
