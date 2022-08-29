@@ -83,6 +83,14 @@ block content
                             //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
                         p= self.label.userprofile.selectMultiple
                 .fieldset_grid
+                    //- bio_en
+                    .form_group
+                        label.person_profile_label(for='bio_en')= self.label.userprofile.biography
+                        textarea.login_input#bio_en(form="thisPersonProfile" name="bio_en")
+
+            fieldset#professionalInfoSet
+                legend= self.label.userprofile.professionalInfoSet
+                .fieldset_grid
                     //- acc_imdb
                     .form_group
                         label.person_profile_label(for='acc_imdb')= self.label.userprofile.accImdb
@@ -117,19 +125,7 @@ block content
                     .form_group
                         label.person_profile_label(for='webpage_url')= self.label.userprofile.webpageUrl
                         input.login_input#webpage_url.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='webpage_url' autocomplete="off")
-                .fieldset_grid
-                    //- bio_en
-                    .form_group
-                        label.person_profile_label(for='bio_en')= self.label.userprofile.biography
-                        textarea.login_input#bio_en(form="thisPersonProfile" name="bio_en")
-                    //- skills_en
-                    .form_group
-                        label.person_profile_label(for='skills_en')= self.label.userprofile.skills
-                        textarea.login_input#skills_en(form="thisPersonProfile" name="skills_en")
 
-
-            fieldset#actorinfoset
-                legend= self.label.userprofile.actorSet
                 .fieldset_grid
                     //-  acting_age_from
                     .form_group
@@ -190,7 +186,11 @@ block content
                             //- = self.label.userprofile.select
                             each pitchofvoice in self.data.pitchofvoices.sort((a, b) => a.en - b.en)
                                 option.login_input(value=pitchofvoice.id)= pitchofvoice[`name_${self.locale}`]
-
+                .fieldset_grid
+                    //- skills_en
+                    .form_group
+                        label.person_profile_label(for='skills_en')= self.label.userprofile.skills
+                        textarea.login_input#skills_en(form="thisPersonProfile" name="skills_en")
 
 
             fieldset
@@ -454,6 +454,15 @@ block content
                             .form_group
                                 label.person_profile_label(for='actor_role')= self.label.userprofile.actorRole
                                 input.login_input.actor_role.form_control( type='text' name='actor_role' autocomplete="off")
+                        .fieldset_grid
+                            //- org_name
+                            .form_group
+                                label.person_profile_label(for='org_name')= self.label.userprofile.prodOrgName
+                                input.login_input.org_name.form_control( type='text' name='org_name' autocomplete="off")
+                            //- org_url
+                            .form_group
+                                label.person_profile_label(for='org_url')= self.label.userprofile.prodOrgUrl
+                                input.login_input.org_url.form_control( type='text' name='org_url' autocomplete="off")
 
                 .fieldset_grid
                     .form_group
