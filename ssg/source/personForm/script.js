@@ -117,6 +117,8 @@ async function sendPersonProfile() {
                 work_name: element.getElementsByClassName('work_name')[0].value,
                 work_url: element.getElementsByClassName('work_url')[0].value,
                 actor_role: element.getElementsByClassName('actor_role')[0].value,
+                org_name: element.getElementsByClassName('org_name')[0].value,
+                org_url: element.getElementsByClassName('org_url')[0].value,
             }
         )
         element.remove()
