@@ -1941,10 +1941,10 @@ header
     aspect-ratio 1 / 1
     object-fit cover
 
-.landscape
+.gallery_upload
     width 100%
-    aspect-ratio 16 / 9
-    object-fit cover
+    aspect-ratio 1 / 1
+    object-fit contain
 
 .container_frame_square
     position relative
@@ -3387,6 +3387,13 @@ textarea.login_input
     color dark_2
     line-height 1.2rem
 
+.required
+    font-family font_h
+    font-size 1.05rem
+    font-weight 300
+    color clr_tartuff_red
+    line-height 1.2rem
+
 legend
     font-family font_h
     font-size 1.5rem
@@ -3439,6 +3446,8 @@ fieldset > .form_group
     width 100%
     // padding 1rem
 
+.eduworks_item
+    padding-top 3rem
 
 .invalid
     color dark_5
@@ -3451,8 +3460,9 @@ option
     // color dark_4
     margin 0
 
-:required
-    border 1px solid clr_primary
+// :required
+//     border 2px solid clr_primary
+
 
 details
     padding .5rem
