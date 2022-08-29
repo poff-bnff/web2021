@@ -1,5 +1,6 @@
 let profileImageToSend = "empty"
 let galleryImageToSend = {}
+let audioFileToSend = "empty"
 let galleryCounter = 0
 let profEducationCounter = 0
 let roleAtFilmCounter = 0
@@ -57,7 +58,7 @@ async function loadUserInfo() {
 
 async function sendPersonProfile() {
 
-    document.getElementById('personProfileSent').style.display = 'none'
+    // document.getElementById('personProfileSent').style.display = 'none'
 
     let saveProfileButton = document.getElementById(`saveProfileButton`)
     saveProfileButton.disabled = true
@@ -130,7 +131,7 @@ async function sendPersonProfile() {
         gender: gender.value,
         dateOfBirth: dateofbirth.value,
         native_lang: nativelang.value,
-        other_lang: otherlang.value || null,
+        other_lang: [...otherlang.options].filter(x => x.selected).map(x => x.value) || null,
         phoneNr: phoneNr.value || null,
         eMail: eMail.value || null,
         repr_org_name: repr_org_name.value || null,
@@ -140,7 +141,6 @@ async function sendPersonProfile() {
         repr_email: repr_email.value || null,
         dateOfBirth: dateofbirth.value || null,
         native_lang: nativelang.value || null,
-        other_lang: otherlang.value || null,
         acting_age_from: acting_age_from.value || null,
         acting_age_to: acting_age_to.value || null,
         height_cm: height_cm.value || null,
@@ -158,7 +158,6 @@ async function sendPersonProfile() {
         acc_fb: acc_fb.value || null,
         acc_other: acc_other.value || null,
         showreel: showreel.value || null,
-        audioreel: audioreel.value || null,
         // bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
         address: {
@@ -196,6 +195,10 @@ async function sendPersonProfile() {
         formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
     }
 
+    if (audioFileToSend !== "empty") {
+        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name);
+    }
+
     if (Object.keys(galleryImageToSend).length !== 0) {
         Object.keys(galleryImageToSend).map(key => {
             console.log('Gallery img', galleryImageToSend[key]);
@@ -224,58 +227,65 @@ async function sendPersonProfile() {
     console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
+
+        saveProfileButton.disabled = false
+        saveProfileButton.innerHTML = previousInnerHTML
+        // firstName.value = ''
+        // lastName.value = ''
+        // gender.value = ''
+        // dateofbirth.value = ''
+        // phoneNr.value = ''
+        // eMail.value = ''
+        // addrCountry.value = ''
+        // addrCounty.value = ''
+        // addrMunicipality.value = ''
+        // addr_popul_place.value = ''
+        // addr_street_name.value = ''
+        // addrHouseNumber = ''
+        // addrApptNumber = ''
+        // addrPostalCode = ''
+
+        let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
+        for (let index = 0; index < galleryImageForms.length; index++) {
+            const element = galleryImageForms[index];
+            element.remove()
+        }
+        galleryCounter = 0
+        galleryImageToSend = {}
+        profileImg.value = ''
+        document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+
+        profEducationData = []
+        roleAtFilmData = []
+        filmographiesData = []
+
+        profEducationCounter = 0
+        roleAtFilmCounter = 0
+        filmographyCounter = 0
+
+        console.log('OK');
         document.getElementById('personProfileSent').open = true;
+
+        // Scroll page to dialog
+        document.getElementById("personProfileSent").scrollIntoView(false);
+
         // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
-        if (localStorage.getItem('preLoginUrl')) {
-            window.open(localStorage.getItem('preLoginUrl'), '_self')
-            localStorage.removeItem('preLoginUrl')
-        }
+        // if (localStorage.getItem('preLoginUrl')) {
+        //     window.open(localStorage.getItem('preLoginUrl'), '_self')
+        //     localStorage.removeItem('preLoginUrl')
+        // }
+
     }
-
-    saveProfileButton.disabled = false
-    saveProfileButton.innerHTML = previousInnerHTML
-    // firstName.value = ''
-    // lastName.value = ''
-    // gender.value = ''
-    // dateofbirth.value = ''
-    // phoneNr.value = ''
-    // eMail.value = ''
-    // addrCountry.value = ''
-    // addrCounty.value = ''
-    // addrMunicipality.value = ''
-    // addr_popul_place.value = ''
-    // addr_street_name.value = ''
-    // addrHouseNumber = ''
-    // addrApptNumber = ''
-    // addrPostalCode = ''
-
-    let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
-    for (let index = 0; index < galleryImageForms.length; index++) {
-        const element = galleryImageForms[index];
-        element.remove()
-    }
-    galleryCounter = 0
-    galleryImageToSend = {}
-    profileImg.value = ''
-    document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-
-    profEducationData = []
-    roleAtFilmData = []
-    filmographiesData = []
-
-    profEducationCounter = 0
-    roleAtFilmCounter = 0
-    filmographyCounter = 0
 }
 
 function validatePersonForm() {
 
     var errors = []
 
-    if (document.getElementById('personProfileSent')) {
-        document.getElementById('personProfileSent').style.display = 'none'
-    }
+    // if (document.getElementById('personProfileSent')) {
+    //     document.getElementById('personProfileSent').style.display = 'none'
+    // }
 
     if (!validateFirstName("firstName")) {
         errors.push('Missing firstname')
@@ -331,6 +341,30 @@ function validateImageAndPreview(file, templateElement, type) {
             console.log(galleryCounter, galleryImageToSend);
             galleryImageToSend[templateElement] = file
         }
+    }
+}
+
+function validateAudioAndPreview(file) {
+
+    let error = document.getElementById("audioError");
+    // Check if the file is an image.
+    if (!file.type.includes("audio")) {
+        // console.log("File is not an image.", file.type, file);
+        error.innerHTML = "File is not an audio";
+    } else if (file.size / 1024 / 1024 > 5) {
+        error.innerHTML = "Audioreel can be max 5MB, uploaded audio was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
+    } else {
+        error.innerHTML = "";
+        // Preview
+        var reader = new FileReader();
+        reader.onload = function () {
+            // let previewElement = document.getElementById(templateElement).getElementsByClassName('imgPreview')[0]
+            // console.log('previewElement', previewElement);
+            // previewElement.src = reader.result;
+            // console.log(previewElement);
+        };
+        reader.readAsDataURL(file);
+        audioFileToSend = file
     }
 }
 
