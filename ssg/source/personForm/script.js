@@ -80,13 +80,13 @@ async function sendPersonProfile() {
         const element = profEducationElements[index];
         profEducationData.push(
             {
-                type_of_work: element.getElementsByClassName('type_of_work')[0].value,
-                year_from: element.getElementsByClassName('year_from')[0].value,
-                year_to: element.getElementsByClassName('year_to')[0].value,
-                org_name: element.getElementsByClassName('org_name')[0].value,
-                org_department: element.getElementsByClassName('org_department')[0].value,
-                degree: element.getElementsByClassName('degree')[0].value,
-                org_url: element.getElementsByClassName('org_url')[0].value,
+                type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
+                year_from: element.getElementsByClassName('year_from')[0].value || null,
+                year_to: element.getElementsByClassName('year_to')[0].value || null,
+                org_name: element.getElementsByClassName('org_name')[0].value || null,
+                org_department: element.getElementsByClassName('org_department')[0].value || null,
+                degree: element.getElementsByClassName('degree')[0].value || null,
+                org_url: element.getElementsByClassName('org_url')[0].value || null,
             }
         )
         element.remove()
@@ -110,15 +110,15 @@ async function sendPersonProfile() {
         const element = filmographiesElements[index];
         filmographiesData.push(
             {
-                type_of_work: element.getElementsByClassName('type_of_work')[0].value,
-                role_at_films: element.getElementsByClassName('role_at_films')[0].value,
-                year_from: element.getElementsByClassName('year_from')[0].value,
-                year_to: element.getElementsByClassName('year_to')[0].value,
-                work_name: element.getElementsByClassName('work_name')[0].value,
-                work_url: element.getElementsByClassName('work_url')[0].value,
-                actor_role: element.getElementsByClassName('actor_role')[0].value,
-                org_name: element.getElementsByClassName('org_name')[0].value,
-                org_url: element.getElementsByClassName('org_url')[0].value,
+                type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
+                role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
+                year_from: element.getElementsByClassName('year_from')[0].value || null,
+                year_to: element.getElementsByClassName('year_to')[0].value || null,
+                work_name: element.getElementsByClassName('work_name')[0].value || null,
+                work_url: element.getElementsByClassName('work_url')[0].value || null,
+                actor_role: element.getElementsByClassName('actor_role')[0].value || null,
+                org_name: element.getElementsByClassName('org_name')[0].value || null,
+                org_url: element.getElementsByClassName('org_url')[0].value || null,
             }
         )
         element.remove()
