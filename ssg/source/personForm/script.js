@@ -227,8 +227,48 @@ async function sendPersonProfile() {
     console.log('Responsestatus', response.status);
 
     if (response.status === 200) {
+
+        saveProfileButton.disabled = false
+        saveProfileButton.innerHTML = previousInnerHTML
+        // firstName.value = ''
+        // lastName.value = ''
+        // gender.value = ''
+        // dateofbirth.value = ''
+        // phoneNr.value = ''
+        // eMail.value = ''
+        // addrCountry.value = ''
+        // addrCounty.value = ''
+        // addrMunicipality.value = ''
+        // addr_popul_place.value = ''
+        // addr_street_name.value = ''
+        // addrHouseNumber = ''
+        // addrApptNumber = ''
+        // addrPostalCode = ''
+
+        let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
+        for (let index = 0; index < galleryImageForms.length; index++) {
+            const element = galleryImageForms[index];
+            element.remove()
+        }
+        galleryCounter = 0
+        galleryImageToSend = {}
+        profileImg.value = ''
+        document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+
+        profEducationData = []
+        roleAtFilmData = []
+        filmographiesData = []
+
+        profEducationCounter = 0
+        roleAtFilmCounter = 0
+        filmographyCounter = 0
+
         console.log('OK');
         document.getElementById('personProfileSent').open = true;
+
+        // Scroll page to dialog
+        document.getElementById("personProfileSent").scrollIntoView(false);
+
         // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
         // if (localStorage.getItem('preLoginUrl')) {
@@ -237,41 +277,6 @@ async function sendPersonProfile() {
         // }
 
     }
-
-    saveProfileButton.disabled = false
-    saveProfileButton.innerHTML = previousInnerHTML
-    // firstName.value = ''
-    // lastName.value = ''
-    // gender.value = ''
-    // dateofbirth.value = ''
-    // phoneNr.value = ''
-    // eMail.value = ''
-    // addrCountry.value = ''
-    // addrCounty.value = ''
-    // addrMunicipality.value = ''
-    // addr_popul_place.value = ''
-    // addr_street_name.value = ''
-    // addrHouseNumber = ''
-    // addrApptNumber = ''
-    // addrPostalCode = ''
-
-    let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
-    for (let index = 0; index < galleryImageForms.length; index++) {
-        const element = galleryImageForms[index];
-        element.remove()
-    }
-    galleryCounter = 0
-    galleryImageToSend = {}
-    profileImg.value = ''
-    document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-
-    profEducationData = []
-    roleAtFilmData = []
-    filmographiesData = []
-
-    profEducationCounter = 0
-    roleAtFilmCounter = 0
-    filmographyCounter = 0
 }
 
 function validatePersonForm() {
