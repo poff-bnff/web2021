@@ -269,8 +269,9 @@ block content
                         input.login_input#showreel.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='showreel' autocomplete="off")
                     //- audioreel
                     .form_group
+                        div#audioError
                         label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
-                        input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
+                        input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateAudioAndPreview(this.files[0])')
 
             fieldset
                 legend= self.label.userprofile.contactInfoSet
@@ -486,7 +487,8 @@ block content
                 //- (style= {display: 'none'})
                 form(method="dialog")
                     P= self.label.userprofile.profileSaved
-                    button.btn.btn_primary= "OK"
+                    //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
+                    p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
             //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn

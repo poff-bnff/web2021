@@ -914,6 +914,37 @@ module.exports = {
       return uploadedPicture[0].id
     }
 
+    async function uploadAudioreel(file) {
+      console.log('Uploading audioreel');
+
+      // const firstNameSlug = slugify(firstName)
+      // const lastNameSlug = slugify(lastName)
+
+      // let splitter = file.name.split('.')
+      // let fileExt = splitter[splitter.length - 1]
+      // let fileName = `${prefix}_${firstNameSlug}_${lastNameSlug}.${fileExt}`
+
+      // const fileInfo = [
+      //   {
+      //     "caption": file.name,
+      //     "alternativeText": `${firstName} ${lastName}`
+      //   }
+      // ];
+
+      const uploadedAudioreel = await strapi.plugins.upload.services.upload.upload({
+        data: {
+          // fileInfo: fileInfo
+        }, //mandatory declare the data(can be empty), otherwise it will give you an undefined error.
+        files: {
+          path: file.path,
+          name: file.name,
+          type: mime.getType(file.name) || file.type, // mime type of the file
+          size: file.size,
+        },
+      });
+      return uploadedAudioreel[0].id
+    }
+
     let personFormData = { ...JSON.parse(ctx.request.body.data) }
 
     // Image check
@@ -933,6 +964,11 @@ module.exports = {
     if (files.picture) {
       const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
       personFormData.picture = uploadedPicture
+    }
+
+    if (files.audioreel) {
+      const uploadedAudioreel = await uploadAudioreel(files.audioreel)
+      personFormData.audioreel = uploadedAudioreel
     }
 
     if (files.images) {
