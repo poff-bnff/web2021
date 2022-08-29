@@ -53,9 +53,10 @@ bg_dark_3_semi = rgba(12,27,22,.8)
 clr_dark_semi = rgba(23,33,33,.5)
 // clr_primary = #ec008c
 clr_primary = #4fc4bf
-clr_primary_text = #4fc4bf // PÖFF orange
+clr_primary_text = #4fc4bf
 clr_primary_semi = rgba(236,0,140,.2)
 clr_primary_light = rgba(195, 22, 28, 0.3)
+clr_primary_dark = #1a908d
 clr_secondary = #F67625
 clr_keyword = #3EADEF
 clr_elisa_stage = #0019af
@@ -2463,9 +2464,25 @@ a.btn_popover
     border-radius 0
     text-transform uppercase
 
+.btn_primary_big
+    font-family font_h
+    font-size 1.2rem
+    line-height 1.5rem
+    padding-top .7rem
+    padding-bottom .5rem
+    background-color clr_primary_dark
+    color white_96
+    border-radius 0
+    text-transform uppercase
+    height max-content
+
 .btn_primary:hover
     background-color #147a70
-    color color white_96
+    color white_96
+
+.btn_primary_big:hover
+    background-color clr_tartuff_red
+    color white_96
 
 .btn_moderate
     font-family font_h
@@ -3311,7 +3328,9 @@ select[multiple]
 // select.login_input
 //     background-color #dddddd
 
-// .form_group
+.form_group
+    padding-top 1rem
+    padding-bottom .5rem
 //     // position relative
 //     background-color #eeeeee
 
@@ -3363,15 +3382,15 @@ textarea.login_input
 
 .person_profile_label
     font-family font_h
-    font-size 1.1rem
+    font-size 1.05rem
     font-weight 300
     color dark_2
-    line-height 1.618
+    line-height 1.2rem
 
 legend
     font-family font_h
-    font-size 1.618rem
-    font-weight 300
+    font-size 1.5rem
+    font-weight 400
     color dark_2
     line-height 1.618
 
@@ -3398,7 +3417,7 @@ fieldset
     // justify-content flex-start
     // align-items flex-start
     padding-top 3rem
-    padding-bottom 2rem
+    padding-bottom .2rem
     // border-bottom .5px solid #cccccc
 
 .fieldset_grid
@@ -3407,7 +3426,7 @@ fieldset
     grid-template-columns 1fr
     // grid-template-rows repeat(auto-fit, minmax(2rem, 10rem))
     gap 1rem
-    padding-top 2rem
+    // padding-top 2rem
     // background green
     // border-bottom 1px solid dark_5
     @media screen and (min-width: 800px)

@@ -30,7 +30,7 @@ block content
 
             fieldset
                 //- role_at_films
-                legend= legend= self.label.userprofile.proRole
+                legend= self.label.userprofile.proRole
                         div#roleAtFilmTemplate(style= 'display: block;')
                             .fieldset_grid
                                 .form_group
@@ -42,7 +42,7 @@ block content
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
+                        //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
                         input.login_input.btn_primary(type='button' name='nextRoleAtFilm' id='nextRoleAtFilm' onclick='addNextRoleAtFilm();' value=self.label.userprofile.addRoleAtFilm)
 
 
@@ -233,7 +233,7 @@ block content
                                         //- .btn.btn_primary.deleteGalleryImage x
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='add_new_img')= self.label.userprofile.addGalleryImg
+                        //- label.person_profile_label(for='add_new_img')= self.label.userprofile.addGalleryImg
                         input.login_input.btn_primary(type='button' id='addNextGalleryImg' onclick='addGalleryImage()' value=self.label.userprofile.addGalleryImg)
 
                         //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
@@ -409,7 +409,7 @@ block content
 
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addNextEducationBtn')= self.label.userprofile.addEducation
+                        //- label.person_profile_label(for='addNextEducationBtn')= self.label.userprofile.addEducation
                         input.login_input.btn_primary.addNextEducation(type='button' id='addNextEducationBtn' onclick='addNextEducation();' value=self.label.userprofile.addEducation)
 
             fieldset
@@ -467,7 +467,7 @@ block content
 
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addFilmographyWork')= self.label.userprofile.addFilmographyWork
+                        //- label.person_profile_label(for='addFilmographyWork')= self.label.userprofile.addFilmographyWork
                         input.login_input.btn_primary(type='button' id='addFilmographyWork' onclick='addNextFilmographyWork();' value=self.label.userprofile.addFilmographyWork)
 
 
@@ -478,7 +478,7 @@ block content
                 .fieldset_grid
                     .form_group
                         label.person_profile_label(for='saveProfileButton')= " "
-                        input.login_input.btn_primary.deleteGalleryImage(type='button' id='saveProfileButton' name='saveProfileButton' onclick='validatePersonForm()' value=self.label.userprofile.saveProfile)
+                        input.login_input.btn_primary_big.deleteGalleryImage(type='button' id='saveProfileButton' name='saveProfileButton' onclick='validatePersonForm()' value=self.label.userprofile.saveProfile)
 
             //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
