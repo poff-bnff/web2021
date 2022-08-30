@@ -5,6 +5,13 @@ block content
     section.userprofile
         form.form#thisPersonProfile(style= 'display: none')
 
+            dialog#personProfileSent
+                //- (style= {display: 'none'})
+                form(method="dialog")
+                    P= self.label.userprofile.profileSaved
+                    //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
+                    p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
+
             fieldset
                 legend= self.label.userprofile.nameSet
                 .fieldset_grid
@@ -491,12 +498,13 @@ block content
             //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
             //-self.label.userprofile.saveButton
             //- p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
-            dialog#personProfileSent
-                //- (style= {display: 'none'})
-                form(method="dialog")
-                    P= self.label.userprofile.profileSaved
-                    //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
-                    p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
+
+            //- dialog#personProfileSent
+            //-     //- (style= {display: 'none'})
+            //-     form(method="dialog")
+            //-         P= self.label.userprofile.profileSaved
+            //-         //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
+            //-         p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
             //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn
