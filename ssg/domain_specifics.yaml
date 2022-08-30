@@ -115,7 +115,7 @@ skip_build_for_models:
     - programme
     - screening
     - person
-    - course-event
+    # - course-event
 
 article:
     poff.ee: POFFiArticle
