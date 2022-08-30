@@ -373,8 +373,8 @@ block content
 
             fieldset
                 legend= self.label.userprofile.profEducation
-                    div#profEducationTemplate(style= 'display: none; ')
-                        .fieldset_grid.eduworks_item
+                    .eduworks_item#profEducationTemplate(style= 'display: none; ')
+                        .fieldset_grid
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
                             //- .form_group
@@ -421,8 +421,8 @@ block content
 
             fieldset
                 legend= self.label.userprofile.worksFilmography
-                    div#filmographyTemplate(style= 'display: none; ')
-                        .fieldset_grid.eduworks_item
+                    .eduworks_item#filmographyTemplate(style= 'display: none; ')
+                        .fieldset_grid
                             //- type_of_work
                             .form_group
                                 label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
