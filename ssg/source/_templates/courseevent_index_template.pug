@@ -4,27 +4,27 @@ include /_templates/mixins.pug
 
 block content
     script(src='/assets/poffOmatic.js')
-    script.
-        document.addEventListener('userProfileLoaded', function (e) {
-            //- console.log({userProfile})
+    //- script.
+    //-     document.addEventListener('userProfileLoaded', function (e) {
+    //-         //- console.log({userProfile})
 
-            if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
-                var videoFrameElement
-                try {
-                    document.getElementById('videolevels_video').style.display = 'block'
-                    var videoFrameElement = document.getElementById('videoframe')
-                    videoFrameElement.src = videoFrameElement.getAttribute('target_src')
-                } catch (error) { null }
+    //-         if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
+    //-             var videoFrameElement
+    //-             try {
+    //-                 document.getElementById('videolevels_video').style.display = 'block'
+    //-                 var videoFrameElement = document.getElementById('videoframe')
+    //-                 videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+    //-             } catch (error) { null }
 
-                if (!videoFrameElement) {
-                    try {
-                        document.getElementById('event_image').style.display = ''
-                    } catch (error) { null }
-                }
-            } else {
-                document.getElementById('videolevels_video').remove()
-            }
-        })
+    //-             if (!videoFrameElement) {
+    //-                 try {
+    //-                     document.getElementById('event_image').style.display = ''
+    //-                 } catch (error) { null }
+    //-             }
+    //-         } else {
+    //-             document.getElementById('videolevels_video').remove()
+    //-         }
+    //-     })
 
 
     - var assetsDir = 'https://assets.poff.ee/img/'
@@ -127,12 +127,25 @@ block content
                     //- .section_headline= self.label.film.trailer
                     //- .ratio.ratio-16x9.m-0.p-0
                     .videolevels_embed_container
-                        if self.videoUrl
+                        if self.video_url
                             .videolevels_embed_contents#videolevels_video(style="display:none;")
-                                +videoVl(self.videoUrl)
+                                +videoVl(self.video_url)
                         else if self.images
                             .default_16_9_container
                                 img#event_image(alt=self.title style='width: 100%; height: 100%; display: none;' src=`https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`)
+
+                        script.
+                            try {
+                                document.getElementById('videolevels_video').style.display = 'block'
+                                var videoFrameElement = document.getElementById('videoframe')
+                                videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+                            } catch (error) { null }
+
+                            if (!videoFrameElement) {
+                                try {
+                                    document.getElementById('event_image').style.display = ''
+                                } catch (error) { null }
+                            }
 
                         .login_16_9_container.login_ind_ev#login_cond
                             h4.login_headline#loginMessage.white_96 Log in via Eventival
