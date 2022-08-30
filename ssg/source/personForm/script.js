@@ -267,7 +267,7 @@ async function sendPersonProfile() {
         document.getElementById('personProfileSent').open = true;
 
         // Scroll page to dialog
-        document.getElementById("personProfileSent").scrollIntoView(false);
+        document.getElementById("personProfileSent").scrollIntoView(alignToTop);
 
         // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
