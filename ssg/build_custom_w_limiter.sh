@@ -254,6 +254,9 @@ fetch_data()
     echo '==== limited build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js
 
+    echo 'fetch_locations_from_yaml'
+    nice ./helpers/fetch_locations_from_yaml.js
+
     printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
 }

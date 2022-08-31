@@ -1,0 +1,13 @@
+extends /_templates/layout.pug
+
+block content
+
+    if self.data.locations && process.env['DOMAIN'] === 'industry.poff.ee'
+        each location in self.data.locations
+            p= location.name
+            if location.addr_coll
+                p= location.addr_coll.l_est_x
+                p= location.addr_coll.l_est_y
+
+                
+                
