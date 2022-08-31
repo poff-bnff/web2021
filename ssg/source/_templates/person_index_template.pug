@@ -14,7 +14,7 @@ block content
                     - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img_square(src=personPic alt=self.firstNameLastName)
-                p.caption= self.picture.caption
+                p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
                 .name_box
@@ -165,6 +165,8 @@ block content
                         //- .str_info_value= self.label.industry.website
                         a.person_info_value(href= self.acc_instagram target="_BLANK")
                             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1,5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="feather"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            //- span.hidden_text
+                            //-     | Instagram
                     if self.acc_fb
                         //- .str_info_grid_3
                         //-     .person_info_label= self.label.userprofile.accFb
@@ -332,17 +334,17 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.org_url
-                                            a.person_info_value.bold(href= filmography.org_url target="_BLANK")= filmography.org_name
+                                            a.person_info_value.bold_600(href= filmography.org_url target="_BLANK")= filmography.org_name
                                             if filmography.org_department
-                                                span.person_info_value= ', ' + filmography.org_department
+                                                span.person_info_value.light_300= ', ' + filmography.org_department
                                             if filmography.degree
-                                                .person_info_value= filmography.degree
+                                                span.person_info_value.light_300= ', ' + filmography.degree
                                         else
-                                            .person_info_value.bold= filmography.org_name
-                                                if filmography.org_department
-                                                    span.person_info_value= ', ' + filmography.org_department
-                                                if filmography.degree
-                                                    .person_info_value= filmography.degree
+                                            span.person_info_value.bold= filmography.org_name
+                                            if filmography.org_department
+                                                span.person_info_value.light_300= ', ' + filmography.org_department
+                                            if filmography.degree
+                                                span.person_info_value.light_300= ', ' + filmography.degree
 
                     - var filmFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 1)
                     if filmFilmographies.length
@@ -362,14 +364,21 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
-                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            a.person_info_value.bold_600(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold.bold_600= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var televisionFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 2)
                     if televisionFilmographies.length
@@ -389,14 +398,21 @@ block content
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
-                                            a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
+                                            a.person_info_value.bold_600(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold_600= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var theatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 3)
                     if theatreFilmographies.length
@@ -418,12 +434,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var radioPlayFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
                     if radioPlayFilmographies.length
@@ -445,12 +468,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var audioFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 5)
                     if audioFilmographies.length
@@ -472,12 +502,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var commercialFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 4)
                     if commercialFilmographies.length
@@ -499,12 +536,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                     - var otherFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 6)
                     if otherFilmographies.length
@@ -526,12 +570,19 @@ block content
                                         if filmography.work_url
                                             a.person_info_value.bold(href= filmography.work_url target="_BLANK")= filmography.work_name
                                             if filmography.actor_role
-                                                .person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
                                         else
-                                            .person_info_value.bold= filmography.work_name
+                                            span.person_info_value.bold= filmography.work_name
                                             if filmography.actor_role
-                                                span.str_info_value.dark_3.light_300= 'as '
-                                                span.person_info_value= filmography.actor_role
+                                                span.str_info_value.dark_3.light_300= ', as '
+                                                span.person_info_value.light_300.italic= filmography.actor_role
+                                            if filmography.org_name
+                                                span.str_info_value.dark_3.light_300= ' / '
+                                                span.person_info_value.light_300= filmography.org_name
 
                             //- if filmography.year_from
                             //-     .person_info_value= filmography.year_from
@@ -579,44 +630,71 @@ block content
                                                             +format(film.synopsis)
                                                 //- if film.
                                                 //- a(href=film.trailerUrl) Trailer
-        if self.images
-            //- KARUSELL Industry projekti piltidega
-            section#carouselExampleIndicators.f_img_slider_box.bg_white.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
-                ol.carousel-indicators
-                    if self.images && self.images.length >1
-                        each val, index in self.images
-                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
-                .carousel-inner.container_frame_16_9.bg_white
-                    if self.images && self.images[0]
-                        each val, index in self.images
-                            if index == 0
-                                .carousel-item.active.container_contents_16_9_person
-                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                    //- .photographer= self.picture.caption
-                            else
-                                .carousel-item.container_contents_16_9_person
-                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                    //- .photographer= self.picture.caption
-                    else
-                        .carousel-item.active.container_contents_16_9_person
-                            img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
-                            //- .photographer= self.picture.caption
-                if self.images && self.images.length >1
-                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
-                        // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
-                        //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                        //-     polyline(points='15 18 9 12 15 6')
-                        span.sr-only Previous
-                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
-                        // <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                        //-     polyline(points='9 18 15 12 9 6')
-                        span.sr-only Next
-                        //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
-                        //- section.c_showreel_box
-        if self.showreel
-            section#trailer.f_trailer_box.bg_white
-                .ratio.ratio-16x9.m-0.p-0
-                    +video(self.showreel)
+
+
+            section.c_media_box
+                //- if self.showreel
+                section#trailer.c_showreel_box.bg_fwhite.bg_dark_4
+                    .ratio.ratio-16x9.m-0.p-0
+                        +video(self.showreel)
+                //- div
+                //-     p
+                //-         | MEDIA BOX sisu text
+                //- div
+                //-     p
+                //-         | MEDIA BOX sisu text 2
+
+                if self.images
+                    //- KARUSELL Industry projekti piltidega
+                    section.c_gallery_box
+                        if self.images && self.images[0]
+                            each val, index in self.images
+                                if index == 0
+                                    img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                    p.caption= val.caption
+                                else
+                                    img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                    p.caption= val.caption
+
+                                            //- .photographer= self.picture.caption
+                        //- else
+                        //-     img.person_gallery_img(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                        //-     //- .photographer= self.picture.caption
+
+                //- if self.images
+                //-     //- KARUSELL Industry projekti piltidega
+                //-     section#carouselExampleIndicators.c_gallery_box.bg_white.bg_dark_4.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
+                //-         ol.carousel-indicators
+                //-             if self.images && self.images.length >1
+                //-                 each val, index in self.images
+                //-                     li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                //-         .carousel-inner.container_frame_16_9.bg_white
+                //-             if self.images && self.images[0]
+                //-                 each val, index in self.images
+                //-                     if index == 0
+                //-                         .carousel-item.active.container_contents_16_9_person
+                //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                //-                             //- .photographer= self.picture.caption
+                //-                     else
+                //-                         .carousel-item.container_contents_16_9_person
+                //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                //-                             //- .photographer= self.picture.caption
+                //-             else
+                //-                 .carousel-item.active.container_contents_16_9_person
+                //-                     img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                //-                     //- .photographer= self.picture.caption
+                //-         if self.images && self.images.length >1
+                //-             a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+                //-                 // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                //-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
+                //-                 //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                //-                 //-     polyline(points='15 18 9 12 15 6')
+                //-                 span.sr-only Previous
+                //-             a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+                //-                 // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                //-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                //-                 //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                //-                 //-     polyline(points='9 18 15 12 9 6')
+                //-                 span.sr-only Next
+                //-                 //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
+                //-                 //- section.c_showreel_box

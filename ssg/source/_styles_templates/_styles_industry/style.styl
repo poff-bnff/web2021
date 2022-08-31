@@ -480,20 +480,18 @@ footer
     padding-top header_height
     grid-template-areas "c_img_box"\
                         "c_title_box"\
-                        "c_accounts_box"\
                         "c_main_info_box"\
                         "c_actor_info_box"\
                         "c_filmography_box"\
-                        "c_gallery_box"\
-                        "c_showreel_box"\
-                        "c_audioreel_box"
+                        "c_media_box"
 
 .grid_ind_event
         display grid
         grid-template-columns 1fr
         grid-template-rows auto
         padding-top header_height
-        grid-template-areas "f_title_box"\
+        grid-template-areas "restricted_login"\
+                            "f_title_box"\
                             "f_trailer_box"\
                             "f_synopsis_box"\
                             "f_cred_box"\
@@ -1519,8 +1517,13 @@ row:nth-child(15) > .supporter_logos
     border-radius 57% 43% 57% 43%
 
 .person_img_square
-    width: 100%
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
     // border-radius 1% 1% 1% 1%
+
+.person_gallery_img
+    width 100%
 
 .shop_item_head
     // background-color clr_primary
@@ -1870,7 +1873,7 @@ header
 .f_trailer_box
     grid-area f_trailer_box
     width 100%
-    padding 0
+    padding 0x
     margin 0
     background-color bg_dark_1
     .section_headline
@@ -3517,7 +3520,7 @@ details[open] > summary::after
     background-color white
     padding-left calc(1rem + 1vw)
     padding-right calc(1rem + 1vw)
-    padding-top calc(2rem + 1vw)
+    padding-top calc(4rem + 1vw)
     padding-bottom calc(2rem + 1vw)
     // background-color #eeeeee
     align-self center
@@ -3576,21 +3579,42 @@ details[open] > summary::after
     // background-color #efefef
 
 .c_gallery_box
-    grid-area c_gallery_box
+    // grid-area c_gallery_box
     width 100%
-    height 100%
+    height max-content
     align-self start
     justify-self center
     text-align center
     // padding 1rem
+    // background-color #EEEEEE
 
 .c_showreel_box
-    grid-area c_showreel_box
+    // grid-area c_showreel_box
+    width 100%
+    height max-content
+    align-self start
+    justify-self center
+    text-align center
+    padding 0
+    margin 0
+    // padding 1rem
+
+.c_media_box
+    grid-area c_media_box
     width 100%
     height 100%
     align-self start
     justify-self center
     text-align center
+    // background-color #CCCCCC
+    display grid
+    grid-template-columns 100%
+    grid-template-rows auto
+    // justify-items stretch
+    align-items start
+    // justify-content stretch
+    align-content start
+    row-gap 3rem
     // padding 1rem
 
 .feather
@@ -3637,18 +3661,27 @@ a .feather
     color dark_5
 
 .caption
-    position absolute
-    left 0
-    bottom -1.5rem
     font-family font_p
-    font-size 1rem
+    font-size .9rem
     color dark_2
     margin 0
     padding 0
+    padding-left .3rem
+    padding-bottom 2rem
+    text-align left
+
+.caption_offset
+    position absolute
+    left 0
+    bottom -1.5rem
+    padding-left .3rem
+    padding-top 0
+    padding-bottom 0
+
 
 .person_info_label
   font-family font_p
-  color dark_5
+  color dark_3
   font-size 1rem
   text-align right
   line-height 1.618
@@ -3660,6 +3693,61 @@ a .feather
   font-size 1rem
   text-align left
   line-height 1.618
+
+.icon_container
+    // display grid
+    // grid-template-columns 1
+    // grid-template-rows auto
+    margin 0
+    padding 0
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    // color dark_1
+    // stroke dark_1
+    // // fill dark_1
+    // margin-right 1rem
+    // margin-left 1rem
+    // text-decoration none
+
+.hidden_text
+    visibility hidden
+
+.feather:hover + .hidden_text
+    visibility visible
+    color dark_2
+
+.restricted_login
+    grid-area restricted_login
+    width 100%
+    height 100%
+    padding-top 6rem
+    padding-left 2rem
+    padding-right 2rem
+    padding-bottom 6rem
+
+.login_user
+    width 100px
+    height 100px
+    // height calc(1.5rem + 0.1vw)
+    // width calc(1.5rem + 0.1vw)
+    margin 1rem
+    text-decoration none
+    stroke dark_4
+    stroke-width 1
+    &:hover
+        // height calc(1.5rem + 0.1vw)
+        // width calc(1.5rem + 0.1vw)
+        // margin-right 1rem
+        // margin-left 1rem
+        // stroke dark_2
+        // stroke-width 1
+        transform scale(1.1,1.1)
+        stroke clr_primary
+        stroke-width 1
+
+a:hover > .login_headline
+    color clr_primary
+    // transform scale(1.1,1.1)
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3684,7 +3772,8 @@ a .feather
         display grid
         grid-template-columns 1fr 1fr 1fr
         grid-template-rows auto
-        grid-template-areas "f_title_box       f_trailer_box     f_trailer_box"\
+        grid-template-areas "restricted_login  restricted_login  restricted_login"\
+                            "f_title_box       f_trailer_box     f_trailer_box"\
                             "f_synopsis_box    f_synopsis_box    f_cred_box"\
                             "f_synopsis_box    f_synopsis_box    f_runtime_box"\
                             "f_interactive_box f_interactive_box f_interactive_box"\
@@ -3736,9 +3825,8 @@ a .feather
         grid-template-rows auto
         grid-template-areas "c_img_box         c_title_box"\
                             "c_main_info_box   c_actor_info_box"\
-                            "c_main_info_box   c_filmography_box"\
-                            "c_gallery_box     c_gallery_box"\
-                            "c_showreel_box    c_audioreel_box"
+                            "c_media_box       c_filmography_box"
+
         // padding-top header_height + 25vw
         padding-top 150px
         row-gap 3rem
@@ -4251,6 +4339,12 @@ a .feather
 .bold
     font-weight 500
 
+.bold_600
+    font-weight 600
+
+.bold_700
+    font-weight 700
+
 .regular_400
     font-weight 400
 
@@ -4381,3 +4475,6 @@ strong
     overflow hidden
     clip rect(0, 0, 0, 0)
     border 0
+
+.italic
+    font-style italic
