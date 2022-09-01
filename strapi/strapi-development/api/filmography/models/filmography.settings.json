@@ -46,6 +46,13 @@
     },
     "degree": {
       "type": "string"
+    },
+    "work_director": {
+      "type": "string"
+    },
+    "person": {
+      "via": "filmographies",
+      "model": "person"
     }
   }
 }

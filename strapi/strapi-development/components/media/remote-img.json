@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_media_remote_imgs",
+  "info": {
+    "name": "RemoteImg",
+    "icon": "reply"
+  },
+  "options": {},
+  "attributes": {
+    "img_url": {
+      "type": "string"
+    }
+  }
+}

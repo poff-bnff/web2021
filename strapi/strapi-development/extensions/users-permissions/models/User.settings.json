@@ -104,8 +104,8 @@
       "via": "user"
     },
     "business_profiles": {
-      "collection": "business-profile",
-      "via": "user"
+      "via": "user",
+      "collection": "business-profile"
     },
     "my_events": {
       "type": "component",

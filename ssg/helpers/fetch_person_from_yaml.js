@@ -43,7 +43,18 @@ if (DOMAIN !== 'industry.poff.ee') {
             model_name: 'Gender'
         },
         'addr_coll': {
-            model_name: 'Address'
+            model_name: 'Address',
+            expand: {
+                'country': {
+                    model_name: 'Country',
+                },
+                'county': {
+                    model_name: 'County',
+                },
+                'municipality': {
+                    model_name: 'Municipality'
+                }
+            }
         },
         'role_at_films': {
             model_name: 'RoleAtFilm'

@@ -1034,12 +1034,13 @@ Location: &Location
     repr_email: text
     repr_org_name: text
     repr_org_url: text
-    tag_catgories:
+    tag_categories:
         - *TagCategory
     tag_keywords:
         - *TagKeyword
     showreel: text
-    tag_location: *TagLocation
+    tag_locations: 
+        - *TagLocation
 
 Language: &Language
     _path: /languages

@@ -27,8 +27,8 @@
       "model": "person"
     },
     "organisation": {
-      "model": "organisation",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "organisation"
     },
     "festival_edition": {
       "model": "festival-edition",

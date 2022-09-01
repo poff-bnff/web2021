@@ -28,7 +28,7 @@ echo "Initialized entu_ssg.yaml"
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js
 
 nice -10 node "$FETCH_PATH"/fetch_articles_from_yaml.js "$TARGET"
-nice -10 node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET"
+# nice -10 node "$FETCH_PATH"/fetch_industry_event_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_article_type_from_yaml.js  "$TARGET" "$TARGET_ID"
 nice -10 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
@@ -36,7 +36,7 @@ nice -10 node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_frontpagecourse_block_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_six_film_block_from_yaml.js "$TARGET"
-nice -10 node "$FETCH_PATH"/fetch_channels_from_yaml.js
+# nice -10 node "$FETCH_PATH"/fetch_channels_from_yaml.js
 
 # Logi konsooli kõik ehitatavad pathid:
 nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display

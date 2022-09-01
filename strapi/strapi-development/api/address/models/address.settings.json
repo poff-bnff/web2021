@@ -67,6 +67,15 @@
     },
     "popul_place": {
       "type": "string"
+    },
+    "hr_address": {
+      "type": "string"
+    },
+    "gm_embed": {
+      "type": "text"
+    },
+    "plus_code": {
+      "type": "string"
     }
   }
 }

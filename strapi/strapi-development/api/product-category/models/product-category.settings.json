@@ -97,8 +97,8 @@
       "dominant": true
     },
     "course_events": {
-      "collection": "course-event",
-      "via": "product_categories"
+      "via": "product_categories",
+      "collection": "course-event"
     },
     "transferable": {
       "type": "boolean",
