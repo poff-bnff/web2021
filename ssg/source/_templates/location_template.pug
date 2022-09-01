@@ -38,7 +38,8 @@ block content
                     else
                         - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                     img.person_img_square(src=personPic alt=self.name)
-                    //- p.caption.caption_offset= self.profile_img.caption
+                    if self.profile_img
+                        p.caption.caption_offset= self.profile_img.caption
 
                     //- if self.addr_coll
                     //-     #map(style=`height:400px; width:100%`)
@@ -48,3 +49,39 @@ block content
                 section.c_title_box
                     .name_box
                         .person_name= self.name
+
+                section.c_main_info_box
+                //- .str_info_grid_3
+                //-     .person_info_label
+                //-     .person_info_c.text_left
+                //-         | Personal info
+                .str_info_blokk_cred
+                    if self.gender
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.gender
+                            .person_info_value= self.gender
+                    if self.dateOfBirth
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.birthday
+                            .person_info_value
+                                +birthDateEET(self.dateOfBirth)
+                    if self.country
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.country
+                            .person_info_value= self.country.name
+                    if self.eMail
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.email
+                            .person_info_value= self.eMail
+                    if self.phoneNr
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.phone
+                            .person_info_value= self.phoneNr
+
+                    if typeof self.bio !== 'undefined'
+                        - var bio = self.bio
+                        if typeof bio === 'string'
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.biography
+                                .person_info_value.font_h
+                                    +format(bio)
