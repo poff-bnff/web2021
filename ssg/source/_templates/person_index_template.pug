@@ -19,16 +19,18 @@ block content
                     p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
-                .name_box
+
+                .c_top_box
                     if self.industry_person_types
                         .person_info_h= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
+                .name_box
+                    //- if self.industry_person_types
+                    //-     .person_info_h= self.industry_person_types.map(industry_person_type => industry_person_type.type).join(', ')
 
                     .person_name= self.firstNameLastName
 
                     if self.role_at_films
                         .person_info_c= self.role_at_films.map(role_at_films => role_at_films.roleName).join(', ')
-
-
 
                 section.accounts_box
                     //- .f_cred_box.bg_dark_3

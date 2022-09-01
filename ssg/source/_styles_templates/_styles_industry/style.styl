@@ -1582,6 +1582,7 @@ row:nth-child(15) > .supporter_logos
     // margin-bottom 1rem
     text-align center
     color dark_2
+    // background-color #eeeeee
 
 .person_info_h
     font-family font_h
@@ -3529,8 +3530,10 @@ details[open] > summary::after
     grid-area c_title_box
     display grid
     grid-template-columns 1fr
-    grid-template-rows 1fr max-content
+    grid-template-rows 1fr 2fr 1fr
+    // grid-template-rows 1fr max-content
     justify-items center
+    align-content space-between
     // align-content center
     width 100%
     height 100%
@@ -3554,7 +3557,7 @@ details[open] > summary::after
     padding-right calc(1rem + 1vw)
     padding-top calc(4rem + 1vw)
     padding-bottom calc(2rem + 1vw)
-    // background-color #eeeeee
+    // background-color #dddddd
     align-self center
 
 .c_repr
@@ -3579,6 +3582,14 @@ details[open] > summary::after
     padding 1rem
     // margin-bottom 1rem
     // background-color #dddddd
+
+.c_top_box
+    width 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
+    // background-color #cccccc
 
 .c_main_info_box
     grid-area c_main_info_box
