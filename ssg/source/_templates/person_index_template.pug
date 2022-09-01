@@ -322,7 +322,7 @@ block content
                     - var educationFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 7)
                     //- - var eduFilmographyTypeName = educationFilmographies.filmography.type_of_work[0].name
                     if educationFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
@@ -330,12 +330,17 @@ block content
                             each filmography in educationFilmographies
                                 //- .filmography_item
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.org_url
@@ -353,19 +358,24 @@ block content
 
                     - var filmFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 1)
                     if filmFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Film
                             each filmography in filmFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -387,19 +397,31 @@ block content
 
                     - var televisionFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 2)
                     if televisionFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Television
                             each filmography in televisionFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    //- .person_info_label
+                                    //-     if filmography.year_from
+                                    //-         span.person_info_label= filmography.year_from
+                                    //-         span.person_info_label= ' - '
+                                    //-     if filmography.year_to
+                                    //-         span.person_info_label= filmography.year_to
+
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -421,19 +443,24 @@ block content
 
                     - var theatreFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 3)
                     if theatreFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Theatre
                             each filmography in theatreFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -455,19 +482,24 @@ block content
 
                     - var radioPlayFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 8)
                     if radioPlayFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Radio play
                             each filmography in radioPlayFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -489,19 +521,24 @@ block content
 
                     - var audioFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 5)
                     if audioFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Audio
                             each filmography in audioFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -523,19 +560,24 @@ block content
 
                     - var commercialFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 4)
                     if commercialFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Commercial
                             each filmography in commercialFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
@@ -557,19 +599,24 @@ block content
 
                     - var otherFilmographies = self.filmographies.filter(filmography => filmography.type_of_work && filmography.type_of_work.id === 6)
                     if otherFilmographies.length
-                        filmography_sec
+                        .filmography_sec
                             .str_info_grid_3
                                 .person_info_label
                                 .person_info_c.text_left
                                     | Other
                             each filmography in otherFilmographies
                                 .str_info_grid_3
-                                    .person_info_label
-                                        if filmography.year_from
-                                            span.person_info_label= filmography.year_from
-                                            span.person_info_label= ' - '
-                                        if filmography.year_to
-                                            span.person_info_label= filmography.year_to
+                                    .years_grid
+                                        .year_from
+                                            if filmography.year_from
+                                                .person_label= filmography.year_from
+                                        .year_dash
+                                            if filmography.year_from
+                                                .person_label
+                                                    | -
+                                        .year_to
+                                            if filmography.year_to
+                                                .person_label= filmography.year_to
                                     //- if filmography.org_name
                                     .person_info_value
                                         if filmography.work_url
