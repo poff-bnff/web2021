@@ -703,9 +703,10 @@ block content
                                         //- <code>audio</code> element.
 
 
-                section#trailer.c_showreel_box.bg_fwhite.bg_dark_4
-                    .ratio.ratio-16x9.m-0.p-0
-                        +video(self.showreel)
+                if self.showreel
+                    section#trailer.c_showreel_box.bg_fwhite.bg_dark_4
+                        .ratio.ratio-16x9.m-0.p-0
+                            +video(self.showreel)
                 //- div
                 //-     p
                 //-         | MEDIA BOX sisu text
