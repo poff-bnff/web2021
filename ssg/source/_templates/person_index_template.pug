@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
     - var assetsDir = 'https://assets.poff.ee/img/'
-    - var audioDir = 'https://admin.poff.ee'
+    - var audioDir = 'https://assets.poff.ee/img/'
 
     if self.firstNameLastName
         section.grid_creative
@@ -643,7 +643,7 @@ block content
                 //-         | Media
 
                 if self.audioreel
-                    - var audioUrl = `${audioDir}${self.audioreel.url}`
+                    - var audioUrl = `https://assets.poff.ee/img/${self.audioreel.hash}${self.audioreel.ext}`
                     .str_info_grid_3
                         .person_info_label= self.label.userprofile.audioreelPlay
                         .person_info_value
