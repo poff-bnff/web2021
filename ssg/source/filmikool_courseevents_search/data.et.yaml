@@ -1,0 +1,5 @@
+path: filmikool-courses-search
+data:
+    filmikoolcourses: /_fetchdir/courseevents.et.yaml
+    filters: /_fetchdir/filters_courseevents.et.yaml
+    search: /_fetchdir/search_courseevents.et.yaml
