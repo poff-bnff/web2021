@@ -40,7 +40,7 @@ nice -10 node "$FETCH_PATH"/fetch_heroarticle_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_trioblock_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_footer_from_yaml.js "$TARGET"
 nice -10 node "$FETCH_PATH"/fetch_frontpagecourse_block_from_yaml.js "$TARGET"
-nice -10 node "$FETCH_PATH"/fetch_channels_from_yaml.js
+# nice -10 node "$FETCH_PATH"/fetch_channels_from_yaml.js
 
 nice -10 node "$FETCH_PATH"/fetch_six_film_block_from_yaml.js "$TARGET"
 # nice -10 node "$FETCH_PATH"/fetch_PL_screenings.js
