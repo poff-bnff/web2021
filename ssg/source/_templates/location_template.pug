@@ -5,8 +5,9 @@ block content
     - var assetsDir = 'https://assets.poff.ee/img/'
 
     //- Siia saab siis panna ala self.addr... jne, st õiged lat lng, muutujatest
-    - var thisLat = 59.401678066055325
-    - var thisLng = 25.767196296945674
+    if self.addr_coll
+        - var thisLat = self.addr_coll.l_est_x
+        - var thisLng = self.addr_coll.l_est_y
 
     script.
         function initMap(thisLat, thisLng) {
@@ -45,10 +46,10 @@ block content
                     if self.profile_img
                         p.caption.caption_offset= self.profile_img.caption
 
-                    if self.addr_coll
+                    if thisLat && thisLng
                         #map(style=`height:400px; width:100%`)
                     else
-                        img.map(src='/assets/img/static/placeholder_hd_1.jpg')
+                        img.map(src='/assets/img/static/placeholder_hd_1.jpg' style=`height:400px; width:100%`)
 
                 section.c_title_box
                     .name_box
