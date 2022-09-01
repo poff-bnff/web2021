@@ -2,44 +2,51 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    - var assetsDir = 'https://assets.poff.ee/img/'
 
-    script.
-        function initMap() {
-            var cordinates = {
-                lat: 59.401678066055325,
-                lng: 24.767196296945674
-            }
+    //- script.
+    //-     function initMap() {
+    //-         var cordinates = {
+    //-             lat: 59.401678066055325,
+    //-             lng: 24.767196296945674
+    //-         }
 
-            console.log({cordinates})
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: cordinates,
-                zoom: 11,
-                mapId: '302b82db3f957964'
-            })
+    //-         console.log({cordinates})
+    //-         const map = new google.maps.Map(document.getElementById("map"), {
+    //-             center: cordinates,
+    //-             zoom: 11,
+    //-             mapId: '302b82db3f957964'
+    //-         })
 
-            const marker = new google.maps.Marker({
-            position: cordinates,
-            map: map
-            })
-        }
-        window.initMap = initMap
-    
-    script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&callback=initMap")
+    //-         const marker = new google.maps.Marker({
+    //-         position: cordinates,
+    //-         map: map
+    //-         })
+    //-     }
+    //-     window.initMap = initMap
 
-                
+    //- script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&callback=initMap")
+
+
     if process.env['DOMAIN'] === 'industry.poff.ee'
 
-        section.grid_article
-            section.article_hero_head
-                if self.addr_coll
-                    #map(style=`height:400px; width:100%`)
-                else
-                    img.map(src='/assets/img/static/placeholder_hd_1.jpg')
+        if self.name
+            section.grid_creative
+                section.c_img_box
+                    if self.profile_img
+                        - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                    else
+                        - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                    img.person_img_square(src=personPic alt=self.name)
+                    //- p.caption.caption_offset= self.profile_img.caption
 
-            if self.name
-                .article_hero_headline_box
-                    .article_title_detailed= self.name
+                    //- if self.addr_coll
+                    //-     #map(style=`height:400px; width:100%`)
+                    //- else
+                    //-     img.map(src='/assets/img/static/placeholder_hd_1.jpg')
 
-        p= self.name
+                section.c_title_box
+                    .name_box
+                        .person_name= self.name
 
 
