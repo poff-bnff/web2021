@@ -15,7 +15,8 @@ block content
                     - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img_square(src=personPic alt=self.firstNameLastName)
-                p.caption.caption_offset= self.picture.caption
+                if self.picture && self.picture.caption
+                    p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
                 .name_box
