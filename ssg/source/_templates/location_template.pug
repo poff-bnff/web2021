@@ -4,13 +4,17 @@ include /_templates/mixins.pug
 block content
     - var assetsDir = 'https://assets.poff.ee/img/'
 
-    script.
-        function initMap() {
-            var cordinates = {
-                lat: 59.401678066055325,
-                lng: 24.767196296945674
-            }
+    //- Siia saab siis panna ala self.addr... jne, st õiged lat lng, muutujatest
+    - var thisLat = 59.401678066055325
+    - var thisLng = 25.767196296945674
 
+    script.
+        function initMap(thisLat, thisLng) {
+            var cordinates = {
+                lat: #{thisLat},
+                lng: #{thisLng}
+            }
+            console.log('#{thisLat}', thisLng)
             console.log({cordinates})
             const map = new google.maps.Map(document.getElementById("map"), {
                 center: cordinates,
@@ -23,7 +27,7 @@ block content
             map: map
             })
         }
-        window.initMap = initMap
+        window.initMap = initMap(thisLat, thisLng)
 
     script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&callback=initMap")
 
@@ -41,10 +45,10 @@ block content
                     if self.profile_img
                         p.caption.caption_offset= self.profile_img.caption
 
-                    //- if self.addr_coll
-                    //-     #map(style=`height:400px; width:100%`)
-                    //- else
-                    //-     img.map(src='/assets/img/static/placeholder_hd_1.jpg')
+                    if self.addr_coll
+                        #map(style=`height:400px; width:100%`)
+                    else
+                        img.map(src='/assets/img/static/placeholder_hd_1.jpg')
 
                 section.c_title_box
                     .name_box
