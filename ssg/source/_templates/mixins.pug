@@ -401,4 +401,19 @@ mixin bigMoney(number)
     | #{number.toFixed(0)} €
 
 
+mixin initMap(s_lat, s_lng) 
+    - var map
+
+    script. 
+        (function () 
+        {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: '#s_lat', lng: '#s_lng' },
+                zoom: 8,
+            });
+
+        }
+            window.initMap = initMap
+        )
+
 

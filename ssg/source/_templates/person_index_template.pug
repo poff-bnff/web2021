@@ -3,6 +3,7 @@ include /_templates/mixins.pug
 
 block content
     - var assetsDir = 'https://assets.poff.ee/img/'
+    - var audioDir = 'https://admin.poff.ee'
 
     if self.firstNameLastName
         section.grid_creative
@@ -14,7 +15,8 @@ block content
                     - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img_square(src=personPic alt=self.firstNameLastName)
-                p.caption.caption_offset= self.picture.caption
+                if self.picture && self.picture.caption
+                    p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
                 .name_box
@@ -41,6 +43,7 @@ block content
                             if self.gender
                                 .str_info_grid_3
                                     .person_info_label= self.label.userprofile.gender
+                                 jah1
                                     .person_info_value= self.gender
                             if self.dateOfBirth
                                 .str_info_grid_3
@@ -610,7 +613,7 @@ block content
                                                 .container_frame_16_9
                                                     if film.images && film.images.length > 0
                                                         - var image = film.images[0]
-                                                        img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
+                                                        img.container_contents_16_9(src= '${assetsDir}${image.hash}${image.ext}')
                                                     else
                                                         img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
                                                 if film.title
@@ -633,7 +636,24 @@ block content
 
 
             section.c_media_box
-                //- if self.showreel
+
+                //- .str_info_grid_3
+                //-     .person_info_label
+                //-     .person_info_c.text_left
+                //-         | Media
+
+                if self.audioreel
+                    - var audioUrl = `${audioDir}${self.audioreel.url}`
+                    .str_info_grid_3
+                        .person_info_label= self.label.userprofile.audioreelPlay
+                        .person_info_value
+                            figure
+                                //- figcaption
+                                audio(src=audioUrl controls)
+                                        //- Your browser does not support the
+                                        //- <code>audio</code> element.
+
+
                 section#trailer.c_showreel_box.bg_fwhite.bg_dark_4
                     .ratio.ratio-16x9.m-0.p-0
                         +video(self.showreel)
