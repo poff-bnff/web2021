@@ -124,6 +124,9 @@
     },
     "showreel": {
       "type": "string"
+    },
+    "tag_locations": {
+      "collection": "tag-location"
     }
   }
 }

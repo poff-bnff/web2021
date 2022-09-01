@@ -148,8 +148,8 @@
       "type": "uid"
     },
     "product_categories": {
-      "via": "course_events",
       "collection": "product-category",
+      "via": "course_events",
       "dominant": true
     },
     "industry_projects": {
@@ -179,6 +179,9 @@
     },
     "event_access": {
       "model": "event-access"
+    },
+    "chat_w_name": {
+      "type": "string"
     }
   }
 }

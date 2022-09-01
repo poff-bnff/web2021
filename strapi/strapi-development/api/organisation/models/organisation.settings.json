@@ -45,7 +45,8 @@
         "Sponsor",
         "Partner",
         "Presenter",
-        "ProductionCompany"
+        "ProductionCompany",
+        "Accommodation"
       ]
     },
     "logoWhite": {
@@ -119,6 +120,32 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "remote_img": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.remote-img"
+    },
+    "origin": {
+      "model": "origin"
     }
   }
 }

@@ -1930,6 +1930,9 @@
                 "birthdate": {
                   "type": "string"
                 },
+                "terms_p": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -2382,6 +2385,15 @@
                 "type": "string"
               },
               "filmographies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "origin": {
+                "type": "string"
+              },
+              "industry_categories": {
                 "type": "array",
                 "items": {
                   "type": "string"

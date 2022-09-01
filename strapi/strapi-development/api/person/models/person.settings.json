@@ -261,7 +261,14 @@
       "type": "richtext"
     },
     "filmographies": {
-      "collection": "filmography"
+      "collection": "filmography",
+      "via": "person"
+    },
+    "origin": {
+      "model": "origin"
+    },
+    "industry_categories": {
+      "collection": "industry-category"
     }
   }
 }
