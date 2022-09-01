@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "locations",
   "info": {
-    "name": "Location"
+    "name": "Location",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "country": {
@@ -27,6 +29,104 @@
     },
     "remoteId": {
       "type": "uid"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "addr_coll": {
+      "model": "address"
+    },
+    "description_et": {
+      "type": "richtext"
+    },
+    "description_en": {
+      "type": "richtext"
+    },
+    "description_ru": {
+      "type": "richtext"
+    },
+    "webpage_url": {
+      "type": "string"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "name_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "name_ru"
+    },
+    "visitest_id": {
+      "type": "uid"
+    },
+    "domains": {
+      "collection": "domain"
+    },
+    "festival_editions": {
+      "collection": "festival-edition"
+    },
+    "profile_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "tag_secrets": {
+      "collection": "tag-secret"
+    },
+    "repr_p_name": {
+      "type": "string"
+    },
+    "repr_phone": {
+      "type": "string"
+    },
+    "repr_email": {
+      "type": "string"
+    },
+    "repr_org_name": {
+      "type": "string"
+    },
+    "repr_org_url": {
+      "type": "string"
+    },
+    "tag_categories": {
+      "collection": "tag-category"
+    },
+    "tag_keywords": {
+      "collection": "tag-keyword"
+    },
+    "showreel": {
+      "type": "string"
+    },
+    "tag_locations": {
+      "collection": "tag-location"
     }
   }
 }

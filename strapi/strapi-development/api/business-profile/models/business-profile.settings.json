@@ -12,9 +12,9 @@
   },
   "attributes": {
     "user": {
-      "via": "business_profiles",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "business_profiles"
     },
     "organisation": {
       "model": "organisation"
@@ -62,6 +62,9 @@
     },
     "birthdate": {
       "type": "date"
+    },
+    "terms_p": {
+      "model": "pof-fi-article"
     }
   }
 }

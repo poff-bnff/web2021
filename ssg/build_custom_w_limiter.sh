@@ -239,17 +239,17 @@ fetch_data()
     echo '==== limited build ==== fetch_industry_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js
 
-    echo '==== limited build ==== fetch_industry_channels_from_yaml'
-    node ./helpers/fetch_channels_from_yaml.js
+    # echo '==== limited build ==== fetch_industry_channels_from_yaml'
+    # node ./helpers/fetch_channels_from_yaml.js
 
-    echo '==== limited build ==== fetch_industry_event_from_yaml'
-    node ./helpers/fetch_industry_event_from_yaml.js
+    # echo '==== limited build ==== fetch_industry_event_from_yaml'
+    # node ./helpers/fetch_industry_event_from_yaml.js
 
     echo '==== limited build ==== fetch_eventival_persons_from_yaml.js'
     node ./helpers/fetch_eventival_persons_from_yaml.js
 
-    echo '==== limited build ==== fetch_courses_from_yaml.js'
-    node ./helpers/fetch_courses_from_yaml.js
+    # echo '==== limited build ==== fetch_courses_from_yaml.js'
+    # node ./helpers/fetch_courses_from_yaml.js
 
     echo '==== limited build ==== fetch_frontpagecourse_block_from_yaml.js'
     node ./helpers/fetch_frontpagecourse_block_from_yaml.js

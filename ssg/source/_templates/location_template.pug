@@ -2,6 +2,7 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    - var assetsDir = 'https://assets.poff.ee/img/'
 
     script.
         function initMap() {
@@ -23,23 +24,64 @@ block content
             })
         }
         window.initMap = initMap
-    
-    script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap")
 
-                
+    script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&callback=initMap")
+
+
     if process.env['DOMAIN'] === 'industry.poff.ee'
 
-        section.grid_article
-            section.article_hero_head
-                if self.addr_coll
-                    #map(style=`height:400px; width:100%`)
-                else
-                    img.map(src='/assets/img/static/placeholder_hd_1.jpg')
+        if self.name
+            section.grid_creative
+                section.c_img_box
+                    if self.profile_img
+                        - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                    else
+                        - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                    img.person_img_square(src=personPic alt=self.name)
+                    if self.profile_img
+                        p.caption.caption_offset= self.profile_img.caption
 
-            if self.name
-                .article_hero_headline_box
-                    .article_title_detailed= self.name
+                    //- if self.addr_coll
+                    //-     #map(style=`height:400px; width:100%`)
+                    //- else
+                    //-     img.map(src='/assets/img/static/placeholder_hd_1.jpg')
 
-        p= self.name
+                section.c_title_box
+                    .name_box
+                        .person_name= self.name
 
+                section.c_main_info_box
+                //- .str_info_grid_3
+                //-     .person_info_label
+                //-     .person_info_c.text_left
+                //-         | Personal info
+                .str_info_blokk_cred
+                    if self.gender
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.gender
+                            .person_info_value= self.gender
+                    if self.dateOfBirth
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.birthday
+                            .person_info_value
+                                +birthDateEET(self.dateOfBirth)
+                    if self.country
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.country
+                            .person_info_value= self.country.name
+                    if self.eMail
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.email
+                            .person_info_value= self.eMail
+                    if self.phoneNr
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.phone
+                            .person_info_value= self.phoneNr
 
+                    if typeof self.bio !== 'undefined'
+                        - var bio = self.bio
+                        if typeof bio === 'string'
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.biography
+                                .person_info_value.font_h
+                                    +format(bio)

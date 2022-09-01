@@ -150,11 +150,6 @@
     "addr_coll": {
       "model": "address"
     },
-    "addr_comp": {
-      "type": "component",
-      "repeatable": false,
-      "component": "location.address"
-    },
     "hair_length": {
       "model": "hair-length"
     },
@@ -266,7 +261,14 @@
       "type": "richtext"
     },
     "filmographies": {
-      "collection": "filmography"
+      "collection": "filmography",
+      "via": "person"
+    },
+    "origin": {
+      "model": "origin"
+    },
+    "industry_categories": {
+      "collection": "industry-category"
     }
   }
 }
