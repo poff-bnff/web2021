@@ -39,6 +39,17 @@ const minimodel = {
     },
     'addr_coll': {
         model_name: 'Address',
+        expand: {
+            'country': {
+                model_name: 'Country',
+            },
+            'county': {
+                model_name: 'County',
+            },
+            'municipality': {
+                model_name: 'Municipality'
+            }
+        }
     },
     'festival_editions': {
         model_name: 'FestivalEdition',
