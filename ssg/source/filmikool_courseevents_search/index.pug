@@ -35,7 +35,7 @@ block content
 
         section#content.schedule
 
-            if self.data.industryevents
+            if self.data.filmikoolcourses
 
                 section.grid_films
                     -
@@ -43,7 +43,7 @@ block content
                             return !a.start_time.localeCompare(b.start_time)
                         }
 
-                    each event in self.data.industryevents.sort(sortFunction)
+                    each event in self.data.filmikoolcourses.sort(sortFunction)
                         -
                             var screeningNames = function(item) {
                                 let itemNames = item.title
