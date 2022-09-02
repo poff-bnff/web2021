@@ -34,7 +34,7 @@ if (DOMAIN === 'discoverycampus.poff.ee') {
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_filmikool_editions
+    ACTIVE_FESTIVAL_EDITIONS = null
     NAMEVARIABLE = 'filmikool'
     FETCHDATADIRNAME = 'filmikoolcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
