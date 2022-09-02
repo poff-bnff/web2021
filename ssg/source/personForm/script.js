@@ -52,6 +52,8 @@ async function loadUserInfo() {
         document.getElementById('thisPersonProfile').style.display = ''
         document.getElementById('logInStatus').style.display = 'none'
         document.getElementById('loadingStatus').style.display = 'none'
+        // At least one profession required, thus add one field on every reload
+        addNextRoleAtFilm()
     }
 
 }
@@ -267,7 +269,7 @@ async function sendPersonProfile() {
         document.getElementById('personProfileSent').open = true;
 
         // Scroll page to dialog
-        document.getElementById("personProfileSent").scrollIntoView(alignToTop);
+        scrollToElement("personProfileSent")
 
         // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
@@ -281,28 +283,60 @@ async function sendPersonProfile() {
 
 function validatePersonForm() {
 
-    var errors = []
+    const errors = []
 
     // if (document.getElementById('personProfileSent')) {
     //     document.getElementById('personProfileSent').style.display = 'none'
     // }
 
-    if (!validateFirstName("firstName")) {
-        errors.push('Missing firstname')
+    if (!validateRequiredField("firstName", "textLength")) {
+        errors.push('firstName')
     }
 
-    if (!validateLastName("lastName")) {
-        errors.push('Missing lastname')
+    if (!validateRequiredField("lastName", "textLength")) {
+        errors.push('lastName')
     }
 
-    if (!validateGender("gender")) {
-        errors.push('Missing gender')
+    if (!validateRequiredField("gender", "gender")) {
+        errors.push('gender')
     }
 
-    // console.log(errors)
+    if (!validateRequiredField("dateofbirth", "dateofbirth")) {
+        errors.push('dateofbirth')
+    }
+
+    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
+    for (let index = 0; index < roleAtFilmElements.length; index++) {
+        const element = roleAtFilmElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('role_at_film')[0], element.getElementsByClassName('help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
+    let educationElements = document.querySelectorAll('[id^="education"]')
+    for (let index = 0; index < educationElements.length; index++) {
+        const element = educationElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('org_name')[0], element.getElementsByClassName('org_name_help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
+    let filmographyElements = document.querySelectorAll('[id^="filmographies"]')
+    for (let index = 0; index < filmographyElements.length; index++) {
+        const element = filmographyElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('type_of_work')[0], element.getElementsByClassName('type_of_work_help')[0])) {
+            errors.push(element.id)
+        }
+        if (!validateRepeatableFormPart(element.getElementsByClassName('work_name')[0], element.getElementsByClassName('work_name_help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
     if (errors.length === 0) {
         console.log('KÕIKOK');
         sendPersonProfile()
+    } else {
+        scrollToElement(errors[0])
     }
 
     window.addEventListener("keydown", function (event) {
@@ -311,6 +345,68 @@ function validatePersonForm() {
             validatePersonForm()
         }
     })
+}
+
+function validateRequiredField(formFieldId = null, type = null) {
+    let formField = document.getElementById(formFieldId)
+    let formFieldHelp = document.getElementById(`${formFieldId}Help`)
+
+    if (!type || type === 'textLength') {
+        if (formField.value == "" || formField.value.length < 2 || !isNaN(formField.value)) {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        } else {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        }
+    } else if (type === 'gender') {
+        if (formField.value === "") {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        } else {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        }
+    } else if (type === 'dateofbirth') {
+        console.log('BDAY', formField.value);
+        if (formField.value === "") {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        }
+
+        var userAge = getAge(formField.value)
+        if (userAge > 12 && userAge < 116) {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        } else {
+            addInvalidClass(formField, formFieldHelp)
+        }
+    }
+}
+
+function validateRepeatableFormPart(selectElement, selectHelp) {
+        if (selectElement.value === "") {
+            addInvalidClass(selectElement, selectHelp)
+            return false
+        } else {
+            removeInvalidClass(selectElement, selectHelp)
+            return true
+        }
+}
+
+function addInvalidClass(formField, formFieldHelp) {
+    formFieldHelp.classList.remove("valid")
+    formFieldHelp.classList.add("invalid")
+    formField.classList.add('invalidColor')
+}
+function removeInvalidClass(formField, formFieldHelp) {
+    formFieldHelp.classList.remove("invalid")
+    formFieldHelp.classList.add("valid")
+    formField.classList.remove('invalidColor')
+}
+
+function scrollToElement(elementId) {
+    document.getElementById(elementId).scrollIntoView(false);
 }
 
 function validateImageAndPreview(file, templateElement, type) {
@@ -431,3 +527,4 @@ function addNextFilmographyWork() {
 
     filmographyCounter = filmographyCounter + 1
 }
+
