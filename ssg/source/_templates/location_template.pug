@@ -15,7 +15,6 @@ block content
                 lat: #{thisLat},
                 lng: #{thisLng}
             }
-            console.log('#{thisLat}', thisLng)
             console.log({cordinates})
             const map = new google.maps.Map(document.getElementById("map"), {
                 center: cordinates,
@@ -28,10 +27,9 @@ block content
             map: map
             })
         }
-        window.initMap = initMap(thisLat, thisLng)
+        window.initMap = initMap
 
-    script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0XJ2s7rWaTaF8dTv91uzORfXQItHPbgU&callback=initMap")
-
+    script(async, defer, src=`https://maps.googleapis.com/maps/api/js?key=${process.env['GoogleMapApiKey']}&callback=initMap`)
 
     if process.env['DOMAIN'] === 'industry.poff.ee'
 
