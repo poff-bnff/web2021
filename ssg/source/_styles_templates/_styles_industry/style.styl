@@ -1516,6 +1516,7 @@ row:nth-child(15) > .supporter_logos
 .person_img
     width: 100%
     border-radius 57% 43% 57% 43%
+    object-fit cover
 
 .person_img_square
     width 100%
@@ -1582,6 +1583,7 @@ row:nth-child(15) > .supporter_logos
     // margin-bottom 1rem
     text-align center
     color dark_2
+    // background-color #eeeeee
 
 .person_info_h
     font-family font_h
@@ -1912,6 +1914,14 @@ header
     overflow hidden
     padding-top 56.25%
     background bg_dark_2
+
+.container_frame_1_1
+    position relative
+    // height 0
+    // overflow hidden
+    // padding-top 56.25%
+    aspect-ratio 1 / 1
+    background white
 
 .container_contents_16_9
     position absolute
@@ -3529,8 +3539,10 @@ details[open] > summary::after
     grid-area c_title_box
     display grid
     grid-template-columns 1fr
-    grid-template-rows 1fr max-content
+    grid-template-rows 1fr 2fr 1fr
+    // grid-template-rows 1fr max-content
     justify-items center
+    align-content space-between
     // align-content center
     width 100%
     height 100%
@@ -3554,7 +3566,7 @@ details[open] > summary::after
     padding-right calc(1rem + 1vw)
     padding-top calc(4rem + 1vw)
     padding-bottom calc(2rem + 1vw)
-    // background-color #eeeeee
+    // background-color #dddddd
     align-self center
 
 .c_repr
@@ -3579,6 +3591,14 @@ details[open] > summary::after
     padding 1rem
     // margin-bottom 1rem
     // background-color #dddddd
+
+.c_top_box
+    width 100%
+    align-self start
+    justify-self center
+    text-align center
+    // padding 1rem
+    // background-color #cccccc
 
 .c_main_info_box
     grid-area c_main_info_box
@@ -3676,12 +3696,13 @@ a .feather
     stroke dark_2
 
 .filmography_sec
-    display grid
-    grid-template-columns 1fr
-    grid-template-rows auto
-    justify-items start
-    align-items start
-    justify-content start
+    // display grid
+    // grid-template-columns 1fr
+    // grid-template-rows auto
+    padding-bottom 1rem
+    // justify-items start
+    // align-items start
+    // justify-content start
 
 .filmography_item
     display grid
@@ -3713,19 +3734,19 @@ a .feather
 
 
 .person_info_label
-  font-family font_p
-  color dark_3
-  font-size 1rem
-  text-align right
-  line-height 1.618
-  font-weight 300
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align right
+    line-height 1.618
+    font-weight 300
 
 .person_info_value
-  font-family font_p
-  color dark_1
-  font-size 1rem
-  text-align left
-  line-height 1.618
+    font-family font_p
+    color dark_1
+    font-size 1rem
+    text-align left
+    line-height 1.618
 
 .icon_container
     // display grid
@@ -3781,6 +3802,66 @@ a .feather
 a:hover > .login_headline
     color clr_primary
     // transform scale(1.1,1.1)
+
+.hidden
+    visibility hidden
+
+.years_grid
+    display grid
+    grid-template-columns 5ch 1ch 5ch
+    // grid-template-columns repeat(auto-fit, minmax(4ch, 2ch))
+    justify-items end
+    justify-content end
+    gap 0px
+    padding 0
+    margin 0
+
+.year_from
+    width 5ch
+    justify-self end
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align left
+    line-height 1.618
+    font-weight 300
+    padding 0
+    margin 0
+    // background-color #eeeeee
+
+
+.year_to
+    width 5ch
+    justify-self end
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align right
+    line-height 1.618
+    font-weight 300
+    padding 0
+    margin 0
+    // background-color #dddddd
+
+ .year_dash
+    width 1ch
+    justify-self center
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align center
+    line-height 1.618
+    font-weight 300
+    padding 0
+    margin 0
+    // background-color #cccccc
+
+.person_label
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    line-height 1.618
+    font-weight 300
 
 // ---------- GALLERY CREATIVE ----------
 
@@ -3859,8 +3940,8 @@ a:hover > .login_headline
         display grid
         // width max(70vw, 1600px)
         width 100%
-        padding-left 5vw
-        padding-right 5vw
+        padding-left 12vw
+        padding-right 12vw
         justify-items center
         align-items center
         justify-content center
@@ -4523,3 +4604,6 @@ strong
 
 .italic
     font-style italic
+
+.font_c
+    font-family font_c

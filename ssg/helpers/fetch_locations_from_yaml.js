@@ -57,7 +57,7 @@ const minimodel = {
     'tag_secrets': {
         model_name: 'TagSecret',
     },
-    'tag_categries': {
+    'tag_categories': {
         model_name: 'TagCategory',
     },
     'tag_keywords': {

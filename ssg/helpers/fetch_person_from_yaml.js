@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
+const videoUrlToVideoCode = require('./videourl_to_videocode.js');
 const { fetchModel } = require('./b_fetch.js')
 // const replaceLinks = require('./replace_links.js')
 // const addConfigPathAliases = require('./add_config_path_aliases.js')
@@ -159,6 +160,10 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             let slugifyName = slugify(`${person.firstNameLastName}-${person.id}`)
             person.path = slugifyName;
             person.slug = slugifyName;
+
+            if (person.showreel) {
+                person.showreel = videoUrlToVideoCode(person.showreel)
+            }
 
             let oneYaml = {}
             try {
