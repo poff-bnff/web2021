@@ -61,7 +61,7 @@ const minimodel = {
         model_name: 'TagCategory',
         expand: {
             'tag_locations': {
-                model_name: 'Location',
+                model_name: 'TagLocation',
             }
         }
     },
