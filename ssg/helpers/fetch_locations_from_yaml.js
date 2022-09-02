@@ -59,6 +59,11 @@ const minimodel = {
     },
     'tag_categories': {
         model_name: 'TagCategory',
+        expand: {
+            'tag_locations': {
+                model_name: 'Location',
+            }
+        }
     },
     'tag_keywords': {
         model_name: 'TagKeyword',

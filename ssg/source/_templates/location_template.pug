@@ -53,24 +53,34 @@ block content
                     section.accounts_box
 
                 section.c_main_info_box
-                    //- .str_info_grid_3
-                    //-     .person_info_label
-                    //-     .person_info_c.text_left
-                    //-         | Personal info
+                    .str_info_grid_3
+                        .person_info_label
+                        .person_info_c.text_left
+                            | Info
                     .str_info_blokk_cred
-                        if self.gender
+                        if self.addr_coll
                             .str_info_grid_3
-                                .person_info_label= self.label.userprofile.gender
-                                .person_info_value= self.gender
+                                .person_info_label= self.label.userprofile.address
+                                .person_info_value
+                                    if self.addr_coll.street_name
+                                        span.person_info_value= self.addr_coll.street_name
+                                    if self.addr_coll.address_number
+                                        span.person_info_value= ' ' + self.addr_coll.address_number
+                                    if self.addr_coll.municipality
+                                        span.person_info_value= ', ' + self.addr_coll.municipality.name
+                                    if self.addr_coll.county
+                                        span.person_info_value= ', ' + self.addr_coll.county.name
+                                    if self.addr_coll.country
+                                        span.person_info_value= ', ' + self.addr_coll.country.name
                         if self.dateOfBirth
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.birthday
                                 .person_info_value
                                     +birthDateEET(self.dateOfBirth)
-                        if self.country
-                            .str_info_grid_3
-                                .person_info_label= self.label.userprofile.country
-                                .person_info_value= self.country.name
+                        //- if self.country
+                        //-     .str_info_grid_3
+                        //-         .person_info_label= self.label.userprofile.country
+                        //-         .person_info_value= self.country.name
                         if self.eMail
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.email
