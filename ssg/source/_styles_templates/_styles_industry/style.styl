@@ -1516,6 +1516,7 @@ row:nth-child(15) > .supporter_logos
 .person_img
     width: 100%
     border-radius 57% 43% 57% 43%
+    object-fit cover
 
 .person_img_square
     width 100%
@@ -1913,6 +1914,14 @@ header
     overflow hidden
     padding-top 56.25%
     background bg_dark_2
+
+.container_frame_1_1
+    position relative
+    // height 0
+    // overflow hidden
+    // padding-top 56.25%
+    aspect-ratio 1 / 1
+    background white
 
 .container_contents_16_9
     position absolute
@@ -3931,8 +3940,8 @@ a:hover > .login_headline
         display grid
         // width max(70vw, 1600px)
         width 100%
-        padding-left 5vw
-        padding-right 5vw
+        padding-left 12vw
+        padding-right 12vw
         justify-items center
         align-items center
         justify-content center
@@ -4595,3 +4604,6 @@ strong
 
 .italic
     font-style italic
+
+.font_c
+    font-family font_c
