@@ -1041,6 +1041,7 @@ Location: &Location
     showreel: text
     tag_locations: 
         - *TagLocation
+    origin: *Origin
 
 Language: &Language
     _path: /languages
@@ -1393,6 +1394,7 @@ Person: &Person
     origin: *Origin
     industry_categories:
         - *IndustryCategory
+    looking_for: text
 
 TeamMember: &TeamMember
     person: *Person #(Component)
