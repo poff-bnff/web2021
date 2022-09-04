@@ -19,14 +19,14 @@ block content
                     .form_group
                         label.person_profile_label(for='firstName')= self.label.userprofile.firstName
                             span.required= ' ' + self.label.userprofile.required
-                        input.login_input#firstName.form_control( type='text' name='firstName' autocomplete="off" oninput="validateFirstName(this.id)" required)
+                        input.login_input#firstName.form_control( type='text' name='firstName' autocomplete="off" oninput="validateRequiredField(this.id, 'textLength')" required)
                         //- placeholder=`${self.label.userprofile.required}`
                         div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                     //- lastName
                     .form_group
                         label.person_profile_label(for='lastName')= self.label.userprofile.lastName
                             span.required= ' ' + self.label.userprofile.required
-                        input.login_input#lastName.form_control( type='text' name='lastName' autocomplete="off" oninput="validateLastName(this.id)" required)
+                        input.login_input#lastName.form_control( type='text' name='lastName' autocomplete="off" oninput="validateRequiredField(this.id, 'textLength')" required)
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                     //- RoleAtFilm / roleatfilm
                     //- .form_group
@@ -40,7 +40,7 @@ block content
             fieldset
                 //- role_at_films
                 legend= self.label.userprofile.proRole
-                        div#roleAtFilmTemplate(style= 'display: block;')
+                        div#roleAtFilmTemplate(style= 'display: none;')
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
@@ -50,6 +50,8 @@ block content
                                         //- = self.label.userprofile.required
                                         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
+                                    div.help(class='valid') Vähemalt üks profession on vajalik!
+
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
@@ -80,7 +82,7 @@ block content
                     .form_group
                         label.person_profile_label(for='gender')= self.label.userprofile.gender
                             span.required= ' ' + self.label.userprofile.required
-                        select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
+                        select.login_input#gender(name='gender' form="thisPersonProfile" oninput="validateRequiredField(this.id, 'gender')" required)
                             option.login_input(class='invalid' value="" selected="")
                             //- = self.label.userprofile.required
                             each gender in self.data.genders.sort((a, b) => a.id - b.id)
@@ -91,6 +93,8 @@ block content
                         label.person_profile_label(for='dateofbirth')= self.label.userprofile.birthday
                             span.required= ' ' + self.label.userprofile.required
                         input.login_input#dateofbirth.form_control( type='date' name='dateofbirth' autocomplete="off" required)
+                        div#dateofbirthHelp(class='valid') Korrektne sünnipäev on vajalik (vanus vahemikus 12-116)!
+
                     //- native_lang / nativelang
                     .form_group
                         label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
@@ -427,6 +431,7 @@ block content
                                 label.person_profile_label(for='org_name')= self.label.userprofile.eduOrgName
                                     span.required= ' ' + self.label.userprofile.required
                                 input.login_input.org_name.form_control( type='text' name='org_name' autocomplete="off" required)
+                                div.org_name_help(class='valid') Organisatsioon vajalik!
                             //- org_department
                             .form_group
                                 label.person_profile_label(for='org_department')= self.label.userprofile.eduOrgDep
@@ -456,10 +461,9 @@ block content
                                     span.required= ' ' + self.label.userprofile.required
                                 select.login_input.type_of_work(name='type_of_work' form="thisPersonProfile" required)
                                     option.login_input(class='invalid' value="" selected="")
-                                    //- = self.label.userprofile.select
-                                    //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
                                     each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                         option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
+                                div.type_of_work_help(class='valid') Töötüüp vajalik!
                             .form_group
                                 label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                                 select.login_input.role_at_films(name='roleatfilm' form="thisPersonProfile")
@@ -482,6 +486,8 @@ block content
                                 label.person_profile_label(for='work_name')= self.label.userprofile.workName
                                     span.required= ' ' + self.label.userprofile.required
                                 input.login_input.work_name.form_control( type='text' name='work_name' autocomplete="off" required)
+                                div.work_name_help(class='valid') Töö/filmi nimi vajalik!
+
                             //- work_url
                             .form_group
                                 label.person_profile_label(for='work_url')= self.label.userprofile.workUrl

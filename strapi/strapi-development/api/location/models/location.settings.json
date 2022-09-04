@@ -127,6 +127,9 @@
     },
     "tag_locations": {
       "collection": "tag-location"
+    },
+    "origin": {
+      "model": "origin"
     }
   }
 }
