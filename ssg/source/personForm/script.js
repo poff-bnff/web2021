@@ -329,6 +329,14 @@ function validatePersonForm() {
         }
     }
 
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    for (let index = 0; index < tagLookingForElements.length; index++) {
+        const element = tagLookingForElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('tag_looking_for')[0], element.getElementsByClassName('help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
     let educationElements = document.querySelectorAll('[id^="education"]')
     for (let index = 0; index < educationElements.length; index++) {
         const element = educationElements[index];
