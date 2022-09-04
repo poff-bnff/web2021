@@ -45,7 +45,7 @@ block content
                                 .form_group
                                     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
                                         span.required= ' ' + self.label.userprofile.required
-                                    select.login_input.role_at_film(name='roleatfilm' form="thisPersonProfile" required)
+                                    select.login_input.role_at_film#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
                                         option.login_input.default_select(class='invalid' value="" selected="")
                                         //- = self.label.userprofile.required
                                         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
@@ -55,6 +55,23 @@ block content
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
                         input.login_input.btn_primary(type='button' name='nextRoleAtFilm' id='nextRoleAtFilm' onclick='addNextRoleAtFilm();' value=self.label.userprofile.addRoleAtFilm)
 
+            fieldset
+                //- tag_looking_for
+                legend= self.label.userprofile.lookingFor
+                        div#tagLookingForTemplate(style= 'display: block;')
+                            .fieldset_grid
+                                .form_group
+                                    label.person_profile_label(for='taglookingfor')= self.label.userprofile.lookingForTag
+                                        span.required= ' ' + self.label.userprofile.required
+                                    select.login_input.tag_looking_for(name='taglookingfor' form="thisPersonProfile" required)
+                                        option.login_input.default_select(class='invalid' value="" selected="")
+                                        //- = self.label.userprofile.required
+                                        each taglookingfor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
+                                            option.login_input(value=taglookingfor.id)= taglookingfor[self.locale]
+                .fieldset_grid
+                    .form_group
+                        //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
+                        input.login_input.btn_primary(type='button' name='nextTagLookingFor' id='nextTagLookingFor' onclick='addNextTagLookingFor();' value=self.label.userprofile.addTagLookingFor)
 
             fieldset
                 legend= self.label.userprofile.mainInfoSet
@@ -203,6 +220,10 @@ block content
                     .form_group
                         label.person_profile_label(for='skills_en')= self.label.userprofile.skills
                         textarea.login_input#skills_en(form="thisPersonProfile" name="skills_en")
+                    //- text_looking_for
+                    .form_group
+                        label.person_profile_label(for='text_looking_for')= self.label.userprofile.lookingForText
+                        textarea.login_input#text_looking_for(form="thisPersonProfile" name="text_looking_for")
 
 
             fieldset

@@ -4,6 +4,7 @@ let audioFileToSend = "empty"
 let galleryCounter = 0
 let profEducationCounter = 0
 let roleAtFilmCounter = 0
+let tagLookingForCounter = 0
 let filmographyCounter = 0
 
 if (validToken) {
@@ -103,6 +104,17 @@ async function sendPersonProfile() {
         element.remove()
     }
 
+    // Tag Looking For data processing
+    let tagLookingForData = []
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    for (let index = 0; index < tagLookingForElements.length; index++) {
+        const element = tagLookingForElements[index];
+        tagLookingForData.push(
+            element.getElementsByClassName('tag_looking_for')[0].value,
+        )
+        element.remove()
+    }
+
     // Filmographies data processing
     let filmographiesData = []
     let filmographiesElements = document.querySelectorAll('[id^="filmographies"]')
@@ -160,6 +172,7 @@ async function sendPersonProfile() {
         showreel: showreel.value || null,
         bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
+        text_looking_for: looking_for.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -185,6 +198,7 @@ async function sendPersonProfile() {
         // },
         // profEducations: profEducationData,
         role_at_films: roleAtFilmData,
+        tag_looking_fors: tagLookingForData,
         filmographies: filmographiesData.concat(profEducationData),
 
     }
@@ -257,10 +271,12 @@ async function sendPersonProfile() {
 
         profEducationData = []
         roleAtFilmData = []
+        tagLookingForData = []
         filmographiesData = []
 
         profEducationCounter = 0
         roleAtFilmCounter = 0
+        tagLookingForCounter = 0
         filmographyCounter = 0
 
         console.log('OK');
@@ -416,6 +432,21 @@ function addNextRoleAtFilm() {
     // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
 
     roleAtFilmCounter = roleAtFilmCounter + 1
+}
+
+
+function addNextTagLookingFor() {
+    const tagLookingForTemplate = document.getElementById('tagLookingForTemplate');
+    const clone = tagLookingForTemplate.cloneNode(true);
+    clone.id = `tagLooking${tagLookingForCounter}`
+    clone.style.display = ''
+    document.getElementById('tagLookingForTemplate').parentElement.appendChild(clone)
+    // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
+
+    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${roleAtFilmCounter}", "gallery")`)
+    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
+
+    tagLookingForCounter = tagLookingForCounter + 1
 }
 
 function addNextFilmographyWork() {

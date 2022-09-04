@@ -16,3 +16,4 @@ data:
     typeofworks: /_domainStrapidata/TypeOfWork.yaml
     filmographies: /_domainStrapidata/Filmography.yaml
     tagfilmtypes: /_domainStrapidata/TagFilmType.yaml
+    taglookingfors: /_domainStrapidata/TagLookingFor.yaml
