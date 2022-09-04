@@ -64,8 +64,8 @@ block content
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='taglookingfor')= self.label.userprofile.lookingForTag
-                                        span.required= ' ' + self.label.userprofile.required
-                                    select.login_input.tag_looking_for(name='taglookingfor' form="thisPersonProfile" required)
+                                        //- span.required= ' ' + self.label.userprofile.required
+                                    select.login_input.tag_looking_for(name='taglookingfor' form="thisPersonProfile")
                                         option.login_input.default_select(class='invalid' value="" selected="")
                                         //- = self.label.userprofile.required
                                         each taglookingfor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
