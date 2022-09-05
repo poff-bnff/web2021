@@ -153,7 +153,7 @@ function mSort(to_sort, lang) {
 function generateLocationsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
     let filters = {
         names: {},
-        address: {},
+        addresses: {},
     };
 
     const locations_search = allData.map(location => {
@@ -165,7 +165,6 @@ function generateLocationsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
         }
 
         let addresses = [];
-        console.log(location.addr_coll? location.addr_coll : null)
         if(location.addr_coll) {
             if(typeof location.addr_coll.hr_address !== 'undefined') {
                 addresses.push(location.addr_coll.hr_address)

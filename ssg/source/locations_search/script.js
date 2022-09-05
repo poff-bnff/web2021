@@ -5,9 +5,8 @@ const urlParams = new URLSearchParams(queryString);
 
 
 const selectors = {
-    genders: document.getElementById('genders_select'),
-    roleatfilms: document.getElementById('roleatfilms_select'),
-    nativelangs: document.getElementById('nativelangs_select'),
+    names: document.getElementById('names_select'),
+    addresses: document.getElementById('addresses_select'),
 }
 
 function urlSelect() {
@@ -86,7 +85,7 @@ function toggleAll(exclude_selector_name) {
     }
 
     // kuva/peida kassette
-    let cards = document.querySelectorAll('[class="person"]')
+    let cards = document.querySelectorAll('[class="location"]')
     cards.forEach(card => {
         if (ids.includes(card.id)) {
             card.style.display = "grid"
@@ -116,16 +115,12 @@ function toggleFilters(exclude_selector_name) {
 
             let count = searcharray
                 .filter(screening => {
-                    const compare_with = selector_name === 'genders' ? value : selectors.genders.value;
-                    return compare_with === '' ? true : screening.genders.includes(compare_with)
+                    const compare_with = selector_name === 'names' ? value : selectors.names.value;
+                    return compare_with === '' ? true : screening.names.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'roleatfilms' ? value : selectors.roleatfilms.value;
-                    return compare_with === '' ? true : screening.roleatfilms.includes(compare_with)
-                })
-                .filter(screening => {
-                    const compare_with = selector_name === 'nativelangs' ? value : selectors.nativelangs.value;
-                    return compare_with === '' ? true : screening.nativelangs.includes(compare_with)
+                    const compare_with = selector_name === 'addresses' ? value : selectors.addresses.value;
+                    return compare_with === '' ? true : screening.addresses.includes(compare_with)
                 })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
@@ -144,22 +139,18 @@ search_input.addEventListener('keyup', e => {
 });
 
 selectors.genders.addEventListener('change', e => {
-    toggleAll('genders');
+    toggleAll('names');
 });
 
 selectors.roleatfilms.addEventListener('change', e => {
-    toggleAll('roleatfilms');
+    toggleAll('addresses');
 });
 
-selectors.nativelangs.addEventListener('change', e => {
-    toggleAll('nativelangs');
-});
 
 function unselect_all() {
     search_input.value = '';
-    selectors.genders.selectedIndex = 0;
-    selectors.roleatfilms.selectedIndex = 0;
-    selectors.nativelangs.selectedIndex = 0;
+    selectors.names.selectedIndex = 0;
+    selectors.addresses.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -167,22 +158,15 @@ function unselect_all() {
 function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
-            if (selectors.genders.value) {
+            if (selectors.names.value) {
                 return screening.genders.includes(selectors.genders.value)
             } else {
                 return true
             }
         })
         .filter(screening => {
-            if (selectors.roleatfilms.value) {
+            if (selectors.addresses.value) {
                 return screening.roleatfilms.includes(selectors.roleatfilms.value)
-            } else {
-                return true
-            }
-        })
-        .filter(screening => {
-            if (selectors.nativelangs.value) {
-                return screening.nativelangs.includes(selectors.nativelangs.value)
             } else {
                 return true
             }
