@@ -1,0 +1,5 @@
+path: locations-search
+data:
+    locations: /_fetchdir/locations.en.yaml
+    filters: /_fetchdir/filters_locations.en.yaml
+    search: /_fetchdir/search_locations.en.yaml

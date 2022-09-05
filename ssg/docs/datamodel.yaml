@@ -434,6 +434,7 @@ Address: &Address
     add_municipality: text
     add_country: text
     popul_place: text
+    hr_address: text
     gm_embed: text
     plus_code: text
 

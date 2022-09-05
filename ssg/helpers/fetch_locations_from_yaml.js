@@ -4,6 +4,10 @@ const path = require('path');
 const rueten = require('./rueten.js')
 const {fetchModel} = require('./b_fetch.js')
 
+const rootDir = path.join(__dirname, '..')
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+
 const sourceDir =  path.join(__dirname, '..', 'source')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const fetchDirDirPath = path.join(sourceDir, '_fetchdir')
@@ -14,7 +18,7 @@ const strapiDataLocationPath = path.join(strapiDataDirPath, `Location.yaml`)
 const STRAPIDATA_LOCATIONS_FULL = yaml.load(fs.readFileSync(strapiDataLocationPath, 'utf8'))
 
 const fetchDataDir = path.join(fetchDirDirPath, 'locations')
-
+const locationYamlNameSuffix = 'locations'
 function slugify(text) {
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
@@ -73,46 +77,134 @@ const minimodel = {
     }
 }
 
-
-
 STRAPIDATA_LOCATIONS = fetchModel(STRAPIDATA_LOCATIONS_FULL, minimodel)
-
 STRAPIDATA_LOCATIONS.filter( e => e.name)
+const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-const languages = ['en', 'et', 'ru']
-for (const lang of languages) {
+startLocationProcessing(languages, STRAPIDATA_LOCATIONS )
 
-    for(const ix in STRAPIDATA_LOCATIONS) {
-        let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
+function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
+    for (const lang of languages) {
 
-            location = rueten(location, lang)
-            let slugifyName = slugify(`${location.name}-${location.id}`)
-            location.path = slugifyName
-            location.slug = slugifyName
+        for(const ix in STRAPIDATA_LOCATIONS) {
+            let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
 
-            let oneYaml = {}
-            try {
-                oneYaml = yaml.dump(location, { 'noRefs': true, 'indent': '4' })
-            } catch (error) {
-                console.error({ error, location })
-                throw error
-            }
+                location = rueten(location, lang)
+                let slugifyName = slugify(`${location.name}-${location.id}`)
+                location.path = slugifyName
+                location.slug = slugifyName
 
-            const yamlPath = path.join(fetchDataDir, slugifyName, `data.${lang}.yaml`)
-            let saveDir = path.join(fetchDataDir, slugifyName);
-            fs.mkdirSync(saveDir, { recursive: true });
+                let oneYaml = {}
+                try {
+                    oneYaml = yaml.dump(location, { 'noRefs': true, 'indent': '4' })
+                } catch (error) {
+                    console.error({ error, location })
+                    throw error
+                }
 
-            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/location_template.pug`)
+                const yamlPath = path.join(fetchDataDir, slugifyName, `data.${lang}.yaml`)
+                let saveDir = path.join(fetchDataDir, slugifyName);
+                fs.mkdirSync(saveDir, { recursive: true });
 
+                fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+                fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/location_template.pug`)
+
+        }
+
+        const locationDataFile =  path.join(fetchDirDirPath, `${locationYamlNameSuffix}.${lang}.yaml`)
+
+        let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS))
+        locationData = rueten(copyData, lang)
+
+        let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
+        fs.writeFileSync(locationDataFile, locationDataYAML, 'utf8')
+        console.log(`Fetched ${DOMAIN} location ${lang} data`)
+
+        generateLocationsSearchAndFilterYamls(locationData, lang, locationYamlNameSuffix);
+    }
+}
+
+function mSort(to_sort, lang) {
+    // Töötav sorteerimisfunktsioon filtritele
+
+    let sortable = []
+    for (var item in to_sort) {
+        sortable.push([item, to_sort[item]]);
     }
 
-    const locationDataFile =  path.join(fetchDirDirPath, `locations.${lang}.yaml`)
+    sortable = sortable.sort(function (a, b) {
+        try {
+            const locale_sort = a[1].localeCompare(b[1], lang)
+            return locale_sort
+        } catch (error) {
+            console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+            throw new Error(error)
+        }
+    });
 
-    let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS))
-    locationData = rueten(copyData, lang)
+    var objSorted = {}
+    for (let index = 0; index < sortable.length; index++) {
+        const item = sortable[index];
+        objSorted[item[0]] = item[1]
+    }
+    return objSorted
+}
 
-    let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
-    fs.writeFileSync(locationDataFile, locationDataYAML, 'utf8')
-    console.log(`Fetched ${DOMAIN} location ${lang} data`)
+function generateLocationsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
+    let filters = {
+        names: {},
+        addresses: {},
+    };
+
+    const locations_search = allData.map(location => {
+
+        let names = [];
+        if (typeof location.name !== 'undefined') {
+            names.push(location.name);
+            filters.names[location.name] = location.name;
+        }
+
+        let addresses = [];
+        if(location.addr_coll) {
+            if(typeof location.addr_coll.hr_address !== 'undefined') {
+                addresses.push(location.addr_coll.hr_address)
+                filters.addresses[location.addr_coll.hr_address] = location.addr_coll.hr_address
+            }
+        } 
+
+        // for (const addr of (location.addr_coll.hr_address || [])
+        //     .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+        //     || []) {
+        //     const addrName = addr.addrName;
+        //     addratfilms.push(addrName);
+        //     filters.addresses[addrName] = addrName;
+        // }
+
+        return {
+            id: location.id,
+            text: [
+                location.name,
+                location.addr_coll?.hr_address,
+                // location.dateOfBirth,
+                // location.profession,
+                // location.lookingFor,
+                // location.website,
+            ].join(' ').toLowerCase(),
+            names: names,
+            addresses: addresses,
+            // nativelangs: nativelangs,
+        };
+    });
+
+    let sorted_filters = {
+        names: mSort(filters.names, lang),
+        addresses: mSort(filters.addresses, lang),
+        // nativelangs: mSort(filters.nativelangs, lang),
+    };
+
+    let searchYAML = yaml.dump(locations_search, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDirDirPath, `search_${yamlNameSuffix}.${lang}.yaml`), searchYAML, 'utf8');
+
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDirDirPath, `filters_${yamlNameSuffix}.${lang}.yaml`), filtersYAML, 'utf8');
 }

@@ -211,7 +211,7 @@ function processEvents(courseEventCopy, lang) {
                     eventend.setUTCHours(eventend.getUTCHours() + parseInt(element.duration_time.split(':')[0]))
                 }
             }
-            element.calendar_data = escape(ical({
+            element.calendar_data = escape(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
                 domain: DOMAIN,
                 prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
                 events: [
