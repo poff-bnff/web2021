@@ -70,6 +70,25 @@ block content
                                         span.person_info_value= ', ' + self.addr_coll.county.name
                                     if self.addr_coll.country
                                         span.person_info_value= ', ' + self.addr_coll.country.name
+                        //- if self.description
+                        //-     .str_info_grid_3
+                        //-         .person_info_label= self.label.userprofile.description
+                        //-         .person_info_value= self.description
+                        if typeof self.description !== 'undefined'
+                        - var description = self.description
+                        if typeof description === 'string'
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.description
+                                .person_info_value
+                                    +format(description)
+
+                        if self.tag_locations
+                            .str_info_grid_3
+                                .person_info_label= self.label.userprofile.tags
+                                .person_info_value= self.tag_locations.map(tag_location => tag_location.name).join(', ')
+
+
+
                         if self.dateOfBirth
                             .str_info_grid_3
                                 .person_info_label= self.label.userprofile.birthday

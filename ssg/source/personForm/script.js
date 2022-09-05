@@ -4,6 +4,7 @@ let audioFileToSend = "empty"
 let galleryCounter = 0
 let profEducationCounter = 0
 let roleAtFilmCounter = 0
+let tagLookingForCounter = 0
 let filmographyCounter = 0
 
 if (validToken) {
@@ -52,6 +53,8 @@ async function loadUserInfo() {
         document.getElementById('thisPersonProfile').style.display = ''
         document.getElementById('logInStatus').style.display = 'none'
         document.getElementById('loadingStatus').style.display = 'none'
+        // At least one profession required, thus add one field on every reload
+        addNextRoleAtFilm()
     }
 
 }
@@ -99,6 +102,17 @@ async function sendPersonProfile() {
         const element = roleAtFilmElements[index];
         roleAtFilmData.push(
             element.getElementsByClassName('role_at_film')[0].value,
+        )
+        element.remove()
+    }
+
+    // Tag Looking For data processing
+    let tagLookingForData = []
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    for (let index = 0; index < tagLookingForElements.length; index++) {
+        const element = tagLookingForElements[index];
+        tagLookingForData.push(
+            element.getElementsByClassName('tag_looking_for')[0].value,
         )
         element.remove()
     }
@@ -160,6 +174,7 @@ async function sendPersonProfile() {
         showreel: showreel.value || null,
         bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
+        text_looking_for: looking_for.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -185,6 +200,7 @@ async function sendPersonProfile() {
         // },
         // profEducations: profEducationData,
         role_at_films: roleAtFilmData,
+        tag_looking_fors: tagLookingForData,
         filmographies: filmographiesData.concat(profEducationData),
 
     }
@@ -257,17 +273,19 @@ async function sendPersonProfile() {
 
         profEducationData = []
         roleAtFilmData = []
+        tagLookingForData = []
         filmographiesData = []
 
         profEducationCounter = 0
         roleAtFilmCounter = 0
+        tagLookingForCounter = 0
         filmographyCounter = 0
 
         console.log('OK');
         document.getElementById('personProfileSent').open = true;
 
         // Scroll page to dialog
-        document.getElementById("personProfileSent").scrollIntoView(alignToTop);
+        scrollToElement("personProfileSent")
 
         // dialog.showModal()
         // document.getElementById('personProfileSent').style.display = ''
@@ -281,28 +299,68 @@ async function sendPersonProfile() {
 
 function validatePersonForm() {
 
-    var errors = []
+    const errors = []
 
     // if (document.getElementById('personProfileSent')) {
     //     document.getElementById('personProfileSent').style.display = 'none'
     // }
 
-    if (!validateFirstName("firstName")) {
-        errors.push('Missing firstname')
+    if (!validateRequiredField("firstName", "textLength")) {
+        errors.push('firstName')
     }
 
-    if (!validateLastName("lastName")) {
-        errors.push('Missing lastname')
+    if (!validateRequiredField("lastName", "textLength")) {
+        errors.push('lastName')
     }
 
-    if (!validateGender("gender")) {
-        errors.push('Missing gender')
+    if (!validateRequiredField("gender", "gender")) {
+        errors.push('gender')
     }
 
-    // console.log(errors)
+    if (!validateRequiredField("dateofbirth", "dateofbirth")) {
+        errors.push('dateofbirth')
+    }
+
+    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
+    for (let index = 0; index < roleAtFilmElements.length; index++) {
+        const element = roleAtFilmElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('role_at_film')[0], element.getElementsByClassName('help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    for (let index = 0; index < tagLookingForElements.length; index++) {
+        const element = tagLookingForElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('tag_looking_for')[0], element.getElementsByClassName('help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
+    let educationElements = document.querySelectorAll('[id^="education"]')
+    for (let index = 0; index < educationElements.length; index++) {
+        const element = educationElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('org_name')[0], element.getElementsByClassName('org_name_help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
+    let filmographyElements = document.querySelectorAll('[id^="filmographies"]')
+    for (let index = 0; index < filmographyElements.length; index++) {
+        const element = filmographyElements[index];
+        if (!validateRepeatableFormPart(element.getElementsByClassName('type_of_work')[0], element.getElementsByClassName('type_of_work_help')[0])) {
+            errors.push(element.id)
+        }
+        if (!validateRepeatableFormPart(element.getElementsByClassName('work_name')[0], element.getElementsByClassName('work_name_help')[0])) {
+            errors.push(element.id)
+        }
+    }
+
     if (errors.length === 0) {
         console.log('KÕIKOK');
         sendPersonProfile()
+    } else {
+        scrollToElement(errors[0])
     }
 
     window.addEventListener("keydown", function (event) {
@@ -311,6 +369,68 @@ function validatePersonForm() {
             validatePersonForm()
         }
     })
+}
+
+function validateRequiredField(formFieldId = null, type = null) {
+    let formField = document.getElementById(formFieldId)
+    let formFieldHelp = document.getElementById(`${formFieldId}Help`)
+
+    if (!type || type === 'textLength') {
+        if (formField.value == "" || formField.value.length < 2 || !isNaN(formField.value)) {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        } else {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        }
+    } else if (type === 'gender') {
+        if (formField.value === "") {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        } else {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        }
+    } else if (type === 'dateofbirth') {
+        console.log('BDAY', formField.value);
+        if (formField.value === "") {
+            addInvalidClass(formField, formFieldHelp)
+            return false
+        }
+
+        var userAge = getAge(formField.value)
+        if (userAge > 12 && userAge < 116) {
+            removeInvalidClass(formField, formFieldHelp)
+            return true
+        } else {
+            addInvalidClass(formField, formFieldHelp)
+        }
+    }
+}
+
+function validateRepeatableFormPart(selectElement, selectHelp) {
+        if (selectElement.value === "") {
+            addInvalidClass(selectElement, selectHelp)
+            return false
+        } else {
+            removeInvalidClass(selectElement, selectHelp)
+            return true
+        }
+}
+
+function addInvalidClass(formField, formFieldHelp) {
+    formFieldHelp.classList.remove("valid")
+    formFieldHelp.classList.add("invalid")
+    formField.classList.add('invalidColor')
+}
+function removeInvalidClass(formField, formFieldHelp) {
+    formFieldHelp.classList.remove("invalid")
+    formFieldHelp.classList.add("valid")
+    formField.classList.remove('invalidColor')
+}
+
+function scrollToElement(elementId) {
+    document.getElementById(elementId).scrollIntoView(false);
 }
 
 function validateImageAndPreview(file, templateElement, type) {
@@ -418,6 +538,21 @@ function addNextRoleAtFilm() {
     roleAtFilmCounter = roleAtFilmCounter + 1
 }
 
+
+function addNextTagLookingFor() {
+    const tagLookingForTemplate = document.getElementById('tagLookingForTemplate');
+    const clone = tagLookingForTemplate.cloneNode(true);
+    clone.id = `tagLooking${tagLookingForCounter}`
+    clone.style.display = ''
+    document.getElementById('tagLookingForTemplate').parentElement.appendChild(clone)
+    // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
+
+    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${roleAtFilmCounter}", "gallery")`)
+    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
+
+    tagLookingForCounter = tagLookingForCounter + 1
+}
+
 function addNextFilmographyWork() {
     const filmographyTemplate = document.getElementById('filmographyTemplate');
     const clone = filmographyTemplate.cloneNode(true);
@@ -431,3 +566,4 @@ function addNextFilmographyWork() {
 
     filmographyCounter = filmographyCounter + 1
 }
+

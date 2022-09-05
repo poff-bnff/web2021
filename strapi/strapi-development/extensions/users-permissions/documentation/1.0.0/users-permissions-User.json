@@ -2399,6 +2399,9 @@
                   "type": "string"
                 }
               },
+              "looking_for": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

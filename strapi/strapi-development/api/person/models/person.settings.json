@@ -269,6 +269,9 @@
     },
     "industry_categories": {
       "collection": "industry-category"
+    },
+    "looking_for": {
+      "type": "text"
     }
   }
 }
