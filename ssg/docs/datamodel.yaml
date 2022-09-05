@@ -1395,6 +1395,7 @@ Person: &Person
     origin: *Origin
     industry_categories:
         - *IndustryCategory
+    looking_for: text
 
 TeamMember: &TeamMember
     person: *Person #(Component)
