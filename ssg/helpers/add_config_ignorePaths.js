@@ -58,7 +58,8 @@ function addConfigIgnorePaths() {
             '/persons_search', //Persons for Industry
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
-            '/discamp_courseevents_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events            
+            '/filmikool_courseevents_search', //Filmikool events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -130,6 +131,7 @@ function addConfigIgnorePaths() {
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
+            '/filmikool_courseevents_search', //Filmikool events
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -159,6 +161,7 @@ function addConfigIgnorePaths() {
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
+            '/filmikool_courseevents_search', //Filmikool events
         ]
     } else if (DOMAIN === 'discoverycampus.poff.ee') {
         return [
@@ -185,6 +188,7 @@ function addConfigIgnorePaths() {
             '/industry_events_search', //industry
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
+            '/filmikool_courseevents_search', //Filmikool events
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -219,6 +223,7 @@ function addConfigIgnorePaths() {
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
+            '/filmikool_courseevents_search', //Filmikool events
         ]
     } else {
         return null

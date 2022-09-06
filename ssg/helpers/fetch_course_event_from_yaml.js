@@ -166,18 +166,6 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         searchAndFilters(allData, lang)
     }
 }
-else { /* ei tea kas on vaja, aga POFFI build andis Jaanile errori (ERROR:
-                    /srv/ssg/source/filmikool_courseevents_search/data.et.yaml
-                    no such file or directory, open ‘/srv/ssg/source/_fetchdir/courseevents.et.yaml’) */
-
-    for (const lang of allLanguages) {
-        let emptyYAML = yaml.dump([], {
-            'noRefs': true,
-            'indent': '4'
-        })
-        fs.writeFileSync(path.join(fetchDir, `courseevents.${lang}.yaml`), emptyYAML, 'utf8')
-    }
-}
 
 function processEvents(courseEventCopy, lang) {
     const allData = []
