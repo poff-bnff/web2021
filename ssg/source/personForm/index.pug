@@ -70,6 +70,8 @@ block content
                                         //- = self.label.userprofile.required
                                         each taglookingfor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
                                             option.login_input(value=taglookingfor.id)= taglookingfor[self.locale]
+                                    div.help(class='valid') You need to enter at leat one looking for tag
+
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
