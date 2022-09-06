@@ -55,6 +55,7 @@ async function loadUserInfo() {
         document.getElementById('loadingStatus').style.display = 'none'
         // At least one profession required, thus add one field on every reload
         addNextRoleAtFilm()
+        addNextTagLookingFor()
     }
 
 }
@@ -108,7 +109,7 @@ async function sendPersonProfile() {
 
     // Tag Looking For data processing
     let tagLookingForData = []
-    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]')
     for (let index = 0; index < tagLookingForElements.length; index++) {
         const element = tagLookingForElements[index];
         tagLookingForData.push(
@@ -174,7 +175,7 @@ async function sendPersonProfile() {
         showreel: showreel.value || null,
         bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
-        text_looking_for: looking_for.value || null,
+        // text_looking_for: looking_for.value || null,
         address: {
             country: addrCountry.value || null,
             county: addrCounty.value || null,
@@ -329,7 +330,7 @@ function validatePersonForm() {
         }
     }
 
-    let tagLookingForElements = document.querySelectorAll('[id^="tagLooking"]')
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]')
     for (let index = 0; index < tagLookingForElements.length; index++) {
         const element = tagLookingForElements[index];
         if (!validateRepeatableFormPart(element.getElementsByClassName('tag_looking_for')[0], element.getElementsByClassName('help')[0])) {
@@ -356,6 +357,8 @@ function validatePersonForm() {
         }
     }
 
+    console.log('errors', errors);
+
     if (errors.length === 0) {
         console.log('KÕIKOK');
         sendPersonProfile()
@@ -374,6 +377,8 @@ function validatePersonForm() {
 function validateRequiredField(formFieldId = null, type = null) {
     let formField = document.getElementById(formFieldId)
     let formFieldHelp = document.getElementById(`${formFieldId}Help`)
+
+    console.log('formFieldId', formFieldId, 'type', type);
 
     if (!type || type === 'textLength') {
         if (formField.value == "" || formField.value.length < 2 || !isNaN(formField.value)) {
@@ -409,6 +414,7 @@ function validateRequiredField(formFieldId = null, type = null) {
 }
 
 function validateRepeatableFormPart(selectElement, selectHelp) {
+        console.log('selectElement', selectElement, 'selectHelp', selectHelp);
         if (selectElement.value === "") {
             addInvalidClass(selectElement, selectHelp)
             return false
@@ -542,7 +548,7 @@ function addNextRoleAtFilm() {
 function addNextTagLookingFor() {
     const tagLookingForTemplate = document.getElementById('tagLookingForTemplate');
     const clone = tagLookingForTemplate.cloneNode(true);
-    clone.id = `tagLooking${tagLookingForCounter}`
+    clone.id = `tagLookingElement${tagLookingForCounter}`
     clone.style.display = ''
     document.getElementById('tagLookingForTemplate').parentElement.appendChild(clone)
     // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
