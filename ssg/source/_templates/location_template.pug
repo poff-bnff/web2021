@@ -127,7 +127,7 @@ block content
                                     .person_info_value= self.tag_locations.map(tag_location => tag_location.name).join(', ')
 
 
-            //- if thisLat && thisLng
-            //-     #map(style=`height:600px; width:100%`)
-            //- else
-            //-     img.map(src='/assets/img/static/placeholder_hd_1.jpg' style=`height:400px; width:100%`)
+            if thisLat && thisLng
+                #map(style=`height:600px; width:100%`)
+            else
+                img.map(src='/assets/img/static/placeholder_hd_1.jpg' style=`height:400px; width:100%`)
