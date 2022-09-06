@@ -36,6 +36,7 @@ function addConfigIgnorePaths() {
             '/industry_projects_archive_search', //industry
             '/industry_persons_archive_search', //industry
             '/info', //tartuff
+            '/locations', //locations - tulevikus domeeni järgi, mis L all relatsioonina
             // '/interview', //article
             // '/login', //poff, industry
             // '/menu', //all
@@ -58,7 +59,7 @@ function addConfigIgnorePaths() {
             '/persons_search', //Persons for Industry
             '/courses_courseevents', //Filmikool
             '/discamp_events_search', //Discamp events
-            '/discamp_courseevents_search', //Discamp events            
+            '/discamp_courseevents_search', //Discamp events
             '/filmikool_courseevents_search', //Filmikool events
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
