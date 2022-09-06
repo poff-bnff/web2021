@@ -45,7 +45,7 @@ cassettes_festival_editions:
     oyafond.ee:
         - 31
     filmikool.poff.ee:
-        - 0
+        - 60
     discoverycampus.poff.ee:
         - 0
 
@@ -89,6 +89,7 @@ active_industry_editions:
 
 active_filmikool_editions:
     - 12
+    - 60
 
 active_discamp_editions:
     - 50
