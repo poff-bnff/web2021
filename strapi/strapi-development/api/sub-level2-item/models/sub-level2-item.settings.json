@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_level2_items",
+  "info": {
+    "name": "SubLevel2Item",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "bruno_article": {
+      "model": "bruno-article"
+    },
+    "discamp_article": {
+      "model": "dis-camp-article"
+    },
+    "filmikooli_article": {
+      "model": "filmikooli-article"
+    },
+    "hoffi_article": {
+      "model": "hof-fi-article"
+    },
+    "industry_article": {
+      "model": "industry-article"
+    },
+    "kinoffi_article": {
+      "model": "kinoffi-article"
+    },
+    "just_filmi_article": {
+      "model": "just-filmi-article"
+    },
+    "kumu_article": {
+      "model": "kumu-article"
+    },
+    "poffi_article": {
+      "model": "pof-fi-article"
+    },
+    "shortsi_article": {
+      "model": "shortsi-article"
+    },
+    "tartuffi_article": {
+      "model": "tartuffi-article"
+    },
+    "domains": {
+      "collection": "domain"
+    }
+  }
+}

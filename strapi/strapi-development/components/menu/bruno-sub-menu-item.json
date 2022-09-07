@@ -29,6 +29,9 @@
     "publish": {
       "type": "boolean",
       "default": true
+    },
+    "sub_level2_items": {
+      "collection": "sub-level2-item"
     }
   }
 }
