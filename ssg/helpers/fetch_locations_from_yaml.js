@@ -100,19 +100,32 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
                     let sorted_tag_locations = location.tag_locations.sort((a, b) => (a.order > b.order)? 1: -1)
 
                     location.tag_list = sorted_tag_categories.map(category => {
-                        let data = category.name 
 
-                        let tags = []
-                        sorted_tag_locations.filter( loc_tag => {
-                            category.tag_locations.forEach( cat_tag => {
-                                if (loc_tag.id === cat_tag.id){
-                                    tags.push(loc_tag.name)
-                                }
+                        if(category.active == true) {
+                            let data = {
+                                "id": category.id,
+                                "name": category.name
+                            }
+                            if(category.select_one){
+                                data.select_one = category.select_one
+                            }
+
+                            let tags = []
+                            sorted_tag_locations.filter( loc_tag => {
+                                category.tag_locations.forEach( cat_tag => {
+                                    if (loc_tag.id === cat_tag.id){
+                                        tags.push({
+                                            "id": loc_tag.id,
+                                            "name": loc_tag.name
+                                        })
+                                    }
+                                })
+
                             })
 
-                        })
+                            return {"category": data, "tags": tags}
+                        }
 
-                        return {[`${data}`]: tags}
                     })
                 }
 
