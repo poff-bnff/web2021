@@ -86,6 +86,7 @@ startLocationProcessing(languages, STRAPIDATA_LOCATIONS )
 function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
     for (const lang of languages) {
 
+        let copyData = []
         for(const ix in STRAPIDATA_LOCATIONS) {
             let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
 
@@ -93,6 +94,27 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
                 let slugifyName = slugify(`${location.name}-${location.id}`)
                 location.path = slugifyName
                 location.slug = slugifyName
+
+                if(location.tag_categories) {
+                    let sorted_tag_categories = location.tag_categories.sort((a, b) => (a.order > b.order)? 1: -1)
+                    let sorted_tag_locations = location.tag_locations.sort((a, b) => (a.order > b.order)? 1: -1)
+
+                    location.tag_list = sorted_tag_categories.map(category => {
+                        let data = category.name 
+
+                        let tags = []
+                        sorted_tag_locations.filter( loc_tag => {
+                            category.tag_locations.forEach( cat_tag => {
+                                if (loc_tag.id === cat_tag.id){
+                                    tags.push(loc_tag.name)
+                                }
+                            })
+
+                        })
+
+                        return {[`${data}`]: tags}
+                    })
+                }
 
                 let oneYaml = {}
                 try {
@@ -109,11 +131,12 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
                 fs.writeFileSync(yamlPath, oneYaml, 'utf8');
                 fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/location_template.pug`)
 
+                copyData.push(location)
         }
 
         const locationDataFile =  path.join(fetchDirDirPath, `${locationYamlNameSuffix}.${lang}.yaml`)
 
-        let copyData = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS))
+        
         locationData = rueten(copyData, lang)
 
         let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
