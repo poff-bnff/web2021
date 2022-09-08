@@ -30,7 +30,9 @@
       "type": "boolean"
     },
     "tag_locations": {
-      "collection": "tag-location"
+      "collection": "tag-location",
+      "via": "tag_categories",
+      "dominant": true
     }
   }
 }

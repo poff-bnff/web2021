@@ -22,6 +22,10 @@
     },
     "order": {
       "type": "integer"
+    },
+    "tag_categories": {
+      "via": "tag_locations",
+      "collection": "tag-category"
     }
   }
 }
