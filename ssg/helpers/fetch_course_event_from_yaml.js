@@ -23,18 +23,21 @@ let FETCHDATADIRRESTRICTED
 let FETCHDATADIRNAME
 if (DOMAIN === 'discoverycampus.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
+    ACTIVE_EVENT_TYPE = null
     NAMEVARIABLE = 'discamp'
     FETCHDATADIRNAME = 'discampcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'industry.poff.ee') {
     ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+    ACTIVE_EVENT_TYPE = null
     NAMEVARIABLE = 'industry'
     FETCHDATADIRNAME = 'industryevents'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = null
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_filmikool_editions
+    ACTIVE_EVENT_TYPE = DOMAIN_SPECIFICS.active_filmikool_event_types
     NAMEVARIABLE = 'filmikool'
     FETCHDATADIRNAME = 'filmikoolcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
@@ -139,12 +142,21 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
     }
 
     const STRAPIDATA_COURSE_UNFILTERED = fetchModel(STRAPIDATA_COURSES, minimodel)
+    let PUBLIC_STRAPIDATA_COURSES = STRAPIDATA_COURSE_UNFILTERED.filter(e => e.public) // only public events
+
     let STRAPIDATA_COURSE
     if (ACTIVE_FESTIVAL_EDITIONS) {
-        STRAPIDATA_COURSE = STRAPIDATA_COURSE_UNFILTERED.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
+        STRAPIDATA_COURSE = PUBLIC_STRAPIDATA_COURSES.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
         // console.log(JSON.stringify(STRAPIDATA_COURSE.filter(a => a.festival_editions)[0], null, 2));
     } else {
-        STRAPIDATA_COURSE = STRAPIDATA_COURSE_UNFILTERED
+        STRAPIDATA_COURSE = PUBLIC_STRAPIDATA_COURSES
+    }
+
+    if (ACTIVE_EVENT_TYPE) {
+        STRAPIDATA_COURSE = STRAPIDATA_COURSE.filter(p => p.event_types && p.event_types.map(e_t => e_t.id).some(id => ACTIVE_EVENT_TYPE.includes(id)))
+        // console.log(JSON.stringify(STRAPIDATA_COURSE.filter(a => a.event_types)[0], null, 2));
+    } else {
+        STRAPIDATA_COURSE = STRAPIDATA_COURSE
     }
 
     for (const lang of allLanguages) {
@@ -169,7 +181,7 @@ function processEvents(courseEventCopy, lang) {
             continue
         }
 
-        if (!element.publish) {
+        if (!element.publish) { 
             continue
         }
 

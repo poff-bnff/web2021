@@ -35,6 +35,15 @@
     },
     "courses_ru": {
       "collection": "course"
+    },
+    "course_events_et": {
+      "collection": "course-event"
+    },
+    "course_events_en": {
+      "collection": "course-event"
+    },
+    "course_events_ru": {
+      "collection": "course-event"
     }
   }
 }

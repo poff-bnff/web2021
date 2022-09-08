@@ -88,10 +88,19 @@ active_industry_editions:
     - 12
 
 active_filmikool_editions:
-    - 12
+    - 60
 
 active_discamp_editions:
     - 50
+
+active_discamp_event_types:
+    - 1
+
+active_industry_event_types:
+    - 1
+
+active_filmikool_event_types: 
+    - 1
 
 industry_eventival_badges_whitelist:
     - MANAGEMENT

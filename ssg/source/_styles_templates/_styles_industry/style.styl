@@ -486,6 +486,21 @@ footer
                         "c_filmography_box"\
                         "c_media_box"
 
+.grid_location
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    justify-content center
+    justify-items center
+    align-items start
+    padding-top header_height
+    grid-template-areas "c_img_box"\
+                        "c_title_box"\
+                        "c_main_info_box"\
+                        "c_actor_info_box"\
+                        "c_filmography_box"\
+                        "c_media_box"
+
 .grid_ind_event
         display grid
         grid-template-columns 1fr
@@ -3535,6 +3550,13 @@ details[open] > summary::after
     object-fit cover
     position relative
 
+.l_img_box
+    background-color white
+    width 100%
+    aspect-ratio 1 / 1
+    object-fit cover
+    position relative
+
 .c_title_box
     grid-area c_title_box
     display grid
@@ -3552,6 +3574,18 @@ details[open] > summary::after
     // padding-top calc(2rem + 1vw)
     // padding-bottom calc(2rem + 1vw)
     // background-color #efefef
+
+.l_title_box
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows 1fr 2fr 1fr
+    // grid-template-rows 1fr max-content
+    justify-items center
+    align-content space-between
+    // align-content center
+    width 100%
+    height 100%
+    background-color white
 
 .name_box
     display grid
@@ -3863,6 +3897,36 @@ a:hover > .login_headline
     line-height 1.618
     font-weight 300
 
+.c_hero_box
+    grid-area c_hero_box
+    display grid
+    grid-template-columns 2fr 1fr
+    grid-template-rows auto
+    grid-column span 2
+    gap 5fr
+    width 100%
+    height 500px
+    background-color #eeeeee
+
+
+.c_hero_1
+    width 100%
+    height 400px
+    background-color #dddddd
+
+.c_hero_2
+    width 100%
+    height 400px
+    background-color #cccccc
+
+.tag
+    display inline-block
+    background-color #999999
+    text-decoration none
+    border-radius 15px
+    padding 10px 10px
+
+
 // ---------- GALLERY CREATIVE ----------
 
 
@@ -3957,6 +4021,28 @@ a:hover > .login_headline
         padding-top 170px
         row-gap 5rem
         // background-color #dddddd
+
+    .grid_location
+        display grid
+        // width max(70vw, 1600px)
+        width 100%
+        padding-left 12vw
+        padding-right 12vw
+        justify-items center
+        align-items center
+        justify-content center
+        // place-items center
+        // gap 3rem
+        grid-template-columns 1fr 1fr
+        grid-template-rows auto
+        grid-template-areas "c_img_box         c_title_box"\
+                            "c_main_info_box   c_actor_info_box"\
+                            "c_media_box       c_filmography_box"
+
+        // padding-top header_height + 25vw
+        padding-top 170px
+        row-gap 5rem
+
 
     .grid_cassette
         display grid
