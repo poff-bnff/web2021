@@ -1948,14 +1948,6 @@ CourseModule: &CourseModule
     publish_en: boolean
     publish_ru: boolean
 
-Button: &Button
-    text_et: text
-    url_et: text
-    text_en: text
-    url_en: text
-    text_ru: text
-    url_ru: text
-
 CourseEvent: &CourseEvent
     _path: /course-events
     title_private: text
