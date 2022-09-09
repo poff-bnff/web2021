@@ -15,14 +15,14 @@ const DOMAIN = process.env['DOMAIN'] || 'filmikool.poff.ee'
 const languages = ['en', 'et', 'ru']
 
 const minimodel = {
-    'courses_et': {
-        model_name: 'Course'
+    'course_events_et': {
+        model_name: 'CourseEvent'
     },
-    'courses_en': {
-        model_name: 'Course'
+    'course_events_en': {
+        model_name: 'CourseEvent'
     },
-    'courses_ru': {
-        model_name: 'Course'
+    'course_events_ru': {
+        model_name: 'CourseEvent'
     },
 }
 
@@ -42,14 +42,14 @@ for (const lang of languages) {
     if (typeof copyData !== 'undefined') {
 
         for (key in copyData) {
-            if (key === `courses_${lang}`) {
+            if (key === `course_events_${lang}`) {
 
                 for (courseIx in copyData[key]) {
                     let thisCourse = rueten(copyData[key][courseIx], lang)
-                    let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
+                    // let courseYAMLPath = path.join(fetchDir, `courses.${lang}.yaml`)
 
-                    if (thisCourse.carouselStills) {
-                        thisCourse.carouselStills = thisCourse?.stills.map(a => `${a.hash}${a.ext}`)
+                    if (thisCourse.images) {
+                        thisCourse.images = thisCourse?.images.map(a => `${a.hash}${a.ext}`)
                     }
 
                     if (thisCourse.posters) {
