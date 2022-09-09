@@ -27,15 +27,6 @@
     "namePrivate": {
       "type": "string"
     },
-    "courses_et": {
-      "collection": "course"
-    },
-    "courses_en": {
-      "collection": "course"
-    },
-    "courses_ru": {
-      "collection": "course"
-    },
     "course_events_et": {
       "collection": "course-event"
     },
