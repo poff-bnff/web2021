@@ -71,7 +71,7 @@ for (const lang of languages) {
             console.log(`Total of ${copyData[key].length} ${DOMAIN} frontpagecourse ${lang} fetched`)
 
             // Teistes keeltes kursus kustutatakse
-            } else if (key !== `courses_${lang}` && key.substring(0, 8) === `courses_`) {
+            } else if (key !== `course_events_${lang}` && key.substring(0, 8) === `course_events_`) {
                 delete copyData[key]
             }
 
