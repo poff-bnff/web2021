@@ -414,14 +414,14 @@ function validateRequiredField(formFieldId = null, type = null) {
 }
 
 function validateRepeatableFormPart(selectElement, selectHelp) {
-        console.log('selectElement', selectElement, 'selectHelp', selectHelp);
-        if (selectElement.value === "") {
-            addInvalidClass(selectElement, selectHelp)
-            return false
-        } else {
-            removeInvalidClass(selectElement, selectHelp)
-            return true
-        }
+    console.log('selectElement', selectElement, 'selectHelp', selectHelp);
+    if (selectElement.value === "") {
+        addInvalidClass(selectElement, selectHelp)
+        return false
+    } else {
+        removeInvalidClass(selectElement, selectHelp)
+        return true
+    }
 }
 
 function addInvalidClass(formField, formFieldHelp) {
@@ -516,60 +516,87 @@ function deleteGalleryImage(elementToDelete) {
     }
 }
 
-function addNextEducation() {
-    const profEducationTemplate = document.getElementById('profEducationTemplate');
-    const clone = profEducationTemplate.cloneNode(true);
-    clone.id = `education${profEducationCounter}`
-    clone.style.display = ''
-    document.getElementById('profEducationTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${profEducationCounter}`)
-
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${profEducationCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${profEducationCounter}")`)
-
-    profEducationCounter = profEducationCounter + 1
-}
-
 function addNextRoleAtFilm() {
+    const cloneElementPrefix = 'filmRole'
     const roleAtFilmTemplate = document.getElementById('roleAtFilmTemplate');
     const clone = roleAtFilmTemplate.cloneNode(true);
-    clone.id = `filmRole${roleAtFilmCounter}`
+    clone.id = `${cloneElementPrefix}${roleAtFilmCounter}`
     clone.style.display = ''
     document.getElementById('roleAtFilmTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
 
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${roleAtFilmCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
+    let thisElement = document.getElementById(`${cloneElementPrefix}${roleAtFilmCounter}`)
+    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${cloneElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${roleAtFilmCounter}", true, "delete${cloneElementPrefix}")`)
 
     roleAtFilmCounter = roleAtFilmCounter + 1
 }
 
 
 function addNextTagLookingFor() {
+    const cloneElementPrefix = 'tagLookingElement'
     const tagLookingForTemplate = document.getElementById('tagLookingForTemplate');
     const clone = tagLookingForTemplate.cloneNode(true);
-    clone.id = `tagLookingElement${tagLookingForCounter}`
+    clone.id = `${cloneElementPrefix}${tagLookingForCounter}`
     clone.style.display = ''
     document.getElementById('tagLookingForTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${roleAtFilmCounter}`)
 
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${roleAtFilmCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${roleAtFilmCounter}")`)
+    let thisElement = document.getElementById(`${cloneElementPrefix}${tagLookingForCounter}`)
+    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${cloneElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${tagLookingForCounter}", true, "delete${cloneElementPrefix}")`)
 
     tagLookingForCounter = tagLookingForCounter + 1
 }
 
+function addNextEducation() {
+    const cloneElementPrefix = 'education'
+    const profEducationTemplate = document.getElementById('profEducationTemplate');
+    const clone = profEducationTemplate.cloneNode(true);
+    clone.id = `${cloneElementPrefix}${profEducationCounter}`
+    clone.style.display = ''
+    document.getElementById('profEducationTemplate').parentElement.appendChild(clone)
+
+    let thisElement = document.getElementById(`${cloneElementPrefix}${profEducationCounter}`)
+
+    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${cloneElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${profEducationCounter}")`)
+
+    profEducationCounter = profEducationCounter + 1
+}
+
 function addNextFilmographyWork() {
+    const cloneElementPrefix = 'filmographies'
     const filmographyTemplate = document.getElementById('filmographyTemplate');
     const clone = filmographyTemplate.cloneNode(true);
-    clone.id = `filmographies${filmographyCounter}`
+    clone.id = `${cloneElementPrefix}${filmographyCounter}`
     clone.style.display = ''
     document.getElementById('filmographyTemplate').parentElement.appendChild(clone)
-    // let thisElement = document.getElementById(`profEducation${filmographyCounter}`)
 
-    // thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${filmographyCounter}", "gallery")`)
-    // thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${filmographyCounter}")`)
+    let thisElement = document.getElementById(`${cloneElementPrefix}${filmographyCounter}`)
+
+    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${cloneElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${filmographyCounter}")`)
 
     filmographyCounter = filmographyCounter + 1
+}
+
+function removeElement(id, required = false, requiredElementName = null) {
+    const theElement = document.getElementById(id);
+
+    if (required && requiredElementName) {
+        let requiredCount = document.getElementsByClassName(requiredElementName)
+        console.log('requiredCount', requiredCount);
+        if (requiredCount.length >= 2) {
+            theElement.remove()
+            removeInvalidClass(theElement, theElement.getElementsByClassName('help')[0])
+        } else {
+            addInvalidClass(theElement, theElement.getElementsByClassName('help')[0])
+        }
+    } else {
+        theElement.remove()
+    }
 }
 
