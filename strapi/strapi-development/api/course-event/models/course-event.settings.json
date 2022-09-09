@@ -182,6 +182,11 @@
     },
     "chat_w_name": {
       "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.button"
     }
   }
 }
