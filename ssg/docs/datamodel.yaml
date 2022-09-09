@@ -2009,6 +2009,7 @@ CourseEvent: &CourseEvent
         -   *EventType
     event_access: *EventAccess
     chat_w_name: text
+    button: *Button
 
 FrontPageCourses: &FrontPageCourses
     _path: /front-page-courses
