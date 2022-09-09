@@ -3,14 +3,14 @@
 
 - var counter = 0
 
-if self.data.frontPageCourses && self.data.frontPageCourses.courses && self.data.frontPageCourses.courses.length > 0
+if self.data.frontPageCourses && self.data.frontPageCourses.course_events && self.data.frontPageCourses.course_events.length > 0
     if self.data.frontPageCourses.title
         .section_headline.dark_semi.thin_300= self.data.frontPageCourses.title
     section.kuuekas
         //- if self.data.frontPageCourses.title
         //-     h1.dark_1= self.data.frontPageCourses.title
 
-        each course in self.data.frontPageCourses.courses
+        each course in self.data.frontPageCourses.course_events
             if counter >= maxAmountToShow
                 - break
             - counter++
