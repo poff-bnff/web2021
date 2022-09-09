@@ -2017,12 +2017,6 @@ FrontPageCourses: &FrontPageCourses
     lead: *Translated #(Rich)
     domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
-    courses_et: #(Component (repeatable))
-        - *Course
-    courses_en: #(Component (repeatable))
-        - *Course
-    courses_ru: #(Component (repeatable))
-        - *Course
     course_events_et: 
         - *CourseEvent
     course_events_en: 
