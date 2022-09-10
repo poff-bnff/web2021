@@ -51,6 +51,7 @@ block content
                                         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                                     div.help(class='valid') You need to enter at leat one profession
+                                    input.login_input.btn_secondary.deleteButton(type='button' value="x")
 
                 .fieldset_grid
                     .form_group
@@ -64,13 +65,14 @@ block content
                             .fieldset_grid
                                 .form_group
                                     label.person_profile_label(for='taglookingfor')= self.label.userprofile.lookingForTag
-                                        //- span.required= ' ' + self.label.userprofile.required
+                                        span.required= ' ' + self.label.userprofile.required
                                     select.login_input.tag_looking_for(name='taglookingfor' form="thisPersonProfile")
                                         option.login_input.default_select(class='invalid' value="" selected="")
                                         //- = self.label.userprofile.required
                                         each taglookingfor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
                                             option.login_input(value=taglookingfor.id)= taglookingfor[self.locale]
                                     div.help(class='valid') You need to enter at leat one looking for tag
+                                    input.login_input.btn_secondary.deleteButton(type='button' value="x")
 
                 .fieldset_grid
                     .form_group
@@ -447,6 +449,7 @@ block content
                             .form_group
                                 label.person_profile_label(for='org_url')= self.label.userprofile.eduOrgUrl
                                 input.login_input.org_url.form_control( type='text' name='org_url' autocomplete="off")
+                        input.login_input.btn_secondary.deleteButton(type='button' value="x")
 
                 .fieldset_grid
                     .form_group
@@ -508,6 +511,7 @@ block content
                             .form_group
                                 label.person_profile_label(for='org_url')= self.label.userprofile.prodOrgUrl
                                 input.login_input.org_url.form_control( type='text' name='org_url' autocomplete="off")
+                        input.login_input.btn_secondary.deleteButton(type='button' value="x")
 
                 .fieldset_grid
                     .form_group
