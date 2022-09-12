@@ -61,19 +61,16 @@ const minimodel = {
     'tag_secrets': {
         model_name: 'TagSecret',
     },
-    'tag_categories': {
-        model_name: 'TagCategory',
-        expand: {
-            'tag_locations': {
-                model_name: 'TagLocation',
-            }
-        }
-    },
     'tag_keywords': {
         model_name: 'TagKeyword',
     },
     'tag_locations': {
         model_name: 'TagLocation',
+        expand: {
+            'tag_categories': {
+                model_name: 'TagCategory'
+            }
+        }
     }
 }
 
