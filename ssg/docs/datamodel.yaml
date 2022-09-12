@@ -1037,8 +1037,8 @@ Location: &Location
     repr_email: text
     repr_org_name: text
     repr_org_url: text
-    tag_categories:
-        - *TagCategory
+    # tag_categories:
+    #     - *TagCategory
     tag_keywords:
         - *TagKeyword
     showreel: text
@@ -2017,12 +2017,6 @@ FrontPageCourses: &FrontPageCourses
     lead: *Translated #(Rich)
     domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
-    courses_et: #(Component (repeatable))
-        - *Course
-    courses_en: #(Component (repeatable))
-        - *Course
-    courses_ru: #(Component (repeatable))
-        - *Course
     course_events_et: 
         - *CourseEvent
     course_events_en: 
