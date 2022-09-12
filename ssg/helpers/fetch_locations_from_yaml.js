@@ -17,6 +17,9 @@ const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const strapiDataLocationPath = path.join(strapiDataDirPath, `Location.yaml`)
 const STRAPIDATA_LOCATIONS_FULL = yaml.load(fs.readFileSync(strapiDataLocationPath, 'utf8'))
 
+const strapiDataTagLocationsPath = path.join(strapiDataDirPath, `TagCategory.yaml`)
+const TAG_CATEGORIES = yaml.load(fs.readFileSync(strapiDataTagLocationsPath, 'utf8'))
+
 const fetchDataDir = path.join(fetchDirDirPath, 'locations')
 const locationYamlNameSuffix = 'locations'
 function slugify(text) {
@@ -92,11 +95,12 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
                 location.path = slugifyName
                 location.slug = slugifyName
 
-                if(location.tag_categories) {
-                    let sorted_tag_categories = location.tag_categories.sort((a, b) => (a.order > b.order)? 1: -1)
+                if(location.tag_locations) {
+                    let sorted_tag_categories = TAG_CATEGORIES.sort((a, b) => (a.order > b.order)? 1: -1)
                     let sorted_tag_locations = location.tag_locations.sort((a, b) => (a.order > b.order)? 1: -1)
 
-                    location.tag_list = sorted_tag_categories.map(category => {
+
+                    let list = sorted_tag_categories.map(category => {
 
                         if(category.active == true) {
                             let data = {
@@ -124,7 +128,13 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
                         }
 
                     })
+
+                    
+                    location.tag_list = list.filter( e => {
+                        return e.tags.length > 0
+                    })
                 }
+
 
                 let oneYaml = {}
                 try {
