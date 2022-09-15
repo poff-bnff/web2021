@@ -147,10 +147,11 @@ block content
                                 } catch (error) { null }
                             }
 
-                        .login_16_9_container.login_ind_ev#login_cond
-                            h4.login_headline#loginMessage.white_96 Log in via Eventival
-                            a(href=`/login` onclick = 'saveUrl()')
-                                img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+                        if process.env['DOMAIN'] === 'industry.poff.ee'
+                            .login_16_9_container.login_ind_ev#login_cond
+                                h4.login_headline#loginMessage.white_96 Log in via Eventival
+                                a(href=`/login` onclick = 'saveUrl()')
+                                    img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
                     .elisa_stage
                         img.elisa_powered(src='https://assets.poff.ee/img/poff24_elisa_stage.svg')
 

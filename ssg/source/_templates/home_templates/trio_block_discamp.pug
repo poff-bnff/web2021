@@ -29,8 +29,8 @@ for blocks in self.data.articleTrioBlock.sort(function(a, b){ return (a.block.or
                 - var linkUrl = `/${lang_path}${artTrioTypeForPath}/${blocks.article.slug}`
 
 
-        else if blocks.block.customUrl
-            - var linkUrl = blocks.block.customUrl
+        else if blocks.block.custom_url
+            - var linkUrl = blocks.block.custom_url
 
         if linkUrl !== undefined
             a(href= linkUrl)
