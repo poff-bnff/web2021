@@ -1013,7 +1013,9 @@ module.exports = {
   },
   async getPersonForm(ctx) {
 
-    const { person } = ctx.request.body.data.person;
+    // const { person } = ctx.request.body.data.person;
+
+    console.log('Tere');
 
     // let people_ids = person.map(e => e.id)
 
@@ -1024,7 +1026,9 @@ module.exports = {
     // let persons =  await strapi.services['person'].find({id_in : people_ids})
 
     // console.log({persons})
-    return person
+    // return person
+
+    return { tere: 'hommikust' }
 
   },
   async roleController(ctx) {
