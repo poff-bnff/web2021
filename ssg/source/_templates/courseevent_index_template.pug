@@ -99,19 +99,26 @@ block content
                         .str_info_blokk_1
 
                             .str_info_grid_3
-                                .str_info_label= self.label.industry.eventDate
+                                .str_info_label= self.label.industry.courseStartDate
                                 .str_info_value
                                     +screeningDate(self.start_time)
 
                             .str_info_grid_3
-                                .str_info_label= self.label.industry.eventTimeEet
+                                .str_info_label= self.label.industry.courseEndDate
                                 .str_info_value
-                                    +screeningTimeEET(self.start_time)
+                                    +screeningDate(self.end_time)
 
-                            .str_info_grid_3
-                                .str_info_label= self.label.industry.eventTimeUser
-                                .str_info_value
-                                    +screeningTime(self.start_time)
+                            if process.env['DOMAIN'] === 'industry.poff.ee'
+                                .str_info_grid_3
+                                    .str_info_label= self.label.industry.eventTimeEet
+                                    .str_info_value
+                                        +screeningTimeEET(self.start_time)
+
+                            if process.env['DOMAIN'] === 'industry.poff.ee'
+                                .str_info_grid_3
+                                    .str_info_label= self.label.industry.eventTimeUser
+                                    .str_info_value
+                                        +screeningTime(self.start_time)
 
                             .str_info_grid_3
                                 .str_info_label= self.label.industry.duration
@@ -152,8 +159,9 @@ block content
                                 h4.login_headline#loginMessage.white_96 Log in via Eventival
                                 a(href=`/login` onclick = 'saveUrl()')
                                     img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
-                    .elisa_stage
-                        img.elisa_powered(src='https://assets.poff.ee/img/poff24_elisa_stage.svg')
+                    if process.env['DOMAIN'] === 'industry.poff.ee'
+                        .elisa_stage
+                            img.elisa_powered(src='https://assets.poff.ee/img/poff24_elisa_stage.svg')
 
                 section.f_synopsis_box
                     .str_info_meta_gi
