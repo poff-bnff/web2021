@@ -40,7 +40,8 @@ block content
                 section.grid_films
                     -
                         var sortFunction = function(a, b) {
-                            return !a.start_time.localeCompare(b.start_time)
+                            //- return !a.start_time.localeCompare(b.start_time)
+                            return !a?.start_time?.localeCompare(b.start_time)
                         }
 
                     each event in self.data.filmikoolcourses.sort(sortFunction)
