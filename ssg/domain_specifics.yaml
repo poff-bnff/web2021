@@ -125,6 +125,7 @@ skip_build_for_models:
     - screening
     - person
     - product-category
+    - shop
     # - course-event
 
 article:
