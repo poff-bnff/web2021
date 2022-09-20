@@ -28,7 +28,7 @@ block content
 
                             if prodCatList.orderedProductCategories
                                 each orderedProductCategory in prodCatList.orderedProductCategories.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                                    if orderedProductCategory.product_category
+                                    if orderedProductCategory.product_category && !orderedProductCategory.product_category.hidden
                                         - var product = orderedProductCategory.product_category
 
                                         a(href= `/${lang_path}${product.path}` productId=product.id style='opacity: 0.5;').shop_item
