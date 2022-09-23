@@ -512,6 +512,11 @@ Organisation: &Organisation
     remote_img:
         - img_url: text
     origin: *Origin
+    tag_looking_fors:
+        - *TagLookingFor
+    looking_for: text
+    phoneNr: text
+    eMail: email
 
 PresentedBy: &PresentedBy
     presentedByText: *Translated
