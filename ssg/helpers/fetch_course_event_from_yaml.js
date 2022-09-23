@@ -110,7 +110,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         },
         'product_categories': {
             model_name: 'Product_Category',
-        }
+        },
         // 'presentedBy': {
         //     model_name: 'PresentedBy',
         //     expand: {
