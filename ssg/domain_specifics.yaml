@@ -99,7 +99,7 @@ active_discamp_event_types:
 active_industry_event_types:
     - 1
 
-active_filmikool_event_types: 
+active_filmikool_event_types:
     - 1
 
 industry_eventival_badges_whitelist:
@@ -124,6 +124,8 @@ skip_build_for_models:
     - programme
     - screening
     - person
+    - product-category
+    - shop
     # - course-event
 
 article:

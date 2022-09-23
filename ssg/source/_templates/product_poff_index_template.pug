@@ -28,9 +28,10 @@ block content
                 .str_info_meta_item
             if self.description && typeof self.description !== 'undefined'
                 - var description_md = self.description
-                .synopsis_gi
+                .synopsis_gi.dark_1
                     if typeof description_md === 'string'
-                        +format(description_md)
+                        p.dark_1
+                            +format(description_md)
 
         section.f_cred_box
             if self.priceAtPeriod && self.priceAtPeriod[0] && self.priceAtPeriod[0].price

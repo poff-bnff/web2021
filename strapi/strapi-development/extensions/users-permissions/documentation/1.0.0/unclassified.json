@@ -286,7 +286,7 @@
         }
       }
     },
-    "/users/getPersonForm": {
+    "/getPersonForm": {
       "get": {
         "deprecated": false,
         "description": "Retrieve all user related persons",

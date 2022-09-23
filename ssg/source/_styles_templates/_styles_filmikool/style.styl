@@ -3213,8 +3213,55 @@ a.btn_popover
 
 
 
+// ---------- COURSEEVENT ----------
+
+.grid_courseevent
+        display grid
+        grid-template-columns 1fr
+        grid-template-rows auto
+        padding-top header_height
+        grid-template-areas "f_title_box"\
+                            "f_trailer_box"\
+                            "f_synopsis_box"\
+                            "f_cred_box"\
+                            "f_runtime_box"\
+                            "f_interactive_box"\
+
+.f_synopsis_box
+    grid-area f_synopsis_box
+    // background-color bg_dark_2
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(1rem + 1vw)
+    padding-bottom calc(1rem + 1vw)
+    display grid
+    grid-template-columns 1
+    grid-template-rows auto
+    grid-gap 2rem
+    background-color bg_color_1
+    p
+        color dark_1
+
+.ce_box_1
+    grid-area ce_box_1
+
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
+    .grid_courseevent
+        display grid
+        grid-template-columns 1fr 1fr 1fr
+        grid-template-rows auto
+        grid-template-areas "f_title_box       f_trailer_box     f_trailer_box"\
+                            "f_synopsis_box    f_synopsis_box    f_cred_box"\
+                            "f_synopsis_box    f_synopsis_box    f_runtime_box"\
+                            "f_interactive_box f_interactive_box f_interactive_box"\
+                            "f_dir_box         f_dir_box         f_extra_box"\
+                            "f_qaclip_box      f_qaclip_box      f_qaclip_box"\
+                            "f_vialog_box      f_vialog_box      f_vialog_box"\
+                            "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
+                            "f_imgs_box        f_imgs_box        f_imgs_box"
+        padding-top header_height
+
     .grid_film
         display grid
         grid-template-columns 1fr 1fr 1fr
@@ -3390,6 +3437,8 @@ a.btn_popover
         display grid
         grid-template-columns minmax(214px, 1fr) 2fr
         grid-gap 4rem
+        // background-color #dddddd
+        // border solid 1px black
 
     .hero_headline_box
         position absolute

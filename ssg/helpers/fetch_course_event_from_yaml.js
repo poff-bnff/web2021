@@ -176,12 +176,12 @@ function processEvents(courseEventCopy, lang) {
         elementCopy.dirSlug = elementCopy.slug_en ? elementCopy.slug_en : null
         element = rueten(elementCopy, lang);
 
-        if (!element.start_time) {
-            console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing start_time`);
-            continue
-        }
+        // if (!element.start_time) {
+        //     console.log(`ERROR! ${DOMAIN} CourseEvent ID ${element.id} missing start_time`);
+        //     continue
+        // }
 
-        if (!element.publish) { 
+        if (!element.publish) {
             continue
         }
 

@@ -1047,7 +1047,7 @@ Location: &Location
     tag_keywords:
         - *TagKeyword
     showreel: text
-    tag_locations: 
+    tag_locations:
         - *TagLocation
     origin: *Origin
 
@@ -2022,13 +2022,13 @@ FrontPageCourses: &FrontPageCourses
     lead: *Translated #(Rich)
     domain: *Domain #filmikool.poff.ee / discoverycampus.poff.ee
     namePrivate: (text)
-    course_events_et: 
+    course_events_et:
         - *CourseEvent
-    course_events_en: 
-        - *CourseEvent        
-    course_events_ru: 
+    course_events_en:
         - *CourseEvent
-        
+    course_events_ru:
+        - *CourseEvent
+
 #DiscoveryCampus
 
 DisCampPersonType: &DisCampPersonType
@@ -2677,6 +2677,7 @@ ProductCategory: &ProductCategory
     images: *Imgs
     product_types:
         - *ProductType
+    hidden: (boolean)
 
 OrderedProduct: &OrderedProduct
     order: (number)

@@ -457,7 +457,7 @@
     },
     {
       "method": "GET",
-      "path": "/users/getPersonForm",
+      "path": "/getPersonForm",
       "handler": "User.getPersonForm",
       "config": {
         "policies": [],
