@@ -1932,6 +1932,106 @@ Course: &Course
     domains: #(Component (repeatable))
         - *Domain
 
+# Product & Payment
+
+DeliveryType: &DeliveryType
+    _path: /delivery-types
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
+    description_et: text
+    description_en: text
+    description_ru: text
+    active: boolean
+    delivery_prices:
+        name_private: text
+        countries:
+            - *Country
+        price: number
+        info_et: text
+        info_en: text
+        info_ru: text
+        days_before: number
+    days_before: number
+
+Delivery: &Delivery
+    _path: /deliveries
+    name_private: text
+    name_et: text
+    name_en: text
+    name_ru: text
+
+TicketingRight: &TicketingRight
+    ticketType: (text)
+    rightLimit: (Number)
+    rightUsed: (Number)
+
+Period: &Period
+    startDateTime: (Datetime)
+    endDateTime: (Datetime)
+
+PriceAtPeriod: &PriceAtPeriod
+    price: (number, decimal)
+    startDateTime: (Datetime)
+    endDateTime: (Datetime)
+
+Imgs: &Imgs
+    imageDefault: *StrapiMedia
+    image_et: *StrapiMedia
+    image_en: *StrapiMedia
+    image_ru: *StrapiMedia
+
+ProductType: &ProductType
+    name: (text)
+    description: (text)
+    product_categories:
+        - ProductCategory
+
+ProductCategory: &ProductCategory
+    _path: /product-categories
+    namePrivate: (text)
+    name: *Translated #(Component)
+    festival_edition: *FestivalEdition #(Component)
+    description: *Translated #(Component)
+    validityPeriod:  #(Component (repeatable))
+        - *Period
+    salesPeriod:  #(Component (repeatable))
+        - *Period
+    ticketingRight:  #(Component (repeatable))
+        - *TicketingRight
+    priceAtPeriod:  #(Component (repeatable))
+        - *PriceAtPeriod
+    codePrefix: (text)
+    slug_et: (UID)
+    slug_en: (UID)
+    slug_ru: (UID)
+    images: *Imgs
+    product_types:
+        - *ProductType
+    hidden: (boolean)
+
+OrderedProduct: &OrderedProduct
+    order: (number)
+    product_category: *ProductCategory
+
+ProdCatList: &ProdCatList
+    namePrivate: (text)
+    orderedProductCategories:
+        - *OrderedProduct
+    title: *Translated
+
+Shop: &Shop
+    _path: /shops
+    namePrivate: (text)
+    title: *Translated
+    intro: *Translated #(Rich text)
+    prodCatList: #(Component (repeatable))
+        - *ProdCatList
+    shopRules: *Translated #(Rich text)
+    domains: #(Component (repeatable))
+        - *Domain
+
 #CourseEvent
 
 CourseModule: &CourseModule
@@ -2002,7 +2102,7 @@ CourseEvent: &CourseEvent
     publish_ru: boolean
     remote_id: UID
     product_categories:
-        - ProductCategory
+        - *ProductCategory
     industry_projects:
         -   *IndustryProject
     publishFrom: datetime
@@ -2599,106 +2699,6 @@ DisCampFooter: &DisCampFooter
         - *FooterItemNav
     supporters: #(Component (repeatable))
         - *SupSecDisCamp
-
-# Product & Payment
-
-DeliveryType: &DeliveryType
-    _path: /delivery-types
-    name_private: text
-    name_et: text
-    name_en: text
-    name_ru: text
-    description_et: text
-    description_en: text
-    description_ru: text
-    active: boolean
-    delivery_prices:
-        name_private: text
-        countries:
-            - *Country
-        price: number
-        info_et: text
-        info_en: text
-        info_ru: text
-        days_before: number
-    days_before: number
-
-Delivery: &Delivery
-    _path: /deliveries
-    name_private: text
-    name_et: text
-    name_en: text
-    name_ru: text
-
-TicketingRight: &TicketingRight
-    ticketType: (text)
-    rightLimit: (Number)
-    rightUsed: (Number)
-
-Period: &Period
-    startDateTime: (Datetime)
-    endDateTime: (Datetime)
-
-PriceAtPeriod: &PriceAtPeriod
-    price: (number, decimal)
-    startDateTime: (Datetime)
-    endDateTime: (Datetime)
-
-Imgs: &Imgs
-    imageDefault: *StrapiMedia
-    image_et: *StrapiMedia
-    image_en: *StrapiMedia
-    image_ru: *StrapiMedia
-
-ProductType: &ProductType
-    name: (text)
-    description: (text)
-    product_categories:
-        - ProductCategory
-
-ProductCategory: &ProductCategory
-    _path: /product-categories
-    namePrivate: (text)
-    name: *Translated #(Component)
-    festival_edition: *FestivalEdition #(Component)
-    description: *Translated #(Component)
-    validityPeriod:  #(Component (repeatable))
-        - *Period
-    salesPeriod:  #(Component (repeatable))
-        - *Period
-    ticketingRight:  #(Component (repeatable))
-        - *TicketingRight
-    priceAtPeriod:  #(Component (repeatable))
-        - *PriceAtPeriod
-    codePrefix: (text)
-    slug_et: (UID)
-    slug_en: (UID)
-    slug_ru: (UID)
-    images: *Imgs
-    product_types:
-        - *ProductType
-    hidden: (boolean)
-
-OrderedProduct: &OrderedProduct
-    order: (number)
-    product_category: *ProductCategory
-
-ProdCatList: &ProdCatList
-    namePrivate: (text)
-    orderedProductCategories:
-        - *OrderedProduct
-    title: *Translated
-
-Shop: &Shop
-    _path: /shops
-    namePrivate: (text)
-    title: *Translated
-    intro: *Translated #(Rich text)
-    prodCatList: #(Component (repeatable))
-        - *ProdCatList
-    shopRules: *Translated #(Rich text)
-    domains: #(Component (repeatable))
-        - *Domain
 
 #SingleType
 # Hero
