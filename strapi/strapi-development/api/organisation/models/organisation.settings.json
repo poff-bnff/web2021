@@ -146,6 +146,18 @@
     },
     "origin": {
       "model": "origin"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    },
+    "looking_for": {
+      "type": "text"
+    },
+    "phoneNr": {
+      "type": "string"
+    },
+    "eMail": {
+      "type": "email"
     }
   }
 }

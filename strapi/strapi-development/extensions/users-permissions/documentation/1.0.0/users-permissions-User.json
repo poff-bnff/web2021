@@ -1717,7 +1717,8 @@
                 "product_type": {
                   "type": "string",
                   "enum": [
-                    "pass"
+                    "pass",
+                    "Course"
                   ]
                 },
                 "owner": {
