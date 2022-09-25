@@ -177,8 +177,7 @@ block content
                 section.ce_box_3
                     if self.product_categories
                         a(href=`${shopDir}${self.product_categories[0].slug}`)
-                            button.btn_course
-                                | Registreeru kurusele
+                            button.btn_course= self.label.userprofile.buyCourseRegister
 
                 //- section.f_synopsis_box
                 //-     .str_info_meta_gi
