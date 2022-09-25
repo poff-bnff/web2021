@@ -48,7 +48,7 @@ module.exports = {
         if (removedProductsArray.length) { console.log('removedProduct(s)', removedProductsArray); }
         if (allAffectedProducts.length) { console.log('allAffectedProducts', allAffectedProducts); }
 
-        const affectedProductInfos = await strapi.query('product').find({ 'id_in': allAffectedProducts }, ['product_category', 'product_category.product_types', 'product_category.user_roles', 'product_category.courses']);
+        const affectedProductInfos = await strapi.query('product').find({ 'id_in': allAffectedProducts }, ['product_category', 'product_category.product_types', 'product_category.user_roles', 'product_category.course_events']);
         const sanitizedAffectedProductInfos = sanitizeEntity(affectedProductInfos, {
           model: strapi.query('product').model,
         });
@@ -99,7 +99,7 @@ module.exports = {
                 const courseIds = []
                 addedProductsArray.map(ap => {
                   productsCategories.filter(p => p.id === ap)
-                    .map(p => p?.product_category?.courses?.filter(c => c.moodle_id).map(c => courseIds.push(c.moodle_id)))
+                    .map(p => p?.product_category?.course_events?.filter(c => c.moodle_id).map(c => courseIds.push(c.moodle_id)))
                 })
 
                 const uniqueCourseIds = [... new Set(courseIds)]
