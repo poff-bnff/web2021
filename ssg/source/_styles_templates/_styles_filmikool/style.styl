@@ -3220,11 +3220,11 @@ a.btn_popover
     grid-template-columns 1fr
     grid-template-rows auto
     padding-top header_height
-    grid-template-areas "f_title_box"\
-                        "f_trailer_box"\
+    grid-template-areas "f_trailer_box"\
+                        "f_title_box"\
                         "ce_box_2"\
-                        "ce_box_1"\
                         "ce_box_3"\
+                        "ce_box_1"\
                         "f_synopsis_box"\
                         "f_cred_box"\
                         "f_runtime_box"\
@@ -3267,8 +3267,9 @@ a.btn_popover
     border 1px solid clr_primary
     border-radius 0
     text-transform uppercase
-    padding-left calc(6rem + 1vw)
-    padding-right calc(6rem + 1vw)
+    width 100%
+    // padding-left calc(6rem + 1vw)
+    // padding-right calc(6rem + 1vw)
     padding-top .5rem
     padding-bottom .3rem
     // align center
@@ -3291,6 +3292,21 @@ a.btn_popover
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
         padding-top header_height
+
+    .btn_course
+        background-color white
+        //   background-color clr_primary
+        color clr_primary
+        border 1px solid clr_primary
+        border-radius 0
+        text-transform uppercase
+        width max-content
+        padding-left calc(6rem + 1vw)
+        padding-right calc(6rem + 1vw)
+        padding-top .5rem
+        padding-bottom .3rem
+        // align center
+        //   width 80%
 
     .grid_film
         display grid
