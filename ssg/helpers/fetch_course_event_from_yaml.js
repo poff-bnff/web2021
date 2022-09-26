@@ -108,6 +108,9 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         'product_categories': {
             model_name: 'ProductCategory',
         },
+        'event_types': {
+            model_name: 'EventType',
+        },
         'industry_categories': {
             model_name: 'IndustryCategory',
         },
