@@ -38,10 +38,10 @@ block content
                 h4(id='productPrice')
                     //- +euro(self.priceAtPeriod[0].price)
             div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
-                button#buybutton.btn.btn-primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.userprofile.pass
-                button#directToLoginButton.btn.btn-primary(onclick='directToLogin(), saveUrl()')= self.label.userprofile.passHelp
-                button#directToaddPicture.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profilePicHelp
-                button#directToFillProfile.btn.btn-primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profileAddInfoHelp
+                button#buybutton.btn.btn_primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.userprofile.buy
+                button#directToLoginButton.btn.btn_primary(onclick='directToLogin(), saveUrl()')= self.label.userprofile.loginToBuy
+                button#directToaddPicture.btn.btn_primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profilePicHelp
+                button#directToFillProfile.btn.btn_primary(onclick='directToUserProfile(), saveUrl()')= self.label.userprofile.profileAddInfoHelp
                 div#paymentLinks
                 br
                 div
@@ -51,7 +51,7 @@ block content
                     input(id='termsCheckbox' type='checkbox' name='terms' value='agree')
                     label.agree_terms_label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
                 br
-                button#paybutton.btn.btn-primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
+                button#paybutton.btn.btn_primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
                 br
     style.
         #buybutton {display: none}
