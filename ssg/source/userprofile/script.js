@@ -56,6 +56,7 @@ async function loadUserInfo() {
             let riik = address[0]
             let linn = address[1]
             countrySelection.value = riik
+            countrySelection.onchange();
             citySelection.value = linn
         }
 
