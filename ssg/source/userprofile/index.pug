@@ -58,6 +58,7 @@ block content
                 div.form_group
                     label.control-label.login_label(for='citySelection')= self.label.userprofile.city
                     select.login_input#citySelection.form-control(required='' oninput= 'validateCity("citySelection")')
+                br
                 button.btn.btn_primary(id='saveProfileButton' onclick='validateForm()' style='width: 82px; height: 40px;')= self.label.userprofile.saveButton
                 p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
 
