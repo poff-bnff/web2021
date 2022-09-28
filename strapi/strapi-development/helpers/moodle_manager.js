@@ -25,10 +25,10 @@ async function requester(method, func, requestParams) {
       };
       request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-          console.log('MoodleManager - request response body: ', JSON.parse(body));
+          console.log(`MoodleManager - request (${method, func}) response body: ${JSON.parse(body)}`);
           resolve(JSON.parse(body));
         } else {
-          console.log('MoodleManager - request response error: ', error);
+          console.log(`MoodleManager - request (${method, func}) response error: ${error}`);
           reject(error);
         }
       });
