@@ -158,6 +158,9 @@
     },
     "eMail": {
       "type": "email"
+    },
+    "country": {
+      "model": "country"
     }
   }
 }
