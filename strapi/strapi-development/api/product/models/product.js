@@ -73,46 +73,48 @@ module.exports = {
       // let read_spsheet = await update_sheets(result, model_name, sheet_ID, sheet_name)
       // // console.log(read_spsheet)
 
-      // As per beforeUpdate code, only applies when category includes product type course (ID 2)
+      // As per beforeUpdate code, only applies when category includes product type course-event (ID 2)
 
       let owner_before_update = data.owner_before_update
       const sanitizedResult = sanitizeEntity(result, {
         model: strapi.query('product').model,
       });
+
       if (sanitizedResult.product_category) {
         const productCat = await strapi.query('product-category').findOne({ 'id': sanitizedResult.product_category.id });
+        if (productCat?.course_events?.filter(ce => ce.moodle_id).length) {
+          const courseMoodleIds = productCat?.course_events?.map(c => c.moodle_id)
+          const uniqueCourseMoodleIds = [... new Set(courseMoodleIds)]
 
-        const courseMoodleIds = productCat?.courses?.map(c => c.moodle_id)
-        const uniqueCourseMoodleIds = [... new Set(courseMoodleIds)]
+          let owner = data.owner
+          // If previous owner is not the same as new owner
+          if (owner_before_update && owner_before_update.id !== owner) {
+            // If there was a change of owner
+            if (owner_before_update && owner) {
+              console.log(`Product ID ${sanitizedResult.id} owner has changed (${sanitizedResult.id} -> ${owner_before_update.id})`);
+              const oldUserMoodleId = owner_before_update.moodle_id
 
-        let owner = data.owner
-        // If previous owner is not the same as new owner
-        if (owner_before_update && owner_before_update.id !== owner) {
-          // If there was a change of owner
-          if (owner_before_update && owner) {
-            console.log(`Product ID ${sanitizedResult.id} owner has changed (${sanitizedResult.id} -> ${owner_before_update.id})`);
-            const oldUserMoodleId = owner_before_update.moodle_id
+              // Suspend previous owner from Moodle course-events and remove roles
+              await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+              await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
 
-            // Suspend previous owner from Moodle courses and remove roles
-            await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
-            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
-
-            // Get new user full info (including profile) and enrol courses
+              // Get new user full info (including profile) and enrol course-events
+              await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
+            }
+            // Previous owner but no new owner
+            if (owner_before_update && !owner) {
+              console.log(`Product ID ${sanitizedResult.id} owner has been removed (${sanitizedResult.id} -> null)`);
+              const oldUserMoodleId = owner_before_update.moodle_id
+              // Suspend previous owner from Moodle course-events
+              await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
+              await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
+            }
+          }
+          // If no previous owner and there is a new owner
+          if (!owner_before_update && owner) {
+            // Get new user full info (including profile)
             await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
           }
-          // Previous owner but no new owner
-          if (owner_before_update && !owner) {
-            console.log(`Product ID ${sanitizedResult.id} owner has been removed (${sanitizedResult.id} -> null)`);
-            const oldUserMoodleId = owner_before_update.moodle_id
-            // Suspend previous owner from Moodle courses
-            await unEnrolOldUser(oldUserMoodleId, uniqueCourseMoodleIds);
-            await roleAssigner(owner_before_update.id, null, null, productCat.user_roles ? productCat.user_roles.map(p => p.id) : [])
-          }
-        }
-        // If no previous owner and there is a new owner
-        if (!owner_before_update && owner) {
-          // Get new user full info (including profile)
-          await newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds);
         }
       }
     },

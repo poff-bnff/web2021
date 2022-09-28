@@ -3,6 +3,7 @@ include /_templates/mixins.pug
 
 
 block content
+    - var shopDir = 'https://poff.ee/'
     script(src='/assets/poffOmatic.js')
     //- script.
     //-     document.addEventListener('userProfileLoaded', function (e) {
@@ -29,7 +30,8 @@ block content
 
     - var assetsDir = 'https://assets.poff.ee/img/'
 
-    main.grid_ind_event.restrictedcontent
+    //- main.grid_ind_event.restrictedcontent
+    main.grid_courseevent.restrictedcontent
         if !self.public
             script.
                 var cType = "course-event"
@@ -163,30 +165,51 @@ block content
                         .elisa_stage
                             img.elisa_powered(src='https://assets.poff.ee/img/poff24_elisa_stage.svg')
 
-                section.f_synopsis_box
-                    .str_info_meta_gi
-                    .synopsis_gi
-                        if self.short_descr && typeof self.short_descr === 'string'
-                            p.dark_1
-                                +format(self.short_descr)
+                section.ce_box_1
+                    p
 
-                        if self.description && typeof self.description === 'string'
-                            p.dark_1
-                                +format(self.description)
+                section.ce_box_2
+                    if self.description && typeof self.description === 'string'
+                        .synopsis_gi
+                            +format(self.description)
+
+
+                section.ce_box_3
+                    if self.product_categories
+                        a(href=`${shopDir}${self.product_categories[0].slug}`)
+                            button.btn_course= self.label.userprofile.buyCourseRegister
+                    else if self.button
+                        a(href= self.button.url)
+                            button.btn_course= self.button.text
+                        //- p.font_h= self.label.industry.coursePrice + ': ' + self.product_categories[0].priceAtPeriod[0].price
+
+                //- section.f_synopsis_box
+                //-     .str_info_meta_gi
+                //-     .synopsis_gi
+                //-         if self.short_descr && typeof self.short_descr === 'string'
+                //-             p.dark_1
+                //-                 +format(self.short_descr)
+
+                //-         if self.description && typeof self.description === 'string'
+                //-             p.dark_1
+                //-                 +format(self.description)
+
+                //- section.f_cred_box.bg_white
+                //-     if self.product_categories
+                //-         p.dark_1
+                //-             | Product leitud
 
                 //- section.f_cred_box
                 //-     if self.isLiveEvent === true
                 //-         +chat(self.title, false)
                 //-         p.dark_5
-                //-             | Leave your questions and comments here
-                //- section.f_runtime_box
                 //-     if self.isLiveEvent === true
                 //-         +chat(self.title, true)
                 //-         p.dark_5
                 //-             | Moderated questions and comments
 
 
-    section.f_interactive_box
+    //- section.f_interactive_box
         if self.industry_people
             //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
             //- h1.sub_section_headline= 'Või veel midagi'
