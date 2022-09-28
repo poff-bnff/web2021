@@ -36,16 +36,16 @@ const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAI
 
 // UUS TEST FESTIVAL EDITIONI JÄRGI
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
-if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
-    if (festival_editions.includes(33) || festival_editions.includes(53)) {
-        whichScreeningTypesToFetch.push('first screening')
-    } else {
-        whichScreeningTypesToFetch.push('first screening')
-        whichScreeningTypesToFetch.push('regular')
-        whichScreeningTypesToFetch.push('online kino')
-        whichScreeningTypesToFetch.push('free')
-    }
-}
+// if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
+//     if (festival_editions.includes(33) || festival_editions.includes(53)) {
+//         whichScreeningTypesToFetch.push('first screening')
+//     } else {
+//         whichScreeningTypesToFetch.push('first screening')
+//         whichScreeningTypesToFetch.push('regular')
+//         whichScreeningTypesToFetch.push('online kino')
+//         whichScreeningTypesToFetch.push('free')
+//     }
+// }
 
 const minimodel_screenings = {
     'introQaConversation': {
