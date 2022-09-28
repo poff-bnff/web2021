@@ -13,9 +13,10 @@ block content
                     h1.section_headline= shop.title
 
                 //- Poe intro
-                if shop.intro
-                    .shop_intro_box
-                        p.shop_intro= shop.intro
+                //- if shop.intro
+                //-     .shop_intro_box
+                //-         .shop_intro
+                //-             p.dark_1= shop.intro
 
                 if shop.prodCatList && shop.prodCatList
                     each prodCatList in shop.prodCatList
@@ -63,10 +64,10 @@ block content
 
 
 
-                if shop.shopRules
-                        if typeof shop.shopRules === 'string'
-                            p
-                                +format(shop.shopRules)
+                //- if shop.shopRules
+                //-         if typeof shop.shopRules === 'string'
+                //-             p
+                //-                 +format(shop.shopRules)
 
 
     //- e pood, pealkiri, intro text, toodete leotelu osa, millel samuti pealkiri ja siis listitud tooted, - seos Product_Category’dega
