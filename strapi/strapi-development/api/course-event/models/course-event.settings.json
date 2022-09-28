@@ -187,6 +187,9 @@
       "type": "component",
       "repeatable": false,
       "component": "button.button"
+    },
+    "industry_people": {
+      "collection": "industry-person"
     }
   }
 }
