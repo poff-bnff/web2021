@@ -60,25 +60,25 @@ const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_scr
 
 // DEFAULT DEFAULT
 // // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
-// if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
-//     whichScreeningTypesToFetch.push('first screening')
-//     whichScreeningTypesToFetch.push('regular')
-//     whichScreeningTypesToFetch.push('online kino')
-//     whichScreeningTypesToFetch.push('free')
-// }
+if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
+    whichScreeningTypesToFetch.push('first screening')
+    whichScreeningTypesToFetch.push('regular')
+    whichScreeningTypesToFetch.push('online kino')
+    whichScreeningTypesToFetch.push('free')
+}
 
 // UUS TEST FESTIVAL EDITIONI JÄRGI
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
-if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
-    if (festival_editions.includes(33) || festival_editions.includes(53)) {
-        whichScreeningTypesToFetch.push('first screening')
-    } else {
-        whichScreeningTypesToFetch.push('first screening')
-        whichScreeningTypesToFetch.push('regular')
-        whichScreeningTypesToFetch.push('online kino')
-        whichScreeningTypesToFetch.push('free')
-    }
-}
+// if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
+//     if (festival_editions.includes(33) || festival_editions.includes(53)) {
+//         whichScreeningTypesToFetch.push('first screening')
+//     } else {
+//         whichScreeningTypesToFetch.push('first screening')
+//         whichScreeningTypesToFetch.push('regular')
+//         whichScreeningTypesToFetch.push('online kino')
+//         whichScreeningTypesToFetch.push('free')
+//     }
+// }
 
 const mapping = DOMAIN_SPECIFICS.domain
 
