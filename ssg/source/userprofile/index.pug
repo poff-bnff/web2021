@@ -15,9 +15,9 @@ block content
                 div.form_group
 
                     if process.env['DOMAIN'] !== 'industry.poff.ee'
-                        label.login_label(for='profileImg')= self.label.userprofile.pictureTitle
+                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
                     else
-                        label.login_label(for='profileImg') Profile picture
+                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
 
                     div#imgError
                     input.input_file#profileImg(type='file' name='filename' onchange ='validateaAndPreview(this.files[0])')
