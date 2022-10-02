@@ -176,12 +176,20 @@ block content
 
                 section.ce_box_3
                     if self.product_categories
+                        .course_price= self.label.userprofile.coursePrice + ': '
+                            +euro(self.product_categories[0].priceAtPeriod[0].price)
                         a(href=`${shopDir}${self.product_categories[0].slug}`)
                             button.btn_course= self.label.userprofile.buyCourseRegister
                     else if self.button
                         a(href= self.button.url)
                             button.btn_course= self.button.text
                         //- p.font_h= self.label.industry.coursePrice + ': ' + self.product_categories[0].priceAtPeriod[0].price
+
+                    //- if self.product_categories
+                        //- P.font_h= self.label.userprofile.coursePrice
+                        //-     +euro(self.product_categories[0].priceAtPeriod[0].price)
+                        .course_price= self.label.userprofile.coursePrice + ': '
+                            +euro(self.product_categories[0].priceAtPeriod[0].price)
 
                 //- section.f_synopsis_box
                 //-     .str_info_meta_gi
