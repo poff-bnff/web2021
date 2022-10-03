@@ -226,10 +226,10 @@ for (const lang of languages) {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
-                        // 2022 adding elakaasa (artikli slug ela-kaasa) for TARTUFF
+                        // 2022 industry accre alias
                         if (DOMAIN === 'industry.poff.ee' && element[key] === 'accreditation') {
-                            let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}accreditation`]
+                            let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${accreAliasLangPrefix}accreditation`]
                         }
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
