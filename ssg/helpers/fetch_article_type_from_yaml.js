@@ -222,7 +222,7 @@ for (const lang of languages) {
                         //     element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         // }
                         // 2022 adding votemo (artikli slug votemo) for TARTUFF
-                        if (DOMAIN === 'tartuff.ee' && element[key] === 'votemo') {
+                        if (DOMAIN === 'poff.ee' && element[key] === 'votemo') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
