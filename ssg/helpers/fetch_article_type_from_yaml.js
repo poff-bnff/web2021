@@ -227,9 +227,9 @@ for (const lang of languages) {
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
                         // 2022 adding elakaasa (artikli slug ela-kaasa) for TARTUFF
-                        if (DOMAIN === 'tartuff.ee' && element[key] === 'ela-kaasa') {
+                        if (DOMAIN === 'industry.poff.ee' && element[key] === 'accreditation') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${votemooAliasLangPrefix}elakaasa`]
+                            element.aliases = [`${votemooAliasLangPrefix}accreditation`]
                         }
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
