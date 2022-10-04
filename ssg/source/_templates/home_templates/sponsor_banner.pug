@@ -3,16 +3,18 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
         ol.carousel-indicators
             li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
             li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
-            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
-            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
+            //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+            //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
 
         .carousel-inner.container_frame_justi_banner
             .carousel-item.container_contents_justi_banner
-                img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_swed_4cd8bcac6f.jpg`)
+                a(href=`https://swedbank.ee` target="_blank")
+                    img.d-block.container_contents_justi_banner(src=`/assets/img/static/just_2022_banner_swed.jpg`)
             .carousel-item.active.container_contents_justi_banner
-                img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_mamma_qual_67b801cfb0.jpg`)
-            .carousel-item.container_contents_justi_banner
-                img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
+                a(href=`https://miks.ee` target="_blank")
+                    img.d-block.container_contents_justi_banner(src=`/assets/img/static/just_2022_banner_eta.jpg`)
+            //- .carousel-item.container_contents_justi_banner
+            //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
             //- .carousel-item.container_contents_justi_banner
             //-     img.d-block.container_contents_justi_banner(src=``)
 
