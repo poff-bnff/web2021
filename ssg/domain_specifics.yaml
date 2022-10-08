@@ -27,7 +27,7 @@ cassettes_festival_editions:
         # - 30
         # - 32
     justfilm.ee:
-        - 5
+        - 56
         # - 29
     kinoff.poff.ee:
         - 57
@@ -50,7 +50,7 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
-    - 51
+    - 56
     # - 29
     # - 30
     # - 32
