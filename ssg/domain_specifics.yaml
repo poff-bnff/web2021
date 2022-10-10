@@ -59,13 +59,13 @@ XML_festival_editions:
 programmes_festival_editions:
     poff.ee:
         # - 51
-        - 52
-        # - 28
+        # - 54
+        - 56
         # - 29
         # - 30
         # - 32
     justfilm.ee:
-        # - 29
+        - 56
     kinoff.poff.ee:
         - 0
     industry.poff.ee:
