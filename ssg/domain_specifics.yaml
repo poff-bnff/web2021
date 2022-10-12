@@ -20,12 +20,9 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        # - 51
-        # - 52
+        - 54
         - 56
-        # - 29
-        # - 30
-        # - 32
+        - 58
     justfilm.ee:
         - 56
         # - 29
@@ -50,6 +47,7 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
+    - 54
     - 56
     - 58
     # - 29
@@ -58,13 +56,9 @@ XML_festival_editions:
 
 programmes_festival_editions:
     poff.ee:
-        # - 51
-        # - 54
+        - 54
         - 56
         - 58
-        # - 29
-        # - 30
-        # - 32
     justfilm.ee:
         - 56
     kinoff.poff.ee:
