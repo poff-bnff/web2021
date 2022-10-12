@@ -408,8 +408,8 @@ main.grid_film(id=self.id)
                                                 .str_info_value.text_right.dark_1= director.person.firstNameLastName
 
                                     .dir_bio.dark_1
-                                        if director.person.biography && typeof director.person.biography !== 'object'
-                                            p.dark_1= director.person.biography
+                                        if director.person.bio && typeof director.person.bio !== 'object'
+                                            p.dark_1= director.person.bio
                                         if director.person.filmography && typeof director.person.filmography !== 'object'
                                             p.dark_1= director.person.filmography
                                         else if director.person.filmography && director.person.filmography.en
