@@ -2,10 +2,13 @@ main.grid_cassette
     //- Kassetti festivali info
 
     //- KARUSELL kasseti piltidega
-    if self.cassetteCarouselPicsFilms && self.cassetteCarouselPicsFilms.length > 0
-        - var cassetteCarouselPics = self.cassetteCarouselPicsFilms
-    else if self.cassetteCarouselPicsCassette && self.cassetteCarouselPicsCassette.length > 0
-        - var cassetteCarouselPics = self.cassetteCarouselPicsCassette
+    //- Ainult F_1 pildid
+    - var cassetteCarouselPicsFilms = self.cassetteCarouselPicsFilms ? self.cassetteCarouselPicsFilms.filter(pic => pic.includes('F_1')) : null
+    - var cassetteCarouselPicsCassette = self.cassetteCarouselPicsCassette ? self.cassetteCarouselPicsCassette.filter(pic => pic.includes('F_1')) : null
+    if cassetteCarouselPicsFilms && cassetteCarouselPicsFilms.length > 0
+        - var cassetteCarouselPics = cassetteCarouselPicsFilms.reverse()
+    else if cassetteCarouselPicsCassette && cassetteCarouselPicsCassette.length > 0
+        - var cassetteCarouselPics = cassetteCarouselPicsCassette.reverse()
     else
         //- PLACEHOLDER IMG
         - var cassetteCarouselPics = ['/assets/img/static/placeholder_hd_1.jpg']
@@ -15,18 +18,16 @@ main.grid_cassette
             if cassetteCarouselPics
                 if cassetteCarouselPics
                     each val, index in cassetteCarouselPics
-                        if val.includes('F_1')
-                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                        li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
         .carousel-inner.container_frame_16_9
             if cassetteCarouselPics
                 each val, index in cassetteCarouselPics
-                    if val.includes('F_1')
-                        if index == 0
-                            .carousel-item.active.container_contents_16_9
-                                img.d-block.container_contents_16_9(src= val alt = self.title || self.title_et)
-                        else
-                            .carousel-item.container_contents_16_9
-                                img.d-block.container_contents_16_9(src= val alt = self.title || self.title_et)
+                    if index == 0
+                        .carousel-item.active.container_contents_16_9
+                            img.d-block.container_contents_16_9(src= val alt = self.title || self.title_et)
+                    else
+                        .carousel-item.container_contents_16_9
+                            img.d-block.container_contents_16_9(src= val alt = self.title || self.title_et)
             else
                 .carousel-item.active.container_contents_16_9
                     img.d-block.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title || self.title_et)
