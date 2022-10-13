@@ -11,9 +11,9 @@ function images(obj) {
         let cassette = obj.cassette
 
         // Cassette carousel pics
-        if (cassette.media && cassette.media.stills && cassette.media.stills[0]) {
-            for (const stillIx in cassette.media.stills) {
-                let still = cassette.media.stills[stillIx]
+        if (cassette && cassette.stills && cassette.stills[0]) {
+            for (const stillIx in cassette.stills) {
+                let still = cassette.stills[stillIx]
                 if (still.hash && still.ext) {
                     if (still.hash.substring(0, 4) === 'F_1_') {
                         cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
@@ -28,9 +28,9 @@ function images(obj) {
         }
 
         // Cassette poster pics
-        if (cassette.media && cassette.media.posters && cassette.media.posters[0]) {
-            for (const posterIx in cassette.media.posters) {
-                let poster = cassette.media.posters[posterIx]
+        if (cassette && cassette.posters && cassette.posters[0]) {
+            for (const posterIx in cassette.posters) {
+                let poster = cassette.posters[posterIx]
                 if (poster.hash && poster.ext) {
                     if (poster.hash.substring(0, 2) === 'P_') {
                         cassettePostersCassette.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
@@ -51,9 +51,9 @@ function images(obj) {
                 if (film && film.film) {
 
                     // Film carousel pics
-                    if (film.film.media && film.film.media.stills && film.film.media.stills[0]) {
-                        for (const stillIx in film.film.media.stills) {
-                            let still = film.film.media.stills[stillIx]
+                    if (film.film && film.film.stills && film.film.stills[0]) {
+                        for (const stillIx in film.film.stills) {
+                            let still = film.film.stills[stillIx]
                             if (still.hash && still.ext) {
                                 if (still.hash.substring(0, 4) === 'F_1_') {
                                     cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
@@ -68,9 +68,9 @@ function images(obj) {
                     }
 
                     // Film posters pics
-                    if (film.film.media && film.film.media.posters && film.film.media.posters[0]) {
-                        for (const posterIx in film.film.media.posters) {
-                            let poster = film.film.media.posters[posterIx]
+                    if (film.film && film.film.posters && film.film.posters[0]) {
+                        for (const posterIx in film.film.posters) {
+                            let poster = film.film.posters[posterIx]
                             if (poster.hash && poster.ext) {
                                 if (poster.hash.substring(0, 2) === 'P_') {
                                     cassettePostersFilms.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
