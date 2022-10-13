@@ -441,7 +441,7 @@ else
                 .str_info_blokk_1
 
                     each p, locale in self.otherLocalePaths
-                        if self[`title_${locale}`]
+                        if film[`title_${locale}`]
                             .str_info_grid_3
                                 .str_info_label= self.label.film[`title_${locale}`]
                                 .str_info_value= film[`title_${locale}`]
@@ -524,9 +524,18 @@ else
                     //-         | Foorum, Põhjusega mässajad
                 if typeof film.synopsis !== 'undefined'
                     - var synopsis_md = film.synopsis
-                    if typeof synopsis_md === 'string'
-                        .synopsis_gi
+                    .synopsis_gi
+                        if typeof synopsis_md === 'string'
                             +format(synopsis_md)
+                            //- +chat('casette-' + self.id)
+
+                        //- FILM ADDITIONAL INFO (ADDITINFO)
+
+                        if typeof film.additInfo !== 'undefined'
+                            - var additInfo_md = film.additInfo
+                                //- .synopsis_gi
+                                if typeof additInfo_md === 'string'
+                                    +format(additInfo_md)
 
                 //- FILM ADDITIONAL INFO (ADDITINFO)
 
