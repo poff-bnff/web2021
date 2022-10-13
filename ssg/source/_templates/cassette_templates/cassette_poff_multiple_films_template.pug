@@ -400,12 +400,14 @@ else
                     if film.stills
                         each val, index in film.stills
                             li(data-bs-target=`#carouselFilm${film.id}Indicators` href=`#carouselFilm${film.id}Indicators` data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                            - break
                 .carousel-inner.container_frame_16_9
                     if film.stills
                         each val, index in film.stills
                             if index == 0
                                 .carousel-item.active.container_contents_16_9
                                     img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
+                                - break
                             else
                                 .carousel-item.container_contents_16_9
                                     img.d-block.container_contents_16_9(src=`https://assets.poff.ee/img/${val}` alt = self.title)
