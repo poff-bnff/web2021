@@ -46,7 +46,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -367,7 +367,6 @@ for (const lang of allLanguages) {
     let limit = CASSETTELIMIT
     let counting = 0
     for (const s_cassette of STRAPIDATA_CASSETTE) {
-
         var hasOneCorrectScreening = skipScreeningsCheckDomains.includes(DOMAIN) ? true : false
 
         if (limit !== 0 && counting === limit) break
@@ -539,9 +538,9 @@ for (const lang of allLanguages) {
             }
 
             // Cassette poster pics
-            if (s_cassette_copy.media && s_cassette_copy.media.posters && s_cassette_copy.media.posters[0]) {
-                for (const posterIx in s_cassette_copy.media.posters) {
-                    let poster = s_cassette_copy.media.posters[posterIx]
+            if (s_cassette_copy.posters && s_cassette_copy.posters[0]) {
+                for (const posterIx in s_cassette_copy.posters) {
+                    let poster = s_cassette_copy.posters[posterIx]
                     if (poster.hash && poster.ext) {
                         if (poster.hash.substring(0, 2) === 'P_') {
                             cassettePostersCassette.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
@@ -624,8 +623,8 @@ for (const lang of allLanguages) {
                     }
 
                     // Film posters pics
-                    if (scc_film.media && scc_film.media.posters && scc_film.media.posters[0]) {
-                        for (poster of scc_film.media.posters) {
+                    if (scc_film.posters && scc_film.posters[0]) {
+                        for (poster of scc_film.posters) {
                             if (poster.hash && poster.ext) {
                                 if (poster.hash.substring(0, 2) === 'P_') {
                                     cassettePostersFilms.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
