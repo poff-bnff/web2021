@@ -61,6 +61,8 @@ function addConfigIgnorePaths() {
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
             '/filmikool_courseevents_search', //Filmikool events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -95,6 +97,8 @@ function addConfigIgnorePaths() {
             '/industry_courseevents_search', //Industry Events
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
         ]
     } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
         return [
@@ -133,6 +137,8 @@ function addConfigIgnorePaths() {
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
             '/filmikool_courseevents_search', //Filmikool events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
         ]
     } else if (DOMAIN === 'industry.poff.ee') {
         return [
@@ -190,6 +196,8 @@ function addConfigIgnorePaths() {
             '/industry_courseevents_search', //Industry Events
             '/courses_courseevents', //Filmikool
             '/filmikool_courseevents_search', //Filmikool events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -225,6 +233,8 @@ function addConfigIgnorePaths() {
             '/discamp_events_search', //Discamp events
             '/discamp_courseevents_search', //Discamp events
             '/filmikool_courseevents_search', //Filmikool events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
         ]
     } else {
         return null
