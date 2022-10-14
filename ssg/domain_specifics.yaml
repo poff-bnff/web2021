@@ -158,7 +158,7 @@ locales:
     justfilm.ee:
         - et
         - en
-        - ru
+        # - ru
     kinoff.poff.ee:
         - et
         - en
