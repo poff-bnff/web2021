@@ -13,6 +13,10 @@ const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const fetchDirDirPath = path.join(sourceDir, '_fetchdir')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
+if (DOMAIN !== 'industry.poff.ee') {
+    console.log('Skipping locations fetch as domain is not industry.poff.ee');
+    return
+}
 
 const strapiDataLocationPath = path.join(strapiDataDirPath, `Location.yaml`)
 const STRAPIDATA_LOCATIONS_FULL = yaml.load(fs.readFileSync(strapiDataLocationPath, 'utf8'))
@@ -129,7 +133,7 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
 
                     })
 
-                    
+
                     location.tag_list = list.filter( e => {
                         return e.tags.length > 0
                     })
@@ -156,7 +160,7 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
 
         const locationDataFile =  path.join(fetchDirDirPath, `${locationYamlNameSuffix}.${lang}.yaml`)
 
-        
+
         locationData = rueten(copyData, lang)
 
         let locationDataYAML = yaml.dump(locationData, { 'noRefs': true, 'indent': '4' })
@@ -213,7 +217,7 @@ function generateLocationsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
                 addresses.push(location.addr_coll.hr_address)
                 filters.addresses[location.addr_coll.hr_address] = location.addr_coll.hr_address
             }
-        } 
+        }
 
         // for (const addr of (location.addr_coll.hr_address || [])
         //     .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
