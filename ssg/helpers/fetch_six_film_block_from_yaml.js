@@ -3,20 +3,24 @@ const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
 
-const sourceDir =  path.join(__dirname, '..', 'source')
+const rootDir = path.join(__dirname, '..')
+const sourceDir =  path.join(rootDir, 'source')
 const fetchDir =  path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
+
+const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.load(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 
-const languages = ['en', 'et', 'ru']
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+
+const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
 const target_id = params.slice(1)
-
-const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 
 const addConfigPathAliases = require('./add_config_path_aliases.js')
 if (param_build_type === 'target') {
