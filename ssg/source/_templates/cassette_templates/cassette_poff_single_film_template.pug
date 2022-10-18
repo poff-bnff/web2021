@@ -410,9 +410,20 @@ main.grid_film(id=self.id)
 
                                     .dir_bio.dark_1
                                         if director.person.bio && typeof director.person.bio !== 'object'
-                                            p.dark_1= director.person.bio
+                                            //- p.dark_1= director.person.bio
+
+                                            - var dir_bio = director.person.bio
+                                            p.dark_1
+                                                if typeof dir_bio === 'string'
+                                                    +format(dir_bio)
+
                                         if director.person.filmography && typeof director.person.filmography !== 'object'
-                                            p.dark_1= director.person.filmography
+                                            //- p.dark_1= director.person.filmography
+                                            - var dir_filmography = director.person.filmography
+                                            p.dark_1
+                                                if typeof dir_filmography === 'string'
+                                                    +format(dir_filmography)
+
                                         else if director.person.filmography && director.person.filmography.en
                                             p.dark_1= director.person.filmography.en
 
