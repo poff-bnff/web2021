@@ -696,17 +696,17 @@ main.grid_film(id=self.id)
                                         .ratio.ratio-16x9.m-0.p-0
                                             +videolQaClip(qaclip.url)
 
-            if film && film.chat_w_name
-                script.
-                    var votemoConfig = {
-                        url: `https://#{film.chat_w_name}.votemo.eu`,
-                        openInDesktop: false
-                    }
+            //- if film && film.chat_w_name
+            //-     script.
+            //-         var votemoConfig = {
+            //-             url: `https://#{film.chat_w_name}.votemo.eu`,
+            //-             openInDesktop: false
+            //-         }
 
-                    //- var votemoConfig = { url: 'https://film01.votemo.eu' }
-                    //- var votemoConfig = { url: `https://${film.chat_w_name}.votemo.eu` }
+            //-         //- var votemoConfig = { url: 'https://film01.votemo.eu' }
+            //-         //- var votemoConfig = { url: `https://${film.chat_w_name}.votemo.eu` }
 
-                script(src='https://cdn.votemo.eu/dist/widget.js')
+            //-     script(src='https://cdn.votemo.eu/dist/widget.js')
 
 
             //- section.f_imgs_box
