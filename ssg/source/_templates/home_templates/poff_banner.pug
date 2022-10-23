@@ -1,44 +1,114 @@
-section#carouselBannerIndicators.poffi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='3000')
+section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
 
-        //- KARUSELLI PILTIDE OSAD
         ol.carousel-indicators
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=0 class='active')
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=1)
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=2)
-            li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=3)
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
+            li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
+            //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+            //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
 
         if lang_path === 'en/'
-            .carousel-inner.container_frame_poffi_banner
-                a(href= `/letschat`).carousel-item.active.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/letschat-eng.png`)
-                a(href= `/artikkel/turvajuhised-ja-nouanded/`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/mask-eng1.png`)
-                a(href= `/en/about/how-do-i-watch-the-best-of-p-oe-ff-at-home-1`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/virtuaalkino-eng.png`)
-                a(href= `/en/about/favourite-film`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-eng.png`)
+            .carousel-inner.container_frame_justi_banner
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_en_1.png`)
+                .carousel-item.active.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_en_2.png`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=``)
+
+        if lang_path === 'ru/'
+            .carousel-inner.container_frame_justi_banner
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_ru_1.png`)
+                .carousel-item.active.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_ru_2.png`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=``)
 
         else
-            .carousel-inner.container_frame_poffi_banner
-                a(href= `/letschat`).carousel-item.active.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/letschat-est.png`)
-                a(href= `/ru/artikl/instrukczii-i-sovety-po-bezopasnosti`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/mask-est1.png`)
-                a(href= `/artikkel/veebikino-1`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/virtuaalkino.png`)
-                a(href= `/artikkel/lemmikfilm`).carousel-item.container_contents_poffi_banner
-                    img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-est.png`)
+            .carousel-inner.container_frame_justi_banner
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_et_1.png`)
+                .carousel-item.active.container_contents_justi_banner
+                    a(href=`https://get.forus.eu` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ban22_foruspoff_et_2.png`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=``)
 
-        //- NOOL VASAK
-        a.carousel-control-prev(href='#carouselBannerIndicators' role='button' data-bs-slide='prev')
+        a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
             // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='15 18 9 12 15 6')
             span.sr-only Previous
-
-        //- NOOL PAREM
-        a.carousel-control-next(href='#carouselBannerIndicators' role='button' data-bs-slide='next')
+        a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-bs-slide='next')
             // <span class="carousel-control-next-icon" aria-hidden="true"></span>
             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                 polyline(points='9 18 15 12 9 6')
             span.sr-only Next
+
+
+//- section#carouselBannerIndicators.poffi_banner_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='3000')
+
+//-         //- KARUSELLI PILTIDE OSAD
+//-         ol.carousel-indicators
+//-             li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=0 class='active')
+//-             li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=1)
+//-             li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=2)
+//-             li(data-bs-target='#carouselBannerIndicators' href='#carouselBannerIndicators' data-bs-slide-to=3)
+
+//-         if lang_path === 'en/'
+//-             .carousel-inner.container_frame_poffi_banner
+//-                 a(href= `https://get.forus.eu`).carousel-item.active.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/ban22_foruspoff_en_1.png`)
+//-                 a(href= `https://get.forus.eu`).carousel-item.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/ban22_foruspoff_en_2.png`)
+//-                 //- a(href= `/en/about/how-do-i-watch-the-best-of-p-oe-ff-at-home-1`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/virtuaalkino-eng.png`)
+//-                 //- a(href= `/en/about/favourite-film`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-eng.png`)
+
+//-         if lang_path === 'ru/'
+//-             .carousel-inner.container_frame_poffi_banner
+//-                 a(href= `https://get.forus.eu`).carousel-item.active.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/ban22_foruspoff_ru_1.png`)
+//-                 a(href= `https://get.forus.eu`).carousel-item.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/ban22_foruspoff_ru_2.png`)
+//-                 //- a(href= `/en/about/how-do-i-watch-the-best-of-p-oe-ff-at-home-1`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/virtuaalkino-eng.png`)
+//-                 //- a(href= `/en/about/favourite-film`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-eng.png`)
+
+//-         else
+//-             .carousel-inner.container_frame_poffi_banner
+//-                 a(href= `https://get.forus.eu`).carousel-item.active.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/static/ban22_foruspoff_et_1.png`)
+//-                 a(href= `https://get.forus.eu`).carousel-item.container_contents_poffi_banner
+//-                     img.d-block.container_contents_poffi_banner(src=`/assets/img/static/ban22_foruspoff_et_2.png`)
+//-                 //- a(href= `/en/about/how-do-i-watch-the-best-of-p-oe-ff-at-home-1`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/virtuaalkino-eng.png`)
+//-                 //- a(href= `/en/about/favourite-film`).carousel-item.container_contents_poffi_banner
+//-                 //-     img.d-block.container_contents_poffi_banner(src=`https://assets.poff.ee/img/lemmikfilm-eng.png`)
+
+//-         //- NOOL VASAK
+//-         a.carousel-control-prev(href='#carouselBannerIndicators' role='button' data-bs-slide='prev')
+//-             // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//-             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+//-                 polyline(points='15 18 9 12 15 6')
+//-             span.sr-only Previous
+
+//-         //- NOOL PAREM
+//-         a.carousel-control-next(href='#carouselBannerIndicators' role='button' data-bs-slide='next')
+//-             // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//-             svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+//-                 polyline(points='9 18 15 12 9 6')
+//-             span.sr-only Next
