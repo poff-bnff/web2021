@@ -232,11 +232,24 @@ for (const lang of languages) {
                             element.aliases = [`${accreAliasLangPrefix}accreditation`]
                         }
 
-                        // 2022 industry test alias
+                        // 2022 industry mmf alias
                         if (DOMAIN === 'industry.poff.ee' && element[key] === 'mmf') {
-                            let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
-                            element.aliases = [`${accreAliasLangPrefix}mmf`]
+                            let indmmfAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${indmmfAliasLangPrefix}mmf`]
                         }
+
+                        // 2022 discamp mmf alias
+                        if (DOMAIN === 'discoverycampus.poff.ee' && element[key] === 'mmf') {
+                            let dcmmfAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${dcmmfAliasLangPrefix}mmf`]
+                        }
+
+                        // 2022 discamp mmf award alias
+                        if (DOMAIN === 'discoverycampus.poff.ee' && element[key] === 'mmfaward') {
+                            let dcmmfawardAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${dcmmfawardAliasLangPrefix}mmfaward`]
+                        }
+
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
                         //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
