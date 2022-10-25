@@ -122,6 +122,16 @@ skip_build_for_models:
     - person
     - product-category
     - shop
+    - bruno-supporter
+    - industry-supporter
+    - poffi-supporter
+    - kinoff-supporter
+    - just-supporter
+    - shorts-supporter
+    - kumu-supporter
+    - bruno-supporter
+    - bruno-supporter
+    - supporters-page
     # - course-event
 
 article:
