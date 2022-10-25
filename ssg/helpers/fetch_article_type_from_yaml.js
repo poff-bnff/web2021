@@ -231,6 +231,12 @@ for (const lang of languages) {
                             let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
                             element.aliases = [`${accreAliasLangPrefix}accreditation`]
                         }
+
+                        // 2022 industry test alias
+                        if (DOMAIN === 'industry.poff.ee' && element[key] === 'mmf') {
+                            let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${accreAliasLangPrefix}mmf`]
+                        }
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
                         //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
