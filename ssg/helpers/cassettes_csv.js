@@ -47,9 +47,21 @@ STRAPIDATA_CASSETTES_YAML.forEach(cassette => {
 
   obj.push({"cassette_stills":c_stills, "film_stills": f_stills})
 })
+let votemo_stills = []
+obj.forEach(o => { 
+  if(o.cassette_stills && o.cassette_stills.length > 0) {
+    o.cassette_stills.forEach(s => {
+      votemo_stills.push(s)
+    })
+  }
+  if(o.film_stills && o.film_stills.length > 0) {
+    o.film_stills.forEach(s => {
+      votemo_stills.push(s)
+    })
+  }
 
-
-// console.log(JSON.stringify(obj, 0, 2))
+})
+// console.log(JSON.stringify(votemo_stills, 0, 2))
 
 function jsonToCsv(items) {
   const header = Object.keys(items[0]);
@@ -71,7 +83,8 @@ function jsonToCsv(items) {
   return csv;
 }
 
-const csv = jsonToCsv(obj);
+let data_to_convert = [{"stills": votemo_stills}]
+const csv = jsonToCsv(data_to_convert);
 
 // console.log(csv);
 fs.mkdirSync(assetsDirCSV, {recursive: true})
