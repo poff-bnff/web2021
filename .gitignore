@@ -29,6 +29,7 @@ ssg/.env
 ssg/report.*
 ssg/helpers/sheets
 ssg/helpers/visitestonia
+ssg/helpers/temp
 
 
 # dev tools

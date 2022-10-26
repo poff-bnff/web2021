@@ -9,7 +9,7 @@ const fetchDir = path.join(sourceDir, '_fetchdir')
 const allStrapiDataPath = path.join(sourceDir, '_allStrapidata')
 const allCassettesDataPath = path.join(allStrapiDataPath, 'Cassette.yaml')
 
-const assetsDirCSV = path.join(__dirname, '..', 'source')
+const assetsDirCSV = path.join(__dirname, 'temp')
 const CSVpath = path.join(assetsDirCSV, 'cassettes.csv')
 
 const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(allCassettesDataPath, 'utf8'));
@@ -48,6 +48,7 @@ STRAPIDATA_CASSETTES_YAML.forEach(cassette => {
   obj.push({"cassette_stills":c_stills, "film_stills": f_stills})
 })
 
+
 // console.log(JSON.stringify(obj, 0, 2))
 
 function jsonToCsv(items) {
@@ -73,5 +74,5 @@ function jsonToCsv(items) {
 const csv = jsonToCsv(obj);
 
 // console.log(csv);
-
+fs.mkdirSync(assetsDirCSV, {recursive: true})
 fs.writeFileSync(CSVpath, csv, 'utf8')
