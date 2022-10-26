@@ -12,9 +12,43 @@ const allCassettesDataPath = path.join(allStrapiDataPath, 'Cassette.yaml')
 const assetsDirCSV = path.join(__dirname, '..', 'source')
 const CSVpath = path.join(assetsDirCSV, 'cassettes.csv')
 
-let obj = yaml.load(fs.readFileSync(allCassettesDataPath, {encoding: 'utf-8'}));
+const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(allCassettesDataPath, 'utf8'));
 // this code if you want to save
 // fs.writeFileSync(outputfile, JSON.stringify(obj, null, 2));
+
+let obj = []
+STRAPIDATA_CASSETTES_YAML.forEach(cassette => {
+  let c_stills = []
+  if(cassette.stills) {
+    cassette.stills.forEach( still => {
+      if(still.formats && still.formats._med_16_9){
+        let med_name = still.formats._med_16_9.url.split('/')
+        med_name = med_name[med_name.length-1]
+        c_stills.push(med_name)
+      }
+    })
+  }
+  let f_stills = []
+  if(cassette.orderedFilms) {
+    let c_orderedFilms = cassette.orderedFilms
+    c_orderedFilms.forEach(o_film => {
+      if(o_film.film.stills) {
+        let o_film_stills = o_film.film.stills
+        o_film_stills.forEach(still => {
+          if(still.formats && still.formats._med_16_9){
+            let med_name = still.formats._med_16_9.url.split('/')
+            med_name = med_name[med_name.length-1]
+            f_stills.push(med_name)
+          }
+        })
+      }
+    })
+  }
+
+  obj.push({"cassette_stills":c_stills, "film_stills": f_stills})
+})
+
+// console.log(JSON.stringify(obj, 0, 2))
 
 function jsonToCsv(items) {
   const header = Object.keys(items[0]);
@@ -40,5 +74,4 @@ const csv = jsonToCsv(obj);
 
 // console.log(csv);
 
-// fs.mkdirSync(assetsDirCSV, {recursive: true})
 fs.writeFileSync(CSVpath, csv, 'utf8')
