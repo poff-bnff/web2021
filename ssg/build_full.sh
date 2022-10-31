@@ -31,8 +31,12 @@ nice -10 node ./initialise_entu_ssg.js
 echo 'Fetch strapiData.yaml from Strapi'
 nice -10 node ./helpers/a_fetch.js
 
+echo "Time passed: $SECONDS seconds"
+
 echo 'Processing all Strapidata by Domain'
 nice -10 node ./helpers/d_fetch.js
+
+echo "Time passed: $SECONDS seconds"
 
 printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 echo 'fetch_articles_from_yaml'
