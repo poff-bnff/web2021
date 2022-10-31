@@ -166,8 +166,12 @@ fetch_data()
     echo '==== custom build ==== Fetch strapiData.yaml from Strapi'
     node ./helpers/a_fetch.js
 
+    echo "Time passed: $SECONDS seconds"
+
     printf '\n\n==== custom build ==== process all Strapidata by Domain\n'
     node ./helpers/d_fetch.js
+
+    echo "Time passed: $SECONDS seconds"
 
     printf '\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
     echo '==== custom build ==== fetch_articles_from_yaml'
