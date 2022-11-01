@@ -221,10 +221,15 @@ for (const lang of languages) {
                         //     let votemoAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                         //     element.aliases = [`${votemoAliasLangPrefix}votemo`]
                         // }
-                        // 2022 adding votemo (artikli slug votemo) for TARTUFF
+                        // 2022 adding votemo (artikli slug votemo)
                         if (DOMAIN === 'poff.ee' && element[key] === 'votemo') {
                             let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
+                        }
+                        // 2022 adding parkimine (artikli slug parkimine)
+                        if (DOMAIN === 'poff.ee' && element[key] === 'parkimine') {
+                            let parkimineAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${parkimineAliasLangPrefix}parkimine`]
                         }
                         // 2022 industry accre alias
                         if (DOMAIN === 'industry.poff.ee' && element[key] === 'accreditation') {
