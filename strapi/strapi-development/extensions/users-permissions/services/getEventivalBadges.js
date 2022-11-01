@@ -64,7 +64,7 @@ module.exports = {
     let dataString = ''
 
     const response = await new Promise((resolve, reject) => {
-      const req = https.get(`https://bo.eventival.com/poff/25th/en/ws/${process.env['EventivalWebToken']}/people/badges-for-login-email.xml?login_email=${email}`, function (res) {
+      const req = https.get(`https://bo.eventival.com/poff/26th/en/ws/${process.env['EventivalWebToken']}/people/badges-for-login-email.xml?login_email=${email}`, function (res) {
         res.on('data', chunk => {
           dataString += chunk
         })
