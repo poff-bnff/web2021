@@ -231,6 +231,11 @@ for (const lang of languages) {
                             let parkimineAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${parkimineAliasLangPrefix}parkimine`]
                         }
+                        // 2022 adding poff.ee/tv (artikli slug tv)
+                        if (DOMAIN === 'poff.ee' && element[key] === 'tv') {
+                            let tvAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${tvAliasLangPrefix}tv`]
+                        }
                         // 2022 industry accre alias
                         if (DOMAIN === 'industry.poff.ee' && element[key] === 'accreditation') {
                             let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
