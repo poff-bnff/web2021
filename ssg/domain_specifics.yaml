@@ -116,10 +116,10 @@ skip_build_for_models:
     - industry-event
     - industry-person
     - team
-    # - film
-    # - cassette
-    # - programme
-    # - screening
+    - film
+    - cassette
+    - programme
+    - screening
     - person
     - product-category
     - shop
