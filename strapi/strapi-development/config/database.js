@@ -14,6 +14,7 @@ module.exports = ({ env }) => ({
       },
       options: {}
     },
+    acquireConnectionTimeout: 300000, // 5 minute timeout
   },
 });
 
