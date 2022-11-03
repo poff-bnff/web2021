@@ -107,6 +107,7 @@ industry_eventival_badges_whitelist:
     - PRESS ONLINE
     - INDUSTRY PRO
     - INDUSTRY STUDENT / TALENT
+    - INDUSTRY STUDENT / TALENT ONLINE
     - INDUSTRY ONLINE
     - VOLUNTEER
 
@@ -115,10 +116,10 @@ skip_build_for_models:
     - industry-event
     - industry-person
     - team
-    - film
-    - cassette
-    - programme
-    - screening
+    # - film
+    # - cassette
+    # - programme
+    # - screening
     - person
     - product-category
     - shop
