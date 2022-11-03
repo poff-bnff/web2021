@@ -35,6 +35,14 @@ function picAndBadges(xml_str, email) {
     professions: professionarr,
     badges: badgearr
       .filter(badge => badge.cancelled._text === '0')
+      .filter(badge => {
+        if (badge?.validity_dates?.date?.length) {
+          return true
+        } else {
+          console.log('ERROR!!! BADGE VALIDITY DATES BAD FOR EVENTIVAL USER ', email);
+          return false
+        }
+      })
       .map(badge => {
         const cnt = badge.validity_dates.date.length
         return {
