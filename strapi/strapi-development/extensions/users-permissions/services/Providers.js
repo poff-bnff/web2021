@@ -562,7 +562,7 @@ const getProfile = async (provider, query, callback) => {
         callback(new Error('unable to decode jwt token'));
       } else {
         callback(null, {
-          username: tokenPayload.name,
+          username: tokenPayload.email,
           email: tokenPayload.email,
           externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
 
@@ -579,7 +579,7 @@ const getProfile = async (provider, query, callback) => {
         callback(new Error('unable to decode jwt token'));
       } else {
         callback(null, {
-          username: tokenPayload.name,
+          username: tokenPayload.email,
           email: tokenPayload.email,
           externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
 
