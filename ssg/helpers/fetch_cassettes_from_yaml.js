@@ -6,6 +6,7 @@ const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
 const prioritizeImagesFilm = require('./image_prioritizer_for_film.js')
 const prioritizeImages = require('./image_prioritizer.js')
+const replaceBadChars = require('./replace_bad_chars.js')
 
 const { timer } = require("./timer")
 timer.start(__filename)
@@ -46,7 +47,7 @@ if (param_build_type === 'target') {
 }
 
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
 // Kassettide limiit mida buildida
@@ -388,6 +389,9 @@ for (const lang of allLanguages) {
             }
         }
 
+        if (s_cassette.synopsis && typeof s_cassette.synopsis === 'string') {
+            s_cassette.synopsis = replaceBadChars(s_cassette.synopsis, s_cassette.id, 'cassette')
+        }
 
         if (typeof slugEn !== 'undefined') {
             if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
@@ -421,6 +425,10 @@ for (const lang of allLanguages) {
                 })
             }
 
+            if (s_cassette_copy.synopsis) {
+                s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
+            }
+
             // Kasseti treiler
             trailerProcessing(s_cassette_copy, 'cassette')
 
@@ -443,6 +451,9 @@ for (const lang of allLanguages) {
                                 .join(', ')
                         }
 
+                    }
+                    if (onefilm.synopsis && typeof onefilm.synopsis === 'string') {
+                        onefilm.synopsis = replaceBadChars(onefilm.synopsis, onefilm.id, 'film')
                     }
                 }
             }
