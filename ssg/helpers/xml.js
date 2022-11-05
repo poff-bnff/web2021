@@ -4,6 +4,7 @@ const path = require('path')
 const { create } = require('xmlbuilder2');
 const images = require('./images.js');
 const { fetchModel } = require('./b_fetch.js')
+const replaceBadChars = require('./replace_bad_chars.js')
 
 const sourceDir = path.join(__dirname, '..', 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
@@ -148,10 +149,7 @@ for (const screeningIx in SCREENINGS) {
             }
             if (synopsis !== undefined) {
                 // Filter out characters that Strapi does not like and which eventually would render bad XML
-                if (synopsis.includes('\x02')) {
-                    console.log(`XML WARNING! Some characters for cassette ID ${screening.cassette.id} synopsis were replaced`);
-                    synopsis = synopsis.replaceAll('\x02', '')
-                }
+                synopsis = replaceBadChars(synopsis, screening.cassette.id, 'cassette')
                 concert[`description${langs[lang]}`] = synopsis
             }
 
