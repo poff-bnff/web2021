@@ -16,6 +16,7 @@ const jwt = require('jsonwebtoken');
 
 const apiUserController = require('../controllers/user/api');  //c
 const { getEventivalBadges } = require('./getEventivalBadges');
+const { eventivalBadgeRoleAdder } = require('./eventivalBadgeRoleAdder');
 
 const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
@@ -44,13 +45,14 @@ const connect = (provider, query) => {
 
     // Get the profile.
     getProfile(provider, query, async (err, profile) => {
+      let personIndustryBadges = null
 
       if (provider.split(',').includes('eventivalindustry')) {
-
-        const badges = await getEventivalBadges(profile.email);
         console.log('getEventivalBadges for ', profile.email);
+        const badges = await getEventivalBadges(profile.email);
+        personIndustryBadges = badges && badges.statusCode === 200 ? badges.body.badges.map(b => b.type) : null
+
         if (!badges?.body?.accreditation) {
-          const personIndustryBadges = badges && badges.statusCode === 200 ? badges.body.badges.map(b => b.type) : null
           console.log('No accreditation for ', profile.email, 'Badges:', personIndustryBadges);
           return reject([null, formatError({
             id: 'Connect.error.accreditation',
@@ -58,6 +60,7 @@ const connect = (provider, query) => {
           })]);
         }
         console.log('Accreditation found for ', profile.email);
+
       }
 
       if (err) {
@@ -92,6 +95,10 @@ const connect = (provider, query) => {
 
         if (users.length > 0) {
           user = users[0]
+
+          // Add roles according to Eventival badges
+          await eventivalBadgeRoleAdder(personIndustryBadges, user, provider)
+
           const connectedProviders = user.provider.split(',')
           if (!connectedProviders.includes(provider)) {
             const updatedUser = await mergeProviders(user, provider, profile.externalProviders[0])
@@ -143,6 +150,10 @@ const connect = (provider, query) => {
         const createdUser = await strapi.query('user', 'users-permissions').create(params);
 
         console.log('Services Providers. User created: ', { createdUser });
+
+        // Add roles to the newly created user according to Eventival badges
+        await eventivalBadgeRoleAdder(personIndustryBadges, createdUser, provider)
+
         return resolve([createdUser, null]);
       } catch (err) {
         reject([null, err]);
@@ -551,7 +562,7 @@ const getProfile = async (provider, query, callback) => {
         callback(new Error('unable to decode jwt token'));
       } else {
         callback(null, {
-          username: tokenPayload.name,
+          username: tokenPayload.email,
           email: tokenPayload.email,
           externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
 
@@ -568,7 +579,7 @@ const getProfile = async (provider, query, callback) => {
         callback(new Error('unable to decode jwt token'));
       } else {
         callback(null, {
-          username: tokenPayload.name,
+          username: tokenPayload.email,
           email: tokenPayload.email,
           externalProviders: [{ provider: provider.replace(/^./, provider[0].toUpperCase()), UUID: tokenPayload.sub, dateConnected: new Date().toISOString() }]
 
