@@ -3,7 +3,8 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { create } = require('xmlbuilder2');
 const images = require('./images.js');
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
+const replaceBadChars = require('./replace_bad_chars.js')
 
 const sourceDir = path.join(__dirname, '..', 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
@@ -102,7 +103,7 @@ const SCREENINGS_FETCH = fetchModel(SCREENING, minimodel_screenings)
 
 // Filter out cassettes which do not have FE defined in domain_specifics
 const SCREENINGS = SCREENINGS_FETCH.filter(s => {
-    if(s?.cassette?.festival_editions) {
+    if (s?.cassette?.festival_editions) {
         return XML_festival_editions.some(r => s.cassette.festival_editions.map(fe => fe.id).includes(r))
     } else {
         return false
@@ -120,9 +121,9 @@ const domainMapping = {
 }
 
 const languages = ['et', 'en', 'ru']
-const langs = {'et': 'EST', 'ru': 'RUS', 'en': 'ENG'}
+const langs = { 'et': 'EST', 'ru': 'RUS', 'en': 'ENG' }
 
-let data = {'info': {'concerts': {'concert': []}}}
+let data = { 'info': { 'concerts': { 'concert': [] } } }
 
 for (const screeningIx in SCREENINGS) {
     const screening = SCREENINGS[screeningIx]
@@ -147,6 +148,8 @@ for (const screeningIx in SCREENINGS) {
                 }
             }
             if (synopsis !== undefined) {
+                // Filter out characters that Strapi does not like and which eventually would render bad XML
+                synopsis = replaceBadChars(synopsis, screening.cassette.id, 'cassette')
                 concert[`description${langs[lang]}`] = synopsis
             }
 
@@ -157,7 +160,7 @@ for (const screeningIx in SCREENINGS) {
             }
 
 
-            if(typeof slug !== 'undefined') {
+            if (typeof slug !== 'undefined') {
                 if (screening.cassette.orderedFilms && screening.cassette.orderedFilms.length) {
                     for (const filmIx in screening.cassette.orderedFilms) {
                         let film = screening.cassette.orderedFilms[filmIx].film
@@ -217,7 +220,7 @@ for (const screeningIx in SCREENINGS) {
 const doc = create(data);
 const xml = doc.end({ prettyPrint: true });
 // console.log(xml);
-fs.mkdirSync(assetsDirXML, {recursive: true})
+fs.mkdirSync(assetsDirXML, { recursive: true })
 fs.writeFileSync(XMLpath, xml, 'utf8')
 
 console.log('assets/xml/xml.xml created');
