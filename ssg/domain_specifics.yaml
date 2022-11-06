@@ -116,7 +116,7 @@ skip_build_for_models:
     - industry-event
     - industry-person
     - team
-    - film
+    # - film
     - cassette
     - programme
     # - screening
