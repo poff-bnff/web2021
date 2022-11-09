@@ -389,10 +389,6 @@ for (const lang of allLanguages) {
             }
         }
 
-        if (s_cassette.synopsis && typeof s_cassette.synopsis === 'string') {
-            s_cassette.synopsis = replaceBadChars(s_cassette.synopsis, s_cassette.id, 'cassette')
-        }
-
         if (typeof slugEn !== 'undefined') {
             if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
@@ -413,6 +409,10 @@ for (const lang of allLanguages) {
             // for the purpose of saving slug_en before it will be removed by rueten func.
             rueten(s_cassette_copy, lang)
 
+            if (s_cassette_copy.synopsis && typeof s_cassette_copy.synopsis === 'string') {
+                s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
+            }
+
             // #379 put ordered films to cassette.film
             let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
 
@@ -423,10 +423,6 @@ for (const lang of allLanguages) {
                     film.order = a.order
                     return film
                 })
-            }
-
-            if (s_cassette_copy.synopsis) {
-                s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
             }
 
             // Kasseti treiler
