@@ -195,7 +195,7 @@ async function get_domain(result) {
       for (let dom of q_answer[0].domains) {
         if(typeof dom !== 'object') {
           dom = await ask_domain(dom)
-        } 
+        }
         domain.push(dom.url)
       }
     }
@@ -308,9 +308,9 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 async function call_build(result, domains, model_name, del = false) {
   const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
   const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-  const MODELS_SKIP_BUILD = DOMAIN_SPECIFICS.skip_build_for_models || []
+  const MODELS_TARGET_BUILD = DOMAIN_SPECIFICS.target_build_models || []
   // here to skip specific model builds
-  if (MODELS_SKIP_BUILD.includes(model_name)) {
+  if (!MODELS_TARGET_BUILD.includes(model_name)) {
     console.log(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
     return
   }
