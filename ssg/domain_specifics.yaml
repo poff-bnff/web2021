@@ -173,6 +173,17 @@ target_build_models:
     - bruno-menu
     - filmikooli-menu
     - archive
+    - pof-fi-footers
+    - just-film-footers
+    - shortsi-footers
+    - industry-footers
+    - kinoffi-footers
+    - hof-fi-footers
+    - tartuffi-footers
+    - kumu-footers
+    - bruno-footers
+    - filmikooli-footers
+    - dis-camp-footers
 
 article:
     poff.ee: POFFiArticle
