@@ -151,9 +151,9 @@ module.exports = {
             model: strapi.query('user', 'users-permissions').model,
           }),
         });
-        strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
-          user.id.toString(), user.last10Logins, provider, lang
-        );
+        // strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
+        //   user.id.toString(), user.last10Logins, provider, lang
+        // );
       }
     } else {
       if (!_.get(await store.get({ key: 'grant' }), [provider, 'enabled'])) {
@@ -191,9 +191,9 @@ module.exports = {
           model: strapi.query('user', 'users-permissions').model,
         }),
       });
-      strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
-        user.id.toString(), user.last10Logins, provider, lang
-      );
+      // strapi.plugins['users-permissions'].services.providers.logAuthDateTime(
+      //   user.id.toString(), user.last10Logins, provider, lang
+      // );
     }
   },
 
