@@ -133,7 +133,7 @@ skip_build_for_models:
     - bruno-supporter
     - bruno-supporter
     - supporters-page
-    # - course-event
+    - course-event
 
 article:
     poff.ee: POFFiArticle
