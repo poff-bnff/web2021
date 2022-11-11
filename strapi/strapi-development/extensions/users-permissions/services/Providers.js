@@ -645,16 +645,16 @@ const mergeProviders = async (user, provider, externalProvider) => {
   return updatedUser
 }
 
-const logAuthDateTime = async (id, last10Logins, provider, lang) => {
-  const authTime = new Date().toISOString()
-  const lastLogin = { loginDateTime: authTime, provider: provider }
-  if (last10Logins.length === 10) last10Logins.shift()
-  last10Logins.push(lastLogin)
-  const updateData = { last10Logins: last10Logins }
-  const user = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
+// const logAuthDateTime = async (id, last10Logins, provider, lang) => {
+//   const authTime = new Date().toISOString()
+//   const lastLogin = { loginDateTime: authTime, provider: provider }
+//   if (last10Logins.length === 10) last10Logins.shift()
+//   last10Logins.push(lastLogin)
+//   const updateData = { last10Logins: last10Logins }
+//   const user = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 
-  // notifyUserAuthDateTime(user, authTime, lang)
-}
+//   // notifyUserAuthDateTime(user, authTime, lang)
+// }
 
 const notifyAboutMerge = async (user, addedProvider) => {
   let enabledProviders = (user.externalProviders.map(provider => {
@@ -691,6 +691,6 @@ module.exports = {
   connect,
   buildRedirectUri,
   mergeProviders,
-  logAuthDateTime,
+  // logAuthDateTime,
   notifyUserAuthDateTime
 };
