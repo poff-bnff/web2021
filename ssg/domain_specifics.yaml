@@ -172,6 +172,7 @@ target_build_models:
     - kumu-menu
     - bruno-menu
     - filmikooli-menu
+    - industry-menu
     - archive
     - pof-fi-footer
     - just-film-footer
