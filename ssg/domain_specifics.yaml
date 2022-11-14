@@ -163,7 +163,6 @@ target_build_models:
     - hero-article-bruno
     - hero-article-filmikool
     - hero-article-dis-camp
-    - screening
     - pof-fi-menu
     - just-filmi-menu
     - shortsi-menu
