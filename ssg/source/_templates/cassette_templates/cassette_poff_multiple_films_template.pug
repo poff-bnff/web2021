@@ -843,18 +843,16 @@ else
                             if trailer.videoCode
                                 +video(trailer.videoCode)
 
-
-            if cassette.chat_w_name
+            if self.chat_w_name
                 script.
                     var votemoConfig = {
-                        url: `https://#{film.chat_w_name}.votemo.eu`,
+                        url: `https://#{self.chat_w_name}.votemo.eu`,
                         openInDesktop: false
                     }
 
-                    //- var votemoConfig = { url: 'https://film01.votemo.eu' }
-                    //- var votemoConfig = { url: `https://${film.chat_w_name}.votemo.eu` }
-
                 script(src='https://cdn.votemo.eu/dist/widget.js')
+
+                - hideMessengerChat = true
 
             //- section.f_imgs_box
 
