@@ -104,7 +104,6 @@ industry_eventival_badges_whitelist:
     - GUEST
     - TEAM
     - PRESS
-    - PRESS ONLINE
     - INDUSTRY PRO
     - INDUSTRY PRO ONLINE
     - INDUSTRY STUDENT / TALENT
@@ -136,10 +135,10 @@ industry_eventival_badges_whitelist:
 #     # - course-event
 
 target_build_models:
-    # - cassette
-    # - screening
+    - cassette
+    - screening
     # - course-event
-    - film
+    # - film
     - login
     - pof-fi-article
     - just-filmi-article
