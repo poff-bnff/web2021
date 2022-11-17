@@ -149,6 +149,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
 
     const STRAPIDATA_COURSE_UNFILTERED = fetchModel(STRAPIDATA_COURSES, minimodel)
     let PUBLIC_STRAPIDATA_COURSES = STRAPIDATA_COURSE_UNFILTERED.filter(e => e.public) // only public events
+        .sort((a, b) => new Date(a.start_time) - new Date(b.start_time)) // Sort by starting time
 
     let STRAPIDATA_COURSE
     if (ACTIVE_FESTIVAL_EDITIONS) {
