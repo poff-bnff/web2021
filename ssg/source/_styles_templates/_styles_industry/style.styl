@@ -3929,7 +3929,78 @@ a:hover > .login_headline
 
 // ---------- GALLERY CREATIVE ----------
 
+// ---------- COURSEEVENT ----------
 
+.grid_courseevent
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    padding-top header_height
+    grid-template-areas "f_trailer_box"\
+                        "f_title_box"\
+                        "ce_box_2"\
+                        "ce_box_3"\
+                        "ce_box_1"\
+                        "f_synopsis_box"\
+                        "f_cred_box"\
+                        "f_runtime_box"\
+                        "f_interactive_box"
+
+.ce_box_1, .ce_box_2, .ce_box_3
+    // padding-left calc(1rem + 1vw)
+    // padding-right calc(1rem + 1vw)
+    // padding-top calc(1rem + 1vw)
+    // padding-bottom calc(1rem + 1vw)
+    background-color bg_color_1
+    p
+        color dark_1
+
+.ce_box_1
+    grid-area ce_box_1
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(2rem + 1vw)
+    padding-bottom calc(2rem + 1vw)
+
+.ce_box_2
+    grid-area ce_box_2
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(2rem + 1vw)
+    padding-bottom calc(2rem + 1vw)
+
+.ce_box_3
+    grid-area ce_box_3
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    padding-top calc(2rem + 1vw)
+    padding-bottom calc(2rem + 1vw)
+
+.btn_course
+    background-color white
+    //   background-color clr_primary
+    color clr_primary
+    border 1px solid clr_primary
+    border-radius 0
+    text-transform uppercase
+    width 100%
+    // padding-left calc(6rem + 1vw)
+    // padding-right calc(6rem + 1vw)
+    padding-top .5rem
+    padding-bottom .3rem
+    // align center
+    //   width 80%
+
+.course_price
+    font-family font_h
+    color dark_1
+    padding-top 0
+    padding-bottom 1rem
+    font-size 1rem
+    font-family font_h
+    font-weight 300
+    line-height 1.618rem
+    text-align center
 
 
 
@@ -3941,6 +4012,41 @@ a:hover > .login_headline
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
+    .grid_courseevent
+        display grid
+        grid-template-columns 1fr 1fr 1fr
+        grid-template-rows auto
+        grid-template-areas "f_title_box       f_trailer_box     f_trailer_box"\
+                            "ce_box_1          ce_box_2          ce_box_3"\
+                            "f_synopsis_box    f_synopsis_box    f_cred_box"\
+                            "f_synopsis_box    f_synopsis_box    f_runtime_box"\
+                          "f_interactive_box f_interactive_box f_interactive_box"\
+                            "f_dir_box         f_dir_box         f_extra_box"\
+                            "f_qaclip_box      f_qaclip_box      f_qaclip_box"\
+                            "f_vialog_box      f_vialog_box      f_vialog_box"\
+                            "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
+                            "f_imgs_box        f_imgs_box        f_imgs_box"
+        padding-top header_height
+
+    .btn_course
+        background-color white
+        //   background-color clr_primary
+        color clr_primary
+        border 1px solid clr_primary
+        border-radius 0
+        text-transform uppercase
+        width max-content
+        padding-left calc(6rem + 1vw)
+        padding-right calc(6rem + 1vw)
+        padding-top .5rem
+        padding-bottom .3rem
+        // align center
+        //   width 80%
+
+    .course_price
+        text-align left
+
+
     .grid_film
         display grid
         grid-template-columns 1fr 1fr 1fr
