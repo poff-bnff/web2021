@@ -25,12 +25,12 @@ mixin videoAp(clipUrlDefault='')
 mixin videoVl(videoUrl='')
     - var videoId = videoUrl.split('/bc/')[1] || ''
         iframe#videoframe(width='100%' height='100%' target_src=`https://videolevels.com/embed/${videoId}`
-            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
+            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' class='noTransform')
 
 mixin videolQaClip(videoUrl='')
     - var videoId = videoUrl.split('/bc/')[1] || ''
         iframe#videoframe(width='100%' height='100%' src=`https://videolevels.com/embed/${videoId}`
-            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' class='noTransform')
+            frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' class='noTransform')
 
 mixin heroVideo(clipUrlDefault='')
     - var videoId = clipUrlDefault.split('/')[1] || ''
