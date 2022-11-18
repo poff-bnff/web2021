@@ -106,8 +106,17 @@ block content
                                     h3.event_title.padding_bottom_2= event.title
                                         p(id= event.id+'nupp' style={color: 'red', display:'none'})
 
+                                    if event.industry_categories
+                                        p.location.small_1= `Category: ${event.industry_categories.map(c => c.name).join(', ')}`
+
                                     if event.location
                                         p.location= `@ ${event.location.name}`
+
+                                    //- if event.industry_categories
+                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+
+                                    if event.event_mode
+                                        p.location.small_1= `Event mode: ${event.event_mode.name}`
 
                                     //- if event.industry_people
                                     //-     each industry_person in event.industry_people
@@ -144,8 +153,6 @@ block content
                                     //- if event.project_type
                                     //-     p= `Type: ${event.project_type}`
 
-                                    if event.event_mode
-                                        p.location.small_1= `Event mode: ${event.event_mode.name}`
 
                                     //- if event.videoUrl
                                     //-     p= `Video at: ${event.videoUrl}`
