@@ -9,6 +9,10 @@ const selectors = {
     persons: document.getElementById('persons_select'),
     starttimes: document.getElementById('starttimes_select'),
     festivaleditions: document.getElementById('festivaleditions_select'),
+    eventtypes: document.getElementById('eventtypes_select'),
+    eventmodes: document.getElementById('eventmodes_select'),
+    isliveevent: document.getElementById('isliveevent_select'),
+    eventaccess: document.getElementById('eventaccess_select'),
 }
 
 function urlSelect() {
@@ -136,6 +140,22 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'festivaleditions' ? value : selectors.festivaleditions.value;
                     return compare_with === '' ? true : screening.festivaleditions.includes(compare_with)
                 })
+                .filter(screening => {
+                    const compare_with = selector_name === 'eventtypes' ? value : selectors.eventtypes.value;
+                    return compare_with === '' ? true : screening.eventtypes.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selector_name === 'eventmodes' ? value : selectors.eventmodes.value;
+                    return compare_with === '' ? true : screening.eventmodes.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selector_name === 'isliveevent' ? value : selectors.isliveevent.value;
+                    return compare_with === '' ? true : screening.isliveevent.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selector_name === 'eventaccess' ? value : selectors.eventaccess.value;
+                    return compare_with === '' ? true : screening.eventaccess.includes(compare_with)
+                })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
@@ -172,6 +192,22 @@ selectors.festivaleditions.addEventListener('change', e => {
     toggleAll('festivaleditions');
 });
 
+selectors.eventtypes.addEventListener('change', e => {
+    toggleAll('eventtypes');
+});
+
+selectors.eventtypes.addEventListener('change', e => {
+    toggleAll('eventtypes');
+});
+
+selectors.isliveevent.addEventListener('change', e => {
+    toggleAll('isliveevent');
+});
+
+selectors.eventaccess.addEventListener('change', e => {
+    toggleAll('eventaccess');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.categories.selectedIndex = 0;
@@ -179,6 +215,10 @@ function unselect_all() {
     selectors.persons.selectedIndex = 0;
     selectors.starttimes.selectedIndex = 0;
     selectors.festivaleditions.selectedIndex = 0;
+    selectors.eventtypes.selectedIndex = 0;
+    selectors.eventmodes.selectedIndex = 0;
+    selectors.isliveevent.selectedIndex = 0;
+    selectors.eventaccess.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -216,6 +256,34 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.festivaleditions.value) {
                 return screening.festivaleditions.includes(selectors.festivaleditions.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.eventtypes.value) {
+                return screening.eventtypes.includes(selectors.eventtypes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.eventmodes.value) {
+                return screening.eventmodes.includes(selectors.eventmodes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.isliveevent.value) {
+                return screening.isliveevent.includes(selectors.isliveevent.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.eventaccess.value) {
+                return screening.eventaccess.includes(selectors.eventaccess.value)
             } else {
                 return true
             }
