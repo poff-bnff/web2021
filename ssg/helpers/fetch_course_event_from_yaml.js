@@ -75,6 +75,9 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         'event_mode': {
             model_name: 'EventMode',
         },
+        'event_access': {
+            model_name: 'EventAccess',
+        },
         'credentials': {
             model_name: 'Credentials',
             expand: {
@@ -205,7 +208,7 @@ function processEvents(courseEventCopy, lang) {
 
             if (param_build_type === 'target' && target_id.includes(element.id.toString())) {
                 addConfigPathAliases([`/_fetchdir/${FETCHDATADIRNAME}/${element.dirSlug}`])
-                if(!element.public) {
+                if (!element.public) {
                     addConfigPathAliases([`/_fetchdirRestricted/${FETCHDATADIRNAME}/${element.dirSlug}`])
                 }
             }
@@ -318,8 +321,11 @@ function searchAndFilters(dataToYAML, lang) {
         credentials: {},
         starttimes: {},
         festivaleditions: {},
-        eventtypes: {},
         eventaccesses: {},
+        eventtypes: {},
+        eventmodes: {},
+        isliveevent: {},
+        eventaccess: {},
     }
 
     const events_search = dataToYAML.map(events => {
@@ -381,6 +387,35 @@ function searchAndFilters(dataToYAML, lang) {
             }
         }
 
+        let eventtypes = []
+        if (typeof event.event_types !== 'undefined') {
+            for (const name of event.event_types) {
+                eventtypes.push(name)
+                filters.eventtypes[name] = name
+            }
+        }
+
+        let eventmodes = []
+        if (typeof event.event_mode !== 'undefined') {
+            eventmodes.push(event.event_mode.name)
+            filters.eventmodes[event.event_mode.name] = event.event_mode.name
+        }
+
+        let isliveevent = []
+        if (typeof event.is_live_event !== 'undefined') {
+            isliveevent.push('Yes')
+            filters.isliveevent['Yes'] = 'Yes'
+        } else {
+            isliveevent.push('No')
+            filters.isliveevent['No'] = 'No'
+        }
+
+        let eventaccess = []
+        if (typeof event.event_access !== 'undefined') {
+            eventaccess.push(event.event_access)
+            filters.eventaccess[event.event_access] = event.event_access
+        }
+
         return {
             id: events.id,
             text: [
@@ -395,6 +430,10 @@ function searchAndFilters(dataToYAML, lang) {
             persons: credentials,
             starttimes: starttimes,
             festivaleditions: festivaleditions,
+            eventtypes: eventtypes,
+            eventmodes: eventmodes,
+            isliveevent: isliveevent,
+            eventaccess: eventaccess,
         }
     });
 
@@ -404,6 +443,10 @@ function searchAndFilters(dataToYAML, lang) {
         persons: mSort(filters.credentials, lang),
         starttimes: mSort(filters.starttimes, lang),
         festivaleditions: mSort(filters.festivaleditions, lang),
+        eventtypes: mSort(filters.eventtypes, lang),
+        eventmodes: mSort(filters.eventmodes, lang),
+        isliveevent: mSort(filters.isliveevent, lang),
+        eventaccess: mSort(filters.eventaccess, lang),
     }
 
     let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })
