@@ -39,7 +39,7 @@ block content
                 each index, key in self.data.filters.eventtypes
                     option(value=key)= index
 
-            select#eventmodes_select(name='Eventmodes')
+            select.hidden#eventmodes_select(name='Eventmodes')
                 option(value='')= self.label.filters.eventMode
                 each index, key in self.data.filters.eventmodes
                     option(value=key)= index
