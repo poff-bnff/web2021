@@ -25,32 +25,32 @@ block content
                     option(value=key)= index
 
             select#starttimes_select(name='Starttimes')
-                option(value='')= self.label.filters.dates
+                option(value='')= self.label.filters.eventDate
                 each index, key in self.data.filters.starttimes
                     option(value=key)= index
 
-            select#festivaleditions_select(name='Festivaleditions')
-                option(value='')= self.label.filters.editions
+            select.hidden#festivaleditions_select(name='Festivaleditions')
+                option(value='')= self.label.filters.festivalEdition
                 each index, key in self.data.filters.festivaleditions
                     option(value=key)= index
 
             select#eventtypes_select(name='Eventtypes')
-                option(value='')= self.label.filters.eventtypes
+                option(value='')= self.label.filters.eventType
                 each index, key in self.data.filters.eventtypes
                     option(value=key)= index
 
             select#eventmodes_select(name='Eventmodes')
-                option(value='')= self.label.filters.mode
+                option(value='')= self.label.filters.eventMode
                 each index, key in self.data.filters.eventmodes
                     option(value=key)= index
 
             select#isliveevent_select(name='Isliveevent')
-                option(value='')= self.label.filters.live
+                option(value='')= self.label.filters.isLive
                 each index, key in self.data.filters.isliveevent
                     option(value=key)= index
 
             select#eventaccess_select(name='Eventaccess')
-                option(value='')= self.label.filters.eventaccess
+                option(value='')= self.label.filters.eventAccess
                 each index, key in self.data.filters.eventaccess
                     option(value=key)= index
 
