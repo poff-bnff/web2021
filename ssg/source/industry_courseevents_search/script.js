@@ -196,8 +196,8 @@ selectors.eventtypes.addEventListener('change', e => {
     toggleAll('eventtypes');
 });
 
-selectors.eventtypes.addEventListener('change', e => {
-    toggleAll('eventtypes');
+selectors.eventmodes.addEventListener('change', e => {
+    toggleAll('eventmodes');
 });
 
 selectors.isliveevent.addEventListener('change', e => {
