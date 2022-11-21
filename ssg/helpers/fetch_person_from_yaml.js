@@ -19,14 +19,14 @@ const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 
 const fetchDataDir = path.join(fetchDir, 'persons')
 
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
-}
+// function slugify(text) {
+//     return text.toString().toLowerCase()
+//         .replace(/\s+/g, '-')           // Replace spaces with -
+//         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+//         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+//         .replace(/^-+/, '')             // Trim - from start of text
+//         .replace(/-+$/, '');            // Trim - from end of text
+// }
 
 if (DOMAIN !== 'industry.poff.ee') {
     let emptyYAML = yaml.dump([], {
@@ -111,7 +111,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
     let activePersonsYamlNameSuffix = 'persons'
-    let activePersons = STRAPIDATA_ALL_PERSONS.filter(p => p.role_at_films)
+    let activePersons = STRAPIDATA_ALL_PERSONS.filter(p => p?.festival_editions?.map(fe => fe.id).some(id => DOMAIN_SPECIFICS.active_industry_editions.includes(id)))
 
     startPersonProcessing(languages, activePersons, activePersonsYamlNameSuffix)
 
@@ -157,9 +157,13 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             // for the purpose of saving slug_en before it will be removed by rueten func.
             person = rueten(person, lang);
             // person.path = person.slug;
-            let slugifyName = slugify(`${person.firstNameLastName}-${person.id}`)
-            person.path = slugifyName;
-            person.slug = slugifyName;
+            // let slugifyName = slugify(`${person.firstNameLastName}-${person.id}`)
+            // person.path = slugifyName;
+            // person.slug = slugifyName;
+
+            let personSlug = person.slug
+            person.path = personSlug;
+            person.slug = personSlug;
 
             if (person.showreel) {
                 person.showreel = videoUrlToVideoCode(person.showreel)
@@ -173,8 +177,8 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
                 throw error
             }
 
-            const yamlPath = path.join(fetchDataDir, slugifyName, `data.${lang}.yaml`);
-            let saveDir = path.join(fetchDataDir, slugifyName);
+            const yamlPath = path.join(fetchDataDir, personSlug, `data.${lang}.yaml`);
+            let saveDir = path.join(fetchDataDir, personSlug);
             fs.mkdirSync(saveDir, { recursive: true });
 
             fs.writeFileSync(yamlPath, oneYaml, 'utf8');
@@ -196,7 +200,7 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
         allData = allData.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`, lang))
         const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-
+        console.log(`Fetched ${allData.length} persons for ${DOMAIN}`);
         generatePersonsSearchAndFilterYamls(allData, lang, personsYamlNameSuffix);
 
     }
