@@ -276,6 +276,16 @@ block content
                                     p
                                         if indPerson.role_at_film
                                             span= indPerson.role_at_film.roleName
+
+    section.f_interactive_box
+        if self.credentials && self.credentials.rolePersonsByRole
+            each roleGroup, key in self.credentials.rolePersonsByRole
+                //- Kui tahta teistsugust nö labelit kui role_at_film.roleName, siis saab kasutada loogikat nagu filmide all:
+                //- ehk self.label.film.speaker nt ja kätte saab järgmise koodijupiga: self.label.film[key]
+                if roleGroup.persons && roleGroup.persons.length
+                    p.ce_info= `${roleGroup.roleName}: ${roleGroup.persons.join(', ')}`
+
+
     //- section.event_card_footer
     //-     .grid_container_screening_time_2
     //-         .text_right
