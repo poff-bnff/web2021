@@ -495,12 +495,17 @@ function rolePersonsByRole(element) {
                 if (!role_name_lc) {
                     continue
                 }
-                rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
+                if (!rolePersonTypes[role_name_lc]) {
+                    rolePersonTypes[role_name_lc] = {
+                        roleName: rolePerson?.role_at_film?.roleName,
+                        persons: []
+                    }
+                }
 
                 if (rolePerson.person.firstNameLastName) {
-                    rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
+                    rolePersonTypes[role_name_lc].persons.push(rolePerson.person.firstNameLastName)
                 } else if (personFromYAML.fullName) {
-                    rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
+                    rolePersonTypes[role_name_lc].persons.push(personFromYAML.fullName)
                 }
             }
         }
