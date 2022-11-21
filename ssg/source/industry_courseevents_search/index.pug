@@ -151,6 +151,15 @@ block content
                                         if event.event_access
                                             p.ce_info= `Access: ${event.event_access}`
 
+                                    .flekxboks
+                                        if event.credentials && event.credentials.rolePersonsByRole
+                                            each roleGroup, key in event.credentials.rolePersonsByRole
+                                                //- Kui tahta teistsugust nö labelit kui role_at_film.roleName, siis saab kasutada loogikat nagu filmide all:
+                                                //- ehk self.label.film.speaker nt ja kätte saab järgmise koodijupiga: self.label.film[key]
+                                                if roleGroup.persons && roleGroup.persons.length
+                                                    p.ce_info= `${roleGroup.roleName}: ${roleGroup.persons.join(', ')}`
+
+
                                     //- if event.industry_people
                                     //-     each industry_person in event.industry_people
                                     //-         if industry_person.profilePicAtInd
