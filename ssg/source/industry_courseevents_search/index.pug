@@ -146,6 +146,8 @@ block content
                                             p.ce_info= `Category: ${event.industry_categories.map(c => c.name).join(', ')}`
                                         if event.event_mode
                                             p.ce_info= `Event mode: ${event.event_mode.name}`
+                                        if event.event_types
+                                            p.ce_info= `Type of Event: ${event.event_types.join(', ')}`
                                         if event.event_access
                                             p.ce_info= `Access: ${event.event_access}`
 
