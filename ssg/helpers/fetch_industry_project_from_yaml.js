@@ -274,19 +274,6 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 }
             }
 
-            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
-            const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
-            let saveDir = path.join(fetchDataDir, dirSlug);
-            fs.mkdirSync(saveDir, { recursive: true });
-
-            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industryproject_${templateDomainName}_index_template.pug`)
-            if (archiveBuild) {
-                addConfigPathAliases([`/_fetchdir/industryprojects_archive/${dirSlug}`])
-            }
-
-            allData.push(industry_project);
-
             const credentials = industry_project.teamCredentials || {}
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
@@ -398,10 +385,23 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             }
 
             industry_project.organisations = Object.values(industry_project.organisations)
-
             // andmepuhastus
 
             delete industry_project.teamCredentials
+
+            const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
+            const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);
+            let saveDir = path.join(fetchDataDir, dirSlug);
+            fs.mkdirSync(saveDir, { recursive: true });
+
+            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/industryproject_${templateDomainName}_index_template.pug`)
+            if (archiveBuild) {
+                addConfigPathAliases([`/_fetchdir/industryprojects_archive/${dirSlug}`])
+            }
+
+            allData.push(industry_project);
+
         }
 
         const yamlPath = path.join(fetchDir, `industry${projectsYamlNameSuffix}.${lang}.yaml`);
