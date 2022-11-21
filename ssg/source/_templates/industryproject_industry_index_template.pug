@@ -102,7 +102,10 @@ block content
                     if self.tag_genres && self.tag_genres[0]
                         .str_info_grid_3
                             .str_info_label= self.label.film.genre
-                            .str_info_value= self.tag_genres.join(', ')
+                            - var genres = []
+                            each genre in self.tag_genres
+                                - genres.push(`<a style='color:inherit;' href='/search-projects?genres=${genre}'>${genre}</a>`)
+                            .str_info_value !{genres.join(', ')}
 
                     if self.project_statuses && self.project_statuses[0]
                         .str_info_grid_3
