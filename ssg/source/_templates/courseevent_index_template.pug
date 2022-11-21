@@ -105,10 +105,10 @@ block content
                                 .str_info_value
                                     +screeningDate(self.start_time)
 
-                            .str_info_grid_3
-                                .str_info_label= self.label.industry.courseEndDate
-                                .str_info_value
-                                    +screeningDate(self.end_time)
+                            //- .str_info_grid_3
+                            //-     .str_info_label= self.label.industry.courseEndDate
+                            //-     .str_info_value
+                            //-         +screeningDate(self.end_time)
 
                             if process.env['DOMAIN'] === 'industry.poff.ee'
                                 .str_info_grid_3
@@ -125,7 +125,7 @@ block content
                             .str_info_grid_3
                                 .str_info_label= self.label.industry.duration
                                 .str_info_value
-                                    +indEvDur(self.durationTime)
+                                    +indEvDur(self.duration_time)
 
                             if self.location
                                 .str_info_grid_3
