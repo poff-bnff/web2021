@@ -104,7 +104,7 @@ block content
                             .str_info_label= self.label.film.genre
                             - var genres = []
                             each genre in self.tag_genres
-                                - genres.push(`<a style='color:inherit;' href='/search-projects?genres=${genre}'>${genre}</a>`)
+                                - genres.push(`<a style="color:inherit;" href="/search-projects?genres=${encodeURIComponent(genre)}">${genre}</a>`)
                             .str_info_value !{genres.join(', ')}
 
                     if self.project_statuses && self.project_statuses[0]
