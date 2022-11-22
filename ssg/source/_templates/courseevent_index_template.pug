@@ -145,7 +145,7 @@ block content
 
                         script.
                             var eventAccess = "#{self.event_access}"
-
+                            console.log(eventAccess, eventAccess === "Free (without accreditation)")
                             if (eventAccess === "Free (without accreditation)") {
                                 var videoFrameElement
                                     try {
@@ -180,7 +180,7 @@ block content
                                 })
                             }
 
-                        if process.env['DOMAIN'] === 'industry.poff.ee'
+                        if process.env['DOMAIN'] === 'industry.poff.ee' && self.event_access != "Free (without accreditation)"
                             .login_16_9_container.login_ind_ev#login_cond
                                 h4.login_headline#loginMessage.white_96 Log in via Eventival
                                 a(href=`/login` onclick = 'saveUrl()')
