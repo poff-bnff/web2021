@@ -190,40 +190,40 @@ block content
                             img.elisa_powered(src='https://assets.poff.ee/img/powered_by_elisa_stage.svg')
 
                 section.ce_box_1
-                    //- if self.credentials && self.credentials.rolePerson
-                    //-     //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
-                    //-     //- h1.sub_section_headline= 'Või veel midagi'
-                    //-     .sub_team
-                    //-         each indPerson in self.credentials.rolePerson
-                    //-             if indPerson.slug
-                    //-                 .person
-                    //-                     .person_head
-                    //-                         a(href=`/${indPerson.slug}`)
-                    //-                             if indPerson.person.picture
-                    //-                                 - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
-                    //-                             else
-                    //-                                 - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                    //-                             img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+                    if self.credentials && self.credentials.rolePerson
+                        //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
+                        //- h1.sub_section_headline= 'Või veel midagi'
+                        .sub_team
+                            each indPerson in self.credentials.rolePerson
+                                if indPerson.slug
+                                    .person
+                                        .person_head
+                                            a(href=`/${indPerson.slug}`)
+                                                if indPerson.person.picture
+                                                    - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                                else
+                                                    - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                                img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
 
-                    //-                             .person_body.text_center
-                    //-                                 h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                    //-                                 p
-                    //-                                     if indPerson.role_at_film
-                    //-                                         span= indPerson.role_at_film.roleName
-                    //-             else
-                    //-                 .person
-                    //-                     .person_head
-                    //-                         if indPerson.person.picture
-                    //-                             - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
-                    //-                         else
-                    //-                             - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                    //-                         img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+                                                .person_body.text_center
+                                                    h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+                                                    p
+                                                        if indPerson.role_at_film
+                                                            span= indPerson.role_at_film.roleName
+                                else
+                                    .person
+                                        .person_head
+                                            if indPerson.person.picture
+                                                - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                            else
+                                                - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                            img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
 
-                    //-                         .person_body.text_center
-                    //-                             h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                    //-                             p
-                    //-                                 if indPerson.role_at_film
-                    //-                                     span= indPerson.role_at_film.roleName
+                                            .person_body.text_center
+                                                h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+                                                p
+                                                    if indPerson.role_at_film
+                                                        span= indPerson.role_at_film.roleName
 
                 section.ce_box_2
                     if self.description && typeof self.description === 'string'
@@ -290,41 +290,41 @@ block content
     //-                 .str_info_label= self.label.film.speaker
     //-                 .str_info_value= self.credentials.rolePersonsByRole.speaker.join(', ')
 
-    section.f_interactive_box
-        if self.credentials && self.credentials.rolePerson
-            //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
-            //- h1.sub_section_headline= 'Või veel midagi'
-            .sub_team
-                each indPerson in self.credentials.rolePerson
-                    if indPerson.person && indPerson.person.slug
-                        .person
-                            .person_head
-                                a(href=`/${indPerson.person.slug}`)
-                                    if indPerson.person.picture
-                                        - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
-                                    else
-                                        - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                                    img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+    //- section.f_interactive_box
+    //-     if self.credentials && self.credentials.rolePerson
+    //-         //- h1.section_headline= 'SIIA NÄITEKS LABEL PERSOONIDE KOHTA'
+    //-         //- h1.sub_section_headline= 'Või veel midagi'
+    //-         .sub_team
+    //-             each indPerson in self.credentials.rolePerson
+    //-                 if indPerson.person && indPerson.person.slug
+    //-                     .person
+    //-                         .person_head
+    //-                             a(href=`/${indPerson.person.slug}`)
+    //-                                 if indPerson.person.picture
+    //-                                     - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+    //-                                 else
+    //-                                     - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+    //-                                 img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
 
-                                    .person_body.text_center
-                                        h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                                        p
-                                            if indPerson.role_at_film
-                                                span= indPerson.role_at_film.roleName
-                    else
-                        .person
-                            .person_head
-                                if indPerson.person.picture
-                                    - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
-                                else
-                                    - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
-                                img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+    //-                                 .person_body.text_center
+    //-                                     h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+    //-                                     p
+    //-                                         if indPerson.role_at_film
+    //-                                             span= indPerson.role_at_film.roleName
+    //-                 else
+    //-                     .person
+    //-                         .person_head
+    //-                             if indPerson.person.picture
+    //-                                 - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+    //-                             else
+    //-                                 - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+    //-                             img.person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
 
-                                .person_body.text_center
-                                    h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                                    p
-                                        if indPerson.role_at_film
-                                            span= indPerson.role_at_film.roleName
+    //-                             .person_body.text_center
+    //-                                 h4.text_center= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+    //-                                 p
+    //-                                     if indPerson.role_at_film
+    //-                                         span= indPerson.role_at_film.roleName
 
     //- section.f_interactive_box
     //-     if self.credentials && self.credentials.rolePersonsByRole
