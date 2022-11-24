@@ -691,7 +691,7 @@ main.grid_film(id=self.id)
                         if (film.QaClip && film.QaClip[0].url)
                             - var filterQa = film.QaClip.filter(qa => qa.url)
                             if filterQa.length
-                                .section_headline= self.label.film.qaClip
+                                .section_headline= self.label.film.conversation
                                     each qaclip in filterQa
                                         .ratio.ratio-16x9.m-0.p-0
                                             +videolQaClip(qaclip.url)
