@@ -689,7 +689,7 @@ main.grid_film(id=self.id)
                                     if trailer.videoCode
                                         +video(trailer.videoCode)
                         if (film.QaClip && film.QaClip[0].url)
-                            - var filterQa = film.QaClip.filter(qa => qa.type === 'QandA' && qa.url)
+                            - var filterQa = film.QaClip.filter(qa => qa.url)
                             if filterQa.length
                                 .section_headline= self.label.film.qaClip
                                     each qaclip in filterQa
