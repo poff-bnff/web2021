@@ -151,6 +151,7 @@ target_build_models:
     - bruno-article
     - filmikooli-article
     - industry-article
+    - industry-project
     - dis-camp-article
     - article-hero
     - hero-article-just-film
