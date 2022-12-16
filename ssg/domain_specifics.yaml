@@ -172,6 +172,7 @@ target_build_models:
     - tartuffi-menu
     - kumu-menu
     - bruno-menu
+    - dis-camp-menu
     - filmikooli-menu
     - industry-menu
     - archive
