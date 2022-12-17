@@ -64,7 +64,7 @@ const skipScreeningsCheckDomains = DOMAIN_SPECIFICS.domains_show_cassetes_wo_scr
 if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
-    // whichScreeningTypesToFetch.push('online kino')
+    whichScreeningTypesToFetch.push('online kino')
     whichScreeningTypesToFetch.push('free')
 }
 

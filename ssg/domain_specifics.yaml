@@ -23,6 +23,7 @@ cassettes_festival_editions:
         - 54
         - 56
         - 58
+        - 62
     justfilm.ee:
         - 56
         # - 29
@@ -36,7 +37,7 @@ cassettes_festival_editions:
     hoff.ee:
         - 61
     kumu.poff.ee:
-        - 33
+        - 62
     tartuff.ee:
         - 53
     oyafond.ee:
@@ -136,9 +137,9 @@ industry_eventival_badges_whitelist:
 #     # - course-event
 
 target_build_models:
-    - film
-    - cassette
-    - screening
+    # - film
+    # - cassette
+    # - screening
     - course-event
     - login
     - pof-fi-article
