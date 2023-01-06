@@ -220,7 +220,7 @@ async function doKillSwitch(userInfo, killStartTime) {
                 admin_user: { id: userInfo.id },
                 start_time: killStartTime,
                 end_time: moment().tz("Europe/Tallinn").format(),
-                type: 'KILL',
+                type_enum: 'KILL',
                 build_stdout: logMessageLong,
                 shown_to_user: true,
               };
@@ -373,18 +373,18 @@ module.exports = {
       'admin_user.id': ctx.state.admin.id,
       end_time_null: false,
       shown_to_user: false,
-      // type: 'build'
+      type_enum: 'build'
     }
     let result = await strapi.query("build_logs", "publisher").find(params);
 
-    (result.filter(r => r.type == 'build').length > 0) ? result = await addS(result) : result = result
+    (result.length > 0) ? result = await addS(result) : result = result
     return result
 
   },
   lastFailedBuildLogs: async (ctx) => {
     const params = {
       build_errors_null: false,
-      type: 'build',
+      type_enum: 'build',
       _sort: 'id:desc'
     }
     let result = await strapi.query("build_logs", "publisher").find(params);
@@ -395,7 +395,7 @@ module.exports = {
   lastTwentyBuidFailsOfSite: async (ctx) => {
     const params = {
       build_errors_null: false,
-      type: 'build',
+      type_enum: 'build',
       site: ctx.params.site,
       _limit: 20,
       _sort: 'id:desc',
@@ -426,7 +426,7 @@ module.exports = {
   myStartedBuildLog: async (ctx) => {
     const params = {
       'admin_user.id': ctx.state.admin.id,
-      type: 'build',
+      type_enum: 'build',
       _sort: 'id:desc'
     }
 
@@ -468,7 +468,7 @@ module.exports = {
     const params = {
       site: ctx.params.site,
       _sort: 'id:desc',
-      type: 'build'
+      type_enum: 'build'
     }
 
     const result = await strapi.query("build_logs", "publisher").findOne(params);
