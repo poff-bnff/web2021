@@ -373,11 +373,11 @@ module.exports = {
       'admin_user.id': ctx.state.admin.id,
       end_time_null: false,
       shown_to_user: false,
-      type: 'build'
+      // type: 'build'
     }
     let result = await strapi.query("build_logs", "publisher").find(params);
 
-    (result.length > 0) ? result = await addS(result) : result = result
+    (result.filter(r => r.type == 'build').length > 0) ? result = await addS(result) : result = result
     return result
 
   },
