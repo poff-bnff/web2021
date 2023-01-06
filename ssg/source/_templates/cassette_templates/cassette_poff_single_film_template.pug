@@ -43,7 +43,8 @@ main.grid_film(id=self.id)
                     svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         polyline(points='9 18 15 12 9 6')
                     span.sr-only Next
-                if film.trailer && film.trailer[0] && film.trailer[0].videoCode
+                //- if film.trailer && film.trailer[0] && film.trailer[0].videoCode
+                if (film.trailer && film.trailer[0].videoCode) || (film.QaClip && film.QaClip[0].url)
                     a.play_link(href='#trailer')
                         svg.svg_icon_play(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='2' fill='white' stroke-linecap='round' stroke-linejoin='round')
                             polygon(points='5 3 19 12 5 21 5 3')
@@ -691,17 +692,17 @@ main.grid_film(id=self.id)
                         if (film.QaClip && film.QaClip[0].url)
                             - var filterQa = film.QaClip.filter(qa => qa.url)
                             if filterQa.length
-                                .section_headline= self.label.film.qaClip
+                                .section_headline= self.label.film.conversation
                                     each qaclip in filterQa
                                         .ratio.ratio-16x9.m-0.p-0
                                             +videolQaClip(qaclip.url)
 
-            if film.filmQaClip
+            //- if film.QaClip
 
-                section.f_qaclip_box
-                    .section_headline= self.label.film.qaClip
-                    .ratio.ratio-16x9.m-0.p-0
-                        +videoVl(film.QaClip)
+            //-     section.f_qaclip_box
+            //-         .section_headline= self.label.film.qaClip
+            //-         .ratio.ratio-16x9.m-0.p-0
+            //-             +videoVl(film.QaClip)
 
             if film && film.chat_w_name
                 script.
