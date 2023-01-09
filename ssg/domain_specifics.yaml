@@ -137,9 +137,9 @@ industry_eventival_badges_whitelist:
 #     # - course-event
 
 target_build_models:
-    # - film
-    # - cassette
-    # - screening
+    - film
+    - cassette
+    - screening
     - course-event
     - login
     - pof-fi-article
