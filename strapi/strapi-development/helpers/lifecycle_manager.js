@@ -65,6 +65,7 @@ async function build_start_to_strapi_logs(result, domain, err = null, b_err = nu
       id: editor
     },
     type: 'build',
+    type_enum: 'build',
     site: domain,
     error_code: err,
     build_errors: b_err,
