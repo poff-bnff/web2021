@@ -111,7 +111,7 @@ const doLog = async (site, userInfo, type) => {
     site: site,
     admin_user: { id: userInfo.id },
     start_time: moment().tz("Europe/Tallinn").format(),
-    type: type
+    type_enum: type
   };
   //using strapi method for creating and entry from the data that was sent
   const result = await strapi.entityService.create({ data: logData }, { model: "plugins::publisher.build_logs" })
