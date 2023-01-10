@@ -111,8 +111,12 @@ const doLog = async (site, userInfo, type) => {
     site: site,
     admin_user: { id: userInfo.id },
     start_time: moment().tz("Europe/Tallinn").format(),
-    type: type
+    type_enum: type
   };
+
+  // When depolying to live it happens fairly instant and for clearness, add end_date to the logs
+  if (type === 'live') { logData.end_time = logData.start_time }
+
   //using strapi method for creating and entry from the data that was sent
   const result = await strapi.entityService.create({ data: logData }, { model: "plugins::publisher.build_logs" })
   // console.log(result)
