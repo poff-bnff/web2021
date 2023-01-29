@@ -140,6 +140,10 @@ main.grid_film(id=self.id)
                                 .str_info_meta_label.dark_1= self.label.film.keywords
                                 .str_info_meta_festival= film.tags.keywords.join(', ')
 
+                            if film.tags.trigger_warnings && film.tags.trigger_warnings[0]
+                                .str_info_meta_label.dark_1= self.label.film.trigger_warnings
+                                .str_info_meta_festival= film.tags.trigger_warnings.join(', ')
+
                         //- festival programm zanrid keywordid
 
 

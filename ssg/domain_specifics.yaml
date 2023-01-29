@@ -184,6 +184,7 @@ target_build_models:
     - bruno-footer
     - filmikooli-footer
     - dis-camp-footer
+    - shop
 
 article:
     poff.ee: POFFiArticle

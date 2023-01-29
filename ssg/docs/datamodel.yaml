@@ -265,6 +265,19 @@ Gender: &Gender
     en: (text)
     ru: (text)
 
+TagAgeRestriction: &TagAgeRestriction
+    _path: /age-restrictions
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    description_et: (text)
+    description_en: (text)
+    description_ru: (text)
+    icon_default: *StrapiMedia
+    icon_et: *StrapiMedia
+    icon_en: *StrapiMedia
+    icon_ru: *StrapiMedia
+
 TagGenre: &TagGenre
     _path: /tag-genres
     et: (text)
@@ -320,6 +333,15 @@ TagCategory: &TagCategory
     active: boolean
     tag_locations:
         - *TagLocation
+
+TagTriggerWarning: &TagTriggerWarning
+    _path: /trigger-warnings
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    description_et: (text)
+    description_en: (text)
+    description_ru: (text)
 
 Award: &Award
     _path: /industry-awards
@@ -549,18 +571,22 @@ Programme: &Programme
     slug_ru: (text)
 
 Tags: &Tags
+    premiere_types: #(Component (repeatable))
+      - *TagPremiereType
     genres: #(Component (repeatable))
       - *TagGenre
     keywords: #(Component (repeatable))
       - *TagKeyword
-    premiere_types: #(Component (repeatable))
-      - *TagPremiereType
     programmes: #(Component (repeatable))
       - *Programme
     film_types: #(Component (repeatable))
       - *TagFilmType
     tag_secrets: #(Component (repeatable))
       - *TagSecret
+    age_restriction: #(Component)
+      - *TagAgeRestriction
+    trigger_warnings: #(Component (repeatable))
+      - *TagTriggerWarning
 
 WebAuthor: &WebAuthor
     _path: /web-authors
