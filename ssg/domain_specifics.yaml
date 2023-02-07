@@ -14,7 +14,7 @@ domain:
 
 domains_show_cassetes_wo_screenings:
     # - poff.ee
-    # - hoff.ee
+    - hoff.ee
     - tartuff.ee
     - oyafond.ee
 
