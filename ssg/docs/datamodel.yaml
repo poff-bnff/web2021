@@ -583,8 +583,8 @@ Tags: &Tags
       - *TagFilmType
     tag_secrets: #(Component (repeatable))
       - *TagSecret
-    age_restriction: #(Component)
-      - *TagAgeRestriction
+    age_restriction: *TagAgeRestriction #(Component)
+    #   - *TagAgeRestriction
     trigger_warnings: #(Component (repeatable))
       - *TagTriggerWarning
 
@@ -1545,18 +1545,18 @@ OrderedCountries: &OrderedCountries
 
 Film: &Film
     _path: /films
-    id: 1 (number)
-    title_et: Nähtamatu elu (short text)
-    title_en: Invisible Life of Eurídice Gusmãos (short text)
-    title_ru: Департамент здоровьяs (short text)
-    titleOriginal: A Vida Invisivel (short text)
-    year: 2019 (number)
-    runtime: 139 (number)
+    id: (number)
+    title_et: (short text)
+    title_en: (short text)
+    title_ru: (short text)
+    titleOriginal: (short text)
+    year: (number)
+    runtime: (number)
     synopsis: *Translated #(Component, rich)
     tags: *Tags #(Component)
-    slug_et: naehtamatu-elu (UID, No spaces)
-    slug_en: invisible-life-of-euridice-gusmao (UID, No spaces)
-    slug_ru: departament-zdorovya (UID, No spaces)
+    slug_et: (UID, No spaces)
+    slug_en: (UID, No spaces)
+    slug_ru: (UID, No spaces)
     festival_editions:
         -   *FestivalEdition
     credentials: *Credentials
