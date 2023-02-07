@@ -146,9 +146,9 @@ main.grid_film(id=self.id)
                                 //- - console.log(JSON.stringify(film.tags.trigger_warnings, 0, 2))
                                 //- .str_info_meta_festival= JSON.stringify(film.tags.trigger_warnings, 0, 2)
 
-                            if film.tags.ageRestriction
+                            if film.tags.age_restriction
                                 .str_info_meta_label.dark_1= self.label.film.ageRestriction
-                                .str_info_meta_festival= film.tags.ageRestriction
+                                .str_info_meta_festival= film.tags.age_restriction
 
 
                         //- festival programm zanrid keywordid
