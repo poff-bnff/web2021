@@ -137,14 +137,19 @@ main.grid_film(id=self.id)
 
 
                             if film.tags.keywords && film.tags.keywords[0]
-                                .str_info_meta_label.dark_1= self.label.film.keywords
+                                .str_info_meta_label.dark_1= self.label.film.keywords2
                                 .str_info_meta_festival= film.tags.keywords.join(', ')
 
                             if film.tags.trigger_warnings && film.tags.trigger_warnings[0]
-                                .str_info_meta_label.dark_1= self.label.film.keywords
+                                .str_info_meta_label.dark_1= self.label.film.triggerWarning
                                 .str_info_meta_festival= film.tags.trigger_warnings.map(item => item.name)
                                 //- - console.log(JSON.stringify(film.tags.trigger_warnings, 0, 2))
                                 //- .str_info_meta_festival= JSON.stringify(film.tags.trigger_warnings, 0, 2)
+
+                            if film.tags.ageRestriction
+                                .str_info_meta_label.dark_1= self.label.film.ageRestriction
+                                .str_info_meta_festival= film.tags.ageRestriction
+
 
                         //- festival programm zanrid keywordid
 
