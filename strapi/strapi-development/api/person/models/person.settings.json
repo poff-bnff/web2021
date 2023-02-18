@@ -39,9 +39,6 @@
     "dateOfBirth": {
       "type": "date"
     },
-    "country": {
-      "model": "country"
-    },
     "organisations": {
       "collection": "organisation"
     },

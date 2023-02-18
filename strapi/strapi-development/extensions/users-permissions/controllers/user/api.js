@@ -883,6 +883,159 @@ module.exports = {
   },
   async personForm(ctx) {
 
+    const user = ctx.state.user;
+    const userPersonID = ctx.state.user?.person;
+
+    let personFormData = { ...JSON.parse(ctx.request.body.data) }
+
+    console.log('personFormData.images', personFormData.images);
+
+    // Image check
+    let file = ctx.request.files['files.picture']
+    if (file) {
+      if (!file.type.includes("image")) {
+        console.log("File is not an image.", file.type, file);
+        return ctx.badRequest('Not an image');
+      } else if (file.size / 1024 / 1024 > 5) {
+        console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
+        return ctx.badRequest('Image too bulky');
+      }
+    }
+
+    // Person already exists
+    if (userPersonID) {
+
+      const userPerson = await strapi.query('person').findOne({ 'id': userPersonID });
+      console.log(JSON.stringify(userPerson));
+
+      // Person address, update or add new
+      if (userPerson?.addr_coll?.id === +personFormData?.address?.strapi_id) {
+        let addressID = userPerson.addr_coll.id
+        await strapi.services['address'].update({ 'id': addressID }, personFormData.address)
+        delete personFormData.address
+      } else {
+        addNewAddressCollection()
+      }
+
+      // Filmographies (including education)
+      // Delete ones to be deleted
+      if (personFormData?.filmographiesToDelete) {
+        for (let index = 0; index < personFormData.filmographiesToDelete.length; index++) {
+          const filmography = personFormData.filmographiesToDelete[index];
+          if (userPerson.filmographies.map(f => f.id).includes(+filmography)) {
+            const deletedFilmography = await strapi.services['filmography'].delete({ 'id': filmography })
+            console.log('Deleted filmography', deletedFilmography);
+          }
+        }
+      }
+      // Add ones to be added
+      await addNewFilmographies()
+      // Update existing ones
+      await updateFilmographies(userPerson)
+      // Filter out form data and leave only the IDs
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+
+      // Gallery images
+      // Delete gallery images
+      if (personFormData?.existingGalleryImagesToDelete) {
+        for (let index = 0; index < personFormData.existingGalleryImagesToDelete.length; index++) {
+          const galleryImage = personFormData.existingGalleryImagesToDelete[index];
+          if (userPerson.images.map(i => i.id).includes(galleryImage)) {
+            const galleryImgFile = await strapi.plugins['upload'].services.upload.fetch({ 'id': galleryImage });
+            await strapi.plugins['upload'].services.upload.remove(galleryImgFile);
+            console.log('Deleted gallery image', galleryImage);
+          }
+        }
+      }
+
+      // Image upload and assign to personFormData
+      const { files } = parseMultipartData(ctx);
+      if (files.picture) {
+        const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
+        personFormData.picture = uploadedPicture
+        // Delete old profile image
+        if (userPerson.picture) {
+          const profilePictureFile = await strapi.plugins['upload'].services.upload.fetch({ 'id': userPerson.picture.id });
+          await strapi.plugins['upload'].services.upload.remove(profilePictureFile);
+          console.log('Deleted profile image', userPerson.picture.id);
+        }
+      }
+
+      // if (files.audioreel) {
+      //   const uploadedAudioreel = await uploadAudioreel(files.audioreel)
+      //   personFormData.audioreel = uploadedAudioreel
+      // }
+
+      // Upload new gallery images
+      await addNewGalleryImages(files);
+
+      // Join uploaded images from form with existing ones under person
+      let previousImages = (userPerson?.images?.map(i => i.id) || []).filter(f => !personFormData?.existingGalleryImagesToDelete?.includes(f))
+      personFormData.images = personFormData.images ? personFormData.images.concat(previousImages) : previousImages
+
+      personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
+
+      console.log('personFormData', personFormData);
+      let updatedPerson = await strapi.services['person'].update({ 'id': userPerson.id }, personFormData)
+      ctx.send(sanitizeUser(updatedPerson));
+
+    } else {
+      ///////////////////// START OF CREATE NEW PERSON /////////////////////
+
+      console.log('personFormData', JSON.stringify(personFormData));
+
+      // Image upload and assign to personFormData
+      const { files } = parseMultipartData(ctx);
+      if (files.picture) {
+        const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
+        personFormData.picture = uploadedPicture
+      }
+
+      if (files.audioreel) {
+        const uploadedAudioreel = await uploadAudioreel(files.audioreel)
+        personFormData.audioreel = uploadedAudioreel
+      }
+
+      // Add gallery images
+      await addNewGalleryImages(files);
+
+      // Create new entry in address collection and assign to person
+      await addNewAddressCollection();
+
+      // Create new entry in filmographies collection and assign to person
+      await addNewFilmographies();
+
+      personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
+
+      // Filter out form data and leave only the IDs
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+
+      console.log('personFormData', personFormData);
+      let newPerson = await strapi.services['person'].create(personFormData)
+      const addUserPerson = await strapi.query('user', 'users-permissions').update({ 'id': user.id }, { person: newPerson.id });
+      console.log('newPerson', newPerson);
+      ctx.send(sanitizeUser(newPerson));
+      ///////////////////// END OF CREATE NEW PERSON /////////////////////
+    }
+
+
+    async function addNewGalleryImages(files) {
+      if (files.images) {
+
+        if (!Array.isArray(files.images)) {
+          files.images = [files.images];
+        }
+
+        if (!personFormData.images) { personFormData.images = []; }
+        for (let index = 0; index < files.images.length; index++) {
+          const image = files.images[index];
+          const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName, `G_${index + 1}`);
+          personFormData.images.push(uploadedPicture);
+          console.log('uploadedPicture', uploadedPicture);
+        }
+      }
+    }
+
     async function uploadPersonPicture(file, firstName, lastName, prefix) {
       console.log('Uploading profile picture');
 
@@ -917,20 +1070,6 @@ module.exports = {
     async function uploadAudioreel(file) {
       console.log('Uploading audioreel');
 
-      // const firstNameSlug = slugify(firstName)
-      // const lastNameSlug = slugify(lastName)
-
-      // let splitter = file.name.split('.')
-      // let fileExt = splitter[splitter.length - 1]
-      // let fileName = `${prefix}_${firstNameSlug}_${lastNameSlug}.${fileExt}`
-
-      // const fileInfo = [
-      //   {
-      //     "caption": file.name,
-      //     "alternativeText": `${firstName} ${lastName}`
-      //   }
-      // ];
-
       const uploadedAudioreel = await strapi.plugins.upload.services.upload.upload({
         data: {
           // fileInfo: fileInfo
@@ -945,71 +1084,48 @@ module.exports = {
       return uploadedAudioreel[0].id
     }
 
-    let personFormData = { ...JSON.parse(ctx.request.body.data) }
-
-    // Image check
-    let file = ctx.request.files['files.picture']
-    if (file) {
-      if (!file.type.includes("image")) {
-        console.log("File is not an image.", file.type, file);
-        return ctx.badRequest('Not an image');
-      } else if (file.size / 1024 / 1024 > 5) {
-        console.log("Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB")
-        return ctx.badRequest('Image too bulky');
+    async function addNewAddressCollection() {
+      let personFormAddressData = personFormData.address;
+      if (personFormAddressData) {
+        let form_address = await strapi.services['address'].create(personFormAddressData);
+        personFormData.addr_coll = form_address.id;
+        delete personFormData.address;
       }
     }
 
-    // Image upload and assign to personFormData
-    const { files } = parseMultipartData(ctx);
-    if (files.picture) {
-      const uploadedPicture = await uploadPersonPicture(files.picture, personFormData.firstName, personFormData.lastName, 'C')
-      personFormData.picture = uploadedPicture
-    }
-
-    if (files.audioreel) {
-      const uploadedAudioreel = await uploadAudioreel(files.audioreel)
-      personFormData.audioreel = uploadedAudioreel
-    }
-
-    if (files.images) {
-
-      if (!Array.isArray(files.images)) {
-        files.images = [files.images]
-      }
-
-      if (!personFormData.images) { personFormData.images = [] }
-      for (let index = 0; index < files.images.length; index++) {
-        const image = files.images[index];
-        const uploadedPicture = await uploadPersonPicture(image, personFormData.firstName, personFormData.lastName, `G_${index + 1}`)
-        personFormData.images.push(uploadedPicture)
-        console.log('uploadedPicture', uploadedPicture);
+    async function addNewFilmographies() {
+      let personFormFilmographiesData = personFormData.filmographies.filter(f => !f.strapi_id)
+      console.log('personForm add new filmography', personFormFilmographiesData)
+      if (personFormFilmographiesData.length) {
+        let filmographiesIds = []
+        for (let i = 0; i < personFormFilmographiesData.length; i++) {
+          const filmography = personFormFilmographiesData[i]
+          let form_filmographies = await strapi.services['filmography'].create(filmography)
+          filmographiesIds.push(form_filmographies.id)
+        }
+        personFormData.filmographies = personFormData.filmographies.concat(filmographiesIds)
       }
     }
-    // Create new entry in address collection and assign to person
-    let personFormAddressData = personFormData.address
-    if (personFormAddressData) {
-      let form_address = await strapi.services['address'].create(personFormAddressData)
-      personFormData.addr_coll = form_address.id
-      delete personFormData.address
-    }
 
-    // Create new entry in filmographies collection and assign to person
-    let personFormFilmographiesData = personFormData.filmographies
-    console.log('personFormFilmographiesData', personFormFilmographiesData);
-    if (personFormFilmographiesData.length) {
-      let filmographiesIds = []
-      for (let i = 0; i < personFormFilmographiesData.length; i++) {
-        const filmography = personFormFilmographiesData[i];
-        let form_filmographies = await strapi.services['filmography'].create(filmography)
-        filmographiesIds.push(form_filmographies.id)
+    async function updateFilmographies(userPerson) {
+      let personFormFilmographiesData = personFormData.filmographies.filter(f => f.strapi_id)
+      console.log('personForm update filmograpies', personFormFilmographiesData.map(f => f.id))
+
+      if (personFormFilmographiesData.length) {
+        let filmographiesIds = []
+        for (let i = 0; i < personFormFilmographiesData.length; i++) {
+          const filmography = personFormFilmographiesData[i]
+          let thisFilmographyID = +filmography.strapi_id
+
+          if (userPerson?.filmographies?.map(f => f.id).includes(thisFilmographyID)) {
+
+            let form_filmographies = await strapi.services['filmography'].update({ 'id': thisFilmographyID }, filmography)
+            filmographiesIds.push(form_filmographies.id)
+          }
+        }
+        personFormData.filmographies = personFormData.filmographies.concat(filmographiesIds)
       }
-      personFormData.filmographies = filmographiesIds
     }
-
-    personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
-
-    let newPerson = await strapi.services['person'].create(personFormData)
-    ctx.send(sanitizeUser(newPerson));
   },
   async getPersonForm(ctx) {
 

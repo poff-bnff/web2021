@@ -137,7 +137,22 @@ module.exports = {
       return ctx.badRequest(null, [{ messages: [{ id: 'No authorization header was found' }] }]);
     }
 
-    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id });
+    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id }, [
+      'my_products',
+      'transactions',
+      'business_profiles',
+      'user_roles',
+      'person',
+      'person.addr_coll',
+      'person.role_at_films',
+      'person.tag_looking_fors',
+      'person.other_lang',
+      'person.filmographies',
+      'person.filmographies.type_of_work',
+      'person.filmographies.role_at_films',
+      'person.picture',
+      'person.images',
+    ]);
     const sanitized = sanitizeUser(fetchedUser)
 
     if (sanitized.provider.split(',').includes('eventivalindustry')) {
