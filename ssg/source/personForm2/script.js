@@ -610,8 +610,8 @@ function addExistingGalleryImages(imagesData) {
         // Remove input field for image
         thisElement.getElementsByClassName('galleryImg')[0].remove()
         // Add existing image
-        // thisElement.getElementsByClassName('imgPreview')[0].src = `https://assets.poff.ee/img/${img.hash}${img.ext}`
-        thisElement.getElementsByClassName('imgPreview')[0].src = `http://localhost:1337/uploads/${img.hash}${img.ext}`
+        thisElement.getElementsByClassName('imgPreview')[0].src = `https://assets.poff.ee/img/${img.hash}${img.ext}`
+        // thisElement.getElementsByClassName('imgPreview')[0].src = `http://localhost:1337/uploads/${img.hash}${img.ext}`
         // Remove input field for photographer (whole .form_group element)
         thisElement.getElementsByClassName('galleryImagePhotographer')[0].parentElement.remove()
         // Remove input field and label for photo year (whole .form_group element)
@@ -632,7 +632,8 @@ function addExistingProfileImg(imageData) {
     if (imageData) {
         const profileImgElement = document.getElementById('profileImage');
         const profileImgPreview = profileImgElement.getElementsByClassName('imgPreview')[0]
-        profileImgPreview.src = `http://localhost:1337/uploads/${imageData.hash}${imageData.ext}`
+        profileImgPreview.src = `https://assets.poff.ee/img/${imageData.hash}${imageData.ext}`
+        // profileImgPreview.src = `http://localhost:1337/uploads/${imageData.hash}${imageData.ext}`
 
         const profileImgLabel = profileImgElement.getElementsByClassName('person_profile_label')[0]
         profileImgLabel.innerHTML = `${profileImgLabel.innerHTML} (adding new image, replaces the current one)`
