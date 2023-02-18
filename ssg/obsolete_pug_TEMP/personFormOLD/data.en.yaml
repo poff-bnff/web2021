@@ -1,4 +1,4 @@
-path: add_pro2
+path: add_pro
 data:
     genders: /_domainStrapidata/Gender.yaml
     countries: /_domainStrapidata/Country.yaml

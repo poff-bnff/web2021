@@ -3,7 +3,7 @@ include /_templates/mixins.pug
 
 block content
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: x')
+        form.form#thisPersonProfile(style= 'display: none')
 
             dialog#personProfileSent
                 //- (style= {display: 'none'})
@@ -94,31 +94,48 @@ block content
                         div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                     //- dateOfBirth / dateofbirth
                     .form_group
-                        label.person_profile_label(for='dateofbirth')= self.label.userprofile.birthday
+                        label.person_profile_label(for='dateOfBirth')= self.label.userprofile.birthday
                             span.required= ' ' + self.label.userprofile.required
-                        input.login_input#dateofbirth.form_control( type='date' name='dateofbirth' autocomplete="off" required)
-                        div#dateofbirthHelp(class='valid') Korrektne sünnipäev on vajalik (vanus vahemikus 12-116)!
+                        input.login_input#dateOfBirth.form_control( type='date' name='dateOfBirth' autocomplete="off" required)
+                        div#dateOfBirthHelp(class='valid') Korrektne sünnipäev on vajalik (vanus vahemikus 12-116)!
 
-                    //- native_lang / nativelang
+                    //- native_lang / native_lang
                     .form_group
-                        label.person_profile_label(for='nativelang')= self.label.userprofile.nativeLang
+                        label.person_profile_label(for='native_lang')= self.label.userprofile.nativeLang
                         .input_dropdown
-                            select.login_input#nativelang(name='nativevĺang' form="thisPersonProfile")
+                            select.login_input#native_lang(name='native_lang' form="thisPersonProfile")
                                 option.login_input.placeholder(class='notinvalid' value="" selected="")
                                 //- = self.label.userprofile.required
                                 //- each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option.login_input(value=language.id)= language[`name_${self.locale}`]
+            fieldset
+                //- otherLang
+                legend= self.label.userprofile.otherLang
+                    div#otherLangTemplate(style= 'display: none;')
+                        .fieldset_grid
+                            .form_group
+                                label.person_profile_label(for='other_lang')= self.label.userprofile.otherLang
+                                select.login_input.other_lang(name='other_lang' form="thisPersonProfile")
+                                    option.login_input.default_select(class='invalid' value="" selected="")
+                                    //- = self.label.userprofile.required
+                                    each otherLang in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                        option.login_input(value=otherLang.id)= otherLang[`name_${self.locale}`]
+                                input.login_input.btn_secondary.deleteButton(type='button' value="x")
+                                .fieldset_grid
                 .fieldset_grid
-                    //- other_lang / otherlang
                     .form_group
-                        label.person_profile_label(for='otherlang')= self.label.userprofile.otherLang
-                        select.login_input#otherlang(name='otherlang[]' multiple size="6" form="thisPersonProfile")
-                            //- each language in self.data.languages.sort((a, b) => a.id - b.id)
-                            each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
-                                option.login_input(value=language.id)= language[`name_${self.locale}`]
-                            //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                        p= self.label.userprofile.selectMultiple
+                        input.login_input.btn_primary(type='button' name='nextOtherLang' id='nextOtherLang' onclick='addNextOtherLang();' value='Lisa veel keel')
+
+                    //- //- other_lang / otherlang
+                    //- .form_group
+                    //-     label.person_profile_label(for='otherlang')= self.label.userprofile.otherLang
+                    //-     select.login_input#otherlang(name='otherlang[]' multiple size="6" form="thisPersonProfile")
+                    //-         //- each language in self.data.languages.sort((a, b) => a.id - b.id)
+                    //-         each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                    //-             option.login_input(value=language.id)= language[`name_${self.locale}`]
+                    //-         //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                    //-     p= self.label.userprofile.selectMultiple
                 .fieldset_grid
                     //- bio_en
                     .form_group
@@ -228,10 +245,10 @@ block content
                     .form_group
                         label.person_profile_label(for='skills_en')= self.label.userprofile.skills
                         textarea.login_input#skills_en(form="thisPersonProfile" name="skills_en")
-                    //- text_looking_for
+                    //- looking_for
                     .form_group
-                        label.person_profile_label(for='text_looking_for')= self.label.userprofile.lookingForText
-                        textarea.login_input#text_looking_for(form="thisPersonProfile" name="text_looking_for")
+                        label.person_profile_label(for='looking_for')= self.label.userprofile.lookingForText
+                        textarea.login_input#looking_for(form="thisPersonProfile" name="looking_for")
 
 
             fieldset
@@ -332,6 +349,7 @@ block content
                     .form_group
                         label.person_profile_label(for='eMail')= self.label.userprofile.email
                         input.login_input#eMail.form_control( type='email' name='eMail' autocomplete="off")
+                        div#emailHelp(class='valid')= 'Please correct the e-mail address'
                 .fieldset_grid
                     //- repr_org_name
                     .form_group
@@ -360,24 +378,25 @@ block content
                 legend= self.label.userprofile.addressSet
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addrCountry')= self.label.userprofile.country
-                        select.login_input#addrCountry(name='addrCountry' form="thisPersonProfile")
+                        input.login_input.form_control#addr_strapi_id(type='number' autocomplete="off" style= 'display: none;')
+                        label.person_profile_label(for='country')= self.label.userprofile.country
+                        select.login_input#country(name='country' form="thisPersonProfile")
                             option.login_input(class='invalid' value="" selected="")
                             //- = self.label.userprofile.select
                             //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
                             each country in self.data.countries.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=country.id)= country[`name_${self.locale}`]
                     .form_group
-                        label.person_profile_label(for='addrCounty')= self.label.userprofile.county
-                        select.login_input#addrCounty(name='addrCounty' form="thisPersonProfile")
+                        label.person_profile_label(for='county')= self.label.userprofile.county
+                        select.login_input#county(name='county' form="thisPersonProfile")
                             option.login_input(class='invalid' value="" selected="")
                             //- = self.label.userprofile.select
                             //- each county in self.data.counties.sort((a, b) => a.id - b.id)
                             each county in self.data.counties.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                 option.login_input(value=county.id)= county[`name_${self.locale}`]
                     .form_group
-                        label.person_profile_label(for='addrMunicipality')= self.label.userprofile.municipality
-                        select.login_input#addrMunicipality(name='addrMunicipality' form="thisPersonProfile")
+                        label.person_profile_label(for='municipality')= self.label.userprofile.municipality
+                        select.login_input#municipality(name='municipality' form="thisPersonProfile")
                             option.login_input(class='invalid' value="" selected="")
                             //- = self.label.userprofile.select
                             //- each municipality in self.data.municipalities.sort((a, b) => a.id - b.id)
@@ -385,21 +404,21 @@ block content
                                 option.login_input(value=municipality.id)= municipality[`name_${self.locale}`]
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addr_popul_place')= self.label.userprofile.populPlace
-                        input.login_input#addr_popul_place.form_control(type='text' name='addr_popul_place')
+                        label.person_profile_label(for='popul_place')= self.label.userprofile.populPlace
+                        input.login_input#popul_place.form_control(type='text' name='popul_place')
                     .form_group
-                        label.person_profile_label(for='addr_street_name')= self.label.userprofile.streetName
-                        input.login_input#addr_street_name.form_control(type='text'  name='addr_street_name')
+                        label.person_profile_label(for='street_name')= self.label.userprofile.streetName
+                        input.login_input#street_name.form_control(type='text'  name='street_name')
                     .form_group
-                        label.person_profile_label(for='addrHouseNumber')= self.label.userprofile.addressHouseNumber
-                        input.login_input#addrHouseNumber.form_control(type='text' name='addrHouseNumber')
+                        label.person_profile_label(for='address_number')= self.label.userprofile.addressHouseNumber
+                        input.login_input#address_number.form_control(type='text' name='address_number')
                 .fieldset_grid
                     .form_group
-                        label.person_profile_label(for='addrApptNumber')= self.label.userprofile.addressApptNumber
-                        input.login_input#addrApptNumber.form_control(type='text' name='addrHouseNumber')
+                        label.person_profile_label(for='appartment')= self.label.userprofile.addressApptNumber
+                        input.login_input#appartment.form_control(type='text' name='addrHouseNumber')
                     .form_group
-                        label.person_profile_label(for='addrPostalCode')= self.label.userprofile.addressPostalCode
-                        input.login_input#addrPostalCode.form_control(type='text' name='addrPostalCode')
+                        label.person_profile_label(for='postal_code')= self.label.userprofile.addressPostalCode
+                        input.login_input#postal_code.form_control(type='text' name='postal_code')
 
             //- fieldset
             //-     legend
@@ -411,6 +430,7 @@ block content
                 legend= self.label.userprofile.profEducation
                     .eduworks_item#profEducationTemplate(style= 'display: none; ')
                         .fieldset_grid
+                            input.login_input.strapi_id.form_control(type='number' autocomplete="off" style= 'display: none;')
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
                             //- .form_group
@@ -460,13 +480,18 @@ block content
                 legend= self.label.userprofile.worksFilmography
                     .eduworks_item#filmographyTemplate(style= 'display: none; ')
                         .fieldset_grid
+                            input.login_input.strapi_id.form_control(type='number' autocomplete="off" style= 'display: none;')
                             //- type_of_work
                             .form_group
                                 label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
                                     span.required= ' ' + self.label.userprofile.required
                                 select.login_input.type_of_work(name='type_of_work' form="thisPersonProfile" required)
                                     option.login_input(class='invalid' value="" selected="")
-                                    each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                    //- Sort from A to B
+                                    - var sortedTypeOfWorks = self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
+                                    //- Filter out Education
+                                    - var filteredTypeOfWorks = sortedTypeOfWorks.filter(t => t[`name_${self.locale}`] != 'Education')
+                                    each typeofwork in filteredTypeOfWorks
                                         option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
                                 div.type_of_work_help(class='valid') Töötüüp vajalik!
                             .form_group
