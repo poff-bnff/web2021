@@ -140,6 +140,8 @@ module.exports = {
     const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id }, [
       'my_products',
       'transactions',
+      'user_profile',
+      'user_profile.picture',
       'business_profiles',
       'user_roles',
       'person',
