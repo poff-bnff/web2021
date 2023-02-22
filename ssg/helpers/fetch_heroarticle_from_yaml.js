@@ -76,7 +76,6 @@ for (const lang of languages) {
         if (key === `article_${lang}`) {
             let element = { ...rueten(STRAPIDATA_HERO[`article_${lang}`], lang) }
 
-            console.log(element.media);
             // Article list view get priority picture format
             const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
             if (primaryImage) { element.primaryImage = primaryImage }
