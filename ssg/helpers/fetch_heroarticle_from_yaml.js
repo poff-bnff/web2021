@@ -2,15 +2,15 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js')
-const {fetchModel} = require('./b_fetch.js')
+const { fetchModel } = require('./b_fetch.js')
 const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
 const rootDir = path.join(__dirname, '..')
-const sourceDir =  path.join(rootDir, 'source')
-const fetchDir =  path.join(sourceDir, '_fetchdir')
+const sourceDir = path.join(rootDir, 'source')
+const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 
-const DOMAIN = process.env['DOMAIN'] || 'kumu.poff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
 
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
@@ -22,7 +22,7 @@ const params = process.argv.slice(2)
 const build_type = params[0]
 const model_id = params[1]
 const addConfigPathAliases = require('./add_config_path_aliases.js')
-if(build_type === 'target') {
+if (build_type === 'target') {
     addConfigPathAliases(['/home'])
 }
 
@@ -73,9 +73,10 @@ for (const lang of languages) {
     var buffer = {}
     for (key in STRAPIDATA_HERO) {
 
-        if(key === `article_${lang}`) {
-            let element = rueten(STRAPIDATA_HERO[`article_${lang}`], lang)
+        if (key === `article_${lang}`) {
+            let element = { ...rueten(STRAPIDATA_HERO[`article_${lang}`], lang) }
 
+            console.log(element.media);
             // Article list view get priority picture format
             const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
             if (primaryImage) { element.primaryImage = primaryImage }
