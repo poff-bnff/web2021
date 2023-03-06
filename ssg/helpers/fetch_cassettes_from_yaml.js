@@ -46,7 +46,6 @@ if (param_build_type === 'target') {
     addConfigPathAliases(['/films', '/search', '/my_films'])
 }
 
-
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
 const festival_editions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 
@@ -374,6 +373,10 @@ for (const lang of allLanguages) {
         counting++
 
         const s_cassette_copy = JSONcopy(s_cassette)
+
+        if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
+            console.log('Whole cassette: s_cassette_copy', JSON.stringify(s_cassette_copy))
+        }
 
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
