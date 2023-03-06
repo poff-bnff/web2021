@@ -691,7 +691,7 @@ for (const lang of allLanguages) {
                             }
                         }
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
-                        if (param_build_type === 'target') {
+                        if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
                             console.log('Film ID', scc_film.id, 'credentials', scc_film.credentials.rolePerson, 'persons ', scc_film.credentials.rolePersonsByRole)
                         }
                     }
