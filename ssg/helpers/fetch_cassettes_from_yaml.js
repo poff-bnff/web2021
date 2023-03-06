@@ -691,6 +691,7 @@ for (const lang of allLanguages) {
                             }
                         }
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
+                        console.log('Film ID', scc_film.id, 'credentials', scc_film.credentials.rolePerson, 'persons ', scc_film.credentials.rolePersonsByRole)
                     }
 
                     // Rolecompanies by role
