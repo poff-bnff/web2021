@@ -13,7 +13,7 @@ domain:
     discoverycampus.poff.ee: discamp
 
 domains_show_cassetes_wo_screenings:
-    # - poff.ee
+    - poff.ee
     - hoff.ee
     - tartuff.ee
     - oyafond.ee
