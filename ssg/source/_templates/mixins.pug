@@ -33,7 +33,7 @@ mixin videolQaClip(videoUrl='')
             frameborder='0' scrolling='no' webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' class='noTransform')
 
 mixin heroVideo(clipUrlDefault='')
-    - var videoId = clipUrlDefault.split('/')[1] || ''
+    - var videoId = clipUrlDefault.split('/')[3] || ''
     if videoId.length === 9
         iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
             frameborder='0' allow='accelerometer' encrypted-media=''
