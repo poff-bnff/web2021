@@ -1,0 +1,26 @@
+
+POST https://admin.poff.ee/auth/local HTTP/1.1
+content-type: application/json
+
+{
+    "identifier": "{{user}}", 
+    "password": "{{secretKey}}"
+}
+
+###
+
+GET https://admin.poff.ee/user-profiles HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
+###
+
+GET https://admin.poff.ee/users/16998 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
+###
+
+GET https://admin.poff.ee/users/16998 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
