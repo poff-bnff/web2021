@@ -374,10 +374,6 @@ for (const lang of allLanguages) {
 
         const s_cassette_copy = JSONcopy(s_cassette)
 
-        if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
-            console.log('Whole cassette: s_cassette_copy', JSON.stringify(s_cassette_copy))
-        }
-
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
             slugEn = s_cassette_copy.films[0].slug_en
@@ -694,9 +690,6 @@ for (const lang of allLanguages) {
                             }
                         }
                         scc_film.credentials.rolePersonsByRole = rolePersonTypes
-                        if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
-                            console.log('Film ID', scc_film.id, 'credentials', scc_film.credentials.rolePerson, 'persons ', scc_film.credentials.rolePersonsByRole)
-                        }
                     }
 
                     // Rolecompanies by role

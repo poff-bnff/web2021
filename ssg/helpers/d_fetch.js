@@ -19,12 +19,17 @@ let checkDomain = function(element) {
     if (!DOMAIN) {
         return true
     }
+
     // kui on domain, siis element['domains'] = [domain]
     if (element['domain'] && !element['domains']){
         element['domains'] = [element['domain']]
     }
 
-    if (element['domains'] === undefined) {
+    if (element.id === 15542 && element.firstName) {
+        console.log('TESTPERSON DOMAINS ', element['domains']);
+    }
+
+    if (element.domains === undefined || !element?.domains?.length) {
         // console.log(3)
         return true
     }

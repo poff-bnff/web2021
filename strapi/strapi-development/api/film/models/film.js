@@ -66,7 +66,6 @@ module.exports = {
         orderedFilms: [{ order: 1, film: result.id }],
         // remoteId: result.remoteId,
       })
-      console.log('Cassette film info before ', JSON.stringify(result), 'Cassette film info after ', JSON.stringify(createCassetteResult))
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
