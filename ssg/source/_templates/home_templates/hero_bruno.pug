@@ -19,7 +19,7 @@ if self.data.heroArticle
             a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
                 if self.data.heroArticle
                     if self.data.heroArticle.clipUrlDefault
-                        +videoAp(self.data.heroArticle.clipUrlDefault)
+                        +heroVideo(self.data.heroArticle.clipUrlDefault)
                     else if self.data.heroArticle.primaryImage
                         img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).hero_image
                     else
