@@ -21,6 +21,12 @@ Authorization: Bearer {{nonProdToken}}
 
 ###
 
-GET https://admin.poff.ee/users/16998 HTTP/1.1
+POST https://admin.poff.ee/auth/oauth/register HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{nonProdToken}}
+
+{
+    "username": "test123",
+    "email": "user@strapi.io",
+    "password": "xxxxxxxxxxxx"
+}
