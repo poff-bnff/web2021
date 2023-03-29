@@ -154,6 +154,7 @@ module.exports = {
       'person.filmographies.role_at_films',
       'person.picture',
       'person.images',
+      'person.audioreel',
     ]);
     const sanitized = sanitizeUser(fetchedUser)
 

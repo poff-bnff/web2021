@@ -96,6 +96,9 @@ async function fillThePersonForm(person) {
     // Display existing profile image
     addExistingProfileImg(person.picture)
 
+    // Display existing profile image
+    addExistingAudioreel(person.audioreel)
+
     if (person.addr_coll) {
         document.getElementById('addr_strapi_id').value = person.addr_coll.id
     }
@@ -642,6 +645,23 @@ function addExistingProfileImg(imageData) {
         const text = document.createTextNode(`${imageData.alternativeText} (${imageData.caption})`);
         textElement.appendChild(text);
         profileImgElement.appendChild(textElement);
+    }
+}
+
+function addExistingAudioreel(audioreelData) {
+    if (audioreelData) {
+        const audioreelElementParent = document.getElementById('audioreel').parentElement;
+
+        const audioreelLabel = audioreelElementParent.getElementsByClassName('person_profile_label')[0]
+        audioreelLabel.innerHTML = `${audioreelLabel.innerHTML} (adding new audioreel replaces the current one)`
+
+        const aElement = document.createElement('a');
+        const textElement = document.createTextNode(`${audioreelData.name}${audioreelData.ext}`);
+        aElement.appendChild(textElement)
+        aElement.title = `${audioreelData.name}${audioreelData.ext}`
+        aElement.href = `https://assets.poff.ee/img/${audioreelData.hash}${audioreelData.ext}`
+        aElement.target = '_blank'
+        audioreelElementParent.prepend(aElement);
     }
 }
 

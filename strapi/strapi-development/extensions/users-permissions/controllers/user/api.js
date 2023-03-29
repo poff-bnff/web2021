@@ -933,7 +933,7 @@ module.exports = {
       // Update existing ones
       await updateFilmographies(userPerson)
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       // Gallery images
       // Delete gallery images
@@ -961,10 +961,15 @@ module.exports = {
         }
       }
 
-      // if (files.audioreel) {
-      //   const uploadedAudioreel = await uploadAudioreel(files.audioreel)
-      //   personFormData.audioreel = uploadedAudioreel
-      // }
+      if (files.audioreel) {
+        const uploadedAudioreel = await uploadAudioreel(files.audioreel)
+        if (userPerson.audioreel) {
+          const oldAudioreelId = userPerson.audioreel.id
+          const oldAudioreel = await strapi.plugins['upload'].services.upload.fetch({ 'id': oldAudioreelId });
+          await strapi.plugins['upload'].services.upload.remove(oldAudioreel);
+        }
+        personFormData.audioreel = uploadedAudioreel
+      }
 
       // Upload new gallery images
       await addNewGalleryImages(files);
@@ -1008,7 +1013,7 @@ module.exports = {
       personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
 
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       console.log('personFormData', personFormData);
       let newPerson = await strapi.services['person'].create(personFormData)

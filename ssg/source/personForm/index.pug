@@ -328,7 +328,7 @@ block content
                     //- audioreel
                     .form_group
                         div#audioError
-                        label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
+                        label.person_profile_label.audioreel_label(for='audioreel')= self.label.userprofile.audioreel
                         input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateAudioAndPreview(this.files[0])')
 
             fieldset
