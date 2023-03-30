@@ -776,6 +776,13 @@ main.grid_film(id=self.id)
                                         //- if screening.screeningTown === 'Tartu'
                                         //-     a.btn.btn_covid.active(href='https://forms.gle/UU4sFENoWyZ3PjSF8' role='button' target='_BLANK')= self.label.button.covidRegister
                                         //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
+                                        //- script.
+                                        //-     src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"
+                                        <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"></script>
+                                        <input type="button" data-widgetpopup="true" data-widget-id="20432" data-lang="est" value="Click me">
+                                        <button onclick="popupWidget(20432, 'eng', 387808)">Buy ticket</button>
+                                        <div data-widget-id="20432" data-concert="387808" data-widgetautoload="true" data-lang="est">kolmas</div>
+
 
             //- if film.filmQaClip
 
