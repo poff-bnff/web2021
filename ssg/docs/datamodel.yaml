@@ -1300,7 +1300,7 @@ L1MenuIndustry: &L1MenuIndustry
         - *L2MenuIndustry
 
 
-#Industy ...
+#Industy ... osa
 
 IndustryPersonType: &IndustryPersonType
     _path: /industry-person-types
