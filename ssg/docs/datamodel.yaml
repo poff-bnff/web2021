@@ -1085,222 +1085,222 @@ Language: &Language
     name_en: Estonian (short text)
     name_ru: Эстонский (short text)
 
-# Menu
+# Menu / esialgses kohas
 
-PoffiSubMenuItem: &PoffiSubMenuItem
-    name: *Translated #(Component)
-    poffi_article: *POFFiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# PoffiSubMenuItem: &PoffiSubMenuItem
+#     name: *Translated #(Component)
+#     poffi_article: *POFFiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-POFFiMenu: &POFFiMenu
-    _path: /pof-fi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    poffi_article: *POFFiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *PoffiSubMenuItem
-    publish: (boolean)
+# POFFiMenu: &POFFiMenu
+#     _path: /pof-fi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     poffi_article: *POFFiArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *PoffiSubMenuItem
+#     publish: (boolean)
 
-JustFilmiSubMenuItem: &JustFilmiSubMenuItem
-    name: *Translated #(Component)
-    just_filmi_article: *JustFilmiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# JustFilmiSubMenuItem: &JustFilmiSubMenuItem
+#     name: *Translated #(Component)
+#     just_filmi_article: *JustFilmiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-JustFilmiMenu: &JustFilmiMenu
-    _path: /just-filmi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    just_filmi_article: *JustFilmiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *JustFilmiSubMenuItem
-    publish: (boolean)
+# JustFilmiMenu: &JustFilmiMenu
+#     _path: /just-filmi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     just_filmi_article: *JustFilmiArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *JustFilmiSubMenuItem
+#     publish: (boolean)
 
-ShortsiSubMenuItem: &ShortsiSubMenuItem
-    name: *Translated #(Component)
-    shortsi_article: *ShortsiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# ShortsiSubMenuItem: &ShortsiSubMenuItem
+#     name: *Translated #(Component)
+#     shortsi_article: *ShortsiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-ShortsiMenu: &ShortsiMenu
-    _path: /shortsi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    shortsi_article: *ShortsiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *ShortsiSubMenuItem
-    publish: (boolean)
+# ShortsiMenu: &ShortsiMenu
+#     _path: /shortsi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     shortsi_article: *ShortsiArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *ShortsiSubMenuItem
+#     publish: (boolean)
 
-KinoffiSubMenuItem: &KinoffiSubMenuItem
-    name: *Translated #(Component)
-    kinoffi_article: *KinoffiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# KinoffiSubMenuItem: &KinoffiSubMenuItem
+#     name: *Translated #(Component)
+#     kinoffi_article: *KinoffiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-KinoffiMenu: &KinoffiMenu
-    _path: /kinoffi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    kinoffi_article: *KinoffiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *KinoffiSubMenuItem
-    publish: (boolean)
+# KinoffiMenu: &KinoffiMenu
+#     _path: /kinoffi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     kinoffi_article: *KinoffiArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *KinoffiSubMenuItem
+#     publish: (boolean)
 
-HoffiSubMenuItem: &HoffiSubMenuItem
-    name: *Translated #(Component)
-    hoffi_article: *HOFFiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# HoffiSubMenuItem: &HoffiSubMenuItem
+#     name: *Translated #(Component)
+#     hoffi_article: *HOFFiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-HOFFiMenu: &HOFFiMenu
-    _path: /hof-fi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    hoffi_article: *HOFFiArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *HoffiSubMenuItem
-    publish: (boolean)
+# HOFFiMenu: &HOFFiMenu
+#     _path: /hof-fi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     hoffi_article: *HOFFiArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *HoffiSubMenuItem
+#     publish: (boolean)
 
-TartuffiSubMenuItem: &TartuffiSubMenuItem
-    name: *Translated #(Component)
-    tartuffi_article: *TartuffiArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# TartuffiSubMenuItem: &TartuffiSubMenuItem
+#     name: *Translated #(Component)
+#     tartuffi_article: *TartuffiArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-TartuffiMenu: &TartuffiMenu
-    _path: /tartuffi-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    tartuffi_article: *TartuffiArticle #(Component)
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *TartuffiSubMenuItem
-    publish: (boolean)
+# TartuffiMenu: &TartuffiMenu
+#     _path: /tartuffi-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     tartuffi_article: *TartuffiArticle #(Component)
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *TartuffiSubMenuItem
+#     publish: (boolean)
 
-KumuSubMenuItem: &KumuSubMenuItem
-    name: *Translated #(Component)
-    kumu_article: *KumuArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# KumuSubMenuItem: &KumuSubMenuItem
+#     name: *Translated #(Component)
+#     kumu_article: *KumuArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-KumuMenu: &KumuMenu
-    _path: /kumu-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    kumu_article: *KumuArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *KumuSubMenuItem
-    publish: (boolean)
+# KumuMenu: &KumuMenu
+#     _path: /kumu-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     kumu_article: *KumuArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *KumuSubMenuItem
+#     publish: (boolean)
 
-BrunoSubMenuItem: &BrunoSubMenuItem
-    name: *Translated #(Component)
-    bruno_article: *BrunoArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# BrunoSubMenuItem: &BrunoSubMenuItem
+#     name: *Translated #(Component)
+#     bruno_article: *BrunoArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-BrunoMenu: &BrunoMenu
-    _path: /bruno-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    bruno_article: *BrunoArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *BrunoSubMenuItem
-    publish: (boolean)
+# BrunoMenu: &BrunoMenu
+#     _path: /bruno-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     bruno_article: *BrunoArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *BrunoSubMenuItem
+#     publish: (boolean)
 
-FilmikooliSubMenuItem: &FilmikooliSubMenuItem
-    name: *Translated #(Component)
-    filmikooli_article: *FilmikooliArticle
-    order: (Number)
-    customUrl: *Translated #(Component)
-    namePrivate: (text)
-    publish: (boolean)
+# FilmikooliSubMenuItem: &FilmikooliSubMenuItem
+#     name: *Translated #(Component)
+#     filmikooli_article: *FilmikooliArticle
+#     order: (Number)
+#     customUrl: *Translated #(Component)
+#     namePrivate: (text)
+#     publish: (boolean)
 
-FilmikooliMenu: &FilmikooliMenu
-    _path: /filmikooli-menus
-    #namePrivate: (text, private field)
-    name: *Translated #(Component)
-    filmikooli_article: *FilmikooliArticle
-    customUrl: *Translated #(Component)
-    order: (Number)
-    subMenuItem: #(Component (repeatable))
-        - *FilmikooliSubMenuItem
-    publish: (boolean)
+# FilmikooliMenu: &FilmikooliMenu
+#     _path: /filmikooli-menus
+#     #namePrivate: (text, private field)
+#     name: *Translated #(Component)
+#     filmikooli_article: *FilmikooliArticle
+#     customUrl: *Translated #(Component)
+#     order: (Number)
+#     subMenuItem: #(Component (repeatable))
+#         - *FilmikooliSubMenuItem
+#     publish: (boolean)
 
-L3MenuIndustry: &L3MenuIndustry
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-    industry_article: *IndustryArticle
-    order: number
-    customUrl_et: (text)
-    customUrl_en: (text)
-    customUrl_ru: (text)
-    publish: boolean
-    namePrivate: (text)
+# L3MenuIndustry: &L3MenuIndustry
+#     name_et: (text)
+#     name_en: (text)
+#     name_ru: (text)
+#     industry_article: *IndustryArticle
+#     order: number
+#     customUrl_et: (text)
+#     customUrl_en: (text)
+#     customUrl_ru: (text)
+#     publish: boolean
+#     namePrivate: (text)
 
-L2MenuIndustry: &L2MenuIndustry
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-    industry_article: *IndustryArticle
-    order: number
-    customUrl_et: (text)
-    customUrl_en: (text)
-    customUrl_ru: (text)
-    publish: boolean
-    namePrivate: (text)
-    L3MenuItem: #(Component (repeatable))
-        - *L3MenuIndustry
+# L2MenuIndustry: &L2MenuIndustry
+#     name_et: (text)
+#     name_en: (text)
+#     name_ru: (text)
+#     industry_article: *IndustryArticle
+#     order: number
+#     customUrl_et: (text)
+#     customUrl_en: (text)
+#     customUrl_ru: (text)
+#     publish: boolean
+#     namePrivate: (text)
+#     L3MenuItem: #(Component (repeatable))
+#         - *L3MenuIndustry
 
-L1MenuIndustry: &L1MenuIndustry
-    _path: /l1-menu-industries
-    namePrivate: (text)
-    name_et: (text)
-    name_en: (text)
-    name_ru: (text)
-    industry_article: *IndustryArticle
-    order: number
-    customUrl_et: (text)
-    customUrl_en: (text)
-    customUrl_ru: (text)
-    publish: boolean
-    L2MenuItem: #(Component (repeatable))
-        - *L2MenuIndustry
+# L1MenuIndustry: &L1MenuIndustry
+#     _path: /l1-menu-industries
+#     namePrivate: (text)
+#     name_et: (text)
+#     name_en: (text)
+#     name_ru: (text)
+#     industry_article: *IndustryArticle
+#     order: number
+#     customUrl_et: (text)
+#     customUrl_en: (text)
+#     customUrl_ru: (text)
+#     publish: boolean
+#     L2MenuItem: #(Component (repeatable))
+#         - *L2MenuIndustry
 
 
-#Industy ... osa
+#Industry ... osa
 
 IndustryPersonType: &IndustryPersonType
     _path: /industry-person-types
@@ -1947,7 +1947,7 @@ IndustryMenu: &IndustryMenu
         - *IndustrySubMenuItem
     publish: (boolean)
 
-#Filikool
+#Filmikool
 CourseTags: &CourseTags
     keywords: #(Component (repeatable))
       - *TagKeyword
@@ -2769,6 +2769,220 @@ DisCampFooter: &DisCampFooter
         - *FooterItemNav
     supporters: #(Component (repeatable))
         - *SupSecDisCamp
+
+# Menu / uues kohas
+
+PoffiSubMenuItem: &PoffiSubMenuItem
+    name: *Translated #(Component)
+    poffi_article: *POFFiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+POFFiMenu: &POFFiMenu
+    _path: /pof-fi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    poffi_article: *POFFiArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *PoffiSubMenuItem
+    publish: (boolean)
+
+JustFilmiSubMenuItem: &JustFilmiSubMenuItem
+    name: *Translated #(Component)
+    just_filmi_article: *JustFilmiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+JustFilmiMenu: &JustFilmiMenu
+    _path: /just-filmi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    just_filmi_article: *JustFilmiArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *JustFilmiSubMenuItem
+    publish: (boolean)
+
+ShortsiSubMenuItem: &ShortsiSubMenuItem
+    name: *Translated #(Component)
+    shortsi_article: *ShortsiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+ShortsiMenu: &ShortsiMenu
+    _path: /shortsi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    shortsi_article: *ShortsiArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *ShortsiSubMenuItem
+    publish: (boolean)
+
+KinoffiSubMenuItem: &KinoffiSubMenuItem
+    name: *Translated #(Component)
+    kinoffi_article: *KinoffiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+KinoffiMenu: &KinoffiMenu
+    _path: /kinoffi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    kinoffi_article: *KinoffiArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *KinoffiSubMenuItem
+    publish: (boolean)
+
+HoffiSubMenuItem: &HoffiSubMenuItem
+    name: *Translated #(Component)
+    hoffi_article: *HOFFiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+HOFFiMenu: &HOFFiMenu
+    _path: /hof-fi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    hoffi_article: *HOFFiArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *HoffiSubMenuItem
+    publish: (boolean)
+
+TartuffiSubMenuItem: &TartuffiSubMenuItem
+    name: *Translated #(Component)
+    tartuffi_article: *TartuffiArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+TartuffiMenu: &TartuffiMenu
+    _path: /tartuffi-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    tartuffi_article: *TartuffiArticle #(Component)
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *TartuffiSubMenuItem
+    publish: (boolean)
+
+KumuSubMenuItem: &KumuSubMenuItem
+    name: *Translated #(Component)
+    kumu_article: *KumuArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+KumuMenu: &KumuMenu
+    _path: /kumu-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    kumu_article: *KumuArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *KumuSubMenuItem
+    publish: (boolean)
+
+BrunoSubMenuItem: &BrunoSubMenuItem
+    name: *Translated #(Component)
+    bruno_article: *BrunoArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+BrunoMenu: &BrunoMenu
+    _path: /bruno-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    bruno_article: *BrunoArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *BrunoSubMenuItem
+    publish: (boolean)
+
+FilmikooliSubMenuItem: &FilmikooliSubMenuItem
+    name: *Translated #(Component)
+    filmikooli_article: *FilmikooliArticle
+    order: (Number)
+    customUrl: *Translated #(Component)
+    namePrivate: (text)
+    publish: (boolean)
+
+FilmikooliMenu: &FilmikooliMenu
+    _path: /filmikooli-menus
+    #namePrivate: (text, private field)
+    name: *Translated #(Component)
+    filmikooli_article: *FilmikooliArticle
+    customUrl: *Translated #(Component)
+    order: (Number)
+    subMenuItem: #(Component (repeatable))
+        - *FilmikooliSubMenuItem
+    publish: (boolean)
+
+L3MenuIndustry: &L3MenuIndustry
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    industry_article: *IndustryArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    namePrivate: (text)
+
+L2MenuIndustry: &L2MenuIndustry
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    industry_article: *IndustryArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    namePrivate: (text)
+    L3MenuItem: #(Component (repeatable))
+        - *L3MenuIndustry
+
+L1MenuIndustry: &L1MenuIndustry
+    _path: /l1-menu-industries
+    namePrivate: (text)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    industry_article: *IndustryArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    L2MenuItem: #(Component (repeatable))
+        - *L2MenuIndustry
 
 #SingleType
 # Hero
