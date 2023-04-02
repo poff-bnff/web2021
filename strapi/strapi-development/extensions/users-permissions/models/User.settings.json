@@ -92,8 +92,8 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "via": "owner",
-      "collection": "product"
+      "collection": "product",
+      "via": "owner"
     },
     "transactions": {
       "collection": "transaction",
@@ -104,8 +104,8 @@
       "via": "user"
     },
     "business_profiles": {
-      "via": "user",
-      "collection": "business-profile"
+      "collection": "business-profile",
+      "via": "user"
     },
     "my_events": {
       "type": "component",
@@ -124,6 +124,11 @@
     },
     "person": {
       "model": "person"
+    },
+    "My": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.my"
     }
   }
 }

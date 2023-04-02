@@ -2407,6 +2407,442 @@
                 "type": "string"
               }
             }
+          },
+          "My": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "screenings": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "codeAndTitle": {
+                      "type": "string"
+                    },
+                    "ticketingUrl": {
+                      "type": "string"
+                    },
+                    "dateTime": {
+                      "type": "string"
+                    },
+                    "introQaConversation": {
+                      "type": "component"
+                    },
+                    "durationTotal": {
+                      "type": "integer"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "screening_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "screening_mode": {
+                      "type": "string"
+                    },
+                    "subtitles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cassette": {
+                      "type": "string"
+                    },
+                    "bookingUrl": {
+                      "type": "string"
+                    },
+                    "extraInfo": {
+                      "type": "component"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "remoteId": {
+                      "type": "uid"
+                    },
+                    "ticketingId": {
+                      "type": "uid"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "films": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title_et": {
+                      "type": "string"
+                    },
+                    "title_en": {
+                      "type": "string"
+                    },
+                    "title_ru": {
+                      "type": "string"
+                    },
+                    "synopsis": {
+                      "type": "component"
+                    },
+                    "festival_editions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tags": {
+                      "type": "component"
+                    },
+                    "slug_et": {
+                      "type": "uid"
+                    },
+                    "slug_en": {
+                      "type": "uid"
+                    },
+                    "slug_ru": {
+                      "type": "uid"
+                    },
+                    "presenters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "remoteId": {
+                      "type": "uid"
+                    },
+                    "orderedFilms": {
+                      "type": "component"
+                    },
+                    "stills": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "trailer": {
+                      "type": "component"
+                    },
+                    "QaClip": {
+                      "type": "component"
+                    },
+                    "chat_w_name": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "products": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "product_category": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "ticketingRight": {
+                      "type": "component"
+                    },
+                    "reservation_time": {
+                      "type": "string"
+                    },
+                    "reserved_to": {
+                      "type": "string"
+                    },
+                    "reservation_expired": {
+                      "type": "string"
+                    },
+                    "reservation_price": {
+                      "type": "number"
+                    },
+                    "transactions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "product_type": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "Course"
+                      ]
+                    },
+                    "owner": {
+                      "type": "string"
+                    },
+                    "valid_from": {
+                      "type": "string"
+                    },
+                    "valid_to": {
+                      "type": "string"
+                    },
+                    "industry_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transferable": {
+                      "type": "boolean"
+                    },
+                    "override_transfer_locking": {
+                      "type": "boolean"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "course_events": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title_private": {
+                      "type": "string"
+                    },
+                    "title_et": {
+                      "type": "string"
+                    },
+                    "title_en": {
+                      "type": "string"
+                    },
+                    "title_ru": {
+                      "type": "string"
+                    },
+                    "slug_et": {
+                      "type": "uid"
+                    },
+                    "slug_en": {
+                      "type": "uid"
+                    },
+                    "slug_ru": {
+                      "type": "uid"
+                    },
+                    "short_descr_et": {
+                      "type": "string"
+                    },
+                    "short_descr_en": {
+                      "type": "string"
+                    },
+                    "short_descr_ru": {
+                      "type": "string"
+                    },
+                    "description_et": {
+                      "type": "string"
+                    },
+                    "description_en": {
+                      "type": "string"
+                    },
+                    "description_ru": {
+                      "type": "string"
+                    },
+                    "start_time": {
+                      "type": "string"
+                    },
+                    "duration_time": {
+                      "type": "string"
+                    },
+                    "end_time": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "course_module": {
+                      "type": "component"
+                    },
+                    "credentials": {
+                      "type": "component"
+                    },
+                    "festival_editions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "domains": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_mode": {
+                      "type": "string"
+                    },
+                    "trailer": {
+                      "type": "component"
+                    },
+                    "industry_categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "is_live_event": {
+                      "type": "boolean"
+                    },
+                    "is_public_event": {
+                      "type": "boolean"
+                    },
+                    "public": {
+                      "type": "boolean"
+                    },
+                    "preconditions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "moodle_id": {
+                      "type": "uid"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "images": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "video_url": {
+                      "type": "string"
+                    },
+                    "publish_et": {
+                      "type": "boolean"
+                    },
+                    "publish_en": {
+                      "type": "boolean"
+                    },
+                    "publish_ru": {
+                      "type": "boolean"
+                    },
+                    "remote_id": {
+                      "type": "uid"
+                    },
+                    "product_categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "industry_projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "publishFrom": {
+                      "type": "string"
+                    },
+                    "publishUntil": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "component"
+                    },
+                    "presentedBy": {
+                      "type": "component"
+                    },
+                    "languages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_access": {
+                      "type": "string"
+                    },
+                    "chat_w_name": {
+                      "type": "string"
+                    },
+                    "button": {
+                      "type": "component"
+                    },
+                    "industry_people": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2915,6 +3351,442 @@
           },
           "person": {
             "type": "string"
+          },
+          "My": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "screenings": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "codeAndTitle": {
+                      "type": "string"
+                    },
+                    "ticketingUrl": {
+                      "type": "string"
+                    },
+                    "dateTime": {
+                      "type": "string"
+                    },
+                    "introQaConversation": {
+                      "type": "component"
+                    },
+                    "durationTotal": {
+                      "type": "integer"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "screening_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "screening_mode": {
+                      "type": "string"
+                    },
+                    "subtitles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cassette": {
+                      "type": "string"
+                    },
+                    "bookingUrl": {
+                      "type": "string"
+                    },
+                    "extraInfo": {
+                      "type": "component"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "remoteId": {
+                      "type": "uid"
+                    },
+                    "ticketingId": {
+                      "type": "uid"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "films": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title_et": {
+                      "type": "string"
+                    },
+                    "title_en": {
+                      "type": "string"
+                    },
+                    "title_ru": {
+                      "type": "string"
+                    },
+                    "synopsis": {
+                      "type": "component"
+                    },
+                    "festival_editions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "tags": {
+                      "type": "component"
+                    },
+                    "slug_et": {
+                      "type": "uid"
+                    },
+                    "slug_en": {
+                      "type": "uid"
+                    },
+                    "slug_ru": {
+                      "type": "uid"
+                    },
+                    "presenters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "remoteId": {
+                      "type": "uid"
+                    },
+                    "orderedFilms": {
+                      "type": "component"
+                    },
+                    "stills": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "trailer": {
+                      "type": "component"
+                    },
+                    "QaClip": {
+                      "type": "component"
+                    },
+                    "chat_w_name": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "products": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "product_category": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "ticketingRight": {
+                      "type": "component"
+                    },
+                    "reservation_time": {
+                      "type": "string"
+                    },
+                    "reserved_to": {
+                      "type": "string"
+                    },
+                    "reservation_expired": {
+                      "type": "string"
+                    },
+                    "reservation_price": {
+                      "type": "number"
+                    },
+                    "transactions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "product_type": {
+                      "type": "string",
+                      "enum": [
+                        "pass",
+                        "Course"
+                      ]
+                    },
+                    "owner": {
+                      "type": "string"
+                    },
+                    "valid_from": {
+                      "type": "string"
+                    },
+                    "valid_to": {
+                      "type": "string"
+                    },
+                    "industry_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transferable": {
+                      "type": "boolean"
+                    },
+                    "override_transfer_locking": {
+                      "type": "boolean"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "course_events": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title_private": {
+                      "type": "string"
+                    },
+                    "title_et": {
+                      "type": "string"
+                    },
+                    "title_en": {
+                      "type": "string"
+                    },
+                    "title_ru": {
+                      "type": "string"
+                    },
+                    "slug_et": {
+                      "type": "uid"
+                    },
+                    "slug_en": {
+                      "type": "uid"
+                    },
+                    "slug_ru": {
+                      "type": "uid"
+                    },
+                    "short_descr_et": {
+                      "type": "string"
+                    },
+                    "short_descr_en": {
+                      "type": "string"
+                    },
+                    "short_descr_ru": {
+                      "type": "string"
+                    },
+                    "description_et": {
+                      "type": "string"
+                    },
+                    "description_en": {
+                      "type": "string"
+                    },
+                    "description_ru": {
+                      "type": "string"
+                    },
+                    "start_time": {
+                      "type": "string"
+                    },
+                    "duration_time": {
+                      "type": "string"
+                    },
+                    "end_time": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "course_module": {
+                      "type": "component"
+                    },
+                    "credentials": {
+                      "type": "component"
+                    },
+                    "festival_editions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "domains": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_mode": {
+                      "type": "string"
+                    },
+                    "trailer": {
+                      "type": "component"
+                    },
+                    "industry_categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "is_live_event": {
+                      "type": "boolean"
+                    },
+                    "is_public_event": {
+                      "type": "boolean"
+                    },
+                    "public": {
+                      "type": "boolean"
+                    },
+                    "preconditions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "moodle_id": {
+                      "type": "uid"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "images": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "video_url": {
+                      "type": "string"
+                    },
+                    "publish_et": {
+                      "type": "boolean"
+                    },
+                    "publish_en": {
+                      "type": "boolean"
+                    },
+                    "publish_ru": {
+                      "type": "boolean"
+                    },
+                    "remote_id": {
+                      "type": "uid"
+                    },
+                    "product_categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "industry_projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "publishFrom": {
+                      "type": "string"
+                    },
+                    "publishUntil": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "component"
+                    },
+                    "presentedBy": {
+                      "type": "component"
+                    },
+                    "languages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "event_access": {
+                      "type": "string"
+                    },
+                    "chat_w_name": {
+                      "type": "string"
+                    },
+                    "button": {
+                      "type": "component"
+                    },
+                    "industry_people": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "created_by": {
             "type": "string"

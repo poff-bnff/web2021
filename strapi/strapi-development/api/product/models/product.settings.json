@@ -51,9 +51,9 @@
       ]
     },
     "owner": {
+      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "my_products"
+      "model": "user"
     },
     "valid_from": {
       "type": "datetime"

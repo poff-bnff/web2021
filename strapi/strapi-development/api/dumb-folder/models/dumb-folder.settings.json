@@ -26,14 +26,17 @@
     "poffi_articles": {
       "collection": "pof-fi-article"
     },
-    "just_filmi_article": {
-      "model": "just-filmi-article"
+    "just_filmi_articles": {
+      "collection": "just-filmi-article"
     },
     "shortsi_articles": {
       "collection": "shortsi-article"
     },
     "industry_articles": {
       "collection": "industry-article"
+    },
+    "course_events": {
+      "collection": "course-event"
     }
   }
 }

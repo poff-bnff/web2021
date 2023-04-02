@@ -621,6 +621,9 @@
                 "person": {
                   "type": "string"
                 },
+                "My": {
+                  "type": "component"
+                },
                 "created_by": {
                   "type": "string"
                 },
