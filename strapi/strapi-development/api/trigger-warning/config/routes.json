@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trigger-warnings",
+      "handler": "trigger-warning.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trigger-warnings/count",
+      "handler": "trigger-warning.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trigger-warnings/:id",
+      "handler": "trigger-warning.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/trigger-warnings",
+      "handler": "trigger-warning.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trigger-warnings/:id",
+      "handler": "trigger-warning.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trigger-warnings/:id",
+      "handler": "trigger-warning.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

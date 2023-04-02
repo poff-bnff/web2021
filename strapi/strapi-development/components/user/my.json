@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_user_mies",
+  "info": {
+    "name": "my",
+    "icon": "id-badge",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "screenings": {
+      "unique": true,
+      "collection": "screening"
+    },
+    "films": {
+      "unique": true,
+      "collection": "cassette"
+    },
+    "products": {
+      "collection": "product"
+    },
+    "course_events": {
+      "collection": "course-event"
+    }
+  }
+}

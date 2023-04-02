@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_menus",
+  "info": {
+    "name": "testMenuDomain1",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "parents": {
+      "collection": "test-menu"
+    }
+  }
+}

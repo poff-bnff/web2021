@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trigger_warnings",
+  "info": {
+    "name": "TagTriggerWarning",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "description_et": {
+      "type": "text"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "description_ru": {
+      "type": "text"
+    }
+  }
+}
