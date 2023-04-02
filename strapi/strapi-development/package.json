@@ -26,7 +26,7 @@
     "strapi-plugin-email": "3.6.0",
     "strapi-plugin-graphql": "3.6.0",
     "strapi-plugin-upload": "3.6.0",
-    "strapi-plugin-users-permissions": "3.6.0",
+    "strapi-plugin-users-permissions": "3.6.11",
     "strapi-provider-email-mcmandrill": "^1.1.4",
     "strapi-utils": "3.6.0",
     "xml-js": "^1.6.11",
