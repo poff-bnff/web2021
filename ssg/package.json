@@ -62,7 +62,7 @@
   "homepage": "",
   "devDependencies": {
     "@types/async": "^3.2.3",
-    "serve": "^11.3.2",
+    "serve": "^14.2.0",
     "yaml-validator": "^3.0.0"
   }
 }
