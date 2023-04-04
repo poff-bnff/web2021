@@ -79,6 +79,14 @@
     },
     "build_end_status": {
       "type": "string"
+    },
+    "type_enum": {
+      "type": "enumeration",
+      "enum": [
+        "build",
+        "live",
+        "KILL"
+      ]
     }
   }
 }

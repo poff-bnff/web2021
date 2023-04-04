@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "l1_menu_defaults",
+  "info": {
+    "name": "L1Menu_default",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "bruno_article": {
+      "model": "bruno-article"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
+    },
+    "L2MenuItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.l2-menu-item"
+    }
+  }
+}

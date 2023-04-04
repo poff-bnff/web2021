@@ -24,6 +24,12 @@
     },
     "tag_secrets": {
       "collection": "tag-secret"
+    },
+    "age_restriction": {
+      "model": "age-restriction"
+    },
+    "trigger_warnings": {
+      "collection": "trigger-warning"
     }
   }
 }

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/age-restrictions",
+      "handler": "age-restriction.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-restrictions/count",
+      "handler": "age-restriction.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-restrictions/:id",
+      "handler": "age-restriction.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/age-restrictions",
+      "handler": "age-restriction.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/age-restrictions/:id",
+      "handler": "age-restriction.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/age-restrictions/:id",
+      "handler": "age-restriction.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

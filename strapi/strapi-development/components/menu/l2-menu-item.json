@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_menu_l2_menu_items",
+  "info": {
+    "name": "L2MenuItem",
+    "icon": "bars",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "bruno_article": {
+      "model": "bruno-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "L3MenuItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.l3-menu-item"
+    }
+  }
+}
