@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/l-1-menu-kumus",
+      "handler": "l1-menu-kumu.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/l-1-menu-kumus/count",
+      "handler": "l1-menu-kumu.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/l-1-menu-kumus/:id",
+      "handler": "l1-menu-kumu.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/l-1-menu-kumus",
+      "handler": "l1-menu-kumu.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/l-1-menu-kumus/:id",
+      "handler": "l1-menu-kumu.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/l-1-menu-kumus/:id",
+      "handler": "l1-menu-kumu.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_menu_l3_menu_kumus",
+  "info": {
+    "name": "L3MenuKumu",
+    "icon": "hard-hat"
+  },
+  "options": {},
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "kumu_article": {
+      "model": "kumu-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "namePrivate": {
+      "type": "string"
+    }
+  }
+}

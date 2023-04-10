@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_menu_l2_menu_kumus",
+  "info": {
+    "name": "L2MenuKumu",
+    "icon": "file-prescription"
+  },
+  "options": {},
+  "attributes": {
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "kumu_article": {
+      "model": "kumu-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "namePrivate": {
+      "type": "string"
+    },
+    "L3MenuItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.l3-menu-kumu"
+    }
+  }
+}
