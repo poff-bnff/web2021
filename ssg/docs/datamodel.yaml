@@ -2955,6 +2955,18 @@ L3MenuIndustry: &L3MenuIndustry
     publish: boolean
     namePrivate: (text)
 
+L3MenuKumu: &L3MenuKumu
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    kumu_article: *KumuArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    namePrivate: (text)
+
 L2MenuIndustry: &L2MenuIndustry
     name_et: (text)
     name_en: (text)
@@ -2968,6 +2980,20 @@ L2MenuIndustry: &L2MenuIndustry
     namePrivate: (text)
     L3MenuItem: #(Component (repeatable))
         - *L3MenuIndustry
+
+L2MenuKumu: &L2MenuKumu
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    kumu_article: *KumuArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    namePrivate: (text)
+    L3MenuItem: #(Component (repeatable))
+        - *L3MenuKumu
 
 L1MenuIndustry: &L1MenuIndustry
     _path: /l1-menu-industries
@@ -2983,6 +3009,21 @@ L1MenuIndustry: &L1MenuIndustry
     publish: boolean
     L2MenuItem: #(Component (repeatable))
         - *L2MenuIndustry
+
+L1MenuKumu: &L1MenuKumu
+    _path: /l1-menu-industries
+    namePrivate: (text)
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    kumu_article: *KumuArticle
+    order: number
+    customUrl_et: (text)
+    customUrl_en: (text)
+    customUrl_ru: (text)
+    publish: boolean
+    L2MenuItem: #(Component (repeatable))
+        - *L2MenuKumu
 
 #SingleType
 # Hero
