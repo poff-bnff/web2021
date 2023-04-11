@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "l1_menu_kumus",
+  "info": {
+    "name": "L1MenuKumu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "namePrivate": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "kumu_article": {
+      "model": "kumu-article"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "customUrl_et": {
+      "type": "string"
+    },
+    "customUrl_en": {
+      "type": "string"
+    },
+    "customUrl_ru": {
+      "type": "string"
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "L2MenuItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.l2-menu-kumu"
+    }
+  }
+}
