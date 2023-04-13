@@ -92,7 +92,8 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
 
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
 
