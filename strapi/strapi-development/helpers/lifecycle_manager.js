@@ -73,7 +73,7 @@ async function build_start_to_strapi_logs(result, domain, err = null, b_err = nu
   }
 
   plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
-  // console.log('Sinu palutud v4ljaprint', plugin_log)
+  // strapi.log.debug('Sinu palutud v4ljaprint', plugin_log)
   return plugin_log
 }
 
@@ -87,7 +87,7 @@ async function call_process(build_dir, plugin_log, args) {
 
   let data = "";
   child.stdout.on('data', (chunk) => {
-    console.log('stdout', decoder.write(chunk))
+    strapi.log.debug('stdout', decoder.write(chunk))
     data += 'info: ' + decoder.write(chunk)
     plugin_log.build_errors = data
     plugin_log.end_time = moment().tz("Europe/Tallinn").format()
@@ -97,7 +97,7 @@ async function call_process(build_dir, plugin_log, args) {
   });
   // since these are streams, you can pipe them elsewhere
   child.stderr.on('data', (chunk) => {
-    console.log('err:', decoder.write(chunk))
+    strapi.log.error('err:', decoder.write(chunk))
     plugin_log.build_errors = 'error: ' + decoder.write(chunk)
     plugin_log.end_time = moment().tz("Europe/Tallinn").format()
     delete plugin_log.id
@@ -106,7 +106,7 @@ async function call_process(build_dir, plugin_log, args) {
   });
   // child.stderr.pipe(child.stdout);
   child.on('close', (code) => {
-    // console.log(`child process exited with code ${code}`)
+    // strapi.log.debug(`child process exited with code ${code}`)
     switch (code) {
       case 0:
         plugin_log.end_time = moment().tz("Europe/Tallinn").format()
@@ -219,7 +219,7 @@ function get_build_script(domain) {
     let dir_to_build = path.join(__dirname, `/../../../ssg/helpers/build_manager.js`)
     return dir_to_build
   } else {
-    console.log('No build script provided for', domain.toUpperCase(), 'or this domain is built through Slack.')
+    strapi.log.debug('No build script provided for', domain.toUpperCase(), 'or this domain is built through Slack.')
     return null
   }
 }
@@ -279,7 +279,7 @@ async function modify_stapi_data(result, model_name, vanish = false) {
   let modelname = await strapi.query(model_name).model.info.name
   modelname = modelname.split('_').join('') // siin on viga, vt yle (modify_stapi_data ei tööta! ka me enam hoiame allStrapidatas? jne
   let result_id = result.id ? result.id : null
-  console.log(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
+  strapi.log.debug(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
   result = clean_result(result)
 
   const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${modelname}.yaml`)
@@ -311,18 +311,18 @@ async function call_build(result, domains, model_name, del = false) {
   const MODELS_TARGET_BUILD = DOMAIN_SPECIFICS.target_build_models || []
   // here to skip specific model builds
   if (!MODELS_TARGET_BUILD.includes(model_name)) {
-    console.log(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
+    strapi.log.debug(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
     return
   }
   let build_error
   if (domains[0] === 'FULL_BUILD') {
     let error = 'FULL BUILD'
-    console.log('-------------', error, '-------------')
+    strapi.log.debug('-------------', error, '-------------')
     build_error = 'Creating/updating this object needs all domain sites to rebuild.'
     await build_start_to_strapi_logs(result, 'All domains', error, build_error, `${model_name} ${result.id}`, del)
   }
   else if (domains.length > 0) {
-    console.log('Build ', domains)
+    strapi.log.debug('Build ', domains)
     for (let domain of domains) {
       let build_dir = get_build_script(domain)
       if (fs.existsSync(build_dir)) {
@@ -353,7 +353,7 @@ async function call_build(result, domains, model_name, del = false) {
     }
   } else {
     let error = 'NO DOMAIN'
-    console.log('-------------', error, '-------------')
+    strapi.log.debug('-------------', error, '-------------')
     build_error = 'All domain or domain related fields must be filled, if you want this object to show on build.(domain).ee.'
     await build_start_to_strapi_logs(result, '¯\\_( ͡ᵔ ͜ʖ ͡ᵔ)_/¯', error, build_error)
   }
