@@ -776,14 +776,15 @@ main.grid_film(id=self.id)
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 //- PL page version
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningDonation
-                                                //- widget buy version
-                                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick="popupWidget(20432, 'est', 387808)" btn-type='screening' role='button' )= self.label.button.screeningDonation
+                                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningDonation
+                                                //- WIDGET buy version
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, ${pLang}, ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
+
                                             else
                                                 //- PL page version
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
-                                                //- widget buy version
-                                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick="popupWidget(20432, 'est', 387808)" btn-type='screening' role='button')= self.label.button.screeningBuyTicket
+                                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                                //- WIDGET buy version
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, ${pLang}, ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
                                             //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
