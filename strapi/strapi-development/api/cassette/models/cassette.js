@@ -55,15 +55,17 @@ module.exports = {
       strapi.log.debug('Create or update: ')
       if (data.skipbuild) return
 
-      strapi.log.debug(data.festival_editions, result.festival_editions)
-
-      const festival_editions = await strapi.db.query('festival-edition').find({ id: result.festival_editions })
+      const festival_editions = await strapi.db.query('festival-edition').find({ id: result.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+      strapi.log.debug('Got domains: ', domains)
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
+      strapi.log.debug('Lets build: ')
       await call_build(result, domains, model_name)
     },
+
+    // params is the original object
     async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
