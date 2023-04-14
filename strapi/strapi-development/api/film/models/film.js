@@ -69,8 +69,6 @@ module.exports = {
       await call_update(result, model_name)
     },
     async beforeUpdate(params, data) {
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
-
       const prefixes = {
         2213: '0_'
       }
@@ -86,12 +84,13 @@ module.exports = {
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
+        const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+        const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+        strapi.log.debug('films beforeUpdate got domains', domains)
         await call_delete(params, domains, model_name)
       }
     },
     async afterUpdate(result, params, data) {
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
 
       allCassettesWithThisFilmOnly.map(async a => {
@@ -124,7 +123,10 @@ module.exports = {
 
       })
 
-      if (domains.length > 0) {
+      const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+      strapi.log.debug('films afterUpdate got domains', domains)
+        if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
 

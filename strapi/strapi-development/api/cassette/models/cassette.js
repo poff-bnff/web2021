@@ -37,40 +37,41 @@ module.exports = {
     },
     async beforeUpdate(params, data) {
 
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
-
       data.slug_et = data.title_et ? slugify(data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(data.title_ru) : null
       data.slug_en = data.title_en ? slugify(data.title_en) : null
 
       if (data.published_at === null) { // if strapi publish system goes live
         console.log('Draft! Delete: ')
+        const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+        const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
         await call_delete(params, domains, model_name)
       }
 
     },
     async afterUpdate(result, params, data) {
-      // console.log('result- ', result , 'params- ', params, 'data- ', JSON.stringify(data, 0, 2))
 
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-      console.log('Create or update: ')
+      strapi.log.debug('Create or update: ')
       if (data.skipbuild) return
+
+      const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
       await call_build(result, domains, model_name)
     },
-async beforeDelete(params) {
+    async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
-        }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
+        if (result) {
+          const updateDeleteUser = {
+            updated_by: params.user,
+            skipbuild: true
+          }
+          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+          return id
         }
       }))
       delete params.user
