@@ -274,7 +274,7 @@ function clean_result(result) {
 
 async function exportModel4SSG(model_name) {
   strapi.log.debug('exportModel4SSG', model_name)
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapiData/${model_name}_b.yaml`)
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${model_name}_b.yaml`)
   const modelDataFromStrapi = await strapi.query(model_name).find()
   strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
   fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
