@@ -43,10 +43,18 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 module.exports = {
   lifecycles: {
-    async afterCreate(result, data) {
 
+    async beforeCreate(params, data) {
+      // Remove published_at from data, so that it is not set automatically to the current time
+      // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
+      if (data.published_at) {
+        delete data.published_at
+      }
+    },
+
+    async afterCreate(result, data) {
       // Automatically create a cassette for a new film
-      const createCassetteResult = await strapi.query('cassette').create({
+      await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
         updated_by: result.updated_by,
@@ -66,16 +74,21 @@ module.exports = {
         orderedFilms: [{ order: 1, film: result.id }],
         // remoteId: result.remoteId,
       })
-      await call_update(result, model_name)
+      // await call_update(result, model_name)
     },
+
     async beforeUpdate(params, data) {
-      const prefixes = {
-        2213: '0_'
-      }
-      let prefix = ''
-      if (data.id in prefixes) {
-        prefix = prefixes[data.id]
-      }
+      // Add prefix to slug
+
+      // film with id 2213 will have slug 0_title_et
+      // const prefixes = {
+      //   2213: '0_'
+      // }
+      // let prefix = ''
+      // if (data.id in prefixes) {
+      //   prefix = prefixes[data.id]
+      // }
+      const prefix = data.id === 2213 ? '0_' : ''
 
       // console.log('params', params, 'data', data);
       data.slug_et = data.title_et ? slugify(prefix + data.title_et) : null
@@ -83,19 +96,22 @@ module.exports = {
       data.slug_en = data.title_en ? slugify(prefix + data.title_en) : null
 
       if (data.published_at === null) { // if strapi publish system goes live
-        console.log('Draft! Delete: ')
+        strapi.log.debug('Draft! Delete: ')
         const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
         const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
         strapi.log.debug('films beforeUpdate got domains', domains)
         await call_delete(params, domains, model_name)
       }
     },
+
     async afterUpdate(result, params, data) {
+      strapi.log.debug('afterUpdate film', result.id, result.title_en)
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
+      strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
       allCassettesWithThisFilmOnly.map(async a => {
         if (data.skipbuild) return
-        console.log('Updating with film data - cassette ID ', a.id, a.title_en);
+        strapi.log.debug('Updating with film data - cassette ID ', a.id, a.title_en);
         const cassetteId = a.id
 
         const updateCassetteResult = await strapi.query('cassette').update(
@@ -115,7 +131,7 @@ module.exports = {
         })
 
         const cassetteDomains = await get_domain(updateCassetteResult) // hard coded if needed AS LIST!!!
-        console.log('... for domains', cassetteDomains.join(', '));
+        strapi.log.debug('... for domains', cassetteDomains.join(', '));
 
         if (cassetteDomains.length > 0) {
           await modify_stapi_data(updateCassetteResult, 'cassette')
