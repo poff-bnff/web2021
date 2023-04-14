@@ -30,31 +30,34 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 module.exports = {
   lifecycles: {
+
+    // result is the created object
+    // data is the data that was sent to the create
     async afterCreate(result, data) {
       // Skip if created along with a new film
       if (data.skipbuild) { return }
       await call_update(result, model_name)
     },
-    async beforeUpdate(params, data) {
 
+    // params is the original object
+    // data is the data that was sent to the update
+    async beforeUpdate(params, data) {
       data.slug_et = data.title_et ? slugify(data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(data.title_ru) : null
       data.slug_en = data.title_en ? slugify(data.title_en) : null
-
-      if (data.published_at === null) { // if strapi publish system goes live
-        console.log('Draft! Delete: ')
-        const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
-        const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
-        await call_delete(params, domains, model_name)
-      }
-
     },
+
+    // result is the updated object
+    // params is the original object
+    // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
 
       strapi.log.debug('Create or update: ')
       if (data.skipbuild) return
 
-      const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+      strapi.log.debug(data.festival_editions, result.festival_editions)
+
+      const festival_editions = await strapi.db.query('festival-edition').find({ id: result.festival_editions })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
