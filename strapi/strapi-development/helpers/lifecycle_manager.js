@@ -277,23 +277,23 @@ async function exportModel4SSG(model_name) {
   const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapiData/${model_name}_b.yaml`)
   const modelDataFromStrapi = await strapi.query(model_name).find()
   strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
-  fs.writeFileSync(yamlFile, yaml.safeDump(modelDataFromStrapi))
+  fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
   strapi.log.debug('return from exportModel4SSG', model_name)
 }
 
 async function modify_stapi_data(result, model_name, vanish = false) {
-  await exportModel4SSG(model_name)
   strapi.log.debug('modify_stapi_data', model_name, result.id)
+  let strapiModelName = await strapi.query(model_name).model.info.name
+  await exportModel4SSG(strapiModelName)
   const modelsToBeSkipped = ['users-persons']
   if (modelsToBeSkipped.includes(model_name)) { return }
 
-  let modelname = await strapi.query(model_name).model.info.name
-  modelname = modelname.split('_').join('') // siin on viga, vt yle (modify_stapi_data ei tööta! ka me enam hoiame allStrapidatas? jne
+  strapiModelName = strapiModelName.split('_').join('') // siin on viga, vt yle (modify_stapi_data ei tööta! ka me enam hoiame allStrapidatas? jne
   let result_id = result.id ? result.id : null
-  strapi.log.debug(modelname, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
+  strapi.log.debug(strapiModelName, 'id:', result_id, ' by:', result.updated_by?.firstname || null, result.updated_by?.lastname || null)
   result = clean_result(result)
 
-  const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${modelname}.yaml`)
+  const strapidata_dir = path.join(__dirname, '..', '..', '..', 'ssg', 'source', '_allStrapidata', `${strapiModelName}.yaml`)
   let strapidata = yaml.parse(fs.readFileSync(strapidata_dir, 'utf8'), { maxAliasCount: -1 })
 
   let list_of_models = []
