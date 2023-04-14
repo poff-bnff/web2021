@@ -284,7 +284,7 @@ async function exportModel4SSG(model_name) {
 async function modify_stapi_data(result, model_name, vanish = false) {
   strapi.log.debug('modify_stapi_data', model_name, result.id)
   let strapiModelName = await strapi.query(model_name).model.info.name
-  await exportModel4SSG(strapiModelName)
+  // await exportModel4SSG(strapiModelName)
   const modelsToBeSkipped = ['users-persons']
   if (modelsToBeSkipped.includes(model_name)) { return }
 
