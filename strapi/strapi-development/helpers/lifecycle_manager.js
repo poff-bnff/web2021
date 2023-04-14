@@ -15,6 +15,7 @@ const yaml = require('yaml')
 const jsyaml = require('js-yaml');
 const path = require('path')
 const moment = require("moment-timezone")
+const { debug } = require('console')
 
 const mapping_domain = {
   'filmikool.poff.ee': 'filmikool',
@@ -271,8 +272,18 @@ function clean_result(result) {
   return result
 }
 
+async function exportModel4SSG(model_name) {
+  strapi.log.debug('exportModel4SSG', model_name)
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapiData/${model_name}_b.yaml`)
+  const modelDataFromStrapi = await strapi.query(model_name).find()
+  strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
+  fs.writeFileSync(yamlFile, yaml.safeDump(modelDataFromStrapi))
+  strapi.log.debug('return from exportModel4SSG', model_name)
+}
 
 async function modify_stapi_data(result, model_name, vanish = false) {
+  await exportModel4SSG(model_name)
+  strapi.log.debug('modify_stapi_data', model_name, result.id)
   const modelsToBeSkipped = ['users-persons']
   if (modelsToBeSkipped.includes(model_name)) { return }
 
@@ -302,7 +313,9 @@ async function modify_stapi_data(result, model_name, vanish = false) {
     strapidata.push(result)
   }
 
+  strapi.log.debug('write da file', model_name, result.id)
   fs.writeFileSync(strapidata_dir, yaml.stringify(strapidata.filter(e => e !== null), { indent: 4 }), 'utf8')
+  strapi.log.debug('return from modify_stapi_data', model_name, result.id)
 }
 
 async function call_build(result, domains, model_name, del = false) {
