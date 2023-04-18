@@ -1,3 +1,9 @@
+// Description: Fetches data from Strapi
+// according to the datamodel.yaml
+// and saves it to _fetchdir
+//             and _allStrapidata
+//
+
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
