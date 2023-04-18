@@ -74,7 +74,7 @@ module.exports = {
         orderedFilms: [{ order: 1, film: result.id }],
         // remoteId: result.remoteId,
       })
-      // await call_update(result, model_name)
+      await call_update(result, model_name)
     },
 
     async beforeUpdate(params, data) {
