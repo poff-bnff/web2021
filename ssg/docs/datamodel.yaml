@@ -2966,11 +2966,11 @@ L2MenuIndustry: &L2MenuIndustry
     customUrl_ru: (text)
     publish: boolean
     namePrivate: (text)
-    L3MenuItem: #(Component (repeatable))
+    L3MenuItems: #(Component (repeatable))
         - *L3MenuIndustry
 
 L1MenuIndustry: &L1MenuIndustry
-    _path: /l1-menu-industries
+    _path: /l-1-menu-industries
     namePrivate: (text)
     name_et: (text)
     name_en: (text)
@@ -2981,7 +2981,7 @@ L1MenuIndustry: &L1MenuIndustry
     customUrl_en: (text)
     customUrl_ru: (text)
     publish: boolean
-    L2MenuItem: #(Component (repeatable))
+    L2MenuItems: #(Component (repeatable))
         - *L2MenuIndustry
 
 #SingleType
