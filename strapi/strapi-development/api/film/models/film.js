@@ -47,9 +47,9 @@ module.exports = {
     async beforeCreate(params, data) {
       // Remove published_at from data, so that it is not set automatically to the current time
       // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
-      if (data.published_at) {
-        delete data.published_at
-      }
+      // if (data && data.published_at) {
+      //   delete data.published_at
+      // }
     },
 
     async afterCreate(result, data) {
