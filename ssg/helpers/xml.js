@@ -117,7 +117,8 @@ const domainMapping = {
     'justfilm.ee': 'https://justfilm.ee/',
     'kinoff.poff.ee': 'https://kinoff.ee/',
     'industry.poff.ee': 'https://industry.poff.ee/',
-    'shorts.poff.ee': 'http://shorts.poff.ee/'
+    'shorts.poff.ee': 'http://shorts.poff.ee/',
+    'hoff.ee': 'http://hoff.ee/'
 }
 
 const languages = ['et', 'en', 'ru']
