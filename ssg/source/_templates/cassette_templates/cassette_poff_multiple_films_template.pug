@@ -130,6 +130,16 @@ main.grid_cassette
 
 
     if self.screenings && self.screenings[0]
+
+        -   var pLang = ''
+        -   if (self.locale === 'ru') {
+        -       pLang = 'rus'
+        -   } else if (self.locale === 'en') {
+        -       pLang = 'eng'
+        -   } else {
+        -       pLang = 'est'
+        -   }
+
         section.f_screenings_box
             h1.section_headline= self.label.film.screenings
 
@@ -254,7 +264,12 @@ main.grid_cassette
                             a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
                             a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening' style='display: none;' onclick=`modifyFavourites('rmScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                             if screening.ticketingUrl
-                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                //- PL page version
+                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
+                                //- WIDGET buy version
+                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
+
+                            <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"></script>
 
 
     //- section.f_interactive_box
