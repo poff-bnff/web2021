@@ -66,6 +66,9 @@ nice -10 node ./helpers/fetch_footer_from_yaml.js
 echo 'fetch_menu_from_yaml'
 nice -10 node ./helpers/fetch_menu_from_yaml.js
 
+echo 'fetch_menu2_from_yaml'
+nice -10 node ./helpers/fetch_menu2_from_yaml.js
+
 echo 'fetch_programmes_from_yaml'
 nice -10 node ./helpers/fetch_programmes_from_yaml.js
 
