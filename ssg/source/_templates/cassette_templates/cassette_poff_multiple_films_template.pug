@@ -269,6 +269,13 @@ main.grid_cassette
                                 //- WIDGET buy version
                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
+                            //- | test
+                            if screening.screening_types && screening.screening_types.map(t => t.name).includes('Free')
+                                //- PL page version
+                                //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' target='_blank')= self.label.button.screeningFree
+                                //- WIDGET buy version
+                                a.btn.btn_secondary(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' )= self.label.button.screeningFree
+
                             <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"></script>
 
 
