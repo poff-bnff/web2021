@@ -63,6 +63,7 @@ function addConfigIgnorePaths() {
             '/filmikool_courseevents_search', //Filmikool events
             '/locations', //Locations pages for Industry
             '/locations_search', //Locations pages for Industry
+            '/menu2', //Menu2
         ]
     } else if (DOMAIN === 'filmikool.poff.ee') {
         return [
@@ -99,8 +100,50 @@ function addConfigIgnorePaths() {
             '/discamp_courseevents_search', //Discamp events
             '/locations', //Locations pages for Industry
             '/locations_search', //Locations pages for Industry
+            '/menu2', //Menu2
         ]
-    } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'kumu.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
+    } else if (DOMAIN === 'hoff.ee' || DOMAIN === 'justfilm.ee' || DOMAIN === 'kinoff.poff.ee' || DOMAIN === 'oyafond.ee' || DOMAIN === 'shorts.poff.ee') {
+        return [
+            '/_socket_dashboard', //industry
+            '/courses', //filmikool
+            '/covid', //tartuff?
+            '/eventival_persons_search', //industry
+            '/events', //filmikool
+            '/favourite', //poff
+            '/industry_cal', //industry
+            '/industry_events', //industry
+            '/industry_events_search', //industry
+            '/industry_mycal', //industry
+            '/industry_persons', //industry
+            '/industry_persons_search', //industry
+            '/discamp_persons_search', //discamp
+            '/industryproject', //industry
+            '/industry_projects', //industry
+            '/industry_projects_search', //industry
+            '/industry_projects_archive_search', //industry
+            '/industry_persons_archive_search', //industry
+            '/info', //tartuff
+            '/letschat', // POFF letschat page
+            '/login', //poff, industry
+            '/mypoff', // poff, industry
+            '/my_screenings', // poff
+            '/shop', // poff
+            '/signup', //poff, industry
+            '/userprofile', //poff, industry
+            '/virtual_booth', //industry
+            '/favouriteAWS', //OldAWSFavoritePageBackup
+            '/search_archive', //Search film archive
+            '/industry_courseevents_search', //Industry Events
+            '/persons_search', //Persons for Industry
+            '/courses_courseevents', //Filmikool
+            '/discamp_events_search', //Discamp events
+            '/discamp_courseevents_search', //Discamp events
+            '/filmikool_courseevents_search', //Filmikool events
+            '/locations', //Locations pages for Industry
+            '/locations_search', //Locations pages for Industry
+            '/menu2', //Menu2
+        ]
+    } else if (DOMAIN === 'kumu.poff.ee') {
         return [
             '/_socket_dashboard', //industry
             '/courses', //filmikool
@@ -198,6 +241,7 @@ function addConfigIgnorePaths() {
             '/filmikool_courseevents_search', //Filmikool events
             '/locations', //Locations pages for Industry
             '/locations_search', //Locations pages for Industry
+            '/menu2', //Menu2
         ]
     } else if (DOMAIN === 'tartuff.ee') {
         return [
@@ -235,6 +279,7 @@ function addConfigIgnorePaths() {
             '/filmikool_courseevents_search', //Filmikool events
             '/locations', //Locations pages for Industry
             '/locations_search', //Locations pages for Industry
+            '/menu2', //Menu2
         ]
     } else {
         return null
