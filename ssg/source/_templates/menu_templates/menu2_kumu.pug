@@ -1,0 +1,38 @@
+//- Head ja body tagid ainult arendusfaasis kasutuseks (RU teksti korrektseks kuvamiseks),
+//- enne kasutuselevõttu eemaldada, sh meta tag head'i sees
+head
+    meta(charset='utf-8')
+
+//- Head ja body tagid ainult arendusfaasis kasutuseks (RU teksti korrektseks kuvamiseks),
+//- enne kasutuselevõttu eemaldada
+body
+    //- - var articleMenuItemDomain = 'kumu_article'
+    - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
+
+    //- Level 1
+    each L1MenuItem in self.data.menu
+        li
+            if L1MenuItem.link
+                a(href= `${L1MenuItem.link}`)= L1MenuItem.name
+            else
+                a= L1MenuItem.name
+
+            //- Level 2
+            if L1MenuItem.L2MenuItems.length
+                ul
+                    each L2MenuItem in L1MenuItem.L2MenuItems
+                        li
+                            if L2MenuItem.link
+                                a(href= `${L2MenuItem.link}`)= L2MenuItem.name
+                            else
+                                a= L2MenuItem.name
+
+                            //- Level 3
+                            if L2MenuItem.L3MenuItems.length
+                                ul
+                                    each L3MenuItem in L2MenuItem.L3MenuItems
+                                        li
+                                            if L3MenuItem.link
+                                                a(href= `${L3MenuItem.link}`)= L3MenuItem.name
+                                            else
+                                                a= L3MenuItem.name

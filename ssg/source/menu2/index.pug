@@ -1,0 +1,25 @@
+//- if process.env['DOMAIN'] === 'poff.ee'
+//-     include /_templates/menu_templates/menu_poff.pug
+//- else if process.env['DOMAIN'] === 'justfilm.ee'
+//-     include /_templates/menu_templates/menu_justfilm.pug
+//- else if process.env['DOMAIN'] === 'shorts.poff.ee'
+//-     include /_templates/menu_templates/menu_shorts.pug
+//- else if process.env['DOMAIN'] === 'kinoff.poff.ee'
+//-     include /_templates/menu_templates/menu_kinoff.pug
+if process.env['DOMAIN'] === 'industry.poff.ee'
+    include /_templates/menu_templates/menu2_industry.pug
+//- else if process.env['DOMAIN'] === 'discoverycampus.poff.ee'
+//-     include /_templates/menu_templates/menu_discamp.pug
+//- else if process.env['DOMAIN'] === 'hoff.ee'
+//-     include /_templates/menu_templates/menu_hoff.pug
+else if process.env['DOMAIN'] === 'kumu.poff.ee'
+    include /_templates/menu_templates/menu2_kumu.pug
+//- else if process.env['DOMAIN'] === 'tartuff.ee'
+//-     include /_templates/menu_templates/menu_tartuff.pug
+//- else if process.env['DOMAIN'] === 'oyafond.ee'
+//-     include /_templates/menu_templates/menu_bruno.pug
+//- else if process.env['DOMAIN'] === 'filmikool.poff.ee'
+    include /_templates/menu_templates/menu_filmikool.pug
+else
+    body
+        h1 Temporarily in confused state - domain? what domain?

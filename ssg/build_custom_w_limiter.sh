@@ -218,6 +218,9 @@ fetch_data()
     echo '==== limited build ==== fetch_menu_from_yaml'
     node ./helpers/fetch_menu_from_yaml.js
 
+    echo '==== limited build ==== fetch_menu2_from_yaml'
+    node ./helpers/fetch_menu2_from_yaml.js
+
     echo '==== limited build ==== fetch_programmes_from_yaml'
     node ./helpers/fetch_programmes_from_yaml.js
 
