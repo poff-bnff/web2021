@@ -2978,7 +2978,7 @@ L2MenuIndustry: &L2MenuIndustry
     customUrl_ru: (text)
     publish: boolean
     namePrivate: (text)
-    L3MenuItem: #(Component (repeatable))
+    L3MenuItems: #(Component (repeatable))
         - *L3MenuIndustry
 
 L2MenuKumu: &L2MenuKumu
@@ -2992,11 +2992,11 @@ L2MenuKumu: &L2MenuKumu
     customUrl_ru: (text)
     publish: boolean
     namePrivate: (text)
-    L3MenuItem: #(Component (repeatable))
+    L3MenuItems: #(Component (repeatable))
         - *L3MenuKumu
 
 L1MenuIndustry: &L1MenuIndustry
-    _path: /l1-menu-industries
+    _path: /l-1-menu-industries
     namePrivate: (text)
     name_et: (text)
     name_en: (text)
@@ -3007,11 +3007,11 @@ L1MenuIndustry: &L1MenuIndustry
     customUrl_en: (text)
     customUrl_ru: (text)
     publish: boolean
-    L2MenuItem: #(Component (repeatable))
+    L2MenuItems: #(Component (repeatable))
         - *L2MenuIndustry
 
 L1MenuKumu: &L1MenuKumu
-    _path: /l1-menu-industries
+    _path: /l-1-menu-kumus
     namePrivate: (text)
     name_et: (text)
     name_en: (text)
@@ -3022,7 +3022,7 @@ L1MenuKumu: &L1MenuKumu
     customUrl_en: (text)
     customUrl_ru: (text)
     publish: boolean
-    L2MenuItem: #(Component (repeatable))
+    L2MenuItems: #(Component (repeatable))
         - *L2MenuKumu
 
 #SingleType

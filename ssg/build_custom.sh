@@ -207,6 +207,9 @@ fetch_data()
     echo '==== custom build ==== fetch_menu_from_yaml'
     node ./helpers/fetch_menu_from_yaml.js
 
+    echo '==== custom build ==== fetch_menu2_from_yaml'
+    node ./helpers/fetch_menu2_from_yaml.js
+
     echo '==== custom build ==== fetch_programmes_from_yaml'
     node ./helpers/fetch_programmes_from_yaml.js
 
