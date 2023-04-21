@@ -778,13 +778,13 @@ main.grid_film(id=self.id)
                                                 //- PL page version
                                                 //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningDonation
                                                 //- WIDGET buy version
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(widgetId, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(widget_id, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
 
                                             else
                                                 //- PL page version
                                                 //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
                                                 //- WIDGET buy version
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(widgetId, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(widget_id, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
                                         //- | test
                                         if screening.screening_types && screening.screening_types.map(t => t.name).includes('Free')
@@ -802,7 +802,7 @@ main.grid_film(id=self.id)
                                         //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
                                         //- script.
                                         //-     src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"
-                                        <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"></script>
+                                        <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=" + widget_id></script>
                                         //- <input type="button" data-widgetpopup="true" data-widget-id="20432" data-lang="est" value="Click me">
                                         //- <button onclick="popupWidget(20432, 'eng', 387808)">Buy ticket</button>
                                         //- <div data-widget-id="20432" data-concert="387808" data-widgetautoload="true" data-lang="est">kolmas</div>
