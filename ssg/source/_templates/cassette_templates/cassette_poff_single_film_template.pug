@@ -842,17 +842,17 @@ main.grid_film(id=self.id)
             //-         .ratio.ratio-16x9.m-0.p-0
             //-             +videoVl(film.QaClip)
 
-            if film && film.chat_w_name
-                script.
-                    var votemoConfig = {
-                        url: `https://#{film.chat_w_name}.votemo.eu`,
-                        openInDesktop: false,
-                        language: 'poff'
-                    }
+            //- if film && film.chat_w_name
+            //-     script.
+            //-         var votemoConfig = {
+            //-             url: `https://#{film.chat_w_name}.votemo.eu`,
+            //-             openInDesktop: false,
+            //-             language: 'poff'
+            //-         }
 
-                script(src='https://cdn.votemo.eu/dist/widget.js')
+            //-     script(src='https://cdn.votemo.eu/dist/widget.js')
 
-                - hideMessengerChat = true
+            //-     - hideMessengerChat = true
 
             //- section.f_imgs_box
 
