@@ -130,7 +130,7 @@ module.exports = {
             keywords: result?.tags?.keywords ? result.tags.keywords.map(a => a.id) : null,
             programmes: result?.tags?.programmes ? result.tags.programmes.map(a => a.id) : null
           } : null,
-          festival_editions: result.festival_editions,
+          festival_editions: result.festival_editions.map(a => a.id),
         })
 
         const cassetteDomains = await get_domain(updateCassetteResult) // hard coded if needed AS LIST!!!
