@@ -108,14 +108,14 @@ module.exports = {
     },
 
     async afterUpdate(result, params, data) {
-      strapi.log.debug('afterUpdate film', result.id, result.title_en)
+      strapi.log.debug('afterUpdate film', result.id, result.title_en, result.festival_editions)
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
-      allCassettesWithThisFilmOnly.map(async a => {
+      allCassettesWithThisFilmOnly.map(async cassette => {
         if (data.skipbuild) return
-        strapi.log.debug('Updating with film data - cassette ID ', a.id, a.title_en);
-        const cassetteId = a.id
+        strapi.log.debug('Updating with film data - cassette ID ', cassette.id, cassette.title_en);
+        const cassetteId = cassette.id
 
         const updateCassetteResult = await strapi.query('cassette').update(
           { id: cassetteId }, {
