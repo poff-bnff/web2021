@@ -9,7 +9,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
-  call_update,
+  update_entity_wo_published_at,
   call_build,
   get_domain,
   modify_stapi_data,
@@ -54,6 +54,7 @@ module.exports = {
 
     async afterCreate(result, data) {
       // Automatically create a cassette for a new film
+      logger.debug('afterCreate film before cassette', result.id, result.title_en)
       await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
@@ -74,7 +75,9 @@ module.exports = {
         orderedFilms: [{ order: 1, film: result.id }],
         // remoteId: result.remoteId,
       })
-      await call_update(result, model_name)
+      logger.debug('afterCreate film after cassette', result.id, result.title_en
+                 , 'published_at:', result.published_at)
+      await update_entity_wo_published_at(result, model_name)
     },
 
     async beforeUpdate(params, data) {
