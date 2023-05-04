@@ -34,10 +34,10 @@ module.exports = {
     // result is the created object
     // data is the data that was sent to the create
     async afterCreate(result, data) {
-      logger.debug('afterCreate cassette', result.id, result.title_en)
+      strapi.log.debug('afterCreate cassette', result.id, result.title_en)
       // Skip if created along with a new film
       if (data.skipbuild) { return }
-      logger.debug('afterCreate cassette without new film', result.id, result.title_en
+      strapi.log.debug('afterCreate cassette without new film', result.id, result.title_en
                  , 'published_at:', result.published_at)
       await update_entity_wo_published_at(result, model_name)
     },
