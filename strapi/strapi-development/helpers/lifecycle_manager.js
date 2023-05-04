@@ -391,6 +391,7 @@ async function call_delete(result, domains, model_name) {
   }
 }
 
+exports.update_entity_wo_published_at = update_entity_wo_published_at
 exports.call_update = call_update
 exports.build_start_to_strapi_logs = build_start_to_strapi_logs
 exports.call_process = call_process
