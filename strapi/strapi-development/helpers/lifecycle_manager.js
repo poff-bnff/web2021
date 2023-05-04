@@ -40,6 +40,8 @@ function slugify(text) {
     .replace(/-+$/, '');            // Trim - from end of text
 }
 
+// .published_at is set automatically by Strapi when the object is published
+// .published_at is deleted from the result object, because it is not needed in the build process
 async function call_update(result, model) {
   if (result.published_at) {
     delete result.published_at
@@ -274,7 +276,7 @@ function clean_result(result) {
 
 async function exportModel4SSG(model_name) {
   strapi.log.debug('exportModel4SSG', model_name)
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${model_name}_b.yaml`)
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${model_name}.yaml`)
   const modelDataFromStrapi = await strapi.query(model_name).find()
   strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
   fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
