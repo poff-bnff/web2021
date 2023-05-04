@@ -44,8 +44,11 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 module.exports = {
   lifecycles: {
 
+    // params is ...
+    // data is ...
     async beforeCreate(params, data) {
-      // Remove published_at from data, so that it is not set automatically to the current time
+      strapi.log.debug('beforeCreate film', { params, data })
+    // Remove published_at from data, so that it is not set automatically to the current time
       // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
       // if (data && data.published_at) {
       //   delete data.published_at
@@ -94,7 +97,7 @@ module.exports = {
       const prefix = data.id === 2213 ? '0_' : ''
 
       // console.log('params', params, 'data', data);
-      strapi.log.debug('beforeUpdate film', {params,data})
+      strapi.log.debug('beforeUpdate film', { params, data })
       data.slug_et = data.title_et ? slugify(prefix + data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(prefix + data.title_ru) : null
       data.slug_en = data.title_en ? slugify(prefix + data.title_en) : null
