@@ -45,6 +45,11 @@ const connect = (provider, query) => {
 
     // Get the profile.
     getProfile(provider, query, async (err, profile) => {
+      if (!profile) {
+      console.debug('services.providers.connect getProfile profile:', profile)
+      return reject([null, { message: 'Profile was not available.' }]);
+      }
+
       let personIndustryBadges = null
 
       if (provider.split(',').includes('eventivalindustry')) {
