@@ -94,6 +94,7 @@ module.exports = {
       const prefix = data.id === 2213 ? '0_' : ''
 
       // console.log('params', params, 'data', data);
+      strapi.log.debug('beforeUpdate film', {params,data})
       data.slug_et = data.title_et ? slugify(prefix + data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(prefix + data.title_ru) : null
       data.slug_en = data.title_en ? slugify(prefix + data.title_en) : null
