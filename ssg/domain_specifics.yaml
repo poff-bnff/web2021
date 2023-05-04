@@ -136,8 +136,8 @@ industry_eventival_badges_whitelist:
 #     # - course-event
 
 target_build_models:
-    - film
-    - cassette
+    # - film
+    # - cassette
     - screening
     - course-event
     - login
