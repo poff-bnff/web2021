@@ -20,8 +20,9 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        - 61
+        # - 61
         - 63
+        - 66
     justfilm.ee:
         - 64
         # - 29
@@ -33,7 +34,8 @@ cassettes_festival_editions:
         - 58
         # - 30
     hoff.ee:
-        - 61
+        # - 61
+        - 66
     kumu.poff.ee:
         - 62
     tartuff.ee:
