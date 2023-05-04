@@ -44,10 +44,8 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 module.exports = {
   lifecycles: {
 
-    // params is ...
-    // data is ...
-    async beforeCreate(params, data) {
-      strapi.log.debug('beforeCreate film', { params, data })
+    async beforeCreate(new_data) {
+      strapi.log.debug('beforeCreate film', { new_data })
     // Remove published_at from data, so that it is not set automatically to the current time
       // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
       // if (data && data.published_at) {
@@ -55,9 +53,11 @@ module.exports = {
       // }
     },
 
+    // data is the data that was sent to the create
+    // result is the created object
     async afterCreate(result, data) {
       // Automatically create a cassette for a new film
-      strapi.log.debug('afterCreate film before cassette', result.id, result.title_en)
+      strapi.log.debug('afterCreate film before cassette', { result, data })
       await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
@@ -83,28 +83,21 @@ module.exports = {
       await update_entity_wo_published_at(result, model_name)
     },
 
-    async beforeUpdate(params, data) {
+    // params: { "id": 4686 }
+    // new_data: data that was sent to the update
+    async beforeUpdate(params, new_data) {
+      strapi.log.debug('beforeUpdate film', { params, new_data })
       // Add prefix to slug
-
-      // film with id 2213 will have slug 0_title_et
-      // const prefixes = {
-      //   2213: '0_'
-      // }
-      // let prefix = ''
-      // if (data.id in prefixes) {
-      //   prefix = prefixes[data.id]
-      // }
-      const prefix = data.id === 2213 ? '0_' : ''
+      const prefix = new_data.id === 2213 ? '0_' : ''
 
       // console.log('params', params, 'data', data);
-      strapi.log.debug('beforeUpdate film', { params, data })
-      data.slug_et = data.title_et ? slugify(prefix + data.title_et) : null
-      data.slug_ru = data.title_ru ? slugify(prefix + data.title_ru) : null
-      data.slug_en = data.title_en ? slugify(prefix + data.title_en) : null
+      new_data.slug_et = new_data.title_et ? slugify(prefix + new_data.title_et) : null
+      new_data.slug_ru = new_data.title_ru ? slugify(prefix + new_data.title_ru) : null
+      new_data.slug_en = new_data.title_en ? slugify(prefix + new_data.title_en) : null
 
-      if (data.published_at === null) { // if strapi publish system goes live
+      if (new_data.published_at === null) { // if strapi publish system goes live
         strapi.log.debug('Draft! Delete: ')
-        const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+        const festival_editions = await strapi.db.query('festival-edition').find({ id: new_data.festival_editions })
         const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
         strapi.log.debug('films beforeUpdate got domains', domains)
         await call_delete(params, domains, model_name)
@@ -112,7 +105,7 @@ module.exports = {
     },
 
     async afterUpdate(result, params, data) {
-      strapi.log.debug('afterUpdate film', result.id, result.title_en, result.festival_editions)
+      strapi.log.debug('afterUpdate film', { result, params, data })
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
