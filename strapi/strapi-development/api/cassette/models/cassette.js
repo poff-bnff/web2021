@@ -9,7 +9,6 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
-  update_entity_wo_published_at,
   call_build,
   get_domain,
   modify_stapi_data,
@@ -30,6 +29,13 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 module.exports = {
   lifecycles: {
+
+    async beforeCreate(new_data) {
+      strapi.log.debug('beforeCreate cassette')
+      new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
+      new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
+      new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
+    },
 
     // result is the created object
     // data is the data that was sent to the create
