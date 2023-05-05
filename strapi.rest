@@ -30,3 +30,14 @@ Authorization: Bearer {{nonProdToken}}
     "email": "user@strapi.io",
     "password": "xxxxxxxxxxxx"
 }
+
+### 1 of films
+GET https://admin.poff.ee/films/3212 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
+### 1 of festival-editions
+GET https://admin.poff.ee/festival-editions/66 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
