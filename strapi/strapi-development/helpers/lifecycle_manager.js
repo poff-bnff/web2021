@@ -158,10 +158,10 @@ async function get_domain(result) {
   }
   else if (result.domains) {
     for (let dom of result.domains) {
-	if(!isNaN(dom)) {
-	  dom = await ask_domain(dom)
-	}
-	domain.push(dom.url)
+      if(!isNaN(dom)) {
+        dom = await ask_domain(dom)
+      }
+      domain.push(dom.url)
     }
   }
   else if (result.festival_edition) {
