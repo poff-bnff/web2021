@@ -9,6 +9,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
+  call_build,
   get_domain,
   modify_stapi_data,
   call_delete
