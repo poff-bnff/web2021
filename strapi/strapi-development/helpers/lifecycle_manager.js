@@ -42,11 +42,15 @@ function slugify(text) {
 
 // .published_at is set automatically by Strapi when the object is published
 // .published_at is deleted from the result object, because it is not needed in the build process
-async function call_update(result, model) {
+// TODO: this function should be renamed to update_entity_wo_published_at.
+async function call_update(result, model_name) {
+  await update_entity_wo_published_at(result, model_name)
+}
+async function update_entity_wo_published_at(result, model_name) {
   if (result.published_at) {
     delete result.published_at
   }
-  await strapi.query(model).update({ id: result.id }, result)
+  await strapi.query(model_name).update({ id: result.id }, result)
 }
 
 async function build_start_to_strapi_logs(result, domain, err = null, b_err = null, model_and_target = null, del) {
@@ -154,10 +158,10 @@ async function get_domain(result) {
   }
   else if (result.domains) {
     for (let dom of result.domains) {
-	if(!isNaN(dom)) {
-	  dom = await ask_domain(dom)
-	}
-	domain.push(dom.url)
+      if(!isNaN(dom)) {
+        dom = await ask_domain(dom)
+      }
+      domain.push(dom.url)
     }
   }
   else if (result.festival_edition) {
@@ -387,6 +391,7 @@ async function call_delete(result, domains, model_name) {
   }
 }
 
+exports.update_entity_wo_published_at = update_entity_wo_published_at
 exports.call_update = call_update
 exports.build_start_to_strapi_logs = build_start_to_strapi_logs
 exports.call_process = call_process

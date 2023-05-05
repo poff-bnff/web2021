@@ -9,7 +9,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
-  call_update,
+  update_entity_wo_published_at,
   call_build,
   get_domain,
   modify_stapi_data,
@@ -34,9 +34,12 @@ module.exports = {
     // result is the created object
     // data is the data that was sent to the create
     async afterCreate(result, data) {
+      strapi.log.debug('afterCreate cassette', result.id, result.title_en)
       // Skip if created along with a new film
       if (data.skipbuild) { return }
-      await call_update(result, model_name)
+      strapi.log.debug('afterCreate cassette without new film', result.id, result.title_en
+                 , 'published_at:', result.published_at)
+      await update_entity_wo_published_at(result, model_name)
     },
 
     // params is the original object
