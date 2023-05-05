@@ -43,7 +43,7 @@ module.exports = {
   lifecycles: {
 
     async beforeCreate(new_data) {
-      strapi.log.debug('beforeCreate film', { new_data })
+      strapi.log.debug('beforeCreate film') // , new_data.title_en)
       new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
       new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
@@ -60,7 +60,6 @@ module.exports = {
       // Automatically create a cassette for a new film
       strapi.log.debug('afterCreate film before cassette', result.id, result.title_en)
       const new_cassette = await strapi.query('cassette').create({
-        skipbuild: true,
         created_by: result.created_by,
         updated_by: result.updated_by,
         title_et: result.title_et,

@@ -55,9 +55,6 @@ module.exports = {
     // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
 
-      strapi.log.debug('Create or update: ')
-      if (data.skipbuild) return
-
       const festival_editions = await strapi.db.query('festival-edition').find({ id: result.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       strapi.log.debug('Got domains: ', domains)
