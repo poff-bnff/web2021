@@ -44,9 +44,9 @@ module.exports = {
 
     async beforeCreate(new_data) {
       strapi.log.debug('beforeCreate film', { new_data })
-      new_data.slug_et = new_data.title_et ? slugify(prefix + new_data.title_et) : null
-      new_data.slug_ru = new_data.title_ru ? slugify(prefix + new_data.title_ru) : null
-      new_data.slug_en = new_data.title_en ? slugify(prefix + new_data.title_en) : null
+      new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
+      new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
+      new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
     // Remove published_at from data, so that it is not set automatically to the current time
       // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
       // if (data && data.published_at) {
