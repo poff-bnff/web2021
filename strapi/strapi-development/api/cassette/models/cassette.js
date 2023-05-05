@@ -47,11 +47,11 @@ module.exports = {
       const uniqueFestivalEditionDomainURLs = [...new Set(festivalEditionDomainURLs)]
       strapi.log.debug('uniqueFestivalEditionDomainURLs', { uniqueFestivalEditionDomainURLs })
 
-      if (domains.length > 0) {
+      if (uniqueFestivalEditionDomainURLs.length > 0) {
         await modify_stapi_data(result, model_name)
       }
       strapi.log.debug('Lets build: ')
-      await call_build(result, domains, model_name)
+      await call_build(result, uniqueFestivalEditionDomainURLs, model_name)
     },
 
     // params is the original object
