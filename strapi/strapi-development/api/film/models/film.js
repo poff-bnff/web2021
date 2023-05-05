@@ -102,7 +102,7 @@ module.exports = {
     // params: { "id": 4686 }
     // new_data: data that was sent to the update
     async beforeUpdate(params, new_data) {
-      strapi.log.debug('beforeUpdate film', { params, new_data })
+      strapi.log.debug('beforeUpdate film')
 
       new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
