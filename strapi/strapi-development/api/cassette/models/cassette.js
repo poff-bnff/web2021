@@ -64,6 +64,10 @@ module.exports = {
         strapi.log.debug('Lets build: ')
         await call_build(result, domains, model_name)
       }
+      // TODO: if no domains, then there is still possibility, that this cassette was
+      // associated with domain before and now it is not. So we need to delete it from
+      // that domain.
+      // We could check for changes in festival_editions before and after update.
     },
 
     // params is the original object
