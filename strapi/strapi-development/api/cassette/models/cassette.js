@@ -36,10 +36,22 @@ module.exports = {
     async afterCreate(result, data) {
       strapi.log.debug('afterCreate cassette', result.id, result.title_en)
       // Skip if created along with a new film
-      if (data.skipbuild) { return }
       strapi.log.debug('afterCreate cassette without new film', result.id, result.title_en
                  , 'published_at:', result.published_at)
-      await update_entity_wo_published_at(result, model_name)
+
+      const festivalEditionIDs = result.festival_editions ? result.festival_editions.map(a => a.id) : []
+      strapi.log.debug('festivalEditionIDs', { festivalEditionIDs })
+      const festivalEditions = await strapi.query('festival-edition').find({ id_in: festivalEditionIDs })
+      // strapi.log.debug('festivalEditions', { festivalEditions })
+      const festivalEditionDomainURLs = festivalEditions.map(a => a.domains.map(b => b.url)).flat(1)
+      const uniqueFestivalEditionDomainURLs = [...new Set(festivalEditionDomainURLs)]
+      strapi.log.debug('uniqueFestivalEditionDomainURLs', { uniqueFestivalEditionDomainURLs })
+
+      if (domains.length > 0) {
+        await modify_stapi_data(result, model_name)
+      }
+      strapi.log.debug('Lets build: ')
+      await call_build(result, domains, model_name)
     },
 
     // params is the original object
