@@ -93,6 +93,7 @@ module.exports = {
       if (uniqueFestivalEditionDomainURLs.length > 0) {
         await modify_stapi_data(new_cassette, 'cassette')
         await modify_stapi_data(result, 'film')
+        await call_build(new_cassette, uniqueFestivalEditionDomainURLs, 'cassette')
       }
 
     },
