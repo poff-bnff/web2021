@@ -56,7 +56,8 @@ module.exports = {
     // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
 
-      const festival_editions = await strapi.db.query('festival-edition').find({ id: result.festival_editions.map(fe => fe.id) })
+      const festival_editions = await strapi.db.query('festival-edition').find(
+        { id: result.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       strapi.log.debug('Got domains: ', domains)
       if (domains.length > 0) {
@@ -86,7 +87,7 @@ module.exports = {
       }))
       delete params.user
     },
-    async afterDelete(result, params) {
+    async afterDelete(result) {
       // console.log('\nR', result, '\nparams', params)
       const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
