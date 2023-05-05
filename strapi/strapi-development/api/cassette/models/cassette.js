@@ -61,9 +61,9 @@ module.exports = {
       strapi.log.debug('Got domains: ', domains)
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
+        strapi.log.debug('Lets build: ')
+        await call_build(result, domains, model_name)
       }
-      strapi.log.debug('Lets build: ')
-      await call_build(result, domains, model_name)
     },
 
     // params is the original object
