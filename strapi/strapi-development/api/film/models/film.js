@@ -119,7 +119,7 @@ module.exports = {
     // params: { "id": 4686 }
 
     async afterUpdate(result, params, data) {
-      strapi.log.debug('afterUpdate film', { result, params, data })
+      strapi.log.debug('afterUpdate film') //, { result, params, data })
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
