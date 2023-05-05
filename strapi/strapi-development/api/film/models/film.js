@@ -58,7 +58,7 @@ module.exports = {
     // result is the created object
     async afterCreate(result, new_data) {
       // Automatically create a cassette for a new film
-      strapi.log.debug('afterCreate film before cassette', { result, data: new_data })
+      strapi.log.debug('afterCreate film before cassette', result.id, result.title_en)
       const new_cassette = await strapi.query('cassette').create({
         skipbuild: true,
         created_by: result.created_by,
@@ -83,16 +83,17 @@ module.exports = {
                  , 'published_at:', result.published_at)
 
       const festivalEditionIDs = result.festival_editions ? result.festival_editions.map(a => a.id) : []
-      strapi.log.debug('festivalEditionIDs', { festivalEditionIDs })
+      // strapi.log.debug('festivalEditionIDs', { festivalEditionIDs })
       const festivalEditions = await strapi.query('festival-edition').find({ id_in: festivalEditionIDs })
-      strapi.log.debug('festivalEditions', { festivalEditions })
+      // strapi.log.debug('festivalEditions', { festivalEditions })
       const festivalEditionDomainURLs = festivalEditions.map(a => a.domains.map(b => b.url)).flat(1)
-      strapi.log.debug('festivalEditionDomainURLs', { festivalEditionDomainURLs })
+      // strapi.log.debug('festivalEditionDomainURLs', { festivalEditionDomainURLs })
       const uniqueFestivalEditionDomainURLs = [...new Set(festivalEditionDomainURLs)]
       strapi.log.debug('uniqueFestivalEditionDomainURLs', { uniqueFestivalEditionDomainURLs })
 
       if (uniqueFestivalEditionDomainURLs.length > 0) {
         await modify_stapi_data(new_cassette, 'cassette')
+        await modify_stapi_data(result, 'film')
       }
 
     },
