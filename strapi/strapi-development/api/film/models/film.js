@@ -155,10 +155,11 @@ module.exports = {
 
       })
 
-      const festival_editions = await strapi.db.query('festival-edition').find({ id: data.festival_editions })
+      const festival_editions = await strapi.db.query('festival-edition').find(
+        { id: data.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       strapi.log.debug('films afterUpdate got domains', domains)
-        if (domains.length > 0) {
+      if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
 
