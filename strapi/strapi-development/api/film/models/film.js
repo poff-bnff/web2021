@@ -172,11 +172,15 @@ module.exports = {
       strapi.log.debug('beforeDelete film', params._where?.[0].id_in, JSON.stringify(params))
       const filmIds = params._where?.[0].id_in || [params.id]
       strapi.log.debug('beforeDelete film filmIds', filmIds)
+      const allCassettes = await strapi.query('cassette').find({ _limit: -1 })
       filmIds.map(async fId => {
         strapi.log.debug('beforeDelete film fId', fId)
-        const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(fId)
-        strapi.log.debug('beforeDelete film allCassettesWithThisFilm', allCassettesWithThisFilm.map(a => a.id))
-        allCassettesWithThisFilm.map(async c => {
+        const allCassettesWithOnlyThisFilm = allCassettes.filter(c => {
+          return (c.orderedFilms && c.orderedFilms.length === 1
+              && c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId)
+        })
+        strapi.log.debug('beforeDelete film allCassettesWithOnlyThisFilm', allCassettesWithOnlyThisFilm.map(a => a.id))
+        allCassettesWithOnlyThisFilm.map(async c => {
           strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
           await strapi.query('cassette').delete({ id: c.id })
         })
