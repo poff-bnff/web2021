@@ -16,9 +16,9 @@ const {
 } = require(helper_path)
 
 const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
-  strapi.debug.log('getCassettesIncludingOnlyThisSingleFilm', filmId)
+  strapi.log.debug('getCassettesIncludingOnlyThisSingleFilm', filmId)
   const getAllCassettes = await strapi.query('cassette').find({ _limit: -1 })
-  strapi.debug.log('got Cassettes', getAllCassettes.length)
+  strapi.log.debug('got Cassettes', getAllCassettes.length)
   const allCassettesWithThisFilm = getAllCassettes.filter(c => {
     if (c.orderedFilms && c.orderedFilms.length === 1 && c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId) {
       return true
@@ -26,7 +26,7 @@ const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
       return false
     }
   })
-  strapi.debug.log('allCassettesWithThisFilm', allCassettesWithThisFilm.length)
+  strapi.log.debug('allCassettesWithThisFilm', allCassettesWithThisFilm.length)
   return allCassettesWithThisFilm
 }
 
