@@ -167,33 +167,21 @@ module.exports = {
     async beforeDelete(params) {
       // One might delete a film by id or by id_in
       strapi.log.debug('beforeDelete film', params._where?.[0].id_in, JSON.stringify(params))
-      const ids = params._where?.[0].id_in || [params.id]
-      const updatedIds = await Promise.all(ids.map(async id => {
-        const result = await strapi.query(model_name).findOne({ id })
-        if (result) {
-          const updateDeleteUser = {
-            updated_by: params.user,
-            skipbuild: true
-          }
-          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-
-          const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(result.id)
-          allCassettesWithThisFilm.map(async c => {
-            console.log('Deleting cassette: ', c.id, c.title_en);
-            await strapi.query('cassette').delete({ id: c.id })
-          })
-
-          return id
-        }
-      }))
-      delete params.user
+      const filmIds = params._where?.[0].id_in || [params.id]
+      filmIds.map(async fId => {
+        const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(fId)
+        allCassettesWithThisFilm.map(async c => {
+          strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
+          await strapi.query('cassette').delete({ id: c.id })
+        })
+      })
     },
-    async afterDelete(result, params) {
-      // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
-      console.log('Delete: ')
+    async afterDelete(result, params) {
+      strapi.log.debug({ result, params })
+      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      strapi.log.debug('Delete: ')
       await call_delete(result, domains, model_name)
     }
   }
-};
+}
