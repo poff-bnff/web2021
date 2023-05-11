@@ -16,7 +16,9 @@ const {
 } = require(helper_path)
 
 const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
-  const getAllCassettes = await strapi.query('cassette').find({ _limit: -1 });
+  strapi.debug.log('getCassettesIncludingOnlyThisSingleFilm', filmId)
+  const getAllCassettes = await strapi.query('cassette').find({ _limit: -1 })
+  strapi.debug.log('got Cassettes', getAllCassettes.length)
   const allCassettesWithThisFilm = getAllCassettes.filter(c => {
     if (c.orderedFilms && c.orderedFilms.length === 1 && c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId) {
       return true
@@ -24,6 +26,7 @@ const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
       return false
     }
   })
+  strapi.debug.log('allCassettesWithThisFilm', allCassettesWithThisFilm.length)
   return allCassettesWithThisFilm
 }
 
@@ -168,6 +171,7 @@ module.exports = {
       // One might delete a film by id or by id_in
       strapi.log.debug('beforeDelete film', params._where?.[0].id_in, JSON.stringify(params))
       const filmIds = params._where?.[0].id_in || [params.id]
+      strapi.log.debug('beforeDelete film filmIds', filmIds)
       filmIds.map(async fId => {
         const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(fId)
         allCassettesWithThisFilm.map(async c => {
