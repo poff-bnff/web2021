@@ -162,9 +162,11 @@ module.exports = {
       if (domains.length > 0) {
         await modify_stapi_data(result, model_name)
       }
-
     },
+
     async beforeDelete(params) {
+      // One might delete a film by id or by id_in
+      strapi.log.debug('beforeDelete film', params._where?.[0].id_in, JSON.stringify(params))
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
