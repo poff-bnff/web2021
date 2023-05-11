@@ -73,26 +73,15 @@ module.exports = {
 
     // params is the original object
     async beforeDelete(params) {
-      const ids = params._where?.[0].id_in || [params.id]
-      const updatedIds = await Promise.all(ids.map(async id => {
-        const result = await strapi.query(model_name).findOne({ id })
-        if (result) {
-          const updateDeleteUser = {
-            updated_by: params.user,
-            skipbuild: true
-          }
-          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-          return id
-        }
-      }))
-      delete params.user
+      const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
+      strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
     },
     async afterDelete(result) {
-      // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      strapi.log.debug("afterDelete cassette", { result, params })
+      // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
-      console.log('Delete: ')
-      await call_delete(result, domains, model_name)
+      // console.log('Delete: ')
+      // await call_delete(result, domains, model_name)
     }
   }
 };

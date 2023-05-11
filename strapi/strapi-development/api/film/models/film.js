@@ -169,19 +169,17 @@ module.exports = {
 
     async beforeDelete(params) {
       // One might delete a film by id or by id_in
+      // Be aware that id_in is an array of strings, not numbers!
       strapi.log.debug('beforeDelete film', params._where?.[0].id_in, JSON.stringify(params))
       const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
 
       strapi.log.debug('beforeDelete film filmIds', {filmIds})
 
       const allCassettes = await strapi.query('cassette').find({ _limit: -1 })
-      // strapi.log.debug('beforeDelete film allCassettes', allCassettes.length)
-      const allSingleFilmCassettes = allCassettes
+      const relevantCassettes = allCassettes
         .filter(c => c.orderedFilms && c.orderedFilms.length === 1)
         .map(c => ({ id: c.id, filmId: c.orderedFilms[0].film.id }))
-      strapi.log.debug('beforeDelete film allSingleFilmCassettes', {allSingleFilmCassettes})
-
-      const relevantCassettes = allSingleFilmCassettes.filter(c => filmIds.includes(c.filmId))
+        .filter(c => filmIds.includes(c.filmId))
       strapi.log.debug('beforeDelete film relevantCassettes', {relevantCassettes})
 
       relevantCassettes.map(async c => {
