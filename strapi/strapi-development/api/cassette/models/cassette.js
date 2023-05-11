@@ -76,7 +76,7 @@ module.exports = {
       const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
       strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
     },
-    async afterDelete(result) {
+    async afterDelete(result, params) {
       strapi.log.debug("afterDelete cassette", { result, params })
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
