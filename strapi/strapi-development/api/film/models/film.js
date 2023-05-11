@@ -173,6 +173,9 @@ module.exports = {
       const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
       strapi.log.debug('beforeDelete film filmIds', {filmIds})
 
+      // TODO: find out, what or who is params.user?
+      delete params.user
+
       const allCassettes = await strapi.query('cassette').find({ _limit: -1 })
       const relevantCassettes = allCassettes
         .filter(c => c.orderedFilms && c.orderedFilms.length === 1)
