@@ -186,8 +186,8 @@ module.exports = {
       })
     },
 
-    async afterDelete(result) {
-      strapi.log.debug("afterDelete film", { result })
+    async afterDelete(result, params) {
+      strapi.log.debug("afterDelete film", { id: result.id, params })
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       // strapi.log.debug('Delete: ')
       // await call_delete(result, domains, model_name)
