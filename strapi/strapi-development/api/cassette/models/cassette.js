@@ -77,7 +77,7 @@ module.exports = {
       strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
     },
     async afterDelete(result, params) {
-      strapi.log.debug("afterDelete cassette", { result, params })
+      strapi.log.debug("afterDelete cassette", { id: result.id, params })
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
       // console.log('Delete: ')

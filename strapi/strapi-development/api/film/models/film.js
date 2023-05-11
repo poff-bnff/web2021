@@ -182,8 +182,8 @@ module.exports = {
 
       relevantCassettes.map(async c => {
         strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
-        await strapi.query('cassette').delete({ id: c.id })
-        strapi.log.debug('Deleted cassette: ', c.id, c.title_en)
+        strapi.query('cassette').delete({ id: c.id })
+        strapi.log.debug('Issued delete for cassette: ', c.id, c.title_en)
       })
     },
 
