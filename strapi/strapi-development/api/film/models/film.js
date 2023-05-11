@@ -173,7 +173,9 @@ module.exports = {
       const filmIds = params._where?.[0].id_in || [params.id]
       strapi.log.debug('beforeDelete film filmIds', filmIds)
       filmIds.map(async fId => {
+        strapi.log.debug('beforeDelete film fId', fId)
         const allCassettesWithThisFilm = await getCassettesIncludingOnlyThisSingleFilm(fId)
+        strapi.log.debug('beforeDelete film allCassettesWithThisFilm', allCassettesWithThisFilm.map(a => a.id))
         allCassettesWithThisFilm.map(async c => {
           strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
           await strapi.query('cassette').delete({ id: c.id })
