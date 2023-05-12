@@ -284,6 +284,9 @@ async function getStrapiModelName(modelName) {
 
 // export model data from strapi to yaml file
 async function exportModel4SSG(modelName) {
+  // lets forbid this function for now. Respond with error
+  throw new Error('exportModel4SSG is not allowed')
+
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportModel4SSG', {modelName, strapiModelName})
   const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
@@ -295,14 +298,17 @@ async function exportModel4SSG(modelName) {
 }
 
 // export single model data from strapi to yaml file
-async function exportSingleModel4SSG(modelName, id) {
+async function exportSingle4SSG(modelName, id) {
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportSingle4SSG', {modelName, strapiModelName, id})
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_updates.yaml`)
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
   strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi.length)
-  // read model data from yaml file
+  // read model data from yaml file. if file does not exist, create it and return empty array
+  if (!fs.existsSync(yamlFile)) {
+    fs.writeFileSync(yamlFile, yaml.stringify([], { indent: 4 }), 'utf8')
+  }
   const modelDataFromYaml = yaml.parse(fs.readFileSync(yamlFile, 'utf8'), { maxAliasCount: -1 })
   strapi.log.debug('Got from YAML', strapiModelName, modelDataFromYaml.length)
   // merge model data from strapi and yaml file
@@ -429,8 +435,7 @@ exports.update_strapi_logs = update_strapi_logs
 exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
-exports.exportModel4SSG = exportModel4SSG
-exports.exportSingleModel4SSG = exportSingleModel4SSG
+exports.exportSingle4SSG = exportSingle4SSG
 
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
