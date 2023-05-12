@@ -12,6 +12,7 @@ const {
   call_build,
   get_domain,
   modify_stapi_data,
+  exportModel4SSG,
   call_delete
 } = require(helper_path)
 
@@ -110,6 +111,7 @@ module.exports = {
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
       new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
 
+      exportModel4SSG(model_name)
       return
 
       if (new_data.published_at === null) { // if strapi publish system goes live
@@ -129,6 +131,7 @@ module.exports = {
       // Check if any of single-film cassettes need to be updated
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
+      return
 
       allCassettesWithThisFilmOnly.map(async cassette => {
         // if (data.skipbuild) return
