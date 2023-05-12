@@ -15,19 +15,16 @@ const {
   call_delete
 } = require(helper_path)
 
+// returns a list of single-film cassettes that include only this single film
 const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
+  if (typeof filmId !== 'number') {
+    throw new Error('getCassettesIncludingOnlyThisSingleFilm: filmId is not a number')
+  }
   strapi.log.debug('getCassettesIncludingOnlyThisSingleFilm', filmId)
-  const getAllCassettes = await strapi.query('cassette').find({ _limit: -1 })
-  strapi.log.debug('got Cassettes', getAllCassettes.length)
-  const allCassettesWithThisFilm = getAllCassettes.filter(c => {
-    if (c.orderedFilms && c.orderedFilms.length === 1 && c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId) {
-      return true
-    } else {
-      return false
-    }
-  })
-  strapi.log.debug('allCassettesWithThisFilm', allCassettesWithThisFilm.length)
-  return allCassettesWithThisFilm
+  const allCassettes = await strapi.query('cassette').find({ _limit: -1 })
+  const singleFilmCassettes = allCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
+  const relevantCassettes = singleFilmCassettes.filter(c => c.orderedFilms[0].film && c.orderedFilms[0].film.id === filmId)
+  return relevantCassettes
 }
 
 /**
@@ -111,6 +108,8 @@ module.exports = {
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
       new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
 
+      return
+
       if (new_data.published_at === null) { // if strapi publish system goes live
         strapi.log.debug('Draft! Delete: ')
         const festival_editions = await strapi.db.query('festival-edition').find({ id: new_data.festival_editions })
@@ -122,14 +121,16 @@ module.exports = {
 
     // result is the updated object
     // params: { "id": 4686 }
-
-    async afterUpdate(result, params, data) {
-      strapi.log.debug('afterUpdate film') //, { result, params, data })
+    // new_data: data that was sent to the update
+    // modifications, filter, resultData???
+    async afterUpdate(result, params, newData) {
+      strapi.log.debug('afterUpdate film', {result, params, newData}) //, { result, params, data })
+      // Check if any of single-film cassettes need to be updated
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
       allCassettesWithThisFilmOnly.map(async cassette => {
-        if (data.skipbuild) return
+        // if (data.skipbuild) return
         strapi.log.debug('Updating with film data - cassette ID ', cassette.id, cassette.title_en);
         const cassetteId = cassette.id
 
@@ -159,7 +160,7 @@ module.exports = {
       })
 
       const festival_editions = await strapi.db.query('festival-edition').find(
-        { id: data.festival_editions.map(fe => fe.id) })
+        { id: newData.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       strapi.log.debug('films afterUpdate got domains', domains)
       if (domains.length > 0) {
