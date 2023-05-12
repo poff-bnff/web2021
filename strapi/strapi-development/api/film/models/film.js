@@ -183,10 +183,11 @@ module.exports = {
         .map(c => ({
           id: c.id,
           title_en: c.title_en,
-          orderedFilms: c.orderedFilms.map(of => ({ order: of.order, film: { id: of.film.id } }))
+          orderedFilms: c.orderedFilms.map(of => ({ order: of.order, film: { id: of.film.id } })),
+          filmIds: c.orderedFilms.map(of => of.film.id)
         }))
-        // leave cassettes that have the film(s) we are deleting
-        .filter(of => filmIds.includes(of.film.id))
+        // leave cassettes that have any of the film(s) we are deleting
+        .filter(c => c.filmIds.some(id => filmIds.includes(id)))
       strapi.log.debug('beforeDelete film', {relevantCassettes})
 
       // deal with cassettes that have only one film
