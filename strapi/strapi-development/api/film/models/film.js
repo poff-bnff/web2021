@@ -171,18 +171,25 @@ module.exports = {
       // One might delete a film by id or by id_in
       // Be aware that id_in is an array of strings, not numbers!
       const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
-      strapi.log.debug('beforeDelete film filmIds', {filmIds})
+      strapi.log.debug('beforeDelete film', {filmIds})
 
       // TODO: find out, what or who is params.user?
       delete params.user
 
       const allCassettes = await strapi.query('cassette').find({ _limit: -1 })
       const relevantCassettes = allCassettes
-        // .filter(c => c.orderedFilms && c.orderedFilms.length === 1)
-        .map(c => ({ id: c.id, title_en: c.title_en, filmId: c.orderedFilms[0].film.id }))
+        // reduce data in cassettes to only what we need
+        // orderedFilms is an array of objects, we only need the order and film id
+        .map(c => ({
+          id: c.id,
+          title_en: c.title_en,
+          orderedFilms: c.orderedFilms.map(of => ({ order: of.order, film: { id: of.film.id } }))
+        }))
+        // leave cassettes that have the film(s) we are deleting
         .filter(c => filmIds.includes(c.filmId))
-      strapi.log.debug('beforeDelete film relevantCassettes', {relevantCassettes})
+      strapi.log.debug('beforeDelete film', {relevantCassettes})
 
+      // deal with cassettes that have only one film
       const singleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
       singleFilmCassettes.map(async c => {
         strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
@@ -190,12 +197,13 @@ module.exports = {
         strapi.log.debug('Issued delete for cassette: ', c.id, c.title_en)
       })
 
+      // deal with cassettes that have multiple films
       const multipleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length > 1)
       multipleFilmCassettes.map(async c => {
         strapi.log.debug('Removing film(s)', filmIds, 'from cassette: ', c.id, c.title_en)
         strapi.query('cassette').update(
           { id: c.id }, {
-          orderedFilms: c.orderedFilms.filter(f => !filmIds.includes(f.film.id))
+          orderedFilms: c.orderedFilms.filter(of => !filmIds.includes(of.film.id))
         })
         strapi.log.debug('Issued remove film(s) from cassette: ', c.id, c.title_en)
       })
