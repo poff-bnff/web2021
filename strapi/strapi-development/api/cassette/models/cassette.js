@@ -81,6 +81,9 @@ module.exports = {
     async beforeDelete(params) {
       const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
       strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
+
+      // TODO: find out, what or who is params.user?
+      delete params.user
     },
 
     async afterDelete(result, params) {
