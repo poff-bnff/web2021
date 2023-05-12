@@ -282,6 +282,7 @@ async function getStrapiModelName(modelName) {
   return await strapi.query(modelName).model.info.name
 }
 
+// export model data from strapi to yaml file
 async function exportModel4SSG(modelName) {
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportModel4SSG', {modelName, strapiModelName})
@@ -291,8 +292,24 @@ async function exportModel4SSG(modelName) {
   strapi.log.debug('write da file', strapiModelName, modelDataFromStrapi.length)
   // fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
   strapi.log.debug('return from exportModel4SSG', strapiModelName)
-
 }
+
+// export single model data from strapi to yaml file
+async function exportSingleModel4SSG(modelName, id) {
+  const strapiModelName = await getStrapiModelName(modelName)
+  strapi.log.debug('exportSingle4SSG', {modelName, strapiModelName, id})
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
+  // read single model data from strapi
+  const modelDataFromStrapi = await strapi.query(modelName).find({ id })
+  // read model data from yaml file
+  const modelDataFromYaml = yaml.load(fs.readFileSync(yamlFile, 'utf8'))
+  // merge model data from strapi and yaml file
+  const mergedModelData = modelDataFromYaml.map(e => e.id === id ? modelDataFromStrapi[0] : e)
+  // write merged model data to yaml file
+  fs.writeFileSync(yamlFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')
+  strapi.log.debug('return from exportSingle4SSG', strapiModelName)
+}
+
 
 async function modify_stapi_data(result, model_name, vanish = false) {
   strapi.log.debug('modify_stapi_data', model_name, result.id)
@@ -410,6 +427,7 @@ exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
 exports.exportModel4SSG = exportModel4SSG
+exports.exportSingleModel4SSG = exportSingleModel4SSG
 
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
