@@ -402,6 +402,7 @@ exports.update_strapi_logs = update_strapi_logs
 exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
+exports.exportModel4SSG = exportModel4SSG
 
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
