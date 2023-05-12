@@ -302,7 +302,7 @@ async function exportSingleModel4SSG(modelName, id) {
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
   // read model data from yaml file
-  const modelDataFromYaml = yaml.load(fs.readFileSync(yamlFile, 'utf8'))
+  const modelDataFromYaml = yaml.parse(fs.readFileSync(yamlFile, 'utf8'), { maxAliasCount: -1 })
   // merge model data from strapi and yaml file
   const mergedModelData = modelDataFromYaml.map(e => e.id === id ? modelDataFromStrapi[0] : e)
   // write merged model data to yaml file
