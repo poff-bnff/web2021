@@ -282,6 +282,7 @@ async function getStrapiModelName(modelName) {
   return await strapi.query(modelName).model.info.name
 }
 
+// FE's should be with domains loaded
 function getFeDomains(festival_editions) {
   strapi.log.debug('getFeDomains', {festival_editions})
   if (!festival_editions) return []
