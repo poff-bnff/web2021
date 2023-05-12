@@ -101,8 +101,8 @@ module.exports = {
 
     // params: { "id": 4686 }
     // new_data: data that was sent to the update
-    async beforeUpdate(params, new_data) {
-      strapi.log.debug('beforeUpdate film')
+    async beforeUpdate(params, new_data, data) {
+      strapi.log.debug('beforeUpdate film', { params, new_data, data })
 
       new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -119,14 +119,13 @@ module.exports = {
       }
     },
 
-    // result is the updated object
+    // resultData is the updated object
     // params: { "id": 4686 }
-    // new_data: data that was sent to the update
-    // modifications, filter, resultData???
-    async afterUpdate(result, params, newData) {
-      strapi.log.debug('afterUpdate film', {result, params, newData}) //, { result, params, data })
+    // modifications: data that was sent to the update
+    async afterUpdate(resultData, params, modifications) {
+      strapi.log.debug('afterUpdate film') // , {result: resultData, params, newData: modifications})
       // Check if any of single-film cassettes need to be updated
-      const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
+      const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
 
       allCassettesWithThisFilmOnly.map(async cassette => {
@@ -136,18 +135,18 @@ module.exports = {
 
         const updateCassetteResult = await strapi.query('cassette').update(
           { id: cassetteId }, {
-          created_by: result.created_by,
-          updated_by: result.updated_by,
-          title_et: result.title_et,
-          title_en: result.title_en,
-          title_ru: result.title_ru,
-          tags: result.tags ? {
-            premiere_types: result?.tags?.premiere_types ? result.tags.premiere_types.map(a => a.id) : null,
-            genres: result?.tags?.genres ? result.tags.genres.map(a => a.id) : null,
-            keywords: result?.tags?.keywords ? result.tags.keywords.map(a => a.id) : null,
-            programmes: result?.tags?.programmes ? result.tags.programmes.map(a => a.id) : null
+          created_by: resultData.created_by,
+          updated_by: resultData.updated_by,
+          title_et: resultData.title_et,
+          title_en: resultData.title_en,
+          title_ru: resultData.title_ru,
+          tags: resultData.tags ? {
+            premiere_types: resultData?.tags?.premiere_types ? resultData.tags.premiere_types.map(a => a.id) : null,
+            genres: resultData?.tags?.genres ? resultData.tags.genres.map(a => a.id) : null,
+            keywords: resultData?.tags?.keywords ? resultData.tags.keywords.map(a => a.id) : null,
+            programmes: resultData?.tags?.programmes ? resultData.tags.programmes.map(a => a.id) : null
           } : null,
-          festival_editions: result.festival_editions.map(a => a.id),
+          festival_editions: resultData.festival_editions.map(a => a.id),
         })
 
         const cassetteDomains = await get_domain(updateCassetteResult) // hard coded if needed AS LIST!!!
@@ -160,11 +159,11 @@ module.exports = {
       })
 
       const festival_editions = await strapi.db.query('festival-edition').find(
-        { id: newData.festival_editions.map(fe => fe.id) })
+        { id: modifications.festival_editions.map(fe => fe.id) })
       const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
       strapi.log.debug('films afterUpdate got domains', domains)
       if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
+        await modify_stapi_data(resultData, model_name)
       }
     },
 
