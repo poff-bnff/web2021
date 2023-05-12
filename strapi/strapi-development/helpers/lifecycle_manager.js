@@ -284,9 +284,11 @@ async function getStrapiModelName(modelName) {
 
 // FE's should be with domains loaded
 function getFeDomains(festival_editions) {
-  strapi.log.debug('getFeDomains', {festival_editions})
+  strapi.log.debug('getFeDomains')
   if (!festival_editions) return []
-  return [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+  const domainNames = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+  strapi.log.debug('getFeDomains', {domainNames})
+  return domainNames
 }
 
 // export model data from strapi to yaml file
