@@ -126,10 +126,10 @@ module.exports = {
     // resultData is the updated object
     // params: { "id": 4686 }
     // modifications: data that were sent to the update
-    async afterUpdate(resultData, params, modifications) {
+    async afterUpdate(result, params, modifications) {
       strapi.log.debug('afterUpdate film') // , {result: resultData, params, newData: modifications})
       // Check if any of single-film cassettes need to be updated
-      const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
+      const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(result.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
       // strapi.log.debug('afterUpdate film finished', params.id)
       // return
@@ -141,16 +141,16 @@ module.exports = {
 
         await strapi.query('cassette').update(
           { id: cassetteId }, {
-          title_et: resultData.title_et,
-          title_en: resultData.title_en,
-          title_ru: resultData.title_ru,
-          tags: resultData.tags ? {
-            premiere_types: resultData?.tags?.premiere_types ? resultData.tags.premiere_types.map(a => a.id) : null,
-            genres: resultData?.tags?.genres ? resultData.tags.genres.map(a => a.id) : null,
-            keywords: resultData?.tags?.keywords ? resultData.tags.keywords.map(a => a.id) : null,
-            programmes: resultData?.tags?.programmes ? resultData.tags.programmes.map(a => a.id) : null
+          title_et: result.title_et,
+          title_en: result.title_en,
+          title_ru: result.title_ru,
+          tags: result.tags ? {
+            premiere_types: result?.tags?.premiere_types ? result.tags.premiere_types.map(a => a.id) : null,
+            genres: result?.tags?.genres ? result.tags.genres.map(a => a.id) : null,
+            keywords: result?.tags?.keywords ? result.tags.keywords.map(a => a.id) : null,
+            programmes: result?.tags?.programmes ? result.tags.programmes.map(a => a.id) : null
           } : null,
-          festival_editions: resultData.festival_editions,
+          festival_editions: result.festival_editions,
         })
 
         const festival_editions = await strapi.db.query('festival-edition').find(
