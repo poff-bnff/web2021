@@ -200,19 +200,19 @@ module.exports = {
       const singleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
       singleFilmCassettes.map(async c => {
         strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
-        strapi.query('cassette').delete({ id: c.id })
-        strapi.log.debug('Issued delete for cassette: ', c.id, c.title_en)
+        await strapi.query('cassette').delete({ id: c.id })
+        strapi.log.debug('Deleted cassette: ', c.id, c.title_en)
       })
 
       // deal with cassettes that have multiple films
       const multipleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length > 1)
       multipleFilmCassettes.map(async c => {
         strapi.log.debug('Removing film(s)', filmIds, 'from cassette: ', c.id, c.title_en)
-        strapi.query('cassette').update(
+        await strapi.query('cassette').update(
           { id: c.id }, {
           orderedFilms: c.orderedFilms.filter(of => !filmIds.includes(of.film.id))
         })
-        strapi.log.debug('Issued remove film(s) from cassette: ', c.id, c.title_en)
+        strapi.log.debug('Removed film(s) from cassette: ', c.id, c.title_en)
       })
 
     },
