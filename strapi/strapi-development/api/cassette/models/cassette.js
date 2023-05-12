@@ -11,7 +11,7 @@ const {
   slugify,
   call_build,
   getFeDomains,
-  modify_stapi_data,
+  exportSingle4SSG,
   call_delete
 } = require(helper_path)
 
