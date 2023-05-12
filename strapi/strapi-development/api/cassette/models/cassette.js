@@ -10,7 +10,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 const {
   slugify,
   call_build,
-  get_domain,
+  getFeDomains,
   modify_stapi_data,
   call_delete
 } = require(helper_path)
@@ -41,7 +41,15 @@ module.exports = {
     // data is the data that was sent to the create
     async afterCreate(result, data) {
       strapi.log.debug('afterCreate cassette', result.id, result.title_en)
-    },
+
+      const festival_editions = await strapi.db.query('festival-edition').find(
+        { id: result.festival_editions.map(fe => fe.id) })
+      const cassetteDomains = getFeDomains(festival_editions)
+      strapi.log.debug('films afterUpdate got domains', cassetteDomains, 'for cassette', result.Id)
+      if (cassetteDomains.length > 0) {
+        await exportSingle4SSG('cassette', result.Id)
+      }
+  },
 
     // params is the original object
     // data is the data that was sent to the update
@@ -58,12 +66,10 @@ module.exports = {
 
       const festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
-      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
-      strapi.log.debug('Got domains: ', domains)
-      if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
-        strapi.log.debug('Lets build: ')
-        await call_build(result, domains, model_name)
+      const cassetteDomains = getFeDomains(festival_editions)
+      strapi.log.debug('films afterUpdate got domains', cassetteDomains, 'for cassette', result.Id)
+      if (cassetteDomains.length > 0) {
+        await exportSingle4SSG('cassette', result.Id)
       }
       // TODO: if no domains, then there is still possibility, that this cassette was
       // associated with domain before and now it is not. So we need to delete it from
@@ -76,8 +82,10 @@ module.exports = {
       const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
       strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
     },
+
     async afterDelete(result, params) {
       strapi.log.debug("afterDelete cassette", { id: result.id, params })
+      await exportSingle4SSG(model_name, params.id)
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
 
       // console.log('Delete: ')

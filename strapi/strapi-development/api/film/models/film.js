@@ -10,7 +10,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 const {
   slugify,
   call_build,
-  get_domain,
+  getFeDomains,
   modify_stapi_data,
   exportSingle4SSG,
   call_delete
@@ -49,7 +49,8 @@ module.exports = {
       new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
       new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
-    // Remove published_at from data, so that it is not set automatically to the current time
+
+      // Remove published_at from data, so that it is not set automatically to the current time
       // This might be a workaround for a bug in Strapi 3.6.8, where published_at is set to the current time?
       // if (data && data.published_at) {
       //   delete data.published_at
@@ -124,25 +125,22 @@ module.exports = {
 
     // resultData is the updated object
     // params: { "id": 4686 }
-    // modifications: data that was sent to the update
+    // modifications: data that were sent to the update
     async afterUpdate(resultData, params, modifications) {
       strapi.log.debug('afterUpdate film') // , {result: resultData, params, newData: modifications})
       // Check if any of single-film cassettes need to be updated
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
-      await exportSingle4SSG(model_name, params.id)
-      strapi.log.debug('afterUpdate film finished', params.id)
-      return
+      // strapi.log.debug('afterUpdate film finished', params.id)
+      // return
 
       allCassettesWithThisFilmOnly.map(async cassette => {
         // if (data.skipbuild) return
         strapi.log.debug('Updating with film data - cassette ID ', cassette.id, cassette.title_en);
         const cassetteId = cassette.id
 
-        const updateCassetteResult = await strapi.query('cassette').update(
+        await strapi.query('cassette').update(
           { id: cassetteId }, {
-          created_by: resultData.created_by,
-          updated_by: resultData.updated_by,
           title_et: resultData.title_et,
           title_en: resultData.title_en,
           title_ru: resultData.title_ru,
@@ -152,24 +150,22 @@ module.exports = {
             keywords: resultData?.tags?.keywords ? resultData.tags.keywords.map(a => a.id) : null,
             programmes: resultData?.tags?.programmes ? resultData.tags.programmes.map(a => a.id) : null
           } : null,
-          festival_editions: resultData.festival_editions.map(a => a.id),
+          festival_editions: resultData.festival_editions,
         })
 
-        const cassetteDomains = await get_domain(updateCassetteResult) // hard coded if needed AS LIST!!!
-        strapi.log.debug('... for domains', cassetteDomains.join(', '));
+        const cassetteDomains = getFeDomains(cassette.festival_editions)
+        strapi.log.debug('films afterUpdate got domains', cassetteDomains, 'for cassette', cassetteId)
 
         if (cassetteDomains.length > 0) {
-          await modify_stapi_data(updateCassetteResult, 'cassette')
+          await exportSingle4SSG('cassette', cassetteId)
         }
 
       })
 
-      const festival_editions = await strapi.db.query('festival-edition').find(
-        { id: modifications.festival_editions.map(fe => fe.id) })
-      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+      const domains = getFeDomains(result.festival_editions)
       strapi.log.debug('films afterUpdate got domains', domains)
       if (domains.length > 0) {
-        await modify_stapi_data(resultData, model_name)
+        await exportSingle4SSG('film', params.id)
       }
     },
 
@@ -219,9 +215,12 @@ module.exports = {
 
     async afterDelete(result, params) {
       strapi.log.debug("afterDelete film", { id: result.id, params })
+      await exportSingle4SSG(model_name, params.id)
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       // strapi.log.debug('Delete: ')
       // await call_delete(result, domains, model_name)
     }
   }
 }
+
+

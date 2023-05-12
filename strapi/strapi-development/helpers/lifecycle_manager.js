@@ -282,6 +282,11 @@ async function getStrapiModelName(modelName) {
   return await strapi.query(modelName).model.info.name
 }
 
+function getFeDomains(festival_editions) {
+  if (!festival_editions) return []
+  return [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+}
+
 // export model data from strapi to yaml file
 async function exportModel4SSG(modelName) {
   // lets forbid this function for now. Respond with error
@@ -438,6 +443,6 @@ exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
 exports.exportSingle4SSG = exportSingle4SSG
-
+exports.getFeDomains = getFeDomains
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
