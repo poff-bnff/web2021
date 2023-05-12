@@ -278,13 +278,20 @@ function clean_result(result) {
   return result
 }
 
-async function exportModel4SSG(model_name) {
-  strapi.log.debug('exportModel4SSG', model_name)
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${model_name}.yaml`)
-  const modelDataFromStrapi = await strapi.query(model_name).find()
-  strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
+async function getStrapiModelName(modelName) {
+  return await strapi.query(modelName).model.info.name
+}
+
+async function exportModel4SSG(modelName) {
+  const strapiModelName = await getStrapiModelName(modelName)
+  strapi.log.debug('exportModel4SSG', {modelName, strapiModelName})
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}.yaml`)
+  // read all model data from strapi
+  const modelDataFromStrapi = await strapi.query(modelName).find({ _limit: -1 })
+  strapi.log.debug('write da file', modelName, modelDataFromStrapi.length)
   fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
-  strapi.log.debug('return from exportModel4SSG', model_name)
+  strapi.log.debug('return from exportModel4SSG', modelName)
+
 }
 
 async function modify_stapi_data(result, model_name, vanish = false) {
