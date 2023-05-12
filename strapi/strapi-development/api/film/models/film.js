@@ -219,7 +219,14 @@ module.exports = {
 
     async afterDelete(result, params) {
       strapi.log.debug("afterDelete film", { id: result.id, params })
-      await exportSingle4SSG(model_name, params.id)
+      // One might delete a film by id or by id_in
+      // Be aware that id_in is an array of strings, not numbers!
+      const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
+      strapi.log.debug('beforeDelete film', {filmIds})
+
+      filmIds.map(async fId => {
+        await exportSingle4SSG(model_name, fId)
+      })
       // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
       // strapi.log.debug('Delete: ')
       // await call_delete(result, domains, model_name)
