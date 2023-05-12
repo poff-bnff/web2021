@@ -12,8 +12,7 @@ const {
   call_build,
   get_domain,
   modify_stapi_data,
-  exportModel4SSG,
-  exportSingleModel4SSG,
+  exportSingle4SSG,
   call_delete
 } = require(helper_path)
 
@@ -131,7 +130,7 @@ module.exports = {
       // Check if any of single-film cassettes need to be updated
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
-      await exportModel4SSG(model_name)
+      await exportSingle4SSG(model_name, params.id)
       strapi.log.debug('afterUpdate film finished', params.id)
       return
 
