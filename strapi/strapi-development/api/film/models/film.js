@@ -162,7 +162,7 @@ module.exports = {
 
       })
 
-      const domains = getFeDomains(result.festival_editions)
+      const domains = getFeDomains(resultData.festival_editions)
       strapi.log.debug('films afterUpdate got domains', domains)
       if (domains.length > 0) {
         await exportSingle4SSG('film', params.id)
