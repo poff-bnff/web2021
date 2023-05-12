@@ -283,6 +283,7 @@ async function getStrapiModelName(modelName) {
 }
 
 function getFeDomains(festival_editions) {
+  strapi.log.debug('getFeDomains', {festival_editions})
   if (!festival_editions) return []
   return [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
 }
