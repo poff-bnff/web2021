@@ -304,7 +304,7 @@ async function exportSingle4SSG(modelName, id) {
   const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_updates.yaml`)
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
-  strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi.length)
+  strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi)
   // read model data from yaml file. if file does not exist, create it and return empty array
   if (!fs.existsSync(yamlFile)) {
     fs.writeFileSync(yamlFile, yaml.stringify([], { indent: 4 }), 'utf8')
