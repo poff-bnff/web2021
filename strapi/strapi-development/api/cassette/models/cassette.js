@@ -88,11 +88,13 @@ module.exports = {
 
     async afterDelete(result, params) {
       strapi.log.debug("afterDelete cassette", { id: result.id, params })
-      await exportSingle4SSG(model_name, params.id)
-      // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+      // One might delete a cassette by id or by id_in
+      // Be aware that id_in is an array of strings, not numbers!
+      const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
 
-      // console.log('Delete: ')
-      // await call_delete(result, domains, model_name)
+      cassetteIds.forEach(async cassetteId => {
+        await exportSingle4SSG(model_name, cassetteId)
+      })
     }
   }
 };
