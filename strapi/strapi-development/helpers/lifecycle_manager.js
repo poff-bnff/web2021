@@ -301,10 +301,13 @@ async function exportSingleModel4SSG(modelName, id) {
   const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
+  strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi.length)
   // read model data from yaml file
   const modelDataFromYaml = yaml.parse(fs.readFileSync(yamlFile, 'utf8'), { maxAliasCount: -1 })
+  strapi.log.debug('Got from YAML', strapiModelName, modelDataFromYaml.length)
   // merge model data from strapi and yaml file
   const mergedModelData = modelDataFromYaml.map(e => e.id === id ? modelDataFromStrapi[0] : e)
+  strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
   // write merged model data to yaml file
   fs.writeFileSync(yamlFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')
   strapi.log.debug('return from exportSingle4SSG', strapiModelName)
