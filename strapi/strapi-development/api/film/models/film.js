@@ -131,8 +131,8 @@ module.exports = {
       // Check if any of single-film cassettes need to be updated
       const allCassettesWithThisFilmOnly = await getCassettesIncludingOnlyThisSingleFilm(resultData.id)
       strapi.log.debug('afterUpdate film allCassettesWithThisFilmOnly', allCassettesWithThisFilmOnly.map(a => a.id))
-      await exportSingleModel4SSG(model_name, params.id)
-      strapi.log.debug('afterUpdate film', params.id)
+      await exportModel4SSG(model_name)
+      strapi.log.debug('afterUpdate film finished', params.id)
       return
 
       allCassettesWithThisFilmOnly.map(async cassette => {

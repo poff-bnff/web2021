@@ -290,7 +290,7 @@ async function exportModel4SSG(modelName) {
   // read all model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ _limit: -1 })
   strapi.log.debug('write da file', strapiModelName, modelDataFromStrapi.length)
-  // fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
+  fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
   strapi.log.debug('return from exportModel4SSG', strapiModelName)
 }
 
