@@ -309,7 +309,7 @@ async function exportModel4SSG(modelName) {
 // export single model data from strapi to yaml file
 async function exportSingle4SSG(modelName, id) {
   const strapiModelName = await getStrapiModelName(modelName)
-  strapi.log.debug('exportSingle4SSG', {modelName, strapiModelName, id})
+  strapi.log.debug('exportSingle4SSG', modelName, id)
   const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_updates.yaml`)
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
@@ -327,7 +327,7 @@ async function exportSingle4SSG(modelName, id) {
   strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
   // write merged model data to yaml file
   fs.writeFileSync(yamlFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')
-  strapi.log.debug('return from exportSingle4SSG', strapiModelName)
+  strapi.log.debug('return from exportSingle4SSG', modelName, id)
 }
 
 

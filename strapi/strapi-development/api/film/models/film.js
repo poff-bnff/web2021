@@ -9,11 +9,8 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
-  call_build,
   getFeDomains,
-  modify_stapi_data,
-  exportSingle4SSG,
-  call_delete
+  exportSingle4SSG
 } = require(helper_path)
 
 // returns a list of single-film cassettes that include only this single film
@@ -28,18 +25,7 @@ const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
   return relevantCassettes
 }
 
-/**
-const domains =
-For adding domain you have multiple choice. First for objects that has property 'domain'
-or has property, that has 'domain' (at the moment festival_edition and programmes) use
-function get_domain(result). If you know that that object has doimain, but no property
-to indicate that. Just write the list of domains (as list), example tartuffi_menu.
-And last if full build, with no domain is needed. Write FULL_BUILD (as list)
-*/
-
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-// const domains = ['hoff.ee'] // hard coded if needed AS LIST!!!
-// const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
 
 module.exports = {
   lifecycles: {
@@ -95,8 +81,8 @@ module.exports = {
 
       if (uniqueFestivalEditionDomainURLs.length > 0) {
         await exportSingle4SSG('film', result.id)
+        strapi.log.debug('afterCreate film after exportSingle4SSG film', result.id, 'before exportSingle4SSG cassette', new_cassette.id)
         await exportSingle4SSG('cassette', new_cassette.id)
-        // await call_build(new_cassette, uniqueFestivalEditionDomainURLs, 'cassette')
       }
 
     },
@@ -113,17 +99,9 @@ module.exports = {
       new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
 
       return
-
-      if (new_data.published_at === null) { // if strapi publish system goes live
-        strapi.log.debug('Draft! Delete: ')
-        const festival_editions = await strapi.db.query('festival-edition').find({ id: new_data.festival_editions })
-        const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
-        strapi.log.debug('films beforeUpdate got domains', domains)
-        await call_delete(params, domains, model_name)
-      }
     },
 
-    // resultData is the updated object
+    // result is the updated object
     // params: { "id": 4686 }
     // modifications: data that were sent to the update
     async afterUpdate(result, params, modifications) {
@@ -227,9 +205,6 @@ module.exports = {
       filmIds.map(async fId => {
         await exportSingle4SSG(model_name, fId)
       })
-      // const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-      // strapi.log.debug('Delete: ')
-      // await call_delete(result, domains, model_name)
     }
   }
 }
