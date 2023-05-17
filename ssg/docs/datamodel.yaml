@@ -3025,6 +3025,28 @@ L1MenuKumu: &L1MenuKumu
     L2MenuItems: #(Component (repeatable))
         - *L2MenuKumu
 
+Banner: &Banner
+    name: (text)
+    order: (number)
+    publishFrom: (Datetime)
+    publishUntil: (Datetime)
+    imageDefault: *StrapiMedia
+    image_et: *StrapiMedia
+    image_en: *StrapiMedia
+    image_ru: *StrapiMedia
+    targetDefault: (text)
+    target_et: (text)
+    target_en: (text)
+    target_ru: (text)
+
+BannerGroup: &BannerGroup
+    path: /banner
+    name: (text)
+    domain: *Domain
+    interval: (number)
+    position: (enumeration)
+    banners: #(Component (repeatable))
+
 #SingleType
 # Hero
 HeroArticlePoff:
