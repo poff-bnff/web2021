@@ -278,14 +278,58 @@ function clean_result(result) {
   return result
 }
 
-async function exportModel4SSG(model_name) {
-  strapi.log.debug('exportModel4SSG', model_name)
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${model_name}.yaml`)
-  const modelDataFromStrapi = await strapi.query(model_name).find()
-  strapi.log.debug('write da file', model_name, modelDataFromStrapi.length)
-  fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
-  strapi.log.debug('return from exportModel4SSG', model_name)
+async function getStrapiModelName(modelName) {
+  return await strapi.query(modelName).model.info.name
 }
+
+// FE's should be with domains loaded
+function getFeDomains(festival_editions) {
+  strapi.log.debug('getFeDomains')
+  if (!festival_editions) return []
+  const domainNames = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+  strapi.log.debug('getFeDomains', {domainNames})
+  return domainNames
+}
+
+// export model data from strapi to yaml file
+async function exportModel4SSG(modelName) {
+  // lets forbid this function for now. Respond with error
+  throw new Error('exportModel4SSG is not allowed')
+
+  const strapiModelName = await getStrapiModelName(modelName)
+  strapi.log.debug('exportModel4SSG', {modelName, strapiModelName})
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
+  // read all model data from strapi
+  const modelDataFromStrapi = await strapi.query(modelName).find({ _limit: -1 })
+  strapi.log.debug('write da file', strapiModelName, modelDataFromStrapi.length)
+  fs.writeFileSync(yamlFile, yaml.stringify(modelDataFromStrapi.filter(e => e !== null), { indent: 4 }), 'utf8')
+  strapi.log.debug('return from exportModel4SSG', strapiModelName)
+}
+
+// export single model data from strapi to yaml file
+async function exportSingle4SSG(modelName, id) {
+  const strapiModelName = await getStrapiModelName(modelName)
+  strapi.log.debug('exportSingle4SSG', {modelName, strapiModelName, id})
+  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_updates.yaml`)
+  // read single model data from strapi
+  const modelDataFromStrapi = await strapi.query(modelName).find({ id })
+  strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi.length)
+  // read model data from yaml file. if file does not exist, create it and return empty array
+  if (!fs.existsSync(yamlFile)) {
+    fs.writeFileSync(yamlFile, yaml.stringify([], { indent: 4 }), 'utf8')
+  }
+  const modelDataFromYaml = yaml.parse(fs.readFileSync(yamlFile, 'utf8'), { maxAliasCount: -1 })
+  strapi.log.debug('Got from YAML', strapiModelName, modelDataFromYaml.length)
+  // merge model data from strapi and yaml file
+  // 1. if model data from strapi is in yaml file, remove it
+  // 2. add model data from strapi to yaml file
+  const mergedModelData = modelDataFromYaml.filter(e => e.id !== id).concat(modelDataFromStrapi)
+  strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
+  // write merged model data to yaml file
+  fs.writeFileSync(yamlFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')
+  strapi.log.debug('return from exportSingle4SSG', strapiModelName)
+}
+
 
 async function modify_stapi_data(result, model_name, vanish = false) {
   strapi.log.debug('modify_stapi_data', model_name, result.id)
@@ -402,6 +446,7 @@ exports.update_strapi_logs = update_strapi_logs
 exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
-
+exports.exportSingle4SSG = exportSingle4SSG
+exports.getFeDomains = getFeDomains
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
