@@ -5,8 +5,6 @@ const {
 const decoder = new StringDecoder('utf8')
 
 const {
-  execFile,
-  exec,
   spawn
 } = require('child_process')
 
@@ -15,20 +13,9 @@ const yaml = require('yaml')
 const jsyaml = require('js-yaml');
 const path = require('path')
 const moment = require("moment-timezone")
-const { debug } = require('console')
-
-const mapping_domain = {
-  'filmikool.poff.ee': 'filmikool',
-  'hoff.ee': 'hoff',
-  'industry.poff.ee': 'industry',
-  'discoverycampus.poff.ee': 'discamp',
-  'justfilm.ee': 'just',
-  'kinoff.poff.ee': 'kinoff',
-  'kumu.poff.ee': 'kumu',
-  'oyafond.ee': 'bruno',
-  'poff.ee': 'poff',
-  'shorts.poff.ee': 'shorts',
-  'tartuff.ee': 'tartuff'
+const BUILD_MANAGER_PATH = path.join(__dirname, `/../../../ssg/helpers/build_manager.js`)
+if (!fs.existsSync(BUILD_MANAGER_PATH)) {
+  throw new Error(`File ${BUILD_MANAGER_PATH} does not exist`)
 }
 
 function slugify(text) {
@@ -80,7 +67,6 @@ async function build_start_to_strapi_logs(result, domain, err = null, b_err = nu
   }
 
   plugin_log = await strapi.entityService.create({ data: loggerData }, { model: "plugins::publisher.build_logs" })
-  // strapi.log.debug('Sinu palutud v4ljaprint', plugin_log)
   return plugin_log
 }
 
@@ -218,17 +204,6 @@ function get_programme_out_of_cassette(result) {
     programme_id.push(prog.id)
   }
   return programme_id
-}
-
-function get_build_script(domain) {
-  let short_domain = mapping_domain[domain]
-  if (short_domain) {
-    let dir_to_build = path.join(__dirname, `/../../../ssg/helpers/build_manager.js`)
-    return dir_to_build
-  } else {
-    strapi.log.debug('No build script provided for', domain.toUpperCase(), 'or this domain is built through Slack.')
-    return null
-  }
 }
 
 function clean_result(result) {
@@ -374,9 +349,9 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 async function call_build(result, domains, model_name, del = false) {
   const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
   const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
-  const MODELS_TARGET_BUILD = DOMAIN_SPECIFICS.target_build_models || []
+  const TARGET_BUILD_MODELS = DOMAIN_SPECIFICS.target_build_models || []
   // here to skip specific model builds
-  if (!MODELS_TARGET_BUILD.includes(model_name)) {
+  if (!TARGET_BUILD_MODELS.includes(model_name)) {
     strapi.log.debug(`Skipping ${model_name} ${result.id} ${domains} build as per domain_specifics conf`)
     return
   }
@@ -389,33 +364,34 @@ async function call_build(result, domains, model_name, del = false) {
   }
   else if (domains.length > 0) {
     strapi.log.debug('Build ', domains)
+    // list of domains that are not in domain list of DOMAIN_SPECIFICS
+    let domains_not_in_domain_specifics = domains.filter(domain => !DOMAIN_SPECIFICS.domains.includes(domain))
+    if (domains_not_in_domain_specifics.length > 0) {
+      strapi.log.debug(`Skipping ${model_name} ${result.id} ${domains_not_in_domain_specifics} build as per domain_specifics conf`)
+    }
+    // filter out domains that are not in domain list of DOMAIN_SPECIFICS
+    domains = domains.filter(domain => DOMAIN_SPECIFICS.domains.includes(domain))
     for (let domain of domains) {
-      let build_dir = get_build_script(domain)
-      if (fs.existsSync(build_dir)) {
-        let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`, del)
-        let plugin_log_id = plugin_log.id
-        let args = [domain, plugin_log_id, model_name, "target", result.id]
+      strapi.log.debug(`Build ${domain} ${model_name} ${result.id}`)
+      let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`, del)
+      let plugin_log_id = plugin_log.id
+      let args = [domain, plugin_log_id, model_name, "target", result.id]
 
-        // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
-        if (result.cassette && model_name === 'screening') {
-          args = [domain, plugin_log_id, model_name, "target", result.id, result.cassette.id]
-        }
-        // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
-        if (result.tags && model_name === 'cassette') {
-          let prog_args = get_programme_out_of_cassette(result)
-          args = [domain, plugin_log_id, model_name, "target", result.id, prog_args.join(' ')]
-        }
-
-        if (del) {
-          args = [domain, plugin_log_id, model_name, "target"]
-        }
-        await call_process(build_dir, plugin_log, args)
+      // erand screeningule, kaasa viienda argumendina objektiga seotud kasseti id
+      if (result.cassette && model_name === 'screening') {
+        args = [domain, plugin_log_id, model_name, "target", result.id, result.cassette.id]
       }
-      // else {
-      //     plugin_log.end_time = moment().tz("Europe/Tallinn").format()
-      //     plugin_log.error_code = `NO_BUILD_SCRIPT_ERROR`
-      //     // update_strapi_logs(plugin_log)
-      // }
+      // erand cassette, kaasa viienda argumendina kassetiga seotud programmi id'd [list]
+      if (result.tags && model_name === 'cassette') {
+        let prog_args = get_programme_out_of_cassette(result)
+        args = [domain, plugin_log_id, model_name, "target", result.id, prog_args.join(' ')]
+      }
+
+      if (del) {
+        args = [domain, plugin_log_id, model_name, "target"]
+      }
+      strapi.log.debug(`Calling build manager with args:`, args)
+      await call_process(BUILD_MANAGER_PATH, plugin_log, args)
     }
   } else {
     let error = 'NO DOMAIN'
@@ -441,15 +417,11 @@ async function call_delete(result, domains, model_name) {
 exports.update_entity_wo_published_at = update_entity_wo_published_at
 exports.call_update = call_update
 exports.build_start_to_strapi_logs = build_start_to_strapi_logs
-exports.call_process = call_process
 exports.call_build = call_build
 exports.get_domain = get_domain
-exports.get_build_script = get_build_script
 exports.update_strapi_logs = update_strapi_logs
 exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
 exports.exportSingle4SSG = exportSingle4SSG
 exports.getFeDomainNames = getFeDomainNames
-
-// build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
