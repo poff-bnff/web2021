@@ -38,9 +38,10 @@ module.exports = {
       strapi.log.debug('cassettes afterCreate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
-        call_build()
+        strapi.log.debug('Lets build: ')
+        await call_build(result, cassetteDomains, model_name)
       }
-  },
+    },
 
     // params is the original object
     // data is the data that was sent to the update
@@ -61,7 +62,8 @@ module.exports = {
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
-        call_build()
+        strapi.log.debug('Lets build: ')
+        await call_build(result, cassetteDomains, model_name)
       }
 
       // TODO: if no domains, then there is still possibility, that this cassette was
