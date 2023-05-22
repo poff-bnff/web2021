@@ -1,6 +1,6 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
+const fs = require('fs')
+const yaml = require('js-yaml')
+const path = require('path')
 const { deleteFolderRecursive } = require("./helpers.js")
 
 const rootDir = path.join(__dirname, '..')
@@ -26,7 +26,7 @@ let checkDomain = function(element) {
     }
 
     if (element.id === 15542 && element.firstName) {
-        console.log('TESTPERSON DOMAINS ', element['domains']);
+        console.log('TESTPERSON DOMAINS ', element['domains'])
     }
 
     if (element.domains === undefined || !element?.domains?.length) {
@@ -34,7 +34,7 @@ let checkDomain = function(element) {
         return true
     }
 
-    for(let ix in element['domains']){
+    for(let ix in element['domains']) {
         let el = element['domains'][ix]
         // console.log(ix, el)
         if (el['id'] === DOMAINSMAPPING[DOMAIN]){
@@ -45,12 +45,6 @@ let checkDomain = function(element) {
     return false
 }
 
-function readYAML(file) {
-    const YAMLPath = path.join(strapiDataPath, file)
-    const allDataYAML = yaml.load(fs.readFileSync(YAMLPath, 'utf8'))
-    return allDataYAML
-}
-
 function writeYAML(file, data) {
     // console.log(JSON.stringify(strapiData[modelName], 0, 2))
     let YAMLData = yaml.dump(JSON.parse(JSON.stringify(data)), { 'noRefs': true, 'indent': '4' })
@@ -58,18 +52,16 @@ function writeYAML(file, data) {
     fs.writeFileSync(YAMLPath, YAMLData, 'utf8')
 }
 
-
 deleteFolderRecursive(domainStrapiDataPath)
 fs.mkdirSync(domainStrapiDataPath, { recursive: true })
 
 fs.readdir(strapiDataPath, (err, files) => {
     files.forEach(file => {
-
-        const allDataYAML = readYAML(file)
+        const YAMLPath = path.join(strapiDataPath, file)
+        const allDataYAML = yaml.load(fs.readFileSync(YAMLPath, 'utf8'))
         const domainData = allDataYAML.filter(checkDomain)
         writeYAML(file, domainData)
-
-    });
-    console.log(`Finished writing domain specific domainStrapidata for ${DOMAIN}`);
-});
+    })
+    console.log(`Finished writing domain specific domainStrapidata for ${DOMAIN}`)
+})
 
