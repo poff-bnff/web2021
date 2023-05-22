@@ -9,7 +9,7 @@ let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_man
 
 const {
   slugify,
-  getFeDomains,
+  getFeDomainNames,
   exportSingle4SSG
 } = require(helper_path)
 
@@ -73,13 +73,8 @@ module.exports = {
       const festivalEditionIDs = result.festival_editions ? result.festival_editions.map(a => a.id) : []
       // strapi.log.debug('festivalEditionIDs', { festivalEditionIDs })
       const festivalEditions = await strapi.query('festival-edition').find({ id_in: festivalEditionIDs })
-      // strapi.log.debug('festivalEditions', { festivalEditions })
-      const festivalEditionDomainURLs = festivalEditions.map(a => a.domains.map(b => b.url)).flat(1)
-      // strapi.log.debug('festivalEditionDomainURLs', { festivalEditionDomainURLs })
-      const uniqueFestivalEditionDomainURLs = [...new Set(festivalEditionDomainURLs)]
-      strapi.log.debug('uniqueFestivalEditionDomainURLs', { uniqueFestivalEditionDomainURLs })
 
-      if (uniqueFestivalEditionDomainURLs.length > 0) {
+      if (getFeDomainNames(festivalEditions).length > 0) {
         await exportSingle4SSG('film', result.id)
         strapi.log.debug('afterCreate film after exportSingle4SSG film', result.id, 'before exportSingle4SSG cassette', new_cassette.id)
         await exportSingle4SSG('cassette', new_cassette.id)
@@ -133,7 +128,7 @@ module.exports = {
 
         const festival_editions = await strapi.db.query('festival-edition').find(
           { id: cassette.festival_editions.map(fe => fe.id) })
-        const cassetteDomains = getFeDomains(festival_editions)
+        const cassetteDomains = getFeDomainNames(festival_editions)
         strapi.log.debug('films afterUpdate got domains', cassetteDomains, 'for cassette', cassetteId)
 
         if (cassetteDomains.length > 0) {
@@ -144,7 +139,7 @@ module.exports = {
 
       const festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
-      const domains = getFeDomains(festival_editions)
+      const domains = getFeDomainNames(festival_editions)
       strapi.log.debug('films afterUpdate got domains', domains)
       if (domains.length > 0) {
         await exportSingle4SSG('film', params.id)

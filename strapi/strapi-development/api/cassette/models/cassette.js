@@ -5,25 +5,15 @@
  */
 
 const path = require('path')
-let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
   slugify,
   call_build,
-  getFeDomains,
+  getFeDomainNames,
   exportSingle4SSG,
   call_delete
 } = require(helper_path)
-
-
-/**
-const domains =
-For adding domain you have multiple choice. First for objects that has property 'domain'
-or has property, that has 'domain' (at the moment festival_edition and programmes) use
-function get_domain(result). If you know that that object has doimain, but no property
-to indicate that. Just write the list of domains (as list), example tartuffi_menu.
-And last if full build, with no domain is needed. Write FULL_BUILD (as list)
-*/
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
@@ -44,7 +34,7 @@ module.exports = {
 
       const festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
-      const cassetteDomains = getFeDomains(festival_editions)
+      const cassetteDomains = getFeDomainNames(festival_editions)
       strapi.log.debug('cassettes afterCreate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
@@ -66,7 +56,7 @@ module.exports = {
 
       const festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
-      const cassetteDomains = getFeDomains(festival_editions)
+      const cassetteDomains = getFeDomainNames(festival_editions)
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)

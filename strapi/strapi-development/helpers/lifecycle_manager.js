@@ -282,10 +282,13 @@ async function getStrapiModelName(modelName) {
   return await strapi.query(modelName).model.info.name
 }
 
-// FE's should be with domains loaded
-function getFeDomains(festival_editions) {
+// FE's should be with domains preloaded
+function getFeDomainNames(festival_editions) {
   strapi.log.debug('getFeDomains')
   if (!festival_editions) return []
+  // throw error if domains are not preloaded
+  if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
+
   const domainNames = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
   strapi.log.debug('getFeDomains', {domainNames})
   return domainNames
@@ -447,6 +450,6 @@ exports.modify_stapi_data = modify_stapi_data
 exports.slugify = slugify
 exports.call_delete = call_delete
 exports.exportSingle4SSG = exportSingle4SSG
-exports.getFeDomains = getFeDomains
+exports.getFeDomainNames = getFeDomainNames
 
 // build_hoff.sh hoff.ee target screenings id  // info mida sh fail ootab
