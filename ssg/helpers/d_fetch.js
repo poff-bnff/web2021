@@ -46,6 +46,6 @@ fs.readdir(allStrapiDataDir, (err, modelFiles) => {
         let YAMLData = yaml.dump(JSON.parse(JSON.stringify(domainModelData)), { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(domainStrapiDataDir, modelFile), YAMLData, 'utf8')
     })
-    console.log(`Finished writing domain specific domainStrapidata for ${DOMAIN}`)
+    console.log(`d_fetch finished. Saved domain specific domainStrapidata for ${DOMAIN}`)
 })
 
