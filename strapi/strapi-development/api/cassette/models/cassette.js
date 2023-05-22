@@ -38,6 +38,7 @@ module.exports = {
       strapi.log.debug('cassettes afterCreate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
+        call_build()
       }
   },
 
@@ -60,7 +61,9 @@ module.exports = {
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
+        call_build()
       }
+
       // TODO: if no domains, then there is still possibility, that this cassette was
       // associated with domain before and now it is not. So we need to delete it from
       // that domain.
