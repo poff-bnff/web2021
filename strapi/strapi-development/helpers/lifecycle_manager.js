@@ -364,13 +364,13 @@ async function call_build(result, domains, model_name, del = false) {
   }
   else if (domains.length > 0) {
     strapi.log.debug('Build ', domains)
-    // list of domains that are not in domain list of DOMAIN_SPECIFICS
-    let domains_not_in_domain_specifics = domains.filter(domain => !DOMAIN_SPECIFICS.domain.includes(domain))
+    // list of domains that are not in keys of domain dictionary of DOMAIN_SPECIFICS
+    let domains_not_in_domain_specifics = domains.filter(domain => !Object.keys(DOMAIN_SPECIFICS.domains).includes(domain))
     if (domains_not_in_domain_specifics.length > 0) {
       strapi.log.debug(`Skipping ${model_name} ${result.id} ${domains_not_in_domain_specifics} build as per domain_specifics conf`)
     }
-    // filter out domains that are not in domain list of DOMAIN_SPECIFICS
-    domains = domains.filter(domain => DOMAIN_SPECIFICS.domains.includes(domain))
+    // filter out domains that are not in keys of domain dict of DOMAIN_SPECIFICS
+    domains = domains.filter(domain => Object.keys(DOMAIN_SPECIFICS.domains).includes(domain))
     for (let domain of domains) {
       strapi.log.debug(`Build ${domain} ${model_name} ${result.id}`)
       let plugin_log = await build_start_to_strapi_logs(result, domain, null, null, `${model_name} ${result.id}`, del)
