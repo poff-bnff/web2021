@@ -32,8 +32,12 @@ const STRAPIDATA_PROGRAMMES = yaml.load(fs.readFileSync(strapiDataProgrammePath,
 // const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
+// read cassette data from Cassette.yaml and Cassette_updates.yaml and merge them
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
-const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
+const STRAPIDATA_CASSETTES_BASE = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+const STRAPIDATA_CASSETTES_UPDATES_YAML = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
+const STRAPIDATA_CASSETTES_YAML = { ...STRAPIDATA_CASSETTES_BASE, ...STRAPIDATA_CASSETTES_UPDATES_YAML }
 const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
@@ -66,19 +70,6 @@ if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('online kino')
     whichScreeningTypesToFetch.push('free')
 }
-
-// UUS TEST FESTIVAL EDITIONI JÄRGI
-// Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
-// if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
-//     if (festival_editions.includes(33) || festival_editions.includes(53)) {
-//         whichScreeningTypesToFetch.push('first screening')
-//     } else {
-//         whichScreeningTypesToFetch.push('first screening')
-//         whichScreeningTypesToFetch.push('regular')
-//         whichScreeningTypesToFetch.push('online kino')
-//         whichScreeningTypesToFetch.push('free')
-//     }
-// }
 
 const mapping = DOMAIN_SPECIFICS.domain
 
@@ -207,23 +198,6 @@ const minimodel_cassette = {
     'languages': {
         model_name: 'Language'
     },
-    // 'media': {
-    //     model_name: 'FilmMedia',
-    //     // expand: {
-    //     //     'stills': {
-    //     //         model_name: 'StrapiMedia'
-    //     //     },
-    //     //     'posters': {
-    //     //         model_name: 'StrapiMedia'
-    //     //     },
-    //     //     'trailer': {
-    //     //         model_name: 'Trailer'
-    //     //     },
-    //     //     'QaClip': {
-    //     //         model_name: 'QaClip'
-    //     //     }
-    //     // }
-    // },
 }
 const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 

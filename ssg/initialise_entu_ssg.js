@@ -1,6 +1,6 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
+const fs = require('fs')
+const yaml = require('js-yaml')
+const path = require('path')
 
 const rootDir = path.join(__dirname)
 const templatePath = path.join(rootDir, 'entu-ssg-template.yaml')
@@ -27,8 +27,6 @@ let ssg_conf = yaml.dump(template, { 'noRefs': true, 'indent': '4' })
 
 try {
     fs.writeFileSync(ssgConfPath, ssg_conf, 'utf8')
-
 } catch (err) {
-    // An error occurred
-    console.error(err);
+    console.error(err)
 }
