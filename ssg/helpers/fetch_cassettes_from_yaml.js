@@ -37,7 +37,7 @@ const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
 const STRAPIDATA_CASSETTES_BASE = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 const STRAPIDATA_CASSETTES_UPDATES_YAML = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
-const STRAPIDATA_CASSETTES_YAML = { ...STRAPIDATA_CASSETTES_BASE, ...STRAPIDATA_CASSETTES_UPDATES_YAML }
+const STRAPIDATA_CASSETTES_YAML = Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES_YAML)
 const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
@@ -201,7 +201,7 @@ const minimodel_cassette = {
 }
 
 console.log('fetch_cassettes with merged cassette strapidata calling fetchModel')
-const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_UPDATES_YAML, minimodel_cassette)
+const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
 // koondnimekirja tootmisel tehakse:
 // nimekiri A kõikidest üksikkassettidest
