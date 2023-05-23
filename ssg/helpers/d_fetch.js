@@ -17,7 +17,10 @@ const DOMAIN_ID = DOMAINSYAML.filter(d => d.url === DOMAIN)[0].id
 let checkDomain = function(element) {
     if (!DOMAIN) { return true }
 
-    console.log('checkDomain', {element})
+    if (!element['domains'] && !element['domain']) {
+        console.log('checkDomain with no domains', {element})
+        return true
+    }
 
     element['domains'] = element['domains'] || [element['domain']] || []
 
@@ -36,7 +39,8 @@ let checkDomain = function(element) {
 
     return false
 }
-
+e = {id: 15542, firstName: 'Testperson'}
+console.log('foo', {e}, e['d'] || [e['d']] || 'foo')
 deleteFolderRecursive(domainStrapiDataDir)
 fs.mkdirSync(domainStrapiDataDir, { recursive: true })
 
