@@ -231,7 +231,7 @@ const STRAPIDATA_CASSETTES_B = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
 const STRAPIDATA_CASSETTES_A = STRAPIDATA_CASSETTES_UNFILTERED.filter(c => {
     // Throw error, if orderedFilms does not have film.id
     if (c.orderedFilms && c.orderedFilms.length === 1 &&
-         (!c.orderedFilms[0].film) || (!c.orderedFilms[0].film.id)) {
+        !(c.orderedFilms[0].film && c.orderedFilms[0].film.id)) {
         console.log(`ERROR! Cassette ${c.id} has empty orderedFilms record!!!`);
         throw new Error(`ERROR! Cassette ${c.id} has empty orderedFilms record!!!`)
     }
