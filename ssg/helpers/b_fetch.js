@@ -11,12 +11,12 @@ function make_MODELS(minimodel) {
     const objDataDir = path.join(__dirname, '..', 'source', '_domainStrapidata')
     for (const property_name in minimodel) {
         const submodel = minimodel[property_name]
-        const model_n = submodel.model_name
+        const modelName = submodel.model_name
 
-        if (DATAMODEL[model_n].hasOwnProperty('_path')) {
-            MODELS[model_n] = yaml.load(fs.readFileSync(path.join(objDataDir, `${model_n}.yaml`), 'utf8'))
+        if (DATAMODEL[modelName].hasOwnProperty('_path')) {
+            MODELS[modelName] = yaml.load(fs.readFileSync(path.join(objDataDir, `${modelName}.yaml`), 'utf8'))
         } else {
-            MODELS[model_n] = null
+            MODELS[modelName] = null
         }
         if (submodel.hasOwnProperty('expand')) {
             make_MODELS(submodel.expand)
