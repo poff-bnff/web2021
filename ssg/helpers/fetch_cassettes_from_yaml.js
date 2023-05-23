@@ -201,7 +201,7 @@ const minimodel_cassette = {
 }
 
 console.log('fetch_cassettes with merged cassette strapidata calling fetchModel')
-const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
+const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_UPDATES_YAML, minimodel_cassette)
 
 // koondnimekirja tootmisel tehakse:
 // nimekiri A kõikidest üksikkassettidest
