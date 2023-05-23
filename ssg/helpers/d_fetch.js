@@ -39,8 +39,7 @@ let checkDomain = function(element) {
 
     return false
 }
-e = {id: 15542, firstName: 'Testperson'}
-console.log('foo', {e}, e['d'] || [e['d']] || 'foo')
+
 deleteFolderRecursive(domainStrapiDataDir)
 fs.mkdirSync(domainStrapiDataDir, { recursive: true })
 
