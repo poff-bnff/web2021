@@ -36,8 +36,20 @@ const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreening
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
 const STRAPIDATA_CASSETTES_BASE = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+// convert array to object, so that we can use cassette.id as key
+.reduce((obj, item) => {
+    obj[item.id] = item
+    return obj
+}, {})
 const STRAPIDATA_CASSETTES_UPDATES_YAML = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
-const STRAPIDATA_CASSETTES_YAML = Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES_YAML)
+// do the same for updates
+.reduce((obj, item) => {
+    obj[item.id] = item
+    return obj
+}, {})
+// merge base and updates and convert back to array
+const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES_YAML))
+
 const whichScreeningTypesToFetch = []
 
 const params = process.argv.slice(2)
