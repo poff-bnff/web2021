@@ -18,7 +18,7 @@ let checkDomain = function(element) {
     if (!DOMAIN) { return true }
 
     if (!element['domains'] && !element['domain']) {
-        console.log('checkDomain with no domains', {element})
+        // console.log('checkDomain with no domains', {element})
         return true
     }
 
