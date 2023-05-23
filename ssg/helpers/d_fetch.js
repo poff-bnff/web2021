@@ -17,6 +17,8 @@ const DOMAIN_ID = DOMAINSYAML.filter(d => d.url === DOMAIN)[0].id
 let checkDomain = function(element) {
     if (!DOMAIN) { return true }
 
+    console.log('checkDomain', {element})
+
     element['domains'] = element['domains'] || [element['domain']] || []
 
     if (element.id === 15542 && element.firstName) {
