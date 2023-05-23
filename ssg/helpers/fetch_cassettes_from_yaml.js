@@ -48,7 +48,7 @@ const STRAPIDATA_CASSETTES_UPDATES = yaml.load(fs.readFileSync(strapiDataCassett
     return obj
 }, {})
 // merge base and updates and convert back to array
-const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_UPDATES, STRAPIDATA_CASSETTES_BASE))
+const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES))
 
 const whichScreeningTypesToFetch = []
 
@@ -212,7 +212,7 @@ const minimodel_cassette = {
     },
 }
 
-console.log('fetch_cassettes with merged cassette strapidata calling fetchModel')
+timer.log(__filename, 'fetch_cassettes with merged cassette strapidata calling fetchModel')
 const STRAPIDATA_CASSETTES_UNFILTERED = fetchModel(STRAPIDATA_CASSETTES_YAML, minimodel_cassette)
 
 // koondnimekirja tootmisel tehakse:
@@ -301,7 +301,7 @@ const minimodel_screenings = {
         model_name: 'Cassette'
     }
 }
-console.log('fetch_cassettes with screening strapidata calling fetchModel')
+timer.log(__filename, 'fetch_cassettes with screening strapidata calling fetchModel')
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
 
 if (CHECKPROGRAMMES) {
