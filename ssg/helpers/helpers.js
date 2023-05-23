@@ -2,6 +2,8 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
 
+const strapiDataDirPath = path.join(__dirname, '..', 'source', '_domainStrapidata')
+
 const JSONcopy = obj => JSON.parse(JSON.stringify(obj))
 
 deleteFolderRecursive = path => {
