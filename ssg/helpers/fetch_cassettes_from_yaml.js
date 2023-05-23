@@ -41,14 +41,14 @@ const STRAPIDATA_CASSETTES_BASE = yaml.load(fs.readFileSync(strapiDataCassettePa
     obj[item.id] = item
     return obj
 }, {})
-const STRAPIDATA_CASSETTES_UPDATES_YAML = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
+const STRAPIDATA_CASSETTES_UPDATES = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
 // do the same for updates
 .reduce((obj, item) => {
     obj[item.id] = item
     return obj
 }, {})
 // merge base and updates and convert back to array
-const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_UPDATES_YAML, STRAPIDATA_CASSETTES_UPDATES_BASE))
+const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_UPDATES, STRAPIDATA_CASSETTES_BASE))
 
 const whichScreeningTypesToFetch = []
 
