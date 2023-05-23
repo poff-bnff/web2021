@@ -171,7 +171,7 @@ module.exports = {
 
       // deal with cassettes that have only one film
       const singleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
-      singleFilmCassettes.map(async c => {
+      await singleFilmCassettes.map(async c => {
         strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
         await strapi.query('cassette').delete({ id: c.id })
         strapi.log.debug('Deleted cassette: ', c.id, c.title_en)
