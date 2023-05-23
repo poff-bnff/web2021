@@ -372,355 +372,355 @@ for (const lang of allLanguages) {
             }
         }
 
-        if (typeof slugEn !== 'undefined') {
-            if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
-                addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
-            }
-
-            s_cassette_copy.dirSlug = slugEn
-            s_cassette_copy.directory = path.join(cassettesPath, slugEn)
-            fs.mkdirSync(s_cassette_copy.directory, { recursive: true })
-
-            let cassetteCarouselPicsCassette = []
-            let cassetteCarouselPicsCassetteThumbs = []
-            let cassetteCarouselPicsFilms = []
-            let cassetteCarouselPicsFilmsThumbs = []
-            let cassettePostersCassette = []
-            let cassettePostersFilms = []
-
-            // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
-            // for the purpose of saving slug_en before it will be removed by rueten func.
-            rueten(s_cassette_copy, lang)
-
-            if (s_cassette_copy.synopsis && typeof s_cassette_copy.synopsis === 'string') {
-                s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
-            }
-
-            // #379 put ordered films to cassette.film
-            let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
-
-            if (ordered_films !== undefined && ordered_films[0]) {
-                s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
-                s_cassette_copy.films = s_cassette_copy.films.map(a => {
-                    let film = a.film
-                    film.order = a.order
-                    return film
-                })
-            }
-
-            // Kasseti treiler
-            trailerProcessing(s_cassette_copy, 'cassette')
-
-            if (s_cassette_copy.films && s_cassette_copy.films.length) {
-                for (const onefilm of s_cassette_copy.films) {
-                    if (onefilm.orderedCountries) {
-                        let orderedCountries = onefilm.orderedCountries.filter(c => {
-                            if (c && c.country) {
-                                return true
-                            } else {
-                                console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
-                                return false
-                            }
-                        })
-                            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                        onefilm.orderedCountries = orderedCountries
-                        if (orderedCountries.length) {
-                            onefilm.orderedCountriesDisplay = orderedCountries
-                                .map(country => country.country.name)
-                                .join(', ')
-                        }
-
-                    }
-                    if (onefilm.synopsis && typeof onefilm.synopsis === 'string') {
-                        onefilm.synopsis = replaceBadChars(onefilm.synopsis, onefilm.id, 'film')
-                    }
-                }
-            }
-
-            // Screenings
-            let screenings = []
-            for (screeningIx in STRAPIDATA_SCREENINGS) {
-                let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
-
-                if (screening.cassette && screening.cassette.id === s_cassette_copy.id
-                    && screening.screening_types && screening.screening_types[0]) {
-                    let screeningNames = function (item) {
-                        let itemNames = item.name
-                        return itemNames
-                    }
-                    // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
-                    if (!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
-                        continue
-                    }
-
-                    // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
-                    // - st ehitatakse
-
-                    hasOneCorrectScreening = true
-
-                    delete screening.cassette
-                    screenings.push(rueten(screening, lang))
-                }
-            }
-
-            if (screenings.length > 0) {
-                s_cassette_copy.screenings = screenings.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime))
-            }
-
-            for (key in s_cassette_copy) {
-                if (key == 'slug') {
-                    s_cassette_copy.path = `film/${s_cassette_copy[key]}`
-                    s_cassette_copy.slug = `${s_cassette_copy[key]}`
-                }
-            }
-
-            if (s_cassette_copy.path === undefined) {
-                s_cassette_copy.path = `film/${slugEn}`
-                s_cassette_copy.slug = slugEn
-            }
-
-            s_cassette_copy.media = {}
-            if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
-            if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
-            if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
-            if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
-            delete s_cassette_copy.media
-
-            const cassetteStills = prioritizeImagesFilm(s_cassette_copy, imageOrderStills, 'stills')
-            const cassetteStillsThumbs = prioritizeImagesFilm(s_cassette_copy, imageOrderStillsListView, 'stills')
-
-            // Cassette carousel pics
-            if (cassetteStills?.length?.images) {
-                for (still of cassetteStills.images) {
-                    if (still.substring(0, 4) === 'F_1_') {
-                        cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still}`)
-                    }
-                    cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still}`)
-                }
-            }
-
-            // Cassette carousel pics thumbs
-            if (cassetteStillsThumbs?.length?.imagesThumbs) {
-                for (still of cassetteStillsThumbs.imagesThumbs) {
-                    if (still.substring(0, 4) === 'F_1_') {
-                        cassetteCarouselPicsCassetteThumbs.unshift(`https://assets.poff.ee/img/${still}`)
-                    }
-                    cassetteCarouselPicsCassetteThumbs.push(`https://assets.poff.ee/img/${still}`)
-                }
-            }
-
-            // // Cassette carousel pics
-            // if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
-            //     for (const stillIx in s_cassette_copy.media.stills) {
-            //         let still = s_cassette_copy.media.stills[stillIx]
-            //         if (still.hash && still.ext) {
-            //             if (still.hash.substring(0, 4) === 'F_1_') {
-            //                 cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-            //             }
-            //             cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-            //         }
-            //     }
-            // }
-
-            if (cassetteCarouselPicsCassette.length > 0) {
-                s_cassette_copy.cassetteCarouselPicsCassette = [...new Set(cassetteCarouselPicsCassette)]
-                s_cassette_copy.cassetteCarouselPicsCassetteThumbs = [[...new Set(cassetteCarouselPicsCassetteThumbs)][0]]
-            }
-
-            // Cassette poster pics
-            if (s_cassette_copy.posters && s_cassette_copy.posters[0]) {
-                for (const posterIx in s_cassette_copy.posters) {
-                    let poster = s_cassette_copy.posters[posterIx]
-                    if (poster.hash && poster.ext) {
-                        if (poster.hash.substring(0, 2) === 'P_') {
-                            cassettePostersCassette.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
-                        }
-                        cassettePostersCassette.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
-                    }
-                }
-            }
-
-            if (cassettePostersCassette.length > 0) {
-                s_cassette_copy.cassettePostersCassette = cassettePostersCassette
-            }
-
-            if (s_cassette_copy.films && s_cassette_copy.films[0]) {
-                for (scc_film of s_cassette_copy.films) {
-
-                    // console.log(scc_film);
-                    let filmSlugEn = scc_film.slug_en
-
-                    if (!filmSlugEn) {
-                        filmSlugEn = scc_film.slug
-                    }
-                    if (typeof filmSlugEn !== 'undefined') {
-                        scc_film.dirSlug = filmSlugEn
-                    }
-
-                    scc_film.media = {}
-                    // Construct film media
-                    if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
-                    if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
-                    if (scc_film?.trailer?.[0]) { scc_film.media.trailer = scc_film.trailer }
-                    if (scc_film?.QaClip?.[0]) { scc_film.media.QaClip = scc_film.QaClip }
-
-                    const filmStills = prioritizeImagesFilm(scc_film, imageOrderStills, 'stills')
-                    const filmStillsThumbs = prioritizeImagesFilm(scc_film, imageOrderStillsListView, 'stills')
-                    delete scc_film.media
-
-                    let sortedFilmStills = []
-
-                    // Film carousel pics
-                    if (filmStills?.images?.length) {
-                        for (still of filmStills.images) {
-                            if (still.substring(0, 4) === 'F_1_') {
-                                cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
-                                sortedFilmStills.unshift(still)
-                            } else {
-                                cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
-                                sortedFilmStills.push(still)
-                            }
-                        }
-                    }
-                    scc_film.stills = sortedFilmStills.length ? sortedFilmStills : null
-
-                    // Film carousel pics thumbs
-                    if (filmStillsThumbs?.imagesThumbs?.length) {
-                        for (still of filmStillsThumbs.imagesThumbs) {
-                            if (still.substring(0, 4) === 'F_1_') {
-                                cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
-                            } else {
-                                cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
-                            }
-                        }
-                    }
-
-                    // // Film carousel pics
-                    // if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
-                    //     for (still of scc_film.media.stills) {
-                    //         if (still.hash && still.ext) {
-                    //             if (still.hash.substring(0, 4) === 'F_1_') {
-                    //                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                    //             }
-                    //             cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
-                    //         }
-                    //     }
-                    // }
-
-                    if (cassetteCarouselPicsFilms.length > 0) {
-                        s_cassette_copy.cassetteCarouselPicsFilms = [...new Set(cassetteCarouselPicsFilms)]
-                        s_cassette_copy.cassetteCarouselPicsFilmsThumbs = [[...new Set(cassetteCarouselPicsFilmsThumbs)][0]]
-                    }
-
-                    // Film posters pics
-                    if (scc_film.posters && scc_film.posters[0]) {
-                        for (poster of scc_film.posters) {
-                            if (poster.hash && poster.ext) {
-                                if (poster.hash.substring(0, 2) === 'P_') {
-                                    cassettePostersFilms.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
-                                }
-                                cassettePostersFilms.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
-                            }
-                        }
-                    }
-
-                    if (cassettePostersFilms.length > 0) {
-                        s_cassette_copy.cassettePostersFilms = cassettePostersFilms
-                    }
-
-                    // Filmi treiler
-                    trailerProcessing(scc_film, 'film')
-
-                    // Rolepersons by role
-                    if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
-                        let rolePersonTypes = {}
-                        scc_film.credentials.rolePerson.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
-                        for (roleIx in scc_film.credentials.rolePerson) {
-                            let rolePerson = scc_film.credentials.rolePerson[roleIx]
-                            if (rolePerson === undefined) { continue }
-                            if (rolePerson.person) {
-                                if (rolePerson?.role_at_film?.roleNamePrivate) {
-                                    if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
-                                        let directorPerson = {
-                                            ...STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
-                                        }
-                                        directorPerson.media = {
-                                            picture: [directorPerson.picture]
-                                        }
-
-                                        const primaryImage = prioritizeImages(directorPerson, imageOrderDirector, imageOrderDirectorDefaults)
-                                        if (primaryImage) { directorPerson.primaryImage = primaryImage }
-                                        delete directorPerson.media
-
-                                        scc_film.credentials.rolePerson[roleIx].person = directorPerson
-                                    }
-                                    let searchRegExp = new RegExp(' ', 'g')
-                                    const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
-                                    rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
-
-                                    if (rolePerson.person.firstNameLastName) {
-                                        rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
-                                    } else if (rolePerson.person.id) {
-                                        let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return rolePerson.person.id === a.id })[0]
-                                        if (personFromYAML.fullName) {
-                                            rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
-                                        }
-                                    }
-                                } else {
-                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials person ID ${rolePerson.person.id} role_at_film`);
-                                }
-                            } else {
-                                // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
-                            }
-                        }
-                        scc_film.credentials.rolePersonsByRole = rolePersonTypes
-                    }
-
-                    // Rolecompanies by role
-                    if (scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
-                        let roleCompanyTypes = {}
-                        scc_film.credentials.roleCompany.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
-                        for (roleIx in scc_film.credentials.roleCompany) {
-                            let roleCompany = scc_film.credentials.roleCompany[roleIx]
-                            if (roleCompany === undefined) { continue }
-                            if (roleCompany.organisation) {
-                                if (roleCompany?.roles_at_film?.roleNamePrivate) {
-                                    let searchRegExp = new RegExp(' ', 'g')
-                                    const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
-                                    roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
-
-                                    if (roleCompany.organisation.name) {
-                                        roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
-                                    }
-                                } else {
-                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials company ID ${scc_film.credentials.roleCompany.id} roles_at_film`);
-                                }
-                            } else {
-                                // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
-                            }
-                        }
-                        scc_film.credentials.roleCompaniesByRole = roleCompanyTypes
-                    }
-                }
-                rueten(s_cassette_copy.films, lang)
-            }
-
-            if (hasOneCorrectScreening === true) {
-                allData.push(s_cassette_copy)
-                if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
-                    continue
-                } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
-                    console.log('Targeting cassette ', s_cassette.id, target_id)
-                    // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
-                }
-                generateYaml(s_cassette_copy, lang)
-            } else {
-                cassettesWithOutSpecifiedScreeningType.push(s_cassette_copy.id)
-            }
-
-        } else {
+        if (typeof slugEn === 'undefined' || slugEn === null || slugEn === '') {
             slugMissingErrorNumber++
             slugMissingErrorIDs.push(s_cassette_copy.id)
+            continue
+        }
+
+        if (param_build_type === 'target' && target_id.includes(s_cassette_copy.id.toString())) {
+            addConfigPathAliases([`/_fetchdir/cassettes/${slugEn}`])
+        }
+
+        s_cassette_copy.dirSlug = slugEn
+        s_cassette_copy.directory = path.join(cassettesPath, slugEn)
+        fs.mkdirSync(s_cassette_copy.directory, { recursive: true })
+
+        let cassetteCarouselPicsCassette = []
+        let cassetteCarouselPicsCassetteThumbs = []
+        let cassetteCarouselPicsFilms = []
+        let cassetteCarouselPicsFilmsThumbs = []
+        let cassettePostersCassette = []
+        let cassettePostersFilms = []
+
+        // rueten func. is run for each s_cassette_copy separately instead of whole data, that is
+        // for the purpose of saving slug_en before it will be removed by rueten func.
+        rueten(s_cassette_copy, lang)
+
+        if (s_cassette_copy.synopsis && typeof s_cassette_copy.synopsis === 'string') {
+            s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
+        }
+
+        // #379 put ordered films to cassette.film
+        let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
+
+        if (ordered_films !== undefined && ordered_films[0]) {
+            s_cassette_copy.films = JSON.parse(JSON.stringify(ordered_films))
+            s_cassette_copy.films = s_cassette_copy.films.map(a => {
+                let film = a.film
+                film.order = a.order
+                return film
+            })
+        }
+
+        // Kasseti treiler
+        trailerProcessing(s_cassette_copy, 'cassette')
+
+        if (s_cassette_copy.films && s_cassette_copy.films.length) {
+            for (const onefilm of s_cassette_copy.films) {
+                if (onefilm.orderedCountries) {
+                    let orderedCountries = onefilm.orderedCountries.filter(c => {
+                        if (c && c.country) {
+                            return true
+                        } else {
+                            console.log(`ERROR! Film ${onefilm.id} has empty orderedCountries!!!`);
+                            return false
+                        }
+                    })
+                        .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                    onefilm.orderedCountries = orderedCountries
+                    if (orderedCountries.length) {
+                        onefilm.orderedCountriesDisplay = orderedCountries
+                            .map(country => country.country.name)
+                            .join(', ')
+                    }
+
+                }
+                if (onefilm.synopsis && typeof onefilm.synopsis === 'string') {
+                    onefilm.synopsis = replaceBadChars(onefilm.synopsis, onefilm.id, 'film')
+                }
+            }
+        }
+
+        // Screenings
+        let screenings = []
+        for (screeningIx in STRAPIDATA_SCREENINGS) {
+            let screening = JSONcopy(STRAPIDATA_SCREENINGS[screeningIx])
+
+            if (screening.cassette && screening.cassette.id === s_cassette_copy.id
+                && screening.screening_types && screening.screening_types[0]) {
+                let screeningNames = function (item) {
+                    let itemNames = item.name
+                    return itemNames
+                }
+                // Kontroll kas screeningtype kassetile lisada, st kas vähemalt üks screening type on whichScreeningTypesToFetch arrays olemas
+                if (!skipScreeningsCheckDomains.includes(DOMAIN) && !screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToFetch.includes(ai.toLowerCase()))) {
+                    continue
+                }
+
+                // Kui vähemalt üks screeningtype õige, siis hasOneCorrectScreening = true
+                // - st ehitatakse
+
+                hasOneCorrectScreening = true
+
+                delete screening.cassette
+                screenings.push(rueten(screening, lang))
+            }
+        }
+
+        if (screenings.length > 0) {
+            s_cassette_copy.screenings = screenings.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime))
+        }
+
+        for (key in s_cassette_copy) {
+            if (key == 'slug') {
+                s_cassette_copy.path = `film/${s_cassette_copy[key]}`
+                s_cassette_copy.slug = `${s_cassette_copy[key]}`
+            }
+        }
+
+        if (s_cassette_copy.path === undefined) {
+            s_cassette_copy.path = `film/${slugEn}`
+            s_cassette_copy.slug = slugEn
+        }
+
+        s_cassette_copy.media = {}
+        if (s_cassette_copy?.stills?.[0]) { s_cassette_copy.media.stills = s_cassette_copy.stills }
+        if (s_cassette_copy?.posters?.[0]) { s_cassette_copy.media.posters = s_cassette_copy.posters }
+        if (s_cassette_copy?.trailer?.[0]) { s_cassette_copy.media.trailer = s_cassette_copy.trailer }
+        if (s_cassette_copy?.QaClip?.[0]) { s_cassette_copy.media.QaClip = s_cassette_copy.QaClip }
+        delete s_cassette_copy.media
+
+        const cassetteStills = prioritizeImagesFilm(s_cassette_copy, imageOrderStills, 'stills')
+        const cassetteStillsThumbs = prioritizeImagesFilm(s_cassette_copy, imageOrderStillsListView, 'stills')
+
+        // Cassette carousel pics
+        if (cassetteStills?.length?.images) {
+            for (still of cassetteStills.images) {
+                if (still.substring(0, 4) === 'F_1_') {
+                    cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still}`)
+                }
+                cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still}`)
+            }
+        }
+
+        // Cassette carousel pics thumbs
+        if (cassetteStillsThumbs?.length?.imagesThumbs) {
+            for (still of cassetteStillsThumbs.imagesThumbs) {
+                if (still.substring(0, 4) === 'F_1_') {
+                    cassetteCarouselPicsCassetteThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                }
+                cassetteCarouselPicsCassetteThumbs.push(`https://assets.poff.ee/img/${still}`)
+            }
+        }
+
+        // // Cassette carousel pics
+        // if (s_cassette_copy.media && s_cassette_copy.media.stills && s_cassette_copy.media.stills[0]) {
+        //     for (const stillIx in s_cassette_copy.media.stills) {
+        //         let still = s_cassette_copy.media.stills[stillIx]
+        //         if (still.hash && still.ext) {
+        //             if (still.hash.substring(0, 4) === 'F_1_') {
+        //                 cassetteCarouselPicsCassette.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+        //             }
+        //             cassetteCarouselPicsCassette.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+        //         }
+        //     }
+        // }
+
+        if (cassetteCarouselPicsCassette.length > 0) {
+            s_cassette_copy.cassetteCarouselPicsCassette = [...new Set(cassetteCarouselPicsCassette)]
+            s_cassette_copy.cassetteCarouselPicsCassetteThumbs = [[...new Set(cassetteCarouselPicsCassetteThumbs)][0]]
+        }
+
+        // Cassette poster pics
+        if (s_cassette_copy.posters && s_cassette_copy.posters[0]) {
+            for (const posterIx in s_cassette_copy.posters) {
+                let poster = s_cassette_copy.posters[posterIx]
+                if (poster.hash && poster.ext) {
+                    if (poster.hash.substring(0, 2) === 'P_') {
+                        cassettePostersCassette.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                    }
+                    cassettePostersCassette.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                }
+            }
+        }
+
+        if (cassettePostersCassette.length > 0) {
+            s_cassette_copy.cassettePostersCassette = cassettePostersCassette
+        }
+
+        if (s_cassette_copy.films && s_cassette_copy.films[0]) {
+            for (scc_film of s_cassette_copy.films) {
+
+                // console.log(scc_film);
+                let filmSlugEn = scc_film.slug_en
+
+                if (!filmSlugEn) {
+                    filmSlugEn = scc_film.slug
+                }
+                if (typeof filmSlugEn !== 'undefined') {
+                    scc_film.dirSlug = filmSlugEn
+                }
+
+                scc_film.media = {}
+                // Construct film media
+                if (scc_film?.stills?.[0]) { scc_film.media.stills = scc_film.stills }
+                if (scc_film?.posters?.[0]) { scc_film.media.posters = scc_film.posters }
+                if (scc_film?.trailer?.[0]) { scc_film.media.trailer = scc_film.trailer }
+                if (scc_film?.QaClip?.[0]) { scc_film.media.QaClip = scc_film.QaClip }
+
+                const filmStills = prioritizeImagesFilm(scc_film, imageOrderStills, 'stills')
+                const filmStillsThumbs = prioritizeImagesFilm(scc_film, imageOrderStillsListView, 'stills')
+                delete scc_film.media
+
+                let sortedFilmStills = []
+
+                // Film carousel pics
+                if (filmStills?.images?.length) {
+                    for (still of filmStills.images) {
+                        if (still.substring(0, 4) === 'F_1_') {
+                            cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still}`)
+                            sortedFilmStills.unshift(still)
+                        } else {
+                            cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still}`)
+                            sortedFilmStills.push(still)
+                        }
+                    }
+                }
+                scc_film.stills = sortedFilmStills.length ? sortedFilmStills : null
+
+                // Film carousel pics thumbs
+                if (filmStillsThumbs?.imagesThumbs?.length) {
+                    for (still of filmStillsThumbs.imagesThumbs) {
+                        if (still.substring(0, 4) === 'F_1_') {
+                            cassetteCarouselPicsFilmsThumbs.unshift(`https://assets.poff.ee/img/${still}`)
+                        } else {
+                            cassetteCarouselPicsFilmsThumbs.push(`https://assets.poff.ee/img/${still}`)
+                        }
+                    }
+                }
+
+                // // Film carousel pics
+                // if (scc_film.media && scc_film.media.stills && scc_film.media.stills[0]) {
+                //     for (still of scc_film.media.stills) {
+                //         if (still.hash && still.ext) {
+                //             if (still.hash.substring(0, 4) === 'F_1_') {
+                //                 cassetteCarouselPicsFilms.unshift(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                //             }
+                //             cassetteCarouselPicsFilms.push(`https://assets.poff.ee/img/${still.hash}${still.ext}`)
+                //         }
+                //     }
+                // }
+
+                if (cassetteCarouselPicsFilms.length > 0) {
+                    s_cassette_copy.cassetteCarouselPicsFilms = [...new Set(cassetteCarouselPicsFilms)]
+                    s_cassette_copy.cassetteCarouselPicsFilmsThumbs = [[...new Set(cassetteCarouselPicsFilmsThumbs)][0]]
+                }
+
+                // Film posters pics
+                if (scc_film.posters && scc_film.posters[0]) {
+                    for (poster of scc_film.posters) {
+                        if (poster.hash && poster.ext) {
+                            if (poster.hash.substring(0, 2) === 'P_') {
+                                cassettePostersFilms.unshift(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                            }
+                            cassettePostersFilms.push(`https://assets.poff.ee/img/${poster.hash}${poster.ext}`)
+                        }
+                    }
+                }
+
+                if (cassettePostersFilms.length > 0) {
+                    s_cassette_copy.cassettePostersFilms = cassettePostersFilms
+                }
+
+                // Filmi treiler
+                trailerProcessing(scc_film, 'film')
+
+                // Rolepersons by role
+                if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
+                    let rolePersonTypes = {}
+                    scc_film.credentials.rolePerson.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                    for (roleIx in scc_film.credentials.rolePerson) {
+                        let rolePerson = scc_film.credentials.rolePerson[roleIx]
+                        if (rolePerson === undefined) { continue }
+                        if (rolePerson.person) {
+                            if (rolePerson?.role_at_film?.roleNamePrivate) {
+                                if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
+                                    let directorPerson = {
+                                        ...STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                    }
+                                    directorPerson.media = {
+                                        picture: [directorPerson.picture]
+                                    }
+
+                                    const primaryImage = prioritizeImages(directorPerson, imageOrderDirector, imageOrderDirectorDefaults)
+                                    if (primaryImage) { directorPerson.primaryImage = primaryImage }
+                                    delete directorPerson.media
+
+                                    scc_film.credentials.rolePerson[roleIx].person = directorPerson
+                                }
+                                let searchRegExp = new RegExp(' ', 'g')
+                                const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
+
+                                if (rolePerson.person.firstNameLastName) {
+                                    rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
+                                } else if (rolePerson.person.id) {
+                                    let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return rolePerson.person.id === a.id })[0]
+                                    if (personFromYAML.fullName) {
+                                        rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
+                                    }
+                                }
+                            } else {
+                                console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials person ID ${rolePerson.person.id} role_at_film`);
+                            }
+                        } else {
+                            // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
+                        }
+                    }
+                    scc_film.credentials.rolePersonsByRole = rolePersonTypes
+                }
+
+                // Rolecompanies by role
+                if (scc_film.credentials && scc_film.credentials.roleCompany && scc_film.credentials.roleCompany[0]) {
+                    let roleCompanyTypes = {}
+                    scc_film.credentials.roleCompany.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
+                    for (roleIx in scc_film.credentials.roleCompany) {
+                        let roleCompany = scc_film.credentials.roleCompany[roleIx]
+                        if (roleCompany === undefined) { continue }
+                        if (roleCompany.organisation) {
+                            if (roleCompany?.roles_at_film?.roleNamePrivate) {
+                                let searchRegExp = new RegExp(' ', 'g')
+                                const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
+
+                                if (roleCompany.organisation.name) {
+                                    roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
+                                }
+                            } else {
+                                console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials company ID ${scc_film.credentials.roleCompany.id} roles_at_film`);
+                            }
+                        } else {
+                            // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
+                        }
+                    }
+                    scc_film.credentials.roleCompaniesByRole = roleCompanyTypes
+                }
+            }
+            rueten(s_cassette_copy.films, lang)
+        }
+
+        if (hasOneCorrectScreening === true) {
+            allData.push(s_cassette_copy)
+            if (param_build_type === 'target' && !target_id.includes(s_cassette.id.toString())) {
+                continue
+            } else if (param_build_type === 'target' && target_id.includes(s_cassette.id.toString())) {
+                console.log('Targeting cassette ', s_cassette.id, target_id)
+                // timer.log(__filename, util.inspect(s_cassette_copy, {showHidden: false, depth: null}))
+            }
+            generateYaml(s_cassette_copy, lang)
+        } else {
+            cassettesWithOutSpecifiedScreeningType.push(s_cassette_copy.id)
         }
     }
     if (slugMissingErrorNumber > 0) {
