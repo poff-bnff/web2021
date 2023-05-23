@@ -34,7 +34,7 @@ const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
 
 // if Cassette_updates.yaml does exist, then merge it with Cassette.yaml and overwrite the values from Cassette.yaml
-timer.log(`Merging Cassette_updates.yaml with Cassette.yaml`)
+timer.log(__filename, `Merging Cassette_updates.yaml with Cassette.yaml`)
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
 if (fs.existsSync(strapiDataCassetteUpdatesPath)) {
@@ -57,7 +57,7 @@ if (fs.existsSync(strapiDataCassetteUpdatesPath)) {
     // delete Cassette_updates.yaml
     fs.unlinkSync(strapiDataCassetteUpdatesPath)
 }
-timer.log('Loading Cassette.yaml')
+timer.log(__filename, 'Loading Cassette.yaml')
 const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 
 const whichScreeningTypesToFetch = []
