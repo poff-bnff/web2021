@@ -32,23 +32,33 @@ const STRAPIDATA_PROGRAMMES = yaml.load(fs.readFileSync(strapiDataProgrammePath,
 // const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
-// read cassette data from Cassette.yaml and Cassette_updates.yaml and merge them
+
+// if Cassette_updates.yaml does exist, then merge it with Cassette.yaml and overwrite the values from Cassette.yaml
+timer.log(`Merging Cassette_updates.yaml with Cassette.yaml`)
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
-const STRAPIDATA_CASSETTES_BASE = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
-// convert array to object, so that we can use cassette.id as key
-.reduce((obj, item) => {
-    obj[item.id] = item
-    return obj
-}, {})
-const STRAPIDATA_CASSETTES_UPDATES = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
-// do the same for updates
-.reduce((obj, item) => {
-    obj[item.id] = item
-    return obj
-}, {})
-// merge base and updates and convert back to array
-const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES))
+if (fs.existsSync(strapiDataCassetteUpdatesPath)) {
+    console.log('Cassette_updates.yaml exists, merging with Cassette.yaml')
+    const base = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+    // convert array to object, so that we can use cassette.id as key
+    .reduce((obj, item) => {
+        obj[item.id] = item
+        return obj
+    }, {})
+    let updates = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
+    // do the same for updates
+    .reduce((obj, item) => {
+        obj[item.id] = item
+        return obj
+    }, {})
+    // merge base and updates and convert back to array and write to Cassette.yaml
+    let merged = Object.values(Object.assign({}, base, updates))
+    fs.writeFileSync(strapiDataCassettePath, yaml.dump(merged))
+    // delete Cassette_updates.yaml
+    fs.unlinkSync(strapiDataCassetteUpdatesPath)
+}
+timer.log('Loading Cassette.yaml')
+const STRAPIDATA_CASSETTES_YAML = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 
 const whichScreeningTypesToFetch = []
 
