@@ -46,6 +46,7 @@ module.exports = {
     // params is the original object
     // data is the data that was sent to the update
     async beforeUpdate(params, data) {
+      strapi.log.debug('beforeUpdate cassette', params.id, {data})
       data.slug_et = data.title_et ? slugify(data.title_et) : null
       data.slug_ru = data.title_ru ? slugify(data.title_ru) : null
       data.slug_en = data.title_en ? slugify(data.title_en) : null
