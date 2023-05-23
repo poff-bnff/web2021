@@ -48,7 +48,7 @@ const STRAPIDATA_CASSETTES_UPDATES_YAML = yaml.load(fs.readFileSync(strapiDataCa
     return obj
 }, {})
 // merge base and updates and convert back to array
-const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_BASE, STRAPIDATA_CASSETTES_UPDATES_YAML))
+const STRAPIDATA_CASSETTES_YAML = Object.values(Object.assign({}, STRAPIDATA_CASSETTES_UPDATES_YAML, STRAPIDATA_CASSETTES_UPDATES_BASE))
 
 const whichScreeningTypesToFetch = []
 
