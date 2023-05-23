@@ -116,6 +116,7 @@ function find_single_obj(minimodel, entries){
 }
 
 function fetchModel(modelData, minimodel) {
+    console.log('fetchModel', {minimodel})
     make_MODELS(minimodel)
 	for(let single_obj of modelData ){
 
