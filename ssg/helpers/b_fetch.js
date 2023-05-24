@@ -25,8 +25,10 @@ function make_MODELS(minimodel) {
 }
 
 function find_single_obj(minimodel, entries) {
+    let entriesAreArray = true
     if (!Array.isArray(entries)) {
         entries = entries ? [entries] : []
+        entriesAreArray = false
     }
     const objData = MODELS[minimodel.model_name]
     for (const ix in entries) {
@@ -52,7 +54,12 @@ function find_single_obj(minimodel, entries) {
             }
         }
     }
-    return entries.filter(a => a !== undefined)[0]
+    if (entriesAreArray) {
+        return entries.filter(a => a !== undefined)
+    } else {
+        return entries.filter(a => a !== undefined)[0]
+    }
+
 }
 
 function fetchModel(modelData, minimodel) {
