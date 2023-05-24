@@ -32,10 +32,10 @@ const STRAPIDATA_PROGRAMMES = yaml.load(fs.readFileSync(strapiDataProgrammePath,
 // const STRAPIDATA_FE = yaml.load(fs.readFileSync(strapiDataFEPath, 'utf8'))
 const strapiDataScreeningPath = path.join(strapiDataDirPath, 'Screening.yaml')
 const STRAPIDATA_SCREENINGS_YAML = yaml.load(fs.readFileSync(strapiDataScreeningPath, 'utf8'))
-const { loadStrapidataCassettes } = require('./helpers.js')
 
 // if Cassette_updates.yaml does exist, then merge it with Cassette.yaml and overwrite the values from Cassette.yaml
-timer.log(__filename, `Merging Cassette_updates.yaml with Cassette.yaml`)
+timer.log(__filename, `Merging Cassette_updates.yaml with Cassette.yaml and loading it`)
+const { loadStrapidataCassettes } = require('./helpers.js')
 const STRAPIDATA_CASSETTES_YAML = loadStrapidataCassettes()
 
 const whichScreeningTypesToFetch = []

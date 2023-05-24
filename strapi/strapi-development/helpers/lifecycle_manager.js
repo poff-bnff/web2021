@@ -18,6 +18,8 @@ if (!fs.existsSync(BUILD_MANAGER_PATH)) {
   throw new Error(`File ${BUILD_MANAGER_PATH} does not exist`)
 }
 
+const ALL_STRAPI_DATA_DIR = path.join(__dirname, '/../../../ssg/source/_allStrapidata')
+
 function slugify(text) {
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
@@ -276,7 +278,7 @@ async function exportModel4SSG(modelName) {
 
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportModel4SSG', {modelName, strapiModelName})
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_test.yaml`)
+  const yamlFile = path.join(ALL_STRAPI_DATA_DIR, `${strapiModelName}_test.yaml`)
   // read all model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ _limit: -1 })
   strapi.log.debug('write da file', strapiModelName, modelDataFromStrapi.length)
@@ -288,7 +290,7 @@ async function exportModel4SSG(modelName) {
 async function exportSingle4SSG(modelName, id) {
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportSingle4SSG', modelName, id)
-  const yamlFile = path.join(__dirname, `/../../../ssg/source/_allStrapidata/${strapiModelName}_updates.yaml`)
+  const yamlFile = path.join(ALL_STRAPI_DATA_DIR, `${strapiModelName}_updates.yaml`)
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })
   strapi.log.debug('Got from Strapi', strapiModelName, modelDataFromStrapi.length)
