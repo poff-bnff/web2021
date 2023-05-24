@@ -274,7 +274,7 @@ function CreateYAML(screenings, lang) {
         let programmes = []
         let cassette = screenings.cassette
         if (typeof cassette.tags.programmes !== 'undefined') {
-            strapi.log.debug(`screening ${screenings.id} has programmes ${cassette.tags.programmes}`)
+            console.debug(`screening ${screenings.id} has programmes ${cassette.tags.programmes}`)
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
                     for (const fested of programme.festival_editions.filter(fe => fe.festival)) {
