@@ -107,6 +107,8 @@ function loadStrapidataCassettes() {
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 }
 
+const rootDir = path.join(__dirname, '..')
+const sourceDir = path.join(rootDir, 'source')
 const allStrapiDataDir = path.join(sourceDir, '_allStrapidata')
 
 function mergeStrapidataUpdates() {
