@@ -261,7 +261,7 @@ async function getStrapiModelName(modelName) {
 
 // FE's should be with domains preloaded
 function getFeDomainNames(festival_editions) {
-  strapi.log.debug('getFeDomains')
+  // strapi.log.debug('getFeDomains')
   if (!festival_editions) return []
   // throw error if domains are not preloaded
   if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
@@ -291,20 +291,24 @@ async function exportSingle4SSG(modelName, id) {
   const strapiModelName = await getStrapiModelName(modelName)
   strapi.log.debug('exportSingle4SSG', modelName, id)
   const updatesFile = path.join(ALL_STRAPI_DATA_DIR, `${strapiModelName}_updates.yaml`)
-  // read single model data from strapi
-  const modelDataFromStrapi = await strapi.query(modelName).find({ id })
-  strapi.log.debug('exportSingle4SSG Got from Strapi', strapiModelName, modelDataFromStrapi.length)
-  // read model data from yaml file. if file does not exist, create it and return empty array
   if (!fs.existsSync(updatesFile)) {
-    strapi.log.debug('exportSingle4SSG File does not exist', updatesFile, 'init it')
+    strapi.log.debug(`exportSingle4SSG ${strapiModelName}_updates.yaml does not exist, init it`)
     fs.writeFileSync(updatesFile, '[]', 'utf8')
   }
-  const modelDataFromYaml = yaml.parse(fs.readFileSync(updatesFile, 'utf8'), { maxAliasCount: -1 })
-  strapi.log.debug('Got from YAML', strapiModelName, modelDataFromYaml.length)
+  // log the file size of updates file
+  const fileSizeInBytes = fs.statSync(updatesFile).size
+  strapi.log.debug(`exportSingle4SSG ${strapiModelName}_updates.yaml size: ${fileSizeInBytes}`)
+
+  // read single model data from strapi
+  const modelDataFromStrapi = await strapi.query(modelName).find({ id })
+  strapi.log.debug(`exportSingle4SSG Got ${modelDataFromStrapi.length} ${strapiModelName}s from Strapi`)
+  // read model data from yaml file. if file does not exist, create it and return empty array
+  const modelDataFromUpdates = yaml.parse(fs.readFileSync(updatesFile, 'utf8'), { maxAliasCount: -1 })
+  strapi.log.debug(`Got ${modelDataFromUpdates.length} ${strapiModelName}s from updates`)
   // merge model data from strapi and yaml file
   // 1. if model data from strapi is in yaml file, remove it
   // 2. add model data from strapi to yaml file
-  const mergedModelData = modelDataFromYaml.filter(e => e.id !== id).concat(modelDataFromStrapi)
+  const mergedModelData = modelDataFromUpdates.filter(e => e.id !== id).concat(modelDataFromStrapi)
   strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
   // write merged model data to yaml file
   fs.writeFileSync(updatesFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')

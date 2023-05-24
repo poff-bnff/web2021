@@ -57,7 +57,8 @@ function mergeStrapidataFilms() {
         fs.writeFileSync(strapiDataFilmPath, yaml.dump(merged))
         // empty Cassette_updates.yaml
         fs.writeFileSync(strapiDataFilmUpdatesPath, '[]')
-        timer.log(__filename, 'mergeStrapidata Films merged and saved.')
+        timer.log(__filename, `mergeStrapidata Films merged and saved to ${strapiDataFilmPath}`)
+        timer.log(__filename, `mergeStrapidata Films updates emptied ${strapiDataFilmUpdatesPath}`)
     }
 }
 
@@ -95,7 +96,8 @@ function mergeStrapidataCassettes() {
         fs.writeFileSync(strapiDataCassettePath, yaml.dump(merged))
         // empty Cassette_updates.yaml
         fs.writeFileSync(strapiDataCassetteUpdatesPath, '[]')
-        timer.log(__filename, 'mergeStrapidata Cassettes merged and saved.')
+        timer.log(__filename, `mergeStrapidata Cassettes merged and saved to ${strapiDataCassettePath}`)
+        timer.log(__filename, `mergeStrapidata Cassettes updates emptied ${strapiDataCassetteUpdatesPath}`)
     }
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 }
