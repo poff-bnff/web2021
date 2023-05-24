@@ -8,6 +8,7 @@ const strapiDataFilmUpdatesPath = path.join(strapiDataDirPath, 'Film_updates.yam
 const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
 const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
 const { timer } = require("./timer")
+const { update } = require('lodash')
 timer.start(__filename)
 
 const JSONcopy = obj => JSON.parse(JSON.stringify(obj))
@@ -27,8 +28,15 @@ deleteFolderRecursive = path => {
 }
 
 function mergeStrapidataFilms() {
-    if (fs.existsSync(strapiDataFilmUpdatesPath)) {
-        timer.log(__filename, 'mergeStrapidata Films')
+    timer.log(__filename, 'mergeStrapidata Films')
+
+    if (!fs.existsSync(strapiDataFilmUpdatesPath)) {
+        fs.writeFileSync(strapiDataFilmUpdatesPath, '[]')
+    }
+
+    let updates = yaml.load(fs.readFileSync(strapiDataFilmUpdatesPath, 'utf8'))
+    if (updates.length > 0) {
+        timer.log(__filename, `mergeStrapidata Films updates had ${updates.length} entries`)
         const base = yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
             // convert array to object, so that we can use cassette.id as key
             .reduce((obj, item) => {
@@ -36,7 +44,7 @@ function mergeStrapidataFilms() {
                 return obj
             }, {})
         timer.log(__filename, `mergeStrapidata Films base had ${Object.keys(base).length} entries`)
-        let updates = yaml.load(fs.readFileSync(strapiDataFilmUpdatesPath, 'utf8'))
+        updates = updates
             // do the same for updates
             .reduce((obj, item) => {
                 obj[item.id] = item
@@ -47,8 +55,8 @@ function mergeStrapidataFilms() {
         let merged = Object.values(Object.assign({}, base, updates))
         timer.log(__filename, `mergeStrapidata Films merged had ${merged.length} entries`)
         fs.writeFileSync(strapiDataFilmPath, yaml.dump(merged))
-        // delete Cassette_updates.yaml
-        fs.unlinkSync(strapiDataFilmUpdatesPath)
+        // empty Cassette_updates.yaml
+        fs.writeFileSync(strapiDataFilmUpdatesPath, '[]')
         timer.log(__filename, 'mergeStrapidata Films merged and saved.')
     }
 }
@@ -60,7 +68,12 @@ function loadStrapidataFilms() {
 
 function mergeStrapidataCassettes() {
     mergeStrapidataFilms()
-    if (fs.existsSync(strapiDataCassetteUpdatesPath)) {
+    if (!fs.existsSync(strapiDataCassetteUpdatesPath)) {
+        fs.writeFileSync(strapiDataCassetteUpdatesPath, '[]')
+    }
+
+    let updates = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
+    if (updates.length > 0) {
         timer.log(__filename, 'mergeStrapidata Cassettes')
         const base = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
             // convert array to object, so that we can use cassette.id as key
@@ -69,7 +82,7 @@ function mergeStrapidataCassettes() {
                 return obj
             }, {})
         timer.log(__filename, `mergeStrapidata Cassettes base had ${Object.keys(base).length} entries`)
-        let updates = yaml.load(fs.readFileSync(strapiDataCassetteUpdatesPath, 'utf8'))
+        updates = updates
             // do the same for updates
             .reduce((obj, item) => {
                 obj[item.id] = item
@@ -80,8 +93,8 @@ function mergeStrapidataCassettes() {
         let merged = Object.values(Object.assign({}, base, updates))
         timer.log(__filename, `mergeStrapidata Cassettes merged had ${merged.length} entries`)
         fs.writeFileSync(strapiDataCassettePath, yaml.dump(merged))
-        // delete Cassette_updates.yaml
-        fs.unlinkSync(strapiDataCassetteUpdatesPath)
+        // empty Cassette_updates.yaml
+        fs.writeFileSync(strapiDataCassetteUpdatesPath, '[]')
         timer.log(__filename, 'mergeStrapidata Cassettes merged and saved.')
     }
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
