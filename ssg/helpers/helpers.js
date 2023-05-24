@@ -3,6 +3,10 @@ const yaml = require('js-yaml')
 const path = require('path')
 
 const strapiDataDirPath = path.join(__dirname, '..', 'source', '_domainStrapidata')
+const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
+const strapiDataFilmUpdatesPath = path.join(strapiDataDirPath, 'Film_updates.yaml')
+const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
+const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
 const { timer } = require("./timer")
 timer.start(__filename)
 
@@ -23,8 +27,6 @@ deleteFolderRecursive = path => {
 }
 
 function mergeStrapidataFilms() {
-    const strapiDataFilmPath = path.join(strapiDataDirPath, 'Film.yaml')
-    const strapiDataFilmUpdatesPath = path.join(strapiDataDirPath, 'Film_updates.yaml')
     if (fs.existsSync(strapiDataFilmUpdatesPath)) {
         timer.log(__filename, 'mergeStrapidata Films')
         const base = yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
@@ -47,14 +49,17 @@ function mergeStrapidataFilms() {
         fs.writeFileSync(strapiDataFilmPath, yaml.dump(merged))
         // delete Cassette_updates.yaml
         fs.unlinkSync(strapiDataFilmUpdatesPath)
-        timer.log(__filename, 'mergeStrapidata Films done')
+        timer.log(__filename, 'mergeStrapidata Films merged and saved.')
     }
 }
 
-function mergeAndLoadCassettes() {
+function loadStrapidataFilms() {
     mergeStrapidataFilms()
-    const strapiDataCassettePath = path.join(strapiDataDirPath, 'Cassette.yaml')
-    const strapiDataCassetteUpdatesPath = path.join(strapiDataDirPath, 'Cassette_updates.yaml')
+    return yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
+}
+
+function mergeStrapidataCassettes() {
+    mergeStrapidataFilms()
     if (fs.existsSync(strapiDataCassetteUpdatesPath)) {
         timer.log(__filename, 'mergeStrapidata Cassettes')
         const base = yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
@@ -77,11 +82,17 @@ function mergeAndLoadCassettes() {
         fs.writeFileSync(strapiDataCassettePath, yaml.dump(merged))
         // delete Cassette_updates.yaml
         fs.unlinkSync(strapiDataCassetteUpdatesPath)
-        timer.log(__filename, 'mergeStrapidata Cassettes done')
+        timer.log(__filename, 'mergeStrapidata Cassettes merged and saved.')
     }
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 }
 
-exports.mergeAndLoadCassettes = mergeAndLoadCassettes
+function loadStrapidataCassettes() {
+    mergeStrapidataCassettes()
+    return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+}
+
+exports.loadStrapidataCassettes = loadStrapidataCassettes
+exports.loadStrapidataFilms = loadStrapidataFilms
 exports.deleteFolderRecursive = deleteFolderRecursive
 exports.JSONcopy = JSONcopy
