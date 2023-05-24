@@ -292,12 +292,12 @@ async function exportSingle4SSG(modelName, id) {
   strapi.log.debug('exportSingle4SSG', modelName, id)
   const updatesFile = path.join(ALL_STRAPI_DATA_DIR, `${strapiModelName}_updates.yaml`)
   if (!fs.existsSync(updatesFile)) {
-    strapi.log.debug(`exportSingle4SSG ${strapiModelName}_updates.yaml does not exist, init it`)
+    strapi.log.debug(`exportSingle4SSG ${updatesFile} does not exist, init it`)
     fs.writeFileSync(updatesFile, '[]', 'utf8')
   }
   // log the file size of updates file
   const fileSizeInBytes = fs.statSync(updatesFile).size
-  strapi.log.debug(`exportSingle4SSG ${strapiModelName}_updates.yaml size: ${fileSizeInBytes}`)
+  strapi.log.debug(`exportSingle4SSG ${updatesFile} size: ${fileSizeInBytes}`)
 
   // read single model data from strapi
   const modelDataFromStrapi = await strapi.query(modelName).find({ id })

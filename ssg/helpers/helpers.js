@@ -63,7 +63,7 @@ function mergeStrapidataFilms() {
 }
 
 function loadStrapidataFilms() {
-    mergeStrapidataFilms()
+    mergeStrapidataUpdates()
     return yaml.load(fs.readFileSync(strapiDataFilmPath, 'utf8'))
 }
 
@@ -103,11 +103,47 @@ function mergeStrapidataCassettes() {
 }
 
 function loadStrapidataCassettes() {
-    mergeStrapidataCassettes()
+    mergeStrapidataUpdates()
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
+}
+
+const allStrapiDataDir = path.join(sourceDir, '_allStrapidata')
+
+function mergeStrapidataUpdates() {
+    fs.readdir(allStrapiDataDir, (err, modelFiles) => {
+        modelFiles.forEach(updateFile => {
+            if (!updateFile.endsWith('_updates.yaml')) {
+                return
+            }
+            // load source files and convert to object
+            baseFile = updateFile.replace('_updates.yaml', '.yaml')
+
+            const updateData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, updateFile), 'utf8'))
+                // convert array to object, so that we can use objects id as key
+                .reduce((obj, item) => {
+                    obj[item.id] = item
+                    return obj
+                }, {})
+
+            const baseData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, baseFile), 'utf8'))
+                // convert array to object, so that we can use objects id as key
+                .reduce((obj, item) => {
+                    obj[item.id] = item
+                    return obj
+                }, {})
+            // merge baseData and updateData
+            const mergedData = Object.assign({}, baseData, updateData)
+            // convert object back to array
+            const mergedArray = Object.values(mergedData)
+            fs.writeFileSync(path.join(allStrapiDataDir, baseFile), yaml.dump(mergedArray, { 'noRefs': true, 'indent': '4' }), 'utf8')
+            // empty the _updates.yaml file
+            fs.writeFileSync(path.join(allStrapiDataDir, updateFile), '[]', 'utf8')
+        })
+    })
 }
 
 exports.loadStrapidataCassettes = loadStrapidataCassettes
 exports.loadStrapidataFilms = loadStrapidataFilms
+exports.mergeStrapidataUpdates = mergeStrapidataUpdates
 exports.deleteFolderRecursive = deleteFolderRecursive
 exports.JSONcopy = JSONcopy
