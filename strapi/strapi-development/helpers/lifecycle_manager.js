@@ -303,7 +303,7 @@ async function exportSingle4SSG(modelName, id) {
 
     // read single model data from strapi
     const collectionFromStrapi = await strapi.query(modelName).find({ id })
-    strapi.log.debug(`exportSingle4SSG Got ${collectionFromStrapi.length} ${strapiModelName}s from Strapi`)
+    strapi.log.debug(`exportSingle4SSG Got ${collectionFromStrapi.length} ${strapiModelName}${collectionFromStrapi.length === 1 ? '' : 's'} from Strapi`)
     // if item was not found, collectionFromStrapi is {id: id, _deleted: true}
     if (collectionFromStrapi.length === 0) {
         collectionFromStrapi.push({ id, _deleted: true })

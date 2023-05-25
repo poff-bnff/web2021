@@ -59,7 +59,7 @@ module.exports = {
     // params is the original object
     // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
-
+      strapi.log.debug('afterUpdate cassette', result.id, result.title_en)
       const festival_editions = []
       if (result.festival_editions && result.festival_editions.length > 0) {
         festival_editions = await strapi.db.query('festival-edition').find(
