@@ -4,6 +4,7 @@
  * to customize this model
  */
 
+const fs = require('fs')
 const path = require('path')
 const helperPath = path.join(__dirname, '..', '..', '..', 'helpers')
 // path of log file for create/update/delete timing
