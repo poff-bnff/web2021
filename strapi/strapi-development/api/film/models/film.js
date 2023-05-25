@@ -99,9 +99,9 @@ module.exports = {
                 await exportSingle4SSG('cassette', new_cassette.id)
             }
 
-            let timing = timer.check(`create ${result.id}`)
-            strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
-            fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
+            // let timing = timer.check(`create ${result.id}`)
+            // strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
+            // fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
         },
 
         // params: { "id": 4686 }
