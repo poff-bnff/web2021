@@ -160,20 +160,27 @@ module.exports = {
                     festival_editions: result.festival_editions,
                 })
 
-                const festival_editions = await strapi.db.query('festival-edition').find(
-                    { id: cassette.festival_editions.map(fe => fe.id) })
-                const cassetteDomains = getFeDomainNames(festival_editions)
+                const cassetteFEs = []
+                if (cassette.festival_editions && cassette.festival_editions.length > 0) {
+                  cassetteFEs.push(... await strapi.db.query('festival-edition').find(
+                  { id: cassette.festival_editions.map(fe => fe.id) }))
+                }
+
+                const cassetteDomains = getFeDomainNames(cassetteFEs)
                 strapi.log.debug('films afterUpdate got domains', cassetteDomains, 'for cassette', cassetteId)
 
                 if (cassetteDomains.length > 0) {
                     await exportSingle4SSG('cassette', cassetteId)
                 }
-
             })
 
-            const festival_editions = await strapi.db.query('festival-edition').find(
-                { id: result.festival_editions.map(fe => fe.id) })
-            const domains = getFeDomainNames(festival_editions)
+            const filmFEs = []
+            if (result.festival_editions && result.festival_editions.length > 0) {
+                filmFEs.push(... await strapi.db.query('festival-edition').find(
+              { id: result.festival_editions.map(fe => fe.id) }))
+            }
+
+            const domains = getFeDomainNames(filmFEs)
             strapi.log.debug('films afterUpdate got domains', domains)
             if (domains.length > 0) {
                 await exportSingle4SSG('film', params.id)
