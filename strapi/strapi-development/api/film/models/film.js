@@ -6,10 +6,11 @@
 
 const fs = require('fs')
 const path = require('path')
-const helperPath = path.join(__dirname, '..', '..', '..', 'helpers')
-// path of log file for create/update/delete timing
-// const { timer } = require(path.join(helperPath, 'timer.js'))
+const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
+const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', 'ssg', 'helpers')
+const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
 
+// path of log file for create/update/delete timing
 const logDir = path.join(__dirname, '..', '..', '..', 'logs')
 if (!fs.existsSync(logDir)) {
     strapi.log.debug('Creating log dir', logDir)
@@ -22,7 +23,7 @@ if (!fs.existsSync(filmLogFile)) {
     fs.writeFileSync(filmLogFile, '')
 }
 
-const LCManager = path.join(helperPath, 'lifecycle_manager.js')
+const LCManager = path.join(helpersPath, 'lifecycle_manager.js')
 const {
     slugify,
     getFeDomainNames,
