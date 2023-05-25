@@ -1,12 +1,7 @@
-
-const {
-    StringDecoder
-} = require('string_decoder')
+const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 
-const {
-    spawn
-} = require('child_process')
+const { spawn } = require('child_process')
 
 const fs = require('fs')
 const yaml = require('yaml')
@@ -362,6 +357,11 @@ async function modify_stapi_data(result, model_name, vanish = false) {
 }
 
 async function call_build(result, domains, model_name, del = false) {
+    // if result had is_published property and it was set to false (it might have been missing or null or true), then dont build
+    if (result.hasOwnProperty('is_published') && result.is_published === false) {
+        return
+    }
+
     const domainSpecificsPath = path.join(__dirname, `/../../../ssg/domain_specifics.yaml`)
     const DOMAIN_SPECIFICS = jsyaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
     const TARGET_BUILD_MODELS = DOMAIN_SPECIFICS.target_build_models || []
