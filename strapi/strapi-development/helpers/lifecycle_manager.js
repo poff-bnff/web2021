@@ -385,7 +385,7 @@ async function call_build(result, domains, model_name, del = false) {
         await build_start_to_strapi_logs(result, 'All domains', error, build_error, `${model_name} ${result.id}`, del)
     }
     else if (domains.length > 0) {
-        strapi.log.debug('Build ', domains)
+        strapi.log.debug('call_build: Build ', domains)
         // list of domains that are not in keys of domain dictionary of DOMAIN_SPECIFICS
         let domains_not_in_domain_specifics = domains.filter(domain => !Object.keys(DOMAIN_SPECIFICS.domain).includes(domain))
         if (domains_not_in_domain_specifics.length > 0) {

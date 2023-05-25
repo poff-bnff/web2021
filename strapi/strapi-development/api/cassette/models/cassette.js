@@ -5,7 +5,7 @@
  */
 
 const path = require('path')
-const helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const LC_MANAGER = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
   slugify,
@@ -13,7 +13,7 @@ const {
   getFeDomainNames,
   exportSingle4SSG,
   call_delete
-} = require(helper_path)
+} = require(LC_MANAGER)
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
@@ -32,8 +32,11 @@ module.exports = {
     async afterCreate(result, data) {
       strapi.log.debug('afterCreate cassette', result.id, result.title_en)
 
-      const festival_editions = await strapi.db.query('festival-edition').find(
+      const festival_editions = []
+      if (result.festival_editions && result.festival_editions.length > 0) {
+        festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
+      }
       const cassetteDomains = getFeDomainNames(festival_editions)
       strapi.log.debug('cassettes afterCreate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
@@ -57,8 +60,11 @@ module.exports = {
     // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
 
-      const festival_editions = await strapi.db.query('festival-edition').find(
+      const festival_editions = []
+      if (result.festival_editions && result.festival_editions.length > 0) {
+        festival_editions = await strapi.db.query('festival-edition').find(
         { id: result.festival_editions.map(fe => fe.id) })
+      }
       const cassetteDomains = getFeDomainNames(festival_editions)
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
