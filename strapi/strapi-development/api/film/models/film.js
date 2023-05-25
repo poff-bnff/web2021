@@ -5,13 +5,28 @@
  */
 
 const path = require('path')
-let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const helperPath = path.join(__dirname, '..', '..', '..', 'helpers')
+// path of log file for create/update/delete timing
+const { timer } = require(path.join(helperPath, 'timer.js'))
 
+const logDir = path.join(__dirname, '..', '..', '..', 'logs')
+if (!fs.existsSync(logDir)) {
+  strapi.log.debug('Creating log dir', logDir)
+  fs.mkdirSync(logDir, { recursive: true })
+}
+
+const filmLogFile = path.join(logDir, 'film.log')
+if (!fs.existsSync(filmLogFile)) {
+  strapi.log.debug('Creating log file', filmLogFile)
+  fs.writeFileSync(filmLogFile, '')
+}
+
+const LCManager = path.join(helperPath, 'lifecycle_manager.js')
 const {
   slugify,
   getFeDomainNames,
   exportSingle4SSG
-} = require(helper_path)
+} = require(LCManager)
 
 // returns a list of single-film cassettes that include only this single film
 const getCassettesIncludingOnlyThisSingleFilm = async (filmId) => {
@@ -31,6 +46,7 @@ module.exports = {
   lifecycles: {
 
     async beforeCreate(new_data) {
+      timer.start(`create ${new_data.id}`)
       strapi.log.debug('beforeCreate film') // , new_data.title_en)
       new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
       new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -81,6 +97,9 @@ module.exports = {
         await exportSingle4SSG('cassette', new_cassette.id)
       }
 
+      let timing = timer.check(`create ${result.id}`)
+      strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
+      fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
     },
 
     // params: { "id": 4686 }
