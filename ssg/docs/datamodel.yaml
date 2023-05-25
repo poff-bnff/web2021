@@ -1630,6 +1630,7 @@ Film: &Film
     QaClip: #(Component (repeatable))
         - *QaClip
     chat_w_name: (text)
+    is_published: (boolean)
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1661,6 +1662,7 @@ Cassette: &Cassette
         - *OrderedFilm
     remoteId: (UID)
     chat_w_name: (text)
+    is_published: (boolean)
 
 IntroConversationQandA: &IntroConversationQandA
     yesNo: (Boolean)
