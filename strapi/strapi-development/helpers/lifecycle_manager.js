@@ -302,11 +302,17 @@ async function exportSingle4SSG(modelName, id) {
 
   // read single model data from strapi
   const collectionFromStrapi = await strapi.query(modelName).find({ id })
-  // if item is deleted, collectionFromStrapi is {id: id, _deleted: true}
-  strapi.log.debug(`exportSingle4SSG ${strapiModelName} ${id} from Strapi`, JSON.stringify(collectionFromStrapi, null, 2))
   strapi.log.debug(`exportSingle4SSG Got ${collectionFromStrapi.length} ${strapiModelName}s from Strapi`)
+  // if item was not found, collectionFromStrapi is {id: id, _deleted: true}
+  if ( collectionFromStrapi.length === 0 ) {
+    collectionFromStrapi.push({id, _deleted: true})
+  }
+  // if item had is_published: false, collectionFromStrapi is {id: id, is_deleted: true}
+  if ( collectionFromStrapi[0].is_published === false ) {
+    collectionFromStrapi[0] = {id, _deleted: true}
+  }
   // read model data from yaml file. if file does not exist, create it and return empty array
-  const modelDataFromUpdates = yaml.parse(fs.readFileSync(updatesFile, 'utf8'), { maxAliasCount: -1 })
+  const modelDataFromUpdates = yaml.parse(fs.readFileSync(updatesFile, 'utf8')) || []
   strapi.log.debug(`Got ${modelDataFromUpdates.length} ${strapiModelName}s from updates`)
   // merge model data from strapi and yaml file
   // 1. if model data from strapi is in yaml file, remove it
