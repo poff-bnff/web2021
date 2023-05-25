@@ -62,8 +62,8 @@ module.exports = {
       strapi.log.debug('afterUpdate cassette', result.id, result.title_en)
       const festival_editions = []
       if (result.festival_editions && result.festival_editions.length > 0) {
-        festival_editions = await strapi.db.query('festival-edition').find(
-        { id: result.festival_editions.map(fe => fe.id) })
+        festival_editions.push(... await strapi.db.query('festival-edition').find(
+        { id: result.festival_editions.map(fe => fe.id) }))
       }
       const cassetteDomains = getFeDomainNames(festival_editions)
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
