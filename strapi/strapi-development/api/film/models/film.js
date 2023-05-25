@@ -145,7 +145,7 @@ module.exports = {
                 strapi.log.debug('Updating with film data - cassette ID ', cassette.id, cassette.title_en);
                 const cassetteId = cassette.id
 
-                await strapi.query('cassette').update(
+                cassette = await strapi.query('cassette').update(
                     { id: cassetteId }, {
                     is_published: result.is_published,
                     title_et: result.title_et,
