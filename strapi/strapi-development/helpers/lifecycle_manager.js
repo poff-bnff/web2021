@@ -307,8 +307,8 @@ async function exportSingle4SSG(modelName, id) {
   if ( collectionFromStrapi.length === 0 ) {
     collectionFromStrapi.push({id, _deleted: true})
   }
-  // if item had is_published: false, collectionFromStrapi is {id: id, is_deleted: true}
-  if ( collectionFromStrapi[0].is_published === false ) {
+  // if collectionFromStrapi[0] had is_published property and it was set to false (it might have been missing or null or true), then collectionFromStrapi is {id: id, is_deleted: true}
+  if ( collectionFromStrapi[0].hasOwnProperty('is_published') && collectionFromStrapi[0].is_published === false ) {
     collectionFromStrapi[0] = {id, _deleted: true}
   }
   // read model data from yaml file. if file does not exist, create it and return empty array
