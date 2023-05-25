@@ -263,7 +263,7 @@ async function getStrapiModelName(modelName) {
 function getFeDomainNames(festival_editions) {
   // strapi.log.debug('getFeDomains')
   if (!festival_editions) return []
-  strapi.log.debug('getFeDomains', JSON.stringify(festival_editions, null, 2))
+  if (festival_editions === []) return []
   // throw error if domains are not preloaded
   if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
 
