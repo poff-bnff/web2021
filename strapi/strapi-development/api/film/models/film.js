@@ -7,7 +7,7 @@
 const fs = require('fs')
 const path = require('path')
 const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
-const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', 'ssg', 'helpers')
+const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
 const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
 
 // path of log file for create/update/delete timing
