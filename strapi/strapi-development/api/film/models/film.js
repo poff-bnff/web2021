@@ -106,9 +106,9 @@ module.exports = {
 
         // params: { "id": 4686 }
         // newData: data that was sent to the update
-        async beforeUpdate(params, newData, oldData) {
+        async beforeUpdate(params, newData) {
             // load current film data
-            // const old_data = await strapi.query('film').findOne(params)
+            const oldData = await strapi.query('film').findOne(params)
             strapi.log.debug('beforeUpdate film', { params, newStills: newData.stills, oldStills: oldData.stills })
             if (newData.title_et) { newData.slug_et = slugify(newData.title_et) }
             if (newData.title_ru) { newData.slug_ru = slugify(newData.title_ru) }
