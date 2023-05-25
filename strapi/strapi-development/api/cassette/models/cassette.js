@@ -63,7 +63,7 @@ module.exports = {
       strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
       if (cassetteDomains.length > 0) {
         await exportSingle4SSG('cassette', result.id)
-        strapi.log.debug('Lets build: ')
+        strapi.log.debug('cassettes afterUpdate Lets build: ')
         await call_build(result, cassetteDomains, model_name)
       }
 

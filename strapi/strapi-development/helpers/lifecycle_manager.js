@@ -293,7 +293,7 @@ async function exportSingle4SSG(modelName, id) {
     }
     // log the file size of updates file
     const fileSizeInBytes = fs.statSync(updatesFile).size
-    strapi.log.debug(`exportSingle4SSG ${updatesFile} size: ${fileSizeInBytes}`)
+    strapi.log.debug(`exportSingle4SSG ${updatesFile} size: ${fileSizeInBytes} bytes`)
 
     // read single model data from strapi
     const collectionFromStrapi = await strapi.query(modelName).find({ id })
@@ -308,12 +308,13 @@ async function exportSingle4SSG(modelName, id) {
     }
     // read model data from yaml file. if file does not exist, create it and return empty array
     const modelDataFromUpdates = yaml.parse(fs.readFileSync(updatesFile, 'utf8')) || []
-    strapi.log.debug(`Got ${modelDataFromUpdates.length} ${strapiModelName}s from updates`)
+    strapi.log.debug(`Got ${modelDataFromUpdates.length} ${strapiModelName}${modelDataFromUpdates.length === 1 ? '' : 's'} from updates`)
     // merge model data from strapi and yaml file
     // 1. if model data from strapi is in yaml file, remove it
     // 2. add model data from strapi to yaml file
     const mergedModelData = modelDataFromUpdates.filter(e => e.id !== id).concat(collectionFromStrapi)
-    strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
+    strapi.log.debug(`Merged data has ${mergedModelData.length} ${strapiModelName}${mergedModelData.length === 1 ? '' : 's'}`)
+    // ', strapiModelName, mergedModelData.length)
     // write merged model data to yaml file
     fs.writeFileSync(updatesFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')
     strapi.log.debug('return from exportSingle4SSG', modelName, id)
