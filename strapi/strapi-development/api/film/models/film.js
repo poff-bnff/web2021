@@ -86,12 +86,11 @@ module.exports = {
     // new_data: data that was sent to the update
     async beforeUpdate(params, new_data) {
       // load current film data
-      const old_data = await strapi.query('film').findOne(params)
-      strapi.log.debug('beforeUpdate film') //, { params, new_data, old_data })
-
-      new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
-      new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
-      new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
+      // const old_data = await strapi.query('film').findOne(params)
+      // strapi.log.debug('beforeUpdate film') //, { params, new_data, old_data })
+      if (new_data.title_et) { new_data.slug_et = slugify(new_data.title_et) }
+      if (new_data.title_ru) { new_data.slug_ru = slugify(new_data.title_ru) }
+      if (new_data.title_en) { new_data.slug_en = slugify(new_data.title_en) }
 
       return
     },
@@ -171,7 +170,7 @@ module.exports = {
 
       // deal with cassettes that have only one film
       const singleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
-      singleFilmCassettes.map(async c => {
+      await singleFilmCassettes.map(async c => {
         strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
         await strapi.query('cassette').delete({ id: c.id })
         strapi.log.debug('Deleted cassette: ', c.id, c.title_en)

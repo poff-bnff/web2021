@@ -1,7 +1,10 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
-const { deleteFolderRecursive } = require("./helpers.js")
+const {
+    deleteFolderRecursive,
+    mergeStrapidataUpdates
+ } = require("./helpers.js")
 
 const rootDir = path.join(__dirname, '..')
 const sourceDir = path.join(rootDir, 'source')
@@ -43,14 +46,21 @@ let checkDomain = function(element) {
 deleteFolderRecursive(domainStrapiDataDir)
 fs.mkdirSync(domainStrapiDataDir, { recursive: true })
 
+// merge _updates.yaml files with the main yaml file in allStrapiDataDir
+mergeStrapidataUpdates()
+
 fs.readdir(allStrapiDataDir, (err, modelFiles) => {
     modelFiles.forEach(modelFile => {
+        if (modelFile.endsWith('_updates.yaml')) {
+            return
+        }
         const modelData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, modelFile), 'utf8'))
         const domainModelData = modelData.filter(checkDomain)
         // stringify - parse is used for yaml dump to remove circular references?
         let YAMLData = yaml.dump(JSON.parse(JSON.stringify(domainModelData)), { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(domainStrapiDataDir, modelFile), YAMLData, 'utf8')
     })
-    console.log(`d_fetch finished. Saved domain specific domainStrapidata for ${DOMAIN}`)
 })
+
+console.log(`d_fetch finished. Saved domain specific domainStrapidata for ${DOMAIN}`)
 

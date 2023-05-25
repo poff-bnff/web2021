@@ -248,7 +248,7 @@ module.exports = {
   },
 
   async replace(id, { data, file }, { user } = {}) {
-    console.log('replace image', {data}, {file} )
+    // console.log('replace image', {data}, {file} )
     const config = strapi.plugins.upload.config;
 
     const {
