@@ -79,9 +79,11 @@ module.exports = {
       strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
 
       // TODO: find out, what or who is params.user?
-      // delete params.user
+      delete params.user
     },
 
+    // result is the deleted object as it was before it was deleted
+    // params is like { id: 1 }
     async afterDelete(result, params) {
       strapi.log.debug("afterDelete cassette", { result, params })
       // One might delete a cassette by id or by id_in
