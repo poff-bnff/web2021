@@ -49,6 +49,7 @@ module.exports = {
       // Automatically create a cassette for a new film
       strapi.log.debug('afterCreate film before cassette', result.id, result.title_en)
       const new_cassette = await strapi.query('cassette').create({
+        is_published: result.is_published,
         created_by: result.created_by,
         updated_by: result.updated_by,
         title_et: result.title_et,
@@ -113,6 +114,7 @@ module.exports = {
 
         await strapi.query('cassette').update(
           { id: cassetteId }, {
+          is_published: result.is_published,
           title_et: result.title_et,
           title_en: result.title_en,
           title_ru: result.title_ru,
