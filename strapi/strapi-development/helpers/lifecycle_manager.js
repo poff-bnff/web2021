@@ -263,6 +263,7 @@ async function getStrapiModelName(modelName) {
 function getFeDomainNames(festival_editions) {
   // strapi.log.debug('getFeDomains')
   if (!festival_editions) return []
+  strapi.log.debug('getFeDomains', JSON.stringify(festival_editions, null, 2))
   // throw error if domains are not preloaded
   if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
 
@@ -300,15 +301,17 @@ async function exportSingle4SSG(modelName, id) {
   strapi.log.debug(`exportSingle4SSG ${updatesFile} size: ${fileSizeInBytes}`)
 
   // read single model data from strapi
-  const modelDataFromStrapi = await strapi.query(modelName).find({ id })
-  strapi.log.debug(`exportSingle4SSG Got ${modelDataFromStrapi.length} ${strapiModelName}s from Strapi`)
+  const collectionFromStrapi = await strapi.query(modelName).find({ id })
+  // if item is deleted, collectionFromStrapi is {id: id, _deleted: true}
+  strapi.log.debug(`exportSingle4SSG ${strapiModelName} ${id} from Strapi`, JSON.stringify(collectionFromStrapi, null, 2))
+  strapi.log.debug(`exportSingle4SSG Got ${collectionFromStrapi.length} ${strapiModelName}s from Strapi`)
   // read model data from yaml file. if file does not exist, create it and return empty array
   const modelDataFromUpdates = yaml.parse(fs.readFileSync(updatesFile, 'utf8'), { maxAliasCount: -1 })
   strapi.log.debug(`Got ${modelDataFromUpdates.length} ${strapiModelName}s from updates`)
   // merge model data from strapi and yaml file
   // 1. if model data from strapi is in yaml file, remove it
   // 2. add model data from strapi to yaml file
-  const mergedModelData = modelDataFromUpdates.filter(e => e.id !== id).concat(modelDataFromStrapi)
+  const mergedModelData = modelDataFromUpdates.filter(e => e.id !== id).concat(collectionFromStrapi)
   strapi.log.debug('Merged', strapiModelName, mergedModelData.length)
   // write merged model data to yaml file
   fs.writeFileSync(updatesFile, yaml.stringify(mergedModelData.filter(e => e !== null), { indent: 4 }), 'utf8')

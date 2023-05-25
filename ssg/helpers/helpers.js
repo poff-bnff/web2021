@@ -120,7 +120,17 @@ function mergeStrapidataUpdates() {
             // load source files and convert to object
             baseFile = updateFile.replace('_updates.yaml', '.yaml')
 
+            // load updateData into array and before converting to object save list of ids of elements with _deleted = true in deletedIds
+            const deletedIds = []
             const updateData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, updateFile), 'utf8'))
+                // filter out elements with _deleted = true and save ids in deletedIds
+                .filter(item => {
+                    if (item._deleted) {
+                        deletedIds.push(item.id)
+                        return false
+                    }
+                    return true
+                })
                 // convert array to object, so that we can use objects id as key
                 .reduce((obj, item) => {
                     obj[item.id] = item
@@ -128,6 +138,8 @@ function mergeStrapidataUpdates() {
                 }, {})
 
             const baseData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, baseFile), 'utf8'))
+                // filter out elements with id in deletedIds
+                .filter(item => !deletedIds.includes(item.id))
                 // convert array to object, so that we can use objects id as key
                 .reduce((obj, item) => {
                     obj[item.id] = item
