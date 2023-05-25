@@ -105,16 +105,28 @@ module.exports = {
         },
 
         // params: { "id": 4686 }
-        // new_data: data that was sent to the update
-        async beforeUpdate(params, new_data) {
+        // newData: data that was sent to the update
+        async beforeUpdate(params, newData, oldData) {
             // load current film data
             // const old_data = await strapi.query('film').findOne(params)
-            // strapi.log.debug('beforeUpdate film') //, { params, new_data, old_data })
-            if (new_data.title_et) { new_data.slug_et = slugify(new_data.title_et) }
-            if (new_data.title_ru) { new_data.slug_ru = slugify(new_data.title_ru) }
-            if (new_data.title_en) { new_data.slug_en = slugify(new_data.title_en) }
+            strapi.log.debug('beforeUpdate film', { params, newStills: newData.stills, oldStills: oldData.stills })
+            if (newData.title_et) { newData.slug_et = slugify(newData.title_et) }
+            if (newData.title_ru) { newData.slug_ru = slugify(newData.title_ru) }
+            if (newData.title_en) { newData.slug_en = slugify(newData.title_en) }
 
-            return
+            // if:
+            // - film had no stills before update
+            // - film has stills now
+            // - film is not published
+            // then publish film
+            if (!oldData.stills || oldData.stills.length === 0) {
+                if (newData.stills && newData.stills.length > 0) {
+                    if (newData.hasOwnProperty('is_published') && newData.is_published === false) {
+                        newData.is_published = true
+                        strapi.log.debug('beforeUpdate film publish', { params })
+                    }
+                }
+            }
         },
 
         // result is the updated object
