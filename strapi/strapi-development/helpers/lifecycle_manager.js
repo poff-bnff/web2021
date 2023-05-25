@@ -260,11 +260,16 @@ function getFeDomainNames(festival_editions) {
     if (!festival_editions) return []
     if (festival_editions === []) return []
     // throw error if domains are not preloaded
-    if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
-
-    const domainNames = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
-    strapi.log.debug('getFeDomains', { domainNames })
-    return domainNames
+    // if (!festival_editions[0].domains) throw new Error('getFeDomains: festival_editions should be preloaded with domains')
+    try {
+        const domainNames = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
+        strapi.log.debug('getFeDomains', { domainNames })
+        return domainNames
+    } catch (error) {
+        strapi.log.debug('getFeDomains', JSON.stringify(festival_editions, null, 2))
+        strapi.log.error('getFeDomains', error)
+        return []
+    }
 }
 
 // export model data from strapi to yaml file
