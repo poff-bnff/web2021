@@ -266,7 +266,7 @@ function getFeDomainNames(festival_editions) {
         strapi.log.debug('getFeDomains', { domainNames })
         return domainNames
     } catch (error) {
-        strapi.log.debug('getFeDomains', JSON.stringify(festival_editions, null, 2))
+        strapi.log.debug('getFeDomains offending FE:', JSON.stringify(festival_editions, null, 2))
         strapi.log.error('getFeDomains', error)
         return []
     }
