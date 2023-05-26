@@ -36,7 +36,7 @@ const timer = () => {
         const from_start = now - _timer.t0
         const from_check = now - _timer.check
         _timer.check = now
-        fs.appendFileSync(logFile, `${name} ${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')}\n`)
+        fs.appendFileSync(logFile, `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} ${name}\n`)
         return {
             interval: from_check,
             total: from_start,

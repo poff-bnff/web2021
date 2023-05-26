@@ -4,24 +4,10 @@
  * to customize this model
  */
 
-const fs = require('fs')
 const path = require('path')
 const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
 const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
 const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
-
-// path of log file for create/update/delete timing
-const logDir = path.join(__dirname, '..', '..', '..', '..', 'logs')
-if (!fs.existsSync(logDir)) {
-    strapi.log.debug('Creating log dir', logDir)
-    fs.mkdirSync(logDir, { recursive: true })
-}
-
-const filmLogFile = path.join(logDir, 'film.log')
-if (!fs.existsSync(filmLogFile)) {
-    strapi.log.debug('Creating log file', filmLogFile)
-    fs.writeFileSync(filmLogFile, '')
-}
 
 const LCManager = path.join(helpersPath, 'lifecycle_manager.js')
 const {
@@ -101,13 +87,12 @@ module.exports = {
 
             let timing = timer.check(`create new film`)
             strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
-            fs.appendFileSync(filmLogFile, `Create film ${result.id} ${timing.total}\n`)
         },
 
         // params: { "id": 4686 }
         // newData: data that was sent to the update
         async beforeUpdate(params, newData) {
-            timer.start(`update ${params.id}`)
+            timer.start(`update film ${params.id}`)
             // load current film data
             const oldData = await strapi.query('film').findOne(params)
             strapi.log.debug('beforeUpdate film', { params, newStills: newData.stills.length, oldStills: oldData.stills.length })
@@ -186,9 +171,8 @@ module.exports = {
             if (domains.length > 0) {
                 await exportSingle4SSG('film', params.id)
             }
-            let timing = timer.check(`update ${params.id}`)
+            let timing = timer.check(`update film ${params.id}`)
             strapi.log.debug(`Updating of film ${params.id} took ${timing.total} ms`)
-            fs.appendFileSync(filmLogFile, `Update film ${params.id} ${timing.total}\n`)
         },
 
         async beforeDelete(params) {
