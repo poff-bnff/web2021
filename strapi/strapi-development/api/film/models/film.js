@@ -95,7 +95,6 @@ module.exports = {
             timer.start(`update film ${params.id}`)
             // load current film data
             const oldData = await strapi.query('film').findOne(params)
-            strapi.log.debug('beforeUpdate film', { params, newStills: newData.stills.length, oldStills: oldData.stills.length })
             if (newData.title_et) { newData.slug_et = slugify(newData.title_et) }
             if (newData.title_ru) { newData.slug_ru = slugify(newData.title_ru) }
             if (newData.title_en) { newData.slug_en = slugify(newData.title_en) }

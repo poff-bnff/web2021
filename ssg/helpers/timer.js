@@ -4,13 +4,12 @@ const path = require('path')
 // path of log file for create/update/delete timing
 const logDir = path.join(__dirname, '..', '..', 'strapi', 'logs')
 if (!fs.existsSync(logDir)) {
-    strapi.log.debug('Creating log dir', logDir)
     fs.mkdirSync(logDir, { recursive: true })
 }
 const logFile = path.join(logDir, 'timer.log')
 // save start time
 fs.appendFileSync(logFile, `Timer loaded at ${new Date().toISOString()}\n`)
-fs.appendFileSync(logFile, '[interv. ms] [total sec] name\n')
+fs.appendFileSync(logFile, '[interv. ms] [total sec] [caller script] name\n')
 
 const timer = () => {
     const timeUnit = (ms, unit) => {
@@ -37,7 +36,11 @@ const timer = () => {
         const from_start = now - _timer.t0
         const from_check = now - _timer.check
         _timer.check = now
-        fs.appendFileSync(logFile, `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} ${name}\n`)
+        const callerFromStackT = (new Error().stack.split('\n')[2].split(' ')[5]).split('\\').slice(-2).join('\\')
+        const callerFromStack = ((new Error().stack).split("at ")[3]).trim()
+        console.log((new Error().stack))
+        fs.appendFileSync(logFile,
+            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] [${callerFromStackT}] ${name}\n`)
         return {
             interval: from_check,
             total: from_start,
@@ -74,3 +77,8 @@ const timer = () => {
 }
 
 exports.timer = timer()
+
+// test code
+const t = timer()
+t.start('test')
+t.check('test')
