@@ -8,8 +8,8 @@ if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true })
 }
 const logFile = path.join(logDir, 'timer.log')
-fs.appendFileSync(logFile, '---')
-
+// save start time
+fs.appendFileSync(logFile, `Timer loaded at ${new Date().toISOString()}\n`)
 
 const timer = () => {
     const timeUnit = (ms, unit) => {
@@ -36,6 +36,7 @@ const timer = () => {
         const from_start = now - _timer.t0
         const from_check = now - _timer.check
         _timer.check = now
+        fs.appendFileSync(logFile, `${name} ${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')}\n`)
         return {
             interval: from_check,
             total: from_start,
