@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const jsyaml = require('js-yaml');
 
 // path of log file for create/update/delete timing
 const logDir = path.join(__dirname, '..', '..', 'strapi', 'logs')
@@ -7,6 +8,10 @@ if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true })
 }
 const logFile = path.join(logDir, 'timer.log')
+if (!fs.existsSync(logFile)) {
+    fs.writeFileSync(logFile, '')
+}
+const mavFile = path.join(logDir, 'timer_mav.yaml')
 
 const timer = () => {
     const timers = {}
@@ -36,7 +41,7 @@ const timer = () => {
         const stackObject = stackLine.split(' ')[0]
         // remove parenthesis from stackFunction
         const stackFunction = stackLine.split(' ')[1].slice(1, -1)
-        const callerTextLength = 50
+        const callerTextLength = 60
         const maxStackFunctionLength = callerTextLength - stackObject.length
         // if stackFunction is longer than maxStackFunctionLength, then
         // shorten stackfunction from begginning so that it fits to
