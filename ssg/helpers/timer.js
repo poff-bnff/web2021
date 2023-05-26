@@ -12,6 +12,20 @@ if (!fs.existsSync(logFile)) {
     fs.writeFileSync(logFile, '')
 }
 const mavFile = path.join(logDir, 'timer_mav.yaml')
+if (!fs.existsSync(mavFile)) {
+    fs.writeFileSync(mavFile, '{}')
+}
+
+const loadMAV = (message = '') => {
+    const mav = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
+    if (message === '') {
+        return mav
+    }
+    if (!mav.hasOwnProperty(message)) {
+        mav[message] = {}
+    }
+    return mav[message]
+}
 
 const timer = () => {
     const timers = {}
@@ -30,8 +44,8 @@ const timer = () => {
         }
         const _timer = timers[name]
         const now = new Date().getTime()
-        const from_start = now - _timer.t0
-        const from_check = now - _timer.check
+        const fromStart = now - _timer.t0
+        const fromCheck = now - _timer.check
         _timer.check = now
 
         const triDot = '…'
@@ -53,10 +67,33 @@ const timer = () => {
         const callerFromStack = `${stackObject}@${shortStackFunction}`
 
         fs.appendFileSync(logFile,
-            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] ${message || name}\n`)
+            `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] ${message || name}\n`)
+
+        // number of messages to calculate moving average
+        const mavLength = 20
+        if (message) {
+            const mav = loadMAV(message)
+            // check if moving average of given length is already calculated
+            if (!mav.hasOwnProperty(mavLength)) {
+                mav[mavLength] = {
+                    numOfSamples: 0,
+                    fromCheck: 0,
+                    fromStart: 0
+                }
+            }
+            // calculate moving average
+            const m = mav[mavLength]
+            m.numOfSamples++
+            m.fromCheck = (m.fromCheck * (m.numOfSamples - 1) + fromCheck) / m.numOfSamples
+            m.fromStart = (m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples
+            m.numOfSamples = Math.min(m.numOfSamples, mavLength)
+            // save moving average
+            fs.writeFileSync(mavFile, jsyaml.dump(mav))
+        }
+
         return {
-            interval: from_check,
-            total: from_start,
+            interval: fromCheck,
+            total: fromStart,
             unit: 'ms'
         }
     }
