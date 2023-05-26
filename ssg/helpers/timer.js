@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 // path of log file for create/update/delete timing
-const logDir = path.join(__dirname, '..', '..', 'logs')
+const logDir = path.join(__dirname, '..', '..', 'strapi', 'logs')
 if (!fs.existsSync(logDir)) {
     strapi.log.debug('Creating log dir', logDir)
     fs.mkdirSync(logDir, { recursive: true })
