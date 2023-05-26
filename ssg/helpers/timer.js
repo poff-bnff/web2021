@@ -78,6 +78,8 @@ const timer = () => {
         // number of messages to calculate moving average
         const mavLength = 20
         if (message) {
+            // if message contains (new Date().toISOString()) timestamp, remove it
+            message = message.replace(/\[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\]/, '{timestamp}')
             const mav = loadMAV(message)
             // check if moving average of given length is already calculated
             if (!mav.hasOwnProperty(mavLength)) {
