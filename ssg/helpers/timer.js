@@ -10,6 +10,7 @@ if (!fs.existsSync(logDir)) {
 const logFile = path.join(logDir, 'timer.log')
 // save start time
 fs.appendFileSync(logFile, `Timer loaded at ${new Date().toISOString()}\n`)
+fs.appendFileSync(logFile, '[interv. ms] [total sec] name\n')
 
 const timer = () => {
     const timeUnit = (ms, unit) => {
