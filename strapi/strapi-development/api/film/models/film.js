@@ -34,7 +34,7 @@ module.exports = {
     lifecycles: {
 
         async beforeCreate(new_data) {
-            timer.start(`create new film`)
+            timer.start('create new film')
             strapi.log.debug('beforeCreate film') // , new_data.title_en)
             new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
             new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -85,7 +85,7 @@ module.exports = {
                 await exportSingle4SSG('cassette', new_cassette.id)
             }
 
-            let timing = timer.check(`create new film`)
+            let timing = timer.check('create new film')
             strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
         },
 
@@ -176,6 +176,7 @@ module.exports = {
         },
 
         async beforeDelete(params) {
+            timer.start(`remove film ${params.id}`)
             // One might delete a film by id or by id_in
             // Be aware that id_in is an array of strings, not numbers!
             const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
@@ -229,6 +230,8 @@ module.exports = {
             filmIds.map(async fId => {
                 await exportSingle4SSG(model_name, fId)
             })
+            let timing = timer.check(`remove film ${params.id}`)
+            strapi.log.debug(`Removal of film ${params.id} took ${timing.total} ms`)
         }
     }
 }
