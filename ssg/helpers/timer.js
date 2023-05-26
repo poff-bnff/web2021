@@ -7,9 +7,6 @@ if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true })
 }
 const logFile = path.join(logDir, 'timer.log')
-// save start time
-fs.appendFileSync(logFile, `Timer loaded at ${new Date().toISOString()}\n`)
-fs.appendFileSync(logFile, '[interv. ms] [total sec] [caller script] name\n')
 
 const timer = () => {
     const timeUnit = (ms, unit) => {
@@ -38,13 +35,12 @@ const timer = () => {
         _timer.check = now
 
         const triDot = '…'
-        const stack = new Error().stack
-        // remove from stack the lines that are from this file
-        const stack1 = stack.split('\n').filter(line => !line.includes(__filename)).join('\n')
-        const stack2 = (stack1.split("at ")[2]).trim()
-        const stackObject = stack2.split(' ')[0]
+        const stack = (new Error().stack).split('\n').slice(1).filter(line => !line.includes(__filename)).map(line => line.split('at ')[1])
+        const stackLine = stack[0]
+        console.log({stack}, {stackLine})
+        const stackObject = stackLine.split(' ')[0]
         // remove parenthesis from stackFunction
-        const stackFunction = stack2.split(' ')[1].slice(1, -1)
+        const stackFunction = stackLine.split(' ')[1].slice(1, -1)
         const callerTextLength = 50
         const maxStackFunctionLength = callerTextLength - stackObject.length
         // if stackFunction is longer than maxStackFunctionLength, then
@@ -94,3 +90,7 @@ const timer = () => {
 }
 
 exports.timer = timer()
+
+// save start time
+exports.timer.start('start')
+exports.timer.check('start', `Timer loaded at ${new Date().toISOString()}`)
