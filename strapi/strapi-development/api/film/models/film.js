@@ -101,7 +101,7 @@ module.exports = {
 
             let timing = timer.check(`create new film`)
             strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
-            fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
+            fs.appendFileSync(filmLogFile, `Create film ${result.id} ${timing.total}\n`)
         },
 
         // params: { "id": 4686 }
@@ -188,7 +188,7 @@ module.exports = {
             }
             let timing = timer.check(`update ${params.id}`)
             strapi.log.debug(`Updating of film ${params.id} took ${timing.total} ms`)
-            fs.appendFileSync(filmLogFile, `Update ${params.id} ${timing.total}\n`)
+            fs.appendFileSync(filmLogFile, `Update film ${params.id} ${timing.total}\n`)
         },
 
         async beforeDelete(params) {
