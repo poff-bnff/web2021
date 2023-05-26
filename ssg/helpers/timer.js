@@ -14,9 +14,9 @@ const timer = () => {
         }
     }
 
-    const check = (name, unit = 'ms') => {
-        if (!name in timers) {
-            throw new Error(`No such timer - ${name}`)
+    const checkMs = name => {
+        if (!timers.hasOwnProperty(name)) {
+            throw new Error(`No such timer as "${name}"`)
         }
         const _timer = timers[name]
         const now = new Date().getTime()
@@ -24,20 +24,36 @@ const timer = () => {
         const from_check = now - _timer.check
         _timer.check = now
         return {
-            interval: timeUnit(from_check, unit),
-            total: timeUnit(from_start, unit)
+            interval: from_check,
+            total: from_start,
+            unit: 'ms'
         }
     }
 
-    const log = (name, message) => {
-        const time_unit = check(name, 'sec').total
-        console.log(time_unit, message)
+    const checkVerbal = (name, unit = 'ms') => {
+        if (!timers.hasOwnProperty(name)) {
+            throw new Error(`No such timer as "${name}"`)
+        }
+        const c = checkMs(name)
+        return {
+            interval: timeUnit(c.interval, unit),
+            total: timeUnit(c.total, unit)
+        }
+    }
+
+    const log = (name, message, unit = 'ms') => {
+        if (!timers.hasOwnProperty(name)) {
+            throw new Error(`No such timer as "${name}"`)
+        }
+        const c = checkMs(name).total
+        console.log(`${timeUnit(c, unit)} ${message}`)
     }
 
     let timers = {}
     return {
         start: start,
-        check: check,
+        check: checkMs,
+        checkVerbal: checkVerbal,
         log: log
     }
 }

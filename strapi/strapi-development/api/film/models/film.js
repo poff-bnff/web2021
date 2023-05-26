@@ -48,7 +48,7 @@ module.exports = {
     lifecycles: {
 
         async beforeCreate(new_data) {
-            timer.start(`create ${new_data.id}`)
+            timer.start(`create new film`)
             strapi.log.debug('beforeCreate film') // , new_data.title_en)
             new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
             new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -99,9 +99,9 @@ module.exports = {
                 await exportSingle4SSG('cassette', new_cassette.id)
             }
 
-            // let timing = timer.check(`create ${result.id}`)
-            // strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
-            // fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
+            let timing = timer.check(`create new film`)
+            strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
+            fs.appendFileSync(filmLogFile, `Create ${result.id} ${timing.total}\n`)
         },
 
         // params: { "id": 4686 }
