@@ -27,6 +27,12 @@ const loadMAV = (message = '') => {
     return mav[message]
 }
 
+const saveMAV = (message, mav) => {
+    const _mav = loadMAV()
+    _mav[message] = mav
+    fs.writeFileSync(mavFile, jsyaml.dump(_mav))
+}
+
 const timer = () => {
     const timers = {}
 
@@ -88,7 +94,7 @@ const timer = () => {
             m.fromStart = (m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples
             m.numOfSamples = Math.min(m.numOfSamples, mavLength)
             // save moving average
-            fs.writeFileSync(mavFile, jsyaml.dump(mav))
+            saveMAV(message, mav)
         }
 
         return {
