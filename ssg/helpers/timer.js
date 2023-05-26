@@ -1,3 +1,16 @@
+const fs = require('fs')
+const path = require('path')
+
+// path of log file for create/update/delete timing
+const logDir = path.join(__dirname, '..', '..', '..', 'logs')
+if (!fs.existsSync(logDir)) {
+    strapi.log.debug('Creating log dir', logDir)
+    fs.mkdirSync(logDir, { recursive: true })
+}
+const logFile = path.join(logDir, 'timer.log')
+fs.appendFileSync(logFile, '---')
+
+
 const timer = () => {
     const timeUnit = (ms, unit) => {
         return {
