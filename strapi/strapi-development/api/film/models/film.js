@@ -11,7 +11,7 @@ const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg',
 const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
 
 // path of log file for create/update/delete timing
-const logDir = path.join(__dirname, '..', '..', '..', 'logs')
+const logDir = path.join(__dirname, '..', '..', '..', '..', 'logs')
 if (!fs.existsSync(logDir)) {
     strapi.log.debug('Creating log dir', logDir)
     fs.mkdirSync(logDir, { recursive: true })
