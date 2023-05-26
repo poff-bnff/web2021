@@ -176,10 +176,11 @@ module.exports = {
         },
 
         async beforeDelete(params) {
-            timer.start(`remove film ${params.id}`)
             // One might delete a film by id or by id_in
             // Be aware that id_in is an array of strings, not numbers!
             const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
+            // start a timer for each film
+            filmIds.map(id => timer.start(`remove film ${id}`))
             strapi.log.debug('beforeDelete film', { filmIds })
 
             // TODO: find out, what or who is params.user?
@@ -202,6 +203,8 @@ module.exports = {
             // deal with cassettes that have only one film
             const singleFilmCassettes = relevantCassettes.filter(c => c.orderedFilms && c.orderedFilms.length === 1)
             await singleFilmCassettes.map(async c => {
+                // TODO: These logs are here to help with debugging.
+                //       Somehow the delete operation is not finished before the next one starts.
                 strapi.log.debug('Deleting cassette: ', c.id, c.title_en)
                 await strapi.query('cassette').delete({ id: c.id })
                 strapi.log.debug('Deleted cassette: ', c.id, c.title_en)
@@ -229,9 +232,9 @@ module.exports = {
 
             filmIds.map(async fId => {
                 await exportSingle4SSG(model_name, fId)
+                let timing = timer.check(`remove film ${fId}`)
+                strapi.log.debug(`Removal of film ${fId} took ${timing.total} ms`)
             })
-            let timing = timer.check(`remove film ${params.id}`)
-            strapi.log.debug(`Removal of film ${params.id} took ${timing.total} ms`)
         }
     }
 }
