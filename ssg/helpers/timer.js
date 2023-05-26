@@ -9,12 +9,7 @@ if (!fs.existsSync(logDir)) {
 const logFile = path.join(logDir, 'timer.log')
 
 const timer = () => {
-    const timeUnit = (ms, unit) => {
-        return {
-            'ms': `[${ms.toString().padStart(8, ' ')}ms]`,
-            'sec': `[${(Math.round(ms / 100) / 10).toString().padStart(6, ' ')}sec]`
-        }[unit]
-    }
+    const timers = {}
 
     const start = name => {
         const now = new Date().getTime()
@@ -80,7 +75,13 @@ const timer = () => {
         console.log(`${timeUnit(c, unit)} ${message}`)
     }
 
-    let timers = {}
+    const timeUnit = (ms, unit) => {
+        return {
+            'ms': `[${ms.toString().padStart(8, ' ')}ms]`,
+            'sec': `[${(Math.round(ms / 100) / 10).toString().padStart(6, ' ')}sec]`
+        }[unit]
+    }
+
     return {
         start: start,
         check: checkMs,
