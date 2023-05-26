@@ -36,11 +36,25 @@ const timer = () => {
         const from_start = now - _timer.t0
         const from_check = now - _timer.check
         _timer.check = now
-        const callerFromStackT = (new Error().stack.split('\n')[2].split(' ')[5]).split('\\').slice(-2).join('\\')
-        const callerFromStack = ((new Error().stack).split("at ")[3]).trim()
-        console.log((new Error().stack))
+
+        const stack = new Error().stack
+        const stack2 = (stack.split("at ")[2]).trim()
+        const stackObject = stack2.split(' ')[0]
+        // remove parenthesis from stackFunction
+        const stackFunction = stack2.split(' ')[1].slice(1, -1)
+        const callerTextLength = 50
+        const maxStackFunctionLength = callerTextLength - stackObject.length
+        // if stackFunction is longer than maxStackFunctionLength, then
+        // shorten stackfunction from begginning so that it fits to
+        // stackFunctionLength and add "..." to the beginning.
+        // else pad stackFunction with spaces to maxStackFunctionLength
+        const shortStackFunction = stackFunction.length > maxStackFunctionLength ?
+            `...${stackFunction.slice(-maxStackFunctionLength-3)}` :
+            stackFunction.padEnd(maxStackFunctionLength, ' ')
+        const callerFromStack = `${stackObject}@${shortStackFunction}`
+
         fs.appendFileSync(logFile,
-            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] [${callerFromStackT}] ${name}\n`)
+            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] ${name}\n`)
         return {
             interval: from_check,
             total: from_start,
@@ -77,8 +91,3 @@ const timer = () => {
 }
 
 exports.timer = timer()
-
-// test code
-const t = timer()
-t.start('test')
-t.check('test')
