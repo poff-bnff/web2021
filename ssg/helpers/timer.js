@@ -38,7 +38,9 @@ const timer = () => {
         _timer.check = now
 
         const stack = new Error().stack
-        const stack2 = (stack.split("at ")[2]).trim()
+        // remove from stack the lines that are from this file
+        const stack1 = stack.split('\n').filter(line => !line.includes(__filename)).join('\n')
+        const stack2 = (stack1.split("at ")[2]).trim()
         const stackObject = stack2.split(' ')[0]
         // remove parenthesis from stackFunction
         const stackFunction = stack2.split(' ')[1].slice(1, -1)
