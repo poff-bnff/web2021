@@ -9,7 +9,7 @@ const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
 const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
 const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
 
-const LC_MANAGER = path.join(helpersPath, '/helpers/lifecycle_manager.js')
+const LC_MANAGER = path.join(helpersPath, 'lifecycle_manager.js')
 const {
     slugify,
     call_build,
