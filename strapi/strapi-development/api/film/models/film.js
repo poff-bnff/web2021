@@ -107,6 +107,7 @@ module.exports = {
         // params: { "id": 4686 }
         // newData: data that was sent to the update
         async beforeUpdate(params, newData) {
+            timer.start(`update ${params.id}`)
             // load current film data
             const oldData = await strapi.query('film').findOne(params)
             strapi.log.debug('beforeUpdate film', { params, newStills: newData.stills.length, oldStills: oldData.stills.length })
@@ -185,6 +186,9 @@ module.exports = {
             if (domains.length > 0) {
                 await exportSingle4SSG('film', params.id)
             }
+            let timing = timer.check(`update ${params.id}`)
+            strapi.log.debug(`Updating of film ${params.id} took ${timing.total} ms`)
+            fs.appendFileSync(filmLogFile, `Update ${params.id} ${timing.total}\n`)
         },
 
         async beforeDelete(params) {
