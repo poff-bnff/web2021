@@ -8,12 +8,12 @@ const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
-  slugify,
-  call_update,
-  call_build,
-  get_domain,
-  modify_stapi_data,
-  call_delete
+    slugify,
+    call_update,
+    call_build,
+    get_domain,
+    modify_stapi_data,
+    call_delete
 } = require(helper_path)
 
 /**
@@ -29,52 +29,52 @@ const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 
 module.exports = {
-  lifecycles: {
-    async afterCreate(result, data) {
-      await call_update(result, model_name)
-    },
-    async beforeUpdate(params, data) {
-      const domains = await get_domain(data) // hard coded if needed AS LIST!!!
-//	const domains = ['FULL_BUILD']
+    lifecycles: {
+        async afterCreate(result, data) {
+            await call_update(result, model_name)
+        },
+        async beforeUpdate(params, data) {
+            const domains = await get_domain(data) // hard coded if needed AS LIST!!!
+            //	const domains = ['FULL_BUILD']
 
-      if (data.published_at === null) { // if strapi publish system goes live
-        console.log('Draft! Delete: ')
-        await call_delete(params, domains, model_name)
-      }
-    },
-    async afterUpdate(result, params, data) {
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-//	const domains = ['FULL_BUILD']
+            if (data.published_at === null) { // if strapi publish system goes live
+                console.log('Draft! Delete: ')
+                await call_delete(params, domains, model_name)
+            }
+        },
+        async afterUpdate(result, params, data) {
+            const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+            //	const domains = ['FULL_BUILD']
 
-      console.log('Create or update: ')
-      if (data.skipbuild) return
-      if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
-      }
-      let has_error = await call_build(result, domains, model_name)
-    },
-async beforeDelete(params) {
-      const ids = params._where?.[0].id_in || [params.id]
-      const updatedIds = await Promise.all(ids.map(async id => {
-        const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
+            console.log('Create or update: ')
+            if (data.skipbuild) return
+            if (domains.length > 0) {
+                await modify_stapi_data(result, model_name)
+            }
+            let has_error = await call_build(result, domains, model_name)
+        },
+        async beforeDelete(params) {
+            const ids = params._where?.[0].id_in || [params.id]
+            const updatedIds = await Promise.all(ids.map(async id => {
+                const result = await strapi.query(model_name).findOne({ id })
+                if (result) {
+                    const updateDeleteUser = {
+                        updated_by: params.user,
+                        skipbuild: true
+                    }
+                    await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+                    return id
+                }
+            }))
+            delete params.user
+        },
+        async afterDelete(result, params) {
+            // console.log('\nR', result, '\nparams', params)
+            const domains = await get_domain(result) // hard coded if needed AS LIST!!!
+            //	const domains = ['FULL_BUILD']
+
+            console.log('Delete: ')
+            await call_delete(result, domains, model_name)
         }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
-        }
-      }))
-      delete params.user
-    },
-    async afterDelete(result, params) {
-      // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-//	const domains = ['FULL_BUILD']
-
-      console.log('Delete: ')
-      await call_delete(result, domains, model_name)
     }
-  }
 };
