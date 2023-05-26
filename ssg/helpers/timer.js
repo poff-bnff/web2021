@@ -27,7 +27,7 @@ const timer = () => {
         }
     }
 
-    const checkMs = name => {
+    const checkMs = (name, message = false) => {
         if (!timers.hasOwnProperty(name)) {
             throw new Error(`No such timer as "${name}"`)
         }
@@ -57,7 +57,7 @@ const timer = () => {
         const callerFromStack = `${stackObject}@${shortStackFunction}`
 
         fs.appendFileSync(logFile,
-            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] ${name}\n`)
+            `${timeUnit(from_check, 'ms')} ${timeUnit(from_start, 'sec')} [${callerFromStack}] ${message || name}\n`)
         return {
             interval: from_check,
             total: from_start,
@@ -80,7 +80,7 @@ const timer = () => {
         if (!timers.hasOwnProperty(name)) {
             throw new Error(`No such timer as "${name}"`)
         }
-        const c = checkMs(name).total
+        const c = checkMs(name, message).total
         console.log(`${timeUnit(c, unit)} ${message}`)
     }
 
