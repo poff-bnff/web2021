@@ -37,6 +37,7 @@ const timer = () => {
         const from_check = now - _timer.check
         _timer.check = now
 
+        const triDot = '…'
         const stack = new Error().stack
         // remove from stack the lines that are from this file
         const stack1 = stack.split('\n').filter(line => !line.includes(__filename)).join('\n')
@@ -51,7 +52,7 @@ const timer = () => {
         // stackFunctionLength and add "..." to the beginning.
         // else pad stackFunction with spaces to maxStackFunctionLength
         const shortStackFunction = stackFunction.length > maxStackFunctionLength ?
-            `...${stackFunction.slice(-maxStackFunctionLength-3)}` :
+            `${triDot}${stackFunction.slice(-maxStackFunctionLength-1)}` :
             stackFunction.padEnd(maxStackFunctionLength, ' ')
         const callerFromStack = `${stackObject}@${shortStackFunction}`
 
