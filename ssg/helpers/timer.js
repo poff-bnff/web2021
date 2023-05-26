@@ -76,28 +76,28 @@ const timer = () => {
             `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] ${message || name}\n`)
 
         // number of messages to calculate moving average
-        const mavLength = 20
+        const sampleSize = 20
         if (message) {
             // if message contains (new Date().toISOString()) timestamp, replace it
             message = message.replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/, '{ISO datetime}')
             // if message contains list of numbers, replace it
-            message = message.replace(/\[\d+(,\d+)*\]/, '[{list of numbers}]')
+            message = message.replace(/\[\d+(,\d+)*\]/, '{list of numbers}')
 
             const mav = loadMAV(message)
             // check if moving average of given length is already calculated
-            if (!mav.hasOwnProperty(mavLength)) {
-                mav[mavLength] = {
+            if (!mav.hasOwnProperty(sampleSize)) {
+                mav[sampleSize] = {
                     numOfSamples: 0,
                     fromCheck: 0,
                     fromStart: 0
                 }
             }
             // calculate moving average
-            const m = mav[mavLength]
+            const m = mav[sampleSize]
             m.numOfSamples++
             m.fromCheck = (m.fromCheck * (m.numOfSamples - 1) + fromCheck) / m.numOfSamples
             m.fromStart = (m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples
-            m.numOfSamples = Math.min(m.numOfSamples, mavLength)
+            m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
             // save moving average
             saveMAV(message, mav)
         }
