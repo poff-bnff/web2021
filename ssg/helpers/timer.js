@@ -89,12 +89,14 @@ const timer = () => {
                 mav[sampleSize] = {
                     numOfSamples: 0,
                     fromCheck: 0,
-                    fromStart: 0
+                    fromStart: 0,
+                    totalEvents: 0
                 }
             }
             // calculate moving average
             const m = mav[sampleSize]
             m.numOfSamples++
+            m.totalEvents = m.totalEvents ? m.totalEvents + 1 : 1
             m.fromCheck = (m.fromCheck * (m.numOfSamples - 1) + fromCheck) / m.numOfSamples
             m.fromStart = (m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples
             m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
