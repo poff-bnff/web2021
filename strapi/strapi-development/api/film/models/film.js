@@ -104,8 +104,8 @@ module.exports = {
             // - film has stills now
             // - film is not published
             // then publish film
-            if (!oldData.stills || oldData.stills.length === 0) {
-                if (newData.stills && newData.stills.length > 0) {
+            if (!oldData || !oldData.stills || oldData.stills.length === 0) {
+                if (newData && newData.stills && newData.stills.length > 0) {
                     if (newData.hasOwnProperty('is_published') && newData.is_published === false) {
                         newData.is_published = true
                         strapi.log.debug('beforeUpdate film publish', { params })
