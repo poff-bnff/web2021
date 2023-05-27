@@ -57,7 +57,7 @@ const timer = () => {
         const triDot = '…'
         const stack = (new Error().stack).split('\n').slice(1).filter(line => !line.includes(__filename)).map(line => line.split('at ')[1])
         const stackLine = stack[0]
-        console.log({stack}, {stackLine})
+        // console.log({stack}, {stackLine})
         const stackObject = stackLine.split(' ')[0]
         // remove parenthesis from stackFunction
         const stackFunction = stackLine.split(' ')[1].slice(1, -1)
