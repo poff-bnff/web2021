@@ -81,7 +81,7 @@ const timer = () => {
             // if message contains (new Date().toISOString()) timestamp, replace it
             message = message.replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/, '{ISO datetime}')
             // if message contains list of numbers, replace it
-            message = message.replace(/\[\d+(,\d+)*\]/, '{list of numbers}')
+            message = message.replace(/\[\d+(, ?\d+)*\]/, '{list of numbers}')
             // replace locales 'en', 'et', 'ru' with {locale}. Make sure to match between word boundaries
             message = message.replace(/\b(en|et|ru)\b/, '{locale}')
 
