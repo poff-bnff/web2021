@@ -85,7 +85,7 @@ module.exports = {
                 await exportSingle4SSG('cassette', new_cassette.id)
             }
 
-            let timing = timer.check('create new film')
+            let timing = timer.check('create new film', 'Create new film')
             strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
         },
 
@@ -170,7 +170,7 @@ module.exports = {
             if (domains.length > 0) {
                 await exportSingle4SSG('film', params.id)
             }
-            let timing = timer.check(`update film ${params.id}`)
+            let timing = timer.check(`update film ${params.id}`, 'Update film')
             strapi.log.debug(`Updating of film ${params.id} took ${timing.total} ms`)
         },
 
@@ -231,7 +231,7 @@ module.exports = {
 
             filmIds.map(async fId => {
                 await exportSingle4SSG(model_name, fId)
-                let timing = timer.check(`remove film ${fId}`)
+                let timing = timer.check(`remove film ${fId}`, 'Remove film')
                 strapi.log.debug(`Removal of film ${fId} took ${timing.total} ms`)
             })
         }

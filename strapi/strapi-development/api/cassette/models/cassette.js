@@ -48,7 +48,7 @@ module.exports = {
                 strapi.log.debug('Lets build: ')
                 await call_build(result, cassetteDomains, model_name)
             }
-            let timing = timer.check('create new cassette')
+            let timing = timer.check('create new cassette', 'Create new cassette')
             strapi.log.debug(`creating of cassette ${result.id} took ${timing.total} ms`)
         },
 
@@ -79,7 +79,7 @@ module.exports = {
                 strapi.log.debug('cassettes afterUpdate Lets build: ')
                 await call_build(result, cassetteDomains, model_name)
             }
-            let timing = timer.check(`update cassette ${params.id}`)
+            let timing = timer.check(`update cassette ${params.id}`, 'Update cassette')
             strapi.log.debug(`updating of cassette ${params.id} took ${timing.total} ms`)
             // TODO: if no domains, then there is still possibility, that this cassette was
             // associated with domain before and now it is not. So we need to delete it from
@@ -108,7 +108,7 @@ module.exports = {
             cassetteIds.forEach(async cassetteId => {
                 await exportSingle4SSG(model_name, cassetteId)
             })
-            let timing = timer.check(`delete cassette ${params.id}`)
+            let timing = timer.check(`delete cassette ${params.id}`, 'Delete cassette')
             strapi.log.debug(`deleting of cassette ${params.id} took ${timing.total} ms`)
         }
     }
