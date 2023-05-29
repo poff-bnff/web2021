@@ -189,3 +189,10 @@ exports.timer = timer()
 // save start time
 exports.timer.start('start')
 exports.timer.check('start', `Timer loaded at ${new Date().toISOString()}`)
+
+// load, sort and save MAV
+lock()
+const mavs = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
+fs.writeFileSync(mavFile, jsyaml.dump(sortMAV(mavs)))
+unlock()
+
