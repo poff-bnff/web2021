@@ -126,7 +126,7 @@ const timer = () => {
         const callerFromStack = `${stackObject}@${shortStackFunction}`
 
         fs.appendFileSync(logFile,
-            `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] ${message || name}\n`)
+            `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] /${name}/ ${message || name}\n`)
 
         // number of messages to calculate moving average
         const sampleSize = 20
@@ -185,7 +185,7 @@ const timer = () => {
             throw new Error(`No such timer as "${name}"`)
         }
         const c = checkMs(name, message).total
-        console.log(`${timeUnit(c, unit)} /${name}/ ${message}`)
+        console.log(`${timeUnit(c, unit)} ${message}`)
     }
 
     const timeUnit = (ms, unit) => {
