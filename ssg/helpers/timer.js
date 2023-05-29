@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const jsyaml = require('js-yaml');
 
-const SAMPLE_SIZE = 2
+const SAMPLE_SIZE = 20
 
 // path of log file for create/update/delete timing
 const logDir = path.join(__dirname, '..', '..', 'strapi', 'logs')
@@ -58,6 +58,7 @@ const saveMAV = (mavName, mav) => {
     if (!mavs.hasOwnProperty(mavName)) {
         sort = true
     }
+    mavs[mavName] = mav
     if (sort) {
         fs.writeFileSync(mavFile, jsyaml.dump(sortMAVs(mavs)))
     } else {
@@ -120,7 +121,6 @@ const timer = () => {
         const triDot = '…'
         const stack = (new Error().stack).split('\n').slice(1).filter(line => !line.includes(__filename)).map(line => line.split('at ')[1])
         const stackLine = stack[0]
-        // console.log({stack}, {stackLine})
         const stackObject = stackLine.split(' ')[0]
         // remove parenthesis from stackFunction
         const stackFunction = stackLine.split(' ')[1].slice(1, -1)
@@ -217,4 +217,3 @@ lock()
 const mavs = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
 fs.writeFileSync(mavFile, jsyaml.dump(sortMAVs(mavs)))
 unlock()
-
