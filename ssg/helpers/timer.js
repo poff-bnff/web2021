@@ -160,7 +160,7 @@ const timer = () => {
             m.fromStart = Math.round((m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples)
             m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
             // save moving average
-            saveMAV(message, timerMavs)
+            saveMAV(name, timerMavs)
             unlock()
         }
 
