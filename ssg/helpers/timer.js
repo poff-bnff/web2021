@@ -17,6 +17,13 @@ if (!fs.existsSync(mavFile)) {
 }
 
 const lockFile = path.join(logDir, 'timer_mav.lock')
+// make sure lockfile is deleted when process exits
+process.on('exit', () => {
+    if (fs.existsSync(lockFile)) {
+        fs.unlinkSync(lockFile)
+    }
+})
+
 const lock = () => {
     waitUntilUnlocked()
     fs.writeFileSync(lockFile, '')
