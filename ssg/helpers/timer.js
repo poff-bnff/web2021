@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const jsyaml = require('js-yaml');
 
+const SAMPLE_SIZE = 2
+
 // path of log file for create/update/delete timing
 const logDir = path.join(__dirname, '..', '..', 'strapi', 'logs')
 if (!fs.existsSync(logDir)) {
@@ -38,48 +40,58 @@ const waitUntilUnlocked = () => {
     while (isLocked()) { }
 }
 
-const loadMAV = (message = '') => {
+const loadMAV = (mavName = '') => {
     const mav = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
-    if (message === '') {
+    if (mavName === '') {
         return mav
     }
-    if (!mav.hasOwnProperty(message)) {
-        mav[message] = {}
+    if (!mav.hasOwnProperty(mavName)) {
+        mav[mavName] = {}
     }
-    return mav[message]
+    return mav[mavName]
 }
 
-const saveMAV = (message, mav) => {
+const saveMAV = (mavName, mav) => {
     const mavs = loadMAV()
     // if new message, then sort MAV by keys before save
     let sort = false
-    if (!mavs.hasOwnProperty(message)) {
+    if (!mavs.hasOwnProperty(mavName)) {
         sort = true
     }
-    mavs[message] = mav
+    mavs[mavName] = mav
     if (sort) {
-        mavs = sortMAV(mavs)
+        fs.writeFileSync(mavFile, jsyaml.dump(sortMAVs(mavs)))
+    } else {
+        fs.writeFileSync(mavFile, jsyaml.dump(mavs))
     }
-    fs.writeFileSync(mavFile, jsyaml.dump(mavs))
 }
 
-// sort MAV by keys
-const sortMAV = (mav) => {
+// sort MAVs by keys
+const sortMAVs = (timerMavs) => {
     const ciSort = (a, b) => {
         const aLower = a.toLowerCase()
         const bLower = b.toLowerCase()
-        if (aLower < bLower) {
-            return -1
-        }
-        if (aLower > bLower) {
-            return 1
-        }
+        if (aLower < bLower) { return -1 }
+        if (aLower > bLower) { return 1 }
         return 0
     }
-
-    const sorted = Object.keys(mav).sort(ciSort).reduce(
+    const sorted = Object.keys(timerMavs).sort(ciSort).reduce(
         (obj, key) => {
-            obj[key] = mav[key]
+            console.log({ obj, key })
+            obj[key] = timerMavs[key]
+            return obj
+        }, {}
+    )
+    return sorted
+}
+
+// sort MAV by fromStart
+const sortMAV = (timerMav) => {
+    const sorted = Object.keys(timerMav).sort((a, b) => {
+        return timerMav[a].fromStart - timerMav[b].fromStart
+    }).reduce(
+        (obj, key) => {
+            obj[key] = timerMav[key]
             return obj
         }, {}
     )
@@ -129,7 +141,6 @@ const timer = () => {
             `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] ${message || name}\n`)
 
         // number of messages to calculate moving average
-        const sampleSize = 20
         if (message) {
             // if message contains (new Date().toISOString()) timestamp, replace it
             message = message.replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/, '{ISO datetime}')
@@ -140,27 +151,23 @@ const timer = () => {
 
             lock()
             const timerMavs = loadMAV(name)
-            const mav = timerMavs[message] || {}
-            timerMavs[message] = mav
-            // check if moving average of given length is already calculated
-            if (!mav.hasOwnProperty(sampleSize)) {
-                mav[sampleSize] = {
-                    numOfSamples: 0,
-                    fromCheck: 0,
-                    fromStart: 0,
-                    totalEvents: 0
-                }
+            const mav = timerMavs[message] || {
+                numOfSamples: 0,
+                fromCheck: 0,
+                fromStart: 0,
+                totalEvents: 0
             }
+            timerMavs[message] = mav
+
             // calculate moving average
-            const m = mav[sampleSize]
-            m.numOfSamples++
-            m.totalEvents = m.totalEvents ? m.totalEvents + 1 : 1
+            mav.numOfSamples++
+            mav.totalEvents = mav.totalEvents ? mav.totalEvents + 1 : 1
             // round to whole number
-            m.fromCheck = Math.round((m.fromCheck * (m.numOfSamples - 1) + fromCheck) / m.numOfSamples)
-            m.fromStart = Math.round((m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples)
-            m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
+            mav.fromCheck = Math.round((mav.fromCheck * (mav.numOfSamples - 1) + fromCheck) / mav.numOfSamples)
+            mav.fromStart = Math.round((mav.fromStart * (mav.numOfSamples - 1) + fromStart) / mav.numOfSamples)
+            mav.numOfSamples = Math.min(mav.numOfSamples, SAMPLE_SIZE)
             // save moving average
-            saveMAV(name, timerMavs)
+            saveMAV(name, sortMAV(timerMavs))
             unlock()
         }
 
@@ -207,13 +214,9 @@ const timer = () => {
 
 exports.timer = timer()
 
-// save start time
-exports.timer.start('start')
-exports.timer.check('start', `Timer loaded at ${new Date().toISOString()}`)
-
 // load, sort and save MAV on startup
 lock()
 const mavs = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
-fs.writeFileSync(mavFile, jsyaml.dump(sortMAV(mavs)))
+fs.writeFileSync(mavFile, jsyaml.dump(sortMAVs(mavs)))
 unlock()
 
