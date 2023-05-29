@@ -58,7 +58,6 @@ const saveMAV = (mavName, mav) => {
     if (!mavs.hasOwnProperty(mavName)) {
         sort = true
     }
-    mavs[mavName] = mav
     if (sort) {
         fs.writeFileSync(mavFile, jsyaml.dump(sortMAVs(mavs)))
     } else {
