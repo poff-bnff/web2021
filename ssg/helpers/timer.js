@@ -126,7 +126,7 @@ const timer = () => {
         const callerFromStack = `${stackObject}@${shortStackFunction}`
 
         fs.appendFileSync(logFile,
-            `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] /${name}/ ${message || name}\n`)
+            `${timeUnit(fromCheck, 'ms')} ${timeUnit(fromStart, 'sec')} [${callerFromStack}] ${message || name}\n`)
 
         // number of messages to calculate moving average
         const sampleSize = 20
@@ -139,7 +139,9 @@ const timer = () => {
             message = message.replace(/\b(en|et|ru)\b/, '{locale}')
 
             lock()
-            const mav = loadMAV(message)
+            const timerMavs = loadMAV(name)
+            const mav = timerMavs[message] || {}
+            timerMavs[message] = mav
             // check if moving average of given length is already calculated
             if (!mav.hasOwnProperty(sampleSize)) {
                 mav[sampleSize] = {
@@ -158,7 +160,7 @@ const timer = () => {
             m.fromStart = Math.round((m.fromStart * (m.numOfSamples - 1) + fromStart) / m.numOfSamples)
             m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
             // save moving average
-            saveMAV(message, mav)
+            saveMAV(message, timerMavs)
             unlock()
         }
 
