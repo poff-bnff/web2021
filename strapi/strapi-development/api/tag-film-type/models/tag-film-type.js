@@ -5,4 +5,9 @@
  * to customize this model
  */
 
-module.exports = {};
+module.exports = {
+  async beforeDelete(params) {
+    // TODO: find out, what or who is params.user?
+    delete params.user
+  }
+}
