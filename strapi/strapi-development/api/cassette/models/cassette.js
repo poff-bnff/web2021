@@ -24,7 +24,7 @@ module.exports = {
     lifecycles: {
 
         async beforeCreate(new_data) {
-            timer.start('create new cassette')
+            timer.start('Cassette lifecycle')
             strapi.log.debug('beforeCreate cassette')
             new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
             new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -48,14 +48,14 @@ module.exports = {
                 strapi.log.debug('Lets build: ')
                 await call_build(result, cassetteDomains, model_name)
             }
-            let timing = timer.check('create new cassette', 'Create new cassette')
+            let timing = timer.check('Cassette lifecycle', 'Create new cassette')
             strapi.log.debug(`creating of cassette ${result.id} took ${timing.total} ms`)
         },
 
         // params is the original object
         // data is the data that was sent to the update
         async beforeUpdate(params, data) {
-            timer.start(`update cassette ${params.id}`)
+            timer.start('Cassette lifecycle')
             // strapi.log.debug('beforeUpdate cassette', params.id, {data})
             if (data.title_et) { data.slug_et = slugify(data.title_et) }
             if (data.title_ru) { data.slug_ru = slugify(data.title_ru) }
@@ -79,7 +79,7 @@ module.exports = {
                 strapi.log.debug('cassettes afterUpdate Lets build: ')
                 await call_build(result, cassetteDomains, model_name)
             }
-            let timing = timer.check(`update cassette ${params.id}`, 'Update cassette')
+            let timing = timer.check('Cassette lifecycle', 'Update cassette')
             strapi.log.debug(`updating of cassette ${params.id} took ${timing.total} ms`)
             // TODO: if no domains, then there is still possibility, that this cassette was
             // associated with domain before and now it is not. So we need to delete it from
@@ -89,7 +89,7 @@ module.exports = {
 
         // params is the original object
         async beforeDelete(params) {
-            timer.start(`delete cassette ${params.id}`)
+            timer.start('Cassette lifecycle')
             const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
             strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
 
@@ -108,7 +108,7 @@ module.exports = {
             cassetteIds.forEach(async cassetteId => {
                 await exportSingle4SSG(model_name, cassetteId)
             })
-            let timing = timer.check(`delete cassette ${params.id}`, 'Delete cassette')
+            let timing = timer.check('Cassette lifecycle', 'Delete cassette')
             strapi.log.debug(`deleting of cassette ${params.id} took ${timing.total} ms`)
         }
     }
