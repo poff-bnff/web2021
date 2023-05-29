@@ -34,7 +34,7 @@ module.exports = {
     lifecycles: {
 
         async beforeCreate(new_data) {
-            timer.start('create new film')
+            timer.start('Film lifecycle')
             strapi.log.debug('beforeCreate film') // , new_data.title_en)
             new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
             new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
@@ -85,14 +85,14 @@ module.exports = {
                 await exportSingle4SSG('cassette', new_cassette.id)
             }
 
-            let timing = timer.check('create new film', 'Create new film')
+            let timing = timer.check('Film lifecycle', 'Create new film')
             strapi.log.debug(`Creating of film ${result.id} took ${timing.total} ms`)
         },
 
         // params: { "id": 4686 }
         // newData: data that was sent to the update
         async beforeUpdate(params, newData) {
-            timer.start(`update film ${params.id}`)
+            timer.start('Film lifecycle')
             // load current film data
             const oldData = await strapi.query('film').findOne(params)
             if (newData.title_et) { newData.slug_et = slugify(newData.title_et) }
@@ -170,7 +170,7 @@ module.exports = {
             if (domains.length > 0) {
                 await exportSingle4SSG('film', params.id)
             }
-            let timing = timer.check(`update film ${params.id}`, 'Update film')
+            let timing = timer.check('Film lifecycle', 'Update film')
             strapi.log.debug(`Updating of film ${params.id} took ${timing.total} ms`)
         },
 
@@ -179,7 +179,7 @@ module.exports = {
             // Be aware that id_in is an array of strings, not numbers!
             const filmIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
             // start a timer for each film
-            filmIds.map(id => timer.start(`remove film ${id}`))
+            timer.start('Film lifecycle')
             strapi.log.debug('beforeDelete film', { filmIds })
 
             // TODO: find out, what or who is params.user?
@@ -231,7 +231,7 @@ module.exports = {
 
             filmIds.map(async fId => {
                 await exportSingle4SSG(model_name, fId)
-                let timing = timer.check(`remove film ${fId}`, 'Remove film')
+                let timing = timer.check('Film lifecycle', 'Remove film')
                 strapi.log.debug(`Removal of film ${fId} took ${timing.total} ms`)
             })
         }
