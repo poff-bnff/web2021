@@ -185,7 +185,7 @@ const timer = () => {
             throw new Error(`No such timer as "${name}"`)
         }
         const c = checkMs(name, message).total
-        console.log(`${timeUnit(c, unit)} ${message}`)
+        console.log(`${timeUnit(c, unit)} /${name}/ ${message}`)
     }
 
     const timeUnit = (ms, unit) => {
@@ -209,7 +209,7 @@ exports.timer = timer()
 exports.timer.start('start')
 exports.timer.check('start', `Timer loaded at ${new Date().toISOString()}`)
 
-// load, sort and save MAV
+// load, sort and save MAV on startup
 lock()
 const mavs = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
 fs.writeFileSync(mavFile, jsyaml.dump(sortMAV(mavs)))
