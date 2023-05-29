@@ -77,7 +77,6 @@ const sortMAVs = (timerMavs) => {
     }
     const sorted = Object.keys(timerMavs).sort(ciSort).reduce(
         (obj, key) => {
-            console.log({ obj, key })
             obj[key] = timerMavs[key]
             return obj
         }, {}
