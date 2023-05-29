@@ -16,6 +16,21 @@ if (!fs.existsSync(mavFile)) {
     fs.writeFileSync(mavFile, '{}')
 }
 
+const lockFile = path.join(logDir, 'timer_mav.lock')
+const lock = () => {
+    waitUntilUnlocked()
+    fs.writeFileSync(lockFile, '')
+}
+const unlock = () => {
+    fs.unlinkSync(lockFile)
+}
+const isLocked = () => {
+    return fs.existsSync(lockFile)
+}
+const waitUntilUnlocked = () => {
+    while (isLocked()) { }
+}
+
 const loadMAV = (message = '') => {
     const mav = jsyaml.load(fs.readFileSync(mavFile, 'utf8'))
     if (message === '') {
@@ -28,9 +43,28 @@ const loadMAV = (message = '') => {
 }
 
 const saveMAV = (message, mav) => {
-    const _mav = loadMAV()
-    _mav[message] = mav
-    fs.writeFileSync(mavFile, jsyaml.dump(_mav))
+    const mavs = loadMAV()
+    // if new message, then sort MAV by keys before save
+    let sort = false
+    if (!mavs.hasOwnProperty(message)) {
+        sort = true
+    }
+    mavs[message] = mav
+    if (sort) {
+        mavs = sortMAV(mavs)
+    }
+    fs.writeFileSync(mavFile, jsyaml.dump(mavs))
+}
+
+// sort MAV by keys
+const sortMAV = (mav) => {
+    const sorted = Object.keys(mav).sort().reduce(
+        (obj, key) => {
+            obj[key] = mav[key]
+            return obj
+        }, {}
+    )
+    return sorted
 }
 
 const timer = () => {
@@ -85,6 +119,7 @@ const timer = () => {
             // replace locales 'en', 'et', 'ru' with {locale}. Make sure to match between word boundaries
             message = message.replace(/\b(en|et|ru)\b/, '{locale}')
 
+            lock()
             const mav = loadMAV(message)
             // check if moving average of given length is already calculated
             if (!mav.hasOwnProperty(sampleSize)) {
@@ -105,6 +140,7 @@ const timer = () => {
             m.numOfSamples = Math.min(m.numOfSamples, sampleSize)
             // save moving average
             saveMAV(message, mav)
+            unlock()
         }
 
         return {
