@@ -1,16 +1,16 @@
 ---
 domain:
-    poff.ee: poff
+    discoverycampus.poff.ee: discamp
+    filmikool.poff.ee: filmikool
+    hoff.ee: hoff
+    industry.poff.ee: industry
     justfilm.ee: justfilm
     kinoff.poff.ee: kinoff
-    industry.poff.ee: industry
-    shorts.poff.ee: shorts
-    hoff.ee: hoff
     kumu.poff.ee: kumu
-    tartuff.ee: tartuff
     oyafond.ee: bruno
-    filmikool.poff.ee: filmikool
-    discoverycampus.poff.ee: discamp
+    poff.ee: poff
+    shorts.poff.ee: shorts
+    tartuff.ee: tartuff
 
 domains_show_cassetes_wo_screenings:
     - poff.ee
@@ -20,7 +20,7 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        # - 61
+        - 62
         - 63
         - 66
     justfilm.ee:

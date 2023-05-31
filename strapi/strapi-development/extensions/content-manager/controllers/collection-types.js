@@ -137,7 +137,7 @@ module.exports = {
     if (permissionChecker.cannot.delete(entity)) {
       return ctx.forbidden();
     }
-    console.log('await entitymanager delete');
+    console.log(`await entitymanager delete ${model} ${id}`);
     const result = await entityManager.delete(entity, model, user);
 
     ctx.body = permissionChecker.sanitizeOutput(result);

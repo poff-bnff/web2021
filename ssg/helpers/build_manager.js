@@ -197,10 +197,17 @@ function calcBuildAvgDur(options, queueEst = false) {
     }
     const logFile = yaml.load(fs.readFileSync(logsPath, 'utf8'))
     const logData = logFile.filter(a => {
-        const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type}`
-        if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type}`) {
-            return true
-        } else {
+        if (a.command) {
+            const oneCommand = `${a.command.domain} ${a.command.file} ${a.command.type}`
+            if (a.duration && !a.error && oneCommand === `${options.domain} ${options.file} ${options.type}`) {
+                return true
+            } else {
+                return false
+            }
+        }
+        else {
+            console.log('No command in log file for getting build estimates')
+            console.log('Offending log file:', logsPath, '\n', `Offending log data:`, JSON.stringify(a, null, 2))
             return false
         }
     })
@@ -266,12 +273,12 @@ async function calcQueueEstDur() {
 
         if (ongoingBuildStartTime) {
             ongoingBuildLastedInMs = Date.parse(new Date()) - ongoingBuildStartTime
-            console.log('Current running build of ', ongoingBuild.site, ongoingBuild.build_args,' has lasted ', ongoingBuildLastedInMs, 'ms');
+            console.log('Current running build of ', ongoingBuild.site, ongoingBuild.build_args, ' has lasted ', ongoingBuildLastedInMs, 'ms');
         }
     }
 
 
-    const estimateQueueBuildTime = Math.round(estimateInMs-ongoingBuildLastedInMs)
+    const estimateQueueBuildTime = Math.round(estimateInMs - ongoingBuildLastedInMs)
 
     const duration = moment.duration(estimateQueueBuildTime)
 
@@ -365,7 +372,7 @@ async function logQuery(id, type = 'GET', data) {
             }
         };
 
-        if (process.env['StrapiProtocol'] !== 'https'){
+        if (process.env['StrapiProtocol'] !== 'https') {
             options.port = strapiPort
         }
 

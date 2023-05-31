@@ -5,94 +5,111 @@
  */
 
 const path = require('path')
-let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
+const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
+const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
 
+const LC_MANAGER = path.join(helpersPath, 'lifecycle_manager.js')
 const {
-  slugify,
-  call_build,
-  get_domain,
-  modify_stapi_data,
-  call_delete
-} = require(helper_path)
-
-
-/**
-const domains =
-For adding domain you have multiple choice. First for objects that has property 'domain'
-or has property, that has 'domain' (at the moment festival_edition and programmes) use
-function get_domain(result). If you know that that object has doimain, but no property
-to indicate that. Just write the list of domains (as list), example tartuffi_menu.
-And last if full build, with no domain is needed. Write FULL_BUILD (as list)
-*/
+    slugify,
+    call_build,
+    getFeDomainNames,
+    exportSingle4SSG,
+    call_delete
+} = require(LC_MANAGER)
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
 
 module.exports = {
-  lifecycles: {
+    lifecycles: {
 
-    async beforeCreate(new_data) {
-      strapi.log.debug('beforeCreate cassette')
-      new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
-      new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
-      new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
-    },
+        async beforeCreate(new_data) {
+            timer.start('Cassette lifecycle')
+            strapi.log.debug('beforeCreate cassette')
+            new_data.slug_et = new_data.title_et ? slugify(new_data.title_et) : null
+            new_data.slug_ru = new_data.title_ru ? slugify(new_data.title_ru) : null
+            new_data.slug_en = new_data.title_en ? slugify(new_data.title_en) : null
+        },
 
-    // result is the created object
-    // data is the data that was sent to the create
-    async afterCreate(result, data) {
-      strapi.log.debug('afterCreate cassette', result.id, result.title_en)
-    },
+        // result is the created object
+        // data is the data that was sent to the create
+        async afterCreate(result, data) {
+            strapi.log.debug('afterCreate cassette', result.id, result.title_en)
 
-    // params is the original object
-    // data is the data that was sent to the update
-    async beforeUpdate(params, data) {
-      data.slug_et = data.title_et ? slugify(data.title_et) : null
-      data.slug_ru = data.title_ru ? slugify(data.title_ru) : null
-      data.slug_en = data.title_en ? slugify(data.title_en) : null
-    },
+            const festival_editions = []
+            if (result.festival_editions && result.festival_editions.length > 0) {
+                festival_editions.push(... await strapi.db.query('festival-edition').find(
+                    { id: result.festival_editions.map(fe => fe.id) }))
+            }
+            const cassetteDomains = getFeDomainNames(festival_editions)
+            strapi.log.debug('cassettes afterCreate got domains', cassetteDomains, 'for cassette', result.id)
+            if (cassetteDomains.length > 0) {
+                await exportSingle4SSG('cassette', result.id)
+                strapi.log.debug('Lets build: ')
+                await call_build(result, cassetteDomains, model_name)
+            }
+            let timing = timer.check('Cassette lifecycle', 'Create new cassette')
+            strapi.log.debug(`creating of cassette ${result.id} took ${timing.total} ms`)
+        },
 
-    // result is the updated object
-    // params is the original object
-    // data is the data that was sent to the update
-    async afterUpdate(result, params, data) {
+        // params is the original object
+        // data is the data that was sent to the update
+        async beforeUpdate(params, data) {
+            timer.start('Cassette lifecycle')
+            // strapi.log.debug('beforeUpdate cassette', params.id, {data})
+            if (data.title_et) { data.slug_et = slugify(data.title_et) }
+            if (data.title_ru) { data.slug_ru = slugify(data.title_ru) }
+            if (data.title_en) { data.slug_en = slugify(data.title_en) }
+        },
 
-      const festival_editions = await strapi.db.query('festival-edition').find(
-        { id: result.festival_editions.map(fe => fe.id) })
-      const domains = [...new Set(festival_editions.map(fe => fe.domains.map(d => d.url)).flat())]
-      strapi.log.debug('Got domains: ', domains)
-      if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
-        strapi.log.debug('Lets build: ')
-        await call_build(result, domains, model_name)
-      }
-      // TODO: if no domains, then there is still possibility, that this cassette was
-      // associated with domain before and now it is not. So we need to delete it from
-      // that domain.
-      // We could check for changes in festival_editions before and after update.
-    },
+        // result is the updated object
+        // params is the original object
+        // data is the data that was sent to the update
+        async afterUpdate(result, params, data) {
+            strapi.log.debug('afterUpdate cassette', result.id, result.title_en)
+            const festival_editions = []
+            if (result.festival_editions && result.festival_editions.length > 0) {
+                festival_editions.push(... await strapi.db.query('festival-edition').find(
+                    { id: result.festival_editions.map(fe => fe.id) }))
+            }
+            const cassetteDomains = getFeDomainNames(festival_editions)
+            strapi.log.debug('cassettes afterUpdate got domains', cassetteDomains, 'for cassette', result.id)
+            if (cassetteDomains.length > 0) {
+                await exportSingle4SSG('cassette', result.id)
+                strapi.log.debug('cassettes afterUpdate Lets build: ')
+                await call_build(result, cassetteDomains, model_name)
+            }
+            let timing = timer.check('Cassette lifecycle', 'Update cassette')
+            strapi.log.debug(`updating of cassette ${params.id} took ${timing.total} ms`)
+            // TODO: if no domains, then there is still possibility, that this cassette was
+            // associated with domain before and now it is not. So we need to delete it from
+            // that domain.
+            // We could check for changes in festival_editions before and after update.
+        },
 
-    // params is the original object
-    async beforeDelete(params) {
-      const ids = params._where?.[0].id_in || [params.id]
-      const updatedIds = await Promise.all(ids.map(async id => {
-        const result = await strapi.query(model_name).findOne({ id })
-        if (result) {
-          const updateDeleteUser = {
-            updated_by: params.user,
-            skipbuild: true
-          }
-          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-          return id
+        // params is the original object
+        async beforeDelete(params) {
+            timer.start('Cassette lifecycle')
+            const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
+            strapi.log.debug('beforeDelete cassette Ids', cassetteIds)
+
+            // TODO: find out, what or who is params.user?
+            delete params.user
+        },
+
+        // result is the deleted object as it was before it was deleted
+        // params is like { id: 1 }
+        async afterDelete(result, params) {
+            strapi.log.debug("afterDelete cassette") // , { result, params })
+            // One might delete a cassette by id or by id_in
+            // Be aware that id_in is an array of strings, not numbers!
+            const cassetteIds = (params._where?.[0].id_in || [params.id]).map(a => parseInt(a))
+
+            cassetteIds.forEach(async cassetteId => {
+                await exportSingle4SSG(model_name, cassetteId)
+            })
+            let timing = timer.check('Cassette lifecycle', 'Delete cassette')
+            strapi.log.debug(`deleting of cassette ${params.id} took ${timing.total} ms`)
         }
-      }))
-      delete params.user
-    },
-    async afterDelete(result) {
-      // console.log('\nR', result, '\nparams', params)
-      const domains = await get_domain(result) // hard coded if needed AS LIST!!!
-
-      console.log('Delete: ')
-      await call_delete(result, domains, model_name)
     }
-  }
 };
