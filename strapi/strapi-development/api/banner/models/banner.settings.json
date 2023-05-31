@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banners",
+  "info": {
+    "name": "BannerGroup",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "domain": {
+      "model": "domain"
+    },
+    "interval": {
+      "type": "integer"
+    },
+    "banners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "frontpage.banner"
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "FrontPage_Pos1_Upper",
+        "FrontPage_Pos2_Lower"
+      ]
+    }
+  }
+}

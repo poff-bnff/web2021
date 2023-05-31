@@ -1570,6 +1570,9 @@
                       "chat_w_name": {
                         "type": "string"
                       },
+                      "is_published": {
+                        "type": "boolean"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2560,6 +2563,9 @@
                     "chat_w_name": {
                       "type": "string"
                     },
+                    "is_published": {
+                      "type": "boolean"
+                    },
                     "created_by": {
                       "type": "string"
                     },
@@ -3070,6 +3076,9 @@
                       "chat_w_name": {
                         "type": "string"
                       },
+                      "is_published": {
+                        "type": "boolean"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3503,6 +3512,9 @@
                     },
                     "chat_w_name": {
                       "type": "string"
+                    },
+                    "is_published": {
+                      "type": "boolean"
                     },
                     "created_by": {
                       "type": "string"

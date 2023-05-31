@@ -88,6 +88,10 @@
     },
     "chat_w_name": {
       "type": "string"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

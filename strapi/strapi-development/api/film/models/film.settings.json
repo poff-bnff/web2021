@@ -100,8 +100,8 @@
       "default": false
     },
     "awardings": {
-      "via": "film",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "film"
     },
     "other_festivals": {
       "collection": "festival"
@@ -141,6 +141,10 @@
     },
     "chat_w_name": {
       "type": "string"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
