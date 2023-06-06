@@ -130,14 +130,15 @@ module.exports = {
    * @return {Object|Array}
    */
   async me(ctx) {
-    console.log('User GET me');
-    const user = ctx.state.user;
+    const { id } = ctx.params
+    const user = id
+    console.log('User GET me', id, typeof id, );
 
     if (!user) {
       return ctx.badRequest(null, [{ messages: [{ id: 'No authorization header was found' }] }]);
     }
 
-    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user.id }, [
+    const fetchedUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: user }, [
       'my_products',
       'transactions',
       'user_profile',

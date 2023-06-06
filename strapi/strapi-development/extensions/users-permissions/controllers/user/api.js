@@ -218,8 +218,15 @@ module.exports = {
     }
 
     console.log('users-permissions controllers user api updateme');
-    const { id } = ctx.state.user;
-    const { password } = ctx.request.body.data;
+    const { id } = ctx.request.body;
+    console.log('users-permissions controllers user api updateme, user id', id);
+    console.log('bla1', ctx.request.body);
+    let theBody = ctx.request.body[0]
+    console.log('users-permissions controllers user api updateme, user id DATA', theBody);
+    console.log('users-permissions controllers user api updateme, user id DATA', parseMultipartData(theBody.data));
+    console.log('bla2');
+
+    // const { password } = ctx.request.body.data;
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);

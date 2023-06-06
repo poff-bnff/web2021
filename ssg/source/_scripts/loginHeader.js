@@ -1,5 +1,5 @@
-var pageURL = location.origin
-var userprofilePageURL = pageURL + '/userprofile'
+// var pageURL = location.origin
+// var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
@@ -21,12 +21,12 @@ document.addEventListener('userProfileLoaded', function (e) {
     } catch (error) { }
 })
 
-try {
-    const productElement = document.querySelector(`[shopSection]`);
-    if (productElement) {
-        availability()
-    }
-} catch (error) { }
+// try {
+//     const productElement = document.querySelector(`[shopSection]`);
+//     if (productElement) {
+//         availability()
+//     }
+// } catch (error) { }
 
 function buyerCheck() {
 
@@ -70,8 +70,8 @@ if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
         var expDate = JSON.parse(jsonPayload).exp * 1000
         var now = new Date().getTime()
 
-        // console.log("token aegub: " + expDate)
-        // console.log("praegu on: " + now)
+        console.log("token aegub: " + expDate)
+        console.log("praegu on: " + now)
 
         if (now < expDate) {
             validToken = true
@@ -94,7 +94,7 @@ if (validToken) {
         document.getElementById('userProfile').style.display = 'block'
     } catch (error) {
     }
-    loadUserProfileH()
+    userMe()
 
     try {
         document.getElementById('login_cond').style.display = 'none'
@@ -112,31 +112,66 @@ if (!validToken) {
     // loadEmptyUserProfile()
 }
 
-function loadUserProfileH() {
-    // console.log('laen cognitost kasutaja profiili....')
-    var myHeaders = new Headers()
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
+// function loadUserProfileH() {
+//     // console.log('laen cognitost kasutaja profiili....')
+//     var myHeaders = new Headers()
+//     myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
 
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    }
+//     var requestOptions = {
+//         method: 'GET',
+//         headers: myHeaders,
+//         redirect: 'follow'
+//     }
 
-    fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
+//     fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
+//         if (response.ok) {
+//             return response.json();
+//         }
+//         return Promise.reject(response);
+//     }).then(function (data) {
+//         userProfile = data
+//         document.dispatchEvent(userProfileLoadedEvent)
+//         // console.log("cognitos olev profiil:")
+//         // console.log(userProfile);
+
+//     }).catch(function (error) {
+//         console.warn(error);
+//     });
+// }
+
+async function userMe() {
+    // var myHeaders = new Headers();
+    // myHeaders.append("Authorization", "Bearer .eyJlbWFpbCI6InBlbm5hc3RlMDRAZ21haWwuY29tIiwiY29uZmlybWVkIjp0cnVlLCJwcm9maWxlIjp0cnVlLCJmaXJzdE5hbWUiOiJNYXJ0aW4iLCJsYXN0TmFtZSI6IlBlbm5hc3RlIiwiaWF0IjoxNjg0NDI4MjMwLCJuYmYiOjE2ODQ0MjgyMzAsImV4cCI6MTY4NTYzNzgzMCwic3ViIjoiMTQ1MDAifQ.fJhMCKXJMWEtwmDBOSQi6PdBlzZiO5fhRr2UqWmRGyY");
+
+    // var requestOptions = {
+    //     method: 'GET',
+    //     headers: myHeaders,
+    //     redirect: 'follow'
+    // };
+
+    // const user = fetch("http://localhost:3000/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+    // return user.result
+
+    fetch(`http://localhost:3000/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+    .then(function (response) {
         if (response.ok) {
             return response.json();
         }
         return Promise.reject(response);
     }).then(function (data) {
         userProfile = data
+        console.log('DATA', data);
         document.dispatchEvent(userProfileLoadedEvent)
+        redirectToPreLoginUrl(userProfile)
+
         // console.log("cognitos olev profiil:")
         // console.log(userProfile);
 
     }).catch(function (error) {
         console.warn(error);
     });
+
+
 }
 
 function loadEmptyUserProfile() {
@@ -177,36 +212,52 @@ function saveUrl() {
 
 
 function useUserData(userProf) {
+    console.log('useUserData', userProf);
+
     if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
         try {
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
+            console.log('Siia jõuab 1');
         } catch (err) {
-            null
+            console.log('Siia ei jõua 1', err);
+            // null
         }
     } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
         try {
+            console.log('Siia jõuab 2');
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
         } catch (err) {
-            null
+            console.log('Siia ei jõua 2', err);
+
+            // null
         }
 
     } else {
         try {
+            console.log('Siia jõuab 3');
             document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
         } catch (err) {
-            null
+            console.log('Siia ei jõua 3', err);
+
+            // null
         }
     }
     try {
+        console.log('Siia jõuab 4');
         buyerCheck()
     } catch (err) {
-        null
+        console.log('Siia ei jõua 4', err);
+
+        // null
     }
     try {
+        console.log('Siia jõuab 5');
         loadMyFavFilms()
     } catch (err) {
+        console.log('Siia ei jõua 5', err);
+
         // console.log(err)
-        null
+        // null
     }
     try {
         userProfileHasBeenLoaded = true

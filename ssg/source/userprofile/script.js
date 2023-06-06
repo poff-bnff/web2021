@@ -9,7 +9,7 @@ if (validToken) {
 }
 
 async function getUserProfile() {
-    let response = await fetch(`${strapiDomain}/users/me`, {
+    let response = await fetch(`http://localhost:3000/api/me`, {
         method: "GET",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
@@ -118,7 +118,7 @@ async function sendUserProfile() {
     // userToSend = JSON.stringify(userToSend)
     // // console.log("kasutaja profiil mida saadan ", userToSend);
 
-    let response = await (await fetch(`${strapiDomain}/users/updateme`, {
+    let response = await (await fetch(`http://localhost:3000/api/me`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
