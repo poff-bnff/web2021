@@ -18,7 +18,7 @@ async function checkLogin() {
 
 // async function userMe() {
 //     // var myHeaders = new Headers();
-//     // myHeaders.append("Authorization", "Bearer .eyJlbWFpbCI6InBlbm5hc3RlMDRAZ21haWwuY29tIiwiY29uZmlybWVkIjp0cnVlLCJwcm9maWxlIjp0cnVlLCJmaXJzdE5hbWUiOiJNYXJ0aW4iLCJsYXN0TmFtZSI6IlBlbm5hc3RlIiwiaWF0IjoxNjg0NDI4MjMwLCJuYmYiOjE2ODQ0MjgyMzAsImV4cCI6MTY4NTYzNzgzMCwic3ViIjoiMTQ1MDAifQ.fJhMCKXJMWEtwmDBOSQi6PdBlzZiO5fhRr2UqWmRGyY");
+//     // myHeaders.append("Authorization", "Bearer ");
 
 //     // var requestOptions = {
 //     //     method: 'GET',
