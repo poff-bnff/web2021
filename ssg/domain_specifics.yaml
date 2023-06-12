@@ -22,8 +22,10 @@ cassettes_festival_editions:
     poff.ee:
         - 62
         - 63
+        - 64
         - 65
         - 66
+        - 67
     justfilm.ee:
         - 64
         # - 29
