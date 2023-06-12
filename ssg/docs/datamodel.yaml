@@ -1815,6 +1815,8 @@ IndustryArticle: &IndustryArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
+    industry_categories:
+        - *Industry_Category
     industry_people:
         - *IndustryPerson
     people:
