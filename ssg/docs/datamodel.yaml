@@ -1816,7 +1816,7 @@ IndustryArticle: &IndustryArticle
     web_authors: #(Component (repeatable))
         - *WebAuthor
     industry_categories:
-        - *Industry_Category
+        - *IndustryCategory
     industry_people:
         - *IndustryPerson
     people:
