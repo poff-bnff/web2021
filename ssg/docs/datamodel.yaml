@@ -3052,7 +3052,7 @@ BannerGroup: &BannerGroup
     banners: #(Component (repeatable))
 
 Product: &Product
-    path: /products
+    path: /product
 
 #SingleType
 # Hero
