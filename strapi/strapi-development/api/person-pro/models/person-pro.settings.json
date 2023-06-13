@@ -78,11 +78,6 @@
     },
     "profession": {
       "type": "string"
-    },
-    "role_at_films": {
-      "collection": "role-at-film",
-      "via": "person_pros",
-      "dominant": true
     }
   }
 }

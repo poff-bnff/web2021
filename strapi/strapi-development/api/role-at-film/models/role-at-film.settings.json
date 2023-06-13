@@ -24,10 +24,6 @@
     },
     "remoteId": {
       "type": "uid"
-    },
-    "person_pros": {
-      "via": "role_at_films",
-      "collection": "person-pro"
     }
   }
 }
