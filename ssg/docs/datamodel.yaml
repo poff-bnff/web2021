@@ -1900,37 +1900,37 @@ Channel: &Channel
     description: *Translated #(Rich)
     embedCode: (text)
 
-IndustryEvent: &IndustryEvent
-    _path: /industry-events
-    titlePrivate: (text)
-    startTime: (Datetime)
-    title_en: (text)
-    videoUrl: (text)
-    slug_en: (UID)
-    images: #(Component (repeatable))
-        - *StrapiMedia
-    location: *Location #ei sisalda kirjeldust
-    lead: (Rich text)
-    description: (Rich text)
-    industry_categories: #(Component (repeatable))
-        - *IndustryCategory
-    project_type: *ProjectType
-    publishFrom: (Datetime)
-    publishUntil: (Datetime)
-    publish: (Boolean)
-    channel: *Channel
-    durationTime: (Time)
-    industry_people:
-        - *IndustryPerson
-    industry_projects:
-        - *IndustryProject
-    isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
-    isPublicEvent: (Boolean)
-    festival_editions:
-        - *FestivalEdition
-    event_mode: *EventMode
-    domains: #(Component (repeatable))
-        - *Domain
+# IndustryEvent: &IndustryEvent
+#     _path: /industry-events
+#     titlePrivate: (text)
+#     startTime: (Datetime)
+#     title_en: (text)
+#     videoUrl: (text)
+#     slug_en: (UID)
+#     images: #(Component (repeatable))
+#         - *StrapiMedia
+#     location: *Location #ei sisalda kirjeldust
+#     lead: (Rich text)
+#     description: (Rich text)
+#     industry_categories: #(Component (repeatable))
+#         - *IndustryCategory
+#     project_type: *ProjectType
+#     publishFrom: (Datetime)
+#     publishUntil: (Datetime)
+#     publish: (Boolean)
+#     channel: *Channel
+#     durationTime: (Time)
+#     industry_people:
+#         - *IndustryPerson
+#     industry_projects:
+#         - *IndustryProject
+#     isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
+#     isPublicEvent: (Boolean)
+#     festival_editions:
+#         - *FestivalEdition
+#     event_mode: *EventMode
+#     domains: #(Component (repeatable))
+#         - *Domain
 
 IndustrySubMenuItem: &IndustrySubMenuItem
     name: *Translated #(Component)
@@ -2058,9 +2058,9 @@ ProductType: &ProductType
     name: (text)
     description: (text)
     product_categories:
-        - ProductCategory
+        - Product_Category
 
-ProductCategory: &ProductCategory
+Product_Category: &Product_Category
     _path: /product-categories
     namePrivate: (text)
     name: *Translated #(Component)
@@ -2085,7 +2085,7 @@ ProductCategory: &ProductCategory
 
 OrderedProduct: &OrderedProduct
     order: (number)
-    product_category: *ProductCategory
+    product_category: *Product_Category
 
 ProdCatList: &ProdCatList
     namePrivate: (text)
@@ -2174,7 +2174,7 @@ CourseEvent: &CourseEvent
     publish_ru: boolean
     remote_id: UID
     product_categories:
-        - *ProductCategory
+        - *Product_Category
     industry_projects:
         -   *IndustryProject
     publishFrom: datetime
@@ -3050,6 +3050,9 @@ BannerGroup: &BannerGroup
     interval: (number)
     position: (enumeration)
     banners: #(Component (repeatable))
+
+Product: &Product
+    path: /products
 
 #SingleType
 # Hero

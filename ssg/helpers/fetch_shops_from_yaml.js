@@ -14,7 +14,7 @@ const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata');
 
 const strapiDataShopPath = path.join(strapiDataDirPath, 'Shop.yaml');
 const STRAPIDATA_SHOPS = yaml.load(fs.readFileSync(strapiDataShopPath, 'utf8'))
-const strapiDataProdCategoryPath = path.join(strapiDataDirPath, 'ProductCategory.yaml');
+const strapiDataProdCategoryPath = path.join(strapiDataDirPath, 'Product_Category.yaml');
 const STRAPIDATA_PROD_CATEGORIES = yaml.load(fs.readFileSync(strapiDataProdCategoryPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee';
 
