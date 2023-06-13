@@ -1,3 +1,14 @@
+ProductType: &ProductType
+    _path: product-type
+    name: (text)
+    description: (text)
+
+UserRole: &UserRole
+    _path: user-role
+
+BusinessProfile: &BusinessProfile
+    _path: business-profile
+
 WebPermission: &WebPermission
     _path: /web-permissions
     type: (text)
@@ -2081,6 +2092,9 @@ Product_Category: &Product_Category
     images: *Imgs
     product_types:
         - *ProductType
+    user_roles:
+        - *UserRole
+    business_profile: *BusinessProfile
     hidden: (boolean)
 
 OrderedProduct: &OrderedProduct
