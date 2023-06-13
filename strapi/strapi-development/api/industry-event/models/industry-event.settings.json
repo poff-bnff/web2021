@@ -103,10 +103,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "products": {
-      "via": "industry_events",
-      "collection": "product"
     }
   }
 }

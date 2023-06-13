@@ -1733,12 +1733,6 @@
                 "valid_to": {
                   "type": "string"
                 },
-                "industry_events": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "transferable": {
                   "type": "boolean"
                 },
@@ -2065,12 +2059,6 @@
                         "type": "boolean"
                       },
                       "posters": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
-                      "products": {
                         "type": "array",
                         "items": {
                           "type": "string"
@@ -2630,12 +2618,6 @@
                     },
                     "valid_to": {
                       "type": "string"
-                    },
-                    "industry_events": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
                     },
                     "transferable": {
                       "type": "boolean"
@@ -3328,12 +3310,6 @@
                           "type": "string"
                         }
                       },
-                      "products": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3580,12 +3556,6 @@
                     },
                     "valid_to": {
                       "type": "string"
-                    },
-                    "industry_events": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
                     },
                     "transferable": {
                       "type": "boolean"

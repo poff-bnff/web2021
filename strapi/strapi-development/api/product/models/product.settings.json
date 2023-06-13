@@ -61,11 +61,6 @@
     "valid_to": {
       "type": "datetime"
     },
-    "industry_events": {
-      "collection": "industry-event",
-      "via": "products",
-      "dominant": true
-    },
     "transferable": {
       "type": "boolean"
     },
