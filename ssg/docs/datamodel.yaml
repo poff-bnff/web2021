@@ -2065,11 +2065,6 @@ Imgs: &Imgs
     image_en: *StrapiMedia
     image_ru: *StrapiMedia
 
-ProductType: &ProductType
-    name: (text)
-    description: (text)
-    product_categories:
-        - Product_Category
 
 Product_Category: &Product_Category
     _path: /product-categories
