@@ -1,13 +1,13 @@
 ProductType: &ProductType
-    _path: product-type
+    _path: product-types
     name: (text)
     description: (text)
 
 UserRole: &UserRole
-    _path: user-role
+    _path: user-roles
 
 BusinessProfile: &BusinessProfile
-    _path: business-profile
+    _path: business-profiles
 
 WebPermission: &WebPermission
     _path: /web-permissions
