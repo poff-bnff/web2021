@@ -3,6 +3,21 @@ ProductType: &ProductType
     name: (text)
     description: (text)
 
+Function: &Function
+    _path: /functions
+
+SmartFolder: &SmartFolder
+    _path: /smart-folders
+
+DumbFolder: &DumbFolder
+    _path: /dumb-folders
+
+PatternCollection: &PatternCollection
+    _path: /pattern-collections
+
+TimeUnits: &TimeUnits
+    _path: /time-units
+
 UserRole: &UserRole
     _path: /user-roles
 
