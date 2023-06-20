@@ -3,5 +3,8 @@
 @TOKEN = {{$processEnv EVENTIVAL_API_TOKEN}}
 
 ###
-GET {{api}}/people?has_badge=true&badge_type_ids=16925
+GET {{api}}/people?has_badge=true&group_ids=44496&badge_type_ids=16934
 x-api-key: {{TOKEN}}
+
+# GET {{api}}/people?has_badge=true&badge_type_ids=16925
+# testgrupp2023-test1
