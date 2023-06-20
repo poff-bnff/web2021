@@ -60,8 +60,11 @@ XML_festival_editions:
 
 programmes_festival_editions:
     poff.ee:
-        - 61
         - 63
+        - 64
+        - 65
+        - 66
+        - 67
     justfilm.ee:
         - 64
     kinoff.poff.ee:
@@ -75,7 +78,7 @@ programmes_festival_editions:
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 53
+        - 65
     oyafond.ee:
         - 31
     filmikool.poff.ee:
