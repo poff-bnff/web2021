@@ -2178,12 +2178,6 @@
               "pageUrl": {
                 "type": "string"
               },
-              "awardings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "festival_editions": {
                 "type": "array",
                 "items": {

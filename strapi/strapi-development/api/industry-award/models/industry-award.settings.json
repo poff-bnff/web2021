@@ -36,10 +36,6 @@
     "slug_ru": {
       "type": "uid",
       "targetField": "title_ru"
-    },
-    "awardings": {
-      "via": "award",
-      "collection": "awarding"
     }
   }
 }

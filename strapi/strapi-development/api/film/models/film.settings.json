@@ -99,10 +99,6 @@
       "type": "boolean",
       "default": false
     },
-    "awardings": {
-      "collection": "awarding",
-      "via": "film"
-    },
     "other_festivals": {
       "collection": "festival"
     },
