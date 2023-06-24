@@ -6,7 +6,7 @@ var pageLoaded = false
 
 if (!validToken) {
     window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
+    savePreLoginUrl()
 }
 
 const selectors = {
@@ -82,8 +82,8 @@ function pageLoadingAndUserProfileFetched() {
 function toggleAll(exclude_selector_name) {
     setSearchParams()
 
-    if (userProfile && userProfile.my_films && userProfile.my_films.length) {
-        var userMyFilmsIds = getUniqueFavoritesArray(userProfile.my_films, 'favorite', 'cassettes')
+    if (userProfile && userProfile.My.films && userProfile.My.films.length) {
+        var userMyFilmsIds = getUniqueFavoritesArray(userProfile.My.films, 'favorite', 'cassettes')
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyFilmsIds.includes(id))
     } else {

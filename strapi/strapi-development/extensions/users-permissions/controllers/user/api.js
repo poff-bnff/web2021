@@ -345,50 +345,49 @@ module.exports = {
   },
   async favorites(ctx) {
     console.log('users-permissions controllers user api favorites');
-    const { id } = ctx.state.user;
 
-    const manipulateFavorites = async (user, addOrRm, theId, objectName, objectType, objectArrayName) => {
-      var dataIds = user[objectName]
-        .filter(myFavoriteLists => myFavoriteLists.type === objectType)
-        .map(myType => myType[objectArrayName])
-        .flat()
-        .map(obj => obj.id)
-      var uniqueIds = [...new Set(dataIds)]
+    // Query body
+    // let rawData = { ...JSON.parse(ctx.request.body) }
+    let rawData = ctx.request.body
+    console.log('users-permissions controllers user api favorites RAWDATA', rawData);
 
-      let newArray
-      // Remove or add from/to array
-      if (addOrRm === "rm") {
-        newArray = uniqueIds.filter(a => a !== theId)
-      } else if (addOrRm === "add") {
-        uniqueIds.push(theId)
-        newArray = uniqueIds
+    const id = rawData.userId;
+
+    const manipulateFavorites = async (user, addOrRm, theId, objectName) => {
+
+      console.log('manipulateFavorites', user.id, addOrRm, theId, objectName);
+
+      const userMyContent = (user.My[objectName] || []).map(c => c.id)
+      console.log('userMyContent', userMyContent);
+
+      // If the object was already in the user's My list, remove it. Otherwise, add it.
+      if (addOrRm === 'add') {
+        userMyContent.push(theId)
+        console.log('added', userMyContent);
+      } else if (addOrRm === 'rm') {
+        const indexOfObj = userMyContent.indexOf(theId);
+        const removeObj = userMyContent.splice(indexOfObj, 1);
+        console.log('removed', userMyContent);
       }
 
-      // Create new array of objects
-      let newArrayOfObjects = []
-      // Add objects of other types to array if any
-      let otherTypeObjects = user[objectName]
-        .filter(myFavoriteLists => myFavoriteLists.type !== objectType)
-      if (otherTypeObjects.length) { otherTypeObjects.map(a => newArrayOfObjects.push(a)) }
+      user.My[objectName] = userMyContent
 
-      let newTypeData = {
-        type: objectType,
-        [objectArrayName]: newArray
+      console.log('user.My[objectName]', user.My[objectName]);
+
+      // New user My object
+      let newMyObject = {
+        My: {
+          [objectName]: userMyContent
+        }
       }
-
-      if (newArray.length) { newArrayOfObjects.push(newTypeData) }
-
-      let arrayToSave = newArrayOfObjects.length ? newArrayOfObjects : []
-      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, { [objectName]: arrayToSave });
+      // Update user with new info
+      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, newMyObject);
       ctx.send(sanitizeUser(updatedUser));
     }
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
     });
-
-    // Query body
-    let rawData = { ...JSON.parse(ctx.request.body) }
 
     // User needs to fill profile before
     if (!user.user_profile) {
@@ -398,17 +397,17 @@ module.exports = {
 
     if (rawData.type === "rmScreening") {
       // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
-      return await manipulateFavorites(user, "rm", rawData.id, "my_screenings", "schedule", "screenings")
+      return await manipulateFavorites(user, "rm", rawData.id, "screenings")
     } else if (rawData.type === "addScreening") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_screenings", "schedule", "screenings")
+      return await manipulateFavorites(user, "add", rawData.id, "screenings")
     } else if (rawData.type === "rmMyFilm") {
-      return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
+      return await manipulateFavorites(user, "rm", rawData.id, "films")
     } else if (rawData.type === "addMyFilm") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
+      return await manipulateFavorites(user, "add", rawData.id, "films")
     } else if (rawData.type === "rmMyEvent") {
-      return await manipulateFavorites(user, "rm", rawData.id, "my_events", "schedule", "industry_events")
+      return await manipulateFavorites(user, "rm", rawData.id, "course_events")
     } else if (rawData.type === "addMyEvent") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_events", "schedule", "industry_events")
+      return await manipulateFavorites(user, "add", rawData.id, "course_events")
     }
 
   },
@@ -940,7 +939,7 @@ module.exports = {
       // Update existing ones
       await updateFilmographies(userPerson)
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       // Gallery images
       // Delete gallery images
@@ -1015,7 +1014,7 @@ module.exports = {
       personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
 
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       console.log('personFormData', personFormData);
       let newPerson = await strapi.services['person'].create(personFormData)

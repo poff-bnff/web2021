@@ -6,7 +6,7 @@ var pageLoaded = false
 
 if (!validToken) {
     window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
+    savePreLoginUrl()
 }
 
 const selectors = {
@@ -83,8 +83,8 @@ function pageLoadingAndUserProfileFetched() {
 function toggleAll(exclude_selector_name) {
     setSearchParams()
     // Kui on kasutaja profiilis lemmikseansid, siis kuvab pärast filtreid järelejäänud seansse nende alusel
-    if (userProfile && userProfile.my_screenings && userProfile.my_screenings.length) {
-        var userMyScreeningsIds = getUniqueFavoritesArray(userProfile.my_screenings, 'schedule', 'screenings')
+    if (userProfile && userProfile.My.screenings && userProfile.My.screenings.length) {
+        var userMyScreeningsIds = getUniqueFavoritesArray(userProfile.My.screenings, 'schedule', 'screenings')
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyScreeningsIds.includes(id))
     } else {

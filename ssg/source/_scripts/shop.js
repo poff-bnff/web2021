@@ -15,7 +15,7 @@ function BuyProduct(categoryId) {
         }
     } else {
         // console.log("ostad passi kategoorias " + categoryId)
-        saveUrl()
+        savePreLoginUrl()
 
 
         var myHeaders = new Headers();

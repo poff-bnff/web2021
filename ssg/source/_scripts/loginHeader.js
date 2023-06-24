@@ -1,4 +1,4 @@
-// var pageURL = location.origin
+var pageURL = location.origin
 // var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
 var validToken = false
@@ -202,14 +202,9 @@ function loadEmptyUserProfile() {
     });
 }
 
-
-
-function saveUrl() {
+function savePreLoginUrl() {
     localStorage.setItem('preLoginUrl', window.location.href)
 }
-
-
-
 
 function useUserData(userProf) {
     console.log('useUserData', userProf);
@@ -287,4 +282,24 @@ function logOut() {
     location.reload()
 
     // window.open(location.origin, '_self')
+}
+
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+
+const redirectToPreLoginUrl = (userProfile) => {
+    console.log('redirectToPreLoginUrl', localStorage.getItem('preLoginUrl'));
+    // console.log('redirectToPreLoginUrl', userProfile);
+    // const preLoginUrl = localStorage.getItem('preLoginUrl')
+    // const currentlang = getCurrentLang()
+
+    // if (!industryPage && !userProfile.profileFilled) {
+    //     window.open(`${pageURL}/${currentlang ? currentlang : ''}userprofile`, '_self')
+    //     return
+    // }
+    // localStorage.removeItem('preLoginUrl')
+    // preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
 }

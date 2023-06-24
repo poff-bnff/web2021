@@ -12,7 +12,7 @@ if (validToken) {
 } else {
     // document.getElementById('logInStatus').style.display = ''
     // window.open(`${location.origin}/${langpath}login`, '_self')
-    // saveUrl()
+    // savePreLoginUrl()
 }
 
 async function getUserProfile() {

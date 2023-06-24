@@ -10,14 +10,16 @@ function loadMyFavFilms() {
         null
     }
     try {
-        toggleFavButtons(userProfile.my_events, 'myEvents')
+        toggleFavButtons(userProfile.My.course_events, 'myEvents')
         toggleAll()
 
     } catch (error) {
         null
     }
     try {
-        toggleFavButtons(userProfile.my_films, 'myFilms')
+        console.log('loadMyFavFilms', userProfile.My.films);
+
+        toggleFavButtons(userProfile.My.films, 'myFilms')
         toggleAll()
 
     } catch (error) {
@@ -28,7 +30,7 @@ function loadMyFavFilms() {
     } catch (error) {
         null
     } try {
-        toggleFavButtons(userProfile.my_screenings, 'myScreenings')
+        toggleFavButtons(userProfile.My.screenings, 'myScreenings')
 
         // Käivitab kaartide kuvamise kontrolli vastavalt filtritele ja lemmikute olemasolul ka vastavalt nendele
         toggleAll()
@@ -39,32 +41,32 @@ function loadMyFavFilms() {
 }
 
 function modifyFavourites(type, favId) {
-    // console.log('removeScreening ', favId)
+    console.log('modifyFavourites ', type, favId)
     let pushedButton
     let oppositeButton
     let dataArrayName
     if (type === 'addScreening') {
-        dataArrayName = 'my_screenings'
+        dataArrayName = 'screenings'
         pushedButton = document.getElementById(`${favId}_not_savedscreening`)
         oppositeButton = document.getElementById(`${favId}_is_savedscreening`)
     } else if (type === 'rmScreening') {
-        dataArrayName = 'my_screenings'
+        dataArrayName = 'screenings'
         pushedButton = document.getElementById(`${favId}_is_savedscreening`)
         oppositeButton = document.getElementById(`${favId}_not_savedscreening`)
     } else if (type === 'addMyFilm') {
-        dataArrayName = 'my_films'
+        dataArrayName = 'films'
         pushedButton = document.getElementById(`${favId}_not_shortlisted`)
         oppositeButton = document.getElementById(`${favId}_is_shortlisted`)
     } else if (type === 'rmMyFilm') {
-        dataArrayName = 'my_films'
+        dataArrayName = 'films'
         pushedButton = document.getElementById(`${favId}_is_shortlisted`)
         oppositeButton = document.getElementById(`${favId}_not_shortlisted`)
     }else if (type === 'addMyEvent') {
-        dataArrayName = 'my_events'
+        dataArrayName = 'course_events'
         pushedButton = document.getElementById(`${favId}_not_savedevent`)
         oppositeButton = document.getElementById(`${favId}_is_savedevent`)
     } else if (type === 'rmMyEvent') {
-        dataArrayName = 'my_events'
+        dataArrayName = 'course_events'
         pushedButton = document.getElementById(`${favId}_is_savedevent`)
         oppositeButton = document.getElementById(`${favId}_not_savedevent`)
     }
@@ -88,14 +90,15 @@ function modifyFavourites(type, favId) {
         body: JSON.stringify(queryInfo)
     };
 
-
-    fetch(`${strapiDomain}/users/favorites/`, requestOptions).then(function (response) {
+    // `${strapiDomain}/users/favorites/`
+    fetch(`http://localhost:3000/api/favorites`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log(data)
+        console.log('modifyFavourites data', data)
+        console.log('modifyFavourites data[dataArrayName]', data[dataArrayName])
         if (data[dataArrayName]) {
             try {
                 userProfile[dataArrayName] = data[dataArrayName]
@@ -119,31 +122,30 @@ function modifyFavourites(type, favId) {
     });
 }
 
-function getUniqueFavoritesArray(favoritesArray, type, objectName) {
-    var prepareIds = favoritesArray
-        .filter(favoriteList => favoriteList.type === type)
-        .map(myFavorites => myFavorites[objectName])
-        .flat()
-        .map(obj => obj.id.toString())
-    var uniqueIds = [...new Set(prepareIds)]
+function getUniqueFavoritesArray(favoritesArray, objectName) {
+    var uniqueIds = favoritesArray
+        .map(myFavorites => myFavorites.id.toString())
+    console.log('getUniqueFavoritesArray', favoritesArray);
     return uniqueIds
 }
 
 function toggleFavButtons(favoriteCollection, type) {
+    console.log('toggleFavButtons favoriteCollection', favoriteCollection);
     if (type === 'myFilms') {
-        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'favorite', 'cassettes')
+        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'films')
         var isSavedButtons = document.getElementsByClassName('isshortlisted')
         var notSavedButtons = document.getElementsByClassName('notshortlisted')
     } else if (type === 'myScreenings') {
-        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'screenings')
+        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'screenings')
         var isSavedButtons = document.getElementsByClassName('issavedscreening')
         var notSavedButtons = document.getElementsByClassName('notsavedscreening')
     } else if (type === 'myEvents') {
-        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'schedule', 'industry_events')
+        var savedIds = getUniqueFavoritesArray(favoriteCollection, 'course_events')
         var isSavedButtons = document.getElementsByClassName('issavedevent')
         var notSavedButtons = document.getElementsByClassName('notsavedevent')
     }
 
+    console.log('toggleFavButtons savedIds', savedIds);
     for (i = 0; i < isSavedButtons.length; i++) {
         var film_id = isSavedButtons[i].id.split('_')[0]
         if (savedIds.includes(film_id)) {

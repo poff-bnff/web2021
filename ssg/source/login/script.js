@@ -1,4 +1,5 @@
 checkLogin()
+
 async function checkLogin() {
     // Login detected
     console.log('JUHHUUU!');
@@ -48,15 +49,3 @@ async function checkLogin() {
 
 // }
 
-const redirectToPreLoginUrl = (userProfile) => {
-    console.log('redirectToPreLoginUrl', userProfile);
-    const preLoginUrl = localStorage.getItem('preLoginUrl')
-    const currentlang = getCurrentLang()
-
-    if (!industryPage && !userProfile.profileFilled) {
-        window.open(`${pageURL}/${currentlang ? currentlang : ''}userprofile`, '_self')
-        return
-    }
-    localStorage.removeItem('preLoginUrl')
-    preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
-}
