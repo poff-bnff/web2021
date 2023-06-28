@@ -3,23 +3,35 @@ ProductType: &ProductType
     name: (text)
     description: (text)
 
-Function: &Function
+Function:
     _path: /functions
 
-SmartFolder: &SmartFolder
+SmartFolder:
     _path: /smart-folders
 
-DumbFolder: &DumbFolder
+DumbFolder:
     _path: /dumb-folders
 
-PatternCollection: &PatternCollection
+PatternCollection:
     _path: /pattern-collections
 
-TimeUnits: &TimeUnits
+TimeUnits:
     _path: /time-units
+
+TransactionProduct:
+    _path: /transactions-products
+
+Transaction:
+    _path: /transactions
+
+user:
+    _path: /users
 
 UserRole: &UserRole
     _path: /user-roles
+
+UserProfile:
+    _path: /user-profiles
 
 BusinessProfile: &BusinessProfile
     _path: /business-profiles
@@ -1926,8 +1938,8 @@ Channel: &Channel
     description: *Translated #(Rich)
     embedCode: (text)
 
-# IndustryEvent: &IndustryEvent
-#     _path: /industry-events
+IndustryEvent: &IndustryEvent
+    _path: /industry-events
 #     titlePrivate: (text)
 #     startTime: (Datetime)
 #     title_en: (text)
@@ -3069,6 +3081,7 @@ Banner: &Banner
 
 BannerGroup: &BannerGroup
     path: /banner
+    _path: /banner
     name: (text)
     domain: *Domain
     interval: (number)
@@ -3077,6 +3090,7 @@ BannerGroup: &BannerGroup
 
 Product: &Product
     path: /product
+    _path: /product
 
 #SingleType
 # Hero
