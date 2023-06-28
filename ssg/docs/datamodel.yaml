@@ -1902,7 +1902,7 @@ IndustryProject: &IndustryProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    credentials: *Credentials
+    creds: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
@@ -2351,7 +2351,7 @@ DisCampProject: &DisCampProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    credentials: *Credentials
+    creds: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
