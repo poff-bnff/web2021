@@ -42,7 +42,7 @@ if (DOMAIN === 'discoverycampus.poff.ee') {
         'country_focus': {
             model_name: 'Country'
         },
-        'teamCredentials': {
+        'credentials': {
             model_name: 'Credentials'
         },
         'attached_partners': {
@@ -271,7 +271,7 @@ function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, project
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/discampproject_${templateDomainName}_index_template.pug`)
             allData.push(discamp_project);
 
-            const credentials = discamp_project.teamCredentials || {}
+            const credentials = discamp_project.credentials || {}
 
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
@@ -361,7 +361,7 @@ function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, project
 
             // andmepuhastus
 
-            delete discamp_project.teamCredentials
+            delete discamp_project.credentials
         }
 
         const yamlPath = path.join(fetchDir, `discamp${projectsYamlNameSuffix}.${lang}.yaml`);
