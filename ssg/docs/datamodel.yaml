@@ -3080,7 +3080,6 @@ Banner: &Banner
     target_ru: (text)
 
 BannerGroup: &BannerGroup
-    path: /banner
     _path: /banner
     name: (text)
     domain: *Domain
@@ -3089,7 +3088,6 @@ BannerGroup: &BannerGroup
     banners: #(Component (repeatable))
 
 Product: &Product
-    path: /product
     _path: /product
 
 #SingleType
