@@ -73,6 +73,10 @@
     },
     "year": {
       "type": "integer"
+    },
+    "project": {
+      "via": "awardings",
+      "model": "industry-project"
     }
   }
 }

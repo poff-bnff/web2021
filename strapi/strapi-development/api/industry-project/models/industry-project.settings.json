@@ -53,7 +53,7 @@
     "country_focus": {
       "model": "country"
     },
-    "credentials": {
+    "creds": {
       "type": "component",
       "repeatable": false,
       "component": "film.credentials-new"
@@ -122,6 +122,10 @@
       "collection": "festival-edition",
       "via": "projects",
       "dominant": true
+    },
+    "awardings": {
+      "collection": "awarding",
+      "via": "project"
     },
     "tag_looking_fors": {
       "collection": "tag-looking-for"
