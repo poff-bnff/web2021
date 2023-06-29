@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/colours",
-      "handler": "colours.find",
+      "path": "/banners",
+      "handler": "banner.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/colours/count",
-      "handler": "colours.count",
+      "path": "/banners/count",
+      "handler": "banner.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/colours/:id",
-      "handler": "colours.findOne",
+      "path": "/banners/:id",
+      "handler": "banner.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/colours",
-      "handler": "colours.create",
+      "path": "/banners",
+      "handler": "banner.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/colours/:id",
-      "handler": "colours.update",
+      "path": "/banners/:id",
+      "handler": "banner.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/colours/:id",
-      "handler": "colours.delete",
+      "path": "/banners/:id",
+      "handler": "banner.delete",
       "config": {
         "policies": []
       }

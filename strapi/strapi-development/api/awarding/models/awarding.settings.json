@@ -14,25 +14,20 @@
     "date": {
       "type": "date"
     },
-    "project": {
-      "model": "industry-project",
-      "via": "awardings"
+    "projects": {
+      "collection": "industry-project"
     },
-    "film": {
-      "model": "film",
-      "via": "awardings"
+    "films": {
+      "collection": "film"
     },
-    "person": {
-      "via": "awardings",
-      "model": "person"
+    "people": {
+      "collection": "person"
     },
-    "organisation": {
-      "via": "awardings",
-      "model": "organisation"
+    "organisations": {
+      "collection": "organisation"
     },
     "festival_edition": {
-      "model": "festival-edition",
-      "via": "awardings"
+      "model": "festival-edition"
     },
     "titlePrivate": {
       "type": "string"
@@ -68,8 +63,7 @@
       "targetField": "title_ru"
     },
     "award": {
-      "model": "industry-award",
-      "via": "awardings"
+      "model": "industry-award"
     },
     "actor_role": {
       "type": "string"
@@ -79,6 +73,10 @@
     },
     "year": {
       "type": "integer"
+    },
+    "project": {
+      "via": "awardings",
+      "model": "industry-project"
     }
   }
 }

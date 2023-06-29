@@ -49,7 +49,7 @@ if (DOMAIN === 'industry.poff.ee') {
         'country_focus': {
             model_name: 'Country'
         },
-        'teamCredentials': {
+        'creds': {
             model_name: 'Credentials'
         },
         'attached_partners': {
@@ -274,7 +274,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 }
             }
 
-            const credentials = industry_project.teamCredentials || {}
+            const credentials = industry_project.creds || {}
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
             industry_project.persons = {}
@@ -387,7 +387,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
             industry_project.organisations = Object.values(industry_project.organisations)
             // andmepuhastus
 
-            delete industry_project.teamCredentials
+            delete industry_project.creds
 
             const oneYaml = yaml.dump(industry_project, { 'noRefs': true, 'indent': '4' });
             const yamlPath = path.join(fetchDataDir, dirSlug, `data.${lang}.yaml`);

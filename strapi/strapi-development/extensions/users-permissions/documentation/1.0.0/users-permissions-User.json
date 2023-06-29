@@ -1634,6 +1634,9 @@
                       "chat_w_name": {
                         "type": "string"
                       },
+                      "is_published": {
+                        "type": "boolean"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -1793,12 +1796,6 @@
                 },
                 "valid_to": {
                   "type": "string"
-                },
-                "industry_events": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 },
                 "transferable": {
                   "type": "boolean"
@@ -2131,12 +2128,6 @@
                           "type": "string"
                         }
                       },
-                      "products": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2250,12 +2241,6 @@
               },
               "pageUrl": {
                 "type": "string"
-              },
-              "awardings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
               },
               "festival_editions": {
                 "type": "array",
@@ -2624,6 +2609,9 @@
                     "chat_w_name": {
                       "type": "string"
                     },
+                    "is_published": {
+                      "type": "boolean"
+                    },
                     "created_by": {
                       "type": "string"
                     },
@@ -2688,12 +2676,6 @@
                     },
                     "valid_to": {
                       "type": "string"
-                    },
-                    "industry_events": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
                     },
                     "transferable": {
                       "type": "boolean"
@@ -3134,6 +3116,9 @@
                       "chat_w_name": {
                         "type": "string"
                       },
+                      "is_published": {
+                        "type": "boolean"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3383,12 +3368,6 @@
                           "type": "string"
                         }
                       },
-                      "products": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3568,6 +3547,9 @@
                     "chat_w_name": {
                       "type": "string"
                     },
+                    "is_published": {
+                      "type": "boolean"
+                    },
                     "created_by": {
                       "type": "string"
                     },
@@ -3632,12 +3614,6 @@
                     },
                     "valid_to": {
                       "type": "string"
-                    },
-                    "industry_events": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
                     },
                     "transferable": {
                       "type": "boolean"

@@ -110,6 +110,10 @@
     "public": {
       "type": "boolean",
       "default": true
+    },
+    "industry_categories": {
+      "collection": "industry-category",
+      "via": "industry_article"
     }
   }
 }

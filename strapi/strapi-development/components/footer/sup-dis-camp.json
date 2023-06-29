@@ -10,9 +10,6 @@
     "name": {
       "type": "string"
     },
-    "custom_url": {
-      "type": "string"
-    },
     "discamp_article": {
       "model": "dis-camp-article"
     },

@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "tag_film_types",
   "info": {
-    "name": "TagFilmType"
+    "name": "TagFilmType",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,10 +19,6 @@
     },
     "ru": {
       "type": "string"
-    },
-    "pof_fi_article": {
-      "via": "tag_film_types",
-      "model": "pof-fi-article"
     }
   }
 }

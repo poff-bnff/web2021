@@ -20,9 +20,12 @@ domains_show_cassetes_wo_screenings:
 
 cassettes_festival_editions:
     poff.ee:
-        - 62
+        # - 62
         - 63
+        - 64
+        - 65
         - 66
+        - 67
     justfilm.ee:
         - 64
         # - 29
@@ -39,7 +42,7 @@ cassettes_festival_editions:
     kumu.poff.ee:
         - 62
     tartuff.ee:
-        - 53
+        - 65
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -57,8 +60,11 @@ XML_festival_editions:
 
 programmes_festival_editions:
     poff.ee:
-        - 61
         - 63
+        - 64
+        - 65
+        - 66
+        - 67
     justfilm.ee:
         - 64
     kinoff.poff.ee:
@@ -72,7 +78,7 @@ programmes_festival_editions:
     kumu.poff.ee:
         - 33
     tartuff.ee:
-        - 53
+        - 65
     oyafond.ee:
         - 31
     filmikool.poff.ee:
@@ -151,7 +157,7 @@ target_build_models:
     - bruno-article
     - filmikooli-article
     - industry-article
-    - industry-project
+    # - industry-project
     - dis-camp-article
     - article-hero
     - hero-article-just-film

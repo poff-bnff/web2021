@@ -1,3 +1,41 @@
+ProductType: &ProductType
+    _path: /product-types
+    name: (text)
+    description: (text)
+
+Function:
+    _path: /functions
+
+SmartFolder:
+    _path: /smart-folders
+
+DumbFolder:
+    _path: /dumb-folders
+
+PatternCollection:
+    _path: /pattern-collections
+
+TimeUnits:
+    _path: /time-units
+
+TransactionProduct:
+    _path: /transactions-products
+
+Transaction:
+    _path: /transactions
+
+user:
+    _path: /users
+
+UserRole: &UserRole
+    _path: /user-roles
+
+UserProfile:
+    _path: /user-profiles
+
+BusinessProfile: &BusinessProfile
+    _path: /business-profiles
+
 WebPermission: &WebPermission
     _path: /web-permissions
     type: (text)
@@ -1815,6 +1853,8 @@ IndustryArticle: &IndustryArticle
         - *TagKeyword
     web_authors: #(Component (repeatable))
         - *WebAuthor
+    industry_categories:
+        - *IndustryCategory
     industry_people:
         - *IndustryPerson
     people:
@@ -1862,7 +1902,7 @@ IndustryProject: &IndustryProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    teamCredentials: *Credentials
+    creds: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
@@ -1900,35 +1940,35 @@ Channel: &Channel
 
 IndustryEvent: &IndustryEvent
     _path: /industry-events
-    titlePrivate: (text)
-    startTime: (Datetime)
-    title_en: (text)
-    videoUrl: (text)
-    slug_en: (UID)
-    images: #(Component (repeatable))
-        - *StrapiMedia
-    location: *Location #ei sisalda kirjeldust
-    lead: (Rich text)
-    description: (Rich text)
-    industry_categories: #(Component (repeatable))
-        - *IndustryCategory
-    project_type: *ProjectType
-    publishFrom: (Datetime)
-    publishUntil: (Datetime)
-    publish: (Boolean)
-    channel: *Channel
-    durationTime: (Time)
-    industry_people:
-        - *IndustryPerson
-    industry_projects:
-        - *IndustryProject
-    isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
-    isPublicEvent: (Boolean)
-    festival_editions:
-        - *FestivalEdition
-    event_mode: *EventMode
-    domains: #(Component (repeatable))
-        - *Domain
+#     titlePrivate: (text)
+#     startTime: (Datetime)
+#     title_en: (text)
+#     videoUrl: (text)
+#     slug_en: (UID)
+#     images: #(Component (repeatable))
+#         - *StrapiMedia
+#     location: *Location #ei sisalda kirjeldust
+#     lead: (Rich text)
+#     description: (Rich text)
+#     industry_categories: #(Component (repeatable))
+#         - *IndustryCategory
+#     project_type: *ProjectType
+#     publishFrom: (Datetime)
+#     publishUntil: (Datetime)
+#     publish: (Boolean)
+#     channel: *Channel
+#     durationTime: (Time)
+#     industry_people:
+#         - *IndustryPerson
+#     industry_projects:
+#         - *IndustryProject
+#     isLiveEvent: (Boolean)  # kas chat box on avatud v mitte
+#     isPublicEvent: (Boolean)
+#     festival_editions:
+#         - *FestivalEdition
+#     event_mode: *EventMode
+#     domains: #(Component (repeatable))
+#         - *Domain
 
 IndustrySubMenuItem: &IndustrySubMenuItem
     name: *Translated #(Component)
@@ -2052,13 +2092,8 @@ Imgs: &Imgs
     image_en: *StrapiMedia
     image_ru: *StrapiMedia
 
-ProductType: &ProductType
-    name: (text)
-    description: (text)
-    product_categories:
-        - ProductCategory
 
-ProductCategory: &ProductCategory
+Product_Category: &Product_Category
     _path: /product-categories
     namePrivate: (text)
     name: *Translated #(Component)
@@ -2079,11 +2114,14 @@ ProductCategory: &ProductCategory
     images: *Imgs
     product_types:
         - *ProductType
+    user_roles:
+        - *UserRole
+    business_profile: *BusinessProfile
     hidden: (boolean)
 
 OrderedProduct: &OrderedProduct
     order: (number)
-    product_category: *ProductCategory
+    product_category: *Product_Category
 
 ProdCatList: &ProdCatList
     namePrivate: (text)
@@ -2172,7 +2210,7 @@ CourseEvent: &CourseEvent
     publish_ru: boolean
     remote_id: UID
     product_categories:
-        - *ProductCategory
+        - *Product_Category
     industry_projects:
         -   *IndustryProject
     publishFrom: datetime
@@ -2313,7 +2351,7 @@ DisCampProject: &DisCampProject
         - *Organisation
     plannedPremiere: (Date)
     country_focus: *Country
-    teamCredentials: *Credentials
+    creds: *Credentials
     budget: (Number)
     financed: (Number)
     attached_partners: #(Component (repeatable))
@@ -3042,12 +3080,15 @@ Banner: &Banner
     target_ru: (text)
 
 BannerGroup: &BannerGroup
-    path: /banner
+    _path: /banner
     name: (text)
     domain: *Domain
     interval: (number)
     position: (enumeration)
     banners: #(Component (repeatable))
+
+Product: &Product
+    _path: /product
 
 #SingleType
 # Hero
@@ -3325,14 +3366,14 @@ TrioItemDisCamp: &TrioItemDisCamp
     custom_url: (text)
     image: *StrapiMedia #(Component)
 
-Triodiscamp: &Triodiscamp
+Triodiscamp: &Triodiscamp #(Component in article group
     name: (text)
     lead: (text)
     trioItem_1: *TrioItemDisCamp #(Component)
     trioItem_2: *TrioItemDisCamp #(Component)
     trioItem_3: *TrioItemDisCamp #(Component)
 
-TrioDisCamp: &TrioDisCamp
+TrioDisCamp: &TrioDisCamp #(Singleton)
     _path: /trio-dis-camp
     trioDiscamp_et: *Triodiscamp #(Component)
     trioDiscamp_en: *Triodiscamp #(Component)

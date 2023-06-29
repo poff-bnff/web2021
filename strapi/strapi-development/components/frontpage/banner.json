@@ -1,0 +1,74 @@
+{
+  "collectionName": "components_frontpage_banners",
+  "info": {
+    "name": "Banner",
+    "icon": "digital-tachograph"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "publishFrom": {
+      "type": "datetime"
+    },
+    "publishUntil": {
+      "type": "datetime"
+    },
+    "imageDefault": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "image_et": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "image_en": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "image_ru": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "targetDefault": {
+      "type": "string"
+    },
+    "target_et": {
+      "type": "string"
+    },
+    "target_en": {
+      "type": "string"
+    },
+    "target_ru": {
+      "type": "string"
+    }
+  }
+}
