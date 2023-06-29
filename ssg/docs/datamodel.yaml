@@ -1644,7 +1644,7 @@ Film: &Film
     world_sales: #(Component (repeatable))
         - *Organisation
     subtitles: #(Component (repeatable))
-        -   *Language
+        - *Language
     remoteId: (UID)
     languages: #(Component (repeatable))
         -   *Language
@@ -3080,12 +3080,13 @@ Banner: &Banner
     target_ru: (text)
 
 BannerGroup: &BannerGroup
-    _path: /banner
+    _path: /banners
     name: (text)
     domain: *Domain
     interval: (number)
     position: (enumeration)
     banners: #(Component (repeatable))
+        - *Banner
 
 Product: &Product
     _path: /product
