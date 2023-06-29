@@ -1,0 +1,3 @@
+path: training_positions
+data:
+    articles: /_fetchdir/articles.en.yaml
