@@ -3088,8 +3088,8 @@ BannerGroup: &BannerGroup
     banners: #(Component (repeatable))
         - *Banner
 
-Product: &Product
-    _path: /product
+# Product: &Product
+#     _path: /product
 
 #SingleType
 # Hero

@@ -8,6 +8,7 @@ const yaml = require('js-yaml')
 const path = require('path')
 const { strapiAuth } = require('./strapiAuth.js')
 const { spin } = require("./spinner")
+const { isArray } = require('lodash')
 
 const DATAMODEL_PATH = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
 const DATAMODEL = yaml.load(fs.readFileSync(DATAMODEL_PATH, 'utf8'))
@@ -88,11 +89,11 @@ const isObject = item => {
 
 async function getModel(model, filters={}) {
     if (! model in DATAMODEL) {
-        console.log('WARNING: no such model: "', model, '".' )
+        console.log('strapiQuery.getModel: WARNING: no such model: "', model, '".' )
         return false
     }
     if (! '_path' in DATAMODEL[model]) {
-        console.log('WARNING: no path to model: "', model, '".' )
+        console.log('strapiQuery.getModel: WARNING: no path to model: "', model, '".' )
         return false
     }
     if (!isObject(filters)) {
@@ -130,10 +131,28 @@ async function getModel(model, filters={}) {
         console.log('=== getModel', filter, options)
     }
     const strapi_data = await strapiQuery(options)
+    if (!isArray(strapi_data)) {
+        if (!(strapi_data.id > 0)) {
+            console.warn('is not a collection or a singletype')
+            throw new Error(`${model} is not a collection or a singletype`)
+        }
+        return strapi_data
+    } else {
+        return strapi_data.filter(item => {
+            if (item.is_published !== undefined) {
+                if (item.is_published === false) {
+                    console.log(`Skipping not published ${item.id}`)
+                    return false
+                }
+            }
+            return true
+        })
+    }
+
     if (full_model_fetch) {
         process.stdout.write(`. [${new Date().getTime() - t0}ms]`)
     }
-    return strapi_data
+    return published_sd
 }
 
 async function putModel(model, data) {
