@@ -34,11 +34,12 @@ tartuff_violet = #ec008c
 dark_1 = #0E1417
 dark_2 = #192024
 dark_4 = #29333A
-dark_5 = #90999f
+dark_5 = #50595f
 bg_dark_1 = #0E1417
 bg_dark_2 = #192024
 bg_dark_3 = #1C272E
 bg_dark_4 = #29333A
+bg_dark_5 = #79838A
 bg_light_1 = #ffffff
 bg_light_2 = #dddddd
 bg_light_3 = #cccccc
@@ -572,7 +573,7 @@ footer
     position relative
     // height full_height
     // height calc(100vh - 97px)
-    height 31vw
+    height 15vw
 
 .hero_headline_box
     position absolute
@@ -832,7 +833,7 @@ a .dark:hover
 
 .viieka_body
     margin 0
-    padding 1rem 1rem 1rem 1rem
+    padding 2rem 1.618rem 2rem 1.618rem
 
 .kuueka_body
     margin 0
@@ -840,10 +841,11 @@ a .dark:hover
 
 .viieka_headline
     color dark_4
-    font-size 1.5rem
+    font-size calc(1.168rem + .5vw)
     font-family font_h
     font-weight 400
     padding-top .5rem
+    padding-bottom .5rem
     letter-spacing 0.01em
 
 .footer_logos
@@ -1265,7 +1267,7 @@ header
     grid-area header
 
 .justi_banner_box
-    margin-top 3rem
+    // margin-top 3rem
     margin-bottom 5rem
     padding 0
 
@@ -1495,6 +1497,36 @@ option
     height 100%
     object-fit cover
 
+.container_frame_square
+    position relative
+    height 0
+    overflow hidden
+    padding-top 100%
+    background bg_dark_4
+
+.container_contents_square
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    object-fit cover
+
+.container_frame_12_5
+    position relative
+    height 0
+    overflow hidden
+    padding-top 41%
+    background bg_dark_4
+
+.container_contents_12_5
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    object-fit cover
+
 .container_frame_poster
     position relative
     height 0
@@ -1610,8 +1642,8 @@ p a
     font-family font_h
     font-size calc(1.618rem + 1.618vw)
     line-height 1.168
-    font-weight 500
-    color bg_dark_4
+    font-weight 400
+    color bg_dark_5
     letter-spacing 0.04em
     text-align center
     margin 0
@@ -1892,6 +1924,28 @@ a.btn_popover
   color white_96
   border-radius 0
   text-transform uppercase
+
+.btn_trio
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    // width max-content
+    // max-width 90%
+    width 100%
+    // background-color clr_primary
+    color white_96
+    border-radius 0
+    text-transform uppercase
+    font-size 1.618rem
+    line-height 1.5
+    text-align center
+    margin 0
+    padding 0
+    padding-left 1rem
+    padding-right 1rem
+    padding-top .5rem
+    padding-bottom .5rem
 
 .btn_covid
     background-color clr_covid
@@ -2245,7 +2299,7 @@ a.btn_popover
 
 .home_hero_image
     width 100vw
-    height 31vw
+    height 15vw
     object-fit cover
     // padding 3rem
 
@@ -2406,8 +2460,8 @@ a.btn_popover
 
     .grid_hero
         display grid
-        grid-template-columns auto
-        grid-template-rows auto
+        grid-template-columns 1fr
+        // grid-template-rows auto
         margin 0
         padding 0
         padding-top header_height
@@ -2440,7 +2494,7 @@ a.btn_popover
         position relative
         // height full_height
         // height calc(100vh - 97px)
-        height 31vw
+        height 15vw
 
     // .hero_image
     //     width 100vw
@@ -2452,6 +2506,9 @@ a.btn_popover
     .trio_block
         padding-left 2rem
         padding-right 2rem
+        // margin-bottom 6rem
+        padding-top 5rem
+        padding-bottom 5rem
 
     .viiekas
         width 100vw
@@ -2464,7 +2521,7 @@ a.btn_popover
         padding-left 2rem
         padding-right 2rem
         // padding-top calc(1.9rem + 1.5vw)
-        padding-bottom 2rem
+        padding-bottom 5rem
         justify-content center
         align-content center
         justify-items stretch
@@ -2872,7 +2929,7 @@ a.btn_popover
 
     .home_hero_image
         width 100vw
-        height 31vw
+        height 15vw
         object-fit cover
         // padding 3rem
 

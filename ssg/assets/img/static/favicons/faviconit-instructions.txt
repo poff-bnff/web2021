@@ -23,3 +23,5 @@ copy the files to your site and add this code inside the HTML <HEAD> tag:
 	<meta name="msapplication-TileImage" content="/BNFF-144.png">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
+
+adfasdf
