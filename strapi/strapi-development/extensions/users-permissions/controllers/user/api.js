@@ -413,7 +413,6 @@ module.exports = {
   },
   async paymentMethods(ctx) {
     const catId = ctx?.params?.id;
-
     const getMkConfig = async (catId) => {
 
 
@@ -506,8 +505,12 @@ module.exports = {
     }
   },
   async buyProduct(ctx) {
-    console.log('Yes, buy product here')
-    const { id } = ctx.state.user;
+    const requestBody = ctx.request.body
+
+    const id = requestBody.userId;
+    const catId = requestBody.categoryId;
+
+    console.log('Yes, buy product here user ', id, 'category ', catId)
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
@@ -516,7 +519,6 @@ module.exports = {
     const userEmail = user.email
     console.log(userEmail)
 
-    const requestBody = JSON.parse(ctx.request.body)
 
     const postToMaksekeskus = async (postData) => {
       const productCatBP = JSON.parse(postData.transaction.merchant_data).productCatSeller

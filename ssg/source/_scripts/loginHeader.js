@@ -21,23 +21,24 @@ document.addEventListener('userProfileLoaded', function (e) {
     } catch (error) { }
 })
 
-// try {
-//     const productElement = document.querySelector(`[shopSection]`);
-//     if (productElement) {
-//         availability()
-//     }
-// } catch (error) { }
+try {
+    const productElement = document.querySelector(`[shopSection]`);
+    if (productElement) {
+        availability()
+    }
+} catch (error) { }
 
 function buyerCheck() {
-
+    console.log('buyerCheck', validToken);
     if (!validToken) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
     } else {
         document.getElementById('directToLoginButton').style.display = 'none'
-
         if (userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture) {
+            console.log('buyerCheck, kõik olemas saab osta');
+
             //kõik olemas saab osta
             document.getElementById('buybutton').style.display = 'block'
             // console.log("kasutaja saab osta")

@@ -2,14 +2,14 @@
 // console.log('referrer ', document.referrer)
 
 function BuyProduct(categoryId) {
-
+    console.log('BuyProduct');
     var feedback = document.getElementById("feedback")
     if (paymentType === "valimata" || termsCheckbox.checked === false) {
         feedback.innerHTML = ''
-        if(paymentType === "valimata") {
+        if (paymentType === "valimata") {
             feedback.innerHTML = "<li>Palun vali makseviis</li>"
         }
-        if(termsCheckbox.checked === false) {
+        if (termsCheckbox.checked === false) {
             const termsText = `<li>Ostu sooritamiseks pead nõustuma ostutingimustega</li>`
             feedback.innerHTML = feedback.innerHTML + termsText
         }
@@ -52,7 +52,7 @@ function BuyProduct(categoryId) {
         }
 
         // fetch('https://api.poff.ee/buy/' + categoryId + '?return_url=' + return_url + '&cancel_url=' + cancel_url, requestOptions).then(function (response) {
-        fetch(`${strapiDomain}/users-permissions/users/buyproduct`, requestOptions).then(function (response) {
+        fetch(`http://localhost:3000/api/product/buyProduct/`, requestOptions).then(function (response) {
             if (response.ok) {
                 return response.json();
             }
@@ -92,6 +92,7 @@ function Buy(productCode) {
 }
 
 function GetPaymentLinks(id) {
+    console.log('GetPaymentLinks');
     document.getElementById("buybutton").style.display = 'none'
     var links = document.getElementById("paymentLinks")
     var paybutton = document.getElementById("paybutton")
@@ -102,10 +103,11 @@ function GetPaymentLinks(id) {
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
-        redirect: 'follow'
+        redirect: 'follow',
     }
 
-    fetch(`${strapiDomain}/users-permissions/users/paymentmethods/${id}`, requestOptions).then(function (response) {
+    // fetch(`${strapiDomain}/users-permissions/users/paymentmethods/${id}`, requestOptions).then(function (response) {
+    fetch(`http://localhost:3000/api/product/paymentMethods/?id=${id}`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
@@ -138,6 +140,8 @@ function GetPaymentLinks(id) {
         termsContainer.style.display = "block"
 
     }).catch(function (error) {
+        console.log('productPagePriceBox VIGA', error);
+
         try {
             const productPagePriceBox = document.getElementById('productPagePriceBox')
             productPagePriceBox.innerHTML = `Serveri ühenduse viga!`
@@ -147,6 +151,7 @@ function GetPaymentLinks(id) {
 }
 
 function availability() {
+    console.log('availability');
     // document.getElementById("buybutton").style.display = 'none'
     // var links = document.getElementById("paymentLinks")
     // var paybutton = document.getElementById("paybutton")
@@ -176,7 +181,7 @@ function availability() {
                 let allPriceFields = document.querySelectorAll(`[productIdPriceField]`);
                 for (let i = 0; i < allPriceFields.length; i++) {
                     const element = allPriceFields[i];
-                    if(element.innerHTML === '') {
+                    if (element.innerHTML === '') {
                         element.innerHTML = 'Pole hetkel saadaval'
                     }
                 }
