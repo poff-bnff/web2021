@@ -80,7 +80,9 @@ breakpoint-xs = 0
 font_h = 'Fira Sans Extra Condensed', sans-serif
 // font_h = 'Sofia Pro Condensed', sans-serif
 
-font_p = 'Source Sans Pro', sans-serif
+// font_p = 'Source Sans Pro', sans-serif
+font_p = 'Spectral', serif
+// font_p = 'Lora', serif
 // font_p = 'Barlow', sans-serif
 // font_p = 'Roboto', sans-serif
 // font_p = 'Lato', sans-serif
@@ -1981,12 +1983,21 @@ p a
 
 .synopsis_gi
 .dir_bio
-  font-family font_p
-  color white_96
-  font-size 1rem
-  text-align left
-  line-height 1.618
-  max-width 60ch
+    font-family font_p
+    color dark_1
+    font-size 1rem
+    text-align left
+    line-height 1.618
+    max-width 60ch
+    p
+        font-family font_p
+        color dark_1
+        font-size 1rem
+        text-align left
+        line-height 1.618
+        max-width 60ch
+        // display inline-block
+        // vertical-align middle
 
 .str_info_meta_item
   display grid
@@ -2811,7 +2822,7 @@ a.btn_popover
 
     .f_synopsis_box
     .f_dir_bio_box
-        padding-left calc(1rem + 1vw)
+        padding-left calc(3rem + 1vw)
         padding-right calc(1rem + 1vw)
         display grid
         grid-template-columns minmax(214px, 1fr) 2fr

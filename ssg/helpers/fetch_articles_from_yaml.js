@@ -34,7 +34,7 @@ if (build_type === 'target') {
     if (only_build_home) {
         addConfigPathAliases(['/home'])
     } else {
-        addConfigPathAliases(['/articles', '/a_lists', '/about', '/interview', '/news', '/sponsorstories', '/home', '/menu'])
+        addConfigPathAliases(['/articles', '/a_lists', '/trainings', '/about', '/interview', '/news', '/sponsorstories', '/home', '/menu'])
     }
 }
 
