@@ -1265,8 +1265,8 @@ module.exports = {
    * The request is mediated by the "hunt" oAuth service, which is the only
    * way to update the profile. The profile is identified by the :ID parameter.
    */
-  async profile(ctx) {
-    const profileId = ctx?.params?.id
+  async putProfile(ctx) {
+    const profileId = 4292 // ctx?.params?.id
     const body = parseMultipartData(ctx)
     console.log(`Updating profile ${profileId} with body ${JSON.stringify(body, null, 4)}`) // eslint-disable-line no-console
   },

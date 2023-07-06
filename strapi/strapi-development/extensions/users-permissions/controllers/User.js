@@ -52,7 +52,7 @@ module.exports = {
   personForm: resolveControllerMethod('personForm'),
   getPersonForm: resolveControllerMethod('getPersonForm'),
   roleController: resolveControllerMethod('roleController'),
-  profile: resolveControllerMethod('profile'),
+  putProfile: resolveControllerMethod('putProfile'),
 
 
   /**
