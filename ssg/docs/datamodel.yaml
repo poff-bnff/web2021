@@ -68,6 +68,17 @@ Translated: &Translated
     en: (text)
     ru: (text)
 
+SimpleArticle: &SimpleArticle
+    _path: /simple-articles
+    #titlePrivate: (text, private field)
+    title_et: (text)
+    title_en: (text)
+    title_ru: (text)
+    contents_et: (Rich text)
+    contents_en: (Rich text)
+    contents_ru: (Rich text)
+    media: *ArticleMedia
+
 # StrapiMedia
 Large: &Large
     # ext: (text)
@@ -707,6 +718,7 @@ POFFiArticle: &POFFiArticle
         - *WebAuthor
     organisations:
         - *Organisation
+    simple_article: *SimpleArticle
     public: (boolean)
 
 JustFilmiArticle: &JustFilmiArticle
