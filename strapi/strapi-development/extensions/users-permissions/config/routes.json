@@ -472,6 +472,16 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/profile/:id",
+      "handler": "User.profile",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Update an existing user profile"
+      }
     }
   ]
 }
