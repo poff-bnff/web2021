@@ -1267,7 +1267,8 @@ module.exports = {
    * parameter in body.
    */
   async putProfile(ctx) {
-    const prfl = 429200 // ctx?.params?.id
+    strapi.log.debug('putProfile')
+    const prfl = 429200 || ctx?.params?.id
     const profileId = prfl || ctx?.request?.body?.profileId
     console.log(`Updating profile ${profileId}`)
     const body = parseMultipartData(ctx)

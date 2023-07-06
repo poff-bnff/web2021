@@ -475,7 +475,7 @@
     },
     {
       "method": "PUT",
-      "path": "/users/putProfile",
+      "path": "/profile/:id",
       "handler": "User.putProfile",
       "config": {
         "policies": [],
