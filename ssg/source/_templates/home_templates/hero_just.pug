@@ -5,17 +5,14 @@ if self.data.heroArticle
     if articleHero && articleHero.article_types && articleHero.article_types[0] && articleHero.publish && articleHero.title && articleHero.slug
 
 
-        - let artHeroTypes = []
-        - let artHeroTypeForPath = '';
+        - let artHeroTypeForPath = articleHero.article_types[0].slug.toLowerCase();
         each artHeroType in articleHero.article_types
-            - artHeroTypes.push(artHeroType.name.toLowerCase())
-            if artHeroType.name.toLowerCase() === whichTypesToDisplay[0]
+            if artHeroType.name.toLowerCase() === 'about'
                 - artHeroTypeForPath = artHeroType.slug.toLowerCase()
-            else if whichTypesToDisplay.includes(artHeroType.name.toLowerCase())
-                - artHeroTypeForPath = artHeroType.slug.toLowerCase()
+
         section.hero_head
-            //- a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
-            a(href= `#`)
+            //- a(href= `#`)
+            a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
                 if self.data.heroArticle
                     if self.data.heroArticle.clipUrlDefault
                         +videoAp(self.data.heroArticle.clipUrlDefault)
