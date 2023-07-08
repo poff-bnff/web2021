@@ -193,7 +193,19 @@ module.exports = {
 
     ctx.send(sanitizeUser(data));
   },
+
+  /** Profile update function. pre-oAuth
+   * Update a/an user record.
+   * @return {Object}
+   * @description
+   * This function updates the profile of the currently logged in user.
+   * It is used by the profile page.
+   */
   async updateMe(ctx) {
+
+    console.log('users-permissions controllers user api updateme');
+    const { id } = ctx.state.user;
+    const { password } = ctx.request.body.data;
 
     async function uploadProfilePicture(files, firstName, lastName) {
       console.log('Uploading profile picture');
@@ -216,17 +228,6 @@ module.exports = {
       });
       return uploadedPicture[0].id
     }
-
-    console.log('users-permissions controllers user api updateme');
-    const { id } = ctx.request.body;
-    console.log('users-permissions controllers user api updateme, user id', id);
-    console.log('bla1', ctx.request.body);
-    let theBody = ctx.request.body[0]
-    console.log('users-permissions controllers user api updateme, user id DATA', theBody);
-    console.log('users-permissions controllers user api updateme, user id DATA', parseMultipartData(theBody.data));
-    console.log('bla2');
-
-    // const { password } = ctx.request.body.data;
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
@@ -409,8 +410,8 @@ module.exports = {
     } else if (rawData.type === "addMyEvent") {
       return await manipulateFavorites(user, "add", rawData.id, "course_events")
     }
-
   },
+
   async paymentMethods(ctx) {
     const catId = ctx?.params?.id;
     const getMkConfig = async (catId) => {
@@ -1255,7 +1256,25 @@ module.exports = {
       }
       return contentCopy
     }
-  }
+  },
+
+  /** Profile update function.
+   * Update a/an user profile.
+   * @return {Object}
+   * @description
+   * This function updates the profile of the currently logged in user.
+   * The request is mediated by the "hunt" oAuth service, which is the only
+   * way to update the profile. The profile is identified by the profileId
+   * parameter in body.
+   */
+  async putProfile(ctx) {
+    strapi.log.debug('putProfile')
+    const prfl = 429200 || ctx?.params?.id
+    const profileId = prfl || ctx?.request?.body?.profileId
+    console.log(`Updating profile ${profileId}`)
+    const body = parseMultipartData(ctx)
+    console.log(`Updating profile ${profileId} with body ${JSON.stringify(body, null, 4)}`) // eslint-disable-line no-console
+  },
 };
 
 
