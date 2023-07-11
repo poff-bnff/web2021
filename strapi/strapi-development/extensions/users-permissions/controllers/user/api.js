@@ -205,7 +205,7 @@ module.exports = {
 
     console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
-    const { password } = ctx.request.body.data;
+    console.log(ctx.request.body);
 
     async function uploadProfilePicture(files, firstName, lastName) {
       console.log('Uploading profile picture');
@@ -1157,7 +1157,7 @@ module.exports = {
 
   },
   async roleController(ctx) {
-    const { id } = ctx.state.user;
+    const id = ctx.request.body.userId;
     const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
     console.log(' cType, cId, cLang, cSubType, cDomain ', cType, cId, cLang, cSubType, cDomain);
     // const { email, username, password } = ctx.request.body;

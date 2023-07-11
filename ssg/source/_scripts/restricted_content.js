@@ -19,7 +19,7 @@ function restrictedcontent(element) {
         redirect: 'follow'
     };
 
-    fetch(`${strapiDomain}/users-permissions/users/rolecheck`, requestOptions).then(function (response) {
+    fetch(`http://localhost:3000/api/rolecheck`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
