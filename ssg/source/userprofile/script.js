@@ -96,8 +96,14 @@ async function sendUserProfile() {
     if (profile_pic_to_send !== "empty") {
         formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
     }
+    // Todo: see on vana kood, mis saadab kogu userToSend objekti formData sees.
+    //  See on liigne ja kuulub kustutamisele.
     formData.append('data', JSON.stringify(userToSend));
-
+    // Instead of packing the userToSend object into the formData,
+    // lets append each key-value pair separately.
+    for (let key in userToSend) {
+        formData.append(key, userToSend[key])
+    }
     // Log form data
     console.log('Formdata:');
     for (var pair of formData.entries()) {
