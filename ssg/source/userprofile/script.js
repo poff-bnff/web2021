@@ -124,7 +124,7 @@ async function sendUserProfile() {
     // userToSend = JSON.stringify(userToSend)
     // // console.log("kasutaja profiil mida saadan ", userToSend);
 
-    let response = await (await fetch(`http://localhost:3000/api/me`, {
+    let response = await (await fetch(`https://hunt.poff.ee/api/profile`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
