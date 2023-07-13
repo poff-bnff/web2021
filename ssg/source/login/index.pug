@@ -93,7 +93,8 @@ block content
             a#loginE(href=`${process.env['StrapiProtocol']}://${process.env['StrapiHost']}:${strapiServerPort}/connect/eventivalindustry/`)
                 img.eventival_logo_img(onclick=`localStorage.setItem('LOGIN_PROVIDER', 'eventivalindustry');` alt='Industry' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
             p#mergeProvidersFailed(style={display:'none'})= self.label.userprofile.mergeProvidersFailed
-            - let redirectUri = `${process.env['StrapiProtocol']}://${process.env['StrapiHost']}${process.env['StrapiProtocol'] != 'https' ? `:4000` : ''}/login?t=`
+            - let isDevEnvironment = process.env['IsDevEnvironment'] ? 'build.' : ''
+            - let redirectUri = `${process.env['StrapiProtocol']}://${isDevEnvironment}${process.env['StrapiHost']}${process.env['StrapiProtocol'] != 'https' ? `:4000` : ''}/login?t=`
             a(href=`${process.env['StrapiProtocol']}://${process.env['HuntAuth']}:${huntAuthPort}/?redirect_uri=${redirectUri}`) AUTH
 
         if process.env['DOMAIN'] !== 'industry.poff.ee'
