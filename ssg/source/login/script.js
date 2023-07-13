@@ -27,10 +27,10 @@ async function checkLogin() {
 //     //     redirect: 'follow'
 //     // };
 
-//     const user = fetch("http://localhost:3000/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+//     const user = fetch("${huntAuthDomain}/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
 //     // return user.result
 
-//     fetch(`http://localhost:3000/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+//     fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
 //     .then(function (response) {
 //         if (response.ok) {
 //             return response.json();

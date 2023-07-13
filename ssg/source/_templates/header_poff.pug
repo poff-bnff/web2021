@@ -92,10 +92,12 @@ header
         span
 
     - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
+    - var huntAuthPort = process.env['StrapiProtocol'] !== 'https' ? process.env['HuntAuthPort'] : ''
 
     script.
         var langpath = "!{(lang_path)}"
         var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
+        var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
         //- Below boolean needed for login
         var industryPage = false
 

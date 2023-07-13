@@ -91,7 +91,7 @@ function modifyFavourites(type, favId) {
     };
 
     // `${strapiDomain}/users/favorites/`
-    fetch(`http://localhost:3000/api/favorites`, requestOptions).then(function (response) {
+    fetch(`${huntAuthDomain}/api/favorites`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }
