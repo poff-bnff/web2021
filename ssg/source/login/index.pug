@@ -94,6 +94,7 @@ block content
                 img.eventival_logo_img(onclick=`localStorage.setItem('LOGIN_PROVIDER', 'eventivalindustry');` alt='Industry' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
             p#mergeProvidersFailed(style={display:'none'})= self.label.userprofile.mergeProvidersFailed
             - let isDevEnvironment = process.env['IsDevEnvironment'] ? 'build.' : ''
+            - console.log(process.env['IsDevEnvironment'], isDevEnvironment, typeof process.env['IsDevEnvironment'])
             - let redirectUri = `${process.env['StrapiProtocol']}://${isDevEnvironment}${process.env['StrapiHost']}${process.env['StrapiProtocol'] != 'https' ? `:4000` : ''}/login?t=`
             a(href=`${process.env['StrapiProtocol']}://${process.env['HuntAuth']}:${huntAuthPort}/?redirect_uri=${redirectUri}`) AUTH
 
