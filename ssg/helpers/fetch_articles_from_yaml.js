@@ -158,6 +158,7 @@ for (const lang of allLanguages) {
         } else {
             timer.log(__filename, `Film ID ${element.id} slug_en value missing`)
         }
+        element = undefined
     }
 }
 timer.log(__filename, `Fetched ${DOMAIN} articles`)
