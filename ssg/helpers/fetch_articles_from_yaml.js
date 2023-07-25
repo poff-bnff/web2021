@@ -91,7 +91,13 @@ const minimodel = {
     }
 }
 
+const reportMemory = (message) => {
+    timer.log(__filename, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB | ${message}`)
+}
+
+reportMemory('Before fetchModel')
 STRAPIDATA_ARTICLE = fetchModel(yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8')), minimodel)
+reportMemory('After fetchModel')
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
@@ -105,11 +111,14 @@ for (const lang of allLanguages) {
     }
     var dirPath = `${sourceDir}_fetchdir/articles/`
 
+    reportMemory('Language: ' + lang)
     timer.log(__filename, `Fetching ${DOMAIN} articles ${lang} data`)
 
     let allData = []
     for (const originalElement of STRAPIDATA_ARTICLE) {
+        reportMemory('Before deep copy')
         const element = JSON.parse(JSON.stringify(originalElement))
+        reportMemory('After deep copy')
         let slugEn = element.slug_en
         if (!slugEn) {
             slugEn = element.slug_et
@@ -118,6 +127,7 @@ for (const lang of allLanguages) {
         // rueten func. is run for each element separately instead of whole data, that is
         // for the purpose of saving slug_en before it will be removed by rueten func.
         rueten(element, lang)
+        reportMemory('After rueten')
 
         element.directory = dirPath + slugEn
 
@@ -149,16 +159,17 @@ for (const lang of allLanguages) {
             // Delete excess media
             delete element.media
 
+            reportMemory('Before yaml.dump')
             allData.push(element)
             element.data = dataFrom
 
             let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
             fs.writeFileSync(path.join(fetchDir, `articles.${lang}.yaml`), allDataYAML, 'utf8')
+            reportMemory('After yaml.dump')
 
         } else {
             timer.log(__filename, `Film ID ${element.id} slug_en value missing`)
         }
-        element = undefined
     }
 }
 timer.log(__filename, `Fetched ${DOMAIN} articles`)
