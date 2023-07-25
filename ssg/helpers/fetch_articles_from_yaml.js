@@ -41,7 +41,7 @@ if (build_type === 'target') {
 const mapping = DOMAIN_SPECIFICS.article
 const modelName = mapping[DOMAIN]
 const strapiDataArticlesPath = path.join(strapiDataDirPath, `${modelName}.yaml`)
-const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
+// const STRAPIDATA_ARTICLES = yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8'))
 
 const minimodel = {
     'article_types': {
@@ -91,7 +91,7 @@ const minimodel = {
     }
 }
 
-STRAPIDATA_ARTICLE = fetchModel(STRAPIDATA_ARTICLES, minimodel)
+STRAPIDATA_ARTICLE = fetchModel(yaml.load(fs.readFileSync(strapiDataArticlesPath, 'utf8')), minimodel)
 
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
