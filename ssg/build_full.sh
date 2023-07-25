@@ -41,15 +41,27 @@ echo "Time passed: $SECONDS seconds"
 printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 echo 'fetch_articles_from_yaml'
 nice -10 node ./helpers/fetch_articles_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_articles_from_yaml succeeded' || echo 'fetch_articles_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_industry_person_from_yaml'
 nice -10 node ./helpers/fetch_industry_person_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_industry_person_from_yaml succeeded' || echo 'fetch_industry_person_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_industry_project_from_yaml'
 nice -10 node ./helpers/fetch_industry_project_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_industry_project_from_yaml succeeded' || echo 'fetch_industry_project_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_discamp_project_from_yaml'
 nice -10 node ./helpers/fetch_discamp_project_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_discamp_project_from_yaml succeeded' || echo 'fetch_discamp_project_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 # echo 'fetch_industry_channels_from_yaml'
 # nice -10 node ./helpers/fetch_channels_from_yaml.js
@@ -59,70 +71,128 @@ nice -10 node ./helpers/fetch_discamp_project_from_yaml.js
 
 echo 'fetch_eventival_persons_from_yaml.js'
 nice -10 node ./helpers/fetch_eventival_persons_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_eventival_persons_from_yaml succeeded' || echo 'fetch_eventival_persons_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_course_event_from_yaml'
 nice -10 node ./helpers/fetch_course_event_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_course_event_from_yaml succeeded' || echo 'fetch_course_event_from_yaml failed. Exit'
+echo "Time passed: $SECONDS seconds"
 
 # echo 'fetch_courses_from_yaml.js'
 # nice -10 node ./helpers/fetch_courses_from_yaml.js
 
 echo 'fetch_frontpagecourse_block_from_yaml.js'
 nice -10 node ./helpers/fetch_frontpagecourse_block_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_frontpagecourse_block_from_yaml succeeded' || echo 'fetch_frontpagecourse_block_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_article_type_from_yaml'
 nice -10 node ./helpers/fetch_article_type_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_article_type_from_yaml succeeded' || echo 'fetch_article_type_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_heroarticle_from_yaml'
 nice -10 node ./helpers/fetch_heroarticle_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_heroarticle_from_yaml succeeded' || echo 'fetch_heroarticle_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_trioblock_from_yaml'
 nice -10 node ./helpers/fetch_trioblock_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_trioblock_from_yaml succeeded' || echo 'fetch_trioblock_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_teams_from_yaml'
 nice -10 node ./helpers/fetch_teams_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_teams_from_yaml succeeded' || echo 'fetch_teams_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_supporter_page_from_yaml'
 nice -10 node ./helpers/fetch_supporter_page_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_supporter_page_from_yaml succeeded' || echo 'fetch_supporter_page_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 # labels, footer and menu are fetched to global
 # labels uses static global (first to fetch)
 
 echo 'fetch_labels_from_yaml'
 nice -10 node ./helpers/fetch_labels_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_labels_from_yaml succeeded' || echo 'fetch_labels_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_footer_from_yaml'
 nice -10 node ./helpers/fetch_footer_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_footer_from_yaml succeeded' || echo 'fetch_footer_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_menu_from_yaml'
 nice -10 node ./helpers/fetch_menu_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_menu_from_yaml succeeded' || echo 'fetch_menu_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_menu2_from_yaml'
 nice -10 node ./helpers/fetch_menu2_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_menu2_from_yaml succeeded' || echo 'fetch_menu2_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_programmes_from_yaml'
 nice -10 node ./helpers/fetch_programmes_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_programmes_from_yaml succeeded' || echo 'fetch_programmes_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_cassettes_from_yaml'
 nice -10 node ./helpers/fetch_cassettes_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_cassettes_from_yaml succeeded' || echo 'fetch_cassettes_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_six_film_block_from_yaml'
 nice -10 node ./helpers/fetch_six_film_block_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_six_film_block_from_yaml succeeded' || echo 'fetch_six_film_block_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_screenings_from_yaml'
 nice -10 node ./helpers/fetch_screenings_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_screenings_from_yaml succeeded' || echo 'fetch_screenings_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_shops_from_yaml'
 nice -10 node ./helpers/fetch_shops_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_shops_from_yaml succeeded' || echo 'fetch_shops_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_person_from_yaml'
 nice -10 node ./helpers/fetch_person_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_person_from_yaml succeeded' || echo 'fetch_person_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'fetch_locations_from_yaml'
 nice -10 node ./helpers/fetch_locations_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_locations_from_yaml succeeded' || echo 'fetch_locations_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 echo 'assets/xml'
 nice -10 node ./helpers/xml.js
-
+status=$?;[ $status -eq 0 ] && echo 'assets/xml succeeded' || echo 'assets/xml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
 
 printf '\n----------        FINISHED creating separate YAML files      ----------\n'
 
