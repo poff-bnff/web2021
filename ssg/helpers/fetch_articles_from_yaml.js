@@ -116,9 +116,9 @@ for (const lang of allLanguages) {
 
     let allData = []
     for (const originalElement of STRAPIDATA_ARTICLE) {
-        reportMemory('Before deep copy')
+        // reportMemory('Before deep copy')
         const element = JSON.parse(JSON.stringify(originalElement))
-        reportMemory('After deep copy')
+        // reportMemory('After deep copy')
         let slugEn = element.slug_en
         if (!slugEn) {
             slugEn = element.slug_et
@@ -127,7 +127,7 @@ for (const lang of allLanguages) {
         // rueten func. is run for each element separately instead of whole data, that is
         // for the purpose of saving slug_en before it will be removed by rueten func.
         rueten(element, lang)
-        reportMemory('After rueten')
+        // reportMemory('After rueten')
 
         element.directory = dirPath + slugEn
 
@@ -159,17 +159,17 @@ for (const lang of allLanguages) {
             // Delete excess media
             delete element.media
 
-            reportMemory('Before yaml.dump')
             allData.push(element)
             element.data = dataFrom
 
-            let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
-            fs.writeFileSync(path.join(fetchDir, `articles.${lang}.yaml`), allDataYAML, 'utf8')
-            reportMemory('After yaml.dump')
 
         } else {
             timer.log(__filename, `Film ID ${element.id} slug_en value missing`)
         }
     }
+    reportMemory(`Before ${DOMAIN} articles ${lang} yaml.dump`)
+    let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
+    fs.writeFileSync(path.join(fetchDir, `articles.${lang}.yaml`), allDataYAML, 'utf8')
+    reportMemory('After yaml.dump')
 }
 timer.log(__filename, `Fetched ${DOMAIN} articles`)
