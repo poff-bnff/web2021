@@ -40,7 +40,7 @@ echo "Time passed: $SECONDS seconds"
 
 printf '\n\n---------- Creating separate YAML files from strapiData.yaml ----------\n\n'
 echo 'fetch_articles_from_yaml'
-nice -10 node ./helpers/fetch_articles_from_yaml.js
+nice -10 node ./helpers/fetch_articles_from_yaml.js && echo 'fetch_articles_from_yaml succeeded' || echo 'fetch_articles_from_yaml failed. Exit'; exit 1
 
 echo 'fetch_industry_person_from_yaml'
 nice -10 node ./helpers/fetch_industry_person_from_yaml.js
