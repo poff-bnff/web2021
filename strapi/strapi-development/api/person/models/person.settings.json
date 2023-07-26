@@ -64,6 +64,10 @@
     "pageUrl": {
       "type": "string"
     },
+    "awardings": {
+      "collection": "awarding",
+      "via": "person"
+    },
     "festival_editions": {
       "collection": "festival-edition"
     },

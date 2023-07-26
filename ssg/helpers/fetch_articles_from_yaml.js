@@ -162,14 +162,12 @@ for (const lang of allLanguages) {
             allData.push(element)
             element.data = dataFrom
 
-
         } else {
             timer.log(__filename, `Film ID ${element.id} slug_en value missing`)
         }
     }
-    reportMemory(`Before ${DOMAIN} articles ${lang} yaml.dump`)
+
     let allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(path.join(fetchDir, `articles.${lang}.yaml`), allDataYAML, 'utf8')
-    reportMemory('After yaml.dump')
 }
 timer.log(__filename, `Fetched ${DOMAIN} articles`)
