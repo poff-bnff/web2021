@@ -53,7 +53,7 @@
     "country_focus": {
       "model": "country"
     },
-    "creds": {
+    "teamCredentials": {
       "type": "component",
       "repeatable": false,
       "component": "film.credentials-new"
