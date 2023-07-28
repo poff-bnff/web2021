@@ -44,7 +44,7 @@ const addConfigPathAliases = require('./add_config_path_aliases.js')
 // }
 addConfigPathAliases(['/search_archive'])
 
-const DOMAIN = process.env['DOMAIN'] || 'hoff.ee'
+const DOMAIN = process.env['DOMAIN'] || 'hoff.ee' || 'tartuff.ee'
 const festival_editions_to_exclude = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAIN] || []
 const festival_editions = STRAPIDATA_FESTIVAL_EDITIONS.map(fe => fe.id).filter(fe => !festival_editions_to_exclude.includes(fe))
 
@@ -62,6 +62,7 @@ if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('regular')
     whichScreeningTypesToFetch.push('online kino')
+    whichScreeningTypesToFetch.push('free')
 }
 
 const mapping = DOMAIN_SPECIFICS.domain
