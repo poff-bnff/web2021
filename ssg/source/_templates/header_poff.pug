@@ -60,10 +60,12 @@ header
             li.user_menu.dropdown
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
+                        - var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
+                        - var returnUrl = window.location.href
                         li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'savePreLoginUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-                        li#signUp(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
+                            a(href=`${huntAuthDomain}/${returnUrl}`)= self.label.menu.mainLogin
+                        //- li#signUp(style={cursor: 'pointer', display: 'none'})
+                        //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
                             a#tervitus= self.label.menu.mainGreeting
                         li#userProfile(style={cursor: 'pointer', display: 'none'})
