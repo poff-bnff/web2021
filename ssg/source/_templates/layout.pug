@@ -14,8 +14,8 @@ html(lang= self.locale)
             iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-W2NM5HS' height='0' width='0' style='display:none;visibility:hidden')
             include ../_templates/header_poff.pug
 
-            //- Defined to be able to hide the messenger on certain pages (for example films with Votemo widget)
-            - var hideMessengerChat = false
+            //- Defined to be able to reveal the messenger on certain pages (for example support or contact us etc.)
+            - var hideMessengerChat = true
 
             block content
             if !hideMessengerChat
