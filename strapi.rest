@@ -41,3 +41,8 @@ GET https://admin.poff.ee/festival-editions/66 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{nonProdToken}}
 
+### forecast by city
+GET https://api.openweathermap.org/data/2.5/forecast?q=TALLINN&appid=5927bae3714473ae1f6d7541cf67a948&units=metric
+
+### weather by lat lon
+GET https://api.openweathermap.org/data/2.5/weather?lat=59.437&lon=24.7535&appid=5927bae3714473ae1f6d7541cf67a948
