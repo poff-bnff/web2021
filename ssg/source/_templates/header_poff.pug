@@ -7,17 +7,17 @@ header
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     script.
-        var test1StrapiProtocol = `!{process.env['StrapiProtocol']}`
-        var test2StrapiProtocol = process.env['StrapiProtocol']
-        var test1HuntProtocol = `!{process.env['HuntProtocol']}`
-        var test2HuntProtocol = process.env['HuntProtocol']
+        var testStrapiProtocol1 = process.env['StrapiProtocol']
+        var testStrapiProtocol2 = "!{process.env['StrapiProtocol']}"
+        var testStrapiProtocol3 = `!{process.env['StrapiProtocol']}`
 
+        var HTTProtocol = `!{process.env['StrapiProtocol']}`
         var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
-        if (process.env['StrapiProtocol'] === 'http') {
+        if (HTTProtocol === 'http') {
             strapiDomain += `:!{process.env['StrapiPort']}`
         }
         var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
-        if (process.env['HuntProtocol'] === 'http') {
+        if (HTTProtocol === 'http') {
             huntAuthDomain += `:!{process.env['HuntAuthPort']}`
         }
 
@@ -79,8 +79,7 @@ header
                             a#oauthLink(href="[huntAuthDomain}/[returnUrl]")= self.label.menu.mainLogin
                             script.
                                 var oauthLink = document.getElementById('oauthLink')
-                                oauthLink.href = oauthLink.href.replace('[huntAuthDomain]', huntAuthDomain)
-                                oauthLink.href = oauthLink.href.replace('[returnUrl]', window.location.href)
+                                oauthLink.href = huntAuthDomain + '/' + window.location.href
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
