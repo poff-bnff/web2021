@@ -291,8 +291,24 @@ const getCurrentLang = () => {
     return lang
 }
 
-const redirectToPreLoginUrl = (userProfile) => {
-    console.log('redirectToPreLoginUrl', localStorage.getItem('preLoginUrl'));
+//
+// This function makes sure that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage and page is reloaded without jwt
+//
+(function() {
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
+
+    if (jwt !== null && jwt !== undefined && jwt !== '') {
+        localStorage.setItem('ID_TOKEN', jwt)
+        // redirect to same page without jwt
+        url.searchParams.delete('jwt')
+        window.open(url.toString(), '_self')
+    }
+})()
+
+// const redirectToPreLoginUrl = (userProfile) => {
+//     console.log('redirectToPreLoginUrl', localStorage.getItem('preLoginUrl'));
     // console.log('redirectToPreLoginUrl', userProfile);
     // const preLoginUrl = localStorage.getItem('preLoginUrl')
     // const currentlang = getCurrentLang()
@@ -303,4 +319,4 @@ const redirectToPreLoginUrl = (userProfile) => {
     // }
     // localStorage.removeItem('preLoginUrl')
     // preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
-}
+// }

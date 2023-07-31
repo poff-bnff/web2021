@@ -6,21 +6,6 @@ header
             img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff_27_logo_dark4_o_sp_ukr_2.svg' src='/assets/img/static/poff_27_logo_dark4_o_sp_ukr_2.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
-    script.
-        var testStrapiProtocol1 = process.env['StrapiProtocol']
-        var testStrapiProtocol2 = "!{process.env['StrapiProtocol']}"
-        var testStrapiProtocol3 = `!{process.env['StrapiProtocol']}`
-
-        var HTTProtocol = `!{process.env['StrapiProtocol']}`
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
-        if (HTTProtocol === 'http') {
-            strapiDomain += `:!{process.env['StrapiPort']}`
-        }
-        var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
-        if (HTTProtocol === 'http') {
-            huntAuthDomain += `:!{process.env['HuntAuthPort']}`
-        }
-
     nav.main_menu
         ul.ul_yx
 
@@ -78,8 +63,13 @@ header
                         li#logIn(style={cursor: 'pointer', display: 'none'})
                             a#oauthLink(href="[huntAuthDomain}/[returnUrl]")= self.label.menu.mainLogin
                             script.
+                                var HTTProtocol = "!{process.env['StrapiProtocol']}"
+                                var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
+                                if (HTTProtocol === 'http') {
+                                    huntAuthDomain += ":!{process.env['HuntAuthPort']}"
+                                }
                                 var oauthLink = document.getElementById('oauthLink')
-                                oauthLink.href = huntAuthDomain + '/' + window.location.href
+                                oauthLink.href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
@@ -109,8 +99,6 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
-    - var huntAuthPort = process.env['StrapiProtocol'] !== 'https' ? process.env['HuntAuthPort'] : ''
 
     script.
         var langpath = "!{(lang_path)}"
