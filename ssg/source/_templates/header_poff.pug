@@ -6,6 +6,21 @@ header
             img.logo_img(alt='PÖFF' data-src='/assets/img/static/poff_27_logo_dark4_o_sp_ukr_2.svg' src='/assets/img/static/poff_27_logo_dark4_o_sp_ukr_2.svg')
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
+    script.
+        var test1StrapiProtocol = `!{process.env['StrapiProtocol']}`
+        var test2StrapiProtocol = process.env['StrapiProtocol']
+        var test1HuntProtocol = `!{process.env['HuntProtocol']}`
+        var test2HuntProtocol = process.env['HuntProtocol']
+
+        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
+        if (process.env['StrapiProtocol'] === 'http') {
+            strapiDomain += `:!{process.env['StrapiPort']}`
+        }
+        var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
+        if (process.env['HuntProtocol'] === 'http') {
+            huntAuthDomain += `:!{process.env['HuntAuthPort']}`
+        }
+
     nav.main_menu
         ul.ul_yx
 
@@ -60,10 +75,9 @@ header
             li.user_menu.dropdown
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
-                        - var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
                         li#logIn(style={cursor: 'pointer', display: 'none'})
                             a#oauthLink(href=`${huntAuthDomain}/[returnUrl]`)= self.label.menu.mainLogin
-                            script .
+                            script.
                                 var oauthLink = document.getElementById('oauthLink')
                                 oauthLink.href = oauthLink.href.replace('[returnUrl]', window.location.href)
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
@@ -100,8 +114,6 @@ header
 
     script.
         var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
-        var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
         //- Below boolean needed for login
         var industryPage = false
 
