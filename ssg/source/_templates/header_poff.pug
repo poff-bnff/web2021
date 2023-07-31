@@ -61,9 +61,11 @@ header
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
                         - var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
-                        - var returnUrl = window.location.href
                         li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(href=`${huntAuthDomain}/${returnUrl}`)= self.label.menu.mainLogin
+                            a#oauthLink(href=`${huntAuthDomain}/[returnUrl]`)= self.label.menu.mainLogin
+                            script .
+                                var oauthLink = document.getElementById('oauthLink')
+                                oauthLink.href = oauthLink.href.replace('[returnUrl]', window.location.href)
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
