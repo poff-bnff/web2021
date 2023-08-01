@@ -305,14 +305,15 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 // ID_TOKEN in localStorage and if it is
 // found, userMe() is called.
 //
-(function() {
+(async function() {
     const idToken = localStorage.getItem('ID_TOKEN')
     console.log(`get ID_TOKEN: ${idToken}`)
 
     if (idToken !== null && idToken !== undefined && idToken !== '') {
-        let user = userMe()
+        let user = await userMe()
         console.log(`User: ${user}`)
     }
+    console.log('userMe() done')
 })()
 
 console.log('loginHeader.js loaded')
