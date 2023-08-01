@@ -24,7 +24,7 @@ async function getUserProfile() {
     let response = await fetch(`${strapiDomain}/users/me`, {
         method: "GET",
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+            Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
         },
     });
     let userProfile = await response.json()
@@ -36,7 +36,7 @@ async function getUserProfile() {
 //     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
 //         method: "GET",
 //         headers: {
-//             Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+//             Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
 //         },
 //     });
 //     let personOnForm = await response.json()
@@ -313,7 +313,7 @@ async function sendPersonProfile() {
     let response = await (await fetch(`${strapiDomain}/users/personForm`, {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
         },
         body: formData
     }))

@@ -9,7 +9,7 @@ async function checkLogin() {
         const queryParams = new URLSearchParams(queryString);
         if (queryParams.get('t')) {
             console.log(queryParams.get('t'), 'blaaaaaa');
-            localStorage.setItem('BNFF_U_ACCESS_TOKEN', queryParams.get('t'))
+            localStorage.setItem('ID_TOKEN', queryParams.get('t'))
 
             const userProfile = await userMe()
             console.log('JUUUUSER', typeof userProfile);
@@ -27,10 +27,10 @@ async function checkLogin() {
 //     //     redirect: 'follow'
 //     // };
 
-//     const user = fetch("${huntAuthDomain}/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+//     const user = fetch("${huntAuthDomain}/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('ID_TOKEN')}` } })
 //     // return user.result
 
-//     fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
+//     fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('ID_TOKEN')}` } })
 //     .then(function (response) {
 //         if (response.ok) {
 //             return response.json();

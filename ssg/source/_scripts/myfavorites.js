@@ -76,7 +76,7 @@ function modifyFavourites(type, favId) {
 
     var myHeaders = new Headers();
 
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
     let queryInfo = {
         type: type,
