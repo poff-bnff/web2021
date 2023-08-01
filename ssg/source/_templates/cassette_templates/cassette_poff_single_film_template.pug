@@ -791,7 +791,7 @@ main.grid_film(id=self.id)
                                             //- PL page version
                                             //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' target='_blank')= self.label.button.screeningFree
                                             //- WIDGET buy version
-                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-lxoc=screening.location.id style='' btn-type='screening' role='button' )= self.label.button.screeningFree
+                                            a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' )= self.label.button.screeningFree
 
                                             //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime btn-type='screening' href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
 
@@ -852,7 +852,7 @@ main.grid_film(id=self.id)
 
                 script(src='https://cdn.votemo.eu/dist/widget.js')
 
-                - hideMessengerChat = true
+                - showMessengerChat = false
 
             //- section.f_imgs_box
 
