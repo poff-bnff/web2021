@@ -286,7 +286,7 @@ const getCurrentLang = () => {
 // ID_TOKEN is set to localStorage and page
 // is reloaded without jwt
 //
-(function() {
+;(function() {
     const url = new URL(window.location.href)
     const jwt = url.searchParams.get('jwt')
 
@@ -305,7 +305,7 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 // ID_TOKEN in localStorage and if it is
 // found, userMe() is called.
 //
-(async function() {
+;(async function() {
     const idToken = localStorage.getItem('ID_TOKEN')
     console.log(`get ID_TOKEN: ${idToken}`)
 
