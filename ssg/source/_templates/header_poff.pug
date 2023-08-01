@@ -60,10 +60,16 @@ header
             li.user_menu.dropdown
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
-                        - var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
-                        - var returnUrl = window.location.href
                         li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(href=`${huntAuthDomain}/${returnUrl}`)= self.label.menu.mainLogin
+                            a#oauthLink(href="[huntAuthDomain}/[returnUrl]")= self.label.menu.mainLogin
+                            script.
+                                var HTTProtocol = "!{process.env['StrapiProtocol']}"
+                                var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
+                                if (HTTProtocol === 'http') {
+                                    huntAuthDomain += ":!{process.env['HuntAuthPort']}"
+                                }
+                                var oauthLink = document.getElementById('oauthLink')
+                                oauthLink.href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
@@ -93,13 +99,9 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
-    - var huntAuthPort = process.env['StrapiProtocol'] !== 'https' ? process.env['HuntAuthPort'] : ''
 
     script.
         var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
-        var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}:!{huntAuthPort}`
         //- Below boolean needed for login
         var industryPage = false
 
