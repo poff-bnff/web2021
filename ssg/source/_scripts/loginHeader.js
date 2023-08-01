@@ -292,7 +292,7 @@ const getCurrentLang = () => {
 
     if (jwt !== null && jwt !== undefined && jwt !== '') {
         localStorage.setItem('ID_TOKEN', jwt)
-        // redirect to same page without jwt
+        console.log(`set ID_TOKEN: ${jwt}`)
         url.searchParams.delete('jwt')
         window.open(url.toString(), '_self')
     }
@@ -307,10 +307,12 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 //
 (function() {
     const idToken = localStorage.getItem('ID_TOKEN')
-    console.log(`ID_TOKEN: ${idToken}`)
+    console.log(`get ID_TOKEN: ${idToken}`)
 
     if (idToken !== null && idToken !== undefined && idToken !== '') {
         let user = userMe()
         console.log(`User: ${user}`)
     }
 })()
+
+console.log('loginHeader.js loaded')
