@@ -141,27 +141,18 @@ if (!validToken) {
 // }
 
 async function userMe() {
+    const accessToken = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/me`
 
-    fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
-    .then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
+    fetch(url, { headers })
+      .then(response => response.json())
+      .then(data => {
         userProfile = data
-        console.log('DATA', data);
+        console.log('DATA', data)
         document.dispatchEvent(userProfileLoadedEvent)
-        redirectToPreLoginUrl(userProfile)
-
-        // console.log("cognitos olev profiil:")
-        // console.log(userProfile);
-
-    }).catch(function (error) {
-        console.warn(error);
-    });
-
-
+      })
+      .catch(error => console.warn(error))
 }
 
 function loadEmptyUserProfile() {
@@ -315,5 +306,7 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
     }
     console.log('userMe() done')
 })()
+
+const me = await userMe()
 
 console.log('loginHeader.js loaded')
