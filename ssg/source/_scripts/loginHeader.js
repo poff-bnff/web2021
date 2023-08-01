@@ -265,12 +265,6 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
-const getCurrentLang = () => {
-    let lang = localStorage.getItem('lang')
-    lang !== 'et' ? lang = `${lang}/` : lang = ''
-    return lang
-}
-
 //
 // This self-executive function makes sure
 // that whenever jwt is passed to the url,
