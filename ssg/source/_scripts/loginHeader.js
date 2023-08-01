@@ -141,17 +141,6 @@ if (!validToken) {
 // }
 
 async function userMe() {
-    // var myHeaders = new Headers();
-    // myHeaders.append("Authorization", "Bearer .eyJlbWFpbCI6InBlbm5hc3RlMDRAZ21haWwuY29tIiwiY29uZmlybWVkIjp0cnVlLCJwcm9maWxlIjp0cnVlLCJmaXJzdE5hbWUiOiJNYXJ0aW4iLCJsYXN0TmFtZSI6IlBlbm5hc3RlIiwiaWF0IjoxNjg0NDI4MjMwLCJuYmYiOjE2ODQ0MjgyMzAsImV4cCI6MTY4NTYzNzgzMCwic3ViIjoiMTQ1MDAifQ.fJhMCKXJMWEtwmDBOSQi6PdBlzZiO5fhRr2UqWmRGyY");
-
-    // var requestOptions = {
-    //     method: 'GET',
-    //     headers: myHeaders,
-    //     redirect: 'follow'
-    // };
-
-    // const user = fetch("${huntAuthDomain}/api/me", { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
-    // return user.result
 
     fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('BNFF_U_ACCESS_TOKEN')}` } })
     .then(function (response) {
@@ -292,8 +281,10 @@ const getCurrentLang = () => {
 }
 
 //
-// This function makes sure that whenever jwt is passed to the url,
-// ID_TOKEN is set to localStorage and page is reloaded without jwt
+// This self-executive function makes sure
+// that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage and page
+// is reloaded without jwt
 //
 (function() {
     const url = new URL(window.location.href)
@@ -307,16 +298,19 @@ const getCurrentLang = () => {
     }
 })()
 
-// const redirectToPreLoginUrl = (userProfile) => {
-//     console.log('redirectToPreLoginUrl', localStorage.getItem('preLoginUrl'));
-    // console.log('redirectToPreLoginUrl', userProfile);
-    // const preLoginUrl = localStorage.getItem('preLoginUrl')
-    // const currentlang = getCurrentLang()
+console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
-    // if (!industryPage && !userProfile.profileFilled) {
-    //     window.open(`${pageURL}/${currentlang ? currentlang : ''}userprofile`, '_self')
-    //     return
-    // }
-    // localStorage.removeItem('preLoginUrl')
-    // preLoginUrl ? window.open(preLoginUrl, '_self') : window.open(pageURL, '_self')
-// }
+//
+// This self-executive function looks for
+// ID_TOKEN in localStorage and if it is
+// found, userMe() is called.
+//
+(function() {
+    const idToken = localStorage.getItem('ID_TOKEN')
+    console.log(`ID_TOKEN: ${idToken}`)
+
+    if (idToken !== null && idToken !== undefined && idToken !== '') {
+        let user = userMe()
+        console.log(`User: ${user}`)
+    }
+})()
