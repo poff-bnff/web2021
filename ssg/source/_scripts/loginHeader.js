@@ -222,30 +222,31 @@ function useUserData(userProf) {
                 // null
             }
         }
-        try {
-            buyerCheck()
-        } catch (err) {
+    }
 
-            // null
-        }
-        try {
-            loadMyFavFilms()
-        } catch (err) {
-            // console.log(err)
-            // null
-        }
-        try {
-            userProfileHasBeenLoaded = true
+    try {
+        buyerCheck()
+    } catch (err) {
 
-            pageLoadingAndUserProfileFetched()
-        } catch (err) {
-            null
-        }
-        try {
-            fetchMyPasses()
-        } catch (err) {
-            null
-        }
+        // null
+    }
+    try {
+        loadMyFavFilms()
+    } catch (err) {
+        // console.log(err)
+        // null
+    }
+    try {
+        userProfileHasBeenLoaded = true
+
+        pageLoadingAndUserProfileFetched()
+    } catch (err) {
+        null
+    }
+    try {
+        fetchMyPasses()
+    } catch (err) {
+        null
     }
 }
 
