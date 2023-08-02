@@ -1,9 +1,9 @@
-@edition = 26th
+@edition = 27th
 @api = https://bo.eventival.com/poff/{{edition}}/api
 @TOKEN = {{$processEnv EVENTIVAL_API_TOKEN}}
 
 ###
-GET {{api}}/people?has_badge=true&group_ids=44496
+GET {{api}}/people?group_ids=44684
 # GET {{api}}/people?has_badge=true&group_ids=44496&badge_type_ids=16934
 x-api-key: {{TOKEN}}
 
