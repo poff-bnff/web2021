@@ -19,7 +19,7 @@ function BuyProduct(categoryId) {
 
 
         var myHeaders = new Headers();
-        myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+        myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
 
         // console.log(requestOptions)
@@ -98,7 +98,7 @@ function GetPaymentLinks(id) {
     var paybutton = document.getElementById("paybutton")
 
     var myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
     var requestOptions = {
         method: 'GET',

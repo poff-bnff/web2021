@@ -58,8 +58,8 @@ function buyerCheck() {
 }
 
 
-if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
-    var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+if (localStorage.getItem('ID_TOKEN')) {
+    var token = localStorage.getItem('ID_TOKEN')
     try {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -116,7 +116,7 @@ if (!validToken) {
 // function loadUserProfileH() {
 //     // console.log('laen cognitost kasutaja profiili....')
 //     var myHeaders = new Headers()
-//     myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
+//     myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ID_TOKEN'))
 
 //     var requestOptions = {
 //         method: 'GET',
@@ -141,7 +141,7 @@ if (!validToken) {
 // }
 
 async function userMe() {
-    const accessToken = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+    const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
     const url = `${huntAuthDomain}/api/me`
 
@@ -250,7 +250,7 @@ function useUserData(userProf) {
 }
 
 function logOut() {
-    localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
+    localStorage.removeItem('ID_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
     if (localStorage.getItem('REFRESH_TOKEN')) {

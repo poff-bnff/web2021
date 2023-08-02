@@ -12,7 +12,7 @@ async function getUserProfile() {
     let response = await fetch(`${huntAuthDomain}/api/me`, {
         method: "GET",
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+            Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
         },
     });
     let userProfile = await response.json()
@@ -127,7 +127,7 @@ async function sendUserProfile() {
     let response = await (await fetch(`${process.env['StrapiProtocol']}://${huntAuthDomain}:${huntAuthPort}/api/profile`, {
         method: 'PUT',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
         },
         body: formData
     }))
@@ -266,7 +266,7 @@ openProvider = (provider) => {
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
     if (validToken) {
-        const token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+        const token = localStorage.getItem('ID_TOKEN')
         // console.log(token)
 
         var myHeaders = new Headers();

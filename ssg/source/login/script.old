@@ -100,7 +100,7 @@ const composeRequest = (requestCase) => {
             request.route = '/users/me'
             request.options.method = 'GET'
             request.options.headers = {
-                Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+                Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN'),
             }
             break;
     }
@@ -177,7 +177,7 @@ const handleResponse = (response) => {
 }
 
 const storeAuthentication = (access_token) =>
-    localStorage.setItem('BNFF_U_ACCESS_TOKEN', access_token)
+    localStorage.setItem('ID_TOKEN', access_token)
 
 const redirectToPreLoginUrl = (userProfile) => {
     const preLoginUrl = localStorage.getItem('preLoginUrl')
