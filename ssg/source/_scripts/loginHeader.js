@@ -141,27 +141,18 @@ if (!validToken) {
 // }
 
 async function userMe() {
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/me`
 
-    fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('ID_TOKEN')}` } })
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            }
-            return Promise.reject(response);
-        }).then(function (data) {
-            userProfile = data
-            console.log('DATA', data);
-            document.dispatchEvent(userProfileLoadedEvent)
-            // redirectToPreLoginUrl(userProfile)
-
-            // console.log("cognitos olev profiil:")
-            // console.log(userProfile);
-
-        }).catch(function (error) {
-            console.warn(error);
-        });
-
-
+    fetch(url, { headers })
+      .then(response => response.json())
+      .then(data => {
+        userProfile = data
+        console.log('DATA', data)
+        document.dispatchEvent(userProfileLoadedEvent)
+      })
+      .catch(error => console.warn(error))
 }
 
 function loadEmptyUserProfile() {
@@ -266,21 +257,15 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
-const getCurrentLang = () => {
-    let lang = localStorage.getItem('lang')
-    lang !== 'et' ? lang = `${lang}/` : lang = ''
-    return lang
-}
-
-    //
-    // This self-executive function makes sure
-    // that whenever jwt is passed to the url,
-    // ID_TOKEN is set to localStorage and page
-    // is reloaded without jwt
-    //
-    ; (function () {
-        const url = new URL(window.location.href)
-        const jwt = url.searchParams.get('jwt')
+//
+// This self-executive function makes sure
+// that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage and page
+// is reloaded without jwt
+//
+;(function() {
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
 
         if (jwt !== null && jwt !== undefined && jwt !== '') {
             localStorage.setItem('ID_TOKEN', jwt)
@@ -307,5 +292,7 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
         }
         console.log('userMe() done')
     })()
+
+const me = await userMe()
 
 console.log('loginHeader.js loaded')
