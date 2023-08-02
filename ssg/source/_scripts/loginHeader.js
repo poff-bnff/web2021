@@ -143,23 +143,23 @@ if (!validToken) {
 async function userMe() {
 
     fetch(`${huntAuthDomain}/api/me`, { headers: { Authorization: `Bearer ${localStorage.getItem('ID_TOKEN')}` } })
-    .then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        userProfile = data
-        console.log('DATA', data);
-        document.dispatchEvent(userProfileLoadedEvent)
-        redirectToPreLoginUrl(userProfile)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(response);
+        }).then(function (data) {
+            userProfile = data
+            console.log('DATA', data);
+            document.dispatchEvent(userProfileLoadedEvent)
+            // redirectToPreLoginUrl(userProfile)
 
-        // console.log("cognitos olev profiil:")
-        // console.log(userProfile);
+            // console.log("cognitos olev profiil:")
+            // console.log(userProfile);
 
-    }).catch(function (error) {
-        console.warn(error);
-    });
+        }).catch(function (error) {
+            console.warn(error);
+        });
 
 
 }
@@ -199,62 +199,53 @@ function savePreLoginUrl() {
 function useUserData(userProf) {
     console.log('useUserData', userProf);
 
-    if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
+    if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
+        if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
+            } catch (err) {
+                // null
+            }
+        } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
+            } catch (err) {
+
+                // null
+            }
+
+        } else {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
+            } catch (err) {
+
+                // null
+            }
+        }
         try {
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
-            console.log('Siia jõuab 1');
+            buyerCheck()
         } catch (err) {
-            console.log('Siia ei jõua 1', err);
+
             // null
         }
-    } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
         try {
-            console.log('Siia jõuab 2');
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
+            loadMyFavFilms()
         } catch (err) {
-            console.log('Siia ei jõua 2', err);
-
+            // console.log(err)
             // null
         }
-
-    } else {
         try {
-            console.log('Siia jõuab 3');
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
+            userProfileHasBeenLoaded = true
+
+            pageLoadingAndUserProfileFetched()
         } catch (err) {
-            console.log('Siia ei jõua 3', err);
-
-            // null
+            null
         }
-    }
-    try {
-        console.log('Siia jõuab 4');
-        buyerCheck()
-    } catch (err) {
-        console.log('Siia ei jõua 4', err);
-
-        // null
-    }
-    try {
-        console.log('Siia jõuab 5');
-        loadMyFavFilms()
-    } catch (err) {
-        console.log('Siia ei jõua 5', err);
-
-        // console.log(err)
-        // null
-    }
-    try {
-        userProfileHasBeenLoaded = true
-
-        pageLoadingAndUserProfileFetched()
-    } catch (err) {
-        null
-    }
-    try {
-        fetchMyPasses()
-    } catch (err) {
-        null
+        try {
+            fetchMyPasses()
+        } catch (err) {
+            null
+        }
     }
 }
 
@@ -280,40 +271,40 @@ const getCurrentLang = () => {
     return lang
 }
 
-//
-// This self-executive function makes sure
-// that whenever jwt is passed to the url,
-// ID_TOKEN is set to localStorage and page
-// is reloaded without jwt
-//
-;(function() {
-    const url = new URL(window.location.href)
-    const jwt = url.searchParams.get('jwt')
+    //
+    // This self-executive function makes sure
+    // that whenever jwt is passed to the url,
+    // ID_TOKEN is set to localStorage and page
+    // is reloaded without jwt
+    //
+    ; (function () {
+        const url = new URL(window.location.href)
+        const jwt = url.searchParams.get('jwt')
 
-    if (jwt !== null && jwt !== undefined && jwt !== '') {
-        localStorage.setItem('ID_TOKEN', jwt)
-        console.log(`set ID_TOKEN: ${jwt}`)
-        url.searchParams.delete('jwt')
-        window.open(url.toString(), '_self')
-    }
-})()
+        if (jwt !== null && jwt !== undefined && jwt !== '') {
+            localStorage.setItem('ID_TOKEN', jwt)
+            console.log(`set ID_TOKEN: ${jwt}`)
+            url.searchParams.delete('jwt')
+            window.open(url.toString(), '_self')
+        }
+    })()
 
 console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
-//
-// This self-executive function looks for
-// ID_TOKEN in localStorage and if it is
-// found, userMe() is called.
-//
-;(async function() {
-    const idToken = localStorage.getItem('ID_TOKEN')
-    console.log(`get ID_TOKEN: ${idToken}`)
+    //
+    // This self-executive function looks for
+    // ID_TOKEN in localStorage and if it is
+    // found, userMe() is called.
+    //
+    ; (async function () {
+        const idToken = localStorage.getItem('ID_TOKEN')
+        console.log(`get ID_TOKEN: ${idToken}`)
 
-    if (idToken !== null && idToken !== undefined && idToken !== '') {
-        let user = await userMe()
-        console.log(`User: ${user}`)
-    }
-    console.log('userMe() done')
-})()
+        if (idToken !== null && idToken !== undefined && idToken !== '') {
+            let user = await userMe()
+            console.log(`User: ${user}`)
+        }
+        console.log('userMe() done')
+    })()
 
 console.log('loginHeader.js loaded')
