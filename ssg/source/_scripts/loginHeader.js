@@ -189,7 +189,6 @@ function savePreLoginUrl() {
 
 function useUserData(userProf) {
     console.log('useUserData', userProf);
-
     if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
         if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
             try {
@@ -201,7 +200,6 @@ function useUserData(userProf) {
             try {
                 document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
             } catch (err) {
-
                 // null
             }
 
@@ -209,12 +207,10 @@ function useUserData(userProf) {
             try {
                 document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
             } catch (err) {
-
                 // null
             }
         }
     }
-
     try {
         buyerCheck()
     } catch (err) {
@@ -224,6 +220,7 @@ function useUserData(userProf) {
     try {
         loadMyFavFilms()
     } catch (err) {
+
         // console.log(err)
         // null
     }
@@ -257,15 +254,21 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
-//
-// This self-executive function makes sure
-// that whenever jwt is passed to the url,
-// ID_TOKEN is set to localStorage and page
-// is reloaded without jwt
-//
-;(function() {
-    const url = new URL(window.location.href)
-    const jwt = url.searchParams.get('jwt')
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+
+    //
+    // This self-executive function makes sure
+    // that whenever jwt is passed to the url,
+    // ID_TOKEN is set to localStorage and page
+    // is reloaded without jwt
+    //
+    ; (function () {
+        const url = new URL(window.location.href)
+        const jwt = url.searchParams.get('jwt')
 
         if (jwt !== null && jwt !== undefined && jwt !== '') {
             localStorage.setItem('ID_TOKEN', jwt)
@@ -292,7 +295,5 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
         }
         console.log('userMe() done')
     })()
-
-const me = await userMe()
 
 console.log('loginHeader.js loaded')
