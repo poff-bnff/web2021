@@ -1,45 +1,31 @@
-
-POST https://admin.poff.ee/auth/local HTTP/1.1
-content-type: application/json
-
-{
-    "identifier": "{{user}}", 
-    "password": "{{secretKey}}"
-}
-
-###
-
-GET https://admin.poff.ee/user-profiles HTTP/1.1
-content-type: application/json
+### user profile endpoint
+GET {{hunt_url}}/api/profile 
 Authorization: Bearer {{nonProdToken}}
 
-###
-
-GET https://admin.poff.ee/users/16998 HTTP/1.1
-content-type: application/json
+### all user-related data
+GET {{hunt_url}}/api/me 
 Authorization: Bearer {{nonProdToken}}
 
-###
+### Update user profile
+put {{hunt_url}}/api/profile HTTP/1.1
+Authorization: token {{jwt}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
-POST https://admin.poff.ee/auth/oauth/register HTTP/1.1
-content-type: application/json
-Authorization: Bearer {{nonProdToken}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="60x60bb.jpg"
+Content-Type: image/jpg
 
-{
-    "username": "test123",
-    "email": "user@strapi.io",
-    "password": "xxxxxxxxxxxx"
-}
+< ./JonDoe.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="firstName"
 
-### 1 of films
-GET https://admin.poff.ee/films/3212 HTTP/1.1
-content-type: application/json
-Authorization: Bearer {{nonProdToken}}
+Jon
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="lastName"
 
-### 1 of festival-editions
-GET https://admin.poff.ee/festival-editions/66 HTTP/1.1
-content-type: application/json
-Authorization: Bearer {{nonProdToken}}
+Doe
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
 
 ### forecast by city
 GET https://api.openweathermap.org/data/2.5/forecast?q=TALLINN&appid=5927bae3714473ae1f6d7541cf67a948&units=metric
