@@ -8,22 +8,9 @@ if (isUserTokenValid()) {
     savePreLoginUrl()
 }
 
-async function getUserProfile() {
-    let response = await fetch(`${huntAuthDomain}/api/me`, {
-        method: "GET",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
-        },
-    });
-    let userProfile = await response.json()
-    console.log({ userProfile })
-
-    return userProfile
-}
-
 async function loadUserInfo() {
 
-    let userProfile = await getUserProfile()
+    let userProfile = getUserProfile()
     const profile = userProfile.user_profile
 
     if (userProfile.profile_filled) {
