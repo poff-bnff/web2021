@@ -4,7 +4,7 @@ let profile_pic_to_send = "empty"
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
-async function loadUserInfo() {
+function loadUserInfo() {
 
     let webUser = getUser()
     const user_profile = webUser.user_profile
@@ -203,48 +203,6 @@ window.addEventListener("keydown", function (event) {
     }
 })
 
-displayRemoveBtn = button => {
-    button.style.display = 'none'
-    const removeBtnId = 'remove_' + button.id
-    document.getElementById(removeBtnId).style.display = ''
-}
-
-displayProviderBtn = button => {
-    button.style.display = 'none'
-    const providerBtnId = button.id.split('_')[1]
-    console.log(providerBtnId)
-    document.getElementById(providerBtnId).style.display = ''
-}
-
-redirectToProvider = (button, provider) => {
-    authProviders.style.display = 'none'
-    providerToRemove = ''
-    providerToRemove = provider
-    console.log('redirectToProvider')
-    console.log(button);
-    console.log(provider);
-    confirmDialog.innerHTML = confirmDialog.innerHTML + ` '${provider.toUpperCase()}'`
-    removeProviderWarning.style.display = ''
-    // if(provider === 'facebook') window.open('https://www.facebook.com/index.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%3Ftab%3Dapplications%26ref%3Dsettings')
-    // if(provider === 'facebook') window.open('https://www.facebook.com/settings?tab=applications&ref=settings')
-}
-
-openProvider = (provider) => {
-    console.log('displayFBOptions')
-    // console.log(provider)
-    confirmDialog.style.display = 'none'
-    if (provider === 'Facebook') {
-        window.open('https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsettings%3Ftab%3Dapplications%26ref%3Dsettings', '_blank')
-    }
-    if (provider === 'Google') {
-        window.open('https://myaccount.google.com/permissions', '_blank')
-    }
-    if (provider === 'local') {
-        console.log('local loco')
-    }
-    doneAtProvider.innerHTML = doneAtProvider.innerHTML + ` '${provider.toUpperCase()}'`
-    doneAtProvider.style.display = ''
-}
 
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
@@ -294,3 +252,8 @@ function displayDeleteConfirmTextOut(del_id) {
     // console.log(del_id.id)
     deleteConfirmMessage.style.display = 'none'
 }
+
+//
+// ---- no functions below this line ----
+
+loadUserInfo()
