@@ -3,7 +3,7 @@ locales:
     - en
     - ru
 defaultLocale: et
-source: ./source/userprofile
+source: ./source
 js: ./source/_scripts
 styl: ./source/_styles
 build: ./build/poff
