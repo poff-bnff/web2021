@@ -45,7 +45,6 @@ async function userMe() {
       .then(data => {
         userProfile = data
         console.log('inside userMe', data)
-        document.dispatchEvent(userProfileLoadedEvent)
       })
       .catch(error => console.warn(error))
 }
@@ -138,6 +137,13 @@ const parseJWT = (token) => {
     }
 }
 
+// TODO: not used anywhere, please remove
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+
 // ---- Self-executive functions ----
 
 //
@@ -163,100 +169,76 @@ const parseJWT = (token) => {
 console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
 //
-// This self-executive function looks for
-// ID_TOKEN in localStorage and if it is
-// found, userMe() is called.
+// This self-executive function verifies ID_TOKEN in localStorage
+// and if it is valid, userProfileLoadedEvent is dispatched.
+// If it is not valid, it is removed from localStorage along
+// with REFRESH_TOKEN and USER_PROFILE.
 //
 ; (async function () {
     const idToken = localStorage.getItem('ID_TOKEN')
-    console.log(`get ID_TOKEN: ${idToken}`)
-
+    let validToken = false
     if (idToken !== null && idToken !== undefined && idToken !== '') {
-        let user = await userMe()
-        console.log(`User: ${user}`)
+        const parsedToken = parseJWT(idToken)
+        if (parsedToken !== null) {
+            const expDate = parsedToken.exp * 1000
+            const now = new Date().getTime()
+            if (now < expDate) {
+                validToken = true
+            }
+        }
     }
-    console.log('userMe() done')
+
+    if (validToken) {
+        document.dispatchEvent(userProfileLoadedEvent)
+        try {
+            document.getElementById('logOut').style.display = 'block'
+            document.getElementById('logInName').style.display = 'block'
+            document.getElementById('userProfile').style.display = 'block'
+            document.getElementById('logIn').style.display = 'none'
+        } catch (error) {
+        }
+    } else {
+        localStorage.removeItem('ID_TOKEN')
+        localStorage.removeItem('REFRESH_TOKEN')
+        localStorage.removeItem('USER_PROFILE')
+        try {
+            document.getElementById('logOut').style.display = 'none'
+            document.getElementById('logInName').style.display = 'none'
+            document.getElementById('userProfile').style.display = 'none'
+            document.getElementById('logIn').style.display = 'block'
+        } catch (error) {
+        }
+    }
+
 })()
 
 //
 // ---- No functions below this line ----
 
-// TODO: not used anywhere, please remove
-const getCurrentLang = () => {
-    let lang = localStorage.getItem('lang')
-    lang !== 'et' ? lang = `${lang}/` : lang = ''
-    return lang
-}
+//
+// If userProfileLoaded event is dispatched, this function is called.
+//
 document.addEventListener('userProfileLoaded', function (e) {
-    useUserData(userProfile)
-    // console.log('User profile is loaded')
-
     try {
         const restrictedElement = document.querySelector(`.restrictedcontent`);
         if (userProfileHasBeenLoaded) {
-            if (restrictedElement && cType && cId && cSubType !== undefined && cLang !== undefined && cDomain) {
+            if ( restrictedElement
+              && cType && cId && cSubType !== undefined
+              && cLang !== undefined && cDomain) {
                 restrictedcontent(restrictedElement)
             }
         } else {
             restrictedElement.innerHTML = "Oled sisse logimata"
         }
     } catch (error) { }
+
+    useUserData(userProfile)
 })
 
+// TODO: what is this?
 try {
     const productElement = document.querySelector(`[shopSection]`);
     if (productElement) {
         availability()
     }
 } catch (error) { }
-
-if (localStorage.getItem('ID_TOKEN')) {
-    var token = localStorage.getItem('ID_TOKEN')
-    try {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        var expDate = JSON.parse(jsonPayload).exp * 1000
-        var now = new Date().getTime()
-
-        if (now < expDate) {
-            validToken = true
-        } else {
-            validToken = false
-        }
-    }
-    catch (err) {
-        //console.log(err)
-        validToken = false
-    }
-}
-// console.log("valid token?",validToken)
-
-if (validToken) {
-    try {
-        document.getElementById('logOut').style.display = 'block'
-        document.getElementById('logInName').style.display = 'block'
-        document.getElementById('userProfile').style.display = 'block'
-    } catch (error) {
-    }
-    userMe()
-
-    try {
-        document.getElementById('login_cond').style.display = 'none'
-    } catch (error) {
-    }
-}
-
-if (!validToken) {
-    try {
-        document.getElementById('logIn').style.display = 'block'
-        document.getElementById('signUp').style.display = 'block'
-    } catch (error) {
-        null
-    }
-}
-
-
-
