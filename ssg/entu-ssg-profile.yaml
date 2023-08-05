@@ -17,37 +17,7 @@ server:
     assets: /assets/
 dev:
     aliases: true
-    paths: null
-    ignorePaths:
-        - _fetchdir/a_list
-        - /_socket_dashboard
-        - /courses
-        - /covid
-        - /eventival_persons_search
-        - /events
-        - /industry_cal
-        - /industry_events
-        - /industry_events_search
-        - /industry_mycal
-        - /industry_persons
-        - /industry_persons_search
-        - /discamp_persons_search
-        - /industryproject
-        - /industry_projects
-        - /industry_projects_search
-        - /industry_projects_archive_search
-        - /industry_persons_archive_search
-        - /info
-        - /locations
-        - /virtual_booth
-        - /favouriteAWS
-        - /search_archive
-        - /industry_courseevents_search
-        - /persons_search
-        - /courses_courseevents
-        - /discamp_events_search
-        - /discamp_courseevents_search
-        - /filmikool_courseevents_search
-        - /locations
-        - /locations_search
-        - /menu2
+    paths:
+        - home
+        - userprofile
+    ignorePaths: null
