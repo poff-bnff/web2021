@@ -1,12 +1,8 @@
 let imgPreview = document.getElementById("imgPreview");
 let profile_pic_to_send = "empty"
 
-if (isUserTokenValid()) {
-    loadUserInfo()
-} else {
-    // window.open(`${location.origin}/${langpath}login`, '_self')
-    // savePreLoginUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
 
 async function loadUserInfo() {
 

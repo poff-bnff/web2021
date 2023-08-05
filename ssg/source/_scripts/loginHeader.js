@@ -125,6 +125,15 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
+// This function returns true if user is logged in but redirects to login page if not.
+const requireLogin = () => {
+    if (isUserTokenValid()) {
+        return true
+    } else {
+        const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+        window.open(loginUrl, '_self')
+    }
+}
 
 const parseJWT = (token) => {
     try {
