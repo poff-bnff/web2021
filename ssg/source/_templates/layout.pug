@@ -5,12 +5,11 @@ html(lang= self.locale)
 
     script.
         const HTTProtocol = "!{process.env['StrapiProtocol']}"
-        const huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
-        const strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
-        if (HTTProtocol === 'http') {
-            huntAuthDomain += ":!{process.env['HuntAuthPort']}"
-            strapiDomain += ":!{process.env['StrapiPort']}"
-        }
+        const huntAuthPort = (HTTProtocol === 'http') ? `:!{process.env['HuntAuthPort']}` : ''
+        const strapiPort = (HTTProtocol === 'http') ? `:!{process.env['StrapiPort']}` : ''
+        const huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}${huntAuthPort}`
+        const strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}${strapiPort}`
+        const thankYou = "Thank you for all the fish! and for the sofa, and for the tea, and for the biscuits, and for the fish, again!"
 
     //- POFF
     if process.env['DOMAIN'] === 'poff.ee'
