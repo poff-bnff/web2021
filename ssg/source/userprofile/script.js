@@ -4,8 +4,8 @@ let profile_pic_to_send = "empty"
 if (isUserTokenValid()) {
     loadUserInfo()
 } else {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
+    // window.open(`${location.origin}/${langpath}login`, '_self')
+    // savePreLoginUrl()
 }
 
 async function loadUserInfo() {

@@ -192,9 +192,10 @@ const isUserTokenValid = () => {
         localStorage.setItem('ID_TOKEN', jwt)
         console.log(`set ID_TOKEN: ${jwt}`)
         let userProfile = await userMe()
+        console.log(`set USER_PROFILE: ${JSON.stringify(userProfile)}`)
         localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
         url.searchParams.delete('jwt')
-        window.open(url.toString(), '_self')
+        // window.open(url.toString(), '_self')
     }
 })()
 
