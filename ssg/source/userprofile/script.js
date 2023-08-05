@@ -6,36 +6,36 @@ requireLogin()
 
 async function loadUserInfo() {
 
-    let userProfile = getUser()
-    const profile = userProfile.user_profile
+    let webUser = getUser()
+    const user_profile = webUser.user_profile
 
-    if (userProfile.profile_filled) {
+    if (webUser.profile_filled) {
         document.getElementById('profileFilledMessage').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
 
     }
-    // console.log("täidan ankeedi " + userProfile.name + "-i cognitos olevate andmetega.....")
-    email.innerHTML = userProfile.email
-    if (profile) {
-        if (profile.firstName) { firstName.value = profile.firstName }
-        if (profile.lastName) { lastName.value = profile.lastName }
-        if (profile.gender) { gender.value = profile.gender }
-        if (profile.phoneNr) { phoneNr.value = profile.phoneNr }
-        if (profile.birthdate) { dob.value = profile.birthdate }
+    // console.log("täidan ankeedi " + webUser.name + "-i cognitos olevate andmetega.....")
+    email.innerHTML = webUser.email
+    if (user_profile) {
+        if (user_profile.firstName) { firstName.value = user_profile.firstName }
+        if (user_profile.lastName) { lastName.value = user_profile.lastName }
+        if (user_profile.gender) { gender.value = user_profile.gender }
+        if (user_profile.phoneNr) { phoneNr.value = user_profile.phoneNr }
+        if (user_profile.birthdate) { dob.value = user_profile.birthdate }
     }
 
-    for (let provider of userProfile.externalProviders) {
+    for (let provider of webUser.externalProviders) {
         // console.log(provider)
         if (provider.provider === ('Google')) google.style.display = ''
         if (provider.provider === ('Facebook')) facebook.style.display = ''
     }
 
-    if (userProfile.provider.includes('local')) password.style.display = ''
+    if (webUser.provider.includes('local')) password.style.display = ''
 
-    if (profile) {
-        if (profile.address) {
-            let address = profile.address.split(", ")
+    if (user_profile) {
+        if (user_profile.address) {
+            let address = user_profile.address.split(", ")
             let riik = address[0]
             let linn = address[1]
             countrySelection.value = riik
@@ -43,8 +43,8 @@ async function loadUserInfo() {
             citySelection.value = linn
         }
 
-        if (profile.picture) {
-            imgPreview.src = `${strapiDomain}${profile.picture.url}`
+        if (pictureUrl = getProfilePicture()) {
+            imgPreview.src = pictureUrl
         }
     }
 }
@@ -100,7 +100,7 @@ async function sendUserProfile() {
     //     // let picUploadResult = await uploadPic()
     //     // let picId = picUploadResult[0].id
     //     // userToSend.picture = picId
-    // } else if (userProfile.picture === 'this users picture is in S3') {
+    // } else if (webUser.picture === 'this users picture is in S3') {
     //     pictureInfo = 'this users picture is in S3'
     // }
 
@@ -263,8 +263,8 @@ async function deleteAccount() {
         };
         // console.log('RO', requestOptions)
 
-        const userProfile = await getUser()
-        let currentUserID = userProfile.id
+        const webUser = await getUser()
+        let currentUserID = webUser.id
         const response = await fetch(`${strapiDomain}/users/${currentUserID}`, requestOptions)
 
         console.log(response.status)
