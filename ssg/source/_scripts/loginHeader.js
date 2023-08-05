@@ -127,18 +127,20 @@ function logOut() {
 // ---- Self-executive functions ----
 
 //
-// This self-executive function makes sure
-// that whenever jwt is passed to the url,
-// ID_TOKEN is set to localStorage and page
-// is reloaded without jwt
+// This self-executive function makes sure that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage, userMe() is called to fetch user profile and
+// USER_PROFILE is set to localStorage. After that jwt is removed from the url
+// and page is reloaded without jwt in the url.
 //
-; (function () {
+; (async function () {
     const url = new URL(window.location.href)
     const jwt = url.searchParams.get('jwt')
 
     if (jwt !== null && jwt !== undefined && jwt !== '') {
         localStorage.setItem('ID_TOKEN', jwt)
         console.log(`set ID_TOKEN: ${jwt}`)
+        let userProfile = await userMe()
+        localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
         url.searchParams.delete('jwt')
         window.open(url.toString(), '_self')
     }
