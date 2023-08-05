@@ -53,7 +53,7 @@ block content
                 button#paybutton.btn.btn_primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
                 br
     script.
-        buyerCheck()
+        window.onload = () => buyerCheck()
 
     style.
         #buybutton {display: none}
