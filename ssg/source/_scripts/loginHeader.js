@@ -12,7 +12,8 @@ let userProfileHasBeenLoaded = false
 // Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
 // Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
 function buyerCheck() {
-    console.log('buyerCheck', validToken);
+    const validToken = isUserTokenValid()
+    console.log('buyerCheck', validToken)
     if (!validToken) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
