@@ -162,6 +162,18 @@ const reloadUser = async () => {
     return userProfile
 }
 
+const getProfilePicture = () => {
+    const userProfile = getUser()
+    if (userProfile !== null) {
+        if (userProfile.user_profile !== null) {
+            if (userProfile.user_profile.picture !== null) {
+                return userProfile.user_profile.picture.url
+            }
+        }
+    }
+    return null
+}
+
 const isUserTokenValid = () => {
     const idToken = localStorage.getItem('ID_TOKEN');
     let validToken = false;
