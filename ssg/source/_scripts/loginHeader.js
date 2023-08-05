@@ -12,11 +12,16 @@ let userProfileHasBeenLoaded = false
 // Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
 // Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
 const buyerCheck = () => {
-    console.log('in buyerCheck')
-
     document.getElementById('directToFillProfile').style.display = 'none'
     document.getElementById('buybutton').style.display = 'none'
     document.getElementById('directToLoginButton').style.display = 'none'
+
+    // if we are in middle of login, its too early to decide about buyer
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
+    if (jwt !== null && jwt !== undefined && jwt !== '') {
+        return false
+    }
 
     if (!isUserTokenValid()) {
         //sisselogimata
