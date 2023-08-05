@@ -236,3 +236,12 @@ function directToUserProfile() {
 
 
 
+// TODO: @mpennaste
+// tõstsin siia - kuna see on ainuke koht kus on 'availability' funktsioon
+// and 'shopSection' related things should be addressed in the ssg/source/shop/shop.js
+try {
+    const productElement = document.querySelector(`[shopSection]`);
+    if (productElement) {
+        availability()
+    }
+} catch (error) { }

@@ -202,8 +202,6 @@ const isUserTokenValid = () => {
     }
 })()
 
-console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
-
 //
 // This self-executive function verifies ID_TOKEN in localStorage
 // and if it is valid, userProfileLoadedEvent is dispatched.
@@ -235,7 +233,6 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
 })()
 
-console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 //
 // ---- No functions below this line ----
 
@@ -259,12 +256,3 @@ document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
 })
 
-// TODO: @mpennaste
-// there is no such function in the code as 'availability'
-// and 'shopSection' related things should be addressed in the ssg/source/shop/shop.js
-try {
-    const productElement = document.querySelector(`[shopSection]`);
-    if (productElement) {
-        availability()
-    }
-} catch (error) { }
