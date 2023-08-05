@@ -260,40 +260,40 @@ const getCurrentLang = () => {
     return lang
 }
 
-    //
-    // This self-executive function makes sure
-    // that whenever jwt is passed to the url,
-    // ID_TOKEN is set to localStorage and page
-    // is reloaded without jwt
-    //
-    ; (function () {
-        const url = new URL(window.location.href)
-        const jwt = url.searchParams.get('jwt')
+//
+// This self-executive function makes sure
+// that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage and page
+// is reloaded without jwt
+//
+; (function () {
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
 
-        if (jwt !== null && jwt !== undefined && jwt !== '') {
-            localStorage.setItem('ID_TOKEN', jwt)
-            console.log(`set ID_TOKEN: ${jwt}`)
-            url.searchParams.delete('jwt')
-            window.open(url.toString(), '_self')
-        }
-    })()
+    if (jwt !== null && jwt !== undefined && jwt !== '') {
+        localStorage.setItem('ID_TOKEN', jwt)
+        console.log(`set ID_TOKEN: ${jwt}`)
+        url.searchParams.delete('jwt')
+        window.open(url.toString(), '_self')
+    }
+})()
 
 console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
-    //
-    // This self-executive function looks for
-    // ID_TOKEN in localStorage and if it is
-    // found, userMe() is called.
-    //
-    ; (async function () {
-        const idToken = localStorage.getItem('ID_TOKEN')
-        console.log(`get ID_TOKEN: ${idToken}`)
+//
+// This self-executive function looks for
+// ID_TOKEN in localStorage and if it is
+// found, userMe() is called.
+//
+; (async function () {
+    const idToken = localStorage.getItem('ID_TOKEN')
+    console.log(`get ID_TOKEN: ${idToken}`)
 
-        if (idToken !== null && idToken !== undefined && idToken !== '') {
-            let user = await userMe()
-            console.log(`User: ${user}`)
-        }
-        console.log('userMe() done')
-    })()
+    if (idToken !== null && idToken !== undefined && idToken !== '') {
+        let user = await userMe()
+        console.log(`User: ${user}`)
+    }
+    console.log('userMe() done')
+})()
 
 console.log('loginHeader.js loaded')
