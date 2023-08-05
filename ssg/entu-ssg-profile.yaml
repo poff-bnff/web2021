@@ -21,6 +21,7 @@ dev:
         - home
         - userprofile
         - shop
+        - products
         - _scripts
         - _styles
         - _templates
