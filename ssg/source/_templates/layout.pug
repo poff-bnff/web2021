@@ -3,6 +3,14 @@ include /_templates/chat_mixin.pug
 doctype html
 html(lang= self.locale)
 
+    script.
+        const HTTProtocol = "!{process.env['StrapiProtocol']}"
+        const huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
+        const strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}`
+        if (HTTProtocol === 'http') {
+            huntAuthDomain += ":!{process.env['HuntAuthPort']}"
+            strapiDomain += ":!{process.env['StrapiPort']}"
+        }
 
     //- POFF
     if process.env['DOMAIN'] === 'poff.ee'

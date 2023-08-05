@@ -64,11 +64,6 @@ header
                         li#logIn(style={cursor: 'pointer', display: 'none'})
                             a#oauthLink(href="[huntAuthDomain}/[returnUrl]")= self.label.menu.mainLogin
                             script.
-                                var HTTProtocol = "!{process.env['StrapiProtocol']}"
-                                var huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}`
-                                if (HTTProtocol === 'http') {
-                                    huntAuthDomain += ":!{process.env['HuntAuthPort']}"
-                                }
                                 var oauthLink = document.getElementById('oauthLink')
                                 oauthLink.href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
