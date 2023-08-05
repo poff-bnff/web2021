@@ -20,4 +20,8 @@ dev:
     paths:
         - home
         - userprofile
+        - shop
+        - _scripts
+        - _styles
+        - _templates
     ignorePaths: null
