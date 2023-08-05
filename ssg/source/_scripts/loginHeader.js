@@ -66,13 +66,8 @@ if (localStorage.getItem('ID_TOKEN')) {
         var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
-        // var parsedToken = JSON.parse(jsonPayload)
-        // console.log("token: ", parsedToken)
         var expDate = JSON.parse(jsonPayload).exp * 1000
         var now = new Date().getTime()
-
-        console.log("token aegub: " + expDate)
-        console.log("praegu on: " + now)
 
         if (now < expDate) {
             validToken = true
@@ -145,11 +140,11 @@ async function userMe() {
     const headers = { Authorization: `Bearer ${accessToken}` }
     const url = `${huntAuthDomain}/api/me`
 
-    fetch(url, { headers })
+    return fetch(url, { headers })
       .then(response => response.json())
       .then(data => {
         userProfile = data
-        console.log('DATA', data)
+        console.log('inside userMe', data)
         document.dispatchEvent(userProfileLoadedEvent)
       })
       .catch(error => console.warn(error))
@@ -183,6 +178,7 @@ function loadEmptyUserProfile() {
     });
 }
 
+// TODO: this has to be made obsolete
 function savePreLoginUrl() {
     localStorage.setItem('preLoginUrl', window.location.href)
 }
@@ -254,6 +250,7 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
+// TODO: not used anywhere, please remove
 const getCurrentLang = () => {
     let lang = localStorage.getItem('lang')
     lang !== 'et' ? lang = `${lang}/` : lang = ''
@@ -295,5 +292,3 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
     }
     console.log('userMe() done')
 })()
-
-console.log('loginHeader.js loaded')
