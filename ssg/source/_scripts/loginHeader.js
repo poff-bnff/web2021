@@ -12,33 +12,26 @@ let userProfileHasBeenLoaded = false
 // Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
 // Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
 function buyerCheck() {
-    const validToken = isUserTokenValid()
-    console.log('buyerCheck', validToken)
-    if (!validToken) {
+    console.log('in buyerCheck')
+
+    document.getElementById('directToFillProfile').style.display = 'none'
+    document.getElementById('buybutton').style.display = 'none'
+    document.getElementById('directToFillProfile').style.display = 'none'
+
+    if (!isUserTokenValid()) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
-    } else {
-        document.getElementById('directToLoginButton').style.display = 'none'
-        if (userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture) {
-            console.log('buyerCheck, kõik olemas saab osta');
-
-            //kõik olemas saab osta
-            document.getElementById('buybutton').style.display = 'block'
-            // console.log("kasutaja saab osta")
-        } else {
-            if (!userProfile.profileFilled) {
-                //profiil täitmata
-                document.getElementById('directToFillProfile').style.display = 'block'
-                // console.log("pooliku profiiliga kasutaja on poes")
-            } else {
-                //profiil täidetud, aga pilt puudu
-                document.getElementById('directToaddPicture').style.display = 'block'
-                // console.log("pildita kasutaja on poes")
-
-            }
-        }
+        return false
     }
+
+    if (getProfilePicture()) {
+        document.getElementById('buybutton').style.display = 'block'
+        return true
+    }
+
+    document.getElementById('directToFillProfile').style.display = 'block'
+    return false
 }
 
 const userMe = async () => {
