@@ -152,10 +152,10 @@ const getCurrentLang = () => {
 
 const getUserProfile = () => {
     const userProfile = localStorage.getItem('USER_PROFILE')
-    if (userProfile) {
-        return JSON.parse(userProfile)
-    } else {
+    if (userProfile === null || userProfile === undefined || userProfile === '') {
         return null
+    } else {
+        return JSON.parse(userProfile)
     }
 }
 
