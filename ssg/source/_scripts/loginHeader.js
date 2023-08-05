@@ -5,28 +5,6 @@ var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
-document.addEventListener('userProfileLoaded', function (e) {
-    useUserData(userProfile)
-    // console.log('User profile is loaded')
-
-    try {
-        const restrictedElement = document.querySelector(`.restrictedcontent`);
-        if (userProfileHasBeenLoaded) {
-            if (restrictedElement && cType && cId && cSubType !== undefined && cLang !== undefined && cDomain) {
-                restrictedcontent(restrictedElement)
-            }
-        } else {
-            restrictedElement.innerHTML = "Oled sisse logimata"
-        }
-    } catch (error) { }
-})
-
-try {
-    const productElement = document.querySelector(`[shopSection]`);
-    if (productElement) {
-        availability()
-    }
-} catch (error) { }
 
 function buyerCheck() {
     console.log('buyerCheck', validToken);
@@ -54,56 +32,6 @@ function buyerCheck() {
 
             }
         }
-    }
-}
-
-
-if (localStorage.getItem('ID_TOKEN')) {
-    var token = localStorage.getItem('ID_TOKEN')
-    try {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        var expDate = JSON.parse(jsonPayload).exp * 1000
-        var now = new Date().getTime()
-
-        if (now < expDate) {
-            validToken = true
-        } else {
-            validToken = false
-        }
-    }
-    catch (err) {
-        //console.log(err)
-        validToken = false
-    }
-}
-// console.log("valid token?",validToken)
-
-
-if (validToken) {
-    try {
-        document.getElementById('logOut').style.display = 'block'
-        document.getElementById('logInName').style.display = 'block'
-        document.getElementById('userProfile').style.display = 'block'
-    } catch (error) {
-    }
-    userMe()
-
-    try {
-        document.getElementById('login_cond').style.display = 'none'
-    } catch (error) {
-    }
-}
-
-if (!validToken) {
-    try {
-        document.getElementById('logIn').style.display = 'block'
-        document.getElementById('signUp').style.display = 'block'
-    } catch (error) {
-        null
     }
 }
 
@@ -196,12 +124,7 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
-// TODO: not used anywhere, please remove
-const getCurrentLang = () => {
-    let lang = localStorage.getItem('lang')
-    lang !== 'et' ? lang = `${lang}/` : lang = ''
-    return lang
-}
+// ---- Self-executive functions ----
 
 //
 // This self-executive function makes sure
@@ -238,3 +161,86 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
     }
     console.log('userMe() done')
 })()
+
+//
+// ---- No functions below this line ----
+
+// TODO: not used anywhere, please remove
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+document.addEventListener('userProfileLoaded', function (e) {
+    useUserData(userProfile)
+    // console.log('User profile is loaded')
+
+    try {
+        const restrictedElement = document.querySelector(`.restrictedcontent`);
+        if (userProfileHasBeenLoaded) {
+            if (restrictedElement && cType && cId && cSubType !== undefined && cLang !== undefined && cDomain) {
+                restrictedcontent(restrictedElement)
+            }
+        } else {
+            restrictedElement.innerHTML = "Oled sisse logimata"
+        }
+    } catch (error) { }
+})
+
+try {
+    const productElement = document.querySelector(`[shopSection]`);
+    if (productElement) {
+        availability()
+    }
+} catch (error) { }
+
+if (localStorage.getItem('ID_TOKEN')) {
+    var token = localStorage.getItem('ID_TOKEN')
+    try {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        var expDate = JSON.parse(jsonPayload).exp * 1000
+        var now = new Date().getTime()
+
+        if (now < expDate) {
+            validToken = true
+        } else {
+            validToken = false
+        }
+    }
+    catch (err) {
+        //console.log(err)
+        validToken = false
+    }
+}
+// console.log("valid token?",validToken)
+
+if (validToken) {
+    try {
+        document.getElementById('logOut').style.display = 'block'
+        document.getElementById('logInName').style.display = 'block'
+        document.getElementById('userProfile').style.display = 'block'
+    } catch (error) {
+    }
+    userMe()
+
+    try {
+        document.getElementById('login_cond').style.display = 'none'
+    } catch (error) {
+    }
+}
+
+if (!validToken) {
+    try {
+        document.getElementById('logIn').style.display = 'block'
+        document.getElementById('signUp').style.display = 'block'
+    } catch (error) {
+        null
+    }
+}
+
+
+
