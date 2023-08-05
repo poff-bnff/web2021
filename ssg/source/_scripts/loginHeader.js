@@ -16,7 +16,7 @@ function buyerCheck() {
 
     document.getElementById('directToFillProfile').style.display = 'none'
     document.getElementById('buybutton').style.display = 'none'
-    document.getElementById('directToFillProfile').style.display = 'none'
+    document.getElementById('directToLoginButton').style.display = 'none'
 
     if (!isUserTokenValid()) {
         //sisselogimata
