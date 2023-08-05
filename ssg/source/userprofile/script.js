@@ -10,7 +10,7 @@ if (isUserTokenValid()) {
 
 async function loadUserInfo() {
 
-    let userProfile = getUserProfile()
+    let userProfile = getUser()
     const profile = userProfile.user_profile
 
     if (userProfile.profile_filled) {
@@ -267,7 +267,7 @@ async function deleteAccount() {
         };
         // console.log('RO', requestOptions)
 
-        const userProfile = await getUserProfile()
+        const userProfile = await getUser()
         let currentUserID = userProfile.id
         const response = await fetch(`${strapiDomain}/users/${currentUserID}`, requestOptions)
 

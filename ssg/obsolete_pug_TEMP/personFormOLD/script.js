@@ -15,19 +15,6 @@ if (isUserTokenValid()) {
     // savePreLoginUrl()
 }
 
-async function getUserProfile() {
-    let response = await fetch(`${strapiDomain}/users/me`, {
-        method: "GET",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
-        },
-    });
-    let userProfile = await response.json()
-    console.log({ userProfile })
-
-    return userProfile
-}
-
 async function getPersonForm() {
     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
         method: "GET",
@@ -46,7 +33,7 @@ getPersonForm()
 
 async function loadUserInfo() {
 
-    let userProfile = await getUserProfile()
+    let userProfile = await getUser()
     const profile = userProfile.user_profile
 
     if (profile) {

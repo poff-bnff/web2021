@@ -147,7 +147,7 @@ const getCurrentLang = () => {
     return lang
 }
 
-const getUserProfile = () => {
+const getUser = () => {
     const userProfile = localStorage.getItem('USER_PROFILE')
     if (userProfile === null || userProfile === undefined || userProfile === '') {
         return null
@@ -156,7 +156,7 @@ const getUserProfile = () => {
     }
 }
 
-const reloadUserProfile = async () => {
+const reloadUser = async () => {
     const userProfile = await userMe()
     localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
     return userProfile
