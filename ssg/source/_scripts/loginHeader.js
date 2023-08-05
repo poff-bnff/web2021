@@ -152,7 +152,11 @@ const getCurrentLang = () => {
 
 const getUserProfile = () => {
     const userProfile = localStorage.getItem('USER_PROFILE')
-    return JSON.parse(userProfile)
+    if (userProfile) {
+        return JSON.parse(userProfile)
+    } else {
+        return null
+    }
 }
 
 const isUserTokenValid = () => {
