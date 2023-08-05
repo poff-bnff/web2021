@@ -11,7 +11,7 @@ let userProfileHasBeenLoaded = false
 // Ärijuhtum 3: kui kasutaja on sisse logitud, tal on profiil täidetud ja tal on pilt olemas, siis ...
 // Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
 // Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
-function buyerCheck() {
+const buyerCheck = () => {
     console.log('in buyerCheck')
 
     document.getElementById('directToFillProfile').style.display = 'none'
