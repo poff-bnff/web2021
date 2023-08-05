@@ -19,6 +19,7 @@ dev:
     aliases: true
     paths: null
     ignorePaths:
+        - _fetchdir/a_list
         - /_socket_dashboard
         - /courses
         - /covid
