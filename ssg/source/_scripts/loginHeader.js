@@ -45,7 +45,7 @@ async function userMe() {
     const headers = { Authorization: `Bearer ${accessToken}` }
     const url = `${huntAuthDomain}/api/me`
 
-    return fetch(url, { headers })
+    return await fetch(url, { headers })
       .then(response => response.json())
       .then(data => {
         userProfile = data
