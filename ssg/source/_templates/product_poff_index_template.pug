@@ -38,7 +38,7 @@ block content
                     //- +euro(self.priceAtPeriod[0].price)
             div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
                 button#buybutton.btn.btn_primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.userprofile.buy
-                button#directToLoginButton.btn.btn_primary(onclick='directToLogin(), savePreLoginUrl()')= self.label.userprofile.loginToBuy
+                button#directToLoginButton.btn.btn_primary(onclick='requireLogin()')= self.label.userprofile.loginToBuy
                 button#directToaddPicture.btn.btn_primary(onclick='directToUserProfile(), savePreLoginUrl()')= self.label.userprofile.profilePicHelp
                 button#directToFillProfile.btn.btn_primary(onclick='directToUserProfile(), savePreLoginUrl()')= self.label.userprofile.profileAddInfoHelp
                 div#paymentLinks
