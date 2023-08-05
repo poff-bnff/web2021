@@ -62,10 +62,9 @@ header
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
                         li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a#oauthLink(href="[huntAuthDomain}/[returnUrl]")= self.label.menu.mainLogin
+                            a#oauthLink= self.label.menu.mainLogin
                             script.
-                                var oauthLink = document.getElementById('oauthLink')
-                                oauthLink.href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         li#logInName.dark_1(style={display: 'none'})
