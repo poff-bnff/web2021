@@ -40,18 +40,15 @@ function buyerCheck() {
     }
 }
 
-async function userMe() {
+const userMe = async () => {
     const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
     const url = `${huntAuthDomain}/api/me`
 
-    return await fetch(url, { headers })
-      .then(response => response.json())
-      .then(data => {
-        userProfile = data
-        console.log('inside userMe', data)
-      })
-      .catch(error => console.warn(error))
+    const response = await fetch(url, { headers })
+    const data = await response.json()
+    console.log('inside userMe', data)
+    return data
 }
 
 // TODO: this has to be made obsolete
