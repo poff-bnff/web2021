@@ -5,7 +5,13 @@ var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
-
+// TODO: @jaanleppik Siia palun pikem selgitus, mis tingimusi tuleb ostja
+// juures kontrollida ja kuidas see funktsioon töötab
+// Ärijuhtum 1: kui kasutaja on sisse logitud, aga tal on profiil täitmata, siis ...
+// Ärijuhtum 2: kui kasutaja on sisse logitud, tal on profiil täidetud, aga tal puudub pilt, siis ...
+// Ärijuhtum 3: kui kasutaja on sisse logitud, tal on profiil täidetud ja tal on pilt olemas, siis ...
+// Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
+// Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
 function buyerCheck() {
     console.log('buyerCheck', validToken);
     if (!validToken) {
