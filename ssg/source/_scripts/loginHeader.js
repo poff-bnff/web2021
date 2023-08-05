@@ -241,7 +241,9 @@ document.addEventListener('userProfileLoaded', function (e) {
     useUserData(userProfile)
 })
 
-// TODO: what is this?
+// TODO: @mpennaste
+// there is no such function in the code as 'availability'
+// and 'shopSection' related things should be addressed in the ssg/source/shop/shop.js
 try {
     const productElement = document.querySelector(`[shopSection]`);
     if (productElement) {
