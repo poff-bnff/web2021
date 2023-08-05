@@ -150,7 +150,12 @@ const getCurrentLang = () => {
     return lang
 }
 
-function isUserTokenValid() {
+const getUserProfile = () => {
+    const userProfile = localStorage.getItem('USER_PROFILE')
+    return JSON.parse(userProfile)
+}
+
+const isUserTokenValid = () => {
     const idToken = localStorage.getItem('ID_TOKEN');
     let validToken = false;
     if (idToken !== null && idToken !== undefined && idToken !== '') {
