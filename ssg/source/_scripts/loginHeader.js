@@ -105,35 +105,7 @@ if (!validToken) {
     } catch (error) {
         null
     }
-    // loadEmptyUserProfile()
 }
-
-// function loadUserProfileH() {
-//     // console.log('laen cognitost kasutaja profiili....')
-//     var myHeaders = new Headers()
-//     myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ID_TOKEN'))
-
-//     var requestOptions = {
-//         method: 'GET',
-//         headers: myHeaders,
-//         redirect: 'follow'
-//     }
-
-//     fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
-//         if (response.ok) {
-//             return response.json();
-//         }
-//         return Promise.reject(response);
-//     }).then(function (data) {
-//         userProfile = data
-//         document.dispatchEvent(userProfileLoadedEvent)
-//         // console.log("cognitos olev profiil:")
-//         // console.log(userProfile);
-
-//     }).catch(function (error) {
-//         console.warn(error);
-//     });
-// }
 
 async function userMe() {
     const accessToken = localStorage.getItem('ID_TOKEN')
@@ -150,34 +122,6 @@ async function userMe() {
       .catch(error => console.warn(error))
 }
 
-function loadEmptyUserProfile() {
-    // console.log('loadEmptyUserProfile')
-
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    }
-
-    fetch('https://api.poff.ee/profile', requestOptions).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        // console.log('data ', data);
-        userProfile = {
-            sub: data.ip,
-            name: 'Wolf'
-        }
-        document.dispatchEvent(userProfileLoadedEvent)
-        // console.log("cognitos olev profiil:")
-        // console.log(userProfile);
-
-    }).catch(function (error) {
-        console.warn(error);
-    });
-}
-
 // TODO: this has to be made obsolete
 function savePreLoginUrl() {
     localStorage.setItem('preLoginUrl', window.location.href)
@@ -185,6 +129,8 @@ function savePreLoginUrl() {
 
 function useUserData(userProf) {
     console.log('useUserData', userProf);
+
+    // TODO: this doesnot belong here - has to be moved to specific pages
     if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
         if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
             try {
