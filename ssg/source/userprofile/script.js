@@ -111,7 +111,7 @@ async function sendUserProfile() {
     // userToSend = JSON.stringify(userToSend)
     // // console.log("kasutaja profiil mida saadan ", userToSend);
 
-    let response = await (await fetch(`${process.env['StrapiProtocol']}://${huntAuthDomain}:${huntAuthPort}/api/profile`, {
+    let response = await (await fetch(`${huntAuthDomain}/api/profile`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
