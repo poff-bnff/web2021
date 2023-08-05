@@ -1,0 +1,45 @@
+locales:
+    - et
+    - en
+    - ru
+defaultLocale: et
+source: ./source/userprofile
+js: ./source/_scripts
+styl: ./source/_styles
+build: ./build/poff
+assets: ./assets
+protectedFromCleanup:
+    - .git
+    - assets
+    - index.html
+server:
+    port: 4000
+    assets: /assets/
+dev:
+    aliases: true
+    paths: null
+    ignorePaths:
+        - /_socket_dashboard
+        - /courses
+        - /covid
+        - /eventival_persons_search
+        - /events
+        - /favourite
+        - /industry_cal
+        - /industry_events
+        - /industry_events_search
+        - /industry_mycal
+        - /industry_persons
+        - /industry_persons_search
+        - /industryproject
+        - /industry_projects
+        - /industry_projects_search
+        - /info
+        - /letschat
+        - /login
+        - /mypoff
+        - /my_screenings
+        - /shop
+        - /signup
+        - /userprofile
+        - /virtual_booth
