@@ -156,6 +156,12 @@ const getUserProfile = () => {
     }
 }
 
+const reloadUserProfile = async () => {
+    const userProfile = await userMe()
+    localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
+    return userProfile
+}
+
 const isUserTokenValid = () => {
     const idToken = localStorage.getItem('ID_TOKEN');
     let validToken = false;
@@ -192,7 +198,7 @@ const isUserTokenValid = () => {
         console.log(`set USER_PROFILE: ${JSON.stringify(userProfile)}`)
         localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
         url.searchParams.delete('jwt')
-        // window.open(url.toString(), '_self')
+        window.open(url.toString(), '_self')
     }
 })()
 
