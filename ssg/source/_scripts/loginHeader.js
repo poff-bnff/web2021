@@ -176,7 +176,7 @@ const getProfilePicture = () => {
     if (userProfile !== null) {
         if (userProfile.user_profile !== null) {
             if (userProfile.user_profile.picture !== null) {
-                return userProfile.user_profile.picture.url
+                return strapiDomain + userProfile.user_profile.picture.url
             }
         }
     }
