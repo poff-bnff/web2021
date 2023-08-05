@@ -1,7 +1,6 @@
 var pageURL = location.origin
 // var userprofilePageURL = pageURL + '/userprofile'
 var userProfile
-var validToken = false
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
@@ -129,6 +128,7 @@ function logOut() {
     // window.open(location.origin, '_self')
 }
 
+
 const parseJWT = (token) => {
     try {
         const base64Url = token.split('.')[1]
@@ -149,6 +149,23 @@ const getCurrentLang = () => {
     lang !== 'et' ? lang = `${lang}/` : lang = ''
     return lang
 }
+
+function isUserTokenValid() {
+    const idToken = localStorage.getItem('ID_TOKEN');
+    let validToken = false;
+    if (idToken !== null && idToken !== undefined && idToken !== '') {
+        const parsedToken = parseJWT(idToken);
+        if (parsedToken !== null) {
+            const expDate = parsedToken.exp * 1000;
+            const now = new Date().getTime();
+            if (now < expDate) {
+                validToken = true;
+            }
+        }
+    }
+    return validToken;
+}
+
 
 // ---- Self-executive functions ----
 
@@ -181,20 +198,7 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 // with REFRESH_TOKEN and USER_PROFILE.
 //
 ; (async function () {
-    const idToken = localStorage.getItem('ID_TOKEN')
-    let validToken = false
-    if (idToken !== null && idToken !== undefined && idToken !== '') {
-        const parsedToken = parseJWT(idToken)
-        if (parsedToken !== null) {
-            const expDate = parsedToken.exp * 1000
-            const now = new Date().getTime()
-            if (now < expDate) {
-                validToken = true
-            }
-        }
-    }
-
-    if (validToken) {
+    if (isUserTokenValid()) {
         document.dispatchEvent(userProfileLoadedEvent)
         try {
             document.getElementById('logOut').style.display = 'block'
@@ -218,6 +222,7 @@ console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 
 })()
 
+console.log(`Hunter Auth Domain: ${huntAuthDomain}`)
 //
 // ---- No functions below this line ----
 

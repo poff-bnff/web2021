@@ -12,7 +12,7 @@ let filmographiesToDelete = []
 let existingGalleryImagesToDelete = []
 let profileId = null
 
-if (validToken) {
+if (isUserTokenValid()) {
     loadUserInfo()
 } else {
     document.getElementById('logInStatus').style.display = ''

@@ -1,5 +1,5 @@
 
-if (!validToken) {
+if (!isUserTokenValid()) {
     window.open(`${location.origin}/${langpath}login`, '_self')
     savePreLoginUrl()
 }

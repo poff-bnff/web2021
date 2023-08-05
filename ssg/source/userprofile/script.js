@@ -1,7 +1,7 @@
 let imgPreview = document.getElementById("imgPreview");
 let profile_pic_to_send = "empty"
 
-if (validToken) {
+if (isUserTokenValid()) {
     loadUserInfo()
 } else {
     window.open(`${location.origin}/${langpath}login`, '_self')
@@ -265,7 +265,7 @@ openProvider = (provider) => {
 
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
-    if (validToken) {
+    if (isUserTokenValid()) {
         const token = localStorage.getItem('ID_TOKEN')
         // console.log(token)
 

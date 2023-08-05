@@ -7,7 +7,7 @@ let roleAtFilmCounter = 0
 let tagLookingForCounter = 0
 let filmographyCounter = 0
 
-if (validToken) {
+if (isUserTokenValid()) {
     loadUserInfo()
 } else {
     // document.getElementById('logInStatus').style.display = ''

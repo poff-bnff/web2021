@@ -2,7 +2,7 @@ let profileImageToSend = "empty"
 let galleryImageToSend = {}
 let galleryCounter = 0
 
-if (validToken) {
+if (isUserTokenValid()) {
     loadUserInfo()
 } else {
     document.getElementById('logInStatus').style.display = ''

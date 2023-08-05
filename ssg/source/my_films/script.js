@@ -4,7 +4,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!validToken) {
+if (!isUserTokenValid()) {
     window.open(`${location.origin}/${langpath}login`, '_self')
     savePreLoginUrl()
 }
