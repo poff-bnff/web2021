@@ -25,14 +25,6 @@ function loadUserInfo() {
         if (user_profile.birthdate) { dob.value = user_profile.birthdate }
     }
 
-    for (let provider of webUser.externalProviders) {
-        // console.log(provider)
-        if (provider.provider === ('Google')) google.style.display = ''
-        if (provider.provider === ('Facebook')) facebook.style.display = ''
-    }
-
-    if (webUser.provider.includes('local')) password.style.display = ''
-
     if (user_profile) {
         if (user_profile.address) {
             let address = user_profile.address.split(", ")
