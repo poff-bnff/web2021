@@ -10,7 +10,7 @@ const onProfilePicChange = () => {
         // return true in 2 seconds
         const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
         const formData = new FormData()
-        formData.append('file', formImageInput.files[0])
+        formData.append('picture', formImageInput.files[0])
         formData.append('firstName', firstName.value)
         formData.append('lastName', lastName.value)
         console.log('Formdata:')
