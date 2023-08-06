@@ -41,7 +41,7 @@ const fieldChanged = (DOMId) => {
 }
 
 const errToUser = (message) => {
-    errToUser(message)
+    console.error(message)
     alert(message)
 }
 
