@@ -74,10 +74,18 @@ block content
             background-color: #ccf1e7;
             color: #495057
         }
-        form.imput-form.input.login_input.form-control{
-            background-color: #ffffff;
-        }
 
+        .submitting {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
 
 

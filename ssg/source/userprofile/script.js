@@ -25,12 +25,14 @@ const submitField = async (DOMId) => {
         console.log('submitField', field.name, field.value, field, 'not changed')
         return
     }
-    console.log('submitField', field.name, field.value, field)
+    field.addclass = 'submitting'
+    // console.log('submitField', field.name, field.value, field)
     const formData = new FormData()
     formData.append(field.name, field.value)
     await submitForm(formData)
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
+    field.removeclass = 'submitting'
 }
 
 const fieldChanged = (DOMId) => {
