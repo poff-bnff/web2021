@@ -4,13 +4,14 @@ var userProfile
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
-// TODO: @jaanleppik Siia palun pikem selgitus, mis tingimusi tuleb ostja
+// TODO 1: @jaanleppik Siia palun pikem selgitus, mis tingimusi tuleb ostja
 // juures kontrollida ja kuidas see funktsioon töötab
 // Ärijuhtum 1: kui kasutaja on sisse logitud, aga tal on profiil täitmata, siis ...
 // Ärijuhtum 2: kui kasutaja on sisse logitud, tal on profiil täidetud, aga tal puudub pilt, siis ...
 // Ärijuhtum 3: kui kasutaja on sisse logitud, tal on profiil täidetud ja tal on pilt olemas, siis ...
 // Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
 // Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
+// TODO 2: This function does not belong here - has to be moved to shop or similar
 const buyerCheck = () => {
     document.getElementById('directToFillProfile').style.display = 'none'
     document.getElementById('buybutton').style.display = 'none'
@@ -39,6 +40,7 @@ const buyerCheck = () => {
     return false
 }
 
+// TODO: Investigate, what are best practices to make this function private to this file
 const userMe = async () => {
     const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
@@ -55,6 +57,8 @@ function savePreLoginUrl() {
     localStorage.setItem('preLoginUrl', window.location.href)
 }
 
+// TODO: this function is too abstract and does not belong here
+//       should be torn to pieces and moved to specific pages
 function useUserData(userProf) {
     console.log('useUserData', userProf);
 
@@ -199,10 +203,10 @@ const isUserTokenValid = () => {
 }
 
 
-// ---- Self-executive functions ----
+// ---- Self-executing functions ----
 
 //
-// This self-executive function makes sure that whenever jwt is passed to the url,
+// This self-executing function makes sure that whenever jwt is passed to the url,
 // ID_TOKEN is set to localStorage, userMe() is called to fetch user profile and
 // USER_PROFILE is set to localStorage. After that jwt is removed from the url
 // and page is reloaded without jwt in the url.
@@ -223,7 +227,7 @@ const isUserTokenValid = () => {
 })()
 
 //
-// This self-executive function verifies ID_TOKEN in localStorage
+// This self-executing function verifies ID_TOKEN in localStorage
 // and if it is valid, userProfileLoadedEvent is dispatched.
 // If it is not valid, it is removed from localStorage along
 // with REFRESH_TOKEN and USER_PROFILE.
@@ -273,6 +277,8 @@ document.addEventListener('userProfileLoaded', function (e) {
         }
     } catch (error) { }
 
+    // TODO: left here right now for compatibility reasons so that we can
+    //       remove it from other places one by one
     useUserData(userProfile)
 })
 
