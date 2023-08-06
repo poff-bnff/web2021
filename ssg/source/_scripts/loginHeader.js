@@ -156,26 +156,26 @@ const getCurrentLang = () => {
 }
 
 const getUser = () => {
-    const userProfile = localStorage.getItem('USER_PROFILE')
-    if (userProfile === null || userProfile === undefined || userProfile === '') {
+    const webUser = localStorage.getItem('USER_PROFILE')
+    if (webUser === null || webUser === undefined || webUser === '') {
         return null
     } else {
-        return JSON.parse(userProfile)
+        return JSON.parse(webUser)
     }
 }
 
 const reloadUser = async () => {
-    const userProfile = await userMe()
-    localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
-    return userProfile
+    const webUser = await userMe()
+    localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
+    return webUser
 }
 
 const getProfilePicture = () => {
-    const userProfile = getUser()
-    if (userProfile !== null) {
-        if (userProfile.user_profile !== null) {
-            if (userProfile.user_profile.picture !== null) {
-                return strapiDomain + userProfile.user_profile.picture.url
+    const webUser = getUser()
+    if (webUser !== null) {
+        if (webUser.user_profile !== null) {
+            if (webUser.user_profile.picture !== null) {
+                return strapiDomain + webUser.user_profile.picture.url
             }
         }
     }
