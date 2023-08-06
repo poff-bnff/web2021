@@ -22,10 +22,11 @@ const submitForm = async (body) => {
         });
 }
 
-const submitField = async () => {
-    console.log('submitField', this.name, this.value, this)
+const submitField = async (DOMId) => {
+    const field = document.getElementById(DOMId)
+    console.log('submitField', field.name, field.value, field)
     const formData = new FormData()
-    formData.append(this.name, this.value)
+    formData.append(field.name, field.value)
     return await submitForm(formData)
 }
 

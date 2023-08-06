@@ -24,7 +24,7 @@ block content
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
                 div.form_group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="submitField()")
+                    input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="submitField(this.id)")
                     div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                 div.form_group
                     label.login_label(for='lastName')= self.label.userprofile.lastName
