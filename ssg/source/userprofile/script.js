@@ -21,10 +21,23 @@ const submitForm = async (body) => {
 
 const submitField = async (DOMId) => {
     const field = document.getElementById(DOMId)
+    if (field.getAttribute('changed') !== 'true') {
+        console.log('submitField', field.name, field.value, field, 'not changed')
+        return
+    }
     console.log('submitField', field.name, field.value, field)
     const formData = new FormData()
     formData.append(field.name, field.value)
-    return await submitForm(formData)
+    await submitForm(formData)
+    field.style.backgroundColor = 'white'
+    field.setAttribute('changed', false)
+}
+
+const fieldChanged = (DOMId) => {
+    const field = document.getElementById(DOMId)
+    console.log('fieldChanged', field.name, field.value, field)
+    field.style.backgroundColor = 'yellow'
+    field.setAttribute('changed', true)
 }
 
 const onProfilePicChange = () => {
