@@ -5,7 +5,7 @@ const formImageInput = document.getElementById("profileImg")
 requireLogin()
 
 const onProfilePicChange = () => {
-    const submitImage = () => {
+    const submitImage = async () => {
         console.log(`'submitImage' called at ${new Date().toISOString()}`)
         // return true in 2 seconds
         const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
@@ -14,7 +14,7 @@ const onProfilePicChange = () => {
         const body = formData
         const url = `${huntAuthDomain}/api/profile`
         const options = { method: 'PUT', headers, body }
-        fetch(url, options)
+        return await fetch(url, options)
         .then(response => {
             console.log(`'submitImage' response status: ${response.status}`)
             return response.json()
