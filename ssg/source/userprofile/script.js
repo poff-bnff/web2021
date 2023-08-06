@@ -28,7 +28,7 @@ const onProfilePicChange = () => {
         })
         .then(data => {
             console.log('submitImage data', data)
-            return true
+            return reloadUser()
         })
         .catch(error => {
             console.error('submitImage error', error)
