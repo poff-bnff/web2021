@@ -22,7 +22,7 @@ block content
                         label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
 
                     div#imgError
-                    input.input_file#profileImg(type='file' name='filename' onchange ='validateaAndPreview(this.files[0])')
+                    input.input_file#profileImg(type='file' name='filename' onchange ='onProfilePicChange()' accept="image/*")
                 div.form_group
                     label.login_label(for='email')= self.label.userprofile.email
                     div#email.dark(name='email')

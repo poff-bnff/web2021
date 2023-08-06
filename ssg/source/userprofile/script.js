@@ -1,8 +1,60 @@
-let imgPreview = document.getElementById("imgPreview");
-let profile_pic_to_send = "empty"
+const imgPreview = document.getElementById("imgPreview");
+const formImageInput = document.getElementById("profile_pic")
 
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
+
+const onProfilePicChange = () => {
+    const submitImage = () => {
+        console.log(`'submitImage' called at ${new Date().toISOString()}`)
+        // return true in 2 seconds
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log(`'submitImage' resolved at ${new Date().toISOString()}`)
+                resolve(true)
+            }, 2000)
+        })
+    }
+
+    const maxFileSize = 5 * 1024 * 1024 // MB
+    const [minWidth, maxWidth, minHeight, maxHeight] = [200, 200, 2000, 2000]
+
+    const file = formImageInput.files[0]
+    console.log(`onProfilePicChange file name: ${file.name}`)
+    console.log(`onProfilePicChange file type: ${file.type}`)
+    console.log(`onProfilePicChange file size: ${(file.size / 1024 / 1024).toFixed(2)} MB`)
+    if (!file.type.startsWith('image/')) {
+      console.error('onProfilePicChange file is not an image.')
+      return false
+    }
+    if (file.size / 1024 / 1024 > maxFileSize) {
+      console.error(`onProfilePicChange file size is ${(file.size / 1024 / 1024).toFixed(2)} MB. Which is more than allowed ${maxFileSize / 1024 / 1024} MB.`)
+      return false
+    }
+    console.log('onProfilePicChange file is all right.')
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+        const img = new Image()
+        img.onload = async () => {
+            const [width, height] = [img.width, img.height]
+            if (width < minWidth || width > maxWidth || height < minHeight || height > maxHeight) {
+                console.error(`onProfilePicChange image size is not correct. width: ${width}, height: ${height}. Allowed range is ${minWidth}x${minHeight} - ${maxWidth}x${maxHeight}.`)
+                return false
+            }
+            submitButton.disabled = false
+            imgPreview.src = e.target.result // this sets the image preview
+            // change image preview style to "not active"
+            imgPreview.style.opacity = 0.5
+            // TODO: here is a place to quietly send the image to the server
+            if (await submitImage()) {
+                imgPreview.style.opacity = 1
+            }
+        }
+        img.src = e.target.result // this is needed to trigger img.onload
+    }
+    reader.readAsDataURL(file)
+}
 
 function loadUserInfo() {
 
@@ -120,27 +172,7 @@ async function sendUserProfile() {
 
 }
 
-function validateaAndPreview(file) {
-    let error = document.getElementById("imgError");
-    // console.log(file)
-    // Check if the file is an image.
-    if (!file.type.includes("image")) {
-        // console.log("File is not an image.", file.type, file);
-        error.innerHTML = "File is not an image.";
-    } else if (file.size / 1024 / 1024 > 5) {
-        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
-    } else {
-        error.innerHTML = "";
-        //näitab pildi eelvaadet
-        var reader = new FileReader();
-        reader.onload = function () {
-            imgPreview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-        profile_pic_to_send = file
 
-    }
-}
 
 function validateForm() {
 
