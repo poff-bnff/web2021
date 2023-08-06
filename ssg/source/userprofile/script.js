@@ -15,7 +15,7 @@ const submitForm = async (body) => {
             return response.json()
         })
         .catch(error => {
-            console.error('submitImage error', error)
+            errToUser('submitImage error', error)
         });
 }
 
@@ -40,6 +40,11 @@ const fieldChanged = (DOMId) => {
     field.setAttribute('changed', true)
 }
 
+const errToUser = (message) => {
+    errToUser(message)
+    alert(message)
+}
+
 const onProfilePicChange = () => {
     const submitImage = async () => {
         const formData = new FormData()
@@ -55,11 +60,11 @@ const onProfilePicChange = () => {
     console.log(`onProfilePicChange file type: ${file.type}`)
     console.log(`onProfilePicChange file size: ${(file.size / 1024 / 1024).toFixed(2)} MB`)
     if (!file.type.startsWith('image/')) {
-      console.error('onProfilePicChange file is not an image.')
+      errToUser('onProfilePicChange file is not an image.')
       return false
     }
     if (file.size / 1024 / 1024 > maxFileSize) {
-      console.error(`onProfilePicChange file size is ${(file.size / 1024 / 1024).toFixed(2)} MB. Which is more than allowed ${maxFileSize / 1024 / 1024} MB.`)
+      errToUser(`onProfilePicChange file size is ${(file.size / 1024 / 1024).toFixed(2)} MB. Which is more than allowed ${maxFileSize / 1024 / 1024} MB.`)
       return false
     }
     console.log('onProfilePicChange file is all right.')
@@ -70,7 +75,7 @@ const onProfilePicChange = () => {
         img.onload = async () => {
             const [width, height] = [img.width, img.height]
             if (width < minWidth || width > maxWidth || height < minHeight || height > maxHeight) {
-                console.error(`onProfilePicChange image size is not correct. width: ${width}, height: ${height}. Allowed range is ${minWidth}x${minHeight} - ${maxWidth}x${maxHeight}.`)
+                errToUser(`onProfilePicChange image size is not correct. width: ${width}, height: ${height}. Allowed range is ${minWidth}x${minHeight} - ${maxWidth}x${maxHeight}.`)
                 return false
             }
             imgPreview.src = e.target.result // this sets the image preview
