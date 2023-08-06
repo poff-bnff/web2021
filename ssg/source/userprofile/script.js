@@ -4,35 +4,44 @@ const formImageInput = document.getElementById("profileImg")
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
-const onProfilePicChange = () => {
-    const submitImage = async () => {
-        console.log(`'submitImage' called at ${new Date().toISOString()}`)
-        // return true in 2 seconds
-        const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
-        const formData = new FormData()
-        formData.append('picture', formImageInput.files[0])
-        formData.append('firstName', firstName.value)
-        formData.append('lastName', lastName.value)
-        console.log('Formdata:')
-        for (const pair of formData.entries()) {
-          console.log(pair[0] + ', ' + pair[1])
-        }
-
-        const body = formData
-        const url = `${huntAuthDomain}/api/profile`
-        const options = { method: 'PUT', headers, body }
-        return await fetch(url, options)
+const submitForm = async (body) => {
+    const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
+    const url = `${huntAuthDomain}/api/profile`
+    const options = { method: 'PUT', headers, body }
+    return await fetch(url, options)
         .then(response => {
-            console.log('submitImage response', response)
-            return response.json()
+            // console.log('submitImage response', response)
+            return response.json();
         })
         .then(data => {
-            console.log('submitImage data', data)
-            return reloadUser()
+            // console.log('submitImage data', data)
+            return reloadUser();
         })
         .catch(error => {
             console.error('submitImage error', error)
-        })
+        });
+}
+
+const submitField = async () => {
+    console.log('submitField', this.name, this.value, this)
+    const formData = new FormData()
+    formData.append(this.name, this.value)
+    return await submitForm(formData)
+}
+
+const onProfilePicChange = () => {
+    const submitImage = async () => {
+        const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
+        const formData = new FormData()
+        formData.append('picture', formImageInput.files[0])
+        // formData.append('firstName', firstName.value)
+        // formData.append('lastName', lastName.value)
+        // console.log('Formdata:')
+        // for (const pair of formData.entries()) {
+        //   console.log(pair[0] + ', ' + pair[1])
+        // }
+
+        return await submitForm(formData)
     }
 
     const maxFileSize = 5 * 1024 * 1024 // MB
@@ -73,6 +82,7 @@ const onProfilePicChange = () => {
     }
     reader.readAsDataURL(file)
 }
+
 
 function loadUserInfo() {
 
