@@ -92,7 +92,7 @@ function loadUserInfo() {
     let webUser = getUser()
     const user_profile = webUser.user_profile
 
-    if (webUser.profile_filled) {
+    if (webUser.profileFilled) {
         document.getElementById('profileFilledMessage').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
