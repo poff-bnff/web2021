@@ -1,5 +1,5 @@
 const imgPreview = document.getElementById("imgPreview");
-const formImageInput = document.getElementById("profile_pic")
+const formImageInput = document.getElementById("profileImg")
 
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()

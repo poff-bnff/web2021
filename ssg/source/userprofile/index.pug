@@ -15,12 +15,7 @@ block content
             div.form#thisUserProfile
                 img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
                 div.form_group
-
-                    if process.env['DOMAIN'] !== 'industry.poff.ee'
-                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
-                    else
-                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
-
+                    label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
                     div#imgError
                     input.input_file#profileImg(type='file' name='filename' onchange ='onProfilePicChange()' accept="image/*")
                 div.form_group
