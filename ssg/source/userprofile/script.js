@@ -8,11 +8,23 @@ const onProfilePicChange = () => {
     const submitImage = () => {
         console.log(`'submitImage' called at ${new Date().toISOString()}`)
         // return true in 2 seconds
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.log(`'submitImage' resolved at ${new Date().toISOString()}`)
-                resolve(true)
-            }, 2000)
+        const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
+        const formData = new FormData()
+        formData.append('file', formImageInput.files[0])
+        const body = formData
+        const url = `${huntAuthDomain}/api/profile`
+        const options = { method: 'PUT', headers, body }
+        fetch(url, options)
+        .then(response => {
+            console.log(`'submitImage' response status: ${response.status}`)
+            return response.json()
+        })
+        .then(data => {
+            console.log(`'submitImage' response data: ${JSON.stringify(data)}`)
+            return true
+        })
+        .catch(error => {
+            console.error(`'submitImage' error: ${error}`)
         })
     }
 
