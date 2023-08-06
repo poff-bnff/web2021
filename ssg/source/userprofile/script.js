@@ -42,7 +42,6 @@ const onProfilePicChange = () => {
                 console.error(`onProfilePicChange image size is not correct. width: ${width}, height: ${height}. Allowed range is ${minWidth}x${minHeight} - ${maxWidth}x${maxHeight}.`)
                 return false
             }
-            submitButton.disabled = false
             imgPreview.src = e.target.result // this sets the image preview
             // change image preview style to "not active"
             imgPreview.style.opacity = 0.5
