@@ -46,7 +46,7 @@ const userMe = async () => {
 
     const response = await fetch(url, { headers })
     const data = await response.json()
-    console.log('inside userMe', data)
+    // console.log('inside userMe', data)
     return data
 }
 
