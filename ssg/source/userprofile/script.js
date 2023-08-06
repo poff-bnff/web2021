@@ -9,13 +9,10 @@ const submitForm = async (body) => {
     const url = `${huntAuthDomain}/api/profile`
     const options = { method: 'PUT', headers, body }
     return await fetch(url, options)
-        .then(response => {
-            // console.log('submitImage response', response)
-            return response.json();
-        })
-        .then(data => {
-            // console.log('submitImage data', data)
-            return reloadUser();
+        .then(async response => {
+            await reloadUser()
+            loadUserInfo()
+            return response.json()
         })
         .catch(error => {
             console.error('submitImage error', error)
@@ -32,16 +29,8 @@ const submitField = async (DOMId) => {
 
 const onProfilePicChange = () => {
     const submitImage = async () => {
-        const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
         const formData = new FormData()
         formData.append('picture', formImageInput.files[0])
-        // formData.append('firstName', firstName.value)
-        // formData.append('lastName', lastName.value)
-        // console.log('Formdata:')
-        // for (const pair of formData.entries()) {
-        //   console.log(pair[0] + ', ' + pair[1])
-        // }
-
         return await submitForm(formData)
     }
 
@@ -121,87 +110,6 @@ function loadUserInfo() {
         }
     }
 }
-
-async function sendUserProfile() {
-    // console.log('updating user profile.....')
-
-    //profile_pic_to_send= no profile picture saved
-    //Kui pilt saadetakse siis profile_pic_to_send= this users picture is in S3
-
-    let saveProfileButton = document.getElementById(`saveProfileButton`)
-    saveProfileButton.disabled = true
-    let previousInnerHTML = saveProfileButton.innerHTML
-    saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-
-    let pictureInfo = "no profile picture saved"
-
-    const request = new XMLHttpRequest();
-
-    const formData = new FormData();
-
-    let userToSend = {
-        // picture: pictureInfo,
-        firstName: firstName.value,
-        lastName: lastName.value,
-        gender: gender.value,
-        birthdate: dob.value,
-        phoneNr: phoneNr.value,
-        address: `${countrySelection.value}, ${citySelection.value}`,
-    }
-
-    if (profile_pic_to_send !== "empty") {
-        formData.append(`files.picture`, profile_pic_to_send, profile_pic_to_send.name);
-    }
-    // Todo: see on vana kood, mis saadab kogu userToSend objekti formData sees.
-    //  See on liigne ja kuulub kustutamisele.
-    formData.append('data', JSON.stringify(userToSend));
-    // Instead of packing the userToSend object into the formData,
-    // lets append each key-value pair separately.
-    for (let key in userToSend) {
-        formData.append(key, userToSend[key])
-    }
-    // Log form data
-    console.log('Formdata:');
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
-
-    // if (profile_pic_to_send !== "empty") {
-    //     pictureInfo = 'this users picture is in S3'
-    //     console.log('SENDING PIC!');
-
-    //     // let picUploadResult = await uploadPic()
-    //     // let picId = picUploadResult[0].id
-    //     // userToSend.picture = picId
-    // } else if (webUser.picture === 'this users picture is in S3') {
-    //     pictureInfo = 'this users picture is in S3'
-    // }
-
-    // userToSend = JSON.stringify(userToSend)
-    // // console.log("kasutaja profiil mida saadan ", userToSend);
-
-    let response = await (await fetch(`${huntAuthDomain}/api/profile`, {
-        method: 'PUT',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
-        },
-        body: formData
-    }))
-
-    if (response.status === 200) {
-        document.getElementById('profileSent').style.display = 'block'
-        if (localStorage.getItem('preLoginUrl')) {
-            window.open(localStorage.getItem('preLoginUrl'), '_self')
-            localStorage.removeItem('preLoginUrl')
-        }
-    }
-
-    saveProfileButton.disabled = false
-    saveProfileButton.innerHTML = previousInnerHTML
-
-}
-
-
 
 function validateForm() {
 
