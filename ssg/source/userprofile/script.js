@@ -11,20 +11,27 @@ const onProfilePicChange = () => {
         const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
         const formData = new FormData()
         formData.append('file', formImageInput.files[0])
+        formData.append('firstName', firstName.value)
+        formData.append('lastName', lastName.value)
+        console.log('Formdata:')
+        for (const pair of formData.entries()) {
+          console.log(pair[0] + ', ' + pair[1])
+        }
+
         const body = formData
         const url = `${huntAuthDomain}/api/profile`
         const options = { method: 'PUT', headers, body }
         return await fetch(url, options)
         .then(response => {
-            console.log(`'submitImage' response status: ${response.status}`)
+            console.log('submitImage response', response)
             return response.json()
         })
         .then(data => {
-            console.log(`'submitImage' response data: ${JSON.stringify(data)}`)
+            console.log('submitImage data', data)
             return true
         })
         .catch(error => {
-            console.error(`'submitImage' error: ${error}`)
+            console.error('submitImage error', error)
         })
     }
 
