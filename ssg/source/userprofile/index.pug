@@ -47,17 +47,17 @@ block content
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
                 div.form_group
                     label.login_label= self.label.userprofile.address
-                    .loader
-                        span.loader__element
-                        span.loader__element
-                        span.loader__element
-                        span.loader__element
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
                     select.login_input#country.form-control.gds-cr(class='c_valid', country-data-region-id='city', country-data-default-value='EE', data-language=self.locale, required='', onchange='fieldChanged(this.id)', name='country')
                 div.form_group
                     label.control-label.login_label(for='city')= self.label.userprofile.city
                     select.login_input#city.form-control(required='', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', name='city')
+                .loader(style='display: none')
+                    span.loader__element
+                    span.loader__element
+                    span.loader__element
+                    span.loader__element
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
@@ -84,26 +84,20 @@ block content
             animation: wiggle  2s linear infinite;
         }
         @keyframes wiggle  {
-            0%, 7% {
-                transform: rotateZ(0);
-            }
-            15% {
-                transform: rotateZ(-15deg);
-            }
-            20% {
-                transform: rotateZ(10deg);
+            0% {
+                transform: color(0, 0, 0);
             }
             25% {
-                transform: rotateZ(-10deg);
+                transform: color(255, 0, 0);
             }
-            30% {
-                transform: rotateZ(6deg);
+            50% {
+                transform: color(0, 255, 0);
             }
-            35% {
-                transform: rotateZ(-4deg);
+            75% {
+                transform: color(0, 0, 255);
             }
-            40%, 100% {
-                transform: rotateZ(0);
+            100% {
+                transform: color(0, 0, 0);
             }
         }
 
@@ -124,10 +118,10 @@ block content
         .loader__element {
             width: 10px;
             height: 10px;
-            background-color: #fff;
+            background-color: rgb(150 150 100 / 50%);
             border-radius: 50%;
             margin: 0 5px;
-            animation: loader 1s ease-in-out infinite;
+            animation: loader 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
         }
 
         .loader__element:nth-child(2) {
@@ -143,13 +137,15 @@ block content
         }
 
         @keyframes loader {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            100% { transform: scale(2); }
+
+            //- 0% {
+            //-     transform: translateY(0);
+            //- }
+            //- 50% {
+            //-     transform: translateY(-20px);
+            //- }
+            //- 100% {
+            //-     transform: translateY(0);
+            //- }
         }
