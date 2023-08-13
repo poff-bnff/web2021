@@ -8,6 +8,7 @@ const submitForm = async (body) => {
     const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
     const url = `${huntAuthDomain}/api/profile`
     const options = { method: 'PUT', headers, body }
+    console.log('submitForm', url, body.values())
     return await fetch(url, options)
         .then(async response => {
             await reloadUser()
