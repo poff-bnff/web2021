@@ -112,7 +112,7 @@ function loadUserInfo() {
         if (user_profile.lastName) { lastName.value = user_profile.lastName }
         if (user_profile.gender) { gender.value = user_profile.gender }
         if (user_profile.phoneNr) { phoneNr.value = user_profile.phoneNr }
-        if (user_profile.birthdate) { dob.value = user_profile.birthdate }
+        if (user_profile.birthdate) { birthdate.value = user_profile.birthdate }
         if (user_profile.address) {
             let address = user_profile.address.split(", ")
             setTimeout(function () {
