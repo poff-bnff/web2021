@@ -42,8 +42,8 @@ block content
                     div#dobHelp(class='valid')= self.label.userprofile.ageHelp
                     div#dateHelp(class='valid')= self.label.userprofile.dateHelp
                 div.form_group
-                    label.login_label(for='phone')= self.label.userprofile.phone
-                    input.login_input#phone.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phone' onchange='fieldChanged(this.id)' onblur='submitField(this.id)' autocomplete='off')
+                    label.login_label(for='phoneNr')= self.label.userprofile.phoneNr
+                    input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phoneNr}` name='phoneNr' onchange='fieldChanged(this.id)' onblur='submitField(this.id)' autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
                 div.form_group
                     label.login_label= self.label.userprofile.address
