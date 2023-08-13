@@ -37,6 +37,7 @@ const submitField = async (DOMId) => {
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
     field.classList.remove('submitting')
+    console.log('submitField', field.name, field.value, field, submitted)
     return submitted
 }
 
@@ -123,7 +124,7 @@ function loadUserInfo() {
             setTimeout(function () {
                 country.value = address[0]
                 city.value = address[1]
-            }, 2000)
+            }, 942)
         }
     }
 
