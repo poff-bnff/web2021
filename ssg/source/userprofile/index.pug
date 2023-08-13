@@ -53,7 +53,7 @@ block content
                 div.form_group
                     label.control-label.login_label(for='city')= self.label.userprofile.city
                     select.login_input#city.form-control(required='', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', name='city')
-                .loader(style='display: none')
+                .loader#loader(style='display: none')
                     span.loader__element
                     span.loader__element
                     span.loader__element
