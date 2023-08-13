@@ -37,22 +37,22 @@ block content
                         option.login_input(class='invalid' value='' selected='')= self.label.userprofile.select
                     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                 div.form_group
-                    label.login_label(for='dob')= self.label.userprofile.birthday
-                    input.login_input#dob.form-control(type='date' name='dob', placeholder ='yyyy-mm-dd' max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    label.login_label(for='birthdate')= self.label.userprofile.birthday
+                    input.login_input#birthdate.form-control(type='date' name='birthdate', placeholder ='yyyy-mm-dd' max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
                     div#dobHelp(class='valid')= self.label.userprofile.ageHelp
                     div#dateHelp(class='valid')= self.label.userprofile.dateHelp
                 div.form_group
-                    label.login_label(for='phoneNr')= self.label.userprofile.phone
-                    input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phoneNr' onchange='fieldChanged(this.id)' onblur='submitField(this.id)' autocomplete='off')
+                    label.login_label(for='phone')= self.label.userprofile.phone
+                    input.login_input#phone.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phone' onchange='fieldChanged(this.id)' onblur='submitField(this.id)' autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
                 div.form_group
                     label.login_label= self.label.userprofile.address
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
-                    select.login_input#countrySelection.form-control.gds-cr(class='c_valid' country-data-region-id='citySelection' country-data-default-value='EE' data-language=self.locale required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    select.login_input#country.form-control.gds-cr(class='c_valid' country-data-region-id='city' country-data-default-value='EE' data-language=self.locale required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
                 div.form_group
-                    label.control-label.login_label(for='citySelection')= self.label.userprofile.city
-                    select.login_input#citySelection.form-control(required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    label.control-label.login_label(for='city')= self.label.userprofile.city
+                    select.login_input#city.form-control(required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
@@ -101,6 +101,3 @@ block content
                 transform: rotateZ(0);
             }
         }
-
-
-
