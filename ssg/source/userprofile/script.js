@@ -8,7 +8,7 @@ const submitForm = async (body) => {
     const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
     const url = `${huntAuthDomain}/api/profile`
     const options = { method: 'PUT', headers, body }
-    console.log('submitForm', url, body.values())
+    console.log('submitForm', url, body.getAll())
     return await fetch(url, options)
         .then(async response => {
             await reloadUser()
@@ -33,10 +33,11 @@ const submitField = async (DOMId) => {
     if (field.name === 'city') {
         formData.append('country', country.value)
     }
-    await submitForm(formData)
+    const submitted = await submitForm(formData)
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
     field.classList.remove('submitting')
+    return submitted
 }
 
 const fieldChanged = (DOMId) => {
