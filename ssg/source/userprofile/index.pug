@@ -15,44 +15,44 @@ block content
                 div.form_group
                     label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
                     div#imgError
-                    input.input_file#profileImg(type='file' name='filename' onclick='this.value=null' onchange='onProfilePicChange()' accept='image/*')
+                    input.input_file#profileImg(type='file', name='filename', onclick='this.value=null', onchange='onProfilePicChange()', accept='image/*')
                 div.form_group
                     label.login_label(for='email')= self.label.userprofile.email
                     div#email.dark(name='email')
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
                 div.form_group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete='off' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}`, name='firstName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                 div.form_group
                     label.login_label(for='lastName')= self.label.userprofile.lastName
-                    input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete='off' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}`, name='lastName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                 div.form_group
                     label.login_label(for='gender')= self.label.userprofile.gender
-                    select.login_input#gender(name='gender' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    select.login_input#gender(name='gender', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                         option.login_input(value='male')= self.label.userprofile.genderM
                         option.login_input(value='female')= self.label.userprofile.genderF
                         option.login_input(value='other')= self.label.userprofile.genderO
-                        option.login_input(class='invalid' value='' selected='')= self.label.userprofile.select
+                        option.login_input(class='invalid', value='', selected='')= self.label.userprofile.select
                     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                 div.form_group
                     label.login_label(for='birthdate')= self.label.userprofile.birthday
-                    input.login_input#birthdate.form-control(type='date' name='birthdate', placeholder ='yyyy-mm-dd' max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    input.login_input#birthdate.form-control(type='date', name='birthdate', placeholder='yyyy-mm-dd', max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#dobHelp(class='valid')= self.label.userprofile.ageHelp
                     div#dateHelp(class='valid')= self.label.userprofile.dateHelp
                 div.form_group
                     label.login_label(for='phoneNr')= self.label.userprofile.phoneNr
-                    input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phoneNr}` name='phoneNr' onchange='fieldChanged(this.id)' onblur='submitField(this.id)' autocomplete='off')
+                    input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
                 div.form_group
                     label.login_label= self.label.userprofile.address
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
-                    select.login_input#country.form-control.gds-cr(class='c_valid' country-data-region-id='city' country-data-default-value='EE' data-language=self.locale required='' onchange='fieldChanged(this.id)')
+                    select.login_input#country.form-control.gds-cr(class='c_valid', country-data-region-id='city', country-data-default-value='EE', data-language=self.locale, required='', onchange='fieldChanged(this.id)', name='country')
                 div.form_group
                     label.control-label.login_label(for='city')= self.label.userprofile.city
-                    select.login_input#city.form-control(required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    select.login_input#city.form-control(required='', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', name='city')
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
