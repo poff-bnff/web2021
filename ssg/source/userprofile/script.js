@@ -29,6 +29,9 @@ const submitField = async (DOMId) => {
     // console.log('submitField', field.name, field.value, field)
     const formData = new FormData()
     formData.append(field.name, field.value)
+    if (field.name === 'city') {
+        formData.append('country', country.value)
+    }
     await submitForm(formData)
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)

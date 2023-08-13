@@ -49,7 +49,7 @@ block content
                     label.login_label= self.label.userprofile.address
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
-                    select.login_input#country.form-control.gds-cr(class='c_valid' country-data-region-id='city' country-data-default-value='EE' data-language=self.locale required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
+                    select.login_input#country.form-control.gds-cr(class='c_valid' country-data-region-id='city' country-data-default-value='EE' data-language=self.locale required='' onchange='fieldChanged(this.id)')
                 div.form_group
                     label.control-label.login_label(for='city')= self.label.userprofile.city
                     select.login_input#city.form-control(required='' onchange='fieldChanged(this.id)' onblur='submitField(this.id)')
