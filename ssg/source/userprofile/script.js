@@ -8,7 +8,6 @@ const submitForm = async (body) => {
     const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
     const url = `${huntAuthDomain}/api/profile`
     const options = { method: 'PUT', headers, body }
-    console.log('submitForm', url, body)
     return await fetch(url, options)
         .then(async response => {
             await reloadUser()
@@ -23,11 +22,9 @@ const submitForm = async (body) => {
 const submitField = async (DOMId) => {
     const field = document.getElementById(DOMId)
     if (field.getAttribute('changed') !== 'true') {
-        console.log('submitField', field.name, field.value, field, 'not changed')
         return
     }
     field.classList.add('submitting')
-    // console.log('submitField', field.name, field.value, field)
     const formData = new FormData()
     formData.append(field.name, field.value)
     if (field.name === 'city') {
@@ -37,13 +34,11 @@ const submitField = async (DOMId) => {
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
     field.classList.remove('submitting')
-    console.log('submitField', field.name, field.value, field, submitted)
     return submitted
 }
 
 const fieldChanged = (DOMId) => {
     const field = document.getElementById(DOMId)
-    console.log('fieldChanged', field.name, field.value, field)
     field.style.backgroundColor = 'yellow'
     field.setAttribute('changed', true)
 }
@@ -114,22 +109,14 @@ function loadUserInfo() {
     // console.log("täidan ankeedi " + webUser.name + "-i cognitos olevate andmetega.....")
     email.innerHTML = webUser.email
     if (user_profile) {
-        if (user_profile.firstName) { firstName.value = user_profile.firstName }
-        if (user_profile.lastName) { lastName.value = user_profile.lastName }
-        if (user_profile.gender) { gender.value = user_profile.gender }
-        if (user_profile.phoneNr) { phoneNr.value = user_profile.phoneNr }
-        if (user_profile.birthdate) { birthdate.value = user_profile.birthdate }
-        if (user_profile.address) {
-            let address = user_profile.address.split(", ")
-            setTimeout(function () {
-                country.value = address[0]
-                city.value = address[1]
-            }, 942)
-        }
-    }
-
-    if (user_profile) {
-
+        firstName.value = user_profile.firstName || ''
+        lastName.value = user_profile.lastName || ''
+        gender.value = user_profile.gender || ''
+        phoneNr.value = user_profile.phoneNr || ''
+        birthdate.value = user_profile.birthdate || ''
+        let address = user_profile.address ? user_profile.address.split(", ") : ['', '']
+        country.value = user_profile.country || address[0]
+        city.value = user_profile.city || address[1]
         if (pictureUrl = getProfilePicture()) {
             imgPreview.src = pictureUrl
         }
