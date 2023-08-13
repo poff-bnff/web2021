@@ -19,22 +19,11 @@ const submitForm = async (body) => {
         });
 }
 
-var submitsInProgress = 0
-const controlLoader = (incrDecr) => {
-    submitsInProgress += incrDecr
-    if (submitsInProgress > 0) {
-        document.getElementById('loader').style.display = 'block'
-    } else {
-        document.getElementById('loader').style.display = 'none'
-    }
-}
-
 const submitField = async (DOMId) => {
     const field = document.getElementById(DOMId)
     if (field.getAttribute('changed') !== 'true') {
         return
     }
-    controlLoader(1)
     field.classList.add('submitting')
     const formData = new FormData()
     formData.append(field.name, field.value)
@@ -45,7 +34,6 @@ const submitField = async (DOMId) => {
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
     field.classList.remove('submitting')
-    controlLoader(-1)
     return submitted
 }
 
