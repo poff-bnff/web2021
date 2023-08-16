@@ -4,10 +4,8 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!isUserTokenValid()) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),

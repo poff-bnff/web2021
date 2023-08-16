@@ -4,10 +4,9 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!isUserTokenValid()) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
+
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
@@ -54,13 +53,6 @@ function setSearchParams() {
         window.history.pushState('', document.title, page);
     }
 }
-
-document.onreadystatechange = () => {
-    if (document.readyState === 'complete') {
-        pageLoaded = true
-        pageLoadingAndUserProfileFetched()
-    }
-};
 
 function pageLoadingAndUserProfileFetched() {
     if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
@@ -175,46 +167,6 @@ function toggleFilters(exclude_selector_name, ids) {
 
 }
 
-search_input.addEventListener('keyup', e => {
-    toggleAll();
-});
-
-selectors.programmes.addEventListener('change', e => {
-    toggleAll('programmes');
-});
-
-selectors.languages.addEventListener('change', e => {
-    toggleAll('languages');
-});
-
-selectors.countries.addEventListener('change', e => {
-    toggleAll('countries');
-});
-
-selectors.subtitles.addEventListener('change', e => {
-    toggleAll('subtitles');
-});
-
-selectors.premieretypes.addEventListener('change', e => {
-    toggleAll('premieretypes');
-});
-
-selectors.towns.addEventListener('change', e => {
-    toggleAll('towns');
-});
-
-selectors.cinemas.addEventListener('change', e => {
-    toggleAll('cinemas');
-});
-
-selectors.dates.addEventListener('change', e => {
-    toggleAll('dates');
-});
-
-selectors.times.addEventListener('change', e => {
-    toggleAll('times');
-});
-
 function unselect_all() {
     search_input.value = '';
     selectors.programmes.selectedIndex = 0;
@@ -301,3 +253,54 @@ function execute_filters() {
     // console.log(filtered.map(element => element.id));
     return filtered
 }
+
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        pageLoaded = true
+        pageLoadingAndUserProfileFetched()
+    }
+};
+
+search_input.addEventListener('keyup', e => {
+    toggleAll();
+});
+
+selectors.programmes.addEventListener('change', e => {
+    toggleAll('programmes');
+});
+
+selectors.languages.addEventListener('change', e => {
+    toggleAll('languages');
+});
+
+selectors.countries.addEventListener('change', e => {
+    toggleAll('countries');
+});
+
+selectors.subtitles.addEventListener('change', e => {
+    toggleAll('subtitles');
+});
+
+selectors.premieretypes.addEventListener('change', e => {
+    toggleAll('premieretypes');
+});
+
+selectors.towns.addEventListener('change', e => {
+    toggleAll('towns');
+});
+
+selectors.cinemas.addEventListener('change', e => {
+    toggleAll('cinemas');
+});
+
+selectors.dates.addEventListener('change', e => {
+    toggleAll('dates');
+});
+
+selectors.times.addEventListener('change', e => {
+    toggleAll('times');
+});
+
+
+reloadUser()
