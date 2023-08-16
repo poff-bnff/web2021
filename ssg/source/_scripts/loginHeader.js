@@ -1,6 +1,5 @@
 var pageURL = location.origin
 // var userprofilePageURL = pageURL + '/userprofile'
-var userProfile
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
@@ -59,27 +58,28 @@ function savePreLoginUrl() {
 
 // TODO: this function is too abstract and does not belong here
 //       should be torn to pieces and moved to specific pages
-function useUserData(userProf) {
-    console.log('useUserData', userProf);
+function useUserData() {
+    const webUser = getUser()
+    console.log('useUserData', webUser);
 
     // TODO: this doesnot belong here - has to be moved to specific pages
     if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
-        if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
+        if (industryPage && webUser.provider.split(',').includes('eventivalindustry') && webUser.industry_profile && webUser.industry_profile.name) {
             try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.industry_profile.name
             } catch (err) {
                 // null
             }
-        } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
+        } else if (webUser.user_profile && webUser.user_profile.firstName && webUser.provider) {
             try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.user_profile.firstName
             } catch (err) {
                 // null
             }
 
         } else {
             try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.email
             } catch (err) {
                 // null
             }
@@ -279,6 +279,6 @@ document.addEventListener('userProfileLoaded', function (e) {
 
     // TODO: left here right now for compatibility reasons so that we can
     //       remove it from other places one by one
-    useUserData(userProfile)
+    useUserData()
 })
 
