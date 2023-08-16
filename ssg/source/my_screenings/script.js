@@ -55,7 +55,6 @@ function setSearchParams() {
 }
 
 function pageLoadingAndUserProfileFetched() {
-    if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
     const loading = document.getElementById('loading');
     // const content = document.getElementById('content');
     const filters = document.getElementById('filters');
