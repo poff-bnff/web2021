@@ -60,4 +60,4 @@ async function fetchMyPasses() {
 }
 
 
-
+fetchMyPasses()
