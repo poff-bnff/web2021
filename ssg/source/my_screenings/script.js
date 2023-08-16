@@ -20,21 +20,6 @@ const selectors = {
     times: document.getElementById('times_select')
 }
 
-function urlSelect() {
-    if (urlParams.getAll.length) {
-        for (const [ix, params] of urlParams) {
-            if (selectors[ix]) {
-                for (const option of selectors[ix].options) {
-                    if (option.innerHTML === params) {
-                        selectors[ix].value = option.value
-                    }
-                }
-            }
-        }
-        toggleAll();
-    }
-}
-
 function setSearchParams() {
     let urlParameters = ''
     let firstParamDone = false
@@ -54,28 +39,12 @@ function setSearchParams() {
     }
 }
 
-function pageLoadingAndUserProfileFetched() {
-    const loading = document.getElementById('loading');
-    // const content = document.getElementById('content');
-    const filters = document.getElementById('filters');
-    urlSelect()
-    filters.style.display = "grid"
-    loading.style.display = "none"
-    // content.style.display = ""
-
-    for (img of document.images) {
-        img_src = img.src || ''
-        if (img_src.includes('thumbnail_')) {
-                img.src = img_src.replace('thumbnail_', '')
-        }
-    }
-}
-
 function toggleAll(exclude_selector_name) {
     setSearchParams()
+    const webUser = getUser()
     // Kui on kasutaja profiilis lemmikseansid, siis kuvab pärast filtreid järelejäänud seansse nende alusel
-    if (userProfile && userProfile.My.screenings && userProfile.My.screenings.length) {
-        var userMyScreeningsIds = getUniqueFavoritesArray(userProfile.My.screenings, 'schedule', 'screenings')
+    if (webUser && webUser.My.screenings && webUser.My.screenings.length) {
+        var userMyScreeningsIds = getUniqueFavoritesArray(webUser.My.screenings, 'schedule', 'screenings')
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyScreeningsIds.includes(id))
     } else {
@@ -102,6 +71,39 @@ function toggleAll(exclude_selector_name) {
     // filtreeri filtreid
     toggleFilters(exclude_selector_name, ids)
 }
+
+function urlSelect() {
+    if (urlParams.getAll.length) {
+        for (const [ix, params] of urlParams) {
+            if (selectors[ix]) {
+                for (const option of selectors[ix].options) {
+                    if (option.innerHTML === params) {
+                        selectors[ix].value = option.value
+                    }
+                }
+            }
+        }
+        toggleAll();
+    }
+}
+
+function pageLoadingAndUserProfileFetched() {
+    const loading = document.getElementById('loading');
+    // const content = document.getElementById('content');
+    const filters = document.getElementById('filters');
+    urlSelect()
+    filters.style.display = "grid"
+    loading.style.display = "none"
+    // content.style.display = ""
+
+    for (img of document.images) {
+        img_src = img.src || ''
+        if (img_src.includes('thumbnail_')) {
+                img.src = img_src.replace('thumbnail_', '')
+        }
+    }
+}
+
 
 function toggleFilters(exclude_selector_name, ids) {
 
