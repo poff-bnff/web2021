@@ -256,6 +256,7 @@ function execute_filters() {
 
 
 document.onreadystatechange = () => {
+    console.log(`document.readyState: ${document.readyState}`)
     if (document.readyState === 'complete') {
         pageLoaded = true
         pageLoadingAndUserProfileFetched()
