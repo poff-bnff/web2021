@@ -20,4 +20,4 @@ document.onreadystatechange = () => {
 
 reloadUser()
 const webUser = getUser()
-console.log(`My screenings: ${webUser.My.screenings}`)
+console.log('My screenings:', webUser.My.screenings)
