@@ -202,7 +202,6 @@ const isUserTokenValid = () => {
     return validToken;
 }
 
-
 // ---- Self-executing functions ----
 
 //
@@ -218,9 +217,7 @@ const isUserTokenValid = () => {
     if (jwt !== null && jwt !== undefined && jwt !== '') {
         localStorage.setItem('ID_TOKEN', jwt)
         console.log(`set ID_TOKEN: ${jwt}`)
-        let userProfile = await userMe()
-        console.log(`set USER_PROFILE: ${JSON.stringify(userProfile)}`)
-        localStorage.setItem('USER_PROFILE', JSON.stringify(userProfile))
+        await reloadUser()
         url.searchParams.delete('jwt')
         window.open(url.toString(), '_self')
     }

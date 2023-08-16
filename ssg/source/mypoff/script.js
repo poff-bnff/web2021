@@ -59,5 +59,5 @@ async function fetchMyPasses() {
     }
 }
 
-
+reloadUser()
 fetchMyPasses()
