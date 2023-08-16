@@ -169,6 +169,7 @@ const getUser = () => {
 }
 
 const reloadUser = async () => {
+    console.log('reloadUser')
     const webUser = await userMe()
     localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
     return webUser
@@ -216,7 +217,6 @@ const isUserTokenValid = () => {
 
     if (jwt !== null && jwt !== undefined && jwt !== '') {
         localStorage.setItem('ID_TOKEN', jwt)
-        console.log(`set ID_TOKEN: ${jwt}`)
         await reloadUser()
         url.searchParams.delete('jwt')
         window.open(url.toString(), '_self')
