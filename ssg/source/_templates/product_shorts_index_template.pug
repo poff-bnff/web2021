@@ -23,7 +23,7 @@ block content
             br
             div.payment
                 button#buybutton.btn.btn-primary(onclick=`checkIfPasswordBuyer()`) OSTA
-                button#directToLoginButton.btn.btn-primary(onclick=`directToLogin(), savePreLoginUrl()`) Ostmiseks logi sisse
+                button#directToLoginButton.btn.btn-primary(onclick='requireLogin()') Ostmiseks logi sisse
                 button#directToaddPicture.btn.btn-primary(onclick=`directToUserProfile(), savePreLoginUrl()`) Ostmiseks lisa endast pilt
                 button#directToFillProfile.btn.btn-primary(onclick=`directToUserProfile(), savePreLoginUrl()`) Ostmiseks täida profiil lõpuni
                 div#paymentLinks

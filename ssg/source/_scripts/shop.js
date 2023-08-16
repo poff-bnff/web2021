@@ -226,10 +226,6 @@ function availability() {
     });
 }
 
-function directToLogin() {
-    window.open(location.origin + '/login', '_self')
-}
-
 function directToUserProfile() {
     window.open(location.origin + '/userprofile', '_self')
 }
