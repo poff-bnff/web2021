@@ -1,8 +1,5 @@
-
-if (!isUserTokenValid()) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
 
 async function fetchMyPasses() {
 
