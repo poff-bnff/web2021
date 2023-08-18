@@ -11,7 +11,7 @@ body
 
     //- Level 1
     each L1MenuItem in self.data.menu
-        li
+        li.megamenu
             if L1MenuItem.link
                 a(href= `${L1MenuItem.link}`)= L1MenuItem.name
             else
@@ -21,7 +21,7 @@ body
             if L1MenuItem.L2MenuItems.length
                 ul
                     each L2MenuItem in L1MenuItem.L2MenuItems
-                        li
+                        li.megamenu_el
                             if L2MenuItem.link
                                 a(href= `${L2MenuItem.link}`)= L2MenuItem.name
                             else
@@ -31,7 +31,7 @@ body
                             if L2MenuItem.L3MenuItems.length
                                 ul
                                     each L3MenuItem in L2MenuItem.L3MenuItems
-                                        li
+                                        li.megamenu_sub_el
                                             if L3MenuItem.link
                                                 a(href= `${L3MenuItem.link}`)= L3MenuItem.name
                                             else

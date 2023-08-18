@@ -197,3 +197,4 @@ ssg/assets/img/.DS_Store
 ssg/assets/.DS_Store
 .DS_Store
 test.*
+.env
