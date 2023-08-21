@@ -4483,41 +4483,53 @@ a:hover > .login_headline
 
     // Megamenu styles in desktop
 
-    .megamenu ul
-        align-items flex-start
+    .megamenu
+        ul
+            align-items flex-start
+        > ul
+            // display none
+            transition opacity 0.5s ease
+            opacity 0
+            pointer-events none
+            position absolute
+            width 100%
+            top 100px
+            left 0
+            background-color white
+            align-items stretch
+            column-gap 30px
+            padding 30px 0
+            border-top 0.5px solid rgba(#999, 0.5)
+        li
+            text-align left
+            padding 0
+            height unset
 
-    .megamenu > ul
-        position absolute
-        width 100%
-        top 100px
-        left 0
-        background-color white
-        align-items stretch
-        column-gap 30px
-        padding 30px 0
+    .megamenu:first-of-type
+        flex-grow 1
+        display flex
+        justify-content flex-end 
     
-    .megamenu li
-        text-align left
-        padding 0
-        height unset
+    .megamenu:hover > ul
+        opacity 1
+        pointer-events auto
+        // display flex
     
     .megamenu_el
         min-width 169px
-        border-left 0.5px solid #999
+        border-left 0.5px solid rgba(#999, 0.5)
+        ul
+            justify-content flex-start
+        a
+            display block
+            padding 10px 42px 8px 14px
+        > a
+            font-weight 400
     
-    .megamenu_el ul
-        justify-content flex-start
-
-    .megamenu_el a
-        display block
-        padding 10px 42px 8px 14px
-    
-    .megamenu_el > a
-        font-weight 400
-    
-    .megamenu_sub_el a
-        text-transform none
-        font-family font_p
+    .megamenu_sub_el 
+        a
+            text-transform none
+            font-family font_p
 
     .grid_footer_row
         grid-area footer

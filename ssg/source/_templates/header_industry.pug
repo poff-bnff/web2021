@@ -50,7 +50,8 @@ header
 
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
-            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu2/index.html`)
+            ul.megamenu_wrapper
+                div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu2/index.html`)
 
         user_menu_hidden(id='user_menu_hidden' style='display: none')
             li.user_menu.dropdown
