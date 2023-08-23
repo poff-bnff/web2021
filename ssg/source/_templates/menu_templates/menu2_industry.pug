@@ -11,7 +11,7 @@ body
 
     //- Level 1
     each L1MenuItem in self.data.menu
-        li.megamenu
+        li.megamenu_item
             if L1MenuItem.link
                 a(href= `${L1MenuItem.link}`)= L1MenuItem.name
             else
@@ -36,3 +36,21 @@ body
                                                 a(href= `${L3MenuItem.link}`)= L3MenuItem.name
                                             else
                                                 a= L3MenuItem.name
+
+    li.megamenu_item.user_menu
+        a.user_menu
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M18.3332 19.25V17.4167C18.3332 16.4442 17.9469 15.5116 17.2592 14.8239C16.5716 14.1363 15.639 13.75 14.6665 13.75H7.33317C6.36071 13.75 5.42808 14.1363 4.74045 14.8239C4.05281 15.5116 3.6665 16.4442 3.6665 17.4167V19.25" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.0002 10.0833C13.0252 10.0833 14.6668 8.44171 14.6668 6.41667C14.6668 4.39162 13.0252 2.75 11.0002 2.75C8.97512 2.75 7.3335 4.39162 7.3335 6.41667C7.3335 8.44171 8.97512 10.0833 11.0002 10.0833Z" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        ul
+            li#logIn.megamenu_el(style={cursor: 'pointer', display: 'none'})
+                a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+            li#logInName.megamenu_el(style={display: 'none'})
+                a#tervitus= self.label.menu.mainGreeting
+            li#myCalendar.megamenu_el(style={cursor: 'pointer'})
+                a(href=`/${lang_path}mycalendar`) My calendar
+            //- li#userProfile(style={cursor: 'pointer', display: 'none'})
+            //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+            li#logOut.megamenu_el(style={cursor: 'pointer', display: 'none'} )
+                a(onclick='logOut()')= self.label.menu.mainLogout

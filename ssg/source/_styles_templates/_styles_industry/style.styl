@@ -156,18 +156,39 @@ h4
 
 // HEADER & NAV --------------------
 
-header
+header.menu
     display grid
     grid-template-columns auto 1fr
+    align-items end
+    min-height 100px
+    font-weight 400
+    padding 2px 30px 0 30px
     background-color clr_header_bg
     width 100%
     height auto
-    // height header_height
-    // text-align center
     position fixed
     z-index 900
-    // display flex
-    // justify-content flex-start
+    ul
+        list-style none
+        margin 0
+    a
+        text-transform uppercase
+        line-height 1.25
+        display block
+        color clr_header_text
+        
+    a:hover
+        color clr_primary_text
+
+// header
+//     display grid
+//     grid-template-columns auto 1fr
+    
+//     // height header_height
+//     // text-align center
+    
+//     // display flex
+//     // justify-content flex-start
 
 .main_menu
     position absolute
@@ -284,14 +305,14 @@ header
     color dark_4
     text-transform none
 
-.org_menu
-    display: none
+// .org_menu
+    // display: none
     // position absolute
     // display inline
     // bottom 0
-    height 1rem
-    padding-bottom .7rem
-    margin-bottom 1rem
+    // height 1rem
+    // padding-bottom .7rem
+    // margin-bottom 1rem
     // right 0
     // padding-right 1rem
     // text-align center
@@ -312,12 +333,13 @@ header
     font-size 14px
     font-family font_h
     color dark_4
-    padding-left 1rem
-    padding-right 1rem
+    // padding-left 1rem
+    // padding-right 1rem
     // padding-right 1rem
     a
         text-decoration none
         font-size 14px
+        color inherit
 
 .user_menu_item
     // display inline
@@ -401,17 +423,15 @@ footer
     text-decoration none
     text-transform uppercase
 
-
-.lang_menu
-    color white_96
-    a
-        color ghost_blue
-        padding-left .6rem
-        padding-right .6rem
+nav.lang_menu a
+    color clr_primary_text
+    padding 0.75rem .625rem
+    font-weight 400
+    line-height 1.25
 
 .logo
-    margin 1rem
-    padding 0
+    // margin 1rem
+    // padding 0
     width 200px
     max-width 240px
 
@@ -4354,136 +4374,77 @@ a:hover > .login_headline
         grid-gap 2rem
         padding calc(2rem + 2vw)
 
-    header
-        display grid
-        grid-template-columns auto 1fr
-        height 100px
+    // Menu styles in desktop
 
-    .main_menu_toggle_label
-            display none
+    // header.menu
+    //     display grid
+    //     grid-template-columns auto 1fr
+    //     align-items end
+    //     min-height 100px
+    //     font-weight 300
+    //     padding 2px 30px 10px 30px
+    //     a
+    //         text-transform uppercase
+            
+    //     a:hover
+    //         color clr_primary_text
+    
+    .logo
+        display block
+        grid-row 1 / 3
+        grid-column 1 / 2
+        width 400px
+        max-width 400px
+        padding 0.75rem 0 22px 0
+        .logo_img
+            transition all 0.2s ease
+    
+    .org_menu
+        grid-row 1 / 2
+        grid-column 1 / 2
+        display flex
+        align-items center
+        .org_item:not(:last-child)
+            padding-right 2rem
 
-    .main_menu
+    .megamenu
+        grid-row 2 / 3
+        grid-column 2 / 3
+        color dark_1
+        > ul
+            display flex
+            margin 0
+        // display flex
+        // justify-content flex-end
+        // align-items flex-end
+        // justify-items flex-end
+        // align-content flex-end
+        // position static
+        // margin 0
+        // padding 0
+        // padding-right 1.2rem
+        // color dark_1
+        // border dashed red
+    
+    // .user_menu
+
+    .lang_menu
+        grid-row 1 / 2
         grid-column 2 / 3
         display flex
         justify-content flex-end
-        align-items flex-end
-        // justify-items flex-end
-        // align-content flex-end
-        position static
-        margin 0
-        padding 0
-        padding-right 1.2rem
-        color dark_1
-        // border dashed red
 
-    .main_menu ul
-        display flex
-        justify-content flex-end
-        align-items flex-end
-        /* border: 1px solid red; */
-
-    .main_menu li
-        /* margin-bottom: 0; */
-        height 100%
-        margin 0
-        padding-left 1rem
-        padding-right 1rem
-        padding-top 1rem
-        padding-bottom 1rem
-        // border 1px solid rgba(255, 255, 255, 0)
-        /* background-color: red; */
-
-    .main_menu ul li.dropdown
-        position relative
-
-    .main_menu ul li.dropdown ul
-        background-color clr_header_bg
-        position absolute
-        right 0
-        padding-left 0
-        width max-content
-        /* display: block; */
-        display none
-
-    .main_menu ul li.dropdown:hover ul
-        display block
-        margin-bottom 5rem
-        /* margin-top: 1rem; */
-
-    .main_menu ul li.dropdown ul li a
-        text-transform uppercase
-
-    .main_menu li:hover
-        background-color clr_header_bg
-        // border-top 1px solid clr_primary
-        /* border-right: 1px solid var(--clr_primary); */
-
-    .main_menu li a:hover
-        color clr_primary_text
-
-    .ul_kaks
-        text-align right
-        padding 0
-        margin 0
-        li
-            padding-top .5rem
-            padding-bottom .5rem
-        li:first-child
-            padding-top 1.618rem
-        li:last-child
-            padding-bottom 1.618rem
-
-    .org_menu
-        display inline-block
-        position fixed
+        // position fixed
         // display inline
-        top 0
-        left 0
-        padding-left 1rem
-        padding-bottom 0
-        margin-bottom 0
-        height 1rem
+        // top 0
+        // right 0
+        // padding-left 1.5rem
+        // padding-right 2rem
+        // height 1rem
         // padding-top .1rem
 
-    .lang_menu
-        position fixed
-        // display inline
-        top 0
-        right 0
-        padding-left 1.5rem
-        padding-right 2rem
-        height 1rem
-        // padding-top .1rem
-
-    .org_item
-        // display inline
-        font-size 14px
-        font-family font_h
-        color dark_4
-        padding-left 1rem
-        padding-right 1rem
-        // padding-right 1rem
-        a
-            text-decoration none
-            font-size 14px
-
-    .user_menu_item
-        display inline
-        // font-size 14px
-        font-family font_h
-        color dark_4
-        test-align right
-        padding-left 1rem
-        padding-right 1rem
-        // padding-right 1rem
-        border 1px solid red
-        a
-            text-decoration none
-            // font-size 14px
-
-    // Megamenu styles in desktop
-
-    .megamenu
+    .megamenu_item
+        padding 0.75rem 1rem 22px 1rem
         ul
             align-items flex-start
         > ul
@@ -4499,37 +4460,129 @@ a:hover > .login_headline
             align-items stretch
             column-gap 30px
             padding 30px 0
-            border-top 0.5px solid rgba(#999, 0.5)
+            border-top 1px solid rgba(#999, 0.5)
+            display flex
+            justify-content flex-end
         li
             text-align left
             padding 0
             height unset
 
-    .megamenu:first-of-type
+    .megamenu_item.user_menu
+        display flex
+        padding 10px 0.5rem 10px 1rem
+        .user_menu
+            cursor text
+
+    .megamenu_item:first-of-type
         flex-grow 1
         display flex
-        justify-content flex-end 
+        justify-content flex-end
     
-    .megamenu:hover > ul
-        opacity 1
-        pointer-events auto
-        // display flex
-    
+    .megamenu_item:hover
+        > a:not([href]):not([class])
+            color clr_primary_text
+        > ul
+            opacity 1
+            pointer-events auto
+            // display flex
+
     .megamenu_el
         min-width 169px
-        border-left 0.5px solid rgba(#999, 0.5)
+        border-left 1px solid rgba(#999, 0.5)
         ul
             justify-content flex-start
+            padding 0
+        > ul
+            flex-direction column
         a
             display block
-            padding 10px 42px 8px 14px
-        > a
-            font-weight 400
+            padding 12px
     
-    .megamenu_sub_el 
-        a
-            text-transform none
-            font-family font_p
+    li.megamenu_sub_el a
+        text-transform none
+        font-weight 300
+        font-family font_p
+
+
+    // .main_menu ul
+    //     display flex
+    //     justify-content flex-end
+    //     align-items flex-end
+    //     /* border: 1px solid red; */
+
+    // .main_menu li
+    //     /* margin-bottom: 0; */
+    //     height 100%
+    //     margin 0
+    //     padding-left 1rem
+    //     padding-right 1rem
+    //     padding-top 1rem
+    //     padding-bottom 1rem
+    //     // border 1px solid rgba(255, 255, 255, 0)
+    //     /* background-color: red; */
+
+    // .main_menu ul li.dropdown
+    //     position relative
+
+    // .main_menu ul li.dropdown ul
+    //     background-color clr_header_bg
+    //     position absolute
+    //     right 0
+    //     padding-left 0
+    //     width max-content
+    //     /* display: block; */
+    //     display none
+
+    // .main_menu ul li.dropdown:hover ul
+    //     display block
+    //     margin-bottom 5rem
+    //     /* margin-top: 1rem; */
+
+    // .main_menu ul li.dropdown ul li a
+    //     text-transform uppercase
+
+    // .main_menu li:hover
+    //     background-color clr_header_bg
+    //     // border-top 1px solid clr_primary
+    //     /* border-right: 1px solid var(--clr_primary); */
+
+    // .main_menu li a:hover
+    //     color clr_primary_text
+
+    // .ul_kaks
+    //     text-align right
+    //     padding 0
+    //     margin 0
+    //     li
+    //         padding-top .5rem
+    //         padding-bottom .5rem
+    //     li:first-child
+    //         padding-top 1.618rem
+    //     li:last-child
+    //         padding-bottom 1.618rem
+
+    
+
+    
+
+    
+
+    // .user_menu_item
+    //     display inline
+    //     // font-size 14px
+    //     font-family font_h
+    //     color dark_4
+    //     test-align right
+    //     padding-left 1rem
+    //     padding-right 1rem
+    //     // padding-right 1rem
+    //     border 1px solid red
+    //     a
+    //         text-decoration none
+    //         // font-size 14px
+    
+    // Megamenu end
 
     .grid_footer_row
         grid-area footer
@@ -4550,25 +4603,25 @@ a:hover > .login_headline
         // height 100vw
         // height calc(80vh - 100px)
 
-    .logo
-        grid-column 1 / 2
-        justify-self start
-        align-self end
-        // display flex
-        // justify-content flex-start
-        // align-items flex-end
-        width 400px
-        max-width 400px
-        // padding-left 1.2rem
-        // padding-bottom .3rem
-        // padding-top .4rem
-        // border 1px solid blue
-        padding 0
-        margin 0
-        margin-top .5rem
-        margin-left 2rem
-        margin-bottom 1.2rem
-        // padding-bottom .2rem
+    // .logo
+    //     grid-column 1 / 2
+    //     justify-self start
+    //     align-self end
+    //     // display flex
+    //     // justify-content flex-start
+    //     // align-items flex-end
+    //     width 400px
+    //     max-width 400px
+    //     // padding-left 1.2rem
+    //     // padding-bottom .3rem
+    //     // padding-top .4rem
+    //     // border 1px solid blue
+    //     padding 0
+    //     margin 0
+    //     margin-top .5rem
+    //     margin-left 2rem
+    //     margin-bottom 1.2rem
+    //     // padding-bottom .2rem
 
     .sponsorriba
         display block
