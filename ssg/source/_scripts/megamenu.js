@@ -1,25 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // setTimeout(function () {
-    //     const megamenuItems = document.querySelectorAll(".megamenu");
-
-    //     console.log(megamenuItems);
-
-    //     Array.from(megamenuItems).forEach(function (item) {
-    //         item.addEventListener("mouseenter", function () {
-    //             item.classList.add("show");
-    //         });
-    //         item.addEventListener("mouseleave", function () {
-    //             item.classList.remove("show");
-    //         });
-    //     });
-    // }, 100);
-
+    // Variables for menu show/hide
     const hamburger = document.getElementById('hamburger');
     const closeMenu = document.getElementById('close_menu');
+    const header = document.querySelector('header.menu');
     const langMenu = document.querySelector('.lang_menu');
     const megamenu = document.querySelector('.megamenu');
+    // Variables for locking/unlocking body when menu open
     const body = document.querySelector('body');
     let bodyScrollTop = 0;
+
+    // Functions to lock/unlock body when menu open
 
     const lockBody = function() {
         if (window.scrollY) {
@@ -40,9 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
         bodyScrollTop = 0;
     }
 
+    // Event listeners for menu show/hide
+
     hamburger.addEventListener('click', function() {
         this.classList.remove('show');
         closeMenu.classList.add('show');
+        header.classList.add('show');
         langMenu.classList.add('show');
         megamenu.classList.add('show');
         lockBody();
@@ -51,8 +44,33 @@ document.addEventListener("DOMContentLoaded", function () {
     closeMenu.addEventListener('click', function() {
         this.classList.remove('show');
         hamburger.classList.add('show');
+        header.classList.remove('show');
         langMenu.classList.remove('show');
         megamenu.classList.remove('show');
         unlockBody();
     });
+
+    window.addEventListener('resize', function() {
+        if (hamburger.classList.contains('show')) {
+            return;
+        }
+        closeMenu.classList.remove('show');
+        hamburger.classList.add('show');
+        header.classList.remove('show');
+        langMenu.classList.remove('show');
+        megamenu.classList.remove('show');
+        unlockBody();
+    });
+
+    
+    // Event listeners for dropdowns
+    setTimeout(() => {
+        const toggleButtons = document.querySelectorAll('button.toggle_dropdown');
+        Array.from(toggleButtons).forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.nextSibling.classList.toggle('show');
+                this.previousSibling.classList.toggle('active');
+            });
+        });
+    }, 100);
 });
