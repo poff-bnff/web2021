@@ -73,4 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }, 100);
+
+    // Add megamenu / dropdown classes to element parents
+    setTimeout(() => {
+        const dropdowns = document.querySelectorAll('li.menu_item');
+        Array.from(dropdowns).forEach(function(dropdown) {
+            if (dropdown.querySelector('.megamenu_el')) {
+                dropdown.classList.add('megamenu');
+            } else {
+                dropdown.classList.add('dropdown');
+            }
+        });
+    }, 100);
 });

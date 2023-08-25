@@ -66,9 +66,11 @@ clr_covid = #bc06c6
 clr_vote = #00aeef
 clr_grey_light = #dddddd
 
+text_normal = #121313
 text_muted = #666666
 border_lightgray = #D0D0D0
 border_darkgray = #B2B2B2
+bg_lightgray = #F7F7F8
 
 header_height = 100px
 header_height_mobile = 50px
@@ -162,27 +164,26 @@ h4
 // HEADER & NAV --------------------
 
 header.menu
-    display grid
-    grid-template-columns 1fr auto
-    grid-template-rows 50px max-content auto
-    align-items start
-    font-weight 400
-    padding-left 1rem
-    background-color clr_header_bg
-    width 100%
-    height auto
-    position fixed
-    z-index 900
     ul
         list-style none
         margin 0
-    a
+    a:not(.user_menu)
         text-transform uppercase
         font-size 20px
         line-height 1.25
         display block
         color clr_header_text
     
+    .user_menu
+        display flex
+        align-items center
+        height 44px
+        a
+            color text_normal
+            font-size 14px
+        svg
+            margin-right 0.25rem
+
     .logo
         display flex
         
@@ -196,6 +197,14 @@ header.menu.show
     right 0
     overflow auto
     padding-bottom 1rem
+
+.dropdown, .megamenu
+    > ul
+        display none
+
+.dropdown.show, .megamenu.show
+    > ul
+        display block
 
 button#hamburger
     width 50px
@@ -228,7 +237,6 @@ button#close_menu.show
 .logo
     width auto
     height 100%
-    padding 10px 0
     margin-right 50px
     align-items center
 
@@ -253,37 +261,18 @@ nav.lang_menu
 nav.lang_menu.show
     display flex
 
-.megamenu
-    display none
-    grid-row 3 / 4
-    grid-column 1 / 3
-    color dark_1
-    > ul
-        display flex
-        flex-direction column
-        padding-left 0
-        padding-right 1rem
-    button.toggle_dropdown
-        border none
-        background transparent
-        padding 0.75rem 0
-        transition all 0.2s ease
+button.toggle_dropdown
+    border none
+    background transparent
+    padding 0.75rem 0
+    transition all 0.2s ease
 
-.megamenu.show
-    display block
-
-.megamenu_item
+.menu_item
     display flex
     flex-wrap wrap
     justify-content space-between
     align-items center
-    border-bottom 1px solid border_darkgray
-    > ul
-        display none
-        width 100%
-        padding-left 30px
-    > ul.show
-        display block
+    // border-bottom 1px solid border_darkgray
     a
         padding 0.75rem 0
     > a.active
@@ -292,9 +281,6 @@ nav.lang_menu.show
             stroke clr_primary_text
     > a.active + button.toggle_dropdown
         transform rotate(180deg)
-
-.megamenu_item.user_menu     
-    order -1
 
 .megamenu_el > ul
     padding 0
@@ -306,16 +292,6 @@ li.megamenu_sub_el a
     text-transform none
     font-weight 300
     font-family font_p
-
-.logo_img
-    width 100%
-    max-width 400px
-
-.logo_img:hover,
-.logo_img:focus
-    opacity 0.9
-    transform scale(.99, .99)
-    // transform-origin left top
 
 .main_menu
     position absolute
@@ -4405,7 +4381,7 @@ a:hover > .login_headline
         grid-template-rows auto
         margin 0
         padding 0
-        padding-top header_height
+        // padding-top header_height
 
     .f_synopsis_box
     .f_dir_bio_box
@@ -4495,14 +4471,24 @@ a:hover > .login_headline
     // Menu styles in desktop
 
     header.menu
-        grid-template-columns auto 1fr
-        grid-template-rows auto
-        min-height 100px
-        padding 2px 30px 0 30px
+        .menu_top
+            background-color bg_lightgray
+            display flex
+            justify-content space-between
+            align-items center
+            padding 1rem 2rem
+
+        .menu_top_right
+            display flex
+            align-items center
         a
             font-size 1rem
         button#hamburger
             display none
+        button.toggle_dropdown
+            margin-left -2px
+            svg
+                margin 0
         .lang_menu
             grid-row 1 / 2
             grid-column 2 / 3
@@ -4516,174 +4502,64 @@ a:hover > .login_headline
                 padding 0.75rem .625rem
                 border none
                 flex-grow 0
+        .social_links
+            display flex
     
     .logo
         display block
-        grid-row 1 / 3
-        grid-column 1 / 2
-        padding 0.75rem 0 22px 0
-        width 400px
-        max-width 400px
-        .logo_img
-            transition all 0.2s ease
+        width 443px
+        height 49px
     
     .org_menu
-        grid-row 1 / 2
-        grid-column 1 / 2
         display flex
         align-items center
         .org_item:not(:last-child)
             padding-right 2rem
-
-    .megamenu
-        display block
-        grid-row 2 / 3
-        grid-column 2 / 3
-        > ul
-            flex-direction row
-            margin 0
-            padding 0
-        button.toggle_dropdown
-            display none
-
-    .megamenu_item
-        display block
-        padding 0.75rem 1rem 22px 1rem
-        border none
-        a
-            padding 0
-        ul
-            align-items flex-start
-        > ul
-            // display none
-            transition opacity 0.5s ease
-            opacity 0
-            pointer-events none
-            position absolute
-            width 100%
-            top 100px
-            left 0
-            background-color white
-            align-items stretch
-            column-gap 30px
-            padding 30px 0
-            border-top 1px solid rgba(#999, 0.5)
-            display flex
-            justify-content flex-end
-        li
-            text-align left
-            padding 0
-            height unset
-
-    .megamenu_item.user_menu
-        display flex
-        padding 10px 0.5rem 10px 1rem
-        order 0
-        .user_menu
-            cursor text
-
-    .megamenu_item:first-of-type
-        flex-grow 1
-        display flex
-        justify-content flex-end
     
-    .megamenu_item:hover
-        > a:not([href]):not([class])
-            color clr_primary_text
+    .megamenu_wrapper > ul
+        padding 0 2rem
+        display flex
+        column-gap 1.4rem
+
+    .megamenu > ul
+        background-color white
+        display block
+        flex-direction row
+        margin 0
+        padding 0
+        transition opacity 0.5s ease
+        opacity 0
+        pointer-events none
+        position absolute
+        width 100%
+        top 126px
+        left 0
+        background-color white
+        align-items stretch
+        column-gap 30px
+        padding 30px 0
+        border-top 1px solid rgba(#999, 0.5)
+        display flex
+        z-index 900
+    
+    .menu_item.dropdown
+        position relative
+
+    .dropdown > ul
+        background-color white
+        display block
+        opacity 0
+        pointer-events none
+        position absolute
+        top 44px
+        left 0
+        z-index 900
+    
+    div.user_menu:hover,
+    .menu_item:hover
         > ul
             opacity 1
             pointer-events auto
-            // display flex
-
-    .megamenu_el
-        min-width 169px
-        border-left 1px solid rgba(#999, 0.5)
-        ul
-            justify-content flex-start
-            padding 0
-        > ul
-            flex-direction column
-        a
-            display block
-            padding 12px
-            border none
-
-    // .main_menu ul
-    //     display flex
-    //     justify-content flex-end
-    //     align-items flex-end
-    //     /* border: 1px solid red; */
-
-    // .main_menu li
-    //     /* margin-bottom: 0; */
-    //     height 100%
-    //     margin 0
-    //     padding-left 1rem
-    //     padding-right 1rem
-    //     padding-top 1rem
-    //     padding-bottom 1rem
-    //     // border 1px solid rgba(255, 255, 255, 0)
-    //     /* background-color: red; */
-
-    // .main_menu ul li.dropdown
-    //     position relative
-
-    // .main_menu ul li.dropdown ul
-    //     background-color clr_header_bg
-    //     position absolute
-    //     right 0
-    //     padding-left 0
-    //     width max-content
-    //     /* display: block; */
-    //     display none
-
-    // .main_menu ul li.dropdown:hover ul
-    //     display block
-    //     margin-bottom 5rem
-    //     /* margin-top: 1rem; */
-
-    // .main_menu ul li.dropdown ul li a
-    //     text-transform uppercase
-
-    // .main_menu li:hover
-    //     background-color clr_header_bg
-    //     // border-top 1px solid clr_primary
-    //     /* border-right: 1px solid var(--clr_primary); */
-
-    // .main_menu li a:hover
-    //     color clr_primary_text
-
-    // .ul_kaks
-    //     text-align right
-    //     padding 0
-    //     margin 0
-    //     li
-    //         padding-top .5rem
-    //         padding-bottom .5rem
-    //     li:first-child
-    //         padding-top 1.618rem
-    //     li:last-child
-    //         padding-bottom 1.618rem
-
-    
-
-    
-
-    
-
-    // .user_menu_item
-    //     display inline
-    //     // font-size 14px
-    //     font-family font_h
-    //     color dark_4
-    //     test-align right
-    //     padding-left 1rem
-    //     padding-right 1rem
-    //     // padding-right 1rem
-    //     border 1px solid red
-    //     a
-    //         text-decoration none
-    //         // font-size 14px
     
     // Megamenu end
 
