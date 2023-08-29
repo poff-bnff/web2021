@@ -76,15 +76,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add megamenu / dropdown classes to element parents
     setTimeout(() => {
-        const dropdowns = document.querySelectorAll('li.menu_item');
-        Array.from(dropdowns).forEach(function(dropdown) {
-            if (dropdown.querySelector('.megamenu_el')) {
-                dropdown.classList.add('megamenu');
+        const menuItems = document.querySelectorAll('li.menu_item');
+        const megamenuWrapper = document.querySelector('.megamenu_wrapper');
+        const megamenuElements = document.querySelectorAll('.megamenu_el > ul');
+        Array.from(menuItems).forEach(function(menuItem) {
+            if (menuItem.querySelector('.megamenu_el')) {
+                menuItem.classList.add('megamenu');
             } else {
-                dropdown.classList.add('dropdown');
+                menuItem.classList.add('dropdown');
             }
         });
-        const megamenuWrapper = document.querySelector('.megamenu_wrapper');
         megamenuWrapper.classList.add('show');
+        Array.from(megamenuElements).forEach(function(element) {
+            const itemCount = element.childElementCount;
+            if (itemCount > 6) {
+                element.classList.add('two-columns');
+            }
+        });
     }, 100);
 });
