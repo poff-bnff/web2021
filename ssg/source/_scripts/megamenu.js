@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Variables for menu show/hide
     const hamburger = document.getElementById('hamburger');
     const closeMenu = document.getElementById('close_menu');
-    const header = document.querySelector('header.menu');
-    const langMenu = document.querySelector('.lang_menu');
-    const megamenu = document.querySelector('.megamenu');
+    const topMenuRight = document.querySelector('.menu_top_right');
+    // const header = document.querySelector('header.menu');
+    // const langMenu = document.querySelector('.lang_menu');
+    const megamenu = document.querySelector('.megamenu_wrapper');
     // Variables for locking/unlocking body when menu open
     const body = document.querySelector('body');
     let bodyScrollTop = 0;
@@ -35,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburger.addEventListener('click', function() {
         this.classList.remove('show');
         closeMenu.classList.add('show');
-        header.classList.add('show');
-        langMenu.classList.add('show');
+        topMenuRight.classList.add('show');
         megamenu.classList.add('show');
         lockBody();
     });
@@ -44,8 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeMenu.addEventListener('click', function() {
         this.classList.remove('show');
         hamburger.classList.add('show');
-        header.classList.remove('show');
-        langMenu.classList.remove('show');
+        topMenuRight.classList.remove('show');
         megamenu.classList.remove('show');
         unlockBody();
     });
@@ -86,12 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 menuItem.classList.add('dropdown');
             }
         });
-        megamenuWrapper.classList.add('show');
         Array.from(megamenuElements).forEach(function(element) {
             const itemCount = element.childElementCount;
             if (itemCount > 6) {
                 element.classList.add('two-columns');
             }
         });
+        megamenuWrapper.classList.add('visible');
     }, 100);
 });

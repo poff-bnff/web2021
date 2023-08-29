@@ -40,18 +40,8 @@ header.menu
             //-     a(href='https://proscreen.poff.ee')
             //-         | ProSscreen
         button#hamburger.show
-            <svg aria-hidden="true" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="50" height="50" fill="white"/>
-                <path d="M13 16.5H37" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13 25H37" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13 33.5H37" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-
-        button#close_menu
-            <svg aria-hidden="true" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="50" height="50" fill="white"/>
-                <path d="M35 15L15 35" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15 15L35 35" stroke="#0E1417" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25 3C0.25 2.58579 0.585786 2.25 1 2.25H23C23.4142 2.25 23.75 2.58579 23.75 3C23.75 3.41421 23.4142 3.75 23 3.75H1C0.585786 3.75 0.25 3.41421 0.25 3ZM0.25 12C0.25 11.5858 0.585786 11.25 1 11.25H23C23.4142 11.25 23.75 11.5858 23.75 12C23.75 12.4142 23.4142 12.75 23 12.75H1C0.585786 12.75 0.25 12.4142 0.25 12ZM1 20.25C0.585786 20.25 0.25 20.5858 0.25 21C0.25 21.4142 0.585786 21.75 1 21.75H23C23.4142 21.75 23.75 21.4142 23.75 21C23.75 20.5858 23.4142 20.25 23 20.25H1Z" fill="#121313"/>
             </svg>
         
         .menu_top_right
@@ -83,6 +73,11 @@ header.menu
                     | ET
                 a(href='#')
                     | RU
+            
+            button#close_menu
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5303 2.53033C22.8232 2.23744 22.8232 1.76256 22.5303 1.46967C22.2374 1.17678 21.7626 1.17678 21.4697 1.46967L12 10.9393L2.53033 1.46967C2.23744 1.17678 1.76256 1.17678 1.46967 1.46967C1.17678 1.76256 1.17678 2.23744 1.46967 2.53033L10.9393 12L1.46967 21.4697C1.17678 21.7626 1.17678 22.2374 1.46967 22.5303C1.76256 22.8232 2.23744 22.8232 2.53033 22.5303L12 13.0607L21.4697 22.5303C21.7626 22.8232 22.2374 22.8232 22.5303 22.5303C22.8232 22.2374 22.8232 21.7626 22.5303 21.4697L13.0607 12L22.5303 2.53033Z" fill="#121313"/>
+                </svg>
             
             if self.footer.socialGroup
                 if self.footer.socialGroup.items
