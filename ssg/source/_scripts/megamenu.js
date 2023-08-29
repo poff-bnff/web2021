@@ -84,5 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dropdown.classList.add('dropdown');
             }
         });
+        const megamenuWrapper = document.querySelector('.megamenu_wrapper');
+        megamenuWrapper.classList.add('show');
     }, 100);
 });
