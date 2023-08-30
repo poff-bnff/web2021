@@ -2,12 +2,12 @@ const search_input = document.getElementById('search');
 const nonetoshow = document.getElementById('nonetoshow');
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+const starttimes = document.getElementsByName('selectedDates');
 
 const selectors = {
     categories: document.getElementById('categories_select'),
     // projects: document.getElementById('projects_select'),
     persons: document.getElementById('persons_select'),
-    starttimes: document.getElementById('starttimes_select'),
     festivaleditions: document.getElementById('festivaleditions_select'),
     eventtypes: document.getElementById('eventtypes_select'),
     eventmodes: document.getElementById('eventmodes_select'),
@@ -107,6 +107,48 @@ function toggleAll(exclude_selector_name) {
 
 function toggleFilters(exclude_selector_name) {
 
+    if (exclude_selector_name !== 'starttimes') {
+        Array.from(starttimes).forEach(starttime => {
+            let count = searcharray
+                .filter(screening => {
+                    const compare_with = selectors.categories.value;
+                    return compare_with === '' ? true : screening.categories.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.persons.value;
+                    return compare_with === '' ? true : screening.persons.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.festivaleditions.value;
+                    return compare_with === '' ? true : screening.festivaleditions.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.eventtypes.value;
+                    return compare_with === '' ? true : screening.eventtypes.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.eventmodes.value;
+                    return compare_with === '' ? true : screening.eventmodes.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.isliveevent.value;
+                    return compare_with === '' ? true : screening.isliveevent.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.eventaccess.value;
+                    return compare_with === '' ? true : screening.eventaccess.includes(compare_with)
+                })
+                .filter(screening => {
+                    const compare_with = selectors.location.value;
+                    return compare_with === '' ? true : screening.locations.includes(compare_with)
+                })
+                .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
+                .filter((screening) => { return screening.starttimes.includes(starttime.value) })
+
+            starttime.disabled = count.length === 0? true : false
+        });
+    }
+
     for (selector_name in selectors) {
 
         if (exclude_selector_name === selector_name) {
@@ -134,8 +176,8 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.persons.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'starttimes' ? value : selectors.starttimes.value;
-                    return compare_with === '' ? true : screening.starttimes.includes(compare_with)
+                    const compare_with = Array.from(starttimes).filter(starttime => starttime.checked).map(starttime => starttime.value);
+                    return compare_with.length === 0 ? true : screening.starttimes.some(screening_starttime => compare_with.includes(screening_starttime))
                 })
                 .filter(screening => {
                     const compare_with = selector_name === 'festivaleditions' ? value : selectors.festivaleditions.value;
@@ -177,6 +219,10 @@ search_input.addEventListener('keyup', e => {
     toggleAll();
 });
 
+Array.from(starttimes).forEach(starttime => starttime.addEventListener('change', e => {
+    toggleAll('starttimes');
+}));
+
 selectors.categories.addEventListener('change', e => {
     toggleAll('categories');
 });
@@ -187,10 +233,6 @@ selectors.categories.addEventListener('change', e => {
 
 selectors.persons.addEventListener('change', e => {
     toggleAll('persons');
-});
-
-selectors.starttimes.addEventListener('change', e => {
-    toggleAll('starttimes');
 });
 
 selectors.festivaleditions.addEventListener('change', e => {
@@ -219,10 +261,10 @@ selectors.location.addEventListener('change', e => {
 
 function unselect_all() {
     search_input.value = '';
+    Array.from(starttimes).forEach((starttime) => starttime.checked = false);
     selectors.categories.selectedIndex = 0;
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
-    selectors.starttimes.selectedIndex = 0;
     selectors.festivaleditions.selectedIndex = 0;
     selectors.eventtypes.selectedIndex = 0;
     selectors.eventmodes.selectedIndex = 0;
@@ -257,8 +299,9 @@ function execute_filters() {
             }
         })
         .filter(screening => {
-            if (selectors.starttimes.value) {
-                return screening.starttimes.includes(selectors.starttimes.value)
+            const selected_starttimes = Array.from(starttimes).filter(starttime => starttime.checked).map(starttime => starttime.value);
+            if (selected_starttimes.length > 0) {
+                return screening.starttimes.some(screening_starttime => selected_starttimes.includes(screening_starttime))
             } else {
                 return true
             }
