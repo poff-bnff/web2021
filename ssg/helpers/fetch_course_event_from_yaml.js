@@ -326,6 +326,7 @@ function searchAndFilters(dataToYAML, lang) {
         eventmodes: {},
         isliveevent: {},
         eventaccess: {},
+        locations: {},
     }
 
     const events_search = dataToYAML.map(events => {
@@ -387,6 +388,16 @@ function searchAndFilters(dataToYAML, lang) {
             }
         }
 
+        let locations = []
+        if (event?.location?.name) {
+            let location = event.location.name
+
+            if (location.length > 0) {
+                locations.push(location)
+                filters.locations[location] = location
+            }
+        }
+
         let eventtypes = []
         if (typeof event.event_types !== 'undefined') {
             for (const name of event.event_types) {
@@ -434,6 +445,7 @@ function searchAndFilters(dataToYAML, lang) {
             eventmodes: eventmodes,
             isliveevent: isliveevent,
             eventaccess: eventaccess,
+            locations: locations,
         }
     });
 
@@ -447,6 +459,7 @@ function searchAndFilters(dataToYAML, lang) {
         eventmodes: mSort(filters.eventmodes, lang),
         isliveevent: mSort(filters.isliveevent, lang),
         eventaccess: mSort(filters.eventaccess, lang),
+        locations: mSort(filters.locations, lang),
     }
 
     let searchYAML = yaml.dump(events_search, { 'noRefs': true, 'indent': '4' })

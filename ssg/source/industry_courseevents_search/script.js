@@ -13,6 +13,7 @@ const selectors = {
     eventmodes: document.getElementById('eventmodes_select'),
     isliveevent: document.getElementById('isliveevent_select'),
     eventaccess: document.getElementById('eventaccess_select'),
+    location: document.getElementById('location_select'),
 }
 
 function urlSelect() {
@@ -156,6 +157,10 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'eventaccess' ? value : selectors.eventaccess.value;
                     return compare_with === '' ? true : screening.eventaccess.includes(compare_with)
                 })
+                .filter(screening => {
+                    const compare_with = selector_name === 'location' ? value : selectors.location.value;
+                    return compare_with === '' ? true : screening.locations.includes(compare_with)
+                })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
@@ -208,6 +213,10 @@ selectors.eventaccess.addEventListener('change', e => {
     toggleAll('eventaccess');
 });
 
+selectors.location.addEventListener('change', e => {
+    toggleAll('location');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.categories.selectedIndex = 0;
@@ -219,6 +228,7 @@ function unselect_all() {
     selectors.eventmodes.selectedIndex = 0;
     selectors.isliveevent.selectedIndex = 0;
     selectors.eventaccess.selectedIndex = 0;
+    selectors.location.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -284,6 +294,13 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.eventaccess.value) {
                 return screening.eventaccess.includes(selectors.eventaccess.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.location.value) {
+                return screening.locations.includes(selectors.location.value)
             } else {
                 return true
             }

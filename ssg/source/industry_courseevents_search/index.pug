@@ -33,6 +33,11 @@ block content
                     each index, key in self.data.filters.persons
                         option(value=key)= index
 
+                select#location_select(name='Locations')
+                    option(value='')= self.label.filters.location
+                    each index, key in self.data.filters.locations
+                        option(value=key)= index
+
                 select#starttimes_select(name='Starttimes')
                     option(value='')= self.label.filters.eventDate
                     each index, key in self.data.filters.starttimes
