@@ -25,6 +25,8 @@ function urlSelect() {
                         selectors[ix].value = option.value
                     }
                 }
+            } else if (ix === 'starttimes') {
+                document.querySelector(`[name="selectedDates"][value="${params}"]`).checked = true
             }
         }
         toggleAll();
@@ -32,19 +34,26 @@ function urlSelect() {
 }
 
 function setSearchParams() {
-    let urlParameters = ''
-    let firstParamDone = false
+    let urlParameters = new URLSearchParams();
+
     for (const selector in selectors) {
         if (selectors[selector].selectedIndex !== 0) {
             let selectedText = selectors[selector].options[selectors[selector].selectedIndex].innerHTML
-            urlParameters += !firstParamDone ? `?${selector}=${encodeURIComponent(selectedText)}` : `&${selector}=${encodeURIComponent(selectedText)}`
-            firstParamDone = true
+            urlParameters.append(selector, encodeURIComponent(selectedText))
         }
     }
 
+    const selectedStarttimes = Array.from(starttimes).filter(starttime => starttime.checked).map(starttime => starttime.value);
+
+    selectedStarttimes.forEach(starttime => {
+        urlParameters.append('starttimes', encodeURIComponent(starttime));
+    })
+
+    const urlParametersString = urlParameters.toString();
+
     let page = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-    if (urlParameters.length) {
-        window.history.pushState('', '', `${page}${urlParameters}`);
+    if (urlParametersString.length) {
+        window.history.pushState('', '', `${page}?${urlParametersString}`);
     } else {
         window.history.pushState('', document.title, page);
     }
@@ -54,9 +63,11 @@ document.onreadystatechange = () => {
     const loading = document.getElementById('loading');
     // const content = document.getElementById('content');
     const filters = document.getElementById('filters');
+    const date_filters = document.getElementById('date_filters');
     if (document.readyState === 'complete') {
         urlSelect()
         filters.style.display = ""
+        date_filters.style.display = ""
         loading.style.display = "none"
         // content.style.display = ""
 
@@ -206,7 +217,6 @@ function toggleFilters(exclude_selector_name) {
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
-
             option.disabled = count ? false : true
 
         }
@@ -354,5 +364,3 @@ function execute_filters() {
     // console.log(filtered.map(element => element.id));
     return filtered
 }
-
-

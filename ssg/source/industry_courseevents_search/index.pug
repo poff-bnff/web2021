@@ -7,7 +7,7 @@ block content
 
         .search_filters#search_filters
 
-            .search_date_filters#date_filters
+            .search_date_filters#date_filters(style='display: none;')
                 each date, key in self.data.filters.starttimes
                     label.date-option
                         input(class="date-input" type="checkbox", name="selectedDates", value=key)
