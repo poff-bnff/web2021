@@ -101,6 +101,29 @@ mixin screeningDateEET(dateStringUTC)
 
         })();
 
+//- Creating date like Nov 10, Tue
+
+mixin formatDateShort(dateStringUTC)
+    - var dom_id = Math.random()
+    div(id='formatted_date_' + dom_id)
+
+    script.
+        (function()
+        {
+            moment.locale('#{self.locale}');
+            var eDisplayMoment = document.getElementById('formatted_date_' + '#{dom_id}').parentElement;
+
+            var formattedDate = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('MMM D, ddd');
+
+            // Convert the first 3 characters of the formattedDate (month) to uppercase
+            formattedDate = formattedDate.replace(/^(\w{3})/, function(_, month) {
+                return month.toUpperCase();
+            });
+
+            eDisplayMoment.innerHTML = formattedDate;
+
+        })();
+
 mixin birthDateEET(dateStringUTC)
     - var dom_id = Math.random()
     div(id = 'dt_' + dom_id)

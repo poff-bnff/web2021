@@ -567,7 +567,7 @@ footer
     // grid-template-columns: 1fr
     grid-template-columns: auto
     grid-template-rows: auto
-    padding-top 150px
+    // padding-top 150px
 
 .grid_article
   display grid
@@ -1718,11 +1718,16 @@ row:nth-child(15) > .supporter_logos
 
 
 .clear
-    background-color clr_primary
-    color white_96
-    border none
+    background-color unset
+    color dark_1
+    // border none
     outline none
-    padding-top .2rem
+    // padding-top .2rem
+    max-width 120px
+    width 100%
+    border: 1px solid bg_light_2
+    border-radius: 3px
+    font-weight 300
 
 header
     grid-area header
@@ -4021,7 +4026,45 @@ a:hover > .login_headline
     align-items flex-start
     gap 2rem
 
+.search_filters
+        padding-inline 10px
+        padding-top 80px
+        max-width 100%
+        width 100%
+        margin-inline auto
 
+.search_date_filters
+        margin-bottom 10px
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        height: 142px;
+        overflow-y: hidden;
+
+    .date-option
+        position relative
+        height: 142px;
+        min-width: 62px
+        width: 100%
+        z-index 2
+        cursor: pointer
+
+    .date-input
+        height: 100%
+
+    .date-input-value
+        position absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        padding: 16px
+        width: 100%;
+        color: dark_1
+        text-align center
+        user-select: none
+
+    .date-input:checked
+        background-color rgba(29, 211, 205, 0.5)
 
 
 
@@ -4195,17 +4238,65 @@ a:hover > .login_headline
         padding-top 1rem
         justify-content center
 
-    .grid_search
-        display grid
-        // grid-template-columns 1fr 1fr 1fr
-        grid-template-columns repeat(auto-fill, minmax(300px, 1fr))
-        grid-template-rows auto
-        grid-gap 1rem
-        padding-left 6rem
-        padding-right 6rem
+    .search_filters
+        padding-inline 20px
         padding-top 150px
+        max-width 1040px
+        margin-inline auto
+    
+    .search_date_filters
+        margin-bottom 10px
+        display grid
+        // grid-template-columns repeat(8, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        gap 20px
+        overflow-x: hidden;
+        height: auto
+
+    .date-option
+        position relative
+        height: 40px;
+        z-index 2
+        cursor: pointer
+
+    .date-input-value
+        position absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        padding: 10px 20px
+        width: 100%;
+        color: dark_1
+        text-align center
+        user-select: none
+        line-height: 20px
+        word-wrap: break-word
+        font-size: 16px
+
+    .date-input:checked
+        background-color rgba(29, 211, 205, 0.5)
+
+    .grid_search
+        // display grid
+        display flex
+        // grid-template-columns 1fr 1fr 1fr
+        // grid-template-columns repeat(auto-fill, minmax(300px, 1fr))
+        // grid-template-rows auto
+        // grid-gap 1rem
+        flex-wrap wrap
+        gap 20px
+        // padding-left 6rem
+        // padding-right 6rem
+        // padding-top 150px
+        margin-top 10px
         margin-bottom 0rem
         z-index 999
+
+    #search
+        max-width: 340px
+
+    #filters select
+        max-width: 200px
 
     .grid_article
         display grid
