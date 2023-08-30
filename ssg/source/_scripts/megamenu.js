@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById('hamburger');
     const closeMenu = document.getElementById('close_menu');
     const topMenuRight = document.querySelector('.menu_top_right');
-    // const header = document.querySelector('header.menu');
+    const logo = document.querySelector('header.menu .logo');
+    const header = document.querySelector('header.menu');
     // const langMenu = document.querySelector('.lang_menu');
     const megamenu = document.querySelector('.megamenu_wrapper');
     // Variables for locking/unlocking body when menu open
@@ -35,17 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hamburger.addEventListener('click', function() {
         this.classList.remove('show');
+        logo.classList.remove('show');
         closeMenu.classList.add('show');
         topMenuRight.classList.add('show');
         megamenu.classList.add('show');
+        header.classList.add('show');
         lockBody();
     });
 
     closeMenu.addEventListener('click', function() {
         this.classList.remove('show');
+        logo.classList.add('show');
         hamburger.classList.add('show');
         topMenuRight.classList.remove('show');
         megamenu.classList.remove('show');
+        header.classList.remove('show');
         unlockBody();
     });
 
@@ -61,14 +66,22 @@ document.addEventListener("DOMContentLoaded", function () {
         unlockBody();
     });
 
-    
     // Event listeners for dropdowns
     setTimeout(() => {
         const toggleButtons = document.querySelectorAll('button.toggle_dropdown');
         Array.from(toggleButtons).forEach(function(button) {
             button.addEventListener('click', function() {
-                this.nextSibling.classList.toggle('show');
+                this.parentElement.querySelector('ul').classList.toggle('show');
                 this.previousSibling.classList.toggle('active');
+            });
+        });
+    }, 100);
+
+    setTimeout(() => {
+        const toggleButtonsDesktop = document.querySelectorAll('button.toggle_dropdown_desktop');
+        Array.from(toggleButtonsDesktop).forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.parentElement.querySelector('ul').classList.toggle('show_desktop');
             });
         });
     }, 100);

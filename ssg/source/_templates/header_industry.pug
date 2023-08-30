@@ -2,7 +2,7 @@ header.menu
     .menu_top
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
-        a(href=`/${lang_path}`).logo
+        a(href=`/${lang_path}`).logo.show
             img.logo_img(alt='PÖFF' data-src='/assets/img/static/industry_logo_2023_dates_es_ukr_eas.svg' src='/assets/img/static/industry_logo_2023_dates_es_ukr_eas.svg')
 
         //- nav.org_menu
@@ -53,6 +53,10 @@ header.menu
                     </svg>
                     <span>My industry</span>
                 button.toggle_dropdown
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path d="M15 18.5L9 12.5L15 6.5" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                button.toggle_dropdown_desktop
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -76,7 +80,7 @@ header.menu
             
             button#close_menu
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5303 2.53033C22.8232 2.23744 22.8232 1.76256 22.5303 1.46967C22.2374 1.17678 21.7626 1.17678 21.4697 1.46967L12 10.9393L2.53033 1.46967C2.23744 1.17678 1.76256 1.17678 1.46967 1.46967C1.17678 1.76256 1.17678 2.23744 1.46967 2.53033L10.9393 12L1.46967 21.4697C1.17678 21.7626 1.17678 22.2374 1.46967 22.5303C1.76256 22.8232 2.23744 22.8232 2.53033 22.5303L12 13.0607L21.4697 22.5303C21.7626 22.8232 22.2374 22.8232 22.5303 22.5303C22.8232 22.2374 22.8232 21.7626 22.5303 21.4697L13.0607 12L22.5303 2.53033Z" fill="#121313"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5303 2.53033C22.8232 2.23744 22.8232 1.76256 22.5303 1.46967C22.2374 1.17678 21.7626 1.17678 21.4697 1.46967L12 10.9393L2.53033 1.46967C2.23744 1.17678 1.76256 1.17678 1.46967 1.46967C1.17678 1.76256 1.17678 2.23744 1.46967 2.53033L10.9393 12L1.46967 21.4697C1.17678 21.7626 1.17678 22.2374 1.46967 22.5303C1.76256 22.8232 2.23744 22.8232 2.53033 22.5303L12 13.0607L21.4697 22.5303C21.7626 22.8232 22.2374 22.8232 22.5303 22.5303C22.8232 22.2374 22.8232 21.7626 22.5303 21.4697L13.0607 12L22.5303 2.53033Z" fill="#12827E"/>
                 </svg>
             
             if self.footer.socialGroup

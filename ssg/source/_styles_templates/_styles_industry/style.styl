@@ -75,7 +75,9 @@ link_textcolor_hover = #12827E
 icons_mediumgray = #B0B3B5
 icons_darkgray = #636769
 border_lightgray = #E5E6E6
+border_mediumgray = #D8D9DA
 green_600 = #16A19D
+purple_200 = #F0E8FC
 
 header_height = 126px
 header_height_mobile = 54px
@@ -178,26 +180,58 @@ header.menu
     ul
         list-style none
         margin 0
-    a:not(.user_menu)
+    a
         text-transform uppercase
         font-size 20px
         line-height 1.25
         display block
         color clr_header_text
-    .user_menu
+    div.user_menu
         display flex
         align-items center
+        justify-content center
+        flex-wrap wrap
+        text-transform none
+        position fixed
+        bottom 0
+        left 0
+        right 0
+        background-color purple_200
+        z-index 1001
+        padding 1rem 0
         button.toggle_dropdown
             padding 0
-        span
+            flex-grow 0
+        .user_menu
             color text_normal
+            text-transform none
+            display flex
+            align-items center
+        .user_menu.active + button.toggle_dropdown svg
+            transform rotate(-90deg)
+        span
+            display block
             font-size 14px
             line-height 1.25
             box-shadow 0 1px 0 0 transparent
             transition all 0.2s ease
         svg
             margin-right 0.25rem
+        > ul
+            display none
+            width 100%
+            text-align center
+            padding 0
+            flex-direction column
+            a
+                padding 0.75rem 0.5rem
+        > ul.show
+            display flex
+    div.user_menu.dropdown > .user_menu > svg path
+        stroke link_textcolor_hover
     .logo
+        display none
+    .logo.show
         display flex
     .menu_top
         display flex
@@ -205,15 +239,58 @@ header.menu
         justify-content space-between
         column-gap 1rem
         padding 0.75rem 1rem
+        position fixed
+        top 0
+        left 0
+        right 0
+        background-color white
+        z-index 1002
 
 .megamenu_wrapper, .menu_top_right
     display none
 
 .menu_top_right.show
     display flex
+    width 100%
+    justify-content space-between
 
 .megamenu_wrapper.show
     display block
+
+.megamenu_wrapper > ul
+    padding 5rem 1rem 7.5rem 1rem
+
+li.menu_item
+    border-top 1px solid border_mediumgray
+    > a
+        font-weight 500
+    > ul
+        padding-left 1.5rem
+
+li.menu_item:last-child
+    border-bottom 1px solid border_mediumgray
+
+li.megamenu_el
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    > a
+        font-size 1rem
+        text-transform none
+        font-weight 500
+    > ul
+        padding-left 1rem
+        width 100%
+
+li.dropdown_el > a
+    font-size 1rem
+    text-transform none
+    font-weight 500
+
+li.megamenu_sub_el > a
+    font-size 1rem
+    text-transform none
+    font-weight 400           
 
 nav.lang_menu
     display none
@@ -232,18 +309,16 @@ nav.lang_menu
     a.active
         color link_textcolor_hover !important
 
-
-
 .social_links
     display none
 
-// header.menu.show
-//     top 0
-//     bottom 0
-//     left 0
-//     right 0
-//     overflow auto
-//     padding-bottom 1rem
+header.menu.show
+    top 0
+    bottom 0
+    left 0
+    right 0
+    overflow auto
+    // padding-bottom 4.5rem
 
 button#hamburger, button#close_menu
     width 24px
@@ -266,35 +341,35 @@ button#close_menu.show
     height 30px
 
 button.toggle_dropdown
+    display flex
+    justify-content flex-end
+    align-items center
+    flex-grow 1
     border none
     background transparent
-    padding 0.75rem 0
-    transition all 0.2s ease
+    padding 0
+    svg
+        margin-bottom 1px
+        transition all 0.2s ease
+
+button.toggle_dropdown_desktop
+    display none
 
 .menu_item
     display flex
     flex-wrap wrap
     justify-content space-between
     align-items center
+    color text_normal
     a
-        padding 0.75rem 0
-    > a.active
-        color clr_primary_text
-        svg path
-            stroke clr_primary_text
-    > a.active + button.toggle_dropdown
-        transform rotate(180deg)
-
-.megamenu_el > ul
-    padding 0
-
-.megamenu_el a
-    border-top 1px solid border_darkgray
-
-li.megamenu_sub_el a
-    text-transform none
-    font-weight 300
-    font-family font_p
+        padding 0.75rem 0.5rem
+    a.active + button.toggle_dropdown svg
+        transform rotate(-90deg)
+    ul
+        width 100%
+        display none
+    ul.show
+        display block
 
 .main_menu
     position absolute
@@ -4140,193 +4215,6 @@ a:hover > .login_headline
 
 /* MEDIA query: for large screens */
 
-@media screen and (min-width: 1200px)
-    // Menu styles in desktop
-    header.menu
-        box-shadow 0px 8px 8px -4px rgba(24, 39, 75, 0.08), 0px 4px 6px -4px rgba(24, 39, 75, 0.12)
-        .menu_top
-            background-color bg_lightgray
-            display flex
-            justify-content space-between
-            align-items center
-            padding 1rem 2rem
-            border-bottom 1px solid border_lightgray
-        .megamenu_wrapper
-            background-color clr_header_bg
-            display block
-        .menu_top_right
-            display flex
-            align-items center
-            column-gap 1.5rem
-        .menu_item
-            > a:not(.user_menu)
-                font-size 1rem
-            > a
-                transition all 0.2s ease
-                box-shadow inset 0 0px 0 0 green_600
-            > a:not(.user_menu):hover
-                color text_normal
-        .menu_item:hover > a
-            padding 10px 0 14px 0
-            box-shadow inset 0 -4px 0 0 green_600
-        button#hamburger
-            display none
-        button.toggle_dropdown
-            margin-left -2px
-            padding 0
-            pointer-events none
-            svg
-                margin 0
-        .social_links
-            display flex
-            a
-                display flex
-                align-items center
-                justify-content center
-                width 44px
-                height 44px
-                border-radius 99px
-                position relative
-                svg
-                    stroke icons_darkgray
-                    width 20px
-                    height 20px
-                    margin 0
-                    stroke-width unset
-                svg:hover
-                    margin 0
-                    stroke-width unset
-                    transform none
-            a::after
-                display block
-                content ''
-                position absolute
-                top 50%
-                left 50%
-                transform translate(-50%, -50%)
-                width 32px
-                height 32px
-                border-radius 99px
-                box-shadow 0 0 0 1px icons_mediumgray
-                transition all 0.2s ease
-            a:hover svg
-                stroke link_textcolor_hover
-            a:hover::after
-                width 36px
-                height 36px
-                box-shadow 0 0 0 1px link_textcolor_hover
-        .lang_menu
-            column-gap 0.25rem
-    .logo
-        display block
-        width 443px
-        height 49px
-    
-    .org_menu
-        display flex
-        align-items center
-        .org_item:not(:last-child)
-            padding-right 2rem
-    
-    .megamenu_wrapper > ul
-        padding 0 2rem
-        // display flex
-        display none
-        column-gap 1.4rem
-    
-    .megamenu_wrapper.visible > ul
-        display flex
-
-    .megamenu > ul, .dropdown > ul
-        box-shadow 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12)
-        a
-            transition all 0.2s ease
-            box-shadow 0 0 0 0 link_textcolor_hover
-        a:hover
-            box-shadow inset 2px 0 0 0 link_textcolor_hover
-            padding-left 14px
-            margin-right -2px
-
-    .megamenu > ul
-        background-color white
-        flex-direction row
-        margin 0
-        transition opacity 0.5s ease
-        opacity 0
-        pointer-events none
-        position absolute
-        width 100%
-        top 126px
-        left 0
-        background-color white
-        align-items stretch
-        column-gap 1.5rem
-        padding 2.5rem 5rem
-        border-top 1px solid border_lightgray
-        z-index 900
-
-    .megamenu_el
-        border-left 1px solid border_lightgray
-        a
-            border none
-        > a
-            font-weight 500
-            padding 0.75rem
-            padding-right 0
-        .megamenu_sub_el > a:not(.user_menu)
-            text-transform none
-            padding 0.5rem 0
-            padding-left 1rem
-            font-size 1rem
-            font-weight 300
-        .megamenu_sub_el > a:hover
-            padding-left 18px
-            margin-right -2px
-        .megamenu_sub_el:not(:first-child)
-            margin-top -4px
-        > ul.two-columns
-            column-count 2
-            column-gap 1rem
-
-    .menu_item.dropdown
-        position relative
-
-    .dropdown > ul
-        background-color white
-        opacity 0
-        pointer-events none
-        position absolute
-        top 44px
-        left 0
-        z-index 900
-        width 300px
-        box-shadow: 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12);
-        padding 1.5rem
-        flex-direction column
-        a
-            padding 0.75rem
-            padding-right 0
-            font-weight 500
-        .dropdown_el:not(:first-child)
-            margin-top -0.5rem
-        
-    .user_menu.dropdown:hover
-        a
-            color text_normal
-            span
-                box-shadow 0 1px 0 0 link_textcolor_hover
-
-    .user_menu.dropdown > ul
-        top 24px
-    
-    div.user_menu:hover,
-    .menu_item:hover
-        > ul
-            opacity 1
-            pointer-events auto
-            display flex
-    // Megamenu end
-
 @media screen and (min-width: 800px)
     .grid_courseevent
         display grid
@@ -4342,7 +4230,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        // padding-top header_height
 
     .btn_course
         background-color white
@@ -4377,7 +4265,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_trailer_box     f_trailer_box     f_trailer_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
 
     .grid_ind_event
@@ -4394,7 +4282,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_timetable
         display grid
@@ -4403,7 +4291,7 @@ a:hover > .login_headline
         grid-template-areas "days_box          days_box          days_box"\
                             "chosen_date_box   chosen_date_box   chosen_date_box"\
                             "channel_box     channel_2_box     channel_3_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_ind_person
         display grid
@@ -4419,7 +4307,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
 
     .grid_creative
@@ -4483,7 +4371,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 1rem
         padding 1rem
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_events
         display grid
@@ -4520,7 +4408,7 @@ a:hover > .login_headline
         //                     "f_dir_bio_box     f_dir_bio_box     f_extra_box"\
         //                     "f_trailer_box     f_trailer_box     f_trailer_box"\
         //                     "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_ss
         display grid
@@ -4535,7 +4423,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-template-areas "product_img_box  f_title_box  f_title_box"\
                             "f_synopsis_box   f_synopsis_box f_cred_box"
-        padding-top header_height
+        padding-top header_height_mobile
         // padding-left 6rem
         // padding-right 6rem
 
@@ -4546,7 +4434,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 2rem
         padding 2rem
-        padding-top header_height
+        padding-top header_height_mobile
         // height 100vh
 
     .grid_sponsor_stories
@@ -4556,7 +4444,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 2rem
         padding 2rem
-        padding-top header_height
+        padding-top header_height_mobile
         // height 100vh
 
     .grid_hero
@@ -4565,7 +4453,7 @@ a:hover > .login_headline
         grid-template-rows auto
         margin 0
         padding 0
-        padding-top header_height
+        padding-top header_height_mobile
 
     .f_synopsis_box
     .f_dir_bio_box
@@ -4808,6 +4696,225 @@ a:hover > .login_headline
         padding-right 1rem
         padding-top 3rem
         padding-bottom 3rem
+
+@media screen and (min-width: 1200px)
+    // Menu styles in desktop
+    header.menu
+        box-shadow 0px 8px 8px -4px rgba(24, 39, 75, 0.08), 0px 4px 6px -4px rgba(24, 39, 75, 0.12)
+        .menu_top
+            position static
+            background-color bg_lightgray
+            display flex
+            justify-content space-between
+            align-items center
+            padding 1rem 2rem
+            border-bottom 1px solid border_lightgray
+        .megamenu_wrapper
+            background-color clr_header_bg
+            display block
+            > ul .menu_item > ul .megamenu_el > a
+                font-size 20px
+                text-transform uppercase
+                font-weight 500
+        .menu_top_right
+            display flex
+            align-items center
+            column-gap 1.5rem
+        .menu_item
+            border none
+            > a:not(.user_menu)
+                font-size 1rem
+                color text_normal
+                font-weight 400
+                padding 0.75rem 0
+            > a
+                transition all 0.2s ease
+                box-shadow inset 0 0px 0 0 green_600
+            > a:not(.user_menu):hover
+                color text_normal
+        div.user_menu
+            position relative
+            background transparent
+            z-index unset
+            padding 0
+        .menu_item:hover > a
+            padding 10px 0 14px 0
+            box-shadow inset 0 -4px 0 0 green_600
+        button#hamburger
+            display none
+        button.toggle_dropdown
+            display none !important
+        button.toggle_dropdown_desktop
+            border none
+            background transparent
+            display block
+            margin-left -2px
+            padding 0
+            pointer-events none
+            svg
+                margin 0
+        .social_links
+            display flex
+            a
+                display flex
+                align-items center
+                justify-content center
+                width 44px
+                height 44px
+                border-radius 99px
+                position relative
+                svg
+                    stroke icons_darkgray
+                    width 20px
+                    height 20px
+                    margin 0
+                    stroke-width unset
+                svg:hover
+                    margin 0
+                    stroke-width unset
+                    transform none
+            a::after
+                display block
+                content ''
+                position absolute
+                top 50%
+                left 50%
+                transform translate(-50%, -50%)
+                width 32px
+                height 32px
+                border-radius 99px
+                box-shadow 0 0 0 1px icons_mediumgray
+                transition all 0.2s ease
+            a:hover svg
+                stroke link_textcolor_hover
+            a:hover::after
+                width 36px
+                height 36px
+                box-shadow 0 0 0 1px link_textcolor_hover
+        .lang_menu
+            column-gap 0.25rem
+        .logo
+            display flex
+            width 443px
+            height 49px
+        div.user_menu:hover,
+        .menu_item:hover
+            > ul
+                opacity 1
+                pointer-events auto
+                display flex
+                align-items flex-start
+        div.dropdown > ul, li.dropdown > ul
+            width 300px
+            padding 1.5rem
+    
+    .org_menu
+        display flex
+        align-items center
+        .org_item:not(:last-child)
+            padding-right 2rem
+    
+    .megamenu_wrapper > ul
+        padding 0 2rem
+        // display flex
+        display none
+        column-gap 1.4rem
+    
+    .megamenu_wrapper.visible > ul
+        display flex
+
+    .megamenu > ul, .dropdown > ul
+        box-shadow 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12)
+        a
+            transition all 0.2s ease
+            box-shadow 0 0 0 0 link_textcolor_hover
+        a:hover
+            box-shadow inset 2px 0 0 0 link_textcolor_hover
+            padding-left 14px
+            margin-right -2px
+
+    li.megamenu > ul
+        background-color white
+        flex-direction row
+        margin 0
+        transition opacity 0.5s ease
+        opacity 0
+        pointer-events none
+        position absolute
+        width 100%
+        top 126px
+        left 0
+        background-color white
+        align-items stretch
+        column-gap 1.5rem
+        padding 2.5rem 5rem
+        border-top 1px solid border_lightgray
+        z-index 900
+
+    li.megamenu_el
+        border-left 1px solid border_lightgray
+        a
+            border none
+        > a
+            font-weight 500
+            padding 0.75rem
+            padding-right 0
+        .megamenu_sub_el > a:not(.user_menu)
+            text-transform none
+            padding 0.5rem 0
+            padding-left 1rem
+            font-size 1rem
+            font-weight 400
+        .megamenu_sub_el > a:hover
+            padding-left 18px
+            margin-right -2px
+        .megamenu_sub_el:not(:first-child)
+            margin-top -4px
+        > ul
+            display block
+            padding-left 0
+        > ul.two-columns
+            column-count 2
+            column-gap 1rem
+
+    .menu_item.dropdown
+        position relative
+
+    .dropdown > ul
+        background-color white
+        opacity 0
+        pointer-events none
+        position absolute
+        top 44px
+        left 0
+        z-index 900
+        width 300px
+        box-shadow: 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12);
+        padding 1.5rem
+        flex-direction column
+        a
+            padding 0.75rem
+            padding-right 0
+            font-weight 500
+            font-size 20px
+            text-transform uppercase
+        .dropdown_el:not(:first-child)
+            margin-top -0.5rem
+        
+    .user_menu.dropdown:hover
+        a
+            color text_normal
+            span
+                box-shadow 0 1px 0 0 link_textcolor_hover
+
+    .user_menu.dropdown > ul
+        top 24px
+    
+    // Megamenu end
+
+    // Padding changes for other elements depending on header height
+    .grid_courseevent, .grid_film, .grid_ind_event, .grid_timetable, .grid_ind_person, .grid_films, .grid_article, .grid_product, .grid_articles, .grid_sponsor_stories, .grid_hero
+        padding-top header_height
 
 /* OVERRIDES */
 
