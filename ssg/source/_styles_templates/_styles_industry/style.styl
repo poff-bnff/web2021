@@ -3352,7 +3352,7 @@ input, select
     width 100%
     background-color white
     border 1px solid clr_grey_light
-    border-radius 3px
+    border-radius 4px
     -moz-appearance none
     -webkit-appearance none
     appearance none
@@ -4039,23 +4039,30 @@ a:hover > .login_headline
 .search_date_filters
         margin-bottom 10px
         display: flex;
-        gap: 20px;
+        align-items: flex-start
+        gap: 8px;
         overflow-x: scroll;
         overflow-y: hidden;
 
     .date-option
         position relative
-        height: 142px;
-        min-width: 62px
+        height: 86px;
+        width: 51px
         width: 100%
         z-index 2
         cursor: pointer
-        border: 1px solid gray;
+        color: dark_1
         text-align: center;
         display: inline-flex;
         align-items: center;
         border-radius: 4px;
         border: 0.5px solid #8F56EC
+        background-color: #F2FDFD
+        overflow: hidden;
+
+    .date-option:hover
+        // box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.10) inset
+        border: 1px solid #8F56EC
 
     .date-input
         position: absolute
@@ -4063,20 +4070,24 @@ a:hover > .login_headline
         height 100%
 
     .date-input-value
-        padding: 16px
+        padding: 12px
         width: 100%;
-        color: dark_1
+        // color: dark_1
         text-align center
         user-select: none
         z-index 5
         display: flex;
         align-items: center;
         height: 100%
-        border-radius: 4px
+        // border-radius: 4px
+        // border: 1px
+        // background-color: #F2FDFD
 
     .date-option input[type="checkbox"]:checked + .date-input-value
         background-color #8F56EC
         color: #fff
+        // box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.10) inset
+        // border: 1px solid #8F56EC
 
     .date-option input[type="checkbox"][disabled] + .date-input-value
         opacity: 0.3
@@ -4253,39 +4264,38 @@ a:hover > .login_headline
         justify-content center
 
     .search_filters
-        padding-inline 20px
+        padding-inline 16px
         padding-top 150px
-        max-width 1040px
+        max-width 900px
         margin-inline auto
     
     .search_date_filters
         margin-bottom 10px
-        display grid
+        // display grid
+        display inline-flex
         // grid-template-columns repeat(8, 1fr);
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-        gap 20px
+        // grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        align-items: flex-start
+        justify-content: flex-start
+        gap 8px
         overflow-x: hidden;
         height: auto
 
     .date-option
-        position relative
-        height: 40px;
-        z-index 2
-        cursor: pointer
-        border: 0.25px solid #999999
-        border-radius: 0
+        height: 102px;
+        width: 62px
+        flex: 1 1 0
 
     .date-input-value
-        padding: 10px 5px
+        padding: 16px;
         width: 100%;
-        color: dark_1
+        // color: dark_1
         text-align center
         user-select: none
         line-height: 20px
         word-wrap: break-word
         font-size: 16px
-        display: inline-block
-        border-radius: 0px
+        display: inline-flex;
 
     // .date-input:checked
     //     background-color rgba(29, 211, 205, 0.5)
