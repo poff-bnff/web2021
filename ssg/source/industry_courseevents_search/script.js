@@ -19,14 +19,15 @@ const selectors = {
 function urlSelect() {
     if (urlParams.getAll.length) {
         for (const [ix, params] of urlParams) {
+            const filterValue = decodeURIComponent(params);
             if (selectors[ix]) {
-                for (const option of selectors[ix].options) {
-                    if (option.innerHTML === params) {
-                        selectors[ix].value = option.value
+                Array.from(selectors[ix].options).forEach(option => {
+                    if (option.innerHTML === filterValue) {
+                        option.selected = true;
                     }
-                }
+                });
             } else if (ix === 'starttimes') {
-                document.querySelector(`[name="selectedDates"][value="${params}"]`).checked = true
+                document.querySelector(`[name="selectedDates"][value="${filterValue}"]`).checked = true
             }
         }
         toggleAll();
@@ -37,9 +38,13 @@ function setSearchParams() {
     let urlParameters = new URLSearchParams();
 
     for (const selector in selectors) {
-        if (selectors[selector].selectedIndex !== 0) {
-            let selectedText = selectors[selector].options[selectors[selector].selectedIndex].innerHTML
-            urlParameters.append(selector, encodeURIComponent(selectedText))
+        if (selectors[selector].selectedOptions.length > 0) {
+            Array.from(selectors[selector].selectedOptions).forEach(option => {
+                let selectedText = option.innerHTML
+                if (option.value) {
+                    urlParameters.append(selector, encodeURIComponent(selectedText))
+                }
+            })
         }
     }
 
@@ -233,7 +238,7 @@ Array.from(starttimes).forEach(starttime => starttime.addEventListener('change',
     toggleAll('starttimes');
 }));
 
-selectors.categories.addEventListener('change', e => {
+$(selectors.categories).on('change', e => {
     toggleAll('categories');
 });
 
@@ -272,7 +277,7 @@ selectors.location.addEventListener('change', e => {
 function unselect_all() {
     search_input.value = '';
     Array.from(starttimes).forEach((starttime) => starttime.checked = false);
-    selectors.categories.selectedIndex = 0;
+    $(selectors.categories).val(null).trigger('change');
     // selectors.projects.selectedIndex = 0;
     selectors.persons.selectedIndex = 0;
     selectors.festivaleditions.selectedIndex = 0;
@@ -289,7 +294,8 @@ function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
             if (selectors.categories.value) {
-                return screening.categories.includes(selectors.categories.value)
+                const selected_categories = Array.from(selectors.categories).filter(category => category.selected).map(category => category.value);
+                return screening.categories.some(screening_category => selected_categories.includes(screening_category))
             } else {
                 return true
             }
@@ -364,3 +370,32 @@ function execute_filters() {
     // console.log(filtered.map(element => element.id));
     return filtered
 }
+
+$(document).ready(function () {
+    // Disables search input in multiselect
+    const overrideSelect2MultiselectLabel = (element) => {
+        const selection = element.siblings("span.select2").find("ul");
+
+        const label = element.attr("data-placeholder");
+        selection.html("<li>" + label + "</li>");
+    };
+
+    $(".select2-multiple").each(function () {
+        $(this).select2({
+            multiple: true,
+            minimumResultsForSearch: -1,
+            width: "100%",
+            dropdownAutoWidth: true,
+            closeOnSelect: false,
+        });
+
+        overrideSelect2MultiselectLabel($(this));
+    });
+
+    $(".select2-multiple").on(
+        "change select2:close select2:select select2:unselect select2:clear",
+        function () {
+            overrideSelect2MultiselectLabel($(this));
+        }
+    );
+});
