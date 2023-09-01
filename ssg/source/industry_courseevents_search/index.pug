@@ -5,16 +5,16 @@ block content
     if self.data.filters && process.env['DOMAIN'] === 'industry.poff.ee'
         h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-        .search_filters#search_filters
+        .search_filters#search_filters(style='display: none;')
 
-            .search_date_filters#date_filters(style='display: none;')
+            .search_date_filters#date_filters
                 each date, key in self.data.filters.starttimes
                     label.date-option
                         input(class="date-input" type="checkbox", name="selectedDates", value=key)
                         div(class="date-input-value", id=`formatted_date${key}`)
                             +formatDateShort(date)
 
-            .grid_search#filters(style='display: none;')
+            .grid_search#filters
 
                 input#search(type='text', placeholder= self.label.filters.search)
 

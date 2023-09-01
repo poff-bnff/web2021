@@ -69,12 +69,11 @@ function setSearchParams() {
 document.onreadystatechange = () => {
     const loading = document.getElementById('loading');
     // const content = document.getElementById('content');
-    const filters = document.getElementById('filters');
-    const date_filters = document.getElementById('date_filters');
+    const filters = document.querySelector('.search_filters');
+
     if (document.readyState === 'complete') {
         urlSelect()
         filters.style.display = ""
-        date_filters.style.display = ""
         loading.style.display = "none"
         // content.style.display = ""
 
