@@ -71,6 +71,10 @@ full_height = calc(100vh - header_height)
 clr_header_text = #0E1417
 clr_header_bg = #ffffff
 
+text = #121313
+border_mediumgray = #D8D9DA
+border_gray = #B0B3B5
+
 green_050 = #F2FDFD
 green_100 = #D2F9F8
 green_400 = #1DD3CD
@@ -1683,27 +1687,102 @@ row:nth-child(15) > .supporter_logos
     padding .5rem 1rem .5rem 1rem
     background-color bg_dark_4
 
+.card_event
+    border-top 1px solid border_mediumgray
+    padding 2.5rem 1rem
+    transition all 0.2s ease
+
+@media (pointer: fine)
+    .event_card_link:hover > .card_event
+        background-color purple_050
+
 .event_card_header
     display flex
     align-items center
     justify-content space-between
+    column-gap 1.25rem
     .event_card_header_left, .event_card_header_right
         display flex
         align-items center
         column-gap 1.25rem
+        > *
+            display flex
+            align-items center
+            column-gap 0.75rem
+            padding 0.25rem 0
+        .add_to_cal
+            padding 0.25rem 0.5rem
+    .event_card_header_left
+        flex-wrap wrap
+    .header_text
+        color text
+        line-height 1.25
+        display flex
+        align-items center
+        > span
+            display flex
+            line-height inherit
 
 .event_card_content
+    .event_title
+        margin 0.5rem 0
+        font-size 2rem
+        font-weight 500
+        line-height 1.25
+        font-feature-settings 'clig' off, 'liga' off
+        letter-spacing normal
     .button_group
         display flex
+        flex-wrap wrap
         column-gap 0.5rem
+        row-gap 0.5rem
+        .btn_outline
+            display flex
+            padding 5px 0.75rem
+            border 1px solid border_gray
+            border-radius 4px
+            color text
+            line-height 1.25
+            white-space nowrap
     .event_card_keywords
         display flex
+        flex-wrap wrap
         align-items center
         justify-content space-between
+        column-gap 1.25rem
+        row-gap 10px
+        padding-top 0.75rem
+        .keyword
+            color text
+            line-height 1.25
+
     .event_card_keywords_left, .event_card_keywords_right
         display flex
+        flex-wrap wrap
         align-items center
         column-gap 1.25rem
+    
+    .event_card_keywords_left
+        row-gap 0.75rem
+    
+    .event_card_keywords_right > *
+        display flex
+        align-items center
+        column-gap 0.75rem
+        padding 0.25rem 0
+
+@media screen and (max-width: 799px)
+    .schedule
+        padding 5rem 1rem
+    .card_event
+        padding 2rem 0.5rem 1rem 0.5rem
+    .event_card_header
+        column-gap 0.25rem
+        align-items flex-start
+    .event_title
+        margin 0.75rem 0
+    .add_to_cal .header_text
+        display none
 
 .event_card_footer
     // padding .5rem 3rem .5rem 2rem
@@ -2713,10 +2792,6 @@ a.btn_popover
     background-color white
     margin-bottom 1.618rem
     border .5px solid clr_grey_light
-
-.card_event
-    border-top 1px solid #D8D9DA
-    padding 2.5rem 1rem
 
 .card_project
     display grid
