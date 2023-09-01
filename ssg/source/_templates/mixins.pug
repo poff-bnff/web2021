@@ -104,25 +104,33 @@ mixin screeningDateEET(dateStringUTC)
 //- Creating date like Nov 10, Tue
 
 mixin formatDateShort(dateStringUTC)
-    - var dom_id = Math.random()
-    div(id='formatted_date_' + dom_id)
+  script.
+    (function()
+    {
+        moment.locale('#{self.locale}');
+        var parentElement = document.currentScript.parentElement;
 
-    script.
-        (function()
-        {
-            moment.locale('#{self.locale}');
-            var eDisplayMoment = document.getElementById('formatted_date_' + '#{dom_id}').parentElement;
+        var formattedDate = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn');
 
-            var formattedDate = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn').format('MMM D, ddd');
+        // Create separate spans for month, date, and day
+        var monthSpan = document.createElement('span');
+        var dateSpan = document.createElement('span');
+        var daySpan = document.createElement('span');
 
-            // Convert the first 3 characters of the formattedDate (month) to uppercase
-            formattedDate = formattedDate.replace(/^(\w{3})/, function(_, month) {
-                return month.toUpperCase();
-            });
+        monthSpan.classList.add('formatted-month');
+        dateSpan.classList.add('formatted-date');
+        daySpan.classList.add('formatted-day');
 
-            eDisplayMoment.innerHTML = formattedDate;
+        monthSpan.textContent = formattedDate.format('MMM');
+        dateSpan.textContent = formattedDate.format('D');
+        daySpan.textContent = formattedDate.format('ddd');
 
-        })();
+        // Append the spans to the parent element (in this case, it's the label)
+        parentElement.appendChild(monthSpan);
+        parentElement.appendChild(dateSpan);
+        parentElement.appendChild(daySpan);
+
+    })();
 
 mixin birthDateEET(dateStringUTC)
     - var dom_id = Math.random()

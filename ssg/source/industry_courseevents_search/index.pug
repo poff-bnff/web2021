@@ -11,7 +11,7 @@ block content
                 each date, key in self.data.filters.starttimes
                     label.date-option
                         input(class="date-input" type="checkbox", name="selectedDates", value=key)
-                        span(class="date-input-value")
+                        div(class="date-input-value", id=`formatted_date${key}`)
                             +formatDateShort(date)
 
             .grid_search#filters(style='display: none;')
