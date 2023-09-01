@@ -371,11 +371,6 @@ function execute_filters() {
 }
 
 $(document).ready(function () {
-    // Skip initializing select2 on mobile devices
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return
-    }
-
     // Disables search input in multiselect
     const overrideSelect2MultiselectLabel = (element) => {
         const selection = element.siblings("span.select2").find("ul");
