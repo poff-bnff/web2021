@@ -289,6 +289,10 @@ function unselect_all() {
     toggleAll();
 }
 
+function toggle_filters() {
+    document.querySelector('.mobile_filters_collapse').classList.toggle('open');
+}
+
 function execute_filters() {
     let filtered = searcharray
         .filter(screening => {
