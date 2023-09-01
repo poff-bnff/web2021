@@ -26,6 +26,8 @@ function urlSelect() {
                         option.selected = true;
                     }
                 });
+                // Trigger change event for select2
+                $(selectors[ix]).trigger('change');
             } else if (ix === 'starttimes') {
                 document.querySelector(`[name="selectedDates"][value="${filterValue}"]`).checked = true
             }
@@ -223,11 +225,8 @@ function toggleFilters(exclude_selector_name) {
                 .length
 
             option.disabled = count ? false : true
-
         }
-
     }
-
 }
 
 search_input.addEventListener('keyup', e => {
@@ -246,31 +245,31 @@ $(selectors.categories).on('change', e => {
 //     toggleAll('projects');
 // });
 
-selectors.persons.addEventListener('change', e => {
+$(selectors.persons).on('change', e => {
     toggleAll('persons');
 });
 
-selectors.festivaleditions.addEventListener('change', e => {
+$(selectors.festivaleditions).on('change', e => {
     toggleAll('festivaleditions');
 });
 
-selectors.eventtypes.addEventListener('change', e => {
+$(selectors.eventtypes).on('change', e => {
     toggleAll('eventtypes');
 });
 
-selectors.eventmodes.addEventListener('change', e => {
+$(selectors.eventmodes).on('change', e => {
     toggleAll('eventmodes');
 });
 
-selectors.isliveevent.addEventListener('change', e => {
+$(selectors.isliveevent).on('change', e => {
     toggleAll('isliveevent');
 });
 
-selectors.eventaccess.addEventListener('change', e => {
+$(selectors.eventaccess).on('change', e => {
     toggleAll('eventaccess');
 });
 
-selectors.location.addEventListener('change', e => {
+$(selectors.location).on('change', e => {
     toggleAll('location');
 });
 
@@ -372,12 +371,18 @@ function execute_filters() {
 }
 
 $(document).ready(function () {
+    // Skip initializing select2 on mobile devices
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return
+    }
+
     // Disables search input in multiselect
     const overrideSelect2MultiselectLabel = (element) => {
         const selection = element.siblings("span.select2").find("ul");
+        const count = element.select2('data').length;
 
         const label = element.attr("data-placeholder");
-        selection.html("<li>" + label + "</li>");
+        selection.html(`<li>${label}${count > 0 ? ` (${count})` : ''}</li>`);
     };
 
     $(".select2-multiple").each(function () {
@@ -390,6 +395,12 @@ $(document).ready(function () {
         });
 
         overrideSelect2MultiselectLabel($(this));
+    });
+    
+    $('.select2-single').select2({
+        minimumResultsForSearch: -1,
+        width: "100%",
+        dropdownAutoWidth: true,
     });
 
     $(".select2-multiple").on(
