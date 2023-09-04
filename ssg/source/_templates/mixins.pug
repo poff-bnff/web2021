@@ -314,7 +314,7 @@ mixin screeningDate(dateString)
             var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
             var NowMoment1 = moment(new Date('#{dateString}')).format('Do MMM');
             var weekDay= moment(new Date('#{dateString}')).format('dddd');
-            eDisplayMoment1.innerHTML = NowMoment1 + ', ' + weekDay;
+            eDisplayMoment1.innerHTML = '<span class="bold">' + NowMoment1 + ',</span> ' + weekDay;
 
         })();
 

@@ -2,6 +2,9 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    .events_search_page_title_wrapper
+        //- Temporary static content in page title to test styles
+        h1.events_search_page_title Panels and Talks
     if self.data.filters && process.env['DOMAIN'] === 'industry.poff.ee'
         h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
@@ -178,25 +181,21 @@ block content
                                                     path(d="M5 3L19 12L5 21V3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
                                                 span.keyword Recorded event
                                         if event.event_mode
-                                            if event.event_mode.name === 'Onsite event'
-                                                div
+                                            div
+                                                if event.event_mode.name === 'Onsite event'
                                                     svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
                                                         path(d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
                                                         path(d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                    span.keyword Onsite
-                                            else if event.event_mode.name === 'Onsite event with stream'
-                                                div
+                                                else if event.event_mode.name === 'Onsite event with stream'
                                                     svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
                                                         path(d="M23 7L16 12L23 17V7Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
                                                         path(d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                    span.keyword Hybrid
-                                            else
-                                                div
+                                                else
                                                     svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
                                                         path(d="M20 3H4C2.89543 3 2 3.89543 2 5V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
                                                         path(d="M8 21H16", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
                                                         path(d="M12 17V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                    span.keyword Online
+                                                span.keyword= event.event_mode.name
                                         if event.event_access
                                             div
                                                 if event.event_access === 'Open (with accreditation)'
