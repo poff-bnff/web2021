@@ -11,7 +11,7 @@ body
 
     //- Level 1
     each L1MenuItem in self.data.menu
-        li
+        li.menu_item
             if L1MenuItem.link
                 a(href= `${L1MenuItem.link}`)= L1MenuItem.name
             else
@@ -19,20 +19,39 @@ body
 
             //- Level 2
             if L1MenuItem.L2MenuItems.length
+                button.toggle_dropdown
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path d="M15 18.5L9 12.5L15 6.5" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                button.toggle_dropdown_desktop
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 ul
                     each L2MenuItem in L1MenuItem.L2MenuItems
-                        li
-                            if L2MenuItem.link
-                                a(href= `${L2MenuItem.link}`)= L2MenuItem.name
-                            else
-                                a= L2MenuItem.name
+                        if L2MenuItem.L3MenuItems.length
+                            li.megamenu_el
+                                if L2MenuItem.link
+                                    a(href= `${L2MenuItem.link}`)= L2MenuItem.name
+                                else
+                                    a= L2MenuItem.name
 
-                            //- Level 3
-                            if L2MenuItem.L3MenuItems.length
-                                ul
-                                    each L3MenuItem in L2MenuItem.L3MenuItems
-                                        li
-                                            if L3MenuItem.link
-                                                a(href= `${L3MenuItem.link}`)= L3MenuItem.name
-                                            else
-                                                a= L3MenuItem.name
+                                //- Level 3
+                                if L2MenuItem.L3MenuItems.length
+                                    button.toggle_dropdown
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                            <path d="M15 18.5L9 12.5L15 6.5" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    ul
+                                        each L3MenuItem in L2MenuItem.L3MenuItems
+                                            li.megamenu_sub_el
+                                                if L3MenuItem.link
+                                                    a(href= `${L3MenuItem.link}`)= L3MenuItem.name
+                                                else
+                                                    a= L3MenuItem.name
+                        else
+                            li.dropdown_el
+                                if L2MenuItem.link
+                                    a(href= `${L2MenuItem.link}`)= L2MenuItem.name
+                                else
+                                    a= L2MenuItem.name
