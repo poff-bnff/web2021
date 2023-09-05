@@ -1,7 +1,7 @@
 function restrictedcontent(element) {
     element.innerHTML = "Laetakse..."
     var myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('ID_TOKEN'));
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
@@ -19,7 +19,7 @@ function restrictedcontent(element) {
         redirect: 'follow'
     };
 
-    fetch(`${strapiDomain}/users-permissions/users/rolecheck`, requestOptions).then(function (response) {
+    fetch(`${huntAuthDomain}/api/rolecheck`, requestOptions).then(function (response) {
         if (response.ok) {
             return response.json();
         }

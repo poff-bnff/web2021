@@ -8,22 +8,11 @@ block content
 
             section.shop(shopSection=true)
 
-                //- Poe title
                 if shop.title
                     h1.section_headline= shop.title
 
-                //- Poe intro
-                //- if shop.intro
-                //-     .shop_intro_box
-                //-         .shop_intro
-                //-             p.dark_1= shop.intro
-
                 if shop.prodCatList && shop.prodCatList
                     each prodCatList in shop.prodCatList
-
-                        //- ProdCatList title
-                        //- if prodCatList.title
-                        //-     h3.sub_section_headline= prodCatList.title
 
                         section.shop_items_list
 

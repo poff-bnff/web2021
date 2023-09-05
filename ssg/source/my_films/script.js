@@ -4,10 +4,8 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!validToken) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
@@ -17,21 +15,6 @@ const selectors = {
     premieretypes: document.getElementById('premieretypes_select'),
     towns: document.getElementById('towns_select'),
     cinemas: document.getElementById('cinemas_select')
-}
-
-function urlSelect() {
-    if (urlParams.getAll.length) {
-        for (const [ix, params] of urlParams) {
-            if (selectors[ix]) {
-                for (const option of selectors[ix].options) {
-                    if (option.innerHTML === params) {
-                        selectors[ix].value = option.value
-                    }
-                }
-            }
-        }
-        toggleAll();
-    }
 }
 
 function setSearchParams() {
@@ -53,37 +36,12 @@ function setSearchParams() {
     }
 }
 
-document.onreadystatechange = () => {
-    if (document.readyState === 'complete') {
-        pageLoaded = true
-        pageLoadingAndUserProfileFetched()
-    }
-};
-
-function pageLoadingAndUserProfileFetched() {
-    if (!pageLoaded || !userProfileHasBeenLoaded) { return false }
-    const loading = document.getElementById('loading');
-    // const content = document.getElementById('content');
-    const filters = document.getElementById('filters');
-    urlSelect()
-    filters.style.display = "grid"
-    loading.style.display = "none"
-    // content.style.display = ""
-
-    for (img of document.images) {
-        img_src = img.src || ''
-        if (img_src.includes('thumbnail_')) {
-            img.src = img_src.replace('thumbnail_', '')
-        }
-    }
-
-}
-
 function toggleAll(exclude_selector_name) {
     setSearchParams()
+    const webUser = getUser()
 
-    if (userProfile && userProfile.my_films && userProfile.my_films.length) {
-        var userMyFilmsIds = getUniqueFavoritesArray(userProfile.my_films, 'favorite', 'cassettes')
+    if (webUser && webUser.My.films && webUser.My.films.length) {
+        var userMyFilmsIds = getUniqueFavoritesArray(webUser.My.films, 'favorite', 'cassettes')
         var allIds = execute_filters()
         ids = allIds.filter(id => userMyFilmsIds.includes(id))
     } else {
@@ -110,6 +68,39 @@ function toggleAll(exclude_selector_name) {
 
     // filtreeri filtreid
     toggleFilters(exclude_selector_name)
+}
+
+function urlSelect() {
+    if (urlParams.getAll.length) {
+        for (const [ix, params] of urlParams) {
+            if (selectors[ix]) {
+                for (const option of selectors[ix].options) {
+                    if (option.innerHTML === params) {
+                        selectors[ix].value = option.value
+                    }
+                }
+            }
+        }
+        toggleAll();
+    }
+}
+
+function pageLoadingAndUserProfileFetched() {
+    const loading = document.getElementById('loading');
+    // const content = document.getElementById('content');
+    const filters = document.getElementById('filters');
+    urlSelect()
+    filters.style.display = "grid"
+    loading.style.display = "none"
+    // content.style.display = ""
+
+    for (img of document.images) {
+        img_src = img.src || ''
+        if (img_src.includes('thumbnail_')) {
+            img.src = img_src.replace('thumbnail_', '')
+        }
+    }
+
 }
 
 function toggleFilters(exclude_selector_name) {
@@ -177,38 +168,6 @@ function toggleFilters(exclude_selector_name) {
     // console.log(programmes.options.value);
 
 }
-
-search_input.addEventListener('keyup', e => {
-    toggleAll();
-});
-
-selectors.programmes.addEventListener('change', e => {
-    toggleAll('programmes');
-});
-
-selectors.languages.addEventListener('change', e => {
-    toggleAll('languages');
-});
-
-selectors.countries.addEventListener('change', e => {
-    toggleAll('countries');
-});
-
-selectors.subtitles.addEventListener('change', e => {
-    toggleAll('subtitles');
-});
-
-selectors.premieretypes.addEventListener('change', e => {
-    toggleAll('premieretypes');
-});
-
-selectors.towns.addEventListener('change', e => {
-    toggleAll('towns');
-});
-
-selectors.cinemas.addEventListener('change', e => {
-    toggleAll('cinemas');
-});
 
 function unselect_all() {
     search_input.value = '';
@@ -280,6 +239,45 @@ function execute_filters() {
     // console.log(filtered.map(element => element.id));
     return filtered
 }
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        pageLoaded = true
+        pageLoadingAndUserProfileFetched()
+    }
+};
+
+search_input.addEventListener('keyup', e => {
+    toggleAll();
+});
+
+selectors.programmes.addEventListener('change', e => {
+    toggleAll('programmes');
+});
+
+selectors.languages.addEventListener('change', e => {
+    toggleAll('languages');
+});
+
+selectors.countries.addEventListener('change', e => {
+    toggleAll('countries');
+});
+
+selectors.subtitles.addEventListener('change', e => {
+    toggleAll('subtitles');
+});
+
+selectors.premieretypes.addEventListener('change', e => {
+    toggleAll('premieretypes');
+});
+
+selectors.towns.addEventListener('change', e => {
+    toggleAll('towns');
+});
+
+selectors.cinemas.addEventListener('change', e => {
+    toggleAll('cinemas');
+});
 
 // console.log('foo'.includes(undefined));
 

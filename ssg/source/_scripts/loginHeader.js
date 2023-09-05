@@ -1,212 +1,102 @@
 var pageURL = location.origin
-var userprofilePageURL = pageURL + '/userprofile'
-var userProfile
-var validToken = false
+// var userprofilePageURL = pageURL + '/userprofile'
 var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 let userProfileHasBeenLoaded = false
 
-document.addEventListener('userProfileLoaded', function (e) {
-    useUserData(userProfile)
-    // console.log('User profile is loaded')
+// TODO 1: @jaanleppik Siia palun pikem selgitus, mis tingimusi tuleb ostja
+// juures kontrollida ja kuidas see funktsioon töötab
+// Ärijuhtum 1: kui kasutaja on sisse logitud, aga tal on profiil täitmata, siis ...
+// Ärijuhtum 2: kui kasutaja on sisse logitud, tal on profiil täidetud, aga tal puudub pilt, siis ...
+// Ärijuhtum 3: kui kasutaja on sisse logitud, tal on profiil täidetud ja tal on pilt olemas, siis ...
+// Ärijuhtum 4: kui kasutaja ei ole sisse logitud, siis ...
+// Ärijuhtum 5: kui kasutaja ei ole sisse logitud, aga tal on profiil täitmata, siis ... (kas see on võimalik? ;)
+// TODO 2: This function does not belong here - has to be moved to shop or similar
+const buyerCheck = () => {
+    document.getElementById('directToFillProfile').style.display = 'none'
+    document.getElementById('buybutton').style.display = 'none'
+    document.getElementById('directToLoginButton').style.display = 'none'
 
-    try {
-        const restrictedElement = document.querySelector(`.restrictedcontent`);
-        if (userProfileHasBeenLoaded) {
-            if (restrictedElement && cType && cId && cSubType !== undefined && cLang !== undefined && cDomain) {
-                restrictedcontent(restrictedElement)
-            }
-        } else {
-            restrictedElement.innerHTML = "Oled sisse logimata"
-        }
-    } catch (error) { }
-})
-
-try {
-    const productElement = document.querySelector(`[shopSection]`);
-    if (productElement) {
-        availability()
+    // if we are in middle of login, its too early to decide about buyer
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
+    if (jwt !== null && jwt !== undefined && jwt !== '') {
+        return false
     }
-} catch (error) { }
 
-function buyerCheck() {
-
-    if (!validToken) {
+    if (!isUserTokenValid()) {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
-    } else {
-        document.getElementById('directToLoginButton').style.display = 'none'
-
-        if (userProfile.profileFilled && userProfile.user_profile && userProfile.user_profile.picture) {
-            //kõik olemas saab osta
-            document.getElementById('buybutton').style.display = 'block'
-            // console.log("kasutaja saab osta")
-        } else {
-            if (!userProfile.profileFilled) {
-                //profiil täitmata
-                document.getElementById('directToFillProfile').style.display = 'block'
-                // console.log("pooliku profiiliga kasutaja on poes")
-            } else {
-                //profiil täidetud, aga pilt puudu
-                document.getElementById('directToaddPicture').style.display = 'block'
-                // console.log("pildita kasutaja on poes")
-
-            }
-        }
+        return false
     }
+
+    if (getProfilePicture()) {
+        document.getElementById('buybutton').style.display = 'block'
+        return true
+    }
+
+    document.getElementById('directToFillProfile').style.display = 'block'
+    return false
 }
 
+// TODO: Investigate, what are best practices to make this function private to this file
+const userMe = async () => {
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/me`
 
-if (localStorage.getItem('BNFF_U_ACCESS_TOKEN')) {
-    var token = localStorage.getItem('BNFF_U_ACCESS_TOKEN')
-    try {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        // var parsedToken = JSON.parse(jsonPayload)
-        // console.log("token: ", parsedToken)
-        var expDate = JSON.parse(jsonPayload).exp * 1000
-        var now = new Date().getTime()
-
-        // console.log("token aegub: " + expDate)
-        // console.log("praegu on: " + now)
-
-        if (now < expDate) {
-            validToken = true
-        } else {
-            validToken = false
-        }
-    }
-    catch (err) {
-        //console.log(err)
-        validToken = false
-    }
-}
-// console.log("valid token?",validToken)
-
-
-if (validToken) {
-    try {
-        document.getElementById('logOut').style.display = 'block'
-        document.getElementById('logInName').style.display = 'block'
-        document.getElementById('userProfile').style.display = 'block'
-    } catch (error) {
-    }
-    loadUserProfileH()
-
-    try {
-        document.getElementById('login_cond').style.display = 'none'
-    } catch (error) {
-    }
+    const response = await fetch(url, { headers })
+    const data = await response.json()
+    // console.log('inside userMe', data)
+    return data
 }
 
-if (!validToken) {
-    try {
-        document.getElementById('logIn').style.display = 'block'
-        document.getElementById('signUp').style.display = 'block'
-    } catch (error) {
-        null
-    }
-    // loadEmptyUserProfile()
-}
-
-function loadUserProfileH() {
-    // console.log('laen cognitost kasutaja profiili....')
-    var myHeaders = new Headers()
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'))
-
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    }
-
-    fetch(`${strapiDomain}/users/me`, requestOptions).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        userProfile = data
-        document.dispatchEvent(userProfileLoadedEvent)
-        // console.log("cognitos olev profiil:")
-        // console.log(userProfile);
-
-    }).catch(function (error) {
-        console.warn(error);
-    });
-}
-
-function loadEmptyUserProfile() {
-    // console.log('loadEmptyUserProfile')
-
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    }
-
-    fetch('https://api.poff.ee/profile', requestOptions).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        // console.log('data ', data);
-        userProfile = {
-            sub: data.ip,
-            name: 'Wolf'
-        }
-        document.dispatchEvent(userProfileLoadedEvent)
-        // console.log("cognitos olev profiil:")
-        // console.log(userProfile);
-
-    }).catch(function (error) {
-        console.warn(error);
-    });
-}
-
-
-
-function saveUrl() {
+// TODO: this has to be made obsolete
+function savePreLoginUrl() {
     localStorage.setItem('preLoginUrl', window.location.href)
 }
 
+// TODO: this function is too abstract and does not belong here
+//       should be torn to pieces and moved to specific pages
+function useUserData() {
+    const webUser = getUser()
+    console.log('useUserData', webUser);
 
+    // TODO: this doesnot belong here - has to be moved to specific pages
+    if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
+        if (industryPage && webUser.provider.split(',').includes('eventivalindustry') && webUser.industry_profile && webUser.industry_profile.name) {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.industry_profile.name
+            } catch (err) {
+                // null
+            }
+        } else if (webUser.user_profile && webUser.user_profile.firstName && webUser.provider) {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.user_profile.firstName
+            } catch (err) {
+                // null
+            }
 
-
-function useUserData(userProf) {
-    if (industryPage && userProf.provider.split(',').includes('eventivalindustry') && userProf.industry_profile && userProf.industry_profile.name) {
-        try {
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.industry_profile.name
-        } catch (err) {
-            null
-        }
-    } else if (userProf.user_profile && userProf.user_profile.firstName && userProf.provider) {
-        try {
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.user_profile.firstName
-        } catch (err) {
-            null
-        }
-
-    } else {
-        try {
-            document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + userProf.email
-        } catch (err) {
-            null
+        } else {
+            try {
+                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.email
+            } catch (err) {
+                // null
+            }
         }
     }
     try {
         buyerCheck()
     } catch (err) {
-        null
+
+        // null
     }
     try {
         loadMyFavFilms()
     } catch (err) {
+
         // console.log(err)
-        null
+        // null
     }
     try {
         userProfileHasBeenLoaded = true
@@ -223,7 +113,7 @@ function useUserData(userProf) {
 }
 
 function logOut() {
-    localStorage.removeItem('BNFF_U_ACCESS_TOKEN')
+    localStorage.removeItem('ID_TOKEN')
     localStorage.removeItem('ID_TOKEN')
 
     if (localStorage.getItem('REFRESH_TOKEN')) {
@@ -237,3 +127,155 @@ function logOut() {
 
     // window.open(location.origin, '_self')
 }
+
+// This function returns true if user is logged in but redirects to login page if not.
+const requireLogin = () => {
+    if (isUserTokenValid()) {
+        return true
+    } else {
+        const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+        window.open(loginUrl, '_self')
+    }
+}
+
+const parseJWT = (token) => {
+    try {
+        const base64Url = token.split('.')[1]
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        }).join(''))
+        return JSON.parse(jsonPayload)
+    } catch (err) {
+        console.error(err)
+        return null
+    }
+}
+
+// TODO: not used anywhere, please remove
+const getCurrentLang = () => {
+    let lang = localStorage.getItem('lang')
+    lang !== 'et' ? lang = `${lang}/` : lang = ''
+    return lang
+}
+
+const getUser = () => {
+    const webUser = localStorage.getItem('USER_PROFILE')
+    if (webUser === null || webUser === undefined || webUser === '') {
+        return null
+    } else {
+        return JSON.parse(webUser)
+    }
+}
+
+const reloadUser = async () => {
+    console.log('reloadUser')
+    const webUser = await userMe()
+    localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
+    return webUser
+}
+
+const getProfilePicture = () => {
+    const webUser = getUser()
+    if (webUser !== null) {
+        if (webUser.user_profile !== null) {
+            if (webUser.user_profile.picture !== null) {
+                return strapiDomain + webUser.user_profile.picture.url
+            }
+        }
+    }
+    return null
+}
+
+const isUserTokenValid = () => {
+    const idToken = localStorage.getItem('ID_TOKEN');
+    let validToken = false;
+    if (idToken !== null && idToken !== undefined && idToken !== '') {
+        const parsedToken = parseJWT(idToken);
+        if (parsedToken !== null) {
+            const expDate = parsedToken.exp * 1000;
+            const now = new Date().getTime();
+            if (now < expDate) {
+                validToken = true;
+            }
+        }
+    }
+    return validToken;
+}
+
+// ---- Self-executing functions ----
+
+//
+// This self-executing function makes sure that whenever jwt is passed to the url,
+// ID_TOKEN is set to localStorage, userMe() is called to fetch user profile and
+// USER_PROFILE is set to localStorage. After that jwt is removed from the url
+// and page is reloaded without jwt in the url.
+//
+; (async function () {
+    const url = new URL(window.location.href)
+    const jwt = url.searchParams.get('jwt')
+
+    if (jwt !== null && jwt !== undefined && jwt !== '') {
+        localStorage.setItem('ID_TOKEN', jwt)
+        await reloadUser()
+        url.searchParams.delete('jwt')
+        window.open(url.toString(), '_self')
+    }
+})()
+
+//
+// This self-executing function verifies ID_TOKEN in localStorage
+// and if it is valid, userProfileLoadedEvent is dispatched.
+// If it is not valid, it is removed from localStorage along
+// with REFRESH_TOKEN and USER_PROFILE.
+//
+; (async function () {
+    if (isUserTokenValid()) {
+        document.dispatchEvent(userProfileLoadedEvent)
+        try {
+            document.getElementById('logOut').style.display = 'block'
+            document.getElementById('logInName').style.display = 'block'
+            document.getElementById('userProfile').style.display = 'block'
+            document.getElementById('logIn').style.display = 'none'
+        } catch (error) {
+        }
+    } else {
+        localStorage.removeItem('ID_TOKEN')
+        localStorage.removeItem('REFRESH_TOKEN')
+        localStorage.removeItem('USER_PROFILE')
+        try {
+            document.getElementById('logOut').style.display = 'none'
+            document.getElementById('logInName').style.display = 'none'
+            document.getElementById('userProfile').style.display = 'none'
+            document.getElementById('logIn').style.display = 'block'
+        } catch (error) {
+        }
+    }
+
+})()
+
+//
+// ---- No functions below this line ----
+
+//
+// If userProfileLoaded event is dispatched, this function is called.
+//
+document.addEventListener('userProfileLoaded', function (e) {
+    try {
+        const restrictedElement = document.querySelector(`.restrictedcontent`);
+        if (userProfileHasBeenLoaded) {
+            if ( restrictedElement
+              && cType && cId && cSubType !== undefined
+              && cLang !== undefined && cDomain) {
+                restrictedcontent(restrictedElement)
+            }
+        } else {
+            restrictedElement.innerHTML = "Oled sisse logimata"
+        }
+    } catch (error) { }
+
+    // TODO: left here right now for compatibility reasons so that we can
+    //       remove it from other places one by one
+    useUserData()
+})
+

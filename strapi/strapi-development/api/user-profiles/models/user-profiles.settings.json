@@ -23,6 +23,12 @@
     "address": {
       "type": "string"
     },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
     "birthdate": {
       "type": "date"
     },

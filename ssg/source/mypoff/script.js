@@ -1,20 +1,18 @@
-
-if (!validToken) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
-}
+// This function returns true if user is logged in but redirects to login page if not.
+requireLogin()
 
 async function fetchMyPasses() {
 
+    const webUser = await getUser()
     let userPerson
     let profilePicture
-    if (userProfile.user_profile && userProfile.user_profile.picture) {
-        userPerson = userProfile.user_profile
+    if (webUser.user_profile && webUser.user_profile.picture) {
+        userPerson = webUser.user_profile
         profilePicture = `${strapiDomain}${userPerson.picture.url}`
     } else {
         return
     }
-    var my_passes = userProfile.my_products
+    var my_passes = webUser.my_products
     // console.log('passes ', my_passes)
     var my_passes_element = document.getElementById('my_passes')
     var ix = 0
@@ -61,5 +59,5 @@ async function fetchMyPasses() {
     }
 }
 
-
-
+reloadUser()
+fetchMyPasses()

@@ -46,14 +46,14 @@ function addToMyCal(eventId) {
 
 
     // var myHeaders = new Headers();
-    // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    // myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
     var requestOptions = {
         method: 'PUT',
         // headers: myHeaders,
         redirect: 'follow',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN'),
         },
 
     };
@@ -80,7 +80,7 @@ function removeEvent(eventId) {
 
     var myHeaders = new Headers();
 
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'));
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
     var requestOptions = {
         method: 'DELETE',

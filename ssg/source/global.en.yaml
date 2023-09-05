@@ -1,0 +1,775 @@
+siteTitle: BBNF
+root: /en/
+language:
+    et: eesti
+    en: english
+    ru: русский
+navigation:
+    -
+        url: /countries/
+        title: Countries
+    -
+        url: /languages/
+        title: Languages
+search:
+    url: /en/search/
+    text: |
+        ### Search
+    placeholder: enter →
+    button: Search
+label:
+    menu:
+        mainNews: News
+        mainFilms: Films
+        mainInfo: Info
+        mainCovid: Covid
+        mainFestival: Festival
+        mainTeam: Team
+        mainSchedule: Schedule
+        mainLogin: Login
+        mainLogout: Log Out
+        mainSignup: Sign Up
+        mainGreeting: Hello
+        mainProfile: My profile
+        mainShortlist: My Films Shortlist
+        mainUserMenu: My BNFF
+        mainPass: My  passes
+        mainShop: Shop
+        mainMyScreenings: My Screenigns Schedule
+    screening:
+        subtitles: Subtitles
+        introPresenter: Intro by
+        introGuests: Intro guests
+        qaPresenter: Q&A presenter
+        qaGuests: Q&A guests
+        qaDuration: Q&A duration
+        totalDuration: Screening duration
+        name: Screening
+        extraInfo: Additional info
+    filmikool:
+        courseTimes: Course times
+        course: Course
+        instructor: Instructor
+        targetGroup: Target group
+        courseVolume: Course volume
+    all:
+        selectLocale: Languages
+        presenters: Presenters
+        sponsors: Sponsor
+        supporters: Supporters
+        festivalTeam: Festival team
+        officialPartners: Official partners
+        partners: Partners
+        screeningsCalendar: Screenings calendar
+        eventsCalendar: Events calendar
+        eventsGalleries: What happened?
+        team: Festival team
+        restrictedMessageIndustry1: To see the content You need to be logged in.
+        restrictedMessageIndustry2: Please proceed to Log in page
+    userprofile:
+        pictureTitle: Profile picture (required for pass buyers)
+        email: E-mail
+        password: Password
+        passwordRepeat: Password again
+        firstName: First name
+        lastName: Last name
+        gender: Gender
+        genderM: male
+        genderF: female
+        genderO: other
+        birthday: Date of birth
+        phone: Phone number
+        country: Country
+        city: County
+        saveButton: Save
+        address: Address
+        registerTitle: >-
+            To register, fill in the form or choose the appropriate
+            authentication means
+        profileTitle: Please fill the userprofile form
+        choosePicture: Upload picture
+        pictureError: Not a picture!
+        select: select
+        loginPw: Enter with your email and password
+        signIn: Sign in
+        signOut: Sign out
+        register: Sign up
+        firstNameHelp: Enter your first name
+        lastNameHelp: 'Please enter your last name '
+        eMailHelp: Enter your email address
+        phoneNumHelp: Enter your phone number
+        ageHelp: You must be at least 13 years old to register
+        genderHelp: Please enter your gender
+        cityHelp: Select the city
+        pass: Buy
+        passHelp: To purchase a pass log in
+        payment: To pay
+        back: Back
+        confirmMessage: Data saved, confirmation link sent to email address
+        passwordHelp: The password must be at least 8 characters long
+        password2Help: The password must be identical to the one entered above
+        registerAddTitle: To complete the registration, please fill in the user form
+        userprofileTitle: Your user data
+        dataSaved: Data saved
+        resetPassword: Reset password
+        profilePicHelp: ' To buy pass add you picture'
+        profileAddInfoHelp: To buy pass complete your profile
+        accountAlreadyCreatedHelp: >-
+            Registration failed, an account has already been created with this
+            email, please log in
+        loginSome: Create account or enter via social media accounts
+        loginRegister: Don't have an account?
+        redirectFromUserprofileMessage: Please log in to see your profile
+        redirectFromMyPoffMessage: Please log in to see your passes
+        redirectFromFavouritesMessage: Please log in to see your favorite movies
+        unfilledPasswordOfEmailHelp: Missing email and/or password
+        pswdResetHelp: >-
+            Enter your email and click 'Send link'. The password reset link will
+            be sent to your email.
+        resetCodeHelp: 'Enter the reset code sent to your email: '
+        resetPswdNewPswdHelp: 'Enter your new password 2 times:'
+        pswdResetCompleteHelp: Log in with your new password
+        resetCodeLabel: 'Code:'
+        resetCodeButton: Enter
+        sendResetCodeButton: Send link
+        resetPswdButton: Save new password
+        noUserOrWrongPwd: >-
+            User don't exist or wrong password. Please register, enter correct
+            password, reset it or enter via social media account. .
+        choosePicButton: Choose picture
+        noFileChosen: No file chosen
+        unconfirmedEmail: Please confirm your email using link we send.
+        dateHelp: Enter your birthdate
+        strapiError: 'Server error: '
+        mergeProvidersFailed: Merging of social media account providers failed!
+        failedToFetch: No connection with the server.
+        authorizeRequestFailed: Unauthorized request.
+        pswdResetCodeSent: 'Password reset link sent to email:'
+        signinBtn: Sign in
+        adminPswdResetMessage: >-
+            New password required for signin with this email. To order password
+            reset link please click 'Send link'.
+        forceResetPswd: 'Your password has expired, please renew:'
+        acceptConditions: >-
+            <a href="https://poff.ee/en/about/conditions-and-privacy/">I have
+            read and agree with terms of use of internet shop</a>
+        profileImg: Profile image
+        photographer: Photographer
+        imageYear: Photo year
+        profileImgSet: Profile image
+        galleryImg: Gallery image
+        saveProfile: Save profile
+        profileSaved: Profile is saved
+        streetName: Street name
+        addGalleryImg: Add next gallery image
+        proRole: Profession
+        county: County
+        municipality: Municipality
+        populPlace: Populated place
+        addressHouseNumber: Address number
+        addressApptNumber: Appartment nr
+        addressPostalCode: Postal code
+        galleryImgSet: Gallery images
+        addressSet: Contact address
+        nameSet: Name
+        contactInfoSet: Public contact info
+        professionalInfoSet: Professional info
+        mainInfoSet: Main information
+        nativeLang: Native language
+        otherLang: Other languages
+        actingAgeFrom: Acting age from
+        actingAgeTo: Acting age to
+        height: Height (cm)
+        weight: Weight (kg)
+        stature: Stature
+        pitchOfVoice: Pitch of voice
+        eyeColour: Eye colour
+        hairColour: Hair colour
+        hairLength: Hair length
+        delete: Delete
+        remove: Remove
+        typeOfWork: Type of work / film
+        profEducation: Professional education
+        yearFrom: From year
+        yearTo: Year of completion (until)
+        eduOrgName: Educational organisation name
+        eduOrgDep: Department
+        eduOrgUrl: Educational organisation webpage
+        eduDegree: Degree
+        worksFilmography: Filmography and other works
+        workName: Name of film / work
+        workUrl: Film / work webpage
+        actorRole: Name of role
+        addFilmographyWork: Add next work
+        addEducation: Add next education
+        logIn: Please log in
+        accImdb: IMDB account address
+        accEfis: EFIS account address
+        accCastupload: Castupload account address
+        accInstagram: Instagram account address
+        accFb: Facebook account address
+        accOther: Other account address
+        selectMultiple: >-
+            To select multiple values hold down Control (Windows) or Option
+            (Mac) key when clicking
+        addRoleAtFilm: Add next profession
+        webpageUrl: Webpage address
+        webpage: Webpage
+        reprOrgName: Representing organisation name
+        reprOrgUrl: Representative's webpage
+        reprPName: Rerprestatvive's name
+        reprPhone: Rerprestatvive's phone number
+        reprEmail: Rerprestatvive's e-mail
+        required: (required)
+        placeholderUrl: https://example.com
+        showreel: Showreel link
+        audioreel: Audioreel mp3 file
+        reelsSet: Showreel and audioreel
+        skills: Skills
+        biography: Biography
+        accEtalenta: e-Talenta account address
+        actingAge: Acting age
+        weightKg: Weight
+        heightCm: Height
+        years: years
+        kg: kg
+        cm: cm
+        repr: Representation
+        prodOrgName: Production company / Theatre name
+        prodOrgUrl: Production company / Theatre webpage
+        audioreelPlay: Audioreel
+        description: Description
+        tags: Tags
+        lookingForText: Looking for text
+        lookingForTag: Looking for
+        addTagLookingFor: Annd next looking for tag
+        lookingFor: Looking for
+        locationTags: Location keywords
+        buy: Buy
+        loginToBuy: To buy please log in
+        buyCourseRegister: Register to course
+        coursePrice: Price of course
+        profilePhotoText: Profile photo (a photo meeting requirements of a document photo)
+    button:
+        screeningBuyTicket: Buy ticket
+        screeningFree: Free
+        covidRegister: Covid-19 - register your participation
+        newsButton: News
+        filmsButton: Films
+        filmAudienceVote: Vote for the film
+        screeningReservation: Group booking
+        participate: Participate
+        screeningDonation: Donate and see the film
+    industry:
+        eventDate: Date
+        eventTimeEet: Time EET
+        eventTimeUser: User time
+        projectType: Project type
+        projectStatus: Project Status
+        completionDate: Completion date
+        plannedPremiere: Planned premiere
+        countryFocus: Country focus
+        projectBudget: Budget
+        projectFinanced: Financed
+        partners: Partners
+        lookingFor: Looking for
+        contactName: Contact name
+        contactWeb: Contact web
+        contactEmail: Contact email
+        logline: Logline
+        contactAddress: Contact address
+        contactCompany: Contact company
+        directorsNote: More info about the project
+        numOfSeasons: Number of seasons
+        numOfEpisodes: Number of episodes
+        episodeDuration: Episode duration
+        industryPersonTypes: Role
+        roleAtFilms: Profession
+        lookingFors: Looking for
+        duration: Duration
+        website: Website
+        phone: Phone nr
+        email: E-mail
+        contact: Contact
+        filmography: Filmography
+        pitch: Pitch Video
+        eventMode: Event mode
+        eventPublicity: Event publicity
+        publicEvent: Public
+        privateEvent: Closed
+        eventCategories: Categories
+        liveEvent: Live event
+        notLiveEvent: Recorded event
+        isLiveEvent: Live event
+        courseStartDate: Start date
+        courseEndDate: End date
+        courseStartTimeEet: Start time EET
+        courseEndTimeEet: End time EET
+        courseStartTimeUser: 'Start user time '
+        courseEndTimeUser: End user time
+    filters:
+        programmes: Programmes
+        languages: Languages
+        countries: Countries
+        subtitles: Subtitles
+        premieres: Premieres
+        towns: Towns
+        cinemas: Cinemas
+        search: Search
+        dates: Dates
+        times: Times
+        empty: Empty filters
+        loading: Loading...
+        projectTypes: Project Types
+        statuses: Statuses
+        genres: Genres
+        industryPersonType: Role
+        roleAtFilms: Profession
+        lookingFor: Looking for
+        company: Company
+        country: Country
+        project: Project
+        people: People
+        industryCategories: Industry Categories
+        channels: Event Types
+        editions: Editions
+        filmtypes: Film types
+        keywords: Keywords
+        location: Location
+        mode: Mode
+        public: Public
+        live: Live
+        festivals: Festivals
+        year: Year
+        gender: Gender
+        nativeLanguage: Natuve language
+        name: Name
+        address: Address
+        eventType: Type of event
+        eventAccess: Access to event
+        eventDate: Event date
+        festivalEdition: Festival Edition
+        eventMode: Event mode
+        isLive: Live
+    film:
+        titleOriginal: Original title
+        title_et: Local title
+        title_en: Title in English
+        title_ru: Title in Russian
+        titleSec: Title in Estonian
+        countries: Country
+        languages: Language
+        year: Year
+        audienceVote: Vote for the film
+        runtime: Runtime
+        director: Director
+        screenwriter: Screenwriter
+        doP: DoP
+        editor: Editor
+        composer: Composer
+        cast: Cast
+        production: Production
+        synopsis: Synopsis
+        trailer: Trailer
+        festival: Festival
+        premiereType: Premiere
+        programme: Programme
+        genre: Genre
+        keywords: Subject
+        otherFestivals: Other festivals
+        awards: Awards
+        screenings: Screenings
+        qaClip: Q&A with the filmmaker
+        languageSelect: Languages
+        producer: Producer
+        coProducer: Coproducer
+        addShortlist: Add film to my shortlist
+        removeShortlist: Remove film from shortlist
+        shortlistHelp: Log in to add film to shortlist
+        addSavedScreening: Add screening to my screenings
+        removeSavedScreening: Remove screening from my screenings
+        music: Music
+        distributor: Distributor
+        animation: Animation
+        cinematographer: Cinematographer
+        sound: Sound
+        publicfunds: Public funds
+        privatefunds: Private funds
+        writer: Writer
+        cowriter: Co-writer
+        instructor: Instructor
+        creativeproducer: Creative producer
+        juniorproducer: Junior producer
+        productiondesigner: Production designer
+        artdirector: Art director
+        coproductioncompany: Co-production Company
+        choreographer: Choreographer
+        worldsales: World sales
+        subtitles: Subtitles
+        conversation: PÖFF TV - Meet the Filmmakers
+        triggerWarning: Trigger warning
+        ageRestriction: Age restriction
+footer:
+    id: 1
+    namePrivate: 'PÖFFi footer '
+    domain:
+        id: 1
+        url: poff.ee
+    socialGroup:
+        id: 8
+        namePrivate: PÖFF social links
+        name: Follow us
+        items:
+            -
+                id: 26
+                name: Facebook
+                svgCode: >-
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                    stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="svg_icon_footer">
+
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1
+                    1 0 0 1 1-1h3z"></path></svg>
+                url_et: https://www.facebook.com/tallinnblacknightsff/
+                url_ru: https://www.facebook.com/tallinnblacknightsff/
+                url: https://www.facebook.com/tallinnblacknightsff/
+            -
+                id: 27
+                name: Instagram
+                svgCode: >-
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                    stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="svg_icon_footer"><rect x="2" y="2" width="20"
+                    height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1
+                    1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5"
+                    y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                url_et: https://www.instagram.com/tallinnblacknightsff/
+                url_ru: https://www.instagram.com/tallinnblacknightsff/
+                url: https://www.instagram.com/tallinnblacknightsff/
+            -
+                id: 28
+                name: YouTube
+                svgCode: >-
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                    stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="svg_icon_footer"><path d="M22.54 6.42a2.78 2.78 0 0
+                    0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0
+                    0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78
+                    0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78
+                    0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0
+                    0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75
+                    9.75 8.48 9.75 15.02"></polygon></svg>
+                url_et: https://www.youtube.com/user/Poffihunt
+                url_ru: https://www.youtube.com/user/Poffihunt
+                url: https://www.youtube.com/user/Poffihunt
+            -
+                id: 29
+                name: Twitter
+                svgCode: >-
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                    stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="svg_icon_footer"><path d="M23 3a10.9 10.9 0 0 1-3.14
+                    1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5
+                    13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0
+                    0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                url_et: https://twitter.com/TallinnBNFF
+                url_ru: https://twitter.com/TallinnBNFF
+                url: https://twitter.com/TallinnBNFF
+    item:
+        -
+            id: 12
+            namePrivate: 'Team '
+            name: Team
+            svgItem:
+                -
+                    id: 30
+                    name: Team
+                    svgCode: >-
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="svg_icon_footer"><path d="M17 21v-2a4 4 0 0
+                        0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                        r="4"></circle><path d="M23 21v-2a4 4 0 0
+                        0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0
+                        7.75"></path></svg>
+                    url_et: poffi-meeskond
+                    url_ru: komanda-poff
+                    url: poff-team
+        -
+            id: 13
+            namePrivate: Subscribe to newsletter
+            name: Subscribe to newsletter
+            svgItem:
+                -
+                    id: 31
+                    name: E-mail
+                    svgCode: >-
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="svg_icon_footer"><path d="M4 4h16c1.1 0 2 .9 2
+                        2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2
+                        2-2z"></path><polyline points="22,6 12,13
+                        2,6"></polyline></svg>
+                    url_et: >-
+                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
+                    url_ru: >-
+                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
+                    url: >-
+                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=449595c9ae
+        -
+            id: 14
+            namePrivate: Contacts
+            name: Contact
+            text: |-
+                MTÜ Pimedate Ööde Filmifestival
+                Telliskivi 60a/2, 10412 Tallinn 
+                Tel: +372 5620 8308
+                E-mail: info@poff.ee
+                Registrikood: 80044767
+                KMKR: EE100520914
+                IBAN: EE577700771005547635
+    supporters:
+        -
+            id: 1
+            order: 1
+            name: Presenters
+            supporter:
+                -
+                    id: 1
+                    name: Elisa
+                    customUrl: https://www.elisa.ee/
+                    poffi_article:
+                        id: 126
+                        created_by: 9
+                        created_at: '2020-11-09T07:39:19.532Z'
+                        title_et: ELISA
+                        slug_et: elisa
+                        slug_ru: pof-fi-article-80
+                        contents_et: >-
+                            **Elu on PÖFFi väärt**
+
+
+                            Elisal on suur au toetada Põhja-Euroopa ainsat
+                            A-kategooria filmifestivali PÖFF. Meil on ühine
+                            eesmärk – pakkuda unustamatuid elamusi igas vanuses
+                            publikule.
+
+
+                            Mitmeid PÖFFi filme, festivalimelu, sh intervjuusid,
+                            Q&A vestlusi, avatseremooniat ning auhinnagalat on
+                            võimalik nautida ka kodustes tingimustes, sest Elisa
+                            Stage’i platvormil on avatud PÖFFi veebikino.
+
+                            Ja nagu ikka, on ka tänavu PÖFFi piletid Elisa
+                            klientidest filmigurmaanidele soodsamad.
+                             
+                            Kohtume PÖFFil!
+                        publishFrom: '2022-10-27T09:00:00.000Z'
+                        publish_et: true
+                        public: true
+                        slug: pof-fi-article-35
+                        contents: >-
+                            Elisa is proud to be a supporter of the only
+                            category A film festival in Northern Europe because
+                            we share a common goal – to offer unforgettable
+                            experiences to audiences of all ages.
+
+
+                            This year, with Elisa you can enjoy all 112 PÖFF
+                            movies at home via the PÖFF web cinema. In addition,
+                            with Elisa Stage you can enjoy anything and
+                            everything exciting at the PÖFF festival, from the
+                            opening and award ceremonies, to interviews and
+                            discussion panels. As is traditional, all Elisa
+                            customers can get PÖFF tickets at a discounted
+                            price.
+
+
+                            See you at PÖFF!
+                        publish: true
+                    logoWhite:
+                        id: 6716
+                        name: elisa_poffi_peasponsor_logo_white.svg
+                        width: 500
+                        height: 73
+                        hash: elisa_poffi_peasponsor_logo_white_715a1a6ad2
+                        ext: .svg
+                        url: >-
+                            /uploads/elisa_poffi_peasponsor_logo_white_715a1a6ad2.svg
+                -
+                    id: 2
+                    name: www.nordichotels.eu
+                    customUrl: https://www.nordichotels.eu/
+                    logoWhite:
+                        id: 6710
+                        name: Nordic_hotel_logo_majutuspartner_white.svg
+                        width: 500
+                        height: 184
+                        hash: Nordic_hotel_logo_majutuspartner_white_0a12565a0d
+                        ext: .svg
+                        url: >-
+                            /uploads/Nordic_hotel_logo_majutuspartner_white_0a12565a0d.svg
+                -
+                    id: 468
+                    name: Toyota
+                    customUrl: https://www.toyota.ee/
+                    logoWhite:
+                        id: 6707
+                        name: Toyota_logo_autopartner_white.svg
+                        width: 500
+                        height: 454
+                        hash: Toyota_logo_autopartner_white_09a66ac58a
+                        ext: .svg
+                        url: >-
+                            /uploads/Toyota_logo_autopartner_white_09a66ac58a.svg
+        -
+            id: 2
+            order: 2
+            name: Grand Sponsors
+            supporter:
+                -
+                    id: 6
+                    name: Cramo
+                    customUrl: https://www.cramo.ee/
+                    logoWhite:
+                        id: 261
+                        name: cramo_white.svg
+                        width: 160
+                        height: 28
+                        hash: cramo_white_9329c71c98
+                        ext: .svg
+                        url: /uploads/cramo_white_9329c71c98.svg
+                -
+                    id: 3
+                    name: Postimees
+                    customUrl: https://www.postimees.ee/
+                    logoWhite:
+                        id: 253
+                        name: Postimees_white.svg
+                        width: 350
+                        height: 68
+                        hash: Postimees_white_3f389926f5
+                        ext: .svg
+                        url: /uploads/Postimees_white_3f389926f5.svg
+                -
+                    id: 564
+                    name: National Geograpic
+                    customUrl: https://www.nationalgeographic.ee/
+                    logoWhite:
+                        id: 6923
+                        name: national_geographic_logo_white.svg
+                        width: 500
+                        height: 147
+                        hash: national_geographic_logo_white_e263e2414c
+                        ext: .svg
+                        url: >-
+                            /uploads/national_geographic_logo_white_e263e2414c.svg
+                -
+                    id: 569
+                    name: Forus
+                    customUrl: https://get.forus.eu
+                    logoWhite:
+                        id: 14981
+                        name: Forus_Taxi_white
+                        width: 284
+                        height: 184
+                        hash: Forus_Taxi_white_623385d340
+                        ext: .svg
+                        url: /uploads/Forus_Taxi_white_623385d340.svg
+        -
+            id: 30
+            order: 3
+            name: Sponsors
+            supporter:
+                -
+                    id: 484
+                    name: Reval Cafe
+                    customUrl: https://revalcafe.ee/
+                    logoWhite:
+                        id: 260
+                        name: revalcafe_white.svg
+                        width: 100
+                        height: 100
+                        hash: revalcafe_white_3688f7f537
+                        ext: .svg
+                        url: /uploads/revalcafe_white_3688f7f537.svg
+                -
+                    id: 311
+                    name: Solaris
+                    logoColour:
+                        id: 3465
+                        name: Solaris_logo_white-01.svg
+                        width: 401
+                        height: 209
+                        hash: Solaris_logo_white_01_2c9e5f3738
+                        ext: .svg
+                        url: /uploads/Solaris_logo_white_01_2c9e5f3738.svg
+                -
+                    id: 312
+                    name: Keskkonnaagentuur
+                    logoColour:
+                        id: 3463
+                        name: Keskkonnaagentuur_3lovi_pms_logo-01_white-01.svg
+                        width: 178
+                        height: 68
+                        hash: >-
+                            Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41
+                        ext: .svg
+                        url: >-
+                            /uploads/Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41.svg
+                -
+                    id: 314
+                    name: EuroPark
+                    logoColour:
+                        id: 3449
+                        name: Europark_logo_white.svg
+                        width: 960
+                        height: 283
+                        hash: Europark_logo_white_844f04aa7f
+                        ext: .svg
+                        url: /uploads/Europark_logo_white_844f04aa7f.svg
+                -
+                    id: 315
+                    name: LuxCharter
+                    logoColour:
+                        id: 3448
+                        name: >-
+                            LuxCharter_logo charter_kuld
+                            gradiendiga_CMYK_vector-01.png
+                        width: 447
+                        height: 131
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
+                                name: >-
+                                    thumbnail_LuxCharter_logo charter_kuld
+                                    gradiendiga_CMYK_vector-01.png
+                        hash: >-
+                            Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a
+                        ext: .png
+                        url: >-
+                            /uploads/Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
+                -
+                    id: 486
+                    name: DHL
+                    customUrl: https://www.dhl.com/ee-et/home.html
+                    logoWhite:
+                        id: 13295
+                        name: DHL_logo_white
+                        width: 283
+                        height: 63
+                        hash: DHL_logo_white_1f30d86951
+                        ext: .svg
+                        url: /uploads/DHL_logo_white_1f30d86951.svg
+    domains:
+        -
+            id: 1

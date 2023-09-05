@@ -325,7 +325,7 @@
     },
     {
       "method": "GET",
-      "path": "/users/me",
+      "path": "/users/me/:id",
       "handler": "User.me",
       "config": {
         "policies": [],
