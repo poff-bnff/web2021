@@ -8,7 +8,7 @@ Authorization: Bearer {{nonProdToken}}
 
 ### Update user profile
 put {{hunt_url}}/api/profile HTTP/1.1
-Authorization: token {{jwt}}
+Authorization: token {{nonProdToken}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -19,11 +19,11 @@ Content-Type: image/jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="firstName"
 
-Jon
+Mihkel
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="lastName"
 
-Doe
+Putrinš
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 
