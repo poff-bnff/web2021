@@ -299,117 +299,155 @@ block content
         if self.data.industryevents
             each event in self.data.industryevents
                 .modal.event-modal(id=`eventModal${event.id}`, aria-hidden="true", tabindex="-1", aria-labelledby=`modal-title-${event.id}`)
-                    .modal-dialog.modal-fullscreen
+                    .modal-dialog.modal-fullscreen.modal-dialog-scrollable
                         .modal-content
-                            button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
-                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                    path(d="M18 6L6 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                    path(d="M6 6L18 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                            .event_card_header
-                                .event_card_header_left
-                                    .header_text
-                                        svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                            path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M16 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M8 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M3 10H21' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
-                                        span
-                                            if event.start_time
-                                                +screeningDate(event.start_time)
-                                    .event_time
-                                        svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                            path(d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M12 6V12L16 14' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                            .modal-body
+                                button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
+                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                        path(d="M18 6L6 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                        path(d="M6 6L18 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                .event_card_header
+                                    .event_card_header_left
                                         .header_text
-                                            span.bold
-                                                +screeningTimeEET(event.start_time)
-                                            span.bold &nbsp;EET&nbsp;
-                                            span.bold /&nbsp;
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M16 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M8 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M3 10H21' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
                                             span
-                                                +screeningTime(event.start_time)
-                                            span &nbsp;user
-                                    if event.location
-                                        .header_text
-                                            svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                path(d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
-                                                path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
-                                            span= event.location.name
+                                                if event.start_time
+                                                    +screeningDate(event.start_time)
+                                        .event_time
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M12 6V12L16 14' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                            .header_text
+                                                span.bold
+                                                    +screeningTimeEET(event.start_time)
+                                                span.bold &nbsp;EET&nbsp;
+                                                span.bold /&nbsp;
+                                                span
+                                                    +screeningTime(event.start_time)
+                                                span &nbsp;user
+                                        if event.location
+                                            .header_text
+                                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                    path(d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                    path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                span= event.location.name
 
-                                .event_card_header_right
-                                    .add_to_cal
-                                        .header_text
-                                            span.notsavedevent= 'Add to calendar'
-                                            span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
-                                            span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
-                                        svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                            path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                            .event_card_content
-                                h3(id=`modal-title-${event.id}`).event_title= event.title
-                                .event_card_keywords
-                                    .event_card_keywords_left
-                                        .button_group
-                                            if event.industry_categories
-                                                span.btn_outline= event.industry_categories.map(c => c.name).join(', ')
-                                            if event.event_types
-                                                span.btn_outline= event.event_types.join(', ')
-                                        //- Temporary placeholder content
-                                        span.keyword subject 1, keyword 2, subject 3
-                                    .event_card_keywords_right
-                                        if event.is_live_event
-                                            div
-                                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                    path(d="M22 12H18L15 21L9 3L6 12H2", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                span.keyword Live event
-                                        else
-                                            div
-                                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                    path(d="M5 3L19 12L5 21V3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                span.keyword Recorded event
-                                        if event.event_mode
-                                            div
-                                                if event.event_mode.name === 'Onsite event'
+                                    .event_card_header_right
+                                        .add_to_cal
+                                            .header_text
+                                                span.notsavedevent= 'Add to calendar'
+                                                span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                                                span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                .event_card_content
+                                    h3(id=`modal-title-${event.id}`).event_title= event.title
+                                    .event_card_keywords
+                                        .event_card_keywords_left
+                                            .button_group
+                                                if event.industry_categories
+                                                    span.btn_outline= event.industry_categories.map(c => c.name).join(', ')
+                                                if event.event_types
+                                                    span.btn_outline= event.event_types.join(', ')
+                                            //- Temporary placeholder content
+                                            span.keyword subject 1, keyword 2, subject 3
+                                        .event_card_keywords_right
+                                            if event.is_live_event
+                                                div
                                                     svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                else if event.event_mode.name === 'Onsite event with stream'
+                                                        path(d="M22 12H18L15 21L9 3L6 12H2", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Live event
+                                            else
+                                                div
                                                     svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M23 7L16 12L23 17V7Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                else
-                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M20 3H4C2.89543 3 2 3.89543 2 5V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M8 21H16", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M12 17V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                span.keyword= event.event_mode.name
-                                        if event.event_access
-                                            div
-                                                if event.event_access === 'Open (with accreditation)'
-                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M10 17L15 12L10 7", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M15 12H3", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                else if event.event_access === 'Pre-registration needed (with accreditation)'
-                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M16 4H18C18.5304 4 19.0391 4.21071 19.4142 4.58579C19.7893 4.96086 20 5.46957 20 6V20C20 20.5304 19.7893 21.0391 19.4142 21.4142C19.0391 21.7893 18.5304 22 18 22H6C5.46957 22 4.96086 21.7893 4.58579 21.4142C4.21071 21.0391 4 20.5304 4 20V6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4H8", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M15 2H9C8.44772 2 8 2.44772 8 3V5C8 5.55228 8.44772 6 9 6H15C15.5523 6 16 5.55228 16 5V3C16 2.44772 15.5523 2 15 2Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                else if event.event_access === 'Invitations only'
-                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M17 11L19 13L23 9", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                else
-                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
-                                                        path(d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M23 20.9999V18.9999C22.9993 18.1136 22.7044 17.2527 22.1614 16.5522C21.6184 15.8517 20.8581 15.3515 20 15.1299", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                        path(d="M16 3.12988C16.8604 3.35018 17.623 3.85058 18.1676 4.55219C18.7122 5.2538 19.0078 6.11671 19.0078 7.00488C19.0078 7.89305 18.7122 8.75596 18.1676 9.45757C17.623 10.1592 16.8604 10.6596 16 10.8799", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
-                                                span.keyword= event.event_access
-                            a(href=`/${lang_path}events/${event.slug}`) Read more
+                                                        path(d="M5 3L19 12L5 21V3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Recorded event
+                                            if event.event_mode
+                                                div
+                                                    if event.event_mode.name === 'Onsite event'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_mode.name === 'Onsite event with stream'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M23 7L16 12L23 17V7Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M20 3H4C2.89543 3 2 3.89543 2 5V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8 21H16", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 17V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_mode.name
+                                            if event.event_access
+                                                div
+                                                    if event.event_access === 'Open (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M10 17L15 12L10 7", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 12H3", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Pre-registration needed (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 4H18C18.5304 4 19.0391 4.21071 19.4142 4.58579C19.7893 4.96086 20 5.46957 20 6V20C20 20.5304 19.7893 21.0391 19.4142 21.4142C19.0391 21.7893 18.5304 22 18 22H6C5.46957 22 4.96086 21.7893 4.58579 21.4142C4.21071 21.0391 4 20.5304 4 20V6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4H8", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 2H9C8.44772 2 8 2.44772 8 3V5C8 5.55228 8.44772 6 9 6H15C15.5523 6 16 5.55228 16 5V3C16 2.44772 15.5523 2 15 2Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Invitations only'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M17 11L19 13L23 9", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M23 20.9999V18.9999C22.9993 18.1136 22.7044 17.2527 22.1614 16.5522C21.6184 15.8517 20.8581 15.3515 20 15.1299", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M16 3.12988C16.8604 3.35018 17.623 3.85058 18.1676 4.55219C18.7122 5.2538 19.0078 6.11671 19.0078 7.00488C19.0078 7.89305 18.7122 8.75596 18.1676 9.45757C17.623 10.1592 16.8604 10.6596 16 10.8799", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_access
+                                .event_text
+                                    p.event_description= event.description
+                                    .button_group
+                                        //- Button placeholder for style testing
+                                        button.btn_default Register now
+                                        //- if event.product_categories
+                                        //-     - var shopDir = 'https://poff.ee/'
+                                        //-     a(href=`${shopDir}${event.product_categories[0].slug}`)
+                                        //-         button.btn_course= self.label.userprofile.buyCourseRegister
+                                        a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
+                                if event.credentials && event.credentials.rolePerson
+                                    .event_people
+                                        each indPerson in event.credentials.rolePerson
+                                            if indPerson.slug
+                                                .event_person
+                                                    a(href=`/${indPerson.slug}`)
+                                                        if indPerson.person.picture
+                                                            - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                                        else
+                                                            - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                                        .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
+                                                            img.event_person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+                                                        p.event_person_name= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+                                                        if indPerson.role_at_film
+                                                            p.event_person_title= indPerson.role_at_film.roleName
+                                            else
+                                                .event_person
+                                                    if indPerson.person.picture
+                                                        - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                                    else
+                                                        - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                                                    .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
+                                                        img.event_person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
+                                                    p.event_person_name= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
+                                                    if indPerson.role_at_film
+                                                        p.event_person_title= indPerson.role_at_film.roleName
+                                                        
+                                                            
 
         script.
             var searcharray = !{JSON.stringify(self.data.search)}
