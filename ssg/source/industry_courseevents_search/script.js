@@ -407,4 +407,13 @@ $(document).ready(function () {
             overrideSelect2MultiselectLabel($(this));
         }
     );
+
+    // Add class to activate event person image animation
+    $('.event_person_link').on('mouseleave', function () {
+        $(this).addClass('after_hover');
+
+        setTimeout(() => {
+            $(this).removeClass('after_hover');
+        }, 800);
+    });
 });

@@ -425,7 +425,7 @@ block content
                                         each indPerson in event.credentials.rolePerson
                                             if indPerson.slug
                                                 .event_person
-                                                    a(href=`/${indPerson.slug}`)
+                                                    a(href=`/${indPerson.slug}`).event_person_link
                                                         if indPerson.person.picture
                                                             - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
                                                         else

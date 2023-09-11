@@ -114,6 +114,32 @@ font_c = 'EB Garamond', serif
 font-family-monospace = "SFMono-Regular", "Menlo, Monaco", "Consolas", "Liberation Mono", "Courier New", monospace
 font-family-sans-serif = "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 
+@keyframes bounce
+    0% 
+        transform translateY(0)
+    
+    25% 
+        transform translateY(-10px)
+    
+    55%
+        transform translateY(-6px)
+    
+    100%
+        transform translateY(-8px)
+
+@keyframes bounceBack
+    0% 
+        transform translateY(-8px)
+    
+    25% 
+        transform translateY(2px)
+    
+    55%
+        transform translateY(-2px)
+    
+    100%
+        transform translateY(0)
+
 /* KOMMENTAAR shift-option-A */
 
 
@@ -5302,10 +5328,20 @@ strong
             width 150px
             color text
             text-align center
+        @media (pointer: fine)
+            .event_person_link:hover
+                .event_person_img_wrapper
+                    animation bounce 0.4s linear forwards
+                    @media (prefers-reduced-motion: reduce) 
+                        animation none
         .event_person_img_wrapper
             margin-top 0.5rem
             margin-bottom 1rem
             border-radius 80px 70px
+        .event_person_link.after_hover .event_person_img_wrapper
+            animation bounceBack 0.4s linear forwards
+            @media (prefers-reduced-motion: reduce) 
+                animation none
         .event-person_img
             object-fit cover
         .event_person_name, .event_person_title
