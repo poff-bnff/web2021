@@ -414,11 +414,11 @@ block content
                                     p.event_description= event.description
                                     .button_group
                                         //- Button placeholder for style testing
-                                        button.btn_default Register now
-                                        //- if event.product_categories
-                                        //-     - var shopDir = 'https://poff.ee/'
-                                        //-     a(href=`${shopDir}${event.product_categories[0].slug}`)
-                                        //-         button.btn_course= self.label.userprofile.buyCourseRegister
+                                        //- button.btn_default Register now
+                                        if event.product_categories
+                                            - var shopDir = 'https://poff.ee/'
+                                            a(href=`${shopDir}${event.product_categories[0].slug}`)
+                                                button.btn_default= self.label.userprofile.buyCourseRegister
                                         a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
                                 if event.credentials && event.credentials.rolePerson
                                     .event_people
