@@ -123,58 +123,58 @@ function loadUserInfo() {
     }
 }
 
-function validateForm() {
+// function validateForm() {
 
-    var errors = []
+//     var errors = []
 
-    if (document.getElementById('profileSent')) {
-        document.getElementById('profileSent').style.display = 'none'
-    }
+//     if (document.getElementById('profileSent')) {
+//         document.getElementById('profileSent').style.display = 'none'
+//     }
 
-    if (!validateFirstName("firstName")) {
-        errors.push('Missing firstname')
-    }
+//     if (!validateFirstName("firstName")) {
+//         errors.push('Missing firstname')
+//     }
 
-    if (!validateLastName("lastName")) {
-        errors.push('Missing lastname')
-    }
+//     if (!validateLastName("lastName")) {
+//         errors.push('Missing lastname')
+//     }
 
-    if (!validateGender("gender")) {
-        errors.push('Missing gender')
-    }
+//     if (!validateGender("gender")) {
+//         errors.push('Missing gender')
+//     }
 
-    if (!validateBDay("dob")) {
-        errors.push('Missing or invalid date of birth')
-    }
+//     if (!validateBDay("dob")) {
+//         errors.push('Missing or invalid date of birth')
+//     }
 
-    if (!validateDate("dob")) {
-        errors.push('Missing or invalid date of birth wrong format')
-    }
+//     if (!validateDate("dob")) {
+//         errors.push('Missing or invalid date of birth wrong format')
+//     }
 
-    if (!validatePhoneNr("phoneNr")) {
-        errors.push('Missing phonenumber')
-    }
+//     if (!validatePhoneNr("phoneNr")) {
+//         errors.push('Missing phonenumber')
+//     }
 
-    if (!validateCountry("country")) {
-        errors.push('Missing country')
-    }
+//     if (!validateCountry("country")) {
+//         errors.push('Missing country')
+//     }
 
-    if (!validateCity("city")) {
-        errors.push('Missing city')
-    }
+//     if (!validateCity("city")) {
+//         errors.push('Missing city')
+//     }
 
-    // console.log(errors)
-    if (errors.length === 0) {
-        sendUserProfile()
-    }
-}
+//     // console.log(errors)
+//     if (errors.length === 0) {
+//         sendUserProfile()
+//     }
+// }
 
-window.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        // console.log("ENTER")
-        validateForm()
-    }
-})
+// window.addEventListener("keydown", function (event) {
+//     if (event.key === "Enter") {
+//         // console.log("ENTER")
+//         validateForm()
+//     }
+// })
 
 
 async function deleteAccount() {
