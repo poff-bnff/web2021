@@ -479,12 +479,49 @@ block content
                     // Get the calendar container element by ID
                     var calendarContainer = document.getElementById(`ec-${dateValue}`);
 
+                    // Initialize variables to track earliest start time and latest end time
+                    var earliestStartTime = null;
+                    var latestEndTime = null;
+
+                    // Loop through events to find the earliest start time and latest end time
+                    calendarEventData.forEach(function(event) {
+                        if (event.start_time.startsWith(dateValue)) {
+                            const options = {
+                                timeZone: 'Europe/Tallinn',
+                                hour12: false,
+                                hour: '2-digit',
+                                minute: '2-digit',
+                            };
+                            const eventStartTime = new Date(event.start_time).toLocaleString('en-GB', options);
+                            const eventEndTime = new Date(event.end_time).toLocaleString('en-GB', options);
+
+                            if (earliestStartTime === null || eventStartTime < earliestStartTime) {
+                                earliestStartTime = eventStartTime;
+                            }
+                            if (latestEndTime === null || eventEndTime > latestEndTime) {
+                                latestEndTime = eventEndTime;
+                            }
+                        }
+                    });
+
+                    console.log('Earliest Start Time:', earliestStartTime);
+                    console.log('Latest End Time:', latestEndTime);
+
+                    // Calculate firstEventTime and lastEventTime
+                    const firstEventTime = earliestStartTime ? earliestStartTime : '09:00';
+                    const lastEventTime = latestEndTime ? latestEndTime : '18:00';
+
                     // Initialize the calendar with options
                     var ec = new EventCalendar(calendarContainer, {
                         view: 'resourceTimeGridDay',
                         date: dateValue,
-                        slotMinTime: '09:00',
-                        slotMaxTime: '18:00',
+                        slotMinTime: firstEventTime,
+                        slotMaxTime: lastEventTime,
+                        locale: 'et',
+                        allDaySlot: false,
+                        headerToolbar: {
+                            start: 'title', center: '', end: ''
+                        },
                         resources: [
                         { id: 1, title: 'Resource A' },
                         { id: 2, title: 'Resource B' },
