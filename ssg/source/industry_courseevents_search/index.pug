@@ -477,15 +477,18 @@ block content
                     const dateValue = datesArray[date];
 
                     // Get the calendar container element by ID
-                    var calendarContainer = document.getElementById(`ec-${dateValue}`);
+                    const calendarContainer = document.getElementById(`ec-${dateValue}`);
 
                     // Initialize variables to track earliest start time and latest end time
-                    var earliestStartTime = null;
-                    var latestEndTime = null;
+                    let earliestStartTime = null;
+                    let latestEndTime = null;
+                    let eventsForCalendar = [];
+                    let uniqueEventLocations = [];
 
-                    // Loop through events to find the earliest start time and latest end time
+
+                    // Loop through events to find the earliest start time and latest end time get locations for matching date
                     calendarEventData.forEach(function(event) {
-                        if (event.start_time.startsWith(dateValue)) {
+                        if (event.start_time.startsWith(dateValue) && event.location) {
                             const options = {
                                 timeZone: 'Europe/Tallinn',
                                 hour12: false,
@@ -501,15 +504,37 @@ block content
                             if (latestEndTime === null || eventEndTime > latestEndTime) {
                                 latestEndTime = eventEndTime;
                             }
+
+                            const eventLocation = event.location;
+                            if (!uniqueEventLocations.some(location => location.id === eventLocation.id)) {
+                                uniqueEventLocations.push(eventLocation);
+                            }
+
+
+                            // Create events for calendar
+                            const singleEventLocation = event.location.id
+                            const singleEventStartTime = event.start_time
+                            const singleEventEndTime = event.end_time
+                            const singleEventTitle = event.title
+                            eventsForCalendar.push({
+                                start: singleEventStartTime,
+                                end: singleEventEndTime,
+                                resourceId: singleEventLocation, // Event location
+                                title: singleEventTitle,
+                                extendedProps: {
+                                ical: 'link',
+                                },
+                            });
                         }
                     });
 
-                    console.log('Earliest Start Time:', earliestStartTime);
-                    console.log('Latest End Time:', latestEndTime);
-
-                    // Calculate firstEventTime and lastEventTime
-                    const firstEventTime = earliestStartTime ? earliestStartTime : '09:00';
-                    const lastEventTime = latestEndTime ? latestEndTime : '18:00';
+                    // Calculate firstEventTime and lastEventTime, get eventLocations
+                    const firstEventTime = earliestStartTime ? earliestStartTime : '';
+                    const lastEventTime = latestEndTime ? latestEndTime : '';
+                    const calendarResources = uniqueEventLocations.map(location => ({
+                        id: location.id,
+                        title: location.name,
+                    }))
 
                     // Initialize the calendar with options
                     var ec = new EventCalendar(calendarContainer, {
@@ -522,15 +547,7 @@ block content
                         headerToolbar: {
                             start: 'title', center: '', end: ''
                         },
-                        resources: [
-                        { id: 1, title: 'Resource A' },
-                        { id: 2, title: 'Resource B' },
-                        { id: 3, title: 'Resource C' },
-                        { id: 4, title: 'Resource D' },
-                        { id: 5, title: 'Resource E' },
-                        { id: 6, title: 'Resource F' },
-                        { id: 7, title: 'Resource G' }
-                        ],
+                        resources: calendarResources,
                     });
                     ec.setOption('eventContent', function (info) {
                         return {
@@ -538,7 +555,7 @@ block content
                             ${info.event.title}
                             ${
                                 info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
-                                ? `<a href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}">Lisa kalendrisse</a>`
+                                ? `<a href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}">btn</a>`
                                 : ''
                             }
                             </div>`,
@@ -548,16 +565,10 @@ block content
                     ec.setOption('eventStartEditable', false);
                     ec.setOption('eventDurationEditable', false);
 
-                    // Example event
-                    ec.addEvent({
-                        start: '2022-11-22T11:25:00.000Z',
-                        end: '2022-11-22T13:55:00.000Z',
-                        resourceId: 2, // Event location
-                        title: 'test event',
-                        extendedProps: {
-                        ical: 'link',
-                        },
-                    });
+                    // Add events from array
+                    eventsForCalendar.forEach(function (event) {
+                        ec.addEvent(event);
+                    })
                 }
             }
 
