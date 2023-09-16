@@ -379,16 +379,14 @@ function toggleFavouriteFilm(action, favId) {
         return Promise.reject(response);
     }).then(function (data) {
         console.log('toggle favorite film', favId, data)
-        if (data.status === 'ok') {
-            if (action === 'set') {
-                setButton.style.display = 'none'
-                unsetButton.style.display = ''
-            } else {
-                setButton.style.display = ''
-                unsetButton.style.display = 'none'
-            }
-            pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        if (action === 'set') {
+            setButton.style.display = 'none'
+            unsetButton.style.display = ''
+        } else {
+            setButton.style.display = ''
+            unsetButton.style.display = 'none'
         }
+        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
