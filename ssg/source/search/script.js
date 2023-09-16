@@ -3,7 +3,7 @@ const nonetoshow = document.getElementById('nonetoshow')
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
-await reloadUser()
+reloadUser()
 const userFilms = getUser().My.films.map(f=>f.id)
 
 const selectors = {
