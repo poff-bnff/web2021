@@ -83,6 +83,7 @@ document.onreadystatechange = () => {
     // const content = document.getElementById('content');
     const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
+        initializeFavorites()
         urlSelect()
         filters.style.display = "grid"
         loading.style.display = "none"
