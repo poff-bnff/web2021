@@ -88,29 +88,28 @@ block content
                     each festival in cassette.festivals
                         - allFestivals.push(festival.name)
                         - festivalsCassette.push(festival.name)
-                a.card_film(id=cassette.id href=`/${lang_path}film/${cassette.slug}` style='padding-bottom: 20px; position: relative;')
+                .card_film(id=cassette.id style='padding-bottom: 20px; position: relative;')
                     input#festivalsCassette(type='hidden', value=`${festivalsCassette}`)
+                    a(href=`/${lang_path}film/${cassette.slug}`)
 
-                    .container_frame_16_9
-
-                        if cassette.films && cassette.films.length > 1
-                            if cassette.cassetteCarouselPicsCassetteThumbs && cassette.cassetteCarouselPicsCassetteThumbs[0]
-                                img.container_contents_16_9(src= cassette.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title || cassette.title_et)
-                            else if cassette.cassetteCarouselPicsFilmsThumbs && cassette.cassetteCarouselPicsFilmsThumbs[0]
+                        .container_frame_16_9
+                            if cassette.films && cassette.films.length > 1
+                                if cassette.cassetteCarouselPicsCassetteThumbs && cassette.cassetteCarouselPicsCassetteThumbs[0]
+                                    img.container_contents_16_9(src= cassette.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title || cassette.title_et)
+                                else if cassette.cassetteCarouselPicsFilmsThumbs && cassette.cassetteCarouselPicsFilmsThumbs[0]
+                                    img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
+                                else
+                                    img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
+                            else if cassette.films && cassette.films.length === 1 && cassette.cassetteCarouselPicsFilmsThumbs
                                 img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
                             else
                                 img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
-                        else if cassette.films && cassette.films.length === 1 && cassette.cassetteCarouselPicsFilmsThumbs
-                            img.container_contents_16_9(src= cassette.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title || cassette.title_et)
-                        else
-                            img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
-                    .card_film_title
-                        h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
-                        - oneCassette.push(cassette.title || cassette.title_et)
-                        - cassettesArray.push(oneCassette)
+                        .card_film_title
+                            h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+                            - oneCassette.push(cassette.title || cassette.title_et)
+                            - cassettesArray.push(oneCassette)
 
-                    .card_film_info
-
+                        .card_film_info
                         if cassette.films && cassette.films.length
                             - var filmsProgrammes = []
                             each film in cassette.films
