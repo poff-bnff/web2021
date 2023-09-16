@@ -1,7 +1,9 @@
-const search_input = document.getElementById('search');
-const nonetoshow = document.getElementById('nonetoshow');
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+const search_input = document.getElementById('search')
+const nonetoshow = document.getElementById('nonetoshow')
+const queryString = window.location.search
+const urlParams = new URLSearchParams(queryString)
+
+const userFilms = getUser().My.films.map(f=>f.id)
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
@@ -14,6 +16,32 @@ const selectors = {
     keywords: document.getElementById('keywords_select'),
     towns: document.getElementById('towns_select'),
     cinemas: document.getElementById('cinemas_select')
+}
+
+function initializeFavorites() {
+    const nslButtons = document.getElementsByClassName('notshortlisted')
+    const slButtons = document.getElementsByClassName('isshortlisted')
+    for (let i = 0; i < nslButtons.length; i++) {
+        const id = nslButtons[i].id.split('_')[0]
+        nslButtons[i].addEventListener('click', e => {
+            modifyFavourites('addMyFilm', id)
+            nslButtons[i].style.display = 'none'
+            slButtons[i].style.display = ''
+        })
+        slButtons[i].addEventListener('click', e => {
+            modifyFavourites('removeMyFilm', id)
+            slButtons[i].style.display = 'none'
+            nslButtons[i].style.display = ''
+        })
+
+        if (userFilms.includes(parseInt(id))) {
+            nslButtons[i].style.display = 'none'
+            slButtons[i].style.display = ''
+        } else {
+            nslButtons[i].style.display = ''
+            slButtons[i].style.display = 'none'
+        }
+    }
 }
 
 function urlSelect() {
@@ -312,6 +340,4 @@ function execute_filters() {
     return filtered
 }
 
-// console.log('foo'.includes(undefined));
-
-
+// console.log('foo'.includes(undefined))

@@ -149,8 +149,12 @@ block content
                                     #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
 
-                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted', onclick=`modifyFavourites('rmMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeShortlist
-                    button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted', onclick=`modifyFavourites('addMyFilm', ${cassette.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.addShortlist
+                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted',
+                        style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                        )= self.label.film.removeShortlist
+                    button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted',
+                        style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                        )= self.label.film.addShortlist
 
             script.
                 var searcharray = !{JSON.stringify(self.data.search)}
