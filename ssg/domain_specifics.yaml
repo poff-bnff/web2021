@@ -23,8 +23,7 @@ cassettes_festival_editions:
         # - 62
         - 63
         - 64
-        - 65
-        - 66
+        # - 66
         - 67
         - 71
     justfilm.ee:
@@ -63,8 +62,7 @@ programmes_festival_editions:
     poff.ee:
         - 63
         - 64
-        - 65
-        - 66
+        # - 66
         - 67
     justfilm.ee:
         - 64
