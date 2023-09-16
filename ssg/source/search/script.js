@@ -28,7 +28,7 @@ function initializeFavorites() {
             toggleFavouriteFilm('set', id)
             // nslButtons[i].style.display = 'none'
             // slButtons[i].style.display = ''
-            reloadUser()
+            // reloadUser()
             // e.stopImmediatePropagation()
             // e.preventDefault()
         })
@@ -36,7 +36,7 @@ function initializeFavorites() {
             toggleFavouriteFilm('unset', id)
             // slButtons[i].style.display = 'none'
             // nslButtons[i].style.display = ''
-            reloadUser()
+            // reloadUser()
             // e.stopImmediatePropagation()
             // e.preventDefault()
         })
@@ -393,4 +393,11 @@ function toggleFavouriteFilm(action, favId) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
     });
+}
+
+const toggleFavoriteInProfile = (favId) => {
+    const webUser = getUser()
+    // if favId in my films, remove it. if not, add it
+    webUser.My.films = webUser.My.films.includes(favId) ? webUser.My.films.filter(f => f !== favId) : [...webUser.My.films, favId]
+    setUser(webUser)
 }
