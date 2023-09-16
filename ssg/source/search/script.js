@@ -3,6 +3,7 @@ const nonetoshow = document.getElementById('nonetoshow')
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
+await reloadUser()
 const userFilms = getUser().My.films.map(f=>f.id)
 
 const selectors = {
@@ -28,12 +29,14 @@ function initializeFavorites() {
             nslButtons[i].style.display = 'none'
             slButtons[i].style.display = ''
             e.stopImmediatePropagation()
+            e.preventDefault()
         })
         slButtons[i].addEventListener('click', e => {
             modifyFavourites('removeMyFilm', id)
             slButtons[i].style.display = 'none'
             nslButtons[i].style.display = ''
             e.stopImmediatePropagation()
+            e.preventDefault()
         })
 
         if (userFilms.includes(parseInt(id))) {
