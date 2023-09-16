@@ -25,17 +25,17 @@ function initializeFavorites() {
     for (let i = 0; i < nslButtons.length; i++) {
         const id = nslButtons[i].id.split('_')[0]
         nslButtons[i].addEventListener('click', e => {
-            modifyFavourites('addMyFilm', id)
-            nslButtons[i].style.display = 'none'
-            slButtons[i].style.display = ''
+            toggleFavouriteFilm('set', id)
+            // nslButtons[i].style.display = 'none'
+            // slButtons[i].style.display = ''
             reloadUser()
             // e.stopImmediatePropagation()
             // e.preventDefault()
         })
         slButtons[i].addEventListener('click', e => {
-            modifyFavourites('removeMyFilm', id)
-            slButtons[i].style.display = 'none'
-            nslButtons[i].style.display = ''
+            toggleFavouriteFilm('unset', id)
+            // slButtons[i].style.display = 'none'
+            // nslButtons[i].style.display = ''
             reloadUser()
             // e.stopImmediatePropagation()
             // e.preventDefault()
