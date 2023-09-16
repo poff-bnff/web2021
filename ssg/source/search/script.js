@@ -27,13 +27,13 @@ function initializeFavorites() {
             modifyFavourites('addMyFilm', id)
             nslButtons[i].style.display = 'none'
             slButtons[i].style.display = ''
-            e.stopPropagation()
+            e.stopImmediatePropagation()
         })
         slButtons[i].addEventListener('click', e => {
             modifyFavourites('removeMyFilm', id)
             slButtons[i].style.display = 'none'
             nslButtons[i].style.display = ''
-            e.stopPropagation()
+            e.stopImmediatePropagation()
         })
 
         if (userFilms.includes(parseInt(id))) {
