@@ -341,7 +341,6 @@ function execute_filters() {
 // console.log('foo'.includes(undefined))
 
 function toggleFavouriteFilm(action, favId) {
-    console.log('toggleFavouriteFilm ', action, favId)
     const setButton = document.getElementById(`${favId}_not_shortlisted`)
     const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
 
@@ -368,7 +367,6 @@ function toggleFavouriteFilm(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log('toggle favorite film', favId, data)
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -379,10 +377,8 @@ function toggleFavouriteFilm(action, favId) {
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         pushedButton.disabled = false
         const webUser = getUser()
-        console.log('toggle favorite film before', webUser.My.films)
         webUser.My = data
         setUser(webUser)
-        console.log('toggle favorite film after', webUser.My.films)
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
