@@ -1,11 +1,12 @@
 const nslButton = document.getElementsByClassName('notshortlisted')[0]
 const slButton = document.getElementsByClassName('isshortlisted')[0]
-const currentFilmId = document.getElementById('film_id').value
+const currentFilmId = parseInt(document.getElementById('film_id').value)
 
 if (getUser()) {
     const userFilms = getUser().My?.films?.map(f=>f.id) || []
-    const currentFilmIsFavourite = userFilms.includes(parseInt(currentFilmId))
+    const currentFilmIsFavourite = userFilms.includes(currentFilmId)
 
+    console.log(`currentFilmIsFavourite: ${currentFilmIsFavourite}, userFilms: ${userFilms}, currentFilmId: ${currentFilmId}`)
     if (currentFilmIsFavourite) {
         nslButton.style.display = 'none'
         slButton.style.display = ''
