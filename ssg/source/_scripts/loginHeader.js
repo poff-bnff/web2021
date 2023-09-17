@@ -173,6 +173,9 @@ const setUser = (user) => {
 }
 
 const reloadUser = async () => {
+    if (!isUserTokenValid()) {
+        return null
+    }
     const webUser = await userMe()
     localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
     return webUser

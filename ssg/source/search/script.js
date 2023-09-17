@@ -5,6 +5,9 @@ const urlParams = new URLSearchParams(queryString)
 
 reloadUser()
 const reloadUserFilms = () => {
+    if (!isUserTokenValid()) {
+        return null
+    }
     userFilms.splice(0, userFilms.length, ...getUser().My?.films?.map(f=>f.id) || [])
 }
 const userFilms = []
