@@ -4,11 +4,11 @@ const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
 reloadUser()
-const userFilms = []
-reloadUserFilms()
 const reloadUserFilms = () => {
     userFilms.splice(0, userFilms.length, ...getUser().My?.films?.map(f=>f.id) || [])
 }
+const userFilms = []
+reloadUserFilms()
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
