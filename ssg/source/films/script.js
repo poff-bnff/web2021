@@ -23,9 +23,6 @@ if (getUser()) {
 }
 
 function toggleFavouriteFilm(action) {
-    const nslButton = document.getElementById(`${favId}_not_shortlisted`)
-    const slButton = document.getElementById(`${favId}_is_shortlisted`)
-
     const pushedButton = action === 'set' ? nslButton : slButton
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
