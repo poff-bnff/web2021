@@ -387,6 +387,8 @@ function toggleFavouriteFilm(action, favId) {
             unsetButton.style.display = 'none'
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        toggleFavoriteInProfile(favId)
+        console.log('toggle favorite film', JSON.stringify(getUser().My.films))
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
