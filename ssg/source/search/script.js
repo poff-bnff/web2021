@@ -4,7 +4,11 @@ const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
 reloadUser()
-const userFilms = getUser().My?.films?.map(f=>f.id) || []
+const userFilms = []
+reloadUserFilms()
+const reloadUserFilms = () => {
+    userFilms.splice(0, userFilms.length, ...getUser().My?.films?.map(f=>f.id) || [])
+}
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
@@ -391,6 +395,7 @@ function toggleFavouriteFilm(action, favId) {
         const webUser = getUser()
         webUser.My = data
         setUser(webUser)
+        reloadUserFilms()
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
