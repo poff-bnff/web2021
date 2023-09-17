@@ -1,6 +1,7 @@
 const nslButton = document.getElementsByClassName('notshortlisted')[0]
 const slButton = document.getElementsByClassName('isshortlisted')[0]
 const currentFilmId = parseInt(document.getElementById('film_id').value)
+console.log(`currentFilmId: ${currentFilmId}`)
 
 if (getUser()) {
     const userFilms = getUser().My?.films?.map(f=>f.id) || []
