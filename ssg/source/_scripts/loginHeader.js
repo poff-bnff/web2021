@@ -168,8 +168,11 @@ const getUser = () => {
     }
 }
 
+const setUser = (user) => {
+    localStorage.setItem('USER_PROFILE', JSON.stringify(user))
+}
+
 const reloadUser = async () => {
-    console.log('reloadUser')
     const webUser = await userMe()
     localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
     return webUser

@@ -67,19 +67,19 @@ header
                                 document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
-                        li#logInName.dark_1(style={display: 'none'})
-                            a#tervitus= self.label.menu.mainGreeting
+                        //- li#logInName.dark_1(style={display: 'none'})
+                        //-     a#tervitus= self.label.menu.mainGreeting
                         li#userProfile(style={cursor: 'pointer', display: 'none'})
                             a(onclick = 'savePreLoginUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-                        li#myFavouriteFilms(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
-                        li#myScreenings(style={cursor: 'pointer'} )
-                            if lang_path === ''
-                                a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
-                            if lang_path === 'en/'
-                                a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
-                            if lang_path === 'ru/'
-                                a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
+                        //- li#myFavouriteFilms(style={cursor: 'pointer'})
+                        //-     a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
+                        //- li#myScreenings(style={cursor: 'pointer'} )
+                        //-     if lang_path === ''
+                        //-         a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
+                        //-     if lang_path === 'en/'
+                        //-         a(href=`/${lang_path}my_screenings`)= self.label.menu.mainMyScreenings
+                        //-     if lang_path === 'ru/'
+                        //-         a(href=`/${lang_path}moi_seanss`)= self.label.menu.mainMyScreenings
                         li#myPasses(style={cursor: 'pointer'} )
                             if lang_path === ''
                                 a(href=`/${lang_path}minupoff`)= self.label.menu.mainPass

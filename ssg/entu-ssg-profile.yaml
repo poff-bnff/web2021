@@ -23,6 +23,7 @@ dev:
         - shop
         - products
         - _scripts
+        - search
         - _styles
         - _templates
     ignorePaths: null
