@@ -4,7 +4,7 @@ const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
 reloadUser()
-const userFilms = getUser().My.films.map(f=>f.id)
+const userFilms = getUser().My?.films?.map(f=>f.id) || []
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
