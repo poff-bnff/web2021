@@ -252,6 +252,10 @@ selectors.cinemas.addEventListener('change', e => {
     toggleAll('cinemas');
 });
 
+selectors.favorites.addEventListener('change', e => {
+    toggleAll('favorites');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.programmes.selectedIndex = 0;
