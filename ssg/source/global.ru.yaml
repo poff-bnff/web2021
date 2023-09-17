@@ -307,7 +307,7 @@ label:
         ageRestriction: Age restriction
 footer:
     id: 1
-    namePrivate: PÖFFi footer
+    namePrivate: 'PÖFFi footer '
     domain:
         id: 1
         url: poff.ee
