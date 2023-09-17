@@ -17,7 +17,7 @@ const selectors = {
     keywords: document.getElementById('keywords_select'),
     towns: document.getElementById('towns_select'),
     cinemas: document.getElementById('cinemas_select'),
-    favorites: document.getElementById('favorites_select'),
+    // favorites: document.getElementById('favorites_select')
 }
 
 function initializeFavorites() {
