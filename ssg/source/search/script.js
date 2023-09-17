@@ -26,19 +26,9 @@ function initializeFavorites() {
         const id = nslButtons[i].id.split('_')[0]
         nslButtons[i].addEventListener('click', e => {
             toggleFavouriteFilm('set', id)
-            // nslButtons[i].style.display = 'none'
-            // slButtons[i].style.display = ''
-            // reloadUser()
-            // e.stopImmediatePropagation()
-            // e.preventDefault()
         })
         slButtons[i].addEventListener('click', e => {
             toggleFavouriteFilm('unset', id)
-            // slButtons[i].style.display = 'none'
-            // nslButtons[i].style.display = ''
-            // reloadUser()
-            // e.stopImmediatePropagation()
-            // e.preventDefault()
         })
 
         if (userFilms.includes(parseInt(id))) {
@@ -359,7 +349,7 @@ function toggleFavouriteFilm(action, favId) {
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-    pushedButton.disable = true
+    pushedButton.disabled = true
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
@@ -387,6 +377,7 @@ function toggleFavouriteFilm(action, favId) {
             unsetButton.style.display = 'none'
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        pushedButton.disabled = false
         const webUser = getUser()
         console.log('toggle favorite film before', webUser.My.films)
         webUser.My = data
