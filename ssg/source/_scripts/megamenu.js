@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Variables for menu show/hide
     const hamburger = document.getElementById('hamburger');
+    if (!hamburger) {
+        console.log('No megamenu found');
+        return;
+    }
     const closeMenu = document.getElementById('close_menu');
     const topMenuRight = document.querySelector('.menu_top_right');
     const logo = document.querySelector('header.menu .logo');
