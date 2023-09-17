@@ -124,75 +124,78 @@ function toggleAll(exclude_selector_name) {
     toggleFilters(exclude_selector_name)
 }
 
-function toggleFilters(exclude_selector_name) {
+function toggleFilters(excludedSelectorName) {
 
-    for (selector_name in selectors) {
+    for (const selectorName in selectors) {
+        const selector = selectors[selectorName]
         // console.log(exclude_selector_name, ' - ', selector_name);
 
-        if (exclude_selector_name === selector_name) {
+        if (excludedSelectorName === selectorName) {
             continue
         }
 
-        for (const option of selectors[selector_name].options) {
-            const value = option.value
-            if (value === '') {
-                option.disabled = false // garanteerib tyhivaliku olemasolu
-                continue
+        if (selectorName.options) {
+            for (const option of selector.options) {
+                const value = option.value
+                if (value === '') {
+                    option.disabled = false // garanteerib tyhivaliku olemasolu
+                    continue
+                }
+
+                // console.log(`value is this '${value}' - ${typeof value}`);
+                let count = searcharray
+                .filter(cassette => {
+                    const compare_with = selectorName === 'programmes' ? value : selectors.programmes.value;
+                    return compare_with === '' ? true : cassette.programmes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'languages' ? value : selectors.languages.value;
+                    return compare_with === '' ? true : cassette.languages.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'countries' ? value : selectors.countries.value;
+                    return compare_with === '' ? true : cassette.countries.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'subtitles' ? value : selectors.subtitles.value;
+                    return compare_with === '' ? true : cassette.subtitles.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'towns' ? value : selectors.towns.value;
+                    return compare_with === '' ? true : cassette.towns.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'cinemas' ? value : selectors.cinemas.value;
+                    return compare_with === '' ? true : cassette.cinemas.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'premieretypes' ? value : selectors.premieretypes.value;
+                    return compare_with === '' ? true : cassette.premieretypes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'filmtypes' ? value : selectors.filmtypes.value;
+                    return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'genres' ? value : selectors.genres.value;
+                    return compare_with === '' ? true : cassette.genres.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'keywords' ? value : selectors.keywords.value;
+                    return compare_with === '' ? true : cassette.keywords.includes( compare_with )
+                })
+                .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
+                .length
+                // .filter((cassette) => { return selectors.countries.value ? cassette.countries.includes(selectors.countries.value) : true })
+                // .filter((cassette) => { return selectors.subtitles.value ? cassette.subtitles.includes(selectors.subtitles.value) : true })
+                // .filter((cassette) => { return selectors.towns.value ? cassette.towns.includes(selectors.towns.value) : true })
+                // .filter((cassette) => { return selectors.cinemas.value ? cassette.cinemas.includes(selectors.cinemas.value) : true })
+                // .filter((cassette) => { return selectors.premieretypes.value ? cassette.premieretypes.includes(selectors.premieretypes.value) : true })
+                // .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
+                // option.innerHTML += `${count} ${value}`
+                option.disabled = count ? false : true
+
             }
-
-            // console.log(`value is this '${value}' - ${typeof value}`);
-            let count = searcharray
-            .filter(cassette => {
-                const compare_with = selector_name === 'programmes' ? value : selectors.programmes.value;
-                return compare_with === '' ? true : cassette.programmes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'languages' ? value : selectors.languages.value;
-                return compare_with === '' ? true : cassette.languages.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'countries' ? value : selectors.countries.value;
-                return compare_with === '' ? true : cassette.countries.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'subtitles' ? value : selectors.subtitles.value;
-                return compare_with === '' ? true : cassette.subtitles.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'towns' ? value : selectors.towns.value;
-                return compare_with === '' ? true : cassette.towns.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'cinemas' ? value : selectors.cinemas.value;
-                return compare_with === '' ? true : cassette.cinemas.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'premieretypes' ? value : selectors.premieretypes.value;
-                return compare_with === '' ? true : cassette.premieretypes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'filmtypes' ? value : selectors.filmtypes.value;
-                return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'genres' ? value : selectors.genres.value;
-                return compare_with === '' ? true : cassette.genres.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'keywords' ? value : selectors.keywords.value;
-                return compare_with === '' ? true : cassette.keywords.includes( compare_with )
-            })
-            .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
-            .length
-            // .filter((cassette) => { return selectors.countries.value ? cassette.countries.includes(selectors.countries.value) : true })
-            // .filter((cassette) => { return selectors.subtitles.value ? cassette.subtitles.includes(selectors.subtitles.value) : true })
-            // .filter((cassette) => { return selectors.towns.value ? cassette.towns.includes(selectors.towns.value) : true })
-            // .filter((cassette) => { return selectors.cinemas.value ? cassette.cinemas.includes(selectors.cinemas.value) : true })
-            // .filter((cassette) => { return selectors.premieretypes.value ? cassette.premieretypes.includes(selectors.premieretypes.value) : true })
-            // .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
-            // option.innerHTML += `${count} ${value}`
-            option.disabled = count ? false : true
-
         }
 
     }
