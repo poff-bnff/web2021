@@ -16,7 +16,8 @@ const selectors = {
     genres: document.getElementById('genres_select'),
     keywords: document.getElementById('keywords_select'),
     towns: document.getElementById('towns_select'),
-    cinemas: document.getElementById('cinemas_select')
+    cinemas: document.getElementById('cinemas_select'),
+    favorites: document.getElementById('favorites_select'),
 }
 
 function initializeFavorites() {
@@ -261,6 +262,13 @@ function unselect_all() {
 
 function execute_filters() {
     let filtered = searcharray
+        .filter(cassette => {
+            if (selectors.favorites.value) {
+                return userFilms.includes(cassette.id)
+            } else {
+                return true
+            }
+        })
         .filter(cassette => {
             if (selectors.programmes.value) {
                 return cassette.programmes.includes(selectors.programmes.value)

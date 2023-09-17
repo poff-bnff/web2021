@@ -59,6 +59,8 @@ block content
             each index, key in self.data.filters.cinemas
                 option(value=key)= index
 
+        input#favorites_select(type='checkbox' name='Favorites')
+
         button.clear(onclick='unselect_all()')= self.label.filters.empty
 
         h3#nonetoshow.sub_section_headline(style='display: none;')
