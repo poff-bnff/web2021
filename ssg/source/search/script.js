@@ -60,9 +60,10 @@ function urlSelect() {
 function setSearchParams() {
     let urlParameters = ''
     let firstParamDone = false
-    for (const selector in selectors) {
-        if (selectors[selector].selectedIndex !== 0) {
-            let selectedText = selectors[selector].options[selectors[selector].selectedIndex].innerHTML
+    for (const selectorName in selectors) {
+        const selector = selectors[selectorName]
+        if (selector.selectedIndex && selector.selectedIndex !== 0) {
+            let selectedText = selector.options[selector.selectedIndex].innerHTML
             urlParameters += !firstParamDone ? `?${selector}=${encodeURIComponent(selectedText)}` : `&${selector}=${encodeURIComponent(selectedText)}`
             firstParamDone = true
         }
