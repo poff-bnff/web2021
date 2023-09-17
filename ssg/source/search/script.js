@@ -387,17 +387,13 @@ function toggleFavouriteFilm(action, favId) {
             unsetButton.style.display = 'none'
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
-        toggleFavoriteInProfile(favId)
-        console.log('toggle favorite film', JSON.stringify(getUser().My.films))
+        const webUser = getUser()
+        console.log('toggle favorite film before', webUser.My.films)
+        webUser.My.films = data
+        setUser(webUser)
+        console.log('toggle favorite film after', webUser.My.films)
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
     });
-}
-
-const toggleFavoriteInProfile = (favId) => {
-    const webUser = getUser()
-    // if favId in my films, remove it. if not, add it
-    webUser.My.films = webUser.My.films.includes(favId) ? webUser.My.films.filter(f => f !== favId) : [...webUser.My.films, favId]
-    setUser(webUser)
 }
