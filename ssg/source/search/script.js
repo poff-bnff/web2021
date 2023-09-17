@@ -389,7 +389,7 @@ function toggleFavouriteFilm(action, favId) {
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         const webUser = getUser()
         console.log('toggle favorite film before', webUser.My.films)
-        webUser.My.films = data
+        webUser.My = data
         setUser(webUser)
         console.log('toggle favorite film after', webUser.My.films)
     }).catch(function (error) {
