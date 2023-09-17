@@ -1,3 +1,5 @@
+//- hidden tag to hold cassette id
+input(type='hidden', value=`${self.id}`, id=`film_id`)
 
 main.grid_film(id=self.id)
     //- script.
@@ -470,6 +472,12 @@ main.grid_film(id=self.id)
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
+            button.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted',
+                style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                )= self.label.film.removeShortlist
+            button.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted',
+                style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                )= self.label.film.addShortlist
 
             //- section.f_interactive_box
             //-     if process.env['DOMAIN'] === 'poff.ee'
