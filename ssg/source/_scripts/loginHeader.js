@@ -173,7 +173,6 @@ const setUser = (user) => {
 }
 
 const reloadUser = async () => {
-    console.log('reloadUser')
     const webUser = await userMe()
     localStorage.setItem('USER_PROFILE', JSON.stringify(webUser))
     return webUser
