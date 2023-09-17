@@ -97,10 +97,10 @@ document.onreadystatechange = () => {
     }
 };
 
-function toggleAll(exclude_selector_name) {
+function toggleAll(excludeSelectorName) {
     setSearchParams()
 
-    ids = execute_filters()
+    ids = executeFilters()
 
     // kuva/peida 'pole vasteid'
     if (ids.length) {
@@ -121,7 +121,7 @@ function toggleAll(exclude_selector_name) {
     })
 
     // filtreeri filtreid
-    toggleFilters(exclude_selector_name)
+    toggleFilters(excludeSelectorName)
 }
 
 function toggleFilters(excludedSelectorName) {
@@ -261,18 +261,18 @@ function unselect_all() {
     selectors.towns.selectedIndex = 0;
     selectors.cinemas.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
-    toggleAll(execute_filters());
+    toggleAll(executeFilters());
 }
 
-function execute_filters() {
+function executeFilters() {
     let filtered = searcharray
-        // .filter(cassette => {
-        //     if (selectors.favorites.value) {
-        //         return userFilms.includes(cassette.id)
-        //     } else {
-        //         return true
-        //     }
-        // })
+        .filter(cassette => {
+            if (selectors.favorites.checked) {
+                return userFilms.includes(cassette.id)
+            } else {
+                return true
+            }
+        })
         .filter(cassette => {
             if (selectors.programmes.value) {
                 return cassette.programmes.includes(selectors.programmes.value)
