@@ -485,9 +485,9 @@ block content
                     let eventsForCalendar = [];
                     let uniqueEventLocations = [];
 
-
                     // Loop through events to find the earliest start time and latest end time get locations for matching date
                     calendarEventData.forEach(function(event) {
+                        //- console.log(event.start_time)
                         if (event.start_time.startsWith(dateValue) && event.location) {
                             const options = {
                                 timeZone: 'Europe/Tallinn',
@@ -512,22 +512,25 @@ block content
 
 
                             // Create events for calendar
+                            const singleEventId = event.id
                             const singleEventLocation = event.location.id
                             const singleEventStartTime = event.start_time
                             const singleEventEndTime = event.end_time
                             const singleEventTitle = event.title
+                            const singleEventICal = event.calendar_data
                             eventsForCalendar.push({
+                                id: singleEventId,
                                 start: singleEventStartTime,
                                 end: singleEventEndTime,
                                 resourceId: singleEventLocation, // Event location
                                 title: singleEventTitle,
                                 extendedProps: {
-                                ical: 'link',
+                                ical: `${singleEventICal}`,
                                 },
                             });
                         }
                     });
-
+                    //- console.log(eventsForCalendar)
                     // Calculate firstEventTime and lastEventTime, get eventLocations
                     const firstEventTime = earliestStartTime ? earliestStartTime : '';
                     const lastEventTime = latestEndTime ? latestEndTime : '';
@@ -544,6 +547,7 @@ block content
                         slotMaxTime: lastEventTime,
                         locale: 'et',
                         allDaySlot: false,
+                        titleFormat: {month: 'short', day: 'numeric', weekday: 'long'},
                         headerToolbar: {
                             start: 'title', center: '', end: ''
                         },
@@ -551,14 +555,24 @@ block content
                     });
                     ec.setOption('eventContent', function (info) {
                         return {
-                            html: `<div class="ec-event-title">
+                            html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
+                            <div class="ec-event-title">
                             ${info.event.title}
+                            </div>
                             ${
                                 info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
-                                ? `<a href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}">btn</a>`
+                                ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                </a>`
                                 : ''
                             }
-                            </div>`,
+                            </a>`,
                         };
                     })
 
@@ -567,6 +581,7 @@ block content
 
                     // Add events from array
                     eventsForCalendar.forEach(function (event) {
+                        console.log(event);
                         ec.addEvent(event);
                     })
                 }
