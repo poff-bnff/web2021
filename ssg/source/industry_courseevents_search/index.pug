@@ -489,14 +489,8 @@ block content
                     calendarEventData.forEach(function(event) {
                         //- console.log(event.start_time)
                         if (event.start_time.startsWith(dateValue) && event.location) {
-                            const options = {
-                                timeZone: 'Europe/Tallinn',
-                                hour12: false,
-                                hour: '2-digit',
-                                minute: '2-digit',
-                            };
-                            const eventStartTime = new Date(event.start_time).toLocaleString('en-GB', options);
-                            const eventEndTime = new Date(event.end_time).toLocaleString('en-GB', options);
+                            const eventStartTime = new Date(event.start_time)
+                            const eventEndTime = new Date(event.end_time)
 
                             if (earliestStartTime === null || eventStartTime < earliestStartTime) {
                                 earliestStartTime = eventStartTime;
@@ -514,8 +508,8 @@ block content
                             // Create events for calendar
                             const singleEventId = event.id
                             const singleEventLocation = event.location.id
-                            const singleEventStartTime = event.start_time
-                            const singleEventEndTime = event.end_time
+                            const singleEventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
+                            const singleEventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
                             const singleEventTitle = event.title
                             const singleEventICal = event.calendar_data
                             eventsForCalendar.push({
