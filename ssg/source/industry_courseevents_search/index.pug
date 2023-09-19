@@ -471,6 +471,9 @@ block content
 
             var calendarEventData =!{JSON.stringify(self.data.industryevents)}
 
+            let earliestTimePortion = null;
+            let latestTimePortion = null;
+
             for (const date in datesArray) {
                 if (datesArray.hasOwnProperty(date)) {
                     // Get the value associated with the date key
@@ -489,14 +492,16 @@ block content
                     calendarEventData.forEach(function(event) {
                         //- console.log(event.start_time)
                         if (event.start_time.startsWith(dateValue) && event.location) {
-                            const eventStartTime = new Date(event.start_time)
-                            const eventEndTime = new Date(event.end_time)
+                            const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
+                            const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
 
                             if (earliestStartTime === null || eventStartTime < earliestStartTime) {
                                 earliestStartTime = eventStartTime;
+                                earliestTimePortion = moment(earliestStartTime).format('HH:mm:ss');
                             }
                             if (latestEndTime === null || eventEndTime > latestEndTime) {
                                 latestEndTime = eventEndTime;
+                                latestTimePortion = moment(latestEndTime).format('HH:mm:ss');
                             }
 
                             const eventLocation = event.location;
@@ -525,20 +530,22 @@ block content
                         }
                     });
                     //- console.log(eventsForCalendar)
+                    //- console.log(earliestTimePortion)
                     // Calculate firstEventTime and lastEventTime, get eventLocations
-                    const firstEventTime = earliestStartTime ? earliestStartTime : '';
-                    const lastEventTime = latestEndTime ? latestEndTime : '';
+                    const firstEventTime = earliestTimePortion ? earliestTimePortion : '';
+                    const lastEventTime = latestTimePortion ? latestTimePortion : '';
                     const calendarResources = uniqueEventLocations.map(location => ({
                         id: location.id,
                         title: location.name,
                     }))
-
                     // Initialize the calendar with options
                     var ec = new EventCalendar(calendarContainer, {
                         view: 'resourceTimeGridDay',
                         date: dateValue,
                         slotMinTime: firstEventTime,
                         slotMaxTime: lastEventTime,
+                        slotEventOverlap: false,
+                        //- slotHeight: 30,
                         locale: 'et',
                         allDaySlot: false,
                         titleFormat: {month: 'short', day: 'numeric', weekday: 'long'},
