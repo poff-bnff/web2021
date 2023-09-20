@@ -6,7 +6,9 @@ var reloadProductsNeeded = false
 
 async function fetchMyPasses() {
 
-    const webUser = await getUser()
+    const webUser = getUser()
+    const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
+
     let userPerson
     let profilePicture
     if (webUser.user_profile && webUser.user_profile.picture) {
@@ -16,10 +18,8 @@ async function fetchMyPasses() {
         return
     }
 
-    const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
     const myPasses = webUser.my_products.concat(reservedProducts)
 
-    const reservedProductsCount = reservedProducts.length
 
     // console.log('passes ', my_passes)
     var my_passes_element = document.getElementById('my_passes')
@@ -61,35 +61,42 @@ async function fetchMyPasses() {
             my_pass_element.style.display = 'block'
         }
     }
-    if (reservedProductsCount > 0) {
-        reloadProductsLoop(reservedProductsCount)
-    } else {
-        reloadProductsLoop(reservedProductsCount, 10)
-    }
 }
 
-reloadProductsLoop = async (reservedProductsCount, times) => {
-    console.log('reloadProductsLoop', reservedProductsCount, times)
+reloadProductsLoop = async (owned, reserved, times) => {
+    console.log('reloadProductsLoop', { owned, reserved, times })
     if (times !== undefined) {
         if (times === 0) {
             return
         }
         times--
-        console.log('times', times)
     }
-
-    setTimeout(async () => {
-        reloadUser()
-        let user = await getUser()
-        let reservedProducts = user.reserved_products.filter(p => p.owner === null)
-        console.log('reservedProducts', reservedProductsCount, reservedProducts.length)
-        if (reservedProductsCount !== reservedProducts.length) {
-            location.reload()
-        } else {
-            reloadProductsLoop(reservedProductsCount, times)
-        }
-    }, 2000)
+    await reloadUser()
+    const user = getUser()
+    const reservedProducts = user.reserved_products.filter(p => p.owner === null)
+    const reservedProductsCount = reservedProducts.length
+    const ownedProductsCount = user.my_products.length
+    if (reservedProductsCount !== reserved) {
+        location.reload()
+    } else if (ownedProductsCount !== owned) {
+        location.reload()
+    } else {
+        setTimeout(async () => {
+            reloadUser()
+            let user = await getUser()
+            let reservedProducts = user.reserved_products.filter(p => p.owner === null)
+            console.log('reservedProducts', reservedProductsCount, reservedProducts.length)
+            if (reservedProductsCount !== reservedProducts.length) {
+                location.reload()
+            } else {
+                reloadProductsLoop(owned, reserved, times)
+            }
+        }, 1000)
+    }
 }
+const reservedProductsCount = reservedProducts.length
+const ownedProductsCount = webUser.my_products.length
 
-reloadUser()
+await reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
+
 fetchMyPasses()
