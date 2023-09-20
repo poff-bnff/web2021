@@ -27,9 +27,11 @@ async function fetchMyPasses() {
         if (pass_template) {
             var my_pass_element = pass_template.cloneNode(true)
 
-            for (const childNode of my_pass_element.childNodes) {
-                if (childNode.className === 'passCode') {
-                    childNode.innerHTML = my_pass.code
+            if (my_pass.owner) {
+                for (const childNode of my_pass_element.childNodes) {
+                    if (childNode.className === 'passCode') {
+                        childNode.innerHTML = my_pass.code
+                    }
                 }
             }
 
@@ -50,12 +52,14 @@ async function fetchMyPasses() {
 
             my_passes_element.appendChild(my_pass_element)
 
-            for (const childNode of my_pass_element.childNodes) {
-                const qr_id = 'QR' + my_pass.code;
-                if (childNode.className === 'qrCode') {
-                    childNode.id = qr_id
-                    var qrcode = new QRCode(qr_id)
-                    qrcode.makeCode(my_pass.code)
+            if (my_pass.owner) {
+                for (const childNode of my_pass_element.childNodes) {
+                    const qr_id = 'QR' + my_pass.code;
+                    if (childNode.className === 'qrCode') {
+                        childNode.id = qr_id
+                        var qrcode = new QRCode(qr_id)
+                        qrcode.makeCode(my_pass.code)
+                    }
                 }
             }
         }
@@ -67,9 +71,9 @@ fetchMyPasses()
 
 // keep reloading user every 0.5 seconds and log out user products
 
-setInterval(() => {
-    reloadUser()
-    console.log(getUser().my_products)
-    // fetchMyPasses()
-}, 500)
+// setInterval(() => {
+//     reloadUser()
+//     console.log(getUser().my_products)
+//     // fetchMyPasses()
+// }, 500)
 
