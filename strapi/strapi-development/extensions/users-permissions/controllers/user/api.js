@@ -778,7 +778,7 @@ module.exports = {
 
     if (mkResponse.status === 'COMPLETED') {
       if (item.transactions && item.transactions.length) {
-        console.log('Already transacted', item.transactions, { item: item, product: product })
+        console.log('Already transacted', item.transactions.id, { item: item.id, productId: product.productID })
         redirectUser(409, cancel_url, 'Already transacted')
         return
       } else {
@@ -796,7 +796,7 @@ module.exports = {
         }
 
         let addTransactionProduct = await strapi.services['transactions-products'].create(addTransactionProductsOptions)
-        console.log('Create transactionproduct: ', addTransactionProduct);
+        console.log('user::api Create transactionproduct: ', addTransactionProduct.id);
         // add transaction time
         const addTransactionOptions = {
           dateTime: mkResponse.message_time,
@@ -812,11 +812,11 @@ module.exports = {
           status: mkResponse.status,
           products: [addTransactionProduct],
         }
-        console.log(addTransactionOptions);
+        console.log('api::user addTransactionOptions', addTransactionOptions);
         let addTransaction = await strapi.services.transaction.create(addTransactionOptions)
         let transactionId = addTransaction.id
 
-        console.log('Transaction ID', transactionId);
+        console.log('api::user Transaction ID', transactionId);
         if (!transactionId) {
           redirectUser(500, cancel_url, 'Failed to save transaction')
           return
@@ -848,8 +848,8 @@ module.exports = {
         }
 
         if (updateProductSuccess) {
-          console.log(`Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
-          console.log('Transaction ID and hash ', addTransaction.id, addTransaction.transaction);
+          console.log(`user::api Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
+          console.log('user::api Transaction ID and hash ', addTransaction.id, addTransaction.transaction);
           // Email
           try {
             console.log('Here send e-mail');
@@ -890,6 +890,8 @@ module.exports = {
       }
     }
   },
+
+
   async personForm(ctx) {
 
     const user = ctx.state.user;
