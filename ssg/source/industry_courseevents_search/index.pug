@@ -482,6 +482,8 @@ block content
                     // Get the calendar container element by ID
                     const calendarContainer = document.getElementById(`ec-${dateValue}`);
 
+                    const formattedDateTitle = moment(dateValue).format('MMM DD dddd');
+
                     // Initialize variables to track earliest start time and latest end time
                     let earliestStartTime = null;
                     let latestEndTime = null;
@@ -545,10 +547,18 @@ block content
                         slotMinTime: firstEventTime,
                         slotMaxTime: lastEventTime,
                         slotEventOverlap: false,
+                        firstDay: 1,
                         //- slotHeight: 30,
                         locale: 'et',
                         allDaySlot: false,
-                        titleFormat: {month: 'short', day: 'numeric', weekday: 'long'},
+                        titleFormat: function (start, end) {
+                        const options = { month: 'short', day: 'numeric' };
+                        const formattedDate = start.toLocaleDateString('en-US', options);
+                        const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
+                        return {
+                            html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
+                        }
+                        },
                         headerToolbar: {
                             start: 'title', center: '', end: ''
                         },
