@@ -1,5 +1,3 @@
-const { get } = require("https")
-
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
@@ -71,3 +69,4 @@ setInterval(() => {
     console.log(getUser().my_products)
     fetchMyPasses()
 }, 500)
+
