@@ -45,20 +45,19 @@ async function fetchMyPasses() {
                 passCodeElement.style.display = 'none'
                 fullNameElement.style.display = 'none'
                 profilePicElement.style.display = 'none'
+
+                const loaderElement = loaderTemplate.cloneNode(true);
+                loaderElement.id = 'loader-' + ix;
+                loaderElement.style.display = 'block';
+                my_pass_element.replaceChild(loaderElement, qrCodeElement);
             }
 
             my_pass_element.style.display = 'block'
             my_passes_element.appendChild(my_pass_element)
 
-            if (qrCodeElement) {
-                if (my_pass.owner) {
-                    new QRCode(qr_id).makeCode(my_pass.code);
-                } else { // replace with a copy of loaderTemplate
-                    const loaderElement = loaderTemplate.cloneNode(true);
-                    loaderElement.id = 'loader-' + ix;
-                    loaderElement.style.display = 'block';
-                    qrCodeElement.parentNode.replaceChild(loaderElement, qrCodeElement);
-                }
+            if (my_pass.owner) {
+                new QRCode(qr_id).makeCode(my_pass.code);
+            } else { // replace with a copy of loaderTemplate
             }
         }
     }
