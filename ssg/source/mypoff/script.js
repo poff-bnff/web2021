@@ -19,7 +19,7 @@ async function fetchMyPasses() {
     const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
     const myPasses = webUser.my_products.concat(reservedProducts)
 
-    reloadProductsNeeded = reservedProducts.length > 0
+    const reservedProductsCount = reservedProducts.length
 
     // console.log('passes ', my_passes)
     var my_passes_element = document.getElementById('my_passes')
@@ -61,32 +61,30 @@ async function fetchMyPasses() {
             my_pass_element.style.display = 'block'
         }
     }
-    if (reloadProductsNeeded) {
-        reloadProductsLoop(true)
+    if (reservedProductsCount > 0) {
+        reloadProductsLoop(reservedProductsCount)
     } else {
-        reloadProductsLoop(false, 10)
+        reloadProductsLoop(reservedProductsCount, 10)
     }
 }
 
-reloadProductsLoop = async (waitForPending, times) => {
+reloadProductsLoop = async (reservedProductsCount, times) => {
     if (times !== undefined) {
         if (times === 0) {
             return
         }
         times--
+        console.log('times', times)
     }
-    if (waitForPending === undefined) {
-        waitForPending = 'true'
-    }
+
     setTimeout(async () => {
         reloadUser()
         let user = await getUser()
         let reservedProducts = user.reserved_products.filter(p => p.owner === null)
-        let reloadPageNeeded = waitForPending === 'true' ? reservedProducts.length === 0 : reservedProducts.length > 0
-        if (reloadPageNeeded) {
+        if (reservedProductsCount !== reservedProducts.length) {
             location.reload()
         } else {
-            reloadProductsLoop(waitForPending, times)
+            reloadProductsLoop(reservedProductsCount, times)
         }
     }, 500)
 }
