@@ -1,6 +1,8 @@
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
+const loaderTemplate = document.getElementById('loaderTemplate')
+
 async function fetchMyPasses() {
 
     const webUser = await getUser()
@@ -52,14 +54,17 @@ async function fetchMyPasses() {
 
             my_passes_element.appendChild(my_pass_element)
 
-            if (my_pass.owner) {
-                for (const childNode of my_pass_element.childNodes) {
+            const qrCodeElement = my_pass_element.querySelector('.qrCode');
+            if (qrCodeElement) {
+                if (my_pass.owner) {
                     const qr_id = 'QR' + my_pass.code;
-                    if (childNode.className === 'qrCode') {
-                        childNode.id = qr_id
-                        var qrcode = new QRCode(qr_id)
-                        qrcode.makeCode(my_pass.code)
-                    }
+                    qrCodeElement.id = qr_id;
+                    new QRCode(qr_id).makeCode(my_pass.code);
+                } else { // replace with a copy of loaderTemplate
+                    const loaderElement = loaderTemplate.cloneNode(true);
+                    loaderElement.id = 'loader-' + ix;
+                    loaderElement.style.display = 'block';
+                    qrCodeElement.parentNode.replaceChild(loaderElement, qrCodeElement);
                 }
             }
         }

@@ -2,9 +2,9 @@
     animation: loader 5s cubic-bezier(.8,0,.2,1) infinite
     height: 40px
     width: 41px
-    position: absolute
-    top: calc(50% - 20px)
-    left: calc(50% - 20px)
+    position: relative
+    // top: calc(50% - 20px)
+    // left: calc(50% - 20px)
 
 @keyframes loader
     90%
@@ -13,7 +13,7 @@
         transform: rotate(180deg)
 
 #loadertop
-    animation: top 5s linear infinite
+    animation: loadertop 5s linear infinite
     border-top: 20px solid #aaa
     border-right: 20px solid transparent
     border-left: 20px solid transparent
@@ -28,7 +28,7 @@
         transform: scale(0)
 
 #loaderbottom
-    animation: bottom 5s linear infinite
+    animation: loaderbottom 5s linear infinite
     border-right: 20px solid transparent
     border-bottom: 20px solid #aaa
     border-left: 20px solid transparent
@@ -46,7 +46,7 @@
         transform: scale(1)
 
 #loaderline
-    animation: line 5s linear infinite
+    animation: loaderline 5s linear infinite
     border-left: 1px dotted #aaa
     height: 0px
     width: 0px

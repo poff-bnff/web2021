@@ -3,10 +3,11 @@ include /_templates/mixins.pug
 
 block content
 
-    #loader(style="display: block")
-        #loadertop
-        #loaderbottom
-        #loaderline
+    #loaderTemplate
+        #loader(style="display: none")
+            #loadertop
+            #loaderbottom
+            #loaderline
 
     if self.data.shops
         each shop in self.data.shops
