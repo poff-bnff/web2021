@@ -50,6 +50,7 @@ async function fetchMyPasses() {
                 passCodeElement.style.display = 'none'
                 fullNameElement.style.display = 'none'
                 profilePicElement.style.display = 'none'
+                my_pass_element.querySelector('.pass_desc').style.display = 'none'
                 // qrCodeElement.style.display = 'none'
                 const loaderElement = loaderTemplate.cloneNode(true);
                 loaderElement.id = 'loader-' + ix;
@@ -77,16 +78,7 @@ reloadProductsLoop = async () => {
         if (reloadPageNeeded) {
             location.reload()
         } else {
-            console.log('reloading products because of reserved products', reservedProducts)
             reloadProductsLoop()
         }
     }, 500)
 }
-// keep reloading user every 0.5 seconds and log out user products
-
-// setInterval(() => {
-//     reloadUser()
-//     console.log(getUser().my_products)
-//     // fetchMyPasses()
-// }, 500)
-
