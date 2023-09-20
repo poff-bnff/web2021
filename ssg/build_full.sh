@@ -215,6 +215,8 @@ printf '\n\n----------     Finished downloading all img from Strapi    ---------
 
 printf '\n----------                  Processing styles                ----------\n\n'
 nice -10 node ./helpers/copy_styles_acc_to_domain.js
+status=$?;[ $status -eq 0 ] && echo 'copy_styles_acc_to_domain succeeded' || echo 'copy_styles_acc_to_domain failed. Exit'
+[ $status -ne 0 ] && exit $status
 printf '\n----------             Finished processing styles            ----------\n'
 
 cp -R "assets/"* "build/$BUILDDIR/assets"

@@ -4,9 +4,9 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!validToken) {
+if (!isUserTokenValid()) {
     window.open(`${location.origin}/${langpath}login`, '_self')
-    saveUrl()
+    savePreLoginUrl()
 }
 
 const selectors = {
@@ -89,8 +89,8 @@ function select_next_or_previous(which, id) {
 function toggleAll(exclude_selector_name) {
     setSearchParams()
 
-    if (userProfile && userProfile.my_events && userProfile.my_events.length) {
-        var userMyCalendarIds = getUniqueFavoritesArray(userProfile.my_events, 'schedule', 'industry_events')
+    if (userProfile && userProfile.My.course_events && userProfile.My.course_events.length) {
+        var userMyCalendarIds = getUniqueFavoritesArray(userProfile.My.course_events, 'schedule', 'industry_events')
         var allIds = execute_filters()
         var ids = allIds.filter(id => userMyCalendarIds.includes(id))
     } else {

@@ -7,32 +7,19 @@ let roleAtFilmCounter = 0
 let tagLookingForCounter = 0
 let filmographyCounter = 0
 
-if (validToken) {
+if (isUserTokenValid()) {
     loadUserInfo()
 } else {
     // document.getElementById('logInStatus').style.display = ''
     // window.open(`${location.origin}/${langpath}login`, '_self')
-    // saveUrl()
-}
-
-async function getUserProfile() {
-    let response = await fetch(`${strapiDomain}/users/me`, {
-        method: "GET",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
-        },
-    });
-    let userProfile = await response.json()
-    console.log({ userProfile })
-
-    return userProfile
+    // savePreLoginUrl()
 }
 
 async function getPersonForm() {
     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
         method: "GET",
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("BNFF_U_ACCESS_TOKEN"),
+            Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
         },
     });
     let personOnForm = await response.json()
@@ -46,7 +33,7 @@ getPersonForm()
 
 async function loadUserInfo() {
 
-    let userProfile = await getUserProfile()
+    let userProfile = await getUser()
     const profile = userProfile.user_profile
 
     if (profile) {
@@ -234,7 +221,7 @@ async function sendPersonProfile() {
     let response = await (await fetch(`${strapiDomain}/users/personForm`, {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN')
+            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
         },
         body: formData
     }))

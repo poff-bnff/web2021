@@ -1,7 +1,17 @@
-const search_input = document.getElementById('search');
-const nonetoshow = document.getElementById('nonetoshow');
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+const search_input = document.getElementById('search')
+const nonetoshow = document.getElementById('nonetoshow')
+const queryString = window.location.search
+const urlParams = new URLSearchParams(queryString)
+
+reloadUser()
+const reloadUserFilms = () => {
+    if (!isUserTokenValid()) {
+        return null
+    }
+    userFilms.splice(0, userFilms.length, ...getUser().My?.films?.map(f=>f.id) || [])
+}
+const userFilms = []
+reloadUserFilms()
 
 const selectors = {
     programmes: document.getElementById('programmes_select'),
@@ -13,7 +23,30 @@ const selectors = {
     genres: document.getElementById('genres_select'),
     keywords: document.getElementById('keywords_select'),
     towns: document.getElementById('towns_select'),
-    cinemas: document.getElementById('cinemas_select')
+    cinemas: document.getElementById('cinemas_select'),
+    favorites: document.getElementById('favorites_select')
+}
+
+function initializeFavorites() {
+    const nslButtons = document.getElementsByClassName('notshortlisted')
+    const slButtons = document.getElementsByClassName('isshortlisted')
+    for (let i = 0; i < nslButtons.length; i++) {
+        const id = nslButtons[i].id.split('_')[0]
+        nslButtons[i].addEventListener('click', e => {
+            toggleFavouriteFilm('set', id)
+        })
+        slButtons[i].addEventListener('click', e => {
+            toggleFavouriteFilm('unset', id)
+        })
+
+        if (userFilms.includes(parseInt(id))) {
+            nslButtons[i].style.display = 'none'
+            slButtons[i].style.display = ''
+        } else {
+            nslButtons[i].style.display = ''
+            slButtons[i].style.display = 'none'
+        }
+    }
 }
 
 function urlSelect() {
@@ -34,9 +67,10 @@ function urlSelect() {
 function setSearchParams() {
     let urlParameters = ''
     let firstParamDone = false
-    for (const selector in selectors) {
-        if (selectors[selector].selectedIndex !== 0) {
-            let selectedText = selectors[selector].options[selectors[selector].selectedIndex].innerHTML
+    for (const selectorName in selectors) {
+        const selector = selectors[selectorName]
+        if (selector.selectedIndex && selector.selectedIndex !== 0) {
+            let selectedText = selector.options[selector.selectedIndex].innerHTML
             urlParameters += !firstParamDone ? `?${selector}=${encodeURIComponent(selectedText)}` : `&${selector}=${encodeURIComponent(selectedText)}`
             firstParamDone = true
         }
@@ -55,6 +89,7 @@ document.onreadystatechange = () => {
     // const content = document.getElementById('content');
     const filters = document.getElementById('filters');
     if (document.readyState === 'complete') {
+        initializeFavorites()
         urlSelect()
         filters.style.display = "grid"
         loading.style.display = "none"
@@ -69,10 +104,10 @@ document.onreadystatechange = () => {
     }
 };
 
-function toggleAll(exclude_selector_name) {
+function toggleAll(excludeSelectorName) {
     setSearchParams()
 
-    ids = execute_filters()
+    ids = executeFilters()
 
     // kuva/peida 'pole vasteid'
     if (ids.length) {
@@ -93,78 +128,81 @@ function toggleAll(exclude_selector_name) {
     })
 
     // filtreeri filtreid
-    toggleFilters(exclude_selector_name)
+    toggleFilters(excludeSelectorName)
 }
 
-function toggleFilters(exclude_selector_name) {
+function toggleFilters(excludedSelectorName) {
 
-    for (selector_name in selectors) {
+    for (const selectorName in selectors) {
+        const selector = selectors[selectorName]
         // console.log(exclude_selector_name, ' - ', selector_name);
 
-        if (exclude_selector_name === selector_name) {
+        if (excludedSelectorName === selectorName) {
             continue
         }
 
-        for (const option of selectors[selector_name].options) {
-            const value = option.value
-            if (value === '') {
-                option.disabled = false // garanteerib tyhivaliku olemasolu
-                continue
+        if (selectorName.options) {
+            for (const option of selector.options) {
+                const value = option.value
+                if (value === '') {
+                    option.disabled = false // garanteerib tyhivaliku olemasolu
+                    continue
+                }
+
+                // console.log(`value is this '${value}' - ${typeof value}`);
+                let count = searcharray
+                .filter(cassette => {
+                    const compare_with = selectorName === 'programmes' ? value : selectors.programmes.value;
+                    return compare_with === '' ? true : cassette.programmes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'languages' ? value : selectors.languages.value;
+                    return compare_with === '' ? true : cassette.languages.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'countries' ? value : selectors.countries.value;
+                    return compare_with === '' ? true : cassette.countries.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'subtitles' ? value : selectors.subtitles.value;
+                    return compare_with === '' ? true : cassette.subtitles.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'towns' ? value : selectors.towns.value;
+                    return compare_with === '' ? true : cassette.towns.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'cinemas' ? value : selectors.cinemas.value;
+                    return compare_with === '' ? true : cassette.cinemas.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'premieretypes' ? value : selectors.premieretypes.value;
+                    return compare_with === '' ? true : cassette.premieretypes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'filmtypes' ? value : selectors.filmtypes.value;
+                    return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'genres' ? value : selectors.genres.value;
+                    return compare_with === '' ? true : cassette.genres.includes( compare_with )
+                })
+                .filter(cassette => {
+                    const compare_with = selectorName === 'keywords' ? value : selectors.keywords.value;
+                    return compare_with === '' ? true : cassette.keywords.includes( compare_with )
+                })
+                .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
+                .length
+                // .filter((cassette) => { return selectors.countries.value ? cassette.countries.includes(selectors.countries.value) : true })
+                // .filter((cassette) => { return selectors.subtitles.value ? cassette.subtitles.includes(selectors.subtitles.value) : true })
+                // .filter((cassette) => { return selectors.towns.value ? cassette.towns.includes(selectors.towns.value) : true })
+                // .filter((cassette) => { return selectors.cinemas.value ? cassette.cinemas.includes(selectors.cinemas.value) : true })
+                // .filter((cassette) => { return selectors.premieretypes.value ? cassette.premieretypes.includes(selectors.premieretypes.value) : true })
+                // .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
+                // option.innerHTML += `${count} ${value}`
+                option.disabled = count ? false : true
+
             }
-
-            // console.log(`value is this '${value}' - ${typeof value}`);
-            let count = searcharray
-            .filter(cassette => {
-                const compare_with = selector_name === 'programmes' ? value : selectors.programmes.value;
-                return compare_with === '' ? true : cassette.programmes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'languages' ? value : selectors.languages.value;
-                return compare_with === '' ? true : cassette.languages.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'countries' ? value : selectors.countries.value;
-                return compare_with === '' ? true : cassette.countries.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'subtitles' ? value : selectors.subtitles.value;
-                return compare_with === '' ? true : cassette.subtitles.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'towns' ? value : selectors.towns.value;
-                return compare_with === '' ? true : cassette.towns.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'cinemas' ? value : selectors.cinemas.value;
-                return compare_with === '' ? true : cassette.cinemas.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'premieretypes' ? value : selectors.premieretypes.value;
-                return compare_with === '' ? true : cassette.premieretypes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'filmtypes' ? value : selectors.filmtypes.value;
-                return compare_with === '' ? true : cassette.filmtypes.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'genres' ? value : selectors.genres.value;
-                return compare_with === '' ? true : cassette.genres.includes( compare_with )
-            })
-            .filter(cassette => {
-                const compare_with = selector_name === 'keywords' ? value : selectors.keywords.value;
-                return compare_with === '' ? true : cassette.keywords.includes( compare_with )
-            })
-            .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
-            .length
-            // .filter((cassette) => { return selectors.countries.value ? cassette.countries.includes(selectors.countries.value) : true })
-            // .filter((cassette) => { return selectors.subtitles.value ? cassette.subtitles.includes(selectors.subtitles.value) : true })
-            // .filter((cassette) => { return selectors.towns.value ? cassette.towns.includes(selectors.towns.value) : true })
-            // .filter((cassette) => { return selectors.cinemas.value ? cassette.cinemas.includes(selectors.cinemas.value) : true })
-            // .filter((cassette) => { return selectors.premieretypes.value ? cassette.premieretypes.includes(selectors.premieretypes.value) : true })
-            // .filter((cassette) => { return search_input.value ? cassette.text.includes(search_input.value.toLowerCase()) : true })
-            // option.innerHTML += `${count} ${value}`
-            option.disabled = count ? false : true
-
         }
 
     }
@@ -217,6 +255,10 @@ selectors.cinemas.addEventListener('change', e => {
     toggleAll('cinemas');
 });
 
+selectors.favorites.addEventListener('change', e => {
+    toggleAll('favorites');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.programmes.selectedIndex = 0;
@@ -230,11 +272,18 @@ function unselect_all() {
     selectors.towns.selectedIndex = 0;
     selectors.cinemas.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
-    toggleAll(execute_filters());
+    toggleAll(executeFilters());
 }
 
-function execute_filters() {
+function executeFilters() {
     let filtered = searcharray
+        .filter(cassette => {
+            if (selectors.favorites.checked) {
+                return userFilms.includes(cassette.id)
+            } else {
+                return true
+            }
+        })
         .filter(cassette => {
             if (selectors.programmes.value) {
                 return cassette.programmes.includes(selectors.programmes.value)
@@ -312,6 +361,50 @@ function execute_filters() {
     return filtered
 }
 
-// console.log('foo'.includes(undefined));
+// console.log('foo'.includes(undefined))
 
+function toggleFavouriteFilm(action, favId) {
+    const setButton = document.getElementById(`${favId}_not_shortlisted`)
+    const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
 
+    const pushedButton = action === 'set' ? setButton : unsetButton
+    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
+
+    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+    pushedButton.disabled = true
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow',
+        body: favId
+    };
+
+    // `${strapiDomain}/users/favorites/`
+    fetch(`${huntAuthDomain}/api/my/film`, requestOptions).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        if (action === 'set') {
+            setButton.style.display = 'none'
+            unsetButton.style.display = ''
+        } else {
+            setButton.style.display = ''
+            unsetButton.style.display = 'none'
+        }
+        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        pushedButton.disabled = false
+        const webUser = getUser()
+        webUser.My = data
+        setUser(webUser)
+        reloadUserFilms()
+    }).catch(function (error) {
+        console.warn(error);
+        pushedButton.innerHTML = 'Tekkis viga!'
+    });
+}
