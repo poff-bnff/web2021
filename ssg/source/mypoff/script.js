@@ -30,6 +30,7 @@ async function fetchMyPasses() {
         if (pass_template) {
             var my_pass_element = pass_template.cloneNode(true)
             my_pass_element.setAttribute('ix', ix)
+            my_passes_element.appendChild(my_pass_element)
 
             const passCodeElement = my_pass_element.querySelector('.passCode');
             const fullNameElement = my_pass_element.querySelector('.fullName');
@@ -54,7 +55,6 @@ async function fetchMyPasses() {
             }
 
             my_pass_element.style.display = 'block'
-            my_passes_element.appendChild(my_pass_element)
 
             if (my_pass.owner) {
             }
