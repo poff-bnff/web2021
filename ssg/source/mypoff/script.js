@@ -27,43 +27,35 @@ async function fetchMyPasses() {
         var pass_template = document.getElementById('template_' + my_pass.product_category)
 
         if (pass_template) {
-            var my_pass_element = pass_template.cloneNode(true)
-
-            const passCodeElement = my_pass_element.querySelector('.passCode');
-            if (my_pass.owner) {
-                passCodeElement.innerHTML = my_pass.code
-            } else {
-                passCodeElement.style.display = 'none'
-            }
-
-            const fullNameElement = my_pass_element.querySelector('.fullName');
-            if (fullNameElement) {
-                fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
-            }
-
-            const profilePicElement = my_pass_element.querySelector('.profilePic');
-            if (profilePicElement) {
-                profilePicElement.setAttribute('src', profilePicture)
-            }
-
+            const my_pass_element = pass_template.cloneNode(true)
             my_pass_element.setAttribute('ix', ix)
             my_pass_element.style.display = 'block'
 
-            my_passes_element.appendChild(my_pass_element)
-
+            const passCodeElement = my_pass_element.querySelector('.passCode');
+            const fullNameElement = my_pass_element.querySelector('.fullName');
+            const profilePicElement = my_pass_element.querySelector('.profilePic');
             const qrCodeElement = my_pass_element.querySelector('.qrCode');
-            if (qrCodeElement) {
-                if (my_pass.owner) {
-                    const qr_id = 'QR' + my_pass.code;
-                    qrCodeElement.id = qr_id;
-                    new QRCode(qr_id).makeCode(my_pass.code);
-                } else { // replace with a copy of loaderTemplate
-                    const loaderElement = loaderTemplate.cloneNode(true);
-                    loaderElement.id = 'loader-' + ix;
-                    loaderElement.style.display = 'block';
-                    qrCodeElement.parentNode.replaceChild(loaderElement, qrCodeElement);
-                }
+
+            if (my_pass.owner) {
+                passCodeElement.innerHTML = my_pass.code
+                fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
+                profilePicElement.setAttribute('src', profilePicture)
+                const qr_id = 'QR' + my_pass.code;
+                qrCodeElement.id = qr_id;
+                new QRCode(qr_id).makeCode(my_pass.code);
+            } else {
+                passCodeElement.style.display = 'none'
+                fullNameElement.style.display = 'none'
+                profilePicElement.style.display = 'none'
+                qrCodeElement.style.display = 'none'
+
+                const loaderElement = loaderTemplate.cloneNode(true);
+                loaderElement.id = 'loader-' + ix;
+                loaderElement.style.display = 'block';
+                my_pass_element.replaceChild(loaderElement, qrCodeElement);
             }
+
+            my_passes_element.appendChild(my_pass_element)
         }
     }
 }
