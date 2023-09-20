@@ -76,7 +76,7 @@ reloadProductsLoop = async () => {
         if (reloadPageNeeded) {
             location.reload()
         } else {
-            console.log('reloading products')
+            console.log('reloading products because of reserved products', reservedProducts)
             reloadProductsLoop()
         }
     }, 500)
