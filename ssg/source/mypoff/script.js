@@ -2,6 +2,7 @@
 requireLogin()
 
 const loaderTemplate = document.getElementById('loaderTemplate')
+var reloadProductsNeeded = false
 
 async function fetchMyPasses() {
 
@@ -14,9 +15,11 @@ async function fetchMyPasses() {
     } else {
         return
     }
-    var reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
-    var myPasses = webUser.my_products.concat(reservedProducts)
 
+    const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
+    const myPasses = webUser.my_products.concat(reservedProducts)
+
+    reloadProductsNeeded = reservedProducts.length > 0
 
     // console.log('passes ', my_passes)
     var my_passes_element = document.getElementById('my_passes')
@@ -47,7 +50,6 @@ async function fetchMyPasses() {
                 passCodeElement.style.display = 'none'
                 fullNameElement.style.display = 'none'
                 profilePicElement.style.display = 'none'
-
                 const loaderElement = loaderTemplate.cloneNode(true);
                 loaderElement.id = 'loader-' + ix;
                 loaderElement.style.display = 'block';
@@ -55,16 +57,30 @@ async function fetchMyPasses() {
             }
 
             my_pass_element.style.display = 'block'
-
-            if (my_pass.owner) {
-            }
         }
+    }
+    if (reloadProductsNeeded) {
+        reloadProductsLoop()
     }
 }
 
 reloadUser()
 fetchMyPasses()
 
+reloadProductsLoop = async () => {
+    setTimeout(async () => {
+        reloadUser()
+        let user = await getUser()
+        let reservedProducts = user.reserved_products.filter(p => p.owner === null)
+        let reloadPageNeeded = reservedProducts.length = 0
+        if (reloadPageNeeded) {
+            location.reload()
+        } else {
+            console.log('reloading products')
+            reloadProductsLoop()
+        }
+    }, 500)
+}
 // keep reloading user every 0.5 seconds and log out user products
 
 // setInterval(() => {
