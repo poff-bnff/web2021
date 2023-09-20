@@ -67,6 +67,6 @@ fetchMyPasses()
 setInterval(() => {
     reloadUser()
     console.log(getUser().my_products)
-    fetchMyPasses()
+    // fetchMyPasses()
 }, 500)
 
