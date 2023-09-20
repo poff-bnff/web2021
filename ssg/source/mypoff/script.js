@@ -41,6 +41,7 @@ async function fetchMyPasses() {
                 passCodeElement.innerHTML = my_pass.code
                 fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
                 profilePicElement.setAttribute('src', profilePicture)
+                new QRCode(qr_id).makeCode(my_pass.code);
             } else {
                 passCodeElement.style.display = 'none'
                 fullNameElement.style.display = 'none'
@@ -56,8 +57,6 @@ async function fetchMyPasses() {
             my_passes_element.appendChild(my_pass_element)
 
             if (my_pass.owner) {
-                new QRCode(qr_id).makeCode(my_pass.code);
-            } else { // replace with a copy of loaderTemplate
             }
         }
     }
