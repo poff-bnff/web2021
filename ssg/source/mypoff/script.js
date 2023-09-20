@@ -52,7 +52,7 @@ async function fetchMyPasses() {
                 const loaderElement = loaderTemplate.cloneNode(true);
                 loaderElement.id = 'loader-' + ix;
                 loaderElement.style.display = 'block';
-                my_pass_element.replaceChild(loaderElement, qrCodeElement);
+                my_pass_element.replaceChild(loaderElement, profilePicElement);
             }
 
             my_passes_element.appendChild(my_pass_element)
