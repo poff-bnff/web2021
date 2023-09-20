@@ -82,7 +82,7 @@ reloadProductsLoop = async (reservedProductsCount, times) => {
         reloadUser()
         let user = await getUser()
         let reservedProducts = user.reserved_products.filter(p => p.owner === null)
-        console.log('reservedProducts', reservedProducts)
+        console.log('reservedProducts', reservedProductsCount, reservedProducts.length)
         if (reservedProductsCount !== reservedProducts.length) {
             location.reload()
         } else {
