@@ -62,23 +62,34 @@ async function fetchMyPasses() {
         }
     }
     if (reloadProductsNeeded) {
-        reloadProductsLoop()
+        reloadProductsLoop(true)
     }
+}
+
+reloadProductsLoop = async (waitForPending, times) => {
+    if (times !== undefined) {
+        if (times === 0) {
+            return
+        }
+        times--
+    }
+    if (waitForPending === undefined) {
+        waitForPending = 'true'
+    }
+    setTimeout(async () => {
+        reloadUser()
+        let user = await getUser()
+        let reservedProducts = user.reserved_products.filter(p => p.owner === null)
+        let reloadPageNeeded = waitForPending === 'true' ? reservedProducts.length === 0 : reservedProducts.length > 0
+        if (reloadPageNeeded) {
+            location.reload()
+        } else {
+            reloadProductsLoop(waitForPending, times)
+        }
+    }, 500)
 }
 
 reloadUser()
 fetchMyPasses()
 
-reloadProductsLoop = async () => {
-    setTimeout(async () => {
-        reloadUser()
-        let user = await getUser()
-        let reservedProducts = user.reserved_products.filter(p => p.owner === null)
-        let reloadPageNeeded = reservedProducts.length === 0
-        if (reloadPageNeeded) {
-            location.reload()
-        } else {
-            reloadProductsLoop()
-        }
-    }, 500)
-}
+reloadProductsLoop('false', 10)
