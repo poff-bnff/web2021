@@ -86,7 +86,7 @@ reloadProductsLoop = async (reservedProductsCount, times) => {
         } else {
             reloadProductsLoop(reservedProductsCount, times)
         }
-    }, 500)
+    }, 1000)
 }
 
 reloadUser()
