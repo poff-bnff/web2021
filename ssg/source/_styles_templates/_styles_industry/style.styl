@@ -4408,13 +4408,66 @@ a:hover > .login_headline
 }
 
 .ec-resource {
-    min-width: 300px !important;
+    min-width: 200px !important;
+}
+
+.ec-body {
+    border-inline: none !important
+}
+
+.ec-day {
+    border: none !important
+}
+
+.ec-days {
+    padding-left: 8px
+}
+
+.ec-toolbar > div {
+    flex: 1 0 100%;
+}
+
+.ec-title .calendar-title {
+    display flex
+    align-items: baseline
+    gap: 12px
+}
+
+.ec-title .calendar-title .formatted-date {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .formatted-weekday {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .calendar-line {
+    height: 2px
+    background-color: green_400
+    flex: 1 1 0
+}
+
+.ec-lines {
+    width: 0px !important
 }
 
 .ec-event {
-    border-top: 2px solid #1DD3CD;
+    border-top: 2px solid green_400;
     background-color: #F9F6FE !important;
     overflow: hidden
+    padding: 0 !important
+    transition: 150ms all ease-in
+}
+
+.ec-event:hover {
+    background-color: purple_100 !important
+    transition: 150ms all ease-in
 }
 
 // .ec-time {
@@ -4425,32 +4478,54 @@ a:hover > .login_headline
 //     height: 30px !important
 // }
 
-// .ec-header {
-//     max-height: 30px !important
-// }
+.ec-header {
+    border: none !important
+    border-bottom: 1px solid #dadce0 !important
+}
 
 .single-event {
     height: 100%
     display: flex
     justify-content: space-between
     position: relative
+    padding: 8px 0 0px 8px
 }
 
 .ec-event-title {
-    width: 90%
+    width: calc(100% - 40px)
     color: text !important
+    font-size: 14px
+    line-height: 125%
+    font-style: normal
+    font-weight: 400
+    word-break: break-word;
 }
 
 .event-icon {
     position: absolute
     top: 0
     right: 0
-    padding-right: 2px
+    padding: 4px 8px
+    transition: 150ms all ease-in
+}
+
+.event-icon:hover > svg {
+    fill: green_400
+    transition: 150ms all ease-in
 }
 
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
+
+    .ec-resource {
+        min-width: 338px !important;
+    }
+
+    .ec-event-title {
+        font-size: 16px
+    }
+
     .grid_courseevent
         display grid
         grid-template-columns 1fr 1fr 1fr
