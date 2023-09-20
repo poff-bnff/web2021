@@ -23,35 +23,35 @@ async function fetchMyPasses() {
     var ix = 0
     for (my_pass of myPasses) {
         ix++
+        const qr_id = 'QR' + my_pass.code;
 
         var pass_template = document.getElementById('template_' + my_pass.product_category)
 
         if (pass_template) {
             var my_pass_element = pass_template.cloneNode(true)
+            my_pass_element.setAttribute('ix', ix)
 
             const passCodeElement = my_pass_element.querySelector('.passCode');
             const fullNameElement = my_pass_element.querySelector('.fullName');
             const profilePicElement = my_pass_element.querySelector('.profilePic');
             const qrCodeElement = my_pass_element.querySelector('.qrCode');
+            qrCodeElement.id = qr_id;
 
             if (my_pass.owner) {
                 passCodeElement.innerHTML = my_pass.code
+                fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
+                profilePicElement.setAttribute('src', profilePicture)
             } else {
                 passCodeElement.style.display = 'none'
+                fullNameElement.style.display = 'none'
+                profilePicElement.style.display = 'none'
             }
 
-            fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
-            profilePicElement.setAttribute('src', profilePicture)
-
-            my_pass_element.setAttribute('ix', ix)
             my_pass_element.style.display = 'block'
-
             my_passes_element.appendChild(my_pass_element)
 
             if (qrCodeElement) {
                 if (my_pass.owner) {
-                    const qr_id = 'QR' + my_pass.code;
-                    qrCodeElement.id = qr_id;
                     new QRCode(qr_id).makeCode(my_pass.code);
                 } else { // replace with a copy of loaderTemplate
                     const loaderElement = loaderTemplate.cloneNode(true);
