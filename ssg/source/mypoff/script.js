@@ -2,7 +2,6 @@
 requireLogin()
 
 const loaderTemplate = document.getElementById('loaderTemplate')
-var reloadProductsNeeded = false
 
 async function fetchMyPasses() {
 
@@ -94,9 +93,10 @@ reloadProductsLoop = async (owned, reserved, times) => {
         }, 1000)
     }
 }
+const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
 const reservedProductsCount = reservedProducts.length
 const ownedProductsCount = webUser.my_products.length
 
-await reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
+reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
 
 fetchMyPasses()
