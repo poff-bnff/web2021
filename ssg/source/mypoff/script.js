@@ -69,6 +69,7 @@ async function fetchMyPasses() {
 }
 
 reloadProductsLoop = async (reservedProductsCount, times) => {
+    console.log('reloadProductsLoop', reservedProductsCount, times)
     if (times !== undefined) {
         if (times === 0) {
             return
@@ -81,6 +82,7 @@ reloadProductsLoop = async (reservedProductsCount, times) => {
         reloadUser()
         let user = await getUser()
         let reservedProducts = user.reserved_products.filter(p => p.owner === null)
+        console.log('reservedProducts', reservedProducts)
         if (reservedProductsCount !== reservedProducts.length) {
             location.reload()
         } else {
