@@ -29,24 +29,21 @@ async function fetchMyPasses() {
         if (pass_template) {
             var my_pass_element = pass_template.cloneNode(true)
 
+            const passCodeElement = my_pass_element.querySelector('.passCode');
             if (my_pass.owner) {
-                for (const childNode of my_pass_element.childNodes) {
-                    if (childNode.className === 'passCode') {
-                        childNode.innerHTML = my_pass.code
-                    }
-                }
+                passCodeElement.innerHTML = my_pass.code
+            } else {
+                passCodeElement.style.display = 'none'
             }
 
-            for (const childNode of my_pass_element.childNodes) {
-                if (childNode.className === 'fullName') {
-                    childNode.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
-                }
+            const fullNameElement = my_pass_element.querySelector('.fullName');
+            if (fullNameElement) {
+                fullNameElement.innerHTML = userPerson.firstName + ' ' + userPerson.lastName
             }
 
-            for (const childNode of my_pass_element.childNodes) {
-                if (childNode.className === 'profilePic') {
-                    childNode.setAttribute('src', profilePicture)
-                }
+            const profilePicElement = my_pass_element.querySelector('.profilePic');
+            if (profilePicElement) {
+                profilePicElement.setAttribute('src', profilePicture)
             }
 
             my_pass_element.setAttribute('ix', ix)
