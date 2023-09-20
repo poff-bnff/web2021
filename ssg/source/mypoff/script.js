@@ -50,6 +50,7 @@ async function fetchMyPasses() {
                 passCodeElement.style.display = 'none'
                 fullNameElement.style.display = 'none'
                 profilePicElement.style.display = 'none'
+                // qrCodeElement.style.display = 'none'
                 const loaderElement = loaderTemplate.cloneNode(true);
                 loaderElement.id = 'loader-' + ix;
                 loaderElement.style.display = 'block';
