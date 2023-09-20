@@ -1,3 +1,5 @@
+const { get } = require("https")
+
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
@@ -61,3 +63,11 @@ async function fetchMyPasses() {
 
 reloadUser()
 fetchMyPasses()
+
+// keep reloading user every 0.5 seconds and log out user products
+
+setInterval(() => {
+    reloadUser()
+    console.log(getUser().my_products)
+    fetchMyPasses()
+}, 500)
