@@ -72,7 +72,7 @@ reloadProductsLoop = async () => {
         reloadUser()
         let user = await getUser()
         let reservedProducts = user.reserved_products.filter(p => p.owner === null)
-        let reloadPageNeeded = reservedProducts.length = 0
+        let reloadPageNeeded = reservedProducts.length === 0
         if (reloadPageNeeded) {
             location.reload()
         } else {
