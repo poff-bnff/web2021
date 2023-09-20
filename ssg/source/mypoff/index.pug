@@ -3,6 +3,11 @@ include /_templates/mixins.pug
 
 block content
 
+    #loader(style="display: none")
+        #loader-top
+        #loader-bottom
+        #loader-line
+
     if self.data.shops
         each shop in self.data.shops
 
@@ -56,7 +61,7 @@ block content
 
                         section.mypasses_items_list(id='my_passes')
 
-                        pre foo
+
 
                 //- if shop.shopRulesygtf
                 //-     if typeof shop.shopRules === 'string'
