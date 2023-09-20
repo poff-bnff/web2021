@@ -12,11 +12,14 @@ async function fetchMyPasses() {
     } else {
         return
     }
-    var my_passes = webUser.my_products
+    var reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
+    var myPasses = webUser.my_products.concat(reservedProducts)
+
+
     // console.log('passes ', my_passes)
     var my_passes_element = document.getElementById('my_passes')
     var ix = 0
-    for (my_pass of my_passes) {
+    for (my_pass of myPasses) {
         ix++
 
         var pass_template = document.getElementById('template_' + my_pass.product_category)
