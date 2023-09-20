@@ -93,6 +93,7 @@ reloadProductsLoop = async (owned, reserved, times) => {
         }, 1000)
     }
 }
+const webUser = getUser()
 const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
 const reservedProductsCount = reservedProducts.length
 const ownedProductsCount = webUser.my_products.length
