@@ -63,6 +63,8 @@ async function fetchMyPasses() {
     }
     if (reloadProductsNeeded) {
         reloadProductsLoop(true)
+    } else {
+        reloadProductsLoop(false, 10)
     }
 }
 
@@ -91,5 +93,3 @@ reloadProductsLoop = async (waitForPending, times) => {
 
 reloadUser()
 fetchMyPasses()
-
-reloadProductsLoop('false', 10)
