@@ -81,8 +81,25 @@ block content
         section#content.schedule
 
             div#events-view-switch
-                button(id='events-list-view') List view
-                button(id='events-calendar-view') Calendar view
+                .list-calendar-view-icon
+                    input#event-list-view-button.event-list-view-btn(type='radio' name='list-view' value='event-list')
+                    svg(width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        g#icon
+                        path#Vector(d='M5.33398 4H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_2(d='M5.33398 8H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_3(d='M5.33398 12H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_4(d='M2 4H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_5(d='M2 8H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_6(d='M2 12H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                .list-calendar-view-icon
+                    input#event-calendar-view-button.event-list-view-btn(type='radio' name='list-view' value='calendar-list')
+                    svg(width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        g#icon
+                        path#Vector(d='M12.6667 2.66602H3.33333C2.59695 2.66602 2 3.26297 2 3.99935V13.3327C2 14.0691 2.59695 14.666 3.33333 14.666H12.6667C13.403 14.666 14 14.0691 14 13.3327V3.99935C14 3.26297 13.403 2.66602 12.6667 2.66602Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_2(d='M10.666 1.33398V4.00065' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_3(d='M5.33398 1.33398V4.00065' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_4(d='M2 6.66602H14' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+
 
             if self.data.industryevents
                 
@@ -91,19 +108,12 @@ block content
                         return !a.start_time.localeCompare(b.start_time)
                     }
 
-                -
-                    var calendarevents = true;
-                    
-                if calendarevents
-
-                    each date, key in self.data.filters.starttimes
+                each date, key in self.data.filters.starttimes
 
                         div(class="event-calendar-container")
                             .event-calendar(id=`ec-${date}`)
 
-                else
-
-                    each event in self.data.industryevents.sort(sortFunction)
+                each event in self.data.industryevents.sort(sortFunction)
                         -
                             var screeningNames = function(item) {
                                 let itemNames = item.title
@@ -463,138 +473,11 @@ block content
                                                         p.event_person_title= indPerson.role_at_film.roleName
                                                         
                                                             
-
         script.
             var searcharray = !{JSON.stringify(self.data.search)}
 
             var datesArray = !{JSON.stringify(self.data.filters.starttimes)}
 
             var calendarEventData =!{JSON.stringify(self.data.industryevents)}
-
-            let earliestTimePortion = null;
-            let latestTimePortion = null;
-
-            for (const date in datesArray) {
-                if (datesArray.hasOwnProperty(date)) {
-                    // Get the value associated with the date key
-                    const dateValue = datesArray[date];
-
-                    // Get the calendar container element by ID
-                    const calendarContainer = document.getElementById(`ec-${dateValue}`);
-
-                    // Initialize variables to track earliest start time and latest end time
-                    let earliestStartTime = null;
-                    let latestEndTime = null;
-                    let eventsForCalendar = [];
-                    let uniqueEventLocations = [];
-
-                    // Loop through events to find the earliest start time and latest end time get locations for matching date
-                    calendarEventData.forEach(function(event) {
-                        //- console.log(event.start_time)
-                        if (event.start_time.startsWith(dateValue) && event.location) {
-                            const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                            const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
-
-                            if (earliestStartTime === null || eventStartTime < earliestStartTime) {
-                                earliestStartTime = eventStartTime;
-                                earliestTimePortion = moment(earliestStartTime).format('HH:mm:ss');
-                            }
-                            if (latestEndTime === null || eventEndTime > latestEndTime) {
-                                latestEndTime = eventEndTime;
-                                latestTimePortion = moment(latestEndTime).format('HH:mm:ss');
-                            }
-
-                            const eventLocation = event.location;
-                            if (!uniqueEventLocations.some(location => location.id === eventLocation.id)) {
-                                uniqueEventLocations.push(eventLocation);
-                            }
-
-
-                            // Create events for calendar
-                            const singleEventId = event.id
-                            const singleEventLocation = event.location.id
-                            const singleEventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                            const singleEventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
-                            const singleEventTitle = event.title
-                            const singleEventICal = event.calendar_data
-                            eventsForCalendar.push({
-                                id: singleEventId,
-                                start: singleEventStartTime,
-                                end: singleEventEndTime,
-                                resourceId: singleEventLocation, // Event location
-                                title: singleEventTitle,
-                                extendedProps: {
-                                ical: `${singleEventICal}`,
-                                },
-                            });
-                        }
-                    });
-                    //- console.log(eventsForCalendar)
-                    //- console.log(earliestTimePortion)
-                    // Calculate firstEventTime and lastEventTime, get eventLocations
-                    const firstEventTime = earliestTimePortion ? earliestTimePortion : '';
-                    const lastEventTime = latestTimePortion ? latestTimePortion : '';
-                    const calendarResources = uniqueEventLocations.map(location => ({
-                        id: location.id,
-                        title: location.name,
-                    }))
-                    // Initialize the calendar with options
-                    var ec = new EventCalendar(calendarContainer, {
-                        view: 'resourceTimeGridDay',
-                        date: dateValue,
-                        slotMinTime: firstEventTime,
-                        slotMaxTime: lastEventTime,
-                        slotEventOverlap: false,
-                        firstDay: 1,
-                        //- slotHeight: 30,
-                        locale: 'et',
-                        allDaySlot: false,
-                        titleFormat: function (start, end) {
-                        const options = { month: 'short', day: 'numeric' };
-                        const formattedDate = start.toLocaleDateString('en-US', options);
-                        const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
-                        return {
-                            html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
-                        }
-                        },
-                        headerToolbar: {
-                            start: 'title', center: '', end: ''
-                        },
-                        resources: calendarResources,
-                    });
-                    ec.setOption('eventContent', function (info) {
-                        return {
-                            html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
-                            <div class="ec-event-title">
-                            ${info.event.title}
-                            </div>
-                            ${
-                                info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
-                                ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                </a>`
-                                : ''
-                            }
-                            </a>`,
-                        };
-                    })
-
-                    ec.setOption('eventStartEditable', false);
-                    ec.setOption('eventDurationEditable', false);
-
-                    // Add events from array
-                    eventsForCalendar.forEach(function (event) {
-                        console.log(event);
-                        ec.addEvent(event);
-                    })
-                }
-            }
-
 
             var filters = !{JSON.stringify(self.data.filters)}
