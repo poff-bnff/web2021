@@ -4396,7 +4396,8 @@ a:hover > .login_headline
     margin-bottom: 1.5rem
 
 .event-calendar-container
-    color: #000
+    color: text
+    margin-bottom: 3rem
 
 .event-calendar {
     overflow: scroll;
@@ -4421,6 +4422,10 @@ a:hover > .login_headline
 
 .ec-days {
     padding-left: 8px
+}
+
+.ec-toolbar {
+    margin-bottom: 1.5rem !important
 }
 
 .ec-toolbar > div {
@@ -4514,9 +4519,60 @@ a:hover > .login_headline
     transition: 150ms all ease-in
 }
 
+.list-view-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.event-list-view-btn {
+    min-width: unset
+    height: unset
+    background-color: unset
+    border: none
+    padding: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    border-radius: 4px
+    cursor: pointer
+}
+
+.event-list-view-btn:focus {
+    border: none
+    box-shadow: none
+}
+
+.list-calendar-view-icon {
+    position: relative;
+    min-height: 32px;
+    padding: 4px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    outline: 1px solid border_gray
+    transition: 100ms all ease-in
+    cursor: pointer
+}
+
+.list-calendar-view-icon:hover {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
+
+.list-calendar-view-icon > input:checked {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
+
+    .event-calendar-container {
+        margin-bottom: 4rem
+    }
 
     .ec-resource {
         min-width: 338px !important;
