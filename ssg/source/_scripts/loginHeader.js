@@ -240,10 +240,10 @@ const isUserTokenValid = () => {
         document.dispatchEvent(userProfileLoadedEvent)
         try {
             document.getElementById('logOut').style.display = 'block'
-            document.getElementById('logInName').style.display = 'block'
             document.getElementById('userProfile').style.display = 'block'
             document.getElementById('logIn').style.display = 'none'
         } catch (error) {
+            console.log(error)
         }
     } else {
         localStorage.removeItem('ID_TOKEN')
@@ -251,10 +251,10 @@ const isUserTokenValid = () => {
         localStorage.removeItem('USER_PROFILE')
         try {
             document.getElementById('logOut').style.display = 'none'
-            document.getElementById('logInName').style.display = 'none'
             document.getElementById('userProfile').style.display = 'none'
             document.getElementById('logIn').style.display = 'block'
         } catch (error) {
+            console.log(error)
         }
     }
 
