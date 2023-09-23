@@ -624,6 +624,12 @@
                 "My": {
                   "type": "component"
                 },
+                "reserved_products": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
