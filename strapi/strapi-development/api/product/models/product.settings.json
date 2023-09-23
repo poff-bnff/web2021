@@ -31,7 +31,8 @@
     },
     "reserved_to": {
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "reserved_products"
     },
     "reservation_expired": {
       "type": "datetime"
@@ -51,9 +52,9 @@
       ]
     },
     "owner": {
-      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "my_products"
     },
     "valid_from": {
       "type": "datetime"

@@ -2919,6 +2919,83 @@
                 }
               }
             }
+          },
+          "reserved_products": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product_category": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "ticketingRight": {
+                  "type": "component"
+                },
+                "reservation_time": {
+                  "type": "string"
+                },
+                "reserved_to": {
+                  "type": "string"
+                },
+                "reservation_expired": {
+                  "type": "string"
+                },
+                "reservation_price": {
+                  "type": "number"
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "product_type": {
+                  "type": "string",
+                  "enum": [
+                    "pass",
+                    "Course"
+                  ]
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "valid_from": {
+                  "type": "string"
+                },
+                "valid_to": {
+                  "type": "string"
+                },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "transferable": {
+                  "type": "boolean"
+                },
+                "override_transfer_locking": {
+                  "type": "boolean"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -3868,6 +3945,12 @@
                   }
                 }
               }
+            }
+          },
+          "reserved_products": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "created_by": {
