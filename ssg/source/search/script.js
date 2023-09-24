@@ -31,7 +31,7 @@ function initializeFavorites() {
     const nslButtons = document.getElementsByClassName('notshortlisted')
     const slButtons = document.getElementsByClassName('isshortlisted')
     for (let i = 0; i < nslButtons.length; i++) {
-        const id = nslButtons[i].id.split('_')[0]
+        const id = nslButtons[i].id.split('_')[1]
         nslButtons[i].addEventListener('click', e => {
             toggleFavouriteFilm('set', id)
         })
