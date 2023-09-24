@@ -122,10 +122,8 @@ function logOut() {
     localStorage.removeItem('preLoginUrl')
     localStorage.removeItem('USER_PROFILE')
 
-    // console.log('LOGITUD VÄLJA')
-    location.reload()
-
-    // window.open(location.origin, '_self')
+    // redirect to home page
+    window.open(location.origin, '_self')
 }
 
 // This function returns true if user is logged in but redirects to login page if not.
