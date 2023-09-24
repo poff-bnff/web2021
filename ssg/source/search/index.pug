@@ -89,7 +89,7 @@ block content
                     each festival in cassette.festivals
                         - allFestivals.push(festival.name)
                         - festivalsCassette.push(festival.name)
-                .card_film(id=cassette.id style='padding-bottom: 20px; position: relative;')
+                .card_film(id=cassette.id)
                     input#festivalsCassette(type='hidden', value=`${festivalsCassette}`)
                     a(href=`/${lang_path}film/${cassette.slug}`)
 
@@ -147,13 +147,12 @@ block content
                                     .str_info_grid_3
                                         .str_info_label.dark_semi= self.label.film.countries
                                         #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
-                    br
 
                     button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted',
-                        style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                        style='display: none; height: 36px; width: 100%;'
                         )= self.label.film.removeShortlist
                     button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted',
-                        style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;'
+                        style='display: none; height: 36px; width: 100%;'
                         )= self.label.film.addShortlist
 
             script.
