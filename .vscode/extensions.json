@@ -6,9 +6,11 @@
 	"recommendations": [
 		"github.copilot",
 		"github.copilot-chat",
+		"carlthome.git-line-blame",
+		"sokkero.vsc-git-info",
+		"humao.rest-client"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
-		
 	]
 }
