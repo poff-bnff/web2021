@@ -1,3 +1,94 @@
+function toggleFavouriteScreening(action, favId) {
+    const setButton = document.getElementById(`${favId}_not_shortlisted`)
+    const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
+
+    const pushedButton = action === 'set' ? setButton : unsetButton
+    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
+
+    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+    pushedButton.disabled = true
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow',
+        body: favId
+    };
+
+    fetch(`${huntAuthDomain}/api/my/screening`, requestOptions).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        if (action === 'set') {
+            setButton.style.display = 'none'
+            unsetButton.style.display = ''
+        } else {
+            setButton.style.display = ''
+            unsetButton.style.display = 'none'
+        }
+        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        pushedButton.disabled = false
+        const webUser = getUser()
+        webUser.My = data
+        setUser(webUser)
+        reloadUserScreenings()
+    }).catch(function (error) {
+        console.warn(error);
+        pushedButton.innerHTML = 'Tekkis viga!'
+    });
+}
+
+function toggleFavouriteFilm(action, favId) {
+    const setButton = document.getElementById(`${favId}_not_shortlisted`)
+    const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
+
+    const pushedButton = action === 'set' ? setButton : unsetButton
+    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
+
+    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+    pushedButton.disabled = true
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow',
+        body: favId
+    };
+
+    fetch(`${huntAuthDomain}/api/my/film`, requestOptions).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        if (action === 'set') {
+            setButton.style.display = 'none'
+            unsetButton.style.display = ''
+        } else {
+            setButton.style.display = ''
+            unsetButton.style.display = 'none'
+        }
+        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+        pushedButton.disabled = false
+        const webUser = getUser()
+        webUser.My = data
+        setUser(webUser)
+        reloadUserFilms()
+    }).catch(function (error) {
+        console.warn(error);
+        pushedButton.innerHTML = 'Tekkis viga!'
+    });
+}
+
+
 function toggleMyCalButtons(myCalEvents) {
     // console.log(myCalEvents)
 
