@@ -1,8 +1,3 @@
-const search_input = document.getElementById('search')
-const nonetoshow = document.getElementById('nonetoshow')
-const queryString = window.location.search
-const urlParams = new URLSearchParams(queryString)
-
 reloadUser()
 const userScreenings = []
 const reloadUserScreenings = () => {
@@ -17,7 +12,7 @@ function initializeFavorites() {
     const nslButtons = document.getElementsByClassName('notshortlisted')
     const slButtons = document.getElementsByClassName('isshortlisted')
     for (let i = 0; i < nslButtons.length; i++) {
-        const id = nslButtons[i].id.split('_')[0]
+        const id = nslButtons[i].id.split('_')[1]
         nslButtons[i].addEventListener('click', e => {
             toggleFavouriteScreening('set', id)
         })

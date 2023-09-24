@@ -1,6 +1,6 @@
 function toggleFavouriteScreening(action, favId) {
-    const setButton = document.getElementById(`${favId}_not_shortlisted`)
-    const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
+    const setButton = document.getElementById(`s_${favId}_is_not_fav`)
+    const unsetButton = document.getElementById(`s_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
@@ -44,8 +44,8 @@ function toggleFavouriteScreening(action, favId) {
 }
 
 function toggleFavouriteFilm(action, favId) {
-    const setButton = document.getElementById(`${favId}_not_shortlisted`)
-    const unsetButton = document.getElementById(`${favId}_is_shortlisted`)
+    const setButton = document.getElementById(`f_${favId}_is_not_fav`)
+    const unsetButton = document.getElementById(`f_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML

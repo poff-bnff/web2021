@@ -148,10 +148,10 @@ block content
                                         .str_info_label.dark_semi= self.label.film.countries
                                         #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
-                    button.btn.btn_secondary.isshortlisted(id=cassette.id+'_is_shortlisted',
+                    button.btn.btn_secondary.isshortlisted(id='f_'+cassette.id+'_is_fav',
                         style='display: none; height: 36px; width: 100%;'
                         )= self.label.film.removeShortlist
-                    button.btn.btn_secondary.notshortlisted(id=cassette.id+'_not_shortlisted',
+                    button.btn.btn_secondary.notshortlisted(id='f_'+cassette.id+'_is_not_fav',
                         style='display: none; height: 36px; width: 100%;'
                         )= self.label.film.addShortlist
 
