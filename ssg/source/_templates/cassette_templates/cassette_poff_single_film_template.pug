@@ -535,7 +535,7 @@ main.grid_film(id=self.id)
                         if self.screenings && self.screenings[0]
                             //- - var sortedScreenings = self.screenings.sort(function(a, b){return new Date(a.dateTime)-new Date(b.dateTime)})
                             each screening in self.screenings
-                                .card.card_screening.rounded-0.border-0
+                                .card.card_screening.rounded-0.border-0(id=`screening_${screening.id}`)
                                     .card-header.rounded-0.bg_dark_4
                                         .grid_container_screening_time
                                             div
@@ -649,8 +649,8 @@ main.grid_film(id=self.id)
 
                                         if screening.bookingUrl
                                             a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
-                                        a.btn.btn_primary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                                        a.btn.btn_primary.active.issavedscreening(id=screening.id+'_is_savedscreening' style='display: none;' onclick=`modifyFavourites('rmScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                                        a.btn.btn_primary.active.notsavedscreening(id='s_'+screening.id+'_is_not_fav' style='display: none;' onclick=`toggleFavouriteScreening('set', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
+                                        a.btn.btn_primary.active.issavedscreening(id='s_'+screening.id+'_is_fav' style='display: none;' onclick=`toggleFavouriteScreening('unset', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(${widget_id}, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
@@ -710,8 +710,19 @@ main.grid_film(id=self.id)
                     slButton.addEventListener('click', e => {
                         toggleFavouriteFilm('unset')
                     })
+
+                    const userScreenings = getUser().My?.screenings?.map(s=>s.id) || []
+                    const currentScreeningIDs = Array.from(document.getElementsByClassName('card_screening'))
+                        .map(e => parseInt(e.id.slice(1)))
+                    // unhide all fav buttons for currently favorited screenings
+                    currentScreeningIDs.filter(id => userScreenings.includes(id))
+                        .forEach(id => {
+                            document.getElementById(`s_${id}_is_fav`).style.display = ''
+                            document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                        })
                 }
 
+                // TODO: this function is globally available, so it should be used from global scope
                 function toggleFavouriteFilm(action) {
                     const pushedButton = action === 'set' ? nslButton : slButton
                     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
