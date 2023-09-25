@@ -110,7 +110,7 @@ block content
 
                 each date, key in self.data.filters.starttimes
 
-                        div(class="event-calendar-container")
+                        div(class="event-calendar-container", key=key)
                             .event-calendar(id=`ec-${date}`)
 
                 each event in self.data.industryevents.sort(sortFunction)

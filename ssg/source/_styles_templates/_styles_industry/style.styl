@@ -4425,7 +4425,7 @@ a:hover > .login_headline
 }
 
 .ec-toolbar {
-    margin-bottom: 1.5rem !important
+    margin-bottom: 0rem !important
 }
 
 .ec-toolbar > div {
@@ -4436,6 +4436,7 @@ a:hover > .login_headline
     display flex
     align-items: baseline
     gap: 12px
+    margin-bottom: 1.5rem
 }
 
 .ec-title .calendar-title .formatted-date {
@@ -4476,13 +4477,17 @@ a:hover > .login_headline
     transition: 150ms all ease-in
 }
 
-// .ec-time {
-//     height: 30px !important
-// }
+.ec-header .ec-time {
+    display: none
+}
 
-// .ec-line {
-//     height: 30px !important
-// }
+.ec-body .ec-time {
+    height: 36px !important
+}
+
+.ec-body .ec-line {
+    height: 36px !important
+}
 
 .ec-header {
     border: none !important

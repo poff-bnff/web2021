@@ -411,157 +411,155 @@ $(document).ready(function () {
     );
 
     // event list buttons
-    console.log('loaded')
-            eventListInput.checked = true;
-            if(eventListInput.checked) {
-                document.querySelectorAll('.event-calendar-container').forEach(item => {
-                    item.classList.add('list-view-hidden');
-                })
-                document.querySelectorAll('.event_card_link').forEach(item => {
-                    item.classList.remove('list-view-hidden');
-                })
-            }
-            eventListInput.addEventListener('change', () => {
-                console.log('event list input')
-                if(eventListInput.checked) {
-                    document.querySelectorAll('.event-calendar-container').forEach(item => {
-                        item.classList.add('list-view-hidden');
-                    })
-                    document.querySelectorAll('.event_card_link').forEach(item => {
-                        item.classList.remove('list-view-hidden');
-                    })
-                }
+    eventListInput.checked = true;
+    if(eventListInput.checked) {
+        document.querySelectorAll('.event-calendar-container').forEach(item => {
+            item.classList.add('list-view-hidden');
+        })
+        document.querySelectorAll('.event_card_link').forEach(item => {
+            item.classList.remove('list-view-hidden');
+        })
+    }
+    eventListInput.addEventListener('change', () => {
+        if(eventListInput.checked) {
+            document.querySelectorAll('.event-calendar-container').forEach(item => {
+                item.classList.add('list-view-hidden');
             })
-            eventCalendarInput.addEventListener('change', () => {
-                console.log('event calendar input')
-                if(eventCalendarInput.checked) {
-                    document.querySelectorAll('.event_card_link').forEach(item => {
-                        item.classList.add('list-view-hidden');
-                    })
-                    document.querySelectorAll('.event-calendar-container').forEach(item => {
-                        item.classList.remove('list-view-hidden');
-                    })
-                }
+            document.querySelectorAll('.event_card_link').forEach(item => {
+                item.classList.remove('list-view-hidden');
             })
+        }
+    })
+    eventCalendarInput.addEventListener('change', () => {
+        if(eventCalendarInput.checked) {
+            document.querySelectorAll('.event_card_link').forEach(item => {
+                item.classList.add('list-view-hidden');
+            })
+            document.querySelectorAll('.event-calendar-container').forEach(item => {
+                item.classList.remove('list-view-hidden');
+            })
+        }
+    })
 
     // event calendar
-            let earliestTimePortion = null;
-            let latestTimePortion = null;
+    let earliestTimePortion = null;
+    let latestTimePortion = null;
 
-            for (const date in datesArray) {
-                if (datesArray.hasOwnProperty(date)) {
-                    // Get the value associated with the date key
-                    const dateValue = datesArray[date];
+    for (const date in datesArray) {
+        if (datesArray.hasOwnProperty(date)) {
+            // Get the value associated with the date key
+            const dateValue = datesArray[date];
 
-                    // Get the calendar container element by ID
-                    const calendarContainer = document.getElementById(`ec-${dateValue}`);
+            // Get the calendar container element by ID
+            const calendarContainer = document.getElementById(`ec-${dateValue}`);
 
-                    // Initialize variables to track earliest start time and latest end time
-                    let earliestStartTime = null;
-                    let latestEndTime = null;
-                    let eventsForCalendar = [];
-                    let uniqueEventLocations = [];
+            // Initialize variables to track earliest start time and latest end time
+            let earliestStartTime = null;
+            let latestEndTime = null;
+            let eventsForCalendar = [];
+            let uniqueEventLocations = [];
 
-                    // Loop through events to find the earliest start time and latest end time get locations for matching date
-                    calendarEventData.forEach(function(event) {
-                        if (event.start_time.startsWith(dateValue) && event.location && event.end_time.startsWith(dateValue)) {
-                            const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                            const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
+            // Loop through events to find the earliest start time and latest end time get locations for matching date
+            calendarEventData.forEach(function(event) {
+                if (event.start_time.startsWith(dateValue) && event.location && event.end_time.startsWith(dateValue)) {
+                    const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
+                    const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
 
-                            if (earliestStartTime === null || eventStartTime < earliestStartTime) {
-                                earliestStartTime = eventStartTime;
-                                earliestTimePortion = moment(earliestStartTime).format('HH:mm:ss');
-                            }
-                            if (latestEndTime === null || eventEndTime > latestEndTime) {
-                                latestEndTime = eventEndTime;
-                                latestTimePortion = moment(latestEndTime).format('HH:mm:ss');
-                            }
+                    if (earliestStartTime === null || eventStartTime < earliestStartTime) {
+                        earliestStartTime = eventStartTime;
+                        earliestTimePortion = moment(earliestStartTime).format('HH:mm:ss');
+                    }
+                    if (latestEndTime === null || eventEndTime > latestEndTime) {
+                        latestEndTime = eventEndTime;
+                        latestTimePortion = moment(latestEndTime).format('HH:mm:ss');
+                    }
 
-                            const eventLocation = event.location;
-                            if (!uniqueEventLocations.some(location => location.id === eventLocation.id)) {
-                                uniqueEventLocations.push(eventLocation);
-                            }
+                    const eventLocation = event.location;
+                    if (!uniqueEventLocations.some(location => location.id === eventLocation.id)) {
+                        uniqueEventLocations.push(eventLocation);
+                    }
 
 
-                            // Create events for calendar
-                            const singleEventId = event.id
-                            const singleEventLocation = event.location.id
-                            const singleEventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                            const singleEventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
-                            const singleEventTitle = event.title
-                            const singleEventICal = event.calendar_data
-                            eventsForCalendar.push({
-                                id: singleEventId,
-                                start: singleEventStartTime,
-                                end: singleEventEndTime,
-                                resourceId: singleEventLocation, // Event location
-                                title: singleEventTitle,
-                                extendedProps: {
-                                ical: `${singleEventICal}`,
-                                },
-                            });
-                        }
-                    });
-                    // Calculate firstEventTime and lastEventTime, get eventLocations
-                    const firstEventTime = earliestTimePortion ? earliestTimePortion : '';
-                    const lastEventTime = latestTimePortion ? latestTimePortion : '';
-                    const calendarResources = uniqueEventLocations.map(location => ({
-                        id: location.id,
-                        title: location.name,
-                    }))
-                    // Initialize the calendar with options
-                    var ec = new EventCalendar(calendarContainer, {
-                        view: 'resourceTimeGridDay',
-                        date: dateValue,
-                        slotMinTime: firstEventTime,
-                        slotMaxTime: lastEventTime,
-                        slotEventOverlap: false,
-                        firstDay: 1,
-                        locale: 'et',
-                        allDaySlot: false,
-                        titleFormat: function (start, end) {
-                        const options = { month: 'short', day: 'numeric' };
-                        const formattedDate = start.toLocaleDateString('en-US', options);
-                        const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
-                        return {
-                            html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
-                        }
+                    // Create events for calendar
+                    const singleEventId = event.id
+                    const singleEventLocation = event.location.id
+                    const singleEventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
+                    const singleEventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
+                    const singleEventTitle = event.title
+                    const singleEventICal = event.calendar_data
+                    eventsForCalendar.push({
+                        id: singleEventId,
+                        start: singleEventStartTime,
+                        end: singleEventEndTime,
+                        resourceId: singleEventLocation, // Event location
+                        title: singleEventTitle,
+                        extendedProps: {
+                        ical: `${singleEventICal}`,
                         },
-                        headerToolbar: {
-                            start: 'title', center: '', end: ''
-                        },
-                        resources: calendarResources,
                     });
-                    ec.setOption('eventContent', function (info) {
-                        return {
-                            html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
-                            <div class="ec-event-title">
-                            ${info.event.title}
-                            </div>
-                            ${
-                                info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
-                                ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                </a>`
-                                : ''
-                            }
-                            </a>`,
-                        };
-                    })
-
-                    ec.setOption('eventStartEditable', false);
-                    ec.setOption('eventDurationEditable', false);
-
-                    // Add events from array
-                    eventsForCalendar.forEach(function (event) {
-                        ec.addEvent(event);
-                    })
                 }
-            }
+            });
+            // Calculate firstEventTime and lastEventTime, get eventLocations
+            const firstEventTime = earliestTimePortion ? earliestTimePortion : '';
+            const lastEventTime = latestTimePortion ? latestTimePortion : '';
+            const calendarResources = uniqueEventLocations.map(location => ({
+                id: location.id,
+                title: location.name,
+            }))
+            // Initialize the calendar with options
+            var ec = new EventCalendar(calendarContainer, {
+                view: 'resourceTimeGridDay',
+                date: dateValue,
+                slotMinTime: firstEventTime,
+                slotMaxTime: lastEventTime,
+                slotEventOverlap: false,
+                slotHeight: 36,
+                firstDay: 1,
+                locale: 'et',
+                allDaySlot: false,
+                titleFormat: function (start, end) {
+                const options = { month: 'short', day: 'numeric' };
+                const formattedDate = start.toLocaleDateString('en-US', options);
+                const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
+                return {
+                    html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
+                }
+                },
+                headerToolbar: {
+                    start: 'title', center: '', end: ''
+                },
+                resources: calendarResources,
+            });
+            ec.setOption('eventContent', function (info) {
+                return {
+                    html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
+                    <div class="ec-event-title">
+                    ${info.event.title}
+                    </div>
+                    ${
+                        info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
+                        ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                        
+                        </a>`
+                        : ''
+                    }
+                    </a>`,
+                };
+            })
+
+            ec.setOption('eventStartEditable', false);
+            ec.setOption('eventDurationEditable', false);
+
+            // Add events from array
+            eventsForCalendar.forEach(function (event) {
+                ec.addEvent(event);
+            })
+        }
+    }
 });
