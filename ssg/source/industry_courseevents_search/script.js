@@ -103,6 +103,9 @@ function toggleAll(exclude_selector_name) {
 
     ids = execute_filters()
 
+    $(document).trigger('update_events', [ids]);
+
+
     // kuva/peida 'pole vasteid'
     if (ids.length) {
         nonetoshow.style.display = "none"
@@ -461,9 +464,9 @@ $(document).ready(function () {
 
             // Loop through events to find the earliest start time and latest end time get locations for matching date
             calendarEventData.forEach(function(event) {
-                if (event.start_time.startsWith(dateValue) && event.location && event.end_time.startsWith(dateValue)) {
-                    const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                    const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
+                const eventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
+                const eventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
+                if (moment(eventStartTime).isSame(dateValue, 'day') && event.location && event.end_time) {
 
                     if (earliestStartTime === null || eventStartTime < earliestStartTime) {
                         earliestStartTime = eventStartTime;
@@ -475,7 +478,7 @@ $(document).ready(function () {
                     }
 
                     const eventLocation = event.location;
-                    if (!uniqueEventLocations.some(location => location.id === eventLocation.id)) {
+                    if (eventLocation && !uniqueEventLocations.some(location => location.id === eventLocation.id)) {
                         uniqueEventLocations.push(eventLocation);
                     }
 
@@ -483,8 +486,8 @@ $(document).ready(function () {
                     // Create events for calendar
                     const singleEventId = event.id
                     const singleEventLocation = event.location.id
-                    const singleEventStartTime = moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format()
-                    const singleEventEndTime = moment.parseZone(new Date(event.end_time)).tz('Europe/Tallinn').format()
+                    const singleEventStartTime = eventStartTime
+                    const singleEventEndTime = eventEndTime
                     const singleEventTitle = event.title
                     const singleEventICal = event.calendar_data
                     eventsForCalendar.push({
@@ -506,60 +509,69 @@ $(document).ready(function () {
                 id: location.id,
                 title: location.name,
             }))
-            // Initialize the calendar with options
-            var ec = new EventCalendar(calendarContainer, {
-                view: 'resourceTimeGridDay',
-                date: dateValue,
-                slotMinTime: firstEventTime,
-                slotMaxTime: lastEventTime,
-                slotEventOverlap: false,
-                slotHeight: 36,
-                firstDay: 1,
-                locale: 'et',
-                allDaySlot: false,
-                titleFormat: function (start, end) {
-                const options = { month: 'short', day: 'numeric' };
-                const formattedDate = start.toLocaleDateString('en-US', options);
-                const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
-                return {
-                    html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
-                }
-                },
-                headerToolbar: {
-                    start: 'title', center: '', end: ''
-                },
-                resources: calendarResources,
-            });
-            ec.setOption('eventContent', function (info) {
-                return {
-                    html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
-                    <div class="ec-event-title">
-                    ${info.event.title}
-                    </div>
-                    ${
-                        info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
-                        ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                        
-                        </a>`
-                        : ''
+            if(calendarResources.length && eventsForCalendar.length) {
+                // Initialize the calendar with options
+                const ec = new EventCalendar(calendarContainer, {
+                    view: 'resourceTimeGridDay',
+                    date: dateValue,
+                    slotMinTime: firstEventTime,
+                    slotMaxTime: lastEventTime,
+                    slotEventOverlap: false,
+                    slotHeight: 36,
+                    firstDay: 1,
+                    locale: 'et',
+                    allDaySlot: false,
+                    titleFormat: function (start, end) {
+                    const options = { month: 'short', day: 'numeric' };
+                    const formattedDate = start.toLocaleDateString('en-US', options);
+                    const formattedWeekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(start);
+                    return {
+                        html: `<div class="calendar-title"><span class="formatted-date">${formattedDate}</span><span class="formatted-weekday">${formattedWeekday}</span><span class="calendar-line"></span></div>`,
                     }
-                    </a>`,
-                };
-            })
-
-            ec.setOption('eventStartEditable', false);
-            ec.setOption('eventDurationEditable', false);
-
-            // Add events from array
-            eventsForCalendar.forEach(function (event) {
-                ec.addEvent(event);
-            })
+                    },
+                    headerToolbar: {
+                        start: 'title', center: '', end: ''
+                    },
+                    resources: calendarResources,
+                });
+                ec.setOption('eventContent', function (info) {
+                    return {
+                        html: `<a class="single-event" href='#eventModal${info.event.id}' data-bs-toggle='modal' data-bs-target='#eventModal${info.event.id}'>
+                        <div class="ec-event-title">
+                        ${info.event.title}
+                        </div>
+                        ${
+                            info.event.extendedProps !== undefined && info.event.extendedProps.ical !== undefined
+                            ? `<a class="event-icon" href="data:text/calendar,${info.event.extendedProps.ical}" download="${info.event.title}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 4.00195H5C3.89543 4.00195 3 4.89738 3 6.00195V20.002C3 21.1065 3.89543 22.002 5 22.002H19C20.1046 22.002 21 21.1065 21 20.002V6.00195C21 4.89738 20.1046 4.00195 19 4.00195Z" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 2.00195V6.00195" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                        
+                            </a>`
+                            : ''
+                        }
+                        </a>`,
+                    };
+                })
+    
+                ec.setOption('eventStartEditable', false);
+                ec.setOption('eventDurationEditable', false);
+    
+                // Add events from array
+                ec.setOption('events', eventsForCalendar);
+                $(document).on('update_events', function(event, ids) {
+                    const filteredEvents = eventsForCalendar.filter(event => ids.includes(event.id.toString()))
+                    ec.setOption('events', filteredEvents);
+                    if (!filteredEvents.length) {
+                        $(calendarContainer).parent().addClass('d-none');
+                    } else {
+                        $(calendarContainer).parent().removeClass('d-none');
+                    }
+                })
+            }
         }
     }
 });
