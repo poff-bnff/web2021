@@ -1,8 +1,34 @@
+const userFilms = []
+const userScreenings = []
+
+function reloadUserFilms() {
+    if (!isUserTokenValid()) {
+        return null
+    }
+    const My = getUser().My || {'films': []}
+    const myFilms = My.films || []
+    const myFilmIDs = myFilms.map(f => f.id)
+    userFilms.splice(0, userFilms.length, ...myFilmIDs)
+    return userFilms
+}
+
+function reloadUserScreenings() {
+    if (!isUserTokenValid()) {
+        return null
+    }
+    const My = getUser().My || {'screenings': []}
+    const myScreenings = My.screenings || []
+    const myScreeningIDs = myScreenings.map(f => f.id)
+    userScreenings.splice(0, userScreenings.length, ...myScreeningIDs)
+    return userScreenings
+}
+
 function toggleFavouriteScreening(action, favId) {
     const setButton = document.getElementById(`s_${favId}_is_not_fav`)
     const unsetButton = document.getElementById(`s_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
+    console.log({action, favId, setButton, unsetButton, pushedButton})
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
@@ -44,6 +70,9 @@ function toggleFavouriteScreening(action, favId) {
 }
 
 function toggleFavouriteFilm(action, favId) {
+    const setButtonId = `f_${favId}_is_not_fav`
+    const unsetButtonId = `f_${favId}_is_fav`
+    console.log('buttons', { setButtonId, unsetButtonId })
     const setButton = document.getElementById(`f_${favId}_is_not_fav`)
     const unsetButton = document.getElementById(`f_${favId}_is_fav`)
 
