@@ -51,6 +51,7 @@ function toggleFavouriteScreening(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
+        console.log({data})
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -73,11 +74,11 @@ function toggleFavouriteScreening(action, favId) {
 function toggleFavouriteFilm(action, favId) {
     const setButtonId = `f_${favId}_is_not_fav`
     const unsetButtonId = `f_${favId}_is_fav`
-    console.log('buttons', { setButtonId, unsetButtonId })
     const setButton = document.getElementById(`f_${favId}_is_not_fav`)
     const unsetButton = document.getElementById(`f_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
+    console.log({action, favId, setButton, unsetButton, pushedButton})
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
