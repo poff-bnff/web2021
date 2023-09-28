@@ -1,0 +1,29 @@
+locales:
+    - et
+    - en
+    - ru
+defaultLocale: et
+source: ./source
+js: ./source/_scripts
+styl: ./source/_styles
+build: ./build/poff
+assets: ./assets
+protectedFromCleanup:
+    - .git
+    - assets
+    - index.html
+server:
+    port: 4000
+    assets: /assets/
+dev:
+    aliases: true
+    paths:
+        - _scripts
+        - _styles
+        - _templates
+        - home
+        - my_screenings
+        - _fetchdir/cassettes/music-for-black-pigeons
+    ignorePaths:
+        - search_archive
+        - filmikool_courseevents_search

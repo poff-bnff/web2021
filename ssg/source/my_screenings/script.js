@@ -1,11 +1,4 @@
 reloadUser()
-const userScreenings = []
-const reloadUserScreenings = () => {
-    if (!isUserTokenValid()) {
-        return null
-    }
-    userScreenings.splice(0, userScreenings.length, ...getUser().My?.screenings?.map(s=>s.id) || [])
-}
 reloadUserScreenings()
 
 function initializeFavorites() {

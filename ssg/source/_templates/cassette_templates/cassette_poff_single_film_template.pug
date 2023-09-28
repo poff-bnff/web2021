@@ -1,17 +1,9 @@
 //- hidden tag to hold cassette id
 input(type='hidden', value=`${self.id}`, id=`film_id`)
+if self.screenings && self.screenings[0]
+    input(type='hidden', value=`${self.screenings.map(s => s.id)}`, id=`screening_ids`)
 
 main.grid_film(id=self.id)
-    //- script.
-    //-     document.getElementById('!{self.id}').addEventListener('userProfileLoaded', function (e) {
-    //-         console.log('loaded')
-    //-     })
-    //- Kasseti title ja synopsis
-    //- div
-    //-     if film.title
-    //-         h1.dark_1= 'ÜHEFILMIKASSETT!!!!!!!!!!!!!!!!!! ' + film.title
-    //-     if self.synopsis
-    //-         h1.dark_1= self.synopsis
 
     if self.films
         each film in self.films
@@ -55,7 +47,6 @@ main.grid_film(id=self.id)
 
                     //- Algab kasseti filmide info kuvamine
 
-
             section.f_title_box
 
                 .premiere_type
@@ -66,7 +57,12 @@ main.grid_film(id=self.id)
                 h1.film_title_detailed= film.title || film.title_et
 
 
-
+                button.btn.btn_secondary.isshortlisted(id='f_'+self.id+'_is_fav',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.removeShortlist
+                button.btn.btn_secondary.notshortlisted(id='f_'+self.id+'_is_not_fav',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.addShortlist
 
                 .str_info_blokk_1
 
@@ -435,7 +431,6 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.worldsales
                                 .str_info_value= roleCompaniesByRole.worldsales.join(', ')
 
-
             section.f_runtime_box
                 - var languagesNames = function(item) {
                 -   if(item.name) {
@@ -649,8 +644,9 @@ main.grid_film(id=self.id)
 
                                         if screening.bookingUrl
                                             a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
-                                        a.btn.btn_primary.active.notsavedscreening(id='s_'+screening.id+'_is_not_fav' style='display: none;' onclick=`toggleFavouriteScreening('set', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                                        a.btn.btn_primary.active.issavedscreening(id='s_'+screening.id+'_is_fav' style='display: none;' onclick=`toggleFavouriteScreening('unset', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+
+                                        a.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;', role='button')= self.label.film.addSavedScreening
+                                        a.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav' style='display: none;', role='button')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(${widget_id}, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
@@ -685,17 +681,57 @@ main.grid_film(id=self.id)
 
     script.
         document.onreadystatechange = () => {
+            console.log(`document.readyState: ${document.readyState}`)
             if (document.readyState === 'complete') {
-                const nslButton = document.getElementsByClassName('notshortlisted')[0]
-                const slButton = document.getElementsByClassName('isshortlisted')[0]
-                const currentFilmId = parseInt(document.getElementById('film_id').value)
-                console.log(`currentFilmId: ${currentFilmId}`)
+                setupFilmFavoriteButtons()
+                setupScreeningFavoriteButtons()
+            }
+
+            function setupScreeningFavoriteButtons () {
+                const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+                const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+                const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
+                    .map(e => parseInt(e))
 
                 if (getUser()) {
-                    const userFilms = getUser().My?.films?.map(f=>f.id) || []
-                    const currentFilmIsFavourite = userFilms.includes(currentFilmId)
+                    const myScreenings = reloadUserScreenings()
+                    //- console.log({myScreenings, currentScreeningIDs})
 
-                    console.log(`currentFilmIsFavourite: ${currentFilmIsFavourite}, userFilms: ${userFilms}, currentFilmId: ${currentFilmId}`)
+                    // unhide all fav buttons for currently favorited screenings
+                    currentScreeningIDs.filter(id => myScreenings.includes(id))
+                        .forEach(id => {
+                            document.getElementById(`s_${id}_is_fav`).style.display = ''
+                            document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                        })
+
+                    // unhide all no-fav buttons for currently unfavorited screenings
+                    currentScreeningIDs.filter(id => !myScreenings.includes(id))
+                        .forEach(id => {
+                            document.getElementById(`s_${id}_is_fav`).style.display = 'none'
+                            document.getElementById(`s_${id}_is_not_fav`).style.display = ''
+                        })
+
+                    // add event listeners to all fav buttons
+                    nslButtons.forEach(b => b.addEventListener('click', e => {
+                        let scrId = parseInt(b.id.split('_')[1])
+                        toggleFavouriteScreening('set', scrId)
+                    }))
+                    slButtons.forEach(b => b.addEventListener('click', e => {
+                        let scrId = parseInt(b.id.split('_')[1])
+                        toggleFavouriteScreening('unset', scrId)
+                    }))
+                }
+            }
+
+            function setupFilmFavoriteButtons () {
+                const nslButton = document.getElementsByClassName('notshortlisted')[0]
+                const slButton = document.getElementsByClassName('isshortlisted')[0]
+                const currentFilmID = parseInt(document.getElementById('film_id').value)
+
+                if (getUser()) {
+                    const myFilms = reloadUserFilms()
+                    const currentFilmIsFavourite = myFilms.includes(currentFilmID)
+
                     if (currentFilmIsFavourite) {
                         nslButton.style.display = 'none'
                         slButton.style.display = ''
@@ -705,10 +741,10 @@ main.grid_film(id=self.id)
                     }
 
                     nslButton.addEventListener('click', e => {
-                        toggleFavouriteFilm('set')
+                        toggleFavouriteFilm('set', currentFilmID)
                     })
                     slButton.addEventListener('click', e => {
-                        toggleFavouriteFilm('unset')
+                        toggleFavouriteFilm('unset', currentFilmID)
                     })
 
                     const userScreenings = getUser().My?.screenings?.map(s=>s.id) || []
@@ -722,47 +758,5 @@ main.grid_film(id=self.id)
                         })
                 }
 
-                // TODO: this function is globally available, so it should be used from global scope
-                function toggleFavouriteFilm(action) {
-                    const pushedButton = action === 'set' ? nslButton : slButton
-                    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
-
-                    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-                    pushedButton.disabled = true
-
-                    var myHeaders = new Headers()
-                    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'))
-
-                    var requestOptions = {
-                        method: 'PUT',
-                        headers: myHeaders,
-                        redirect: 'follow',
-                        body: currentFilmId
-                    }
-
-                    // `${strapiDomain}/users/favorites/`
-                    fetch(`${huntAuthDomain}/api/my/film`, requestOptions).then(function (response) {
-                        if (response.ok) {
-                            return response.json()
-                        }
-                        return Promise.reject(response)
-                    }).then(function (data) {
-                        if (action === 'set') {
-                            nslButton.style.display = 'none'
-                            slButton.style.display = ''
-                        } else {
-                            nslButton.style.display = ''
-                            slButton.style.display = 'none'
-                        }
-                        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
-                        pushedButton.disabled = false
-                        const webUser = getUser()
-                        webUser.My = data
-                        setUser(webUser)
-                    }).catch(function (error) {
-                        console.warn(error);
-                        pushedButton.innerHTML = 'Tekkis viga!'
-                    })
-                }
             }
         }

@@ -166,6 +166,11 @@ const getUser = () => {
     }
 }
 
+const setMy = (my) => {
+    const user = Object.assign(getUser(), { My: my });
+    localStorage.setItem('USER_PROFILE', JSON.stringify(user))
+}
+
 const setUser = (user) => {
     localStorage.setItem('USER_PROFILE', JSON.stringify(user))
 }
