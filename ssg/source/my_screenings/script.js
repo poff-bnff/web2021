@@ -1,33 +1,47 @@
 reloadUser()
 reloadUserScreenings()
 
-function initializeFavorites() {
-    const nslButtons = document.getElementsByClassName('notshortlisted')
-    const slButtons = document.getElementsByClassName('isshortlisted')
-    for (let i = 0; i < nslButtons.length; i++) {
-        const id = nslButtons[i].id.split('_')[1]
-        nslButtons[i].addEventListener('click', e => {
-            toggleFavouriteScreening('set', id)
-        })
-        slButtons[i].addEventListener('click', e => {
-            toggleFavouriteScreening('unset', id)
-        })
+function setupScreeningFavoriteButtons() {
+    const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+    const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+    const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
+        .map(e => parseInt(e))
 
-        if (userScreenings.includes(parseInt(id))) {
-            document.getElementById(id).style.display = ''
-            nslButtons[i].style.display = 'none'
-            slButtons[i].style.display = ''
-        } else {
-            nslButtons[i].style.display = ''
-            slButtons[i].style.display = 'none'
-        }
+    if (getUser()) {
+        const myScreenings = reloadUserScreenings()
+        //- console.log({myScreenings, currentScreeningIDs})
+
+        // unhide all fav buttons for currently favorited screenings
+        currentScreeningIDs.filter(id => myScreenings.includes(id))
+            .forEach(id => {
+                document.getElementById(`s_${id}_is_fav`).style.display = ''
+                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+            })
+
+        // unhide all no-fav buttons for currently unfavorited screenings
+        currentScreeningIDs.filter(id => !myScreenings.includes(id))
+            .forEach(id => {
+                document.getElementById(`s_${id}_is_fav`).style.display = 'none'
+                document.getElementById(`s_${id}_is_not_fav`).style.display = ''
+            })
+
+        // add event listeners to all fav buttons
+        nslButtons.forEach(b => b.addEventListener('click', e => {
+            let scrId = parseInt(b.id.split('_')[1])
+            toggleFavouriteScreening('set', scrId)
+        }))
+        slButtons.forEach(b => b.addEventListener('click', e => {
+            let scrId = parseInt(b.id.split('_')[1])
+            toggleFavouriteScreening('unset', scrId)
+        }))
     }
 }
+
 
 document.onreadystatechange = () => {
     const loading = document.getElementById('loading');
     if (document.readyState === 'complete') {
-        initializeFavorites()
+        setupScreeningFavoriteButtons()
 
         for (img of document.images) {
             img_src = img.src || ''

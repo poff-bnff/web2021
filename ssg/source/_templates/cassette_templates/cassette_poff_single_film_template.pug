@@ -682,7 +682,7 @@ main.grid_film(id=self.id)
     script.
 
         // TODO: move this to _scripts/favorite.js
-        function setupScreeningFavoriteButtons () {
+        function setupScreeningFavoriteButtons() {
             const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
             const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
             const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
@@ -719,7 +719,7 @@ main.grid_film(id=self.id)
         }
 
         // TODO: move this to _scripts/favorite.js
-        function setupFilmFavoriteButtons () {
+        function setupFilmFavoriteButtons() {
             const nslButton = document.getElementsByClassName('notshortlisted')[0]
             const slButton = document.getElementsByClassName('isshortlisted')[0]
             const currentFilmID = parseInt(document.getElementById('film_id').value)
