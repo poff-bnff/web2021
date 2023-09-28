@@ -177,69 +177,9 @@ block content
 
 
                             .card_film_title
-
-                                    //- Eeldame, et screeningul on datetime
-                                    //- if screening.dateTime
-
-                                    //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
-
-                                    //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
-                                        //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
-
-                                    //- Kuvame screeningtypes
-                                    //- if screening.screening_types
-                                    //-     span= screening.screening_types.map(screeningNames).join(', ')
-                                    //-     br
-                                    //- Aeg
-                                    //- span
-                                    //-     +screeningDateEET(screening.dateTime)
-                                    //- span
-                                    //-     +screeningTimeEET(screening.dateTime)
-                                    //- br
-
-                                    //- Koht
-                                    //- if screening.location && screening.location.hall && screening.location.hall.name
-                                    //-     if screening.location.hall && screening.location.hall.name
-                                    //-         span.film_title_locale.dark_1= screening.location.hall.name
-                                    //-         if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                    //-             span.film_title_locale.dark_1= ` ${screening.location.hall.cinema.name}`
-                                    //-             if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
-                                    //-                 span.film_title_locale.dark_1= ` ${screening.location.hall.cinema.town.name}`
-
-                                    //- Kui ühefilmikassett
-                                    //- if screening.cassette && screening.cassette.films && screening.cassette.films.length === 1
-                                    //-     - var film = screening.cassette.films[0]
-                                    //-     if screening.cassette.films[0].tags
-                                    //-         - var tags = screening.cassette.films[0].tags
-                                    //-         if tags.keywords && tags.keywords[0]
-                                    //-             //- Kuvame filmi tag keyworde
-                                    //-             .str_info_meta_label.dark_1= self.label.film.genre
-                                    //-             .str_info_meta_festival.dark_1= tags.keywords.join(', ')
-
-                                        //- Riigid algus
-                                    //- if film.orderedCountries
-                                    //-     -
-                                    //-         var countriesNames = function(item) {
-                                    //-             if(item.country && item.country.name) {
-                                    //-                 var itemNames = item.country.name
-                                    //-                 return itemNames
-                                    //-             }
-                                    //-         }
-
-                                    //-         //- Riigid
-                                    //-         .str_info_grid_3
-                                    //-             - var sortCountries = film.orderedCountries.sort(function(a, b){ return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
-                                    //-             .str_info_label.dark_semi= self.label.film.countries
-                                    //-             - var mapCountries = sortCountries.map(countriesNames)
-                                    //-             .str_info_value.dark_1.thin_300= mapCountries.join(', ')
-
-                                    //-     //- Directorid
-                                    //-     if film && film.credentials && film.credentials.rolePersonsByRole
-                                    //-         if film.credentials.rolePersonsByRole.director && film.credentials.rolePersonsByRole.director[0]
-                                    //-             .str_info_grid_3
-                                    //-                 .str_info_label.dark_semi= self.label.film.director
-                                    //-                 .str_info_value.dark_1.thin_300= film.credentials.rolePersonsByRole.director.join(', ')
+                                //- Kuvame kassetipealkirja
+                                h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
+                                    //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
 
                             //- Programmid
                             .card_film_info
@@ -280,8 +220,8 @@ block content
                                             .str_info_label.dark_semi= self.label.film.countries
                                             .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
-                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeSavedScreening
-                            button.btn.btn_secondary.notsavedscreening(id=screening.id+'_not_savedscreening', onclick=`modifyFavourites('addScreening', ${screening.id});return false` style='display: none; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.addSavedScreening
+                            button.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;')= self.label.film.addSavedScreening
+                            button.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav', style='display: none;')= self.label.film.removeSavedScreening
 
 
                 script.
