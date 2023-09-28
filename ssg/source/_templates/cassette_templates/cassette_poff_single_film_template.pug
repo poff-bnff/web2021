@@ -652,8 +652,8 @@ main.grid_film(id=self.id)
                                         if screening.bookingUrl
                                             a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
 
-                                        a.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;', role='button')= self.label.film.addSavedScreening
-                                        a.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav' style='display: none;', role='button')= self.label.film.removeSavedScreening
+                                        a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;', role='button')= self.label.film.addSavedScreening
+                                        a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav' style='display: none;', role='button')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(${widget_id}, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
