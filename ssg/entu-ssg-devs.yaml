@@ -21,6 +21,7 @@ dev:
         - _scripts
         - _styles
         - _templates
+        - home
         - my_screenings
         - _fetchdir/cassettes/music-for-black-pigeons
     ignorePaths:
