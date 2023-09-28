@@ -65,7 +65,7 @@ function toggleFavouriteScreening(action, favId) {
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         pushedButton.disabled = false
-        setUser(data)
+        setMy(data)
         reloadUserScreenings()
         console.log('reloadUserScreenings', reloadUserScreenings())
     }).catch(function (error) {
@@ -103,7 +103,7 @@ function toggleFavouriteFilm(action, favId) {
     }).then(function (data) {
         console.log({
             'returned': data,
-            'getUser()': getUser().My,
+            'getUser()': getUser().My.films,
             'userFilms': userFilms})
         if (action === 'set') {
             setButton.style.display = 'none'
@@ -114,7 +114,7 @@ function toggleFavouriteFilm(action, favId) {
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         pushedButton.disabled = false
-        setUser(data)
+        setMy(data)
         reloadUserFilms()
         console.log('reloadUserFilms', reloadUserFilms())
     }).catch(function (error) {
