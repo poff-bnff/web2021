@@ -29,7 +29,7 @@ function toggleFavouriteScreening(action, favId) {
     const unsetButton = document.getElementById(`s_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
-    console.log({action, favId, setButton, unsetButton, pushedButton})
+    // console.log({action, favId, setButton, unsetButton, pushedButton})
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
@@ -51,11 +51,11 @@ function toggleFavouriteScreening(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log({
-            'returned': data,
-            'getUser()': getUser().My,
-            'userScreenings': userScreenings
-        })
+        // console.log({
+        //     'returned': data,
+        //     'getUser()': getUser().My,
+        //     'userScreenings': userScreenings
+        // })
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -67,7 +67,7 @@ function toggleFavouriteScreening(action, favId) {
         pushedButton.disabled = false
         setMy(data)
         reloadUserScreenings()
-        console.log('reloadUserScreenings', reloadUserScreenings())
+        // console.log('reloadUserScreenings', reloadUserScreenings())
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
@@ -79,7 +79,7 @@ function toggleFavouriteFilm(action, favId) {
     const unsetButton = document.getElementById(`f_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
-    console.log({action, favId, setButton, unsetButton, pushedButton})
+    // console.log({action, favId, setButton, unsetButton, pushedButton})
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
@@ -101,10 +101,10 @@ function toggleFavouriteFilm(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log({
-            'returned': data,
-            'getUser()': getUser().My,
-            'userFilms': userFilms})
+        // console.log({
+        //     'returned': data,
+        //     'getUser()': getUser().My,
+        //     'userFilms': userFilms})
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -116,7 +116,7 @@ function toggleFavouriteFilm(action, favId) {
         pushedButton.disabled = false
         setMy(data)
         reloadUserFilms()
-        console.log('reloadUserFilms', reloadUserFilms())
+        // console.log('reloadUserFilms', reloadUserFilms())
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
