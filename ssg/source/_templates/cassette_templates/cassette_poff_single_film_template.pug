@@ -718,7 +718,7 @@ main.grid_film(id=self.id)
                     }))
                     slButtons.forEach(b => b.addEventListener('click', e => {
                         let scrId = parseInt(b.id.split('_')[1])
-                        toggleFavouriteScreening('unset', parseInt(e.target.getAttribute('scrn-loc')), scrId)
+                        toggleFavouriteScreening('unset', scrId)
                     }))
                 }
             }
