@@ -118,7 +118,9 @@ function toggleFavouriteFilm(action, favId) {
     });
 }
 
-
+// TODO: All below functions are subject to refactoring at least,
+//       but probably should be rewritten from scratch or
+//       even removed completely.
 function toggleMyCalButtons(myCalEvents) {
     // console.log(myCalEvents)
 
