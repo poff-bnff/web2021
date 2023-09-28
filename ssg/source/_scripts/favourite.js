@@ -75,8 +75,6 @@ function toggleFavouriteScreening(action, favId) {
 }
 
 function toggleFavouriteFilm(action, favId) {
-    const setButtonId = `f_${favId}_is_not_fav`
-    const unsetButtonId = `f_${favId}_is_fav`
     const setButton = document.getElementById(`f_${favId}_is_not_fav`)
     const unsetButton = document.getElementById(`f_${favId}_is_fav`)
 
@@ -104,8 +102,8 @@ function toggleFavouriteFilm(action, favId) {
         return Promise.reject(response);
     }).then(function (data) {
         console.log({
-            'returned': data.My.films,
-            'getUser()': getUser().My.films,
+            'returned': data.My,
+            'getUser()': getUser().My,
             'userFilms': userFilms})
         if (action === 'set') {
             setButton.style.display = 'none'
