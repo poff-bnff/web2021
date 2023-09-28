@@ -92,6 +92,14 @@ main.grid_film(id=self.id)
                             .str_info_label= self.label.film.year
                             .str_info_value= film.year
 
+                button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.removeShortlist
+                button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.addShortlist
+
+
             section.f_synopsis_box
                 -
                     var festivalEditions = []
