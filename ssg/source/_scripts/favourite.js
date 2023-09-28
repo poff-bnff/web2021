@@ -67,6 +67,7 @@ function toggleFavouriteScreening(action, favId) {
         pushedButton.disabled = false
         setUser(data)
         reloadUserScreenings()
+        console.log('reloadUserScreenings', reloadUserScreenings())
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
@@ -117,6 +118,7 @@ function toggleFavouriteFilm(action, favId) {
         pushedButton.disabled = false
         setUser(data)
         reloadUserFilms()
+        console.log('reloadUserFilms', reloadUserFilms())
     }).catch(function (error) {
         console.warn(error);
         pushedButton.innerHTML = 'Tekkis viga!'
