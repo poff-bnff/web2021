@@ -6,6 +6,7 @@ pushd $SCRIPT_DIR
 
 git pull
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg-devs.yaml full
-rsync -rav ./ssg/build/poff/. ./ssg/build/web/
+
+rsync -rav ./build/poff/. ./build/web/
 
 popd
