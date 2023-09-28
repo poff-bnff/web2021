@@ -352,6 +352,7 @@ document.onreadystatechange = () => {
         setupScreeningFavoriteButtons()
     }
 
+    // TODO: move this to _scripts/favorite.js
     function setupScreeningFavoriteButtons () {
         const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
         const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
