@@ -61,9 +61,7 @@ function toggleFavouriteScreening(action, favId) {
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         pushedButton.disabled = false
-        const webUser = getUser()
-        webUser.My = data
-        setUser(webUser)
+        setUser(data)
         reloadUserScreenings()
     }).catch(function (error) {
         console.warn(error);
@@ -109,9 +107,7 @@ function toggleFavouriteFilm(action, favId) {
         }
         pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
         pushedButton.disabled = false
-        const webUser = getUser()
-        webUser.My = data
-        setUser(webUser)
+        setUser(data)
         reloadUserFilms()
     }).catch(function (error) {
         console.warn(error);
