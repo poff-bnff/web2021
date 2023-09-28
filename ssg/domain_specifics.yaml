@@ -26,15 +26,16 @@ cassettes_festival_editions:
         - 66
         - 67
         - 71
+        - 72
     justfilm.ee:
         - 64
         # - 29
     kinoff.poff.ee:
-        - 57
+        - 72
     industry.poff.ee:
-        - 55
+        - 68
     shorts.poff.ee:
-        - 58
+        - 67
         # - 30
     hoff.ee:
         # - 61
@@ -51,7 +52,12 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
-    - 61
+    - 63
+    - 64
+    - 66
+    - 67
+    - 71
+    - 72
     # - 56
     # - 58
     # - 29
@@ -64,14 +70,16 @@ programmes_festival_editions:
         - 64
         - 66
         - 67
+        - 71
+        - 72
     justfilm.ee:
         - 64
     kinoff.poff.ee:
-        - 57
+        - 72
     industry.poff.ee:
-        - 0
+        - 68
     shorts.poff.ee:
-        - 58
+        - 67
     hoff.ee:
         - 61
     kumu.poff.ee:
@@ -86,7 +94,7 @@ programmes_festival_editions:
         - 0
 
 active_industry_editions:
-    - 55
+    - 68
 
 active_filmikool_editions:
     - 60
