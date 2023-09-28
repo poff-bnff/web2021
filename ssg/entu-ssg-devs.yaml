@@ -19,9 +19,9 @@ dev:
     aliases: true
     paths:
         - _scripts
-        # - _styles
-        # - _templates
-        # - my_screenings
+        - _styles
+        - _templates
+        - my_screenings
         - _fetchdir/cassettes/music-for-black-pigeons
     ignorePaths:
         - search_archive
