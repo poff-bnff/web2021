@@ -51,7 +51,7 @@ function toggleFavouriteScreening(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log({data})
+        console.log({data, 'getUser()': getUser()})
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
