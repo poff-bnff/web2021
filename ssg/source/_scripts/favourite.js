@@ -52,7 +52,7 @@ function toggleFavouriteScreening(action, favId) {
         return Promise.reject(response);
     }).then(function (data) {
         console.log({
-            'returned': data.My.screenings,
+            'returned': data,
             'getUser()': getUser().My.screenings,
             'userScreenings': userScreenings
         })
@@ -102,7 +102,7 @@ function toggleFavouriteFilm(action, favId) {
         return Promise.reject(response);
     }).then(function (data) {
         console.log({
-            'returned': data.My,
+            'returned': data,
             'getUser()': getUser().My,
             'userFilms': userFilms})
         if (action === 'set') {
