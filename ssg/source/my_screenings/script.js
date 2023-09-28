@@ -14,6 +14,7 @@ function setupScreeningFavoriteButtons() {
         // unhide all fav buttons for currently favorited screenings
         currentScreeningIDs.filter(id => myScreenings.includes(id))
             .forEach(id => {
+                document.getElementById(`${id}`).style.display = ''
                 document.getElementById(`s_${id}_is_fav`).style.display = ''
                 document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
             })

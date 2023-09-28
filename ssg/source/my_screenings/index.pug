@@ -5,6 +5,8 @@ block content
     h3#nonetoshow.sub_section_headline(style='display: none; padding-top: 2em;')
 
     content#content
+        if self.screenings && self.screenings[0]
+            input(type='hidden', value=`${self.screenings.map(s => s.id)}`, id=`screening_ids`)
 
         if self.data.screenings
             main.grid_films
