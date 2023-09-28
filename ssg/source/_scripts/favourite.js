@@ -51,7 +51,11 @@ function toggleFavouriteScreening(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        console.log({data, 'getUser()': getUser()})
+        console.log({
+            'returned': data.My.screenings,
+            'getUser()': getUser().My.screenings,
+            'userScreenings': userScreenings
+        })
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -98,6 +102,10 @@ function toggleFavouriteFilm(action, favId) {
         }
         return Promise.reject(response);
     }).then(function (data) {
+        console.log({
+            'returned': data.My.films,
+            'getUser()': getUser().My.films,
+            'userFilms': userFilms})
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
