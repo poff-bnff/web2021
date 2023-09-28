@@ -53,7 +53,7 @@ function toggleFavouriteScreening(action, favId) {
     }).then(function (data) {
         console.log({
             'returned': data,
-            'getUser()': getUser().My.screenings,
+            'getUser()': getUser().My,
             'userScreenings': userScreenings
         })
         if (action === 'set') {
@@ -103,7 +103,7 @@ function toggleFavouriteFilm(action, favId) {
     }).then(function (data) {
         console.log({
             'returned': data,
-            'getUser()': getUser().My.films,
+            'getUser()': getUser().My,
             'userFilms': userFilms})
         if (action === 'set') {
             setButton.style.display = 'none'
