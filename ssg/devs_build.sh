@@ -1,6 +1,9 @@
 #! /bin/bash
 
-cd /srv/ssg/
+pushd ${BASH_SOURCE[0]}
+
 git pull
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg-devs.yaml full
-rsync -rav /srv/ssg/build/poff/. /srv/ssg/build/web/
+rsync -rav ./ssg/build/poff/. ./ssg/build/web/
+
+popd
