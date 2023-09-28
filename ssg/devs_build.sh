@@ -1,6 +1,6 @@
 #! /bin/bash
 
-pushd ${BASH_SOURCE[0]}
+pushd "dirname ${BASH_SOURCE[0]}"
 
 git pull
 node ./node_modules/entu-ssg/src/build.js ./entu-ssg-devs.yaml full
