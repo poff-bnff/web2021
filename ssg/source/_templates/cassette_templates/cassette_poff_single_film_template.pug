@@ -727,13 +727,11 @@ main.grid_film(id=self.id)
                 const nslButton = document.getElementsByClassName('notshortlisted')[0]
                 const slButton = document.getElementsByClassName('isshortlisted')[0]
                 const currentFilmID = parseInt(document.getElementById('film_id').value)
-                //- console.log(`currentFilmID: ${currentFilmID}`)
 
                 if (getUser()) {
                     const myFilms = reloadUserFilms()
                     const currentFilmIsFavourite = myFilms.includes(currentFilmID)
 
-                    console.log(`currentFilmIsFavourite: ${currentFilmIsFavourite}`, {myFilms, currentFilmID})
                     if (currentFilmIsFavourite) {
                         nslButton.style.display = 'none'
                         slButton.style.display = ''
