@@ -1,6 +1,7 @@
 const userFilms = []
 const userScreenings = []
 
+
 function reloadUserFilms() {
     if (!isUserTokenValid()) {
         return null
