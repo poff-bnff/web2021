@@ -57,12 +57,12 @@ main.grid_film(id=self.id)
                 h1.film_title_detailed= film.title || film.title_et
 
 
-                button.btn.btn_secondary.isshortlisted(id='f_'+self.id+'_is_fav',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.removeShortlist
-                button.btn.btn_secondary.notshortlisted(id='f_'+self.id+'_is_not_fav',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.addShortlist
+                //- button.btn.btn_secondary.isshortlisted(id='f_'+self.id+'_is_fav',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.removeShortlist
+                //- button.btn.btn_secondary.notshortlisted(id='f_'+self.id+'_is_not_fav',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.addShortlist
 
                 .str_info_blokk_1
 
@@ -92,12 +92,12 @@ main.grid_film(id=self.id)
                             .str_info_label= self.label.film.year
                             .str_info_value= film.year
 
-                button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.removeShortlist
-                button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.addShortlist
+                //- button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.removeShortlist
+                //- button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.addShortlist
 
 
             section.f_synopsis_box
@@ -461,6 +461,13 @@ main.grid_film(id=self.id)
                         .str_info_value
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
+
+                button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.removeShortlist
+                button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.addShortlist
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
