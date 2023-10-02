@@ -59,7 +59,7 @@ block content
             each index, key in self.data.filters.cinemas
                 option(value=key)= index
 
-        input#favorites_select(type='checkbox' name='Favorites' style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox;')
+        input#favorites_select(type='checkbox' name='Favorites' style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox; display: none;')
 
         button.clear(onclick='unselect_all()')= self.label.filters.empty
 
@@ -148,12 +148,12 @@ block content
                                         .str_info_label.dark_semi= self.label.film.countries
                                         #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
-                    button.btn.btn_secondary.isshortlisted(id='f_'+cassette.id+'_is_fav',
-                        style='display: none; height: 36px; width: 100%;'
-                        )= self.label.film.removeShortlist
-                    button.btn.btn_secondary.notshortlisted(id='f_'+cassette.id+'_is_not_fav',
-                        style='display: none; height: 36px; width: 100%;'
-                        )= self.label.film.addShortlist
+                    //- button.btn.btn_secondary.isshortlisted(id='f_'+cassette.id+'_is_fav',
+                    //-     style='display: none; height: 36px; width: 100%;'
+                    //-     )= self.label.film.removeShortlist
+                    //- button.btn.btn_secondary.notshortlisted(id='f_'+cassette.id+'_is_not_fav',
+                    //-     style='display: none; height: 36px; width: 100%;'
+                    //-     )= self.label.film.addShortlist
 
             script.
                 var searcharray = !{JSON.stringify(self.data.search)}
