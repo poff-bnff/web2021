@@ -15,7 +15,8 @@ block content
         //- - const whichScreeningTypesToDisplay = ['first screening']
         //- Mitme kuvamiseks:
         //- - const whichScreeningTypesToDisplay = ['first screening', 'free']
-        - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino', 'free']
+        - const whichScreeningTypesToDisplay = ['first screening', 'free', 'first wave', 'first wave first screening']
+        //- - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino', 'free']
         //- - const whichScreeningTypesToDisplay = ['first screening', 'online kino']
         //- - const whichScreeningTypesToDisplay = []
 
@@ -224,8 +225,8 @@ block content
                                                 .str_info_label.dark_semi= self.label.film.countries
                                                 .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
-                            button.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;')= self.label.film.addSavedScreening
-                            button.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav', style='display: none;')= self.label.film.removeSavedScreening
+                            //- button.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;')= self.label.film.addSavedScreening
+                            //- button.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav', style='display: none;')= self.label.film.removeSavedScreening
 
 
                 script.
