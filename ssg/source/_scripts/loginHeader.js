@@ -145,6 +145,10 @@ const requireProfile = () => {
     if (isUserProfileComplete()) {
         return true
     }
+    // if already on profile page, do not redirect
+    if (window.location.pathname === '/userprofile') {
+        return false
+    }
     const profileUrl = '/userprofile'
     window.open(profileUrl, '_self')
 }
