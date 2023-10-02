@@ -152,7 +152,7 @@ target_build_models:
     # - film
     # - cassette
     # - screening
-    - course-event
+    # - course-event
     - login
     - pof-fi-article
     - just-filmi-article
