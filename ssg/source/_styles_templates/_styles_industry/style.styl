@@ -85,6 +85,24 @@ full_height = calc(100vh - header_height)
 clr_header_text = #0E1417
 clr_header_bg = #ffffff
 
+text = #121313
+border_mediumgray = #D8D9DA
+border_gray = #B0B3B5
+icons_darkgray = #636769
+primary_darker = #12827E
+
+gray_050 = #F7F7F8
+
+green_050 = #F2FDFD
+green_100 = #D2F9F8
+green_400 = #1DD3CD
+green_600 = #16A19D
+green_700 = #12827E
+
+purple_050 = #F9F6FE
+purple_100 = #F0E8FC
+purple_600 = #8F56EC
+
 breakpoint-lg = 992px
 breakpoint-md = 768px
 breakpoint-sm = 576px
@@ -750,11 +768,18 @@ footer
     padding-top 1rem
 
 .grid_search
-    display: grid
-    // grid-template-columns: 1fr
-    grid-template-columns: auto
-    grid-template-rows: auto
-    padding-top 150px
+    display flex
+    gap 12px 8px
+    flex-flow row wrap
+    width: 100%;
+
+.mobile_filters_collapse
+    display none
+    gap 12px 8px
+    flex-flow row wrap
+
+    &.open
+        display flex
 
 .grid_article
   display grid
@@ -1362,6 +1387,7 @@ row:nth-child(6) > .footer_logos
     align-items center
     width 100%
     height 100%
+    max-width 80vw
     // border 1px solid blue
 
 @media screen and (max-width: 800px)
@@ -1863,19 +1889,94 @@ row:nth-child(15) > .supporter_logos
 //     max-height 400px
 
 .schedule
-    padding-top header_height
-
-
+    padding 6rem 1rem
 
 .screening_head
     padding .5rem 1rem .5rem 1rem
     background-color bg_dark_4
 
+.card_event
+    border-top 1px solid border_mediumgray
+    padding 2.5rem 1rem
+    transition all 0.2s ease
+
+@media (pointer: fine)
+    .event_card_link:hover > .card_event
+        background-color purple_050
+
 .event_card_header
-    // padding .5rem 3rem .5rem 2rem
-    // background-color rgba(79, 196, 191, .2)
-    background-color clr_primary
-    align-self start
+    display flex
+    align-items center
+    justify-content space-between
+    column-gap 1.25rem
+    .event_card_header_left, .event_card_header_right
+        display flex
+        align-items center
+        column-gap 1.25rem
+        > *
+            display flex
+            align-items center
+            column-gap 0.75rem
+            padding 0.25rem 0
+        .add_to_cal
+            padding 0.25rem 0.5rem
+    .event_card_header_left
+        flex-wrap wrap
+    .header_text
+        color text
+        line-height 1.25
+        display flex
+        align-items center
+        span
+            line-height inherit
+
+.event_card_content
+    .event_title
+        margin 0.5rem 0
+        font-size 2rem
+        font-weight 500
+        line-height 1.25
+        font-feature-settings 'clig' off, 'liga' off
+        letter-spacing normal
+    .event_card_keywords
+        display flex
+        flex-wrap wrap
+        align-items center
+        justify-content space-between
+        column-gap 1.25rem
+        row-gap 10px
+        padding-top 0.75rem
+        .keyword
+            color text
+            line-height 1.25
+
+    .event_card_keywords_left, .event_card_keywords_right
+        display flex
+        flex-wrap wrap
+        align-items center
+        column-gap 1.25rem
+
+    .event_card_keywords_left
+        row-gap 0.75rem
+
+    .event_card_keywords_right > *
+        display flex
+        align-items center
+        column-gap 0.75rem
+        padding 0.25rem 0
+
+@media screen and (max-width: 799px)
+    .schedule
+        padding 5rem 1rem
+    .card_event
+        padding 2rem 0.5rem 1rem 0.5rem
+    .event_card_header
+        column-gap 0.25rem
+        align-items flex-start
+    .event_card_content .event_title
+        margin 0.75rem 0
+    .add_to_cal .header_text
+        display none
 
 .event_card_footer
     // padding .5rem 3rem .5rem 2rem
@@ -1914,11 +2015,55 @@ row:nth-child(15) > .supporter_logos
 
 
 .clear
-    background-color clr_primary
-    color white_96
-    border none
+    background-color transparent
+    color dark_1
+    padding 0.3125rem 0.6875rem
+    display inline-flex
+    align-items center
+    white-space nowrap
+    // border none
     outline none
-    padding-top .2rem
+    // padding-top .2rem
+    max-width 120px
+    width 100%
+    border 1px solid border_gray
+    border-radius: 4px
+    font-weight 400
+
+    svg
+        margin-left: .5rem
+        flex 0 0 1rem
+
+    @media (pointer: fine)
+        &:hover
+            border 1px solid green_600
+            box-shadow inset 0 0 0 1px green_600
+
+.toggle_filters
+    background-color transparent
+    color dark_1
+    border none
+    padding 0.25rem 0.5rem
+    display inline-flex
+    align-items center
+    white-space nowrap
+    outline none
+    margin .25rem auto 0
+    border-radius: 4px
+    font-weight 400
+
+    .mobile_filters_collapse.open + &
+        svg
+            transform rotate(180deg)
+
+    svg
+        margin-left: .75rem
+        flex 0 0 1.5rem
+
+    @media (pointer: fine)
+        &:hover
+            background-color purple_100
+            box-shadow inset 0px 0px 0px 1px rgba(0, 0, 0, 0.10)
 
 header
     grid-area header
@@ -2679,6 +2824,35 @@ a.btn_popover
   text-align left
   color white_96
 
+.button_group
+    display flex
+    flex-wrap wrap
+    flex-shrink 0
+    column-gap 0.5rem
+    row-gap 0.5rem
+
+.btn_default
+    display block
+    background-color green_400
+    border none
+    border-radius 4px
+    padding 0.5rem 1.5rem
+    color text
+    box-shadow 0 0 0 1px rgba(black, 0.10) inset
+    transition all 0.2s ease
+
+.btn_default:hover
+    background-color purple_600
+    color white
+
+.btn_outline
+    display flex
+    padding 5px 0.75rem
+    border 1px solid border_gray
+    border-radius 4px
+    color text
+    line-height 1.25
+
 .btn_secondary
     font-family font_h
     background-color bg_dark_4
@@ -2876,21 +3050,6 @@ a.btn_popover
     grid-template-columns 1fr
     grid-template-rows auto
     align-content start
-    // margin-top 2rem
-    background-color white
-    margin-bottom 1.618rem
-    border .5px solid clr_grey_light
-
-.card_event
-    // display flex
-    // flex-direction column
-    display grid
-    grid-template-columns 1fr
-    grid-template-rows auto
-    align-content end
-    // width calc(100px + 60vw)
-    min-width 300px
-    max-width 1200px
     // margin-top 2rem
     background-color white
     margin-bottom 1.618rem
@@ -3537,24 +3696,116 @@ a.btn_popover
     margin-top 1.618rem
     border .5px solid clr_grey_light
 
+select[multiple]
+    height 6rem
+
 input, select
-    height 2rem
+    height 2.5rem
     width 100%
+    min-width 170px
     background-color white
-    border 1px solid clr_grey_light
-    border-radius 3px
+    border 1px solid border_gray
+    border-radius 4px
     -moz-appearance none
     -webkit-appearance none
     appearance none
     font-size 1rem
     font-family font_h
-    font-weight 300
+    font-weight 400
     color dark_1
     padding .2rem .5rem .1rem .5rem
     margin 0
 
-select[multiple]
-    height 6rem
+    &:focus
+        border 1px solid green_700
+        box-shadow 0 0 0 1px green_700
+        outline: none
+
+select
+    padding-right 2.5rem
+    background-image url(/assets/img/static/chevron-down.svg)
+    background-position right 0.5625rem center
+    background-size 1.5rem
+    background-repeat no-repeat
+
+    option[disabled]
+        color rgba(dark_1, 0.3)
+
+input#search
+    max-width 100%
+    padding-left 2.75rem
+    background-image url(/assets/img/static/search.svg)
+    background-position left 0.75rem center
+    background-size 1.5rem
+    background-repeat no-repeat
+
+.select2
+    display block
+    width 100%
+    min-width 170px
+    color dark_1
+    flex 1 0
+
+    .select2-selection__arrow
+        display none
+
+    .select2-selection
+        height 2.5rem
+        background-color white
+        border 1px solid border_gray
+        border-radius 4px !important
+        font-size 1rem
+        font-family font_h
+        font-weight 400
+        padding .2rem 2.5rem .1rem .5rem
+        margin 0
+        display flex
+        align-items center
+        background-image url(/assets/img/static/chevron-down.svg)
+        background-position right 0.5625rem center
+        background-size 1.5rem
+        background-repeat no-repeat
+
+        .select2-selection__rendered
+            display block
+            padding 0
+
+    &.select2-container--focus
+        .select2-selection
+            outline none
+            border 1px solid green_700 !important
+            box-shadow 0 0 0 1px green_700
+
+
+.select2-container
+    color dark_1
+
+    .select2-dropdown
+        border-radius 4px
+        border: 1px solid green_700
+        overflow hidden
+        box-shadow 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12)
+
+.select2-container--default
+    .select2-results__options
+        padding: .75rem 0
+
+    .select2-results__option
+        padding: .5rem 1.5rem
+        line-height: 1.25
+
+        &--highlighted[aria-selected]
+            background-color purple_600
+            color white
+
+        &[aria-selected="true"]
+            background-color green_400
+            color dark_1
+
+        &[aria-disabled=true]
+            color dark_1
+            opacity 0.3
+
 
 // select.login_input
 //     background-color #dddddd
@@ -4216,9 +4467,323 @@ a:hover > .login_headline
     align-items flex-start
     gap 2rem
 
+.search_filters
+    display grid
+    grid-template-columns 1fr @css{min(868px, 100%)} 1fr
+    grid-template-rows auto
+    justify-items start
+    padding 2rem 1rem
+    // margin-top 80px
+    width 100%
+    margin-inline auto
+    background-color gray_050
+    border-top 1px solid border_mediumgray
+    border-bottom 1px solid border_mediumgray
+
+    > *
+        grid-column 2
+
+.events_search_page_title_wrapper
+    display grid
+    grid-template-columns 1fr @css{min(868px, 100%)} 1fr
+    padding 2rem 1rem
+    margin-top header_height_mobile
+
+.events_search_page_title
+    margin 0
+    grid-column 2
+    font-size 34px
+    line-height 1.25
+    font-weight 400
+    color text
+
+.search_date_filters
+    margin-bottom 10px
+    display: flex;
+    align-items: flex-start
+    gap: 8px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-width calc(100% + 2rem)
+    margin-inline -1rem
+    padding-inline 1rem
+
+.date-option
+    position relative
+    height: 86px;
+    width: 51px
+    min-width: 51px;
+    // width: 100%
+    z-index 2
+    cursor: pointer
+    color: dark_1
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow inset 0 0 0 1px purple_600
+    transition all 0.2s ease
+    background-color: green_050
+    overflow: hidden;
+
+.date-option:hover
+    box-shadow inset 0 0 0 2px purple_600
+
+.date-input
+    position: absolute
+    opacity 0
+    height 100%
+    min-width: 100%
+
+.date-input-value
+    padding: 12px
+    width: 100%
+    height: 100%
+    text-align: center
+    user-select: none
+    z-index: 5
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center;
+    height: 100%
+
+    .formatted-month
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        line-height: 17.50px;
+        letter-spacing: 1px;
+        word-wrap: break-word
+
+    .formatted-date
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 27.50px;
+        word-wrap: break-word
+
+    .formatted-day
+        color: #636769;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        word-wrap: break-word
+
+.date-option input[type="checkbox"]:checked + .date-input-value
+    background-color purple_600
+    color: #fff
+
+.date-option input[type="checkbox"]:checked + .date-input-value .formatted-day
+    color: #fff
+
+.date-option input[type="checkbox"][disabled] + .date-input-value
+    opacity: 0.3
+    pointer-events: none
+
+// Events/Calendar view
+
+#events-view-switch
+    display: flex
+    justify-content: flex-end
+    gap: 1rem
+    margin-bottom: 1.5rem
+
+.event-calendar-container
+    color: text
+    margin-bottom: 3rem
+
+.event-calendar {
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+.ec-resource-day-view {
+    width: fit-content;
+}
+
+.ec-resource {
+    min-width: 200px !important;
+}
+
+.ec-body {
+    border-inline: none !important
+}
+
+.ec-day {
+    border: none !important
+}
+
+.ec-days {
+    padding-left: 8px
+}
+
+.ec-toolbar {
+    margin-bottom: 0rem !important
+}
+
+.ec-toolbar > div {
+    flex: 1 0 100%;
+}
+
+.ec-title .calendar-title {
+    display flex
+    align-items: baseline
+    gap: 12px
+    margin-bottom: 1.5rem
+}
+
+.ec-title .calendar-title .formatted-date {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .formatted-weekday {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .calendar-line {
+    height: 2px
+    background-color: green_400
+    flex: 1 1 0
+}
+
+.ec-lines {
+    width: 0px !important
+}
+
+.ec-event {
+    border-top: 2px solid green_400;
+    background-color: #F9F6FE !important;
+    overflow: hidden
+    padding: 0 !important
+    transition: 150ms all ease-in
+    border-radius: 0 !important
+}
+
+.ec-event:hover {
+    background-color: purple_100 !important
+    transition: 150ms all ease-in
+    z-index: 999 !important;
+    height: auto !important;
+}
+
+.ec-header .ec-time {
+    display: none
+}
+
+.ec-body .ec-time {
+    height: 36px !important
+}
+
+.ec-body .ec-line {
+    height: 36px !important
+}
+
+.ec-header {
+    border: none !important
+    border-bottom: 1px solid #dadce0 !important
+}
+
+.single-event {
+    height: 100%
+    display: flex
+    justify-content: space-between
+    position: relative
+    padding: 8px 0 0px 8px
+}
+
+.ec-event-title {
+    width: calc(100% - 40px)
+    color: text !important
+    font-size: 14px
+    line-height: 125%
+    font-style: normal
+    font-weight: 400
+    word-break: break-word;
+}
+
+.event-icon {
+    position: absolute
+    top: 0
+    right: 0
+    padding: 4px 8px
+    transition: 150ms all ease-in
+}
+
+.event-icon:hover > svg {
+    fill: green_400
+    transition: 150ms all ease-in
+}
+
+.list-view-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.event-list-view-btn {
+    min-width: unset
+    height: unset
+    background-color: unset
+    border: none
+    padding: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    border-radius: 4px
+    cursor: pointer
+}
+
+.event-list-view-btn:focus {
+    border: none
+    box-shadow: none
+}
+
+.list-calendar-view-icon {
+    position: relative;
+    min-height: 32px;
+    padding: 4px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    outline: 1px solid border_gray
+    transition: 100ms all ease-in
+    cursor: pointer
+}
+
+.list-calendar-view-icon:hover {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
+
+.list-calendar-view-icon > input:checked {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
+
 /* MEDIA query: for large screens */
 
 @media screen and (min-width: 800px)
+
+    .event-calendar-container {
+        margin-bottom: 4rem
+    }
+
+    .ec-resource {
+        min-width: 338px !important;
+    }
+
+    .ec-event-title {
+        font-size: 16px
+    }
+
     .grid_courseevent
         display grid
         grid-template-columns 1fr 1fr 1fr
@@ -4387,17 +4952,93 @@ a:hover > .login_headline
         padding-top 1rem
         justify-content center
 
+    .events_search_page_title_wrapper
+        margin-top header_height
+
+    .events_search_page_title
+        font-size 48px
+
+    .search_date_filters
+        margin-bottom 10px
+        // display grid
+        display inline-flex
+        // grid-template-columns repeat(8, 1fr);
+        // grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        align-items: flex-start
+        justify-content: flex-start
+        gap 8px
+        overflow-x: auto;
+        height: auto
+        max-width 100%
+        margin-inline 0
+        padding-inline 0
+
+    .date-option
+        height: 102px;
+        width: 71.6px
+        flex: 1 0 71.6px
+
+        .date-input-value
+            padding: 16px;
+            width: 100%;
+            // color: dark_1
+            text-align center
+            user-select: none
+            line-height: 20px
+            word-wrap: break-word
+            font-size: 16px
+            display: inline-flex;
+            flex-direction: column
+            justify-content: center;
+            height: 100%
+
+            .formatted-date
+                font-size: 32px;
+                line-height: 40px;
+                font-weight: 500;
+                word-wrap: break-word
+
+            .formatted-month
+                font-size: 14px;
+                font-weight: 500;
+                text-transform: uppercase;
+                line-height: 17.50px;
+                letter-spacing: 1px;
+                word-wrap: break-word
+
+            .formatted-day
+                color: #636769;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                word-wrap: break-word
+
     .grid_search
-        display grid
-        // grid-template-columns 1fr 1fr 1fr
-        grid-template-columns repeat(auto-fill, minmax(300px, 1fr))
-        grid-template-rows auto
-        grid-gap 1rem
-        padding-left 6rem
-        padding-right 6rem
-        padding-top 150px
+        display flex
+        flex-wrap wrap
+        margin-top 10px
         margin-bottom 0rem
-        z-index 999
+
+        input, select
+            flex 1 1 0%
+            max-width 200px
+
+        .select2
+            flex 1 1 2%
+            min-width 150px
+            max-width 200px
+
+    .mobile_filters_collapse
+        display contents !important
+
+    .toggle_filters
+        display none
+
+    #search
+        min-width: 250px
+
+    #filters select, .select2
+        max-width: 240px
 
     .grid_article
         display grid
@@ -5090,3 +5731,60 @@ strong
 
 .hidden
     visibility hidden
+
+// Event modal styles
+.event-modal .modal-body
+    padding 5rem 6rem
+    @media screen and (max-width: 799px)
+        padding 4rem 1rem
+    .btn-close
+        position absolute
+        top 16px
+        right 16px
+        background none
+        padding 0
+        width 40px
+        height 40px
+        margin 2px
+        border-radius 99px
+        box-shadow inset 0 0 0 1px icons_darkgray
+        opacity 1
+        transition all 0.2s ease
+    @media (pointer: fine)
+        .btn-close:hover
+            transform scale(1.1)
+            box-shadow inset 0 0 0 1px primary_darker
+    .event_text
+        display flex
+        align-items center
+        justify-content space-between
+        column-gap 5rem
+        padding 1.5rem 0
+        .event_description
+            font-size 20px
+            font-weight 400
+            line-height 1.6
+    .event_people
+        padding 1.5rem 0
+        display flex
+        flex-wrap wrap
+        align-items flex-start
+        column-gap 1.5rem
+        row-gap 1.5rem
+        .event_person
+            width 150px
+            color text
+            text-align center
+        .event_person_img_wrapper
+            margin-top 0.5rem
+            margin-bottom 1rem
+            border-radius 80px 70px
+        .event-person_img
+            object-fit cover
+        .event_person_name, .event_person_title
+            line-height 1.25
+            margin 0
+            font-weight 400
+            font-family font_h
+        .event_person_name
+            font-weight 500

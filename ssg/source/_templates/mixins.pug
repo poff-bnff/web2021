@@ -101,6 +101,37 @@ mixin screeningDateEET(dateStringUTC)
 
         })();
 
+//- Creating date like Nov 10, Tue
+
+mixin formatDateShort(dateStringUTC)
+  script.
+    (function()
+    {
+        moment.locale('#{self.locale}');
+        var parentElement = document.currentScript.parentElement;
+
+        var formattedDate = moment.parseZone(new Date('#{dateStringUTC}')).tz('Europe/Tallinn');
+
+        // Create separate spans for month, date, and day
+        var monthSpan = document.createElement('span');
+        var dateSpan = document.createElement('span');
+        var daySpan = document.createElement('span');
+
+        monthSpan.classList.add('formatted-month');
+        dateSpan.classList.add('formatted-date');
+        daySpan.classList.add('formatted-day');
+
+        monthSpan.textContent = formattedDate.format('MMM');
+        dateSpan.textContent = formattedDate.format('D');
+        daySpan.textContent = formattedDate.format('ddd');
+
+        // Append the spans to the parent element (in this case, it's the label)
+        parentElement.appendChild(monthSpan);
+        parentElement.appendChild(dateSpan);
+        parentElement.appendChild(daySpan);
+
+    })();
+
 mixin birthDateEET(dateStringUTC)
     - var dom_id = Math.random()
     div(id = 'dt_' + dom_id)
@@ -283,7 +314,7 @@ mixin screeningDate(dateString)
             var eDisplayMoment1 = document.getElementById('dt_' + '#{dom_id}').parentElement;
             var NowMoment1 = moment(new Date('#{dateString}')).format('Do MMM');
             var weekDay= moment(new Date('#{dateString}')).format('dddd');
-            eDisplayMoment1.innerHTML = NowMoment1 + ', ' + weekDay;
+            eDisplayMoment1.innerHTML = '<span class="bold">' + NowMoment1 + ',</span> ' + weekDay;
 
         })();
 
