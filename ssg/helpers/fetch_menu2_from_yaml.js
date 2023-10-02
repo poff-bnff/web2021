@@ -148,7 +148,7 @@ for (const lang of languages) {
     // Process data to include only what is needed for menu
     menuData.filter(m => validateMenu(m, 'L2MenuItems')).sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
         .map(a1 => {
-            l1CustomUrl = a1.customUrl ? (a1.customUrl.substring(0, 4) === 'http' ? a1.customUrl : `/${lang}/${a1.customUrl}`) : null
+            l1CustomUrl = a1.customUrl ? (a1.customUrl.substring(0, 4) === 'http' ? a1.customUrl : `/${a1.customUrl}`) : null
             let oneMenuItem = {
                 name: a1.name,
                 link: l1CustomUrl || getArticleType(a1?.[articleMapping[DOMAIN]], lang) || null,
@@ -157,7 +157,7 @@ for (const lang of languages) {
             if (a1.L2MenuItems) {
                 a1.L2MenuItems.filter(m => validateMenu(m, 'L3MenuItems')).sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                     .map(a2 => {
-                        l2CustomUrl = a2.customUrl ? (a2.customUrl.substring(0, 4) === 'http' ? a2.customUrl : `/${lang}/${a2.customUrl}`) : null
+                        l2CustomUrl = a2.customUrl ? (a2.customUrl.substring(0, 4) === 'http' ? a2.customUrl : `/${a2.customUrl}`) : null
                         let level2MenuItem = {
                             name: a2.name,
                             link: l2CustomUrl || getArticleType(a2?.[articleMapping[DOMAIN]], lang) || null,
@@ -166,7 +166,7 @@ for (const lang of languages) {
                         if (a2.L3MenuItems) {
                             a2.L3MenuItems.filter(m => validateMenu(m, 'noLevel')).sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
                                 .map(a3 => {
-                                    l3CustomUrl = a3.customUrl ? (a3.customUrl.substring(0, 4) === 'http' ? a3.customUrl : `/${lang}/${a3.customUrl}`) : null
+                                    l3CustomUrl = a3.customUrl ? (a3.customUrl.substring(0, 4) === 'http' ? a3.customUrl : `/${a3.customUrl}`) : null
                                     level2MenuItem.L3MenuItems.push({
                                         name: a3.name,
                                         link: l3CustomUrl || getArticleType(a3?.[articleMapping[DOMAIN]], lang) || null,

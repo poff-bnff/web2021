@@ -2,79 +2,16 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-
-    h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
-
-    //- Milliseid screening type kuvada, kõikide kuvamiseks []
-    //- Ühe, nt first screening kuvamiseks:
-    //- - const whichScreeningTypesToDisplay = ['first screening']
-    //- Mitme kuvamiseks:
-    - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino']
-    //- - const whichScreeningTypesToDisplay = []
-
-    .grid_search#filters(style='display: none;')
-
-        input#search(type='text', placeholder= self.label.filters.search)
-
-        select#programmes_select(name='Programmes')
-            option(value='')= self.label.filters.programmes
-            each index, key in self.data.filters.programmes
-                option(value=key)= index
-
-        select#languages_select(name='Languages')
-            option(value='')= self.label.filters.languages
-            each index, key in self.data.filters.languages
-                option(value=key)= index
-
-        select#countries_select(name='Countries')
-            option(value='')= self.label.filters.countries
-            each index, key in self.data.filters.countries
-                option(value=key)= index
-
-        select#subtitles_select(name='Subtitles')
-            option(value='')= self.label.filters.subtitles
-            each index, key in self.data.filters.subtitles
-                option(value=key)= index
-
-        select#premieretypes_select(name='Premieretypes')
-            option(value='')= self.label.filters.premieres
-            each index, key in self.data.filters.premieretypes
-                option(value=key)= index
-
-        select#towns_select(name='Towns')
-            option(value='')= self.label.filters.towns
-            each index, key in self.data.filters.towns
-                option(value=key)= index
-
-        select#cinemas_select(name='Cinemas')
-            option(value='')= self.label.filters.cinemas
-            each index, key in self.data.filters.cinemas
-                option(value=key)= index
-
-        //- button(onclick='select_next_or_previous(`-`, `dates_select`)')= `<`
-        select#dates_select(name='Dates')
-            option(value='')= self.label.filters.dates
-            each index, key in self.data.filters.dates
-                option(value=key)= index
-        //- button(onclick='select_next_or_previous(`+`, `dates_select`)')= `>`
-
-        //- button(onclick='select_next_or_previous(`-`, `times_select`)')= `<`
-        select#times_select(name='Times')
-            option(value='')= self.label.filters.times
-            each index, key in self.data.filters.times
-                option(value=key)= index
-        //- button(onclick='select_next_or_previous(`+`, `times_select`)')= `>`
-
-        button.clear(onclick='unselect_all()')= self.label.filters.empty
-
     h3#nonetoshow.sub_section_headline(style='display: none; padding-top: 2em;')
 
     content#content
+        if self.data.screenings && self.data.screenings[0]
+            input(type='hidden', value=`${self.data.screenings.map(s => s.id)}`, id=`screening_ids`)
 
         if self.data.screenings
             main.grid_films
                 -
-                    var sortFunction = function(a, b) {
+                    const sortFunction = function(a, b) {
                         if (a.dateTime) {
                             var aSortSource = a.dateTime
                         }
@@ -85,34 +22,15 @@ block content
                     }
 
                 each screening in self.data.screenings.sort(sortFunction)
-                    - var screening_types = (screening.screening_types || [])
-                    - var displayable_screening_types = screening_types
-                    -   .map(st => st.name)
-                    -   .some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase()))
-                    //- if ( screening.screening_types && screening.screening_types.map(screeningNames).some(ai => whichScreeningTypesToDisplay.includes(ai.toLowerCase())) ) || whichScreeningTypesToDisplay.length === 0
-                    //- logic replaced
-                    //- any screening type will match
-                    //- one or more of screening types are in displayable list
-                    if whichScreeningTypesToDisplay.length === 0 || displayable_screening_types
+                    - const cassette = screening.cassette || {}
+                    .card_film(id=screening.id style='display: none;')
+                        a(href=`/${lang_path}film/${cassette.slug}`)
 
-                        - var allFestivalEditions = []
-                        if screening.cassette
-                            - var cassette = screening.cassette
-                        if cassette.festival_editions
-                            each edition in cassette.festival_editions
-                                - allFestivalEditions.push(edition.name)
-                        a.card_film(id=screening.id style='display:none; padding-bottom: 20px; position: relative;' href= `/${lang_path}film/${cassette.slug}`)
                             .container_frame_16_9
-
                                 //- PILDID
-                                if cassette.films && cassette.films.length > 1
-                                    if screening.cassetteCarouselPicsCassetteThumbs && screening.cassetteCarouselPicsCassetteThumbs[0]
-                                        img.container_contents_16_9(src= screening.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title)
-                                    else if screening.cassetteCarouselPicsFilmsThumbs && screening.cassetteCarouselPicsFilmsThumbs[0]
-                                        img.container_contents_16_9(src= screening.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title)
-                                    else
-                                        img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title)
-                                else if cassette.films && cassette.films.length === 1 && screening.cassetteCarouselPicsFilmsThumbs
+                                if screening.cassetteCarouselPicsCassetteThumbs && screening.cassetteCarouselPicsCassetteThumbs[0]
+                                    img.container_contents_16_9(src= screening.cassetteCarouselPicsCassetteThumbs[0] alt= cassette.title)
+                                else if screening.cassetteCarouselPicsFilmsThumbs && screening.cassetteCarouselPicsFilmsThumbs[0]
                                     img.container_contents_16_9(src= screening.cassetteCarouselPicsFilmsThumbs[0] alt= cassette.title)
                                 else
                                     img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title)
@@ -142,21 +60,17 @@ block content
                                         circle(cx='12' cy='10' r='3')
 
                                     if screening.location && screening.location.hall && screening.location.hall.name
-                                        if screening.location.hall && screening.location.hall.name
-                                            span.screening_hall.small_1= screening.location.hall.name
-                                            if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                                span.screening_venue.small_1= ` ${screening.location.hall.cinema.name}`
-                                                if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
-                                                    span.city.small_1= ` ${screening.location.hall.cinema.town.name}`
-
+                                        span.screening_hall.small_1= screening.location.hall.name
+                                        if screening.location.hall.cinema && screening.location.hall.cinema.name
+                                            span.screening_venue.small_1= ` ${screening.location.hall.cinema.name}`
+                                            if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name
+                                                span.city.small_1= ` ${screening.location.hall.cinema.town.name}`
 
                             .card_film_title(style='padding-bottom: 1.2rem;')
 
                                 //- Eeldame, et screeningul on datetime
                                 //- if screening.dateTime
-
                                 //- h3.film_title_locale.dark_1= `${screening.id} - ${screening.dateTime}`
-
                                 //- Kuvame kassetipealkirja
                                 h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
 
@@ -198,10 +112,11 @@ block content
                                         .str_info_grid_3
                                             .str_info_label.dark_semi= self.label.film.countries
                                             #programmes.str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
-                            button.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`modifyFavourites('rmScreening', ${screening.id});return false` style='display: grid; height: 36px; width: 100%; position: absolute; bottom: 0px;')= self.label.film.removeSavedScreening
 
+                        button.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
+                            style='display: none; height: 36px; width: 100%;'
+                            )= self.label.film.addSavedScreening
+                        button.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav',
+                            style='display: none; height: 36px; width: 100%;'
+                            )= self.label.film.removeSavedScreening
 
-                script.
-                    var searcharray = !{JSON.stringify(self.data.search)}
-
-                    var filters = !{JSON.stringify(self.data.filters)}

@@ -24,7 +24,7 @@ async function createRequest(requestCase, requestBody) {
             request.route = '/users/me'
             request.options.method = 'GET'
             request.options.headers = {
-                Authorization: 'Bearer ' + localStorage.getItem('BNFF_U_ACCESS_TOKEN'),
+                Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN'),
             }
             break;
         case ('profPicture'):

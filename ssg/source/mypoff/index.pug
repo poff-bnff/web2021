@@ -3,6 +3,9 @@ include /_templates/mixins.pug
 
 block content
 
+    #loaderTemplate(style="display: none")
+        .card_mypass_head self.labels.loading
+
     if self.data.shops
         each shop in self.data.shops
 

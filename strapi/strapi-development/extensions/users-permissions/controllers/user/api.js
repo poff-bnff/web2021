@@ -193,7 +193,19 @@ module.exports = {
 
     ctx.send(sanitizeUser(data));
   },
+
+  /** Profile update function. pre-oAuth
+   * Update a/an user record.
+   * @return {Object}
+   * @description
+   * This function updates the profile of the currently logged in user.
+   * It is used by the profile page.
+   */
   async updateMe(ctx) {
+
+    console.log('users-permissions controllers user api updateme');
+    const { id } = ctx.state.user;
+    console.log(ctx.request.body);
 
     async function uploadProfilePicture(files, firstName, lastName) {
       console.log('Uploading profile picture');
@@ -216,10 +228,6 @@ module.exports = {
       });
       return uploadedPicture[0].id
     }
-
-    console.log('users-permissions controllers user api updateme');
-    const { id } = ctx.state.user;
-    const { password } = ctx.request.body.data;
 
     const createNewPersonProfile = async (personProfile, ctxForPicture) => {
       const { files } = parseMultipartData(ctxForPicture);
@@ -338,50 +346,49 @@ module.exports = {
   },
   async favorites(ctx) {
     console.log('users-permissions controllers user api favorites');
-    const { id } = ctx.state.user;
 
-    const manipulateFavorites = async (user, addOrRm, theId, objectName, objectType, objectArrayName) => {
-      var dataIds = user[objectName]
-        .filter(myFavoriteLists => myFavoriteLists.type === objectType)
-        .map(myType => myType[objectArrayName])
-        .flat()
-        .map(obj => obj.id)
-      var uniqueIds = [...new Set(dataIds)]
+    // Query body
+    // let rawData = { ...JSON.parse(ctx.request.body) }
+    let rawData = ctx.request.body
+    console.log('users-permissions controllers user api favorites RAWDATA', rawData);
 
-      let newArray
-      // Remove or add from/to array
-      if (addOrRm === "rm") {
-        newArray = uniqueIds.filter(a => a !== theId)
-      } else if (addOrRm === "add") {
-        uniqueIds.push(theId)
-        newArray = uniqueIds
+    const id = rawData.userId;
+
+    const manipulateFavorites = async (user, addOrRm, theId, objectName) => {
+
+      console.log('manipulateFavorites', user.id, addOrRm, theId, objectName);
+
+      const userMyContent = (user.My[objectName] || []).map(c => c.id)
+      console.log('userMyContent', userMyContent);
+
+      // If the object was already in the user's My list, remove it. Otherwise, add it.
+      if (addOrRm === 'add') {
+        userMyContent.push(theId)
+        console.log('added', userMyContent);
+      } else if (addOrRm === 'rm') {
+        const indexOfObj = userMyContent.indexOf(theId);
+        const removeObj = userMyContent.splice(indexOfObj, 1);
+        console.log('removed', userMyContent);
       }
 
-      // Create new array of objects
-      let newArrayOfObjects = []
-      // Add objects of other types to array if any
-      let otherTypeObjects = user[objectName]
-        .filter(myFavoriteLists => myFavoriteLists.type !== objectType)
-      if (otherTypeObjects.length) { otherTypeObjects.map(a => newArrayOfObjects.push(a)) }
+      user.My[objectName] = userMyContent
 
-      let newTypeData = {
-        type: objectType,
-        [objectArrayName]: newArray
+      console.log('user.My[objectName]', user.My[objectName]);
+
+      // New user My object
+      let newMyObject = {
+        My: {
+          [objectName]: userMyContent
+        }
       }
-
-      if (newArray.length) { newArrayOfObjects.push(newTypeData) }
-
-      let arrayToSave = newArrayOfObjects.length ? newArrayOfObjects : []
-      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, { [objectName]: arrayToSave });
+      // Update user with new info
+      const updatedUser = await strapi.plugins['users-permissions'].services.user.edit({ id }, newMyObject);
       ctx.send(sanitizeUser(updatedUser));
     }
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
     });
-
-    // Query body
-    let rawData = { ...JSON.parse(ctx.request.body) }
 
     // User needs to fill profile before
     if (!user.user_profile) {
@@ -391,23 +398,22 @@ module.exports = {
 
     if (rawData.type === "rmScreening") {
       // user object, "rm/add", "screening ID" "my_screenings", "schedule" , "screenings"
-      return await manipulateFavorites(user, "rm", rawData.id, "my_screenings", "schedule", "screenings")
+      return await manipulateFavorites(user, "rm", rawData.id, "screenings")
     } else if (rawData.type === "addScreening") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_screenings", "schedule", "screenings")
+      return await manipulateFavorites(user, "add", rawData.id, "screenings")
     } else if (rawData.type === "rmMyFilm") {
-      return await manipulateFavorites(user, "rm", rawData.id, "my_films", "favorite", "cassettes")
+      return await manipulateFavorites(user, "rm", rawData.id, "films")
     } else if (rawData.type === "addMyFilm") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_films", "favorite", "cassettes")
+      return await manipulateFavorites(user, "add", rawData.id, "films")
     } else if (rawData.type === "rmMyEvent") {
-      return await manipulateFavorites(user, "rm", rawData.id, "my_events", "schedule", "industry_events")
+      return await manipulateFavorites(user, "rm", rawData.id, "course_events")
     } else if (rawData.type === "addMyEvent") {
-      return await manipulateFavorites(user, "add", rawData.id, "my_events", "schedule", "industry_events")
+      return await manipulateFavorites(user, "add", rawData.id, "course_events")
     }
-
   },
+
   async paymentMethods(ctx) {
     const catId = ctx?.params?.id;
-
     const getMkConfig = async (catId) => {
 
 
@@ -500,8 +506,12 @@ module.exports = {
     }
   },
   async buyProduct(ctx) {
-    console.log('Yes, buy product here')
-    const { id } = ctx.state.user;
+    const requestBody = ctx.request.body
+
+    const id = requestBody.userId;
+    const catId = requestBody.categoryId;
+
+    console.log('Yes, buy product here user ', id, 'category ', catId)
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
@@ -510,7 +520,6 @@ module.exports = {
     const userEmail = user.email
     console.log(userEmail)
 
-    const requestBody = JSON.parse(ctx.request.body)
 
     const postToMaksekeskus = async (postData) => {
       const productCatBP = JSON.parse(postData.transaction.merchant_data).productCatSeller
@@ -769,7 +778,7 @@ module.exports = {
 
     if (mkResponse.status === 'COMPLETED') {
       if (item.transactions && item.transactions.length) {
-        console.log('Already transacted', item.transactions, { item: item, product: product })
+        console.log('Already transacted', item.transactions.id, { item: item.id, productId: product.productID })
         redirectUser(409, cancel_url, 'Already transacted')
         return
       } else {
@@ -787,7 +796,7 @@ module.exports = {
         }
 
         let addTransactionProduct = await strapi.services['transactions-products'].create(addTransactionProductsOptions)
-        console.log('Create transactionproduct: ', addTransactionProduct);
+        console.log('user::api Create transactionproduct: ', addTransactionProduct.id);
         // add transaction time
         const addTransactionOptions = {
           dateTime: mkResponse.message_time,
@@ -803,11 +812,11 @@ module.exports = {
           status: mkResponse.status,
           products: [addTransactionProduct],
         }
-        console.log(addTransactionOptions);
+        console.log('api::user addTransactionOptions', addTransactionOptions);
         let addTransaction = await strapi.services.transaction.create(addTransactionOptions)
         let transactionId = addTransaction.id
 
-        console.log('Transaction ID', transactionId);
+        console.log('api::user Transaction ID', transactionId);
         if (!transactionId) {
           redirectUser(500, cancel_url, 'Failed to save transaction')
           return
@@ -839,8 +848,8 @@ module.exports = {
         }
 
         if (updateProductSuccess) {
-          console.log(`Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
-          console.log('Transaction ID and hash ', addTransaction.id, addTransaction.transaction);
+          console.log(`user::api Successfully updated product ID ${updateProductSuccess.id} (${updateProductSuccess.product_category.namePrivate} - ${updateProductSuccess.code}). Owner ID ${updateProductSuccess.owner.id} (${updateProductSuccess.owner.username})`);
+          console.log('user::api Transaction ID and hash ', addTransaction.id, addTransaction.transaction);
           // Email
           try {
             console.log('Here send e-mail');
@@ -881,6 +890,8 @@ module.exports = {
       }
     }
   },
+
+
   async personForm(ctx) {
 
     const user = ctx.state.user;
@@ -933,7 +944,7 @@ module.exports = {
       // Update existing ones
       await updateFilmographies(userPerson)
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       // Gallery images
       // Delete gallery images
@@ -1008,7 +1019,7 @@ module.exports = {
       personFormData.firstNameLastName = (personFormData.firstName + " " + personFormData.lastName).trim()
 
       // Filter out form data and leave only the IDs
-      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number' )
+      personFormData.filmographies = personFormData.filmographies.filter(f => typeof f === 'number')
 
       console.log('personFormData', personFormData);
       let newPerson = await strapi.services['person'].create(personFormData)
@@ -1148,7 +1159,7 @@ module.exports = {
 
   },
   async roleController(ctx) {
-    const { id } = ctx.state.user;
+    const id = ctx.request.body.userId;
     const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
     console.log(' cType, cId, cLang, cSubType, cDomain ', cType, cId, cLang, cSubType, cDomain);
     // const { email, username, password } = ctx.request.body;
@@ -1247,7 +1258,25 @@ module.exports = {
       }
       return contentCopy
     }
-  }
+  },
+
+  /** Profile update function.
+   * Update a/an user profile.
+   * @return {Object}
+   * @description
+   * This function updates the profile of the currently logged in user.
+   * The request is mediated by the "hunt" oAuth service, which is the only
+   * way to update the profile. The profile is identified by the profileId
+   * parameter in body.
+   */
+  async putProfile(ctx) {
+    strapi.log.debug('putProfile')
+    const prfl = 429200 || ctx?.params?.id
+    const profileId = prfl || ctx?.request?.body?.profileId
+    console.log(`Updating profile ${profileId}`)
+    const body = parseMultipartData(ctx)
+    console.log(`Updating profile ${profileId} with body ${JSON.stringify(body, null, 4)}`) // eslint-disable-line no-console
+  },
 };
 
 

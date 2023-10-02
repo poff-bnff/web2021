@@ -13,7 +13,7 @@ domain:
     tartuff.ee: tartuff
 
 domains_show_cassetes_wo_screenings:
-    - poff.ee
+    # - poff.ee
     - hoff.ee
     - tartuff.ee
     - oyafond.ee
@@ -23,24 +23,25 @@ cassettes_festival_editions:
         # - 62
         - 63
         - 64
-        - 65
         - 66
         - 67
+        - 71
+        - 72
     justfilm.ee:
         - 64
         # - 29
     kinoff.poff.ee:
-        - 57
+        - 72
     industry.poff.ee:
-        - 55
+        - 68
     shorts.poff.ee:
-        - 58
+        - 67
         # - 30
     hoff.ee:
         # - 61
         - 66
     kumu.poff.ee:
-        - 62
+        - 71
     tartuff.ee:
         - 65
     oyafond.ee:
@@ -51,7 +52,12 @@ cassettes_festival_editions:
         - 0
 
 XML_festival_editions:
-    - 61
+    - 63
+    - 64
+    - 66
+    - 67
+    - 71
+    - 72
     # - 56
     # - 58
     # - 29
@@ -62,17 +68,18 @@ programmes_festival_editions:
     poff.ee:
         - 63
         - 64
-        - 65
         - 66
         - 67
+        - 71
+        - 72
     justfilm.ee:
         - 64
     kinoff.poff.ee:
-        - 57
+        - 72
     industry.poff.ee:
-        - 0
+        - 68
     shorts.poff.ee:
-        - 58
+        - 67
     hoff.ee:
         - 61
     kumu.poff.ee:
@@ -87,7 +94,7 @@ programmes_festival_editions:
         - 0
 
 active_industry_editions:
-    - 55
+    - 68
 
 active_filmikool_editions:
     - 60
@@ -142,9 +149,9 @@ industry_eventival_badges_whitelist:
 #     # - course-event
 
 target_build_models:
-    - film
-    - cassette
-    - screening
+    # - film
+    # - cassette
+    # - screening
     - course-event
     - login
     - pof-fi-article

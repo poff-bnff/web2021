@@ -42,11 +42,11 @@ block content
 
             section.restricted_login.login_ind_ev#login_cond
                             h4.login_headline#loginMessage= self.label.all.restrictedMessageIndustry1
-                            a(href=`/login` onclick = 'saveUrl()')
+                            a(href=`/login` onclick = 'savePreLoginUrl()')
                                 h4.login_headline.bold_600#loginMessage= self.label.all.restrictedMessageIndustry2
-                            a(href=`/login` onclick = 'saveUrl()')
+                            a(href=`/login` onclick = 'savePreLoginUrl()')
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="login_user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            //- a(href=`/login` onclick = 'saveUrl()')
+                            //- a(href=`/login` onclick = 'savePreLoginUrl()')
                                 //- img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
 
             //- +format('Palun logi sisse').font_weight_600.dark_1
@@ -183,7 +183,7 @@ block content
                         if process.env['DOMAIN'] === 'industry.poff.ee' && self.event_access != "Free (without accreditation)"
                             .login_16_9_container.login_ind_ev#login_cond
                                 h4.login_headline#loginMessage.white_96 Log in via Eventival
-                                a(href=`/login` onclick = 'saveUrl()')
+                                a(href=`/login` onclick = 'savePreLoginUrl()')
                                     img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
                     if process.env['DOMAIN'] === 'industry.poff.ee'
                         .elisa_stage
