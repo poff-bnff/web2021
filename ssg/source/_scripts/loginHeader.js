@@ -130,10 +130,23 @@ function logOut() {
 const requireLogin = () => {
     if (isUserTokenValid()) {
         return true
-    } else {
-        const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
-        window.open(loginUrl, '_self')
     }
+    const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+    window.open(loginUrl, '_self')
+}
+
+// This function returns:                  This function redirects to profile page if:
+// - true, if user has complete profile    - user is logged in and
+// - false, if user has not logged in      - has incomplete profile
+const requireProfile = () => {
+    if (!isUserTokenValid()) {
+        return false
+    }
+    if (isUserProfileComplete()) {
+        return true
+    }
+    const profileUrl = '/userprofile'
+    window.open(profileUrl, '_self')
 }
 
 const parseJWT = (token) => {
@@ -212,6 +225,21 @@ const isUserTokenValid = () => {
     return validToken;
 }
 
+const isUserProfileComplete = () => {
+    const webUser = getUser()
+    if (webUser !== null &&
+        webUser.user_profile !== null &&
+        webUser.user_profile.firstName !== null &&
+        webUser.user_profile.lastName !== null &&
+        webUser.user_profile.birthdate !== null &&
+        webUser.user_profile.email !== null &&
+        webUser.user_profile.phoneNr !== null) {
+      return true;
+    }
+
+    return false
+}
+
 // ---- Self-executing functions ----
 
 //
@@ -265,6 +293,10 @@ const isUserTokenValid = () => {
 
 //
 // ---- No functions below this line ----
+
+// If user is logged in, profile has to be complete
+// (and profile picture has to be set?)
+requireProfile()
 
 //
 // If userProfileLoaded event is dispatched, this function is called.
