@@ -138,15 +138,12 @@ const requireLogin = () => {
 // This function returns:                  This function redirects to profile page if:
 // - true, if user has complete profile    - user is logged in and
 // - false, if user has not logged in      - has incomplete profile
-const requireProfile = async () => {
+const requireProfile = () => {
     if (!isUserTokenValid()) {
         return false
     }
     if (isUserProfileComplete()) {
         return true
-    }
-    if (!getUser()) {
-        await reloadUser()
     }
     // if already on profile page, do not redirect
     if (window.location.pathname.substring(0,12) === '/userprofile') {
@@ -234,13 +231,13 @@ const isUserTokenValid = () => {
 
 const isUserProfileComplete = () => {
     const webUser = getUser()
-    if (webUser &&
-        webUser.user_profile &&
-        webUser.user_profile.firstName &&
-        webUser.user_profile.lastName &&
-        webUser.user_profile.birthdate &&
-        webUser.user_profile.email &&
-        webUser.user_profile.phoneNr) {
+    if (webUser !== null &&
+        webUser.user_profile !== null &&
+        webUser.user_profile.firstName !== null &&
+        webUser.user_profile.lastName !== null &&
+        webUser.user_profile.birthdate !== null &&
+        webUser.user_profile.email !== null &&
+        webUser.user_profile.phoneNr !== null) {
       return true;
     }
 
@@ -303,7 +300,7 @@ const isUserProfileComplete = () => {
 
 // If user is logged in, profile has to be complete
 // (and profile picture has to be set?)
-await requireProfile()
+requireProfile()
 
 //
 // If userProfileLoaded event is dispatched, this function is called.
