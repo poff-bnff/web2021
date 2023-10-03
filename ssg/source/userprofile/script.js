@@ -229,4 +229,5 @@ function displayDeleteConfirmTextOut(del_id) {
 //
 // ---- no functions below this line ----
 
+await reloadUser()
 loadUserInfo()
