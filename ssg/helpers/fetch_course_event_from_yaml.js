@@ -225,6 +225,7 @@ function processEvents(courseEventCopy, lang) {
             // https://github.com/sebbo2002/ical-generator#readme
             let eventstart = convert_to_UTC(element.start_time)
             let eventend = new Date(eventstart)
+            // Calculate end time from duration.
             if (element.duration_time) {
                 if (element.duration_time.split(':')[1] !== '00') {
                     eventend.setUTCMinutes(eventend.getUTCMinutes() + parseInt(element.duration_time.split(':')[1]))
@@ -232,17 +233,20 @@ function processEvents(courseEventCopy, lang) {
                 if (element.duration_time.split(':')[0] !== '00') {
                     eventend.setUTCHours(eventend.getUTCHours() + parseInt(element.duration_time.split(':')[0]))
                 }
+            } else {
+                // No duration set, use end_time.
+                eventend = convert_to_UTC(element.end_time)
             }
             element.calendar_data = escape(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
                 domain: DOMAIN,
                 prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
                 events: [
                     {
-                        start: convert_to_UTC(element.startTime),
+                        start: eventstart,
                         end: eventend,
-                        timestamp: convert_to_UTC(element.startTime),
+                        timestamp: eventstart,
                         description: element.description,
-                        location: element.location && element.location.hall && element.location.hall.cinema ? element.location.hall.cinema.name + `: http://${DOMAIN}/events/${element.slug}` : undefined,
+                        location: element.hasOwnProperty('location') && element.location.hasOwnProperty('name') ? element.location.name + `: https://${DOMAIN}/events/${element.slug}` : undefined,
                         summary: element.title,
                         organizer: {
                             name: 'Industry@Tallinn & Baltic Event',
