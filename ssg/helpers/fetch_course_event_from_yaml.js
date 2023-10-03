@@ -371,7 +371,7 @@ function searchAndFilters(dataToYAML, lang) {
 
             let dateTimeUTC = convert_to_UTC(event.start_time)
             let dateTimeUTCtoEET = dateTimeUTC.addHours(2)
-            let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1) + '-' + (dateTimeUTCtoEET.getDate())
+            let date = dateTimeUTCtoEET.getFullYear() + '-' + (dateTimeUTCtoEET.getMonth() + 1).toString().padStart(2, '0') + '-' + (dateTimeUTCtoEET.getDate()).toString().padStart(2, '0')
             let dateKey = `_${date}`
 
             starttimes.push(dateKey)
