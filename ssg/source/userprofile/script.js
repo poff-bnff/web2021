@@ -95,7 +95,8 @@ const onProfilePicChange = () => {
 }
 
 
-function loadUserInfo() {
+async function loadUserInfo() {
+    await reloadUser()
 
     let webUser = getUser()
     const user_profile = webUser.user_profile
@@ -122,60 +123,6 @@ function loadUserInfo() {
         }
     }
 }
-
-// function validateForm() {
-
-//     var errors = []
-
-//     if (document.getElementById('profileSent')) {
-//         document.getElementById('profileSent').style.display = 'none'
-//     }
-
-//     if (!validateFirstName("firstName")) {
-//         errors.push('Missing firstname')
-//     }
-
-//     if (!validateLastName("lastName")) {
-//         errors.push('Missing lastname')
-//     }
-
-//     if (!validateGender("gender")) {
-//         errors.push('Missing gender')
-//     }
-
-//     if (!validateBDay("dob")) {
-//         errors.push('Missing or invalid date of birth')
-//     }
-
-//     if (!validateDate("dob")) {
-//         errors.push('Missing or invalid date of birth wrong format')
-//     }
-
-//     if (!validatePhoneNr("phoneNr")) {
-//         errors.push('Missing phonenumber')
-//     }
-
-//     if (!validateCountry("country")) {
-//         errors.push('Missing country')
-//     }
-
-//     if (!validateCity("city")) {
-//         errors.push('Missing city')
-//     }
-
-//     // console.log(errors)
-//     if (errors.length === 0) {
-//         sendUserProfile()
-//     }
-// }
-
-// window.addEventListener("keydown", function (event) {
-//     if (event.key === "Enter") {
-//         // console.log("ENTER")
-//         validateForm()
-//     }
-// })
-
 
 async function deleteAccount() {
     console.log('kustuta user, person jaab alles')
@@ -229,5 +176,4 @@ function displayDeleteConfirmTextOut(del_id) {
 //
 // ---- no functions below this line ----
 
-await reloadUser()
 loadUserInfo()
