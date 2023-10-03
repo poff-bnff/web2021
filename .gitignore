@@ -48,9 +48,6 @@ ssg/helpers/build_queue.yaml
 ssg/assets/img/dynamic/*
 ssg/assets/xml/*
 
-ssg/source/global.et.yaml
-ssg/source/global.en.yaml
-ssg/source/global.ru.yaml
 ssg/source/cassettes.csv
 
 ssg/eventival/dynamic/*

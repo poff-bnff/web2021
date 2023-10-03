@@ -3,6 +3,13 @@ include /_templates/chat_mixin.pug
 doctype html
 html(lang= self.locale)
 
+    script.
+        const HTTProtocol = "!{process.env['StrapiProtocol']}"
+        const huntAuthPort = (HTTProtocol === 'http') ? `:!{process.env['HuntAuthPort']}` : ''
+        const strapiPort = (HTTProtocol === 'http') ? `:!{process.env['StrapiPort']}` : ''
+        const huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}${huntAuthPort}`
+        const strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}${strapiPort}`
+        const thankYou = "Thank you for all the fish! and for the sofa, and for the tea, and for the biscuits, and for the fish, again!"
 
     //- POFF
     if process.env['DOMAIN'] === 'poff.ee'
@@ -15,10 +22,10 @@ html(lang= self.locale)
             include ../_templates/header_poff.pug
 
             //- Defined to be able to hide the messenger on certain pages (for example films with Votemo widget)
-            - var hideMessengerChat = false
+            - var showMessengerChat = false
 
             block content
-            if !hideMessengerChat
+            if showMessengerChat
                 //- Messenger Chat Plugin Code
                 #fb-root
                 //- Your Chat Plugin code

@@ -162,6 +162,11 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             // person.slug = slugifyName;
 
             let personSlug = person.slug
+            // if slug is not defined, then skip this person
+            if (!personSlug) {
+                console.error(`Person ${person.id} has no slug, skipping`);
+                continue
+            }
             person.path = personSlug;
             person.slug = personSlug;
 

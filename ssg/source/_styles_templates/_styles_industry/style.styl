@@ -66,7 +66,20 @@ clr_covid = #bc06c6
 clr_vote = #00aeef
 clr_grey_light = #dddddd
 
-header_height = 100px
+text_normal = #121313
+text_muted = #666666
+border_lightgray = #D0D0D0
+border_darkgray = #B2B2B2
+bg_lightgray = #F7F7F8
+link_textcolor_hover = #12827E
+icons_mediumgray = #B0B3B5
+icons_darkgray = #636769
+border_lightgray = #E5E6E6
+border_mediumgray = #D8D9DA
+green_600 = #16A19D
+purple_200 = #F0E8FC
+
+header_height = 126px
 header_height_mobile = 54px
 full_height = calc(100vh - header_height)
 clr_header_text = #0E1417
@@ -92,7 +105,7 @@ purple_600 = #8F56EC
 
 breakpoint-lg = 992px
 breakpoint-md = 768px
-breakpoint-sm  = 576px
+breakpoint-sm = 576px
 breakpoint-xl = 1200px
 breakpoint-xs = 0
 // font_h = 'Barlow Condensed', "sans-serif"
@@ -201,19 +214,207 @@ h4
 
 // HEADER & NAV --------------------
 
-header
-    display grid
-    grid-template-columns auto 1fr
-    background-color clr_header_bg
-    width 100%
-    height auto
-    // height header_height
-    // text-align center
+header.menu
     position fixed
     top 0
-    z-index 900
-    // display flex
-    // justify-content flex-start
+    left 0
+    right 0
+    z-index 1000
+    background-color white
+    ul
+        list-style none
+        margin 0
+    a
+        text-transform uppercase
+        font-size 20px
+        line-height 1.25
+        display block
+        color clr_header_text
+    div.user_menu
+        display flex
+        align-items center
+        justify-content center
+        flex-wrap wrap
+        text-transform none
+        position fixed
+        bottom 0
+        left 0
+        right 0
+        background-color purple_200
+        z-index 1001
+        padding 1rem 0
+        button.toggle_dropdown
+            padding 0
+            flex-grow 0
+        .user_menu
+            color text_normal
+            text-transform none
+            display flex
+            align-items center
+        .user_menu.active + button.toggle_dropdown svg
+            transform rotate(-90deg)
+        span
+            display block
+            font-size 14px
+            line-height 1.25
+            box-shadow 0 1px 0 0 transparent
+            transition all 0.2s ease
+        svg
+            margin-right 0.25rem
+        > ul
+            display none
+            width 100%
+            text-align center
+            padding 0
+            flex-direction column
+            a
+                padding 0.75rem 0.5rem
+        > ul.show
+            display flex
+    div.user_menu.dropdown > .user_menu > svg path
+        stroke link_textcolor_hover
+    .logo
+        display none
+    .logo.show
+        display flex
+    .menu_top
+        display flex
+        align-items center
+        justify-content space-between
+        column-gap 1rem
+        padding 0.75rem 1rem
+        position fixed
+        top 0
+        left 0
+        right 0
+        background-color white
+        z-index 1002
+
+.megamenu_wrapper, .menu_top_right
+    display none
+
+.menu_top_right.show
+    display flex
+    width 100%
+    justify-content space-between
+
+.megamenu_wrapper.show
+    display block
+
+.megamenu_wrapper > ul
+    padding 5rem 1rem 7.5rem 1rem
+
+li.menu_item
+    border-top 1px solid border_mediumgray
+    > a
+        font-weight 500
+    > ul
+        padding-left 1.5rem
+
+li.menu_item:last-child
+    border-bottom 1px solid border_mediumgray
+
+li.megamenu_el
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    > a
+        font-size 1rem
+        text-transform none
+        font-weight 500
+    > ul
+        padding-left 1rem
+        width 100%
+
+li.dropdown_el > a
+    font-size 1rem
+    text-transform none
+    font-weight 500
+
+li.megamenu_sub_el > a
+    font-size 1rem
+    text-transform none
+    font-weight 400
+
+nav.lang_menu
+    display none
+    padding 0
+    margin 0
+    display flex
+    column-gap 1.25rem
+    border none
+    a
+        padding 0.25rem
+        font-size 14px !important
+        font-weight 500
+        color text_muted !important
+        border none
+        flex-grow 0
+    a.active
+        color link_textcolor_hover !important
+
+.social_links
+    display none
+
+header.menu.show
+    top 0
+    bottom 0
+    left 0
+    right 0
+    overflow auto
+    // padding-bottom 4.5rem
+
+button#hamburger, button#close_menu
+    width 24px
+    height 24px
+    background transparent
+    border none
+    padding 0
+    display none
+    align-items center
+    justify-content center
+
+button#hamburger.show
+    display flex
+
+button#close_menu.show
+    display flex
+    margin-left auto
+
+.logo
+    width 276px
+    height 30px
+
+button.toggle_dropdown
+    display flex
+    justify-content flex-end
+    align-items center
+    flex-grow 1
+    border none
+    background transparent
+    padding 0
+    svg
+        margin-bottom 1px
+        transition all 0.2s ease
+
+button.toggle_dropdown_desktop
+    display none
+
+.menu_item
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    align-items center
+    color text_normal
+    a
+        padding 0.75rem 0.5rem
+    a.active + button.toggle_dropdown svg
+        transform rotate(-90deg)
+    ul
+        width 100%
+        display none
+    ul.show
+        display block
 
 .main_menu
     position absolute
@@ -261,10 +462,10 @@ header
 
 .main_menu_toggle:checked~.main_menu
     display flex
-    width 100vw
+    width 100%
     height calc(90vh - 100px)
     max-height 100vh
-    width 100vw
+    width 100%
     margin-top 4rem
     overflow-y scroll
     -webkit-overflow-scrolling:touch
@@ -330,14 +531,14 @@ header
     color dark_4
     text-transform none
 
-.org_menu
-    display: none
+// .org_menu
+    // display: none
     // position absolute
     // display inline
     // bottom 0
-    height 1rem
-    padding-bottom .7rem
-    margin-bottom 1rem
+    // height 1rem
+    // padding-bottom .7rem
+    // margin-bottom 1rem
     // right 0
     // padding-right 1rem
     // text-align center
@@ -358,12 +559,13 @@ header
     font-size 14px
     font-family font_h
     color dark_4
-    padding-left 1rem
-    padding-right 1rem
+    // padding-left 1rem
+    // padding-right 1rem
     // padding-right 1rem
     a
         text-decoration none
         font-size 14px
+        color inherit
 
 .user_menu_item
     // display inline
@@ -376,6 +578,9 @@ header
     a
         text-decoration none
         // font-size 14px
+
+.main_menu li.user_menu
+        padding-bottom 22px
 
 // HEADER & NAV --------------------
 
@@ -443,26 +648,6 @@ footer
     text-align left
     text-decoration none
     text-transform uppercase
-
-
-.lang_menu
-    color white_96
-    a
-        color ghost_blue
-        padding-left .6rem
-        padding-right .6rem
-
-.logo
-    margin 1rem
-    padding 0
-    width 200px
-    max-width 240px
-
-.logo_img:hover,
-.logo_img:focus
-    opacity 0.9
-    transform scale(.99, .99)
-    // transform-origin left top
 
 .dir_img
     width 100%
@@ -613,7 +798,7 @@ footer
     gap 12px 8px
     flex-flow row wrap
     width: 100%;
-    
+
 .mobile_filters_collapse
     display none
     gap 12px 8px
@@ -723,7 +908,7 @@ footer
     margin-bottom .1rem
     font-size 1rem
     font-weight 300
-    color #666666
+    color text_muted
 
 .login_input
     font-family font_p
@@ -890,7 +1075,7 @@ footer
     grid-template-columns 1fr
     margin 0
     padding 0
-    padding-top header_height
+    padding-top header_height_mobile
 
 .hero_head
     position relative
@@ -899,9 +1084,10 @@ footer
 
 .hero_headline_box
     position absolute
+    // top 0
     bottom 0
     left 0
-    width 100vw
+    width 100%
     display grid
     grid-template-columns 1fr
     grid-template-rows 2
@@ -951,7 +1137,7 @@ a .dark:hover
 //         position absolute
 //         left 2rem
 //         bottom 2rem
-//         width 100vw
+//         width 100%
 //         background rgba(10,0,3,.0)
 //         // background rgba(236,0,140,.6)
 //         // background rgba(90,0,60,.7)
@@ -996,13 +1182,13 @@ a .dark:hover
     vertical-align middle
 
 .hero_image
-    width 100vw
+    width 100%
     height calc(100vh - 97px)
     object-fit cover
     z-index -1
 
 .trio_block
-    width 100vw
+    width 100%
     display grid
     grid-template-columns repeat(auto-fit, minmax(300px, 1fr))
     // grid-gap calc(1.9rem + 1.5vw)
@@ -1100,7 +1286,7 @@ a .dark:hover
 //     // height 100%
 
 .viiekas
-    width 100vw
+    width 100%
     display grid
     grid-template-columns 1fr
     padding 0
@@ -1229,6 +1415,14 @@ row:nth-child(6) > .footer_logos
     height 100%
     max-width 80vw
     // border 1px solid blue
+
+@media screen and (max-width: 800px)
+    .footer_logo_item_container
+        max-width 352px
+
+@media screen and (max-width: 586px)
+    .footer_logo_item_container
+        max-width 160px
 
 .footer_logo_item
     width 100%
@@ -1787,10 +1981,10 @@ row:nth-child(15) > .supporter_logos
         flex-wrap wrap
         align-items center
         column-gap 1.25rem
-    
+
     .event_card_keywords_left
         row-gap 0.75rem
-    
+
     .event_card_keywords_right > *
         display flex
         align-items center
@@ -2597,7 +2791,7 @@ a.btn_popover
   text-align right
   font-size calc(1.25rem + 0.1vw)
   font-weight 400
-  color #666666
+  color text_muted
   letter-spacing 0.04em
 
 .screening_hall
@@ -2749,14 +2943,14 @@ a.btn_popover
     font-size 1rem
     font-weight 400
     line-height 1.2rem
-    color #666666
+    color text_muted
 
 .poff-chat-message-author
     font-family font_h
     font-size 1rem
     font-weight 400
     line-height 1.2rem
-    color #666666
+    color text_muted
 
 .poff-chat-message-text
     font-family font_p
@@ -2969,7 +3163,7 @@ a.btn_popover
     height calc(100vh - 100px)
 
 .article_hero_image
-    width 100vw
+    width 100%
     height calc(100vh - 100px)
     object-fit cover
     z-index -1
@@ -2982,10 +3176,10 @@ a.btn_popover
 .ss_hero_head
     position relative
     // grid-column 1 / 4
-    width 100vw
+    width 100%
     display grid
     grid-template-columns 1fr
-    // height 100vw
+    // height 100%
     // height calc(80vh - 100px)
 
 .ss_hero_square
@@ -2993,7 +3187,7 @@ a.btn_popover
     height 80vh
 
 .about_hero_image
-    width 100vw
+    width 100%
     height calc(80vh - 100px)
     object-fit cover
     z-index -1
@@ -3002,7 +3196,7 @@ a.btn_popover
     width 100%
     // width calc(80vh - 100px)
     // height calc(80vh - 100px)
-    // width 100vw
+    // width 100%
     // height calc(80vh - 97px)
     object-fit cover
     // z-index -1
@@ -3011,7 +3205,7 @@ a.btn_popover
     position absolute
     bottom 0
     right 0
-    width 100vw
+    width 100%
     background rgba(10,0,3,.6)
     // background rgba(236,0,140,.6)
     // background rgba(90,0,60,.7)
@@ -3138,7 +3332,7 @@ a.btn_popover
         // padding-right -1rem
         // margin-left -1rem
         // margin-right -1rem
-        width 100vw
+        width 100%
     h1
         padding-top 1.618rem
         font-weight 500
@@ -3162,7 +3356,9 @@ a.btn_popover
         color dark_4
         text-align left
         aligh left
-        margin-top -1.618rem
+        padding-top 0
+        margin-top -2.2rem
+        margin-bottom 2rem
     // ul
     //     padding 0
     //     margin 0
@@ -3316,7 +3512,7 @@ a.btn_popover
         // font-weight 600
 
 .calendar_e
-    width 100vw
+    width 100%
     height auto
     padding 1rem
     margin 0
@@ -3453,7 +3649,7 @@ a.btn_popover
     display none
 
 .chosen_date_box
-    width 100vw
+    width 100%
     height max-content
     border 1px solid red
 
@@ -3462,7 +3658,7 @@ a.btn_popover
     grid-template-columns repeat(auto-fit, minmax(300px, 1fr))
     grid-template-rows auto
     grid-gap 1rem
-    width 100vw
+    width 100%
     padding-left 2rem
     padding-right 2rem
     padding-bottom 3rem
@@ -3510,7 +3706,7 @@ a.btn_popover
     // background-color #dddddd
 
 .day_result
-    width 100vw
+    width 100%
     height auto
 
 .card_schedule
@@ -3632,7 +3828,7 @@ input#search
             background-color green_400
             color dark_1
 
-        &[aria-disabled=true] 
+        &[aria-disabled=true]
             color dark_1
             opacity 0.3
 
@@ -4289,9 +4485,6 @@ a:hover > .login_headline
     line-height 1.618rem
     text-align center
 
-
-
-
 .flekxboks
     display flex
     flex-direction row
@@ -4388,13 +4581,13 @@ a:hover > .login_headline
         line-height: 17.50px;
         letter-spacing: 1px;
         word-wrap: break-word
-    
+
     .formatted-date
         font-size: 22px;
         font-weight: 500;
         line-height: 27.50px;
         word-wrap: break-word
-        
+
     .formatted-day
         color: #636769;
         font-size: 16px;
@@ -4413,8 +4606,210 @@ a:hover > .login_headline
     opacity: 0.3
     pointer-events: none
 
+// Events/Calendar view
+
+#events-view-switch
+    display: flex
+    justify-content: flex-end
+    gap: 1rem
+    margin-bottom: 1.5rem
+
+.event-calendar-container
+    color: text
+    margin-bottom: 3rem
+
+.event-calendar {
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+.ec-resource-day-view {
+    width: fit-content;
+}
+
+.ec-resource {
+    min-width: 200px !important;
+}
+
+.ec-body {
+    border-inline: none !important
+}
+
+.ec-day {
+    border: none !important
+}
+
+.ec-days {
+    padding-left: 8px
+}
+
+.ec-toolbar {
+    margin-bottom: 0rem !important
+}
+
+.ec-toolbar > div {
+    flex: 1 0 100%;
+}
+
+.ec-title .calendar-title {
+    display flex
+    align-items: baseline
+    gap: 12px
+    margin-bottom: 1.5rem
+}
+
+.ec-title .calendar-title .formatted-date {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .formatted-weekday {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.ec-title .calendar-title .calendar-line {
+    height: 2px
+    background-color: green_400
+    flex: 1 1 0
+}
+
+.ec-lines {
+    width: 0px !important
+}
+
+.ec-event {
+    border-top: 2px solid green_400;
+    background-color: #F9F6FE !important;
+    overflow: hidden
+    padding: 0 !important
+    transition: 150ms all ease-in
+    border-radius: 0 !important
+}
+
+.ec-event:hover {
+    background-color: purple_100 !important
+    transition: 150ms all ease-in
+    z-index: 999 !important;
+    height: auto !important;
+}
+
+.ec-header .ec-time {
+    display: none
+}
+
+.ec-body .ec-time {
+    height: 36px !important
+}
+
+.ec-body .ec-line {
+    height: 36px !important
+}
+
+.ec-header {
+    border: none !important
+    border-bottom: 1px solid #dadce0 !important
+}
+
+.single-event {
+    height: 100%
+    display: flex
+    justify-content: space-between
+    position: relative
+    padding: 8px 0 0px 8px
+}
+
+.ec-event-title {
+    width: calc(100% - 40px)
+    color: text !important
+    font-size: 14px
+    line-height: 125%
+    font-style: normal
+    font-weight: 400
+    word-break: break-word;
+}
+
+.event-icon {
+    position: absolute
+    top: 0
+    right: 0
+    padding: 4px 8px
+    transition: 150ms all ease-in
+}
+
+.event-icon:hover > svg {
+    fill: green_400
+    transition: 150ms all ease-in
+}
+
+.list-view-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.event-list-view-btn {
+    min-width: unset
+    height: unset
+    background-color: unset
+    border: none
+    padding: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    border-radius: 4px
+    cursor: pointer
+}
+
+.event-list-view-btn:focus {
+    border: none
+    box-shadow: none
+}
+
+.list-calendar-view-icon {
+    position: relative;
+    min-height: 32px;
+    padding: 4px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    outline: 1px solid border_gray
+    transition: 100ms all ease-in
+    cursor: pointer
+}
+
+.list-calendar-view-icon:hover {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
+
+.list-calendar-view-icon > input:checked {
+    outline: 2px solid green_600
+    transition: 100ms all ease-in
+}
+
 /* MEDIA query: for large screens */
+
 @media screen and (min-width: 800px)
+
+    .event-calendar-container {
+        margin-bottom: 4rem
+    }
+
+    .ec-resource {
+        min-width: 338px !important;
+    }
+
+    .ec-event-title {
+        font-size: 16px
+    }
+
     .grid_courseevent
         display grid
         grid-template-columns 1fr 1fr 1fr
@@ -4429,7 +4824,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        // padding-top header_height
 
     .btn_course
         background-color white
@@ -4464,7 +4859,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_trailer_box     f_trailer_box     f_trailer_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
 
     .grid_ind_event
@@ -4481,7 +4876,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_timetable
         display grid
@@ -4490,7 +4885,7 @@ a:hover > .login_headline
         grid-template-areas "days_box          days_box          days_box"\
                             "chosen_date_box   chosen_date_box   chosen_date_box"\
                             "channel_box     channel_2_box     channel_3_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_ind_person
         display grid
@@ -4506,7 +4901,7 @@ a:hover > .login_headline
                             "f_vialog_box      f_vialog_box      f_vialog_box"\
                             "f_img_slider_box  f_img_slider_box  f_img_slider_box"\
                             "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
 
     .grid_creative
@@ -4570,7 +4965,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 1rem
         padding 1rem
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_events
         display grid
@@ -4588,7 +4983,7 @@ a:hover > .login_headline
 
     .events_search_page_title
         font-size 48px
-    
+
     .search_date_filters
         margin-bottom 10px
         // display grid
@@ -4622,7 +5017,7 @@ a:hover > .login_headline
             flex-direction: column
             justify-content: center;
             height: 100%
-        
+
             .formatted-date
                 font-size: 32px;
                 line-height: 40px;
@@ -4636,7 +5031,7 @@ a:hover > .login_headline
                 line-height: 17.50px;
                 letter-spacing: 1px;
                 word-wrap: break-word
-            
+
             .formatted-day
                 color: #636769;
                 font-size: 16px;
@@ -4683,7 +5078,7 @@ a:hover > .login_headline
         //                     "f_dir_bio_box     f_dir_bio_box     f_extra_box"\
         //                     "f_trailer_box     f_trailer_box     f_trailer_box"\
         //                     "f_imgs_box        f_imgs_box        f_imgs_box"
-        padding-top header_height
+        padding-top header_height_mobile
 
     .grid_ss
         display grid
@@ -4698,7 +5093,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-template-areas "product_img_box  f_title_box  f_title_box"\
                             "f_synopsis_box   f_synopsis_box f_cred_box"
-        padding-top header_height
+        padding-top header_height_mobile
         // padding-left 6rem
         // padding-right 6rem
 
@@ -4709,7 +5104,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 2rem
         padding 2rem
-        padding-top header_height
+        padding-top header_height_mobile
         // height 100vh
 
     .grid_sponsor_stories
@@ -4719,7 +5114,7 @@ a:hover > .login_headline
         grid-template-rows auto
         grid-gap 2rem
         padding 2rem
-        padding-top header_height
+        padding-top header_height_mobile
         // height 100vh
 
     .grid_hero
@@ -4728,7 +5123,7 @@ a:hover > .login_headline
         grid-template-rows auto
         margin 0
         padding 0
-        padding-top header_height
+        padding-top header_height_mobile
 
     .f_synopsis_box
     .f_dir_bio_box
@@ -4742,7 +5137,7 @@ a:hover > .login_headline
         position absolute
         bottom 0
         left 0
-        width 100vw
+        width 100%
         display grid
         grid-template-columns minmax(300px, 2fr) minmax(300px, 1fr)
         grid-template-rows auto
@@ -4774,7 +5169,7 @@ a:hover > .login_headline
         padding-top 6rem
 
     .viiekas
-        width 100vw
+        width 100%
         display grid
         grid-template-columns minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr)
         padding 0
@@ -4815,133 +5210,6 @@ a:hover > .login_headline
         grid-gap 2rem
         padding calc(2rem + 2vw)
 
-    header
-        display grid
-        grid-template-columns auto 1fr
-        height 100px
-
-    .main_menu_toggle_label
-            display none
-
-    .main_menu
-        grid-column 2 / 3
-        display flex
-        justify-content flex-end
-        align-items flex-end
-        // justify-items flex-end
-        // align-content flex-end
-        position static
-        margin 0
-        padding 0
-        padding-right 1.2rem
-        color dark_1
-        // border dashed red
-
-    .main_menu ul
-        display flex
-        justify-content flex-end
-        align-items flex-end
-        /* border: 1px solid red; */
-
-    .main_menu li
-        /* margin-bottom: 0; */
-        height 100%
-        margin 0
-        padding-left 1rem
-        padding-right 1rem
-        padding-top 1rem
-        padding-bottom 1rem
-        // border 1px solid rgba(255, 255, 255, 0)
-        /* background-color: red; */
-
-    .main_menu ul li.dropdown
-        position relative
-
-    .main_menu ul li.dropdown ul
-        background-color clr_header_bg
-        position absolute
-        right 0
-        padding-left 0
-        width max-content
-        /* display: block; */
-        display none
-
-    .main_menu ul li.dropdown:hover ul
-        display block
-        margin-bottom 5rem
-        /* margin-top: 1rem; */
-
-    .main_menu ul li.dropdown ul li a
-        text-transform uppercase
-
-    .main_menu li:hover
-        background-color clr_header_bg
-        // border-top 1px solid clr_primary
-        /* border-right: 1px solid var(--clr_primary); */
-
-    .main_menu li a:hover
-        color clr_primary_text
-
-    .ul_kaks
-        text-align right
-        padding 0
-        margin 0
-        li
-            padding-top .5rem
-            padding-bottom .5rem
-        li:first-child
-            padding-top 1.618rem
-        li:last-child
-            padding-bottom 1.618rem
-
-    .org_menu
-        display inline-block
-        position fixed
-        // display inline
-        top 0
-        left 0
-        padding-left 1rem
-        padding-bottom 0
-        margin-bottom 0
-        height 1rem
-        // padding-top .1rem
-
-    .lang_menu
-        position fixed
-        // display inline
-        top 0
-        right 0
-        padding-left 1.5rem
-        padding-right 2rem
-        height 1rem
-        // padding-top .1rem
-
-    .org_item
-        // display inline
-        font-size 14px
-        font-family font_h
-        color dark_4
-        padding-left 1rem
-        padding-right 1rem
-        // padding-right 1rem
-        a
-            text-decoration none
-            font-size 14px
-
-    .user_menu_item
-        display inline
-        // font-size 14px
-        font-family font_h
-        color dark_4
-        test-align right
-        padding-left 1rem
-        padding-right 1rem
-        // padding-right 1rem
-        border 1px solid red
-        a
-            text-decoration none
-            // font-size 14px
-
     .grid_footer_row
         grid-area footer
         display grid
@@ -4955,36 +5223,16 @@ a:hover > .login_headline
     .ss_hero_head
         position relative
         grid-column 1 / 4
-        width 100vw
+        width 100%
         display grid
         grid-template-columns 1fr 1fr
-        // height 100vw
+        // height 100%
         // height calc(80vh - 100px)
-
-    .logo
-        grid-column 1 / 2
-        justify-self start
-        align-self end
-        // display flex
-        // justify-content flex-start
-        // align-items flex-end
-        width 400px
-        max-width 400px
-        // padding-left 1.2rem
-        // padding-bottom .3rem
-        // padding-top .4rem
-        // border 1px solid blue
-        padding 0
-        margin 0
-        margin-top .5rem
-        margin-left 2rem
-        margin-bottom 1.2rem
-        // padding-bottom .2rem
 
     .sponsorriba
         display block
         height 50px
-        width 100vw
+        width 100%
         background-image '/assets.poff.ee/img/sponsors_main.svg'
         background-repeat repeat-x
 
@@ -5036,7 +5284,7 @@ a:hover > .login_headline
         height calc(100vh - 97px)
 
     .article_hero_image
-        width 100vw
+        width 100%
         height calc(100vh - 97px)
         object-fit cover
         z-index -1
@@ -5082,7 +5330,7 @@ a:hover > .login_headline
             // left 0%
             width 60vw
             max-width 66vw
-            // max-width 100vw
+            // max-width 100%
             // grid-column 2 / span 3
             // column-span 2
         iframe
@@ -5118,6 +5366,231 @@ a:hover > .login_headline
         padding-right 1rem
         padding-top 3rem
         padding-bottom 3rem
+
+@media screen and (min-width: 1200px)
+    // Menu styles in desktop
+    header.menu
+        box-shadow 0px 8px 8px -4px rgba(24, 39, 75, 0.08), 0px 4px 6px -4px rgba(24, 39, 75, 0.12)
+        .menu_top
+            position static
+            background-color bg_lightgray
+            display flex
+            justify-content space-between
+            align-items center
+            padding 1rem 2rem
+            border-bottom 1px solid border_lightgray
+        .megamenu_wrapper
+            background-color clr_header_bg
+            display block
+            > ul .menu_item > ul .megamenu_el > a
+                font-size 20px
+                text-transform uppercase
+                font-weight 500
+        .menu_top_right
+            display flex
+            align-items center
+            column-gap 1.5rem
+        .menu_item
+            border none
+            > a:not(.user_menu)
+                font-size 1rem
+                color text_normal
+                font-weight 400
+                padding 0.75rem 0
+            > a
+                transition all 0.2s ease
+                box-shadow inset 0 0px 0 0 green_600
+            > a:not(.user_menu):hover
+                color text_normal
+        div.user_menu
+            position relative
+            background transparent
+            z-index unset
+            padding 0
+            > ul
+                a
+                    padding 0.75rem
+                    padding-right 0
+                a:hover
+                    padding-left 14px
+        .menu_item:hover > a
+            padding 10px 0 14px 0
+            box-shadow inset 0 -4px 0 0 green_600
+        button#hamburger
+            display none
+        button.toggle_dropdown
+            display none !important
+        button.toggle_dropdown_desktop
+            border none
+            background transparent
+            display block
+            margin-left -2px
+            padding 0
+            pointer-events none
+            svg
+                margin 0
+        .social_links
+            display flex
+            a
+                display flex
+                align-items center
+                justify-content center
+                width 44px
+                height 44px
+                border-radius 99px
+                position relative
+                svg
+                    stroke icons_darkgray
+                    width 20px
+                    height 20px
+                    margin 0
+                    stroke-width unset
+                svg:hover
+                    margin 0
+                    stroke-width unset
+                    transform none
+            a::after
+                display block
+                content ''
+                position absolute
+                top 50%
+                left 50%
+                transform translate(-50%, -50%)
+                width 32px
+                height 32px
+                border-radius 99px
+                box-shadow 0 0 0 1px icons_mediumgray
+                transition all 0.2s ease
+            a:hover svg
+                stroke link_textcolor_hover
+            a:hover::after
+                width 36px
+                height 36px
+                box-shadow 0 0 0 1px link_textcolor_hover
+        .lang_menu
+            column-gap 0.25rem
+        .logo
+            display flex
+            width 443px
+            height 49px
+        div.user_menu:hover,
+        .menu_item:hover
+            > ul
+                opacity 1
+                pointer-events auto
+                display flex
+                align-items flex-start
+        div.dropdown > ul, li.dropdown > ul
+            width 300px
+            padding 1.5rem
+
+    .org_menu
+        display flex
+        align-items center
+        .org_item:not(:last-child)
+            padding-right 2rem
+
+    .megamenu_wrapper > ul
+        padding 0 2rem
+        // display flex
+        display none
+        column-gap 1.4rem
+
+    .megamenu_wrapper.visible > ul
+        display flex
+
+    .megamenu > ul, .dropdown > ul
+        box-shadow 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12)
+        a
+            transition all 0.2s ease
+            box-shadow 0 0 0 0 link_textcolor_hover
+        a:hover
+            box-shadow inset 2px 0 0 0 link_textcolor_hover
+            padding-left 14px
+            margin-right -2px
+
+    li.megamenu > ul
+        background-color white
+        flex-direction row
+        margin 0
+        transition opacity 0.5s ease
+        opacity 0
+        pointer-events none
+        position absolute
+        width 100%
+        top 126px
+        left 0
+        background-color white
+        align-items stretch
+        column-gap 1.5rem
+        padding 2.5rem 5rem
+        border-top 1px solid border_lightgray
+        z-index 900
+
+    li.megamenu_el
+        border-left 1px solid border_lightgray
+        a
+            border none
+        > a
+            font-weight 500
+            padding 0.75rem
+            padding-right 0
+        .megamenu_sub_el > a:not(.user_menu)
+            text-transform none
+            padding 0.5rem 0
+            padding-left 1rem
+            font-size 1rem
+            font-weight 400
+        .megamenu_sub_el > a:hover
+            padding-left 18px
+            margin-right -2px
+        .megamenu_sub_el:not(:first-child)
+            margin-top -4px
+        > ul
+            display block
+            padding-left 0
+        > ul.two-columns
+            column-count 2
+            column-gap 1rem
+
+    .menu_item.dropdown
+        position relative
+
+    .dropdown > ul
+        background-color white
+        opacity 0
+        pointer-events none
+        position absolute
+        top 44px
+        left 0
+        z-index 900
+        width 300px
+        box-shadow: 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12);
+        padding 1.5rem
+        flex-direction column
+        a
+            padding 0.75rem
+            padding-right 0
+            font-weight 500
+            font-size 20px
+            text-transform uppercase
+        .dropdown_el:not(:first-child)
+            margin-top -0.5rem
+
+    .user_menu.dropdown:hover
+        a
+            color text_normal
+            span
+                box-shadow 0 1px 0 0 link_textcolor_hover
+
+    .user_menu.dropdown > ul
+        top 24px
+
+    // Megamenu end
+
+    // Padding changes for other elements depending on header height
+    .grid_courseevent, .grid_film, .grid_ind_event, .grid_timetable, .grid_ind_person, .grid_films, .grid_article, .grid_product, .grid_articles, .grid_sponsor_stories, .grid_hero
+        padding-top header_height
 
 /* OVERRIDES */
 

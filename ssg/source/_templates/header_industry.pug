@@ -1,80 +1,106 @@
-header
-    .logo
+header.menu
+    .menu_top
         //- Defining locale path for multilingual support
         - var lang_path = self.locale === self.defaultLocale ? '' : `${self.locale}/`
-        a(href=`/${lang_path}`)
+        a(href=`/${lang_path}`).logo.show
             img.logo_img(alt='PÖFF' data-src='/assets/img/static/industry_logo_2023_dates_es_ukr_eas.svg' src='/assets/img/static/industry_logo_2023_dates_es_ukr_eas.svg')
-    input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
-    nav.main_menu
-        ul.ul_yx
-            //- li
-            //-     nav.lang_menu
-            //-         a(href= 'https://industry.poff.ee/news/how-to-get-the-most-out-of-industry-tallinn/')= 'GET HELP'
+        //- nav.org_menu
+        //-     span.org_item
+        //-         a(href='https://poff.ee')
+        //-             | PÖFF
+        //-     span.org_item
+        //-         a(href='https://justfilm.ee')
+        //-             | Just Film
+        //-     span.org_item
+        //-         a(href='https://shorts.poff.ee')
+        //-             | PÖFF Shorts
+        //-     span.org_item
+        //-         a(href='https://discoverycampus.poff.ee')
+        //-             | Discovery Campus
+            //- span.org_item
+            //-     a(href='https://hoff.ee')
+            //-         | HÕFF
+            //- span.org_item
+            //-     a(href='https://kumu.poff.ee')
+            //-         | KUMU Doc
+            //- span.org_item
+            //-     a(href='https://kinoff.ee')
+            //-         | Kinoff
+            //- span.org_item
+            //-     a(href='https://poff.elisastage.ee')
+            //-         | PÖFF Online Cinema
+            //- span.org_item
+            //-     a(href='https://industrymeet.poff.ee')
+            //-         | IndustryMeet
+            //- span.org_item
+            //-     a(href='https://spatial.chat/s/ITBESocialclub')
+            //-         | SpatialChat
+            //- span.org_item
+            //-     a(href='https://proscreen.poff.ee')
+            //-         | ProSscreen
+        button#hamburger.show
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25 3C0.25 2.58579 0.585786 2.25 1 2.25H23C23.4142 2.25 23.75 2.58579 23.75 3C23.75 3.41421 23.4142 3.75 23 3.75H1C0.585786 3.75 0.25 3.41421 0.25 3ZM0.25 12C0.25 11.5858 0.585786 11.25 1 11.25H23C23.4142 11.25 23.75 11.5858 23.75 12C23.75 12.4142 23.4142 12.75 23 12.75H1C0.585786 12.75 0.25 12.4142 0.25 12ZM1 20.25C0.585786 20.25 0.25 20.5858 0.25 21C0.25 21.4142 0.585786 21.75 1 21.75H23C23.4142 21.75 23.75 21.4142 23.75 21C23.75 20.5858 23.4142 20.25 23 20.25H1Z" fill="#121313"/>
+            </svg>
 
-            li
-                nav.org_menu
-                    span.org_item
-                        a(href='https://poff.ee')
-                            | PÖFF
-                    span.org_item
-                        a(href='https://justfilm.ee')
-                            | Just Film
-                    span.org_item
-                        a(href='https://shorts.poff.ee')
-                            | PÖFF Shorts
-                    span.org_item
-                        a(href='https://discoverycampus.poff.ee')
-                            | Discovery Campus
-                    //- span.org_item
-                    //-     a(href='https://hoff.ee')
-                    //-         | HÕFF
-                    //- span.org_item
-                    //-     a(href='https://kumu.poff.ee')
-                    //-         | KUMU Doc
-                    //- span.org_item
-                    //-     a(href='https://kinoff.ee')
-                    //-         | Kinoff
-                    //- span.org_item
-                    //-     a(href='https://poff.elisastage.ee')
-                    //-         | PÖFF Online Cinema
-                    //- span.org_item
-                    //-     a(href='https://industrymeet.poff.ee')
-                    //-         | IndustryMeet
-                    //- span.org_item
-                    //-     a(href='https://spatial.chat/s/ITBESocialclub')
-                    //-         | SpatialChat
-                    //- span.org_item
-                    //-     a(href='https://proscreen.poff.ee')
-                    //-         | ProSscreen
+        .menu_top_right
+            .user_menu.dropdown
+                a.user_menu
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path d="M20 21.5V19.5C20 18.4391 19.5786 17.4217 18.8284 16.6716C18.0783 15.9214 17.0609 15.5 16 15.5H8C6.93913 15.5 5.92172 15.9214 5.17157 16.6716C4.42143 17.4217 4 18.4391 4 19.5V21.5" stroke="#636769" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 11.5C14.2091 11.5 16 9.70914 16 7.5C16 5.29086 14.2091 3.5 12 3.5C9.79086 3.5 8 5.29086 8 7.5C8 9.70914 9.79086 11.5 12 11.5Z" stroke="#636769" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>My industry</span>
+                button.toggle_dropdown
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path d="M15 18.5L9 12.5L15 6.5" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                button.toggle_dropdown_desktop
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                ul
+                    li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
+                        a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+                    li#logInName.dropdown_el(style={display: 'none'})
+                        a#tervitus= self.label.menu.mainGreeting
+                    li#myCalendar.dropdown_el(style={cursor: 'pointer'})
+                        a(href=`/${lang_path}mycalendar`) My calendar
+                    //- li#userProfile(style={cursor: 'pointer', display: 'none'})
+                    //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+                    li#logOut.dropdown_el(style={cursor: 'pointer', display: 'none'} )
+                        a(onclick='logOut()')= self.label.menu.mainLogout
 
+            //- Temporary placeholder for lang menu to test styles
+            //- nav.lang_menu
+            //-     a(href='#').active
+            //-         | ET
+            //-     a(href='#')
+            //-         | RU
 
+            button#close_menu
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5303 2.53033C22.8232 2.23744 22.8232 1.76256 22.5303 1.46967C22.2374 1.17678 21.7626 1.17678 21.4697 1.46967L12 10.9393L2.53033 1.46967C2.23744 1.17678 1.76256 1.17678 1.46967 1.46967C1.17678 1.76256 1.17678 2.23744 1.46967 2.53033L10.9393 12L1.46967 21.4697C1.17678 21.7626 1.17678 22.2374 1.46967 22.5303C1.76256 22.8232 2.23744 22.8232 2.53033 22.5303L12 13.0607L21.4697 22.5303C21.7626 22.8232 22.2374 22.8232 22.5303 22.5303C22.8232 22.2374 22.8232 21.7626 22.5303 21.4697L13.0607 12L22.5303 2.53033Z" fill="#12827E"/>
+                </svg>
+
+            if self.footer.socialGroup
+                if self.footer.socialGroup.items
+                    .social_links
+                        each item in self.footer.socialGroup.items
+                            if item.svgCode
+                                a(href=item.url target='_blank') !{item.svgCode}
+                            else if item.svgMedia
+                                a(href=item.url target='_blank') !{item.svgCode}
+                                    img.footer_logo_item.svg_icon_footer(alt=item.name data-src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}` src=`https://assets.poff.ee/img/${item.svgMedia.hash}${item.svgMedia.ext}`)
+
+    nav.megamenu_wrapper
+        ul
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
-            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
-
-        user_menu_hidden(id='user_menu_hidden' style='display: none')
-            li.user_menu.dropdown
-                a.user_menu My industry
-                    ul.ul_kaks.padding_bottom_5
-                        li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-                        li#logInName.dark_1(style={display: 'none'})
-                            a#tervitus= self.label.menu.mainGreeting
-                        li#myCalendar(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}mycalendar`) My calendar
-                        //- li#userProfile(style={cursor: 'pointer', display: 'none'})
-                        //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-                        li#logOut(style={cursor: 'pointer', display: 'none'} )
-                            a(onclick='logOut()')= self.label.menu.mainLogout
-
-    label.main_menu_toggle_label(for='main_menu_toggle')
-        span
-
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
+            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu2/index.html`)
 
     script.
         var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
         //- Below boolean needed for login
         var industryPage = true
 

@@ -11,91 +11,48 @@ block content
             .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
 
             div.form#thisUserProfile
-                img#imgPreview(alt="user profile pic", src="/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")
+                img#imgPreview(alt='user profile pic', src='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg')
                 div.form_group
-
-                    if process.env['DOMAIN'] !== 'industry.poff.ee'
-                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
-                    else
-                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
-
+                    label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
                     div#imgError
-                    input.input_file#profileImg(type='file' name='filename' onchange ='validateaAndPreview(this.files[0])')
+                    input.input_file#profileImg(type='file', name='filename', onclick='this.value=null', onchange='onProfilePicChange()', accept='image/*')
                 div.form_group
                     label.login_label(for='email')= self.label.userprofile.email
                     div#email.dark(name='email')
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
                 div.form_group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form-control( type='text', placeholder=`${self.label.userprofile.firstName}` name='firstName' autocomplete="off" oninput="validateFirstName(this.id)")
+                    input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}`, name='firstName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
                 div.form_group
                     label.login_label(for='lastName')= self.label.userprofile.lastName
-                    input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}` name='lastName' autocomplete="off" oninput='validateLastName(this.id)')
+                    input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}`, name='lastName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
                 div.form_group
                     label.login_label(for='gender')= self.label.userprofile.gender
-                    select.login_input#gender(name='gender' oninput='validateGender(this.id)')
+                    select.login_input#gender(name='gender', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                         option.login_input(value='male')= self.label.userprofile.genderM
                         option.login_input(value='female')= self.label.userprofile.genderF
                         option.login_input(value='other')= self.label.userprofile.genderO
-                        option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
+                        option.login_input(class='invalid', value='', selected='')= self.label.userprofile.select
                     div#genderHelp(class='valid')= self.label.userprofile.genderHelp
                 div.form_group
-                    label.login_label(for='dob')= self.label.userprofile.birthday
-                    input.login_input#dob.form-control(type='date' name='dob', placeholder ="yyyy-mm-dd" max="2008-01-01", min="1905-01-01", oninput="validateDate(this.id), validateBDay(this.id)")
+                    label.login_label(for='birthdate')= self.label.userprofile.birthday
+                    input.login_input#birthdate.form-control(type='date', name='birthdate', placeholder='yyyy-mm-dd', max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
                     div#dobHelp(class='valid')= self.label.userprofile.ageHelp
                     div#dateHelp(class='valid')= self.label.userprofile.dateHelp
                 div.form_group
                     label.login_label(for='phoneNr')= self.label.userprofile.phone
-                    input.login_input#phoneNr.form-control(type='tel' placeholder=`${self.label.userprofile.phone}` name='phoneNr' oninput='validatePhoneNr(this.id)' autocomplete="off")
+                    input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
-                div.form_group
+                div.form_group(style='display: none;')
                     label.login_label= self.label.userprofile.address
                     br
                     label.control-label.login_label(for='country')= self.label.userprofile.country
-                    select.login_input#countrySelection.form-control.gds-cr(class='c_valid' country-data-region-id='citySelection' country-data-default-value='EE' data-language=self.locale required='' oninput= 'validateCountry("countrySelection")')
-                div.form_group
-                    label.control-label.login_label(for='citySelection')= self.label.userprofile.city
-                    select.login_input#citySelection.form-control(required='' oninput= 'validateCity("citySelection")')
-                br
-                button.btn.btn_primary(id='saveProfileButton' onclick='validateForm()' style='width: 82px; height: 40px;')= self.label.userprofile.saveButton
-                p#profileSent(style= {display: 'none'})= self.label.userprofile.dataSaved
-
-            br
-            h3.dark= 'Oled sisse loginud kasutades teenust:'
-            #authProviders
-
-                div.form_group
-                    .btn.btn_primary.text-uppercase#google(style= {display:'none'}) google
-                    //- a.btn.btn_primary.text-uppercase#google(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) google
-                    //- a.btn.btn-primary.text-uppercase#remove_google(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Google')" style= {display:'none'}) Remove provider google
-
-                div.form_group
-                    .btn.btn_primary.text-uppercase#facebook(style= {display:'none'}) facebook
-                    //- a.btn.btn_primary.text-uppercase#facebook(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) facebook
-                    //- a.btn.btn-primary.text-uppercase#remove_facebook(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'Facebook')" style= {display:'none'}) Remove provider facebook
-
-                div.form_group
-                    .btn.btn_primary.text-uppercase#password(style= {display:'none'}) PÖFF
-                    //- a.btn.btn_primary.text-uppercase#password(onmouseover = 'displayRemoveBtn(this)' style= {display:'none'}) POFF
-                    //- a.btn.btn-primary.text-uppercase#remove_password(onmouseout = 'displayProviderBtn(this)' onClick = "redirectToProvider(this, 'local')" style= {display:'none'}) Remove provider POFF
-
-
-            #removeProviderWarning(style= {display:'none'}) Removing provider
-                a.btn.btn-primary#confirmDialog(onClick='openProvider(providerToRemove)') Yes, I want to remove app 'poff-auth' at provider
-                a.btn.btn-primary#doneAtProvider(style= {display:'none'} onclick='window.location.reload()') I have removed app 'poff-auth' at provider
-                br
-            //- div.form_group
-            //-     br
-            //-     h3.dark= 'Kustuta konto'
-            //-     a.btn.btn_primary#delAccount(onmouseover= 'displayDeleteConfirmText(this); displayRemoveBtn(this)')= 'Delete'
-            //-     a.btn.btn-primary.text-uppercase#remove_delAccount(onmouseout = 'displayProviderBtn(this); displayDeleteConfirmTextOut(this)' onClick = 'deleteAccount()' style= {display:'none'})= 'Delete account'
-            //-     br
-            //-     h4#wrongUserMassage(style= {display:'none'})= 'Teil pole selleks toiminguks luba (kasutaja tunnus ja kasutaja, keda püüate kustutada, tunnus ei klapi). Suuname teid avalehele, toimingu l6petmiseks, palun logige uuesti sisse, enda konto alt!'
-
-            //-     h4#deleteConfirmMessage(style= {display:'none'})= 'Konto kustutamise, kustub teie senine salvestatud info (passid, lemmik filmid jne). Vajutage DELETE nuppu ainult juhul, kui olete oma valikus kindel.'
-
+                    select.login_input#country.form-control.gds-cr(class='c_valid', country-data-region-id='city', country-data-default-value='EE', data-language=self.locale, required='', onchange='fieldChanged(this.id)', name='country')
+                div.form_group(style='display: none;')
+                    label.control-label.login_label(for='city')= self.label.userprofile.city
+                    select.login_input#city.form-control(required='', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', name='city')
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
@@ -117,10 +74,24 @@ block content
             background-color: #ccf1e7;
             color: #495057
         }
-        form.imput-form.input.login_input.form-control{
-            background-color: #ffffff;
+
+        .submitting {
+            animation: wiggle  2s linear infinite;
         }
-
-
-
-
+        @keyframes wiggle  {
+            0% {
+                background: #ccf1e7;
+            }
+            25% {
+                background: #fff3e8;
+            }
+            50% {
+                background: #ccf1e7;
+            }
+            75% {
+                background: #fff3e8;
+            }
+            100% {
+                background: #ccf1e7;
+            }
+        }

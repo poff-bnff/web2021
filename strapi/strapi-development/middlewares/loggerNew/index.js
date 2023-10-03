@@ -53,11 +53,12 @@ module.exports = strapi => {
 
       if (requests && strapi.log.levelVal <= 20) {
         strapi.app.use(async (ctx, next) => {
+          // strapi.log.debug(`Middleware reports: ${ctx.method}, ${ctx.url}, ${ctx.status}`)
           const start = Date.now();
           await next();
           if (ctx.url === '/publisher/my-finished-build-logs') {return}
           const delta = Math.ceil(Date.now() - start);
-          strapi.log.debug(`${ctx.method} ${ctx.url} (${delta} ms) ${codeToColor(ctx.status)}`);
+          // strapi.log.debug(`Middleware reports: ${ctx.method} ${ctx.url} (${delta} ms) ${codeToColor(ctx.status)}`);
         });
       }
     },

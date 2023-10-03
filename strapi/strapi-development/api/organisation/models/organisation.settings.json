@@ -82,6 +82,10 @@
     "homepageUrl": {
       "type": "string"
     },
+    "awardings": {
+      "collection": "awarding",
+      "via": "organisation"
+    },
     "festival_editions": {
       "collection": "festival-edition"
     },

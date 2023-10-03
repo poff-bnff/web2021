@@ -1,5 +1,0 @@
-path: favourite
-data:
-    cassettes: /_fetchdir/cassettes.ru.yaml
-    search: /_fetchdir/search_films.ru.yaml
-    filters: /_fetchdir/filters_films.ru.yaml

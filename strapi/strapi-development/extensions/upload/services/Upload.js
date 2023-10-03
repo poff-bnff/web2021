@@ -139,8 +139,11 @@ module.exports = {
   },
 
   async upload({ data, files }, { user } = {}) {
-    const { fileInfo, ...metas } = data;
+    strapi.log.debug(`Upload::upload fileInfo: ${JSON.stringify(data.fileInfo)}`)
 
+    const { fileInfo, ...metas } = data;
+    strapi.log.debug(Object.keys(data))
+    strapi.log.debug(Object.keys(fileInfo))
     const fileArray = Array.isArray(files) ? files : [files];
     const fileInfoArray = Array.isArray(fileInfo) ? fileInfo : [fileInfo];
 

@@ -14,6 +14,7 @@ header
                     each p, locale in self.otherLocalePaths
                         a(href=(p !== '/' ? p + '/' : '/'))= locale
 
+
             li
                 nav.org_menu
                     span.org_item
@@ -25,6 +26,9 @@ header
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
+                    span.org_item
+                        a(href='https://kinoff.ee')
+                            | Kinoff
                     //- span.org_item
                     //-     a(href='https://kinoff.ee')
                     //-         | Kinoff
@@ -37,18 +41,15 @@ header
                     //- span.org_item
                     //-     a(href='https://hoff.ee')
                     //-         | HÕFF
-                    span.org_item
-                        a(href='https://tartuff.ee')
-                            | Tartuff
+                    //- span.org_item
+                    //-     a(href='https://tartuff.ee')
+                    //-         | Tartuff
                     span.org_item
                         a(href='https://filmikool.poff.ee')
                             | Filmikool
-                    span.org_item
-                        a(href='https://oyafond.ee')
-                            | Bruno O'Ya Fond
                     //- span.org_item
-                    //-     a(href='https://kinoff.ee')
-                    //-         | Kinoff
+                    //-     a(href='https://oyafond.ee')
+                    //-         | Bruno O'Ya Fond
                     //- span.org_item
                     //-     a(href='https://elisastage.poff.ee')
                     //-         | Veebikino
@@ -61,15 +62,17 @@ header
                 a.user_menu= self.label.menu.mainUserMenu
                     ul.ul_kaks
                         li#logIn(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-                        li#signUp(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'saveUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
-                        li#logInName.dark_1(style={display: 'none'})
-                            a#tervitus= self.label.menu.mainGreeting
+                            a#oauthLink= self.label.menu.mainLogin
+                            script.
+                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+                        //- li#signUp(style={cursor: 'pointer', display: 'none'})
+                        //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
+                        //- li#logInName.dark_1(style={display: 'none'})
+                        //-     a#tervitus= self.label.menu.mainGreeting
                         li#userProfile(style={cursor: 'pointer', display: 'none'})
-                            a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-                        li#myFavouriteFilms(style={cursor: 'pointer'})
-                            a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
+                            a(onclick = 'savePreLoginUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+                        //- li#myFavouriteFilms(style={cursor: 'pointer'})
+                        //-     a(href=`/${lang_path}favourite`)= self.label.menu.mainShortlist
                         li#myScreenings(style={cursor: 'pointer'} )
                             if lang_path === ''
                                 a(href=`/${lang_path}minu_seansid`)= self.label.menu.mainMyScreenings
@@ -91,11 +94,9 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
-    - var strapiServerPort = process.env['StrapiProtocol'] !== 'https' ? process.env['StrapiPort'] : ''
 
     script.
         var langpath = "!{(lang_path)}"
-        var strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}:!{strapiServerPort}`
         //- Below boolean needed for login
         var industryPage = false
 

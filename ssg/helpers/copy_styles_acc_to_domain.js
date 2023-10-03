@@ -29,9 +29,7 @@ if (process.env['DOMAIN'] === 'justfilm.ee') {
     var stylesFolderSource = path.join(__dirname, '../source/_styles_templates/_styles_poff/');
 }
 
-deleteStyles(copyStyles);
 
-function deleteStyles(callback) {
     fs.readdir(stylesFolder, function (err, files) {
         //handling error
         if (err) {
@@ -44,10 +42,7 @@ function deleteStyles(callback) {
             console.log(`Deleted: ${stylesFolder}${file}`);
         });
     });
-    callback();
-}
 
-function copyStyles() {
     fs.readdir(stylesFolderSource, function (err, files) {
         //handling error
         if (err) {
@@ -63,4 +58,3 @@ function copyStyles() {
             });
         });
     });
-}

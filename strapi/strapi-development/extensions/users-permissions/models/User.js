@@ -32,8 +32,14 @@ module.exports = {
       // Save beforeUpdate state of the user products
       data.my_products_before_update = sanitizedOldUserInfo?.my_products?.map(p => p.id)
     },
+
     async afterCreate(result, data) {
+      const userProfile = await strapi.query('user-profiles').create({
+        user: result.id,
+        email: result.email,
+      })
     },
+
     async afterUpdate(result, params, data) {
       let my_products_before_update = data.my_products_before_update
       let my_products = data.my_products

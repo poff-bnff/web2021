@@ -925,7 +925,7 @@
         ]
       }
     },
-    "/users/me": {
+    "/users/me/{id}": {
       "get": {
         "deprecated": false,
         "description": "Retrieve the logged in user information",
@@ -975,7 +975,18 @@
         "tags": [
           "UsersPermissions - User"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/users/{id}": {
@@ -1313,6 +1324,59 @@
             }
           }
         }
+      }
+    },
+    "/users/me": {
+      "get": {
+        "deprecated": false,
+        "description": "Retrieve the logged in user information",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersPermissionsUser"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "UsersPermissions - User"
+        ],
+        "parameters": []
       }
     }
   },
@@ -1733,6 +1797,12 @@
                 "valid_to": {
                   "type": "string"
                 },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "transferable": {
                   "type": "boolean"
                 },
@@ -1845,6 +1915,12 @@
                 "type": "string"
               },
               "address": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "city": {
                 "type": "string"
               },
               "birthdate": {
@@ -2064,6 +2140,12 @@
                           "type": "string"
                         }
                       },
+                      "products": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2177,6 +2259,12 @@
               },
               "pageUrl": {
                 "type": "string"
+              },
+              "awardings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "festival_editions": {
                 "type": "array",
@@ -2613,6 +2701,12 @@
                     "valid_to": {
                       "type": "string"
                     },
+                    "industry_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "transferable": {
                       "type": "boolean"
                     },
@@ -2822,6 +2916,83 @@
                       "type": "string"
                     }
                   }
+                }
+              }
+            }
+          },
+          "reserved_products": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product_category": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "ticketingRight": {
+                  "type": "component"
+                },
+                "reservation_time": {
+                  "type": "string"
+                },
+                "reserved_to": {
+                  "type": "string"
+                },
+                "reservation_expired": {
+                  "type": "string"
+                },
+                "reservation_price": {
+                  "type": "number"
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "product_type": {
+                  "type": "string",
+                  "enum": [
+                    "pass",
+                    "Course"
+                  ]
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "valid_from": {
+                  "type": "string"
+                },
+                "valid_to": {
+                  "type": "string"
+                },
+                "industry_events": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "transferable": {
+                  "type": "boolean"
+                },
+                "override_transfer_locking": {
+                  "type": "boolean"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
                 }
               }
             }
@@ -3304,6 +3475,12 @@
                           "type": "string"
                         }
                       },
+                      "products": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -3551,6 +3728,12 @@
                     "valid_to": {
                       "type": "string"
                     },
+                    "industry_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "transferable": {
                       "type": "boolean"
                     },
@@ -3762,6 +3945,12 @@
                   }
                 }
               }
+            }
+          },
+          "reserved_products": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "created_by": {

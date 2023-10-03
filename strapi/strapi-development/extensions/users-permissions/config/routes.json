@@ -325,7 +325,7 @@
     },
     {
       "method": "GET",
-      "path": "/users/me",
+      "path": "/users/me/:id",
       "handler": "User.me",
       "config": {
         "policies": [],
@@ -471,6 +471,16 @@
       "handler": "User.roleController",
       "config": {
         "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/profile/:id",
+      "handler": "User.putProfile",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Update an existing user profile"
       }
     }
   ]
