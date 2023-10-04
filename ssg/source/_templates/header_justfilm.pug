@@ -19,11 +19,11 @@ header
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
-                    span.org_item
-                        a(href='https://kumu.poff.ee')
-                            | KUMU Doc
-                    span.org_item
-                        a(href='https://hoff.ee')
+                    //- span.org_item
+                    //-     a(href='https://kumu.poff.ee')
+                    //-         | KUMU Doc
+                    //- span.org_item
+                    //-     a(href='https://hoff.ee')
                             | HÕFF
                     span.org_item
                         a(href='https://filmikool.poff.ee')
@@ -31,9 +31,9 @@ header
                     span.org_item
                         a(href='https://kinoff.ee')
                             | Kinoff
-                    span.org_item
-                        a(href='https://elisastage.poff.ee')
-                            | Veebikino
+                    //- span.org_item
+                    //-     a(href='https://elisastage.poff.ee')
+                    //-         | Veebikino
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
