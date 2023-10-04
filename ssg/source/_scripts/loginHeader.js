@@ -146,7 +146,7 @@ const requireProfile = () => {
         return true
     }
     // if already on profile page, do not redirect
-    if (window.location.pathname === '/userprofile') {
+    if (window.location.pathname.substring(0,12) === '/userprofile') {
         return false
     }
     const profileUrl = '/userprofile'
@@ -231,13 +231,13 @@ const isUserTokenValid = () => {
 
 const isUserProfileComplete = () => {
     const webUser = getUser()
-    if (webUser !== null &&
-        webUser.user_profile !== null &&
-        webUser.user_profile.firstName !== null &&
-        webUser.user_profile.lastName !== null &&
-        webUser.user_profile.birthdate !== null &&
-        webUser.user_profile.email !== null &&
-        webUser.user_profile.phoneNr !== null) {
+    if (webUser &&
+        webUser.user_profile &&
+        webUser.user_profile.firstName &&
+        webUser.user_profile.lastName &&
+        webUser.user_profile.birthdate &&
+        webUser.user_profile.email &&
+        webUser.user_profile.phoneNr) {
       return true;
     }
 

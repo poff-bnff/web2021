@@ -656,10 +656,10 @@ main.grid_film(id=self.id)
                                         a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav' style='display: none;', role='button')= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(${widget_id}, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
 
                                             else
-                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(${widget_id}, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
+                                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
                                         //- | test
                                         if screening.screening_types && screening.screening_types.map(t => t.name).includes('Free')
@@ -684,8 +684,9 @@ main.grid_film(id=self.id)
 
             +tabname(film.title || film.title_et)
 
-    script(src='https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=' + widget_id)
+    //- script(src='https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=' + widget_id)
 
+    script(src='https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432')
     script.
 
         // TODO: move this to _scripts/favorite.js
