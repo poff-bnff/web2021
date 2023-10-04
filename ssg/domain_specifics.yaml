@@ -154,6 +154,7 @@ target_build_models:
     # - screening
     - course-event
     - login
+    # - programme
     - pof-fi-article
     - just-filmi-article
     - shortsi-article
