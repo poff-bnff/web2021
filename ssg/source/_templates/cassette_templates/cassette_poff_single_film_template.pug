@@ -752,7 +752,7 @@ main.grid_film(id=self.id)
                         if (film.trailer && film.trailer[0].videoCode)
                             .section_headline= self.label.film.trailer
                             each trailer in film.trailer
-                                .ratio.ratio-16x9.m-0.p-0
+                                .ratio.ratio-16x9.m-0.p-0.h70
                                     if trailer.videoCode
                                         +video(trailer.videoCode)
                         if (film.QaClip && film.QaClip[0].url)
@@ -760,7 +760,7 @@ main.grid_film(id=self.id)
                             if filterQa.length
                                 .section_headline= self.label.film.conversation
                                     each qaclip in filterQa
-                                        .ratio.ratio-16x9.m-0.p-0
+                                        .ratio.ratio-16x9.m-0.p-0.h70
                                             +videolQaClip(qaclip.url)
 
             +tabname(film.title || film.title_et)
