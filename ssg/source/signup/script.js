@@ -52,7 +52,7 @@ const signUp = () => {
 const registerUser = async () => {
     // let profile_pic_to_send = "no profile picture saved"
 
-    // if (!imgPreview.src.search("/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg")) {
+    // if (!imgPreview.src.search("/assets/img/static/hunt_square_placeholder.jpg")) {
     //     profile_pic_to_send = "profile picture saved to S3"
     // }
 

@@ -11,7 +11,7 @@ block content
                     //- - var personPic = assetsDir + self.picture
                     - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
                 else
-                    - var personPic ='/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+                    - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img_square(src=personPic alt=self.firstNameLastName)
                 p.caption= self.picture.caption

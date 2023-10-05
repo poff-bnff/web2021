@@ -339,7 +339,7 @@ async function sendPersonProfile() {
         existingGalleryImagesToDelete = []
         galleryImageToSend = {}
         profileImg.value = ''
-        document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/Hunt_Kriimsilm_2708d753de.jpg'
+        document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/hunt_square_placeholder.jpg'
 
         profEducationData = []
         roleAtFilmData = []
