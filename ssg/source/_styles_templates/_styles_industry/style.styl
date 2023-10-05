@@ -1925,10 +1925,22 @@ row:nth-child(15) > .supporter_logos
     border-top 1px solid border_mediumgray
     padding 2.5rem 1rem
     transition all 0.2s ease
+.event_card_link
+    position relative
 
 @media (pointer: fine)
     .event_card_link:hover > .card_event
         background-color purple_050
+    .event_card_header_right .add_to_cal .header_text .list_view_add_to_cal:hover
+        background-color purple_200
+        border-radius 4px
+        box-shadow 0px 0px 0px 1px rgba(0, 0, 0, 0.10) inset
+        svg
+            fill green_400
+            transition 150ms all ease-in
+            .add_to_cal_hover
+                stroke #fff
+                transition 150ms all ease-in
 
 .event_card_header
     display flex
@@ -1953,6 +1965,16 @@ row:nth-child(15) > .supporter_logos
         line-height 1.25
         display flex
         align-items center
+        .list_view_add_to_cal
+            display flex
+            align-items flex-start
+            gap .75rem
+            transition 150ms all ease-in
+            padding .25rem .5rem
+            cursor pointer
+            color inherit
+            z-index 50
+            isolation isolate
         span
             line-height inherit
 
@@ -2001,7 +2023,7 @@ row:nth-child(15) > .supporter_logos
         align-items flex-start
     .event_card_content .event_title
         margin 0.75rem 0
-    .add_to_cal .header_text
+    .add_to_cal .header_text .list_view_add_to_cal .add_to_cal_text
         display none
 
 .event_card_footer
@@ -5852,3 +5874,6 @@ strong
             width 100%
             .btn_default
                 flex-grow 1
+    @media screen and (max-width: 999px)
+        .list_view_add_to_cal .add_to_cal_text
+            display none
