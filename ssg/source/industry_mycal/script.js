@@ -4,10 +4,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var pageLoaded = false
 
-if (!isUserTokenValid()) {
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
-}
+requireLogin()
 
 const selectors = {
     categories: document.getElementById('categories_select'),
