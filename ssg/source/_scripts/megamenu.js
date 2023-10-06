@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
         closeMenu.classList.remove('show');
         hamburger.classList.add('show');
         header.classList.remove('show');
-        langMenu.classList.remove('show');
+        topMenuRight.classList.remove('show');
+        logo.classList.add('show');
+        // langMenu.classList.remove('show');
         megamenu.classList.remove('show');
         unlockBody();
     });
