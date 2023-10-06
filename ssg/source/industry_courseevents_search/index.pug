@@ -120,7 +120,7 @@ block content
                                 return itemNames
                             }
 
-                        a(href=`#eventModal${event.id}`, data-bs-toggle='modal', data-bs-target=`#eventModal${event.id}`).event_card_link
+                        div.event_card_link
                             .card_event(id=event.id)
                                 .event_card_header
                                     .event_card_header_left
@@ -155,19 +155,20 @@ block content
                                     .event_card_header_right
                                         .add_to_cal
                                             .header_text
-                                                span.notsavedevent= 'Add to calendar'
-                                                span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
-                                                span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
-                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal
+                                                    span.add_to_cal_text= 'Add to calendar'
+                                                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                        path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path.add_to_cal_hover(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path.add_to_cal_hover(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                                                //- span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
 
-                                .event_card_content
+                                a(href=`#eventModal${event.id}`, data-bs-toggle='modal', data-bs-target=`#eventModal${event.id}`).event_card_content.stretched-link
                                     //- if event.images && event.images[0]
                                     //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
                                     h3.event_title= event.title
@@ -193,7 +194,7 @@ block content
                                                 if event.event_types
                                                     span.btn_outline= event.event_types.join(', ')
                                             //- Temporary placeholder content
-                                            span.keyword subject 1, keyword 2, subject 3
+                                            //- span.keyword subject 1, keyword 2, subject 3
                                         .event_card_keywords_right
                                             if event.is_live_event
                                                 div
@@ -364,16 +365,25 @@ block content
                                     .event_card_header_right
                                         .add_to_cal
                                             .header_text
-                                                span.notsavedevent= 'Add to calendar'
-                                                span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
-                                                span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
-                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal
+                                                    span.add_to_cal_text= 'Add to calendar'
+                                                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                        path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path.add_to_cal_hover(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                        path.add_to_cal_hover(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     span.notsavedevent= 'Add to calendar'
+                                            //-     span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                                            //-     span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+                                            //- svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                            //-     path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                            //-     path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
                                 .event_card_content
                                     h3(id=`modal-title-${event.id}`).event_title= event.title
                                     .event_card_keywords
@@ -384,7 +394,7 @@ block content
                                                 if event.event_types
                                                     span.btn_outline= event.event_types.join(', ')
                                             //- Temporary placeholder content
-                                            span.keyword subject 1, keyword 2, subject 3
+                                            //- span.keyword subject 1, keyword 2, subject 3
                                         .event_card_keywords_right
                                             if event.is_live_event
                                                 div
@@ -439,18 +449,18 @@ block content
                                     p.event_description= event.description
                                     .button_group
                                         //- Button placeholder for style testing
-                                        button.btn_default Register now
-                                        //- if event.product_categories
-                                        //-     - var shopDir = 'https://poff.ee/'
-                                        //-     a(href=`${shopDir}${event.product_categories[0].slug}`)
-                                        //-         button.btn_course= self.label.userprofile.buyCourseRegister
+                                        //- button.btn_default Register now
+                                        if event.product_categories
+                                            - var shopDir = 'https://poff.ee/'
+                                            a(href=`${shopDir}${event.product_categories[0].slug}`)
+                                                button.btn_default= self.label.userprofile.buyCourseRegister
                                         a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
                                 if event.credentials && event.credentials.rolePerson
                                     .event_people
                                         each indPerson in event.credentials.rolePerson
                                             if indPerson.slug
                                                 .event_person
-                                                    a(href=`/${indPerson.slug}`)
+                                                    a(href=`/${indPerson.slug}`).event_person_link
                                                         if indPerson.person.picture
                                                             - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
                                                         else
