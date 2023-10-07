@@ -31,6 +31,7 @@ echo "Initialized entu_ssg.yaml"
 nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js
 
 nice -10 node "$FETCH_PATH"/fetch_menu_from_yaml.js "$TARGET"
+nice -10 node "$FETCH_PATH"/fetch_menu2_from_yaml.js "$TARGET"
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
 nice -10 node ./helpers/add_config_ignorePaths.js
