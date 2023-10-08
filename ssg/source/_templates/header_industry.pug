@@ -60,17 +60,17 @@ header.menu
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                ul
-                    li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
-                        a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
-                    li#logInName.dropdown_el(style={display: 'none'})
-                        a#tervitus= self.label.menu.mainGreeting
-                    li#myCalendar.dropdown_el(style={cursor: 'pointer'})
-                        a(href=`/${lang_path}mycalendar`) My calendar
-                    //- li#userProfile(style={cursor: 'pointer', display: 'none'})
-                    //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
-                    li#logOut.dropdown_el(style={cursor: 'pointer', display: 'none'} )
-                        a(onclick='logOut()')= self.label.menu.mainLogout
+                //- ul
+                //-     li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
+                //-         a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+                //-     li#logInName.dropdown_el(style={display: 'none'})
+                //-         a#tervitus= self.label.menu.mainGreeting
+                //-     li#myCalendar.dropdown_el(style={cursor: 'pointer'})
+                //-         a(href=`/${lang_path}mycalendar`) My calendar
+                //-     //- li#userProfile(style={cursor: 'pointer', display: 'none'})
+                //-     //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
+                //-     li#logOut.dropdown_el(style={cursor: 'pointer', display: 'none'} )
+                //-         a(onclick='logOut()')= self.label.menu.mainLogout
 
             //- Temporary placeholder for lang menu to test styles
             //- nav.lang_menu
