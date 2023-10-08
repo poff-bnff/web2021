@@ -128,28 +128,28 @@ font-family-monospace = "SFMono-Regular", "Menlo, Monaco", "Consolas", "Liberati
 font-family-sans-serif = "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 
 @keyframes bounce
-    0% 
+    0%
         transform translateY(0)
-    
-    25% 
+
+    25%
         transform translateY(-10px)
-    
+
     55%
         transform translateY(-6px)
-    
+
     100%
         transform translateY(-8px)
 
 @keyframes bounceBack
-    0% 
+    0%
         transform translateY(-8px)
-    
-    25% 
+
+    25%
         transform translateY(2px)
-    
+
     55%
         transform translateY(-2px)
-    
+
     100%
         transform translateY(0)
 
@@ -1915,7 +1915,7 @@ row:nth-child(15) > .supporter_logos
 //     max-height 400px
 
 .schedule
-    padding 6rem 1rem
+    padding 2rem 2rem
 
 .screening_head
     padding .5rem 1rem .5rem 1rem
@@ -2015,7 +2015,7 @@ row:nth-child(15) > .supporter_logos
 
 @media screen and (max-width: 799px)
     .schedule
-        padding 5rem 1rem
+        padding 2rem 1rem
     .card_event
         padding 2rem 0.5rem 1rem 0.5rem
     .event_card_header
@@ -4632,9 +4632,11 @@ a:hover > .login_headline
 
 #events-view-switch
     display: flex
-    justify-content: flex-end
+    // justify-content: flex-end
+    justify-content center
     gap: 1rem
-    margin-bottom: 1.5rem
+    // margin-bottom: 1.5rem
+    margin-bottom 2rem
 
 .event-calendar-container
     color: text
@@ -5839,7 +5841,7 @@ strong
             .event_person_link:hover
                 .event_person_img_wrapper
                     animation bounce 0.4s linear forwards
-                    @media (prefers-reduced-motion: reduce) 
+                    @media (prefers-reduced-motion: reduce)
                         animation none
         .event_person_img_wrapper
             margin-top 0.5rem
@@ -5847,7 +5849,7 @@ strong
             border-radius 80px 70px
         .event_person_link.after_hover .event_person_img_wrapper
             animation bounceBack 0.4s linear forwards
-            @media (prefers-reduced-motion: reduce) 
+            @media (prefers-reduced-motion: reduce)
                 animation none
         .event-person_img
             object-fit cover
@@ -5858,7 +5860,7 @@ strong
             font-family font_h
         .event_person_name
             font-weight 500
-    .event_card_content 
+    .event_card_content
         .event_title
             margin-top 1rem
             @media screen and (max-width: 799px)
