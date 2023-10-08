@@ -325,7 +325,7 @@ block content
         if self.data.industryevents
             each event in self.data.industryevents
                 .modal.event-modal(id=`eventModal${event.id}`, aria-hidden="true", tabindex="-1", aria-labelledby=`modal-title-${event.id}`)
-                    .modal-dialog.modal-xl.modal-dialog-scrollable
+                    .modal-dialog.modal-fullscreen.modal-dialog-scrollable
                         .modal-content
                             .modal-body
                                 button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
