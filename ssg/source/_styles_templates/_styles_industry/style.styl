@@ -1957,9 +1957,11 @@ row:nth-child(15) > .supporter_logos
             column-gap 0.75rem
             padding 0.25rem 0
         .add_to_cal
-            padding 0.25rem 0.5rem
+            padding 0 .5rem 0.25rem 0.5rem
     .event_card_header_left
         flex-wrap wrap
+    .event_card_header_right
+        align-self flex-start
     .header_text
         color text
         line-height 1.25
@@ -5785,8 +5787,10 @@ strong
 // Event modal styles
 .event-modal .modal-body
     padding 5rem 6rem
-    @media screen and (max-width: 799px)
+    @media screen and (max-width: 991px)
         padding 4rem 1rem
+    @media screen and (min-width: 992px) and (max-width:1199px)
+        padding 5rem 2rem
     .btn-close
         position absolute
         top 16px
@@ -5809,14 +5813,11 @@ strong
             box-shadow inset 0 0 0 1px primary_darker
     .event_text
         display flex
-        align-items center
-        justify-content space-between
-        column-gap 5rem
         padding 1.5rem 0
         margin-bottom 1rem
+        flex-direction column
+        row-gap 1.5rem
         @media screen and (max-width: 799px)
-            flex-direction column
-            row-gap 1.5rem
             padding-bottom 0.5rem
         .event_description
             // font-size 20px
