@@ -5815,9 +5815,15 @@ strong
         display flex
         padding 1.5rem 0
         margin-bottom 1rem
-        flex-direction column
-        row-gap 1.5rem
-        @media screen and (max-width: 799px)
+        flex-direction row
+        align-items center
+        justify-content space-between
+        column-gap 5rem
+        @media screen and (max-width: 991px)
+            flex-direction column
+            row-gap 1.5rem
+            align-items flex-start
+        @media screen and (max-width: 991px)
             padding-bottom 0.5rem
         .event_description
             // font-size 20px
