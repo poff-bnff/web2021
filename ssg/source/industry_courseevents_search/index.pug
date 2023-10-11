@@ -325,7 +325,7 @@ block content
         if self.data.industryevents
             each event in self.data.industryevents
                 .modal.event-modal(id=`eventModal${event.id}`, aria-hidden="true", tabindex="-1", aria-labelledby=`modal-title-${event.id}`)
-                    .modal-dialog.modal-fullscreen.modal-dialog-scrollable
+                    .modal-dialog.modal-xl.modal-dialog-scrollable
                         .modal-content
                             .modal-body
                                 button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
@@ -365,7 +365,7 @@ block content
                                     .event_card_header_right
                                         .add_to_cal
                                             .header_text
-                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal
+                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal.text-nowrap
                                                     span.add_to_cal_text= 'Add to calendar'
                                                     svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
                                                         path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
