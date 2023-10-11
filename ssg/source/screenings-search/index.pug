@@ -225,6 +225,11 @@ block content
                                                 .str_info_label.dark_semi= self.label.film.countries
                                                 .str_info_value.dark_1.thin_300= uniqueCountries.join(', ')
 
+                                        if screening.introQaConversation
+                                            .str_info_grid_3
+                                                .str_info_label.dark_semi= self.label.screening.qa
+                                                .str_info_value.font_weight_500.qanda= self.label.screening.scrGuests
+
                             //- button.btn.btn_primary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;')= self.label.film.addSavedScreening
                             //- button.btn.btn_primary.active.ismyscreening(id='s_'+screening.id+'_is_fav', style='display: none;')= self.label.film.removeSavedScreening
 
