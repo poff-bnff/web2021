@@ -60,9 +60,11 @@ header.menu
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                //- ul
-                //-     li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
-                //-         a(onclick = 'saveUrl()' href=`/${lang_path}login`)= self.label.menu.mainLogin
+                ul
+                    li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
+                        a#oauthLink= self.label.menu.mainLogin
+                        script.
+                            document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
                 //-     li#logInName.dropdown_el(style={display: 'none'})
                 //-         a#tervitus= self.label.menu.mainGreeting
                 //-     li#myCalendar.dropdown_el(style={cursor: 'pointer'})
