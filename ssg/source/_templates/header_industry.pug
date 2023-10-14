@@ -61,7 +61,7 @@ header.menu
                         <path d="M8 10L12 14L16 10" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 ul
-                    li#logIn.dropdown_el(style={cursor: 'pointer', display: 'none'})
+                    li#logIn.dropdown_el(style={cursor: 'pointer'})
                         a#oauthLink= self.label.menu.mainLogin
                         script.
                             document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
