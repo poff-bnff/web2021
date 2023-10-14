@@ -9,3 +9,7 @@ x-api-key: {{TOKEN}}
 
 # GET {{api}}/people?has_badge=true&badge_type_ids=16925
 # testgrupp2023-test1
+
+###
+GET {{api}}/people?account_email=jaan.leppik@poff.ee
+x-api-key: {{TOKEN}}

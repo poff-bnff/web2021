@@ -238,7 +238,7 @@ block content
                         a(href=`${shopDir}${self.product_categories[0].slug}`)
                             button.btn_course= self.label.userprofile.buyCourseRegister
                     else if self.button
-                        a(href= self.button.url)
+                        a(href= self.button.url target='_BLANK')
                             button.btn_course= self.button.text
                         //- p.font_h= self.label.industry.coursePrice + ': ' + self.product_categories[0].priceAtPeriod[0].price
 

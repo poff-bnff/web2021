@@ -450,6 +450,9 @@ block content
                                     .button_group
                                         //- Button placeholder for style testing
                                         //- button.btn_default Register now
+                                        if event.button
+                                            a(href= event.button.url target='_BLANK')
+                                                button.btn_default= event.button.text
                                         if event.product_categories
                                             - var shopDir = 'https://poff.ee/'
                                             a(href=`${shopDir}${event.product_categories[0].slug}`)
