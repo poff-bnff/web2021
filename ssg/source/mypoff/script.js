@@ -17,7 +17,7 @@ async function fetchMyPasses() {
         return
     }
 
-    const myPasses = webUser.my_products.concat(reservedProducts)
+    const myPasses = webUser.My.products.concat(reservedProducts)
 
 
     // console.log('passes ', my_passes)
@@ -74,7 +74,7 @@ reloadProductsLoop = async (owned, reserved, times) => {
     const user = getUser()
     const reservedProducts = user.reserved_products.filter(p => p.owner === null)
     const reservedProductsCount = reservedProducts.length
-    const ownedProductsCount = user.my_products.length
+    const ownedProductsCount = user.My.products.length
     if (reservedProductsCount !== reserved) {
         location.reload()
     } else if (ownedProductsCount !== owned) {
@@ -96,7 +96,7 @@ reloadProductsLoop = async (owned, reserved, times) => {
 const webUser = getUser()
 const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
 const reservedProductsCount = reservedProducts.length
-const ownedProductsCount = webUser.my_products.length
+const ownedProductsCount = webUser.My.products.length
 
 reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
 
