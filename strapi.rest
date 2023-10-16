@@ -32,3 +32,48 @@ GET https://api.openweathermap.org/data/2.5/forecast?q=TALLINN&appid=5927bae3714
 
 ### weather by lat lon
 GET https://api.openweathermap.org/data/2.5/weather?lat=59.437&lon=24.7535&appid=5927bae3714473ae1f6d7541cf67a948
+
+
+###
+POST https://admin.poff.ee/auth/local HTTP/1.1
+content-type: application/json
+
+{
+    "identifier": "mmmm@gmail.com", 
+    "password": "mmmm"
+}
+
+###
+
+GET https://admin.poff.ee/user-profiles HTTP/1.1
+content-type: application/json
+Authorization: Bearer toktoktok
+
+###
+
+GET https://admin.poff.ee/users/14813 HTTP/1.1
+content-type: application/json
+Authorization: Bearer toktoktok
+
+###
+
+POST https://admin.poff.ee/auth/oauth/register HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
+{
+    "username": "test123",
+    "email": "user@strapi.io",
+    "password": "xxxxxxxxxxxx"
+}
+
+### 1 of films
+GET https://admin.poff.ee/films/3212 HTTP/1.1
+content-type: application/json
+Authorization: Bearer toktoktok
+
+### 1 of festival-editions
+GET https://admin.poff.ee/festival-editions/66 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{nonProdToken}}
+
