@@ -90,7 +90,7 @@ reloadProductsLoop = async (owned, reserved, times) => {
             } else {
                 reloadProductsLoop(owned, reserved, times)
             }
-        }, 1000)
+        }, 5000)
     }
 }
 
@@ -99,6 +99,6 @@ const reservedProducts = (webUser.reserved_products || []).filter(p => p.owner =
 const reservedProductsCount = reservedProducts.length
 const ownedProductsCount = (webUser.My.products || []).length
 
-reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
+reloadProductsLoop(ownedProductsCount, reservedProductsCount, 10)
 
 fetchMyPasses()
