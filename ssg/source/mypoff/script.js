@@ -72,9 +72,9 @@ reloadProductsLoop = async (owned, reserved, times) => {
     }
     await reloadUser()
     const user = getUser()
-    const reservedProducts = user.reserved_products.filter(p => p.owner === null)
+    const reservedProducts = (user.reserved_products || []).filter(p => p.owner === null)
     const reservedProductsCount = reservedProducts.length
-    const ownedProductsCount = user.My.products.length
+    const ownedProductsCount = (user.My.products || []).length
     if (reservedProductsCount !== reserved) {
         location.reload()
     } else if (ownedProductsCount !== owned) {
@@ -83,7 +83,7 @@ reloadProductsLoop = async (owned, reserved, times) => {
         setTimeout(async () => {
             reloadUser()
             let user = await getUser()
-            let reservedProducts = user.reserved_products.filter(p => p.owner === null)
+            let reservedProducts = (user.reserved_products || []).filter(p => p.owner === null)
             console.log('reservedProducts', reservedProductsCount, reservedProducts.length)
             if (reservedProductsCount !== reservedProducts.length) {
                 location.reload()
@@ -93,10 +93,11 @@ reloadProductsLoop = async (owned, reserved, times) => {
         }, 1000)
     }
 }
+
 const webUser = getUser()
-const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
+const reservedProducts = (webUser.reserved_products || []).filter(p => p.owner === null)
 const reservedProductsCount = reservedProducts.length
-const ownedProductsCount = webUser.My.products.length
+const ownedProductsCount = (webUser.My.products || []).length
 
 reloadProductsLoop(ownedProductsCount, reservedProductsCount, 50)
 
