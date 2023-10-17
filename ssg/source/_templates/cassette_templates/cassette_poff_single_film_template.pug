@@ -702,7 +702,7 @@ main.grid_film(id=self.id)
                                                 - var qaGuests = iqnac.filter(i => { return i.type === 'QandA' && i.guest })
                                                 if qaGuests.length > 0 && typeof qaGuests[0].guest[0] !== 'object'
                                                     .str_info_grid_3
-                                                        span.screening_info_label= self.label.screening.qaGuests
+                                                        span.screening_info_label.clr_primary= self.label.screening.qaGuests
                                                         span.screening_info_value= qaGuests[0].guest.join(', ')
 
                                                 - var qaPresenter = iqnac.filter(i => { return i.type === 'QandA' && i.presenter })
