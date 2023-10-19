@@ -104,7 +104,7 @@ build()
     export DOMAIN=$site_name
     export CASSETTELIMIT=$limit_number
 
-    node ./initialise_entu_ssg.js
+    node ./helpers/initialise_entu_ssg.js
 
     printf "\n----------\nBuilding $DOMAIN \n"
     if [ $fetch_number -eq 1 ]

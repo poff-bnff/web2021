@@ -1,7 +1,7 @@
 echo DOMAIN
 echo $DOMAIN
 
-node ./initialise_entu_ssg.js
+node ./helpers/initialise_entu_ssg.js
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
 nice -10 node ./helpers/add_config_ignorePaths.js

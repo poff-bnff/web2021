@@ -24,7 +24,7 @@ echo "STARTING BUILD.SH"
 [ -d "./assets/xml" ] && rm -r "./assets/xml/"
 
 echo initialise entu_ssg.yaml
-nice -10 node ./initialise_entu_ssg.js
+nice -10 node ./helpers/initialise_entu_ssg.js
 status=$?;[ $status -eq 0 ] && echo 'initialise entu_ssg.yaml succeeded' || echo 'initialise entu_ssg.yaml failed. Exit'
 [ $status -ne 0 ] && exit $status
 
