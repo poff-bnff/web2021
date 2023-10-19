@@ -36,16 +36,6 @@ label:
         mainPass: My  passes
         mainShop: Shop
         mainMyScreenings: My Screenigns Schedule
-    screening:
-        subtitles: Subtitles
-        introPresenter: Intro by
-        introGuests: Intro guests
-        qaPresenter: Q&A presenter
-        qaGuests: Q&A guests
-        qaDuration: Q&A duration
-        totalDuration: Screening duration
-        name: Screening
-        extraInfo: Additional info
     filmikool:
         courseTimes: Course times
         course: Course
@@ -351,6 +341,7 @@ label:
         festivalEdition: Festival Edition
         eventMode: Event mode
         isLive: Live
+        programme: Programme
     film:
         titleOriginal: Original title
         title_et: Local title
@@ -409,19 +400,31 @@ label:
         conversation: PÖFF TV - Meet the Filmmakers
         triggerWarning: Trigger warning
         ageRestriction: Age restriction
+    screening:
+        subtitles: Subtitles
+        introPresenter: Intro by
+        introGuests: Intro guests
+        qaPresenter: Q&A presenter
+        qaGuests: Q&A guests
+        qaDuration: Q&A duration
+        totalDuration: Screening duration
+        name: Screening
+        extraInfo: Additional info
+        qa: Q&A
+        scrGuests: Screening with guests
 footer:
     id: 1
-    namePrivate: 'PÖFFi footer '
+    namePrivate: Industry footer
     domain:
-        id: 1
-        url: poff.ee
+        id: 5
+        url: industry.poff.ee
     socialGroup:
-        id: 8
-        namePrivate: PÖFF social links
+        id: 12
+        namePrivate: Socials
         name: Follow us
         items:
             -
-                id: 26
+                id: 50
                 name: Facebook
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -431,11 +434,9 @@ footer:
 
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1
                     1 0 0 1 1-1h3z"></path></svg>
-                url_et: https://www.facebook.com/tallinnblacknightsff/
-                url_ru: https://www.facebook.com/tallinnblacknightsff/
-                url: https://www.facebook.com/tallinnblacknightsff/
+                url: https://www.facebook.com/industrytallinn
             -
-                id: 27
+                id: 51
                 name: Instagram
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -445,11 +446,9 @@ footer:
                     height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1
                     1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5"
                     y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                url_et: https://www.instagram.com/tallinnblacknightsff/
-                url_ru: https://www.instagram.com/tallinnblacknightsff/
-                url: https://www.instagram.com/tallinnblacknightsff/
+                url: https://www.instagram.com/industrytallinn
             -
-                id: 28
+                id: 52
                 name: YouTube
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -462,31 +461,38 @@ footer:
                     0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0
                     0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75
                     9.75 8.48 9.75 15.02"></polygon></svg>
-                url_et: https://www.youtube.com/user/Poffihunt
-                url_ru: https://www.youtube.com/user/Poffihunt
                 url: https://www.youtube.com/user/Poffihunt
-            -
-                id: 29
-                name: Twitter
-                svgCode: >-
-                    <svg viewBox="0 0 24 24" width="24" height="24"
-                    stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="svg_icon_footer"><path d="M23 3a10.9 10.9 0 0 1-3.14
-                    1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5
-                    13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0
-                    0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                url_et: https://twitter.com/TallinnBNFF
-                url_ru: https://twitter.com/TallinnBNFF
-                url: https://twitter.com/TallinnBNFF
     item:
         -
-            id: 12
-            namePrivate: 'Team '
+            id: 27
+            namePrivate: Industry contacts
+            name: Contacts
+            text: |-
+                MTÜ BE
+                Nurme 45
+                11621 Tallinn
+                Reg. code 80213483
+                balticevent@poff.ee
+
+                BMO OÜ
+                Telliskivi tn 60a/2
+                10412 Tallinn
+                Reg. code 12142069
+
+                MTÜ Pimedate Ööde Filmifestival
+                Telliskivi 60a, 10412 Tallinn 
+                Tel: +372 5620 8308
+                E-mail: info@poff.ee
+                Registrikood: 80044767
+                KMKR: EE100520914
+                IBAN: EE791700017002751609
+        -
+            id: 24
+            namePrivate: Team
             name: Team
             svgItem:
                 -
-                    id: 30
+                    id: 54
                     name: Team
                     svgCode: >-
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -498,16 +504,14 @@ footer:
                         r="4"></circle><path d="M23 21v-2a4 4 0 0
                         0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0
                         7.75"></path></svg>
-                    url_et: poffi-meeskond
-                    url_ru: komanda-poff
-                    url: poff-team
+                    url: industry-team
         -
-            id: 13
+            id: 25
             namePrivate: Subscribe to newsletter
             name: Subscribe to newsletter
             svgItem:
                 -
-                    id: 31
+                    id: 55
                     name: E-mail
                     svgCode: >-
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -518,83 +522,38 @@ footer:
                         2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2
                         2-2z"></path><polyline points="22,6 12,13
                         2,6"></polyline></svg>
-                    url_et: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
-                    url_ru: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
                     url: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=449595c9ae
-        -
-            id: 14
-            namePrivate: Contacts
-            name: Contact
-            text: |-
-                MTÜ Pimedate Ööde Filmifestival
-                Telliskivi 60a/2, 10412 Tallinn 
-                Tel: +372 5620 8308
-                E-mail: info@poff.ee
-                Registrikood: 80044767
-                KMKR: EE100520914
-                IBAN: EE577700771005547635
+                        https://us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=449595c9ae
     supporters:
         -
-            id: 1
+            id: 7
             order: 1
-            name: Presenters
+            name:
+                id: 29320
             supporter:
                 -
-                    id: 1
+                    id: 48
+                    name: Creative Europe
+                    customUrl: >-
+                        https://culture.ec.europa.eu/creative-europe/creative-europe-media-strand
+                    logoWhite:
+                        id: 11413
+                        name: co_funded_creative_europe_white
+                        width: 712
+                        height: 170
+                        hash: co_funded_creative_europe_white_942475af51
+                        ext: .svg
+                        url: >-
+                            /uploads/co_funded_creative_europe_white_942475af51.svg
+        -
+            id: 1
+            order: 2
+            name: Sponsors
+            supporter:
+                -
+                    id: 5
                     name: Elisa
                     customUrl: https://www.elisa.ee/
-                    poffi_article:
-                        id: 126
-                        created_by: 9
-                        created_at: '2020-11-09T07:39:19.532Z'
-                        title_et: ELISA
-                        slug_et: elisa
-                        slug_ru: pof-fi-article-80
-                        contents_et: >-
-                            **Elu on PÖFFi väärt**
-
-
-                            Elisal on suur au toetada Põhja-Euroopa ainsat
-                            A-kategooria filmifestivali PÖFF. Meil on ühine
-                            eesmärk – pakkuda unustamatuid elamusi igas vanuses
-                            publikule.
-
-
-                            Mitmeid PÖFFi filme, festivalimelu, sh intervjuusid,
-                            Q&A vestlusi, avatseremooniat ning auhinnagalat on
-                            võimalik nautida ka kodustes tingimustes, sest Elisa
-                            Stage’i platvormil on avatud PÖFFi veebikino.
-
-                            Ja nagu ikka, on ka tänavu PÖFFi piletid Elisa
-                            klientidest filmigurmaanidele soodsamad.
-                             
-                            Kohtume PÖFFil!
-                        publishFrom: '2022-10-27T09:00:00.000Z'
-                        publish_et: true
-                        public: true
-                        slug: pof-fi-article-35
-                        contents: >-
-                            Elisa is proud to be a supporter of the only
-                            category A film festival in Northern Europe because
-                            we share a common goal – to offer unforgettable
-                            experiences to audiences of all ages.
-
-
-                            This year, with Elisa you can enjoy all 112 PÖFF
-                            movies at home via the PÖFF web cinema. In addition,
-                            with Elisa Stage you can enjoy anything and
-                            everything exciting at the PÖFF festival, from the
-                            opening and award ceremonies, to interviews and
-                            discussion panels. As is traditional, all Elisa
-                            customers can get PÖFF tickets at a discounted
-                            price.
-
-
-                            See you at PÖFF!
-                        publish: true
                     logoWhite:
                         id: 6716
                         name: elisa_poffi_peasponsor_logo_white.svg
@@ -605,171 +564,236 @@ footer:
                         url: >-
                             /uploads/elisa_poffi_peasponsor_logo_white_715a1a6ad2.svg
                 -
-                    id: 2
-                    name: www.nordichotels.eu
-                    customUrl: https://www.nordichotels.eu/
+                    id: 49
+                    name: Tallinn
                     logoWhite:
-                        id: 6710
-                        name: Nordic_hotel_logo_majutuspartner_white.svg
-                        width: 500
-                        height: 184
-                        hash: Nordic_hotel_logo_majutuspartner_white_0a12565a0d
-                        ext: .svg
-                        url: >-
-                            /uploads/Nordic_hotel_logo_majutuspartner_white_0a12565a0d.svg
-                -
-                    id: 468
-                    name: Toyota
-                    customUrl: https://www.toyota.ee/
-                    logoWhite:
-                        id: 6707
-                        name: Toyota_logo_autopartner_white.svg
-                        width: 500
-                        height: 454
-                        hash: Toyota_logo_autopartner_white_09a66ac58a
-                        ext: .svg
-                        url: >-
-                            /uploads/Toyota_logo_autopartner_white_09a66ac58a.svg
-        -
-            id: 2
-            order: 2
-            name: Grand Sponsors
-            supporter:
-                -
-                    id: 6
-                    name: Cramo
-                    customUrl: https://www.cramo.ee/
-                    logoWhite:
-                        id: 261
-                        name: cramo_white.svg
-                        width: 160
-                        height: 28
-                        hash: cramo_white_9329c71c98
-                        ext: .svg
-                        url: /uploads/cramo_white_9329c71c98.svg
-                -
-                    id: 3
-                    name: Postimees
-                    customUrl: https://www.postimees.ee/
-                    logoWhite:
-                        id: 253
-                        name: Postimees_white.svg
-                        width: 350
-                        height: 68
-                        hash: Postimees_white_3f389926f5
-                        ext: .svg
-                        url: /uploads/Postimees_white_3f389926f5.svg
-                -
-                    id: 564
-                    name: National Geograpic
-                    customUrl: https://www.nationalgeographic.ee/
-                    logoWhite:
-                        id: 6923
-                        name: national_geographic_logo_white.svg
-                        width: 500
-                        height: 147
-                        hash: national_geographic_logo_white_e263e2414c
-                        ext: .svg
-                        url: >-
-                            /uploads/national_geographic_logo_white_e263e2414c.svg
-                -
-                    id: 569
-                    name: Forus
-                    customUrl: https://get.forus.eu
-                    logoWhite:
-                        id: 14981
-                        name: Forus_Taxi_white
-                        width: 284
-                        height: 184
-                        hash: Forus_Taxi_white_623385d340
-                        ext: .svg
-                        url: /uploads/Forus_Taxi_white_623385d340.svg
-        -
-            id: 30
-            order: 3
-            name: Sponsors
-            supporter:
-                -
-                    id: 484
-                    name: Reval Cafe
-                    customUrl: https://revalcafe.ee/
-                    logoWhite:
-                        id: 260
-                        name: revalcafe_white.svg
-                        width: 100
-                        height: 100
-                        hash: revalcafe_white_3688f7f537
-                        ext: .svg
-                        url: /uploads/revalcafe_white_3688f7f537.svg
-                -
-                    id: 311
-                    name: Solaris
-                    logoColour:
-                        id: 3465
-                        name: Solaris_logo_white-01.svg
-                        width: 401
-                        height: 209
-                        hash: Solaris_logo_white_01_2c9e5f3738
-                        ext: .svg
-                        url: /uploads/Solaris_logo_white_01_2c9e5f3738.svg
-                -
-                    id: 312
-                    name: Keskkonnaagentuur
-                    logoColour:
-                        id: 3463
-                        name: Keskkonnaagentuur_3lovi_pms_logo-01_white-01.svg
-                        width: 178
-                        height: 68
-                        hash: >-
-                            Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41
-                        ext: .svg
-                        url: >-
-                            /uploads/Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41.svg
-                -
-                    id: 314
-                    name: EuroPark
-                    logoColour:
-                        id: 3449
-                        name: Europark_logo_white.svg
-                        width: 960
-                        height: 283
-                        hash: Europark_logo_white_844f04aa7f
-                        ext: .svg
-                        url: /uploads/Europark_logo_white_844f04aa7f.svg
-                -
-                    id: 315
-                    name: LuxCharter
-                    logoColour:
-                        id: 3448
-                        name: >-
-                            LuxCharter_logo charter_kuld
-                            gradiendiga_CMYK_vector-01.png
-                        width: 447
-                        height: 131
+                        id: 3378
+                        name: tallinn white.png
+                        width: 740
+                        height: 190
                         formats:
                             thumbnail:
                                 url: >-
-                                    /uploads/thumbnail_Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
-                                name: >-
-                                    thumbnail_LuxCharter_logo charter_kuld
-                                    gradiendiga_CMYK_vector-01.png
-                        hash: >-
-                            Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a
+                                    /uploads/thumbnail_tallinn_white_3166e372c9.png
+                                name: thumbnail_tallinn white.png
+                        hash: tallinn_white_3166e372c9
                         ext: .png
-                        url: >-
-                            /uploads/Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
+                        url: /uploads/tallinn_white_3166e372c9.png
                 -
-                    id: 486
-                    name: DHL
-                    customUrl: https://www.dhl.com/ee-et/home.html
+                    id: 91
+                    name: Kultuuriministeerium
                     logoWhite:
-                        id: 13295
-                        name: DHL_logo_white
-                        width: 283
-                        height: 63
-                        hash: DHL_logo_white_1f30d86951
+                        id: 11370
+                        name: kultuuriministeerium_logo_white
+                        width: 176
+                        height: 68
+                        hash: kultuuriministeerium_logo_white_3dcf4c649d
                         ext: .svg
-                        url: /uploads/DHL_logo_white_1f30d86951.svg
+                        url: >-
+                            /uploads/kultuuriministeerium_logo_white_3dcf4c649d.svg
+                -
+                    id: 95
+                    name: ' EL regionaalarengu fond'
+                    logoWhite:
+                        id: 19268
+                        name: Kaasrahastanud_EL_kaksiklogod
+                        width: 1022
+                        height: 594
+                        formats:
+                            _small:
+                                url: >-
+                                    /uploads/Kaasrahastanud_EL_kaksiklogod_a3bbe4e405_small.jpeg
+                                name: Kaasrahastanud_EL_kaksik_small
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_Kaasrahastanud_EL_kaksiklogod_a3bbe4e405.jpeg
+                                name: thumbnail_Kaasrahastanud_EL_kaksiklogod
+                        hash: Kaasrahastanud_EL_kaksiklogod_a3bbe4e405
+                        ext: .jpeg
+                        url: >-
+                            /uploads/Kaasrahastanud_EL_kaksiklogod_a3bbe4e405.jpeg
+                -
+                    id: 103
+                    name: Visit Estonia
+                    customUrl: http://www.visitestonia.com/
+                    logoWhite:
+                        id: 14639
+                        name: visit_estonia_horizontal_logo_white
+                        width: 364
+                        height: 50
+                        hash: visit_estonia_horizontal_logo_white_31edf7a91f
+                        ext: .svg
+                        url: >-
+                            /uploads/visit_estonia_horizontal_logo_white_31edf7a91f.svg
+                -
+                    id: 111
+                    name: European Commission
+                    logoWhite:
+                        id: 15209
+                        name: European_Commission_white
+                        width: 300
+                        height: 208
+                        hash: European_Commission_white_f74bf207e5
+                        ext: .svg
+                        url: /uploads/European_Commission_white_f74bf207e5.svg
+        -
+            id: 2
+            order: 3
+            name: Supporters
+            supporter:
+                -
+                    id: 52
+                    name: EFI
+                    logoWhite:
+                        id: 3380
+                        name: estonian-film-institute.png
+                        width: 2504
+                        height: 855
+                        formats:
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_estonian_film_institute_b17c0aae47.png
+                                name: thumbnail_estonian-film-institute.png
+                        hash: estonian_film_institute_b17c0aae47
+                        ext: .png
+                        url: /uploads/estonian_film_institute_b17c0aae47.png
+                -
+                    id: 53
+                    name: Estonian Cultural Fund
+                    logoWhite:
+                        id: 3381
+                        name: kulka_logo.png
+                        width: 1218
+                        height: 547
+                        formats:
+                            thumbnail:
+                                url: /uploads/thumbnail_kulka_logo_3ae1284354.png
+                                name: thumbnail_kulka_logo.png
+                        hash: kulka_logo_3ae1284354
+                        ext: .png
+                        url: /uploads/kulka_logo_3ae1284354.png
+                -
+                    id: 112
+                    name: Tallink hotels
+                    customUrl: https://www.tallinkhotels.com/
+                    logoWhite:
+                        id: 15648
+                        name: Tallink_laurel_white
+                        width: 320
+                        height: 132
+                        hash: Tallink_laurel_white_f64e2840fd
+                        ext: .svg
+                        url: /uploads/Tallink_laurel_white_f64e2840fd.svg
+                -
+                    id: 174
+                    name: Film Center Serbia
+                    customUrl: https://www.fcs.rs/en/
+                    logoWhite:
+                        id: 19452
+                        name: IND_Partner_FCS_white_logo
+                        width: 1688
+                        height: 406
+                        formats:
+                            _med:
+                                url: >-
+                                    /uploads/IND_Partner_FCS_logo_1_6dcb5f3d60_med.jpeg
+                                name: IND_Partner_FCS_log_med
+                            _small:
+                                url: >-
+                                    /uploads/IND_Partner_FCS_logo_1_6dcb5f3d60_small.jpeg
+                                name: IND_Partner_FCS_log_small
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_Partner_FCS_logo_1_6dcb5f3d60.jpeg
+                                name: thumbnail_IND_Partner_FCS_logo (1)
+                        hash: IND_Partner_FCS_logo_1_6dcb5f3d60
+                        ext: .jpeg
+                        url: /uploads/IND_Partner_FCS_logo_1_6dcb5f3d60.jpeg
+                -
+                    id: 175
+                    name: Croatian Audiovisual Centre
+                    customUrl: https://havc.hr/eng/about-us
+                -
+                    id: 176
+                    name: Slovenian Film Centre
+                    customUrl: https://www.film-center.si/en/
+                    logoWhite:
+                        id: 19454
+                        name: IND_Partner_SFC_BW_white
+                        width: 6250
+                        height: 4405
+                        formats:
+                            _big:
+                                url: >-
+                                    /uploads/IND_Partner_SFC_BW_white_log_135b4251eb_big.jpeg
+                                name: IND_Partner_SFC_BW__big
+                            _med:
+                                url: >-
+                                    /uploads/IND_Partner_SFC_BW_white_log_135b4251eb_med.jpeg
+                                name: IND_Partner_SFC_BW__med
+                            _small:
+                                url: >-
+                                    /uploads/IND_Partner_SFC_BW_white_log_135b4251eb_small.jpeg
+                                name: IND_Partner_SFC_BW__small
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_Partner_SFC_BW_white_log_135b4251eb.jpeg
+                                name: thumbnail_IND_Partner_SFC_BW_white
+                        hash: IND_Partner_SFC_BW_white_log_135b4251eb
+                        ext: .jpeg
+                        url: >-
+                            /uploads/IND_Partner_SFC_BW_white_log_135b4251eb.jpeg
+                -
+                    id: 177
+                    name: Film Centre of Montenegro
+                    customUrl: https://fccg.me/en/about-us/
+                    logoWhite:
+                        id: 19455
+                        name: IND_Partner_FCoM_white_
+                        width: 1719
+                        height: 688
+                        formats:
+                            _med:
+                                url: >-
+                                    /uploads/IND_Partner_F_Co_M_white_logo_fea3172a57_med.jpeg
+                                name: IND_Partner_FCoM_w_med
+                            _small:
+                                url: >-
+                                    /uploads/IND_Partner_F_Co_M_white_logo_fea3172a57_small.jpeg
+                                name: IND_Partner_FCoM_w_small
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_Partner_F_Co_M_white_logo_fea3172a57.jpeg
+                                name: thumbnail_IND_Partner_FCoM_white_
+                        hash: IND_Partner_F_Co_M_white_logo_fea3172a57
+                        ext: .jpeg
+                        url: >-
+                            /uploads/IND_Partner_F_Co_M_white_logo_fea3172a57.jpeg
+                -
+                    id: 178
+                    name: North Macedonia Film Agency
+                    customUrl: http://filmfund.gov.mk/?page_id=17834&lang=en
+                    logoWhite:
+                        id: 19456
+                        name: IND_Partner_NMFA_white_
+                        width: 1813
+                        height: 938
+                        formats:
+                            _med:
+                                url: >-
+                                    /uploads/IND_Partner_NMFA_white_logo_2a58995574_med.jpeg
+                                name: IND_Partner_NMFA_w_med
+                            _small:
+                                url: >-
+                                    /uploads/IND_Partner_NMFA_white_logo_2a58995574_small.jpeg
+                                name: IND_Partner_NMFA_w_small
+                            thumbnail:
+                                url: >-
+                                    /uploads/thumbnail_IND_Partner_NMFA_white_logo_2a58995574.jpeg
+                                name: thumbnail_IND_Partner_NMFA_white_
+                        hash: IND_Partner_NMFA_white_logo_2a58995574
+                        ext: .jpeg
+                        url: /uploads/IND_Partner_NMFA_white_logo_2a58995574.jpeg
     domains:
         -
-            id: 1
+            id: 5
