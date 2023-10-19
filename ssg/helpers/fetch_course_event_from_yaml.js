@@ -16,29 +16,23 @@ const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-let ACTIVE_FESTIVAL_EDITIONS
-let NAMEVARIABLE
+const ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions[DOMAIN]
+const NAMEVARIABLE = DOMAIN_SPECIFICS.domain[DOMAIN]
 let FETCHDATADIR
 let FETCHDATADIRRESTRICTED
 let FETCHDATADIRNAME
 if (DOMAIN === 'discoverycampus.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
     ACTIVE_EVENT_TYPE = null
-    NAMEVARIABLE = 'discamp'
     FETCHDATADIRNAME = 'discampcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'industry.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
     ACTIVE_EVENT_TYPE = null
-    NAMEVARIABLE = 'industry'
     FETCHDATADIRNAME = 'industryevents'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_filmikool_editions
     ACTIVE_EVENT_TYPE = DOMAIN_SPECIFICS.active_filmikool_event_types
-    NAMEVARIABLE = 'filmikool'
     FETCHDATADIRNAME = 'filmikoolcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
@@ -155,7 +149,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         .sort((a, b) => new Date(a.start_time) - new Date(b.start_time)) // Sort by starting time
 
     let STRAPIDATA_COURSE
-    if (ACTIVE_FESTIVAL_EDITIONS) {
+    if (ACTIVE_FESTIVAL_EDITIONS.length > 0) {
         STRAPIDATA_COURSE = PUBLIC_STRAPIDATA_COURSES.filter(p => p.festival_editions && p.festival_editions.map(fe => fe.id).some(id => ACTIVE_FESTIVAL_EDITIONS.includes(id)))
         // console.log(JSON.stringify(STRAPIDATA_COURSE.filter(a => a.festival_editions)[0], null, 2));
     } else {
