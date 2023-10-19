@@ -26,7 +26,7 @@ echo "STARTING BUILD_FULL.SH"
 [ -d "./assets/xml" ] && rm -r "./assets/xml/"
 
 echo initialise entu_ssg.yaml
-nice -10 node ./initialise_entu_ssg.js
+nice -10 node ./helpers/initialise_entu_ssg.js
 
 echo 'Fetch strapiData.yaml from Strapi'
 nice -10 node ./helpers/a_fetch.js
