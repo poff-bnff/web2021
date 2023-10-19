@@ -110,8 +110,12 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    let activePersonsYamlNameSuffix = 'persons'
-    let activePersons = STRAPIDATA_ALL_PERSONS.filter(p => p?.festival_editions?.map(fe => fe.id).some(id => DOMAIN_SPECIFICS.active_industry_editions.includes(id)))
+    const activePersonsYamlNameSuffix = 'persons'
+    const activeEditions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
+    const activePersons = STRAPIDATA_ALL_PERSONS
+        .filter(p => {
+            const feIds = p.festival_editions.map(fe => fe.id) || []
+            feIds.some(id => activeEditions.includes(id))})
 
     startPersonProcessing(languages, activePersons, activePersonsYamlNameSuffix)
 

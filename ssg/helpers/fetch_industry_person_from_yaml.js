@@ -19,10 +19,10 @@ const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
 let ACTIVE_FESTIVAL_EDITIONS
 let NAMEVARIABLE
 if (DOMAIN === 'discoverycampus.poff.ee') {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_discamp_editions
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions['discoverycampus.poff.ee']
     NAMEVARIABLE = 'discamp'
 } else {
-    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_industry_editions
+    ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
     NAMEVARIABLE = 'industry'
 }
 
