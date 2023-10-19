@@ -138,9 +138,12 @@ const requireLogin = () => {
 // This function returns:                  This function redirects to profile page if:
 // - true, if user has complete profile    - user is logged in and
 // - false, if user has not logged in      - has incomplete profile
-const requireProfile = () => {
+const requireProfile = async () => {
     if (!isUserTokenValid()) {
         return false
+    }
+    if (!getUser()) {
+        await reloadUser()
     }
     if (isUserProfileComplete()) {
         return true
