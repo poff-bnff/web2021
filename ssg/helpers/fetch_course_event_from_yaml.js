@@ -13,26 +13,25 @@ const sourceDir = path.join(rootDir, 'source')
 const fetchDir = path.join(sourceDir, '_fetchdir')
 const fetchDirRestricted = path.join(sourceDir, '_fetchdirRestricted')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
+
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+const ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions[DOMAIN] || []
+const NAMEVARIABLE = DOMAIN_SPECIFICS.domain[DOMAIN] || ''
+const ACTIVE_EVENT_TYPE = DOMAIN_SPECIFICS.active_event_types[DOMAIN] || []
 
-const ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions[DOMAIN]
-const NAMEVARIABLE = DOMAIN_SPECIFICS.domain[DOMAIN]
 let FETCHDATADIR
 let FETCHDATADIRRESTRICTED
 let FETCHDATADIRNAME
 if (DOMAIN === 'discoverycampus.poff.ee') {
-    ACTIVE_EVENT_TYPE = null
     FETCHDATADIRNAME = 'discampcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'industry.poff.ee') {
-    ACTIVE_EVENT_TYPE = null
     FETCHDATADIRNAME = 'industryevents'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
 } else if (DOMAIN === 'filmikool.poff.ee') {
-    ACTIVE_EVENT_TYPE = DOMAIN_SPECIFICS.active_filmikool_event_types
     FETCHDATADIRNAME = 'filmikoolcourses'
     FETCHDATADIR = path.join(fetchDir, FETCHDATADIRNAME)
     FETCHDATADIRRESTRICTED = path.join(fetchDirRestricted, FETCHDATADIRNAME)
@@ -50,7 +49,7 @@ if (param_build_type === 'target') {
 
 const currentTimeUTC = convert_to_UTC()
 
-if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
+if (DOMAIN in ['filmikool.poff.ee', 'industry.poff.ee', 'discoverycampus.poff.ee']) {
 
     const strapiDataCourseEventPath = path.join(strapiDataDirPath, `CourseEvent.yaml`)
     const STRAPIDATA_COURSES = yaml.load(fs.readFileSync(strapiDataCourseEventPath, 'utf8')) || []
@@ -111,37 +110,6 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         'industry_categories': {
             model_name: 'IndustryCategory',
         },
-        // 'presentedBy': {
-        //     model_name: 'PresentedBy',
-        //     expand: {
-        //         'organisations': {
-        //             model_name: 'Organisation'
-        //         }
-        //     }
-        // },
-        // 'events': {
-        //     model_name: 'Event',
-        //         expand: {
-        //         'location': {
-        //             model_name: 'Location',
-        //             expand: {
-        //                 'hall': {
-        //                     model_name: 'Hall',
-        //                     expand: {
-        //                         'cinema': {
-        //                             model_name: 'Cinema',
-        //                             expand: {
-        //                                 'town': {
-        //                                     model_name: 'Town'
-        //                                 }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     const STRAPIDATA_COURSE_UNFILTERED = fetchModel(STRAPIDATA_COURSES, minimodel)
@@ -156,7 +124,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'industry.poff.ee' || DOMAIN ==
         STRAPIDATA_COURSE = PUBLIC_STRAPIDATA_COURSES
     }
 
-    if (ACTIVE_EVENT_TYPE) {
+    if (ACTIVE_EVENT_TYPE.length > 0) {
         STRAPIDATA_COURSE = STRAPIDATA_COURSE.filter(p => p.event_types && p.event_types.map(e_t => e_t.id).some(id => ACTIVE_EVENT_TYPE.includes(id)))
         // console.log(JSON.stringify(STRAPIDATA_COURSE.filter(a => a.event_types)[0], null, 2));
     } else {
