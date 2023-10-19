@@ -59,7 +59,7 @@ filmikool.poff.ee:
     - /favouriteAWS
     - /search_archive
     - /persons_search
-    - /industry_courseevents_search Events
+    - /industry_courseevents_search
     - /discamp_events_search
     - /discamp_courseevents_search
     - /locations
@@ -95,7 +95,7 @@ kumu.poff.ee:
     - /virtual_booth
     - /favouriteAWS
     - /search_archive
-    - /industry_courseevents_search Events
+    - /industry_courseevents_search
     - /persons_search
     - /courses_courseevents
     - /discamp_events_search
@@ -153,7 +153,7 @@ discoverycampus.poff.ee:
     - /industry_persons_archive_search
     - /persons_search
     - /industry_events_search
-    - /industry_courseevents_search Events
+    - /industry_courseevents_search
     - /courses_courseevents
     - /filmikool_courseevents_search
     - /locations
@@ -186,7 +186,7 @@ tartuff.ee:
     - /virtual_booth
     - /favouriteAWS
     - /search_archive
-    - /industry_courseevents_search Events
+    - /industry_courseevents_search
     - /persons_search
     - /courses_courseevents
     - /discamp_events_search
@@ -230,7 +230,7 @@ default:
     - /virtual_booth
     - /favouriteAWS
     - /search_archive
-    - /industry_courseevents_search Events
+    - /industry_courseevents_search
     - /persons_search
     - /courses_courseevents
     - /discamp_events_search
