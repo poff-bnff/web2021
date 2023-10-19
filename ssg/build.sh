@@ -127,11 +127,6 @@ nice -10 node ./helpers/xml.js
 status=$?;[ $status -eq 0 ] && echo 'assets/xml succeeded' || echo 'assets/xml failed. Exit'
 [ $status -ne 0 ] && exit $status
 
-echo 'fetch_industry_person_from_yaml'
-nice -10 node ./helpers/fetch_industry_person_from_yaml.js
-status=$?;[ $status -eq 0 ] && echo 'fetch_industry_person_from_yaml succeeded' || echo 'fetch_industry_person_from_yaml failed. Exit'
-[ $status -ne 0 ] && exit $status
-
 echo 'fetch_industry_project_from_yaml'
 nice -10 node ./helpers/fetch_industry_project_from_yaml.js
 status=$?;[ $status -eq 0 ] && echo 'fetch_industry_project_from_yaml succeeded' || echo 'fetch_industry_project_from_yaml failed. Exit'
