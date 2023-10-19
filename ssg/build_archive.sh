@@ -33,7 +33,7 @@ echo 'Processing all Strapidata by Domain'
 nice -10 node "$FETCH_PATH"/d_fetch.js
 
 echo "$FETCH_PATH" FETCH_PATH
-nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js archive
+nice -10 node "$FETCH_PATH"/initialise_entu_ssg.js archive
 
 if [ "$DOMAIN" == "industry.poff.ee" ]; then
     echo "fetch_industry_project_from_yaml.js"

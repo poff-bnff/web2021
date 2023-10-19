@@ -19,7 +19,7 @@ echo 'Processing all Strapidata by Domain'
 nice -10 node "$FETCH_PATH"/d_fetch.js
 
 echo "Initialized entu_ssg.yaml"
-nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js
+nice -10 node "$FETCH_PATH"/initialise_entu_ssg.js
 
 # Lisa kõik login lehed:
 nice -10 node "$FETCH_PATH"/add_config_path_aliases.js login

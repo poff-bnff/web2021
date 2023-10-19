@@ -28,7 +28,7 @@ echo 'Processing all Strapidata by Domain'
 nice -10 node "$FETCH_PATH"/d_fetch.js
 
 echo "$FETCH_PATH" FETCH_PATH
-nice -10 node "$BUILD_PATH"/initialise_entu_ssg.js
+nice -10 node "$FETCH_PATH"/initialise_entu_ssg.js
 
 nice -10 node "$FETCH_PATH"/fetch_cassettes_from_yaml.js "$TARGET" "$TARGET_ID"
 nice -10 node "$FETCH_PATH"/fetch_programmes_from_yaml.js "$TARGET" "$ADDITIONAL_TARGET_IDS"
