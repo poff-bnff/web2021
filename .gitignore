@@ -199,3 +199,6 @@ test.*
 # env
 *.env
 *.env2
+ssg/source/global.et.yaml
+ssg/source/global.en.yaml
+ssg/source/global.ru.yaml

@@ -223,7 +223,7 @@ for (const lang of languages) {
                         // }
                         // 2022 adding votemo (artikli slug votemo)
                         if (DOMAIN === 'poff.ee' && element[key] === 'votemo') {
-                            let votemooAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            let votemooAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
                         // 2022 adding parkimine (artikli slug parkimine)

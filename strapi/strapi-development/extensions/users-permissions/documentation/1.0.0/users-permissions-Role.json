@@ -630,6 +630,9 @@
                     "type": "string"
                   }
                 },
+                "linkedUser": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },

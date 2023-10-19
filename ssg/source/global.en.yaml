@@ -530,7 +530,7 @@ footer:
             name: Contact
             text: |-
                 MTÜ Pimedate Ööde Filmifestival
-                Telliskivi 60a/2, 10412 Tallinn 
+                Telliskivi 60a/2, 10412 Tallinn
                 Tel: +372 5620 8308
                 E-mail: info@poff.ee
                 Registrikood: 80044767
@@ -570,7 +570,7 @@ footer:
 
                             Ja nagu ikka, on ka tänavu PÖFFi piletid Elisa
                             klientidest filmigurmaanidele soodsamad.
-                             
+
                             Kohtume PÖFFil!
                         publishFrom: '2022-10-27T09:00:00.000Z'
                         publish_et: true
