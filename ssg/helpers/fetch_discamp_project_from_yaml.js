@@ -19,7 +19,7 @@ const STRAPIDATA_PERSONS = yaml.load(fs.readFileSync(strapiDataPersonPath, 'utf8
 const strapiDataCompanyPath = path.join(strapiDataDirPath, 'Organisation.yaml')
 const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'discoverycampus.poff.ee';
-const active_editions = DOMAIN_SPECIFICS.active_discamp_editions
+const active_editions = DOMAIN_SPECIFICS.active_editions['discoverycampus.poff.ee']
 
 if (DOMAIN === 'discoverycampus.poff.ee') {
 

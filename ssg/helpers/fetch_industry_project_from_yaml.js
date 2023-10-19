@@ -21,7 +21,7 @@ const STRAPIDATA_COMPANIES = yaml.load(fs.readFileSync(strapiDataCompanyPath, 'u
 const strapiDataRoleAtFilmPath = path.join(strapiDataDirPath, 'RoleAtFilm.yaml')
 const STRAPIDATA_ROLESATFILM = yaml.load(fs.readFileSync(strapiDataRoleAtFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
-const active_editions = DOMAIN_SPECIFICS.active_industry_editions
+const active_editions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
