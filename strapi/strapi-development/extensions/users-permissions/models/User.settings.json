@@ -92,8 +92,8 @@
       "component": "user.my-screenings"
     },
     "my_products": {
-      "via": "owner",
-      "collection": "product"
+      "collection": "product",
+      "via": "owner"
     },
     "transactions": {
       "collection": "transaction",
@@ -131,8 +131,12 @@
       "component": "user.my"
     },
     "reserved_products": {
-      "via": "reserved_to",
-      "collection": "product"
+      "collection": "product",
+      "via": "reserved_to"
+    },
+    "linkedUser": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
