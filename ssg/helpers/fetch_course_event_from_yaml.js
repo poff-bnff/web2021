@@ -49,7 +49,7 @@ if (param_build_type === 'target') {
 
 const currentTimeUTC = convert_to_UTC()
 
-if (DOMAIN in ['filmikool.poff.ee', 'industry.poff.ee', 'discoverycampus.poff.ee']) {
+if (['filmikool.poff.ee', 'industry.poff.ee', 'discoverycampus.poff.ee'].includes(DOMAIN)) {
 
     const strapiDataCourseEventPath = path.join(strapiDataDirPath, `CourseEvent.yaml`)
     const STRAPIDATA_COURSES = yaml.load(fs.readFileSync(strapiDataCourseEventPath, 'utf8')) || []
