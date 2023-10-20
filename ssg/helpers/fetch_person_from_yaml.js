@@ -114,7 +114,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     const activeEditions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
     const activePersons = STRAPIDATA_ALL_PERSONS
         .filter(p => {
-            const feIds = p.festival_editions.map(fe => fe.id) || []
+            const feIds = (p.festival_editions || []).map(fe => fe.id) || []
             feIds.some(id => activeEditions.includes(id))})
 
     startPersonProcessing(languages, activePersons, activePersonsYamlNameSuffix)
