@@ -12,7 +12,7 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     a(href=`https://swedbank.ee` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/just_2022_banner_swed.jpg`)
                 .carousel-item.active.container_contents_justi_banner
-                    a(href=`https://build.poff.ee/just-filmi-pass-2023/` target="_BLANK")
+                    a(href=`https://poff.ee/just-filmi-pass-2023/` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_just_pass.jpg`)
                 //- .carousel-item.container_contents_justi_banner
                 //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
@@ -42,12 +42,85 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     a(href=`https://swedbank.ee` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/just_2022_banner_swed.jpg`)
                 .carousel-item.active.container_contents_justi_banner
-                    a(href=`https://build.poff.ee/just-filmi-pass-2023/` target="_BLANK")
+                    a(href=`https://poff.ee/just-filmi-pass-2023/` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_just_pass.jpg`)
                 //- .carousel-item.container_contents_justi_banner
                 //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
                 //- .carousel-item.container_contents_justi_banner
                 //-     img.d-block.container_contents_justi_banner(src=``)
+
+            a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
+                // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='15 18 9 12 15 6')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-bs-slide='next')
+                // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='9 18 15 12 9 6')
+                span.sr-only Next
+
+        if process.env['DOMAIN'] === 'poff.ee'
+            ol.carousel-indicators
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
+                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
+
+            if lang_path === 'en/'
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://alexela.ee/en` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/en/official-selection/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_official_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/en/first-feature-competition/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/en/critics-picks-competition/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_critics_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/en/rebels-with-a-cause-competition/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_rebels_en.jpg`)
+
+            if lang_path === 'ru/'
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://alexela.ee/ru` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/osnovnaya-konkursnaya-programma/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_official_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/konkursnaya-programma-debyutnyh-filmov/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/konkurs-vybor-kritikov/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_critics_en.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/konkurs-buntari-ne-bez-prichiny/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_rebels_en.jpg`)
+
+            if (lang_path !== 'en/' && lang_path !== 'ru/')
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://alexela.ee` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_et.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/pohivoistlusprogramm/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_official_et.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/debueuetfilmide-voistlusprogramm/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_et.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/kriitikute-valikud-voistlusprogramm/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_critics_et.jpg`)
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/pohjusega-maessajad-voistlusprogramm/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_rebels_et.jpg`)
+
 
             a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
                 // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
