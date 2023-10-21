@@ -196,7 +196,8 @@ for (const lang of languages) {
                         element.articleType = artType.label
 
                         // see patch siin on tehtud, kuna reklaamis kasutati poff.ee/lemmikfilm, aga meil on artiklid ju poff.ee/artikkel/lemmikfilm
-                        if (element[key] === 'lemmikfilm') {
+                        // if (element[key] === 'lemmikfilm') {
+                        if (element[key] === 'votemo') {
                             element.aliases = ['lemmikfilm', 'publikulemmik']
                         }
                         // 2021 adding covid article aliases
