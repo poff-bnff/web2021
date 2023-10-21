@@ -42,6 +42,9 @@ ssg/archive
 ssg/source/_fetchdir/*
 ssg/source/_fetchdirRestricted/*
 ssg/source/_styles/*
+ssg/source/global.et.yaml
+ssg/source/global.en.yaml
+ssg/source/global.ru.yaml
 ssg/helpers/build_logs.yaml
 ssg/helpers/build_queue.yaml
 
@@ -199,6 +202,3 @@ test.*
 # env
 *.env
 *.env2
-ssg/source/global.et.yaml
-ssg/source/global.en.yaml
-ssg/source/global.ru.yaml
