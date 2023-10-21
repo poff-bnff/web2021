@@ -24,19 +24,6 @@ module.exports = {
       data.account_created ? null : data.account_created = new Date().toISOString()
     },
 
-    async beforeUpdate(params, data) {
-      console.log('Models User beforeUpdate data', params);
-      const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
-      console.log('Models User beforeUpdate oldUserInfo', oldUserInfo);
-      const model = await strapi.query('user', 'users-permissions').model;
-      console.log('Models User beforeUpdate model', model)
-      const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {model: model});
-      console.log('Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo);
-
-      // Save beforeUpdate state of the user products
-      data.my_products_before_update = sanitizedOldUserInfo?.my_products?.map(p => p.id)
-    },
-
     async afterCreate(result, data) {
       const userProfile = await strapi.query('user-profiles').create({
         user: result.id,
@@ -44,7 +31,26 @@ module.exports = {
       })
     },
 
+    async beforeUpdate(params, data) {
+      return
+      console.log('Models User beforeUpdate data', params);
+      const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
+      console.log('Models User beforeUpdate oldUserInfo', oldUserInfo);
+      const model = await strapi.query('user', 'users-permissions').model;
+      // console.log('Models User beforeUpdate model', model)
+      const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {model: model});
+      console.log('Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo);
+
+      // Save beforeUpdate state of the user products
+      data.my_products_before_update = sanitizedOldUserInfo?.my_products?.map(p => p.id)
+      console.log('Models User beforeUpdate data.my_products_before_update', data.my_products_before_update);
+    },
+
+    // result is the updated object
+    // params is the original object
+    // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
+      return
       console.log('Models User afterUpdate data', params);
       let my_products_before_update = data.my_products_before_update
       let my_products = data.my_products
@@ -147,6 +153,7 @@ module.exports = {
         }
       }
     },
+
     beforeDelete(params) {
       delete params.user
     }
