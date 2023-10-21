@@ -200,6 +200,7 @@ module.exports = {
    * @description
    * This function updates the profile of the currently logged in user.
    * It is used by the profile page.
+   * @mitselek thinks it should not be used anymore, but it is still used somewhere.
    */
   async updateMe(ctx) {
 
