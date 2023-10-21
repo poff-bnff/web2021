@@ -34,7 +34,6 @@ const validYoutubeLinks = [
     'https://www.youtube.com/HamdiKickProduction?v=DFYRQ_zQ-gk',
     'https://www.youtube.com/live/DFYRQ_zQ-gk?feature=share'
 ]
-
 const validVimeoLinks = [
     'vimeo.com/123456789',
     'vimeo.com/channels/mychannel/123456789',
@@ -46,8 +45,10 @@ const validVimeoLinks = [
     'https://www.player.vimeo.com/video/123456789'
 ]
 
-const youtubeRegex = new RegExp('^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(youtube(?:-nocookie)?\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(?:\S+)?$')
-const vimeoRegex = new RegExp('^(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?(vimeo\.com)\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$')
+// https://regexr.com/7m06l
+const youtubeRegex = /(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(youtube(?:-nocookie)?\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(?:\S+)?/
+// https://regexr.com/7m06i
+const vimeoRegex = /(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?(vimeo\.com)\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)/
 
 // validates media links
 // returns true if link is valid
