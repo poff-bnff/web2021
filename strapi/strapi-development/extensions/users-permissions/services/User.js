@@ -59,6 +59,8 @@ module.exports = {
       );
     }
 
+    console.log('user-permissions:services:User.js::edit');
+    console.log({params, values});
     return strapi.query('user', 'users-permissions').update(params, values);
   },
 
