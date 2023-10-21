@@ -127,6 +127,8 @@ module.exports = {
       })
       .get();
 
+    console.log('advancedConfigs', advancedConfigs)
+    console.log('ctx.params', ctx.params)
     const { id } = ctx.params;
     const { email, username, password } = ctx.request.body;
 
