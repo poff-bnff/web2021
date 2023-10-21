@@ -23,12 +23,15 @@ module.exports = {
       data.profileFilled = profileFilled(data)
       data.account_created ? null : data.account_created = new Date().toISOString()
     },
+
     async beforeUpdate(params, data) {
       console.log('Models User beforeUpdate data', params);
       const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
-      const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {
-        model: strapi.query('user', 'users-permissions').model,
-      });
+      console.log('Models User beforeUpdate oldUserInfo', oldUserInfo);
+      const model = await strapi.query('user', 'users-permissions').model;
+      console.log('Models User beforeUpdate model', model)
+      const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {model: model});
+      console.log('Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo);
 
       // Save beforeUpdate state of the user products
       data.my_products_before_update = sanitizedOldUserInfo?.my_products?.map(p => p.id)
