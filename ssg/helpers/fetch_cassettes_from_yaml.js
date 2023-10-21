@@ -785,9 +785,13 @@ function trailerProcessing(cassetteOrFilm, type) {
                             splitYouTubeLink = trailer.url.split('?')[0]
                             splitForVideoCode = splitYouTubeLink.split('/')[3]
                         }
-
-                        if (splitForVideoCode.length === 11) {
-                            trailer.videoCode = splitForVideoCode
+                        try {
+                            if (splitForVideoCode.length === 11) {
+                                trailer.videoCode = splitForVideoCode
+                            }
+                        } catch (error) {
+                            console.log(`ERROR! ${type} ${cassetteOrFilm.id} trailer url ${trailer.url} is not valid`)
+                            throw new Error(error)
                         }
                     }
                 }
