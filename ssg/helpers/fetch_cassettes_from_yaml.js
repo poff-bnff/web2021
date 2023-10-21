@@ -8,6 +8,7 @@ const prioritizeImagesFilm = require('./image_prioritizer_for_film.js')
 const prioritizeImages = require('./image_prioritizer.js')
 const replaceBadChars = require('./replace_bad_chars.js')
 
+const { parseMediaLink } = require('./regexes')
 const { timer } = require("./timer")
 timer.start(__filename)
 
@@ -295,7 +296,6 @@ timer.log(__filename, 'fetch_cassettes with screening strapidata calling fetchMo
 const STRAPIDATA_SCREENINGS = fetchModel(STRAPIDATA_SCREENINGS_YAML, minimodel_screenings)
 
 if (CHECKPROGRAMMES) {
-
     let cassettesWithOutProgrammes = []
     var STRAPIDATA_CASSETTE = STRAPIDATA_CASSETTES.filter(cassette => {
         let programme_ids = STRAPIDATA_PROGRAMMES.map(programme => programme.id)
@@ -336,10 +336,9 @@ if (CHECKPROGRAMMES) {
 const cassettesPath = path.join(fetchDir, 'cassettes')
 deleteFolderRecursive(cassettesPath)
 
-let cassetteTrailerErrorIDs = []
-let filmTrailerErrorIDs = []
-
+const missingUrlErrorIDs = { cassette: [], film: [] }
 const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
+
 for (const lang of allLanguages) {
     let cassettesWithOutFilms = []
     let cassettesWithOutSpecifiedScreeningType = []
@@ -739,66 +738,52 @@ for (const lang of allLanguages) {
     generateAllDataYAML(allData, lang)
 }
 
-if (cassetteTrailerErrorIDs.length) {
-    console.log('ATTENTION! Cassette(s) with ID(s)', cassetteTrailerErrorIDs.join(', '), 'have empty trailer components')
+if (missingUrlErrorIDs.cassette.length) {
+    console.warning('WARNING! Cassette(s) with ID(s)', missingUrlErrorIDs.cassette.join(', '), 'have empty trailer components')
 }
 
-if (filmTrailerErrorIDs.length) {
-    console.log('ATTENTION! Film(s) with ID(s)', filmTrailerErrorIDs.join(', '), 'have empty trailer components')
+if (missingUrlErrorIDs.film.length) {
+    console.warning('WARNING! Film(s) with ID(s)', missingUrlErrorIDs.film.join(', '), 'have empty trailer components')
 }
 
 function trailerProcessing(cassetteOrFilm, type) {
-    if (cassetteOrFilm.trailer && cassetteOrFilm.trailer[0]) {
-        let trailerValidation = cassetteOrFilm.trailer.filter(t => {
+    cassetteOrFilm.trailer = cassetteOrFilm.trailer || []
+    // cassetteOrFilm.trailer must be an array
+    if (!Array.isArray(cassetteOrFilm.trailer)) {
+        throw new Error(`ERROR! ${type} ${cassetteOrFilm.id} trailer is not an array`)
+    }
+    // filter out empty trailer urls and collect IDs for error message
+    cassetteOrFilm.trailer = cassetteOrFilm.trailer
+        .filter(t => {
             if (!t.url) {
-                if (type === 'cassette') {
-                    cassetteTrailerErrorIDs.push(cassetteOrFilm.id)
-                } else {
-                    filmTrailerErrorIDs.push(cassetteOrFilm.id)
-                }
+                missingUrlErrorIDs[type].push(cassetteOrFilm.id)
                 return false
-            } else {
-                return true
             }
+            return true
         })
-        cassetteOrFilm.trailer = trailerValidation.length ? trailerValidation : null
+    for (trailer of cassetteOrFilm.trailer) {
+        const parsedUrl = parseMediaLink(trailer.url)
+        if (parsedUrl === false) {
+            console.error(`ERROR! ${type} ${cassetteOrFilm.id} trailer url ${trailer.url} is not valid`)
+            throw new Error(`ERROR! ${type} ${cassetteOrFilm.id} trailer url ${trailer.url} is not valid`)
+        }
+        trailer.videoCode = parsedUrl.code
+        trailer.videoHost = parsedUrl.host
 
-        if (cassetteOrFilm.trailer) {
-            for (trailer of cassetteOrFilm.trailer) {
-                if (trailer.url && trailer.url.length > 10) {
-                    if (trailer.url.includes('vimeo')) {
-                        let splitVimeoLink = trailer.url.split('/')
-                        let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
-                        if (videoCode.length === 9) {
-                            trailer.videoCode = videoCode
-                        }
-                    } else {
-                        let splitYouTubeLink
-                        let splitForVideoCode
-
-                        if (trailer.url.includes('youtube.com')) {
-                            // Long youtube link
-                            splitYouTubeLink = trailer.url.split('=')[1]
-                            splitForVideoCode = splitYouTubeLink !== undefined ? splitYouTubeLink.split('&')[0] : ''
-                        } else if (trailer.url.includes('youtu.be')) {
-                            // Short youtube link
-                            splitYouTubeLink = trailer.url.split('?')[0]
-                            splitForVideoCode = splitYouTubeLink.split('/')[3]
-                        }
-                        try {
-                            if (splitForVideoCode.length === 11) {
-                                trailer.videoCode = splitForVideoCode
-                            }
-                        } catch (error) {
-                            console.log(`ERROR! ${type} ${cassetteOrFilm.id} trailer url ${trailer.url} is not valid`)
-                            throw new Error(error)
-                        }
-                    }
-                }
-            }
+        // TODO: make sure some of these would get used on some of the sites
+        if (trailer.videoHost === 'youtube.com') {
+            trailer.videoUrl = `https://www.youtube.com/watch?v=${trailer.videoCode}`
+            trailer.videoEmbedUrl = `https://www.youtube.com/embed/${trailer.videoCode}`
+        }
+        if (trailer.videoHost === 'youtu.be') {
+            trailer.videoUrl = `https://www.youtube.com/watch?v=${trailer.videoCode}`
+            trailer.videoEmbedUrl = `https://www.youtube.com/embed/${trailer.videoCode}`
+        }
+        if (trailer.videoHost === 'vimeo.com') {
+            trailer.videoUrl = `https://vimeo.com/${trailer.videoCode}`
+            trailer.videoEmbedUrl = `https://player.vimeo.com/video/${trailer.videoCode}`
         }
     }
-    return cassetteOrFilm
 }
 
 function generateYaml(element, lang) {
