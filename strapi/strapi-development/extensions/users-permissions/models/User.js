@@ -24,6 +24,7 @@ module.exports = {
       data.account_created ? null : data.account_created = new Date().toISOString()
     },
     async beforeUpdate(params, data) {
+      console.log('Models User beforeUpdate data', params);
       const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
       const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {
         model: strapi.query('user', 'users-permissions').model,
@@ -41,6 +42,7 @@ module.exports = {
     },
 
     async afterUpdate(result, params, data) {
+      console.log('Models User afterUpdate data', params);
       let my_products_before_update = data.my_products_before_update
       let my_products = data.my_products
 
