@@ -196,7 +196,10 @@ module.exports = {
     console.log('user::update updateData', updateData);
     const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 
+    console.log('user::update data', data);
+
     ctx.send(sanitizeUser(data));
+    console.log('user::update ctx.sent');
   },
 
   /** Profile update function. pre-oAuth
