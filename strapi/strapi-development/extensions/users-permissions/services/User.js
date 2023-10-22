@@ -5,7 +5,7 @@
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
- console.log('users-permissions:services:User.js')
+ console.log('services userjs')
 
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
@@ -38,7 +38,7 @@ module.exports = {
    * @return {Promise}
    */
   async add(values) {
-    // console.log('user-permissions services User.js add');
+    console.log('user-permissions services User.js add');
     if (values.password) {
       values.password = await strapi.plugins['users-permissions'].services.user.hashPassword(
         values
@@ -59,8 +59,8 @@ module.exports = {
       );
     }
 
-    // console.log('user-permissions:services:User.js::edit');
-    // console.log({params, values});
+    console.log('user-permissions:services:User.js::edit');
+    console.log({params, values});
     return strapi.query('user', 'users-permissions').update(params, values);
   },
 
