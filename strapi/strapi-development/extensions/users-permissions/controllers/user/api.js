@@ -116,7 +116,7 @@ module.exports = {
    */
 
   async update(ctx) {
-    console.log('users-permissions controllers user api update');
+    // console.log('users-permissions controllers user api update');
 
     const advancedConfigs = await strapi
       .store({
@@ -127,16 +127,16 @@ module.exports = {
       })
       .get();
 
-    console.log('user::update advancedConfigs', advancedConfigs)
-    console.log('user::update ctx.params', ctx.params)
+    // console.log('user::update advancedConfigs', advancedConfigs)
+    // console.log('user::update ctx.params', ctx.params)
     const { id } = ctx.params;
     const { email, username, password } = ctx.request.body;
-    console.log('user::update ctx.request.body', ctx.request.body);
+    // console.log('user::update ctx.request.body', ctx.request.body);
 
     const user = await strapi.plugins['users-permissions'].services.user.fetch({
       id,
     });
-    console.log('user::update user', user);
+    // console.log('user::update user', user);
 
     if (_.has(ctx.request.body, 'email') && !email) {
       return ctx.badRequest('email.notNull');
@@ -166,7 +166,7 @@ module.exports = {
         );
       }
     }
-    console.log('user::update username checked');
+    // console.log('user::update username checked');
     if (_.has(ctx.request.body, 'email') && advancedConfigs.unique_email) {
       const userWithSameEmail = await strapi
         .query('user', 'users-permissions')
@@ -184,7 +184,7 @@ module.exports = {
       }
       ctx.request.body.email = ctx.request.body.email.toLowerCase();
     }
-    console.log('user::update email checked');
+    // console.log('user::update email checked');
 
     let updateData = {
       ...ctx.request.body,
@@ -193,13 +193,13 @@ module.exports = {
     if (_.has(ctx.request.body, 'password') && password === user.password) {
       delete updateData.password;
     }
-    console.log('user::update updateData', updateData);
+    // console.log('user::update updateData', updateData);
     const data = await strapi.plugins['users-permissions'].services.user.edit({ id }, updateData);
 
-    console.log('user::update data', data);
+    // console.log('user::update data', data);
 
     ctx.send(sanitizeUser(data));
-    console.log('user::update ctx.sent');
+    // console.log('user::update ctx.sent');
   },
 
   /** Profile update function. pre-oAuth
@@ -212,12 +212,12 @@ module.exports = {
    */
   async updateMe(ctx) {
 
-    console.log('users-permissions controllers user api updateme');
+    // console.log('users-permissions controllers user api updateme');
     const { id } = ctx.state.user;
     console.log(ctx.request.body);
 
     async function uploadProfilePicture(files, firstName, lastName) {
-      console.log('Uploading profile picture');
+      // console.log('Uploading profile picture');
 
       firstName = slugify(firstName)
       lastName = slugify(lastName)
