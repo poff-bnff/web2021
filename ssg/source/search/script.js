@@ -65,7 +65,7 @@ function setSearchParams() {
         const selector = selectors[selectorName]
         if (selector.selectedIndex && selector.selectedIndex !== 0) {
             let selectedText = selector.options[selector.selectedIndex].innerHTML
-            urlParameters += !firstParamDone ? `?${selector}=${encodeURIComponent(selectedText)}` : `&${selector}=${encodeURIComponent(selectedText)}`
+            urlParameters += !firstParamDone ? `?${selectorName}=${encodeURIComponent(selectedText)}` : `&${selectorName}=${encodeURIComponent(selectedText)}`
             firstParamDone = true
         }
     }
