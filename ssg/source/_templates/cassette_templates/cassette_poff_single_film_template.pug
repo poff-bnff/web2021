@@ -301,10 +301,16 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.producer
                                 .str_info_value= rolePersonsByRole.producer.join(', ')
 
+                        if rolePersonsByRole.coproducer && rolePersonsByRole.coproducer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.coProducer
+                                .str_info_value= rolePersonsByRole.coproducer.join(', ')
+
                         if rolePersonsByRole.creativeproducer && rolePersonsByRole.creativeproducer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.creativeproducer
                                 .str_info_value= rolePersonsByRole.creativeproducer.join(', ')
+
                         if rolePersonsByRole.juniorproducer && rolePersonsByRole.juniorproducer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.juniorproducer
