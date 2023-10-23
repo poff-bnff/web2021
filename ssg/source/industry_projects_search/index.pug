@@ -5,40 +5,40 @@ include /_templates/mixins.pug
 block content
 
     if self.data.industryprojects && self.data.industryprojects.length && process.env['DOMAIN'] === 'industry.poff.ee'
-        //- h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
+        h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-        //- .grid_search#filters(style='display: none;')
+        .grid_search#filters(style='display: none;')
 
-        //-     input#search(type='text', placeholder= self.label.filters.search)
+            input#search(type='text', placeholder= self.label.filters.search)
 
-        //-     select#types_select(name='Types')
-        //-         option(value='')= self.label.filters.projectTypes
-        //-         each index, key in self.data.filters.types
-        //-             option(value=key)= index
+            select#types_select(name='Types')
+                option(value='')= self.label.filters.projectTypes
+                each index, key in self.data.filters.types
+                    option(value=key)= index
 
-        //-     select#languages_select(name='Languages')
-        //-         option(value='')= self.label.filters.languages
-        //-         each index, key in self.data.filters.languages
-        //-             option(value=key)= index
+            select#languages_select(name='Languages')
+                option(value='')= self.label.filters.languages
+                each index, key in self.data.filters.languages
+                    option(value=key)= index
 
-        //-     select#countries_select(name='Countries')
-        //-         option(value='')= self.label.filters.countries
-        //-         each index, key in self.data.filters.countries
-        //-             option(value=key)= index
+            select#countries_select(name='Countries')
+                option(value='')= self.label.filters.countries
+                each index, key in self.data.filters.countries
+                    option(value=key)= index
 
-        //-     select#statuses_select(name='Statuses')
-        //-         option(value='')= self.label.filters.statuses
-        //-         each index, key in self.data.filters.statuses
-        //-             option(value=key)= index
+            select#statuses_select(name='Statuses')
+                option(value='')= self.label.filters.statuses
+                each index, key in self.data.filters.statuses
+                    option(value=key)= index
 
-        //-     select#genres_select(name='Genres')
-        //-         option(value='')= self.label.filters.genres
-        //-         each index, key in self.data.filters.genres
-        //-             option(value=key)= index
+            select#genres_select(name='Genres')
+                option(value='')= self.label.filters.genres
+                each index, key in self.data.filters.genres
+                    option(value=key)= index
 
-        //-     button.clear(onclick='unselect_all()')= self.label.filters.empty
+            button.clear(onclick='unselect_all()')= self.label.filters.empty
 
-        //-     h3#nonetoshow.sub_section_headline(style='display: none;')
+            h3#nonetoshow.sub_section_headline(style='display: none;')
 
         if self.data.industryprojects && self.data.industryprojects.length
 
