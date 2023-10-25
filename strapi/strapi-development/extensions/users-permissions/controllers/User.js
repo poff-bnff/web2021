@@ -52,7 +52,8 @@ module.exports = {
   personForm: resolveControllerMethod('personForm'),
   getPersonForm: resolveControllerMethod('getPersonForm'),
   roleController: resolveControllerMethod('roleController'),
-  putProfile: resolveControllerMethod('putProfile'),
+  // putProfile: resolveControllerMethod('putProfile'),
+  merge: resolveControllerMethod('merge'),
 
 
   /**

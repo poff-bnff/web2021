@@ -202,6 +202,12 @@ module.exports = {
     // console.log('user::update ctx.sent');
   },
 
+  async merge(ctx) {
+    const mainUser = ctx?.params?.mainUser
+    const aliasUser = ctx?.params?.aliasUser
+    console.log('users-permissions controllers user api merge', ctx.params)
+  },
+
   /** Profile update function. pre-oAuth
    * Update a/an user record.
    * @return {Object}
