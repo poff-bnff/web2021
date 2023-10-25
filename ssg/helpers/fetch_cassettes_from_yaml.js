@@ -69,7 +69,7 @@ if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first screening')
     whichScreeningTypesToFetch.push('first wave')
     whichScreeningTypesToFetch.push('first wave first screening')
-    // whichScreeningTypesToFetch.push('regular')
+    whichScreeningTypesToFetch.push('regular')
     // whichScreeningTypesToFetch.push('online kino')
     whichScreeningTypesToFetch.push('free')
 }
