@@ -739,11 +739,11 @@ for (const lang of allLanguages) {
 }
 
 if (missingUrlErrorIDs.cassette.length) {
-    console.warning('WARNING! Cassette(s) with ID(s)', missingUrlErrorIDs.cassette.join(', '), 'have empty trailer components')
+    console.warn('WARNING! Cassette(s) with ID(s)', missingUrlErrorIDs.cassette.join(', '), 'have empty trailer components')
 }
 
 if (missingUrlErrorIDs.film.length) {
-    console.warning('WARNING! Film(s) with ID(s)', missingUrlErrorIDs.film.join(', '), 'have empty trailer components')
+    console.warn('WARNING! Film(s) with ID(s)', missingUrlErrorIDs.film.join(', '), 'have empty trailer components')
 }
 
 function trailerProcessing(cassetteOrFilm, type) {
