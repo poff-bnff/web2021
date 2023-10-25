@@ -76,7 +76,10 @@
       "handler": "UsersPermissions.getEmailTemplate",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.email-templates.read"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.email-templates.read"]
+          ]
         ]
       }
     },
@@ -86,7 +89,10 @@
       "handler": "UsersPermissions.updateEmailTemplate",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.email-templates.update"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.email-templates.update"]
+          ]
         ]
       }
     },
@@ -96,7 +102,10 @@
       "handler": "UsersPermissions.getAdvancedSettings",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.advanced-settings.read"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.advanced-settings.read"]
+          ]
         ]
       }
     },
@@ -106,7 +115,10 @@
       "handler": "UsersPermissions.updateAdvancedSettings",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.advanced-settings.update"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.advanced-settings.update"]
+          ]
         ]
       }
     },
@@ -124,7 +136,10 @@
       "handler": "UsersPermissions.getProviders",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.providers.read"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.providers.read"]
+          ]
         ]
       }
     },
@@ -134,7 +149,10 @@
       "handler": "UsersPermissions.updateProviders",
       "config": {
         "policies": [
-          ["admin::hasPermissions", ["plugins::users-permissions.providers.update"]]
+          [
+            "admin::hasPermissions",
+            ["plugins::users-permissions.providers.update"]
+          ]
         ]
       }
     },
@@ -475,12 +493,17 @@
     },
     {
       "method": "PUT",
-      "path": "/profile/:id",
-      "handler": "User.putProfile",
+      "path": "/users/merge",
+      "handler": "User.merge",
       "config": {
         "policies": [],
         "prefix": "",
-        "description": "Update an existing user profile"
+        "description": "Merge users",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User",
+          "actionType": "merge"
+        }
       }
     }
   ]
