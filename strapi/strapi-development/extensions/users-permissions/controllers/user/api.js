@@ -110,11 +110,11 @@ module.exports = {
       ctx.badRequest(null, formatError(error));
     }
   },
+
   /**
    * Update a/an user record.
    * @return {Object}
    */
-
   async update(ctx) {
     // console.log('users-permissions controllers user api update');
 
@@ -200,6 +200,12 @@ module.exports = {
 
     ctx.send(sanitizeUser(data));
     // console.log('user::update ctx.sent');
+  },
+
+  async merge(ctx) {
+    const mainUser = ctx?.params?.mainUser
+    const aliasUser = ctx?.params?.aliasUser
+    console.log('users-permissions controllers user api merge', ctx.params)
   },
 
   /** Profile update function. pre-oAuth
@@ -353,6 +359,7 @@ module.exports = {
     // toSheets.newUserToSheets(updatedUser)
     ctx.send(sanitizeUser(updatedUser));
   },
+
   async favorites(ctx) {
     console.log('users-permissions controllers user api favorites');
 
@@ -514,6 +521,7 @@ module.exports = {
       })
     }
   },
+
   async buyProduct(ctx) {
     const requestBody = ctx.request.body
 
@@ -699,6 +707,7 @@ module.exports = {
     return { url: paymentMethod.url }
 
   },
+
   async buyProductCb(ctx) {
     let cancel_url = 'https://poff.ee/'
 
@@ -899,7 +908,6 @@ module.exports = {
       }
     }
   },
-
 
   async personForm(ctx) {
 
@@ -1147,6 +1155,7 @@ module.exports = {
       }
     }
   },
+
   async getPersonForm(ctx) {
 
     // const { person } = ctx.request.body.data.person;
@@ -1167,6 +1176,7 @@ module.exports = {
     return { tere: 'hommikust' }
 
   },
+
   async roleController(ctx) {
     const id = ctx.request.body.userId;
     const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
@@ -1286,6 +1296,6 @@ module.exports = {
     const body = parseMultipartData(ctx)
     console.log(`Updating profile ${profileId} with body ${JSON.stringify(body, null, 4)}`) // eslint-disable-line no-console
   },
-};
+}
 
 

@@ -475,13 +475,28 @@
     },
     {
       "method": "PUT",
-      "path": "/profile/:id",
-      "handler": "User.putProfile",
+      "path": "/users/merge",
+      "handler": "User.merge",
       "config": {
         "policies": [],
         "prefix": "",
-        "description": "Update an existing user profile"
+        "description": "Merge users",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User",
+          "actionType": "merge"
+        }
       }
+    // },
+    // {
+    //   "method": "PUT",
+    //   "path": "/profile/:id",
+    //   "handler": "User.putProfile",
+    //   "config": {
+    //     "policies": [],
+    //     "prefix": "",
+    //     "description": "Update an existing user profile"
+    //   }
     }
   ]
 }
