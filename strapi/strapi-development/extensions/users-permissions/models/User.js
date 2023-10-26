@@ -34,7 +34,7 @@ module.exports = {
     // TODO: #667 detecting changes in user products with some smarter and cheaper method
     async beforeUpdate(params, data) {
       // return
-      // console.log('Models User beforeUpdate data', params);
+      console.log(`Models User beforeUpdate params.id ${params.id} data`, data)
       const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
       // console.log('Models User beforeUpdate oldUserInfo', oldUserInfo);
       const model = await strapi.query('user', 'users-permissions').model;
