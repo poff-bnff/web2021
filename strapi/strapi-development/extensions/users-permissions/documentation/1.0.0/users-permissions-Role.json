@@ -630,9 +630,6 @@
                     "type": "string"
                   }
                 },
-                "linkedUser": {
-                  "type": "string"
-                },
                 "mainUser": {
                   "type": "string"
                 },
