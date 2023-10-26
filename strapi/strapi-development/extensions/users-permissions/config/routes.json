@@ -482,6 +482,16 @@
         "prefix": "",
         "description": "Update an existing user profile"
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/link",
+      "handler": "User.linkUsers",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Link mainUser with aliasUser"
+      }
     }
   ]
 }
