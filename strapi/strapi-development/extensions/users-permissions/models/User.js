@@ -33,14 +33,14 @@ module.exports = {
 
     // TODO: #667 detecting changes in user products with some smarter and cheaper method
     async beforeUpdate(params, data) {
-      // return
-      console.log(`===== Models User beforeUpdate params.id ${params.id} data`, data)
+      return
+      // console.log(`===== Models User beforeUpdate params.id ${params.id} data`, data)
       const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
-      console.log('===== Models User beforeUpdate oldUserInfo', oldUserInfo)
+      // console.log('===== Models User beforeUpdate oldUserInfo', oldUserInfo)
       const model = await strapi.query('user', 'users-permissions').model
-      console.log('===== Models User beforeUpdate model', model)
+      // console.log('===== Models User beforeUpdate model', model)
       const sanitizedOldUserInfo = sanitizeEntity(oldUserInfo, {model: model})
-      console.log('===== Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo)
+      // console.log('===== Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo)
       // console.log('Models User beforeUpdate sanitizedOldUserInfo', sanitizedOldUserInfo);
 
       // Save beforeUpdate state of the user products
