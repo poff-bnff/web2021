@@ -1315,8 +1315,10 @@ module.exports = {
    * @returns {Object} - returns code 200 if success, 400 if error
    */
   async linkUsers(ctx) {
+    console.log(`request body ${JSON.stringify(ctx.request.body, null, 4)}`) // eslint-disable-line no-console
+    console.log(`context params ${JSON.stringify(ctx.params, null, 4)}`) // eslint-disable-line no-console
     const { mainUser, aliasUser } = ctx.request.body
-    console.log('mainUser, aliasUser', mainUser, aliasUser);
+    console.log(`Linking aliasUser ${aliasUser} with mainUser ${mainUser}`) // eslint-disable-line no-console
 
     // 1. Set the stage
     // If provided mainuser is itself an aliasUser, then use the mainUser of mainUser as mainUser.

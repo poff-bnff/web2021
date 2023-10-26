@@ -484,7 +484,7 @@
       }
     },
     {
-      "method": "POST",
+      "method": "PUT",
       "path": "/users/link",
       "handler": "User.linkUsers",
       "config": {
