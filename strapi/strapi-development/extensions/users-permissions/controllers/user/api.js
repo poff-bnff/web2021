@@ -1334,7 +1334,7 @@ module.exports = {
     }
 
     // 2. Merge the My properties of mainUser ...
-    mainUserObj.My = mainUserObj.My || { films: [], screenings: [] }
+    mainUserObj.My = mainUserObj.My || { films: [], screenings: [], products: [] }
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
       mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
       mainUserObj.my_films = []
@@ -1343,9 +1343,10 @@ module.exports = {
       mainUserObj.My.screenings = [...(mainUserObj.My.screenings || []), ...(mainUserObj.my_screenings || [])]
       mainUserObj.my_screenings = []
     }
+    mainUserObj.My.products = [...(mainUserObj.My.products || []), ...(mainUserObj.my_products || [])]
 
     // ... and aliasUser
-    aliasUserObj.My = aliasUserObj.My || { films: [], screenings: [] }
+    aliasUserObj.My = aliasUserObj.My || { films: [], screenings: [], products: [] }
     if (aliasUserObj.my_films && aliasUserObj.my_films.length) {
       aliasUserObj.My.films = [...(aliasUserObj.My.films || []), ...(aliasUserObj.my_films || [])]
       aliasUserObj.my_films = []
@@ -1354,12 +1355,15 @@ module.exports = {
       aliasUserObj.My.screenings = [...(aliasUserObj.My.screenings || []), ...(aliasUserObj.my_screenings || [])]
       aliasUserObj.my_screenings = []
     }
+    aliasUserObj.My.products = [...(aliasUserObj.My.products || []), ...(aliasUserObj.my_products || [])]
 
     // ... and update mainUser with the merged properties.
     mainUserObj.My.films = [...mainUserObj.My.films, ...aliasUserObj.My.films]
     mainUserObj.My.films = [...new Set(mainUserObj.My.films)]
     mainUserObj.My.screenings = [...mainUserObj.My.screenings, ...aliasUserObj.My.screenings]
     mainUserObj.My.screenings = [...new Set(mainUserObj.My.screenings)]
+    mainUserObj.My.products = [...mainUserObj.My.products, ...aliasUserObj.My.products]
+    mainUserObj.My.products = [...new Set(mainUserObj.My.products)]
 
     // 3a. Collect all aliasUsers.
     aliasUserObj.aliasUsers = aliasUserObj.aliasUsers || []
