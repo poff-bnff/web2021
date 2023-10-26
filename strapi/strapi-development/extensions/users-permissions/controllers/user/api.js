@@ -1312,6 +1312,13 @@ module.exports = {
    * 4. Save mainUser.
    * 5. Return mainUser and status.
    *
+   * @NOTE
+   * user.My.products is different from films and screenings.
+   * user.my_films and user.my_screenings are obsolete and should be read only,
+   * any new films and screenings should be added to user.My.films and user.My.screenings;
+   * user.my_products on the other hand is primary data and gets copied to user.My.products
+   * for frontend use (will deprecate user.my_products in the future).
+   *
    * @returns {Object} - returns code 200 if success, 400 if error
    */
   async linkUsers(ctx) {
