@@ -515,26 +515,20 @@ module.exports = {
     }
   },
   async buyProduct(ctx) {
-    const requestBody = JSON.parse(ctx.request.body)
+    const requestBody = ctx.request.body
 
-    const id = requestBody.userId;
-    const catId = requestBody.categoryId;
-
-    console.log('Yes, buy product here user ', id, 'category ', catId)
-
-    const user = await strapi.plugins['users-permissions'].services.user.fetch({
-      id,
-    });
+    const id = requestBody.userId
+    const catId = requestBody.categoryId
+    const user = await strapi.plugins['users-permissions'].services.user.fetch({ id })
 
     const userEmail = user.email
-    console.log(userEmail)
-
+    console.log(`Buy product ${catId} for user ${id}, ${userEmail}`)
 
     const postToMaksekeskus = async (postData) => {
       const productCatBP = JSON.parse(postData.transaction.merchant_data).productCatSeller
-      console.log('postToMaksekeskus product cat business profile id', productCatBP);
+      console.log('postToMaksekeskus product cat business profile id', productCatBP)
 
-      const businessProfile = await strapi.query('business-profile').findOne({ 'id': productCatBP });
+      const businessProfile = await strapi.query('business-profile').findOne({ 'id': productCatBP })
 
       console.log('postToMaksekeskus product cat business profile ', businessProfile?.name, businessProfile?.reg_code)
 
