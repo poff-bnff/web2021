@@ -137,6 +137,16 @@
     "linkedUser": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "mainUser": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "aliasUsers"
+    },
+    "aliasUsers": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "mainUser"
     }
   }
 }

@@ -1192,6 +1192,78 @@
         ]
       }
     },
+    "/users/merge": {
+      "put": {
+        "deprecated": false,
+        "description": "Merge users",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "UsersPermissions - User"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/local": {
       "post": {
         "deprecated": false,
@@ -3106,11 +3178,275 @@
               "linkedUser": {
                 "type": "string"
               },
+              "mainUser": {
+                "type": "string"
+              },
+              "aliasUsers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
               "updated_by": {
                 "type": "string"
+              }
+            }
+          },
+          "mainUser": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "profileFilled": {
+                "type": "boolean"
+              },
+              "externalProviders": {
+                "type": "component"
+              },
+              "last10Logins": {
+                "type": "component"
+              },
+              "account_created": {
+                "type": "string"
+              },
+              "importedToStrapi": {
+                "type": "component"
+              },
+              "my_films": {
+                "type": "component"
+              },
+              "my_screenings": {
+                "type": "component"
+              },
+              "my_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "transactions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user_profile": {
+                "type": "string"
+              },
+              "business_profiles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "my_events": {
+                "type": "component"
+              },
+              "user_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "moodle_id": {
+                "type": "uid"
+              },
+              "id_number_est": {
+                "type": "uid"
+              },
+              "person": {
+                "type": "string"
+              },
+              "My": {
+                "type": "component"
+              },
+              "reserved_products": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "linkedUser": {
+                "type": "string"
+              },
+              "mainUser": {
+                "type": "string"
+              },
+              "aliasUsers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "aliasUsers": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "username",
+                "email"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "resetPasswordToken": {
+                  "type": "string"
+                },
+                "confirmationToken": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "boolean"
+                },
+                "blocked": {
+                  "type": "boolean"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "profileFilled": {
+                  "type": "boolean"
+                },
+                "externalProviders": {
+                  "type": "component"
+                },
+                "last10Logins": {
+                  "type": "component"
+                },
+                "account_created": {
+                  "type": "string"
+                },
+                "importedToStrapi": {
+                  "type": "component"
+                },
+                "my_films": {
+                  "type": "component"
+                },
+                "my_screenings": {
+                  "type": "component"
+                },
+                "my_products": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user_profile": {
+                  "type": "string"
+                },
+                "business_profiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "my_events": {
+                  "type": "component"
+                },
+                "user_roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "moodle_id": {
+                  "type": "uid"
+                },
+                "id_number_est": {
+                  "type": "uid"
+                },
+                "person": {
+                  "type": "string"
+                },
+                "My": {
+                  "type": "component"
+                },
+                "reserved_products": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "linkedUser": {
+                  "type": "string"
+                },
+                "mainUser": {
+                  "type": "string"
+                },
+                "aliasUsers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -4072,6 +4408,15 @@
           },
           "linkedUser": {
             "type": "string"
+          },
+          "mainUser": {
+            "type": "string"
+          },
+          "aliasUsers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"
