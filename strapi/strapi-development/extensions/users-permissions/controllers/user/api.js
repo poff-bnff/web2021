@@ -1334,6 +1334,7 @@ module.exports = {
     }
 
     // 2. Merge the My properties of mainUser ...
+    mainUserObj.My = mainUserObj.My || { films: [], screenings: [] }
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
       mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
       mainUserObj.my_films = []
@@ -1344,6 +1345,7 @@ module.exports = {
     }
 
     // ... and aliasUser
+    aliasUserObj.My = aliasUserObj.My || { films: [], screenings: [] }
     if (aliasUserObj.my_films && aliasUserObj.my_films.length) {
       aliasUserObj.My.films = [...(aliasUserObj.My.films || []), ...(aliasUserObj.my_films || [])]
       aliasUserObj.my_films = []
