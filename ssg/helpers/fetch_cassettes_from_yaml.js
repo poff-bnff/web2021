@@ -897,15 +897,18 @@ function generateAllDataYAML(allData, lang) {
                     filters.subtitles[subtKey] = subtitle_name
                 }
 
-                const townKey = `_${screenings.location.hall.cinema.town.id}`
-                const town_name = screenings.location.hall.cinema.town.name
+                const location = screenings.location
+                if (!location || !location.hall || !location.hall.cinema || !location.hall.cinema.town) {
+                    continue
+                }
+                const cinema = location.hall.cinema
+                const townKey = `_${cinema.town.id}`
+                const town_name = cinema.town.name
                 towns.push(townKey)
                 filters.towns[townKey] = town_name
 
-                const cinemaKey = `_${screenings.location.hall.cinema.id}`
-                const cinema_name = screenings.location.hall.cinema.name
-                cinemas.push(cinemaKey)
-                filters.cinemas[cinemaKey] = cinema_name
+                cinemas.push(`_${cinema.id}`)
+                filters.cinemas[cinemaKey] = cinema.name
             }
         }
         let premieretypes = []
