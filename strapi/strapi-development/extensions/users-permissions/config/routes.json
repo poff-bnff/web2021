@@ -485,7 +485,7 @@
     },
     {
       "method": "PUT",
-      "path": "/users/link",
+      "path": "/user/link",
       "handler": "User.linkUsers",
       "config": {
         "policies": [],
