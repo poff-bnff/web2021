@@ -899,6 +899,7 @@ function generateAllDataYAML(allData, lang) {
 
                 const location = screenings.location
                 if (!location || !location.hall || !location.hall.cinema || !location.hall.cinema.town) {
+                    console.warn('screening', screenings.id, 'has no location or hall or cinema or town')
                     continue
                 }
                 const cinema = location.hall.cinema
