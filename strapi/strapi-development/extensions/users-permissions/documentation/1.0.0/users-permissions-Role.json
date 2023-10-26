@@ -633,6 +633,15 @@
                 "linkedUser": {
                   "type": "string"
                 },
+                "mainUser": {
+                  "type": "string"
+                },
+                "aliasUsers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
