@@ -515,7 +515,7 @@ module.exports = {
     }
   },
   async buyProduct(ctx) {
-    const requestBody = ctx.request.body
+    const requestBody = JSON.parse(ctx.request.body)
 
     const id = requestBody.userId;
     const catId = requestBody.categoryId;
