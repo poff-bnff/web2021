@@ -385,17 +385,17 @@ label:
         courseEndTimeUser: Lõpp kasutaja aeg
 footer:
     id: 1
-    namePrivate: 'PÖFFi footer '
+    namePrivate: Shortsi footer
     domain:
-        id: 1
-        url: poff.ee
+        id: 3
+        url: shorts.poff.ee
     socialGroup:
-        id: 8
-        namePrivate: PÖFF social links
-        name: Jälgi meid sotsmeedias
+        id: 10
+        namePrivate: 'Shorts Social '
+        name: Jälgi meid
         items:
             -
-                id: 26
+                id: 38
                 name: Facebook
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -405,11 +405,11 @@ footer:
 
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1
                     1 0 0 1 1-1h3z"></path></svg>
-                url_en: https://www.facebook.com/tallinnblacknightsff/
-                url_ru: https://www.facebook.com/tallinnblacknightsff/
-                url: https://www.facebook.com/tallinnblacknightsff/
+                url_en: https://www.facebook.com/poffshorts
+                url_ru: https://www.facebook.com/poffshorts
+                url: https://www.facebook.com/poffshorts
             -
-                id: 27
+                id: 39
                 name: Instagram
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -419,11 +419,11 @@ footer:
                     height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1
                     1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5"
                     y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                url_en: https://www.instagram.com/tallinnblacknightsff/
-                url_ru: https://www.instagram.com/tallinnblacknightsff/
-                url: https://www.instagram.com/tallinnblacknightsff/
+                url_en: https://www.instagram.com/poffshorts
+                url_ru: https://www.instagram.com/poffshorts
+                url: https://www.instagram.com/poffshorts
             -
-                id: 28
+                id: 40
                 name: YouTube
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -440,7 +440,7 @@ footer:
                 url_ru: https://www.youtube.com/user/Poffihunt
                 url: https://www.youtube.com/user/Poffihunt
             -
-                id: 29
+                id: 41
                 name: Twitter
                 svgCode: >-
                     <svg viewBox="0 0 24 24" width="24" height="24"
@@ -453,45 +453,14 @@ footer:
                 url_en: https://twitter.com/TallinnBNFF
                 url_ru: https://twitter.com/TallinnBNFF
                 url: https://twitter.com/TallinnBNFF
-            -
-                id: 104
-                name: TikTok
-                svgCode: >-
-                    <svg viewBox="0 0 24 24" width="24" height="24"
-                    stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="svg_icon_footer">
-
-
-                    <path d="M21 8v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1
-                    5-5h8a5 5 0 0 1 5 5Z"/><path d="M10 12a3 3 0 1 0 3 3V6c.333
-                    1 1.6 3 4 3"/></g></svg>
-                url_en: https://www.tiktok.com/@tallinnblacknightsff
-                url_ru: https://www.tiktok.com/@tallinnblacknightsff
-                url: https://www.tiktok.com/@tallinnblacknightsff
-            -
-                id: 105
-                name: Spotify
-                svgCode: >-
-                    <svg viewBox="0 0 24 24" width="24" height="24"
-                    stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    class="svg_icon_footer">
-
-                    <path d="M7 15s4.5-1 9 1m-9.5-4s6-1.5 11 1.5M6 9c3-.5 8-1 13
-                    2"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10
-                    4.477 10 10s-4.477 10-10 10Z"/></g></svg>
-                url_en: https://open.spotify.com/show/60ru28FHEjl4NLkToQDmjY
-                url_ru: https://open.spotify.com/show/60ru28FHEjl4NLkToQDmjY
-                url: https://open.spotify.com/show/60ru28FHEjl4NLkToQDmjY
     item:
         -
-            id: 12
-            namePrivate: 'Team '
+            id: 18
+            namePrivate: Team
             name: Meeskond
             svgItem:
                 -
-                    id: 30
+                    id: 42
                     name: Team
                     svgCode: >-
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -503,16 +472,16 @@ footer:
                         r="4"></circle><path d="M23 21v-2a4 4 0 0
                         0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0
                         7.75"></path></svg>
-                    url_en: poff-team
-                    url_ru: komanda-poff
-                    url: poffi-meeskond
+                    url_en: shorts-team
+                    url_ru: komanda-shorts
+                    url: shortsi-meeskond
         -
-            id: 13
+            id: 19
             namePrivate: Subscribe to newsletter
             name: Liitu uudiskirjaga
             svgItem:
                 -
-                    id: 31
+                    id: 43
                     name: E-mail
                     svgCode: >-
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -524,82 +493,31 @@ footer:
                         2-2z"></path><polyline points="22,6 12,13
                         2,6"></polyline></svg>
                     url_en: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=449595c9ae
+                        https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232
                     url_ru: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
+                        https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232
                     url: >-
-                        https://poff.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=135d3f2219
+                        https://blacknightsfilmfestival.us7.list-manage.com/subscribe?u=c2426593c5ba2369b6e13a66e&id=e3f494a232
         -
-            id: 14
+            id: 20
             namePrivate: Contacts
             name: Kontakt
             text: |-
-                MTÜ Pimedate Ööde Filmifestival
-                Telliskivi 60a/2, 10412 Tallinn 
-                Tel: +372 5620 8308
-                E-mail: info@poff.ee
-                Registrikood: 80044767
+                Telliskivi 60A, 10412 Tallinn
+                +372 5620 8308 / shorts@poff.ee
+                Register Code: 80044767
                 KMKR: EE100520914
-                IBAN: EE577700771005547635
+                IBAN: EE791700017002751609
     supporters:
         -
-            id: 1
+            id: 2
             order: 1
-            name: Esitlejad
+            name: Esitlejad (PÖFF Shorts)
             supporter:
                 -
-                    id: 1
+                    id: 9
                     name: Elisa
                     customUrl: https://www.elisa.ee/
-                    poffi_article:
-                        id: 126
-                        created_by: 9
-                        created_at: '2020-11-09T07:39:19.532Z'
-                        slug_en: pof-fi-article-35
-                        slug_ru: pof-fi-article-80
-                        contents_en: >-
-                            Elisa is proud to be a supporter of the only
-                            category A film festival in Northern Europe because
-                            we share a common goal – to offer unforgettable
-                            experiences to audiences of all ages.
-
-
-                            This year, with Elisa you can enjoy all 112 PÖFF
-                            movies at home via the PÖFF web cinema. In addition,
-                            with Elisa Stage you can enjoy anything and
-                            everything exciting at the PÖFF festival, from the
-                            opening and award ceremonies, to interviews and
-                            discussion panels. As is traditional, all Elisa
-                            customers can get PÖFF tickets at a discounted
-                            price.
-
-
-                            See you at PÖFF!
-                        publishFrom: '2022-10-27T09:00:00.000Z'
-                        publish_en: true
-                        public: true
-                        title: ELISA
-                        slug: elisa
-                        contents: >-
-                            **Elu on PÖFFi väärt**
-
-
-                            Elisal on suur au toetada Põhja-Euroopa ainsat
-                            A-kategooria filmifestivali PÖFF. Meil on ühine
-                            eesmärk – pakkuda unustamatuid elamusi igas vanuses
-                            publikule.
-
-
-                            Mitmeid PÖFFi filme, festivalimelu, sh intervjuusid,
-                            Q&A vestlusi, avatseremooniat ning auhinnagalat on
-                            võimalik nautida ka kodustes tingimustes, sest Elisa
-                            Stage’i platvormil on avatud PÖFFi veebikino.
-
-                            Ja nagu ikka, on ka tänavu PÖFFi piletid Elisa
-                            klientidest filmigurmaanidele soodsamad.
-                             
-                            Kohtume PÖFFil!
-                        publish: true
                     logoWhite:
                         id: 6716
                         name: elisa_poffi_peasponsor_logo_white.svg
@@ -610,330 +528,47 @@ footer:
                         url: >-
                             /uploads/elisa_poffi_peasponsor_logo_white_715a1a6ad2.svg
                 -
-                    id: 2
-                    name: Nordic Hotel Forum
-                    customUrl: https://www.nordichotels.eu/
+                    id: 23
+                    name: Metropol
+                    customUrl: https://www.metropol.ee/et/
                     logoWhite:
-                        id: 5301
-                        name: Nordic_hotel_logo_white.svg
-                        width: 602
-                        height: 65
-                        hash: Nordic_hotel_logo_white_5cf8b505a2
+                        id: 407
+                        name: metropol_logo_white.svg
+                        width: 850
+                        height: 85
+                        hash: metropol_logo_white_3bf1d047fe
                         ext: .svg
-                        url: /uploads/Nordic_hotel_logo_white_5cf8b505a2.svg
+                        url: /uploads/metropol_logo_white_3bf1d047fe.svg
         -
-            id: 2
+            id: 11
             order: 2
-            name: Peapartnerid
+            name: Täname (PÖFF Shorts)
             supporter:
                 -
-                    id: 6
-                    name: Cramo
-                    customUrl: https://www.cramo.ee/
+                    id: 28
+                    name: BFM
+                    customUrl: https://www.tlu.ee/bfm
                     logoWhite:
-                        id: 261
-                        name: cramo_white.svg
-                        width: 160
-                        height: 28
-                        hash: cramo_white_9329c71c98
+                        id: 355
+                        name: bfm_logo_white.svg
+                        width: 300
+                        height: 53
+                        hash: bfm_logo_white_1e3cefeae5
                         ext: .svg
-                        url: /uploads/cramo_white_9329c71c98.svg
+                        url: /uploads/bfm_logo_white_1e3cefeae5.svg
                 -
-                    id: 3
-                    name: Postimees
-                    customUrl: https://www.postimees.ee/
+                    id: 32
+                    name: EKA
+                    customUrl: https://www.artun.ee/
                     logoWhite:
-                        id: 253
-                        name: Postimees_white.svg
-                        width: 350
-                        height: 68
-                        hash: Postimees_white_3f389926f5
-                        ext: .svg
-                        url: /uploads/Postimees_white_3f389926f5.svg
-                -
-                    id: 564
-                    name: National Geograpic
-                    customUrl: https://www.nationalgeographic.ee/
-                    logoWhite:
-                        id: 6923
-                        name: national_geographic_logo_white.svg
-                        width: 500
-                        height: 147
-                        hash: national_geographic_logo_white_e263e2414c
+                        id: 1461
+                        name: Shorts institutsioonid EKA_logo_white.svg
+                        width: 114
+                        height: 40
+                        hash: Shorts_institutsioonid_EKA_logo_white_2fe1a848f8
                         ext: .svg
                         url: >-
-                            /uploads/national_geographic_logo_white_e263e2414c.svg
-                -
-                    id: 655
-                    name: Solaris
-                    logoWhite:
-                        id: 3445
-                        name: Solaris_logo_white.svg
-                        width: 401
-                        height: 264
-                        hash: Solaris_logo_white_0a2fc8ad41
-                        ext: .svg
-                        url: /uploads/Solaris_logo_white_0a2fc8ad41.svg
-                -
-                    id: 657
-                    name: Alexela
-                    customUrl: https://www.alexela.ee/et
-                    logoWhite:
-                        id: 19380
-                        name: Alexela_logo_white
-                        width: 1730
-                        height: 193
-                        hash: Alexela_logo_white_c09bb44083
-                        ext: .svg
-                        url: /uploads/Alexela_logo_white_c09bb44083.svg
-                -
-                    id: 659
-                    name: Lido
-                    customUrl: https://lido.ee/
-                    logoWhite:
-                        id: 19407
-                        name: LIDO_LOGO_white
-                        width: 325
-                        height: 162
-                        hash: LIDO_LOGO_white_53905f36be
-                        ext: .svg
-                        url: /uploads/LIDO_LOGO_white_53905f36be.svg
-                -
-                    id: 661
-                    name: Elke
-                    customUrl: https://www.elke.ee/
-                    logoWhite:
-                        id: 19408
-                        name: BM_Elke_Logo_white
-                        width: 229
-                        height: 67
-                        hash: BM_Elke_Logo_white_94edd8211a
-                        ext: .svg
-                        url: /uploads/BM_Elke_Logo_white_94edd8211a.svg
-        -
-            id: 30
-            order: 3
-            name: Partnerid
-            supporter:
-                -
-                    id: 314
-                    name: EuroPark
-                    logoColour:
-                        id: 3449
-                        name: Europark_logo_white.svg
-                        width: 960
-                        height: 283
-                        hash: Europark_logo_white_844f04aa7f
-                        ext: .svg
-                        url: /uploads/Europark_logo_white_844f04aa7f.svg
-                -
-                    id: 315
-                    name: LuxCharter
-                    logoColour:
-                        id: 3448
-                        name: >-
-                            LuxCharter_logo charter_kuld
-                            gradiendiga_CMYK_vector-01.png
-                        width: 447
-                        height: 131
-                        formats:
-                            thumbnail:
-                                url: >-
-                                    /uploads/thumbnail_Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
-                                name: >-
-                                    thumbnail_LuxCharter_logo charter_kuld
-                                    gradiendiga_CMYK_vector-01.png
-                        hash: >-
-                            Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a
-                        ext: .png
-                        url: >-
-                            /uploads/Lux_Charter_logo_charter_kuld_gradiendiga_CMYK_vector_01_81afbcdd8a.png
-                -
-                    id: 652
-                    name: LuxExpress
-                    customUrl: https://luxexpress.eu/
-                    logoWhite:
-                        id: 8572
-                        name: LUX_Express_logo_white.svg
-                        width: 500
-                        height: 138
-                        hash: LUX_Express_logo_white_79f3852cf2
-                        ext: .svg
-                        url: /uploads/LUX_Express_logo_white_79f3852cf2.svg
-        -
-            id: 48
-            order: 4
-            name: Täname
-            supporter:
-                -
-                    id: 639
-                    name: Euroopa Regionaalarengu Fond
-                    customUrl: https://poff.ee/artikkel/kaasrahastanud-euroopa-liit/
-                    logoWhite:
-                        id: 22248
-                        name: Kaasrahastanud_EL_kaksiklogod_ENG_whiteback
-                        width: 460
-                        height: 240
-                        hash: >-
-                            Kaasrahastanud_EL_kaksiklogod_ENG_whiteback_c0088d11f4
-                        ext: .svg
-                        url: >-
-                            /uploads/Kaasrahastanud_EL_kaksiklogod_ENG_whiteback_c0088d11f4.svg
-                    logoColour:
-                        id: 22248
-                        name: Kaasrahastanud_EL_kaksiklogod_ENG_whiteback
-                        width: 460
-                        height: 240
-                        hash: >-
-                            Kaasrahastanud_EL_kaksiklogod_ENG_whiteback_c0088d11f4
-                        ext: .svg
-                        url: >-
-                            /uploads/Kaasrahastanud_EL_kaksiklogod_ENG_whiteback_c0088d11f4.svg
-                -
-                    id: 638
-                    name: EAS
-                    customUrl: https://www.eas.ee/
-                    logoWhite:
-                        id: 6861
-                        name: EAS_logo_white.svg
-                        width: 500
-                        height: 155
-                        hash: EAS_logo_white_26ed90027b
-                        ext: .svg
-                        url: /uploads/EAS_logo_white_26ed90027b.svg
-                -
-                    id: 640
-                    name: Visit Estonia
-                    customUrl: https://www.visitestonia.com/
-                    logoWhite:
-                        id: 14639
-                        name: visit_estonia_horizontal_logo_white
-                        width: 364
-                        height: 50
-                        hash: visit_estonia_horizontal_logo_white_31edf7a91f
-                        ext: .svg
-                        url: >-
-                            /uploads/visit_estonia_horizontal_logo_white_31edf7a91f.svg
-                -
-                    id: 641
-                    name: Eesti Filmi Instituut
-                    customUrl: https://www.filmi.ee/
-                    logoWhite:
-                        id: 3380
-                        name: estonian-film-institute.png
-                        width: 2504
-                        height: 855
-                        formats:
-                            thumbnail:
-                                url: >-
-                                    /uploads/thumbnail_estonian_film_institute_b17c0aae47.png
-                                name: thumbnail_estonian-film-institute.png
-                        hash: estonian_film_institute_b17c0aae47
-                        ext: .png
-                        url: /uploads/estonian_film_institute_b17c0aae47.png
-                -
-                    id: 642
-                    name: Keskkonnaagentuur
-                    customUrl: https://www.keskkonnaagentuur.ee/
-                    logoWhite:
-                        id: 3463
-                        name: Keskkonnaagentuur_3lovi_pms_logo-01_white-01.svg
-                        width: 178
-                        height: 68
-                        hash: >-
-                            Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41
-                        ext: .svg
-                        url: >-
-                            /uploads/Keskkonnaagentuur_3lovi_pms_logo_01_white_01_ba7a97ce41.svg
-                -
-                    id: 643
-                    name: Kultuuriministeerium
-                    customUrl: https://www.kul.ee/
-                    logoWhite:
-                        id: 11370
-                        name: kultuuriministeerium_logo_white
-                        width: 176
-                        height: 68
-                        hash: kultuuriministeerium_logo_white_3dcf4c649d
-                        ext: .svg
-                        url: >-
-                            /uploads/kultuuriministeerium_logo_white_3dcf4c649d.svg
-                -
-                    id: 644
-                    name: Eesti Kultuurkapital
-                    customUrl: https://www.kulka.ee/
-                    logoWhite:
-                        id: 11367
-                        name: kultuurkapital_logo_white
-                        width: 600
-                        height: 270
-                        hash: kultuurkapital_logo_white_ded455ab2b
-                        ext: .svg
-                        url: /uploads/kultuurkapital_logo_white_ded455ab2b.svg
-                -
-                    id: 645
-                    name: Tallinna Linn
-                    customUrl: https://www.tallinn.ee/
-                    logoWhite:
-                        id: 8655
-                        name: Tallinn_logo_white.svg
-                        width: 500
-                        height: 121
-                        hash: Tallinn_logo_white_c23c8e0b2f
-                        ext: .svg
-                        url: /uploads/Tallinn_logo_white_c23c8e0b2f.svg
-                -
-                    id: 646
-                    name: Tallinna Kultuuri- ja Spordiamet
-                    logoWhite:
-                        id: 8551
-                        name: Tallinna_Kultuuri-ja_Spordiamet_logo_white.svg
-                        width: 500
-                        height: 95
-                        hash: >-
-                            Tallinna_Kultuuri_ja_Spordiamet_logo_white_f0ea38c53f
-                        ext: .svg
-                        url: >-
-                            /uploads/Tallinna_Kultuuri_ja_Spordiamet_logo_white_f0ea38c53f.svg
-                -
-                    id: 647
-                    name: Haridus ja Teadusministeerium
-                    customUrl: https://www.hm.ee/
-                    logoWhite:
-                        id: 18811
-                        name: Haridus_ja_teadusministeerium_white
-                        width: 166
-                        height: 68
-                        hash: Haridus_ja_teadusministeerium_white_4e17501beb
-                        ext: .svg
-                        url: >-
-                            /uploads/Haridus_ja_teadusministeerium_white_4e17501beb.svg
-                -
-                    id: 648
-                    name: Funded by the European Union
-                    customUrl: https://ec.europa.eu/
-                    logoWhite:
-                        id: 18809
-                        name: EN_FundedbytheEU_RGB_WHITE Outline
-                        width: 989
-                        height: 220
-                        hash: EN_Fundedbythe_EU_RGB_WHITE_Outline_5f960bc92b
-                        ext: .svg
-                        url: >-
-                            /uploads/EN_Fundedbythe_EU_RGB_WHITE_Outline_5f960bc92b.svg
-                -
-                    id: 653
-                    name: Tallinn Euroopa Roheline Pealinn
-                    customUrl: https://greentallinn.eu/
-                    logoWhite:
-                        id: 18841
-                        name: tallinn_roheline_pealinn_white
-                        width: 241
-                        height: 102
-                        hash: tallinn_roheline_pealinn_white_acd932b204
-                        ext: .svg
-                        url: >-
-                            /uploads/tallinn_roheline_pealinn_white_acd932b204.svg
+                            /uploads/Shorts_institutsioonid_EKA_logo_white_2fe1a848f8.svg
     domains:
         -
-            id: 1
+            id: 3
