@@ -799,6 +799,17 @@ footer
     flex-flow row wrap
     width: 100%;
 
+.grid_search.search_projects
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    padding-top: 74px;
+    padding-left 1rem
+    padding-right 1rem
+    select
+        max-width unset
+
 .mobile_filters_collapse
     display none
     gap 12px 8px
@@ -3782,7 +3793,8 @@ select
         color rgba(dark_1, 0.3)
 
 input#search
-    max-width 100%
+    // max-width 100%
+    width 100%
     padding-left 2.75rem
     background-image url(/assets/img/static/search.svg)
     background-position left 0.75rem center
@@ -4824,6 +4836,21 @@ a:hover > .login_headline
 
 @media screen and (min-width: 800px)
 
+    .grid_search.search_projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+        grid-template-rows: auto;
+        grid-gap: 1rem;
+        padding-left: 6rem;
+        padding-right: 6rem;
+        margin-bottom: -2rem;
+        z-index: 999;
+    }
+
+    .grid_search.search_projects > #search
+        min-width unset
+        max-width unset
+
     .event-calendar-container {
         margin-bottom: 4rem
     }
@@ -5091,8 +5118,8 @@ a:hover > .login_headline
     #search
         min-width: 250px
 
-    #filters select, .select2
-        max-width: 240px
+    // #filters select, .select2
+    //     max-width: 240px
 
     .grid_article
         display grid
@@ -5619,6 +5646,10 @@ a:hover > .login_headline
     // Padding changes for other elements depending on header height
     .grid_courseevent, .grid_film, .grid_ind_event, .grid_timetable, .grid_ind_person, .grid_films, .grid_article, .grid_product, .grid_articles, .grid_sponsor_stories, .grid_hero
         padding-top header_height
+
+    .grid_search.search_projects
+        padding-top 150px
+
 
 /* OVERRIDES */
 
