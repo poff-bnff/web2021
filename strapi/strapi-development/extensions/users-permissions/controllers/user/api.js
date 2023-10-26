@@ -33,8 +33,7 @@ const formatError = error => [
 ];
 
 module.exports = {
-  /**
-   * Create a/an user record.
+  /** Create a/an user record.
    * @return {Object}
    */
   async create(ctx) {
@@ -110,11 +109,10 @@ module.exports = {
       ctx.badRequest(null, formatError(error));
     }
   },
-  /**
-   * Update a/an user record.
+
+  /** Update a/an user record.
    * @return {Object}
    */
-
   async update(ctx) {
     // console.log('users-permissions controllers user api update');
 
@@ -353,6 +351,7 @@ module.exports = {
     // toSheets.newUserToSheets(updatedUser)
     ctx.send(sanitizeUser(updatedUser));
   },
+
   async favorites(ctx) {
     console.log('users-permissions controllers user api favorites');
 
@@ -514,6 +513,7 @@ module.exports = {
       })
     }
   },
+
   async buyProduct(ctx) {
     const requestBody = ctx.request.body
 
@@ -693,6 +693,7 @@ module.exports = {
     return { url: paymentMethod.url }
 
   },
+
   async buyProductCb(ctx) {
     let cancel_url = 'https://poff.ee/'
 
@@ -893,7 +894,6 @@ module.exports = {
       }
     }
   },
-
 
   async personForm(ctx) {
 
@@ -1141,6 +1141,7 @@ module.exports = {
       }
     }
   },
+
   async getPersonForm(ctx) {
 
     // const { person } = ctx.request.body.data.person;
@@ -1161,6 +1162,7 @@ module.exports = {
     return { tere: 'hommikust' }
 
   },
+
   async roleController(ctx) {
     const id = ctx.request.body.userId;
     const { cType, cId, cLang, cSubType, cDomain } = ctx.request.body;
@@ -1280,6 +1282,97 @@ module.exports = {
     const body = parseMultipartData(ctx)
     console.log(`Updating profile ${profileId} with body ${JSON.stringify(body, null, 4)}`) // eslint-disable-line no-console
   },
-};
 
+  /** Link aliasUser with mainUser
+   * @description
+   * A user can have aliasUsers, which are other users that are linked to the main user.
+   * A user can have only one mainUser.
+   * There are three types of users:
+   * - users with mainUser;
+   * - users with aliasUsers;
+   * - users without mainUser and aliasUsers.
+   * = user with mainUser can not have aliasUsers and vice versa.
+   *
+   * @param {Object} ctx - has the request body with mainUser id and aliasUser id
+   * @returns {Object} - returns code 200 if success, 400 if error
+   *
+   * @description
+   * This function links aliasUser with mainUser.
+   * aliasUser is added to aliasUsers of mainUser and mainUser becomes mainUser of aliasUser.
+   *
+   * 1. Set the stage:
+   *   - If provided mainuser is itself an aliasUser, then use the mainUser of mainUser as mainUser.
+   *   - If provided aliasUser has mainUser, then use the mainUser of aliasUser as aliasUser.
+   * 2. Merge the My properties
+   *   - of mainUser
+   *   - and aliasUser
+   *   - and update mainUser with the merged properties.
+   * 3a. Collect all aliasUsers.
+   * 3b. Update mainUser.aliasUsers with the collected aliasUsers.
+   * 4. Save mainUser.
+   * 5. Return mainUser and status.
+   *
+   * @returns {Object} - returns code 200 if success, 400 if error
+   */
+  async linkUsers(ctx) {
+    const { mainUser, aliasUser } = ctx.request.body
+    console.log('mainUser, aliasUser', mainUser, aliasUser);
 
+    // 1. Set the stage
+    // If provided mainuser is itself an aliasUser, then use the mainUser of mainUser as mainUser.
+    let mainUserObj = await strapi.query('user', 'users-permissions').findOne({ 'id': mainUser })
+    if (mainUserObj.mainUser) {
+      mainUserObj = await strapi.query('user', 'users-permissions').findOne({ 'id': mainUserObj.mainUser.id })
+    }
+
+    // If provided aliasUser has mainUser, then use the mainUser of aliasUser as aliasUser.
+    let aliasUserObj = await strapi.query('user', 'users-permissions').findOne({ 'id': aliasUser })
+    if (aliasUserObj.mainUser) {
+      aliasUserObj = await strapi.query('user', 'users-permissions').findOne({ 'id': aliasUserObj.mainUser.id })
+    }
+
+    // 2. Merge the My properties of mainUser ...
+    if (mainUserObj.my_films && mainUserObj.my_films.length) {
+      mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
+      mainUserObj.my_films = []
+    }
+    if (mainUserObj.my_screenings && mainUserObj.my_screenings.length) {
+      mainUserObj.My.screenings = [...(mainUserObj.My.screenings || []), ...(mainUserObj.my_screenings || [])]
+      mainUserObj.my_screenings = []
+    }
+
+    // ... and aliasUser
+    if (aliasUserObj.my_films && aliasUserObj.my_films.length) {
+      aliasUserObj.My.films = [...(aliasUserObj.My.films || []), ...(aliasUserObj.my_films || [])]
+      aliasUserObj.my_films = []
+    }
+    if (aliasUserObj.my_screenings && aliasUserObj.my_screenings.length) {
+      aliasUserObj.My.screenings = [...(aliasUserObj.My.screenings || []), ...(aliasUserObj.my_screenings || [])]
+      aliasUserObj.my_screenings = []
+    }
+
+    // ... and update mainUser with the merged properties.
+    mainUserObj.My.films = [...mainUserObj.My.films, ...aliasUserObj.My.films]
+    mainUserObj.My.films = [...new Set(mainUserObj.My.films)]
+    mainUserObj.My.screenings = [...mainUserObj.My.screenings, ...aliasUserObj.My.screenings]
+    mainUserObj.My.screenings = [...new Set(mainUserObj.My.screenings)]
+
+    // 3a. Collect all aliasUsers.
+    aliasUserObj.aliasUsers = aliasUserObj.aliasUsers || []
+    const allAliasUsers = aliasUserObj.aliasUsers.map(a => a.id).concat(aliasUserObj.id)
+
+    // 3b. Update mainUser.aliasUsers with the collected aliasUsers.
+    mainUserObj.aliasUsers = [...(mainUserObj.aliasUsers || []), ...allAliasUsers]
+
+    // 4. Save mainUser.
+    try {
+      const updatedMainUser = await strapi.query('user', 'users-permissions').update({ 'id': mainUserObj.id }, mainUserObj)
+    } catch (err) {
+      console.log('Error updating mainUser', err);
+      return { code: 400, data: err }
+    }
+
+    // 5. Return mainUser and status.
+    return { code: 200, data: updatedMainUser }
+  }
+}

@@ -53,6 +53,7 @@ module.exports = {
   getPersonForm: resolveControllerMethod('getPersonForm'),
   roleController: resolveControllerMethod('roleController'),
   putProfile: resolveControllerMethod('putProfile'),
+  linkUsers: resolveControllerMethod('linkUsers'),
 
 
   /**
@@ -166,6 +167,7 @@ module.exports = {
 
     ctx.body = sanitized;
   },
+
   async import(ctx) {
     const users = JSON.parse(ctx.request.body.users);
 
@@ -292,5 +294,4 @@ module.exports = {
     }
     console.log(counter);
   }
-
-};
+}
