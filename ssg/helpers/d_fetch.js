@@ -17,6 +17,8 @@ const strapiDomainsFilePath = path.join(allStrapiDataDir, 'Domain.yaml')
 const DOMAINSYAML = yaml.load(fs.readFileSync(strapiDomainsFilePath, 'utf8'))
 const DOMAIN_ID = DOMAINSYAML.filter(d => d.url === DOMAIN)[0].id
 
+// Return true, if element has no domains
+// or if element has domains and one of them matches the DOMAIN_ID
 let checkDomain = function(element) {
     if (!DOMAIN) { return true }
 
