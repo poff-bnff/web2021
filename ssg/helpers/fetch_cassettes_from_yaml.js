@@ -908,7 +908,8 @@ function generateAllDataYAML(allData, lang) {
                 towns.push(townKey)
                 filters.towns[townKey] = town_name
 
-                cinemas.push(`_${cinema.id}`)
+                const cinemaKey = `_${cinema.id}`
+                cinemas.push(cinemaKey)
                 filters.cinemas[cinemaKey] = cinema.name
             }
         }
