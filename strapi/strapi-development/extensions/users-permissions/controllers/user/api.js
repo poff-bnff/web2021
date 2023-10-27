@@ -1344,7 +1344,13 @@ module.exports = {
     console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(mainUserObj.my_films, null, 4)}`)
     mainUserObj.My = mainUserObj.My || { films: [], screenings: [], products: [] }
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
-      mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
+      // my_films is an array of objects {id: 123, type: 'film', Films: [{id: 123, name: 'Cabaljero', ...}, ...]}
+      const my_films = mainUserObj.my_films.reduce( (acc, cur) => {
+        return [...acc, ...cur.cassettes]
+      }, [])
+      console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(my_films, null, 4)}`)
+
+      mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])].map(f => f.id)
       mainUserObj.my_films = []
     }
     if (mainUserObj.my_screenings && mainUserObj.my_screenings.length) {
