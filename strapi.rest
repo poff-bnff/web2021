@@ -45,21 +45,30 @@ content-type: application/json
 
 ###
 
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQ3ODMsImlhdCI6MTY5ODI0Nzk5NiwiZXhwIjoxNjk4MzM0Mzk2fQ.m3w1o0o--5lesULFp6tVGpdouXESrSZxMEot73EfCjw
+
+###
+POST https://admin.poff.ee/users/me/10538 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{adminToken}}
+
+###
+
 GET https://admin.poff.ee/user-profiles HTTP/1.1
 content-type: application/json
-Authorization: Bearer toktoktok
+Authorization: Bearer {{adminToken}}
 
 ###
 
 GET https://admin.poff.ee/users/14813 HTTP/1.1
 content-type: application/json
-Authorization: Bearer toktoktok
+Authorization: Bearer {{adminToken}}
 
 ###
 
 POST https://admin.poff.ee/auth/oauth/register HTTP/1.1
 content-type: application/json
-Authorization: Bearer {{nonProdToken}}
+Authorization: Bearer {{adminToken}}
 
 {
     "username": "test123",
@@ -70,10 +79,10 @@ Authorization: Bearer {{nonProdToken}}
 ### 1 of films
 GET https://admin.poff.ee/films/3212 HTTP/1.1
 content-type: application/json
-Authorization: Bearer toktoktok
+Authorization: Bearer {{adminToken}}
 
 ### 1 of festival-editions
 GET https://admin.poff.ee/festival-editions/66 HTTP/1.1
 content-type: application/json
-Authorization: Bearer {{nonProdToken}}
+Authorization: Bearer {{adminToken}}
 
