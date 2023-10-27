@@ -1322,8 +1322,8 @@ module.exports = {
    * @returns {Object} - returns code 200 if success, 400 if error
    */
   async linkUsers(ctx) {
-    console.log(`request body ${JSON.stringify(ctx.request.body, null, 4)}`) // eslint-disable-line no-console
-    console.log(`context params ${JSON.stringify(ctx.params, null, 4)}`) // eslint-disable-line no-console
+    // console.log(`request body ${JSON.stringify(ctx.request.body, null, 4)}`)
+    // console.log(`context params ${JSON.stringify(ctx.params, null, 4)}`)
     const { mainUser, aliasUser } = ctx.request.body
     console.log(`Linking aliasUser ${aliasUser} with mainUser ${mainUser}`) // eslint-disable-line no-console
 
@@ -1381,7 +1381,7 @@ module.exports = {
 
     // 4. Save mainUser.
     try {
-      console.log(`Updating mainUser ${mainUserObj.id} with aliasUsers ${JSON.stringify(mainUserObj.aliasUsers, null, 4)}`) // eslint-disable-line no-console
+      // TODO: There is a bug hidden in having user_profile while updating user.
       delete mainUserObj.user_profile
       const updatedMainUser = await strapi.query('user', 'users-permissions').update({ 'id': mainUserObj.id }, mainUserObj)
       // 5. Return mainUser and status.
