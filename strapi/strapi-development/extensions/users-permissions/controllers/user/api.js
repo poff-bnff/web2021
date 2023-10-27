@@ -1341,7 +1341,6 @@ module.exports = {
     }
 
     // 2. Merge the My properties of mainUser ...
-    console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(mainUserObj.my_films, null, 4)}`)
     mainUserObj.My = mainUserObj.My || { films: [], screenings: [], products: [] }
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
       const my_films = mainUserObj.my_films.reduce( (acc, cur) => [...acc, ...cur.cassettes], []).map(f => f.id)
@@ -1374,7 +1373,9 @@ module.exports = {
     aliasUserObj.My.products = [...(aliasUserObj.My.products || []), ...(aliasUserObj.my_products || [])]
 
     // ... and update mainUser with the merged properties.
+    console.log(`main- and alias films: ${JSON.stringify(mainUserObj.My.films, null, 4)} ${JSON.stringify(aliasUserObj.My.films, null, 4)}`)
     mainUserObj.My.films = [...mainUserObj.My.films, ...aliasUserObj.My.films]
+    console.log(`main films: ${JSON.stringify(mainUserObj.My.films, null, 4)}`)
     // mainUserObj.My.films = [...new Set(mainUserObj.My.films)]
     mainUserObj.My.screenings = [...mainUserObj.My.screenings, ...aliasUserObj.My.screenings]
     // mainUserObj.My.screenings = [...new Set(mainUserObj.My.screenings)]
