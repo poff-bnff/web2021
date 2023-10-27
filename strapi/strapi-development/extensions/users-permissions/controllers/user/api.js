@@ -1342,35 +1342,39 @@ module.exports = {
 
     // 2. Merge the My properties of mainUser ...
     mainUserObj.My = mainUserObj.My || { films: [], screenings: [], products: [] }
+    mainUserObj.My.films = mainUserObj.My.films.map(f => f.id)
+    mainUserObj.My.screenings = mainUserObj.My.screenings.map(f => f.id)
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
       const my_films = mainUserObj.my_films.reduce( (acc, cur) => [...acc, ...cur.cassettes], []).map(f => f.id)
-      mainUserObj.My.films = mainUserObj.My.films.map(f => f.id)
       mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(my_films || [])]
       mainUserObj.my_films = []
     }
     if (mainUserObj.my_screenings && mainUserObj.my_screenings.length) {
       const my_screenings = mainUserObj.my_screenings.reduce( (acc, cur) => [...acc, ...cur.cassettes], []).map(f => f.id)
-      mainUserObj.My.screenings = mainUserObj.My.screenings.map(f => f.id)
       mainUserObj.My.screenings = [...(mainUserObj.My.screenings || []), ...(my_screenings || [])]
       mainUserObj.my_screenings = []
     }
-    mainUserObj.My.products = [...(mainUserObj.My.products || []), ...(mainUserObj.my_products || [])]
+    mainUserObj.My.products = (mainUserObj.My.products || []).map(f => f.id)
+    mainUserObj.my_products = (mainUserObj.my_products || []).map(f => f.id)
+    mainUserObj.My.products = [...mainUserObj.My.products, ...mainUserObj.my_products]
 
     // ... and aliasUser
     aliasUserObj.My = aliasUserObj.My || { films: [], screenings: [], products: [] }
+    aliasUserObj.My.films = aliasUserObj.My.films.map(f => f.id)
+    aliasUserObj.My.screenings = aliasUserObj.My.screenings.map(f => f.id)
     if (aliasUserObj.my_films && aliasUserObj.my_films.length) {
       const my_films = aliasUserObj.my_films.reduce( (acc, cur) => [...acc, ...cur.cassettes], []).map(f => f.id)
-      aliasUserObj.My.films = aliasUserObj.My.films.map(f => f.id)
       aliasUserObj.My.films = [...(aliasUserObj.My.films || []), ...(my_films || [])]
       aliasUserObj.my_films = []
     }
     if (aliasUserObj.my_screenings && aliasUserObj.my_screenings.length) {
       const my_screenings = aliasUserObj.my_screenings.reduce( (acc, cur) => [...acc, ...cur.cassettes], []).map(f => f.id)
-      aliasUserObj.My.screenings = aliasUserObj.My.screenings.map(f => f.id)
       aliasUserObj.My.screenings = [...(aliasUserObj.My.screenings || []), ...(my_screenings || [])]
       aliasUserObj.my_screenings = []
     }
-    aliasUserObj.My.products = [...(aliasUserObj.My.products || []), ...(aliasUserObj.my_products || [])]
+    aliasUserObj.My.products = (aliasUserObj.My.products || []).map(f => f.id)
+    aliasUserObj.my_products = (aliasUserObj.my_products || []).map(f => f.id)
+    aliasUserObj.My.products = [...aliasUserObj.My.products, ...aliasUserObj.my_products]
 
     // ... and update mainUser with the merged properties.
     console.log(`main- and alias films: ${JSON.stringify(mainUserObj.My.films, null, 4)} ${JSON.stringify(aliasUserObj.My.films, null, 4)}`)
