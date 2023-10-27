@@ -57,12 +57,12 @@ main.grid_film(id=self.id)
                 h1.film_title_detailed= film.title || film.title_et
 
 
-                //- button.btn.btn_secondary.isshortlisted(id='f_'+self.id+'_is_fav',
-                //-     style='display: none; height: 36px; width: 100%;'
-                //-     )= self.label.film.removeShortlist
-                //- button.btn.btn_secondary.notshortlisted(id='f_'+self.id+'_is_not_fav',
-                //-     style='display: none; height: 36px; width: 100%;'
-                //-     )= self.label.film.addShortlist
+                a.btn.btn_secondary.isshortlisted(id='f_'+self.id+'_is_fav',
+                    style='display: none; height: 36px; width: 100%;' role='button'
+                    )= self.label.film.removeShortlist
+                a.btn.btn_secondary.notshortlisted(id='f_'+self.id+'_is_not_fav',
+                    style='display: none; height: 36px; width: 100%;' role='button'
+                    )= self.label.film.addShortlist
 
                 .str_info_blokk_1
 
@@ -468,12 +468,12 @@ main.grid_film(id=self.id)
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
-                //- button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
-                //-     style='display: none; height: 36px; width: 100%;'
-                //-     )= self.label.film.removeShortlist
-                //- button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
-                //-     style='display: none; height: 36px; width: 100%;'
-                //-     )= self.label.film.addShortlist
+                a.btn.btn_secondary.isshortlisted(id='is_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.removeShortlist
+                a.btn.btn_secondary.notshortlisted(id='not_shortlisted',
+                    style='display: none; height: 36px; width: 100%;'
+                    )= self.label.film.addShortlist
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
@@ -739,8 +739,12 @@ main.grid_film(id=self.id)
                                         if screening.bookingUrl
                                             a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
 
-                                        a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav', style='display: none;', role='button')= self.label.film.addSavedScreening
-                                        a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav' style='display: none;', role='button')= self.label.film.removeSavedScreening
+                                        a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
+                                            style='display: none;', role='button'
+                                            )= self.label.film.addSavedScreening
+                                        a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav',
+                                            style='display: none;', role='button'
+                                            )= self.label.film.removeSavedScreening
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
@@ -775,84 +779,13 @@ main.grid_film(id=self.id)
 
     script(src='https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432')
     script.
-
-        // TODO: move this to _scripts/favorite.js
-        function setupScreeningFavoriteButtons() {
-            const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
-            const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
-            const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
-                .map(e => parseInt(e))
-
-            if (getUser()) {
-                const myScreenings = reloadUserScreenings()
-                //- console.log({myScreenings, currentScreeningIDs})
-
-                // unhide all fav buttons for currently favorited screenings
-                currentScreeningIDs.filter(id => myScreenings.includes(id))
-                    .forEach(id => {
-                        document.getElementById(`s_${id}_is_fav`).style.display = ''
-                        document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
-                    })
-
-                // unhide all no-fav buttons for currently unfavorited screenings
-                currentScreeningIDs.filter(id => !myScreenings.includes(id))
-                    .forEach(id => {
-                        document.getElementById(`s_${id}_is_fav`).style.display = 'none'
-                        document.getElementById(`s_${id}_is_not_fav`).style.display = ''
-                    })
-
-                // add event listeners to all fav buttons
-                nslButtons.forEach(b => b.addEventListener('click', e => {
-                    let scrId = parseInt(b.id.split('_')[1])
-                    toggleFavouriteScreening('set', scrId)
-                }))
-                slButtons.forEach(b => b.addEventListener('click', e => {
-                    let scrId = parseInt(b.id.split('_')[1])
-                    toggleFavouriteScreening('unset', scrId)
-                }))
-            }
-        }
-
-        // TODO: move this to _scripts/favorite.js
-        function setupFilmFavoriteButtons() {
-            const nslButton = document.getElementsByClassName('notshortlisted')[0]
-            const slButton = document.getElementsByClassName('isshortlisted')[0]
-            const currentFilmID = parseInt(document.getElementById('film_id').value)
-
-            if (getUser()) {
-                const myFilms = reloadUserFilms()
-                const currentFilmIsFavourite = myFilms.includes(currentFilmID)
-
-                if (currentFilmIsFavourite) {
-                    nslButton.style.display = 'none'
-                    slButton.style.display = ''
-                } else {
-                    nslButton.style.display = ''
-                    slButton.style.display = 'none'
-                }
-
-                nslButton.addEventListener('click', e => {
-                    toggleFavouriteFilm('set', currentFilmID)
-                })
-                slButton.addEventListener('click', e => {
-                    toggleFavouriteFilm('unset', currentFilmID)
-                })
-
-                const userScreenings = getUser().My?.screenings?.map(s=>s.id) || []
-                const currentScreeningIDs = Array.from(document.getElementsByClassName('card_screening'))
-                    .map(e => parseInt(e.id.slice(1)))
-                // unhide all fav buttons for currently favorited screenings
-                currentScreeningIDs.filter(id => userScreenings.includes(id))
-                    .forEach(id => {
-                        document.getElementById(`s_${id}_is_fav`).style.display = ''
-                        document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
-                    })
-            }
-        }
         document.onreadystatechange = () => {
             console.log(`document.readyState: ${document.readyState}`)
             if (document.readyState === 'complete') {
-                setupFilmFavoriteButtons()
-                setupScreeningFavoriteButtons()
+                // set up buttons only on poff.ee domain
+                if (window.location.hostname === 'devs.poff.ee') {
+                    setupFilmFavoriteButtons()
+                    setupScreeningFavoriteButtons()
+                }
             }
         }

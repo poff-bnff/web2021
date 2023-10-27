@@ -261,8 +261,12 @@ main.grid_cassette
 
                             if screening.bookingUrl
                                 a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
-                            a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                            a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening' style='display: none;' onclick=`modifyFavourites('rmScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                            a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
+                                style='display: none;', role='button'
+                                )= self.label.film.addSavedScreening
+                            a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav',
+                                style='display: none;', role='button'
+                                )= self.label.film.removeSavedScreening
                             if screening.ticketingUrl
                                 //- PL page version
                                 //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
@@ -581,9 +585,6 @@ else
                     //-     div(style="width:30%; height:10%; padding-bottom:20px; padding-top:20px;")
                     //-         img(src=`/assets/img/static/placeholder_hd_1.jpg` alt = film.titles style="width:100%; height:100%;")
 
-                    //- NB!
-                    //- NB!
-                    //- NB!
                     //- NB! Credentials võetakse strapis oleva roleNamePrivate järgi väiketähtedes
                     //-     Näiteks: "Composer" all olevad isikud saab kätte film.credentials.rolePersonsByRole.composer.join(', ')
 
@@ -735,7 +736,6 @@ else
                                 .str_info_label= self.label.film.animation
                                 .str_info_value= film.credentials.roleCompaniesByRole.animation.join(', ')
 
-
             section.f_runtime_box
                 - var languagesNames = function(item) {
                 -   if(item.name) {
@@ -767,10 +767,10 @@ else
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
             //- section.f_interactive_box
-            //-     .f_interactive_item
-            //-         p
-            //-             | Kas oled filmi juba näinud? Osale publiku lemmikfilmi hääletuses.
-            //-         a.btn.btn_vote.active(href='https://forms.gle/ew2vrQRTEb83BNxR7' role='button' target='_BLANK')= self.label.button.filmAudienceVote
+                //- .f_interactive_item
+                //-     p
+                //-         | Kas oled filmi juba näinud? Osale publiku lemmikfilmi hääletuses.
+                //-     a.btn.btn_vote.active(href='https://forms.gle/ew2vrQRTEb83BNxR7' role='button' target='_BLANK')= self.label.button.filmAudienceVote
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var sortCredentialsByOrder = film.credentials.rolePerson.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
@@ -783,29 +783,28 @@ else
                 -    })[0]
 
             //- if typeof director !== 'undefined' && director.person && director.person.firstName && director.person.lastName
-            //-     section.f_dir_bio_box
+                //- section.f_dir_bio_box
 
-            //-         if director.person.picture
-            //-             .dir_img
-            //-                 img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
-            //-                 .str_info_grid_3
-            //-                     .str_info_label.text_left.dark_1= self.label.film.director
-            //-                     .str_info_value.text_right.dark_1= `${director.person.firstName} ${director.person.lastName}`
+                //-     if director.person.picture
+                //-         .dir_img
+                //-             img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
+                //-             .str_info_grid_3
+                //-                 .str_info_label.text_left.dark_1= self.label.film.director
+                //-                 .str_info_value.text_right.dark_1= `${director.person.firstName} ${director.person.lastName}`
 
-            //-         .dir_bio.dark_1
-            //-             if director.person.biography && typeof director.person.biography !== 'object'
-            //-                 p.dark_1= director.person.biography
-            //-             if director.person.filmography && typeof director.person.filmography !== 'object'
-            //-                 p.dark_1= director.person.filmography
+                //-     .dir_bio.dark_1
+                //-         if director.person.biography && typeof director.person.biography !== 'object'
+                //-             p.dark_1= director.person.biography
+                //-         if director.person.filmography && typeof director.person.filmography !== 'object'
+                //-             p.dark_1= director.person.filmography
 
-            //- -
-            //-     var festivalEditionsIds = []
-            //-     film?.tags?.programmes?.map(pr => {
-            //-         pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
-            //-     })
+                //- - var festivalEditionsIds = []
+                //- film?.tags?.programmes?.map(pr => {
+                //-     pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
+                //- })
 
             //- if festivalEditionsIds.includes(5)
-            //- section.f_interactive_box
+                //- section.f_interactive_box
                 //- if process.env['DOMAIN'] === 'poff.ee'
                 //-     .f_interactive_item
                 //-         p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
@@ -841,21 +840,18 @@ else
                                 else if presenter.logoWhite
                                     img.supporter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
 
-
             //- if film.filmQaClip
 
-            //-     section.f_qaclip_box
-            //-         .section_headline= self.label.film.qaClip
-            //-         .ratio.ratio-16x9.m-0.p-0
-            //-             - youtubeVideoCode = film.filmQaClip.split("=")
-            //-             +youtube(youtubeVideoCode[1])
+                //- section.f_qaclip_box
+                //-     .section_headline= self.label.film.qaClip
+                //-     .ratio.ratio-16x9.m-0.p-0
+                //-         - youtubeVideoCode = film.filmQaClip.split("=")
+                //-         +youtube(youtubeVideoCode[1])
 
             //- include vialog_box.pug
-
-            //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
-            //-     a(name='chat')
-            //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
-
+                //- //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
+                //- a(name='chat')
+                //-     iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
 
             if film.trailer && film.trailer[0] && film.trailer[0].videoCode
                 section.f_trailer_box
@@ -866,19 +862,27 @@ else
                                 +video(trailer.videoCode)
 
             //- if self.chat_w_name
-            //-     script.
-            //-         var votemoConfig = {
-            //-             url: `https://#{self.chat_w_name}.votemo.eu`,
-            //-             openInDesktop: false,
-            //-             language: 'poff'
-            //-         }
-
-            //-     script(src='https://cdn.votemo.eu/dist/widget.js')
-
-            //-     - showMessengerChat = false
+                //- script.
+                //-     var votemoConfig = {
+                //-         url: `https://#{self.chat_w_name}.votemo.eu`,
+                //-         openInDesktop: false,
+                //-         language: 'poff'
+                //-     }
+                //- script(src='https://cdn.votemo.eu/dist/widget.js')
+                //- - showMessengerChat = false
 
             //- section.f_imgs_box
 
             +tabname(self.title)
 
-
+    script.
+        document.onreadystatechange = () => {
+            console.log(`document.readyState: ${document.readyState}`)
+            if (document.readyState === 'complete') {
+                // set up buttons only on poff.ee domain
+                if (window.location.hostname === 'devs.poff.ee') {
+                    setupFilmFavoriteButtons()
+                    setupScreeningFavoriteButtons()
+                }
+            }
+        }
