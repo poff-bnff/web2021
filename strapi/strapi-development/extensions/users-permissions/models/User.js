@@ -33,7 +33,7 @@ module.exports = {
 
     // TODO: #667 detecting changes in user products with some smarter and cheaper method
     async beforeUpdate(params, data) {
-      // return
+      return
       // console.log(`===== Models User beforeUpdate params.id ${params.id} data`, data)
       const oldUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': params.id }, ['my_products', 'user_roles']);
       // console.log('===== Models User beforeUpdate oldUserInfo', oldUserInfo)
@@ -52,7 +52,7 @@ module.exports = {
     // params is the original object
     // data is the data that was sent to the update
     async afterUpdate(result, params, data) {
-      // return
+      return
       // console.log('Models User afterUpdate data', params);
       let my_products_before_update = data.my_products_before_update
       let my_products = data.my_products
