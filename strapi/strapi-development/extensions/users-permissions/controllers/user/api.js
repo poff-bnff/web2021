@@ -1398,6 +1398,8 @@ module.exports = {
       // TODO: There is a bug hidden in having user_profile while updating user.
       delete mainUserObj.user_profile
       const updatedMainUser = await strapi.query('user', 'users-permissions').update({ 'id': mainUserObj.id }, mainUserObj)
+      delete aliasUserObj.user_profile
+      strapi.query('user', 'users-permissions').update({ 'id': aliasUserObj.id }, aliasUserObj)
       // 5. Return mainUser and status.
       return { code: 200, data: updatedMainUser }
     } catch (err) {
