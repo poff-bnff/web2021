@@ -1351,7 +1351,7 @@ module.exports = {
       mainUserObj.My.films = mainUserObj.My.films.map(f => f.id)
       console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(my_films, null, 4)}`)
 
-      mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
+      mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(my_films || [])]
       console.log(`My.films after merge: ${JSON.stringify(mainUserObj.My.films, null, 4)}`)
       mainUserObj.my_films = []
     }
