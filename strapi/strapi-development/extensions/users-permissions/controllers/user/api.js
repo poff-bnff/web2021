@@ -1341,6 +1341,7 @@ module.exports = {
     }
 
     // 2. Merge the My properties of mainUser ...
+    console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(mainUserObj.my_films, null, 4)}`)
     mainUserObj.My = mainUserObj.My || { films: [], screenings: [], products: [] }
     if (mainUserObj.my_films && mainUserObj.my_films.length) {
       mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
