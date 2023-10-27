@@ -261,8 +261,12 @@ main.grid_cassette
 
                             if screening.bookingUrl
                                 a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
-                            a.btn.btn_secondary.active.notsavedscreening(id=screening.id+'_not_savedscreening' style='display: none;' onclick=`modifyFavourites('addScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.addSavedScreening
-                            a.btn.btn_secondary.active.issavedscreening(id=screening.id+'_is_savedscreening' style='display: none;' onclick=`modifyFavourites('rmScreening', ${screening.id});` role='button' target='_BLANK')= self.label.film.removeSavedScreening
+                            a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
+                                style='display: none;', role='button'
+                                )= self.label.film.addSavedScreening
+                            a.btn.btn_secondary.active.ismyscreening(id='s_'+screening.id+'_is_fav',
+                                style='display: none;', role='button'
+                                )= self.label.film.removeSavedScreening
                             if screening.ticketingUrl
                                 //- PL page version
                                 //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
@@ -845,11 +849,9 @@ else
                 //-         +youtube(youtubeVideoCode[1])
 
             //- include vialog_box.pug
-
-            //-     //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
-            //-     a(name='chat')
-            //-         iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
-
+                //- //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
+                //- a(name='chat')
+                //-     iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
 
             if film.trailer && film.trailer[0] && film.trailer[0].videoCode
                 section.f_trailer_box
@@ -873,4 +875,14 @@ else
 
             +tabname(self.title)
 
-
+    script.
+        document.onreadystatechange = () => {
+            console.log(`document.readyState: ${document.readyState}`)
+            if (document.readyState === 'complete') {
+                // set up buttons only on poff.ee domain
+                if (window.location.hostname === 'devs.poff.ee') {
+                    setupFilmFavoriteButtons()
+                    setupScreeningFavoriteButtons()
+                }
+            }
+        }
