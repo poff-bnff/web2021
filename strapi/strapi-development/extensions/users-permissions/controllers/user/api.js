@@ -1352,6 +1352,7 @@ module.exports = {
       console.log(`Merge My.films: ${JSON.stringify(mainUserObj.My.films, null, 4)} with my_films: ${JSON.stringify(my_films, null, 4)}`)
 
       mainUserObj.My.films = [...(mainUserObj.My.films || []), ...(mainUserObj.my_films || [])]
+      console.log(`My.films after merge: ${JSON.stringify(mainUserObj.My.films, null, 4)}`)
       mainUserObj.my_films = []
     }
     if (mainUserObj.my_screenings && mainUserObj.my_screenings.length) {
