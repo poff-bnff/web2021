@@ -1382,12 +1382,13 @@ module.exports = {
     // 4. Save mainUser.
     try {
       console.log(`Updating mainUser ${mainUserObj.id} with aliasUsers ${JSON.stringify(mainUserObj.aliasUsers, null, 4)}`) // eslint-disable-line no-console
+      delete mainUserObj.user_profile
       const updatedMainUser = await strapi.query('user', 'users-permissions').update({ 'id': mainUserObj.id }, mainUserObj)
       // 5. Return mainUser and status.
       return { code: 200, data: updatedMainUser }
     } catch (err) {
       console.log('Error updating mainUser', err);
-      return { code: 400, data: err }
+      return { code: 500, data: err }
     }
   }
 }
