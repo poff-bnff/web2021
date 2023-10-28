@@ -468,12 +468,12 @@ main.grid_film(id=self.id)
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
-                a.btn.btn_secondary.isshortlisted(id='is_shortlisted',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.removeShortlist
-                a.btn.btn_secondary.notshortlisted(id='not_shortlisted',
-                    style='display: none; height: 36px; width: 100%;'
-                    )= self.label.film.addShortlist
+                //- button.btn.btn_secondary.isshortlisted(id='is_shortlisted',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.removeShortlist
+                //- button.btn.btn_secondary.notshortlisted(id='not_shortlisted',
+                //-     style='display: none; height: 36px; width: 100%;'
+                //-     )= self.label.film.addShortlist
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
