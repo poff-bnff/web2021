@@ -115,7 +115,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     console.log('activeEditions', activeEditions)
     const personsWithEditions = STRAPIDATA_ALL_PERSONS.filter(p => p.festival_editions && p.festival_editions.length)
     console.log('personsWithEditions', personsWithEditions.length)
-    const activePersons = STRAPIDATA_ALL_PERSONS
+    const activePersons = personsWithEditions
         .filter(p => {
             const feIds = (p.festival_editions || []).map(fe => fe.id) || []
             console.log('feIds', feIds)
