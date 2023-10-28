@@ -49,7 +49,10 @@ block content
                                             .str_info_meta_value.dark_1= authors.join(', ')
                                     else
                                         .str_info_meta_item
-                                            .str_info_meta_value.dark_1= `${self.created_by.firstname} ${self.created_by.lastname}`
+                                            if self.created_by
+                                                .str_info_meta_value.dark_1= `${self.created_by.firstname} ${self.created_by.lastname}`
+                                            else
+                                                .str_info_meta_value.dark_1= 'PÖFF'
 
                                     if self.publishFrom
                                         .str_info_meta_item
