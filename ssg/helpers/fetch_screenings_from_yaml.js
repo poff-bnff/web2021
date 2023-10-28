@@ -333,7 +333,7 @@ function CreateYAML(screenings, lang) {
 
         const location = screening.location
         if (!location || !location.hall || !location.hall.cinema || !location.hall.cinema.town) {
-            console.warn('screening', screening.id, 'has no location or hall or cinema or town')
+            console.warn('screening', screenings.id, 'has no location or hall or cinema or town')
         } else {
             const cinema = location.hall.cinema
             const townKey = `_${cinema.town.id}`
