@@ -105,12 +105,12 @@ if (DOMAIN !== 'industry.poff.ee') {
             }
         }
     }
-
+    console.log(`Fetching ${DOMAIN} persons data`)
     const STRAPIDATA_ALL_PERSONS = fetchModel(STRAPIDATA_PERSON, minimodel)
+    console.log(`Fetched ${STRAPIDATA_ALL_PERSONS.length} ${DOMAIN} persons data`)
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    const activePersonsYamlNameSuffix = 'persons'
     const activeEditions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
     const activePersons = STRAPIDATA_ALL_PERSONS
         .filter(p => {
