@@ -156,7 +156,6 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
 
         allData = []
         for (const ix in STRAPIDATA_PERSONS) {
-            console.info(`Fetching ${DOMAIN} person ${ix} data`)
             let person = JSON.parse(JSON.stringify(STRAPIDATA_PERSONS[ix]));
             person = rueten(person, lang);
 
@@ -204,7 +203,6 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
         fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
         console.log(`Fetched ${allData.length} persons for ${DOMAIN}`);
         generatePersonsSearchAndFilterYamls(allData, lang);
-
     }
 }
 
