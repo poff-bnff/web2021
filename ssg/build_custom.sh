@@ -177,9 +177,6 @@ fetch_data()
     echo '==== custom build ==== fetch_articles_from_yaml'
     node ./helpers/fetch_articles_from_yaml.js
 
-    echo '==== custom build ==== fetch_industry_person_from_yaml'
-    node ./helpers/fetch_industry_person_from_yaml.js
-
     echo '==== custom build ==== fetch_article_types_from_yaml'
     node ./helpers/fetch_article_type_from_yaml.js
 
@@ -230,9 +227,6 @@ fetch_data()
 
     echo '==== custom build ==== fetch_shops_from_yaml'
     node ./helpers/fetch_shops_from_yaml.js
-
-    # echo '==== custom build ==== fetch_industry_person_from_yaml'
-    # node ./helpers/fetch_industry_person_from_yaml.js
 
     echo '==== custom build ==== fetch_industry_project_from_yaml'
     node ./helpers/fetch_industry_project_from_yaml.js

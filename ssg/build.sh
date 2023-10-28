@@ -44,11 +44,6 @@ nice -10 node ./helpers/fetch_articles_from_yaml.js
 status=$?;[ $status -eq 0 ] && echo 'fetch_articles_from_yaml succeeded' || echo 'fetch_articles_from_yaml failed. Exit'
 [ $status -ne 0 ] && exit $status
 
-echo 'fetch_industry_person_from_yaml'
-nice -10 node ./helpers/fetch_industry_person_from_yaml.js
-status=$?;[ $status -eq 0 ] && echo 'fetch_industry_person_from_yaml succeeded' || echo 'fetch_industry_person_from_yaml failed. Exit'
-[ $status -ne 0 ] && exit $status
-
 echo 'fetch_article_type_from_yaml'
 nice -10 node ./helpers/fetch_article_type_from_yaml.js
 status=$?;[ $status -eq 0 ] && echo 'fetch_article_type_from_yaml succeeded' || echo 'fetch_article_type_from_yaml failed. Exit'

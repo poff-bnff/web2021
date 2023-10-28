@@ -41,9 +41,6 @@ echo "Build model: $BUILDMODEL"
 # echo 'fetch_articles_from_yaml'
 # nice -10 node ./helpers/fetch_articles_from_yaml.js
 
-# echo 'fetch_industry_person_from_yaml'
-# nice -10 node ./helpers/fetch_industry_person_from_yaml.js
-
 # echo 'fetch_article_type_from_yaml'
 # nice -10 node ./helpers/fetch_article_type_from_yaml.js
 
@@ -88,9 +85,6 @@ echo "Build model: $BUILDMODEL"
 
 # echo 'assets/xml'
 # nice -10 node ./helpers/xml.js
-
-# echo 'fetch_industry_person_from_yaml'
-# nice -10 node ./helpers/fetch_industry_person_from_yaml.js
 
 # echo 'fetch_industry_project_from_yaml'
 # nice -10 node ./helpers/fetch_industry_project_from_yaml.js
