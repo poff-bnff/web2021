@@ -151,24 +151,18 @@ function mSort(to_sort) {
 function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
     for (lang of languages) {
 
-        console.log(`Fetching ${DOMAIN} persons ${lang} data`);
+        console.log(`Fetching ${DOMAIN} persons ${lang} data`)
 
         allData = []
         for (const ix in STRAPIDATA_PERSONS) {
+            console.info(`Fetching ${DOMAIN} person ${ix} data`)
             let person = JSON.parse(JSON.stringify(STRAPIDATA_PERSONS[ix]));
-
-            // rueten func. is run for each person separately instead of whole data, that is
-            // for the purpose of saving slug_en before it will be removed by rueten func.
             person = rueten(person, lang);
-            // person.path = person.slug;
-            // let slugifyName = slugify(`${person.firstNameLastName}-${person.id}`)
-            // person.path = slugifyName;
-            // person.slug = slugifyName;
 
             let personSlug = person.slug
             // if slug is not defined, then skip this person
             if (!personSlug) {
-                console.error(`Person ${person.id} has no slug, skipping`);
+                console.warn(`Person ${person.id} has no slug, skipping`);
                 continue
             }
             person.path = personSlug;
@@ -186,13 +180,11 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
                 throw error
             }
 
-            const yamlPath = path.join(fetchDataDir, personSlug, `data.${lang}.yaml`);
-            let saveDir = path.join(fetchDataDir, personSlug);
-            fs.mkdirSync(saveDir, { recursive: true });
-
-            fs.writeFileSync(yamlPath, oneYaml, 'utf8');
+            let saveDir = path.join(fetchDataDir, personSlug)
+            fs.mkdirSync(saveDir, { recursive: true })
+            fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
-
+            console.log(`Fetched ${DOMAIN} person ${person.id} data`)
             allData.push(person);
         }
 
