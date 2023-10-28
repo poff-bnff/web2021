@@ -118,6 +118,7 @@ if (DOMAIN !== 'industry.poff.ee') {
     const activePersons = STRAPIDATA_ALL_PERSONS
         .filter(p => {
             const feIds = (p.festival_editions || []).map(fe => fe.id) || []
+            console.log('feIds', feIds)
             feIds.some(id => activeEditions.includes(id))})
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons)
