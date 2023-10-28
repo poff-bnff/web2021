@@ -115,17 +115,12 @@ if (DOMAIN !== 'industry.poff.ee') {
     console.log('activeEditions', activeEditions)
     const personsWithEditions = STRAPIDATA_ALL_PERSONS.filter(p => p.festival_editions && p.festival_editions.length)
     console.log('personsWithEditions', personsWithEditions.length)
-    const specialPerson = STRAPIDATA_ALL_PERSONS.filter(p => p.id === 19356)
-    console.log('specialPerson', specialPerson)
     const activePersons = personsWithEditions
         .filter(p => {
             const feIds = (p.festival_editions || []).map(fe => fe.id) || []
-            console.log('feIds', feIds)
             return feIds.some(id => activeEditions.includes(id))})
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons)
-
-
 }
 
 function mSort(to_sort) {
@@ -190,7 +185,7 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
             fs.mkdirSync(saveDir, { recursive: true })
             fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
-            console.log(`Fetched ${DOMAIN} person ${person.id} data`)
+            // console.log(`Fetched ${DOMAIN} person ${person.id} data`)
             allData.push(person);
         }
 
