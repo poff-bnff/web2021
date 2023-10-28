@@ -117,7 +117,7 @@ if (DOMAIN !== 'industry.poff.ee') {
             const feIds = (p.festival_editions || []).map(fe => fe.id) || []
             feIds.some(id => activeEditions.includes(id))})
 
-    startPersonProcessing(languages, activePersons, activePersonsYamlNameSuffix)
+    startPersonProcessing(languages, activePersons)
 
 
 }
@@ -148,10 +148,10 @@ function mSort(to_sort) {
     return objSorted
 }
 
-function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuffix) {
+function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
     for (lang of languages) {
 
-        console.log(`Fetching ${DOMAIN} ${personsYamlNameSuffix} ${lang} data`);
+        console.log(`Fetching ${DOMAIN} persons ${lang} data`);
 
         allData = []
         for (const ix in STRAPIDATA_PERSONS) {
@@ -196,13 +196,13 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
             allData.push(person);
         }
 
-        const yamlPath = path.join(fetchDir, `${personsYamlNameSuffix}.${lang}.yaml`)
+        const yamlPath = path.join(fetchDir, `persons.${lang}.yaml`)
 
         if (!allData.length) {
-            console.log(`No data for ${personsYamlNameSuffix}, creating empty YAMLs`)
+            console.log(`No data for persons, creating empty YAMLs`)
             fs.writeFileSync(yamlPath, '[]', 'utf8')
-            fs.writeFileSync(path.join(fetchDir, `search_${personsYamlNameSuffix}.${lang}.yaml`), '[]', 'utf8')
-            fs.writeFileSync(path.join(fetchDir, `filters_${personsYamlNameSuffix}.${lang}.yaml`), '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `search_persons.${lang}.yaml`), '[]', 'utf8')
+            fs.writeFileSync(path.join(fetchDir, `filters_persons.${lang}.yaml`), '[]', 'utf8')
             continue
         }
 
@@ -210,12 +210,12 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS, personsYamlNameSuf
         const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
         fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
         console.log(`Fetched ${allData.length} persons for ${DOMAIN}`);
-        generatePersonsSearchAndFilterYamls(allData, lang, personsYamlNameSuffix);
+        generatePersonsSearchAndFilterYamls(allData, lang);
 
     }
 }
 
-function generatePersonsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
+function generatePersonsSearchAndFilterYamls(allData, lang) {
     let filters = {
         genders: {},
         roleatfilms: {},
@@ -245,17 +245,6 @@ function generatePersonsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
             filters.nativelangs[person.native_lang.name] = person.native_lang.name;
         }
 
-        // let filmographies = [];
-        // const filmography = person.filmographies;
-        // if (filmography && filmography.text) {
-        //     filmographies.push(filmography.text);
-        // }
-        // if (filmography && filmography.film) {
-        //     for (const film of filmography.film) {
-        //         filmographies.push(`${film.title} ${film.title} ${film.synopsis}`);
-        //     }
-        // }
-
         return {
             id: person.id,
             text: [
@@ -280,9 +269,9 @@ function generatePersonsSearchAndFilterYamls(allData, lang, yamlNameSuffix) {
     };
 
     let searchYAML = yaml.dump(persons_search, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `search_${yamlNameSuffix}.${lang}.yaml`), searchYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `search_persons.${lang}.yaml`), searchYAML, 'utf8');
 
     let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `filters_${yamlNameSuffix}.${lang}.yaml`), filtersYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `filters_persons.${lang}.yaml`), filtersYAML, 'utf8');
 }
 
