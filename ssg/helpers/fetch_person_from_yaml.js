@@ -121,7 +121,7 @@ if (DOMAIN !== 'industry.poff.ee') {
         .filter(p => {
             const feIds = (p.festival_editions || []).map(fe => fe.id) || []
             console.log('feIds', feIds)
-            feIds.some(id => activeEditions.includes(id))})
+            return feIds.some(id => activeEditions.includes(id))})
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons)
 
