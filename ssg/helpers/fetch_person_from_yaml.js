@@ -211,6 +211,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
         genders: {},
         roleatfilms: {},
         nativelangs: {},
+        types: {},
     };
 
     const persons_search = allData.map(person => {
@@ -236,6 +237,16 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
             filters.nativelangs[person.native_lang.name] = person.native_lang.name;
         }
 
+        let industryPersonTypes = [];
+        if (person.industry_person_types) {
+            console.log('ipt', person.industry_person_types)
+            for (type of person.industry_person_types) {
+                console.log('tttt', type.type)
+                industryPersonTypes.push(type.type);
+                filters.types[type.type] = type.type;
+            }
+        }
+
         return {
             id: person.id,
             text: [
@@ -250,6 +261,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
             genders: genders,
             roleatfilms: roleatfilms,
             nativelangs: nativelangs,
+            types:industryPersonTypes,
         };
     });
 
@@ -257,6 +269,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
         genders: mSort(filters.genders),
         roleatfilms: mSort(filters.roleatfilms),
         nativelangs: mSort(filters.nativelangs),
+        types: mSort(filters.types),
     };
 
     let searchYAML = yaml.dump(persons_search, { 'noRefs': true, 'indent': '4' });

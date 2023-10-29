@@ -8,6 +8,7 @@ const selectors = {
     genders: document.getElementById('genders_select'),
     roleatfilms: document.getElementById('roleatfilms_select'),
     nativelangs: document.getElementById('nativelangs_select'),
+    types: document.getElementById('types_select'),
 }
 
 function urlSelect() {
@@ -127,6 +128,10 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'nativelangs' ? value : selectors.nativelangs.value;
                     return compare_with === '' ? true : screening.nativelangs.includes(compare_with)
                 })
+                .filter(screening => {
+                    const compare_with = selector_name === 'types' ? value : selectors.types.value;
+                    return compare_with === '' ? true : screening.types.includes(compare_with)
+                })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
@@ -155,11 +160,16 @@ selectors.nativelangs.addEventListener('change', e => {
     toggleAll('nativelangs');
 });
 
+selectors.types.addEventListener('change', e => {
+    toggleAll('types');
+});
+
 function unselect_all() {
     search_input.value = '';
     selectors.genders.selectedIndex = 0;
     selectors.roleatfilms.selectedIndex = 0;
     selectors.nativelangs.selectedIndex = 0;
+    selectors.types.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
     toggleAll();
 }
@@ -183,6 +193,13 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.nativelangs.value) {
                 return screening.nativelangs.includes(selectors.nativelangs.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.types.value) {
+                return screening.types.includes(selectors.types.value)
             } else {
                 return true
             }

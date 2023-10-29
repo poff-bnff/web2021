@@ -5,7 +5,7 @@ block content
     if self.data.persons && process.env['DOMAIN'] === 'industry.poff.ee'
         h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
 
-        .grid_search#filters(style='display: none;')
+        .grid_search.search_projects#filters(style='display: none;')
 
             input#search(type='text', placeholder= self.label.filters.search)
 
@@ -19,6 +19,12 @@ block content
                 option(value='')= self.label.filters.roleAtFilms
                 if self.data.filters.roleatfilms
                     each index, key in self.data.filters.roleatfilms
+                        option(value=key)= index
+
+            select#types_select(name='Types')
+                option(value='')= self.label.filters.industryPersonType
+                if self.data.filters.types
+                    each index, key in self.data.filters.types
                         option(value=key)= index
 
             select#nativelangs_select(name='NativeLangs')
