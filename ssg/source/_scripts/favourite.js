@@ -124,8 +124,15 @@ function toggleFavouriteFilm(action, favId) {
 }
 
 function setupScreeningFavoriteButtons() {
+    const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+    const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+    const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
+        .map(e => parseInt(e))
 }
 function setupFilmFavoriteButtons() {
+    const nslButton = document.getElementsByClassName('notshortlisted')[0]
+    const slButton = document.getElementsByClassName('isshortlisted')[0]
+    const currentFilmID = parseInt(document.getElementById('film_id').value)
 }
 
 // TODO: All below functions are subject to refactoring at least,
