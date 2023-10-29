@@ -56,15 +56,6 @@ main.grid_cassette
         .str_info_meta_gi
             .str_info_meta_item
 
-            //- if self.festival_edition && self.festival_edition.festival && self.festival_edition.festival.name
-            //-     //- .str_info_meta_label.dark_1= self.label.film.festival
-            //-     //- .str_info_meta_festival= self.festival_edition.festival.name
-
-            //- if self.festival_edition && self.festival_edition && self.festival_edition.name
-            //-     //- Kas selleks eraldi labelit vaja vms?
-            //-     .str_info_meta_label.dark_1= self.label.film.festival
-            //-     .str_info_meta_festival= self.festival_edition.name
-
             if self.festival_editions
                 //- Festival editions
 
@@ -106,28 +97,6 @@ main.grid_cassette
             .synopsis_gi
                 if typeof synopsis_md === 'string'
                     +format(synopsis_md)
-                    //- if self.synopsis
-                    //-     p= self.synopsis
-
-
-
-        //- section.f_runtime_box
-        //-     if film.countriesAndLanguages && film.countriesAndLanguages.languages
-        //-         - var languagesNames = function(item) {
-        //-         -   var itemNames = item.name
-        //-         -   return itemNames
-        //-         - }
-        //-         .str_info_grid_3
-        //-             .str_info_label= self.label.film.languages
-        //-             .str_info_value= film.countriesAndLanguages.languages.map(languagesNames).join(', ')
-
-        //-     if film.runtime
-        //-         .str_info_grid_3
-        //-             .str_info_label= self.label.film.runtime
-        //-             .str_info_value
-        //-                 +dur(film.runtime)
-
-
 
     if self.screenings && self.screenings[0]
 
@@ -144,7 +113,6 @@ main.grid_cassette
             h1.section_headline= self.label.film.screenings
 
             .card-group.m-o.p-0
-                //- - var sortedScreenings = self.screenings.sort(function(a, b){return new Date(a.dateTime)-new Date(b.dateTime)})
                 each screening in self.screenings
                     .card.card_screening.rounded-0.border-0
                         .card-header.rounded-0.bg_dark_4
@@ -179,18 +147,12 @@ main.grid_cassette
                                             if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
                                                 span.city= ` ${screening.location.hall.cinema.town.name}, ${screening.location.hall.cinema.town.country.name}`
 
-                                    //- See on privateName tegelikult: Coca-Cola Plaza, iSense saal
-                                    //- if screening.location.name
-                                    //-     h1= screening.location.name
-
-
                         .card-body.bg_dark_3
                             .screening_info_blokk
                                 if screening.codeAndTitle
                                     .str_info_grid_3
                                         span.screening_info_label= self.label.screening.name
                                         span.screening_info_value= screening.codeAndTitle
-                                //- if screening.screeningSubtitles
 
                                 if screening.subtitles
                                     - var subtitlesNames = function(item) {
@@ -251,14 +213,6 @@ main.grid_cassette
 
                         .btn-group(role='group' aria-label='')
 
-                            //- if screening.event_mode && screening.event_mode.name && screening.ticketingId && screening.ticketingUrl && screening.event_mode.name === 'Online'
-                            //-     if screening.bookingUrl
-                            //-         a.btn.btn_secondary.active(href= screening.bookingUrl role='button') BOOKINGLABEL!
-                            //-     a.btn.btn_primary.active(href= `${screening.ticketingUrl}/${screening.ticketingId}` role='button' target='_blank')= self.label.button.screeningBuyTicket
-                            //- if screening.screeningTown === 'Tartu'
-                            //-     a.btn.btn_covid.active(href='https://forms.gle/UU4sFENoWyZ3PjSF8' role='button' target='_blank')= self.label.button.covidRegister
-                            //-     a.btn.btn_primary.active( role='button')= self.label.button.screeningFree
-
                             if screening.bookingUrl
                                 a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
                             a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
@@ -281,17 +235,6 @@ main.grid_cassette
                                 a.btn.btn_secondary(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' )= self.label.button.screeningFree
 
                             <script src="https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=20432"></script>
-
-
-    //- section.f_interactive_box
-    //-     if process.env['DOMAIN'] === 'poff.ee'
-    //-         .f_interactive_item
-    //-             p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
-    //-             a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
-    //-             a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
-
-    //-     .f_interactive_item
-    //-         a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSeKlI3ip7-58dyqJWhUbaFbvhqdn3u2TO9CGXYJKr6ACVxuUw/viewform' style='width:200px;' role='button' target='_blank')= "Anna filmile oma hääl"
 
     if self.tags && self.tags.programmes && self.tags.programmes.map(a => a.presentedBy || false).length
         -
@@ -317,7 +260,6 @@ main.grid_cassette
                         p.dark_1.text_center= onePresentedBy.presentedByText
 
                     each presenter in onePresentedBy.organisations
-
 
                         //- Artikli kontroll algus, vajab veel artikli kättesaamist ja täiendamist, et olemasolul suunata artiklile!
                         if presenter.poffi_article
@@ -405,9 +347,6 @@ main.grid_cassette
                                 .ratio.ratio-16x9.m-0.p-0
                                     +videolQaClip(qaclip.url)
 
-//- SIIT ALGAB FILMIDE KUVAMINE
-//- SIIT ALGAB FILMIDE KUVAMINE
-//- SIIT ALGAB FILMIDE KUVAMINE
 //- SIIT ALGAB FILMIDE KUVAMINE
 h1.section_headline.padding_top_4.padding_bottom_2= self.label.menu.mainFilms
 
@@ -543,14 +482,6 @@ else
                                 .str_info_meta_label.dark_1= self.label.film.keywords
                                 .str_info_meta_festival= film.tags.keywords.join(', ')
 
-                        //- festival programm zanrid keywordid
-
-
-                    //- .str_info_meta_item
-                    //-     .str_info_meta_label
-                    //-         | Programm
-                    //-     .str_info_meta_program
-                    //-         | Foorum, Põhjusega mässajad
                 if typeof film.synopsis !== 'undefined'
                     - var synopsis_md = film.synopsis
                     .synopsis_gi
@@ -566,27 +497,8 @@ else
                                 if typeof additInfo_md === 'string'
                                     +format(additInfo_md)
 
-                //- FILM ADDITIONAL INFO (ADDITINFO)
-
-                //- if typeof film.additInfo !== 'undefined'
-                //-     - var additInfo_md = film.additInfo
-                //-     .synopsis_gi
-                //-         if typeof additInfo_md === 'string'
-                //-             +format(additInfo_md)
             section.f_cred_box
                 .str_info_blokk_cred
-
-                    //- if film.media && film.media.stills && film.media.stills[0]
-                    //-     each still in film.media.stills
-                    //-         if still.hash && still.ext
-                    //-             div(style="width:30%; height:10%; padding-bottom:20px; padding-top:20px;")
-                    //-                 img(src=`https://assets.poff.ee/img/${still.hash}${still.ext}` alt = film.titles style="width:100%; height:100%;")
-                    //- else
-                    //-     div(style="width:30%; height:10%; padding-bottom:20px; padding-top:20px;")
-                    //-         img(src=`/assets/img/static/placeholder_hd_1.jpg` alt = film.titles style="width:100%; height:100%;")
-
-                    //- NB! Credentials võetakse strapis oleva roleNamePrivate järgi väiketähtedes
-                    //-     Näiteks: "Composer" all olevad isikud saab kätte film.credentials.rolePersonsByRole.composer.join(', ')
 
                     if film && film.credentials && film.credentials.rolePersonsByRole
                         if film.credentials.rolePersonsByRole.director && film.credentials.rolePersonsByRole.director[0]
@@ -766,12 +678,6 @@ else
                         .str_info_label= self.label.film.otherFestivals
                         .str_info_value= film.other_festivals.map(languagesNames).join(', ')
 
-            //- section.f_interactive_box
-                //- .f_interactive_item
-                //-     p
-                //-         | Kas oled filmi juba näinud? Osale publiku lemmikfilmi hääletuses.
-                //-     a.btn.btn_vote.active(href='https://forms.gle/ew2vrQRTEb83BNxR7' role='button' target='_BLANK')= self.label.button.filmAudienceVote
-
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
                 - var sortCredentialsByOrder = film.credentials.rolePerson.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
                 - var director = sortCredentialsByOrder.filter(a => {
@@ -781,39 +687,6 @@ else
                 -            return false
                 -        }
                 -    })[0]
-
-            //- if typeof director !== 'undefined' && director.person && director.person.firstName && director.person.lastName
-                //- section.f_dir_bio_box
-
-                //-     if director.person.picture
-                //-         .dir_img
-                //-             img.img_dir(src=`https://assets.poff.ee/img/${director.person.picture.hash}${director.person.picture.ext}` alt = film.titles)
-                //-             .str_info_grid_3
-                //-                 .str_info_label.text_left.dark_1= self.label.film.director
-                //-                 .str_info_value.text_right.dark_1= `${director.person.firstName} ${director.person.lastName}`
-
-                //-     .dir_bio.dark_1
-                //-         if director.person.biography && typeof director.person.biography !== 'object'
-                //-             p.dark_1= director.person.biography
-                //-         if director.person.filmography && typeof director.person.filmography !== 'object'
-                //-             p.dark_1= director.person.filmography
-
-                //- - var festivalEditionsIds = []
-                //- film?.tags?.programmes?.map(pr => {
-                //-     pr?.festival_editions?.map(fe => festivalEditionsIds.push(fe.id))
-                //- })
-
-            //- if festivalEditionsIds.includes(5)
-                //- section.f_interactive_box
-                //- if process.env['DOMAIN'] === 'poff.ee'
-                //-     .f_interactive_item
-                //-         p#loggedOutFavouriteStatus= self.label.film.shortlistHelp
-
-                //-         a.btn.btn_secondary.notshortlisted(id=self.id+'_not_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('addMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.addShortlist
-                //-         a.btn.btn_secondary.isshortlisted(id=self.id+'_is_shortlisted', style='display: none; width:200px;' onclick=`modifyFavourites('rmMyFilm', ${self.id})` role='button' target='_BLANK')= self.label.film.removeShortlist
-
-                //- .f_interactive_item
-                //-     a.btn.btn_primary(href='https://docs.google.com/forms/d/e/1FAIpQLSeKlI3ip7-58dyqJWhUbaFbvhqdn3u2TO9CGXYJKr6ACVxuUw/viewform' style='width:200px;' role='button' target='_blank')= "Anna filmile oma hääl"
 
             if film.presentedBy && film.presentedBy.presentedByText && film.presentedBy.organisations && film.presentedBy.organisations[0]
 
@@ -840,19 +713,6 @@ else
                                 else if presenter.logoWhite
                                     img.supporter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
 
-            //- if film.filmQaClip
-
-                //- section.f_qaclip_box
-                //-     .section_headline= self.label.film.qaClip
-                //-     .ratio.ratio-16x9.m-0.p-0
-                //-         - youtubeVideoCode = film.filmQaClip.split("=")
-                //-         +youtube(youtubeVideoCode[1])
-
-            //- include vialog_box.pug
-                //- //- <a name="chat"><iframe width="100%" height="540" src="https://my.vialog.app/poff.ee/241" frameborder="0" allow="microphone; camera"></iframe></a>
-                //- a(name='chat')
-                //-     iframe(width='100%' height='540' src=`https://my.vialog.app/poff.ee/${film.id}` frameborder='0' allow='microphone; camera')
-
             if film.trailer && film.trailer[0] && film.trailer[0].videoCode
                 section.f_trailer_box
                     .section_headline= self.label.film.trailer
@@ -860,18 +720,6 @@ else
                         .ratio.ratio-16x9.m-0.p-0.h70
                             if trailer.videoCode
                                 +video(trailer.videoCode)
-
-            //- if self.chat_w_name
-                //- script.
-                //-     var votemoConfig = {
-                //-         url: `https://#{self.chat_w_name}.votemo.eu`,
-                //-         openInDesktop: false,
-                //-         language: 'poff'
-                //-     }
-                //- script(src='https://cdn.votemo.eu/dist/widget.js')
-                //- - showMessengerChat = false
-
-            //- section.f_imgs_box
 
             +tabname(self.title)
 
