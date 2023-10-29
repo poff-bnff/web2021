@@ -38,9 +38,6 @@ nice -10 node "$FETCH_PATH"/initialise_entu_ssg.js archive
 if [ "$DOMAIN" == "industry.poff.ee" ]; then
     echo "fetch_industry_project_from_yaml.js"
     nice -10 node "$FETCH_PATH"/fetch_industry_project_from_yaml.js archive
-
-    echo "fetch_industry_person_from_yaml.js"
-    nice -10 node "$FETCH_PATH"/fetch_industry_person_from_yaml.js archive
 else
     echo "fetch_cassettes_archive_from_yaml.js"
     nice -10 node "$FETCH_PATH"/fetch_cassettes_archive_from_yaml.js "$DOMAIN"

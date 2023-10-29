@@ -45,12 +45,6 @@ status=$?;[ $status -eq 0 ] && echo 'fetch_articles_from_yaml succeeded' || echo
 [ $status -ne 0 ] && exit $status
 echo "Time passed: $SECONDS seconds"
 
-echo 'fetch_industry_person_from_yaml'
-nice -10 node ./helpers/fetch_industry_person_from_yaml.js
-status=$?;[ $status -eq 0 ] && echo 'fetch_industry_person_from_yaml succeeded' || echo 'fetch_industry_person_from_yaml failed. Exit'
-[ $status -ne 0 ] && exit $status
-echo "Time passed: $SECONDS seconds"
-
 echo 'fetch_industry_project_from_yaml'
 nice -10 node ./helpers/fetch_industry_project_from_yaml.js
 status=$?;[ $status -eq 0 ] && echo 'fetch_industry_project_from_yaml succeeded' || echo 'fetch_industry_project_from_yaml failed. Exit'
