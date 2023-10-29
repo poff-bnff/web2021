@@ -123,6 +123,11 @@ function toggleFavouriteFilm(action, favId) {
     });
 }
 
+function setupScreeningFavoriteButtons() {
+}
+function setupFilmFavoriteButtons() {
+}
+
 // TODO: All below functions are subject to refactoring at least,
 //       but probably should be rewritten from scratch or
 //       even removed completely.
