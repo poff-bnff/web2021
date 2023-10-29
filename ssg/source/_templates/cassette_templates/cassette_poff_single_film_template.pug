@@ -77,10 +77,10 @@ main.grid_film(id=self.id)
                             .str_info_label= self.label.film.titleOriginal
                             .str_info_value= film.titleOriginal
 
-                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director && film.credentials.rolePersonsByRole.director[0]
+                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.expandedRole && film.credentials.rolePersonsByRole.expandedRole[0]
                         .str_info_grid_3
-                            .str_info_label= self.label.film.director
-                            .str_info_value.clr_primary= film.credentials.rolePersonsByRole.director.join(', ')
+                            .str_info_label= self.label.film.expandedRole
+                            .str_info_value.clr_primary= film.credentials.rolePersonsByRole.expandedRole.join(', ')
                     //- todo #383
                     if film.orderedCountriesDisplay
                         .str_info_grid_3
@@ -281,10 +281,10 @@ main.grid_film(id=self.id)
                     if film && film.credentials && film.credentials.rolePersonsByRole
                         - var rolePersonsByRole = film.credentials.rolePersonsByRole
 
-                        if rolePersonsByRole.director && rolePersonsByRole.director[0]
+                        if rolePersonsByRole.expandedRole && rolePersonsByRole.expandedRole[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.director
-                                .str_info_value= rolePersonsByRole.director.join(', ')
+                                .str_info_label= self.label.film.expandedRole
+                                .str_info_value= rolePersonsByRole.expandedRole.join(', ')
 
                         if rolePersonsByRole.screenwriter && rolePersonsByRole.screenwriter[0]
                             .str_info_grid_3
@@ -476,53 +476,54 @@ main.grid_film(id=self.id)
                 //-     )= self.label.film.addShortlist
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
+                - var rolesToExpand = ['Director', 'Producer']
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
-                -        if (a.role_at_film && a.role_at_film.roleNamePrivate && 'Director' === a.role_at_film.roleNamePrivate ) {
+                -        if (a.role_at_film && a.role_at_film.roleNamePrivate && rolesToExpand.includes(a.role_at_film.roleNamePrivate) ) {
                 -            return true
                 -        } else {
                 -            return false
                 -        }
                 -    })
 
-                - var filmDirectorsSorted = filmDirectors.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
+                - var expandedRolesSorted = filmDirectors.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
 
-            if typeof filmDirectorsSorted !== 'undefined'
+            if typeof expandedRolesSorted !== 'undefined'
                 section.f_dir_box
 
-                    each director in filmDirectorsSorted.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
+                    each expandedRole in expandedRolesSorted.sort(function(a, b){return a.role_at_film.order-b.role_at_film.order})
                         //- f_dir_box on nyyd container directorite boxidele
                         //- Iga Directori kohta nyyd täita see f_dir_bio_box.
-                        if director.person
-                            if director.person.primaryImage || director.person.biography || director.person.filmography
+                        if expandedRole.person
+                            if expandedRole.person.primaryImage || expandedRole.person.biography || expandedRole.person.filmography
                                 .f_dir_bio_box
 
                                     .dir_img
-                                        if director.person.primaryImage
-                                            img.img_dir(src=`https://assets.poff.ee/img/${director.person.primaryImage}` alt = film.titles)
-                                        if director.person.firstName || director.person.lastName
+                                        if expandedRole.person.primaryImage
+                                            img.img_dir(src=`https://assets.poff.ee/img/${expandedRole.person.primaryImage}` alt = film.titles)
+                                        if expandedRole.person.firstName || expandedRole.person.lastName
                                             .str_info_grid_3
-                                                .str_info_label.text_left.dark_1= self.label.film.director
-                                                .str_info_value.text_right.dark_1= `${director.person.firstName ? director.person.firstName : ''} ${director.person.lastName ? director.person.lastName : ''}`
+                                                .str_info_label.text_left.dark_1= self.label.film[expandedRole.role_at_film.roleNamePrivate.toLowerCase()]
+                                                .str_info_value.text_right.dark_1= `${expandedRole.person.firstName ? expandedRole.person.firstName : ''} ${expandedRole.person.lastName ? expandedRole.person.lastName : ''}`
                                         else
                                             .str_info_grid_3
-                                                .str_info_label.text_left.dark_1= self.label.film.director
-                                                .str_info_value.text_right.dark_1= director.person.firstNameLastName
+                                                .str_info_label.text_left.dark_1= self.label.film[expandedRole.role_at_film.roleNamePrivate.toLowerCase()]
+                                                .str_info_value.text_right.dark_1= expandedRole.person.firstNameLastName
 
                                     .dir_bio.dark_1
-                                        if director.person.bio && typeof director.person.bio !== 'object'
-                                            - var dir_bio = director.person.bio
+                                        if expandedRole.person.bio && typeof expandedRole.person.bio !== 'object'
+                                            - var dir_bio = expandedRole.person.bio
                                             p.dark_1
                                                 if typeof dir_bio === 'string'
                                                     +format(dir_bio)
 
-                                        if director.person.filmography && typeof director.person.filmography !== 'object'
-                                            - var dir_filmography = director.person.filmography
+                                        if expandedRole.person.filmography && typeof expandedRole.person.filmography !== 'object'
+                                            - var dir_filmography = expandedRole.person.filmography
                                             p.dark_1
                                                 if typeof dir_filmography === 'string'
                                                     +format(dir_filmography)
 
-                                        else if director.person.filmography && director.person.filmography.en
-                                            p.dark_1= director.person.filmography.en
+                                        else if expandedRole.person.filmography && expandedRole.person.filmography.en
+                                            p.dark_1= expandedRole.person.filmography.en
 
             if presentedBy.length
                             section.f_extra_box
