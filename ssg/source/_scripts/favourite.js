@@ -165,8 +165,8 @@ function setupFilmFavoriteButtons() {
     const currentFilmID = parseInt(document.getElementById('film_id').value)
 
     if (getUser()) {
-        const myFilms = reloadUserFilms()
-        const currentFilmIsFavourite = myFilms.includes(currentFilmID)
+        reloadUserFilms()
+        const currentFilmIsFavourite = userFilms.includes(currentFilmID)
 
         if (currentFilmIsFavourite) {
             nslButton.style.display = 'none'
@@ -176,6 +176,22 @@ function setupFilmFavoriteButtons() {
             slButton.style.display = 'none'
         }
 
+        nslButton.addEventListener('click', e => {
+            toggleFavouriteFilm('set', currentFilmID)
+        })
+        slButton.addEventListener('click', e => {
+            toggleFavouriteFilm('unset', currentFilmID)
+        })
+
+        reloadUserScreenings()
+        const currentScreeningIDs = Array.from(document.getElementsByClassName('card_screening'))
+            .map(e => parseInt(e.id.slice(1)))
+        // unhide all fav buttons for currently favorited screenings
+        currentScreeningIDs.filter(id => userScreenings.includes(id))
+            .forEach(id => {
+                document.getElementById(`s_${id}_is_fav`).style.display = ''
+                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+            })
     }
 }
 
