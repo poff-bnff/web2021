@@ -128,17 +128,45 @@ function setupScreeningFavoriteButtons() {
     const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
     const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
         .map(e => parseInt(e))
+
     if (getUser()) {
         const myScreenings = reloadUserScreenings()
+        //- console.log({myScreenings, currentScreeningIDs})
+
+        // unhide all fav buttons for currently favorited screenings
+        currentScreeningIDs.filter(id => myScreenings.includes(id))
+            .forEach(id => {
+                document.getElementById(`s_${id}_is_fav`).style.display = ''
+                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+            })
+
+        // unhide all no-fav buttons for currently unfavorited screenings
+        currentScreeningIDs.filter(id => !myScreenings.includes(id))
+            .forEach(id => {
+                document.getElementById(`s_${id}_is_fav`).style.display = 'none'
+                document.getElementById(`s_${id}_is_not_fav`).style.display = ''
+            })
+
     }
 }
+
 function setupFilmFavoriteButtons() {
     const nslButton = document.getElementsByClassName('notshortlisted')[0]
     const slButton = document.getElementsByClassName('isshortlisted')[0]
     const currentFilmID = parseInt(document.getElementById('film_id').value)
+
     if (getUser()) {
         const myFilms = reloadUserFilms()
         const currentFilmIsFavourite = myFilms.includes(currentFilmID)
+
+        if (currentFilmIsFavourite) {
+            nslButton.style.display = 'none'
+            slButton.style.display = ''
+        } else {
+            nslButton.style.display = ''
+            slButton.style.display = 'none'
+        }
+
     }
 }
 
