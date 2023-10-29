@@ -249,13 +249,13 @@ function CreateYAML(screenings, lang) {
         times: {}
     }
 
-    const screenings_search = screeningsCopy.map(screening => {
+    const screenings_search = screeningsCopy.map(screenings => {
 
         let dates = []
         let times = []
 
 
-        let srcnDateTimeString = new Date(screening.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
+        let srcnDateTimeString = new Date(screenings.dateTime).toLocaleString('et-EE', { timeZone: 'Europe/Tallinn' })
 
         let dateString = srcnDateTimeString.split(' ')[0]
         let timeString = srcnDateTimeString.split(' ')[1]
@@ -272,7 +272,7 @@ function CreateYAML(screenings, lang) {
         filters.times[timeKey] = time
 
         let programmes = []
-        let cassette = screening.cassette
+        let cassette = screenings.cassette
         if (typeof cassette.tags.programmes !== 'undefined') {
             for (const programme of cassette.tags.programmes) {
                 if (typeof programme.festival_editions !== 'undefined') {
@@ -324,27 +324,22 @@ function CreateYAML(screenings, lang) {
         let towns = []
         let cinemas = []
 
-        for (const subtitle of screening.subtitles || []) {
+        for (const subtitle of screenings.subtitles || []) {
             const subtKey = subtitle.code
             const subtitle_name = subtitle.name
             subtitles.push(subtKey)
             filters.subtitles[subtKey] = subtitle_name
         }
 
-        const location = screening.location
-        if (!location || !location.hall || !location.hall.cinema || !location.hall.cinema.town) {
-            console.warn('screening', screening.id, 'has no location or hall or cinema or town')
-        } else {
-            const cinema = location.hall.cinema
-            const townKey = `_${cinema.town.id}`
-            const town_name = cinema.town.name
-            towns.push(townKey)
-            filters.towns[townKey] = town_name
+        const townKey = `_${screenings.location.hall.cinema.town.id}`
+        const town_name = screenings.location.hall.cinema.town.name
+        towns.push(townKey)
+        filters.towns[townKey] = town_name
 
-            const cinemaKey = `_${cinema.id}`
-            cinemas.push(cinemaKey)
-            filters.cinemas[cinemaKey] = cinema.name
-        }
+        const cinemaKey = `_${screenings.location.hall.cinema.id}`
+        const cinema_name = screenings.location.hall.cinema.name
+        cinemas.push(cinemaKey)
+        filters.cinemas[cinemaKey] = cinema_name
 
         let premieretypes = []
         let filmtypes = []
@@ -373,7 +368,7 @@ function CreateYAML(screenings, lang) {
             }
         }
         return {
-            id: screening.id,
+            id: screenings.id,
             text: [
                 cassette.title,
                 cassette.synopsis,

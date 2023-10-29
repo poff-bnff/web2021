@@ -889,17 +889,17 @@ function generateAllDataYAML(allData, lang) {
         let towns = []
         let cinemas = []
         if (cassette.screenings) {
-            for (const screenings of cassette.screenings) {
-                for (const subtitle of screenings.subtitles || []) {
+            for (const screening of cassette.screenings) {
+                for (const subtitle of screening.subtitles || []) {
                     const subtKey = subtitle.code
                     const subtitle_name = subtitle.name
                     subtitles.push(subtKey)
                     filters.subtitles[subtKey] = subtitle_name
                 }
 
-                const location = screenings.location
+                const location = screening.location
                 if (!location || !location.hall || !location.hall.cinema || !location.hall.cinema.town) {
-                    console.warn('screening', screenings.id, 'has no location or hall or cinema or town')
+                    console.warn('screening', screening.id, 'has no location or hall or cinema or town')
                     continue
                 }
                 const cinema = location.hall.cinema
