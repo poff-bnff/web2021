@@ -162,7 +162,7 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
             let personSlug = person.slug
             // if slug is not defined, then skip this person
             if (!personSlug) {
-                console.warn(`Person ${person.id} has no slug, skipping`);
+                console.info(`Person ${person.id} has no slug, skipping`);
                 continue
             }
             person.path = personSlug;
