@@ -131,7 +131,6 @@ function setupScreeningFavoriteButtons() {
 
     if (getUser()) {
         reloadUserScreenings()
-        //- console.log({myScreenings, currentScreeningIDs})
 
         // unhide all fav buttons for currently favorited screenings
         currentScreeningIDs.filter(id => userScreenings.includes(id))
@@ -166,31 +165,34 @@ function setupFilmFavoriteButtons() {
 
     if (getUser()) {
         reloadUserFilms()
-        const currentFilmIsFavourite = userFilms.includes(currentFilmID)
+        if (nslButton && slButton) {
+            const currentFilmIsFavourite = userFilms.includes(currentFilmID)
 
-        if (currentFilmIsFavourite) {
-            nslButton.style.display = 'none'
-            slButton.style.display = ''
-        } else {
-            nslButton.style.display = ''
-            slButton.style.display = 'none'
+            if (currentFilmIsFavourite) {
+                nslButton.style.display = 'none'
+                slButton.style.display = ''
+            } else {
+                nslButton.style.display = ''
+                slButton.style.display = 'none'
+            }
+
+            nslButton.addEventListener('click', e => {
+                toggleFavouriteFilm('set', currentFilmID)
+            })
+            slButton.addEventListener('click', e => {
+                toggleFavouriteFilm('unset', currentFilmID)
+            })
         }
-
-        nslButton.addEventListener('click', e => {
-            toggleFavouriteFilm('set', currentFilmID)
-        })
-        slButton.addEventListener('click', e => {
-            toggleFavouriteFilm('unset', currentFilmID)
-        })
-
         reloadUserScreenings()
         const currentScreeningIDs = Array.from(document.getElementsByClassName('card_screening'))
             .map(e => parseInt(e.id.slice(1)))
         // unhide all fav buttons for currently favorited screenings
         currentScreeningIDs.filter(id => userScreenings.includes(id))
             .forEach(id => {
-                document.getElementById(`s_${id}_is_fav`).style.display = ''
-                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                try {
+                    document.getElementById(`s_${id}_is_fav`).style.display = ''
+                    document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                } catch (err) { null }
             })
     }
 }
