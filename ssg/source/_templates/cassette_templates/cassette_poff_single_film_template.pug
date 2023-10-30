@@ -784,7 +784,7 @@ main.grid_film(id=self.id)
             console.log(`document.readyState: ${document.readyState}`)
             if (document.readyState === 'complete') {
                 // set up buttons only on poff.ee domain
-                if (window.location.hostname === 'devs.poff.ee') {
+                if (window.location.hostname === 'poff.ee') {
                     setupFilmFavoriteButtons()
                     setupScreeningFavoriteButtons()
                 }
