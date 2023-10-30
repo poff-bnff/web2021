@@ -642,7 +642,7 @@ for (const lang of allLanguages) {
 
                 // Rolepersons by role
                 // Expand persons with roles:
-                const rolesToExpand = ['Director', 'Producer']
+                const rolesToExpand = ['Director']
                 if (scc_film.credentials && scc_film.credentials.rolePerson && scc_film.credentials.rolePerson[0]) {
                     let rolePersonTypes = {}
                     scc_film.credentials.rolePerson.sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
