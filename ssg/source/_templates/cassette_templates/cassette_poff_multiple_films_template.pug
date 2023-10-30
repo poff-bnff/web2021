@@ -98,6 +98,7 @@ main.grid_cassette
                 if typeof synopsis_md === 'string'
                     +format(synopsis_md)
 
+    input(type='hidden', value=`${self.id}`, id=`film_id`)
     if self.screenings && self.screenings[0]
         input(type='hidden', value=`${self.screenings.map(s => s.id)}`, id=`screening_ids`)
 
