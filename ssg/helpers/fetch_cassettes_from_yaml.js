@@ -19,6 +19,7 @@ const imageOrderStills = DOMAIN_SPECIFICS.cassettesAndFilmsImageStillsPriority
 const imageOrderStillsListView = DOMAIN_SPECIFICS.cassettesAndFilmsListViewImagePriority
 const imageOrderDirector = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriority
 const imageOrderDirectorDefaults = DOMAIN_SPECIFICS.cassettesAndFilmsDirectorPicturePriorityDefaults
+const showVotemo = DOMAIN_SPECIFICS.cassettesAndFilmsShowVotemo
 
 const sourceDir = path.join(rootDir, 'source')
 const cassetteTemplatesDir = path.join(sourceDir, '_templates', 'cassette_templates')
@@ -358,6 +359,8 @@ for (const lang of allLanguages) {
         counting++
 
         const s_cassette_copy = JSONcopy(s_cassette)
+        s_cassette_copy.switches = s_cassette.switches || {}
+        s_cassette_copy.switches.showVotemo = showVotemo
 
         let slugEn = undefined
         if (s_cassette_copy.films && s_cassette_copy.films.length === 1) {
