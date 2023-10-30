@@ -161,7 +161,9 @@ function setupScreeningFavoriteButtons() {
 function setupFilmFavoriteButtons() {
     const nslButton = document.getElementsByClassName('notshortlisted')[0]
     const slButton = document.getElementsByClassName('isshortlisted')[0]
-    const currentFilmID = parseInt(document.getElementById('film_id').value)
+    const cassetteIdElement = document.getElementById('film_id') || null
+    const cassetteId = cassetteIdElement?.value || null
+    const currentFilmID = parseInt(cassetteId) || null
 
     if (getUser()) {
         reloadUserFilms()
