@@ -125,7 +125,38 @@ try {
 
     function setupScreeningFavoriteButtons() {
         try {
+            const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+            const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+            const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
+                .map(e => parseInt(e))
 
+            if (getUser()) {
+                reloadUserScreenings()
+
+                // unhide all fav buttons for currently favorited screenings
+                currentScreeningIDs.filter(id => userScreenings.includes(id))
+                    .forEach(id => {
+                        document.getElementById(`s_${id}_is_fav`).style.display = ''
+                        document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                    })
+
+                // unhide all no-fav buttons for currently unfavorited screenings
+                currentScreeningIDs.filter(id => !userScreenings.includes(id))
+                    .forEach(id => {
+                        document.getElementById(`s_${id}_is_fav`).style.display = 'none'
+                        document.getElementById(`s_${id}_is_not_fav`).style.display = ''
+                    })
+
+                // add event listeners to all fav buttons
+                nslButtons.forEach(b => b.addEventListener('click', e => {
+                    let scrId = parseInt(b.id.split('_')[1])
+                    toggleFavouriteScreening('set', scrId)
+                }))
+                slButtons.forEach(b => b.addEventListener('click', e => {
+                    let scrId = parseInt(b.id.split('_')[1])
+                    toggleFavouriteScreening('unset', scrId)
+                }))
+            }
         } catch (error) {
             console.log(error)
         }
