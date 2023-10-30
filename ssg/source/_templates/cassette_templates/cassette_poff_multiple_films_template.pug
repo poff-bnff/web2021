@@ -98,6 +98,7 @@ main.grid_cassette
                 if typeof synopsis_md === 'string'
                     +format(synopsis_md)
 
+    input(type='hidden', value=`${self.id}`, id=`film_id`)
     if self.screenings && self.screenings[0]
         input(type='hidden', value=`${self.screenings.map(s => s.id)}`, id=`screening_ids`)
 
@@ -748,15 +749,3 @@ else
                     - showMessengerChat = false
 
             +tabname(self.title)
-
-    script.
-        document.onreadystatechange = () => {
-            console.log(`document.readyState: ${document.readyState}`)
-            if (document.readyState === 'complete') {
-                // set up buttons only on poff.ee domain
-                if (window.location.hostname === 'poff.ee') {
-                    setupFilmFavoriteButtons()
-                    setupScreeningFavoriteButtons()
-                }
-            }
-        }

@@ -126,6 +126,22 @@ function logOut() {
     window.open(location.origin, '_self')
 }
 
+// Use wherever you need to restrict content to logged in users
+// and/or users with complete profile and/or users with profile picture
+const webUserLevel = () => {
+    let level = 'notLoggedIn'
+    if (isUserTokenValid()) {
+        level = 'loggedIn'
+        if (isUserProfileComplete()) {
+            level = 'profileComplete'
+            if (getProfilePicture()) {
+                level = 'pictureUploaded'
+            }
+        }
+    }
+    return level
+}
+
 // This function returns true if user is logged in but redirects to login page if not.
 const requireLogin = () => {
     if (isUserTokenValid()) {
@@ -133,6 +149,11 @@ const requireLogin = () => {
     }
     const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
     window.open(loginUrl, '_self')
+}
+
+const redirectToProfile = () => {
+    localStorage.setItem('returnFromProfileUrl', window.location.href)
+    window.open('/userprofile', '_self')
 }
 
 // This function returns:                  This function redirects to profile page if:
@@ -152,8 +173,7 @@ const requireProfile = async () => {
     if (window.location.pathname.substring(0,12) === '/userprofile') {
         return false
     }
-    const profileUrl = '/userprofile'
-    window.open(profileUrl, '_self')
+    redirectToProfile()
 }
 
 const parseJWT = (token) => {

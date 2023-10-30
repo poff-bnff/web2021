@@ -1,200 +1,176 @@
 const userFilms = []
 const userScreenings = []
 
-
-function reloadUserFilms() {
-    if (!isUserTokenValid()) {
-        return null
+try {
+    function reloadUserFilms() {
+        if (!isUserTokenValid()) {
+            return null
+        }
+        const My = getUser().My || {'films': []}
+        const myFilms = My.films || []
+        const myFilmIDs = myFilms.map(f => f.id)
+        userFilms.splice(0, userFilms.length, ...myFilmIDs)
+        return userFilms
     }
-    const My = getUser().My || {'films': []}
-    const myFilms = My.films || []
-    const myFilmIDs = myFilms.map(f => f.id)
-    userFilms.splice(0, userFilms.length, ...myFilmIDs)
-    return userFilms
-}
 
-function reloadUserScreenings() {
-    if (!isUserTokenValid()) {
-        return null
+    function reloadUserScreenings() {
+        if (!isUserTokenValid()) {
+            return null
+        }
+        const My = getUser().My || {'screenings': []}
+        const myScreenings = My.screenings || []
+        const myScreeningIDs = myScreenings.map(f => f.id)
+        userScreenings.splice(0, userScreenings.length, ...myScreeningIDs)
+        return userScreenings
     }
-    const My = getUser().My || {'screenings': []}
-    const myScreenings = My.screenings || []
-    const myScreeningIDs = myScreenings.map(f => f.id)
-    userScreenings.splice(0, userScreenings.length, ...myScreeningIDs)
-    return userScreenings
-}
 
-function toggleFavouriteScreening(action, favId) {
-    const setButton = document.getElementById(`s_${favId}_is_not_fav`)
-    const unsetButton = document.getElementById(`s_${favId}_is_fav`)
+    function toggleFavouriteScreening(action, favId) {
+        const setButton = document.getElementById(`s_${favId}_is_not_fav`)
+        const unsetButton = document.getElementById(`s_${favId}_is_fav`)
 
-    const pushedButton = action === 'set' ? setButton : unsetButton
-    // console.log({action, favId, setButton, unsetButton, pushedButton})
-    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
+        const pushedButton = action === 'set' ? setButton : unsetButton
+        // console.log({action, favId, setButton, unsetButton, pushedButton})
+        const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
 
-    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-    pushedButton.disabled = true
+        pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+        pushedButton.disabled = true
 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
 
-    var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        redirect: 'follow',
-        body: favId
-    };
+        var requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            redirect: 'follow',
+            body: favId
+        };
 
-    fetch(`${huntAuthDomain}/api/my/screening`, requestOptions).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        // console.log({
-        //     'returned': data,
-        //     'getUser()': getUser().My,
-        //     'userScreenings': userScreenings
-        // })
-        if (action === 'set') {
-            setButton.style.display = 'none'
-            unsetButton.style.display = ''
-        } else {
-            setButton.style.display = ''
-            unsetButton.style.display = 'none'
-        }
-        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
-        pushedButton.disabled = false
-        setMy(data)
-        reloadUserScreenings()
-        // console.log('reloadUserScreenings', reloadUserScreenings())
-    }).catch(function (error) {
-        console.warn(error);
-        pushedButton.innerHTML = 'Tekkis viga!'
-    });
-}
-
-function toggleFavouriteFilm(action, favId) {
-    const setButton = document.getElementById(`f_${favId}_is_not_fav`)
-    const unsetButton = document.getElementById(`f_${favId}_is_fav`)
-
-    const pushedButton = action === 'set' ? setButton : unsetButton
-    // console.log({action, favId, setButton, unsetButton, pushedButton})
-    const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
-
-    pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-    pushedButton.disabled = true
-
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
-
-    var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        redirect: 'follow',
-        body: favId
-    };
-
-    fetch(`${huntAuthDomain}/api/my/film`, requestOptions).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then(function (data) {
-        // console.log({
-        //     'returned': data,
-        //     'getUser()': getUser().My,
-        //     'userFilms': userFilms})
-        if (action === 'set') {
-            setButton.style.display = 'none'
-            unsetButton.style.display = ''
-        } else {
-            setButton.style.display = ''
-            unsetButton.style.display = 'none'
-        }
-        pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
-        pushedButton.disabled = false
-        setMy(data)
-        reloadUserFilms()
-        // console.log('reloadUserFilms', reloadUserFilms())
-    }).catch(function (error) {
-        console.warn(error);
-        pushedButton.innerHTML = 'Tekkis viga!'
-    });
-}
-
-function setupScreeningFavoriteButtons() {
-    const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
-    const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
-    const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
-        .map(e => parseInt(e))
-
-    if (getUser()) {
-        reloadUserScreenings()
-
-        // unhide all fav buttons for currently favorited screenings
-        currentScreeningIDs.filter(id => userScreenings.includes(id))
-            .forEach(id => {
-                document.getElementById(`s_${id}_is_fav`).style.display = ''
-                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
-            })
-
-        // unhide all no-fav buttons for currently unfavorited screenings
-        currentScreeningIDs.filter(id => !userScreenings.includes(id))
-            .forEach(id => {
-                document.getElementById(`s_${id}_is_fav`).style.display = 'none'
-                document.getElementById(`s_${id}_is_not_fav`).style.display = ''
-            })
-
-        // add event listeners to all fav buttons
-        nslButtons.forEach(b => b.addEventListener('click', e => {
-            let scrId = parseInt(b.id.split('_')[1])
-            toggleFavouriteScreening('set', scrId)
-        }))
-        slButtons.forEach(b => b.addEventListener('click', e => {
-            let scrId = parseInt(b.id.split('_')[1])
-            toggleFavouriteScreening('unset', scrId)
-        }))
-    }
-}
-
-function setupFilmFavoriteButtons() {
-    const nslButton = document.getElementsByClassName('notshortlisted')[0]
-    const slButton = document.getElementsByClassName('isshortlisted')[0]
-    const currentFilmID = parseInt(document.getElementById('film_id').value)
-
-    if (getUser()) {
-        reloadUserFilms()
-        if (nslButton && slButton) {
-            const currentFilmIsFavourite = userFilms.includes(currentFilmID)
-
-            if (currentFilmIsFavourite) {
-                nslButton.style.display = 'none'
-                slButton.style.display = ''
-            } else {
-                nslButton.style.display = ''
-                slButton.style.display = 'none'
+        fetch(`${huntAuthDomain}/api/my/screening`, requestOptions).then(function (response) {
+            if (response.ok) {
+                return response.json();
             }
-
-            nslButton.addEventListener('click', e => {
-                toggleFavouriteFilm('set', currentFilmID)
-            })
-            slButton.addEventListener('click', e => {
-                toggleFavouriteFilm('unset', currentFilmID)
-            })
-        }
-        reloadUserScreenings()
-        const currentScreeningIDs = Array.from(document.getElementsByClassName('card_screening'))
-            .map(e => parseInt(e.id.slice(1)))
-        // unhide all fav buttons for currently favorited screenings
-        currentScreeningIDs.filter(id => userScreenings.includes(id))
-            .forEach(id => {
-                try {
-                    document.getElementById(`s_${id}_is_fav`).style.display = ''
-                    document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
-                } catch (err) { null }
-            })
+            return Promise.reject(response);
+        }).then(function (data) {
+            // console.log({
+            //     'returned': data,
+            //     'getUser()': getUser().My,
+            //     'userScreenings': userScreenings
+            // })
+            if (action === 'set') {
+                setButton.style.display = 'none'
+                unsetButton.style.display = ''
+            } else {
+                setButton.style.display = ''
+                unsetButton.style.display = 'none'
+            }
+            pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+            pushedButton.disabled = false
+            setMy(data)
+            reloadUserScreenings()
+            // console.log('reloadUserScreenings', reloadUserScreenings())
+        }).catch(function (error) {
+            console.warn(error)
+            pushedButton.innerHTML = 'Tekkis viga!'
+        })
     }
+
+    function toggleFavouriteFilm(action, favId) {
+        const setButton = document.getElementById(`f_${favId}_is_not_fav`)
+        const unsetButton = document.getElementById(`f_${favId}_is_fav`)
+
+        const pushedButton = action === 'set' ? setButton : unsetButton
+        // console.log({action, favId, setButton, unsetButton, pushedButton})
+        const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
+
+        pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+        pushedButton.disabled = true
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+
+        var requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            redirect: 'follow',
+            body: favId
+        }
+
+        fetch(`${huntAuthDomain}/api/my/film`, requestOptions).then(function (response) {
+            if (response.ok) {
+                return response.json()
+            }
+            return Promise.reject(response)
+        }).then(function (data) {
+            // console.log({
+            //     'returned': data,
+            //     'getUser()': getUser().My,
+            //     'userFilms': userFilms})
+            if (action === 'set') {
+                setButton.style.display = 'none'
+                unsetButton.style.display = ''
+            } else {
+                setButton.style.display = ''
+                unsetButton.style.display = 'none'
+            }
+            pushedButton.innerHTML = pushedButtonInnerHTMLBeforeClick
+            pushedButton.disabled = false
+            setMy(data)
+            reloadUserFilms()
+            // console.log('reloadUserFilms', reloadUserFilms())
+        }).catch(function (error) {
+            console.warn(error)
+            pushedButton.innerHTML = 'Tekkis viga!'
+        })
+    }
+
+    function setupScreeningFavoriteButtons() {
+        try {
+            const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+            const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+            const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
+                .map(e => parseInt(e))
+
+            if (getUser()) {
+                reloadUserScreenings()
+
+                // unhide all fav buttons for currently favorited screenings
+                currentScreeningIDs.filter(id => userScreenings.includes(id))
+                    .forEach(id => {
+                        document.getElementById(`s_${id}_is_fav`).style.display = ''
+                        document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
+                    })
+
+                // unhide all no-fav buttons for currently unfavorited screenings
+                currentScreeningIDs.filter(id => !userScreenings.includes(id))
+                    .forEach(id => {
+                        document.getElementById(`s_${id}_is_fav`).style.display = 'none'
+                        document.getElementById(`s_${id}_is_not_fav`).style.display = ''
+                    })
+
+                // add event listeners to all fav buttons
+                nslButtons.forEach(b => b.addEventListener('click', e => {
+                    let scrId = parseInt(b.id.split('_')[1])
+                    toggleFavouriteScreening('set', scrId)
+                }))
+                slButtons.forEach(b => b.addEventListener('click', e => {
+                    let scrId = parseInt(b.id.split('_')[1])
+                    toggleFavouriteScreening('unset', scrId)
+                }))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function setupFilmFavoriteButtons() {
+        try {
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+} catch (error) {
+    console.log('favourite.js error', error)
 }
 
 // TODO: All below functions are subject to refactoring at least,
