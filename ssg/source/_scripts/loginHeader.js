@@ -151,6 +151,11 @@ const requireLogin = () => {
     window.open(loginUrl, '_self')
 }
 
+const redirectToProfile = () => {
+    localStorage.setItem('returnFromProfileUrl', window.location.href)
+    window.open('/userprofile', '_self')
+}
+
 // This function returns:                  This function redirects to profile page if:
 // - true, if user has complete profile    - user is logged in and
 // - false, if user has not logged in      - has incomplete profile
@@ -168,8 +173,7 @@ const requireProfile = async () => {
     if (window.location.pathname.substring(0,12) === '/userprofile') {
         return false
     }
-    const profileUrl = '/userprofile'
-    window.open(profileUrl, '_self')
+    redirectToProfile()
 }
 
 const parseJWT = (token) => {
