@@ -66,6 +66,11 @@ block content
 
                                                 if person.industry_person_types
                                                     p= person.industry_person_types.map(type => type.type).join(', ')
+
+                                                if person.organisations
+                                                    p= person.organisations.map(name => name.name).join(', ')
+
+
                                                 //- p
                                                     //- span= (person.profession)
                                                 //- p= person.industry_person_types.map(industry_person_types => industry_person_types.type).join(', ')

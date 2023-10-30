@@ -60,6 +60,9 @@ if (DOMAIN !== 'industry.poff.ee') {
         'role_at_films': {
             model_name: 'RoleAtFilm'
         },
+        'organisations': {
+            model_name: 'Organisation'
+        },
         'eye_colour': {
             model_name: 'EyeColour'
         },

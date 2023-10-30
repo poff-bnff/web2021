@@ -262,6 +262,10 @@ block content
                     .str_info_grid_3
                         .person_info_label= self.label.userprofile.proRole
                         .person_info_value= self.role_at_films.map(role_at_film => role_at_film.roleName).join(', ')
+                if self.organisations
+                    .str_info_grid_3
+                        .person_info_label= self.label.userprofile.organisationName
+                        .person_info_value= self.organisations.map(name => name.name).join(', ')
                 if self.native_lang
                     .str_info_grid_3
                         .person_info_label= self.label.userprofile.nativeLang
