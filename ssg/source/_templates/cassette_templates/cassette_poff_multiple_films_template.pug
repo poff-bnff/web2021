@@ -99,6 +99,7 @@ main.grid_cassette
                     +format(synopsis_md)
 
     if self.screenings && self.screenings[0]
+        input(type='hidden', value=`${self.screenings.map(s => s.id)}`, id=`screening_ids`)
 
         -   var pLang = ''
         -   if (self.locale === 'ru') {
@@ -215,6 +216,7 @@ main.grid_cassette
 
                             if screening.bookingUrl
                                 a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                            //- Favorite screening buttons
                             a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
                                 style='display: none;', role='button'
                                 )= self.label.film.addSavedScreening
@@ -346,6 +348,18 @@ main.grid_cassette
                             each qaclip in filterQa
                                 .ratio.ratio-16x9.m-0.p-0
                                     +videolQaClip(qaclip.url)
+
+    script.
+        document.onreadystatechange = () => {
+            console.log(`document.readyState: ${document.readyState}`)
+            if (document.readyState === 'complete') {
+                // set up buttons only on poff.ee domain
+                if (window.location.hostname === 'poff.ee') {
+                    //- setupFilmFavoriteButtons()
+                    setupScreeningFavoriteButtons()
+                }
+            }
+        }
 
 //- SIIT ALGAB FILMIDE KUVAMINE
 h1.section_headline.padding_top_4.padding_bottom_2= self.label.menu.mainFilms
