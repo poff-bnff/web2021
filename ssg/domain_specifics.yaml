@@ -19,150 +19,164 @@ domains_show_cassetes_wo_screenings:
     - oyafond.ee
 
 cassettes_festival_editions:
-    poff.ee: [63, 64, 66, 67, 71, 72]
+    discoverycampus.poff.ee: [0]
+    filmikool.poff.ee: [0]
+    hoff.ee: [66] # - 61
+    industry.poff.ee: [68]
     justfilm.ee: [64] # - 29
     kinoff.poff.ee: [72]
-    industry.poff.ee: [68]
-    shorts.poff.ee: [67] # - 30
-    hoff.ee: [66] # - 61
     kumu.poff.ee: [71]
-    tartuff.ee: [65]
     oyafond.ee: [31]
-    filmikool.poff.ee: [0]
-    discoverycampus.poff.ee: [0]
+    poff.ee: [63, 64, 66, 67, 71, 72]
+    shorts.poff.ee: [67] # - 30
+    tartuff.ee: [65]
+
+show_votemo:
+    discoverycampus.poff.ee: false
+    filmikool.poff.ee: false
+    hoff.ee: false
+    industry.poff.ee: false
+    justfilm.ee: false
+    kinoff.poff.ee: false
+    kumu.poff.ee: false
+    oyafond.ee: false
+    poff.ee: true
+    shorts.poff.ee: false
+    tartuff.ee: false
 
 XML_festival_editions: [63, 64, 66, 67, 71, 72] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
-    poff.ee: [63, 64, 66, 67, 71, 72]
+    discoverycampus.poff.ee: [0]
+    filmikool.poff.ee: [0]
+    hoff.ee: [61]
+    industry.poff.ee: [68]
     justfilm.ee: [64]
     kinoff.poff.ee: [72]
-    industry.poff.ee: [68]
-    shorts.poff.ee: [67]
-    hoff.ee: [61]
     kumu.poff.ee: [33]
-    tartuff.ee: [65]
     oyafond.ee: [31]
-    filmikool.poff.ee: [0]
-    discoverycampus.poff.ee: [0]
+    poff.ee: [63, 64, 66, 67, 71, 72]
+    shorts.poff.ee: [67]
+    tartuff.ee: [65]
 
 active_editions:
-    poff.ee: []
+    discoverycampus.poff.ee: [50]
+    filmikool.poff.ee: [60]
+    hoff.ee: []
+    industry.poff.ee: [68]
     justfilm.ee: []
     kinoff.poff.ee: []
-    industry.poff.ee: [68]
-    shorts.poff.ee: []
-    hoff.ee: []
     kumu.poff.ee: []
-    tartuff.ee: []
     oyafond.ee: []
-    filmikool.poff.ee: [60]
-    discoverycampus.poff.ee: [50]
+    poff.ee: []
+    shorts.poff.ee: []
+    tartuff.ee: []
 
 active_event_types:
-    poff.ee: []
+    discoverycampus.poff.ee: [1]
+    filmikool.poff.ee: [1]
+    hoff.ee: []
+    industry.poff.ee:
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
     justfilm.ee: []
     kinoff.poff.ee: []
-    industry.poff.ee: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
-    shorts.poff.ee: []
-    hoff.ee: []
     kumu.poff.ee: []
-    tartuff.ee: []
     oyafond.ee: []
-    filmikool.poff.ee: [1]
-    discoverycampus.poff.ee: [1]
+    poff.ee: []
+    shorts.poff.ee: []
+    tartuff.ee: []
 
 industry_eventival_badges_whitelist:
-    - MANAGEMENT
-    - JURY
     - GUEST
-    - TEAM
-    - PRESS
+    - HUNDIPASS PLUS
     - INDUSTRY PRO
     - INDUSTRY PRO ONLINE
     - INDUSTRY STUDENT / TALENT
     - INDUSTRY STUDENT / TALENT ONLINE
+    - JURY
+    - MANAGEMENT
+    - PRESS
+    - TEAM
     - VOLUNTEER
-    - HUNDIPASS PLUS
 
 # skip_build_for_models:
-#     - industry-project
+#     - bruno-supporter
+#     - bruno-supporter
+#     - bruno-supporter
+#     - cassette
+#     - course-event
+#     - film
 #     - industry-event
 #     - industry-person
-#     - team
-#     - film
-#     # - cassette
-#     - programme
-#     # - screening
-#     - person
-#     - product-category
-#     - shop
-#     - bruno-supporter
+#     - industry-project
 #     - industry-supporter
-#     - poffi-supporter
-#     - kinoff-supporter
 #     - just-supporter
-#     - shorts-supporter
+#     - kinoff-supporter
 #     - kumu-supporter
-#     - bruno-supporter
-#     - bruno-supporter
+#     - person
+#     - poffi-supporter
+#     - product-category
+#     - programme
+#     - screening
+#     - shop
+#     - shorts-supporter
 #     - supporters-page
-#     # - course-event
+#     - team
 
 target_build_models:
-    # - film
     # - cassette
-    # - screening
     # - course-event
-    - login
-    # - programme
-    - pof-fi-article
-    - just-filmi-article
-    - shortsi-article
-    - kinoffi-article
-    - hof-fi-article
-    - tartuffi-article
-    - kumu-article
-    - bruno-article
-    - filmikooli-article
-    - industry-article
+    # - film
     # - industry-project
-    - dis-camp-article
-    - article-hero
-    - hero-article-just-film
-    - hero-article-shorts
-    - hero-article-industry
-    - hero-article-kinoff
-    - hero-article-hoff
-    - hero-article-tartuff
-    - hero-article-kumu
-    - hero-article-bruno
-    - hero-article-filmikool
-    - hero-article-dis-camp
-    - pof-fi-menu
-    - just-filmi-menu
-    - shortsi-menu
-    - kinoffi-menu
-    - hof-fi-menu
-    - tartuffi-menu
-    - kumu-menu
-    - bruno-menu
-    - dis-camp-menu
-    - filmikooli-menu
-    - industry-menu
+    # - programme
+    # - screening
     - archive
-    - pof-fi-footer
-    - just-film-footer
-    - shortsi-footer
-    - industry-footer
-    - kinoffi-footer
-    - hof-fi-footer
-    - tartuffi-footer
-    - kumu-footer
+    - article-hero
+    - bruno-article
     - bruno-footer
-    - filmikooli-footer
+    - bruno-menu
+    - dis-camp-article
     - dis-camp-footer
+    - dis-camp-menu
+    - filmikooli-article
+    - filmikooli-footer
+    - filmikooli-menu
+    - hero-article-bruno
+    - hero-article-dis-camp
+    - hero-article-filmikool
+    - hero-article-hoff
+    - hero-article-industry
+    - hero-article-just-film
+    - hero-article-kinoff
+    - hero-article-kumu
+    - hero-article-shorts
+    - hero-article-tartuff
+    - hof-fi-article
+    - hof-fi-footer
+    - hof-fi-menu
+    - industry-article
+    - industry-footer
+    - industry-menu
+    - just-film-footer
+    - just-filmi-article
+    - just-filmi-menu
+    - kinoffi-article
+    - kinoffi-footer
+    - kinoffi-menu
+    - kumu-article
+    - kumu-footer
+    - kumu-menu
+    - login
+    - pof-fi-article
+    - pof-fi-footer
+    - pof-fi-menu
     - shop
+    - shortsi-article
+    - shortsi-footer
+    - shortsi-menu
+    - tartuffi-article
+    - tartuffi-footer
+    - tartuffi-menu
 
 article:
     poff.ee: POFFiArticle
@@ -237,43 +251,43 @@ vialogUrls:
         - "https://hoff.ee/ru/film/"
 
 pageURLs:
-    poff.ee: "https://poff.ee/"
+    discoverycampus.poff.ee: "https://discoverycampus.poff.ee/"
+    filmikool.poff.ee: "https://filmikool.poff.ee/"
+    hoff.ee: "https://hoff.ee/"
+    industry.poff.ee: "https://industry.poff.ee/"
     justfilm.ee: "https://justfilm.ee/"
     kinoff.poff.ee: "https://kinoff.ee/"
-    industry.poff.ee: "https://industry.poff.ee/"
-    shorts.poff.ee: "http://shorts.poff.ee/"
-    hoff.ee: "https://hoff.ee/"
     kumu.poff.ee: "https://kumu.poff.ee/"
-    tartuff.ee: "https://tartuff.ee/"
     oyafond.ee: "https://oyafond.ee/"
-    filmikool.poff.ee: "https://filmikool.poff.ee/"
-    discoverycampus.poff.ee: "https://discoverycampus.poff.ee/"
+    poff.ee: "https://poff.ee/"
+    shorts.poff.ee: "http://shorts.poff.ee/"
+    tartuff.ee: "https://tartuff.ee/"
 
 stagingURLs:
-    poff.ee: "https://build.poff.ee/"
+    discoverycampus.poff.ee: https://build.discoverycampus.poff.ee/
+    filmikool.poff.ee: https://build.filmikool.poff.ee/
+    hoff.ee: "https://build.hoff.ee/"
+    industry.poff.ee: "https://build.industry.poff.ee/"
     justfilm.ee: "https://build.justfilm.ee/"
     kinoff.poff.ee: "https://build.kinoff.ee/"
-    industry.poff.ee: "https://build.industry.poff.ee/"
-    shorts.poff.ee: "https://build.shorts.poff.ee/"
-    hoff.ee: "https://build.hoff.ee/"
     kumu.poff.ee: https://build.kumu.poff.ee/
-    tartuff.ee: https://build.tartuff.ee/
     oyafond.ee: https://build.oyafond.ee/
-    filmikool.poff.ee: https://build.filmikool.poff.ee/
-    discoverycampus.poff.ee: https://build.discoverycampus.poff.ee/
+    poff.ee: "https://build.poff.ee/"
+    shorts.poff.ee: "https://build.shorts.poff.ee/"
+    tartuff.ee: https://build.tartuff.ee/
 
 stagingDomains:
-    poff.ee: build.poff.ee
+    discoverycampus.poff.ee: build.discoverycampus.poff.ee
+    filmikool.poff.ee: build.filmikool.poff.ee
+    hoff.ee: build.hoff.ee
+    industry.poff.ee: build.industry.poff.ee
     justfilm.ee: build.justfilm.ee
     kinoff.poff.ee: build.kinoff.ee
-    industry.poff.ee: build.industry.poff.ee
-    shorts.poff.ee: build.shorts.poff.ee
-    hoff.ee: build.hoff.ee
     kumu.poff.ee: build.kumu.poff.ee
-    tartuff.ee: build.tartuff.ee
     oyafond.ee: build.oyafond.ee
-    filmikool.poff.ee: build.filmikool.poff.ee
-    discoverycampus.poff.ee: build.discoverycampus.poff.ee
+    poff.ee: build.poff.ee
+    shorts.poff.ee: build.shorts.poff.ee
+    tartuff.ee: build.tartuff.ee
 
 # Images priority block START
 
@@ -419,85 +433,85 @@ cassettesAndFilmsDirectorPicturePriorityDefaults:
 
 libraryImageResizeOptions:
     - F_:
-        -   sufiks: _big_16_9
+          - sufiks: _big_16_9
             width: 1920
             height: 1080
             fit: cover
-        -   sufiks: _med_16_9
+          - sufiks: _med_16_9
             width: 1280
             height: 720
             fit: cover
-        -   sufiks: _small_16_9
+          - sufiks: _small_16_9
             width: 640
             height: 360
             fit: cover
     - R_:
-        -   sufiks: _big_sq
+          - sufiks: _big_sq
             width: 900
             height: 900
             fit: cover
-        -   sufiks: _med_sq
+          - sufiks: _med_sq
             width: 500
             height: 500
             fit: cover
-        -   sufiks: _small_sq
+          - sufiks: _small_sq
             width: 300
             height: 300
             fit: cover
-        -   sufiks: _thumb_sq
+          - sufiks: _thumb_sq
             width: 100
             height: 100
             fit: cover
     - P_: # posterid
-        -   sufiks: _big_p
+          - sufiks: _big_p
             width: 555
             height: 800
             fit: cover
-        -   sufiks: _small_p
+          - sufiks: _small_p
             width: 300
             height: 207
             fit: cover
     - NO: # ilma prefiksita pildid
-        -   sufiks: _big
+          - sufiks: _big
             width: 1920
             fit: inside
-        -   sufiks: _med
+          - sufiks: _med
             width: 1280
             fit: inside
-        -   sufiks: _small
+          - sufiks: _small
             width: 640
             fit: inside
     - U_: # kasutajate pildid
-        -   sufiks: _big_sq
+          - sufiks: _big_sq
             width: 900
             height: 900
             fit: cover
-        -   sufiks: _med_sq
+          - sufiks: _med_sq
             width: 500
             height: 500
             fit: cover
-        -   sufiks: _small_sq
+          - sufiks: _small_sq
             width: 300
             height: 300
             fit: cover
-        -   sufiks: _thumb_sq
+          - sufiks: _thumb_sq
             width: 100
             height: 100
             fit: cover
     - C_: # form kasutaja pildid
-        -   sufiks: _big_sq
+          - sufiks: _big_sq
             width: 900
             height: 900
             fit: cover
-        -   sufiks: _med_sq
+          - sufiks: _med_sq
             width: 500
             height: 500
             fit: cover
-        -   sufiks: _small_sq
+          - sufiks: _small_sq
             width: 300
             height: 300
             fit: cover
-        -   sufiks: _thumb_sq
+          - sufiks: _thumb_sq
             width: 100
             height: 100
             fit: cover
@@ -511,36 +525,36 @@ libraryImageThumbnailResizeOption:
 
 # RoleDialog domain and type based mapping for simplearticles that are displayed when user is not allowed to access the content
 role_dialog:
-    poff.ee:
-        article: poffi_article
-        courseEvent: poffi_courseevent
+    discoverycampus.poff.ee:
+        article: discamp_article
+        courseEvent: discamp_courseevent
+    filmikool.poff.ee:
+        article: filmikooli_article
+        courseEvent: filmikooli_courseevent
+    hoff.ee:
+        article: hoffi_article
+        courseEvent: hoffi_courseevent
+    industry.poff.ee:
+        article: industry_article
+        courseEvent: industry_courseevent
     justfilm.ee:
         article: just_filmi_article
         courseEvent: just_filmi_courseevent
     kinoff.poff.ee:
         article: kinoffi_article
         courseEvent: kinoffi_courseevent
-    industry.poff.ee:
-        article: industry_article
-        courseEvent: industry_courseevent
-    shorts.poff.ee:
-        article: shortsi_article
-        courseEvent: shortsi_courseevent
-    hoff.ee:
-        article: hoffi_article
-        courseEvent: hoffi_courseevent
     kumu.poff.ee:
         article: kumu_article
         courseEvent: kumu_courseevent
-    tartuff.ee:
-        article: tartuffi_article
-        courseEvent: tartuffi_courseevent
     oyafond.ee:
         article: bruno_article
         courseEvent: bruno_courseevent
-    filmikool.poff.ee:
-        article: filmikooli_article
-        courseEvent: filmikooli_courseevent
-    discoverycampus.poff.ee:
-        article: discamp_article
-        courseEvent: discamp_courseevent
+    poff.ee:
+        article: poffi_article
+        courseEvent: poffi_courseevent
+    shorts.poff.ee:
+        article: shortsi_article
+        courseEvent: shortsi_courseevent
+    tartuff.ee:
+        article: tartuffi_article
+        courseEvent: tartuffi_courseevent
