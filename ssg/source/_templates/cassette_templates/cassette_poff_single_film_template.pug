@@ -77,10 +77,10 @@ main.grid_film(id=self.id)
                             .str_info_label= self.label.film.titleOriginal
                             .str_info_value= film.titleOriginal
 
-                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.expandedRole && film.credentials.rolePersonsByRole.expandedRole[0]
+                    if film.credentials && film.credentials.rolePersonsByRole && film.credentials.rolePersonsByRole.director && film.credentials.rolePersonsByRole.director[0]
                         .str_info_grid_3
-                            .str_info_label= self.label.film.expandedRole
-                            .str_info_value.clr_primary= film.credentials.rolePersonsByRole.expandedRole.join(', ')
+                            .str_info_label= self.label.film.director
+                            .str_info_value.clr_primary= film.credentials.rolePersonsByRole.director.join(', ')
                     //- todo #383
                     if film.orderedCountriesDisplay
                         .str_info_grid_3
@@ -281,10 +281,10 @@ main.grid_film(id=self.id)
                     if film && film.credentials && film.credentials.rolePersonsByRole
                         - var rolePersonsByRole = film.credentials.rolePersonsByRole
 
-                        if rolePersonsByRole.expandedRole && rolePersonsByRole.expandedRole[0]
+                        if rolePersonsByRole.director && rolePersonsByRole.director[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.expandedRole
-                                .str_info_value= rolePersonsByRole.expandedRole.join(', ')
+                                .str_info_label= self.label.film.director
+                                .str_info_value= rolePersonsByRole.director.join(', ')
 
                         if rolePersonsByRole.screenwriter && rolePersonsByRole.screenwriter[0]
                             .str_info_grid_3
