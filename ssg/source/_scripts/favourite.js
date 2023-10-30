@@ -167,7 +167,7 @@ function setupFilmFavoriteButtons() {
 
     if (getUser()) {
         reloadUserFilms()
-        if (nslButton && slButton) {
+        if (nslButton && slButton && currentFilmID) {
             const currentFilmIsFavourite = userFilms.includes(currentFilmID)
 
             if (currentFilmIsFavourite) {
