@@ -63,6 +63,9 @@ if (DOMAIN !== 'industry.poff.ee') {
         'organisations': {
             model_name: 'Organisation'
         },
+        'industry_categories': {
+            model_name: 'IndustryCategory'
+        },
         'eye_colour': {
             model_name: 'EyeColour'
         },
@@ -215,6 +218,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
         roleatfilms: {},
         nativelangs: {},
         types: {},
+        icategories: {},
     };
 
     const persons_search = allData.map(person => {
@@ -242,12 +246,22 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
 
         let industryPersonTypes = [];
         if (person.industry_person_types) {
-            console.log('ipt', person.industry_person_types)
             for (type of person.industry_person_types) {
-                console.log('tttt', type.type)
                 industryPersonTypes.push(type.type);
                 filters.types[type.type] = type.type;
             }
+        }
+
+        let industryCategories = [];
+        if (person.industry_categories) {
+            console.log('cccc', person.industry_categories)
+            for (icategory of person.industry_categories) {
+                console.log('icic', icategory.name)
+                industryCategories.push(icategory.name);
+                filters.icategories[icategory.name] = icategory.name;
+            }
+        } else {
+            console.log('xxxx', Object.keys(person))
         }
 
         return {
@@ -264,7 +278,8 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
             genders: genders,
             roleatfilms: roleatfilms,
             nativelangs: nativelangs,
-            types:industryPersonTypes,
+            types: industryPersonTypes,
+            icategories: industryCategories,
         };
     });
 
@@ -273,6 +288,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
         roleatfilms: mSort(filters.roleatfilms),
         nativelangs: mSort(filters.nativelangs),
         types: mSort(filters.types),
+        icategories:  mSort(filters.icategories),
     };
 
     let searchYAML = yaml.dump(persons_search, { 'noRefs': true, 'indent': '4' });

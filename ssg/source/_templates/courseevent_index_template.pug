@@ -195,10 +195,10 @@ block content
                         //- h1.sub_section_headline= 'Või veel midagi'
                         .sub_team
                             each indPerson in self.credentials.rolePerson
-                                if indPerson.slug
+                                if indPerson.person.slug
                                     .person
                                         .person_head
-                                            a(href=`/${indPerson.slug}`)
+                                            a(href=`/${indPerson.person.slug}`)
                                                 if indPerson.person.picture
                                                     - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
                                                 else

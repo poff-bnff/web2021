@@ -460,30 +460,31 @@ block content
                                         a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
                                 if event.credentials && event.credentials.rolePerson
                                     .event_people
-                                        each indPerson in event.credentials.rolePerson
-                                            if indPerson.slug
+                                        each rolePerson in event.credentials.rolePerson
+                                            - var person = rolePerson.person
+                                            if person.slug
                                                 .event_person
-                                                    a(href=`/${indPerson.slug}`).event_person_link
-                                                        if indPerson.person.picture
-                                                            - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                                    a(href=`/${person.slug}`).event_person_link
+                                                        if person.picture
+                                                            - var personPic = assetsDir + person.picture.hash + person.picture.ext
                                                         else
                                                             - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
                                                         .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
-                                                            img.event_person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
-                                                        p.event_person_name= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                                                        if indPerson.role_at_film
-                                                            p.event_person_title= indPerson.role_at_film.roleName
+                                                            img.event_person_img(src=personPic alt=`${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`)
+                                                        p.event_person_name= `${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`
+                                                        if rolePerson.role_at_film
+                                                            p.event_person_title= rolePerson.role_at_film.roleName
                                             else
                                                 .event_person
-                                                    if indPerson.person.picture
-                                                        - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
+                                                    if person.picture
+                                                        - var personPic = assetsDir + person.picture.hash + person.picture.ext
                                                     else
                                                         - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
                                                     .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
-                                                        img.event_person_img(src=personPic alt=`${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`)
-                                                    p.event_person_name= `${indPerson.person.firstName ? indPerson.person.firstName : ''} ${indPerson.person.lastName ? indPerson.person.lastName : ''}`
-                                                    if indPerson.role_at_film
-                                                        p.event_person_title= indPerson.role_at_film.roleName
+                                                        img.event_person_img(src=personPic alt=`${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`)
+                                                    p.event_person_name= `${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`
+                                                    if rolePerson.role_at_film
+                                                        p.event_person_title= rolePerson.role_at_film.roleName
 
 
         script.
