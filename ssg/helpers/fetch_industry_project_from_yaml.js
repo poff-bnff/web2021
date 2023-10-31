@@ -70,6 +70,33 @@ if (DOMAIN === 'industry.poff.ee') {
         'tag_looking_fors': {
             model_name: 'TagLookingFor'
         },
+        'teamCredentials': {
+            model_name: 'Credentials',
+            expand: {
+                'rolePerson': {
+                    model_name: 'RolePerson',
+                    expand: {
+                        'role_at_film': {
+                            model_name: 'RoleAtFilm'
+                        },
+                        'person': {
+                            model_name: 'Person'
+                        },
+                    }
+                },
+                'roleCompany': {
+                    model_name: 'RoleCompany',
+                    expand: {
+                        'role_at_film': {
+                            model_name: 'RoleAtFilm'
+                        },
+                        'organisation': {
+                            model_name: 'Organisation'
+                        },
+                    }
+                },
+            }
+        },
     }
 
     const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
