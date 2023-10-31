@@ -37,6 +37,31 @@ const submitField = async (DOMId) => {
     return submitted
 }
 
+const submitAll = async (FormId) => {
+    const form = document.getElementById(FormId)
+    const fields = form.querySelectorAll('input, select')
+    const formData = new FormData()
+    fields.forEach(field => {
+        formData.append(field.name, field.value)
+    })
+    const submitted = await submitForm(formData)
+    fields.forEach(field => {
+        field.style.backgroundColor = 'white'
+        field.setAttribute('changed', false)
+    })
+    console.log(submitted)
+}
+
+const backToFromYouCame = () {
+    const returnFromProfileUrl = localStorage.getItem('returnFromProfileUrl')
+    if (returnFromProfileUrl) {
+        localStorage.removeItem('returnFromProfileUrl')
+        window.open(returnFromProfileUrl, '_self')
+    }
+}
+
+
+
 const fieldChanged = (DOMId) => {
     const field = document.getElementById(DOMId)
     field.style.backgroundColor = 'yellow'
@@ -93,7 +118,6 @@ const onProfilePicChange = () => {
     }
     reader.readAsDataURL(file)
 }
-
 
 async function loadUserInfo() {
     await reloadUser()
