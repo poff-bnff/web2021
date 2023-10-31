@@ -52,15 +52,13 @@ const submitAll = async (FormId) => {
     console.log(submitted)
 }
 
-const backToFromYouCame = () {
+const backToFromYouCame = () => {
     const returnFromProfileUrl = localStorage.getItem('returnFromProfileUrl')
     if (returnFromProfileUrl) {
         localStorage.removeItem('returnFromProfileUrl')
         window.open(returnFromProfileUrl, '_self')
     }
 }
-
-
 
 const fieldChanged = (DOMId) => {
     const field = document.getElementById(DOMId)
