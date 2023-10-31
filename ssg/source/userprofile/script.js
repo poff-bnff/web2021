@@ -27,14 +27,34 @@ const submitField = async (DOMId) => {
     field.classList.add('submitting')
     const formData = new FormData()
     formData.append(field.name, field.value)
-    if (field.name === 'city') {
-        formData.append('country', country.value)
-    }
     const submitted = await submitForm(formData)
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
     field.classList.remove('submitting')
     return submitted
+}
+
+const submitAll = async (FormId) => {
+    const form = document.getElementById(FormId)
+    const fields = form.querySelectorAll('input, select')
+    const formData = new FormData()
+    fields.forEach(field => {
+        formData.append(field.name, field.value)
+    })
+    const submitted = await submitForm(formData)
+    fields.forEach(field => {
+        field.style.backgroundColor = 'white'
+        field.setAttribute('changed', false)
+    })
+    console.log(submitted)
+}
+
+const backToFromYouCame = () => {
+    const returnFromProfileUrl = localStorage.getItem('returnFromProfileUrl')
+    if (returnFromProfileUrl) {
+        localStorage.removeItem('returnFromProfileUrl')
+        window.open(returnFromProfileUrl, '_self')
+    }
 }
 
 const fieldChanged = (DOMId) => {
@@ -94,7 +114,6 @@ const onProfilePicChange = () => {
     reader.readAsDataURL(file)
 }
 
-
 async function loadUserInfo() {
     await reloadUser()
 
@@ -116,8 +135,6 @@ async function loadUserInfo() {
         phoneNr.value = user_profile.phoneNr || ''
         birthdate.value = user_profile.birthdate || ''
         let address = user_profile.address ? user_profile.address.split(", ") : ['', '']
-        country.value = user_profile.country || address[0]
-        city.value = user_profile.city || address[1]
         if (pictureUrl = getProfilePicture()) {
             imgPreview.src = pictureUrl
         }

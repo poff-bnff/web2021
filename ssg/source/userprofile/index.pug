@@ -46,13 +46,9 @@ block content
                     input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
                 div.form_group(style='display: none;')
-                    label.login_label= self.label.userprofile.address
-                    br
-                    label.control-label.login_label(for='country')= self.label.userprofile.country
-                    select.login_input#country.form-control.gds-cr(class='c_valid', country-data-region-id='city', country-data-default-value='EE', data-language=self.locale, required='', onchange='fieldChanged(this.id)', name='country')
-                div.form_group(style='display: none;')
-                    label.control-label.login_label(for='city')= self.label.userprofile.city
-                    select.login_input#city.form-control(required='', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', name='city')
+                    button.btn.btn_primary#submitUserProfile(onclick='submitAll()')= self.label.userprofile.saveButton
+
+
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
