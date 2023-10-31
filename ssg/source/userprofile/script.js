@@ -34,8 +34,9 @@ const submitField = async (DOMId) => {
     return submitted
 }
 
-const submitAll = async (FormId) => {
-    const form = document.getElementById(FormId)
+const submitAll = async (buttonElement) => {
+    buttonElement.classList.add('submitting')
+    const form = findParentByClassName(buttonElement, 'form')
     const fields = form.querySelectorAll('input, select')
     const formData = new FormData()
     fields.forEach(field => {

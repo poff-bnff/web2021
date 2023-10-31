@@ -45,10 +45,9 @@ block content
                     label.login_label(for='phoneNr')= self.label.userprofile.phone
                     input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
                     div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
+                hr
                 div.form_group(style='display: none;')
-                    button.btn.btn_primary#submitUserProfile(onclick='submitAll()')= self.label.userprofile.saveButton
-
-
+                    button.btn.btn_primary#submitUserProfile(onclick='submitAll(this)')= self.label.userprofile.saveButton
 
     style.
         .invalid {background-color: transparent; display: block; color: #495057}
