@@ -27,9 +27,6 @@ const submitField = async (DOMId) => {
     field.classList.add('submitting')
     const formData = new FormData()
     formData.append(field.name, field.value)
-    if (field.name === 'city') {
-        formData.append('country', country.value)
-    }
     const submitted = await submitForm(formData)
     field.style.backgroundColor = 'white'
     field.setAttribute('changed', false)
@@ -138,8 +135,6 @@ async function loadUserInfo() {
         phoneNr.value = user_profile.phoneNr || ''
         birthdate.value = user_profile.birthdate || ''
         let address = user_profile.address ? user_profile.address.split(", ") : ['', '']
-        country.value = user_profile.country || address[0]
-        city.value = user_profile.city || address[1]
         if (pictureUrl = getProfilePicture()) {
             imgPreview.src = pictureUrl
         }
