@@ -34,8 +34,9 @@ const submitField = async (DOMId) => {
     return submitted
 }
 
-const submitAll = async (FormId) => {
-    const form = document.getElementById(FormId)
+const submitAll = async (buttonElement) => {
+    buttonElement.classList.add('submitting')
+    const form = findParentByClassName(buttonElement, 'form')
     const fields = form.querySelectorAll('input, select')
     const formData = new FormData()
     fields.forEach(field => {
@@ -115,28 +116,28 @@ const onProfilePicChange = () => {
 }
 
 async function loadUserInfo() {
-    await reloadUser()
 
-    let webUser = getUser()
-    const user_profile = webUser.user_profile
+    const webUser = await reloadUser()
 
     if (webUser.profileFilled) {
         document.getElementById('profileFilledMessage').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
-
     }
-    // console.log("täidan ankeedi " + webUser.name + "-i cognitos olevate andmetega.....")
-    email.innerHTML = webUser.email
+    const aliasUsers = webUser.aliasUsers || []
+    const webuserEmails = [webUser.email, ...aliasUsers.map(u => u.email)]
+    const uniqueWebuserEmails = [...new Set(webuserEmails)]
+    document.getElementById('email').innerHTML = uniqueWebuserEmails.join(', ')
+
+    const user_profile = webUser.user_profile
     if (user_profile) {
-        firstName.value = user_profile.firstName || ''
-        lastName.value = user_profile.lastName || ''
-        gender.value = user_profile.gender || ''
-        phoneNr.value = user_profile.phoneNr || ''
-        birthdate.value = user_profile.birthdate || ''
-        let address = user_profile.address ? user_profile.address.split(", ") : ['', '']
+        document.getElementById('firstName').value = user_profile.firstName || ''
+        document.getElementById('lastName').value = user_profile.lastName || ''
+        document.getElementById('gender').value = user_profile.gender || ''
+        document.getElementById('phoneNr').value = user_profile.phoneNr || ''
+        document.getElementById('birthdate').value = user_profile.birthdate || ''
         if (pictureUrl = getProfilePicture()) {
-            imgPreview.src = pictureUrl
+            document.getElementById('imgPreview').src = pictureUrl
         }
     }
 }
