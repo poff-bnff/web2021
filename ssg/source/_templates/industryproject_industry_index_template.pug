@@ -82,6 +82,11 @@ block content
 
                 .str_info_blokk_1
 
+                    if self.titleOriginal
+                        .str_info_grid_3
+                            .str_info_label= self.label.film.titleOriginal
+                            .str_info_value= self.titleOriginal
+
                     if self.countries && self.countries[0]
                         .str_info_grid_3
                             .str_info_label= self.label.film.countries
@@ -104,16 +109,17 @@ block content
                             .str_info_label= self.label.film.genre
                             - var genres = []
                             each genre in self.tag_genres
-                                - genres.push(`<a style="color:inherit;" href="/search-projects?genres=${encodeURIComponent(genre)}">${genre}</a>`)
+                                - genres.push(`${genre}`)
+                                //- - genres.push(`<a style="color:inherit;" href="/search-projects?genres=${encodeURIComponent(genre)}">${genre}</a>`)
                             .str_info_value !{genres.join(', ')}
 
-                    if self.project_statuses && self.project_statuses[0]
-                        .str_info_grid_3
-                            .str_info_label= self.label.industry.projectStatus
-                            - var project_statuses = []
-                            each p_status in self.project_statuses
-                                -project_statuses.push(p_status.status)
-                            .str_info_value= project_statuses.join(', ')
+                    //- if self.project_statuses && self.project_statuses[0]
+                    //-     .str_info_grid_3
+                    //-         .str_info_label= self.label.industry.projectStatus
+                    //-         - var project_statuses = []
+                    //-         each p_status in self.project_statuses
+                    //-             -project_statuses.push(p_status.status)
+                    //-         .str_info_value= project_statuses.join(', ')
 
 
             section.f_synopsis_box
@@ -158,10 +164,35 @@ block content
             section.project_cred_box
                 .str_info_blokk_cred
 
-                    if self.titleOriginal
+                    if self.teamCredentials && self.teamCredentials.rolePerson
+                        - var rolePerson = self.teamCredentials.rolePerson
+                        - console.log('teamcredentials_jaan ', rolePerson)
+                        if rolePerson.director && rolePerson.director[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.director
+                                .str_info_value= rolePerson.director.join(', ')
+
+                    //- RolePerson
+                    if self.roles_in_project
+                        each role in self.roles_in_project
+                            .str_info_grid_3
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
+
+                    //- RoleCompany
+                    if self.comp_roles_in_project
+                        each role in self.comp_roles_in_project
+                            .str_info_grid_3
+                                .str_info_label= role.label
+                                .str_info_value= role.names.map(r => r.name).join(', ')
+
+                    if self.project_statuses && self.project_statuses[0]
                         .str_info_grid_3
-                            .str_info_label= self.label.film.titleOriginal
-                            .str_info_value= self.titleOriginal
+                            .str_info_label= self.label.industry.projectStatus
+                            - var project_statuses = []
+                            each p_status in self.project_statuses
+                                -project_statuses.push(p_status.status)
+                            .str_info_value= project_statuses.join(', ')
 
                     if self.completionDate
                         .str_info_grid_3
@@ -230,19 +261,19 @@ block content
                                 - broadcaster_name.push(broadcaster.name)
                             .str_info_value= broadcaster_name.join(', ')
 
-                    //- RolePerson
-                    if self.roles_in_project
-                        each role in self.roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= role.label
-                                .str_info_value= role.names.map(r => r.name).join(', ')
+                    //- //- RolePerson
+                    //- if self.roles_in_project
+                    //-     each role in self.roles_in_project
+                    //-         .str_info_grid_3
+                    //-             .str_info_label= role.label
+                    //-             .str_info_value= role.names.map(r => r.name).join(', ')
 
-                    //- RoleCompany
-                    if self.comp_roles_in_project
-                        each role in self.comp_roles_in_project
-                            .str_info_grid_3
-                                .str_info_label= role.label
-                                .str_info_value= role.names.map(r => r.name).join(', ')
+                    //- //- RoleCompany
+                    //- if self.comp_roles_in_project
+                    //-     each role in self.comp_roles_in_project
+                    //-         .str_info_grid_3
+                    //-             .str_info_label= role.label
+                    //-             .str_info_value= role.names.map(r => r.name).join(', ')
 
             section.project_runtime_box
 
@@ -272,9 +303,10 @@ block content
                         .str_info_value= self.contactCompany.name
 
             section.f_dir_box
-                if self.persons
-                    each person in self.persons
-                        if person.rolesAtFilm && person.person && person.person.biography
+                if self.teamCredentials && self.teamCredentials.rolePerson
+                    - var teamCredPersons = self.teamCredentials.rolePerson
+                    each person in teamCredPersons
+                        if person.role_at_film && person.person && person.person.bio
                             .f_dir_bio_box
                                 .dir_img
                                     if person.person.picture
@@ -283,7 +315,7 @@ block content
 
                                     .str_info_meta_gi
                                         .str_info_meta_item
-                                            .str_info_meta_label.dark_semi= person.rolesAtFilm.join(', ')
+                                            .str_info_meta_label.dark_semi= person.role_at_film.roleName
                                             .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
 
                                     //- .str_info_grid_3
@@ -291,8 +323,8 @@ block content
                                     //-     .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
 
                                 .dir_bio.dark_1
-                                    if person.person.biography
-                                        p.dark_1= person.person.biography
+                                    if person.person.bio
+                                        p.dark_1= person.person.bio
                                     if person.person.filmography
                                         p.dark_1= person.person.filmography
                                     else if person.person.filmography

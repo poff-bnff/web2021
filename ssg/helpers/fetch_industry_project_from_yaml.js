@@ -49,9 +49,6 @@ if (DOMAIN === 'industry.poff.ee') {
         'country_focus': {
             model_name: 'Country'
         },
-        'creds': {
-            model_name: 'Credentials'
-        },
         'attached_partners': {
             model_name: 'Organisation'
         },
@@ -99,7 +96,10 @@ if (DOMAIN === 'industry.poff.ee') {
         },
     }
 
+    // console.log(STRAPIDATA_IND_PROJECTS.filter(pr => pr.id = 1104))
+
     const STRAPIDATA_IND_PROJECT = fetchModel(STRAPIDATA_IND_PROJECTS, minimodel)
+
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
@@ -260,6 +260,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
         let allData = []
         for (const ix in STRAPIDATA_IND_PROJECT) {
             let industry_project = JSON.parse(JSON.stringify(STRAPIDATA_IND_PROJECT[ix]));
+            // console.log(Object.keys(industry_project))
             industry_project.roles_in_project = {}
             industry_project.comp_roles_in_project = {}
 
@@ -301,7 +302,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                 }
             }
 
-            const credentials = industry_project.creds || {}
+            const credentials = industry_project.teamCredentials || {}
             // persoonide blokk
             const role_persons = credentials.rolePerson || []
             industry_project.persons = {}
