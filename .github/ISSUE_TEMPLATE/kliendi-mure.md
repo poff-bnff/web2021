@@ -8,7 +8,9 @@ assignees: ''
 ---
 
 **Kirjeldus**
-Selgelt ja lühidalt, milles asi
+- Kasutaja email
+- Selgelt ja lühidalt, milles asi
+
 
 **Kuidas korrata**
 Mida tuleb teha, et viga esile kutsuda:
