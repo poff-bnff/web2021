@@ -222,10 +222,10 @@ block content
                     .person_info_c.text_left
                         | Personal info
                 .str_info_blokk_cred
-                    if self.gender
-                        .str_info_grid_3
-                            .person_info_label= self.label.userprofile.gender
-                            .person_info_value= self.gender
+                    //- if self.gender
+                    //-     .str_info_grid_3
+                    //-         .person_info_label= self.label.userprofile.gender
+                    //-         .person_info_value= self.gender
                     if self.dateOfBirth
                         .str_info_grid_3
                             .person_info_label= self.label.userprofile.birthday
@@ -239,10 +239,10 @@ block content
                         .str_info_grid_3
                             .person_info_label= self.label.userprofile.email
                             .person_info_value= self.eMail
-                    if self.phoneNr
-                        .str_info_grid_3
-                            .person_info_label= self.label.userprofile.phone
-                            .person_info_value= self.phoneNr
+                    //- if self.phoneNr
+                    //-     .str_info_grid_3
+                    //-         .person_info_label= self.label.userprofile.phone
+                    //-         .person_info_value= self.phoneNr
 
                     if typeof self.bio !== 'undefined'
                         - var bio = self.bio
