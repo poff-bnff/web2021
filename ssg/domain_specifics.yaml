@@ -36,8 +36,8 @@ cassettesAndFilmsShowVotemo:
     filmikool.poff.ee: false
     hoff.ee: false
     industry.poff.ee: false
-    justfilm.ee: false
-    kinoff.poff.ee: false
+    justfilm.ee: true
+    kinoff.poff.ee: true
     kumu.poff.ee: false
     oyafond.ee: false
     poff.ee: true
