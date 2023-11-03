@@ -773,6 +773,20 @@ main.grid_film(id=self.id)
                                         .ratio.ratio-16x9.m-0.p-0.h70
                                             +videolQaClip(qaclip.url)
 
+            //- Switch for chat functionality lives in data.yaml
+            if self.switches.showVotemo
+                if self.chat_w_name
+                    script.
+                        var votemoConfig = {
+                            url: `https://#{self.chat_w_name}.votemo.eu`,
+                            openInDesktop: false,
+                            language: 'poff'
+                        }
+                    script(src='https://cdn.votemo.eu/dist/widget.js')
+                    - showMessengerChat = false
+
+            +tabname(self.title)
+
             +tabname(film.title || film.title_et)
 
     //- script(src='https://store.piletilevi.ee/public/widgetApi/v2/sdk.min.js?id=' + widget_id)
