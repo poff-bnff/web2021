@@ -1,5 +1,6 @@
 const userFilms = []
 const userScreenings = []
+const userCourseEvents = []
 
 try {
     function reloadUserFilms() {
@@ -22,6 +23,17 @@ try {
         const myScreeningIDs = myScreenings.map(f => f.id)
         userScreenings.splice(0, userScreenings.length, ...myScreeningIDs)
         return userScreenings
+    }
+
+    function reloadUserCourseEvents() {
+        if (!isUserTokenValid()) {
+            return null
+        }
+        const My = getUser().My || {'course_events': []}
+        const myCourseEvents = My.course_events || []
+        const myCourseEventIDs = myCourseEvents.map(f => f.id)
+        userCourseEvents.splice(0, userCourseEvents.length, ...myCourseEventIDs)
+        return userCourseEvents
     }
 
     function toggleFavouriteScreening(action, favId) {

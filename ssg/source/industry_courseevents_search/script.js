@@ -85,6 +85,7 @@ document.onreadystatechange = () => {
                     img.src = img_src.replace('thumbnail_', '')
             }
         }
+        setupEventFavoriteButtons()
     }
 };
 
@@ -399,7 +400,7 @@ $(document).ready(function () {
 
         overrideSelect2MultiselectLabel($(this));
     });
-    
+
     $('.select2-single').select2({
         minimumResultsForSearch: -1,
         width: "100%",
@@ -558,17 +559,17 @@ $(document).ready(function () {
                             <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>                        
+                            </svg>
                             </a>`
                             : ''
                         }
                         </a>`,
                     };
                 })
-    
+
                 ec.setOption('eventStartEditable', false);
                 ec.setOption('eventDurationEditable', false);
-    
+
                 // Add events from array
                 ec.setOption('events', eventsForCalendar);
                 $(document).on('update_events', function(event, ids) {
@@ -584,3 +585,34 @@ $(document).ready(function () {
         }
     }
 });
+
+// Event favorite buttons
+function setupEventFavoriteButtons() {
+    const nslButtons = Array.from(document.querySelectorAll('.notsavedevent'))
+    const slButtons = Array.from(document.querySelectorAll('.issavedevent'))
+    const allEventIds = Array.from(document.getElementById('course_event_ids').value.split(','))
+        .map(e => parseInt(e))
+
+    if (getUser()) {
+        nslButtons.forEach(button => { button.classList.add('d-none') })
+        slButtons.forEach(button => { button.classList.add('d-none') })
+        const myCourseEvents = reloadUserCourseEvents()
+
+        nslButtons.forEach(button => { // event ID is in attribute 'course_event_id'
+            const eventId = parseInt(button.getAttribute('course_event_id'))
+            if (myCourseEvents.includes(eventId)) {
+                button.classList.add('d-none')
+            } else {
+                button.classList.remove('d-none')
+            }
+        })
+        slButtons.forEach(button => { // event ID is in attribute 'course_event_id'
+            const eventId = parseInt(button.getAttribute('course_event_id'))
+            if (myCourseEvents.includes(eventId)) {
+                button.classList.remove('d-none')
+            } else {
+                button.classList.add('d-none')
+            }
+        })
+    }
+}
