@@ -2,7 +2,7 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    if self.data.industryevents && self.data.industryevents(0)
+    if self.data.industryevents && self.data.industryevents[0]
         input(type='hidden', id='course_event_ids', value=self.data.industryevents.map(e => e.id).join(','))
     .events_search_page_title_wrapper
         //- Temporary static content in page title to test styles
