@@ -91,12 +91,24 @@ block content
                 option(value=key)= index
         //- button(onclick='select_next_or_previous(`+`, `dates_select`)')= `>`
 
-        //- button(onclick='select_next_or_previous(`-`, `times_select`)')= `<`
-        select#times_select(name='Times')
-            option(value='')= self.label.filters.times
+        select#timesFrom_select(name='TimesFrom')
+            option(value='')= self.label.filters.timesFrom
             each index, key in self.data.filters.times
-                option(value=key)= index
-        //- button(onclick='select_next_or_previous(`+`, `times_select`)')= `>`
+                if index.endsWith('00')
+                    option(value=key)= index
+        
+        select#timesTo_select(name='TimesTo')
+            option(value='')= self.label.filters.timesTo
+            each index, key in self.data.filters.times
+                if index.endsWith('00')
+                    option(value=key)= index
+            - 
+                var lastTime = Object.values(self.data.filters.times).pop();
+                var date = new Date("2023-01-01T" + lastTime + ":00");
+                date.setHours(date.getHours() + 1);
+                date.setMinutes(00);
+                var newTime = date.toTimeString().slice(0, 5);
+            option(value='_'+newTime)= newTime
 
         button.clear(onclick='unselect_all()')= self.label.filters.empty
 
