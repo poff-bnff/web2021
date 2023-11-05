@@ -154,17 +154,17 @@ block content
                                                     path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
                                                 span= event.location.name
 
-                                    .event_card_header_right
-                                        .add_to_cal.notsavedevent(course_event_id=event.id)
+                                    .event_card_header_right(course_event_id=event.id)
+                                        .add_to_cal.is_not_fav
                                             .header_text
                                                 a.list_view_add_to_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
                                                     span.add_to_cal_text= self.t.add2cal
                                                     img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
-                                        .rem_from_cal.issavedevent.d-none(course_event_id=event.id)
+                                        .rem_from_cal.is_fav.d-none
                                             .header_text
                                                 a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
-                                                    span.rem_from_cal_text= self.t.add2cal
-                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
+                                                    span.rem_from_cal_text= self.t.rem4cal
+                                                    img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
                                                 //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= self.t.add2cal
                                                 //- span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
@@ -363,12 +363,18 @@ block content
                                                     path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
                                                 span= event.location.name
 
-                                    .event_card_header_right
-                                        .add_to_cal
+                                    .event_card_header_right(course_event_id=event.id)
+                                        .add_to_cal.is_not_fav
                                             .header_text
-                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal.text-nowrap
+                                                a.list_view_add_to_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
                                                     span.add_to_cal_text= self.t.add2cal
-                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/add2calendar.svg' src='/assets/img/static/industry/add2calendar.svg')
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
+                                        .rem_from_cal.is_fav.d-none
+                                            .header_text
+                                                a.list_view_rem_from_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                    span.rem_from_cal_text= self.t.rem4cal
+                                                    img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
+
                                 .event_card_content
                                     h3(id=`modal-title-${event.id}`).event_title= event.title
                                     .event_card_keywords
