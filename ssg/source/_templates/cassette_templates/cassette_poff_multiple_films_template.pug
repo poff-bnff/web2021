@@ -339,7 +339,7 @@ main.grid_cassette
                 if (self.trailer && self.trailer[0].videoCode)
                     .section_headline= self.label.film.trailer
                     each trailer in self.trailer
-                        .ratio.ratio-16x9.m-0.p-0
+                        .ratio.ratio-16x9.m-0.p-0videoaken
                             if trailer.videoCode
                                 +video(trailer.videoCode)
                 if (self.QaClip && self.QaClip[0].url)
@@ -347,7 +347,7 @@ main.grid_cassette
                     if filterQa.length
                         .section_headline= self.label.film.qaClip
                             each qaclip in filterQa
-                                .ratio.ratio-16x9.m-0.p-0
+                                .ratio.ratio-16x9.m-0.p-0videoaken
                                     +videolQaClip(qaclip.url)
 
     script.
@@ -732,7 +732,7 @@ else
                 section.f_trailer_box
                     .section_headline= self.label.film.trailer
                     each trailer in film.trailer
-                        .ratio.ratio-16x9.m-0.p-0.h70
+                        .ratio.ratio-16x9.m-0.p-0.h70.videoaken
                             if trailer.videoCode
                                 +video(trailer.videoCode)
 
