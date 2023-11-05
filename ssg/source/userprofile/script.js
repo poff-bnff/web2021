@@ -119,7 +119,7 @@ async function loadUserInfo() {
 
     const webUser = await reloadUser()
 
-    if (webUser.profileFilled) {
+    if (isUserProfileComplete()) {
         document.getElementById('profileFilledMessage').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
