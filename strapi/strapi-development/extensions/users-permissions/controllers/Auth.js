@@ -552,7 +552,8 @@ module.exports = {
 
       if (settings.email_confirmation) {
         try {
-          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user, lang);
+          console.log('controllers Auth register - sendConfirmationEmail', { user, lang, ctx: ctx.request })
+          await strapi.plugins['users-permissions'].services.user.sendConfirmationEmail(user, lang, ctx.request.host);
         } catch (err) {
           return ctx.badRequest(null, err);
         }
