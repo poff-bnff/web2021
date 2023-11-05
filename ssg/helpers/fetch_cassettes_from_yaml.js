@@ -868,7 +868,9 @@ function generateAllDataYAML(allData, lang) {
         let languages = []
         let countries = []
         let cast_n_crew = []
+        let film_titles = []
         for (const film of cassette.films) {
+            film_titles.push(film.title)
             for (const language of film.languages || []) {
                 const langKey = language.code
                 const language_name = language.name
@@ -953,7 +955,8 @@ function generateAllDataYAML(allData, lang) {
             text: [
                 cassette.title,
                 cassette.synopsis,
-                cast_n_crew
+                cast_n_crew,
+                film_titles
             ].join(' ').toLowerCase(),
             programmes: programmes,
             languages: languages,
