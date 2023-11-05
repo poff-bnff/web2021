@@ -85,9 +85,9 @@ document.onreadystatechange = () => {
                     img.src = img_src.replace('thumbnail_', '')
             }
         }
-        setupEventFavoriteButtons()
+        setupCourseEventFavoriteButtons()
     }
-};
+}
 
 const select_next_or_previous = (which, id) => {
     var select = document.getElementById(id);
@@ -584,35 +584,4 @@ $(document).ready(function () {
             }
         }
     }
-});
-
-// Event favorite buttons
-const setupEventFavoriteButtons = () => {
-    const nslButtons = Array.from(document.querySelectorAll('.notsavedevent'))
-    const slButtons = Array.from(document.querySelectorAll('.issavedevent'))
-    const allEventIds = Array.from(document.getElementById('course_event_ids').value.split(','))
-        .map(e => parseInt(e))
-
-    if (getUser()) {
-        nslButtons.forEach(button => { button.classList.add('d-none') })
-        slButtons.forEach(button => { button.classList.add('d-none') })
-        const myCourseEvents = reloadUserCourseEvents()
-
-        nslButtons.forEach(button => { // event ID is in attribute 'course_event_id'
-            const eventId = parseInt(button.getAttribute('course_event_id'))
-            if (myCourseEvents.includes(eventId)) {
-                button.classList.add('d-none')
-            } else {
-                button.classList.remove('d-none')
-            }
-        })
-        slButtons.forEach(button => { // event ID is in attribute 'course_event_id'
-            const eventId = parseInt(button.getAttribute('course_event_id'))
-            if (myCourseEvents.includes(eventId)) {
-                button.classList.remove('d-none')
-            } else {
-                button.classList.add('d-none')
-            }
-        })
-    }
-}
+})

@@ -156,13 +156,17 @@ const toggleFavouriteCourseEvent = (action, favId) => {
     const beforeClick = (a) => {
         const innerHTMLs = []
         if (a === 'set') {
-            innerHTMLs.push(...setButtons.map(b => b.innerHTML))
-            setButtons.forEach(b => b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`)
-            setButtons.forEach(b => b.disabled = true)
+            setButtons.forEach(b => {
+                innerHTMLs.push(b.innerHTML)
+                b.disabled = true
+                b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+            })
         } else {
-            innerHTMLs.push(...unsetButtons.map(b => b.innerHTML))
-            unsetButtons.forEach(b => b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`)
-            unsetButtons.forEach(b => b.disabled = true)
+            unsetButtons.forEach(b => {
+                innerHTMLs.push(b.innerHTML)
+                b.disabled = true
+                b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+            })
         }
         return innerHTMLs
     }
