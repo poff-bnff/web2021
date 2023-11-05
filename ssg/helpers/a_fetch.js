@@ -17,7 +17,6 @@ const allStrapidatapath = path.join(dirPath, '_allStrapidata')
 fs.mkdirSync(fetchDirPath, { recursive: true })
 fs.mkdirSync(allStrapidatapath, { recursive: true })
 
-const DOMAIN = process.env['DOMAIN'] || false
 const modelFile = path.join(__dirname, '..', 'docs', 'datamodel.yaml')
 const DATAMODEL = yaml.load(fs.readFileSync(modelFile, 'utf8'))
 
@@ -30,31 +29,6 @@ for (const key in DATAMODEL) {
     }
 }
 
-let checkDomain = function(element) {
-    if (!DOMAIN) {
-        return true
-    }
-    // kui on domain, siis element['domains'] = [domain]
-    if (element['domain'] && !element['domains']){
-        element['domains'] = [element['domain']]
-    }
-
-    if (element['domains'] === undefined) {
-        // console.log(3)
-        return true
-    }
-
-    for(let ix in element['domains']){
-        let el = element['domains'][ix]
-        // console.log(ix, el)
-        if (el['url'] === process.env['DOMAIN']){
-            return true
-        }
-    }
-
-    return false
-}
-
 const isEmpty = (p) => {
     return typeof p === 'undefined'
     || p === false
@@ -63,7 +37,6 @@ const isEmpty = (p) => {
     || (Array.isArray(p) && p.length === 0)
     || (Object.keys(p).length === 0 && p.constructor === Object)
 }
-
 
 function TakeOutTrash (data, model, dataPath) {
     const isObject = (o) => { return typeof o === 'object' && o !== null }
@@ -159,31 +132,7 @@ const Compare = function (model, data, path) {
     // console.log('-->', path)
 }
 
-
 const foo = async () => {
-
-    // Replace every property_name in strapiData with object from searchData
-                                // "Performance", strapi events, strapi performances
-    const ReplaceInModel = function(property_name, strapiData, searchData) {
-        // console.log(property_name, strapiData, searchData)
-        for (const element of strapiData) {
-            const value = element[property_name]
-            if (value === null || value === undefined) {
-                element[property_name] = null
-                continue
-            }
-
-            // kui nt toimetaja on kustutanud artikli, millele mujalt viidatakse
-            if (value.constructor === Object && Object.keys(value).length === 0) {
-                element[property_name] = null
-                continue
-            }
-
-
-            const element_id = (value.hasOwnProperty('id') ? value.id : value)
-            element[property_name] = searchData.find(element => element.id === element_id)
-        }
-    }
 
     let strapiData = {}
     // datamodel on meie kirjeldatud andmemudel
