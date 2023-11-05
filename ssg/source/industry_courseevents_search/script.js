@@ -18,7 +18,7 @@ const selectors = {
     location: document.getElementById('location_select'),
 }
 
-function urlSelect() {
+const urlSelect = () => {
     if (urlParams.getAll.length) {
         for (const [ix, params] of urlParams) {
             const filterValue = decodeURIComponent(params);
@@ -38,7 +38,7 @@ function urlSelect() {
     }
 }
 
-function setSearchParams() {
+const setSearchParams =  () => {
     let urlParameters = new URLSearchParams();
 
     for (const selector in selectors) {
@@ -89,7 +89,7 @@ document.onreadystatechange = () => {
     }
 };
 
-function select_next_or_previous(which, id) {
+const select_next_or_previous = (which, id) => {
     var select = document.getElementById(id);
     if (which === '+') {
         select.selectedIndex++;
@@ -99,7 +99,7 @@ function select_next_or_previous(which, id) {
     toggleAll(id);
 }
 
-function toggleAll(exclude_selector_name) {
+const toggleAll = (exclude_selector_name) => {
     setSearchParams()
 
     ids = execute_filters()
@@ -128,7 +128,7 @@ function toggleAll(exclude_selector_name) {
     toggleFilters(exclude_selector_name)
 }
 
-function toggleFilters(exclude_selector_name) {
+const toggleFilters = (exclude_selector_name) => {
 
     if (exclude_selector_name !== 'starttimes') {
         Array.from(starttimes).forEach(starttime => {
@@ -278,7 +278,7 @@ $(selectors.location).on('change', e => {
     toggleAll('location');
 });
 
-function unselect_all() {
+const unselect_all = () => {
     search_input.value = '';
     Array.from(starttimes).forEach((starttime) => starttime.checked = false);
     $(selectors.categories).val(null).trigger('change');
@@ -294,11 +294,11 @@ function unselect_all() {
     toggleAll();
 }
 
-function toggle_filters() {
+const toggle_filters = () => {
     document.querySelector('.mobile_filters_collapse').classList.toggle('open');
 }
 
-function execute_filters() {
+const execute_filters = () => {
     let filtered = searcharray
         .filter(screening => {
             if (selectors.categories.value) {
@@ -587,7 +587,7 @@ $(document).ready(function () {
 });
 
 // Event favorite buttons
-function setupEventFavoriteButtons() {
+const setupEventFavoriteButtons = () => {
     const nslButtons = Array.from(document.querySelectorAll('.notsavedevent'))
     const slButtons = Array.from(document.querySelectorAll('.issavedevent'))
     const allEventIds = Array.from(document.getElementById('course_event_ids').value.split(','))
