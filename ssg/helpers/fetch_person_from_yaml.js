@@ -254,9 +254,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
 
         let industryCategories = [];
         if (person.industry_categories) {
-            console.log('cccc', person.industry_categories)
             for (icategory of person.industry_categories) {
-                console.log('icic', icategory.name)
                 industryCategories.push(icategory.name);
                 filters.icategories[icategory.name] = icategory.name;
             }

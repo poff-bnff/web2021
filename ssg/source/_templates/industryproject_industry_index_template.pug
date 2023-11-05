@@ -1,8 +1,6 @@
 extends /_templates/layout.pug
 include /_templates/mixins.pug
 
-
-
 block content
 
     script.
@@ -67,7 +65,6 @@ block content
                         svg.svg_icon_play(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='2' fill='#4fc4bf' stroke-linecap='round' stroke-linejoin='round')
                             polygon(points='5 3 19 12 5 21 5 3')
 
-
             section.f_title_box
                 .premiere_type
                     if self.project_types && self.project_types[0]
@@ -76,7 +73,6 @@ block content
                         each p_type in self.project_types
                             - types.push(p_type.type)
                         p.premiere_type= types.join(', ')
-
 
                 h1.film_title_detailed= self.title
 
@@ -103,15 +99,15 @@ block content
                                 -languages.push(language.name)
                             .str_info_value= languages.join(', ')
 
-
                     if self.tag_genres && self.tag_genres[0]
                         .str_info_grid_3
                             .str_info_label= self.label.film.genre
-                            - var genres = []
-                            each genre in self.tag_genres
-                                - genres.push(`${genre}`)
-                                //- - genres.push(`<a style="color:inherit;" href="/search-projects?genres=${encodeURIComponent(genre)}">${genre}</a>`)
-                            .str_info_value !{genres.join(', ')}
+                            .str_info_value !{self.tag_genres.join(', ')}
+                            //- TODO: use as interactive tag
+                            //- - var genres = []
+                            //- each genre in self.tag_genres
+                            //-     - genres.push(`<a style="color:inherit;" href="/search-projects?genres=${encodeURIComponent(genre)}">${genre}</a>`)
+                            //- .str_info_value !{genres.join(', ')}
 
                     //- if self.project_statuses && self.project_statuses[0]
                     //-     .str_info_grid_3
@@ -120,7 +116,6 @@ block content
                     //-         each p_status in self.project_statuses
                     //-             -project_statuses.push(p_status.status)
                     //-         .str_info_value= project_statuses.join(', ')
-
 
             section.f_synopsis_box
                 if self.logline
@@ -138,7 +133,6 @@ block content
                 if self.synopsis
                     .str_info_meta_gi
                         .str_info_meta_item
-
                             .str_info_meta_label.dark_semi= self.label.film.synopsis
 
                     if typeof self.synopsis !== 'undefined'
@@ -151,7 +145,6 @@ block content
                 if self.directorsNote
                     .str_info_meta_gi
                         .str_info_meta_item
-
                             .str_info_meta_label.dark_semi= self.label.industry.directorsNote
 
                     if typeof self.directorsNote !== 'undefined'
@@ -166,7 +159,7 @@ block content
 
                     if self.teamCredentials && self.teamCredentials.rolePerson
                         - var rolePerson = self.teamCredentials.rolePerson
-                        - console.log('teamcredentials_jaan ', rolePerson)
+                        //- - console.log('teamcredentials_jaan ', rolePerson)
                         if rolePerson.director && rolePerson.director[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.director
@@ -261,20 +254,6 @@ block content
                                 - broadcaster_name.push(broadcaster.name)
                             .str_info_value= broadcaster_name.join(', ')
 
-                    //- //- RolePerson
-                    //- if self.roles_in_project
-                    //-     each role in self.roles_in_project
-                    //-         .str_info_grid_3
-                    //-             .str_info_label= role.label
-                    //-             .str_info_value= role.names.map(r => r.name).join(', ')
-
-                    //- //- RoleCompany
-                    //- if self.comp_roles_in_project
-                    //-     each role in self.comp_roles_in_project
-                    //-         .str_info_grid_3
-                    //-             .str_info_label= role.label
-                    //-             .str_info_value= role.names.map(r => r.name).join(', ')
-
             section.project_runtime_box
 
                 if self.contactName
@@ -318,10 +297,6 @@ block content
                                             .str_info_meta_label.dark_semi= person.role_at_film.roleName
                                             .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
 
-                                    //- .str_info_grid_3
-                                    //-     .str_info_label.text_left.dark_semi= person.rolesAtFilm.join(', ')
-                                    //-     .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
-
                                 .dir_bio.dark_1
                                     if person.person.bio
                                         p.dark_1= person.person.bio
@@ -343,14 +318,9 @@ block content
                                             .str_info_meta_label.dark_semi= company.rolesAtFilm.join(', ')
                                             .str_info_value.text_right.dark_1= company.organisations.namePrivate
 
-                                    //- .str_info_grid_3
-                                    //-     .str_info_label.text_left.dark_semi= company.rolesAtFilm.join(', ')
-                                    //-     .str_info_value.text_right.dark_1= company.organisations.namePrivate
-
                                 .dir_bio.dark_1
                                     if company.organisations.description
                                         p.dark_1= company.organisations.description
-
 
             if self.clipUrl
                 section#trailer.f_trailer_box
@@ -367,9 +337,3 @@ block content
                                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
                     .elisa_stage
                         img.elisa_powered(src='https://assets.poff.ee/img/poff24_elisa_stage.svg')
-
-
-
-
-
-
