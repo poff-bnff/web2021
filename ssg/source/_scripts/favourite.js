@@ -105,9 +105,7 @@ const toggleFavouriteScreening = (action, favId) => {
     const unsetButton = document.getElementById(`s_${favId}_is_fav`)
 
     const pushedButton = action === 'set' ? setButton : unsetButton
-    // console.log({action, favId, setButton, unsetButton, pushedButton})
     const pushedButtonInnerHTMLBeforeClick = pushedButton.innerHTML
-
     pushedButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
     pushedButton.disabled = true
 
@@ -127,11 +125,6 @@ const toggleFavouriteScreening = (action, favId) => {
         }
         return Promise.reject(response);
     }).then(function (data) {
-        // console.log({
-        //     'returned': data,
-        //     'getUser()': getUser().My,
-        //     'userScreenings': userScreenings
-        // })
         if (action === 'set') {
             setButton.style.display = 'none'
             unsetButton.style.display = ''
@@ -144,6 +137,79 @@ const toggleFavouriteScreening = (action, favId) => {
         setMy(data)
         reloadUserScreenings()
         // console.log('reloadUserScreenings', reloadUserScreenings())
+    }).catch(function (error) {
+        console.warn(error)
+        pushedButton.innerHTML = 'Tekkis viga!'
+    })
+}
+
+/* Course events */
+const toggleFavouriteCourseEvent = (action, favId) => {
+    const setButtons = document.querySelectorAll(`[course_event_id="${favId}"]>.is_not_fav`)
+    const unsetButtons = document.querySelectorAll(`[course_event_id="${favId}"]>.is_fav`)
+
+    if (setButtons.length === 0 || unsetButtons.length === 0) {
+        console.warn('No buttons found for course event', favId)
+        return
+    }
+
+    const beforeClick = (a) => {
+        const innerHTMLs = []
+        if (a === 'set') {
+            innerHTMLs.push(...setButtons.map(b => b.innerHTML))
+            setButtons.forEach(b => b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`)
+            setButtons.forEach(b => b.disabled = true)
+        } else {
+            innerHTMLs.push(...unsetButtons.map(b => b.innerHTML))
+            unsetButtons.forEach(b => b.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`)
+            unsetButtons.forEach(b => b.disabled = true)
+        }
+        return innerHTMLs
+    }
+
+    const afterClick = (a, innerHTMLs) => {
+        if (a === 'set') {
+            setButtons.forEach(b => b.classList.add('d-none'))
+            unsetButtons.forEach(b => b.classList.remove('d-none'))
+            setButtons.forEach((b, i) => b.innerHTML = innerHTMLs[i])
+            setButtons.forEach(b => b.disabled = false)
+        } else {
+            setButtons.forEach(b => b.classList.remove('d-none'))
+            unsetButtons.forEach(b => b.classList.add('d-none'))
+            unsetButtons.forEach((b, i) => b.innerHTML = innerHTMLs[i])
+            unsetButtons.forEach(b => b.disabled = false)
+        }
+    }
+
+    const pushedButtonInnerHTMLsBeforeClick = beforeClick(action)
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('ID_TOKEN'));
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        redirect: 'follow',
+        body: favId
+    };
+
+    fetch(`${huntAuthDomain}/api/my/courseevent`, requestOptions).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+        return Promise.reject(response);
+    }).then(function (data) {
+        // console.log({
+        //     'returned': data,
+        //     'getUser()': getUser().My,
+        //     'userCourseEvents': userCourseEvents
+        // })
+
+        afterClick(action, pushedButtonInnerHTMLsBeforeClick)
+
+        setMy(data)
+        reloadUserCourseEvents()
+        // console.log('reloadUserCourseEvents', reloadUserCourseEvents())
     }).catch(function (error) {
         console.warn(error)
         pushedButton.innerHTML = 'Tekkis viga!'
@@ -166,8 +232,8 @@ const setupFilmFavoriteButtons = () => {
 /* Screenings */
 const setupScreeningFavoriteButtons = () => {
     try {
-        const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
-        const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
+        const addButtons = Array.from(document.getElementsByClassName('notmyscreening'))
+        const remButtons = Array.from(document.getElementsByClassName('ismyscreening'))
         const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
             .map(e => parseInt(e))
 
@@ -189,13 +255,57 @@ const setupScreeningFavoriteButtons = () => {
                 })
 
             // add event listeners to all fav buttons
-            nslButtons.forEach(b => b.addEventListener('click', e => {
+            addButtons.forEach(b => b.addEventListener('click', e => {
                 let scrId = parseInt(b.id.split('_')[1])
                 toggleFavouriteScreening('set', scrId)
             }))
-            slButtons.forEach(b => b.addEventListener('click', e => {
+            remButtons.forEach(b => b.addEventListener('click', e => {
                 let scrId = parseInt(b.id.split('_')[1])
                 toggleFavouriteScreening('unset', scrId)
+            }))
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* Course events */
+const setupCourseEventFavoriteButtons = () => {
+    try {
+        const addButtons = Array.from(document.getElementsByClassName('is_not_fav'))
+        const remButtons = Array.from(document.getElementsByClassName('is_fav'))
+        const currentCourseEventIDs = Array.from(document.getElementById('course_event_ids').value.split(','))
+            .map(e => parseInt(e))
+
+        if (getUser()) {
+            reloadUserCourseEvents()
+
+            // unhide all fav buttons for currently favorited course events
+            currentCourseEventIDs.filter(id => userCourseEvents.includes(id))
+                .forEach(id => {
+                    document.querySelectorAll(`[course_event_id="${id}"]>.is_fav`)
+                        .forEach(b => b.classList.remove('d-none'))
+                    document.querySelectorAll(`[course_event_id="${id}"]>.is_not_fav`)
+                        .forEach(b => b.classList.add('d-none'))
+                })
+
+            // unhide all no-fav buttons for currently unfavorited course events
+            currentCourseEventIDs.filter(id => !userCourseEvents.includes(id))
+                .forEach(id => {
+                    document.querySelectorAll(`[course_event_id="${id}"]>.is_fav`)
+                        .forEach(b => b.classList.add('d-none'))
+                    document.querySelectorAll(`[course_event_id="${id}"]>.is_not_fav`)
+                        .forEach(b => b.classList.remove('d-none'))
+                })
+
+            // add event listeners to all fav buttons
+            addButtons.forEach(b => b.addEventListener('click', e => {
+                let ceId = parseInt(b.parentElement.getAttribute('course_event_id'))
+                toggleFavouriteCourseEvent('set', ceId)
+            }))
+            remButtons.forEach(b => b.addEventListener('click', e => {
+                let ceId = parseInt(b.parentElement.getAttribute('course_event_id'))
+                toggleFavouriteCourseEvent('unset', ceId)
             }))
         }
     } catch (error) {
