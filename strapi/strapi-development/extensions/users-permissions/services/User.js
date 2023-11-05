@@ -127,42 +127,43 @@ module.exports = {
     return bcrypt.compare(password, hash);
   },
 
-  async sendConfirmationEmail(user, lang) {
-    const userPermissionService = strapi.plugins['users-permissions'].services.userspermissions;
-    const pluginStore = await strapi.store({
-      environment: '',
-      type: 'plugin',
-      name: 'users-permissions',
-    });
+  async sendConfirmationEmail(user, lang, host) {
+    // const userPermissionService = strapi.plugins['users-permissions'].services.userspermissions;
+    // const pluginStore = await strapi.store({
+    //   environment: '',
+    //   type: 'plugin',
+    //   name: 'users-permissions',
+    // });
 
-    const settings = await pluginStore
-      .get({ key: 'email' })
-      .then(storeEmail => storeEmail['email_confirmation'].options);
+    // const settings = await pluginStore
+    //   .get({ key: 'email' })
+    //   .then(storeEmail => storeEmail['email_confirmation'].options);
 
-    const userInfo = sanitizeEntity(user, {
-      model: strapi.query('user', 'users-permissions').model,
-    });
+    // const userInfo = sanitizeEntity(user, {
+    //   model: strapi.query('user', 'users-permissions').model,
+    // });
 
-    const confirmationToken = crypto.randomBytes(20).toString('hex');
+    // const confirmationToken = crypto.randomBytes(20).toString('hex');
 
-    await this.edit({ id: user.id }, { confirmationToken });
+    // await this.edit({ id: user.id }, { confirmationToken });
 
-    settings.message = await userPermissionService.template(settings.message, {
-      URL: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation`,
-      USER: userInfo,
-      CODE: confirmationToken,
-    });
+    // settings.message = await userPermissionService.template(settings.message, {
+    //   URL: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation`,
+    //   USER: userInfo,
+    //   CODE: confirmationToken,
+    // });
 
-    settings.object = await userPermissionService.template(settings.object, { USER: userInfo });
+    // settings.object = await userPermissionService.template(settings.object, { USER: userInfo });
 
     // Send an email to the user.
     await strapi.plugins['email'].services.email.send({
       to: user.email,
       template_name: `confirm-register-${lang}`,
-    template_vars: [
-      { name: 'link', content: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation?confirmation=${confirmationToken}` },
-      // { name: 'authTime', content: authTime }
-    ]
+      template_vars: [
+        { name: 'link', content: 'https://poff.ee' },
+        // { name: 'link', content: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation?confirmation=${confirmationToken}` },
+        // { name: 'authTime', content: authTime }
+      ]
 
 
       // text: settings.message,
