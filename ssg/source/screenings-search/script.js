@@ -16,7 +16,8 @@ const selectors = {
     towns: document.getElementById('towns_select'),
     cinemas: document.getElementById('cinemas_select'),
     dates: document.getElementById('dates_select'),
-    times: document.getElementById('times_select')
+    timesFrom: document.getElementById('timesFrom_select'),
+    timesTo: document.getElementById('timesTo_select')
 }
 
 function urlSelect() {
@@ -170,19 +171,38 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.dates.includes(compare_with)
                 })
                 .filter(screening => {
-                    const compare_with = selector_name === 'times' ? value : selectors.times.value;
-                    return compare_with === '' ? true : screening.times.includes(compare_with)
+                    const compare_with = selector_name === 'timesFrom' ? value : selectors.timesFrom.value;
+
+                    if (compare_with === '') {
+                        return true;
+                    }
+                    else {
+                        return screening.times.some((time) => time >= compare_with) 
+                            && screening.times.some((time) => time <= compare_with);
+                    }
                 })
+                // Kommenteeritud, sest 'Kuni' hakkab 'Alates' filtrit tühistama
+                // .filter(screening => {
+                //     const compare_with = selector_name === 'timesTo' ? value : selectors.timesTo.value;
+                    
+                //     if (compare_with === '') {
+                //         return true;
+                //     }
+                //     else {
+                //         const time = new Date(`2000-01-01T${compare_with.slice(1)}:00`);
+                //         time.setHours(time.getHours() + 1);
+                //         const compare_with_plus_one = "_" + time.toTimeString().slice(0, 5);
+
+                //         return screening.times.some((time) => time <= compare_with) 
+                //             && screening.times.some((time) => time < compare_with_plus_one);
+                //     }
+                // })
                 .filter((screening) => { return search_input.value ? screening.text.includes(search_input.value.toLowerCase()) : true })
                 .length
 
-
             option.disabled = count ? false : true
-
         }
-
     }
-
 }
 
 search_input.addEventListener('keyup', e => {
@@ -232,9 +252,37 @@ selectors.dates.addEventListener('change', e => {
     toggleAll('dates');
 });
 
-selectors.times.addEventListener('change', e => {
-    toggleAll('times');
+selectors.timesFrom.addEventListener('change', e => {
+    toggleAll('timesFrom');
+    updateToDates();
 });
+
+selectors.timesTo.addEventListener('change', e => {
+    toggleAll('timesTo');
+});
+
+function updateToDates() {
+    let timesFromVal = selectors.timesFrom.value;
+    let timesToVal = selectors.timesTo.value;
+
+    if (timesToVal != '' && timesFromVal != '' && timesFromVal > timesToVal) {
+        selectors.timesTo.selectedIndex = 0;
+        toggleAll('timesTo');
+    }
+
+    for (const option of selectors.timesTo.options) {
+        if (option.value == '') {
+            continue;
+        }
+
+        if (timesFromVal == '') {
+            option.hidden = false;
+        }
+        else {
+            option.hidden = timesFromVal > option.value;
+        }
+    }
+}
 
 function unselect_all() {
     search_input.value = '';
@@ -249,8 +297,10 @@ function unselect_all() {
     selectors.towns.selectedIndex = 0;
     selectors.cinemas.selectedIndex = 0;
     selectors.dates.selectedIndex = 0;
-    selectors.times.selectedIndex = 0;
+    selectors.timesFrom.selectedIndex = 0;
+    selectors.timesTo.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
+    updateToDates();
     toggleAll();
 }
 
@@ -334,10 +384,17 @@ function execute_filters() {
             }
         })
         .filter(screening => {
-            if (selectors.times.value) {
-                return screening.times.includes(selectors.times.value)
+            if (selectors.timesFrom.value) {
+                return screening.times.some((time) => time >= selectors.timesFrom.value);
             } else {
-                return true
+                return true;
+            }
+        })
+        .filter(screening => {
+            if (selectors.timesTo.value) {
+                return screening.times.some((time) => time <= selectors.timesTo.value);
+            } else {
+                return true;
             }
         })
         .filter(screening => screening.text.includes(search_input.value.toLowerCase()))
