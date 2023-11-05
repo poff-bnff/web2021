@@ -177,14 +177,14 @@ function toggleFilters(exclude_selector_name) {
                         return true;
                     }
                     else {
-                        return screening.times.some((time) => time >= compare_with) 
+                        return screening.times.some((time) => time >= compare_with)
                             && screening.times.some((time) => time <= compare_with);
                     }
                 })
                 // Kommenteeritud, sest 'Kuni' hakkab 'Alates' filtrit tühistama
                 // .filter(screening => {
                 //     const compare_with = selector_name === 'timesTo' ? value : selectors.timesTo.value;
-                    
+
                 //     if (compare_with === '') {
                 //         return true;
                 //     }
@@ -193,7 +193,7 @@ function toggleFilters(exclude_selector_name) {
                 //         time.setHours(time.getHours() + 1);
                 //         const compare_with_plus_one = "_" + time.toTimeString().slice(0, 5);
 
-                //         return screening.times.some((time) => time <= compare_with) 
+                //         return screening.times.some((time) => time <= compare_with)
                 //             && screening.times.some((time) => time < compare_with_plus_one);
                 //     }
                 // })
@@ -402,42 +402,4 @@ function execute_filters() {
     // console.log(filtered);
     // console.log(filtered.map(element => element.id));
     return filtered
-}
-
-
-    // TODO: move this to _scripts/favorite.js
-function setupScreeningFavoriteButtons () {
-    const nslButtons = Array.from(document.getElementsByClassName('notmyscreening'))
-    const slButtons = Array.from(document.getElementsByClassName('ismyscreening'))
-    const currentScreeningIDs = Array.from(document.getElementById('screening_ids').value.split(','))
-        .map(e => parseInt(e))
-
-    if (getUser()) {
-        const myScreenings = reloadUserScreenings()
-        //- console.log({myScreenings, currentScreeningIDs})
-
-        // unhide all fav buttons for currently favorited screenings
-        currentScreeningIDs.filter(id => myScreenings.includes(id))
-            .forEach(id => {
-                document.getElementById(`s_${id}_is_fav`).style.display = ''
-                document.getElementById(`s_${id}_is_not_fav`).style.display = 'none'
-            })
-
-        // unhide all no-fav buttons for currently unfavorited screenings
-        currentScreeningIDs.filter(id => !myScreenings.includes(id))
-            .forEach(id => {
-                document.getElementById(`s_${id}_is_fav`).style.display = 'none'
-                document.getElementById(`s_${id}_is_not_fav`).style.display = ''
-            })
-
-        // add event listeners to all fav buttons
-        nslButtons.forEach(b => b.addEventListener('click', e => {
-            let scrId = parseInt(b.id.split('_')[1])
-            toggleFavouriteScreening('set', scrId)
-        }))
-        slButtons.forEach(b => b.addEventListener('click', e => {
-            let scrId = parseInt(b.id.split('_')[1])
-            toggleFavouriteScreening('unset', scrId)
-        }))
-    }
 }
