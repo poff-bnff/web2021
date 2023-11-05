@@ -170,18 +170,18 @@ function toggleFilters(exclude_selector_name) {
                     const compare_with = selector_name === 'dates' ? value : selectors.dates.value;
                     return compare_with === '' ? true : screening.dates.includes(compare_with)
                 })
-                // Kommenteeritud, sest 'Alates' ja 'Kuni' filtrid hakkavad teineteist tühistama 
-                // .filter(screening => {
-                //     const compare_with = selector_name === 'timesFrom' ? value : selectors.timesFrom.value;
+                .filter(screening => {
+                    const compare_with = selector_name === 'timesFrom' ? value : selectors.timesFrom.value;
 
-                //     if (compare_with === '') {
-                //         return true;
-                //     }
-                //     else {
-                //         return screening.times.some((time) => time >= compare_with) 
-                //             && screening.times.some((time) => time <= compare_with);
-                //     }
-                // })
+                    if (compare_with === '') {
+                        return true;
+                    }
+                    else {
+                        return screening.times.some((time) => time >= compare_with) 
+                            && screening.times.some((time) => time <= compare_with);
+                    }
+                })
+                // Kommenteeritud, sest 'Kuni' hakkab 'Alates' filtrit tühistama
                 // .filter(screening => {
                 //     const compare_with = selector_name === 'timesTo' ? value : selectors.timesTo.value;
                     
