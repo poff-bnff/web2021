@@ -17,9 +17,9 @@ if(urlParams.get('confirmation') === 'success') {
     const lang = localStorage.getItem('lang') || 'et'
     let confirmationMessage
     if (lang === 'et') {
-        confirmationMessage = 'Konto edukalt aktiveeritud, saad nüüd sisse logida.'
+        confirmationMessage = 'Konto edukalt aktiveeritud.'
     } else {
-        confirmationMessage = 'Account successfully confirmed, You can now log in.'
+        confirmationMessage = 'Account successfully confirmed.'
     }
     document.getElementById('profileSent').innerHTML = confirmationMessage
     document.getElementById('profileSent').style.display = ''
