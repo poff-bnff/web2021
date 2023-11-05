@@ -160,7 +160,7 @@ module.exports = {
       to: user.email,
       template_name: `confirm-register-${lang}`,
       template_vars: [
-        { name: 'link', content: host },
+        { name: 'link', content: 'https://poff.ee' },
         // { name: 'link', content: `${getAbsoluteServerUrl(strapi.config)}/auth/email-confirmation?confirmation=${confirmationToken}` },
         // { name: 'authTime', content: authTime }
       ]
