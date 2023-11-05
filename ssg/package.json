@@ -35,6 +35,7 @@
   },
   "scripts": {
     "serve_local": "serve build",
+    "serve_local_poff": "serve build/poff",
     "Remove non-essential from _fetchdir": "rm -rf ./source/_fetchdir/*/",
     "build": ". ./build.sh",
     "update_poff_styles": "DOMAIN='poff.ee' node helpers/copy_styles_acc_to_domain.js",
