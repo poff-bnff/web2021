@@ -23,7 +23,7 @@ async function strapiAuth() {
             options.port = strapiPort
         }
 
-        // console.log({options, postData})
+        // console.log( 'strapiAuth', {options, postData})
         const request = https.request(options, (response) => {
             response.setEncoding('utf8')
             let tokenStr = ''

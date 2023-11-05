@@ -2,6 +2,8 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    if self.data.industryevents && self.data.industryevents[0]
+        input(type='hidden', id='course_event_ids', value=self.data.industryevents.map(e => e.id).join(','))
     .events_search_page_title_wrapper
         //- Temporary static content in page title to test styles
         h1.events_search_page_title= self.label.filters.programme
@@ -153,18 +155,17 @@ block content
                                                 span= event.location.name
 
                                     .event_card_header_right
-                                        .add_to_cal
+                                        .add_to_cal.notsavedevent(course_event_id=event.id)
                                             .header_text
-                                                a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal
-                                                    span.add_to_cal_text= 'Add to calendar'
-                                                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                                        path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path.add_to_cal_hover(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path.add_to_cal_hover(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
+                                                a.list_view_add_to_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                    span.add_to_cal_text= self.t.add2cal
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
+                                        .rem_from_cal.issavedevent.d-none(course_event_id=event.id)
+                                            .header_text
+                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                    span.rem_from_cal_text= self.t.add2cal
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
+                                                //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= self.t.add2cal
                                                 //- span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
 
 
@@ -317,7 +318,7 @@ block content
                             //-                 line(x1='16' y1='2' x2='16' y2='6')
                             //-                 line(x1='8' y1='2' x2='8' y2='6')
                             //-                 line(x1='3' y1='10' x2='21' y2='10')
-                            //-             span.screening_date.small_1(onclick=`calendarfile('${event.id}');return false`)= 'Add to calendar'
+                            //-             span.screening_date.small_1(onclick=`calendarfile('${event.id}');return false`)= self.t.add2cal
 
                             //- Selle peidetud inputi sees on data
                             span(id=`cal_${event.id}` style='display: none') #{event.calendar_data}
@@ -366,24 +367,8 @@ block content
                                         .add_to_cal
                                             .header_text
                                                 a(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=`${event.title}`).list_view_add_to_cal.text-nowrap
-                                                    span.add_to_cal_text= 'Add to calendar'
-                                                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                                        path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path.add_to_cal_hover(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                                        path.add_to_cal_hover(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     span.notsavedevent= 'Add to calendar'
-                                            //-     span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= 'Add to calendar'
-                                            //-     span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
-                                            //- svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
-                                            //-     path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     path(d='M16 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     path(d='M8 2V6' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     path(d='M3 10H21' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     path(d='M12 12V20' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
-                                            //-     path(d='M8 16H16' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                                                    span.add_to_cal_text= self.t.add2cal
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/add2calendar.svg' src='/assets/img/static/industry/add2calendar.svg')
                                 .event_card_content
                                     h3(id=`modal-title-${event.id}`).event_title= event.title
                                     .event_card_keywords

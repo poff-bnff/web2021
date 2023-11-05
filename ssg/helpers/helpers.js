@@ -107,6 +107,29 @@ function loadStrapidataCassettes() {
     return yaml.load(fs.readFileSync(strapiDataCassettePath, 'utf8'))
 }
 
+// Replace every property_name in strapiData with object from searchData
+// "Performance", strapi events, strapi performances
+const ReplaceInModel = function (property_name, strapiData, searchData) {
+    // console.log(property_name, strapiData, searchData)
+    for (const element of strapiData) {
+        const value = element[property_name]
+        if (value === null || value === undefined) {
+            element[property_name] = null
+            continue
+        }
+
+        // kui nt toimetaja on kustutanud artikli, millele mujalt viidatakse
+        if (value.constructor === Object && Object.keys(value).length === 0) {
+            element[property_name] = null
+            continue
+        }
+
+
+        const element_id = (value.hasOwnProperty('id') ? value.id : value)
+        element[property_name] = searchData.find(element => element.id === element_id)
+    }
+}
+
 const rootDir = path.join(__dirname, '..')
 const sourceDir = path.join(rootDir, 'source')
 const allStrapiDataDir = path.join(sourceDir, '_allStrapidata')
@@ -156,8 +179,10 @@ function mergeStrapidataUpdates() {
     })
 }
 
-exports.loadStrapidataCassettes = loadStrapidataCassettes
-exports.loadStrapidataFilms = loadStrapidataFilms
-exports.mergeStrapidataUpdates = mergeStrapidataUpdates
-exports.deleteFolderRecursive = deleteFolderRecursive
-exports.JSONcopy = JSONcopy
+exports = module.exports = {
+    loadStrapidataCassettes,
+    loadStrapidataFilms,
+    mergeStrapidataUpdates,
+    deleteFolderRecursive,
+    JSONcopy
+}

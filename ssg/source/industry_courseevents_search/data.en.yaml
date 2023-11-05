@@ -3,3 +3,7 @@ data:
     industryevents: /_fetchdir/courseevents.en.yaml
     filters: /_fetchdir/filters_courseevents.en.yaml
     search: /_fetchdir/search_courseevents.en.yaml
+
+t:
+    add2cal: Add to calendar
+    rem4cal: Remove from calendar

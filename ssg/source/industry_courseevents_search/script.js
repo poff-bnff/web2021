@@ -18,7 +18,7 @@ const selectors = {
     location: document.getElementById('location_select'),
 }
 
-function urlSelect() {
+const urlSelect = () => {
     if (urlParams.getAll.length) {
         for (const [ix, params] of urlParams) {
             const filterValue = decodeURIComponent(params);
@@ -38,7 +38,7 @@ function urlSelect() {
     }
 }
 
-function setSearchParams() {
+const setSearchParams =  () => {
     let urlParameters = new URLSearchParams();
 
     for (const selector in selectors) {
@@ -85,10 +85,11 @@ document.onreadystatechange = () => {
                     img.src = img_src.replace('thumbnail_', '')
             }
         }
+        setupEventFavoriteButtons()
     }
 };
 
-function select_next_or_previous(which, id) {
+const select_next_or_previous = (which, id) => {
     var select = document.getElementById(id);
     if (which === '+') {
         select.selectedIndex++;
@@ -98,7 +99,7 @@ function select_next_or_previous(which, id) {
     toggleAll(id);
 }
 
-function toggleAll(exclude_selector_name) {
+const toggleAll = (exclude_selector_name) => {
     setSearchParams()
 
     ids = execute_filters()
@@ -127,7 +128,7 @@ function toggleAll(exclude_selector_name) {
     toggleFilters(exclude_selector_name)
 }
 
-function toggleFilters(exclude_selector_name) {
+const toggleFilters = (exclude_selector_name) => {
 
     if (exclude_selector_name !== 'starttimes') {
         Array.from(starttimes).forEach(starttime => {
@@ -277,7 +278,7 @@ $(selectors.location).on('change', e => {
     toggleAll('location');
 });
 
-function unselect_all() {
+const unselect_all = () => {
     search_input.value = '';
     Array.from(starttimes).forEach((starttime) => starttime.checked = false);
     $(selectors.categories).val(null).trigger('change');
@@ -293,11 +294,11 @@ function unselect_all() {
     toggleAll();
 }
 
-function toggle_filters() {
+const toggle_filters = () => {
     document.querySelector('.mobile_filters_collapse').classList.toggle('open');
 }
 
-function execute_filters() {
+const execute_filters = () => {
     let filtered = searcharray
         .filter(screening => {
             if (selectors.categories.value) {
@@ -399,7 +400,7 @@ $(document).ready(function () {
 
         overrideSelect2MultiselectLabel($(this));
     });
-    
+
     $('.select2-single').select2({
         minimumResultsForSearch: -1,
         width: "100%",
@@ -558,17 +559,17 @@ $(document).ready(function () {
                             <path d="M3 10.002H21" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 12.002V20.002" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M8 16.002H16" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>                        
+                            </svg>
                             </a>`
                             : ''
                         }
                         </a>`,
                     };
                 })
-    
+
                 ec.setOption('eventStartEditable', false);
                 ec.setOption('eventDurationEditable', false);
-    
+
                 // Add events from array
                 ec.setOption('events', eventsForCalendar);
                 $(document).on('update_events', function(event, ids) {
@@ -584,3 +585,34 @@ $(document).ready(function () {
         }
     }
 });
+
+// Event favorite buttons
+const setupEventFavoriteButtons = () => {
+    const nslButtons = Array.from(document.querySelectorAll('.notsavedevent'))
+    const slButtons = Array.from(document.querySelectorAll('.issavedevent'))
+    const allEventIds = Array.from(document.getElementById('course_event_ids').value.split(','))
+        .map(e => parseInt(e))
+
+    if (getUser()) {
+        nslButtons.forEach(button => { button.classList.add('d-none') })
+        slButtons.forEach(button => { button.classList.add('d-none') })
+        const myCourseEvents = reloadUserCourseEvents()
+
+        nslButtons.forEach(button => { // event ID is in attribute 'course_event_id'
+            const eventId = parseInt(button.getAttribute('course_event_id'))
+            if (myCourseEvents.includes(eventId)) {
+                button.classList.add('d-none')
+            } else {
+                button.classList.remove('d-none')
+            }
+        })
+        slButtons.forEach(button => { // event ID is in attribute 'course_event_id'
+            const eventId = parseInt(button.getAttribute('course_event_id'))
+            if (myCourseEvents.includes(eventId)) {
+                button.classList.remove('d-none')
+            } else {
+                button.classList.add('d-none')
+            }
+        })
+    }
+}
