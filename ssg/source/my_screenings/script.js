@@ -5,7 +5,7 @@ document.onreadystatechange = () => {
     const loading = document.getElementById('loading');
     if (document.readyState === 'complete') {
         setupScreeningFavoriteButtons()
-
+        revealMyScreenings()
         for (img of document.images) {
             img_src = img.src || ''
             if (img_src.includes('thumbnail_')) {
@@ -13,4 +13,15 @@ document.onreadystatechange = () => {
             }
         }
     }
+}
+
+const revealMyScreenings = () => {
+    userScreenings.forEach(screeningId => {
+        const screeningCardE = document.getElementById(screeningId)
+        if (screeningCardE) {
+            screeningCardE.classList.remove('hidden')
+            screeningCardE.classList.remove('d-none')
+            screeningCardE.style.removeProperty('display')
+        }
+    })
 }
