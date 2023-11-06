@@ -66,7 +66,8 @@ main.grid_film(id=self.id)
 
                 .str_info_blokk_1
 
-                    each p, locale in self.otherLocalePaths
+                    //- each p, locale in self.otherLocalePaths
+                    each p, locale in Object.keys(self.otherLocalePaths).filter(l => l !== 'ru').reduce((o, k) => { o[k] = self.otherLocalePaths[k]; return o}, {})
                         if self[`title_${locale}`]
                             .str_info_grid_3
                                 .str_info_label= self.label.film[`title_${locale}`]
