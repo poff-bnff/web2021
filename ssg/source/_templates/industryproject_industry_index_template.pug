@@ -281,6 +281,10 @@ block content
                         .str_info_label= self.label.industry.contactCompany
                         .str_info_value= self.contactCompany.name
 
+                .str_info_grid_3
+                    .str_info_label= self.label.industry.meet
+                    a.str_info_value.ghostblue(href='https://industrymeet.poff.ee' TARGET='_BLANK')= self.label.industry.meetTheRep
+
             section.f_dir_box
                 if self.teamCredentials && self.teamCredentials.rolePerson
                     - var teamCredPersons = self.teamCredentials.rolePerson
@@ -304,6 +308,7 @@ block content
                                         p.dark_1= person.person.filmography
                                     else if person.person.filmography
                                         p.dark_1= person.person.filmography
+                                    a.dark_1.ghostblue(href='https://industrymeet.poff.ee' TARGET='_BLANK')= self.label.industry.meetTheRep
 
                 if self.organisations
                     each company in self.organisations
