@@ -1943,7 +1943,9 @@ row:nth-child(15) > .supporter_logos
 @media (pointer: fine)
     .event_card_link:hover > .card_event
         background-color purple_050
+
     .event_card_header_right .add_to_cal .header_text .list_view_add_to_cal:hover
+    .event_card_header_right .rem_from_cal .header_text .list_view_rem_from_cal:hover
         background-color purple_200
         border-radius 4px
         box-shadow 0px 0px 0px 1px rgba(0, 0, 0, 0.10) inset
@@ -1951,6 +1953,7 @@ row:nth-child(15) > .supporter_logos
             fill green_400
             transition 150ms all ease-in
             .add_to_cal_hover
+            .rem_from_cal_hover
                 stroke #fff
                 transition 150ms all ease-in
 
@@ -1969,6 +1972,7 @@ row:nth-child(15) > .supporter_logos
             column-gap 0.75rem
             padding 0.25rem 0
         .add_to_cal
+        .rem_from_cal
             padding 0 .5rem 0.25rem 0.5rem
     .event_card_header_left
         flex-wrap wrap
@@ -1980,6 +1984,7 @@ row:nth-child(15) > .supporter_logos
         display flex
         align-items center
         .list_view_add_to_cal
+        .list_view_rem_from_cal
             display flex
             align-items flex-start
             gap .75rem
@@ -2038,6 +2043,7 @@ row:nth-child(15) > .supporter_logos
     .event_card_content .event_title
         margin 0.75rem 0
     .add_to_cal .header_text .list_view_add_to_cal .add_to_cal_text
+    .rem_from_cal .header_text .list_view_rem_from_cal .rem_from_cal_text
         display none
 
 .event_card_footer
@@ -2798,6 +2804,7 @@ a.btn_popover
   margin-bottom .2rem
 
 .container_add_to_cal
+.container_rem_from_cal
   margin-top 1rem
   margin-bottom .2rem
   background-color clr_primary
@@ -5920,6 +5927,7 @@ strong
                 flex-grow 1
     @media screen and (max-width: 999px)
         .list_view_add_to_cal .add_to_cal_text
+        .list_view_rem_from_cal .rem_from_cal_text
             display none
 
 .h70
