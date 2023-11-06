@@ -19,8 +19,7 @@ const revealMyScreenings = () => {
     userScreenings.forEach(screeningId => {
         const screeningCardE = document.getElementById(screeningId)
         if (screeningCardE) {
-            screeningCardE.classList.remove('hidden')
-            screeningCardE.classList.remove('d-none')
+            // screeningCardE.classList.remove('d-none') // TODO: refactor to use classes
             screeningCardE.style.removeProperty('display')
         }
     })
