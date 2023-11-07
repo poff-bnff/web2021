@@ -267,6 +267,23 @@ const isUserProfileComplete = () => {
     return false
 }
 
+const getCourseEventVideoUrl = (courseEventId) => {
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/validate/eventUrl?${courseEventId}`
+    return fetch(url, { headers })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            return data.videoUrl
+        })
+        .catch(error => {
+            console.error({'U': url, 'E': error})
+            return null
+        })
+}
+
 // ---- Self-executing functions ----
 
 //

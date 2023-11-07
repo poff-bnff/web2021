@@ -4,6 +4,9 @@ include /_templates/mixins.pug
 
 block content
     - var shopDir = 'https://poff.ee/'
+    script.
+        const courseEventId = !{self.id}
+        const eventAccess = "#{self.event_access}"
     script(src='/assets/poffOmatic.js')
     //- script.
     //-     document.addEventListener('userProfileLoaded', function (e) {
@@ -144,8 +147,7 @@ block content
                                 img#event_image(alt=self.title style='width: 100%; height: 100%; ' src=`https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`)
 
                         script.
-                            var eventAccess = "#{self.event_access}"
-                            console.log(eventAccess, eventAccess === "Free (without accreditation)")
+                            console.log(eventAccess, eventAccess === "Free (without accreditation)", courseEventId)
                             if (eventAccess === "Free (without accreditation)") {
                                 var videoFrameElement
                                     try {
@@ -161,19 +163,12 @@ block content
                                     }
                             } else {
                                 document.addEventListener('userProfileLoaded', function (e) {
-                                    if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
-                                    var videoFrameElement
+                                    const videoUrl = getCourseEventVideoUrl(!{self.id})
+                                    if (videoUrl) {
+                                        const videoFrameElement = document.getElementById('videoframe')
                                         try {
-                                            document.getElementById('videolevels_video').style.display = 'block'
-                                            var videoFrameElement = document.getElementById('videoframe')
-                                            videoFrameElement.src = videoFrameElement.getAttribute('target_src')
+                                            videoFrameElement.src = videoUrl
                                         } catch (error) { null }
-
-                                        if (!videoFrameElement) {
-                                            try {
-                                                document.getElementById('event_image').style.display = ''
-                                            } catch (error) { null }
-                                        }
                                     } else {
                                         document.getElementById('videolevels_video').remove()
                                     }
