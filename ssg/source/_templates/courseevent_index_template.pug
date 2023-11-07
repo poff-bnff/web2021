@@ -163,7 +163,9 @@ block content
                                     }
                             } else {
                                 document.addEventListener('userProfileLoaded', function (e) {
-                                    const videoUrl = getCourseEventVideoUrl(!{self.id})
+                                    console.log('checking for video', courseEventId)
+                                    const videoUrl = getCourseEventVideoUrl(courseEventId)
+                                    console.log(`got videoUrl: ${videoUrl}`)
                                     if (videoUrl) {
                                         const videoFrameElement = document.getElementById('videoframe')
                                         try {
