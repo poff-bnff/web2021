@@ -14,7 +14,8 @@ block content
                 else
                     - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
-                img.person_img_square(src=personPic alt=self.firstNameLastName)
+                img.person_img(src=personPic alt=self.firstNameLastName)
+                //- img.person_img_square(src=personPic alt=self.firstNameLastName)
                 if self.picture && self.picture.caption
                     p.caption.caption_offset= self.picture.caption
 
@@ -220,7 +221,7 @@ block content
                 .str_info_grid_3
                     .person_info_label
                     .person_info_c.text_left
-                        | Personal info
+                        //- | Personal info
                 .str_info_blokk_cred
                     //- if self.gender
                     //-     .str_info_grid_3
@@ -257,7 +258,7 @@ block content
                 .str_info_grid_3
                     .person_info_label
                     .person_info_c.text_left
-                        | Professional info
+                        //- | Professional info
                 if self.role_at_films
                     .str_info_grid_3
                         .person_info_label= self.label.userprofile.proRole
