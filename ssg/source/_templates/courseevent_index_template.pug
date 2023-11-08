@@ -165,10 +165,11 @@ block content
                                 if (url) {
                                     videoFrameE.src = url
                                     videoVideoE.classList.remove('d-none')
+                                    eventImageE.remove()
                                 } else {
-                                    eventivalLoginE.classList.remove('d-none')
+                                    videoVideoE.remove()
                                 }
-                                eventImageE.remove()
+                                eventivalLoginE.classList.remove('d-none')
                             }
                             // Wait for page to load
                             document.addEventListener('DOMContentLoaded', function (e) {
@@ -184,16 +185,17 @@ block content
                                     console.log('not logged in', courseEventId)
                                     eventivalLoginE.classList.remove('d-none')
                                     eventImageE.remove()
+                                    videoVideoE.remove()
                                 } else if (userProfileHasBeenLoaded) {
                                     console.log('Profile loaded, checking for video', courseEventId)
                                     getCourseEventVideoUrl(courseEventId)
-                                        .then(videoUrl => grantVideoUrl(videoUrl))
+                                        .then(videoUrl => {grantVideoUrl(videoUrl)})
                                 } else {
                                     console.log('Profile not loaded, waiting for it', courseEventId)
                                     document.addEventListener('userProfileLoaded', function (e) {
                                         console.log('Profile loaded at last, checking for video', courseEventId)
                                         getCourseEventVideoUrl(courseEventId)
-                                            .then(videoUrl => grantVideoUrl(videoUrl))
+                                            .then(videoUrl => {grantVideoUrl(videoUrl)})
                                     })
                                 }
                             })
