@@ -164,7 +164,7 @@ block content
                             } else {
                                 document.addEventListener('userProfileLoaded', function (e) {
                                     console.log('checking for video', courseEventId)
-                                    const videoUrl = getCourseEventVideoUrl(courseEventId)
+                                    const videoUrl = await getCourseEventVideoUrl(courseEventId)
                                     console.log(`got videoUrl: ${videoUrl}`)
                                     if (videoUrl) {
                                         const videoFrameElement = document.getElementById('videoframe')
