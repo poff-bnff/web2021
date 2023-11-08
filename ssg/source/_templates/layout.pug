@@ -23,7 +23,7 @@ html(lang= self.locale)
             include ../_templates/header_poff.pug
 
             //- Defined to be able to hide the messenger on certain pages (for example films with Votemo widget)
-            - const showMessengerChat = true
+            - var showMessengerChat = true
 
             block content
             if showMessengerChat
