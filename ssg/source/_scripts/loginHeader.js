@@ -1,7 +1,6 @@
-var pageURL = location.origin
-// var userprofilePageURL = pageURL + '/userprofile'
-var userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
-let userProfileHasBeenLoaded = false
+const pageURL = location.origin
+// const userprofilePageURL = pageURL + '/userprofile'
+const userProfileLoadedEvent = new CustomEvent('userProfileLoaded')
 
 // TODO 1: @jaanleppik Siia palun pikem selgitus, mis tingimusi tuleb ostja
 // juures kontrollida ja kuidas see funktsioon töötab
@@ -48,6 +47,7 @@ const userMe = async () => {
     const response = await fetch(url, { headers })
     const data = await response.json()
     // console.log('inside userMe', data)
+    userProfileHasBeenLoaded = true
     return data
 }
 
@@ -62,54 +62,15 @@ function useUserData() {
     const webUser = getUser()
     console.log('useUserData', webUser);
 
-    // TODO: this doesnot belong here - has to be moved to specific pages
-    if (!document.getElementById('tervitus').innerHTML.includes(', ')) {
-        if (industryPage && webUser.provider.split(',').includes('eventivalindustry') && webUser.industry_profile && webUser.industry_profile.name) {
-            try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.industry_profile.name
-            } catch (err) {
-                // null
-            }
-        } else if (webUser.user_profile && webUser.user_profile.firstName && webUser.provider) {
-            try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.user_profile.firstName
-            } catch (err) {
-                // null
-            }
-
-        } else {
-            try {
-                document.getElementById('tervitus').innerHTML = document.getElementById('tervitus').innerHTML + ', ' + webUser.email
-            } catch (err) {
-                // null
-            }
-        }
-    }
     try {
         buyerCheck()
-    } catch (err) {
-
-        // null
-    }
+    } catch (err) {}
     try {
-        loadMyFavFilms()
-    } catch (err) {
-
-        // console.log(err)
-        // null
-    }
-    try {
-        userProfileHasBeenLoaded = true
-
         pageLoadingAndUserProfileFetched()
-    } catch (err) {
-        null
-    }
+    } catch (err) {}
     try {
         fetchMyPasses()
-    } catch (err) {
-        null
-    }
+    } catch (err) {}
 }
 
 function logOut() {
@@ -148,6 +109,14 @@ const requireLogin = () => {
         return true
     }
     const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+    window.open(loginUrl, '_self')
+}
+
+const requireEventivalLogin = () => {
+    if (isUserTokenValid()) {
+        return true
+    }
+    const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?provider=eventival&jwt='
     window.open(loginUrl, '_self')
 }
 
@@ -281,7 +250,7 @@ const getCourseEventVideoUrl = async (courseEventId) => {
         })
         .catch(error => {
             console.error({'U': url, 'E': error})
-            return null
+            return false
         })
 }
 
@@ -330,7 +299,7 @@ const getCourseEventVideoUrl = async (courseEventId) => {
             document.getElementById('userProfile').style.display = 'none'
             document.getElementById('logIn').style.display = 'block'
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

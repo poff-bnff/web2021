@@ -4,9 +4,11 @@ include /_templates/mixins.pug
 
 block content
     - var shopDir = 'https://poff.ee/'
+    - var assetsDir = 'https://assets.poff.ee/img/'
     script.
         const courseEventId = !{self.id}
         const eventAccess = "#{self.event_access}"
+
     script(src='/assets/poffOmatic.js')
     //- script.
     //-     document.addEventListener('userProfileLoaded', function (e) {
@@ -31,7 +33,6 @@ block content
     //-     })
 
 
-    - var assetsDir = 'https://assets.poff.ee/img/'
 
     //- main.grid_ind_event.restrictedcontent
     main.grid_courseevent.restrictedcontent
@@ -139,55 +140,64 @@ block content
                     //- .section_headline= self.label.film.trailer
                     //- .ratio.ratio-16x9.m-0.p-0
                     .videolevels_embed_container
-                        if self.video_url
-                            .videolevels_embed_contents#videolevels_video(style="display:none;")
-                                +videoVl(self.video_url)
-                        else if self.images
-                            .default_16_9_container
-                                img#event_image(alt=self.title style='width: 100%; height: 100%; ' src=`https://assets.poff.ee/img/${self.images[0].hash}${self.images[0].ext}`)
+                        - var imgSrc = self.images && self.images[0] && assetsDir + self.images[0].hash + self.images[0].ext || '/assets/img/static/placeholder_hd_1.jpg'
+                        .default_16_9_container#eventimage
+                            img(alt=self.title style='width: 100%; height: 100%;' src=imgSrc)
+
+                        .videolevels_embed_contents#videolevels_video
+                            iframe#videoframe.d-none(
+                                width='100%' height='100%' frameborder='0' scrolling='no' class='noTransform'
+                                webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true'
+                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' )
+
+                        .login_16_9_container.login_ind_ev.d-none#eventival_login
+                            h4.login_headline#loginMessage.white_96 Log in via Eventival
+                            a(onclick = 'requireEventivalLogin()')
+                                img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
 
                         script.
                             console.log(eventAccess, eventAccess === "Free (without accreditation)", courseEventId)
-                            if (eventAccess === "Free (without accreditation)") {
-                                var videoFrameElement
-                                    try {
-                                        document.getElementById('videolevels_video').style.display = 'block'
-                                        var videoFrameElement = document.getElementById('videoframe')
-                                        videoFrameElement.src = videoFrameElement.getAttribute('target_src')
-                                    } catch (error) { null }
-
-                                    if (!videoFrameElement) {
-                                        try {
-                                            document.getElementById('event_image').style.display = ''
-                                        } catch (error) { null }
-                                    }
-                            } else if (userProfileHasBeenLoaded) {
-                                grantVideoAccess()
-                            } else {
-                                document.addEventListener('userProfileLoaded', function (e) {
-                                    console.log('checking for video', courseEventId)
-                                    grantVideoAccess()
-                                })
-                            }
-
-                            const grantVideoAccess = async () => {
-                                const videoUrl = await getCourseEventVideoUrl(courseEventId)
-                                console.log(`got videoUrl: ${videoUrl}`)
-                                if (videoUrl) {
-                                    const videoFrameElement = document.getElementById('videoframe')
-                                    try {
-                                        videoFrameElement.src = videoUrl
-                                    } catch (error) { null }
+                            const videoVideoE = document.getElementById('videolevels_video')
+                            const videoFrameE = videoVideoE.querySelector('#videoframe')
+                            const eventImageE = document.getElementById('eventimage')
+                            const eventivalLoginE = document.getElementById('eventival_login')
+                            const grantVideoUrl = (url) => {
+                                if (url) {
+                                    videoFrameE.src = url
+                                    videoFrameE.classList.remove('d-none')
                                 } else {
-                                    document.getElementById('videolevels_video').remove()
+                                    eventivalLoginE.classList.remove('d-none')
                                 }
+                                eventImageE.remove()
                             }
+                            // Wait for page to load
+                            document.addEventListener('DOMContentLoaded', function (e) {
+                                console.log('DOMContentLoaded', courseEventId)
+                                if (eventAccess === "Free (without accreditation)") {
+                                    console.log('free video')
+                                    if (self.video_url) {
+                                        videoFrameE.src = self.video_url
+                                        videoFrameE.classList.remove('d-none')
+                                        eventImageE.remove()
+                                    }
+                                } else if (!isUserTokenValid()) { // not logged in
+                                    console.log('not logged in', courseEventId)
+                                    eventivalLoginE.classList.remove('d-none')
+                                    eventImageE.remove()
+                                } else if (userProfileHasBeenLoaded) {
+                                    console.log('Profile loaded, checking for video', courseEventId)
+                                    getCourseEventVideoUrl(courseEventId)
+                                        .then(videoUrl => grantVideoUrl(videoUrl))
+                                } else {
+                                    console.log('Profile not loaded, waiting for it', courseEventId)
+                                    document.addEventListener('userProfileLoaded', function (e) {
+                                        console.log('Profile loaded at last, checking for video', courseEventId)
+                                        getCourseEventVideoUrl(courseEventId)
+                                            .then(videoUrl => grantVideoUrl(videoUrl))
+                                    })
+                                }
+                            })
 
-                        if process.env['DOMAIN'] === 'industry.poff.ee' && self.event_access != "Free (without accreditation)"
-                            .login_16_9_container.login_ind_ev#login_cond
-                                h4.login_headline#loginMessage.white_96 Log in via Eventival
-                                a(href=`/login` onclick = 'savePreLoginUrl()')
-                                    img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
                     if process.env['DOMAIN'] === 'industry.poff.ee'
                         .elisa_stage
                             img.elisa_powered(src='https://assets.poff.ee/img/powered_by_elisa_stage.svg')
