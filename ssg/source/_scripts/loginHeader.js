@@ -267,7 +267,7 @@ const isUserProfileComplete = () => {
     return false
 }
 
-const getCourseEventVideoUrl = (courseEventId) => {
+const getCourseEventVideoUrl = async (courseEventId) => {
     const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
     const url = `${huntAuthDomain}/api/validate/eventUrl?${courseEventId}`
@@ -276,6 +276,7 @@ const getCourseEventVideoUrl = (courseEventId) => {
             return response.json()
         })
         .then(data => {
+            console.log({'U': url, 'D': data})
             return data.videoUrl
         })
         .catch(error => {
