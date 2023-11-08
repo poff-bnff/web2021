@@ -426,7 +426,7 @@
         }
       }
     },
-    "/users/link": {
+    "/user/link": {
       "put": {
         "deprecated": false,
         "description": "Link mainUser with aliasUser",
