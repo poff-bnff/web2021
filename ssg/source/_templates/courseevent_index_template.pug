@@ -177,7 +177,7 @@ block content
                                 if (eventAccess === "Free (without accreditation)") {
                                     console.log('free video')
                                     if (self.video_url) {
-                                        videoFrameE.src = self.video_url
+                                        videoFrameE.src = `https://videolevels.com/embed/${self.video_url.split('/bc/')[1].split('/')[0]}`
                                         videoVideoE.classList.remove('d-none')
                                         eventImageE.remove()
                                     }
