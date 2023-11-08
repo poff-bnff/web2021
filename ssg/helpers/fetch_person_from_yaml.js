@@ -259,7 +259,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
                 filters.icategories[icategory.name] = icategory.name;
             }
         } else {
-            console.log('xxxx', Object.keys(person))
+            console.log('no industry_categories for person', person.id)
         }
 
         return {
