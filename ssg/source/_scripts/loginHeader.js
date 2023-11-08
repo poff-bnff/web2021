@@ -116,7 +116,7 @@ const requireEventivalLogin = () => {
     if (isUserTokenValid()) {
         return true
     }
-    const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?provider=eventival&jwt='
+    const loginUrl = huntAuthDomain + '/?provider=eventival&redirect_uri=' + window.location.href + '?jwt='
     window.open(loginUrl, '_self')
 }
 
