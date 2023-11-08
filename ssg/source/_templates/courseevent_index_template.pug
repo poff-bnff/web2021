@@ -45,13 +45,13 @@ block content
                 var cDomain = "#{process.env['DOMAIN']}"
 
             section.restricted_login.login_ind_ev#login_cond
-                            h4.login_headline#loginMessage= self.label.all.restrictedMessageIndustry1
-                            a(href=`/login` onclick = 'savePreLoginUrl()')
-                                h4.login_headline.bold_600#loginMessage= self.label.all.restrictedMessageIndustry2
-                            a(href=`/login` onclick = 'savePreLoginUrl()')
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="login_user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            //- a(href=`/login` onclick = 'savePreLoginUrl()')
-                                //- img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+                h4.login_headline#loginMessage= self.label.all.restrictedMessageIndustry1
+                a(href=`/login` onclick = 'savePreLoginUrl()')
+                    h4.login_headline.bold_600#loginMessage= self.label.all.restrictedMessageIndustry2
+                a(href=`/login` onclick = 'savePreLoginUrl()')
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="login_user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                //- a(href=`/login` onclick = 'savePreLoginUrl()')
+                    //- img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
 
             //- +format('Palun logi sisse').font_weight_600.dark_1
 
@@ -144,15 +144,15 @@ block content
                         .default_16_9_container#eventimage
                             img(alt=self.title style='width: 100%; height: 100%;' src=imgSrc)
 
-                        .videolevels_embed_contents#videolevels_video
-                            iframe#videoframe.d-none(
+                        .d-none.videolevels_embed_contents#videolevels_video
+                            iframe#videoframe(
                                 width='100%' height='100%' frameborder='0' scrolling='no' class='noTransform'
                                 webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' )
 
-                        .login_16_9_container.login_ind_ev.d-none#eventival_login
+                        .d-none.login_16_9_container.login_ind_ev#eventival_login
                             h4.login_headline#loginMessage.white_96 Log in via Eventival
-                            a(onclick = 'requireEventivalLogin()')
+                            a(onclick='requireEventivalLogin()' style='cursor: pointer;')
                                 img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
 
                         script.
@@ -164,7 +164,7 @@ block content
                             const grantVideoUrl = (url) => {
                                 if (url) {
                                     videoFrameE.src = url
-                                    videoFrameE.classList.remove('d-none')
+                                    videoVideoE.classList.remove('d-none')
                                 } else {
                                     eventivalLoginE.classList.remove('d-none')
                                 }
@@ -172,12 +172,12 @@ block content
                             }
                             // Wait for page to load
                             document.addEventListener('DOMContentLoaded', function (e) {
-                                console.log('DOMContentLoaded', courseEventId)
+                                console.log('DOMContentLoaded', {userProfileHasBeenLoaded, courseEventId})
                                 if (eventAccess === "Free (without accreditation)") {
                                     console.log('free video')
                                     if (self.video_url) {
                                         videoFrameE.src = self.video_url
-                                        videoFrameE.classList.remove('d-none')
+                                        videoVideoE.classList.remove('d-none')
                                         eventImageE.remove()
                                     }
                                 } else if (!isUserTokenValid()) { // not logged in

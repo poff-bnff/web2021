@@ -311,6 +311,7 @@ const getCourseEventVideoUrl = async (courseEventId) => {
 // If user is logged in, profile has to be complete
 // (and profile picture has to be set?)
 requireProfile()
+userProfileHasBeenLoaded = getUser() ? true : false
 
 //
 // If userProfileLoaded event is dispatched, this function is called.
