@@ -161,20 +161,26 @@ block content
                                             document.getElementById('event_image').style.display = ''
                                         } catch (error) { null }
                                     }
+                            } else if (userProfileHasBeenLoaded) {
+                                grantVideoAccess()
                             } else {
                                 document.addEventListener('userProfileLoaded', function (e) {
                                     console.log('checking for video', courseEventId)
-                                    const videoUrl = await getCourseEventVideoUrl(courseEventId)
-                                    console.log(`got videoUrl: ${videoUrl}`)
-                                    if (videoUrl) {
-                                        const videoFrameElement = document.getElementById('videoframe')
-                                        try {
-                                            videoFrameElement.src = videoUrl
-                                        } catch (error) { null }
-                                    } else {
-                                        document.getElementById('videolevels_video').remove()
-                                    }
+                                    grantVideoAccess()
                                 })
+                            }
+
+                            const grantVideoAccess = async () => {
+                                const videoUrl = await getCourseEventVideoUrl(courseEventId)
+                                console.log(`got videoUrl: ${videoUrl}`)
+                                if (videoUrl) {
+                                    const videoFrameElement = document.getElementById('videoframe')
+                                    try {
+                                        videoFrameElement.src = videoUrl
+                                    } catch (error) { null }
+                                } else {
+                                    document.getElementById('videolevels_video').remove()
+                                }
                             }
 
                         if process.env['DOMAIN'] === 'industry.poff.ee' && self.event_access != "Free (without accreditation)"
