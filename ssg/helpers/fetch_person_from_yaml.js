@@ -11,6 +11,7 @@ const { fetchModel } = require('./b_fetch.js')
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const INDUSTRY_PERSON_IN_EDITIONS = DOMAIN_SPECIFICS.industry_person_in_editions
 
 const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
@@ -33,8 +34,10 @@ if (DOMAIN !== 'industry.poff.ee') {
         'noRefs': true,
         'indent': '4'
     })
-    fs.writeFileSync(path.join(fetchDir, `search_persons.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `filters_persons.en.yaml`), emptyYAML, 'utf8')
+    for (category of Object.keys(INDUSTRY_PERSON_IN_EDITIONS)) {
+        fs.writeFileSync(path.join(fetchDir, `search_persons.${category}.en.yaml`), emptyYAML, 'utf8')
+        fs.writeFileSync(path.join(fetchDir, `filters_persons.${category}.en.yaml`), emptyYAML, 'utf8')
+    }
     fs.writeFileSync(path.join(fetchDir, `persons.en.yaml`), emptyYAML, 'utf8')
 } else {
     const STRAPIDATA_PERSON = yaml.load(fs.readFileSync(strapiDataPath, 'utf8'))
@@ -117,14 +120,27 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    const activeEditions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
-    console.log('activeEditions', activeEditions)
-    const personsWithEditions = STRAPIDATA_ALL_PERSONS.filter(p => p.festival_editions && p.festival_editions.length)
-    console.log('personsWithEditions', personsWithEditions.length)
-    const activePersons = personsWithEditions
+    // industry_person_in_editions:
+    //   is_in_industry: [68]
+    //   is_in_creative: [59]
+    //   ...
+    const activeCategories = Object.keys(INDUSTRY_PERSON_IN_EDITIONS)
+    console.log('activeCategories', activeCategories)
+    const activePersons = STRAPIDATA_ALL_PERSONS
+        // filter out persons who have no festival_editions
+        .filter(p => p.festival_editions && p.festival_editions.length)
+        // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the person
+        .map(p => {
+            for (const [industryPersonInEdition, editionIds] of Object.entries(INDUSTRY_PERSON_IN_EDITIONS)) {
+                // console.log('industryPersonInEdition', industryPersonInEdition, 'editionId', editionIds)
+                p[industryPersonInEdition] = p.festival_editions.some(fe => editionIds.includes(fe.id))
+            }
+            return p
+        })
+        // filter out persons who are not in any active edition
         .filter(p => {
-            const feIds = (p.festival_editions || []).map(fe => fe.id) || []
-            return feIds.some(id => activeEditions.includes(id))})
+            return activeCategories.some(activeEdition => p[activeEdition])
+        })
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons)
 }
@@ -155,24 +171,24 @@ function mSort(to_sort) {
     return objSorted
 }
 
-function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
+function startPersonProcessing(languages, activePersons) {
     for (lang of languages) {
 
         console.log(`Fetching ${DOMAIN} persons ${lang} data`)
 
-        allData = []
-        for (const ix in STRAPIDATA_PERSONS) {
-            let person = JSON.parse(JSON.stringify(STRAPIDATA_PERSONS[ix]));
-            person = rueten(person, lang);
+        const filteredPersons = []
+        for (const ix in activePersons) {
+            let person = JSON.parse(JSON.stringify(activePersons[ix])) // deep copy, because rueten mutates the object
+            person = rueten(person, lang) // TODO: rueten mutates the object, assignment is unnecessary
 
             let personSlug = person.slug
             // if slug is not defined, then skip this person
             if (!personSlug) {
-                console.info(`Person ${person.id} has no slug, skipping`);
+                console.info(`Person ${person.id} has no slug, skipping`)
                 continue
             }
-            person.path = personSlug;
-            person.slug = personSlug;
+            person.path = personSlug
+            person.slug = personSlug
 
             if (person.showreel) {
                 person.showreel = videoUrlToVideoCode(person.showreel)
@@ -191,12 +207,12 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
             fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
             // console.log(`Fetched ${DOMAIN} person ${person.id} data`)
-            allData.push(person);
+            filteredPersons.push(person);
         }
 
         const yamlPath = path.join(fetchDir, `persons.${lang}.yaml`)
 
-        if (!allData.length) {
+        if (filteredPersons.length === 0) {
             console.log(`No data for persons, creating empty YAMLs`)
             fs.writeFileSync(yamlPath, '[]', 'utf8')
             fs.writeFileSync(path.join(fetchDir, `search_persons.${lang}.yaml`), '[]', 'utf8')
@@ -204,15 +220,19 @@ function startPersonProcessing(languages, STRAPIDATA_PERSONS) {
             continue
         }
 
-        allData = allData.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`, lang))
-        const allDataYAML = yaml.dump(allData, { 'noRefs': true, 'indent': '4' });
-        fs.writeFileSync(yamlPath, allDataYAML, 'utf8');
-        console.log(`Fetched ${allData.length} persons for ${DOMAIN}`);
-        generatePersonsSearchAndFilterYamls(allData, lang);
+        filteredPersons.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`, lang))
+        const filteredPersonsYAML = yaml.dump(filteredPersons, { 'noRefs': true, 'indent': '4' });
+        fs.writeFileSync(yamlPath, filteredPersonsYAML, 'utf8');
+        console.log(`Fetched ${filteredPersons.length} persons for ${DOMAIN}`);
+
+        const activeCategories = Object.keys(INDUSTRY_PERSON_IN_EDITIONS)
+        for (const activeCategory of activeCategories) {
+            generatePersonsSearchAndFilterYamls(filteredPersons, activeCategory, lang)
+        }
     }
 }
 
-function generatePersonsSearchAndFilterYamls(allData, lang) {
+function generatePersonsSearchAndFilterYamls(persons, category, lang) {
     let filters = {
         genders: {},
         roleatfilms: {},
@@ -221,7 +241,7 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
         icategories: {},
     };
 
-    const persons_search = allData.map(person => {
+    const persons_search = persons.filter(person => person[category]).map(person => {
 
         let genders = [];
         if (typeof person.gender !== 'undefined') {
@@ -290,9 +310,9 @@ function generatePersonsSearchAndFilterYamls(allData, lang) {
     };
 
     let searchYAML = yaml.dump(persons_search, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `search_persons.${lang}.yaml`), searchYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `search_persons.${category}.${lang}.yaml`), searchYAML, 'utf8');
 
     let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `filters_persons.${lang}.yaml`), filtersYAML, 'utf8');
+    fs.writeFileSync(path.join(fetchDir, `filters_persons.${category}.${lang}.yaml`), filtersYAML, 'utf8');
 }
 
