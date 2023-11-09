@@ -117,14 +117,28 @@ if (DOMAIN !== 'industry.poff.ee') {
 
     const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
-    const activeEditions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
-    console.log('activeEditions', activeEditions)
-    const personsWithEditions = STRAPIDATA_ALL_PERSONS.filter(p => p.festival_editions && p.festival_editions.length)
-    console.log('personsWithEditions', personsWithEditions.length)
-    const activePersons = personsWithEditions
+    // industry_person_in_editions:
+    //   is_in_industry: [68]
+    //   is_in_creative: [59]
+    //   ...
+    const industryPersonInEditions = DOMAIN_SPECIFICS.industry_person_in_editions
+    const activeCategories = Object.keys(industryPersonInEditions)
+    console.log('activeCategories', activeCategories)
+    const activePersons = STRAPIDATA_ALL_PERSONS
+        // filter out persons who have no festival_editions
+        .filter(p => p.festival_editions && p.festival_editions.length)
+        // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the person
+        .map(p => {
+            for (const [industryPersonInEdition, editionIds] of Object.entries(industryPersonInEditions)) {
+                // console.log('industryPersonInEdition', industryPersonInEdition, 'editionId', editionIds)
+                p[industryPersonInEdition] = p.festival_editions.some(fe => editionIds.includes(fe.id))
+            }
+            return p
+        })
+        // filter out persons who are not in any active edition
         .filter(p => {
-            const feIds = (p.festival_editions || []).map(fe => fe.id) || []
-            return feIds.some(id => activeEditions.includes(id))})
+            return activeCategories.some(activeEdition => p[activeEdition])
+        })
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons)
 }
