@@ -9,10 +9,18 @@ block content
 
             input#search(type='text', placeholder= self.label.filters.search)
 
-            select#icategories_select(name='Icategories')
-                option(value='')= self.label.filters.industryCategories
-                if self.data.filters.icategories
-                    each index, key in self.data.filters.icategories
+            //- select#genders_select(name='Genders' style='display: none')
+            select#genders_select(name='Genders')
+                option(value='')= self.label.filters.gender
+                if self.data.filters.genders
+                    each index, key in self.data.filters.genders
+                        option(value=key)= index
+
+            //- select#nativelangs_select(name='NativeLangs' style='display: none')
+            select#nativelangs_select(name='NativeLangs')
+                option(value='')= self.label.filters.nativeLanguage
+                if self.data.filters.nativelangs
+                    each index, key in self.data.filters.nativelangs
                         option(value=key)= index
 
             select#roleatfilms_select(name='Roleatfilms')
@@ -27,17 +35,13 @@ block content
                     each index, key in self.data.filters.types
                         option(value=key)= index
 
-            select#nativelangs_select(name='NativeLangs' style='display: none')
-                option(value='')= self.label.filters.nativeLanguage
-                if self.data.filters.nativelangs
-                    each index, key in self.data.filters.nativelangs
+            select#icategories_select(name='Icategories' style='display: none')
+                option(value='')= self.label.filters.industryCategories
+                if self.data.filters.icategories
+                    each index, key in self.data.filters.icategories
                         option(value=key)= index
 
-            select#genders_select(name='Genders' style='display: none')
-                option(value='')= self.label.filters.gender
-                if self.data.filters.genders
-                    each index, key in self.data.filters.genders
-                        option(value=key)= index
+
 
             button.clear(onclick='unselect_all()')= self.label.filters.empty
 
