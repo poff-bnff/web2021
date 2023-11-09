@@ -288,28 +288,34 @@ const getCourseEventVideoUrl = async (courseEventId) => {
 // with REFRESH_TOKEN and USER_PROFILE.
 //
 ; (async function () {
+    const logInButton = document.getElementById('logIn')
+    const logOutButton = document.getElementById('logOut')
+    const userProfileButton = document.getElementById('userProfile')
     if (isUserTokenValid()) {
         document.dispatchEvent(userProfileLoadedEvent)
-        try {
-            document.getElementById('logOut').style.display = 'block'
-            document.getElementById('userProfile').style.display = 'block'
-            document.getElementById('logIn').style.display = 'none'
-        } catch (error) {
-            console.log(error)
+        if (logInButton) {
+            logInButton.style.display = 'none'
+        }
+        if (logOutButton) {
+            logOutButton.style.display = 'block'
+        }
+        if (userProfileButton) {
+            userProfileButton.style.display = 'block'
         }
     } else {
         localStorage.removeItem('ID_TOKEN')
         localStorage.removeItem('REFRESH_TOKEN')
         localStorage.removeItem('USER_PROFILE')
-        try {
-            document.getElementById('logOut').style.display = 'none'
-            document.getElementById('userProfile').style.display = 'none'
-            document.getElementById('logIn').style.display = 'block'
-        } catch (error) {
-            // console.log(error)
+        if (logInButton) {
+            logInButton.style.display = 'block'
+        }
+        if (logOutButton) {
+            logOutButton.style.display = 'none'
+        }
+        if (userProfileButton) {
+            userProfileButton.style.display = 'none'
         }
     }
-
 })()
 
 //
