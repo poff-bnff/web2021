@@ -124,9 +124,9 @@ industry_eventival_badges_whitelist:
 #     - team
 
 target_build_models:
-    - cassette
+    # - cassette
     - course-event
-    - film
+    # - film
     # - industry-project
     # - programme
     - screening
