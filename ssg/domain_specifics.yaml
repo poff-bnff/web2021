@@ -99,29 +99,9 @@ industry_eventival_badges_whitelist:
     - TEAM
     - VOLUNTEER
 
-# skip_build_for_models:
-#     - bruno-supporter
-#     - bruno-supporter
-#     - bruno-supporter
-#     - cassette
-#     - course-event
-#     - film
-#     - industry-event
-#     - industry-person
-#     - industry-project
-#     - industry-supporter
-#     - just-supporter
-#     - kinoff-supporter
-#     - kumu-supporter
-#     - person
-#     - poffi-supporter
-#     - product-category
-#     - programme
-#     - screening
-#     - shop
-#     - shorts-supporter
-#     - supporters-page
-#     - team
+industry_person_in_editions:
+    is_in_industry: [68]
+    is_in_creative: [59]
 
 target_build_models:
     # - cassette
@@ -558,3 +538,27 @@ role_dialog:
     tartuff.ee:
         article: tartuffi_article
         courseEvent: tartuffi_courseevent
+
+# skip_build_for_models:
+#     - bruno-supporter
+#     - bruno-supporter
+#     - bruno-supporter
+#     - cassette
+#     - course-event
+#     - film
+#     - industry-event
+#     - industry-person
+#     - industry-project
+#     - industry-supporter
+#     - just-supporter
+#     - kinoff-supporter
+#     - kumu-supporter
+#     - person
+#     - poffi-supporter
+#     - product-category
+#     - programme
+#     - screening
+#     - shop
+#     - shorts-supporter
+#     - supporters-page
+#     - team

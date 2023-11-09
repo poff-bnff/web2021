@@ -1,5 +1,5 @@
 path: persons-search
 data:
     persons: /_fetchdir/persons.en.yaml
-    filters: /_fetchdir/filters_persons.en.yaml
-    search: /_fetchdir/search_persons.en.yaml
+    filters: /_fetchdir/filters_persons.is_in_industry.en.yaml
+    search: /_fetchdir/search_persons.is_in_industry.en.yaml
