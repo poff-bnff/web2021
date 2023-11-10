@@ -171,13 +171,13 @@ block content
                                 }
                                 eventivalLoginE.remove()
                             }
+                            const videoUrl = '!{self.video_url}'
                             // Wait for page to load
                             document.addEventListener('DOMContentLoaded', function (e) {
-                                console.log('DOMContentLoaded', {userProfileHasBeenLoaded, courseEventId})
                                 if (eventAccess === "Free (without accreditation)") {
-                                    console.log('free video')
-                                    if (self.video_url) {
-                                        videoFrameE.src = `https://videolevels.com/embed/${self.video_url.split('/bc/')[1].split('/')[0]}`
+                                    console.log(`Free event, showing video on url ${self}`, courseEventId)
+                                    if (videoUrl) {
+                                        videoFrameE.src = `https://videolevels.com/embed/${videoUrl.split('/bc/')[1].split('/')[0]}`
                                         videoVideoE.classList.remove('d-none')
                                         eventImageE.remove()
                                     }
