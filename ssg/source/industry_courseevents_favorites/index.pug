@@ -1,0 +1,418 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if self.data.industryevents && self.data.industryevents[0]
+        input(type='hidden', id='course_event_ids', value=self.data.industryevents.map(e => e.id).join(','))
+    .events_search_page_title_wrapper
+        //- Temporary static content in page title to test styles
+        h1.events_search_page_title= self.label.filters.programme
+    if self.data.filters && process.env['DOMAIN'] === 'industry.poff.ee'
+        h3#loading.sub_section_headline(style='display: grid; padding-top: 155px;')= self.label.filters.loading
+
+        section#content.schedule
+
+            div#events-view-switch
+                .list-calendar-view-icon
+                    input#event-list-view-button.event-list-view-btn(type='radio' name='list-view' value='event-list')
+                    svg(width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        g#icon
+                        path#Vector(d='M5.33398 4H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_2(d='M5.33398 8H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_3(d='M5.33398 12H14.0007' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_4(d='M2 4H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_5(d='M2 8H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_6(d='M2 12H2.00667' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                .list-calendar-view-icon
+                    input#event-calendar-view-button.event-list-view-btn(type='radio' name='list-view' value='calendar-list')
+                    svg(width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        g#icon
+                        path#Vector(d='M12.6667 2.66602H3.33333C2.59695 2.66602 2 3.26297 2 3.99935V13.3327C2 14.0691 2.59695 14.666 3.33333 14.666H12.6667C13.403 14.666 14 14.0691 14 13.3327V3.99935C14 3.26297 13.403 2.66602 12.6667 2.66602Z' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_2(d='M10.666 1.33398V4.00065' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_3(d='M5.33398 1.33398V4.00065' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+                        path#Vector_4(d='M2 6.66602H14' stroke='#636769' stroke-linecap='round' stroke-linejoin='round')
+
+
+            if self.data.industryevents
+
+                -
+                    var sortFunction = function(a, b) {
+                        return !a.start_time.localeCompare(b.start_time)
+                    }
+
+                each date, key in self.data.filters.starttimes
+
+                        div(class="event-calendar-container", key=key)
+                            .event-calendar(id=`ec-${date}`)
+
+                each event in self.data.industryevents.sort(sortFunction)
+                        -
+                            var screeningNames = function(item) {
+                                let itemNames = item.title
+                                return itemNames
+                            }
+
+                        div.event_card_link
+                            .card_event(id=event.id)
+                                .event_card_header
+                                    .event_card_header_left
+                                        .header_text
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M16 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M8 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M3 10H21' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                            span
+                                                if event.start_time
+                                                    +screeningDate(event.start_time)
+                                        .event_time
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M12 6V12L16 14' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                            .header_text
+                                                span.bold
+                                                    +screeningTimeEET(event.start_time)
+                                                span.bold &nbsp;EET&nbsp;
+                                                span.bold /&nbsp;
+                                                span
+                                                    +screeningTime(event.start_time)
+                                                span &nbsp;user
+                                        if event.location
+                                            .header_text
+                                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                    path(d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                    path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                span= event.location.name
+
+                                    .event_card_header_right(course_event_id=event.id)
+                                        .add_to_cal.is_not_fav
+                                            .header_text
+                                                a.list_view_add_to_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
+                                                    span.add_to_cal_text= self.t.add2cal
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
+                                        .rem_from_cal.is_fav.d-none
+                                            .header_text
+                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
+                                                    span.rem_from_cal_text= self.t.rem4cal
+                                                    img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
+                                                //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= self.t.add2cal
+                                                //- span.issavedevent(id=event.id+'_is_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('rmMyEvent', ${event.id})`)= 'Remove from calendar'
+
+
+                                a(href=`#eventModal${event.id}`, data-bs-toggle='modal', data-bs-target=`#eventModal${event.id}`).event_card_content.stretched-link
+                                    //- if event.images && event.images[0]
+                                    //-     img(style='width:200px; height:200px;' src=`https://assets.poff.ee/img/${event.images[0].hash}${event.images[0].ext}`)
+                                    h3.event_title= event.title
+                                        //- p(id= event.id+'nupp' style={color: 'red', display:'none'})
+
+                                    //- if event.industry_categories
+                                    //-     p.ce_info= `Category: ${event.industry_categories.map(c => c.name).join(', ')}`
+
+                                    //- //- if event.industry_categories
+                                    //- //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+
+                                    //- if event.event_mode
+                                    //-     p.ce_info= `Event mode: ${event.event_mode.name}`
+
+                                    //- if event.event_access
+                                    //-     p.ce_info= `Access: ${event.event_access}`
+
+                                    .event_card_keywords
+                                        .event_card_keywords_left
+                                            .button_group
+                                                if event.industry_categories
+                                                    span.btn_outline= event.industry_categories.map(c => c.name).join(', ')
+                                                if event.event_types
+                                                    span.btn_outline= event.event_types.join(', ')
+                                            //- Temporary placeholder content
+                                            //- span.keyword subject 1, keyword 2, subject 3
+                                        .event_card_keywords_right
+                                            if event.is_live_event
+                                                div
+                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                        path(d="M22 12H18L15 21L9 3L6 12H2", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Live event
+                                            else
+                                                div
+                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                        path(d="M5 3L19 12L5 21V3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Recorded event
+                                            if event.event_mode
+                                                div
+                                                    if event.event_mode.name === 'Onsite event'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_mode.name === 'Onsite event with stream'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M23 7L16 12L23 17V7Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M20 3H4C2.89543 3 2 3.89543 2 5V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8 21H16", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 17V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_mode.name
+                                            if event.event_access
+                                                div
+                                                    if event.event_access === 'Open (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M10 17L15 12L10 7", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 12H3", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Pre-registration needed (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 4H18C18.5304 4 19.0391 4.21071 19.4142 4.58579C19.7893 4.96086 20 5.46957 20 6V20C20 20.5304 19.7893 21.0391 19.4142 21.4142C19.0391 21.7893 18.5304 22 18 22H6C5.46957 22 4.96086 21.7893 4.58579 21.4142C4.21071 21.0391 4 20.5304 4 20V6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4H8", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 2H9C8.44772 2 8 2.44772 8 3V5C8 5.55228 8.44772 6 9 6H15C15.5523 6 16 5.55228 16 5V3C16 2.44772 15.5523 2 15 2Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Invitations only'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M17 11L19 13L23 9", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M23 20.9999V18.9999C22.9993 18.1136 22.7044 17.2527 22.1614 16.5522C21.6184 15.8517 20.8581 15.3515 20 15.1299", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M16 3.12988C16.8604 3.35018 17.623 3.85058 18.1676 4.55219C18.7122 5.2538 19.0078 6.11671 19.0078 7.00488C19.0078 7.89305 18.7122 8.75596 18.1676 9.45757C17.623 10.1592 16.8604 10.6596 16 10.8799", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_access
+
+                                    //- .flekxboks
+                                    //-     if event.credentials && event.credentials.rolePersonsByRole
+                                    //-         each roleGroup, key in event.credentials.rolePersonsByRole
+                                    //-             //- Kui tahta teistsugust nö labelit kui role_at_film.roleName, siis saab kasutada loogikat nagu filmide all:
+                                    //-             //- ehk self.label.film.speaker nt ja kätte saab järgmise koodijupiga: self.label.film[key]
+                                    //-             if roleGroup.persons && roleGroup.persons.length
+                                    //-                 p.ce_info= `${roleGroup.roleName}: ${roleGroup.persons.join(', ')}`
+
+
+                                    //- if event.industry_people
+                                    //-     each industry_person in event.industry_people
+                                    //-         if industry_person.profilePicAtInd
+                                    //-             img(style='width:50px; height:50px;' src=`https://assets.poff.ee/img/${industry_person.profilePicAtInd.hash}${industry_person.profilePicAtInd.ext}`)
+
+                                    //-         p= `${industry_person.person.firstName} ${industry_person.person.lastName}`
+
+                                    //-         if industry_person.industry_person_types
+                                    //-             p= `Ind.PersonTypes: ${industry_person.industry_person_types.map(p => p.type).join(', ')}`
+
+                                    //-         if industry_person.role_at_films
+                                    //-             p= `Ind.PersonRoleAtFilms: ${industry_person.role_at_films.map(p => p.roleName).join(', ')}`
+
+                                    //- if event.description
+                                    //-     p
+                                    //-         +format(event.description)
+
+                                    //- if event.industry_categories
+                                    //-     p= `Categories: ${event.industry_categories.map(c => c.name).join(', ')}`
+
+                                    //- if event.start_time
+                                    //-     p Start time:
+                                    //-     p
+                                    //-         +screeningDate(event.start_time)
+                                    //-     p
+                                    //-         +screeningTime(event.start_time)
+
+                                    //- if event.durationTime
+                                    //-     p Duration:
+                                    //-     p
+                                    //-         +indEvDur(event.durationTime)
+
+                                    //- if event.project_type
+                                    //-     p= `Type: ${event.project_type}`
+
+
+                                    //- if event.videoUrl
+                                    //-     p= `Video at: ${event.videoUrl}`
+
+                                    //- p= `Public: ${event.isPublicEvent ? 'Yes' : 'No'}`
+                                    //- p= `Live: ${event.isLiveEvent ? 'Yes' : 'No'}`
+
+
+
+
+
+                            //- .event_card_footer
+                            //-     .grid_container_screening_time_2
+                            //-         div
+                            //-             svg.svg_icon_small(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 circle(cx='12' cy='12' r='10')
+                            //-                 polyline(points='12 6 12 12 16 14')
+                            //-             span.screening_time.small_1
+                            //-                 +screeningTime(event.start_time)
+                            //-             span.screening_time.small_1 &nbsp;User
+
+                            //-         .text_left
+                            //-             svg.svg_icon_small_primary(viewBox='0 0 24 24' width='24' height='24' stroke='#4fc4bf' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            //-                 rect(x='3' y='4' width='18' height='18' rx='2' ry='2')
+                            //-                 line(x1='16' y1='2' x2='16' y2='6')
+                            //-                 line(x1='8' y1='2' x2='8' y2='6')
+                            //-                 line(x1='3' y1='10' x2='21' y2='10')
+                            //-             span.screening_date.small_1(onclick=`calendarfile('${event.id}');return false`)= self.t.add2cal
+
+                            //- Selle peidetud inputi sees on data
+                            span(id=`cal_${event.id}` style='display: none') #{event.calendar_data}
+
+        if self.data.industryevents
+            each event in self.data.industryevents
+                .modal.event-modal(id=`eventModal${event.id}`, aria-hidden="true", tabindex="-1", aria-labelledby=`modal-title-${event.id}`)
+                    .modal-dialog.modal-xl.modal-dialog-scrollable
+                        .modal-content
+                            .modal-body
+                                button.btn-close(type="button", data-bs-dismiss="modal", aria-label="Close")
+                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                        path(d="M18 6L6 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                        path(d="M6 6L18 18", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                .event_card_header
+                                    .event_card_header_left
+                                        .header_text
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M16 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M8 2V6' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M3 10H21' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                            span
+                                                if event.start_time
+                                                    +screeningDate(event.start_time)
+                                        .event_time
+                                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none')
+                                                path(d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                                path(d='M12 6V12L16 14' stroke='#12827E' stroke-linecap='round' stroke-linejoin='round')
+                                            .header_text
+                                                span.bold
+                                                    +screeningTimeEET(event.start_time)
+                                                span.bold &nbsp;EET&nbsp;
+                                                span.bold /&nbsp;
+                                                span
+                                                    +screeningTime(event.start_time)
+                                                span &nbsp;user
+                                        if event.location
+                                            .header_text
+                                                svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                    path(d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                    path(d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z", stroke="#12827E", stroke-linecap="round", stroke-linejoin="round")
+                                                span= event.location.name
+
+                                    .event_card_header_right(course_event_id=event.id)
+                                        .add_to_cal.is_not_fav
+                                            .header_text
+                                                a.list_view_add_to_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                    span.add_to_cal_text= self.t.add2cal
+                                                    img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
+                                        .rem_from_cal.is_fav.d-none
+                                            .header_text
+                                                a.list_view_rem_from_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                    span.rem_from_cal_text= self.t.rem4cal
+                                                    img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
+
+                                .event_card_content
+                                    h3(id=`modal-title-${event.id}`).event_title= event.title
+                                    .event_card_keywords
+                                        .event_card_keywords_left
+                                            .button_group
+                                                if event.industry_categories
+                                                    span.btn_outline= event.industry_categories.map(c => c.name).join(', ')
+                                                if event.event_types
+                                                    span.btn_outline= event.event_types.join(', ')
+                                            //- Temporary placeholder content
+                                            //- span.keyword subject 1, keyword 2, subject 3
+                                        .event_card_keywords_right
+                                            if event.is_live_event
+                                                div
+                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                        path(d="M22 12H18L15 21L9 3L6 12H2", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Live event
+                                            else
+                                                div
+                                                    svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                        path(d="M5 3L19 12L5 21V3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword Recorded event
+                                            if event.event_mode
+                                                div
+                                                    if event.event_mode.name === 'Onsite event'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_mode.name === 'Onsite event with stream'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M23 7L16 12L23 17V7Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M14 5H3C1.89543 5 1 5.89543 1 7V17C1 18.1046 1.89543 19 3 19H14C15.1046 19 16 18.1046 16 17V7C16 5.89543 15.1046 5 14 5Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M20 3H4C2.89543 3 2 3.89543 2 5V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8 21H16", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M12 17V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_mode.name
+                                            if event.event_access
+                                                div
+                                                    if event.event_access === 'Open (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M10 17L15 12L10 7", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 12H3", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Pre-registration needed (with accreditation)'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 4H18C18.5304 4 19.0391 4.21071 19.4142 4.58579C19.7893 4.96086 20 5.46957 20 6V20C20 20.5304 19.7893 21.0391 19.4142 21.4142C19.0391 21.7893 18.5304 22 18 22H6C5.46957 22 4.96086 21.7893 4.58579 21.4142C4.21071 21.0391 4 20.5304 4 20V6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4H8", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M15 2H9C8.44772 2 8 2.44772 8 3V5C8 5.55228 8.44772 6 9 6H15C15.5523 6 16 5.55228 16 5V3C16 2.44772 15.5523 2 15 2Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else if event.event_access === 'Invitations only'
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M17 11L19 13L23 9", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    else
+                                                        svg(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none")
+                                                            path(d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M23 20.9999V18.9999C22.9993 18.1136 22.7044 17.2527 22.1614 16.5522C21.6184 15.8517 20.8581 15.3515 20 15.1299", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                            path(d="M16 3.12988C16.8604 3.35018 17.623 3.85058 18.1676 4.55219C18.7122 5.2538 19.0078 6.11671 19.0078 7.00488C19.0078 7.89305 18.7122 8.75596 18.1676 9.45757C17.623 10.1592 16.8604 10.6596 16 10.8799", stroke="#636769", stroke-linecap="round", stroke-linejoin="round")
+                                                    span.keyword= event.event_access
+                                .event_text
+                                    p.event_description= event.short_descr
+                                    .button_group
+                                        //- Button placeholder for style testing
+                                        //- button.btn_default Register now
+                                        if event.button
+                                            a(href= event.button.url target='_BLANK')
+                                                button.btn_default= event.button.text
+                                        if event.product_categories
+                                            - var shopDir = 'https://poff.ee/'
+                                            a(href=`${shopDir}${event.product_categories[0].slug}`)
+                                                button.btn_default= self.label.userprofile.buyCourseRegister
+                                        a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
+                                if event.credentials && event.credentials.rolePerson
+                                    .event_people
+                                        each rolePerson in event.credentials.rolePerson
+                                            - var person = rolePerson.person
+                                            if person.slug
+                                                .event_person
+                                                    a(href=`/${person.slug}`).event_person_link
+                                                        if person.picture
+                                                            - var personPic = assetsDir + person.picture.hash + person.picture.ext
+                                                        else
+                                                            - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
+                                                        .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
+                                                            img.event_person_img(src=personPic alt=`${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`)
+                                                        p.event_person_name= `${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`
+                                                        if rolePerson.role_at_film
+                                                            p.event_person_title= rolePerson.role_at_film.roleName
+                                            else
+                                                .event_person
+                                                    if person.picture
+                                                        - var personPic = assetsDir + person.picture.hash + person.picture.ext
+                                                    else
+                                                        - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
+                                                    .event_person_img_wrapper.ratio.ratio-1x1.overflow-hidden
+                                                        img.event_person_img(src=personPic alt=`${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`)
+                                                    p.event_person_name= `${person.firstName ? person.firstName : ''} ${person.lastName ? person.lastName : ''}`
+                                                    if rolePerson.role_at_film
+                                                        p.event_person_title= rolePerson.role_at_film.roleName
+
+
+        script.
+            var searcharray = !{JSON.stringify(self.data.search)}
+
+            var datesArray = !{JSON.stringify(self.data.filters.starttimes)}
+
+            var calendarEventData =!{JSON.stringify(self.data.industryevents)}
+
+            var filters = !{JSON.stringify(self.data.filters)}
