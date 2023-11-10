@@ -199,7 +199,7 @@ function processEvents(courseEventCopy, lang) {
                 // No duration set, use end_time.
                 eventend = convert_to_UTC(element.end_time)
             }
-            element.calendar_data = escape(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
+            element.calendar_data = encodeURI(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
                 domain: DOMAIN,
                 prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
                 events: [
