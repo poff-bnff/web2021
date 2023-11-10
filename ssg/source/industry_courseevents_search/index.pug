@@ -157,12 +157,12 @@ block content
                                     .event_card_header_right(course_event_id=event.id)
                                         .add_to_cal.is_not_fav
                                             .header_text
-                                                a.list_view_add_to_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                a.list_view_add_to_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
                                                     span.add_to_cal_text= self.t.add2cal
                                                     img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
                                         .rem_from_cal.is_fav.d-none
                                             .header_text
-                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
                                                     span.rem_from_cal_text= self.t.rem4cal
                                                     img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
                                                 //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= self.t.add2cal
