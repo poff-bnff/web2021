@@ -12,6 +12,7 @@ poff.ee:
     - /industry_persons_search
     - /discamp_persons_search
     - /industryproject
+    - /industry_courseevents_favorites
     - /industry_projects
     - /industry_projects_search
     - /industry_projects_archive_search
@@ -43,6 +44,7 @@ filmikool.poff.ee:
     - /industry_persons_search
     - /discamp_persons_search
     - /industryproject
+    - /industry_courseevents_favorites
     - /industry_projects
     - /industry_projects_search
     - /industry_projects_archive_search
@@ -80,6 +82,7 @@ kumu.poff.ee:
     - /industry_persons_search
     - /discamp_persons_search
     - /industryproject
+    - /industry_courseevents_favorites
     - /industry_projects
     - /industry_projects_search
     - /industry_projects_archive_search
@@ -148,6 +151,7 @@ discoverycampus.poff.ee:
     - /letschat
     - /favouriteAWS
     - /search_archive
+    - /industry_courseevents_favorites
     - /industry_persons_search
     - /industry_projects_archive_search
     - /industry_persons_archive_search
@@ -172,6 +176,7 @@ tartuff.ee:
     - /industry_persons_search
     - /discamp_persons_search
     - /industryproject
+    - /industry_courseevents_favorites
     - /industry_projects
     - /industry_projects_search
     - /industry_projects_archive_search
@@ -208,6 +213,7 @@ default:
     - /events
     - /favourite
     - /industry_cal
+    - /industry_courseevents_favorites
     - /industry_events
     - /industry_events_search
     - /industry_mycal
