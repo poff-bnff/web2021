@@ -12,13 +12,14 @@ let filmographiesToDelete = []
 let existingGalleryImagesToDelete = []
 let profileId = null
 
-if (isUserTokenValid()) {
-    loadUserInfo()
-} else {
-    document.getElementById('logInStatus').style.display = ''
-    window.open(`${location.origin}/${langpath}login`, '_self')
-    savePreLoginUrl()
-}
+requireEventivalLogin()
+// if (isUserTokenValid()) {
+//     loadUserInfo()
+// } else {
+//     document.getElementById('logInStatus').style.display = ''
+//     window.open(`${location.origin}/${langpath}login`, '_self')
+//     savePreLoginUrl()
+// }
 
 // async function getPersonForm() {
 //     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
