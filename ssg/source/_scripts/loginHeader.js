@@ -291,6 +291,7 @@ const getCourseEventVideoUrl = async (courseEventId) => {
     const logInButton = document.getElementById('logIn')
     const logOutButton = document.getElementById('logOut')
     const userProfileButton = document.getElementById('userProfile')
+    const myEventsButton = document.getElementById('myEvents')
     if (isUserTokenValid()) {
         document.dispatchEvent(userProfileLoadedEvent)
         if (logInButton) {
@@ -301,6 +302,9 @@ const getCourseEventVideoUrl = async (courseEventId) => {
         }
         if (userProfileButton) {
             userProfileButton.style.display = 'block'
+        }
+        if (myEventsButton) {
+            myEventsButton.style.display = 'block'
         }
     } else {
         localStorage.removeItem('ID_TOKEN')
@@ -314,6 +318,9 @@ const getCourseEventVideoUrl = async (courseEventId) => {
         }
         if (userProfileButton) {
             userProfileButton.style.display = 'none'
+        }
+        if (myEventsButton) {
+            myEventsButton.style.display = 'none'
         }
     }
 })()
