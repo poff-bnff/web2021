@@ -27,6 +27,7 @@ label:
         mainTeam: Team
         mainSchedule: Schedule
         mainLogin: Login
+        mainMyEvents: My events
         mainLogout: Log Out
         mainSignup: Sign Up
         mainGreeting: Hello

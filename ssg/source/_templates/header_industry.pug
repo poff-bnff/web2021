@@ -73,6 +73,8 @@ header.menu
                     //-     a(onclick = 'saveUrl()', href=`/${lang_path}userprofile`)= self.label.menu.mainProfile
                     li#logOut.dropdown_el(style={cursor: 'pointer', display: 'none'} )
                         a(onclick='logOut()')= self.label.menu.mainLogout
+                    li#myEvents.dropdown_el(style={cursor: 'pointer', display: 'none'} )
+                        a(href='/my-events')= self.label.menu.mainMyEvents
 
             //- Temporary placeholder for lang menu to test styles
             //- nav.lang_menu
