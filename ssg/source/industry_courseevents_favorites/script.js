@@ -33,7 +33,7 @@ document.onreadystatechange = async () => {
         try {
             document.querySelector(`.ec-event a[href="#eventModal${id}"]`).parentElement.parentElement.remove()
         } catch (error) {
-            console.log(`EventCalendar item with href="#eventModal${id}" not found`)
+            // console.log(`EventCalendar item with href="#eventModal${id}" not found`)
         }
     })
     // Filter out events, that are not in userCourseEvents
@@ -141,6 +141,7 @@ document.onreadystatechange = async () => {
 
 
                     // Create events for calendar
+                    console.log(`Event ${event.id} start: ${eventStartTime}, end: ${eventEndTime}, title: ${event.title}, location: ${event.location.name}, ical: ${event.calendar_data}`)
                     const singleEventId = event.id
                     const singleEventLocation = event.location.id
                     const singleEventStartTime = eventStartTime
