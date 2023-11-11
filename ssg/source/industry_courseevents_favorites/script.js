@@ -1,105 +1,65 @@
-const search_input = document.getElementById('search');
-const nonetoshow = document.getElementById('nonetoshow');
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const starttimes = document.getElementsByName('selectedDates');
 const eventListInput = document.getElementById('event-list-view-button')
 const eventCalendarInput = document.getElementById('event-calendar-view-button')
 
-const selectors = {
-    categories: document.getElementById('categories_select'),
-    // projects: document.getElementById('projects_select'),
-    persons: document.getElementById('persons_select'),
-    festivaleditions: document.getElementById('festivaleditions_select'),
-    eventtypes: document.getElementById('eventtypes_select'),
-    eventmodes: document.getElementById('eventmodes_select'),
-    isliveevent: document.getElementById('isliveevent_select'),
-    eventaccess: document.getElementById('eventaccess_select'),
-    location: document.getElementById('location_select'),
-}
-
-const urlSelect = () => {
-    if (urlParams.getAll.length) {
-        for (const [ix, params] of urlParams) {
-            const filterValue = decodeURIComponent(params);
-            if (selectors[ix]) {
-                Array.from(selectors[ix].options).forEach(option => {
-                    if (option.innerHTML === filterValue) {
-                        option.selected = true;
-                    }
-                });
-                // Trigger change event for select2
-                $(selectors[ix]).trigger('change');
-            } else if (ix === 'starttimes') {
-                document.querySelector(`[name="selectedDates"][value="${filterValue}"]`).checked = true
-            }
-        }
-    }
-}
-
-document.onreadystatechange = () => {
+document.onreadystatechange = async () => {
     const loading = document.getElementById('loading');
     // const content = document.getElementById('content');
-    const filters = document.querySelector('.search_filters');
+    if (document.readyState !== 'complete') {
+        loading.style.display = "block"
+        return
+    }
 
-    if (document.readyState === 'complete') {
-        urlSelect()
-        loading.style.display = "none"
-        // content.style.display = ""
+    loading.style.display = "none"
+    // content.style.display = ""
 
-        for (img of document.images) {
-            img_src = img.src || ''
-            if (img_src.includes('thumbnail_')) {
-                    img.src = img_src.replace('thumbnail_', '')
-            }
+    for (img of document.images) {
+        img_src = img.src || ''
+        if (img_src.includes('thumbnail_')) {
+                img.src = img_src.replace('thumbnail_', '')
         }
-        setupCourseEventFavoriteButtons()
     }
-}
+    await setupCourseEventFavoriteButtons()
+    console.log(`My ${userCourseEvents.length} events:`, userCourseEvents)
+    // Hide cards that are not in userCourseEvents
+    const currentCourseEventIDs = Array.from(document.getElementById('course_event_ids').value.split(',')).map(id => parseInt(id))
+    // console.log(`Current ${currentCourseEventIDs.length} events:`, currentCourseEventIDs)
+    const events2remove = currentCourseEventIDs.filter(id => !userCourseEvents.includes(id))
+    console.log(`Remove ${events2remove.length} from ${currentCourseEventIDs.length} events`)
+    // Remove non-favorite cards and calendar events
+    events2remove.forEach(id => {
+        // console.log('Removing event:', id)
+        document.getElementById(id).parentElement.remove()
+        // EventCalendar items are '.ec-event' divs, that are parents of '.single-event' links, that have hrefs with event id
+        try {
+            document.querySelector(`.ec-event a[href="#eventModal${id}"]`).parentElement.parentElement.remove()
+        } catch (error) {
+            console.log(`EventCalendar item with href="#eventModal${id}" not found`)
+        }
+    })
+    // Filter out events, that are not in userCourseEvents
+    calendarEventData = calendarEventData.filter(event => userCourseEvents.includes(event.id))
+    // Filter out dates, that have no events
+    // console.log('Start times:', calendarEventData.map(event => event.start_time))
+    const uniqueDates = [...new Set(calendarEventData.map(event => moment.parseZone(new Date(event.start_time)).tz('Europe/Tallinn').format('YYYY-MM-DD')))]
+    // console.log('Unique dates:', uniqueDates)
+    // remove dates, that have no events: .event-calendar-container with attribute key="_YYYY-MM-DD"
+    Object.keys(datesArray).forEach(key => {
+        if (!uniqueDates.includes(datesArray[key])) {
+            document.querySelector(`.event-calendar-container[key="${key}"]`).remove()
+        }
+    })
+    // datesArray is actually an object, that has dates prefixed with underscores as keys
+    datesArray = uniqueDates.reduce((obj, date) => {
+        obj[`_${date}`] = date
+        return obj
+    }, {})
 
-const select_next_or_previous = (which, id) => {
-    var select = document.getElementById(id);
-    if (which === '+') {
-        select.selectedIndex++;
-    } else {
-        select.selectedIndex--;
-    }
-}
+    console.log('datesArray:', datesArray)
+// }
 
-$(document).ready(function () {
+// $(document).ready(function () {
     // Disables search input in multiselect
-    const overrideSelect2MultiselectLabel = (element) => {
-        const selection = element.siblings("span.select2").find("ul");
-        const count = element.select2('data').length;
 
-        const label = element.attr("data-placeholder");
-        selection.html(`<li>${label}${count > 0 ? ` (${count})` : ''}</li>`);
-    };
-
-    $(".select2-multiple").each(function () {
-        $(this).select2({
-            multiple: true,
-            minimumResultsForSearch: -1,
-            width: "100%",
-            dropdownAutoWidth: true,
-            closeOnSelect: false,
-        });
-
-        overrideSelect2MultiselectLabel($(this));
-    });
-
-    $('.select2-single').select2({
-        minimumResultsForSearch: -1,
-        width: "100%",
-        dropdownAutoWidth: true,
-    });
-
-    $(".select2-multiple").on(
-        "change select2:close select2:select select2:unselect select2:clear",
-        function () {
-            overrideSelect2MultiselectLabel($(this));
-        }
-    );
 
     // Add class to activate event person image animation
     $('.event_person_link').on('mouseleave', function () {
@@ -271,4 +231,5 @@ $(document).ready(function () {
             }
         }
     }
-})
+}
+// )
