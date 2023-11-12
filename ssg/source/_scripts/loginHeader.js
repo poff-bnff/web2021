@@ -293,6 +293,8 @@ const getCourseEventVideoUrl = async (courseEventId) => {
     const userProfileButton = document.getElementById('userProfile')
     const myEventsButton = document.getElementById('myEvents')
     if (isUserTokenValid()) {
+        getUser()
+        userProfileHasBeenLoaded = true
         document.dispatchEvent(userProfileLoadedEvent)
         if (logInButton) {
             logInButton.style.display = 'none'
