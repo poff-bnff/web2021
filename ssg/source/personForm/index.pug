@@ -2,6 +2,9 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+    script.
+        requireLogin()
+
     section.userprofile
         form.form#thisPersonProfile(style= 'display: none')
 
