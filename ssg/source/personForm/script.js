@@ -184,9 +184,11 @@ const fillPersonForm = (person) => {
     fill().phone()
     setRepeatableFields(person.role_at_films, addNextRoleAtFilm)
     setRepeatableFields(person.tag_looking_fors, addNextTagLookingFor)
-    setRepeatableFields(person?.other_lang, addNextOtherLang)
-    setRepeatableFields(person?.filmographies?.filter(f => f.type_of_work.id === 7), addNextEducation)
-    setRepeatableFields(person?.filmographies?.filter(f => f.type_of_work.id != 7), addNextFilmographyWork)
+    setRepeatableFields(person.other_lang, addNextOtherLang)
+    const educations = person.filmographies.filter(f => f.type_of_work === 7)
+    const filmographies = person.filmographies.filter(f => f.type_of_work !== 7)
+    setRepeatableFields(educations, addNextEducation)
+    setRepeatableFields(filmographies, addNextFilmographyWork)
     // if (person.addr_coll) {
     //     console.log('person.addr_coll', person.addr_coll)
     //     document.getElementById('addr_strapi_id').value = person.addr_coll.id
@@ -446,6 +448,8 @@ async function sendPersonProfile() {
 
     }
 
+    console.log('personToSend', personToSend)
+    return;
     formData.append('data', JSON.stringify(personToSend));
 
     if (profileImageToSend !== "empty") {
@@ -546,10 +550,6 @@ async function sendPersonProfile() {
 function validatePersonForm() {
 
     const errors = []
-
-    // if (document.getElementById('personProfileSent')) {
-    //     document.getElementById('personProfileSent').style.display = 'none'
-    // }
 
     if (!validateRequiredField("firstName", "textLength")) {
         errors.push('firstName')
