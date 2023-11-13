@@ -13,29 +13,6 @@ let existingGalleryImagesToDelete = []
 let profileId = null
 
 requireEventivalLogin()
-// if (isUserTokenValid()) {
-//     loadUserInfo()
-// } else {
-//     document.getElementById('logInStatus').style.display = ''
-//     window.open(`${location.origin}/${langpath}login`, '_self')
-//     savePreLoginUrl()
-// }
-
-// async function getPersonForm() {
-//     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
-//         method: "GET",
-//         headers: {
-//             Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
-//         },
-//     });
-//     let personOnForm = await response.json()
-//     console.log({ personOnForm })
-
-//     return personOnForm
-
-// }
-
-// getPersonForm()
 
 async function loadUserInfo() {
 
@@ -509,6 +486,7 @@ function addInvalidClass(formField, formFieldHelp) {
     formFieldHelp.classList.add("invalid")
     formField.classList.add('invalidColor')
 }
+
 function removeInvalidClass(formField, formFieldHelp) {
     formFieldHelp.classList.remove("invalid")
     formFieldHelp.classList.add("valid")
@@ -666,7 +644,6 @@ function addNextRoleAtFilm(data = null) {
     roleAtFilmCounter = roleAtFilmCounter + 1
 }
 
-
 function addNextTagLookingFor(data = null) {
     const cloneElementPrefix = 'tagLookingElement'
     const tagLookingForTemplate = document.getElementById('tagLookingForTemplate');
@@ -823,4 +800,18 @@ function isJsonString(jsonString) {
     catch (e) { }
 
     return false;
-};
+}
+
+const getPerson = () => {
+    return getUser().person
+}
+
+const fetchPerson = async () => {
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/person`
+
+    const response = await fetch(url, { headers })
+    const data = await response.json()
+    return data
+}

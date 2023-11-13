@@ -28,14 +28,6 @@ block content
                             span.required= ' ' + self.label.userprofile.required
                         input.login_input#lastName.form_control( type='text' name='lastName' autocomplete="off" oninput="validateRequiredField(this.id, 'textLength')" required)
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-                    //- RoleAtFilm / roleatfilm
-                    //- .form_group
-                    //-     label.person_profile_label(for='roleatfilm')= self.label.userprofile.proRole
-                    //-     select.login_input#roleatfilm(name='roleatfilm' form="thisPersonProfile" required)
-                    //-         option.login_input.default_select(class='invalid' value="" selected="")
-                    //-             //- = self.label.userprofile.proRole
-                    //-         each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
-                    //-             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
 
             fieldset
                 //- role_at_films
@@ -52,7 +44,6 @@ block content
                                             option.login_input(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                                     div.help(class='valid') You need to enter at leat one profession
                                     input.login_input.btn_secondary.deleteButton(type='button' value="x")
-
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
@@ -73,7 +64,6 @@ block content
                                             option.login_input(value=taglookingfor.id)= taglookingfor[self.locale]
                                     div.help(class='valid') You need to enter at leat one looking for tag
                                     input.login_input.btn_secondary.deleteButton(type='button' value="x")
-
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
@@ -109,6 +99,7 @@ block content
                                 //- each language in self.data.languages.sort((a, b) => a.id - b.id)
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option.login_input(value=language.id)= language[`name_${self.locale}`]
+
             fieldset
                 //- otherLang
                 legend= self.label.userprofile.otherLang
@@ -126,16 +117,6 @@ block content
                 .fieldset_grid
                     .form_group
                         input.login_input.btn_primary(type='button' name='nextOtherLang' id='nextOtherLang' onclick='addNextOtherLang();' value='Lisa veel keel')
-
-                    //- //- other_lang / otherlang
-                    //- .form_group
-                    //-     label.person_profile_label(for='otherlang')= self.label.userprofile.otherLang
-                    //-     select.login_input#otherlang(name='otherlang[]' multiple size="6" form="thisPersonProfile")
-                    //-         //- each language in self.data.languages.sort((a, b) => a.id - b.id)
-                    //-         each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
-                    //-             option.login_input(value=language.id)= language[`name_${self.locale}`]
-                    //-         //- option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-                    //-     p= self.label.userprofile.selectMultiple
                 .fieldset_grid
                     //- bio_en
                     .form_group
@@ -179,7 +160,6 @@ block content
                     .form_group
                         label.person_profile_label(for='webpage_url')= self.label.userprofile.webpageUrl
                         input.login_input#webpage_url.form_control( type='url' pattern="https://.*" placeholder=`${self.label.userprofile.placeholderUrl}` name='webpage_url' autocomplete="off")
-
                 .fieldset_grid
                     //-  acting_age_from
                     .form_group
@@ -250,7 +230,6 @@ block content
                         label.person_profile_label(for='looking_for')= self.label.userprofile.lookingForText
                         textarea.login_input#looking_for(form="thisPersonProfile" name="looking_for")
 
-
             fieldset
                 legend= self.label.userprofile.profileImgSet
                 .fieldset_grid
@@ -266,7 +245,6 @@ block content
                     .form_group
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='2000' max='3000' autocomplete="off")
-
 
             fieldset
                 //- hr(style='color: black')
@@ -295,21 +273,6 @@ block content
                         input.login_input.btn_primary(type='button' id='addNextGalleryImg' onclick='addGalleryImage()' value=self.label.userprofile.addGalleryImg)
 
                         //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
-                //- hr(style='color: black')
-
-            //- fieldset
-            //-     legend
-            //-     .form_group
-            //-         label.person_profile_label(for='gallery_img')= self.label.userprofile.profileImg
-            //-         input.login_input#profile_img(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
-            //-     .form_group
-            //-         label.person_profile_label(for='photographer2')= self.label.userprofile.photographer
-            //-         input.login_input#photographer2.form_control(type='text' name='photographer2' placeholder=`${self.label.userprofile.photographer}` autocomplete="off")
-            //-     .form_group
-            //-         label.person_profile_label(for='img_year2')= self.label.userprofile.imageYear
-            //-         input.login_input#img_year2.form_control(type='number' name='img_year2' 2000' max='3000' autocomplete="off")
-
-            //-     button.btn.btn_primary(id='addNextGalleryImg')= self.label.userprofile.addNextGalleryImg
 
             fieldset
                 legend= self.label.userprofile.reelsSet
@@ -373,7 +336,6 @@ block content
                         label.person_profile_label(for='repr_email')= self.label.userprofile.reprEmail
                         input.login_input#repr_email.form_control( type='email' name='repr_email' autocomplete="off")
 
-
             fieldset
                 legend= self.label.userprofile.addressSet
                 .fieldset_grid
@@ -420,12 +382,6 @@ block content
                         label.person_profile_label(for='postal_code')= self.label.userprofile.addressPostalCode
                         input.login_input#postal_code.form_control(type='text' name='postal_code')
 
-            //- fieldset
-            //-     legend
-            //-         .form_group
-            //-             label.person_profile_label(for='street_name')= self.label.userprofile.streetName
-            //-             input.login_input#street_name.form_control(type='text' placeholder=`${self.label.userprofile.streetName}` name='street_name')
-
             fieldset
                 legend= self.label.userprofile.profEducation
                     .eduworks_item#profEducationTemplate(style= 'display: none; ')
@@ -470,7 +426,6 @@ block content
                                 label.person_profile_label(for='org_url')= self.label.userprofile.eduOrgUrl
                                 input.login_input.org_url.form_control( type='text' name='org_url' autocomplete="off")
                         input.login_input.btn_secondary.deleteButton(type='button' value="x")
-
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='addNextEducationBtn')= self.label.userprofile.addEducation
@@ -537,14 +492,10 @@ block content
                                 label.person_profile_label(for='org_url')= self.label.userprofile.prodOrgUrl
                                 input.login_input.org_url.form_control( type='text' name='org_url' autocomplete="off")
                         input.login_input.btn_secondary.deleteButton(type='button' value="x")
-
                 .fieldset_grid
                     .form_group
                         //- label.person_profile_label(for='addFilmographyWork')= self.label.userprofile.addFilmographyWork
                         input.login_input.btn_primary(type='button' id='addFilmographyWork' onclick='addNextFilmographyWork();' value=self.label.userprofile.addFilmographyWork)
-
-
-
 
             fieldset
                 legend
@@ -553,41 +504,8 @@ block content
                         label.person_profile_label(for='saveProfileButton')= " "
                         input.login_input.btn_primary_big.deleteGalleryImage(type='button' id='saveProfileButton' name='saveProfileButton' onclick='validatePersonForm()' value=self.label.userprofile.saveProfile)
 
-            //- button.btn.btn_primary(id='saveProfileButton' onclick='validatePersonForm()')= self.label.userprofile.saveProfile
-            //-self.label.userprofile.saveButton
-            //- p#personProfileSent(style= {display: 'none'})= self.label.userprofile.profileSaved
-
-            //- dialog#personProfileSent
-            //-     //- (style= {display: 'none'})
-            //-     form(method="dialog")
-            //-         P= self.label.userprofile.profileSaved
-            //-         //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
-            //-         p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
-            //- self.label.userprofile.dataSaved
         p#loadingStatus= self.label.filters.loading
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn
 
     style.
-        .invalid {background-color: transparent; display: block; color: red}
-        .valid {background-color: #ccf1e7; display: none}
-        .invalidColor {background-color: #fff3e8}
-        .c_invalid {background-color: #fff3e8}
-        .c_valid {background-color: transparent}
-        h4 {color: #464646}
-        h1 {color: #495057}
-        #personProfileSent {color: #495057}
-        label {color: #495057}
-        #imgError {color: red}
-
-        #removeProviderWarning{
-            display: flex;
-            flex-direction: column;
-        }
-        a.btn.btn-primary {
-            background-color: #ccf1e7;
-            color: #495057
-        }
-        form.imput-form.input.login_input.form_control{
-            background-color: #ffffff;
-        }
 
