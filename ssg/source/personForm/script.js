@@ -211,6 +211,7 @@ const fetchPerson = async () => {
     const response = await fetch(url, { headers })
     const data = await response.json()
     personId = data.id
+    document.getElementById('loadingStatus').style.display = 'none'
     return data
 }
 
