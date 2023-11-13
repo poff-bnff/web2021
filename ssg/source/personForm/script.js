@@ -1,5 +1,5 @@
 requireLogin()
-let personLoaded = false
+let personId = null
 
 // Non-trivial fields
 const valueMap = {
@@ -210,7 +210,7 @@ const fetchPerson = async () => {
 
     const response = await fetch(url, { headers })
     const data = await response.json()
-    personLoaded = true
+    personId = data.id
     return data
 }
 
@@ -298,8 +298,7 @@ async function sendPersonProfile() {
     saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
 
     // let pictureInfo = "no profile picture saved"
-
-    const formData = new FormData();
+    const formData = new FormData()
 
     // FORMAADIS " strapi muutuja nimi : vormi välja ID "
 
@@ -379,7 +378,7 @@ async function sendPersonProfile() {
     }
 
     let personToSend = {
-        id: profileId,
+        id: personId,
         firstName: firstName.value,
         lastName: lastName.value,
         // role_at_films: roleatfilm.value || null,
@@ -449,62 +448,47 @@ async function sendPersonProfile() {
     }
 
     console.log('personToSend', personToSend)
-    return;
-    formData.append('data', JSON.stringify(personToSend));
+    formData.append('data', JSON.stringify(personToSend))
 
     if (profileImageToSend !== "empty") {
-        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
+        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name)
     }
 
     if (audioFileToSend !== "empty") {
-        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name);
+        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name)
     }
 
     if (Object.keys(galleryImageToSend).length !== 0) {
         Object.keys(galleryImageToSend).map(key => {
-            console.log('Gallery img', galleryImageToSend[key]);
-            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name);
+            console.log('Gallery img', galleryImageToSend[key])
+            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name)
         })
     }
 
     // Log form data
-    console.log('Formdata:');
+    console.log('Formdata:')
     for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
     }
 
-    console.log("kasutaja profiil mida saadan ", personToSend);
+    console.log("kasutaja profiil mida saadan ", personToSend)
 
-    let response = await (await fetch(`${strapiDomain}/users/personForm`, {
-        method: 'POST',
+    let response = await (await fetch(`${huntAuthDomain}/api/person`, {
+        method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
         },
         body: formData
     }))
 
-    console.log(response);
+    console.log(response)
 
-    console.log('Responsestatus', response.status);
+    console.log('Responsestatus', response.status)
 
     if (response.status === 200) {
 
         saveProfileButton.disabled = false
         saveProfileButton.innerHTML = previousInnerHTML
-        // firstName.value = ''
-        // lastName.value = ''
-        // gender.value = ''
-        // dateOfBirth.value = ''
-        // phoneNr.value = ''
-        // eMail.value = ''
-        // addrCountry.value = ''
-        // addrCounty.value = ''
-        // addrMunicipality.value = ''
-        // addr_popul_place.value = ''
-        // addr_street_name.value = ''
-        // addrHouseNumber = ''
-        // addrApptNumber = ''
-        // addrPostalCode = ''
 
         let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
         for (let index = 0; index < galleryImageForms.length; index++) {
@@ -536,13 +520,6 @@ async function sendPersonProfile() {
 
         // Scroll page to dialog
         scrollToElement("personProfileSent")
-
-        // dialog.showModal()
-        // document.getElementById('personProfileSent').style.display = ''
-        // if (localStorage.getItem('preLoginUrl')) {
-        //     window.open(localStorage.getItem('preLoginUrl'), '_self')
-        //     localStorage.removeItem('preLoginUrl')
-        // }
 
     }
 }
