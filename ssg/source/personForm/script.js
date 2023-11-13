@@ -519,7 +519,7 @@ function scrollToElement(elementId) {
     document.getElementById(elementId).scrollIntoView(false);
 }
 
-function validateImageAndPreview(file, templateElement, type) {
+function validateImageAndPreview(file, imageElementId, type) {
     console.log('aga');
 
     let error = document.getElementById("imgError");
@@ -535,7 +535,7 @@ function validateImageAndPreview(file, templateElement, type) {
         var reader = new FileReader();
         reader.onload = function () {
             console.log('agasiia');
-            let previewElement = document.getElementById(templateElement).getElementsByClassName('imgPreview')[0]
+            let previewElement = document.getElementById(imageElementId).getElementsByClassName('imgPreview')[0]
             console.log('previewElement', previewElement);
             previewElement.src = reader.result;
             console.log(previewElement);
@@ -545,7 +545,7 @@ function validateImageAndPreview(file, templateElement, type) {
             profileImageToSend = file
         } else if (type === 'gallery') {
             console.log(galleryCounter, galleryImageToSend);
-            galleryImageToSend[templateElement] = file
+            galleryImageToSend[imageElementId] = file
         }
     }
 }
@@ -580,10 +580,10 @@ function addGalleryImage() {
     clone.id = `galleryImage${galleryCounter}`
     clone.style.display = ''
     document.getElementById('galleryTemplate').parentElement.appendChild(clone)
-    let thisElement = document.getElementById(`galleryImage${galleryCounter}`)
+    let thisElement = document.getElementById(clone.id)
 
-    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${galleryCounter}", "gallery")`)
-    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${galleryCounter}")`)
+    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "${clone.id}", "gallery")`)
+    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("${clone.id}")`)
 
     galleryCounter = galleryCounter + 1
 }
