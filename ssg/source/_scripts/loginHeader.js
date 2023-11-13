@@ -195,10 +195,10 @@ const reloadUser = async () => {
 
 const getProfilePicture = () => {
     const webUser = getUser()
-    if (webUser !== null) {
-        if (webUser.user_profile !== null) {
-            if (webUser.user_profile.picture !== null) {
-                return strapiDomain + webUser.user_profile.picture.url
+    if (webUser) {
+        if (webUser.user_profile) {
+            if (webUser.user_profile.picture) {
+                return strapiDomain + webUser.user_profile.picture.url || null
             }
         }
     }
