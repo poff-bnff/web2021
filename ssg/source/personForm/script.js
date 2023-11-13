@@ -12,7 +12,7 @@ let filmographiesToDelete = []
 let existingGalleryImagesToDelete = []
 let profileId = null
 
-requireEventivalLogin()
+requireLogin()
 
 async function loadUserInfo() {
 
