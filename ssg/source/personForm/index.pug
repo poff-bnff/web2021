@@ -277,13 +277,6 @@ block content
             fieldset
                 legend= self.label.userprofile.reelsSet
                 .fieldset_grid
-                    //- .form_group
-                    //-     label.person_profile_label(for='gender')= self.label.userprofile.gender
-                    //-     select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                    //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
-                    //-             option.login_input(value=gender.id)= gender[self.locale]
-                    //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-
                     //-  showreel
                     .form_group
                         label.person_profile_label(for='showreel')= self.label.userprofile.showreel
@@ -297,13 +290,6 @@ block content
             fieldset
                 legend= self.label.userprofile.contactInfoSet
                 .fieldset_grid
-                    //- .form_group
-                    //-     label.person_profile_label(for='gender')= self.label.userprofile.gender
-                    //-     select.login_input#gender(name='gender' form="thisPersonProfile" oninput='validateGender(this.id)' required)
-                    //-         each gender in self.data.genders.sort((a, b) => a.id - b.id)
-                    //-             option.login_input(value=gender.id)= gender[self.locale]
-                    //-         option.login_input(class='invalid' value="" selected="")= self.label.userprofile.select
-
                     //-  phoneNr
                     .form_group
                         label.person_profile_label(for='phoneNr')= self.label.userprofile.phone
@@ -389,14 +375,6 @@ block content
                             input.login_input.strapi_id.form_control(type='number' autocomplete="off" style= 'display: none;')
                             //- type_of_work
                             input.login_input.type_of_work(type="hidden" name="type_of_work" value="7")
-                            //- .form_group
-                            //-     label.person_profile_label(for='type_of_work')= self.label.userprofile.typeOfWork
-                            //-     select.login_input#type_of_work(name='type_of_work' form="thisPersonProfile")
-                            //-         option.login_input(class='invalid' value="" selected="")
-                            //-         //- = self.label.userprofile.select
-                            //-         //- each country in self.data.countries.sort((a, b) => a.name_en - b.name_en)
-                            //-         each typeofwork in self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
-                            //-             option.login_input(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
                             //-  year_from
                             .form_group
                                 label.person_profile_label(for='year_from')= self.label.userprofile.yearFrom
