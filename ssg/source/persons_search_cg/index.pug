@@ -23,13 +23,19 @@ block content
                     each index, key in self.data.filters.nativelangs
                         option(value=key)= index
 
+            select#otherlangs_select(name='OtherLangs')
+                option(value='')= self.label.filters.otherLanguage
+                if self.data.filters.otherlangs
+                    each index, key in self.data.filters.otherlangs
+                        option(value=key)= index
+
             select#roleatfilms_select(name='Roleatfilms')
                 option(value='')= self.label.filters.roleAtFilms
                 if self.data.filters.roleatfilms
                     each index, key in self.data.filters.roleatfilms
                         option(value=key)= index
 
-            select#types_select(name='Types')
+            select#types_select(name='Types' style='display: none')
                 option(value='')= self.label.filters.industryPersonType
                 if self.data.filters.types
                     each index, key in self.data.filters.types

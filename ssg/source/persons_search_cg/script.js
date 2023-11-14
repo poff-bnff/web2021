@@ -8,6 +8,7 @@ const selectors = {
     genders: document.getElementById('genders_select'),
     roleatfilms: document.getElementById('roleatfilms_select'),
     nativelangs: document.getElementById('nativelangs_select'),
+    otherlangs: document.getElementById('otherlangs_select'),
     types: document.getElementById('types_select'),
     icategories: document.getElementById('icategories_select'),
 }
@@ -130,6 +131,10 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : screening.nativelangs.includes(compare_with)
                 })
                 .filter(screening => {
+                    const compare_with = selector_name === 'otherlangs' ? value : selectors.otherlangs.value;
+                    return compare_with === '' ? true : screening.otherlangs.includes(compare_with)
+                })
+                .filter(screening => {
                     const compare_with = selector_name === 'types' ? value : selectors.types.value;
                     return compare_with === '' ? true : screening.types.includes(compare_with)
                 })
@@ -165,6 +170,10 @@ selectors.nativelangs.addEventListener('change', e => {
     toggleAll('nativelangs');
 });
 
+selectors.otherlangs.addEventListener('change', e => {
+    toggleAll('otherlangs');
+});
+
 selectors.types.addEventListener('change', e => {
     toggleAll('types');
 });
@@ -178,6 +187,7 @@ function unselect_all() {
     selectors.genders.selectedIndex = 0;
     selectors.roleatfilms.selectedIndex = 0;
     selectors.nativelangs.selectedIndex = 0;
+    selectors.otherlangs.selectedIndex = 0;
     selectors.types.selectedIndex = 0;
     selectors.icategories.selectedIndex = 0;
     nonetoshow.selectedIndex = 0;
@@ -203,6 +213,13 @@ function execute_filters() {
         .filter(screening => {
             if (selectors.nativelangs.value) {
                 return screening.nativelangs.includes(selectors.nativelangs.value)
+            } else {
+                return true
+            }
+        })
+        .filter(screening => {
+            if (selectors.otherlangs.value) {
+                return screening.otherlangs.includes(selectors.otherlangs.value)
             } else {
                 return true
             }

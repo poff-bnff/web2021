@@ -237,6 +237,7 @@ function generatePersonsSearchAndFilterYamls(persons, category, lang) {
         genders: {},
         roleatfilms: {},
         nativelangs: {},
+        otherlangs: {},
         types: {},
         icategories: {},
     };
@@ -260,8 +261,16 @@ function generatePersonsSearchAndFilterYamls(persons, category, lang) {
 
         let nativelangs = [];
         if (person.native_lang) {
-            nativelangs.push(person.native_lang.name);
+            nativelangs.push(person.native_lang.name)
             filters.nativelangs[person.native_lang.name] = person.native_lang.name;
+        }
+
+        let otherlangs = [];
+        if (person.other_lang) {
+            for (const olang of person.other_lang) {
+                otherlangs.push(olang.name);
+                filters.otherlangs[olang.name] = olang.name
+            }
         }
 
         let industryPersonTypes = [];
@@ -296,6 +305,7 @@ function generatePersonsSearchAndFilterYamls(persons, category, lang) {
             genders: genders,
             roleatfilms: roleatfilms,
             nativelangs: nativelangs,
+            otherlangs: otherlangs,
             types: industryPersonTypes,
             icategories: industryCategories,
         };
@@ -305,6 +315,7 @@ function generatePersonsSearchAndFilterYamls(persons, category, lang) {
         genders: mSort(filters.genders),
         roleatfilms: mSort(filters.roleatfilms),
         nativelangs: mSort(filters.nativelangs),
+        otherlangs: mSort(filters.otherlangs),
         types: mSort(filters.types),
         icategories:  mSort(filters.icategories),
     };
