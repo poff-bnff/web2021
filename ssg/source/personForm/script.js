@@ -1,3 +1,228 @@
+requireLogin()
+let personId = null
+
+// Non-trivial fields
+const valueMap = {
+    gender: 'gender.id',
+    native_lang: 'native_lang.id',
+    stature: 'stature.id',
+    eye_colour: 'eye_colour.id',
+    hair_colour: 'hair_colour.id',
+    hair_length: 'hair_length.id',
+    pitch_of_voice: 'pitch_of_voice.id',
+    country: 'addr_coll.country',
+    county: 'addr_coll.county',
+    municipality: 'addr_coll.municipality',
+    popul_place: 'addr_coll.popul_place',
+    street_name: 'addr_coll.street_name',
+    address_number: 'addr_coll.address_number',
+    appartment: 'addr_coll.appartment',
+    postal_code: 'addr_coll.postal_code',
+}
+
+const selectorMap = {
+    gender: null,
+    native_lang: null,
+    stature: null,
+    eye_colour: null,
+    hair_colour: null,
+    hair_length: null,
+    pitch_of_voice: null,
+    country: null,
+}
+
+const formFields = {
+    email: [
+        'eMail',
+        'repr_email',
+    ],
+    year: [
+        'year_from', // prof education
+        'year_to',
+    ],
+    url: [
+        'repr_org_url',
+        'acc_imdb',
+        'acc_efis',
+        'acc_castupload',
+        'acc_etalenta',
+        'acc_instagram',
+        'acc_fb',
+        'acc_other',
+        'showreel',
+    ],
+    phone: [
+        'phoneNr',
+        'repr_phone',
+    ],
+    number: [
+        'weight_kg',
+        'acting_age_from',
+        'acting_age_to',
+        'height_cm',
+    ],
+    text: [
+        'firstName', // y
+        'lastName', // y
+        'gender', // y
+        'repr_org_name',
+        'repr_p_name',
+        'native_lang',
+        'stature', // y
+        'eye_colour', // y
+        'hair_colour',
+        'hair_length',
+        'pitch_of_voice',
+        'bio_en',
+        'skills_en',
+        'looking_for',
+        'country',
+        'county',
+        'municipality',
+        'popul_place',
+        'street_name',
+        'address_number',
+        'appartment',
+        'postal_code',
+    ],
+    date: [
+        'dateOfBirth',
+    ]
+}
+
+const fillPersonForm = (person) => {
+    const valueInPerson = (key) => {
+        if ( valueMap[key] ) {
+            const path = valueMap[key].split('.')
+            let value = person
+            for (let i = 0; i < path.length; i++) {
+                value = value[path[i]]
+            }
+            return value
+        } else {
+            return person[key]
+        }
+    }
+
+    const fill = () => {
+        return {
+            text: () => {
+                for (let i = 0; i < formFields.text.length; i++) {
+                    const field = formFields.text[i]
+                    try {
+                        if (selectorMap[field]) {
+                            document.querySelector(`#${field} option[value="${valueInPerson(field)}"]`).selected=true
+                        } else {
+                            document.getElementById(field).value = valueInPerson(field)
+                        }
+                    } catch (error) {
+                        console.log(`No text field in data with id ${field}`)
+                    }
+                }
+            },
+            email: () => {
+                for (let i = 0; i < formFields.email.length; i++) {
+                    const field = formFields.email[i]
+                    try {
+                        document.getElementById(field).value = person[field]
+                    } catch (error) {
+                        console.log(`No email field in data with id ${field}`)
+                    }
+                }
+            },
+            date: () => {
+                for (let i = 0; i < formFields.date.length; i++) {
+                    const field = formFields.date[i]
+                    try {
+                        document.getElementById(field).value = person[field]
+                    } catch (error) {
+                        console.log(`No date field in data with id ${field}`)
+                    }
+                }
+            },
+            url: () => {
+                for (let i = 0; i < formFields.url.length; i++) {
+                    const field = formFields.url[i]
+                    try {
+                        document.getElementById(field).value = person[field]
+                    } catch (error) {
+                        console.log(`No url field in data with id ${field}`)
+                    }
+                }
+            },
+            number: () => {
+                for (let i = 0; i < formFields.number.length; i++) {
+                    const field = formFields.number[i]
+                    try {
+                        document.getElementById(field).value = person[field]
+                    } catch (error) {
+                        console.log(`No number field in data with id ${field}`)
+                    }
+                }
+            },
+            phone: () => {
+                for (let i = 0; i < formFields.phone.length; i++) {
+                    const field = formFields.phone[i]
+                    try {
+                        document.getElementById(field).value = person[field]
+                    } catch (error) {
+                        console.log(`No phone field in data with id ${field}`)
+                    }
+                }
+            },
+        }
+    }
+
+    // Fill the fields with existing info
+    fill().text()
+    fill().email()
+    fill().date()
+    fill().url()
+    fill().number()
+    fill().phone()
+    setRepeatableFields(person.role_at_films, addNextRoleAtFilm)
+    setRepeatableFields(person.tag_looking_fors, addNextTagLookingFor)
+    setRepeatableFields(person.other_lang, addNextOtherLang)
+    const educations = person.filmographies.filter(f => f.type_of_work === 7)
+    const filmographies = person.filmographies.filter(f => f.type_of_work !== 7)
+    setRepeatableFields(educations, addNextEducation)
+    setRepeatableFields(filmographies, addNextFilmographyWork)
+
+    addExistingGalleryImages(person?.images)
+    addExistingProfileImg(person.picture)
+
+    function setRepeatableFields(fields, responsibleFunction) {
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            responsibleFunction(field)
+        }
+    }
+}
+
+// Get my person profile. If not found, create one
+const fetchPerson = async () => {
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/person`
+
+    const response = await fetch(url, { headers })
+    const data = await response.json()
+    personId = data.id
+    return data
+}
+
+// Self-invoking function to start the script
+;(async () => {
+    const person = await fetchPerson()
+    console.log('person', person)
+    fillPersonForm(person)
+    document.getElementById('loadingStatus').style.display = 'none'
+})()
+
+
+// Martini kood
+// sellest plokist tõstan ükshaaaval koodi ülespoole, kui tarvis
+// ----------------------------
 let profileImageToSend = "empty"
 let galleryImageToSend = {}
 let audioFileToSend = "empty"
@@ -11,61 +236,8 @@ let filmographyCounter = 0
 let filmographiesToDelete = []
 let existingGalleryImagesToDelete = []
 let profileId = null
+// ----------------------------
 
-requireEventivalLogin()
-// if (isUserTokenValid()) {
-//     loadUserInfo()
-// } else {
-//     document.getElementById('logInStatus').style.display = ''
-//     window.open(`${location.origin}/${langpath}login`, '_self')
-//     savePreLoginUrl()
-// }
-
-// async function getPersonForm() {
-//     let response = await fetch(`${strapiDomain}/users/getPersonForm`, {
-//         method: "GET",
-//         headers: {
-//             Authorization: "Bearer " + localStorage.getItem("ID_TOKEN"),
-//         },
-//     });
-//     let personOnForm = await response.json()
-//     console.log({ personOnForm })
-
-//     return personOnForm
-
-// }
-
-// getPersonForm()
-
-async function loadUserInfo() {
-
-    let userProfile = await getUser()
-    const profile = userProfile.user_profile
-    if (profile) {
-        console.log('profile2', profile);
-
-        if (userProfile.person) {
-            await fillThePersonForm(userProfile.person)
-            profileId = userProfile.person.id
-        }
-
-        if (!userProfile?.person?.role_at_films?.length) {
-            addNextRoleAtFilm()
-        }
-        if (!userProfile?.person?.tag_looking_fors?.length) {
-            addNextTagLookingFor()
-        }
-        if (!userProfile?.person?.other_lang?.length) {
-            addNextOtherLang()
-        }
-
-        document.getElementById('thisPersonProfile').style.display = ''
-        document.getElementById('logInStatus').style.display = 'none'
-        document.getElementById('loadingStatus').style.display = 'none'
-        // At least one profession required, thus add one field on every reload
-    }
-
-}
 
 async function fillThePersonForm(person) {
     // console.log('fillThePersonForm', JSON.stringify(person));
@@ -115,6 +287,7 @@ async function fillThePersonForm(person) {
 }
 
 async function sendPersonProfile() {
+    document.getElementById('savingStatus').style.display = 'block'
 
     // document.getElementById('personProfileSent').style.display = 'none'
 
@@ -123,9 +296,9 @@ async function sendPersonProfile() {
     let previousInnerHTML = saveProfileButton.innerHTML
     saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
 
-    // let pictureInfo = "no profile picture saved"
 
-    const formData = new FormData();
+    // let pictureInfo = "no profile picture saved"
+    const formData = new FormData()
 
     // FORMAADIS " strapi muutuja nimi : vormi välja ID "
 
@@ -136,7 +309,7 @@ async function sendPersonProfile() {
         const element = profEducationElements[index];
         profEducationData.push(
             {
-                strapi_id: element.getElementsByClassName('strapi_id')[0].value || null,
+                id: element.getElementsByClassName('strapi_id')[0].value || null,
                 type_of_work: '7',
                 year_from: element.getElementsByClassName('year_from')[0].value || null,
                 year_to: element.getElementsByClassName('year_to')[0].value || null,
@@ -189,7 +362,7 @@ async function sendPersonProfile() {
         const element = filmographiesElements[index];
         filmographiesData.push(
             {
-                strapi_id: element.getElementsByClassName('strapi_id')[0].value || null,
+                id: element.getElementsByClassName('strapi_id')[0].value || null,
                 type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
                 role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
                 year_from: element.getElementsByClassName('year_from')[0].value || null,
@@ -205,7 +378,7 @@ async function sendPersonProfile() {
     }
 
     let personToSend = {
-        id: profileId,
+        id: personId,
         firstName: firstName.value,
         lastName: lastName.value,
         // role_at_films: roleatfilm.value || null,
@@ -240,8 +413,8 @@ async function sendPersonProfile() {
         bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
         looking_for: looking_for.value || null,
-        address: {
-            strapi_id: addr_strapi_id.value || null,
+        addr_coll: {
+            id: addr_strapi_id.value || null,
             country: country.value || null,
             county: county.value || null,
             municipality: municipality.value || null,
@@ -274,61 +447,49 @@ async function sendPersonProfile() {
 
     }
 
-    formData.append('data', JSON.stringify(personToSend));
+    console.log('personToSend', personToSend)
+    formData.append('data', JSON.stringify(personToSend))
 
     if (profileImageToSend !== "empty") {
-        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name);
+        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name)
     }
 
     if (audioFileToSend !== "empty") {
-        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name);
+        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name)
     }
 
     if (Object.keys(galleryImageToSend).length !== 0) {
         Object.keys(galleryImageToSend).map(key => {
-            console.log('Gallery img', galleryImageToSend[key]);
-            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name);
+            console.log('Gallery img', galleryImageToSend[key])
+            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name)
         })
     }
 
     // Log form data
-    console.log('Formdata:');
+    console.log('Formdata:')
     for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
     }
 
-    console.log("kasutaja profiil mida saadan ", personToSend);
+    console.log("kasutaja profiil mida saadan ", personToSend)
 
-    let response = await (await fetch(`${strapiDomain}/users/personForm`, {
-        method: 'POST',
+    let response = await (await fetch(`${huntAuthDomain}/api/person`, {
+        method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
         },
         body: formData
     }))
 
-    console.log(response);
+    console.log(response)
+    document.getElementById('savingStatus').style.display = 'none'
 
-    console.log('Responsestatus', response.status);
+    console.log('Responsestatus', response.status)
 
     if (response.status === 200) {
 
         saveProfileButton.disabled = false
         saveProfileButton.innerHTML = previousInnerHTML
-        // firstName.value = ''
-        // lastName.value = ''
-        // gender.value = ''
-        // dateOfBirth.value = ''
-        // phoneNr.value = ''
-        // eMail.value = ''
-        // addrCountry.value = ''
-        // addrCounty.value = ''
-        // addrMunicipality.value = ''
-        // addr_popul_place.value = ''
-        // addr_street_name.value = ''
-        // addrHouseNumber = ''
-        // addrApptNumber = ''
-        // addrPostalCode = ''
 
         let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
         for (let index = 0; index < galleryImageForms.length; index++) {
@@ -361,23 +522,16 @@ async function sendPersonProfile() {
         // Scroll page to dialog
         scrollToElement("personProfileSent")
 
-        // dialog.showModal()
-        // document.getElementById('personProfileSent').style.display = ''
-        // if (localStorage.getItem('preLoginUrl')) {
-        //     window.open(localStorage.getItem('preLoginUrl'), '_self')
-        //     localStorage.removeItem('preLoginUrl')
-        // }
-
     }
+
+    // reload page
+    location.reload()
+    console.log('DONE')
 }
 
 function validatePersonForm() {
 
     const errors = []
-
-    // if (document.getElementById('personProfileSent')) {
-    //     document.getElementById('personProfileSent').style.display = 'none'
-    // }
 
     if (!validateRequiredField("firstName", "textLength")) {
         errors.push('firstName')
@@ -509,6 +663,7 @@ function addInvalidClass(formField, formFieldHelp) {
     formFieldHelp.classList.add("invalid")
     formField.classList.add('invalidColor')
 }
+
 function removeInvalidClass(formField, formFieldHelp) {
     formFieldHelp.classList.remove("invalid")
     formFieldHelp.classList.add("valid")
@@ -519,7 +674,7 @@ function scrollToElement(elementId) {
     document.getElementById(elementId).scrollIntoView(false);
 }
 
-function validateImageAndPreview(file, templateElement, type) {
+function validateImageAndPreview(file, imageElementId, type) {
     console.log('aga');
 
     let error = document.getElementById("imgError");
@@ -535,7 +690,7 @@ function validateImageAndPreview(file, templateElement, type) {
         var reader = new FileReader();
         reader.onload = function () {
             console.log('agasiia');
-            let previewElement = document.getElementById(templateElement).getElementsByClassName('imgPreview')[0]
+            let previewElement = document.getElementById(imageElementId).getElementsByClassName('imgPreview')[0]
             console.log('previewElement', previewElement);
             previewElement.src = reader.result;
             console.log(previewElement);
@@ -545,7 +700,7 @@ function validateImageAndPreview(file, templateElement, type) {
             profileImageToSend = file
         } else if (type === 'gallery') {
             console.log(galleryCounter, galleryImageToSend);
-            galleryImageToSend[templateElement] = file
+            galleryImageToSend[imageElementId] = file
         }
     }
 }
@@ -580,10 +735,10 @@ function addGalleryImage() {
     clone.id = `galleryImage${galleryCounter}`
     clone.style.display = ''
     document.getElementById('galleryTemplate').parentElement.appendChild(clone)
-    let thisElement = document.getElementById(`galleryImage${galleryCounter}`)
+    let thisElement = document.getElementById(clone.id)
 
-    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "galleryImage${galleryCounter}", "gallery")`)
-    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("galleryImage${galleryCounter}")`)
+    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "${clone.id}", "gallery")`)
+    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("${clone.id}")`)
 
     galleryCounter = galleryCounter + 1
 }
@@ -606,7 +761,8 @@ function addExistingGalleryImages(imagesData) {
         // Remove input field and label for photo year (whole .form_group element)
         thisElement.getElementsByClassName('galleryImageYear')[0].parentElement.remove()
         // Add photographer and year by thext
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("p")
+        textElement.classList.add('d-none')
         const text = document.createTextNode(`${img.alternativeText} (${img.caption})`);
         textElement.appendChild(text);
         thisElement.appendChild(textElement);
@@ -627,7 +783,8 @@ function addExistingProfileImg(imageData) {
         const profileImgLabel = profileImgElement.getElementsByClassName('person_profile_label')[0]
         profileImgLabel.innerHTML = `${profileImgLabel.innerHTML} (adding new image, replaces the current one)`
 
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("p")
+        textElement.classList.add('d-none')
         const text = document.createTextNode(`${imageData.alternativeText} (${imageData.caption})`);
         textElement.appendChild(text);
         profileImgElement.appendChild(textElement);
@@ -665,7 +822,6 @@ function addNextRoleAtFilm(data = null) {
 
     roleAtFilmCounter = roleAtFilmCounter + 1
 }
-
 
 function addNextTagLookingFor(data = null) {
     const cloneElementPrefix = 'tagLookingElement'
@@ -823,4 +979,321 @@ function isJsonString(jsonString) {
     catch (e) { }
 
     return false;
-};
+}
+
+const samplePerson = {
+    "id": 19576,
+    "created_at": "2023-11-13T08:40:51.679Z",
+    "updated_at": "2023-11-13T08:42:19.158Z",
+    "firstName": "Mihkel",
+    "lastName": "Putrinš",
+    "gender": null,
+    "phoneNr": null,
+    "eMail": "mihkel@ww.ee",
+    "dateOfBirth": null,
+    "biography": null,
+    "filmography": null,
+    "profession": null,
+    "firstNameLastName": "Mihkel Putrinš",
+    "remoteId": null,
+    "pageUrl": null,
+    "user": null,
+    "native_language": null,
+    "height_cm": null,
+    "weight_kg": null,
+    "eye_colour": null,
+    "hair_colour": null,
+    "shoe_size": null,
+    "stature": null,
+    "pitch_of_voice": null,
+    "eventival_id": null,
+    "ev_account_email": null,
+    "ev_contact_email": null,
+    "ev_country": null,
+    "ev_org_name": null,
+    "ev_job_title": null,
+    "bio_et": null,
+    "bio_en": null,
+    "bio_ru": null,
+    "ev_professions": null,
+    "ev_fow": null,
+    "ev_img_url": null,
+    "addr_coll": null,
+    "hair_length": null,
+    "native_lang": null,
+    "showreel": null,
+    "acting_age_from": null,
+    "acting_age_to": null,
+    "country": null,
+    "acc_imdb": null,
+    "acc_efis": null,
+    "acc_castupload": null,
+    "acc_instagram": null,
+    "acc_fb": null,
+    "acc_other": null,
+    "webpage": null,
+    "webpage_url": null,
+    "slug_et": null,
+    "slug_en": null,
+    "slug_ru": null,
+    "public": null,
+    "repr_p_name": null,
+    "repr_phone": null,
+    "repr_email": null,
+    "repr_org_name": null,
+    "repr_org_url": null,
+    "acc_etalenta": null,
+    "skills_et": null,
+    "skills_en": null,
+    "skills_ru": null,
+    "origin": null,
+    "looking_for": null,
+    "picture": {
+      "id": 23721,
+      "name": "emi_logu",
+      "alternativeText": null,
+      "caption": null,
+      "width": 3121,
+      "height": 1442,
+      "formats": {
+        "_big": {
+          "ext": ".jpeg",
+          "url": "/uploads/emi_logu_ebfdba7861_big.jpeg",
+          "hash": "emi_logu_ebfdba7861_big",
+          "mime": "image/jpeg",
+          "name": "emi_big",
+          "path": null,
+          "size": 22.05,
+          "width": 1041,
+          "height": 481
+        },
+        "_med": {
+          "ext": ".jpeg",
+          "url": "/uploads/emi_logu_ebfdba7861_med.jpeg",
+          "hash": "emi_logu_ebfdba7861_med",
+          "mime": "image/jpeg",
+          "name": "emi_med",
+          "path": null,
+          "size": 22.05,
+          "width": 1041,
+          "height": 481
+        },
+        "_small": {
+          "ext": ".jpeg",
+          "url": "/uploads/emi_logu_ebfdba7861_small.jpeg",
+          "hash": "emi_logu_ebfdba7861_small",
+          "mime": "image/jpeg",
+          "name": "emi_small",
+          "path": null,
+          "size": 11.66,
+          "width": 640,
+          "height": 296
+        },
+        "thumbnail": {
+          "ext": ".jpeg",
+          "url": "/uploads/thumbnail_emi_logu_ebfdba7861.jpeg",
+          "hash": "thumbnail_emi_logu_ebfdba7861",
+          "mime": "image/jpeg",
+          "name": "thumbnail_emi_logu",
+          "path": null,
+          "size": 3.45,
+          "width": 245,
+          "height": 113
+        }
+      },
+      "hash": "emi_logu_ebfdba7861",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 95.02,
+      "url": "/uploads/emi_logu_ebfdba7861.jpeg",
+      "previewUrl": null,
+      "provider": "local",
+      "provider_metadata": null,
+      "created_at": "2023-11-13T08:42:06.948Z",
+      "updated_at": "2023-11-13T08:42:06.948Z"
+    },
+    "profile_img": {
+      "id": 23714,
+      "name": "U_mihkel-putrinsh-gmail-com_18837",
+      "alternativeText": null,
+      "caption": null,
+      "width": 300,
+      "height": 300,
+      "formats": {
+        "_thumb_sq": {
+          "ext": ".jpeg",
+          "url": "/uploads/U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15_thumb_sq.jpeg",
+          "hash": "U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15_thumb_sq",
+          "mime": "image/jpeg",
+          "name": "U_mihkel-putrinsh-gmail-com__thumb_sq",
+          "path": null,
+          "size": 3.11,
+          "width": 100,
+          "height": 100
+        },
+        "thumbnail": {
+          "ext": ".jpeg",
+          "url": "/uploads/thumbnail_U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15.jpeg",
+          "hash": "thumbnail_U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15",
+          "mime": "image/jpeg",
+          "name": "thumbnail_U_mihkel-putrinsh-gmail-com_18837",
+          "path": null,
+          "size": 5.14,
+          "width": 156,
+          "height": 156
+        }
+      },
+      "hash": "U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 48.04,
+      "url": "/uploads/U_mihkel_putrinsh_gmail_com_18837_db6a0c0b15.jpeg",
+      "previewUrl": null,
+      "provider": "local",
+      "provider_metadata": null,
+      "created_at": "2023-11-13T08:22:07.728Z",
+      "updated_at": "2023-11-13T08:22:07.728Z"
+    },
+    "images": [
+      {
+        "id": 23722,
+        "name": "emi_logu",
+        "alternativeText": null,
+        "caption": null,
+        "width": 3121,
+        "height": 1442,
+        "formats": {
+          "_big": {
+            "ext": ".jpeg",
+            "url": "/uploads/emi_logu_f4e7281a5c_big.jpeg",
+            "hash": "emi_logu_f4e7281a5c_big",
+            "mime": "image/jpeg",
+            "name": "emi_big",
+            "path": null,
+            "size": 22.05,
+            "width": 1041,
+            "height": 481
+          },
+          "_med": {
+            "ext": ".jpeg",
+            "url": "/uploads/emi_logu_f4e7281a5c_med.jpeg",
+            "hash": "emi_logu_f4e7281a5c_med",
+            "mime": "image/jpeg",
+            "name": "emi_med",
+            "path": null,
+            "size": 22.05,
+            "width": 1041,
+            "height": 481
+          },
+          "_small": {
+            "ext": ".jpeg",
+            "url": "/uploads/emi_logu_f4e7281a5c_small.jpeg",
+            "hash": "emi_logu_f4e7281a5c_small",
+            "mime": "image/jpeg",
+            "name": "emi_small",
+            "path": null,
+            "size": 11.66,
+            "width": 640,
+            "height": 296
+          },
+          "thumbnail": {
+            "ext": ".jpeg",
+            "url": "/uploads/thumbnail_emi_logu_f4e7281a5c.jpeg",
+            "hash": "thumbnail_emi_logu_f4e7281a5c",
+            "mime": "image/jpeg",
+            "name": "thumbnail_emi_logu",
+            "path": null,
+            "size": 3.45,
+            "width": 245,
+            "height": 113
+          }
+        },
+        "hash": "emi_logu_f4e7281a5c",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 95.02,
+        "url": "/uploads/emi_logu_f4e7281a5c.jpeg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_at": "2023-11-13T08:42:12.961Z",
+        "updated_at": "2023-11-13T08:42:12.961Z"
+      },
+      {
+        "id": 23723,
+        "name": "Membrane_Clarinet_7_Holes_E_16mm_Matrice",
+        "alternativeText": null,
+        "caption": null,
+        "width": 2147,
+        "height": 481,
+        "formats": {
+          "_big": {
+            "ext": ".jpeg",
+            "url": "/uploads/Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_big.jpeg",
+            "hash": "Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_big",
+            "mime": "image/jpeg",
+            "name": "Membrane_Clarinet_7_Holes_E_16mm_Ma_big",
+            "path": null,
+            "size": 40.15,
+            "width": 1920,
+            "height": 430
+          },
+          "_med": {
+            "ext": ".jpeg",
+            "url": "/uploads/Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_med.jpeg",
+            "hash": "Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_med",
+            "mime": "image/jpeg",
+            "name": "Membrane_Clarinet_7_Holes_E_16mm_Ma_med",
+            "path": null,
+            "size": 23.17,
+            "width": 1280,
+            "height": 287
+          },
+          "_small": {
+            "ext": ".jpeg",
+            "url": "/uploads/Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_small.jpeg",
+            "hash": "Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff_small",
+            "mime": "image/jpeg",
+            "name": "Membrane_Clarinet_7_Holes_E_16mm_Ma_small",
+            "path": null,
+            "size": 9.82,
+            "width": 640,
+            "height": 143
+          },
+          "thumbnail": {
+            "ext": ".jpeg",
+            "url": "/uploads/thumbnail_Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff.jpeg",
+            "hash": "thumbnail_Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff",
+            "mime": "image/jpeg",
+            "name": "thumbnail_Membrane_Clarinet_7_Holes_E_16mm_Matrice",
+            "path": null,
+            "size": 2.6,
+            "width": 245,
+            "height": 55
+          }
+        },
+        "hash": "Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 46.06,
+        "url": "/uploads/Membrane_Clarinet_7_Holes_E_16mm_Matrice_547a43d7ff.jpeg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "created_at": "2023-11-13T08:42:16.274Z",
+        "updated_at": "2023-11-13T08:42:16.274Z"
+      }
+    ],
+    "audioreel": null,
+    "organisations": [],
+    "awardings": [],
+    "festival_editions": [],
+    "domains": [],
+    "role_at_films": [],
+    "other_lang": [],
+    "tag_secrets": [],
+    "industry_person_types": [],
+    "tag_looking_fors": [],
+    "filmographies": [],
+    "industry_categories": []
+}
