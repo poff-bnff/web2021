@@ -239,10 +239,10 @@ block content
                         img.imgPreview.square(alt="user profile pic", src="/assets/img/static/profile_img_1_1.svg")
                         div#imgError
                         input.input_file#profileImg(type='file' name='filename' accept='image/png, image/jpeg, image/jpg' onchange ='validateImageAndPreview(this.files[0], "profileImage", "profile")')
-                    .form_group
+                    .form_group.d-none
                         label.person_profile_label(for='photographer')= self.label.userprofile.photographer
                         input.login_input#photographer.form-control(type='text' name='photographer' autocomplete="off")
-                    .form_group
+                    .form_group.d-none
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='2000' max='3000' autocomplete="off")
 
@@ -257,10 +257,10 @@ block content
                                     br
                                     img.imgPreview.gallery_upload(alt="Gallery image", src="/assets/img/static/gallery_img.svg")
                                     input.input_file.galleryImg(type='file' name='gallery_img' accept='image/png, image/jpeg, image/jpg')
-                                .form_group
+                                .form_group.d-none
                                     label.person_profile_label(for='galleryImagePhotographer')= self.label.userprofile.photographer
                                     input.login_input.galleryImagePhotographer.form-control(type='text' name='galleryImagePhotographer' autocomplete="off")
-                                .form_group
+                                .form_group.d-none
                                     label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
                                     input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='2000' max='3000' autocomplete="off")
                                 .form_group
@@ -274,7 +274,7 @@ block content
 
                         //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
 
-            fieldset
+            fieldset.d-none
                 legend= self.label.userprofile.reelsSet
                 .fieldset_grid
                     //-  showreel
@@ -483,6 +483,7 @@ block content
                         input.login_input.btn_primary_big.deleteGalleryImage(type='button' id='saveProfileButton' name='saveProfileButton' onclick='validatePersonForm()' value=self.label.userprofile.saveProfile)
 
         p#loadingStatus= self.label.filters.loading
+        p#savingStatus(style= 'display: none')= self.label.filters.saving || 'Workin\' on it...'
         p#logInStatus(style= 'display: none')= self.label.userprofile.logIn
 
     style.

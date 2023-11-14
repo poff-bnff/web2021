@@ -90,8 +90,6 @@ const formFields = {
     ]
 }
 
-
-
 const fillPersonForm = (person) => {
     const valueInPerson = (key) => {
         if ( valueMap[key] ) {
@@ -189,10 +187,9 @@ const fillPersonForm = (person) => {
     const filmographies = person.filmographies.filter(f => f.type_of_work !== 7)
     setRepeatableFields(educations, addNextEducation)
     setRepeatableFields(filmographies, addNextFilmographyWork)
-    // if (person.addr_coll) {
-    //     console.log('person.addr_coll', person.addr_coll)
-    //     document.getElementById('addr_strapi_id').value = person.addr_coll.id
-    // }
+
+    addExistingGalleryImages(person?.images)
+    addExistingProfileImg(person.picture)
 
     function setRepeatableFields(fields, responsibleFunction) {
         for (let i = 0; i < fields.length; i++) {
@@ -211,7 +208,6 @@ const fetchPerson = async () => {
     const response = await fetch(url, { headers })
     const data = await response.json()
     personId = data.id
-    document.getElementById('loadingStatus').style.display = 'none'
     return data
 }
 
@@ -220,6 +216,7 @@ const fetchPerson = async () => {
     const person = await fetchPerson()
     console.log('person', person)
     fillPersonForm(person)
+    document.getElementById('loadingStatus').style.display = 'none'
 })()
 
 
@@ -290,6 +287,7 @@ async function fillThePersonForm(person) {
 }
 
 async function sendPersonProfile() {
+    document.getElementById('savingStatus').style.display = 'block'
 
     // document.getElementById('personProfileSent').style.display = 'none'
 
@@ -297,6 +295,7 @@ async function sendPersonProfile() {
     saveProfileButton.disabled = true
     let previousInnerHTML = saveProfileButton.innerHTML
     saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+
 
     // let pictureInfo = "no profile picture saved"
     const formData = new FormData()
@@ -310,7 +309,7 @@ async function sendPersonProfile() {
         const element = profEducationElements[index];
         profEducationData.push(
             {
-                strapi_id: element.getElementsByClassName('strapi_id')[0].value || null,
+                id: element.getElementsByClassName('strapi_id')[0].value || null,
                 type_of_work: '7',
                 year_from: element.getElementsByClassName('year_from')[0].value || null,
                 year_to: element.getElementsByClassName('year_to')[0].value || null,
@@ -363,7 +362,7 @@ async function sendPersonProfile() {
         const element = filmographiesElements[index];
         filmographiesData.push(
             {
-                strapi_id: element.getElementsByClassName('strapi_id')[0].value || null,
+                id: element.getElementsByClassName('strapi_id')[0].value || null,
                 type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
                 role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
                 year_from: element.getElementsByClassName('year_from')[0].value || null,
@@ -414,8 +413,8 @@ async function sendPersonProfile() {
         bio_en: bio_en.value || null,
         skills_en: skills_en.value || null,
         looking_for: looking_for.value || null,
-        address: {
-            strapi_id: addr_strapi_id.value || null,
+        addr_coll: {
+            id: addr_strapi_id.value || null,
             country: country.value || null,
             county: county.value || null,
             municipality: municipality.value || null,
@@ -483,6 +482,7 @@ async function sendPersonProfile() {
     }))
 
     console.log(response)
+    document.getElementById('savingStatus').style.display = 'none'
 
     console.log('Responsestatus', response.status)
 
@@ -523,6 +523,10 @@ async function sendPersonProfile() {
         scrollToElement("personProfileSent")
 
     }
+
+    // reload page
+    location.reload()
+    console.log('DONE')
 }
 
 function validatePersonForm() {
@@ -757,7 +761,8 @@ function addExistingGalleryImages(imagesData) {
         // Remove input field and label for photo year (whole .form_group element)
         thisElement.getElementsByClassName('galleryImageYear')[0].parentElement.remove()
         // Add photographer and year by thext
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("p")
+        textElement.classList.add('d-none')
         const text = document.createTextNode(`${img.alternativeText} (${img.caption})`);
         textElement.appendChild(text);
         thisElement.appendChild(textElement);
@@ -778,7 +783,8 @@ function addExistingProfileImg(imageData) {
         const profileImgLabel = profileImgElement.getElementsByClassName('person_profile_label')[0]
         profileImgLabel.innerHTML = `${profileImgLabel.innerHTML} (adding new image, replaces the current one)`
 
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("p")
+        textElement.classList.add('d-none')
         const text = document.createTextNode(`${imageData.alternativeText} (${imageData.caption})`);
         textElement.appendChild(text);
         profileImgElement.appendChild(textElement);
@@ -1012,7 +1018,6 @@ const samplePerson = {
     "ev_professions": null,
     "ev_fow": null,
     "ev_img_url": null,
-    "address": null,
     "addr_coll": null,
     "hair_length": null,
     "native_lang": null,
