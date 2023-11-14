@@ -448,7 +448,7 @@ block content
                                             - var shopDir = 'https://poff.ee/'
                                             a(href=`${shopDir}${event.product_categories[0].slug}`)
                                                 button.btn_default= self.label.userprofile.buyCourseRegister
-                                        a(href=`/${lang_path}events/${event.slug}`).btn_default Read more
+                                        a(href=`/${lang_path}events/${event.slug}`).btn_default= self.label.industry.moreInfo
                                 if event.credentials && event.credentials.rolePerson
                                     .event_people
                                         each rolePerson in event.credentials.rolePerson
