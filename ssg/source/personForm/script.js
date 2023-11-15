@@ -197,6 +197,12 @@ const fillPersonForm = (person) => {
             responsibleFunction(field)
         }
     }
+    // add existing id's to hidden fields
+    // addr_coll,
+    if (person.addr_coll) {
+        document.getElementById('addr_strapi_id').value = person.addr_coll.id
+    }
+
 }
 
 // Get my person profile. If not found, create one
@@ -213,11 +219,12 @@ const fetchPerson = async () => {
 
 const finishedSave = (status) => {
     if (status === 200) {
-        document.getElementById('personProfileSent').open = true;
+        document.getElementById('personProfileSent').open = true
         scrollToElement("personProfileSent")
         // location.reload()
     }
 }
+
 // Self-invoking function to start the script
 ;(async () => {
     requireLogin()
@@ -236,11 +243,9 @@ let galleryImageToSend = {}
 let audioFileToSend = "empty"
 let galleryCounter = 0
 let galleryExistingImageCounter = 0
-let profEducationCounter = 0
 let roleAtFilmCounter = 0
 let tagLookingForCounter = 0
 let otherLangCounter = 0
-let filmographyCounter = 0
 let filmographiesToDelete = []
 let existingGalleryImagesToDelete = []
 let profileId = null
@@ -248,6 +253,7 @@ let profileId = null
 
 
 async function fillThePersonForm(person) {
+    console.log('fillThePersonForm', person)
     // console.log('fillThePersonForm', JSON.stringify(person));
     delete person.country
 
@@ -304,32 +310,6 @@ async function sendPersonProfile() {
     let previousInnerHTML = saveProfileButton.innerHTML
     saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
 
-
-    // let pictureInfo = "no profile picture saved"
-    const formData = new FormData()
-
-    // FORMAADIS " strapi muutuja nimi : vormi välja ID "
-
-    // Prof education data processing
-    let profEducationData = []
-    let profEducationElements = document.querySelectorAll('[id^="education"]')
-    for (let index = 0; index < profEducationElements.length; index++) {
-        const element = profEducationElements[index]
-        profEducationData.push(
-            {
-                id: element.getElementsByClassName('strapi_id')[0].value || null,
-                type_of_work: '7',
-                year_from: element.getElementsByClassName('year_from')[0].value || null,
-                year_to: element.getElementsByClassName('year_to')[0].value || null,
-                org_name: element.getElementsByClassName('org_name')[0].value || null,
-                org_department: element.getElementsByClassName('org_department')[0].value || null,
-                degree: element.getElementsByClassName('degree')[0].value || null,
-                org_url: element.getElementsByClassName('org_url')[0].value || null,
-            }
-        )
-        element.remove()
-    }
-
     // Role at films data processing
     let roleAtFilmData = []
     let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
@@ -363,9 +343,29 @@ async function sendPersonProfile() {
         element.remove()
     }
 
+    // Prof education data processing
+    let profEducationData = []
+    let profEducationElements = selectElementsByRegex(educationElementRe) // document.querySelectorAll('[id^="education"]')
+    for (let index = 0; index < profEducationElements.length; index++) {
+        const element = profEducationElements[index]
+        profEducationData.push(
+            {
+                id: element.getElementsByClassName('strapi_id')[0].value || null,
+                type_of_work: '7',
+                year_from: element.getElementsByClassName('year_from')[0].value || null,
+                year_to: element.getElementsByClassName('year_to')[0].value || null,
+                org_name: element.getElementsByClassName('org_name')[0].value || null,
+                org_department: element.getElementsByClassName('org_department')[0].value || null,
+                degree: element.getElementsByClassName('degree')[0].value || null,
+                org_url: element.getElementsByClassName('org_url')[0].value || null,
+            }
+        )
+        element.remove()
+    }
+
     // Filmographies data processing
     let filmographiesData = []
-    let filmographiesElements = document.querySelectorAll('[id^="filmographies"]')
+    let filmographiesElements = selectElementsByRegex(filmographyElementRe) // document.querySelectorAll('[id^="filmographies"]')
     for (let index = 0; index < filmographiesElements.length; index++) {
         const element = filmographiesElements[index];
         filmographiesData.push(
@@ -455,7 +455,9 @@ async function sendPersonProfile() {
 
     }
 
-    console.log('personToSend', personToSend)
+    const formData = new FormData()
+
+    // console.log('personToSend', personToSend)
     formData.append('data', JSON.stringify(personToSend))
 
     if (profileImageToSend !== "empty") {
@@ -474,10 +476,10 @@ async function sendPersonProfile() {
     }
 
     // Log form data
-    console.log('Formdata:')
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
+    // console.log('Formdata')
+    // for (var pair of formData.entries()) {
+    //     console.log(pair[0] + ', ' + pair[1]);
+    // }
 
     console.log("kasutaja profiil mida saadan ", personToSend)
 
@@ -519,11 +521,9 @@ async function sendPersonProfile() {
         otherLangData = []
         filmographiesData = []
 
-        profEducationCounter = 0
         roleAtFilmCounter = 0
         tagLookingForCounter = 0
         otherLangCounter = 0
-        filmographyCounter = 0
         filmographiesToDelete = []
 
         console.log('OK');
@@ -564,7 +564,7 @@ function validatePersonForm() {
         }
     }
 
-    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
+    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]') // document.querySelectorAll('[id^="filmRole"]')
     for (let index = 0; index < roleAtFilmElements.length; index++) {
         const element = roleAtFilmElements[index];
         if (!validateRepeatableFormPart(element.getElementsByClassName('role_at_film')[0], element.getElementsByClassName('help')[0])) {
@@ -572,7 +572,7 @@ function validatePersonForm() {
         }
     }
 
-    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]')
+    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]') // document.querySelectorAll('[id^="tagLookingElement"]')
     for (let index = 0; index < tagLookingForElements.length; index++) {
         const element = tagLookingForElements[index];
         if (!validateRepeatableFormPart(element.getElementsByClassName('tag_looking_for')[0], element.getElementsByClassName('help')[0])) {
@@ -580,8 +580,7 @@ function validatePersonForm() {
         }
     }
 
-    // let educationElements = document.querySelectorAll('[id^="education"]')
-    const educationElements = selectElementsByRegex(/^education\d*$/)
+    const educationElements = selectElementsByRegex(/^education\d*$/) // document.querySelectorAll('[id^="education"]')
     for (let index = 0; index < educationElements.length; index++) {
         const element = educationElements[index];
         if (!validateRepeatableFormPart(element.getElementsByClassName('org_name')[0], element.getElementsByClassName('org_name_help')[0])) {
@@ -589,7 +588,7 @@ function validatePersonForm() {
         }
     }
 
-    let filmographyElements = document.querySelectorAll('[id^="filmographies"]')
+    let filmographyElements = selectElementsByRegex(/^filmographies\d*$/) // document.querySelectorAll('[id^="filmographies"]')
     for (let index = 0; index < filmographyElements.length; index++) {
         const element = filmographyElements[index];
         if (!validateRepeatableFormPart(element.getElementsByClassName('type_of_work')[0], element.getElementsByClassName('type_of_work_help')[0])) {
@@ -882,67 +881,65 @@ function addNextOtherLang(data = null) {
     otherLangCounter = otherLangCounter + 1
 }
 
+const educationElementPrefix = 'education'
+const educationElementRe = /^education\d+$/
 function addNextEducation(data = null) {
-    console.log('addNextEducation', data)
-    const cloneElementPrefix = 'education'
+    const educationElementCounter = selectElementsByRegex(educationElementRe).length
+    console.log('addNextEducation', {data, count: educationElementCounter})
     const profEducationTemplate = document.getElementById('profEducationTemplate')
     const clone = profEducationTemplate.cloneNode(true)
-    clone.id = `${cloneElementPrefix}${profEducationCounter}`
+    clone.id = `${educationElementPrefix}${educationElementCounter}`
     clone.style.display = ''
-    document.getElementById('profEducationTemplate').parentElement.appendChild(clone)
+    profEducationTemplate.parentElement.appendChild(clone)
 
-    let thisElement = document.getElementById(`${cloneElementPrefix}${profEducationCounter}`)
-
-    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${cloneElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${profEducationCounter}")`)
+    let deleteButton = clone.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${educationElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${clone.id}")`)
 
     // Fill with existing info
     if (data) {
         const dataKeys = Object.keys(data);
         dataKeys.map(k => {
             try {
-                thisElement.getElementsByClassName(k)[0].value = data[k]
+                clone.getElementsByClassName(k)[0].value = data[k]
                 // Add Strapi ID, if it exists, to hidden field
                 if (data.id) {
-                    thisElement.getElementsByClassName('strapi_id')[0].value = data.id
+                    clone.getElementsByClassName('strapi_id')[0].value = data.id
                 }
             } catch (error) {
                 null
             }
         })
     }
-
-    profEducationCounter = profEducationCounter + 1
 }
 
+const filmographyElementPrefix = 'filmographies'
+const filmographyElementRe = /^filmographies\d+$/
 function addNextFilmographyWork(data = null) {
-    console.log('addNextFilmographyWork', data);
-    const cloneElementPrefix = 'filmographies'
-    const filmographyTemplate = document.getElementById('filmographyTemplate');
-    const clone = filmographyTemplate.cloneNode(true);
-    clone.id = `${cloneElementPrefix}${filmographyCounter}`
+    const filmographyCounter = selectElementsByRegex(filmographyElementRe).length
+    console.log('addNextFilmographyWork', {data, count: filmographyCounter})
+    const filmographyTemplate = document.getElementById('filmographyTemplate')
+    const clone = filmographyTemplate.cloneNode(true)
+    clone.id = `${filmographyElementPrefix}${filmographyCounter}`
     clone.style.display = ''
-    document.getElementById('filmographyTemplate').parentElement.appendChild(clone)
+    filmographyTemplate.parentElement.appendChild(clone)
 
-    let thisElement = document.getElementById(`${cloneElementPrefix}${filmographyCounter}`)
-
-    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${cloneElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${filmographyCounter}")`)
+    let deleteButton = clone.getElementsByClassName('deleteButton')[0]
+    deleteButton.classList.add(`delete${filmographyElementPrefix}`)
+    deleteButton.setAttribute('onclick', `removeElement("${clone.id}")`)
 
     // Fill with existing info
     if (data) {
         const dataKeys = Object.keys(data);
         dataKeys.map(k => {
             try {
-                thisElement.getElementsByClassName(k)[0].value = typeof data[k] === 'object' && data[k] !== null ? data[k].id : data[k]
+                clone.getElementsByClassName(k)[0].value = typeof data[k] === 'object' && data[k] !== null ? data[k].id : data[k]
                 // Add Strapi ID, if it exists, to hidden field
                 if (data.id) {
-                    thisElement.getElementsByClassName('strapi_id')[0].value = data.id
+                    clone.getElementsByClassName('strapi_id')[0].value = data.id
                     // Fill role_at_film for filmography as it is repeatable
                     if (k === 'role_at_films' && data[k][0]) {
-                        thisElement.getElementsByClassName(k)[0].value = data[k][0].id
+                        clone.getElementsByClassName(k)[0].value = data[k][0].id
                     }
                 }
             } catch (error) {
@@ -950,8 +947,6 @@ function addNextFilmographyWork(data = null) {
             }
         })
     }
-
-    filmographyCounter = filmographyCounter + 1
 }
 
 function removeElement(id, required = false, requiredElementName = null) {
