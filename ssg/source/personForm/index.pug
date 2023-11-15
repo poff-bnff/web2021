@@ -11,7 +11,7 @@ block content
 
             dialog#personProfileSent(display='none')
                 P= self.label.userprofile.profileSaved
-                p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
+                p.btn.btn_primary(onclick='location.reload()')= "OK"
 
             fieldset#nameSet
                 legend= self.label.userprofile.nameSet
