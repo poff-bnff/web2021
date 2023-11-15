@@ -2,23 +2,18 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    script.
-        requireLogin()
 
     section.userprofile
-        form.form#thisPersonProfile(style= 'display: none')
+        form.form#thisPersonProfile
 
             //- .events_search_page_title_wrapper
             //- h1.events_search_page_title= self.label.industry.myProProfile
 
-            dialog#personProfileSent
-                //- (style= {display: 'none'})
-                form(method="dialog")
-                    P= self.label.userprofile.profileSaved
-                    //- window.location.href = window.location.href; - discarding the POST data (perform a GET request)
-                    p.btn.btn_primary(onclick='window.location.href = window.location.href;')= "OK"
+            dialog#personProfileSent(display='none')
+                P= self.label.userprofile.profileSaved
+                p.btn.btn_primary(onclick='location.reload()')= "OK"
 
-            fieldset
+            fieldset#nameSet
                 legend= self.label.userprofile.nameSet
                 .fieldset_grid
                     //- firstName
@@ -35,7 +30,7 @@ block content
                         input.login_input#lastName.form_control( type='text' name='lastName' autocomplete="off" oninput="validateRequiredField(this.id, 'textLength')" required)
                         div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
 
-            fieldset
+            fieldset#roleAtFilmSet
                 //- role_at_films
                 legend= self.label.userprofile.proRole
                         div#roleAtFilmTemplate(style= 'display: none;')
@@ -55,7 +50,7 @@ block content
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
                         input.login_input.btn_primary(type='button' name='nextRoleAtFilm' id='nextRoleAtFilm' onclick='addNextRoleAtFilm();' value=self.label.userprofile.addRoleAtFilm)
 
-            fieldset
+            fieldset#tagLookingForSet
                 //- tag_looking_for
                 legend= self.label.userprofile.lookingFor
                         div#tagLookingForTemplate(style= 'display: none;')
@@ -75,7 +70,7 @@ block content
                         //- label.person_profile_label(for='nextRoleAtFilm')= self.label.userprofile.addRoleAtFilm
                         input.login_input.btn_primary(type='button' name='nextTagLookingFor' id='nextTagLookingFor' onclick='addNextTagLookingFor();' value=self.label.userprofile.addTagLookingFor)
 
-            fieldset
+            fieldset#mainInfoSet
                 legend= self.label.userprofile.mainInfoSet
                 .fieldset_grid
                     //- gender
@@ -106,7 +101,7 @@ block content
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option.login_input(value=language.id)= language[`name_${self.locale}`]
 
-            fieldset
+            fieldset#otherLangSet
                 //- otherLang
                 legend= self.label.userprofile.otherLang
                     div#otherLangTemplate(style= 'display: none;')
@@ -236,7 +231,7 @@ block content
                         label.person_profile_label(for='looking_for')= self.label.userprofile.lookingForText
                         textarea.login_input#looking_for(form="thisPersonProfile" name="looking_for")
 
-            fieldset
+            fieldset#profileImgSet
                 legend= self.label.userprofile.profileImgSet
                 .fieldset_grid
                     .form_group#profileImage
@@ -252,7 +247,7 @@ block content
                         label.person_profile_label(for='img_year')= self.label.userprofile.imageYear
                         input.login_input#img_year.form-control(type='number' name='img_year' min='2000' max='3000' autocomplete="off")
 
-            fieldset
+            fieldset#galleryImgSet
                 //- hr(style='color: black')
                 legend= legend= self.label.userprofile.galleryImgSet
                         //- p(style='color: black') GALERIIPILDID (PERSON.IMAGES)
@@ -269,18 +264,14 @@ block content
                                 .form_group.d-none
                                     label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
                                     input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='2000' max='3000' autocomplete="off")
-                                .form_group
+                                .form_group.d-none
                                     label.person_profile_label(for='add_new_img')= self.label.userprofile.delete
                                     input.login_input.btn_secondary.deleteGalleryImage(type='button' value="x")
-                                        //- .btn.btn_primary.deleteGalleryImage x
                 .fieldset_grid
                     .form_group
-                        //- label.person_profile_label(for='add_new_img')= self.label.userprofile.addGalleryImg
                         input.login_input.btn_primary(type='button' id='addNextGalleryImg' onclick='addGalleryImage()' value=self.label.userprofile.addGalleryImg)
 
-                        //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
-
-            fieldset.d-none
+            fieldset.d-none#reelsSet
                 legend= self.label.userprofile.reelsSet
                 .fieldset_grid
                     //-  showreel
@@ -293,7 +284,7 @@ block content
                         label.person_profile_label(for='audioreel')= self.label.userprofile.audioreel
                         input.login_input.input_file#audioreel.form_control(type='file' name='filename' accept="audio/*" onchange ='validateAudioAndPreview(this.files[0])')
 
-            fieldset
+            fieldset#contactInfoSet
                 legend= self.label.userprofile.contactInfoSet
                 .fieldset_grid
                     //-  phoneNr
@@ -328,7 +319,7 @@ block content
                         label.person_profile_label(for='repr_email')= self.label.userprofile.reprEmail
                         input.login_input#repr_email.form_control( type='email' name='repr_email' autocomplete="off")
 
-            fieldset
+            fieldset#addressSet
                 legend= self.label.userprofile.addressSet
                 .fieldset_grid
                     .form_group
@@ -374,7 +365,7 @@ block content
                         label.person_profile_label(for='postal_code')= self.label.userprofile.addressPostalCode
                         input.login_input#postal_code.form_control(type='text' name='postal_code')
 
-            fieldset
+            fieldset#educationSet
                 legend= self.label.userprofile.profEducation
                     .eduworks_item#profEducationTemplate(style= 'display: none; ')
                         .fieldset_grid
@@ -415,7 +406,7 @@ block content
                         //- label.person_profile_label(for='addNextEducationBtn')= self.label.userprofile.addEducation
                         input.login_input.btn_primary.addNextEducation(type='button' id='addNextEducationBtn' onclick='addNextEducation();' value=self.label.userprofile.addEducation)
 
-            fieldset
+            fieldset#workExperienceSet
                 legend= self.label.userprofile.worksFilmography
                     .eduworks_item#filmographyTemplate(style= 'display: none; ')
                         .fieldset_grid
@@ -481,7 +472,7 @@ block content
                         //- label.person_profile_label(for='addFilmographyWork')= self.label.userprofile.addFilmographyWork
                         input.login_input.btn_primary(type='button' id='addFilmographyWork' onclick='addNextFilmographyWork();' value=self.label.userprofile.addFilmographyWork)
 
-            fieldset
+            fieldset#saveProfileSet
                 legend
                 .fieldset_grid
                     .form_group
