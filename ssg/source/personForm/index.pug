@@ -264,16 +264,12 @@ block content
                                 .form_group.d-none
                                     label.person_profile_label(for='galleryImageYear')= self.label.userprofile.imageYear
                                     input.login_input.galleryImageYear.form-control(type='number' name='galleryImageYear' min='2000' max='3000' autocomplete="off")
-                                .form_group
+                                .form_group.d-none
                                     label.person_profile_label(for='add_new_img')= self.label.userprofile.delete
                                     input.login_input.btn_secondary.deleteGalleryImage(type='button' value="x")
-                                        //- .btn.btn_primary.deleteGalleryImage x
                 .fieldset_grid
                     .form_group
-                        //- label.person_profile_label(for='add_new_img')= self.label.userprofile.addGalleryImg
                         input.login_input.btn_primary(type='button' id='addNextGalleryImg' onclick='addGalleryImage()' value=self.label.userprofile.addGalleryImg)
-
-                        //- .btn.btn_primary(id='addNextGalleryImg' onclick='addGalleryImage()')= self.label.userprofile.addGalleryImg
 
             fieldset.d-none#reelsSet
                 legend= self.label.userprofile.reelsSet

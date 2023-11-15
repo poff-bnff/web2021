@@ -368,21 +368,23 @@ async function sendPersonProfile() {
     let filmographiesData = []
     let filmographiesElements = selectElementsByRegex(filmographyElementRe) // document.querySelectorAll('[id^="filmographies"]')
     for (let index = 0; index < filmographiesElements.length; index++) {
-        const element = filmographiesElements[index];
-        filmographiesData.push(
-            {
-                id: element.getElementsByClassName('strapi_id')[0].value || null,
-                type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
-                role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
-                year_from: element.getElementsByClassName('year_from')[0].value || null,
-                year_to: element.getElementsByClassName('year_to')[0].value || null,
-                work_name: element.getElementsByClassName('work_name')[0].value || null,
-                work_url: element.getElementsByClassName('work_url')[0].value || null,
-                actor_role: element.getElementsByClassName('actor_role')[0].value || null,
-                org_name: element.getElementsByClassName('org_name')[0].value || null,
-                org_url: element.getElementsByClassName('org_url')[0].value || null,
-            }
-        )
+        const element = filmographiesElements[index]
+        const filmData = {
+            type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
+            role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
+            year_from: element.getElementsByClassName('year_from')[0].value || null,
+            year_to: element.getElementsByClassName('year_to')[0].value || null,
+            work_name: element.getElementsByClassName('work_name')[0].value || null,
+            work_url: element.getElementsByClassName('work_url')[0].value || null,
+            actor_role: element.getElementsByClassName('actor_role')[0].value || null,
+            org_name: element.getElementsByClassName('org_name')[0].value || null,
+            org_url: element.getElementsByClassName('org_url')[0].value || null,
+        }
+        const strapiId = element.getElementsByClassName('strapi_id')[0].value
+        if (strapiId) {
+            filmData.id = strapiId
+        }
+        filmographiesData.push( filmData )
         element.remove()
     }
 
