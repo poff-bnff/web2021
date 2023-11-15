@@ -221,7 +221,6 @@ const finishedSave = (status) => {
     if (status === 200) {
         document.getElementById('personProfileSent').open = true
         scrollToElement("personProfileSent")
-        // location.reload()
     }
 }
 
@@ -348,18 +347,20 @@ async function sendPersonProfile() {
     let profEducationElements = selectElementsByRegex(educationElementRe) // document.querySelectorAll('[id^="education"]')
     for (let index = 0; index < profEducationElements.length; index++) {
         const element = profEducationElements[index]
-        profEducationData.push(
-            {
-                id: element.getElementsByClassName('strapi_id')[0].value || null,
-                type_of_work: '7',
-                year_from: element.getElementsByClassName('year_from')[0].value || null,
-                year_to: element.getElementsByClassName('year_to')[0].value || null,
-                org_name: element.getElementsByClassName('org_name')[0].value || null,
-                org_department: element.getElementsByClassName('org_department')[0].value || null,
-                degree: element.getElementsByClassName('degree')[0].value || null,
-                org_url: element.getElementsByClassName('org_url')[0].value || null,
-            }
-        )
+        const eduData = {
+            type_of_work: '7',
+            year_from: element.getElementsByClassName('year_from')[0].value || null,
+            year_to: element.getElementsByClassName('year_to')[0].value || null,
+            org_name: element.getElementsByClassName('org_name')[0].value || null,
+            org_department: element.getElementsByClassName('org_department')[0].value || null,
+            degree: element.getElementsByClassName('degree')[0].value || null,
+            org_url: element.getElementsByClassName('org_url')[0].value || null,
+        }
+        const strapiId = element.getElementsByClassName('strapi_id')[0].value
+        if (strapiId) {
+            eduData.id = strapiId
+        }
+        profEducationData.push( eduData )
         element.remove()
     }
 
