@@ -199,7 +199,7 @@ function processEvents(courseEventCopy, lang) {
                 // No duration set, use end_time.
                 eventend = convert_to_UTC(element.end_time)
             }
-            element.calendar_data = encodeURI(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
+            const icalAddData = {
                 domain: DOMAIN,
                 prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
                 events: [
@@ -216,29 +216,14 @@ function processEvents(courseEventCopy, lang) {
                         }
                     }
                 ]
-            }).toString())
-
-            element.calendar_data_remove = encodeURI(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
-                domain: DOMAIN,
-                method: 'CANCEL',
-                status: 'CANCELLED',
-                prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
-                events: [
-                    {
-                        start: eventstart,
-                        end: eventend,
-                        timestamp: eventstart,
-                        description: element.description,
-                        location: element.hasOwnProperty('location') && element.location.hasOwnProperty('name') ? element.location.name + `: https://${DOMAIN}/events/${element.slug}` : undefined,
-                        summary: element.title,
-                        organizer: {
-                            name: 'Industry@Tallinn & Baltic Event',
-                            email: 'industry@poff.ee'
-                        }
-                    }
-                ]
-            }).toString())
-
+            }
+            const icalAddEvent = ical(icalAddData)
+            element.calendar_data = encodeURI(icalAddEvent.toString())
+            const icalCancelData = JSON.parse(JSON.stringify(icalAddData))
+            icalCancelData.method = 'CANCEL'
+            icalCancelData.events[0].status = 'CANCELLED'
+            const icalCancelEvent = ical(icalCancelData)
+            element.calendar_cancel_data = encodeURI(icalCancelEvent.toString())
 
             allData.push(element)
             if (param_build_type === 'target' && !target_id.includes(element.id.toString())) {
