@@ -130,9 +130,6 @@ status=$?;[ $status -eq 0 ] && echo 'fetch_industry_project_from_yaml succeeded'
 # echo 'fetch_industry_channels_from_yaml'
 # nice -10 node ./helpers/fetch_channels_from_yaml.js
 
-# echo 'fetch_industry_event_from_yaml'
-# nice -10 node ./helpers/fetch_industry_event_from_yaml.js
-
 echo 'fetch_eventival_persons_from_yaml.js'
 nice -10 node ./helpers/fetch_eventival_persons_from_yaml.js
 status=$?;[ $status -eq 0 ] && echo 'fetch_eventival_persons_from_yaml succeeded' || echo 'fetch_eventival_persons_from_yaml failed. Exit'
