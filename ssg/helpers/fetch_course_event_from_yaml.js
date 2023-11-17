@@ -1,7 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 const path = require('path')
-const ical = require('ical-generator');
+const ical = require('ical-generator')
 const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
 
@@ -217,6 +217,28 @@ function processEvents(courseEventCopy, lang) {
                     }
                 ]
             }).toString())
+
+            element.calendar_data_remove = encodeURI(ical({  //escape is Deprecated, https://www.w3schools.com/jsref/jsref_escape.asp (encodeURIComponent())
+                domain: DOMAIN,
+                method: 'CANCEL',
+                status: 'CANCELLED',
+                prodId: `//${DOMAIN}//Industry@Tallinn//EN`,
+                events: [
+                    {
+                        start: eventstart,
+                        end: eventend,
+                        timestamp: eventstart,
+                        description: element.description,
+                        location: element.hasOwnProperty('location') && element.location.hasOwnProperty('name') ? element.location.name + `: https://${DOMAIN}/events/${element.slug}` : undefined,
+                        summary: element.title,
+                        organizer: {
+                            name: 'Industry@Tallinn & Baltic Event',
+                            email: 'industry@poff.ee'
+                        }
+                    }
+                ]
+            }).toString())
+
 
             allData.push(element)
             if (param_build_type === 'target' && !target_id.includes(element.id.toString())) {

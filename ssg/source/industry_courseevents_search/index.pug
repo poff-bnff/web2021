@@ -162,7 +162,7 @@ block content
                                                     img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
                                         .rem_from_cal.is_fav.d-none
                                             .header_text
-                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
+                                                a.list_view_rem_from_cal(href=`data:text/calendar;charset=utf-8,${event.calendar_data_remove}`, download=event.title.replace(/[^a-z0-9]/gi, '_'))
                                                     span.rem_from_cal_text= self.t.rem4cal
                                                     img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
                                                 //- span.notsavedevent(id=event.id+'_not_savedevent', style='display: none; cursor: pointer;' onclick=`modifyFavourites('addMyEvent', ${event.id}); calendarfile('${event.id}');`)= self.t.add2cal
@@ -371,7 +371,7 @@ block content
                                                     img(width='24' height='24' alt=self.t.add2cal data-src='/assets/img/static/industry/cal_plus.svg' src='/assets/img/static/industry/cal_plus.svg')
                                         .rem_from_cal.is_fav.d-none
                                             .header_text
-                                                a.list_view_rem_from_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data}`, download=event.title)
+                                                a.list_view_rem_from_cal.text-nowrap(href=`data:text/calendar;charset=utf-8,${event.calendar_data_remove}`, download=event.title)
                                                     span.rem_from_cal_text= self.t.rem4cal
                                                     img(width='24' height='24' alt=self.t.rem4cal data-src='/assets/img/static/industry/cal_checked.svg' src='/assets/img/static/industry/cal_checked.svg')
 
