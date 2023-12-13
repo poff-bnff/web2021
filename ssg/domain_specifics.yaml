@@ -25,7 +25,7 @@ cassettes_festival_editions:
     industry.poff.ee: [68]
     justfilm.ee: [64] # - 29
     kinoff.poff.ee: [72]
-    kumu.poff.ee: [71]
+    kumu.poff.ee: [75]
     oyafond.ee: [31]
     poff.ee: [63, 64, 67, 72]
     shorts.poff.ee: [67] # - 30
@@ -53,7 +53,7 @@ programmes_festival_editions:
     industry.poff.ee: [68]
     justfilm.ee: [64]
     kinoff.poff.ee: [72]
-    kumu.poff.ee: [33]
+    kumu.poff.ee: [75]
     oyafond.ee: [31]
     poff.ee: [63, 64, 67, 72]
     shorts.poff.ee: [67]
