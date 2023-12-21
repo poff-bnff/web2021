@@ -44,7 +44,7 @@ cassettesAndFilmsShowVotemo:
     shorts.poff.ee: false
     tartuff.ee: false
 
-XML_festival_editions: [63, 64, 67, 72] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [63, 64, 67, 72, 76] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
