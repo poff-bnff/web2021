@@ -104,9 +104,9 @@ industry_person_in_editions:
     is_in_creative: [59]
 
 target_build_models:
-    - cassette
+    # - cassette
     - course-event
-    - film
+    # - film
     # - industry-project
     # - programme
     - screening
