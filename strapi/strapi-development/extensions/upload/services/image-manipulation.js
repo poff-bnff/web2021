@@ -101,11 +101,6 @@ const optimize = async buffer => {
 }
 
 const generateResponsiveFormats = async file => {
-  const {
-    responsiveDimensions = false,
-  } = await strapi.plugins.upload.services.upload.getSettings()
-
-  if (!responsiveDimensions) return []
 
   if (!(await canBeProccessed(file.buffer))) {
     return []
