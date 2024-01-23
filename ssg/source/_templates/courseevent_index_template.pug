@@ -150,10 +150,11 @@ block content
                                 webkitallowfullscreen='true' mozallowfullscreen='true' allowfullscreen='true'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' )
 
-                        .d-none.login_16_9_container.login_ind_ev#eventival_login
-                            h4.login_headline#loginMessage.white_96 Log in via Eventival
-                            a(onclick='requireEventivalLogin()' style='cursor: pointer;')
-                                img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+                        if process.env['DOMAIN'] === 'industry.poff.ee'
+                            .d-none.login_16_9_container.login_ind_ev#eventival_login
+                                h4.login_headline#loginMessage.white_96 Log in via Eventival
+                                a(onclick='requireEventivalLogin()' style='cursor: pointer;')
+                                    img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
 
                         script.
                             console.log(eventAccess, eventAccess === "Free (without accreditation)", courseEventId)
