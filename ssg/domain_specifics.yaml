@@ -395,10 +395,12 @@ industryPersonsImagePriorityDefaults:
 cassettesAndFilmsListViewImagePriority:
     - _small_16_9
     - _small
+    - image
 
 cassettesAndFilmsImageStillsPriority:
     - _big_16_9
     - _big
+    - image
 
 cassettesAndFilmsDirectorPicturePriority:
     - - _med_sq
