@@ -29,33 +29,30 @@ header
                     //- span.org_item
                     //-     a(href='https://kinoff.ee')
                     //-         | Kinoff
-                    //- span.org_item
-                    //-     a(href='https://kinoff.ee')
-                    //-         | Kinoff
                     span.org_item
                         a(href='https://hoff.ee')
                             | HÕFF
-                    //- span.org_item
-                    //-     a(href='https://kumu.poff.ee')
-                    //-         | KUMU Dokumentaal
-                    //- span.org_item
-                    //-     a(href='https://hoff.ee')
-                    //-         | HÕFF
-                    //- span.org_item
-                    //-     a(href='https://tartuff.ee')
-                    //-         | Tartuff
+                    span.org_item
+                        a(href='https://kumu.poff.ee')
+                            | KUMU Dokumentaal
+                    span.org_item
+                        a(href='https://hoff.ee')
+                            | HÕFF
+                    span.org_item
+                        a(href='https://tartuff.ee')
+                            | Tartuff
                     span.org_item
                         a(href='https://filmikool.poff.ee')
                             | Filmikool
                     //- span.org_item
                     //-     a(href='https://proscreen.poff.ee')
                     //-         | ProScreen
-                    //- span.org_item
-                    //-     a(href='https://oyafond.ee')
-                    //-         | Bruno O'Ya Fond
                     span.org_item
-                        a(href='https://elisastage.poff.ee')
-                            | PÖFF TV
+                        a(href='https://oyafond.ee')
+                            | Bruno O'Ya Fond
+                    //- span.org_item
+                    //-     a(href='https://elisastage.poff.ee')
+                    //-         | PÖFF TV
 
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
