@@ -96,13 +96,13 @@ block content
             each index, key in self.data.filters.times
                 if index.endsWith('00')
                     option(value=key)= index
-        
+
         select#timesTo_select(name='TimesTo')
             option(value='')= self.label.filters.timesTo
             each index, key in self.data.filters.times
                 if index.endsWith('00')
                     option(value=key)= index
-            - 
+            -
                 var lastTime = Object.values(self.data.filters.times).pop();
                 var date = new Date("2023-01-01T" + lastTime + ":00");
                 date.setHours(date.getHours() + 1);
@@ -195,7 +195,7 @@ block content
 
                                 .card_film_title
                                     //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_1= cassette.title
+                                    h3.film_title_locale.dark_1.padding_bottom_1= screening.codeAndTitle
                                         //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
 
                                 //- Programmid
