@@ -477,7 +477,8 @@ main.grid_film(id=self.id)
                     )= self.label.film.addShortlist
 
             if film.credentials && film.credentials.rolePerson && film.credentials.rolePerson[0]
-                - var rolesToExpand = ['Director', 'Producer']
+                - var rolesToExpand = ['Director']
+                //- - var rolesToExpand = ['Director', 'Producer']
                 - var filmDirectors = film.credentials.rolePerson.filter(a => {
                 -        if (a.role_at_film && a.role_at_film.roleNamePrivate && rolesToExpand.includes(a.role_at_film.roleNamePrivate) ) {
                 -            return true
