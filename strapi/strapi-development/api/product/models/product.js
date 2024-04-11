@@ -23,7 +23,7 @@ const {
 const { roleAssigner } = require(role_assigner)
 
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
-let sheet_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', '/helpers/connect_spreadsheet.js')
+//let sheet_path = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', '/helpers/connect_spreadsheet.js')
 
 const {
   call_update,
@@ -33,10 +33,10 @@ const {
   call_delete,
 } = require(helper_path)
 
-const {
+/*const {
   readSheet,
   update_sheets
-} = require(sheet_path)
+} = require(sheet_path)*/
 
 /**
 const domains =

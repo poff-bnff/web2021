@@ -6,8 +6,8 @@
 
 const path = require('path')
 const helpersPath = path.join(__dirname, '..', '..', '..', 'helpers')
-const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
-const { timer } = require(path.join(ssgHeplersPath, 'timer.js'))
+//const ssgHeplersPath = path.join(__dirname, '..', '..', '..', '..', '..', 'ssg', 'helpers')
+const { timer } = require(path.join(helpersPath, 'timer.js'))
 
 const LC_MANAGER = path.join(helpersPath, 'lifecycle_manager.js')
 const {
