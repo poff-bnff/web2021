@@ -17,6 +17,7 @@ const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_allStrapidata', 'Person.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const PERSONLIMIT = parseInt(process.env['PERSONLIMIT']) || 0
 
 const fetchDataDir = path.join(fetchDir, 'persons')
 
@@ -177,7 +178,14 @@ function startPersonProcessing(languages, activePersons) {
         console.log(`Fetching ${DOMAIN} persons ${lang} data`)
 
         const filteredPersons = []
+        let limit = PERSONLIMIT
+        let counting = 0
+
         for (const ix in activePersons) {
+
+            if (limit !== 0 && counting === limit) break
+            counting++
+
             let person = JSON.parse(JSON.stringify(activePersons[ix])) // deep copy, because rueten mutates the object
             person = rueten(person, lang) // TODO: rueten mutates the object, assignment is unnecessary
 

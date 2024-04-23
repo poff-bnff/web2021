@@ -36,6 +36,9 @@ const defaultLocale = DOMAIN_SPECIFICS.defaultLocale[DOMAIN]
 const stagingURL = DOMAIN_SPECIFICS.stagingURLs[DOMAIN]
 const pageURL = DOMAIN_SPECIFICS.pageURLs[DOMAIN]
 
+// Artiklite limiit mida buildida
+const ARTICLELIMIT = parseInt(process.env['ARTICLELIMIT']) || 0
+
 console.log('fetch_article_type_from_yaml.js target_id', target_id);
 
 const minimodel = {
@@ -112,6 +115,9 @@ for (const lang of languages) {
         articles: `/_fetchdir/articles.${lang}.yaml`,
     }
 
+    let limit = ARTICLELIMIT
+    let counting = {}
+
     for (const strapiElement of STRAPIDATA_ARTICLE) {
         let element = JSON.parse(JSON.stringify(strapiElement))
         let slugEn = element.slug_en || element.slug_et
@@ -173,6 +179,10 @@ for (const lang of languages) {
         if (element.article_types) {
 
             for (artType of element.article_types) {
+
+                counting[artType.name] = ~~counting[artType.name] + 1
+                if (limit !== 0 && counting[artType.name] > limit) continue
+
                 element.articleTypeSlug = artType.slug
 
                 element.directory = path.join(fetchDir, artType.name, slugEn)

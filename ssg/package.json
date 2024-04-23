@@ -15,7 +15,7 @@
     "cross-env": "^7.0.3",
     "deep-diff": "^1.0.2",
     "diff": "^4.0.2",
-    "entu-ssg": "^5.2.10",
+    "entu-ssg": "5.2.10",
     "fast-xml-parser": "^3.17.4",
     "filereader": "^0.10.3",
     "googleapis": "^59.0.0",
@@ -51,7 +51,8 @@
     "update_discamp_styles": "DOMAIN='discoverycampus.poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "Custom-Build": "bash ./build_custom.sh",
     "Custom-Build-With-Limiter": "bash ./build_custom_w_limiter.sh",
-    "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh"
+    "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh",
+    "Custom-Build-Limit-All": "bash ./build_custom_limit_all.sh"
   },
   "repository": {
     "type": "git",

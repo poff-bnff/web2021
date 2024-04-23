@@ -14,6 +14,7 @@ const strapiDataOrganisationPath = path.join(strapiDataDirPath, 'Organisation.ya
 const STRAPIDATA_ORGANISATIONS = yaml.load(fs.readFileSync(strapiDataOrganisationPath, 'utf8'))
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
+const PROGRAMMELIMIT = parseInt(process.env['PROGRAMMELIMIT']) || 0
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
@@ -56,7 +57,13 @@ for (const ix in languages) {
     })
 
     var allData = []
+    let limit = PROGRAMMELIMIT
+    let counting = 0
+
     for (const ix in STRAPIDATA_PROGRAMMES) {
+
+        if (limit !== 0 && counting === limit) break
+        counting++
 
         if (param_build_type === 'target' && !target_id.includes((STRAPIDATA_PROGRAMMES[ix].id).toString())) {
             continue
