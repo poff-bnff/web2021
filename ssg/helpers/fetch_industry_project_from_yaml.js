@@ -22,6 +22,7 @@ const strapiDataRoleAtFilmPath = path.join(strapiDataDirPath, 'RoleAtFilm.yaml')
 const STRAPIDATA_ROLESATFILM = yaml.load(fs.readFileSync(strapiDataRoleAtFilmPath, 'utf8'))
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const active_editions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
+const INDPROJECTLIMIT = parseInt(process.env['INDPROJECTLIMIT']) || 0
 
 const params = process.argv.slice(2)
 const param_build_type = params[0]
@@ -258,7 +259,15 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
         const lang = languages[ix];
         console.log(`Fetching ${DOMAIN} industry ${projectsYamlNameSuffix} ${lang} data`);
         let allData = []
+
+        let limit = INDPROJECTLIMIT
+        let counting = 0
+
         for (const ix in STRAPIDATA_IND_PROJECT) {
+
+            if (limit !== 0 && counting === limit) break
+            counting++
+
             let industry_project = JSON.parse(JSON.stringify(STRAPIDATA_IND_PROJECT[ix]));
             // console.log(Object.keys(industry_project))
             industry_project.roles_in_project = {}

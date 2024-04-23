@@ -12,6 +12,7 @@ const sourceDir =  path.join(__dirname, '..', 'source')
 const strapiDataDirPath = path.join(sourceDir, '_domainStrapidata')
 const fetchDirDirPath = path.join(sourceDir, '_fetchdir')
 const DOMAIN = process.env['DOMAIN'] || 'poff.ee'
+const LOCATIONLIMIT = parseInt(process.env['LOCATIONLIMIT']) || 0
 
 if (DOMAIN !== 'industry.poff.ee') {
     console.log('Skipping locations fetch as domain is not industry.poff.ee');
@@ -91,7 +92,15 @@ function startLocationProcessing(languages, STRAPIDATA_LOCATIONS) {
     for (const lang of languages) {
 
         let copyData = []
+
+        let limit = LOCATIONLIMIT
+        let counting = 0
+
         for(const ix in STRAPIDATA_LOCATIONS) {
+
+            if (limit !== 0 && counting === limit) break
+            counting++
+
             let location = JSON.parse(JSON.stringify(STRAPIDATA_LOCATIONS[ix]))
 
                 location = rueten(location, lang)
