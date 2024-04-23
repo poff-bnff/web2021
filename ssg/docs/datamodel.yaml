@@ -577,6 +577,29 @@ Organisation: &Organisation
     looking_for: text
     phoneNr: text
     eMail: email
+    filmographies:
+        - *Filmography
+    clients:
+        - *Organisation
+    skills_et: text
+    skills_en: text
+    skills_ru: text
+    acc_imdb: text
+    acc_efis: text
+    acc_instagram: text
+    acc_fb: text
+    acc_other: text
+    tag_secrets:
+        - *TagSecret
+    slug_et: UID
+    slug_en: UID
+    slug_ru: UID
+    h_rate_from: number
+    h_rate_to: number
+    empolyees_n: number
+    country: *Country
+
+
 
 PresentedBy: &PresentedBy
     presentedByText: *Translated
