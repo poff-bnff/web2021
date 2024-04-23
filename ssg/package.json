@@ -51,7 +51,8 @@
     "update_discamp_styles": "DOMAIN='discoverycampus.poff.ee' node helpers/copy_styles_acc_to_domain.js",
     "Custom-Build": "bash ./build_custom.sh",
     "Custom-Build-With-Limiter": "bash ./build_custom_w_limiter.sh",
-    "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh"
+    "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh",
+    "Custom-Build-Limit-All": "bash ./build_custom_limit_all.sh"
   },
   "repository": {
     "type": "git",

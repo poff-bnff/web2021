@@ -19,6 +19,7 @@ const allLanguages = DOMAIN_SPECIFICS.locales[DOMAIN]
 const ACTIVE_FESTIVAL_EDITIONS = DOMAIN_SPECIFICS.active_editions[DOMAIN] || []
 const NAMEVARIABLE = DOMAIN_SPECIFICS.domain[DOMAIN] || ''
 const ACTIVE_EVENT_TYPE = DOMAIN_SPECIFICS.active_event_types[DOMAIN] || []
+const EVENTLIMIT = parseInt(process.env['EVENTLIMIT']) || 0
 
 let FETCHDATADIR
 let FETCHDATADIRRESTRICTED
@@ -142,7 +143,13 @@ if (['filmikool.poff.ee', 'industry.poff.ee', 'discoverycampus.poff.ee'].include
 function processEvents(courseEventCopy, lang) {
     const allData = []
 
+    let limit = EVENTLIMIT
+    let counting = 0
+
     for (const ix in courseEventCopy) {
+
+        if (limit !== 0 && counting === limit) break
+        counting++
 
         let elementCopy = { ...courseEventCopy[ix] };
         elementCopy.dirSlug = elementCopy.slug_en ? elementCopy.slug_en : null
