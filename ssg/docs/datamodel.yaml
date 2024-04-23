@@ -303,6 +303,13 @@ Gender: &Gender
     en: (text)
     ru: (text)
 
+RoleAtFilm: &RoleAtFilm
+    _path: /role-at-films
+    roleNamePrivate: (text)
+    roleName: *Translated #(Component)
+    order: (Number)
+    remoteId: (UID)
+
 TagAgeRestriction: &TagAgeRestriction
     _path: /age-restrictions
     name_et: (text)
@@ -489,12 +496,6 @@ Origin: &Origin
     _path: /origins
     name: text
 
-RoleAtFilm: &RoleAtFilm
-    _path: /role-at-films
-    roleNamePrivate: (text)
-    roleName: *Translated #(Component)
-    order: (Number)
-    remoteId: (UID)
 
 # Address
 Country: &Country
