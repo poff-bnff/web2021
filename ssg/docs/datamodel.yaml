@@ -381,6 +381,74 @@ TagTriggerWarning: &TagTriggerWarning
     description_en: (text)
     description_ru: (text)
 
+ShoeSize: &ShoeSize
+    _path: /shoe-sizes
+    name: text
+    size_eu: number
+    size_us: number
+    size_uk: number
+    foot_length_from: number
+    foot_length_to: number
+
+HairColour: &HairColour
+    _path: /hair-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+HairLength: &HairLength
+    _path: /hair-lengths
+    name_et: text
+    name_en: text
+    name_ru: text
+
+PitchOfVoice: &PitchOfVoice
+    _path: /pitch-of-voices
+    name_et: text
+    name_en: text
+    name_ru: text
+
+Stature: &Stature
+    _path: /statures
+    name_et: text
+    name_en: text
+    name_ru: text
+
+TypeOfWork: &TypeOfWork
+    _path: /type-of-works
+    name_et: text
+    name_en: text
+    name_ru: text
+
+EyeColour: &EyeColour
+    _path: /eye-colours
+    name_et: text
+    name_en: text
+    name_ru: text
+
+Filmography: &Filmography
+    _path: /filmographies
+    type_of_work: *TypeOfWork
+    year_from: number
+    year_to: number
+    work_name: text
+    work_url: text
+    tag_film_types:
+        - *TagFilmType
+    role_at_films:
+        - *RoleAtFilm
+    actor_role: text
+    org_name: text
+    org_url: text
+    org_department: text
+    degree: text
+    work_director: text
+
+IndustryCategory: &IndustryCategory
+    _path: /industry-categories
+    name: (text)
+    description: (Rich text)
+
 Award: &Award
     _path: /industry-awards
     title_en: text
@@ -1381,74 +1449,6 @@ IndustryPersonType: &IndustryPersonType
     description: (Rich text)
 
 # Person & Team
-
-ShoeSize: &ShoeSize
-    _path: /shoe-sizes
-    name: text
-    size_eu: number
-    size_us: number
-    size_uk: number
-    foot_length_from: number
-    foot_length_to: number
-
-HairColour: &HairColour
-    _path: /hair-colours
-    name_et: text
-    name_en: text
-    name_ru: text
-
-HairLength: &HairLength
-    _path: /hair-lengths
-    name_et: text
-    name_en: text
-    name_ru: text
-
-PitchOfVoice: &PitchOfVoice
-    _path: /pitch-of-voices
-    name_et: text
-    name_en: text
-    name_ru: text
-
-Stature: &Stature
-    _path: /statures
-    name_et: text
-    name_en: text
-    name_ru: text
-
-TypeOfWork: &TypeOfWork
-    _path: /type-of-works
-    name_et: text
-    name_en: text
-    name_ru: text
-
-EyeColour: &EyeColour
-    _path: /eye-colours
-    name_et: text
-    name_en: text
-    name_ru: text
-
-Filmography: &Filmography
-    _path: /filmographies
-    type_of_work: *TypeOfWork
-    year_from: number
-    year_to: number
-    work_name: text
-    work_url: text
-    tag_film_types:
-        - *TagFilmType
-    role_at_films:
-        - *RoleAtFilm
-    actor_role: text
-    org_name: text
-    org_url: text
-    org_department: text
-    degree: text
-    work_director: text
-
-IndustryCategory: &IndustryCategory
-    _path: /industry-categories
-    name: (text)
-    description: (Rich text)
 
 Person: &Person
     _path: /people
