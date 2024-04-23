@@ -1545,6 +1545,10 @@ Person: &Person
     industry_categories:
         - *IndustryCategory
     looking_for: text
+    clients:
+        - *Organisation
+    h_rate_from: number
+    h_rate_to: number
 
 TeamMember: &TeamMember
     person: *Person #(Component)
