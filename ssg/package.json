@@ -52,7 +52,8 @@
     "Custom-Build": "bash ./build_custom.sh",
     "Custom-Build-With-Limiter": "bash ./build_custom_w_limiter.sh",
     "Custom-Serve-SSG": "bash ./ssg_serve_custom.sh",
-    "Custom-Build-Limit-All": "bash ./build_custom_limit_all.sh"
+    "Custom-Build-Limit-All": "bash ./build_custom_limit_all.sh",
+    "Change-Dev-Build": "bash ./change-dev-build.sh"
   },
   "repository": {
     "type": "git",
