@@ -63,6 +63,7 @@ ssg/*.icloud
 ssg/eventival/static/.films.yaml.icloud
 ssg/eventival/static/.films.yaml.icloud
 
+ssg/is_dev.flag
 
 ############################
 # Strapi/
