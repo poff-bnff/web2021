@@ -10,6 +10,18 @@ BUILDOPTION[8]="oyafond.ee"
 BUILDOPTION[9]="filmikool.poff.ee"
 BUILDOPTION[10]="discoverycampus.poff.ee"
 
+FOLDER[0]="poff"
+FOLDER[1]="justfilm"
+FOLDER[2]="kinoff"
+FOLDER[3]="industry"
+FOLDER[4]="shorts"
+FOLDER[5]="hoff"
+FOLDER[6]="kumu"
+FOLDER[7]="tartuff"
+FOLDER[8]="bruno"
+FOLDER[9]="filmikool"
+FOLDER[10]="discamp"
+
 ask_what_to_build()
 {
     printf '\n----------\nSelect: \n'
@@ -28,8 +40,9 @@ ask_what_to_build()
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
+        site_folder=${FOLDER[site_number]}
         printf "You selected to build $site_name\n\n----------\nNow choose options:\n"
-        ask_if_fetch $site_name
+        ask_if_fetch $site_name $site_folder
     else
         echo "Incorrect option, try again!"
         ask_what_to_build
@@ -47,11 +60,11 @@ ask_if_fetch()
     elif [ $new_number -lt 3 ] && [ $new_number -gt 0 ]
     then
         let fetch_number=$new_number
-        ask_if_simplify_build $site_name $fetch_number
+        ask_if_simplify_build $site_name $site_folder $fetch_number
         # build $site_name $fetch_number
     else
         echo "Incorrect option, try again!"
-        ask_if_fetch $site_name
+        ask_if_fetch $site_name $site_folder
     fi
 }
 
@@ -63,7 +76,7 @@ ask_if_simplify_build()
         printf '\n----------\nPrevious build has already been simplified, continuing with simplified build\n'
         printf 'For non-simplified full build you need to re-fetch data\n'
         let simplify_build_number=1
-        build $site_name $fetch_number $simplify_build_number
+        build $site_name $site_folder $fetch_number $simplify_build_number
     else
         :
     fi
@@ -77,10 +90,10 @@ ask_if_simplify_build()
     elif [ $new_number -lt 3 ] && [ $new_number -gt 0 ]
     then
         let simplify_build_number=$new_number
-        build $site_name $fetch_number $simplify_build_number
+        build $site_name $site_folder $fetch_number $simplify_build_number
     else
         echo "Incorrect option, try again!"
-        ask_if_simplify_build $site_name $fetch_number
+        ask_if_simplify_build $site_name $site_folder $fetch_number
     fi
 }
 
@@ -142,6 +155,13 @@ build()
     minutes=$((duration/60))
     seconds=$((duration%60))
     printf "\n\n$site_name\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
+
+    if [ -f './is_dev.flag' ]
+    then
+        echo 'Changing site to show... \n'
+        rm -rf ./build/web && ln -s ./"$site_folder" ./build/web
+        printf "\n\nShowing site $site_name\n\n"
+    fi
 
     ask_what_to_build
 

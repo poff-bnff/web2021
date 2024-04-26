@@ -10,6 +10,18 @@ BUILDOPTION[8]="oyafond.ee"
 BUILDOPTION[9]="filmikool.poff.ee"
 BUILDOPTION[10]="discoverycampus.poff.ee"
 
+FOLDER[0]="poff"
+FOLDER[1]="justfilm"
+FOLDER[2]="kinoff"
+FOLDER[3]="industry"
+FOLDER[4]="shorts"
+FOLDER[5]="hoff"
+FOLDER[6]="kumu"
+FOLDER[7]="tartuff"
+FOLDER[8]="bruno"
+FOLDER[9]="filmikool"
+FOLDER[10]="discamp"
+
 ask_what_to_build()
 {
     printf '\n----------\nSelect: \n'
@@ -28,8 +40,9 @@ ask_what_to_build()
     then
         let site_number=$new_number-1
         site_name=${BUILDOPTION[site_number]}
+        site_folder=${FOLDER[site_number]}
         printf "You selected to build $site_name\n\n----------\nNow choose options:\n"
-        ask_if_fetch $site_name
+        ask_if_fetch $site_name $site_folder
     else
         echo "Incorrect option, try again!"
         ask_what_to_build
@@ -50,15 +63,15 @@ ask_if_fetch()
         then
             let fetch_number=$new_number
             # ask_if_download_img $site_name $fetch_number
-            build $site_name $fetch_number
+            build $site_name $site_folder $fetch_number
         elif [ $new_number -eq 1 ]
         then
             let fetch_number=$new_number
-            ask_limiter $site_name $fetch_number
+            ask_limiter $site_name $site_folder $fetch_number
         fi
     else
         echo "Incorrect option, try again!"
-        ask_if_fetch $site_name
+        ask_if_fetch $site_name $site_folder
     fi
 
 }
@@ -72,15 +85,15 @@ ask_limiter()
     then
         let limit_number=$new_number
         # ask_if_download_img $site_name $fetch_number $limit_number
-        build $site_name $fetch_number $limit_number
+        build $site_name $site_folder $fetch_number $limit_number
     elif [ $new_number -gt 0 ]
     then
         let limit_number=$new_number
         # ask_if_download_img $site_name $fetch_number $limit_number
-        build $site_name $fetch_number $limit_number
+        build $site_name $site_folder $fetch_number $limit_number
     else
         echo "Incorrect option, try again!"
-        ask_if_fetch $site_name $fetch_number
+        ask_if_fetch $site_name $site_folder $fetch_number
     fi
 
 }
@@ -135,6 +148,13 @@ build()
     minutes=$((duration/60))
     seconds=$((duration%60))
     printf "\n\n$site_name\nBUILD FINISHED IN $minutes m $seconds s.\n\n"
+
+    if [ -f './is_dev.flag' ]
+    then
+        echo 'Changing site to show... \n'
+        rm -rf ./build/web && ln -s ./"$site_folder" ./build/web
+        printf "\n\nShowing site $site_name\n\n"
+    fi
 
     ask_what_to_build
 
