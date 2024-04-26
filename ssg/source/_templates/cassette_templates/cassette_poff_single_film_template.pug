@@ -775,17 +775,17 @@ main.grid_film(id=self.id)
                                         .ratio.ratio-16x9
                                             +videolQaClip(qaclip.url)
 
-            //- Switch for chat functionality lives in data.yaml
-            //- if self.switches.showVotemo
-            //- if film.chat_w_name
-            //-     script.
-            //-         var votemoConfig = {
-            //-             url: `https://#{film.chat_w_name}.votemo.eu`,
-            //-             openInDesktop: false,
-            //-             language: 'poff'
-            //-         }
-            //-     script(src='https://cdn.votemo.eu/dist/widget.js')
-            //-     - showMessengerChat = false
+            Switch for chat functionality lives in data.yaml
+            if self.switches.showVotemo
+            if film.chat_w_name
+                script.
+                    var votemoConfig = {
+                        url: `https://#{film.chat_w_name}.votemo.eu`,
+                        openInDesktop: false,
+                        language: 'poff'
+                    }
+                script(src='https://cdn.votemo.eu/dist/widget.js')
+                - showMessengerChat = false
 
             //- +tabname(self.title)
 
