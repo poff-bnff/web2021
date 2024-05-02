@@ -161,6 +161,64 @@
     },
     "country": {
       "model": "country"
+    },
+    "clients": {
+      "collection": "organisation"
+    },
+    "filmographies": {
+      "collection": "filmography",
+      "via": "organisation"
+    },
+    "skills_et": {
+      "type": "richtext"
+    },
+    "skills_en": {
+      "type": "richtext"
+    },
+    "skills_ru": {
+      "type": "richtext"
+    },
+    "acc_imdb": {
+      "type": "string"
+    },
+    "acc_efis": {
+      "type": "string"
+    },
+    "acc_instagram": {
+      "type": "string"
+    },
+    "acc_fb": {
+      "type": "string"
+    },
+    "h_rate_from": {
+      "type": "integer"
+    },
+    "h_rate_to": {
+      "type": "integer"
+    },
+    "employees_n": {
+      "type": "integer"
+    },
+    "slug_et": {
+      "type": "uid",
+      "targetField": "name_et"
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "name_en"
+    },
+    "slug_ru": {
+      "type": "uid",
+      "targetField": "name_ru"
+    },
+    "tag_secrets": {
+      "collection": "tag-secret"
+    },
+    "acc_other": {
+      "type": "string"
+    },
+    "public": {
+      "type": "boolean"
     }
   }
 }

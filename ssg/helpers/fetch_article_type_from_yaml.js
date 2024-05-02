@@ -253,6 +253,12 @@ for (const lang of languages) {
                             element.aliases = [`${accreAliasLangPrefix}accreditation`]
                         }
 
+                        // 2024 industry creative gate alias
+                        if (DOMAIN === 'industry.poff.ee' && element[key] === 'creative_gate') {
+                            let accreAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${accreAliasLangPrefix}creative_gate`]
+                        }
+
                         // 2022 industry mmf alias
                         if (DOMAIN === 'industry.poff.ee' && element[key] === 'mmf') {
                             let indmmfAliasLangPrefix = lang === 'en' ? '' : `${lang}/`

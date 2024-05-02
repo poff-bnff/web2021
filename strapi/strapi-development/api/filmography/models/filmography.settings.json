@@ -53,6 +53,10 @@
     "person": {
       "via": "filmographies",
       "model": "person"
+    },
+    "organisation": {
+      "via": "filmographies",
+      "model": "organisation"
     }
   }
 }

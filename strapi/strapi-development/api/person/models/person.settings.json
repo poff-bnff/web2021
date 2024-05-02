@@ -269,6 +269,15 @@
     },
     "looking_for": {
       "type": "text"
+    },
+    "clients": {
+      "collection": "organisation"
+    },
+    "h_rate_from": {
+      "type": "integer"
+    },
+    "h_rate_to": {
+      "type": "integer"
     }
   }
 }
