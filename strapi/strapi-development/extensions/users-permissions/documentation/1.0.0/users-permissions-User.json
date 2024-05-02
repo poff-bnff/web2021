@@ -1876,7 +1876,8 @@
                   "type": "string",
                   "enum": [
                     "Maksekeskus",
-                    "Free"
+                    "Free",
+                    "Arve"
                   ]
                 },
                 "transfer_status": {
@@ -2472,6 +2473,18 @@
               },
               "looking_for": {
                 "type": "string"
+              },
+              "clients": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "h_rate_from": {
+                "type": "integer"
+              },
+              "h_rate_to": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"

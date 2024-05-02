@@ -36,9 +36,9 @@
       "model": "user"
     },
     "transactor": {
-      "via": "transactions",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "transactions"
     },
     "seller_business_profile": {
       "model": "business-profile"
@@ -63,7 +63,8 @@
       "type": "enumeration",
       "enum": [
         "Maksekeskus",
-        "Free"
+        "Free",
+        "Arve"
       ]
     },
     "transfer_status": {
