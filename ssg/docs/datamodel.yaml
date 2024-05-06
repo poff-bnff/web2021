@@ -665,7 +665,7 @@ Organisation: &Organisation
     slug_ru: UID
     h_rate_from: number
     h_rate_to: number
-    empolyees_n: number
+    employees_n: number
     country: *Country
 
 

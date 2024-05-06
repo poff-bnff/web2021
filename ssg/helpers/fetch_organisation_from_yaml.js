@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const rueten = require('./rueten.js');
+const videoUrlToVideoCode = require('./videourl_to_videocode.js');
 const { fetchModel } = require('./b_fetch.js')
 
 const rootDir = path.join(__dirname, '..')
@@ -32,6 +33,26 @@ if (DOMAIN !== 'industry.poff.ee') {
         },
         'awardings': {
             model_name: 'Awarding'
+        },
+        'filmographies': {
+            model_name: 'Filmography'
+        },
+        'clients': {
+            model_name: 'Organisation'
+        },
+        'addr_coll': {
+            model_name: 'Address',
+            expand: {
+                'country': {
+                    model_name: 'Country'
+                },
+                'county': {
+                    model_name: 'County'
+                }
+            }
+        },
+        'country': {
+            model_name: 'Country'
         }
     }
     console.log(`Fetching ${DOMAIN} organisation data`)
@@ -85,6 +106,10 @@ function startOrganisationProcessing(languages, activeOrganisations) {
             }
             organisation.path = organisationSlug
             organisation.slug = organisationSlug
+
+            if (organisation.showreel) {
+                organisation.showreel = videoUrlToVideoCode(organisation.showreel)
+            }
 
             let oneYaml = {}
             try {

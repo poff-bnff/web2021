@@ -725,28 +725,127 @@ footer
     justify-items center
     align-items center
     justify-content center
-    grid-template-columns 1fr 1fr 1fr
     grid-template-rows auto
-    grid-template-areas "c_title_box c_title_box c_img_box"\
-                        "org_description org_description org_description"
-
     row-gap 5rem
 
+.org_grid_main
+    padding-top 170px
+    grid-template-columns 1fr
+    grid-template-areas "c_profile_img"\
+                        "c_title_box"\
+                        "c_img_box"
+
+    .c_img_box
+        grid-area c_img_box
+        width auto
+        padding-top calc(1rem + 1vh)
+
     .c_title_box
-        grid-column: span 2
-        grid-template-rows: 1fr
+        grid-area c_title_box
+        grid-template-rows 1fr
+        height auto
+
+        .name_box
+            padding-top 0
 
         .accounts-box
-            align-self: auto
+            align-self auto
 
-.org_description
-    grid-column: span 3
-    width 100%
-    padding-left 12vw
-    padding-right 12vw
-    justify-items center
-    align-items center
-    justify-content center
+    .c_profile_img
+        grid-area c_profile_img
+        width 100%
+        padding 0x
+        margin 0
+
+        .org_img
+            width 100%
+
+.org_grid_about
+    align-items start
+    grid-template-columns 1fr
+    grid-template-areas "org_info"\
+                        "org_ongoing"\
+                        "org_skills"
+
+    .org_info
+        grid-area org_info
+
+    .org_ongoing
+        grid-area org_ongoing
+
+    .org_skills
+        grid-area org_skills
+
+.org_grid_description
+    grid-template-columns 1fr
+    grid-template-areas "org_description"
+
+    .org_description
+        grid-area org_description
+        width 100%
+        padding-left 12vw
+        padding-right 12vw
+        padding-top 5vh
+        padding-bottom 5vh
+        justify-items center
+        align-items center
+        justify-content center
+
+.org_grid_featured
+    grid-template-columns 1fr
+    grid-template-areas "org_featured"
+
+    .org_featured
+        grid-area org_featured
+
+.org_grid_work
+    align-items start
+    grid-template-columns 1fr
+    grid-template-areas "org_awards"\
+                        "org_clients"\
+                        "org_filmography"\
+                        "org_media_audio"\
+                        "org_media_video"
+
+    .org_awards
+        grid-area org_awards
+        width 100%
+
+    .org_clients
+        grid-area org_clients
+        width 100%
+
+        .str_info_grid_3
+            grid-template-columns none
+
+
+    .org_filmography
+        grid-area org_filmography
+
+    .org_media_audio
+        grid-area org_media_audio
+        width 100%
+
+    .org_media_video
+        grid-area org_media_video
+        width 80%
+
+.org_grid_footer
+    grid-template-columns 1fr
+    grid-template-areas "org_gallery"\
+                        "org_contact"
+
+    .org_gallery
+        grid-area org_gallery
+
+        .org_gallery_img
+            max-width 100%
+            max-height 100%
+
+    .org_contact
+        grid-area org_contact
+        padding-bottom 50px
+        text-align center
 
 .grid_location
     display grid
@@ -1892,6 +1991,10 @@ row:nth-child(15) > .supporter_logos
     color dark_2
     // background-color #eeeeee
 
+.btn.btn_primary.btn_organisation
+    border-radius 8px
+    margin 20px
+
 .organisation_name
     font-family font_c
     font-size calc(2rem + 1vw)
@@ -1908,6 +2011,14 @@ row:nth-child(15) > .supporter_logos
     padding-right 0
     text-align center
     color dark_2
+
+.org_info_label
+    font-family font_p
+    color dark_3
+    font-size calc(0.7rem + 0.5vh)
+    text-align right
+    line-height calc(1rem + 0.5vh)
+    font-weight 300
 
 .org_info_value
     font-family font_p
@@ -1928,8 +2039,8 @@ row:nth-child(15) > .supporter_logos
 
 
 .org_gallery_img
-    max-width 25%
-    max-height 25%
+    max-width 30%
+    max-height 30%
     padding 25px
 
 
@@ -2694,6 +2805,9 @@ p a
 .str_info_grid_3_films
     display grid
     grid-template-columns 1fr 2fr
+
+.grid-start-2
+    grid-column-start 2
 
 .str_info_label,
 .str_info_meta_label
@@ -5073,10 +5187,9 @@ a:hover > .login_headline
 
     .org_grid_main
         padding-top 170px
-        grid-template-columns 1fr 1fr 1fr 1fr 1fr 1fr
-        grid-template-areas "c_profile_img c_profile_img c_profile_img c_profile_img c_profile_img c_profile_img"\
-                            "c_title_box c_title_box c_title_box c_img_box c_img_box c_img_box"\
-                            "org_info org_info org_ongoing org_ongoing org_skills org_skills"
+        grid-template-columns 1fr 1fr
+        grid-template-areas "c_profile_img c_profile_img"\
+                            "c_title_box c_img_box"
 
         .c_img_box
             grid-area c_img_box
@@ -5103,6 +5216,11 @@ a:hover > .login_headline
             .org_img
                 width 100%
 
+    .org_grid_about
+        align-items start
+        grid-template-columns 1fr 1fr 1fr
+        grid-template-areas "org_info org_ongoing org_skills"
+
         .org_info
             grid-area org_info
 
@@ -5111,6 +5229,9 @@ a:hover > .login_headline
 
         .org_skills
             grid-area org_skills
+
+            .org_info_header
+                text-align left
 
     .org_grid_description
         grid-template-columns 1fr
@@ -5135,19 +5256,31 @@ a:hover > .login_headline
             grid-area org_featured
 
     .org_grid_work
+        align-items start
         grid-template-columns 1fr 1fr
         grid-template-areas "org_awards org_filmography"\
                             "org_clients org_filmography"\
-                            "org_media org_filmography"
+                            "org_media_audio org_filmography"\
+                            "org_media_video org_filmography"
 
         .org_awards
             grid-area org_awards
+            width 50%
 
         .org_clients
             grid-area org_clients
+            width 50%
 
         .org_filmography
             grid-area org_filmography
+
+        .org_media_audio
+            grid-area org_media_audio
+            width 100%
+
+        .org_media_video
+            grid-area org_media_video
+            width 80%
 
     .org_grid_footer
         grid-template-columns 1fr
@@ -5157,8 +5290,14 @@ a:hover > .login_headline
         .org_gallery
             grid-area org_gallery
 
+            .org_gallery_img
+                max-width 30%
+                max-height 30%
+
         .org_contact
             grid-area org_contact
+            padding-bottom 50px
+            text-align center
 
 
     .grid_location
