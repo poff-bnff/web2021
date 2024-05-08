@@ -123,27 +123,6 @@ function startOrganisationProcessing(languages, activeOrganisations) {
             fs.mkdirSync(saveDir, { recursive: true })
             fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/organisation_index_template.pug`)
-            //filteredOrganisations.push(organisation);
         }
-
-        /*const yamlPath = path.join(fetchDir, `organisations.${lang}.yaml`)
-
-        if (filteredOrganisations.length === 0) {
-            console.log(`No data for organisations, creating empty YAMLs`)
-            fs.writeFileSync(yamlPath, '[]', 'utf8')
-            //fs.writeFileSync(path.join(fetchDir, `search_persons.${lang}.yaml`), '[]', 'utf8')
-            //fs.writeFileSync(path.join(fetchDir, `filters_persons.${lang}.yaml`), '[]', 'utf8')
-            continue
-        }*/
-
-        /*filteredPersons.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`, lang))
-        const filteredPersonsYAML = yaml.dump(filteredPersons, { 'noRefs': true, 'indent': '4' });
-        fs.writeFileSync(yamlPath, filteredPersonsYAML, 'utf8');
-        console.log(`Fetched ${filteredPersons.length} persons for ${DOMAIN}`);
-
-        const activeCategories = Object.keys(INDUSTRY_PERSON_IN_EDITIONS)
-        for (const activeCategory of activeCategories) {
-            generatePersonsSearchAndFilterYamls(filteredPersons, activeCategory, lang)
-        }*/
     }
 }

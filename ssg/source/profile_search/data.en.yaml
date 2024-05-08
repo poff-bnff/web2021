@@ -1,0 +1,3 @@
+path: profile-search
+data:
+    profiles: /_fetchdir/profiles.en.yaml

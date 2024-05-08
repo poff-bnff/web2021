@@ -281,6 +281,9 @@ fetch_data()
     echo '==== custom build ==== fetch_organisation_from_yaml.js'
     node ./helpers/fetch_organisation_from_yaml.js
 
+    echo '==== custom build ==== fetch_profile_data_from_yaml.js'
+    node ./helpers/fetch_profile_data_from_yaml.js
+
     echo '==== custom build ==== fetch_locations_from_yaml.js'
     node ./helpers/fetch_locations_from_yaml.js
 

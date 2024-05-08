@@ -1,0 +1,76 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if self.data.profiles && process.env['DOMAIN'] === 'industry.poff.ee'
+        section.about_cg
+            .about_cg_box
+                h3.about_cg_title= "Creative Gate"
+
+                .about_cg_text= "Creative Gate is a development center for creative industries aiming to enhance the entrepreneurial and export potential of the Estonian audiovisual industry. It offers comprehensive supportive services for film industry companies and related sectors, while promoting the growth of new creative economy enterprises."
+
+        h3#loading.sub_section_headline(style='display: none; padding-top: 155px;')= self.label.filters.loading
+
+        section.grid_search.search_profiles#filters(style='display: grid;')
+            .profiles_filter_box
+                section.search_area
+                    input#search(type='text', placeholder= self.label.filters.search)
+
+                    button.clear(onclick='unselect_all()')= self.label.filters.empty
+
+                section.main_filters
+                    select#roleatfilms_select(name='Roleatfilms')
+                        option(value='')= self.label.filters.roleAtFilms
+
+                    select#location_select(name='Location')
+                        option(value='')= "Location"
+
+                    select#languages_select(name='Languages')
+                        option(value='')= "Languages"
+
+                    select#looking_for_select(name='Profiles looking for')
+                        option(value='')= "Profiles looking for"
+
+        if self.data.profiles && self.data.profiles.length
+            - var profilesCount = self.data.profiles.length
+            .listLength
+                span.listLengthText= "showing "
+                span.listLengthText.bold#listLengthCount= profilesCount
+                span.listLengthText= " services, creative professionals and actors in Estonia"
+
+            section.profile_list
+                each profile in self.data.profiles
+                    if profile.slug
+
+                        if profile && profile.filterName
+                            .profile_card(id=profile.id)
+                                a(href=`/${lang_path}${profile.slug}`)
+                                    - var assetsDir = 'https://assets.poff.ee/img/'
+                                    if profile.picture
+                                        - var profilePic = `${assetsDir}${profile.picture.hash}${profile.picture.ext}`
+                                    else
+                                        - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
+
+                                    if profile.profileType === "Actor"
+                                        img.profile_img.actor_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                    if profile.profileType === "Organisation"
+                                        img.profile_img.organisation_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                    if profile.profileType === "Person"
+                                        img.profile_img.person_img_cg(src=profilePic alt=`${profile.filterName}`)
+
+
+                                    .person_body.text_left
+                                        h4.profile_name.text_left= `${profile.filterName}`
+
+                                        if profile.role_at_films
+                                            p.profile_roles= profile.role_at_films.map(roleName => roleName.roleName).join(' · ')
+
+                                        if profile.profileType === "Person" || profile.profileType === "Organisation"
+                                            p.profile_short_description= profile.shortDescription
+
+                                    .profile_footer.text_left
+                                        if profile.profileType === "Person" || profile.profileType === "Organisation"
+                                            p.profile_service_size= profile.serviceSize
+
+                                        if profile.cardLocation
+                                            p.profile_card_location= profile.cardLocation
