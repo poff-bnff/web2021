@@ -315,6 +315,18 @@ RoleAtFilm: &RoleAtFilm
     order: (Number)
     remoteId: (UID)
 
+ServiceCategory: &ServiceCategory
+    _path: /service-categories
+    name_private:
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    role_at_films:
+        - *RoleAtFilm
+    svgCode: (text)
+    svgMedia: *StrapiMedia #(Component)
+
+
 TagAgeRestriction: &TagAgeRestriction
     _path: /age-restrictions
     name_et: (text)
