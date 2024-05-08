@@ -450,6 +450,17 @@ Filmography: &Filmography
     org_department: text
     degree: text
     work_director: text
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    description_en: (Rich text)
+    is_featured: (boolean)
+    is_ongoing: (boolean)
+    project_statuses: #(Component (repeatable))
+        - *ProjectStatus
+    runtime: (number)
+    tag_looking_fors:
+        - *TagLookingFor
+
 
 IndustryCategory: &IndustryCategory
     _path: /industry-categories
