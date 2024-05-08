@@ -325,6 +325,7 @@ ServiceCategory: &ServiceCategory
         - *RoleAtFilm
     svgCode: (text)
     svgMedia: *StrapiMedia #(Component)
+    order: (Number)
 
 
 TagAgeRestriction: &TagAgeRestriction
