@@ -303,6 +303,11 @@ Gender: &Gender
     en: (text)
     ru: (text)
 
+ProjectStatus: &ProjectStatus
+    _path: /project-statuses
+    status: (text)
+    description: (Rich text)
+
 RoleAtFilm: &RoleAtFilm
     _path: /role-at-films
     roleNamePrivate: (text)
@@ -1925,11 +1930,6 @@ IndustryGroup: &IndustryGroup
 ProjectType: &ProjectType
     _path: /project-types
     type: (text)
-    description: (Rich text)
-
-ProjectStatus: &ProjectStatus
-    _path: /project-statuses
-    status: (text)
     description: (Rich text)
 
 IndustryProject: &IndustryProject
