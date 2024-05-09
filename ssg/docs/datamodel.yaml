@@ -696,6 +696,7 @@ Organisation: &Organisation
     h_rate_to: number
     empolyees_n: number
     country: *Country
+    contact_name: text
 
 
 
