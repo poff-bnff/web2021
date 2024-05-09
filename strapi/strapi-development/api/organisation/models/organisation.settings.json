@@ -219,6 +219,18 @@
     },
     "public": {
       "type": "boolean"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "acc_youtube": {
+      "type": "string"
+    },
+    "acc_vimeo": {
+      "type": "string"
+    },
+    "languages": {
+      "collection": "language"
     }
   }
 }

@@ -303,12 +303,30 @@ Gender: &Gender
     en: (text)
     ru: (text)
 
+ProjectStatus: &ProjectStatus
+    _path: /project-statuses
+    status: (text)
+    description: (Rich text)
+
 RoleAtFilm: &RoleAtFilm
     _path: /role-at-films
     roleNamePrivate: (text)
     roleName: *Translated #(Component)
     order: (Number)
     remoteId: (UID)
+
+ServiceCategory: &ServiceCategory
+    _path: /service-categories
+    name_private:
+    name_et: (text)
+    name_en: (text)
+    name_ru: (text)
+    role_at_films:
+        - *RoleAtFilm
+    svgCode: (text)
+    svgMedia: *StrapiMedia #(Component)
+    order: (Number)
+
 
 TagAgeRestriction: &TagAgeRestriction
     _path: /age-restrictions
@@ -450,6 +468,17 @@ Filmography: &Filmography
     org_department: text
     degree: text
     work_director: text
+    stills: #(Component (repeatable))
+        - *StrapiMedia
+    description_en: (Rich text)
+    is_featured: (boolean)
+    is_ongoing: (boolean)
+    project_statuses: #(Component (repeatable))
+        - *ProjectStatus
+    runtime: (number)
+    tag_looking_fors:
+        - *TagLookingFor
+
 
 IndustryCategory: &IndustryCategory
     _path: /industry-categories
@@ -657,6 +686,8 @@ Organisation: &Organisation
     acc_efis: text
     acc_instagram: text
     acc_fb: text
+    acc_youtube: text
+    acc_vimeo: text
     acc_other: text
     tag_secrets:
         - *TagSecret
@@ -667,6 +698,9 @@ Organisation: &Organisation
     h_rate_to: number
     employees_n: number
     country: *Country
+    contact_name: text
+    languages:
+        - *Language
 
 
 
@@ -1518,6 +1552,8 @@ Person: &Person
     acc_castupload: text
     acc_instagram: text
     acc_fb: text
+    acc_youtube: text
+    acc_vimeo: text
     acc_other: text
     tag_secrets:
         - *TagSecret
@@ -1914,11 +1950,6 @@ IndustryGroup: &IndustryGroup
 ProjectType: &ProjectType
     _path: /project-types
     type: (text)
-    description: (Rich text)
-
-ProjectStatus: &ProjectStatus
-    _path: /project-statuses
-    status: (text)
     description: (Rich text)
 
 IndustryProject: &IndustryProject
