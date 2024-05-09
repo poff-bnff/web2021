@@ -24,6 +24,10 @@
     },
     "remoteId": {
       "type": "uid"
+    },
+    "service_categories": {
+      "via": "role_at_films",
+      "collection": "service-category"
     }
   }
 }

@@ -278,6 +278,12 @@
     },
     "h_rate_to": {
       "type": "integer"
+    },
+    "acc_youtube": {
+      "type": "string"
+    },
+    "acc_vimeo": {
+      "type": "string"
     }
   }
 }
