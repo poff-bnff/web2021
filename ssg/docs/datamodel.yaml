@@ -699,6 +699,8 @@ Organisation: &Organisation
     empolyees_n: number
     country: *Country
     contact_name: text
+    languages:
+        - *Language
 
 
 
