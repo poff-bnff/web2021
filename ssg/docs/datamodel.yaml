@@ -317,7 +317,7 @@ RoleAtFilm: &RoleAtFilm
 
 ServiceCategory: &ServiceCategory
     _path: /service-categories
-    name_private:
+    name_private: (text)
     name_et: (text)
     name_en: (text)
     name_ru: (text)
