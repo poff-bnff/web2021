@@ -57,6 +57,34 @@
     "organisation": {
       "via": "filmographies",
       "model": "organisation"
+    },
+    "stills": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "decsription_en": {
+      "type": "richtext"
+    },
+    "is_featured": {
+      "type": "boolean"
+    },
+    "is_ongoing": {
+      "type": "boolean"
+    },
+    "project_statuses": {
+      "collection": "project-status"
+    },
+    "runtime": {
+      "type": "integer"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
     }
   }
 }
