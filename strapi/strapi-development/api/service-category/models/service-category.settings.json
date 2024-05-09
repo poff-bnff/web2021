@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_categories",
+  "info": {
+    "name": "ServiceCategory",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name_private": {
+      "type": "string"
+    },
+    "name_et": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ru": {
+      "type": "string"
+    },
+    "role_at_films": {
+      "collection": "role-at-film",
+      "via": "service_categories",
+      "dominant": true
+    },
+    "svgCode": {
+      "type": "text"
+    },
+    "svgMedia": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
