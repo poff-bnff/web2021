@@ -686,6 +686,8 @@ Organisation: &Organisation
     acc_efis: text
     acc_instagram: text
     acc_fb: text
+    acc_youtube: text
+    acc_vimeo: text
     acc_other: text
     tag_secrets:
         - *TagSecret
@@ -1548,6 +1550,8 @@ Person: &Person
     acc_castupload: text
     acc_instagram: text
     acc_fb: text
+    acc_youtube: text
+    acc_vimeo: text
     acc_other: text
     tag_secrets:
         - *TagSecret
