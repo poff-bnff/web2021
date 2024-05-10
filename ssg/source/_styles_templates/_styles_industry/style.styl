@@ -6288,6 +6288,19 @@ strong
         width 18rem
         margin 5px
 
+.filter_loader
+  font-family font_h
+  font-size calc(1.618rem + 1.618vw)
+  line-height 1
+  font-weight 400
+  color dark_1
+  letter-spacing 0.04em
+  text-align center
+  margin 0
+  padding 0
+  padding-left calc(1rem + 1vw)
+  padding-right calc(1rem + 1vw)
+
 .listLength
     padding-top 4rem
     padding-left 6rem
@@ -6311,6 +6324,7 @@ strong
     justify-items center
     align-items start
     grid-gap 3rem
+    padding-bottom 3rem
 
 .about_cg
     padding-top 155px
@@ -6345,6 +6359,25 @@ strong
     box-shadow 10px 5px 5px #D0D0D0
     border-radius 8px
     border 1px solid #F7F7F8
+
+    .profile_card_link
+        display grid
+
+.profile_body
+    min-height min-content
+    max-height max-content
+    padding 0 1rem 1rem 1rem
+    font-size 1rem
+    line-height 1.2rem
+    a
+        text-decoration none
+        color dark_1
+    p
+        font-size 1rem
+        line-height 1.2rem
+        color dark_1
+    h4
+        color dark_1
 
 .profile_img
     padding 20px
@@ -6389,12 +6422,14 @@ strong
     color dark_2
 
 .profile_footer
-    padding 1rem
+    padding 0 1rem
+    align-self end
 
     .profile_service_size
         font-size 1.1rem !important
         color #12827e !important
         font-weight 400
+        margin-bottom 0
 
     .profile_card_location
         font-family font_c
