@@ -43,7 +43,7 @@ block content
                     if profile.slug
 
                         if profile && profile.filterName
-                            .profile_card(id=profile.id)
+                            .profile_card(id=profile.uniqueId)
                                 a(href=`/${lang_path}${profile.slug}`)
                                     - var assetsDir = 'https://assets.poff.ee/img/'
                                     if profile.picture

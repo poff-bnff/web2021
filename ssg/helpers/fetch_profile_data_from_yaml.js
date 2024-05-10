@@ -42,6 +42,8 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         let limit = DATALIMIT
         let counting = 0
 
+        let uniqueId = 1
+
         for (const ix in activePersons) {
             if (limit !== 0 && counting === limit) break
             counting++
@@ -67,6 +69,10 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
             person.shortDescription = person.bio ? person.bio.substr(0, SHORT_DESC_LENGTH) + "...": ""
 
             person.cardLocation = person.addr_coll ? getCardLocation(person.addr_coll) : ""
+
+            person.uniqueId = uniqueId
+
+            uniqueId++
 
             filteredProfiles.push(person);
         }
@@ -109,6 +115,10 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             organisation.cardLocation = organisation.addr_coll ? getCardLocation(organisation.addr_coll) : ""
 
+            organisation.uniqueId = uniqueId
+
+            uniqueId++
+
             filteredProfiles.push(organisation);
         }
 
@@ -127,11 +137,108 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         fs.writeFileSync(yamlPath, filteredProfilesYAML, 'utf8');
         console.log(`Fetched ${filteredProfiles.length} profiles for ${DOMAIN}`);
 
-        /*const activeCategories = Object.keys(INDUSTRY_PERSON_IN_EDITIONS)
-        for (const activeCategory of activeCategories) {
-            generatePersonsSearchAndFilterYamls(filteredPersons, activeCategory, lang)
-        }*/
+        generateProfileSearchAndFilterYamls(filteredProfiles, lang)
     }
+}
+
+function generateProfileSearchAndFilterYamls(profiles, lang) {
+    let filters = {
+        roleatfilms: {},
+        location: {},
+        languages: {},
+        lookingfor: {},
+    };
+
+    const profiles_search = profiles.map(profile => {
+        let searchText = [
+            profile.filterName,
+            profile.eMail,
+            profile.dateOfBirth,
+            profile.profession,
+            profile.webpage_url,
+            profile.homepageUrl,
+            profile.bio,
+            profile.description,
+            profile.skills,
+        ];
+
+        let roleatfilms = [];
+        for (const role of (profile.role_at_films || [])
+            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+            || []) {
+            const roleName = role.roleName;
+            searchText.push(roleName);
+            roleatfilms.push(roleName);
+            filters.roleatfilms[roleName] = roleName;
+        }
+
+        let location = [];
+        if (profile.addr_coll){
+            if(profile.addr_coll.country && profile.addr_coll.country.name){
+                let profileLocation = profile.addr_coll.country.name;
+
+                if(profile.addr_coll.county && profile.addr_coll.county.name){
+                    profileLocation += ", " + profile.addr_coll.county.name;
+                }
+
+                location.push(profileLocation);
+                filters.location[profileLocation] = profileLocation;
+            }
+        }
+
+        let lookingfor = [];
+        for (const lookingTag of (profile.tag_looking_fors || [])) {
+            searchText.push(lookingTag);
+            lookingfor.push(lookingTag);
+            filters.lookingfor[lookingTag] = lookingTag;
+        }
+
+        let languages = [];
+        if (profile.profileType === "Organisation") {
+            if (profile.languages) {
+                for (const lang of profile.languages) {
+                    languages.push(lang.name);
+                    filters.languages[lang.name] = lang.name
+                }
+            }
+        }
+
+        else if (profile.profileType === "Actor" || profile.profileType === "Person") {
+            if (profile.native_lang) {
+                languages.push(profile.native_lang.name)
+                filters.languages[profile.native_lang.name] = profile.native_lang.name;
+            }
+
+            if (profile.other_lang) {
+                for (const olang of profile.other_lang) {
+                    languages.push(olang.name);
+                    filters.languages[olang.name] = olang.name
+                }
+            }
+        }
+
+        return {
+            id: profile.uniqueId,
+            text: searchText.filter(elm => elm).join(' ').toLowerCase(),
+            roleatfilms: roleatfilms,
+            location: location,
+            languages: languages,
+            lookingfor: lookingfor,
+        };
+    });
+
+    let sorted_filters = {
+        roleatfilms: mSort(filters.roleatfilms),
+        location: mSort(filters.location),
+        languages: mSort(filters.languages),
+        lookingfor: mSort(filters.lookingfor),
+    };
+
+    let searchYAML = yaml.dump(profiles_search, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDir, `search_profiles.${lang}.yaml`), searchYAML, 'utf8');
+
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
+    fs.writeFileSync(path.join(fetchDir, `filters_profiles.${lang}.yaml`), filtersYAML, 'utf8');
 }
 
 function getCardLocation(address) {
@@ -288,6 +395,9 @@ function getActiveOrganisations() {
                 },
                 'county': {
                     model_name: 'County'
+                },
+                'municipality': {
+                    model_name: 'Municipality'
                 }
             }
         },
@@ -296,6 +406,9 @@ function getActiveOrganisations() {
         },
         'tag_looking_fors': {
             model_name: 'TagLookingFor'
+        },
+        'languages': {
+            model_name: 'Language'
         }
     }
     console.log(`Fetching ${DOMAIN} organisation data`)
@@ -320,4 +433,30 @@ function getActiveOrganisations() {
         })
     console.log('activeOrganisations', activeOrganisations.length)
     return activeOrganisations
+}
+
+function mSort(to_sort) {
+    // Töötav sorteerimisfunktsioon filtritele
+
+    let sortable = []
+    for (var item in to_sort) {
+        sortable.push([item, to_sort[item]]);
+    }
+
+    sortable = sortable.sort(function (a, b) {
+        try {
+            const locale_sort = a[1].localeCompare(b[1], lang)
+            return locale_sort
+        } catch (error) {
+            console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+            throw new Error(error)
+        }
+    });
+
+    var objSorted = {}
+    for (let index = 0; index < sortable.length; index++) {
+        const item = sortable[index];
+        objSorted[item[0]] = item[1]
+    }
+    return objSorted
 }
