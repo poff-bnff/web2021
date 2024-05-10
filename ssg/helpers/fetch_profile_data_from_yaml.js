@@ -43,7 +43,7 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         let counting = 0
 
         let uniqueId = 1
-
+        
         for (const ix in activePersons) {
             if (limit !== 0 && counting === limit) break
             counting++
