@@ -303,6 +303,14 @@ Gender: &Gender
     en: (text)
     ru: (text)
 
+Language: &Language
+    _path: /languages
+    id: 8 (number)
+    code: et (short text, min len 2, max len 3, lowercase)
+    name_et: Eesti (short text)
+    name_en: Estonian (short text)
+    name_ru: Эстонский (short text)
+
 ProjectStatus: &ProjectStatus
     _path: /project-statuses
     status: (text)
@@ -1252,14 +1260,6 @@ Location: &Location
     tag_locations:
         - *TagLocation
     origin: *Origin
-
-Language: &Language
-    _path: /languages
-    id: 8 (number)
-    code: et (short text, min len 2, max len 3, lowercase)
-    name_et: Eesti (short text)
-    name_en: Estonian (short text)
-    name_ru: Эстонский (short text)
 
 # Menu / esialgses kohas
 
