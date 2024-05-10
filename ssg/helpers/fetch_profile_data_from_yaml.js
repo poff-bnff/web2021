@@ -43,7 +43,7 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         let counting = 0
 
         let uniqueId = 1
-        
+
         for (const ix in activePersons) {
             if (limit !== 0 && counting === limit) break
             counting++
@@ -162,6 +162,17 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profile.skills,
         ];
 
+        for (const award of (profile.awardings || [])) {
+            searchText.push(award.title);
+        }
+
+        for (const filmWork of (profile.filmographies || [])) {
+            console.log(filmWork);
+            searchText.push(filmWork.work_name);
+            searchText.push(filmWork.actor_role);
+        }
+
+
         let roleatfilms = [];
         for (const role of (profile.role_at_films || [])
             .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
@@ -176,21 +187,23 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         if (profile.addr_coll){
             if(profile.addr_coll.country && profile.addr_coll.country.name){
                 let profileLocation = profile.addr_coll.country.name;
+                location.push(profileLocation);
+                filters.location[profileLocation] = profileLocation;
 
                 if(profile.addr_coll.county && profile.addr_coll.county.name){
                     profileLocation += ", " + profile.addr_coll.county.name;
+                    location.push(profileLocation);
+                    filters.location[profileLocation] = profileLocation;
                 }
-
-                location.push(profileLocation);
-                filters.location[profileLocation] = profileLocation;
             }
         }
 
         let lookingfor = [];
         for (const lookingTag of (profile.tag_looking_fors || [])) {
-            searchText.push(lookingTag);
-            lookingfor.push(lookingTag);
-            filters.lookingfor[lookingTag] = lookingTag;
+            let lookingForString = lookingTag.charAt(0).toUpperCase() + lookingTag.slice(1);
+            searchText.push(lookingForString);
+            lookingfor.push(lookingForString);
+            filters.lookingfor[lookingForString] = lookingForString;
         }
 
         let languages = [];
