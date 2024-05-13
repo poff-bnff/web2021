@@ -159,12 +159,12 @@ block content
                                 </g>
                             </svg>
 
-                    if self.acc_other
-                        //- .str_info_grid_3
-                        //-     .person_info_label= self.label.userprofile.accOther
-                        //- .str_info_value= self.label.industry.website
-                        a.person_info_value(href= self.acc_other target="_BLANK" title="Account")
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                    if self.acc_youtube
+                        a.org_info_value(href= self.acc_youtube target="_BLANK" title="YoutTube account")
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    if self.acc_vimeo
+                        a.org_info_value(href= self.acc_vimeo target="_BLANK" title="Vimeo account")
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather"><path d="M22.875 10.063c-2.442 5.217-8.337 12.319-12.063 12.319-3.672 0-4.203-7.831-6.208-13.043-.987-2.565-1.624-1.976-3.474-.681l-1.128-1.455c2.698-2.372 5.398-5.127 7.057-5.28 1.868-.179 3.018 1.098 3.448 3.832.568 3.593 1.362 9.17 2.748 9.17 1.08 0 3.741-4.424 3.878-6.006.243-2.316-1.703-2.386-3.392-1.663 2.673-8.754 13.793-7.142 9.134 2.807z"/></svg>
                     if self.acc_instagram
                         //- .str_info_grid_3
                         //-     .person_info_label= self.label.userprofile.accInstagram
@@ -179,6 +179,12 @@ block content
                         //- .str_info_value= self.label.industry.website
                         a.person_info_value(href= self.acc_fb target="_BLANK" title="Facebook account")
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    if self.acc_other
+                        //- .str_info_grid_3
+                        //-     .person_info_label= self.label.userprofile.accOther
+                        //- .str_info_value= self.label.industry.website
+                        a.person_info_value(href= self.acc_other target="_BLANK" title="Account")
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                     if self.webpage_url
                         //- .str_info_grid_3
                         //-     .person_info_label= self.label.userprofile.webpageUrl
@@ -736,40 +742,40 @@ block content
                         //-     img.person_gallery_img(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
                         //-     //- .photographer= self.picture.caption
 
-                        if self.images
-                            //- KARUSELL Industry projekti piltidega
-                            section#carouselExampleIndicators.c_gallery_box.bg_white.bg_dark_4.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
-                                ol.carousel-indicators
-                                    if self.images && self.images.length >1
-                                        each val, index in self.images
-                                            li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
-                                .carousel-inner.container_frame_1_1.bg_white
-                                    if self.images && self.images[0]
-                                        each val, index in self.images
-                                            if index == 0
-                                                .carousel-item.active.container_contents_16_9_person
-                                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                                    //- .photographer= self.picture.caption
-                                            else
-                                                .carousel-item.container_contents_16_9_person
-                                                    img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                                    //- .photographer= self.picture.caption
-                                    else
-                                        .carousel-item.active.container_contents_16_9_person
-                                            img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
-                                            //- .photographer= self.picture.caption
-                                if self.images && self.images.length >1
-                                    a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
-                                        // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
-                                        //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                        //-     polyline(points='15 18 9 12 15 6')
-                                        span.sr-only Previous
-                                    a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
-                                        // <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                                        //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
-                                        //-     polyline(points='9 18 15 12 9 6')
-                                        span.sr-only Next
-                                        //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
-                                        //- section.c_showreel_box
+                        //- if self.images
+                        //-     //- KARUSELL Industry projekti piltidega
+                        //-     section#carouselExampleIndicators.c_gallery_box.bg_white.bg_dark_4.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000' keyboard="true")
+                        //-         ol.carousel-indicators
+                        //-             if self.images && self.images.length >1
+                        //-                 each val, index in self.images
+                        //-                     li(data-bs-target='#carouselExampleIndicators' href='#carouselExampleIndicators' data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+                        //-         .carousel-inner.container_frame_1_1.bg_white
+                        //-             if self.images && self.images[0]
+                        //-                 each val, index in self.images
+                        //-                     if index == 0
+                        //-                         .carousel-item.active.container_contents_16_9_person
+                        //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                        //-                             //- .photographer= self.picture.caption
+                        //-                     else
+                        //-                         .carousel-item.container_contents_16_9_person
+                        //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                        //-                             //- .photographer= self.picture.caption
+                        //-             else
+                        //-                 .carousel-item.active.container_contents_16_9_person
+                        //-                     img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                        //-                     //- .photographer= self.picture.caption
+                        //-         if self.images && self.images.length >1
+                        //-             a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-bs-slide='prev')
+                        //-                 // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        //-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
+                        //-                 //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        //-                 //-     polyline(points='15 18 9 12 15 6')
+                        //-                 span.sr-only Previous
+                        //-             a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-bs-slide='next')
+                        //-                 // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        //-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="svg_icon_prev_next"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        //-                 //- svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='#333333' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        //-                 //-     polyline(points='9 18 15 12 9 6')
+                        //-                 span.sr-only Next
+                        //-                 //- LÕPP! KARUSELL Industry projekti piltidega LÕPP
+                        //-                 //- section.c_showreel_box
