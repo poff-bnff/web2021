@@ -145,6 +145,12 @@ async function getModel(model, filters={}) {
                     return false
                 }
             }
+            if (item.public !== undefined) {
+                if (item.public === false) {
+                    console.log(`Skipping not public ${item.id}`)
+                    return false
+                }
+            }
             return true
         })
     }

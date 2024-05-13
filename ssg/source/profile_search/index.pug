@@ -1,0 +1,92 @@
+extends /_templates/layout.pug
+include /_templates/mixins.pug
+
+block content
+    if self.data.profiles && process.env['DOMAIN'] === 'industry.poff.ee'
+        section.about_cg
+            .about_cg_box
+                h3.about_cg_title= "Creative Gate"
+
+                .about_cg_text= "Creative Gate is a development center for creative industries aiming to enhance the entrepreneurial and export potential of the Estonian audiovisual industry. It offers comprehensive supportive services for film industry companies and related sectors, while promoting the growth of new creative economy enterprises."
+
+        section.grid_search.search_profiles
+            h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
+            #filters(style='display: none;')
+                .profiles_filter_box
+                    section.search_area
+                        input#search(type='text', placeholder= self.label.filters.search)
+
+                        button.clear(onclick='clear_all()')= self.label.filters.empty
+
+                    section.main_filters
+                        select#roleatfilms_select(name='Roleatfilms')
+                            option(value='')= self.label.filters.roleAtFilms
+                            if self.data.filters.roleatfilms
+                                each index, key in self.data.filters.roleatfilms
+                                    option(value=key)= index
+
+                        select#location_select(name='Location')
+                            option(value='')= "Location"
+                            if self.data.filters.location
+                                each index, key in self.data.filters.location
+                                    option(value=key)= index
+
+                        select#languages_select(name='Languages')
+                            option(value='')= "Languages"
+                            if self.data.filters.languages
+                                each index, key in self.data.filters.languages
+                                    option(value=key)= index
+
+                        select#lookingfor_select(name='Profiles looking for')
+                            option(value='')= "Profiles looking for"
+                            if self.data.filters.lookingfor
+                                each index, key in self.data.filters.lookingfor
+                                    option(value=key)= index
+
+        if self.data.profiles && self.data.profiles.length
+            - var profilesCount = self.data.profiles.length
+            .listLength
+                span.listLengthText= "showing "
+                span.listLengthText.bold#listLengthCount= profilesCount
+                span.listLengthText= " services, creative professionals and actors in Estonia"
+
+            section.profile_list
+                each profile in self.data.profiles
+                    if profile.slug
+
+                        if profile && profile.filterName
+                            .profile_card(id=profile.uniqueId)
+                                a.profile_card_link(href=`/${lang_path}${profile.slug}`)
+                                    - var assetsDir = 'https://assets.poff.ee/img/'
+                                    if profile.picture
+                                        - var profilePic = `${assetsDir}${profile.picture.hash}${profile.picture.ext}`
+                                    else
+                                        - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
+
+                                    if profile.profileType === "Actor"
+                                        img.profile_img.actor_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                    if profile.profileType === "Organisation"
+                                        img.profile_img.organisation_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                    if profile.profileType === "Person"
+                                        img.profile_img.person_img_cg(src=profilePic alt=`${profile.filterName}`)
+
+
+                                    .profile_body.text_left
+                                        h4.profile_name.text_left= `${profile.filterName}`
+
+                                        if profile.role_at_films
+                                            p.profile_roles= profile.role_at_films.map(roleName => roleName.roleName).join(' · ')
+
+                                        if profile.profileType === "Person" || profile.profileType === "Organisation"
+                                            p.profile_short_description= profile.shortDescription
+
+                                    .profile_footer.text_left
+                                        if profile.profileType === "Person" || profile.profileType === "Organisation"
+                                            p.profile_service_size= profile.serviceSize
+
+                                        if profile.cardLocation
+                                            p.profile_card_location= profile.cardLocation
+
+                script.
+                        var searcharray = !{JSON.stringify(self.data.search)}
+                        var filters = !{JSON.stringify(self.data.filters)}

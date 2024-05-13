@@ -717,6 +717,145 @@ footer
                         "c_filmography_box"\
                         "c_media_box"
 
+.grid_org_creative
+    display grid
+    width 100%
+    padding-left 12vw
+    padding-right 12vw
+    justify-items center
+    align-items center
+    justify-content center
+    grid-template-rows auto
+    row-gap 5rem
+
+.org_grid_main
+    padding-top 170px
+    grid-template-columns 1fr
+    grid-template-areas "c_profile_img"\
+                        "c_title_box"\
+                        "c_img_box"
+
+    .c_img_box
+        grid-area c_img_box
+        width auto
+        padding-top calc(1rem + 1vh)
+        display flex
+        justify-content center
+        align-items center
+
+    .c_title_box
+        grid-area c_title_box
+        grid-template-rows 1fr
+        height auto
+
+        .name_box
+            padding-top 0
+
+        .accounts-box
+            align-self auto
+
+    .c_profile_img
+        grid-area c_profile_img
+        width 100%
+        padding 0x
+        margin 0
+
+        .org_img
+            width 100%
+
+
+
+.org_logo
+    width 50%
+    display block
+
+.org_grid_about
+    align-items start
+    grid-template-columns 1fr
+    grid-template-areas "org_info"\
+                        "org_ongoing"\
+                        "org_skills"
+
+    .org_info
+        grid-area org_info
+
+    .org_ongoing
+        grid-area org_ongoing
+
+    .org_skills
+        grid-area org_skills
+
+.org_grid_description
+    grid-template-columns 1fr
+    grid-template-areas "org_description"
+
+    .org_description
+        grid-area org_description
+        width 100%
+        padding-left 12vw
+        padding-right 12vw
+        // padding-top 5vh
+        // padding-bottom 5vh
+        justify-items center
+        align-items center
+        justify-content center
+
+.org_grid_featured
+    grid-template-columns 1fr
+    grid-template-areas "org_featured"
+
+    .org_featured
+        grid-area org_featured
+
+.org_grid_work
+    align-items start
+    grid-template-columns 1fr
+    grid-template-areas "org_awards"\
+                        "org_clients"\
+                        "org_filmography"\
+                        "org_media_audio"\
+                        "org_media_video"
+
+    .org_awards
+        grid-area org_awards
+        width 100%
+
+    .org_clients
+        grid-area org_clients
+        width 100%
+
+        .str_info_grid_3
+            grid-template-columns none
+
+
+    .org_filmography
+        grid-area org_filmography
+
+    .org_media_audio
+        grid-area org_media_audio
+        width 100%
+
+    .org_media_video
+        grid-area org_media_video
+        width 80%
+
+.org_grid_footer
+    grid-template-columns 1fr
+    grid-template-areas "org_gallery"\
+                        "org_contact"
+
+    .org_gallery
+        grid-area org_gallery
+
+        .org_gallery_img
+            max-width 100%
+            max-height 100%
+
+    .org_contact
+        grid-area org_contact
+        padding-bottom 50px
+        text-align center
+
 .grid_location
     display grid
     grid-template-columns 1fr
@@ -1861,6 +2000,82 @@ row:nth-child(15) > .supporter_logos
     color dark_2
     // background-color #eeeeee
 
+.btn.btn_primary.btn_organisation
+    border-radius 8px
+    margin 20px
+
+.organisation_name
+    font-family font_c
+    font-size calc(3rem + 1vw)
+    line-height 5rem
+    padding-left 0
+    padding-right 0
+    text-align center
+    color dark_2
+
+// .person_name
+//     font-family font_c
+//     // font-size 4rem
+//     font-size calc(3rem + 1vw)
+//     line-height 5rem
+//     // padding-top 1.618rem
+//     padding-left 0
+//     padding-right 0
+//     // margin-top 1rem
+//     // margin-bottom 1rem
+//     text-align center
+//     color dark_2
+//     // background-color #eeeeee
+
+.organisation_description
+    font-family font_c
+    font-size calc(1rem + 0.5vh)
+    line-height calc(1rem + 0.5vh)
+    padding-left 0
+    padding-right 0
+    text-align center
+    color dark_2
+
+.org_info_label
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align right
+    line-height 1.618
+    font-weight 300
+
+// .person_info_label
+//     font-family font_p
+//     color dark_3
+//     font-size 1rem
+//     text-align right
+//     line-height 1.618
+//     font-weight 300
+
+.org_info_value
+    font-family font_p
+    color dark_1
+    font-size 1rem
+    text-align left
+    line-height 1.618
+
+.org_info_header
+    font-family font_c
+    font-size calc(1rem + 1vh)
+    line-height calc(1rem + 1vh)
+    padding-left 0
+    padding-right 0
+    padding-bottom 15px
+    text-align center
+    color dark_2
+
+
+.org_gallery_img
+    max-width 30%
+    max-height 30%
+    padding 25px
+
+
 .person_info_h
     font-family font_h
     font-weight 300
@@ -2622,6 +2837,9 @@ p a
 .str_info_grid_3_films
     display grid
     grid-template-columns 1fr 2fr
+
+.grid-start-2
+    grid-column-start 2
 
 .str_info_label,
 .str_info_meta_label
@@ -4077,6 +4295,9 @@ details[open] > summary::after
     aspect-ratio 1 / 1
     object-fit cover
     position relative
+    display flex
+    justify-content center
+    align-items center
 
 .l_img_box
     background-color white
@@ -4304,6 +4525,21 @@ a .feather
     font-weight 300
 
 .person_info_value
+    font-family font_p
+    color dark_1
+    font-size 1rem
+    text-align left
+    line-height 1.618
+
+.c_info_label
+    font-family font_p
+    color dark_3
+    font-size 1rem
+    text-align right
+    line-height 1.618
+    font-weight 300
+
+.c_info_value
     font-family font_p
     color dark_1
     font-size 1rem
@@ -4987,6 +5223,135 @@ a:hover > .login_headline
         padding-top 170px
         row-gap 5rem
         // background-color #dddddd
+
+    .grid_org_creative
+        display grid
+        width 100%
+        padding-left 12vw
+        padding-right 12vw
+        justify-items center
+        align-items center
+        justify-content center
+        grid-template-rows auto
+        row-gap 5rem
+
+    .org_grid_main
+        padding-top 170px
+        grid-template-columns 1fr 1fr
+        grid-template-areas "c_profile_img c_profile_img"\
+                            "c_title_box c_img_box"
+
+        .c_img_box
+            grid-area c_img_box
+            width auto
+            padding-top calc(1rem + 1vh)
+            display flex
+            justify-content center
+            align-items center
+
+        .c_title_box
+            grid-area c_title_box
+            grid-template-rows 1fr
+            height auto
+
+            .name_box
+                padding-top 0
+
+            .accounts-box
+                align-self auto
+
+        .c_profile_img
+            grid-area c_profile_img
+            width 100%
+            padding 0x
+            margin 0
+
+            .org_img
+                width 100%
+
+    .org_grid_about
+        align-items start
+        grid-template-columns 1fr 1fr 1fr
+        grid-template-areas "org_info org_ongoing org_skills"
+
+        .org_info
+            grid-area org_info
+
+        .org_ongoing
+            grid-area org_ongoing
+
+        .org_skills
+            grid-area org_skills
+
+            .org_info_header
+                text-align left
+
+    .org_grid_description
+        grid-template-columns 1fr
+        grid-template-areas "org_description"
+
+        .org_description
+            grid-area org_description
+            width 100%
+            padding-left 12vw
+            padding-right 12vw
+            // padding-top 5vh
+            // padding-bottom 5vh
+            justify-items center
+            align-items center
+            justify-content center
+
+    .org_grid_featured
+        grid-template-columns 1fr
+        grid-template-areas "org_featured"
+
+        .org_featured
+            grid-area org_featured
+
+    .org_grid_work
+        align-items start
+        grid-template-columns 1fr 1fr
+        grid-template-areas "org_awards org_filmography"\
+                            "org_clients org_filmography"\
+                            "org_media_audio org_filmography"\
+                            "org_media_video org_filmography"
+
+        .org_awards
+            grid-area org_awards
+            width 50%
+
+        .org_clients
+            grid-area org_clients
+            width 50%
+
+        .org_filmography
+            grid-area org_filmography
+
+        .org_media_audio
+            grid-area org_media_audio
+            width 100%
+
+        .org_media_video
+            grid-area org_media_video
+            width 80%
+
+    .org_grid_footer
+        grid-template-columns 1fr
+        grid-template-areas "org_gallery"\
+                            "org_contact"
+
+        .org_gallery
+            grid-area org_gallery
+
+            .org_gallery_img
+                max-width 30%
+                max-height 30%
+
+        .org_contact
+            grid-area org_contact
+            padding-bottom 50px
+            text-align center
+
 
     .grid_location
         display grid
@@ -5940,3 +6305,192 @@ strong
 
 .ghostblue
     color ghost_blue
+
+.hr_cg
+    border-bottom 1px solid #666666
+    margin-top 6rem
+    margin-bottom 6rem
+
+// Profile Search Specific
+
+.search_profiles
+    background-color #F7F7F8
+    border-top 2px solid #D0D0D0
+    border-bottom 2px solid #D0D0D0
+    padding-top 2rem
+    padding 2rem 10rem
+
+.grid_search.search_profiles
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    padding-left 7rem
+    padding-right 7rem
+    select
+        max-width unset
+
+    .profiles_filter_box
+        margin auto
+
+    .search_area
+        button
+            margin 5px
+
+        #search
+            width 25rem
+            max-width none
+            margin 5px
+
+    .main_filters select
+        width 18rem
+        margin 5px
+
+.filter_loader
+  font-family font_h
+  font-size calc(1.618rem + 1.618vw)
+  line-height 1
+  font-weight 400
+  color dark_1
+  letter-spacing 0.04em
+  text-align center
+  margin 0
+  padding 0
+  padding-left calc(1rem + 1vw)
+  padding-right calc(1rem + 1vw)
+
+.listLength
+    padding-top 4rem
+    padding-left 6rem
+
+.listLengthText
+    font-family font_c
+    font-size calc(1rem + 0.5vh)
+    line-height calc(1rem + 1vh)
+    padding-left 0
+    padding-right 0
+    text-align left
+    color dark_2
+    padding-bottom calc(1rem + 1vh)
+
+
+.profile_list
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(17rem, 17rem))
+    justify-content center
+    align-content start
+    justify-items center
+    align-items start
+    grid-gap 3rem
+    padding-bottom 3rem
+
+.about_cg
+    padding-top 155px
+
+.about_cg_box
+    width 30%
+    margin auto
+
+.about_cg_title
+    font-family font_h
+    font-size calc(1rem + 1vw)
+    line-height 1
+    font-weight 600
+    color dark_1
+    letter-spacing 0.04em
+    text-align left
+    padding-bottom calc(1rem + 1vh)
+    margin-top .6em
+
+.about_cg_text
+    font-family font_c
+    font-size calc(1rem + 1vh)
+    line-height calc(1rem + 1vh)
+    padding-left 0
+    padding-right 0
+    text-align left
+    color dark_2
+    padding-bottom calc(1rem + 1vh)
+
+.profile_card
+    height 100%
+    box-shadow 10px 5px 5px #D0D0D0
+    border-radius 8px
+    border 1px solid #F7F7F8
+
+    .profile_card_link
+        display grid
+
+.profile_body
+    min-height min-content
+    max-height max-content
+    padding 0 1rem 1rem 1rem
+    font-size 1rem
+    line-height 1.2rem
+    a
+        text-decoration none
+        color dark_1
+    p
+        font-size 1rem
+        line-height 1.2rem
+        color dark_1
+    h4
+        color dark_1
+
+.profile_img
+    padding 20px
+    padding-bottom 0
+
+.actor_img_cg
+    width: 100%
+    border-radius 57% 43% 57% 43%
+    aspect-ratio 1 / 1
+    object-fit cover
+
+.person_img_cg
+    width: 60%
+    border-radius 57% 43% 57% 43%
+    aspect-ratio 1 / 1
+    object-fit cover
+
+.organisation_img_cg
+    width 60%
+    aspect-ratio 1 / 1
+    object-fit cover
+
+.profile_name
+    font-family font_c
+    font-size 2rem
+    line-height 2rem
+    font-weight 500
+    padding-left 0
+    padding-right 0
+    text-align left
+    color dark_2
+
+.profile_roles
+    font-size 1.2rem !important
+    color #12827e !important
+    font-weight 400
+
+.profile_short_description
+    font-family font_c
+    font-size 1.3rem !important
+    text-align left
+    color dark_2
+
+.profile_footer
+    padding 0 1rem
+    align-self end
+
+    .profile_service_size
+        font-size 1.1rem !important
+        color #12827e !important
+        font-weight 400
+        margin-bottom 0
+
+    .profile_card_location
+        font-family font_c
+        font-size 1.1rem
+        text-align left
+        color dark_2

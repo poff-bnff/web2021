@@ -103,6 +103,12 @@ industry_person_in_editions:
     is_in_industry: [68]
     is_in_creative: [59]
 
+industry_organisation_in_editions:
+    is_in_creative: [59]
+
+actor_roles: [76]
+
+
 target_build_models:
     - cassette
     - course-event

@@ -1,0 +1,5 @@
+path: profile-search
+data:
+    profiles: /_fetchdir/profiles.en.yaml
+    filters: /_fetchdir/filters_profiles.en.yaml
+    search: /_fetchdir/search_profiles.en.yaml
