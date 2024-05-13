@@ -459,14 +459,6 @@ EyeColour: &EyeColour
     name_en: text
     name_ru: text
 
-Language: &Language
-    _path: /languages
-    id: 8 (number)
-    code: et (short text, min len 2, max len 3, lowercase)
-    name_et: Eesti (short text)
-    name_en: Estonian (short text)
-    name_ru: Эстонский (short text)
-
 Filmography: &Filmography
     _path: /filmographies
     type_of_work: *TypeOfWork
