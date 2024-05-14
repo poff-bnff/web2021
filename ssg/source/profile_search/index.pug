@@ -48,9 +48,10 @@ block content
             .listLength
                 span.listLengthText= "showing "
                 span.listLengthText.bold#listLengthCount= profilesCount
-                span.listLengthText= " services, creative professionals and actors in Estonia"
+                span.listLengthText= " services, creative professionals and actors"
 
-            section.profile_list
+            //- section.profile_list
+            section.sub_team
                 each profile in self.data.profiles
                     if profile.slug
 
@@ -72,13 +73,14 @@ block content
 
 
                                     .profile_body.text_left
-                                        h4.profile_name.text_left= `${profile.filterName}`
+                                        h4.text_left= `${profile.filterName}`
 
                                         if profile.role_at_films
                                             p.profile_roles= profile.role_at_films.map(roleName => roleName.roleName).join(' · ')
 
                                         if profile.profileType === "Person" || profile.profileType === "Organisation"
-                                            p.profile_short_description= profile.shortDescription
+                                            //- p.profile_short_description= profile.shortDescription
+                                            p= profile.shortDescription
 
                                     .profile_footer.text_left
                                         if profile.profileType === "Person" || profile.profileType === "Organisation"
