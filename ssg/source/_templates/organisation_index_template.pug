@@ -7,18 +7,7 @@ block content
 
     if self.name
 
-        //- if self.profile_img
-        //-         section.c_profile_img_box
-        //-             if self.profile_img
-        //-                 - var orgProfile = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
-        //-             else
-        //-                 - var orgProfile ='/assets/img/static/hunt_square_placeholder.jpg'
-
-        //-             img.org_img(src=orgProfile alt=self.name)
-
-        section.grid_creative_2
-
-            if self.profile_img
+        if self.profile_img
                 section.c_profile_img_box
                     if self.profile_img
                         - var orgProfile = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
@@ -26,6 +15,17 @@ block content
                         - var orgProfile ='/assets/img/static/hunt_square_placeholder.jpg'
 
                     img.org_img(src=orgProfile alt=self.name)
+
+        section.grid_creative_2
+
+            //- if self.profile_img
+            //-     section.c_profile_img_box
+            //-         if self.profile_img
+            //-             - var orgProfile = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+            //-         else
+            //-             - var orgProfile ='/assets/img/static/hunt_square_placeholder.jpg'
+
+            //-         img.org_img(src=orgProfile alt=self.name)
 
             section.c_img_box
                 if self.logoColour
@@ -296,7 +296,7 @@ block content
                                 .c_info_value= self.homepageUrl
 
                 //- ONGOING PROJECTS
-                if self.filmographies
+                //- if self.filmographies
                     - var ongoingFilmographies = self.filmographies.filter(filmography => filmography.is_ongoing === true)
                     if ongoingFilmographies.length
                         .c_info_2
