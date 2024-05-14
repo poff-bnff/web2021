@@ -1,4 +1,4 @@
-path: profile-search
+path: creative_gate
 data:
     profiles: /_fetchdir/profiles.en.yaml
     filters: /_fetchdir/filters_profiles.en.yaml

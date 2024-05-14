@@ -4,10 +4,13 @@ include /_templates/mixins.pug
 block content
     if self.data.profiles && process.env['DOMAIN'] === 'industry.poff.ee'
         section.about_cg
-            .about_cg_box
-                h3.about_cg_title= "Creative Gate"
+            //- .about_cg_box
+            .text_right
+                h3.about_cg_title.text_right= "Creative Gate"
 
-                .about_cg_text= "Creative Gate is a development center for creative industries aiming to enhance the entrepreneurial and export potential of the Estonian audiovisual industry. It offers comprehensive supportive services for film industry companies and related sectors, while promoting the growth of new creative economy enterprises."
+            .person_info_c.text_left
+                | Your shortcut to the Estonian film industry.
+                | Explore the services, industry professionals and talents for your next film project!
 
         section.grid_search.search_profiles
             h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
@@ -48,14 +51,15 @@ block content
             .listLength
                 span.listLengthText= "showing "
                 span.listLengthText.bold#listLengthCount= profilesCount
-                span.listLengthText= " services, creative professionals and actors in Estonia"
+                span.listLengthText= " services, creative professionals and actors"
 
-            section.profile_list
+            //- section.profile_list
+            section.sub_team
                 each profile in self.data.profiles
                     if profile.slug
 
                         if profile && profile.filterName
-                            .profile_card(id=profile.uniqueId)
+                            .profile_card(id=profile.uniqueId style="display:none;")
                                 a.profile_card_link(href=`/${lang_path}${profile.slug}`)
                                     - var assetsDir = 'https://assets.poff.ee/img/'
                                     if profile.picture
@@ -63,24 +67,28 @@ block content
                                     else
                                         - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
 
-                                    if profile.profileType === "Actor"
-                                        img.profile_img.actor_img_cg(src=profilePic alt=`${profile.filterName}`)
-                                    if profile.profileType === "Organisation"
-                                        img.profile_img.organisation_img_cg(src=profilePic alt=`${profile.filterName}`)
-                                    if profile.profileType === "Person"
-                                        img.profile_img.person_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                    .profile_head
+
+                                        if profile.profileType === "Actor"
+                                            img.profile_img.actor_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
+                                        if profile.profileType === "Organisation"
+                                            img.profile_img.organisation_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
+                                        if profile.profileType === "Person"
+                                            img.profile_img.person_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
 
 
-                                    .profile_body.text_left
-                                        h4.profile_name.text_left= `${profile.filterName}`
+                                        .profile_body.text_left
+                                            h4.text_left= `${profile.filterName}`
 
-                                        if profile.role_at_films
-                                            p.profile_roles= profile.role_at_films.map(roleName => roleName.roleName).join(' · ')
+                                            if profile.role_at_films
+                                                p.profile_roles= profile.role_at_films.map(roleName => roleName.roleName).join(' · ')
 
-                                        if profile.profileType === "Person" || profile.profileType === "Organisation"
-                                            p.profile_short_description= profile.shortDescription
+                                            if profile.profileType === "Person" || profile.profileType === "Organisation"
+                                                //- p.profile_short_description= profile.shortDescription
+                                                p= profile.shortDescription
 
                                     .profile_footer.text_left
+
                                         if profile.profileType === "Person" || profile.profileType === "Organisation"
                                             p.profile_service_size= profile.serviceSize
 
