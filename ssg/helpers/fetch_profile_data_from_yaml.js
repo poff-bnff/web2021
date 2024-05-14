@@ -38,7 +38,9 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
         console.log(`Fetching ${DOMAIN} profiles ${lang} data`)
 
+        const allProfileData = []
         const filteredProfiles = []
+
         let limit = DATALIMIT
         let counting = 0
 
@@ -74,7 +76,8 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             uniqueId++
 
-            filteredProfiles.push(person);
+            filteredProfiles.push(getListProfileData(person))
+            allProfileData.push(person)
         }
 
         counting = 0
@@ -113,13 +116,12 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             organisation.shortDescription = organisation.description ? organisation.description.substr(0, SHORT_DESC_LENGTH) + "...": ""
 
-            organisation.cardLocation = organisation.addr_coll ? getCardLocation(organisation.addr_coll) : ""
-
             organisation.uniqueId = uniqueId
 
             uniqueId++
 
-            filteredProfiles.push(organisation);
+            filteredProfiles.push(getListProfileData(organisation))
+            allProfileData.push(organisation)
         }
 
         const yamlPath = path.join(fetchDir, `profiles.${lang}.yaml`)
@@ -137,8 +139,24 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         fs.writeFileSync(yamlPath, filteredProfilesYAML, 'utf8');
         console.log(`Fetched ${filteredProfiles.length} profiles for ${DOMAIN}`);
 
-        generateProfileSearchAndFilterYamls(filteredProfiles, lang)
+        generateProfileSearchAndFilterYamls(allProfileData, lang)
     }
+}
+
+function getListProfileData(profile) {
+    let listProfileData = {}
+
+    listProfileData.uniqueId = profile.uniqueId
+    listProfileData.slug = profile.slug
+    listProfileData.filterName = profile.filterName
+    listProfileData.picture = profile.picture
+    listProfileData.role_at_films = profile.role_at_films
+    listProfileData.profileType = profile.profileType
+    listProfileData.serviceSize = profile.serviceSize
+    listProfileData.shortDescription = profile.shortDescription
+    listProfileData.cardLocation = profile.addr_coll ? getCardLocation(profile.addr_coll) : ""
+
+    return listProfileData
 }
 
 function generateProfileSearchAndFilterYamls(profiles, lang) {
@@ -167,7 +185,6 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         }
 
         for (const filmWork of (profile.filmographies || [])) {
-            console.log(filmWork);
             searchText.push(filmWork.work_name);
             searchText.push(filmWork.actor_role);
         }
