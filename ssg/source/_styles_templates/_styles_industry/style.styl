@@ -741,11 +741,11 @@ footer
     // row-gap 5rem
 
 .c_profile_img_box
-        grid-area c_profile_img_box
+        // grid-area c_profile_img_box
         width 100vw
         padding 0
         margin 0
-        // padding-top 150px
+        padding-top 136px
         // height 40vw
         // object-fit cover
 
@@ -5312,7 +5312,7 @@ a:hover > .login_headline
         display grid
         grid-area c_info_box
         width 100%
-        grid-template-columns repeat(auto-fit, minmax(450px, 1fr))
+        grid-template-columns repeat(auto-fit, minmax(300px, 1fr))
         grid-template-rows auto
         // justify-content stretch
         grid-gap 1rem
@@ -6469,14 +6469,14 @@ strong
     padding-left 6rem
 
 .listLengthText
-    font-family font_c
-    font-size calc(1rem + 0.5vh)
-    line-height calc(1rem + 1vh)
+    font-family font_p
+    font-size 1rem
+    line-height 1rem
     padding-left 0
     padding-right 0
     text-align left
     color dark_2
-    padding-bottom calc(1rem + 1vh)
+    // padding-bottom calc(1rem + 1vh)
 
 
 .profile_list
@@ -6491,10 +6491,20 @@ strong
 
 .about_cg
     padding-top 155px
-    padding-bottom 2rem
+    padding-left 12vw
+    padding-right 12vw
+    display grid
+    // grid-area c_info_box
+    width 100%
+    grid-template-columns repeat(auto-fit, minmax(300px, 1fr))
+    grid-template-rows auto
+    // justify-content stretch
+    grid-gap 1rem
+    // padding 1rem
+    // padding-bottom 2rem
 
 .about_cg_box
-    width 30%
+    width 70%
     margin auto
 
 .about_cg_title
@@ -6518,13 +6528,21 @@ strong
     color dark_2
     padding-bottom calc(1rem + 1vh)
 
-.profile_card
-    height 100%
-    // box-shadow 10px 5px 5px #D0D0D0
-    // border-radius 8px
-    border 1px solid #bbbbbb
+.profile_card_link
+    display flex
+    flex-direction column
+    justify-content space-between
+    // background-color bg_dark_3
+    // border solid .5px bg_dark_4
+    width 100%
+    // height auto
+    min-height max-content
+    max-height max-content
+    // margin-bottom 1rem
+    // margin-top 1rem
+    // border 1px solid #eeeeee
 
-    .profile_card_link
+    // .profile_card_link
         // display grid
 
 .profile_body
@@ -6576,7 +6594,7 @@ strong
 
 .profile_roles
     font-family font_h
-    font-size 1.2rem !important
+    font-size 1rem !important
     color #12827e !important
     font-weight 400
 
@@ -6591,9 +6609,10 @@ strong
     align-self end
 
     .profile_service_size
-        font-size 1.1rem !important
+        font-family font_h
+        font-size 1rem !important
         color #12827e !important
-        font-weight 400
+        font-weight 300
         margin-bottom 0
 
     .profile_card_location
