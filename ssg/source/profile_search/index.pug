@@ -58,8 +58,7 @@ block content
                     if profile.slug
 
                         if profile && profile.filterName
-                            //- .profile_card(id=profile.uniqueId)
-                            .person(id=profile.uniqueId)
+                            .profile_card(id=profile.uniqueId style="display:none;")
                                 a.profile_card_link(href=`/${lang_path}${profile.slug}`)
                                     - var assetsDir = 'https://assets.poff.ee/img/'
                                     if profile.picture
@@ -68,11 +67,11 @@ block content
                                         - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
 
                                     if profile.profileType === "Actor"
-                                        img.profile_img.actor_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                        img.profile_img.actor_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
                                     if profile.profileType === "Organisation"
-                                        img.profile_img.organisation_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                        img.profile_img.organisation_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
                                     if profile.profileType === "Person"
-                                        img.profile_img.person_img_cg(src=profilePic alt=`${profile.filterName}`)
+                                        img.profile_img.person_img_cg(src=profilePic loading="lazy" alt=`${profile.filterName}`)
 
 
                                     .profile_body.text_left
