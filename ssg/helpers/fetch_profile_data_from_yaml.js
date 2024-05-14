@@ -149,12 +149,29 @@ function getListProfileData(profile) {
     listProfileData.uniqueId = profile.uniqueId
     listProfileData.slug = profile.slug
     listProfileData.filterName = profile.filterName
-    listProfileData.picture = profile.picture
     listProfileData.role_at_films = profile.role_at_films
     listProfileData.profileType = profile.profileType
     listProfileData.serviceSize = profile.serviceSize
     listProfileData.shortDescription = profile.shortDescription
     listProfileData.cardLocation = profile.addr_coll ? getCardLocation(profile.addr_coll) : ""
+    if (profile.profileType === "Organisation") {
+        if (profile.logoColour) {
+            listProfileData.logoColour = profile.logoColour
+        }
+        else if (profile.logoBlack) {
+            listProfileData.logoBlack = profile.logoBlack
+        }
+        else if (profile.logoWhite) {
+            listProfileData.logoWhite = profile.logoWhite
+        }
+        else{
+            listProfileData.picture = profile.picture
+        }
+    }
+
+    else if (profile.profileType === "Actor" || profile.profileType === "Person") {
+        listProfileData.picture = profile.picture
+    }
 
     return listProfileData
 }
