@@ -63,7 +63,11 @@ block content
                             .profile_card(id=profile.uniqueId)
                                 a.profile_card_link(href=`/${lang_path}${profile.slug}`)
                                     - var assetsDir = 'https://assets.poff.ee/img/'
-                                    if profile.picture
+                                    if profile.logoColour
+                                        - var profilePic = `${assetsDir}${profile.logoColour.hash}${profile.logoColour.ext}`
+                                    else if profile.logoBlack
+                                        - var profilePic = `${assetsDir}${profile.logoBlack.hash}${profile.logoBlack.ext}`
+                                    else if profile.picture
                                         - var profilePic = `${assetsDir}${profile.picture.hash}${profile.picture.ext}`
                                     else
                                         - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
