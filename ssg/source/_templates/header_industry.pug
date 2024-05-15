@@ -66,7 +66,7 @@ header.menu
                         script.
                             var redirect_uri = new URL(window.location.href)
                             redirect_uri.searchParams.set('jwt','')
-                            document.getElementById('oauthLink').href = huntAuthDomain + '/?provider=eventival&redirect_uri=' + encodeURIComponent(redirect_uri.toString())
+                            document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString())
                     li#logInName.dropdown_el(style={display: 'none'})
                         a#tervitus= self.label.menu.mainGreeting
                     //- li#myCalendar.dropdown_el(style={cursor: 'pointer'})
