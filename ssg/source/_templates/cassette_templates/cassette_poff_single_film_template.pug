@@ -233,9 +233,9 @@ main.grid_film(id=self.id)
                         //-                                 else if presenter.logoWhite
                         //-                                     img.presenter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
                         //-                     //- KUI ARTIKLIT POLE VÕI POLE SEE PUBLISHED, AGA ON CUSTOM URL
-                        //-                     else if presenter.homepageUrl
+                        //-                     else if presenter.webpage_url
                         //-                         .presenter_logo_item_container
-                        //-                             a(href= presenter.homepageUrl).presenter_logo_item
+                        //-                             a(href= presenter.webpage_url).presenter_logo_item
                         //-                                 if presenter.logoColour
                         //-                                     img.presenter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoColour.hash}${presenter.logoColour.ext}`  src=`https://assets.poff.ee/img/${presenter.logoColour.hash}${presenter.logoColour.ext}`)
                         //-                                 else if presenter.logoBlack
@@ -587,9 +587,9 @@ main.grid_film(id=self.id)
                                                         else if presenter.logoWhite
                                                             img.presenter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`  src=`https://assets.poff.ee/img/${presenter.logoWhite.hash}${presenter.logoWhite.ext}`)
                                             //- KUI ARTIKLIT POLE VÕI POLE SEE PUBLISHED, AGA ON CUSTOM URL
-                                            else if presenter.homepageUrl
+                                            else if presenter.webpage_url
                                                 .presenter_logo_item_container
-                                                    a(href= presenter.homepageUrl).presenter_logo_item
+                                                    a(href= presenter.webpage_url).presenter_logo_item
                                                         if presenter.logoColour
                                                             img.presenter_logo_item(alt=presenter.name data-src=`https://assets.poff.ee/img/${presenter.logoColour.hash}${presenter.logoColour.ext}`  src=`https://assets.poff.ee/img/${presenter.logoColour.hash}${presenter.logoColour.ext}`)
                                                         else if presenter.logoBlack

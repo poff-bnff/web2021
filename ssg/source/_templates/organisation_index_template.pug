@@ -79,6 +79,12 @@ block content
                         //-         .str_info_label= self.label.userprofile.accEfis
                         //-         //- .str_info_value= self.label.industry.website
                         //-         a.str_info_value(href= self.acc_efis)= self.label.userprofile.accEfis
+                    if self.webpage_url
+                        //- .str_info_grid_3
+                        //-     .person_info_label= self.label.userprofile.webpageUrl
+                        //- .str_info_value= self.label.industry.website
+                        a.c_info_value(href= self.webpage_url target="_BLANK" title="Webpage")
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     if self.acc_efis
                         //- .str_info_grid_3
                         //-     .person_info_label= self.label.userprofile.accEfis
@@ -202,12 +208,7 @@ block content
                         //- .str_info_value= self.label.industry.website
                         a.c_info_value(href= self.acc_other target="_BLANK" title="Account")
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    if self.webpage_url
-                        //- .str_info_grid_3
-                        //-     .person_info_label= self.label.userprofile.webpageUrl
-                        //- .str_info_value= self.label.industry.website
-                        a.c_info_value(href= self.webpage_url target="_BLANK" title="Webpage")
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+
 
                 //- .f_cred_box
                 //-     if self.acting_age_from
@@ -290,10 +291,10 @@ block content
                                 .c_info_label= self.label.userprofile.address
                                 .c_info_value= addrArray.join(', ')
 
-                        if self.homepageUrl
+                        if self.webpage_url
                             .str_info_grid_3
                                 .c_info_label= "www"
-                                .c_info_value= self.homepageUrl
+                                .c_info_value= self.webpage_url
 
                 //- ONGOING PROJECTS
                 //- if self.filmographies

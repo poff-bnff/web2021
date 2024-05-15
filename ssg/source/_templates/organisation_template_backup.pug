@@ -102,8 +102,8 @@ block content
                     if self.acc_other
                         a.org_info_value(href= self.acc_other target="_BLANK" title="Account")
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    if self.homepageUrl
-                        a.org_info_value(href= self.homepageUrl target="_BLANK" title="Webpage")
+                    if self.webpage_url
+                        a.org_info_value(href= self.webpage_url target="_BLANK" title="Webpage")
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1,5" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
 
             section.c_img_box
@@ -161,10 +161,10 @@ block content
                         .org_info_label= "Phone"
                         .org_info_value= self.phoneNr
 
-                if self.homepageUrl
+                if self.webpage_url
                     .str_info_grid_3
                         .org_info_label= "www"
-                        .org_info_value= self.homepageUrl
+                        .org_info_value= self.webpage_url
 
 
             //- section.org_ongoing

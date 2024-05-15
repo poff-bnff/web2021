@@ -193,7 +193,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profile.dateOfBirth,
             profile.profession,
             profile.webpage_url,
-            profile.homepageUrl,
+            profile.webpage_url,
             profile.bio,
             profile.description,
             profile.skills,
