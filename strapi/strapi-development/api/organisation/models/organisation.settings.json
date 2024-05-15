@@ -79,7 +79,7 @@
       "required": false,
       "pluginOptions": {}
     },
-    "homepageUrl": {
+    "webpage_url": {
       "type": "string"
     },
     "awardings": {
