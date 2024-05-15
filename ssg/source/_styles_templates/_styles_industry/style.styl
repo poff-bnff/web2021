@@ -6488,17 +6488,18 @@ strong
     border-top 2px solid #D0D0D0
     border-bottom 2px solid #D0D0D0
     padding-top 2rem
-    padding 2rem 10rem
+    padding 2rem
 
 .grid_search.search_profiles
     display: grid;
     grid-template-columns: 1fr;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    padding-left 7rem
-    padding-right 7rem
+    padding-left 2rem
+    padding-right 2rem
     select
-        max-width unset
+        // max-width unset
+        width clamp(12rem, 25rem, 80vw)
 
     .profiles_filter_box
         margin auto
@@ -6508,12 +6509,13 @@ strong
             margin 5px
 
         #search
-            width 25rem
+            // width 25rem
+            width clamp(12rem, 25rem, 80vw)
             max-width none
             margin 5px
 
     .main_filters select
-        width 18rem
+        width clamp(6rem, 18rem, 80vw)
         margin 5px
 
 .filter_loader
