@@ -64,7 +64,9 @@ header.menu
                     li#logIn.dropdown_el(style={cursor: 'pointer'})
                         a#oauthLink= self.label.menu.mainLogin
                         script.
-                            document.getElementById('oauthLink').href = huntAuthDomain + '/?provider=eventival&redirect_uri=' + window.location.href + '?jwt='
+                            var redirect_uri = new URL(window.location.href)
+                            redirect_uri.searchParams.set('jwt','')
+                            document.getElementById('oauthLink').href = huntAuthDomain + '/?provider=eventival&redirect_uri=' + encodeURIComponent(redirect_uri.toString())
                     li#logInName.dropdown_el(style={display: 'none'})
                         a#tervitus= self.label.menu.mainGreeting
                     //- li#myCalendar.dropdown_el(style={cursor: 'pointer'})
