@@ -725,20 +725,15 @@ footer
     justify-items center
     align-items start
     padding-top header_height
-    grid-template-areas "c_profile_img_box"\
-                        "c_title_box"\
+    padding-bottom 6rem
+    grid-template-areas "c_title_box"\
                         "c_img_box"\
-                        "c_info_boxx"\
+                        "c_info_box"\
                         "c_description_box"\
                         "c_featured_box"\
                         "c_media_box"\
                         "c_filmography_box"\
                         "c_gallery_box"
-
-    // padding-top header_height + 25vw
-    // padding-top 130px
-    // margin-top 5rem
-    // row-gap 5rem
 
 .c_profile_img_box
         // grid-area c_profile_img_box
@@ -1884,6 +1879,29 @@ row:nth-child(15) > .supporter_logos
     padding 2rem
     // padding-top header_height
 
+.profile_list
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(17rem, 1fr))
+    grid-template-rows auto
+    grid-gap 2rem
+    padding 2rem
+    justify-content center
+    // align-content start
+    // justify-items center
+    // align-items start
+    // grid-gap 2rem
+    // padding-bottom 3rem
+    // padding 2rem
+
+// .grid_films
+//     display grid
+//     // grid-template-columns 1fr 1fr 1fr
+//     grid-template-columns repeat(auto-fill, minmax(450px, 1fr))
+//     grid-template-rows auto
+//     grid-gap 1rem
+//     padding 1rem
+//     padding-top header_height_mobile
+
 .sub_team_jury
     display grid
     grid-template-columns repeat(auto-fill, minmax(20rem, 60rem))
@@ -2141,8 +2159,32 @@ row:nth-child(15) > .supporter_logos
 .c_description
     font-family font_c
     color dark_2
-    font-size 1.618rem
+    font-size 1.5rem
     text-align center
+    line-height 2rem
+    text-transform none
+    padding-top 1.618rem
+    padding-bottom 1.618rem
+    max-width 72ch
+    align-self center
+
+    p
+        font-family font_c
+        color dark_2
+        font-size 1.5rem
+        text-align center
+        line-height 2rem
+        text-transform none
+        padding-top 1.618rem
+        padding-bottom 1.618rem
+        max-width 72ch
+        align-self center
+
+.c_intro
+    font-family font_c
+    color dark_2
+    font-size 1.618rem
+    text-align left
     line-height 2rem
     text-transform none
     padding-top 1.618rem
@@ -2153,13 +2195,12 @@ row:nth-child(15) > .supporter_logos
         font-family font_c
         color dark_2
         font-size 1.618rem
-        text-align center
+        text-align left
         line-height 2rem
         text-transform none
         padding-top 1.618rem
         padding-bottom 1.618rem
         max-width 60ch
-
 
 .shop_item_body
     // background-color bg_dark_3
@@ -2342,6 +2383,18 @@ row:nth-child(15) > .supporter_logos
     margin-top -.5rem
     stroke rgba(0, 0, 0, .8)
     // stroke white_96
+
+.svg_icon_small_dark_2
+    // height calc(1.5rem + 0.1vw)
+    // width calc(1.5rem + 0.1vw)
+    // margin-right .5rem
+    // margin-top -.7rem
+    // stroke rgba(255, 255, 255, .5)
+    height 1rem
+    width 1rem
+    margin-right .2rem
+    margin-top -.2rem
+    stroke dark_2
 
 .svg_icon_small_primary
     // height calc(1.5rem + 0.1vw)
@@ -5304,6 +5357,7 @@ a:hover > .login_headline
 
         // padding-top header_height + 25vw
         padding-top 130px
+        padding-bottom 6rem
         // margin-top 5rem
         // row-gap 5rem
         // background-color #dddddd
@@ -5326,6 +5380,11 @@ a:hover > .login_headline
 
     .c_description_box
         grid-area c_description_box
+        width 100vw
+        display flex
+        flex-direction column
+        // align-items center
+        // align-content center
 
 
 
@@ -6412,9 +6471,9 @@ strong
     color ghost_blue
 
 .hr_cg
-    border-bottom 1px solid #666666
-    margin-top 6rem
-    margin-bottom 6rem
+    border-bottom 2px solid #666666
+    margin-top 3rem
+    margin-bottom 3rem
 
 // Profile Search Specific
 
@@ -6423,17 +6482,18 @@ strong
     border-top 2px solid #D0D0D0
     border-bottom 2px solid #D0D0D0
     padding-top 2rem
-    padding 2rem 10rem
+    padding 2rem
 
 .grid_search.search_profiles
     display: grid;
     grid-template-columns: 1fr;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    padding-left 7rem
-    padding-right 7rem
+    padding-left 2rem
+    padding-right 2rem
     select
-        max-width unset
+        // max-width unset
+        width clamp(12rem, 25rem, 80vw)
 
     .profiles_filter_box
         margin auto
@@ -6443,12 +6503,13 @@ strong
             margin 5px
 
         #search
-            width 25rem
+            // width 25rem
+            width clamp(12rem, 25rem, 80vw)
             max-width none
             margin 5px
 
     .main_filters select
-        width 18rem
+        width clamp(6rem, 18rem, 80vw)
         margin 5px
 
 .filter_loader
@@ -6465,8 +6526,8 @@ strong
   padding-right calc(1rem + 1vw)
 
 .listLength
-    padding-top 4rem
-    padding-left 6rem
+    padding-top 2rem
+    padding-left 2rem
 
 .listLengthText
     font-family font_p
@@ -6478,19 +6539,9 @@ strong
     color dark_2
     // padding-bottom calc(1rem + 1vh)
 
-
-.profile_list
-    display grid
-    grid-template-columns repeat(auto-fill, minmax(17rem, 17rem))
-    justify-content center
-    align-content start
-    justify-items center
-    align-items start
-    grid-gap 2rem
-    padding-bottom 3rem
-
 .about_cg
     padding-top 155px
+    padding-bottom 1rem
     padding-left 12vw
     padding-right 12vw
     display grid
@@ -6526,29 +6577,53 @@ strong
     padding-right 0
     text-align left
     color dark_2
-    padding-bottom calc(1rem + 1vh)
+    // padding-bottom calc(1rem + 1vh)
+
+// .profile_card
+//     display grid
+//     grid-template-columns 1fr
+//     grid-template-rows auto
+//     align-content start
+//     // margin-top 2rem
+//     background-color white
+//     margin-bottom 1.618rem
+//     border .5px solid clr_grey_light
 
 .profile_card_link
-    display flex
-    flex-direction column
-    justify-content space-between
-    // background-color bg_dark_3
-    // border solid .5px bg_dark_4
-    width 100%
-    // height auto
-    min-height max-content
-    max-height max-content
-    // margin-bottom 1rem
-    // margin-top 1rem
-    // border 1px solid #eeeeee
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows auto
+    align-content start
+    // margin-top 2rem
+    background-color white
+    // margin-bottom 1.618rem
+    border .5px solid clr_grey_light
+    box-shadow 0px 3px 14px rgba(0, 0, 0, 0.1)
+    border-radius 10px
+    // grid vertikaalne jaotus:
+    align-content space-between
+    padding 1.681rem 1.681rem 1.2rem 1.681rem
+    // display flex
+    // flex-direction column
+    // justify-content space-between
+    // // background-color bg_dark_3
+    // // border solid .5px bg_dark_4
+    // width 100%
+    // // height auto
+    // min-height max-content
+    // max-height max-content
+    // // margin-bottom 1rem
+    // // margin-top 1rem
+    // // border 1px solid #eeeeee
 
-    // .profile_card_link
-        // display grid
+    // // .profile_card_link
+    //     // display grid
 
 .profile_body
     min-height min-content
     max-height max-content
-    padding 0 1rem 1rem 1rem
+    padding 0
+    padding-top 1rem
     font-size 1rem
     line-height 1.2rem
     a
@@ -6559,11 +6634,11 @@ strong
         line-height 1.2rem
         color dark_1
     h4
-        color dark_1
+        color dark_2
 
 .profile_img
-    padding 20px
-    padding-bottom 1rem
+    // padding 20px
+    // padding-bottom 1rem
 
 .actor_img_cg
     width: 100%
@@ -6572,13 +6647,13 @@ strong
     object-fit cover
 
 .person_img_cg
-    width: 60%
+    width: 50%
     border-radius 57% 43% 57% 43%
     aspect-ratio 1 / 1
     object-fit cover
 
 .organisation_img_cg
-    width 60%
+    width 50%
     aspect-ratio 1 / 1
     object-fit contain
 
@@ -6605,18 +6680,23 @@ strong
     color dark_2
 
 .profile_footer
-    padding 0 1rem
+    // padding 0 1rem
     align-self end
+    display grid
+    align-content end
 
     .profile_service_size
         font-family font_h
         font-size 1rem !important
+        line-height 1.618rem
         color #12827e !important
         font-weight 300
         margin-bottom 0
 
     .profile_card_location
-        font-family font_c
-        font-size 1.1rem
+        font-family font_h
+        font-size 1rem !important
+        line-height 1.618rem
+        color dark_2 !important
         text-align left
-        color dark_2
+        margin-bottom 0

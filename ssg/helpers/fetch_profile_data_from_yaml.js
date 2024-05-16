@@ -25,6 +25,8 @@ if (DOMAIN !== 'industry.poff.ee') {
         'indent': '4'
     })
     fs.writeFileSync(path.join(fetchDir, `profiles.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_persons.en.yaml`), emptyYAML, 'utf8')
 } else {
     let activeOrganisations = getActiveOrganisations()
     let activePersons = getActivePersons()
@@ -191,7 +193,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profile.dateOfBirth,
             profile.profession,
             profile.webpage_url,
-            profile.homepageUrl,
+            profile.webpage_url,
             profile.bio,
             profile.description,
             profile.skills,

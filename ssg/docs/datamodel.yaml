@@ -656,7 +656,7 @@ Organisation: &Organisation
     logoWhite: *StrapiMedia
     logoBlack: *StrapiMedia
     logoColour: *StrapiMedia
-    homepageUrl: (text)
+    webpage_url: (text)
     awardings:
         - *Awarding
     festival_editions:

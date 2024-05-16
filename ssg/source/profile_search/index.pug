@@ -8,7 +8,7 @@ block content
             .text_right
                 h3.about_cg_title.text_right= "Creative Gate"
 
-            .person_info_c.text_left
+            .c_intro.text_left
                 | Your shortcut to the Estonian film industry.
                 | Explore the services, industry professionals and talents for your next film project!
 
@@ -49,12 +49,13 @@ block content
         if self.data.profiles && self.data.profiles.length
             - var profilesCount = self.data.profiles.length
             .listLength
-                span.listLengthText= "showing "
+                span.listLengthText= self.label.userprofile.cgProfilesCount1
                 span.listLengthText.bold#listLengthCount= profilesCount
-                span.listLengthText= " services, creative professionals and actors"
+                span.listLengthText= self.label.userprofile.cgProfilesCount2
 
-            //- section.profile_list
-            section.sub_team
+            //- section.sub_team
+            section.profile_list
+
                 each profile in self.data.profiles
                     if profile.slug
 
@@ -69,7 +70,7 @@ block content
                                     else if profile.picture
                                         - var profilePic = `${assetsDir}${profile.picture.hash}${profile.picture.ext}`
                                     else
-                                        - var profilePic ='/assets/img/static/hunt_square_placeholder.jpg'
+                                        - var profilePic ='/assets/img/static/cg_placeholder.svg'
 
                                     .profile_head
 
@@ -97,7 +98,11 @@ block content
                                             p.profile_service_size= profile.serviceSize
 
                                         if profile.cardLocation
-                                            p.profile_card_location= profile.cardLocation
+                                            div
+                                                svg.svg_icon_small_dark_2(viewBox='0 0 24 24' width='24' height='24' stroke='black' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                                    path(d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z')
+                                                    circle(cx='12' cy='10' r='3')
+                                                span.profile_card_location= profile.cardLocation
 
                 script.
                         var searcharray = !{JSON.stringify(self.data.search)}
