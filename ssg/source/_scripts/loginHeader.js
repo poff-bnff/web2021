@@ -108,7 +108,9 @@ const requireLogin = () => {
     if (isUserTokenValid()) {
         return true
     }
-    const loginUrl = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+    var redirect_uri = new URL(window.location.href)
+    redirect_uri.searchParams.set('jwt','')
+    const loginUrl = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString())
     window.open(loginUrl, '_self')
 }
 
@@ -116,7 +118,9 @@ const requireEventivalLogin = () => {
     if (isUserTokenValid()) {
         return true
     }
-    const loginUrl = huntAuthDomain + '/?provider=eventival&redirect_uri=' + window.location.href + '?jwt='
+    var redirect_uri = new URL(window.location.href)
+    redirect_uri.searchParams.set('jwt','')
+    const loginUrl = huntAuthDomain + '/?provider=eventival&redirect_uri=' + encodeURIComponent(redirect_uri.toString())
     window.open(loginUrl, '_self')
 }
 
@@ -352,4 +356,3 @@ document.addEventListener('userProfileLoaded', function (e) {
     //       remove it from other places one by one
     useUserData()
 })
-
