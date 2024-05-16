@@ -61,7 +61,9 @@ header
                         li#logIn(style={cursor: 'pointer', display: 'none'})
                             a#oauthLink= self.label.menu.mainLogin
                             script.
-                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + window.location.href + '?jwt='
+                                var redirect_uri = new URL(window.location.href)
+                                redirect_uri.searchParams.set('jwt','')
+                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString())
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         //- li#logInName.dark_1(style={display: 'none'})
@@ -102,4 +104,3 @@ header
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
-
