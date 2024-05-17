@@ -29,7 +29,7 @@ block content
                                     option(value=key)= index
 
                         select#location_select(name='Location')
-                            option(value='')= self.label.filters.laocation
+                            option(value='')= self.label.filters.location
                             if self.data.filters.location
                                 each index, key in self.data.filters.location
                                     option(value=key)= index
