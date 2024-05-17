@@ -5347,14 +5347,13 @@ a:hover > .login_headline
         // gap 3rem
         grid-template-columns 1fr 1fr
         grid-template-rows auto
-        grid-template-areas "c_profile_img_box c_profile_img_box"\
-                            "c_title_box       c_img_box"\
+        grid-template-areas "c_title_box       c_img_box"\
                             "c_info_box        c_info_box"\
                             "c_description_box c_description_box"\
                             "c_featured_box    c_featured_box"\
                             "c_media_box       c_filmography_box"\
                             "c_gallery_box     c_gallery_box"
-
+        // "c_profile_img_box c_profile_img_box"\
         // padding-top header_height + 25vw
         padding-top 130px
         padding-bottom 6rem
@@ -5380,7 +5379,7 @@ a:hover > .login_headline
 
     .c_description_box
         grid-area c_description_box
-        width 100vw
+        width 100%
         display flex
         flex-direction column
         // align-items center
