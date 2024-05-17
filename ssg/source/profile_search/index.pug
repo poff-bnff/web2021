@@ -29,19 +29,19 @@ block content
                                     option(value=key)= index
 
                         select#location_select(name='Location')
-                            option(value='')= "Location"
+                            option(value='')= self.label.filters.laocation
                             if self.data.filters.location
                                 each index, key in self.data.filters.location
                                     option(value=key)= index
 
                         select#languages_select(name='Languages')
-                            option(value='')= "Languages"
+                            option(value='')= self.label.filters.languages
                             if self.data.filters.languages
                                 each index, key in self.data.filters.languages
                                     option(value=key)= index
 
                         select#lookingfor_select(name='Profiles looking for')
-                            option(value='')= "Profiles looking for"
+                            option(value='')= self.label.filters.lookingFor
                             if self.data.filters.lookingfor
                                 each index, key in self.data.filters.lookingfor
                                     option(value=key)= index
