@@ -15,6 +15,7 @@ const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPathOrg = path.join(sourceDir, '_allStrapidata', 'Organisation.yaml');
 const strapiDataPathPerson = path.join(sourceDir, '_allStrapidata', 'Person.yaml');
+const strapiDataPathServiceCategory = path.join(sourceDir, '_allStrapidata', 'ServiceCategory.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const SHORT_DESC_LENGTH = 100
 const DATALIMIT = parseInt(process.env['ORGANISATIONLIMIT']) || 0
@@ -25,8 +26,8 @@ if (DOMAIN !== 'industry.poff.ee') {
         'indent': '4'
     })
     fs.writeFileSync(path.join(fetchDir, `profiles.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `search_persons.en.yaml`), emptyYAML, 'utf8')
-    fs.writeFileSync(path.join(fetchDir, `filters_persons.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `search_profiles.en.yaml`), emptyYAML, 'utf8')
+    fs.writeFileSync(path.join(fetchDir, `filters_profiles.en.yaml`), emptyYAML, 'utf8')
 } else {
     let activeOrganisations = getActiveOrganisations()
     let activePersons = getActivePersons()
@@ -68,7 +69,7 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             person.profileType = isActor(person) ? "Actor" : "Person"
 
-            person.serviceSize = "Freelancer"
+            person.serviceSize = !isActor(person) ? "Freelancer" : ""
 
             person.shortDescription = person.bio ? person.bio.substr(0, SHORT_DESC_LENGTH) + "...": ""
 
@@ -184,7 +185,12 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: {},
         languages: {},
         lookingfor: {},
+        profiletype: {},
+        servicesize: {},
+        profilecategories: {},
     };
+
+    let serviceCategories = getServiceCategories();
 
     const profiles_search = profiles.map(profile => {
         let searchText = [
@@ -210,6 +216,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
 
 
         let roleatfilms = [];
+        let profilecategories = [];
         for (const role of (profile.role_at_films || [])
             .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
             || []) {
@@ -217,6 +224,13 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             searchText.push(roleName);
             roleatfilms.push(roleName);
             filters.roleatfilms[roleName] = roleName;
+            for (const service of serviceCategories){
+                if (service.role_at_films.some(el => el.id === role.id)){
+                    const serviceName = service.name_en;
+                    profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : "";
+                    filters.profilecategories[serviceName] = {id: service.id, serviceName: serviceName, svg: service.svgMedia};
+                }
+            }
         }
 
         let location = [];
@@ -266,6 +280,19 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             }
         }
 
+        filters.profiletype["actors"] = "actors"
+        filters.profiletype["services"] = "services"
+        let profiletype = [];
+        profiletype.push(profile.profileType === "Actor" ? "actors" : "services");
+
+        let servicesize = []
+        if (profile.serviceSize){
+            servicesize.push(profile.serviceSize);
+            filters.servicesize[profile.serviceSize] = profile.serviceSize
+        }
+
+
+
         return {
             id: profile.uniqueId,
             text: searchText.filter(elm => elm).join(' ').toLowerCase(),
@@ -273,6 +300,9 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             location: location,
             languages: languages,
             lookingfor: lookingfor,
+            profiletype: profiletype,
+            servicesize: servicesize,
+            profilecategories: profilecategories,
         };
     });
 
@@ -281,6 +311,9 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: mSort(filters.location),
         languages: mSort(filters.languages),
         lookingfor: mSort(filters.lookingfor),
+        profiletype: mSort(filters.lookingfor),
+        servicesize: mSort(filters.servicesize),
+        profilecategories: filters.profilecategories,
     };
 
     let searchYAML = yaml.dump(profiles_search, { 'noRefs': true, 'indent': '4' });
@@ -288,6 +321,24 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
 
     let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `filters_profiles.${lang}.yaml`), filtersYAML, 'utf8');
+}
+
+function getServiceCategories() {
+    const STRAPIDATA_SERVICECATEGORIES = yaml.load(fs.readFileSync(strapiDataPathServiceCategory, 'utf8'))
+
+    const minimodel = {
+        'role_at_films': {
+            model_name: 'RoleAtFilm'
+        },
+        'svgMedia': {
+            model_name: 'StrapiMedia'
+        }
+    }
+    console.log(`Fetching ${DOMAIN} serviceCategory data`)
+    const STRAPIDATA_ALL_SERVICECATEGORIES = fetchModel(STRAPIDATA_SERVICECATEGORIES, minimodel)
+    console.log(`Fetched ${STRAPIDATA_ALL_SERVICECATEGORIES.length} ${DOMAIN} serviceCategory data`)
+
+    return STRAPIDATA_ALL_SERVICECATEGORIES
 }
 
 function getCardLocation(address) {
