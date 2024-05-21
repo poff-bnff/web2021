@@ -225,7 +225,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             roleatfilms.push(roleName);
             filters.roleatfilms[roleName] = roleName;
             for (const service of serviceCategories){
-                if (service.role_at_films.some(el => el.id === role.id)){
+                if (service.role_at_films && service.role_at_films.some(el => el.id === role.id)){
                     const serviceName = service.name_en;
                     profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : "";
                     filters.profilecategories[serviceName] = {id: service.id, serviceName: serviceName, svg: service.svgMedia};
