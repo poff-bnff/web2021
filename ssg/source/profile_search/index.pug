@@ -12,10 +12,30 @@ block content
                 | Your shortcut to the Estonian film industry.
                 | Explore the services, industry professionals and talents for your next film project!
 
+        section.profile_type_select(style='display: none;')
+            label.profile_type_selection(style='display: grid;')
+                input(class="profile-type-input" type="radio", name="profileType", value='services' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                span.profile_type_name= "SERVICES & CREATIVE PROFESSIONALS"
+
+            label.profile_type_selection(style='display: grid;')
+                input(class="profile-type-input" type="radio", name="profileType", value='actors' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                span.profile_type_name= "ACTORS"
+
         section.grid_search.search_profiles
             h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
             #filters(style='display: none;')
                 .profiles_filter_box
+                    section.service_category_list
+                        each service, key in self.data.filters.profilecategories
+                            label.service_select
+                                input(class="service-category-input" type="checkbox", name="selectedServiceCategories", value=key style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox; display: none;')
+                                .service_select_box
+                                    - var serviceIcon = `${assetsDir}${service.svg.hash}${service.svg.ext}`
+                                    img.service_img(src=serviceIcon loading="lazy" alt=`${service.serviceName}`)
+                                    span.service_name= service.serviceName
+
+
+
                     section.search_area
                         input#search(type='text', placeholder= self.label.filters.search)
 
@@ -45,6 +65,13 @@ block content
                             if self.data.filters.lookingfor
                                 each index, key in self.data.filters.lookingfor
                                     option(value=key)= index
+
+                    section.service_size_filter
+                        p.filter_title= "Company size"
+                        each size, key in self.data.filters.servicesize
+                            span.size_option
+                                input(class="size_option_value" id=key type="checkbox", name="selectedServiceSize", value=size style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox;')
+                                label.size_option_label(for=key)= size
 
         if self.data.profiles && self.data.profiles.length
             - var profilesCount = self.data.profiles.length
