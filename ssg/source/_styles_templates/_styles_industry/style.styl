@@ -6521,6 +6521,66 @@ strong
         width clamp(6rem, 18rem, 80vw)
         margin 5px
 
+    .service_select
+        padding 20px
+        cursor pointer
+
+        .service_img
+            width 2rem
+            height 2rem
+            display block
+            margin-left auto
+            margin-right auto
+
+        .service_name
+            font-family font_h
+            font-size 1rem !important
+            line-height 1.618rem
+            color dark_2 !important
+            text-align center
+            margin-left auto
+            margin-right auto
+            margin-bottom 0
+            display block
+
+    .service_select input[type="checkbox"]:checked + .service_select_box
+        background-color #12827e
+        color #fff
+
+    .service_select input[type="checkbox"][disabled] + .service_select_box
+        opacity 0.3
+        pointer-events none
+
+    .service_size_filter
+        padding-top 30px
+
+        .filter_title
+            font-weight 600
+
+        .size_option
+            padding-right 30px
+            cursor pointer
+
+            .size_option_value
+                width fit-content
+                min-width fit-content
+                height fit-content
+
+            .size_option_label
+                font-family font_h
+                font-size 1rem !important
+                line-height 1.618rem
+                color dark_2 !important
+                text-align center
+                margin-left auto
+                margin-right auto
+                margin-bottom 0
+                padding-left 10px
+
+        .size_option input[type="checkbox"][disabled] + .size_option_label
+            opacity 0.3
+            pointer-events none
+
 .filter_loader
   font-family font_h
   font-size calc(1.618rem + 1.618vw)
