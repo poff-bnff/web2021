@@ -48,7 +48,7 @@ block content
                     .organisation_name= self.name
 
                     if self.role_at_films
-                        .person_info_c= self.role_at_films.map(role_at_films => role_at_films.roleName).join(', ')
+                        .profile_roles_c= self.role_at_films.map(role_at_films => role_at_films.roleName).join(', ')
 
                     section.accounts_box
                         //- .f_cred_box.bg_dark_3
@@ -294,7 +294,8 @@ block content
                         if self.webpage_url
                             .str_info_grid_3
                                 .c_info_label= "www"
-                                .c_info_value= self.webpage_url
+                                a.c_info_value(href=self.webpage_url target="_BLANK")= self.name
+                                //- a.c_info_value(href= self.acc_etalenta target="_BLANK" title="ETalenta account")
 
                 //- ONGOING PROJECTS
                 //- if self.filmographies
