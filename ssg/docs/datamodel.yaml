@@ -334,6 +334,7 @@ ServiceCategory: &ServiceCategory
     svgCode: (text)
     svgMedia: *StrapiMedia #(Component)
     order: (Number)
+    is_main_cat: (boolean)
 
 
 TagAgeRestriction: &TagAgeRestriction
