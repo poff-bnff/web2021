@@ -108,6 +108,10 @@ industry_organisation_in_editions:
 
 actor_roles: [76]
 
+main_service_categories:
+    services: 15
+    actors: 16
+
 
 target_build_models:
     - cassette
