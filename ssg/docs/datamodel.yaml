@@ -1536,7 +1536,7 @@ Person: &Person
     ev_img_url: text
     addr_coll: *Address
     # addr_comp: vist ei kasuta
-    hair_lenght: *HairLength
+    hair_length: *HairLength
     native_lang: *Language
     # languages: #kadunud v4li, kas oli info sees?
     #     - *Language

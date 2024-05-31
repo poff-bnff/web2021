@@ -6485,6 +6485,32 @@ strong
     margin-bottom 3rem
 
 // Profile Search Specific
+.profile_type_select
+    display grid
+    grid-template-columns 1fr 1fr
+    color black
+    width fit-content
+    margin auto
+
+    .profile_type_selection
+        display grid
+        margin auto
+
+        .type_selection_box
+            padding-bottom 10px
+
+            .profile_type_svg
+                font-size 36px !important
+
+                svg
+                    font-size 36px !important
+
+            .profile_type_name
+                font-size 28px !important
+                padding-left 1rem
+
+    .profile_type_selection input[type="radio"]:checked + .type_selection_box
+        border-bottom 3px solid #12827e
 
 .search_profiles
     background-color #F7F7F8
@@ -6500,6 +6526,7 @@ strong
     grid-template-rows: auto;
     padding-left 2rem
     padding-right 2rem
+    margin-top 0
     select
         // max-width unset
         width clamp(12rem, 25rem, 80vw)
@@ -6516,6 +6543,28 @@ strong
             width clamp(12rem, 25rem, 80vw)
             max-width none
             margin 5px
+
+    .range_filters
+        display flex
+        padding 5px
+
+        .acting_range_box
+            padding-right 20px
+
+            .range_title
+                margin-bottom 0
+
+            .range_divider
+                padding 10px
+                color black
+
+            .range_input
+                max-width 120px
+                min-width 120px
+                width 120px
+
+    .main_filters
+        width 1000px
 
     .main_filters select
         width clamp(6rem, 18rem, 80vw)
