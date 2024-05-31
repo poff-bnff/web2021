@@ -4,22 +4,25 @@ include /_templates/mixins.pug
 block content
     if self.data.profiles && process.env['DOMAIN'] === 'industry.poff.ee'
         section.about_cg
-            //- .about_cg_box
             .text_right
                 h3.about_cg_title.text_right= "Creative Gate"
 
             .c_intro.text_left
                 | Your shortcut to the Estonian film industry.
                 | Explore the services, industry professionals and talents for your next film project!
+        section.profile_type_select
+            if self.data.filters.maincategories && self.data.filters.maincategories.services && self.data.filters.maincategories.actors
+                label.profile_type_selection
+                    input(class="profile-type-input" type="radio", name="profileType", value='services' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                    .type_selection_box
+                        span.profile_type_svg !{self.data.filters.maincategories.services.svg}
+                        span.profile_type_name= self.data.filters.maincategories.services.serviceName
 
-        section.profile_type_select(style='display: none;')
-            label.profile_type_selection(style='display: grid;')
-                input(class="profile-type-input" type="radio", name="profileType", value='services' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
-                span.profile_type_name= "SERVICES & CREATIVE PROFESSIONALS"
-
-            label.profile_type_selection(style='display: grid;')
-                input(class="profile-type-input" type="radio", name="profileType", value='actors' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
-                span.profile_type_name= "ACTORS"
+                label.profile_type_selection
+                    input(class="profile-type-input" type="radio", name="profileType", value='actors' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                    .type_selection_box
+                        span.profile_type_svg !{self.data.filters.maincategories.actors.svg}
+                        span.profile_type_name= self.data.filters.maincategories.actors.serviceName
 
         section.grid_search.search_profiles
             h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
@@ -41,6 +44,25 @@ block content
 
                         button.clear(onclick='clear_all()')= self.label.filters.empty
 
+                    section.range_filters#range_filters
+                        .acting_range_box
+                            p.range_title= "Acting age"
+                            input(class="range_input" type="number" id="actingAgeFrom" name="actingAgeRange" min="1" max="999")
+                            span.range_divider= "-"
+                            input(class="range_input" type="number" id="actingAgeTo" name="actingAgeRange" min="1" max="999")
+
+                        .acting_range_box
+                            p.range_title= "Height (cm)"
+                            input(class="range_input" type="number" id="actingHeightFrom" name="actingHeightRange" min="1" max="999")
+                            span.range_divider= "-"
+                            input(class="range_input" type="number" id="actingHeightTo" name="actingHeightRange" min="1" max="999")
+
+                        .acting_range_box
+                            p.range_title= "Weight (kg)"
+                            input(class="range_input" type="number" id="actingWeightFrom" name="actingWeightRange" min="1" max="999")
+                            span.range_divider= "-"
+                            input(class="range_input" type="number" id="actingWeightTo" name="actingWeightRange" min="1" max="999")
+
                     section.main_filters
                         select#roleatfilms_select(name='Roleatfilms')
                             option(value='')= self.label.filters.roleAtFilms
@@ -49,29 +71,78 @@ block content
                                     option(value=key)= index
 
                         select#location_select(name='Location')
-                            option(value='')= "Location"
+                            option(value='')= self.label.filters.location
                             if self.data.filters.location
                                 each index, key in self.data.filters.location
                                     option(value=key)= index
 
                         select#languages_select(name='Languages')
-                            option(value='')= "Languages"
+                            option(value='')= self.label.filters.languages
                             if self.data.filters.languages
                                 each index, key in self.data.filters.languages
                                     option(value=key)= index
 
+                        select#nativelangs_select(name='NativeLangs')
+                            option(value='')= self.label.filters.nativeLanguage
+                            if self.data.filters.nativelangs
+                                each index, key in self.data.filters.nativelangs
+                                    option(value=key)= index
+
+                        select#otherlangs_select(name='OtherLangs')
+                            option(value='')= self.label.filters.otherLanguage
+                            if self.data.filters.otherlangs
+                                each index, key in self.data.filters.otherlangs
+                                    option(value=key)= index
+
                         select#lookingfor_select(name='Profiles looking for')
-                            option(value='')= "Profiles looking for"
+                            option(value='')= self.label.filters.lookingFor
                             if self.data.filters.lookingfor
                                 each index, key in self.data.filters.lookingfor
                                     option(value=key)= index
 
+                        select#genders_select(name='Gender')
+                            option(value='')= self.label.filters.gender
+                            if self.data.filters.genders
+                                each index, key in self.data.filters.genders
+                                    option(value=key)= index
+
+                        select#statures_select(name='Stature')
+                            option(value='')= 'Stature'
+                            if self.data.filters.statures
+                                each index, key in self.data.filters.statures
+                                    option(value=key)= index
+
+                        select#eyecolours_select(name='EyeColour')
+                            option(value='')= 'Eye colour'
+                            if self.data.filters.eyecolours
+                                each index, key in self.data.filters.eyecolours
+                                    option(value=key)= index
+
+                        select#haircolours_select(name='HairColour')
+                            option(value='')= 'Hair colour'
+                            if self.data.filters.haircolours
+                                each index, key in self.data.filters.haircolours
+                                    option(value=key)= index
+
+                        select#hairlengths_select(name='HairLength')
+                            option(value='')= 'Hair length'
+                            if self.data.filters.hairlengths
+                                each index, key in self.data.filters.hairlengths
+                                    option(value=key)= index
+
+                        select#pitches_select(name='Pitchofvoice')
+                            option(value='')= 'Pitch of voice'
+                            if self.data.filters.pitches
+                                each index, key in self.data.filters.pitches
+                                    option(value=key)= index
+
                     section.service_size_filter
-                        p.filter_title= "Company size"
-                        each size, key in self.data.filters.servicesize
-                            span.size_option
-                                input(class="size_option_value" id=key type="checkbox", name="selectedServiceSize", value=size style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox;')
-                                label.size_option_label(for=key)= size
+                        #servicesize_select
+                            p.filter_title= "Company size"
+                            each size, key in self.data.filters.servicesize
+                                span.size_option
+                                    input(class="size_option_value" id=key type="checkbox", name="selectedServiceSize", value=size style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox;')
+                                    label.size_option_label(for=key)= size
 
         if self.data.profiles && self.data.profiles.length
             - var profilesCount = self.data.profiles.length
@@ -97,7 +168,7 @@ block content
                                     else if profile.picture
                                         - var profilePic = `${assetsDir}${profile.picture.hash}${profile.picture.ext}`
                                     else
-                                        - var profilePic ='/assets/img/static/cg_placeholder.svg'
+                                        - var profilePic ='/assets/img/static/cg_placeholder_grey.svg'
 
                                     .profile_head
 

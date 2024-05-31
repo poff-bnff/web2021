@@ -45,6 +45,9 @@
     },
     "order": {
       "type": "integer"
+    },
+    "is_main_cat": {
+      "type": "boolean"
     }
   }
 }

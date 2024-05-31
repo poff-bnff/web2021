@@ -9,6 +9,7 @@ const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const INDUSTRY_ORGANISATION_IN_EDITIONS = DOMAIN_SPECIFICS.industry_organisation_in_editions
 const INDUSTRY_PERSON_IN_EDITIONS = DOMAIN_SPECIFICS.industry_person_in_editions
+const MAIN_SERVICE_CATEGORIES = DOMAIN_SPECIFICS.main_service_categories
 const ACTOR_ROLES = DOMAIN_SPECIFICS.actor_roles
 
 const sourceDir = path.join(rootDir, 'source');
@@ -179,6 +180,15 @@ function getListProfileData(profile) {
     return listProfileData
 }
 
+function uppercase(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 function generateProfileSearchAndFilterYamls(profiles, lang) {
     let filters = {
         roleatfilms: {},
@@ -188,9 +198,29 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         profiletype: {},
         servicesize: {},
         profilecategories: {},
+        maincategories: {},
+        actorroles: {},
+        nativelangs: {},
+        otherlangs: {},
+        genders: {},
+        statures: {},
+        eyecolours: {},
+        haircolours: {},
+        hairlengths: {},
+        pitches: {},
     };
 
+    filters.profiletype["actors"] = "actors"
+    filters.profiletype["services"] = "services"
+
     let serviceCategories = getServiceCategories();
+
+    for (const main of serviceCategories){
+        let isMain = getKeyByValue(MAIN_SERVICE_CATEGORIES, main.id);
+        if(isMain){
+            filters.maincategories[isMain] = {id: main.id, serviceName: main.name_en, svg: main.svgCode};
+        }
+    }
 
     const profiles_search = profiles.map(profile => {
         let searchText = [
@@ -224,11 +254,16 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             searchText.push(roleName);
             roleatfilms.push(roleName);
             filters.roleatfilms[roleName] = roleName;
+            if(ACTOR_ROLES.includes(role.id)){
+                filters.actorroles[roleName] = roleName;
+            }
             for (const service of serviceCategories){
-                if (service.role_at_films.some(el => el.id === role.id)){
-                    const serviceName = service.name_en;
-                    profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : "";
-                    filters.profilecategories[serviceName] = {id: service.id, serviceName: serviceName, svg: service.svgMedia};
+                if(!service.is_main_cat || service.is_main_cat != true){
+                    if (service.role_at_films && service.role_at_films.some(el => el.id === role.id)){
+                        const serviceName = service.name_en;
+                        profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : "";
+                        filters.profilecategories[serviceName] = {id: service.id, serviceName: serviceName, svg: service.svgMedia};
+                    }
                 }
             }
         }
@@ -257,6 +292,8 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         }
 
         let languages = [];
+        let nativelangs = [];
+        let otherlangs = [];
         if (profile.profileType === "Organisation") {
             if (profile.languages) {
                 for (const lang of profile.languages) {
@@ -265,23 +302,24 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
                 }
             }
         }
-
         else if (profile.profileType === "Actor" || profile.profileType === "Person") {
             if (profile.native_lang) {
                 languages.push(profile.native_lang.name)
                 filters.languages[profile.native_lang.name] = profile.native_lang.name;
+                nativelangs.push(profile.native_lang.name)
+                filters.nativelangs[profile.native_lang.name] = profile.native_lang.name;
             }
 
             if (profile.other_lang) {
                 for (const olang of profile.other_lang) {
                     languages.push(olang.name);
                     filters.languages[olang.name] = olang.name
+                    otherlangs.push(olang.name);
+                    filters.otherlangs[olang.name] = olang.name
                 }
             }
         }
 
-        filters.profiletype["actors"] = "actors"
-        filters.profiletype["services"] = "services"
         let profiletype = [];
         profiletype.push(profile.profileType === "Actor" ? "actors" : "services");
 
@@ -291,7 +329,66 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             filters.servicesize[profile.serviceSize] = profile.serviceSize
         }
 
+        let genders = [];
+        if (typeof profile.gender !== 'undefined') {
+            genders.push(profile.gender);
+            filters.genders[profile.gender] = profile.gender;
+        }
 
+        let statures = [];
+        if (profile.stature) {
+            let statureName = uppercase(profile.stature.name);
+            statures.push(statureName);
+            filters.statures[statureName] = statureName;
+        }
+
+        let eyecolours = [];
+        if (profile.eye_colour) {
+            let eyeColour = uppercase(profile.eye_colour.name)
+            eyecolours.push(eyeColour);
+            filters.eyecolours[eyeColour] = eyeColour;
+        }
+
+        let haircolours = [];
+        if (profile.hair_colour) {
+            let hairColour = uppercase(profile.hair_colour.name)
+            haircolours.push(hairColour);
+            filters.haircolours[hairColour] = hairColour;
+        }
+
+        let hairlengths = [];
+        if (profile.hair_length) {
+            let hairLength = uppercase(profile.hair_length.name)
+            hairlengths.push(hairLength);
+            filters.hairlengths[hairLength] = hairLength;
+        }
+
+        let pitches = [];
+        if (profile.pitch_of_voice) {
+            let pitchName = uppercase(profile.pitch_of_voice.name)
+            pitches.push(pitchName);
+            filters.pitches[pitchName] = pitchName;
+        }
+
+        let profileheight = '';
+        if (profile.height_cm) {
+            profileheight = profile.height_cm;
+        }
+
+        let profileweight = '';
+        if (profile.weight_kg) {
+            profileweight = profile.weight_kg;
+        }
+
+        let agefrom = '';
+        if (profile.acting_age_from) {
+            agefrom = profile.acting_age_from;
+        }
+
+        let ageto = '';
+        if (profile.acting_age_to) {
+            ageto = profile.acting_age_to;
+        }
 
         return {
             id: profile.uniqueId,
@@ -303,6 +400,19 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profiletype: profiletype,
             servicesize: servicesize,
             profilecategories: profilecategories,
+            nativelangs: nativelangs,
+            otherlangs: otherlangs,
+            genders: genders,
+            statures: statures,
+            eyecolours: eyecolours,
+            haircolours: haircolours,
+            hairlengths: hairlengths,
+            pitches: pitches,
+            profileheight: profileheight,
+            profileweight: profileweight,
+            agefrom: agefrom,
+            ageto: ageto,
+
         };
     });
 
@@ -314,6 +424,16 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         profiletype: mSort(filters.lookingfor),
         servicesize: mSort(filters.servicesize),
         profilecategories: filters.profilecategories,
+        maincategories: filters.maincategories,
+        actorroles: filters.actorroles,
+        nativelangs: mSort(filters.nativelangs),
+        otherlangs: mSort(filters.otherlangs),
+        genders: mSort(filters.genders),
+        statures: mSort(filters.statures),
+        eyecolours: mSort(filters.eyecolours),
+        haircolours: mSort(filters.haircolours),
+        hairlengths: mSort(filters.hairlengths),
+        pitches: mSort(filters.pitches),
     };
 
     let searchYAML = yaml.dump(profiles_search, { 'noRefs': true, 'indent': '4' });
@@ -403,6 +523,9 @@ function getActivePersons() {
         },
         'hair_colour': {
             model_name: 'HairColour'
+        },
+        'hair_length': {
+            model_name: 'HairLength'
         },
         'shoe_size': {
             model_name: 'ShoeSize'
