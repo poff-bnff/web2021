@@ -460,6 +460,10 @@ EyeColour: &EyeColour
     name_en: text
     name_ru: text
 
+OrderedRaF: &OrderedRaF
+    order: (Number)
+    country: *RoleAtFilm
+
 Filmography: &Filmography
     _path: /filmographies
     type_of_work: *TypeOfWork
@@ -710,6 +714,8 @@ Organisation: &Organisation
     contact_name: text
     languages:
         - *Language
+    orderedRaF: #(Component (repeatable))
+        - *OrderedRaF
 
 
 
@@ -1586,6 +1592,8 @@ Person: &Person
         - *Organisation
     h_rate_from: number
     h_rate_to: number
+    orderedRaF: #(Component (repeatable))
+        - *OrderedRaF
 
 TeamMember: &TeamMember
     person: *Person #(Component)
