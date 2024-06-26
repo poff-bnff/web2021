@@ -2492,6 +2492,9 @@
               "acc_vimeo": {
                 "type": "string"
               },
+              "orderedRaF": {
+                "type": "component"
+              },
               "created_by": {
                 "type": "string"
               },

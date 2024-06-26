@@ -284,6 +284,11 @@
     },
     "acc_vimeo": {
       "type": "string"
+    },
+    "orderedRaF": {
+      "type": "component",
+      "repeatable": true,
+      "component": "credentials.ordered-ra-f"
     }
   }
 }
