@@ -231,6 +231,11 @@
     },
     "languages": {
       "collection": "language"
+    },
+    "orderedRaF": {
+      "type": "component",
+      "repeatable": true,
+      "component": "credentials.ordered-ra-f"
     }
   }
 }
