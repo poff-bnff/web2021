@@ -101,7 +101,6 @@ ask_cassette_limit()
 build()
 {
     SECONDS=0
-    sh ./acty_env.sh
     export DOMAIN=$site_name
     export CASSETTELIMIT=$limit_number
 

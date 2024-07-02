@@ -101,7 +101,6 @@ ask_limiter()
 build()
 {
     SECONDS=0
-    sh ./acty_env.sh
     export DOMAIN=$site_name
     export CASSETTELIMIT=$limit_number
     export ARTICLELIMIT=$limit_number
