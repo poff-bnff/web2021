@@ -41,7 +41,7 @@ ask_what_to_serve()
 serve()
 {
     SECONDS=0
-
+    sh ./acty_env.sh
     export DOMAIN=$site_name
 
 
