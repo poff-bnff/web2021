@@ -100,7 +100,6 @@ ask_if_simplify_build()
 build()
 {
     SECONDS=0
-    sh ./acty_env.sh
     export DOMAIN=$site_name
 
     node ./helpers/initialise_entu_ssg.js
