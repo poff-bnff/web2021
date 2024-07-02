@@ -101,6 +101,8 @@ header
 
     - var widget_id = "20457"
 
+    if process.env['ChatApi']
+        deep-chat(request=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"customName": "customHeaderValue"},"additionalBodyProps": {"field": "value"}}`)
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
