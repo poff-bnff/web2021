@@ -51,6 +51,9 @@ header
     script.
         var langpath = "!{(lang_path)}"
 
+    if process.env['ChatApi']
+        deep-chat(request=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"domainName": "tartuff.ee"}}`)
+
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
 
