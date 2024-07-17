@@ -27,9 +27,9 @@ cassettes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [63, 64, 67, 72, 77, 76]
+    poff.ee: [63, 64, 67, 72, 77, 76, 78]
     shorts.poff.ee: [67] # - 30
-    tartuff.ee: [65]
+    tartuff.ee: [78]
 
 cassettesAndFilmsShowVotemo:
     discoverycampus.poff.ee: false
@@ -57,7 +57,7 @@ programmes_festival_editions:
     oyafond.ee: [31]
     poff.ee: [63, 64, 67, 72]
     shorts.poff.ee: [67]
-    tartuff.ee: [65]
+    tartuff.ee: [78]
 
 active_editions:
     discoverycampus.poff.ee: [50]
