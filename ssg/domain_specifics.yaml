@@ -118,7 +118,7 @@ target_build_models:
     # - film
     # - industry-project
     # - programme
-    - screening
+    # - screening
     - course-event
     - archive
     - article-hero
