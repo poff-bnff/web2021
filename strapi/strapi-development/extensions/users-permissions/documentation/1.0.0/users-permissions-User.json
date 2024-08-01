@@ -3134,6 +3134,15 @@
                   "type": "string"
                 }
               },
+              "organisations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "ok_to_contact": {
+                "type": "boolean"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -3259,6 +3268,15 @@
                     "type": "string"
                   }
                 },
+                "organisations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ok_to_contact": {
+                  "type": "boolean"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -3267,6 +3285,234 @@
                 }
               }
             }
+          },
+          "organisations": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "namePrivate": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "component"
+                },
+                "description": {
+                  "type": "component"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "Production",
+                    "Festival",
+                    "Distributor",
+                    "Unicversity",
+                    "Sponsor",
+                    "Partner",
+                    "Presenter",
+                    "ProductionCompany",
+                    "Accommodation"
+                  ]
+                },
+                "logoWhite": {
+                  "type": "string"
+                },
+                "logoBlack": {
+                  "type": "string"
+                },
+                "logoColour": {
+                  "type": "string"
+                },
+                "webpage_url": {
+                  "type": "string"
+                },
+                "awardings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "festival_editions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "domains": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "profile_img": {
+                  "type": "string"
+                },
+                "role_at_films": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "addr_coll": {
+                  "type": "string"
+                },
+                "showreel": {
+                  "type": "string"
+                },
+                "audioreel": {
+                  "type": "string"
+                },
+                "name_et": {
+                  "type": "string"
+                },
+                "name_en": {
+                  "type": "string"
+                },
+                "name_ru": {
+                  "type": "string"
+                },
+                "description_et": {
+                  "type": "string"
+                },
+                "description_en": {
+                  "type": "string"
+                },
+                "description_ru": {
+                  "type": "string"
+                },
+                "remote_img": {
+                  "type": "component"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "tag_looking_fors": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "looking_for": {
+                  "type": "string"
+                },
+                "phoneNr": {
+                  "type": "string"
+                },
+                "eMail": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "clients": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "filmographies": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "skills_et": {
+                  "type": "string"
+                },
+                "skills_en": {
+                  "type": "string"
+                },
+                "skills_ru": {
+                  "type": "string"
+                },
+                "acc_imdb": {
+                  "type": "string"
+                },
+                "acc_efis": {
+                  "type": "string"
+                },
+                "acc_instagram": {
+                  "type": "string"
+                },
+                "acc_fb": {
+                  "type": "string"
+                },
+                "h_rate_from": {
+                  "type": "integer"
+                },
+                "h_rate_to": {
+                  "type": "integer"
+                },
+                "employees_n": {
+                  "type": "integer"
+                },
+                "slug_et": {
+                  "type": "uid"
+                },
+                "slug_en": {
+                  "type": "uid"
+                },
+                "slug_ru": {
+                  "type": "uid"
+                },
+                "tag_secrets": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "acc_other": {
+                  "type": "string"
+                },
+                "public": {
+                  "type": "boolean"
+                },
+                "contact_name": {
+                  "type": "string"
+                },
+                "acc_youtube": {
+                  "type": "string"
+                },
+                "acc_vimeo": {
+                  "type": "string"
+                },
+                "languages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "orderedRaF": {
+                  "type": "component"
+                },
+                "users": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "ok_to_contact": {
+            "type": "boolean"
           }
         }
       },
@@ -4232,6 +4478,15 @@
             "items": {
               "type": "string"
             }
+          },
+          "organisations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ok_to_contact": {
+            "type": "boolean"
           },
           "created_by": {
             "type": "string"

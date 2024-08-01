@@ -96,8 +96,8 @@
       "via": "owner"
     },
     "transactions": {
-      "via": "transactor",
-      "collection": "transaction"
+      "collection": "transaction",
+      "via": "transactor"
     },
     "user_profile": {
       "model": "user-profiles",
@@ -143,6 +143,14 @@
       "plugin": "users-permissions",
       "collection": "user",
       "via": "mainUser"
+    },
+    "organisations": {
+      "collection": "organisation",
+      "via": "users",
+      "dominant": true
+    },
+    "ok_to_contact": {
+      "type": "boolean"
     }
   }
 }

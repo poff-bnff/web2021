@@ -639,6 +639,15 @@
                     "type": "string"
                   }
                 },
+                "organisations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ok_to_contact": {
+                  "type": "boolean"
+                },
                 "created_by": {
                   "type": "string"
                 },
