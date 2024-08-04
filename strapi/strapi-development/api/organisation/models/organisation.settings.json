@@ -236,6 +236,11 @@
       "type": "component",
       "repeatable": true,
       "component": "credentials.ordered-ra-f"
+    },
+    "users": {
+      "via": "organisations",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }
