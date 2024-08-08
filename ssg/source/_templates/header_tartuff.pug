@@ -52,7 +52,7 @@ header
         var langpath = "!{(lang_path)}"
 
     if process.env['ChatApi']
-        deep-chat(request=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"domainName": "tartuff.ee"}}`)
+        deep-chat(id="chat-element" connect=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"domainName": "tartuff.ee"}}` requestBodyLimits='{"maxMessages": 10}')
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
