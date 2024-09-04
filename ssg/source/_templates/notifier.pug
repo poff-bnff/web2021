@@ -1,0 +1,16 @@
+div#emailChangeSuccess(class='alertMsg' style="background-color: #008000;")= self.label.notifier.emailChangeSuccess
+div#emailChangeSame(class='alertMsg' style="background-color: #ffa500;")= self.label.notifier.emailChangeSame
+div#emailChangeTaken(class='alertMsg' style="background-color: #ff2c2c;")= self.label.notifier.emailChangeTaken
+
+style.
+    .alertMsg {
+        position: fixed;
+        top: 15px;
+        right: 50px;
+        padding: 5px 10px;
+        z-index: 999;
+        text-align: center;
+        border-radius: 12px;
+        font-size: 18px;
+        display: none;
+    }

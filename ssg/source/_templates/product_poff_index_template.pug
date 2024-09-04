@@ -41,6 +41,7 @@ block content
                 button#directToLoginButton.btn.btn_primary(onclick='requireLogin()')= self.label.button.buyProductButLoginFirst
                 button#directToFillProfile.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButProfileFirst
                 button#directToaddPicture.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButPictureFirst
+                button#directToaddEmail.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButEmailFirst
                 div#paymentLinks
                 br
                 div
@@ -59,6 +60,7 @@ block content
         #buybutton {display: none}
         #directToaddPicture {display:none}
         #directToFillProfile {display:none}
+        #directToaddEmail {display:none}
         #paybutton {display: none}
         [type=radio]{
             position: absolute;

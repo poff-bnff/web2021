@@ -5,7 +5,7 @@ html(lang= self.locale)
 
     script.
         const HTTProtocol = "!{process.env['StrapiProtocol']}"
-        const huntAuthPort = (HTTProtocol === 'http') ? `:!{process.env['HuntAuthPort']}` : ''
+        const huntAuthPort = (HTTProtocol === 'http') ? `:!{process.env['HuntAuthPort']}` : ':444'
         const strapiPort = (HTTProtocol === 'http') ? `:!{process.env['StrapiPort']}` : ''
         const huntAuthDomain = `!{process.env['StrapiProtocol']}://!{process.env['HuntAuth']}${huntAuthPort}`
         const strapiDomain = `!{process.env['StrapiProtocol']}://!{process.env['StrapiHost']}${strapiPort}`
@@ -176,3 +176,5 @@ html(lang= self.locale)
     else
         body
             h1 Temporarily in confused state - domain? what domain?
+
+    include ../_templates/notifier.pug
