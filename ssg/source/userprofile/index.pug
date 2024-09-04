@@ -17,9 +17,15 @@ block content
                     div#imgError
                     input.input_file#profileImg(type='file', name='filename', onclick='this.value=null', onchange='onProfilePicChange()', accept='image/*')
                 div.form_group
+                    label.login_label(for='username')= self.label.userprofile.username
+                    div#username.dark(name='username')
+                div.form_group
                     label.login_label(for='email')= self.label.userprofile.email
-                    div#email.dark(name='email')
+                    div
+                        span#email.dark(name='email')
+                        button.btn.btn_primary#changeEmailButton(onclick='changeUserEmail(this)')= self.label.userprofile.changeEmailButton
                     div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
+                    label#validateEmailText= self.label.userprofile.validateEmailBeforeProfileEdit
                 div.form_group
                     label.login_label(for='firstName')= self.label.userprofile.firstName
                     input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}`, name='firstName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
@@ -60,6 +66,8 @@ block content
         #profileSent {color: #495057}
         label {color: #495057}
         #imgError {color: red}
+        #validateEmailText {color: red; display: none}
+        #changeEmailButton {margin-left: 15px;}
 
         #removeProviderWarning{
             display: flex;
