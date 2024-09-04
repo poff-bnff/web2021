@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_film_note_of_roles",
+  "info": {
+    "name": "noteOfRole",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "order": {
+      "type": "integer"
+    },
+    "role_at_films": {
+      "collection": "role-at-film"
+    },
+    "person": {
+      "model": "person"
+    },
+    "note": {
+      "type": "richtext"
+    }
+  }
+}

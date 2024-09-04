@@ -145,6 +145,89 @@
     "is_published": {
       "type": "boolean",
       "default": false
+    },
+    "logline_et": {
+      "type": "richtext"
+    },
+    "logline_en": {
+      "type": "richtext"
+    },
+    "logline_ru": {
+      "type": "richtext"
+    },
+    "lookingFor": {
+      "type": "richtext"
+    },
+    "acc_imdb": {
+      "type": "string"
+    },
+    "acc_efis": {
+      "type": "string"
+    },
+    "acc_instagram": {
+      "type": "string"
+    },
+    "acc_fb": {
+      "type": "string"
+    },
+    "acc_youtube": {
+      "type": "string"
+    },
+    "acc_vimeo": {
+      "type": "string"
+    },
+    "acc_other": {
+      "type": "string"
+    },
+    "completionDate": {
+      "type": "date"
+    },
+    "premiereDate": {
+      "type": "date"
+    },
+    "completionYear": {
+      "type": "integer"
+    },
+    "numOfSeasons": {
+      "type": "integer"
+    },
+    "numOfEpisodes": {
+      "type": "integer"
+    },
+    "budget": {
+      "type": "decimal"
+    },
+    "financed": {
+      "type": "decimal"
+    },
+    "project_types": {
+      "collection": "project-type"
+    },
+    "project_statuses": {
+      "collection": "project-status"
+    },
+    "tag_looking_fors": {
+      "collection": "tag-looking-for"
+    },
+    "country_focus": {
+      "model": "country"
+    },
+    "repr_people": {
+      "collection": "person"
+    },
+    "repr_organisations": {
+      "collection": "organisation"
+    },
+    "notesOfRoles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "film.note-of-role"
+    },
+    "acc_tiktok": {
+      "type": "string"
+    },
+    "acc_x_twitter": {
+      "type": "string"
     }
   }
 }
