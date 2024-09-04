@@ -42,7 +42,7 @@ cassettesAndFilmsShowVotemo:
     oyafond.ee: false
     poff.ee: true
     shorts.poff.ee: false
-    tartuff.ee: false
+    tartuff.ee: true
 
 XML_festival_editions: [76, 77] # - 56 # - 58 # - 29 # - 30 # - 32
 

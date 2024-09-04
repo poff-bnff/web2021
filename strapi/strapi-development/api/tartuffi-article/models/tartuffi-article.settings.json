@@ -14,23 +14,26 @@
   "attributes": {
     "titlePrivate": {
       "type": "string",
-      "private": true
+      "private": true,
+      "required": true
     },
     "title_et": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug_et": {
       "type": "uid",
       "targetField": "title_et",
-      "required": false
+      "required": true
     },
     "title_en": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug_en": {
       "type": "uid",
       "targetField": "title_en",
-      "required": false
+      "required": true
     },
     "title_ru": {
       "type": "string"
