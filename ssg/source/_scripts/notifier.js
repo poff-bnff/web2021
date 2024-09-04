@@ -1,4 +1,4 @@
-window.onload = (event) => {
+window.addEventListener("load", function (event) {
     const url = new URL(window.location.href)
     const notifier = url.searchParams.get('notifier')
     if (notifier !== null && notifier !== undefined && notifier !== '') {
@@ -10,4 +10,4 @@ window.onload = (event) => {
             jQuery("#"+notifier).fadeOut()
         }, 5000);
     }
-};
+})
