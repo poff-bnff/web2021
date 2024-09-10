@@ -27,7 +27,7 @@ cassettes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [63, 64, 67, 72, 77, 76, 78]
+    poff.ee: [73, 75]
     shorts.poff.ee: [67] # - 30
     tartuff.ee: [78]
 
@@ -55,7 +55,7 @@ programmes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [63, 64, 67, 72]
+    poff.ee: [73, 75]
     shorts.poff.ee: [67]
     tartuff.ee: [78]
 
