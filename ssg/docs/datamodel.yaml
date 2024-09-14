@@ -1704,6 +1704,12 @@ Credentials: &Credentials
     roleCompany: #(Component (repeatable))
         - *RoleCompany
 
+NoteOfRole: &NoteOfRole
+    order: (Number)
+    role_at_film: *RoleAtFilm
+    person: *Person
+    note: (Rich text)
+
 OrderedCountries: &OrderedCountries
     order: (Number)
     country: *Country
@@ -1717,6 +1723,9 @@ Film: &Film
     titleOriginal: (short text)
     year: (number)
     runtime: (number)
+    logline_et: (Rich text)
+    logline_en: (Rich text)
+    logline_ru: (Rich text)
     synopsis: *Translated #(Component, rich)
     tags: *Tags #(Component)
     slug_et: (UID, No spaces)
@@ -1754,6 +1763,31 @@ Film: &Film
         - *QaClip
     chat_w_name: (text)
     is_published: (boolean)
+    project_types:
+        - *ProjectType
+    project_statuses:
+        - *ProjectStatus
+    completionDate: (Datetime)
+    numOfSeasons: (Number)
+    numOfEpisodes: (Number)
+    budget: (Number)
+    financed: (Number)
+    completionYear: (Number)
+    tag_looking_fors:
+        - *TagLookingFor
+    lookingFor: (Rich text)
+    country_focus: *Country
+    acc_imdb: (Text)
+    acc_efis: (Text)
+    acc_instagram: (Text)
+    acc_fb: (Text)
+    acc_youtube: (Text)
+    acc_vimeo: (Text)
+    acc_tiktok: (Text)
+    acc_x_twitter: (Text)
+    acc_other: (Text)
+    notesOfRoles: #(Component (repeatable))
+        - *NoteOfRole
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1764,6 +1798,9 @@ Cassette: &Cassette
     title_et: (text)
     title_en: (text)
     title_ru: (text)
+    logline_et: (Rich text)
+    logline_en: (Rich text)
+    logline_ru: (Rich text)
     synopsis: *Translated #(Rich text)
     stills: #(Component (repeatable))
         - *StrapiMedia
