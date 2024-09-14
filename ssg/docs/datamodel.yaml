@@ -492,6 +492,10 @@ Filmography: &Filmography
     tag_looking_fors:
         - *TagLookingFor
 
+ProjectType: &ProjectType
+    _path: /project-types
+    type: (text)
+    description: (Rich text)
 
 IndustryCategory: &IndustryCategory
     _path: /industry-categories
@@ -1695,7 +1699,7 @@ RolePerson: &RolePerson
 
 RoleCompany: &RoleCompany
     order: (Number)
-    roles_at_film: *RoleAtFilm
+    role_at_film: *RoleAtFilm
     organisation: *Organisation
 
 Credentials: &Credentials
@@ -1703,6 +1707,12 @@ Credentials: &Credentials
         - *RolePerson
     roleCompany: #(Component (repeatable))
         - *RoleCompany
+
+NoteOfRole: &NoteOfRole
+    order: (Number)
+    role_at_film: *RoleAtFilm
+    person: *Person
+    note: (Rich Text)
 
 OrderedCountries: &OrderedCountries
     order: (Number)
@@ -1757,6 +1767,32 @@ Film: &Film
         - *QaClip
     chat_w_name: (text)
     is_published: (boolean)
+    project_types: #(Component (repeatable))
+        - *ProjectType
+    project_statuses: #(Component (repeatable))
+        - *ProjectStatus
+    completionDate: (Datetime)
+    premiereDate: (Datetime)
+    completionYear: (Number)
+    numOfSeasons: (Number)
+    numOfEpisodes: (Number)
+    budget: (Number)
+    financed: (Number)
+    tag_looking_fors: #(Component (repeatable))
+        -   *TagLookingFor
+    lookingFor: (Rich Text)
+    country_focus: *Country
+    acc_imdb: (Text)
+    acc_efis: (Text)
+    acc_instagram: (Text)
+    acc_fb: (Text)
+    acc_youtube: (Text)
+    acc_vimeo: (Text)
+    acc_other: (Text)
+    acc_tiktok: (Text)
+    acc_x_twitter: (Text)
+    notesOfRoles: #(Component (repeatable))
+        - *NoteOfRole
 
 OrderedFilm: &OrderedFilm
     order: (Number)
@@ -1962,10 +1998,10 @@ IndustryGroup: &IndustryGroup
     slug_en: (UID)
     description_en: (Rich text)
 
-ProjectType: &ProjectType
-    _path: /project-types
-    type: (text)
-    description: (Rich text)
+# ProjectType: &ProjectType
+#     _path: /project-types
+#     type: (text)
+#     description: (Rich text)
 
 IndustryProject: &IndustryProject
     _path: /industry-projects
