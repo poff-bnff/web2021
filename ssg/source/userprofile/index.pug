@@ -2,60 +2,107 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    section.userprofile
-        if self.label.userprofile
+    section.userinfo
+        section.userprofile
+            if self.label.userprofile
 
-            //- p=userProfile.firstName
+                //- p=userProfile.firstName
 
-            .sub_section_headline.text_left.p_l_0#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
-            .sub_section_headline.text_left.p_l_0#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
+                .sub_section_headline.text_center#profileFilledMessage(style= {display: 'none'})= self.label.userprofile.userprofileTitle
+                .sub_section_headline.text_center#profileUnFilledMessage(style= {display: 'none'})= self.label.userprofile.registerAddTitle
 
-            div.form#thisUserProfile
-                img#imgPreview(alt='user profile pic', src='/assets/img/static/hunt_square_placeholder.jpg')
-                div.form_group
-                    label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
-                    div#imgError
-                    input.input_file#profileImg(type='file', name='filename', onclick='this.value=null', onchange='onProfilePicChange()', accept='image/*')
-                div.form_group
-                    label.login_label(for='username')= self.label.userprofile.username
-                    div#username.dark(name='username')
-                div.form_group
-                    label.login_label(for='email')= self.label.userprofile.email
-                    div
-                        span#email.dark(name='email')
-                        button.btn.btn_primary#changeEmailButton(onclick='changeUserEmail(this)')= self.label.userprofile.changeEmailButton
-                    div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
-                    label#validateEmailText= self.label.userprofile.validateEmailBeforeProfileEdit
-                div.form_group
-                    label.login_label(for='firstName')= self.label.userprofile.firstName
-                    input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}`, name='firstName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
-                    div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
-                div.form_group
-                    label.login_label(for='lastName')= self.label.userprofile.lastName
-                    input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}`, name='lastName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
-                    div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
-                div.form_group
-                    label.login_label(for='gender')= self.label.userprofile.gender
-                    select.login_input#gender(name='gender', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
-                        option.login_input(value='male')= self.label.userprofile.genderM
-                        option.login_input(value='female')= self.label.userprofile.genderF
-                        option.login_input(value='other')= self.label.userprofile.genderO
-                        option.login_input(class='invalid', value='', selected='')= self.label.userprofile.select
-                    div#genderHelp(class='valid')= self.label.userprofile.genderHelp
-                div.form_group
-                    label.login_label(for='birthdate')= self.label.userprofile.birthday
-                    input.login_input#birthdate.form-control(type='date', name='birthdate', placeholder='yyyy-mm-dd', max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
-                    div#dobHelp(class='valid')= self.label.userprofile.ageHelp
-                    div#dateHelp(class='valid')= self.label.userprofile.dateHelp
-                div.form_group
-                    label.login_label(for='phoneNr')= self.label.userprofile.phone
-                    input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
-                    div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
-                hr
-                div.form_group(style='display: none;')
-                    button.btn.btn_primary#submitUserProfile(onclick='submitAll(this)')= self.label.userprofile.saveButton
+                div.form#thisUserProfile
+                    img#imgPreview(alt='user profile pic', src='/assets/img/static/hunt_square_placeholder.jpg')
+                    div.form_group
+                        label.login_label(for='profileImg')= self.label.userprofile.profilePhotoText
+                        div#imgError
+                        input.input_file#profileImg(type='file', name='filename', onclick='this.value=null', onchange='onProfilePicChange()', accept='image/*')
+                    div.form_group
+                        label.login_label(for='email')= self.label.userprofile.email
+                        div
+                            span#email.dark(name='email')
+                            button.btn.btn_primary#changeEmailButton(onclick='changeUserEmail(this)')= self.label.userprofile.changeEmailButton
+                        div#emailHelp(class='valid')= self.label.userprofile.eMailHelp
+                        label#validateEmailText= self.label.userprofile.validateEmailBeforeProfileEdit
+                    div.form_group
+                        label.login_label(for='firstName')= self.label.userprofile.firstName
+                        input.login_input#firstName.form-control(type='text', placeholder=`${self.label.userprofile.firstName}`, name='firstName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
+                        div#firstNameHelp(class='valid')= self.label.userprofile.firstNameHelp
+                    div.form_group
+                        label.login_label(for='lastName')= self.label.userprofile.lastName
+                        input.login_input#lastName.form-control(type='text', placeholder=`${self.label.userprofile.lastName}`, name='lastName', autocomplete='off', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
+                        div#lastNameHelp(class='valid')= self.label.userprofile.lastNameHelp
+                    div.form_group
+                        label.login_label(for='gender')= self.label.userprofile.gender
+                        select.login_input#gender(name='gender', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
+                            option.login_input(value='male')= self.label.userprofile.genderM
+                            option.login_input(value='female')= self.label.userprofile.genderF
+                            option.login_input(value='other')= self.label.userprofile.genderO
+                            option.login_input(class='invalid', value='', selected='')= self.label.userprofile.select
+                        div#genderHelp(class='valid')= self.label.userprofile.genderHelp
+                    div.form_group
+                        label.login_label(for='birthdate')= self.label.userprofile.birthday
+                        input.login_input#birthdate.form-control(type='date', name='birthdate', placeholder='yyyy-mm-dd', max='2008-01-01', min='1905-01-01', onchange='fieldChanged(this.id)', onblur='submitField(this.id)')
+                        div#dobHelp(class='valid')= self.label.userprofile.ageHelp
+                        div#dateHelp(class='valid')= self.label.userprofile.dateHelp
+                    div.form_group
+                        label.login_label(for='phoneNr')= self.label.userprofile.phone
+                        input.login_input#phoneNr.form-control(type='tel', placeholder=`${self.label.userprofile.phoneNr}`, name='phoneNr', onchange='fieldChanged(this.id)', onblur='submitField(this.id)', autocomplete='off')
+                        div#phoneNrHelp(class='valid')= self.label.userprofile.phoneNumHelp
+                    hr
+                    div.form_group(style='display: none;')
+                        button.btn.btn_primary#submitUserProfile(onclick='submitAll(this)')= self.label.userprofile.saveButton
+
+        section.useraliases
+
+            .sub_section_headline.text_center#profileAliasesTitle= self.label.userprofile.aliasSectionTitle
+
+            div#addAliasButton
+                button.btn.btn_primary#addAliasAccount(onclick='addAliasAccount(this)')= self.label.userprofile.addAliasAccountButton
+
+            ol#aliasList
 
     style.
+        .userinfo {
+            display: grid;
+            grid-auto-columns: minmax(0, 1fr);
+            grid-auto-flow: column;
+            grid-template-rows: auto;
+            grid-template-areas: "userprofile useraliases";
+        }
+        .userprofile {
+            grid-area: userprofile;
+        }
+        .useraliases {
+            grid-area: useraliases;
+            padding-top: 120px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 5rem;
+            border-left: 2px dashed lightgrey;
+        }
+        #thisUserProfile {
+            width: fit-content;
+            margin: auto;
+        }
+        #aliasList {
+            list-style: none;
+            padding: 20px;
+            width: fit-content;
+            margin: auto;
+        }
+        #aliasList li {
+            color: black;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+            background-color: #FDE2EF;
+            margin: 10px;
+        }
+        #addAliasButton {
+            text-align: center;
+            margin-top: 20px;
+        }
         .invalid {background-color: transparent; display: block; color: #495057}
         .valid {background-color: #ccf1e7; display: none}
         .invalidColor {background-color: #fff3e8}
@@ -96,5 +143,16 @@ block content
             }
             100% {
                 background: #ccf1e7;
+            }
+        }
+        @media (max-width: 800px) {
+            .userinfo {
+                grid-template-rows: repeat(auto, 1fr);
+                grid-template-areas:
+                "userprofile"
+                "useraliases";
+            }
+            .useraliases {
+                border: none;
             }
         }

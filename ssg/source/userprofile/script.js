@@ -4,11 +4,18 @@ const formImageInput = document.getElementById("profileImg")
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
+const addAliasAccount = async (buttonElement) => {
+    var redirect_uri = new URL(window.location.href)
+    redirect_uri.searchParams.set('jwt',localStorage.getItem('ID_TOKEN'))
+    const changeEmailUrl = `${huntAuthDomain}` + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&query_type=add_account&user_token=' + localStorage.getItem('ID_TOKEN') + '&locale=' + huntLocale
+    window.open(changeEmailUrl, '_self')
+}
+
 const changeUserEmail = async (buttonElement) => {
     var redirect_uri = new URL(window.location.href)
     redirect_uri.searchParams.set('jwt',localStorage.getItem('ID_TOKEN'))
-    const loginUrl = `${huntAuthDomain}/api/email` + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&user_token=' + localStorage.getItem('ID_TOKEN')
-    window.open(loginUrl, '_self')
+    const changeEmailUrl = `${huntAuthDomain}/api/email` + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&user_token=' + localStorage.getItem('ID_TOKEN')
+    window.open(changeEmailUrl, '_self')
 }
 
 const submitForm = async (body) => {
@@ -125,6 +132,7 @@ const onProfilePicChange = () => {
 async function loadUserInfo() {
 
     const webUser = await reloadUser()
+    const aliasList = document.getElementById('aliasList')
 
     if (isUserProfileComplete()) {
         document.getElementById('profileFilledMessage').style.display = 'block'
@@ -132,7 +140,21 @@ async function loadUserInfo() {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
     }
 
-    document.getElementById('username').innerHTML = webUser.email
+    var entry = document.createElement('li')
+    entry.appendChild(document.createTextNode(webUser.email))
+    aliasList.append(entry)
+
+    while (aliasList.firstChild) {
+        aliasList.removeChild(aliasList.lastChild);
+    }
+
+    if(webUser.aliasUsers){
+        webUser.aliasUsers.forEach((alias) => {
+            var entry = document.createElement('li')
+            entry.appendChild(document.createTextNode(alias.email))
+            aliasList.append(entry)
+        })
+    }
 
     const user_profile = webUser.user_profile
     if (user_profile) {
