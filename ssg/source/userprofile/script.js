@@ -140,13 +140,13 @@ async function loadUserInfo() {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
     }
 
-    var entry = document.createElement('li')
-    entry.appendChild(document.createTextNode(webUser.email))
-    aliasList.append(entry)
-
     while (aliasList.firstChild) {
         aliasList.removeChild(aliasList.lastChild);
     }
+
+    var entry = document.createElement('li')
+    entry.appendChild(document.createTextNode(webUser.email))
+    aliasList.append(entry)
 
     if(webUser.aliasUsers){
         webUser.aliasUsers.forEach((alias) => {
