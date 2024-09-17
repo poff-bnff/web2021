@@ -63,7 +63,8 @@ header
                             script.
                                 var redirect_uri = new URL(window.location.href)
                                 redirect_uri.searchParams.set('jwt','')
-                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString())
+                                var huntLocale = '#{self.locale}' == 'et' ? '#{self.locale}' : 'en'
+                                document.getElementById('oauthLink').href = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&locale=' + huntLocale
                         //- li#signUp(style={cursor: 'pointer', display: 'none'})
                         //-     a(onclick = 'savePreLoginUrl()' href=`/${lang_path}signup`)= self.label.menu.mainSignup
                         //- li#logInName.dark_1(style={display: 'none'})
