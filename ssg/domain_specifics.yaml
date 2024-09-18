@@ -22,7 +22,7 @@ cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76] # - 61
-    industry.poff.ee: [68]
+    industry.poff.ee: [80]
     justfilm.ee: [64] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
@@ -50,7 +50,7 @@ programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76]
-    industry.poff.ee: [68]
+    industry.poff.ee: [80]
     justfilm.ee: [64]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
@@ -63,7 +63,7 @@ active_editions:
     discoverycampus.poff.ee: [50]
     filmikool.poff.ee: [60]
     hoff.ee: []
-    industry.poff.ee: [68]
+    industry.poff.ee: [80]
     justfilm.ee: []
     kinoff.poff.ee: []
     kumu.poff.ee: []
