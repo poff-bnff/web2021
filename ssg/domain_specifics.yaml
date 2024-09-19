@@ -23,12 +23,12 @@ cassettes_festival_editions:
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76] # - 61
     industry.poff.ee: [80]
-    justfilm.ee: [64] # - 29
+    justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 75]
-    shorts.poff.ee: [67] # - 30
+    poff.ee: [73, 74, 75]
+    shorts.poff.ee: [79] # - 30
     tartuff.ee: [78]
 
 cassettesAndFilmsShowVotemo:
@@ -51,12 +51,12 @@ programmes_festival_editions:
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76]
     industry.poff.ee: [80]
-    justfilm.ee: [64]
+    justfilm.ee: [74]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 75]
-    shorts.poff.ee: [67]
+    poff.ee: [73, 74, 75, 79]
+    shorts.poff.ee: [79]
     tartuff.ee: [78]
 
 active_editions:
