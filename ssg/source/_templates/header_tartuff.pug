@@ -51,9 +51,6 @@ header
     script.
         var langpath = "!{(lang_path)}"
 
-    if process.env['ChatApi']
-        deep-chat(id="chat-element" connect=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"domainName": "tartuff.ee"}}` requestBodyLimits='{"maxMessages": 10}')
-
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
 
