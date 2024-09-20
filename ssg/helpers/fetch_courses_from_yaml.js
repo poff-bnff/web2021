@@ -44,7 +44,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
                 'roleCompany': {
                     model_name: 'RoleCompany',
                     expand: {
-                        'roles_at_film': {
+                        'role_at_film': {
                             model_name: 'RoleAtFilm'
                         },
                         'organisation': {
@@ -156,7 +156,7 @@ if (DOMAIN === 'filmikool.poff.ee' || DOMAIN === 'discoverycampus.poff.ee') {
                     if (roleCompany === undefined) { continue }
                     if (roleCompany.organisation) {
                         let searchRegExp = new RegExp(' ', 'g')
-                        const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                        const role_name_lc = roleCompany.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
                         roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
 
                         if (roleCompany.organisation.name) {

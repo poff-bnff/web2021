@@ -572,8 +572,7 @@ footer
 .hero_head
     position relative
     // height full_height
-    // height calc(100vh - 97px)
-    height 15vw
+    height calc(100vh - 97px)
 
 .hero_headline_box
     position absolute
@@ -589,17 +588,26 @@ footer
     // align-content center
 
 .hero_headline_box_1
-    background rgba(10,0,3,.6)
     text-align left
     padding 2.4rem 2.4rem 2.4rem 2.4rem
+    background linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.4))
+    -webkit-backdrop-filter blur(5px)
+    backdrop-filter blur(5px)
+    box-shadow 0 8px 32px 0 rgba(0, 0, 0, 0.37)
+    // border 1px solid rgba(255, 255, 255, 0.18)
+    // border-radius 1px
 
 .hero_headline_box_2
-    background rgba(255,255,255,.8)
+    background linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.7))
+    -webkit-backdrop-filter blur(5px)
+    backdrop-filter blur(5px)
+    box-shadow 0 8px 32px 0 rgba(0, 0, 0, 0.37)
+    // border 1px solid rgba(255, 255, 255, 0.18)
+    // border-radius 1px
     text-align left
-    vertical-align middle
+    // vertical-align bottom
     padding 2.4rem 2.4rem 2.4rem 2.4rem
     align-self stretch
-    // height 100%
 
 .hero_headline
     font-family font_h
@@ -2506,8 +2514,7 @@ a.btn_popover
     .hero_head
         position relative
         // height full_height
-        // height calc(100vh - 97px)
-        height 15vw
+        height calc(100vh - 97px)
 
     // .hero_image
     //     width 100vw

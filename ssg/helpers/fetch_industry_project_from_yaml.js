@@ -380,19 +380,19 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                     continue
                 }
                 industry_project.organisations[company_id] = industry_project.organisations[company_id] || { id: company_id, rolesAtFilm: [] }
-                if (role_company.roles_at_film) {
-                    industry_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
+                if (role_company.role_at_film) {
+                    industry_project.organisations[company_id].rolesAtFilm.push(role_company.role_at_film.roleNamePrivate)
 
-                    if (!(role_company.roles_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
+                    if (!(role_company.role_at_film.roleNamePrivate in industry_project.comp_roles_in_project)) {
 
                         let roleName = STRAPIDATA_ROLESATFILM.filter(e => {
-                            return e.id === role_company.roles_at_film.id
+                            return e.id === role_company.role_at_film.id
                         })[0].roleName[lang]
 
-                        industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = { ord: role_company.roles_at_film.order ? role_company.roles_at_film.order : Number.MAX_VALUE, label: roleName, names: [] }
+                        industry_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate] = { ord: role_company.role_at_film.order ? role_company.role_at_film.order : Number.MAX_VALUE, label: roleName, names: [] }
                     }
-                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push({ order: role_company.order, name: role_company.organisation.namePrivate })
-                    industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names = industry_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names
+                    industry_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate].names.push({ order: role_company.order, name: role_company.organisation.namePrivate })
+                    industry_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate].names = industry_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate].names
                         .sort((a, b) => {
                             return a.ord - b.ord
                         })

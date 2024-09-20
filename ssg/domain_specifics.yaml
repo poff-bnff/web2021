@@ -22,13 +22,13 @@ cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76] # - 61
-    industry.poff.ee: [68]
-    justfilm.ee: [64] # - 29
+    industry.poff.ee: [80]
+    justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [63, 64, 67, 72, 77, 76, 78]
-    shorts.poff.ee: [67] # - 30
+    poff.ee: [73, 74, 75]
+    shorts.poff.ee: [79] # - 30
     tartuff.ee: [78]
 
 cassettesAndFilmsShowVotemo:
@@ -50,20 +50,20 @@ programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
     hoff.ee: [77, 76]
-    industry.poff.ee: [68]
-    justfilm.ee: [64]
+    industry.poff.ee: [80]
+    justfilm.ee: [74]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [63, 64, 67, 72]
-    shorts.poff.ee: [67]
+    poff.ee: [73, 74, 75, 79]
+    shorts.poff.ee: [79]
     tartuff.ee: [78]
 
 active_editions:
     discoverycampus.poff.ee: [50]
     filmikool.poff.ee: [60]
     hoff.ee: []
-    industry.poff.ee: [68]
+    industry.poff.ee: [80]
     justfilm.ee: []
     kinoff.poff.ee: []
     kumu.poff.ee: []
@@ -119,7 +119,7 @@ target_build_models:
     # - industry-project
     # - programme
     # - screening
-    - course-event
+    # - course-event
     - archive
     - article-hero
     - bruno-article

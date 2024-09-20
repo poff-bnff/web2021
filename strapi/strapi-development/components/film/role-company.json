@@ -11,7 +11,7 @@
       "type": "integer",
       "required": true
     },
-    "roles_at_film": {
+    "role_at_film": {
       "model": "role-at-film"
     },
     "organisation": {

@@ -649,19 +649,19 @@ for (const lang of allLanguages) {
                             let roleCompany = scc_film.credentials.roleCompany[roleIx]
                             if (roleCompany === undefined) { continue }
                             if (roleCompany.organisation) {
-                                if (roleCompany?.roles_at_film?.roleNamePrivate) {
+                                if (roleCompany?.role_at_film?.roleNamePrivate) {
                                     let searchRegExp = new RegExp(' ', 'g')
-                                    const role_name_lc = roleCompany.roles_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
+                                    const role_name_lc = roleCompany.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
                                     roleCompanyTypes[role_name_lc] = roleCompanyTypes[role_name_lc] || []
 
                                     if (roleCompany.organisation.name) {
                                         roleCompanyTypes[role_name_lc].push(roleCompany.organisation.name)
                                     }
                                 } else {
-                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials company ID ${scc_film.credentials.roleCompany.id} roles_at_film`);
+                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials company ID ${scc_film.credentials.roleCompany.id} role_at_film`);
                                 }
                             } else {
-                                // timer.log(__filename, film.id, ' - ', roleCompany.roles_at_film.roleNamePrivate)
+                                // timer.log(__filename, film.id, ' - ', roleCompany.role_at_film.roleNamePrivate)
                             }
                         }
                         scc_film.credentials.roleCompaniesByRole = roleCompanyTypes

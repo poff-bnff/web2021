@@ -4,40 +4,73 @@ if self.data.heroArticle
 
     if articleHero && articleHero.article_types && articleHero.article_types[0] && articleHero.publish && articleHero.title && articleHero.slug
 
-
-        - let artHeroTypeForPath = articleHero.article_types[0].slug.toLowerCase();
+        - let artHeroTypes = []
+        - let artHeroTypeForPath = '';
         each artHeroType in articleHero.article_types
-            if artHeroType.name.toLowerCase() === 'about'
+            - artHeroTypes.push(artHeroType.name.toLowerCase())
+            if artHeroType.name.toLowerCase() === whichTypesToDisplay[0]
                 - artHeroTypeForPath = artHeroType.slug.toLowerCase()
-
+            else if whichTypesToDisplay.includes(artHeroType.name.toLowerCase())
+                - artHeroTypeForPath = artHeroType.slug.toLowerCase()
         section.hero_head
-            //- a(href= `#`)
             a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
                 if self.data.heroArticle
                     if self.data.heroArticle.clipUrlDefault
                         +videoAp(self.data.heroArticle.clipUrlDefault)
                     else if self.data.heroArticle.primaryImage
-                        img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).home_hero_image
+                        img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).hero_image
                     else
-                        img(src='/assets/img/static/placeholder_hd_1.jpg').home_hero_image
+                        img(src='/assets/img/static/placeholder_hd_1.jpg').hero_image
 
 
-                //- senine just hero
-                //- if self.data.heroArticle.primaryImage
-                //-     img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).home_hero_image
-                //- else
-                //-     img(src='/assets/img/static/placeholder_hd_1.jpg').home_hero_image
+                        //- if self.data.heroArticle.media.clipUrlDefault
+                        //-     +videoAp(self.data.heroArticle.media.clipUrlDefault)
 
-                //- if self.data.heroArticle.title && self.data.heroArticle.title.length > 1
-                //-     .hero_headline_box
-                //-         .hero_headline_box_1
-                //-             .hero_headline
-                //-                 | !{self.data.heroArticle.title}
-                //-         .hero_headline_box_2
-                //-             .hero_p
-                //-                 | !{self.data.heroArticle.lead}
+                        //- +videoAp('R-1jQhGnDN0')
 
-            - heroPlusTrioNews.push(self.data.heroArticle.id)
+                    .hero_headline_box
+                        .hero_headline_box_1
+                            .hero_headline
+                                | !{self.data.heroArticle.title}
+                        .hero_headline_box_2
+                            .hero_p
+                                | !{self.data.heroArticle.lead}
+
+                - heroPlusTrioNews.push(self.data.heroArticle.id)
+
+        //- - let artHeroTypeForPath = articleHero.article_types[0].slug.toLowerCase();
+        //- each artHeroType in articleHero.article_types
+        //-     if artHeroType.name.toLowerCase() === 'about'
+        //-         - artHeroTypeForPath = artHeroType.slug.toLowerCase()
+
+        //- section.hero_head
+        //-     //- a(href= `#`)
+        //-     a(href= `/${lang_path}${artHeroTypeForPath}/${ self.data.heroArticle.slug}`)
+        //-         if self.data.heroArticle
+        //-             if self.data.heroArticle.clipUrlDefault
+        //-                 +videoAp(self.data.heroArticle.clipUrlDefault)
+        //-             else if self.data.heroArticle.primaryImage
+        //-                 img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).home_hero_image
+        //-             else
+        //-                 img(src='/assets/img/static/placeholder_hd_1.jpg').home_hero_image
+
+
+
+        //-         if self.data.heroArticle.primaryImage
+        //-             img(src=`https://assets.poff.ee/img/${self.data.heroArticle.primaryImage}`).home_hero_image
+        //-         else
+        //-             img(src='/assets/img/static/placeholder_hd_1.jpg').home_hero_image
+
+        //-         if self.data.heroArticle.title && self.data.heroArticle.title.length > 1
+        //-             .hero_headline_box
+        //-                 .hero_headline_box_1
+        //-                     .hero_headline
+        //-                         | !{self.data.heroArticle.title}
+        //-                 .hero_headline_box_2
+        //-                     .hero_p
+        //-                         | !{self.data.heroArticle.lead}
+
+        //-     - heroPlusTrioNews.push(self.data.heroArticle.id)
 
 
             //- if self.data.heroArticle.media.image[0]

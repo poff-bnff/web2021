@@ -331,13 +331,13 @@ function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, project
                     continue
                 }
                 discamp_project.organisations[company_id] = discamp_project.organisations[company_id] || {id: company_id, rolesAtFilm: []}
-                if (role_company.roles_at_film){
-                    discamp_project.organisations[company_id].rolesAtFilm.push(role_company.roles_at_film.roleNamePrivate)
+                if (role_company.role_at_film){
+                    discamp_project.organisations[company_id].rolesAtFilm.push(role_company.role_at_film.roleNamePrivate)
 
-                    if(!(role_company.roles_at_film.roleNamePrivate in discamp_project.comp_roles_in_project)) {
-                        discamp_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate] = {ord: role_company.roles_at_film.order, names: []}
+                    if(!(role_company.role_at_film.roleNamePrivate in discamp_project.comp_roles_in_project)) {
+                        discamp_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate] = {ord: role_company.role_at_film.order, names: []}
                     }
-                    discamp_project.comp_roles_in_project[role_company.roles_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
+                    discamp_project.comp_roles_in_project[role_company.role_at_film.roleNamePrivate].names.push(role_company.organisation.namePrivate)
                 }
             }
             for (const ix in discamp_project.organisations) {
