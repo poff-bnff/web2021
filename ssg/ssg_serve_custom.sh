@@ -41,7 +41,6 @@ ask_what_to_serve()
 serve()
 {
     SECONDS=0
-
     export DOMAIN=$site_name
 
 

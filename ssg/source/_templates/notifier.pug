@@ -1,0 +1,29 @@
+div#emailChangeSuccess(class='alertMsg alertSuccess')= self.label.notifier.emailChangeSuccess
+div#emailChangeSame(class='alertMsg alertNotice')= self.label.notifier.emailChangeSame
+div#emailChangeTaken(class='alertMsg alertError')= self.label.notifier.emailChangeTaken
+
+div#addAliasSuccess(class='alertMsg alertSuccess')= self.label.notifier.addAliasSuccess
+div#addAliasExists(class='alertMsg alertNotice')= self.label.notifier.addAliasExists
+div#addAliasFailed(class='alertMsg alertError')= self.label.notifier.addAliasFailed
+
+style.
+    .alertMsg {
+        position: fixed;
+        top: 15px;
+        right: 50px;
+        padding: 5px 10px;
+        z-index: 999;
+        text-align: center;
+        border-radius: 12px;
+        font-size: 18px;
+        display: none;
+    }
+    .alertSuccess {
+        background-color: #008000;
+    }
+    .alertNotice {
+        background-color: #ffa500;
+    }
+    .alertError {
+        background-color: #ff2c2c;
+    }

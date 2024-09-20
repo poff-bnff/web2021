@@ -14,6 +14,7 @@ const buyerCheck = () => {
     document.getElementById('directToFillProfile').style.display = 'none'
     document.getElementById('buybutton').style.display = 'none'
     document.getElementById('directToLoginButton').style.display = 'none'
+    document.getElementById('directToaddEmail').style.display = 'none'
 
     // if we are in middle of login, its too early to decide about buyer
     const url = new URL(window.location.href)
@@ -26,6 +27,11 @@ const buyerCheck = () => {
         //sisselogimata
         document.getElementById('directToLoginButton').style.display = 'block'
         // console.log("sisselogimata kasutaja on poes")
+        return false
+    }
+
+    if (newEmailNeeded()) {
+        document.getElementById('directToaddEmail').style.display = 'block'
         return false
     }
 
@@ -209,6 +215,14 @@ const getProfilePicture = () => {
     return null
 }
 
+const newEmailNeeded = () => {
+    const webUser = getUser()
+    if (webUser && webUser.user_profile && webUser.user_profile.email) {
+        return (webUser.user_profile.email == null || webUser.user_profile.email.indexOf("@eesti.ee") > -1);
+    }
+    return false;
+}
+
 const isUserTokenValid = () => {
     const idToken = localStorage.getItem('ID_TOKEN');
     let validToken = false;
@@ -281,6 +295,7 @@ const getCourseEventVideoUrl = async (courseEventId) => {
         localStorage.setItem('ID_TOKEN', jwt)
         await reloadUser()
         url.searchParams.delete('jwt')
+        //history.replaceState(history.state, '', url.href)
         window.open(url.toString(), '_self')
     }
 })()
