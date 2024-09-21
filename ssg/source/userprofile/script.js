@@ -4,6 +4,20 @@ const formImageInput = document.getElementById("profileImg")
 // This function returns true if user is logged in but redirects to login page if not.
 requireLogin()
 
+const addAliasAccount = async (buttonElement) => {
+    var redirect_uri = new URL(window.location.href)
+    redirect_uri.searchParams.set('jwt',localStorage.getItem('ID_TOKEN'))
+    const changeEmailUrl = `${huntAuthDomain}` + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&query_type=add_account&user_token=' + localStorage.getItem('ID_TOKEN') + '&locale=' + huntLocale
+    window.open(changeEmailUrl, '_self')
+}
+
+const changeUserEmail = async (buttonElement) => {
+    var redirect_uri = new URL(window.location.href)
+    redirect_uri.searchParams.set('jwt',localStorage.getItem('ID_TOKEN'))
+    const changeEmailUrl = `${huntAuthDomain}/api/email` + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString()) + '&user_token=' + localStorage.getItem('ID_TOKEN')
+    window.open(changeEmailUrl, '_self')
+}
+
 const submitForm = async (body) => {
     const headers = { Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN') }
     const url = `${huntAuthDomain}/api/profile`
@@ -118,19 +132,33 @@ const onProfilePicChange = () => {
 async function loadUserInfo() {
 
     const webUser = await reloadUser()
+    const aliasList = document.getElementById('aliasList')
 
     if (isUserProfileComplete()) {
         document.getElementById('profileFilledMessage').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
     }
-    const aliasUsers = webUser.aliasUsers || []
-    const webuserEmails = [webUser.email, ...aliasUsers.map(u => u.email)]
-    const uniqueWebuserEmails = [...new Set(webuserEmails)]
-    document.getElementById('email').innerHTML = uniqueWebuserEmails.join(', ')
+
+    while (aliasList.firstChild) {
+        aliasList.removeChild(aliasList.lastChild);
+    }
+
+    var entry = document.createElement('li')
+    entry.appendChild(document.createTextNode(webUser.email))
+    aliasList.append(entry)
+
+    if(webUser.aliasUsers){
+        webUser.aliasUsers.forEach((alias) => {
+            var entry = document.createElement('li')
+            entry.appendChild(document.createTextNode(alias.email))
+            aliasList.append(entry)
+        })
+    }
 
     const user_profile = webUser.user_profile
     if (user_profile) {
+        document.getElementById('email').innerHTML = user_profile.email || ''
         document.getElementById('firstName').value = user_profile.firstName || ''
         document.getElementById('lastName').value = user_profile.lastName || ''
         document.getElementById('gender').value = user_profile.gender || ''
@@ -139,7 +167,22 @@ async function loadUserInfo() {
         if (pictureUrl = getProfilePicture()) {
             document.getElementById('imgPreview').src = pictureUrl
         }
+        validateFormFields(user_profile.email)
     }
+}
+
+async function validateFormFields(email) {
+
+    var disabled = (email == null || email.indexOf("@eesti.ee") > -1)
+
+    document.getElementById('profileImg').disabled = disabled
+    document.getElementById('firstName').disabled = disabled
+    document.getElementById('lastName').disabled = disabled
+    document.getElementById('gender').disabled = disabled
+    document.getElementById('phoneNr').disabled = disabled
+    document.getElementById('birthdate').disabled = disabled
+
+    document.getElementById('validateEmailText').style.display = disabled ? "block" : "none"
 }
 
 async function deleteAccount() {
