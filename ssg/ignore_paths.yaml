@@ -107,13 +107,13 @@ kumu.poff.ee:
     - /locations
     - /locations_search
 industry.poff.ee:
-    - /films
+    # - /films
     - /my_screenings
     - /screenings
     - /screenings-search
     - /programmes
     - /shop
-    - /search
+    # - /search
     - /mypoff
     - /signup
     - /courses
