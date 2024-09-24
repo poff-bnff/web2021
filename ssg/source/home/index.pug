@@ -2,6 +2,9 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
+
+    include ../_templates/home_templates/supporters_popup.pug
+
     if process.env['DOMAIN'] === 'justfilm.ee'
         - var whichTypesToDisplay = ['news']
         - var heroPlusTrioNews = []
