@@ -1,5 +1,5 @@
 div#supporter-popup
-    if process.env['DOMAIN'] === 'poff.ee'
+    if process.env['DOMAIN'] === 'industry.poff.ee'
         img(style='width:50%;' src='https://assets.poff.ee/img/Industry_partner_EAS_08dc6e40f0.svg')
         img(style='width:50%;' src='https://assets.poff.ee/img/creative_europe_media_9f601044d5.svg')
 
@@ -7,9 +7,11 @@ div#supporter-popup
 style.
     #supporter-popup {
         position: fixed;
-        top: 100px;
+        top: 150px;
         right: 0;
         z-index: 500;
         text-align: center;
         background-color: white;
+        width: 30%;
+        height: auto;
     }
