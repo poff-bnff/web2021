@@ -502,6 +502,11 @@ IndustryCategory: &IndustryCategory
     name: (text)
     description: (Rich text)
 
+IndustryPersonType: &IndustryPersonType
+    _path: /industry-person-types
+    type: (text)
+    description: (Rich text)
+
 Award: &Award
     _path: /industry-awards
     title_en: text
@@ -1493,10 +1498,10 @@ Location: &Location
 
 #Industry ... osa
 
-IndustryPersonType: &IndustryPersonType
-    _path: /industry-person-types
-    type: (text)
-    description: (Rich text)
+# IndustryPersonType: &IndustryPersonType
+#     _path: /industry-person-types
+#     type: (text)
+#     description: (Rich text)
 
 # Person & Team
 
