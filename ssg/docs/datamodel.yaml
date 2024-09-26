@@ -720,6 +720,10 @@ Organisation: &Organisation
         - *Language
     orderedRaF: #(Component (repeatable))
         - *OrderedRaF
+    industry_categories:
+        - *IndustryCategory
+    industry_person_types:
+        - *IndustryPersonType
 
 
 
