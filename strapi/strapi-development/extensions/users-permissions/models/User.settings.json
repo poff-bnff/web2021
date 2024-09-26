@@ -145,8 +145,8 @@
       "via": "mainUser"
     },
     "organisations": {
-      "collection": "organisation",
       "via": "users",
+      "collection": "organisation",
       "dominant": true
     },
     "ok_to_contact": {

@@ -238,9 +238,15 @@
       "component": "credentials.ordered-ra-f"
     },
     "users": {
-      "via": "organisations",
       "plugin": "users-permissions",
-      "collection": "user"
+      "collection": "user",
+      "via": "organisations"
+    },
+    "industry_categories": {
+      "collection": "industry-category"
+    },
+    "industry_person_types": {
+      "collection": "industry-person-type"
     }
   }
 }
