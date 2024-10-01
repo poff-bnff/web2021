@@ -196,7 +196,7 @@ const generateBreakpoint = async (key, { file, breakpoint, originalDimensions}) 
 
 const breakpointSmallerThan = (breakpoint, { width, height }) => {
   console.log('breakpointSmallerThan', breakpoint, 'originalDimensions', width, height)
-  return breakpoint.width < width || breakpoint.height < height
+  return breakpoint.width <= width || breakpoint.height <= height
 }
 
 const bitmapFormats = ['tiff', 'tif', 'png', 'webp', 'jpg', 'jpeg']

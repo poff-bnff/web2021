@@ -15,20 +15,27 @@ const { exec, execSync, spawn } = require('child_process');
 const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 const path = require('path')
+const logging = false
 
+let recheckTimerVar = null
 
+const setRecheckTimerFunction = () => {
+  clearTimeout(recheckTimerVar)
+  recheckTimerVar = setTimeout(() => {
+    recheck()
+  }, 30000)
+}
 
 function writeToZone(file_name) {
 
   const put_command = `echo put ${file_name} | ftp assets.poff.ee`;
   exec(put_command, (err, stdout, stderr) => {
     if (err) {
+      logger("Add error:")
+      logger(err)
       console.log('vsjo problema');
       return
     }
-    // the *entire* stdout and stderr (buffered)
-    // console.log(`stdout: ${stdout}`)
-    // console.log(`stderr: ${stderr}`)
   })
 }
 
@@ -36,15 +43,81 @@ function deleteFromZone(file_name) {
   const del_command = `echo delete ${file_name} | ftp assets.poff.ee`;
   exec(del_command, (err, stdout, stderr) => {
     if (err) {
+      logger("Delete error:")
+      logger(err)
       console.log('vsjo problema');
       return
     }
-    // the *entire* stdout and stderr (buffered)
-    // console.log(`stdout: ${stdout}`)
-    // console.log(`stderr: ${stderr}`)
   })
 }
 
+function logger(content){
+  if(logging){
+    let logFile = '/srv/strapi/imgLog.txt'
+    fs.appendFileSync(logFile, content + "\n")
+  }
+}
+
+function recheck(){
+  logger("\nRechecking")
+  console.log('Rechecking')
+
+  let fileData = { "files": [] }
+  let file = '/srv/strapi/imgList.json'
+
+  try {
+    if (fs.existsSync(file)) {
+
+      let readFile = fs.readFileSync(file)
+      let fileJsonData = JSON.parse(readFile)
+      fileData.files = fileJsonData?.files
+
+      let serverFiles = fs.readdirSync('public/uploads')
+
+      serverFiles.forEach(serverFile => {
+        let serverFilePath = 'public/uploads/' + serverFile
+        console.log(serverFilePath)
+        if (!fileData.files.includes(serverFilePath)) {
+          console.log("Adding:" + serverFile)
+          logger("Adding:" + serverFile)
+          fileData.files.push(serverFilePath)
+          console.log(`adding ${serverFile} to zone`)
+          writeToZone(serverFile)
+          logger("Added!")
+        }
+      })
+
+      console.log("\n\n------------!--------------\n\n")
+
+      fileData.files.forEach(filePath => {
+        if (!filePath.startsWith('public/uploads/thumbnail')) {
+          let fileName = filePath.split('/')[2]
+          if(fileName != '.gitkeep'){
+            console.log(filePath)
+            if(!serverFiles.includes(fileName)){
+              console.log("Delete:" + fileName)
+              logger("\nDelete:" + fileName)
+              console.log(`File ${filePath} has been removed`)
+
+              fileData.files.splice(fileData.files.indexOf(filePath), 1)
+
+              console.log(`delete ${fileName} from zone `);
+              deleteFromZone(fileName)
+              logger("Deleted!")
+            }
+          }
+        }
+      })
+
+      let data = JSON.stringify(fileData)
+      fs.writeFileSync(file, data)
+
+    }
+  } catch (err) {
+    console.log(err)
+    logger(err)
+  }
+}
 
 module.exports = () => {
 
@@ -70,25 +143,26 @@ module.exports = () => {
       // Add event listeners.
       watcher
         .on('add', path => {
-
           let fileName = path.split('/')[2]
-          // log(`file -> ${fileName} with path ${path} has been added`)
+          logger("\nCatching:" + fileName)
 
           if (!fileData.files.includes(path)) {
-
+            logger("Adding:" + fileName)
             fileData.files.push(path)
             let data = JSON.stringify(fileData)
             fs.writeFileSync(file, data)
             console.log(`adding ${fileName} to zone`)
             writeToZone(fileName)
+            logger("Added!")
+            setRecheckTimerFunction()
           }
 
         })
 
         .on('unlink', path => {
-
           if (!path.startsWith('public/uploads/thumbnail')) {
             let fileName = path.split('/')[2]
+            logger("\nDelete:" + fileName)
             log(`File ${path} has been removed`)
 
             fileData.files.splice(fileData.files.indexOf(path), 1)
@@ -97,7 +171,8 @@ module.exports = () => {
 
             console.log(`delete ${fileName} from zone `);
             deleteFromZone(fileName)
-
+            logger("Deleted!")
+            setRecheckTimerFunction()
           }
 
         })

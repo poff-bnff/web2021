@@ -86,22 +86,4 @@ head
     meta(name='msapplication-config' content='/assets/img/static/favicons/browserconfig.xml')
 
 
-    if process.env['ChatBundle']
-        script(type='module').
-            import { DeepChat } from "#{process.env['ChatBundle']}";
-            let chatSessionId;
-            const deepChatElement = document.getElementById('chat-element');
-            deepChatElement.requestInterceptor = (requestDetails) => {
-                if (chatSessionId) {
-                    requestDetails.body.chatSessionId = chatSessionId;
-                }
-                return requestDetails;
-            };
-            deepChatElement.responseInterceptor = (response) => {
-                if (response.chatSessionId) {
-                    chatSessionId = response.chatSessionId;
-                }
-                return response;
-            };
-
     title Tartuff : Tartuff

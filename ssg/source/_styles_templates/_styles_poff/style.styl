@@ -914,7 +914,7 @@ a .dark:hover
     display grid
     grid-template-columns repeat(auto-fit, minmax(300px, 1fr))
     // grid-gap calc(1.9rem + 1.5vw)
-    grid-gap 2rem
+    grid-gap 1rem
     // padding-top calc(1.9rem + 1.5vw)
     // padding-bottom calc(1.9rem + 1.5vw)
     // padding-top 2rem
@@ -924,6 +924,8 @@ a .dark:hover
     // justify-items stretch
     // align-items stretch
     background-color white
+    padding-top 2rem
+    padding-bottom 2rem
 
 .trio_image
     width 100%
@@ -2891,6 +2893,19 @@ a.btn_popover
         text-decoration none
         color white_96
 
+#supporter-popup
+    position fixed
+    top 124px
+    right 0
+    z-index 500
+    text-align center
+    background-color none
+    border 0
+    padding 0
+    margin 0
+    width 24%
+    height auto
+
 
 // .agree_terms_label:before
 //     content
@@ -3049,6 +3064,7 @@ a.btn_popover
         height calc(100vh - 97px)
 
     .trio_block
+        grid-gap 2rem
         padding-left 2rem
         padding-right 2rem
         // margin-bottom 6rem
@@ -3072,6 +3088,7 @@ a.btn_popover
         justify-items stretch
         align-items stretch
         background-color bg_color_1
+        padding-bottom 6rem
 
     .viieka_item:first-child
     .viieka_item:nth-child(2)
@@ -3250,7 +3267,7 @@ a.btn_popover
         // display flex
         // justify-content flex-start
         // align-items flex-end
-        width 360px
+        width 150px
         // padding-left 1.2rem
         // padding-bottom .3rem
         // padding-top .4rem
@@ -3527,9 +3544,3 @@ strong
         width auto
         margin auto
         padding auto
-
-deep-chat
-    position fixed !important
-    z-index 999
-    bottom 30px
-    right 30px

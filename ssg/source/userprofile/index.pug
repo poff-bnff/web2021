@@ -57,10 +57,10 @@ block content
 
             .sub_section_headline.text_center#profileAliasesTitle= self.label.userprofile.aliasSectionTitle
 
+            ol#aliasList
+
             div#addAliasButton
                 button.btn.btn_primary#addAliasAccount(onclick='addAliasAccount(this)')= self.label.userprofile.addAliasAccountButton
-
-            ol#aliasList
 
     style.
         .userinfo {
@@ -101,7 +101,7 @@ block content
         }
         #addAliasButton {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         .invalid {background-color: transparent; display: block; color: #495057}
         .valid {background-color: #ccf1e7; display: none}
