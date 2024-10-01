@@ -207,4 +207,5 @@ test.*
 
 # acty local
 ssg/acty_run_local.sh
+ssg/acty_test_fetch.sh
 maintenance/eventival.rest
