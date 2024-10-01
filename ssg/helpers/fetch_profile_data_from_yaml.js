@@ -1,7 +1,7 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
-const rueten = require('./rueten.js');
+const fs = require('fs')
+const yaml = require('js-yaml')
+const path = require('path')
+const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
 
 const rootDir = path.join(__dirname, '..')
@@ -12,12 +12,13 @@ const INDUSTRY_PERSON_IN_EDITIONS = DOMAIN_SPECIFICS.industry_person_in_editions
 const MAIN_SERVICE_CATEGORIES = DOMAIN_SPECIFICS.main_service_categories
 const ACTOR_ROLES = DOMAIN_SPECIFICS.actor_roles
 
-const sourceDir = path.join(rootDir, 'source');
-const fetchDir = path.join(sourceDir, '_fetchdir');
-const strapiDataPathOrg = path.join(sourceDir, '_allStrapidata', 'Organisation.yaml');
-const strapiDataPathPerson = path.join(sourceDir, '_allStrapidata', 'Person.yaml');
-const strapiDataPathServiceCategory = path.join(sourceDir, '_allStrapidata', 'ServiceCategory.yaml');
-const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
+const sourceDir = path.join(rootDir, 'source')
+const fetchDir = path.join(sourceDir, '_fetchdir')
+const strapiDataPathOrg = path.join(sourceDir, '_allStrapidata', 'Organisation.yaml')
+const strapiDataPathPerson = path.join(sourceDir, '_allStrapidata', 'Person.yaml')
+const strapiDataPathServiceCategory = path.join(sourceDir, '_allStrapidata', 'ServiceCategory.yaml')
+const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
+const active_editions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
 const SHORT_DESC_LENGTH = 100
 const DATALIMIT = parseInt(process.env['ORGANISATIONLIMIT']) || 0
 
@@ -139,9 +140,9 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
         }
 
         filteredProfiles.sort((a, b) => `${a.filterName}`.localeCompare(`${b.filterName}`, lang))
-        const filteredProfilesYAML = yaml.dump(filteredProfiles, { 'noRefs': true, 'indent': '4' });
-        fs.writeFileSync(yamlPath, filteredProfilesYAML, 'utf8');
-        console.log(`Fetched ${filteredProfiles.length} profiles for ${DOMAIN}`);
+        const filteredProfilesYAML = yaml.dump(filteredProfiles, { 'noRefs': true, 'indent': '4' })
+        fs.writeFileSync(yamlPath, filteredProfilesYAML, 'utf8')
+        console.log(`Fetched ${filteredProfiles.length} profiles for ${DOMAIN}`)
 
         generateProfileSearchAndFilterYamls(allProfileData, lang)
     }
@@ -181,12 +182,12 @@ function getListProfileData(profile) {
 }
 
 function uppercase(value) {
-    return value.charAt(0).toUpperCase() + value.slice(1);
+    return value.charAt(0).toUpperCase() + value.slice(1)
 }
 
 
 function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
+    return Object.keys(object).find(key => object[key] === value)
 }
 
 function generateProfileSearchAndFilterYamls(profiles, lang) {
@@ -208,17 +209,22 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         haircolours: {},
         hairlengths: {},
         pitches: {},
-    };
+        itypes: {},
+        icategories: {},
+    }
 
     filters.profiletype["actors"] = "actors"
     filters.profiletype["services"] = "services"
+    filters.profiletype["activefestival"] = "activefestival"
 
-    let serviceCategories = getServiceCategories();
+    let hasActiveFestivalProfiles = false
+
+    let serviceCategories = getServiceCategories()
 
     for (const main of serviceCategories){
-        let isMain = getKeyByValue(MAIN_SERVICE_CATEGORIES, main.id);
+        let isMain = getKeyByValue(MAIN_SERVICE_CATEGORIES, main.id)
         if(isMain){
-            filters.maincategories[isMain] = {id: main.id, serviceName: main.name_en, svg: main.svgCode};
+            filters.maincategories[isMain] = {id: main.id, serviceName: main.name_en, svgCode: main.svgCode, svgMedia: main.svgMedia}
         }
     }
 
@@ -233,71 +239,77 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profile.bio,
             profile.description,
             profile.skills,
-        ];
+        ]
 
         for (const award of (profile.awardings || [])) {
-            searchText.push(award.title);
+            searchText.push(award.title)
         }
 
         for (const filmWork of (profile.filmographies || [])) {
-            searchText.push(filmWork.work_name);
-            searchText.push(filmWork.actor_role);
+            searchText.push(filmWork.work_name)
+            searchText.push(filmWork.actor_role)
         }
 
 
-        let roleatfilms = [];
-        let profilecategories = [];
+        let roleatfilms = []
+        let profilecategories = []
         for (const role of (profile.role_at_films || [])
-            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+            .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0) })
             || []) {
-            const roleName = role.roleName;
-            searchText.push(roleName);
-            roleatfilms.push(roleName);
-            filters.roleatfilms[roleName] = roleName;
+            const roleName = role.roleName
+            searchText.push(roleName)
+            roleatfilms.push(roleName)
+            filters.roleatfilms[roleName] = roleName
             if(ACTOR_ROLES.includes(role.id)){
-                filters.actorroles[roleName] = roleName;
+                filters.actorroles[roleName] = roleName
             }
             for (const service of serviceCategories){
                 if(!service.is_main_cat || service.is_main_cat != true){
                     if (service.role_at_films && service.role_at_films.some(el => el.id === role.id)){
-                        const serviceName = service.name_en;
-                        profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : "";
-                        filters.profilecategories[serviceName] = {id: service.id, serviceName: serviceName, svg: service.svgMedia};
+                        const serviceName = service.name_en
+                        profilecategories.indexOf(serviceName) === -1 ? profilecategories.push(serviceName) : ""
+                        filters.profilecategories[serviceName] = {
+                            id: service.id,
+                            serviceName: serviceName,
+                            svgCode: service.svgCode ? service.svgCode : "",
+                            svgMedia: service.svgMedia ? service.svgMedia : "",
+                            sortOrder: service.order ? service.order : 0
+                        }
                     }
                 }
             }
         }
 
-        let location = [];
+        let location = []
         if (profile.addr_coll){
             if(profile.addr_coll.country && profile.addr_coll.country.name){
-                let profileLocation = profile.addr_coll.country.name;
-                location.push(profileLocation);
-                filters.location[profileLocation] = profileLocation;
+                let profileLocation = profile.addr_coll.country.name
+                location.push(profileLocation)
+                filters.location[profileLocation] = profileLocation
 
                 if(profile.addr_coll.county && profile.addr_coll.county.name){
-                    profileLocation += ", " + profile.addr_coll.county.name;
-                    location.push(profileLocation);
-                    filters.location[profileLocation] = profileLocation;
+                    profileLocation += ", " + profile.addr_coll.county.name
+                    location.push(profileLocation)
+                    filters.location[profileLocation] = profileLocation
                 }
             }
         }
 
-        let lookingfor = [];
+        let lookingfor = []
         for (const lookingTag of (profile.tag_looking_fors || [])) {
-            let lookingForString = lookingTag.charAt(0).toUpperCase() + lookingTag.slice(1);
-            searchText.push(lookingForString);
-            lookingfor.push(lookingForString);
-            filters.lookingfor[lookingForString] = lookingForString;
+            let lookingForString = lookingTag.charAt(0).toUpperCase() + lookingTag.slice(1)
+            searchText.push(lookingForString)
+            lookingfor.push(lookingForString)
+            filters.lookingfor[lookingForString] = lookingForString
         }
 
-        let languages = [];
-        let nativelangs = [];
-        let otherlangs = [];
+        let languages = []
+        let nativelangs = []
+        let otherlangs = []
         if (profile.profileType === "Organisation") {
             if (profile.languages) {
                 for (const lang of profile.languages) {
-                    languages.push(lang.name);
+                    languages.push(lang.name)
                     filters.languages[lang.name] = lang.name
                 }
             }
@@ -305,89 +317,109 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         else if (profile.profileType === "Actor" || profile.profileType === "Person") {
             if (profile.native_lang) {
                 languages.push(profile.native_lang.name)
-                filters.languages[profile.native_lang.name] = profile.native_lang.name;
+                filters.languages[profile.native_lang.name] = profile.native_lang.name
                 nativelangs.push(profile.native_lang.name)
-                filters.nativelangs[profile.native_lang.name] = profile.native_lang.name;
+                filters.nativelangs[profile.native_lang.name] = profile.native_lang.name
             }
 
             if (profile.other_lang) {
                 for (const olang of profile.other_lang) {
-                    languages.push(olang.name);
+                    languages.push(olang.name)
                     filters.languages[olang.name] = olang.name
-                    otherlangs.push(olang.name);
+                    otherlangs.push(olang.name)
                     filters.otherlangs[olang.name] = olang.name
                 }
             }
         }
 
-        let profiletype = [];
-        profiletype.push(profile.profileType === "Actor" ? "actors" : "services");
+        let profiletype = []
+        let industryPersonTypes = []
+        let industryCategories = []
+        profiletype.push(profile.profileType === "Actor" ? "actors" : "services")
+
+        if(hasActiveFestivalEdition(profile)){
+            hasActiveFestivalProfiles = true
+            profiletype.push("activefestival")
+            if (profile.industry_person_types) {
+                for (type of profile.industry_person_types) {
+                    industryPersonTypes.push(type.type);
+                    filters.itypes[type.type] = type.type;
+                }
+            }
+
+            if (profile.industry_categories) {
+                for (icategory of profile.industry_categories) {
+                    industryCategories.push(icategory.name);
+                    filters.icategories[icategory.name] = icategory.name;
+                }
+            }
+        }
 
         let servicesize = []
         if (profile.serviceSize){
-            servicesize.push(profile.serviceSize);
+            servicesize.push(profile.serviceSize)
             filters.servicesize[profile.serviceSize] = profile.serviceSize
         }
 
-        let genders = [];
+        let genders = []
         if (typeof profile.gender !== 'undefined') {
-            genders.push(profile.gender);
-            filters.genders[profile.gender] = profile.gender;
+            genders.push(profile.gender)
+            filters.genders[profile.gender] = profile.gender
         }
 
-        let statures = [];
+        let statures = []
         if (profile.stature) {
-            let statureName = uppercase(profile.stature.name);
-            statures.push(statureName);
-            filters.statures[statureName] = statureName;
+            let statureName = uppercase(profile.stature.name)
+            statures.push(statureName)
+            filters.statures[statureName] = statureName
         }
 
-        let eyecolours = [];
+        let eyecolours = []
         if (profile.eye_colour) {
             let eyeColour = uppercase(profile.eye_colour.name)
-            eyecolours.push(eyeColour);
-            filters.eyecolours[eyeColour] = eyeColour;
+            eyecolours.push(eyeColour)
+            filters.eyecolours[eyeColour] = eyeColour
         }
 
-        let haircolours = [];
+        let haircolours = []
         if (profile.hair_colour) {
             let hairColour = uppercase(profile.hair_colour.name)
-            haircolours.push(hairColour);
-            filters.haircolours[hairColour] = hairColour;
+            haircolours.push(hairColour)
+            filters.haircolours[hairColour] = hairColour
         }
 
-        let hairlengths = [];
+        let hairlengths = []
         if (profile.hair_length) {
             let hairLength = uppercase(profile.hair_length.name)
-            hairlengths.push(hairLength);
-            filters.hairlengths[hairLength] = hairLength;
+            hairlengths.push(hairLength)
+            filters.hairlengths[hairLength] = hairLength
         }
 
-        let pitches = [];
+        let pitches = []
         if (profile.pitch_of_voice) {
             let pitchName = uppercase(profile.pitch_of_voice.name)
-            pitches.push(pitchName);
-            filters.pitches[pitchName] = pitchName;
+            pitches.push(pitchName)
+            filters.pitches[pitchName] = pitchName
         }
 
-        let profileheight = '';
+        let profileheight = ''
         if (profile.height_cm) {
-            profileheight = profile.height_cm;
+            profileheight = profile.height_cm
         }
 
-        let profileweight = '';
+        let profileweight = ''
         if (profile.weight_kg) {
-            profileweight = profile.weight_kg;
+            profileweight = profile.weight_kg
         }
 
-        let agefrom = '';
+        let agefrom = ''
         if (profile.acting_age_from) {
-            agefrom = profile.acting_age_from;
+            agefrom = profile.acting_age_from
         }
 
-        let ageto = '';
+        let ageto = ''
         if (profile.acting_age_to) {
-            ageto = profile.acting_age_to;
+            ageto = profile.acting_age_to
         }
 
         return {
@@ -412,18 +444,18 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             profileweight: profileweight,
             agefrom: agefrom,
             ageto: ageto,
-
-        };
-    });
+            itypes: industryPersonTypes,
+            icategories: industryCategories,
+        }
+    })
 
     let sorted_filters = {
         roleatfilms: mSort(filters.roleatfilms),
         location: mSort(filters.location),
         languages: mSort(filters.languages),
         lookingfor: mSort(filters.lookingfor),
-        profiletype: mSort(filters.lookingfor),
         servicesize: mSort(filters.servicesize),
-        profilecategories: filters.profilecategories,
+        profilecategories: orderSort(filters.profilecategories),
         maincategories: filters.maincategories,
         actorroles: filters.actorroles,
         nativelangs: mSort(filters.nativelangs),
@@ -434,13 +466,16 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         haircolours: mSort(filters.haircolours),
         hairlengths: mSort(filters.hairlengths),
         pitches: mSort(filters.pitches),
-    };
+        itypes: mSort(filters.itypes),
+        icategories:  mSort(filters.icategories),
+        activefestivalprofiles: hasActiveFestivalProfiles
+    }
 
-    let searchYAML = yaml.dump(profiles_search, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `search_profiles.${lang}.yaml`), searchYAML, 'utf8');
+    let searchYAML = yaml.dump(profiles_search, { 'noRefs': true, 'indent': '4' })
+    fs.writeFileSync(path.join(fetchDir, `search_profiles.${lang}.yaml`), searchYAML, 'utf8')
 
-    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
-    fs.writeFileSync(path.join(fetchDir, `filters_profiles.${lang}.yaml`), filtersYAML, 'utf8');
+    let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' })
+    fs.writeFileSync(path.join(fetchDir, `filters_profiles.${lang}.yaml`), filtersYAML, 'utf8')
 }
 
 function getServiceCategories() {
@@ -632,7 +667,13 @@ function getActiveOrganisations() {
         },
         'languages': {
             model_name: 'Language'
-        }
+        },
+        'industry_categories': {
+            model_name: 'IndustryCategory'
+        },
+        'industry_person_types': {
+            model_name: 'IndustryPersonType'
+        },
     }
     console.log(`Fetching ${DOMAIN} organisation data`)
     const STRAPIDATA_ALL_ORGANISATIONS = fetchModel(STRAPIDATA_ORGANISATION, minimodel)
@@ -663,7 +704,7 @@ function mSort(to_sort) {
 
     let sortable = []
     for (var item in to_sort) {
-        sortable.push([item, to_sort[item]]);
+        sortable.push([item, to_sort[item]])
     }
 
     sortable = sortable.sort(function (a, b) {
@@ -671,15 +712,38 @@ function mSort(to_sort) {
             const locale_sort = a[1].localeCompare(b[1], lang)
             return locale_sort
         } catch (error) {
-            console.log('failed to sort', JSON.stringify({ a, b }, null, 4));
+            console.log('failed to sort', JSON.stringify({ a, b }, null, 4))
             throw new Error(error)
         }
-    });
+    })
 
     var objSorted = {}
     for (let index = 0; index < sortable.length; index++) {
-        const item = sortable[index];
+        const item = sortable[index]
         objSorted[item[0]] = item[1]
     }
     return objSorted
+}
+
+function orderSort(to_sort) {
+    //Create sortable
+    let sortable = []
+    for (var item in to_sort) {
+        sortable.push([item, to_sort[item]])
+    }
+
+    //Sort
+    sortable = sortable.sort((a, b) => a[1].sortOrder - b[1].sortOrder)
+
+    //Return object
+    var objSorted = {}
+    for (let index = 0; index < sortable.length; index++) {
+        const item = sortable[index]
+        objSorted[item[0]] = item[1]
+    }
+    return objSorted
+}
+
+function hasActiveFestivalEdition(profile) {
+    return profile.festival_editions.some(obj => active_editions.includes(obj.id))
 }
