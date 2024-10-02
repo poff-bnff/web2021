@@ -15,14 +15,32 @@ block content
                 label.profile_type_selection
                     input(class="profile-type-input" type="radio", name="profileType", value='services' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
                     .type_selection_box
-                        span.profile_type_svg !{self.data.filters.maincategories.services.svg}
+                        if self.data.filters.maincategories.services.svgCode
+                            span.profile_type_svg !{self.data.filters.maincategories.services.svgCode}
+                        else if self.data.filters.maincategories.services.svgMedia
+                            - var serviceIcon = `${assetsDir}${self.data.filters.maincategories.services.svgMedia.hash}${self.data.filters.maincategories.services.svgMedia.ext}`
+                            img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.services.serviceName}`)
                         span.profile_type_name= self.data.filters.maincategories.services.serviceName
 
                 label.profile_type_selection
                     input(class="profile-type-input" type="radio", name="profileType", value='actors' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
                     .type_selection_box
-                        span.profile_type_svg !{self.data.filters.maincategories.actors.svg}
+                        if self.data.filters.maincategories.actors.svgCode
+                            span.profile_type_svg !{self.data.filters.maincategories.actors.svgCode}
+                        else if self.data.filters.maincategories.actors.svgMedia
+                            - var serviceIcon = `${assetsDir}${self.data.filters.maincategories.actors.svgMedia.hash}${self.data.filters.maincategories.actors.svgMedia.ext}`
+                            img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.actors.serviceName}`)
                         span.profile_type_name= self.data.filters.maincategories.actors.serviceName
+
+                label#active_festival_profile_type_selection.profile_type_selection(style='display: none;')
+                    input(class="profile-type-input" type="radio", name="profileType", value='activefestival' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                    .type_selection_box
+                        if self.data.filters.maincategories.activefestival.svgCode
+                            span.profile_type_svg !{self.data.filters.maincategories.activefestival.svgCode}
+                        else if self.data.filters.maincategories.activefestival.svgMedia
+                            - var serviceIcon = `${assetsDir}${self.data.filters.maincategories.activefestival.svgMedia.hash}${self.data.filters.maincategories.activefestival.svgMedia.ext}`
+                            img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.activefestival.serviceName}`)
+                        span.profile_type_name= self.data.filters.maincategories.activefestival.serviceName
 
         section.grid_search.search_profiles
             h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
@@ -33,8 +51,12 @@ block content
                             label.service_select
                                 input(class="service-category-input" type="checkbox", name="selectedServiceCategories", value=key style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox; display: none;')
                                 .service_select_box
-                                    - var serviceIcon = `${assetsDir}${service.svg.hash}${service.svg.ext}`
-                                    img.service_img(src=serviceIcon loading="lazy" alt=`${service.serviceName}`)
+                                    if service.svgCode
+                                        span.service_img !{service.svgCode}
+                                    else if service.svgMedia
+                                        - var serviceIcon = `${assetsDir}${service.svgMedia.hash}${service.svgMedia.ext}`
+                                        img.service_img(src=serviceIcon loading="lazy" alt=`${service.serviceName}`)
+
                                     span.service_name= service.serviceName
 
 
@@ -47,21 +69,24 @@ block content
                     section.range_filters#range_filters
                         .acting_range_box
                             p.range_title= "Acting age"
-                            input(class="range_input" type="number" id="actingAgeFrom" name="actingAgeRange" min="1" max="999")
-                            span.range_divider= "-"
-                            input(class="range_input" type="number" id="actingAgeTo" name="actingAgeRange" min="1" max="999")
+                            div.acting_range_inputs
+                                input(class="range_input" type="number" id="actingAgeFrom" name="actingAgeRange" min="1" max="999")
+                                span.range_divider= "-"
+                                input(class="range_input" type="number" id="actingAgeTo" name="actingAgeRange" min="1" max="999")
 
                         .acting_range_box
                             p.range_title= "Height (cm)"
-                            input(class="range_input" type="number" id="actingHeightFrom" name="actingHeightRange" min="1" max="999")
-                            span.range_divider= "-"
-                            input(class="range_input" type="number" id="actingHeightTo" name="actingHeightRange" min="1" max="999")
+                            div.acting_range_inputs
+                                input(class="range_input" type="number" id="actingHeightFrom" name="actingHeightRange" min="1" max="999")
+                                span.range_divider= "-"
+                                input(class="range_input" type="number" id="actingHeightTo" name="actingHeightRange" min="1" max="999")
 
                         .acting_range_box
                             p.range_title= "Weight (kg)"
-                            input(class="range_input" type="number" id="actingWeightFrom" name="actingWeightRange" min="1" max="999")
-                            span.range_divider= "-"
-                            input(class="range_input" type="number" id="actingWeightTo" name="actingWeightRange" min="1" max="999")
+                            div.acting_range_inputs
+                                input(class="range_input" type="number" id="actingWeightFrom" name="actingWeightRange" min="1" max="999")
+                                span.range_divider= "-"
+                                input(class="range_input" type="number" id="actingWeightTo" name="actingWeightRange" min="1" max="999")
 
                     section.main_filters
                         select#roleatfilms_select(name='Roleatfilms')
@@ -143,6 +168,20 @@ block content
                                 span.size_option
                                     input(class="size_option_value" id=key type="checkbox", name="selectedServiceSize", value=size style='appearance: checkbox; -webkit-appearance: checkbox; -moz-appearance: checkbox; -ms-appearance: checkbox; -o-appearance: checkbox;')
                                     label.size_option_label(for=key)= size
+
+                    section#industry_filters(style="display:none;")
+                        div.industry_background
+                            select#itypes_select(name='Types')
+                                option(value='')= self.label.filters.industryPersonType
+                                if self.data.filters.itypes
+                                    each index, key in self.data.filters.itypes
+                                        option(value=key)= index
+
+                            select#icategories_select(name='Icategories')
+                                option(value='')= self.label.filters.industryCategories
+                                if self.data.filters.icategories
+                                    each index, key in self.data.filters.icategories
+                                        option(value=key)= index
 
         if self.data.profiles && self.data.profiles.length
             - var profilesCount = self.data.profiles.length

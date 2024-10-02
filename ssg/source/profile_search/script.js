@@ -29,6 +29,8 @@ const selectors = {
     haircolours: document.getElementById('haircolours_select'),
     hairlengths: document.getElementById('hairlengths_select'),
     pitches: document.getElementById('pitches_select'),
+    itypes: document.getElementById('itypes_select'),
+    icategories: document.getElementById('icategories_select'),
 }
 
 const serviceFilters = {
@@ -133,13 +135,20 @@ const setSearchParams =  () => {
 }
 
 document.onreadystatechange = () => {
-    const loading = document.getElementById('loading');
-    const filters = document.getElementById('filters');
+    const loadingBlock = document.getElementById('loading');
+    const filtersBlock = document.getElementById('filters');
+    const activeFestivalSelect = document.getElementById('active_festival_profile_type_selection');
+    const activeFestivalBlock = document.getElementById('industry_filters');
+
     if (document.readyState === 'complete') {
         switchView('default')
         urlSelect()
-        filters.style.display = "grid"
-        loading.style.display = "none"
+        filtersBlock.style.display = "grid"
+        loadingBlock.style.display = "none"
+        if(filters.activefestivalprofiles){
+            activeFestivalSelect.style.display = "block"
+            activeFestivalBlock.style.display = "block"
+        }
     }
 };
 
@@ -232,6 +241,14 @@ function arrayWithBaseFilters() {
         .filter(profiles => {
             const compare_with = selectors.pitches.value;
             return compare_with === '' ? true : profiles.pitches.includes(compare_with)
+        })
+        .filter(profiles => {
+            const compare_with = selectors.itypes.value;
+            return compare_with === '' ? true : profiles.itypes.includes(compare_with)
+        })
+        .filter(profiles => {
+            const compare_with = selectors.icategories.value;
+            return compare_with === '' ? true : profiles.icategories.includes(compare_with)
         })
         .filter(profiles => {
             const compare_with = Array.from(profiletypes).filter(profiletype => profiletype.checked).map(profiletype => profiletype.value);
@@ -366,6 +383,14 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : profiles.pitches.includes(compare_with)
                 })
                 .filter(profiles => {
+                    const compare_with = selector_name === 'itypes' ? value : selectors.itypes.value;
+                    return compare_with === '' ? true : profiles.itypes.includes(compare_with)
+                })
+                .filter(profiles => {
+                    const compare_with = selector_name === 'icategories' ? value : selectors.icategories.value;
+                    return compare_with === '' ? true : profiles.icategories.includes(compare_with)
+                })
+                .filter(profiles => {
                     if(rangefilters.agefrom.value || rangefilters.ageto.value){
                         return rangeFilter(profiles.agefrom, profiles.ageto, rangefilters.agefrom.value, rangefilters.ageto.value)
                     } else {
@@ -412,7 +437,7 @@ function switchView(type){
         selectors.lookingfor.selectedIndex = 0;
         selectors.languages.selectedIndex = 0;
     }
-    else if(type == 'services' || type == 'default'){
+    else if(type == 'services' || type == 'activefestival' || type == 'default'){
         for (sFilterName in serviceFilters) {
             serviceFilters[sFilterName].style.display = '';
         }
@@ -566,6 +591,14 @@ selectors.pitches.addEventListener('change', e => {
     toggleAll('pitches');
 });
 
+selectors.itypes.addEventListener('change', e => {
+    toggleAll('itypes');
+});
+
+selectors.icategories.addEventListener('change', e => {
+    toggleAll('icategories');
+});
+
 function clear_all() {
     Array.from(profiletypes).forEach((profiletype) => profiletype.checked = false);
     switchView('default');
@@ -689,6 +722,20 @@ function execute_filters() {
         .filter(profiles => {
             if (selectors.pitches.value) {
                 return profiles.pitches.includes(selectors.pitches.value)
+            } else {
+                return true
+            }
+        })
+        .filter(profiles => {
+            if (selectors.itypes.value) {
+                return profiles.itypes.includes(selectors.itypes.value)
+            } else {
+                return true
+            }
+        })
+        .filter(profiles => {
+            if (selectors.icategories.value) {
+                return profiles.icategories.includes(selectors.icategories.value)
             } else {
                 return true
             }
