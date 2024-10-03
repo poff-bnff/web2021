@@ -48,5 +48,8 @@ header
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
+    if process.env['ChatApi'] && self.deepchatActiveInWeb
+    include ../_templates/deep_chat_filmikool.pug
+
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

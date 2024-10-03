@@ -42,6 +42,8 @@ for (const lang of allLanguages) {
     let globalData= yaml.load(fs.readFileSync(globalDataPath, 'utf8'))
     globalData.footer = buffer
 
+    globalData.deepchatActiveInWeb = DOMAIN_SPECIFICS.deepchatActiveInWeb[DOMAIN]
+
     let allDataYAML = yaml.dump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(globalDataPath, allDataYAML, 'utf8')
 }
