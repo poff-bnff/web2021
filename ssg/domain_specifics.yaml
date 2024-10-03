@@ -45,6 +45,19 @@ cassettesAndFilmsShowVotemo:
     shorts.poff.ee: false
     tartuff.ee: true
 
+deepchatActiveInWeb:
+    discoverycampus.poff.ee: false
+    filmikool.poff.ee: false
+    hoff.ee: false
+    industry.poff.ee: false
+    justfilm.ee: false
+    kinoff.poff.ee: false
+    kumu.poff.ee: false
+    oyafond.ee: false
+    poff.ee: false
+    shorts.poff.ee: false
+    tartuff.ee: false
+
 XML_festival_editions: [76, 77] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:

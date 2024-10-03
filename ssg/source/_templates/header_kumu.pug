@@ -44,6 +44,9 @@ header
     script.
         var langpath = "!{(lang_path)}"
 
+    if process.env['ChatApi'] && self.deepchatActiveInWeb
+    include ../_templates/deep_chat_kumu.pug
+
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
 
