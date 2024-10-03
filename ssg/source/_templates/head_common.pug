@@ -56,3 +56,6 @@ if self.lead
     meta(name="twitter:description" content=self.lead)
 else if self.synopsis
     meta(name="twitter:description" content=self.synopsis)
+
+if process.env['ChatBundle'] && self.deepchatActiveInWeb
+    include ../_templates/deep_chat_head_bundle.pug

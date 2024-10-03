@@ -1,0 +1,60 @@
+if self.locale == "et"
+    - var chatPlaceholder = 'Küsi midagi filmide kohta'
+else
+    - var chatPlaceholder = 'Ask me anything about movies'
+
+deep-chat(
+    id="chat-element"
+    connect=`{"url": "${process.env['ChatApi']}","method": "POST","headers": {"domainName": "discoverycampus.poff.ee"}}`
+    requestBodyLimits='{"maxMessages": 10}'
+    chatStyle='{"width": "410px", "height": "600px"}'
+    style="position: fixed; right: 1%; bottom: 60px; max-height: calc(100vh - 180px); background-color: #fafafa;"
+    messageStyles='{"default": {"shared": {"bubble": {"maxWidth": "80%"}}}}'
+    textInput=`{"placeholder": {"text": "${chatPlaceholder}"}}`
+    )
+
+script.
+    if ('#{self.locale}' == 'et') {
+        var chatTitle = 'AI Hunt: kes ma olen ja mis teha oskan';
+        var chatText = `
+          <span>Näidis küsimused ja juhised</span>
+          <br>
+          <span>Näidis küsimus 1</span>
+          <br>
+          <span>Näidis küsimus 2</span>
+          <br>
+          <span>Näidis küsimus 3</span>
+          <br>
+          <a href="poff.ee">poff.ee</a>
+          <br>
+          <span>Head vestlust</span>
+          <br>
+          `;
+    } else {
+        var chatTitle = 'The AI Hunt: who am i and how to talk to me';
+        var chatText = `
+          <span>Sample questions & instructions for talking to the AI Hunt</span>
+          <br>
+          <span>Sample question 1</span>
+          <br>
+          <span>Sample question 2</span>
+          <br>
+          <span>Sample question 3</span>
+          <br>
+          <a href="poff.ee">poff.ee</a>
+          <br>
+          <span>Have a good talk</span>
+          <br>
+          `;
+    }
+
+    const chatElementRef = document.getElementById('chat-element');
+    chatElementRef.setAttribute(
+      'topPanel',
+      JSON.stringify({
+        panelTitle: chatTitle,
+        panelText: chatText
+      })
+    );
+
+deep-chat-toggle(toggleStyle='{"bottom": "15px"}')
