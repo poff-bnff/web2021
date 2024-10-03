@@ -110,5 +110,8 @@ header.menu
         //- Below boolean needed for login
         var industryPage = true
 
+    if process.env['ChatApi'] && self.deepchatActiveInWeb
+    include ../_templates/deep_chat_industry.pug
+
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
