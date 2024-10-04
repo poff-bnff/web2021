@@ -162,9 +162,6 @@
     "country": {
       "model": "country"
     },
-    "clients": {
-      "collection": "organisation"
-    },
     "filmographies": {
       "collection": "filmography",
       "via": "organisation"
@@ -247,6 +244,14 @@
     },
     "industry_person_types": {
       "collection": "industry-person-type"
+    },
+    "people": {
+      "collection": "person",
+      "via": "organisations"
+    },
+    "client": {
+      "via": "client_organisation",
+      "model": "client"
     }
   }
 }
