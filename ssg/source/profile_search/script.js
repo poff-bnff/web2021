@@ -56,7 +56,7 @@ function urlSelect() {
             const filterValue = decodeURIComponent(params);
             if (selectors[ix]) {
                 for (const option of selectors[ix].options) {
-                    if (option.innerHTML === params) {
+                    if (option.innerHTML === filterValue) {
                         selectors[ix].value = option.value
                     }
                 }
