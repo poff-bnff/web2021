@@ -2474,12 +2474,6 @@
               "looking_for": {
                 "type": "string"
               },
-              "clients": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "h_rate_from": {
                 "type": "integer"
               },
@@ -2494,6 +2488,9 @@
               },
               "orderedRaF": {
                 "type": "component"
+              },
+              "client": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -3415,12 +3412,6 @@
                 "country": {
                   "type": "string"
                 },
-                "clients": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "filmographies": {
                   "type": "array",
                   "items": {
@@ -3513,6 +3504,15 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "people": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "client": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

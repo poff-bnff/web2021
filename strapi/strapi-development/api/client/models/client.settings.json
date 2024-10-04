@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "clients",
   "info": {
-    "name": "Client"
+    "name": "Client",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,13 +12,29 @@
   },
   "attributes": {
     "organisation": {
-      "model": "organisation"
+      "model": "organisation",
+      "via": "client"
     },
     "url": {
       "type": "string"
     },
     "description": {
       "type": "richtext"
+    },
+    "client_organisation": {
+      "model": "organisation",
+      "via": "client"
+    },
+    "person": {
+      "model": "person",
+      "via": "client"
+    },
+    "client_person": {
+      "model": "person",
+      "via": "client"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

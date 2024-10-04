@@ -15,7 +15,7 @@ const { exec, execSync, spawn } = require('child_process');
 const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 const path = require('path')
-const logging = false
+const logging = true
 
 let recheckTimerVar = null
 
