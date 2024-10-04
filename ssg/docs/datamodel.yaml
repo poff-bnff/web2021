@@ -699,8 +699,8 @@ Organisation: &Organisation
     eMail: email
     filmographies:
         - *Filmography
-    clients:
-        - *Organisation
+    # clients:
+    #     - *Client
     skills_et: text
     skills_en: text
     skills_ru: text
@@ -1601,8 +1601,8 @@ Person: &Person
     industry_categories:
         - *IndustryCategory
     looking_for: text
-    clients:
-        - *Organisation
+    # clients:
+    #     - *Client
     h_rate_from: number
     h_rate_to: number
     orderedRaF: #(Component (repeatable))
@@ -1659,6 +1659,14 @@ Team: &Team
     slug_et: (UID)
     slug_en: (UID)
     slug_ru: (UID)
+
+Client: &Client
+    _path: /clients
+    url: (Text)
+    description: (Rich text)
+    domain: *Domain #(Component)
+    organisation: *Organisation
+    client_organisation: *Organisation
 
 # Screening & Film
 
