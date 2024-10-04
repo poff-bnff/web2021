@@ -54,7 +54,9 @@ function deleteFromZone(file_name) {
 function logger(content){
   if(logging){
     let logFile = '/srv/strapi/imgLog.txt'
-    fs.appendFileSync(logFile, content + "\n")
+    const d = new Date()
+    let dateTime = d.toLocaleString("fi-FI")
+    fs.appendFileSync(logFile, dateTime + " : " + content + "\n")
   }
 }
 
@@ -175,6 +177,18 @@ module.exports = () => {
             setRecheckTimerFunction()
           }
 
+        })
+
+        .on('change', path => {
+          logger("\nChange:" + path)
+        })
+
+        .on('error', error => {
+          logger("\nError:" + error)
+        })
+
+        .on('raw', (event, path, details) => {
+          logger("\nRaw: " + event + " " + path)
         })
     }
   } catch (err) {
