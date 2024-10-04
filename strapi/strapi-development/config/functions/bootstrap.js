@@ -15,7 +15,7 @@ const { exec, execSync, spawn } = require('child_process');
 const { StringDecoder } = require('string_decoder')
 const decoder = new StringDecoder('utf8')
 const path = require('path')
-const logging = true
+const logging = false
 
 let recheckTimerVar = null
 
@@ -55,8 +55,8 @@ function logger(content){
   if(logging){
     let logFile = '/srv/strapi/imgLog.txt'
     const d = new Date()
-    let dateTime = d.toLocaleString("fi-FI")
-    fs.appendFileSync(logFile, dateTime + " : " + content + "\n")
+    let dateTime = d.toLocaleString("et-EE")
+    fs.appendFileSync(logFile, dateTime + " : " + content + "\n\n")
   }
 }
 
