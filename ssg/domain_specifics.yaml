@@ -58,7 +58,7 @@ deepchatActiveInWeb:
     shorts.poff.ee: false
     tartuff.ee: false
 
-XML_festival_editions: [73, 74] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [74] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
