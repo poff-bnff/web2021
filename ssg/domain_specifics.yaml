@@ -28,7 +28,7 @@ cassettes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 75]
+    poff.ee: [73, 74]
     shorts.poff.ee: [79] # - 30
     tartuff.ee: [78]
 
@@ -58,7 +58,7 @@ deepchatActiveInWeb:
     shorts.poff.ee: false
     tartuff.ee: false
 
-XML_festival_editions: [76, 77] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [73, 74] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
@@ -69,7 +69,7 @@ programmes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 75, 79]
+    poff.ee: [73, 74]
     shorts.poff.ee: [79]
     tartuff.ee: [78]
 
