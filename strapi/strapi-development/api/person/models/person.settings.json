@@ -40,7 +40,9 @@
       "type": "date"
     },
     "organisations": {
-      "collection": "organisation"
+      "via": "people",
+      "collection": "organisation",
+      "dominant": true
     },
     "profession": {
       "type": "string"
@@ -270,9 +272,6 @@
     "looking_for": {
       "type": "text"
     },
-    "clients": {
-      "collection": "organisation"
-    },
     "h_rate_from": {
       "type": "integer"
     },
@@ -289,6 +288,10 @@
       "type": "component",
       "repeatable": true,
       "component": "credentials.ordered-ra-f"
+    },
+    "client": {
+      "via": "client_person",
+      "model": "client"
     }
   }
 }
