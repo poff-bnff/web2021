@@ -72,7 +72,7 @@ if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
     whichScreeningTypesToFetch.push('first wave first screening')
     // whichScreeningTypesToFetch.push('regular')
     // whichScreeningTypesToFetch.push('online kino')
-    whichScreeningTypesToFetch.push('free')
+    // whichScreeningTypesToFetch.push('free')
 }
 
 const mapping = DOMAIN_SPECIFICS.domain
