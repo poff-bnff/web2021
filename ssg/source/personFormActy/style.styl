@@ -1,0 +1,404 @@
+.invalid
+    background-color transparent
+    display block
+    color red
+.valid
+    background-color #ccf1e7
+    display none
+.invalidColor
+    background-color #fff3e8
+.c_invalid
+    background-color #fff3e8
+.c_valid
+    background-color transparent
+h4
+    color #464646
+h1
+    color #495057
+#personProfileSent
+    color #495057
+label
+    color #495057
+#imgError
+    color red
+#removeProviderWarning
+    display flex
+    flex-direction column
+a.btn.btn-primary
+    background-color #ccf1e7
+    color #495057
+form.imput-form.input.login_input.form_control
+    background-color #ffffff
+
+/*new css*/
+
+
+
+
+
+.organisationprofile, addProType
+    width 343px
+
+
+@media only screen and (min-width: 641px)
+    .organisationprofile
+        width 770px
+    .addProType
+        width 549px
+
+
+@media only screen and (min-width: 1121px)
+    .addProType
+        width 549px
+    .organisationprofile
+        width 952px
+
+        .fieldset_grid
+            grid-template-columns repeat(auto-fit, minmax(260px, 260px));
+            grid-column-gap 12px
+            max-width 1200px
+
+            .buttons
+                clear both
+
+        .fieldset_grid.one_column
+            grid-template-columns repeat(auto-fit, minmax(900px, 900px));
+
+        .fieldset_grid.two_columns_even
+            grid-template-columns repeat(auto-fit, minmax(467px, 467px));
+            grid-column-gap 18px
+        .fieldset_grid.two_columns_uneven
+            grid-template-columns 265px 530px
+
+
+.titleSmall
+    font-size 16px
+    text-transform uppercase
+    font-weight 300
+    line-height 20px
+    padding-bottom 20px
+
+.titleLarge
+    font-size 32px
+    font-weight 500
+    line-height 40px
+    padding-bottom 20px
+
+.addProDescription
+    padding-bottom 20px
+
+.userprofile.addProSection
+    padding-top 20px
+
+.addProType
+    margin-top 200px
+    margin-left 6vw
+    margin-right 6vw
+    margin-bottom 10px
+    color black
+
+.organisationprofile
+    margin-top 20px
+    margin-left 6vw
+    margin-right 6vw
+    margin-bottom 5rem
+    color black
+    font-family 'Fira Sans Condensed',sans-serif
+    font-weight 400
+    line-height 125%
+    font-style normal;
+    color #123123
+    opacity 0.5
+    pointer-events none
+
+
+    legend
+        font-size 20px
+        line-height 125%
+
+    legend + *
+        -webkit-margin-top-collapse separate;
+        clear both
+
+    fieldset
+        padding-top 58px
+        .fieldset_grid
+            display none
+        .fieldset_grid.buttons
+            display grid
+        .fieldset_grid.always_opened
+            display grid
+
+    fieldset.opened
+        .fieldset_grid
+            display grid
+        .fieldset_grid.buttons
+            display none
+
+
+    .gallery_image_fields input
+        max-width 260px
+        width 260px
+
+    .filmography .switch, .on_going_projects .switch
+        padding-left 20px
+
+    #org_employees_n
+        width 117px
+        min-width 117px
+
+    .rate_field
+        width 117px
+        min-width 117px
+
+    .running_time_field
+        width 154px
+        min-width 154px
+
+    .year_label
+        width 123px
+        min-width 123px
+
+    .year_of_completion
+        float: right
+
+    .year_field
+        width 115px
+        min-width 115px
+
+    .rate_gap
+        margin-left 10px
+        margin-right 10px
+
+    label
+        width 100%
+    label span:first-of-type
+        display block
+    label span.required
+        display inline
+
+    .form_group.textarea
+        position relative
+        display inline-block
+
+        .count
+            position absolute
+            bottom 20px
+            right 20px
+            span
+                display inline
+
+    .form_group .field
+        padding-bottom 10px
+
+    textarea
+        width 100%
+        height 150px
+        padding 12px 20px
+        box-sizing border-box
+        border 2px solid #ccc
+        border-radius 4px
+        font-size: 16px
+        resize none
+
+    .required
+        color: #12827E
+
+    .hide_fieldset_fields, .remove_fields
+        background none
+        border none
+        cursor pointer
+        font-size 14px
+        color #636769
+        min-width auto
+        width auto
+
+    .duplicate_fields, .duplicate_gallery_fields, .add_next_work
+        background  none
+        text-decoration: underline
+        border none
+        cursor pointer
+        font-size 14px
+        color #636769
+        text-decoration underline
+        text-decoration-color #16A19D
+
+    .duplicate_fields::before, duplicate_gallery_fields::before, .add_next_work::before
+        content "＋"
+        text-decoration none
+        display inline-block
+
+    #org_allow_contact
+        display none
+        all revert
+
+    .imgPreview
+        width 100%
+
+    .error
+        color red
+
+    .filmographies .summary
+        width 540px
+        margin 1px
+        margin-top 10px;
+
+    .filmographies span.is_featured_project
+        float right
+        color #12827e
+
+    .filmography
+        button.opened svg
+            transform rotate(180deg)
+
+    .filmography .still .form_group
+        display: none
+
+    .filmography .is_featured_filmography .still .form_group
+        display: block
+
+    .addr_coll select
+        width 100%
+
+    select
+        width 230px
+        margin-bottom 10px;
+
+    .button_send_feedback
+        background-color #12827E
+        color #fff
+        text-transform uppercase
+        width 268px
+        height 41px
+        marging auto
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 500
+        display: block
+        text-align: center;
+        text-decoration: none;
+        border-radius 4px
+        margin: auto;
+        display flex
+        align-items center
+        justify-content center
+
+
+    input.login_input, button.login_input, button.show_form_fields, button.send_data
+        background-color #12827E
+        color #fff
+        text-transform uppercase
+        width 100%
+        height 41px
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 500
+        border none
+
+        span
+            margin-left: 8px
+
+
+    button.remove_data
+        background-color #fff
+        color #636769
+        width 100%
+        height 41px
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 400
+
+        span
+            margin-left: 8px
+
+    .org_role_at_films
+        .drag_me
+            width 34px
+            cursor: grab;
+            display: inline-block;
+            height: 30px;
+        .nr
+            width 34px
+            display: inline-block;
+
+    .gallery
+        .img-wrap
+            position: relative;
+        .img-wrap .close
+            position absolute
+            top 2px
+            right 2px
+            z-index 100
+
+    #audioreel_preview
+        max-width 400px
+    .switch
+        display inline
+        input[type="checkbox"]
+            display none;
+
+        input[type="checkbox"]:checked ~ .slider
+            background #12827E
+            border none
+
+        input[type="checkbox"]:checked ~ .slider .round
+            background #fff
+            left 18px;
+            transform rotate(360deg);
+
+        .slider,
+        .round
+            border-radius 9999px;
+
+        .slider
+            display inline-block
+            height 29px;
+            width 44px;
+            background #fff
+            position relative;
+            top 6px
+            margin-right 8px
+            border: 1px solid #B0B3B5
+
+        .round
+            height 20px;
+            width 20px;
+            background #12827E
+            position absolute;
+            top 4px;
+            left 4px;
+            cursor pointer;
+
+        .round::before
+            height 11px;
+            width 1px;
+            top 4.5px;
+            left 9.5px;
+
+        .round::after
+            height 1px;
+            width 11px;
+            top 9.5px;
+            left 4.5px;
+
+        .round::before,
+        .round::after
+            content '';
+            position absolute;
+            background #fff;
+            border-radius 2px;
+            transform rotate(45deg);
+
+        input[type="checkbox"]:checked ~ .slider .round::before
+            height 11px;
+            top calc(55% - 6.5px);
+            left calc(60% - 1px);
+            background #636769
+
+
+        input[type="checkbox"]:checked ~ .slider .round::after
+            width 6px;
+            top calc(95% - 7.5px);
+            left calc(22.5% - 1.5px);
+            background #636769
+
+* {
+  scroll-margin-top: 150px;
+}
