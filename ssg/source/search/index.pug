@@ -107,6 +107,12 @@ block content
                                 img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg' alt= cassette.title || cassette.title_et)
                         .card_film_title
                             h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+                                //- h3#title.film_title_locale.dark_1= cassette.title || cassette.title_et
+                            if cassette.logline
+                                p.dark_1= cassette.logline
+                            //- else
+                            //- p.dark_1= cassette.title
+
                             - oneCassette.push(cassette.title || cassette.title_et)
                             - cassettesArray.push(oneCassette)
 
@@ -124,6 +130,7 @@ block content
                                     .str_info_grid_3
                                         .str_info_label.dark_semi= self.label.film.programme
                                         #programmes.str_info_value.dark_1.thin_300= uniqueProgrammes.join(', ')
+                                        //- #programmes.str_info_value.dark_1.thin_300= filmsProgrammes[0]
 
                                 - var filmsDirectors = []
                                 each film in cassette.films

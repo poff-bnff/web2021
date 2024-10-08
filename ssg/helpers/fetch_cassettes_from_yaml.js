@@ -405,6 +405,10 @@ for (const lang of allLanguages) {
             s_cassette_copy.synopsis = replaceBadChars(s_cassette_copy.synopsis, s_cassette_copy.id, 'cassette')
         }
 
+        if (s_cassette_copy.logline && typeof s_cassette_copy.logline === 'string') {
+            s_cassette_copy.logline = replaceBadChars(s_cassette_copy.logline, s_cassette_copy.id, 'cassette')
+        }
+
         // #379 put ordered films to cassette.film
         let ordered_films = s_cassette_copy.orderedFilms.filter(f => f.film)
 
@@ -442,6 +446,9 @@ for (const lang of allLanguages) {
                 }
                 if (onefilm.synopsis && typeof onefilm.synopsis === 'string') {
                     onefilm.synopsis = replaceBadChars(onefilm.synopsis, onefilm.id, 'film')
+                }
+                if (onefilm.logline && typeof onefilm.logline === 'string') {
+                    onefilm.logline = replaceBadChars(onefilm.logline, onefilm.id, 'film')
                 }
             }
         }
@@ -955,6 +962,7 @@ function generateAllDataYAML(allData, lang) {
             text: [
                 cassette.title,
                 cassette.synopsis,
+                cassette.logline,
                 cast_n_crew,
                 film_titles
             ].join(' ').toLowerCase(),
