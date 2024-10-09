@@ -58,11 +58,8 @@ form.imput-form.input.login_input.form_control
             grid-column-gap 12px
             max-width 1200px
 
-            .buttons
-                clear both
-
         .fieldset_grid.one_column
-            grid-template-columns repeat(auto-fit, minmax(900px, 900px));
+            grid-template-columns repeat(auto-fit, minmax(952px, 952px));
 
         .fieldset_grid.two_columns_even
             grid-template-columns repeat(auto-fit, minmax(467px, 467px));
@@ -111,13 +108,11 @@ form.imput-form.input.login_input.form_control
     opacity 0.5
     pointer-events none
 
-
     legend
         font-size 20px
         line-height 125%
 
-    legend + *
-        -webkit-margin-top-collapse separate;
+    .buttons
         clear both
 
     fieldset
@@ -223,7 +218,7 @@ form.imput-form.input.login_input.form_control
         text-decoration underline
         text-decoration-color #16A19D
 
-    .duplicate_fields::before, duplicate_gallery_fields::before, .add_next_work::before
+    .duplicate_fields::before, .duplicate_gallery_fields::before, .add_next_work::before
         content "＋"
         text-decoration none
         display inline-block

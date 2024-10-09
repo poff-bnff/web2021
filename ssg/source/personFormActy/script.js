@@ -1027,7 +1027,7 @@ function  duplicatePreviousElement(event) {
 function duplicateElement(element) {
     const newElement = element.cloneNode(true)
     newElement.querySelector('.remove_fields').addEventListener('click', remove_fields)
-    reset_fields(newElement)
+    resetFields(newElement)
     element.after(newElement)
     return newElement
 }
@@ -1044,13 +1044,13 @@ function remove_fields(el) {
     } else if (fieldset.querySelector('.fields')){
         hideFieldsetFields(el)
     } else if (el.currentTarget.closest('.sub_form')){
-        el.currentTarget.closest('.sub_form').querySelector('select').value = 'default_value'
+        resetFields(el.currentTarget.closest('.sub_form'))
     } else {
-        reset_fields(fieldset)
+        resetFields(fieldset)
     }
 };
 
-function reset_fields(element) {
+function resetFields(element) {
     element.querySelectorAll('input[type="file"], input[type="text"], input[type="text"], input[type="select"], input[type="hidden"], input[type="checkbox"]').forEach(el =>  el.value = "" );
     element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.setAttribute('data-is-deleted', true) });
     element.querySelectorAll('audio').forEach(el => { el.style.display = 'none';  el.src = ''});
@@ -1085,7 +1085,7 @@ document.querySelector('[name="org_country"]').addEventListener('input', event =
 function hideFieldsetFields(el) {
     const fieldset = el.currentTarget.closest('fieldset')
     fieldset.classList.remove('opened')
-    reset_fields(fieldset)
+    resetFields(fieldset)
 }
 
 const fetchOrganisation = async () => {
@@ -1186,7 +1186,7 @@ async function sendOrganisation(organisationData) {
     }
 }
 
-function saveFilmoGraphyChanges()
+function saveFilmographyChanges()
 {
     let organisationData = {}
     if (typeof state.filmographies !== 'undefined') {
@@ -1332,6 +1332,48 @@ function collectFilmographies(field_name, conf, formData, formElement) {
     }
 }
 
+function updateFilmographyhSummaryRow(submitButtonElement, data) {
+    let targetDiv = document.querySelector(".filmographies .list")
+    if (data.is_ongoing) {
+        targetDiv = document.querySelector(".on_going_projects .list")
+    }
+
+    const filmographyDiv = getSummaryRow(data, 'nr')
+    if (data.id) {
+        submitButtonElement.closest('.list').replaceChild(filmographyDiv, submitButtonElement.closest('.filmography'))
+    } else {
+        targetDiv.appendChild(filmographyDiv)
+    }
+}
+
+function getSummaryRow(filmography, index)
+{
+    const template = document.querySelector('.filmographies .filmography_row_template .filmography')
+    let filmographyDiv = template.cloneNode(true)
+
+    let roleAtFilmDiv = ''
+    if (filmography.role_at_films[0] && filmography.role_at_films[0].roleName ) {
+        roleAtFilmDiv = filmographyDiv.querySelector('.role_at_film').innerHTML.replace('%role_at_film%', filmography.role_at_films[0].roleName.en)
+    }
+    filmographyDiv.querySelector('.role_at_film').innerHTML = roleAtFilmDiv
+
+    filmographyDiv.querySelector('strong').innerHTML = filmographyDiv.querySelector('strong').innerHTML.replace('%nr%', index).replace('%work_name%', filmography.work_name)
+
+    let type = 'completed'
+    if (filmography.is_ongoing) {
+        filmographyDiv.querySelector('.is_featured_project').remove()
+        type = 'ongoing'
+    } else {
+        if (filmography.is_featured) {
+            filmographyDiv.querySelector('.is_featured_project').querySelector('input').checked = true
+        }
+    }
+
+    filmographyDiv.querySelector('button').setAttribute('onclick', `toggleFilmoGraphy(event, "${filmography.id}", "${type}")`)
+
+    return filmographyDiv
+}
+
 function showFilmographies(filmographies)
 {
     const filmographiesElement = document.querySelector(".filmographies .list")
@@ -1340,35 +1382,16 @@ function showFilmographies(filmographies)
     filmographiesElement.innerHTML = ""
     onGoingProjectsElement.innerHTML = ""
 
-    const template = document.querySelector('.filmographies .filmography_row_template .filmography')
     for (let i = 0; i < filmographies.length; i++) {
-        let filmography = template.cloneNode(true)
-
-        let role_at_film = ''
-        if (filmographies[i].role_at_films[0]) {
-            role_at_film = filmography.querySelector('.role_at_film').innerHTML.replace('%role_at_film%', filmographies[i].role_at_films[0].roleName.en)
-        }
-        filmography.querySelector('.role_at_film').innerHTML = role_at_film
-
         if (filmographies[i].is_ongoing) {
-            filmography.querySelector('strong').innerHTML = filmography.querySelector('strong').innerHTML.replace('%nr%', onGoingProjectsElement.childNodes.length + 1).replace('%work_name%', filmographies[i].work_name)
-            filmography.querySelector('button').setAttribute('onclick', `toggleFilmoGraphy(event, "${filmographies[i].id}", "ongoing")`)
-
-            filmography.querySelector('.is_featured_project').remove()
-
-            onGoingProjectsElement.appendChild(filmography)
+            const filmographyDiv = getSummaryRow(filmographies[i], onGoingProjectsElement.childNodes.length + 1)
+            onGoingProjectsElement.appendChild(filmographyDiv)
 
             onGoingProjectsElement.closest('.on_going_projects').style.display = 'block';
             onGoingProjectsElement.closest('fieldset').classList.add('opened')
         } else {
-            filmography.querySelector('strong').innerHTML = filmography.querySelector('strong').innerHTML.replace('%nr%', filmographiesElement.childNodes.length + 1).replace('%work_name%', filmographies[i].work_name)
-            filmography.querySelector('button').setAttribute('onclick', `toggleFilmoGraphy(event, "${filmographies[i].id}", "completed")`)
-
-            if (filmographies[i].is_featured) {
-                filmography.querySelector('.is_featured_project').querySelector('input').checked = true
-            }
-
-            filmographiesElement.appendChild(filmography)
+            const filmographyDiv = getSummaryRow(filmographies[i], filmographiesElement.childNodes.length + 1)
+            filmographiesElement.appendChild(filmographyDiv)
 
             filmographiesElement.closest('.filmographies').style.display = 'block';
             filmographiesElement.closest('fieldset').classList.add('opened')
@@ -1388,15 +1411,15 @@ function toggleFilmoGraphy(event, id, type)
         event.currentTarget.closest('.filmography').querySelector('.filled_filmography .filmography_form').remove()
     } else {
         event.currentTarget.classList.add('opened')
-        const formFields = 'type' == 'ongoing' ? getOnGoingFilmographyFields() : getFilmographyFields()
+        const formFields = type == 'ongoing' ? getOnGoingFilmographyFields() : getFilmographyFields()
 
         const targetElement = event.currentTarget.closest('.filmography').querySelector('.filled_filmography')
-        const data = getFilmoGraphyById(id);
+        const data = getFilmographyById(id);
         const subForm = event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').cloneNode(true)
         subForm.classList.remove('template')
         subForm.classList.toggle('is_featured_filmography', !data.is_ongoing && data.is_featured)
         subForm.style.display = 'block'
-        targetElement.append(subForm)
+        targetElement.appendChild(subForm)
         fillFields(targetElement, formFields, data)
     }
 }
@@ -1520,15 +1543,9 @@ function sendFilmography(event, is_ongoing = true) {
         })
     }
 
-    saveFilmoGraphyChanges()
-
-    //showFilmographies(state['filmographies']) //TODO ei saa uuendada kõiki kui mitu filmilahti
-    const form = event.currentTarget.closest('.filmography_form')
-    if (form.classList.contains('template')) {
-        form.style.display = 'none'
-    } else {
-        form.remove()
-    }
+    saveFilmographyChanges()
+    updateFilmographyhSummaryRow(event.currentTarget, data)
+    closeFilmographyForm(event)
 }
 
 function removeFilmography(event)
@@ -1539,19 +1556,26 @@ function removeFilmography(event)
             state.filmographies = organisation['filmographies']
         }
         state['filmographies'] = state['filmographies'].filter((filmography) => filmography['id'] != id)
-        saveFilmoGraphyChanges()
+        saveFilmographyChanges()
     }
 
-    //showFilmographies(state['filmographies']) //TODO ei saa uuendada kõiki kui mitu filmilahti
-    const form = event.currentTarget.closest('.filmography_form')
-    if (form.classList.contains('template')) {
-        form.style.display = 'none'
-    } else {
-        form.remove()
-    }
+    closeFilmographyForm(event)
 }
 
-function getFilmoGraphyById(id) {
+function closeFilmographyForm(event) {
+    const form = event.currentTarget.closest('.filmography_form')
+
+    if (form.classList.contains('template')) {
+        form.style.display = 'none'
+        resetFields(form)
+    } else {
+        form.closest('.filmography').remove()
+    }
+    refreshRowNumbers(document.querySelector('.filmographies'))
+    refreshRowNumbers(document.querySelector('.on_going_projects'))
+}
+
+function getFilmographyById(id) {
     for (let i = 0; i < organisation['filmographies'].length; i++) {
         if (organisation['filmographies'][i].id == id) {
             return organisation['filmographies'][i];
@@ -1867,10 +1891,7 @@ function fillFields(domElement, fields, data) {
                 if (domElement.querySelector('fieldset')) {
                     field.closest('fieldset').classList.add('opened')
                 }
-                //form.querySelectorAll('.fields').forEach(el => el.style.display = 'grid');
-                //form.querySelectorAll('.buttons').forEach(el => el.style.display = 'none');
             }
-
         }
     }
 }
@@ -1995,9 +2016,9 @@ Sortable.create(document.querySelector('.org_role_at_films'),  {
 });
 
 function refreshRowNumbers(el) {
-    const nr_fields = el.querySelectorAll('.nr');
-    for (let index = 0; index < nr_fields.length; index++) {
-        nr_fields[index].innerHTML = `${index+1}.`
+    const nrFields = el.querySelectorAll('.nr');
+    for (let index = 0; index < nrFields.length; index++) {
+        nrFields[index].innerHTML = `${index+1}.`
     }
 }
 
@@ -2011,4 +2032,5 @@ observer.observe(document.querySelector('.org_role_at_films'), {characterData: f
 
 ; (async () => {
     requireLogin()
+    showSection('organisationprofile')
 })()

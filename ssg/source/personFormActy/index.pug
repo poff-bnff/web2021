@@ -297,7 +297,7 @@ block content
                     button.show_form_fields(type='button')= self.label.addPro.contactAddressButtonAdd
 
             //- Filmography
-            fieldset.filmography
+            fieldset
                 legend= self.label.addPro.filmographyTitle
                     div= self.label.addPro.filmographyDescription1
                     div= self.label.addPro.filmographyDescription2
@@ -310,7 +310,9 @@ block content
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'+
                                         <path d="M6 9L12 15L18 9" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>' +
                                     </svg>
-                                    strong= '%nr%. %work_name%'
+                                    strong
+                                        span.nr= '%nr%.'
+                                        = '%work_name%'
                                     span.role_at_film= ', as a %role_at_film%'
                                 span.is_featured_project= "Featured project"
                                     .switch
@@ -427,7 +429,7 @@ block content
                     button.show_form_fields(type='button')= self.label.addPro.filmographyButtonAdd
 
             //- Ongoing projects
-            fieldset.filmography
+            fieldset
                 legend= self.label.addPro.ongoingProjectsTitle
                     div= self.label.addPro.ongoingProjectsDescription
                 .on_going_projects(style= 'display: none;')
@@ -583,7 +585,7 @@ block content
             fieldset
                 legend= self.label.addPro.imageGalleryTitle
                 label= self.label.addPro.imageGalleryDescription
-                .sub_form.gallery(data-max-repeatable-elements='5')
+                .sub_form.gallery(data-max-repeatable-elements='10')
                     .fieldset_grid.two_columns_even
                         .form_group
                             img.imgPreview(alt="gallery picture", src="/assets/img/static/gallery_img_org.svg" data-placeholder-img='/assets/img/static/gallery_img_org.svg')
@@ -621,9 +623,9 @@ block content
                             input(type='text' name='profile_url' disabled="true")
 
             // - Feedback
-            fieldset
+            fieldset.opened
                 legend= self.label.addPro.feedbackTitle
-                .fieldset_grid.buttons
+                .fieldset_grid
                     .form_group
                         label= self.label.addPro.feedbackDescription
                         a.button_send_feedback(href="mailto:ux@poff.ee&subject=Feedback%20from%20Creative%20Gate%20My%20Profile%20form")= self.label.addPro.feedbackButton
@@ -636,8 +638,8 @@ block content
                                     span.round
                             span.label= self.label.addPro.feedbackCheckbox
 
-            fieldset
-                .fieldset_grid.buttons
+            fieldset.opened
+                .fieldset_grid
                     .form_group
                         input.login_input(type='button' id='saveOrganisationButton' name='saveOrganisationButton' onclick='saveOrganisationForm()' value=self.label.userprofile.saveProfile)
 
