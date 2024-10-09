@@ -22,7 +22,7 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77, 76] # - 61
+    hoff.ee: [76] # - 61
     industry.poff.ee: [80]
     justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
@@ -63,7 +63,7 @@ XML_festival_editions: [73, 74] # - 56 # - 58 # - 29 # - 30 # - 32
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77, 76]
+    hoff.ee: [77]
     industry.poff.ee: [80]
     justfilm.ee: [74]
     kinoff.poff.ee: [72]
