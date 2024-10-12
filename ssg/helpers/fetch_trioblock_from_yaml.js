@@ -60,7 +60,7 @@ if (STRAPIDATA_TRIO.length < 1) {
 
 const languages = ['en', 'et', 'ru']
 
-for (const lang of languages) {č
+for (const lang of languages) {
 
     console.log(`Fetching ${DOMAIN} trioblock ${lang} data`)
 
