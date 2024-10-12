@@ -25,7 +25,7 @@ if(build_type === 'target') {
 }
 
 const trio_mapping = {
-    'poff.ee': 'TrioPOFF',
+    'poff.ee': 'TrioPOFF' || 'TrioPOFF2',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
