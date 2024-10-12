@@ -92,6 +92,15 @@
     "is_published": {
       "type": "boolean",
       "default": false
+    },
+    "logline_et": {
+      "type": "richtext"
+    },
+    "logline_en": {
+      "type": "richtext"
+    },
+    "logline_ru": {
+      "type": "richtext"
     }
   }
 }
