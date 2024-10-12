@@ -12,13 +12,16 @@
   },
   "attributes": {
     "name_et": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "name_en": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "name_ru": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description_et": {
       "type": "text"

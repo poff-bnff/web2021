@@ -2,21 +2,26 @@
   "kind": "collectionType",
   "collectionName": "tag_keywords",
   "info": {
-    "name": "TagKeyword"
+    "name": "TagKeyword",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "et": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "en": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "ru": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }
