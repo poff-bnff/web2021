@@ -492,6 +492,14 @@ Filmography: &Filmography
     tag_looking_fors:
         - *TagLookingFor
 
+Client: &Client
+    _path: /clients
+    url: (Text)
+    description: (Rich text)
+    domain: *Domain #(Component)
+    organisation: *Organisation
+    client_organisation: *Organisation
+
 ProjectType: &ProjectType
     _path: /project-types
     type: (text)
@@ -1660,13 +1668,13 @@ Team: &Team
     slug_en: (UID)
     slug_ru: (UID)
 
-Client: &Client
-    _path: /clients
-    url: (Text)
-    description: (Rich text)
-    domain: *Domain #(Component)
-    organisation: *Organisation
-    client_organisation: *Organisation
+# Client: &Client
+#     _path: /clients
+#     url: (Text)
+#     description: (Rich text)
+#     domain: *Domain #(Component)
+#     organisation: *Organisation
+#     client_organisation: *Organisation
 
 # Screening & Film
 

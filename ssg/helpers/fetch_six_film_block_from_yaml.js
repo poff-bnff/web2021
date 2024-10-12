@@ -14,7 +14,7 @@ const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const strapiDataSixFilmPath = path.join(strapiDataDirPath, 'SixFilms.yaml')
 const STRAPIDATA_SIXFILMS = yaml.load(fs.readFileSync(strapiDataSixFilmPath, 'utf8'))
 
-const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'
+const DOMAIN = process.env['DOMAIN'] || 'justfilm.ee'  || 'poff.ee'
 
 const languages = DOMAIN_SPECIFICS.locales[DOMAIN]
 
