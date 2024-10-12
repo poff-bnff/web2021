@@ -25,7 +25,7 @@ if(build_type === 'target') {
 }
 
 const trio_mapping = {
-    'poff.ee': 'TrioPOFF' && 'TrioPOFF2',
+    'poff.ee': 'TrioPOFF',
     'justfilm.ee': 'TrioJustFilm',
     'kinoff.poff.ee': 'TrioKinoff',
     'industry.poff.ee': 'TrioIndustry',
@@ -60,7 +60,7 @@ if (STRAPIDATA_TRIO.length < 1) {
 
 const languages = ['en', 'et', 'ru']
 
-for (const lang of languages) {
+for (const lang of languages) {č
 
     console.log(`Fetching ${DOMAIN} trioblock ${lang} data`)
 
