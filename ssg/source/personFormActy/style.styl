@@ -31,11 +31,6 @@ form.imput-form.input.login_input.form_control
     background-color #ffffff
 
 /*new css*/
-
-
-
-
-
 .organisationprofile, addProType
     width 343px
 
@@ -123,12 +118,16 @@ form.imput-form.input.login_input.form_control
             display grid
         .fieldset_grid.always_opened
             display grid
+        .filmographies, .on_going_projects, .clients
+            display none
 
     fieldset.opened
         .fieldset_grid
             display grid
         .fieldset_grid.buttons
             display none
+        .filmographies, .on_going_projects, .clients
+            display block
 
 
     .gallery_image_fields input
@@ -199,7 +198,7 @@ form.imput-form.input.login_input.form_control
     .required
         color: #12827E
 
-    .hide_fieldset_fields, .remove_fields
+    .hide_fieldset_fields, .remove_fields, .remove_still
         background none
         border none
         cursor pointer
@@ -246,11 +245,19 @@ form.imput-form.input.login_input.form_control
         button.opened svg
             transform rotate(180deg)
 
-    .filmography .still .form_group
+    .filmography_form .still .form_group
         display: none
 
-    .filmography .is_featured_filmography .still .form_group
+    .filmography_form.featured_filmography .still .form_group
         display: block
+
+    .filmography_form.featured_filmography .still .form_group.remove_still
+        display flex
+        .field
+            margin-bottom 30px;
+            display inline-block;
+            align-self flex-end;
+
 
     .addr_coll select
         width 100%
@@ -278,7 +285,7 @@ form.imput-form.input.login_input.form_control
         justify-content center
 
 
-    input.login_input, button.login_input, button.show_form_fields, button.send_data
+    input.login_input, button.login_input, button.show_form_fields, button.send_data, button.show_filmography_fields, button.show_client_fields
         background-color #12827E
         color #fff
         text-transform uppercase
@@ -394,6 +401,52 @@ form.imput-form.input.login_input.form_control
             left calc(22.5% - 1.5px);
             background #636769
 
-* {
-  scroll-margin-top: 150px;
-}
+    .popup-overlay
+        display none;
+        position fixed;
+        top 0;
+        left 0;
+        width 100%;
+        height 100%;
+        background rgba(0, 0, 0, 0.5);
+        z-index 2000
+
+        .popup
+            top 50%;
+            margin 0 auto
+            position relative
+            display block
+            border none
+
+            button
+                width 60px
+                margin: 0 auto;
+                display: block;
+            p
+                margin 30px
+
+    *
+        scroll-margin-top: 150px;
+
+
+#loader
+    display: none
+
+#loader.loading
+    position fixed
+    display flex
+    justify-content center
+    align-items center
+    width 100%
+    height 100%
+    top 0
+    left 0
+    opacity 0.7
+    background-color #fff
+    z-index 99
+
+#loader svg
+    z-index 100
+
+#alertSuccess, #alertError
+    z-index: 10000

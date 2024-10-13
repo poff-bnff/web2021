@@ -990,7 +990,7 @@ async function showSection(sectionName) {
     visibleSection.style.display = 'block';
     visibleSection.style.opacity = 1;
     visibleSection.style.pointerEvents = 'all';
-
+    document.getElementById('loader').classList.add('loading')
     if (sectionName == 'organisationprofile') {
         organisation = await fetchOrganisation()
         fillOrganisationForm(organisation)
@@ -1000,20 +1000,34 @@ async function showSection(sectionName) {
         fillPersonForm(person)
         console.log('Person: ', person)
     }
+    document.getElementById('loader').classList.remove('loading')
 }
 
-document.querySelectorAll('.duplicate_gallery_fields').forEach(function (button) {
-    button.addEventListener('click', duplicateLastGalleryElement)
-});
+function addNewGalleryImage(event) {
+    const fieldset = event.currentTarget.closest('fieldset')
+    const images = fieldset.querySelectorAll('.gallery')
+    duplicateElement(images[images.length-1])
+    updateAddGalleryImageButtonVisibility(fieldset)
+};
 
-function duplicateLastGalleryElement(event) {
-    const cloneable_elements = event.currentTarget.closest('fieldset').querySelector('.sub_form')
-    const cloneable_element = cloneable_elements[cloneable_elements.length - 1]
-    duplicateElement(cloneable_element)
-    if (cloneable_element.hasAttribute('data-max-repeatable-elements') && (cloneable_elements.length+1) >= cloneable_element.getAttribute('data-max-repeatable-elements')) {
-        event.currentTarget.closest('.fieldset_grid_two_column').style.display = 'none'
+function removeGalleryImage(event) {
+    const fieldset = event.currentTarget.closest('fieldset');
+    const count = fieldset.querySelectorAll('.gallery').length
+    if (count > 1) {
+        const gallery = event.currentTarget.closest('.gallery')
+        gallery.remove()
+        updateAddGalleryImageButtonVisibility(fieldset)
+    } else {
+        hideFieldsetFields(event)
     }
 };
+function updateAddGalleryImageButtonVisibility(fieldset) {
+    const galleryDiv = fieldset.querySelectorAll('.organisationprofile .gallery')
+    const visibilitiy = (galleryDiv.length >=10) ? 'none' : 'block'
+
+    document.getElementById('add_new_gallery_image').style.display = visibilitiy
+
+}
 
 function  duplicatePreviousElement(event) {
     let fieldsElement = event.currentTarget.previousSibling
@@ -1026,32 +1040,41 @@ function  duplicatePreviousElement(event) {
 
 function duplicateElement(element) {
     const newElement = element.cloneNode(true)
-    newElement.querySelector('.remove_fields').addEventListener('click', remove_fields)
     resetFields(newElement)
     element.after(newElement)
     return newElement
 }
 
-document.querySelectorAll('.remove_fields').forEach(function (button) {
-    button.addEventListener('click', remove_fields)
-});
+function removeFields(event) {
+    removeDuplicateSelects(event.currentTarget.closest('.sub_form'))
+}
 
-function remove_fields(el) {
-    const fieldset = el.currentTarget.closest('fieldset');
-    const count = fieldset.querySelectorAll('.remove_fields').length
-    if (count > 1) {
-        el.currentTarget.closest('.sub_form').remove()
-    } else if (fieldset.querySelector('.fields')){
-        hideFieldsetFields(el)
-    } else if (el.currentTarget.closest('.sub_form')){
-        resetFields(el.currentTarget.closest('.sub_form'))
+function removeDuplicateSelects(subFormElement) {
+    const domElement = subFormElement.closest('.form_group');
+    if (domElement.querySelectorAll('.remove_fields').length > 1) {
+        subFormElement.remove()
     } else {
-        resetFields(fieldset)
+        resetFields(event.currentTarget.closest('.sub_form'))
+        if (subFormElement.hasAttribute('data-close-fieldset')) {
+            domElement.closest('fieldset').classList.remove('opened')
+        }
+    }
+}
+
+function clearFields(event) {
+    const fieldset_grid =  event.currentTarget.closest('.fieldset_grid');
+    resetFields(fieldset_grid)
+    if (event.currentTarget.hasAttribute('data-close-fieldset')) {
+        fieldset_grid.closest('fieldset').classList.remove('opened')
     }
 };
 
+function removeStill(el) {
+    resetFields(el.currentTarget.closest('.still'))
+}
+
 function resetFields(element) {
-    element.querySelectorAll('input[type="file"], input[type="text"], input[type="text"], input[type="select"], input[type="hidden"], input[type="checkbox"]').forEach(el =>  el.value = "" );
+    element.querySelectorAll('input[type="file"], input[type="number"], input[type="text"], select, input[type="hidden"], input[type="checkbox"]').forEach(el =>  el.value = "" );
     element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.setAttribute('data-is-deleted', true) });
     element.querySelectorAll('audio').forEach(el => { el.style.display = 'none';  el.src = ''});
     element.querySelectorAll('.error').forEach(el => el.innerHTML = '')
@@ -1068,8 +1091,16 @@ function showFormFields(event) {
     fieldset.classList.add('opened')
 }
 
-function showFilmoGraphyFields(event) {
+function showFilmographyFields(event) {
+    const fieldset = event.currentTarget.closest('fieldset')
+    fieldset.classList.add('opened')
     event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').style.display = 'block'
+}
+
+function showClientFields(event) {
+    const fieldset = event.currentTarget.closest('fieldset')
+    fieldset.classList.add('opened')
+    event.currentTarget.closest('fieldset').querySelector('.client_form.template').style.display = 'block'
 }
 
 document.querySelectorAll('.hide_fieldset_fields').forEach(function (button) {
@@ -1098,28 +1129,31 @@ const fetchOrganisation = async () => {
 }
 
 function setSelectByFieldName(domElement, values, fieldName) {
-    if (values === null || values === undefined) {
+    if (values === null || values === undefined ) {
         return
     }
 
     if (!Array.isArray(values)) {
         if (typeof values === 'object') {
-            values = [values]
+            values = [values.id]
         } else {
-            values = [{ id: values }]
+            values = [values]
         }
     }
+    if (typeof values[0] === 'object') {
+        values = values.map( value => value.id)
+    }
+
     let lastElement = domElement.querySelector(`[name^="${fieldName}"]:last-of-type`)
-    values = values.filter(val => lastElement.querySelector(`[value="${val.id}"]`));
+    values = values.filter(val => lastElement.querySelector(`[value="${val}"]`));
     for (let i = 0; i < values.length; i++) {
         let value = values[i];
         if (i === 0) {
-            lastElement.value = value.id
+            lastElement.value = value
             lastElement.dispatchEvent(new Event('input', { 'bubbles': false }))
         } else {
             let newChild = lastElement.closest('.sub_form').cloneNode(true)
-            newChild.querySelector('select').value = value.id
-            newChild.querySelector('.remove_fields').addEventListener('click', remove_fields)
+            newChild.querySelector('select').value = value
             lastElement.closest('.sub_form').after(newChild)
         }
     }
@@ -1145,19 +1179,21 @@ function updateTextareaCounter(textarea) {
 }
 
 async function saveOrganisationForm() {
-    document.getElementById('savingStatus').style.display = 'block'
-
+    document.getElementById('loader').classList.add('loading')
     let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
     saveOrganisationButton.disabled = true
-    let previousInnerHTML = saveOrganisationButton.innerHTML
-    saveOrganisationButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
 
     if (isFormValid(document.querySelector('.organisationprofile'), getOrganisationFields())) {
         const organisationData = collectFormData(document.querySelector('.organisationprofile'), getOrganisationFields())
-        sendOrganisation(organisationData)
+        const response = await sendOrganisation(organisationData)
+        if (response) {
+            showSuccessMsg(translate("messageOrganisationSaveSuccess"))
+            fillOrganisationForm(organisation)
+        }
     }
+
     saveOrganisationButton.disabled = false
-    saveOrganisationButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
+    document.getElementById('loader').classList.remove('loading')
 }
 
 async function sendOrganisation(organisationData) {
@@ -1180,18 +1216,16 @@ async function sendOrganisation(organisationData) {
         },
         body: formData
     })
-    console.log('Organisation save response: ', response)
-    if (response.id !== 'undefned') {
-        return response
-    }
-}
 
-function saveFilmographyChanges()
-{
-    let organisationData = {}
-    if (typeof state.filmographies !== 'undefined') {
-        organisationData['filmographies'] = state['filmographies']
-        const response = sendOrganisation(organisationData)
+    console.log('Organisation save response: ', response)
+    const data = await response.json()
+    if (data.statusCode == 200 && data.organisation !== undefined) {
+        organisation = await data.organisation
+        state.newCollectionIds = await data.newCollectionIds
+        return await data.organisation
+    } else {
+        showErrorMsg(translate('messageErrorOnSave'))
+        return false
     }
 }
 
@@ -1213,7 +1247,6 @@ function isFormValid(formElement, fields) {
     return firstInvalidElement === false
 }
 
-
 function collectFormData(formElement, fields) {
     const formData = {new_files: {}}
     for (var field_name in fields) {
@@ -1230,6 +1263,13 @@ function collectFormData(formElement, fields) {
             formData[conf.field] = collectFormData(formElement.querySelector(`.${field_name}`), conf.fields)
         } else {
             formData[conf.field] = formElement.querySelector(`[name="${field_name}"]`).value
+        }
+
+        if (conf.sendType === 'Integer') {
+            if (Array.isArray(formData[conf.field])) {
+                formData[conf.field] = formData[conf.field][0]
+            }
+            formData[conf.field] = isNaN(formData[conf.field]) ? null : parseInt(formData[conf.field])
         }
     }
 
@@ -1264,7 +1304,7 @@ function collectStill(field_name, conf, orgToSend, formElement) {
     const files = formElement.querySelector(`[name="${field_name}"]`).files
 
     if (files.length) {
-        orgToSend[conf.field] = files[0]
+        orgToSend['new_files'][conf.field] = files[0]
     } else {
         const imgPreviewElement = imageElement.querySelector('.imgPreview')
         if (imgPreviewElement.hasAttribute('data-is-deleted')) {
@@ -1272,7 +1312,6 @@ function collectStill(field_name, conf, orgToSend, formElement) {
         }
     }
 }
-
 
 function collectImgData(field_name, conf, orgToSend, formElement) {
     const imageElement = formElement.querySelector(`[name="${field_name}"]`).closest('.fieldset_grid')
@@ -1322,38 +1361,70 @@ function isImageMetaDataChanged(id, newMetadata) {
     return false
 }
 
-function fillFilmographies(domElement, val, fieldName) {
-    showFilmographies(val)
-}
+function fillFilmographies(domElement, filmographies, fieldName) {
+    const filmographiesElement = document.querySelector(".filmographies .list")
+    const onGoingProjectsElement = document.querySelector(".on_going_projects .list")
 
-function collectFilmographies(field_name, conf, formData, formElement) {
-    if (typeof state.filmographies !== undefined) {
-        formData['filmographies'] = state['filmographies']
+    filmographiesElement.innerHTML = ""
+    onGoingProjectsElement.innerHTML = ""
+
+    for (let i = 0; i < filmographies.length; i++) {
+        if (filmographies[i].is_ongoing) {
+            const filmographyDiv = getFilmographySummaryRow(filmographies[i], onGoingProjectsElement.childNodes.length + 1)
+            onGoingProjectsElement.appendChild(filmographyDiv)
+
+            onGoingProjectsElement.closest('.on_going_projects').style.display = 'block';
+            onGoingProjectsElement.closest('fieldset').classList.add('opened')
+        } else {
+            const filmographyDiv = getFilmographySummaryRow(filmographies[i], filmographiesElement.childNodes.length + 1)
+            filmographiesElement.appendChild(filmographyDiv)
+
+            filmographiesElement.closest('fieldset').classList.add('opened')
+        }
     }
 }
 
-function updateFilmographyhSummaryRow(submitButtonElement, data) {
+function collectFilmographies(field_name, conf, formData, formElement) {
+    return
+}
+
+function updateFilmographyhSummaryRow(form, data) {
     let targetDiv = document.querySelector(".filmographies .list")
     if (data.is_ongoing) {
         targetDiv = document.querySelector(".on_going_projects .list")
     }
+    const filmographyDiv = getFilmographySummaryRow(data, 'nr')
 
-    const filmographyDiv = getSummaryRow(data, 'nr')
-    if (data.id) {
-        submitButtonElement.closest('.list').replaceChild(filmographyDiv, submitButtonElement.closest('.filmography'))
+    updateCollectionSummaryRow(targetDiv, form, filmographyDiv)
+}
+
+function updateCollectionSummaryRow(targetDiv, form, rowDiv) {
+    if (form.closest('.list')) {
+        form.closest('.list').replaceChild(rowDiv, form.closest('.collection_entry'))
     } else {
-        targetDiv.appendChild(filmographyDiv)
+        targetDiv.appendChild(rowDiv)
+    }
+
+    if (refreshRowNumbers(targetDiv) == 0) {
+        targetDiv.closest('fieldset').classList.remove('opened')
     }
 }
 
-function getSummaryRow(filmography, index)
-{
+function getFilmographySummaryRow(filmography, index) {
     const template = document.querySelector('.filmographies .filmography_row_template .filmography')
     let filmographyDiv = template.cloneNode(true)
 
     let roleAtFilmDiv = ''
-    if (filmography.role_at_films[0] && filmography.role_at_films[0].roleName ) {
-        roleAtFilmDiv = filmographyDiv.querySelector('.role_at_film').innerHTML.replace('%role_at_film%', filmography.role_at_films[0].roleName.en)
+    if (filmography.role_at_films[0]) {
+        let roleAtFilm = ''
+        if (filmography.role_at_films[0].roleName) {
+            roleAtFilm =  filmography.role_at_films[0].roleName.en
+        } else {
+            roleAtFilm = document.querySelector(`[name="org_filmography_role_at_films"] option[value="${filmography.role_at_films[0]}"]`).text
+        }
+        if (roleAtFilm) {
+            roleAtFilmDiv = filmographyDiv.querySelector('.role_at_film').innerHTML.replace('%role_at_film%', roleAtFilm)
+        }
     }
     filmographyDiv.querySelector('.role_at_film').innerHTML = roleAtFilmDiv
 
@@ -1369,63 +1440,136 @@ function getSummaryRow(filmography, index)
         }
     }
 
-    filmographyDiv.querySelector('button').setAttribute('onclick', `toggleFilmoGraphy(event, "${filmography.id}", "${type}")`)
-
+    filmographyDiv.querySelector('button').setAttribute('onclick', `toggleFilmography(event, "${filmography.id}", "${type}")`)
     return filmographyDiv
 }
 
-function showFilmographies(filmographies)
-{
-    const filmographiesElement = document.querySelector(".filmographies .list")
-    const onGoingProjectsElement = document.querySelector(".on_going_projects .list")
+function getClientSummaryRow(client, index) {
+    const template = document.querySelector('.clients .client_row_template .client')
+    let clientDiv = template.cloneNode(true)
 
-    filmographiesElement.innerHTML = ""
-    onGoingProjectsElement.innerHTML = ""
+    clientDiv.querySelector('strong').innerHTML = clientDiv.querySelector('strong').innerHTML.replace('%nr%', index).replace('%client_name%', client.name)
+    clientDiv.querySelector('button').setAttribute('onclick', `toggleClient(event, "${client.id}")`)
 
-    for (let i = 0; i < filmographies.length; i++) {
-        if (filmographies[i].is_ongoing) {
-            const filmographyDiv = getSummaryRow(filmographies[i], onGoingProjectsElement.childNodes.length + 1)
-            onGoingProjectsElement.appendChild(filmographyDiv)
+    return clientDiv
+}
 
-            onGoingProjectsElement.closest('.on_going_projects').style.display = 'block';
-            onGoingProjectsElement.closest('fieldset').classList.add('opened')
-        } else {
-            const filmographyDiv = getSummaryRow(filmographies[i], filmographiesElement.childNodes.length + 1)
-            filmographiesElement.appendChild(filmographyDiv)
+function getAssetsUrl() {
+    if (strapiDomain.includes('admin.poff.ee')) {
+        return 'https://assets.poff.ee/img/'
+    }
+    return  `${strapiDomain}/uploads/`;
+}
 
-            filmographiesElement.closest('.filmographies').style.display = 'block';
-            filmographiesElement.closest('fieldset').classList.add('opened')
+function toggleClient(event, id) {
+    const form =  event.currentTarget.closest('.client').querySelector('.filled_client .client_form')
+    if (event.currentTarget.classList.contains('opened')) {
+        if (form.getAttribute('data-is-changed') === "false" || confirm(translate("collectionDataChanged"))) {
+            event.currentTarget.classList.remove('opened')
+            form.remove()
+        }
+    } else {
+        event.currentTarget.classList.add('opened')
+        const targetElement = event.currentTarget.closest('.client').querySelector('.filled_client')
+        const data = organisation['clients'].find(client => id == client.id)
+        const subForm = event.currentTarget.closest('fieldset').querySelector('.client_form.template').cloneNode(true)
+        subForm.classList.remove('template')
+        subForm.style.display = 'block'
+        targetElement.appendChild(subForm)
+        subForm.setAttribute('data-is-changed', false)
+
+        subForm.addEventListener('input', function (event) {
+            event.target.closest('.client_form').setAttribute('data-is-changed', true)
+        });
+        fillFields(subForm, getClientFields(), data)
+    }
+}
+
+async function saveClient(event) {
+    const form = event.target.closest('.client_form')
+    const fields = getClientFields()
+    if (!isFormValid(form, fields)) {
+        return;
+    }
+    data = collectFormData(form, fields)
+
+    const result = await sendClient(data)
+
+    if (result) {
+        showSuccessMsg(translate('messageClientSaveSuccess'))
+        const id = data.id ? data.id : state?.newCollectionIds?.client
+        const client = organisation['clients'].find((element) => element.id == id)
+        updateCollectionSummaryRow(document.querySelector(".clients .list"), form, getClientSummaryRow(client, 'nr')
+    )
+        if (!data.id) {
+            closeClientForm(form)
         }
     }
 }
 
-function toggleIsFeatured(event)
-{
-    event.currentTarget.closest('.filmography_form').classList.toggle("is_featured_filmography", event.currentTarget.checked);
-}
+function removeClient(event) {
+    const form = event.currentTarget.closest('.client_form')
+    const id = event.currentTarget.closest('.client_form').querySelector(`[name="id"]`).value
+    if (id) {
+        const clients = {
+            'clients': organisation['clients'].filter((client) => client['id'] != id).map(client => client.id)
+        }
+        const result = sendOrganisation(clients)
 
-function toggleFilmoGraphy(event, id, type)
-{
-    if (event.currentTarget.classList.contains('opened')) {
-        event.currentTarget.classList.remove('opened')
-        event.currentTarget.closest('.filmography').querySelector('.filled_filmography .filmography_form').remove()
+        if (result) {
+            closeClientForm(form)
+        }
     } else {
-        event.currentTarget.classList.add('opened')
-        const formFields = type == 'ongoing' ? getOnGoingFilmographyFields() : getFilmographyFields()
-
-        const targetElement = event.currentTarget.closest('.filmography').querySelector('.filled_filmography')
-        const data = getFilmographyById(id);
-        const subForm = event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').cloneNode(true)
-        subForm.classList.remove('template')
-        subForm.classList.toggle('is_featured_filmography', !data.is_ongoing && data.is_featured)
-        subForm.style.display = 'block'
-        targetElement.appendChild(subForm)
-        fillFields(targetElement, formFields, data)
+        closeClientForm(form)
     }
 }
 
-function getOnGoingFilmographyFields()
-{
+function closeClientForm(form) {
+    const fieldset = form.closest('fieldset')
+    if (form.classList.contains('template')) {
+        form.style.display = 'none'
+        resetFields(form)
+    } else {
+        form.closest('.client').remove()
+    }
+    if (refreshRowNumbers(fieldset.querySelector('.list')) == 0) {
+        fieldset.classList.remove('opened')
+    }
+}
+
+function toggleIsFeatured(event) {
+    event.currentTarget.closest('.filmography_form').classList.toggle("featured_filmography", event.currentTarget.checked);
+}
+
+function toggleFilmography(event, id, type) {
+    const form = event.currentTarget.closest('.filmography').querySelector('.filled_filmography .filmography_form')
+    const formFields = type == 'ongoing' ? getOnGoingFilmographyFields() : getFilmographyFields()
+    const data = getFilmographyById(id);
+
+    if (event.currentTarget.classList.contains('opened')) {
+        if (form.getAttribute('data-is-changed') === "false" || confirm(translate("collectionDataChanged"))) {
+            event.currentTarget.classList.remove('opened')
+            form.remove()
+        }
+    } else {
+        event.currentTarget.classList.add('opened')
+        const targetElement = event.currentTarget.closest('.filmography').querySelector('.filled_filmography')
+        const subForm = event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').cloneNode(true)
+        subForm.classList.remove('template')
+        subForm.classList.toggle('featured_filmography', !data.is_ongoing && data.is_featured)
+        subForm.style.display = 'block'
+        subForm.setAttribute('data-is-changed', false)
+
+        fillFields(subForm, formFields, data)
+        subForm.addEventListener('input', function (event) {
+            event.target.closest('.filmography_form').setAttribute('data-is-changed', true)
+        });
+        targetElement.appendChild(subForm)
+    }
+}
+
+
+function getOnGoingFilmographyFields() {
     return  {
         org_ongoing_project_type_of_work: {
             field: 'type_of_work',
@@ -1459,12 +1603,29 @@ function getOnGoingFilmographyFields()
     }
 }
 
+function getClientFields() {
+    return {
+        url: {
+            field: 'url',
+        },
+        description: {
+            field: 'description',
+        },
+        name: {
+            field: 'name',
+        },
+        id: {
+            field: 'id'
+        },
+    }
+}
+
 function getFilmographyFields() {
     return {
         org_filmography_type_of_work: {
             field: 'type_of_work',
             type: 'select',
-            sendType: "int"
+            sendType: "Integer"
         },
         org_filmography_role_at_films: {
             field: 'role_at_films',
@@ -1472,19 +1633,21 @@ function getFilmographyFields() {
         },
         org_filmography_year_from: {
             field: 'year_from',
+            sendType: "Integer"
         },
         org_filmography_year_to: {
             field: 'year_to',
+            sendType: "Integer"
         },
         org_filmography_work_name: {
             field: 'work_name',
-            required: true
         },
         org_filmography_work_url: {
             field: 'work_url',
         },
         org_filmography_runtime: {
             field: 'runtime',
+            sendType: "Integer"
         },
         org_filmography_org_name: {
             field: 'org_name',
@@ -1500,15 +1663,10 @@ function getFilmographyFields() {
             type: 'checkbox'
         },
 
-        org_filmography_is_featured: {
-            field: 'is_featured',
-            type: 'checkbox'
-        },
-
         stills: {
             field: 'stills',
             fillFunction: fillStill,
-            collecttFunction: collectStill
+            collectFunction: collectStill
         },
         id: {
             field: 'id'
@@ -1517,62 +1675,72 @@ function getFilmographyFields() {
 }
 
 
-function sendFilmography(event, is_ongoing = true) {
-    const fieldset = event.currentTarget.closest('.filmography_form')
+async function saveFilmography(event, is_ongoing = true) {
+    const form = event.target.closest('.filmography_form')
     const fields = is_ongoing ? getOnGoingFilmographyFields(): getFilmographyFields()
-    if (!isFormValid(fieldset, fields)) {
+    if (!isFormValid(form, fields)) {
         return;
     }
-    data = collectFormData(fieldset, fields)
+    data = collectFormData(form, fields)
     data['is_ongoing'] = is_ongoing ? 1:0
+    const result = await sendFilmography(data)
 
-    if (!state.filmography) {
-        state.filmographies = organisation['filmographies']
+    if (result) {
+        showSuccessMsg(translate('messageFilmographySaveSuccess'))
+        const id = data.id ? data.id : state?.newCollectionIds?.filmography
+        const filmography = organisation['filmographies'].find((element) => element.id == id)
+
+        updateFilmographyhSummaryRow(form, filmography)
+        if (!data.id) {
+            closeFilmographyForm(form)
+        }
     }
-    data['id'] = parseInt(data['id'])
-
-    if (isNaN(data['id'])) {
-        state.filmographies.push(data)
-    } else {
-        state['filmographies'] = state['filmographies'].map((filmography) => {
-            if (filmography['id'] == data['id']) {
-                return data
-            } else {
-                return filmography
-            }
-        })
-    }
-
-    saveFilmographyChanges()
-    updateFilmographyhSummaryRow(event.currentTarget, data)
-    closeFilmographyForm(event)
 }
 
-function removeFilmography(event)
+function sendClient(data) {
+    const organisationData = {
+        'client': data
+    }
+    return sendOrganisation(organisationData)
+}
+
+function sendFilmography(data)
 {
+    const organisationData = {}
+    organisationData['new_files'] = data['new_files']
+    delete data['new_files']
+    organisationData['filmography'] = data
+    return sendOrganisation(organisationData)
+}
+
+function removeFilmography(event) {
+    const form = event.currentTarget.closest('.filmography_form')
     const id = event.currentTarget.closest('.filmography_form').querySelector(`[name="id"]`).value
     if (id) {
-        if (!state.filmography) {
-            state.filmographies = organisation['filmographies']
+        const organisationData = {
+            'filmographies': organisation['filmographies'].filter((filmography) => filmography['id'] != id).map(filmography => filmography.id)
         }
-        state['filmographies'] = state['filmographies'].filter((filmography) => filmography['id'] != id)
-        saveFilmographyChanges()
-    }
+        const result = sendOrganisation(organisationData)
 
-    closeFilmographyForm(event)
+        if (result) {
+            closeFilmographyForm(form)
+        }
+    } else {
+        closeFilmographyForm(form)
+    }
 }
 
-function closeFilmographyForm(event) {
-    const form = event.currentTarget.closest('.filmography_form')
-
+function closeFilmographyForm(form) {
+    const fieldset = form.closest('fieldset')
     if (form.classList.contains('template')) {
         form.style.display = 'none'
         resetFields(form)
     } else {
         form.closest('.filmography').remove()
     }
-    refreshRowNumbers(document.querySelector('.filmographies'))
-    refreshRowNumbers(document.querySelector('.on_going_projects'))
+    if (refreshRowNumbers(fieldset.querySelector('.list')) == 0) {
+        fieldset.classList.remove('opened')
+    }
 }
 
 function getFilmographyById(id) {
@@ -1590,8 +1758,12 @@ function validateField(element) {
         return true
     }
     const errors = validate(element, rules.split('|'));
-    const errorEl = element.closest('.form_group').querySelector('.error')
-    errorEl.innerHTML = (errors) ? errors.join('<br />') : '';
+
+    let errorDiv = element.closest('.form_group').querySelector('.error')
+    if (element.closest('label') && element.closest('label').querySelector('.error')) {
+        errorDiv = element.closest('label').querySelector('.error')
+    }
+    errorDiv.innerHTML = (errors) ? errors.join('<br />') : '';
     return errors.length === 0
 }
 
@@ -1606,19 +1778,25 @@ function validate(field, validators) {
             if (!values.length) {
                 errors.push(translate('validationErrorRequiredField'))
             }
-        } else if (validator == 'is-valid-eployees-count' && fieldValue != "" && !/^\d{1,5}$/.test(fieldValue)) {
-            errors.push(translate('validationErrorEmployeesCount'))
-        } else if (validator == 'is-valid-img-year'  && fieldValue != "" && !/^(19|20)\d{2}$/.test(fieldValue)) {
-            errors.push(translate('validationErrorInvalidImageYear'))
+        } else if (validator == 'is-number-between-1-10000' && fieldValue != "" && !/^[1-9]\d{0,4}$/.test(fieldValue)) {
+            errors.push(translate('validatinErrorInvalidNumberBetween1_10000'))
+        } else if (validator == 'is-valid-year' && fieldValue != "" && !/^(19|20)\d{2}$/.test(fieldValue)) {
+            errors.push(translate('validationErrorInvalidYear'))
         } else if (validator == 'is-email' && (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(fieldValue))) {
             errors.push(translate('validationErrorEmail'))
-        } else if (validator == 'is-phone-nr' &&  fieldValue != "" && !/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g.test(fieldValue)) {
+        } else if (validator == 'is-phone-nr' && fieldValue != "" && !/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g.test(fieldValue)) {
             errors.push(translate('validationErrorPhone'))
-        } else if (validator == 'is-showreel' && fieldValue != ""){
+        } else if (validator == 'is-showreel' && fieldValue != "") {
             const youtubeRegex = /(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(youtube(?:-nocookie)?\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(?:\S+)?/
             const vimeoRegex = /(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?(vimeo\.com)\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)/
             if (!youtubeRegex.test(fieldValue) && !vimeoRegex.test(fieldValue)) {
                 errors.push(translate('validationErrorShowreel'))
+            }
+        } else if (validator == 'still-image') {
+            const isFeatured = field.closest('.filmography_form').querySelector('input[name="org_filmography_is_featured"]').checked
+            const imgPreview = field.closest('.form_group').querySelector('.imgPreview')
+            if (isFeatured && field.files.length == 0 && !imgPreview.hasAttribute('data-image-id')) {
+                errors.push(translate('validationErrorMissingStill'))
             }
         }
     });
@@ -1712,18 +1890,18 @@ const getOrganisationFields = () =>  {
                 org_country: {
                     field: 'country',
                     type: "select",
-                    sendType: "int"
+                    sendType: "Integer"
                 },
                 org_county: {
                     field: 'county',
                     type: "select",
-                    sendType: "int"
+                    sendType: "Integer"
                 },
 
                 org_municipality: {
                     field: 'municipality',
                     type: "select",
-                    sendType: "int"
+                    sendType: "Integer"
                 },
 
                 org_add_county: {
@@ -1765,25 +1943,26 @@ const getOrganisationFields = () =>  {
         org_audioreel: {
             field: 'audioreel',
             type: 'audioreel',
-            collectFunction: collectAudioreelData
+            collectFunction: collectAudioreelData,
+            fillFunction: fillAudioreel
         },
         logoColour: {
             field: 'logoColour',
-            type: 'img',
-            collectFunction: collectImgData
+            collectFunction: collectImgData,
+            fillFunction: fillImage
         },
         profile_img: {
             field: 'profile_img',
-            type: 'img',
-            collectFunction: collectImgData
+            collectFunction: collectImgData,
+            fillFunction: fillImage
 
         },
         images: {
             field: 'images',
-            type: 'gallery',
-            collectFunction: collectGalleryData
+            collectFunction: collectGalleryData,
+            fillFunction: fillGallery
         },
-        org_ok_to_contact: {
+        ok_to_contact: {
             field: "ok_to_contact",
             type: "checkbox"
         }
@@ -1794,8 +1973,7 @@ const fillOrganisationForm = (organisation) => {
     fillFields(document.querySelector('.organisationprofile'), getOrganisationFields(), organisation)
 }
 
-function getImageMetaData(field)
-{
+function getImageMetaData(field) {
     let data = {};
     try {
         data = JSON.parse(field)
@@ -1813,8 +1991,7 @@ function getImageMetaData(field)
     }
 }
 
-function generateImageMetadataJson(imageElement)
-{
+function generateImageMetadataJson(imageElement) {
     return JSON.stringify({
         caption: imageElement.querySelector(`[name="caption"]`).value,
         photographer: imageElement.querySelector(`[name="photographer"]`).value,
@@ -1822,33 +1999,41 @@ function generateImageMetadataJson(imageElement)
     })
 }
 
-function fillStill(imgEl, val, fieldName)
-{
+function fillStill(imgEl, val, fieldName) {
     if (!Array.isArray(val) || val.length < 1) {
         return
     }
     val = val[0]
-    imgEl.querySelector('.imgPreview').src = `https://assets.poff.lan/img/${val.hash}${val.ext}`
+    imgEl.querySelector('.imgPreview').src = `${getAssetsUrl()}${val.hash}${val.ext}`
+    imgEl.querySelector('.imgPreview').setAttribute('data-image-id', val.id)
 }
 
-function fillImage(imgEl, val)
-{
-    if (val === null) {
-        return;
-    }
+function fillImage(domElement, val, fieldName = false) {
+    const imgEl = fieldName ? domElement.querySelector(`[name="${fieldName}"]`).closest('.fieldset_grid') : domElement
     const metaData = getImageMetaData(val.caption)
     imgEl.querySelector(`[name="caption"]`).value = metaData.caption
     imgEl.querySelector(`[name="photographer"]`).value = metaData.photographer
     imgEl.querySelector(`[name="img_year"]`).value = metaData.img_year
-    imgEl.querySelector('.imgPreview').src = `https://assets.poff.lan/img/${val.hash}${val.ext}`
+    imgEl.querySelector('.imgPreview').src = `${getAssetsUrl()}${val.hash}${val.ext}`
     if (imgEl.querySelector(`[name="id"]`)) {
         imgEl.querySelector(`[name="id"]`).value = val.id
     }
 }
 
-function fillAudioreel(htmlElement, val) {
+function fillGallery(domElement, val, fieldName) {
+    let gallery = domElement.querySelector('.gallery')
+    for (let i = 0; i < val.length; i++) {
+        fillImage(gallery, val[i])
+        if (i < val.length - 1) {
+            gallery = duplicateElement(gallery)
+        }
+    }
+}
+
+function fillAudioreel(domElement , val, fieldName) {
     if (val && val.hash && val.ext) {
-        htmlElement.querySelector('#audioreel_preview').src = `https://assets.poff.lan/img/${val.hash}${val.ext}`
+        const htmlElement = domElement.querySelector(`[name="${fieldName}"]`).closest('.fieldset_grid');
+        htmlElement.querySelector('#audioreel_preview').src = `${getAssetsUrl()}${val.hash}${val.ext}`
         htmlElement.querySelector('#audioreel_preview').style.display = "block"
     }
 }
@@ -1859,27 +2044,17 @@ function fillFields(domElement, fields, data) {
         let val = data[conf.field]
 
         if (conf.fillFunction) {
-            conf.fillFunction(domElement, val, field_name)
+            if (val !== null && val !== undefined) {
+                conf.fillFunction(domElement, val, field_name)
+            }
         } else if (fields[field_name].type == 'select') {
             setSelectByFieldName(domElement, val, field_name)
-        } else if (fields[field_name].type == 'img') {
-            fillImage(domElement.querySelector(`[name="${field_name}"]`).closest('.fieldset_grid'), val)
-        } else if (fields[field_name].type == 'audioreel') {
-            fillAudioreel(domElement.querySelector(`[name="${field_name}"]`).closest('.fieldset_grid'), val)
-        } else if (fields[field_name].type == 'gallery') {
-            let galleryelement = domElement.querySelector('.gallery')
-            for (let i = 0; i < val.length; i++) {
-                fillImage(galleryelement, val[i])
-                if (i < val.length - 1) {
-                    galleryelement = duplicateElement(galleryelement)
-                }
-            }
         } else if (fields[field_name].type == 'checkbox') {
             domElement.querySelector(`[name="${field_name}"]`).checked = val;
         } else if (fields[field_name].type == 'collection') {
-            fillFields(domElement.querySelector(`.${field_name}`), conf.fields, val)
-        } else if (fields[field_name].type == 'custom') {
-            conf.fillFunction(domElement, val, field_name)
+            if (val !== null && val !== undefined) {
+                fillFields(domElement.querySelector(`.${field_name}`), conf.fields, val)
+            }
         } else {
             domElement.querySelector(`[name="${field_name}"]`).value = val ?? ""
             domElement.querySelector(`[name="${field_name}"]`).dispatchEvent(new Event('input', { 'bubbles': false }))
@@ -1896,42 +2071,29 @@ function fillFields(domElement, fields, data) {
     }
 }
 
-function fillOrderedRaF(domElement, val, field_name)
-{
+function fillOrderedRaF(domElement, val, field_name) {
     const sortedValues = val.sort((a, b) => a.order - b.order).map((e) => {return  { id: e.role_at_film.id } })
     setSelectByFieldName(domElement, sortedValues, field_name)
 }
 
-function collectOrderedRaf(field_name, conf, formData, formElement)
-{
+function collectOrderedRaf(field_name, conf, formData, formElement) {
     formData[conf.field] = Array.from(formElement.querySelectorAll(`[name="${field_name}"]`)).filter(el => el.value != '').map((el, index) => { return { role_at_film: parseInt(el.value), order: index + 1} })
 }
 
-function fillClients(domElement, values, fieldName)
-{
-    return
-    for (let i = 0; i < values.length; i++) {
-        let value = values[i];
-        let lastElement = domElement.querySelector(`[name^="${fieldName}"]:last-of-type`)
-        if (i === 0) {
-            lastElement.value = value.namePrivate
-        } else {
-            let newChild = lastElement.closest('.sub_form').cloneNode(true)
-            newChild.querySelector(`[name^="${fieldName}"]`).value = value.namePrivate
-            newChild.querySelector('.remove_fields').addEventListener('click', remove_fields)
-            lastElement.closest('.sub_form').after(newChild)
-        }
+function fillClients(domElement, clients, fieldName) {
+    const clientsList = document.querySelector(".clients .list")
+    clientsList.innerHTML = ""
+
+    for (let i = 0; i < clients.length; i++) {
+        const clientDiv = getClientSummaryRow(clients[i], clientsList.childNodes.length + 1)
+        clientsList.appendChild(clientDiv)
+        clientDiv.closest('fieldset').classList.add('opened')
     }
 }
 
 function collectClients(field_name, conf, formData, formElement)
 {
     return;
-    const clients = Array.from(formElement.querySelectorAll(`[name="${field_name}"]`)).filter(el => el.value != '')
-    console.log('clients', clients)
-    for (let i = 0; i < clients.length; i++) {
-        console.log('CLIENT:', clients[i].value)
-    }
 }
 
 function isFieldHidden(field) {
@@ -2020,6 +2182,7 @@ function refreshRowNumbers(el) {
     for (let index = 0; index < nrFields.length; index++) {
         nrFields[index].innerHTML = `${index+1}.`
     }
+    return nrFields.length
 }
 
 const observer = new MutationObserver(function(mutationsList, observer) {
@@ -2029,8 +2192,20 @@ const observer = new MutationObserver(function(mutationsList, observer) {
 observer.observe(document.querySelector('.org_role_at_films'), {characterData: false, childList: true, attributes: false});
 //end sortable role_at_films fieds
 
+function showSuccessMsg(message) {
+    const notification = document.getElementById('alertSuccess')
+    notification.innerHTML = message
+    notification.style.display = 'block'
+    setTimeout(()=>{notification.style.display = 'none';}, 5000);
+}
+
+function showErrorMsg(message) {
+    const notification = document.getElementById('alertError')
+    notification.innerHTML = message
+    notification.style.display = 'block'
+    setTimeout(()=>{notification.style.display = 'none';}, 5000);
+}
 
 ; (async () => {
     requireLogin()
-    showSection('organisationprofile')
 })()
