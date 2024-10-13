@@ -50,7 +50,7 @@ deepchatActiveInWeb:
     filmikool.poff.ee: false
     hoff.ee: false
     industry.poff.ee: false
-    justfilm.ee: false
+    justfilm.ee: true
     kinoff.poff.ee: false
     kumu.poff.ee: false
     oyafond.ee: false
