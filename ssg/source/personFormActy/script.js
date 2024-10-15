@@ -1188,7 +1188,6 @@ async function saveOrganisationForm() {
         const response = await sendOrganisation(organisationData)
         if (response) {
             showPopup(translate('messageOrganisationSaveSuccess'))
-            document.getElementById('organisationProfileSent').style.display = "block"
         }
     }
 
@@ -1278,10 +1277,9 @@ function collectFormData(formElement, fields) {
     return formData
 }
 function addHttpsIfNoPrefix(url) {
-    if (url.toLowerCase().startsWith('http')) {
+    if (url == null || url == "" || url.toLowerCase().startsWith('http')) {
         return url
     }
-    console.log('ADD URL PREFIX', url)
     return `https://${url}`
 }
 
