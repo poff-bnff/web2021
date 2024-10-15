@@ -9,7 +9,7 @@ block content
 
         strong
             label= self.label.addPro.chooseProfileTypeLabel
-        select(name='addProType', onchange='showSection(this.value)')
+        select(name='addProType' onchange='showSection(this.value)' autocomplete="off")
             option(value="" selected="" disabled)= self.label.addPro.chooseProfileTypeSelectValue
             - var profileTypes = {organisationprofile: self.label.addPro.typeOrganisation, userprofile: self.label.addPro.typeActor}
             each label, key in profileTypes
