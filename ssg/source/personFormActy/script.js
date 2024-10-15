@@ -1074,8 +1074,8 @@ function removeStill(el) {
 }
 
 function resetFields(element) {
-    element.querySelectorAll('input[type="file"], input[type="number"], input[type="text"], select, input[type="hidden"], input[type="checkbox"]').forEach(el =>  el.value = "" );
-    element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.setAttribute('data-is-deleted', true) });
+    element.querySelectorAll('input[type="file"], input[type="number"], input[type="text"], input[type="url"], select, input[type="hidden"], input[type="checkbox"], input[type="url"], textarea, input[list="name"]').forEach(el => el.value="" );
+    element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.setAttribute('data-is-deleted', true); el.removeAttribute('data-image-id') });
     element.querySelectorAll('audio').forEach(el => { el.style.display = 'none';  el.src = ''});
     element.querySelectorAll('.error').forEach(el => el.innerHTML = '')
 }
@@ -1187,8 +1187,8 @@ async function saveOrganisationForm() {
         const organisationData = collectFormData(document.querySelector('.organisationprofile'), getOrganisationFields())
         const response = await sendOrganisation(organisationData)
         if (response) {
-            showSuccessMsg(translate("messageOrganisationSaveSuccess"))
-            fillOrganisationForm(organisation)
+            showPopup(translate('messageOrganisationSaveSuccess'))
+            document.getElementById('organisationProfileSent').style.display = "block"
         }
     }
 
@@ -1270,10 +1270,19 @@ function collectFormData(formElement, fields) {
                 formData[conf.field] = formData[conf.field][0]
             }
             formData[conf.field] = isNaN(formData[conf.field]) ? null : parseInt(formData[conf.field])
+        } else if (conf.sendType === 'url') {
+            formData[conf.field] = addHttpsIfNoPrefix(formData[conf.field])
         }
     }
 
     return formData
+}
+function addHttpsIfNoPrefix(url) {
+    if (url.toLowerCase().startsWith('http')) {
+        return url
+    }
+    console.log('ADD URL PREFIX', url)
+    return `https://${url}`
 }
 
 function collectGalleryData(field_name, conf, orgToSend, formElement)
@@ -1437,6 +1446,8 @@ function getFilmographySummaryRow(filmography, index) {
     } else {
         if (filmography.is_featured) {
             filmographyDiv.querySelector('.is_featured_project').querySelector('input').checked = true
+        } else {
+            filmographyDiv.querySelector('.is_featured_project').querySelector('span').remove()
         }
     }
 
@@ -1491,20 +1502,27 @@ async function saveClient(event) {
     if (!isFormValid(form, fields)) {
         return;
     }
-    data = collectFormData(form, fields)
 
+    document.getElementById('loader').classList.add('loading')
+    let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
+    saveOrganisationButton.disabled = true
+
+    data = collectFormData(form, fields)
     const result = await sendClient(data)
 
     if (result) {
         showSuccessMsg(translate('messageClientSaveSuccess'))
         const id = data.id ? data.id : state?.newCollectionIds?.client
         const client = organisation['clients'].find((element) => element.id == id)
-        updateCollectionSummaryRow(document.querySelector(".clients .list"), form, getClientSummaryRow(client, 'nr')
-    )
+        updateCollectionSummaryRow(document.querySelector(".clients .list"), form, getClientSummaryRow(client, 'nr'))
         if (!data.id) {
             closeClientForm(form)
         }
     }
+
+    saveOrganisationButton.disabled = false
+    document.getElementById('loader').classList.remove('loading')
+
 }
 
 function removeClient(event) {
@@ -1585,6 +1603,7 @@ function getOnGoingFilmographyFields() {
         },
         org_ongoing_project_work_url: {
             field: 'work_url',
+            sendType: 'url',
         },
         org_ongoing_project_decsription_en: {
             field: 'decsription_en',
@@ -1607,6 +1626,7 @@ function getClientFields() {
     return {
         url: {
             field: 'url',
+            sendType: 'url',
         },
         description: {
             field: 'description',
@@ -1644,6 +1664,7 @@ function getFilmographyFields() {
         },
         org_filmography_work_url: {
             field: 'work_url',
+            sendType: 'url',
         },
         org_filmography_runtime: {
             field: 'runtime',
@@ -1654,6 +1675,7 @@ function getFilmographyFields() {
         },
         org_filmography_org_url: {
             field: 'org_url',
+            sendType: 'url',
         },
         org_filmography_decsription_en: {
             field: 'decsription_en',
@@ -1681,6 +1703,11 @@ async function saveFilmography(event, is_ongoing = true) {
     if (!isFormValid(form, fields)) {
         return;
     }
+
+    document.getElementById('loader').classList.add('loading')
+    let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
+    saveOrganisationButton.disabled = true
+
     data = collectFormData(form, fields)
     data['is_ongoing'] = is_ongoing ? 1:0
     const result = await sendFilmography(data)
@@ -1695,6 +1722,9 @@ async function saveFilmography(event, is_ongoing = true) {
             closeFilmographyForm(form)
         }
     }
+
+    saveOrganisationButton.disabled = false
+    document.getElementById('loader').classList.remove('loading')
 }
 
 function sendClient(data) {
@@ -1851,27 +1881,35 @@ const getOrganisationFields = () =>  {
         },
         org_acc_imdb: {
             field: 'acc_imdb',
+            sendType: 'url',
         },
         org_acc_efis: {
             field: 'acc_efis',
+            sendType: 'url',
         },
         org_acc_instagram: {
             field: 'acc_instagram',
+            sendType: 'url',
         },
         org_acc_fb: {
             field: 'acc_fb',
+            sendType: 'url',
         },
         org_acc_other: {
             field: 'acc_other',
+            sendType: 'url',
         },
         org_acc_youtube: {
             field: 'acc_youtube',
+            sendType: 'url',
         },
         org_acc_vimeo: {
             field: 'acc_vimeo',
+            sendType: 'url',
         },
         org_webpage_url: {
             field: 'webpage_url',
+            sendType: 'url',
         },
         org_email: {
             field: 'eMail',
@@ -1970,7 +2008,11 @@ const getOrganisationFields = () =>  {
 }
 
 const fillOrganisationForm = (organisation) => {
-    fillFields(document.querySelector('.organisationprofile'), getOrganisationFields(), organisation)
+    if (organisation.id) {
+        fillFields(document.querySelector('.organisationprofile'), getOrganisationFields(), organisation)
+    } else {
+        showPopup(translate('errorOnOrganisationLoad'))
+    }
 }
 
 function getImageMetaData(field) {
@@ -2000,12 +2042,15 @@ function generateImageMetadataJson(imageElement) {
 }
 
 function fillStill(imgEl, val, fieldName) {
+    console.log(imgEl)
     if (!Array.isArray(val) || val.length < 1) {
         return
     }
     val = val[0]
     imgEl.querySelector('.imgPreview').src = `${getAssetsUrl()}${val.hash}${val.ext}`
     imgEl.querySelector('.imgPreview').setAttribute('data-image-id', val.id)
+    imgEl.classList.add('preview_image_filled')
+
 }
 
 function fillImage(domElement, val, fieldName = false) {
@@ -2063,7 +2108,7 @@ function fillFields(domElement, fields, data) {
             const field = domElement.querySelector(`input[name="${field_name}"], select[name="${field_name}"]`)
 
             if (field) {
-                if (domElement.querySelector('fieldset')) {
+                if (domElement.querySelector('fieldset') || domElement.tagName.toLowerCase() == 'fieldset') {
                     field.closest('fieldset').classList.add('opened')
                 }
             }
@@ -2126,10 +2171,12 @@ function previewImage(event) {
         error.innerHTML = translate('validatioErrorFileIsNotImage')
         previewElement.src = previewElement.getAttribute('data-placeholder-img')
         imageElement.querySelector('input[type="file"]').value = ''
+        imageElement.classList.remove('preview_image_filled')
     } else if (file.size / 1024 / 1024 > 5) {
         error.innerHTML = translate('validationErrorImageFileIsToBig', {size: (file.size / 1024 / 1024).toFixed(2)})
         previewElement.src = previewElement.getAttribute('data-placeholder-img')
         imageElement.querySelector('input[type="file"]').value = ''
+        imageElement.classList.remove('preview_image_filled')
     } else {
         error.innerHTML = ""
         var reader = new FileReader()
@@ -2137,6 +2184,8 @@ function previewImage(event) {
             previewElement.src = reader.result
         }
         reader.readAsDataURL(file)
+        imageElement.classList.add('preview_image_filled')
+
     }
 }
 
@@ -2169,7 +2218,6 @@ function previewAudioreel(event) {
     }
 }
 
-
 //start sortable role_at_films fieds
 Sortable.create(document.querySelector('.org_role_at_films'),  {
     handle: '.drag_me', // handle's class
@@ -2177,8 +2225,8 @@ Sortable.create(document.querySelector('.org_role_at_films'),  {
     draggable: '.sub_form'
 });
 
-function refreshRowNumbers(el) {
-    const nrFields = el.querySelectorAll('.nr');
+function refreshRowNumbers(element) {
+    const nrFields = element.querySelectorAll('.nr');
     for (let index = 0; index < nrFields.length; index++) {
         nrFields[index].innerHTML = `${index+1}.`
     }
@@ -2204,6 +2252,11 @@ function showErrorMsg(message) {
     notification.innerHTML = message
     notification.style.display = 'block'
     setTimeout(()=>{notification.style.display = 'none';}, 5000);
+}
+
+function showPopup(message) {
+    document.getElementById('infoPopup').querySelector('p').innerHTML = message
+    document.getElementById('infoPopup').style.display = "block"
 }
 
 ; (async () => {

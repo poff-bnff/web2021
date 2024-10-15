@@ -17,7 +17,7 @@ block content
         span.result
 
     section.organisationprofile.addProSection
-        .popup-overlay#organisationProfileSent
+        .popup-overlay#infoPopup
             dialog.popup
                 p= self.label.addPro.messageOrganisationSaveSuccess
                 button.send_data(onclick='location.reload()')= "OK"
@@ -28,10 +28,10 @@ block content
                 legend= self.label.addPro.nameTitle
                 .fieldset_grid
                     .form_group
-                        label(for='org_name_en')= self.label.addPro.nameDescription
+                        label= self.label.addPro.nameDescription
                             span.required= ' ' + self.label.addPro.required
-                        input#org_name_en( type='text' name='org_name_en' required maxlength="200" oninput="validateField(event.currentTarget)" data-validate="required")
-                        .error
+                            input( type='text' name='org_name_en' required maxlength="200" oninput="validateField(event.currentTarget)" data-validate="required")
+                            .error
 
             //- Role at films
             fieldset.opened
@@ -57,14 +57,18 @@ block content
             //- Team size
             fieldset
                 legend= self.label.addPro.teamSizeTitle
-                label(for='org_employees_n')= self.label.addPro.teamSizeDescription
+                label= self.label.addPro.teamSizeDescription
+                .fieldset_grid
+                    .form_group
+                        .sub_form
+                            input.number_field(type='text' name='org_employees_n' oninput="validateField(event.currentTarget)" data-validate="is-number-between-1-10000")
+                            button.remove_fields(type='button' onclick='removeFields(event)')= self.label.addPro.buttonRemove
+                            .error
                 .fieldset_grid.one_column
                     .form_group
-                        input#org_employees_n(type='text' name='org_employees_n' oninput="validateField(event.currentTarget)" data-validate="is-number-between-1-10000")
-                        .error
-                        label(for='creative_gate_relations')= self.label.addPro.teamMemberLabel
+                        label= self.label.addPro.teamMemberLabel
                         .sub_form
-                            select#creative_gate_relations(name='org_creative_gate_relations')
+                            select(name='org_creative_gate_relations')
                                 option(value="" selected="" disabled)= ''
                                 - var filteredPersons = self.data.person.filter(person => Array.isArray(person.festival_editions) && person.festival_editions.some(festival => festival.id === 59))
                                 - var sortedPersons = filteredPersons.sort(((a, b) => a.firstNameLastName.localeCompare(b.firstNameLastName)))
@@ -78,13 +82,13 @@ block content
             //- Hourly rate
             fieldset
                 legend= self.label.addPro.hourlyRateTitle
-                label(for='nextRoleAtFilm')= self.label.addPro.hourlyRateDescription
+                label= self.label.addPro.hourlyRateDescription
                 .fieldset_grid.one_column
                     .form_group
-                        input.rate_field(type='number' name='org_h_rate_from')
+                        input.number_field(type='number' name='org_h_rate_from')
                         span.rate_gap= "-"
-                        input.rate_field(type='number' name='org_h_rate_to' placeholder='€')
-                        input.hide_fieldset_fields(type='button' value= self.label.addPro.buttonRemove)
+                        input.number_field(type='number' name='org_h_rate_to' placeholder='€')
+                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.hourlyRateButtonAdd
 
@@ -108,57 +112,46 @@ block content
             //- Profile image / Logo
             fieldset.opened
                 legend= self.label.addPro.profileImageTitle
-                .fieldset_grid
+                label= self.label.addPro.profileImageDescription
+                .fieldset_grid.two_columns_profile_image
                     .form_group
-                        label= self.label.userprofile.profileImg
-                        br
                         img.imgPreview.square(alt="user profile pic", src="/assets/img/static/profile_img_1_1.svg" data-placeholder-img='/assets/img/static/profile_img_1_1.svg')
                         .error
                         input.input_file(type='file' name='logoColour' accept='image/*' onchange ='previewImage(event)')
-                    .form_group
-                        .field
-                            label
-                                span= self.label.addPro.imageCaption
-                                input(type='text' name='caption')
-                        .field
-                            label
-                                span= self.label.addPro.imagePhotographer
-                                input(type='text' name='photographer')
-                        .field
-                            label
-                                span= self.label.addPro.imageYear
-                                input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                    .form_group.image_metadata
+                        label
+                            span= self.label.addPro.imageCaption
+                            input(type='text' name='caption')
+                        label
+                            span= self.label.addPro.imagePhotographer
+                            input(type='text' name='photographer')
+                        label
+                            span= self.label.addPro.imageYear
+                            input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                             .error
-                        .field
-                            button.remove_fields(type='button' onclick='clearFields(event)')= self.label.addPro.buttonRemove
+                        button.remove_fields(type='button' onclick='clearFields(event)')= self.label.addPro.buttonRemove
 
             //- Header image / Logo
             fieldset
                 legend= self.label.addPro.headerImageTitle
                 label= self.label.addPro.headerImageDescription
-                .fieldset_grid.two_columns_even
+                .fieldset_grid.two_columns_image
                     .form_group
-                        label= self.label.userprofile.profileImg
-                        br
                         img.imgPreview(alt="user profile pic", src="/assets/img/static/gallery_img_org.svg" data-placeholder-img="/assets/img/static/gallery_img_org.svg")
                         .error
                         input.input_file(type='file' name='profile_img' accept='image/*' onchange ='previewImage(event)')
-                    .form_group.gallery_image_fields
-                        .field
-                            label
-                                span= self.label.addPro.imageCaption
-                                input(type='text' name='caption')
-                        .field
-                            label
-                                span= self.label.addPro.imagePhotographer
-                                input(type='text' name='photographer')
-                        .field
-                            label
-                                span= self.label.addPro.imageYear
-                                input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                    .form_group.image_metadata
+                        label
+                            span= self.label.addPro.imageCaption
+                            input(type='text' name='caption')
+                        label
+                            span= self.label.addPro.imagePhotographer
+                            input(type='text' name='photographer')
+                        label
+                            span= self.label.addPro.imageYear
+                            input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                             .error
-                        .field
-                            button.remove_fields(type='button' onclick='clearFields(event)' data-close-fieldset="true")= self.label.addPro.buttonRemove
+                        button.remove_fields(type='button' onclick='clearFields(event)' data-close-fieldset="true")= self.label.addPro.buttonRemove
 
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.headerImageButtonAdd
@@ -178,9 +171,9 @@ block content
                                 span.maximum_count= 500
                             .error
                     .form_group.textarea
-                        label(for='org_skills_en')
+                        label
                             span= self.label.addPro.insightsFieldSkillsTitle
-                            textarea#org_skills_en(name="org_skills_en")
+                            textarea(name="org_skills_en")
                             .count
                                 span.current_count= 0
                                 span= "/"
@@ -234,7 +227,7 @@ block content
                             input#org_acc_other( type='url' name='org_acc_other')
                 .fieldset_grid
                     .form_group
-                        input.hide_fieldset_fields(type='button' value= self.label.addPro.buttonRemove)
+                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.professionalLinksButtonAdd
 
@@ -297,7 +290,7 @@ block content
                             input( type='hidden', name="id")
                 .fieldset_grid
                     .form_group
-                        input.hide_fieldset_fields(type='button' value= self.label.addPro.buttonRemove)
+                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.contactAddressButtonAdd
 
@@ -311,7 +304,7 @@ block content
                     .filmography_row_template(style='display: none;')
                         .filmography.collection_entry
                             .summary
-                                button(type="button" class="remove_fields")
+                                button(type="button" class="toggle_summary")
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'+
                                         <path d="M6 9L12 15L18 9" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>' +
                                     </svg>
@@ -319,7 +312,8 @@ block content
                                         span.nr= '%nr%.'
                                         = '%work_name%'
                                     span.role_at_film= ', as a %role_at_film%'
-                                span.is_featured_project= "Featured project"
+                                span.is_featured_project
+                                    span= "Featured project"
                                     .switch
                                         input(type="checkbox" name="is_featured")
                                         span.slider
@@ -356,32 +350,32 @@ block content
                                 input.year_field#org_appartment( type='number' name='org_filmography_year_from' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                                 .error
                             label.year_label.year_of_completion= self.label.addPro.filmographyYearOfCompletion
-                                input.year_field#org_postal_code( type='number' name='org_filmography_year_to' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                                input.year_field( type='number' name='org_filmography_year_to' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                                 .error
-                    .fieldset_grid
+                    .fieldset_grid.three_columns_uneven
                         .form_group
                             label= self.label.addPro.filmographyNameOfWork
                                 span.required= ' ' + self.label.addPro.required
-                                input#org_appartment( type='text' name='org_filmography_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
+                                input( type='text' name='org_filmography_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
                                 .error
                         .form_group
                             label= self.label.addPro.filmographyWorkWebpage
-                                input#org_postal_code( type='text' name='org_filmography_work_url')
+                                input( type='text' name='org_filmography_work_url')
                         .form_group
                             label= self.label.addPro.filmographyRunningTime
-                                input.running_time_field#org_postal_code( type='number' name='org_filmography_runtime'  oninput="validateField(event.currentTarget)" data-validate='is-number-between-1-10000')
+                                input(type='number' name='org_filmography_runtime'   oninput="validateField(event.currentTarget)" data-validate='is-number-between-1-10000')
                                 .error
                     .fieldset_grid
                         .form_group
                             label= self.label.addPro.filmographyProductionCompany
-                                input#org_appartment( type='text' name='org_filmography_org_name')
+                                input( type='text' name='org_filmography_org_name')
                         .form_group
                             label= self.label.addPro.filmographyProductionCompanyWebpage
-                                input#org_postal_code( type='text' name='org_filmography_org_url')
+                                input( type='text' name='org_filmography_org_url')
                     .fieldset_grid.one_column
                         .form_group.textarea
                             label= self.label.addPro.filmographyYourExperience
-                                textarea#org_appartment(name='org_filmography_decsription_en')
+                                textarea(name='org_filmography_decsription_en')
                                 .count
                                     span.current_count= 0
                                     span= "/"
@@ -395,12 +389,12 @@ block content
                                         span.round
                         .form_group
                     .fieldset_grid.two_columns_even.still
-                        .form_group
-                            span= self.label.addPro.filmographyFeaturedProjectAddStill
+                        .form_group(style="position: relative")
+                            span.stillLabel= self.label.addPro.filmographyFeaturedProjectAddStill
                             img.imgPreview(alt="gallery picture", src="/assets/img/static/gallery_img_org.svg" data-placeholder-img='/assets/img/static/gallery_img_org.svg')
                             .error
                             input.input_file(type='file' name='stills' accept='image/*' onchange ='previewImage(event)' oninput="validateField(event.currentTarget)" data-validate="still-image")
-                        .form_group.remove_still
+                        .form_group
                             .field
                                 button.remove_still(type='button' onclick="removeStill(event)")= self.label.addPro.buttonRemove
 
@@ -421,7 +415,7 @@ block content
                                     </defs>
                                 </svg>
 
-                        button.remove_data(type='button' onclick='removeFilmography(event)')= self.label.addPro.buttonRemove2
+                        button.remove_collection(type='button' onclick='removeFilmography(event)')= self.label.addPro.buttonRemove
                             span
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_1333_33497)">
@@ -464,7 +458,6 @@ block content
                             .sub_form
                                 select(name='org_ongoing_project_role_at_films')
                                     option.default_select(class='invalid' value="" selected="")
-                                        //- = self.label.userprofile.proRole
                                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                         option(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
                                 button.remove_fields(type='button' onclick='removeFields(event)')= self.label.addPro.buttonRemove
@@ -473,11 +466,11 @@ block content
                         .form_group
                             label= self.label.addPro.filmographyNameOfWork
                                 span.required= ' ' + self.label.addPro.required
-                                input#org_appartment( type='text' name='org_ongoing_project_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
+                                input( type='text' name='org_ongoing_project_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
                                 .error
                         .form_group
                             label= self.label.addPro.filmographyWorkWebpage
-                                input#org_postal_code( type='text' name='org_ongoing_project_work_url' autocomplete="off")
+                                input( type='text' name='org_ongoing_project_work_url' autocomplete="off")
                     .fieldset_grid.one_column
                         .form_group
                             label= self.label.addPro.ongoingProjecsStageOfDevelopment
@@ -524,7 +517,7 @@ block content
                                     </defs>
                                 </svg>
 
-                        button.remove_data(type='button' onclick='removeFilmography(event)')= self.label.addPro.buttonRemove2
+                        button.remove_collection(type='button' onclick='removeFilmography(event)')= self.label.addPro.buttonRemove
                             span
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_1333_33497)">
@@ -551,7 +544,7 @@ block content
                     .client_row_template(style='display: none;')
                         .client.collection_entry
                             .summary
-                                button(type="button" class="remove_fields")
+                                button(type="button" class="toggle_summary")
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'+
                                         <path d="M6 9L12 15L18 9" stroke="#636769" stroke-linecap="round" stroke-linejoin="round"/>' +
                                     </svg>
@@ -603,7 +596,7 @@ block content
                                         </defs>
                                     </svg>
 
-                            button.remove_data(type='button' onclick='removeClient(event)')= self.label.addPro.buttonRemove2
+                            button.remove_collection(type='button' onclick='removeClient(event)')= self.label.addPro.buttonRemove
                                 span
                                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_1333_33497)">
@@ -625,11 +618,12 @@ block content
             fieldset
                 legend= self.label.addPro.showreelTitle
                 label= self.label.addPro.showreelDescription
-                .fieldset_grid.one_column
+                .fieldset_grid
                     .form_group
                         input#showreel(type='url' name='org_showreel' oninput="validateField(event.currentTarget)" data-validate="is-showreel")
-                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                         .error
+                    .form_group
+                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.showreelButtonAdd
 
@@ -651,28 +645,25 @@ block content
                 legend= self.label.addPro.imageGalleryTitle
                 label= self.label.addPro.imageGalleryDescription
                 .sub_form.gallery
-                    .fieldset_grid.two_columns_even
+                    .fieldset_grid.two_columns_image
                         .form_group
                             img.imgPreview(alt="gallery picture", src="/assets/img/static/gallery_img_org.svg" data-placeholder-img='/assets/img/static/gallery_img_org.svg')
                             div.error
                             input.input_file(type='file' name='images' accept='image/*' onchange ='previewImage(event)')
-                        .form_group.gallery_image_fields
-                            .field
-                                label
-                                    span= self.label.addPro.imageCaption
-                                    input(type='text' name='caption')
-                            .field
-                                label
-                                    span= self.label.addPro.imagePhotographer
-                                    input(type='text' name='photographer')
-                            .field
-                                label
-                                    span= self.label.addPro.imageYear
-                                    input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                        .form_group.gallery_image_fields.image_metadata
+                            label
+                                span= self.label.addPro.imageCaption
+                                input(type='text' name='caption')
+                            label
+                                span= self.label.addPro.imagePhotographer
+                                input(type='text' name='photographer')
+
+                            label
+                                span= self.label.addPro.imageYear
+                                input(type='number' name='img_year' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                                 .error
                                 input(type="hidden" name="id")
-                            .field
-                                button.remove_fields(type='button' onclick="removeGalleryImage(event)")= self.label.addPro.buttonRemove
+                            button.remove_fields(type='button' onclick="removeGalleryImage(event)")= self.label.addPro.buttonRemove
                 .fieldset_grid.two_columns_even
                     .form_group
                         button.duplicate_gallery_fields#add_new_gallery_image(type='button' onclick="addNewGalleryImage(event)")= self.label.addPro.imageGalleryButtonAddNext
@@ -682,7 +673,7 @@ block content
             //- Yout profile page url
             fieldset.opened
                 legend= self.label.addPro.profilePageUrlTitle
-                .fieldset_grid.one_column
+                .fieldset_grid.two_columns_even
                     .form_group
                         label= self.label.addPro.profilePageUrlDescription
                             input(type='text' name='profile_url' disabled="true")
@@ -694,14 +685,14 @@ block content
                     .form_group
                         label= self.label.addPro.feedbackDescription
                         a.button_send_feedback(href="mailto:ux@poff.ee&subject=Feedback%20from%20Creative%20Gate%20My%20Profile%20form")= self.label.addPro.feedbackButton
-                .fieldset_grid
+                .fieldset_grid.one_column
                     .form_group
                         label
                             .switch
                                 input(type="checkbox" name="ok_to_contact")
                                 span.slider
                                     span.round
-                            span.label= self.label.addPro.feedbackCheckbox
+                            span.feedback= self.label.addPro.feedbackCheckbox
 
             fieldset.opened
                 .fieldset_grid
@@ -1203,6 +1194,7 @@ block content
         span.validationErrorPhone= self.label.addPro.validationErrorPhone
         span.validationErrorShowreel= self.label.addPro.validationErrorShowreel
         span.messageOrganisationSaveSuccess= self.label.addPro.messageOrganisationSaveSuccess
+        span.errorOnOrganisationLoad= self.label.addPro.errorOnOrganisationLoad
         span.messageClientSaveSuccess= self.label.addPro.messageClientSaveSuccess
         span.messageFilmographySaveSuccess= self.label.addPro.messageFilmographySaveSuccess
         span.messageErrorOnSave= self.label.addPro.messageErrorOnSave
