@@ -1006,7 +1006,8 @@ async function showSection(sectionName) {
 function addNewGalleryImage(event) {
     const fieldset = event.currentTarget.closest('fieldset')
     const images = fieldset.querySelectorAll('.gallery')
-    duplicateElement(images[images.length-1])
+    const newElement = duplicateElement(images[images.length-1])
+    newElement.querySelector('input').focus()
     updateAddGalleryImageButtonVisibility(fieldset)
 };
 
@@ -1035,7 +1036,8 @@ function  duplicatePreviousElement(event) {
         const elements = fieldsElement = event.currentTarget.closest('fieldset').querySelectorAll('.sub_form')
         fieldsElement = elements[elements.length - 1]
     }
-    duplicateElement(fieldsElement)
+    const newElement = duplicateElement(fieldsElement)
+    newElement.querySelector('select').focus()
 };
 
 function duplicateElement(element) {
@@ -1083,6 +1085,10 @@ function resetFields(element) {
 document.querySelectorAll('.show_form_fields').forEach(function (button) {
     button.addEventListener('click', function (event) {
         showFormFields(event)
+        const el = event.currentTarget.closest('fieldset').querySelector('input, select');
+        if (el) {
+            el.focus()
+        }
     });
 });
 
@@ -1095,12 +1101,14 @@ function showFilmographyFields(event) {
     const fieldset = event.currentTarget.closest('fieldset')
     fieldset.classList.add('opened')
     event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').style.display = 'block'
+    event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').querySelector('select').focus()
 }
 
 function showClientFields(event) {
     const fieldset = event.currentTarget.closest('fieldset')
     fieldset.classList.add('opened')
     event.currentTarget.closest('fieldset').querySelector('.client_form.template').style.display = 'block'
+    event.currentTarget.closest('fieldset').querySelector('.client_form.template input').focus()
 }
 
 document.querySelectorAll('.hide_fieldset_fields').forEach(function (button) {
@@ -1155,6 +1163,7 @@ function setSelectByFieldName(domElement, values, fieldName) {
             let newChild = lastElement.closest('.sub_form').cloneNode(true)
             newChild.querySelector('select').value = value
             lastElement.closest('.sub_form').after(newChild)
+            lastElement = newChild
         }
     }
 }
@@ -2115,7 +2124,7 @@ function fillFields(domElement, fields, data) {
 }
 
 function fillOrderedRaF(domElement, val, field_name) {
-    const sortedValues = val.sort((a, b) => a.order - b.order).map((e) => {return  { id: e.role_at_film.id } })
+    const sortedValues = val.sort((a, b) => a.order > b.order).map((e) => {return  { id: e.role_at_film.id } })
     setSelectByFieldName(domElement, sortedValues, field_name)
 }
 
