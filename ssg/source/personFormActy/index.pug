@@ -30,15 +30,15 @@ block content
                     .form_group
                         label= self.label.addPro.nameDescription
                             span.required= ' ' + self.label.addPro.required
-                            input( type='text' name='org_name_en' required maxlength="200" oninput="validateField(event.currentTarget)" data-validate="required")
+                            input( type='text' name='name_en' required maxlength="200" oninput="validateField(event.currentTarget)" data-validate="required")
                             .error
 
             //- Role at films
             fieldset.opened
                 legend= self.label.addPro.roleTitle
                 .fieldset_grid.one_column
-                    .form_group.org_role_at_films
-                        label(for='org_role_at_films')= self.label.addPro.roleDescription
+                    .form_group.orderedRaF
+                        label(for='orderedRaF')= self.label.addPro.roleDescription
                             span.required= ' ' + self.label.addPro.required
                         .sub_form(draggable="true")
                             span.nr= "1."
@@ -46,7 +46,7 @@ block content
                                 <svg width="18" height="37" viewBox="0 0 18 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5.18182 11.4444C5.76047 11.4444 6.31543 11.2103 6.7246 10.7936C7.13377 10.3768 7.36364 9.81159 7.36364 9.22222C7.36364 8.63285 7.13377 8.06762 6.7246 7.65087C6.31543 7.23413 5.76047 7 5.18182 7C4.60316 7 4.04821 7.23413 3.63904 7.65087C3.22987 8.06762 3 8.63285 3 9.22222C3 9.81159 3.22987 10.3768 3.63904 10.7936C4.04821 11.2103 4.60316 11.4444 5.18182 11.4444ZM5.18182 19.2222C5.76047 19.2222 6.31543 18.9881 6.7246 18.5713C7.13377 18.1546 7.36364 17.5894 7.36364 17C7.36364 16.4106 7.13377 15.8454 6.7246 15.4287C6.31543 15.0119 5.76047 14.7778 5.18182 14.7778C4.60316 14.7778 4.04821 15.0119 3.63904 15.4287C3.22987 15.8454 3 16.4106 3 17C3 17.5894 3.22987 18.1546 3.63904 18.5713C4.04821 18.9881 4.60316 19.2222 5.18182 19.2222ZM7.36364 24.7778C7.36364 25.3671 7.13377 25.9324 6.7246 26.3491C6.31543 26.7659 5.76047 27 5.18182 27C4.60316 27 4.04821 26.7659 3.63904 26.3491C3.22987 25.9324 3 25.3671 3 24.7778C3 24.1884 3.22987 23.6232 3.63904 23.2064C4.04821 22.7897 4.60316 22.5556 5.18182 22.5556C5.76047 22.5556 6.31543 22.7897 6.7246 23.2064C7.13377 23.6232 7.36364 24.1884 7.36364 24.7778ZM12.8182 11.4444C13.3968 11.4444 13.9518 11.2103 14.361 10.7936C14.7701 10.3768 15 9.81159 15 9.22222C15 8.63285 14.7701 8.06762 14.361 7.65087C13.9518 7.23413 13.3968 7 12.8182 7C12.2395 7 11.6846 7.23413 11.2754 7.65087C10.8662 8.06762 10.6364 8.63285 10.6364 9.22222C10.6364 9.81159 10.8662 10.3768 11.2754 10.7936C11.6846 11.2103 12.2395 11.4444 12.8182 11.4444ZM15 17C15 17.5894 14.7701 18.1546 14.361 18.5713C13.9518 18.9881 13.3968 19.2222 12.8182 19.2222C12.2395 19.2222 11.6846 18.9881 11.2754 18.5713C10.8662 18.1546 10.6364 17.5894 10.6364 17C10.6364 16.4106 10.8662 15.8454 11.2754 15.4287C11.6846 15.0119 12.2395 14.7778 12.8182 14.7778C13.3968 14.7778 13.9518 15.0119 14.361 15.4287C14.7701 15.8454 15 16.4106 15 17ZM12.8182 27C13.3968 27 13.9518 26.7659 14.361 26.3491C14.7701 25.9324 15 25.3671 15 24.7778C15 24.1884 14.7701 23.6232 14.361 23.2064C13.9518 22.7897 13.3968 22.5556 12.8182 22.5556C12.2395 22.5556 11.6846 22.7897 11.2754 23.2064C10.8662 23.6232 10.6364 24.1884 10.6364 24.7778C10.6364 25.3671 10.8662 25.9324 11.2754 26.3491C11.6846 26.7659 12.2395 27 12.8182 27Z" fill="#636769"/>
                                 </svg>
-                            select(name='org_role_at_films' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
+                            select(name='orderedRaF' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
                                 option.default_select(class='invalid' value="" selected="")
                                 each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                     option(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
@@ -61,14 +61,14 @@ block content
                 .fieldset_grid
                     .form_group
                         .sub_form
-                            input.number_field(type='text' name='org_employees_n' oninput="validateField(event.currentTarget)" data-validate="is-number-between-1-10000")
+                            input.number_field(type='text' name='employees_n' oninput="validateField(event.currentTarget)" data-validate="is-number-between-1-10000")
                             button.remove_fields(type='button' onclick='removeFields(event)')= self.label.addPro.buttonRemove
                             .error
                 .fieldset_grid.one_column
                     .form_group
                         label= self.label.addPro.teamMemberLabel
                         .sub_form
-                            select(name='org_creative_gate_relations')
+                            select(name='creative_gate_relations')
                                 option(value="" selected="" disabled)= ''
                                 - var filteredPersons = self.data.person.filter(person => Array.isArray(person.festival_editions) && person.festival_editions.some(festival => festival.id === 59))
                                 - var sortedPersons = filteredPersons.sort(((a, b) => a.firstNameLastName.localeCompare(b.firstNameLastName)))
@@ -85,9 +85,9 @@ block content
                 label= self.label.addPro.hourlyRateDescription
                 .fieldset_grid.one_column
                     .form_group
-                        input.number_field(type='number' name='org_h_rate_from')
+                        input.number_field(type='number' name='h_rate_from')
                         span.rate_gap= "-"
-                        input.number_field(type='number' name='org_h_rate_to' placeholder='€')
+                        input.number_field(type='number' name='h_rate_to' placeholder='€')
                         button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.hourlyRateButtonAdd
@@ -100,7 +100,7 @@ block content
                         label= self.label.addPro.spokenLangugesDescription
                             span.required= ' ' + self.label.addPro.required
                         .sub_form
-                            select(name='org_languages' form="thisPersonProfile" oninput="validateField(event.currentTarget)"  data-validate="at-least-one-option-selected")
+                            select(name='languages' form="thisPersonProfile" oninput="validateField(event.currentTarget)"  data-validate="at-least-one-option-selected")
                                 option.placeholder(class='notinvalid' value="" selected="")
                                 each language in self.data.languages.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=language.id)= language[`name_${self.locale}`]
@@ -164,7 +164,7 @@ block content
                         label
                             span= self.label.addPro.insightsFieldDescriptionTitle
                                 span.required= ' ' + self.label.addPro.required
-                            textarea(name="org_description_en" oninput="validateField(event.currentTarget)" data-validate="required")
+                            textarea(name="description_en" oninput="validateField(event.currentTarget)" data-validate="required")
                             .count
                                 span.current_count= 0
                                 span= "/"
@@ -173,7 +173,7 @@ block content
                     .form_group.textarea
                         label
                             span= self.label.addPro.insightsFieldSkillsTitle
-                            textarea(name="org_skills_en")
+                            textarea(name="skills_en")
                             .count
                                 span.current_count= 0
                                 span= "/"
@@ -186,7 +186,7 @@ block content
                 .fieldset_grid.one_column
                     .form_group
                         .sub_form(data-close-fieldset="true")
-                            select(name='org_tag_looking_fors')
+                            select(name='tag_looking_fors')
                                 option.default_select(class='invalid' value="" selected="")
                                     //- = self.label.userprofile.proRole
                                 each lookingFor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
@@ -203,28 +203,28 @@ block content
                 .fieldset_grid
                     .form_group
                         label= self.label.addPro.professionalLinksWebpage
-                            input(type='url' name='org_webpage_url')
+                            input(type='url' name='webpage_url')
                     .form_group
                         label= self.label.addPro.professionalLinksYoutube
-                            input(type='url' name='org_acc_youtube')
+                            input(type='url' name='acc_youtube')
                     .form_group
                         label= self.label.addPro.professionalLinksVimeo
-                            input(type='url' name='org_acc_vimeo')
+                            input(type='url' name='acc_vimeo')
                     .form_group
                         label= self.label.addPro.professionalLinksIMDB
-                            input(type='url' name='org_acc_imdb')
+                            input(type='url' name='acc_imdb')
                     .form_group
                         label= self.label.addPro.professionalLinksEFIS
-                            input(type='url' name='org_acc_efis')
+                            input(type='url' name='acc_efis')
                     .form_group
                         label= self.label.addPro.professionalLinksInstagram
-                            input(type='url' name='org_acc_instagram')
+                            input(type='url' name='acc_instagram')
                     .form_group
                         label= self.label.addPro.professionalLinksFacebook
-                            input(type='url' name='org_acc_fb')
+                            input(type='url' name='acc_fb')
                     .form_group
                         label= self.label.addPro.professionalLinksOther
-                            input#org_acc_other( type='url' name='org_acc_other')
+                            input(type='url' name='acc_other')
                 .fieldset_grid
                     .form_group
                         button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
@@ -238,11 +238,11 @@ block content
                     .form_group
                         label= self.label.addPro.publicContactInfoEmail
                             span.required= ' ' + self.label.addPro.required
-                            input(type="text" name="org_email" oninput="validateField(event.currentTarget)" data-validate="is-email")
+                            input(type="text" name="eMail" oninput="validateField(event.currentTarget)" data-validate="is-email")
                         .error
                     .form_group
                         label= self.label.addPro.publicContantInfoPhone
-                            input(type="text" name="org_phone_nr" oninput="validateField(event.currentTarget)" data-validate="is-phone-nr")
+                            input(type="text" name="phoneNr" oninput="validateField(event.currentTarget)" data-validate="is-phone-nr")
                         .error
 
             //- Contact address
@@ -252,41 +252,41 @@ block content
                 .fieldset_grid
                     .form_group
                         label= self.label.addPro.contactAddressCountry
-                            select(name='org_country')
+                            select(name='country')
                                 option(class='invalid' value="" selected="")
                                 each country in self.data.countries.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=country.id)= country[`name_${self.locale}`]
                     .form_group
                         label= self.label.addPro.contactAddressCounty
-                            select(name='org_county' style= 'display: none;')
+                            select(name='county' style= 'display: none;')
                                 option(class='invalid' value="" selected="")
                                 each county in self.data.counties.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=county.id)= county[`name_${self.locale}`]
-                            input(type="text" name="org_add_county")
+                            input(type="text" name="add_county")
 
                     .form_group
                         label= self.label.addPro.contactAddressMunicipality
-                            select(name='org_municipality' style= 'display: none;')
+                            select(name='municipality' style= 'display: none;')
                                 option(class='invalid' value="" selected="")
                                 each municipality in self.data.municipalities.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=municipality.id)= municipality[`name_${self.locale}`]
-                            input(type="text" name="org_add_municipality")
+                            input(type="text" name="add_municipality")
 
                     .form_group
                         label= self.label.addPro.contactAddressPopulatedPlace
-                            input( type='text' name='org_populated_place')
+                            input( type='text' name='populated_place')
                     .form_group
                         label= self.label.addPro.contactAddressStreetName
-                            input( type='text' name='org_street_name')
+                            input( type='text' name='street_name')
                     .form_group
                         label= self.label.addPro.contactAddressAddressNumber
-                            input( type='text' name='org_address_number')
+                            input( type='text' name='address_number')
                     .form_group
                         label= self.label.addPro.contactAddressApartmentNumber
-                            input( type='text' name='org_appartment')
+                            input( type='text' name='appartment')
                     .form_group
                         label= self.label.addPro.contactAddressPostalCode
-                            input( type='text' name='org_postal_code')
+                            input( type='text' name='postal_code')
                             input( type='hidden', name="id")
                 .fieldset_grid
                     .form_group
@@ -328,7 +328,7 @@ block content
                                 span.required= ' ' + self.label.addPro.required
                             - var sortedTypeOfWorks = self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                             - var filteredTypeOfWorks = sortedTypeOfWorks.filter(t => t[`name_${self.locale}`] != 'Education')
-                            select(name='org_filmography_type_of_work' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
+                            select(name='type_of_work' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
                                 option.default_select(class='invalid' value="" selected="")
                                 each typeofwork in filteredTypeOfWorks
                                     option(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
@@ -337,7 +337,7 @@ block content
                             label= self.label.addPro.filmographyProfession
                                 span.required= ' ' + self.label.addPro.required
                             .sub_form
-                                select(name='org_filmography_role_at_films' oninput="validateField(event.currentTarget)"  data-validate="at-least-one-option-selected")
+                                select(name='role_at_films' oninput="validateField(event.currentTarget)"  data-validate="at-least-one-option-selected")
                                     option.default_select(class='invalid' value="" selected="")
                                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                         option(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
@@ -347,35 +347,35 @@ block content
                     .fieldset_grid
                         .form_group
                             label.year_label= self.label.addPro.filmographyFromYear
-                                input.year_field#org_appartment( type='number' name='org_filmography_year_from' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                                input.year_field#org_appartment( type='number' name='year_from' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                                 .error
                             label.year_label.year_of_completion= self.label.addPro.filmographyYearOfCompletion
-                                input.year_field( type='number' name='org_filmography_year_to' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
+                                input.year_field( type='number' name='year_to' min='1900' max='2100' oninput="validateField(event.currentTarget)" data-validate="is-valid-year")
                                 .error
                     .fieldset_grid.three_columns_uneven
                         .form_group
                             label= self.label.addPro.filmographyNameOfWork
                                 span.required= ' ' + self.label.addPro.required
-                                input( type='text' name='org_filmography_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
+                                input( type='text' name='work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
                                 .error
                         .form_group
                             label= self.label.addPro.filmographyWorkWebpage
-                                input( type='text' name='org_filmography_work_url')
+                                input( type='text' name='work_url')
                         .form_group
                             label= self.label.addPro.filmographyRunningTime
-                                input(type='number' name='org_filmography_runtime'   oninput="validateField(event.currentTarget)" data-validate='is-number-between-1-10000')
+                                input(type='number' name='runtime'   oninput="validateField(event.currentTarget)" data-validate='is-number-between-1-10000')
                                 .error
                     .fieldset_grid
                         .form_group
                             label= self.label.addPro.filmographyProductionCompany
-                                input( type='text' name='org_filmography_org_name')
+                                input( type='text' name='org_name')
                         .form_group
                             label= self.label.addPro.filmographyProductionCompanyWebpage
-                                input( type='text' name='org_filmography_org_url')
+                                input( type='text' name='org_url')
                     .fieldset_grid.one_column
                         .form_group.textarea
                             label= self.label.addPro.filmographyYourExperience
-                                textarea(name='org_filmography_decsription_en')
+                                textarea(name='decsription_en')
                                 .count
                                     span.current_count= 0
                                     span= "/"
@@ -384,7 +384,7 @@ block content
                         .form_group
                             label= self.label.addPro.filmographyIsFeaturedProject
                                 .switch
-                                    input(type="checkbox" name="org_filmography_is_featured" value="1" onclick='toggleIsFeatured(event)')
+                                    input(type="checkbox" name="is_featured" value="1" onclick='toggleIsFeatured(event)')
                                     span.slider
                                         span.round
                         .form_group
@@ -448,7 +448,7 @@ block content
                                 span.required= ' ' + self.label.addPro.required
                             - var sortedTypeOfWorks = self.data.typeofworks.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                             - var filteredTypeOfWorks = sortedTypeOfWorks.filter(t => t[`name_${self.locale}`] != 'Education')
-                            select(name='org_ongoing_project_type_of_work' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
+                            select(name='type_of_work' oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
                                 option.default_select(class='invalid' value="" selected="")
                                 each typeofwork in filteredTypeOfWorks
                                     option(value=typeofwork.id)= typeofwork[`name_${self.locale}`]
@@ -456,7 +456,7 @@ block content
                         .form_group
                             label= self.label.addPro.filmographyProfession
                             .sub_form
-                                select(name='org_ongoing_project_role_at_films')
+                                select(name='role_at_films')
                                     option.default_select(class='invalid' value="" selected="")
                                     each roleatfilm in self.data.roleatfilms.sort((a, b) => a.en - b.en)
                                         option(value=roleatfilm.id)= roleatfilm.roleName[self.locale]
@@ -466,17 +466,17 @@ block content
                         .form_group
                             label= self.label.addPro.filmographyNameOfWork
                                 span.required= ' ' + self.label.addPro.required
-                                input( type='text' name='org_ongoing_project_work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
+                                input( type='text' name='work_name'  oninput="validateField(event.currentTarget)" data-validate="required")
                                 .error
                         .form_group
                             label= self.label.addPro.filmographyWorkWebpage
-                                input( type='text' name='org_ongoing_project_work_url' autocomplete="off")
+                                input( type='text' name='work_url' autocomplete="off")
                     .fieldset_grid.one_column
                         .form_group
                             label= self.label.addPro.ongoingProjecsStageOfDevelopment
                                 span.required= ' ' + self.label.addPro.required
                                 .sub_form
-                                    select(name='org_ongoing_project_status'  oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
+                                    select(name='project_statuses'  oninput="validateField(event.currentTarget)" data-validate="at-least-one-option-selected")
                                         option.default_select(class='invalid' value="" selected="")
                                         each roleatfilm in self.data.projectStatus.sort((a, b) => a.status - b.status)
                                             option(value=roleatfilm.id)= roleatfilm.status
@@ -486,7 +486,7 @@ block content
                         .form_group
                             label= self.label.addPro.ongoingProjecsLookingFor
                             .sub_form
-                                select(name='org_ongoing_project_tag_looking_fors')
+                                select(name='tag_looking_fors')
                                     option.default_select(class='invalid' value="" selected="")
                                     each lookingFor in self.data.taglookingfors.sort((a, b) => a.en - b.en)
                                         option(value=lookingFor.id)= lookingFor[self.locale]
@@ -495,7 +495,7 @@ block content
                     .fieldset_grid.one_column
                         .form_group.textarea
                             label= self.label.addPro.filmographyYourExperience
-                                textarea#org_appartment(name='org_ongoing_project_decsription_en' autocomplete="off")
+                                textarea#org_appartment(name='decsription_en' autocomplete="off")
                                 .count
                                     span.current_count= 0
                                     span= "/"
@@ -620,7 +620,7 @@ block content
                 label= self.label.addPro.showreelDescription
                 .fieldset_grid
                     .form_group
-                        input#showreel(type='url' name='org_showreel' oninput="validateField(event.currentTarget)" data-validate="is-showreel")
+                        input#showreel(type='url' name='showreel' oninput="validateField(event.currentTarget)" data-validate="is-showreel")
                         .error
                     .form_group
                         button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
@@ -633,7 +633,7 @@ block content
                 label= self.label.addPro.audioreelDescription
                 .fieldset_grid.one_column
                     .form_group
-                        input.input_file#audioreel(type='file' name='org_audioreel' accept="audio/*" onchange ='previewAudioreel(event)')
+                        input.input_file#audioreel(type='file' name='audioreel' accept="audio/*" onchange ='previewAudioreel(event)')
                         audio(id="audioreel_preview" style= 'display: none;' controls)
                         .error
                         button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
