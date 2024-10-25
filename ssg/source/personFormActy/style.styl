@@ -1,37 +1,4 @@
-.invalid
-    background-color transparent
-    display block
-    color red
-.valid
-    background-color #ccf1e7
-    display none
-.invalidColor
-    background-color #fff3e8
-.c_invalid
-    background-color #fff3e8
-.c_valid
-    background-color transparent
-h4
-    color #464646
-h1
-    color #495057
-#personProfileSent
-    color #495057
-label
-    color #495057
-#imgError
-    color red
-#removeProviderWarning
-    display flex
-    flex-direction column
-a.btn.btn-primary
-    background-color #ccf1e7
-    color #495057
-form.imput-form.input.login_input.form_control
-    background-color #ffffff
-
-/*new css*/
-.organisationprofile
+.addProSection
     width 952px
 .addProType
     width 549px
@@ -52,9 +19,6 @@ form.imput-form.input.login_input.form_control
 .addProDescription
     padding-bottom 20px
 
-.userprofile.addProSection
-    padding-top 20px
-
 .addProType
     margin-top 200px
     margin-left 6vw
@@ -65,7 +29,20 @@ form.imput-form.input.login_input.form_control
         display block
         margin-top 50px
 
-.organisationprofile
+.addProSection.disabled
+    opacity 0.5
+    pointer-events none
+
+.addProSection.organisationprofile fieldset.organisation
+    display:block
+
+.addProSection.personprofile fieldset.person
+    display:block
+
+#actor_fieldset.hide_actor
+    display:none
+
+.addProSection
     margin-top 20px
     margin-left 6vw
     margin-right 6vw
@@ -76,8 +53,11 @@ form.imput-form.input.login_input.form_control
     line-height 125%
     font-style normal;
     color #123123
-    opacity 0.5
-    pointer-events none
+    opacity 1
+    pointer-events all
+
+    fieldset
+        display none
 
     .fieldset_grid
         grid-template-columns repeat(auto-fit, minmax(260px, 260px));
@@ -110,12 +90,15 @@ form.imput-form.input.login_input.form_control
         width 260px
         margin-bottom 12px
 
-    .number_field
+    .number_field, .age_field
         width 117px
+
+    .acting_age
+        max-width 260px
 
     .rate_gap
         display inline-block;
-        width 29px;
+        width 26px;
         text-align center;
 
     .sub_form .remove_fields, .hide_fieldset_fields
@@ -124,12 +107,9 @@ form.imput-form.input.login_input.form_control
     select, input
         min-width auto
 
-
-
     .form_group
         padding-top unset
         padding-bottom unset
-
 
     legend
         font-size 20px
@@ -147,7 +127,7 @@ form.imput-form.input.login_input.form_control
             display grid
         .fieldset_grid.always_opened
             display grid
-        .filmographies, .on_going_projects, .clients
+        .filmographies, .on_going_projects, .clients, .educations
             display none
 
     fieldset.opened
@@ -155,13 +135,13 @@ form.imput-form.input.login_input.form_control
             display grid
         .fieldset_grid.buttons
             display none
-        .filmographies, .on_going_projects, .clients
+        .filmographies, .on_going_projects, .clients, .educations
             display block
 
     .gallery
         margin-bottom 30px
 
-    .filmography .switch, .on_going_projects .switch
+    .filmography .switch
         padding-left 20px
 
     .running_time_field
@@ -170,7 +150,10 @@ form.imput-form.input.login_input.form_control
     .year_label
         width 123px
 
-    .year_of_completion
+    .acting_age_from, .acting_age_to
+        width 117px
+
+    .year_of_completion, .acting_age_to
         float: right
 
     .year_field
@@ -179,6 +162,10 @@ form.imput-form.input.login_input.form_control
     label
         width 100%
         color #123123
+
+    label.long_text
+        font-size: 15px
+
 
     label span:first-of-type
         display block
@@ -304,8 +291,8 @@ form.imput-form.input.login_input.form_control
         background-color #12827E
         color #fff
         text-transform uppercase
-        width 268px
         height 41px
+        width 159px
         marging auto
         font-family 'Fira Sans Extra Condensed',sans-serif
         font-weight 500
@@ -315,6 +302,7 @@ form.imput-form.input.login_input.form_control
         border-radius 4px
         margin: auto;
         display flex
+        float left
         align-items center
         justify-content center
 
@@ -352,6 +340,8 @@ form.imput-form.input.login_input.form_control
         .nr
             width 34px
             display: inline-block;
+        select
+            width 192px
 
     #audioreel_preview
         max-width 400px
@@ -455,23 +445,61 @@ form.imput-form.input.login_input.form_control
         scroll-margin-top: 150px;
 
 
-    /*tablet*/
-    @media only screen and (max-width: 1200px)
-        .addProType
-            width 549px
-        .organisationprofile
-            width 770px
-            margin-left 30px
+/*tablet*/
+@media only screen and (min-width: 771px) and (max-width: 1200px)
+    .addProType
+        width 549px
 
-    /*mobile*/
-    @media only screen and (max-width: 770px)
-        .addProType
-            margin-top 30px
+    .addProSection
+        width 770px
 
-        .organisationprofile, .addProType
-            width 343px
+        .fieldset_grid
+            grid-template-columns repeat(auto-fit, minmax(379px, 379px));
+            grid-column-gap 12px
 
-        .fieldset_grid, .two_columns_uneven, .one_column, .two_columns_image, .two_columns_profile_image, .two_columns_even, .two_columns_uneven, .three_columns_uneven
+        .one_column
+            grid-template-columns repeat(auto-fit, minmax(770px, 770px));
+
+        .three_columns_uneven
+            grid-template-columns 260px 260px 154px
+
+        .two_columns_uneven
+            grid-template-columns 260px 426px
+
+        two_columns_even
+            grid-template-columns 379px 379px
+
+        .buttons
+            grid-template-columns 260px 260px
+
+
+        select
+            width 100%
+            margin-bottom 0px
+
+        .one_column select
+            width 260px
+
+        select.reduced
+            width 260px
+
+        .sub_form
+            padding-bottom: 20px
+
+        .orderedRaF select
+            width 192px
+
+
+/*mobile*/
+@media only screen and (max-width: 770px)
+    .addProType
+        margin-top 30px
+        width 343px
+
+    .addProSection
+        width 343px
+
+        .fieldset_grid, .two_columns_uneven, .one_column, .two_columns_image, .two_columns_profile_image, .two_columns_even, .three_columns_uneven
             grid-template-columns repeat(auto-fit, minmax(343px, 343px));
             grid-column-gap 12px
             width 343px
@@ -479,7 +507,6 @@ form.imput-form.input.login_input.form_control
         .component_buttons
             grid-template-columns 163px 163px
             grid-column-gap 17px
-
 
         select
             width 343px
@@ -496,6 +523,11 @@ form.imput-form.input.login_input.form_control
 
         .sub_form .remove_fields, .hide_fieldset_fields
             margin-left 0px
+
+        .button_send_feedback
+            width 100%
+
+
 
 
 #loader
