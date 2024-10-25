@@ -1504,5 +1504,4 @@ function getClientFields() {
 
 ; (async () => {
     requireLogin()
-    showSection('personprofile')
 })()
