@@ -1,1005 +1,25 @@
 requireLogin()
-let personId = null
-let organisation = null
+let formOriginalData = null;
 let state = {}
+let activeFormType = false
+const TYPE_OF_WORK_EDUCATION_ID = 7
+const ROLE_AT_FILM_ACTOR_ID = 76
 
-// Non-trivial fields
-const valueMap = {
-    gender: 'gender.id',
-    native_lang: 'native_lang.id',
-    stature: 'stature.id',
-    eye_colour: 'eye_colour.id',
-    hair_colour: 'hair_colour.id',
-    hair_length: 'hair_length.id',
-    pitch_of_voice: 'pitch_of_voice.id',
-    country: 'addr_coll.country',
-    county: 'addr_coll.county',
-    municipality: 'addr_coll.municipality',
-    popul_place: 'addr_coll.popul_place',
-    street_name: 'addr_coll.street_name',
-    address_number: 'addr_coll.address_number',
-    appartment: 'addr_coll.appartment',
-    postal_code: 'addr_coll.postal_code',
-}
-
-const selectorMap = {
-    gender: null,
-    native_lang: null,
-    stature: null,
-    eye_colour: null,
-    hair_colour: null,
-    hair_length: null,
-    pitch_of_voice: null,
-    country: null,
-}
-
-const formFields = {
-    email: [
-        'eMail',
-        'repr_email',
-    ],
-    year: [
-        'year_from', // prof education
-        'year_to',
-    ],
-    url: [
-        'repr_org_url',
-        'acc_imdb',
-        'acc_efis',
-        'acc_castupload',
-        'acc_etalenta',
-        'acc_instagram',
-        'acc_fb',
-        'acc_other',
-        'showreel',
-    ],
-    phone: [
-        'phoneNr',
-        'repr_phone',
-    ],
-    number: [
-        'weight_kg',
-        'acting_age_from',
-        'acting_age_to',
-        'height_cm',
-    ],
-    text: [
-        'firstName', // y
-        'lastName', // y
-        'gender', // y
-        'repr_org_name',
-        'repr_p_name',
-        'native_lang',
-        'stature', // y
-        'eye_colour', // y
-        'hair_colour',
-        'hair_length',
-        'pitch_of_voice',
-        'bio_en',
-        'skills_en',
-        'looking_for',
-        'country',
-        'county',
-        'municipality',
-        'popul_place',
-        'street_name',
-        'address_number',
-        'appartment',
-        'postal_code',
-    ],
-    date: [
-        'dateOfBirth',
-    ]
-}
-
-const fillPersonForm =  (person) => {
-    const valueInPerson = (key) => {
-        if ( valueMap[key] ) {
-            const path = valueMap[key].split('.')
-            let value = person
-            for (let i = 0; i < path.length; i++) {
-                value = value[path[i]]
-            }
-            return value
-        } else {
-            return person[key]
-        }
-    }
-
-    const fill = () => {
-        return {
-            text: () => {
-                for (let i = 0; i < formFields.text.length; i++) {
-                    const field = formFields.text[i]
-                    try {
-                        if (selectorMap[field]) {
-                            document.querySelector(`#${field} option[value="${valueInPerson(field)}"]`).selected=true
-                        } else {
-                            document.getElementById(field).value = valueInPerson(field)
-                        }
-                    } catch (error) {
-                        console.log(`No text field in data with id ${field}`)
-                    }
-                }
-            },
-            email: () => {
-                for (let i = 0; i < formFields.email.length; i++) {
-                    const field = formFields.email[i]
-                    try {
-                        document.getElementById(field).value = person[field]
-                    } catch (error) {
-                        console.log(`No email field in data with id ${field}`)
-                    }
-                }
-            },
-            date: () => {
-                for (let i = 0; i < formFields.date.length; i++) {
-                    const field = formFields.date[i]
-                    try {
-                        document.getElementById(field).value = person[field]
-                    } catch (error) {
-                        console.log(`No date field in data with id ${field}`)
-                    }
-                }
-            },
-            url: () => {
-                for (let i = 0; i < formFields.url.length; i++) {
-                    const field = formFields.url[i]
-                    try {
-                        document.getElementById(field).value = person[field]
-                    } catch (error) {
-                        console.log(`No url field in data with id ${field}`)
-                    }
-                }
-            },
-            number: () => {
-                for (let i = 0; i < formFields.number.length; i++) {
-                    const field = formFields.number[i]
-                    try {
-                        document.getElementById(field).value = person[field]
-                    } catch (error) {
-                        console.log(`No number field in data with id ${field}`)
-                    }
-                }
-            },
-            phone: () => {
-                for (let i = 0; i < formFields.phone.length; i++) {
-                    const field = formFields.phone[i]
-                    try {
-                        document.getElementById(field).value = person[field]
-                    } catch (error) {
-                        console.log(`No phone field in data with id ${field}`)
-                    }
-                }
-            },
-        }
-    }
-
-    // Fill the fields with existing info
-    fill().text()
-    fill().email()
-    fill().date()
-    fill().url()
-    fill().number()
-    fill().phone()
-    setRepeatableFields(person.role_at_films, addNextRoleAtFilm)
-    setRepeatableFields(person.tag_looking_fors, addNextTagLookingFor)
-    setRepeatableFields(person.other_lang, addNextOtherLang)
-    const educations = person.filmographies.filter(f => f.type_of_work === 7)
-    const filmographies = person.filmographies.filter(f => f.type_of_work !== 7)
-    setRepeatableFields(educations, addNextEducation)
-    setRepeatableFields(filmographies, addNextFilmographyWork)
-
-    addExistingGalleryImages(person?.images)
-    addExistingProfileImg(person.picture)
-
-    function setRepeatableFields(fields, responsibleFunction) {
-        for (let i = 0; i < fields.length; i++) {
-            const field = fields[i];
-            responsibleFunction(field)
-        }
-    }
-    // add existing id's to hidden fields
-    // addr_coll,
-    if (person.addr_coll) {
-        document.getElementById('addr_strapi_id').value = person.addr_coll.id
-    }
-
-}
-
-// Get my person profile. If not found, create one
-const fetchPerson = async () => {
-    const accessToken = localStorage.getItem('ID_TOKEN')
-    const headers = { Authorization: `Bearer ${accessToken}` }
-    const url = `${huntAuthDomain}/api/person`
-
-    const response = await fetch(url, { headers })
-    const data = await response.json()
-    personId = data.id
-    return data
-}
-
-const finishedSave = (status) => {
-    if (status === 200) {
-        document.getElementById('personProfileSent').open = true
-        scrollToElement("personProfileSent")
-    }
-}
-
-
-
-
-// Martini kood
-// sellest plokist tõstan ükshaaaval koodi ülespoole, kui tarvis
-// ----------------------------
-let profileImageToSend = "empty"
-let galleryImageToSend = {}
-let audioFileToSend = "empty"
-let galleryCounter = 0
-let galleryExistingImageCounter = 0
-let roleAtFilmCounter = 0
-let tagLookingForCounter = 0
-let otherLangCounter = 0
-let filmographiesToDelete = []
-let existingGalleryImagesToDelete = []
-let profileId = null
-// ----------------------------
-
-
-async function fillThePersonForm(person) {
-    console.log('fillThePersonForm', person)
-    // console.log('fillThePersonForm', JSON.stringify(person));
-    delete person.country
-
-    // Fill the fields with existing info
-    setTextFieldsByID(person)
-    setRepeatableFields(person.role_at_films, addNextRoleAtFilm)
-    setRepeatableFields(person.tag_looking_fors, addNextTagLookingFor)
-    setRepeatableFields(person?.other_lang, addNextOtherLang)
-    setRepeatableFields(person?.filmographies?.filter(f => f.type_of_work.id === 7), addNextEducation)
-    setRepeatableFields(person?.filmographies?.filter(f => f.type_of_work.id != 7), addNextFilmographyWork)
-
-    // Display existing gallery images
-    addExistingGalleryImages(person?.images)
-
-    // Display existing profile image
-    addExistingProfileImg(person.picture)
-
-    if (person.addr_coll) {
-        document.getElementById('addr_strapi_id').value = person.addr_coll.id
-    }
-
-    function setTextFieldsByID(obj) {
-        for (let key in obj) {
-            // console.log(key, isJsonString(obj[key]));
-            if (obj.hasOwnProperty(key)) {
-                try {
-                    // console.log('SET: ', key, typeof key, obj[key], typeof obj[key]);
-                    document.getElementById(key).value = obj[key]
-                } catch (error) {
-                    // console.log('SET FAIL: ', key, typeof key, obj[key]);
-                }
-            } else if (!Array.isArray(obj[key])) {
-                // console.log(key, 'ARRAY');
-                setTextFieldsByID(obj[key])
-            }
-        }
-    }
-
-    function setRepeatableFields(fields, responsibleFunction) {
-        for (let i = 0; i < fields.length; i++) {
-            const field = fields[i];
-            responsibleFunction(field)
-        }
-    }
-}
-
-async function sendPersonProfile() {
-    document.getElementById('savingStatus').style.display = 'block'
-
-    // document.getElementById('personProfileSent').style.display = 'none'
-
-    let saveProfileButton = document.getElementById(`saveProfileButton`)
-    saveProfileButton.disabled = true
-    let previousInnerHTML = saveProfileButton.innerHTML
-    saveProfileButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i>`
-
-    // Role at films data processing
-    let roleAtFilmData = []
-    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]')
-    for (let index = 0; index < roleAtFilmElements.length; index++) {
-        const element = roleAtFilmElements[index];
-        roleAtFilmData.push(
-            element.getElementsByClassName('role_at_film')[0].value,
-        )
-        element.remove()
-    }
-
-    // Tag Looking For data processing
-    let tagLookingForData = []
-    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]')
-    for (let index = 0; index < tagLookingForElements.length; index++) {
-        const element = tagLookingForElements[index];
-        tagLookingForData.push(
-            element.getElementsByClassName('tag_looking_for')[0].value,
-        )
-        element.remove()
-    }
-
-    // Tag Looking For data processing
-    let otherLangData = []
-    let otherLangElements = document.querySelectorAll('[id^="otherLangElement"]')
-    for (let index = 0; index < otherLangElements.length; index++) {
-        const element = otherLangElements[index];
-        otherLangData.push(
-            element.getElementsByClassName('other_lang')[0].value,
-        )
-        element.remove()
-    }
-
-    // Prof education data processing
-    let profEducationData = []
-    let profEducationElements = selectElementsByRegex(educationElementRe) // document.querySelectorAll('[id^="education"]')
-    for (let index = 0; index < profEducationElements.length; index++) {
-        const element = profEducationElements[index]
-        const eduData = {
-            type_of_work: '7',
-            year_from: element.getElementsByClassName('year_from')[0].value || null,
-            year_to: element.getElementsByClassName('year_to')[0].value || null,
-            org_name: element.getElementsByClassName('org_name')[0].value || null,
-            org_department: element.getElementsByClassName('org_department')[0].value || null,
-            degree: element.getElementsByClassName('degree')[0].value || null,
-            org_url: element.getElementsByClassName('org_url')[0].value || null,
-        }
-        const strapiId = element.getElementsByClassName('strapi_id')[0].value
-        if (strapiId) {
-            eduData.id = strapiId
-        }
-        profEducationData.push( eduData )
-        element.remove()
-    }
-
-    // Filmographies data processing
-    let filmographiesData = []
-    let filmographiesElements = selectElementsByRegex(filmographyElementRe) // document.querySelectorAll('[id^="filmographies"]')
-    for (let index = 0; index < filmographiesElements.length; index++) {
-        const element = filmographiesElements[index]
-        const filmData = {
-            type_of_work: element.getElementsByClassName('type_of_work')[0].value || null,
-            role_at_films: element.getElementsByClassName('role_at_films')[0].value || null,
-            year_from: element.getElementsByClassName('year_from')[0].value || null,
-            year_to: element.getElementsByClassName('year_to')[0].value || null,
-            work_name: element.getElementsByClassName('work_name')[0].value || null,
-            work_url: element.getElementsByClassName('work_url')[0].value || null,
-            actor_role: element.getElementsByClassName('actor_role')[0].value || null,
-            org_name: element.getElementsByClassName('org_name')[0].value || null,
-            org_url: element.getElementsByClassName('org_url')[0].value || null,
-        }
-        const strapiId = element.getElementsByClassName('strapi_id')[0].value
-        if (strapiId) {
-            filmData.id = strapiId
-        }
-        filmographiesData.push( filmData )
-        element.remove()
-    }
-
-    let personToSend = {
-        id: personId,
-        firstName: firstName.value,
-        lastName: lastName.value,
-        // role_at_films: roleatfilm.value || null,
-        gender: gender.value,
-        dateOfBirth: dateOfBirth.value,
-        phoneNr: phoneNr.value || null,
-        eMail: eMail.value || null,
-        repr_org_name: repr_org_name.value || null,
-        repr_org_url: repr_org_url.value || null,
-        repr_p_name: repr_p_name.value || null,
-        repr_phone: repr_phone.value || null,
-        repr_email: repr_email.value || null,
-        dateOfBirth: dateOfBirth.value || null,
-        native_lang: native_lang.value || null,
-        acting_age_from: acting_age_from.value || null,
-        acting_age_to: acting_age_to.value || null,
-        height_cm: height_cm.value || null,
-        weight_kg: weight_kg.value || null,
-        stature: stature.value || null,
-        eye_colour: eye_colour.value || null,
-        hair_colour: hair_colour.value || null,
-        hair_length: hair_length.value || null,
-        pitch_of_voice: pitch_of_voice.value || null,
-        acc_imdb: acc_imdb.value || null,
-        acc_efis: acc_efis.value || null,
-        acc_castupload: acc_castupload.value || null,
-        acc_etalenta: acc_etalenta.value || null,
-        acc_instagram: acc_instagram.value || null,
-        acc_fb: acc_fb.value || null,
-        acc_other: acc_other.value || null,
-        showreel: showreel.value || null,
-        bio_en: bio_en.value || null,
-        skills_en: skills_en.value || null,
-        looking_for: looking_for.value || null,
-        addr_coll: {
-            id: addr_strapi_id.value || null,
-            country: country.value || null,
-            county: county.value || null,
-            municipality: municipality.value || null,
-            popul_place: popul_place.value || null,
-            street_name: street_name.value || null,
-            address_number: address_number.value || null,
-            appartment: appartment.value || null,
-            postal_code: postal_code.value || null,
-        },
-        // filmographies: {
-        //     // type_of_work: type_of_work.value || null,
-        //     // year_from: year_from.value || null,
-        //     // year_to: year_to.value || null,
-        //     // org_name: org_name.value || null,
-        //     // org_department: org_department.value || null,
-        //     // org_url: org_url.value || null,
-        //     // degree: degree.value || null,
-        //     // work_name: work_name.value || null,
-        //     // work_url: work_url.value || null,
-        //     // actor_role: actor_role.value || null,
-        //     // role_at_films: roleatfilm.value || null,
-        // },
-        // profEducations: profEducationData,
-        role_at_films: roleAtFilmData,
-        tag_looking_fors: tagLookingForData,
-        other_lang: otherLangData,
-        filmographies: filmographiesData.concat(profEducationData),
-        filmographiesToDelete: filmographiesToDelete.length ? filmographiesToDelete : null,
-        existingGalleryImagesToDelete: existingGalleryImagesToDelete.length ? existingGalleryImagesToDelete : null,
-
-    }
-
-    const formData = new FormData()
-
-    // console.log('personToSend', personToSend)
-    formData.append('data', JSON.stringify(personToSend))
-
-    if (profileImageToSend !== "empty") {
-        formData.append(`files.picture`, profileImageToSend, profileImageToSend.name)
-    }
-
-    if (audioFileToSend !== "empty") {
-        formData.append(`files.audioreel`, audioFileToSend, audioFileToSend.name)
-    }
-
-    if (Object.keys(galleryImageToSend).length !== 0) {
-        Object.keys(galleryImageToSend).map(key => {
-            console.log('Gallery img', galleryImageToSend[key])
-            formData.append(`files.images`, galleryImageToSend[key], galleryImageToSend[key].name)
-        })
-    }
-
-    // Log form data
-    // console.log('Formdata')
-    // for (var pair of formData.entries()) {
-    //     console.log(pair[0] + ', ' + pair[1]);
-    // }
-
-    console.log("kasutaja profiil mida saadan ", personToSend)
-
-    let response = await (await fetch(`${huntAuthDomain}/api/person`, {
-        method: 'PUT',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
-        },
-        body: formData
-    }))
-
-    console.log(response)
-    document.getElementById('savingStatus').style.display = 'none'
-
-    console.log('Responsestatus', response.status)
-
-    finishedSave(response.status)
-
-    if (response.status === 200) {
-
-        saveProfileButton.disabled = false
-        saveProfileButton.innerHTML = previousInnerHTML
-
-        let galleryImageForms = document.querySelectorAll('[id^="galleryImage"]')
-        for (let index = 0; index < galleryImageForms.length; index++) {
-            const element = galleryImageForms[index];
-            element.remove()
-        }
-        galleryCounter = 0
-        galleryExistingImageCounter = 0
-        existingGalleryImagesToDelete = []
-        galleryImageToSend = {}
-        profileImg.value = ''
-        document.getElementsByClassName('imgPreview')[0].src = '/assets/img/static/hunt_square_placeholder.jpg'
-
-        profEducationData = []
-        roleAtFilmData = []
-        tagLookingForData = []
-        otherLangData = []
-        filmographiesData = []
-
-        roleAtFilmCounter = 0
-        tagLookingForCounter = 0
-        otherLangCounter = 0
-        filmographiesToDelete = []
-
-        console.log('OK');
-        document.getElementById('personProfileSent').open = true;
-
-        // Scroll page to dialog
-        scrollToElement("personProfileSent")
-
-    }
-
-    // reload page
-    console.log('DONE')
-}
-
-function validatePersonForm() {
-    console.log('validatePersonForm')
-    const errors = []
-
-    if (!validateRequiredField("firstName", "textLength")) {
-        errors.push('firstName')
-    }
-
-    if (!validateRequiredField("lastName", "textLength")) {
-        errors.push('lastName')
-    }
-
-    if (!validateRequiredField("gender", "gender")) {
-        errors.push('gender')
-    }
-
-    if (!validateRequiredField("dateOfBirth", "dateOfBirth")) {
-        errors.push('dateOfBirth')
-    }
-
-    if (document.getElementById('eMail').value.length > 0) {
-        if (!validateEmail("eMail")) {
-            errors.push('eMail')
-        }
-    }
-
-    let roleAtFilmElements = document.querySelectorAll('[id^="filmRole"]') // document.querySelectorAll('[id^="filmRole"]')
-    for (let index = 0; index < roleAtFilmElements.length; index++) {
-        const element = roleAtFilmElements[index];
-        if (!validateRepeatableFormPart(element.getElementsByClassName('role_at_film')[0], element.getElementsByClassName('help')[0])) {
-            errors.push(element.id)
-        }
-    }
-
-    let tagLookingForElements = document.querySelectorAll('[id^="tagLookingElement"]') // document.querySelectorAll('[id^="tagLookingElement"]')
-    for (let index = 0; index < tagLookingForElements.length; index++) {
-        const element = tagLookingForElements[index];
-        if (!validateRepeatableFormPart(element.getElementsByClassName('tag_looking_for')[0], element.getElementsByClassName('help')[0])) {
-            errors.push(element.id)
-        }
-    }
-
-    const educationElements = selectElementsByRegex(/^education\d*$/) // document.querySelectorAll('[id^="education"]')
-    for (let index = 0; index < educationElements.length; index++) {
-        const element = educationElements[index];
-        if (!validateRepeatableFormPart(element.getElementsByClassName('org_name')[0], element.getElementsByClassName('org_name_help')[0])) {
-            errors.push(element.id)
-        }
-    }
-
-    let filmographyElements = selectElementsByRegex(/^filmographies\d*$/) // document.querySelectorAll('[id^="filmographies"]')
-    for (let index = 0; index < filmographyElements.length; index++) {
-        const element = filmographyElements[index];
-        if (!validateRepeatableFormPart(element.getElementsByClassName('type_of_work')[0], element.getElementsByClassName('type_of_work_help')[0])) {
-            errors.push(element.id)
-        }
-        if (!validateRepeatableFormPart(element.getElementsByClassName('work_name')[0], element.getElementsByClassName('work_name_help')[0])) {
-            errors.push(element.id)
-        }
-    }
-
-    console.log('errors', errors)
-
-    if (errors.length === 0) {
-        console.log('KÕIKOK');
-        sendPersonProfile()
-    } else {
-        scrollToElement(errors[0])
-    }
-
-    window.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            // console.log("ENTER")
-            validatePersonForm()
-        }
-    })
-}
-
-function validateRequiredField(formFieldId = null, type = null) {
-    console.log('validateRequiredField', formFieldId, type)
-    let formField = document.getElementById(formFieldId)
-    let formFieldHelp = document.getElementById(`${formFieldId}Help`)
-
-    console.log('formFieldId', formFieldId, 'type', type)
-
-    if (!type || type === 'textLength') {
-        if (formField.value == "" || formField.value.length < 2 || !isNaN(formField.value)) {
-            addInvalidClass(formField, formFieldHelp)
-            return false
-        } else {
-            removeInvalidClass(formField, formFieldHelp)
-            return true
-        }
-    } else if (type === 'gender') {
-        if (formField.value === "") {
-            addInvalidClass(formField, formFieldHelp)
-            return false
-        } else {
-            removeInvalidClass(formField, formFieldHelp)
-            return true
-        }
-    } else if (type === 'dateOfBirth') {
-        console.log('BDAY', formField.value)
-        if (formField.value === "") {
-            addInvalidClass(formField, formFieldHelp)
-            return false
-        }
-
-        var userAge = getAge(formField.value)
-        if (userAge > 12 && userAge < 116) {
-            removeInvalidClass(formField, formFieldHelp)
-            return true
-        } else {
-            addInvalidClass(formField, formFieldHelp)
-        }
-    }
-}
-
-function validateRepeatableFormPart(selectElement, selectHelp) {
-    console.log('selectElement', selectElement, 'selectHelp', selectHelp)
-    if (selectElement.value === "") {
-        addInvalidClass(selectElement, selectHelp)
-        return false
-    } else {
-        removeInvalidClass(selectElement, selectHelp)
-        return true
-    }
-}
-
-function addInvalidClass(formField, formFieldHelp) {
-    formFieldHelp.classList.remove("valid")
-    formFieldHelp.classList.add("invalid")
-    formField.classList.add('invalidColor')
-}
-
-function removeInvalidClass(formField, formFieldHelp) {
-    formFieldHelp.classList.remove("invalid")
-    formFieldHelp.classList.add("valid")
-    formField.classList.remove('invalidColor')
-}
-
-function scrollToElement(elementId) {
-    document.getElementById(elementId).scrollIntoView(false)
-}
-
-function validateImageAndPreview(file, imageElementId, type) {
-    console.log('validateImageAndPreview', file, imageElementId, type)
-
-    let error = document.getElementById("imgError")
-    // Check if the file is an image.
-    if (!file.type.includes("image")) {
-        // console.log("File is not an image.", file.type, file);
-        error.innerHTML = "File is not an image."
-    } else if (file.size / 1024 / 1024 > 5) {
-        error.innerHTML = "Image can be max 5MB, uploaded image was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
-    } else {
-        error.innerHTML = ""
-        // Preview
-        var reader = new FileReader()
-        reader.onload = function () {
-            console.log('agasiia')
-            let previewElement = document.getElementById(imageElementId).getElementsByClassName('imgPreview')[0]
-            console.log('previewElement', previewElement)
-            previewElement.src = reader.result
-            console.log(previewElement)
-        }
-        reader.readAsDataURL(file)
-        if (type === 'profile') {
-            profileImageToSend = file
-        } else if (type === 'gallery') {
-            console.log(galleryCounter, galleryImageToSend)
-            galleryImageToSend[imageElementId] = file
-        }
-    }
-}
-
-function validateAudioAndPreview(file) {
-    console.log('validateAudioAndPreview', file)
-    let error = document.getElementById("audioError")
-    // Check if the file is an image.
-    if (!file.type.includes("audio")) {
-        // console.log("File is not an image.", file.type, file);
-        error.innerHTML = "File is not an audio"
-    } else if (file.size / 1024 / 1024 > 5) {
-        error.innerHTML = "Audioreel can be max 5MB, uploaded audio was " + (file.size / 1024 / 1024).toFixed(2) + "MB"
-    } else {
-        error.innerHTML = "";
-        // Preview
-        var reader = new FileReader()
-        reader.onload = function () {
-            // let previewElement = document.getElementById(templateElement).getElementsByClassName('imgPreview')[0]
-            // console.log('previewElement', previewElement);
-            // previewElement.src = reader.result;
-            // console.log(previewElement);
-        };
-        reader.readAsDataURL(file);
-        audioFileToSend = file
-    }
-}
-
-function addGalleryImage() {
-    console.log('addGalleryImage')
-    const galleryTemplate = document.getElementById('galleryTemplate')
-    const clone = galleryTemplate.cloneNode(true)
-    clone.id = `galleryImage${galleryCounter}`
-    clone.style.display = ''
-    document.getElementById('galleryTemplate').parentElement.appendChild(clone)
-    let thisElement = document.getElementById(clone.id)
-
-    thisElement.getElementsByClassName('galleryImg')[0].setAttribute('onchange', `validateImageAndPreview(this.files[0], "${clone.id}", "gallery")`)
-    thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("${clone.id}")`)
-
-    galleryCounter = galleryCounter + 1
-}
-
-function addExistingGalleryImages(imagesData) {
-    console.log('addExistingGalleryImages', imagesData)
-    imagesData.map(img => {
-        const galleryTemplate = document.getElementById('galleryTemplate')
-        const clone = galleryTemplate.cloneNode(true)
-        clone.id = `existingGalleryImage${galleryExistingImageCounter}`
-        clone.style.display = ''
-        document.getElementById('galleryTemplate').parentElement.appendChild(clone)
-        let thisElement = document.getElementById(`existingGalleryImage${galleryExistingImageCounter}`)
-        // Remove input field for image
-        thisElement.getElementsByClassName('galleryImg')[0].remove()
-        // Add existing image
-        thisElement.getElementsByClassName('imgPreview')[0].src = `https://assets.poff.ee/img/${img.hash}${img.ext}`
-        // thisElement.getElementsByClassName('imgPreview')[0].src = `http://localhost:1337/uploads/${img.hash}${img.ext}`
-        // Remove input field for photographer (whole .form_group element)
-        thisElement.getElementsByClassName('galleryImagePhotographer')[0].parentElement.remove()
-        // Remove input field and label for photo year (whole .form_group element)
-        thisElement.getElementsByClassName('galleryImageYear')[0].parentElement.remove()
-        // Add photographer and year by thext
-        const textElement = document.createElement("p")
-        textElement.classList.add('d-none')
-        const text = document.createTextNode(`${img.alternativeText} (${img.caption})`);
-        textElement.appendChild(text);
-        thisElement.appendChild(textElement);
-
-        thisElement.getElementsByClassName('deleteGalleryImage')[0].setAttribute('onclick', `deleteGalleryImage("existingGalleryImage${galleryExistingImageCounter}", ${img.id})`)
-
-        galleryExistingImageCounter = galleryExistingImageCounter + 1
-    })
-}
-
-function addExistingProfileImg(imageData) {
-    console.log('addExistingProfileImg', imageData)
-    if (imageData) {
-        const profileImgElement = document.getElementById('profileImage')
-        const profileImgPreview = profileImgElement.getElementsByClassName('imgPreview')[0]
-        profileImgPreview.src = `https://assets.poff.ee/img/${imageData.hash}${imageData.ext}`
-        // profileImgPreview.src = `http://localhost:1337/uploads/${imageData.hash}${imageData.ext}`
-
-        const profileImgLabel = profileImgElement.getElementsByClassName('person_profile_label')[0]
-        profileImgLabel.innerHTML = `${profileImgLabel.innerHTML} (adding new image, replaces the current one)`
-
-        const textElement = document.createElement("p")
-        textElement.classList.add('d-none')
-        const text = document.createTextNode(`${imageData.alternativeText} (${imageData.caption})`);
-        textElement.appendChild(text);
-        profileImgElement.appendChild(textElement);
-    }
-}
-
-function deleteGalleryImage(elementToDelete, existingImageID = null) {
-    console.log('deleteGalleryImage', elementToDelete, existingImageID)
-    const elementToBeDeleted = document.getElementById(elementToDelete)
-    elementToBeDeleted.remove()
-    if (!existingImageID && galleryImageToSend[elementToDelete]) {
-        delete galleryImageToSend[elementToDelete]
-    }
-    if (existingImageID) {
-        existingGalleryImagesToDelete.push(existingImageID)
-    }
-}
-
-function addNextRoleAtFilm(data = null) {
-    console.log('addNextRoleAtFilm', data)
-    const cloneElementPrefix = 'filmRole'
-    const roleAtFilmTemplate = document.getElementById('roleAtFilmTemplate')
-    const clone = roleAtFilmTemplate.cloneNode(true)
-    clone.id = `${cloneElementPrefix}${roleAtFilmCounter}`
-    clone.style.display = ''
-    document.getElementById('roleAtFilmTemplate').parentElement.appendChild(clone)
-
-    let thisElement = document.getElementById(`${cloneElementPrefix}${roleAtFilmCounter}`)
-    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${cloneElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${roleAtFilmCounter}", true, "delete${cloneElementPrefix}")`)
-
-    // Fill with existing info
-    if (data?.id) {
-        thisElement.getElementsByClassName('role_at_film')[0].value = data.id
-    }
-
-    roleAtFilmCounter = roleAtFilmCounter + 1
-}
-
-function addNextTagLookingFor(data = null) {
-    console.log('addNextTagLookingFor', data)
-    const cloneElementPrefix = 'tagLookingElement'
-    const tagLookingForTemplate = document.getElementById('tagLookingForTemplate')
-    const clone = tagLookingForTemplate.cloneNode(true)
-    clone.id = `${cloneElementPrefix}${tagLookingForCounter}`
-    clone.style.display = ''
-    document.getElementById('tagLookingForTemplate').parentElement.appendChild(clone)
-
-    let thisElement = document.getElementById(`${cloneElementPrefix}${tagLookingForCounter}`)
-    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${cloneElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${tagLookingForCounter}", true, "delete${cloneElementPrefix}")`)
-
-    // Fill with existing info
-    if (data?.id) {
-        thisElement.getElementsByClassName('tag_looking_for')[0].value = data.id
-    }
-
-    tagLookingForCounter = tagLookingForCounter + 1
-}
-
-function addNextOtherLang(data = null) {
-    console.log('addNextOtherLang', data)
-    const cloneElementPrefix = 'otherLangElement'
-    const otherLangTemplate = document.getElementById('otherLangTemplate')
-    const clone = otherLangTemplate.cloneNode(true)
-    clone.id = `${cloneElementPrefix}${otherLangCounter}`
-    clone.style.display = ''
-    document.getElementById('otherLangTemplate').parentElement.appendChild(clone)
-
-    let thisElement = document.getElementById(`${cloneElementPrefix}${otherLangCounter}`)
-    let deleteButton = thisElement.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${cloneElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${cloneElementPrefix}${otherLangCounter}")`)
-
-    // Fill with existing info
-    if (data?.id) {
-        thisElement.getElementsByClassName('other_lang')[0].value = data.id
-    }
-
-    otherLangCounter = otherLangCounter + 1
-}
-
-const educationElementPrefix = 'education'
-const educationElementRe = /^education\d+$/
-function addNextEducation(data = null) {
-    const educationElementCounter = selectElementsByRegex(educationElementRe).length
-    console.log('addNextEducation', {data, count: educationElementCounter})
-    const profEducationTemplate = document.getElementById('profEducationTemplate')
-    const clone = profEducationTemplate.cloneNode(true)
-    clone.id = `${educationElementPrefix}${educationElementCounter}`
-    clone.style.display = ''
-    profEducationTemplate.parentElement.appendChild(clone)
-
-    let deleteButton = clone.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${educationElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${clone.id}")`)
-
-    // Fill with existing info
-    if (data) {
-        const dataKeys = Object.keys(data);
-        dataKeys.map(k => {
-            try {
-                clone.getElementsByClassName(k)[0].value = data[k]
-                // Add Strapi ID, if it exists, to hidden field
-                if (data.id) {
-                    clone.getElementsByClassName('strapi_id')[0].value = data.id
-                }
-            } catch (error) {
-                null
-            }
-        })
-    }
-}
-
-const filmographyElementPrefix = 'filmographies'
-const filmographyElementRe = /^filmographies\d+$/
-function addNextFilmographyWork(data = null) {
-    const filmographyCounter = selectElementsByRegex(filmographyElementRe).length
-    console.log('addNextFilmographyWork', {data, count: filmographyCounter})
-    const filmographyTemplate = document.getElementById('filmographyTemplate')
-    const clone = filmographyTemplate.cloneNode(true)
-    clone.id = `${filmographyElementPrefix}${filmographyCounter}`
-    clone.style.display = ''
-    filmographyTemplate.parentElement.appendChild(clone)
-
-    let deleteButton = clone.getElementsByClassName('deleteButton')[0]
-    deleteButton.classList.add(`delete${filmographyElementPrefix}`)
-    deleteButton.setAttribute('onclick', `removeElement("${clone.id}")`)
-
-    // Fill with existing info
-    if (data) {
-        const dataKeys = Object.keys(data);
-        dataKeys.map(k => {
-            try {
-                clone.getElementsByClassName(k)[0].value = typeof data[k] === 'object' && data[k] !== null ? data[k].id : data[k]
-                // Add Strapi ID, if it exists, to hidden field
-                if (data.id) {
-                    clone.getElementsByClassName('strapi_id')[0].value = data.id
-                    // Fill role_at_film for filmography as it is repeatable
-                    if (k === 'role_at_films' && data[k][0]) {
-                        clone.getElementsByClassName(k)[0].value = data[k][0].id
-                    }
-                }
-            } catch (error) {
-                null
-            }
-        })
-    }
-}
-
-function removeElement(id, required = false, requiredElementName = null) {
-    console.log('removeElement', id, required, requiredElementName)
-    const theElement = document.getElementById(id)
-
-    if (required && requiredElementName) {
-        let requiredCount = document.getElementsByClassName(requiredElementName)
-        console.log('requiredCount', requiredCount);
-        if (requiredCount.length >= 2) {
-            theElement.remove()
-            removeFilmEduFromStrapi(theElement)
-            removeInvalidClass(theElement, theElement.getElementsByClassName('help')[0])
-        } else {
-            addInvalidClass(theElement, theElement.getElementsByClassName('help')[0])
-        }
-    } else {
-        theElement.remove()
-        removeFilmEduFromStrapi(theElement)
-    }
-}
-
-function removeFilmEduFromStrapi(theElement) {
-    console.log('removeFilmEduFromStrapi', theElement)
-    let strapiId
-    try {
-        strapiId = theElement.getElementsByClassName('strapi_id')[0].value
-    } catch (error) { }
-    if (strapiId > 0) {
-        filmographiesToDelete.push(strapiId)
-    }
-}
-
-function isJsonString(jsonString) {
-    console.log('isJsonString', jsonString)
-    return true
-}
-
-// ------------------------------------ new
 async function showSection(sectionName) {
-    document.querySelectorAll('.addProSection').forEach((section) => section.style.display = 'none');
-    const visibleSection = document.getElementsByClassName(sectionName)[0];
-    visibleSection.style.display = 'block';
-    visibleSection.style.opacity = 1;
-    visibleSection.style.pointerEvents = 'all';
+    const section = document.querySelector('.addProSection')
+    section.classList.remove('organisationprofile', 'personprofile', 'disabled')
+    section.classList.add(sectionName)
     document.getElementById('loader').classList.add('loading')
     if (sectionName == 'organisationprofile') {
-        organisation = await fetchOrganisation()
-        fillOrganisationForm(organisation)
-        console.log('Organisation: ', organisation)
-    } else if (sectionName == 'userprofile') {
-        const person = await fetchPerson()
-        fillPersonForm(person)
-        console.log('Person: ', person)
+        formOriginalData = await fetchData('organisation')
+        fillForm(formOriginalData, getOrganisationFields(), translate('errorOnOrganisationLoad'))
+        console.log('Organisation: ', formOriginalData)
+    } else if (sectionName == 'personprofile') {
+        formOriginalData = await fetchData('person')
+        fillForm(formOriginalData, getPersonFields(), translate('errorOnPersonLoad'))
+        console.log('Person: ', formOriginalData)
     }
+    activeFormType = sectionName;
     document.getElementById('loader').classList.remove('loading')
 }
 
@@ -1023,7 +43,7 @@ function removeGalleryImage(event) {
     }
 };
 function updateAddGalleryImageButtonVisibility(fieldset) {
-    const galleryDiv = fieldset.querySelectorAll('.organisationprofile .gallery')
+    const galleryDiv = fieldset.querySelectorAll('.addProSection .gallery')
     const visibilitiy = (galleryDiv.length >=10) ? 'none' : 'block'
 
     document.getElementById('add_new_gallery_image').style.display = visibilitiy
@@ -1115,11 +135,21 @@ document.querySelectorAll('.hide_fieldset_fields').forEach(function (button) {
     button.addEventListener('click', hideFieldsetFields);
 });
 
-document.querySelector('[name="org_country"]').addEventListener('input', event => {
+document.querySelector('[name="country"]').addEventListener('input', event => {
     const show_dropdown_fields = event.target.options[event.target.selectedIndex].text == 'Estonia'
-    document.querySelectorAll('[name="org_county"], [name="org_municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'block' : 'none');
-    document.querySelectorAll('[name="org_add_county"], [name="org_add_municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'none' : 'block');
+    document.querySelectorAll('[name="county"], [name="municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'block' : 'none');
+    document.querySelectorAll('[name="add_county"], [name="add_municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'none' : 'block');
 })
+
+function orderedRaFChanged(el) {
+    validateField(el)
+    refreshActorSubFormClass()
+}
+
+function refreshActorSubFormClass() {
+    const isActor = Array.from(document.querySelectorAll('[name="orderedRaF"]')).some(el => el.value == ROLE_AT_FILM_ACTOR_ID)
+    document.getElementById('actor_fieldset').classList.toggle('hide_actor', !isActor)
+}
 
 function hideFieldsetFields(el) {
     const fieldset = el.currentTarget.closest('fieldset')
@@ -1127,16 +157,24 @@ function hideFieldsetFields(el) {
     resetFields(fieldset)
 }
 
-const fetchOrganisation = async () => {
+const fetchData = async (type) => {
     const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
-    let url = `${huntAuthDomain}/api/organisation`
+    let url = `${huntAuthDomain}/api/${type}`
     const response = await fetch(url, { headers })
     const data = await response.json()
     return data
 }
 
+function resetSelects(domElement, fieldName) {
+    while (domElement.querySelectorAll(`[name^="${fieldName}"]`).length > 1) {
+        domElement.querySelector(`[name^="${fieldName}"]:last-of-type`).closest('.sub_form').remove()
+    }
+    domElement.querySelector(`[name^="${fieldName}"]:last-of-type`).value = ""
+}
+
 function setSelectByFieldName(domElement, values, fieldName) {
+    resetSelects(domElement, fieldName)
     if (values === null || values === undefined ) {
         return
     }
@@ -1147,8 +185,7 @@ function setSelectByFieldName(domElement, values, fieldName) {
         } else {
             values = [values]
         }
-    }
-    if (typeof values[0] === 'object') {
+    }else if (typeof values[0] === 'object') {
         values = values.map( value => value.id)
     }
 
@@ -1163,19 +200,27 @@ function setSelectByFieldName(domElement, values, fieldName) {
             let newChild = lastElement.closest('.sub_form').cloneNode(true)
             newChild.querySelector('select').value = value
             lastElement.closest('.sub_form').after(newChild)
+            newChild.querySelector('select').dispatchEvent(new Event('input', { 'bubbles': false }))
             lastElement = newChild
         }
     }
 }
 
-document.querySelectorAll('.organisationprofile .textarea textarea').forEach(function (textarea) {
+document.querySelectorAll('.addProSection .textarea textarea').forEach(function (textarea) {
     textarea.addEventListener('input', event => updateTextareaCounter(event.target));
 });
 
-document.querySelector('.organisationprofile [name^="org_name_en"]').addEventListener('input', function (event) {
-    document.querySelector(`.organisationprofile [name^="profile_url"]`).value = "https://industry.poff.ee/" + slugify(event.target.value)
+document.querySelector('.addProSection [name^="name_en"]').addEventListener('input', function (event) {
+    document.querySelector(`.addProSection [name^="profile_url"]`).value = "https://industry.poff.ee/" + slugify(event.target.value)
 });
 
+document.querySelectorAll('.addProSection [name^="firstName"], .addProSection [name^="lastName"]').forEach(element => element.addEventListener('input', refreshUrl))
+
+function refreshUrl() {
+    const firstName = document.querySelector('.addProSection [name^="firstName"]').value
+    const lastName = document.querySelector('.addProSection [name^="lastName"]').value
+    document.querySelector(`.addProSection [name^="profile_url"]`).value = "https://industry.poff.ee/" + slugify(`${firstName}-${lastName}`)
+}
 
 function updateTextareaCounter(textarea) {
     let charCount = textarea.value.length
@@ -1187,37 +232,47 @@ function updateTextareaCounter(textarea) {
     textarea.closest('.textarea').querySelector('.current_count').innerHTML = charCount
 }
 
-async function saveOrganisationForm() {
-    document.getElementById('loader').classList.add('loading')
-    let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
-    saveOrganisationButton.disabled = true
+function getFields(type) {
+    if (type == 'organisationprofile') {
+        return getOrganisationFields()
+    } else if (type == 'personprofile') {
+        return getPersonFields()
+    }
+}
 
-    if (isFormValid(document.querySelector('.organisationprofile'), getOrganisationFields())) {
-        const organisationData = collectFormData(document.querySelector('.organisationprofile'), getOrganisationFields())
-        const response = await sendOrganisation(organisationData)
+async function saveForm() {
+    document.getElementById('loader').classList.add('loading')
+    let saveButton = document.getElementById(`saveButton`)
+    saveButton.disabled = true
+
+    if (isFormValid(document.querySelector('.addProSection'), getFields(activeFormType))) {
+        const formData = collectFormData(document.querySelector('.addProSection'), getFields(activeFormType))
+        const response = await sendData(formData)
         if (response) {
-            showPopup(translate('messageOrganisationSaveSuccess'))
+            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess': 'messagePersonSaveSuccess'))
         }
     }
 
-    saveOrganisationButton.disabled = false
+    saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
 }
 
-async function sendOrganisation(organisationData) {
-    console.log("Send organisation: ", organisationData)
+async function sendData(data) {
+    data['id'] = formOriginalData['id']
+    const endpoint = activeFormType == 'personprofile' ? 'person': 'organisation'
+    console.log(`Send ${endpoint}: ${data}`)
 
     const formData = new FormData()
-    if (organisationData.new_files) {
-        Object.entries(organisationData.new_files).forEach(([key, file]) => {
+    if (data.new_files) {
+        Object.entries(data.new_files).forEach(([key, file]) => {
             formData.append(`files.${key}`, file, file.file)
         });
-        delete organisationData.new_files
+        delete data.new_files
     }
+    data['addProType'] = endpoint
+    formData.append('data', JSON.stringify(data))
 
-    formData.append('data', JSON.stringify(organisationData))
-
-    let response = await fetch(`${huntAuthDomain}/api/organisation`, {
+    let response = await fetch(`${huntAuthDomain}/api/addpro`, {
         method: 'PUT',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('ID_TOKEN')
@@ -1225,16 +280,24 @@ async function sendOrganisation(organisationData) {
         body: formData
     })
 
-    console.log('Organisation save response: ', response)
-    const data = await response.json()
-    if (data.statusCode == 200 && data.organisation !== undefined) {
-        organisation = await data.organisation
-        state.newCollectionIds = await data.newCollectionIds
-        return await data.organisation
-    } else {
-        showErrorMsg(translate('messageErrorOnSave'))
-        return false
+    console.log(`${endpoint} save response: ${response}`)
+    const response_data = await response.json()
+    if (response_data.statusCode == 200) {
+        if (activeFormType == 'organisationprofile' && response_data.organisation !== undefined) {
+            formOriginalData = await response_data.organisation
+            state.newCollectionIds = await response_data.newCollectionIds
+            return await response_data.organisation
+        }
+
+        if (activeFormType == 'personprofile' && response_data.person !== undefined) {
+            formOriginalData = await response_data.person
+            state.newCollectionIds = await response_data.newCollectionIds
+            return await response_data.person
+        }
     }
+    showErrorMsg(translate('messageErrorOnSave'))
+    return false
+
 }
 
 function isFormValid(formElement, fields) {
@@ -1265,8 +328,7 @@ function collectFormData(formElement, fields) {
         } else if (conf.type == 'checkbox') {
             formData[conf.field] = formElement.querySelector(`[name="${field_name}"]`).checked ? 1 : 0
         } else if (conf.type == 'select') {
-            const ids = Array.from(formElement.querySelectorAll(`[name="${field_name}"]`)).map(el => parseInt(el.value)).filter(el => !isNaN(el))
-            formData[conf.field] = (conf.sendType == 'int') ? ids[0] : ids
+            formData[conf.field] = Array.from(formElement.querySelectorAll(`[name="${field_name}"]`)).map(el => parseInt(el.value)).filter(el => !isNaN(el))
         } else if (conf.type == 'collection') {
             formData[conf.field] = collectFormData(formElement.querySelector(`.${field_name}`), conf.fields)
         } else {
@@ -1333,14 +395,14 @@ function collectImgData(field_name, conf, orgToSend, formElement) {
     const imageElement = formElement.querySelector(`[name="${field_name}"]`).closest('.fieldset_grid')
     const files = formElement.querySelector(`[name="${field_name}"]`).files
     const imageMetadata = generateImageMetadataJson(imageElement)
-    orgToSend[`metadata_${field_name}`] = imageMetadata
+    orgToSend[`metadata_${conf.field}`] = imageMetadata
 
     if (files.length) {
         orgToSend['new_files'][conf.field] = files[0]
     } else {
         const imgPreviewElement = imageElement.querySelector('.imgPreview')
         if (imgPreviewElement.hasAttribute('data-is-deleted')) {
-            orgToSend[`deleted_img_${field_name}`] = true
+            orgToSend[`deleted_img_${conf.field}`] = true
         }
     }
 }
@@ -1369,9 +431,9 @@ function slugify(text) {
 }
 
 function isImageMetaDataChanged(id, newMetadata) {
-    for (let index = 0; index < organisation.images.length; index++) {
-        if (organisation.images[index].id == id) {
-            return newMetadata != organisation.images[index].caption
+    for (let index = 0; index < formOriginalData.images.length; index++) {
+        if (formOriginalData.images[index].id == id) {
+            return newMetadata != formOriginalData.images[index].caption
         }
     }
     return false
@@ -1380,16 +442,22 @@ function isImageMetaDataChanged(id, newMetadata) {
 function fillFilmographies(domElement, filmographies, fieldName) {
     const filmographiesElement = document.querySelector(".filmographies .list")
     const onGoingProjectsElement = document.querySelector(".on_going_projects .list")
+    const educationsElement = document.querySelector(".educations .list")
 
     filmographiesElement.innerHTML = ""
     onGoingProjectsElement.innerHTML = ""
 
     for (let i = 0; i < filmographies.length; i++) {
-        if (filmographies[i].is_ongoing) {
+        if (filmographies[i].type_of_work == TYPE_OF_WORK_EDUCATION_ID) {
+            const filmographyDiv = getEducationSummaryrow(filmographies[i], educationsElement.childNodes.length + 1)
+            educationsElement.appendChild(filmographyDiv)
+
+            educationsElement.closest('fieldset').classList.add('opened')
+
+        } else if (filmographies[i].is_ongoing) {
             const filmographyDiv = getFilmographySummaryRow(filmographies[i], onGoingProjectsElement.childNodes.length + 1)
             onGoingProjectsElement.appendChild(filmographyDiv)
 
-            onGoingProjectsElement.closest('.on_going_projects').style.display = 'block';
             onGoingProjectsElement.closest('fieldset').classList.add('opened')
         } else {
             const filmographyDiv = getFilmographySummaryRow(filmographies[i], filmographiesElement.childNodes.length + 1)
@@ -1405,12 +473,9 @@ function collectFilmographies(field_name, conf, formData, formElement) {
 }
 
 function updateFilmographyhSummaryRow(form, data) {
-    let targetDiv = document.querySelector(".filmographies .list")
-    if (data.is_ongoing) {
-        targetDiv = document.querySelector(".on_going_projects .list")
-    }
-    const filmographyDiv = getFilmographySummaryRow(data, 'nr')
-
+    const targetClass = data.type_of_work == TYPE_OF_WORK_EDUCATION_ID ? '.educations': (data.is_ongoing ? '.on_going_projects': '.filmographies')
+    let targetDiv = document.querySelector(`${targetClass} .list`)
+    const filmographyDiv = data.type_of_work == TYPE_OF_WORK_EDUCATION_ID ? getEducationSummaryrow(data, 'nr') : getFilmographySummaryRow(data, 'nr')
     updateCollectionSummaryRow(targetDiv, form, filmographyDiv)
 }
 
@@ -1426,6 +491,35 @@ function updateCollectionSummaryRow(targetDiv, form, rowDiv) {
     }
 }
 
+function getEducationSummaryrow(filmography, index)
+{
+    const template = document.querySelector('.education_row_template .filmography')
+    let filmographyDiv = template.cloneNode(true)
+
+    filmographyDiv.querySelector('strong').innerHTML = filmographyDiv.querySelector('strong').innerHTML.
+        replace('%nr%', index).
+        replace('%org_name%', filmography.org_name).
+        replace('%years%', getEducationYears(filmography))
+
+    filmographyDiv.querySelector('button').setAttribute('onclick', `toggleFilmography(event, "${filmography.id}", 'education')`)
+    return filmographyDiv
+}
+
+function getEducationYears(filmography)
+{
+    let years = ''
+    if (filmography.year_from) {
+        years = ` ${filmography.year_from}`
+    }
+    if (filmography.year_to) {
+        if (years) {
+            years += ' -'
+        }
+        years += ` ${filmography.year_to}`
+    }
+    return years
+}
+
 function getFilmographySummaryRow(filmography, index) {
     const template = document.querySelector('.filmographies .filmography_row_template .filmography')
     let filmographyDiv = template.cloneNode(true)
@@ -1436,7 +530,7 @@ function getFilmographySummaryRow(filmography, index) {
         if (filmography.role_at_films[0].roleName) {
             roleAtFilm =  filmography.role_at_films[0].roleName.en
         } else {
-            roleAtFilm = document.querySelector(`[name="org_filmography_role_at_films"] option[value="${filmography.role_at_films[0]}"]`).text
+            roleAtFilm = document.querySelector(`[name="role_at_films"] option[value="${filmography.role_at_films[0]}"]`).text
         }
         if (roleAtFilm) {
             roleAtFilmDiv = filmographyDiv.querySelector('.role_at_film').innerHTML.replace('%role_at_film%', roleAtFilm)
@@ -1489,7 +583,7 @@ function toggleClient(event, id) {
     } else {
         event.currentTarget.classList.add('opened')
         const targetElement = event.currentTarget.closest('.client').querySelector('.filled_client')
-        const data = organisation['clients'].find(client => id == client.id)
+        const data = formOriginalData['clients'].find(client => id == client.id)
         const subForm = event.currentTarget.closest('fieldset').querySelector('.client_form.template').cloneNode(true)
         subForm.classList.remove('template')
         subForm.style.display = 'block'
@@ -1511,8 +605,8 @@ async function saveClient(event) {
     }
 
     document.getElementById('loader').classList.add('loading')
-    let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
-    saveOrganisationButton.disabled = true
+    let saveButton = document.getElementById(`saveButton`)
+    saveButton.disabled = true
 
     data = collectFormData(form, fields)
     const result = await sendClient(data)
@@ -1520,14 +614,14 @@ async function saveClient(event) {
     if (result) {
         showSuccessMsg(translate('messageClientSaveSuccess'))
         const id = data.id ? data.id : state?.newCollectionIds?.client
-        const client = organisation['clients'].find((element) => element.id == id)
+        const client = formOriginalData['clients'].find((element) => element.id == id)
         updateCollectionSummaryRow(document.querySelector(".clients .list"), form, getClientSummaryRow(client, 'nr'))
         if (!data.id) {
             closeClientForm(form)
         }
     }
 
-    saveOrganisationButton.disabled = false
+    saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
 
 }
@@ -1537,9 +631,9 @@ function removeClient(event) {
     const id = event.currentTarget.closest('.client_form').querySelector(`[name="id"]`).value
     if (id) {
         const clients = {
-            'clients': organisation['clients'].filter((client) => client['id'] != id).map(client => client.id)
+            'clients': formOriginalData['clients'].filter((client) => client['id'] != id).map(client => client.id)
         }
-        const result = sendOrganisation(clients)
+        const result = sendData(clients)
 
         if (result) {
             closeClientForm(form)
@@ -1567,16 +661,15 @@ function toggleIsFeatured(event) {
 }
 
 function toggleFilmography(event, id, type) {
-    const form = event.currentTarget.closest('.filmography').querySelector('.filled_filmography .filmography_form')
-    const formFields = type == 'ongoing' ? getOnGoingFilmographyFields() : getFilmographyFields()
-    const data = getFilmographyById(id);
-
     if (event.currentTarget.classList.contains('opened')) {
-        if (form.getAttribute('data-is-changed') === "false" || confirm(translate("collectionDataChanged"))) {
+        const form = event.currentTarget.closest('.filmography').querySelector('.filled_filmography .filmography_form')
+        if (form && form.getAttribute('data-is-changed') === "false" || confirm(translate("collectionDataChanged"))) {
             event.currentTarget.classList.remove('opened')
             form.remove()
         }
     } else {
+        const formFields = getFilmographyFields(type)
+        const data = getFilmographyById(id);
         event.currentTarget.classList.add('opened')
         const targetElement = event.currentTarget.closest('.filmography').querySelector('.filled_filmography')
         const subForm = event.currentTarget.closest('fieldset').querySelector('.filmography_form.template').cloneNode(true)
@@ -1593,136 +686,28 @@ function toggleFilmography(event, id, type) {
     }
 }
 
-
-function getOnGoingFilmographyFields() {
-    return  {
-        org_ongoing_project_type_of_work: {
-            field: 'type_of_work',
-            type: 'select',
-            sendType: 'int'
-        },
-        org_ongoing_project_role_at_films: {
-            field: 'role_at_films',
-            type: 'select'
-        },
-        org_ongoing_project_work_name: {
-            field: 'work_name',
-        },
-        org_ongoing_project_work_url: {
-            field: 'work_url',
-            sendType: 'url',
-        },
-        org_ongoing_project_decsription_en: {
-            field: 'decsription_en',
-        },
-        org_ongoing_project_status: {
-            field: 'project_statuses',
-            type: 'select'
-        },
-        org_ongoing_project_tag_looking_fors: {
-            field: 'tag_looking_fors',
-            type: 'select'
-        },
-        id: {
-            field: 'id'
-        }
-    }
-}
-
-function getClientFields() {
-    return {
-        url: {
-            field: 'url',
-            sendType: 'url',
-        },
-        description: {
-            field: 'description',
-        },
-        name: {
-            field: 'name',
-        },
-        id: {
-            field: 'id'
-        },
-    }
-}
-
-function getFilmographyFields() {
-    return {
-        org_filmography_type_of_work: {
-            field: 'type_of_work',
-            type: 'select',
-            sendType: "Integer"
-        },
-        org_filmography_role_at_films: {
-            field: 'role_at_films',
-            type: 'select'
-        },
-        org_filmography_year_from: {
-            field: 'year_from',
-            sendType: "Integer"
-        },
-        org_filmography_year_to: {
-            field: 'year_to',
-            sendType: "Integer"
-        },
-        org_filmography_work_name: {
-            field: 'work_name',
-        },
-        org_filmography_work_url: {
-            field: 'work_url',
-            sendType: 'url',
-        },
-        org_filmography_runtime: {
-            field: 'runtime',
-            sendType: "Integer"
-        },
-        org_filmography_org_name: {
-            field: 'org_name',
-        },
-        org_filmography_org_url: {
-            field: 'org_url',
-            sendType: 'url',
-        },
-        org_filmography_decsription_en: {
-            field: 'decsription_en',
-        },
-        org_filmography_is_featured: {
-            field: 'is_featured',
-            type: 'checkbox'
-        },
-
-        stills: {
-            field: 'stills',
-            fillFunction: fillStill,
-            collectFunction: collectStill
-        },
-        id: {
-            field: 'id'
-        },
-    }
-}
-
-
-async function saveFilmography(event, is_ongoing = true) {
+async function saveFilmography(event, type) {
     const form = event.target.closest('.filmography_form')
-    const fields = is_ongoing ? getOnGoingFilmographyFields(): getFilmographyFields()
+    const fields = getFilmographyFields(type)
     if (!isFormValid(form, fields)) {
         return;
     }
 
     document.getElementById('loader').classList.add('loading')
-    let saveOrganisationButton = document.getElementById(`saveOrganisationButton`)
-    saveOrganisationButton.disabled = true
+    let saveButton = document.getElementById(`saveButton`)
+    saveButton.disabled = true
 
     data = collectFormData(form, fields)
-    data['is_ongoing'] = is_ongoing ? 1:0
+    data['is_ongoing'] = type == 'ongoing' ? 1 : 0
+    if (type == "education") {
+        data['type_of_work'] = TYPE_OF_WORK_EDUCATION_ID
+    }
     const result = await sendFilmography(data)
 
     if (result) {
         showSuccessMsg(translate('messageFilmographySaveSuccess'))
         const id = data.id ? data.id : state?.newCollectionIds?.filmography
-        const filmography = organisation['filmographies'].find((element) => element.id == id)
+        const filmography = formOriginalData['filmographies'].find((element) => element.id == id)
 
         updateFilmographyhSummaryRow(form, filmography)
         if (!data.id) {
@@ -1730,34 +715,33 @@ async function saveFilmography(event, is_ongoing = true) {
         }
     }
 
-    saveOrganisationButton.disabled = false
+    saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
 }
 
 function sendClient(data) {
-    const organisationData = {
+    return sendData({
         'client': data
-    }
-    return sendOrganisation(organisationData)
+    })
 }
 
 function sendFilmography(data)
 {
-    const organisationData = {}
-    organisationData['new_files'] = data['new_files']
+    const formData = {}
+    formData['new_files'] = data['new_files']
     delete data['new_files']
-    organisationData['filmography'] = data
-    return sendOrganisation(organisationData)
+    formData['filmography'] = data
+    return sendData(formData)
 }
 
 function removeFilmography(event) {
     const form = event.currentTarget.closest('.filmography_form')
     const id = event.currentTarget.closest('.filmography_form').querySelector(`[name="id"]`).value
     if (id) {
-        const organisationData = {
-            'filmographies': organisation['filmographies'].filter((filmography) => filmography['id'] != id).map(filmography => filmography.id)
+        const formData = {
+            'filmographies': formOriginalData['filmographies'].filter((filmography) => filmography['id'] != id).map(filmography => filmography.id)
         }
-        const result = sendOrganisation(organisationData)
+        const result = sendData(formData)
 
         if (result) {
             closeFilmographyForm(form)
@@ -1781,9 +765,9 @@ function closeFilmographyForm(form) {
 }
 
 function getFilmographyById(id) {
-    for (let i = 0; i < organisation['filmographies'].length; i++) {
-        if (organisation['filmographies'][i].id == id) {
-            return organisation['filmographies'][i];
+    for (let i = 0; i < formOriginalData['filmographies'].length; i++) {
+        if (formOriginalData['filmographies'][i].id == id) {
+            return formOriginalData['filmographies'][i];
         }
     }
     return {}
@@ -1804,6 +788,20 @@ function validateField(element) {
     return errors.length === 0
 }
 
+function isNumberInRange(value, min, max) {
+    value = Number(value)
+    if (!Number.isInteger(value)) {
+        return false
+    }
+    if (value < min) {
+        return false
+    }
+    if (value > max) {
+        return false
+    }
+    return true
+}
+
 function validate(field, validators) {
     const errors = [];
     const fieldValue = field.value
@@ -1815,8 +813,12 @@ function validate(field, validators) {
             if (!values.length) {
                 errors.push(translate('validationErrorRequiredField'))
             }
-        } else if (validator == 'is-number-between-1-10000' && fieldValue != "" && !/^[1-9]\d{0,4}$/.test(fieldValue)) {
+        } else if (validator == 'is-number-between-1-10000' && fieldValue != "" && !isNumberInRange(fieldValue, 1, 10000)) {
             errors.push(translate('validatinErrorInvalidNumberBetween1_10000'))
+        } else if (validator == 'is-number-0-to-100' && fieldValue != "" && !isNumberInRange(fieldValue, 0, 100)) {
+            errors.push(translate('validationErrorInvalidNumber_0_to_100'))
+        } else if (validator == 'is-number-0-to-500' && fieldValue != "" && !isNumberInRange(fieldValue, 0, 500)) {
+            errors.push(translate('validationErrorInvalidNumber_0_to_500'))
         } else if (validator == 'is-valid-year' && fieldValue != "" && !/^(19|20)\d{2}$/.test(fieldValue)) {
             errors.push(translate('validationErrorInvalidYear'))
         } else if (validator == 'is-email' && (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(fieldValue))) {
@@ -1830,7 +832,7 @@ function validate(field, validators) {
                 errors.push(translate('validationErrorShowreel'))
             }
         } else if (validator == 'still-image') {
-            const isFeatured = field.closest('.filmography_form').querySelector('input[name="org_filmography_is_featured"]').checked
+            const isFeatured = field.closest('.filmography_form').querySelector('input[name="is_featured"]').checked
             const imgPreview = field.closest('.form_group').querySelector('.imgPreview')
             if (isFeatured && field.files.length == 0 && !imgPreview.hasAttribute('data-image-id')) {
                 errors.push(translate('validationErrorMissingStill'))
@@ -1840,185 +842,11 @@ function validate(field, validators) {
     return errors
 }
 
-const getOrganisationFields = () =>  {
-    return  {
-        org_name_en: {
-            field: 'name_en',
-        },
-        org_h_rate_from: {
-            field: 'h_rate_from',
-        },
-        org_h_rate_to: {
-            field: 'h_rate_to',
-        },
-        org_role_at_films: {
-            field: 'orderedRaF',
-            type: 'custom',
-            fillFunction: fillOrderedRaF,
-            collectFunction: collectOrderedRaf,
-        },
-
-        filmographies: {
-            field: 'filmographies',
-            type: 'custom',
-            fillFunction: fillFilmographies,
-            collectFunction: collectFilmographies
-        },
-
-        org_employees_n: {
-            field: 'employees_n',
-        },
-        org_languages: {
-            field: 'languages',
-            type: 'select',
-        },
-        org_creative_gate_relations: {
-            field: 'people',
-            type: 'select'
-        },
-        org_description_en: {
-            field: 'description_en',
-        },
-        org_skills_en: {
-            field: 'skills_en',
-        },
-        org_tag_looking_fors: {
-            field: 'tag_looking_fors',
-            type: 'select',
-        },
-        org_acc_imdb: {
-            field: 'acc_imdb',
-            sendType: 'url',
-        },
-        org_acc_efis: {
-            field: 'acc_efis',
-            sendType: 'url',
-        },
-        org_acc_instagram: {
-            field: 'acc_instagram',
-            sendType: 'url',
-        },
-        org_acc_fb: {
-            field: 'acc_fb',
-            sendType: 'url',
-        },
-        org_acc_other: {
-            field: 'acc_other',
-            sendType: 'url',
-        },
-        org_acc_youtube: {
-            field: 'acc_youtube',
-            sendType: 'url',
-        },
-        org_acc_vimeo: {
-            field: 'acc_vimeo',
-            sendType: 'url',
-        },
-        org_webpage_url: {
-            field: 'webpage_url',
-            sendType: 'url',
-        },
-        org_email: {
-            field: 'eMail',
-        },
-        org_phone_nr: {
-            field: 'phoneNr',
-        },
-
-        addr_coll: {
-            type: 'collection',
-            field: 'addr_coll',
-            fields: {
-                id: {
-                    field: 'id'
-                },
-                org_country: {
-                    field: 'country',
-                    type: "select",
-                    sendType: "Integer"
-                },
-                org_county: {
-                    field: 'county',
-                    type: "select",
-                    sendType: "Integer"
-                },
-
-                org_municipality: {
-                    field: 'municipality',
-                    type: "select",
-                    sendType: "Integer"
-                },
-
-                org_add_county: {
-                    field: 'add_county',
-                },
-
-                org_add_municipality: {
-                    field: 'add_municipality',
-                },
-
-                org_populated_place: {
-                    field: 'popul_place',
-                },
-                org_street_name: {
-                    field: 'street_name',
-                },
-                org_address_number: {
-                    field: 'street_name',
-                },
-                org_appartment: {
-                    field: 'appartment',
-                },
-                org_postal_code: {
-                    field: 'postal_code',
-                }
-            }
-        },
-
-        org_client_name: {
-            field: 'clients',
-            type: 'custom',
-            fillFunction: fillClients,
-            collectFunction: collectClients
-        },
-        org_showreel: {
-            field: 'showreel',
-        },
-
-        org_audioreel: {
-            field: 'audioreel',
-            type: 'audioreel',
-            collectFunction: collectAudioreelData,
-            fillFunction: fillAudioreel
-        },
-        logoColour: {
-            field: 'logoColour',
-            collectFunction: collectImgData,
-            fillFunction: fillImage
-        },
-        profile_img: {
-            field: 'profile_img',
-            collectFunction: collectImgData,
-            fillFunction: fillImage
-
-        },
-        images: {
-            field: 'images',
-            collectFunction: collectGalleryData,
-            fillFunction: fillGallery
-        },
-        ok_to_contact: {
-            field: "ok_to_contact",
-            type: "checkbox"
-        }
-    }
-}
-
-const fillOrganisationForm = (organisation) => {
-    if (organisation.id) {
-        fillFields(document.querySelector('.organisationprofile'), getOrganisationFields(), organisation)
+const fillForm = (entity, fields,  error) => {
+    if (entity.id) {
+        fillFields(document.querySelector('.addProSection'), fields, entity)
     } else {
-        showPopup(translate('errorOnOrganisationLoad'))
+        showPopup(error)
     }
 }
 
@@ -2049,7 +877,6 @@ function generateImageMetadataJson(imageElement) {
 }
 
 function fillStill(imgEl, val, fieldName) {
-    console.log(imgEl)
     if (!Array.isArray(val) || val.length < 1) {
         return
     }
@@ -2143,17 +970,8 @@ function fillClients(domElement, clients, fieldName) {
     }
 }
 
-function collectClients(field_name, conf, formData, formElement)
-{
+function collectClients(field_name, conf, formData, formElement) {
     return;
-}
-
-function isFieldHidden(field) {
-    const el = field.closest('.fields')
-    if (el) {
-        return el.style.display == 'none'
-    }
-    return false;
 }
 
 function translate(template, variables = {}) {
@@ -2226,7 +1044,7 @@ function previewAudioreel(event) {
 }
 
 //start sortable role_at_films fieds
-Sortable.create(document.querySelector('.org_role_at_films'),  {
+Sortable.create(document.querySelector('.orderedRaF'),  {
     handle: '.drag_me', // handle's class
     animation: 150,
     draggable: '.sub_form'
@@ -2241,10 +1059,10 @@ function refreshRowNumbers(element) {
 }
 
 const observer = new MutationObserver(function(mutationsList, observer) {
-    refreshRowNumbers(document.querySelector('.org_role_at_films'))
+    refreshRowNumbers(document.querySelector('.orderedRaF'))
 });
 
-observer.observe(document.querySelector('.org_role_at_films'), {characterData: false, childList: true, attributes: false});
+observer.observe(document.querySelector('.orderedRaF'), {characterData: false, childList: true, attributes: false});
 //end sortable role_at_films fieds
 
 function showSuccessMsg(message) {
@@ -2266,6 +1084,425 @@ function showPopup(message) {
     document.getElementById('infoPopup').style.display = "block"
 }
 
+const getPersonFields = () => {
+    let fields = getOrganisationFields()
+    delete fields['name_en']
+    delete fields['employees_n']
+    delete fields['creative_gate_relations']
+    delete fields['client_name']
+    delete fields['description_en']
+    delete fields['languages']
+    delete fields['logoColour']
+    delete fields['profile_img']
+
+
+    fields['logoColour'] = {
+        field: 'profile_img',
+        collectFunction: collectImgData,
+        fillFunction: fillImage
+    }
+
+    fields['firstName'] = {
+        'field': 'firstName'
+    }
+    fields['lastName'] = {
+        'field': 'lastName'
+    }
+    fields['gender'] = {
+        field: 'gender',
+        type: 'select',
+        sendType: 'Integer',
+    }
+    fields['native_lang'] = {
+        field: 'native_lang',
+        type: 'select',
+        sendType: 'Integer',
+    }
+    fields['other_lang'] = {
+        field: 'other_lang',
+        type: 'select',
+    }
+
+    fields['acc_etalenta'] = {
+        field: 'acc_etalenta',
+        sendType: 'url',
+    }
+
+    fields['acc_castupload'] = {
+        field: 'acc_castupload',
+        sendType: 'url',
+    }
+
+    fields['acting_age_from'] = {
+        field: 'acting_age_from',
+        sendType: 'Integer',
+    }
+
+    fields['acting_age_to'] = {
+        field: 'acting_age_to',
+        sendType: 'Integer',
+    }
+
+    fields['weight_kg'] = {
+        field: 'weight_kg',
+        sendType: 'Integer',
+    }
+
+    fields['height_cm'] = {
+        field: 'height_cm',
+        sendType: 'Integer',
+    }
+
+    fields['eye_colour'] = {
+        field: 'eye_colour',
+        type: 'select',
+        sendType: 'Integer',
+    }
+
+    fields['hair_colour'] = {
+        field: 'hair_colour',
+        type: 'select',
+        sendType: 'Integer',
+    }
+
+    fields['hair_length'] = {
+        field: 'hair_length',
+        type: 'select',
+        sendType: 'Integer',
+    }
+    fields['pitch_of_voice'] = {
+        field: 'pitch_of_voice',
+        type: 'select',
+        sendType: 'Integer',
+    }
+
+    fields['stature'] = {
+        field: 'stature',
+        type: 'select',
+        sendType: 'Integer',
+    }
+
+    fields['description_en'] = {
+        field: 'bio_en',
+    }
+
+    return fields;
+}
+
+const getOrganisationFields = () =>  {
+    return  {
+        name_en: {
+            field: 'name_en',
+        },
+        h_rate_from: {
+            field: 'h_rate_from',
+            sendType: 'Integer',
+        },
+        h_rate_to: {
+            field: 'h_rate_to',
+            sendType: 'Integer',
+        },
+        orderedRaF: {
+            field: 'orderedRaF',
+            type: 'custom',
+            fillFunction: fillOrderedRaF,
+            collectFunction: collectOrderedRaf,
+        },
+
+        filmographies: {
+            field: 'filmographies',
+            type: 'custom',
+            fillFunction: fillFilmographies,
+            collectFunction: collectFilmographies
+        },
+
+        employees_n: {
+            field: 'employees_n',
+            sendType: 'Integer',
+        },
+        languages: {
+            field: 'languages',
+            type: 'select',
+        },
+        creative_gate_relations: {
+            field: 'people',
+            type: 'select'
+        },
+        description_en: {
+            field: 'description_en',
+        },
+        skills_en: {
+            field: 'skills_en',
+        },
+        tag_looking_fors: {
+            field: 'tag_looking_fors',
+            type: 'select',
+        },
+        acc_imdb: {
+            field: 'acc_imdb',
+            sendType: 'url',
+        },
+        acc_efis: {
+            field: 'acc_efis',
+            sendType: 'url',
+        },
+        acc_instagram: {
+            field: 'acc_instagram',
+            sendType: 'url',
+        },
+        acc_fb: {
+            field: 'acc_fb',
+            sendType: 'url',
+        },
+        acc_other: {
+            field: 'acc_other',
+            sendType: 'url',
+        },
+        acc_youtube: {
+            field: 'acc_youtube',
+            sendType: 'url',
+        },
+        acc_vimeo: {
+            field: 'acc_vimeo',
+            sendType: 'url',
+        },
+        webpage_url: {
+            field: 'webpage_url',
+            sendType: 'url',
+        },
+        eMail: {
+            field: 'eMail',
+        },
+        phoneNr: {
+            field: 'phoneNr',
+        },
+
+        addr_coll: {
+            type: 'collection',
+            field: 'addr_coll',
+            fields: {
+                id: {
+                    field: 'id'
+                },
+                country: {
+                    field: 'country',
+                    type: "select",
+                    sendType: "Integer"
+                },
+                county: {
+                    field: 'county',
+                    type: "select",
+                    sendType: "Integer"
+                },
+
+                municipality: {
+                    field: 'municipality',
+                    type: "select",
+                    sendType: "Integer"
+                },
+
+                add_county: {
+                    field: 'add_county',
+                },
+
+                add_municipality: {
+                    field: 'add_municipality',
+                },
+
+                populated_place: {
+                    field: 'popul_place',
+                },
+                street_name: {
+                    field: 'street_name',
+                },
+                address_number: {
+                    field: 'address_number',
+                },
+                appartment: {
+                    field: 'appartment',
+                },
+                postal_code: {
+                    field: 'postal_code',
+                }
+            }
+        },
+
+        client_name: {
+            field: 'clients',
+            type: 'custom',
+            fillFunction: fillClients,
+            collectFunction: collectClients
+        },
+        showreel: {
+            field: 'showreel',
+            sendType: 'url'
+        },
+
+        audioreel: {
+            field: 'audioreel',
+            type: 'audioreel',
+            collectFunction: collectAudioreelData,
+            fillFunction: fillAudioreel
+        },
+        logoColour: {
+            field: 'logoColour',
+            collectFunction: collectImgData,
+            fillFunction: fillImage
+        },
+        profile_img: {
+            field: 'profile_img',
+            collectFunction: collectImgData,
+            fillFunction: fillImage
+        },
+        images: {
+            field: 'images',
+            collectFunction: collectGalleryData,
+            fillFunction: fillGallery
+        },
+        ok_to_contact: {
+            field: "ok_to_contact",
+            type: "checkbox"
+        }
+    }
+}
+
+function getFilmographyFields(type) {
+    if (type == 'education') {
+        return  {
+            year_from: {
+                field: 'year_from',
+                sendType: "Integer"
+            },
+            year_to: {
+                field: 'year_to',
+                sendType: "Integer"
+            },
+            org_name: {
+                field: 'org_name',
+            },
+            org_department: {
+                field: 'org_department',
+            },
+            degree: {
+                field: 'degree',
+            },
+            org_url: {
+                field: 'org_url',
+                sendType: 'url',
+            },
+            id: {
+                field: 'id'
+            }
+        }
+    } else if (type == 'ongoing') {
+        return  {
+            type_of_work: {
+                field: 'type_of_work',
+                type: 'select',
+                sendType: 'Integer'
+            },
+            role_at_films: {
+                field: 'role_at_films',
+                type: 'select'
+            },
+            work_name: {
+                field: 'work_name',
+            },
+            work_url: {
+                field: 'work_url',
+                sendType: 'url',
+            },
+            decsription_en: {
+                field: 'decsription_en',
+            },
+            project_statuses: {
+                field: 'project_statuses',
+                type: 'select'
+            },
+            ongoing_tag_looking_fors: {
+                field: 'tag_looking_fors',
+                type: 'select'
+            },
+            id: {
+                field: 'id'
+            }
+        }
+    } else if (type == 'completed') {
+        return {
+            type_of_work: {
+                field: 'type_of_work',
+                type: 'select',
+                sendType: "Integer"
+            },
+            role_at_films: {
+                field: 'role_at_films',
+                type: 'select'
+            },
+            year_from: {
+                field: 'year_from',
+                sendType: "Integer"
+            },
+            year_to: {
+                field: 'year_to',
+                sendType: "Integer"
+            },
+            work_name: {
+                field: 'work_name',
+            },
+            work_url: {
+                field: 'work_url',
+                sendType: 'url',
+            },
+            runtime: {
+                field: 'runtime',
+                sendType: "Integer"
+            },
+            org_name: {
+                field: 'org_name',
+            },
+            org_url: {
+                field: 'org_url',
+                sendType: 'url',
+            },
+            decsription_en: {
+                field: 'decsription_en',
+            },
+            is_featured: {
+                field: 'is_featured',
+                type: 'checkbox'
+            },
+
+            stills: {
+                field: 'stills',
+                fillFunction: fillStill,
+                collectFunction: collectStill
+            },
+            id: {
+                field: 'id'
+            },
+        }
+    }
+}
+
+function getClientFields() {
+    return {
+        url: {
+            field: 'url',
+            sendType: 'url',
+        },
+        description: {
+            field: 'description',
+        },
+        name: {
+            field: 'name',
+        },
+        id: {
+            field: 'id'
+        },
+    }
+}
+
 ; (async () => {
     requireLogin()
+    showSection('personprofile')
 })()
