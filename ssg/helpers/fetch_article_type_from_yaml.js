@@ -208,7 +208,7 @@ for (const lang of languages) {
                         // see patch siin on tehtud, kuna reklaamis kasutati poff.ee/lemmikfilm, aga meil on artiklid ju poff.ee/artikkel/lemmikfilm
                         // if (element[key] === 'lemmikfilm') {
                         if (element[key] === 'lemmik') {
-                            element.aliases = ['lemmikfilm', 'publikulemmik']
+                            element.aliases = ['lemmik']
                         }
                         // 2021 adding covid article aliases
                         if (element[key] === 'koroonareeglid') {
