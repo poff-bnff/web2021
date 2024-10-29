@@ -210,6 +210,9 @@ for (const lang of languages) {
                         if (element[key] === 'lemmik') {
                             element.aliases = ['lemmik']
                         }
+                        if (element[key] === 'lemmik') {
+                            element.aliases = ['lemmik']
+                        }
                         // 2021 adding covid article aliases
                         if (element[key] === 'koroonareeglid') {
                             element.aliases = ['covid', 'koroonareeglid']
