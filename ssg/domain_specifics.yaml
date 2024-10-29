@@ -49,7 +49,7 @@ deepchatActiveInWeb:
     discoverycampus.poff.ee: false
     filmikool.poff.ee: false
     hoff.ee: false
-    industry.poff.ee: false
+    industry.poff.ee: true
     justfilm.ee: true
     kinoff.poff.ee: false
     kumu.poff.ee: false
