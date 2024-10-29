@@ -1,5 +1,7 @@
 if self.locale == "et"
     - var chatPlaceholder = 'Küsi midagi filmide kohta'
+else if self.locale == "ru"
+    - var chatPlaceholder = 'Спросите что-нибудь про фильмы'
 else
     - var chatPlaceholder = 'Ask me anything about movies'
 
@@ -31,19 +33,19 @@ script.
 
           `;
     } else if ('#{self.locale}' == 'ru') {
-        var chatTitle = 'Я Susi, искусственный интеллект и ваш помощник в вопросе выбора фильмов. Поговорите со мной.';
+        var chatTitle = 'Я Susi, ваш ИИ помощник. Поговорите со мной, и я подберу для вас фильмы из программы PÖFF.';
         var chatText = `
-          <p>Näiteks võid küsida minult sellises stiilis küsimusi:</p>
+          <p>Например можно задать вопросы в таком стиле:</p>
 
-          <p><i>Minu lemmikrežissöör on … Kas minu maitsele on mõni film PÖFFi kavast?</i></p>
+          <p><i>Мой любимый режиссёр это... Есть ли в программе PÖFF какой-нибудь фильм в моём вкусе?</i></p>
 
-          <p><i>Milliseid filme kirjandusest / poliitikast / spordist PÖFFi kavast soovitad?</i></p>
+          <p><i>Какие фильмы о литературе/ политике/ спорте посоветуешь из программы PÖFF?</i></p>
 
-          <p><i>Milliseid filme sa soovitad, kui mulle meeldivad rahulikult kulgevad ajaloofilmid?</i></p>
+          <p><i>Мне нравятся спокойные исторические фильмы, что порекомендуешь мне из программы PÖFF?</i></p>
 
-          <a href="https://poff.ee/artikkel/poffi-filmisoovitaja-susi-ai"><p>Loe lisa</p></a>
+          <a href="https://poff.ee/artikkel/poffi-filmisoovitaja-susi-ai"><p>Подробности здесь</p></a>
 
-          <p>Head avastamist!</p>
+          <p>Приятных открытий!</p>
 
           `;
     } else {
