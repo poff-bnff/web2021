@@ -9,7 +9,7 @@ async function showSection(sectionName) {
     const section = document.querySelector('.addProSection')
     section.classList.remove('organisationprofile', 'personprofile', 'disabled')
     section.classList.add(sectionName)
-    resetFields(document.querySelector('.addProSection'))
+    emptyFields(document.querySelector('.addProSection'))
     document.getElementById('loader').classList.add('loading')
     if (sectionName == 'organisationprofile') {
         formOriginalData = await fetchData('organisation')
@@ -97,8 +97,13 @@ function removeStill(el) {
 }
 
 function resetFields(element) {
+    element.querySelectorAll('.imgPreview').forEach(el => { el.setAttribute('data-is-deleted', true)});
+    emptyFields(element)
+}
+
+function emptyFields(element) {
     element.querySelectorAll('input[type="file"], input[type="number"], input[type="text"], input[type="url"], select, input[type="hidden"], input[type="checkbox"], input[type="url"], textarea, input[list="name"]').forEach(el => el.value="" );
-    element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.setAttribute('data-is-deleted', true); el.removeAttribute('data-image-id') });
+    element.querySelectorAll('.imgPreview').forEach(el => { el.src = el.getAttribute('data-placeholder-img'); el.removeAttribute('data-image-id') });
     element.querySelectorAll('audio').forEach(el => { el.style.display = 'none';  el.src = ''});
     element.querySelectorAll('.error').forEach(el => el.innerHTML = '')
 }
