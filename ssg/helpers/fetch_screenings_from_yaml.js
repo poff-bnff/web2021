@@ -38,7 +38,7 @@ const shownFestivalEditions = DOMAIN_SPECIFICS.cassettes_festival_editions[DOMAI
 // Teistel domeenidel, siia kõik Screening_types name mida soovitakse kasseti juurde lisada, VÄIKETÄHTEDES.
 // if (!skipScreeningsCheckDomains.includes(DOMAIN)) {
 //     if (festival_editions.includes(33) || festival_editions.includes(53)) {
-//         whichScreeningTypesToFetch.push('first screening')
+//         whichScreeningTypesToFetch.push('g')
 //     } else {
 //         whichScreeningTypesToFetch.push('first screening')
 //         whichScreeningTypesToFetch.push('regular')
