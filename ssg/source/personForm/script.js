@@ -9,6 +9,7 @@ async function showSection(sectionName) {
     const section = document.querySelector('.addProSection')
     section.classList.remove('organisationprofile', 'personprofile', 'disabled')
     section.classList.add(sectionName)
+    resetFields(document.querySelector('.addProSection'))
     document.getElementById('loader').classList.add('loading')
     if (sectionName == 'organisationprofile') {
         formOriginalData = await fetchData('organisation')
@@ -249,7 +250,8 @@ async function saveForm() {
         const formData = collectFormData(document.querySelector('.addProSection'), getFields(activeFormType))
         const response = await sendData(formData)
         if (response) {
-            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess': 'messagePersonSaveSuccess'))
+            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess'))
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 
@@ -260,7 +262,7 @@ async function saveForm() {
 async function sendData(data) {
     data['id'] = formOriginalData['id']
     const endpoint = activeFormType == 'personprofile' ? 'person': 'organisation'
-    console.log(`Send ${endpoint}: ${data}`)
+    console.log('Send:', endpoint, data)
 
     const formData = new FormData()
     if (data.new_files) {
@@ -280,7 +282,7 @@ async function sendData(data) {
         body: formData
     })
 
-    console.log(`${endpoint} save response: ${response}`)
+    console.log('Send data response', endpoint, response)
     const response_data = await response.json()
     if (response_data.statusCode == 200) {
         if (activeFormType == 'organisationprofile' && response_data.organisation !== undefined) {
@@ -402,7 +404,7 @@ function collectImgData(field_name, conf, orgToSend, formElement) {
     } else {
         const imgPreviewElement = imageElement.querySelector('.imgPreview')
         if (imgPreviewElement.hasAttribute('data-is-deleted')) {
-            orgToSend[`deleted_img_${conf.field}`] = true
+            orgToSend[`deleted_${conf.field}`] = true
         }
     }
 }
@@ -626,14 +628,19 @@ async function saveClient(event) {
 
 }
 
-function removeClient(event) {
+async function removeClient(event) {
     const form = event.currentTarget.closest('.client_form')
     const id = event.currentTarget.closest('.client_form').querySelector(`[name="id"]`).value
     if (id) {
         const clients = {
             'clients': formOriginalData['clients'].filter((client) => client['id'] != id).map(client => client.id)
         }
-        const result = sendData(clients)
+
+        document.getElementById('loader').classList.add('loading')
+
+        const result = await sendData(clients)
+
+        document.getElementById('loader').classList.remove('loading')
 
         if (result) {
             closeClientForm(form)
@@ -741,7 +748,10 @@ function removeFilmography(event) {
         const formData = {
             'filmographies': formOriginalData['filmographies'].filter((filmography) => filmography['id'] != id).map(filmography => filmography.id)
         }
-        const result = sendData(formData)
+
+        document.getElementById('loader').classList.add('loading')
+        const result = await(formData)
+        document.getElementById('loader').classList.remove('loading')
 
         if (result) {
             closeFilmographyForm(form)
@@ -821,7 +831,7 @@ function validate(field, validators) {
             errors.push(translate('validationErrorInvalidNumber_0_to_500'))
         } else if (validator == 'is-valid-year' && fieldValue != "" && !/^(19|20)\d{2}$/.test(fieldValue)) {
             errors.push(translate('validationErrorInvalidYear'))
-        } else if (validator == 'is-email' && (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(fieldValue))) {
+        } else if (validator == 'is-email' && (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(fieldValue))) {
             errors.push(translate('validationErrorEmail'))
         } else if (validator == 'is-phone-nr' && fieldValue != "" && !/^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g.test(fieldValue)) {
             errors.push(translate('validationErrorPhone'))
@@ -900,6 +910,11 @@ function fillImage(domElement, val, fieldName = false) {
 }
 
 function fillGallery(domElement, val, fieldName) {
+    while (domElement.querySelectorAll('.gallery').length > 1) {
+        let gallery = domElement.querySelectorAll(`.gallery`)
+        gallery[gallery.length -1].remove()
+    }
+
     let gallery = domElement.querySelector('.gallery')
     for (let i = 0; i < val.length; i++) {
         fillImage(gallery, val[i])
