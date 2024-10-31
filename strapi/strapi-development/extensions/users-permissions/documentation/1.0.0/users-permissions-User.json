@@ -2498,8 +2498,11 @@
               "orderedRaF": {
                 "type": "component"
               },
-              "client": {
-                "type": "string"
+              "clients": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"

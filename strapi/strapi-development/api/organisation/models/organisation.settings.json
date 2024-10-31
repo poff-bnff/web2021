@@ -246,8 +246,8 @@
       "collection": "industry-person-type"
     },
     "people": {
-      "collection": "person",
-      "via": "organisations"
+      "via": "organisations",
+      "collection": "person"
     },
     "client": {
       "via": "client_organisation",
