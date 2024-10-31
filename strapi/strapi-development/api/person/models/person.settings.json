@@ -40,8 +40,8 @@
       "type": "date"
     },
     "organisations": {
-      "via": "people",
       "collection": "organisation",
+      "via": "people",
       "dominant": true
     },
     "profession": {
@@ -289,9 +289,9 @@
       "repeatable": true,
       "component": "credentials.ordered-ra-f"
     },
-    "client": {
-      "via": "client_person",
-      "model": "client"
+    "clients": {
+      "collection": "client",
+      "via": "client_person"
     }
   }
 }
