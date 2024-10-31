@@ -8,6 +8,13 @@ block content
     - var whichTypesToDisplay = ['a_list'];
 
     if self.data.articles
+        section.about_cg
+            .text_right
+                h3.about_cg_title.text_right= "Creative Gate"
+
+            .c_intro.text_left
+                | Your shortcut to the Estonian film industry.
+                | Explore the services, industry professionals and talents for your next film project!
         main.grid_sponsor_stories
             - var sortFunction = function(a, b) {
             -   if(a.publishFrom) {

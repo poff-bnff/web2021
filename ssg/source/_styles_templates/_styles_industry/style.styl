@@ -619,13 +619,18 @@ footer
 
 .footer_row_item_text
     font-family font_h
-    text-align left
+    text-align center
     font-size 1rem
     color white_96
     padding-left 2rem
     padding-right 2rem
     p
         color white_96
+    a
+        color white_96
+
+a .footer_row_item_text
+    color white_96
 
 .footer_h
     // display inline
@@ -636,6 +641,7 @@ footer
     font-size 1rem
     text-decoration none
     text-transform uppercase
+    text-align center
 
 .footer_p
     // display inline
@@ -972,7 +978,7 @@ footer
     display flex
     gap 12px 8px
     flex-flow row wrap
-    width: 100%;
+    width: 100%
 
 .grid_search.search_projects
     display: grid;
@@ -992,6 +998,33 @@ footer
 
     &.open
         display flex
+
+.justi_banner_box
+    // margin-top 3rem
+    margin-bottom 5rem
+    padding 0
+
+.container_frame_justi_banner
+    position relative
+    height 0
+    overflow hidden
+    padding-top 31.25%
+    background bg_dark_4
+
+.container_contents_justi_banner
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    object-fit cover
+
+.svg_icon_prev_next
+    height calc(1.5rem + 0.1vw)
+    width calc(1.5rem + 0.1vw)
+    margin-right .5rem
+    margin-top -.7rem
+    color rgba(200, 200, 200, 0.5)
 
 .grid_article
   display grid
@@ -5681,6 +5714,10 @@ a:hover > .login_headline
     // #filters select, .select2
     //     max-width: 240px
 
+    .justi_banner_box
+        padding-left 2rem
+        padding-right 2rem
+
     .grid_article
         display grid
         grid-template-columns minmax(200px, 1fr) minmax(72ch, 1fr) 1fr
@@ -6873,3 +6910,6 @@ strong
         color dark_2 !important
         text-align left
         margin-bottom 0
+
+.italic
+    font-style italic

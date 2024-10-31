@@ -171,6 +171,9 @@ block content
                                     if cassette.films.length === 1
                                         h3.film_title_locale.dark_1= cassette.films[0].title
 
+                                if cassette.logline
+                                    p.dark_1.font_weight_300.italic= cassette.logline
+
                             .card_film_info
                                 each p, locale in self.otherLocalePaths
                                     if cassette.films.length > 1

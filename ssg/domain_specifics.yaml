@@ -22,13 +22,13 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77, 76] # - 61
+    hoff.ee: [77] # - 61
     industry.poff.ee: [80]
     justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 74]
+    poff.ee: [73, 74, 79]
     shorts.poff.ee: [79] # - 30
     tartuff.ee: [78]
 
@@ -49,27 +49,27 @@ deepchatActiveInWeb:
     discoverycampus.poff.ee: false
     filmikool.poff.ee: false
     hoff.ee: false
-    industry.poff.ee: false
-    justfilm.ee: false
+    industry.poff.ee: true
+    justfilm.ee: true
     kinoff.poff.ee: false
     kumu.poff.ee: false
     oyafond.ee: false
-    poff.ee: false
+    poff.ee: true
     shorts.poff.ee: false
     tartuff.ee: false
 
-XML_festival_editions: [73, 74] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [73, 74, 79] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77, 76]
+    hoff.ee: [77]
     industry.poff.ee: [80]
     justfilm.ee: [74]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [75]
     oyafond.ee: [31]
-    poff.ee: [73, 74]
+    poff.ee: [73, 74, 79]
     shorts.poff.ee: [79]
     tartuff.ee: [78]
 
@@ -91,7 +91,7 @@ active_event_types:
     filmikool.poff.ee: [1]
     hoff.ee: []
     industry.poff.ee:
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     justfilm.ee: []
     kinoff.poff.ee: []
     kumu.poff.ee: []

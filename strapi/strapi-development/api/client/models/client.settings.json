@@ -25,16 +25,12 @@
       "model": "organisation",
       "via": "client"
     },
-    "person": {
-      "model": "person",
-      "via": "client"
-    },
-    "client_person": {
-      "model": "person",
-      "via": "client"
-    },
     "order": {
       "type": "integer"
+    },
+    "client_person": {
+      "via": "clients",
+      "model": "person"
     }
   }
 }

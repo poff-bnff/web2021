@@ -14,6 +14,9 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                 .carousel-item.active.container_contents_justi_banner
                     a(href=`https://poff.ee/noorte-ja-lastefilmide-festival-just-filmi-pass` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_just_pass.jpg`)
+                //- .carousel-item.active.container_contents_justi_banner
+                //-     a(href=`https://luxexpress.eu/ru/` target="_BLANK")
+                //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_rus.jpg`)
                 //- .carousel-item.container_contents_justi_banner
                 //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
                 //- .carousel-item.container_contents_justi_banner
@@ -30,6 +33,7 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     polyline(points='9 18 15 12 9 6')
                 span.sr-only Next
 
+        //- FILMIKOOL ------------------------------------------------------------------------------------------------ FILMIKOOL
         if process.env['DOMAIN'] === 'filmikool.poff.ee'
             ol.carousel-indicators
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
@@ -60,6 +64,43 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     polyline(points='9 18 15 12 9 6')
                 span.sr-only Next
 
+
+        //- INDUSTRY ------------------------------------------------------------------------------------------------ INDUSTRY
+        if process.env['DOMAIN'] === 'industry.poff.ee'
+            ol.carousel-indicators
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
+                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
+
+            .carousel-inner.container_frame_justi_banner
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://industry.poff.ee/industry-events-search` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ind_2024_banner_1_events.jpg`)
+                .carousel-item.active.container_contents_justi_banner
+                    a(href=`https://industry.poff.ee/about/accreditations-2024` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/ind_2024_banner_3_accreditations.jpg`)
+                //- .carousel-item.active.container_contents_justi_banner
+                //-     a(href=`https://luxexpress.eu/ru/` target="_BLANK")
+                //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_rus.jpg`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=`https://admin.poff.ee/uploads/just_2021_banner_etag_35be31369f.jpg`)
+                //- .carousel-item.container_contents_justi_banner
+                //-     img.d-block.container_contents_justi_banner(src=``)
+
+            a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
+                // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='15 18 9 12 15 6')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-bs-slide='next')
+                // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='9 18 15 12 9 6')
+                span.sr-only Next
+
+
+        //- PÖFF ------------------------------------------------------------------------------------------------ PÖFF
         if process.env['DOMAIN'] === 'poff.ee'
             ol.carousel-indicators
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
@@ -70,11 +111,11 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
             if lang_path === 'en/'
                 .carousel-inner.container_frame_justi_banner
                     .carousel-item.container_contents_justi_banner
-                        a(href=`https://alexela.ee/en` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_en.jpg`)
+                        a(href=`https://hotelbooking.tallink.com/search?lang=en&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_ENG.jpg`)
                     .carousel-item.active.container_contents_justi_banner
-                        a(href=`https://luxexpress.eu/en/` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_eng.jpg`)
+                        a(href=`https://mysnack.shop` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_ENG.jpg`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/en/first-feature-competition/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
@@ -88,11 +129,11 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
             if lang_path === 'ru/'
                 .carousel-inner.container_frame_justi_banner
                     .carousel-item.container_contents_justi_banner
-                        a(href=`https://alexela.ee/ru` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_en.jpg`)
+                        a(href=`https://hotelbooking.tallink.com/search?lang=ru&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_RUS.jpg`)
                     .carousel-item.active.container_contents_justi_banner
-                        a(href=`https://luxexpress.eu/ru/` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_rus.jpg`)
+                        a(href=`https://mysnack.ee` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_RUS.jpg`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/ru/konkursnaya-programma-debyutnyh-filmov/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
@@ -106,11 +147,11 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
             if (lang_path !== 'en/' && lang_path !== 'ru/')
                 .carousel-inner.container_frame_justi_banner
                     .carousel-item.container_contents_justi_banner
-                        a(href=`https://alexela.ee` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_alexela_et.jpg`)
+                        a(href=`https://hotelbooking.tallink.com/search?lang=et&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_EST.jpg`)
                     .carousel-item.active.container_contents_justi_banner
-                        a(href=`https://luxexpress.eu` target="_BLANK")
-                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_est.jpg`)
+                        a(href=`https://mysnack.ee` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_EST.jpg`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/debueuetfilmide-voistlusprogramm/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_et.jpg`)

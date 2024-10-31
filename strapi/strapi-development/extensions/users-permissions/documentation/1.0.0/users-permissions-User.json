@@ -1637,6 +1637,15 @@
                       "is_published": {
                         "type": "boolean"
                       },
+                      "logline_et": {
+                        "type": "string"
+                      },
+                      "logline_en": {
+                        "type": "string"
+                      },
+                      "logline_ru": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -2489,8 +2498,11 @@
               "orderedRaF": {
                 "type": "component"
               },
-              "client": {
-                "type": "string"
+              "clients": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -2654,6 +2666,15 @@
                     },
                     "is_published": {
                       "type": "boolean"
+                    },
+                    "logline_et": {
+                      "type": "string"
+                    },
+                    "logline_en": {
+                      "type": "string"
+                    },
+                    "logline_ru": {
+                      "type": "string"
                     },
                     "created_by": {
                       "type": "string"
@@ -3755,6 +3776,15 @@
                       "is_published": {
                         "type": "boolean"
                       },
+                      "logline_et": {
+                        "type": "string"
+                      },
+                      "logline_en": {
+                        "type": "string"
+                      },
+                      "logline_ru": {
+                        "type": "string"
+                      },
                       "created_by": {
                         "type": "string"
                       },
@@ -4191,6 +4221,15 @@
                     },
                     "is_published": {
                       "type": "boolean"
+                    },
+                    "logline_et": {
+                      "type": "string"
+                    },
+                    "logline_en": {
+                      "type": "string"
+                    },
+                    "logline_ru": {
+                      "type": "string"
                     },
                     "created_by": {
                       "type": "string"

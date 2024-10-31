@@ -1621,18 +1621,18 @@ p a
 //     line-height 5rem
 
 .section_headline
-  font-family font_h
-  font-size calc(1.618rem + 3vw)
-  line-height 1
-  font-weight 400
-  color bg_dark_4
-  letter-spacing 0.04em
-  text-align center
-  margin 0
-  padding 0
-  padding-left calc(1rem + 1vw)
-  padding-right calc(1rem + 1vw)
-  margin-top .6em
+    font-family font_h
+    font-size calc(1.618rem + 3vw)
+    line-height 1
+    font-weight 400
+    color bg_dark_4
+    // letter-spacing 0.04em
+    text-align center
+    margin 0
+    padding 0
+    padding-left calc(1rem + 1vw)
+    padding-right calc(1rem + 1vw)
+    margin-top .6em
 //   margin-bottom -.6em
 
 .section_headline_back
@@ -2395,8 +2395,18 @@ a.btn_popover
 .m_center_d_right, .m_center_d_left
     text-align center
 
-
-
+#supporter-popup
+    position fixed
+    top 124px
+    right 0
+    z-index 500
+    text-align center
+    background-color white
+    border 0
+    padding 0
+    margin 0
+    width 24%
+    height auto
 
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
@@ -3037,6 +3047,9 @@ a:hover
 strong
     font-weight 500
 
+.italic
+    font-style italic
+
 .padding_top_4
     padding-top 4rem
 
@@ -3105,3 +3118,20 @@ strong
         width auto
         margin auto
         padding auto
+
+.collapsible-icom
+    background-color #ffffff
+    width 36px
+    height 36px
+
+.title-text
+    font-family font_p
+    // color dark_4
+    color blue !important
+    font-size 1rem
+    line-height 1.618rem
+    font-weight 300
+    font-style italic
+
+.top-panel
+    backgoung-color #ffcccc

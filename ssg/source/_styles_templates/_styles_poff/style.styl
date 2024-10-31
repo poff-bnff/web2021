@@ -1046,9 +1046,23 @@ a .dark:hover
 // .viieka_item:nth-child(5)
 //     grid-column span 2
 
+.kuueka_item
+    width 100%
+    height 100%
+    background rgba(255,255,255,.96)
+    text-align left
+    // padding 2rem 2rem 2rem 2rem
+    padding 0
+    margin 0
+    // border .5px solid clr_grey_light
+
 .viieka_body
     margin 0
     padding 2rem 1.618rem 2rem 1.618rem
+
+.kuueka_body
+    margin 0
+    padding 1rem .5rem 1.5rem .5rem
 
 .viieka_headline
     color dark_4
@@ -1058,6 +1072,9 @@ a .dark:hover
     padding-top .5rem
     padding-bottom .5rem
     letter-spacing 0.01em
+
+
+
 
 .footer_logos
     display grid
@@ -1567,7 +1584,7 @@ row:nth-child(15) > .supporter_logos
 //     max-height 400px
 
 .justi_banner_box
-    margin-top 5rem
+    margin-top 0
     margin-bottom 5rem
     padding 0
 
@@ -3099,6 +3116,22 @@ a.btn_popover
     .viieka_item:nth-child(5)
         grid-column span 2
 
+    .kuuekas
+        width 100vw
+        display grid
+        grid-template-columns repeat(auto-fit, minmax(150px, 1fr))
+        grid-template-rows auto
+        padding 0
+        margin 0
+        grid-gap 1rem
+        padding-left 1rem
+        padding-right 1rem
+        justify-content center
+        align-content center
+        justify-items stretch
+        align-items stretch
+        background-color bg_color_1
+
     .calendar
         display grid
         grid-template-columns 1fr 1fr 1fr 1fr 1fr 1fr
@@ -3544,3 +3577,6 @@ strong
         width auto
         margin auto
         padding auto
+
+.italic
+    font-style italic

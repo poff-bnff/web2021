@@ -1,7 +1,7 @@
 if self.locale == "et"
-    - var chatPlaceholder = 'Küsi midagi filmide kohta'
+    - var chatPlaceholder = 'Ask me about events @ Tallinn'
 else
-    - var chatPlaceholder = 'Ask me anything about movies'
+    - var chatPlaceholder = 'Ask me about events @ Tallinn'
 
 deep-chat(
     id="chat-element"
@@ -15,36 +15,34 @@ deep-chat(
 
 script.
     if ('#{self.locale}' == 'et') {
-        var chatTitle = 'AI Hunt: kes ma olen ja mis teha oskan';
+        var chatTitle = 'I am Susi, your virtual assistant and event recommender. Talk to me and together we can find interesting events in our programme!';
         var chatText = `
-          <span>Näidis küsimused ja juhised</span>
-          <br>
-          <span>Näidis küsimus 1</span>
-          <br>
-          <span>Näidis küsimus 2</span>
-          <br>
-          <span>Näidis küsimus 3</span>
-          <br>
-          <a href="poff.ee">poff.ee</a>
-          <br>
-          <span>Head vestlust</span>
-          <br>
+          <p>Here are some questions you could ask from me:</p>
+
+          <p><i>I am a producer. What kind of events would you recommend me to attend?</i></p>
+
+          <p><i>What events in the programme are related to this year's focus county?</i></p>
+
+          <p><i>I would like to listen to someone inspiring - is there anything like that happening?</i></p>
+
+          <a href="https://industry.poff.ee/about/meet-susi-your-virtual-assistant/">Learn more</a>
+
+
           `;
     } else {
-        var chatTitle = 'The AI Hunt: who am i and how to talk to me';
+        var chatTitle = 'I am Susi, your virtual assistant and event recommender. Talk to me and together we can find interesting events in our programme!';
         var chatText = `
-          <span>Sample questions & instructions for talking to the AI Hunt</span>
-          <br>
-          <span>Sample question 1</span>
-          <br>
-          <span>Sample question 2</span>
-          <br>
-          <span>Sample question 3</span>
-          <br>
-          <a href="poff.ee">poff.ee</a>
-          <br>
-          <span>Have a good talk</span>
-          <br>
+          <p>Here are some questions you could ask from me:</p>
+
+          <p><i>I am a producer. What kind of events would you recommend me to attend?</i></p>
+
+          <p><i>What events in the programme are related to this year's focus county?</i></p>
+
+          <p><i>I would like to listen to someone inspiring - is there anything like that happening?</i></p>
+
+          <a href="https://industry.poff.ee/about/meet-susi-your-virtual-assistant/">Learn more</a>
+
+
           `;
     }
 
