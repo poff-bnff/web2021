@@ -1,5 +1,5 @@
 const EVENTIVAL_API_TOKEN = process.env.EVENTIVAL_API_TOKEN
-const EVENTIVAL_EDITION = process.env.EVENTIVAL_EDITION || '27th'
+const EVENTIVAL_EDITION = process.env.EVENTIVAL_EDITION || '28th'
 const EVENTIVAL_HOST = 'bo.eventival.com'
 const EVENTIVAL_PATH = `/poff/${EVENTIVAL_EDITION}/api/people`
 

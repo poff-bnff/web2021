@@ -129,12 +129,12 @@ main_service_categories:
 
 
 target_build_models:
-    # - cassette
-    # - film
+    - cassette
+    - film
     # - industry-project
     # - programme
-    # - screening
-    # - course-event
+    - screening
+    - course-event
     - archive
     - article-hero
     - bruno-article
