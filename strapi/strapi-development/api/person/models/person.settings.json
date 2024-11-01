@@ -290,8 +290,8 @@
       "component": "credentials.ordered-ra-f"
     },
     "clients": {
-      "collection": "client",
-      "via": "client_person"
+      "via": "client_person",
+      "collection": "client"
     }
   }
 }
