@@ -13,7 +13,7 @@
   "attributes": {
     "organisation": {
       "model": "organisation",
-      "via": "client"
+      "via": "clients"
     },
     "url": {
       "type": "string"
@@ -22,15 +22,14 @@
       "type": "richtext"
     },
     "client_organisation": {
-      "model": "organisation",
-      "via": "client"
+      "model": "organisation"
     },
     "order": {
       "type": "integer"
     },
     "client_person": {
-      "via": "clients",
-      "model": "person"
+      "model": "person",
+      "via": "clients"
     }
   }
 }
