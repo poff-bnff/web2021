@@ -3532,8 +3532,11 @@
                     "type": "string"
                   }
                 },
-                "client": {
-                  "type": "string"
+                "clients": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"

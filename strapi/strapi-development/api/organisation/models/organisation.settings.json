@@ -249,9 +249,9 @@
       "via": "organisations",
       "collection": "person"
     },
-    "client": {
-      "via": "client_organisation",
-      "model": "client"
+    "clients": {
+      "via": "organisation",
+      "collection": "client"
     }
   }
 }
