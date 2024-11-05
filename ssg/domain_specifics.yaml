@@ -55,7 +55,7 @@ deepchatActiveInWeb:
     kumu.poff.ee: false
     oyafond.ee: false
     poff.ee: true
-    shorts.poff.ee: false
+    shorts.poff.ee: true
     tartuff.ee: false
 
 XML_festival_editions: [73, 74, 79] # - 56 # - 58 # - 29 # - 30 # - 32
@@ -106,10 +106,10 @@ industry_eventival_badges_whitelist:
     - INDUSTRY PRO
     - INDUSTRY PRO ONLINE
     - INDUSTRY STUDENT / TALENT
-    - INDUSTRY STUDENT / TALENT ONLINE
     - JURY
-    - MANAGEMENT
+    # - MANAGEMENT
     - PRESS
+    - PARTNER
     - TEAM
     - VOLUNTEER
 
@@ -134,7 +134,7 @@ target_build_models:
     # - industry-project
     # - programme
     # - screening
-    # - course-event
+    - course-event
     - archive
     - article-hero
     - bruno-article
