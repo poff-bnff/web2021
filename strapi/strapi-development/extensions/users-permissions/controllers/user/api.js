@@ -515,13 +515,23 @@ module.exports = {
   },
 
   async buyProduct(ctx) {
+
     const requestBody = ctx.request.body
 
-    const id = requestBody.userId
     const catId = requestBody.categoryId
-    const user = await strapi.plugins['users-permissions'].services.user.fetch({ id })
+    var id = requestBody.userId
+    var user = await strapi.plugins['users-permissions'].services.user.fetch({ id })
 
-    const userEmail = user.email
+    if(user.mainUser){
+      id = user.mainUser.id
+      user = await strapi.plugins['users-permissions'].services.user.fetch({ id })
+    }
+
+    var userEmail = user.email
+    if(user.user_profile && user.user_profile.email){
+      userEmail = user.user_profile.email
+    }
+
     console.log(`Buy product ${catId} for user ${id}, ${userEmail}`)
 
     const postToMaksekeskus = async (postData) => {
