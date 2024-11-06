@@ -102,12 +102,13 @@ active_event_types:
 
 industry_eventival_badges_whitelist:
     - GUEST
+    - VIP
     - HUNDIPASS PLUS
     - INDUSTRY PRO
     - INDUSTRY PRO ONLINE
     - INDUSTRY STUDENT / TALENT
     - JURY
-    # - MANAGEMENT
+    - MANAGEMENT
     - PRESS
     - PARTNER
     - TEAM
