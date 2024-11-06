@@ -1,0 +1,3 @@
+path: cg_novosti
+data:
+    articles: /_fetchdir/articles.ru.yaml

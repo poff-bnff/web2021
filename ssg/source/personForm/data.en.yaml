@@ -1,6 +1,7 @@
 path: add_pro
 data:
     genders: /_domainStrapidata/Gender.yaml
+    person: /_domainStrapidata/Person.yaml
     countries: /_domainStrapidata/Country.yaml
     counties: /_domainStrapidata/County.yaml
     municipalities: /_domainStrapidata/Municipality.yaml
@@ -17,3 +18,4 @@ data:
     filmographies: /_domainStrapidata/Filmography.yaml
     tagfilmtypes: /_domainStrapidata/TagFilmType.yaml
     taglookingfors: /_domainStrapidata/TagLookingFor.yaml
+    projectStatus: /_domainStrapidata/ProjectStatus.yaml

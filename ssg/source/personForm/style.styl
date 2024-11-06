@@ -1,31 +1,561 @@
-.invalid
-    background-color transparent
-    display block
-    color red
-.valid
-    background-color #ccf1e7
-    display none
-.invalidColor
-    background-color #fff3e8
-.c_invalid
-    background-color #fff3e8
-.c_valid
-    background-color transparent
-h4
-    color #464646
-h1
-    color #495057
-#personProfileSent
-    color #495057
-label
-    color #495057
-#imgError
-    color red
-#removeProviderWarning
+.addProSection
+    width 952px
+.addProType
+    width 549px
+
+.titleSmall
+    font-size 16px
+    text-transform uppercase
+    font-weight 300
+    line-height 20px
+    padding-bottom 20px
+
+.titleLarge
+    font-size 32px
+    font-weight 500
+    line-height 40px
+    padding-bottom 20px
+
+.addProDescription
+    padding-bottom 20px
+
+.addProType
+    margin-top 200px
+    margin-left 6vw
+    margin-right 6vw
+    margin-bottom 10px
+    color black
+    strong
+        display block
+        margin-top 50px
+
+.addProSection.disabled
+    opacity 0.5
+    pointer-events none
+
+.addProSection.organisationprofile fieldset.organisation
+    display:block
+
+.addProSection.personprofile fieldset.person
+    display:block
+
+.addProSection
+    .e_talenta, .castupload
+        display none
+
+.addProSection.personprofile
+    .e_talenta, .castupload
+        display block
+
+#actor_fieldset.hide_actor
+    display:none
+
+.addProSection
+    margin-top 20px
+    margin-left 6vw
+    margin-right 6vw
+    margin-bottom 5rem
+    color black
+    font-family 'Fira Sans Condensed',sans-serif
+    font-weight 400
+    line-height 125%
+    font-style normal;
+    color #123123
+    opacity 1
+    pointer-events all
+
+    fieldset
+        display none
+
+    .fieldset_grid
+        grid-template-columns repeat(auto-fit, minmax(260px, 260px));
+        grid-column-gap 12px
+        max-width 1200px
+        margin-bottom 10px
+
+    .one_column
+        grid-template-columns repeat(auto-fit, minmax(952px, 952px));
+
+    .two_columns_even
+        grid-template-columns repeat(auto-fit, minmax(467px, 467px));
+        grid-column-gap 18px
+
+    .two_columns_uneven
+        grid-template-columns 265px 530px
+
+    .three_columns_uneven
+        grid-template-columns 260px 260px 154px
+
+    .two_columns_image
+        grid-template-columns 469px 260px
+        grid-column-gap 18px
+
+    .two_columns_profile_image
+        grid-template-columns 345px 260px
+        grid-column-gap 18px
+
+    select
+        width 260px
+        margin-bottom 12px
+
+    .number_field, .age_field
+        width 117px
+
+    .acting_age
+        max-width 260px
+
+    .rate_gap
+        display inline-block;
+        width 26px;
+        text-align center;
+
+    .sub_form .remove_fields, .hide_fieldset_fields
+        margin-left 18px
+
+    select, input
+        min-width auto
+
+    .form_group
+        padding-top unset
+        padding-bottom unset
+
+    legend
+        font-size 20px
+        line-height 125%
+
+    .buttons
+        clear both
+
+    fieldset
+        padding-top 58px
+        padding-bottom 0px
+        .fieldset_grid
+            display none
+        .fieldset_grid.buttons
+            display grid
+        .fieldset_grid.always_opened
+            display grid
+        .filmographies, .on_going_projects, .clients, .educations
+            display none
+
+    fieldset.opened
+        .fieldset_grid
+            display grid
+        .fieldset_grid.buttons
+            display none
+        .filmographies, .on_going_projects, .clients, .educations
+            display block
+
+    .gallery
+        margin-bottom 30px
+
+    .filmography .switch
+        padding-left 20px
+
+    .running_time_field
+        width 154px
+
+    .year_label
+        width 123px
+
+    .acting_age_from, .acting_age_to
+        width 117px
+
+    .year_of_completion, .acting_age_to
+        float: right
+
+    .year_field
+        width 115px
+
+    label
+        width 100%
+        color #123123
+
+    label.long_text
+        font-size: 15px
+
+
+    label span:first-of-type
+        display block
+
+    label span.feedback:first-of-type
+        display inline
+
+    label span.required
+        display inline
+
+    .form_group.textarea
+        position relative
+        display inline-block
+
+        .count
+            position absolute
+            bottom 20px
+            right 20px
+            span
+                display inline
+
+    .image_metadata
+        label
+            padding-bottom 10px
+
+    textarea
+        width 100%
+        height 150px
+        padding 12px 20px
+        box-sizing border-box
+        border 2px solid #ccc
+        border-radius 4px
+        font-size: 16px
+        resize none
+
+    .required
+        color: #12827E
+
+    .hide_fieldset_fields, .remove_fields, .remove_still, .toggle_summary
+        background none
+        border none
+        cursor pointer
+        font-size 14px
+        color #636769
+        min-width auto
+        width auto
+
+    .hide_fieldset_fields::after, .remove_fields::after, .remove_still::after
+          content: url('/assets/img/static/add_pro_remove.svg')
+          position relative
+          top 6px
+          margin-left 6px
+
+
+
+    .duplicate_fields, .duplicate_gallery_fields, .add_next_work
+        background  none
+        text-decoration: underline
+        border none
+        cursor pointer
+        font-size 14px
+        color #121313
+        text-decoration underline
+        text-decoration-color #16A19D
+
+    .duplicate_fields::before, .duplicate_gallery_fields::before, .add_next_work::before
+        content "＋"
+        text-decoration none
+        display inline-block
+        margin-right 6px
+        color #121313
+
+    #org_allow_contact
+        display none
+        all revert
+
+    .imgPreview
+        width 100%
+
+    .error
+        color red
+
+    .filmographies .summary
+        width 540px
+        margin 1px
+        margin-top 10px;
+
+    .filmographies span.is_featured_project
+        float right
+        color #12827e
+
+    .filmography
+        button.opened svg
+            transform rotate(180deg)
+
+    .filmography_form .still .form_group
+        display: none
+        .stillLabel
+            position absolute
+            left 8px
+
+    .list
+        padding-bottom 20px
+        padding-top 20px
+
+    .preview_image_filled .stillLabel
+        display none
+
+    .filmography_form.featured_filmography .still .form_group
+        display: block
+
+    .filmography_form.featured_filmography .still .form_group .remove_still
+        .field
+            margin-bottom 30px;
+            display inline-block;
+            align-self flex-end;
+
+    .filmography_form, .client_form
+        margin-bottom 20px
+        margin-top 20px
+
+    .button_send_feedback
+        background-color #12827E
+        color #fff
+        text-transform uppercase
+        height 41px
+        width 159px
+        marging auto
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 500
+        display: block
+        text-align: center;
+        text-decoration: none;
+        border-radius 4px
+        margin: auto;
+        display flex
+        float left
+        align-items center
+        justify-content center
+
+
+    input.login_input, button.login_input, button.show_form_fields, button.send_data, button.show_filmography_fields, button.show_client_fields
+        background-color #12827E
+        color #fff
+        text-transform uppercase
+        width 100%
+        height 41px
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 500
+        border none
+        span
+            margin-left: 8px
+
+
+    button.remove_collection
+        background-color #fff
+        color #636769
+        width 100%
+        height 41px
+        font-family 'Fira Sans Extra Condensed',sans-serif
+        font-weight 400
+        border: 1px solid #B0B3B5
+        span
+            margin-left: 8px
+
+    .orderedRaF
+        .drag_me
+            width 34px
+            cursor: grab;
+            display: inline-block;
+            height: 30px;
+        .nr
+            width 34px
+            display: inline-block;
+        select
+            width 192px
+
+    #audioreel_preview
+        max-width 400px
+
+    .switch
+        display inline
+        padding-right 18px
+
+        input[type="checkbox"]
+            display none;
+
+        input[type="checkbox"]:checked ~ .slider
+            background #12827E
+            border none
+
+        input[type="checkbox"]:checked ~ .slider .round
+            background #fff
+            left 18px;
+            transform rotate(360deg);
+
+        .slider,
+        .round
+            border-radius 9999px;
+
+        .slider
+            display inline-block
+            height 29px;
+            width 44px;
+            background #fff
+            position relative;
+            top 6px
+            margin-right 8px
+            border: 1px solid #B0B3B5
+
+        .round
+            height 20px;
+            width 20px;
+            background #12827E
+            position absolute;
+            top 4px;
+            left 4px;
+            cursor pointer;
+
+        .round::before
+            height 11px;
+            width 1px;
+            top 4.5px;
+            left 9.5px;
+
+        .round::after
+            height 1px;
+            width 11px;
+            top 9.5px;
+            left 4.5px;
+
+        .round::before,
+        .round::after
+            content '';
+            position absolute;
+            background #fff;
+            border-radius 2px;
+            transform rotate(45deg);
+
+        input[type="checkbox"]:checked ~ .slider .round::before
+            height 11px;
+            top calc(55% - 6.5px);
+            left calc(60% - 1px);
+            background #636769
+
+        input[type="checkbox"]:checked ~ .slider .round::after
+            width 6px;
+            top calc(95% - 7.5px);
+            left calc(22.5% - 1.5px);
+            background #636769
+
+    .popup-overlay
+        display none;
+        position fixed;
+        top 0;
+        left 0;
+        width 100%;
+        height 100%;
+        background rgba(0, 0, 0, 0.5);
+        z-index 2000
+
+        .popup
+            top 50%;
+            margin 0 auto
+            position relative
+            display block
+            border none
+
+            button
+                width 60px
+                margin: 0 auto;
+                display: block;
+            p
+                margin 30px
+
+    *
+        scroll-margin-top: 150px;
+
+
+/*tablet*/
+@media only screen and (min-width: 771px) and (max-width: 1200px)
+    .addProType
+        width 549px
+
+    .addProSection
+        width 770px
+
+        .fieldset_grid
+            grid-template-columns repeat(auto-fit, minmax(379px, 379px));
+            grid-column-gap 12px
+
+        .one_column
+            grid-template-columns repeat(auto-fit, minmax(770px, 770px));
+
+        .three_columns_uneven
+            grid-template-columns 260px 260px 154px
+
+        .two_columns_uneven
+            grid-template-columns 260px 426px
+
+        two_columns_even
+            grid-template-columns 379px 379px
+
+        .buttons
+            grid-template-columns 260px 260px
+
+
+        select
+            width 100%
+            margin-bottom 0px
+
+        .one_column select
+            width 260px
+
+        select.reduced
+            width 260px
+
+        .sub_form
+            padding-bottom: 20px
+
+        .orderedRaF select
+            width 192px
+
+
+/*mobile*/
+@media only screen and (max-width: 770px)
+    .addProType
+        margin-top 30px
+        width 343px
+
+    .addProSection
+        width 343px
+
+        .fieldset_grid, .two_columns_uneven, .one_column, .two_columns_image, .two_columns_profile_image, .two_columns_even, .three_columns_uneven
+            grid-template-columns repeat(auto-fit, minmax(343px, 343px));
+            grid-column-gap 12px
+            width 343px
+
+        .component_buttons
+            grid-template-columns 163px 163px
+            grid-column-gap 17px
+
+        select
+            width 343px
+            margin-bottom 0px
+
+        .orderedRaF select
+            width 265px
+
+        .sub_form
+            padding-bottom: 20px
+
+        .number_field
+            width 157px
+
+        .sub_form .remove_fields, .hide_fieldset_fields
+            margin-left 0px
+
+        .button_send_feedback
+            width 100%
+
+
+
+
+#loader
+    display: none
+
+#loader.loading
+    position fixed
     display flex
-    flex-direction column
-a.btn.btn-primary
-    background-color #ccf1e7
-    color #495057
-form.imput-form.input.login_input.form_control
-    background-color #ffffff
+    justify-content center
+    align-items center
+    width 100%
+    height 100%
+    top 0
+    left 0
+    opacity 0.7
+    background-color #fff
+    z-index 99
+
+#loader svg
+    z-index 100
+
+#alertSuccess, #alertError
+    z-index: 10000
