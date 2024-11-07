@@ -105,7 +105,7 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
             ol.carousel-indicators
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
-                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
                 //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
 
             if lang_path === 'en/'
@@ -116,6 +116,9 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     .carousel-item.active.container_contents_justi_banner
                         a(href=`https://mysnack.shop` target="_BLANK")
                             img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_ENG.jpg`)
+                .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://poff.ee/en/about/tickets-and-passes-2024-2/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/POFF28_metseen_kodukab2nner_ENG.png`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/en/first-feature-competition/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
@@ -128,12 +131,15 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
 
             if lang_path === 'ru/'
                 .carousel-inner.container_frame_justi_banner
-                    .carousel-item.container_contents_justi_banner
+                    .carousel-item.active.container_contents_justi_banner
                         a(href=`https://hotelbooking.tallink.com/search?lang=ru&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
                             img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_RUS.jpg`)
-                    .carousel-item.active.container_contents_justi_banner
+                    .carousel-item.container_contents_justi_banner
                         a(href=`https://mysnack.ee` target="_BLANK")
                             img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_RUS.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/artikl/bilety-i-abonementy-na-festival-2/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/POFF28_metseen_kodukab2nner_RUS.png`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/ru/konkursnaya-programma-debyutnyh-filmov/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_en.jpg`)
@@ -146,12 +152,15 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
 
             if (lang_path !== 'en/' && lang_path !== 'ru/')
                 .carousel-inner.container_frame_justi_banner
-                    .carousel-item.container_contents_justi_banner
+                    .carousel-item.active.container_contents_justi_banner
                         a(href=`https://hotelbooking.tallink.com/search?lang=et&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
                             img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_EST.jpg`)
-                    .carousel-item.active.container_contents_justi_banner
+                    .carousel-item.container_contents_justi_banner
                         a(href=`https://mysnack.ee` target="_BLANK")
                             img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_MySnack_EST.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://poff.ee/artikkel/piletid-ja-passid-2024-2/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/POFF28_metseen_kodukab2nner_EST.png`)
                     //- .carousel-item.active.container_contents_justi_banner
                     //-     a(href=`https://poff.ee/debueuetfilmide-voistlusprogramm/` target="_BLANK")
                     //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_ff_et.jpg`)
