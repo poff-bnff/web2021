@@ -247,9 +247,9 @@ for (const lang of languages) {
                         }
 
                         // 2022 adding parkimine (artikli slug parkimine)
-                        if (DOMAIN === 'poff.ee' && element[key] === 'a_list') {
+                        if (DOMAIN === 'poff.ee' && element[key] === 'poff-soovitab') {
                             let soovitabAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${soovitabAliasLangPrefix}poff-soovitab`]
+                            element.aliases = [`${soovitabAliasLangPrefix}a_list`]
                         }
                         // 2022 adding poff.ee/tv (artikli slug tv)
                         if (DOMAIN === 'poff.ee' && element[key] === 'tv') {
