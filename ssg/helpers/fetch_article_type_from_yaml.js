@@ -251,6 +251,13 @@ for (const lang of languages) {
                             let soovitabAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${soovitabAliasLangPrefix}a_list`]
                         }
+
+                        // 2024 adding poff-soovitab
+                        if (DOMAIN === 'poff.ee' && element[key] === 'a_list') {
+                            let alistAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${alistAliasLangPrefix}poff-soovitab`]
+                        }
+
                         // 2022 adding poff.ee/tv (artikli slug tv)
                         if (DOMAIN === 'poff.ee' && element[key] === 'tv') {
                             let tvAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
