@@ -246,7 +246,7 @@ for (const lang of languages) {
                             element.aliases = [`${parkimineAliasLangPrefix}parkimine`]
                         }
 
-                        // 2022 adding parkimine (artikli slug parkimine)
+                        // 2024 adding poff-soovitab
                         if (DOMAIN === 'poff.ee' && element[key] === 'poff-soovitab') {
                             let soovitabAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${soovitabAliasLangPrefix}a_list`]
