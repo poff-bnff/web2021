@@ -41,7 +41,7 @@ cassettesAndFilmsShowVotemo:
     kinoff.poff.ee: true
     kumu.poff.ee: false
     oyafond.ee: false
-    poff.ee: false
+    poff.ee: true
     shorts.poff.ee: false
     tartuff.ee: true
 
