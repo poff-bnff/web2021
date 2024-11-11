@@ -744,7 +744,9 @@ main.grid_film(id=self.id)
 
                                     .btn-group(role='group' aria-label='')
 
-                                        if screening.bookingUrl
+                                        if screening.bookingUrl && screening.screening_types && screening.screening_types.map(t => t.name).includes('Sold out')
+                                            console.log("Sold out screening with booking options")
+                                        else if screening.bookingUrl
                                             a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
 
                                         a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
@@ -756,6 +758,9 @@ main.grid_film(id=self.id)
                                         if screening.ticketingUrl
                                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
+
+                                            else if screening.screening_types && screening.screening_types.map(t => t.name).includes('Sold out')
+                                                a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningSoldOut
 
                                             else
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
