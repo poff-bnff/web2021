@@ -878,6 +878,9 @@ function generateAllDataYAML(allData, lang) {
         let film_titles = []
         for (const film of cassette.films) {
             film_titles.push(film.title)
+            film_titles.push(film.title_et)
+            film_titles.push(film.title_en)
+            film_titles.push(film.titleOriginal)
             for (const language of film.languages || []) {
                 const langKey = language.code
                 const language_name = language.name
