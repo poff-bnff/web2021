@@ -4,16 +4,19 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
             ol.carousel-indicators
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
                 li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
-                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
                 //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
 
             .carousel-inner.container_frame_justi_banner
-                .carousel-item.container_contents_justi_banner
+                .carousel-item.active.container_contents_justi_banner
                     a(href=`https://swedbank.ee` target="_BLANK")
                         img.d-block.container_contents_justi_banner(src=`/assets/img/static/just_2022_banner_swed.jpg`)
-                .carousel-item.active.container_contents_justi_banner
-                    a(href=`https://poff.ee/noorte-ja-lastefilmide-festival-just-filmi-pass` target="_BLANK")
-                        img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2023_just_pass.jpg`)
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://mysnack.ee` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/jf_banner_2024_mysnack.jpg`)
+                .carousel-item.container_contents_justi_banner
+                    a(href=`https://justfilm.ee/otsi_seanssi` target="_BLANK")
+                        img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/jf_banner_2024_kultuur.jpg`)
                 //- .carousel-item.active.container_contents_justi_banner
                 //-     a(href=`https://luxexpress.eu/ru/` target="_BLANK")
                 //-         img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_lux23_rus.jpg`)
