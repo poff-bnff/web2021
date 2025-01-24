@@ -175,7 +175,7 @@ block content
                             const videoUrl = '!{self.video_url}'
                             // Wait for page to load
                             document.addEventListener('DOMContentLoaded', function (e) {
-                                if (eventAccess === "Free (without accreditation)") {
+                                if (eventAccess === "Free (without accreditation)" || "Ticket") {
                                     console.log(`Free event, showing video on url ${self}`, courseEventId)
                                     if (videoUrl) {
                                         videoFrameE.src = `https://videolevels.com/embed/${videoUrl.split('/bc/')[1].split('/')[0]}`
