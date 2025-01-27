@@ -292,6 +292,11 @@
     "clients": {
       "via": "client_person",
       "collection": "client"
+    },
+    "user": {
+      "via": "person",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
