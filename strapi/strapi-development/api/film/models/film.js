@@ -62,6 +62,7 @@ module.exports = {
                 logline_et: result.logline_et,
                 logline_en: result.logline_en,
                 logline_ru: result.logline_ru,
+                chat_w_name: result.chat_w_name,
                 // synopsis: result.synopsis,
                 // media: result.media,
                 festival_editions: result.festival_editions ? result.festival_editions.map(a => a.id) : null,
@@ -142,6 +143,7 @@ module.exports = {
                     logline_et: result.logline_et,
                     logline_en: result.logline_en,
                     logline_ru: result.logline_ru,
+                    chat_w_name: result.chat_w_name,
                     tags: result.tags ? {
                         premiere_types: result?.tags?.premiere_types ? result.tags.premiere_types.map(a => a.id) : null,
                         genres: result?.tags?.genres ? result.tags.genres.map(a => a.id) : null,

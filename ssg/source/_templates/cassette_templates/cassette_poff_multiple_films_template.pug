@@ -221,8 +221,11 @@ main.grid_cassette
 
                         .btn-group(role='group' aria-label='')
 
-                            if screening.bookingUrl
-                                a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+                            if screening.bookingUrl && screening.screening_types && screening.screening_types.map(t => t.name).includes('Sold out')
+                                console.log("Sold out screening with booking options")
+                            else if screening.bookingUrl
+                                a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' href= screening.bookingUrl role='button' target='_blank')= self.label.button.screeningReservation
+
                             //- Favorite screening buttons
                             a.btn.btn_secondary.active.notmyscreening(id='s_'+screening.id+'_is_not_fav',
                                 style='display: none;', role='button'
@@ -234,7 +237,14 @@ main.grid_cassette
                                 //- PL page version
                                 //- a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' id=`date_${screening.dateTime}` href= `${screening.ticketingUrl}` role='button' target='_blank')= self.label.button.screeningBuyTicket
                                 //- WIDGET buy version
-                                a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
+                                if screening.screening_types && screening.screening_types.map(t => t.name).includes('Donation')
+                                    a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningDonation
+
+                                else if screening.screening_types && screening.screening_types.map(t => t.name).includes('Sold out')
+                                    a.btn.btn_secondary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button' )= self.label.button.screeningSoldOut
+
+                                else
+                                    a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
                             //- | test
                             if screening.screening_types && screening.screening_types.map(t => t.name).includes('Free')
@@ -752,7 +762,7 @@ else
                             openInDesktop: false,
                             language: 'poff'
                         }
-                    script(src='https://cdn.votemo.eu/dist/widget.js')
+                    script(src='https://widget.votemo.eu/dist/widget.js')
                     - showMessengerChat = false
 
             +tabname(self.title)

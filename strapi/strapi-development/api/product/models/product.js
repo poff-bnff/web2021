@@ -128,11 +128,14 @@ module.exports = {
 };
 
 async function checkAndCreateMoodleUser(sanitizedNewUserInfo) {
-  const userEmail = sanitizedNewUserInfo.email
+  var userEmail = sanitizedNewUserInfo.email
   const userFirstName = sanitizedNewUserInfo?.user_profile?.firstName
   const userLastName = sanitizedNewUserInfo?.user_profile?.lastName
   let userMoodleId = sanitizedNewUserInfo.moodle_id
 
+  if(sanitizedNewUserInfo.user_profile && sanitizedNewUserInfo.user_profile.email){
+    userEmail = sanitizedNewUserInfo.user_profile.email
+  }
   // Check if moodle_id already under Strapi user
 
   const getMoodleUserInfo = await getUser(userEmail)
@@ -187,4 +190,3 @@ async function newOwnerMoodleFunc(sanitizedResult, uniqueCourseMoodleIds) {
     console.log('User creation failed');
   }
 }
-

@@ -235,9 +235,9 @@
       "component": "credentials.ordered-ra-f"
     },
     "users": {
+      "via": "organisations",
       "plugin": "users-permissions",
-      "collection": "user",
-      "via": "organisations"
+      "collection": "user"
     },
     "industry_categories": {
       "collection": "industry-category"

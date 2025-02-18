@@ -22,11 +22,11 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77] # - 61
+    hoff.ee: [85] # - 61
     industry.poff.ee: [80]
     justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
-    kumu.poff.ee: [75]
+    kumu.poff.ee: [83]
     oyafond.ee: [31]
     poff.ee: [73, 74, 79]
     shorts.poff.ee: [79] # - 30
@@ -37,12 +37,12 @@ cassettesAndFilmsShowVotemo:
     filmikool.poff.ee: false
     hoff.ee: false
     industry.poff.ee: false
-    justfilm.ee: false
+    justfilm.ee: true
     kinoff.poff.ee: true
     kumu.poff.ee: false
     oyafond.ee: false
-    poff.ee: false
-    shorts.poff.ee: false
+    poff.ee: true
+    shorts.poff.ee: true
     tartuff.ee: true
 
 deepchatActiveInWeb:
@@ -63,11 +63,11 @@ XML_festival_editions: [73, 74, 79] # - 56 # - 58 # - 29 # - 30 # - 32
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [77]
+    hoff.ee: [85]
     industry.poff.ee: [80]
     justfilm.ee: [74]
     kinoff.poff.ee: [72]
-    kumu.poff.ee: [75]
+    kumu.poff.ee: [83]
     oyafond.ee: [31]
     poff.ee: [73, 74, 79]
     shorts.poff.ee: [79]
@@ -102,12 +102,13 @@ active_event_types:
 
 industry_eventival_badges_whitelist:
     - GUEST
+    - VIP
     - HUNDIPASS PLUS
     - INDUSTRY PRO
     - INDUSTRY PRO ONLINE
     - INDUSTRY STUDENT / TALENT
     - JURY
-    # - MANAGEMENT
+    - MANAGEMENT
     - PRESS
     - PARTNER
     - TEAM

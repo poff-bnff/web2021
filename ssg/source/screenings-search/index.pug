@@ -16,7 +16,7 @@ block content
         //- Mitme kuvamiseks:
         //- - const whichScreeningTypesToDisplay = ['first screening', 'free']
         //- - const whichScreeningTypesToDisplay = ['first screening', 'free', 'first wave', 'regular', 'first wave first screening']
-        - const whichScreeningTypesToDisplay = ['first screening', 'first wave', 'first wave first screening', 'regular']
+        - const whichScreeningTypesToDisplay = ['first screening', 'first wave', 'first wave first screening', 'regular', 'free']
         //- - const whichScreeningTypesToDisplay = ['first screening', 'regular', 'online kino', 'free']
         //- - const whichScreeningTypesToDisplay = ['first screening', 'online kino']
         //- - const whichScreeningTypesToDisplay = []
@@ -196,13 +196,20 @@ block content
 
                                 .card_film_title
                                     //- Kuvame kassetipealkirja
-                                    h3.film_title_locale.dark_1.padding_bottom_1= screening.codeAndTitle
+                                    h3.film_title_locale.dark_1.padding_bottom_1= screening.cassette.title
+                                    //- else
+                                    //-     h3.film_title_locale.dark_1.padding_bottom_1= screening.codeAndTitle
                                         //- p.btn.btn_secondary.issavedscreening(id=screening.id+'_is_savedscreening', onclick=`removeScreening(${screening.id});return false` style={display:'none'})= self.label.film.removeSavedScreening
 
                                 //- Programmid
                                 .card_film_info
 
                                     if cassette.films && cassette.films.length
+
+                                        .str_info_grid_3
+                                            .str_info_label.dark_semi= self.label.screening.name
+                                            .str_info_value.dark_1.thin_300= screening.codeAndTitle
+
                                         - var filmsProgrammes = []
                                         each film in cassette.films
                                             if film.tags && film.tags.programmes && film.tags.programmes.length

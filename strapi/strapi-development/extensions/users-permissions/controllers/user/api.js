@@ -869,12 +869,15 @@ module.exports = {
             console.log('Here send e-mail');
 
             // const passNames = { h08: 'Hundipass 8', h16: 'Hundipass 16', h36: 'Hundipass 36', h00: 'Toetaja Hundipass', jp1: 'Just Filmi Pass', hp1: 'HÕFFi pass', tp: 'Testpass' }
-
+            var userEmail = getUserInfo.email
+            if(getUserInfo.user_profile && getUserInfo.user_profile.email){
+              userEmail = getUserInfo.user_profile.email
+            }
             const sendEmail = await strapi.plugins['email'].services.email.send({
-              to: getUserInfo.email,
+              to: userEmail,
               template_name: `passiost`,
               template_vars: [
-                { name: 'email', content: getUserInfo.email },
+                { name: 'email', content: userEmail },
                 { name: 'eesnimi', content: getUserInfo.user_profile.firstName },
                 { name: 'perenimi', content: getUserInfo.user_profile.lastName },
                 { name: 'passituup', content: updateProductSuccess.product_category.codePrefix },
