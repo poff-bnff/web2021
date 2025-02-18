@@ -12,7 +12,7 @@ async function requester(method, func, requestParams) {
 
       Object.entries(requestParams).map(r => {
         const requestValue = r[1]
-        const keyAndValueString = requestValue.length ? `${r[0]}=${r[1]}` : null
+        const keyAndValueString = requestValue.length ? `${r[0]}=${encodeURIComponent(r[1])}` : null
         if (keyAndValueString) { requestUrl = `${requestUrl}&${keyAndValueString}` }
       })
 
