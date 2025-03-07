@@ -9,10 +9,11 @@ block content
             section.shop(shopSection=true)
 
                 if shop.title
-                    h1.section_headline= shop.title
+                    //- h1.section_headline= shop.title
 
                 if shop.prodCatList && shop.prodCatList
                     each prodCatList in shop.prodCatList
+                        h4.section_headline= prodCatList.namePrivate
 
                         section.shop_items_list
 
