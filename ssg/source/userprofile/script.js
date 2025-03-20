@@ -91,7 +91,7 @@ const onProfilePicChange = () => {
     }
 
     const maxFileSize = 5 * 1024 * 1024 // MB
-    const [minWidth, maxWidth, minHeight, maxHeight] = [200, 5000, 200, 5000]
+    const [minWidth, maxWidth, minHeight, maxHeight] = [600, 3000, 600, 3000]
 
     const file = formImageInput.files[0]
     console.log(`onProfilePicChange file name: ${file.name}`)
