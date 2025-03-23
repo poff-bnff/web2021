@@ -1,5 +1,7 @@
 if self.locale == "et"
     - var chatPlaceholder = 'Küsi midagi filmide kohta'
+else if self.locale == "ru"
+    - var chatPlaceholder = 'Спросите что-нибудь про фильмы'
 else
     - var chatPlaceholder = 'Ask me anything about films'
 
@@ -9,39 +11,55 @@ deep-chat(
     requestBodyLimits='{"maxMessages": 10}'
     chatStyle='{"width": "410px", "height": "600px"}'
     style="position: fixed; right: 1%; bottom: 60px; max-height: calc(100vh - 180px); background-color: #fafafa;"
-    messageStyles='{"default": {"shared": {"bubble": {"maxWidth": "80%"}}}}'
+    messageStyles='{"default": {"shared": {"bubb le": {"maxWidth": "80%"}}}}'
     textInput=`{"placeholder": {"text": "${chatPlaceholder}"}}`
     )
 
 script.
     if ('#{self.locale}' == 'et') {
-        var chatTitle = 'AI Hunt: kes ma olen ja mis teha oskan';
+        var chatTitle = 'Mina olen Susi, sinu AI  abiline ja filmisoovitaja. Räägi minuga ja koos leiame festivali kavast sulle huvi pakkuvad filmid.';
         var chatText = `
-          <span>Näidis küsimused ja juhised</span>
-          <br>
-          <span>Näidis küsimus 1</span>
-          <br>
-          <span>Näidis küsimus 2</span>
-          <br>
-          <span>Näidis küsimus 3</span>
-          <br>
-          <a href="poff.ee">poff.ee</a>
-          <br>
-          <span>Head vestlust</span>
-          <br>
+          <p>Näiteks võid küsida minult sellises stiilis küsimusi:</p>
+
+          <p><i>Minu lemmikrežissöör on … Kas minu maitsele on mõni film HÕFFi kavast?</i></p>
+
+          <p><i>Milliseid filme kirjandusest / poliitikast / spordist HÕFFi kavast soovitad?</i></p>
+
+          <p><i>Milliseid filme sa soovitad, kui mulle meeldivad rahulikult kulgevad ajaloofilmid?</i></p>
+
+          <a href="https://poff.ee/artikkel/poffi-filmisoovitaja-susi-ai"><p>Loe lisa</p></a>
+
+          <p>Head avastamist!</p>
+
+          `;
+    } else if ('#{self.locale}' == 'ru') {
+        var chatTitle = 'Я Susi, ваш ИИ помощник. Поговорите со мной, и я подберу для вас фильмы из программы HÕFF.';
+        var chatText = `
+          <p>Например можно задать вопросы в таком стиле:</p>
+
+          <p><i>Мой любимый режиссёр это... Есть ли в программе HÕFF какой-нибудь фильм в моём вкусе?</i></p>
+
+          <p><i>Какие фильмы о литературе/ политике/ спорте посоветуешь из программы HÕFF?</i></p>
+
+          <p><i>Мне нравятся спокойные исторические фильмы, что порекомендуешь мне из программы HÕFF?</i></p>
+
+          <a href="https://poff.ee/artikkel/poffi-filmisoovitaja-susi-ai"><p>Подробности здесь</p></a>
+
+          <p>Приятных открытий!</p>
+
           `;
     } else {
-        var chatTitle = 'The AI Hunt: who am i and how to talk to me';
+        var chatTitle = 'I am Susi, your AI assistant. Talk to me and together we will find the films you are interested in.';
         var chatText = `
-          <span>Sample questions & instructions for talking to the AI Hunt</span>
+          <span>For example you can ask questions like:</span>
           <br>
-          <span>Sample question 1</span>
+          <span>My favourite director is …. What do you recommend for my taste?</span>
           <br>
-          <span>Sample question 2</span>
+          <span>Do you have films about literature / politics / sports?, whhat you recommend from festival programme?</span>
           <br>
-          <span>Sample question 3</span>
+          <span>What films do you recommend, if i like slow historical films?</span>
           <br>
-          <a href="poff.ee">poff.ee</a>
+          <a href="https://poff.ee/en/about/poffs-film-recommender-susi-ai">Read more about me</a>
           <br>
           <span>Have a good talk</span>
           <br>
