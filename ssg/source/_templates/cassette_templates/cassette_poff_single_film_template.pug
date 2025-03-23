@@ -313,6 +313,11 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.coProducer
                                 .str_info_value= rolePersonsByRole.coproducer.join(', ')
 
+                        if rolePersonsByRole.executiveproducer && rolePersonsByRole.executiveproducer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.executiveproducer
+                                .str_info_value= rolePersonsByRole.executiveproducer.join(', ')
+
                         if rolePersonsByRole.creativeproducer && rolePersonsByRole.creativeproducer[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.creativeproducer
@@ -333,28 +338,30 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.cinematographer
                                 .str_info_value= rolePersonsByRole.cinematographer.join(', ')
 
-                        if rolePersonsByRole.productiondesigner && rolePersonsByRole.productiondesigner[0]
+                        if rolePersonsByRole.productiondesign && rolePersonsByRole.productiondesign[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.productiondesigner
-                                .str_info_value= rolePersonsByRole.productiondesigner.join(', ')
+                                .str_info_label= self.label.film.productiondesign
+                                .str_info_value= rolePersonsByRole.productiondesign.join(', ')
+
                         if rolePersonsByRole.artdirector && rolePersonsByRole.artdirector[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.artdirector
                                 .str_info_value= rolePersonsByRole.artdirector.join(', ')
 
-                        if rolePersonsByRole.editor && rolePersonsByRole.editor[0]
+                        if rolePersonsByRole.editing && rolePersonsByRole.editing[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.editor
-                                .str_info_value= rolePersonsByRole.editor.join(', ')
+                                .str_info_label= self.label.film.editing
+                                .str_info_value= rolePersonsByRole.editing.join(', ')
 
-                        if rolePersonsByRole.writer && rolePersonsByRole.writer[0]
-                            .str_info_grid_3
-                                .str_info_label= self.label.film.writer
-                                .str_info_value= rolePersonsByRole.writer.join(', ')
                         if rolePersonsByRole.cowriter && rolePersonsByRole.cowriter[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.cowriter
                                 .str_info_value= rolePersonsByRole.cowriter.join(', ')
+
+                        if rolePersonsByRole.authoroftheadaptedwork && rolePersonsByRole.authoroftheadaptedwork[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.authoroftheadaptedwork
+                                .str_info_value= rolePersonsByRole.authoroftheadaptedwork.join(', ')
 
                         if rolePersonsByRole.composer && rolePersonsByRole.composer[0]
                             .str_info_grid_3
@@ -380,10 +387,35 @@ main.grid_film(id=self.id)
                             .str_info_grid_3
                                 .str_info_label= self.label.film.instructor
                                 .str_info_value= rolePersonsByRole.instructor.join(', ')
-                        if rolePersonsByRole.choreographer && rolePersonsByRole.choreographer[0]
+
+                        if rolePersonsByRole.choreography && rolePersonsByRole.choreography[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.choreographer
-                                .str_info_value= rolePersonsByRole.choreographer.join(', ')
+                                .str_info_label= self.label.film.choreography
+                                .str_info_value= rolePersonsByRole.choreography.join(', ')
+
+
+
+                        if rolePersonsByRole.makeup && rolePersonsByRole.makeup[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.makeup
+                                .str_info_value= rolePersonsByRole.makeup.join(', ')
+
+                        if rolePersonsByRole.costumedesign && rolePersonsByRole.costumedesign[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.costumedesign
+                                .str_info_value= rolePersonsByRole.costumedesign.join(', ')
+
+                        if rolePersonsByRole.showrunner && rolePersonsByRole.showrunner[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.showrunner
+                                .str_info_value= rolePersonsByRole.showrunner.join(', ')
+
+                        if rolePersonsByRole.representative && rolePersonsByRole.representative[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.representative
+                                .str_info_value= rolePersonsByRole.representative.join(', ')
+
+
 
                         if rolePersonsByRole.publicfunds && rolePersonsByRole.publicfunds[0]
                             .str_info_grid_3
@@ -404,20 +436,30 @@ main.grid_film(id=self.id)
                     if film && film.credentials && film.credentials.roleCompaniesByRole
                         - var roleCompaniesByRole = film.credentials.roleCompaniesByRole
 
-                        if roleCompaniesByRole.productioncompany && roleCompaniesByRole.productioncompany[0]
+                        if roleCompaniesByRole.production && roleCompaniesByRole.production[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.production
-                                .str_info_value= roleCompaniesByRole.productioncompany.join(', ')
+                                .str_info_value= roleCompaniesByRole.production.join(', ')
 
-                        if roleCompaniesByRole.coproductioncompany && roleCompaniesByRole.coproductioncompany[0]
+                        if roleCompaniesByRole.coproduction && roleCompaniesByRole.coproduction[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.coproductioncompany
-                                .str_info_value= roleCompaniesByRole.coproductioncompany.join(', ')
+                                .str_info_label= self.label.film.coproduction
+                                .str_info_value= roleCompaniesByRole.coproduction.join(', ')
 
-                        if roleCompaniesByRole.distributor && roleCompaniesByRole.distributor[0]
+                        if roleCompaniesByRole.postproduction && roleCompaniesByRole.postproduction[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.distributor
-                                .str_info_value= roleCompaniesByRole.distributor.join(', ')
+                                .str_info_label= self.label.film.postproduction
+                                .str_info_value= roleCompaniesByRole.postproduction.join(', ')
+
+                        if roleCompaniesByRole.worldsales && roleCompaniesByRole.worldsales[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.worldsales
+                                .str_info_value= roleCompaniesByRole.worldsales.join(', ')
+
+                        if roleCompaniesByRole.distribution && roleCompaniesByRole.distribution[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.distribution
+                                .str_info_value= roleCompaniesByRole.distribution.join(', ')
 
                         if roleCompaniesByRole.music && roleCompaniesByRole.music[0]
                             .str_info_grid_3
@@ -429,20 +471,70 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.sound
                                 .str_info_value= roleCompaniesByRole.sound.join(', ')
 
-                        if roleCompaniesByRole.editor && roleCompaniesByRole.editor[0]
+                        if roleCompaniesByRole.editing && roleCompaniesByRole.editing[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.editor
-                                .str_info_value= roleCompaniesByRole.editor.join(', ')
+                                .str_info_label= self.label.film.editing
+                                .str_info_value= roleCompaniesByRole.editing.join(', ')
 
                         if roleCompaniesByRole.animation && roleCompaniesByRole.animation[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.animation
                                 .str_info_value= roleCompaniesByRole.animation.join(', ')
 
-                        if roleCompaniesByRole.worldsales && roleCompaniesByRole.worldsales[0]
+                        if roleCompaniesByRole.broadcaster && roleCompaniesByRole.broadcaster[0]
                             .str_info_grid_3
-                                .str_info_label= self.label.film.worldsales
-                                .str_info_value= roleCompaniesByRole.worldsales.join(', ')
+                                .str_info_label= self.label.film.broadcaster
+                                .str_info_value= roleCompaniesByRole.broadcaster.join(', ')
+
+                        if roleCompaniesByRole.attachedpartner && roleCompaniesByRole.attachedpartner[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.attachedpartner
+                                .str_info_value= roleCompaniesByRole.attachedpartner.join(', ')
+
+                        if roleCompaniesByRole.representative && roleCompaniesByRole.representative[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.representative
+                                .str_info_value= roleCompaniesByRole.representative.join(', ')
+
+                        //- if roleCompaniesByRole.productioncompany && roleCompaniesByRole.productioncompany[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.production
+                        //-         .str_info_value= roleCompaniesByRole.productioncompany.join(', ')
+
+                        //- if roleCompaniesByRole.coproductioncompany && roleCompaniesByRole.coproductioncompany[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.coproductioncompany
+                        //-         .str_info_value= roleCompaniesByRole.coproductioncompany.join(', ')
+
+                        //- if roleCompaniesByRole.distributor && roleCompaniesByRole.distributor[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.distributor
+                        //-         .str_info_value= roleCompaniesByRole.distributor.join(', ')
+
+                        //- if roleCompaniesByRole.music && roleCompaniesByRole.music[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.music
+                        //-         .str_info_value= roleCompaniesByRole.music.join(', ')
+
+                        //- if roleCompaniesByRole.sound && roleCompaniesByRole.sound[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.sound
+                        //-         .str_info_value= roleCompaniesByRole.sound.join(', ')
+
+                        //- if roleCompaniesByRole.editor && roleCompaniesByRole.editor[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.editor
+                        //-         .str_info_value= roleCompaniesByRole.editor.join(', ')
+
+                        //- if roleCompaniesByRole.animation && roleCompaniesByRole.animation[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.animation
+                        //-         .str_info_value= roleCompaniesByRole.animation.join(', ')
+
+                        //- if roleCompaniesByRole.worldsales && roleCompaniesByRole.worldsales[0]
+                        //-     .str_info_grid_3
+                        //-         .str_info_label= self.label.film.worldsales
+                        //-         .str_info_value= roleCompaniesByRole.worldsales.join(', ')
 
             section.f_runtime_box
                 - var languagesNames = function(item) {
