@@ -105,6 +105,65 @@ section#carouselSponsorIndicators.justi_banner_box.carousel.slide(data-bs-ride='
                     polyline(points='9 18 15 12 9 6')
                 span.sr-only Next
 
+        //- HÕFF hoff.ee ----------------------------------------------------------------
+
+        if process.env['DOMAIN'] === 'hoff.ee'
+            ol.carousel-indicators
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=0 class='active')
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=1)
+                li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=2)
+                //- li(data-bs-target='#carouselSponsorIndicators' data-bs-slide-to=3)
+
+            if lang_path === 'en/'
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://www.framare.ee/?lang=en` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/HOFFxFraMare_2025_banner.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://hoff.ee/en/search_screening/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/hoff_banner_2025_kava.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://hoff.ee/en/search_film/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/hoff_banner_2025_4.jpg`)
+
+
+            if lang_path === 'ru/'
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://hotelbooking.tallink.com/search?lang=ru&hotels=6&checkin=12&nights=1&adult=1&baby=0&child=0&teenager=0&code=POFFPEOPLE` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`/assets/img/static/banner_2024_THG_RUS.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://www.filmfestival-goeast.de/en` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/Banner_GoEast_2025_1920x600px.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://poff.ee/ru/artikl/bilety-i-abonementy-na-festival-2/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/POFF28_metseen_kodukab2nner_RUS.png`)
+
+
+            if (lang_path !== 'en/' && lang_path !== 'ru/')
+                .carousel-inner.container_frame_justi_banner
+                    .carousel-item.active.container_contents_justi_banner
+                        a(href=`https://www.framare.ee` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/HOFFxFraMare_2025_banner.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://hoff.ee/otsi_seanssi/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/hoff_banner_2025_kava.jpg`)
+                    .carousel-item.container_contents_justi_banner
+                        a(href=`https://hoff.ee/otsi_filmi/` target="_BLANK")
+                            img.d-block.container_contents_justi_banner(src=`https://assets.poff.ee/img/hoff_banner_2025_4.jpg`)
+
+
+            a.carousel-control-prev(href='#carouselSponsorIndicators' role='button' data-bs-slide='prev')
+                // <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='15 18 9 12 15 6')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselSponsorIndicators' role='button' data-bs-slide='next')
+                // <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                    polyline(points='9 18 15 12 9 6')
+                span.sr-only Next
+
 
         //- PÖFF ------------------------------------------------------------------------------------------------ PÖFF
         if process.env['DOMAIN'] === 'poff.ee'
