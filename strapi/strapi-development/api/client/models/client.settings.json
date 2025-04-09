@@ -12,8 +12,8 @@
   },
   "attributes": {
     "organisation": {
-      "model": "organisation",
-      "via": "clients"
+      "via": "clients",
+      "model": "organisation"
     },
     "url": {
       "type": "string"
@@ -28,8 +28,8 @@
       "type": "integer"
     },
     "client_person": {
-      "model": "person",
-      "via": "clients"
+      "via": "clients",
+      "model": "person"
     }
   }
 }

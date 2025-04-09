@@ -2017,6 +2017,9 @@
                 "terms_p": {
                   "type": "string"
                 },
+                "org_name": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
