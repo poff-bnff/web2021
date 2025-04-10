@@ -25,7 +25,8 @@
       "model": "domain"
     },
     "namePrivate": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "groupType": {
       "type": "enumeration",

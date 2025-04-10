@@ -76,6 +76,14 @@
     },
     "plus_code": {
       "type": "string"
+    },
+    "person": {
+      "via": "addr_coll",
+      "model": "person"
+    },
+    "organisation": {
+      "via": "addr_coll",
+      "model": "organisation"
     }
   }
 }

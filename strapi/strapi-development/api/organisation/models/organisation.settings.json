@@ -106,7 +106,8 @@
       "collection": "role-at-film"
     },
     "addr_coll": {
-      "model": "address"
+      "model": "address",
+      "via": "organisation"
     },
     "showreel": {
       "type": "string"
@@ -235,9 +236,9 @@
       "component": "credentials.ordered-ra-f"
     },
     "users": {
-      "via": "organisations",
       "plugin": "users-permissions",
-      "collection": "user"
+      "collection": "user",
+      "via": "organisations"
     },
     "industry_categories": {
       "collection": "industry-category"
@@ -250,8 +251,8 @@
       "collection": "person"
     },
     "clients": {
-      "via": "organisation",
-      "collection": "client"
+      "collection": "client",
+      "via": "organisation"
     }
   }
 }
