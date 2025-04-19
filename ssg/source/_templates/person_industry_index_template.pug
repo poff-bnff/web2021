@@ -9,6 +9,8 @@ block content
             section.c_img_box
                 if self.picture
                     //- - var personPic = assetsDir + self.picture
+                    - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                else if
                     - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
                 else
                     - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
