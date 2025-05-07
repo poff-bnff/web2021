@@ -145,6 +145,15 @@ document.querySelector('[name="country"]').addEventListener('input', event => {
     const show_dropdown_fields = event.target.options[event.target.selectedIndex].text == 'Estonia'
     document.querySelectorAll('[name="county"], [name="municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'block' : 'none');
     document.querySelectorAll('[name="add_county"], [name="add_municipality"]').forEach(el => el.style.display = show_dropdown_fields ? 'none' : 'block');
+    const countyElement = document.querySelector('[name="county"]')
+    if (show_dropdown_fields) {
+        countyElement.setAttribute('data-validate', 'at-least-one-option-selected')
+        countyElement.closest('label').querySelector('.required').style.display = 'inline'
+    } else {
+        countyElement.removeAttribute('data-validate')
+        countyElement.closest('label').querySelector('.error').innerHTML = ''
+        countyElement.closest('label').querySelector('.required').style.display = 'none'
+    }
 })
 
 function orderedRaFChanged(el) {
@@ -308,21 +317,36 @@ async function sendData(data) {
 }
 
 function isFormValid(formElement, fields) {
-    let firstInvalidElement = false
-    for (let field_name in fields) {
-        element = formElement.querySelector(`[name="${field_name}"]`)
-        if (element && element.hasAttribute('data-validate')) {
-            if (!validateField(element) && firstInvalidElement === false) {
-                firstInvalidElement = element
-            }
-        }
-    }
+
+    const firstInvalidElement = findFirstInvalidField(formElement, fields)
 
     if (firstInvalidElement) {
         firstInvalidElement.scrollIntoView(true)
     }
 
     return firstInvalidElement === false
+}
+
+function findFirstInvalidField(formElement, fields) {
+    let firstInvalidElement = false
+    for (const field_name in fields) {
+        let element = formElement.querySelector(`[name="${field_name}"]`)
+        if (element && element.hasAttribute('data-validate')) {
+            if (!validateField(element) && firstInvalidElement === false) {
+                firstInvalidElement = element
+            }
+        } else if (fields[field_name].type == 'collection' && fields[field_name].validate_sub_fields) {
+            element = formElement.querySelector(`.${field_name}`)
+            if (element) {
+                const response = findFirstInvalidField(element, fields[field_name].fields)
+                if (firstInvalidElement === false && response ) {
+                    firstInvalidElement = response
+                }
+            }
+        }
+    }
+
+    return firstInvalidElement
 }
 
 function collectFormData(formElement, fields) {
@@ -1300,6 +1324,7 @@ const getOrganisationFields = () =>  {
         addr_coll: {
             type: 'collection',
             field: 'addr_coll',
+            validate_sub_fields: true,
             fields: {
                 id: {
                     field: 'id'
