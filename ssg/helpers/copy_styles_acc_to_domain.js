@@ -30,31 +30,48 @@ if (process.env['DOMAIN'] === 'justfilm.ee') {
 }
 
 
-    fs.readdir(stylesFolder, function (err, files) {
-        //handling error
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
-        }
-
-        //listing all files using forEach
-        files.forEach(function (file) {
-            fs.unlinkSync(`${stylesFolder}${file}`)
-            console.log(`Deleted: ${stylesFolder}${file}`);
-        });
-    });
-
-    fs.readdir(stylesFolderSource, function (err, files) {
-        //handling error
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
-        }
-        //listing all files using forEach
-        files.forEach(function (file) {
-
-            fs.copyFile(`${stylesFolderSource}${file}`, `${stylesFolder}${file}`, err=>{
-                if(!err){
-                    console.log(`Copied: ${file} from ${stylesFolderSource}`);
+    const deleteFiles = (folder) => {
+        return new Promise((resolve, reject) => {
+            fs.readdir(folder, function (err, files) {
+                if (err) {
+                    return reject('Unable to scan directory: ' + err);
                 }
+
+                files.forEach(function (file) {
+                    fs.unlinkSync(`${folder}${file}`);
+                    console.log(`Deleted: ${folder}${file}`);
+                });
+
+                resolve();
             });
         });
-    });
+    };
+
+    const copyFiles = (sourceFolder, targetFolder) => {
+        return new Promise((resolve, reject) => {
+            fs.readdir(sourceFolder, function (err, files) {
+                if (err) {
+                    return reject('Unable to scan directory: ' + err);
+                }
+
+                files.forEach(function (file) {
+                    fs.copyFile(`${sourceFolder}${file}`, `${targetFolder}${file}`, err => {
+                        if (!err) {
+                            console.log(`Copied: ${file} from ${sourceFolder}`);
+                        }
+                    });
+                });
+
+                resolve();
+            });
+        });
+    };
+
+    (async () => {
+        try {
+            await deleteFiles(stylesFolder);
+            await copyFiles(stylesFolderSource, stylesFolder);
+        } catch (error) {
+            console.error(error);
+        }
+    })();
