@@ -354,22 +354,26 @@ block content
                         .error
 
             //- Contact address
-            fieldset.addr_coll.organisation.person
+            fieldset.opened.addr_coll.organisation.person
                 legend= self.label.addPro.contactAddressTitle
                 .div
                 .fieldset_grid
                     .form_group
                         label= self.label.addPro.contactAddressCountry
-                            select(name='country')
+                            span.required= ' ' + self.label.addPro.required
+                            select(name='country' data-validate="at-least-one-option-selected")
                                 option(class='invalid' value="" selected="")
                                 each country in self.data.countries.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=country.id)= country[`name_${self.locale}`]
+                            .error
                     .form_group
                         label= self.label.addPro.contactAddressCounty
+                            span.required(style= 'display: none;')= ' ' + self.label.addPro.required
                             select(name='county' style= 'display: none;')
                                 option(class='invalid' value="" selected="")
                                 each county in self.data.counties.sort(function(a, b){ if(a[`name_${self.locale}`] && b[`name_${self.locale}`]) { return ('' + a[`name_${self.locale}`]).localeCompare(b[`name_${self.locale}`], self.locale); } else { return 0; } })
                                     option(value=county.id)= county[`name_${self.locale}`]
+                            .error
                             input(type="text" name="add_county")
 
                     .form_group
@@ -396,11 +400,6 @@ block content
                         label= self.label.addPro.contactAddressPostalCode
                             input( type='text' name='postal_code')
                             input( type='hidden', name="id")
-                .fieldset_grid
-                    .form_group
-                        button.hide_fieldset_fields(type='button')= self.label.addPro.buttonRemove
-                .fieldset_grid.buttons
-                    button.show_form_fields(type='button')= self.label.addPro.contactAddressButtonAdd
 
             //- Education
             fieldset.person
