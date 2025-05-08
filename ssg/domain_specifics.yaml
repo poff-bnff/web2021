@@ -62,15 +62,15 @@ userprofileRequiredFields:
     poff.ee:
         profileImg: true
         firstName: true
-        lastName: false
+        lastName: true
         gender: true
         birthdate: true
         phoneNr: true
     industry.poff.ee:
-        profileImg: false
+        profileImg: true
         firstName: true
         lastName: true
-        gender: false
+        gender: true
         birthdate: true
         phoneNr: true
 
