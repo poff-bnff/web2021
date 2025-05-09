@@ -44,6 +44,8 @@ for (const lang of allLanguages) {
 
     globalData.deepchatActiveInWeb = DOMAIN_SPECIFICS.deepchatActiveInWeb[DOMAIN]
 
+    globalData.userprofileRequiredFields = DOMAIN_SPECIFICS.userprofileRequiredFields[DOMAIN] ?? DOMAIN_SPECIFICS.userprofileRequiredFields['poff.ee']
+
     let allDataYAML = yaml.dump(globalData, { 'noRefs': true, 'indent': '4' })
     fs.writeFileSync(globalDataPath, allDataYAML, 'utf8')
 }

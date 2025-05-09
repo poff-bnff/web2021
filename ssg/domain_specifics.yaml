@@ -58,6 +58,22 @@ deepchatActiveInWeb:
     shorts.poff.ee: true
     tartuff.ee: false
 
+userprofileRequiredFields:
+    poff.ee:
+        profileImg: true
+        firstName: true
+        lastName: true
+        gender: true
+        birthdate: true
+        phoneNr: true
+    industry.poff.ee:
+        profileImg: true
+        firstName: true
+        lastName: true
+        gender: true
+        birthdate: true
+        phoneNr: true
+
 XML_festival_editions: [84, 85] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:

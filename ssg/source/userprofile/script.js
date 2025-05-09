@@ -52,16 +52,61 @@ const submitAll = async (buttonElement) => {
     buttonElement.classList.add('submitting')
     const form = findParentByClassName(buttonElement, 'form')
     const fields = form.querySelectorAll('input, select')
-    const formData = new FormData()
+
+    const requiredFields = []
+
     fields.forEach(field => {
-        formData.append(field.name, field.value)
+        if(userprofileRequiredFields[field.id] === true && field.value === '') {
+            requiredFields.push(field)
+        }
     })
+
+    if (requiredFields.length > 0) {
+        fieldsRequired(requiredFields)
+        buttonElement.classList.remove('submitting')
+        showNotifierPopup(translateNotifier('userprofileRequiredFieldsMissing'))
+        return
+    }
+
+    const formData = new FormData()
+    var changed = false
+    fields.forEach(field => {
+        if(field.getAttribute('changed') === 'true') {
+            changed = true
+            if(field.id === 'profileImg') {
+                formData.append('picture', field.files[0])
+            } else {
+                formData.append(field.name, field.value)
+            }
+        }
+    })
+
+    if (!changed) {
+        buttonElement.classList.remove('submitting')
+        showNotifierPopup(translateNotifier('userprofileNothingChanged'))
+        return
+    }
+
     const submitted = await submitForm(formData)
     fields.forEach(field => {
         field.style.backgroundColor = 'white'
         field.setAttribute('changed', false)
     })
+    buttonElement.classList.remove('submitting')
     console.log(submitted)
+
+    if(localStorage.getItem('returnFromProfileUrl')){
+        showNotifierPopup(translateNotifier('userprofileSaveAndRedirect'))
+        setTimeout(backToFromYouCame, 2000)
+    } else {
+        showNotifierPopup(translateNotifier('userprofileSaved'))
+    }
+}
+
+const fieldsRequired = (fields) => {
+    fields.forEach(field => {
+        field.style.backgroundColor = 'red'
+    })
 }
 
 const backToFromYouCame = () => {
@@ -84,12 +129,6 @@ const errToUser = (message) => {
 }
 
 const onProfilePicChange = () => {
-    const submitImage = async () => {
-        const formData = new FormData()
-        formData.append('picture', formImageInput.files[0])
-        return await submitForm(formData)
-    }
-
     const maxFileSize = 5 * 1024 * 1024 // MB
     const [minWidth, maxWidth, minHeight, maxHeight] = [600, 3000, 600, 3000]
 
@@ -99,13 +138,16 @@ const onProfilePicChange = () => {
     console.log(`onProfilePicChange file size: ${(file.size / 1024 / 1024).toFixed(2)} MB`)
     if (!file.type.startsWith('image/')) {
       errToUser('onProfilePicChange file is not an image.')
+      formImageInput.value = null;
+      imgPreview.src = '';
       return false
     }
     if (file.size / 1024 / 1024 > maxFileSize) {
       errToUser(`onProfilePicChange file size is ${(file.size / 1024 / 1024).toFixed(2)} MB. Which is more than allowed ${maxFileSize / 1024 / 1024} MB.`)
+      formImageInput.value = null;
+      imgPreview.src = '';
       return false
     }
-    console.log('onProfilePicChange file is all right.')
 
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -114,15 +156,17 @@ const onProfilePicChange = () => {
             const [width, height] = [img.width, img.height]
             if (width < minWidth || width > maxWidth || height < minHeight || height > maxHeight) {
                 errToUser(`onProfilePicChange image size is not correct. width: ${width}, height: ${height}. Allowed range is ${minWidth}x${minHeight} - ${maxWidth}x${maxHeight}.`)
+                formImageInput.value = null;
+                imgPreview.src = '';
                 return false
             }
             imgPreview.src = e.target.result // this sets the image preview
             // change image preview style to "not active"
             imgPreview.style.opacity = 0.5
             // TODO: here is a place to quietly send the image to the server
-            if (await submitImage()) {
-                imgPreview.style.opacity = 1
-            }
+            formImageInput.setAttribute('changed', true)
+            formImageInput.style.backgroundColor = 'yellow'
+            console.log('onProfilePicChange file is all right.')
         }
         img.src = e.target.result // this is needed to trigger img.onload
     }
@@ -134,8 +178,9 @@ async function loadUserInfo() {
     const webUser = await reloadUser()
     const aliasList = document.getElementById('aliasList')
 
-    if (isUserProfileComplete()) {
+    if (isUserProfileComplete() && getProfilePicture()) {
         document.getElementById('profileFilledMessage').style.display = 'block'
+        document.getElementById('aliasesView').style.display = 'block'
     } else {
         document.getElementById('profileUnFilledMessage').style.display = 'block'
     }
@@ -166,6 +211,14 @@ async function loadUserInfo() {
         document.getElementById('birthdate').value = user_profile.birthdate || ''
         if (pictureUrl = getProfilePicture()) {
             document.getElementById('imgPreview').src = pictureUrl
+            const response = await fetch(pictureUrl);
+            const urlParts = pictureUrl.split('/');
+            fileName = urlParts[urlParts.length - 1]; // Extract file name from URL
+            const blob = await response.blob();
+            const file = new File([blob], fileName, { type: blob.type });
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            formImageInput.files = dataTransfer.files;
         }
         validateFormFields(user_profile.email)
     }
