@@ -1,29 +1,58 @@
-div#emailChangeSuccess(class='alertMsg alertSuccess')= self.label.notifier.emailChangeSuccess
-div#emailChangeSame(class='alertMsg alertNotice')= self.label.notifier.emailChangeSame
-div#emailChangeTaken(class='alertMsg alertError')= self.label.notifier.emailChangeTaken
+#notifierStrings(style= 'display: none;')
+    span.emailChangeSuccess= self.label.notifier.emailChangeSuccess
+    span.emailChangeSame= self.label.notifier.emailChangeSame
+    span.emailChangeTaken= self.label.notifier.emailChangeTaken
+    span.addAliasSuccess= self.label.notifier.addAliasSuccess
+    span.addAliasExists= self.label.notifier.addAliasExists
+    span.addAliasFailed= self.label.notifier.addAliasFailed
+    span.userprofileRequiredFieldsMissing= self.label.notifier.userprofileRequiredFieldsMissing
+    span.userprofileNothingChanged= self.label.notifier.userprofileNothingChanged
+    span.userprofileSaved= self.label.notifier.userprofileSaved
+    span.userprofileSaveAndRedirect= self.label.notifier.userprofileSaveAndRedirect
 
-div#addAliasSuccess(class='alertMsg alertSuccess')= self.label.notifier.addAliasSuccess
-div#addAliasExists(class='alertMsg alertNotice')= self.label.notifier.addAliasExists
-div#addAliasFailed(class='alertMsg alertError')= self.label.notifier.addAliasFailed
+.popup-overlay#notifierInfoPopup
+    dialog.popup
+        p= self.label.notifier.addAliasSuccess
+        button.send_data(onclick='hideNotifierPopup()')= "OK"
 
 style.
-    .alertMsg {
-        position: fixed;
-        top: 15px;
-        right: 50px;
-        padding: 5px 10px;
-        z-index: 999;
-        text-align: center;
-        border-radius: 12px;
-        font-size: 18px;
+    .popup-overlay {
         display: none;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
     }
-    .alertSuccess {
-        background-color: #008000;
+
+    .popup-overlay .popup {
+        top: 50%;
+        margin: 0 auto;
+        position: relative;
+        display: block;
+        border: none;
     }
-    .alertNotice {
-        background-color: #ffa500;
+
+    .popup-overlay .popup button {
+        width: 60px;
+        margin: 0 auto;
+        display: block;
+        background-color: #12827e;
+        color: #fff;
+        text-transform: uppercase;
+        height: 41px;
+        font-family: 'Fira Sans Extra Condensed',sans-serif;
+        font-weight: 500;
+        border: none;
     }
-    .alertError {
-        background-color: #ff2c2c;
+
+    .popup-overlay .popup p {
+        margin: 30px;
+        font-size: 16px;
+        line-height: 1.618;
+        font-family: 'Source Sans Pro',sans-serif;
+        color: #0e1417;
+        font-weight: 300;
     }
