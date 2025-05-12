@@ -3,13 +3,19 @@ include /_templates/mixins.pug
 
 block content
     if self.data.profiles && process.env['DOMAIN'] === 'industry.poff.ee'
-        section.about_cg
-            .text_right
-                h3.about_cg_title.text_right= "Creative Gate"
 
-            .c_intro.text_left
-                | Your shortcut to the Estonian film industry.
-                | Explore the services, industry professionals and talents for your next film project!
+        .carousel-inner.container_frame_cg_banner
+                .carousel-item.active.container_contents_cg_banner
+                    //- a(href=`https://issuu.com/blacknightsfilmfestival/docs/baltic_film_magazine_2_2025` target="_BLANK")
+                    img.d-block.container_contents_cg_banner(src=`https://assets.poff.ee/img/CG_banner_1920x300.jpg`)
+
+        //- section.about_cg
+        //-     .text_right
+        //-         h3.about_cg_title.text_right= "Creative Gate"
+
+        //-     .c_intro.text_left
+        //-         | Your shortcut to the Estonian film industry.
+        //-         | Explore the services, industry professionals and talents for your next film project!
         section.profile_type_select
             if self.data.filters.maincategories && self.data.filters.maincategories.services && self.data.filters.maincategories.actors
                 label.profile_type_selection
@@ -32,15 +38,25 @@ block content
                             img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.actors.serviceName}`)
                         span.profile_type_name= self.data.filters.maincategories.actors.serviceName
 
-                label#active_festival_profile_type_selection.profile_type_selection(style='display: none;')
-                    input(class="profile-type-input" type="radio", name="profileType", value='activefestival' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
-                    .type_selection_box
-                        if self.data.filters.maincategories.activefestival.svgCode
-                            span.profile_type_svg !{self.data.filters.maincategories.activefestival.svgCode}
-                        else if self.data.filters.maincategories.activefestival.svgMedia
-                            - var serviceIcon = `${assetsDir}${self.data.filters.maincategories.activefestival.svgMedia.hash}${self.data.filters.maincategories.activefestival.svgMedia.ext}`
-                            img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.activefestival.serviceName}`)
-                        span.profile_type_name= self.data.filters.maincategories.activefestival.serviceName
+                label.profile_type_selection
+
+                    a.type_selection_box(href= "https://industry.poff.ee/add_pro" title="My Pro Profile")
+                        span.profile_type_svg
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-user">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        span.profile_type_name.feather-user= self.label.industry.myProProfile
+
+                //- label#active_festival_profile_type_selection.profile_type_selection(style='display: none;')
+                //-     input(class="profile-type-input" type="radio", name="profileType", value='activefestival' style='appearance: radio; -webkit-appearance: radio; -moz-appearance: radio; -ms-appearance: radio; -o-appearance: radio; display: none;')
+                //-     .type_selection_box
+                //-         if self.data.filters.maincategories.activefestival.svgCode
+                //-             span.profile_type_svg !{self.data.filters.maincategories.activefestival.svgCode}
+                //-         else if self.data.filters.maincategories.activefestival.svgMedia
+                //-             - var serviceIcon = `${assetsDir}${self.data.filters.maincategories.activefestival.svgMedia.hash}${self.data.filters.maincategories.activefestival.svgMedia.ext}`
+                //-             img.profile_type_svg(src=serviceIcon loading="lazy" alt=`${self.data.filters.maincategories.activefestival.serviceName}`)
+                //-         span.profile_type_name= self.data.filters.maincategories.activefestival.serviceName
 
         section.grid_search.search_profiles
             h3#loading.filter_loader(style='display: grid;')= self.label.filters.loading
