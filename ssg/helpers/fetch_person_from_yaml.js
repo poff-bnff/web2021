@@ -64,6 +64,14 @@ if (DOMAIN !== 'industry.poff.ee') {
         'role_at_films': {
             model_name: 'RoleAtFilm'
         },
+        'orderedRaF': {
+                        model_name: 'OrderedRaF',
+                        expand: {
+                            'role_at_film': {
+                                model_name: 'RoleAtFilm'
+                            }
+                        }
+        },
         'organisations': {
             model_name: 'Organisation'
         },
@@ -209,6 +217,30 @@ function startPersonProcessing(languages, activePersons) {
                 console.error({ error, person })
                 throw error
             }
+            // OrderedRaF (TEST) iga inimese protsessimise tsüklisse
+            if (person.orderedRaF) {
+                let orderedRaF = person.orderedRaF.filter(r => {
+                    if (r && r.role_at_film) {
+                        return true
+                    } else {
+                        console.log(`ERROR! Person ${person.id} has empty orderedRaFs!!!`);
+                        return false
+                    }
+                })
+                    .sort(function (a, b) { return (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0); })
+                // onefilm.orderedCountries = orderedCountries
+                if (orderedRaF.length) {
+                    console.log(`LOG: orderedRaF on per person loodud, length on olemas`)
+                    orderedRaFDisplay = orderedRaF
+                    console.log(`LOG: orderedRaFDisplay on per person loodud`)
+                    // Joonas / Leiko: siin oleks abi vaja
+                    // console.log(`LOG: orderedRaFDisplay on per person loodud: ${role_at_film.id}`
+                        // .map(role_at_film => role_at_film.role_at_film.name)
+                        // .join(', ')
+                }
+
+            }
+
 
             let saveDir = path.join(fetchDataDir, personSlug)
             fs.mkdirSync(saveDir, { recursive: true })
