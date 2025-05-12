@@ -462,7 +462,7 @@ EyeColour: &EyeColour
 
 OrderedRaF: &OrderedRaF
     order: (Number)
-    country: *RoleAtFilm
+    role_at_film: *RoleAtFilm
 
 Filmography: &Filmography
     _path: /filmographies
