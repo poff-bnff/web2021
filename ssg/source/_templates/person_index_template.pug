@@ -19,8 +19,8 @@ block content
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img(src=personPic alt=self.firstNameLastName)
                 //- img.person_img_square(src=personPic alt=self.firstNameLastName)
-                if self.picture && self.picture.caption
-                    p.caption.caption_offset= self.picture.caption
+                //- if self.picture && self.picture.caption
+                //-     p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
 
@@ -735,10 +735,10 @@ block content
                             each val, index in self.images
                                 if index == 0
                                     img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                    p.caption= val.caption
+                                    //- p.caption= val.caption
                                 else
                                     img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
-                                    p.caption= val.caption
+                                    //- p.caption= val.caption
 
                                             //- .photographer= self.picture.caption
                         //- else
