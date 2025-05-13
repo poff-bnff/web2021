@@ -169,13 +169,21 @@ function getListProfileData(profile) {
         else if (profile.logoWhite) {
             listProfileData.logoWhite = profile.logoWhite
         }
+        else if (profile.profile_img) {
+            listProfileData.picture = profile.profile_img
+        }
         else{
             listProfileData.picture = profile.picture
         }
     }
 
     else if (profile.profileType === "Actor" || profile.profileType === "Person") {
-        listProfileData.picture = profile.picture
+        if (profile.profile_img) {
+            listProfileData.picture = profile.profile_img
+        }
+        else{
+            listProfileData.picture = profile.picture
+        }
     }
 
     return listProfileData

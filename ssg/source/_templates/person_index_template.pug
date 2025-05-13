@@ -8,7 +8,10 @@ block content
     if self.firstNameLastName
         section.grid_creative
             section.c_img_box
-                if self.picture
+                if self.profile_img
+                    //- - var personPic = assetsDir + self.picture
+                    - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                else if self.picture
                     //- - var personPic = assetsDir + self.picture
                     - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
                 else
