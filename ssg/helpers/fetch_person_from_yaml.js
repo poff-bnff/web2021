@@ -14,7 +14,7 @@ const sourceDir = path.join(rootDir, 'source');
 const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_allStrapidata', 'Person.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
-const PERSONLIMIT = 0//parseInt(process.env['PERSONLIMIT']) || 0
+const PERSONLIMIT = parseInt(process.env['PERSONLIMIT']) || 0
 
 const fetchDataDir = path.join(fetchDir, 'persons')
 
