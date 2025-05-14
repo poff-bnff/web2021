@@ -19,9 +19,37 @@ block content
                 //- img.person_img(src=personPic alt=self.firstNameLastName)
                 img.person_img(src=personPic alt=self.firstNameLastName)
                 //- img.person_img_square(src=personPic alt=self.firstNameLastName)
+
+                //- CAPTION Java Script
                 //- if self.picture && self.picture.caption
-                //-     - var imgcaption = JSON.parse(self.picture.caption)
-                //-     p.caption.caption_offset= self.picture.caption
+
+                //-     - if (self.picture.caption.includes('img_year'))
+                //-         - var captionType = "JSON caption"
+                //-         - var captionJSON = self.picture.caption
+                //-         - var captionObject = JSON.parse(captionJSON)
+                //-         - if (captionObject.caption.length || captionObject.photographer.length || captionObject.img_year.length)
+                //-             - console.log(`JSON objektis on väärtused`)
+                //-             - if (captionObject.photographer.length || captionObject.img_year.length)
+                //-                 - var captionPhotoArray = [captionObject.photographer, captionObject.img_year]
+                //-                 - let captionPhotoArray1 = captionPhotoArray.flat()
+                //-                 - console.log(`PHOTOINFO ARRAY: ${captionPhotoArray1}`)
+                //-                 - var captionPhotoInfo = captionPhotoArray.join(' ')
+                //-                 - captionPhotoInfo = "(".concat(captionPhotoInfo, ")")
+                //-                 - console.log(`PHOTOINFO: ${captionPhotoInfo}`)
+                //-         - var caption = `${captionObject.caption} (${captionObject.photographer} ${captionObject.img_year})`
+                //-         - console.log(`${self.firstNameLastName} caption väärtus: ${caption}`)
+                //-         //- - console.log((typeof self.picture.caption))
+                //-         //- p.caption.caption_offset= caption
+                //-     - else
+                //-         - var captionType= "regular caption"
+                //-         - var caption = self.picture.caption
+                //-     - console.log(`caption type: ${captionType}`)
+                //-     p.caption.caption_offset= caption
+
+                        //- && typeof(self.picture.caption) === 'object'
+
+                    //- else
+                    //-     p.caption.caption_offset= self.picture.caption
 
             section.c_title_box
 
