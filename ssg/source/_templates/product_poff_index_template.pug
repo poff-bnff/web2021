@@ -32,27 +32,28 @@ block content
                         p.dark_1
                             +format(description_md)
 
-        section.f_cred_box
-            if self.priceAtPeriod && self.priceAtPeriod[0] && self.priceAtPeriod[0].price
-                h4(id='productPrice')
-                    //- +euro(self.priceAtPeriod[0].price)
-            div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
-                button#buybutton.btn.btn_primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.button.buyProduct
-                button#directToLoginButton.btn.btn_primary(onclick='requireLogin()')= self.label.button.buyProductButLoginFirst
-                button#directToFillProfile.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButProfileFirst
-                button#directToaddPicture.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButPictureFirst
-                button#directToaddEmail.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButEmailFirst
-                div#paymentLinks
-                br
-                div
-                    ul#feedback
-                br
-                div#termsContainer
-                    input(id='termsCheckbox' type='checkbox' name='terms' value='agree')
-                    label.agree_terms_label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
-                br
-                button#paybutton.btn.btn_primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
-                br
+        if self.product_types && self.product_types[0] && self.product_types[0].id !== 7
+            section.f_cred_box
+                if self.priceAtPeriod && self.priceAtPeriod[0] && self.priceAtPeriod[0].price
+                    h4(id='productPrice')
+                        //- +euro(self.priceAtPeriod[0].price)
+                div.payment(id='productPagePriceBox' productId=self.id style='display: none;')
+                    button#buybutton.btn.btn_primary(onclick = `GetPaymentLinks(${self.category})` style='display: none;')= self.label.button.buyProduct
+                    button#directToLoginButton.btn.btn_primary(onclick='requireLogin()')= self.label.button.buyProductButLoginFirst
+                    button#directToFillProfile.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButProfileFirst
+                    button#directToaddPicture.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButPictureFirst
+                    button#directToaddEmail.btn.btn_primary(onclick='redirectToProfile()')= self.label.button.buyProductButEmailFirst
+                    div#paymentLinks
+                    br
+                    div
+                        ul#feedback
+                    br
+                    div#termsContainer
+                        input(id='termsCheckbox' type='checkbox' name='terms' value='agree')
+                        label.agree_terms_label(for='termsCheckbox') !{self.label.userprofile.acceptConditions}
+                    br
+                    button#paybutton.btn.btn_primary(onclick=`BuyProduct("${self.codePrefix}")`)= self.label.userprofile.payment
+                    br
     script.
         window.onload = () => buyerCheck()
 
