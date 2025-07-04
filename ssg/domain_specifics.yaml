@@ -30,7 +30,7 @@ cassettes_festival_editions:
     oyafond.ee: [31]
     poff.ee: [73, 74, 79, 81, 84, 85]
     shorts.poff.ee: [79] # - 79 on õige, e 2024, 67 on 2023 testiks
-    tartuff.ee: [78]
+    tartuff.ee: [87]
 
 cassettesAndFilmsShowVotemo:
     discoverycampus.poff.ee: false
@@ -87,7 +87,7 @@ programmes_festival_editions:
     oyafond.ee: [31]
     poff.ee: [73, 74, 79, 81, 84, 85]
     shorts.poff.ee: [79]
-    tartuff.ee: [78]
+    tartuff.ee: [87]
 
 active_editions:
     discoverycampus.poff.ee: [50]
