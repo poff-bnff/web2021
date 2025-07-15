@@ -147,6 +147,7 @@ module.exports = {
         },
 
         async beforeDelete(params) {
+            delete params.user
         },
 
         async afterDelete(result, params) {
