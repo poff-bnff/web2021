@@ -561,13 +561,27 @@ function getCardLocation(address) {
 
 function isActor(person) {
     let isActor = false
-    if(person.role_at_films){
-        for (const [key, role] of Object.entries(person.role_at_films)) {
+
+    // Check role_at_films (current behavior)
+    if(person.role_at_films && Array.isArray(person.role_at_films)){
+        for (const role of person.role_at_films) {
             if(ACTOR_ROLES.includes(role.id)){
                 isActor = true
+                console.log(`Person ${person.id} marked as actor due to role_at_films role ID ${role.id}`);
             }
         }
     }
+
+    // Also check orderedRaF for actor roles
+    if(person.orderedRaF && Array.isArray(person.orderedRaF)){
+        for (const orderedRole of person.orderedRaF) {
+            if(orderedRole.role_at_film && ACTOR_ROLES.includes(orderedRole.role_at_film.id)){
+                isActor = true
+                console.log(`Person ${person.id} marked as actor due to orderedRaF role ID ${orderedRole.role_at_film.id}`);
+            }
+        }
+    }
+
     return isActor
 }
 
