@@ -114,6 +114,7 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
 const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
+
 const {
     slugify,
     call_update,
@@ -122,6 +123,12 @@ const {
     modify_stapi_data,
     call_delete
 } = require(helper_path)
+
+
+const {
+  getPublishingdAllowedUserRoles,
+  getPublishingProperties
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
 /**
 const domains =
@@ -151,6 +158,20 @@ module.exports = {
         },
 
         async afterDelete(result, params) {
+        },
+
+        async afterFind(results, params, populate) {
+            const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
+            for (const result of results) {
+                const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+                Object.assign(result, publishingProperties);
+            }
+        },
+
+        async afterFindOne(result, params) {
+            const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
+            const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+            Object.assign(result, publishingProperties);
         }
     }
 };

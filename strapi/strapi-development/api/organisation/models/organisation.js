@@ -4,7 +4,8 @@
  * to customize this model
  */
 
-const path = require('path')
+const path = require('path');
+const { user } = require('pg/lib/defaults');
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
 const {
@@ -15,6 +16,11 @@ const {
   modify_stapi_data,
   call_delete
 } = require(helper_path)
+
+const {
+  getPublishingdAllowedUserRoles,
+  getPublishingProperties
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
 /**
 const domains =
@@ -50,7 +56,7 @@ module.exports = {
       }
       await call_build(result, domains, model_name)
     },
-async beforeDelete(params) {
+    async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
@@ -70,6 +76,18 @@ async beforeDelete(params) {
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)
+    },
+    async afterFind(results, params, populate) {
+      const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
+      for (const result of results) {
+        const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+        Object.assign(result, publishingAllowedProperties);
+      }
+    },
+    async afterFindOne(result, params) {
+      const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
+      const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+      Object.assign(result, publishingAllowedProperties);
     }
   }
 };
