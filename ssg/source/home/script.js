@@ -14,3 +14,20 @@ window.onscroll = function () {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        header.classList.add('hide-on-scroll');
+      } else {
+        header.classList.remove('hide-on-scroll');
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  });
+

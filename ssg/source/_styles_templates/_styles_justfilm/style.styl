@@ -180,6 +180,13 @@ header
     z-index 900
     // display flex
     // justify-content flex-start
+    transition transform 0.4s ease-in-out
+    will-change transform
+    
+
+header.hide-on-scroll 
+  transform translateY(-20%)
+
 
 .main_menu
     position absolute
@@ -284,19 +291,32 @@ header
     text-transform none
 
 .org_menu
-    display none
-    position absolute
+    display flex
     // display inline
     bottom 0
     height 1rem
-    // right 0
-    // padding-right 1rem
-    // text-align center
+    width 100%
     // padding-top .1rem
+    white-space nowrap
+
+
+ #header-popup
+    //width 100%
+    //height: auto
+    position fixed
+    left 30%
+    top 0
+    //background #706e6eff
+    //padding 3 rem 0
+    transform translateX(-50%)
+    z-index 1000
+    
+    
+
 
 .org_item
     // display inline
-    font-size 14px
+    font-size 16px
     font-family font_h
     color dark_4
     padding-left 1rem
@@ -304,7 +324,17 @@ header
     // padding-right 1rem
     a
         text-decoration none
-        font-size 14px
+        font-size 16px
+
+.org_item a[href="https://justfilm.ee/"]
+    color #254391ff
+
+
+.org_item a[href="https://justfilm.ee/"]:hover
+    color #0d6efd
+
+
+
 
 // .ul_kaks:first-child
 //     padding-top 5rem
@@ -2616,7 +2646,7 @@ a.btn_popover
     header
         display grid
         grid-template-columns auto 1fr
-        height 100px
+        height 120px
 
     .main_menu_toggle_label
             display none

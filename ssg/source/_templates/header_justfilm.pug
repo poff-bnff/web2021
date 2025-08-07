@@ -8,7 +8,7 @@ header
 
     nav.main_menu
         ul.ul_yx
-            li
+            div#header-popup
                 nav.org_menu
                     span.org_item
                         a(href='https://poff.ee')
@@ -16,6 +16,9 @@ header
                     span.org_item
                         a(href='https://industry.poff.ee')
                             | !{`Industry@Tallinn & Baltic Event`}
+                    span.org_item
+                        a(href='https://justfilm.ee/') 
+                            | JUST FILM
                     span.org_item
                         a(href='https://shorts.poff.ee')
                             | PÖFF Shorts
@@ -34,7 +37,7 @@ header
                     //- span.org_item
                     //-     a(href='https://elisastage.poff.ee')
                     //-         | PÖFF TV
-
+            
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
 
