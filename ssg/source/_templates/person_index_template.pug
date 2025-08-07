@@ -2,8 +2,8 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    - var assetsDir = 'https://assets.poff.ee/img/'
-    - var audioDir = 'https://assets.poff.ee/img/'
+    - var strapiDomain = `${process.env.StrapiProtocol}://${process.env.StrapiHost}`
+    - var assetsDir = strapiDomain.includes('admin.poff.ee') ? 'https://assets.poff.ee/img/' : `${strapiDomain}/uploads/`
 
     if self.firstNameLastName
         section.grid_creative
@@ -749,7 +749,7 @@ block content
                 //-         | Media
 
                 if self.audioreel
-                    - var audioUrl = `https://assets.poff.ee/img/${self.audioreel.hash}${self.audioreel.ext}`
+                    - var audioUrl = `${assetsDir}${self.audioreel.hash}${self.audioreel.ext}`
                     .str_info_grid_3
                         .person_info_label= self.label.userprofile.audioreelPlay
                         .person_info_value
@@ -777,7 +777,7 @@ block content
                         if self.images && self.images[0]
                             each val, index in self.images
                                 if index == 0
-                                    img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                    img.person_gallery_img(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
                                     if val.caption
                                         //- p.caption= val.caption
                                         - if (val.caption && val.caption.includes('img_year'))
@@ -819,7 +819,7 @@ block content
                                         p.caption= caption
 
                                 else
-                                    img.person_gallery_img(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                                    img.person_gallery_img(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
                                     //- p.caption= val.caption
                                     if val.caption
                                         //- p.caption= val.caption
@@ -878,11 +878,11 @@ block content
                         //-                 each val, index in self.images
                         //-                     if index == 0
                         //-                         .carousel-item.active.container_contents_16_9_person
-                        //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                        //-                             img.d-block.container_contents_16_9_person(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
                         //-                             //- .photographer= self.picture.caption
                         //-                     else
                         //-                         .carousel-item.container_contents_16_9_person
-                        //-                             img.d-block.container_contents_16_9_person(src=`https://assets.poff.ee/img/${val.hash}${val.ext}` alt = self.title)
+                        //-                             img.d-block.container_contents_16_9_person(src=`${assetsDir}${val.hash}${val.ext}` alt = self.title)
                         //-                             //- .photographer= self.picture.caption
                         //-             else
                         //-                 .carousel-item.active.container_contents_16_9_person
