@@ -174,6 +174,7 @@ header
     background-color clr_header_bg
     width 100%
     height auto
+    padding-top 40px
     // height header_height
     // text-align center
     position fixed
@@ -185,7 +186,7 @@ header
     
 
 header.hide-on-scroll 
-  transform translateY(-20%)
+  transform translateY(-33%)
 
 
 .main_menu
@@ -194,7 +195,7 @@ header.hide-on-scroll
     font-weight 300
     text-align center
     left 0
-    background-color clr_header_bg
+    //background-color clr_header_bg
     width 100%
     padding-top 1rem
     padding-bottom 1rem
@@ -220,7 +221,7 @@ header.hide-on-scroll
 
 .main_menu a
     color clr_header_text
-    font-size 1rem
+    font-size 1.2rem
     text-decoration none
     text-transform uppercase
 
@@ -236,6 +237,7 @@ header.hide-on-scroll
 
 .main_menu_toggle:checked~.main_menu
     display flex
+    background-color clr_header_bg
     width 100vw
     height calc(100vh - 100px)
     max-height 100vh
@@ -301,18 +303,18 @@ header.hide-on-scroll
 
 
  #header-popup
-    //width 100%
+    width 100%
     //height: auto
+    height 40px
+    background bg_light_3
     position fixed
-    left 30%
+    left 50%
     top 0
     //background #706e6eff
     //padding 3 rem 0
     transform translateX(-50%)
     z-index 1000
-    
-    
-
+    border-radius 0 0 20% 20% / 0 0 100% 100%
 
 .org_item
     // display inline
@@ -327,13 +329,21 @@ header.hide-on-scroll
         font-size 16px
 
 .org_item a[href="https://justfilm.ee/"]
-    color #254391ff
+    color poff_orange_2
 
 
 .org_item a[href="https://justfilm.ee/"]:hover
     color #0d6efd
 
+.org_item.arrow 
+    font-size 1.2em
+    margin 0 0.4em
+    pointer-events none
+    color dark_5
 
+
+.org_item.small a 
+    font-size 16px
 
 
 // .ul_kaks:first-child
@@ -2440,6 +2450,8 @@ a.btn_popover
     width 24%
     height auto
 
+
+
 /* MEDIA query: for large screens */
 @media screen and (min-width: 800px)
     .grid_film
@@ -2664,6 +2676,8 @@ a.btn_popover
         padding-right 1.2rem
         color dark_1
         // border dashed red
+        //padding-top 2rem
+        //padding-bottom 0.7rem
 
     .main_menu ul
         display flex
@@ -2678,7 +2692,7 @@ a.btn_popover
         padding-left 1.5rem
         padding-right 1.5rem
         padding-top 1rem
-        padding-bottom 1rem
+        padding-bottom 1.5rem
         // border 1px solid rgba(255, 255, 255, 0)
         /* background-color: red; */
 
@@ -2730,11 +2744,12 @@ a.btn_popover
         left 0
         padding-left 1rem
         height 1rem
-        // padding-top .1rem
+        padding-top 0.5 rem
+        
 
     .org_item
         // display inline
-        font-size 14px
+        font-size 18px
         font-family font_h
         color dark_4
         padding-left 1rem
@@ -2742,7 +2757,7 @@ a.btn_popover
         // padding-right 1rem
         a
             text-decoration none
-            font-size 14px
+            font-size 18px
 
     // .grid_footer_row
     //     grid-area footer
@@ -2862,7 +2877,7 @@ a.btn_popover
         // display flex
         // justify-content flex-start
         // align-items flex-end
-        width 160px
+        width 190px
         // padding-left 1.2rem
         // padding-bottom .3rem
         // padding-top .4rem
