@@ -245,6 +245,7 @@ header.hide-on-scroll
     overflow-y scroll
     -webkit-overflow-scrolling:touch
     padding-bottom 2rem
+    top 2rem
 
 .main_menu_toggle_label
     position absolute
@@ -2677,7 +2678,7 @@ a.btn_popover
         color dark_1
         // border dashed red
         //padding-top 2rem
-        //padding-bottom 0.7rem
+        padding-bottom 0.7rem
 
     .main_menu ul
         display flex
@@ -2717,7 +2718,7 @@ a.btn_popover
         text-transform uppercase
 
     .main_menu li:hover
-        background-color clr_header_bg
+        //background-color clr_header_bg
         // border-top 1px solid clr_primary
         /* border-right: 1px solid var(--clr_primary); */
 
@@ -3197,3 +3198,11 @@ strong
         padding-bottom 5rem
         // backgound-color blue
         // z-index 999
+
+@media (max-width: 799px)
+    #header-popup,
+    .org_menu
+        display none
+        //background none
+
+  
