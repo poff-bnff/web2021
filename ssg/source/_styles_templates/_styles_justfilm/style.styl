@@ -221,7 +221,7 @@ header.hide-on-scroll
 
 .main_menu a
     color clr_header_text
-    font-size 1.2rem
+    font-size 1rem
     text-decoration none
     text-transform uppercase
 
@@ -239,8 +239,8 @@ header.hide-on-scroll
     display flex
     background-color clr_header_bg
     width 100vw
-    height calc(100vh - 100px)
-    max-height 100vh
+    height calc(100vh - 70px)
+    max-height 130vh
     width 100vw
     overflow-y scroll
     -webkit-overflow-scrolling:touch
@@ -249,7 +249,7 @@ header.hide-on-scroll
 
 .main_menu_toggle_label
     position absolute
-    top 0
+    top 13px
     right 0
     margin-right 1rem
     height 100%
@@ -316,10 +316,11 @@ header.hide-on-scroll
     transform translateX(-50%)
     z-index 1000
     border-radius 0 0 20% 20% / 0 0 100% 100%
+    overflow: hidden;
 
 .org_item
     // display inline
-    font-size 16px
+    font-size 14px
     font-family font_h
     color dark_4
     padding-left 1rem
@@ -327,9 +328,9 @@ header.hide-on-scroll
     // padding-right 1rem
     a
         text-decoration none
-        font-size 16px
+        font-size 14px
 
-.org_item a[href="https://justfilm.ee/"]
+.org_item a[href^="https://justfilm.ee/"]
     color poff_orange_2
 
 
@@ -337,14 +338,14 @@ header.hide-on-scroll
     color #0d6efd
 
 .org_item.arrow 
-    font-size 1.2em
+    font-size 1.4em
     margin 0 0.4em
     pointer-events none
     color dark_5
 
 
 .org_item.small a 
-    font-size 16px
+    font-size 13px
 
 
 // .ul_kaks:first-child
@@ -487,6 +488,8 @@ footer
     margin 1rem
     padding 0
     width 160px
+    position fixed
+    top 40px
 
 .logo_img:hover,
 .logo_img:focus
@@ -2677,13 +2680,14 @@ a.btn_popover
         padding-right 1.2rem
         color dark_1
         // border dashed red
-        //padding-top 2rem
+        padding-top 0.7rem
         padding-bottom 0.7rem
+        padding-left 215px
 
     .main_menu ul
         display flex
         justify-content flex-end
-        align-items flex-end
+        align-items flex-start
         /* border: 1px solid red; */
 
     .main_menu li
@@ -2743,14 +2747,16 @@ a.btn_popover
         // display inline
         top 0
         left 0
-        padding-left 1rem
+        //padding-left 1rem
+        padding-right 90px
+        padding-left 60px
         height 1rem
         padding-top 0.5 rem
         
 
     .org_item
         // display inline
-        font-size 18px
+        font-size 16px
         font-family font_h
         color dark_4
         padding-left 1rem
@@ -2758,7 +2764,7 @@ a.btn_popover
         // padding-right 1rem
         a
             text-decoration none
-            font-size 18px
+            font-size 16px
 
     // .grid_footer_row
     //     grid-area footer
@@ -3200,9 +3206,21 @@ strong
         // z-index 999
 
 @media (max-width: 799px)
+
     #header-popup,
     .org_menu
         display none
         //background none
 
-  
+    .logo
+        top 30px
+
+    header
+        position fixed
+        height 120px
+
+    grid_hero
+        position fixed
+    
+
+        
