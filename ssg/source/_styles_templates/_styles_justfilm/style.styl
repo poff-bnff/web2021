@@ -242,11 +242,11 @@ header.hide-on-scroll
     width 100vw
     //height calc(100vh - 90px)
     //max-height 130vh
-    min-height calc(100vh - 90px)
+    height calc(100vh - 90px)
     overflow-y auto
     -webkit-overflow-scrolling touch
     padding-bottom 2rem
-    top 1rem
+    top 2rem
 
 .main_menu li a:hover
         color clr_primary_text
@@ -260,6 +260,10 @@ header.hide-on-scroll
 
 .main_menu_toggle:checked ~ .main_menu #header-popup 
     width 100%
+    position static
+    //width auto        
+    //align-self flex-end 
+    //margin-left auto 
     background-color clr_header_bg
     padding bottom 10rem
     display flex
@@ -275,6 +279,9 @@ header.hide-on-scroll
     padding 0
     margin 0
 
+.main_menu_toggle:checked ~ .main_menu li:has(.lang_menu)
+    order -1
+
 
 
 .main_menu_toggle:checked ~ .main_menu #header-popup .org_menu li.org_item,
@@ -283,9 +290,12 @@ header.hide-on-scroll
     line-height 1.5
     padding-left 1rem
     padding-right 1rem
+    padding-bottom 0.5rem
+
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_menu li.org_item.small:last-child
+    padding-bottom 3rem
 
     
-
 .main_menu_toggle_label
     position absolute
     top 13px
@@ -2715,8 +2725,8 @@ a.btn_popover
         margin 0
         padding-left 1.5rem
         padding-right 1.5rem
-        padding-top 1rem
-        padding-bottom 1.9rem
+        padding-top 0.9rem
+        padding-bottom 2rem
         // border 1px solid rgba(255, 255, 255, 0)
         /* background-color: red; */
 
@@ -2744,6 +2754,7 @@ a.btn_popover
         //background-color clr_header_bg
         // border-top 1px solid clr_primary
         /* border-right: 1px solid var(--clr_primary); */
+
 
     .ul_kaks
         text-align right
@@ -2947,7 +2958,7 @@ a.btn_popover
         // border 1px solid blue
         padding 0
         margin 0
-        margin-top .5rem
+        margin-top .4rem
         margin-left 2rem
         margin-bottom 1.2rem
         // padding-bottom .2rem
@@ -3260,21 +3271,16 @@ strong
         padding-bottom 5rem
         // backgound-color blue
         // z-index 999
-
-@media (max-width: 799px)
-
-   // #header-popup
-     //   display none
-
+        
     .logo
         top 30px
 
+    
     header
         position fixed
         height 120px
 
-    grid_hero
-        position fixed
     
 
         
+

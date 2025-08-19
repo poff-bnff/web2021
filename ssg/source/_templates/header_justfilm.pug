@@ -8,17 +8,8 @@ header
 
     nav.main_menu
         ul.ul_yx
-            user_menu_hidden(id='user_menu_hidden' style='display: none')
-            li
-                nav.lang_menu
-                    each p, locale in self.otherLocalePaths
-
-                        if !('publish' in self) || ((self[`publish_${locale}`] !== false) && (`publish_${locale}` in self))
-                            a(href=(p !== '/' ? p + '/' : '/'))= locale
-                        else
-                            a= locale
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
-            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
+            div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)                    
             div#header-popup
                 nav.org_menu
                     ul
@@ -45,8 +36,16 @@ header
                         //-     a(href='https://kinoff.ee') Kinoff
                         //- li.org_item
                         //-     a(href='https://elisastage.poff.ee') PÖFF TV
-                            
-                            
+            
+        user_menu_hidden(id='user_menu_hidden' style='display: none')                   
+            li
+                nav.lang_menu
+                    each p, locale in self.otherLocalePaths
+
+                        if !('publish' in self) || ((self[`publish_${locale}`] !== false) && (`publish_${locale}` in self))
+                            a(href=(p !== '/' ? p + '/' : '/'))= locale
+                        else
+                            a= locale               
 
         
 
