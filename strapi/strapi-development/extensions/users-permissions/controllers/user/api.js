@@ -705,9 +705,10 @@ module.exports = {
   },
 
   async buyProductCb(ctx) {
-    let cancel_url = 'https://poff.ee/'
+    const returnDomain = process.env.MakseKeskusReturnDomain || 'https://poff.ee/'
+    let cancel_url = returnDomain
 
-    async function redirectUser(code = 302, url = 'https://poff.ee/', body = null) {
+    async function redirectUser(code = 302, url = returnDomain, body = null) {
       ctx.status = code;
       let searchParams = body ? `?result=${body}` : ``
       console.log(body);
@@ -840,6 +841,7 @@ module.exports = {
         const successOptions = {
           owner: product.userId,
           transactions: [addTransaction],
+          updatedBy: 'checkout'
         }
 
         // let updateProductSuccess = await strapi.services.product.update({ 'id': item.id }, successOptions)
@@ -852,7 +854,7 @@ module.exports = {
           console.log('Failed getting user info for email');
         }
 
-        let return_url = 'https://poff.ee/minupoff/'
+        let return_url = `{returnDomain}minupoff/`
 
         if (redirectType === 'return' && product.return_url.length) {
           console.log('Kui return URL olemas, saadame kasutaja sinna');
