@@ -235,10 +235,10 @@
       "repeatable": true,
       "component": "credentials.ordered-ra-f"
     },
-    "users": {
+    "user": {
       "plugin": "users-permissions",
-      "collection": "user",
-      "via": "organisations"
+      "model": "user",
+      "via": "organisation"
     },
     "industry_categories": {
       "collection": "industry-category"
@@ -247,12 +247,17 @@
       "collection": "industry-person-type"
     },
     "people": {
-      "via": "organisations",
-      "collection": "person"
+      "collection": "person",
+      "via": "organisations"
     },
     "clients": {
       "collection": "client",
       "via": "organisation"
+    },
+    "show_in_cg_search": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

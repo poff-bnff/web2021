@@ -666,9 +666,14 @@ function getActivePersons() {
 
     const activeCategories = Object.keys(INDUSTRY_PERSON_IN_EDITIONS)
     console.log('activeCategories', activeCategories)
+
+
     const activePersons = STRAPIDATA_ALL_PERSONS
         // filter out persons who have no festival_editions
         .filter(p => p.festival_editions && p.festival_editions.length)
+        .filter(p => p.show_in_cg_search === true)
+        .filter(p => p.allowed_to_publish === true)
+
         // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the person
         .map(p => {
             for (const [industryPersonInEdition, editionIds] of Object.entries(INDUSTRY_PERSON_IN_EDITIONS)) {
@@ -748,6 +753,8 @@ function getActiveOrganisations() {
     const activeOrganisations = STRAPIDATA_ALL_ORGANISATIONS
         // filter out organisations who have no festival_editions
         .filter(p => p.festival_editions && p.festival_editions.length)
+        .filter(p => p.show_in_cg_search === true)
+        .filter(p => p.allowed_to_publish === true)
         // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the organisation
         .map(p => {
             for (const [industryOrganisationInEdition, editionIds] of Object.entries(INDUSTRY_ORGANISATION_IN_EDITIONS)) {

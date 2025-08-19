@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acty_tests",
+  "info": {
+    "name": "acty_test",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "eesnimi": {
+      "type": "string",
+      "required": true
+    },
+    "perenimi": {
+      "type": "string"
+    },
+    "vanus": {
+      "type": "decimal",
+      "min": 12,
+      "max": 50
+    },
+    "salajane": {
+      "default": 12,
+      "type": "integer",
+      "private": true
+    },
+    "genders": {
+      "collection": "gender"
+    },
+    "meow": {
+      "type": "component",
+      "repeatable": true,
+      "component": "translated.translated-long"
+    }
+  }
+}

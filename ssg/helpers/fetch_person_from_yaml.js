@@ -7,6 +7,7 @@ const { fetchModel } = require('./b_fetch.js')
 
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const addConfigPathAliases = require('./add_config_path_aliases.js')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const INDUSTRY_PERSON_IN_EDITIONS = DOMAIN_SPECIFICS.industry_person_in_editions
 
@@ -17,6 +18,10 @@ const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const PERSONLIMIT = parseInt(process.env['PERSONLIMIT']) || 0
 
 const fetchDataDir = path.join(fetchDir, 'persons')
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params[1]
 
 if (DOMAIN !== 'industry.poff.ee') {
     let emptyYAML = yaml.dump([], {
@@ -138,8 +143,10 @@ if (DOMAIN !== 'industry.poff.ee') {
         .filter(p => {
             return activeCategories.some(activeEdition => p[activeEdition])
         })
+        .filter(p => p.allowed_to_publish === true)
+
     console.log('activePersons', activePersons.length)
-    startPersonProcessing(languages, activePersons)
+    startPersonProcessing(languages, activePersons, param_build_type, target_id)
 }
 
 function mSort(to_sort) {
@@ -168,7 +175,7 @@ function mSort(to_sort) {
     return objSorted
 }
 
-function startPersonProcessing(languages, activePersons) {
+function startPersonProcessing(languages, activePersons, param_build_type = undefined, target_id = undefined) {
     for (lang of languages) {
 
         console.log(`Fetching ${DOMAIN} persons ${lang} data`)
@@ -191,6 +198,7 @@ function startPersonProcessing(languages, activePersons) {
                 console.info(`Person ${person.id} has no slug, skipping`)
                 continue
             }
+
             person.path = personSlug
             person.slug = personSlug
 
@@ -226,12 +234,19 @@ function startPersonProcessing(languages, activePersons) {
                 throw error
             }
 
-            let saveDir = path.join(fetchDataDir, personSlug)
-            fs.mkdirSync(saveDir, { recursive: true })
-            fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
-            fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
+            if (param_build_type === undefined || (param_build_type === 'target' && person.id == target_id)) {
+                let saveDir = path.join(fetchDataDir, personSlug)
+                fs.mkdirSync(saveDir, { recursive: true })
+                fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
+                fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/person_index_template.pug`)
+            }
             // console.log(`Fetched ${DOMAIN} person ${person.id} data`)
             filteredPersons.push(person);
+
+            if (param_build_type === 'target' && person.id == target_id) {
+                addConfigPathAliases([`/_fetchdir/persons/${personSlug}`])
+            }
+
         }
 
         const yamlPath = path.join(fetchDir, `persons.${lang}.yaml`)
@@ -350,4 +365,3 @@ function generatePersonsSearchAndFilterYamls(persons, category, lang) {
     let filtersYAML = yaml.dump(sorted_filters, { 'noRefs': true, 'indent': '4' });
     fs.writeFileSync(path.join(fetchDir, `filters_persons.${category}.${lang}.yaml`), filtersYAML, 'utf8');
 }
-

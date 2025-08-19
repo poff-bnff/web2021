@@ -6,7 +6,7 @@
 
 const path = require('path');
 const { user } = require('pg/lib/defaults');
-let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const { sanitizeEntity } = require('strapi-utils');
 
 const {
   slugify,
@@ -15,7 +15,7 @@ const {
   get_domain,
   modify_stapi_data,
   call_delete
-} = require(helper_path)
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js'))
 
 const {
   getPublishingdAllowedUserRoles,
@@ -32,7 +32,7 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+const domains = ['industry.poff.ee'] // hard coded if needed AS LIST!!!
 
 module.exports = {
   lifecycles: {
@@ -52,9 +52,12 @@ module.exports = {
       console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
+        const entity = await strapi.services.organisation.findOne({ id: result.id }, ['festival_editions', 'addr_coll', 'addr_coll.country', 'addr_coll.county', 'filmographies','filmographies.type_of_work', 'user', 'native_lang', 'other_lang', 'profile_img', 'hair_length', 'eye_colour', 'hair_colour', 'stature', 'pitch_of_voice', 'clients', 'gender', 'images', 'picture', 'audio_reel']);
+        const cleanEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
+        console.log(cleanEntity, model_name)
+        await modify_stapi_data(cleanEntity, model_name)
+        await call_build(cleanEntity, domains, model_name)
       }
-      await call_build(result, domains, model_name)
     },
     async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]

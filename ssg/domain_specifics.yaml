@@ -190,6 +190,8 @@ target_build_models:
     - kumu-footer
     - kumu-menu
     - login
+    - organisation
+    - person
     - pof-fi-article
     - pof-fi-footer
     - pof-fi-menu

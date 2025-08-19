@@ -5,6 +5,8 @@
  * to customize this model
  */
 const https = require('https');
+const { sanitizeEntity } = require('strapi-utils');
+
 
 function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
     let postData = JSON.stringify({
@@ -140,17 +142,31 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+const domains = ['industry.poff.ee'] // hard coded if needed AS LIST!!!
 
 module.exports = {
     lifecycles: {
         async afterCreate(result, data) {
+            if (result.published_at) {
+                await call_update(result, model_name)
+            }
         },
 
         async beforeUpdate(params, data) {
+
         },
 
         async afterUpdate(result, params, data) {
+            if (data.skipbuild) {
+                return
+            }
+            if (domains.length > 0) {
+                const entity = await strapi.services.person.findOne({ id: result.id }, ['festival_editions', 'role_at_films', 'addr_coll', 'addr_coll.country', 'addr_coll.county', 'filmographies','filmographies.type_of_work', 'user', 'native_lang', 'other_lang', 'profile_img', 'hair_length', 'eye_colour', 'hair_colour', 'stature', 'pitch_of_voice', 'clients', 'gender', 'images', 'picture', 'audio_reel']);
+                const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
+                console.log(cleanEntity, model_name)
+                await modify_stapi_data(cleanEntity, model_name)
+                await call_build(cleanEntity, domains, model_name)
+            }
         },
 
         async beforeDelete(params) {
@@ -160,13 +176,18 @@ module.exports = {
         async afterDelete(result, params) {
         },
 
+
+
         async afterFind(results, params, populate) {
+
             const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
             for (const result of results) {
                 const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
                 Object.assign(result, publishingProperties);
             }
         },
+
+
 
         async afterFindOne(result, params) {
             const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
