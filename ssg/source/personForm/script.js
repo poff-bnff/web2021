@@ -475,6 +475,10 @@ function slugify(text) {
 }
 
 function isImageMetaDataChanged(id, newMetadata) {
+    if (!formOriginalData.images) {
+        return false
+    }
+
     for (let index = 0; index < formOriginalData.images.length; index++) {
         if (formOriginalData.images[index].id == id) {
             return newMetadata != formOriginalData.images[index].caption
@@ -895,7 +899,7 @@ function validate(field, validators) {
 }
 
 const fillForm = (entity, fields,  error) => {
-    if (entity.id) {
+    if (entity.id || entity.type === 'new') {
         fillFields(document.querySelector('.addProSection'), fields, entity)
     } else {
         showPopup(error)
