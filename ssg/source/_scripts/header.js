@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
         const scrollTop = jQuery(window).scrollTop()
         const windowWidth = $(window).width()
 
-        if (windowWidth > 800) {
+        if (windowWidth > 1099) {
         
             if (scrollTop > lastScrollTop && scrollTop > 100) {
                 $header.addClass('hide-on-scroll')
@@ -45,11 +45,11 @@ jQuery(document).ready(function() {
 
     
     jQuery(window).on('load resize', function () {
-        adjustOrgMenu();
+        adjustOrgMenu()
 
-        if (jQuery(window).width() > 800) {
-            $menuToggle.prop('checked', false); 
-            $mainMenu.show(); 
+        if (jQuery(window).width() > 1100) {
+            $menuToggle.prop('checked', false);
+            $mainMenu.show()
         }
     });
 })

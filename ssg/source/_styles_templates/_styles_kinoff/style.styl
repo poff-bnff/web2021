@@ -158,13 +158,19 @@ header
     grid-template-columns auto 1fr
     background-color clr_header_bg
     width 100%
-    height auto
+    height 120px
     // height header_height
     // text-align center
     position fixed
     z-index 900
     // display flex
     // justify-content flex-start
+    transition transform 0.4s ease-in-out
+    will-change transform
+    
+
+header.hide-on-scroll 
+    transform translateY(-23%)
 
 .main_menu
     position absolute
@@ -202,7 +208,7 @@ header
     text-decoration none
     text-transform uppercase
 
-.main_menu a:hover
+.main_menu .org_menu a:hover
     color clr_primary_text
     text-decoration none
 
@@ -214,17 +220,70 @@ header
 
 .main_menu_toggle:checked~.main_menu
     display flex
+    flex-direction column
+    background-color clr_header_bg
     width 100vw
-    height calc(100vh - 100px)
-    max-height 100vh
-    width 100vw
-    overflow-y scroll
-    -webkit-overflow-scrolling:touch
+    height calc(100vh - 90px)
+    overflow-y auto
+    -webkit-overflow-scrolling touch
     padding-bottom 2rem
+    top 2rem
+
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_item.arrow 
+    display none
+    width 0
+    height 0
+    padding 0
+    margin 0
+
+.main_menu_toggle:checked ~ .main_menu li:has(.lang_menu)
+    order -1
+
+.main_menu li a:hover
+    color clr_primary_text
+
+//.main_menu_toggle:checked~.main_menu .user_menu
+//    padding-bottom 6rem
+
+.main_menu_toggle:checked ~ .main_menu .ul_yx 
+    //flex 1 
+    display flex
+    flex-direction column
+    order 1
+
+.main_menu_toggle:checked~.main_menu #header-popup
+    width 100%
+    position static 
+    background-color clr_header_bg
+    padding-bottom 10rem
+    display flex
+    flex-direction column
+    gap 0.5rem
+    order 2
+    border-top: 2px solid bg_light_3
+
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_item.arrow 
+    display none
+    width 0
+    height 0
+    padding 0
+    margin 0
+
+
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_menu li.org_item,
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_menu li.org_item.small
+    font-size 14px    
+    line-height 1.5
+    padding-left 1rem
+    padding-right 1rem
+    padding-bottom 0.5rem
+
+.main_menu_toggle:checked ~ .main_menu #header-popup .org_menu li.org_item.small:last-child
+    padding-bottom 3rem
 
 .main_menu_toggle_label
     position absolute
-    top 0
+    top 13px
     right 0
     margin-right 1rem
     height 100%
@@ -268,19 +327,6 @@ header
     color dark_4
     text-transform none
 
-.org_menu
-    display: none
-    // position absolute
-    // display inline
-    // bottom 0
-    height 1rem
-    padding-bottom .7rem
-    margin-bottom 1rem
-    // right 0
-    // padding-right 1rem
-    // text-align center
-    // padding-top .1rem
-
 .user_menu
     position absolute
     // display inline
@@ -291,17 +337,35 @@ header
     // text-align center
     // padding-top .1rem
 
+.org_menu
+    display flex
+    // display inline
+    bottom 0
+    height 1rem
+    width 100%
+    // padding-top .1rem
+    white-space nowrap
+ 
 .org_item
     // display inline
-    font-size 14px
+    font-size 1rem
     font-family font_h
-    color dark_4
+    color white_96
     padding-left 1rem
     padding-right 1rem
     // padding-right 1rem
     a
         text-decoration none
-        font-size 14px
+        font-size 1rem
+
+.org_item.arrow 
+    font-size 0.9em
+    margin 0 0.4em
+    pointer-events none
+    color white_96
+
+.org_item.small a 
+    font-size 1rem
 
 .user_menu_item
     // display inline
@@ -449,8 +513,12 @@ footer
 
 .logo
     margin 1rem
+    padding-right 1rem
     padding 0
     width 200px
+    position fixed
+    top 40px
+    margin-left 2rem
 
 .logo_img:hover,
 .logo_img:focus
@@ -2734,97 +2802,7 @@ a.btn_popover
         grid-gap 2rem
         padding calc(2rem + 2vw)
 
-    header
-        display grid
-        grid-template-columns auto 1fr
-        height 100px
-
-    .main_menu_toggle_label
-            display none
-
-    .main_menu
-        grid-column 2 / 3
-        display flex
-        justify-content flex-end
-        align-items flex-end
-        // justify-items flex-end
-        // align-content flex-end
-        position static
-        margin 0
-        padding 0
-        padding-right 1.2rem
-        color dark_1
-        // border dashed red
-
-    .main_menu ul
-        display flex
-        justify-content flex-end
-        align-items flex-end
-        /* border: 1px solid red; */
-
-    .main_menu li
-        /* margin-bottom: 0; */
-        height 100%
-        margin 0
-        padding-left 1.5rem
-        padding-right 1.5rem
-        padding-top 1rem
-        padding-bottom 1rem
-        // border 1px solid rgba(255, 255, 255, 0)
-        /* background-color: red; */
-
-    .main_menu ul li.dropdown
-        position relative
-
-    .main_menu ul li.dropdown ul
-        background-color clr_header_bg
-        position absolute
-        right 0
-        padding-left 0
-        width max-content
-        /* display: block; */
-        display none
-
-    .main_menu ul li.dropdown:hover ul
-        display block
-        margin-bottom 5rem
-        /* margin-top: 1rem; */
-
-    .main_menu ul li.dropdown ul li a
-        text-transform uppercase
-
-    .main_menu li:hover
-        background-color clr_header_bg
-        // border-top 1px solid clr_primary
-        /* border-right: 1px solid var(--clr_primary); */
-
-    .main_menu li a:hover
-        color clr_primary_text
-
-    .ul_kaks
-        text-align right
-        padding 0
-        margin 0
-        li
-            padding-top .5rem
-            padding-bottom .5rem
-        li:first-child
-            padding-top 1.618rem
-        li:last-child
-            padding-bottom 1.618rem
-
-    .org_menu
-        display inline-block
-        position fixed
-        // display inline
-        top 0
-        left 0
-        padding-left 1rem
-        padding-bottom 0
-        margin-bottom 0
-        height 1rem
-        // padding-top .1rem
-
+    
     .user_menu
         position fixed
         // display inline
@@ -2833,28 +2811,6 @@ a.btn_popover
         padding-right 1rem
         height 1rem
         // padding-top .1rem
-
-    .lang_menu
-        position fixed
-        // display inline
-        top 0
-        right 0
-        padding-left 1.5rem
-        padding-right 2rem
-        height 1rem
-        // padding-top .1rem
-
-    .org_item
-        // display inline
-        font-size 14px
-        font-family font_h
-        color dark_4
-        padding-left 1rem
-        padding-right 1rem
-        // padding-right 1rem
-        a
-            text-decoration none
-            font-size 14px
 
     .user_menu_item
         display inline
@@ -3256,3 +3212,160 @@ strong
         width auto
         margin auto
         padding auto
+
+@media screen and (max-width: 1100px)
+
+    header
+        position fixed
+
+
+@media screen and (min-width:1100px)
+    header
+        display grid
+        grid-template-columns auto 1fr
+        height 120px
+
+    .main_menu_toggle_label
+            display none
+
+    .main_menu
+        grid-column 2 / 3
+        display flex
+        justify-content flex-end
+        align-items flex-end
+        // justify-items flex-end
+        // align-content flex-end
+        position static
+        margin 0
+        padding 0
+        padding-right 1.2rem
+        color dark_1
+        // border dashed red
+        padding-top 3rem
+        //padding-bottom 0.7rem
+        padding-left 215px
+        min-height 100px
+
+    .main_menu ul
+        display flex
+        justify-content flex-end
+        align-items flex-end
+        /* border: 1px solid red; */
+        padding-left 2rem
+    
+    .main_menu li
+        /* margin-bottom: 0; */
+        height 100%
+        margin 0
+        padding-left 1.3rem
+        padding-right 1.4rem
+        padding-top 1rem
+        padding-bottom 2.2rem 
+        // border 1px solid rgba(255, 255, 255, 0)
+        /* background-color: red; */
+        flex-wrap wrap
+        
+
+    .main_menu ul li.dropdown
+        position relative
+
+    .main_menu ul li.dropdown ul
+        background-color clr_header_bg
+        position absolute
+        right 0
+        padding-left 0
+        width max-content
+        /* display: block; */
+        display none
+
+    .main_menu ul li.dropdown:hover ul
+        display block
+        margin-bottom 5rem
+        /* margin-top: 1rem; */
+
+    .main_menu ul li.dropdown ul li a
+        text-transform uppercase
+
+    .main_menu li:hover
+        //background-color clr_header_bg
+        // border-top 1px solid clr_primary
+        /* border-right: 1px solid var(--clr_primary); */
+
+    .ul_kaks
+        text-align right
+        padding 0
+        margin 0
+        li
+            padding-top .5rem
+            padding-bottom .5rem
+        li:first-child
+            padding-top 1.618rem
+        li:last-child
+            padding-bottom 1.618rem
+
+    #header-popup .org_menu ul
+        display flex
+        justify-content center
+        align-items center
+        overflow hidden
+        top 0
+        left 0
+        padding-top 0.5rem
+        padding-right 90px
+        padding-left 60px
+        height 2rem
+        flex-wrap nowrap
+        margin-top 0rem
+    
+        
+    .main_menu .org_menu a:hover
+        color #f39133
+        text-decoration none    
+
+    .org_item
+        display inline-block
+        font-size 15px
+        font-family font_h
+        padding-left 1rem
+        padding-right 1rem
+        // padding-right 1rem
+        a
+            text-decoration none
+            font-size 13px
+            color white_96
+
+    .org_item.small 
+        font-size 12px
+        a 
+            font-size 12px
+
+    .org_item a[href^="https://kinoff.ee"]
+        color poff_orange_2
+
+
+    .org_item a[href="https://kinoff.ee"]:hover
+        //color clr_primary_text
+        color #f39133
+
+    #header-popup
+        width 100%
+        //height: auto
+        height 27px
+        background bg_dark_3
+        position fixed
+        left 50%
+        top 0
+        //background #706e6eff
+        //padding 3 rem 0
+        transform translateX(-50%)
+        z-index 1000
+        //border-radius 0 0 20% 20% / 0 0 100% 100%
+        overflow visible
+        display flex
+        justify-content center
+
+    .main_menu .org_menu li
+        padding-top 0
+
+    .logo
+        top 40px
