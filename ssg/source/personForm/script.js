@@ -20,8 +20,21 @@ async function showSection(sectionName) {
         fillForm(formOriginalData, getPersonFields(), translate('errorOnPersonLoad'))
         console.log('Person: ', formOriginalData)
     }
+    showPublishingInfo(formOriginalData)
     activeFormType = sectionName;
     document.getElementById('loader').classList.remove('loading')
+}
+
+function showPublishingInfo(data) {
+    const publishingInfo = document.querySelector('.publishingInfo')
+    if (data.allowed_to_publish) {
+        publishingInfo.querySelector('.right_to_publish_date').innerHTML = data.allowed_to_publish_valid_to_date?.split('T')[0]
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'none'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'inline'
+    } else {
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'inline'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'none'
+    }
 }
 
 function addNewGalleryImage(event) {
@@ -1407,6 +1420,10 @@ const getOrganisationFields = () =>  {
         ok_to_contact: {
             field: "ok_to_contact",
             type: "checkbox"
+        },
+        show_in_cg_search: {
+            field: 'show_in_cg_search',
+            type: 'checkbox'
         }
     }
 }

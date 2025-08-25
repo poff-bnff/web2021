@@ -22,6 +22,11 @@ block content
                 p= self.label.addPro.messageOrganisationSaveSuccess
                 button.send_data(onclick='location.reload()')= "OK"
 
+        .publishingInfo
+            p.right_to_publish_label= self.label.addPro.rightToPublisUntil
+                span.right_to_publish_date
+            p.no_right_to_publish_label !{self.label.addPro.errorNoRightToPublish}
+
         form(autocomplete="off")
             //- organisation name
             fieldset.opened.organisation
@@ -864,6 +869,14 @@ block content
                     .form_group
                         label= self.label.addPro.profilePageUrlDescription
                             input(type='text' name='profile_url' disabled="true")
+                fieldset_grid.one_column
+                    .form_group
+                        label
+                            .switch
+                                input(type="checkbox" name="show_in_cg_search")
+                                span.slider
+                                    span.round
+                            span.feedback= self.label.addPro.showProfileInSearch
 
             //- Feedback
             fieldset.opened.organisation.person
