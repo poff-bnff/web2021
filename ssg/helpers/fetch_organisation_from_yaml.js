@@ -96,7 +96,7 @@ if (DOMAIN !== 'industry.poff.ee') {
             }
             return true;
         })
-        .filter(p => p.allowed_to_publish === true)
+        .filter(p => !p.user || p.allowed_to_publish === true)
 
     console.log('activeOrganisations', activeOrganisations.length)
     startOrganisationProcessing(languages, activeOrganisations, param_build_type, target_id)

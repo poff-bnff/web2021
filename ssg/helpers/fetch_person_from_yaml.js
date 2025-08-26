@@ -143,7 +143,7 @@ if (DOMAIN !== 'industry.poff.ee') {
         .filter(p => {
             return activeCategories.some(activeEdition => p[activeEdition])
         })
-        .filter(p => p.allowed_to_publish === true)
+        .filter(p => !p.user || p.allowed_to_publish === true)
 
     console.log('activePersons', activePersons.length)
     startPersonProcessing(languages, activePersons, param_build_type, target_id)
