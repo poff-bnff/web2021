@@ -41,10 +41,7 @@ header
                         //- span.org_item
                         //-     a(href='https://elisastage.poff.ee')
                         //-         | PÖFF TV
-            li
-                nav.lang_menu
-                    each p, locale in self.otherLocalePaths
-                        a(href=(p !== '/' ? p + '/' : '/'))= locale
+           
 
         user_menu_hidden(id='user_menu_hidden' style='display: none')
             li.user_menu.dropdown
@@ -81,7 +78,10 @@ header
                                 a(href=`/${lang_path}moipoff`)= self.label.menu.mainPass
                         li#logOut(style={cursor: 'pointer', display: 'none'} )
                             a(onclick='logOut()')= self.label.menu.mainLogout
-
+            li
+                nav.lang_menu
+                    each p, locale in self.otherLocalePaths
+                        a(href=(p !== '/' ? p + '/' : '/'))= locale
 
     label.main_menu_toggle_label(for='main_menu_toggle')
         span

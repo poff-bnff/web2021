@@ -164,7 +164,6 @@ main.grid_film(id=self.id)
                             
                             if film.tags.keywords && film.tags.keywords[0]
                                 .str_info_meta_label.dark_1= self.label.film.keywords
-                                //-.str_info_meta_festival= film.tags.keywords.join(', ')
                                 .str_info_meta_festival
                                     each keyword, index in film.tags.keywords
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?keywords=' + keyword)= keyword
