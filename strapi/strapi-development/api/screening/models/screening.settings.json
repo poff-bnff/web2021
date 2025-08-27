@@ -58,7 +58,8 @@
       "type": "uid"
     },
     "ticketingId": {
-      "type": "uid"
+      "type": "uid",
+      "required": false
     }
   }
 }
