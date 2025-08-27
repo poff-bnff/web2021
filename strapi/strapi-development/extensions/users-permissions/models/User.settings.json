@@ -123,8 +123,8 @@
       "type": "uid"
     },
     "person": {
-      "model": "person",
-      "via": "user"
+      "via": "user",
+      "model": "person"
     },
     "My": {
       "type": "component",
@@ -145,13 +145,12 @@
       "collection": "user",
       "via": "mainUser"
     },
-    "organisations": {
-      "collection": "organisation",
-      "via": "users",
-      "dominant": true
-    },
     "ok_to_contact": {
       "type": "boolean"
+    },
+    "organisation": {
+      "via": "user",
+      "model": "organisation"
     }
   }
 }

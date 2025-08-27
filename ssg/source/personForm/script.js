@@ -20,8 +20,21 @@ async function showSection(sectionName) {
         fillForm(formOriginalData, getPersonFields(), translate('errorOnPersonLoad'))
         console.log('Person: ', formOriginalData)
     }
+    showPublishingInfo(formOriginalData)
     activeFormType = sectionName;
     document.getElementById('loader').classList.remove('loading')
+}
+
+function showPublishingInfo(data) {
+    const publishingInfo = document.querySelector('.publishingInfo')
+    if (data.allowed_to_publish) {
+        publishingInfo.querySelector('.right_to_publish_date').innerHTML = data.allowed_to_publish_valid_to_date?.split('T')[0]
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'none'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'inline'
+    } else {
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'inline'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'none'
+    }
 }
 
 function addNewGalleryImage(event) {
@@ -462,6 +475,10 @@ function slugify(text) {
 }
 
 function isImageMetaDataChanged(id, newMetadata) {
+    if (!formOriginalData.images) {
+        return false
+    }
+
     for (let index = 0; index < formOriginalData.images.length; index++) {
         if (formOriginalData.images[index].id == id) {
             return newMetadata != formOriginalData.images[index].caption
@@ -882,7 +899,7 @@ function validate(field, validators) {
 }
 
 const fillForm = (entity, fields,  error) => {
-    if (entity.id) {
+    if (entity.id || entity.type === 'new') {
         fillFields(document.querySelector('.addProSection'), fields, entity)
     } else {
         showPopup(error)
@@ -1407,6 +1424,10 @@ const getOrganisationFields = () =>  {
         ok_to_contact: {
             field: "ok_to_contact",
             type: "checkbox"
+        },
+        show_in_cg_search: {
+            field: 'show_in_cg_search',
+            type: 'checkbox'
         }
     }
 }

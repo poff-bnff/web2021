@@ -5,6 +5,8 @@
  * to customize this model
  */
 const https = require('https');
+const { sanitizeEntity } = require('strapi-utils');
+
 
 function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
     let postData = JSON.stringify({
@@ -114,6 +116,7 @@ function SendTemplateEmailFromMailChimp(email, nimi, var3, var4) {
 const path = require('path')
 let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
 
+
 const {
     slugify,
     call_update,
@@ -122,6 +125,12 @@ const {
     modify_stapi_data,
     call_delete
 } = require(helper_path)
+
+
+const {
+  getPublishingdAllowedUserRoles,
+  getPublishingProperties
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
 /**
 const domains =
@@ -133,23 +142,85 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+const domains = ['industry.poff.ee'] // hard coded if needed AS LIST!!!
 
 module.exports = {
     lifecycles: {
         async afterCreate(result, data) {
+            if (result.published_at) {
+                await call_update(result, model_name)
+            }
         },
 
         async beforeUpdate(params, data) {
+
         },
 
         async afterUpdate(result, params, data) {
+            if (data.skipbuild) {
+                return
+            }
+            if (domains.length > 0) {
+                const entity = await strapi.services.person.findOne({ id: result.id }, [
+                    'picture',
+                    'gender',
+                    'organisations',
+                    'biography',
+                    'awardings',
+                    'festival_editions',
+                    'domains',
+                    'role_at_films',
+                    'eye_colour',
+                    'hair_colour',
+                    'shoe_size',
+                    'stature',
+                    'pitch_of_voice',
+                    'profile_img',
+                    'addr_coll', 'addr_coll.country', 'addr_coll.county',
+                    'hair_length',
+                    'native_lang',
+                    'other_lang',
+                    'images',
+                    'audioreel',
+                    'industry_person_types',
+                    'tag_looking_fors',
+                    'filmographies', 'filmographies.type_of_work',
+                    'industry_categories',
+                    'orderedRafF',
+                    'clients',
+                    'user',
+                ]);
+                const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
+                console.log(cleanEntity, model_name)
+                await modify_stapi_data(cleanEntity, model_name)
+                await call_build(cleanEntity, domains, model_name)
+            }
         },
 
         async beforeDelete(params) {
+            delete params.user
         },
 
         async afterDelete(result, params) {
+        },
+
+
+
+        async afterFind(results, params, populate) {
+
+            const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
+            for (const result of results) {
+                const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+                Object.assign(result, publishingProperties);
+            }
+        },
+
+
+
+        async afterFindOne(result, params) {
+            const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
+            const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+            Object.assign(result, publishingProperties);
         }
     }
 };

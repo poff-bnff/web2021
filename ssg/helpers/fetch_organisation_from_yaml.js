@@ -7,6 +7,7 @@ const { fetchModel } = require('./b_fetch.js')
 
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
+const addConfigPathAliases = require('./add_config_path_aliases.js')
 const DOMAIN_SPECIFICS = yaml.load(fs.readFileSync(domainSpecificsPath, 'utf8'))
 const INDUSTRY_ORGANISATION_IN_EDITIONS = DOMAIN_SPECIFICS.industry_organisation_in_editions
 
@@ -15,6 +16,10 @@ const fetchDir = path.join(sourceDir, '_fetchdir');
 const strapiDataPath = path.join(sourceDir, '_allStrapidata', 'Organisation.yaml');
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const ORGANISATIONLIMIT = parseInt(process.env['ORGANISATIONLIMIT']) || 0
+
+const params = process.argv.slice(2)
+const param_build_type = params[0]
+const target_id = params[1]
 
 const fetchDataDir = path.join(fetchDir, 'organisations')
 
@@ -85,11 +90,19 @@ if (DOMAIN !== 'industry.poff.ee') {
         .filter(p => {
             return activeCategories.some(activeEdition => p[activeEdition])
         })
+        .filter(p => {
+            if (param_build_type === 'target' && p.id.toString() !== target_id) {
+                return false;
+            }
+            return true;
+        })
+        .filter(p => !p.user || p.allowed_to_publish === true)
+
     console.log('activeOrganisations', activeOrganisations.length)
-    startOrganisationProcessing(languages, activeOrganisations)
+    startOrganisationProcessing(languages, activeOrganisations, param_build_type, target_id)
 }
 
-function startOrganisationProcessing(languages, activeOrganisations) {
+function startOrganisationProcessing(languages, activeOrganisations, param_build_type = undefined, target_id = undefined) {
     for (lang of languages) {
 
         console.log(`Fetching ${DOMAIN} organisations ${lang} data`)
@@ -151,6 +164,10 @@ function startOrganisationProcessing(languages, activeOrganisations) {
             fs.mkdirSync(saveDir, { recursive: true })
             fs.writeFileSync(`${saveDir}/data.${lang}.yaml`, oneYaml, 'utf8')
             fs.writeFileSync(`${saveDir}/index.pug`, `include /_templates/organisation_index_template.pug`)
+
+            if (param_build_type === 'target' && target_id) {
+                addConfigPathAliases([`/_fetchdir/organisations/${organisationSlug}`])
+            }
         }
     }
 }

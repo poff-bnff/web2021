@@ -4,8 +4,9 @@
  * to customize this model
  */
 
-const path = require('path')
-let helper_path = path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js')
+const path = require('path');
+const { user } = require('pg/lib/defaults');
+const { sanitizeEntity } = require('strapi-utils');
 
 const {
   slugify,
@@ -14,7 +15,12 @@ const {
   get_domain,
   modify_stapi_data,
   call_delete
-} = require(helper_path)
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/lifecycle_manager.js'))
+
+const {
+  getPublishingdAllowedUserRoles,
+  getPublishingProperties
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
 /**
 const domains =
@@ -26,12 +32,14 @@ And last if full build, with no domain is needed. Write FULL_BUILD (as list)
 */
 
 const model_name = (__dirname.split(path.sep).slice(-2)[0])
-const domains = ['FULL_BUILD'] // hard coded if needed AS LIST!!!
+const domains = ['industry.poff.ee'] // hard coded if needed AS LIST!!!
 
 module.exports = {
   lifecycles: {
     async afterCreate(result, data) {
-      await call_update(result, model_name)
+      if (result.published_at) {
+        await call_update(result, model_name)
+      }
     },
     async beforeUpdate(params, data) {
 
@@ -44,21 +52,46 @@ module.exports = {
       console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
-        await modify_stapi_data(result, model_name)
+        const entity = await strapi.services.organisation.findOne(
+          { id: result.id },
+          [
+            'images',
+            'logoWhite',
+            'logoBlack',
+            'logoColour',
+            'awardings',
+            'festival_editions',
+            'domains',
+            'profile_img',
+            'role_at_films',
+            'addr_coll', 'addr_coll.county',
+            'audioreel',
+            'origin',
+            'tag_looking_fors',
+            'country',
+            'filmographies', 'filmographies.type_of_work',
+            'languages',
+            'orderedRaF',
+            'user'
+          ]
+        );
+        const cleanEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
+        console.log(cleanEntity, model_name)
+        await modify_stapi_data(cleanEntity, model_name)
+        await call_build(cleanEntity, domains, model_name)
       }
-      await call_build(result, domains, model_name)
     },
-async beforeDelete(params) {
+    async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
-        }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
+        if (result) {
+          const updateDeleteUser = {
+            updated_by: params.user,
+            skipbuild: true
+          }
+          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+          return id
         }
       }))
       delete params.user
@@ -68,6 +101,18 @@ async beforeDelete(params) {
 
       console.log('Delete: ')
       await call_delete(result, domains, model_name)
+    },
+    async afterFind(results, params, populate) {
+      const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
+      for (const result of results) {
+        const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+        Object.assign(result, publishingAllowedProperties);
+      }
+    },
+    async afterFindOne(result, params) {
+      const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
+      const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+      Object.assign(result, publishingAllowedProperties);
     }
   }
 };

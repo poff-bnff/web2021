@@ -42,6 +42,9 @@ if (process.argv[2]) {
             '/signup'
         ])
         displayConfigPathAliases()
+    } else if (process.argv[2] === 'add') {
+        addConfigPathAliases([process.argv[3]])
     }
+
 }
 module.exports = addConfigPathAliases

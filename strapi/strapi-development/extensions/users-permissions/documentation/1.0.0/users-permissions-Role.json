@@ -639,14 +639,11 @@
                     "type": "string"
                   }
                 },
-                "organisations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "ok_to_contact": {
                   "type": "boolean"
+                },
+                "organisation": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
