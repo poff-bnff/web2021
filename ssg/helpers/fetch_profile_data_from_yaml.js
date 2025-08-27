@@ -686,7 +686,7 @@ function getActivePersons() {
         // filter out persons who have no festival_editions
         .filter(p => p.festival_editions && p.festival_editions.length)
         .filter(p => p.show_in_cg_search === true)
-        .filter(p => !p.user || p.allowed_to_publish === true)
+        .filter(p => p.allowed_to_publish === true)
 
         // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the person
         .map(p => {
@@ -768,7 +768,7 @@ function getActiveOrganisations() {
         // filter out organisations who have no festival_editions
         .filter(p => p.festival_editions && p.festival_editions.length)
         .filter(p => p.show_in_cg_search === true)
-        .filter(p => !p.user || p.allowed_to_publish === true)
+        .filter(p => p.allowed_to_publish === true)
         // set is_in_industry and is_in_creative and ... to true/false based on festival_editions of the organisation
         .map(p => {
             for (const [industryOrganisationInEdition, editionIds] of Object.entries(INDUSTRY_ORGANISATION_IN_EDITIONS)) {
