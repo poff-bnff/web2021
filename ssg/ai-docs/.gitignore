@@ -1,0 +1,6 @@
+# Ignore all files in ai-docs except specific files
+*
+!.gitignore
+!PLANNING.md
+!WORKFLOW_GUIDE.md
+!task_*.md

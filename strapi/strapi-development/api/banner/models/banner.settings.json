@@ -31,6 +31,12 @@
         "FrontPage_Pos1_Upper",
         "FrontPage_Pos2_Lower"
       ]
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
     }
   }
 }

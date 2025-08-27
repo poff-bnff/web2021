@@ -1794,7 +1794,9 @@
                   "type": "string",
                   "enum": [
                     "pass",
-                    "Course"
+                    "Course",
+                    "Merch",
+                    "Support"
                   ]
                 },
                 "owner": {
@@ -2738,7 +2740,9 @@
                       "type": "string",
                       "enum": [
                         "pass",
-                        "Course"
+                        "Course",
+                        "Merch",
+                        "Support"
                       ]
                     },
                     "owner": {
@@ -3013,7 +3017,9 @@
                   "type": "string",
                   "enum": [
                     "pass",
-                    "Course"
+                    "Course",
+                    "Merch",
+                    "Support"
                   ]
                 },
                 "owner": {
@@ -4288,7 +4294,9 @@
                       "type": "string",
                       "enum": [
                         "pass",
-                        "Course"
+                        "Course",
+                        "Merch",
+                        "Support"
                       ]
                     },
                     "owner": {

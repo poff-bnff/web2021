@@ -19,20 +19,20 @@
       "via": "awardings"
     },
     "film": {
-      "via": "awardings",
-      "model": "film"
+      "model": "film",
+      "via": "awardings"
     },
     "person": {
-      "via": "awardings",
-      "model": "person"
+      "model": "person",
+      "via": "awardings"
     },
     "organisation": {
-      "via": "awardings",
-      "model": "organisation"
+      "model": "organisation",
+      "via": "awardings"
     },
     "festival_edition": {
-      "model": "festival-edition",
-      "via": "awardings"
+      "via": "awardings",
+      "model": "festival-edition"
     },
     "titlePrivate": {
       "type": "string"
@@ -79,6 +79,9 @@
     },
     "year": {
       "type": "integer"
+    },
+    "festival": {
+      "model": "festival"
     }
   }
 }
