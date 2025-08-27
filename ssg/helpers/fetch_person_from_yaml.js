@@ -4,9 +4,6 @@ const path = require('path');
 const rueten = require('./rueten.js');
 const videoUrlToVideoCode = require('./videourl_to_videocode.js');
 const { fetchModel } = require('./b_fetch.js')
-// const replaceLinks = require('./replace_links.js')
-// const addConfigPathAliases = require('./add_config_path_aliases.js')
-// const prioritizeImages = require(path.join(__dirname, 'image_prioritizer.js'))
 
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -20,15 +17,6 @@ const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee';
 const PERSONLIMIT = parseInt(process.env['PERSONLIMIT']) || 0
 
 const fetchDataDir = path.join(fetchDir, 'persons')
-
-// function slugify(text) {
-//     return text.toString().toLowerCase()
-//         .replace(/\s+/g, '-')           // Replace spaces with -
-//         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-//         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-//         .replace(/^-+/, '')             // Trim - from start of text
-//         .replace(/-+$/, '');            // Trim - from end of text
-// }
 
 if (DOMAIN !== 'industry.poff.ee') {
     let emptyYAML = yaml.dump([], {
@@ -63,6 +51,14 @@ if (DOMAIN !== 'industry.poff.ee') {
         },
         'role_at_films': {
             model_name: 'RoleAtFilm'
+        },
+        'orderedRaF': {
+                        model_name: 'OrderedRaF',
+                        expand: {
+                            'role_at_film': {
+                                model_name: 'RoleAtFilm'
+                            }
+                        }
         },
         'organisations': {
             model_name: 'Organisation'
@@ -200,6 +196,26 @@ function startPersonProcessing(languages, activePersons) {
 
             if (person.showreel) {
                 person.showreel = videoUrlToVideoCode(person.showreel)
+            }
+
+            // OrderedRaF töötlemine role_at_films jaoks
+            if (person.orderedRaF) {
+                let orderedRaF = person.orderedRaF
+                    .filter(r => {
+                        if (r && r.role_at_film) {
+                            return true;
+                        } else {
+                            console.log(`ERROR! Person ${person.id} has empty orderedRaFs!!!`);
+                            return false;
+                        }
+                    })
+                    .map(r => r.role_at_film)
+                    .sort((a, b) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0));
+
+                if (orderedRaF.length) {
+                    person.role_at_films = orderedRaF;
+                }
+
             }
 
             let oneYaml = {}

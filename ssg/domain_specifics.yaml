@@ -13,7 +13,7 @@ domain:
     tartuff.ee: tartuff
 
 domains_show_cassetes_wo_screenings:
-    # - poff.ee
+    - poff.ee
     - industry.poff.ee
     - hoff.ee
     - tartuff.ee
@@ -22,15 +22,15 @@ domains_show_cassetes_wo_screenings:
 cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [85] # - 61
-    industry.poff.ee: [80]
+    hoff.ee: [84, 85] # - 61
+    industry.poff.ee: [86]
     justfilm.ee: [74] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79]
-    shorts.poff.ee: [79] # - 30
-    tartuff.ee: [78]
+    poff.ee: [73, 74, 79, 81, 84, 85]
+    shorts.poff.ee: [79] # - 79 on õige, e 2024, 67 on 2023 testiks
+    tartuff.ee: [87]
 
 cassettesAndFilmsShowVotemo:
     discoverycampus.poff.ee: false
@@ -48,7 +48,7 @@ cassettesAndFilmsShowVotemo:
 deepchatActiveInWeb:
     discoverycampus.poff.ee: false
     filmikool.poff.ee: false
-    hoff.ee: false
+    hoff.ee: true
     industry.poff.ee: true
     justfilm.ee: true
     kinoff.poff.ee: false
@@ -58,26 +58,42 @@ deepchatActiveInWeb:
     shorts.poff.ee: true
     tartuff.ee: false
 
-XML_festival_editions: [73, 74, 79] # - 56 # - 58 # - 29 # - 30 # - 32
+userprofileRequiredFields:
+    poff.ee:
+        profileImg: true
+        firstName: true
+        lastName: true
+        gender: true
+        birthdate: true
+        phoneNr: true
+    industry.poff.ee:
+        profileImg: true
+        firstName: true
+        lastName: true
+        gender: true
+        birthdate: true
+        phoneNr: true
+
+XML_festival_editions: [84, 85] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
-    hoff.ee: [85]
-    industry.poff.ee: [80]
+    hoff.ee: [84, 85]
+    industry.poff.ee: [86]
     justfilm.ee: [74]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79]
+    poff.ee: [73, 74, 79, 81, 84, 85]
     shorts.poff.ee: [79]
-    tartuff.ee: [78]
+    tartuff.ee: [87]
 
 active_editions:
     discoverycampus.poff.ee: [50]
     filmikool.poff.ee: [60]
     hoff.ee: []
-    industry.poff.ee: [80]
+    industry.poff.ee: [86]
     justfilm.ee: []
     kinoff.poff.ee: []
     kumu.poff.ee: []
@@ -126,6 +142,7 @@ actor_roles: [76]
 main_service_categories:
     services: 15
     actors: 16
+    # - activefestival: 18
     activefestival: 18
 
 

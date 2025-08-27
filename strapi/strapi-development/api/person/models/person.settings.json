@@ -67,8 +67,8 @@
       "type": "string"
     },
     "awardings": {
-      "collection": "awarding",
-      "via": "person"
+      "via": "person",
+      "collection": "awarding"
     },
     "festival_editions": {
       "collection": "festival-edition"
@@ -147,7 +147,8 @@
       "type": "string"
     },
     "addr_coll": {
-      "model": "address"
+      "model": "address",
+      "via": "person"
     },
     "hair_length": {
       "model": "hair-length"
@@ -290,8 +291,8 @@
       "component": "credentials.ordered-ra-f"
     },
     "clients": {
-      "via": "client_person",
-      "collection": "client"
+      "collection": "client",
+      "via": "client_person"
     },
     "user": {
       "via": "person",

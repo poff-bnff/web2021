@@ -30,9 +30,9 @@
       "type": "datetime"
     },
     "reserved_to": {
-      "via": "reserved_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "reserved_products"
     },
     "reservation_expired": {
       "type": "datetime"
@@ -48,13 +48,15 @@
       "type": "enumeration",
       "enum": [
         "pass",
-        "Course"
+        "Course",
+        "Merch",
+        "Support"
       ]
     },
     "owner": {
-      "via": "my_products",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "my_products"
     },
     "valid_from": {
       "type": "datetime"

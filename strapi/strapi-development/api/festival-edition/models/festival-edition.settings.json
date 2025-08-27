@@ -63,12 +63,18 @@
       "type": "uid"
     },
     "projects": {
-      "via": "editions",
-      "collection": "industry-project"
+      "collection": "industry-project",
+      "via": "editions"
     },
     "awardings": {
-      "via": "festival_edition",
-      "collection": "awarding"
+      "collection": "awarding",
+      "via": "festival_edition"
+    },
+    "validFrom": {
+      "type": "datetime"
+    },
+    "validUntil": {
+      "type": "datetime"
     }
   }
 }

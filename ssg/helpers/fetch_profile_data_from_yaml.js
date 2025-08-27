@@ -77,6 +77,26 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             person.cardLocation = person.addr_coll ? getCardLocation(person.addr_coll) : ""
 
+            // OrderedRaF töötlemine role_at_films jaoks
+            if (person.orderedRaF) {
+                let orderedRaF = person.orderedRaF
+                    .filter(r => {
+                        if (r && r.role_at_film) {
+                            return true
+                        } else {
+                            console.log(`ERROR! Profile ${person.id} has empty orderedRaFs!!!`)
+                            return false
+                        }
+                    })
+                    .map(r => r.role_at_film)
+                    .sort((a, b) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0))
+
+                if (orderedRaF.length) {
+                    person.role_at_films = orderedRaF
+                }
+
+            }
+
             person.uniqueId = uniqueId
 
             uniqueId++
@@ -106,6 +126,26 @@ function startProfileProcessing(languages, activePersons, activeOrganisations) {
 
             organisation.filterName = organisation.name
             organisation.profileType = "Organisation"
+
+            // OrderedRaF töötlemine role_at_films jaoks
+            if (organisation.orderedRaF) {
+                let orderedRaFO = organisation.orderedRaF
+                    .filter(r => {
+                        if (r && r.role_at_film) {
+                            return true
+                        } else {
+                            console.log(`ERROR! Profile ${organisation.id} has empty orderedRaFs!!!`)
+                            return false
+                        }
+                    })
+                    .map(r => r.role_at_film)
+                    .sort((a, b) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0))
+
+                if (orderedRaFO.length) {
+                    organisation.role_at_films = orderedRaFO
+                }
+
+            }
 
             var sSize = ""
             if(organisation.employees_n > 0 && organisation.employees_n < 6){
@@ -169,13 +209,21 @@ function getListProfileData(profile) {
         else if (profile.logoWhite) {
             listProfileData.logoWhite = profile.logoWhite
         }
+        else if (profile.profile_img) {
+            listProfileData.picture = profile.profile_img
+        }
         else{
             listProfileData.picture = profile.picture
         }
     }
 
     else if (profile.profileType === "Actor" || profile.profileType === "Person") {
-        listProfileData.picture = profile.picture
+        if (profile.profile_img) {
+            listProfileData.picture = profile.profile_img
+        }
+        else{
+            listProfileData.picture = profile.picture
+        }
     }
 
     return listProfileData
@@ -513,13 +561,27 @@ function getCardLocation(address) {
 
 function isActor(person) {
     let isActor = false
-    if(person.role_at_films){
-        for (const [key, role] of Object.entries(person.role_at_films)) {
+
+    // Check role_at_films (current behavior)
+    if(person.role_at_films && Array.isArray(person.role_at_films)){
+        for (const role of person.role_at_films) {
             if(ACTOR_ROLES.includes(role.id)){
                 isActor = true
+                console.log(`Person ${person.id} marked as actor due to role_at_films role ID ${role.id}`);
             }
         }
     }
+
+    // Also check orderedRaF for actor roles
+    if(person.orderedRaF && Array.isArray(person.orderedRaF)){
+        for (const orderedRole of person.orderedRaF) {
+            if(orderedRole.role_at_film && ACTOR_ROLES.includes(orderedRole.role_at_film.id)){
+                isActor = true
+                console.log(`Person ${person.id} marked as actor due to orderedRaF role ID ${orderedRole.role_at_film.id}`);
+            }
+        }
+    }
+
     return isActor
 }
 
@@ -546,6 +608,14 @@ function getActivePersons() {
         },
         'role_at_films': {
             model_name: 'RoleAtFilm'
+        },
+        'orderedRaF': {
+            model_name: 'OrderedRaF',
+            expand: {
+                'role_at_film': {
+                    model_name: 'RoleAtFilm'
+                }
+            }
         },
         'organisations': {
             model_name: 'Organisation'
@@ -635,6 +705,14 @@ function getActiveOrganisations() {
     const minimodel = {
         'role_at_films': {
             model_name: 'RoleAtFilm'
+        },
+        'orderedRaF': {
+            model_name: 'OrderedRaF',
+            expand: {
+                'role_at_film': {
+                    model_name: 'RoleAtFilm'
+                }
+            }
         },
         'awardings': {
             model_name: 'Awarding'

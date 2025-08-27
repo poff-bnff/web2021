@@ -6,6 +6,8 @@ const loaderTemplate = document.getElementById('loaderTemplate')
 async function fetchMyPasses() {
 
     const webUser = getUser()
+    console.log("Here\n")
+    console.log(webUser)
     const reservedProducts = webUser.reserved_products.filter(p => p.owner === null)
 
     let userPerson
@@ -95,6 +97,8 @@ reloadProductsLoop = async (owned, reserved, times) => {
 }
 
 const webUser = getUser()
+console.log("Here\n")
+console.log(webUser)
 const reservedProducts = (webUser.reserved_products || []).filter(p => p.owner === null)
 const reservedProductsCount = reservedProducts.length
 const ownedProductsCount = (webUser.My.products || []).length

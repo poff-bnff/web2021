@@ -12,6 +12,20 @@
     },
     "time_unit": {
       "model": "time-units"
+    },
+    "time_direction": {
+      "type": "enumeration",
+      "enum": [
+        "before",
+        "after"
+      ]
+    },
+    "time_event": {
+      "type": "enumeration",
+      "enum": [
+        "transaction",
+        "screening"
+      ]
     }
   }
 }

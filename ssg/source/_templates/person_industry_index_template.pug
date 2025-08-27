@@ -9,6 +9,8 @@ block content
             section.c_img_box
                 if self.picture
                     //- - var personPic = assetsDir + self.picture
+                    - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                else if
                     - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
                 else
                     - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
@@ -572,7 +574,7 @@ block content
                                                 - var image = film.images[0]
                                                 img.container_contents_16_9(src= `${assetsDir}${image.hash}${image.ext}`)
                                             else
-                                                img.container_contents_16_9(src='/assets/img/static/placeholder_hd_1.jpg')
+                                                img.container_contents_16_9(src='/assets/img/static/placeholder_ind_2024.jpg')
                                         if film.title
                                             .card_film_title
                                                 h3.film_title_locale.dark_1= film.title
@@ -616,7 +618,7 @@ block content
                                     //- .photographer= self.picture.caption
                     else
                         .carousel-item.active.container_contents_16_9_person
-                            img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_hd_1.jpg' alt = self.title)
+                            img.d-block.container_contents_16_9_person(src='/assets/img/static/placeholder_ind_2024.jpg' alt = self.title)
                             //- .photographer= self.picture.caption
 
                 if self.images && self.images.length >1
