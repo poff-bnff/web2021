@@ -12,7 +12,6 @@
 const path = require('path')
 const { sanitizeEntity } = require('strapi-utils');
 const { addMinutes, addHours, addDays, addWeeks, addMonths, addYears } = require('date-fns');
-const { user } = require('pg/lib/defaults');
 const moodle_manager = path.join(__dirname, '..', '..', '..', '/helpers/moodle_manager.js')
 const role_assigner = path.join(__dirname, '..', '..', '..', '/helpers/role_assigner.js')
 
