@@ -52,7 +52,29 @@ module.exports = {
       console.log('Create or update: ')
       if (data.skipbuild) return
       if (domains.length > 0) {
-        const entity = await strapi.services.organisation.findOne({ id: result.id }, ['festival_editions', 'addr_coll', 'addr_coll.country', 'addr_coll.county', 'filmographies','filmographies.type_of_work', 'user', 'native_lang', 'other_lang', 'profile_img', 'hair_length', 'eye_colour', 'hair_colour', 'stature', 'pitch_of_voice', 'clients', 'gender', 'images', 'picture', 'audio_reel']);
+        const entity = await strapi.services.organisation.findOne(
+          { id: result.id },
+          [
+            'images',
+            'logoWhite',
+            'logoBlack',
+            'logoColour',
+            'awardings',
+            'festival_editions',
+            'domains',
+            'profile_img',
+            'role_at_films',
+            'addr_coll', 'addr_coll.county',
+            'audioreel',
+            'origin',
+            'tag_looking_fors',
+            'country',
+            'filmographies', 'filmographies.type_of_work',
+            'languages',
+            'orderedRaF',
+            'user'
+          ]
+        );
         const cleanEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
         console.log(cleanEntity, model_name)
         await modify_stapi_data(cleanEntity, model_name)
@@ -63,13 +85,13 @@ module.exports = {
       const ids = params._where?.[0].id_in || [params.id]
       const updatedIds = await Promise.all(ids.map(async id => {
         const result = await strapi.query(model_name).findOne({ id })
-        if (result){
-        const updateDeleteUser = {
-          updated_by: params.user,
-          skipbuild: true
-        }
-        await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
-        return id
+        if (result) {
+          const updateDeleteUser = {
+            updated_by: params.user,
+            skipbuild: true
+          }
+          await strapi.query(model_name).update({ id: result.id }, updateDeleteUser)
+          return id
         }
       }))
       delete params.user

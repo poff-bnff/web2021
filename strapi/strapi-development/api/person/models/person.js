@@ -161,7 +161,35 @@ module.exports = {
                 return
             }
             if (domains.length > 0) {
-                const entity = await strapi.services.person.findOne({ id: result.id }, ['festival_editions', 'role_at_films', 'addr_coll', 'addr_coll.country', 'addr_coll.county', 'filmographies','filmographies.type_of_work', 'user', 'native_lang', 'other_lang', 'profile_img', 'hair_length', 'eye_colour', 'hair_colour', 'stature', 'pitch_of_voice', 'clients', 'gender', 'images', 'picture', 'audio_reel']);
+                const entity = await strapi.services.person.findOne({ id: result.id }, [
+                    'picture',
+                    'gender',
+                    'organisations',
+                    'biography',
+                    'awardings',
+                    'festival_editions',
+                    'domains',
+                    'role_at_films',
+                    'eye_colour',
+                    'hair_colour',
+                    'shoe_size',
+                    'stature',
+                    'pitch_of_voice',
+                    'profile_img',
+                    'addr_coll', 'addr_coll.country', 'addr_coll.county',
+                    'hair_length',
+                    'native_lang',
+                    'other_lang',
+                    'images',
+                    'audioreel',
+                    'industry_person_types',
+                    'tag_looking_fors',
+                    'filmographies', 'filmographies.type_of_work',
+                    'industry_categories',
+                    'orderedRafF',
+                    'clients',
+                    'user',
+                ]);
                 const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
                 console.log(cleanEntity, model_name)
                 await modify_stapi_data(cleanEntity, model_name)
