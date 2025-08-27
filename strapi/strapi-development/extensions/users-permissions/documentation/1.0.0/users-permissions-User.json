@@ -3318,8 +3318,7 @@
           },
           "organisation": {
             "required": [
-              "id",
-              "show_in_cg_search"
+              "id"
             ],
             "properties": {
               "id": {

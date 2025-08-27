@@ -217,6 +217,7 @@ block content
                         if profile && profile.filterName
                             .profile_card(id=profile.uniqueId style="display:none;")
                                 a.profile_card_link(href=`/${lang_path}${profile.slug}`)
+                                    - var strapiDomain = `${process.env.StrapiProtocol}://${process.env.StrapiHost}`
                                     - var assetsDir = strapiDomain.includes('admin.poff.ee') ? 'https://assets.poff.ee/img/' : `${strapiDomain}/uploads/`
                                     if profile.logoColour
                                         - var profilePic = `${assetsDir}${profile.logoColour.hash}${profile.logoColour.ext}`
