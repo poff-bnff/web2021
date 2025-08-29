@@ -67,5 +67,32 @@ async function getPublishingdAllowedUserRoles(allowedFunction) {
   }, {});
 }
 
+async function getBuildEstimate(returnEntity, model_name) {
+  if (returnEntity.allowed_to_publish !== true) {
+    return 0
+  }
+  const lastMinute = new Date(Date.now() - 60 * 1000);
+  const params = {
+    type_enum: 'build',
+    created_at_gte: lastMinute.toISOString(),
+    build_end_status_null: true,
+    queue_est_duration_null: false,
+    build_args: `${model_name} ${returnEntity.id}`,
+    _sort: 'id:desc'
+  }
+
+  let result = null
+  let tries = 0
+  while (result === null && tries < 1000) {
+    result = await strapi.query("build_logs", "publisher").findOne(params);
+    tries++
+  }
+  if (result && result.queue_est_duration) {
+    return Math.ceil(result.queue_est_duration / 1000)
+  }
+  return 0
+}
+
 exports.getPublishingProperties = getPublishingProperties
 exports.getPublishingdAllowedUserRoles = getPublishingdAllowedUserRoles
+exports.getBuildEstimate = getBuildEstimate

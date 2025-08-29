@@ -1,5 +1,11 @@
 'use strict';
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
+const path = require('path');
+const {
+  getPublishingdAllowedUserRoles,
+  getPublishingProperties,
+  getBuildEstimate
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
 module.exports = {
   /**
@@ -21,7 +27,10 @@ module.exports = {
       entity = await strapi.services.organisation.update({ id }, ctx.request.body);
     }
     const returnEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
-    returnEntity.estimated_build_time = 5
+    const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
+    const publishingAllowedProperties = await getPublishingProperties(returnEntity, allPublishingAllowedRoles, 'cgo');
+    Object.assign(returnEntity, publishingAllowedProperties);
+    returnEntity.estimated_build_time = await getBuildEstimate(returnEntity, 'organisation')
     return returnEntity
-  },
+  }
 };
