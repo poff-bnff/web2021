@@ -277,13 +277,24 @@ async function saveForm() {
         const formData = collectFormData(document.querySelector('.addProSection'), getFields(activeFormType))
         const response = await sendData(formData)
         if (response) {
-            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess'))
+            showPopup(getFormSaveSuccessMsg(activeFormType, response))
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 
     saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
+}
+
+getFormSaveSuccessMsg = function (activeFormType, data) {
+    let response = translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess') + '<br>'
+
+    if (!data.estimated_build_time || data.estimated_build_time < 30) {
+        response += translate('profileIsRefreshedShortly', {slug: data.slug_en})
+    } else {
+        response += translate('profileIsRefreshedAfterXMinutes', {minutes: Math.ceil(data.estimated_build_time / 60), slug: data.slug_en})
+    }
+    return response
 }
 
 async function sendData(data) {
