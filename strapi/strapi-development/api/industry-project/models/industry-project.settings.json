@@ -119,8 +119,8 @@
       "type": "string"
     },
     "editions": {
-      "collection": "festival-edition",
       "via": "projects",
+      "collection": "festival-edition",
       "dominant": true
     },
     "awardings": {

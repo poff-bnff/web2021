@@ -100,8 +100,8 @@
       "default": false
     },
     "awardings": {
-      "collection": "awarding",
-      "via": "film"
+      "via": "film",
+      "collection": "awarding"
     },
     "other_festivals": {
       "collection": "festival"

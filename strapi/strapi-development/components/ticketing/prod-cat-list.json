@@ -2,7 +2,8 @@
   "collectionName": "components_ticketing_prod_cat_lists",
   "info": {
     "name": "prodCatList",
-    "icon": "apple-alt"
+    "icon": "apple-alt",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,6 +19,10 @@
       "type": "component",
       "repeatable": false,
       "component": "translated.translated-short"
+    },
+    "order": {
+      "type": "integer",
+      "required": true
     }
   }
 }
