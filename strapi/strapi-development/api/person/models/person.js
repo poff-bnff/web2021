@@ -192,8 +192,10 @@ module.exports = {
                 ]);
                 const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
                 console.log(cleanEntity, model_name)
-                await modify_stapi_data(cleanEntity, model_name)
-                await call_build(cleanEntity, domains, model_name)
+                if (cleanEntity.allowed_to_publish) {
+                    await modify_stapi_data(cleanEntity, model_name)
+                    await call_build(cleanEntity, domains, model_name)
+                }
             }
         },
 
@@ -207,7 +209,6 @@ module.exports = {
 
 
         async afterFind(results, params, populate) {
-
             const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
             for (const result of results) {
                 const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');

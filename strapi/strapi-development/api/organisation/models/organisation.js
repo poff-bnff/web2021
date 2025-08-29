@@ -5,7 +5,6 @@
  */
 
 const path = require('path');
-const { user } = require('pg/lib/defaults');
 const { sanitizeEntity } = require('strapi-utils');
 
 const {
@@ -64,7 +63,7 @@ module.exports = {
             'domains',
             'profile_img',
             'role_at_films',
-            'addr_coll', 'addr_coll.county',
+            'addr_coll', 'addr_coll.country', 'addr_coll.county',
             'audioreel',
             'origin',
             'tag_looking_fors',
@@ -77,8 +76,10 @@ module.exports = {
         );
         const cleanEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
         console.log(cleanEntity, model_name)
-        await modify_stapi_data(cleanEntity, model_name)
-        await call_build(cleanEntity, domains, model_name)
+        if (cleanEntity.allowed_to_publish) {
+          await modify_stapi_data(cleanEntity, model_name)
+          await call_build(cleanEntity, domains, model_name)
+        }
       }
     },
     async beforeDelete(params) {
