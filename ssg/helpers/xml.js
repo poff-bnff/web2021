@@ -189,9 +189,9 @@ for (const screeningIx in SCREENINGS) {
             if (screening.cassette.orderedFilms.length > 1) {
                 // For multiple films, assign carousel pics to concert.image and posters to concert.image2
                 if (screening.cassetteCarouselPicsCassette && screening.cassetteCarouselPicsCassette.length) {
-                    concert.imageNew = screening.cassetteCarouselPicsCassette[0]
+                    concert.image2 = screening.cassetteCarouselPicsCassette[0]
                 } else if (screening.cassetteCarouselPicsFilms && screening.cassetteCarouselPicsFilms.length) {
-                    concert.imageNew = screening.cassetteCarouselPicsFilms[0]
+                    concert.image2 = screening.cassetteCarouselPicsFilms[0]
                 }
 
                 if (screening.cassettePostersCassette && screening.cassettePostersCassette.length) {
@@ -202,7 +202,7 @@ for (const screeningIx in SCREENINGS) {
             } else if (screening.cassette.orderedFilms.length === 1) {
                 // For single films, assign carousel pics to concert.image and posters to concert.image2
                 if (screening.cassetteCarouselPicsFilms && screening.cassetteCarouselPicsFilms.length) {
-                    concert.imageNew = screening.cassetteCarouselPicsFilms[0]
+                    concert.image2 = screening.cassetteCarouselPicsFilms[0]
                 }
 
                 if (screening.cassettePostersFilms && screening.cassettePostersFilms.length) {
