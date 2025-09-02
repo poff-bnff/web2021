@@ -28,9 +28,15 @@ nice -10 node "$FETCH_PATH"/fetch_organisation_from_yaml.js  "$TARGET" "$TARGET_
 
 nice -10 node "$FETCH_PATH"/fetch_profile_data_from_yaml.js
 
-# Logi konsooli kõik ehitatavad pathid:
 nice -10 node "$FETCH_PATH"/add_config_path_aliases.js add /profile_search
-nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display
+
+# Logi konsooli kõik ehitatavad pathid:
+BUILD_DIRS=$(nice -10 node "$FETCH_PATH"/add_config_path_aliases.js display)
+echo "$BUILD_DIRS"
+
+PROFILE_SLUG=$(echo "$BUILD_DIRS" | grep '/_fetchdir/organisations/' | awk -F/ '{print $NF}')
+echo "PROFILE_SLUG: $PROFILE_SLUG"
+
 
 printf '\n----------                  Adding ignore paths                ----------\n\n'
 nice -10 node ./helpers/add_config_ignorePaths.js
@@ -38,7 +44,11 @@ printf '\n----------               Finished adding ignore paths            -----
 
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
-#echo "RSYNC $BUILD_PATH/build/$BUILDDIR/. $BUILD_PATH/../www/build.$DOMAIN"/
-#rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/. "$BUILD_PATH"/../www/build."$DOMAIN"/
+echo "RSYNC $PROFILE_SLUG to build.$DOMAIN and $DOMAIN"
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG" "$BUILD_PATH"/../www/build."$DOMAIN"/"$PROFILE_SLUG"
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG" "$BUILD_PATH"/../www/"$DOMAIN"/"$PROFILE_SLUG"
+
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/persons-search "$BUILD_PATH"/../www/build."$DOMAIN"/persons-search
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/persons-search "$BUILD_PATH"/../www/"$DOMAIN"/persons-search
 
 printf '\n\n----------      Finished building      ----------\n\n'
