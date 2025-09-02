@@ -84,12 +84,17 @@ module.exports = {
         model: strapi.query('product').model,
       });
 
-      if (sanitizedResult.product_category) {
-        const productCat = await strapi.query('product-category').findOne({ 'id': sanitizedResult.product_category.id });
-        if (productCat) {
-          await syncUserRoles(productCat, sanitizedResult, data, owner_before_update);
-          await syncMoodleData(productCat, sanitizedResult, data, owner_before_update);
-        }
+      if (!sanitizedResult.product_category) {
+        return
+      }
+      const productCat = await strapi.query('product-category').findOne({ 'id': sanitizedResult.product_category.id });
+      if (!productCat) {
+        return
+      }
+      await syncUserRoles(productCat, sanitizedResult, data, owner_before_update);
+      await syncMoodleData(productCat, sanitizedResult, data, owner_before_update);
+      if (data.updatedBy === 'checkout') {
+        await startBuildCommands(sanitizedResult, productCat);
       }
     },
     async beforeDelete(params) {
@@ -100,6 +105,15 @@ module.exports = {
     }
   }
 };
+
+async function startBuildCommands(sanitizedResult, productCat) {
+  if (!sanitizedResult.owner) {
+    return
+  }
+  const fullUserInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': sanitizedResult.owner.id }, ['user_profile', 'user_roles', 'my_products']);
+  await strapi.services.person.newProductBuyed(fullUserInfo, productCat)
+  await strapi.services.organisation.newProductBuyed(fullUserInfo, productCat)
+}
 
 async function syncDatesToProduct(product, data) {
   if (product.product_category) {
@@ -118,7 +132,7 @@ async function syncDatesToProduct(product, data) {
         valid_to = await addTimeToDate(currentMaxValidTo, product.product_category.validity_period_relative[0].time_unit.name_private, product.product_category.validity_period_relative[0].number_of_time_units)
       }
     }
-    if ((valid_from !== null || valid_to !== null) && data.valid_from === null && data.valid_to === null) {
+    if ((valid_from !== null || valid_to !== null) && !data.valid_from && !data.valid_to) {
       data.valid_from = valid_from;
       data.valid_to = valid_to;
     }

@@ -1,14 +1,12 @@
-async function getPublishingProperties(entity, buildAllowedRoles, productCodePrefix) {
-  if (!entity.user) {
+async function getPublishingProperties(user, buildAllowedRoles, productCodePrefix) {
+  if (!user) {
     return {
       allowed_to_publish: true,
       allowed_to_publish_valid_to_date: null
     };
   }
 
-  const userInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': entity.user.id }, ['my_products', 'user_roles']);
-
-
+  const userInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': user.id }, ['my_products', 'user_roles']);
 
   for (const role of userInfo.user_roles) {
     if (buildAllowedRoles[role.id]) {

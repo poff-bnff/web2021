@@ -29,7 +29,7 @@ module.exports = {
 
     const returnEntity = sanitizeEntity(entity, { model: strapi.models.person });
     const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
-    const publishingProperties = await getPublishingProperties(returnEntity, allPublishingAllowedRoles, 'cgp');
+    const publishingProperties = await getPublishingProperties(returnEntity.user, allPublishingAllowedRoles, 'cgp');
     Object.assign(returnEntity, publishingProperties);
 
     returnEntity.estimated_build_time = await getBuildEstimate(returnEntity, 'person')

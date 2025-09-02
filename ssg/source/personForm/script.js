@@ -296,7 +296,7 @@ getFormSaveSuccessMsg = function (activeFormType, data) {
     let infoMsg = '';
     if (!data.allowed_to_publish) {
         infoMsg = translate('errorNoRightToPublish')
-    } if (!data.estimated_build_time || data.estimated_build_time < 30) {
+    } else if (!data.estimated_build_time || data.estimated_build_time < 30) {
         infoMsg = translate('profileIsRefreshedShortly', {slug: data.slug_en})
     } else {
         infoMsg = translate('profileIsRefreshedAfterXMinutes', {minutes: Math.ceil(data.estimated_build_time / 60), slug: data.slug_en})
