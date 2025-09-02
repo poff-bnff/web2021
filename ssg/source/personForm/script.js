@@ -20,6 +20,10 @@ async function showSection(sectionName) {
         fillForm(formOriginalData, getPersonFields(), translate('errorOnPersonLoad'))
         console.log('Person: ', formOriginalData)
     }
+    if (formOriginalData.slug_en) {
+        console.log('hello world')
+        document.querySelector(`.addProSection [name^="profile_url"]`).value = "https://industry.poff.ee/" + formOriginalData.slug_en
+    }
     showPublishingInfo(formOriginalData)
     activeFormType = sectionName;
     document.getElementById('loader').classList.remove('loading')
@@ -277,13 +281,27 @@ async function saveForm() {
         const formData = collectFormData(document.querySelector('.addProSection'), getFields(activeFormType))
         const response = await sendData(formData)
         if (response) {
-            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess'))
+            showPopup(getFormSaveSuccessMsg(activeFormType, response))
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 
     saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
+}
+
+getFormSaveSuccessMsg = function (activeFormType, data) {
+    let successMsg = translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess')
+
+    let infoMsg = '';
+    if (!data.allowed_to_publish) {
+        infoMsg = translate('errorNoRightToPublish')
+    } else if (!data.estimated_build_time || data.estimated_build_time < 30) {
+        infoMsg = translate('profileIsRefreshedShortly', {slug: data.slug_en})
+    } else {
+        infoMsg = translate('profileIsRefreshedAfterXMinutes', {minutes: Math.ceil(data.estimated_build_time / 60), slug: data.slug_en})
+    }
+    return `${successMsg}<br>${infoMsg}`
 }
 
 async function sendData(data) {

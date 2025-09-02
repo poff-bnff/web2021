@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "PUT",
+      "path": "/people/addpro/:id",
+      "handler": "person.addpro",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/people",
       "handler": "person.find",

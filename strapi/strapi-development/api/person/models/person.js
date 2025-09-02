@@ -160,41 +160,7 @@ module.exports = {
             if (data.skipbuild) {
                 return
             }
-            if (domains.length > 0) {
-                const entity = await strapi.services.person.findOne({ id: result.id }, [
-                    'picture',
-                    'gender',
-                    'organisations',
-                    'biography',
-                    'awardings',
-                    'festival_editions',
-                    'domains',
-                    'role_at_films',
-                    'eye_colour',
-                    'hair_colour',
-                    'shoe_size',
-                    'stature',
-                    'pitch_of_voice',
-                    'profile_img',
-                    'addr_coll', 'addr_coll.country', 'addr_coll.county',
-                    'hair_length',
-                    'native_lang',
-                    'other_lang',
-                    'images',
-                    'audioreel',
-                    'industry_person_types',
-                    'tag_looking_fors',
-                    'filmographies', 'filmographies.type_of_work',
-                    'industry_categories',
-                    'orderedRafF',
-                    'clients',
-                    'user',
-                ]);
-                const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
-                console.log(cleanEntity, model_name)
-                await modify_stapi_data(cleanEntity, model_name)
-                await call_build(cleanEntity, domains, model_name)
-            }
+            strapi.services.person.build(result.id)
         },
 
         async beforeDelete(params) {
@@ -204,22 +170,17 @@ module.exports = {
         async afterDelete(result, params) {
         },
 
-
-
         async afterFind(results, params, populate) {
-
             const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
             for (const result of results) {
-                const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+                const publishingProperties = await getPublishingProperties(result.user, allPublishingAllowedRoles, 'cgp');
                 Object.assign(result, publishingProperties);
             }
         },
 
-
-
         async afterFindOne(result, params) {
             const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_person');
-            const publishingProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgp');
+            const publishingProperties = await getPublishingProperties(result.user, allPublishingAllowedRoles, 'cgp');
             Object.assign(result, publishingProperties);
         }
     }

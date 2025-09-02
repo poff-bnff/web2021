@@ -1,14 +1,12 @@
-async function getPublishingProperties(entity, buildAllowedRoles, productCodePrefix) {
-  if (!entity.user) {
+async function getPublishingProperties(user, buildAllowedRoles, productCodePrefix) {
+  if (!user) {
     return {
       allowed_to_publish: true,
       allowed_to_publish_valid_to_date: null
     };
   }
 
-  const userInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': entity.user.id }, ['my_products', 'user_roles']);
-
-
+  const userInfo = await strapi.query('user', 'users-permissions').findOne({ 'id': user.id }, ['my_products', 'user_roles']);
 
   for (const role of userInfo.user_roles) {
     if (buildAllowedRoles[role.id]) {
@@ -67,5 +65,32 @@ async function getPublishingdAllowedUserRoles(allowedFunction) {
   }, {});
 }
 
+async function getBuildEstimate(returnEntity, model_name) {
+  if (returnEntity.allowed_to_publish !== true) {
+    return 0
+  }
+  const lastMinute = new Date(Date.now() - 60 * 1000);
+  const params = {
+    type_enum: 'build',
+    created_at_gte: lastMinute.toISOString(),
+    build_end_status_null: true,
+    queue_est_duration_null: false,
+    build_args: `${model_name} ${returnEntity.id}`,
+    _sort: 'id:desc'
+  }
+
+  let result = null
+  let tries = 0
+  while (result === null && tries < 1000) {
+    result = await strapi.query("build_logs", "publisher").findOne(params);
+    tries++
+  }
+  if (result && result.queue_est_duration) {
+    return Math.ceil(result.queue_est_duration / 1000)
+  }
+  return 0
+}
+
 exports.getPublishingProperties = getPublishingProperties
 exports.getPublishingdAllowedUserRoles = getPublishingdAllowedUserRoles
+exports.getBuildEstimate = getBuildEstimate

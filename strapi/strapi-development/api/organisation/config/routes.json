@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "PUT",
+      "path": "/organisations/addpro/:id",
+      "handler": "Organisation.addpro",
+      "config": {
+        "policies": []
+    }
+    },
+    {
       "method": "GET",
       "path": "/organisations",
       "handler": "organisation.find",

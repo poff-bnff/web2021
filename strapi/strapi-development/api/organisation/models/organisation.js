@@ -5,7 +5,6 @@
  */
 
 const path = require('path');
-const { user } = require('pg/lib/defaults');
 const { sanitizeEntity } = require('strapi-utils');
 
 const {
@@ -49,37 +48,10 @@ module.exports = {
       }
     },
     async afterUpdate(result, params, data) {
-      console.log('Create or update: ')
-      if (data.skipbuild) return
-      if (domains.length > 0) {
-        const entity = await strapi.services.organisation.findOne(
-          { id: result.id },
-          [
-            'images',
-            'logoWhite',
-            'logoBlack',
-            'logoColour',
-            'awardings',
-            'festival_editions',
-            'domains',
-            'profile_img',
-            'role_at_films',
-            'addr_coll', 'addr_coll.county',
-            'audioreel',
-            'origin',
-            'tag_looking_fors',
-            'country',
-            'filmographies', 'filmographies.type_of_work',
-            'languages',
-            'orderedRaF',
-            'user'
-          ]
-        );
-        const cleanEntity = sanitizeEntity(entity, { model: strapi.models.organisation });
-        console.log(cleanEntity, model_name)
-        await modify_stapi_data(cleanEntity, model_name)
-        await call_build(cleanEntity, domains, model_name)
+      if (data.skipbuild) {
+        return
       }
+      strapi.services.organisation.build(result.id)
     },
     async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
@@ -105,13 +77,13 @@ module.exports = {
     async afterFind(results, params, populate) {
       const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
       for (const result of results) {
-        const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+        const publishingAllowedProperties = await getPublishingProperties(result.user, allPublishingAllowedRoles, 'cgo');
         Object.assign(result, publishingAllowedProperties);
       }
     },
     async afterFindOne(result, params) {
       const allPublishingAllowedRoles = await getPublishingdAllowedUserRoles('publish_cg_org');
-      const publishingAllowedProperties = await getPublishingProperties(result, allPublishingAllowedRoles, 'cgo');
+      const publishingAllowedProperties = await getPublishingProperties(result.user, allPublishingAllowedRoles, 'cgo');
       Object.assign(result, publishingAllowedProperties);
     }
   }
