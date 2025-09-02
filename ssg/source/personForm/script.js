@@ -21,7 +21,6 @@ async function showSection(sectionName) {
         console.log('Person: ', formOriginalData)
     }
     if (formOriginalData.slug_en) {
-        console.log('hello world')
         document.querySelector(`.addProSection [name^="profile_url"]`).value = "https://industry.poff.ee/" + formOriginalData.slug_en
     }
     showPublishingInfo(formOriginalData)
