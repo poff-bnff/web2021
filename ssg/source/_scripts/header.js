@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+    // Hide header on scroll down, show on scroll up
     const $header = jQuery('header')
     if (!$header.length) return
     
@@ -21,7 +22,7 @@ jQuery(document).ready(function() {
         
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     })
-    
+    // Adjust org_menu items based on width
     function adjustOrgMenu() {
         const $menu = jQuery('.org_menu ul')
         if (!$menu.length) return
@@ -43,7 +44,7 @@ jQuery(document).ready(function() {
     const $menuToggle = jQuery('#main_menu_toggle')
     const $mainMenu = jQuery('.main_menu')
 
-    
+    // Untoggle main menu whebn resizing window above 1100px
     jQuery(window).on('load resize', function () {
         adjustOrgMenu()
 

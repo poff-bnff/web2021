@@ -168,6 +168,7 @@ header
     // justify-content flex-start
     transition transform 0.4s ease-in-out
     will-change transform
+    top 0
     
 
 header.hide-on-scroll 
@@ -2107,6 +2108,12 @@ p a
   align-self start
   font-weight 200
 
+.premiere_type a
+    color clr_primary
+
+.premiere_type a:hover
+    color poff_orange_2
+
 .film_title_detailed
   font-family font_h
   font-size calc(1rem + 2.4vw)
@@ -2198,13 +2205,17 @@ p a
   line-height 1.618
   font-weight 300
 
-.str_info_meta_festival a 
+.str_info_meta_festival a,
     display inline block
     //margin-right 1rem
     text-decoration none
     color clr_primary
 
+.str_info_value a
+    color white_96
+
 .str_info_meta_festival a:hover
+.str_info_value a:hover
     color poff_orange_2
 
 .str_info_meta_program,
@@ -3594,7 +3605,7 @@ strong
         position static
         margin 0
         padding 0
-        padding-right 1.2rem
+        padding-right 1rem
         color dark_1
         // border dashed red
         //padding-top 0.7rem

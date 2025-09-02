@@ -7,7 +7,7 @@ main.grid_film(id=self.id)
 
     if self.films
         each film in self.films
-
+            
             //- KARUSELL filmi piltidega
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
@@ -124,13 +124,12 @@ main.grid_film(id=self.id)
                         if film.tags
                             //- Filmi tagide nagivatsioon
                             - var searchPath = ''
-                            - if (self.locale === 'ru') {
-                            -   searchPath = 'iskat_film'
-                            - } else if (self.locale === 'en') {
-                            -   searchPath = 'search_film'
-                            - } else {
-                            -   searchPath = 'otsi_filmi'
-                            - }
+                            - if (self.locale === 'ru')
+                                - searchPath = 'iskat_film'
+                            - else if (self.locale === 'en')
+                                - searchPath = 'search_film'
+                            - else
+                                - searchPath = 'otsi_filmi'
                             if film.tags.programmes && film.tags.programmes[0]
 
                                 -
@@ -158,7 +157,7 @@ main.grid_film(id=self.id)
                                 .str_info_meta_label.dark_1= self.label.film.genre
                                 .str_info_meta_festival 
                                     each genre, index in film.tags.genres
-                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre)= genre
+                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre.slug)= genre
                                         if index < film.tags.genres.length - 1
                                             | , 
                             
@@ -575,12 +574,20 @@ main.grid_film(id=self.id)
                 if film.languages
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
-                        .str_info_value= film.languages.map(languagesNames).join(', ')
+                        .str_info_value 
+                            each lang, index in film.languages
+                                a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?languages=' + lang.name)= lang.name
+                                if index < film.languages.length - 1
+                                    | , 
 
                 if film.subtitles
                     .str_info_grid_3
                         .str_info_label= self.label.film.subtitles
-                        .str_info_value= film.subtitles.map(languagesNames).join(', ')
+                        .str_info_value
+                            each sub, index in film.subtitles
+                                a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + sub.name)= sub.name
+                                if index < film.subtitles.length - 1
+                                    | ,
 
                 if film.other_festivals
                     .str_info_grid_3
