@@ -45,10 +45,10 @@ printf '\n----------               Finished adding ignore paths            -----
 nice -10 node "$BUILD_PATH"/node_modules/entu-ssg/src/build.js "$BUILD_PATH"/entu-ssg.yaml full
 
 echo "RSYNC $PROFILE_SLUG to build.$DOMAIN and $DOMAIN"
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG" "$BUILD_PATH"/../www/build."$DOMAIN"/"$PROFILE_SLUG"
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG" "$BUILD_PATH"/../www/"$DOMAIN"/"$PROFILE_SLUG"
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG"/ "$BUILD_PATH"/../www/build."$DOMAIN"/"$PROFILE_SLUG/"
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/"$PROFILE_SLUG"/ "$BUILD_PATH"/../www/"$DOMAIN"/"$PROFILE_SLUG/"
 
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/persons-search "$BUILD_PATH"/../www/build."$DOMAIN"/persons-search
-rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/persons-search "$BUILD_PATH"/../www/"$DOMAIN"/persons-search
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/creative_gate/ "$BUILD_PATH"/../www/build."$DOMAIN"/creative_gate/
+rsync -ra "$BUILD_PATH"/build/"$BUILDDIR"/creative_gate/ "$BUILD_PATH"/../www/"$DOMAIN"/creative_gate/
 
 printf '\n\n----------      Finished building      ----------\n\n'
