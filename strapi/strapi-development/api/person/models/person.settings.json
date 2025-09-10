@@ -40,8 +40,8 @@
       "type": "date"
     },
     "organisations": {
-      "collection": "organisation",
       "via": "people",
+      "collection": "organisation",
       "dominant": true
     },
     "profession": {
@@ -295,9 +295,13 @@
       "via": "client_person"
     },
     "user": {
-      "via": "person",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "person"
+    },
+    "show_in_cg_search": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

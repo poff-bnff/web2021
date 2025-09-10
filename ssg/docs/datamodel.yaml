@@ -737,6 +737,8 @@ Organisation: &Organisation
         - *IndustryCategory
     industry_person_types:
         - *IndustryPersonType
+    show_in_cg_search: (boolean)
+    allowed_to_publish: (boolean)
 
 
 
@@ -1615,6 +1617,8 @@ Person: &Person
     h_rate_to: number
     orderedRaF: #(Component (repeatable))
         - *OrderedRaF
+    show_in_cg_search: (boolean)
+    allowed_to_publish: (boolean)
 
 TeamMember: &TeamMember
     person: *Person #(Component)

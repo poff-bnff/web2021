@@ -22,6 +22,11 @@ block content
                 p= self.label.addPro.messageOrganisationSaveSuccess
                 button.send_data(onclick='location.reload()')= "OK"
 
+        .publishingInfo
+            p.right_to_publish_label= self.label.addPro.rightToPublisUntil
+                span.right_to_publish_date
+            p.no_right_to_publish_label !{self.label.addPro.errorNoRightToPublish}
+
         form(autocomplete="off")
             //- organisation name
             fieldset.opened.organisation
@@ -864,6 +869,14 @@ block content
                     .form_group
                         label= self.label.addPro.profilePageUrlDescription
                             input(type='text' name='profile_url' disabled="true")
+                fieldset_grid.one_column
+                    .form_group
+                        label
+                            .switch
+                                input(type="checkbox" name="show_in_cg_search")
+                                span.slider
+                                    span.round
+                            span.feedback= self.label.addPro.showProfileInSearch
 
             //- Feedback
             fieldset.opened.organisation.person
@@ -909,6 +922,9 @@ block content
         span.collectionDataChanged= self.label.addPro.collectionDataChanged
         span.validationErrorInvalidNumber_0_to_100= self.label.addPro.validationErrorInvalidNumber_0_to_100
         span.validationErrorInvalidNumber_0_to_500= self.label.addPro.validationErrorInvalidNumber_0_to_500
+        span.profileIsRefreshedShortly !{self.label.addPro.profileIsRefreshedShortly}
+        span.profileIsRefreshedAfterXMinutes !{self.label.addPro.profileIsRefreshedAfterXMinutes}
+        span.errorNoRightToPublish !{self.label.addPro.errorNoRightToPublish}
 
     #loader
         <svg xmlns="http://www.w3.org/2000/svg" width=100px height="100px"  viewBox="0 0 200 200">

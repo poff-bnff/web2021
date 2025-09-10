@@ -20,8 +20,24 @@ async function showSection(sectionName) {
         fillForm(formOriginalData, getPersonFields(), translate('errorOnPersonLoad'))
         console.log('Person: ', formOriginalData)
     }
+    if (formOriginalData.slug_en) {
+        document.querySelector(`.addProSection [name^="profile_url"]`).value = "https://industry.poff.ee/" + formOriginalData.slug_en
+    }
+    showPublishingInfo(formOriginalData)
     activeFormType = sectionName;
     document.getElementById('loader').classList.remove('loading')
+}
+
+function showPublishingInfo(data) {
+    const publishingInfo = document.querySelector('.publishingInfo')
+    if (data.allowed_to_publish) {
+        publishingInfo.querySelector('.right_to_publish_date').innerHTML = data.allowed_to_publish_valid_to_date?.split('T')[0]
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'none'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'inline'
+    } else {
+        publishingInfo.querySelector('.no_right_to_publish_label').style.display = 'inline'
+        publishingInfo.querySelector('.right_to_publish_label').style.display = 'none'
+    }
 }
 
 function addNewGalleryImage(event) {
@@ -264,13 +280,27 @@ async function saveForm() {
         const formData = collectFormData(document.querySelector('.addProSection'), getFields(activeFormType))
         const response = await sendData(formData)
         if (response) {
-            showPopup(translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess'))
+            showPopup(getFormSaveSuccessMsg(activeFormType, response))
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 
     saveButton.disabled = false
     document.getElementById('loader').classList.remove('loading')
+}
+
+getFormSaveSuccessMsg = function (activeFormType, data) {
+    let successMsg = translate(activeFormType == 'organisationprofile' ? 'messageOrganisationSaveSuccess' : 'messagePersonSaveSuccess')
+
+    let infoMsg = '';
+    if (!data.allowed_to_publish) {
+        infoMsg = translate('errorNoRightToPublish')
+    } else if (!data.estimated_build_time || data.estimated_build_time < 30) {
+        infoMsg = translate('profileIsRefreshedShortly', {slug: data.slug_en})
+    } else {
+        infoMsg = translate('profileIsRefreshedAfterXMinutes', {minutes: Math.ceil(data.estimated_build_time / 60), slug: data.slug_en})
+    }
+    return `${successMsg}<br>${infoMsg}`
 }
 
 async function sendData(data) {
@@ -462,6 +492,10 @@ function slugify(text) {
 }
 
 function isImageMetaDataChanged(id, newMetadata) {
+    if (!formOriginalData.images) {
+        return false
+    }
+
     for (let index = 0; index < formOriginalData.images.length; index++) {
         if (formOriginalData.images[index].id == id) {
             return newMetadata != formOriginalData.images[index].caption
@@ -882,7 +916,7 @@ function validate(field, validators) {
 }
 
 const fillForm = (entity, fields,  error) => {
-    if (entity.id) {
+    if (entity.id || entity.type === 'new') {
         fillFields(document.querySelector('.addProSection'), fields, entity)
     } else {
         showPopup(error)
@@ -1407,6 +1441,10 @@ const getOrganisationFields = () =>  {
         ok_to_contact: {
             field: "ok_to_contact",
             type: "checkbox"
+        },
+        show_in_cg_search: {
+            field: 'show_in_cg_search',
+            type: 'checkbox'
         }
     }
 }

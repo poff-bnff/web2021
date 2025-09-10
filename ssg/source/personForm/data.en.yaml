@@ -1,4 +1,4 @@
-path: add_pro
+path: my_profile
 data:
     genders: /_domainStrapidata/Gender.yaml
     person: /_domainStrapidata/Person.yaml

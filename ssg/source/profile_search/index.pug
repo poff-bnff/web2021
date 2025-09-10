@@ -40,7 +40,7 @@ block content
 
                 label.profile_type_selection
 
-                    a.type_selection_box(href= "https://industry.poff.ee/add_pro" title="My Pro Profile")
+                    a.type_selection_box(href= "/my_profile" title="My Pro Profile")
                         span.profile_type_svg
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-user">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -216,7 +216,8 @@ block content
                         if profile && profile.filterName
                             .profile_card(id=profile.uniqueId style="display:none;")
                                 a.profile_card_link(href=`/${lang_path}${profile.slug}`)
-                                    - var assetsDir = 'https://assets.poff.ee/img/'
+                                    - var strapiDomain = `${process.env.StrapiProtocol}://${process.env.StrapiHost}`
+                                    - var assetsDir = strapiDomain.includes('admin.poff.ee') ? 'https://assets.poff.ee/img/' : `${strapiDomain}/uploads/`
                                     if profile.logoColour
                                         - var profilePic = `${assetsDir}${profile.logoColour.hash}${profile.logoColour.ext}`
                                     else if profile.logoBlack
