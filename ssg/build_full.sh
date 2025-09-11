@@ -253,7 +253,7 @@ printf '\n----------                  Adding ignore paths                -------
 nice -10 node ./helpers/add_config_ignorePaths.js
 printf '\n----------               Finished adding ignore paths            ----------\n'
 
-nice -10 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
+BROWSERSLIST_IGNORE_OLD_DATA=true nice -10 node ./node_modules/entu-ssg/src/build.js ./entu-ssg.yaml full
 
 [ -d "../www/build.$DOMAIN" ] && rm -rf "../www/build.$DOMAIN/"*
 [ ! -d "../www/build.$DOMAIN" ] && mkdir -p "../www/build.$DOMAIN"
