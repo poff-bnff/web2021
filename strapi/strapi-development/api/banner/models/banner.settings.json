@@ -14,8 +14,9 @@
     "name": {
       "type": "string"
     },
-    "domain": {
-      "model": "domain"
+    "domains": {
+      "collection": "domain",
+      "via": "banner_group"
     },
     "interval": {
       "type": "integer"
