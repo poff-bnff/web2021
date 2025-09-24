@@ -21,6 +21,10 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "banner_group": {
+      "via": "domains",
+      "model": "banner"
     }
   }
 }
