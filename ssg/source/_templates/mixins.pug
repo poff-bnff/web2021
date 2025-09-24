@@ -1,7 +1,7 @@
 
 //- lisab õige video treileriks, kasutab film.layout.pug
 mixin video(videoId='')
-    if videoId.length === 9
+    if videoId.length === 9 || videoId.length === 10
         iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}`
             frameborder='0' allow='accelerometer' autoplay='' encrypted-media=''
             gyroscope='' picture-in-picture”='' allowfullscreen='')
@@ -14,7 +14,7 @@ mixin video(videoId='')
 //- autoplay video
 mixin videoAp(clipUrlDefault='')
     - var videoId = clipUrlDefault.split('=')[1] || ''
-    if videoId.length === 9
+    if videoId.length === 9 || videoId.length === 10
         iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
             frameborder='0' allow='accelerometer' encrypted-media=''
             gyroscope='' picture-in-picture='' allowfullscreen='')
@@ -34,7 +34,7 @@ mixin videolQaClip(videoUrl='')
 
 mixin heroVideo(clipUrlDefault='')
     - var videoId = clipUrlDefault.split('/')[3] || ''
-    if videoId.length === 9
+    if videoId.length === 9 || videoId.length === 10
         iframe(width='560' height='315' src=`https://player.vimeo.com/video/${videoId}?background=1`
             frameborder='0' allow='accelerometer' encrypted-media=''
             gyroscope='' picture-in-picture='' allowfullscreen='')
@@ -446,5 +446,3 @@ mixin initMap(s_lat, s_lng)
         }
             window.initMap = initMap
         )
-
-

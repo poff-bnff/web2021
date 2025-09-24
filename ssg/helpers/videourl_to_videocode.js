@@ -4,7 +4,7 @@ function videoUrlToVideoCode(videoUrl) {
             if (videoUrl.includes('vimeo')) {
                 let splitVimeoLink = videoUrl.split('/')
                 let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[3] : ''
-                if (videoCode.length === 9) {
+                if (videoCode.length === 9 || videoCode.length === 10) {
                     videoUrl = videoCode
                 }
             } else {
