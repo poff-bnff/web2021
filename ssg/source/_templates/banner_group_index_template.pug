@@ -1,0 +1,24 @@
+#banner-content
+    section.f_img_slider_box.carousel.slide(id=`slider-${self.position}` data-bs-ride='carousel' data-bs-interval=`${self.interval || 5000}` style=`width: ${self.width}px; height: ${self.height}px;`)
+        ol.carousel-indicators
+            each val, index in self.banners
+                li(data-bs-target=`#slider-${self.position}` href=`#slider-${self.position}` data-bs-slide-to=index class=`${index === 0 ? 'active' : ''}`)
+        .carousel-inner
+            if self.banners && self.banners.length
+                each banner, index in self.banners
+                    if index == 0
+                        .carousel-item.active
+                            a(href=`${banner.target}` target="_BLANK")
+                                img.d-block(src=`${banner.image.url}` alt=banner.name style=`width: ${self.width}px; height: ${self.height}px;`)
+                    else
+                        .carousel-item
+                            a(href=`${banner.target}` target="_BLANK")
+                                img.d-block(src=`${banner.image.url}` alt=banner.name style=`width: ${self.width}px; height: ${self.height}px;`)
+        a.carousel-control-prev(href=`#slider-${self.position}` role='button' data-bs-slide='prev')
+            svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                polyline(points='15 18 9 12 15 6')
+            span.sr-only Previous
+        a.carousel-control-next(href=`#slider-${self.position}` role='button' data-bs-slide='next')
+            svg.svg_icon_prev_next(viewBox='0 0 24 24' width='24' height='24' stroke='white' stroke-width='1' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                polyline(points='9 18 15 12 9 6')
+            span.sr-only Next

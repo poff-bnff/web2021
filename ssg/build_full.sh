@@ -194,6 +194,12 @@ status=$?;[ $status -eq 0 ] && echo 'fetch_locations_from_yaml succeeded' || ech
 [ $status -ne 0 ] && exit $status
 echo "Time passed: $SECONDS seconds"
 
+echo 'fetch_banners_from_yaml'
+nice -10 node ./helpers/fetch_banners_from_yaml.js
+status=$?;[ $status -eq 0 ] && echo 'fetch_banners_from_yaml succeeded' || echo 'fetch_banners_from_yaml failed. Exit'
+[ $status -ne 0 ] && exit $status
+echo "Time passed: $SECONDS seconds"
+
 echo 'assets/xml'
 nice -10 node ./helpers/xml.js
 status=$?;[ $status -eq 0 ] && echo 'assets/xml succeeded' || echo 'assets/xml failed. Exit'

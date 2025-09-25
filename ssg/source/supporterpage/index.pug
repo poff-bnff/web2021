@@ -1,6 +1,5 @@
 extends /_templates/layout.pug
 include /_templates/mixins.pug
-
     block content
         //- PRAEGU FOOTERI STIILID
 
@@ -18,6 +17,7 @@ include /_templates/mixins.pug
             //-             p.dark_1= self.data.supporters.intro
             - var sortedSupportersCat = self.data.supporters.supporters.sort(function(a, b){ return a.order-b.order })
             section.supporters
+
                 each section in sortedSupportersCat
                     row
                         if section.name && (typeof(section.name) !== 'object')

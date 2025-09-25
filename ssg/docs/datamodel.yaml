@@ -3233,11 +3233,14 @@ Banner: &Banner
 BannerGroup: &BannerGroup
     _path: /banners
     name: (text)
-    domain: *Domain
+    domains: #(Component (repeatable))
+        - *Domain
     interval: (number)
     position: (enumeration)
     banners: #(Component (repeatable))
         - *Banner
+    width: (Number)
+    height: (Number)
 
 # Product: &Product
 #     _path: /product
