@@ -22,9 +22,9 @@
       "type": "string",
       "required": true
     },
-    "banner_group": {
+    "banner_groups": {
       "via": "domains",
-      "model": "banner"
+      "collection": "banner"
     }
   }
 }

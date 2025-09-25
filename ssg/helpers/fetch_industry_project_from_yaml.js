@@ -298,7 +298,7 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
                     if (industry_project.clipUrl.includes('vimeo')) {
                         let splitVimeoLink = industry_project.clipUrl.split('/')
                         let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length - 1] : ''
-                        if (videoCode.length === 9) {
+                        if (videoCode.length === 9 || videoCode.length === 10) {
                             industry_project.clipUrlCode = videoCode
                         }
                     } else {
@@ -473,4 +473,3 @@ function startIndustryProjectProcessing(languages, STRAPIDATA_IND_PROJECT, proje
         // }
     }
 }
-

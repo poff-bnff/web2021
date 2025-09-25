@@ -249,7 +249,7 @@ function startdiscampProjectProcessing(languages, STRAPIDATA_DC_PROJECT, project
                     if (discamp_project.clipUrl.includes('vimeo')) {
                         let splitVimeoLink = discamp_project.clipUrl.split('/')
                         let videoCode = splitVimeoLink !== undefined ? splitVimeoLink[splitVimeoLink.length-1] : ''
-                        if (videoCode.length === 9) {
+                        if (videoCode.length === 9 || videoCode.length === 10) {
                             discamp_project.clipUrlCode = videoCode
                         }
                     } else {
