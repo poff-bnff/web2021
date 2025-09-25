@@ -24,11 +24,11 @@ cassettes_festival_editions:
     filmikool.poff.ee: [0]
     hoff.ee: [84, 85] # - 61
     industry.poff.ee: [86]
-    justfilm.ee: [74] # - 29
+    justfilm.ee: [82] # - 29
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79, 81, 84, 85]
+    poff.ee: [73, 74, 79 ] # 81, 83
     shorts.poff.ee: [79] # - 79 on õige, e 2024, 67 on 2023 testiks
     tartuff.ee: [87]
 
@@ -74,18 +74,18 @@ userprofileRequiredFields:
         birthdate: true
         phoneNr: true
 
-XML_festival_editions: [84, 85] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [81, 83] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
     filmikool.poff.ee: [0]
     hoff.ee: [84, 85]
     industry.poff.ee: [86]
-    justfilm.ee: [74]
+    justfilm.ee: [82]
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79, 81, 84, 85]
+    poff.ee: [73, 74, 79 ] # 81, 83
     shorts.poff.ee: [79]
     tartuff.ee: [87]
 
@@ -190,7 +190,7 @@ target_build_models:
     - kumu-footer
     - kumu-menu
     - login
-    - organisation
+    # - organisation
     - person
     - pof-fi-article
     - pof-fi-footer
