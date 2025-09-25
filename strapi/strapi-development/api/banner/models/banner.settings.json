@@ -16,7 +16,8 @@
     },
     "domains": {
       "collection": "domain",
-      "via": "banner_group"
+      "via": "banner_groups",
+      "dominant": true
     },
     "interval": {
       "type": "integer"
