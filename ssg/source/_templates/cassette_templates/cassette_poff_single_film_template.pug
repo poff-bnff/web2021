@@ -7,7 +7,14 @@ main.grid_film(id=self.id)
 
     if self.films
         each film in self.films
-            
+            //- Filmi tagide nagivatsioon
+            - var searchPath = ''
+            - if (self.locale === 'ru')
+                - searchPath = 'iskat_film'
+            - else if (self.locale === 'en')
+                - searchPath = 'search_film'
+            - else
+                - searchPath = 'otsi_filmi'
             //- KARUSELL filmi piltidega
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
@@ -51,8 +58,10 @@ main.grid_film(id=self.id)
 
                 .premiere_type
                     if film.tags && film.tags.premiere_types && film.tags.premiere_types[0]
-                        //- Kui on mitu, eraldatakse komadega, kui vaid esimest ühte vaja, siis film.tags.premiere_types[0]
-                        p.premiere_type= film.tags.premiere_types.join(', ')
+                        each premiere_type, index in film.tags.premiere_types
+                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?premieretypes=' + premiere_type)= premiere_type
+                            if index < film.tags.premiere_types.length - 1
+                                | ,
 
                 h1.film_title_detailed= film.title || film.title_et
 
@@ -84,9 +93,14 @@ main.grid_film(id=self.id)
                             .str_info_value.clr_primary= film.credentials.rolePersonsByRole.director.join(', ')
                     //- todo #383
                     if film.orderedCountriesDisplay
+                        - var countries = film.orderedCountriesDisplay.split(',').map(c => c.trim())
                         .str_info_grid_3
                             .str_info_label= self.label.film.countries
-                            .str_info_value= film.orderedCountriesDisplay
+                            .str_info_value
+                                each country, index in countries
+                                    a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?countries=' + country)= country
+                                    if index < countries.length - 1
+                                        | , 
 
                     if film.year
                         .str_info_grid_3
@@ -122,14 +136,6 @@ main.grid_film(id=self.id)
                                 .str_info_meta_festival= uniqueFestivalEditions.join(', ')
 
                         if film.tags
-                            //- Filmi tagide nagivatsioon
-                            - var searchPath = ''
-                            - if (self.locale === 'ru')
-                                - searchPath = 'iskat_film'
-                            - else if (self.locale === 'en')
-                                - searchPath = 'search_film'
-                            - else
-                                - searchPath = 'otsi_filmi'
                             if film.tags.programmes && film.tags.programmes[0]
 
                                 -
@@ -157,7 +163,7 @@ main.grid_film(id=self.id)
                                 .str_info_meta_label.dark_1= self.label.film.genre
                                 .str_info_meta_festival 
                                     each genre, index in film.tags.genres
-                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre.slug)= genre
+                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre)= genre
                                         if index < film.tags.genres.length - 1
                                             | , 
                             
@@ -587,7 +593,7 @@ main.grid_film(id=self.id)
                             each sub, index in film.subtitles
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + sub.name)= sub.name
                                 if index < film.subtitles.length - 1
-                                    | ,
+                                    | , 
 
                 if film.other_festivals
                     .str_info_grid_3
@@ -783,7 +789,8 @@ main.grid_film(id=self.id)
                                                 if screening.location.hall && screening.location.hall.name
                                                     span.screening_hall= screening.location.hall.name
                                                     if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                                        span.screening_venue= ` ${screening.location.hall.cinema.name}`
+                                                        span.screening_venue 
+                                                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?cinemas=' + encodeURIComponent(screening.location.hall.cinema.name))= screening.location.hall.cinema.name
                                                         if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
                                                             span.city= ` ${screening.location.hall.cinema.town.name}`
                                                             //- span.city= ` ${screening.location.hall.cinema.town.name}, ${screening.location.hall.cinema.town.country.name}`
@@ -815,7 +822,11 @@ main.grid_film(id=self.id)
                                             if subtitles && subtitles.length
                                                 .str_info_grid_3
                                                     span.screening_info_label= self.label.screening.subtitles
-                                                    span.screening_info_value= subtitles.sort().join(', ')
+                                                    span.screening_info_value 
+                                                        each subtitle, index in subtitles.sort()
+                                                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + subtitle)= subtitle
+                                                            if index < subtitles.length - 1
+                                                                | , 
 
 
                                             - var iqnac = screening.introQaConversation

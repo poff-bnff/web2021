@@ -104,6 +104,29 @@ header.menu
         ul
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu2/index.html`)
+        
+            div#header-popup
+                nav.org_menu
+                    ul
+                        li.org_item
+                            a(href='https://poff.ee') PÖFF
+                        li.org_item
+                            a(href='https://industry.poff.ee') !{`Industry@Tallinn & Baltic Event`}
+                        li.org_item
+                            a(href='https://justfilm.ee/') JUST FILM
+                        li.org_item
+                            a(href='https://shorts.poff.ee') PÖFF Shorts
+                        li.org_item
+                            a(href='https://hoff.ee') HÕFF
+                        li.org_item
+                            a(href='https://tartuff.ee') TARTUFF
+                        li.org_item.arrow ➔
+                        li.org_item.small
+                            a(href='https://kumu.poff.ee') KUMU Doc
+                        li.org_item.small
+                            a(href='https://filmikool.poff.ee') PÖFFi Filmikool
+                        li.org_item.small
+                            a(href='https://oyafond.ee') BRUNO O'YA Fond
 
     script.
         var langpath = "!{(lang_path)}"

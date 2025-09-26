@@ -10,8 +10,7 @@ jQuery(document).ready(function() {
         const windowWidth = $(window).width()
 
         if (windowWidth > 1099) {
-        
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            if (scrollTop > lastScrollTop) {
                 $header.addClass('hide-on-scroll')
             } else {
                 $header.removeClass('hide-on-scroll')
