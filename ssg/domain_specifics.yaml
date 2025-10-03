@@ -24,7 +24,7 @@ cassettes_festival_editions:
     filmikool.poff.ee: [0]
     hoff.ee: [84, 85] # - 61
     industry.poff.ee: [86]
-    justfilm.ee: [82] # - 29
+    justfilm.ee: [82] # - 44
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
@@ -74,7 +74,7 @@ userprofileRequiredFields:
         birthdate: true
         phoneNr: true
 
-XML_festival_editions: [81, 83] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [81, 82,83] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]

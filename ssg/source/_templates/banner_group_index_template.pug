@@ -9,7 +9,8 @@
                     if index == 0
                         .carousel-item.active
                             a(href=`${banner.target}` target="_BLANK")
-                                img.d-block(src=`${banner.image.url}` alt=banner.name style=`width: ${self.width}px; height: ${self.height}px;`)
+                                //- img.d-block(src=`${banner.image.url}` alt=banner.name style=`width: 100%; height: auto;`)
+                                img.d-block(src=`${banner.image.url}` alt=banner.name style=`width: ${self.width}px; height: ${self.height}px; object-fit: cover;`)
                     else
                         .carousel-item
                             a(href=`${banner.target}` target="_BLANK")
