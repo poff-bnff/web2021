@@ -1,0 +1,835 @@
+-
+    time: 2025.08.28 12:20:40 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28714'
+        parameters: '1'
+        time: 2025.08.28 12:20:40 (+03:00)
+    PID: 12315
+    error: null
+-
+    time: 2025.08.28 12:20:40 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28714'
+        parameters: '1'
+        time: 2025.08.28 12:20:40 (+03:00)
+        also_builds: null
+    PID: 12315
+    error: null
+-
+    time: 2025.08.28 12:37:52 (+03:00)
+    type: Build fail stderr
+    duration: 1031937
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28714'
+        parameters: '1'
+        time: 2025.08.28 12:20:40 (+03:00)
+        also_builds: null
+    PID: 12315
+    error: >
+        (node:12352) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED
+        environment variable to '0' makes TLS connections and HTTPS requests
+        insecure by disabling certificate verification.
+
+        (Use `node --trace-warnings ...` to show where the warning was created)
+
+        Browserslist: caniuse-lite is outdated. Please run:
+          npx update-browserslist-db@latest
+          Why you should do it regularly: https://github.com/browserslist/update-db#readme
+-
+    time: 2025.08.28 12:39:49 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28715'
+        parameters: '1'
+        time: 2025.08.28 12:39:49 (+03:00)
+    PID: 12591
+    error: null
+-
+    time: 2025.08.28 12:39:49 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28715'
+        parameters: '1'
+        time: 2025.08.28 12:39:49 (+03:00)
+        also_builds: null
+    PID: 12591
+    error: null
+-
+    time: 2025.08.28 12:54:32 (+03:00)
+    type: Build fail stderr
+    duration: 883502
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28715'
+        parameters: '1'
+        time: 2025.08.28 12:39:49 (+03:00)
+        also_builds: null
+    PID: 12591
+    error: >
+        (node:12628) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED
+        environment variable to '0' makes TLS connections and HTTPS requests
+        insecure by disabling certificate verification.
+
+        (Use `node --trace-warnings ...` to show where the warning was created)
+
+        Browserslist: caniuse-lite is outdated. Please run:
+          npx update-browserslist-db@latest
+          Why you should do it regularly: https://github.com/browserslist/update-db#readme
+-
+    time: 2025.08.29 08:01:34 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28716'
+        parameters: '4713'
+        time: 2025.08.29 08:01:34 (+03:00)
+    PID: 208
+    error: null
+-
+    time: 2025.08.29 08:01:34 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28716'
+        parameters: '4713'
+        time: 2025.08.29 08:01:34 (+03:00)
+        also_builds: null
+    PID: 208
+    error: null
+-
+    time: 2025.08.29 08:01:41 (+03:00)
+    type: Build finish
+    duration: 6531
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28716'
+        parameters: '4713'
+        time: 2025.08.29 08:01:34 (+03:00)
+        also_builds: null
+    PID: 208
+    error: null
+-
+    time: 2025.08.29 08:08:19 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28717'
+        parameters: '4713'
+        time: 2025.08.29 08:08:19 (+03:00)
+    PID: 366
+    error: null
+-
+    time: 2025.08.29 08:08:19 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28717'
+        parameters: '4713'
+        time: 2025.08.29 08:08:19 (+03:00)
+        also_builds: null
+    PID: 366
+    error: null
+-
+    time: 2025.08.29 08:08:26 (+03:00)
+    type: Build finish
+    duration: 6964
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28717'
+        parameters: '4713'
+        time: 2025.08.29 08:08:19 (+03:00)
+        also_builds: null
+    PID: 366
+    error: null
+-
+    time: 2025.08.29 08:08:49 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28718'
+        parameters: '4713'
+        time: 2025.08.29 08:08:49 (+03:00)
+    PID: 454
+    error: null
+-
+    time: 2025.08.29 08:08:49 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28718'
+        parameters: '4713'
+        time: 2025.08.29 08:08:49 (+03:00)
+        also_builds: null
+    PID: 454
+    error: null
+-
+    time: 2025.08.29 08:08:56 (+03:00)
+    type: Build finish
+    duration: 7191
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28718'
+        parameters: '4713'
+        time: 2025.08.29 08:08:49 (+03:00)
+        also_builds: null
+    PID: 454
+    error: null
+-
+    time: 2025.08.29 08:11:51 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28719'
+        parameters: '4713'
+        time: 2025.08.29 08:11:51 (+03:00)
+    PID: 550
+    error: null
+-
+    time: 2025.08.29 08:11:51 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28719'
+        parameters: '4713'
+        time: 2025.08.29 08:11:51 (+03:00)
+        also_builds: null
+    PID: 550
+    error: null
+-
+    time: 2025.08.29 08:11:57 (+03:00)
+    type: Build finish
+    duration: 6477
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28719'
+        parameters: '4713'
+        time: 2025.08.29 08:11:51 (+03:00)
+        also_builds: null
+    PID: 550
+    error: null
+-
+    time: 2025.08.29 08:32:27 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28720'
+        parameters: '4713'
+        time: 2025.08.29 08:32:27 (+03:00)
+    PID: 1053
+    error: null
+-
+    time: 2025.08.29 08:32:27 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28720'
+        parameters: '4713'
+        time: 2025.08.29 08:32:27 (+03:00)
+        also_builds: null
+    PID: 1053
+    error: null
+-
+    time: 2025.08.29 08:32:35 (+03:00)
+    type: Build finish
+    duration: 7675
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28720'
+        parameters: '4713'
+        time: 2025.08.29 08:32:27 (+03:00)
+        also_builds: null
+    PID: 1053
+    error: null
+-
+    time: 2025.08.29 10:15:10 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28721'
+        parameters: '4713'
+        time: 2025.08.29 10:15:10 (+03:00)
+    PID: 1286
+    error: null
+-
+    time: 2025.08.29 10:15:10 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28721'
+        parameters: '4713'
+        time: 2025.08.29 10:15:10 (+03:00)
+        also_builds: null
+    PID: 1286
+    error: null
+-
+    time: 2025.08.29 10:15:22 (+03:00)
+    type: Build finish
+    duration: 12455
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28721'
+        parameters: '4713'
+        time: 2025.08.29 10:15:10 (+03:00)
+        also_builds: null
+    PID: 1286
+    error: null
+-
+    time: 2025.08.29 10:15:37 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28722'
+        parameters: '4713'
+        time: 2025.08.29 10:15:37 (+03:00)
+    PID: 1374
+    error: null
+-
+    time: 2025.08.29 10:15:37 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28722'
+        parameters: '4713'
+        time: 2025.08.29 10:15:37 (+03:00)
+        also_builds: null
+    PID: 1374
+    error: null
+-
+    time: 2025.08.29 10:15:50 (+03:00)
+    type: Build finish
+    duration: 12925
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28722'
+        parameters: '4713'
+        time: 2025.08.29 10:15:37 (+03:00)
+        also_builds: null
+    PID: 1374
+    error: null
+-
+    time: 2025.08.29 10:16:25 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28723'
+        parameters: '4713'
+        time: 2025.08.29 10:16:25 (+03:00)
+    PID: 1462
+    error: null
+-
+    time: 2025.08.29 10:16:25 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28723'
+        parameters: '4713'
+        time: 2025.08.29 10:16:25 (+03:00)
+        also_builds: null
+    PID: 1462
+    error: null
+-
+    time: 2025.08.29 10:16:37 (+03:00)
+    type: Build finish
+    duration: 11950
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28723'
+        parameters: '4713'
+        time: 2025.08.29 10:16:25 (+03:00)
+        also_builds: null
+    PID: 1462
+    error: null
+-
+    time: 2025.08.29 10:39:09 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28724'
+        parameters: '4713'
+        time: 2025.08.29 10:39:09 (+03:00)
+    PID: 1643
+    error: null
+-
+    time: 2025.08.29 10:39:09 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28724'
+        parameters: '4713'
+        time: 2025.08.29 10:39:09 (+03:00)
+        also_builds: null
+    PID: 1643
+    error: null
+-
+    time: 2025.08.29 10:39:20 (+03:00)
+    type: Build finish
+    duration: 10701
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28724'
+        parameters: '4713'
+        time: 2025.08.29 10:39:09 (+03:00)
+        also_builds: null
+    PID: 1643
+    error: null
+-
+    time: 2025.08.29 10:47:17 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28725'
+        parameters: '4713'
+        time: 2025.08.29 10:47:17 (+03:00)
+    PID: 1844
+    error: null
+-
+    time: 2025.08.29 10:47:17 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28725'
+        parameters: '4713'
+        time: 2025.08.29 10:47:17 (+03:00)
+        also_builds: null
+    PID: 1844
+    error: null
+-
+    time: 2025.08.29 10:47:28 (+03:00)
+    type: Build finish
+    duration: 11205
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28725'
+        parameters: '4713'
+        time: 2025.08.29 10:47:17 (+03:00)
+        also_builds: null
+    PID: 1844
+    error: null
+-
+    time: 2025.08.29 10:59:03 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28726'
+        parameters: '4713'
+        time: 2025.08.29 10:59:03 (+03:00)
+    PID: 1975
+    error: null
+-
+    time: 2025.08.29 10:59:03 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28726'
+        parameters: '4713'
+        time: 2025.08.29 10:59:03 (+03:00)
+        also_builds: null
+    PID: 1975
+    error: null
+-
+    time: 2025.08.29 10:59:14 (+03:00)
+    type: Build finish
+    duration: 10936
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28726'
+        parameters: '4713'
+        time: 2025.08.29 10:59:03 (+03:00)
+        also_builds: null
+    PID: 1975
+    error: null
+-
+    time: 2025.08.29 11:02:11 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28727'
+        parameters: '4713'
+        time: 2025.08.29 11:02:11 (+03:00)
+    PID: 2063
+    error: null
+-
+    time: 2025.08.29 11:02:11 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28727'
+        parameters: '4713'
+        time: 2025.08.29 11:02:11 (+03:00)
+        also_builds: null
+    PID: 2063
+    error: null
+-
+    time: 2025.08.29 11:02:22 (+03:00)
+    type: Build finish
+    duration: 11092
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28727'
+        parameters: '4713'
+        time: 2025.08.29 11:02:11 (+03:00)
+        also_builds: null
+    PID: 2063
+    error: null
+-
+    time: 2025.08.29 11:02:57 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28728'
+        parameters: '4713'
+        time: 2025.08.29 11:02:57 (+03:00)
+    PID: 2151
+    error: null
+-
+    time: 2025.08.29 11:02:57 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28728'
+        parameters: '4713'
+        time: 2025.08.29 11:02:57 (+03:00)
+        also_builds: null
+    PID: 2151
+    error: null
+-
+    time: 2025.08.29 11:03:07 (+03:00)
+    type: Build finish
+    duration: 10285
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28728'
+        parameters: '4713'
+        time: 2025.08.29 11:02:57 (+03:00)
+        also_builds: null
+    PID: 2151
+    error: null
+-
+    time: 2025.08.29 11:05:28 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28729'
+        parameters: '4713'
+        time: 2025.08.29 11:05:27 (+03:00)
+    PID: 2241
+    error: null
+-
+    time: 2025.08.29 11:05:28 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28729'
+        parameters: '4713'
+        time: 2025.08.29 11:05:27 (+03:00)
+        also_builds: null
+    PID: 2241
+    error: null
+-
+    time: 2025.08.29 11:05:40 (+03:00)
+    type: Build finish
+    duration: 12663
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28729'
+        parameters: '4713'
+        time: 2025.08.29 11:05:27 (+03:00)
+        also_builds: null
+    PID: 2241
+    error: null
+-
+    time: 2025.08.29 11:19:28 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28730'
+        parameters: '4713'
+        time: 2025.08.29 11:19:28 (+03:00)
+    PID: 2345
+    error: null
+-
+    time: 2025.08.29 11:19:28 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28730'
+        parameters: '4713'
+        time: 2025.08.29 11:19:28 (+03:00)
+        also_builds: null
+    PID: 2345
+    error: null
+-
+    time: 2025.08.29 11:19:41 (+03:00)
+    type: Build finish
+    duration: 12962
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28730'
+        parameters: '4713'
+        time: 2025.08.29 11:19:28 (+03:00)
+        also_builds: null
+    PID: 2345
+    error: null
+-
+    time: 2025.08.29 11:34:52 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28731'
+        parameters: '1'
+        time: 2025.08.29 11:34:52 (+03:00)
+    PID: 2487
+    error: null
+-
+    time: 2025.08.29 11:34:52 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28731'
+        parameters: '1'
+        time: 2025.08.29 11:34:52 (+03:00)
+        also_builds: null
+    PID: 2487
+    error: null
+-
+    time: 2025.08.29 11:40:04 (+03:00)
+    type: Build fail error
+    duration: 311357
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28731'
+        parameters: '1'
+        time: 2025.08.29 11:34:52 (+03:00)
+        also_builds: null
+    PID: 2487
+    error: >-
+        {"killed":false,"code":1,"signal":null,"cmd":"bash
+        /var/www/poff/web2021/ssg/build_full.sh industry.poff.ee target 1"}
+-
+    time: 2025.08.29 11:40:04 (+03:00)
+    type: Build fail stderr
+    duration: 311357
+    command:
+        domain: industry.poff.ee
+        file: build_full.sh
+        type: target
+        log_id: '28731'
+        parameters: '1'
+        time: 2025.08.29 11:34:52 (+03:00)
+        also_builds: null
+    PID: 2487
+    error: >
+        (node:2524) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED
+        environment variable to '0' makes TLS connections and HTTPS requests
+        insecure by disabling certificate verification.
+
+        (Use `node --trace-warnings ...` to show where the warning was created)
+
+        undefined:1
+
+        undefined
+
+        ^
+
+
+        SyntaxError: Unexpected token u in JSON at position 0
+            at JSON.parse (<anonymous>)
+            at Object.<anonymous> (/var/www/poff/web2021/ssg/helpers/fetch_trioblock_from_yaml.js:67:25)
+            at Module._compile (internal/modules/cjs/loader.js:1063:30)
+            at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+            at Module.load (internal/modules/cjs/loader.js:928:32)
+            at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+            at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+            at internal/main/run_main_module.js:17:47
+-
+    time: 2025.08.29 11:51:31 (+03:00)
+    type: Add to queue
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28732'
+        parameters: '4713'
+        time: 2025.08.29 11:51:31 (+03:00)
+    PID: 2663
+    error: null
+-
+    time: 2025.08.29 11:51:31 (+03:00)
+    type: Build start
+    duration: null
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28732'
+        parameters: '4713'
+        time: 2025.08.29 11:51:31 (+03:00)
+        also_builds: null
+    PID: 2663
+    error: null
+-
+    time: 2025.08.29 11:51:42 (+03:00)
+    type: Build finish
+    duration: 11419
+    command:
+        domain: industry.poff.ee
+        file: build_organisation.sh
+        type: target
+        log_id: '28732'
+        parameters: '4713'
+        time: 2025.08.29 11:51:31 (+03:00)
+        also_builds: null
+    PID: 2663
+    error: null
