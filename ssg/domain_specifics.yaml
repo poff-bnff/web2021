@@ -28,7 +28,7 @@ cassettes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79 ] # 81, 83
+    poff.ee: [81, 83] # 81, 83
     shorts.poff.ee: [79] # - 79 on õige, e 2024, 67 on 2023 testiks
     tartuff.ee: [87]
 
@@ -85,7 +85,7 @@ programmes_festival_editions:
     kinoff.poff.ee: [72]
     kumu.poff.ee: [83]
     oyafond.ee: [31]
-    poff.ee: [73, 74, 79 ] # 81, 83
+    poff.ee: [81, 83] # 81, 83
     shorts.poff.ee: [79]
     tartuff.ee: [87]
 
