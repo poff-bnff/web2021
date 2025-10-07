@@ -294,12 +294,15 @@ block content
                                 .dir_img
                                     if person.person.picture
                                         img.img_dir(src=`https://assets.poff.ee/img/${person.person.picture.hash}${person.person.picture.ext}` alt = person.person.firstNameLastName)
+                                    else if person.profile_img
+                                        img.img_dir(src=`https://assets.poff.ee/img/${person.person.profile_img.hash}${person.person.profile_img.ext}` alt = person.person.firstNameLastName)
+
                                     if person.person.firstName || person.person.lastName
 
-                                    .str_info_meta_gi
-                                        .str_info_meta_item
-                                            .str_info_meta_label.dark_semi= person.role_at_film.roleName
-                                            .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
+                                        .str_info_meta_gi
+                                            .str_info_meta_item
+                                                .str_info_meta_label.dark_semi= person.role_at_film.roleName
+                                                .str_info_value.text_right.dark_1= `${person.person.firstName ? person.person.firstName : ''} ${person.person.lastName ? person.person.lastName : ''}`
 
                                 .dir_bio.dark_1
                                     if person.person.bio
