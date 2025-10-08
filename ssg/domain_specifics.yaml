@@ -74,7 +74,7 @@ userprofileRequiredFields:
         birthdate: true
         phoneNr: true
 
-XML_festival_editions: [81, 82] # - 56 # - 58 # - 29 # - 30 # - 32
+XML_festival_editions: [81, 82, 88] # - 56 # - 58 # - 29 # - 30 # - 32
 
 programmes_festival_editions:
     discoverycampus.poff.ee: [0]
