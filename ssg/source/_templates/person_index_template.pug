@@ -2,9 +2,8 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    - var strapiDomain = `${process.env.StrapiProtocol}://${process.env.StrapiHost}`
-    - var assetsDir = strapiDomain.includes('admin.poff.ee') ? 'https://assets.poff.ee/img/' : `${strapiDomain}/uploads/`
-
+    - var assetsDir = 'https://assets.poff.ee/img/'
+    - var audioDir = 'https://assets.poff.ee/img/'
     if self.firstNameLastName
         section.grid_creative
             section.c_img_box
@@ -349,6 +348,32 @@ block content
                         .person_info_label= self.label.userprofile.pitchOfVoice
                         .person_info_value= self.pitch_of_voice.name
 
+                if (self.acting_age_from || self.acting_age_to)
+                    .str_info_grid_3
+                        .person_info_label= self.label.userprofile.actingAge || 'Acting age'
+                        .person_info_value
+                            - var from = self.acting_age_from ? `${self.acting_age_from}` : ''
+                            - var to = self.acting_age_to ? `${self.acting_age_to}` : ''
+                            - if (from && to)
+                                | #{from} – #{to}
+                            - else if (from)
+                                | from #{from}
+                            - else if (to)
+                                | up to #{to}
+
+                if (self.h_rate_from || self.h_rate_to)
+                    .str_info_grid_3
+                        .person_info_label= self.label.userprofile.hourlyRate
+                        .person_info_value
+                            - var from = self.h_rate_from ? `${self.h_rate_from}` : ''
+                            - var to = self.h_rate_to ? `${self.h_rate_to}` : ''
+                            - if (from && to)
+                                | #{from} – #{to} €
+                            - else if (from)
+                                | from #{from} €
+                            - else if (to)
+                                | up to #{to} €
+
                 if typeof self.skills !== 'undefined'
                     - var skills = self.skills
                     if typeof skills === 'string'
@@ -356,6 +381,14 @@ block content
                             .person_info_label= self.label.userprofile.skills
                             .person_info_value.font_h
                                 +format(skills)
+
+                if self.looking_for
+                    - var looking_for = self.looking_for
+                    if typeof looking_for === 'string'
+                        .str_info_grid_3
+                            .person_info_label= self.label.userprofile.lookingFor
+                            .person_info_value.font_h
+                                +format(looking_for)
 
                 if self.repr_org_name || self.repr_p_name || self.repr_email || self.repr_phone
                     .str_info_grid_3

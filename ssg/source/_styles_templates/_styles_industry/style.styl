@@ -221,6 +221,8 @@ header.menu
     right 0
     z-index 1000
     background-color white
+    transition transform 0.4s ease-in-out
+    will-change transform
     ul
         list-style none
         margin 0
@@ -299,10 +301,32 @@ header.menu
     justify-content space-between
 
 .megamenu_wrapper.show
-    display block
+    display flex
+    flex-direction column
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    overflow visible
+    background inherit
 
 .megamenu_wrapper > ul
+    flex 1 1 auto
+    display flex
+    flex-direction column
+    overflow-y auto
+    -webkit-overflow-scrolling touch
     padding 5rem 1rem 7.5rem 1rem
+
+.megamenu_wrapper > ul > .main_menu_includer
+    order 1
+
+.megamenu_wrapper > ul > #header-popup
+    order 2
+    margin-top auto
+    border-top 1px solid border_mediumgray
+    background inherit
 
 li.menu_item
     border-top 1px solid border_mediumgray
@@ -335,6 +359,32 @@ li.megamenu_sub_el > a
     font-size 1rem
     text-transform none
     font-weight 400
+
+.megamenu_wrapper .org_menu 
+    margin-top 0
+    padding 0
+
+.org_menu ul
+    display flex
+    flex-direction column
+    padding 0
+    margin 0
+
+.org_menu li.org_item
+    border-top 1px solid border_mediumgray
+    line-height 1.5
+    font-size 1rem
+    font-weight 500
+    a
+        display block
+        padding 0.75rem 0.5rem
+        text-decoration none
+
+.org_menu li.org_item:last-child
+    border-bottom 1px solid border_mediumgray
+
+.org_menu li.org_item.arrow
+    display none
 
 nav.lang_menu
     display none
@@ -2052,6 +2102,7 @@ row:nth-child(15) > .supporter_logos
 
 .person_gallery_img
     width 100%
+    padding-bottom 2rem
 
 .shop_item_head
     // background-color clr_primary
@@ -4736,10 +4787,11 @@ a .feather-user
     font-family font_p
     font-size .9rem
     color dark_2
-    margin 0
+    //margin 0
     padding 0
+    margin-top -2rem
     padding-left .3rem
-    padding-bottom 2rem
+    //padding-bottom 2rem
     text-align left
 
 .caption_offset
@@ -5314,7 +5366,7 @@ a:hover > .login_headline
 
 #supporter-popup
     position fixed
-    top 150px
+    top 177px
     right 0
     z-index 500
     text-align center
@@ -6102,7 +6154,75 @@ a:hover > .login_headline
 
 @media screen and (min-width: 1200px)
     // Menu styles in desktop
+    #header-popup
+        position fixed
+        top 0
+        left 0
+        right 0
+        width 100%
+        height 27px           
+        background bg_dark_3
+        z-index 5000
+        display flex
+        justify-content center
+        align-items center
+        border-bottom none 
+
+    #header-popup .org_menu
+        width 100%
+        display flex
+        justify-content center
+        align-items center
+
+    #header-popup .org_menu ul
+        display flex
+        flex-direction row
+        align-items center
+        justify-content center
+        flex-wrap nowrap
+        list-style none
+        margin 0
+        height 100%
+        border-top none
+        
+    header.menu #header-popup a 
+        font-size 13px
+        color white_96
+        padding-left 1.2rem
+        padding-right 1.2rem
+        font-weight 300
+
+    header.menu #header-popup .org_item.small a
+        font-size 12px
+    
+    .org_menu li.org_item.arrow
+        border-top none
+        display inline-block
+        color white_96
+        font-size 0.9em
+
+    header.menu #header-popup .org_item a:hover
+        color #f39133
+
+    header.menu #header-popup .org_item a[href^="https://industry.poff.ee"]
+        color poff_orange_2
+
+    header.menu #header-popup .org_menu a[href="https://industry.poff.ee"]:hover
+        //color clr_primary_text
+        color #f39133
+
+    .megamenu_wrapper > ul > #header-popup
+        background bg_dark_3
+        border-top none
+
+    .org_menu li.org_item:last-child
+        border-bottom none
+    
+    header.hide-on-scroll
+        transform translateY(-19%)
+
     header.menu
+        padding-top 27px
         box-shadow 0px 8px 8px -4px rgba(24, 39, 75, 0.08), 0px 4px 6px -4px rgba(24, 39, 75, 0.12)
         .menu_top
             position static
@@ -6217,11 +6337,11 @@ a:hover > .login_headline
             width 300px
             padding 1.5rem
 
-    .org_menu
-        display flex
-        align-items center
-        .org_item:not(:last-child)
-            padding-right 2rem
+    //.org_menu
+    //    display flex
+    //    align-items center
+    //    .org_item:not(:last-child)
+    //        padding-right 2rem
 
     .megamenu_wrapper > ul
         padding 0 2rem
@@ -6231,6 +6351,7 @@ a:hover > .login_headline
 
     .megamenu_wrapper.visible > ul
         display flex
+        flex-direction row
 
     .megamenu > ul, .dropdown > ul
         box-shadow 0px 10px 32px -4px rgba(24, 39, 75, 0.10), 0px 6px 14px -6px rgba(24, 39, 75, 0.12)
@@ -6251,7 +6372,7 @@ a:hover > .login_headline
         pointer-events none
         position absolute
         width 100%
-        top 126px
+        top 153px
         left 0
         background-color white
         align-items stretch
