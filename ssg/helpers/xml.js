@@ -156,7 +156,8 @@ for (const screeningIx in SCREENINGS) {
 
             let slug = undefined
 
-            if (screening.cassette && screening.cassette[`slug_${lang}`]) {
+            if (screening.cassette && screen
+                ing.cassette[`slug_${lang}`]) {
                 slug = screening.cassette[`slug_${lang}`]
             }
 
