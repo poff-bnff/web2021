@@ -13,11 +13,11 @@ domain:
     tartuff.ee: tartuff
 
 domains_show_cassetes_wo_screenings:
-    - poff.ee
+    # - poff.ee
     - industry.poff.ee
-    - hoff.ee
-    - tartuff.ee
-    - oyafond.ee
+    # - hoff.ee
+    # - tartuff.ee
+    # - oyafond.ee
 
 cassettes_festival_editions:
     discoverycampus.poff.ee: [0]
