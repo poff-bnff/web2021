@@ -5,17 +5,17 @@ include /_templates/mixins.pug
 
 block content
 
-    - console.log('Number of films:', self.films ? self.films.length : 0);
-    - console.log('Number of ORDERED films:', self.orderedFilms ? self.orderedFilms.length : 0);
+    //- - console.log('Number of films:', self.films ? self.films.length : 0);
+    //- - console.log('Number of ORDERED films:', self.orderedFilms ? self.orderedFilms.length : 0);
 
     //- KUI KASSETIS ON ROHKEM KUI 1 FILM
     if !self.films || self.films && self.films.length > 1
-        - console.log('Multiple films found');
+        //- - console.log('Multiple films found');
 
         include /_templates/cassette_templates/cassette_poff_multiple_films_template.pug
 
     //- KUI KASSETIS ON AINULT 1 FILM
     else if self.films && self.films.length === 1
-        - console.log('Single film found');
+        //- - console.log('Single film found');
 
         include /_templates/cassette_templates/cassette_poff_single_film_template.pug
