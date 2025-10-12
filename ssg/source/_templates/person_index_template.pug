@@ -2,8 +2,12 @@ extends /_templates/layout.pug
 include /_templates/mixins.pug
 
 block content
-    - var assetsDir = 'https://assets.poff.ee/img/'
-    - var audioDir = 'https://assets.poff.ee/img/'
+
+    - var strapiDomain = `${process.env.StrapiProtocol}://${process.env.StrapiHost}`
+    - var assetsDir = strapiDomain.includes('admin.poff.ee') ? 'https://assets.poff.ee/img/' : `${strapiDomain}/uploads/`
+
+    //- - var assetsDir = 'https://assets.poff.ee/img/'
+    //- - var audioDir = 'https://assets.poff.ee/img/'
     if self.firstNameLastName
         section.grid_creative
             section.c_img_box
