@@ -661,6 +661,7 @@ FestivalEdition: &FestivalEdition
     slug_en: (UID)
     slug_ru: (UID)
     remoteId: UID
+    guestbook_id: (text)
     projects:
         - IndustryProject
     awardings:
