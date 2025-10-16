@@ -240,6 +240,7 @@ for (const lang of languages) {
                             let votemooAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
                             element.aliases = [`${votemooAliasLangPrefix}votemo`]
                         }
+
                         // 2022 adding parkimine (artikli slug parkimine)
                         if (DOMAIN === 'poff.ee' && element[key] === 'parkimine') {
                             let parkimineAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
@@ -291,6 +292,12 @@ for (const lang of languages) {
                         if (DOMAIN === 'discoverycampus.poff.ee' && element[key] === 'mmfaward') {
                             let dcmmfawardAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
                             element.aliases = [`${dcmmfawardAliasLangPrefix}mmfaward`]
+                        }
+
+                        // 2025 adding TOETA (artikli slug toeta)
+                        if (DOMAIN === 'poff.ee' && element[key] === 'toeta') {
+                            let toetaAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            element.aliases = [`${toetaAliasLangPrefix}toeta`]
                         }
 
                         // // 2022 mai Ukraina programm
