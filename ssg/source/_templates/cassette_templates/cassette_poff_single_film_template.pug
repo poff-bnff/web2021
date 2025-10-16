@@ -100,7 +100,7 @@ main.grid_film(id=self.id)
                                 each country, index in countries
                                     a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?countries=' + country)= country
                                     if index < countries.length - 1
-                                        | , 
+                                        | ,
 
                     if film.year
                         .str_info_grid_3
@@ -153,27 +153,27 @@ main.grid_film(id=self.id)
                                 //-    .str_info_meta_festival= programmes
                                 .str_info_meta_label.dark_1= self.label.film.programme
                                 .str_info_meta_festival
-                                    each programme, index in film.tags.programmes 
+                                    each programme, index in film.tags.programmes
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + programme.slug)= programme.name
                                         if index < film.tags.programmes.length - 1
                                             | ,
 
-                            
+
                             if film.tags.genres && film.tags.genres[0]
                                 .str_info_meta_label.dark_1= self.label.film.genre
-                                .str_info_meta_festival 
+                                .str_info_meta_festival
                                     each genre, index in film.tags.genres
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre)= genre
                                         if index < film.tags.genres.length - 1
-                                            | , 
-                            
+                                            | ,
+
                             if film.tags.keywords && film.tags.keywords[0]
                                 .str_info_meta_label.dark_1= self.label.film.keywords
                                 .str_info_meta_festival
                                     each keyword, index in film.tags.keywords
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?keywords=' + keyword)= keyword
                                         if index < film.tags.keywords.length - 1
-                                            | , 
+                                            | ,
 
                             if film.tags.trigger_warnings && film.tags.trigger_warnings[0]
                                 .str_info_meta_label.dark_1= self.label.film.triggerWarning
@@ -580,11 +580,11 @@ main.grid_film(id=self.id)
                 if film.languages
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
-                        .str_info_value 
+                        .str_info_value
                             each lang, index in film.languages
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?languages=' + lang.name)= lang.name
                                 if index < film.languages.length - 1
-                                    | , 
+                                    | ,
 
                 if film.subtitles
                     .str_info_grid_3
@@ -593,7 +593,7 @@ main.grid_film(id=self.id)
                             each sub, index in film.subtitles
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + sub.name)= sub.name
                                 if index < film.subtitles.length - 1
-                                    | , 
+                                    | ,
 
                 if film.other_festivals
                     .str_info_grid_3
@@ -789,7 +789,7 @@ main.grid_film(id=self.id)
                                                 if screening.location.hall && screening.location.hall.name
                                                     span.screening_hall= screening.location.hall.name
                                                     if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                                        span.screening_venue 
+                                                        span.screening_venue
                                                             a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?cinemas=' + encodeURIComponent(screening.location.hall.cinema.name))= screening.location.hall.cinema.name
                                                         if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
                                                             span.city= ` ${screening.location.hall.cinema.town.name}`
@@ -822,11 +822,11 @@ main.grid_film(id=self.id)
                                             if subtitles && subtitles.length
                                                 .str_info_grid_3
                                                     span.screening_info_label= self.label.screening.subtitles
-                                                    span.screening_info_value 
+                                                    span.screening_info_value
                                                         each subtitle, index in subtitles.sort()
                                                             a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + subtitle)= subtitle
                                                             if index < subtitles.length - 1
-                                                                | , 
+                                                                | ,
 
 
                                             - var iqnac = screening.introQaConversation
