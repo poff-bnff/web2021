@@ -296,7 +296,7 @@ for (const lang of languages) {
 
                         // 2025 adding TOETA (artikli slug toeta)
                         if (DOMAIN === 'poff.ee' && element[key] === 'toeta') {
-                            let toetaAliasLangPrefix = lang === 'en' ? '' : `${lang}/`
+                            let toetaAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${toetaAliasLangPrefix}toeta`]
                         }
 
