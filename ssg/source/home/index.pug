@@ -25,6 +25,10 @@ block content
         section.viiekas
             include /_templates/home_templates/viiekas_just.pug
 
+        //- if process.env['ChatApi'] && self.deepchatActiveInWeb
+        //-     .deep_chat_module
+        //-         include ../_templates/deep_chat_justfilm.pug
+
 
     else if process.env['DOMAIN'] === 'filmikool.poff.ee'
         - var whichTypesToDisplay = ['news']
