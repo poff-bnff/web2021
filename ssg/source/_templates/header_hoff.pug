@@ -7,7 +7,7 @@ header
     input#main_menu_toggle.main_menu_toggle(type='checkbox')
 
     nav.main_menu
-        ul.ul_yx 
+        ul.ul_yx
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
             div#header-popup
@@ -52,5 +52,5 @@ header
 
     - var widget_id = "20432"
 
-    if process.env['ChatApi'] && self.deepchatActiveInWeb
-        include ../_templates/deep_chat_hoff.pug
+    //- if process.env['ChatApi'] && self.deepchatActiveInWeb
+    //-     include ../_templates/deep_chat_hoff.pug

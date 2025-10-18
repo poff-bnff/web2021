@@ -104,7 +104,7 @@ header.menu
         ul
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu2/index.html`)
-        
+
             div#header-popup
                 nav.org_menu
                     ul
@@ -133,8 +133,8 @@ header.menu
         //- Below boolean needed for login
         var industryPage = true
 
-    if process.env['ChatApi'] && self.deepchatActiveInWeb
-    include ../_templates/deep_chat_industry.pug
+    //- if process.env['ChatApi'] && self.deepchatActiveInWeb
+    //- include ../_templates/deep_chat_industry.pug
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

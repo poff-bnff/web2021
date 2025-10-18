@@ -34,8 +34,8 @@ header
                             a(href='https://oyafond.ee') BRUNO O'YA Fond
                         li.org_item.small
                             a(href='https://poff.elisastage.ee') PÖFFi veebikino
-                        li.org_item.small 
-                            a(href='https://discoverycampus.poff.ee') Discovery Campus 
+                        li.org_item.small
+                            a(href='https://discoverycampus.poff.ee') Discovery Campus
                         //- span.org_item
                         //-     a(href='https://industrymeet.poff.ee')
                         //-         | Industrymeet
@@ -49,7 +49,7 @@ header
                 nav.lang_menu
                     each p, locale in self.otherLocalePaths
                         a(href=(p !== '/' ? p + '/' : '/'))= locale
-                    
+
         //- user_menu_hidden(id='user_menu_hidden' style='display: none')
         //-     li.user_menu.dropdown
         //-         a.user_menu My Campus
@@ -73,8 +73,8 @@ header
         //- Below boolean needed for login
         var industryPage = true
 
-    if process.env['ChatApi'] && self.deepchatActiveInWeb
-    include ../_templates/deep_chat_discamp.pug
+    //- if process.env['ChatApi'] && self.deepchatActiveInWeb
+    //- include ../_templates/deep_chat_discamp.pug
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

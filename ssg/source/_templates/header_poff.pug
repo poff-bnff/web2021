@@ -41,7 +41,7 @@ header
                         //- span.org_item
                         //-     a(href='https://elisastage.poff.ee')
                         //-         | PÖFF TV
-           
+
 
         user_menu_hidden(id='user_menu_hidden' style='display: none')
             li.user_menu.dropdown
@@ -94,8 +94,8 @@ header
 
     - var widget_id = "20457"
 
-    if process.env['ChatApi'] && self.deepchatActiveInWeb
-        include ../_templates/deep_chat_poff.pug
+    //- if process.env['ChatApi'] && self.deepchatActiveInWeb
+    //-     include ../_templates/deep_chat_poff.pug
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()
