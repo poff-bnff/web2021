@@ -95,7 +95,7 @@ main.grid_cassette
                             each programme, index in self.tags.programmes
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + programme.slug)= programme.name
                                 if index < self.tags.programmes.length - 1
-                                    | ,
+                                    | ,&nbsp;
 
             if self.tags && self.tags.genres && self.tags.genres[0]
                 .str_info_meta_label.dark_1= self.label.film.genre
@@ -451,7 +451,7 @@ else
                         each premiere_type, index in film.tags.premiere_types
                             a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?premieretypes=' + premiere_type)= premiere_type
                             if index < film.tags.premiere_types.length - 1
-                                | ,
+                                | ,&nbsp;
 
                 h1.film_title_detailed= film.title
                 .str_info_blokk_1
@@ -481,7 +481,7 @@ else
                                 each country, index in countries
                                     a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '?countries=' + country)= country
                                     if index < countries.length - 1
-                                        | ,
+                                        | ,&nbsp;
 
                     if film.year
                         .str_info_grid_3
@@ -524,7 +524,7 @@ else
                                     each programme, index in film.tags.programmes
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + programme.slug)= programme.name
                                         if index < film.tags.programmes.length - 1
-                                            | ,
+                                            | ,&nbsp;
 
 
                             if film.tags.genres && film.tags.genres[0]
@@ -533,7 +533,7 @@ else
                                     each genre, index in film.tags.genres
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre.slug)= genre
                                         if index < film.tags.genres.length - 1
-                                            | ,
+                                            | ,&nbsp;
 
                             if film.tags.keywords && film.tags.keywords[0]
                                 .str_info_meta_label.dark_1= self.label.film.keywords
@@ -541,7 +541,7 @@ else
                                     each keyword, index in film.tags.keywords
                                         a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?keywords=' + keyword)= keyword
                                         if index < film.tags.keywords.length - 1
-                                            | ,
+                                            | ,&nbsp;
 
                 if typeof film.synopsis !== 'undefined'
                     - var synopsis_md = film.synopsis
@@ -784,7 +784,7 @@ else
                             each lang, index in film.languages
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?languages=' + lang.name)= lang.name
                                 if index < film.languages.length - 1
-                                    | ,
+                                    | ,&nbsp;
 
                 if film.subtitles
                     .str_info_grid_3
@@ -793,7 +793,7 @@ else
                             each sub, index in film.subtitles
                                 a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + sub.name)= sub.name
                                 if index < film.subtitles.length - 1
-                                    | ,
+                                    | ,&nbsp;
 
                 if film.other_festivals
                     .str_info_grid_3
