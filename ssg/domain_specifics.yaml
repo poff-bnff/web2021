@@ -147,11 +147,11 @@ main_service_categories:
 
 
 target_build_models:
-    - cassette
-    - film
+    # - cassette
+    # - film
     # - industry-project
     - programme
-    - screening
+    # - screening
     - course-event
     - archive
     - article-hero
