@@ -38,12 +38,12 @@ cassettesAndFilmsShowVotemo:
     hoff.ee: false
     industry.poff.ee: false
     justfilm.ee: false
-    kinoff.poff.ee: true
+    kinoff.poff.ee: false
     kumu.poff.ee: false
     oyafond.ee: false
     poff.ee: false
     shorts.poff.ee: false
-    tartuff.ee: true
+    tartuff.ee: false
 
 deepchatActiveInWeb:
     discoverycampus.poff.ee: false
