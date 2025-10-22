@@ -792,6 +792,7 @@ main.grid_film(id=self.id)
                                             if screening.location && screening.location.hall && screening.location.hall.name
                                                 if screening.location.hall && screening.location.hall.name
                                                     span.screening_hall= screening.location.hall.name
+                                                        | &#32;
                                                     if screening.location.hall.cinema && screening.location.hall.cinema.name
                                                         span.screening_venue
                                                             a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?cinemas=' + encodeURIComponent(screening.location.hall.cinema.name))= screening.location.hall.cinema.name
