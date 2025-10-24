@@ -150,7 +150,7 @@ target_build_models:
     # - cassette
     # - film
     # - industry-project
-    - programme
+    # - programme
     # - screening
     - course-event
     - archive
