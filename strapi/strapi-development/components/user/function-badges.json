@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_user_function_badges",
+  "info": {
+    "name": "UserBadges",
+    "icon": "arrows-alt-h",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "badgeName": {
+      "type": "string"
+    },
+    "badgeStatuses": {
+      "type": "string"
+    }
+  }
+}
