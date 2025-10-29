@@ -52,5 +52,7 @@ header
 
     - var widget_id = "20432"
 
-    //- if process.env['ChatApi'] && self.deepchatActiveInWeb
-    //-     include ../_templates/deep_chat_hoff.pug
+//- --- END OF HEADER ---
+if process.env['ChatApi'] && self.deepchatActiveInWeb
+    .deep_chat_module
+        include ../_templates/deep_chat_hoff.pug
