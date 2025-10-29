@@ -26,14 +26,19 @@
       "type": "datetime"
     },
     "product_categories": {
-      "via": "user_roles",
-      "collection": "product-category"
+      "collection": "product-category",
+      "via": "user_roles"
     },
     "users": {
-      "via": "user_roles",
       "plugin": "users-permissions",
       "collection": "user",
+      "via": "user_roles",
       "dominant": true
+    },
+    "user_badges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.function-badges"
     }
   }
 }

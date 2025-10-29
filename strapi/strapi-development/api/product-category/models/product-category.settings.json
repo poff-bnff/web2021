@@ -70,8 +70,8 @@
       "component": "media.imgs"
     },
     "user_roles": {
-      "collection": "user-role",
       "via": "product_categories",
+      "collection": "user-role",
       "dominant": true
     },
     "validity_period_relative": {

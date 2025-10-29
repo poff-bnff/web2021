@@ -8,35 +8,34 @@ header
 
     nav.main_menu
         ul.ul_yx
-            li
-                nav.org_menu
-                    span.org_item
-                        a(href='https://poff.ee')
-                            | PÖFF
-                    span.org_item
-                        a(href='https://industry.poff.ee')
-                            | !{`Industry@Tallinn & Baltic Event`}
-                    span.org_item
-                        a(href='https://shorts.poff.ee')
-                            | PÖFF Shorts
-                    //- span.org_item
-                    //-     a(href='https://kumu.poff.ee')
-                    //-         | KUMU Doc
-                    //- span.org_item
-                    //-     a(href='https://hoff.ee')
-                            | HÕFF
-                    span.org_item
-                        a(href='https://filmikool.poff.ee')
-                            | PÖFFi Filmikool
-                    //- span.org_item
-                    //-     a(href='https://kinoff.ee')
-                    //-         | Kinoff
-                    //- span.org_item
-                    //-     a(href='https://elisastage.poff.ee')
-                    //-         | PÖFF TV
-
             - var menu_path_lang = self.locale === self.defaultLocale ? '/' : `/${self.locale}/`
             div(class='main_menu_includer' include-html-menu=`${menu_path_lang}menu/index.html`)
+            div#header-popup
+                nav.org_menu
+                    ul
+                        li.org_item
+                            a(href='https://poff.ee') PÖFF
+                        li.org_item
+                            a(href='https://industry.poff.ee') !{`Industry@Tallinn & Baltic Event`}
+                        li.org_item
+                            a(href='https://justfilm.ee/') JUST FILM
+                        li.org_item
+                            a(href='https://shorts.poff.ee') PÖFF Shorts
+                        li.org_item
+                            a(href='https://hoff.ee') HÕFF
+                        li.org_item
+                            a(href='https://tartuff.ee') TARTUFF
+                        li.org_item.arrow ➔
+                        li.org_item.small
+                            a(href='https://kumu.poff.ee') KUMU Doc
+                        li.org_item.small
+                            a(href='https://filmikool.poff.ee') PÖFFi Filmikool
+                        li.org_item.small
+                            a(href='https://oyafond.ee') BRUNO O'YA Fond
+                        //- li.org_item
+                        //-     a(href='https://kinoff.ee') Kinoff
+                        //- li.org_item
+                        //-     a(href='https://elisastage.poff.ee') PÖFF TV
 
         user_menu_hidden(id='user_menu_hidden' style='display: none')
             li
@@ -48,11 +47,15 @@ header
                         else
                             a= locale
 
+
+
     label.main_menu_toggle_label(for='main_menu_toggle')
         span
 
-    if process.env['ChatApi'] && self.deepchatActiveInWeb
-    include ../_templates/deep_chat_justfilm.pug
+//- --- END OF HEADER ---
+if process.env['ChatApi'] && self.deepchatActiveInWeb
+    .deep_chat_module
+        include ../_templates/deep_chat_justfilm.pug
 
 //- include ../_templates/tracker_mixin.pug
 //- +trackMe()

@@ -113,8 +113,8 @@
       "component": "user.my-events"
     },
     "user_roles": {
-      "collection": "user-role",
-      "via": "users"
+      "via": "users",
+      "collection": "user-role"
     },
     "moodle_id": {
       "type": "uid"

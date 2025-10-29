@@ -7,7 +7,14 @@ main.grid_film(id=self.id)
 
     if self.films
         each film in self.films
-
+            //- Filmi tagide nagivatsioon
+            - var searchPath = ''
+            - if (self.locale === 'ru')
+                - searchPath = 'iskat_film'
+            - else if (self.locale === 'en')
+                - searchPath = 'search_film'
+            - else
+                - searchPath = 'otsi_filmi'
             //- KARUSELL filmi piltidega
             section#carouselExampleIndicators.f_img_slider_box.carousel.slide(data-bs-ride='carousel' data-bs-interval='6000')
                 ol.carousel-indicators
@@ -51,8 +58,10 @@ main.grid_film(id=self.id)
 
                 .premiere_type
                     if film.tags && film.tags.premiere_types && film.tags.premiere_types[0]
-                        //- Kui on mitu, eraldatakse komadega, kui vaid esimest ühte vaja, siis film.tags.premiere_types[0]
-                        p.premiere_type= film.tags.premiere_types.join(', ')
+                        each premiere_type, index in film.tags.premiere_types
+                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?premieretypes=' + premiere_type)= premiere_type
+                            if index < film.tags.premiere_types.length - 1
+                                | ,&#32;
 
                 h1.film_title_detailed= film.title || film.title_et
 
@@ -84,10 +93,14 @@ main.grid_film(id=self.id)
                             .str_info_value.clr_primary= film.credentials.rolePersonsByRole.director.join(', ')
                     //- todo #383
                     if film.orderedCountriesDisplay
+                        - var countries = film.orderedCountriesDisplay.split(',').map(c => c.trim())
                         .str_info_grid_3
                             .str_info_label= self.label.film.countries
-                            .str_info_value= film.orderedCountriesDisplay
-
+                            .str_info_value
+                                each country, index in countries
+                                    a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?countries=' + country)= country
+                                    if index < countries.length - 1
+                                        | ,&#32;
                     if film.year
                         .str_info_grid_3
                             .str_info_label= self.label.film.year
@@ -122,7 +135,6 @@ main.grid_film(id=self.id)
                                 .str_info_meta_festival= uniqueFestivalEditions.join(', ')
 
                         if film.tags
-
                             if film.tags.programmes && film.tags.programmes[0]
 
                                 -
@@ -134,19 +146,33 @@ main.grid_film(id=self.id)
                                     }
 
                                 //- Programmes
-                                - var programmes = film.tags.programmes.filter(a => a.name).map(programmeNames).join(', ')
-                                if programmes !== undefined && programmes.length > 0
-                                    .str_info_meta_label.dark_1= self.label.film.programme
-                                    .str_info_meta_festival= programmes
+                                //-- var programmes = film.tags.programmes.filter(a => a.name).map(programmeNames).join(', ')
+                                //-if programmes !== undefined && programmes.length > 0
+                                //-    .str_info_meta_label.dark_1= self.label.film.programme
+                                //-    .str_info_meta_festival= programmes
+                                .str_info_meta_label.dark_1= self.label.film.programme
+                                .str_info_meta_festival
+                                    each programme, index in film.tags.programmes
+                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + programme.slug)= programme.name
+                                        if index < film.tags.programmes.length - 1
+                                            | ,&#32;
+
 
                             if film.tags.genres && film.tags.genres[0]
                                 .str_info_meta_label.dark_1= self.label.film.genre
-                                .str_info_meta_festival= film.tags.genres.join(', ')
-
+                                .str_info_meta_festival
+                                    each genre, index in film.tags.genres
+                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?genres=' + genre)= genre
+                                        if index < film.tags.genres.length - 1
+                                            | ,&#32;
 
                             if film.tags.keywords && film.tags.keywords[0]
                                 .str_info_meta_label.dark_1= self.label.film.keywords
-                                .str_info_meta_festival= film.tags.keywords.join(', ')
+                                .str_info_meta_festival
+                                    each keyword, index in film.tags.keywords
+                                        a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?keywords=' + keyword)= keyword
+                                        if index < film.tags.keywords.length - 1
+                                            | ,&#32;
 
                             if film.tags.trigger_warnings && film.tags.trigger_warnings[0]
                                 .str_info_meta_label.dark_1= self.label.film.triggerWarning
@@ -378,6 +404,11 @@ main.grid_film(id=self.id)
                                 .str_info_label= self.label.film.sound
                                 .str_info_value= rolePersonsByRole.sound.join(', ')
 
+                        if rolePersonsByRole.soundmixer && rolePersonsByRole.soundmixer[0]
+                            .str_info_grid_3
+                                .str_info_label= self.label.film.soundmixer
+                                .str_info_value= rolePersonsByRole.soundmixer.join(', ')
+
                         if rolePersonsByRole.animation && rolePersonsByRole.animation[0]
                             .str_info_grid_3
                                 .str_info_label= self.label.film.animation
@@ -553,12 +584,20 @@ main.grid_film(id=self.id)
                 if film.languages
                     .str_info_grid_3
                         .str_info_label= self.label.film.languages
-                        .str_info_value= film.languages.map(languagesNames).join(', ')
+                        .str_info_value
+                            each lang, index in film.languages
+                                a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?languages=' + lang.name)= lang.name
+                                if index < film.languages.length - 1
+                                    | ,&#32;
 
                 if film.subtitles
                     .str_info_grid_3
                         .str_info_label= self.label.film.subtitles
-                        .str_info_value= film.subtitles.map(languagesNames).join(', ')
+                        .str_info_value
+                            each sub, index in film.subtitles
+                                a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + sub.name)= sub.name
+                                if index < film.subtitles.length - 1
+                                    | ,&#32;
 
                 if film.other_festivals
                     .str_info_grid_3
@@ -753,8 +792,10 @@ main.grid_film(id=self.id)
                                             if screening.location && screening.location.hall && screening.location.hall.name
                                                 if screening.location.hall && screening.location.hall.name
                                                     span.screening_hall= screening.location.hall.name
+                                                        | &#32;
                                                     if screening.location.hall.cinema && screening.location.hall.cinema.name
-                                                        span.screening_venue= ` ${screening.location.hall.cinema.name}`
+                                                        span.screening_venue
+                                                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?cinemas=' + encodeURIComponent(screening.location.hall.cinema.name))= screening.location.hall.cinema.name
                                                         if screening.location.hall.cinema.town && screening.location.hall.cinema.town.name && screening.location.hall.cinema.town.country && screening.location.hall.cinema.town.country.name
                                                             span.city= ` ${screening.location.hall.cinema.town.name}`
                                                             //- span.city= ` ${screening.location.hall.cinema.town.name}, ${screening.location.hall.cinema.town.country.name}`
@@ -786,7 +827,11 @@ main.grid_film(id=self.id)
                                             if subtitles && subtitles.length
                                                 .str_info_grid_3
                                                     span.screening_info_label= self.label.screening.subtitles
-                                                    span.screening_info_value= subtitles.sort().join(', ')
+                                                    span.screening_info_value
+                                                        each subtitle, index in subtitles.sort()
+                                                            a(href='/' + (self.locale !== 'et' ? self.locale + '/' : '') + searchPath + '/?subtitles=' + subtitle)= subtitle
+                                                            if index < subtitles.length - 1
+                                                                | ,&#32;
 
 
                                             - var iqnac = screening.introQaConversation
@@ -892,16 +937,16 @@ main.grid_film(id=self.id)
 
              //- Switch for chat functionality lives in data.yaml
 
-            if self.switches.showVotemo
-                if self.chat_w_name
-                    script.
-                        var votemoConfig = {
-                            url: `https://#{self.chat_w_name}.votemo.eu`,
-                            openInDesktop: false,
-                            language: 'poff'
-                        }
-                    script(src='https://widget.votemo.eu/dist/widget.js')
-                    - showMessengerChat = false
+            //- if self.switches.showVotemo
+            //-     if self.chat_w_name
+            //-         script.
+            //-             var votemoConfig = {
+            //-                 url: `https://#{self.chat_w_name}.votemo.eu`,
+            //-                 openInDesktop: false,
+            //-                 language: 'poff'
+            //-             }
+            //-         script(src='https://widget.votemo.eu/dist/widget.js')
+            //-         - showMessengerChat = false
 
                 //- +tabname(self. title)
 
