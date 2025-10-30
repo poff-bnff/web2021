@@ -147,7 +147,7 @@ main_service_categories:
 
 
 target_build_models:
-    # - cassette
+    - cassette
     - film
     # - industry-project
     # - programme
