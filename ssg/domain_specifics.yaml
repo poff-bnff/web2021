@@ -148,10 +148,10 @@ main_service_categories:
 
 target_build_models:
     # - cassette
-    # - film
+    - film
     # - industry-project
     # - programme
-    # - screening
+    - screening
     - course-event
     - archive
     - article-hero
