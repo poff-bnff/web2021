@@ -300,6 +300,12 @@ for (const lang of languages) {
                             element.aliases = [`${toetaAliasLangPrefix}toeta`]
                         }
 
+                        // 2025 adding HAPPENING (artikli slug toeta)
+                        if (DOMAIN === 'poff.ee' && element[key] === 'happening') {
+                            let toetaAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${toetaAliasLangPrefix}happening`]
+                        }
+
                         // // 2022 mai Ukraina programm
                         // if (DOMAIN === 'poff.ee' && element[key] === 'auukrainale') {
                         //     let auukrainaleAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
