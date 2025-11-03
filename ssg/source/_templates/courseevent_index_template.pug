@@ -215,7 +215,9 @@ block content
                                     .person
                                         .person_head
                                             a(href=`/${indPerson.person.slug}`)
-                                                if indPerson.person.picture
+                                                if indPerson.person.profile_img
+                                                    - var personPic = assetsDir + indPerson.person.profile_img.hash + indPerson.person.profile_img.ext
+                                                else if indPerson.person.picture
                                                     - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
                                                 else
                                                     - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
