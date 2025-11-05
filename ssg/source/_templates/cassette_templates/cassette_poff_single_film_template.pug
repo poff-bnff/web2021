@@ -655,14 +655,14 @@ main.grid_film(id=self.id)
                                                 if typeof dir_bio === 'string'
                                                     +format(dir_bio)
 
-                                        if expandedRole.person.filmography && typeof expandedRole.person.filmography !== 'object'
-                                            - var dir_filmography = expandedRole.person.filmography
-                                            p.dark_1
-                                                if typeof dir_filmography === 'string'
-                                                    +format(dir_filmography)
+                                        //- if expandedRole.person.filmography && typeof expandedRole.person.filmography !== 'object'
+                                        //-     - var dir_filmography = expandedRole.person.filmography
+                                        //-     p.dark_1
+                                        //-         if typeof dir_filmography === 'string'
+                                        //-             +format(dir_filmography)
 
-                                        else if expandedRole.person.filmography && expandedRole.person.filmography.en
-                                            p.dark_1= expandedRole.person.filmography.en
+                                        //- else if expandedRole.person.filmography && expandedRole.person.filmography.en
+                                        //-     p.dark_1= expandedRole.person.filmography.en
 
             if presentedBy.length
                             section.f_extra_box
