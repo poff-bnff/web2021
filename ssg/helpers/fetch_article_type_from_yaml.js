@@ -306,9 +306,9 @@ for (const lang of languages) {
                         }
 
                         // 2025 adding HAPPENING (artikli slug happening)
-                        if (DOMAIN === 'poff.ee' && element[key] === 'poff-soovitab') {
+                        if (DOMAIN === 'poff.ee' && element[key] === 'happening') {
                             let happeningAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
-                            element.aliases = [`${happeningAliasLangPrefix}happening`]
+                            element.aliases = [`${happeningAliasLangPrefix}poff-soovitab`]
                         }
 
                         // // 2022 mai Ukraina programm
