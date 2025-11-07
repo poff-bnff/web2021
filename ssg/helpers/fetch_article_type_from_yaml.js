@@ -306,7 +306,7 @@ for (const lang of languages) {
                         }
 
                         // 2025 adding HAPPENING (artikli slug happening)
-                        if (DOMAIN === 'poff.ee' && element[key] === 'happening') {
+                        if (DOMAIN === 'poff.ee' && element[key] === 'poff-soovitab') {
                             let happeningAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${happeningAliasLangPrefix}happening`]
                         }
