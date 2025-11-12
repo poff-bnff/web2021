@@ -910,7 +910,10 @@ main.grid_film(id=self.id)
                 if (film.trailer && film.trailer[0].videoCode) || (film.QaClip && film.QaClip[0].url)
                     section#trailer.f_trailer_box
                         if (film.trailer && film.trailer[0].videoCode)
-                            .section_headline= self.label.film.trailer
+                            if (film.trailer.length > 1)
+                                .section_headline= self.label.film.trailertv
+                            else
+                                .section_headline= self.label.film.trailer
                             each trailer in film.trailer
                                 .videoaken.ratio.ratio-16x9
                                     if trailer.videoCode
