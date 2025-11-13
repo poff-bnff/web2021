@@ -151,10 +151,11 @@ block content
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' )
 
                         if process.env['DOMAIN'] === 'industry.poff.ee'
-                            .d-none.login_16_9_container.login_ind_ev#eventival_login
-                                h4.login_headline#loginMessage.white_96 Log in via Eventival
-                                a(onclick='requireEventivalLogin()' style='cursor: pointer;')
-                                    img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+                            a(onclick='requireFionaLogin()' style='cursor: pointer;')
+                                .d-none.login_16_9_container.login_ind_ev#eventival_login
+                                    h4.login_headline#loginMessage.white_96 Log in with accreditation email
+                                    //- a(onclick='requireFionaLogin()' style='cursor: pointer;')
+                                    img.eventival_logo_img(alt='PÖFF' data-src='https://assets.poff.ee/img/Fiona_logo_300x79.png' src='https://assets.poff.ee/img/Fiona_logo_300x79.png')
 
                         script.
                             console.log(eventAccess, eventAccess === "Free (without accreditation)", courseEventId)
@@ -203,7 +204,7 @@ block content
 
                     if process.env['DOMAIN'] === 'industry.poff.ee'
                         .elisa_stage
-                            img.elisa_powered(src='https://assets.poff.ee/img/powered_by_elisa_stage.svg')
+                            img.powered_videolevels(src='https://assets.poff.ee/img/powered_by_videolevels.svg')
 
                 section.ce_box_1
                     if self.credentials && self.credentials.rolePerson
