@@ -456,7 +456,9 @@ block content
                                             if person.slug
                                                 .event_person
                                                     a(href=`/${person.slug}`).event_person_link
-                                                        if person.picture
+                                                        if person.profile_img
+                                                             - var personPic = assetsDir + person.profile_img.hash + person.profile_img.ext
+                                                        else if person.picture
                                                             - var personPic = assetsDir + person.picture.hash + person.picture.ext
                                                         else
                                                             - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
