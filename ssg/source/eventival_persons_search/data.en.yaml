@@ -1,4 +1,4 @@
-path: whos-here
+path: vana_kes_in_siin
 data:
     eventivalpersons: /_fetchdir/eventival_persons.yaml
     # filters: /_fetchdir/filters_industry_persons.en.yaml
