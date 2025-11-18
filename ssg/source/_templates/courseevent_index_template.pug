@@ -204,7 +204,8 @@ block content
 
                     if process.env['DOMAIN'] === 'industry.poff.ee'
                         .elisa_stage
-                            img.powered_videolevels(src='https://assets.poff.ee/img/powered_by_videolevels.svg')
+                            a(href=`https://videolevels.com` target='_BLANK')
+                                img.powered_videolevels(src='https://assets.poff.ee/img/powered_by_videolevels.svg')
 
                 section.ce_box_1
                     if self.credentials && self.credentials.rolePerson
