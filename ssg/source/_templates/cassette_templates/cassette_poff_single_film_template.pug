@@ -906,7 +906,7 @@ main.grid_film(id=self.id)
                                                 a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' onclick=`popupWidget(20432, '${pLang}', ${screening.ticketingId})` btn-type='screening' role='button')= self.label.button.screeningBuyTicket
 
                                         //- | test
-                                        if screening.screening_types && screening.screening_types.map(t => t.name).includes('Free')
+                                        if screening.screening_types && screening.screening_types.map(t => t.name).includes('free')
                                             a.btn.btn_primary.active(scrn-datetime=screening.dateTime scrn-loc=screening.location.id style='' btn-type='screening' role='button' )= self.label.button.screeningFree
 
             if film.trailer || film.QaClip
