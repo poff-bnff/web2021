@@ -81,6 +81,8 @@ for (const lang of languages) {
             if (primaryImage) { element.primaryImage = primaryImage }
             // If clipUrlDefault, then keep it
             if (element?.media?.clipUrlDefault) { element.clipUrlDefault = element.media.clipUrlDefault }
+            element.clipUrl = element?.media?.clipUrl || element?.media?.clipUrlDefault || '';
+
             // Delete excess media
             delete element.media
 

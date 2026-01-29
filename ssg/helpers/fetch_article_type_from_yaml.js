@@ -196,6 +196,13 @@ for (const lang of languages) {
                 // Article view get priority picture format
                 const primaryImage = prioritizeImages(element, imageOrder, imageOrderDefaults)
                 if (primaryImage) { element.primaryImage = primaryImage }
+
+                element.clipUrl = element?.media?.clipUrl || '';
+
+                if (!element.clipUrl && element?.media?.clipUrlDefault) {
+                    element.clipUrl = element.media.clipUrlDefault;
+                }
+
                 // Delete excess media
                 delete element.media
 
