@@ -1476,6 +1476,33 @@ a .dark:hover
     object-fit cover
     z-index -1
 
+.hero_video
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    width 100%
+    height 100%
+    container-type size
+    overflow hidden
+
+.hero_video > iframe
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    width 100%
+    height 100%
+    pointer-events none
+    @container (min-aspect-ratio: 16/9)
+        &
+            height: 56.25cqw
+
+    @container (max-aspect-ratio: 16/9)
+        &
+            width: 177.78cqh
+
 .trio_block
     width 100%
     display grid
