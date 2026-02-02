@@ -154,6 +154,9 @@
     "looking_for": {
       "type": "text"
     },
+    "add_pro_participating_at_festivals": {
+      "type": "text"
+    },
     "phoneNr": {
       "type": "string"
     },

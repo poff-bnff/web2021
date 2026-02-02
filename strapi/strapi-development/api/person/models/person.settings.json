@@ -273,6 +273,9 @@
     "looking_for": {
       "type": "text"
     },
+    "add_pro_participating_at_festivals": {
+      "type": "text"
+    },
     "h_rate_from": {
       "type": "integer"
     },
