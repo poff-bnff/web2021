@@ -244,6 +244,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: {},
         languages: {},
         lookingfor: {},
+        addProParticipatingAtFestivals: {},
         profiletype: {},
         servicesize: {},
         profilecategories: {},
@@ -349,6 +350,16 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             searchText.push(lookingForString)
             lookingfor.push(lookingForString)
             filters.lookingfor[lookingForString] = lookingForString
+        }
+
+        let addProParticipatingAtFestivals = []
+        if (profile.add_pro_participating_at_festivals) {
+            let value = profile.add_pro_participating_at_festivals.trim()
+            if (value) {
+                searchText.push(value)
+                addProParticipatingAtFestivals.push(value)
+                filters.addProParticipatingAtFestivals[value] = value
+            }
         }
 
         let languages = []
@@ -477,6 +488,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             location: location,
             languages: languages,
             lookingfor: lookingfor,
+            addProParticipatingAtFestivals: addProParticipatingAtFestivals,
             profiletype: profiletype,
             servicesize: servicesize,
             profilecategories: profilecategories,
@@ -502,6 +514,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: mSort(filters.location),
         languages: mSort(filters.languages),
         lookingfor: mSort(filters.lookingfor),
+        addProParticipatingAtFestivals: mSort(filters.addProParticipatingAtFestivals),
         servicesize: mSort(filters.servicesize),
         profilecategories: orderSort(filters.profilecategories),
         maincategories: filters.maincategories,
