@@ -244,7 +244,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: {},
         languages: {},
         lookingfor: {},
-        addProParticipatingAtFestivals: {},
+        addproparticipatingatfestivals: {},
         profiletype: {},
         servicesize: {},
         profilecategories: {},
@@ -358,7 +358,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             if (value) {
                 searchText.push(value)
                 addProParticipatingAtFestivals.push(value)
-                filters.addProParticipatingAtFestivals[value] = value
+                filters.addproparticipatingatfestivals[value] = value
             }
         }
 
@@ -488,7 +488,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             location: location,
             languages: languages,
             lookingfor: lookingfor,
-            addProParticipatingAtFestivals: addProParticipatingAtFestivals,
+            addproparticipatingatfestivals: addProParticipatingAtFestivals,
             profiletype: profiletype,
             servicesize: servicesize,
             profilecategories: profilecategories,
@@ -514,7 +514,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: mSort(filters.location),
         languages: mSort(filters.languages),
         lookingfor: mSort(filters.lookingfor),
-        addProParticipatingAtFestivals: mSort(filters.addProParticipatingAtFestivals),
+        addproparticipatingatfestivals: mSort(filters.addproparticipatingatfestivals),
         servicesize: mSort(filters.servicesize),
         profilecategories: orderSort(filters.profilecategories),
         maincategories: filters.maincategories,
