@@ -304,6 +304,24 @@ block content
                 .fieldset_grid.buttons
                     button.show_form_fields(type='button')= self.label.addPro.lookingForButtonAdd
 
+            //- participating at festivals
+            fieldset.organisation.person
+                legend= self.label.addPro.participatingAtFestivals
+                label= self.label.addPro.participatingAtFestivalsDescription
+                .fieldset_grid.one_column
+                    .form_group
+                        .sub_form(data-close-fieldset="true")
+                            select(name='tag_participating_at_festivals')
+                                option.default_select(class='invalid' value="" selected="")
+                                    //- = self.label.userprofile.proRole
+                                - var filteredFestivalEditions = self.data.festivalEditions.filter(festivalEdition => festivalEdition.use_in_cg)
+                                each festivalEdition in filteredFestivalEditions.sort((a, b) => a[`name_${self.locale}`].localeCompare(b[`name_${self.locale}`]))
+                                    option(value=festivalEdition.id)= festivalEdition[`name_${self.locale}`]
+                            button.remove_fields(type='button' onclick='removeFields(event)')= self.label.addPro.buttonRemove
+                        button.duplicate_fields(type='button' onclick='duplicatePreviousElement(event)')= self.label.addPro.participatingAtFestivalsButtonAdd
+                .fieldset_grid.buttons
+                    button.show_form_fields(type='button')= self.label.addPro.participatingAtFestivalsButtonAdd
+
             //- Professional links
             fieldset.organisation.person
                 legend= self.label.addPro.professionalLinksTitle
