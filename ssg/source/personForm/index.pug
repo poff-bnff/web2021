@@ -306,12 +306,12 @@ block content
 
             //- participating at festivals
             fieldset.organisation.person
-                legend= self.label.addPro.participatingAtFestivals
+                legend= self.label.addPro.participatingAtFestivalsTitle
                 label= self.label.addPro.participatingAtFestivalsDescription
                 .fieldset_grid.one_column
                     .form_group
                         .sub_form(data-close-fieldset="true")
-                            select(name='tag_participating_at_festivals')
+                            select(name='festival_editions')
                                 option.default_select(class='invalid' value="" selected="")
                                     //- = self.label.userprofile.proRole
                                 - var filteredFestivalEditions = self.data.festivalEditions.filter(festivalEdition => festivalEdition.use_in_cg)
