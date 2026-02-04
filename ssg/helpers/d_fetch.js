@@ -57,7 +57,15 @@ fs.readdir(allStrapiDataDir, (err, modelFiles) => {
             return
         }
         const modelData = yaml.load(fs.readFileSync(path.join(allStrapiDataDir, modelFile), 'utf8'))
-        const domainModelData = modelData.filter(checkDomain)
+        
+        // Special handling for FestivalEdition: include items with use_in_cg=true regardless of domain
+        let domainModelData
+        if (modelFile === 'FestivalEdition.yaml') {
+            domainModelData = modelData.filter(element => checkDomain(element) || element.use_in_cg === true)
+        } else {
+            domainModelData = modelData.filter(checkDomain)
+        }
+        
         // stringify - parse is used for yaml dump to remove circular references?
         let YAMLData = yaml.dump(JSON.parse(JSON.stringify(domainModelData)), { 'noRefs': true, 'indent': '4' })
         fs.writeFileSync(path.join(domainStrapiDataDir, modelFile), YAMLData, 'utf8')

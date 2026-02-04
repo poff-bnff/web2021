@@ -141,6 +141,12 @@ block content
                                 each index, key in self.data.filters.lookingfor
                                     option(value=key)= index
 
+                        select#participate_select(name='Participate')
+                            option(value='')= self.label.filters.participate
+                            if self.data.filters.participate
+                                each index, key in self.data.filters.participate
+                                    option(value=key)= index
+
                         select#genders_select(name='Gender')
                             option(value='')= self.label.filters.gender
                             if self.data.filters.genders

@@ -3,6 +3,7 @@ const yaml = require('js-yaml')
 const path = require('path')
 const rueten = require('./rueten.js')
 const { fetchModel } = require('./b_fetch.js')
+const { Console } = require('console')
 
 const rootDir = path.join(__dirname, '..')
 const domainSpecificsPath = path.join(rootDir, 'domain_specifics.yaml')
@@ -17,6 +18,7 @@ const fetchDir = path.join(sourceDir, '_fetchdir')
 const strapiDataPathOrg = path.join(sourceDir, '_allStrapidata', 'Organisation.yaml')
 const strapiDataPathPerson = path.join(sourceDir, '_allStrapidata', 'Person.yaml')
 const strapiDataPathServiceCategory = path.join(sourceDir, '_allStrapidata', 'ServiceCategory.yaml')
+const strapiDataPathFestivalEdition = path.join(sourceDir, '_domainStrapidata', 'FestivalEdition.yaml')
 const DOMAIN = process.env['DOMAIN'] || 'industry.poff.ee'
 const active_editions = DOMAIN_SPECIFICS.active_editions['industry.poff.ee']
 const SHORT_DESC_LENGTH = 100
@@ -239,11 +241,22 @@ function getKeyByValue(object, value) {
 }
 
 function generateProfileSearchAndFilterYamls(profiles, lang) {
+    const STRAPIDATA_FESTIVALEDITIONS = yaml.load(fs.readFileSync(strapiDataPathFestivalEdition, 'utf8'))
+    let festivalEditionsMap = {}
+    for (const fe of STRAPIDATA_FESTIVALEDITIONS) {
+        if (fe.use_in_cg) {
+            festivalEditionsMap[fe.id] = fe.name_en || fe.name_et
+        }
+    }
+
+    console.log('festivalEditionsMap', festivalEditionsMap)
+
     let filters = {
         roleatfilms: {},
         location: {},
         languages: {},
         lookingfor: {},
+        participate: {},
         profiletype: {},
         servicesize: {},
         profilecategories: {},
@@ -264,6 +277,11 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
     filters.profiletype["actors"] = "actors"
     filters.profiletype["services"] = "services"
     filters.profiletype["activefestival"] = "activefestival"
+
+    // Pre-populate participate filters with all festival editions that have use_in_cg
+    for (const [feId, feName] of Object.entries(festivalEditionsMap)) {
+        filters.participate[feId] = feName
+    }
 
     let hasActiveFestivalProfiles = false
 
@@ -349,6 +367,15 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             searchText.push(lookingForString)
             lookingfor.push(lookingForString)
             filters.lookingfor[lookingForString] = lookingForString
+        }
+
+        let participate = []
+        if (profile.festival_editions && Array.isArray(profile.festival_editions)) {
+            for (const fe of profile.festival_editions) {
+                if (festivalEditionsMap[fe.id]) {
+                    participate.push(fe.id)
+                }
+            }
         }
 
         let languages = []
@@ -477,6 +504,8 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
             location: location,
             languages: languages,
             lookingfor: lookingfor,
+            participate: participate,
+            festival_editions: profile.festival_editions ? profile.festival_editions.map(fe => fe.id) : [],
             profiletype: profiletype,
             servicesize: servicesize,
             profilecategories: profilecategories,
@@ -502,6 +531,7 @@ function generateProfileSearchAndFilterYamls(profiles, lang) {
         location: mSort(filters.location),
         languages: mSort(filters.languages),
         lookingfor: mSort(filters.lookingfor),
+        participate: mSort(filters.participate),
         servicesize: mSort(filters.servicesize),
         profilecategories: orderSort(filters.profilecategories),
         maincategories: filters.maincategories,
@@ -672,6 +702,9 @@ function getActivePersons() {
         },
         'tag_looking_fors': {
             model_name: 'TagLookingFor'
+        },
+        'festival_editions': {
+            model_name: 'FestivalEdition'
         }
     }
     console.log(`Fetching ${DOMAIN} persons data`)
@@ -757,6 +790,9 @@ function getActiveOrganisations() {
         'industry_person_types': {
             model_name: 'IndustryPersonType'
         },
+        'festival_editions': {
+            model_name: 'FestivalEdition'
+        }
     }
     console.log(`Fetching ${DOMAIN} organisation data`)
     const STRAPIDATA_ALL_ORGANISATIONS = fetchModel(STRAPIDATA_ORGANISATION, minimodel)
