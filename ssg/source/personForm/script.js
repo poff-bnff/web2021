@@ -1316,6 +1316,10 @@ const getOrganisationFields = () =>  {
             field: 'tag_looking_fors',
             type: 'select',
         },
+        festival_editions: {
+            field: 'festival_editions',
+            type: 'select',
+        },
         acc_imdb: {
             field: 'acc_imdb',
             sendType: 'url',

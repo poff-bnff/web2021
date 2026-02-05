@@ -23,6 +23,7 @@ const selectors = {
     nativelangs: document.getElementById('nativelangs_select'),
     otherlangs: document.getElementById('otherlangs_select'),
     lookingfor: document.getElementById('lookingfor_select'),
+    participate: document.getElementById('participate_select'),
     genders: document.getElementById('genders_select'),
     statures: document.getElementById('statures_select'),
     eyecolours: document.getElementById('eyecolours_select'),
@@ -36,6 +37,7 @@ const selectors = {
 const serviceFilters = {
     languages: document.getElementById('languages_select'),
     lookingfor: document.getElementById('lookingfor_select'),
+    participate: document.getElementById('participate_select'),
     servicesize: document.getElementById('servicesize_select'),
 }
 
@@ -219,6 +221,10 @@ function arrayWithBaseFilters() {
             return compare_with === '' ? true : profiles.lookingfor.includes(compare_with)
         })
         .filter(profiles => {
+            const compare_with = selectors.participate.value;
+            return compare_with === '' ? true : profiles.festival_editions && profiles.festival_editions.includes(parseInt(compare_with))
+        })
+        .filter(profiles => {
             const compare_with = selectors.genders.value;
             return compare_with === '' ? true : profiles.genders.includes(compare_with)
         })
@@ -359,6 +365,10 @@ function toggleFilters(exclude_selector_name) {
                     return compare_with === '' ? true : profiles.lookingfor.includes(compare_with)
                 })
                 .filter(profiles => {
+                    const compare_with = selector_name === 'participate' ? value : selectors.participate.value;
+                    return compare_with === '' ? true : profiles.festival_editions && profiles.festival_editions.includes(parseInt(compare_with))
+                })
+                .filter(profiles => {
                     const compare_with = selector_name === 'genders' ? value : selectors.genders.value;
                     return compare_with === '' ? true : profiles.genders.includes(compare_with)
                 })
@@ -435,6 +445,7 @@ function switchView(type){
         rangeFiltersBox.style.display = '';
         Array.from(servicesizes).forEach((servicesize) => servicesize.checked = false);
         selectors.lookingfor.selectedIndex = 0;
+        selectors.participate.selectedIndex = 0;
         selectors.languages.selectedIndex = 0;
     }
     else if(type == 'services' || type == 'activefestival' || type == 'default'){
@@ -567,6 +578,10 @@ selectors.lookingfor.addEventListener('change', e => {
     toggleAll('lookingfor');
 });
 
+selectors.participate.addEventListener('change', e => {
+    toggleAll('participate');
+});
+
 selectors.genders.addEventListener('change', e => {
     toggleAll('genders');
 });
@@ -680,6 +695,13 @@ function execute_filters() {
         .filter(profiles => {
             if (selectors.lookingfor.value) {
                 return profiles.lookingfor.includes(selectors.lookingfor.value)
+            } else {
+                return true
+            }
+        })
+        .filter(profiles => {
+            if (selectors.participate.value) {
+                return profiles.festival_editions && profiles.festival_editions.includes(parseInt(selectors.participate.value))
             } else {
                 return true
             }
