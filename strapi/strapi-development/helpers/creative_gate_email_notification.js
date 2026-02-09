@@ -32,19 +32,16 @@ async function isEligibleForEmail(profile) {
     return null;
   }
 
-  // Get full user info with user_profile
-  const userInfo = await strapi.query('user', 'users-permissions').findOne(
-    { id: profile.user.id || profile.user },
-    ['user_profile']
-  );
-
-  if (!userInfo || !userInfo.user_profile || !userInfo.user_profile.email) {
+  // Get email from profile.eMail attribute
+  const email = profile.eMail;
+  
+  if (!email) {
     return null;
   }
 
   return {
-    user: userInfo,
-    email: userInfo.user_profile.email,
+    user: profile.user,
+    email: email,
     profile: profile
   };
 }
@@ -91,8 +88,6 @@ async function sendCreativeGateProfileEmail({
   profileType
 }) {
   try {
-    console.log(`Sending Creative Gate profile ${operation} email to: ${email}`);
-
     // Prepare template variables for Mandrill
     const templateVars = [
       { name: 'email', content: email },
@@ -112,15 +107,19 @@ async function sendCreativeGateProfileEmail({
       }
     ];
 
-    // Send email using Strapi email plugin (Mandrill)
-    const result = await strapi.plugins['email'].services.email.send({
-      to: email,
-      template_name: 'cgprofile', // Mandrill template ID
-      template_vars: templateVars
+    return new Promise((resolve) => {
+      strapi.plugins['email'].services.email.send({
+        to: email,
+        template_name: 'cgprofile', // Mandrill template ID
+        template_vars: templateVars
+      }).then(result => {
+        console.log(`Creative Gate profile email sent successfully to: ${email}`);
+        resolve(result);
+      }).catch(error => {
+        console.error('Error sending Creative Gate profile email:', error);
+        resolve(null); // Resolve with null on error to avoid breaking the flow
+      });
     });
-
-    console.log(`Creative Gate profile email sent successfully to: ${email}`);
-    return result;
 
   } catch (error) {
     console.error('Error sending Creative Gate profile email:', error);
@@ -162,7 +161,7 @@ async function handleCreativeGateProfileNotification(profile, operation, profile
     const allowedToPublishValidTo = profile.allowed_to_publish_valid_to_date || null;
 
     // Send email
-    await sendCreativeGateProfileEmail({
+    sendCreativeGateProfileEmail({
       email: eligibility.email,
       operation,
       changeDateTime: new Date(),
@@ -171,6 +170,10 @@ async function handleCreativeGateProfileNotification(profile, operation, profile
       profileName,
       profileSlug,
       profileType
+    }).then(() => {
+      console.log(`Creative Gate profile ${operation} email process completed for profile ${profile.id}`);
+    }).catch(error => {
+      console.error('Error in sendCreativeGateProfileEmail:', error);
     });
 
   } catch (error) {
