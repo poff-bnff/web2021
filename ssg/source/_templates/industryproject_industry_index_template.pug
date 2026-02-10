@@ -4,24 +4,38 @@ include /_templates/mixins.pug
 block content
 
     script.
+        const industryProjectId = '#{self.id}'
         document.addEventListener('userProfileLoaded', function (e) {
             //- console.log({userProfile})
 
-            if (userProfile.industry_profile && userProfile.industry_profile.accreditation) {
-                var videoFrameElement
-                try {
-                    document.getElementById('videolevels_video').style.display = 'block'
-                    var videoFrameElement = document.getElementById('videoframe')
-                    videoFrameElement.src = videoFrameElement.getAttribute('target_src')
-                } catch (error) { null }
-
-                if (!videoFrameElement) {
-                    try {
-                        document.getElementById('event_image').style.display = ''
-                    } catch (error) { null }
-                }
+            // Check video access through Hunt API (rights-based)
+            if (isUserTokenValid()) {
+                getIndustryProjectVideoUrl(industryProjectId)
+                    .then(videoUrl => {
+                        if (videoUrl) {
+                            try {
+                                document.getElementById('videolevels_video').style.display = 'block'
+                                var videoFrameElement = document.getElementById('videoframe')
+                                videoFrameElement.src = videoUrl
+                            } catch (error) { console.error('Error showing video:', error) }
+                        } else {
+                            // No permission or no video available
+                            try {
+                                document.getElementById('videolevels_video').remove()
+                            } catch (error) { null }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching video access:', error)
+                        try {
+                            document.getElementById('videolevels_video').remove()
+                        } catch (e) { null }
+                    })
             } else {
-                document.getElementById('videolevels_video').remove()
+                // User not logged in
+                try {
+                    document.getElementById('videolevels_video').remove()
+                } catch (error) { null }
             }
         })
 
