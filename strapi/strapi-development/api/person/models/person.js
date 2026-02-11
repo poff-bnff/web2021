@@ -155,7 +155,7 @@ module.exports = {
                 await call_update(result, model_name)
             }
             // Send Creative Gate profile creation email notification
-            await handleCreativeGateProfileNotification(result, 'create', 'person');
+            //await handleCreativeGateProfileNotification(result, 'create', 'person');
         },
 
         async beforeUpdate(params, data) {
@@ -169,7 +169,7 @@ module.exports = {
             strapi.services.person.build(result.id)
             // Send Creative Gate profile update email notification
             // Pass params.updated_at as previousUpdatedAt (timestamp before this update)
-            await handleCreativeGateProfileNotification(result, 'update', 'person', params.updated_at);
+            //await handleCreativeGateProfileNotification(result, 'update', 'person', params.updated_at);
         },
 
         async beforeDelete(params) {
