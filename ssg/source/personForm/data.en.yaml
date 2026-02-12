@@ -18,4 +18,5 @@ data:
     filmographies: /_domainStrapidata/Filmography.yaml
     tagfilmtypes: /_domainStrapidata/TagFilmType.yaml
     taglookingfors: /_domainStrapidata/TagLookingFor.yaml
+    festivalEditions: /_domainStrapidata/FestivalEdition.yaml
     projectStatus: /_domainStrapidata/ProjectStatus.yaml

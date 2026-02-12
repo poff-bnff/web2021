@@ -666,6 +666,7 @@ FestivalEdition: &FestivalEdition
         - IndustryProject
     awardings:
         - *Awarding
+    use_in_cg: (boolean)
 
 # Organisation
 Organisation: &Organisation

@@ -220,6 +220,11 @@ for (const lang of languages) {
                         if (element[key] === 'lemmik') {
                             element.aliases = ['lemmik']
                         }
+
+                        if (element[key] === 'wazzup') {
+                            element.aliases = ['wazzup']
+                        }
+
                         // 2021 adding covid article aliases
                         if (element[key] === 'koroonareeglid') {
                             element.aliases = ['covid', 'koroonareeglid']
@@ -305,6 +310,12 @@ for (const lang of languages) {
                         if (DOMAIN === 'poff.ee' && element[key] === 'toeta') {
                             let toetaAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
                             element.aliases = [`${toetaAliasLangPrefix}toeta`]
+                        }
+
+                        // 2025 adding HAPPENING (artikli slug happening)
+                        if (DOMAIN === 'poff.ee' && element[key] === 'happening') {
+                            let happeningAliasLangPrefix = lang === 'et' ? '' : `${lang}/`
+                            element.aliases = [`${happeningAliasLangPrefix}poff-soovitab`]
                         }
 
                         // // 2022 mai Ukraina programm

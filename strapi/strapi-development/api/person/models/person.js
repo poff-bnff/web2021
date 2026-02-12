@@ -132,6 +132,10 @@ const {
   getPublishingProperties
 } = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_profile_publishing.js'))
 
+const {
+  handleCreativeGateProfileNotification
+} = require(path.join(__dirname, '..', '..', '..', '/helpers/creative_gate_email_notification.js'))
+
 /**
 const domains =
 For adding domain you have multiple choice. First for objects that has property 'domain'
@@ -150,6 +154,8 @@ module.exports = {
             if (result.published_at) {
                 await call_update(result, model_name)
             }
+            // Send Creative Gate profile creation email notification
+            await handleCreativeGateProfileNotification(result, 'create', 'person');
         },
 
         async beforeUpdate(params, data) {
@@ -161,6 +167,9 @@ module.exports = {
                 return
             }
             strapi.services.person.build(result.id)
+            // Send Creative Gate profile update email notification
+            // Pass params.updated_at as previousUpdatedAt (timestamp before this update)
+            await handleCreativeGateProfileNotification(result, 'update', 'person', params.updated_at);
         },
 
         async beforeDelete(params) {

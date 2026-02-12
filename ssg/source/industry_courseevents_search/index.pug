@@ -456,7 +456,9 @@ block content
                                             if person.slug
                                                 .event_person
                                                     a(href=`/${person.slug}`).event_person_link
-                                                        if person.picture
+                                                        if person.profile_img
+                                                             - var personPic = assetsDir + person.profile_img.hash + person.profile_img.ext
+                                                        else if person.picture
                                                             - var personPic = assetsDir + person.picture.hash + person.picture.ext
                                                         else
                                                             - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
@@ -467,7 +469,17 @@ block content
                                                             p.event_person_title= rolePerson.role_at_film.roleName
                                             else
                                                 .event_person
-                                                    if person.picture
+
+                                                    //- if self.profile_img
+                                                    //-     //- - var personPic = assetsDir + self.picture
+                                                    //-     - var personPic = `${assetsDir}${self.profile_img.hash}${self.profile_img.ext}`
+                                                    //- else if self.picture
+                                                    //-     //- - var personPic = assetsDir + self.picture
+                                                    //-     - var personPic = `${assetsDir}${self.picture.hash}${self.picture.ext}`
+
+                                                    if person.profile_img
+                                                        - var personPic = assetsDir + person.profile_img.hash + person.profile_img.ext
+                                                    else if person.picture
                                                         - var personPic = assetsDir + person.picture.hash + person.picture.ext
                                                     else
                                                         - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'

@@ -78,6 +78,9 @@
     },
     "guestbook_id": {
       "type": "string"
+    },
+    "use_in_cg": {
+      "type": "boolean"
     }
   }
 }

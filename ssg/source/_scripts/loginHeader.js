@@ -120,13 +120,13 @@ const requireLogin = () => {
     window.open(loginUrl, '_self')
 }
 
-const requireEventivalLogin = () => {
+const requireFionaLogin = () => {
     if (isUserTokenValid()) {
         return true
     }
     var redirect_uri = new URL(window.location.href)
     redirect_uri.searchParams.set('jwt','')
-    const loginUrl = huntAuthDomain + '/?provider=eventival&redirect_uri=' + encodeURIComponent(redirect_uri.toString())
+    const loginUrl = huntAuthDomain + '/?redirect_uri=' + encodeURIComponent(redirect_uri.toString())
     window.open(loginUrl, '_self')
 }
 

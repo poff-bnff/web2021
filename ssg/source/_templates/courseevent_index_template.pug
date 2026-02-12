@@ -151,10 +151,11 @@ block content
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' )
 
                         if process.env['DOMAIN'] === 'industry.poff.ee'
-                            .d-none.login_16_9_container.login_ind_ev#eventival_login
-                                h4.login_headline#loginMessage.white_96 Log in via Eventival
-                                a(onclick='requireEventivalLogin()' style='cursor: pointer;')
-                                    img.eventival_logo_img(alt='PÖFF' data-src='/assets/img/static/eventival_logo.svg' src='/assets/img/static/eventival_logo.svg')
+                            a(onclick='requireFionaLogin()' style='cursor: pointer;')
+                                .d-none.login_16_9_container.login_ind_ev#eventival_login
+                                    h4.login_headline#loginMessage.white_96 Log in with accreditation email
+                                    //- a(onclick='requireFionaLogin()' style='cursor: pointer;')
+                                    img.eventival_logo_img(alt='PÖFF' data-src='https://assets.poff.ee/img/Fiona_logo_300x79.png' src='https://assets.poff.ee/img/Fiona_logo_300x79.png')
 
                         script.
                             console.log(eventAccess, eventAccess === "Free (without accreditation)", courseEventId)
@@ -175,7 +176,7 @@ block content
                             const videoUrl = '!{self.video_url}'
                             // Wait for page to load
                             document.addEventListener('DOMContentLoaded', function (e) {
-                                if (eventAccess === "Free (without accreditation)" || "Ticket") {
+                                if (eventAccess === "Free (without accreditation)") {
                                     console.log(`Free event, showing video on url ${self}`, courseEventId)
                                     if (videoUrl) {
                                         videoFrameE.src = `https://videolevels.com/embed/${videoUrl.split('/bc/')[1].split('/')[0]}`
@@ -203,7 +204,8 @@ block content
 
                     if process.env['DOMAIN'] === 'industry.poff.ee'
                         .elisa_stage
-                            img.elisa_powered(src='https://assets.poff.ee/img/powered_by_elisa_stage.svg')
+                            a(href=`https://videolevels.com` target='_BLANK')
+                                img.powered_videolevels(src='https://assets.poff.ee/img/powered_by_videolevels.svg')
 
                 section.ce_box_1
                     if self.credentials && self.credentials.rolePerson
@@ -215,7 +217,9 @@ block content
                                     .person
                                         .person_head
                                             a(href=`/${indPerson.person.slug}`)
-                                                if indPerson.person.picture
+                                                if indPerson.person.profile_img
+                                                    - var personPic = assetsDir + indPerson.person.profile_img.hash + indPerson.person.profile_img.ext
+                                                else if indPerson.person.picture
                                                     - var personPic = assetsDir + indPerson.person.picture.hash + indPerson.person.picture.ext
                                                 else
                                                     - var personPic ='/assets/img/static/hunt_square_placeholder.jpg'
