@@ -262,16 +262,95 @@ const getCourseEventVideoUrl = async (courseEventId) => {
     }
     const accessToken = localStorage.getItem('ID_TOKEN')
     const headers = { Authorization: `Bearer ${accessToken}` }
-    const url = `${huntAuthDomain}/api/validate/eventUrl?${courseEventId}`
+    const url = `${huntAuthDomain}/api/validate/eventUrl?contentType=course-event&contentId=${courseEventId}`
     return fetch(url, { headers })
         .then(response => {
             return response.json()
         })
         .then(data => {
             console.log({'U': url, 'D': data})
+            if (data.error) {
+                console.warn('Video access denied:', data.error)
+                return false
+            }
             const videoProvider = data.videoProvider
             const videoId = data.videoId
             return videoProviderUrls[videoProvider] + videoId
+        })
+        .catch(error => {
+            console.error({'U': url, 'E': error})
+            return false
+        })
+}
+
+const getIndustryEventVideoUrl = async (industryEventId) => {
+    const videoProviderUrls = {
+        'videolevels.com': 'https://videolevels.com/embed/',
+        'vimeo': 'https://player.vimeo.com/video/',
+        'youtube': 'https://www.youtube.com/embed/'
+    }
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/validate/eventUrl?contentType=industry-event&contentId=${industryEventId}`
+    return fetch(url, { headers })
+        .then(response => response.json())
+        .then(data => {
+            console.log({'U': url, 'D': data})
+            if (data.error) {
+                console.warn('Video access denied:', data.error)
+                return false
+            }
+            return videoProviderUrls[data.videoProvider] + data.videoId
+        })
+        .catch(error => {
+            console.error({'U': url, 'E': error})
+            return false
+        })
+}
+
+const getDiscampEventVideoUrl = async (discampEventId) => {
+    const videoProviderUrls = {
+        'videolevels.com': 'https://videolevels.com/embed/',
+        'vimeo': 'https://player.vimeo.com/video/',
+        'youtube': 'https://www.youtube.com/embed/'
+    }
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/validate/eventUrl?contentType=dis-camp-event&contentId=${discampEventId}`
+    return fetch(url, { headers })
+        .then(response => response.json())
+        .then(data => {
+            console.log({'U': url, 'D': data})
+            if (data.error) {
+                console.warn('Video access denied:', data.error)
+                return false
+            }
+            return videoProviderUrls[data.videoProvider] + data.videoId
+        })
+        .catch(error => {
+            console.error({'U': url, 'E': error})
+            return false
+        })
+}
+
+const getIndustryProjectVideoUrl = async (industryProjectId) => {
+    const videoProviderUrls = {
+        'videolevels.com': 'https://videolevels.com/embed/',
+        'vimeo': 'https://player.vimeo.com/video/',
+        'youtube': 'https://www.youtube.com/embed/'
+    }
+    const accessToken = localStorage.getItem('ID_TOKEN')
+    const headers = { Authorization: `Bearer ${accessToken}` }
+    const url = `${huntAuthDomain}/api/validate/eventUrl?contentType=industry-project&contentId=${industryProjectId}`
+    return fetch(url, { headers })
+        .then(response => response.json())
+        .then(data => {
+            console.log({'U': url, 'D': data})
+            if (data.error) {
+                console.warn('Video access denied:', data.error)
+                return false
+            }
+            return videoProviderUrls[data.videoProvider] + data.videoId
         })
         .catch(error => {
             console.error({'U': url, 'E': error})
