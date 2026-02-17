@@ -86,25 +86,24 @@ async function sendCreativeGateProfileEmail({
   profileSlug,
   profileType
 }) {
-  const templateVars = [
-    { name: 'email', content: email },
-    { name: 'operation', content: operation },
-    { name: 'changeDateTime', content: changeDateTime.toISOString() },
-    { name: 'allowedToPublish', content: allowedToPublish ? 'true' : 'false' },
-    { 
-      name: 'allowedToPublishValidTo', 
-      content: allowedToPublishValidTo ? allowedToPublishValidTo.toISOString() : 'N/A' 
-    },
-    { name: 'profileName', content: profileName },
-    { name: 'profileSlug', content: profileSlug },
-    { name: 'profileType', content: profileType },
-    { 
-      name: 'profileUrl', 
-      content: `https://industry.poff.ee/creative_gate/${profileSlug}` 
-    }
-  ];
-
   try {
+    const templateVars = [
+      { name: 'email', content: email },
+      { name: 'operation', content: operation },
+      { name: 'changeDateTime', content: changeDateTime.toISOString() },
+      { name: 'allowedToPublish', content: allowedToPublish ? 'true' : 'false' },
+      { 
+        name: 'allowedToPublishValidTo', 
+        content: allowedToPublishValidTo ? allowedToPublishValidTo.toISOString() : 'N/A' 
+      },
+      { name: 'profileName', content: profileName },
+      { name: 'profileSlug', content: profileSlug },
+      { name: 'profileType', content: profileType },
+      { 
+        name: 'profileUrl', 
+        content: `https://industry.poff.ee/creative_gate/${profileSlug}` 
+      }
+    ];
     const result = await strapi.plugins['email'].services.email.send({
       to: email,
       template_name: 'cgprofile',

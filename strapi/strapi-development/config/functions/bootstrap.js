@@ -180,7 +180,7 @@ module.exports = () => {
             .catch(error => {
               console.error('❌ EMAIL SEND FAILED');
               console.error('  To:', options.to);
-              console.error('  Error:', JSON.stringify(error));
+              console.error('  Error:', error && (error.stack || error.message || error));
               emailInProgress = null;
               reject(error);
             });
