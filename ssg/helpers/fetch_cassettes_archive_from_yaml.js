@@ -617,22 +617,25 @@ for (const lang of allLanguages) {
                             if (rolePerson.person) {
                                 if (rolePerson?.role_at_film?.roleNamePrivate) {
                                     if (rolePerson?.role_at_film?.roleNamePrivate === 'Director') {
-                                        scc_film.credentials.rolePerson[roleIx].person = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        const enrichedPerson = STRAPIDATA_PERSONS.filter(person => rolePerson.person.id === person.id)[0]
+                                        if (enrichedPerson) {
+                                            scc_film.credentials.rolePerson[roleIx].person = enrichedPerson
+                                        }
                                     }
                                     let searchRegExp = new RegExp(' ', 'g')
                                     const role_name_lc = rolePerson.role_at_film.roleNamePrivate.toLowerCase().replace(searchRegExp, '')
                                     rolePersonTypes[role_name_lc] = rolePersonTypes[role_name_lc] || []
 
-                                    if (rolePerson.person.firstNameLastName) {
+                                    if (rolePerson.person && rolePerson.person.firstNameLastName) {
                                         rolePersonTypes[role_name_lc].push(rolePerson.person.firstNameLastName)
-                                    } else if (rolePerson.person.id) {
+                                    } else if (rolePerson.person && rolePerson.person.id) {
                                         let personFromYAML = STRAPIDATA_PERSONS.filter((a) => { return rolePerson.person.id === a.id })[0]
-                                        if (personFromYAML.fullName) {
+                                        if (personFromYAML && personFromYAML.fullName) {
                                             rolePersonTypes[role_name_lc].push(personFromYAML.fullName)
                                         }
                                     }
                                 } else {
-                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials person ID ${rolePerson.person.id} role_at_film`);
+                                    console.log(`WARNING: Something wrong with film ID ${scc_film.id} credentials person ID ${rolePerson.person?.id} role_at_film`);
                                 }
                             } else {
                                 // timer.log(__filename, film.id, ' - ', rolePerson.role_at_film.roleNamePrivate)
