@@ -2,9 +2,11 @@
 
 /**
  * Email service override
- * 
- * Wraps email sending with error handling at the service level.
- * The main fix for Mandrill unhandled rejections is in config/functions/bootstrap.js
+ *
+ * Overrides Strapi's default email service by wrapping provider.send in a safety
+ * try/catch so that send failures are logged and return null instead of throwing.
+ * This complements the main fix for Mandrill unhandled promise rejections in
+ * config/functions/bootstrap.js and explains why this override exists.
  */
 
 const _ = require('lodash');
