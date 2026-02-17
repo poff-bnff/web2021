@@ -13,7 +13,6 @@ module.exports = {
     if (productCategory.user_roles && productCategory.user_roles.length) {
       const userRights = productCategory.user_roles.flatMap(r => r.user_right).flatMap(ur => ur.functions).map(f => f.name);
       if (userRights.includes('publish_cg_person') && user.person) {
-       /*  console.log('Must build person id: ', user.person); */
         await strapi.services.person.build(user.person)
       }
     }
@@ -53,7 +52,6 @@ module.exports = {
       ]
     );
     const cleanEntity = sanitizeEntity(entity, { model: strapi.models.person });
-    /* console.log(cleanEntity, 'person') */
     if (cleanEntity.allowed_to_publish) {
       await modify_stapi_data(cleanEntity, 'person')
       await call_build(cleanEntity, ['industry.poff.ee'], 'person')

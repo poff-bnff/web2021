@@ -123,6 +123,72 @@ function recheck(){
 
 module.exports = () => {
 
+  // ============================================================================
+  // FIX: Mandrill Email Provider - Unhandled Promise Rejection
+  // ============================================================================
+  // The Mandrill provider (strapi-provider-email-mcmandrill) has a bug where
+  // promise rejections escape when templates don't exist or API keys are invalid.
+  // This wrapper catches all rejections and logs them properly.
+  // ============================================================================
+  
+  let emailInProgress = null;
+  
+  // Global safety net for any unhandled rejections from Mandrill
+  process.on('unhandledRejection', (reason, promise) => {
+    if (emailInProgress && reason && typeof reason === 'object') {
+      console.error('EMAIL SEND FAILED (Caught unhandled rejection)');
+      console.error('  To:', emailInProgress.to);
+      console.error('  Template:', emailInProgress.template_name || 'N/A');
+      console.error('  Error:', JSON.stringify(reason));
+      emailInProgress = null;
+      return; // Handled, don't crash
+    }
+    
+    // For non-email rejections, log normally
+    console.error('Unhandled Promise Rejection:', reason);
+  });
+
+  // Wrap the email provider's send method to catch rejections
+  if (strapi.plugins?.email?.provider) {
+    const originalSend = strapi.plugins.email.provider.send.bind(strapi.plugins.email.provider);
+    
+    strapi.plugins.email.provider.send = function(options, cb) {
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('EMAIL SEND TRIGGERED');
+      console.log('  To:', options.to);
+      console.log('  Template:', options.template_name || 'N/A');
+      console.log('  Subject:', options.subject || 'N/A');
+      console.log('  Timestamp:', new Date().toISOString());
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      
+      // Wrap the original send in a new promise to catch rejections
+      return new Promise((resolve, reject) => {
+        try {
+          originalSend(options, cb)
+            .then(result => {
+              console.log('EMAIL SENT SUCCESSFULLY to:', options.to);
+              resolve(result);
+            })
+            .catch(error => {
+              console.error('EMAIL SEND FAILED');
+              console.error('  To:', options.to);
+              console.error('  Error:', JSON.stringify(error));
+              reject(error);
+            });
+        } catch (syncError) {
+          console.error('EMAIL SEND FAILED (sync error):', syncError);
+          reject(syncError);
+        }
+      });
+    };
+    
+    console.log('✓ Email provider wrapper installed - unhandled rejections will be caught');
+  }
+
+  // ============================================================================
+  // File watching and build management (original bootstrap code)
+  // ============================================================================
+
   let fileData = { "files": [] }
   let file = '/srv/strapi/imgList.json'
 
