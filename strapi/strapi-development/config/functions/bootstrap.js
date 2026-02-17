@@ -161,40 +161,22 @@ module.exports = () => {
       console.log('  Timestamp:', new Date().toISOString());
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       
-      // Track the current email send for the global handler
-      emailInProgress = {
-        to: options.to,
-        template_name: options.template_name,
-        startTime: Date.now()
-      };
-      
       // Wrap the original send in a new promise to catch rejections
       return new Promise((resolve, reject) => {
         try {
           originalSend(options, cb)
             .then(result => {
               console.log('✅ EMAIL SENT SUCCESSFULLY to:', options.to);
-              emailInProgress = null;
               resolve(result);
             })
             .catch(error => {
               console.error('❌ EMAIL SEND FAILED');
               console.error('  To:', options.to);
-              console.error('  Error:', error && (error.stack || error.message || error));
-              emailInProgress = null;
+              console.error('  Error:', JSON.stringify(error));
               reject(error);
             });
-          
-          // Timeout safety: clear tracking after 5 seconds
-          setTimeout(() => {
-            if (emailInProgress && (Date.now() - emailInProgress.startTime > 5000)) {
-              emailInProgress = null;
-            }
-          }, 5000);
-          
         } catch (syncError) {
           console.error('❌ EMAIL SEND FAILED (sync error):', syncError);
-          emailInProgress = null;
           reject(syncError);
         }
       });
