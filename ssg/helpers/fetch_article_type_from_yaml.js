@@ -200,7 +200,7 @@ for (const lang of languages) {
                 element.clipUrl = element?.media?.clipUrl || '';
 
                 if (!element.clipUrl && element?.media?.clipUrlDefault) {
-                    element.clipUrl = element.media.clipUrlDefault;
+                    element.clipUrl = element?.media?.clipUrlDefault || '';
                 }
 
                 // Delete excess media
