@@ -136,7 +136,7 @@ module.exports = () => {
   // Global safety net for any unhandled rejections from Mandrill
   process.on('unhandledRejection', (reason, promise) => {
     if (emailInProgress && reason && typeof reason === 'object') {
-      console.error('❌ EMAIL SEND FAILED (Caught unhandled rejection)');
+      console.error('EMAIL SEND FAILED (Caught unhandled rejection)');
       console.error('  To:', emailInProgress.to);
       console.error('  Template:', emailInProgress.template_name || 'N/A');
       console.error('  Error:', JSON.stringify(reason));
@@ -154,7 +154,7 @@ module.exports = () => {
     
     strapi.plugins.email.provider.send = function(options, cb) {
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-      console.log('📧 EMAIL SEND TRIGGERED');
+      console.log('EMAIL SEND TRIGGERED');
       console.log('  To:', options.to);
       console.log('  Template:', options.template_name || 'N/A');
       console.log('  Subject:', options.subject || 'N/A');
@@ -166,17 +166,17 @@ module.exports = () => {
         try {
           originalSend(options, cb)
             .then(result => {
-              console.log('✅ EMAIL SENT SUCCESSFULLY to:', options.to);
+              console.log('EMAIL SENT SUCCESSFULLY to:', options.to);
               resolve(result);
             })
             .catch(error => {
-              console.error('❌ EMAIL SEND FAILED');
+              console.error('EMAIL SEND FAILED');
               console.error('  To:', options.to);
               console.error('  Error:', JSON.stringify(error));
               reject(error);
             });
         } catch (syncError) {
-          console.error('❌ EMAIL SEND FAILED (sync error):', syncError);
+          console.error('EMAIL SEND FAILED (sync error):', syncError);
           reject(syncError);
         }
       });
