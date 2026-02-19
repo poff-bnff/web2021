@@ -109,7 +109,11 @@ async function sendCreativeGateProfileEmail({
       template_name: 'cgprofile',
       template_vars: templateVars
     });
-    
+
+    if (!result) {
+      console.warn(`Creative Gate profile ${operation} email failed to send to: ${email}`);
+      return null;
+    }
     console.log(`Creative Gate profile ${operation} email sent to: ${email}`);
     return result;
   } catch (error) {
