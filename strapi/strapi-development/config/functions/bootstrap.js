@@ -182,7 +182,7 @@ module.exports = () => {
       });
     };
     
-    console.log('✓ Email provider wrapper installed - unhandled rejections will be caught');
+    console.log('[OK] Email provider wrapper installed - unhandled rejections will be caught');
   }
 
   // ============================================================================
