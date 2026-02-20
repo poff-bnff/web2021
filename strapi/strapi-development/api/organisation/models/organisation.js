@@ -43,8 +43,8 @@ module.exports = {
       if (result.published_at) {
         await call_update(result, model_name)
       }
-      // Send Creative Gate profile creation email notification
-      //await handleCreativeGateProfileNotification(result, 'create', 'organisation');
+      // Send Creative Gate profile creation email notification (fire-and-forget)
+      await handleCreativeGateProfileNotification(result, 'create', 'organisation');
     },
     async beforeUpdate(params, data) {
 
@@ -58,9 +58,9 @@ module.exports = {
         return
       }
       strapi.services.organisation.build(result.id)
-      // Send Creative Gate profile update email notification
+      // Send Creative Gate profile update email notification (fire-and-forget)
       // Pass params.updated_at as previousUpdatedAt (timestamp before this update)
-      //await handleCreativeGateProfileNotification(result, 'update', 'organisation', params.updated_at);
+      await handleCreativeGateProfileNotification(result, 'update', 'organisation', params.updated_at);
     },
     async beforeDelete(params) {
       const ids = params._where?.[0].id_in || [params.id]
